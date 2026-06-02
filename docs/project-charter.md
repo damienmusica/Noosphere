@@ -58,8 +58,13 @@ tension — one is about how maintainers work, the other is about what the repos
   human-operated tools.
 - **ChatGPT** may serve as a PM / reasoning / review / prompting assistant.
 - **Claude Code** may serve as an implementation assistant.
-- **Noosphere scripts, build, CI, runtime, validation, export, reporting, and maintenance tooling
-  must not require cloud LLM APIs.** These must remain deterministic and runnable offline.
+- **No repo tooling may require cloud LLM APIs.** No Noosphere script, build, CI, runtime,
+  validation, export, reporting, or maintenance step may depend on a cloud LLM API.
+- **The deterministic core stays offline.** Build, validation, export, reporting, and runtime must
+  remain deterministic and runnable offline. Data Foundry source-resolution and proposal-fetch jobs
+  may reach **open, free, public knowledge APIs** (e.g. Wikidata, OpenAlex, ORCID — see §5 and
+  [`docs/data-foundry.md`](data-foundry.md)); they are network-dependent by nature, produce only
+  candidate data, and must not gate the offline core.
 - **No cloud LLM API calls in repo tooling.** Repository code must not call OpenAI, Anthropic, or
   any other cloud LLM API.
 - **No LLM secrets.** No LLM API keys, secrets, or tokens are stored or required.
