@@ -76,6 +76,12 @@ The **Data Foundry** scaffold (offline batch manifests and proposal skeletons) i
 public knowledge APIs and no cloud LLM APIs; generated skeletons live under `dist/foundry/...` and are
 not committed, while `/data` remains the canonical accepted graph data.
 
+A first **network-dependent** Foundry resolver — `foundry:resolve-wikidata` — resolves a batch's seed
+entities against Wikidata using open, keyless endpoints and writes a candidate source pack under
+`dist/foundry/source-packs/...`. It is a source-resolution step only (no `/data` changes, nothing
+`reviewed`/`indexable`, no secrets), and is **intentionally not run in CI**. See
+[`docs/data-foundry.md`](docs/data-foundry.md#11-wikidata-source-pack-resolver-first-network-resolver).
+
 ## Documentation
 
 - [`docs/project-charter.md`](docs/project-charter.md) — durable identity, posture, boundaries, and the LLM boundary.

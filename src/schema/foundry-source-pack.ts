@@ -1,0 +1,157 @@
+import { z } from "zod";
+import { idSchema } from "./id.ts";
+import { nodeTypeSchema } from "./node.ts";
+import { batchIdSchema } from "./foundry-batch.ts";
+
+/**
+ * Schema for a generated Data Foundry **source pack**.
+ *
+ * A source pack is the *candidate output* of a source-resolution job: it records
+ * what an open, free, public knowledge provider (here, Wikidata) returned for the
+ * seed entities declared in a batch manifest. It is **not** canonical graph data
+ * and it is **not** a proposal — `/data` remains the source of truth for accepted
+ * graph data, while source packs live (generated, gitignored) under
+ * `dist/foundry/source-packs/...` and feed later proposal/review steps.
+ *
+ * The pack deliberately stores only *compact* selected metadata per candidate —
+ * never the full raw provider entity JSON, and never any article body. It keeps
+ * multiple ranked candidates rather than choosing a single canonical match; final
+ * truth decisions are a later, human-reviewed step. See docs/data-foundry.md.
+ */
+
+/** Wikidata item QID, e.g. `Q42`. Properties (`P...`) are intentionally excluded. */
+export const QID_REGEX = /^Q[1-9][0-9]*$/;
+export const qidSchema = z
+  .string()
+  .regex(QID_REGEX, "QID must match ^Q[1-9][0-9]*$");
+
+/** Resolution outcome for a single seed entity. */
+export const resolutionStatusSchema = z.enum(["resolved", "unresolved", "error"]);
+export type ResolutionStatus = z.infer<typeof resolutionStatusSchema>;
+
+/**
+ * A single compact candidate match for a seed entity. Stores only selected,
+ * citation-relevant metadata — never the full raw Wikidata entity JSON.
+ */
+export const sourcePackCandidateSchema = z
+  .object({
+    qid: qidSchema,
+    /** 1-based rank within this seed's candidate list (1 = best provider match). */
+    rank: z.number().int().min(1),
+    /** Provider-reported relevance/match score, if available. */
+    match_score: z.number().optional(),
+    label: z.string(),
+    description: z.string().default(""),
+    aliases: z.array(z.string()).default([]),
+    /** Stable concept URI: http://www.wikidata.org/entity/Q... */
+    concept_uri: z
+      .string()
+      .regex(
+        /^http:\/\/www\.wikidata\.org\/entity\/Q[1-9][0-9]*$/,
+        "concept_uri must be http://www.wikidata.org/entity/Q...",
+      ),
+    /** Human-facing entity page: https://www.wikidata.org/wiki/Q... */
+    entity_url: z
+      .string()
+      .regex(
+        /^https:\/\/www\.wikidata\.org\/wiki\/Q[1-9][0-9]*$/,
+        "entity_url must be https://www.wikidata.org/wiki/Q...",
+      ),
+    /** Machine-readable entity data: https://www.wikidata.org/wiki/Special:EntityData/Q....json */
+    entity_data_url: z
+      .string()
+      .regex(
+        /^https:\/\/www\.wikidata\.org\/wiki\/Special:EntityData\/Q[1-9][0-9]*\.json$/,
+        "entity_data_url must be https://www.wikidata.org/wiki/Special:EntityData/Q....json",
+      ),
+    /** Optional sitelinks (URLs only) — e.g. { enwiki: "https://en.wikipedia.org/wiki/..." }. */
+    sitelinks: z.record(z.string(), z.string()).default({}),
+    /** Wikidata revision metadata, useful for provenance. */
+    wikidata_lastrevid: z.number().int().optional(),
+    wikidata_modified: z.string().optional(),
+  })
+  .strict();
+export type SourcePackCandidate = z.infer<typeof sourcePackCandidateSchema>;
+
+/** The seed entity (copied from the manifest) this result resolves. */
+export const sourcePackSeedSchema = z
+  .object({
+    label: z.string().min(1),
+    expected_node_id: idSchema.optional(),
+    expected_type: nodeTypeSchema.optional(),
+  })
+  .strict();
+export type SourcePackSeed = z.infer<typeof sourcePackSeedSchema>;
+
+/** Resolution result for one seed entity, with its ranked candidates. */
+export const sourcePackResultSchema = z
+  .object({
+    seed: sourcePackSeedSchema,
+    /** The query string actually sent to the provider. */
+    query: z.string(),
+    status: resolutionStatusSchema,
+    candidates: z.array(sourcePackCandidateSchema).default([]),
+    notes: z.array(z.string()).default([]),
+  })
+  .strict();
+export type SourcePackResult = z.infer<typeof sourcePackResultSchema>;
+
+/** Non-secret request policy describing how the resolver reached the provider. */
+export const requestPolicySchema = z
+  .object({
+    network_required: z.literal(true),
+    /** Must be false: only open, free, keyless endpoints are permitted. */
+    requires_secret: z.literal(false),
+    user_agent: z.string().min(1),
+    serial_requests: z.literal(true),
+    delay_ms: z.number().int().min(0),
+    candidate_limit: z.number().int().min(1),
+  })
+  .strict();
+export type RequestPolicy = z.infer<typeof requestPolicySchema>;
+
+/** License/identity metadata for the resolved provider (here, Wikidata = CC0). */
+export const sourceMetadataSchema = z
+  .object({
+    source_id: idSchema,
+    name: z.string().min(1),
+    license: z.string().min(1),
+    commercial_use: z.boolean(),
+    attribution_required: z.boolean(),
+    share_alike_required: z.boolean(),
+    url: z.string().min(1),
+  })
+  .strict();
+export type SourceMetadata = z.infer<typeof sourceMetadataSchema>;
+
+export const sourcePackSummarySchema = z
+  .object({
+    seed_entities: z.number().int().min(0),
+    resolved: z.number().int().min(0),
+    unresolved: z.number().int().min(0),
+    candidate_count: z.number().int().min(0),
+  })
+  .strict();
+export type SourcePackSummary = z.infer<typeof sourcePackSummarySchema>;
+
+export const foundrySourcePackSchema = z
+  .object({
+    version: z.literal(1),
+    provider: z.literal("wikidata"),
+    batch_id: batchIdSchema,
+    batch_title: z.string().min(1),
+    generated_at: z.string().min(1),
+    generator: z
+      .object({
+        name: z.string().min(1),
+        version: z.literal(1),
+      })
+      .strict(),
+    request_policy: requestPolicySchema,
+    source_metadata: sourceMetadataSchema,
+    results: z.array(sourcePackResultSchema),
+    summary: sourcePackSummarySchema,
+    notes: z.array(z.string()).default([]),
+  })
+  .strict();
+export type FoundrySourcePack = z.infer<typeof foundrySourcePackSchema>;

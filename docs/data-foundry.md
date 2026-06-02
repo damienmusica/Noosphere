@@ -139,6 +139,56 @@ report. It exits non-zero on any validation error.
 `output.proposal_dir` inside `dist/foundry/...`. It never marks anything `reviewed` or `indexable`
 and never touches `/data`.
 
-Future resolver PRs may add **open / free / public** knowledge API calls (e.g. Wikidata, OpenAlex,
-ORCID) for source-resolution and proposal-fetch jobs. Until then, the scaffold stays offline and
-emits only empty candidate skeletons.
+## 11. Wikidata source-pack resolver (first network resolver)
+
+The first **network-dependent** resolver is now in place. It is a narrow
+**source-resolution** job — step 2 of the batch lifecycle (§5) — and nothing else:
+it produces *candidate* source-resolution material, not canonical graph data and
+not a proposal.
+
+```bash
+npm run foundry:resolve-wikidata -- foundry/batches/machine-learning-foundations-v1.json
+```
+
+What it does:
+
+- Reads and validates the given batch manifest with `foundryBatchSchema`, and
+  **refuses to run** unless the manifest lists `wikidata` in
+  `allowed_public_sources`.
+- Resolves each `seed_entities[].label` against Wikidata using **open / free /
+  public, keyless** endpoints only:
+  - the MediaWiki Action API `wbsearchentities` for English label search, and
+  - `Special:EntityData/<QID>.json` for compact entity metadata.
+- Keeps up to a few **ranked candidates** per seed (it intentionally does **not**
+  pick a single canonical QID — that is a later, human-reviewed decision) and
+  records ambiguity in `notes`.
+- Writes a compact source pack to
+  `dist/foundry/source-packs/<batch-slug>/wikidata.json`, validated against
+  `foundrySourcePackSchema` in `src/schema/foundry-source-pack.ts`.
+
+Boundaries it preserves:
+
+- It is **network-dependent and intentionally not run in CI.** CI stays offline:
+  it continues to run `typecheck`, `validate:data`, `export:graph`, `report:graph`,
+  and `foundry:validate-batches`, none of which require network access. Build,
+  validation, export, and reporting must never depend on this resolver.
+- It uses **open / free / public Wikidata access only** — no secrets, API keys,
+  tokens, OAuth, or env-required auth. (A non-secret `NOOSPHERE_WIKIDATA_USER_AGENT`
+  env var may override the User-Agent, but the resolver works without it.) It does
+  **not** use SPARQL.
+- Requests are **read-only and serial**, with a polite delay and a descriptive
+  User-Agent. It does **not** crawl links, fetch article/Wikipedia bodies, or use
+  NamuWiki, and it stores only compact selected metadata — never full raw entity
+  JSON or any article text.
+- It **never reads or writes `/data`.** `/data` remains the canonical accepted
+  graph data; nothing here is marked `reviewed` or `indexable`.
+- Generated source packs live under `dist/foundry/...`, which is **gitignored** and
+  must **not** be committed — regenerate locally as needed.
+
+Future PRs may consume these source packs to generate `proposed` graph patches
+(recording QIDs in `external_ids`, citable entries in the source registry, etc.),
+but this PR stops at source-resolution candidate output.
+
+Future resolver PRs may add further **open / free / public** knowledge API calls
+(e.g. OpenAlex, ORCID) for source-resolution and proposal-fetch jobs, following
+the same boundaries.
