@@ -94,6 +94,29 @@ export const exportedEdgeSchema = z
 export type ExportedEdge = z.infer<typeof exportedEdgeSchema>;
 
 /**
+ * Whether a source represents NamuWiki. Mirrors the heuristic in
+ * `scripts/validate-data.ts`: match by id, name, or URL host (using `hostname`,
+ * which excludes any explicit port) so a renamed/relocated entry cannot bypass
+ * the external-link-only rule.
+ */
+function isNamuWikiSource(source: { id: string; name: string; url: string | null }): boolean {
+  let host = "";
+  if (source.url) {
+    try {
+      host = new URL(source.url).hostname.toLowerCase();
+    } catch {
+      // An invalid source URL is already reported by sourceSchema; ignore here.
+    }
+  }
+  return (
+    /namu[-\s]?wiki/i.test(source.id) ||
+    /namu[-\s]?wiki/i.test(source.name) ||
+    host === "namu.wiki" ||
+    host.endsWith(".namu.wiki")
+  );
+}
+
+/**
  * The full exported graph payload. Read-only/static: a generated build artifact
  * for future static UI consumption, not a database.
  */
@@ -110,5 +133,42 @@ export const exportedGraphSchema = z
     /** Curated learning paths (reused verbatim from the source model). */
     learning_paths: z.array(learningPathSchema),
   })
-  .strict();
+  .strict()
+  // NamuWiki is external-link-only: it may never be registered as a source or
+  // cited as evidence. The shape checks above can't catch this (sources/evidence
+  // accept generic IDs), so enforce the policy at the graph level — this keeps the
+  // contract self-enforcing even when `export:graph` runs without validate-data.
+  .superRefine((graph, ctx) => {
+    const namuWikiSourceIds = new Set<string>();
+    graph.sources.forEach((source, i) => {
+      if (isNamuWikiSource(source)) {
+        namuWikiSourceIds.add(source.id);
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["sources", i, "id"],
+          message: `NamuWiki must not appear as a source ("${source.id}"): it is external-link-only and may never be used as evidence`,
+        });
+      }
+    });
+    const flagEvidence = (
+      collection: "edges" | "learning_paths",
+      index: number,
+      id: string,
+      evidence: string[],
+    ) => {
+      evidence.forEach((ev, j) => {
+        if (namuWikiSourceIds.has(ev)) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: [collection, index, "evidence", j],
+            message: `${id} cites NamuWiki source "${ev}" as evidence (NamuWiki is external-link-only and must never be primary evidence)`,
+          });
+        }
+      });
+    };
+    graph.edges.forEach((edge, i) => flagEvidence("edges", i, edge.id, edge.evidence));
+    graph.learning_paths.forEach((path, i) =>
+      flagEvidence("learning_paths", i, path.id, path.evidence),
+    );
+  });
 export type ExportedGraph = z.infer<typeof exportedGraphSchema>;
