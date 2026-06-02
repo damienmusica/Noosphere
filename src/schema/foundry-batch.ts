@@ -121,7 +121,14 @@ export const batchOutputSchema = z
       .regex(
         /^dist\/foundry\/[A-Za-z0-9._/-]+$/,
         "output.proposal_dir must be under dist/foundry/ (generated, not committed)",
-      ),
+      )
+      // Reject `..` path segments so a manifest cannot escape the dist/foundry
+      // sandbox. Without this, the regex (which permits `.`) would accept e.g.
+      // `dist/foundry/../tmp`, passing validation/CI but failing the builder's
+      // resolved-path traversal guard — letting an unusable manifest be committed.
+      .refine((dir) => !dir.split("/").includes(".."), {
+        message: "output.proposal_dir must not contain '..' path segments",
+      }),
   })
   .strict();
 export type BatchOutput = z.infer<typeof batchOutputSchema>;
