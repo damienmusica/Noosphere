@@ -158,5 +158,53 @@
     "summary": "A method of statistical inference that updates probabilities as evidence is acquired.",
     "aliases": [],
     "reviewed": true
+  },
+  {
+    "node_id": "subfield:probability-theory",
+    "locale": "en",
+    "label": "Probability Theory",
+    "summary": "The branch of mathematics that studies random phenomena and reasons about the likelihood of uncertain events.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:calculus",
+    "locale": "en",
+    "label": "Calculus",
+    "summary": "The branch of mathematics concerned with continuous change, built on derivatives and integrals.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:optimization",
+    "locale": "en",
+    "label": "Optimization",
+    "summary": "The study of selecting the best element, such as a minimum or maximum, from a set of feasible alternatives.",
+    "aliases": ["Mathematical optimization"],
+    "reviewed": true
+  },
+  {
+    "node_id": "concept:random-variable",
+    "locale": "en",
+    "label": "Random Variable",
+    "summary": "A quantity whose value depends on the outcome of a random phenomenon.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "concept:probability-distribution",
+    "locale": "en",
+    "label": "Probability Distribution",
+    "summary": "A description of how probability is assigned across the possible values of a random variable.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "method:gradient-descent",
+    "locale": "en",
+    "label": "Gradient Descent",
+    "summary": "An iterative optimization method that updates parameters in the direction that most reduces a function's value.",
+    "aliases": [],
+    "reviewed": true
   }
 ]

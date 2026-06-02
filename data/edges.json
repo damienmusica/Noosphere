@@ -121,5 +121,125 @@
     "confidence": 0.8,
     "status": "reviewed",
     "evidence": ["source:manual-curation-v1"]
+  },
+  {
+    "id": "edge:probability-theory-part-of-mathematics",
+    "source": "subfield:probability-theory",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Probability theory is a branch of mathematics."
+  },
+  {
+    "id": "edge:calculus-part-of-mathematics",
+    "source": "subfield:calculus",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Calculus is a branch of mathematics."
+  },
+  {
+    "id": "edge:optimization-part-of-mathematics",
+    "source": "subfield:optimization",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Mathematical optimization is a branch of mathematics, also studied in operations research and computer science."
+  },
+  {
+    "id": "edge:random-variable-part-of-probability-theory",
+    "source": "concept:random-variable",
+    "target": "subfield:probability-theory",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "The random variable is a core concept of probability theory."
+  },
+  {
+    "id": "edge:probability-distribution-part-of-probability-theory",
+    "source": "concept:probability-distribution",
+    "target": "subfield:probability-theory",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Probability distributions are a core concept of probability theory."
+  },
+  {
+    "id": "edge:gradient-descent-part-of-optimization",
+    "source": "method:gradient-descent",
+    "target": "subfield:optimization",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Gradient descent is a method within mathematical optimization."
+  },
+  {
+    "id": "edge:probability-theory-prerequisite-statistics",
+    "source": "subfield:probability-theory",
+    "target": "field:statistics",
+    "relation": "prerequisite_for",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Probability theory provides the formal basis for statistical inference."
+  },
+  {
+    "id": "edge:calculus-prerequisite-optimization",
+    "source": "subfield:calculus",
+    "target": "subfield:optimization",
+    "relation": "prerequisite_for",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Derivatives and gradients from calculus underpin continuous optimization."
+  },
+  {
+    "id": "edge:optimization-prerequisite-machine-learning",
+    "source": "subfield:optimization",
+    "target": "field:machine-learning",
+    "relation": "prerequisite_for",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Training most machine learning models is framed as an optimization problem."
+  },
+  {
+    "id": "edge:probability-distribution-prerequisite-bayesian-inference",
+    "source": "concept:probability-distribution",
+    "target": "method:bayesian-inference",
+    "relation": "prerequisite_for",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Bayesian inference reasons over prior and posterior probability distributions."
+  },
+  {
+    "id": "edge:random-variable-prerequisite-bayesian-inference",
+    "source": "concept:random-variable",
+    "target": "method:bayesian-inference",
+    "relation": "prerequisite_for",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Understanding random variables is needed to reason about Bayesian inference."
+  },
+  {
+    "id": "edge:gradient-descent-applies-to-machine-learning",
+    "source": "method:gradient-descent",
+    "target": "field:machine-learning",
+    "relation": "applies_to",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Gradient descent and its variants are widely used to train machine learning models."
   }
 ]
