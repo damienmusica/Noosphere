@@ -87,7 +87,8 @@ const sourceIds = new Set(sources.map((s) => s.id));
 const nodesById = new Map(nodes.map((n) => [n.id, n]));
 
 // Sources that represent NamuWiki. NamuWiki is external-links-only and must never
-// be cited as primary evidence (hard constraint). Identify by id or URL host.
+// be cited as primary evidence (hard constraint). Identify by id, name, or URL host
+// so a renamed/relocated entry cannot bypass the rule.
 const namuWikiSourceIds = new Set<string>();
 for (const s of sources) {
   let host = "";
@@ -98,8 +99,16 @@ for (const s of sources) {
       // invalid source URL is reported by schema validation; ignore here
     }
   }
-  if (s.id === "source:namuwiki" || host === "namu.wiki" || host.endsWith(".namu.wiki")) {
+  const looksLikeNamuWiki =
+    /namu[-\s]?wiki/i.test(s.id) ||
+    /namu[-\s]?wiki/i.test(s.name) ||
+    host === "namu.wiki" ||
+    host.endsWith(".namu.wiki");
+  if (looksLikeNamuWiki) {
     namuWikiSourceIds.add(s.id);
+    // NamuWiki may appear only as an external-link destination. Registering it as a
+    // source implies it could be cited as evidence, which the policy forbids outright.
+    fail(`[sources.json] NamuWiki must not be registered as a source ("${s.id}"): it is external-links-only and may never be used as evidence`);
   }
 }
 
@@ -132,12 +141,17 @@ for (const t of translations) {
     fail(`[node-translations.json] translation references unknown node: ${t.node_id}`);
   }
 }
-const localizedDefault = new Set(
-  translations.filter((t) => t.locale === DEFAULT_LOCALE).map((t) => t.node_id),
+const defaultTranslationByNode = new Map(
+  translations.filter((t) => t.locale === DEFAULT_LOCALE).map((t) => [t.node_id, t]),
 );
 for (const node of nodes) {
-  if (!localizedDefault.has(node.id)) {
+  const defaultTranslation = defaultTranslationByNode.get(node.id);
+  if (!defaultTranslation) {
     fail(`[node-translations.json] node ${node.id} is missing a "${DEFAULT_LOCALE}" translation`);
+  } else if (node.indexable && !defaultTranslation.reviewed) {
+    // Indexability is earned by reviewed, original content (see seo-policy.md). An
+    // indexable page must not ship an unreviewed default-locale label/summary.
+    fail(`[node-translations.json] node ${node.id} is indexable but its "${DEFAULT_LOCALE}" translation is not reviewed`);
   }
 }
 
@@ -213,9 +227,15 @@ for (const link of externalLinks) {
   }
   // NamuWiki is external-links-only and must never cache content. Detect it by
   // provider OR URL host, so a mistyped/generic provider cannot bypass the rule.
-  const isNamuWiki = link.provider === "namuwiki" || host === "namu.wiki" || host.endsWith(".namu.wiki");
+  const hostIsNamuWiki = host === "namu.wiki" || host.endsWith(".namu.wiki");
+  const isNamuWiki = link.provider === "namuwiki" || hostIsNamuWiki;
   if (isNamuWiki && link.content_cached) {
     fail(`[external-links.json] NamuWiki link for node ${link.node_id} has content_cached=true (NamuWiki must be external-only)`);
+  }
+  // A namu.wiki URL must be labeled with provider "namuwiki" so provider-based
+  // policy (here and downstream) classifies it honestly and cannot be sidestepped.
+  if (hostIsNamuWiki && link.provider !== "namuwiki") {
+    fail(`[external-links.json] link for node ${link.node_id} points to namu.wiki but provider is "${link.provider}" (must be "namuwiki")`);
   }
 }
 

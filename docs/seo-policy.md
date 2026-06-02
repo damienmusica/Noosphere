@@ -17,6 +17,8 @@ earned by review and original value, not a default.
 
 `nodes.json` carries an `indexable` flag. `scripts/validate-data.ts` rejects any node whose
 `status` is not `reviewed` but whose `indexable` is `true`. The same rule applies to learning paths.
+It also rejects any indexable node whose default-locale (`en`) translation is not `reviewed`, so an
+indexable page always ships reviewed original content rather than a placeholder label.
 
 When node/path pages are eventually generated, the rendering layer must read `indexable` and emit
 `<meta name="robots" content="noindex">` for anything not explicitly indexable.

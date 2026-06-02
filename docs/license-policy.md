@@ -39,7 +39,10 @@ Required fields: `id`, `name`, `source_type`, `license`, `commercial_use`, `attr
   the license and attribution/share-alike requirements are explicitly handled.
 - **NamuWiki: external links only.** Do not cache article text, do not reproduce article structure,
   and do not treat it as primary evidence. `external-links.json` entries for `namuwiki` must have
-  `content_cached: false` (enforced by validation).
+  `content_cached: false`, and a `namu.wiki` URL must use the `namuwiki` provider (enforced by
+  validation). NamuWiki must **never** be registered in `sources.json`: a source entry implies it
+  could be cited as evidence, which is forbidden. Validation rejects any NamuWiki source (matched by
+  id, name, or `namu.wiki` host) and any edge/path that cites one.
 
 ## What we never store
 
