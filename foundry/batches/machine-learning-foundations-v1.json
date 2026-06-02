@@ -41,8 +41,8 @@
     },
     {
       "label": "Statistics",
-      "expected_node_id": "subfield:statistics",
-      "expected_type": "subfield"
+      "expected_node_id": "field:statistics",
+      "expected_type": "field"
     },
     {
       "label": "Optimization",
@@ -51,8 +51,8 @@
     },
     {
       "label": "Machine learning",
-      "expected_node_id": "subfield:machine-learning",
-      "expected_type": "subfield"
+      "expected_node_id": "field:machine-learning",
+      "expected_type": "field"
     },
     {
       "label": "Random variable",
@@ -66,8 +66,8 @@
     },
     {
       "label": "Bayesian inference",
-      "expected_node_id": "concept:bayesian-inference",
-      "expected_type": "concept"
+      "expected_node_id": "method:bayesian-inference",
+      "expected_type": "method"
     },
     {
       "label": "Gradient descent",
