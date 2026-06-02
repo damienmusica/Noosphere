@@ -134,13 +134,17 @@ export const exportedGraphSchema = z
     learning_paths: z.array(learningPathSchema),
   })
   .strict()
-  // NamuWiki is external-link-only: it may never be registered as a source or
-  // cited as evidence. The shape checks above can't catch this (sources/evidence
-  // accept generic IDs), so enforce the policy at the graph level — this keeps the
-  // contract self-enforcing even when `export:graph` runs without validate-data.
+  // Graph-level cross-reference checks the per-field shape schemas can't express
+  // (sources/evidence are only validated independently). These keep the contract
+  // self-enforcing even when `export:graph` runs without validate-data first:
+  //   1. NamuWiki is external-link-only — never a source or cited as evidence.
+  //   2. Every evidence ID must resolve to a source in this payload, so the static
+  //      UI can always resolve a citation.
   .superRefine((graph, ctx) => {
+    const sourceIds = new Set<string>();
     const namuWikiSourceIds = new Set<string>();
     graph.sources.forEach((source, i) => {
+      sourceIds.add(source.id);
       if (isNamuWikiSource(source)) {
         namuWikiSourceIds.add(source.id);
         ctx.addIssue({
@@ -162,6 +166,12 @@ export const exportedGraphSchema = z
             code: z.ZodIssueCode.custom,
             path: [collection, index, "evidence", j],
             message: `${id} cites NamuWiki source "${ev}" as evidence (NamuWiki is external-link-only and must never be primary evidence)`,
+          });
+        } else if (!sourceIds.has(ev)) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: [collection, index, "evidence", j],
+            message: `${id} cites evidence "${ev}" that is not present in sources (every evidence ID must resolve to a source)`,
           });
         }
       });
