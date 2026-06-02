@@ -67,6 +67,23 @@ for (const file of files) {
   }
 }
 
+// --- Duplicate output dirs ---------------------------------------------------
+// Two different batches sharing an output.proposal_dir would have the proposal
+// skeleton builder silently overwrite one batch's generated output with the
+// other's. Reject the collision here so it surfaces in validation/CI.
+{
+  const seen = new Map<string, string>();
+  for (const { file, batch } of batches) {
+    const dir = batch.output.proposal_dir;
+    const prev = seen.get(dir);
+    if (prev) {
+      fail(`duplicate output.proposal_dir "${dir}" in ${file} (already used by ${prev})`);
+    } else {
+      seen.set(dir, file);
+    }
+  }
+}
+
 // --- Report ------------------------------------------------------------------
 if (errors.length > 0) {
   console.error(`\n✗ Foundry batch validation failed with ${errors.length} error(s):\n`);
