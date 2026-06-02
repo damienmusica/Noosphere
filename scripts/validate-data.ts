@@ -200,15 +200,21 @@ for (const link of externalLinks) {
     fail(`[external-links.json] link references unknown node: ${link.node_id}`);
   }
   let scheme: string | undefined;
+  let host = "";
   try {
-    scheme = new URL(link.url).protocol;
+    const parsed = new URL(link.url);
+    scheme = parsed.protocol;
+    host = parsed.host.toLowerCase();
   } catch {
     fail(`[external-links.json] invalid URL for node ${link.node_id}: ${link.url}`);
   }
   if (scheme && !ALLOWED_SCHEMES.has(scheme)) {
     fail(`[external-links.json] disallowed URL scheme "${scheme}" for node ${link.node_id} (only http/https allowed)`);
   }
-  if (link.provider === "namuwiki" && link.content_cached) {
+  // NamuWiki is external-links-only and must never cache content. Detect it by
+  // provider OR URL host, so a mistyped/generic provider cannot bypass the rule.
+  const isNamuWiki = link.provider === "namuwiki" || host === "namu.wiki" || host.endsWith(".namu.wiki");
+  if (isNamuWiki && link.content_cached) {
     fail(`[external-links.json] NamuWiki link for node ${link.node_id} has content_cached=true (NamuWiki must be external-only)`);
   }
 }
