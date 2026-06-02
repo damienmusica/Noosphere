@@ -155,6 +155,49 @@ registered here (it is external-links-only). See `license-policy.md`.
 - Localized title/description live in `node-translations`-style overrides later; for MVP the path
   carries an optional English `title`/`description` inline.
 
+## Static graph export
+
+`scripts/export-graph.ts` (run via `npm run export:graph`) reads the six `/data` files,
+validates them against the same Zod schemas, and emits a single read-only payload at
+`dist/noosphere-graph.json` for a future static UI to consume.
+
+This is a **build artifact, not a database**: the script fetches nothing, writes nothing back
+to `/data`, and embeds no external article content. `dist/` is gitignored, so the generated file
+is **not committed** — regenerate it from the JSON data instead.
+
+Payload shape (abridged):
+
+```json
+{
+  "version": 1,
+  "generated_at": "2026-06-02T00:00:00.000Z",
+  "default_locale": "en",
+  "nodes": [
+    {
+      "id": "field:mathematics",
+      "type": "field",
+      "domain": "formal_sciences",
+      "level": 1,
+      "status": "reviewed",
+      "indexable": true,
+      "label": "Mathematics",
+      "summary": "The study of structure, quantity, space, and change.",
+      "translations": { "en": { "label": "Mathematics", "summary": "…", "aliases": ["Math"] } },
+      "external_links": [{ "locale": "en", "provider": "wikipedia", "url": "https://…", "link_type": "further_reading", "content_cached": false }]
+    }
+  ],
+  "edges": [],
+  "sources": [],
+  "learning_paths": []
+}
+```
+
+Determinism: nodes/edges/sources/learning paths are sorted by `id`, per-node external links by
+`provider` then `url`, and translations keyed by locale. Topology never depends on label text; the
+default display `label`/`summary` come from the English (`en`) translation. A node missing its `en`
+translation fails the export (it is never given an invented label). Run `npm run validate:data`
+first — full cross-file integrity and policy checks live there.
+
 ## Domains
 
 Top-level domain keys used by `nodes.json#domain`:

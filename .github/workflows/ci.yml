@@ -22,3 +22,4 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run validate:data
+      - run: npm run export:graph

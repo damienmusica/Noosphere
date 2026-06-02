@@ -51,7 +51,13 @@ NOOSPHERE_CLAUDE_CODE_BRIEF.md   Canonical project brief
 npm install
 npm run typecheck     # tsc --noEmit
 npm run validate:data # validates /data against schemas + policy rules
+npm run export:graph  # builds dist/noosphere-graph.json (static, read-only)
 ```
+
+`export:graph` converts the `/data` JSON into a single read-only graph payload at
+`dist/noosphere-graph.json` for a future static UI. It is a **build artifact, not a database** —
+`dist/` is gitignored and the file is regenerated, never committed. See
+[`docs/data-model.md`](docs/data-model.md#static-graph-export).
 
 Data changes happen through Git commits and pull requests — there is no write path in the application.
 
