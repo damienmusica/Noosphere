@@ -56,7 +56,9 @@ npm run export:graph  # builds dist/noosphere-graph.json (static, read-only)
 
 `export:graph` converts the `/data` JSON into a single read-only graph payload at
 `dist/noosphere-graph.json` for a future static UI. It is a **build artifact, not a database** —
-`dist/` is gitignored and the file is regenerated, never committed. See
+`dist/` is gitignored and the file is regenerated, never committed. The export has an explicit
+schema contract (`src/schema/exported-graph.ts`): the payload is validated before writing, so the
+generated JSON stays a stable, read-only shape for future static UI consumption. See
 [`docs/data-model.md`](docs/data-model.md#static-graph-export).
 
 Data changes happen through Git commits and pull requests — there is no write path in the application.

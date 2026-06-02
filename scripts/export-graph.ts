@@ -26,8 +26,7 @@ import { sourceSchema } from "../src/schema/source.ts";
 import { externalLinkSchema } from "../src/schema/external-link.ts";
 import { learningPathSchema } from "../src/schema/learning-path.ts";
 import { DEFAULT_LOCALE } from "../src/schema/id.ts";
-
-const PAYLOAD_VERSION = 1;
+import { EXPORTED_GRAPH_VERSION, exportedGraphSchema } from "../src/schema/exported-graph.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, "..", "data");
@@ -169,7 +168,7 @@ const exportedLearningPaths = [...learningPaths].sort((a, b) => byString(a.id, b
 
 // --- Assemble payload --------------------------------------------------------
 const payload = {
-  version: PAYLOAD_VERSION,
+  version: EXPORTED_GRAPH_VERSION,
   generated_at: new Date().toISOString(),
   default_locale: DEFAULT_LOCALE,
   nodes: exportedNodes,
@@ -178,8 +177,19 @@ const payload = {
   learning_paths: exportedLearningPaths,
 };
 
+// --- Validate the final payload against the export contract before writing ---
+// Future static UI relies on a stable, read-only shape; refuse to emit drift.
+const validated = exportedGraphSchema.safeParse(payload);
+if (!validated.success) {
+  const details = validated.error.issues
+    .map((issue) => `  - ${issue.path.join(".") || "(root)"}: ${issue.message}`)
+    .join("\n");
+  console.error(`✗ Exported graph payload failed schema validation:\n${details}`);
+  process.exit(1);
+}
+
 mkdirSync(OUT_DIR, { recursive: true });
-writeFileSync(OUT_FILE, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+writeFileSync(OUT_FILE, `${JSON.stringify(validated.data, null, 2)}\n`, "utf8");
 
 console.log(
   `✓ Graph export written to dist/noosphere-graph.json: ${exportedNodes.length} nodes, ` +

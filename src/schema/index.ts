@@ -5,3 +5,4 @@ export * from "./edge.ts";
 export * from "./source.ts";
 export * from "./external-link.ts";
 export * from "./learning-path.ts";
+export * from "./exported-graph.ts";

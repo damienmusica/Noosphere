@@ -165,6 +165,14 @@ This is a **build artifact, not a database**: the script fetches nothing, writes
 to `/data`, and embeds no external article content. `dist/` is gitignored, so the generated file
 is **not committed** — regenerate it from the JSON data instead.
 
+The exported payload has an explicit schema contract in
+[`src/schema/exported-graph.ts`](../src/schema/exported-graph.ts) (`exportedGraphSchema`). The
+export script validates the assembled payload against this schema **before writing**; on failure it
+prints the validation errors and exits non-zero, so the artifact can never drift from the shape a
+future static UI depends on. The contract reuses the source enums/schemas, keeps topology in stable
+IDs (labels are display-only), keeps `external_links` as pointers only, and keeps NamuWiki
+external-link-only (never a source or edge evidence).
+
 Payload shape (abridged):
 
 ```json
