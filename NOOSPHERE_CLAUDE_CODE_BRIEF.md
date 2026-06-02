@@ -16,6 +16,8 @@ Claude Code should read this file before making architectural decisions. If a ta
 
 The first priority is to create a maintainable, secure, read-only MVP foundation. Do not rush into a feature-heavy app before the data model, policies, validation, and repo conventions are in place.
 
+This is the **current MVP/foundation working brief** — canonical for this phase, but not a permanent forever-SSOT. At phase transitions it should be **superseded, not silently overwritten**: mark it completed/superseded or archive it through an explicit PR, and promote any long-lived principles into the product brief or a project-level charter. See `docs/source-of-truth.md` for the full document hierarchy and lifecycle policy.
+
 ---
 
 ## 1. Project summary

@@ -3,6 +3,10 @@
 Read `NOOSPHERE_CLAUDE_CODE_BRIEF.md` before making architectural decisions. If a
 task conflicts with the brief or with these rules, **stop and ask** before changing code.
 
+When deciding which documents are authoritative, consult `docs/source-of-truth.md` — it defines the
+document hierarchy and how authority moves between documents across project phases. The Claude Code
+brief is the current MVP/foundation working brief, not a permanent forever-SSOT.
+
 Noosphere is an English-first, multilingual-ready, **read-only** knowledge atlas.
 The current priority is a maintainable, secure data foundation — not a feature-heavy app.
 

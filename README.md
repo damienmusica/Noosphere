@@ -65,6 +65,7 @@ Data changes happen through Git commits and pull requests — there is no write 
 
 ## Documentation
 
+- [`docs/source-of-truth.md`](docs/source-of-truth.md) — which documents are authoritative, and how that changes across phases.
 - [`docs/product-brief.md`](docs/product-brief.md) — what Noosphere is and the MVP scope.
 - [`docs/data-model.md`](docs/data-model.md) — nodes, translations, edges, sources, links, paths.
 - [`docs/relation-taxonomy.md`](docs/relation-taxonomy.md) — the allowed edge relation types.
