@@ -1,0 +1,162 @@
+[
+  {
+    "node_id": "domain:formal-sciences",
+    "locale": "en",
+    "label": "Formal Sciences",
+    "summary": "Disciplines concerned with formal systems, such as logic, mathematics, and theoretical computer science.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "domain:natural-sciences",
+    "locale": "en",
+    "label": "Natural Sciences",
+    "summary": "The study of the physical world through observation and experiment.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "domain:life-sciences",
+    "locale": "en",
+    "label": "Life Sciences",
+    "summary": "The study of living organisms and life processes.",
+    "aliases": ["Biological Sciences"],
+    "reviewed": true
+  },
+  {
+    "node_id": "domain:cognitive-sciences",
+    "locale": "en",
+    "label": "Cognitive Sciences",
+    "summary": "The interdisciplinary study of mind, cognition, and intelligent behavior.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "domain:computer-and-information-sciences",
+    "locale": "en",
+    "label": "Computer and Information Sciences",
+    "summary": "The study of computation, information, and automated systems.",
+    "aliases": ["Computing"],
+    "reviewed": true
+  },
+  {
+    "node_id": "domain:engineering-and-technology",
+    "locale": "en",
+    "label": "Engineering and Technology",
+    "summary": "The application of scientific knowledge to design and build practical systems.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "domain:medicine-and-health",
+    "locale": "en",
+    "label": "Medicine and Health",
+    "summary": "The science and practice of preventing, diagnosing, and treating disease.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "domain:social-sciences",
+    "locale": "en",
+    "label": "Social Sciences",
+    "summary": "The study of human society and social relationships.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "domain:humanities",
+    "locale": "en",
+    "label": "Humanities",
+    "summary": "The study of human culture, including philosophy, history, literature, and the arts.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "domain:arts-and-design",
+    "locale": "en",
+    "label": "Arts and Design",
+    "summary": "Creative disciplines spanning visual, performing, and applied arts and design.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "domain:practical-knowledge",
+    "locale": "en",
+    "label": "Practical Knowledge",
+    "summary": "Applied, skill-based, and craft knowledge oriented toward doing.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "domain:meta-knowledge",
+    "locale": "en",
+    "label": "Meta-Knowledge",
+    "summary": "Knowledge about knowledge: methodology, epistemology, and knowledge organization.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:mathematics",
+    "locale": "en",
+    "label": "Mathematics",
+    "summary": "The study of structure, quantity, space, and change.",
+    "aliases": ["Math", "Maths"],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:statistics",
+    "locale": "en",
+    "label": "Statistics",
+    "summary": "The discipline of collecting, analyzing, and interpreting data under uncertainty.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:computer-science",
+    "locale": "en",
+    "label": "Computer Science",
+    "summary": "The study of computation, algorithms, and information processing.",
+    "aliases": ["CS"],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:machine-learning",
+    "locale": "en",
+    "label": "Machine Learning",
+    "summary": "The study of algorithms that improve automatically through data and experience.",
+    "aliases": ["ML"],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:physics",
+    "locale": "en",
+    "label": "Physics",
+    "summary": "The study of matter, energy, and the fundamental forces of nature.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:linear-algebra",
+    "locale": "en",
+    "label": "Linear Algebra",
+    "summary": "The branch of mathematics concerning vectors, matrices, and linear transformations.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "concept:vector-space",
+    "locale": "en",
+    "label": "Vector Space",
+    "summary": "An algebraic structure of vectors closed under addition and scalar multiplication.",
+    "aliases": ["Linear space"],
+    "reviewed": true
+  },
+  {
+    "node_id": "method:bayesian-inference",
+    "locale": "en",
+    "label": "Bayesian Inference",
+    "summary": "A method of statistical inference that updates probabilities as evidence is acquired.",
+    "aliases": [],
+    "reviewed": true
+  }
+]
