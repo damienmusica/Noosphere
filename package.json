@@ -8,6 +8,7 @@
   "scripts": {
     "validate:data": "tsx scripts/validate-data.ts",
     "export:graph": "tsx scripts/export-graph.ts",
+    "report:graph": "tsx scripts/report-graph.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

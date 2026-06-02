@@ -206,6 +206,24 @@ default display `label`/`summary` come from the English (`en`) translation. A no
 translation fails the export (it is never given an invented label). Run `npm run validate:data`
 first — full cross-file integrity and policy checks live there.
 
+## Graph summary report
+
+`scripts/report-graph.ts` (run via `npm run report:graph`) reads the same six `/data` files,
+validates them against the same Zod schemas, and prints a concise, deterministic text overview of
+the current graph: totals, breakdowns (nodes by type/status/indexable/living-person, edges by
+relation/status/confidence bucket, sources by license/usage flags, external links by
+provider/`content_cached`, translations by locale/reviewed, learning paths by status/indexable), and
+simple connectivity signals (isolated nodes, top nodes by degree, edges by relation).
+
+It is an **observational coverage report, not a validation gate by itself**. It does not duplicate
+`npm run validate:data`, which remains the source of truth for pass/fail invariants. The report exits
+non-zero only for an actual data problem it cannot read past (a missing/malformed file or
+schema-invalid data) — never for ordinary low coverage at this early MVP stage. Like the export, it
+fetches nothing, writes nothing, computes connectivity over stable IDs (never label text), and does
+not require a committed `dist/noosphere-graph.json`. Its purpose is to make the current graph shape
+visible in local runs and CI logs so future data expansion and UI work can be guided by measurable
+coverage.
+
 ## Domains
 
 Top-level domain keys used by `nodes.json#domain`:
