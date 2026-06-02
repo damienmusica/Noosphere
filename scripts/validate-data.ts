@@ -88,13 +88,14 @@ const nodesById = new Map(nodes.map((n) => [n.id, n]));
 
 // Sources that represent NamuWiki. NamuWiki is external-links-only and must never
 // be cited as primary evidence (hard constraint). Identify by id, name, or URL host
-// so a renamed/relocated entry cannot bypass the rule.
+// so a renamed/relocated entry cannot bypass the rule. Use `hostname` (not `host`)
+// so an explicit port like `namu.wiki:8443` cannot dodge the domain checks.
 const namuWikiSourceIds = new Set<string>();
 for (const s of sources) {
   let host = "";
   if (s.url) {
     try {
-      host = new URL(s.url).host.toLowerCase();
+      host = new URL(s.url).hostname.toLowerCase();
     } catch {
       // invalid source URL is reported by schema validation; ignore here
     }
@@ -218,7 +219,8 @@ for (const link of externalLinks) {
   try {
     const parsed = new URL(link.url);
     scheme = parsed.protocol;
-    host = parsed.host.toLowerCase();
+    // `hostname` excludes any explicit port so `namu.wiki:8443` still classifies.
+    host = parsed.hostname.toLowerCase();
   } catch {
     fail(`[external-links.json] invalid URL for node ${link.node_id}: ${link.url}`);
   }
