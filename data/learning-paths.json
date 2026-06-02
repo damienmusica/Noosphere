@@ -1,0 +1,25 @@
+[
+  {
+    "id": "path:foundations-of-machine-learning",
+    "status": "reviewed",
+    "indexable": true,
+    "title": "Foundations of Machine Learning",
+    "description": "A starter route from the mathematical prerequisites to machine learning.",
+    "node_sequence": [
+      "field:mathematics",
+      "subfield:linear-algebra",
+      "field:statistics",
+      "field:machine-learning"
+    ],
+    "evidence": ["source:manual-curation-v1"]
+  },
+  {
+    "id": "path:math-to-physics",
+    "status": "reviewed",
+    "indexable": true,
+    "title": "From Mathematics to Physics",
+    "description": "How mathematical structure underpins the study of the physical world.",
+    "node_sequence": ["field:mathematics", "field:physics"],
+    "evidence": ["source:manual-curation-v1"]
+  }
+]

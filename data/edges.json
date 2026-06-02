@@ -1,0 +1,125 @@
+[
+  {
+    "id": "edge:mathematics-part-of-formal-sciences",
+    "source": "field:mathematics",
+    "target": "domain:formal-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Mathematics is a core discipline of the formal sciences."
+  },
+  {
+    "id": "edge:statistics-part-of-formal-sciences",
+    "source": "field:statistics",
+    "target": "domain:formal-sciences",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Statistics is commonly grouped with the formal sciences."
+  },
+  {
+    "id": "edge:computer-science-part-of-cis",
+    "source": "field:computer-science",
+    "target": "domain:computer-and-information-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"]
+  },
+  {
+    "id": "edge:machine-learning-part-of-computer-science",
+    "source": "field:machine-learning",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Machine learning is a subfield of computer science."
+  },
+  {
+    "id": "edge:physics-part-of-natural-sciences",
+    "source": "field:physics",
+    "target": "domain:natural-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"]
+  },
+  {
+    "id": "edge:linear-algebra-part-of-mathematics",
+    "source": "subfield:linear-algebra",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"]
+  },
+  {
+    "id": "edge:vector-space-part-of-linear-algebra",
+    "source": "concept:vector-space",
+    "target": "subfield:linear-algebra",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"]
+  },
+  {
+    "id": "edge:bayesian-inference-part-of-statistics",
+    "source": "method:bayesian-inference",
+    "target": "field:statistics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"]
+  },
+  {
+    "id": "edge:linear-algebra-prerequisite-machine-learning",
+    "source": "subfield:linear-algebra",
+    "target": "field:machine-learning",
+    "relation": "prerequisite_for",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Vectors, matrices, and linear transformations are foundational for machine learning models."
+  },
+  {
+    "id": "edge:statistics-prerequisite-machine-learning",
+    "source": "field:statistics",
+    "target": "field:machine-learning",
+    "relation": "prerequisite_for",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Probability and statistical inference underpin machine learning methods."
+  },
+  {
+    "id": "edge:mathematics-prerequisite-physics",
+    "source": "field:mathematics",
+    "target": "field:physics",
+    "relation": "prerequisite_for",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"]
+  },
+  {
+    "id": "edge:mathematics-formalizes-physics",
+    "source": "field:mathematics",
+    "target": "field:physics",
+    "relation": "formalizes",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"],
+    "note": "Mathematics provides the formal language for physical theories."
+  },
+  {
+    "id": "edge:bayesian-inference-applies-to-machine-learning",
+    "source": "method:bayesian-inference",
+    "target": "field:machine-learning",
+    "relation": "applies_to",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": ["source:manual-curation-v1"]
+  }
+]

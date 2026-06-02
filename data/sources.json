@@ -1,0 +1,35 @@
+[
+  {
+    "id": "source:manual-curation-v1",
+    "name": "Noosphere manual curation v1",
+    "source_type": "manual",
+    "license": "project-owned",
+    "commercial_use": true,
+    "attribution_required": false,
+    "share_alike_required": false,
+    "url": null,
+    "last_checked_at": "2026-06-02"
+  },
+  {
+    "id": "source:wikidata",
+    "name": "Wikidata",
+    "source_type": "open_data",
+    "license": "CC0",
+    "commercial_use": true,
+    "attribution_required": false,
+    "share_alike_required": false,
+    "url": "https://www.wikidata.org/",
+    "last_checked_at": "2026-06-02"
+  },
+  {
+    "id": "source:openalex",
+    "name": "OpenAlex",
+    "source_type": "scholarly",
+    "license": "CC0",
+    "commercial_use": true,
+    "attribution_required": false,
+    "share_alike_required": false,
+    "url": "https://openalex.org/",
+    "last_checked_at": "2026-06-02"
+  }
+]
