@@ -31,6 +31,17 @@ export const sourceSchema = z
   .refine((source) => source.url !== null || source.source_type === "manual", {
     message: "Only manual sources may omit a URL (url: null)",
     path: ["url"],
-  });
+  })
+  .refine(
+    (source) => {
+      if (source.url === null) return true;
+      try {
+        return ["http:", "https:"].includes(new URL(source.url).protocol);
+      } catch {
+        return false;
+      }
+    },
+    { message: "Source url must use the http or https scheme", path: ["url"] },
+  );
 
 export type Source = z.infer<typeof sourceSchema>;

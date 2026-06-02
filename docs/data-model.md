@@ -117,7 +117,7 @@ Required: `id`, `source`, `target`, `relation`, `confidence`, `status`, `evidenc
 ```
 
 Every source carries complete license metadata. `url` may be `null` **only** for `manual`
-sources; every non-manual source must record a URL. See `license-policy.md`.
+sources; every non-manual source must record an `http`/`https` URL. See `license-policy.md`.
 
 ## `external-links.json`
 
