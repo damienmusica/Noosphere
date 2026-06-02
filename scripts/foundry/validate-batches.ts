@@ -11,12 +11,13 @@
  */
 import { readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { dirname, join } from "node:path";
+import { dirname, join, resolve } from "node:path";
 
 import { foundryBatchSchema, type FoundryBatch } from "../../src/schema/foundry-batch.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const BATCHES_DIR = join(__dirname, "..", "..", "foundry", "batches");
+const REPO_ROOT = resolve(__dirname, "..", "..");
+const BATCHES_DIR = join(REPO_ROOT, "foundry", "batches");
 
 const errors: string[] = [];
 const fail = (msg: string) => errors.push(msg);
@@ -70,16 +71,20 @@ for (const file of files) {
 // --- Duplicate output dirs ---------------------------------------------------
 // Two different batches sharing an output.proposal_dir would have the proposal
 // skeleton builder silently overwrite one batch's generated output with the
-// other's. Reject the collision here so it surfaces in validation/CI.
+// other's. Key on the *resolved* path (matching how build-proposal-skeleton.ts
+// resolves it) so aliases like `./` or doubled slashes still collide here.
 {
   const seen = new Map<string, string>();
   for (const { file, batch } of batches) {
-    const dir = batch.output.proposal_dir;
-    const prev = seen.get(dir);
+    const resolved = resolve(REPO_ROOT, batch.output.proposal_dir);
+    const prev = seen.get(resolved);
     if (prev) {
-      fail(`duplicate output.proposal_dir "${dir}" in ${file} (already used by ${prev})`);
+      fail(
+        `duplicate output.proposal_dir "${batch.output.proposal_dir}" in ${file} ` +
+          `(resolves to the same directory already used by ${prev})`,
+      );
     } else {
-      seen.set(dir, file);
+      seen.set(resolved, file);
     }
   }
 }
