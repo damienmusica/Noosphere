@@ -24,3 +24,4 @@ jobs:
       - run: npm run validate:data
       - run: npm run export:graph
       - run: npm run report:graph
+      - run: npm run foundry:validate-batches

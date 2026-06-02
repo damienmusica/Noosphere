@@ -9,6 +9,8 @@
     "validate:data": "tsx scripts/validate-data.ts",
     "export:graph": "tsx scripts/export-graph.ts",
     "report:graph": "tsx scripts/report-graph.ts",
+    "foundry:validate-batches": "tsx scripts/foundry/validate-batches.ts",
+    "foundry:proposal-skeleton": "tsx scripts/foundry/build-proposal-skeleton.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

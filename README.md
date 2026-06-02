@@ -38,9 +38,10 @@ Data invariants enforced by validation:
 
 ```text
 /data            JSON seed data (nodes, translations, edges, sources, external links, paths)
+/foundry         Data Foundry batch manifests (construction inputs / candidates, not graph data)
 /docs            Product brief, policies, and Architecture Decision Records (ADRs)
 /src/schema      Zod schemas + shared types for all data files
-/scripts         validate-data.ts (data integrity + policy checks)
+/scripts         validate-data.ts (data integrity + policy checks), scripts/foundry/* (offline scaffold)
 CLAUDE.md        Persistent instructions for Claude Code sessions
 NOOSPHERE_CLAUDE_CODE_BRIEF.md   Superseded foundation-phase brief (retained for history)
 ```
@@ -69,6 +70,11 @@ require a committed `dist/noosphere-graph.json`. See
 [`docs/data-model.md`](docs/data-model.md#graph-summary-report).
 
 Data changes happen through Git commits and pull requests — there is no write path in the application.
+
+The **Data Foundry** scaffold (offline batch manifests and proposal skeletons) is documented in
+[`docs/data-foundry.md`](docs/data-foundry.md#10-initial-scaffold--current-commands). It calls no
+public knowledge APIs and no cloud LLM APIs; generated skeletons live under `dist/foundry/...` and are
+not committed, while `/data` remains the canonical accepted graph data.
 
 ## Documentation
 

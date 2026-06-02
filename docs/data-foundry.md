@@ -102,3 +102,43 @@ The phase proceeds in deliberate, explicit PRs:
 7. **Static UI** — the read-only atlas surface over reviewed/indexable data.
 
 This brief covers step 1 only. Steps 2+ are implemented later, each in its own reviewable PR.
+
+## 10. Initial scaffold — current commands
+
+Step 2 (the **Foundry scaffold**) is now in place as an **offline, deterministic** shell. It
+establishes directory/manifest conventions and a proposal-skeleton workflow that future resolver PRs
+can build on. It calls **no** public knowledge APIs and **no** cloud LLM APIs yet, and requires no
+secrets, tokens, or network access.
+
+Conventions:
+
+- **`/foundry`** holds committed Foundry inputs: batch manifests under `foundry/batches/*.json` and
+  templates. These are **construction inputs / candidates**, not canonical graph data.
+- **`/data`** remains the **canonical source of truth** for currently accepted graph data. The
+  scaffold never reads from or writes to `/data`.
+- **`dist/foundry/...`** holds **generated** proposal skeletons. It is gitignored and must **not** be
+  committed — regenerate it locally as needed.
+
+Commands:
+
+```bash
+# Validate every batch manifest under foundry/batches against the Foundry schema.
+npm run foundry:validate-batches
+
+# Build an offline proposal skeleton for a batch into dist/foundry/proposals/...
+npm run foundry:proposal-skeleton -- foundry/batches/machine-learning-foundations-v1.json
+```
+
+`foundry:validate-batches` parses each `foundry/batches/*.json` with the Zod schema in
+`src/schema/foundry-batch.ts`, checks for duplicate batch IDs, and prints a concise, deterministic
+report. It exits non-zero on any validation error.
+
+`foundry:proposal-skeleton` validates the given manifest and writes a candidate proposal skeleton
+(a normalized manifest copy, empty `nodes`/`translations`/`edges`/`external-links`/`sources`/
+`learning-paths` arrays, a small `report.json`, and a `README.md`) under the manifest's
+`output.proposal_dir` inside `dist/foundry/...`. It never marks anything `reviewed` or `indexable`
+and never touches `/data`.
+
+Future resolver PRs may add **open / free / public** knowledge API calls (e.g. Wikidata, OpenAlex,
+ORCID) for source-resolution and proposal-fetch jobs. Until then, the scaffold stays offline and
+emits only empty candidate skeletons.

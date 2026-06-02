@@ -1,0 +1,127 @@
+{
+  "id": "batch:machine-learning-foundations-v1",
+  "title": "Machine Learning Foundations v1",
+  "description": "Offline planning manifest for a machine-learning foundations cluster: the mathematical prerequisites (linear algebra, calculus, probability, statistics, optimization) and core ML concepts that build on them. Construction input only — not canonical graph data, and no graph data is added by this batch.",
+  "status": "draft",
+  "target_locales": ["en"],
+  "scope": {
+    "include": [
+      "Mathematical foundations of machine learning",
+      "Probability and statistics underlying ML",
+      "Core optimization methods used to train models",
+      "Foundational machine-learning concepts and their prerequisites"
+    ],
+    "exclude": [
+      "Living researchers and current affiliations",
+      "Specific commercial products, frameworks, or vendors",
+      "Contemporary or controversial claims"
+    ]
+  },
+  "seed_entities": [
+    {
+      "label": "Mathematics",
+      "expected_node_id": "field:mathematics",
+      "expected_type": "field",
+      "notes": "Parent field for the mathematical prerequisites in this batch."
+    },
+    {
+      "label": "Linear algebra",
+      "expected_node_id": "subfield:linear-algebra",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Calculus",
+      "expected_node_id": "subfield:calculus",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Probability theory",
+      "expected_node_id": "subfield:probability-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Statistics",
+      "expected_node_id": "subfield:statistics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Optimization",
+      "expected_node_id": "subfield:optimization",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Machine learning",
+      "expected_node_id": "subfield:machine-learning",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Random variable",
+      "expected_node_id": "concept:random-variable",
+      "expected_type": "concept"
+    },
+    {
+      "label": "Probability distribution",
+      "expected_node_id": "concept:probability-distribution",
+      "expected_type": "concept"
+    },
+    {
+      "label": "Bayesian inference",
+      "expected_node_id": "concept:bayesian-inference",
+      "expected_type": "concept"
+    },
+    {
+      "label": "Gradient descent",
+      "expected_node_id": "method:gradient-descent",
+      "expected_type": "method",
+      "notes": "Optimization method used to train many ML models."
+    }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "wikidata",
+      "purpose": ["identity", "metadata", "source_resolution", "external_link"],
+      "requires_secret": false,
+      "notes": "CC0 public knowledge base. Future resolver may record QIDs in external_ids. No API call in this PR."
+    },
+    {
+      "provider": "wikipedia",
+      "purpose": ["external_link", "source_resolution"],
+      "requires_secret": false,
+      "notes": "External-link / source-resolution pointer only. Never store or cache article bodies."
+    },
+    {
+      "provider": "openalex",
+      "purpose": ["source_resolution", "metadata"],
+      "requires_secret": false,
+      "notes": "Future scholarly metadata / source-resolution candidate. No API call in this PR."
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "provider": "namuwiki",
+      "reason": "NamuWiki is external-link-only and must never be used as evidence or a source, nor have its content cached."
+    },
+    {
+      "provider": "cloud_llm_api",
+      "reason": "No cloud LLM API calls are permitted in repo tooling, build, validation, or runtime."
+    },
+    {
+      "provider": "scraped_article_body",
+      "reason": "Scraping or crawling third-party article bodies is forbidden; only open, license-compatible data is allowed."
+    }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": ["low", "medium", "pedagogical"],
+    "requires_strict_review_for": ["living_person", "current_affiliation", "controversial_claim"]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/machine-learning-foundations-v1"
+  },
+  "notes": [
+    "This manifest is a construction input, not canonical graph data.",
+    "/data remains the source of truth for accepted graph data.",
+    "This batch intentionally avoids living-person claims.",
+    "No external API is called in this PR; resolvers are added in later PRs."
+  ]
+}
