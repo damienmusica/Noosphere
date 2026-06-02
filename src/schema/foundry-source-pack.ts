@@ -70,7 +70,31 @@ export const sourcePackCandidateSchema = z
     wikidata_lastrevid: z.number().int().optional(),
     wikidata_modified: z.string().optional(),
   })
-  .strict();
+  .strict()
+  // Each URL must embed the *same* QID as `qid`. The per-field regexes above only
+  // check that the URLs are well-formed Wikidata URLs — without this cross-field
+  // check a pack could validate with `qid: "Q42"` while its URLs point to `Q1`,
+  // silently corrupting provenance for later proposal/review steps that trust
+  // this schema boundary (e.g. packs produced outside this exact resolver path).
+  .superRefine((candidate, ctx) => {
+    const checks: { field: "concept_uri" | "entity_url" | "entity_data_url"; want: string }[] = [
+      { field: "concept_uri", want: `http://www.wikidata.org/entity/${candidate.qid}` },
+      { field: "entity_url", want: `https://www.wikidata.org/wiki/${candidate.qid}` },
+      {
+        field: "entity_data_url",
+        want: `https://www.wikidata.org/wiki/Special:EntityData/${candidate.qid}.json`,
+      },
+    ];
+    for (const { field, want } of checks) {
+      if (candidate[field] !== want) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: [field],
+          message: `${field} must reference the candidate's qid (${candidate.qid})`,
+        });
+      }
+    }
+  });
 export type SourcePackCandidate = z.infer<typeof sourcePackCandidateSchema>;
 
 /** The seed entity (copied from the manifest) this result resolves. */
