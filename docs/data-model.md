@@ -72,6 +72,7 @@ The graph topology never depends on label text. Display strings live here.
 ```
 
 - Default locale is `en`. Every node must have an `en` translation.
+- An `indexable` node must have a **reviewed** `en` translation (see `seo-policy.md`).
 - Korean (`ko`) is planned, not required for MVP.
 
 ## `edges.json`
@@ -117,7 +118,8 @@ Required: `id`, `source`, `target`, `relation`, `confidence`, `status`, `evidenc
 ```
 
 Every source carries complete license metadata. `url` may be `null` **only** for `manual`
-sources; every non-manual source must record an `http`/`https` URL. See `license-policy.md`.
+sources; every non-manual source must record an `http`/`https` URL. NamuWiki must never be
+registered here (it is external-links-only). See `license-policy.md`.
 
 ## `external-links.json`
 
