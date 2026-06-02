@@ -40,6 +40,15 @@ export const exportedTranslationSchema = z
   .strict();
 export type ExportedTranslation = z.infer<typeof exportedTranslationSchema>;
 
+/** Lower-cased URL host (no port), or "" if the URL is unparseable. */
+function hostOf(url: string): string {
+  try {
+    return new URL(url).hostname.toLowerCase();
+  } catch {
+    return "";
+  }
+}
+
 /** An external pointer attached to a node. Pointers only — never cached content. */
 export const exportedExternalLinkSchema = z
   .object({
@@ -50,9 +59,27 @@ export const exportedExternalLinkSchema = z
     content_cached: z.boolean(),
   })
   .strict()
-  .refine((link) => link.provider !== "namuwiki" || link.content_cached === false, {
-    message: "NamuWiki is external-link-only: content_cached must be false",
-    path: ["content_cached"],
+  // NamuWiki is external-link-only. Classify by host (not just the provider label,
+  // which can be wrong) — mirroring scripts/validate-data.ts — so a namu.wiki link
+  // can never carry cached content or hide behind a mislabeled provider.
+  .superRefine((link, ctx) => {
+    const host = hostOf(link.url);
+    const hostIsNamuWiki = host === "namu.wiki" || host.endsWith(".namu.wiki");
+    const isNamuWiki = link.provider === "namuwiki" || hostIsNamuWiki;
+    if (isNamuWiki && link.content_cached) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["content_cached"],
+        message: "NamuWiki is external-link-only: content_cached must be false",
+      });
+    }
+    if (hostIsNamuWiki && link.provider !== "namuwiki") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["provider"],
+        message: `link points to namu.wiki but provider is "${link.provider}" (must be "namuwiki")`,
+      });
+    }
   });
 export type ExportedExternalLink = z.infer<typeof exportedExternalLinkSchema>;
 
@@ -100,14 +127,7 @@ export type ExportedEdge = z.infer<typeof exportedEdgeSchema>;
  * the external-link-only rule.
  */
 function isNamuWikiSource(source: { id: string; name: string; url: string | null }): boolean {
-  let host = "";
-  if (source.url) {
-    try {
-      host = new URL(source.url).hostname.toLowerCase();
-    } catch {
-      // An invalid source URL is already reported by sourceSchema; ignore here.
-    }
-  }
+  const host = source.url ? hostOf(source.url) : "";
   return (
     /namu[-\s]?wiki/i.test(source.id) ||
     /namu[-\s]?wiki/i.test(source.name) ||
@@ -135,12 +155,14 @@ export const exportedGraphSchema = z
   })
   .strict()
   // Graph-level cross-reference checks the per-field shape schemas can't express
-  // (sources/evidence are only validated independently). These keep the contract
-  // self-enforcing even when `export:graph` runs without validate-data first:
+  // (nodes/sources/evidence are only validated independently). These keep the
+  // contract self-enforcing even when `export:graph` runs without validate-data:
   //   1. NamuWiki is external-link-only — never a source or cited as evidence.
-  //   2. Every evidence ID must resolve to a source in this payload, so the static
-  //      UI can always resolve a citation.
+  //   2. Every evidence ID must resolve to a source in this payload.
+  //   3. Every edge endpoint and learning-path step must resolve to a node, so the
+  //      static UI never holds a dangling reference.
   .superRefine((graph, ctx) => {
+    const nodeIds = new Set(graph.nodes.map((node) => node.id));
     const sourceIds = new Set<string>();
     const namuWikiSourceIds = new Set<string>();
     graph.sources.forEach((source, i) => {
@@ -176,9 +198,29 @@ export const exportedGraphSchema = z
         }
       });
     };
-    graph.edges.forEach((edge, i) => flagEvidence("edges", i, edge.id, edge.evidence));
-    graph.learning_paths.forEach((path, i) =>
-      flagEvidence("learning_paths", i, path.id, path.evidence),
-    );
+    graph.edges.forEach((edge, i) => {
+      flagEvidence("edges", i, edge.id, edge.evidence);
+      (["source", "target"] as const).forEach((endpoint) => {
+        if (!nodeIds.has(edge[endpoint])) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ["edges", i, endpoint],
+            message: `edge ${edge.id} ${endpoint} "${edge[endpoint]}" does not resolve to a node`,
+          });
+        }
+      });
+    });
+    graph.learning_paths.forEach((path, i) => {
+      flagEvidence("learning_paths", i, path.id, path.evidence);
+      path.node_sequence.forEach((nodeId, j) => {
+        if (!nodeIds.has(nodeId)) {
+          ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            path: ["learning_paths", i, "node_sequence", j],
+            message: `learning path ${path.id} references node "${nodeId}" that does not resolve to a node`,
+          });
+        }
+      });
+    });
   });
 export type ExportedGraph = z.infer<typeof exportedGraphSchema>;
