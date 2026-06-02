@@ -52,6 +52,7 @@ npm install
 npm run typecheck     # tsc --noEmit
 npm run validate:data # validates /data against schemas + policy rules
 npm run export:graph  # builds dist/noosphere-graph.json (static, read-only)
+npm run report:graph  # prints an observational graph coverage summary
 ```
 
 `export:graph` converts the `/data` JSON into a single read-only graph payload at
@@ -60,6 +61,12 @@ npm run export:graph  # builds dist/noosphere-graph.json (static, read-only)
 schema contract (`src/schema/exported-graph.ts`): the payload is validated before writing, so the
 generated JSON stays a stable, read-only shape for future static UI consumption. See
 [`docs/data-model.md`](docs/data-model.md#static-graph-export).
+
+`report:graph` prints a concise, deterministic summary of the current graph (totals, type/status
+breakdowns, and simple connectivity signals) to stdout. It is an **observational coverage report, not
+a validation gate** — `validate:data` remains the source of truth for pass/fail — and it does not
+require a committed `dist/noosphere-graph.json`. See
+[`docs/data-model.md`](docs/data-model.md#graph-summary-report).
 
 Data changes happen through Git commits and pull requests — there is no write path in the application.
 
