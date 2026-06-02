@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { idSchema } from "./id.ts";
+import { idSchema, prefixedIdSchema } from "./id.ts";
 
 /**
  * Allowed relation types. See docs/relation-taxonomy.md.
@@ -32,7 +32,7 @@ export type EdgeStatus = z.infer<typeof edgeStatusSchema>;
 
 export const edgeSchema = z
   .object({
-    id: idSchema,
+    id: prefixedIdSchema("edge"),
     source: idSchema,
     target: idSchema,
     relation: relationTypeSchema,

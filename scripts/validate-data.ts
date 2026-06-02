@@ -86,6 +86,23 @@ const nodeIds = new Set(nodes.map((n) => n.id));
 const sourceIds = new Set(sources.map((s) => s.id));
 const nodesById = new Map(nodes.map((n) => [n.id, n]));
 
+// Sources that represent NamuWiki. NamuWiki is external-links-only and must never
+// be cited as primary evidence (hard constraint). Identify by id or URL host.
+const namuWikiSourceIds = new Set<string>();
+for (const s of sources) {
+  let host = "";
+  if (s.url) {
+    try {
+      host = new URL(s.url).host.toLowerCase();
+    } catch {
+      // invalid source URL is reported by schema validation; ignore here
+    }
+  }
+  if (s.id === "source:namuwiki" || host === "namu.wiki" || host.endsWith(".namu.wiki")) {
+    namuWikiSourceIds.add(s.id);
+  }
+}
+
 // --- Duplicate IDs -----------------------------------------------------------
 checkDuplicates("nodes.json", nodes.map((n) => n.id));
 checkDuplicates("edges.json", edges.map((e) => e.id));
@@ -135,6 +152,9 @@ for (const edge of edges) {
   for (const ev of edge.evidence) {
     if (!sourceIds.has(ev)) {
       fail(`[edges.json] edge ${edge.id} evidence references unknown source: ${ev}`);
+    }
+    if (namuWikiSourceIds.has(ev)) {
+      fail(`[edges.json] edge ${edge.id} cites NamuWiki source "${ev}" as evidence (NamuWiki is external-links-only and must never be primary evidence)`);
     }
   }
   // Edges touching a living person require stricter (reviewed/proposed) status.
@@ -202,6 +222,9 @@ for (const path of learningPaths) {
     }
   }
   for (const ev of path.evidence) {
+    if (namuWikiSourceIds.has(ev)) {
+      fail(`[learning-paths.json] path ${path.id} cites NamuWiki source "${ev}" as evidence (NamuWiki is external-links-only and must never be primary evidence)`);
+    }
     if (!sourceIds.has(ev)) {
       fail(`[learning-paths.json] path ${path.id} evidence references unknown source: ${ev}`);
     }

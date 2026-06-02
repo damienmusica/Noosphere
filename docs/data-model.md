@@ -91,11 +91,13 @@ The graph topology never depends on label text. Display strings live here.
 
 Required: `id`, `source`, `target`, `relation`, `confidence`, `status`, `evidence`. Rules:
 
+- `id` must use the `edge:` namespace.
 - `source` and `target` must reference existing node IDs.
 - `source` ≠ `target` (self-loops are rejected).
 - `relation` must be in the taxonomy (`relation-taxonomy.md`).
 - `confidence` is in `[0, 1]`.
 - `evidence` is non-empty and every entry references an existing source ID.
+- `evidence` must never reference a NamuWiki source (NamuWiki is external-links-only).
 - `prerequisite_for` edges must not form a cycle.
 
 ## `sources.json`
@@ -114,7 +116,8 @@ Required: `id`, `source`, `target`, `relation`, `confidence`, `status`, `evidenc
 }
 ```
 
-Every source carries complete license metadata. See `license-policy.md`.
+Every source carries complete license metadata. `url` may be `null` **only** for `manual`
+sources; every non-manual source must record a URL. See `license-policy.md`.
 
 ## `external-links.json`
 
