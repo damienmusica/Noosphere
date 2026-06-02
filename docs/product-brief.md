@@ -1,7 +1,10 @@
 # Product Brief
 
-> Condensed from `NOOSPHERE_CLAUDE_CODE_BRIEF.md`. That file remains canonical; this is the
-> orientation doc for contributors and Claude Code sessions.
+> Defines what Noosphere is and its scope. For durable identity, posture, and boundaries see
+> [`docs/project-charter.md`](project-charter.md); for the current phase's working brief see
+> [`docs/data-foundry.md`](data-foundry.md). The foundation-phase brief
+> (`NOOSPHERE_CLAUDE_CODE_BRIEF.md`) is **superseded** and retained for history only — it is no
+> longer canonical. See [`docs/source-of-truth.md`](source-of-truth.md) for the hierarchy.
 
 ## What Noosphere is
 
@@ -44,12 +47,21 @@ Initial target scale (aspirational, not required for the first milestone):
 Login, user profiles, comments, public editing, admin UI, database-backed editing, payments, ads,
 full 3D globe, scraping crawlers, bulk AI-generated pages.
 
-## Current milestone: repository foundation
+## Current milestone: Data Foundry and scalable curation methodology
 
-Docs, schemas, seed data, validation, and Claude Code instructions. No application UI beyond a
-placeholder, and only if framework initialization requires it. The first deliverable is a clean,
-secure, maintainable foundation that can survive data growth, localization, public launch, and
-possible contributor workflows.
+The repository foundation (docs, schemas, seed data, validation, Claude Code instructions) is
+**complete**. The current milestone is building a **Data Foundry and a scalable curation
+methodology** — see [`docs/data-foundry.md`](data-foundry.md).
+
+- **UI is not the current bottleneck.** High-quality, evidence-backed graph data is. Effort goes to
+  data construction and curation, not visual polish.
+- **The MVP still aims for a static/read-only atlas.** The runtime posture is unchanged.
+- **Bulk AI-generated public pages remain out of scope.** Noosphere does not mass-publish thin or
+  auto-generated pages.
+- **Batch-generated `proposed` data is allowed as an internal construction workflow.** It may be
+  produced at scale, but only becomes `reviewed`/`indexable` after passing source resolution,
+  validation, and the risk-tiered curation gate. No cloud LLM API is required to run that workflow
+  (see the charter's LLM boundary).
 
 ## Guiding principle
 

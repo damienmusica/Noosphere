@@ -1,5 +1,14 @@
 # Noosphere Project Brief for Claude Code
 
+> **Status notice — SUPERSEDED (retained for history).**
+> This was the **MVP/foundation-phase** working brief. **The foundation phase is complete.** This
+> document is **superseded for current work** by [`docs/project-charter.md`](docs/project-charter.md)
+> (durable principles) and [`docs/data-foundry.md`](docs/data-foundry.md) (current-phase working
+> brief). It is **retained as historical context** — it explains how the foundation came to be — and
+> was deliberately not deleted or overwritten. **Claude Code should not treat this file as the current
+> canonical working brief**; read the charter and the Data Foundry brief instead. See
+> [`docs/source-of-truth.md`](docs/source-of-truth.md) for the current hierarchy.
+
 Version: 0.1
 Status: Planning and initial repository bootstrap
 Primary working language: English
