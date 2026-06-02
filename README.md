@@ -2,7 +2,7 @@
 
 An interactive atlas of human knowledge, mapping fields, concepts, people, works, and evidence-backed relationships.
 
-> **Status:** Private, planning-stage. This is **not** production-ready. The current milestone is the repository foundation only (docs, schemas, seed data, validation) — not the full application.
+> **Status:** Private, planning-stage. This is **not** production-ready. The repository foundation (docs, schemas, seed data, validation) is complete; the current milestone is the **Data Foundry and scalable curation methodology** — see [`docs/data-foundry.md`](docs/data-foundry.md).
 
 Noosphere is an **English-first, multilingual-ready, read-only** knowledge atlas. It maps fields, concepts, people, works, methods, and evidence-backed relationships into a navigable knowledge graph. It is a *navigation layer over human knowledge* — a map of relationships, learning paths, and external references — **not a wiki clone**.
 
@@ -42,7 +42,7 @@ Data invariants enforced by validation:
 /src/schema      Zod schemas + shared types for all data files
 /scripts         validate-data.ts (data integrity + policy checks)
 CLAUDE.md        Persistent instructions for Claude Code sessions
-NOOSPHERE_CLAUDE_CODE_BRIEF.md   Canonical project brief
+NOOSPHERE_CLAUDE_CODE_BRIEF.md   Superseded foundation-phase brief (retained for history)
 ```
 
 ## Getting started
@@ -72,6 +72,8 @@ Data changes happen through Git commits and pull requests — there is no write 
 
 ## Documentation
 
+- [`docs/project-charter.md`](docs/project-charter.md) — durable identity, posture, boundaries, and the LLM boundary.
+- [`docs/data-foundry.md`](docs/data-foundry.md) — the current-phase working brief (data methodology).
 - [`docs/source-of-truth.md`](docs/source-of-truth.md) — which documents are authoritative, and how that changes across phases.
 - [`docs/product-brief.md`](docs/product-brief.md) — what Noosphere is and the MVP scope.
 - [`docs/data-model.md`](docs/data-model.md) — nodes, translations, edges, sources, links, paths.

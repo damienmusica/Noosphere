@@ -12,31 +12,38 @@ only clarifies how the existing documents are governed.
 
 The documents below are listed from public entry point to detailed, narrow sources of truth. When
 two documents appear to conflict, prefer the **more specific** one for the topic it owns (e.g. the
-relation taxonomy owns relation types), and treat the canonical working brief as authoritative for
-overall scope and intent during the current phase.
+relation taxonomy owns relation types). For overall **identity, posture, and boundaries**, the
+durable project charter governs; for scope and intent **in the current phase**, the current-phase
+working brief governs.
 
 | Document | Role | Authority |
 | --- | --- | --- |
 | `README.md` | Public/project entry point and quick orientation. | Orientation only — must stay concise; not the project brain. |
-| `NOOSPHERE_CLAUDE_CODE_BRIEF.md` | **Current canonical working brief** for Claude Code sessions during the MVP/foundation phase. | Canonical for scope and intent **in this phase**. Phase-scoped, not a forever-SSOT. |
+| `docs/project-charter.md` | **Durable, top-level charter**: identity, posture, boundaries, LLM boundary, Data Foundry principle. | Canonical for long-lived identity/posture/boundaries across phases. |
+| `docs/product-brief.md` | Product definition, scope, and product intent. | Authoritative for product intent. |
+| `docs/data-foundry.md` | **Current-phase working brief** for the data methodology / Data Foundry phase. | Canonical for scope and intent **in the current phase**. Phase-scoped, defers to the charter. |
 | `CLAUDE.md` | Persistent **operational** instructions for Claude Code agents. | Authoritative for agent behavior/workflow; points to the canonical docs rather than restating them. |
-| `docs/product-brief.md` | Product definition, MVP scope, and product intent. | Authoritative for product intent (condensed from the working brief). |
 | `docs/data-model.md` + `src/schema/*` | Data shape and validation expectations. | Source of truth for data shape; the Zod schemas are the executable form. |
 | `docs/relation-taxonomy.md` | Allowed edge relation types. | Source of truth for relations (kept in lockstep with `src/schema/edge.ts`). |
 | `docs/license-policy.md`, `docs/security-policy.md`, `docs/seo-policy.md`, `docs/ai-usage-policy.md` | Policy-level constraints. | Authoritative for their respective policy domains. |
 | `docs/admin-roadmap.md` | Phased plan for admin/database (intentionally deferred). | Authoritative for *when* deferred capabilities may be reconsidered. |
 | `docs/adr/*` | Historical architectural decisions. | Append-only decision history — do not rewrite; supersede with new ADRs. |
+| `NOOSPHERE_CLAUDE_CODE_BRIEF.md` | **Superseded** foundation-phase working brief. | Historical context only. Superseded for current work by the charter + Data Foundry brief; not the current canonical brief. |
 
 ### How the layers fit together
 
 - **Orientation** (`README.md`) sends readers to the right place; it never tries to be complete.
-- **Phase brief** (`NOOSPHERE_CLAUDE_CODE_BRIEF.md`) is the canonical narrative for the current
-  phase: scope, principles, milestones, and rationale.
+- **Durable charter** (`docs/project-charter.md`) holds the principles meant to outlive any single
+  phase: identity, runtime/data posture, the LLM boundary, and the Data Foundry principle.
+- **Phase brief** (`docs/data-foundry.md`) is the canonical narrative for the **current** phase:
+  scope, methodology, and rationale. It defers to the charter rather than re-deriving it.
 - **Operational rules** (`CLAUDE.md`) tell agents how to work and where to look; they stay short and
   defer to the canonical docs.
 - **Specific sources of truth** (data model + schemas, relation taxonomy, policies) own one topic
   each and are authoritative for it.
 - **Decision history** (`docs/adr/*`) records *why* the architecture is the way it is, immutably.
+- **Superseded brief** (`NOOSPHERE_CLAUDE_CODE_BRIEF.md`) is retained for history. It documents the
+  completed foundation phase and is **not** the current canonical working brief.
 
 ## 2. SSOT lifecycle policy
 
@@ -76,14 +83,17 @@ Reconsidering an excluded capability does **not** mean adopting it. It means: fi
 decision (a new ADR), update the relevant policy/roadmap doc, and refresh the canonical brief — in
 that order, in explicit PRs.
 
-## 4. Current recommendation
+## 4. Current phase status
 
-For the current MVP/foundation phase:
+- **The foundation phase is complete.** Its working brief, `NOOSPHERE_CLAUDE_CODE_BRIEF.md`, is
+  retained as historical context and is **superseded** for current work by
+  `docs/project-charter.md` and `docs/data-foundry.md`. It was **not** deleted or silently
+  overwritten — it documents how the foundation came to be.
+- **The current phase is data methodology / Data Foundry.** Its working brief is
+  `docs/data-foundry.md`; durable principles live in `docs/project-charter.md`.
+- **Future phase transitions must still happen through explicit PRs.** When this phase ends, mark its
+  brief completed/superseded and promote any long-lived principles into the charter — in a
+  deliberate, reviewable pull request. Do **not** silently overwrite old briefs.
 
-- **Keep `NOOSPHERE_CLAUDE_CODE_BRIEF.md` as the current working brief. Do not replace it yet.**
-- This lifecycle policy exists so future transition timing is explicit and low-risk.
-- **Revisit the SSOT structure when the MVP is feature-complete, or before a major post-MVP
-  architecture shift** — whichever comes first.
-
-Until then, the hierarchy in section 1 stands, and the lifecycle rules in section 2 apply to any PR
-that touches the project's governing documents.
+The hierarchy in section 1 stands, and the lifecycle rules in section 2 apply to any PR that touches
+the project's governing documents.
