@@ -153,7 +153,36 @@ export const sourcePackResultSchema = z
     ambiguous: z.boolean().default(false),
     notes: z.array(z.string()).default([]),
   })
-  .strict();
+  .strict()
+  // `selected_qid` is the best-guess match other proposal/review tooling may
+  // trust, so it must stay consistent with the rest of the result even for packs
+  // produced outside this exact resolver path: it is set only for a `resolved`
+  // result, and must name the rank-1 candidate.
+  .superRefine((result, ctx) => {
+    const top = result.candidates[0];
+    if (result.selected_qid !== undefined) {
+      if (result.status !== "resolved") {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["selected_qid"],
+          message: `selected_qid may only be set when status is "resolved" (got "${result.status}")`,
+        });
+      }
+      if (top && result.selected_qid !== top.qid) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ["selected_qid"],
+          message: `selected_qid must name the rank-1 candidate (${top.qid})`,
+        });
+      }
+    } else if (result.status === "resolved" && top) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["selected_qid"],
+        message: "selected_qid is required for a resolved result with candidates",
+      });
+    }
+  });
 export type SourcePackResult = z.infer<typeof sourcePackResultSchema>;
 
 /** Non-secret request policy describing how the resolver reached the provider. */
