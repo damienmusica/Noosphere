@@ -199,12 +199,38 @@ arachnid genus before the branch of mathematics, and for "Mathematics" the
   be recovered, then re-ranked and trimmed.
 
 Each candidate records its `instance_of` QIDs and a `disambiguation` breakdown
-(`score`, `aligned_with_expected_type`, `excluded`, `exact_label_match`, and
-human-readable `signals`). A seed is flagged `ambiguous` for manual selection
-when the top two candidates score within a small gap, **or** when the winner
-itself has a weak signal (an excluded kind, or no positive type signal at all).
+(`score`, `aligned_with_expected_type`, `positive_type_signal`, `excluded`,
+`exact_label_match`, and human-readable `signals`). A seed is flagged `ambiguous`
+for manual selection when the top two candidates score within a small gap, **or**
+when the winner itself has a weak signal — judged by `positive_type_signal` and
+`excluded`, **not** the total score, so a sole exact-label hit with no real type
+signal is still flagged rather than emitted as a confident `selected_qid`.
 This is best-guess *candidate* material only — it still does not mark anything
 `reviewed` or `indexable`, and `/data` stays untouched.
+
+#### Known limitation: exclusion is an allow-list, by design
+
+The kind families are **curated allow-lists**, so exclusion only fires for P31
+classes Noosphere explicitly knows. A P31 class that is *not* in any family set
+(e.g. `painting`, `sculpture`, `building` for a `person` seed) is treated as
+**neutral, not wrong-kind** — it is neither boosted nor penalized. This is a
+deliberate recall-over-precision tradeoff: tightening it to "any non-aligned P31
+is wrong" would wrongly penalize correct entities whose real P31 is simply not in
+the curated sets (e.g. "probability distribution", which has a P31 outside the
+abstract set and would otherwise be excluded).
+
+This does **not** cause a silent wrong `selected_qid`, because of two backstops:
+
+- The correct entity, when present, carries an *aligned* P31 (+100) that
+  outscores any neutral wrong-kind candidate (≤ 40 from label/sitelink alone).
+- A winner with no `positive_type_signal` is flagged `ambiguous` regardless of
+  score, so an uncurated wrong-kind that wins only because the correct entity was
+  not fetched is surfaced for manual review, never accepted as confident.
+
+The cost is therefore reduced *recall of exclusion* (some wrong kinds score
+neutral instead of negative), not reduced *correctness*. Families can be extended
+incrementally as new batches surface new kinds; each added QID must be
+label-verified first (see `QID_LABELS` in the resolver).
 
 Boundaries it preserves:
 
