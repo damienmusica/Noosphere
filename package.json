@@ -11,6 +11,7 @@
     "report:graph": "tsx scripts/report-graph.ts",
     "foundry:validate-batches": "tsx scripts/foundry/validate-batches.ts",
     "foundry:proposal-skeleton": "tsx scripts/foundry/build-proposal-skeleton.ts",
+    "foundry:resolve-wikidata": "tsx scripts/foundry/resolve-wikidata.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
