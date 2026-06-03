@@ -159,12 +159,44 @@ What it does:
   public, keyless** endpoints only:
   - the MediaWiki Action API `wbsearchentities` for English label search, and
   - `Special:EntityData/<QID>.json` for compact entity metadata.
-- Keeps up to a few **ranked candidates** per seed (it intentionally does **not**
-  pick a single canonical QID — that is a later, human-reviewed decision) and
-  records ambiguity in `notes`.
+- **Deterministically re-ranks** each seed's candidates by *type fit* before
+  keeping the top few (see "Disambiguation" below). It intentionally does **not**
+  treat rank 1 as a final decision — choosing the canonical QID is a later,
+  human-reviewed step — but it records a best guess (`selected_qid`) and flags
+  low-confidence seeds (`ambiguous: true`).
 - Writes a compact source pack to
   `dist/foundry/source-packs/<batch-slug>/wikidata.json`, validated against
   `foundrySourcePackSchema` in `src/schema/foundry-source-pack.ts`.
+
+### Disambiguation (source-pack format v2)
+
+Wikidata label search (`wbsearchentities`) ranks by string match, so its first
+hit is often the wrong *kind* of entity — e.g. for "Calculus" it returns an
+arachnid genus before the branch of mathematics, and for "Mathematics" the
+"Mathematics Genealogy Project" database before the discipline. To correct this
+**without** a cloud LLM or SPARQL, the resolver scores candidates deterministically:
+
+- It reads each candidate's Wikidata `instance of` (P31) classes — already present
+  in the entity data it fetches, so **no extra requests** are needed for them.
+- A small, **curated and label-verified** set of P31 classes marks an entity as
+  the kind Noosphere models (academic discipline, branch of mathematics, method,
+  algorithm, concept, …), aligned to the seed's `expected_type`; another set marks
+  clearly-wrong kinds (book/edition, taxon, database, person, article, …).
+- Scoring favours an aligned type and an exact label match, penalises an excluded
+  type, and uses an English-Wikipedia sitelink and the provider's original order
+  only as tie-breakers. **P31 is a signal, never a gate:** valid concepts that
+  carry no P31 (e.g. "random variable") still resolve, on the label/sitelink
+  signals alone.
+- The candidate pool is widened (`request_policy.search_limit`) beyond the
+  retained `candidate_limit` so a correct entity the provider ranked low can still
+  be recovered, then re-ranked and trimmed.
+
+Each candidate records its `instance_of` QIDs and a `disambiguation` breakdown
+(`score`, `aligned_with_expected_type`, `excluded`, `exact_label_match`, and
+human-readable `signals`). When the top two candidates score within a small gap
+the seed is flagged `ambiguous` for manual selection. This is best-guess
+*candidate* material only — it still does not mark anything `reviewed` or
+`indexable`, and `/data` stays untouched.
 
 Boundaries it preserves:
 
@@ -172,6 +204,13 @@ Boundaries it preserves:
   it continues to run `typecheck`, `validate:data`, `export:graph`, `report:graph`,
   and `foundry:validate-batches`, none of which require network access. Build,
   validation, export, and reporting must never depend on this resolver.
+- **Run and verify it locally.** Because it needs real outbound network access,
+  **restricted or sandboxed environments may silently block it** — for example a
+  hosted agent/CI sandbox whose egress allowlist excludes `www.wikidata.org` will
+  return HTTP 403 from the proxy, so the resolver cannot be exercised there. Treat
+  a green offline core in such an environment as **not** evidence that resolution
+  works; run `foundry:resolve-wikidata` on a machine with open outbound access and
+  confirm the source pack before relying on it.
 - It uses **open / free / public Wikidata access only** — no secrets, API keys,
   tokens, OAuth, or env-required auth. (A non-secret `NOOSPHERE_WIKIDATA_USER_AGENT`
   env var may override the User-Agent, but the resolver works without it.) It does

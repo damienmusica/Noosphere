@@ -8,8 +8,13 @@
  * `wikidata` provider — resolves each seed entity's label against Wikidata using
  * public, keyless endpoints (the MediaWiki Action API `wbsearchentities` for
  * label search, and `Special:EntityData/<QID>.json` for compact entity metadata).
- * It keeps up to a few ranked candidates per seed and writes a compact source
- * pack to `dist/foundry/source-packs/<batch-slug>/wikidata.json`.
+ * It deterministically re-ranks each seed's candidates by type fit — using their
+ * Wikidata `instance of` (P31) classes against the seed's `expected_type` — so the
+ * right *kind* of entity wins (e.g. the branch of mathematics "calculus" over an
+ * arachnid genus of the same name), keeps the top few ranked candidates, records a
+ * best-guess `selected_qid` and an `ambiguous` flag, and writes a compact source
+ * pack to `dist/foundry/source-packs/<batch-slug>/wikidata.json`. Choosing the
+ * final canonical QID remains a later, human-reviewed step.
  *
  * Boundaries this script honors:
  *   - It is a *source-resolution* job: Data Foundry resolvers are explicitly
@@ -33,17 +38,27 @@ import { dirname, join, resolve, relative, isAbsolute } from "node:path";
 import { foundryBatchSchema, type FoundryBatch } from "../../src/schema/foundry-batch.ts";
 import {
   foundrySourcePackSchema,
+  QID_REGEX,
+  type Disambiguation,
   type FoundrySourcePack,
   type SourcePackCandidate,
   type SourcePackResult,
 } from "../../src/schema/foundry-source-pack.ts";
+import type { NodeType } from "../../src/schema/node.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, "..", "..");
 
 // --- Constants (all non-secret) ---------------------------------------------
 const GENERATOR_NAME = "scripts/foundry/resolve-wikidata.ts";
-const GENERATOR_VERSION = 1 as const;
+const GENERATOR_VERSION = 2 as const;
+/**
+ * Search breadth vs retained breadth. We consider (and entity-fetch) up to
+ * SEARCH_LIMIT hits per seed so the correct entity can be recovered even when
+ * the provider ranks a wrong-kind hit (a book, a taxon) first, then keep only
+ * the top CANDIDATE_LIMIT after deterministic re-ranking.
+ */
+const SEARCH_LIMIT = 7;
 const CANDIDATE_LIMIT = 3;
 const DELAY_MS = 500;
 const MAX_429_RETRIES = 3;
@@ -51,6 +66,107 @@ const DEFAULT_USER_AGENT =
   "NoosphereFoundry/0.1 (https://github.com/damienmusica/Noosphere; personal knowledge atlas data foundry)";
 const USER_AGENT = process.env.NOOSPHERE_WIKIDATA_USER_AGENT || DEFAULT_USER_AGENT;
 const WIKIDATA_API = "https://www.wikidata.org/w/api.php";
+
+// --- Disambiguation knowledge ------------------------------------------------
+// Curated Wikidata `instance of` (P31) classes. Every QID below was verified
+// against live Wikidata labels before being hardcoded — do not add unverified
+// QIDs. The labels are kept for human-readable signals only.
+//
+// Positive classes say "this candidate is the kind of abstract entity Noosphere
+// models", grouped by the node type they support. Excluded classes say "this is
+// the wrong kind of thing" (a book, a taxon, a database, a person, ...). P31 is
+// used as a *signal*, never a gate: many valid concepts (e.g. "random variable",
+// "Bayesian inference") carry no P31 at all and must still resolve.
+const QID_LABELS: Record<string, string> = {
+  // discipline-like (field / subfield / domain)
+  Q11862829: "academic discipline",
+  Q4671286: "academic major",
+  Q1936384: "branch of mathematics",
+  Q20026918: "mathematical theory",
+  Q1047113: "field of study",
+  Q2267705: "field of study (education)",
+  Q123370638: "branch of computer science",
+  Q2465832: "branch of science",
+  Q336: "science",
+  // method-like (method)
+  Q2835765: "optimization algorithm",
+  Q2321565: "iterative numerical method",
+  Q1799072: "method",
+  Q8366: "algorithm",
+  // concept-like (concept)
+  Q151885: "concept",
+  // excluded — clearly not an abstract field/concept/method
+  Q3331189: "version, edition or translation",
+  Q16521: "taxon",
+  Q7094076: "online database",
+  Q33002955: "knowledge graph",
+  Q114955954: "crowdsourced project",
+  Q4167410: "Wikimedia disambiguation page",
+  Q5: "human",
+  Q13442814: "scholarly article",
+  Q571: "book",
+  Q7725634: "literary work",
+  Q47461344: "written work",
+  Q35127: "website",
+  Q8513: "database",
+  Q11424: "film",
+  Q482994: "album",
+  Q5398426: "television series",
+  Q4830453: "business",
+  Q43229: "organization",
+  Q1656682: "event",
+  Q7889: "video game",
+};
+
+const DISCIPLINE_LIKE = new Set([
+  "Q11862829", "Q4671286", "Q1936384", "Q20026918",
+  "Q1047113", "Q2267705", "Q123370638", "Q2465832", "Q336",
+]);
+const METHOD_LIKE = new Set(["Q2835765", "Q2321565", "Q1799072", "Q8366"]);
+const CONCEPT_LIKE = new Set(["Q151885"]);
+const ALL_POSITIVE = new Set<string>([
+  ...DISCIPLINE_LIKE, ...METHOD_LIKE, ...CONCEPT_LIKE,
+]);
+const EXCLUDE = new Set([
+  "Q3331189", "Q16521", "Q7094076", "Q33002955", "Q114955954",
+  "Q4167410", "Q5", "Q13442814", "Q571", "Q7725634", "Q47461344",
+  "Q35127", "Q8513", "Q11424", "Q482994", "Q5398426", "Q4830453",
+  "Q43229", "Q1656682", "Q7889",
+]);
+
+/** Deterministic scoring weights. Type fit dominates; the rest break ties. */
+const SCORE = {
+  alignedType: 100,
+  otherPositive: 40,
+  excluded: -200,
+  exactLabel: 30,
+  hasEnwiki: 10,
+} as const;
+/** If the top-two candidates score within this gap, flag the seed ambiguous. */
+const AMBIGUITY_GAP = 50;
+
+/** The positive P31 set that matches a seed's expected node type, if any. */
+function positiveSetFor(expectedType: NodeType | undefined): Set<string> | null {
+  switch (expectedType) {
+    case "domain":
+    case "field":
+    case "subfield":
+      return DISCIPLINE_LIKE;
+    case "method":
+      return METHOD_LIKE;
+    case "concept":
+      return CONCEPT_LIKE;
+    default:
+      return null;
+  }
+}
+
+/** Render QIDs as "label (Qxx)" where a curated label exists, else the bare QID. */
+function describeQids(qids: string[]): string {
+  return qids
+    .map((q) => (QID_LABELS[q] ? `${QID_LABELS[q]} (${q})` : q))
+    .join(", ");
+}
 
 function die(msg: string): never {
   console.error(`\n✗ ${msg}\n`);
@@ -169,9 +285,24 @@ interface CompactEntity {
   label: string;
   description: string;
   aliases: string[];
+  /** Wikidata `instance of` (P31) item QIDs, used for disambiguation. */
+  instanceOf: string[];
   enwiki?: string;
   lastrevid?: number;
   modified?: string;
+}
+
+/** Extract `instance of` (P31) item QIDs from a raw entity's claims. */
+function extractInstanceOf(entity: RawEntity): string[] {
+  const out: string[] = [];
+  for (const claim of entity.claims?.P31 ?? []) {
+    const id = claim.mainsnak?.datavalue?.value?.id;
+    // Skip `novalue`/`somevalue` snaks (no datavalue) and properties.
+    if (typeof id === "string" && QID_REGEX.test(id) && !out.includes(id)) {
+      out.push(id);
+    }
+  }
+  return out;
 }
 
 /** Compact entity metadata via Special:EntityData JSON (no raw entity retained). */
@@ -189,6 +320,7 @@ async function fetchEntityData(qid: string): Promise<CompactEntity> {
     label: entity.labels?.en?.value ?? "",
     description: entity.descriptions?.en?.value ?? "",
     aliases: (entity.aliases?.en ?? []).map((a) => a.value).filter(Boolean),
+    instanceOf: extractInstanceOf(entity),
     enwiki: enwikiTitle
       ? `https://en.wikipedia.org/wiki/${encodeURIComponent(enwikiTitle.replace(/ /g, "_"))}`
       : undefined,
@@ -202,8 +334,73 @@ interface RawEntity {
   descriptions?: Record<string, { value?: string }>;
   aliases?: Record<string, { value: string }[]>;
   sitelinks?: Record<string, { title?: string }>;
+  claims?: Record<
+    string,
+    { mainsnak?: { datavalue?: { value?: { id?: string } } } }[]
+  >;
   lastrevid?: number;
   modified?: string;
+}
+
+const normalizeLabel = (s: string): string => s.trim().toLowerCase();
+
+/**
+ * Deterministically score how well a candidate fits its seed. Type fit (via
+ * P31) dominates; an exact label match and an English Wikipedia sitelink break
+ * ties. P31 is never a gate — a candidate with no P31 simply gets no type
+ * bonus/penalty and can still win on the label/sitelink signals.
+ */
+function scoreCandidate(
+  hit: WbSearchHit,
+  entity: CompactEntity,
+  seed: FoundryBatch["seed_entities"][number],
+): Disambiguation {
+  const signals: string[] = [];
+  const p31 = entity.instanceOf;
+  const alignedSet = positiveSetFor(seed.expected_type);
+
+  const alignedHits = alignedSet ? p31.filter((q) => alignedSet.has(q)) : [];
+  const positiveHits = p31.filter((q) => ALL_POSITIVE.has(q));
+  const excludedHits = p31.filter((q) => EXCLUDE.has(q));
+
+  const aligned = alignedHits.length > 0;
+  const excluded = excludedHits.length > 0;
+  const labels = [entity.label, hit.label ?? "", ...entity.aliases].map(normalizeLabel);
+  const exactLabel = labels.includes(normalizeLabel(seed.label));
+
+  let score = 0;
+  if (aligned) {
+    score += SCORE.alignedType;
+    signals.push(
+      `instance-of matches expected type "${seed.expected_type}": ${describeQids(alignedHits)}`,
+    );
+  } else if (positiveHits.length > 0) {
+    score += SCORE.otherPositive;
+    signals.push(`instance-of is a field/concept/method: ${describeQids(positiveHits)}`);
+  }
+  if (excluded) {
+    score += SCORE.excluded;
+    signals.push(`instance-of is a non-concept entity: ${describeQids(excludedHits)}`);
+  }
+  if (exactLabel) {
+    score += SCORE.exactLabel;
+    signals.push("exact label match");
+  }
+  if (entity.enwiki) {
+    score += SCORE.hasEnwiki;
+    signals.push("has English Wikipedia sitelink");
+  }
+  if (p31.length === 0) {
+    signals.push("no instance-of (P31) on entity; scored on label/sitelink only");
+  }
+
+  return {
+    score,
+    aligned_with_expected_type: aligned,
+    excluded,
+    exact_label_match: exactLabel,
+    signals,
+  };
 }
 
 /** Combine a search hit and its compact entity data into a source-pack candidate. */
@@ -211,6 +408,7 @@ function toCandidate(
   hit: WbSearchHit,
   rank: number,
   entity: CompactEntity,
+  disambiguation: Disambiguation,
 ): SourcePackCandidate {
   const qid = hit.id;
   const sitelinks: Record<string, string> = {};
@@ -221,6 +419,8 @@ function toCandidate(
     label: entity.label || hit.label || "",
     description: entity.description || hit.description || "",
     aliases: entity.aliases,
+    instance_of: entity.instanceOf,
+    disambiguation,
     concept_uri: `http://www.wikidata.org/entity/${qid}`,
     entity_url: `https://www.wikidata.org/wiki/${qid}`,
     entity_data_url: `https://www.wikidata.org/wiki/Special:EntityData/${qid}.json`,
@@ -244,12 +444,13 @@ async function resolveSeed(
     query: seed.label,
     status: "unresolved",
     candidates: [],
+    ambiguous: false,
     notes,
   };
 
   let hits: WbSearchHit[];
   try {
-    hits = await searchWikidata(seed.label, CANDIDATE_LIMIT);
+    hits = await searchWikidata(seed.label, SEARCH_LIMIT);
   } catch (err) {
     result.status = "error";
     notes.push(`search failed: ${(err as Error).message}`);
@@ -261,27 +462,70 @@ async function resolveSeed(
     return result;
   }
 
-  const candidates: SourcePackCandidate[] = [];
-  let rank = 0;
+  // Entity-fetch every hit (to read P31), keeping the provider's order so it can
+  // serve as a stable tiebreaker after deterministic re-ranking.
+  interface Scored {
+    hit: WbSearchHit;
+    entity: CompactEntity;
+    disambiguation: Disambiguation;
+    providerRank: number;
+  }
+  const scored: Scored[] = [];
+  let providerRank = 0;
   for (const hit of hits) {
-    rank++;
+    providerRank++;
     await sleep(DELAY_MS);
     try {
       const entity = await fetchEntityData(hit.id);
-      candidates.push(toCandidate(hit, rank, entity));
+      scored.push({
+        hit,
+        entity,
+        disambiguation: scoreCandidate(hit, entity, seed),
+        providerRank,
+      });
     } catch (err) {
       notes.push(`could not fetch entity data for ${hit.id}: ${(err as Error).message}`);
     }
   }
 
-  result.candidates = candidates;
-  if (candidates.length === 0) {
+  if (scored.length === 0) {
     result.status = "error";
-  } else {
-    result.status = "resolved";
-    if (candidates.length > 1) {
+    return result;
+  }
+
+  // Re-rank by score; ties fall back to provider order, then QID for determinism.
+  scored.sort(
+    (a, b) =>
+      b.disambiguation.score - a.disambiguation.score ||
+      a.providerRank - b.providerRank ||
+      a.hit.id.localeCompare(b.hit.id),
+  );
+
+  const kept = scored.slice(0, CANDIDATE_LIMIT);
+  result.candidates = kept.map((s, i) =>
+    toCandidate(s.hit, i + 1, s.entity, s.disambiguation),
+  );
+  result.status = "resolved";
+
+  // `scored` is non-empty (guarded above), so `kept`/`candidates` have ≥1 item.
+  const best = kept[0]!;
+  const bestCandidate = result.candidates[0]!;
+  result.selected_qid = bestCandidate.qid;
+
+  if (best.providerRank !== 1) {
+    notes.push(
+      `re-ranked: provider's first hit was not the best type match; ` +
+        `selected ${bestCandidate.qid} (provider rank ${best.providerRank})`,
+    );
+  }
+  const runnerUp = result.candidates[1];
+  if (runnerUp) {
+    const gap = bestCandidate.disambiguation.score - runnerUp.disambiguation.score;
+    if (gap < AMBIGUITY_GAP) {
+      result.ambiguous = true;
       notes.push(
-        `${candidates.length} candidates returned; ambiguous — retained ranked for later review`,
+        `low-confidence: top-two disambiguation score gap is ${gap} ` +
+          `(< ${AMBIGUITY_GAP}); manual review recommended`,
       );
     }
   }
@@ -297,7 +541,7 @@ function buildSourcePack(
   const candidateCount = results.reduce((sum, r) => sum + r.candidates.length, 0);
 
   const pack: FoundrySourcePack = {
-    version: 1,
+    version: 2,
     provider: "wikidata",
     batch_id: manifest.id,
     batch_title: manifest.title,
@@ -309,6 +553,7 @@ function buildSourcePack(
       user_agent: USER_AGENT,
       serial_requests: true,
       delay_ms: DELAY_MS,
+      search_limit: SEARCH_LIMIT,
       candidate_limit: CANDIDATE_LIMIT,
     },
     source_metadata: {
@@ -331,6 +576,9 @@ function buildSourcePack(
       "This source pack is generated candidate data.",
       "It is not canonical graph data.",
       "Do not commit generated dist/foundry outputs.",
+      "Candidates are deterministically re-ranked by instance-of (P31) type fit; " +
+        "rank 1 / selected_qid is a best-guess match, not a verified decision.",
+      "Seeds flagged `ambiguous` need manual selection before any proposal step.",
     ],
   };
 
@@ -387,11 +635,16 @@ async function main(): Promise<void> {
     first = false;
     const result = await resolveSeed(seed);
     results.push(result);
-    const tag =
-      result.status === "resolved"
-        ? `${result.candidates.length} candidate(s)`
-        : result.status;
-    console.log(`  • ${seed.label} → ${tag}`);
+    const top = result.candidates[0];
+    if (result.status === "resolved" && top) {
+      const flag = result.ambiguous ? " ⚠ ambiguous" : "";
+      console.log(
+        `  • ${seed.label} → ${top.qid} "${top.label}" ` +
+          `(score ${top.disambiguation.score}, ${result.candidates.length} candidate(s))${flag}`,
+      );
+    } else {
+      console.log(`  • ${seed.label} → ${result.status}`);
+    }
   }
 
   const pack = buildSourcePack(manifest, results);
@@ -404,6 +657,7 @@ async function main(): Promise<void> {
   console.log(`    seed entities:    ${pack.summary.seed_entities}`);
   console.log(`    resolved:         ${pack.summary.resolved}`);
   console.log(`    unresolved:       ${pack.summary.unresolved}`);
+  console.log(`    ambiguous:        ${pack.results.filter((r) => r.ambiguous).length}`);
   console.log(`    total candidates: ${pack.summary.candidate_count}`);
   console.log(`    output:           ${relOut}`);
   console.log("    note: generated candidate data (not canonical); dist/foundry is gitignored.");

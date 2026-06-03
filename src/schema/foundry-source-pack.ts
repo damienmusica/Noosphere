@@ -30,6 +30,32 @@ export const resolutionStatusSchema = z.enum(["resolved", "unresolved", "error"]
 export type ResolutionStatus = z.infer<typeof resolutionStatusSchema>;
 
 /**
+ * Deterministic disambiguation breakdown for a single candidate.
+ *
+ * The resolver re-ranks a seed's candidates using the candidate's Wikidata
+ * `instance of` (P31) classes, the seed's `expected_type`, and an exact-label
+ * signal — so that, e.g., the *academic discipline* "mathematics" outranks the
+ * "Mathematics Genealogy Project" database, and the *branch of mathematics*
+ * "calculus" outranks an arachnid genus also labelled "Calculus". `signals`
+ * records the human-readable reasons behind `score` for later review.
+ */
+export const disambiguationSchema = z
+  .object({
+    /** Integer score; higher is a better type match. May be negative. */
+    score: z.number().int(),
+    /** P31 indicates the seed's `expected_type` family (field/concept/method). */
+    aligned_with_expected_type: z.boolean(),
+    /** P31 indicates a non-concept entity (book, taxon, database, person, ...). */
+    excluded: z.boolean(),
+    /** Candidate label or an alias equals the seed label (case-insensitive). */
+    exact_label_match: z.boolean(),
+    /** Human-readable reasons that produced `score`. */
+    signals: z.array(z.string()).default([]),
+  })
+  .strict();
+export type Disambiguation = z.infer<typeof disambiguationSchema>;
+
+/**
  * A single compact candidate match for a seed entity. Stores only selected,
  * citation-relevant metadata — never the full raw Wikidata entity JSON.
  */
@@ -43,6 +69,10 @@ export const sourcePackCandidateSchema = z
     label: z.string(),
     description: z.string().default(""),
     aliases: z.array(z.string()).default([]),
+    /** Wikidata `instance of` (P31) item QIDs used to judge entity kind. */
+    instance_of: z.array(qidSchema).default([]),
+    /** How this candidate scored during deterministic re-ranking. */
+    disambiguation: disambiguationSchema,
     /** Stable concept URI: http://www.wikidata.org/entity/Q... */
     concept_uri: z
       .string()
@@ -115,6 +145,10 @@ export const sourcePackResultSchema = z
     query: z.string(),
     status: resolutionStatusSchema,
     candidates: z.array(sourcePackCandidateSchema).default([]),
+    /** Best candidate (rank 1) after re-ranking; set only when `resolved`. */
+    selected_qid: qidSchema.optional(),
+    /** True when the top-two candidates scored close enough to need review. */
+    ambiguous: z.boolean().default(false),
     notes: z.array(z.string()).default([]),
   })
   .strict();
@@ -129,6 +163,9 @@ export const requestPolicySchema = z
     user_agent: z.string().min(1),
     serial_requests: z.literal(true),
     delay_ms: z.number().int().min(0),
+    /** How many search hits are considered (and entity-fetched) per seed. */
+    search_limit: z.number().int().min(1),
+    /** How many ranked candidates are retained per seed after re-ranking. */
     candidate_limit: z.number().int().min(1),
   })
   .strict();
@@ -160,7 +197,9 @@ export type SourcePackSummary = z.infer<typeof sourcePackSummarySchema>;
 
 export const foundrySourcePackSchema = z
   .object({
-    version: z.literal(1),
+    // v2 adds per-candidate `instance_of` + `disambiguation`, per-result
+    // `selected_qid`/`ambiguous`, and `request_policy.search_limit`.
+    version: z.literal(2),
     provider: z.literal("wikidata"),
     batch_id: batchIdSchema,
     batch_title: z.string().min(1),
@@ -168,7 +207,7 @@ export const foundrySourcePackSchema = z
     generator: z
       .object({
         name: z.string().min(1),
-        version: z.literal(1),
+        version: z.literal(2),
       })
       .strict(),
     request_policy: requestPolicySchema,
