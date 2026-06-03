@@ -159,12 +159,78 @@ What it does:
   public, keyless** endpoints only:
   - the MediaWiki Action API `wbsearchentities` for English label search, and
   - `Special:EntityData/<QID>.json` for compact entity metadata.
-- Keeps up to a few **ranked candidates** per seed (it intentionally does **not**
-  pick a single canonical QID — that is a later, human-reviewed decision) and
-  records ambiguity in `notes`.
+- **Deterministically re-ranks** each seed's candidates by *type fit* before
+  keeping the top few (see "Disambiguation" below). It intentionally does **not**
+  treat rank 1 as a final decision — choosing the canonical QID is a later,
+  human-reviewed step — but it records a best guess (`selected_qid`) and flags
+  low-confidence seeds (`ambiguous: true`).
 - Writes a compact source pack to
   `dist/foundry/source-packs/<batch-slug>/wikidata.json`, validated against
   `foundrySourcePackSchema` in `src/schema/foundry-source-pack.ts`.
+
+### Disambiguation (source-pack format v2)
+
+Wikidata label search (`wbsearchentities`) ranks by string match, so its first
+hit is often the wrong *kind* of entity — e.g. for "Calculus" it returns an
+arachnid genus before the branch of mathematics, and for "Mathematics" the
+"Mathematics Genealogy Project" database before the discipline. To correct this
+**without** a cloud LLM or SPARQL, the resolver scores candidates deterministically:
+
+- It reads each candidate's Wikidata `instance of` (P31) classes — already present
+  in the entity data it fetches, so **no extra requests** are needed for them.
+- A small, **curated and label-verified** set of P31 classes marks an entity as
+  the kind Noosphere models (academic discipline, branch of mathematics, method,
+  algorithm, concept, …), aligned to the seed's `expected_type`.
+- Each P31 class belongs to a **kind family** mirroring the node types: *abstract*
+  (discipline/method/concept — treated as one family of neighbouring kinds),
+  *person*, *work*, and *institution*. A candidate is judged **relative to the
+  seed's expected type**: the same family is right, a *different* recognized family
+  is the wrong kind and is penalized, and classes Noosphere never models (taxon,
+  database, website, disambiguation page, …) are always wrong. So a human (Q5) is
+  the right kind for a `person` seed but the wrong kind for a `field` seed, and a
+  book is the wrong kind for a `person` seed.
+- Scoring favours an aligned type and an exact label match, penalises an excluded
+  type, and uses an English-Wikipedia sitelink and the provider's original order
+  only as tie-breakers. **P31 is a signal, never a gate:** valid concepts that
+  carry no P31 (e.g. "random variable") still resolve, on the label/sitelink
+  signals alone. Deprecated-rank P31 statements are ignored.
+- The candidate pool is widened (`request_policy.search_limit`) beyond the
+  retained `candidate_limit` so a correct entity the provider ranked low can still
+  be recovered, then re-ranked and trimmed.
+
+Each candidate records its `instance_of` QIDs and a `disambiguation` breakdown
+(`score`, `aligned_with_expected_type`, `positive_type_signal`, `excluded`,
+`exact_label_match`, and human-readable `signals`). A seed is flagged `ambiguous`
+for manual selection when the top two candidates score within a small gap, **or**
+when the winner itself has a weak signal — judged by `positive_type_signal` and
+`excluded`, **not** the total score, so a sole exact-label hit with no real type
+signal is still flagged rather than emitted as a confident `selected_qid`.
+This is best-guess *candidate* material only — it still does not mark anything
+`reviewed` or `indexable`, and `/data` stays untouched.
+
+#### Known limitation: exclusion is an allow-list, by design
+
+The kind families are **curated allow-lists**, so exclusion only fires for P31
+classes Noosphere explicitly knows. A P31 class that is *not* in any family set
+(e.g. `painting`, `sculpture`, `building` for a `person` seed) is treated as
+**neutral, not wrong-kind** — it is neither boosted nor penalized. This is a
+deliberate recall-over-precision tradeoff: tightening it to "any non-aligned P31
+is wrong" would wrongly penalize correct entities whose real P31 is simply not in
+the curated sets (e.g. "probability distribution", which has a P31 outside the
+abstract set and would otherwise be excluded).
+
+This does **not** cause a silent wrong `selected_qid`, because of two backstops:
+
+- The correct entity, when present, carries an *aligned* P31 (+100) that
+  outscores any neutral wrong-kind candidate (≤ 40 from label/sitelink alone).
+- A winner with no `positive_type_signal` is flagged `ambiguous` regardless of
+  score, so an uncurated wrong-kind that wins only because the correct entity was
+  not fetched is surfaced for manual review, never accepted as confident.
+
+The cost is therefore reduced *recall of exclusion* (some wrong kinds score
+neutral instead of negative), not reduced *correctness*. Families can be extended
+incrementally as new batches surface new kinds; each added QID must be
+label-verified first (see `QID_LABELS` in the resolver).
 
 Boundaries it preserves:
 
@@ -172,6 +238,13 @@ Boundaries it preserves:
   it continues to run `typecheck`, `validate:data`, `export:graph`, `report:graph`,
   and `foundry:validate-batches`, none of which require network access. Build,
   validation, export, and reporting must never depend on this resolver.
+- **Run and verify it locally.** Because it needs real outbound network access,
+  **restricted or sandboxed environments may silently block it** — for example a
+  hosted agent/CI sandbox whose egress allowlist excludes `www.wikidata.org` will
+  return HTTP 403 from the proxy, so the resolver cannot be exercised there. Treat
+  a green offline core in such an environment as **not** evidence that resolution
+  works; run `foundry:resolve-wikidata` on a machine with open outbound access and
+  confirm the source pack before relying on it.
 - It uses **open / free / public Wikidata access only** — no secrets, API keys,
   tokens, OAuth, or env-required auth. (A non-secret `NOOSPHERE_WIKIDATA_USER_AGENT`
   env var may override the User-Agent, but the resolver works without it.) It does
