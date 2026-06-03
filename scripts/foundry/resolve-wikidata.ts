@@ -439,12 +439,18 @@ function scoreCandidate(
     seedFamily === "abstract"
       ? p31.filter((q) => CLASS_FAMILY[q] === "abstract" && !alignedHits.includes(q))
       : [];
-  // Wrong kind: a class Noosphere never models, or one from a *different* family
-  // than the seed asked for (a human for a `field`, a book for a `person`, …).
+  // Wrong kind: a class Noosphere never models, or — only when the seed declares
+  // a family to compare against — one from a *different* family than it asked for
+  // (a human for a `field`, a book for a `person`, …). With no expected family
+  // (unset, or `tool`), cross-family exclusion is skipped so a correct candidate
+  // is not penalized for a kind we never asked about; only universal non-kinds
+  // are excluded.
   const excludedHits = p31.filter(
     (q) =>
       UNIVERSAL_EXCLUDE.has(q) ||
-      (CLASS_FAMILY[q] !== undefined && CLASS_FAMILY[q] !== seedFamily),
+      (seedFamily !== null &&
+        CLASS_FAMILY[q] !== undefined &&
+        CLASS_FAMILY[q] !== seedFamily),
   );
 
   const aligned = alignedHits.length > 0;
