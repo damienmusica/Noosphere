@@ -180,23 +180,29 @@ arachnid genus before the branch of mathematics, and for "Mathematics" the
   in the entity data it fetches, so **no extra requests** are needed for them.
 - A small, **curated and label-verified** set of P31 classes marks an entity as
   the kind Noosphere models (academic discipline, branch of mathematics, method,
-  algorithm, concept, …), aligned to the seed's `expected_type`; another set marks
-  clearly-wrong kinds (book/edition, taxon, database, person, article, …).
+  algorithm, concept, …), aligned to the seed's `expected_type`.
+- Exclusion is **relative to the expected type**. *Universal* wrong kinds (taxon,
+  database, website, disambiguation page, …) are never modelled and are always
+  penalized. *Concrete* kinds (human, book, organization, …) are valid Noosphere
+  node types (`person`/`work`/`institution`), so they are penalized **only for an
+  abstract seed** (field/subfield/concept/method/domain) — a `person` or `work`
+  seed is *not* penalized for matching a human or a book.
 - Scoring favours an aligned type and an exact label match, penalises an excluded
   type, and uses an English-Wikipedia sitelink and the provider's original order
   only as tie-breakers. **P31 is a signal, never a gate:** valid concepts that
   carry no P31 (e.g. "random variable") still resolve, on the label/sitelink
-  signals alone.
+  signals alone. Deprecated-rank P31 statements are ignored.
 - The candidate pool is widened (`request_policy.search_limit`) beyond the
   retained `candidate_limit` so a correct entity the provider ranked low can still
   be recovered, then re-ranked and trimmed.
 
 Each candidate records its `instance_of` QIDs and a `disambiguation` breakdown
 (`score`, `aligned_with_expected_type`, `excluded`, `exact_label_match`, and
-human-readable `signals`). When the top two candidates score within a small gap
-the seed is flagged `ambiguous` for manual selection. This is best-guess
-*candidate* material only — it still does not mark anything `reviewed` or
-`indexable`, and `/data` stays untouched.
+human-readable `signals`). A seed is flagged `ambiguous` for manual selection
+when the top two candidates score within a small gap, **or** when the winner
+itself has a weak signal (an excluded kind, or no positive type signal at all).
+This is best-guess *candidate* material only — it still does not mark anything
+`reviewed` or `indexable`, and `/data` stays untouched.
 
 Boundaries it preserves:
 

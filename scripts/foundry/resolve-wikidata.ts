@@ -127,11 +127,43 @@ const CONCEPT_LIKE = new Set(["Q151885"]);
 const ALL_POSITIVE = new Set<string>([
   ...DISCIPLINE_LIKE, ...METHOD_LIKE, ...CONCEPT_LIKE,
 ]);
-const EXCLUDE = new Set([
-  "Q3331189", "Q16521", "Q7094076", "Q33002955", "Q114955954",
-  "Q4167410", "Q5", "Q13442814", "Q571", "Q7725634", "Q47461344",
-  "Q35127", "Q8513", "Q11424", "Q482994", "Q5398426", "Q4830453",
-  "Q43229", "Q1656682", "Q7889",
+
+// Exclusion is split so it stays correct across *all* node types, not just the
+// abstract ones. UNIVERSAL_EXCLUDE is never a kind Noosphere models, so it is
+// always wrong (a taxon, a database, a disambiguation page, ...). CONCRETE_KIND
+// classes (human, book, organization, ...) ARE valid Noosphere node types
+// (person/work/institution), so they are only "wrong" when an *abstract* seed
+// (field/subfield/concept/method/domain) matched them — e.g. "mathematics" the
+// discipline vs a person named in the results. For a `person`/`work` seed those
+// classes are correct and must not be penalized (see scoreCandidate).
+const UNIVERSAL_EXCLUDE = new Set([
+  "Q16521",    // taxon
+  "Q7094076",  // online database
+  "Q33002955", // knowledge graph
+  "Q114955954",// crowdsourced project
+  "Q4167410",  // Wikimedia disambiguation page
+  "Q35127",    // website
+  "Q8513",     // database
+  "Q1656682",  // event
+]);
+const CONCRETE_KIND_EXCLUDE = new Set([
+  "Q5",        // human            -> node type `person`
+  "Q571",      // book             -> `work`
+  "Q7725634",  // literary work    -> `work`
+  "Q47461344", // written work     -> `work`
+  "Q13442814", // scholarly article-> `work`
+  "Q3331189",  // version/edition  -> `work`
+  "Q11424",    // film             -> `work`
+  "Q482994",   // album            -> `work`
+  "Q5398426",  // television series -> `work`
+  "Q7889",     // video game       -> `work`
+  "Q4830453",  // business         -> `institution`
+  "Q43229",    // organization     -> `institution`
+]);
+
+/** Node types Noosphere treats as abstract knowledge kinds (vs concrete entities). */
+const ABSTRACT_NODE_TYPES = new Set<NodeType>([
+  "domain", "field", "subfield", "method", "concept",
 ]);
 
 /** Deterministic scoring weights. Type fit dominates; the rest break ties. */
@@ -296,6 +328,9 @@ interface CompactEntity {
 function extractInstanceOf(entity: RawEntity): string[] {
   const out: string[] = [];
   for (const claim of entity.claims?.P31 ?? []) {
+    // Ignore deprecated-rank statements — Wikidata marks these as no longer
+    // believed, so they must not boost or penalize disambiguation.
+    if (claim.rank === "deprecated") continue;
     const id = claim.mainsnak?.datavalue?.value?.id;
     // Skip `novalue`/`somevalue` snaks (no datavalue) and properties.
     if (typeof id === "string" && QID_REGEX.test(id) && !out.includes(id)) {
@@ -336,7 +371,10 @@ interface RawEntity {
   sitelinks?: Record<string, { title?: string }>;
   claims?: Record<
     string,
-    { mainsnak?: { datavalue?: { value?: { id?: string } } } }[]
+    {
+      mainsnak?: { datavalue?: { value?: { id?: string } } };
+      rank?: "preferred" | "normal" | "deprecated";
+    }[]
   >;
   lastrevid?: number;
   modified?: string;
@@ -359,9 +397,16 @@ function scoreCandidate(
   const p31 = entity.instanceOf;
   const alignedSet = positiveSetFor(seed.expected_type);
 
+  // Concrete-kind classes (human, book, ...) are only "wrong" for an abstract
+  // seed; for a person/work/institution seed they are the correct kind and must
+  // not be penalized. Universal classes (taxon, database, ...) are always wrong.
+  const isAbstract =
+    seed.expected_type !== undefined && ABSTRACT_NODE_TYPES.has(seed.expected_type);
   const alignedHits = alignedSet ? p31.filter((q) => alignedSet.has(q)) : [];
   const positiveHits = p31.filter((q) => ALL_POSITIVE.has(q));
-  const excludedHits = p31.filter((q) => EXCLUDE.has(q));
+  const excludedHits = p31.filter(
+    (q) => UNIVERSAL_EXCLUDE.has(q) || (isAbstract && CONCRETE_KIND_EXCLUDE.has(q)),
+  );
 
   const aligned = alignedHits.length > 0;
   const excluded = excludedHits.length > 0;
@@ -516,6 +561,18 @@ async function resolveSeed(
     notes.push(
       `re-ranked: provider's first hit was not the best type match; ` +
         `selected ${bestCandidate.qid} (provider rank ${best.providerRank})`,
+    );
+  }
+  // Flag for review when the winner itself is a wrong/zero-signal kind — a
+  // single excluded hit, or one with no positive type signal at all, would
+  // otherwise pass the top-two-gap check below unflagged.
+  if (bestCandidate.disambiguation.excluded || bestCandidate.disambiguation.score <= 0) {
+    result.ambiguous = true;
+    notes.push(
+      `low-confidence: best candidate ${bestCandidate.qid} has a weak type signal ` +
+        `(score ${bestCandidate.disambiguation.score}` +
+        `${bestCandidate.disambiguation.excluded ? ", excluded kind" : ""}); ` +
+        `manual selection required`,
     );
   }
   const runnerUp = result.candidates[1];
