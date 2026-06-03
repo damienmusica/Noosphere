@@ -45,6 +45,8 @@ export const disambiguationSchema = z
     score: z.number().int(),
     /** P31 indicates the seed's `expected_type` family (field/concept/method). */
     aligned_with_expected_type: z.boolean(),
+    /** P31 gives any positive type signal (aligned, or a related abstract kind). */
+    positive_type_signal: z.boolean(),
     /** P31 indicates a non-concept entity (book, taxon, database, person, ...). */
     excluded: z.boolean(),
     /** Candidate label or an alias equals the seed label (case-insensitive). */

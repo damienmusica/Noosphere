@@ -487,6 +487,9 @@ function scoreCandidate(
   return {
     score,
     aligned_with_expected_type: aligned,
+    // A real type signal, independent of the label/sitelink bonuses folded into
+    // `score` — used to flag label-only winners for review.
+    positive_type_signal: aligned || nearHits.length > 0,
     excluded,
     exact_label_match: exactLabel,
     signals,
@@ -608,15 +611,18 @@ async function resolveSeed(
         `selected ${bestCandidate.qid} (provider rank ${best.providerRank})`,
     );
   }
-  // Flag for review when the winner itself is a wrong/zero-signal kind — a
-  // single excluded hit, or one with no positive type signal at all, would
-  // otherwise pass the top-two-gap check below unflagged.
-  if (bestCandidate.disambiguation.excluded || bestCandidate.disambiguation.score <= 0) {
+  // Flag for review when the winner itself is a wrong/weak kind — judged by the
+  // type-signal booleans, NOT the total score (which includes label/sitelink
+  // bonuses). A sole exact-label hit with no real type signal would otherwise
+  // score positive and pass the top-two-gap check below unflagged.
+  if (
+    bestCandidate.disambiguation.excluded ||
+    !bestCandidate.disambiguation.positive_type_signal
+  ) {
     result.ambiguous = true;
     notes.push(
-      `low-confidence: best candidate ${bestCandidate.qid} has a weak type signal ` +
-        `(score ${bestCandidate.disambiguation.score}` +
-        `${bestCandidate.disambiguation.excluded ? ", excluded kind" : ""}); ` +
+      `low-confidence: best candidate ${bestCandidate.qid} has no positive type signal` +
+        `${bestCandidate.disambiguation.excluded ? " and matches an excluded kind" : ""}; ` +
         `manual selection required`,
     );
   }
