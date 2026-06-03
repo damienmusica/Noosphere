@@ -118,24 +118,37 @@ const QID_LABELS: Record<string, string> = {
   Q7889: "video game",
 };
 
+// P31 classes are grouped into *kind families* mirroring Noosphere node types.
+// A candidate's kind is judged relative to the seed's expected type: same family
+// (or, within the abstract family, a neighbouring kind) is good; a *different*
+// recognized family is the wrong kind and is penalized; classes Noosphere never
+// models at all (taxon, database, …) are always wrong. This stays correct for
+// every node type — e.g. a human (Q5) is the right kind for a `person` seed but
+// the wrong kind for a `field` seed, and a book is wrong for a `person` seed.
 const DISCIPLINE_LIKE = new Set([
   "Q11862829", "Q4671286", "Q1936384", "Q20026918",
   "Q1047113", "Q2267705", "Q123370638", "Q2465832", "Q336",
 ]);
 const METHOD_LIKE = new Set(["Q2835765", "Q2321565", "Q1799072", "Q8366"]);
 const CONCEPT_LIKE = new Set(["Q151885"]);
-const ALL_POSITIVE = new Set<string>([
-  ...DISCIPLINE_LIKE, ...METHOD_LIKE, ...CONCEPT_LIKE,
+const PERSON_LIKE = new Set(["Q5"]); // human
+const WORK_LIKE = new Set([
+  "Q571",      // book
+  "Q7725634",  // literary work
+  "Q47461344", // written work
+  "Q13442814", // scholarly article
+  "Q3331189",  // version, edition or translation
+  "Q11424",    // film
+  "Q482994",   // album
+  "Q5398426",  // television series
+  "Q7889",     // video game
+]);
+const INSTITUTION_LIKE = new Set([
+  "Q4830453",  // business
+  "Q43229",    // organization
 ]);
 
-// Exclusion is split so it stays correct across *all* node types, not just the
-// abstract ones. UNIVERSAL_EXCLUDE is never a kind Noosphere models, so it is
-// always wrong (a taxon, a database, a disambiguation page, ...). CONCRETE_KIND
-// classes (human, book, organization, ...) ARE valid Noosphere node types
-// (person/work/institution), so they are only "wrong" when an *abstract* seed
-// (field/subfield/concept/method/domain) matched them — e.g. "mathematics" the
-// discipline vs a person named in the results. For a `person`/`work` seed those
-// classes are correct and must not be penalized (see scoreCandidate).
+// Classes that are never a kind Noosphere models — always the wrong kind.
 const UNIVERSAL_EXCLUDE = new Set([
   "Q16521",    // taxon
   "Q7094076",  // online database
@@ -146,25 +159,61 @@ const UNIVERSAL_EXCLUDE = new Set([
   "Q8513",     // database
   "Q1656682",  // event
 ]);
-const CONCRETE_KIND_EXCLUDE = new Set([
-  "Q5",        // human            -> node type `person`
-  "Q571",      // book             -> `work`
-  "Q7725634",  // literary work    -> `work`
-  "Q47461344", // written work     -> `work`
-  "Q13442814", // scholarly article-> `work`
-  "Q3331189",  // version/edition  -> `work`
-  "Q11424",    // film             -> `work`
-  "Q482994",   // album            -> `work`
-  "Q5398426",  // television series -> `work`
-  "Q7889",     // video game       -> `work`
-  "Q4830453",  // business         -> `institution`
-  "Q43229",    // organization     -> `institution`
-]);
 
-/** Node types Noosphere treats as abstract knowledge kinds (vs concrete entities). */
-const ABSTRACT_NODE_TYPES = new Set<NodeType>([
-  "domain", "field", "subfield", "method", "concept",
-]);
+type KindFamily = "abstract" | "person" | "work" | "institution";
+
+/**
+ * Map each known P31 class to the kind family it denotes. The three abstract
+ * knowledge kinds (discipline/method/concept) share one family so a near-miss
+ * between them is treated as related rather than wrong.
+ */
+const CLASS_FAMILY: Record<string, KindFamily> = {};
+for (const q of [...DISCIPLINE_LIKE, ...METHOD_LIKE, ...CONCEPT_LIKE]) CLASS_FAMILY[q] = "abstract";
+for (const q of PERSON_LIKE) CLASS_FAMILY[q] = "person";
+for (const q of WORK_LIKE) CLASS_FAMILY[q] = "work";
+for (const q of INSTITUTION_LIKE) CLASS_FAMILY[q] = "institution";
+
+/** The kind family a seed's expected node type belongs to (null = unmapped, e.g. `tool`). */
+function familyFor(expectedType: NodeType | undefined): KindFamily | null {
+  switch (expectedType) {
+    case "domain":
+    case "field":
+    case "subfield":
+    case "method":
+    case "concept":
+      return "abstract";
+    case "person":
+      return "person";
+    case "work":
+      return "work";
+    case "institution":
+      return "institution";
+    default:
+      return null; // `tool` (no verified P31 classes yet) and unset seeds
+  }
+}
+
+/** The exact positive P31 set for a seed's expected node type, if any. */
+function positiveSetFor(expectedType: NodeType | undefined): Set<string> | null {
+  switch (expectedType) {
+    case "domain":
+    case "field":
+    case "subfield":
+      return DISCIPLINE_LIKE;
+    case "method":
+      return METHOD_LIKE;
+    case "concept":
+      return CONCEPT_LIKE;
+    case "person":
+      return PERSON_LIKE;
+    case "work":
+      return WORK_LIKE;
+    case "institution":
+      return INSTITUTION_LIKE;
+    default:
+      return null;
+  }
+}
 
 /** Deterministic scoring weights. Type fit dominates; the rest break ties. */
 const SCORE = {
@@ -176,22 +225,6 @@ const SCORE = {
 } as const;
 /** If the top-two candidates score within this gap, flag the seed ambiguous. */
 const AMBIGUITY_GAP = 50;
-
-/** The positive P31 set that matches a seed's expected node type, if any. */
-function positiveSetFor(expectedType: NodeType | undefined): Set<string> | null {
-  switch (expectedType) {
-    case "domain":
-    case "field":
-    case "subfield":
-      return DISCIPLINE_LIKE;
-    case "method":
-      return METHOD_LIKE;
-    case "concept":
-      return CONCEPT_LIKE;
-    default:
-      return null;
-  }
-}
 
 /** Render QIDs as "label (Qxx)" where a curated label exists, else the bare QID. */
 function describeQids(qids: string[]): string {
@@ -395,17 +428,23 @@ function scoreCandidate(
 ): Disambiguation {
   const signals: string[] = [];
   const p31 = entity.instanceOf;
+  const seedFamily = familyFor(seed.expected_type);
   const alignedSet = positiveSetFor(seed.expected_type);
 
-  // Concrete-kind classes (human, book, ...) are only "wrong" for an abstract
-  // seed; for a person/work/institution seed they are the correct kind and must
-  // not be penalized. Universal classes (taxon, database, ...) are always wrong.
-  const isAbstract =
-    seed.expected_type !== undefined && ABSTRACT_NODE_TYPES.has(seed.expected_type);
+  // Exact kind match for the seed's expected type.
   const alignedHits = alignedSet ? p31.filter((q) => alignedSet.has(q)) : [];
-  const positiveHits = p31.filter((q) => ALL_POSITIVE.has(q));
+  // Same family but not the exact kind — only meaningful within the abstract
+  // family (discipline ~ method ~ concept are neighbours, not wrong kinds).
+  const nearHits =
+    seedFamily === "abstract"
+      ? p31.filter((q) => CLASS_FAMILY[q] === "abstract" && !alignedHits.includes(q))
+      : [];
+  // Wrong kind: a class Noosphere never models, or one from a *different* family
+  // than the seed asked for (a human for a `field`, a book for a `person`, …).
   const excludedHits = p31.filter(
-    (q) => UNIVERSAL_EXCLUDE.has(q) || (isAbstract && CONCRETE_KIND_EXCLUDE.has(q)),
+    (q) =>
+      UNIVERSAL_EXCLUDE.has(q) ||
+      (CLASS_FAMILY[q] !== undefined && CLASS_FAMILY[q] !== seedFamily),
   );
 
   const aligned = alignedHits.length > 0;
@@ -419,13 +458,13 @@ function scoreCandidate(
     signals.push(
       `instance-of matches expected type "${seed.expected_type}": ${describeQids(alignedHits)}`,
     );
-  } else if (positiveHits.length > 0) {
+  } else if (nearHits.length > 0) {
     score += SCORE.otherPositive;
-    signals.push(`instance-of is a field/concept/method: ${describeQids(positiveHits)}`);
+    signals.push(`instance-of is a related abstract kind: ${describeQids(nearHits)}`);
   }
   if (excluded) {
     score += SCORE.excluded;
-    signals.push(`instance-of is a non-concept entity: ${describeQids(excludedHits)}`);
+    signals.push(`instance-of is the wrong kind for this seed: ${describeQids(excludedHits)}`);
   }
   if (exactLabel) {
     score += SCORE.exactLabel;

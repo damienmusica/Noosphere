@@ -181,12 +181,14 @@ arachnid genus before the branch of mathematics, and for "Mathematics" the
 - A small, **curated and label-verified** set of P31 classes marks an entity as
   the kind Noosphere models (academic discipline, branch of mathematics, method,
   algorithm, concept, …), aligned to the seed's `expected_type`.
-- Exclusion is **relative to the expected type**. *Universal* wrong kinds (taxon,
-  database, website, disambiguation page, …) are never modelled and are always
-  penalized. *Concrete* kinds (human, book, organization, …) are valid Noosphere
-  node types (`person`/`work`/`institution`), so they are penalized **only for an
-  abstract seed** (field/subfield/concept/method/domain) — a `person` or `work`
-  seed is *not* penalized for matching a human or a book.
+- Each P31 class belongs to a **kind family** mirroring the node types: *abstract*
+  (discipline/method/concept — treated as one family of neighbouring kinds),
+  *person*, *work*, and *institution*. A candidate is judged **relative to the
+  seed's expected type**: the same family is right, a *different* recognized family
+  is the wrong kind and is penalized, and classes Noosphere never models (taxon,
+  database, website, disambiguation page, …) are always wrong. So a human (Q5) is
+  the right kind for a `person` seed but the wrong kind for a `field` seed, and a
+  book is the wrong kind for a `person` seed.
 - Scoring favours an aligned type and an exact label match, penalises an excluded
   type, and uses an English-Wikipedia sitelink and the provider's original order
   only as tie-breakers. **P31 is a signal, never a gate:** valid concepts that
