@@ -160,6 +160,16 @@ export const sourcePackResultSchema = z
   // result, and must name the rank-1 candidate.
   .superRefine((result, ctx) => {
     const top = result.candidates[0];
+    // A `resolved` result must carry at least one ranked candidate — otherwise a
+    // pack could claim resolution (and even a `selected_qid`) with nothing for it
+    // to name.
+    if (result.status === "resolved" && !top) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["candidates"],
+        message: 'a "resolved" result must have at least one candidate',
+      });
+    }
     if (result.selected_qid !== undefined) {
       if (result.status !== "resolved") {
         ctx.addIssue({
