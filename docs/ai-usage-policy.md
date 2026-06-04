@@ -25,6 +25,11 @@ See [`docs/project-charter.md`](project-charter.md) (LLM boundary) and
   stricter evidence and conservative wording.
 - Require evidence metadata for all edges.
 - **NamuWiki remains external-link-only** — never a source, never evidence, never cached.
+- **AI-proposed nodes and edges must expose their reasoning to enter the gate.**
+  Each proposed item must carry (1) a one-line rationale for the relation, (2) a
+  one-line self-identified note on where it could be wrong, and (3) an `ambiguous`
+  self-flag when confidence is low. Proposals without exposed reasoning may not
+  enter the curation gate.
 
 ## What "reviewed" means
 

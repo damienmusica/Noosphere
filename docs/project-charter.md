@@ -41,7 +41,9 @@ Noosphere is **not**:
 - **Display separate from topology.** Localized labels, summaries, and aliases live in a translation
   layer keyed by `node_id` + `locale`. Graph topology never depends on displayed label text.
 - **Evidence-backed edges.** Every edge carries a relation type, confidence, status, and non-empty
-  evidence referencing recorded sources.
+  evidence referencing recorded sources. Evidence may be externally-sourced or editorial/curatorial;
+  the `source_type` must honestly reflect which, and pedagogical edges prefer a real cited source
+  where one exists (see [`docs/data-foundry.md`](data-foundry.md)).
 - **Sources require license metadata.** Every source records license, commercial-use,
   attribution, and share-alike metadata. Edges may only cite recorded sources.
 - **NamuWiki is external-link-only.** NamuWiki is never registered as a source, never cited as
