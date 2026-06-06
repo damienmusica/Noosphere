@@ -33,6 +33,9 @@ Initial target scale (aspirational, not required for the first milestone):
 - 300–1,000 nodes, 500–3,000 edges.
 - 5–10 curated learning paths.
 
+Reach this scale depth-first — one domain fully reviewed before breadth — not by
+parallel breadth (see [`docs/data-foundry.md`](data-foundry.md)).
+
 ### In scope
 
 - Build-time / static graph data.

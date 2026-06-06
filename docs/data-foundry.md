@@ -89,7 +89,21 @@ From lowest to highest scrutiny:
   events, or contested topics. These require the strictest evidence and the most conservative
   wording, and always need explicit owner review.
 
+### Evidence kinds
+
+Evidence is of two kinds. **Externally-sourced** evidence backs structural and
+factual edges (e.g. `part_of` backed by Wikidata). **Editorial/curatorial**
+evidence backs pedagogical judgments (`prerequisite_for`, learning paths) and
+is recorded against `manual` sources. Pedagogical edges should cite a real
+curriculum or textbook source where one exists, and fall back to manual
+curation only when none does. The `source_type` field must honestly reflect
+which kind an edge relies on.
+
 ## 9. Current implementation sequence
+
+**Depth before breadth.** Take one domain (machine-learning foundations) fully
+to `reviewed`/`indexable` end-to-end before expanding. The aspirational target
+scale is reached by repeating a proven loop, not by parallel breadth.
 
 The phase proceeds in deliberate, explicit PRs:
 

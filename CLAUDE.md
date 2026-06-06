@@ -29,6 +29,9 @@ The current priority is a maintainable, secure data foundation — not a feature
 - No 3D globe yet.
 - **NamuWiki: external links only.** `content_cached` must be `false`; never store article text, structure, or treat it as primary evidence.
 - Do not use company-internal data, code, or credentials. Public/open data and original curation only.
+- AI-proposed nodes/edges must follow the reasoned-proposal contract in
+  `docs/ai-usage-policy.md` (rationale + uncertainty + ambiguous flag) before entering
+  the curation gate.
 
 ## Data invariants (enforced by `scripts/validate-data.ts`)
 

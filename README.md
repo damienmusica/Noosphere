@@ -2,7 +2,7 @@
 
 An interactive atlas of human knowledge, mapping fields, concepts, people, works, and evidence-backed relationships.
 
-> **Status:** Private, planning-stage. This is **not** production-ready. The repository foundation (docs, schemas, seed data, validation) is complete; the current milestone is the **Data Foundry and scalable curation methodology** — see [`docs/data-foundry.md`](docs/data-foundry.md).
+> **Status:** Public, planning-stage. This is **not** production-ready. The repository foundation (docs, schemas, seed data, validation) is complete; the current milestone is the **Data Foundry and scalable curation methodology** — see [`docs/data-foundry.md`](docs/data-foundry.md).
 
 Noosphere is an **English-first, multilingual-ready, read-only** knowledge atlas. It maps fields, concepts, people, works, methods, and evidence-backed relationships into a navigable knowledge graph. It is a *navigation layer over human knowledge* — a map of relationships, learning paths, and external references — **not a wiki clone**.
 

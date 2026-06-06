@@ -40,3 +40,7 @@ Two pressures had to be reconciled:
   `indexable` after passing the risk-tiered curation gate and a batch/release decision.
 
 See [`docs/project-charter.md`](../project-charter.md) and [`docs/data-foundry.md`](../data-foundry.md).
+
+[ADR 0007](0007-evidence-kinds-and-reasoned-proposals.md) extends this decision with evidence-kind
+honesty and a reasoned-proposal requirement for AI-assisted data; it relates to but does not
+supersede this ADR.
