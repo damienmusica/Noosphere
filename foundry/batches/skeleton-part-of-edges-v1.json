@@ -1,0 +1,115 @@
+{
+  "id": "batch:skeleton-part-of-edges-v1",
+  "title": "Skeleton part_of Edges v1 (philosophy + formal sciences)",
+  "description": "First structural edge batch (edge promotion policy v1, vault decision log 2026-06-10 (15)): part_of hierarchy edges (domain → field → subfield) connecting the two landed continents — philosophy (humanities) and formal sciences. Edges only, zero nodes. Every proposed edge must carry a UDC/LCC classification hint (unverified — QC live-verifies) and conform to the skeleton modeling standard (docs/data-foundry.md §12, mandatory generation input under policy v1.3). Non-obvious parent assignments (applied-X boundary areas, the mathematical-logic pillars, statistics vs mathematics membership, cross-listed areas) must self-flag ambiguous=true; cross-listing is flagged, never resolved in-batch.",
+  "status": "active",
+  "target_locales": [
+    "en"
+  ],
+  "scope": {
+    "include": [
+      "part_of edges for every /data discipline node (field/subfield) of the philosophy and formal-sciences continents that lacks one",
+      "field:philosophy -> domain:humanities and field:systems-science -> domain:formal-sciences anchor edges",
+      "UDC/LCC classification hints per edge (unverified pointers for QC live grounding)",
+      "Skeleton modeling standard conformance (docs/data-foundry.md §12, policy v1.3 mandatory input)"
+    ],
+    "exclude": [
+      "All non-part_of relations (prerequisite_for, adjacent_to, ... — separate editorial track)",
+      "New nodes of any kind (skeleton node sets are closed; gaps are reported, not filled)",
+      "Concept/method/person/work nodes (their part_of edges already exist in /data where needed)",
+      "Edges duplicating an existing /data (source, target, relation) triple (14 seed part_of edges exist)",
+      "Cross-listing resolution (multiple part_of per node is a parked policy question — flag, do not resolve)",
+      "Other continents (computer-and-information-sciences, natural-sciences nodes stay out of scope)"
+    ]
+  },
+  "seed_entities": [
+    {
+      "label": "Humanities",
+      "expected_node_id": "domain:humanities",
+      "expected_type": "domain",
+      "notes": "Parent anchor for field:philosophy."
+    },
+    {
+      "label": "Philosophy",
+      "expected_node_id": "field:philosophy",
+      "expected_type": "field",
+      "notes": "Parent anchor for the 62 philosophy subfields in /data."
+    },
+    {
+      "label": "Formal sciences",
+      "expected_node_id": "domain:formal-sciences",
+      "expected_type": "domain",
+      "notes": "Parent anchor for field:systems-science (mathematics/statistics domain edges already exist)."
+    },
+    {
+      "label": "Mathematics",
+      "expected_node_id": "field:mathematics",
+      "expected_type": "field",
+      "notes": "Default parent candidate for most mathematics subfields."
+    },
+    {
+      "label": "Statistics",
+      "expected_node_id": "field:statistics",
+      "expected_type": "field",
+      "notes": "Parent candidate for statistics subfields (bayesian/mathematical/applied/computational statistics, time-series)."
+    },
+    {
+      "label": "Systems science",
+      "expected_node_id": "field:systems-science",
+      "expected_type": "field",
+      "notes": "Parent candidate for cybernetics and systems-adjacent areas."
+    }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "loc",
+      "purpose": [
+        "evidence_candidate",
+        "metadata"
+      ],
+      "requires_secret": false,
+      "notes": "Library of Congress Classification outline — hierarchy grounding for QC live verification."
+    },
+    {
+      "provider": "other",
+      "purpose": [
+        "evidence_candidate",
+        "metadata"
+      ],
+      "requires_secret": false,
+      "notes": "UDC Summary (udcsummary.info) — hierarchy grounding for QC live verification. Generator supplies hints only; all verification is QC-side."
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "provider": "namuwiki",
+      "reason": "External-links-only by hard constraint; never evidence or a source."
+    },
+    {
+      "provider": "cloud_llm_api",
+      "reason": "No cloud LLM API calls in repo tooling (hard constraint); generation happens interactively via maintainer sessions."
+    },
+    {
+      "provider": "scraped_article_body",
+      "reason": "No scraping/crawling of third-party sites (hard constraint)."
+    }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": [
+      "low"
+    ],
+    "requires_strict_review_for": [
+      "cross-listed parent assignments (logic, decision-theory, game-theory, ...)",
+      "contested hierarchy positions (B-type real-world contests, e.g. statistics vs mathematics)"
+    ]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/skeleton-part-of-edges-v1"
+  },
+  "notes": [
+    "Committed proposal artifacts live under foundry/proposals/skeleton-part-of-edges-v1/ (current convention; the dist/ path above is the legacy generated-output slot).",
+    "Generation and QC run in separate contexts (ADR 0007); promotion follows edge promotion policy v1 — structural edges may auto-promote to reviewed only with QC-verified live classification grounding, ambiguous=false, and both endpoints reviewed.",
+    "Edge status is capped at min(endpoint statuses): edges onto proposed nodes stop at proposed regardless of grounding."
+  ]
+}
