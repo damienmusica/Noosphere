@@ -129,7 +129,7 @@
     "reviewed": true
   },
   {
-    "node_id": "field:machine-learning",
+    "node_id": "subfield:machine-learning",
     "locale": "en",
     "label": "Machine Learning",
     "summary": "The study of algorithms that improve automatically through data and experience.",
@@ -1035,6 +1035,225 @@
     "locale": "en",
     "label": "Applied Statistics",
     "summary": "Applied statistics is the application-facing branch of statistics concerned with using statistical methods to analyze data arising in scientific, industrial, governmental, and social contexts. Its toolkit spans regression and correlation analysis, multivariate methods, experimental design, and survival analysis, and the field spans 'an enormous range from direct subject-matter collaborations to pure mathematical theory' as characterized by the Institute of Mathematical Statistics. Applied statistics draws on the theoretical apparatus of mathematical statistics and deploys it across domains such as healthcare, biology, engineering, education, and economics.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:algorithms-and-data-structures",
+    "locale": "en",
+    "label": "Algorithms and Data Structures",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:computational-complexity-theory",
+    "locale": "en",
+    "label": "Computational Complexity Theory",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:programming-languages",
+    "locale": "en",
+    "label": "Programming Languages",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:software-engineering",
+    "locale": "en",
+    "label": "Software Engineering",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:computer-systems",
+    "locale": "en",
+    "label": "Computer Systems",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:computer-networks",
+    "locale": "en",
+    "label": "Computer Networks",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:distributed-and-parallel-computing",
+    "locale": "en",
+    "label": "Distributed and Parallel Computing",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:databases-and-information-systems",
+    "locale": "en",
+    "label": "Databases and Information Systems",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:artificial-intelligence",
+    "locale": "en",
+    "label": "Artificial Intelligence",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:computer-vision",
+    "locale": "en",
+    "label": "Computer Vision",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:natural-language-processing",
+    "locale": "en",
+    "label": "Natural Language Processing",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:human-computer-interaction",
+    "locale": "en",
+    "label": "Human-Computer Interaction",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:computer-graphics",
+    "locale": "en",
+    "label": "Computer Graphics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:cryptography",
+    "locale": "en",
+    "label": "Cryptography",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:computer-security",
+    "locale": "en",
+    "label": "Computer Security",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:theoretical-computer-science",
+    "locale": "en",
+    "label": "Theoretical Computer Science",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:formal-languages-and-automata-theory",
+    "locale": "en",
+    "label": "Formal Languages and Automata Theory",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:scientific-computing",
+    "locale": "en",
+    "label": "Scientific Computing",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:information-retrieval",
+    "locale": "en",
+    "label": "Information Retrieval",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:quantum-computing",
+    "locale": "en",
+    "label": "Quantum Computing",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "field:library-and-information-science",
+    "locale": "en",
+    "label": "Library and Information Science",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:knowledge-organization",
+    "locale": "en",
+    "label": "Knowledge Organization",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:digital-libraries",
+    "locale": "en",
+    "label": "Digital Libraries",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:bibliometrics",
+    "locale": "en",
+    "label": "Bibliometrics",
+    "summary": "",
+    "aliases": [
+      "Scientometrics",
+      "Bibliometrics and Scientometrics"
+    ],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:social-computing",
+    "locale": "en",
+    "label": "Social Computing",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:visualization",
+    "locale": "en",
+    "label": "Visualization",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:history-of-computing",
+    "locale": "en",
+    "label": "History of Computing",
+    "summary": "",
     "aliases": [],
     "reviewed": true
   }
