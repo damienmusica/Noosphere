@@ -335,7 +335,8 @@
       "source_hint": "Wikidata Q607443; MSC 2020 section 03D; LCC QA9.59; UDC 510.5",
       "rationale": "Study of what problems can be solved algorithmically (Turing machines, recursive functions, degrees of unsolvability); MSC 03D; classified under mathematical logic by MSC and LCC; distinct from computational complexity which MSC files under 68.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. The CS/mathematics boundary is contested here — computability theory appears in both mathematics (MSC 03D) and theoretical CS programs; flagged ambiguous because of the continent boundary.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "Clause-6 resolution 2026-06-11 (orchestrator, Claude Fable 5): ambiguous flipped false — dominant position, node promoted reviewed with disputed: true; minority position permanently recorded in resolution-report.md."
     },
     {
       "id": "subfield:category-theory",
@@ -383,7 +384,8 @@
       "source_hint": "Wikidata Q181916; MSC 2020 section 81-82 (quantum, statistical mechanics), 83 (relativity); LCC QA401–QA431; UDC 530.1",
       "rationale": "Application of rigorous mathematical methods to physical problems including quantum mechanics, statistical mechanics, and relativity; MSC 2020 includes several applied sections (81–83); present as a named research area in both mathematics and physics departments.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Domain placement is contested — mathematical physics sits at the formal_sciences / natural_sciences boundary; flagged ambiguous for this reason.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "Clause-6 resolution 2026-06-11 (orchestrator, Claude Fable 5): ambiguous flipped false — dominant position, node promoted reviewed with disputed: true; minority position permanently recorded in resolution-report.md."
     },
     {
       "id": "subfield:applied-mathematics",
@@ -399,7 +401,8 @@
       "source_hint": "Wikidata Q126818; MSC 2020 applied sections 70, 74, 76, 90, 92, 93; LCC QA1–QA3 (general); UDC 519",
       "rationale": "The application of mathematical methods to problems in science, engineering, and industry; many universities have separate applied mathematics departments or divisions; an umbrella designation in LCC QA.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. 'Applied mathematics' is extremely broad and many of its sub-areas (numerical analysis, optimization, mathematical physics, operations research) are proposed as separate nodes; the umbrella node may create duplication.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "Clause-6 resolution 2026-06-11 (orchestrator, Claude Fable 5): ambiguous flipped false — source consensus; full stance record in resolution-report.md."
     },
     {
       "id": "subfield:operations-research",
@@ -415,7 +418,8 @@
       "source_hint": "Wikidata Q1128437; MSC 2020 section 90; LCC T57–T57.97; UDC 519.8",
       "rationale": "Applies mathematical methods to operational decision-making — linear programming, scheduling, network flows, game theory; MSC 2020 section 90; has its own departments and professional societies.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Often housed in engineering or business schools rather than mathematics departments; domain placement (formal_sciences vs. engineering) is contested.",
-      "ambiguous": true
+      "ambiguous": true,
+      "note": "Clause-6 research 2026-06-11: genuine three-way split (mathematics / engineering / own-discipline) — ambiguous stays true, node stays proposed; stance record in resolution-report.md."
     },
     {
       "id": "subfield:game-theory",
@@ -431,7 +435,8 @@
       "source_hint": "Wikidata Q9174; MSC 2020 section 91 (Game theory, economics, social and behavioral sciences); LCC QA269; UDC 519.83",
       "rationale": "Mathematical study of strategic interaction; MSC 2020 section 91; classified under mathematics by LCC and MSC; active research area crossing mathematics, economics, and computer science.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Cross-listed across formal_sciences, social_sciences (economics), and computer_and_information_sciences; continent assignment to formal_sciences is defensible via MSC/LCC placement but contested.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "Clause-6 resolution 2026-06-11 (orchestrator, Claude Fable 5): ambiguous flipped false — dominant position, node promoted reviewed with disputed: true; minority position permanently recorded in resolution-report.md."
     },
     {
       "id": "subfield:information-theory",
@@ -447,7 +452,8 @@
       "source_hint": "Wikidata Q131149; MSC 2020 section 94 (Information and communication, circuits); LCC QA360–QA370; UDC 519.72",
       "rationale": "Mathematical study of quantification, storage, and communication of information; Shannon entropy, channel capacity, coding theory; MSC 2020 section 94 is a formal-sciences classification.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Sits at the boundary with computer science (coding theory, communication theory) and engineering; MSC 94 places it in mathematics but CS departments also claim it — flagged ambiguous.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "Clause-6 resolution 2026-06-11 (orchestrator, Claude Fable 5): ambiguous flipped false — dominant position, node promoted reviewed with disputed: true; minority position permanently recorded in resolution-report.md."
     },
     {
       "id": "subfield:financial-mathematics",
@@ -463,7 +469,8 @@
       "source_hint": "Wikidata Q12503; MSC 2020 section 91G; LCC HG1–HG9999; UDC 336",
       "rationale": "Application of mathematical methods (stochastic calculus, PDE, optimization) to financial modeling and derivative pricing; many universities have dedicated mathematics-of-finance degree programs.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified — Q12503 may point to 'finance' broadly. Domain assignment to formal_sciences is justified by MSC 91G but the primary institutional home is often economics or business schools.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "Clause-6 resolution 2026-06-11 (orchestrator, Claude Fable 5): ambiguous flipped false — dominant position, node promoted reviewed with disputed: true; minority position permanently recorded in resolution-report.md."
     },
     {
       "id": "subfield:bayesian-statistics",
@@ -479,7 +486,8 @@
       "source_hint": "Wikidata Q620253; MSC 2020 section 62F15; LCC QA279.5; Bayesian Analysis journal",
       "rationale": "Statistical paradigm treating probability as a degree of belief and using Bayes' theorem for inference; has its own international society (ISBA), journal, and substantial research program separate from frequentist inference.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Could be treated as a methodological perspective within statistical inference rather than a peer subfield; institutional independence (dedicated society, journal) supports peer status.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "Clause-6 resolution 2026-06-11 (orchestrator, Claude Fable 5): ambiguous flipped false — dominant position, node promoted reviewed with disputed: true; minority position permanently recorded in resolution-report.md."
     },
     {
       "id": "subfield:time-series-analysis",
@@ -495,7 +503,8 @@
       "source_hint": "Wikidata Q2495616; MSC 2020 section 62M10; LCC QA280; UDC 519.246",
       "rationale": "Statistical analysis of sequences of data points indexed over time; ARIMA models, spectral analysis, forecasting; MSC 62M10; a standard course and research area in statistics departments.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. May be too granular for the skeleton — commonly treated as a topic within statistical methodology.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "Clause-6 resolution 2026-06-11 (orchestrator, Claude Fable 5): ambiguous flipped false — dominant position, node promoted reviewed with disputed: true; minority position permanently recorded in resolution-report.md."
     },
     {
       "id": "subfield:computational-statistics",
@@ -511,7 +520,8 @@
       "source_hint": "Wikidata Q1154576; MSC 2020 section 62-08; LCC QA276.4; Statistics and Computing journal",
       "rationale": "Development and analysis of statistical algorithms and their computational implementation — MCMC, bootstrap, EM algorithm; MSC 62-08; recognized subfield with dedicated journals.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Overlap with machine learning is substantial — the boundary is actively contested; flagged ambiguous due to continent boundary risk.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "Clause-6 resolution 2026-06-11 (orchestrator, Claude Fable 5): ambiguous flipped false — source consensus; full stance record in resolution-report.md."
     },
     {
       "id": "subfield:mathematical-statistics",
@@ -559,7 +569,8 @@
       "source_hint": "Wikidata Q1095477; MSC 2020 section 97; LCC QA11–QA20; UDC 51:37",
       "rationale": "Study of the teaching and learning of mathematics; MSC 2020 section 97 is a peer top-level section; many departments of mathematics have education research tracks and joint programs with colleges of education.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Primarily housed in education faculties at most institutions; domain placement in formal_sciences vs. social_sciences/education is contested.",
-      "ambiguous": true
+      "ambiguous": true,
+      "note": "Clause-6 research 2026-06-11: genuine split (ICMI/IMU + MSC 97 vs OECD FORD social-sciences filing + education-school doctoral home) — ambiguous stays true, node stays proposed; stance record in resolution-report.md."
     },
     {
       "id": "subfield:control-theory",
@@ -575,7 +586,8 @@
       "source_hint": "Wikidata Q131246; MSC 2020 section 93; LCC QA402.3; UDC 517.977",
       "rationale": "Mathematical study of how to influence dynamical systems toward desired outcomes; MSC 2020 section 93; present in applied mathematics and engineering departments with strong mathematical content.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Primarily housed in engineering programs; domain assignment to formal_sciences via MSC 93 is defensible but the engineering continent is a competing classification.",
-      "ambiguous": true
+      "ambiguous": true,
+      "note": "Clause-6 research 2026-06-11: genuine split (LCC files it under both QA Mathematics and TJ Mechanical engineering; institutional home engineering-unanimous) — ambiguous stays true, node stays proposed; stance record in resolution-report.md."
     },
     {
       "id": "subfield:mathematical-biology",
@@ -591,7 +603,8 @@
       "source_hint": "Wikidata Q6787782; MSC 2020 section 92 (Biology and other natural sciences); LCC QH323.5; Journal of Mathematical Biology",
       "rationale": "Application of mathematical modeling (ODE, PDE, stochastic processes) to biological systems — population dynamics, epidemiology, biochemical kinetics; MSC 2020 section 92; has its own departments and journals.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Domain placement is contested — mathematical biology is equally a life_sciences subfield; inclusion in formal_sciences is justified by the mathematical-modeling emphasis and MSC 92 classification.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "Clause-6 resolution 2026-06-11 (orchestrator, Claude Fable 5): ambiguous flipped false — dominant position, node promoted reviewed with disputed: true; minority position permanently recorded in resolution-report.md."
     },
     {
       "id": "field:systems-science",
@@ -625,7 +638,7 @@
       "rationale": "Classical formal-science area studying communication and control in animals and machines; retained in UDC and active through dedicated societies and journals; the historical root of control theory and parts of systems science.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. The unified cybernetics program has substantially dissolved into control theory, systems science, and computer science — whether its academic_status should be historical rather than established is contestable.",
       "ambiguous": true,
-      "note": "Added by QC gap sweep 2026-06-10 (Claude Fable 5), under the manifest systems-science scope."
+      "note": "Added by QC gap sweep 2026-06-10 (Claude Fable 5), under the manifest systems-science scope. Clause-6 research 2026-06-11: placement portion unopposed (systems-science anchoring stands); flag reason narrowed to the vitality contest (out of scope this batch) — ambiguous stays true, node stays proposed; resolution-report.md."
     },
     {
       "id": "subfield:applied-statistics",
@@ -662,6 +675,7 @@
     "QC revision 2026-06-10 (Claude Fable 5, orchestrator — generation/QC contexts separate): 69 generated nodes reviewed; 33 dropped (granularity absorptions, one merge, three cross-continent deferrals), 1 structural demotion (field:mathematical-logic -> subfield:mathematical-logic), 3 QC gap-fill additions (field:systems-science, subfield:cybernetics, subfield:applied-statistics). Full verdict table with per-node reasons in qc-report.md. Dropped IDs: subfield:abstract-algebra, subfield:real-analysis, subfield:graph-theory, subfield:group-theory, subfield:commutative-algebra, subfield:number-theory-analytic, subfield:measure-theory, subfield:cryptography, subfield:stochastic-processes, subfield:statistical-inference, subfield:multivariate-statistics, subfield:nonparametric-statistics, subfield:regression-analysis, subfield:design-of-experiments, subfield:survival-analysis, subfield:biostatistics, subfield:discrete-mathematics, subfield:foundations-of-mathematics, subfield:topology-geometric, subfield:convex-geometry, subfield:fractal-geometry, subfield:calculus-of-variations, subfield:approximation-theory, subfield:special-functions, subfield:econometrics, subfield:potential-theory, subfield:operator-theory, subfield:lattice-theory, subfield:universal-algebra, subfield:ergodic-theory, subfield:integral-equations, subfield:several-complex-variables, subfield:sequences-and-series.",
     "QID grounding pass 2026-06-10: all external_ids.wikidata values adjudicated against the local Wikidata resolver v3 source pack (dist/foundry/source-packs/formal-sciences-skeleton-v1). 44/44 seeds resolved; 12 resolver-ambiguous results QC-adjudicated by sitelinks+aliases (decision log (9)); 1 manual selection (partial-differential-equations -> Q271977, plural-form query had surfaced only books/articles); 5 live Special:EntityData verifications. Generator hint accuracy: 11/38 correct (27 wrong, 1 missing) — full table in grounding-report.md.",
     "QC flag retirements 2026-06-10 (9 nodes): flags whose stated reason was a structural/granularity question addressed to QC were retired once QC ruled (ADR 0007: the flag requests human judgment; the ruling is that judgment). Real-world boundary/identity contests (computability-theory, mathematical-physics, applied-mathematics, operations-research, game-theory, information-theory, financial-mathematics, mathematics-education, control-theory, mathematical-biology, bayesian-statistics, time-series-analysis, computational-statistics, cybernetics) keep ambiguous=true and stop at proposed under policy v1; v1.1 external research can resolve them later.",
-    "Promotion 2026-06-10 (standing policy v1/v1.1/v1.2, session #3): 39 nodes promoted into /data — 25 reviewed (resolver-verified QID + ambiguous=false), 14 proposed (verified QID + ambiguous=true, boundary contests). The five QID-less legacy /data nodes (ML-foundations) were grounded and promoted to reviewed in the same pass. Proposal artifacts stay generated here as the permanent re-auditable record."
+    "Promotion 2026-06-10 (standing policy v1/v1.1/v1.2, session #3): 39 nodes promoted into /data — 25 reviewed (resolver-verified QID + ambiguous=false), 14 proposed (verified QID + ambiguous=true, boundary contests). The five QID-less legacy /data nodes (ML-foundations) were grounded and promoted to reviewed in the same pass. Proposal artifacts stay generated here as the permanent re-auditable record.",
+    "Boundary-contest resolution 2026-06-11 (edge policy v1 clause 6 first application, orchestrator Claude Fable 5): 14 B-type contests researched via 5 separated Sonnet subagents + orchestrator live URL pre-verification (84 URLs, 0% hallucination). Outcome: 2 consensus -> reviewed plain, 8 dominant -> reviewed + disputed:true (first disputed data), 3 genuine splits + 1 out-of-scope (cybernetics vitality) stay proposed. 10 connected part_of edges promoted (6 disputed / 4 plain), 4 stay capped. No retargeting, no §12 transfers. Permanent record: resolution-report.md."
   ]
 }
