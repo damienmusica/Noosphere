@@ -233,10 +233,10 @@
     "updated_at": "2026-06-02"
   },
   {
-    "id": "field:machine-learning",
-    "type": "field",
+    "id": "subfield:machine-learning",
+    "type": "subfield",
     "domain": "computer_and_information_sciences",
-    "level": 1,
+    "level": 2,
     "status": "reviewed",
     "indexable": true,
     "is_living_person": false,
@@ -244,7 +244,8 @@
       "wikidata": "Q2539"
     },
     "created_at": "2026-06-02",
-    "updated_at": "2026-06-02"
+    "updated_at": "2026-06-11",
+    "academic_status": "established"
   },
   {
     "id": "field:physics",
@@ -2221,5 +2222,404 @@
     "academic_status": "established",
     "created_at": "2026-06-10",
     "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:algorithms-and-data-structures",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q13636890"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:computational-complexity-theory",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q205084"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:programming-languages",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2670534"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:software-engineering",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q80993"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:computer-systems",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {},
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:computer-networks",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1301371"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:distributed-and-parallel-computing",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {},
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:databases-and-information-systems",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {},
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:artificial-intelligence",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11660"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:computer-vision",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q844240"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:natural-language-processing",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q30642"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:human-computer-interaction",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q207434"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:computer-graphics",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q150971"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:cryptography",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q8789"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:computer-security",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q3510521"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:theoretical-computer-science",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2878974"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:formal-languages-and-automata-theory",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q214526"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:scientific-computing",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q117801"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:information-retrieval",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q816826"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:quantum-computing",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q17995793"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:library-and-information-science",
+    "type": "field",
+    "domain": "computer_and_information_sciences",
+    "level": 1,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q13420675"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:knowledge-organization",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1929761"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:digital-libraries",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q212805"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:bibliometrics",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q603441"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:social-computing",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q615684"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:visualization",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q451553"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:history-of-computing",
+    "type": "subfield",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2735691"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
   }
 ]

@@ -36,7 +36,7 @@
   },
   {
     "id": "edge:machine-learning-part-of-computer-science",
-    "source": "field:machine-learning",
+    "source": "subfield:machine-learning",
     "target": "field:computer-science",
     "relation": "part_of",
     "confidence": 0.9,
@@ -93,7 +93,7 @@
   {
     "id": "edge:linear-algebra-prerequisite-machine-learning",
     "source": "subfield:linear-algebra",
-    "target": "field:machine-learning",
+    "target": "subfield:machine-learning",
     "relation": "prerequisite_for",
     "confidence": 0.95,
     "status": "reviewed",
@@ -105,7 +105,7 @@
   {
     "id": "edge:statistics-prerequisite-machine-learning",
     "source": "field:statistics",
-    "target": "field:machine-learning",
+    "target": "subfield:machine-learning",
     "relation": "prerequisite_for",
     "confidence": 0.9,
     "status": "reviewed",
@@ -140,7 +140,7 @@
   {
     "id": "edge:bayesian-inference-applies-to-machine-learning",
     "source": "method:bayesian-inference",
-    "target": "field:machine-learning",
+    "target": "subfield:machine-learning",
     "relation": "applies_to",
     "confidence": 0.8,
     "status": "reviewed",
@@ -263,7 +263,7 @@
   {
     "id": "edge:optimization-prerequisite-machine-learning",
     "source": "subfield:optimization",
-    "target": "field:machine-learning",
+    "target": "subfield:machine-learning",
     "relation": "prerequisite_for",
     "confidence": 0.85,
     "status": "proposed",
@@ -299,7 +299,7 @@
   {
     "id": "edge:gradient-descent-applies-to-machine-learning",
     "source": "method:gradient-descent",
-    "target": "field:machine-learning",
+    "target": "subfield:machine-learning",
     "relation": "applies_to",
     "confidence": 0.9,
     "status": "proposed",
