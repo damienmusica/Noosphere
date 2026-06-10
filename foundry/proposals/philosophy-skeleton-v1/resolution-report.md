@@ -219,6 +219,25 @@
 
 ---
 
+## Upstream-gap alternative grounding (2 nodes, foundry-resident)
+
+`subfield:philosophy-of-race` and `subfield:philosophy-of-cognitive-science` have **no Wikidata field item** (upstream gap, closed in PR #24). A research subagent searched for alternative stable identifiers; the orchestrator live-verified. Both remain in the foundry under standing promotion policy v1 (resolver-verified primary grounding required).
+
+**Schema judgment:** no schema change needed — `external_ids` is an open string record in both the foundry and canonical node schemas, so the `philpapers` key is recorded without any extension.
+**Negative results (recorded honestly):** OpenAlex has no concept/topic entity for either field (concepts/topics API searches → 0 results). IEP has no dedicated overview article for either.
+
+### subfield:philosophy-of-race — grounding recorded, flag flipped, stays foundry
+- PhilPapers category slug **`philosophy-of-race`**, parent "Philosophy of Gender, Race, and Sexuality" (Value Theory cluster). Direct fetch bot-blocked; existence and parentage verified via Wayback snapshot (2024-12-06): <https://web.archive.org/web/20241206133442/https://philpapers.org/browse/philosophy-of-race/>; also present in Chalmers' taxonomy: <https://consc.net/taxonomy.html>
+- Recognition (verified): SEP entries <https://plato.stanford.edu/entries/race/> and <https://plato.stanford.edu/entries/critical-phil-race/>; dedicated journal *Critical Philosophy of Race* (PSU Press): <https://www.psupress.org/Journals/jnls_CPR.html>, <https://muse.jhu.edu/journal/595>; *The Oxford Handbook of Philosophy and Race* (OUP).
+- Verdict: the distinctness contest is resolved — recognized, distinctly named subfield. No promotable grounding under v1.
+
+### subfield:philosophy-of-cognitive-science — grounding recorded, flag flipped, stays foundry
+- PhilPapers category slug **`philosophy-of-cognitive-science`**, filed in the "Science, Logic, and Mathematics" cluster — structurally separate from Philosophy of Mind (filed under "Metaphysics and Epistemology"), which directly answers the duplication concern. Wayback snapshot (2025-01-19): <https://web.archive.org/web/20250119212911/https://philpapers.org/browse/philosophy-of-cognitive-science>; Chalmers' taxonomy lists "Philosophy of Cognitive Science" (incl. ", General"/", Misc") in its philosophy-of-science region: <https://consc.net/taxonomy.html>
+- Recognition (verified): *The Oxford Handbook of Philosophy of Cognitive Science* (OUP); SEP entry <https://plato.stanford.edu/entries/cognitive-science/> (dedicated section on the philosophy of cognitive science).
+- Verdict: the duplication contest is resolved (distinct from philosophy-of-mind). No promotable grounding under v1.
+
+**Policy escalation:** whether PhilPapers category grounding should become promotion-grade for QID-less nodes (a candidate "promotion policy v1.2" clause) is a CPO policy decision — flagged, not assumed.
+
 ## QC overrides and rejections (orchestrator)
 
 1. **Source rejected:** `philopedia.org` (cited twice by subagents) — unestablished provenance; all verdicts relying on it were re-grounded on SEP/Chalmers instead.
