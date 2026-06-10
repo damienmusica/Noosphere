@@ -280,60 +280,70 @@
     "type": "subfield",
     "domain": "formal_sciences",
     "level": 2,
-    "status": "proposed",
-    "indexable": false,
+    "status": "reviewed",
+    "indexable": true,
     "is_living_person": false,
-    "external_ids": {},
+    "external_ids": {
+      "wikidata": "Q5862903"
+    },
     "created_at": "2026-06-02",
-    "updated_at": "2026-06-02"
+    "updated_at": "2026-06-10"
   },
   {
     "id": "subfield:calculus",
     "type": "subfield",
     "domain": "formal_sciences",
     "level": 2,
-    "status": "proposed",
-    "indexable": false,
+    "status": "reviewed",
+    "indexable": true,
     "is_living_person": false,
-    "external_ids": {},
+    "external_ids": {
+      "wikidata": "Q149972"
+    },
     "created_at": "2026-06-02",
-    "updated_at": "2026-06-02"
+    "updated_at": "2026-06-10"
   },
   {
     "id": "subfield:optimization",
     "type": "subfield",
     "domain": "formal_sciences",
     "level": 2,
-    "status": "proposed",
-    "indexable": false,
+    "status": "reviewed",
+    "indexable": true,
     "is_living_person": false,
-    "external_ids": {},
+    "external_ids": {
+      "wikidata": "Q141495"
+    },
     "created_at": "2026-06-02",
-    "updated_at": "2026-06-02"
+    "updated_at": "2026-06-10"
   },
   {
     "id": "concept:random-variable",
     "type": "concept",
     "domain": "formal_sciences",
     "level": 3,
-    "status": "proposed",
-    "indexable": false,
+    "status": "reviewed",
+    "indexable": true,
     "is_living_person": false,
-    "external_ids": {},
+    "external_ids": {
+      "wikidata": "Q176623"
+    },
     "created_at": "2026-06-02",
-    "updated_at": "2026-06-02"
+    "updated_at": "2026-06-10"
   },
   {
     "id": "concept:probability-distribution",
     "type": "concept",
     "domain": "formal_sciences",
     "level": 3,
-    "status": "proposed",
-    "indexable": false,
+    "status": "reviewed",
+    "indexable": true,
     "is_living_person": false,
-    "external_ids": {},
+    "external_ids": {
+      "wikidata": "Q200726"
+    },
     "created_at": "2026-06-02",
-    "updated_at": "2026-06-02"
+    "updated_at": "2026-06-10"
   },
   {
     "id": "method:gradient-descent",
@@ -1287,6 +1297,591 @@
     "is_living_person": false,
     "external_ids": {
       "philpapers": "philosophy-of-cognitive-science"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:mathematical-logic",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1166618"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:algebra",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q3968"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:number-theory",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q12479"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:geometry",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q8087"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:differential-geometry",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q188444"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:algebraic-geometry",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q180969"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:topology",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q42989"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:algebraic-topology",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q212803"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:mathematical-analysis",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7754"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:complex-analysis",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q193756"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:functional-analysis",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q190549"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:harmonic-analysis",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q876215"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:differential-equations",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q28575007"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:partial-differential-equations",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q271977"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:dynamical-systems",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q3174497"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:combinatorics",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q76592"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:set-theory",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q12482"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:model-theory",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q467606"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:proof-theory",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q852732"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:computability-theory",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q818930"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:category-theory",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q217413"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:numerical-analysis",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11216"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:mathematical-physics",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q156495"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:applied-mathematics",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q33521"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:operations-research",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q194292"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:game-theory",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q44455"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:information-theory",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q131222"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:financial-mathematics",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q335632"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:bayesian-statistics",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q4874481"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:time-series-analysis",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11850042"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:computational-statistics",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q5157340"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:mathematical-statistics",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q745328"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:history-of-mathematics",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q185264"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:mathematics-education",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q853077"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:control-theory",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q6501221"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:mathematical-biology",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q751611"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "field:systems-science",
+    "type": "field",
+    "domain": "formal_sciences",
+    "level": 1,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2167061"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:cybernetics",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q123637"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:applied-statistics",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1967088"
     },
     "academic_status": "established",
     "created_at": "2026-06-10",
