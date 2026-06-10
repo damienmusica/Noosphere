@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { idSchema, isoDateSchema, prefixedIdSchema } from "./id.ts";
-import { domainKeySchema, nodeTypeSchema } from "./node.ts";
+import { academicStatusSchema, domainKeySchema, nodeTypeSchema } from "./node.ts";
 import { relationTypeSchema } from "./edge.ts";
 import { batchIdSchema } from "./foundry-batch.ts";
 
@@ -47,18 +47,8 @@ export const reasonedProposalFields = {
   ambiguous: z.boolean(),
 } as const;
 
-/**
- * Academic status of a proposed field/subfield (data-strategy track A).
- * Honest tagging instead of exclusion: astrology is a node, tagged `non_academic`.
- * Lives here until the canonical node schema adopts it via its own reviewed change.
- */
-export const academicStatusSchema = z.enum([
-  "established",
-  "emerging",
-  "historical",
-  "non_academic",
-]);
-export type AcademicStatus = z.infer<typeof academicStatusSchema>;
+// academicStatusSchema now lives in node.ts (canonical schema adopted it);
+// imported above and applied here with the stricter discipline-node requirement.
 
 /** Evidence kind per ADR 0007 §A. */
 export const evidenceKindSchema = z.enum(["externally_sourced", "editorial"]);
