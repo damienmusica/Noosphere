@@ -238,9 +238,12 @@ export type SourcePackSummary = z.infer<typeof sourcePackSummarySchema>;
 
 export const foundrySourcePackSchema = z
   .object({
-    // v2 adds per-candidate `instance_of` + `disambiguation`, per-result
+    // v2 added per-candidate `instance_of` + `disambiguation`, per-result
     // `selected_qid`/`ambiguous`, and `request_policy.search_limit`.
-    version: z.literal(2),
+    // v3 (same shape, scoring-knowledge change): journal/periodical/episode/
+    // family-name homonym exclusion, negative-score auto-reject (wrong-kind
+    // best candidate -> unresolved), parenthetical query sanitization.
+    version: z.literal(3),
     provider: z.literal("wikidata"),
     batch_id: batchIdSchema,
     batch_title: z.string().min(1),
@@ -248,7 +251,7 @@ export const foundrySourcePackSchema = z
     generator: z
       .object({
         name: z.string().min(1),
-        version: z.literal(2),
+        version: z.literal(3),
       })
       .strict(),
     request_policy: requestPolicySchema,

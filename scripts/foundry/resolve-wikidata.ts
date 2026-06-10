@@ -51,7 +51,7 @@ const REPO_ROOT = resolve(__dirname, "..", "..");
 
 // --- Constants (all non-secret) ---------------------------------------------
 const GENERATOR_NAME = "scripts/foundry/resolve-wikidata.ts";
-const GENERATOR_VERSION = 2 as const;
+const GENERATOR_VERSION = 3 as const;
 /**
  * Search breadth vs retained breadth. We consider (and entity-fetch) up to
  * SEARCH_LIMIT hits per seed so the correct entity can be recovered even when
@@ -112,6 +112,11 @@ const QID_LABELS: Record<string, string> = {
   Q11424: "film",
   Q482994: "album",
   Q5398426: "television series",
+  Q21191270: "television series episode",
+  Q737498: "academic journal",
+  Q5633421: "scientific journal",
+  Q1002697: "periodical",
+  Q101352: "family name",
   Q4830453: "business",
   Q43229: "organization",
   Q1656682: "event",
@@ -141,6 +146,10 @@ const WORK_LIKE = new Set([
   "Q11424",    // film
   "Q482994",   // album
   "Q5398426",  // television series
+  "Q21191270", // television series episode — "Business Ethics" (The Office) outscored the discipline
+  "Q737498",   // academic journal — "Ancient Philosophy"/"Metaphilosophy" journals outscored the disciplines
+  "Q5633421",  // scientific journal
+  "Q1002697",  // periodical
   "Q7889",     // video game
 ]);
 const INSTITUTION_LIKE = new Set([
@@ -158,6 +167,7 @@ const UNIVERSAL_EXCLUDE = new Set([
   "Q35127",    // website
   "Q8513",     // database
   "Q1656682",  // event
+  "Q101352",   // family name — "Logic" the surname outscored the discipline
 ]);
 
 type KindFamily = "abstract" | "person" | "work" | "institution";
@@ -456,7 +466,11 @@ function scoreCandidate(
   const aligned = alignedHits.length > 0;
   const excluded = excludedHits.length > 0;
   const labels = [entity.label, hit.label ?? "", ...entity.aliases].map(normalizeLabel);
-  const exactLabel = labels.includes(normalizeLabel(seed.label));
+  // Compare against the sanitized search form too, so a qualified seed label
+  // ("Decision Theory (philosophical)") still earns its exact-label bonus.
+  const exactLabel =
+    labels.includes(normalizeLabel(seed.label)) ||
+    labels.includes(normalizeLabel(searchQueryFor(seed.label)));
 
   let score = 0;
   if (aligned) {
@@ -524,26 +538,41 @@ function toCandidate(
 }
 
 // --- Resolution ---------------------------------------------------------------
+/**
+ * Strip parenthetical qualifiers from a seed label before searching, e.g.
+ * "Decision Theory (philosophical)" -> "Decision Theory". Qualifiers are
+ * manifest-authoring hints for humans; wbsearchentities matches labels/aliases
+ * literally, so a qualified query finds nothing (both qualified philosophy
+ * seeds came back unresolved in the v2 run).
+ */
+function searchQueryFor(label: string): string {
+  return label.replace(/\s*\([^)]*\)/g, " ").replace(/\s+/g, " ").trim() || label;
+}
+
 async function resolveSeed(
   seed: FoundryBatch["seed_entities"][number],
 ): Promise<SourcePackResult> {
   const notes: string[] = [];
+  const query = searchQueryFor(seed.label);
   const result: SourcePackResult = {
     seed: {
       label: seed.label,
       ...(seed.expected_node_id ? { expected_node_id: seed.expected_node_id } : {}),
       ...(seed.expected_type ? { expected_type: seed.expected_type } : {}),
     },
-    query: seed.label,
+    query,
     status: "unresolved",
     candidates: [],
     ambiguous: false,
     notes,
   };
+  if (query !== seed.label) {
+    notes.push(`query sanitized: parenthetical qualifier stripped from "${seed.label}"`);
+  }
 
   let hits: WbSearchHit[];
   try {
-    hits = await searchWikidata(seed.label, SEARCH_LIMIT);
+    hits = await searchWikidata(query, SEARCH_LIMIT);
   } catch (err) {
     result.status = "error";
     notes.push(`search failed: ${(err as Error).message}`);
@@ -598,6 +627,21 @@ async function resolveSeed(
   result.candidates = kept.map((s, i) =>
     toCandidate(s.hit, i + 1, s.entity, s.disambiguation),
   );
+
+  // Negative-score auto-reject: a best candidate dominated by excluded-kind
+  // penalties is a wrong-kind match, not a weak match (v2 run: the only
+  // negative-score winner was a scholarly article standing in for
+  // "philosophy of race"). Keep the candidates for transparency, but report
+  // the seed unresolved rather than select garbage.
+  if (kept[0]!.disambiguation.score < 0) {
+    result.status = "unresolved";
+    notes.push(
+      `auto-rejected: best candidate ${kept[0]!.hit.id} scored ` +
+        `${kept[0]!.disambiguation.score} (< 0, wrong-kind match); no selection made`,
+    );
+    return result;
+  }
+
   result.status = "resolved";
 
   // `scored` is non-empty (guarded above), so `kept`/`candidates` have ≥1 item.
@@ -649,7 +693,7 @@ function buildSourcePack(
   const candidateCount = results.reduce((sum, r) => sum + r.candidates.length, 0);
 
   const pack: FoundrySourcePack = {
-    version: 2,
+    version: 3,
     provider: "wikidata",
     batch_id: manifest.id,
     batch_title: manifest.title,
