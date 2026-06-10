@@ -1,0 +1,544 @@
+{
+  "version": 1,
+  "batch_id": "batch:philosophy-summaries-v1",
+  "kind": "editorial-summaries",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-10"
+  },
+  "items": [
+    {
+      "node_id": "field:philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy is an academic discipline that examines fundamental questions about existence, knowledge, value, reason, and language through systematic argument and analysis. Its major branches include metaphysics, epistemology, ethics, logic, and aesthetics, among others. The discipline traces its recorded origins to ancient Greece, though philosophical traditions developed independently across many cultures.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy",
+          "url": "https://plato.stanford.edu/entries/philosophy/"
+        },
+        {
+          "source": "Britannica — Philosophy",
+          "url": "https://www.britannica.com/topic/philosophy"
+        }
+      ],
+      "rationale": "Covers definitional scope (systematic inquiry into fundamental questions), major recognized branches, and one uncontroversial historical anchor (ancient Greek origins) while noting cross-cultural scope.",
+      "uncertainty": "The characterization of ancient Greece as the origin is accurate for the Western tradition but could be read as excluding equally ancient Indian and Chinese traditions; the phrasing attempts to hedge this but QC should verify it reads as intended.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:aesthetics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Aesthetics is the branch of philosophy concerned with the nature of beauty, art, and aesthetic experience, as well as the principles governing judgments of taste. Central questions include what makes something beautiful or sublime, how artworks convey meaning, and whether aesthetic judgments are objective or subjective. The field overlaps with the philosophy of art and with empirical work in psychology of perception.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Aesthetics",
+          "url": "https://plato.stanford.edu/entries/aesthetics/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Aesthetics",
+          "url": "https://iep.utm.edu/aesthetics/"
+        }
+      ],
+      "rationale": "States the recognized scope (beauty, art, aesthetic experience, taste), names central questions, and notes the standard overlap with philosophy of art — all standard reference-confirmable claims.",
+      "uncertainty": "The three-sentence structure implies a clean boundary between aesthetics and philosophy of art that some sources treat as coextensive; QC should verify this framing.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:ancient-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Ancient philosophy refers to the philosophical traditions that developed in the ancient Mediterranean world, principally in Greece and Rome, from roughly the 6th century BCE through the late antique period. It includes pre-Socratic cosmology, the Platonic and Aristotelian schools, Hellenistic movements such as Stoicism and Epicureanism, and Neoplatonism. These traditions addressed questions in metaphysics, ethics, logic, and natural philosophy that continue to inform later Western philosophy.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Ancient Philosophy",
+          "url": "https://plato.stanford.edu/entries/ancient-philosophy/"
+        },
+        {
+          "source": "Britannica — Ancient Greek philosophy",
+          "url": "https://www.britannica.com/topic/ancient-Greek-philosophy"
+        }
+      ],
+      "rationale": "Scope, approximate dates, and named schools are all standard encyclopedic content for this period marker; the node covers Greco-Roman antiquity as its defining anchor.",
+      "uncertainty": "The phrase 'late antique period' is intentionally vague; some sources set the endpoint at different dates or events (e.g., closure of the Platonic Academy in 529 CE). QC should verify whether the phrasing is too imprecise.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:axiology",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Axiology is the branch of philosophy that studies value in its broadest sense, encompassing both ethics (moral value) and aesthetics (aesthetic value). It addresses questions about the nature of value, what things have intrinsic versus instrumental worth, and how values relate to facts. The term came into wide academic use in the early twentieth century as a unifying label for these inquiries.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Value Theory",
+          "url": "https://plato.stanford.edu/entries/value-theory/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Axiology",
+          "url": "https://iep.utm.edu/axiology/"
+        }
+      ],
+      "rationale": "Defines the field by its scope (value broadly construed, subsuming ethics and aesthetics), names the central distinction (intrinsic vs. instrumental), and gives a historically grounded note on the term's emergence.",
+      "uncertainty": "The claim that the term came into wide use in the early twentieth century is based on general knowledge of the field's historiography; QC should verify against a reference that confirms this dating.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:bioethics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Bioethics is the field that applies ethical analysis to questions arising in the life sciences and medicine, including issues of clinical decision-making, research with human subjects, healthcare policy, and the moral status of organisms. It draws on normative ethics, philosophy of medicine, and the life sciences, as well as legal and social perspectives. The field emerged as a distinct discipline in the latter half of the twentieth century.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Bioethics",
+          "url": "https://plato.stanford.edu/entries/bioethics/"
+        },
+        {
+          "source": "Britannica — Bioethics",
+          "url": "https://www.britannica.com/topic/bioethics"
+        }
+      ],
+      "rationale": "Covers recognized scope (medicine and life sciences), representative subareas (clinical ethics, research ethics, health policy, moral status), interdisciplinary connections, and the uncontroversial historical anchor of 20th-century emergence.",
+      "uncertainty": "The characterization of the field as emerging in the 'latter half of the twentieth century' is standard but approximate; some sources date the term or institutionalization differently.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:chinese-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Chinese philosophy encompasses the philosophical traditions that originated and developed in China, including Confucianism, Daoism, Legalism, Mohism, and later Buddhist-influenced schools. Its recorded history extends at least to the Spring and Autumn period (roughly 8th–5th centuries BCE), a period of intensive intellectual activity often called the Hundred Schools of Thought. These traditions address ethics, political philosophy, cosmology, and the cultivation of the self.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Chinese Philosophy",
+          "url": "https://plato.stanford.edu/entries/chinese-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Chinese Philosophy",
+          "url": "https://iep.utm.edu/chinese-philosophy/"
+        }
+      ],
+      "rationale": "Names the main recognized schools, gives the standard historical anchor (Spring and Autumn / Warring States, Hundred Schools), and describes recognized thematic coverage.",
+      "uncertainty": "The exact date range for the Spring and Autumn period and its mapping to philosophical activity varies slightly across sources; QC should check that the phrasing aligns with a standard reference.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:environmental-ethics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Environmental ethics examines the moral relationship between human beings and the natural world, including questions about the intrinsic value of non-human species, ecosystems, and the biosphere. Central debates concern whether moral consideration should extend beyond sentient creatures to plants, species, or ecosystems, and what obligations follow from these commitments. The field developed as a distinct academic discipline in the 1970s, partly in response to growing ecological concern.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Environmental Ethics",
+          "url": "https://plato.stanford.edu/entries/ethics-environmental/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Environmental Ethics",
+          "url": "https://iep.utm.edu/envi-eth/"
+        }
+      ],
+      "rationale": "Covers recognized scope (moral relationship to nature), the central debate (extension of moral consideration), and the uncontroversial historical anchor (1970s emergence).",
+      "uncertainty": "Attributing the field's emergence to the 1970s is widely accepted but simplifies a longer history of nature ethics; QC should verify this is presented as approximate rather than a precise founding date.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:epistemology",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Epistemology is the branch of philosophy concerned with the nature, sources, and limits of knowledge and justified belief. It investigates questions such as what distinguishes knowledge from mere belief, what the conditions for epistemic justification are, and how skeptical challenges can be met. Along with metaphysics, ethics, and logic, it is one of the central branches of philosophy.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Epistemology",
+          "url": "https://plato.stanford.edu/entries/epistemology/"
+        },
+        {
+          "source": "Britannica — Epistemology",
+          "url": "https://www.britannica.com/topic/epistemology"
+        }
+      ],
+      "rationale": "Standard encyclopedic scope statement: nature and limits of knowledge, justification, skepticism; the claim that it is a central branch of philosophy is uncontroversial.",
+      "uncertainty": "The enumeration 'metaphysics, ethics, and logic' as the co-central branches is one conventional framing; different sources enumerate branches slightly differently.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:ethics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Ethics is the branch of philosophy that studies moral principles, values, and conduct, asking what is right or wrong, what kind of person one should be, and how societies ought to be organized. It is conventionally divided into metaethics (foundations of moral judgment), normative ethics (theories of right action), and applied ethics (ethics applied to specific domains). Ethics is one of the oldest and most central branches of philosophy.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Ethics",
+          "url": "https://plato.stanford.edu/entries/ethics/"
+        },
+        {
+          "source": "Britannica — Ethics",
+          "url": "https://www.britannica.com/topic/ethics-philosophy"
+        }
+      ],
+      "rationale": "The three-part division (metaethics, normative, applied) is a standard reference taxonomy; the scope statement (right/wrong, virtue, social organization) covers the recognized main questions.",
+      "uncertainty": "The tripartite division is conventional but not universally adopted by all sources; some structures treat applied ethics differently. QC should verify this is presented as conventional rather than the only framing.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:indian-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Indian philosophy encompasses the diverse philosophical and religious traditions that developed on the Indian subcontinent, including the six classical Hindu (Astika) schools, the heterodox (Nastika) traditions of Buddhism and Jainism, and later schools of Vedanta, Nyaya, and Mimamsa. Its recorded history extends to at least the composition of the early Upanishads, roughly from the 8th century BCE onward. Recurring themes include the nature of the self (atman), liberation (moksha), knowledge (pramana), and the relationship between language and reality.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Indian Philosophy",
+          "url": "https://plato.stanford.edu/entries/indian-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Indian Philosophy",
+          "url": "https://iep.utm.edu/indian-philosophy/"
+        }
+      ],
+      "rationale": "Names the main recognized school groupings (Astika/Nastika, major named schools), gives the standard historical anchor (early Upanishads, approx. 8th c. BCE), and describes recurring themes found in multiple standard references.",
+      "uncertainty": "Dating the early Upanishads to 'roughly from the 8th century BCE' is a widely cited estimate but scholarly dating ranges vary considerably; QC should flag whether this level of precision is appropriate.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:islamic-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Islamic philosophy refers to the philosophical tradition that developed within the context of Islamic civilization, beginning from the 8th–9th centuries CE with the translation and engagement with Greek philosophy (particularly Aristotle and Neoplatonism). Prominent figures include Al-Kindi, Al-Farabi, Ibn Sina (Avicenna), and Ibn Rushd (Averroes), whose works were influential in both the Islamic world and medieval European scholasticism. The tradition addresses metaphysics, cosmology, ethics, and the relationship between reason and revelation.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Islamic Philosophy",
+          "url": "https://plato.stanford.edu/entries/arabic-islamic-philosophy/"
+        },
+        {
+          "source": "Britannica — Islamic philosophy",
+          "url": "https://www.britannica.com/topic/Islamic-philosophy"
+        }
+      ],
+      "rationale": "Names recognized major figures, gives the standard historical anchor (translation movement, 8th–9th c.), and identifies the recognized thematic scope and the field's documented influence on European scholasticism.",
+      "uncertainty": "The summary uses 'Islamic philosophy' but the SEP entry uses 'Arabic and Islamic philosophy'; QC should verify the preferred label and whether the scope covers only Arabic-language or also Persian and other traditions adequately.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:medieval-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Medieval philosophy covers philosophical thought in Europe and the Islamic and Jewish worlds roughly from the 5th through the 15th centuries CE, a period characterized by close engagement between philosophy and theology. Key themes include the existence and nature of God, the reconciliation of faith and reason, and debates over universals. Scholasticism, associated with thinkers such as Thomas Aquinas and Duns Scotus, was the dominant method of philosophical inquiry in the Latin West.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Medieval Philosophy",
+          "url": "https://plato.stanford.edu/entries/medieval-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Medieval Philosophy",
+          "url": "https://iep.utm.edu/medieval-philosophy/"
+        }
+      ],
+      "rationale": "Covers recognized geographic and temporal scope, dominant themes (faith and reason, universals, God's nature), and the scholastic method with named canonical thinkers — all standard encyclopedic content.",
+      "uncertainty": "The temporal boundaries (5th–15th centuries) are conventional but the starting and ending dates vary by source and by which tradition is considered; QC should verify the chosen dates are defensible.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:metaethics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Metaethics examines the foundations and presuppositions of moral discourse, including questions about the ontological status of moral facts, the semantics of moral language, and the epistemology of moral belief. Major positions include moral realism (moral facts exist independently of minds), anti-realism (they do not), and various intermediate views. It is distinguished from normative ethics, which asks what is right or wrong, by its focus on the nature of moral claims themselves.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Metaethics",
+          "url": "https://plato.stanford.edu/entries/metaethics/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Metaethics",
+          "url": "https://iep.utm.edu/metaethics/"
+        }
+      ],
+      "rationale": "Defines scope (foundations of moral discourse: ontology, semantics, epistemology), names the canonical realism/anti-realism divide, and distinguishes metaethics from normative ethics — all standard reference content.",
+      "uncertainty": "The two-position summary (realism vs. anti-realism) oversimplifies a more complex landscape; however, this is appropriate at summary length and is the standard framing in references.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:metaphysics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Metaphysics is the branch of philosophy that investigates the fundamental nature of reality, including questions about existence, identity, causation, time, space, and modality. It encompasses ontology (the study of what exists and the categories of being) as well as inquiries into free will, persistence through change, and the relationship between mind and world. Metaphysics is one of the oldest branches of philosophy, with systematic treatments traceable to Aristotle's Metaphysica.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Metaphysics",
+          "url": "https://plato.stanford.edu/entries/metaphysics/"
+        },
+        {
+          "source": "Britannica — Metaphysics",
+          "url": "https://www.britannica.com/topic/metaphysics"
+        }
+      ],
+      "rationale": "Covers recognized scope (fundamental nature of reality), enumerates canonical subareas (existence, causation, time, space, modality, ontology, free will), and provides the Aristotelian historical anchor.",
+      "uncertainty": "The reference to Aristotle's Metaphysica as the anchor for 'systematic treatment' is standard but the Aristotelian corpus was organized by later editors; phrasing is careful enough that QC should be able to verify it.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:normative-ethics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Normative ethics is the branch of moral philosophy concerned with developing and evaluating general principles or theories about how one ought to act. The three major theoretical frameworks are consequentialism (which evaluates actions by their outcomes), deontology (which evaluates actions by their conformity to duties or rules), and virtue ethics (which focuses on the character of the moral agent). It is distinguished from metaethics, which examines the foundations of moral claims, and from applied ethics, which addresses specific practical domains.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Normative Ethics",
+          "url": "https://plato.stanford.edu/entries/ethics-normative/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Normative Ethics",
+          "url": "https://iep.utm.edu/normativ/"
+        }
+      ],
+      "rationale": "The three-framework taxonomy (consequentialism, deontology, virtue ethics) is the standard reference framing; the scope and the distinctions from metaethics and applied ethics are uncontroversial.",
+      "uncertainty": "Some references add contractualism or other theories as equally major frameworks; the three-theory summary is conventional but not exhaustive, which QC should note.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:philosophy-of-action",
+      "locale": "en",
+      "status": "generated",
+      "summary": "The philosophy of action studies the nature of human action, agency, intention, and practical reasoning. Central questions include what distinguishes a bodily movement from a genuine action, how intentions relate to reasons and causes, and what is required for free and responsible action. The field intersects closely with moral philosophy, philosophy of mind, and the social sciences.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Action",
+          "url": "https://plato.stanford.edu/entries/action/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Philosophy of Action",
+          "url": "https://iep.utm.edu/action/"
+        }
+      ],
+      "rationale": "Covers recognized scope (agency, intention, practical reason), the canonical central question (action vs. mere movement, reasons vs. causes), and standard interdisciplinary connections.",
+      "uncertainty": "The framing of 'reasons vs. causes' as the canonical central question is standard in analytic philosophy of action but less central in some other traditions; this is appropriate given that the field is generally taught in the analytic tradition.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:philosophy-of-biology",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of biology examines the foundations, concepts, and methods of the biological sciences, including questions about the nature of species, teleology and function in biology, the structure of evolutionary theory, and reductionism in biology. It investigates whether biological explanations are reducible to chemistry and physics, and how concepts such as fitness, adaptation, and heredity should be understood. The field developed as a distinct subdiscipline in the second half of the twentieth century.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of Biology",
+          "url": "https://plato.stanford.edu/entries/philosophy-biology/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Philosophy of Biology",
+          "url": "https://iep.utm.edu/bio-phil/"
+        }
+      ],
+      "rationale": "Covers recognized scope (foundations and concepts of biology), canonical central questions (species, teleology, reductionism, evolution), and the uncontroversial historical anchor (20th-century emergence as a distinct field).",
+      "uncertainty": "The framing gives particular weight to analytic philosophy of biology concerns; some approaches include philosophy of ecology or genetics more prominently; QC should verify the summary is not inadvertently narrow.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:philosophy-of-education",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of education examines the aims, methods, and foundations of educational practice, as well as the concepts of teaching, learning, and knowledge transmission. It addresses normative questions about what education ought to accomplish and descriptive-analytical questions about what education is. The field draws on ethics, epistemology, political philosophy, and philosophy of mind.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of Education",
+          "url": "https://plato.stanford.edu/entries/education-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Philosophy of Education",
+          "url": "https://iep.utm.edu/edu-phil/"
+        }
+      ],
+      "rationale": "Covers recognized scope (aims, methods, foundations of education), the normative/descriptive-analytical distinction, and standard interdisciplinary connections — all confirmable from standard references.",
+      "uncertainty": "The summary does not mention specific influential figures or schools (Dewey, Plato); this is intentional to keep to facts rather than evaluative rankings, but QC may wish to check whether any single uncontroversial historical anchor would improve coverage.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:philosophy-of-language",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of language investigates the nature of language and its relationship to thought, meaning, reference, and truth. Central topics include theories of meaning, the nature of reference, speech act theory, the relationship between linguistic and conceptual content, and vagueness. It became a dominant area of analytic philosophy in the twentieth century, with seminal contributions from figures such as Frege, Russell, and Wittgenstein.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of Language",
+          "url": "https://plato.stanford.edu/entries/philosophy-language/"
+        },
+        {
+          "source": "Britannica — Philosophy of language",
+          "url": "https://www.britannica.com/topic/philosophy-of-language"
+        }
+      ],
+      "rationale": "Covers recognized scope and central topics, and names three canonical historical figures (Frege, Russell, Wittgenstein) whose centrality to the field is uncontroversial in standard references.",
+      "uncertainty": "Describing the field as 'dominant' in analytic philosophy is a characterization that some sources might qualify; the named figures are uncontroversial but their specific contributions are not described, which is intentional.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:philosophy-of-law",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of law (also called jurisprudence) examines the nature of law, legal systems, and legal reasoning, as well as the moral basis of legal authority and obligation. Central questions include what distinguishes law from morality, what justifies legal punishment, and how judges should interpret statutes. The field encompasses both analytical jurisprudence (what law is) and normative jurisprudence (what law ought to be).",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of Law",
+          "url": "https://plato.stanford.edu/entries/law-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Philosophy of Law",
+          "url": "https://iep.utm.edu/law-phil/"
+        }
+      ],
+      "rationale": "The analytical/normative jurisprudence distinction is standard; the scope (law's nature, moral basis of authority, punishment, interpretation) covers canonical central questions found in reference sources.",
+      "uncertainty": "The equivalence of 'philosophy of law' and 'jurisprudence' is standard in philosophy but some law schools use 'jurisprudence' more broadly; QC should verify the framing is defensible.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:philosophy-of-mathematics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of mathematics examines questions about the nature and foundations of mathematics, including whether mathematical objects exist independently of minds (Platonism), whether they are mental constructions (intuitionism), or whether they are features of language and logic (formalism and logicism). It also addresses questions about the applicability of mathematics to the physical world and the nature of mathematical proof. The field has close ties to logic and the foundations of mathematics as a formal discipline.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of Mathematics",
+          "url": "https://plato.stanford.edu/entries/philosophy-mathematics/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Philosophy of Mathematics",
+          "url": "https://iep.utm.edu/math-phil/"
+        }
+      ],
+      "rationale": "Names the four canonical foundational positions (Platonism, intuitionism, formalism, logicism) and two central questions (applicability, nature of proof) — all standard in reference sources.",
+      "uncertainty": "The definitions of logicism and formalism in one sentence are simplified; QC should verify the short characterizations are accurate enough for an encyclopedic summary.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:philosophy-of-mind",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of mind examines the nature of mental phenomena, including consciousness, perception, belief, desire, and intentionality, and their relationship to physical processes in the brain and body. The mind-body problem — whether and how mental states are identical to, or reducible to, or distinct from physical states — is the field's central and most discussed question. Philosophy of mind connects closely with cognitive science, neuroscience, and psychology.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of Mind",
+          "url": "https://plato.stanford.edu/entries/mind/"
+        },
+        {
+          "source": "Britannica — Philosophy of mind",
+          "url": "https://www.britannica.com/topic/philosophy-of-mind"
+        }
+      ],
+      "rationale": "Covers recognized scope (mental phenomena: consciousness, perception, intentionality), the canonical central problem (mind-body problem), and the standard interdisciplinary connections — all confirmable from standard references.",
+      "uncertainty": "Describing the mind-body problem as 'the field's central and most discussed question' is a characterization; while widely supported, it could be contested by those who foreground other questions such as intentionality or consciousness separately.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:philosophy-of-physics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of physics examines the foundational concepts, interpretations, and presuppositions of physical theories, with particular attention to quantum mechanics, spacetime theories, statistical mechanics, and the nature of laws of nature. Central questions include the interpretation of the quantum state, the nature of space and time, and the relationship between fundamental physics and other sciences. It operates at the intersection of physics and philosophy of science.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of Physics",
+          "url": "https://plato.stanford.edu/entries/physics/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Philosophy of Physics",
+          "url": "https://iep.utm.edu/phys-phi/"
+        }
+      ],
+      "rationale": "Covers recognized scope and canonical theory areas (quantum mechanics, spacetime, statistical mechanics, laws of nature) — all standard topics in reference sources for this subfield.",
+      "uncertainty": "The summary may underrepresent philosophy of classical mechanics or thermodynamics relative to the prominence given to quantum and spacetime; QC should verify the emphasis is appropriate.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:philosophy-of-science",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of science examines the methods, foundations, and implications of the natural and social sciences, addressing questions about scientific explanation, the confirmation of theories, the nature of scientific laws, and scientific realism. It also investigates the structure of scientific revolutions and the demarcation between science and non-science. The field developed as a distinct discipline in the twentieth century, influenced by logical empiricism and its critics.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of Science",
+          "url": "https://plato.stanford.edu/entries/science-philosophy/"
+        },
+        {
+          "source": "Britannica — Philosophy of science",
+          "url": "https://www.britannica.com/topic/philosophy-of-science"
+        }
+      ],
+      "rationale": "Covers recognized scope (methods, foundations, implications of science), canonical central questions (explanation, confirmation, laws, realism, demarcation), and the historical anchor (20th century, logical empiricism).",
+      "uncertainty": "Describing the field as developing 'in the twentieth century' is broadly correct but the philosophical analysis of scientific knowledge has much older roots; QC should verify the phrasing doesn't imply there were no earlier predecessors.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:philosophy-of-technology",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of technology examines the nature, development, and social implications of technology, as well as the relationship between technology and human life, values, and society. Topics include the nature of technical artifacts, the ethics of emerging technologies, determinism versus shaping views of technology, and the phenomenology of technological experience. The field gained academic recognition in the twentieth century, with contributions from both continental and analytic traditions.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of Technology",
+          "url": "https://plato.stanford.edu/entries/technology/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Philosophy of Technology",
+          "url": "https://iep.utm.edu/technolo/"
+        }
+      ],
+      "rationale": "Covers recognized scope (nature, development, social implications of technology), canonical central topics (artifacts, technological determinism, ethics, phenomenology), and the 20th-century disciplinary anchor.",
+      "uncertainty": "The reference to both continental and analytic traditions is accurate but brief; QC should check whether this framing is neutral enough given ongoing debates about the relative weight of each tradition in the field.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:political-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Political philosophy examines the foundations, justification, and critique of political institutions, authority, and power, addressing questions about the nature of the state, justice, liberty, equality, and rights. It encompasses both normative questions (what political arrangements are just) and analytical questions (what political concepts mean). Political philosophy has been practiced since antiquity and overlaps closely with political theory in the social sciences.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Political Philosophy",
+          "url": "https://plato.stanford.edu/entries/political-philosophy/"
+        },
+        {
+          "source": "Britannica — Political philosophy",
+          "url": "https://www.britannica.com/topic/political-philosophy"
+        }
+      ],
+      "rationale": "Covers recognized scope (foundations of political institutions), canonical central topics (state, justice, liberty, equality, rights), normative/analytical distinction, and the historical depth anchor.",
+      "uncertainty": "The overlap with political theory in the social sciences is noted but the distinction between the two is contested; QC should verify the phrasing is neutral and does not take sides.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:pragmatism",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Pragmatism is an American philosophical tradition that defines the meaning of concepts by their practical consequences and evaluates beliefs and theories by their usefulness in inquiry and action. Founded in the late nineteenth century by thinkers including Charles Sanders Peirce, William James, and John Dewey, it has influenced epistemology, ethics, philosophy of language, and social philosophy. Neo-pragmatism, associated with thinkers such as Richard Rorty, extended the tradition in the late twentieth century.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Pragmatism",
+          "url": "https://plato.stanford.edu/entries/pragmatism/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Pragmatism",
+          "url": "https://iep.utm.edu/pragmati/"
+        }
+      ],
+      "rationale": "Names three canonical founding figures (Peirce, James, Dewey), defines the core commitment (meaning by practical consequences), gives the historical anchor (late 19th century), and names one established continuation (neo-pragmatism/Rorty).",
+      "uncertainty": "Characterizing pragmatism as exclusively 'American' is standard but potentially reductive given its global influence; the description of neo-pragmatism may also be contested. QC should verify the framing.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:renaissance-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Renaissance philosophy covers the philosophical thought of roughly the 14th through 17th centuries in Europe, a period marked by renewed engagement with classical Greek and Roman texts, humanist reappraisals of human nature and dignity, and the early stages of natural philosophy that would contribute to the Scientific Revolution. Key themes include humanism, Neoplatonist revivals, skepticism, and the critique of scholastic method. The period bridges medieval and early modern philosophy.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Renaissance Philosophy",
+          "url": "https://plato.stanford.edu/entries/renaissance-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Renaissance Philosophy",
+          "url": "https://iep.utm.edu/renaisph/"
+        }
+      ],
+      "rationale": "Covers the recognized temporal scope (approx. 14th–17th c.), canonical themes (humanism, Neoplatonism, skepticism, anti-scholasticism), and the bridging function between medieval and early modern philosophy.",
+      "uncertainty": "The dates 14th–17th centuries are approximate and sources vary; some place Renaissance philosophy as starting from the 15th century. The connection to the Scientific Revolution is stated cautiously ('would contribute') to avoid overclaiming.",
+      "ambiguous": true
+    }
+  ]
+}
