@@ -246,3 +246,72 @@ applied-mathematics + mathematical-physics + numerical-analysis (subfield).)
    mislabel, granularity mismatch) are all caught by the multi-signal QC above at n=42 scale.
    If the next continents push concept-matching volume up, the QC checklist here is the spec
    for a resolver v4 extension.
+
+---
+
+## Implementation append (2026-06-11, session #7) — ratified gate executed
+
+**Policy basis:** implementation ratified by the CPO 2026-06-11 (vault decision log (20)), schema
+landed as `external_metrics` (additive optional; PR #45). This append is the permanent per-node
+record of the data pass.
+
+**Method:** every count was **re-queried live** on 2026-06-11 (api.openalex.org, polite-pool
+`mailto`, maintainer-local, no committed scripts) — numbers were *not* copied from the verdict
+table above. Lookups were keyed **only by the verdict table's Concept IDs** (never by QID, per the
+Q141495 duplicate-link finding; never by label, per the dental-calculus trap). Every response was
+re-cross-checked before writing: response ID round-trips the requested Concept ID, `display_name`
+matches the verdict table, the concept's own `wikidata` value matches the node's resolver-verified
+QID, and `level` matches. **34/34 rank-1 nodes passed all signals**; same-day counts matched the
+table exactly (no drift, as expected for a same-day re-query).
+
+**Written to /data (36 nodes):** the 34 rank-1 nodes plus 2 accepted manual cases, each receiving
+`external_ids.openalex` (verified Concept ID) and
+`external_metrics.openalex = { works_count, cited_by_count, as_of: "2026-06-11", entity }`.
+
+### Manual-case verdicts (decision-log-(9) path, live evidence, permanent record)
+
+1. **subfield:optimization → C126255220 "Mathematical optimization" — ACCEPT.** Live re-fetch:
+   display_name "Mathematical optimization", description "study of mathematical algorithms for
+   optimization problems", level 1, works 2,407,827, cited_by 36,901,800, and the concept's own
+   `wikidata` field is **Q141495 = the node's verified QID**. All signals align; the duplicate-QID
+   quirk is a defect of the `wikidata:` *lookup endpoint* (which returns C2989189746), not of this
+   entity. The verdict table already called it the obvious manual pick.
+2. **subfield:complex-analysis → C107837686 "Complex-valued function" — SKIP (honest gap).** Live
+   re-fetch confirms the split signals: description ("branch of mathematics studying functions of a
+   complex variable") and wikidata (Q193756 = our QID) say *field*; display_name
+   ("Complex-valued function"), level 3, and works 1,427 say *object-granularity entity*. Under the
+   multi-signal identity discipline a split like this is a failed identity, not a judgment call to
+   override: recording it would assert an identity the entity's own display name denies, and would
+   attach an object-sliver count (1.4k works — vs 65k for harmonic analysis, a *subarea* of the same
+   branch) to a major discipline. No plain "Complex analysis" concept exists. The node joins the
+   honest-gap set. Reversible: if OpenAlex relabels the entity upstream, this record is the re-audit
+   pointer.
+3. **subfield:differential-equations → C78045399 "Differential equation" — ACCEPT.** Live re-fetch:
+   display_name "Differential equation", level 2, works 367,426, cited_by 4,648,907. The naming
+   pattern (singular object-name for the subject area) is **exactly the accepted rank-1 precedent
+   C93779851 "Partial differential equation"** — same level, same tree position, same singular
+   naming, and our PDE node likewise carries the equation-object QID. The subject's field has no
+   name distinct from its objects ("differential equations" *is* the area name), so no deliberate
+   model distinction is collapsed. The QID divergence (concept carries Q11214, singular equation;
+   our node carries Q28575007, the plural class) is a Wikidata-side granularity variant, recorded
+   here permanently; `external_ids.wikidata` is unchanged.
+4. **subfield:time-series-analysis → C151406439 "Time series" — SKIP (honest gap).** Live re-fetch:
+   the concept's own description is "**set of data indexed in time order**" — the *data object*,
+   not the analysis field. Our node deliberately encodes the field-vs-object distinction (and
+   Wikidata maintains both items separately: Q186588 the object vs Q11850042 the field, our node's
+   QID). Unlike case 3, accepting here would collapse a distinction our model deliberately draws —
+   a false identity regardless of how correlated the tagged literatures are.
+
+### Final distribution
+
+| outcome | count | nodes |
+|---|---|---|
+| written (rank-1) | 34 | per the verdict table |
+| written (manual accept) | 2 | optimization, differential-equations |
+| skipped (manual, identity failed) | 2 | complex-analysis, time-series-analysis |
+| absent upstream (honest gap, unchanged) | 4 | calculus, algebra, topology, applied-statistics |
+
+/data impact: 36 nodes gain `external_ids.openalex` + `external_metrics.openalex`; no status,
+edge, or translation changes. The works_count semantics caveat (level-dependent tagging breadth,
+§legacy-Concepts finding 7) remains a documented caveat — raw values recorded as returned;
+interpretation stays downstream.
