@@ -1899,7 +1899,7 @@
     "target": "subfield:mathematical-logic",
     "relation": "part_of",
     "confidence": 0.75,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -1911,7 +1911,8 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "Pillar of mathematical logic (MSC 03C/D/E/F): part_of chains may run deeper than the flat node levels (§12 precedent, 2026-06-10). QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md. Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+    "note": "Pillar of mathematical logic (MSC 03C/D/E/F): part_of chains may run deeper than the flat node levels (§12 precedent, 2026-06-10). Clause-6 resolution 2026-06-11 (dominant position): computability theory stays under mathematical logic — SEP ('a branch of contemporary mathematical logic'), LCC QA9.59, MSC 03D, mathematics-department logic groups (Berkeley/Cornell/Notre Dame/UW-Madison). Minority position (permanent): Britannica notes much specialized work 'belongs as much to computer science as to logic'; computability is core theoretical-CS curriculum. Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md.",
+    "disputed": true
   },
   {
     "id": "edge:category-theory-part-of-mathematics",
@@ -1957,7 +1958,7 @@
     "target": "field:mathematics",
     "relation": "part_of",
     "confidence": 0.7,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -1969,7 +1970,8 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+    "note": "Clause-6 resolution 2026-06-11 (dominant position): mathematical physics stays under mathematics — Britannica ('branch of mathematical analysis'), mathematics-department housing at ETH/Columbia/Oxford/UW, MSC 81-83. Minority position (permanent): LCC files mathematical physics under Physics (QC20, id.loc.gov live); interface framing is standard. Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md.",
+    "disputed": true
   },
   {
     "id": "edge:applied-mathematics-part-of-mathematics",
@@ -1977,7 +1979,7 @@
     "target": "field:mathematics",
     "relation": "part_of",
     "confidence": 0.85,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -1989,7 +1991,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+    "note": "Clause-6 resolution 2026-06-11 (consensus): applied mathematics is a recognized division of the mathematical sciences (standalone departments at Brown/UW, Cambridge DAMTP, MIT division, Princeton Companion, IMA, SIAM); umbrella-only framing found no support. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
   },
   {
     "id": "edge:operations-research-part-of-mathematics",
@@ -2009,7 +2011,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+    "note": "v1.1/clause-6 research 2026-06-11: genuine three-way split (MSC 90 + UDC 519.8 file OR in mathematics; LCC T57 + NSF + Cornell ORIE/Berkeley IEOR anchor it in engineering; Britannica/EURO/INFORMS frame it as its own multidisciplinary practice) — node stays proposed, edge stays endpoint-capped; cross-listing candidate. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
   },
   {
     "id": "edge:game-theory-part-of-mathematics",
@@ -2017,7 +2019,7 @@
     "target": "field:mathematics",
     "relation": "part_of",
     "confidence": 0.7,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -2029,7 +2031,8 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+    "note": "Clause-6 resolution 2026-06-11 (dominant position): game theory stays under mathematics — Britannica ('branch of applied mathematics'), LCC QA269, UDC 519.83, MSC 91A. Minority position (permanent): economics-primary framing of the applications ecosystem (JEL C7, Handbook of Game Theory with Economic Applications) and algorithmic game theory claimed by theoretical CS. Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md.",
+    "disputed": true
   },
   {
     "id": "edge:information-theory-part-of-mathematics",
@@ -2037,7 +2040,7 @@
     "target": "field:mathematics",
     "relation": "part_of",
     "confidence": 0.7,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -2049,7 +2052,8 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+    "note": "Clause-6 resolution 2026-06-11 (dominant position): information theory stays under mathematics — Encyclopedia of Mathematics ('branch of applied mathematics and cybernetics'), Britannica ('a mathematical representation...'), UDC 519.7 cluster, MSC 94. Minority position (permanent): ECE-department operational home (UCSD/UCSB) and theoretical-CS scope claims (SIGACT); LCC files it at Q350-390 under Science (General), neither side. Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md.",
+    "disputed": true
   },
   {
     "id": "edge:financial-mathematics-part-of-mathematics",
@@ -2057,7 +2061,7 @@
     "target": "field:mathematics",
     "relation": "part_of",
     "confidence": 0.7,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -2069,7 +2073,8 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+    "note": "Clause-6 resolution 2026-06-11 (dominant position): financial mathematics stays under mathematics — SIAM SIAG-FME + SIAM J. Financial Mathematics, mathematics-department program pattern (NYU Courant/FSU/UChicago/UW), MSC 91G, EBSCO ('a field of mathematics'). Minority position (permanent): LCC files the area under Finance (HG106); a real business-school program strand exists (BU Questrom, CMU MSCF). Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md.",
+    "disputed": true
   },
   {
     "id": "edge:history-of-mathematics-part-of-mathematics",
@@ -2109,7 +2114,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+    "note": "v1.1/clause-6 research 2026-06-11: genuine split (ICMI is a commission of the IMU and MSC 97 is a top-level section, but OECD FORD files educational sciences under Social Sciences and the dominant doctoral home is education schools; ESM is didactics-framed) — node stays proposed, edge stays endpoint-capped; cross-listing candidate. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
   },
   {
     "id": "edge:control-theory-part-of-mathematics",
@@ -2129,7 +2134,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+    "note": "v1.1/clause-6 research 2026-06-11: genuine split (LCC itself files control theory both at QA402.3 under Mathematics--Analysis and at TJ213 under Mechanical engineering; MSC 93 math-side vs Britannica technology-side plus engineering-unanimous institutional homes; IFAC/LIDS explicitly dual) — node stays proposed, edge stays endpoint-capped; cross-listing candidate. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
   },
   {
     "id": "edge:mathematical-biology-part-of-mathematics",
@@ -2137,7 +2142,7 @@
     "target": "field:mathematics",
     "relation": "part_of",
     "confidence": 0.7,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -2149,7 +2154,8 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+    "note": "Clause-6 resolution 2026-06-11 (dominant position): mathematical biology stays under mathematics — mathematics/applied-mathematics housing at Oxford WCMB/Brown/UW, MSC 92, Britannica methods framing; SMB/ESMTB interface framing recorded. Minority position (permanent): LCC shelves the area under Biology (QH323.5). Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md.",
+    "disputed": true
   },
   {
     "id": "edge:bayesian-statistics-part-of-statistics",
@@ -2157,7 +2163,7 @@
     "target": "field:statistics",
     "relation": "part_of",
     "confidence": 0.8,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -2169,7 +2175,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md. Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+    "note": "Clause-6 resolution 2026-06-11: node identity contest resolved dominant-subfield (the node carries disputed; minority = paradigm/method framing) — the part_of-statistics claim itself is uncontested by any source, so the edge promotes plain (operationalization ruling 4). A-flag retirement (session #4) stands. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
   },
   {
     "id": "edge:time-series-analysis-part-of-statistics",
@@ -2177,7 +2183,7 @@
     "target": "field:statistics",
     "relation": "part_of",
     "confidence": 0.8,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -2189,7 +2195,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md. Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+    "note": "Clause-6 resolution 2026-06-11: node identity contest resolved dominant-area (the node carries disputed; minority = topic-within-methodology framing) — the part_of-statistics claim itself is uncontested, so the edge promotes plain (operationalization ruling 4). A-flag retirement (session #4) stands. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
   },
   {
     "id": "edge:computational-statistics-part-of-statistics",
@@ -2197,7 +2203,7 @@
     "target": "field:statistics",
     "relation": "part_of",
     "confidence": 0.75,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -2209,7 +2215,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md. Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+    "note": "Clause-6 resolution 2026-06-11 (consensus): the feared CS/ML-primary position found zero source support; statistics-side filings unanimous (ASA Statistical Computing section, Berkeley statistics, MSC 62-08, LCC QA276.4), interface framing recorded. A-flag retirement (session #4) stands. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
   },
   {
     "id": "edge:mathematical-statistics-part-of-statistics",
@@ -2267,6 +2273,6 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md. Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+    "note": "v1.1/clause-6 research 2026-06-11: the systems-science placement stands unopposed (IEEE SMC, ISSS, UDC 007, LCC Q300-390; interdisciplinary framings recorded), but the node's flag reason is the vitality contest (historical vs established) — out of scope this batch by session order, so node and edge stay proposed. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
   }
 ]
