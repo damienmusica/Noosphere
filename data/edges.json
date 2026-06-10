@@ -154,11 +154,14 @@
     "target": "field:mathematics",
     "relation": "part_of",
     "confidence": 1,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:manual-curation-v1"
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
     ],
-    "note": "Probability theory is a branch of mathematics."
+    "note": "Probability theory is a branch of mathematics. Promoted to reviewed 2026-06-11 under edge promotion policy v1 (structural tier): live classification/Wikidata grounding — see foundry/proposals/seed-edges-promotion-v1/promotion-report.md.",
+    "evidence_kind": "externally_sourced"
   },
   {
     "id": "edge:calculus-part-of-mathematics",
@@ -166,11 +169,14 @@
     "target": "field:mathematics",
     "relation": "part_of",
     "confidence": 1,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:manual-curation-v1"
+      "source:msc2020",
+      "source:lcc-outline",
+      "source:wikidata"
     ],
-    "note": "Calculus is a branch of mathematics."
+    "note": "Calculus is a branch of mathematics. Promoted to reviewed 2026-06-11 under edge promotion policy v1 (structural tier): live classification/Wikidata grounding — see foundry/proposals/seed-edges-promotion-v1/promotion-report.md.",
+    "evidence_kind": "externally_sourced"
   },
   {
     "id": "edge:optimization-part-of-mathematics",
@@ -178,11 +184,14 @@
     "target": "field:mathematics",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:manual-curation-v1"
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
     ],
-    "note": "Mathematical optimization is a branch of mathematics, also studied in operations research and computer science."
+    "note": "Mathematical optimization is a branch of mathematics, also studied in operations research and computer science. Promoted to reviewed 2026-06-11 under edge promotion policy v1 (structural tier): live classification/Wikidata grounding — see foundry/proposals/seed-edges-promotion-v1/promotion-report.md.",
+    "evidence_kind": "externally_sourced"
   },
   {
     "id": "edge:random-variable-part-of-probability-theory",
@@ -190,11 +199,13 @@
     "target": "subfield:probability-theory",
     "relation": "part_of",
     "confidence": 1,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:manual-curation-v1"
+      "source:wikidata",
+      "source:msc2020"
     ],
-    "note": "The random variable is a core concept of probability theory."
+    "note": "The random variable is a core concept of probability theory. Promoted to reviewed 2026-06-11 under edge promotion policy v1 (structural tier): live classification/Wikidata grounding — see foundry/proposals/seed-edges-promotion-v1/promotion-report.md.",
+    "evidence_kind": "externally_sourced"
   },
   {
     "id": "edge:probability-distribution-part-of-probability-theory",
@@ -202,11 +213,14 @@
     "target": "subfield:probability-theory",
     "relation": "part_of",
     "confidence": 1,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:manual-curation-v1"
+      "source:msc2020",
+      "source:lcc-outline",
+      "source:wikidata"
     ],
-    "note": "Probability distributions are a core concept of probability theory."
+    "note": "Probability distributions are a core concept of probability theory. Promoted to reviewed 2026-06-11 under edge promotion policy v1 (structural tier): live classification/Wikidata grounding — see foundry/proposals/seed-edges-promotion-v1/promotion-report.md.",
+    "evidence_kind": "externally_sourced"
   },
   {
     "id": "edge:gradient-descent-part-of-optimization",
@@ -214,11 +228,13 @@
     "target": "subfield:optimization",
     "relation": "part_of",
     "confidence": 0.95,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:manual-curation-v1"
+      "source:wikidata",
+      "source:msc2020"
     ],
-    "note": "Gradient descent is a method within mathematical optimization."
+    "note": "Gradient descent is a method within mathematical optimization. Promoted to reviewed 2026-06-11 under edge promotion policy v1 (structural tier): live classification/Wikidata grounding — see foundry/proposals/seed-edges-promotion-v1/promotion-report.md.",
+    "evidence_kind": "externally_sourced"
   },
   {
     "id": "edge:probability-theory-prerequisite-statistics",
@@ -316,7 +332,7 @@
       "source:book-mathematics-for-machine-learning"
     ],
     "evidence_kind": "editorial",
-    "note": "Promoted from ml-foundations-v1 under edge promotion policy v1 (editorial evidence stops at proposed). Provenance & verification: foundry/proposals/ml-foundations-v1/promotion-report.md. Also capped by endpoint status (method:gradient-descent is proposed) — first application of the status-cap clause."
+    "note": "Promoted from ml-foundations-v1 under edge promotion policy v1 (editorial evidence stops at proposed). Provenance & verification: foundry/proposals/ml-foundations-v1/promotion-report.md. Endpoint method:gradient-descent was promoted to reviewed on 2026-06-11 (seed-edges-promotion-v1); the edge stays proposed under the editorial-evidence ladder (policy v1 clause 2). Historical note: this edge was the first application of the status-cap clause."
   },
   {
     "id": "edge:random-variable-prerequisite-probability-distribution",
