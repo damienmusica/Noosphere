@@ -349,3 +349,30 @@ non-coverage, never silently dropped.
   (MSC 62 subsections + standalone communities); cybernetics takes `field:systems-science`
   (UDC 007 + LCC Q300-390); history-of-mathematics stays under mathematics (MSC 01 + LCC QA21-27
   unanimous — a boundary concern does not survive source agreement).
+
+## 13. Cross-listing standard (multiple `part_of` memberships)
+
+> Cross-listing policy v1 (CPO-ratified 2026-06-11, vault decision log (21)). Governs disciplines
+> that genuinely belong to more than one parent — the cases the single-parent model could not
+> resolve (clause-6 "genuine splits").
+
+- **Co-equal multiple parents.** A node may carry multiple `part_of` parent edges, all co-equal —
+  there is **no primary-parent marker**. The "choose the single parent" question does not exist in
+  this model; a node previously stuck at `proposed` on such a contest is promoted once **each**
+  membership edge passes its own evidence gate.
+- **Single node ID, render-time instances.** A cross-listed discipline remains **one node with one
+  language-independent ID**. Multiple appearances (e.g. inside each parent continent's rendered
+  region) are *render instances* of that one node, and any disambiguating display-label suffix is
+  computed at render time — **never stored in data**. Graph topology and identity never fork.
+- **Same evidence discipline for every membership.** A second (or nth) `part_of` edge requires the
+  same externally-sourced classification grounding and QC as the first (edge promotion policy v1,
+  clause 1). Memberships cannot be created on editorial feel — this is the structural guard against
+  membership spam.
+- **Asymmetry is per-edge data.** Differences in how strongly each parent claims the node are
+  conveyed by each edge's `confidence`, `disputed` (with the minority position in `note`), and
+  `note` — interpretation and display stay downstream.
+- **Coverage dashboards count unique nodes.** A cross-listed node counts once in coverage metrics,
+  regardless of how many membership edges or render instances it has.
+- Edge targets follow the §12 precedent that the flat rule governs node levels, not edge depth: a
+  membership edge may target a domain directly while the proper field-level parent does not yet
+  exist, with a re-target note recorded on the edge.

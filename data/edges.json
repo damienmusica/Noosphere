@@ -1999,7 +1999,7 @@
     "target": "field:mathematics",
     "relation": "part_of",
     "confidence": 0.65,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -2011,7 +2011,8 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "v1.1/clause-6 research 2026-06-11: genuine three-way split (MSC 90 + UDC 519.8 file OR in mathematics; LCC T57 + NSF + Cornell ORIE/Berkeley IEOR anchor it in engineering; Britannica/EURO/INFORMS frame it as its own multidisciplinary practice) — node stays proposed, edge stays endpoint-capped; cross-listing candidate. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
+    "note": "Cross-listing v1 resolution 2026-06-11 (vault decision log (21)): the single-parent question is dissolved — operations research is co-listed under mathematics and engineering (see edge:operations-research-part-of-engineering-and-technology). Mathematics membership grounding: MSC 90 'Operations research, mathematical programming'; UDC 519.8 'Operational research (OR): mathematical theories and methods' under 51 (both live-verified, skeleton-part-of-edges-v1 and clause-6 research). Minority position (permanent): the own-discipline framing — Britannica 'not a science itself but the application of science', EURO, INFORMS (The Science of Better) — contests subordination to any single parent. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md.",
+    "disputed": true
   },
   {
     "id": "edge:game-theory-part-of-mathematics",
@@ -2102,7 +2103,7 @@
     "target": "field:mathematics",
     "relation": "part_of",
     "confidence": 0.7,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -2114,7 +2115,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "v1.1/clause-6 research 2026-06-11: genuine split (ICMI is a commission of the IMU and MSC 97 is a top-level section, but OECD FORD files educational sciences under Social Sciences and the dominant doctoral home is education schools; ESM is didactics-framed) — node stays proposed, edge stays endpoint-capped; cross-listing candidate. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
+    "note": "Cross-listing v1 resolution 2026-06-11 (vault decision log (21)): the single-parent question is dissolved — mathematics education is co-listed under mathematics and the social sciences (see edge:mathematics-education-part-of-social-sciences). Mathematics membership grounding: ICMI is an official commission of the International Mathematical Union (mathunion.org/icmi/organization/about-icmi, live); MSC 97 'Mathematics education' is a top-level MSC section (live); mathematics-department research strands exist (Virginia Tech, UC San Diego). Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
   },
   {
     "id": "edge:control-theory-part-of-mathematics",
@@ -2122,7 +2123,7 @@
     "target": "field:mathematics",
     "relation": "part_of",
     "confidence": 0.65,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -2134,7 +2135,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "v1.1/clause-6 research 2026-06-11: genuine split (LCC itself files control theory both at QA402.3 under Mathematics--Analysis and at TJ213 under Mechanical engineering; MSC 93 math-side vs Britannica technology-side plus engineering-unanimous institutional homes; IFAC/LIDS explicitly dual) — node stays proposed, edge stays endpoint-capped; cross-listing candidate. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
+    "note": "Cross-listing v1 resolution 2026-06-11 (vault decision log (21)): the single-parent question is dissolved — control theory is co-listed under mathematics and engineering (see edge:control-theory-part-of-engineering-and-technology). Mathematics membership grounding: MSC 93 'Systems theory; control'; LCC QA402.3-QA402.37 'Control theory (General and linear)' (id.loc.gov, live); UDC 517.977 cluster under Analysis. Membership asymmetry recorded honestly: institutional homes are predominantly engineering; the mathematics membership rests on classification filings. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
   },
   {
     "id": "edge:mathematical-biology-part-of-mathematics",
@@ -2274,5 +2275,81 @@
       "proposed_at": "2026-06-10"
     },
     "note": "Promoted 2026-06-11: clause-6 vitality research resolved the node's last flag as consensus (established) — no gate-grade source files cybernetics as historical; the systems-science placement was already unopposed (IEEE SMC, ISSS, UDC 007, LCC Q300-390). Endpoint cap lifted; grounding complete since skeleton-part-of-edges-v1. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
+  },
+  {
+    "id": "edge:operations-research-part-of-engineering-and-technology",
+    "source": "subfield:operations-research",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "disputed": true,
+    "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): engineering membership of operations research, co-equal with edge:operations-research-part-of-mathematics. Grounding (live 2026-06-11): LCC T57-T57.97 'Applied mathematics. Quantitative methods' under Technology--Industrial engineering (id.loc.gov authority record); NSF funds OR as 'Operations Engineering' under its Engineering directorate (nsf.gov/funding/opportunities/oe-operations-engineering); institutional homes are engineering schools (Cornell ORIE, duffield.cornell.edu/orie/about; Berkeley IEOR, ieor.berkeley.edu/about/what-is-ieor). Minority position (permanent): the own-discipline framing — Britannica 'operations research is not a science itself but rather the application of science' (britannica.com/topic/operations-research), EURO and INFORMS positioning OR as its own multidisciplinary practice — contests subordination to any single parent. No education/field-level engineering subtarget exists; targets the domain per §12 (edge depth is free). Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
+  },
+  {
+    "id": "edge:control-theory-part-of-engineering-and-technology",
+    "source": "subfield:control-theory",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): engineering membership of control theory, co-equal with edge:control-theory-part-of-mathematics. Grounding (live 2026-06-11): LCC TJ212-TJ225 'Control engineering systems. Automatic machinery (General)' under TJ Mechanical engineering and machinery (id.loc.gov; the same authority record cross-references QA402.3-QA402.37 'Control theory (General and linear)' — LCC maintains both homes in one record); Britannica files control systems under technology (britannica.com/technology/control-system); institutional pattern is engineering (MIT 6.241J offered by EECS+Aero, ocw.mit.edu; Imperial Control and Power group in EE, imperial.ac.uk); IFAC frames the field as 'the science and technology of control' (ifac-control.org/about/aims). Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
+  },
+  {
+    "id": "edge:mathematics-education-part-of-social-sciences",
+    "source": "subfield:mathematics-education",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:oecd-ford",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): education-side membership of mathematics education, co-equal with edge:mathematics-education-part-of-mathematics. Grounding (live 2026-06-11): OECD FORD/Frascati files Educational sciences at 5.3 under 5. Social Sciences, with mathematics at 1.1 under Natural Sciences and no mathematics-education subfield anywhere (ARRS mirror, arrs.si); UDC files 37 Education under 3 Social Sciences (udcsummary.info); dominant doctoral-program home is education schools (NYU Steinhardt PhD concentration, steinhardt.nyu.edu, live; Stanford GSE/Penn State CoE same pattern per resolution research); Educational Studies in Mathematics frames the research didactically (link.springer.com/journal/10649). Re-target note: targets the domain directly because no education field node exists yet in /data (§12: the flat rule governs node levels, not edge depth) — re-target to the education field when that continent lands. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
+  },
+  {
+    "id": "edge:logic-part-of-mathematics",
+    "source": "subfield:logic",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:msc2020",
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Cross-listing v1 second membership (vault decision log 2026-06-11 (21)): all three gate classification schemes carry logic inside mathematics via its symbolic/mathematical wing — MSC 03-XX 'Mathematical logic and foundations' (msc2020.org CSV, live 2026-06-11); LCC QA8.9-QA10.35 'Mathematical logic' under QA Mathematics (id.loc.gov, live); UDC 510.6 'Mathematical logic' under 51 Mathematics (udcsummary.info, live). The same schemes keep the discipline's broad home in philosophy (UDC 16 'Logic. Epistemology...' under 1 Philosophy, live; LCC subclass BC) — co-equal with edge:logic-part-of-philosophy. subfield:mathematical-logic (formal sciences) remains a distinct node for the mathematical subfield community per the §12 peer-coexistence precedent; this edge records the cross-listing of the logic discipline itself."
   }
 ]

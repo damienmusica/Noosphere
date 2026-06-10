@@ -1914,15 +1914,16 @@
     "type": "subfield",
     "domain": "formal_sciences",
     "level": 2,
-    "status": "proposed",
-    "indexable": false,
+    "status": "reviewed",
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q194292"
     },
     "academic_status": "established",
+    "disputed": true,
     "created_at": "2026-06-10",
-    "updated_at": "2026-06-10"
+    "updated_at": "2026-06-11"
   },
   {
     "id": "subfield:game-theory",
@@ -2117,30 +2118,30 @@
     "type": "subfield",
     "domain": "formal_sciences",
     "level": 2,
-    "status": "proposed",
-    "indexable": false,
+    "status": "reviewed",
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q853077"
     },
     "academic_status": "established",
     "created_at": "2026-06-10",
-    "updated_at": "2026-06-10"
+    "updated_at": "2026-06-11"
   },
   {
     "id": "subfield:control-theory",
     "type": "subfield",
     "domain": "formal_sciences",
     "level": 2,
-    "status": "proposed",
-    "indexable": false,
+    "status": "reviewed",
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q6501221"
     },
     "academic_status": "established",
     "created_at": "2026-06-10",
-    "updated_at": "2026-06-10"
+    "updated_at": "2026-06-11"
   },
   {
     "id": "subfield:mathematical-biology",
