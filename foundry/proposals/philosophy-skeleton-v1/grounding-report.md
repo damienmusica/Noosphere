@@ -89,3 +89,16 @@
 1. Manual QID lookup for the 6 stripped/unresolved nodes (critical-theory, modern-philosophy, philosophy-of-race, decision-theory, esotericism-and-theosophy, philosophy-of-cognitive-science).
 2. Re-check philosophy-of-perception Q3300457 (vandalized-looking description upstream).
 3. Re-run resolver with plain labels for the 2 qualifier-broken seeds.
+
+## v3 re-run addendum (2026-06-10, resolver PR #22)
+
+Tuned resolver re-measured on the same 63 seeds: QC overrides needed 5 -> 2
+(ontology and logic remain — cross-domain homonyms with genuine positive type
+signals; human selection stands), qualifier-unresolved 2 -> 0, garbage
+selections 1 -> 0, rank-1 agreement with the adjudicated truth 55/57.
+
+Follow-up resolutions applied:
+- `subfield:decision-theory` -> Q177571 (unambiguous; the v1 training hint Q1363477 was also wrong) — promoted to /data as `proposed`.
+- `subfield:esotericism-and-theosophy` -> Q7988481 "academic study of Western esotericism" (unambiguous; the academic-study item is the right grounding for a subfield node) — promoted to /data as `proposed`.
+- `subfield:philosophy-of-perception` Q3300457 confirmed correct (label + enwiki sitelink match; English description is vandalized upstream — Wikidata content issue, not ours).
+- Still without verified QIDs (4): critical-theory and modern-philosophy (v3 still rank-1-wrong but now correctly ambiguous-flagged), philosophy-of-race (auto-rejected garbage, item may not exist), philosophy-of-cognitive-science (no candidates — likely absent on Wikidata; consider PhilPapers grounding or manual creation review).
