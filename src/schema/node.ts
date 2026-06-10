@@ -65,6 +65,14 @@ export const nodeSchema = z
     status: nodeStatusSchema,
     /** Coverage-skeleton tag; expected on discipline nodes (domain/field/subfield). */
     academic_status: academicStatusSchema.optional(),
+    /**
+     * Real-world contested placement/identity deliberately positioned on the
+     * dominant view (edge promotion policy v1 clause 6, vault decision log
+     * 2026-06-10 (15)). May only be set via the v1.1 research path; the
+     * resolution record (incl. the minority position) lives in the foundry
+     * resolution report.
+     */
+    disputed: z.boolean().optional(),
     /** Only `reviewed` nodes may be indexable (enforced in validate-data.ts). */
     indexable: z.boolean().default(false),
     /** Living people require stricter evidence and conservative wording. */
