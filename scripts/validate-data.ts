@@ -118,10 +118,37 @@ checkDuplicates("nodes.json", nodes.map((n) => n.id));
 checkDuplicates("edges.json", edges.map((e) => e.id));
 checkDuplicates("sources.json", sources.map((s) => s.id));
 
+// Computed/interpreted metric keys are forbidden inside external_metrics: only
+// raw provider-API facts may be recorded (OpenAlex field design, vault decision
+// log 2026-06-11 (18)). This denylist catches label/score-shaped names; it is a
+// guard against interpretation creep, not an exhaustive semantic check.
+const COMPUTED_METRIC_KEY = /(score|rank|rating|label|percentile|normali[sz]ed|weighted|index|vitality|tier|grade)/i;
+
 // --- Nodes: indexability + living-person rules -------------------------------
 for (const node of nodes) {
   if (node.indexable && node.status !== "reviewed") {
     fail(`[nodes.json] node ${node.id} is indexable but status is "${node.status}" (only reviewed nodes may be indexable)`);
+  }
+  // --- external_metrics structural checks (design clauses (1)-(3)) -----------
+  for (const [provider, block] of Object.entries(node.external_metrics ?? {})) {
+    // Companion fields: every provider block must be re-queryable/re-auditable.
+    if (!block.as_of) {
+      fail(`[nodes.json] node ${node.id} external_metrics.${provider} is missing "as_of" (every metrics block needs its lookup date)`);
+    }
+    if (!block.entity) {
+      fail(`[nodes.json] node ${node.id} external_metrics.${provider} is missing "entity" (every metrics block needs the provider's canonical entity URL)`);
+    }
+    // The matched entity ID must be recorded (and verified) in external_ids
+    // first — metrics are read only by that ID (two-stage matching, clause 4).
+    if (!node.external_ids[provider]) {
+      fail(`[nodes.json] node ${node.id} has external_metrics.${provider} but no external_ids["${provider}"] (verified entity ID must come first)`);
+    }
+    for (const key of Object.keys(block)) {
+      if (key === "as_of" || key === "entity") continue;
+      if (COMPUTED_METRIC_KEY.test(key)) {
+        fail(`[nodes.json] node ${node.id} external_metrics.${provider} has computed/interpreted key "${key}" (raw provider facts only — labels/scores are forbidden)`);
+      }
+    }
   }
   if (node.is_living_person) {
     // Living people require stricter evidence metadata and conservative status.
