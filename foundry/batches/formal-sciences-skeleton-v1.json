@@ -1,0 +1,114 @@
+{
+  "id": "batch:formal-sciences-skeleton-v1",
+  "title": "Formal Sciences Skeleton v1",
+  "description": "Coverage skeleton for the formal-sciences continent (second continent, CPO-selected 2026-06-10): field/subfield two-level node set under domain:formal-sciences — mathematics, statistics, mathematical logic, and systems-science areas — each tagged with academic_status. Construction input only — not canonical graph data; nodes only, zero edges (skeleton-first). Also carries the five existing /data formal-sciences nodes that are still QID-less (ML-foundations legacy) as resolver grounding targets.",
+  "status": "active",
+  "target_locales": [
+    "en"
+  ],
+  "scope": {
+    "include": [
+      "Formal-sciences field and subfield coverage skeleton (nodes only)",
+      "Mathematics, statistics, mathematical logic, and systems-science areas, including historical and applied areas",
+      "Wikidata QID resolution for identity and external_ids",
+      "QID grounding for existing /data formal-sciences nodes that lack one (ML-foundations legacy)"
+    ],
+    "exclude": [
+      "Edges and relations (skeleton-first: dots before lines)",
+      "Level-3 concepts, persons, works (beyond grounding the two existing legacy concepts)",
+      "Computer and information sciences (separate continent; field:computer-science and field:machine-learning stay out of scope)",
+      "Philosophical logic (subfield:logic stays in humanities; cross-listing policy is parked)",
+      "Living mathematicians and current affiliations"
+    ]
+  },
+  "seed_entities": [
+    {
+      "label": "Probability theory",
+      "expected_node_id": "subfield:probability-theory",
+      "expected_type": "subfield",
+      "notes": "Existing /data node (proposed, ML-foundations); needs resolver-verified QID."
+    },
+    {
+      "label": "Calculus",
+      "expected_node_id": "subfield:calculus",
+      "expected_type": "subfield",
+      "notes": "Existing /data node (proposed, ML-foundations); needs resolver-verified QID."
+    },
+    {
+      "label": "Mathematical optimization",
+      "expected_node_id": "subfield:optimization",
+      "expected_type": "subfield",
+      "notes": "Existing /data node (proposed, ML-foundations); needs resolver-verified QID."
+    },
+    {
+      "label": "Random variable",
+      "expected_node_id": "concept:random-variable",
+      "expected_type": "concept",
+      "notes": "Existing /data node (proposed, ML-foundations); needs resolver-verified QID."
+    },
+    {
+      "label": "Probability distribution",
+      "expected_node_id": "concept:probability-distribution",
+      "expected_type": "concept",
+      "notes": "Existing /data node (proposed, ML-foundations); needs resolver-verified QID."
+    }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "wikidata",
+      "purpose": [
+        "identity",
+        "metadata",
+        "source_resolution",
+        "external_link"
+      ],
+      "requires_secret": false,
+      "notes": "CC0. Resolver verifies the unverified training-knowledge QID hints in the proposal and fills missing QIDs."
+    },
+    {
+      "provider": "wikipedia",
+      "purpose": [
+        "external_link",
+        "source_resolution"
+      ],
+      "requires_secret": false,
+      "notes": "External-link / source-resolution pointer only. Never store or cache article bodies."
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "provider": "namuwiki",
+      "reason": "NamuWiki is external-link-only and must never be used as evidence or a source, nor have its content cached."
+    },
+    {
+      "provider": "cloud_llm_api",
+      "reason": "No cloud LLM API calls are permitted in repo tooling, build, validation, or runtime."
+    },
+    {
+      "provider": "scraped_article_body",
+      "reason": "Scraping or crawling third-party article bodies is forbidden; only open, license-compatible data is allowed."
+    }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": [
+      "low",
+      "medium",
+      "historical"
+    ],
+    "requires_strict_review_for": [
+      "living_person",
+      "current_affiliation",
+      "controversial_claim"
+    ]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/formal-sciences-skeleton-v1"
+  },
+  "notes": [
+    "Continent selection and scope ratified by the CPO 2026-06-10 (vault decision log (12)).",
+    "Initial seeds are only the five QID-less legacy /data nodes; the full seed set is extended mechanically from the QC-passed proposal before the resolver pass (same flow as philosophy-skeleton-v1, PR #18).",
+    "Coverage baseline for generation/QC: UDC class 51 (mathematics) and 519.2 (probability/statistics), LCC subclass QA (excluding QA75-76 computing), MSC 2020 top-level sections, and top-university mathematics/statistics department structures.",
+    "/data remains the source of truth for accepted graph data."
+  ]
+}
