@@ -51,6 +51,201 @@
       "expected_node_id": "concept:probability-distribution",
       "expected_type": "concept",
       "notes": "Existing /data node (proposed, ML-foundations); needs resolver-verified QID."
+    },
+    {
+      "label": "Mathematical Logic",
+      "expected_node_id": "subfield:mathematical-logic",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Algebra",
+      "expected_node_id": "subfield:algebra",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Number Theory",
+      "expected_node_id": "subfield:number-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Geometry",
+      "expected_node_id": "subfield:geometry",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Differential Geometry",
+      "expected_node_id": "subfield:differential-geometry",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Algebraic Geometry",
+      "expected_node_id": "subfield:algebraic-geometry",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Topology",
+      "expected_node_id": "subfield:topology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Algebraic Topology",
+      "expected_node_id": "subfield:algebraic-topology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Mathematical Analysis",
+      "expected_node_id": "subfield:mathematical-analysis",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Complex Analysis",
+      "expected_node_id": "subfield:complex-analysis",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Functional Analysis",
+      "expected_node_id": "subfield:functional-analysis",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Harmonic Analysis",
+      "expected_node_id": "subfield:harmonic-analysis",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Differential Equations",
+      "expected_node_id": "subfield:differential-equations",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Partial Differential Equations",
+      "expected_node_id": "subfield:partial-differential-equations",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Dynamical Systems",
+      "expected_node_id": "subfield:dynamical-systems",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Combinatorics",
+      "expected_node_id": "subfield:combinatorics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Set Theory",
+      "expected_node_id": "subfield:set-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Model Theory",
+      "expected_node_id": "subfield:model-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Proof Theory",
+      "expected_node_id": "subfield:proof-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Computability Theory",
+      "expected_node_id": "subfield:computability-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Category Theory",
+      "expected_node_id": "subfield:category-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Numerical Analysis",
+      "expected_node_id": "subfield:numerical-analysis",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Mathematical Physics",
+      "expected_node_id": "subfield:mathematical-physics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Applied Mathematics",
+      "expected_node_id": "subfield:applied-mathematics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Operations Research",
+      "expected_node_id": "subfield:operations-research",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Game Theory",
+      "expected_node_id": "subfield:game-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Information Theory",
+      "expected_node_id": "subfield:information-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Financial Mathematics",
+      "expected_node_id": "subfield:financial-mathematics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Bayesian Statistics",
+      "expected_node_id": "subfield:bayesian-statistics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Time Series Analysis",
+      "expected_node_id": "subfield:time-series-analysis",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Computational Statistics",
+      "expected_node_id": "subfield:computational-statistics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Mathematical Statistics",
+      "expected_node_id": "subfield:mathematical-statistics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "History of Mathematics",
+      "expected_node_id": "subfield:history-of-mathematics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Mathematics Education",
+      "expected_node_id": "subfield:mathematics-education",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Control Theory",
+      "expected_node_id": "subfield:control-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Mathematical Biology",
+      "expected_node_id": "subfield:mathematical-biology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Systems Science",
+      "expected_node_id": "field:systems-science",
+      "expected_type": "field"
+    },
+    {
+      "label": "Cybernetics",
+      "expected_node_id": "subfield:cybernetics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Applied Statistics",
+      "expected_node_id": "subfield:applied-statistics",
+      "expected_type": "subfield"
     }
   ],
   "allowed_public_sources": [
@@ -107,7 +302,7 @@
   },
   "notes": [
     "Continent selection and scope ratified by the CPO 2026-06-10 (vault decision log (12)).",
-    "Initial seeds are only the five QID-less legacy /data nodes; the full seed set is extended mechanically from the QC-passed proposal before the resolver pass (same flow as philosophy-skeleton-v1, PR #18).",
+    "Seeds = the five QID-less legacy /data nodes + the 39 QC-passed proposal nodes, generated mechanically from foundry/proposals/formal-sciences-skeleton-v1/proposal.json (same flow as philosophy-skeleton-v1, PR #18).",
     "Coverage baseline for generation/QC: UDC class 51 (mathematics) and 519.2 (probability/statistics), LCC subclass QA (excluding QA75-76 computing), MSC 2020 top-level sections, and top-university mathematics/statistics department structures.",
     "/data remains the source of truth for accepted graph data."
   ]
