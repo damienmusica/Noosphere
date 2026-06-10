@@ -69,7 +69,12 @@ to make implementation easier.
   the Obsidian vault folder `Noosphere/` (index.md decision log, roadmap.md).
   Read those at session start; do not reconstruct state from memory.
 - Generation and QC must run in separate sessions (ADR 0007 contract).
-- CPO gate (proposed → reviewed) is a human decision.
+- Promotion (`generated → proposed → reviewed`) follows the human-ratified
+  standing policy (vault decision log 2026-06-10: the structural tier
+  auto-promotes on resolver-verified external grounding; QC-ambiguous items
+  stop at `proposed`; no verified grounding → stays in foundry). The CPO
+  governs the policy, escalations, and dashboards — not per-item sign-off.
+  Full provenance keeps every promotion bulk re-auditable and reversible.
 
 ## Stack and dependencies
 

@@ -20,7 +20,9 @@
     "locale": "en",
     "label": "Life Sciences",
     "summary": "The study of living organisms and life processes.",
-    "aliases": ["Biological Sciences"],
+    "aliases": [
+      "Biological Sciences"
+    ],
     "reviewed": true
   },
   {
@@ -36,7 +38,9 @@
     "locale": "en",
     "label": "Computer and Information Sciences",
     "summary": "The study of computation, information, and automated systems.",
-    "aliases": ["Computing"],
+    "aliases": [
+      "Computing"
+    ],
     "reviewed": true
   },
   {
@@ -100,7 +104,10 @@
     "locale": "en",
     "label": "Mathematics",
     "summary": "The study of structure, quantity, space, and change.",
-    "aliases": ["Math", "Maths"],
+    "aliases": [
+      "Math",
+      "Maths"
+    ],
     "reviewed": true
   },
   {
@@ -116,7 +123,9 @@
     "locale": "en",
     "label": "Computer Science",
     "summary": "The study of computation, algorithms, and information processing.",
-    "aliases": ["CS"],
+    "aliases": [
+      "CS"
+    ],
     "reviewed": true
   },
   {
@@ -124,7 +133,9 @@
     "locale": "en",
     "label": "Machine Learning",
     "summary": "The study of algorithms that improve automatically through data and experience.",
-    "aliases": ["ML"],
+    "aliases": [
+      "ML"
+    ],
     "reviewed": true
   },
   {
@@ -148,7 +159,9 @@
     "locale": "en",
     "label": "Vector Space",
     "summary": "An algebraic structure of vectors closed under addition and scalar multiplication.",
-    "aliases": ["Linear space"],
+    "aliases": [
+      "Linear space"
+    ],
     "reviewed": true
   },
   {
@@ -180,7 +193,9 @@
     "locale": "en",
     "label": "Optimization",
     "summary": "The study of selecting the best element, such as a minimum or maximum, from a set of feasible alternatives.",
-    "aliases": ["Mathematical optimization"],
+    "aliases": [
+      "Mathematical optimization"
+    ],
     "reviewed": false
   },
   {
@@ -204,6 +219,462 @@
     "locale": "en",
     "label": "Gradient Descent",
     "summary": "An iterative optimization method that updates parameters in the direction that most reduces a function's value.",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "field:philosophy",
+    "locale": "en",
+    "label": "Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:metaphysics",
+    "locale": "en",
+    "label": "Metaphysics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:ontology",
+    "locale": "en",
+    "label": "Ontology",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:epistemology",
+    "locale": "en",
+    "label": "Epistemology",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:ethics",
+    "locale": "en",
+    "label": "Ethics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:logic",
+    "locale": "en",
+    "label": "Logic",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:aesthetics",
+    "locale": "en",
+    "label": "Aesthetics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:axiology",
+    "locale": "en",
+    "label": "Axiology",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:philosophy-of-mind",
+    "locale": "en",
+    "label": "Philosophy of Mind",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:philosophy-of-language",
+    "locale": "en",
+    "label": "Philosophy of Language",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:philosophy-of-science",
+    "locale": "en",
+    "label": "Philosophy of Science",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:philosophy-of-mathematics",
+    "locale": "en",
+    "label": "Philosophy of Mathematics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:philosophy-of-religion",
+    "locale": "en",
+    "label": "Philosophy of Religion",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:philosophy-of-law",
+    "locale": "en",
+    "label": "Philosophy of Law",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:political-philosophy",
+    "locale": "en",
+    "label": "Political Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:social-philosophy",
+    "locale": "en",
+    "label": "Social Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:philosophy-of-action",
+    "locale": "en",
+    "label": "Philosophy of Action",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:philosophy-of-perception",
+    "locale": "en",
+    "label": "Philosophy of Perception",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:philosophy-of-technology",
+    "locale": "en",
+    "label": "Philosophy of Technology",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:philosophy-of-biology",
+    "locale": "en",
+    "label": "Philosophy of Biology",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:philosophy-of-physics",
+    "locale": "en",
+    "label": "Philosophy of Physics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:philosophy-of-social-science",
+    "locale": "en",
+    "label": "Philosophy of Social Science",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:bioethics",
+    "locale": "en",
+    "label": "Bioethics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:environmental-ethics",
+    "locale": "en",
+    "label": "Environmental Ethics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:business-ethics",
+    "locale": "en",
+    "label": "Business Ethics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:metaethics",
+    "locale": "en",
+    "label": "Metaethics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:normative-ethics",
+    "locale": "en",
+    "label": "Normative Ethics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:analytic-philosophy",
+    "locale": "en",
+    "label": "Analytic Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:continental-philosophy",
+    "locale": "en",
+    "label": "Continental Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:phenomenology",
+    "locale": "en",
+    "label": "Phenomenology",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:existentialism",
+    "locale": "en",
+    "label": "Existentialism",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:pragmatism",
+    "locale": "en",
+    "label": "Pragmatism",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:ancient-philosophy",
+    "locale": "en",
+    "label": "Ancient Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:medieval-philosophy",
+    "locale": "en",
+    "label": "Medieval Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:renaissance-philosophy",
+    "locale": "en",
+    "label": "Renaissance Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:chinese-philosophy",
+    "locale": "en",
+    "label": "Chinese Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:indian-philosophy",
+    "locale": "en",
+    "label": "Indian Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:buddhist-philosophy",
+    "locale": "en",
+    "label": "Buddhist Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:islamic-philosophy",
+    "locale": "en",
+    "label": "Islamic Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:jewish-philosophy",
+    "locale": "en",
+    "label": "Jewish Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:african-philosophy",
+    "locale": "en",
+    "label": "African Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:japanese-philosophy",
+    "locale": "en",
+    "label": "Japanese Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:korean-philosophy",
+    "locale": "en",
+    "label": "Korean Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:latin-american-philosophy",
+    "locale": "en",
+    "label": "Latin American Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:comparative-philosophy",
+    "locale": "en",
+    "label": "Comparative Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:philosophy-of-history",
+    "locale": "en",
+    "label": "Philosophy of History",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:philosophy-of-economics",
+    "locale": "en",
+    "label": "Philosophy of Economics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:feminist-philosophy",
+    "locale": "en",
+    "label": "Feminist Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:philosophy-of-education",
+    "locale": "en",
+    "label": "Philosophy of Education",
+    "summary": "",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:hermeneutics",
+    "locale": "en",
+    "label": "Hermeneutics",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:metaphilosophy",
+    "locale": "en",
+    "label": "Metaphilosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:natural-philosophy",
+    "locale": "en",
+    "label": "Natural Philosophy",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:scholasticism",
+    "locale": "en",
+    "label": "Scholasticism",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:philosophy-of-psychiatry",
+    "locale": "en",
+    "label": "Philosophy of Psychiatry",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:philosophy-of-information",
+    "locale": "en",
+    "label": "Philosophy of Information",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:ethics-of-ai",
+    "locale": "en",
+    "label": "Ethics of Artificial Intelligence",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:experimental-philosophy",
+    "locale": "en",
+    "label": "Experimental Philosophy",
+    "summary": "",
     "aliases": [],
     "reviewed": false
   }
