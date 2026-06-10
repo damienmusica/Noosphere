@@ -38,6 +38,31 @@ export const academicStatusSchema = z.enum([
 ]);
 export type AcademicStatus = z.infer<typeof academicStatusSchema>;
 
+/**
+ * One provider's raw external-metrics block (data-strategy track B; OpenAlex
+ * field design CPO-ratified 2026-06-11, vault decision log (18)/(20)).
+ *
+ * Contract:
+ * - Metric keys keep the provider API's **native response field names**
+ *   (e.g. `works_count`, `cited_by_count`) — renaming a key injects
+ *   interpretation and is forbidden. Values are raw numbers as returned.
+ * - No computed labels or scores, ever (enforced in validate-data.ts) —
+ *   interpretation/display is downstream.
+ * - `as_of` (lookup date) and `entity` (the provider's canonical entity URL)
+ *   are mandatory companions so every number is re-queryable and re-auditable.
+ * - The provider's entity ID itself lives in `external_ids`, verified under
+ *   the same identity discipline as QIDs (two-stage matching, clause 4).
+ */
+export const externalMetricsProviderSchema = z
+  .object({
+    /** Date the metrics were fetched (YYYY-MM-DD). */
+    as_of: isoDateSchema,
+    /** The provider's canonical URL for the matched entity. */
+    entity: z.string().url(),
+  })
+  .catchall(z.number());
+export type ExternalMetricsProvider = z.infer<typeof externalMetricsProviderSchema>;
+
 export const domainKeySchema = z.enum([
   "formal_sciences",
   "natural_sciences",
@@ -79,6 +104,14 @@ export const nodeSchema = z
     is_living_person: z.boolean().default(false),
     /** Provider identifiers (Wikidata QID, OpenAlex, ORCID, ...). Never used as primary IDs. */
     external_ids: z.record(z.string(), z.string()).default({}),
+    /**
+     * Raw external scholarly metrics, namespaced by provider
+     * (e.g. `{ "openalex": { works_count, cited_by_count, as_of, entity } }`).
+     * Additive and optional; raw facts only, never computed labels/scores.
+     */
+    external_metrics: z
+      .record(z.string(), externalMetricsProviderSchema)
+      .optional(),
     created_at: isoDateSchema,
     updated_at: isoDateSchema,
   })
