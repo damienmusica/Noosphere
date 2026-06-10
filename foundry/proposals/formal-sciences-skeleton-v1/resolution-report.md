@@ -430,3 +430,100 @@ Fable 5 (orchestrator), 2026-06-11, after batch URL pre-verification.
   (this batch) + 3 philosophy parked + 2 PhilPapers-grounded upstream gaps.
 - New permanent evidence paths added to the playbook this session: **id.loc.gov LCC authority
   records** (sub-outline granularity, JSON) and **OECD FORD via ARRS mirror**.
+
+---
+
+## Cross-listing v1 application append (2026-06-11, session #7) — the 3 genuine splits RESOLVED
+
+**Policy:** cross-listing policy v1, CPO-ratified 2026-06-11 (vault decision log (21)): co-equal
+multiple `part_of` memberships, single node ID with render-time instances, second edges under the
+same clause-1 evidence discipline, per-edge confidence/disputed/note for asymmetry. Policy text
+appended to docs/data-foundry.md §13 in this same change. Under this model the "choose the single
+parent" question the three splits were stuck on **no longer exists**; each membership edge passes
+its own evidence gate instead.
+
+**Performed by:** Claude Fable 5 (claude-fable-5), orchestrator context. Both-side evidence was
+already collected and verified by the clause-6 research above (5 Sonnet subagents, separated
+contexts) — reused per the ratification. **Every URL cited in the new/updated edge notes was
+batch re-verified live 2026-06-11 before writing: 17/17 HTTP 200, 0 dead/fabricated (0%).**
+New live grounding fetched directly by the orchestrator for caption accuracy: id.loc.gov authority
+records T57-T57.97 ("Applied mathematics. Quantitative methods"), TJ212-TJ225 ("Control engineering
+systems. Automatic machinery (General)" — whose own record cross-references QA402.3-QA402.37
+"Control theory (General and linear)": LCC maintains both homes in one record), QA8.9-QA10.35
+("Mathematical logic"); MSC_2020.csv 03-XX; UDC Summary 510.6 / 16 / 37; OECD FORD via ARRS
+(5.3 Educational sciences under 5. Social Sciences; 1.1 Mathematics under 1. Natural Sciences).
+
+### Membership edges written (4)
+
+| edge | evidence gate | status |
+|---|---|---|
+| operations-research → engineering-and-technology (new) | LCC T57-T57.97 + NSF OE + Cornell ORIE/Berkeley IEOR | reviewed, **disputed** |
+| operations-research → mathematics (promoted) | MSC 90 + UDC 519.8 (grounded since skeleton batch) | reviewed, **disputed** |
+| control-theory → engineering-and-technology (new) | LCC TJ212-TJ225 + Britannica + MIT/Imperial pattern + IFAC | reviewed |
+| control-theory → mathematics (promoted) | MSC 93 + LCC QA402.3 + UDC 517.977 cluster | reviewed |
+| mathematics-education → social-sciences (new) | OECD FORD 5.3 + UDC 37 + doctoral-home pattern + ESM | reviewed |
+| mathematics-education → mathematics (promoted) | ICMI/IMU + MSC 97 + dept research strands | reviewed |
+
+(6 rows: 3 new memberships + 3 promoted first edges — the table lists all six for one-glance
+re-audit. A 7th edge, logic → mathematics, is recorded below.)
+
+**Disputed semantics under cross-listing (QC ruling, recorded as precedent):** once memberships
+are co-equal, a source that files the node under parent B no longer *opposes* the parent-A edge —
+it supports the other membership. `disputed` therefore marks only a **residual premise-denying
+minority**: for operations research, the own-discipline position (Britannica: "not a science
+itself but rather the application of science"; EURO; INFORMS) denies subordination to *any*
+parent, so **both** OR membership edges and the OR **node** carry `disputed: true` with the
+minority recorded. Control theory (IFAC dual framing affirms both memberships) and mathematics
+education (no source denies either membership) carry no disputed tag; their asymmetries are
+conveyed by confidence and notes.
+
+### Node promotions (3)
+
+`subfield:operations-research` (disputed: true), `subfield:control-theory`,
+`subfield:mathematics-education` → `reviewed` + `indexable` (proposal.json `ambiguous` flipped
+false with resolution notes). Clause-6 cumulative distribution moves to **consensus 3 / dominant 8
+/ genuine splits 0** — the splits column empties via the model change, not via re-litigated
+verdicts; the underlying stance records above remain the permanent evidence.
+
+### logic → mathematics second membership (ratified scope item)
+
+`edge:logic-part-of-mathematics` (subfield:logic, humanities → field:mathematics): all three gate
+schemes carry logic inside mathematics via its symbolic/mathematical wing — MSC 03-XX
+"Mathematical logic and foundations" (msc2020.org CSV, live), LCC QA8.9-QA10.35 "Mathematical
+logic" (id.loc.gov, live), UDC 510.6 under 51 (live) — while the same schemes keep the broad home
+in philosophy (UDC 16 under 1, live; LCC BC). Clause 1 satisfied → `reviewed` (both endpoints
+reviewed). `subfield:mathematical-logic` remains a distinct formal-sciences node (§12
+peer-coexistence precedent); the note on the edge spells out the distinction.
+
+### Editorial (3 summaries, editorial v1)
+
+Generation: 1 Sonnet subagent (claude-sonnet-4-6, separated context, live-fetch mandate +
+`[UNFETCHED]` self-flagging). Source hints: 9 cited, 8 honestly fetched, 1 honest `[UNFETCHED]`
+self-flag (ESM aims — the orchestrator then fetched it directly at
+link.springer.com/journal/10649/aims-and-scope and used the verified text). **Hint URL
+hallucination: 0% (8/8 fetched-claimed URLs live and content-bearing).**
+
+QC (orchestrator, full fact cross-check against orchestrator-fetched page text): all three
+summaries **QC-edited** before application — principal corrections: (a) OR/control "classified
+under applied mathematics by the MSC" loosened-claim fixed to the schemes' actual filings (MSC 90 /
+MSC 93 are their own sections of the mathematics classification); (b) control "treated as a branch
+of systems engineering by IEEE and IFAC" dropped (IEEE uncited; IFAC's own aims text says
+'science and technology of control' — used verbatim instead); (c) control "dual home in
+mathematics departments" dropped (contradicts the resolution finding that institutional homes are
+engineering-unanimous; replaced with the LCC dual-filing fact); (d) OR "simulation" dropped (not
+on the cited EoM page) and applications list aligned to Britannica's own enumeration; (e) math-ed
+research-topics list replaced with ESM aims-and-scope verbatim categories
+(methodological/pedagogical-didactical/political/socio-cultural); ERME founding rephrased to the
+page's own wording; "informal settings" and unverifiable closing synthesis dropped. ICMI 1908/1952
+claims verified verbatim on the ICMI page. en translations marked reviewed; parent nodes reviewed
+in this same change (editorial v1 precondition holds at commit time).
+
+### Dashboard delta
+
+- /data: nodes 128 (reviewed **123** / proposed 5), edges **136** (reviewed **120** / proposed 16),
+  sources 11 (+ source:oecd-ford), summaries 123 (all reviewed nodes covered).
+- Remaining proposed nodes (5): 3 philosophy parked + 2 PhilPapers upstream gaps. Remaining
+  proposed edges (16): 11 editorial measurement queue + 5 philosophy endpoint-capped part_of.
+- Cross-listing applications still parked (unchanged scope): decision-theory second membership
+  (economics target node absent), minority-side second edges for the disputed-5 (target continents
+  absent) — reopen when those continents land.
