@@ -1,0 +1,95 @@
+{
+  "id": "batch:computer-and-information-sciences-skeleton-v1",
+  "title": "Computer and Information Sciences Skeleton v1",
+  "description": "Coverage skeleton for the computer-and-information-sciences continent (third continent, CPO-selected 2026-06-11, vault decision log (23)): field/subfield two-level node set under domain:computer-and-information-sciences — computing areas and the library-and-information-science wing — each tagged with academic_status. Construction input only — not canonical graph data; nodes only, zero edges (skeleton-first). The three junction nodes already canonical in /data (domain:computer-and-information-sciences, field:computer-science, field:machine-learning) are out of generation scope; field:machine-learning carries a standing structural question (level-1 field legacy) reserved for QC.",
+  "status": "active",
+  "target_locales": [
+    "en"
+  ],
+  "scope": {
+    "include": [
+      "Computer and information sciences field and subfield coverage skeleton (nodes only)",
+      "Computing areas under LCC QA75.5-76.95, UDC 004, ACM CCS 2012, MSC 68, and FORD 1.2, including historical and applied areas",
+      "Library and information science wing (LCC Z665-718.8, UDC 02), every candidate gated case-by-case by the section-12 dual criterion and cross-continent assignment rule",
+      "Cryptography transfer acceptance (section-12 precedent 2026-06-10: cryptography deferred from formal sciences to CS)",
+      "Wikidata QID resolution for identity and external_ids"
+    ],
+    "exclude": [
+      "Edges and relations (skeleton-first: dots before lines; part_of skeleton edges are a separate batch)",
+      "Level-3 concepts, persons, works",
+      "Re-proposing any existing /data node (the three CS junction nodes and all 125 other canonical nodes; reconcile to existing IDs instead)",
+      "Formal-sciences areas already canonical (computability-theory, information-theory, game-theory stay under formal sciences; their CS-targeted second memberships are a separate cross-listing task under section 13)",
+      "Media and communications (FORD 5.8 — social-sciences continent)",
+      "Electrical and computer engineering hardware areas whose primary LCC home (TK) and dominant institutional home are both engineering",
+      "Living computer scientists and current affiliations"
+    ]
+  },
+  "seed_entities": [
+    {
+      "label": "Machine learning",
+      "expected_node_id": "field:machine-learning",
+      "expected_type": "field",
+      "notes": "Existing /data node (reviewed, Q2539, ML-foundations legacy). Not a generation target; listed as the continent's standing structural question for QC — level-1 field under a part_of parent (mathematical-logic field-to-subfield demotion precedent applies or is distinguished at QC)."
+    }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "wikidata",
+      "purpose": [
+        "identity",
+        "metadata",
+        "source_resolution",
+        "external_link"
+      ],
+      "requires_secret": false,
+      "notes": "CC0. Resolver verifies the unverified training-knowledge QID hints in the proposal and fills missing QIDs."
+    },
+    {
+      "provider": "wikipedia",
+      "purpose": [
+        "external_link",
+        "source_resolution"
+      ],
+      "requires_secret": false,
+      "notes": "External-link / source-resolution pointer only. Never store or cache article bodies."
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "provider": "namuwiki",
+      "reason": "NamuWiki is external-link-only and must never be used as evidence or a source, nor have its content cached."
+    },
+    {
+      "provider": "cloud_llm_api",
+      "reason": "No cloud LLM API calls are permitted in repo tooling, build, validation, or runtime."
+    },
+    {
+      "provider": "scraped_article_body",
+      "reason": "Scraping or crawling third-party article bodies is forbidden; only open, license-compatible data is allowed."
+    }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": [
+      "low",
+      "medium",
+      "historical"
+    ],
+    "requires_strict_review_for": [
+      "living_person",
+      "current_affiliation",
+      "controversial_claim"
+    ]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/computer-and-information-sciences-skeleton-v1"
+  },
+  "notes": [
+    "Continent selection and scope ratified by the CPO 2026-06-11 (vault decision log (23)).",
+    "Coverage baseline for generation/QC: LCC QA75.5-76.95 and Z665-718.8 (outline PDF + id.loc.gov authority records), UDC 004 and 02 (UDC Summary), ACM CCS 2012 (dl.acm.org; Wayback fallback if bot-blocked, access path recorded), with MSC 2020 section 68 and OECD FORD 1.2 as cross-checks and the arXiv cs.* category taxonomy as an auxiliary cross-check only.",
+    "docs/data-foundry.md section 12 (including its precedent log) is a mandatory input to the generation order (promotion policy v1.3); section 13 governs any multi-membership question raised during QC.",
+    "Known structural questions pre-registered for QC: (1) field:machine-learning level-1 field legacy vs the mathematical-logic field-to-subfield demotion precedent; (2) cryptography transfer acceptance; (3) the information-sciences wing is gated case-by-case by the section-12 dual test — escalated only if it proves a policy question.",
+    "The initial seed list is provisional (the standing structural-question target only); the full seed list is regenerated mechanically from the QC-passed proposal.json before the resolver pass (formal-sciences precedent, PR #30).",
+    "/data remains the source of truth for accepted graph data."
+  ]
+}
