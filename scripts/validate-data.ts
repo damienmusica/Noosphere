@@ -178,6 +178,27 @@ for (const edge of edges) {
   if (touchesLivingPerson && (edge.status === "draft" || edge.status === "generated")) {
     fail(`[edges.json] edge ${edge.id} involves a living person but has status "${edge.status}" (needs human review)`);
   }
+
+  // --- Edge promotion policy v1 (vault decision log 2026-06-10 (15)) ---------
+  // Status cap (clause 3): an edge may never outrank its endpoint nodes.
+  if (edge.status === "reviewed") {
+    for (const endpointId of [edge.source, edge.target]) {
+      const endpoint = nodesById.get(endpointId);
+      if (endpoint && endpoint.status !== "reviewed") {
+        fail(`[edges.json] edge ${edge.id} is reviewed but endpoint ${endpointId} has status "${endpoint.status}" (edge status must not exceed its endpoints)`);
+      }
+    }
+  }
+  // Conservative ladder (clauses 2/5): editorial evidence cannot back a reviewed
+  // edge — the editorial reviewed ladder opens only after measured precision.
+  if (edge.status === "reviewed" && edge.evidence_kind === "editorial") {
+    fail(`[edges.json] edge ${edge.id} is reviewed but evidence_kind is "editorial" (editorial edges stop at proposed under edge promotion policy v1)`);
+  }
+  // Disputed-position honesty (clause 6): taking the dominant side of a
+  // real-world contest requires recording the minority position.
+  if (edge.disputed && !edge.note?.trim()) {
+    fail(`[edges.json] edge ${edge.id} is disputed but has no note recording the minority position`);
+  }
 }
 
 // --- Circular prerequisite detection -----------------------------------------

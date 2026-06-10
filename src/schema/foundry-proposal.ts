@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { idSchema, isoDateSchema, prefixedIdSchema } from "./id.ts";
+import { idSchema, prefixedIdSchema } from "./id.ts";
 import { academicStatusSchema, domainKeySchema, nodeTypeSchema } from "./node.ts";
-import { relationTypeSchema } from "./edge.ts";
+import { evidenceKindSchema, proposerSchema, relationTypeSchema } from "./edge.ts";
 import { batchIdSchema } from "./foundry-batch.ts";
 
 /**
@@ -24,18 +24,11 @@ import { batchIdSchema } from "./foundry-batch.ts";
  *    models: today's output is a versioned draft, not permanent debt.
  */
 
-/** Who (which model) proposed this artifact. All fields are required. */
-export const proposerSchema = z
-  .object({
-    /** Human-readable model name, e.g. "Claude Sonnet". */
-    model_name: z.string().min(1),
-    /** Exact model version/ID string, e.g. "claude-sonnet-4-6". Never a guess. */
-    model_version: z.string().min(1),
-    /** Date the proposal was generated (YYYY-MM-DD), supplied by the orchestrator. */
-    proposed_at: isoDateSchema,
-  })
-  .strict();
-export type Proposer = z.infer<typeof proposerSchema>;
+// proposerSchema and evidenceKindSchema moved to edge.ts when the canonical
+// edge schema adopted them (edge promotion policy v1); re-exported here so the
+// foundry surface is unchanged.
+export { evidenceKindSchema, proposerSchema } from "./edge.ts";
+export type { EvidenceKind, Proposer } from "./edge.ts";
 
 /** Per-item reasoned-proposal fields (ADR 0007). `ambiguous` must be explicit. */
 export const reasonedProposalFields = {
@@ -49,10 +42,6 @@ export const reasonedProposalFields = {
 
 // academicStatusSchema now lives in node.ts (canonical schema adopted it);
 // imported above and applied here with the stricter discipline-node requirement.
-
-/** Evidence kind per ADR 0007 §A. */
-export const evidenceKindSchema = z.enum(["externally_sourced", "editorial"]);
-export type EvidenceKind = z.infer<typeof evidenceKindSchema>;
 
 /** A candidate node, shaped for later promotion into the canonical node schema. */
 export const proposedNodeSchema = z
