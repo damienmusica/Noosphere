@@ -819,11 +819,14 @@
       "status": "generated",
       "label_en": "Philosophy of Race",
       "academic_status": "emerging",
-      "external_ids": {},
+      "external_ids": {
+        "philpapers": "philosophy-of-race"
+      },
       "source_hint": "PhilPapers category 'Race and Ethnicity'; SEP entry 'Race'; Journal of the American Philosophical Association; Monahan and Zack as key figures",
       "rationale": "Active contemporary AOS examining the metaphysics of race, racial identity, racial justice, and racism; structurally parallel to feminist-philosophy already in the skeleton; academic_status emerging because standalone courses and AOS hiring remain less common than established subfields.",
       "uncertainty": "No confident Wikidata QID from training knowledge; the subfield's scope and whether it is better classified as social philosophy or political philosophy is contested; some treat it as an application area rather than a distinct subfield.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "Ambiguity resolved 2026-06-10 (distinctness externally grounded; see resolution-report.md). Remains in foundry: no Wikidata field item exists (upstream gap) and standing promotion policy v1 requires resolver-verified primary grounding. PhilPapers category slug recorded as alternative external grounding; promotion-grade acceptance of non-Wikidata grounding is escalated as a policy question."
     },
     {
       "id": "subfield:philosophy-of-education",
@@ -967,11 +970,14 @@
       "status": "generated",
       "label_en": "Philosophy of Cognitive Science",
       "academic_status": "established",
-      "external_ids": {},
+      "external_ids": {
+        "philpapers": "philosophy-of-cognitive-science"
+      },
       "source_hint": "PhilPapers 'Philosophy of Cognitive Science'; Cognitive Science journal; SEP entry",
       "rationale": "Philosophical foundations of cognitive science including representation, computation, connectionism, and embodied cognition; active interdisciplinary area bridging philosophy of mind and cognitive science.",
       "uncertainty": "No confident QID. Risk of duplication with philosophy-of-mind — the distinction rests on the interdisciplinary scope of cognitive science, which some find insufficient to justify a separate node.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "Ambiguity resolved 2026-06-10 (distinctness externally grounded; see resolution-report.md). Remains in foundry: no Wikidata field item exists (upstream gap) and standing promotion policy v1 requires resolver-verified primary grounding. PhilPapers category slug recorded as alternative external grounding; promotion-grade acceptance of non-Wikidata grounding is escalated as a policy question."
     },
     {
       "id": "subfield:philosophy-of-psychiatry",
