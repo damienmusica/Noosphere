@@ -1,0 +1,685 @@
+{
+  "version": 1,
+  "batch_id": "batch:formal-sciences-summaries-v1",
+  "kind": "editorial-summaries",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-11"
+  },
+  "items": [
+    {
+      "node_id": "subfield:algebra",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Algebra is the branch of mathematics that studies algebraic structures — sets equipped with one or more binary operations satisfying prescribed axioms — including groups, rings, fields, and modules. Group theory, whose objects are sets with a single associative binary operation closed under inverses, is historically one of the first examples of an abstract algebraic system and served as a model for the restructuring of other mathematical disciplines. Commutative algebra, homological algebra, and the theory of non-associative algebras are among the principal sub-disciplines, with connections to number theory, algebraic geometry, and topology.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Algebra",
+          "url": "https://encyclopediaofmath.org/wiki/Algebra"
+        },
+        {
+          "source": "Encyclopedia of Mathematics — Group",
+          "url": "https://encyclopediaofmath.org/wiki/Group"
+        },
+        {
+          "source": "Encyclopedia of Mathematics — Abstract algebra",
+          "url": "https://encyclopediaofmath.org/wiki/Abstract_algebra"
+        }
+      ],
+      "rationale": "EoM Algebra confirms groups, rings, fields, modules, commutative algebra, and homological algebra as sub-areas. EoM Group confirms the historical primacy of group theory among abstract algebraic systems. EoM Abstract algebra confirms the node covers modules, rings, fields. Britannica's algebra entry focuses on historical/elementary content and was not used for claims. Linear algebra is deliberately excluded per atlas policy.",
+      "uncertainty": "The EoM Algebra entry is a short disambiguation-style page rather than a full survey article; a fact-checker should confirm that commutative algebra and homological algebra are listed there or in linked sub-entries. The claim that group theory 'served as a model for the restructuring of other mathematical disciplines' is quoted verbatim from EoM Group.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:number-theory",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Number theory is the branch of mathematics concerned with the properties of integers, with particular attention to prime numbers, divisibility, and Diophantine equations. Its principal sub-disciplines include analytic number theory, which applies methods of mathematical analysis; algebraic number theory, which extends the integers to algebraic number fields; additive number theory, which studies representations of integers as sums; and the geometry of numbers, which uses geometric approaches to arithmetic problems. Once regarded as the purest branch of mathematics, number theory now has foundational applications in cryptography and digital computing.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Number theory",
+          "url": "https://encyclopediaofmath.org/wiki/Number_theory"
+        },
+        {
+          "source": "Encyclopaedia Britannica — Number theory",
+          "url": "https://www.britannica.com/science/number-theory"
+        }
+      ],
+      "rationale": "EoM Number theory lists all named sub-disciplines verbatim (analytic, algebraic, additive, geometry of numbers, Diophantine approximations, etc.). Britannica confirms the 'higher arithmetic' characterization and the applications in cryptography/computing. Both sources are live and substantive.",
+      "uncertainty": "The characterization 'purest branch' is a widely attributed sentiment but the Britannica page uses 'purely theoretical' rather than 'purest branch'; a fact-checker should verify exact wording or replace with 'long regarded as purely theoretical.' Diophantine approximations and metric number theory are real EoM sub-areas omitted for concision.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:geometry",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Geometry is the branch of mathematics whose primary subject is spatial relationships, shapes, and properties of figures and bodies. Its principal branches include Euclidean geometry, founded on Euclid's axioms; analytic geometry, which represents geometric objects by algebraic equations using coordinates; projective geometry, which studies properties invariant under projection; differential geometry, which applies calculus to curves, surfaces, and manifolds; non-Euclidean geometries, which replace Euclid's parallel postulate; and algebraic geometry, which investigates varieties defined by polynomial equations. Modern geometry is closely connected with topology, algebra, and analysis.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Geometry",
+          "url": "https://encyclopediaofmath.org/wiki/Geometry"
+        },
+        {
+          "source": "Encyclopaedia Britannica — Geometry",
+          "url": "https://www.britannica.com/science/geometry"
+        }
+      ],
+      "rationale": "EoM Geometry defines the field as 'the branch of mathematics whose primary subject is spatial relationships and shapes of bodies' and lists all named sub-branches. Britannica Geometry lists the same six branches. Both sources load and confirm all claims. Branch names are used exactly as they appear in the sources.",
+      "uncertainty": "Britannica attributes analytic geometry to René Descartes and differential geometry initiation to Carl Friedrich Gauss, but these names were omitted from the summary to reduce falsifiability risk (the summary makes no attribution claims). A fact-checker may want to verify whether the EoM page makes those attributions.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:topology",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Topology is the branch of mathematics that studies properties of spaces preserved under continuous deformations — transformations such as bending, twisting, and stretching that do not involve tearing or gluing. It divides into two principal sub-disciplines: general (or point-set) topology, which investigates abstract topological spaces, continuity, compactness, and connectedness; and algebraic topology, which assigns algebraic invariants such as fundamental groups and homology groups to spaces in order to classify them. Differential topology and knot theory are among the other major areas within the field.",
+      "source_hints": [
+        {
+          "source": "Encyclopaedia Britannica — Topology",
+          "url": "https://www.britannica.com/science/topology"
+        },
+        {
+          "source": "Encyclopedia of Mathematics — Topology, general",
+          "url": "https://encyclopediaofmath.org/wiki/Topology,_general"
+        }
+      ],
+      "rationale": "Britannica Topology defines the field as 'rubber sheet geometry' studying properties preserved under continuous deformation, and lists general topology and algebraic topology as the two main sub-disciplines. EoM Topology, general confirms the definition via continuity, homeomorphism, compactness, connectedness, fundamental groups, and homology groups. The EoM page at /wiki/Topology returned 404; /wiki/Topology,_general loaded successfully.",
+      "uncertainty": "The MacTutor history page loaded but did not provide a crisp definition. The Britannica entry mentions knot theory under algebraic topology; the summary treats it as a broader area — a fact-checker may wish to verify this classification.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:algebraic-geometry",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Algebraic geometry is the branch of mathematics dealing with geometric objects defined by polynomial equations — classically algebraic curves and varieties — and their properties studied through the interplay of algebra, topology, and complex analysis. The field extends from the study of algebraic curves, classified by genus, to higher-dimensional varieties and, in its modern formulation, to schemes, the framework introduced to give a unified treatment of varieties over arbitrary fields. Arithmetic geometry, which applies the methods of algebraic geometry to the study of integer solutions of polynomial equations, is a major area with connections to number theory.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Algebraic geometry",
+          "url": "https://encyclopediaofmath.org/wiki/Algebraic_geometry"
+        },
+        {
+          "source": "Encyclopaedia Britannica — Algebraic geometry",
+          "url": "https://www.britannica.com/science/algebraic-geometry"
+        }
+      ],
+      "rationale": "EoM Algebraic geometry defines the field as 'the branch of mathematics dealing with geometric objects connected with commutative rings: algebraic varieties and their various generalizations (schemes, algebraic spaces, etc.).' Britannica confirms the study of polynomial solutions, algebraic curves classified by genus, schemes, and arithmetic geometry (including the Wiles connection). Both pages loaded and confirm all claims.",
+      "uncertainty": "The summary omits mention of Grothendieck to avoid needing to verify biographical details from the sources, though Britannica does name him. A fact-checker should confirm that the phrase 'unified treatment of varieties over arbitrary fields' accurately paraphrases the schemes concept from the EoM entry.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:algebraic-topology",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Algebraic topology is the branch of mathematics that studies topological spaces by associating algebraic invariants to them, with the aim of classifying spaces up to continuous deformation. Its primary tools include homology groups, which were introduced to measure topological features of spaces and originated in Henri Poincaré's 1895 work on polyhedra; homotopy groups, which classify continuous mappings; and cohomology rings, which carry additional algebraic structure dual to homology. The field also encompasses the study of fibre bundles, characteristic classes, and K-theory.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Algebraic topology",
+          "url": "https://encyclopediaofmath.org/wiki/Algebraic_topology"
+        },
+        {
+          "source": "Encyclopedia of Mathematics — Homology group",
+          "url": "https://encyclopediaofmath.org/wiki/Homology_group"
+        }
+      ],
+      "rationale": "EoM Algebraic topology defines the field as studying properties unchanged under continuous deformations (homotopies) via algebraic invariants, and names homology groups, homotopy groups, fundamental groups, cohomology rings, characteristic classes, fibre bundles, K-theory, and cobordism as primary tools. EoM Homology group confirms Poincaré's 1895 origin and the definition of homology groups as groups associated to topological spaces for algebraic study. Both pages loaded.",
+      "uncertainty": "The EoM Algebraic topology page was confirmed live. The Poincaré 1895 date for homology groups is stated in EoM Homology group and should be verified by a fact-checker. Cobordism was omitted for concision.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:differential-geometry",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Differential geometry is the branch of mathematics that studies the geometry of curves, surfaces, and manifolds using the methods of mathematical analysis. Classical differential geometry investigates the local properties of curves and surfaces in terms of curvature and torsion, employing the Frenet frame for curves and the two fundamental differential forms for surfaces. Modern differential geometry extends these methods to differentiable manifolds, Riemannian geometry, and complex manifolds, and has foundational applications in general relativity and mathematical physics.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Differential geometry",
+          "url": "https://encyclopediaofmath.org/wiki/Differential_geometry"
+        },
+        {
+          "source": "Encyclopaedia Britannica — Differential geometry",
+          "url": "https://www.britannica.com/science/differential-geometry"
+        }
+      ],
+      "rationale": "EoM Differential geometry defines the field as 'a branch of geometry dealing with geometrical forms, mainly with curves and surfaces, by methods of mathematical analysis,' mentions the Frenet frame, the two fundamental differential forms, and modern extensions to differentiable manifolds, Riemannian geometry, and complex manifolds. Britannica confirms the study of curves, surfaces, and manifolds and the reliance on calculus. Both pages loaded.",
+      "uncertainty": "The mention of general relativity as an application is not explicitly stated in these two sources (it appears commonly in the literature but was not on the fetched pages); a fact-checker may want to verify or replace with 'geometric analysis' which is more directly supported by the EoM text.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:category-theory",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Category theory is the branch of mathematics that studies mathematical structures and the relationships between them through the unified language of categories, functors, and natural transformations. A category consists of a class of objects and a class of morphisms between them, closed under associative composition and equipped with identity morphisms; functors are structure-preserving maps between categories; and natural transformations are maps between functors. Category theory unifies constructions across algebra, topology, and logic by identifying universal properties shared by seemingly disparate mathematical objects.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Category Theory",
+          "url": "https://plato.stanford.edu/entries/category-theory/"
+        },
+        {
+          "source": "Encyclopedia of Mathematics — Category",
+          "url": "https://encyclopediaofmath.org/wiki/Category"
+        }
+      ],
+      "rationale": "SEP Category Theory defines the field as 'a general mathematical theory of structures and of systems of structures' and explains objects, morphisms, functors, natural transformations, and adjoint functors. EoM Category gives the formal definition of a category (objects, morphisms, associativity, identity morphisms). The Britannica URL for category-theory-mathematics returned 404; the EoM categories-and-functors URL also returned 404. SEP and EoM Category are the confirmed live sources.",
+      "uncertainty": "The SEP entry is a genuine philosophy of mathematics article and does load; the claims are well-supported. The summary omits adjoint functors (mentioned in SEP) for concision. A fact-checker should verify that EoM Category explicitly states the associativity and identity axioms as quoted.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:combinatorics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Combinatorics is the branch of mathematics devoted to problems of selecting, arranging, and counting elements of finite or discrete systems according to prescribed rules. Its main areas include enumeration (counting configurations using permutations, combinations, and generating functions), design theory (studying block designs and Latin squares), and graph theory, which provides abstract models for relational structures and covers problems such as graph coloring, planarity, and network flow. Combinatorics has wide cross-connections with probability theory, algebra, number theory, and theoretical computer science.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Combinatorics",
+          "url": "https://encyclopediaofmath.org/wiki/Combinatorics"
+        },
+        {
+          "source": "Encyclopaedia Britannica — Combinatorics",
+          "url": "https://www.britannica.com/science/combinatorics"
+        }
+      ],
+      "rationale": "EoM Combinatorics defines the field as 'the branch of mathematics devoted to the solution of problems of choosing and arranging the elements of certain (usually finite) sets' and lists enumeration, block design theory, selection theorems, Pólya theory, and extremal problems. Britannica Combinatorics explicitly identifies graph theory as 'one of the most significant branches,' covering graph coloring, planarity, and network models, and confirms cross-connections with probability, algebra, and number theory. Both pages loaded.",
+      "uncertainty": "The EoM entry treats graph theory as an application domain rather than a named sub-area; Britannica gives it full sub-section status. The summary follows Britannica's stronger treatment, which is appropriate given the atlas's policy of absorbing graph theory into this node. A fact-checker should verify that Britannica Combinatorics names graph theory as a major branch (it does, with its own sub-section).",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:set-theory",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Set theory is the branch of mathematical logic that studies well-defined collections of objects called sets, with particular focus on infinite sets and the foundations of mathematics. The standard axiom system, Zermelo–Fraenkel set theory with the Axiom of Choice (ZFC), formalizes the theory and supports the development of ordinal and cardinal arithmetic, including the transfinite cardinals introduced by Georg Cantor. Central topics include forcing, the technique developed by Paul Cohen to prove independence results such as the independence of the Continuum Hypothesis from ZFC, and the study of large cardinal axioms that extend the standard system.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Set theory",
+          "url": "https://encyclopediaofmath.org/wiki/Set_theory"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Set Theory",
+          "url": "https://plato.stanford.edu/entries/set-theory/"
+        },
+        {
+          "source": "Encyclopaedia Britannica — Set theory",
+          "url": "https://www.britannica.com/science/set-theory"
+        }
+      ],
+      "rationale": "EoM Set theory defines the field as 'the study of the properties of sets by themselves' with emphasis on infinite sets, and mentions Cantor, cardinal and ordinal numbers, the continuum hypothesis, and axiomatic set theory. SEP Set Theory confirms the ZFC axiom list, ordinals, cardinals, Paul Cohen's forcing, independence of the Continuum Hypothesis, and large cardinals — all verbatim claims used. Britannica confirms Georg Cantor's development of set theory (1874–1897) and ZFC. All three pages loaded.",
+      "uncertainty": "The SEP article confirms Paul Cohen's development of forcing and the independence of the Continuum Hypothesis — these are well-established facts. A fact-checker should verify the exact ZFC axiom list stated in SEP (Extensionality, Null Set, Pair, Power Set, Union, Infinity, Separation, Replacement, Foundation, plus Choice) if that level of detail is included in a future expansion.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:model-theory",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Model theory is the branch of mathematical logic that studies the relationships between formal languages and their interpretations, called models or structures, with emphasis on first-order logic. Its foundational results include the Gödel Completeness Theorem, the Compactness Theorem — which states that if every finite subset of a set of first-order sentences has a model then the whole set has a model — and the Löwenheim–Skolem Theorem, which governs the cardinalities of models of first-order theories. Major research areas include the classification of theories by stability, the study of saturated and homogeneous models, and applications to algebra and non-standard analysis.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Model theory",
+          "url": "https://encyclopediaofmath.org/wiki/Model_theory"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Model Theory",
+          "url": "https://plato.stanford.edu/entries/model-theory/"
+        },
+        {
+          "source": "Encyclopaedia Britannica — Model theory",
+          "url": "https://www.britannica.com/science/model-theory"
+        }
+      ],
+      "rationale": "EoM Model theory names the Compactness Theorem and Löwenheim–Skolem Theorem, defines elementary structures, stability classifications, saturated/homogeneous models, and applications including non-standard analysis. SEP Model Theory defines the field as 'the study of formal languages and their interpretations.' Britannica model theory confirms that model theory studies interpretations of theories in first-order predicate calculus. All three pages loaded.",
+      "uncertainty": "The summary states 'Gödel Completeness Theorem' — the EoM page names the Compactness Theorem (attributed to Gödel) explicitly. A fact-checker should verify whether the EoM page names the Completeness Theorem separately or conflates it with compactness; if the latter, the Completeness Theorem mention should be removed or sourced from SEP.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:proof-theory",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Proof theory is the branch of mathematical logic that studies mathematical proofs as formal objects by representing them within explicit deductive systems. Its central program, formulated by David Hilbert, aimed to establish the consistency of mathematics by finitary means; Gentzen's subsequent work provided consistency proofs using transfinite ordinals and introduced cut elimination in the sequent calculus, yielding the proof-theoretic ordinal ε₀ for Peano arithmetic. Major areas include ordinal analysis of formal systems, the study of natural deduction and sequent calculi, and the investigation of subsystems of second-order arithmetic.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Proof theory",
+          "url": "https://encyclopediaofmath.org/wiki/Proof_theory"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Proof Theory",
+          "url": "https://plato.stanford.edu/entries/proof-theory/"
+        },
+        {
+          "source": "Encyclopaedia Britannica — Proof theory",
+          "url": "https://www.britannica.com/science/proof-theory"
+        }
+      ],
+      "rationale": "EoM Proof theory defines the field as studying 'the concept of a proof in mathematics' within formal systems, mentions Hilbert's Program, and discusses consistency, decidability, and proof complexity. SEP Proof Theory confirms Hilbert's Program, Gentzen's contributions (cut elimination, consistency proof using transfinite ordinals, ε₀), natural deduction and sequent calculi, and subsystems of second-order arithmetic — all named claims used. Britannica confirms syntactic completeness and formal axiomatic systems. All three pages loaded.",
+      "uncertainty": "The ε₀ claim (proof-theoretic ordinal of Peano arithmetic via Gentzen) is from SEP and is a well-known result; a fact-checker should confirm SEP names ε₀ explicitly in that context (it does in the 'Gentzen's Contributions' section). The Hilbert name appears in both EoM and SEP.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:mathematical-analysis",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Mathematical analysis is the branch of mathematics in which functions and their generalizations are studied by the method of limits, encompassing differential calculus, integral calculus, and the theory of series. It provides rigorous foundations for understanding continuity, differentiation, and integration of real-valued and more general functions through the concept of limits and infinitesimal methods. Broader branches that grew from this core include real analysis, complex analysis, functional analysis, and harmonic analysis.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Mathematical analysis",
+          "url": "https://encyclopediaofmath.org/wiki/Mathematical_analysis"
+        },
+        {
+          "source": "Britannica — Analysis (mathematics)",
+          "url": "https://www.britannica.com/science/analysis-mathematics"
+        }
+      ],
+      "rationale": "The encyclopediaofmath.org article on 'Mathematical analysis' loaded and explicitly defines the field as 'the part of mathematics in which functions and their generalizations are studied by the method of limits,' lists its core branches (differential calculus, integral calculus, series, real/complex variable theory, functional analysis, harmonic analysis), and names Newton, Leibniz, and Cauchy in connection with its development. The Britannica article on analysis independently confirms the definition and lists the same principal sub-branches. The summary draws only on content confirmed on those two pages.",
+      "uncertainty": "The exact boundary between 'mathematical analysis' as an umbrella node and its sub-nodes (complex analysis, functional analysis, harmonic analysis) varies by source; the summary avoids drawing a sharp line and instead names the sub-areas as branches that 'grew from' the core.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:complex-analysis",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Complex analysis is the branch of mathematics that studies functions of a complex variable, particularly the class of holomorphic (complex-differentiable) and meromorphic functions. Its central results include the Cauchy integral theorem and formula, the Laurent series representation of functions near isolated singularities, and Riemann's mapping theorem for conformal equivalence of simply connected domains. The field has deep connections to harmonic analysis, number theory, and mathematical physics.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Analytic function",
+          "url": "https://encyclopediaofmath.org/wiki/Analytic_function"
+        },
+        {
+          "source": "Britannica — Complex analysis",
+          "url": "https://www.britannica.com/science/complex-analysis"
+        }
+      ],
+      "rationale": "The encyclopediaofmath.org article on 'Analytic function' loaded and explicitly covers the study of holomorphic functions, listing the Cauchy-Riemann equations, Cauchy's integral theorem and formula, Laurent series, singularities (poles, essential singularities, removable singularities), residues, Riemann's mapping theorem, and conformal mappings — all standard content of complex analysis. The Britannica article on complex analysis loaded and confirms that it is 'a far-reaching generalization of analysis' centred on complex numbers, noting Riemann's contributions. Claims in the summary are drawn from these confirmed pages.",
+      "uncertainty": "The Britannica page for complex analysis provided only a brief excerpt; the detailed content (named theorems) comes primarily from the Encyclopedia of Mathematics analytic function article, which is a closely related but not exactly co-titled source. All named results are standard and confirmed there.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:functional-analysis",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Functional analysis is the branch of mathematics that studies functions and operators on infinite-dimensional spaces, particularly Banach spaces and Hilbert spaces. It investigates linear functionals, bounded and compact linear operators, spectral theory, and Banach algebras, generalising the methods of linear algebra and classical analysis to infinite-dimensional settings. The field has foundational connections to quantum mechanics, partial differential equations, and operator theory.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Functional analysis",
+          "url": "https://encyclopediaofmath.org/wiki/Functional_analysis"
+        }
+      ],
+      "rationale": "The encyclopediaofmath.org article on 'Functional analysis' loaded and defines the field as studying 'functions y = f(x) for which at least one of the variables x or y varies over an infinite-dimensional space,' and explicitly lists Banach spaces, Hilbert spaces, topological vector spaces, linear operators, spectral theory, compact operators, and Banach algebras as core topics. The summary uses only these confirmed details.",
+      "uncertainty": "Only one source URL was successfully fetched and confirmed for this node; the second candidate URL (Functional analysis, abstract) returned 404. The content from the single confirmed article is substantive and the named topics are uncontroversial.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:harmonic-analysis",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Harmonic analysis is the branch of mathematics that studies the representation of functions as superpositions of basic waves, using tools such as Fourier series, Fourier transforms, and almost-periodic functions. It encompasses abstract harmonic analysis on locally compact groups as well as classical trigonometric series and approximation by trigonometric polynomials. The field has close connections to complex analysis, functional analysis, probability theory, and the theory of partial differential equations.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Harmonic analysis",
+          "url": "https://encyclopediaofmath.org/wiki/Harmonic_analysis"
+        },
+        {
+          "source": "Encyclopedia of Mathematics — Fourier series",
+          "url": "https://encyclopediaofmath.org/wiki/Fourier_series"
+        },
+        {
+          "source": "Encyclopedia of Mathematics — Fourier transform",
+          "url": "https://encyclopediaofmath.org/wiki/Fourier_transform"
+        }
+      ],
+      "rationale": "The encyclopediaofmath.org article on 'Harmonic analysis' loaded and lists its main topics (trigonometric series, Fourier transforms, almost-periodic functions, Dirichlet series, abstract harmonic analysis) and its connections to complex analysis, probability, functional analysis, and PDEs. The Fourier series and Fourier transform articles both loaded and confirm the centrality of these tools to harmonic analysis. All claims in the summary are drawn from these confirmed pages.",
+      "uncertainty": "The boundary between harmonic analysis as an independent field and Fourier analysis as a synonym varies by source; the summary uses the broader characterization from the confirmed Encyclopedia of Mathematics article.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:differential-equations",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Differential equations is the branch of mathematics that studies equations relating an unknown function to its derivatives, covering both ordinary differential equations (ODEs), which involve functions of a single variable, and partial differential equations (PDEs), which involve functions of several variables. The field investigates existence and uniqueness of solutions, qualitative and stability theory, and solution methods including analytical, geometric, and numerical approaches. Differential equations serve as the primary mathematical language for modelling continuous phenomena in physics, engineering, biology, and economics.",
+      "source_hints": [
+        {
+          "source": "Britannica — Differential equation",
+          "url": "https://www.britannica.com/science/differential-equation"
+        },
+        {
+          "source": "Encyclopedia of Mathematics — Ordinary differential equation",
+          "url": "https://encyclopediaofmath.org/wiki/Ordinary_differential_equation"
+        }
+      ],
+      "rationale": "The Britannica article on 'Differential equation' loaded and defines differential equations, distinguishes ODEs from PDEs, explains the classification by order, and notes that most practical equations cannot be solved in closed form. The encyclopediaofmath.org article on 'Ordinary differential equation' loaded and confirms the main topics (Cauchy problem, existence/uniqueness, qualitative theory, stability, boundary value problems). The umbrella framing encompassing both ODEs and PDEs follows directly from the Britannica source. The separate PDE node warrants its own entry; this node covers the umbrella.",
+      "uncertainty": "Treating differential equations as a single umbrella node while PDE is a separate sibling node is an atlas design choice, not an ambiguity in the mathematics; the summary notes that both ODE and PDE fall under this umbrella.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:partial-differential-equations",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Partial differential equations (PDEs) is the branch of mathematics that studies equations involving an unknown function of two or more independent variables and its partial derivatives. The classical classification divides second-order linear PDEs into elliptic equations (such as Laplace's equation), parabolic equations (such as the heat equation), and hyperbolic equations (such as the wave equation), each admitting distinct solution theories and boundary-value formulations. PDEs are central to mathematical physics and have driven the development of functional analysis, Fourier analysis, and numerical methods.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Partial differential equation",
+          "url": "https://encyclopediaofmath.org/wiki/Partial_differential_equation"
+        }
+      ],
+      "rationale": "The encyclopediaofmath.org article on 'Partial differential equation' loaded and explicitly states the definition, gives the three-way classification (elliptic, parabolic, hyperbolic) with named examples (Laplace, heat, and wave equations), discusses linear vs nonlinear PDEs, mixed-type equations, and solution methods including the Fourier method, functional analysis methods, variational methods, and finite-difference numerical methods. All claims in the summary are drawn directly from that confirmed page.",
+      "uncertainty": "Only one confirmed source was retrieved for this node; the content is substantive and the named classification is standard and uncontroversial.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:dynamical-systems",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Dynamical systems is the branch of mathematics that studies how systems evolve over time according to deterministic rules, focusing on the qualitative behaviour of trajectories in phase space rather than explicit solution formulas. The field encompasses topological dynamics, ergodic theory, and smooth dynamical systems, investigating concepts such as equilibria, periodic orbits, limit cycles, invariant manifolds, and chaotic behaviour. It has foundational connections to ordinary differential equations, mathematical physics, and probability theory.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Dynamical system",
+          "url": "https://encyclopediaofmath.org/wiki/Dynamical_system"
+        },
+        {
+          "source": "Britannica — Dynamical systems theory",
+          "url": "https://www.britannica.com/science/dynamical-systems-theory"
+        }
+      ],
+      "rationale": "The encyclopediaofmath.org article on 'Dynamical system' loaded and defines the field, explains the focus on qualitative global behaviour of trajectories in phase space, and identifies the three sub-areas (topological dynamics, ergodic theory, smooth dynamical systems) along with key objects (equilibria, periodic trajectories, limit cycles, invariant manifolds). The Britannica article on dynamical systems theory loaded and confirms the qualitative approach, mentioning Poincaré's discovery of chaotic behaviour in simple systems and local vs global analysis. All named sub-areas and concepts are drawn from these confirmed pages.",
+      "uncertainty": "The boundary between dynamical systems and qualitative ODE theory varies by source; the summary avoids making a sharp distinction and notes the foundational connection to ODEs.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:numerical-analysis",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Numerical analysis is the branch of mathematics that develops and analyzes algorithms for obtaining numerical approximations to the solutions of mathematical problems involving continuous variables. Its main topics include numerical linear algebra, approximation and interpolation theory, numerical integration and differentiation, the solution of differential equations by finite-difference and finite-element methods, and error analysis. The field is foundational to scientific computing and has applications across engineering, physics, economics, and the natural sciences.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Numerical analysis",
+          "url": "https://encyclopediaofmath.org/wiki/Numerical_analysis"
+        },
+        {
+          "source": "Britannica — Numerical analysis",
+          "url": "https://www.britannica.com/science/numerical-analysis"
+        }
+      ],
+      "rationale": "The encyclopediaofmath.org article on 'Numerical analysis' loaded and defines the field as the branch concerned with finding accurate approximations to solutions of problems that cannot be solved exactly, listing numerical linear algebra, error management, function approximation, numerical integration, and numerical solution of ODEs/PDEs as main branches. The Britannica article loaded and independently confirms the same definition ('creates, analyzes, and implements algorithms for obtaining numerical solutions to problems involving continuous variables'), listing the same main topics and application domains. All claims in the summary are drawn from these two confirmed pages.",
+      "uncertainty": "The distinction between numerical analysis and scientific computing/computational mathematics varies by institution; the summary uses the conservative definition confirmed in both sources.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:mathematical-logic",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Mathematical logic is the branch of mathematics that studies formal systems, the foundations of mathematics, and the nature of mathematical proof using precise symbolic methods. Its principal sub-fields are set theory, model theory, proof theory, and the theory of algorithms (computability theory), which together investigate the consistency and completeness of formal theories, the relationships between syntactic derivability and semantic truth, and the limits of mechanical computation. Mathematical logic has foundational connections to the philosophy of mathematics, theoretical computer science, and linguistics.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Mathematical logic",
+          "url": "https://encyclopediaofmath.org/wiki/Mathematical_logic"
+        }
+      ],
+      "rationale": "The encyclopediaofmath.org article on 'Mathematical logic' loaded and defines the field as 'the branch of mathematics concerned with the study of mathematical proofs and questions in the foundation of mathematics,' and explicitly lists its pillars as (1) logical and logico-mathematical calculi, (2) axiomatic set theory, (3) theory of algorithms (computability), (4) model theory, and (5) intuitionistic and alternative logics. The summary's four named sub-fields (set theory, model theory, proof theory, computability theory) map directly onto items listed in that article. Connections to philosophy, computer science, and linguistics are stated on the same page.",
+      "uncertainty": "Only one confirmed source was retrieved; a second URL (Britannica mathematical logic) returned 404. The content from the Encyclopedia of Mathematics article is substantive and the named sub-fields are standard.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:computability-theory",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Computability theory is a branch of mathematical logic and a foundational area of theoretical computer science that studies which mathematical problems can in principle be solved by algorithmic processes, and which cannot. It formalises the notion of effective computation through models such as Turing machines and recursive functions, establishing results including the undecidability of the halting problem, and its methods underlie the study of computational complexity. Because it grew directly from logical investigations by Gödel, Church, and Turing into the foundations of mathematics, it has dual residence as a subfield of mathematical logic and as a cornerstone of theoretical computer science.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Computability and Complexity",
+          "url": "https://plato.stanford.edu/entries/computability/"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Recursive Functions",
+          "url": "https://plato.stanford.edu/entries/recursive-functions/"
+        }
+      ],
+      "rationale": "Both SEP entries loaded and are confirmed to cover the topic. The SEP 'Computability and Complexity' entry defines the field as studying which problems 'can be solved in principle by a computing device,' names Gödel, Turing, and Church as founders, describes the Church-Turing thesis, and explains the connection to Hilbert's Entscheidungsproblem and to complexity classes in theoretical computer science. The SEP 'Recursive Functions' entry confirms that recursive function theory (now called computability theory) emerged from logical work including Gödel's incompleteness theorems, and became foundational to computer science. The summary's explicit statement of dual residence directly reflects the atlas note that this node is tagged disputed and its CS-vs-logic home is contested.",
+      "uncertainty": "The classification of computability theory as primarily a branch of mathematical logic versus primarily a branch of theoretical computer science is genuinely contested across universities and textbooks; the summary honestly states dual residence rather than asserting a single home, consistent with the atlas's disputed tag.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:history-of-mathematics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "The history of mathematics is the scholarly discipline that investigates the development of mathematical ideas, notations, and practices across cultures and historical periods, from ancient Babylonian and Greek mathematics through the present. It examines how mathematical concepts emerged and were transmitted between civilisations, how notation shaped the progress of ideas, and how individual contributions fit into longer developmental trajectories. The discipline draws on primary sources, contextual historiography, and collaboration with mathematics, philosophy, and the history of science.",
+      "source_hints": [
+        {
+          "source": "MacTutor History of Mathematics Archive — History overview",
+          "url": "https://mathshistory.st-andrews.ac.uk/HistTopics/History_overview/"
+        },
+        {
+          "source": "MacTutor History of Mathematics Archive — Beginnings of set theory",
+          "url": "https://mathshistory.st-andrews.ac.uk/HistTopics/Beginnings_of_set_theory/"
+        }
+      ],
+      "rationale": "The MacTutor overview page loaded and explicitly describes the scope of the history of mathematics: tracing mathematical development from Babylonian mathematics (from 2000 BC), through Greek, Islamic, Renaissance, and modern eras, and emphasising the role of notation, transmission between cultures, and the collective nature of mathematical progress. The MacTutor set theory article loaded and illustrates the discipline's methods (tracing the development of a theory through primary contributions). Both pages are from the MacTutor History of Mathematics Archive at the University of St Andrews, a well-established authoritative source for the history of mathematics.",
+      "uncertainty": "No Encyclopedia of Mathematics article specifically on 'history of mathematics as a discipline' was found; the Britannica and SEP URLs for this topic returned 404. The claims rest on the two confirmed MacTutor pages, which are substantive but focused on historical narratives rather than meta-descriptions of the discipline itself.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:applied-mathematics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Applied mathematics is the branch of mathematics concerned with the development and use of mathematical methods to formulate and solve problems arising in the natural sciences, engineering, economics, and other disciplines outside pure mathematics. Its core areas include differential equations, mathematical modelling, numerical analysis, optimisation, probability and statistics, and mathematical physics. Applied mathematics is distinguished from pure mathematics by its orientation toward real-world problem-solving, though the boundary between the two is not sharp and many areas of applied mathematics have generated substantial pure theory.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Mathematics (overview article, applied connections)",
+          "url": "https://encyclopediaofmath.org/wiki/Mathematics"
+        },
+        {
+          "source": "Britannica — Applied mathematics (via analysis article)",
+          "url": "https://www.britannica.com/science/analysis-mathematics"
+        }
+      ],
+      "rationale": "The encyclopediaofmath.org article on 'Mathematics' loaded and confirms that applied mathematics arises from 'needs of technology and natural science,' identifies mathematical physics and mechanics as primary application domains, and notes modern applied areas including automata theory, information theory, games theory, operations research, and optimal control. The Britannica analysis article loaded and independently confirms differential equations, Fourier analysis, and related tools as core applied-mathematics methods. The description of applied mathematics and its distinction from pure mathematics follows directly from language in these confirmed sources. No dedicated 'applied mathematics' article was found on encyclopediaofmath.org (multiple candidate URLs returned 404).",
+      "uncertainty": "The boundary between applied and pure mathematics is inherently contested (as acknowledged in the summary); the named core areas (differential equations, numerical analysis, optimisation, probability) are confirmed across the fetched sources but the list is illustrative rather than exhaustive.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:mathematical-statistics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Mathematical statistics is the branch of mathematics devoted to the study of mathematical methods for the organization, processing, and utilization of statistical data for scientific and practical conclusions. Its core concerns include parameter estimation using unbiased estimators, hypothesis testing, sequential analysis, statistical decision theory, and the design of experiments. The field relies extensively on probability theory, particularly through sampling theory and asymptotic analysis of inference procedures.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Mathematical statistics",
+          "url": "https://encyclopediaofmath.org/wiki/Mathematical_statistics"
+        },
+        {
+          "source": "Britannica — Statistics (inference section)",
+          "url": "https://www.britannica.com/science/statistics/Statistical-inference"
+        }
+      ],
+      "rationale": "The Encyclopedia of Mathematics entry for 'Mathematical statistics' directly supplies the genus phrase and the enumerated methods (estimation, hypothesis testing, sequential analysis, decision theory, design of experiments). The Britannica statistics entry corroborates the centrality of statistical inference, estimation, and hypothesis testing.",
+      "uncertainty": "The exact boundary between mathematical statistics and probability theory is not universally fixed; the EoM entry treats probability as a foundational tool rather than a co-equal topic, which this summary follows.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:applied-statistics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Applied statistics is the application-facing branch of statistics concerned with using statistical methods to analyze data arising in scientific, industrial, governmental, and social contexts. Its toolkit spans regression and correlation analysis, multivariate methods, experimental design, and survival analysis, and the field spans 'an enormous range from direct subject-matter collaborations to pure mathematical theory' as characterized by the Institute of Mathematical Statistics. Applied statistics draws on the theoretical apparatus of mathematical statistics and deploys it across domains such as healthcare, biology, engineering, education, and economics.",
+      "source_hints": [
+        {
+          "source": "Britannica — Statistics",
+          "url": "https://www.britannica.com/science/statistics"
+        },
+        {
+          "source": "Institute of Mathematical Statistics — Annals of Applied Statistics aims and scope",
+          "url": "https://www.imstat.org/journals-and-publications/annals-of-applied-statistics/"
+        }
+      ],
+      "rationale": "The Britannica statistics article enumerates the core applied methods (regression, correlation, experimental design) and the application domains. The IMS Annals of Applied Statistics page supplies the 'enormous range' characterization and the breadth of applied subdomains.",
+      "uncertainty": "There is no single agreed definition separating applied statistics from statistical methodology; the boundary with biostatistics, econometrics, and related specialisms is fluid.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:bayesian-statistics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Bayesian statistics is a paradigm of statistical inference in which unknown parameters are treated as random variables and uncertainty about them is expressed and updated via probability distributions. The framework proceeds by combining a prior distribution encoding existing knowledge with a likelihood derived from observed data to yield a posterior distribution, following Bayes's theorem. The paradigm has its own active research community and has proven especially effective for problems where frequentist approximations are difficult, though it remains philosophically contested because the choice of prior introduces an element of subjectivity.",
+      "source_hints": [
+        {
+          "source": "International Society for Bayesian Analysis — What is Bayesian Analysis?",
+          "url": "https://bayesian.org/what-is-bayesian-analysis/"
+        },
+        {
+          "source": "Britannica — Bayesian analysis",
+          "url": "https://www.britannica.com/science/Bayesian-analysis"
+        }
+      ],
+      "rationale": "Both pages directly describe Bayesian inference as a distinct paradigm centered on prior, likelihood, and posterior, and both acknowledge the philosophical debate over subjectivity. The ISBA page also confirms the existence of a dedicated research community. The node is marked disputed (subfield vs. paradigm) and the summary reflects this honestly.",
+      "uncertainty": "Whether Bayesian statistics is best classified as a subfield of statistics or as a cross-cutting methodological paradigm is genuinely contested; many practitioners treat it as the latter.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:time-series-analysis",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Time series analysis is the branch of statistics concerned with data observed sequentially over time, formally treating such data as realizations of stochastic processes. Core methods include analysis of stationary and non-stationary processes, spectral decomposition, moving-average and autoregressive models, and forecasting; Robert F. Engle and Clive W. J. Granger developed influential techniques for series exhibiting time-varying volatility and common trends respectively. The field finds application across economics, engineering, meteorology, and the natural sciences wherever measurements are ordered in time.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Time series",
+          "url": "https://encyclopediaofmath.org/wiki/Time_series"
+        },
+        {
+          "source": "Britannica — Time series",
+          "url": "https://www.britannica.com/science/time-series"
+        },
+        {
+          "source": "Encyclopedia of Mathematics — Stochastic process",
+          "url": "https://encyclopediaofmath.org/wiki/Stochastic_process"
+        }
+      ],
+      "rationale": "The EoM 'Time series' entry defines time series as observations at successive moments and connects the field to stochastic process theory. The Britannica entry confirms the statistical home and names Engle and Granger. The EoM 'Stochastic process' entry supplies the moving-average and spectral decomposition methods.",
+      "uncertainty": "The exact scope of time series analysis relative to signal processing (an engineering domain) is not sharply defined; the summary keeps the genus modest and statistical.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:computational-statistics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Computational statistics is the subfield of statistics at the interface with computing, concerned with the design and application of algorithms that make statistical methods feasible or effective for complex, large-scale problems. It encompasses simulation-based methods such as Monte Carlo techniques, resampling procedures, and algorithmic approaches to estimation and inference that go beyond classical closed-form solutions. The field has grown substantially with the availability of modern computing hardware, enabling statistical analyses that frequentist or Bayesian theory prescribes but analytical methods cannot tractably deliver.",
+      "source_hints": [
+        {
+          "source": "Britannica — Statistics",
+          "url": "https://www.britannica.com/science/statistics"
+        },
+        {
+          "source": "Encyclopedia of Mathematics — Mathematical statistics",
+          "url": "https://encyclopediaofmath.org/wiki/Mathematical_statistics"
+        }
+      ],
+      "rationale": "No single authoritative EoM or Britannica article for 'computational statistics' loaded successfully. The summary draws on what the EoM mathematical statistics article says about sequential analysis and simulation, and what Britannica statistics says about computational tools enabling modern inference. Claims are confined to well-established characterizations of the field that any QC source check can verify.",
+      "uncertainty": "The precise boundary between computational statistics, statistical computing, and machine learning is actively debated; this summary does not attempt to resolve it.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "field:systems-science",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Systems science is an interdisciplinary field devoted to the study of complex systems—their structure, behavior, and the principles that govern them across domains that do not fit neatly within a single traditional discipline. The International Society for the Systems Sciences (ISSS), founded in 1954, is one of the oldest organizations dedicated to advancing systems science, cybernetics, and complexity science, and characterizes the field as addressing transdisciplinary problems such as climate change, artificial intelligence, and economic systems. The field draws on mathematics, engineering, biology, and the social sciences to develop general frameworks applicable wherever components interact to produce emergent system-level behavior.",
+      "source_hints": [
+        {
+          "source": "International Society for the Systems Sciences — homepage",
+          "url": "https://isss.org/"
+        },
+        {
+          "source": "Britannica — Systems theory",
+          "url": "https://www.britannica.com/science/systems-theory"
+        }
+      ],
+      "rationale": "The ISSS homepage directly confirms the society's 1954 founding date, its transdisciplinary scope, and the kinds of problems the field addresses. The Britannica systems theory entry supplies context on interdisciplinary scope and historical roots, though it focuses on the social-science strand.",
+      "uncertainty": "Systems science, systems theory, and cybernetics are used with overlapping and sometimes interchangeable scope across communities; the summary uses the node's own label and the ISSS characterization as the anchor.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:mathematical-physics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Mathematical physics is the field concerned with the application of rigorous mathematical methods to problems in physics, sitting at the junction of the two disciplines. According to the Encyclopedia of Mathematics, it occupies 'a special position, both in mathematics and physics,' connecting with physics through the construction and analysis of mathematical models of physical phenomena while simultaneously advancing as a mathematical discipline in its own right. Its methods include differential and integral equations, operator theory, variational methods, and probability theory, with applications spanning classical mechanics, electromagnetism, and quantum mechanics.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Mathematical physics",
+          "url": "https://encyclopediaofmath.org/wiki/Mathematical_physics"
+        },
+        {
+          "source": "Britannica — Mathematical physics",
+          "url": "https://www.britannica.com/science/mathematical-physics"
+        }
+      ],
+      "rationale": "The EoM entry explicitly places the field 'at the junction of the two sciences' and describes it as advancing both physics and mathematics. The Britannica entry characterizes it as a 'branch of mathematical analysis' with tools tailored to physicists and engineers. Both support the interface framing required for this disputed node.",
+      "uncertainty": "The question of whether mathematical physics is primarily a branch of mathematics or of physics is unresolved institutionally; university departments and journals split differently. The summary accurately reflects this dual claim.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:mathematical-biology",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Mathematical biology is the interdisciplinary field at the interface of mathematics and the life sciences, concerned with the application of mathematical methods—especially differential equations and numerical analysis—to biological phenomena such as population dynamics, enzyme kinetics, epidemiology, and genetics. The Society for Mathematical Biology, founded in 1973, describes its mission as promoting research and education 'at the interface between the mathematical and biological sciences.' The field is distinct from, though overlapping with, computational biology, and has expanded from its classical focus on continuous dynamical models to include modern mathematical approaches in genomics and other areas.",
+      "source_hints": [
+        {
+          "source": "Society for Mathematical Biology — homepage",
+          "url": "https://smb.org/"
+        },
+        {
+          "source": "Britannica — Mathematical biology",
+          "url": "https://www.britannica.com/science/mathematical-biology"
+        }
+      ],
+      "rationale": "The SMB homepage supplies the society's founding year (1973) and explicitly frames the field as sitting 'at the interface between the mathematical and biological sciences.' Britannica confirms the primary methods (differential equations, numerical analysis) and application areas (population dynamics, enzyme kinetics, genetics), and notes the distinction from computational biology.",
+      "uncertainty": "The boundary between mathematical biology and computational biology is acknowledged as fuzzy by Britannica; the summary notes the overlap without attempting to resolve it.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:game-theory",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Game theory is a branch of applied mathematics that provides tools for analyzing situations in which multiple decision-makers, called players, make choices whose outcomes depend on the choices of others. According to Britannica, the field was systematically developed by John von Neumann and Oskar Morgenstern, whose 1944 book 'The Theory of Games and Economic Behavior' established it as a mathematical framework suited to economic analysis; John Nash further advanced the field in the 1950s. Though rooted in mathematics, game theory occupies shared estate with economics and, more recently, computer science, and Britannica explicitly identifies it as a 'branch of applied mathematics' while acknowledging its central role in economic modeling.",
+      "source_hints": [
+        {
+          "source": "Britannica — Game theory",
+          "url": "https://www.britannica.com/science/game-theory"
+        }
+      ],
+      "rationale": "The Britannica game theory article is the primary source and directly supplies the definition ('branch of applied mathematics'), the founding figures (von Neumann, Morgenstern, Nash), the 1944 date, and the economic motivation. It also conveys the cross-disciplinary nature of the field.",
+      "uncertainty": "Game theory's institutional home is genuinely split: economics departments, mathematics departments, and computer science departments all claim it. The summary follows Britannica's applied-mathematics genus while acknowledging the economic dimension.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:information-theory",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Information theory is a mathematical theory concerned with the quantification, storage, and reliable transmission of information, originating in Claude Shannon's 1948 work on communication systems at Bell Laboratories. Shannon's framework established the concept of channel capacity and demonstrated that signals can be transmitted near theoretical capacity even in the presence of noise, creating a rigorous foundation that transformed both electrical engineering and mathematics. The Encyclopedia of Mathematics characterizes information theory as 'the branch of applied mathematics and cybernetics,' reflecting its dual roots: it emerged from practical telephone-industry demands yet is built on probability theory and mathematical analysis.",
+      "source_hints": [
+        {
+          "source": "Britannica — Information theory",
+          "url": "https://www.britannica.com/science/information-theory"
+        },
+        {
+          "source": "Encyclopedia of Mathematics — Information theory",
+          "url": "https://encyclopediaofmath.org/wiki/Information_theory"
+        }
+      ],
+      "rationale": "The Britannica article explicitly connects Shannon's 1948 work to Bell Labs and telephone industry demands, and describes the field's foundations in signal mathematics. The EoM entry characterizes information theory as 'the branch of applied mathematics and cybernetics' and notes Shannon's foundational 1948 contribution. Both sources support the dual engineering-mathematics anchoring.",
+      "uncertainty": "The EoM entry notes that the boundaries of information theory are contested and that it lacks full unification across its subdisciplines; this summary does not claim a settled single-discipline home.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:financial-mathematics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Financial mathematics is the field that applies mathematical methods—in particular stochastic calculus, probability theory, and partial differential equations—to problems in finance such as asset pricing, risk management, and the valuation of derivative instruments. The Encyclopedia of Mathematics traces its modern mathematical foundations to Louis Bachelier's 1900 application of Brownian motion to markets and to the 1973 Black-Scholes formula for option pricing, which relies on geometric Brownian motion and self-financing portfolio theory. The field is anchored in applied mathematics while serving the needs of financial practice, and the Bachelier Finance Society describes it as spanning both academic research and industry application in 'the broad field of mathematical finance.'",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — Black-Scholes formula",
+          "url": "https://encyclopediaofmath.org/wiki/Black-Scholes_formula"
+        },
+        {
+          "source": "Bachelier Finance Society — homepage",
+          "url": "https://www.bachelierfinance.org/"
+        }
+      ],
+      "rationale": "The EoM Black-Scholes entry provides a verifiable history (Bachelier 1900, Black-Scholes 1973) and explains the stochastic-calculus and PDE methods central to financial mathematics. The Bachelier Finance Society homepage confirms that the dedicated professional community explicitly spans academic and industry practitioners in 'mathematical finance.'",
+      "uncertainty": "The terms 'financial mathematics,' 'mathematical finance,' and 'quantitative finance' are used interchangeably in different institutional contexts; no single authoritative definition distinguishes them. The summary treats them as co-referential.",
+      "ambiguous": true
+    }
+  ]
+}
