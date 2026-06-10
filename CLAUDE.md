@@ -32,6 +32,9 @@ The current priority is a maintainable, secure data foundation — not a feature
 - AI-proposed nodes/edges must follow the reasoned-proposal contract in
   `docs/ai-usage-policy.md` (rationale + uncertainty + ambiguous flag) before entering
   the curation gate.
+- Foundry proposals live under `foundry/proposals/` and are untrusted `generated` drafts;
+  agents read `/data` as ground truth and must never treat proposals as verified or copy
+  them into `/data` outside the curation gate.
 
 ## Data invariants (enforced by `scripts/validate-data.ts`)
 
