@@ -279,3 +279,65 @@ but this PR stops at source-resolution candidate output.
 Future resolver PRs may add further **open / free / public** knowledge API calls
 (e.g. OpenAlex, ORCID) for source-resolution and proposal-fetch jobs, following
 the same boundaries.
+
+## 12. Skeleton modeling standard (granularity & structure)
+
+> Promotion policy v1.3 (CPO-ratified 2026-06-10, vault decision log (14)). This section is a
+> **mandatory input to every skeleton generation order**. It converts recurring design questions —
+> previously raised per-node via `ambiguous` flags — into standing rules. It accretes precedents:
+> each new QC ruling on a case this standard does not cover is appended here as one line, so the
+> next continent's generator inherits it.
+
+### Keep criteria (the dual criterion)
+
+A skeleton node (field/subfield) is kept only if **both** hold:
+
+- **(a) Classification presence:** it is a major division in the classification sources for its
+  continent (UDC / LCC; discipline-specific schemes such as MSC serve as a cross-check, not a gate).
+- **(b) Community presence:** it exists as a named department/research-area-level unit — journals,
+  societies, department groups, degree tracks.
+
+MSC-top-level-only areas with no department-level standing fail (b); department-named areas with no
+classification division of their own fail (a). Both failures are recorded as deliberate
+non-coverage, never silently dropped.
+
+### Structural rules
+
+1. **Flat two-level skeleton.** Fields (level 1) and subfields (level 2) only. A parent and its
+   sub-area may coexist as peer subfields when both pass the dual criterion (precedent:
+   metaphysics/ontology in philosophy; mathematical-logic and its four pillars in formal sciences).
+2. **Absorption rule.** A candidate that names a refinement of a kept node serving the same
+   community is dropped and recorded as a v2 re-split candidate (precedent: german-idealism
+   deferral in philosophy; group-theory/graph-theory absorption in formal sciences).
+3. **Cross-continent assignment rule.** A node is deferred to another continent only when **both**
+   its primary LCC home **and** its dominant institutional home lie outside the current continent
+   (precedent: cryptography→CS, econometrics→social sciences, biostatistics→medicine). Boundary
+   areas filed under the current continent by its classification sources stay, with the boundary
+   recorded in `uncertainty` and the flag kept true (real-world contest → stops at `proposed`).
+4. **Label rule.** When a pedagogical course label and a research-area label name the same referent,
+   keep the research-area node (precedent: abstract-algebra merged into algebra).
+
+### Flag semantics under this standard
+
+- Generators apply this standard directly; a design question this standard answers needs **no**
+  `ambiguous: true` flag. Flags remain mandatory for: novel design cases this standard does not
+  cover, unverifiable factual inputs, and real-world contests (identity, boundary, vitality).
+- **A-type flags** (modeling/granularity questions addressed to QC): QC may retire the flag by a
+  documented ruling — per-node retirement note + qc-report entry — and the ruling is appended to
+  this standard as precedent. **Every retirement is reported per batch on the dashboard**; the
+  retirement count trending down across continents is the measure of this standard's quality.
+- **B-type flags** (real-world contests): never retired by ruling alone — resolution requires the
+  v1.1 external-evidence path (≥2 independent sources, URL-cited, permanent resolution record).
+
+### Precedent log (append one line per new QC ruling)
+
+- 2026-06-10 philosophy: tradition/methodology axes kept as subfields; movement-level granularity
+  deferred (german-idealism dropped); logic and decision-theory stay humanities (cross-listing
+  parked); ontology is a peer of metaphysics.
+- 2026-06-10 formal sciences: mathematical-logic demoted field→subfield (MSC top-level sections are
+  divisions within mathematics, not peers of it); ASL pillars (set/model/proof/computability theory)
+  kept as peer subfields; differential-equations and PDE both kept (separate MSC top levels +
+  department naming); statistics method-level nodes (MSC 62 G/H/J/K/N) collapsed into
+  applied-statistics; real-analysis dropped while complex-analysis kept (living research identity);
+  representation-theory not added (fails criterion (a)) — first-in-line v2 candidate with
+  graph-theory.
