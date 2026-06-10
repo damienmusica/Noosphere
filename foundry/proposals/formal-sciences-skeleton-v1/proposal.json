@@ -16,13 +16,13 @@
       "label_en": "Mathematical Logic",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q1260632"
+        "wikidata": "Q1166618"
       },
       "source_hint": "Wikidata Q1260632; MSC 2020 section 03; LCC QA9; UDC 510.6",
       "rationale": "MSC 2020 grants mathematical logic its own top-level section (03); it has independent departments and degree programs (e.g., Berkeley Group in Logic and the Methodology of Science) and is listed as a peer field alongside mathematics in major classification systems.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Some universities subsume mathematical logic under mathematics rather than treating it as a peer field; field vs. subfield-of-mathematics placement is contested.",
-      "ambiguous": true,
-      "note": "QC revision 2026-06-10: demoted from field (level 1) to subfield (level 2). Mathematical logic is housed within mathematics departments; MSC top-level sections are divisions within mathematics, not institutional peers of it. Its sub-area nodes (set-theory, model-theory, proof-theory, computability-theory) are retained as peer subfields under the flat two-level skeleton (same pattern as metaphysics/ontology in the philosophy continent)."
+      "ambiguous": false,
+      "note": "QC revision 2026-06-10: demoted from field (level 1) to subfield (level 2). Mathematical logic is housed within mathematics departments; MSC top-level sections are divisions within mathematics, not institutional peers of it. Its sub-area nodes (set-theory, model-theory, proof-theory, computability-theory) are retained as peer subfields under the flat two-level skeleton (same pattern as metaphysics/ontology in the philosophy continent). QC flag retirement 2026-06-10: field-vs-subfield placement was the flagged question; QC ruled it (demoted to subfield, qc-report.md)."
     },
     {
       "id": "subfield:algebra",
@@ -82,7 +82,7 @@
       "label_en": "Differential Geometry",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q214454"
+        "wikidata": "Q188444"
       },
       "source_hint": "Wikidata Q214454; MSC 2020 section 53; LCC QA641–QA670; UDC 514.7",
       "rationale": "Study of smooth manifolds, Riemannian geometry, curvature, and connections; a large research area with deep ties to physics (general relativity); standard graduate course in all research departments.",
@@ -130,12 +130,13 @@
       "label_en": "Algebraic Topology",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q181175"
+        "wikidata": "Q212803"
       },
       "source_hint": "Wikidata Q181175; MSC 2020 section 55; LCC QA612; UDC 515.14",
       "rationale": "Studies topological spaces using algebraic invariants (homotopy groups, homology, cohomology); MSC 2020 section 55 is a major independent section; has its own graduate courses and research programs.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Overlap with topology (parent) and category theory (tools) is substantial; some curricula do not split from general topology at subfield level.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-10: split-from-topology granularity was the flagged question; QC ruled keep (dual criterion met)."
     },
     {
       "id": "subfield:mathematical-analysis",
@@ -167,7 +168,8 @@
       "source_hint": "Wikidata Q193756; MSC 2020 section 30; LCC QA331–QA340; UDC 517.53",
       "rationale": "Study of functions of complex variables, holomorphic functions, contour integration, and conformal mappings; MSC 2020 section 30 is a large standalone section; standard required graduate course.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Sits under mathematical-analysis umbrella; whether it is a distinct subfield or a sub-subfield depends on departmental structure.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-10: subfield-vs-sub-subfield granularity was the flagged question; QC ruled keep."
     },
     {
       "id": "subfield:functional-analysis",
@@ -178,7 +180,7 @@
       "label_en": "Functional Analysis",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q838495"
+        "wikidata": "Q190549"
       },
       "source_hint": "Wikidata Q838495; MSC 2020 section 46; LCC QA320–QA329; UDC 517.98",
       "rationale": "Study of infinite-dimensional vector spaces, Banach and Hilbert spaces, operators, and spectral theory; MSC 2020 section 46 is large; foundational to modern analysis and mathematical physics.",
@@ -194,12 +196,13 @@
       "label_en": "Harmonic Analysis",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q217209"
+        "wikidata": "Q876215"
       },
       "source_hint": "Wikidata Q217209; MSC 2020 sections 42, 43; LCC QA403–QA404; UDC 517.52",
       "rationale": "Study of Fourier series, Fourier transforms, and generalized harmonic analysis on groups; MSC 2020 sections 42–43; active research area with applications in signal processing and PDE.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Sometimes treated as a subspecialty within analysis rather than a peer subfield; MSC 2020 gives it two separate sections which supports its inclusion.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-10: subspecialty-vs-peer granularity was the flagged question; QC ruled keep (MSC 42+43 backing)."
     },
     {
       "id": "subfield:differential-equations",
@@ -210,7 +213,7 @@
       "label_en": "Differential Equations",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q11214"
+        "wikidata": "Q28575007"
       },
       "source_hint": "Wikidata Q11214; MSC 2020 sections 34 (ODE), 35 (PDE); LCC QA370–QA380; UDC 517.9",
       "rationale": "Study of equations involving derivatives; MSC 2020 gives ODEs (34) and PDEs (35) separate top-level sections; combined, differential equations constitute one of the largest research areas in mathematics.",
@@ -231,7 +234,8 @@
       "source_hint": "Wikidata Q271977; MSC 2020 section 35; LCC QA374–QA377; UDC 517.95",
       "rationale": "MSC 2020 section 35 is one of the largest in mathematics; PDEs are central to mathematical physics, fluid dynamics, and modern analysis; every research department has PDE specialists.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Creating both subfield:differential-equations and this node produces an overlap; QC must decide whether to keep both (umbrella + named sub-area) or drop one.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-10: keep-both-with-umbrella was the flagged question; QC ruled keep both. Identity manually selected and live-verified (Q271977, 55 sitelinks)."
     },
     {
       "id": "subfield:dynamical-systems",
@@ -242,7 +246,7 @@
       "label_en": "Dynamical Systems",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q217519"
+        "wikidata": "Q3174497"
       },
       "source_hint": "Wikidata Q217519; MSC 2020 section 37; LCC QA614.8–QA614.9; UDC 517.938",
       "rationale": "Study of systems evolving over time under fixed rules; MSC 2020 section 37 covers dynamical systems and ergodic theory; large research area with connections to physics, engineering, and biology.",
@@ -258,12 +262,13 @@
       "label_en": "Combinatorics",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q7184"
+        "wikidata": "Q76592"
       },
       "source_hint": "Wikidata Q7184; MSC 2020 section 05; LCC QA164–QA167; UDC 519.1",
       "rationale": "Study of counting, arrangements, and discrete structures; MSC 2020 section 05 is a major top-level section; active research area crossing into graph theory, coding theory, and combinatorial optimization.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified — Q7184 may point to 'social science' broadly; the QID needs resolver verification. Boundary with discrete mathematics and graph theory is fuzzy.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-10: QID-hint suspicion + discrete-math overlap were the flagged questions; resolver verified Q76592 and QC dropped discrete-mathematics."
     },
     {
       "id": "subfield:set-theory",
@@ -279,7 +284,8 @@
       "source_hint": "Wikidata Q12482; MSC 2020 section 03E; LCC QA248; UDC 510.223",
       "rationale": "Study of sets and transfinite arithmetic, including forcing and large cardinals; foundational to all of mathematics; MSC 03E is a major sub-section of Mathematical Logic.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. MSC files set theory under section 03 (Mathematical Logic); whether it belongs as a subfield of mathematics directly or under mathematical-logic is a structural design choice — flagged ambiguous.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-10: placement under mathematical-logic vs peer was the flagged question; QC ruled flat two-level skeleton."
     },
     {
       "id": "subfield:model-theory",
@@ -290,12 +296,13 @@
       "label_en": "Model Theory",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q33296"
+        "wikidata": "Q467606"
       },
       "source_hint": "Wikidata Q33296; MSC 2020 section 03C; LCC QA9.7; UDC 510.626",
       "rationale": "Branch of mathematical logic studying the relationships between formal theories and their mathematical models; MSC 03C is a large section; active research area with connections to algebra and geometry.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Some list this under mathematical logic rather than as a peer subfield of mathematics; level placement depends on how field:mathematical-logic is resolved.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-10: placement under mathematical-logic vs peer was the flagged question; QC ruled flat two-level skeleton."
     },
     {
       "id": "subfield:proof-theory",
@@ -306,12 +313,13 @@
       "label_en": "Proof Theory",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q852278"
+        "wikidata": "Q852732"
       },
       "source_hint": "Wikidata Q852278; MSC 2020 section 03F; LCC QA9.54; UDC 510.6",
       "rationale": "Branch of mathematical logic studying formal proof systems, proof complexity, and consistency of axiomatic systems; MSC 03F is a recognized section; present in all mathematical logic research programs.",
       "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Best classified under field:mathematical-logic; whether it warrants a peer-subfield node vs. a sub-area under model theory or set theory is contested.",
-      "ambiguous": true
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-10: placement/granularity was the flagged question; QC ruled keep as peer subfield."
     },
     {
       "id": "subfield:computability-theory",
@@ -322,7 +330,7 @@
       "label_en": "Computability Theory",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q607443"
+        "wikidata": "Q818930"
       },
       "source_hint": "Wikidata Q607443; MSC 2020 section 03D; LCC QA9.59; UDC 510.5",
       "rationale": "Study of what problems can be solved algorithmically (Turing machines, recursive functions, degrees of unsolvability); MSC 03D; classified under mathematical logic by MSC and LCC; distinct from computational complexity which MSC files under 68.",
@@ -354,7 +362,7 @@
       "label_en": "Numerical Analysis",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q11473"
+        "wikidata": "Q11216"
       },
       "source_hint": "Wikidata Q11473; MSC 2020 section 65; LCC QA297–QA299; UDC 519.6",
       "rationale": "Study of algorithms for numerical computation including error analysis, numerical linear algebra, and approximation; MSC 2020 section 65; present as a named research area and degree track in nearly every mathematics department.",
@@ -370,7 +378,7 @@
       "label_en": "Mathematical Physics",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q181916"
+        "wikidata": "Q156495"
       },
       "source_hint": "Wikidata Q181916; MSC 2020 section 81-82 (quantum, statistical mechanics), 83 (relativity); LCC QA401–QA431; UDC 530.1",
       "rationale": "Application of rigorous mathematical methods to physical problems including quantum mechanics, statistical mechanics, and relativity; MSC 2020 includes several applied sections (81–83); present as a named research area in both mathematics and physics departments.",
@@ -386,7 +394,7 @@
       "label_en": "Applied Mathematics",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q126818"
+        "wikidata": "Q33521"
       },
       "source_hint": "Wikidata Q126818; MSC 2020 applied sections 70, 74, 76, 90, 92, 93; LCC QA1–QA3 (general); UDC 519",
       "rationale": "The application of mathematical methods to problems in science, engineering, and industry; many universities have separate applied mathematics departments or divisions; an umbrella designation in LCC QA.",
@@ -402,7 +410,7 @@
       "label_en": "Operations Research",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q1128437"
+        "wikidata": "Q194292"
       },
       "source_hint": "Wikidata Q1128437; MSC 2020 section 90; LCC T57–T57.97; UDC 519.8",
       "rationale": "Applies mathematical methods to operational decision-making — linear programming, scheduling, network flows, game theory; MSC 2020 section 90; has its own departments and professional societies.",
@@ -418,7 +426,7 @@
       "label_en": "Game Theory",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q9174"
+        "wikidata": "Q44455"
       },
       "source_hint": "Wikidata Q9174; MSC 2020 section 91 (Game theory, economics, social and behavioral sciences); LCC QA269; UDC 519.83",
       "rationale": "Mathematical study of strategic interaction; MSC 2020 section 91; classified under mathematics by LCC and MSC; active research area crossing mathematics, economics, and computer science.",
@@ -434,7 +442,7 @@
       "label_en": "Information Theory",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q131149"
+        "wikidata": "Q131222"
       },
       "source_hint": "Wikidata Q131149; MSC 2020 section 94 (Information and communication, circuits); LCC QA360–QA370; UDC 519.72",
       "rationale": "Mathematical study of quantification, storage, and communication of information; Shannon entropy, channel capacity, coding theory; MSC 2020 section 94 is a formal-sciences classification.",
@@ -450,7 +458,7 @@
       "label_en": "Financial Mathematics",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q12503"
+        "wikidata": "Q335632"
       },
       "source_hint": "Wikidata Q12503; MSC 2020 section 91G; LCC HG1–HG9999; UDC 336",
       "rationale": "Application of mathematical methods (stochastic calculus, PDE, optimization) to financial modeling and derivative pricing; many universities have dedicated mathematics-of-finance degree programs.",
@@ -466,7 +474,7 @@
       "label_en": "Bayesian Statistics",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q620253"
+        "wikidata": "Q4874481"
       },
       "source_hint": "Wikidata Q620253; MSC 2020 section 62F15; LCC QA279.5; Bayesian Analysis journal",
       "rationale": "Statistical paradigm treating probability as a degree of belief and using Bayes' theorem for inference; has its own international society (ISBA), journal, and substantial research program separate from frequentist inference.",
@@ -482,7 +490,7 @@
       "label_en": "Time Series Analysis",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q2495616"
+        "wikidata": "Q11850042"
       },
       "source_hint": "Wikidata Q2495616; MSC 2020 section 62M10; LCC QA280; UDC 519.246",
       "rationale": "Statistical analysis of sequences of data points indexed over time; ARIMA models, spectral analysis, forecasting; MSC 62M10; a standard course and research area in statistics departments.",
@@ -498,7 +506,7 @@
       "label_en": "Computational Statistics",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q1154576"
+        "wikidata": "Q5157340"
       },
       "source_hint": "Wikidata Q1154576; MSC 2020 section 62-08; LCC QA276.4; Statistics and Computing journal",
       "rationale": "Development and analysis of statistical algorithms and their computational implementation — MCMC, bootstrap, EM algorithm; MSC 62-08; recognized subfield with dedicated journals.",
@@ -514,7 +522,7 @@
       "label_en": "Mathematical Statistics",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q2282891"
+        "wikidata": "Q745328"
       },
       "source_hint": "Wikidata Q2282891; MSC 2020 section 62 (preamble); LCC QA276; UDC 519.2; Annals of Statistics journal",
       "rationale": "Rigorous theoretical foundations of statistics including decision theory, asymptotic theory, and statistical efficiency; distinct from applied statistics in emphasis on mathematical proof; present in every statistics department.",
@@ -530,7 +538,7 @@
       "label_en": "History of Mathematics",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q849022"
+        "wikidata": "Q185264"
       },
       "source_hint": "Wikidata Q849022; MSC 2020 section 01 (History and biography); LCC QA21–QA27; UDC 510(09)",
       "rationale": "Study of the historical development of mathematical concepts, proofs, and institutions; MSC 2020 section 01 is a peer top-level section; present in mathematics departments and mathematics education programs.",
@@ -546,7 +554,7 @@
       "label_en": "Mathematics Education",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q1095477"
+        "wikidata": "Q853077"
       },
       "source_hint": "Wikidata Q1095477; MSC 2020 section 97; LCC QA11–QA20; UDC 51:37",
       "rationale": "Study of the teaching and learning of mathematics; MSC 2020 section 97 is a peer top-level section; many departments of mathematics have education research tracks and joint programs with colleges of education.",
@@ -562,7 +570,7 @@
       "label_en": "Control Theory",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q131246"
+        "wikidata": "Q6501221"
       },
       "source_hint": "Wikidata Q131246; MSC 2020 section 93; LCC QA402.3; UDC 517.977",
       "rationale": "Mathematical study of how to influence dynamical systems toward desired outcomes; MSC 2020 section 93; present in applied mathematics and engineering departments with strong mathematical content.",
@@ -578,7 +586,7 @@
       "label_en": "Mathematical Biology",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q6787782"
+        "wikidata": "Q751611"
       },
       "source_hint": "Wikidata Q6787782; MSC 2020 section 92 (Biology and other natural sciences); LCC QH323.5; Journal of Mathematical Biology",
       "rationale": "Application of mathematical modeling (ODE, PDE, stochastic processes) to biological systems — population dynamics, epidemiology, biochemical kinetics; MSC 2020 section 92; has its own departments and journals.",
@@ -594,7 +602,7 @@
       "label_en": "Systems Science",
       "academic_status": "established",
       "external_ids": {
-        "wikidata": "Q475023"
+        "wikidata": "Q2167061"
       },
       "source_hint": "Wikidata Q475023; UDC 007; International Society for the Systems Sciences (ISSS); Systems Research and Behavioral Science journal",
       "rationale": "Systems science is consistently listed as a branch of the formal sciences alongside mathematics and statistics; it has a dedicated international society (ISSS), journals, and degree programs, and the batch manifest scope explicitly includes systems-science areas.",
@@ -627,7 +635,9 @@
       "status": "generated",
       "label_en": "Applied Statistics",
       "academic_status": "established",
-      "external_ids": {},
+      "external_ids": {
+        "wikidata": "Q1967088"
+      },
       "source_hint": "MSC 2020 section 62P (applications of statistics); LCC QA276-280; ubiquitous applied-statistics degree tracks and department groups",
       "rationale": "Umbrella research area for the application-facing side of statistics (regression methods, multivariate methods, experimental design, survival methods); mirrors subfield:applied-mathematics on the statistics side and is a named track in most statistics departments.",
       "uncertainty": "No confident Wikidata QID from training knowledge — the resolver must establish one or the node honestly stays in the foundry. As an umbrella it absorbs several finer MSC 62 sections dropped from this skeleton (62H/62J/62K/62N/62G); v2 may re-split them.",
@@ -649,6 +659,8 @@
     "The two existing concept nodes (concept:random-variable, concept:probability-distribution) are level-3 and out of scope for this skeleton. Their QID grounding targets listed in the batch manifest are noted here for the resolver pass.",
     "subfield:algebra and subfield:abstract-algebra overlap — QC should decide whether to keep both (elementary/abstract split) or merge. subfield:algebra is proposed as the broader umbrella.",
     "subfield:applied-mathematics is proposed as a broad umbrella that overlaps with numerical-analysis, operations-research, control-theory, and mathematical-biology. QC should evaluate whether the umbrella node adds value or should be dropped in favor of its component sub-areas.",
-    "QC revision 2026-06-10 (Claude Fable 5, orchestrator — generation/QC contexts separate): 69 generated nodes reviewed; 33 dropped (granularity absorptions, one merge, three cross-continent deferrals), 1 structural demotion (field:mathematical-logic -> subfield:mathematical-logic), 3 QC gap-fill additions (field:systems-science, subfield:cybernetics, subfield:applied-statistics). Full verdict table with per-node reasons in qc-report.md. Dropped IDs: subfield:abstract-algebra, subfield:real-analysis, subfield:graph-theory, subfield:group-theory, subfield:commutative-algebra, subfield:number-theory-analytic, subfield:measure-theory, subfield:cryptography, subfield:stochastic-processes, subfield:statistical-inference, subfield:multivariate-statistics, subfield:nonparametric-statistics, subfield:regression-analysis, subfield:design-of-experiments, subfield:survival-analysis, subfield:biostatistics, subfield:discrete-mathematics, subfield:foundations-of-mathematics, subfield:topology-geometric, subfield:convex-geometry, subfield:fractal-geometry, subfield:calculus-of-variations, subfield:approximation-theory, subfield:special-functions, subfield:econometrics, subfield:potential-theory, subfield:operator-theory, subfield:lattice-theory, subfield:universal-algebra, subfield:ergodic-theory, subfield:integral-equations, subfield:several-complex-variables, subfield:sequences-and-series."
+    "QC revision 2026-06-10 (Claude Fable 5, orchestrator — generation/QC contexts separate): 69 generated nodes reviewed; 33 dropped (granularity absorptions, one merge, three cross-continent deferrals), 1 structural demotion (field:mathematical-logic -> subfield:mathematical-logic), 3 QC gap-fill additions (field:systems-science, subfield:cybernetics, subfield:applied-statistics). Full verdict table with per-node reasons in qc-report.md. Dropped IDs: subfield:abstract-algebra, subfield:real-analysis, subfield:graph-theory, subfield:group-theory, subfield:commutative-algebra, subfield:number-theory-analytic, subfield:measure-theory, subfield:cryptography, subfield:stochastic-processes, subfield:statistical-inference, subfield:multivariate-statistics, subfield:nonparametric-statistics, subfield:regression-analysis, subfield:design-of-experiments, subfield:survival-analysis, subfield:biostatistics, subfield:discrete-mathematics, subfield:foundations-of-mathematics, subfield:topology-geometric, subfield:convex-geometry, subfield:fractal-geometry, subfield:calculus-of-variations, subfield:approximation-theory, subfield:special-functions, subfield:econometrics, subfield:potential-theory, subfield:operator-theory, subfield:lattice-theory, subfield:universal-algebra, subfield:ergodic-theory, subfield:integral-equations, subfield:several-complex-variables, subfield:sequences-and-series.",
+    "QID grounding pass 2026-06-10: all external_ids.wikidata values adjudicated against the local Wikidata resolver v3 source pack (dist/foundry/source-packs/formal-sciences-skeleton-v1). 44/44 seeds resolved; 12 resolver-ambiguous results QC-adjudicated by sitelinks+aliases (decision log (9)); 1 manual selection (partial-differential-equations -> Q271977, plural-form query had surfaced only books/articles); 5 live Special:EntityData verifications. Generator hint accuracy: 11/38 correct (27 wrong, 1 missing) — full table in grounding-report.md.",
+    "QC flag retirements 2026-06-10 (9 nodes): flags whose stated reason was a structural/granularity question addressed to QC were retired once QC ruled (ADR 0007: the flag requests human judgment; the ruling is that judgment). Real-world boundary/identity contests (computability-theory, mathematical-physics, applied-mathematics, operations-research, game-theory, information-theory, financial-mathematics, mathematics-education, control-theory, mathematical-biology, bayesian-statistics, time-series-analysis, computational-statistics, cybernetics) keep ambiguous=true and stop at proposed under policy v1; v1.1 external research can resolve them later."
   ]
 }
