@@ -349,6 +349,26 @@ non-coverage, never silently dropped.
   (MSC 62 subsections + standalone communities); cybernetics takes `field:systems-science`
   (UDC 007 + LCC Q300-390); history-of-mathematics stays under mathematics (MSC 01 + LCC QA21-27
   unanimous — a boundary concern does not survive source agreement).
+- 2026-06-11 computer & information sciences (source interpretations): a discipline-specific
+  scheme may be a gate-level classification source when the continent's manifest ratifies it in
+  the coverage baseline (ACM CCS 2012 here — LCC compresses the whole continent into ~1.5 class
+  numbers; MSC 68 and FORD 1.2 stay cross-checks); LCC cutter-level subdivisions inside such a
+  compressed range (QA75.5-76.95) count as major divisions for criterion (a).
+- 2026-06-11 computer & information sciences (rulings): machine-learning demoted field→subfield
+  with canonical ID migration (mathematical-logic precedent — UDC files ML under 004.8, CCS as a
+  sibling of AI, LCC at Q325.5 under Cybernetics; no field-level institutional standing); AI
+  enters as a peer subfield; theory-of-computation umbrella coexists with algorithms/complexity/
+  formal-languages peers (peer-coexistence rule); cryptography/computer-security split upheld
+  (CCS separates the branches; IACR vs S&P communities); computer-systems kept as the systems
+  umbrella (OS/architecture/performance absorbed, v2 re-split candidates); the LIS wing stays
+  in-continent with field-level standing (LCC Z665-718.8 + UDC 02 own divisions; iSchools are
+  faculties of their own — two-prong test, no policy escalation); social-computing stays (CCS
+  branch + CSCW community; computational social science is social-sciences non-coverage);
+  bioinformatics deferred to life sciences (LCC QH324.2 + institutional home — biostatistics
+  precedent); archival-science fails criterion (a) in-continent (novel ruling: a department-named
+  area whose classification homes — LCC CD, UDC 930.25 — lie in another continent's classes waits
+  for that continent's skeleton; §13 can cross-list it later); data-science recorded as deliberate
+  non-coverage (named departments, no classification division — representation-theory pattern).
 
 ## 13. Cross-listing standard (multiple `part_of` memberships)
 

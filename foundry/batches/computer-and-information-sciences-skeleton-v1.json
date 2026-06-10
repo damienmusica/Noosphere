@@ -26,10 +26,141 @@
   },
   "seed_entities": [
     {
-      "label": "Machine learning",
-      "expected_node_id": "field:machine-learning",
-      "expected_type": "field",
-      "notes": "Existing /data node (reviewed, Q2539, ML-foundations legacy). Not a generation target; listed as the continent's standing structural question for QC — level-1 field under a part_of parent (mathematical-logic field-to-subfield demotion precedent applies or is distinguished at QC)."
+      "label": "Algorithms and Data Structures",
+      "expected_node_id": "subfield:algorithms-and-data-structures",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Computational Complexity Theory",
+      "expected_node_id": "subfield:computational-complexity-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Programming Languages",
+      "expected_node_id": "subfield:programming-languages",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Software Engineering",
+      "expected_node_id": "subfield:software-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Computer Systems",
+      "expected_node_id": "subfield:computer-systems",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Computer Networks",
+      "expected_node_id": "subfield:computer-networks",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Distributed and Parallel Computing",
+      "expected_node_id": "subfield:distributed-and-parallel-computing",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Databases and Information Systems",
+      "expected_node_id": "subfield:databases-and-information-systems",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Artificial Intelligence",
+      "expected_node_id": "subfield:artificial-intelligence",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Computer Vision",
+      "expected_node_id": "subfield:computer-vision",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Natural Language Processing",
+      "expected_node_id": "subfield:natural-language-processing",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Human-Computer Interaction",
+      "expected_node_id": "subfield:human-computer-interaction",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Computer Graphics",
+      "expected_node_id": "subfield:computer-graphics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Cryptography",
+      "expected_node_id": "subfield:cryptography",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Computer Security",
+      "expected_node_id": "subfield:computer-security",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Theoretical Computer Science",
+      "expected_node_id": "subfield:theoretical-computer-science",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Formal Languages and Automata Theory",
+      "expected_node_id": "subfield:formal-languages-and-automata-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Scientific Computing",
+      "expected_node_id": "subfield:scientific-computing",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Information Retrieval",
+      "expected_node_id": "subfield:information-retrieval",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Quantum Computing",
+      "expected_node_id": "subfield:quantum-computing",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Library and Information Science",
+      "expected_node_id": "field:library-and-information-science",
+      "expected_type": "field"
+    },
+    {
+      "label": "Knowledge Organization",
+      "expected_node_id": "subfield:knowledge-organization",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Digital Libraries",
+      "expected_node_id": "subfield:digital-libraries",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Bibliometrics and Scientometrics",
+      "expected_node_id": "subfield:bibliometrics-and-scientometrics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Social Computing",
+      "expected_node_id": "subfield:social-computing",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Visualization",
+      "expected_node_id": "subfield:visualization",
+      "expected_type": "subfield",
+      "notes": "QC gap-fill addition with no QID hint; resolver must establish one or the node stays in foundry."
+    },
+    {
+      "label": "History of Computing",
+      "expected_node_id": "subfield:history-of-computing",
+      "expected_type": "subfield",
+      "notes": "QC gap-fill addition with no QID hint; resolver must establish one or the node stays in foundry."
     }
   ],
   "allowed_public_sources": [
@@ -89,7 +220,7 @@
     "Coverage baseline for generation/QC: LCC QA75.5-76.95 and Z665-718.8 (outline PDF + id.loc.gov authority records), UDC 004 and 02 (UDC Summary), ACM CCS 2012 (dl.acm.org; Wayback fallback if bot-blocked, access path recorded), with MSC 2020 section 68 and OECD FORD 1.2 as cross-checks and the arXiv cs.* category taxonomy as an auxiliary cross-check only.",
     "docs/data-foundry.md section 12 (including its precedent log) is a mandatory input to the generation order (promotion policy v1.3); section 13 governs any multi-membership question raised during QC.",
     "Known structural questions pre-registered for QC: (1) field:machine-learning level-1 field legacy vs the mathematical-logic field-to-subfield demotion precedent; (2) cryptography transfer acceptance; (3) the information-sciences wing is gated case-by-case by the section-12 dual test — escalated only if it proves a policy question.",
-    "The initial seed list is provisional (the standing structural-question target only); the full seed list is regenerated mechanically from the QC-passed proposal.json before the resolver pass (formal-sciences precedent, PR #30).",
-    "/data remains the source of truth for accepted graph data."
+    "/data remains the source of truth for accepted graph data.",
+    "Seeds regenerated mechanically from the QC-passed proposal.json (27 nodes, 2026-06-11) — formal-sciences precedent (PR #30). The provisional field:machine-learning seed was removed: its QID (Q2539) is already verified and its structural question was resolved at QC (demotion at promotion; section-12 precedent log)."
   ]
 }
