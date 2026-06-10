@@ -356,5 +356,1901 @@
     ],
     "evidence_kind": "editorial",
     "note": "Promoted from ml-foundations-v1 under edge promotion policy v1 (editorial evidence stops at proposed). Provenance & verification: foundry/proposals/ml-foundations-v1/promotion-report.md. Deliberately adjacent_to, not part_of: the containment question is a real-world contest (B-type); a part_of stance would require the v1.1/clause-6 research path."
+  },
+  {
+    "id": "edge:philosophy-part-of-humanities",
+    "source": "field:philosophy",
+    "target": "domain:humanities",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:metaphysics-part-of-philosophy",
+    "source": "subfield:metaphysics",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:ontology-part-of-philosophy",
+    "source": "subfield:ontology",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:epistemology-part-of-philosophy",
+    "source": "subfield:epistemology",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:ethics-part-of-philosophy",
+    "source": "subfield:ethics",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:logic-part-of-philosophy",
+    "source": "subfield:logic",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:aesthetics-part-of-philosophy",
+    "source": "subfield:aesthetics",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:axiology-part-of-philosophy",
+    "source": "subfield:axiology",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:philosophy-of-mind-part-of-philosophy",
+    "source": "subfield:philosophy-of-mind",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:philosophy-of-language-part-of-philosophy",
+    "source": "subfield:philosophy-of-language",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:philosophy-of-science-part-of-philosophy",
+    "source": "subfield:philosophy-of-science",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:philosophy-of-mathematics-part-of-philosophy",
+    "source": "subfield:philosophy-of-mathematics",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:philosophy-of-religion-part-of-philosophy",
+    "source": "subfield:philosophy-of-religion",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:philosophy-of-law-part-of-philosophy",
+    "source": "subfield:philosophy-of-law",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:political-philosophy-part-of-philosophy",
+    "source": "subfield:political-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:social-philosophy-part-of-philosophy",
+    "source": "subfield:social-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap). LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:philosophy-of-action-part-of-philosophy",
+    "source": "subfield:philosophy-of-action",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:philosophy-of-perception-part-of-philosophy",
+    "source": "subfield:philosophy-of-perception",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:philosophy-of-technology-part-of-philosophy",
+    "source": "subfield:philosophy-of-technology",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:philosophy-of-biology-part-of-philosophy",
+    "source": "subfield:philosophy-of-biology",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:philosophy-of-physics-part-of-philosophy",
+    "source": "subfield:philosophy-of-physics",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:philosophy-of-social-science-part-of-philosophy",
+    "source": "subfield:philosophy-of-social-science",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:bioethics-part-of-philosophy",
+    "source": "subfield:bioethics",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:environmental-ethics-part-of-philosophy",
+    "source": "subfield:environmental-ethics",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:business-ethics-part-of-philosophy",
+    "source": "subfield:business-ethics",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:metaethics-part-of-philosophy",
+    "source": "subfield:metaethics",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:normative-ethics-part-of-philosophy",
+    "source": "subfield:normative-ethics",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:analytic-philosophy-part-of-philosophy",
+    "source": "subfield:analytic-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:continental-philosophy-part-of-philosophy",
+    "source": "subfield:continental-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:phenomenology-part-of-philosophy",
+    "source": "subfield:phenomenology",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:existentialism-part-of-philosophy",
+    "source": "subfield:existentialism",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:pragmatism-part-of-philosophy",
+    "source": "subfield:pragmatism",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:ancient-philosophy-part-of-philosophy",
+    "source": "subfield:ancient-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:medieval-philosophy-part-of-philosophy",
+    "source": "subfield:medieval-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:renaissance-philosophy-part-of-philosophy",
+    "source": "subfield:renaissance-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:chinese-philosophy-part-of-philosophy",
+    "source": "subfield:chinese-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:indian-philosophy-part-of-philosophy",
+    "source": "subfield:indian-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:buddhist-philosophy-part-of-philosophy",
+    "source": "subfield:buddhist-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:islamic-philosophy-part-of-philosophy",
+    "source": "subfield:islamic-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:jewish-philosophy-part-of-philosophy",
+    "source": "subfield:jewish-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:african-philosophy-part-of-philosophy",
+    "source": "subfield:african-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:japanese-philosophy-part-of-philosophy",
+    "source": "subfield:japanese-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:korean-philosophy-part-of-philosophy",
+    "source": "subfield:korean-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:latin-american-philosophy-part-of-philosophy",
+    "source": "subfield:latin-american-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:comparative-philosophy-part-of-philosophy",
+    "source": "subfield:comparative-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:philosophy-of-history-part-of-philosophy",
+    "source": "subfield:philosophy-of-history",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:philosophy-of-economics-part-of-philosophy",
+    "source": "subfield:philosophy-of-economics",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:feminist-philosophy-part-of-philosophy",
+    "source": "subfield:feminist-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:philosophy-of-education-part-of-philosophy",
+    "source": "subfield:philosophy-of-education",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:hermeneutics-part-of-philosophy",
+    "source": "subfield:hermeneutics",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:metaphilosophy-part-of-philosophy",
+    "source": "subfield:metaphilosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:natural-philosophy-part-of-philosophy",
+    "source": "subfield:natural-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:scholasticism-part-of-philosophy",
+    "source": "subfield:scholasticism",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:philosophy-of-psychiatry-part-of-philosophy",
+    "source": "subfield:philosophy-of-psychiatry",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:philosophy-of-information-part-of-philosophy",
+    "source": "subfield:philosophy-of-information",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:ethics-of-ai-part-of-philosophy",
+    "source": "subfield:ethics-of-ai",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:experimental-philosophy-part-of-philosophy",
+    "source": "subfield:experimental-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:decision-theory-part-of-philosophy",
+    "source": "subfield:decision-theory",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:esotericism-and-theosophy-part-of-philosophy",
+    "source": "subfield:esotericism-and-theosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:modern-philosophy-part-of-philosophy",
+    "source": "subfield:modern-philosophy",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+  },
+  {
+    "id": "edge:critical-theory-part-of-philosophy",
+    "source": "subfield:critical-theory",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:philosophy-of-race-part-of-philosophy",
+    "source": "subfield:philosophy-of-race",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+  },
+  {
+    "id": "edge:philosophy-of-cognitive-science-part-of-philosophy",
+    "source": "subfield:philosophy-of-cognitive-science",
+    "target": "field:philosophy",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap). LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+  },
+  {
+    "id": "edge:systems-science-part-of-formal-sciences",
+    "source": "field:systems-science",
+    "target": "domain:formal-sciences",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:mathematical-logic-part-of-mathematics",
+    "source": "subfield:mathematical-logic",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:algebra-part-of-mathematics",
+    "source": "subfield:algebra",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:number-theory-part-of-mathematics",
+    "source": "subfield:number-theory",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:geometry-part-of-mathematics",
+    "source": "subfield:geometry",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:differential-geometry-part-of-mathematics",
+    "source": "subfield:differential-geometry",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:algebraic-geometry-part-of-mathematics",
+    "source": "subfield:algebraic-geometry",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:topology-part-of-mathematics",
+    "source": "subfield:topology",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:algebraic-topology-part-of-mathematics",
+    "source": "subfield:algebraic-topology",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:mathematical-analysis-part-of-mathematics",
+    "source": "subfield:mathematical-analysis",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:complex-analysis-part-of-mathematics",
+    "source": "subfield:complex-analysis",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:functional-analysis-part-of-mathematics",
+    "source": "subfield:functional-analysis",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:harmonic-analysis-part-of-mathematics",
+    "source": "subfield:harmonic-analysis",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:differential-equations-part-of-mathematics",
+    "source": "subfield:differential-equations",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:partial-differential-equations-part-of-mathematics",
+    "source": "subfield:partial-differential-equations",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:dynamical-systems-part-of-mathematics",
+    "source": "subfield:dynamical-systems",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:combinatorics-part-of-mathematics",
+    "source": "subfield:combinatorics",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:set-theory-part-of-mathematical-logic",
+    "source": "subfield:set-theory",
+    "target": "subfield:mathematical-logic",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "Pillar of mathematical logic (MSC 03C/D/E/F): part_of chains may run deeper than the flat node levels (§12 precedent, 2026-06-10). QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:model-theory-part-of-mathematical-logic",
+    "source": "subfield:model-theory",
+    "target": "subfield:mathematical-logic",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "Pillar of mathematical logic (MSC 03C/D/E/F): part_of chains may run deeper than the flat node levels (§12 precedent, 2026-06-10). QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:proof-theory-part-of-mathematical-logic",
+    "source": "subfield:proof-theory",
+    "target": "subfield:mathematical-logic",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "Pillar of mathematical logic (MSC 03C/D/E/F): part_of chains may run deeper than the flat node levels (§12 precedent, 2026-06-10). QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:computability-theory-part-of-mathematical-logic",
+    "source": "subfield:computability-theory",
+    "target": "subfield:mathematical-logic",
+    "relation": "part_of",
+    "confidence": 0.75,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "Pillar of mathematical logic (MSC 03C/D/E/F): part_of chains may run deeper than the flat node levels (§12 precedent, 2026-06-10). QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md. Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+  },
+  {
+    "id": "edge:category-theory-part-of-mathematics",
+    "source": "subfield:category-theory",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:numerical-analysis-part-of-mathematics",
+    "source": "subfield:numerical-analysis",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:mathematical-physics-part-of-mathematics",
+    "source": "subfield:mathematical-physics",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:applied-mathematics-part-of-mathematics",
+    "source": "subfield:applied-mathematics",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:operations-research-part-of-mathematics",
+    "source": "subfield:operations-research",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.65,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:game-theory-part-of-mathematics",
+    "source": "subfield:game-theory",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:information-theory-part-of-mathematics",
+    "source": "subfield:information-theory",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:financial-mathematics-part-of-mathematics",
+    "source": "subfield:financial-mathematics",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:history-of-mathematics-part-of-mathematics",
+    "source": "subfield:history-of-mathematics",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:mathematics-education-part-of-mathematics",
+    "source": "subfield:mathematics-education",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:control-theory-part-of-mathematics",
+    "source": "subfield:control-theory",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.65,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:mathematical-biology-part-of-mathematics",
+    "source": "subfield:mathematical-biology",
+    "target": "field:mathematics",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:bayesian-statistics-part-of-statistics",
+    "source": "subfield:bayesian-statistics",
+    "target": "field:statistics",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md. Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+  },
+  {
+    "id": "edge:time-series-analysis-part-of-statistics",
+    "source": "subfield:time-series-analysis",
+    "target": "field:statistics",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md. Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+  },
+  {
+    "id": "edge:computational-statistics-part-of-statistics",
+    "source": "subfield:computational-statistics",
+    "target": "field:statistics",
+    "relation": "part_of",
+    "confidence": 0.75,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md. Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+  },
+  {
+    "id": "edge:mathematical-statistics-part-of-statistics",
+    "source": "subfield:mathematical-statistics",
+    "target": "field:statistics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+  },
+  {
+    "id": "edge:applied-statistics-part-of-statistics",
+    "source": "subfield:applied-statistics",
+    "target": "field:statistics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    }
+  },
+  {
+    "id": "edge:cybernetics-part-of-systems-science",
+    "source": "subfield:cybernetics",
+    "target": "field:systems-science",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-10"
+    },
+    "note": "QC: A-type flag retired by documented ruling — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md. Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
   }
 ]
