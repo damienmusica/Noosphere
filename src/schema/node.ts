@@ -23,6 +23,21 @@ export const nodeStatusSchema = z.enum([
 ]);
 export type NodeStatus = z.infer<typeof nodeStatusSchema>;
 
+/**
+ * Academic status of a discipline node (data-strategy track A).
+ * Honest tagging instead of exclusion: historical and non-academic areas are
+ * nodes too, labeled truthfully. Optional in the canonical schema for now;
+ * discipline nodes (domain/field/subfield) promoted from Foundry batches
+ * must carry it (enforced structurally in the proposal schema).
+ */
+export const academicStatusSchema = z.enum([
+  "established",
+  "emerging",
+  "historical",
+  "non_academic",
+]);
+export type AcademicStatus = z.infer<typeof academicStatusSchema>;
+
 export const domainKeySchema = z.enum([
   "formal_sciences",
   "natural_sciences",
@@ -48,6 +63,8 @@ export const nodeSchema = z
     /** Depth hint: 0 = domain, 1 = field, 2 = subfield, ... */
     level: z.number().int().min(0),
     status: nodeStatusSchema,
+    /** Coverage-skeleton tag; expected on discipline nodes (domain/field/subfield). */
+    academic_status: academicStatusSchema.optional(),
     /** Only `reviewed` nodes may be indexable (enforced in validate-data.ts). */
     indexable: z.boolean().default(false),
     /** Living people require stricter evidence and conservative wording. */
