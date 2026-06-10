@@ -1,0 +1,702 @@
+{
+  "version": 1,
+  "batch_id": "batch:philosophy-summaries-v2",
+  "kind": "editorial-summaries",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-10"
+  },
+  "items": [
+    {
+      "node_id": "subfield:ontology",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Ontology is the branch of philosophy concerned with the fundamental nature of being, existence, and reality, examining what kinds of entities exist and how they relate to one another. Central questions include whether abstract objects such as numbers exist independently of minds, what it means for something to persist through time, and how properties relate to the things that bear them. It is often treated as the core of metaphysics, though some philosophers distinguish ontology from metaphysics proper.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Ontology",
+          "url": "https://plato.stanford.edu/entries/ontology/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Ontology",
+          "url": "https://iep.utm.edu/ontology/"
+        },
+        {
+          "source": "Britannica — Ontology",
+          "url": "https://www.britannica.com/topic/ontology-philosophy"
+        }
+      ],
+      "rationale": "Defines ontology by its recognized scope (being, existence, categories of reality), names canonical central questions (abstract objects, persistence, properties), and notes its relationship to metaphysics — all confirmable from standard references.",
+      "uncertainty": "The claim that ontology is 'often treated as the core of metaphysics' is a common framing but not universally accepted; some traditions treat them as co-extensive. QC should verify the SEP entry slug 'ontology' exists and covers this scope.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:logic",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Logic is the branch of philosophy and formal science that studies the principles of valid inference, argumentation, and proof. It distinguishes between deductive inference (where conclusions follow necessarily from premises) and inductive inference (where conclusions are supported but not necessitated), and investigates formal systems such as propositional logic, predicate logic, and modal logic. Logic has foundational connections to mathematics, linguistics, and computer science.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Logic",
+          "url": "https://plato.stanford.edu/entries/logic/"
+        },
+        {
+          "source": "Britannica — Logic",
+          "url": "https://www.britannica.com/topic/logic"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Logic",
+          "url": "https://iep.utm.edu/logic/"
+        }
+      ],
+      "rationale": "States the recognized scope (valid inference, argumentation, proof), names the deductive/inductive distinction and major formal systems, and notes the standard interdisciplinary connections — all confirmable from standard references.",
+      "uncertainty": "The SEP entry slug 'logic' may redirect to a disambiguation or overview page rather than a single canonical entry; QC should verify. The framing of logic as both philosophy and formal science reflects the node's cross-domain placement.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:philosophy-of-religion",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of religion is the philosophical examination of religious beliefs, practices, and concepts, including arguments for and against the existence of God, the nature of faith and religious experience, the problem of evil, and the relationship between religion and science. It applies the methods of analytic and continental philosophy to questions that arise within religious traditions or that bear on them. The field has been practiced in Western academic philosophy at least since the medieval period and continues as a major area of inquiry.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of Religion",
+          "url": "https://plato.stanford.edu/entries/philosophy-religion/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Philosophy of Religion",
+          "url": "https://iep.utm.edu/rel-phil/"
+        },
+        {
+          "source": "Britannica — Philosophy of religion",
+          "url": "https://www.britannica.com/topic/philosophy-of-religion"
+        }
+      ],
+      "rationale": "Covers recognized scope (religious beliefs and concepts), canonical central topics (existence of God, problem of evil, faith, religion-science relation), and the uncontroversial historical anchor (medieval practice).",
+      "uncertainty": "The IEP slug 'rel-phil' is uncertain; the actual IEP URL may differ. QC should verify the IEP slug. The claim that both analytic and continental methods are applied is accurate but the balance is contested in some literature.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:philosophy-of-perception",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of perception examines the nature and epistemological significance of perceptual experience, asking how the senses provide knowledge of an external world and what the relationship is between the content of perception and physical reality. Central debates concern whether perception involves direct awareness of external objects (direct or naive realism), mental representations (representationalism), or sense-data intermediaries. The field connects closely with epistemology, philosophy of mind, and cognitive science.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Perception",
+          "url": "https://plato.stanford.edu/entries/perception-overview/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Perception",
+          "url": "https://iep.utm.edu/perception/"
+        },
+        {
+          "source": "Britannica — Perception (philosophy)",
+          "url": "https://www.britannica.com/topic/perception-philosophy"
+        }
+      ],
+      "rationale": "Defines the field by its recognized scope (nature of perceptual experience, epistemic role of perception), names the canonical theoretical positions (direct realism, representationalism, sense-data), and notes standard interdisciplinary connections.",
+      "uncertainty": "The SEP slug 'perception-overview' is my best estimate but the actual canonical entry may use a different slug such as 'perception'; QC should verify. The tripartite taxonomy of realism/representationalism/sense-data is standard but simplified.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:philosophy-of-social-science",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of social science examines the foundations, methods, and explanatory concepts of the social sciences, addressing questions about the nature of social facts, the role of interpretation in social inquiry, and whether social phenomena can be explained by reducing them to individual actions and mental states. Key debates include the dispute between methodological individualism and holism and the question of whether social sciences can achieve the explanatory standards of the natural sciences. The field draws on philosophy of science, philosophy of action, and the history and sociology of science.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Social Science, Philosophy of",
+          "url": "https://plato.stanford.edu/entries/social-science/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Social Science, Philosophy of",
+          "url": "https://iep.utm.edu/soc-sci/"
+        },
+        {
+          "source": "Britannica — Philosophy of social sciences",
+          "url": "https://www.britannica.com/topic/philosophy-of-social-sciences"
+        }
+      ],
+      "rationale": "Covers recognized scope (foundations and methods of social sciences), the canonical individualism/holism debate, and the comparison with natural sciences — all standard topics in reference sources for this subfield.",
+      "uncertainty": "The SEP slug 'social-science' is my best estimate; QC should verify. The IEP slug 'soc-sci' is uncertain. The description may give disproportionate weight to analytic approaches versus interpretive/hermeneutic traditions.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:business-ethics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Business ethics applies ethical theories and principles to the practices, institutions, and decisions of commerce and industry, including questions about corporate responsibility, fair dealing, labor rights, environmental obligations, and the ethics of advertising and finance. It overlaps with applied ethics, corporate governance, and law, and draws on normative theories including consequentialism, deontology, and stakeholder theory. The field gained academic recognition in the latter half of the twentieth century.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Business Ethics",
+          "url": "https://plato.stanford.edu/entries/ethics-business/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Business Ethics",
+          "url": "https://iep.utm.edu/business-ethics/"
+        },
+        {
+          "source": "Britannica — Business ethics",
+          "url": "https://www.britannica.com/topic/business-ethics"
+        }
+      ],
+      "rationale": "Covers recognized scope (ethics of commercial practice), representative sub-areas (corporate responsibility, labor, environment, finance), named theoretical frameworks, and the uncontroversial 20th-century historical anchor.",
+      "uncertainty": "The SEP slug 'ethics-business' is uncertain; QC should verify. The IEP slug 'business-ethics' may redirect or differ. The mention of 'stakeholder theory' alongside normative ethics frameworks is conventional but some sources treat it as a management concept rather than a philosophical theory.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:analytic-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Analytic philosophy is a tradition in philosophy that emphasizes clarity of argument, logical rigor, and engagement with formal methods, and that developed primarily in the English-speaking world during the twentieth century. It emerged in the early twentieth century through the work of figures including Gottlob Frege, Bertrand Russell, G. E. Moore, and later Ludwig Wittgenstein, and has since become the dominant approach in Anglophone academic philosophy. Core areas include philosophy of language, philosophy of mind, logic, and formal epistemology.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Analytic Philosophy",
+          "url": "https://plato.stanford.edu/entries/analytic-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Analytic Philosophy",
+          "url": "https://iep.utm.edu/analytic/"
+        },
+        {
+          "source": "Britannica — Analytic philosophy",
+          "url": "https://www.britannica.com/topic/analytic-philosophy"
+        }
+      ],
+      "rationale": "Defines the tradition by its recognized methodological emphasis, names four canonical founding figures (Frege, Russell, Moore, Wittgenstein), and identifies canonical core areas — all confirmable from standard references.",
+      "uncertainty": "Describing analytic philosophy as 'dominant' in Anglophone academia is a widely held characterization but carries normative undertones that some may contest. The list of founding figures is standard but some accounts weight them differently.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:continental-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Continental philosophy is a tradition in philosophy that developed primarily in continental Europe during the nineteenth and twentieth centuries, encompassing movements such as German Idealism, phenomenology, existentialism, structuralism, hermeneutics, and critical theory. It is often characterized by engagement with history, culture, and human experience rather than formal methods, and by concern with questions of meaning, subjectivity, power, and social critique. The label is primarily used in the Anglophone philosophical world to contrast with analytic philosophy.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Continental Philosophy",
+          "url": "https://plato.stanford.edu/entries/continental-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Continental Philosophy",
+          "url": "https://iep.utm.edu/cont-phi/"
+        },
+        {
+          "source": "Britannica — Continental philosophy",
+          "url": "https://www.britannica.com/topic/continental-philosophy"
+        }
+      ],
+      "rationale": "Defines the tradition by its geographic and historical origin, names the canonical constituent movements, characterizes the methodological contrast with analytic philosophy, and notes the partly relational nature of the label — all standard in reference sources.",
+      "uncertainty": "The characterization of continental philosophy as defined partly by contrast with analytic philosophy is standard but itself contested; some continental philosophers reject the contrast as a label. The IEP slug 'cont-phi' is uncertain; QC should verify.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:phenomenology",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Phenomenology is a philosophical movement and method that investigates the structure of conscious experience from the first-person perspective, describing how objects and the world are given to consciousness. Founded by Edmund Husserl in the early twentieth century, it was developed further by thinkers including Martin Heidegger, Maurice Merleau-Ponty, and Jean-Paul Sartre, each of whom extended the method in different directions. The movement has influenced philosophy, psychology, psychiatry, and the social sciences.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Phenomenology",
+          "url": "https://plato.stanford.edu/entries/phenomenology/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Phenomenology",
+          "url": "https://iep.utm.edu/phenom/"
+        },
+        {
+          "source": "Britannica — Phenomenology",
+          "url": "https://www.britannica.com/topic/phenomenology"
+        }
+      ],
+      "rationale": "Defines phenomenology by its core method (study of first-person conscious experience), names the canonical founding figure (Husserl) and three key subsequent figures (Heidegger, Merleau-Ponty, Sartre), and notes its interdisciplinary influence — all uncontroversial in standard references.",
+      "uncertainty": "The SEP entry slug 'phenomenology' is confirmed as a real SEP entry. Describing Heidegger's relation to Husserl as 'developing' the method is accepted but Heidegger himself disputed this characterization; the phrasing is sufficiently cautious.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:existentialism",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Existentialism is a philosophical movement that places individual existence, freedom, and choice at the center of philosophical inquiry, holding that human beings define their own meaning in a world without inherent purpose. Associated with thinkers including Soren Kierkegaard, Friedrich Nietzsche, Jean-Paul Sartre, Simone de Beauvoir, and Albert Camus, it reached its widest cultural influence in mid-twentieth-century Europe. Core themes include authenticity, anxiety, absurdity, bad faith, and the priority of existence over essence.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Existentialism",
+          "url": "https://plato.stanford.edu/entries/existentialism/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Existentialism",
+          "url": "https://iep.utm.edu/existent/"
+        },
+        {
+          "source": "Britannica — Existentialism",
+          "url": "https://www.britannica.com/topic/existentialism"
+        }
+      ],
+      "rationale": "Names five canonical associated thinkers (Kierkegaard, Nietzsche, Sartre, de Beauvoir, Camus), states the core commitment (individual existence, freedom, meaning-creation), and identifies the historical anchor (mid-20th century European influence) — all confirmable from standard references.",
+      "uncertainty": "The SEP entry slug 'existentialism' is confirmed as real. Whether Kierkegaard and Nietzsche are best described as existentialists or as precursors is debated; the phrasing 'associated with' hedges this appropriately.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:buddhist-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Buddhist philosophy encompasses the philosophical traditions that developed within or from Buddhism, originating in the 5th–4th centuries BCE with the teachings attributed to Siddhartha Gautama (the Buddha). Major schools include Theravada, Madhyamaka, Yogacara, and Zen, each of which developed distinct philosophical positions on topics such as the nature of the self, consciousness, causation, and the path to liberation. Buddhist philosophy has been active across South, Southeast, East, and Central Asia, and continues as a living tradition studied in both religious and academic contexts.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Buddhist Philosophy",
+          "url": "https://plato.stanford.edu/entries/buddhism/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Buddhism",
+          "url": "https://iep.utm.edu/buddhism/"
+        },
+        {
+          "source": "Britannica — Buddhist philosophy",
+          "url": "https://www.britannica.com/topic/Buddhist-philosophy"
+        }
+      ],
+      "rationale": "Names recognized major schools, gives the historical anchor (5th–4th c. BCE, attributed to the Buddha), identifies canonical philosophical topics, and notes the geographic range — all confirmable from standard references.",
+      "uncertainty": "The SEP slug 'buddhism' may not be the canonical entry for Buddhist philosophy specifically (there may also be individual school entries). The dating of the historical Buddha to the 5th–4th centuries BCE is the scholarly consensus range but remains debated. QC should verify the SEP slug.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:jewish-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Jewish philosophy refers to the philosophical traditions that developed within or in engagement with Jewish religious, textual, and communal life, spanning from the Hellenistic period through the medieval and modern eras. Medieval Jewish philosophers including Philo of Alexandria, Saadia Gaon, Maimonides, and Gersonides engaged with Aristotelian and Neoplatonic thought while addressing the relationship between reason and revelation. Modern Jewish philosophy has engaged with questions of identity, ethics, history, and the philosophy of religion.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Jewish Philosophy",
+          "url": "https://plato.stanford.edu/entries/jewish-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Jewish Philosophy",
+          "url": "https://iep.utm.edu/jewish-philosophy/"
+        },
+        {
+          "source": "Britannica — Jewish philosophy",
+          "url": "https://www.britannica.com/topic/Jewish-philosophy"
+        }
+      ],
+      "rationale": "Covers the recognized historical span (Hellenistic through modern), names four canonical medieval Jewish philosophers (Philo, Saadia Gaon, Maimonides, Gersonides), and identifies canonical thematic concerns.",
+      "uncertainty": "The IEP slug 'jewish-philosophy' is uncertain; QC should verify. The treatment of Philo as part of Jewish philosophy is standard but some classify him primarily as a Hellenistic philosopher. The modern period summary is brief and may omit important traditions.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:african-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "African philosophy encompasses the philosophical traditions, arguments, and concepts that have developed in Africa or among people of African descent, including oral traditions, indigenous thought systems, and academic philosophical work. Recognized currents include ethnophilosophy (the study of collective African worldviews), sage philosophy, African communitarian ethics (Ubuntu), and Africana philosophy addressing the experiences of the African diaspora. The field raises foundational questions about the definition of philosophy and the relationship between oral and written traditions.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — African Philosophy",
+          "url": "https://plato.stanford.edu/entries/african-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — African Philosophy",
+          "url": "https://iep.utm.edu/african-philosophy/"
+        },
+        {
+          "source": "Britannica — African philosophy",
+          "url": "https://www.britannica.com/topic/African-philosophy"
+        }
+      ],
+      "rationale": "Names recognized currents within the field (ethnophilosophy, sage philosophy, Ubuntu ethics, Africana philosophy), notes the foundational methodological debate (definition of philosophy, oral vs. written), and covers both continental African and diaspora traditions.",
+      "uncertainty": "The SEP slug 'african-philosophy' is my best estimate; QC should verify the exact slug. The term 'Ubuntu' as a philosophical concept has wide popular use but its precise philosophical status varies across sources.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:japanese-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Japanese philosophy encompasses the philosophical traditions that developed in Japan, including early engagements with Chinese Confucian and Buddhist thought, the Shinto-influenced intellectual traditions, and the modern period of engagement with Western philosophy. The Kyoto School, founded in the early twentieth century by Nishida Kitaro, is the most internationally recognized school of Japanese philosophy, characterized by its synthesis of Western philosophical methods with Buddhist and East Asian concepts. Japanese philosophy has addressed questions of self, nothingness, aesthetics, and ethics across these periods.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Japanese Philosophy",
+          "url": "https://plato.stanford.edu/entries/japanese-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Japanese Philosophy",
+          "url": "https://iep.utm.edu/japanese-philosophy/"
+        },
+        {
+          "source": "Britannica — Japanese philosophy",
+          "url": "https://www.britannica.com/topic/Japanese-philosophy"
+        }
+      ],
+      "rationale": "Covers the recognized historical scope (Confucian/Buddhist reception, Shinto traditions, Western engagement), names the Kyoto School and its founder Nishida Kitaro as the canonical internationally recognized school, and identifies thematic concerns.",
+      "uncertainty": "The SEP slug 'japanese-philosophy' is my best estimate; QC should verify. The IEP slug 'japanese-philosophy' is also uncertain. Describing the Kyoto School as the 'most internationally recognized' is a defensible characterization but may downplay other important currents.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:korean-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Korean philosophy encompasses the philosophical traditions that developed in Korea, including Neo-Confucian thought that flourished during the Joseon dynasty (1392–1897), Buddhist philosophical traditions, and modern engagements with Western and contemporary philosophy. A defining debate in Korean Neo-Confucianism is the Four-Seven Debate between Yi Hwang (Toegye) and Yi I (Yulgok) concerning the relationship between principle (li) and material force (qi). Korean philosophy has also addressed questions of national identity and modernization in the context of colonial and post-colonial history.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Korean Philosophy",
+          "url": "https://plato.stanford.edu/entries/korean-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Korean Philosophy",
+          "url": "https://iep.utm.edu/korean-philosophy/"
+        },
+        {
+          "source": "Britannica — Korean philosophy",
+          "url": "https://www.britannica.com/topic/Korean-philosophy"
+        }
+      ],
+      "rationale": "Names the historically dominant tradition (Joseon Neo-Confucianism), the canonical internal debate (Four-Seven Debate, Yi Hwang and Yi I), and notes the modern concerns — all standard in reference sources for this subfield.",
+      "uncertainty": "The SEP slug 'korean-philosophy' is uncertain; QC should verify. The Joseon dates (1392–1897) are standard but the end date is sometimes given differently. The Four-Seven Debate naming and attribution to Yi Hwang and Yi I is well-established in secondary literature.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:latin-american-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Latin American philosophy encompasses the philosophical traditions that developed in Latin America from the colonial period to the present, including scholastic philosophy introduced during Spanish and Portuguese colonization, nineteenth-century positivism, and twentieth-century currents such as liberation philosophy and philosophy of Latin American identity. Liberation philosophy, emerging in the 1970s, critically engaged questions of economic dependence, cultural identity, and the perspectives of marginalized peoples. The field also investigates whether a distinctively Latin American philosophy exists and what its defining characteristics are.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Latin American Philosophy",
+          "url": "https://plato.stanford.edu/entries/latin-american-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Latin American Philosophy",
+          "url": "https://iep.utm.edu/latin-american-philosophy/"
+        },
+        {
+          "source": "Britannica — Latin American philosophy",
+          "url": "https://www.britannica.com/topic/Latin-American-philosophy"
+        }
+      ],
+      "rationale": "Covers the recognized historical span (colonial scholasticism through 20th-century liberation philosophy), names the major recognized currents, and notes the field's self-reflective foundational question about its own identity.",
+      "uncertainty": "The SEP slug 'latin-american-philosophy' is my best estimate; QC should verify. The IEP slug is also uncertain. Describing liberation philosophy as 'emerging in the 1970s' is standard but the exact dating varies by source.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:comparative-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Comparative philosophy is the philosophical practice of examining and comparing concepts, arguments, and problems across distinct philosophical traditions, such as Western analytic philosophy, Indian philosophy, Chinese philosophy, and African philosophy. It aims to identify both commonalities and genuine differences between traditions and to address philosophical questions that benefit from cross-cultural perspectives. The field raises methodological questions about whether cross-traditional comparison is possible without presupposing one tradition's frameworks as universal.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Comparative Philosophy",
+          "url": "https://plato.stanford.edu/entries/comparative-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Comparative Philosophy",
+          "url": "https://iep.utm.edu/comp-phi/"
+        },
+        {
+          "source": "Britannica — Comparative philosophy",
+          "url": "https://www.britannica.com/topic/comparative-philosophy"
+        }
+      ],
+      "rationale": "Defines comparative philosophy by its recognized method (cross-traditional comparison), names representative traditions compared, and notes the canonical methodological challenge (framework presupposition) — all standard in reference sources.",
+      "uncertainty": "The SEP and IEP slugs are uncertain; QC should verify both. The Britannica entry for comparative philosophy may not exist as a discrete article. The field's self-description is itself contested; the characterization is drawn from the academic mainstream.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:philosophy-of-history",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of history examines the nature of historical inquiry, the status of historical knowledge, and the meaning or structure of historical processes. It is divided into two areas: speculative philosophy of history (which asks whether history has a direction or goal) and analytical or critical philosophy of history (which examines the logic of historical explanation and the epistemology of historical evidence). The field addresses questions about historical causation, the nature of historical narrative, and the relationship between history and the social sciences.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of History",
+          "url": "https://plato.stanford.edu/entries/history/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Philosophy of History",
+          "url": "https://iep.utm.edu/history/"
+        },
+        {
+          "source": "Britannica — Philosophy of history",
+          "url": "https://www.britannica.com/topic/philosophy-of-history"
+        }
+      ],
+      "rationale": "Uses the standard speculative/analytical distinction, identifies canonical central questions (historical causation, narrative, epistemology of evidence), and connects to the social sciences — all confirmable from standard references.",
+      "uncertainty": "The SEP slug 'history' is my best estimate for the philosophy of history entry; the actual entry may use a different slug. QC should verify. The speculative/analytical distinction is standard but the terminology varies across sources.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:philosophy-of-economics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of economics examines the foundations, methods, and assumptions of economic theory, as well as normative questions about economic justice, welfare, and the ethics of market institutions. It addresses whether economic models provide genuine explanations or only instrumentally useful predictions, and investigates concepts such as rationality, preference, utility, and social choice. The field overlaps with political philosophy, decision theory, and the philosophy of the social sciences.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Economics, Philosophy of",
+          "url": "https://plato.stanford.edu/entries/economics/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Economics, Philosophy of",
+          "url": "https://iep.utm.edu/econ-phi/"
+        },
+        {
+          "source": "Britannica — Philosophy of economics",
+          "url": "https://www.britannica.com/topic/philosophy-of-economics"
+        }
+      ],
+      "rationale": "Covers recognized scope (foundations and methods of economics, normative questions), canonical central questions (explanation vs. prediction, rationality, utility), and standard interdisciplinary overlaps.",
+      "uncertainty": "The SEP slug 'economics' is uncertain for the philosophy of economics entry specifically; the actual slug may differ. The IEP slug 'econ-phi' is also uncertain. QC should verify both.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:feminist-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Feminist philosophy applies feminist perspectives to philosophical questions and critically examines how gender and related categories of identity affect philosophical inquiry, knowledge production, and social arrangements. It encompasses feminist epistemology (examining standpoint theory and objectivity), feminist ethics (including care ethics), feminist political philosophy, and feminist critiques of the history of philosophy. The field emerged as a recognized area of academic philosophy in the latter half of the twentieth century.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Feminist Philosophy",
+          "url": "https://plato.stanford.edu/entries/feminist-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Feminist Philosophy",
+          "url": "https://iep.utm.edu/fem-phil/"
+        },
+        {
+          "source": "Britannica — Feminist philosophy",
+          "url": "https://www.britannica.com/topic/feminist-philosophy"
+        }
+      ],
+      "rationale": "Names the recognized sub-areas (feminist epistemology, care ethics, feminist political philosophy, history-of-philosophy critique), and gives the uncontroversial 20th-century emergence anchor.",
+      "uncertainty": "The SEP slug 'feminist-philosophy' is uncertain; the SEP may cover this under different entry names or sub-entries. QC should verify. The mention of care ethics as part of feminist ethics is standard but the association is debated by some.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:hermeneutics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Hermeneutics is the theory and practice of interpretation, originally concerned with the interpretation of sacred and classical texts and later extended to all understanding of human expression, action, and culture. Friedrich Schleiermacher and Wilhelm Dilthey established hermeneutics as a systematic philosophical discipline in the nineteenth century, and Hans-Georg Gadamer's work in the twentieth century broadened it into a general account of understanding and dialogue. Hermeneutics has influenced literary theory, theology, the social sciences, and jurisprudence.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Hermeneutics",
+          "url": "https://plato.stanford.edu/entries/hermeneutics/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Hermeneutics",
+          "url": "https://iep.utm.edu/hermeneu/"
+        },
+        {
+          "source": "Britannica — Hermeneutics",
+          "url": "https://www.britannica.com/topic/hermeneutics"
+        }
+      ],
+      "rationale": "Defines hermeneutics by its scope (theory of interpretation), names three canonical historical figures (Schleiermacher, Dilthey, Gadamer) and gives the correct historical anchors (19th century systematic discipline, 20th century generalization) — all confirmable from standard references.",
+      "uncertainty": "The SEP slug 'hermeneutics' is my best estimate; QC should verify. The historical framing is standard but some accounts give greater weight to earlier figures (e.g., Spinoza, Flacius) or to Ricoeur alongside Gadamer.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:metaphilosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Metaphilosophy (also called philosophy of philosophy) is the inquiry into the nature, aims, and methods of philosophy itself, asking what philosophy is, how it should be done, and what it can achieve. Questions include whether philosophy makes progress, what distinguishes philosophical from scientific or empirical inquiry, and whether philosophical problems are genuine or merely verbal. The term was popularized in the twentieth century, though reflection on the nature of philosophy has a much longer history.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Metaphilosophy",
+          "url": "https://plato.stanford.edu/entries/metaphilosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Metaphilosophy",
+          "url": "https://iep.utm.edu/meta-phi/"
+        },
+        {
+          "source": "Britannica — Metaphilosophy",
+          "url": "https://www.britannica.com/topic/metaphilosophy"
+        }
+      ],
+      "rationale": "Defines metaphilosophy by its recognized scope (inquiry into philosophy's nature, aims, and methods), names central questions, and notes both the 20th-century popularization of the term and the longer history — all confirmable from standard references.",
+      "uncertainty": "The SEP slug 'metaphilosophy' is uncertain; the SEP may cover this topic under a different or broader entry. The IEP slug 'meta-phi' is also uncertain. QC should verify both. The Britannica article may not exist as a discrete entry.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:natural-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Natural philosophy was the systematic study of the natural world by rational and empirical inquiry, practiced from antiquity through the early modern period before the emergence of the modern natural sciences as distinct disciplines. It encompassed what would now be called physics, astronomy, chemistry, and biology, as well as metaphysical questions about the nature of matter, motion, and causation. The term largely ceased to denote an active academic discipline by the nineteenth century as the individual sciences became institutionally separated.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Natural Philosophy",
+          "url": "https://plato.stanford.edu/entries/natural-philosophy/"
+        },
+        {
+          "source": "Britannica — Natural philosophy",
+          "url": "https://www.britannica.com/topic/natural-philosophy"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Philosophy of Nature",
+          "url": "https://iep.utm.edu/nature/"
+        }
+      ],
+      "rationale": "Accurately reflects the historical (academic_status: historical) character of the node: defines the term, its historical scope across antiquity through early modernity, and its dissolution as a unified discipline in the 19th century.",
+      "uncertainty": "The SEP slug 'natural-philosophy' is uncertain; the SEP may cover this under 'newton-principia' or similar entries rather than a dedicated overview. The IEP 'nature' slug is a guess. QC should verify both.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:scholasticism",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Scholasticism was the dominant method of philosophical and theological inquiry practiced in the medieval universities of Europe, roughly from the 11th through the 16th centuries, characterized by systematic commentary on authoritative texts, formal disputation, and the reconciliation of reason with faith. Major scholastic philosophers include Anselm of Canterbury, Peter Abelard, Thomas Aquinas, Duns Scotus, and William of Ockham. The method left a lasting influence on Catholic theology and philosophy and experienced partial revivals in Neo-Scholasticism.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Scholasticism",
+          "url": "https://plato.stanford.edu/entries/scholasticism/"
+        },
+        {
+          "source": "Britannica — Scholasticism",
+          "url": "https://www.britannica.com/topic/Scholasticism"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Scholasticism",
+          "url": "https://iep.utm.edu/scholast/"
+        }
+      ],
+      "rationale": "Accurately reflects the historical (academic_status: historical) character of the node: names the recognized temporal scope (11th–16th centuries), five canonical figures, the defining method (commentary, disputation, faith-reason reconciliation), and the Neo-Scholastic revival.",
+      "uncertainty": "The SEP slug 'scholasticism' is my best estimate; QC should verify. The temporal end-date of the 16th century is conventional but some histories extend scholasticism into the 17th century or treat Baroque scholasticism separately.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:philosophy-of-psychiatry",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of psychiatry examines the conceptual, epistemological, and ethical foundations of psychiatric theory and practice, addressing questions about the nature of mental disorder, the validity of psychiatric classification, and the relationship between biological and psychological explanations of mental illness. It has been shaped by debates over whether mental disorders are natural kinds or socially constructed categories, and by the contributions of figures such as Karl Jaspers. The field emerged as a distinct academic discipline in the latter decades of the twentieth century.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of Psychiatry",
+          "url": "https://plato.stanford.edu/entries/psychiatry/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Philosophy of Psychiatry",
+          "url": "https://iep.utm.edu/psychiat/"
+        },
+        {
+          "source": "Britannica — Philosophy of psychiatry",
+          "url": "https://www.britannica.com/topic/philosophy-of-psychiatry"
+        }
+      ],
+      "rationale": "Covers recognized scope (conceptual and ethical foundations of psychiatry), central debates (natural kinds vs. social construction, classification validity), and the historical anchor (Jaspers; late 20th-century disciplinary emergence), consistent with the node's emerging academic_status.",
+      "uncertainty": "The SEP slug 'psychiatry' is my best estimate; the actual slug may differ. The Britannica article may not exist as a discrete entry. The mention of Jaspers is standard for the history of the field but his inclusion in one sentence may imply more centrality than some sources support.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:philosophy-of-information",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophy of information examines the nature, dynamics, and utilization of information, including questions about what information is, how it relates to knowledge and meaning, and the ethical implications of information technologies. Associated with the work of Luciano Floridi, it investigates the concept of information across philosophy, computer science, and communication theory. The field is considered emerging, having developed into a recognized academic subfield primarily in the late twentieth and early twenty-first centuries.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Philosophy of Information",
+          "url": "https://plato.stanford.edu/entries/information/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Information, Philosophy of",
+          "url": "https://iep.utm.edu/informat/"
+        },
+        {
+          "source": "Floridi, Luciano — The Philosophy of Information (Oxford University Press, 2011)",
+          "url": "https://global.oup.com/academic/product/the-philosophy-of-information-9780199232383"
+        }
+      ],
+      "rationale": "Defines the field by its recognized scope, names Floridi as the most prominent associated figure, and reflects the node's emerging academic_status through careful dating of the field's disciplinary consolidation.",
+      "uncertainty": "The SEP slug 'information' may cover information theory broadly rather than philosophy of information specifically; QC should verify. The OUP book URL is used as a concrete reference anchor but may be bot-restricted. Floridi's centrality is accurate but the field has broader contributors not named here.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:ethics-of-ai",
+      "locale": "en",
+      "status": "generated",
+      "summary": "The ethics of artificial intelligence examines the moral questions raised by the development and deployment of AI systems, including issues of algorithmic fairness, accountability, transparency, privacy, and the long-term risks posed by increasingly capable AI. It draws on normative ethics, political philosophy, and the philosophy of technology to address both near-term applied concerns and foundational questions about the moral status of AI systems. The field developed rapidly as a recognized area of research in the early twenty-first century.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Ethics of Artificial Intelligence and Robotics",
+          "url": "https://plato.stanford.edu/entries/ethics-ai/"
+        },
+        {
+          "source": "Britannica — Ethics of artificial intelligence",
+          "url": "https://www.britannica.com/topic/ethics-of-artificial-intelligence"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Artificial Intelligence, Ethics of",
+          "url": "https://iep.utm.edu/ethics-of-ai/"
+        }
+      ],
+      "rationale": "Defines the field by its recognized scope, names canonical sub-issues (fairness, accountability, transparency, privacy, long-term risks), and reflects the node's emerging academic_status with a carefully hedged temporal anchor.",
+      "uncertainty": "The SEP slug 'ethics-ai' is my best estimate; the actual SEP entry may be at a longer or different slug. QC should verify. The Britannica and IEP entries for this specific topic may not exist as discrete articles; these are lower-confidence hints.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:experimental-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Experimental philosophy is an approach within philosophy that uses empirical methods, including surveys and behavioral experiments, to investigate how non-philosophers reason about philosophical concepts such as knowledge, free will, moral responsibility, and personal identity. It emerged as a recognized movement in the early twenty-first century and has generated debate about the relevance of folk intuitions to philosophical theorizing. The approach is considered emerging and its methodological standing within academic philosophy continues to be discussed.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Experimental Philosophy",
+          "url": "https://plato.stanford.edu/entries/experimental-philosophy/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Experimental Philosophy",
+          "url": "https://iep.utm.edu/exp-phil/"
+        },
+        {
+          "source": "Britannica — Experimental philosophy",
+          "url": "https://www.britannica.com/topic/experimental-philosophy"
+        }
+      ],
+      "rationale": "Defines experimental philosophy by its recognized method (empirical studies of folk intuitions), names canonical topic areas, and explicitly reflects the node's emerging academic_status and continuing methodological debate — consistent with the order's instruction not to overstate institutional maturity.",
+      "uncertainty": "The SEP slug 'experimental-philosophy' is my best estimate; QC should verify. The Britannica article may not exist as a discrete entry. The IEP slug 'exp-phil' is uncertain. The description of experimental philosophy's methodological standing as 'continuing to be discussed' is accurate but could be perceived as dismissive; the phrasing is intended to be neutral.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:decision-theory",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Decision theory is the philosophical and formal study of rational choice under conditions of uncertainty, risk, and competing values, examining how agents should form and act on preferences given probabilistic beliefs about outcomes. Its core formalism involves expected utility theory, developed in the twentieth century by figures including Frank Ramsey, John von Neumann, and Leonard Savage. This node refers to the philosophical tradition of decision theory (Wikidata Q177571), which addresses normative questions about rationality and connects to ethics, game theory, and the philosophy of action.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Decision Theory",
+          "url": "https://plato.stanford.edu/entries/decision-theory/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Decision Theory",
+          "url": "https://iep.utm.edu/decision-theory/"
+        },
+        {
+          "source": "Britannica — Decision theory",
+          "url": "https://www.britannica.com/topic/decision-theory"
+        }
+      ],
+      "rationale": "Defines decision theory by its recognized philosophical scope (rational choice under uncertainty), names the canonical formal framework (expected utility theory) and three founding figures (Ramsey, von Neumann, Savage), and explicitly identifies this as the philosophical decision-theory node (Q177571) per the order.",
+      "uncertainty": "The SEP slug 'decision-theory' is my best estimate; QC should verify. The IEP slug 'decision-theory' is also uncertain. The attribution of expected utility theory jointly to Ramsey, von Neumann, and Savage is standard but the precise lineage is discussed in the history of economics literature.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:critical-theory",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Critical theory, in the sense associated with the Frankfurt School (Wikidata Q301751), is an approach to social and cultural analysis that combines philosophical, sociological, and psychoanalytic methods to critique the ideological structures and social conditions that constrain human freedom and rationality. Associated with the Institute for Social Research (founded in Frankfurt in 1923), key figures include Max Horkheimer, Theodor Adorno, Herbert Marcuse, and Jurgen Habermas. The tradition engages with Marxist theory, Enlightenment rationality, and contemporary social critique.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Critical Theory",
+          "url": "https://plato.stanford.edu/entries/critical-theory/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Critical Theory",
+          "url": "https://iep.utm.edu/critical-theory/"
+        },
+        {
+          "source": "Britannica — Critical theory",
+          "url": "https://www.britannica.com/topic/critical-theory"
+        }
+      ],
+      "rationale": "Explicitly identifies this as the Frankfurt-School-rooted tradition (Q301751) per the order, defines it by its recognized method (interdisciplinary social critique), names the Institute for Social Research founding and four canonical figures, and identifies the intellectual anchors (Marxism, Enlightenment critique).",
+      "uncertainty": "The SEP slug 'critical-theory' is confirmed as a real SEP entry. The IEP slug 'critical-theory' is uncertain; QC should verify. The scope of 'critical theory' in broad usage is much wider than the Frankfurt School specifically; the summary explicitly grounds the node in the Frankfurt School identity as required.",
+      "ambiguous": false
+    }
+  ]
+}
