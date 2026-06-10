@@ -4,9 +4,11 @@
     "source": "field:mathematics",
     "target": "domain:formal-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Mathematics is a core discipline of the formal sciences."
   },
   {
@@ -16,7 +18,9 @@
     "relation": "part_of",
     "confidence": 0.9,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Statistics is commonly grouped with the formal sciences."
   },
   {
@@ -24,9 +28,11 @@
     "source": "field:computer-science",
     "target": "domain:computer-and-information-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"]
+    "evidence": [
+      "source:manual-curation-v1"
+    ]
   },
   {
     "id": "edge:machine-learning-part-of-computer-science",
@@ -35,7 +41,9 @@
     "relation": "part_of",
     "confidence": 0.9,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Machine learning is a subfield of computer science."
   },
   {
@@ -43,27 +51,33 @@
     "source": "field:physics",
     "target": "domain:natural-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"]
+    "evidence": [
+      "source:manual-curation-v1"
+    ]
   },
   {
     "id": "edge:linear-algebra-part-of-mathematics",
     "source": "subfield:linear-algebra",
     "target": "field:mathematics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"]
+    "evidence": [
+      "source:manual-curation-v1"
+    ]
   },
   {
     "id": "edge:vector-space-part-of-linear-algebra",
     "source": "concept:vector-space",
     "target": "subfield:linear-algebra",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"]
+    "evidence": [
+      "source:manual-curation-v1"
+    ]
   },
   {
     "id": "edge:bayesian-inference-part-of-statistics",
@@ -72,7 +86,9 @@
     "relation": "part_of",
     "confidence": 0.95,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"]
+    "evidence": [
+      "source:manual-curation-v1"
+    ]
   },
   {
     "id": "edge:linear-algebra-prerequisite-machine-learning",
@@ -81,7 +97,9 @@
     "relation": "prerequisite_for",
     "confidence": 0.95,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Vectors, matrices, and linear transformations are foundational for machine learning models."
   },
   {
@@ -91,7 +109,9 @@
     "relation": "prerequisite_for",
     "confidence": 0.9,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Probability and statistical inference underpin machine learning methods."
   },
   {
@@ -101,7 +121,9 @@
     "relation": "prerequisite_for",
     "confidence": 0.9,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"]
+    "evidence": [
+      "source:manual-curation-v1"
+    ]
   },
   {
     "id": "edge:mathematics-formalizes-physics",
@@ -110,7 +132,9 @@
     "relation": "formalizes",
     "confidence": 0.85,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Mathematics provides the formal language for physical theories."
   },
   {
@@ -120,16 +144,20 @@
     "relation": "applies_to",
     "confidence": 0.8,
     "status": "reviewed",
-    "evidence": ["source:manual-curation-v1"]
+    "evidence": [
+      "source:manual-curation-v1"
+    ]
   },
   {
     "id": "edge:probability-theory-part-of-mathematics",
     "source": "subfield:probability-theory",
     "target": "field:mathematics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "proposed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Probability theory is a branch of mathematics."
   },
   {
@@ -137,9 +165,11 @@
     "source": "subfield:calculus",
     "target": "field:mathematics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "proposed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Calculus is a branch of mathematics."
   },
   {
@@ -149,7 +179,9 @@
     "relation": "part_of",
     "confidence": 0.9,
     "status": "proposed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Mathematical optimization is a branch of mathematics, also studied in operations research and computer science."
   },
   {
@@ -157,9 +189,11 @@
     "source": "concept:random-variable",
     "target": "subfield:probability-theory",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "proposed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "The random variable is a core concept of probability theory."
   },
   {
@@ -167,9 +201,11 @@
     "source": "concept:probability-distribution",
     "target": "subfield:probability-theory",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "proposed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Probability distributions are a core concept of probability theory."
   },
   {
@@ -179,7 +215,9 @@
     "relation": "part_of",
     "confidence": 0.95,
     "status": "proposed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Gradient descent is a method within mathematical optimization."
   },
   {
@@ -189,7 +227,9 @@
     "relation": "prerequisite_for",
     "confidence": 0.95,
     "status": "proposed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Probability theory provides the formal basis for statistical inference."
   },
   {
@@ -199,7 +239,9 @@
     "relation": "prerequisite_for",
     "confidence": 0.9,
     "status": "proposed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Derivatives and gradients from calculus underpin continuous optimization."
   },
   {
@@ -209,7 +251,9 @@
     "relation": "prerequisite_for",
     "confidence": 0.85,
     "status": "proposed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Training most machine learning models is framed as an optimization problem."
   },
   {
@@ -219,7 +263,9 @@
     "relation": "prerequisite_for",
     "confidence": 0.9,
     "status": "proposed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Bayesian inference reasons over prior and posterior probability distributions."
   },
   {
@@ -229,7 +275,9 @@
     "relation": "prerequisite_for",
     "confidence": 0.85,
     "status": "proposed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Understanding random variables is needed to reason about Bayesian inference."
   },
   {
@@ -239,7 +287,74 @@
     "relation": "applies_to",
     "confidence": 0.9,
     "status": "proposed",
-    "evidence": ["source:manual-curation-v1"],
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
     "note": "Gradient descent and its variants are widely used to train machine learning models."
+  },
+  {
+    "id": "edge:probability-theory-prerequisite-bayesian-inference",
+    "source": "subfield:probability-theory",
+    "target": "method:bayesian-inference",
+    "relation": "prerequisite_for",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:book-bayesian-data-analysis"
+    ],
+    "evidence_kind": "editorial",
+    "note": "Promoted from ml-foundations-v1 under edge promotion policy v1 (editorial evidence stops at proposed). Provenance & verification: foundry/proposals/ml-foundations-v1/promotion-report.md. Adds the subfield-level dependency alongside the existing concept-level edges into Bayesian inference."
+  },
+  {
+    "id": "edge:calculus-prerequisite-gradient-descent",
+    "source": "subfield:calculus",
+    "target": "method:gradient-descent",
+    "relation": "prerequisite_for",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:book-mathematics-for-machine-learning"
+    ],
+    "evidence_kind": "editorial",
+    "note": "Promoted from ml-foundations-v1 under edge promotion policy v1 (editorial evidence stops at proposed). Provenance & verification: foundry/proposals/ml-foundations-v1/promotion-report.md. Also capped by endpoint status (method:gradient-descent is proposed) — first application of the status-cap clause."
+  },
+  {
+    "id": "edge:random-variable-prerequisite-probability-distribution",
+    "source": "concept:random-variable",
+    "target": "concept:probability-distribution",
+    "relation": "prerequisite_for",
+    "confidence": 0.75,
+    "status": "proposed",
+    "evidence": [
+      "source:book-a-first-course-in-probability"
+    ],
+    "evidence_kind": "editorial",
+    "note": "Promoted from ml-foundations-v1 under edge promotion policy v1 (editorial evidence stops at proposed). Provenance & verification: foundry/proposals/ml-foundations-v1/promotion-report.md. Direction kept per QC conflict resolution (PR #14): the reverse models proposal was dropped as relation misuse + reverse duplication."
+  },
+  {
+    "id": "edge:linear-algebra-prerequisite-optimization",
+    "source": "subfield:linear-algebra",
+    "target": "subfield:optimization",
+    "relation": "prerequisite_for",
+    "confidence": 0.7,
+    "status": "proposed",
+    "evidence": [
+      "source:book-convex-optimization"
+    ],
+    "evidence_kind": "editorial",
+    "note": "Promoted from ml-foundations-v1 under edge promotion policy v1 (editorial evidence stops at proposed). Provenance & verification: foundry/proposals/ml-foundations-v1/promotion-report.md. Generator-flagged: may be a co-requisite rather than a strict prerequisite at elementary level."
+  },
+  {
+    "id": "edge:statistics-adjacent-mathematics",
+    "source": "field:statistics",
+    "target": "field:mathematics",
+    "relation": "adjacent_to",
+    "confidence": 0.6,
+    "status": "proposed",
+    "evidence": [
+      "source:manual-curation-v1"
+    ],
+    "evidence_kind": "editorial",
+    "note": "Promoted from ml-foundations-v1 under edge promotion policy v1 (editorial evidence stops at proposed). Provenance & verification: foundry/proposals/ml-foundations-v1/promotion-report.md. Deliberately adjacent_to, not part_of: the containment question is a real-world contest (B-type); a part_of stance would require the v1.1/clause-6 research path."
   }
 ]
