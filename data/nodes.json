@@ -1231,5 +1231,35 @@
     "academic_status": "non_academic",
     "created_at": "2026-06-10",
     "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:modern-philosophy",
+    "type": "subfield",
+    "domain": "humanities",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q860746"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:critical-theory",
+    "type": "subfield",
+    "domain": "humanities",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q301751"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
   }
 ]

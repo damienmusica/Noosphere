@@ -102,3 +102,24 @@ Follow-up resolutions applied:
 - `subfield:esotericism-and-theosophy` -> Q7988481 "academic study of Western esotericism" (unambiguous; the academic-study item is the right grounding for a subfield node) — promoted to /data as `proposed`.
 - `subfield:philosophy-of-perception` Q3300457 confirmed correct (label + enwiki sitelink match; English description is vandalized upstream — Wikidata content issue, not ours).
 - Still without verified QIDs (4): critical-theory and modern-philosophy (v3 still rank-1-wrong but now correctly ambiguous-flagged), philosophy-of-race (auto-rejected garbage, item may not exist), philosophy-of-cognitive-science (no candidates — likely absent on Wikidata; consider PhilPapers grounding or manual creation review).
+
+## Manual QC selections addendum (2026-06-10, live-verified)
+
+- `subfield:critical-theory` -> **Q301751** — reversal of the earlier strip: the
+  resolver's rank-1 was right all along. The item carries a misleading English
+  label ("critical sociology") upstream, but its enwiki sitelink is "Critical
+  theory" and "critical theory" is an English alias. Lesson recorded: judge
+  identity by sitelink + aliases, not by the English label alone.
+- `subfield:modern-philosophy` -> **Q860746** ("modern philosophy", western
+  philosophy 17th-20th c., enwiki "Modern philosophy"). The v3 search ranked it
+  below early-modern-philosophy for the qualified seed; direct lookup confirms it.
+- Both promoted to /data as `proposed` (standing policy v1, QC-ambiguous tier).
+- `subfield:philosophy-of-race` and `subfield:philosophy-of-cognitive-science`:
+  **no discipline item exists on Wikidata** (race: only a 2015 article; cognitive
+  science: zero hits). They stay QID-less in the foundry — Wikidata coverage gap,
+  not a pipeline failure. Alternative grounding (PhilPapers category IDs) is a
+  candidate for the research-subagent pattern.
+
+Final batch state: **61/63 nodes verified and promoted into /data**
+(57 in the bulk promotion, 2 resolver-v3 follow-ups, 2 manual selections);
+2 remain in foundry because no Wikidata item exists for them.
