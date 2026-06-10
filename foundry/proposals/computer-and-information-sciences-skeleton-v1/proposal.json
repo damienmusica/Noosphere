@@ -1,0 +1,474 @@
+{
+  "version": 1,
+  "batch_id": "batch:computer-and-information-sciences-skeleton-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-11"
+  },
+  "nodes": [
+    {
+      "id": "subfield:algorithms-and-data-structures",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Algorithms and Data Structures",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q464118"
+      },
+      "source_hint": "Wikidata Q464118 (algorithms) — unverified training-knowledge hint. arXiv cs.DS 'Data Structures and Algorithms' fetched at https://arxiv.org/category_taxonomy (2026-06-11). MSC 2020 section 68Wxx 'Algorithms in computer science' — [UNFETCHED: MSC PDF blocked]. LCC QA76.9.A25 algorithms [UNFETCHED: LCC PDF 403]. ACM CCS 2012 'Theory of Computation > Design and analysis of algorithms' — [UNFETCHED: dl.acm.org 403]. OECD FORD 1.2 computer and information sciences [UNFETCHED: subfield list unavailable].",
+      "rationale": "Core classification division in every major CS taxonomy (MSC 68W, ACM CCS, arXiv cs.DS); named department-level area and required graduate curriculum in every CS program globally.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. 'Algorithms' and 'data structures' could be proposed as two separate nodes; the standard ACM CCS grouping keeps them together, but some programs split them.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (Claude Fable 5, live): LCC QA76.9.A43 'Algorithms' (id.loc.gov; the generator's QA76.9.A25 hint was the wrong cutter); ACM CCS 'Theory of computation > Design and analysis of algorithms' (Wayback 20191108 snapshot of dl.acm.org/ccs/ccs_flat.cfm — live site Cloudflare-blocked); MSC 68Wxx 'Algorithms in computer science' (msc2020.org CSV, live). Dual criterion passes (SODA/STOC ecosystem, theory/algorithms department groups)."
+    },
+    {
+      "id": "subfield:computational-complexity-theory",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Computational Complexity Theory",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q226887"
+      },
+      "source_hint": "Wikidata Q226887 — unverified training-knowledge hint. arXiv cs.CC 'Computational Complexity' fetched at https://arxiv.org/category_taxonomy (2026-06-11). MSC 2020 section 68Qxx 'Theory of computing' — [UNFETCHED: MSC PDF blocked]. ACM CCS 2012 'Theory of Computation > Computational complexity and cryptography' — [UNFETCHED: dl.acm.org 403].",
+      "rationale": "Own top-level arXiv cs.CC category; MSC 68Q; dedicated journals (Computational Complexity, ECCC); STOC/FOCS/CCC conference series; named research-group-level area in theoretical CS departments.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Overlaps substantially with computability-theory (canonical in formal-sciences); the boundary is between decidability (computability, formal-sciences) and resource-bounded computation (complexity, CS). This assignment to CS is the standard ACM/arXiv placement.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): ACM CCS 'Theory of computation > Computational complexity and cryptography' (Wayback snapshot); MSC 68Qxx 'Theory of computing' (msc2020.org CSV). Dual criterion passes (CCC conference, complexity groups)."
+    },
+    {
+      "id": "subfield:programming-languages",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Programming Languages",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q9143"
+      },
+      "source_hint": "Wikidata Q9143 — unverified training-knowledge hint. arXiv cs.PL 'Programming Languages' fetched at https://arxiv.org/category_taxonomy (2026-06-11). MSC 2020 68Nxx 'Theory of software' — [UNFETCHED]. LCC QA76.7 programming languages [UNFETCHED: LCC PDF 403]. ACM CCS 2012 'Software and its Engineering > Software notations and tools' — [UNFETCHED: dl.acm.org 403].",
+      "rationale": "Standalone arXiv category cs.PL; LCC QA76.7 gives programming languages its own classification range; POPL/PLDI/ICFP conference series; named research area in CS departments alongside algorithms and systems.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Whether 'programming languages' should be combined with 'formal methods' or kept separate is debated; ACM CCS 2012 places them together under Software and its Engineering, but arXiv cs.LO covers formal methods separately.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): UDC 004.43 'Computer languages. Including: Programming languages' (udcsummary.info getrecord, live); ACM CCS 'Software and its engineering > Software notations and tools' (Wayback snapshot); MSC 68Nxx 'Theory of software' (CSV). The unverified LCC QA76.7 claim is dropped from evidence. Dual criterion passes (SIGPLAN, POPL/PLDI)."
+    },
+    {
+      "id": "subfield:software-engineering",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Software Engineering",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q80993"
+      },
+      "source_hint": "Wikidata Q80993 — unverified training-knowledge hint. arXiv cs.SE 'Software Engineering' fetched at https://arxiv.org/category_taxonomy (2026-06-11). LCC QA76.76 software [UNFETCHED: LCC PDF 403]. ACM CCS 2012 top-level 'Software and its Engineering' — [UNFETCHED: dl.acm.org 403]. Wikipedia outline of computer science fetched at https://en.wikipedia.org/wiki/Outline_of_computer_science (2026-06-11).",
+      "rationale": "Major ACM CCS top-level branch; arXiv cs.SE; ICSE/FSE/ASE conference series; named department-level area or division in CS programs; separate from programming languages in both community and research focus.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Boundary with programming languages (cs.PL) and systems is fuzzy; some classify formal methods under software engineering while others separate them.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): UDC 004.41 'Software engineering' (live); LCC QA76.758 'Software engineering' (id.loc.gov, live); ACM CCS top level 'Software and its engineering' (Wayback snapshot). Dual criterion passes (ICSE/FSE, SE groups)."
+    },
+    {
+      "id": "subfield:computer-systems",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Computer Systems",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q7946"
+      },
+      "source_hint": "Wikidata Q7946 (computer architecture) — unverified training-knowledge hint. arXiv cs.AR 'Hardware Architecture' and cs.OS 'Operating Systems' fetched at https://arxiv.org/category_taxonomy (2026-06-11). LCC QA76.5 digital computers, QA76.76.O63 operating systems [UNFETCHED: LCC PDF 403]. ACM CCS 2012 top-level 'Computer Systems Organization' — [UNFETCHED: dl.acm.org 403]. Wikipedia Computer Science article fetched at https://en.wikipedia.org/wiki/Computer_science (2026-06-11).",
+      "rationale": "ACM CCS top-level 'Computer Systems Organization'; covers computer architecture, operating systems, and systems software as a cohesive research area with dedicated venues (ASPLOS, OSDI, SOSP, ISCA); named division in all CS departments.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. 'Computer systems' is a broad umbrella that includes both hardware architecture (closer to engineering) and operating systems (pure CS); the hardware side's primary LCC home TK/engineering creates a boundary tension recorded here.",
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-11 (A-type, documented ruling): kept as the systems umbrella absorbing operating systems, computer architecture, and performance — ACM CCS top level 'Computer systems organization' (Wayback snapshot), UDC 004.2 'Computer architecture' + 004.45 'System software. Including: Operating systems' (live), MSC 68Mxx 'Computer system organization' (CSV); 'systems' is a canonical department research-area name. Absorbed areas recorded as v2 re-split candidates. Hardware-proper stays excluded (engineering)."
+    },
+    {
+      "id": "subfield:computer-networks",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Computer Networks",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q193837"
+      },
+      "source_hint": "Wikidata Q193837 — unverified training-knowledge hint. arXiv cs.NI 'Networking and Internet Architecture' fetched at https://arxiv.org/category_taxonomy (2026-06-11). ACM CCS 2012 top-level 'Networks' — [UNFETCHED: dl.acm.org 403]. Wikipedia outline of computer science fetched at https://en.wikipedia.org/wiki/Outline_of_computer_science (2026-06-11).",
+      "rationale": "Own ACM CCS top-level branch 'Networks'; arXiv cs.NI; SIGCOMM, NSDI, IMC conference series; networking research groups are standard in CS departments; Internet and protocol research is a defining CS area.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Boundary with telecommunications engineering (LCC TK) creates continent ambiguity; dominant institutional home is CS departments for protocol/internet research and EE/telecom for physical-layer work.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): UDC 004.7 'Computer communication. Computer networks' (live); ACM CCS top level 'Networks' (Wayback snapshot); MSC 68M11 'Internet topics' (CSV). Dual criterion passes (SIGCOMM/NSDI, networking groups)."
+    },
+    {
+      "id": "subfield:distributed-and-parallel-computing",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Distributed and Parallel Computing",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q2658680"
+      },
+      "source_hint": "Wikidata Q2658680 — unverified training-knowledge hint. arXiv cs.DC 'Distributed, Parallel, and Cluster Computing' fetched at https://arxiv.org/category_taxonomy (2026-06-11). ACM CCS 2012 'Computer Systems Organization > Distributed architectures' — [UNFETCHED: dl.acm.org 403]. Wikipedia outline of computer science fetched at https://en.wikipedia.org/wiki/Outline_of_computer_science (2026-06-11).",
+      "rationale": "Dedicated arXiv cs.DC category; PODC, DISC, SC, PPoPP conference series; named research-area-level unit in CS departments; distinct research community from sequential systems.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Distributed computing and parallel computing are sometimes listed as separate subfields; the arXiv cs.DC grouping and ACM SIG groupings support a unified node at this skeleton level.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): UDC 004.75 'Distributed processing systems' (live); ACM CCS 'Computing methodologies > Parallel/Distributed/Concurrent computing methodologies' and 'Computer systems organization > Architectures > Parallel/Distributed architectures' (Wayback snapshot). Dual criterion passes (PODC/SPAA/SOSP ecosystem)."
+    },
+    {
+      "id": "subfield:databases-and-information-systems",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Databases and Information Systems",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q8513"
+      },
+      "source_hint": "Wikidata Q8513 (database) — unverified training-knowledge hint. arXiv cs.DB 'Databases' fetched at https://arxiv.org/category_taxonomy (2026-06-11). ACM CCS 2012 top-level 'Information Systems' — [UNFETCHED: dl.acm.org 403]. LCC QA76.9.D3 databases [UNFETCHED: LCC PDF 403]. Wikipedia outline of computer science fetched at https://en.wikipedia.org/wiki/Outline_of_computer_science (2026-06-11).",
+      "rationale": "Own ACM CCS top-level 'Information Systems'; arXiv cs.DB; VLDB, SIGMOD, ICDE conference series; database research groups are standard in CS and information-school departments.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. 'Information systems' is sometimes distinguished from 'databases' and may cross into the LIS wing or information schools; ACM CCS 2012 unifies them, which is followed here.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): UDC 004.6 'Data' + 004.65 'Databases and their structures. Including: DBMS' (live); LCC QA76.9.D3 'Database management' (id.loc.gov, live); ACM CCS 'Information systems > Data management systems' (Wayback snapshot); MSC 68Pxx 'Theory of data' (CSV). Business-school information systems (AIS ecosystem) is a distinct social-sciences referent — recorded as deliberate non-coverage in qc-report.md."
+    },
+    {
+      "id": "subfield:artificial-intelligence",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Artificial Intelligence",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q11660"
+      },
+      "source_hint": "Wikidata Q11660 — unverified training-knowledge hint. arXiv cs.AI 'Artificial Intelligence' fetched at https://arxiv.org/category_taxonomy (2026-06-11). MSC 2020 section 68Txx 'Artificial intelligence' — [UNFETCHED: MSC PDF blocked]. LCC QA76.87 neural networks, QA336 artificial intelligence [UNFETCHED: LCC PDF 403]. ACM CCS 2012 'Computing Methodologies > Artificial intelligence' — [UNFETCHED: dl.acm.org 403]. Wikipedia Computer Science article fetched at https://en.wikipedia.org/wiki/Computer_science (2026-06-11).",
+      "rationale": "Own MSC 68T, ACM CCS top branch, and arXiv cs.AI; AAAI, IJCAI, NeurIPS, ICML conference series (with field:machine-learning as existing junction node); named department-level area in all CS programs.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. field:machine-learning already exists as a canonical junction node; AI is broader (knowledge representation, planning, automated reasoning). The structural question of whether field:machine-learning should be a subfield under this node rather than a separate level-1 field is the pre-registered QC structural question in the batch manifest.",
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-11 (A-type, pre-registered structural question): AI confirmed as a level-2 subfield; the inversion is resolved on the other side — existing field:machine-learning is demoted to subfield:machine-learning at promotion (mathematical-logic field-to-subfield precedent: UDC files ML under 004.8 Artificial intelligence, CCS files AI and ML as sibling branches of Computing methodologies (Wayback snapshot), LCC files machine learning at Q325.5 under Cybernetics (id.loc.gov, live) — nothing supports field-level standing). AI and ML enter as peer subfields; the reviewed edge machine-learning-part-of-computer-science is untouched. QC verification: UDC 004.8 'Artificial intelligence' (live); MSC 68Txx (CSV)."
+    },
+    {
+      "id": "subfield:computer-vision",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Computer Vision",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q192613"
+      },
+      "source_hint": "Wikidata Q192613 — unverified training-knowledge hint. arXiv cs.CV 'Computer Vision and Pattern Recognition' fetched at https://arxiv.org/category_taxonomy (2026-06-11). ACM CCS 2012 'Computing Methodologies > Computer vision' — [UNFETCHED: dl.acm.org 403].",
+      "rationale": "Named arXiv cs.CV category with pattern recognition; CVPR, ICCV, ECCV conference series; distinct research community from general AI; named research-area in CS departments with specific faculty groups.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Computer vision is closely related to both AI (subfield:artificial-intelligence) and image processing/computer graphics; whether it should be a peer subfield or under AI is a design choice — arXiv and CVPR conference stature support peer-subfield level.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): UDC 004.93 'Pattern information processing. Including: Image enhancement. Pattern, character recognition' (live); MSC 68T45 'Machine vision and scene understanding' (CSV); ACM CCS AI branch (Wayback snapshot). Kept as a peer of AI per the §12 peer-coexistence rule (CVPR/ICCV community standing)."
+    },
+    {
+      "id": "subfield:natural-language-processing",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Natural Language Processing",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q30642"
+      },
+      "source_hint": "Wikidata Q30642 — unverified training-knowledge hint. arXiv cs.CL 'Computation and Language' fetched at https://arxiv.org/category_taxonomy (2026-06-11). ACM CCS 2012 'Computing Methodologies > Natural language processing' — [UNFETCHED: dl.acm.org 403].",
+      "rationale": "Dedicated arXiv cs.CL category; ACL, EMNLP, NAACL conference series with own professional society (ACL); distinct research community from general AI; named research group in CS and linguistics-adjacent departments.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. NLP sits at the boundary between CS and linguistics (cognitive-sciences continent); dominant institutional home is CS departments for the computational side, confirmed by arXiv cs.CL placement.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): MSC 68T50 'Natural language processing' (CSV); UDC 004.93 'Including: Speech recognition and synthesis' (live); ACM CCS AI branch (Wayback snapshot). Peer of AI per the §12 peer-coexistence rule (ACL ecosystem)."
+    },
+    {
+      "id": "subfield:human-computer-interaction",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Human-Computer Interaction",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q485340"
+      },
+      "source_hint": "Wikidata Q485340 — unverified training-knowledge hint. arXiv cs.HC 'Human-Computer Interaction' fetched at https://arxiv.org/category_taxonomy (2026-06-11). ACM CCS 2012 top-level 'Human-Centered Computing' — [UNFETCHED: dl.acm.org 403]. Wikipedia HCI article fetched at https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction (2026-06-11): confirms ACM SIGCHI and CHI conference.",
+      "rationale": "Own ACM CCS top-level 'Human-Centered Computing'; arXiv cs.HC; ACM CHI, UIST, CSCW conference series; ACM SIGCHI with thousands of members; named research area across CS and information schools.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. HCI draws from behavioral sciences, design, and media studies alongside CS; cross-continent placement between CS and social/cognitive sciences is real. Dominant classification home is CS/ACM CCS, supporting this assignment.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): UDC 004.5 'Human-computer interaction. Man-machine interface' (live); LCC QA76.9.H85 'Human-computer interaction' (id.loc.gov, live); ACM CCS 'Human-centered computing > Human computer interaction (HCI)' (Wayback snapshot)."
+    },
+    {
+      "id": "subfield:computer-graphics",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Computer Graphics",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q182832"
+      },
+      "source_hint": "Wikidata Q182832 — unverified training-knowledge hint. arXiv cs.GR 'Graphics' fetched at https://arxiv.org/category_taxonomy (2026-06-11). LCC QA76.9.C65 computer graphics [UNFETCHED: LCC PDF 403]. ACM CCS 2012 'Computing Methodologies > Computer graphics' — [UNFETCHED: dl.acm.org 403].",
+      "rationale": "Own ACM CCS branch; arXiv cs.GR; ACM SIGGRAPH conference series; named research area in CS departments; distinct from computer vision in focus (generation vs. analysis of images).",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Computer graphics overlaps with arts-and-design continental area; its primary academic classification home is CS (LCC QA76, ACM CCS), supporting this assignment.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): UDC 004.92 'Computer graphics. Including: Geometric modelling. Animation' (live); MSC 68U05 'Computer graphics; computational geometry' (CSV); ACM CCS 'Computing methodologies > Computer graphics' (Wayback snapshot). The CCS 'Visualization' branch is a separate subfield (QC gap-fill subfield:visualization), not absorbed here."
+    },
+    {
+      "id": "subfield:cryptography",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Cryptography",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q8789"
+      },
+      "source_hint": "Wikidata Q8789 — unverified training-knowledge hint. arXiv cs.CR 'Cryptography and Security' fetched at https://arxiv.org/category_taxonomy (2026-06-11). MSC 2020 section 94Axx 'Communication, information' includes coding/cryptography — [UNFETCHED: MSC PDF blocked]. LCC QA268 cryptography [UNFETCHED: LCC PDF 403]. ACM CCS 2012 'Security and Privacy > Cryptography' — [UNFETCHED: dl.acm.org 403]. Transfer precedent: this node was dropped from formal-sciences-skeleton-v1 (batch note: 'subfield:cryptography excluded, flagged as CS transfer target') and ratified for transfer into CS continent (batch manifest scope include: 'Cryptography transfer acceptance (section-12 precedent 2026-06-10)').",
+      "rationale": "Ratified CS-continent transfer per §12 precedent (batch manifest); arXiv cs.CR; IACR/Crypto/Eurocrypt/CCS conference series; cryptography research groups are in CS departments; institutional home is CS not mathematics (IACR is a CS professional society).",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Some classification sources (MSC 94, LCC QA) file cryptography under mathematics; the transfer precedent records this contested boundary and places this node here per the dominant institutional home.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): ACM CCS 'Security and privacy > Cryptography' (Wayback snapshot); MSC 94A60 'Cryptography' + 68P25 'Data encryption' (CSV). Correction: LCC QA268's own caption is 'Algebra--Machine theory--Coding theory' (id.loc.gov, live) — the generator's 'QA268 cryptography' phrasing was imprecise. §12 transfer acceptance (formal sciences 2026-06-10: cryptography→CS) executed by this keep."
+    },
+    {
+      "id": "subfield:computer-security",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Computer Security",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q3510521"
+      },
+      "source_hint": "Wikidata Q3510521 — unverified training-knowledge hint. arXiv cs.CR 'Cryptography and Security' fetched at https://arxiv.org/category_taxonomy (2026-06-11). ACM CCS 2012 top-level 'Security and Privacy' — [UNFETCHED: dl.acm.org 403]. Wikipedia Computer security article fetched at https://en.wikipedia.org/wiki/Computer_security (2026-06-11): confirms subdiscipline within information security.",
+      "rationale": "Own ACM CCS top-level 'Security and Privacy'; shared arXiv cs.CR with cryptography; IEEE S&P, ACM CCS, USENIX Security conference series; named research area distinct from cryptography in focus (systems/policy/adversarial vs. mathematical).",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Computer security and cryptography share arXiv cs.CR and the ACM CCS conference; whether they are peer subfields or one absorbs the other is a legitimate design question. They are proposed as peers here because they represent distinct communities (IACR for cryptography, IEEE S&P / USENIX Security for systems security).",
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-11 (A-type, documented ruling): the cryptography/computer-security split is upheld — ACM CCS separates 'Cryptography' from the rest of the 'Security and privacy' top level (Wayback snapshot), MSC separates 94A60/68P25 from 68M25 'Computer security' (CSV), and the IACR versus IEEE S&P/ACM CCS-conference communities are distinct."
+    },
+    {
+      "id": "subfield:theoretical-computer-science",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Theoretical Computer Science",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q466"
+      },
+      "source_hint": "Wikidata Q466 — unverified training-knowledge hint. Wikipedia Theoretical Computer Science article fetched at https://en.wikipedia.org/wiki/Theoretical_computer_science (2026-06-11). arXiv cs.CC, cs.LO, cs.FL, cs.DS all filed under theoretical CS [UNFETCHED from ACM CCS]. ACM CCS 2012 top-level 'Theory of Computation' — [UNFETCHED: dl.acm.org 403].",
+      "rationale": "Own ACM CCS top-level 'Theory of Computation'; umbrella for algorithms, complexity, formal languages/automata, and formal methods; named research-area in CS departments and the label of a distinct ACM SIG (SIGACT); TCS journal, STOC/FOCS venues.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Theoretical CS as an umbrella overlaps with several other proposed nodes (computational-complexity-theory, algorithms-and-data-structures, formal-languages-and-automata, programming-languages). QC should decide whether to keep both umbrella and sub-area nodes, or drop the umbrella in favor of the sub-areas.",
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-11 (A-type, documented ruling): umbrella and finer peers coexist per the §12 peer-coexistence rule (metaphysics/ontology and mathematical-logic + ASL-pillar precedents) — ACM CCS top level 'Theory of computation' (Wayback snapshot), MSC 68Qxx (CSV); SIGACT and 'theory group' department naming give the umbrella community standing of its own."
+    },
+    {
+      "id": "subfield:formal-languages-and-automata-theory",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Formal Languages and Automata Theory",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q215077"
+      },
+      "source_hint": "Wikidata Q215077 — unverified training-knowledge hint. arXiv cs.FL 'Formal Languages and Automata Theory' fetched at https://arxiv.org/category_taxonomy (2026-06-11). MSC 2020 68Qxx theory of computing includes automata — [UNFETCHED]. LCC QA267 automata [UNFETCHED: LCC PDF 403].",
+      "rationale": "Dedicated arXiv cs.FL category; covers finite automata, regular languages, context-free grammars, pushdown automata, and their applications to parsing and language design; foundational to CS theory; ICALP, DLT conference series.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Automata theory has strong ties to both theoretical CS and mathematical logic; the CS placement is standard (arXiv cs.FL, LCC QA267). QC should consider whether this is large enough for a peer subfield vs. absorption into theoretical-computer-science or algorithms.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): ACM CCS 'Theory of computation > Formal languages and automata theory' (Wayback snapshot); MSC 68Q45 'Formal languages and automata' (CSV). Fine cut for the theory cluster mirrors the ASL-pillar precedent (DLT/CIAA community)."
+    },
+    {
+      "id": "subfield:scientific-computing",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Scientific Computing",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q858439"
+      },
+      "source_hint": "Wikidata Q858439 — unverified training-knowledge hint. arXiv cs.CE 'Computational Engineering, Finance, and Science' and cs.MS 'Mathematical Software' fetched at https://arxiv.org/category_taxonomy (2026-06-11). Wikipedia outline of CS: 'Scientific Computing' as major branch fetched at https://en.wikipedia.org/wiki/Outline_of_computer_science (2026-06-11). SIAM (Society for Industrial and Applied Mathematics) as the dominant society.",
+      "rationale": "Named major division in Wikipedia outline of CS; arXiv cs.CE/cs.MS; SIAM as a dedicated society; distinct research community producing software (e.g. LAPACK, PETSc) for scientific computation; SC conference series; present as a named track in CS and applied-mathematics departments.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Scientific computing overlaps substantially with subfield:numerical-analysis (formal-sciences, already canonical); the distinction is that scientific computing emphasizes software, parallel algorithms, and domain applications while numerical analysis emphasizes mathematical error analysis. QC should verify this is not an absorption of the canonical subfield:numerical-analysis.",
+      "ambiguous": true,
+      "note": "QC 2026-06-11: B-type flag retained (real-world boundary contest with applied mathematics/numerical analysis — the SIAM CSE ecosystem spans mathematics and CS and the institutional home is genuinely contested). Stops at proposed pending a clause-6 resolution pass. QC verification (live): UDC 004.94 'Simulation'; ACM CCS 'Applied computing > Physical sciences and engineering' (Wayback snapshot); MSC 68U20 simulation + 68Vxx 'Computer science support for mathematical research' (CSV)."
+    },
+    {
+      "id": "subfield:information-retrieval",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Information Retrieval",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q252243"
+      },
+      "source_hint": "Wikidata Q252243 — unverified training-knowledge hint. arXiv cs.IR 'Information Retrieval' fetched at https://arxiv.org/category_taxonomy (2026-06-11). ACM CCS 2012 'Information Systems > Information retrieval' — [UNFETCHED: dl.acm.org 403]. Wikipedia information science article fetched at https://en.wikipedia.org/wiki/Information_science (2026-06-11): confirms IR as a key subfield.",
+      "rationale": "Dedicated arXiv cs.IR; ACM SIGIR with annual conference series; named research area in both CS and iSchool/LIS programs; present in LCC Z and in ACM CCS; the research bridge between CS and library/information science.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. IR sits at the boundary between CS (algorithms, data structures) and LIS (indexing, knowledge organization, user behavior); dual institutional home supports this cross-listing but the assignment to CS continent is standard by ACM CCS and arXiv.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): LCC Z699-699.5 'Machine methods of information and retrieval. Mechanized bibliographic control' (lcco_z.pdf outline, live download); ACM CCS 'Information systems > Information retrieval' (Wayback snapshot); MSC 68P20 'Information storage and retrieval of data' (CSV). Bridges the computing and LIS wings — one node, one ID (§13 render-instance model handles any dual display downstream)."
+    },
+    {
+      "id": "subfield:quantum-computing",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Quantum Computing",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q206904"
+      },
+      "source_hint": "Wikidata Q206904 — unverified training-knowledge hint. arXiv quant-ph and cs.* taxonomy (cs.ET 'Emerging Technologies' includes quantum) fetched at https://arxiv.org/category_taxonomy (2026-06-11). Wikipedia outline of CS: 'Quantum computing theory' under theory of computation fetched at https://en.wikipedia.org/wiki/Outline_of_computer_science (2026-06-11). IEEE Transactions on Quantum Engineering; ACM SIGACT interest.",
+      "rationale": "Named in Wikipedia outline of CS; arXiv cs.ET covers emerging computing technologies including quantum; dedicated IEEE Transactions on Quantum Engineering; growing independent degree programs and research groups; standard named area in CS theory programs since the 2000s.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Quantum computing straddles CS (algorithms, complexity) and physics (quantum mechanics); arXiv authors primarily use quant-ph not cs.*; the dominant academic home may be physics departments at many institutions, suggesting CS boundary is contested.",
+      "ambiguous": true,
+      "note": "QC 2026-06-11: B-type flag retained (real-world boundary contest with physics — quant-ph dominance and physics-department institutional claims are real). Placement anchors here per §12 rule 3 first prong: LCC QA76.889 'Quantum computers' (id.loc.gov, live) files it inside the continent range. MSC dual-files 68Q12 'Quantum algorithms and complexity' / 81P68 'Quantum computation' (CSV); ACM CCS carries quantum branches under both Hardware > Emerging technologies and Computer systems organization > Other architectures (Wayback snapshot). Stops at proposed pending a clause-6 resolution pass."
+    },
+    {
+      "id": "field:library-and-information-science",
+      "type": "field",
+      "domain": "computer_and_information_sciences",
+      "level": 1,
+      "status": "generated",
+      "label_en": "Library and Information Science",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q13420675"
+      },
+      "source_hint": "Wikidata Q13420675 — unverified training-knowledge hint. LCC Z665–Z718.8 library science and information science [UNFETCHED: LCC PDF 403; Wayback machine also blocked]. Wikipedia Library and information science article fetched at https://en.wikipedia.org/wiki/Library_and_information_science (2026-06-11): confirms iSchools, ALA accreditation, IFLA, major research areas. Wikipedia information science article fetched at https://en.wikipedia.org/wiki/Information_science (2026-06-11). OECD FORD 1.2 'Computer and information sciences' covers LIS [UNFETCHED: only top-level confirmed].",
+      "rationale": "Dedicated LCC Z665–Z718.8 classification range; iSchools consortium with 100+ member institutions; ALA-accredited MLIS/MLS programs in North America; IFLA; dedicated journals (JASIST, LISR); OECD FORD 1.2 co-classifies LIS with CS; dual criterion satisfied: classification presence (LCC Z) + community presence (iSchools, ALA accreditation).",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Domain assignment to computer_and_information_sciences is defensible via OECD FORD 1.2 grouping and LCC co-location, but LIS has its own distinct cultural identity and some argue it belongs more naturally to social sciences or humanities. The OECD FORD 1.2 grouping with CS is the governing classification decision, recorded here with flag.",
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-11 (A-type, pre-registered wing question): the information-sciences wing stays in this continent and LIS holds level-1 field standing — LCC grants the wing its own range Z665-718.8 'Library science. Information science' (lcco_z.pdf outline, live) and UDC its own class 02 'Librarianship' (getrecord, live); the institutional home is iSchools/LIS faculties, department-level units of their own (unlike machine learning's groups-within-CS-departments); FORD 1.2's own title 'Computer and information sciences' (arrs.si, live) names the wing. The §12 two-prong test resolves placement without policy escalation — no CPO gate required."
+    },
+    {
+      "id": "subfield:knowledge-organization",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Knowledge Organization",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q1520547"
+      },
+      "source_hint": "Wikidata Q1520547 — unverified training-knowledge hint. Wikipedia Library and information science article fetched at https://en.wikipedia.org/wiki/Library_and_information_science (2026-06-11): knowledge organization listed as a major LIS research area. LCC Z695–Z699 subject cataloging, classification [UNFETCHED: LCC PDF 403]. ISKO (International Society for Knowledge Organization); Knowledge Organization journal.",
+      "rationale": "Core LIS research area per LIS curriculum study (2026-06-11 Wikipedia fetch: 62% curriculum coverage); ISKO with annual conference series; Knowledge Organization journal; classification schemes, thesauri, ontologies, and metadata are standard research foci in iSchool programs.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Overlaps with databases-and-information-systems from the CS side; ISKO's 'knowledge organization' as a term is distinct from computer-science knowledge representation. QC should verify the boundary with subfield:ontology (canonical under philosophy).",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): LCC Z666.5 'Library science. Information science--Information organization' (id.loc.gov, live) + Z693-697 'Cataloging / Classification and notation' + Z695.9-695.94 'Indexing. Abstracting' (lcco_z.pdf outline, live); UDC 025 'Including: Cataloguing. Classification and indexing' (live). ISKO society + Knowledge Organization journal."
+    },
+    {
+      "id": "subfield:digital-libraries",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Digital Libraries",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q212805"
+      },
+      "source_hint": "Wikidata Q212805 — unverified training-knowledge hint. arXiv cs.DL 'Digital Libraries' fetched at https://arxiv.org/category_taxonomy (2026-06-11). Wikipedia Library and information science article fetched at https://en.wikipedia.org/wiki/Library_and_information_science (2026-06-11): digital libraries listed as major LIS research area. ACM/IEEE-CS JCDL (Joint Conference on Digital Libraries) conference series.",
+      "rationale": "Dedicated arXiv cs.DL category; JCDL conference series; dual presence in CS and iSchool/LIS programs; named degree track in several iSchool programs; satisfies dual criterion.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Digital libraries could be absorbed into information-retrieval or databases-and-information-systems; the dedicated arXiv cs.DL category and JCDL conference support keeping it as a peer subfield.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): LCC ZA4080 'Information resources (General)--Electronic information resources--Digital libraries' (id.loc.gov, live) — subclass ZA sits in the same LCC class-Z family but outside the strict Z665-718.8 manifest range; range extension recorded honestly. arXiv cs.DL (auxiliary, generator-fetched). JCDL/TPDL conference ecosystem and iSchool research-area standing carry criterion (b)."
+    },
+    {
+      "id": "subfield:bibliometrics-and-scientometrics",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Bibliometrics and Scientometrics",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q1518024"
+      },
+      "source_hint": "Wikidata Q1518024 — unverified training-knowledge hint. Wikipedia Bibliometrics article fetched at https://en.wikipedia.org/wiki/Bibliometrics (2026-06-11): confirms LIS position, Scientometrics journal, cross-disciplinary nature. Wikipedia Library and information science article fetched at https://en.wikipedia.org/wiki/Library_and_information_science (2026-06-11): bibliometrics/scientometrics listed as major LIS research area. LCC Z669 bibliometrics [UNFETCHED: LCC PDF 403]. Scientometrics and JASIST journals.",
+      "rationale": "Listed as a major LIS research area (Wikipedia LIS fetch); Scientometrics journal (Springer, indexed); dedicated graduate tracks in iSchool programs; satisfies both criteria (LCC Z classification presence + institutional community in LIS/iSchools).",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Bibliometrics/scientometrics increasingly overlaps with data science and social-sciences-of-science; the post-2020 shift toward 'Quantitative Science Studies' label suggests some community drift away from LIS.",
+      "ambiguous": false,
+      "note": "QC verification 2026-06-11 (live): LCC Z669.8 (id.loc.gov, live) — caption is 'Library science. Information science--Statistical methods'; no LCC division is captioned 'Bibliometrics', and that division is where the field classes (honest record). Criterion (b) is strong: ISSI society, Scientometrics/JOI/Quantitative Science Studies journals, iSchool research areas."
+    },
+    {
+      "id": "subfield:social-computing",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Social Computing",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q7549787"
+      },
+      "source_hint": "Wikidata Q7549787 — unverified training-knowledge hint. arXiv cs.SI 'Social and Information Networks' fetched at https://arxiv.org/category_taxonomy (2026-06-11). ACM CCS 2012 'Human-Centered Computing > Collaborative and social computing' — [UNFETCHED: dl.acm.org 403]. Wikipedia HCI article fetched at https://en.wikipedia.org/wiki/Human%E2%80%93computer_interaction (2026-06-11): social computing listed as HCI sub-area.",
+      "rationale": "Dedicated arXiv cs.SI; ACM CSCW conference series; named research area in HCI and information schools; network analysis, crowdsourcing, and sociotechnical systems are active research foci in CS and iSchool programs.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Social computing overlaps with social-sciences (FORD 5) given its study of human social behavior via computing; the arXiv cs.SI placement and ACM CSCW home support CS/LIS assignment, but the social-sciences boundary is real.",
+      "ambiguous": false,
+      "note": "QC flag retirement 2026-06-11 (A-type, documented ruling): stays in this continent — ACM CCS 'Human-centered computing > Collaborative and social computing' is a second-level branch (Wayback snapshot; CCS is a gate-level classification source for this continent per the batch manifest), and the CSCW/ICWSM community sits in CS departments and iSchools. The neighboring referent computational social science is a distinct social-sciences area, recorded as deliberate non-coverage."
+    },
+    {
+      "id": "subfield:visualization",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Visualization",
+      "academic_status": "established",
+      "external_ids": {},
+      "source_hint": "ACM CCS 2012 'Human-centered computing > Visualization' (Wayback 20191108 snapshot of dl.acm.org/ccs/ccs_flat.cfm, QC live 2026-06-11); LCC QA76.9.I52 'Information visualization' (id.loc.gov, live); IEEE VIS conference; IEEE Transactions on Visualization and Computer Graphics. No QID hint — resolver must establish one or the node stays in foundry.",
+      "rationale": "Visualization is a CCS second-level branch separate from computer graphics (Human-centered computing vs Computing methodologies) with its own conference ecosystem (IEEE VIS) and journal (TVCG); established.",
+      "uncertainty": "Department-level standing is often combined with graphics ('Graphics and Visualization' groups); whether the two communities warrant peer nodes rather than one combined node is the closest granularity call in this batch.",
+      "ambiguous": false,
+      "note": "Added by QC 2026-06-11 (Claude Fable 5), replacing the generated subfield:computer-graphics-and-visualization whose scope overlapped the kept subfield:computer-graphics; CCS separates the two branches (live)."
+    },
+    {
+      "id": "subfield:history-of-computing",
+      "type": "subfield",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "History of Computing",
+      "academic_status": "established",
+      "external_ids": {},
+      "source_hint": "LCC QA76.17 'Electronic computers. Computer science--History' (id.loc.gov, live 2026-06-11); ACM CCS 2012 'Social and professional topics > Professional topics > History of computing' (Wayback snapshot, QC live); IEEE Annals of the History of Computing; SIGCIS. No QID hint — resolver must establish one or the node stays in foundry.",
+      "rationale": "History of computing has a dedicated LCC division inside the continent range, a CCS branch, a dedicated journal (IEEE Annals of the History of Computing) and society (SIGCIS); mirrors the kept history-of-mathematics (§12 precedent symmetry); established.",
+      "uncertainty": "Much of the research community sits in history-of-science programs rather than CS departments; the community criterion rests on the journal/society ecosystem.",
+      "ambiguous": false,
+      "note": "Added by QC coverage sweep 2026-06-11 (Claude Fable 5) — the generator's coverage missed the CCS 'History of computing' branch; history-of-mathematics symmetry."
+    }
+  ],
+  "edges": [],
+  "notes": [
+    "QC pass 2026-06-11 (Claude Fable 5, orchestrator session #8; generation/QC context separation upheld): input 28 generated nodes -> kept 25, dropped 3 (bioinformatics deferred to life sciences; archival-science fails criterion (a) in-continent, novel ruling; computer-graphics-and-visualization malformed scope), gap-filled 2 (visualization, history-of-computing) -> 27 output nodes. A-type flags retired 6 (computer-systems, artificial-intelligence, computer-security, theoretical-computer-science, library-and-information-science, social-computing); B-type flags retained 2 (scientific-computing, quantum-computing) -> stop at proposed. Full record: qc-report.md.",
+    "Generator's live-fetch attempt was blocked at LCC/ACM CCS/UDC-detail (honest [UNFETCHED] self-marks throughout — contract upheld); all classification claims were re-grounded live by QC: loc.gov outline PDFs via local download, id.loc.gov authority-record JSON, udcsummary.info getrecord.php (lang=1), ACM CCS via Wayback 20191108 snapshot of ccs_flat.cfm, msc2020.org MSC_2020.csv, arrs.si FORD.",
+    "Interpretation recorded (qc-report.md): ACM CCS 2012 counts as a gate-level classification source for this continent (manifest baseline; the continent's LCC presence is compressed into cutter-level subdivisions of QA75.5-76.95, which count as major divisions); MSC 68 and FORD 1.2 remain cross-checks.",
+    "Pre-registered for promotion: existing field:machine-learning is demoted to subfield:machine-learning (level 2) with canonical ID migration (10 references across 5 data files) — mathematical-logic precedent; see qc-report.md.",
+    "Resolver watch-list: subfield:visualization and subfield:history-of-computing have no QID hints (resolver must establish or they stay in foundry); generator hint accuracy expected ~27% per formal-sciences measurement; computer-systems hint Q7946 self-described as 'computer architecture' (likely wrong-referent); Q466 (theoretical-computer-science) and Q13420675 (library-and-information-science) high hallucination risk."
+  ]
+}
