@@ -1,0 +1,396 @@
+{
+  "id": "batch:philosophy-skeleton-v1",
+  "title": "Philosophy Skeleton v1",
+  "description": "Coverage skeleton for the philosophy continent: field:philosophy plus a comprehensive level-2 subfield set (systematic, philosophy-of-X, applied, regional/tradition, period, historical, and non-academic-adjacent areas), each tagged with academic_status. Construction input only — not canonical graph data; nodes only, zero edges (skeleton-first).",
+  "status": "active",
+  "target_locales": [
+    "en"
+  ],
+  "scope": {
+    "include": [
+      "Philosophy field and subfield coverage skeleton (nodes only)",
+      "Systematic, applied, regional, period, historical, and non-academic-adjacent areas of philosophy",
+      "Wikidata QID resolution for identity and external_ids"
+    ],
+    "exclude": [
+      "Edges and relations (skeleton-first: dots before lines)",
+      "Level-3 concepts, persons, works",
+      "Living philosophers and current affiliations",
+      "Contemporary or controversial claims"
+    ]
+  },
+  "seed_entities": [
+    {
+      "label": "Philosophy",
+      "expected_node_id": "field:philosophy",
+      "expected_type": "field"
+    },
+    {
+      "label": "Metaphysics",
+      "expected_node_id": "subfield:metaphysics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Ontology",
+      "expected_node_id": "subfield:ontology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Epistemology",
+      "expected_node_id": "subfield:epistemology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Ethics",
+      "expected_node_id": "subfield:ethics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Logic",
+      "expected_node_id": "subfield:logic",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Aesthetics",
+      "expected_node_id": "subfield:aesthetics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Axiology",
+      "expected_node_id": "subfield:axiology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Mind",
+      "expected_node_id": "subfield:philosophy-of-mind",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Language",
+      "expected_node_id": "subfield:philosophy-of-language",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Science",
+      "expected_node_id": "subfield:philosophy-of-science",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Mathematics",
+      "expected_node_id": "subfield:philosophy-of-mathematics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Religion",
+      "expected_node_id": "subfield:philosophy-of-religion",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Law",
+      "expected_node_id": "subfield:philosophy-of-law",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Political Philosophy",
+      "expected_node_id": "subfield:political-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Social Philosophy",
+      "expected_node_id": "subfield:social-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Action",
+      "expected_node_id": "subfield:philosophy-of-action",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Perception",
+      "expected_node_id": "subfield:philosophy-of-perception",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Technology",
+      "expected_node_id": "subfield:philosophy-of-technology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Biology",
+      "expected_node_id": "subfield:philosophy-of-biology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Physics",
+      "expected_node_id": "subfield:philosophy-of-physics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Social Science",
+      "expected_node_id": "subfield:philosophy-of-social-science",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Bioethics",
+      "expected_node_id": "subfield:bioethics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Environmental Ethics",
+      "expected_node_id": "subfield:environmental-ethics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Business Ethics",
+      "expected_node_id": "subfield:business-ethics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Metaethics",
+      "expected_node_id": "subfield:metaethics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Normative Ethics",
+      "expected_node_id": "subfield:normative-ethics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Analytic Philosophy",
+      "expected_node_id": "subfield:analytic-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Continental Philosophy",
+      "expected_node_id": "subfield:continental-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Phenomenology",
+      "expected_node_id": "subfield:phenomenology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Existentialism",
+      "expected_node_id": "subfield:existentialism",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Pragmatism",
+      "expected_node_id": "subfield:pragmatism",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Ancient Philosophy",
+      "expected_node_id": "subfield:ancient-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Medieval Philosophy",
+      "expected_node_id": "subfield:medieval-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Renaissance Philosophy",
+      "expected_node_id": "subfield:renaissance-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Early Modern Philosophy",
+      "expected_node_id": "subfield:modern-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Chinese Philosophy",
+      "expected_node_id": "subfield:chinese-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Indian Philosophy",
+      "expected_node_id": "subfield:indian-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Buddhist Philosophy",
+      "expected_node_id": "subfield:buddhist-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Islamic Philosophy",
+      "expected_node_id": "subfield:islamic-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Jewish Philosophy",
+      "expected_node_id": "subfield:jewish-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "African Philosophy",
+      "expected_node_id": "subfield:african-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Japanese Philosophy",
+      "expected_node_id": "subfield:japanese-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Korean Philosophy",
+      "expected_node_id": "subfield:korean-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Latin American Philosophy",
+      "expected_node_id": "subfield:latin-american-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Comparative Philosophy",
+      "expected_node_id": "subfield:comparative-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of History",
+      "expected_node_id": "subfield:philosophy-of-history",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Economics",
+      "expected_node_id": "subfield:philosophy-of-economics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Feminist Philosophy",
+      "expected_node_id": "subfield:feminist-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Race",
+      "expected_node_id": "subfield:philosophy-of-race",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Education",
+      "expected_node_id": "subfield:philosophy-of-education",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Critical Theory",
+      "expected_node_id": "subfield:critical-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Hermeneutics",
+      "expected_node_id": "subfield:hermeneutics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Metaphilosophy",
+      "expected_node_id": "subfield:metaphilosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Decision Theory (philosophical)",
+      "expected_node_id": "subfield:decision-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Natural Philosophy",
+      "expected_node_id": "subfield:natural-philosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Scholasticism",
+      "expected_node_id": "subfield:scholasticism",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Western Esotericism (philosophy of)",
+      "expected_node_id": "subfield:esotericism-and-theosophy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Cognitive Science",
+      "expected_node_id": "subfield:philosophy-of-cognitive-science",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Psychiatry",
+      "expected_node_id": "subfield:philosophy-of-psychiatry",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Philosophy of Information",
+      "expected_node_id": "subfield:philosophy-of-information",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Ethics of Artificial Intelligence",
+      "expected_node_id": "subfield:ethics-of-ai",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Experimental Philosophy",
+      "expected_node_id": "subfield:experimental-philosophy",
+      "expected_type": "subfield"
+    }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "wikidata",
+      "purpose": [
+        "identity",
+        "metadata",
+        "source_resolution",
+        "external_link"
+      ],
+      "requires_secret": false,
+      "notes": "CC0. Resolver verifies the unverified training-knowledge QID hints in the proposal and fills missing QIDs."
+    },
+    {
+      "provider": "wikipedia",
+      "purpose": [
+        "external_link",
+        "source_resolution"
+      ],
+      "requires_secret": false,
+      "notes": "External-link / source-resolution pointer only. Never store or cache article bodies."
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "provider": "namuwiki",
+      "reason": "NamuWiki is external-link-only and must never be used as evidence or a source, nor have its content cached."
+    },
+    {
+      "provider": "cloud_llm_api",
+      "reason": "No cloud LLM API calls are permitted in repo tooling, build, validation, or runtime."
+    },
+    {
+      "provider": "scraped_article_body",
+      "reason": "Scraping or crawling third-party article bodies is forbidden; only open, license-compatible data is allowed."
+    }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": [
+      "low",
+      "medium",
+      "historical"
+    ],
+    "requires_strict_review_for": [
+      "living_person",
+      "current_affiliation",
+      "controversial_claim"
+    ]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/philosophy-skeleton-v1"
+  },
+  "notes": [
+    "Seeds are generated mechanically from foundry/proposals/philosophy-skeleton-v1/proposal.json (PR #17).",
+    "This manifest exists primarily to drive the Wikidata resolver for QID verification (promotion precondition).",
+    "/data remains the source of truth for accepted graph data."
+  ]
+}
