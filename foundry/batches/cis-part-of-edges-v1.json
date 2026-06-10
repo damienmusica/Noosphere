@@ -1,0 +1,101 @@
+{
+  "id": "batch:cis-part-of-edges-v1",
+  "title": "CIS part_of Edges v1 (computer & information sciences skeleton)",
+  "description": "part_of skeleton edges for the computer-and-information-sciences continent: every /data discipline node of the continent that lacks a part_of parent edge gets one (27 new skeleton nodes from PR #50; subfield:machine-learning already carries its reviewed edge). Construction input only — edges only, zero nodes. Follows the skeleton-part-of-edges-v1 precedent (PR #37-#39) under edge promotion policy v1 (clause 1 live classification grounding), docs/data-foundry.md section 12 (edge-depth freedom: part_of chains may run deeper than two hops) and section 13 (co-equal multiple memberships under the same evidence discipline).",
+  "status": "active",
+  "target_locales": [
+    "en"
+  ],
+  "scope": {
+    "include": [
+      "part_of edges for the 27 computer-and-information-sciences skeleton nodes promoted in PR #50",
+      "field:library-and-information-science -> domain:computer-and-information-sciences anchor edge",
+      "Edge-depth decisions per section-12 precedent (e.g. theory-cluster subfields may take subfield:theoretical-computer-science as parent when the classification subsection structure supports it)",
+      "Genuine dual memberships proposed as co-equal part_of pairs under section 13 (e.g. information-retrieval's computing and LIS filings), each edge carrying its own classification grounding",
+      "ACM CCS 2012 / UDC 004+02 / LCC QA75.5-76.95+Z665-718.8 / MSC 68 classification hints per edge (unverified pointers for QC live grounding)"
+    ],
+    "exclude": [
+      "All non-part_of relations (prerequisite_for, adjacent_to, applies_to — separate editorial track)",
+      "New nodes of any kind (the skeleton node set is closed; gaps are reported, not filled)",
+      "Edges duplicating an existing /data (source, target, relation) triple (subfield:machine-learning's part_of edge exists and was migrated in PR #50)",
+      "Cross-listing second memberships for formal-sciences nodes (computability-theory, information-theory, game-theory CS-side memberships are session task 3, a separate change)",
+      "Other continents' nodes"
+    ]
+  },
+  "seed_entities": [
+    {
+      "label": "Computer Science",
+      "expected_node_id": "field:computer-science",
+      "expected_type": "field",
+      "notes": "Parent anchor for the computing-wing subfields."
+    },
+    {
+      "label": "Library and Information Science",
+      "expected_node_id": "field:library-and-information-science",
+      "expected_type": "field",
+      "notes": "Parent anchor for the LIS-wing subfields; itself needs the domain anchor edge."
+    },
+    {
+      "label": "Computer and Information Sciences",
+      "expected_node_id": "domain:computer-and-information-sciences",
+      "expected_type": "domain",
+      "notes": "Domain anchor."
+    }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "loc",
+      "purpose": [
+        "source_resolution",
+        "metadata"
+      ],
+      "requires_secret": false,
+      "notes": "LCC outline PDFs and id.loc.gov authority records for live classification grounding at QC."
+    },
+    {
+      "provider": "other",
+      "purpose": [
+        "source_resolution",
+        "metadata"
+      ],
+      "requires_secret": false,
+      "notes": "udcsummary.info, msc2020.org, dl.acm.org (ACM CCS 2012; Wayback fallback when bot-blocked, access path recorded), arrs.si FORD mirror — keyless public reference endpoints only."
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "provider": "namuwiki",
+      "reason": "NamuWiki is external-link-only and must never be used as evidence or a source, nor have its content cached."
+    },
+    {
+      "provider": "cloud_llm_api",
+      "reason": "No cloud LLM API calls are permitted in repo tooling, build, validation, or runtime."
+    },
+    {
+      "provider": "scraped_article_body",
+      "reason": "Scraping or crawling third-party article bodies is forbidden; only open, license-compatible data is allowed."
+    }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": [
+      "low",
+      "medium",
+      "historical"
+    ],
+    "requires_strict_review_for": [
+      "living_person",
+      "current_affiliation",
+      "controversial_claim"
+    ]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/cis-part-of-edges-v1"
+  },
+  "notes": [
+    "Committed proposal artifacts live under foundry/proposals/cis-part-of-edges-v1/ (current convention; the dist/ path above is the legacy generated-output slot).",
+    "Generation and QC run in separate contexts (ADR 0007); promotion follows edge promotion policy v1 — structural edges auto-promote to reviewed only with QC-verified live classification grounding, ambiguous=false, and both endpoints reviewed.",
+    "Edge status is capped at min(endpoint statuses): edges onto the 5 proposed CS nodes stop at proposed regardless of grounding.",
+    "Evidence source IDs: udc-summary, lcc-outline, msc2020, oecd-ford are registered; ACM CCS 2012 enters data/sources.json as source:acm-ccs in the promotion PR (license verified live 2026-06-11: 'The full CCS classification tree is freely available for educational and research purposes', acm.org/publications/class-2012 via Wayback)."
+  ]
+}
