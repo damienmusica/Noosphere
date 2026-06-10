@@ -873,7 +873,9 @@
       "status": "generated",
       "label_en": "Decision Theory (philosophical)",
       "academic_status": "established",
-      "external_ids": {},
+      "external_ids": {
+        "wikidata": "Q177571"
+      },
       "source_hint": "Wikidata Q1363477; Theory and Decision journal; LCC QA279.4",
       "rationale": "Normative theory of rational choice under uncertainty; treated as a philosophical subfield (linked to ethics and epistemology) as well as an economics/mathematics area.",
       "uncertainty": "QID unverified; domain placement is contested — it lives equally in economics, statistics, and philosophy; the 'philosophical' qualifier is used to flag the normative/conceptual angle.",
@@ -919,7 +921,9 @@
       "status": "generated",
       "label_en": "Western Esotericism (philosophy of)",
       "academic_status": "non_academic",
-      "external_ids": {},
+      "external_ids": {
+        "wikidata": "Q7988481"
+      },
       "source_hint": "Wikidata Q213583 (esotericism); Aries journal; LCC BF1999–BF2055 (occult sciences); UDC 135",
       "rationale": "Theosophy, Hermeticism, Rosicrucianism, and related traditions are classified under UDC 135 and LCC BF-BL; legitimate as a library classification node tagged non_academic — they are studied academically but are not academic disciplines themselves.",
       "uncertainty": "QID points to esotericism broadly; 'theosophy' specifically is Q2095517 (unverified). Placement as 'philosophy of esotericism' rather than 'esotericism' is a framing choice; academic_status non_academic is deliberate.",
@@ -1013,6 +1017,7 @@
     "Natural philosophy and scholasticism are tagged 'historical' — they no longer exist as live research programs, but are present because UDC class 1 and LCC B–BJ retain classification entries for them.",
     "Esotericism-and-theosophy is tagged 'non_academic' — it appears in library classifications (UDC 135, LCC BF1999+) and is studied academically (Aries journal, Wouter Hanegraaff's work at Amsterdam), but the traditions themselves make no academic claims.",
     "v1.1 revision 2026-06-10: 3 QC-ordered drops (philosophy-of-mind-consciousness, contemporary-philosophy, german-idealism), 1 QID correction (japanese-philosophy: Q15057 removed as it identifies Japan the country not the philosophical tradition), gap-fill additions per QC coverage sweep (axiology, jewish-philosophy, philosophy-of-race, metaphilosophy, hermeneutics, renaissance-philosophy, comparative-philosophy, ethics-of-ai added; philosophy-of-culture rejected as ungroundable at this granularity).",
-    "QID grounding pass 2026-06-10: all external_ids.wikidata values adjudicated against the local Wikidata resolver source pack (dist/foundry/source-packs/philosophy-skeleton-v1). Resolver-verified QIDs supersede per-item \"QID unverified\" caveats; 6 nodes carry no QID pending manual follow-up. Full table in grounding-report.md."
+    "QID grounding pass 2026-06-10: all external_ids.wikidata values adjudicated against the local Wikidata resolver source pack (dist/foundry/source-packs/philosophy-skeleton-v1). Resolver-verified QIDs supersede per-item \"QID unverified\" caveats; 6 nodes carry no QID pending manual follow-up. Full table in grounding-report.md.",
+    "Resolver v3 follow-up 2026-06-10: decision-theory -> Q177571 and esotericism-and-theosophy -> Q7988481 resolved unambiguously after query sanitization (PR #22); Q7988481 is the academic-study item, the right grounding for a subfield node. philosophy-of-perception Q3300457 confirmed correct via enwiki sitelink (English description vandalized upstream on Wikidata)."
   ]
 }

@@ -1201,5 +1201,35 @@
     "academic_status": "emerging",
     "created_at": "2026-06-10",
     "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:decision-theory",
+    "type": "subfield",
+    "domain": "humanities",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q177571"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:esotericism-and-theosophy",
+    "type": "subfield",
+    "domain": "humanities",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7988481"
+    },
+    "academic_status": "non_academic",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
   }
 ]
