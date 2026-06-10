@@ -341,3 +341,11 @@ non-coverage, never silently dropped.
   applied-statistics; real-analysis dropped while complex-analysis kept (living research identity);
   representation-theory not added (fails criterion (a)) — first-in-line v2 candidate with
   graph-theory.
+- 2026-06-10 part_of edges (first structural edge batch): the §12 flat rule governs node levels,
+  not edge depth — part_of chains may run deeper than two hops. The ASL pillar subfields take
+  `subfield:mathematical-logic` as their part_of parent (MSC 03C/D/E/F are subsections of 03;
+  library shelving that scatters their books is not a hierarchy claim); statistics-cluster
+  subfields (bayesian/mathematical/computational statistics, time-series) take `field:statistics`
+  (MSC 62 subsections + standalone communities); cybernetics takes `field:systems-science`
+  (UDC 007 + LCC Q300-390); history-of-mathematics stays under mathematics (MSC 01 + LCC QA21-27
+  unanimous — a boundary concern does not survive source agreement).
