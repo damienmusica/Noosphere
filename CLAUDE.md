@@ -60,6 +60,14 @@ Do **not**: rewrite the whole project at once; add major dependencies without ju
 introduce a database, auth, admin, scraping, payments, or ads; add secrets; or remove policies
 to make implementation easier.
 
+## Working mode (2026-06-10+)
+
+- Single-tool operation via Claude Code. Strategy/decisions upstream lives in
+  the Obsidian vault folder `Noosphere/` (index.md decision log, roadmap.md).
+  Read those at session start; do not reconstruct state from memory.
+- Generation and QC must run in separate sessions (ADR 0007 contract).
+- CPO gate (proposed → reviewed) is a human decision.
+
 ## Stack and dependencies
 
 - TypeScript + Zod for validation; JSON data files first. Keep dependencies minimal.
