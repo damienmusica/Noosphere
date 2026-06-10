@@ -75,5 +75,38 @@
     "share_alike_required": false,
     "url": "https://openlibrary.org/works/OL17047555W",
     "last_checked_at": "2026-06-10"
+  },
+  {
+    "id": "source:udc-summary",
+    "name": "UDC Summary (Universal Decimal Classification, UDC Consortium)",
+    "source_type": "reference",
+    "license": "CC BY-SA 3.0",
+    "commercial_use": true,
+    "attribution_required": true,
+    "share_alike_required": true,
+    "url": "https://udcsummary.info/",
+    "last_checked_at": "2026-06-10"
+  },
+  {
+    "id": "source:lcc-outline",
+    "name": "Library of Congress Classification Outline",
+    "source_type": "reference",
+    "license": "Public domain (U.S. government work)",
+    "commercial_use": true,
+    "attribution_required": false,
+    "share_alike_required": false,
+    "url": "https://www.loc.gov/aba/cataloging/classification/lcco/",
+    "last_checked_at": "2026-06-10"
+  },
+  {
+    "id": "source:msc2020",
+    "name": "Mathematics Subject Classification 2020 (AMS / zbMATH)",
+    "source_type": "reference",
+    "license": "CC BY-NC-SA 4.0",
+    "commercial_use": false,
+    "attribution_required": true,
+    "share_alike_required": true,
+    "url": "https://msc2020.org/",
+    "last_checked_at": "2026-06-10"
   }
 ]
