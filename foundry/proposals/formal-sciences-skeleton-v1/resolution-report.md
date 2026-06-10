@@ -370,6 +370,50 @@ Contested: primary home statistics vs computer science/machine learning.
 - Edge `cybernetics-part-of-systems-science`: stays proposed (endpoint cap; its own grounding has
   been complete since skeleton-part-of-edges-v1).
 
+#### Vitality resolution append (2026-06-11, session #6) — RESOLVED (consensus, established)
+
+The parked vitality contest (historical vs established `academic_status`) was resolved under the
+v1.1/clause-6 research path. Collection: 1 Sonnet research subagent (claude-sonnet-4-6, separated
+context), neutral framing, live-fetch mandate + `[UNFETCHED]` self-flagging. Verdict: Claude
+Fable 5 (orchestrator), 2026-06-11, after batch URL pre-verification.
+
+- **URL verification:** 17 sources cited; 12 fetched-claimed → 11 verified live by the
+  orchestrator + 1 (Emerald/Kybernetes) bot-blocked to curl but confirmed via Wayback snapshot
+  (2025-07-15) **and** Crossref publication data; 5 honestly self-flagged `[UNFETCHED]` (WOSC 504,
+  UK Cybernetics Society 403, T&F journal 403, CTU page, MDPI 403) — excluded from the tally.
+  **0 dead/fabricated URLs.** Load-bearing claims content-checked: ASC Conference 2026
+  ("Conversational Confluences", Aug 3–7) verified via Wayback snapshot 2026-05-10 of
+  asc-cybernetics.org; Kybernetes actively publishing (Crossref: 37 works dated 2026, latest
+  2026-06-09); IEEE Transactions on Cybernetics (Crossref: 487 works dated 2026); Biological
+  Cybernetics (Crossref e-ISSN 1432-0770: latest 2026-06-09); NTNU Cybernetics and Robotics
+  degree programs live (<https://www.ntnu.edu/itk/studies>); ANU School of Cybernetics live
+  (<https://cybernetics.anu.edu.au/>); EoM "specialized applied branches of cybernetics have
+  arisen and continue to be developed" verified in page text
+  (<https://encyclopediaofmath.org/wiki/Cybernetics>).
+- **Stance tally (clause 6):** *established* — all four evidence axes: societies (ASC 2026
+  conference + monthly study group; IEEE SMC retains cybernetics in name, charter, and annual
+  conference <https://www.ieeesmc.org>; WOSC congress held 2024), dedicated journals (3 verified
+  actively publishing in 2026), university programs (NTNU department; ANU school founded 2021),
+  encyclopedic present-tense descriptions (EoM; Britannica
+  <https://www.britannica.com/science/cybernetics>; EBSCO "has continued to develop"
+  <https://www.ebsco.com/research-starters/engineering/cybernetics>). *historical* — **zero
+  gate-grade sources file the field as historical.** The University of Reading 2015 closure
+  (<https://www.getreading.co.uk/news/reading-berkshire-news/university-readings-school-systems-engineering-9701535>)
+  is a single-institution restructuring event, not a status filing; the recorded dissolution
+  history (1960s–70s fragmentation into control theory/systems science/CS) is acknowledged by
+  Wikipedia, which itself describes renewed interest from the 1990s onward
+  (<https://en.wikipedia.org/wiki/Cybernetics>).
+- **Verdict: consensus** (operationalization ruling 3 — no competitor filing by any gate-grade
+  source; the same pattern as computational-statistics, where the feared competing position drew
+  zero support). `academic_status` confirmed **established**; flag flipped → node `reviewed` +
+  indexable. Nuance permanently recorded, not tagged: the field's modern footprint is partly
+  transformed (IEEE TC content is de facto computational/AI-flavored; ANU's program is a
+  sociotechnical reinterpretation) — recorded here for future re-audit, but no source elevates
+  this into a historical-status claim, so no `disputed` tag is warranted.
+- Edge `cybernetics-part-of-systems-science` promoted to `reviewed` (endpoint cap lifted;
+  grounding complete since skeleton-part-of-edges-v1; the edge's own claim was never contested —
+  ruling 4).
+
 ---
 
 ## Dashboard
