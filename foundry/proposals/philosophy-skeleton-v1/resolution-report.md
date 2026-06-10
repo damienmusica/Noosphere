@@ -238,6 +238,8 @@
 
 **Policy escalation:** whether PhilPapers category grounding should become promotion-grade for QID-less nodes (a candidate "promotion policy v1.2" clause) is a CPO policy decision — flagged, not assumed.
 
+**Resolution (2026-06-10, session #3):** promotion policy v1.2 ratified by the CPO (vault decision log (12)): a live-verified non-Wikidata scholarly identifier (verification path and snapshot URLs permanently recorded, as above) + QC ambiguous=false promotes to `proposed`; `reviewed` continues to require resolver-verified Wikidata-grade grounding until the alternative identifier system's precision is measured. Both nodes above were promoted to `/data` as `proposed` under v1.2 the same day.
+
 ## QC overrides and rejections (orchestrator)
 
 1. **Source rejected:** `philopedia.org` (cited twice by subagents) — unestablished provenance; all verdicts relying on it were re-grounded on SEP/Chalmers instead.

@@ -1261,5 +1261,35 @@
     "academic_status": "established",
     "created_at": "2026-06-10",
     "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:philosophy-of-race",
+    "type": "subfield",
+    "domain": "humanities",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "philpapers": "philosophy-of-race"
+    },
+    "academic_status": "emerging",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
+  },
+  {
+    "id": "subfield:philosophy-of-cognitive-science",
+    "type": "subfield",
+    "domain": "humanities",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "philpapers": "philosophy-of-cognitive-science"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-10",
+    "updated_at": "2026-06-10"
   }
 ]
