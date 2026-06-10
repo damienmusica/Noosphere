@@ -1,0 +1,654 @@
+{
+  "version": 1,
+  "batch_id": "batch:formal-sciences-skeleton-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-10"
+  },
+  "nodes": [
+    {
+      "id": "subfield:mathematical-logic",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Mathematical Logic",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q1260632"
+      },
+      "source_hint": "Wikidata Q1260632; MSC 2020 section 03; LCC QA9; UDC 510.6",
+      "rationale": "MSC 2020 grants mathematical logic its own top-level section (03); it has independent departments and degree programs (e.g., Berkeley Group in Logic and the Methodology of Science) and is listed as a peer field alongside mathematics in major classification systems.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Some universities subsume mathematical logic under mathematics rather than treating it as a peer field; field vs. subfield-of-mathematics placement is contested.",
+      "ambiguous": true,
+      "note": "QC revision 2026-06-10: demoted from field (level 1) to subfield (level 2). Mathematical logic is housed within mathematics departments; MSC top-level sections are divisions within mathematics, not institutional peers of it. Its sub-area nodes (set-theory, model-theory, proof-theory, computability-theory) are retained as peer subfields under the flat two-level skeleton (same pattern as metaphysics/ontology in the philosophy continent)."
+    },
+    {
+      "id": "subfield:algebra",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Algebra",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q3968"
+      },
+      "source_hint": "Wikidata Q3968; MSC 2020 sections 08, 12, 13, 16, 17, 20; LCC QA150–QA272; UDC 512",
+      "rationale": "One of the four canonical branches of mathematics (alongside analysis, geometry, and number theory); present as a named department-level area in every university mathematics program.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. 'Algebra' is extremely broad — MSC 2020 splits it across at least eight sections; whether this node represents elementary, abstract, or all algebraic sub-areas must be clarified by QC.",
+      "ambiguous": false,
+      "note": "QC revision 2026-06-10: subfield:abstract-algebra merged into this node — at department level the two labels name the same research area; this node covers the MSC 08/12/13/15/16/17/20 cluster (linear algebra excluded: exists as its own /data node)."
+    },
+    {
+      "id": "subfield:number-theory",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Number Theory",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q12479"
+      },
+      "source_hint": "Wikidata Q12479; MSC 2020 section 11; LCC QA241–QA247; UDC 511",
+      "rationale": "Study of integers and their properties; one of the oldest and most active branches of mathematics; MSC 2020 gives it section 11; standard named area in all mathematics departments.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. No known ambiguity in classification — well-established standalone subfield.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:geometry",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Geometry",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q8087"
+      },
+      "source_hint": "Wikidata Q8087; MSC 2020 sections 51, 52, 53; LCC QA440–QA699; UDC 514",
+      "rationale": "Study of shape, size, and properties of figures and spaces; one of the four canonical branches of mathematics; MSC 2020 sections 51–53 cover Euclidean, convex, and differential geometry.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. 'Geometry' is broad and contains several distinguishable sub-areas (Euclidean, differential, algebraic, convex) — a lumper/splitter tension exists; separate nodes for differential geometry and algebraic geometry are proposed below.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:differential-geometry",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Differential Geometry",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q214454"
+      },
+      "source_hint": "Wikidata Q214454; MSC 2020 section 53; LCC QA641–QA670; UDC 514.7",
+      "rationale": "Study of smooth manifolds, Riemannian geometry, curvature, and connections; a large research area with deep ties to physics (general relativity); standard graduate course in all research departments.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Overlap with topology (especially manifold theory, MSC 57) and with mathematical physics complicates scope.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:algebraic-geometry",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Algebraic Geometry",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q180969"
+      },
+      "source_hint": "Wikidata Q180969; MSC 2020 section 14; LCC QA564–QA581; UDC 512.7",
+      "rationale": "Study of solution sets of polynomial equations and their geometric properties; MSC 2020 section 14 is among the largest sections; major modern research area intersecting algebra, number theory, and topology.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Sits at the boundary between geometry and algebra; whether it belongs more naturally under a geometry or algebra umbrella is a design choice — both are plausible.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:topology",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Topology",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q42989"
+      },
+      "source_hint": "Wikidata Q42989; MSC 2020 sections 54 (general), 55 (algebraic), 57 (manifolds); LCC QA611–QA614; UDC 515.1",
+      "rationale": "Study of properties preserved under continuous deformation; MSC 2020 gives it multiple top-level sections (54, 55, 57); standard required area in mathematics graduate programs.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Algebraic topology (MSC 55) is sometimes listed as a distinct subfield; QC should decide whether to split or keep unified.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:algebraic-topology",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Algebraic Topology",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q181175"
+      },
+      "source_hint": "Wikidata Q181175; MSC 2020 section 55; LCC QA612; UDC 515.14",
+      "rationale": "Studies topological spaces using algebraic invariants (homotopy groups, homology, cohomology); MSC 2020 section 55 is a major independent section; has its own graduate courses and research programs.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Overlap with topology (parent) and category theory (tools) is substantial; some curricula do not split from general topology at subfield level.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:mathematical-analysis",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Mathematical Analysis",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q7754"
+      },
+      "source_hint": "Wikidata Q7754; MSC 2020 sections 26, 28, 30, 40, 41, 42, 46; LCC QA299–QA433; UDC 517",
+      "rationale": "Rigorous study of limits, continuity, differentiation, and integration; the umbrella covering real analysis, complex analysis, and functional analysis; one of the four canonical branches of mathematics.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. 'Analysis' is a very broad umbrella — several sub-areas (real analysis, complex analysis, functional analysis) are large enough to be listed independently; the choice to propose one umbrella node plus sub-nodes creates potential duplication.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:complex-analysis",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Complex Analysis",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q193756"
+      },
+      "source_hint": "Wikidata Q193756; MSC 2020 section 30; LCC QA331–QA340; UDC 517.53",
+      "rationale": "Study of functions of complex variables, holomorphic functions, contour integration, and conformal mappings; MSC 2020 section 30 is a large standalone section; standard required graduate course.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Sits under mathematical-analysis umbrella; whether it is a distinct subfield or a sub-subfield depends on departmental structure.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:functional-analysis",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Functional Analysis",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q838495"
+      },
+      "source_hint": "Wikidata Q838495; MSC 2020 section 46; LCC QA320–QA329; UDC 517.98",
+      "rationale": "Study of infinite-dimensional vector spaces, Banach and Hilbert spaces, operators, and spectral theory; MSC 2020 section 46 is large; foundational to modern analysis and mathematical physics.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Overlaps with operator theory (MSC 47); together they constitute a major portion of modern analysis.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:harmonic-analysis",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Harmonic Analysis",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q217209"
+      },
+      "source_hint": "Wikidata Q217209; MSC 2020 sections 42, 43; LCC QA403–QA404; UDC 517.52",
+      "rationale": "Study of Fourier series, Fourier transforms, and generalized harmonic analysis on groups; MSC 2020 sections 42–43; active research area with applications in signal processing and PDE.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Sometimes treated as a subspecialty within analysis rather than a peer subfield; MSC 2020 gives it two separate sections which supports its inclusion.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:differential-equations",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Differential Equations",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q11214"
+      },
+      "source_hint": "Wikidata Q11214; MSC 2020 sections 34 (ODE), 35 (PDE); LCC QA370–QA380; UDC 517.9",
+      "rationale": "Study of equations involving derivatives; MSC 2020 gives ODEs (34) and PDEs (35) separate top-level sections; combined, differential equations constitute one of the largest research areas in mathematics.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. ODE and PDE are large enough that some departments list them as separate research areas; the single umbrella node risks under-differentiating.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:partial-differential-equations",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Partial Differential Equations",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q271977"
+      },
+      "source_hint": "Wikidata Q271977; MSC 2020 section 35; LCC QA374–QA377; UDC 517.95",
+      "rationale": "MSC 2020 section 35 is one of the largest in mathematics; PDEs are central to mathematical physics, fluid dynamics, and modern analysis; every research department has PDE specialists.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Creating both subfield:differential-equations and this node produces an overlap; QC must decide whether to keep both (umbrella + named sub-area) or drop one.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:dynamical-systems",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Dynamical Systems",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q217519"
+      },
+      "source_hint": "Wikidata Q217519; MSC 2020 section 37; LCC QA614.8–QA614.9; UDC 517.938",
+      "rationale": "Study of systems evolving over time under fixed rules; MSC 2020 section 37 covers dynamical systems and ergodic theory; large research area with connections to physics, engineering, and biology.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Ergodic theory (an important sub-component) is sometimes listed separately; boundary with differential equations and control theory is blurry.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:combinatorics",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Combinatorics",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q7184"
+      },
+      "source_hint": "Wikidata Q7184; MSC 2020 section 05; LCC QA164–QA167; UDC 519.1",
+      "rationale": "Study of counting, arrangements, and discrete structures; MSC 2020 section 05 is a major top-level section; active research area crossing into graph theory, coding theory, and combinatorial optimization.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified — Q7184 may point to 'social science' broadly; the QID needs resolver verification. Boundary with discrete mathematics and graph theory is fuzzy.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:set-theory",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Set Theory",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q12482"
+      },
+      "source_hint": "Wikidata Q12482; MSC 2020 section 03E; LCC QA248; UDC 510.223",
+      "rationale": "Study of sets and transfinite arithmetic, including forcing and large cardinals; foundational to all of mathematics; MSC 03E is a major sub-section of Mathematical Logic.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. MSC files set theory under section 03 (Mathematical Logic); whether it belongs as a subfield of mathematics directly or under mathematical-logic is a structural design choice — flagged ambiguous.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:model-theory",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Model Theory",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q33296"
+      },
+      "source_hint": "Wikidata Q33296; MSC 2020 section 03C; LCC QA9.7; UDC 510.626",
+      "rationale": "Branch of mathematical logic studying the relationships between formal theories and their mathematical models; MSC 03C is a large section; active research area with connections to algebra and geometry.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Some list this under mathematical logic rather than as a peer subfield of mathematics; level placement depends on how field:mathematical-logic is resolved.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:proof-theory",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Proof Theory",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q852278"
+      },
+      "source_hint": "Wikidata Q852278; MSC 2020 section 03F; LCC QA9.54; UDC 510.6",
+      "rationale": "Branch of mathematical logic studying formal proof systems, proof complexity, and consistency of axiomatic systems; MSC 03F is a recognized section; present in all mathematical logic research programs.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Best classified under field:mathematical-logic; whether it warrants a peer-subfield node vs. a sub-area under model theory or set theory is contested.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:computability-theory",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Computability Theory",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q607443"
+      },
+      "source_hint": "Wikidata Q607443; MSC 2020 section 03D; LCC QA9.59; UDC 510.5",
+      "rationale": "Study of what problems can be solved algorithmically (Turing machines, recursive functions, degrees of unsolvability); MSC 03D; classified under mathematical logic by MSC and LCC; distinct from computational complexity which MSC files under 68.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. The CS/mathematics boundary is contested here — computability theory appears in both mathematics (MSC 03D) and theoretical CS programs; flagged ambiguous because of the continent boundary.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:category-theory",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Category Theory",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q217413"
+      },
+      "source_hint": "Wikidata Q217413; MSC 2020 section 18; LCC QA169; UDC 512.58",
+      "rationale": "Study of mathematical structures and relationships between them via categories, functors, and natural transformations; MSC 2020 section 18 is a peer top-level section; foundational to modern algebra and topology.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Sometimes viewed as a unifying language for mathematics rather than a standalone subfield; whether it is a peer subfield or a methodological framework is philosophically contested.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:numerical-analysis",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Numerical Analysis",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q11473"
+      },
+      "source_hint": "Wikidata Q11473; MSC 2020 section 65; LCC QA297–QA299; UDC 519.6",
+      "rationale": "Study of algorithms for numerical computation including error analysis, numerical linear algebra, and approximation; MSC 2020 section 65; present as a named research area and degree track in nearly every mathematics department.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Sits at the boundary between mathematics, computer science, and engineering; some classify it under applied mathematics rather than as a peer subfield.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:mathematical-physics",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Mathematical Physics",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q181916"
+      },
+      "source_hint": "Wikidata Q181916; MSC 2020 section 81-82 (quantum, statistical mechanics), 83 (relativity); LCC QA401–QA431; UDC 530.1",
+      "rationale": "Application of rigorous mathematical methods to physical problems including quantum mechanics, statistical mechanics, and relativity; MSC 2020 includes several applied sections (81–83); present as a named research area in both mathematics and physics departments.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Domain placement is contested — mathematical physics sits at the formal_sciences / natural_sciences boundary; flagged ambiguous for this reason.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:applied-mathematics",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Applied Mathematics",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q126818"
+      },
+      "source_hint": "Wikidata Q126818; MSC 2020 applied sections 70, 74, 76, 90, 92, 93; LCC QA1–QA3 (general); UDC 519",
+      "rationale": "The application of mathematical methods to problems in science, engineering, and industry; many universities have separate applied mathematics departments or divisions; an umbrella designation in LCC QA.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. 'Applied mathematics' is extremely broad and many of its sub-areas (numerical analysis, optimization, mathematical physics, operations research) are proposed as separate nodes; the umbrella node may create duplication.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:operations-research",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Operations Research",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q1128437"
+      },
+      "source_hint": "Wikidata Q1128437; MSC 2020 section 90; LCC T57–T57.97; UDC 519.8",
+      "rationale": "Applies mathematical methods to operational decision-making — linear programming, scheduling, network flows, game theory; MSC 2020 section 90; has its own departments and professional societies.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Often housed in engineering or business schools rather than mathematics departments; domain placement (formal_sciences vs. engineering) is contested.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:game-theory",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Game Theory",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q9174"
+      },
+      "source_hint": "Wikidata Q9174; MSC 2020 section 91 (Game theory, economics, social and behavioral sciences); LCC QA269; UDC 519.83",
+      "rationale": "Mathematical study of strategic interaction; MSC 2020 section 91; classified under mathematics by LCC and MSC; active research area crossing mathematics, economics, and computer science.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Cross-listed across formal_sciences, social_sciences (economics), and computer_and_information_sciences; continent assignment to formal_sciences is defensible via MSC/LCC placement but contested.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:information-theory",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Information Theory",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q131149"
+      },
+      "source_hint": "Wikidata Q131149; MSC 2020 section 94 (Information and communication, circuits); LCC QA360–QA370; UDC 519.72",
+      "rationale": "Mathematical study of quantification, storage, and communication of information; Shannon entropy, channel capacity, coding theory; MSC 2020 section 94 is a formal-sciences classification.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Sits at the boundary with computer science (coding theory, communication theory) and engineering; MSC 94 places it in mathematics but CS departments also claim it — flagged ambiguous.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:financial-mathematics",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Financial Mathematics",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q12503"
+      },
+      "source_hint": "Wikidata Q12503; MSC 2020 section 91G; LCC HG1–HG9999; UDC 336",
+      "rationale": "Application of mathematical methods (stochastic calculus, PDE, optimization) to financial modeling and derivative pricing; many universities have dedicated mathematics-of-finance degree programs.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified — Q12503 may point to 'finance' broadly. Domain assignment to formal_sciences is justified by MSC 91G but the primary institutional home is often economics or business schools.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:bayesian-statistics",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Bayesian Statistics",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q620253"
+      },
+      "source_hint": "Wikidata Q620253; MSC 2020 section 62F15; LCC QA279.5; Bayesian Analysis journal",
+      "rationale": "Statistical paradigm treating probability as a degree of belief and using Bayes' theorem for inference; has its own international society (ISBA), journal, and substantial research program separate from frequentist inference.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Could be treated as a methodological perspective within statistical inference rather than a peer subfield; institutional independence (dedicated society, journal) supports peer status.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:time-series-analysis",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Time Series Analysis",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q2495616"
+      },
+      "source_hint": "Wikidata Q2495616; MSC 2020 section 62M10; LCC QA280; UDC 519.246",
+      "rationale": "Statistical analysis of sequences of data points indexed over time; ARIMA models, spectral analysis, forecasting; MSC 62M10; a standard course and research area in statistics departments.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. May be too granular for the skeleton — commonly treated as a topic within statistical methodology.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:computational-statistics",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Computational Statistics",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q1154576"
+      },
+      "source_hint": "Wikidata Q1154576; MSC 2020 section 62-08; LCC QA276.4; Statistics and Computing journal",
+      "rationale": "Development and analysis of statistical algorithms and their computational implementation — MCMC, bootstrap, EM algorithm; MSC 62-08; recognized subfield with dedicated journals.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Overlap with machine learning is substantial — the boundary is actively contested; flagged ambiguous due to continent boundary risk.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:mathematical-statistics",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Mathematical Statistics",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q2282891"
+      },
+      "source_hint": "Wikidata Q2282891; MSC 2020 section 62 (preamble); LCC QA276; UDC 519.2; Annals of Statistics journal",
+      "rationale": "Rigorous theoretical foundations of statistics including decision theory, asymptotic theory, and statistical efficiency; distinct from applied statistics in emphasis on mathematical proof; present in every statistics department.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Relationship to subfield:statistical-inference and subfield:statistics (the field) is close; some curricula use 'mathematical statistics' and 'statistical inference' interchangeably.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:history-of-mathematics",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "History of Mathematics",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q849022"
+      },
+      "source_hint": "Wikidata Q849022; MSC 2020 section 01 (History and biography); LCC QA21–QA27; UDC 510(09)",
+      "rationale": "Study of the historical development of mathematical concepts, proofs, and institutions; MSC 2020 section 01 is a peer top-level section; present in mathematics departments and mathematics education programs.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. History of mathematics sits at the boundary between mathematics, history, and philosophy; academic_status established because MSC 01 gives it peer section status.",
+      "ambiguous": false
+    },
+    {
+      "id": "subfield:mathematics-education",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Mathematics Education",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q1095477"
+      },
+      "source_hint": "Wikidata Q1095477; MSC 2020 section 97; LCC QA11–QA20; UDC 51:37",
+      "rationale": "Study of the teaching and learning of mathematics; MSC 2020 section 97 is a peer top-level section; many departments of mathematics have education research tracks and joint programs with colleges of education.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Primarily housed in education faculties at most institutions; domain placement in formal_sciences vs. social_sciences/education is contested.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:control-theory",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Control Theory",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q131246"
+      },
+      "source_hint": "Wikidata Q131246; MSC 2020 section 93; LCC QA402.3; UDC 517.977",
+      "rationale": "Mathematical study of how to influence dynamical systems toward desired outcomes; MSC 2020 section 93; present in applied mathematics and engineering departments with strong mathematical content.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Primarily housed in engineering programs; domain assignment to formal_sciences via MSC 93 is defensible but the engineering continent is a competing classification.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:mathematical-biology",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Mathematical Biology",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q6787782"
+      },
+      "source_hint": "Wikidata Q6787782; MSC 2020 section 92 (Biology and other natural sciences); LCC QH323.5; Journal of Mathematical Biology",
+      "rationale": "Application of mathematical modeling (ODE, PDE, stochastic processes) to biological systems — population dynamics, epidemiology, biochemical kinetics; MSC 2020 section 92; has its own departments and journals.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Domain placement is contested — mathematical biology is equally a life_sciences subfield; inclusion in formal_sciences is justified by the mathematical-modeling emphasis and MSC 92 classification.",
+      "ambiguous": true
+    },
+    {
+      "id": "field:systems-science",
+      "type": "field",
+      "domain": "formal_sciences",
+      "level": 1,
+      "status": "generated",
+      "label_en": "Systems Science",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q475023"
+      },
+      "source_hint": "Wikidata Q475023; UDC 007; International Society for the Systems Sciences (ISSS); Systems Research and Behavioral Science journal",
+      "rationale": "Systems science is consistently listed as a branch of the formal sciences alongside mathematics and statistics; it has a dedicated international society (ISSS), journals, and degree programs, and the batch manifest scope explicitly includes systems-science areas.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. Department-level presence is thinner than mathematics/statistics — many universities cover it inside engineering or management faculties rather than as a standalone unit.",
+      "ambiguous": false,
+      "note": "Added by QC gap sweep 2026-06-10 (Claude Fable 5): the batch manifest scope includes systems-science areas, but the generator omitted the field entirely."
+    },
+    {
+      "id": "subfield:cybernetics",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Cybernetics",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q123637"
+      },
+      "source_hint": "Wikidata Q123637; UDC 007 (communication and control theory); American Society for Cybernetics; Kybernetes journal",
+      "rationale": "Classical formal-science area studying communication and control in animals and machines; retained in UDC and active through dedicated societies and journals; the historical root of control theory and parts of systems science.",
+      "uncertainty": "Wikidata QID is a training-knowledge hint, unverified. The unified cybernetics program has substantially dissolved into control theory, systems science, and computer science — whether its academic_status should be historical rather than established is contestable.",
+      "ambiguous": true,
+      "note": "Added by QC gap sweep 2026-06-10 (Claude Fable 5), under the manifest systems-science scope."
+    },
+    {
+      "id": "subfield:applied-statistics",
+      "type": "subfield",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Applied Statistics",
+      "academic_status": "established",
+      "external_ids": {},
+      "source_hint": "MSC 2020 section 62P (applications of statistics); LCC QA276-280; ubiquitous applied-statistics degree tracks and department groups",
+      "rationale": "Umbrella research area for the application-facing side of statistics (regression methods, multivariate methods, experimental design, survival methods); mirrors subfield:applied-mathematics on the statistics side and is a named track in most statistics departments.",
+      "uncertainty": "No confident Wikidata QID from training knowledge — the resolver must establish one or the node honestly stays in the foundry. As an umbrella it absorbs several finer MSC 62 sections dropped from this skeleton (62H/62J/62K/62N/62G); v2 may re-split them.",
+      "ambiguous": false,
+      "note": "Added by QC gap sweep 2026-06-10 (Claude Fable 5) as the absorber for the dropped fine-grained statistics nodes."
+    }
+  ],
+  "edges": [],
+  "notes": [
+    "All Wikidata QIDs are training-knowledge hints only — unverified at write time. The local Wikidata resolver must verify each QID before promotion.",
+    "Reconciled to existing /data nodes (not re-proposed): domain:formal-sciences, field:mathematics, field:statistics, subfield:linear-algebra, subfield:probability-theory, subfield:calculus, subfield:optimization. These existing nodes are listed in the reconciliation section of report.md.",
+    "Boundary decision: field:mathematical-logic is proposed as a level-1 field (not a subfield of mathematics) because MSC 2020 gives it section 03 at the same level as section 11 (number theory), section 51 (geometry), etc. This is flagged ambiguous because some universities treat it as a subdepartment of mathematics.",
+    "Boundary decision: subfield:logic exists in /data under domain:humanities (philosophy). Per generation-order instructions, philosophical logic is NOT re-proposed here. The mathematical logic sub-areas (set theory, model theory, proof theory, computability theory) are proposed as subfields of formal_sciences with cross-domain contamination flagged in uncertainty fields.",
+    "Boundary decision: CS-primary areas excluded — computational complexity theory, algorithm design, programming language theory, and type theory are out of scope (LCC QA75-76; MSC 68 primary). subfield:computability-theory is included at ambiguous:true because MSC files it under 03 (mathematical logic), not 68, and it predates CS as a discipline.",
+    "Boundary decision: subfield:cryptography and subfield:information-theory are included (ambiguous:true) because MSC 94 and LCC QA place them in mathematics, but QC should evaluate whether the CS continent is a stronger institutional home.",
+    "Granularity note: the order required coverage-completeness against MSC 2020 top-level sections. Several proposed nodes (sequences-and-series, special-functions, integral-equations, several-complex-variables, potential-theory, operator-theory, universal-algebra) have lower institutional visibility as standalone department-level areas but are included because MSC 2020 gives them peer top-level section status. QC should consider aggressive pruning of these.",
+    "Statistics subfields: the coverage-standard source (MSC 62) has over 20 sub-sections. The most commonly taught graduate-level areas have been proposed; highly granular areas (62H multivariate, 62M time series, 62N survival, 62J regression, 62K design) are included as individual nodes but flagged ambiguous — QC may prefer collapsing these into an 'applied statistics' umbrella.",
+    "subfield:decision-theory already exists in /data under domain:humanities (philosophy). A mathematics-side decision theory node (under optimization/operations research) could be warranted but risks duplication; this has been deliberately omitted pending QC guidance.",
+    "The two existing concept nodes (concept:random-variable, concept:probability-distribution) are level-3 and out of scope for this skeleton. Their QID grounding targets listed in the batch manifest are noted here for the resolver pass.",
+    "subfield:algebra and subfield:abstract-algebra overlap — QC should decide whether to keep both (elementary/abstract split) or merge. subfield:algebra is proposed as the broader umbrella.",
+    "subfield:applied-mathematics is proposed as a broad umbrella that overlaps with numerical-analysis, operations-research, control-theory, and mathematical-biology. QC should evaluate whether the umbrella node adds value or should be dropped in favor of its component sub-areas.",
+    "QC revision 2026-06-10 (Claude Fable 5, orchestrator — generation/QC contexts separate): 69 generated nodes reviewed; 33 dropped (granularity absorptions, one merge, three cross-continent deferrals), 1 structural demotion (field:mathematical-logic -> subfield:mathematical-logic), 3 QC gap-fill additions (field:systems-science, subfield:cybernetics, subfield:applied-statistics). Full verdict table with per-node reasons in qc-report.md. Dropped IDs: subfield:abstract-algebra, subfield:real-analysis, subfield:graph-theory, subfield:group-theory, subfield:commutative-algebra, subfield:number-theory-analytic, subfield:measure-theory, subfield:cryptography, subfield:stochastic-processes, subfield:statistical-inference, subfield:multivariate-statistics, subfield:nonparametric-statistics, subfield:regression-analysis, subfield:design-of-experiments, subfield:survival-analysis, subfield:biostatistics, subfield:discrete-mathematics, subfield:foundations-of-mathematics, subfield:topology-geometric, subfield:convex-geometry, subfield:fractal-geometry, subfield:calculus-of-variations, subfield:approximation-theory, subfield:special-functions, subfield:econometrics, subfield:potential-theory, subfield:operator-theory, subfield:lattice-theory, subfield:universal-algebra, subfield:ergodic-theory, subfield:integral-equations, subfield:several-complex-variables, subfield:sequences-and-series."
+  ]
+}
