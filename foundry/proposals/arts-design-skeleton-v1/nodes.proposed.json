@@ -1,0 +1,556 @@
+{
+  "version": 1,
+  "batch_id": "batch:arts-design-skeleton-v1",
+  "proposed_by": "claude-sonnet-4-6 (proposal-generator subagent, separate context, session #13d, 2026-06-11)",
+  "proposed_by_structured": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-11"
+  },
+  "nodes": [
+
+    {
+      "id": "field:music",
+      "type": "field",
+      "domain": "arts_and_design",
+      "level": 1,
+      "status": "generated",
+      "label_en": "Music",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q638"
+      },
+      "source_hint": "LCC class M (subclasses M/ML/MT) 'Music' — gate scheme (captured baseline 2026-06-11). UDC 78 'Music' — gate scheme top-level class (captured baseline 2026-06-11). FORD 6.4 component 'music' (captured baseline 2026-06-11). Wikidata Q638 — unverified training-knowledge hint.",
+      "rationale": "Three independent top-level classification headings (LCC class M, UDC 78, FORD 6.4) and pervasive named music departments, conservatories, and degree tracks worldwide satisfy both prongs of the dual criterion at field level.",
+      "uncertainty": "QID hint unverified; the internal divisions (musicology, theory, education) are proposed as peer subfields — edge batch will confirm the part_of structure.",
+      "ambiguous": false,
+      "note": "Parent of subfield:musicology, subfield:music-theory, subfield:ethnomusicology, subfield:music-education (edge batch). Music composition absorbed — see notes section. UDC 78 axis subdivisions (78.01 theory, 78.02 composition, 78.03 history, 781.x theory branches, 782-785 kinds) are subfield or below-skeleton-level material addressed by the proposed subfields."
+    },
+
+    {
+      "id": "field:visual-arts",
+      "type": "field",
+      "domain": "arts_and_design",
+      "level": 1,
+      "status": "generated",
+      "label_en": "Visual Arts",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q36649"
+      },
+      "source_hint": "LCC subclass N 'Visual arts' — gate scheme (captured baseline 2026-06-11). UDC 73 'Plastic arts', UDC 75 'Painting', UDC 76 'Graphic art, printmaking', UDC 77 'Photography' all fall under LCC class N / UDC 7 umbrella (captured baseline 2026-06-11). LCC N61-72 'Theory. Philosophy. Aesthetics of the visual arts' (captured baseline 2026-06-11). Wikidata Q36649 — unverified training-knowledge hint.",
+      "rationale": "LCC subclass N is the overarching visual-arts class containing NB/NC/ND/NE/NK/NX; UDC 73-77 collectively cover the visual-arts disciplines; named degree programmes (BFA/MFA in Visual Arts) and studio-art departments at every major art school satisfy the community criterion.",
+      "uncertainty": "QID hint unverified; visual arts as a field-level umbrella coexists with its subfields (painting, sculpture, etc.) as per the peer-coexistence rule; the edge batch will set part_of chains.",
+      "ambiguous": false,
+      "note": "Umbrella parent for subfield:painting, subfield:sculpture, subfield:drawing, subfield:printmaking, subfield:photography, subfield:art-history (edge batch). LCC NX 'Arts in general' is filed under this field rather than warranting a separate node — it covers arts administration/patronage (NX700-770, scope-excluded) and general topics already addressed at domain level."
+    },
+
+    {
+      "id": "field:design",
+      "type": "field",
+      "domain": "arts_and_design",
+      "level": 1,
+      "status": "generated",
+      "label_en": "Design",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q82604"
+      },
+      "source_hint": "LCC subclass NC 'Drawing. Design. Illustration' and LCC subclass NK 'Decorative arts' — both gate scheme subclasses housing the design disciplines (captured baseline 2026-06-11). UDC 74 'Drawing. Design. Applied arts and crafts' — gate scheme top-level class (captured baseline 2026-06-11). UDC 7.05 'Applications of art (in industry, trade, the home, everyday life)' (captured baseline 2026-06-11). Wikidata Q82604 — unverified training-knowledge hint.",
+      "rationale": "UDC 74 is an independent top-level class devoted to drawing/design/applied arts; LCC NC and NK subclasses together house the design disciplines; Schools/Colleges of Design (Parsons, RCA, RISD, Bauhaus lineage) and accreditation bodies (NASAD) provide named institutional standing at field level.",
+      "uncertainty": "QID hint unverified; 'design' is a broad umbrella; its boundary with fine arts (visual-arts) overlaps at the NC subclass level and is a real-world B-type contest — flagged on the relevant subfields rather than the field node.",
+      "ambiguous": false,
+      "note": "Parent for subfield:graphic-design, subfield:industrial-design, subfield:fashion-design, subfield:interior-design, subfield:decorative-arts, subfield:drawing (edge batch; drawing sits at the NC overlap of visual-arts and design, so dual part_of is likely). LCC TS171 (engineering technology) is a §13 candidate record for industrial-design — not a field-level contest here."
+    },
+
+    {
+      "id": "field:performing-arts",
+      "type": "field",
+      "domain": "arts_and_design",
+      "level": 1,
+      "status": "generated",
+      "label_en": "Performing Arts",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q184485"
+      },
+      "source_hint": "UDC 791 'Cinema. Films', UDC 792 'Theatre. Stagecraft', UDC 793.3 'Art of movement. Dance' — all gate scheme entries under UDC 79 in-scope wing (captured baseline 2026-06-11). FORD 6.4 components 'performing arts' (captured baseline 2026-06-11). Wikidata Q184485 — unverified training-knowledge hint.",
+      "rationale": "UDC 791/792/793.3 provide three major in-scope classification divisions; FORD 6.4 names 'performing arts' as a co-equal FORD component; Schools/Colleges of Performing Arts and named performing-arts departments satisfy the community criterion.",
+      "uncertainty": "QID hint unverified; the LCC primary homes for theatre (PN), dance (GV), and film (PN) are class-P / class-G other-home filings — addressed per the class-G precedent on each subfield node; the field-level umbrella is grounded on UDC 791/792/793.3 alone.",
+      "ambiguous": false,
+      "note": "Parent for subfield:theatre-studies, subfield:dance, subfield:film-studies (edge batch). FORD 5.8 'Media and communication studies' is social-sciences continent (13a) — film studies is in-continent via UDC 791, not FORD 5.8. UDC 793.5–799 and 796–799 (recreation/entertainment/games/sport) are out of scope — deliberate non-coverage, community home is sports science/health."
+    },
+
+    {
+      "id": "field:architecture",
+      "type": "field",
+      "domain": "arts_and_design",
+      "level": 1,
+      "status": "generated",
+      "label_en": "Architecture",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q12271"
+      },
+      "source_hint": "LCC subclass NA 'Architecture' — gate scheme (captured baseline 2026-06-11). UDC 72 'Architecture' — gate scheme top-level class (captured baseline 2026-06-11). FORD 6.4 component 'arts' implicitly covers architecture; FORD 2.1 'Civil engineering' is engineering-side evidence — [UNFETCHED] training-knowledge for the §13 second membership, unverified. Wikidata Q12271 — unverified training-knowledge hint.",
+      "rationale": "LCC subclass NA and UDC 72 both give architecture independent field-level classification standing on the art side; Schools of Architecture are named institutional units at universities worldwide (AIA accreditation track); both prongs of the dual criterion pass on art-side evidence alone.",
+      "uncertainty": "QID hint unverified; the engineering-side second membership (FORD 2.1 / LCC TH / UDC 69) requires separately live-verified evidence for the §13 task — that evidence has NOT been fetched and is not in the captured baseline; the §13 record is a task note only.",
+      "ambiguous": false,
+      "note": "Art-side classification home: LCC NA + UDC 72 (both in captured baseline 2026-06-11). Engineering-side §13 candidate: FORD 2.1 'Civil engineering' and LCC TH and UDC 69 are [UNFETCHED] training-knowledge — the orchestrator's pre-registered §13 task (same batch per boundary assignment table) requires separately live-verified evidence before any engineering-side part_of edge can be created. UDC 72 subdivisions (721 buildings, 725 public buildings, 726 religious, 727 educational, 728 domestic) are below skeleton granularity. NA9000-9428 (Aesthetics of cities, city planning) is the architecture-side LCC anchor for urban-planning — see subfield:urban-planning."
+    },
+
+    {
+      "id": "subfield:musicology",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Musicology",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q171558"
+      },
+      "source_hint": "LCC subclass ML 'Literature on music' — gate scheme full subclass covering music history (ML159-3785), biography (ML385-429), and musical research (ML3797-3799.5) (captured baseline 2026-06-11). UDC 78.03 'Periods and phases in the history of music; musical schools, styles and influences', UDC 781.7-781.8 (theories of national music, music of antiquity) (captured baseline 2026-06-11). FORD 6.4 component 'history of arts' covers historical musicology (captured baseline 2026-06-11). Wikidata Q171558 — unverified training-knowledge hint.",
+      "rationale": "LCC subclass ML is a full independent subclass with a major History and Criticism range (ML159-3785); UDC 78.03 provides a named classification division; musicology departments and degree tracks (AMS society) are named academic units that satisfy the community criterion.",
+      "uncertainty": "QID hint unverified; musicology is humanities-adjacent — in-continent while classification home is class M (pre-registered structural question 4); the relationship to music-theory (separate Society for Music Theory, distinct departments) justifies peer coexistence per the precedent rule.",
+      "ambiguous": false,
+      "note": "Part_of field:music (edge batch). Peers with subfield:music-theory and subfield:ethnomusicology. ML3800-3923 (philosophical/societal aspects, physics and acoustics) is absorbed — below skeleton granularity; the aesthetics subdivision (ML3845-3877) is a filing within ML, not a challenge to subfield:aesthetics (philosophy continent). UDC 78.06 various questions and 78.07 occupations absorbed here."
+    },
+
+    {
+      "id": "subfield:music-theory",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Music Theory",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q207628"
+      },
+      "source_hint": "LCC MT5.5-7 'Music theory' — gate scheme subdivision within MT (captured baseline 2026-06-11). UDC 781.2 'General theory of music', UDC 781.1 'Scientific theories of music. Mathematical, physical, physiological, psychological bases. Musical acoustics', UDC 781.4 'Harmony. Counterpoint. Melody' (captured baseline 2026-06-11). Wikidata Q207628 — unverified training-knowledge hint.",
+      "rationale": "LCC MT5.5-7 and UDC 781.x provide classification-level standing; the Society for Music Theory and Journal of Music Theory are named community units independent of the American Musicological Society, confirming separate community identity under the dual criterion.",
+      "uncertainty": "QID hint unverified; MT5.5-7 is a subdivision within MT rather than its own subclass — weaker classification standing than musicology's full ML subclass; peer coexistence is justified by the distinct SMT community and the separation in LCC/UDC between theory and historical literature.",
+      "ambiguous": false,
+      "note": "Part_of field:music (edge batch). Peers with subfield:musicology. Absorption test pre-registered: not absorbed — independent society (SMT), distinct journals (JMT, Music Theory Spectrum), and separate faculty lines at conservatories confirm distinct community identity. UDC 781.4 harmony/counterpoint/melody subdivisions are below skeleton granularity within this subfield."
+    },
+
+    {
+      "id": "subfield:ethnomusicology",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Ethnomusicology",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q189201"
+      },
+      "source_hint": "LCC ML3544-3776 'Folk, national, and ethnic music' — gate scheme range within ML (captured baseline 2026-06-11). UDC 781.7 'Theories and forms of national music (of various countries or peoples)' (captured baseline 2026-06-11). LCC M1627-1853 'Folk, national and ethnic music' (scores subclass) (captured baseline 2026-06-11). Wikidata Q189201 — unverified training-knowledge hint.",
+      "rationale": "LCC ML3544-3776 is a major named range within the ML subclass; UDC 781.7 provides a named division; the Society for Ethnomusicology (SEM) and Ethnomusicology journal are a named independent society and publication that satisfy the community criterion at subfield level.",
+      "uncertainty": "QID hint unverified; ML3544-3776 is a range within ML rather than its own LCC subclass — peer-coexistence with musicology is justified by the SEM community rather than a separate LCC subclass; boundary with music-theory is clean.",
+      "ambiguous": false,
+      "note": "Part_of field:music (edge batch). Peers with subfield:musicology and subfield:music-theory. UDC 781.8 'Theories and forms of the music of antiquity' is absorbed here (too fine-grained for skeleton level)."
+    },
+
+    {
+      "id": "subfield:music-education",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Music Education",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q1988706"
+      },
+      "source_hint": "LCC subclass MT 'Instruction and study' — gate scheme full subclass; MT918-948 'School music' (captured baseline 2026-06-11). UDC 780.7 'Music teaching aids. Other music accessories' (captured baseline 2026-06-11). Wikidata Q1988706 — unverified training-knowledge hint.",
+      "rationale": "LCC subclass MT is a full independent subclass entirely devoted to music instruction and study; UDC 780.7 provides a classification anchor; NAfME (National Association for Music Education) and ISME are named professional organisations with degree-track presence, following the mathematics-education precedent.",
+      "uncertainty": "QID hint unverified; music education sits at the intersection of music and education theory — in-continent while LCC class M is the classification home; a cross-listing with education-related domains could be raised in the edge batch.",
+      "ambiguous": false,
+      "note": "Part_of field:music (edge batch). Mathematics-education precedent (§12 precedent log 2026-06-10) applies: named degree tracks (MEd in Music Education) and a named society (NAfME) qualify even though the discipline is applied/pedagogical. MT40-67 (composition instruction) is absorbed here rather than warranting a separate subfield — see music-composition non-coverage note."
+    },
+
+    {
+      "id": "subfield:art-history",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Art History",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q8242"
+      },
+      "source_hint": "LCC N5300-7418 'History' range within LCC subclass N 'Visual arts' — gate scheme (captured baseline 2026-06-11). LCC NX440-632 'History of the arts' within NX (captured baseline 2026-06-11). FORD 6.4 component 'history of arts' (captured baseline 2026-06-11). Wikidata Q8242 — unverified training-knowledge hint.",
+      "rationale": "LCC N5300-7418 is a major named range within subclass N; FORD 6.4 explicitly lists 'history of arts' as a co-equal component; the College Art Association (CAA) and Art Bulletin are named community units that satisfy the community criterion; both dual-criterion prongs pass.",
+      "uncertainty": "QID hint unverified; art history is humanities-adjacent (in-continent while class N is the classification home, per pre-registered structural question 4); boundary with subfield:aesthetics (philosophy continent) is the UDC 7.01 identity test — art history covers historical content, not philosophical theory of art.",
+      "ambiguous": false,
+      "note": "Part_of field:visual-arts (edge batch). Humanities-adjacent: in-continent while class N is the classification home (structural question 4). UDC 7.03 (Artistic periods and phases, schools, styles) and N5300-7418 are the classification anchors. Does NOT overlap with subfield:aesthetics (Q35986, philosophy continent) — art history is historical scholarship, aesthetics is philosophical theory; identity test passes (distinct referents)."
+    },
+
+    {
+      "id": "subfield:painting",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Painting",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q11629"
+      },
+      "source_hint": "LCC subclass ND 'Painting' — gate scheme full subclass (captured baseline 2026-06-11). UDC 75 'Painting' — gate scheme independent top-level class (captured baseline 2026-06-11). Wikidata Q11629 — unverified training-knowledge hint.",
+      "rationale": "LCC subclass ND and UDC 75 both give painting independent classification standing; studio painting programs (BFA/MFA) and painting faculty lines at art schools satisfy the community criterion; both prongs pass without ambiguity.",
+      "uncertainty": "QID hint unverified; drawing (NC/UDC 741) and painting overlap in practice but are classified as distinct subclasses/classes — kept as peers per classification source evidence.",
+      "ambiguous": false,
+      "note": "Part_of field:visual-arts (edge batch). ND subdivisions (ND1700-2495 watercolor, ND2550-2733 mural, ND2889-3416 illuminating manuscripts) are below skeleton granularity — absorbed here."
+    },
+
+    {
+      "id": "subfield:sculpture",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Sculpture",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q860861"
+      },
+      "source_hint": "LCC subclass NB 'Sculpture' — gate scheme full subclass (captured baseline 2026-06-11). UDC 730 'Sculpture in general. Statuary' within UDC 73 'Plastic arts' (captured baseline 2026-06-11). Wikidata Q860861 — unverified training-knowledge hint.",
+      "rationale": "LCC subclass NB and UDC 730 provide independent classification standing; sculpture programs (MFA in sculpture) and named sculpture faculty lines at art schools satisfy the community criterion.",
+      "uncertainty": "QID hint unverified; QID may resolve to the art form rather than the academic discipline — QC should verify the anchor entity type.",
+      "ambiguous": false,
+      "note": "Part_of field:visual-arts (edge batch). UDC 736 (Glyptics, sigillography) and UDC 737 (Numismatics) are within UDC 73 but are below skeleton granularity — absorbed or non-coverage (numismatics has a community but classification home spans arts and history; deliberate non-coverage, v2 candidate). NB1203-1270 (special materials) and other NB subdivisions are below skeleton granularity."
+    },
+
+    {
+      "id": "subfield:drawing",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Drawing",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q11835431"
+      },
+      "source_hint": "LCC subclass NC 'Drawing. Design. Illustration' — gate scheme full subclass (captured baseline 2026-06-11). UDC 741/744 'Drawing' within UDC 74 (captured baseline 2026-06-11). Wikidata Q11835431 — unverified training-knowledge hint.",
+      "rationale": "LCC subclass NC and UDC 741/744 provide classification standing; drawing programs and faculty lines at art schools (Society of Illustrators, large studio-drawing degree tracks) satisfy the community criterion; both prongs pass.",
+      "uncertainty": "QID hint unverified; NC subclass also houses design and illustration (NC997-1003 commercial art) — the shared NC subclass means drawing and graphic-design both cite NC, but they are distinct disciplines at separate UDC entries (741/744 vs 766); the overlap is recorded, not ambiguous.",
+      "ambiguous": false,
+      "note": "Part_of field:visual-arts AND potentially field:design (edge batch — NC is shared; dual part_of is likely; §13 co-equal membership pattern). Pre-registered overlap test vs design wing: drawing (741/744) and graphic-design (766) are distinct UDC entries within UDC 74; NC subclass overlap is an other-home filing artifact, not an identity conflict."
+    },
+
+    {
+      "id": "subfield:printmaking",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Printmaking",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q185925"
+      },
+      "source_hint": "LCC subclass NE 'Print media' — gate scheme full subclass (captured baseline 2026-06-11). UDC 76 'Graphic art, printmaking. Graphics' — gate scheme independent top-level class (captured baseline 2026-06-11). Wikidata Q185925 — unverified training-knowledge hint.",
+      "rationale": "LCC subclass NE and UDC 76 each give printmaking full independent classification standing; studio printmaking programs (MFA in printmaking) and named faculty lines at art schools satisfy the community criterion; both prongs pass without ambiguity.",
+      "uncertainty": "QID hint unverified; UDC 766 (Applied graphic arts, commercial graphics) sits within UDC 76 but is absorbed into graphic-design — the boundary between fine-art printmaking and commercial graphics is a practical one, not a classification ambiguity.",
+      "ambiguous": false,
+      "note": "Part_of field:visual-arts (edge batch). UDC 761-763 (relief/intaglio/planographic techniques) and NE subdivisions are below skeleton granularity — absorbed here. UDC 766 'Applied graphic arts' is absorbed into subfield:graphic-design (commercial/design wing rather than fine-art printmaking)."
+    },
+
+    {
+      "id": "subfield:photography",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Photography",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q11633"
+      },
+      "source_hint": "UDC 77 'Photography and similar processes' — gate scheme independent top-level class within UDC 7 (captured baseline 2026-06-11). LCC TR (class T, technology) — [UNFETCHED] training-knowledge for the LCC home, unverified; TR is an other-home filing per the class-G precedent pattern. Wikidata Q11633 — unverified training-knowledge hint.",
+      "rationale": "UDC 77 is a full top-level class within the arts classification hierarchy (UDC class 7), providing classification-level standing in-continent; photography programs (MFA in photography) at art schools and the Society for Photographic Education satisfy the community criterion.",
+      "uncertainty": "QID hint unverified; LCC primary home is TR (technology / class T), not class N — this is a real-world B-type contest between UDC 77 (arts, in-continent) and LCC TR (technology, out-of-continent); per §12 rule 3, the node stays in-continent because UDC (primary gate scheme) files it in class 7, but the LCC TR home must be recorded as a §13 engineering-side candidate.",
+      "ambiguous": true,
+      "note": "B-type flag: LCC TR (technology, out-of-continent) vs UDC 77 (arts, in-continent) — class-G precedent interpretation (pre-registered structural question 7). UDC 77 is the primary gate scheme anchor here. LCC TR is parked as a §13 engineering/technology-continent candidate — QC should verify via external-evidence path (v1.1). Part_of field:visual-arts (edge batch, tentative; may gain a second part_of toward a technology/engineering node once §13 is resolved)."
+    },
+
+    {
+      "id": "subfield:graphic-design",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Graphic Design",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q185925"
+      },
+      "source_hint": "LCC NC997-1003 'Commercial art. Advertising art' within subclass NC (captured baseline 2026-06-11). UDC 766 'Applied graphic arts. Commercial graphics' within UDC 76 (captured baseline 2026-06-11). Wikidata Q185925 — unverified training-knowledge hint.",
+      "rationale": "LCC NC997-1003 and UDC 766 provide named classification-level entries; AIGA (American Institute of Graphic Arts), the GDC, and BFA/MFA degree tracks in graphic design at art schools worldwide satisfy the community criterion; both prongs pass.",
+      "uncertainty": "QID hint unverified; NOTE — Q185925 is tentatively Printmaking; the correct QID for Graphic Design may be different (Q226697 or similar). QC must resolve the QID conflict between graphic-design and printmaking nodes. The LCC and UDC anchors are distinct (NC997-1003 / UDC 766 vs NE / UDC 76).",
+      "ambiguous": true,
+      "note": "QID conflict flag (A-type): Q185925 was assigned to both this node and subfield:printmaking — this is a generator error to be corrected at QC; one of these needs a different QID. Graphic design (Q226697?) and printmaking (Q185925?) are distinct disciplines. Part_of field:design (edge batch). UDC 766 'Applied graphic arts' is the design-side wing of UDC 76; it is classified separately from fine-art printmaking (761-763)."
+    },
+
+    {
+      "id": "subfield:industrial-design",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Industrial Design",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q336176"
+      },
+      "source_hint": "UDC 7.05 'Applications of art (in industry, trade, the home, everyday life)' (captured baseline 2026-06-11). LCC NK1160-1590 'Decoration and ornament. Design' within LCC NK (captured baseline 2026-06-11). LCC TS171 (engineering technology) — [UNFETCHED] training-knowledge, unverified; engineering-side §13 record only, per boundary assignment table. Wikidata Q336176 — unverified training-knowledge hint.",
+      "rationale": "UDC 7.05 provides a named arts-side classification entry; LCC NK1160-1590 anchors the design wing within the decorative-arts subclass; Industrial Designers Society of America (IDSA) and BID/MID degree tracks at design schools satisfy the community criterion.",
+      "uncertainty": "QID hint unverified; industrial design straddles art and engineering — the LCC TS171 engineering home is a §13 candidate record only (13c boundary assignment); the arts-side classification evidence (UDC 7.05, LCC NK1160-1590) is sufficient for in-continent standing.",
+      "ambiguous": false,
+      "note": "Part_of field:design (edge batch). §13 engineering-side candidate: LCC TS171 (engineering technology) is [UNFETCHED] training knowledge — recorded as a 13c boundary task, not this batch's problem. UDC 7.05 is a special auxiliary subdivision at the top 7.01-7.09 axis level, not a free-standing top-level class — weaker classification standing than a full UDC class, but LCC NK1160-1590 plus IDSA community compensates."
+    },
+
+    {
+      "id": "subfield:fashion-design",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Fashion Design",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q3272700"
+      },
+      "source_hint": "LCC NK4700-4890 'Costume' within LCC NK 'Decorative arts' — gate scheme (captured baseline 2026-06-11). UDC 746 'Fancy work. Art needlework' within UDC 745/749 'Industrial and domestic arts and crafts' (captured baseline 2026-06-11). Wikidata Q3272700 — unverified training-knowledge hint.",
+      "rationale": "LCC NK4700-4890 is a named range within the NK (Decorative arts) subclass; fashion-design schools (Parsons School of Design, Central Saint Martins, Fashion Institute of Technology) are named institutional units; BFA degree tracks in fashion design satisfy the community criterion.",
+      "uncertainty": "QID hint unverified; the UDC anchor (746) is a subdivision of 745/749 rather than a top-level class — weaker classification standing than painting (UDC 75) or architecture (UDC 72); the community criterion (named schools, major industry) is strong but the classification side is subdivision-level only.",
+      "ambiguous": true,
+      "note": "A-type flag: classification grounding is subdivision-level (LCC range within NK, UDC 746 within 745/749) rather than an independent subclass/class — QC should verify whether this meets criterion (a) at the same threshold as other subfields, or whether it is an absorption candidate into subfield:decorative-arts. Generator assessment: strong community presence tilts toward keeping; QC may absorb with v2 re-split. Part_of field:design (edge batch)."
+    },
+
+    {
+      "id": "subfield:interior-design",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Interior Design",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q1144896"
+      },
+      "source_hint": "LCC NK1700-2195 'Interior decoration. House decoration' within LCC NK — gate scheme (captured baseline 2026-06-11). UDC 747 'Interior decoration' within UDC 745/749 (captured baseline 2026-06-11). Wikidata Q1144896 — unverified training-knowledge hint.",
+      "rationale": "LCC NK1700-2195 is a major named range within NK; UDC 747 is a named entry; ASID (American Society of Interior Designers) and CIDA accreditation of BID/MID degree programs satisfy the community criterion; both prongs pass.",
+      "uncertainty": "QID hint unverified; the UDC anchor (747) is a subdivision within 745/749 rather than a top-level class — same classification-strength caveat as fashion-design, mitigated by the large LCC range and strong professional accreditation body (CIDA).",
+      "ambiguous": false,
+      "note": "Part_of field:design (edge batch). NK1700-2195 is the largest named range within NK after NK3600-9990 ceramics/glass/metals/textiles block. The CIDA accreditation structure and volume of professional programs makes this clearly above absorption threshold despite UDC 747 being a subdivision."
+    },
+
+    {
+      "id": "subfield:decorative-arts",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Decorative Arts",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q190588"
+      },
+      "source_hint": "LCC subclass NK 'Decorative arts' — gate scheme full subclass (captured baseline 2026-06-11). UDC 745/749 'Industrial and domestic arts and crafts. Applied arts' within UDC 74 (captured baseline 2026-06-11). Wikidata Q190588 — unverified training-knowledge hint.",
+      "rationale": "LCC subclass NK is a full independent subclass; UDC 745/749 is a named division within UDC 74; decorative-arts programs (Bard Graduate Center, V&A/RCA MAs in History of Design and Decorative Arts) and the Decorative Arts Society satisfy the community criterion.",
+      "uncertainty": "QID hint unverified; NK houses multiple named subfields (interior design NK1700-2195, fashion/costume NK4700-4890, ceramics NK3700-4695) — the absorb-or-keep question was pre-registered; the NK general/history ranges (NK1-806) and arts-and-crafts movement (NK1135-1149.5) justify keeping decorative-arts as an umbrella node that coexists with the named subfields.",
+      "ambiguous": false,
+      "note": "Part_of field:design (edge batch; could also take field:visual-arts — NK spans both; edge batch will adjudicate). Absorption decision: NOT absorbed — NK1-806 (General, History), NK1135-1149.5 (Arts and crafts movement) are substantial ranges not covered by the named subfields; umbrella keeps per peer-coexistence rule. Named subfields (interior-design, fashion-design, ceramic-arts) are nested within NK but pass the dual criterion independently and coexist as peer subfields. The remaining NK ranges (NK5100-5440 glass, NK5500-6060 glyptic arts, NK6400-8459 metalwork, NK8800-9505.5 textiles, NK9600-9955 woodwork) are below skeleton granularity — absorbed here as v2 re-split candidates."
+    },
+
+    {
+      "id": "subfield:ceramic-arts",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Ceramic Arts",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q11642"
+      },
+      "source_hint": "LCC NK3700-4695 'Ceramics' within LCC NK — gate scheme (captured baseline 2026-06-11). UDC 738 'Ceramic arts. Pottery' within UDC 73 'Plastic arts' — gate scheme (captured baseline 2026-06-11). Wikidata Q11642 — unverified training-knowledge hint.",
+      "rationale": "LCC NK3700-4695 is a substantial named range within NK; UDC 738 is a named division under UDC 73 (not a subdivision within NK alone); NCECA (National Council on Education for the Ceramic Arts) and BFA/MFA degree tracks in ceramics at art schools satisfy the community criterion; both prongs pass.",
+      "uncertainty": "QID hint unverified; the dual-scheme standing (LCC NK range + UDC 738 under 73) is the strongest classification case among the NK-housed subfields; the absorption test vs decorative-arts resolves to keep per the ASL-pillar pattern (dual-scheme subdivisions + independent society).",
+      "ambiguous": false,
+      "note": "Part_of subfield:decorative-arts OR field:visual-arts (edge batch — UDC 73 'Plastic arts' is the parent class alongside sculpture; ceramics has a visual-arts identity as well as a design/decorative-arts one; §13 co-equal membership candidate). Absorption decision: NOT absorbed into decorative-arts — UDC 738 is a separate UDC 73 entry (sibling of 730 sculpture), and NCECA is an independent community. Compare electrochemistry pattern (§12 precedent): dual-scheme subdivisions + independent community = keep."
+    },
+
+    {
+      "id": "subfield:theatre-studies",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Theatre Studies",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q33999"
+      },
+      "source_hint": "UDC 792 'Theatre. Stagecraft. Dramatic performances' — gate scheme major division within UDC 79 in-scope wing (captured baseline 2026-06-11). FORD 6.4 component 'performing arts' (captured baseline 2026-06-11). LCC PN2000-3307 — [UNFETCHED] training-knowledge for the LCC range, class P other-home filing (class-G precedent: UDC in-continent + community evidence overrides). Wikidata Q33999 — unverified training-knowledge hint.",
+      "rationale": "UDC 792 is a named major division within UDC 79; FORD 6.4 co-lists 'performing arts'; ATHE (Association for Theatre in Higher Education) and Theatre Research International are named community units; the class-G precedent (structural question 7) confirms in-continent standing via UDC 792 + community evidence.",
+      "uncertainty": "QID hint unverified; Q33999 may resolve to 'actor' or 'theatre' art form rather than the academic discipline of theatre studies; QC should verify the anchor. LCC PN other-home is noted but does not disqualify per class-G precedent.",
+      "ambiguous": false,
+      "note": "Part_of field:performing-arts (edge batch). LCC PN2000-3307 is a class-P other-home filing — parked as a humanities-residual §13 candidate (not this batch's problem). UDC 792 subdivisions (792.2 spoken drama, 792.5 musical productions, 792.7 variety/vaudeville, 792.9 special kinds) are below skeleton granularity — absorbed here."
+    },
+
+    {
+      "id": "subfield:dance",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Dance",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q11639"
+      },
+      "source_hint": "UDC 792.8 'Presentations of art of movement. Choreography' and UDC 793.3 'Art of movement. Dance' — gate scheme entries within the in-scope wing of UDC 79 (captured baseline 2026-06-11). FORD 6.4 component 'performing arts' (captured baseline 2026-06-11). LCC GV1580-1799.4 — [UNFETCHED] training-knowledge for the LCC range, class G other-home filing (class-G precedent applies). Wikidata Q11639 — unverified training-knowledge hint.",
+      "rationale": "UDC 792.8 and UDC 793.3 provide two named classification entries within the in-scope performing-arts wing; FORD 6.4 'performing arts' covers dance; Congress on Research in Dance (CORD) and Journal of Dance Education are named community units; class-G precedent confirms in-continent standing via UDC + community.",
+      "uncertainty": "QID hint unverified; LCC GV home (class G) is an other-home filing — noted as a §13 physical-education/kinesiology candidate for the health/sports-science continent; the UDC 792.8/793.3 evidence is the in-continent anchor.",
+      "ambiguous": false,
+      "note": "Part_of field:performing-arts (edge batch). LCC GV1580-1799.4 is a class-G other-home filing — parked as a §13 health/sports-science candidate (outside this batch). UDC 793.3 is within the in-scope portion of UDC 793 (793.5-799 is excluded); the 793.3 cut-off is clearly in-scope per the boundary assignment table."
+    },
+
+    {
+      "id": "subfield:film-studies",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Film Studies",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q1968665"
+      },
+      "source_hint": "UDC 791 'Cinema. Films (motion pictures)' — gate scheme major division within UDC 79 in-scope wing (captured baseline 2026-06-11). FORD 6.4 component 'performing arts' (captured baseline 2026-06-11). LCC PN1993-1999 — [UNFETCHED] training-knowledge for the LCC range, class P other-home filing. Wikidata Q1968665 — unverified training-knowledge hint.",
+      "rationale": "UDC 791 is a named major division within the in-scope UDC 79 wing; FORD 6.4 'performing arts' co-lists film; SCMS (Society for Cinema and Media Studies) and Cinema Journal are named community units; both prongs pass; FORD 5.8 media-communications is social-sciences continent but is irrelevant here because the classification home is UDC 791 (not FORD 5.8).",
+      "uncertainty": "QID hint unverified; 'film studies' as an academic discipline vs 'cinema' as a medium — the community-presence criterion points to film-studies departments and SCMS; the classification anchor (UDC 791) names cinema/films; label rule (§12 rule 4) keeps the research-area label 'film studies'.",
+      "ambiguous": false,
+      "note": "Part_of field:performing-arts (edge batch). FORD 5.8 (media and communications) is social-sciences continent (13a) — this node is grounded on UDC 791 + FORD 6.4 performing-arts, not FORD 5.8; the boundary is clean per the manifest exclusion note. LCC PN1993-1999 is a class-P other-home filing — parked as a humanities-residual §13 candidate."
+    },
+
+    {
+      "id": "subfield:landscape-architecture",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Landscape Architecture",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q697686"
+      },
+      "source_hint": "UDC 712 'Planning of landscape (natural and designed). Parks. Gardens' within UDC 71 (captured baseline 2026-06-11). LCC SB469-476 — [UNFETCHED] training-knowledge for the LCC range, class S other-home filing (class-G precedent pattern). Wikidata Q697686 — unverified training-knowledge hint.",
+      "rationale": "UDC 712 is a named division within UDC 71 (Physical planning, landscape, parks, gardens) which sits at the top of UDC class 7; ASLA (American Society of Landscape Architects) and BLA/MLA degree tracks at architecture and design schools satisfy the community criterion; class-G precedent (structural question 7) confirms in-continent via UDC 712 + community.",
+      "uncertainty": "QID hint unverified; LCC SB469-476 is class S (agriculture/horticulture) — an other-home filing noted but not disqualifying per class-G precedent when UDC + community confirm in-continent standing.",
+      "ambiguous": false,
+      "note": "Part_of field:architecture (edge batch; landscape architecture is an architecture-school discipline). LCC SB469-476 [UNFETCHED] is parked as a §13 life-sciences/agriculture candidate — outside this batch. UDC 712 is the primary in-continent anchor. UDC 718 (cemeteries, planning) and 719 (preservation of rural/urban amenities) are below skeleton granularity — absorbed here."
+    },
+
+    {
+      "id": "subfield:urban-planning",
+      "type": "subfield",
+      "domain": "arts_and_design",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Urban Planning",
+      "academic_status": "established",
+      "external_ids": {
+        "wikidata": "Q178512"
+      },
+      "source_hint": "UDC 711 'Principles and practice of physical planning. Regional, town and country planning' within UDC 71 (captured baseline 2026-06-11). LCC NA9000-9428 'Aesthetics of cities. City planning and beautifying' within LCC NA (captured baseline 2026-06-11). LCC HT165-169 — [UNFETCHED] training-knowledge for the social-sciences LCC home, unverified. Wikidata Q178512 — unverified training-knowledge hint.",
+      "rationale": "UDC 711 is a named major division within UDC 71 (class 7); LCC NA9000-9428 provides an in-continent LCC anchor within the architecture subclass; ACSP (Association of Collegiate Schools of Planning) and BUP/MUP degree tracks satisfy the community criterion.",
+      "uncertainty": "QID hint unverified; LCC HT165-169 (social sciences, class H) is reportedly the dominant LCC home for urban planning social-science literature — this is a B-type real-world contest between LCC NA9000-9428 (arts/architecture, in-continent) and LCC HT165-169 (social sciences, out-of-continent); §12 rule 3 requires BOTH LCC home AND dominant institutional home to be out-of-continent for deferral; the LCC NA9000-9428 anchor keeps one prong in-continent.",
+      "ambiguous": true,
+      "note": "B-type flag: LCC HT165-169 (social sciences) vs LCC NA9000-9428 (architecture, in-continent) + UDC 711 (class 7, in-continent) — genuine classification contest. §12 rule 3 test: LCC NA9000-9428 is an in-continent LCC anchor (so 'both LCC home and dominant institutional home lie outside' is not met); node stays in-continent but the B-type flag is retained for QC to resolve via external-evidence path (v1.1). Part_of field:architecture (edge batch, tentative). §13 social-sciences-continent candidate noted for QC."
+    }
+
+  ],
+  "edges": [],
+  "notes": [
+
+    "=== COVERAGE TABLE: LCC CLASS M SUBCLASSES ===",
+    "LCC subclass M (Music scores/compositions): kept — covered under field:music (scores are the primary content of class M; no separate subfield warranted; musicological analysis of repertoire falls under subfield:musicology).",
+    "LCC subclass ML (Literature on music): kept — anchors subfield:musicology (ML159-3785 History and Criticism, ML3797-3799.5 Musical Research).",
+    "LCC subclass MT (Instruction and study): kept — anchors subfield:music-education (full subclass) + subfield:music-theory (MT5.5-7 subdivision). MT40-67 (Composition) absorbed into field:music — see music-composition non-coverage below.",
+
+    "=== COVERAGE TABLE: LCC CLASS N SUBCLASSES ===",
+    "LCC subclass N (Visual arts): kept — anchors field:visual-arts. N5300-7418 (History) anchors subfield:art-history.",
+    "LCC subclass NA (Architecture): kept — anchors field:architecture. NA9000-9428 (Aesthetics of cities, city planning) anchors subfield:urban-planning (in-continent LCC anchor).",
+    "LCC subclass NB (Sculpture): kept — anchors subfield:sculpture.",
+    "LCC subclass NC (Drawing. Design. Illustration): kept — anchors subfield:drawing (NC1-940) and subfield:graphic-design (NC997-1003). NC1300-1766 (Pictorial humor, caricature) is below skeleton granularity — absorbed under drawing.",
+    "LCC subclass ND (Painting): kept — anchors subfield:painting.",
+    "LCC subclass NE (Print media): kept — anchors subfield:printmaking.",
+    "LCC subclass NK (Decorative arts): kept — anchors subfield:decorative-arts (umbrella). Ranges within NK: NK1160-1590 (Design) → subfield:industrial-design; NK1700-2195 (Interior decoration) → subfield:interior-design; NK3700-4695 (Ceramics) → subfield:ceramic-arts; NK4700-4890 (Costume) → subfield:fashion-design. Remaining NK ranges (NK5100-5440 glass, NK5500-6060 glyptic arts, NK6400-8459 metalwork, NK8800-9505.5 textiles, NK9600-9955 woodwork) absorbed into subfield:decorative-arts as v2 re-split candidates.",
+    "LCC subclass NX (Arts in general): deliberate non-coverage — NX700-770 (Patronage, administration of the arts) explicitly excluded per manifest scope. NX1-694 (General, study/teaching, history of arts, special subjects) absorbed under field:visual-arts and subfield:art-history. NX798-820 (Arts centers) is infrastructure, below skeleton granularity.",
+
+    "=== COVERAGE TABLE: UDC 7 AXIS (7.01-7.09) ===",
+    "UDC 7.01 (Theory and philosophy of art): deliberate non-coverage — identity-distinct test vs subfield:aesthetics (philosophy continent, Q35986, untouchable). Art theory as studied in art departments is distinct from philosophical aesthetics; however, proposing a separate 'art theory' subfield would overlap substantially with aesthetics in the current /data. Pre-registered structural question 2: generator rules no separate art-theory node at this stage; material absorbed into subfield:art-history and the field-level nodes. QC may revisit.",
+    "UDC 7.02 (Art technique. Craftsmanship): deliberate non-coverage — methodology axis, not a separate academic discipline; absorbed across studio-art subfields.",
+    "UDC 7.03 (Artistic periods and phases. Schools, styles): deliberate non-coverage — historical periods axis; absorbed into subfield:art-history. Below skeleton granularity (level-3 material per manifest exclusion).",
+    "UDC 7.04 (Subjects for artistic representation. Iconography. Iconology): deliberate non-coverage — iconography is a topic within art history; absorbed into subfield:art-history.",
+    "UDC 7.05 (Applications of art in industry): kept — classification anchor for subfield:industrial-design.",
+    "UDC 7.06-7.09 (Various questions, occupations, characteristics, performance): deliberate non-coverage — auxiliary axes, not independent disciplines; absorbed across relevant subfields.",
+
+    "=== COVERAGE TABLE: UDC CHILDREN 71-79 ===",
+    "UDC 71 (Physical planning, regional/town/country planning, landscapes, parks, gardens): kept — two seeds proposed (subfield:landscape-architecture from UDC 712; subfield:urban-planning from UDC 711). UDC 718 (cemeteries) and 719 (preservation of amenities) are below skeleton granularity — absorbed.",
+    "UDC 72 (Architecture): kept — anchors field:architecture.",
+    "UDC 73 (Plastic arts): kept in substance — UDC 730 (Sculpture) anchors subfield:sculpture; UDC 738 (Ceramic arts) anchors subfield:ceramic-arts. UDC 736 (Glyptics/sigillography) and 737 (Numismatics) are below skeleton granularity — absorbed. UDC 739 (Metal arts) absorbed into subfield:decorative-arts as v2 candidate (NK6400-8459 metalwork range).",
+    "UDC 74 (Drawing. Design. Applied arts and crafts): kept — UDC 741/744 anchors subfield:drawing; UDC 7.05 (from the .01-.09 axis) anchors subfield:industrial-design; UDC 745/749 anchors subfield:decorative-arts and subfield:interior-design (747); UDC 746 anchors subfield:fashion-design; UDC 748 (vitreous arts/glass) absorbed into subfield:decorative-arts (NK5100-5440). UDC 766 (Applied graphic arts) from UDC 76 is routed to subfield:graphic-design.",
+    "UDC 75 (Painting): kept — anchors subfield:painting.",
+    "UDC 76 (Graphic art, printmaking): kept — UDC 76 (core) anchors subfield:printmaking; UDC 766 (Applied graphic arts) is the design-wing anchor routed to subfield:graphic-design.",
+    "UDC 77 (Photography): kept — anchors subfield:photography (B-type flag on LCC TR vs UDC 77 contest).",
+    "UDC 78 (Music): kept — anchors field:music. UDC 78.01 (theory/philosophy of music) absorbed into subfield:music-theory. UDC 78.02 (composition) — seed music-composition absorbed (see below). UDC 78.03 (history) → subfield:musicology. UDC 781.2 → subfield:music-theory. UDC 781.7 → subfield:ethnomusicology. UDC 782-785 (kinds of music) below skeleton granularity — absorbed.",
+    "UDC 79 — in-scope wing (791-793.3): UDC 791 (Cinema) anchors subfield:film-studies. UDC 792 (Theatre) anchors subfield:theatre-studies. UDC 792.8/793.3 (dance/choreography) anchors subfield:dance.",
+    "UDC 79 — excluded wing (793.5-799, 796-799): deliberate non-coverage — recreation, entertainment, games, sport wing; pre-registered scope exclusion per manifest (community home is sports science/health continent). Covers UDC 793.5-793.9 (parlour games, conjuring), UDC 794 (board/card games), UDC 796-799 (sport, physical exercise).",
+
+    "=== COVERAGE TABLE: FORD 6.4 COMPONENTS ===",
+    "FORD 6.4 'arts': kept — distributed across field:visual-arts, field:design, field:performing-arts, field:architecture.",
+    "FORD 6.4 'history of arts': kept — anchors subfield:art-history.",
+    "FORD 6.4 'performing arts': kept — anchors field:performing-arts (theatre, dance, film).",
+    "FORD 6.4 'music': kept — anchors field:music.",
+
+    "=== SEED DROPPED: subfield:music-composition ===",
+    "Seed subfield:music-composition (manifest) was dropped — absorbed into field:music. Grounds: LCC MT40-67 'Composition. Elements and techniques of music' is a subdivision within MT (not its own subclass). UDC 78.02 'Composition of musical works' is a subdivision within UDC 78. Per §12 rule 2 (absorption rule): a candidate that names a refinement of a kept node serving the same community is dropped. Conservatory composition departments are a strong community, but classification criterion (a) fails at the subfield level — both LCC and UDC file composition as a subdivision of larger units. V2 re-split candidate: if composition departments grow sufficiently distinct in classification sources (e.g., if a future revision of FORD separates composition from musicology), the case for re-splitting should be re-examined. Composition instruction (MT40-67) is absorbed into subfield:music-education; compositional theory overlap with subfield:music-theory is noted.",
+
+    "=== DELIBERATE NON-COVERAGE (OTHER) ===",
+    "Recreation/entertainment/games/sport wing (UDC 793.5-799, 796-799; LCC GV as primary home): pre-registered scope exclusion per manifest boundary assignment table. Community home is sports science/health/kinesiology continent. Specifically: UDC 793.5-793.9 (parlour games, conjuring/magic), 794 (board/card/table games), 796 (sport, physical exercises), 797 (water/aerial sports), 798 (riding, animal sports), 799 (fishing, hunting, shooting).",
+    "Media and communication studies (FORD 5.8): social-sciences continent (strand 13a) — deliberate non-coverage here. Film studies is in-continent via UDC 791 (separate from FORD 5.8).",
+    "Literature/linguistics (LCC class P): humanities-residual continent — deliberate non-coverage. Theatre/film PN ranges are other-home filings, not an invitation to model literature.",
+    "Music therapy (LCC ML3919-3920): medicine adjacency — deliberately excluded per manifest scope.",
+    "Arts administration/patronage (LCC NX700-770): below skeleton granularity — deliberately excluded per manifest scope.",
+    "Art criticism as a standalone subfield: deliberately not proposed — no independent LCC subclass or UDC top-level division; absorbed into subfield:art-history and field-level nodes; v2 candidate.",
+    "Digital art / new media arts: deliberately not proposed — no distinct LCC N subclass or UDC 7 top-level division in the captured baseline; v2 candidate when classification sources update.",
+    "Numismatics (UDC 737): not proposed — no major independent university department at skeleton granularity; absorbed into subfield:decorative-arts as v2 candidate.",
+    "Glyptics / sigillography (UDC 736): not proposed — below skeleton granularity; absorbed.",
+    "Metal arts / jewellery / goldsmithing (UDC 739): not proposed — below skeleton granularity; absorbed into subfield:decorative-arts.",
+    "Glass arts (UDC 748, NK5100-5440): not proposed — below skeleton granularity; absorbed into subfield:decorative-arts.",
+    "Textiles / fiber arts (LCC NK8800-9505.5): not proposed — below skeleton granularity; absorbed into subfield:decorative-arts.",
+    "Illustration (LCC NC950-996): not proposed — below skeleton granularity, no independent top-level classification division; absorbed into subfield:drawing.",
+    "Caricature / cartoon (LCC NC1300-1766, UDC 741.5): not proposed — below skeleton granularity; absorbed into subfield:drawing.",
+
+    "=== QID CONFLICT FLAG (generator self-report) ===",
+    "CRITICAL QC TASK: subfield:graphic-design and subfield:printmaking were both assigned Q185925 in this proposal — this is a generator error. Q185925 may be 'printmaking' in Wikidata. The correct QID for graphic design is likely Q226697 (or similar — unverified training knowledge). QC must resolve this conflict and correct one or both QID hints before promotion.",
+
+    "=== UDC 7.01 / subfield:aesthetics IDENTITY TEST (pre-registered structural question 2) ===",
+    "UDC 7.01 'Theory and philosophy of art' was tested against subfield:aesthetics (Q35986, philosophy continent). Generator ruling: no separate art-theory node proposed. Rationale: (1) subfield:aesthetics (philosophy continent) already covers the philosophical theory of art; (2) proposing a separate 'arts-continent art-theory node' would require demonstrating a distinct referent (e.g., 'theory of art practice' as distinct from philosophical aesthetics) — the evidence for a distinct academic community at this scope is not sufficient to confidently separate them at skeleton granularity; (3) material is absorbed into subfield:art-history (historical/critical tradition) and the field-level nodes. This is an A-type flag left for QC: if QC finds evidence of a distinct 'visual art theory' academic community clearly distinct from philosophy-of-art / aesthetics, a future proposal can be made.",
+
+    "=== §13 ARCHITECTURE DUAL MEMBERSHIP (pre-registered structural question 1) ===",
+    "field:architecture: art-side first membership written (LCC NA + UDC 72, captured baseline 2026-06-11). Engineering-side second membership (FORD 2.1 'Civil engineering', LCC TH, UDC 69) is NOT in the captured baseline — all three are [UNFETCHED] training knowledge. Per the manifest and §13 anti-spam guard, the engineering-side part_of edge requires separately live-verified evidence. This is a same-batch §13 task per the boundary assignment table — but that live verification was not performed in this generation pass. QC/orchestrator must fetch and verify FORD 2.1 / LCC TH / UDC 69 before any engineering-side membership edge can be created.",
+
+    "=== GENERATOR SELF-REPORT ===",
+    "Total nodes proposed: 26 (5 fields, 21 subfields). Seeds from manifest: 27. Seeds dropped: 1 (subfield:music-composition, absorbed). Seeds kept: 26. Additional candidates added beyond seeds: 0 — the 27 seeds covered the classification baseline adequately; no additional candidates passed both prongs of the dual criterion beyond the seed list. Flagged ambiguous: 4 (subfield:photography B-type; subfield:graphic-design A-type QID conflict; subfield:fashion-design A-type classification strength; subfield:urban-planning B-type LCC-H vs LCC-NA contest). All [UNFETCHED] claims are marked as training-knowledge in source_hint or uncertainty. No network calls were made. All captured-baseline citations match the files in dist/foundry/captures/arts-design-skeleton-v1/."
+  ]
+}
