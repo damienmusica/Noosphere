@@ -3,11 +3,12 @@
  *
  * Validates every file in /data against the Zod schemas in /src/schema, then runs
  * cross-file integrity and policy checks (referential integrity, license/evidence,
- * NamuWiki external-only rule, indexability, circular prerequisites, ...).
+ * NamuWiki external-only rule, indexability, circular prerequisites, ...), plus
+ * offline repo-hygiene checks (foundry/proposals batch index, local .md links).
  *
  * Exits non-zero if any check fails. Run with: npm run validate:data
  */
-import { readFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { z } from "zod";
@@ -307,6 +308,84 @@ for (const path of learningPaths) {
   }
   if (path.indexable && path.status !== "reviewed") {
     fail(`[learning-paths.json] path ${path.id} is indexable but status is "${path.status}" (only reviewed paths may be indexable)`);
+  }
+}
+
+// --- Repo hygiene: foundry/proposals batch index ------------------------------
+// Every committed proposal batch directory must have its one-line row in
+// foundry/proposals/README.md, and every indexed batch must still exist on disk
+// (hygiene device ②, vault decision log 2026-06-11 (29)). The index is the human
+// entry point to the permanent records; artifact/index drift is the measured
+// decay mode this check exists for. Offline by design — CI stays network-free.
+const REPO_ROOT = join(__dirname, "..");
+{
+  const proposalsDir = join(REPO_ROOT, "foundry", "proposals");
+  const indexFile = "foundry/proposals/README.md";
+  let indexText = "";
+  try {
+    indexText = readFileSync(join(proposalsDir, "README.md"), "utf8");
+  } catch (err) {
+    fail(`[${indexFile}] could not read the batch index: ${(err as Error).message}`);
+  }
+  let batchDirs: string[] = [];
+  try {
+    batchDirs = readdirSync(proposalsDir, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => entry.name)
+      .sort();
+  } catch (err) {
+    fail(`[foundry/proposals] could not list batch directories: ${(err as Error).message}`);
+  }
+  // An index row is a table line whose first cell is the backticked batch dir:
+  // "| `<batch-dir>` | ...". Other backticked mentions in prose do not count.
+  const indexed = new Set<string>();
+  for (const line of indexText.split("\n")) {
+    const row = /^\|\s*`([^`]+)`\s*\|/.exec(line);
+    if (row?.[1]) indexed.add(row[1]);
+  }
+  for (const dir of batchDirs) {
+    if (!indexed.has(dir)) {
+      fail(`[${indexFile}] batch directory "${dir}" has no index row (every committed batch needs its one-line entry)`);
+    }
+  }
+  for (const name of indexed) {
+    if (!batchDirs.includes(name)) {
+      fail(`[${indexFile}] index row references missing batch directory "${name}" (stale index entry)`);
+    }
+  }
+}
+
+// --- Repo hygiene: local .md links must resolve --------------------------------
+// Relative links to .md files in committed markdown must point at files that
+// exist (the PR #60 dead-link sweep, automated). URLs and #anchors are out of
+// scope — this guards against file moves/renames, not content drift.
+{
+  const SKIP_DIRS = new Set(["node_modules", "dist", ".git", ".claude"]);
+  const mdFiles: string[] = [];
+  const walk = (dir: string): void => {
+    for (const entry of readdirSync(dir, { withFileTypes: true })) {
+      if (entry.isDirectory()) {
+        if (!SKIP_DIRS.has(entry.name)) walk(join(dir, entry.name));
+      } else if (entry.name.endsWith(".md")) {
+        mdFiles.push(join(dir, entry.name));
+      }
+    }
+  };
+  walk(REPO_ROOT);
+  const MD_LINK = /\]\(([^()\s]+\.md)(?:#[^)]*)?\)/g;
+  for (const file of mdFiles) {
+    const text = readFileSync(file, "utf8");
+    for (const match of text.matchAll(MD_LINK)) {
+      const target = match[1];
+      if (!target) continue;
+      if (/^[a-z][a-z0-9+.-]*:/i.test(target)) continue; // http:, mailto:, ... — not local
+      const resolved = target.startsWith("/")
+        ? join(REPO_ROOT, target)
+        : join(dirname(file), target);
+      if (!existsSync(resolved)) {
+        fail(`[${file.slice(REPO_ROOT.length + 1)}] dead local link: ${target}`);
+      }
+    }
   }
 }
 
