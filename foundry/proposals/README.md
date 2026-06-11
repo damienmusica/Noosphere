@@ -29,6 +29,7 @@ decision-log dates; PR numbers are the merge trail.
 | `qid-adversarial-audit-fs-v1` | Second adversarial QID audit, 2026-06-11 (PR #61): 44 refutation agents vs all FS verified QIDs → 0/44 confirmed (cumulative 0/68); differential-equations thin-anchor watch item; same PR recorded the seed-era bayesian-inference erratum (Q41581 → Q812535). |
 | `qid-adversarial-audit-seed-philosophy-v1` | Third adversarial QID audit, 2026-06-11: 74 agents vs seed-era 13 + philosophy 61 → **2 confirmed seed-era errors corrected** (life-sciences Q864=Pokémon → Q864928; arts-and-design Q735 → Q2018526), philosophy 0/61; cumulative 2/142 — every confirmed error to date is seed-era, pipeline output 0/129. |
 | `natural-sciences-skeleton-v1` | Fourth continent, 2026-06-11: 44 generated → QC kept 41 (medical-physics deferred to medicine; polymer/computational chemistry absorbed, v2 candidates), hint-laundering 1 caught (vs ~10 in session #8), B-flag contest queue 7; resolver v4's first new-continent run — per-QID verdicts in `grounding-report.md`. |
+| `natural-sciences-part-of-edges-v1` | NS `part_of` skeleton, 2026-06-11: 44 edges (41 primary + 3 §13 dual filings) → 37 reviewed / 7 status-capped; same PR executed the quantum-computing re-target to field:physics and the mathematical-physics §13 physics membership (disputed retired, node + edge); `source:physh` (CC0) registered. |
 
 Conventions: `report.md` = batch-level summary; `qc-report.md` = orchestrator QC verdicts;
 `grounding-report.md` = per-QID resolver/verification record; `resolution-report.md` = clause-6 /
