@@ -3718,5 +3718,290 @@
         "entity": "https://openalex.org/C5320026"
       }
     }
+  },
+  {
+    "id": "field:biology",
+    "type": "field",
+    "domain": "life_sciences",
+    "level": 1,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q420"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:botany",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q441"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:zoology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q431"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:microbiology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7193"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:genetics",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7162"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:molecular-biology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7202"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:cell-biology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7141"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:ecology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7150"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:evolutionary-biology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q840400"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:developmental-biology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q213713"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:physiology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q521"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:anatomy",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q514"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:immunology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q101929"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:virology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7215"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:parasitology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q180502"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:mycology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7175"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:systematics",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q3516404"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:marine-biology",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7173"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:bioinformatics",
+    "type": "subfield",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q128570"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
   }
 ]
