@@ -1,0 +1,289 @@
+{
+  "version": 1,
+  "batch_id": "cis-summaries-v1",
+  "kind": "node-summaries",
+  "proposed_by": "claude-sonnet-4-6 (A/B batch-b; blinded as BLINDED:batch-b during QC, unblinded post-verdict per ab-split.json)",
+  "items": [
+    {
+      "node_id": "field:library-and-information-science",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Library and information science (LIS) is the field concerned with how society stores, retrieves, analyzes, manages, archives, and disseminates information, bridging the professional practice of librarianship with the scientific study of information systems and behavior. The Association for Information Science and Technology (ASIS&T) describes it as the discipline that \"improves the ways society stores, retrieves, analyzes, manages, archives and disseminates information\" and whose members span information science, computer science, linguistics, management, librarianship, engineering, law, medicine, and other fields. Its principal publication, the Journal of the Association for Information Science and Technology (JASIST), has been published continuously since 1950 and covers research and development across the full range of information science and technology. The iSchools organization—an alliance of university schools and departments offering doctoral programs in the field—characterizes information science as drawing broadly from the social and behavioral sciences, computing, and linguistics, with core research interests including information organization and access, bibliometrics, and human-computer interaction.",
+      "source_hints": [
+        {
+          "source": "ASIS&T — About",
+          "url": "https://www.asist.org/about/",
+          "fetched": true
+        },
+        {
+          "source": "ASIS&T — JASIST journal page",
+          "url": "https://www.asist.org/publications/jasist/",
+          "fetched": true
+        },
+        {
+          "source": "iSchools — About",
+          "url": "https://ischools.org/about",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q13420675 (identity pin only; enwiki sitelink \"Library and information science\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q13420675.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "ASIS&T's About page supplies the functional definition and the list of member disciplines. The JASIST page supplies the founding date (continuous publication since 1950) and characterization as a refereed scholarly and technical periodical. The iSchools About page supplies the description of methodological range (social and behavioral sciences, computing, linguistics) and the list of research themes. Wikidata Q13420675 pins the identity to enwiki \"Library and information science.\"",
+      "uncertainty": "Neither ASIS&T nor iSchools provides a precise founding date for the unified LIS field or a canonical list of subfields. The iSchools About page does not explicitly use the label 'library and information science,' preferring 'information science'; the field's scope as stated encompasses the library-science half by reference to its doctoral programs and member schools.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:bibliometrics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Bibliometrics is the application of statistical and quantitative methods to the study of the production, communication, and use of scientific and scholarly publications. The international journal Scientometrics, published by Springer (co-published with Akadémiai Kiadó) and categorized under \"Information Storage and Retrieval\" and \"Library Science,\" describes itself as publishing \"original research on all quantitative aspects of the production, communication, and use of scientific and technological information,\" encompassing both theoretical and empirical studies. The International Society for Scientometrics and Informetrics (ISSI) characterizes related quantitative approaches—including informetrics, scientometrics, and webometrics—as constituting an interdisciplinary study of science. Core methods include citation analysis, productivity measurement of researchers and institutions, and mapping of knowledge domains.",
+      "source_hints": [
+        {
+          "source": "Springer — Scientometrics journal, Aims and Scope (Wayback snapshot 2024-06-01)",
+          "url": "https://web.archive.org/web/20240601120000/https://link.springer.com/journal/11192/aims-and-scope",
+          "fetched": true
+        },
+        {
+          "source": "ISSI — About",
+          "url": "https://www.issi-society.org/about/",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q603441 (identity pin only; enwiki sitelink \"Bibliometrics\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q603441.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "The Scientometrics Aims and Scope page (Wayback) supplies the journal's scope statement verbatim (\"original research on all quantitative aspects of the production, communication, and use of scientific and technological information\") and the imprint (Akadémiai Kiadó, co-published with Springer) and subject categories. ISSI's About page supplies the characterization of the field as covering informetrics, scientometrics, and webometrics in a quantitative interdisciplinary study of science. Wikidata Q603441 pins the identity to enwiki \"Bibliometrics.\" The last sentence on core methods (citation analysis, productivity measurement, domain mapping) is not sourced to a fetched document and is therefore omitted from the source-supported claims.",
+      "uncertainty": "The last sentence of the summary (\"Core methods include citation analysis...\") is not grounded in a fetched source and should be flagged: it is retained as contextual framing but not supported by a cited source. The ISSI page does not define bibliometrics explicitly. No founding figure or date was confirmed from a fetched source.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:computer-graphics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Computer graphics is the subfield of computer science concerned with the generation, manipulation, and rendering of visual images and interactive content using computational systems. ACM SIGGRAPH—the premier professional organization in the field—describes its focus as \"computer graphics and interactive techniques\" and characterizes its community as spanning researchers, artists, developers, filmmakers, scientists, and business professionals united by shared interest in these areas. The organization hosts the annual SIGGRAPH conference and notes affiliated interests in digital arts, multimedia, scientific visualization, and human-computer interfaces. IEEE publishes the IEEE Transactions on Visualization and Computer Graphics (TVCG), the field's leading archival journal.",
+      "source_hints": [
+        {
+          "source": "ACM SIGGRAPH — About",
+          "url": "https://www.siggraph.org/about/",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q150971 (identity pin only; enwiki sitelink \"Computer graphics (computer science)\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q150971.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "The SIGGRAPH About page supplies the organizational description (\"computer graphics and interactive techniques\"), the community characterization, and the list of affiliated topic areas (digital arts, multimedia, scientific visualization, human-computer interfaces). The last sentence about IEEE TVCG is not sourced to a fetched page.",
+      "uncertainty": "No founding year for ACM SIGGRAPH was found on the fetched About page. The SIGGRAPH About page mentions the CG-ARTS affiliated organization was established in 1991, but does not state SIGGRAPH's own founding date. The IEEE TVCG sentence is not grounded in a successfully fetched source (IEEE Xplore returned 418); it should be verified or dropped in QC.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:computer-networks",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Computer networks is the subfield of computer science and electrical engineering concerned with the interconnection of computing devices for the purpose of communicating and sharing data. Britannica defines a computer network as \"two or more computers that are connected to each other to communicate data electronically,\" with network architectures standardized under frameworks including the ISO Open Systems Interconnection (OSI) model and IBM's Systems Network Architecture (SNA). ACM SIGCOMM—described as \"ACM's professional forum for the discussion of topics in the field of communications and computer networks\"—covers the technical design and engineering, regulation, operations, and social implications of computer networking, with particular emphasis on systems engineering and architectural questions. The field's foundational contributions include the development of packet switching and ARPANET in the late 1960s, to which researchers such as Leonard Kleinrock and Lawrence Roberts contributed.",
+      "source_hints": [
+        {
+          "source": "Encyclopædia Britannica — \"Computer network\"",
+          "url": "https://www.britannica.com/technology/computer-network",
+          "fetched": true
+        },
+        {
+          "source": "ACM SIGCOMM — About (Wayback snapshot 2024-06-10)",
+          "url": "https://web.archive.org/web/20240610062149/http://www.sigcomm.org/about",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q1301371 (identity pin only; enwiki sitelink \"Computer network\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q1301371.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "Britannica's \"Computer network\" entry supplies the definition, the mention of OSI and SNA architectures, and the names Kleinrock and Lawrence Roberts. SIGCOMM's About page (Wayback) supplies the verbatim description of the SIG's scope. Wikidata Q1301371 pins the identity to enwiki \"Computer network.\" The last sentence about packet switching and ARPANET is not directly quoted from a fetched document.",
+      "uncertainty": "Britannica mentions Kleinrock and Lawrence Roberts but does not provide specific dates on the fetched page. The ARPANET/packet-switching historical claim is not verbatim from a fetched source; QC should verify or strip it. Britannica also lists Geoffrey Hinton among historical figures, which seems anomalous for this article and was not included.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:cryptography",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Cryptography is the science of constructing and analyzing techniques for securing communications and data against adversarial access, encompassing both the design of encryption schemes and the analysis of their security. Britannica's entry on cryptology defines the field as \"the science concerned with data communication and storage in secure and usually secret form\" and distinguishes cryptography (transforming information using secret keys) from cryptanalysis (\"the science and art of recovering or forging cryptographically secured information without knowledge of the key\"). The Encyclopedia of Mathematics notes that the field expanded dramatically following Diffie and Hellman's introduction of public-key cryptography and the development of the RSA system by Rivest, Shamir, and Adleman, which relies on the computational difficulty of factoring large primes. The International Association for Cryptologic Research (IACR), founded to further research in the field, publishes the Journal of Cryptology, Transactions on Symmetric Cryptology, and Communications in Cryptology and sponsors major annual conferences including Crypto, Eurocrypt, and Asiacrypt.",
+      "source_hints": [
+        {
+          "source": "Encyclopædia Britannica — \"Cryptology\"",
+          "url": "https://www.britannica.com/topic/cryptology",
+          "fetched": true
+        },
+        {
+          "source": "Encyclopedia of Mathematics — \"Cryptography\"",
+          "url": "https://encyclopediaofmath.org/wiki/Cryptography",
+          "fetched": true
+        },
+        {
+          "source": "IACR — About",
+          "url": "https://www.iacr.org/about/",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q8789 (identity pin only; enwiki sitelink \"Cryptography\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q8789.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "Britannica's cryptology entry supplies the definition of cryptology and the cryptography/cryptanalysis distinction (\"the science and art of recovering or forging...\"). The Encyclopedia of Mathematics entry supplies the Diffie-Hellman public-key breakthrough, the RSA system (Rivest, Shamir, Adleman), and the factoring-difficulty basis. IACR's About page supplies the organization's name and purpose, its publications (Journal of Cryptology, Transactions on Symmetric Cryptology, Communications in Cryptology), and the conference names (Crypto, Eurocrypt, Asiacrypt). Wikidata Q8789 pins identity to enwiki \"Cryptography.\"",
+      "uncertainty": "The IACR About page does not state the founding year of IACR; the summary omits this rather than infer it from training knowledge. The EoM entry was written circa 1988 and notes RSA had not been broken at that time; no more recent date is confirmed from a fetched source.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:digital-libraries",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Digital libraries is the subfield of library and information science and computer science concerned with the creation, management, preservation, and access of digital collections of information resources. Britannica describes a digital library (also called a virtual library) as a collection of information resources accessible electronically, eliminating the need for users to visit a physical building, while noting that users still require assistance locating desired information within such collections. The ACM/IEEE Joint Conference on Digital Libraries (JCDL)—described as \"a major international forum focusing on digital libraries and associated technical, practical, and social issues\"—combines the annual events previously sponsored separately by ACM and IEEE-CS and presents the Vannevar Bush Best Paper Award for outstanding contributions to the field. Research topics in the field include metadata standards, information architecture, content preservation, search and retrieval, and the social dimensions of digital access.",
+      "source_hints": [
+        {
+          "source": "Encyclopædia Britannica — \"Digital library\"",
+          "url": "https://www.britannica.com/technology/digital-library",
+          "fetched": true
+        },
+        {
+          "source": "JCDL — Home (Wayback snapshot 2024-06-01)",
+          "url": "https://web.archive.org/web/20240601000000/https://www.jcdl.org/",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q212805 (identity pin only; enwiki sitelink \"Digital library\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q212805.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "Britannica's \"Digital library\" entry supplies the definition (electronic access, no physical building needed) and the observation about users still needing help to locate information. The JCDL Wayback page supplies the characterization as \"a major international forum,\" the merger of ACM and IEEE-CS conferences, and the Vannevar Bush Best Paper Award. Wikidata Q212805 pins identity to enwiki \"Digital library.\" The last sentence on research topics is not sourced to a fetched document.",
+      "uncertainty": "The final sentence on research topics (metadata, preservation, etc.) is not directly supported by a fetched source. The Britannica entry was brief and did not include historical founding dates; no specific historical figure was confirmed from the fetched sources.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:information-retrieval",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Information retrieval is the subfield of computer science and library and information science concerned with the representation, storage, and retrieval of information in response to queries. Britannica defines information retrieval as the \"recovery of information, especially in a database stored in a computer,\" with methods that include keyword searching, navigation by hypertext links, and techniques incorporating natural language processing. ACM SIGIR (Special Interest Group on Information Retrieval), established in 1963, promotes \"research, development and education in the area of search and other information access technologies\" and has sponsored the annual International ACM SIGIR Conference since 1971. The ACM SIGIR Forum serves as the organization's primary publication for the research community.",
+      "source_hints": [
+        {
+          "source": "Encyclopædia Britannica — \"Information retrieval\"",
+          "url": "https://www.britannica.com/technology/information-retrieval",
+          "fetched": true
+        },
+        {
+          "source": "ACM SIGIR — About",
+          "url": "https://sigir.org/about/",
+          "fetched": true
+        },
+        {
+          "source": "ACM SIGIR — History (inaugural conference date)",
+          "url": "https://sigir.org/about/history/",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q816826 (identity pin only; enwiki sitelink \"Information retrieval\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q816826.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "Britannica's entry supplies the definition (\"recovery of information, especially in a database\") and the methods (keyword searching, hypertext navigation, natural language processing). SIGIR's About page supplies the founding date (1963) and the scope statement (\"search and other information access technologies\") and publications (SIGIR Forum). The History page notes the inaugural conference in 1971 (with a first labeled \"1st Annual International ACM SIGIR Conference\" in 1978, but the history page documents a 1971 event as the first conference). Wikidata Q816826 pins identity to enwiki \"Information retrieval.\"",
+      "uncertainty": "The SIGIR History page lists the inaugural conference as 1971 but labels a 1978 event as the \"1st Annual International ACM SIGIR Conference\"—the summary states 1971 as the first conference date per the history page, but this should be verified in QC. The Britannica page for information retrieval was accessible but its content was limited.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:social-computing",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Social computing is the area of computer science that studies the design and use of computational systems and technologies in relation to social behavior, interaction, and organizations. The ACM Conference on Computer-Supported Cooperative Work and Social Computing (CSCW) is described as \"the premier venue for research in the design and use of technologies that affect groups, organizations, communities, and networks,\" exploring \"the technical, social, material, and theoretical challenges of designing technology to support collaborative work and life activities.\" Research themes in the field include groupware, social network analysis, crowdsourcing, online communities, and the social implications of networked communication. The conference series, which dates to 1986, is sponsored by ACM SIGCHI.",
+      "source_hints": [
+        {
+          "source": "ACM CSCW 2026 — Home",
+          "url": "https://cscw.acm.org/",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q615684 (identity pin only; enwiki sitelink \"Social computing\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q615684.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "The CSCW homepage supplies the conference description verbatim (\"premier venue for research in the design and use of technologies that affect groups...\") and the elaboration about technical, social, material, and theoretical challenges. Wikidata Q615684 pins identity to enwiki \"Social computing.\" The third sentence (research themes) and the 1986 founding date for CSCW are not drawn from a fetched source.",
+      "uncertainty": "The 1986 founding date for CSCW and the enumerated research themes (groupware, social network analysis, crowdsourcing, etc.) are not supported by a fetched source. QC should verify or remove the 1986 claim and the research-theme list. The CSCW page does not use the term 'social computing' explicitly in the fetched text; it appears in the conference's full title only.",
+      "ambiguous": true
+    },
+    {
+      "node_id": "subfield:software-engineering",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Software engineering is the discipline concerned with the systematic application of engineering principles to the specification, design, development, testing, and maintenance of software systems. Britannica defines it as \"the discipline concerned with the application of theory, knowledge, and practice to building reliable software systems that satisfy the computing requirements of customers and users,\" applicable to small-, medium-, and large-scale systems. Britannica also notes that Margaret Hamilton is credited with creating the term \"software engineer\" to describe her professional work, which included writing code for the command and lunar modules of NASA's Apollo program in the late 1960s and early 1970s. ACM Transactions on Software Engineering and Methodology (TOSEM), publishing since 1992, covers \"specification, design, development and maintenance\" and the tools, methodologies, languages, data structures, and algorithms involved in building large, complex software systems.",
+      "source_hints": [
+        {
+          "source": "Encyclopædia Britannica — \"Software engineering\"",
+          "url": "https://www.britannica.com/technology/software-engineering",
+          "fetched": true
+        },
+        {
+          "source": "ACM TOSEM — Journal home (Wayback snapshot 2024-06-04)",
+          "url": "https://web.archive.org/web/20240604233123/https://dl.acm.org/journal/tosem",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q80993 (identity pin only; enwiki sitelink \"Software engineering\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q80993.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "Britannica's entry supplies the definition verbatim, the scope (small to large-scale systems), and the Margaret Hamilton attribution with the Apollo program context (late 1960s and early 1970s). TOSEM's Wayback page supplies the journal's scope statement verbatim (\"specification, design, development and maintenance\"), the founding year (Publication Years 1992–2024 per the bibliometrics panel), and the coverage of tools, methodologies, languages, data structures, and algorithms. Wikidata Q80993 pins identity to enwiki \"Software engineering.\"",
+      "uncertainty": "Britannica's software engineering page was described as a disambiguation/overview page with limited detail. The publication year range 1992–2024 is taken from the TOSEM bibliometrics panel rather than an explicit statement; QC should verify the founding year.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:theoretical-computer-science",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Theoretical computer science (TCS) is the branch of computer science concerned with the formal analysis of efficient computation and computational processes. The ACM Special Interest Group on Algorithms and Computation Theory (SIGACT) characterizes TCS as covering \"algorithms, data structures, computational complexity, parallel and distributed computation, probabilistic computation, quantum computation, automata theory, information theory, cryptography, program semantics and verification, machine learning, computational biology, computational economics, computational geometry, and computational number theory and algebra,\" with work in the field distinguished by its emphasis on mathematical technique and rigor. SIGACT itself is described as an international organization that \"fosters and promotes the discovery and dissemination of high quality research in theoretical computer science.\" Research in TCS is published in venues such as the annual ACM Symposium on Theory of Computing (STOC) and the IEEE Symposium on Foundations of Computer Science (FOCS).",
+      "source_hints": [
+        {
+          "source": "ACM SIGACT — Special Interest Group on Algorithms and Computation Theory (Wayback snapshot 2024-06-16)",
+          "url": "https://web.archive.org/web/20240616050609/https://www.acm.org/special-interest-groups/sigs/sigact",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q2878974 (identity pin only; enwiki sitelink \"Theoretical computer science\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q2878974.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "The SIGACT Wayback page supplies the definition of TCS (\"formal analysis of efficient computation and computational processes\"), the full enumerated topic list, the description of the field's emphasis on mathematical technique and rigor, and the organizational description (\"fosters and promotes the discovery and dissemination of high quality research in theoretical computer science\"). Wikidata Q2878974 pins identity to enwiki \"Theoretical computer science.\" The last sentence about STOC and FOCS is not drawn from a fetched source.",
+      "uncertainty": "The STOC and FOCS claim in the final sentence is not supported by a fetched document; QC should verify or remove it. The SIGACT page does not state when SIGACT was founded; that detail is omitted.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:visualization",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Visualization (in computing) is the study and practice of transforming data into visual representations to support tasks ranging from rapid observation to in-depth analysis. The IEEE VIS conference—the field's primary venue—defines visualization as \"the study of the transformation of data to visual representations, which provide cost-effective means for supporting a variety of data intelligence tasks,\" and describes it as having expanded to encompass scientific visualization, information visualization, and visual analytics. IEEE VIS organizes research across areas including theoretical and empirical work, visualization systems and rendering, data transformations, and visual analytics for decision-making. The field's primary archival publication is the IEEE Transactions on Visualization and Computer Graphics (TVCG).",
+      "source_hints": [
+        {
+          "source": "IEEE VIS 2024 — Area Model / Call for Participation",
+          "url": "https://ieeevis.org/year/2024/info/call-participation/area-model",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q451553 (identity pin only; enwiki sitelink \"Visualization (graphics)\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q451553.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "The IEEE VIS 2024 area model page supplies the definition of visualization verbatim (\"the study of the transformation of data to visual representations...\"), the three branches (scientific visualization, information visualization, visual analytics), and the six research areas enumerated. Wikidata Q451553 pins identity to enwiki \"Visualization (graphics).\" The final sentence about IEEE TVCG is not sourced to a successfully fetched document.",
+      "uncertainty": "The IEEE TVCG statement in the final sentence is not grounded in a fetched source (IEEE Xplore returned 418/blocked). QC should verify or strip it. The IEEE VIS page is a conference call-for-papers page rather than an encyclopedia entry; the definition given is authoritative as a field self-description but may reflect current conference framing rather than a durable disciplinary consensus.",
+      "ambiguous": false
+    }
+  ]
+}

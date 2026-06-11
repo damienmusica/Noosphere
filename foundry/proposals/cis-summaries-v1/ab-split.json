@@ -1,0 +1,38 @@
+{
+  "salt": "noosphere-session9-editorial-ab",
+  "method": "sha256(salt|node_id) ascending; first 11 = batch-a; model bit = parseInt(sha256(salt|model-assignment)[0],16)%2 (0: a=sonnet/b=opus, 1: a=opus/b=sonnet)",
+  "recorded_at": "2026-06-11, before generation and QC",
+  "model_assignment": {
+    "batch-a": "opus",
+    "batch-b": "sonnet"
+  },
+  "batch-a": [
+    "subfield:algorithms-and-data-structures",
+    "subfield:artificial-intelligence",
+    "subfield:computational-complexity-theory",
+    "subfield:computer-security",
+    "subfield:computer-vision",
+    "subfield:formal-languages-and-automata-theory",
+    "subfield:history-of-computing",
+    "subfield:human-computer-interaction",
+    "subfield:knowledge-organization",
+    "subfield:natural-language-processing",
+    "subfield:programming-languages"
+  ],
+  "batch-b": [
+    "field:library-and-information-science",
+    "subfield:bibliometrics",
+    "subfield:computer-graphics",
+    "subfield:computer-networks",
+    "subfield:cryptography",
+    "subfield:digital-libraries",
+    "subfield:information-retrieval",
+    "subfield:social-computing",
+    "subfield:software-engineering",
+    "subfield:theoretical-computer-science",
+    "subfield:visualization"
+  ],
+  "out_of_sample": [
+    "subfield:machine-learning (stale one-line summary refresh; excluded from all A/B metrics)"
+  ]
+}
