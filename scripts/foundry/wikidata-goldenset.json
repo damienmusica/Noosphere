@@ -1,0 +1,1180 @@
+{
+  "version": 1,
+  "description": "Machine-readable regression golden set for scripts/foundry/resolve-wikidata.ts. Encodes every past verified resolution verdict (philosophy 61 + formal sciences 44 + CS 23 + ML-foundations 11), the manual-selection rulings (decision-log (9) path), the upstream gaps, and the rejected orphan stub. The resolver re-run is maintainer-local (network); the comparison (scripts/foundry/goldenset-check.ts) is fully offline against this file — CI stays network-free.",
+  "provenance": "Derived 2026-06-11 (session #10) by joining foundry/batches/*.json seed manifests with /data/nodes.json verified QIDs; manual/gap annotations from the permanent records in foundry/proposals/*/grounding-report.md, qid-adversarial-audit-cis-v1/report.md and the vault decision log (8)(9)(13)(24)(25).",
+  "expectation_semantics": {
+    "verified + rank1_expected": "FAIL if expected_qid absent from candidates; WARN if present but not selected_qid; PASS if selected.",
+    "verified + manual_path": "INFO either way — v3 baseline did not surface these as rank-1; an improvement (expected_qid surfaced/selected) is reported as IMPROVED, absence is v3 parity, never FAIL.",
+    "upstream_gap": "PASS when unresolved/no selection; FAIL if a must_not_select QID is selected; INFO if a new candidate is selected (manual review — upstream may have matured)."
+  },
+  "entries": [
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy",
+      "node_id": "field:philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q5891",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Metaphysics",
+      "node_id": "subfield:metaphysics",
+      "verdict": "verified",
+      "expected_qid": "Q35277",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Ontology",
+      "node_id": "subfield:ontology",
+      "verdict": "verified",
+      "expected_qid": "Q44325",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Epistemology",
+      "node_id": "subfield:epistemology",
+      "verdict": "verified",
+      "expected_qid": "Q9471",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Ethics",
+      "node_id": "subfield:ethics",
+      "verdict": "verified",
+      "expected_qid": "Q9465",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Logic",
+      "node_id": "subfield:logic",
+      "verdict": "verified",
+      "expected_qid": "Q8078",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Aesthetics",
+      "node_id": "subfield:aesthetics",
+      "verdict": "verified",
+      "expected_qid": "Q35986",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Axiology",
+      "node_id": "subfield:axiology",
+      "verdict": "verified",
+      "expected_qid": "Q186531",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Mind",
+      "node_id": "subfield:philosophy-of-mind",
+      "verdict": "verified",
+      "expected_qid": "Q23407",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Language",
+      "node_id": "subfield:philosophy-of-language",
+      "verdict": "verified",
+      "expected_qid": "Q484761",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Science",
+      "node_id": "subfield:philosophy-of-science",
+      "verdict": "verified",
+      "expected_qid": "Q59115",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Mathematics",
+      "node_id": "subfield:philosophy-of-mathematics",
+      "verdict": "verified",
+      "expected_qid": "Q180536",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Religion",
+      "node_id": "subfield:philosophy-of-religion",
+      "verdict": "verified",
+      "expected_qid": "Q209295",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Law",
+      "node_id": "subfield:philosophy-of-law",
+      "verdict": "verified",
+      "expected_qid": "Q126842",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Political Philosophy",
+      "node_id": "subfield:political-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q179805",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Social Philosophy",
+      "node_id": "subfield:social-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q180592",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Action",
+      "node_id": "subfield:philosophy-of-action",
+      "verdict": "verified",
+      "expected_qid": "Q175661",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Perception",
+      "node_id": "subfield:philosophy-of-perception",
+      "verdict": "verified",
+      "expected_qid": "Q3300457",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Technology",
+      "node_id": "subfield:philosophy-of-technology",
+      "verdict": "verified",
+      "expected_qid": "Q279438",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Biology",
+      "node_id": "subfield:philosophy-of-biology",
+      "verdict": "verified",
+      "expected_qid": "Q1028964",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Physics",
+      "node_id": "subfield:philosophy-of-physics",
+      "verdict": "verified",
+      "expected_qid": "Q1165883",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Social Science",
+      "node_id": "subfield:philosophy-of-social-science",
+      "verdict": "verified",
+      "expected_qid": "Q3874380",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Bioethics",
+      "node_id": "subfield:bioethics",
+      "verdict": "verified",
+      "expected_qid": "Q194294",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Environmental Ethics",
+      "node_id": "subfield:environmental-ethics",
+      "verdict": "verified",
+      "expected_qid": "Q875686",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Business Ethics",
+      "node_id": "subfield:business-ethics",
+      "verdict": "verified",
+      "expected_qid": "Q873451",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Metaethics",
+      "node_id": "subfield:metaethics",
+      "verdict": "verified",
+      "expected_qid": "Q56003",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Normative Ethics",
+      "node_id": "subfield:normative-ethics",
+      "verdict": "verified",
+      "expected_qid": "Q1321845",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Analytic Philosophy",
+      "node_id": "subfield:analytic-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q183216",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Continental Philosophy",
+      "node_id": "subfield:continental-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q59104",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Phenomenology",
+      "node_id": "subfield:phenomenology",
+      "verdict": "verified",
+      "expected_qid": "Q179235",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Existentialism",
+      "node_id": "subfield:existentialism",
+      "verdict": "verified",
+      "expected_qid": "Q38066",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Pragmatism",
+      "node_id": "subfield:pragmatism",
+      "verdict": "verified",
+      "expected_qid": "Q126692",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Ancient Philosophy",
+      "node_id": "subfield:ancient-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q204100",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Medieval Philosophy",
+      "node_id": "subfield:medieval-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q192292",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Renaissance Philosophy",
+      "node_id": "subfield:renaissance-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q917440",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Early Modern Philosophy",
+      "node_id": "subfield:modern-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q860746",
+      "manual_path": true,
+      "notes": "PR #24: manual selection Q860746"
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Chinese Philosophy",
+      "node_id": "subfield:chinese-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q184663",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Indian Philosophy",
+      "node_id": "subfield:indian-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q376022",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Buddhist Philosophy",
+      "node_id": "subfield:buddhist-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q1001079",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Islamic Philosophy",
+      "node_id": "subfield:islamic-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q193104",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Jewish Philosophy",
+      "node_id": "subfield:jewish-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q837795",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "African Philosophy",
+      "node_id": "subfield:african-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q386260",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Japanese Philosophy",
+      "node_id": "subfield:japanese-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q1194146",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Korean Philosophy",
+      "node_id": "subfield:korean-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q1039392",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Latin American Philosophy",
+      "node_id": "subfield:latin-american-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q3745514",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Comparative Philosophy",
+      "node_id": "subfield:comparative-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q1284814",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of History",
+      "node_id": "subfield:philosophy-of-history",
+      "verdict": "verified",
+      "expected_qid": "Q190721",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Economics",
+      "node_id": "subfield:philosophy-of-economics",
+      "verdict": "verified",
+      "expected_qid": "Q1257388",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Feminist Philosophy",
+      "node_id": "subfield:feminist-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q1404532",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Race",
+      "node_id": "subfield:philosophy-of-race",
+      "verdict": "upstream_gap",
+      "notes": "upstream gap (no Wikidata field entity); PhilPapers grounding v1.2"
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Education",
+      "node_id": "subfield:philosophy-of-education",
+      "verdict": "verified",
+      "expected_qid": "Q564371",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Critical Theory",
+      "node_id": "subfield:critical-theory",
+      "verdict": "verified",
+      "expected_qid": "Q301751",
+      "manual_path": true,
+      "notes": "PR #24: manual sitelink+alias verification (resolver rank-1 was in fact correct; first-pass QC strip overturned)"
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Hermeneutics",
+      "node_id": "subfield:hermeneutics",
+      "verdict": "verified",
+      "expected_qid": "Q102686",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Metaphilosophy",
+      "node_id": "subfield:metaphilosophy",
+      "verdict": "verified",
+      "expected_qid": "Q596284",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Decision Theory (philosophical)",
+      "node_id": "subfield:decision-theory",
+      "verdict": "verified",
+      "expected_qid": "Q177571",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Natural Philosophy",
+      "node_id": "subfield:natural-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q269323",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Scholasticism",
+      "node_id": "subfield:scholasticism",
+      "verdict": "verified",
+      "expected_qid": "Q41679",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Western Esotericism (philosophy of)",
+      "node_id": "subfield:esotericism-and-theosophy",
+      "verdict": "verified",
+      "expected_qid": "Q7988481",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Cognitive Science",
+      "node_id": "subfield:philosophy-of-cognitive-science",
+      "verdict": "upstream_gap",
+      "notes": "upstream gap; PhilPapers grounding v1.2"
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Psychiatry",
+      "node_id": "subfield:philosophy-of-psychiatry",
+      "verdict": "verified",
+      "expected_qid": "Q27333716",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Philosophy of Information",
+      "node_id": "subfield:philosophy-of-information",
+      "verdict": "verified",
+      "expected_qid": "Q2629585",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Ethics of Artificial Intelligence",
+      "node_id": "subfield:ethics-of-ai",
+      "verdict": "verified",
+      "expected_qid": "Q12727779",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:philosophy-skeleton-v1",
+      "seed_label": "Experimental Philosophy",
+      "node_id": "subfield:experimental-philosophy",
+      "verdict": "verified",
+      "expected_qid": "Q1384451",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Probability theory",
+      "node_id": "subfield:probability-theory",
+      "verdict": "verified",
+      "expected_qid": "Q5862903",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Calculus",
+      "node_id": "subfield:calculus",
+      "verdict": "verified",
+      "expected_qid": "Q149972",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Mathematical optimization",
+      "node_id": "subfield:optimization",
+      "verdict": "verified",
+      "expected_qid": "Q141495",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Random variable",
+      "node_id": "concept:random-variable",
+      "verdict": "verified",
+      "expected_qid": "Q176623",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Probability distribution",
+      "node_id": "concept:probability-distribution",
+      "verdict": "verified",
+      "expected_qid": "Q200726",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Mathematical Logic",
+      "node_id": "subfield:mathematical-logic",
+      "verdict": "verified",
+      "expected_qid": "Q1166618",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Algebra",
+      "node_id": "subfield:algebra",
+      "verdict": "verified",
+      "expected_qid": "Q3968",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Number Theory",
+      "node_id": "subfield:number-theory",
+      "verdict": "verified",
+      "expected_qid": "Q12479",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Geometry",
+      "node_id": "subfield:geometry",
+      "verdict": "verified",
+      "expected_qid": "Q8087",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Differential Geometry",
+      "node_id": "subfield:differential-geometry",
+      "verdict": "verified",
+      "expected_qid": "Q188444",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Algebraic Geometry",
+      "node_id": "subfield:algebraic-geometry",
+      "verdict": "verified",
+      "expected_qid": "Q180969",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Topology",
+      "node_id": "subfield:topology",
+      "verdict": "verified",
+      "expected_qid": "Q42989",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Algebraic Topology",
+      "node_id": "subfield:algebraic-topology",
+      "verdict": "verified",
+      "expected_qid": "Q212803",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Mathematical Analysis",
+      "node_id": "subfield:mathematical-analysis",
+      "verdict": "verified",
+      "expected_qid": "Q7754",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Complex Analysis",
+      "node_id": "subfield:complex-analysis",
+      "verdict": "verified",
+      "expected_qid": "Q193756",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Functional Analysis",
+      "node_id": "subfield:functional-analysis",
+      "verdict": "verified",
+      "expected_qid": "Q190549",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Harmonic Analysis",
+      "node_id": "subfield:harmonic-analysis",
+      "verdict": "verified",
+      "expected_qid": "Q876215",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Differential Equations",
+      "node_id": "subfield:differential-equations",
+      "verdict": "verified",
+      "expected_qid": "Q28575007",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Partial Differential Equations",
+      "node_id": "subfield:partial-differential-equations",
+      "verdict": "verified",
+      "expected_qid": "Q271977",
+      "manual_path": true,
+      "notes": "session #3: plural seed label surfaced books only; manual selection Q271977 — resolver-v4 singular-fallback target"
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Dynamical Systems",
+      "node_id": "subfield:dynamical-systems",
+      "verdict": "verified",
+      "expected_qid": "Q3174497",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Combinatorics",
+      "node_id": "subfield:combinatorics",
+      "verdict": "verified",
+      "expected_qid": "Q76592",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Set Theory",
+      "node_id": "subfield:set-theory",
+      "verdict": "verified",
+      "expected_qid": "Q12482",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Model Theory",
+      "node_id": "subfield:model-theory",
+      "verdict": "verified",
+      "expected_qid": "Q467606",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Proof Theory",
+      "node_id": "subfield:proof-theory",
+      "verdict": "verified",
+      "expected_qid": "Q852732",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Computability Theory",
+      "node_id": "subfield:computability-theory",
+      "verdict": "verified",
+      "expected_qid": "Q818930",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Category Theory",
+      "node_id": "subfield:category-theory",
+      "verdict": "verified",
+      "expected_qid": "Q217413",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Numerical Analysis",
+      "node_id": "subfield:numerical-analysis",
+      "verdict": "verified",
+      "expected_qid": "Q11216",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Mathematical Physics",
+      "node_id": "subfield:mathematical-physics",
+      "verdict": "verified",
+      "expected_qid": "Q156495",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Applied Mathematics",
+      "node_id": "subfield:applied-mathematics",
+      "verdict": "verified",
+      "expected_qid": "Q33521",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Operations Research",
+      "node_id": "subfield:operations-research",
+      "verdict": "verified",
+      "expected_qid": "Q194292",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Game Theory",
+      "node_id": "subfield:game-theory",
+      "verdict": "verified",
+      "expected_qid": "Q44455",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Information Theory",
+      "node_id": "subfield:information-theory",
+      "verdict": "verified",
+      "expected_qid": "Q131222",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Financial Mathematics",
+      "node_id": "subfield:financial-mathematics",
+      "verdict": "verified",
+      "expected_qid": "Q335632",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Bayesian Statistics",
+      "node_id": "subfield:bayesian-statistics",
+      "verdict": "verified",
+      "expected_qid": "Q4874481",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Time Series Analysis",
+      "node_id": "subfield:time-series-analysis",
+      "verdict": "verified",
+      "expected_qid": "Q11850042",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Computational Statistics",
+      "node_id": "subfield:computational-statistics",
+      "verdict": "verified",
+      "expected_qid": "Q5157340",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Mathematical Statistics",
+      "node_id": "subfield:mathematical-statistics",
+      "verdict": "verified",
+      "expected_qid": "Q745328",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "History of Mathematics",
+      "node_id": "subfield:history-of-mathematics",
+      "verdict": "verified",
+      "expected_qid": "Q185264",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Mathematics Education",
+      "node_id": "subfield:mathematics-education",
+      "verdict": "verified",
+      "expected_qid": "Q853077",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Control Theory",
+      "node_id": "subfield:control-theory",
+      "verdict": "verified",
+      "expected_qid": "Q6501221",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Mathematical Biology",
+      "node_id": "subfield:mathematical-biology",
+      "verdict": "verified",
+      "expected_qid": "Q751611",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Systems Science",
+      "node_id": "field:systems-science",
+      "verdict": "verified",
+      "expected_qid": "Q2167061",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Cybernetics",
+      "node_id": "subfield:cybernetics",
+      "verdict": "verified",
+      "expected_qid": "Q123637",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-sciences-skeleton-v1",
+      "seed_label": "Applied Statistics",
+      "node_id": "subfield:applied-statistics",
+      "verdict": "verified",
+      "expected_qid": "Q1967088",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Algorithms and Data Structures",
+      "node_id": "subfield:algorithms-and-data-structures",
+      "verdict": "verified",
+      "expected_qid": "Q13636890",
+      "manual_path": true,
+      "notes": "session #8 manual: Q13636890 Algorithmics"
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Computational Complexity Theory",
+      "node_id": "subfield:computational-complexity-theory",
+      "verdict": "verified",
+      "expected_qid": "Q205084",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Programming Languages",
+      "node_id": "subfield:programming-languages",
+      "verdict": "verified",
+      "expected_qid": "Q2670534",
+      "manual_path": true,
+      "notes": "session #8 manual: Q2670534 Programming language theory (artifact-vs-discipline split)"
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Software Engineering",
+      "node_id": "subfield:software-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q80993",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Computer Systems",
+      "node_id": "subfield:computer-systems",
+      "verdict": "upstream_gap",
+      "notes": "upstream gap; Q105981125 is a 0-sitelink/0-alias orphan stub REJECTED by QC — must never be selected (resolver-v4 orphan-stub target)",
+      "must_not_select": [
+        "Q105981125"
+      ]
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Computer Networks",
+      "node_id": "subfield:computer-networks",
+      "verdict": "verified",
+      "expected_qid": "Q1301371",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Distributed and Parallel Computing",
+      "node_id": "subfield:distributed-and-parallel-computing",
+      "verdict": "upstream_gap",
+      "notes": "upstream gap; no combined entity (0 search results, re-checked session #9)"
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Databases and Information Systems",
+      "node_id": "subfield:databases-and-information-systems",
+      "verdict": "upstream_gap",
+      "notes": "upstream gap; rank-1 was a scholarly article (re-checked session #9)"
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Artificial Intelligence",
+      "node_id": "subfield:artificial-intelligence",
+      "verdict": "verified",
+      "expected_qid": "Q11660",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Computer Vision",
+      "node_id": "subfield:computer-vision",
+      "verdict": "verified",
+      "expected_qid": "Q844240",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Natural Language Processing",
+      "node_id": "subfield:natural-language-processing",
+      "verdict": "verified",
+      "expected_qid": "Q30642",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Human-Computer Interaction",
+      "node_id": "subfield:human-computer-interaction",
+      "verdict": "verified",
+      "expected_qid": "Q207434",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Computer Graphics",
+      "node_id": "subfield:computer-graphics",
+      "verdict": "verified",
+      "expected_qid": "Q150971",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Cryptography",
+      "node_id": "subfield:cryptography",
+      "verdict": "verified",
+      "expected_qid": "Q8789",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Computer Security",
+      "node_id": "subfield:computer-security",
+      "verdict": "verified",
+      "expected_qid": "Q3510521",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Theoretical Computer Science",
+      "node_id": "subfield:theoretical-computer-science",
+      "verdict": "verified",
+      "expected_qid": "Q2878974",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Formal Languages and Automata Theory",
+      "node_id": "subfield:formal-languages-and-automata-theory",
+      "verdict": "verified",
+      "expected_qid": "Q214526",
+      "manual_path": true,
+      "notes": "session #8 manual: Q214526 Automata theory (compound label, 0 search hits) — resolver-v4 component-decomposition target"
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Scientific Computing",
+      "node_id": "subfield:scientific-computing",
+      "verdict": "verified",
+      "expected_qid": "Q117801",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Information Retrieval",
+      "node_id": "subfield:information-retrieval",
+      "verdict": "verified",
+      "expected_qid": "Q816826",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Quantum Computing",
+      "node_id": "subfield:quantum-computing",
+      "verdict": "verified",
+      "expected_qid": "Q17995793",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Library and Information Science",
+      "node_id": "field:library-and-information-science",
+      "verdict": "verified",
+      "expected_qid": "Q13420675",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Knowledge Organization",
+      "node_id": "subfield:knowledge-organization",
+      "verdict": "verified",
+      "expected_qid": "Q1929761",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Digital Libraries",
+      "node_id": "subfield:digital-libraries",
+      "verdict": "verified",
+      "expected_qid": "Q212805",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Bibliometrics and Scientometrics",
+      "node_id": "subfield:bibliometrics",
+      "renamed_from": "subfield:bibliometrics-and-scientometrics",
+      "verdict": "verified",
+      "expected_qid": "Q603441",
+      "manual_path": true,
+      "notes": "session #8 manual + rename ruling (seed \"Bibliometrics and Scientometrics\" -> subfield:bibliometrics, Q603441) — resolver-v4 component-decomposition target"
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Social Computing",
+      "node_id": "subfield:social-computing",
+      "verdict": "verified",
+      "expected_qid": "Q615684",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "Visualization",
+      "node_id": "subfield:visualization",
+      "verdict": "verified",
+      "expected_qid": "Q451553",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:computer-and-information-sciences-skeleton-v1",
+      "seed_label": "History of Computing",
+      "node_id": "subfield:history-of-computing",
+      "verdict": "verified",
+      "expected_qid": "Q2735691",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:machine-learning-foundations-v1",
+      "seed_label": "Mathematics",
+      "node_id": "field:mathematics",
+      "verdict": "verified",
+      "expected_qid": "Q395",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:machine-learning-foundations-v1",
+      "seed_label": "Linear algebra",
+      "node_id": "subfield:linear-algebra",
+      "verdict": "verified",
+      "expected_qid": "Q82571",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:machine-learning-foundations-v1",
+      "seed_label": "Calculus",
+      "node_id": "subfield:calculus",
+      "verdict": "verified",
+      "expected_qid": "Q149972",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:machine-learning-foundations-v1",
+      "seed_label": "Probability theory",
+      "node_id": "subfield:probability-theory",
+      "verdict": "verified",
+      "expected_qid": "Q5862903",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:machine-learning-foundations-v1",
+      "seed_label": "Statistics",
+      "node_id": "field:statistics",
+      "verdict": "verified",
+      "expected_qid": "Q12483",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:machine-learning-foundations-v1",
+      "seed_label": "Optimization",
+      "node_id": "subfield:optimization",
+      "verdict": "verified",
+      "expected_qid": "Q141495",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:machine-learning-foundations-v1",
+      "seed_label": "Machine learning",
+      "node_id": "subfield:machine-learning",
+      "renamed_from": "field:machine-learning",
+      "verdict": "verified",
+      "expected_qid": "Q2539",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:machine-learning-foundations-v1",
+      "seed_label": "Random variable",
+      "node_id": "concept:random-variable",
+      "verdict": "verified",
+      "expected_qid": "Q176623",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:machine-learning-foundations-v1",
+      "seed_label": "Probability distribution",
+      "node_id": "concept:probability-distribution",
+      "verdict": "verified",
+      "expected_qid": "Q200726",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:machine-learning-foundations-v1",
+      "seed_label": "Bayesian inference",
+      "node_id": "method:bayesian-inference",
+      "verdict": "verified",
+      "expected_qid": "Q41581",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:machine-learning-foundations-v1",
+      "seed_label": "Gradient descent",
+      "node_id": "method:gradient-descent",
+      "verdict": "verified",
+      "expected_qid": "Q1199743",
+      "manual_path": true,
+      "notes": "session #5 manual: Q1199743 via sitelink+alias verification"
+    }
+  ]
+}

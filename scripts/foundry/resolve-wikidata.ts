@@ -51,7 +51,7 @@ const REPO_ROOT = resolve(__dirname, "..", "..");
 
 // --- Constants (all non-secret) ---------------------------------------------
 const GENERATOR_NAME = "scripts/foundry/resolve-wikidata.ts";
-const GENERATOR_VERSION = 3 as const;
+const GENERATOR_VERSION = 4 as const;
 /**
  * Search breadth vs retained breadth. We consider (and entity-fetch) up to
  * SEARCH_LIMIT hits per seed so the correct entity can be recovered even when
@@ -232,6 +232,15 @@ const SCORE = {
   excluded: -200,
   exactLabel: 30,
   hasEnwiki: 10,
+  /**
+   * v4: an entity with zero sitelinks in ANY language and zero English aliases
+   * is an unverifiable orphan stub — QC cannot ground it in any encyclopedia
+   * article (measured: Q105981125 won rank-1 for "computer systems" in the CS
+   * batch and was rejected by QC for exactly this profile). The penalty pushes
+   * such a winner negative so the existing auto-reject path reports the seed
+   * unresolved instead of selecting garbage.
+   */
+  orphanStub: -150,
 } as const;
 /** If the top-two candidates score within this gap, flag the seed ambiguous. */
 const AMBIGUITY_GAP = 50;
@@ -363,6 +372,8 @@ interface CompactEntity {
   /** Wikidata `instance of` (P31) item QIDs, used for disambiguation. */
   instanceOf: string[];
   enwiki?: string;
+  /** v4: total sitelink count across ALL languages (orphan-stub detection). */
+  sitelinkCount: number;
   lastrevid?: number;
   modified?: string;
 }
@@ -402,6 +413,7 @@ async function fetchEntityData(qid: string): Promise<CompactEntity> {
     enwiki: enwikiTitle
       ? `https://en.wikipedia.org/wiki/${encodeURIComponent(enwikiTitle.replace(/ /g, "_"))}`
       : undefined,
+    sitelinkCount: Object.keys(entity.sitelinks ?? {}).length,
     lastrevid: typeof entity.lastrevid === "number" ? entity.lastrevid : undefined,
     modified: typeof entity.modified === "string" ? entity.modified : undefined,
   };
@@ -435,6 +447,12 @@ function scoreCandidate(
   hit: WbSearchHit,
   entity: CompactEntity,
   seed: FoundryBatch["seed_entities"][number],
+  /**
+   * v4: every query form that ran for this seed (primary + singular fallback +
+   * compound components), so a candidate found via a fallback form still earns
+   * its exact-label bonus against the form that found it.
+   */
+  queryForms: string[] = [],
 ): Disambiguation {
   const signals: string[] = [];
   const p31 = entity.instanceOf;
@@ -467,10 +485,14 @@ function scoreCandidate(
   const excluded = excludedHits.length > 0;
   const labels = [entity.label, hit.label ?? "", ...entity.aliases].map(normalizeLabel);
   // Compare against the sanitized search form too, so a qualified seed label
-  // ("Decision Theory (philosophical)") still earns its exact-label bonus.
-  const exactLabel =
-    labels.includes(normalizeLabel(seed.label)) ||
-    labels.includes(normalizeLabel(searchQueryFor(seed.label)));
+  // ("Decision Theory (philosophical)") still earns its exact-label bonus —
+  // and (v4) against every fallback query form that actually ran.
+  const compareForms = [
+    seed.label,
+    searchQueryFor(seed.label),
+    ...queryForms,
+  ].map(normalizeLabel);
+  const exactLabel = labels.some((l) => compareForms.includes(l));
 
   let score = 0;
   if (aligned) {
@@ -493,6 +515,15 @@ function scoreCandidate(
   if (entity.enwiki) {
     score += SCORE.hasEnwiki;
     signals.push("has English Wikipedia sitelink");
+  }
+  // v4 orphan-stub detection: zero sitelinks anywhere + zero English aliases
+  // means no encyclopedia article in any language can ground the identity.
+  if (entity.sitelinkCount === 0 && entity.aliases.length === 0) {
+    score += SCORE.orphanStub;
+    signals.push(
+      "orphan stub: no sitelinks in any language and no English aliases " +
+        "(unverifiable entity; Q105981125 precedent)",
+    );
   }
   if (p31.length === 0) {
     signals.push("no instance-of (P31) on entity; scored on label/sitelink only");
@@ -549,6 +580,52 @@ function searchQueryFor(label: string): string {
   return label.replace(/\s*\([^)]*\)/g, " ").replace(/\s+/g, " ").trim() || label;
 }
 
+/**
+ * v4 fallback A — singular-form variant of a query whose plural form finds
+ * only works (measured: "Partial Differential Equations" surfaced books only
+ * in the formal-sciences run; the discipline entity's label is singular).
+ * Last word only, with guards so academic mass nouns ("Mathematics",
+ * "Analysis", "Calculus") and short words are never mangled. Returns null
+ * when no safe variant exists.
+ */
+function singularVariant(query: string): string | null {
+  const words = query.split(/\s+/);
+  const last = words[words.length - 1];
+  if (!last) return null;
+  const lower = last.toLowerCase();
+  let singular: string | null = null;
+  if (lower.length > 4 && lower.endsWith("ies")) {
+    singular = last.slice(0, -3) + (last === last.toUpperCase() ? "Y" : "y");
+  } else if (
+    lower.length > 3 &&
+    lower.endsWith("s") &&
+    !/(ss|us|is|ics)$/.test(lower)
+  ) {
+    singular = last.slice(0, -1);
+  }
+  if (!singular) return null;
+  const variant = [...words.slice(0, -1), singular].join(" ");
+  return variant === query ? null : variant;
+}
+
+/**
+ * v4 fallback B — component decomposition for compound/conjunction labels
+ * that search as zero hits (measured: five compound CS seeds failed in v3 —
+ * "Formal Languages and Automata Theory", "Bibliometrics and Scientometrics",
+ * …; the same failure family reproduces in OpenAlex search, so it is a
+ * cross-provider property of compound labels, not a Wikidata quirk). Splits
+ * on textual conjunctions only. A winner found *only* via a component query
+ * is always flagged ambiguous: a component anchors part of the compound
+ * identity, so manual selection per decision-log (9) stays mandatory.
+ */
+function compoundComponents(query: string): string[] {
+  const parts = query
+    .split(/\s+(?:and|&)\s+/i)
+    .map((p) => p.trim())
+    .filter((p) => p.length >= 3);
+  return parts.length >= 2 ? parts : [];
+}
+
 async function resolveSeed(
   seed: FoundryBatch["seed_entities"][number],
 ): Promise<SourcePackResult> {
@@ -570,60 +647,139 @@ async function resolveSeed(
     notes.push(`query sanitized: parenthetical qualifier stripped from "${seed.label}"`);
   }
 
-  let hits: WbSearchHit[];
-  try {
-    hits = await searchWikidata(query, SEARCH_LIMIT);
-  } catch (err) {
-    result.status = "error";
-    notes.push(`search failed: ${(err as Error).message}`);
-    return result;
-  }
-
-  if (hits.length === 0) {
-    notes.push("no Wikidata candidates found for this label");
-    return result;
-  }
-
-  // Entity-fetch every hit (to read P31), keeping the provider's order so it can
-  // serve as a stable tiebreaker after deterministic re-ranking.
+  // v4 multi-stage query strategy. Candidates from every stage are merged by
+  // QID and re-ranked together; fallback stages run ONLY when the stages so
+  // far produced no acceptable best (no hits, negative score, or no positive
+  // type signal) — a cleanly resolved primary query never triggers fallbacks,
+  // so v3-clean seeds see identical behavior and zero extra network calls.
   interface Scored {
     hit: WbSearchHit;
     entity: CompactEntity;
     disambiguation: Disambiguation;
     providerRank: number;
+    /** 0 = primary, 1 = singular fallback, 2 = component fallback. */
+    stagePriority: number;
+    stages: Set<string>;
   }
-  const scored: Scored[] = [];
-  let providerRank = 0;
-  for (const hit of hits) {
-    providerRank++;
-    await sleep(DELAY_MS);
+  const byQid = new Map<string, Scored>();
+  const queryForms: string[] = [];
+  let primarySearchFailed = false;
+
+  const runQuery = async (
+    form: string,
+    stagePriority: number,
+    stageName: string,
+  ): Promise<void> => {
+    queryForms.push(form);
+    let hits: WbSearchHit[];
     try {
-      const entity = await fetchEntityData(hit.id);
-      scored.push({
-        hit,
-        entity,
-        disambiguation: scoreCandidate(hit, entity, seed),
-        providerRank,
-      });
+      hits = await searchWikidata(form, SEARCH_LIMIT);
     } catch (err) {
-      notes.push(`could not fetch entity data for ${hit.id}: ${(err as Error).message}`);
+      if (stageName === "primary") primarySearchFailed = true;
+      notes.push(`search failed for "${form}": ${(err as Error).message}`);
+      return;
+    }
+    if (hits.length === 0) {
+      notes.push(`no Wikidata candidates for query "${form}"`);
+      return;
+    }
+    let providerRank = 0;
+    for (const hit of hits) {
+      providerRank++;
+      const existing = byQid.get(hit.id);
+      if (existing) {
+        existing.stages.add(stageName);
+        continue;
+      }
+      await sleep(DELAY_MS);
+      try {
+        const entity = await fetchEntityData(hit.id);
+        byQid.set(hit.id, {
+          hit,
+          entity,
+          disambiguation: scoreCandidate(hit, entity, seed, queryForms),
+          providerRank,
+          stagePriority,
+          stages: new Set([stageName]),
+        });
+      } catch (err) {
+        notes.push(`could not fetch entity data for ${hit.id}: ${(err as Error).message}`);
+      }
+    }
+  };
+
+  /** Re-score everything against all query forms run so far, then rank. */
+  const rescoreAndRank = (): Scored[] => {
+    const all = [...byQid.values()];
+    for (const s of all) {
+      s.disambiguation = scoreCandidate(s.hit, s.entity, seed, queryForms);
+    }
+    all.sort(
+      (a, b) =>
+        b.disambiguation.score - a.disambiguation.score ||
+        a.stagePriority - b.stagePriority ||
+        a.providerRank - b.providerRank ||
+        a.hit.id.localeCompare(b.hit.id),
+    );
+    return all;
+  };
+
+  /** Is the current best good enough that no further fallback should run? */
+  const acceptable = (rankedList: Scored[]): boolean => {
+    const best = rankedList[0];
+    return (
+      !!best &&
+      best.disambiguation.score >= 0 &&
+      best.disambiguation.positive_type_signal &&
+      !best.disambiguation.excluded
+    );
+  };
+
+  // Stage 1 — primary query (v3 behavior).
+  await runQuery(query, 0, "primary");
+  let ranked = rescoreAndRank();
+
+  // Stage 2 — singular-form fallback (v4-A).
+  if (!acceptable(ranked)) {
+    const singular = singularVariant(query);
+    if (singular) {
+      await sleep(DELAY_MS);
+      notes.push(`singular-form fallback query: "${singular}"`);
+      await runQuery(singular, 1, "singular");
+      ranked = rescoreAndRank();
     }
   }
 
-  if (scored.length === 0) {
-    result.status = "error";
+  // Stage 3 — compound decomposition fallback (v4-B).
+  if (!acceptable(ranked)) {
+    const components = compoundComponents(query);
+    if (components.length > 0) {
+      notes.push(
+        `compound-label decomposition fallback: ${components.map((c) => `"${c}"`).join(" | ")}`,
+      );
+      for (const component of components) {
+        await sleep(DELAY_MS);
+        await runQuery(component, 2, "component");
+        const componentSingular = singularVariant(component);
+        if (componentSingular) {
+          await sleep(DELAY_MS);
+          await runQuery(componentSingular, 2, "component");
+        }
+      }
+      ranked = rescoreAndRank();
+    }
+  }
+
+  if (byQid.size === 0) {
+    if (primarySearchFailed) {
+      result.status = "error";
+    } else if (!notes.some((n) => n.startsWith("no Wikidata candidates"))) {
+      notes.push("no Wikidata candidates found for this label");
+    }
     return result;
   }
 
-  // Re-rank by score; ties fall back to provider order, then QID for determinism.
-  scored.sort(
-    (a, b) =>
-      b.disambiguation.score - a.disambiguation.score ||
-      a.providerRank - b.providerRank ||
-      a.hit.id.localeCompare(b.hit.id),
-  );
-
-  const kept = scored.slice(0, CANDIDATE_LIMIT);
+  const kept = ranked.slice(0, CANDIDATE_LIMIT);
   result.candidates = kept.map((s, i) =>
     toCandidate(s.hit, i + 1, s.entity, s.disambiguation),
   );
@@ -649,10 +805,26 @@ async function resolveSeed(
   const bestCandidate = result.candidates[0]!;
   result.selected_qid = bestCandidate.qid;
 
-  if (best.providerRank !== 1) {
+  if (best.stagePriority === 0 && best.providerRank !== 1) {
     notes.push(
       `re-ranked: provider's first hit was not the best type match; ` +
         `selected ${bestCandidate.qid} (provider rank ${best.providerRank})`,
+    );
+  } else if (best.stagePriority === 1) {
+    notes.push(`selected via singular-form fallback query`);
+  }
+  // v4: a winner that no full-label query ever surfaced anchors only a
+  // component of a compound label — never auto-trustable.
+  if (
+    best.stagePriority === 2 &&
+    !best.stages.has("primary") &&
+    !best.stages.has("singular")
+  ) {
+    result.ambiguous = true;
+    notes.push(
+      `component anchor: selected candidate was found only by compound-label ` +
+        `decomposition; it anchors part of the compound identity — manual ` +
+        `selection per decision-log (9) required`,
     );
   }
   // Flag for review when the winner itself is a wrong/weak kind — judged by the
@@ -693,7 +865,7 @@ function buildSourcePack(
   const candidateCount = results.reduce((sum, r) => sum + r.candidates.length, 0);
 
   const pack: FoundrySourcePack = {
-    version: 3,
+    version: 4,
     provider: "wikidata",
     batch_id: manifest.id,
     batch_title: manifest.title,
@@ -731,6 +903,11 @@ function buildSourcePack(
       "Candidates are deterministically re-ranked by instance-of (P31) type fit; " +
         "rank 1 / selected_qid is a best-guess match, not a verified decision.",
       "Seeds flagged `ambiguous` need manual selection before any proposal step.",
+      "v4 query strategy: singular-form and compound-decomposition fallback " +
+        "queries run only when the primary query yields no acceptable best; " +
+        "component-anchored winners are always flagged ambiguous. Orphan-stub " +
+        "entities (0 sitelinks + 0 English aliases) are penalized into the " +
+        "negative-score auto-reject path.",
     ],
   };
 
