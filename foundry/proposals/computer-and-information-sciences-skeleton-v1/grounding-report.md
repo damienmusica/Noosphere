@@ -71,3 +71,27 @@
   plural-query failure: needs a component-split + alias-union fallback.
 - Orphan-stub acceptance: rank-1 with P31-discipline but zero sitelinks/aliases (Q105981125) should
   be auto-flagged harder than "ambiguous" — a no-sitelink discipline entity is unverifiable.
+
+---
+
+## Session #11 — QID-less manual review (v4 surfaced candidates; decision-log (9) multi-signal path)
+
+The resolver-v4 pit-stop (session #10) surfaced one candidate per remaining gap node. Verdicts
+(orchestrator, 2026-06-11):
+
+1. **computer-systems ← Q428691: REJECTED (confirmed).** Q428691 denotes *computer engineering* —
+   a separate field (hardware/EE side), not the systems-software umbrella this node means. The
+   session-#10 verdict stands; recorded as a `must_not_select` golden-set guard. Gap stands.
+2. **distributed-and-parallel-computing ← Q180634 (distributed computing): REJECTED — §12
+   node-shape ruling (keep combined).** A component anchor is acceptable only when the component
+   term umbrellas the combined community — the automata-theory pattern (session #8: formal
+   languages and automata theory anchored at Q214526 because "automata theory" names the joint
+   community). "Distributed computing" does not cover parallel computing (distinct
+   methodology/community wing; the combined name is the community's own — IEEE TPDS). Split was
+   also considered and rejected: the skeleton QC kept the combined node (session #8) and no new
+   evidence overturns it. `must_not_select` guard added; gap stands (v1.2 residency).
+3. **databases-and-information-systems ← Q64812807 (information systems studies): REJECTED —
+   same umbrella test.** The candidate covers the IS wing only, not databases. Node shape kept;
+   `must_not_select` guard added; gap stands.
+
+These three remain the CS continent's only proposed nodes — honest upstream gaps.

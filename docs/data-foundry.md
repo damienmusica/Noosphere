@@ -419,6 +419,12 @@ non-coverage, never silently dropped.
   radiation chemistry, photochemistry, stratigraphy, GR-as-standalone, network science, energy
   science, physics education research recorded as deliberate non-coverage (v2/cross-continent
   candidates per qc-report).
+- 2026-06-11 CIS QID anchors (session #11 ruling): a *component* entity may anchor a combined-name
+  node only when the component term umbrellas the combined community (automata-theory precedent:
+  formal-languages-and-automata-theory → Q214526); component anchors that cover only one wing are
+  rejected and the node stays an honest gap (distributed-and-parallel-computing ← Q180634,
+  databases-and-information-systems ← Q64812807 — both rejected, golden-set must_not_select
+  guards added). Node *shape* (combined vs split) is not reopened by anchor availability alone.
 
 ## 13. Cross-listing standard (multiple `part_of` memberships)
 

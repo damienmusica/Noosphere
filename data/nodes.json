@@ -2621,11 +2621,20 @@
     "indexable": true,
     "is_living_person": false,
     "external_ids": {
-      "wikidata": "Q117801"
+      "wikidata": "Q117801",
+      "openalex": "C459310"
     },
     "academic_status": "established",
     "created_at": "2026-06-11",
-    "updated_at": "2026-06-11"
+    "updated_at": "2026-06-11",
+    "external_metrics": {
+      "openalex": {
+        "works_count": 221978,
+        "cited_by_count": 3952071,
+        "as_of": "2026-06-11",
+        "entity": "https://openalex.org/C459310"
+      }
+    }
   },
   {
     "id": "subfield:information-retrieval",

@@ -906,9 +906,10 @@
       "seed_label": "Computer Systems",
       "node_id": "subfield:computer-systems",
       "verdict": "upstream_gap",
-      "notes": "upstream gap; Q105981125 is a 0-sitelink/0-alias orphan stub REJECTED by QC — must never be selected (resolver-v4 orphan-stub target)",
+      "notes": "upstream gap; Q105981125 is a 0-sitelink/0-alias orphan stub REJECTED by QC — must never be selected (resolver-v4 orphan-stub target) || Session #11 manual review: v4 fallback candidate Q428691 = 'computer engineering' REJECTED (separate field, session-#10 verdict confirmed) — must never be selected. Gap stands.",
       "must_not_select": [
-        "Q105981125"
+        "Q105981125",
+        "Q428691"
       ]
     },
     {
@@ -924,14 +925,20 @@
       "seed_label": "Distributed and Parallel Computing",
       "node_id": "subfield:distributed-and-parallel-computing",
       "verdict": "upstream_gap",
-      "notes": "upstream gap; no combined entity (0 search results, re-checked session #9)"
+      "notes": "upstream gap; no combined entity (0 search results, re-checked session #9) || Session #11 section-12 node-shape ruling: v4 component anchor Q180634 (distributed computing) REJECTED — a component anchor is acceptable only when the component term umbrellas the combined community (automata-theory pattern, session #8); 'distributed computing' does not cover parallel computing. Node shape kept (combined, IEEE TPDS-style community); gap stands.",
+      "must_not_select": [
+        "Q180634"
+      ]
     },
     {
       "batch": "batch:computer-and-information-sciences-skeleton-v1",
       "seed_label": "Databases and Information Systems",
       "node_id": "subfield:databases-and-information-systems",
       "verdict": "upstream_gap",
-      "notes": "upstream gap; rank-1 was a scholarly article (re-checked session #9)"
+      "notes": "upstream gap; rank-1 was a scholarly article (re-checked session #9) || Session #11 section-12 node-shape ruling: v4 component anchor Q64812807 (information systems studies) REJECTED — does not cover the databases component (same umbrella test). Node shape kept; gap stands.",
+      "must_not_select": [
+        "Q64812807"
+      ]
     },
     {
       "batch": "batch:computer-and-information-sciences-skeleton-v1",
