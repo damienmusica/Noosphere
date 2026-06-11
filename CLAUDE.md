@@ -84,7 +84,10 @@ to make implementation easier.
   docs/data-foundry.md §13); B-track external-metrics standing policy
   (decision (27): pre-validation report → write proceeds without per-item
   sign-off unless an escalation trigger fires); evidence permanence via
-  Wayback snapshots at QC time (docs/data-foundry.md §8, 2026-06-11).
+  Wayback snapshots at QC time (docs/data-foundry.md §8, 2026-06-11);
+  repo-hygiene devices (decision (29), 2026-06-11): session-close hygiene
+  check (vault workflow.md) + machine-enforced proposals-index consistency
+  and local .md link checks in `npm run validate:data`.
 
 ## Stack and dependencies
 
