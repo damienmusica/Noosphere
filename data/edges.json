@@ -2351,5 +2351,551 @@
       "proposed_at": "2026-06-11"
     },
     "note": "Cross-listing v1 second membership (vault decision log 2026-06-11 (21)): all three gate classification schemes carry logic inside mathematics via its symbolic/mathematical wing — MSC 03-XX 'Mathematical logic and foundations' (msc2020.org CSV, live 2026-06-11); LCC QA8.9-QA10.35 'Mathematical logic' under QA Mathematics (id.loc.gov, live); UDC 510.6 'Mathematical logic' under 51 Mathematics (udcsummary.info, live). The same schemes keep the discipline's broad home in philosophy (UDC 16 'Logic. Epistemology...' under 1 Philosophy, live; LCC subclass BC) — co-equal with edge:logic-part-of-philosophy. subfield:mathematical-logic (formal sciences) remains a distinct node for the mathematical subfield community per the §12 peer-coexistence precedent; this edge records the cross-listing of the logic discipline itself."
+  },
+  {
+    "id": "edge:library-and-information-science-part-of-cis",
+    "source": "field:library-and-information-science",
+    "target": "domain:computer-and-information-sciences",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Domain anchor for the LIS wing: LCC grants the wing its own range Z665-718.8 'Library science. Information science' (outline PDF, live 2026-06-11); UDC class 02 'Librarianship' (udcsummary.info, live); FORD 1.2 'Computer and information sciences' names both wings (arrs.si, live). §12 two-prong ruling in the CS skeleton qc-report."
+  },
+  {
+    "id": "edge:algorithms-and-data-structures-part-of-theoretical-computer-science",
+    "source": "subfield:algorithms-and-data-structures",
+    "target": "subfield:theoretical-computer-science",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "§12 edge-depth (ASL-pillar precedent): ACM CCS files 'Design and analysis of algorithms' inside the 'Theory of computation' top branch (Wayback snapshot of dl.acm.org/ccs/ccs_flat.cfm, live 2026-06-11); MSC 68Q25 'Analysis of algorithms and problem complexity' sits inside 68Q Theory of computing (msc2020.org CSV, live). Divergence recorded: MSC also gives algorithms its own top subsection 68W (algorithm-engineering wing); the un-contradicted gate-scheme nesting governs."
+  },
+  {
+    "id": "edge:computational-complexity-theory-part-of-theoretical-computer-science",
+    "source": "subfield:computational-complexity-theory",
+    "target": "subfield:theoretical-computer-science",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "ACM CCS 'Theory of computation > Computational complexity and cryptography' (live 2026-06-11); MSC 68Q15 'Complexity classes' inside 68Q (live). ASL-pillar depth precedent."
+  },
+  {
+    "id": "edge:formal-languages-and-automata-theory-part-of-theoretical-computer-science",
+    "source": "subfield:formal-languages-and-automata-theory",
+    "target": "subfield:theoretical-computer-science",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "ACM CCS 'Theory of computation > Formal languages and automata theory' (live 2026-06-11); MSC 68Q45 'Formal languages and automata' inside 68Q (live). ASL-pillar depth precedent."
+  },
+  {
+    "id": "edge:programming-languages-part-of-computer-science",
+    "source": "subfield:programming-languages",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 004.43 'Computer languages. Including: Programming languages' (live 2026-06-11); ACM CCS 'Software and its engineering > Software notations and tools' (live; QC correction — CCS has no 'Programming languages' second-level branch); MSC 68N15 'Theory of programming languages' (live)."
+  },
+  {
+    "id": "edge:software-engineering-part-of-computer-science",
+    "source": "subfield:software-engineering",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 004.41 'Software engineering' (live 2026-06-11); LCC QA76.758 'Software engineering' (id.loc.gov, live); ACM CCS top branch 'Software and its engineering' (live); MSC 68N30 'Mathematical aspects of software engineering' (live)."
+  },
+  {
+    "id": "edge:computer-networks-part-of-computer-science",
+    "source": "subfield:computer-networks",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 004.7 'Computer communication. Computer networks' (live 2026-06-11); ACM CCS top branch 'Networks' (live); MSC 68M10 'Network design and communication in computer systems' + 68M11 'Internet topics' (live). QC correction: the generated LCC QA76.5875 claim was not live-verifiable and is dropped."
+  },
+  {
+    "id": "edge:artificial-intelligence-part-of-computer-science",
+    "source": "subfield:artificial-intelligence",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 004.8 'Artificial intelligence' (live 2026-06-11); ACM CCS 'Computing methodologies > Artificial intelligence' (live); MSC 68Txx (live). AI and machine-learning are peer subfields per the CS skeleton QC ruling (CCS sibling structure)."
+  },
+  {
+    "id": "edge:computer-vision-part-of-computer-science",
+    "source": "subfield:computer-vision",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Flat placement per the contradicted-nesting rule (CS edges qc-report): CCS nests Computer vision under Artificial intelligence (live 2026-06-11), but UDC files 004.93 'Pattern information processing' as a sibling of 004.8 AI (live) — contradicted nesting flattens to the field. MSC 68T45 'Machine vision and scene understanding' (live)."
+  },
+  {
+    "id": "edge:natural-language-processing-part-of-computer-science",
+    "source": "subfield:natural-language-processing",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Flat placement per the contradicted-nesting rule: CCS nests NLP under Artificial intelligence (live 2026-06-11), UDC files speech recognition/synthesis under 004.93, a sibling of 004.8 (live; the generated 004.912 claim is below summary granularity — dropped). MSC 68T50 'Natural language processing' (live)."
+  },
+  {
+    "id": "edge:human-computer-interaction-part-of-computer-science",
+    "source": "subfield:human-computer-interaction",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 004.5 'Human-computer interaction' (live 2026-06-11); LCC QA76.9.H85 (id.loc.gov, live); ACM CCS 'Human-centered computing > Human computer interaction (HCI)' (live); MSC 68U35 (live)."
+  },
+  {
+    "id": "edge:computer-graphics-part-of-computer-science",
+    "source": "subfield:computer-graphics",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 004.92 'Computer graphics' (live 2026-06-11); ACM CCS 'Computing methodologies > Computer graphics' (live; separate branch from Human-centered computing > Visualization); MSC 68U05 (live)."
+  },
+  {
+    "id": "edge:cryptography-part-of-computer-science",
+    "source": "subfield:cryptography",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "ACM CCS 'Security and privacy > Cryptography' (live 2026-06-11); MSC 94A60 'Cryptography' + 68P25 'Data encryption (aspects in computer science)' (live). Executes the ratified §12 transfer (cryptography→CS, formal sciences 2026-06-10). QC corrections: generated UDC 004.056.55 and LCC-as-live claims were not in the live capture — dropped."
+  },
+  {
+    "id": "edge:computer-security-part-of-computer-science",
+    "source": "subfield:computer-security",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:acm-ccs",
+      "source:udc-summary",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "ACM CCS top branch 'Security and privacy' (live 2026-06-11); MSC 68M25 'Computer security' (live); UDC 004.49 'Computer infections' as the narrow live corroboration (the generated 004.056 claim is below summary granularity — dropped)."
+  },
+  {
+    "id": "edge:theoretical-computer-science-part-of-computer-science",
+    "source": "subfield:theoretical-computer-science",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "ACM CCS top branch 'Theory of computation' (live 2026-06-11); MSC 68Qxx 'Theory of computing' (live). Generated UDC 004.0 claim dropped (no such summary record). Umbrella coexists with its nested peers per the §12 peer-coexistence ruling."
+  },
+  {
+    "id": "edge:information-retrieval-part-of-computer-science",
+    "source": "subfield:information-retrieval",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "§13 co-equal membership, computing side: ACM CCS 'Information systems > Information retrieval' (live 2026-06-11); MSC 68P20 'Information storage and retrieval of data' (live). Co-equal with edge:information-retrieval-part-of-library-and-information-science — no primary marker."
+  },
+  {
+    "id": "edge:information-retrieval-part-of-library-and-information-science",
+    "source": "subfield:information-retrieval",
+    "target": "field:library-and-information-science",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "§13 co-equal membership, LIS side: LCC Z699-699.5 'Machine methods of information and retrieval. Mechanized bibliographic control' (outline PDF, live 2026-06-11); UDC 025 'Including: ... Reference work' as soft corroboration (live; the generated 025.4 claim is below summary granularity — dropped). Co-equal with the computing-side edge — no primary marker."
+  },
+  {
+    "id": "edge:knowledge-organization-part-of-library-and-information-science",
+    "source": "subfield:knowledge-organization",
+    "target": "field:library-and-information-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC Z666.5 'Library science. Information science--Information organization' (id.loc.gov, live 2026-06-11) + Z693-697 cataloging/classification + Z695.9-695.94 indexing/abstracting (outline, live); UDC 025 'Including: Cataloguing. Classification and indexing' (live)."
+  },
+  {
+    "id": "edge:digital-libraries-part-of-library-and-information-science",
+    "source": "subfield:digital-libraries",
+    "target": "field:library-and-information-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC ZA4080 'Digital libraries' (id.loc.gov, live 2026-06-11; subclass ZA of the class-Z family — range extension recorded in the CS skeleton qc-report). QC correction: the generated Z692.C65 claim was not live-verifiable — dropped. JCDL/TPDL community carries the criterion-(b) corroboration."
+  },
+  {
+    "id": "edge:bibliometrics-part-of-library-and-information-science",
+    "source": "subfield:bibliometrics",
+    "target": "field:library-and-information-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC Z669.8 (id.loc.gov, live 2026-06-11) — caption 'Library science. Information science--Statistical methods', the division where bibliometrics classes (honest caption record in the grounding report); ISSI society and the Scientometrics/JOI/QSS journal ecosystem carry the community criterion."
+  },
+  {
+    "id": "edge:social-computing-part-of-computer-science",
+    "source": "subfield:social-computing",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:acm-ccs"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "ACM CCS 'Human-centered computing > Collaborative and social computing' (live 2026-06-11; CCS is a gate-level classification source for this continent per the §12 append); CSCW/ICWSM communities sit in CS departments and iSchools. Generated 'UDC 004 subdivision' claim dropped (no such summary record)."
+  },
+  {
+    "id": "edge:visualization-part-of-computer-science",
+    "source": "subfield:visualization",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:acm-ccs",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "ACM CCS 'Human-centered computing > Visualization' (live 2026-06-11; separate branch from Computer graphics); LCC QA76.9.I52 'Information visualization' (id.loc.gov, live)."
+  },
+  {
+    "id": "edge:history-of-computing-part-of-computer-science",
+    "source": "subfield:history-of-computing",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:acm-ccs"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC QA76.17 'Electronic computers. Computer science--History' (id.loc.gov, live 2026-06-11 — inside the continent range); ACM CCS 'Social and professional topics > Professional topics > History of computing' (live). history-of-mathematics precedent symmetry."
+  },
+  {
+    "id": "edge:scientific-computing-part-of-computer-science",
+    "source": "subfield:scientific-computing",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Status capped: endpoint subfield:scientific-computing is proposed (B-type boundary contest with applied mathematics/numerical analysis — clause-6 candidate). Grounding: UDC 004.94 'Simulation' (live 2026-06-11); ACM CCS 'Applied computing > Physical sciences and engineering' + 'Computing methodologies > Modeling and simulation' (live; the generated 'Applied computing > Simulation' path does not exist — corrected); MSC 68Vxx (live; the earlier-cited 68U20 does not exist in MSC2020 — corrected)."
+  },
+  {
+    "id": "edge:quantum-computing-part-of-computer-science",
+    "source": "subfield:quantum-computing",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:msc2020",
+      "source:acm-ccs"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Status capped: endpoint subfield:quantum-computing is proposed (B-type boundary contest with physics — clause-6 candidate). LCC QA76.889 'Quantum computers' (id.loc.gov, live 2026-06-11 — inside the continent range); MSC 68Q12 'Quantum algorithms and complexity' + 81P68 'Quantum computation' dual filing (live); ACM CCS quantum branches under 'Theory of computation > Models of computation' and 'Hardware > Emerging technologies' (live)."
+  },
+  {
+    "id": "edge:computer-systems-part-of-computer-science",
+    "source": "subfield:computer-systems",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:acm-ccs",
+      "source:udc-summary",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Status capped: endpoint subfield:computer-systems is proposed (QID-less, v1.2 alternative grounding). ACM CCS top branch 'Computer systems organization' (live 2026-06-11); UDC 004.2 'Computer architecture' + 004.45 'System software. Including: Operating systems' (live); MSC 68Mxx (live)."
+  },
+  {
+    "id": "edge:distributed-and-parallel-computing-part-of-computer-science",
+    "source": "subfield:distributed-and-parallel-computing",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:acm-ccs"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Status capped: endpoint is proposed (QID-less, v1.2). UDC 004.75 'Distributed processing systems' (live 2026-06-11); ACM CCS parallel/distributed/concurrent computing-methodology branches and 'Computer systems organization > Architectures > Distributed architectures' (live)."
+  },
+  {
+    "id": "edge:databases-and-information-systems-part-of-computer-science",
+    "source": "subfield:databases-and-information-systems",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Status capped: endpoint is proposed (QID-less, v1.2). UDC 004.65 'Databases and their structures. Including: DBMS' (live 2026-06-11); LCC QA76.9.D3 'Database management' (id.loc.gov, live); ACM CCS 'Information systems > Data management systems' (live); MSC 68Pxx 'Theory of data' (live)."
   }
 ]
