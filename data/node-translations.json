@@ -132,7 +132,7 @@
     "node_id": "subfield:machine-learning",
     "locale": "en",
     "label": "Machine Learning",
-    "summary": "The study of algorithms that improve automatically through data and experience.",
+    "summary": "Machine learning is a subfield of computer science defined in Tom Mitchell's 1997 McGraw Hill textbook as \"the study of computer algorithms that improve automatically through experience\"; Britannica characterizes it as the discipline \"concerned with the implementation of computer software that can learn autonomously.\" Methodological areas covered in Mitchell's textbook include decision tree learning, artificial neural networks, Bayesian learning, instance-based learning, genetic algorithms, and reinforcement learning. The International Conference on Machine Learning (ICML), whose 2025 edition was the forty-second, presents research on \"all aspects of machine learning used in closely related areas like artificial intelligence, statistics and data science, as well as important application areas such as machine vision, computational biology, speech recognition, and robotics.\" The Journal of Machine Learning Research (JMLR), established in 2000, \"provides an international forum for the electronic and paper publication of high-quality scholarly articles in all areas of machine learning.\"",
     "aliases": [
       "ML"
     ],
@@ -1042,7 +1042,7 @@
     "node_id": "subfield:algorithms-and-data-structures",
     "locale": "en",
     "label": "Algorithms and Data Structures",
-    "summary": "",
+    "summary": "Algorithms and data structures is the area of computer science concerned with the design and analysis of step-by-step computational procedures and the methods of organizing data on which they operate. The Encyclopedia of Mathematics defines an algorithm as \"detailed instructions defining a computational process\" that begins with an arbitrary input and proceeds by \"consecutive conversion of constructive objects by discrete 'steps',\" producing a result \"fully determined by the input\"; it also notes that the process \"may also terminate without a result being obtained…or may not terminate at all.\" The word derives from the Latin transliteration of the name of the 9th-century mathematician al-Khwarizmi, and the modern theory of algorithms rests on twentieth-century formalizations by Turing, Post, Markov, and Kolmogorov together with the Church–Turing thesis.",
     "aliases": [],
     "reviewed": true
   },
@@ -1050,7 +1050,7 @@
     "node_id": "subfield:computational-complexity-theory",
     "locale": "en",
     "label": "Computational Complexity Theory",
-    "summary": "",
+    "summary": "Computational complexity theory is the branch of theoretical computer science that classifies decidable problems by the resources their solution requires. The Encyclopedia of Mathematics frames it as \"a finer classification of decidable problems in terms of their complexity,\" asking whether one algorithm is better than another \"in the sense that it uses fewer resources, such as time or memory space,\" where time is measured by the number of steps and space by the number of tape squares visited. Central objects of study are complexity classes such as P, the languages accepted by polynomially bounded Turing machines, and NP, those accepted by non-deterministic polynomially bounded Turing machines, together with the NP-complete problems that are \"the hardest problems in NP.\" Whether every NP problem is in fact a P problem—the P versus NP question—was named a Millennium Prize Problem in 2000.",
     "aliases": [],
     "reviewed": true
   },
@@ -1058,7 +1058,7 @@
     "node_id": "subfield:programming-languages",
     "locale": "en",
     "label": "Programming Languages",
-    "summary": "",
+    "summary": "Programming language theory is the branch of computer science concerned with the design, semantics, implementation, and analysis of programming languages. Carnegie Mellon University's Computer Science Department characterizes the area as \"a comprehensive science of programming that encompasses not only language design and implementation as ordinarily conceived, but also specification, verification, implementation, evaluation, and validation of programs.\" The University of Oxford, where \"programming language research…began in 1965 with the Programming Research Group,\" likewise places \"work in programming language theory, design and implementation\" at the theme's center, spanning topics from functional programming and game semantics to algebra of programming.",
     "aliases": [],
     "reviewed": true
   },
@@ -1066,7 +1066,7 @@
     "node_id": "subfield:software-engineering",
     "locale": "en",
     "label": "Software Engineering",
-    "summary": "",
+    "summary": "Software engineering is the discipline concerned with the systematic application of engineering principles to the specification, design, development, testing, and maintenance of software systems. Britannica defines it as \"the discipline concerned with the application of theory, knowledge, and practice to building reliable software systems that satisfy the computing requirements of customers and users,\" applicable to small-, medium-, and large-scale systems. Britannica also notes that Margaret Hamilton is credited with creating the term \"software engineer\" to describe her professional work, which included writing code for the command and lunar modules of NASA's Apollo program in the late 1960s and early 1970s. ACM Transactions on Software Engineering and Methodology (TOSEM), publishing since 1992, covers \"specification, design, development and maintenance\" and the tools, methodologies, languages, data structures, and algorithms involved in building large, complex software systems.",
     "aliases": [],
     "reviewed": true
   },
@@ -1082,7 +1082,7 @@
     "node_id": "subfield:computer-networks",
     "locale": "en",
     "label": "Computer Networks",
-    "summary": "",
+    "summary": "Computer networks is the subfield of computer science concerned with the interconnection of computing devices for the purpose of communicating and sharing data. Britannica defines a computer network as \"two or more computers that are connected to each other to communicate data electronically,\" with network architectures standardized under frameworks including the ISO Open Systems Interconnection (OSI) model and IBM's Systems Network Architecture (SNA). ACM SIGCOMM — described as \"ACM's professional forum for the discussion of topics in the field of communications and computer networks\" — covers the technical design and engineering, regulation, operations, and social implications of computer networking, with particular emphasis on systems engineering and architectural questions.",
     "aliases": [],
     "reviewed": true
   },
@@ -1106,7 +1106,7 @@
     "node_id": "subfield:artificial-intelligence",
     "locale": "en",
     "label": "Artificial Intelligence",
-    "summary": "",
+    "summary": "Artificial intelligence is, in Britannica's definition, \"the ability of a digital computer or computer-controlled robot to perform tasks commonly associated with intelligent beings,\" and the term denotes developing systems with intellectual processes characteristic of humans, including reasoning, generalization, and learning from experience. Britannica frames its core abilities as learning, reasoning, problem-solving, perception, and language use, and contrasts rote learning (memorization) with generalization (applying past experience to new situations). Digital computers have been programmed since the 1940s to carry out increasingly complex tasks, and Britannica notes that while some systems match human expert performance on specific tasks, no current program achieves full human flexibility across broader domains.",
     "aliases": [],
     "reviewed": true
   },
@@ -1114,7 +1114,7 @@
     "node_id": "subfield:computer-vision",
     "locale": "en",
     "label": "Computer Vision",
-    "summary": "",
+    "summary": "Computer vision is defined by Britannica as a \"field of artificial intelligence in which programs attempt to identify objects represented in digitized images provided by cameras, thus enabling computers to 'see.'\" According to Britannica, contemporary methods use \"deep learning and neural networks to help computers process visual information,\" giving a computer \"a large data set of visual images\" from which it identifies features and patterns that it can then apply to other images. Britannica relates the field to pattern recognition and notes applications including facial recognition and augmented reality.",
     "aliases": [],
     "reviewed": true
   },
@@ -1122,7 +1122,7 @@
     "node_id": "subfield:natural-language-processing",
     "locale": "en",
     "label": "Natural Language Processing",
-    "summary": "",
+    "summary": "Natural language processing is, in Britannica's definition, \"the use of operations, systems, and technologies that allow computers to process and respond to written and spoken language in a way that mirrors human ability,\" achieved by combining computational linguistics, statistics, machine learning, and deep-learning models. Britannica describes a progression from early systems that were \"hand-coded and rule-based\" and struggled with nuances such as sarcasm and idiom, to statistical approaches using probability, and then to modern deep-learning systems that learn while processing information. It lists applications including voice-operated navigation, customer-service chatbots, machine translation, and search auto-completion, and notes that bias inherited from training data is a recognized concern.",
     "aliases": [],
     "reviewed": true
   },
@@ -1130,7 +1130,7 @@
     "node_id": "subfield:human-computer-interaction",
     "locale": "en",
     "label": "Human-Computer Interaction",
-    "summary": "",
+    "summary": "Human-computer interaction (HCI) is, in Britannica's definition, \"concerned with designing effective interaction between users and computers and the construction of interfaces that support this interaction,\" an interaction that occurs at an interface including both software and hardware. The field is supported by the ACM Special Interest Group on Computer-Human Interaction (SIGCHI), which describes itself as \"the world's largest association of professionals who contribute towards the research and practice of human-computer interaction (HCI).\" Its flagship venue is the ACM CHI Conference on Human Factors in Computing Systems, described by SIGCHI as \"the premier international conference of Human-Computer Interaction.\"",
     "aliases": [],
     "reviewed": true
   },
@@ -1138,7 +1138,7 @@
     "node_id": "subfield:computer-graphics",
     "locale": "en",
     "label": "Computer Graphics",
-    "summary": "",
+    "summary": "Computer graphics is the subfield of computer science concerned with the generation, manipulation, and rendering of visual images and interactive content using computational systems. ACM SIGGRAPH describes itself as \"an international community of researchers, artists, developers, filmmakers, scientists and business professionals with a shared interest in computer graphics and interactive techniques,\" with a mission \"to nurture, champion and connect like-minded researchers and practitioners to catalyze innovation in computer graphics and interactive techniques.\" The organization offers \"two of the premier conferences on computer graphics and interactive techniques in the world,\" SIGGRAPH and SIGGRAPH Asia, attended by tens of thousands of computer graphics professionals.",
     "aliases": [],
     "reviewed": true
   },
@@ -1146,7 +1146,7 @@
     "node_id": "subfield:cryptography",
     "locale": "en",
     "label": "Cryptography",
-    "summary": "",
+    "summary": "Cryptography is the science of constructing and analyzing techniques for securing communications and data against adversarial access, encompassing both the design of encryption schemes and the analysis of their security. Britannica's entry on cryptology defines the field as \"the science concerned with data communication and storage in secure and usually secret form\" and distinguishes cryptography from cryptanalysis, \"the science (and art) of recovering or forging cryptographically secured information without knowledge of the key.\" The Encyclopedia of Mathematics covers the introduction of public-key cryptography by Diffie and Hellman and the RSA system of Rivest, Shamir, and Adleman, which is based on the fact that it is almost impossible, by presently known factorization algorithms, to recover two large prime numbers from their product. The International Association for Cryptologic Research (IACR), whose purpose is to further research in cryptology, publishes the Journal of Cryptology, Transactions on Symmetric Cryptology, and Communications in Cryptology, and sponsors the Crypto, Eurocrypt, and Asiacrypt conferences.",
     "aliases": [],
     "reviewed": true
   },
@@ -1154,7 +1154,7 @@
     "node_id": "subfield:computer-security",
     "locale": "en",
     "label": "Computer Security",
-    "summary": "",
+    "summary": "Computer security is defined by Britannica as \"the protection of computer systems and information from harm, theft, and unauthorized use.\" Britannica identifies the principal threats it addresses as data theft, vandalism (including destruction by computer viruses), fraud such as unauthorized fund transfers, and invasion of privacy through illegal access to personal financial or medical data. Among its foundational methods are access control by \"assigning an individual password to each person who has access to a system\" with automatic logging of activity, isolation of sensitive data on devices \"normally inaccessible through the computer system,\" and encryption so that data \"can be deciphered only by holders of a singular encryption key.\" Britannica notes that the importance of computer security grew with the spread of modems in the late 1960s, personal computers in the 1980s, and the subsequent expansion of the Internet.",
     "aliases": [],
     "reviewed": true
   },
@@ -1162,7 +1162,7 @@
     "node_id": "subfield:theoretical-computer-science",
     "locale": "en",
     "label": "Theoretical Computer Science",
-    "summary": "",
+    "summary": "Theoretical computer science (TCS) is the branch of computer science concerned with the formal analysis of efficient computation and computational processes. The ACM Special Interest Group on Algorithms and Computation Theory (SIGACT) characterizes TCS as covering \"algorithms, data structures, computational complexity, parallel and distributed computation, probabilistic computation, quantum computation, automata theory, information theory, cryptography, program semantics and verification, machine learning, computational biology, computational economics, computational geometry, and computational number theory and algebra,\" with work in the field distinguished by its emphasis on mathematical technique and rigor. SIGACT itself is described as an international organization that \"fosters and promotes the discovery and dissemination of high quality research in theoretical computer science.\" Among the conferences SIGACT sponsors are STOC and ITCS, with in-cooperation venues including SODA and FOCS.",
     "aliases": [],
     "reviewed": true
   },
@@ -1170,7 +1170,7 @@
     "node_id": "subfield:formal-languages-and-automata-theory",
     "locale": "en",
     "label": "Formal Languages and Automata Theory",
-    "summary": "",
+    "summary": "Formal languages and automata theory is the branch of theoretical computer science that studies abstract machines and the classes of languages they recognize. The Encyclopedia of Mathematics describes a finite automaton as \"a mathematical model of a system with a finite memory which processes discrete information,\" given formally as a system of an input alphabet, a set of states, and an output alphabet with transition and output functions, and calls it \"the starting point of the modern theory of automata.\" The same source establishes the correspondence at the heart of the field: \"events representable by a finite automaton are identical with so-called regular events,\" linking machine models to the formal languages they define.",
     "aliases": [],
     "reviewed": true
   },
@@ -1186,7 +1186,7 @@
     "node_id": "subfield:information-retrieval",
     "locale": "en",
     "label": "Information Retrieval",
-    "summary": "",
+    "summary": "Information retrieval is the subfield of computer science and library and information science concerned with the representation, storage, and retrieval of information in response to queries. Britannica defines information retrieval as the \"recovery of information, especially in a database stored in a computer,\" with methods that include keyword searching, navigation by hypertext links, and techniques incorporating natural language processing. ACM SIGIR, the Association for Computing Machinery's Special Interest Group on Information Retrieval, has since 1963 promoted \"research, development and education in the area of search and other information access technologies\"; its conference series dates to the 1971 International ACM SIGIR Conference on Information Storage and Retrieval, and the group publishes the SIGIR Forum.",
     "aliases": [],
     "reviewed": true
   },
@@ -1202,7 +1202,7 @@
     "node_id": "field:library-and-information-science",
     "locale": "en",
     "label": "Library and Information Science",
-    "summary": "",
+    "summary": "Library and information science (LIS) is the field concerned with how society stores, retrieves, analyzes, manages, archives, and disseminates information, bridging the professional practice of librarianship with the scientific study of information. Members of the Association for Information Science and Technology (ASIS&T) — drawn from librarianship, linguistics, engineering, law, medicine, and other fields — share, in the association's words, \"a common interest in improving the ways society stores, retrieves, analyzes, manages, archives and disseminates information.\" The Journal of the Association for Information Science and Technology (JASIST), a fully refereed scholarly and technical periodical, has been published continuously since 1950 and publishes research and development in a wide range of subjects in information science and technology. The iSchools organization — an alliance of university schools and departments offering doctoral programs in the field — describes the discipline's scope as relying strongly on the social and behavioural sciences, computing, and linguistics, with topics including human-computer interaction, information organisation and access, and bibliometrics.",
     "aliases": [],
     "reviewed": true
   },
@@ -1210,7 +1210,7 @@
     "node_id": "subfield:knowledge-organization",
     "locale": "en",
     "label": "Knowledge Organization",
-    "summary": "",
+    "summary": "Knowledge organization is, in the ISKO Encyclopedia of Knowledge Organization, \"a field of research, teaching and practice, which is mostly affiliated with library and information science,\" concerned with \"describing, representing, filing and organizing documents and document representations as well as subjects and concepts both by humans and by computer programs.\" The field distinguishes knowledge organization processes—\"cataloging, subject analysis, indexing, tagging and classification\"—from knowledge organization systems such as classification systems, subject-heading lists, thesauri, and ontologies. Its scholarly society is the International Society for Knowledge Organization (ISKO), founded in 1989, which publishes the journal Knowledge Organization, formerly titled International Classification and founded in 1974.",
     "aliases": [],
     "reviewed": true
   },
@@ -1218,7 +1218,7 @@
     "node_id": "subfield:digital-libraries",
     "locale": "en",
     "label": "Digital Libraries",
-    "summary": "",
+    "summary": "Digital libraries is the subfield of library and information science and computer science concerned with the creation, management, preservation, and access of digital collections of information resources. Britannica notes that the development of digital libraries (also known as virtual libraries) means people \"do not have to go to a building for some kinds of information,\" though \"users still need help to locate the information they want.\" The ACM/IEEE Joint Conference on Digital Libraries (JCDL) — \"a major international forum focusing on digital libraries and associated technical, practical, and social issues\" — combines the annual conferences formerly sponsored separately by ACM and IEEE-CS, and presents awards including the Vannevar Bush Best Paper Award to persons who have made outstanding contributions to the field.",
     "aliases": [],
     "reviewed": true
   },
@@ -1226,7 +1226,7 @@
     "node_id": "subfield:bibliometrics",
     "locale": "en",
     "label": "Bibliometrics",
-    "summary": "",
+    "summary": "Bibliometrics is the application of statistical and quantitative methods to the study of the production, communication, and use of scientific and scholarly publications. The international journal Scientometrics describes its scope as \"original research on all quantitative aspects of the production, communication, and use of scientific and technological information,\" welcoming both theoretical and empirical studies. The International Society for Scientometrics and Informetrics (ISSI) is an international association of scholars and professionals active in the interdisciplinary study of science, whose community focuses on quantitative approaches including informetrics, scientometrics, and webometrics.",
     "aliases": [
       "Scientometrics",
       "Bibliometrics and Scientometrics"
@@ -1237,7 +1237,7 @@
     "node_id": "subfield:social-computing",
     "locale": "en",
     "label": "Social Computing",
-    "summary": "",
+    "summary": "Social computing is the area of computer science that studies the design and use of computational systems and technologies in relation to social behavior, interaction, and organizations. The ACM Conference on Computer-Supported Cooperative Work and Social Computing (CSCW) is described as \"the premier venue for research in the design and use of technologies that affect groups, organizations, communities, and networks,\" exploring \"the technical, social, material, and theoretical challenges of designing technology to support collaborative work and life activities.\" Its 29th edition, CSCW 2026, is scheduled for Salt Lake City, Utah, in October 2026.",
     "aliases": [],
     "reviewed": true
   },
@@ -1245,7 +1245,7 @@
     "node_id": "subfield:visualization",
     "locale": "en",
     "label": "Visualization",
-    "summary": "",
+    "summary": "Visualization (in computing) is the study and practice of transforming data into visual representations to support tasks ranging from rapid observation to in-depth analysis. The IEEE VIS conference—the field's primary venue—defines visualization as \"the study of the transformation of data to visual representations, which provide cost-effective means for supporting a variety of data intelligence tasks,\" and describes it as having expanded to encompass scientific visualization, information visualization, and visual analytics. IEEE VIS organizes research across areas including theoretical and empirical work, visualization systems and rendering, data transformations, and visual analytics for decision-making.",
     "aliases": [],
     "reviewed": true
   },
@@ -1253,7 +1253,7 @@
     "node_id": "subfield:history-of-computing",
     "locale": "en",
     "label": "History of Computing",
-    "summary": "",
+    "summary": "History of computing is the scholarly study of the development of computing technology and its theoretical, institutional, and social contexts. Britannica records key milestones in that development, including the 1936 specification of the Turing machine by the British mathematician Alan Turing as a milestone in theoretical work on computability that began in the 1930s, the stored-program concept credited to the Hungarian-American mathematician John von Neumann, and the emergence of computer science \"as an independent discipline in the early 1960s, although the electronic digital computer that is the object of its study was invented some two decades earlier.\" The Computer History Museum in Mountain View, California, which \"collect[s] and care[s] for the artifacts and stories of the ongoing computing revolution,\" is among the institutions devoted to preserving this history.",
     "aliases": [],
     "reviewed": true
   }

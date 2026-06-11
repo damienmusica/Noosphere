@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "batch_id": "cis-summaries-v1",
+  "kind": "node-summaries",
+  "proposed_by": "claude-sonnet-4-6",
+  "items": [
+    {
+      "node_id": "subfield:machine-learning",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Machine learning is a subfield of computer science defined by Tom Mitchell's 1997 McGraw Hill textbook as \"the study of computer algorithms that improve automatically through experience\"; Britannica characterizes it as \"the discipline concerned with the implementation of computer software that can learn autonomously.\" Core methodological branches include supervised learning (classification and regression via decision trees, neural networks, and support vector machines), unsupervised learning, instance-based learning, Bayesian learning, genetic algorithms, and reinforcement learning. The International Conference on Machine Learning (ICML), whose 2025 edition was the forty-second, defines its scope as \"all aspects of machine learning used in closely related areas like artificial intelligence, statistics and data science, as well as important application areas such as machine vision, computational biology, speech recognition, and robotics.\" The Journal of Machine Learning Research (JMLR), established in 2000, serves as the field's principal open-access publication venue, providing \"an international forum for the electronic and paper publication of high-quality scholarly articles in all areas of machine learning.\"",
+      "source_hints": [
+        {
+          "source": "Mitchell, Tom M. Machine Learning. McGraw Hill, 1997 — book page at Carnegie Mellon University",
+          "url": "https://www.cs.cmu.edu/~tom/mlbook.html",
+          "fetched": true
+        },
+        {
+          "source": "Britannica — Machine Learning",
+          "url": "https://www.britannica.com/technology/machine-learning",
+          "fetched": true
+        },
+        {
+          "source": "ICML — International Conference on Machine Learning (ICML 2025 conference page)",
+          "url": "https://icml.cc/Conferences/2025",
+          "fetched": true
+        },
+        {
+          "source": "Journal of Machine Learning Research — jmlr.org homepage",
+          "url": "https://jmlr.org/",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q2539 — identity anchor (enwiki sitelink: 'Machine learning')",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q2539.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "The summary replaces a one-line placeholder with a grounded encyclopedic description built from four directly fetched authority sources: (1) Tom Mitchell's 1997 textbook page at CMU for the canonical definition and subfield list; (2) Britannica for a corroborating characterization; (3) the ICML 2025 conference page for institutional scope and application domains; (4) JMLR's homepage for the field's principal journal and its founding year. Identity was fixed via Wikidata Q2539 enwiki sitelink. No evaluative language is used; claims are limited to what each fetched document states.",
+      "uncertainty": "The Britannica entry was retrieved but its full article body is JavaScript-gated; only the lead paragraph was accessible via curl. The coinage of the term 'machine learning' (commonly attributed to Arthur Samuel, 1959) was not confirmed by a directly fetched authority source and is therefore omitted. ICML founding year (1984, inferred from ICML 2025 being the 42nd edition) is derivable from fetched content but not stated explicitly on the page; the summary instead cites ICML 2025 as the 42nd edition to let readers verify the arithmetic.",
+      "ambiguous": false
+    }
+  ]
+}

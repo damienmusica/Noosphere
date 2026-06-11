@@ -1,0 +1,269 @@
+{
+  "version": 1,
+  "batch_id": "cis-summaries-v1",
+  "kind": "node-summaries",
+  "proposed_by": "claude-opus-4-8 (A/B batch-a; blinded as BLINDED:batch-a during QC, unblinded post-verdict per ab-split.json)",
+  "items": [
+    {
+      "node_id": "subfield:algorithms-and-data-structures",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Algorithms and data structures is the area of computer science concerned with the design and analysis of step-by-step computational procedures and the methods of organizing data on which they operate. The Encyclopedia of Mathematics defines an algorithm as \"detailed instructions defining a computational process\" that begins with an arbitrary input and proceeds by \"consecutive conversion of constructive objects by discrete 'steps',\" producing a result \"fully determined by the input\"; it also notes that the process \"may also terminate without a result being obtained…or may not terminate at all.\" The word derives from the Latin transliteration of the name of the 9th-century mathematician al-Khwarizmi, and the modern theory of algorithms rests on twentieth-century formalizations by Turing, Post, Markov, and Kolmogorov together with the Church–Turing thesis.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — \"Algorithm\"",
+          "url": "https://encyclopediaofmath.org/wiki/Algorithm",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q13636890 (identity pin only; enwiki sitelink \"Algorithmics\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q13636890.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "The Encyclopedia of Mathematics \"Algorithm\" entry supports the definition (\"detailed instructions defining a computational process\"; discrete steps; result determined by input; non-termination possible), the al-Khwarizmi etymology, and the list of formalizers (Turing, Post, Markov, Kolmogorov) plus the Church–Turing thesis. The Wikidata pin confirms the node's identity (enwiki \"Algorithmics\"); the summary is framed as the study of algorithms and the data structures they operate on, consistent with that identity.",
+      "uncertainty": "The Encyclopedia of Mathematics \"Algorithm\" entry is about algorithms as a concept, not specifically about data structures; the data-structures half of the summary's framing is definitional/structural and not lifted as a fact-claim from a single fetched source. The Wikidata enwiki sitelink is \"Algorithmics\" rather than \"Algorithms and data structures,\" so the node label is a near-synonym of the pinned identity.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:artificial-intelligence",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Artificial intelligence is, in Britannica's definition, \"the ability of a digital computer or computer-controlled robot to perform tasks commonly associated with intelligent beings,\" and the term denotes developing systems with intellectual processes characteristic of humans, including reasoning, generalization, and learning from experience. Britannica frames its core abilities as learning, reasoning, problem-solving, perception, and language use, and contrasts rote learning (memorization) with generalization (applying past experience to new situations). Digital computers have been programmed since the 1940s to carry out increasingly complex tasks, and Britannica notes that while some systems match human expert performance on specific tasks, no current program achieves full human flexibility across broader domains.",
+      "source_hints": [
+        {
+          "source": "Encyclopædia Britannica — \"Artificial intelligence\"",
+          "url": "https://www.britannica.com/science/artificial-intelligence",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q11660 (identity pin only; enwiki sitelink \"Artificial intelligence\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q11660.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "Britannica's AI entry supplies the verbatim definition, the list of core abilities (learning, reasoning, problem-solving, perception, language use), the rote-learning vs. generalization distinction, the 1940s programming-of-digital-computers fact, and the statement that no current program achieves full human flexibility. Wikidata Q11660 pins the identity to enwiki \"Artificial intelligence,\" matching the summary.",
+      "uncertainty": "The Britannica page as fetched did not state who coined the term or in what year, so the summary deliberately omits the 1956 Dartmouth / McCarthy coinage rather than risk hint-laundering it from training knowledge.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:computational-complexity-theory",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Computational complexity theory is the branch of theoretical computer science that classifies decidable problems by the resources their solution requires. The Encyclopedia of Mathematics frames it as \"a finer classification of decidable problems in terms of their complexity,\" asking whether one algorithm is better than another \"in the sense that it uses fewer resources, such as time or memory space,\" where time is measured by the number of steps and space by the number of tape squares visited. Central objects of study are complexity classes such as P, the languages accepted by polynomially bounded Turing machines, and NP, those accepted by non-deterministic polynomially bounded Turing machines, together with the NP-complete problems that are \"the hardest problems in NP.\" Whether every NP problem is in fact a P problem—the P versus NP question—was named a Millennium Prize Problem in 2000.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — \"Complexity theory\"",
+          "url": "https://encyclopediaofmath.org/wiki/Complexity_theory",
+          "fetched": true
+        },
+        {
+          "source": "Encyclopædia Britannica — \"P versus NP problem\"",
+          "url": "https://www.britannica.com/topic/P-versus-NP-problem",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q205084 (identity pin only; enwiki sitelink \"Computational complexity theory\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q205084.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "The Encyclopedia of Mathematics \"Complexity theory\" entry supports the resource-based classification framing, the time (steps) and space (tape squares) measures, and the definitions of P, NP, and NP-complete (\"the hardest problems in NP\"). Britannica's \"P versus NP problem\" entry supports the P-vs-NP question and its 2000 designation as a Millennium (Prize) Problem. Wikidata Q205084 pins the identity to enwiki \"Computational complexity theory.\"",
+      "uncertainty": "The EoM entry phrases space as squares visited on a Turing-machine tape; the summary compresses this to \"tape squares visited,\" which is faithful but slightly abbreviated. The Britannica entry calls it a \"Millennium Problem\"; the summary uses \"Millennium Prize Problem,\" the fuller standard name.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:computer-security",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Computer security is defined by Britannica as \"the protection of computer systems and information from harm, theft, and unauthorized use.\" Britannica identifies the principal threats it addresses as data theft, vandalism (including destruction by computer viruses), fraud such as unauthorized fund transfers, and invasion of privacy through illegal access to personal financial or medical data. Among its foundational methods are access control by \"assigning an individual password to each person who has access to a system\" with automatic logging of activity, isolation of sensitive data on devices \"normally inaccessible through the computer system,\" and encryption so that data \"can be deciphered only by holders of a singular encryption key.\" Britannica notes that the importance of computer security grew with the spread of modems in the late 1960s, personal computers in the 1980s, and the subsequent expansion of the Internet.",
+      "source_hints": [
+        {
+          "source": "Encyclopædia Britannica — \"Computer security\"",
+          "url": "https://www.britannica.com/technology/computer-security",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q3510521 (identity pin only; enwiki sitelink \"Computer security\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q3510521.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "Britannica's \"Computer security\" entry supplies the verbatim definition, the four threat categories (theft, vandalism/viruses, fraud, privacy invasion), the three method descriptions (password-based access control with logging, data isolation, encryption with a single key), and the historical note about modems (late 1960s), personal computers (1980s), and Internet expansion. Wikidata Q3510521 pins the identity to enwiki \"Computer security.\"",
+      "uncertainty": "Britannica describes encryption keys with the phrasing \"a singular encryption key,\" which the summary quotes directly; this is a simplified account and does not distinguish symmetric vs. public-key cryptography. No evaluative claims were drawn from the source.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:computer-vision",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Computer vision is defined by Britannica as a \"field of artificial intelligence in which programs attempt to identify objects represented in digitized images provided by cameras, thus enabling computers to 'see.'\" According to Britannica, contemporary methods use \"deep learning and neural networks to help computers process visual information,\" giving a computer \"a large data set of visual images\" from which it identifies features and patterns that it can then apply to other images. Britannica relates the field to pattern recognition and notes applications including facial recognition and augmented reality.",
+      "source_hints": [
+        {
+          "source": "Encyclopædia Britannica — \"Computer vision\"",
+          "url": "https://www.britannica.com/technology/computer-vision",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q844240 (identity pin only; enwiki sitelink \"Computer vision\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q844240.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "Britannica's \"Computer vision\" entry supplies the verbatim definition (field of AI; identifying objects in digitized images; enabling computers to 'see'), the deep-learning/neural-network method description with the large-image-dataset account, and the applications/relations (pattern recognition, facial recognition, augmented reality). Wikidata Q844240 pins the identity to enwiki \"Computer vision.\"",
+      "uncertainty": "Britannica subordinates computer vision under AI; the node is filed under field:computer-science in the input, which is compatible (CV is part of CS and overlaps AI). No conflict in identity.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:formal-languages-and-automata-theory",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Formal languages and automata theory is the branch of theoretical computer science that studies abstract machines and the classes of languages they recognize. The Encyclopedia of Mathematics describes a finite automaton as \"a mathematical model of a system with a finite memory which processes discrete information,\" given formally as a system of an input alphabet, a set of states, and an output alphabet with transition and output functions, and calls it \"the starting point of the modern theory of automata.\" The same source establishes the correspondence at the heart of the field: \"events representable by a finite automaton are identical with so-called regular events,\" linking machine models to the formal languages they define.",
+      "source_hints": [
+        {
+          "source": "Encyclopedia of Mathematics — \"Automaton, finite\"",
+          "url": "https://encyclopediaofmath.org/wiki/Automaton,_finite",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q214526 (identity pin only; enwiki sitelink \"Automata theory\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q214526.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "The Encyclopedia of Mathematics \"Automaton, finite\" entry supports the finite-automaton definition (\"mathematical model of a system with a finite memory which processes discrete information\"), its formal structure (input alphabet, states, output alphabet, transition/output functions), the \"starting point of the modern theory of automata\" characterization, and the regular-events correspondence linking automata to formal languages. Wikidata Q214526 pins the identity to enwiki \"Automata theory,\" so the summary leads with abstract machines and language classes to match.",
+      "uncertainty": "The Wikidata enwiki sitelink is \"Automata theory\" (not \"Formal languages and automata theory\"); the node label pairs the two, which is standard in CS curricula, but the formal-languages side is supported only via the regular-events correspondence in the fetched automaton entry rather than a dedicated formal-languages source.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:history-of-computing",
+      "locale": "en",
+      "status": "generated",
+      "summary": "History of computing is the scholarly study of the development of computing technology and its theoretical, institutional, and social contexts. Britannica records key milestones in that development, including the 1936 specification of the Turing machine by the British mathematician Alan Turing as a milestone in theoretical work on computability that began in the 1930s, the stored-program concept credited to the Hungarian-American mathematician John von Neumann, and the emergence of computer science \"as an independent discipline in the early 1960s, although the electronic digital computer that is the object of its study was invented some two decades earlier.\" The Computer History Museum in Mountain View, California, which \"collect[s] and care[s] for the artifacts and stories of the ongoing computing revolution,\" is among the institutions devoted to preserving this history.",
+      "source_hints": [
+        {
+          "source": "Encyclopædia Britannica — \"Computer science\"",
+          "url": "https://www.britannica.com/science/computer-science",
+          "fetched": true
+        },
+        {
+          "source": "Computer History Museum — \"About\"",
+          "url": "https://www.computerhistory.org/about/",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q2735691 (identity pin only; enwiki sitelink \"History of computing\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q2735691.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "Britannica's \"Computer science\" entry supplies the dated milestones used as history-of-computing facts: the 1936 Turing-machine specification by Alan Turing, computability work beginning in the 1930s, the von Neumann stored-program concept, and computer science emerging as an independent discipline in the early 1960s (with the electronic digital computer invented ~two decades earlier). The Computer History Museum About page supports its identity, location (Mountain View, California), and collecting mission. Wikidata Q2735691 pins the identity to enwiki \"History of computing.\"",
+      "uncertainty": "I could not live-fetch a verbatim aims-and-scope statement for IEEE Annals of the History of Computing—the computer.org CSDL about page and IEEE Xplore are JS-rendered/bot-blocked (HTTP 418), and Wayback snapshots of that page were also unrendered—so the journal is intentionally not cited or named in the summary. The summary instead grounds historical facts in Britannica's computer-science entry and the field's existence in the Computer History Museum.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:human-computer-interaction",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Human-computer interaction (HCI) is, in Britannica's definition, \"concerned with designing effective interaction between users and computers and the construction of interfaces that support this interaction,\" an interaction that occurs at an interface including both software and hardware. The field is supported by the ACM Special Interest Group on Computer-Human Interaction (SIGCHI), which describes itself as \"the world's largest association of professionals who contribute towards the research and practice of human-computer interaction (HCI).\" Its flagship venue is the ACM CHI Conference on Human Factors in Computing Systems, described by SIGCHI as \"the premier international conference of Human-Computer Interaction.\"",
+      "source_hints": [
+        {
+          "source": "Encyclopædia Britannica — \"Human-machine interaction\" (defines HCI)",
+          "url": "https://www.britannica.com/topic/human-machine-interaction",
+          "fetched": true
+        },
+        {
+          "source": "ACM SIGCHI — \"About\"",
+          "url": "https://sigchi.org/about/",
+          "fetched": true
+        },
+        {
+          "source": "ACM SIGCHI — \"CHI 2026\"",
+          "url": "https://sigchi.org/events/chi-2026/",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q207434 (identity pin only; enwiki sitelink \"Human–computer interaction\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q207434.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "Britannica's human-machine-interaction page gives the verbatim HCI definition and the software+hardware interface point. SIGCHI's About page supplies its self-description as the world's largest association of HCI professionals. The CHI 2026 page supplies the conference's full name (ACM CHI conference on Human Factors in Computing Systems) and its \"premier international conference of Human-Computer Interaction\" characterization. Wikidata Q207434 pins the identity to enwiki \"Human–computer interaction.\"",
+      "uncertainty": "Britannica files the definition under a page titled \"human-machine interaction\" but the text explicitly defines \"human-computer interaction (HCI),\" so the identity match is exact. \"Premier\" in the CHI characterization is the source's own wording, quoted rather than asserted as an evaluation in Noosphere's voice.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:knowledge-organization",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Knowledge organization is, in the ISKO Encyclopedia of Knowledge Organization, \"a field of research, teaching and practice, which is mostly affiliated with library and information science,\" concerned with \"describing, representing, filing and organizing documents and document representations as well as subjects and concepts both by humans and by computer programs.\" The field distinguishes knowledge organization processes—\"cataloging, subject analysis, indexing, tagging and classification\"—from knowledge organization systems such as classification systems, subject-heading lists, thesauri, and ontologies. Its scholarly society is the International Society for Knowledge Organization (ISKO), founded in 1989, which publishes the journal Knowledge Organization, formerly titled International Classification and founded in 1974.",
+      "source_hints": [
+        {
+          "source": "ISKO Encyclopedia of Knowledge Organization — \"Knowledge organization\"",
+          "url": "https://www.isko.org/cyclo/knowledge_organization",
+          "fetched": true
+        },
+        {
+          "source": "ISKO — \"About\"",
+          "url": "https://www.isko.org/about.html",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q1929761 (identity pin only; enwiki sitelink \"Knowledge organization\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q1929761.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "The ISKO Encyclopedia \"Knowledge organization\" entry supplies the field definition (\"field of research, teaching and practice…affiliated with library and information science\"; describing/representing/filing/organizing documents and concepts by humans and computers), the KOP list (cataloging, subject analysis, indexing, tagging, classification), and the KOS examples (classification systems, subject-heading lists, thesauri, ontologies). The ISKO About page supplies the society's 1989 founding and the journal Knowledge Organization (formerly International Classification, founded 1974). Wikidata Q1929761 pins the identity to enwiki \"Knowledge organization.\"",
+      "uncertainty": "None material; both ISKO pages were fetched live and corroborate each other, and the journal-name history (International Classification → Knowledge Organization) is stated verbatim on the About page.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:natural-language-processing",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Natural language processing is, in Britannica's definition, \"the use of operations, systems, and technologies that allow computers to process and respond to written and spoken language in a way that mirrors human ability,\" achieved by combining computational linguistics, statistics, machine learning, and deep-learning models. Britannica describes a progression from early systems that were \"hand-coded and rule-based\" and struggled with nuances such as sarcasm and idiom, to statistical approaches using probability, and then to modern deep-learning systems that learn while processing information. It lists applications including voice-operated navigation, customer-service chatbots, machine translation, and search auto-completion, and notes that bias inherited from training data is a recognized concern.",
+      "source_hints": [
+        {
+          "source": "Encyclopædia Britannica — \"Natural language processing\"",
+          "url": "https://www.britannica.com/technology/natural-language-processing-computer-science",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q30642 (identity pin only; enwiki sitelink \"Natural language processing\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q30642.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "Britannica's NLP entry supplies the verbatim definition, the disciplines it combines (computational linguistics, statistics, machine learning, deep learning), the history (hand-coded/rule-based systems and their nuance problems with sarcasm/idiom; statistical/probabilistic stage; deep-learning stage), the applications (voice GPS/navigation, chatbots, translation, search auto-completion), and the training-data bias concern. Wikidata Q30642 pins the identity to enwiki \"Natural language processing.\"",
+      "uncertainty": "Britannica names ChatGPT and GPT-3 as modern examples; the summary omits brand-specific product names to keep the description durable and vendor-neutral. No factual conflict.",
+      "ambiguous": false
+    },
+    {
+      "node_id": "subfield:programming-languages",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Programming language theory is the branch of computer science concerned with the design, semantics, implementation, and analysis of programming languages. Carnegie Mellon University's Computer Science Department characterizes the area as \"a comprehensive science of programming that encompasses not only language design and implementation as ordinarily conceived, but also specification, verification, implementation, evaluation, and validation of programs.\" The University of Oxford, where \"programming language research…began in 1965 with the Programming Research Group,\" likewise places \"work in programming language theory, design and implementation\" at the theme's center, spanning topics from functional programming and game semantics to algebra of programming.",
+      "source_hints": [
+        {
+          "source": "Carnegie Mellon University CSD — \"Programming Languages\" research area",
+          "url": "https://www.csd.cs.cmu.edu/research/research-areas/programming-languages",
+          "fetched": true
+        },
+        {
+          "source": "University of Oxford, Dept. of Computer Science — \"Programming Languages\" research theme",
+          "url": "https://www.cs.ox.ac.uk/research/pl/",
+          "fetched": true
+        },
+        {
+          "source": "Wikidata Q2670534 (identity pin only; enwiki sitelink \"Programming language theory\")",
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q2670534.json",
+          "fetched": true
+        }
+      ],
+      "rationale": "Wikidata Q2670534 pins the identity to enwiki \"Programming language theory,\" so the summary leads with PLT rather than just \"programming languages.\" The CMU PL research-area page supplies the verbatim scope statement (design, implementation, specification, verification, evaluation, validation of programs). The Oxford PL theme page supplies the 1965 founding of the Programming Research Group and the \"programming language theory, design and implementation\" framing plus the listed activities (functional programming, game semantics, algebra of programming).",
+      "uncertainty": "The node label is \"Programming Languages\" while the pinned Wikidata identity is \"Programming language theory\"; the summary aligns to the pinned identity. Neither fetched institutional page is an encyclopedia definition, but both are official university research descriptions, which the citation contract permits.",
+      "ambiguous": false
+    }
+  ]
+}
