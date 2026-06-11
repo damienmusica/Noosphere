@@ -1,0 +1,192 @@
+{
+  "id": "batch:life-sciences-skeleton-v1",
+  "title": "Life Sciences Skeleton v1",
+  "description": "Coverage skeleton for the life-sciences continent (sixth continent, parallel round v1 branch 13b, vault parallel-round-v1.md): a field/subfield two-level node set under domain:life-sciences — a single field:biology with its biological subfields (organismal, mechanistic, population/system, and methodological branches) — each tagged with academic_status. Construction input only — not canonical graph data; nodes only, zero edges (skeleton-first). domain:life-sciences (Q864928, session-#11 correction anchor) is already canonical and reviewed and is out of generation scope. subfield:biochemistry and subfield:biophysics are already canonical in /data as section-13 dual memberships (chemistry/physics + life-sciences) and are OUT of generation scope — their domain-direct membership edges re-target to field:biology in a separate retarget task, never re-proposed here. Biotechnology/bioengineering (FORD 2.8/2.9) belongs to the engineering continent (13c) and is out of scope. Neuroscience belongs to the cognitive-sciences continent and is out of scope. Medical-physics, clinical/applied medicine, pathology, pharmacology, and epidemiology belong to the medicine-and-health continent (pending) and are out of scope.",
+  "status": "active",
+  "target_locales": [
+    "en"
+  ],
+  "scope": {
+    "include": [
+      "Life-sciences field and subfield coverage skeleton (nodes only)",
+      "field:biology as the continent's single field (LCC QH301-705.5 Biology (General); UDC 57 Biological sciences in general; FORD 1.6 Biological sciences; the humanities->philosophy single-field precedent)",
+      "Biology subfields under LCC QH-QR (QH biology general: evolution/genetics/reproduction/life/ecology/cytology; QK Botany; QL Zoology; QM Human anatomy; QP Physiology; QR Microbiology incl. immunology/virology) and UDC 57-59 (573 theoretical biology, 574 ecology/biodiversity, 575 genetics, 576 cell biology, 577 biochemistry/molecular biology/biophysics, 578 virology, 579 microbiology, 58 botany, 59 zoology), cross-checked against FORD 1.6",
+      "subfield:bioinformatics accepted as a transfer from the computer-and-information-sciences continent (session-#8 section-12 ruling: LCC QH324.2 + institutional home, biostatistics precedent) — generated here; its CS-side section-13 candidate evidence is recorded in the report, not written, pending the evidence gate",
+      "Wikidata QID resolution for identity and external_ids"
+    ],
+    "exclude": [
+      "Edges and relations (skeleton-first: dots before lines; the part_of skeleton edges are a separate batch)",
+      "Level-3 concepts, persons, works, individual taxa, and named organisms",
+      "Re-proposing any existing /data node (domain:life-sciences, subfield:biochemistry, subfield:biophysics, and all other canonical nodes; reconcile to existing IDs instead)",
+      "subfield:biochemistry and subfield:biophysics (already canonical as section-13 dual memberships; their domain-direct edges re-target to field:biology in the retarget task — never re-proposed)",
+      "Biotechnology, bioengineering, synthetic-biology's industrial-process wing (FORD 2.8/2.9 — engineering continent 13c; record only on encounter)",
+      "Neuroscience and neurobiology (cognitive-sciences continent; LCC QP351-495 neurophysiology stays inside physiology's range but no separate neuroscience node is created)",
+      "Medical-physics, clinical/basic/applied medicine, human pathology, pharmacology, endocrinology, epidemiology, public health (medicine-and-health continent, pending; the clinical side of physiology/anatomy is recorded as a medicine-transfer candidate, but general physiology and comparative anatomy stay in-continent per LCC QM/QP)",
+      "Agriculture, forestry, fisheries, animal/dairy and veterinary science (FORD 4 — separate continent; mostly cross-continent transfer candidates)",
+      "Paleontology and paleobiology (subfield:paleontology already canonical under earth-sciences, LCC QE701-760; record adjacency, do not duplicate)",
+      "Mathematical-biology (subfield:mathematical-biology already canonical under formal sciences; record adjacency, do not duplicate)",
+      "field:environmental-science (already canonical under natural sciences; ecology is the biological science of organism-environment interaction and is distinct — record adjacency, never duplicate environmental-science)",
+      "Physical/biological anthropology (UDC 572 files it under biology, but anthropology proper is the social-sciences continent's, 13a; recorded as a boundary, not generated)",
+      "Living scientists and current affiliations"
+    ]
+  },
+  "seed_entities": [
+    {
+      "label": "Biology",
+      "expected_node_id": "field:biology",
+      "expected_type": "field"
+    },
+    {
+      "label": "Botany",
+      "expected_node_id": "subfield:botany",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Zoology",
+      "expected_node_id": "subfield:zoology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Microbiology",
+      "expected_node_id": "subfield:microbiology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Genetics",
+      "expected_node_id": "subfield:genetics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Molecular Biology",
+      "expected_node_id": "subfield:molecular-biology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Cell Biology",
+      "expected_node_id": "subfield:cell-biology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Ecology",
+      "expected_node_id": "subfield:ecology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Evolutionary Biology",
+      "expected_node_id": "subfield:evolutionary-biology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Developmental Biology",
+      "expected_node_id": "subfield:developmental-biology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Physiology",
+      "expected_node_id": "subfield:physiology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Anatomy",
+      "expected_node_id": "subfield:anatomy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Immunology",
+      "expected_node_id": "subfield:immunology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Virology",
+      "expected_node_id": "subfield:virology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Parasitology",
+      "expected_node_id": "subfield:parasitology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Mycology",
+      "expected_node_id": "subfield:mycology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Systematics",
+      "expected_node_id": "subfield:systematics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Marine Biology",
+      "expected_node_id": "subfield:marine-biology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Bioinformatics",
+      "expected_node_id": "subfield:bioinformatics",
+      "expected_type": "subfield"
+    }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "wikidata",
+      "purpose": [
+        "identity",
+        "metadata",
+        "source_resolution",
+        "external_link"
+      ],
+      "requires_secret": false,
+      "notes": "CC0. Resolver verifies the unverified training-knowledge QID hints in the proposal and fills missing QIDs."
+    },
+    {
+      "provider": "wikipedia",
+      "purpose": [
+        "external_link",
+        "source_resolution"
+      ],
+      "requires_secret": false,
+      "notes": "External-link / source-resolution pointer only. Never store or cache article bodies."
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "provider": "namuwiki",
+      "reason": "NamuWiki is external-link-only and must never be used as evidence or a source, nor have its content cached."
+    },
+    {
+      "provider": "cloud_llm_api",
+      "reason": "No cloud LLM API calls are permitted in repo tooling, build, validation, or runtime."
+    },
+    {
+      "provider": "scraped_article_body",
+      "reason": "Scraping or crawling third-party article bodies is forbidden; only open, license-compatible data is allowed."
+    }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": [
+      "low",
+      "medium",
+      "historical"
+    ],
+    "requires_strict_review_for": [
+      "living_person",
+      "current_affiliation",
+      "controversial_claim"
+    ]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/life-sciences-skeleton-v1"
+  },
+  "notes": [
+    "Parallel round v1 branch 13b (vault parallel-round-v1.md). Batch directory owned: foundry/proposals/life-sciences-skeleton-v1/. /data promotion merge order = 2 (after 13a social sciences; succession rule applies if 13a is not ready).",
+    "Coverage baseline for generation/QC (all live-captured by the orchestrator 2026-06-11 before this manifest was written, stored under dist/foundry/captures/life-sciences-skeleton-v1/): LCC class Q outline, biology family QH-QR (lcco_q.pdf; existing Wayback snapshot https://web.archive.org/web/20260611023031/https://www.loc.gov/aba/cataloging/classification/lcco/lcco_q.pdf, re-verified live HTTP 200); UDC class 57 Biological sciences in general plus 572-579 subdivisions, 58 Botany, 59 Zoology (udcsummary.info getrecord endpoint, live HTTP 200); OECD FORD section 1.6 Biological sciences (arrs.si Frascati mirror, existing snapshot https://web.archive.org/web/20260611023459/https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp). id.loc.gov authority-record JSON is the cutter-level cross-check at QC time. No discipline-specific gate scheme is ratified for this continent (unlike PhySH for physics or ACM CCS for CIS); LCC + UDC are the two gate schemes and FORD is the field-level cross-check.",
+    "docs/data-foundry.md section 12 (including its full precedent log) is a mandatory input to the generation order (promotion policy v1.3); section 13 governs any multi-membership question raised during QC. The natural-sciences section-12 precedents on absorption (polymer/computational chemistry), peer-coexistence (optics vs AMO), and discipline-scheme substitution are directly relevant here.",
+    "Pre-registered structural questions for QC: (1) field structure — biology is modeled as the single field (FORD 1.6 one field; philosophy single-field precedent; the prompt's field:biology language), with botany/zoology/microbiology as peer subfields (branches of biology, the algebra-under-mathematics pattern) despite their own LCC subclasses (shelving granularity is not a co-equality claim); (2) absorption candidates to test via the §12 absorption rule — genomics into genetics, cell-biology vs cytology, biogeography/conservation-biology into ecology, systematics/taxonomy, structural-biology vs biophysics, virology into microbiology, developmental-biology vs embryology/reproduction; (3) molecular-biology vs biochemistry granularity (UDC 577 bundles biochemistry+molecular-biology+biophysics — biochemistry/biophysics already canonical, test whether molecular-biology is a distinct kept node or absorbed); (4) medicine boundary — physiology and anatomy stay in-continent on LCC QM/QP, with the clinical/human wing recorded as a medicine-transfer/§13 candidate; parasitology and immunology medicine-vs-biology boundary tested per seed; (5) cross-continent no-duplicate: paleontology (earth-sciences), mathematical-biology (formal sciences), environmental-science (natural sciences), neuroscience (cognitive sciences), biotechnology (engineering 13c) are recorded as adjacencies/boundaries, never duplicated; (6) bioinformatics accepted (CS transfer), CS-side §13 candidate recorded in report.",
+    "Post-skeleton re-target triggers recorded in the session order (task 7): the two section-13 membership edges edge:biochemistry-part-of-life-sciences and edge:biophysics-part-of-life-sciences currently target domain:life-sciences directly with a re-target note; when field:biology lands they re-target to field:biology (ID and evidence preserved — quantum-computing->field:physics and mathematics-education precedent).",
+    "/data remains the source of truth for accepted graph data. This batch never writes to /data; promotion is the separate policy gate.",
+    "Generation model = Sonnet (skeleton/structure track, vault decision (26)/parallel-round model assignment). Generation and QC run in separate contexts (ADR 0007); the generator must not QC its own output.",
+    "Seeds regenerated mechanically from the QC-passed node set (19 nodes: 17 reviewed-track + physiology/anatomy proposed-track) on 2026-06-11, after orchestrator QC dropped 6 (genomics/biogeography/structural-biology absorbed; systems-biology/synthetic-biology/conservation-biology non-coverage). formal-sciences/CS/NS precedent (regenerate seeds post-QC for the resolver run)."
+  ]
+}

@@ -1978,6 +1978,172 @@
       "verdict": "verified",
       "expected_qid": "Q853710",
       "rank1_expected": true
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Biology",
+      "node_id": "field:biology",
+      "verdict": "verified",
+      "expected_qid": "Q420",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Botany",
+      "node_id": "subfield:botany",
+      "verdict": "verified",
+      "expected_qid": "Q441",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Zoology",
+      "node_id": "subfield:zoology",
+      "verdict": "verified",
+      "expected_qid": "Q431",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Microbiology",
+      "node_id": "subfield:microbiology",
+      "verdict": "verified",
+      "expected_qid": "Q7193",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Genetics",
+      "node_id": "subfield:genetics",
+      "verdict": "verified",
+      "expected_qid": "Q7162",
+      "rank1_expected": true,
+      "notes": "resolver flagged ambiguous (population-genetics Q31151 also aligned); rank-1 Q7162 confirmed multi-signal (exact label + enwiki Genetics + P31 academic discipline + P279 biology)."
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Molecular Biology",
+      "node_id": "subfield:molecular-biology",
+      "verdict": "verified",
+      "expected_qid": "Q7202",
+      "rank1_expected": true,
+      "notes": "resolver false-ambiguous: P31=Q28598684 'branch of biology' not in resolver positive-signal allow-list (score 40); rank-1 confirmed multi-signal (enwiki Molecular biology + P279 biology). Resolver v5 pitstop candidate: add Q28598684 to discipline allow-list."
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Cell Biology",
+      "node_id": "subfield:cell-biology",
+      "verdict": "verified",
+      "expected_qid": "Q7141",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Ecology",
+      "node_id": "subfield:ecology",
+      "verdict": "verified",
+      "expected_qid": "Q7150",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Evolutionary Biology",
+      "node_id": "subfield:evolutionary-biology",
+      "verdict": "verified",
+      "expected_qid": "Q840400",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Developmental Biology",
+      "node_id": "subfield:developmental-biology",
+      "verdict": "verified",
+      "expected_qid": "Q213713",
+      "rank1_expected": true,
+      "notes": "resolver false-ambiguous (P31=Q28598684 not in allow-list); rank-1 confirmed multi-signal (enwiki Developmental biology + P279 biology)."
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Physiology",
+      "node_id": "subfield:physiology",
+      "verdict": "verified",
+      "expected_qid": "Q521",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Anatomy",
+      "node_id": "subfield:anatomy",
+      "verdict": "verified",
+      "expected_qid": "Q514",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Immunology",
+      "node_id": "subfield:immunology",
+      "verdict": "verified",
+      "expected_qid": "Q101929",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Virology",
+      "node_id": "subfield:virology",
+      "verdict": "verified",
+      "expected_qid": "Q7215",
+      "rank1_expected": true,
+      "notes": "resolver false-ambiguous (P31=Q28598684); rank-1 confirmed multi-signal (enwiki Virology + P279 microbiology Q7193)."
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Parasitology",
+      "node_id": "subfield:parasitology",
+      "verdict": "verified",
+      "expected_qid": "Q180502",
+      "rank1_expected": true,
+      "notes": "resolver false-ambiguous (P31 branch-of-zoology/biology not in allow-list); rank-1 confirmed multi-signal (enwiki Parasitology + P279 zoology Q431 — corroborates LCC QL757 home)."
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Mycology",
+      "node_id": "subfield:mycology",
+      "verdict": "verified",
+      "expected_qid": "Q7175",
+      "rank1_expected": true,
+      "must_not_select": [
+        "Q7193"
+      ],
+      "notes": "generator hint Q7193 was a microbiology collision; resolver correctly selected Q7175 (enwiki Mycology + P279 biology)."
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Systematics",
+      "node_id": "subfield:systematics",
+      "verdict": "verified",
+      "expected_qid": "Q3516404",
+      "rank1_expected": true,
+      "must_not_select": [
+        "Q105769"
+      ],
+      "notes": "cross-domain homonym: Q3516404 (biology systematics) vs Q105769 (systems theory); rank-1 Q3516404 confirmed (aliases 'systematics (biology)', 'biosystematics'; enwiki Systematics; P279 zoology)."
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Marine Biology",
+      "node_id": "subfield:marine-biology",
+      "verdict": "verified",
+      "expected_qid": "Q7173",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:life-sciences-skeleton-v1",
+      "seed_label": "Bioinformatics",
+      "node_id": "subfield:bioinformatics",
+      "verdict": "verified",
+      "expected_qid": "Q128570",
+      "rank1_expected": true,
+      "notes": "resolver false-ambiguous (P31=Q28598684); rank-1 confirmed multi-signal (enwiki Bioinformatics; interdisciplinary biology+CS+statistics — corroborates CS-side §13 candidate)."
     }
   ]
 }

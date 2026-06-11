@@ -1,0 +1,461 @@
+{
+ "version": 1,
+ "batch_id": "batch:life-sciences-skeleton-v1",
+ "proposed_by": {
+  "model_name": "Claude Sonnet",
+  "model_version": "claude-sonnet-4-6",
+  "proposed_at": "2026-06-11"
+ },
+ "nodes": [
+  {
+   "id": "field:biology",
+   "type": "field",
+   "domain": "life_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Biology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q420"
+   },
+   "source_hint": "LCC QH301-705.5 'Biology (General)' (captured baseline 2026-06-11, within QH Natural history - Biology subclass). UDC 57 'Biological sciences in general' (captured baseline 2026-06-11, top-level class under 5 Natural Sciences). OECD FORD 1.6 'Biological sciences' (captured baseline 2026-06-11, one field under Natural Sciences). Wikidata Q420 — unverified training-knowledge hint.",
+   "rationale": "LCC gives biology a named range QH301-705.5 within the QH subclass; UDC 57 is a top-level class in the natural-sciences family; FORD 1.6 is the single biological-sciences field — all three gate schemes support field-level standing; named Faculties and Schools of Biology at every research university satisfy the community criterion. The philosophy single-field precedent applies: FORD 1.6 is one field, so biology is modeled as the continent's single level-1 field.",
+   "uncertainty": "QID hint unverified. The single-field modeling decision (all biological subfields under one field:biology rather than botany/zoology/microbiology as separate fields) is a pre-registered structural question; QC should confirm the philosophy/algebra-under-mathematics precedent applies here.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:botany",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Botany",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q2136"
+   },
+   "source_hint": "LCC QK1-989 'Botany' (captured baseline 2026-06-11, own subclass QK). UDC 58 'Botany' (captured baseline 2026-06-11, own top-level class under 5 Natural Sciences). FORD 1.6 sub-list includes 'Plant sciences/Botany' [UNFETCHED — arrs.si mirror exposes 2-digit FORD codes only; the detailed 1.6 sub-list is training knowledge]. Wikidata Q2136 — unverified training-knowledge hint.",
+   "rationale": "LCC gives botany its own major subclass QK; UDC 58 is a top-level class in the natural-sciences family with full class-level standing; botanical societies (Botanical Society of America, Linnean Society) and named botany departments satisfy the community criterion. Modeled as a subfield of biology per the algebra-under-mathematics pattern despite the LCC separate-subclass shelving.",
+   "uncertainty": "QID hint unverified. LCC's separate subclass QK could suggest field-level standing, but the §12 single-field rule applies (FORD 1.6 is one field; botany is a branch of biology, not a peer of biology). LCC shelving granularity is not a co-equality claim.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:zoology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Zoology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1134"
+   },
+   "source_hint": "LCC QL1-991 'Zoology' (captured baseline 2026-06-11, own subclass QL, incl. invertebrates, vertebrates, behavior, morphology, anatomy, embryology). UDC 59 'Zoology' (captured baseline 2026-06-11, own top-level class under 5 Natural Sciences). Wikidata Q1134 — unverified training-knowledge hint.",
+   "rationale": "LCC gives zoology its own major subclass QL; UDC 59 is a top-level class; zoological societies (AZA, Zoological Society of London) and named zoology departments satisfy the community criterion. Modeled as a subfield of biology per the algebra-under-mathematics pattern.",
+   "uncertainty": "QID hint unverified. Same LCC-shelving vs single-field tension as botany — resolved the same way. LCC's QL embryology range (QL951-991) is absorption-absorbed into zoology at the skeleton level; the developmental-biology question is handled separately.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:microbiology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Microbiology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7193"
+   },
+   "source_hint": "LCC QR1-502 'Microbiology' (captured baseline 2026-06-11, own subclass QR, incl. bacteria QR75-99.5, microbial ecology QR100-130, immunology QR180-189.5, virology QR355-502). UDC 579 'Microbiology' (captured baseline 2026-06-11, with 579.2 General microbiology, 579.6 Applied microbiology, 579.8 Classification and systematics of microorganisms). Wikidata Q7193 — unverified training-knowledge hint.",
+   "rationale": "LCC gives microbiology its own major subclass QR; UDC 579 gives it a top-level entry under 57 Biological sciences; named microbiology departments, ASM (American Society for Microbiology), and journals (Applied and Environmental Microbiology) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. Virology and immunology are sub-ranges of QR in LCC; both are proposed as separate subfield nodes per their independent classification entries (QR355-502 virology, QR180-189.5 immunology) and community standing — the absorption question for each is addressed in their individual nodes.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:genetics",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Genetics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7243"
+   },
+   "source_hint": "LCC QH426-470 'Genetics' (captured baseline 2026-06-11, within QH Biology General). UDC 575 'General genetics. General cytogenetics [Incl. Immunogenetics. Evolution. Phylogeny]' (captured baseline 2026-06-11). Wikidata Q7243 — unverified training-knowledge hint.",
+   "rationale": "LCC QH426-470 gives genetics its own classification range within biology; UDC 575 provides an independent named entry; GENETICS (GSA) journal, named genetics departments, and the Genetics Society satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. UDC 575 bundles genetics with cytogenetics, evolution, and phylogeny — evolutionary biology is proposed separately (its own LCC range QH359-425); cytogenetics is absorbed into genetics at skeleton level. Pre-registered absorption question: genomics-into-genetics — see subfield:genomics.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:genomics",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Genomics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7692"
+   },
+   "source_hint": "LCC classification for genomics: likely a cutter subdivision within QH426-470 Genetics [UNFETCHED — no distinct genomics range appears in the captured QH outline]. UDC: no distinct genomics entry appears in the captured UDC 57 digest (575 covers general genetics/cytogenetics). FORD 1.6 detailed sub-list includes genomics-adjacent areas [UNFETCHED — training knowledge]. Wikidata Q7692 — unverified training-knowledge hint.",
+   "rationale": "Genomics has strong independent community standing: dedicated journals (Genomics, Genome Research, Nature Genomics), named genomics institutes and departments (Wellcome Sanger Institute, Broad Institute genomics programs), and major funding lines; the dual criterion passes on community grounds. The pre-registered absorption question is: does genomics constitute a refinement of genetics (§12 absorption rule) or a peer? Generator assessment: the genomics community has grown to constitute a distinct disciplinary identity with its own training programs and institutional homes, warranting peer status — but classification evidence is thin in the captures.",
+   "uncertainty": "QID hint unverified. Classification evidence is UNFETCHED for both LCC and UDC — no distinct genomics range appears in the captured digest; this is training-knowledge community evidence only. Pre-registered absorption question: QC should assess whether genomics is a refinement-of-genetics (absorption) or a peer subfield. If no independent gate-scheme classification entry can be confirmed, the §12 absorption rule may apply (graph-theory pattern). Flag set ambiguous=true for QC ruling.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:molecular-biology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Molecular Biology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7198"
+   },
+   "source_hint": "UDC 577 'Material bases of life. Biochemistry. Molecular biology. Biophysics' (captured baseline 2026-06-11, within UDC 57 Biological sciences) — molecular biology is explicitly named in the UDC 577 heading alongside biochemistry and biophysics. LCC: no dedicated molecular-biology range appears in the captured QH outline [UNFETCHED — molecular biology may be shelved at QH506 or within QH301-705.5 but this is a training-knowledge claim not confirmed in the captured outline]. Wikidata Q7198 — unverified training-knowledge hint.",
+   "rationale": "UDC 577 explicitly names 'Molecular biology' alongside biochemistry and biophysics in the class heading, providing classification-level presence in the biology family (57); biochemistry and biophysics are already canonical §13 dual memberships; molecular biology is the residual distinct component. Named molecular biology departments (MRC LMB, Rockefeller), journals (Molecular Biology of the Cell, EMBO Journal), and degree programs satisfy the community criterion. Pre-registered UDC 577 granularity question: generator keeps molecular-biology as a distinct node because (a) UDC names it explicitly alongside biochemistry and biophysics as a separate concept, and (b) the molecular biology community has a distinct identity from biochemistry.",
+   "uncertainty": "QID hint unverified. LCC classification home UNFETCHED — the captured outline does not show a distinct molecular-biology range. UDC 577 bundles biochemistry+molecular-biology+biophysics in one class, but names each separately; biochemistry and biophysics are already canonical nodes, so molecular-biology is the residual named component. QC should verify whether a distinct LCC cutter (e.g., QH506) can be confirmed; if not, UDC 577 naming alone may still pass criterion (a) per the manifest's two-gate-scheme requirement.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:cell-biology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Cell Biology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7145"
+   },
+   "source_hint": "LCC QH573-671 'Cytology' (captured baseline 2026-06-11, within QH Biology General). UDC 576 'Cellular and subcellular biology. Cytology' (captured baseline 2026-06-11, within UDC 57). Wikidata Q7145 — unverified training-knowledge hint.",
+   "rationale": "LCC QH573-671 provides a named classification range for cytology (the historical term for cell biology) within biology; UDC 576 explicitly names 'Cellular and subcellular biology' alongside 'Cytology' in its heading, providing direct classification presence for the modern discipline. ASCB (American Society for Cell Biology) and journals (Cell, Journal of Cell Biology) satisfy the community criterion. Pre-registered cytology/cell-biology absorption: cytology is the older term for the same discipline; the modern label is 'cell biology'; §12 label rule applied — one node covers both, labeled by modern research-area term.",
+   "uncertainty": "QID hint unverified. The cytology/cell-biology label question is resolved at generation per §12 label rule. UDC 576 heading 'Cellular and subcellular biology. Cytology' directly supports the modern cell biology framing. No residual ambiguity on the node itself.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:ecology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Ecology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7150"
+   },
+   "source_hint": "LCC QH540-549.5 'Ecology' (captured baseline 2026-06-11, within QH Biology General). UDC 574 'General ecology and biodiversity [Incl. Biocoenology. Hydrobiology. Biogeography]' (captured baseline 2026-06-11, within UDC 57). Wikidata Q7150 — unverified training-knowledge hint.",
+   "rationale": "LCC QH540-549.5 gives ecology its own named range within biology; UDC 574 gives it a top-level entry within class 57; ESA (Ecological Society of America), Ecology journal, and named ecology departments satisfy the community criterion. UDC 574 caption includes Biogeography and Biocoenology/Hydrobiology, raising absorption questions addressed in subfield:biogeography.",
+   "uncertainty": "QID hint unverified. Pre-registered adjacency with field:environmental-science (existing canonical node): ecology is the biological science of organism-environment interaction; environmental science is broader and cross-disciplinary; the two are distinct — no duplicate created. Biogeography and conservation-biology absorption questions addressed in their respective nodes.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:evolutionary-biology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Evolutionary Biology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q200790"
+   },
+   "source_hint": "LCC QH359-425 'Evolution' (captured baseline 2026-06-11, within QH Biology General). UDC 575 'General genetics. General cytogenetics [Incl. Immunogenetics. Evolution. Phylogeny]' (captured baseline 2026-06-11) — evolution is named in the 575 heading. Wikidata Q200790 — unverified training-knowledge hint.",
+   "rationale": "LCC QH359-425 gives evolution/evolutionary biology its own named classification range; UDC 575 explicitly names Evolution in its heading; Society for the Study of Evolution, Evolution journal, and named evolutionary-biology programs (e.g., UC Davis, Chicago) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. UDC 575 bundles evolution with genetics/cytogenetics — generator keeps evolutionary biology as a separate node from genetics because LCC gives it a distinct range (QH359-425 vs QH426-470) and the evolutionary biology community has its own institutional homes and societies distinct from genetics. Pre-registered adjacency with subfield:paleontology (earth-sciences) — the fossil record is a primary source of evolutionary evidence, but paleontology is already canonical under earth-sciences; no duplicate created.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:developmental-biology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Developmental Biology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7171"
+   },
+   "source_hint": "LCC QH471-489 'Reproduction' (captured baseline 2026-06-11, within QH Biology General) and QL951-991 'Embryology' (captured baseline 2026-06-11, within QL Zoology) and QM601-695 'Human embryology' (captured baseline 2026-06-11, within QM Human anatomy). UDC: no distinct developmental biology code appears in the captured digest; the concept spans 576 (cellular), 575 (genetics/evolution), and embryological ranges [UNFETCHED direct UDC entry]. Wikidata Q7171 — unverified training-knowledge hint.",
+   "rationale": "LCC provides relevant classification coverage across QH471-489 Reproduction and QL951-991 Embryology; BSDB (British Society for Developmental Biology), Society for Developmental Biology, and Developmental Cell/Development journals satisfy the community criterion. Embryology is the classical term absorbed into developmental biology under the §12 label rule.",
+   "uncertainty": "QID hint unverified. LCC covers embryology under QL and QM, and reproduction under QH — no unified 'developmental biology' range exists in the captured LCC outline; this is a case where the modern disciplinary term (developmental biology) subsumes older classification terms (embryology, reproduction). UDC classification presence is UNFETCHED for developmental biology specifically. Pre-registered embryology/developmental-biology absorption: generator absorbs embryology into developmental-biology per §12 label rule (modern research-area term). QC should verify whether the scattered LCC ranges collectively satisfy criterion (a) or whether thin classification presence warrants a different ruling.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:physiology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Physiology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7189"
+   },
+   "source_hint": "LCC QP1-(981) 'Physiology' (captured baseline 2026-06-11, own subclass QP, incl. QP1-345 General, QP351-495 Neurophysiology, QP501-801 Animal biochemistry, QP(901)-(981) Experimental pharmacology). UDC 612 'Human physiology. Comparative physiology' is filed under UDC 61 'Medical sciences' (captured baseline 2026-06-11 — digest explicitly notes: 'anatomy 611, physiology 612 live under 61 Medicine in UDC — a gate-split vs LCC's QM/QP-in-science'). FORD 3.1 'Basic medicine' covers physiology on the medical side [UNFETCHED — FORD 1.6 does not explicitly list physiology at the sub-level; training knowledge]. Wikidata Q7189 — unverified training-knowledge hint.",
+   "rationale": "LCC gives physiology its own major subclass QP within the science (class Q) family, providing strong in-continent classification presence; the general physiology community (APS — American Physiological Society, Journal of Physiology) and general physiology departments at universities satisfy criterion (b). Manifest explicitly instructs: 'general physiology and comparative anatomy stay in-continent per LCC QM/QP'.",
+   "uncertainty": "QID hint unverified. Pre-registered medicine-boundary question: UDC files physiology under 61 Medicine (not under 57 Biology), creating a gate split — LCC is in-continent (QP), UDC is out-of-continent (61). Per §12 rule 3, deferral requires BOTH primary classification home AND dominant institutional home to lie outside the continent; LCC firmly places physiology in the science class (QP); the manifest-stated policy keeps general physiology in-continent. However, UDC's out-of-continent placement is a real classification disagreement, and physiology departments in practice often sit in medical faculties. QC should rule on whether the LCC in-continent placement is sufficient to keep physiology here or whether the UDC + institutional contest warrants a §13 dual-membership note.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:anatomy",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Anatomy",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q514"
+   },
+   "source_hint": "LCC QM1-695 'Human anatomy' (captured baseline 2026-06-11, own subclass QM, incl. QM1-511 General, QM531-549 Regional anatomy, QM550-577.8 Human and comparative histology, QM601-695 Human embryology). Also QL801-950.9 'Anatomy' within QL Zoology (captured baseline 2026-06-11). UDC 611 'Human anatomy. Histology. Human embryology' is filed under UDC 61 'Medical sciences' (captured baseline 2026-06-11 — same gate-split as physiology). Wikidata Q514 — unverified training-knowledge hint.",
+   "rationale": "LCC gives human anatomy its own major subclass QM within science (class Q), and also covers comparative anatomy within QL; the manifest explicitly states 'general physiology and comparative anatomy stay in-continent per LCC QM/QP'. Anatomical societies (Anatomical Society, American Association for Anatomy) and gross anatomy/comparative anatomy departments satisfy the community criterion on the biological science side.",
+   "uncertainty": "QID hint unverified. Pre-registered medicine-boundary question: UDC files anatomy under 61 Medicine (not under 57 Biology), the same gate split as physiology. Clinical/human anatomy has a dominant institutional home in medical schools, making the 'anatomy stays in-continent' claim weaker than for general physiology. QC should rule consistently with physiology; if physiology is kept in-continent, anatomy's LCC QM placement is equally strong. Generator flags ambiguous=true for the same UDC gate-split reason as physiology.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:immunology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Immunology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q101038"
+   },
+   "source_hint": "LCC QR180-189.5 'Immunology' (captured baseline 2026-06-11, within QR Microbiology subclass). UDC 579: no distinct immunology entry appears in the captured UDC 57 digest [UNFETCHED — immunology may appear at a finer UDC subdivision]. FORD 1.6 detailed sub-list [UNFETCHED — training knowledge only]. Wikidata Q101038 — unverified training-knowledge hint.",
+   "rationale": "LCC QR180-189.5 gives immunology its own named range within the microbiology subclass, providing in-continent classification presence; AAI (American Association of Immunologists), The Journal of Immunology, and named immunology departments/institutes satisfy the community criterion. Manifest identifies immunology as a clearly-kept node (ambiguous=false).",
+   "uncertainty": "QID hint unverified. UDC classification presence UNFETCHED for immunology specifically (the captured UDC 57 digest does not show a distinct immunology number). LCC QR180-189.5 is the sole captured gate-scheme entry. Pre-registered medicine-vs-biology boundary: clinical immunology sits in medical schools, but the basic-science immunology community (ASI, AAI) is biology-resident. Generator keeps in-continent per LCC QR classification home and manifest instruction.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:virology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Virology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q202864"
+   },
+   "source_hint": "LCC QR355-502 'Virology' (captured baseline 2026-06-11, within QR Microbiology subclass). UDC 578 'Virology' (captured baseline 2026-06-11, own top-level entry within UDC 57 Biological sciences). Wikidata Q202864 — unverified training-knowledge hint.",
+   "rationale": "LCC QR355-502 gives virology its own substantial classification range within QR; UDC 578 gives virology its own top-level entry within class 57 (separate from 579 Microbiology) — two independent gate-scheme entries. ASV (American Society for Virology), Journal of Virology, and named virology institutes satisfy the community criterion. Manifest identifies virology as a clearly-kept node (ambiguous=false).",
+   "uncertainty": "QID hint unverified. Pre-registered absorption question: virology into microbiology. Generator ruling: keep as peer — UDC 578 is a separate top-level entry from 579 Microbiology, providing independent classification-level standing. The two-gate-scheme independence (LCC separate cutter range + UDC separate class entry) satisfies the dual criterion and overrides any absorption claim.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:marine-biology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Marine Biology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q10811"
+   },
+   "source_hint": "UDC 574 'General ecology and biodiversity [Incl. Biocoenology. Hydrobiology. Biogeography]' (captured baseline 2026-06-11) — 'Hydrobiology' in the UDC 574 caption may overlap with marine/aquatic biology but does not directly name marine biology. LCC: QH91-100 Natural history of oceans and fresh waters [UNFETCHED — this range is within QH1-278.5 Natural history General, but no direct capture of the QH91 cutter appears in the captured outline]. UDC 591.9 [UNFETCHED — training-knowledge claim for marine zoology subdivision]. FORD 1.6 detailed sub-list includes 'Marine/freshwater biology' [UNFETCHED — arrs.si captures 2-digit FORD level only]. Wikidata Q10811 — unverified training-knowledge hint.",
+   "rationale": "Strong community criterion: MBARI, Woods Hole MBL, Marine Biological Association, Journal of the Marine Biological Association, dedicated Marine Biology degree programs. The UDC 574 Hydrobiology reference is partial captured evidence; dedicated LCC and UDC ranges for marine biology specifically are UNFETCHED.",
+   "uncertainty": "QID hint unverified. Both LCC and UDC classification presence are UNFETCHED or only partially covered by the captured digest. Marine biology may sit as a subdivision of ecology (via QH540-549.5 or UDC 574), zoology (via QL), or natural history (QH91) — no distinct top-level gate-scheme entry appears in the captures. Pre-registered absorption question: does marine biology constitute a refinement of ecology (§12 absorption rule) or a peer? Generator flags ambiguous=true; QC should determine whether training-knowledge classification plus strong community criterion is sufficient, or whether UNFETCHED LCC/UDC status triggers the absorption rule.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:mycology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Mycology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7193"
+   },
+   "source_hint": "LCC QK: mycology (fungi) is historically classified within Botany; QK504-(638) 'Cryptogams' within Botany subclass (captured baseline 2026-06-11) — fungi are traditionally filed as cryptogams, but this range covers algae, mosses, and ferns as well as fungi [mycology is within QK Botany, but the captured outline does not show a dedicated mycology-only QH or QK cutter; UNFETCHED whether a distinct QK600 mycology cutter exists]. UDC 58 'Botany' (captured baseline 2026-06-11) — UDC 582.28 mycology [UNFETCHED — this is training-knowledge subdivision of UDC 58]. FORD 1.6 detailed sub-list includes 'Mycology' [UNFETCHED]. Wikidata Q7193 — unverified training-knowledge hint. NOTE: Q7193 is also the hint used for microbiology — likely a QID collision; the correct QID for mycology may be Q10376; resolver must confirm.",
+   "rationale": "Mycology has strong community criterion: British Mycological Society, Mycological Society of America, Mycologia journal, and dedicated mycology programs. However, fungi are historically classified within Botany (LCC QK Cryptogams, UDC 58 Botany) — the classification home is a subdivision of the botany subfield, not an independent top-level entry in the biology family.",
+   "uncertainty": "QID hint is likely WRONG — Q7193 may be microbiology, not mycology; resolver must verify and correct. Both LCC and UDC classification evidence for a dedicated mycology entry are UNFETCHED from the captures; the captured outline shows QK504-(638) Cryptogams which includes fungi but is not mycology-specific. Pre-registered absorption question: mycology into botany (or into a broader organismal-biology category). Generator flags ambiguous=true. QC should confirm whether QK504-(638) Cryptogams or a finer cutter provides mycology-specific classification presence, and whether the independent BSM/MSA community is sufficient to pass criterion (b) as a peer of botany vs. absorbed into it.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:parasitology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Parasitology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q192781"
+   },
+   "source_hint": "LCC: parasitology appears as a subdivision within QL Zoology (invertebrate parasites) or QR Microbiology [UNFETCHED — no distinct parasitology range appears in the captured LCC QH-QR outline; training-knowledge claim]. UDC 576.89 [UNFETCHED — training-knowledge subdivision claim]. FORD 1.6 detailed sub-list does not explicitly list parasitology at the 2-digit level captured (arrs.si); it may fall under 'Other biological topics' [UNFETCHED]. Wikidata Q192781 — unverified training-knowledge hint.",
+   "rationale": "Strong community criterion: American Society of Parasitologists, British Society for Parasitology, International Journal for Parasitology, dedicated parasitology programs, and the WHO/global-health role of parasitology. However, classification evidence is entirely UNFETCHED in the captured baseline.",
+   "uncertainty": "QID hint unverified. All LCC and UDC classification claims are training-knowledge UNFETCHED — no parasitology range appears in the captured QH-QR outline. Pre-registered medicine-vs-biology boundary: medical parasitology (tropical disease contexts) has a significant institutional home in medical schools; biological parasitology (zoological contexts) sits in biology. Without captured classification evidence, it is unclear whether parasitology passes criterion (a) in-continent independently. QC should seek id.loc.gov or live UDC verification and rule on the medicine-vs-biology boundary. Generator flags ambiguous=true.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:systems-biology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Systems Biology",
+   "academic_status": "emerging",
+   "external_ids": {
+    "wikidata": "Q1133560"
+   },
+   "source_hint": "LCC: no distinct systems biology range appears in the captured QH-QR outline [UNFETCHED — may appear at a fine cutter within QH301-705.5 or not yet with its own range]. UDC 573 'General and theoretical biology' (captured baseline 2026-06-11) — systems biology is part of theoretical biology conceptually but no specific UDC 573 subcategory for systems biology is named in the digest. FORD 1.6 detailed sub-list [UNFETCHED]. Wikidata Q1133560 — unverified training-knowledge hint.",
+   "rationale": "Systems biology is an emerging discipline with growing institutional standing: dedicated systems-biology departments (ETH Zurich, EMBL-EBI), journals (Molecular Systems Biology, Cell Systems), and major funding programs. UDC 573 'General and theoretical biology' provides a possible in-continent classification home but does not name systems biology explicitly in the captured digest.",
+   "uncertainty": "QID hint unverified. Both LCC and UDC classification evidence are UNFETCHED for systems biology specifically. The field is emerging (academic_status: emerging) and its classification home is not yet well-established in LCC/UDC. UDC 573 may or may not cover it; no distinct captured classification entry exists. Pre-registered boundary question: overlap with mathematical-biology (existing canonical node under formal sciences) — systems biology uses mathematical modeling but is biology-resident. Generator flags ambiguous=true; QC should confirm whether community criterion alone is sufficient for an emerging field without captured gate-scheme classification presence, or whether UNFETCHED status triggers non-coverage deferral.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:synthetic-biology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Synthetic Biology",
+   "academic_status": "emerging",
+   "external_ids": {
+    "wikidata": "Q190375"
+   },
+   "source_hint": "LCC: no distinct synthetic biology range appears in the captured QH-QR outline [UNFETCHED]. UDC: no distinct synthetic biology entry appears in the captured UDC 57-59 digest [UNFETCHED]. FORD 2.8 'Environmental biotechnology' and 2.9 'Industrial biotechnology' (captured baseline 2026-06-11) — the industrial-process wing of synthetic biology is FORD 2 (engineering), out of scope for this continent per manifest. Wikidata Q190375 — unverified training-knowledge hint.",
+   "rationale": "Synthetic biology has growing community standing: Synthetic Biology community (iGEM Foundation), ACS Synthetic Biology journal, and dedicated programs at major research universities. The biological-research-community side of synthetic biology (organism design, genetic circuits as biological research) is distinct from the engineering/industrial-process wing (FORD 2.8/2.9). The manifest explicitly allows the biological research wing here while excluding the industrial-process wing.",
+   "uncertainty": "QID hint unverified. All LCC and UDC classification evidence are UNFETCHED. Pre-registered boundary: the industrial-process wing (FORD 2.8/2.9) belongs to the engineering continent 13c. This makes the boundary between 'synthetic biology as biological research' and 'synthetic biology as bioengineering' a genuine QC question. Without captured classification evidence, the discipline is UNFETCHED on criterion (a). Generator flags ambiguous=true; QC should assess whether the biological-research community (iGEM, ACS Syn Bio) is sufficient, and confirm the engineering-continent boundary.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:structural-biology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Structural Biology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q13412"
+   },
+   "source_hint": "LCC: no distinct structural biology range appears in the captured QH-QR outline [UNFETCHED — structural biology may appear as a cutter within QH301-705.5 or QD (chemistry) or not yet with its own range]. UDC: no distinct structural biology entry appears in the captured UDC 57-59 digest [UNFETCHED]. FORD 1.6 detailed sub-list [UNFETCHED]. Wikidata Q13412 — unverified training-knowledge hint.",
+   "rationale": "Structural biology has clear community standing: dedicated structural biology departments and institutes (MRC LMB Structural Studies, Diamond Light Source), journals (Structure, Nature Structural and Molecular Biology), and Nobel prizes in structural biology (cryo-EM, X-ray crystallography applications). However, classification evidence is entirely UNFETCHED in the captured baseline.",
+   "uncertainty": "QID hint unverified. All LCC and UDC classification evidence are UNFETCHED. Pre-registered boundary question: structural biology vs biophysics — subfield:biophysics is already canonical (natural-sciences, §13 dual membership); structural biology uses biophysical techniques (X-ray crystallography, cryo-EM, NMR) but is biology-resident in its questions. QC should assess whether structural biology is (a) absorbed into biophysics (which would require no new node here), (b) a peer subfield with its own gate-scheme classification entry, or (c) a cross-listed §13 node at the life-sciences/natural-sciences boundary. Generator flags ambiguous=true for this pre-registered question.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:bioinformatics",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Bioinformatics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q13611"
+   },
+   "source_hint": "LCC QH324.2 bioinformatics (within QH301-705.5 Biology General — capture-digest note: 'the session-#8 ruling cited LCC QH324.2 (a cutter inside QH301-705.5 Biology General) — verify at QC via id.loc.gov', captured baseline 2026-06-11). Session-#8 ruling accepted bioinformatics as CS transfer per LCC QH324.2 + institutional home; biostatistics precedent. UDC: no distinct bioinformatics entry appears in the captured UDC 57-59 digest [UNFETCHED — training knowledge: bioinformatics may appear under UDC 57:004 or within 576]. Wikidata Q13611 — unverified training-knowledge hint.",
+   "rationale": "Accepted per manifest scope and session-#8 §12 ruling: LCC QH324.2 (inside Biology General QH301-705.5) provides in-continent classification presence; named bioinformatics departments and institutes (EMBL-EBI, Wellcome Sanger Bioinformatics), journals (Bioinformatics, PLoS Computational Biology), and the biostatistics-precedent analysis confirm both criteria. This is a CS-to-life-sciences transfer, not a new entity.",
+   "uncertainty": "QID hint unverified. LCC QH324.2 is cited in the digest as the session-#8 ruling basis but should be verified at QC via id.loc.gov (this is not a directly captured outline range, it is a cutter within the QH301-705.5 range). UDC classification presence UNFETCHED. CS-side §13 candidate: bioinformatics has classification homes in CIS (ACM CCS, UDC 004) — the CS-side cross-listing evidence is recorded here for the report but not written as an edge (skeleton-first; edges are a separate batch).",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:biogeography",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Biogeography",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q40614"
+   },
+   "source_hint": "UDC 574 'General ecology and biodiversity [Incl. Biocoenology. Hydrobiology. Biogeography]' (captured baseline 2026-06-11) — 'Biogeography' is explicitly named in the UDC 574 caption. LCC QH84-198 Natural history geographical distribution [UNFETCHED — within QH1-278.5 Natural history General; the captured outline shows QH1-(199.5) General including 'geographical distribution' but does not give the QH84 cutter directly]. Wikidata Q40614 — unverified training-knowledge hint. NOTE: Q40614 may be the seismology QID; likely a training-knowledge collision; resolver must confirm correct QID for biogeography (may be Q189524).",
+   "rationale": "UDC 574 explicitly includes Biogeography in its caption, providing captured classification-level presence within the biology/ecology family. International Biogeography Society, Journal of Biogeography, and biogeography programs within ecology/biology departments satisfy the community criterion.",
+   "uncertainty": "QID hint is likely WRONG — Q40614 is also used as a hint for seismology; resolver must verify. Pre-registered absorption question: biogeography into ecology. UDC 574 names biogeography as an included concept within the ecology/biodiversity class rather than a separate top-level entry — this supports absorption into subfield:ecology rather than peer status. LCC geographical-distribution coverage is UNFETCHED at the specific cutter level. Generator flags ambiguous=true; QC should assess whether UDC 574 inclusion-notation is sufficient for peer status, or whether absorption into ecology applies (geography-facing cross-list with environmental-science is a §13 candidate, not a new node).",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:conservation-biology",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Conservation Biology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7172"
+   },
+   "source_hint": "LCC QH75-77 'Nature conservation. Landscape protection' (within QH1-278.5 Natural history General — captured digest notes QH1-(199.5) General including 'nature conservation, geographical distribution', 2026-06-11; the QH75 cutter is a training-knowledge inference within that range [UNFETCHED direct cutter confirmation]). UDC 502/504 'Environmental science. Conservation of natural resources.' (captured in the natural-sciences digest as field:environmental-science's anchor; this UDC range covers conservation but is assigned to the environmental-science field, not to life-sciences). Wikidata Q7172 — unverified training-knowledge hint.",
+   "rationale": "Conservation biology has strong community standing: Society for Conservation Biology, Conservation Biology journal, named conservation-biology programs. However, classification evidence is UNFETCHED or assigned to adjacent fields (UDC 502/504 maps to field:environmental-science; LCC QH75 is within the Natural history General range, not the Biology General range).",
+   "uncertainty": "QID hint unverified. Pre-registered absorption question: conservation biology into ecology or into field:environmental-science (already canonical). LCC QH75 sits in the Natural history General range (QH1-278.5), not in Biology General (QH301-705.5) — the classification home is arguably closer to natural history/natural philosophy than to the core biological-science subfields. UDC 502/504 maps to environmental-science (existing canonical node), not to life-sciences. Generator flags ambiguous=true; QC should assess whether conservation biology warrants a separate life-sciences node or should be recorded as a §13 cross-list candidate under field:environmental-science.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:systematics",
+   "type": "subfield",
+   "domain": "life_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Systematics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q3516404"
+   },
+   "source_hint": "LCC: no distinct systematics range appears in the captured QH-QR outline as a top-level entry [UNFETCHED — systematics/taxonomy may appear as QH83 or within QK/QL as a classification subdivision; training-knowledge claim]. UDC 579.8 'Classification and systematics of microorganisms' (captured baseline 2026-06-11, within UDC 579 Microbiology) — this covers microbial systematics only, not biological systematics broadly. UDC 57:001.4 [UNFETCHED — training-knowledge claim for taxonomy nomenclature conventions]. Wikidata Q3516404 — unverified training-knowledge hint.",
+   "rationale": "Systematics/taxonomy has strong community standing: Society of Systematic Biologists, Systematic Biology journal, and the foundational role of taxonomy in biodiversity science. UDC 579.8 provides captured evidence for microbial systematics specifically, but broader biological systematics classification is UNFETCHED.",
+   "uncertainty": "QID hint unverified. LCC classification evidence for a distinct systematics range is UNFETCHED. UDC 579.8 covers only microbial systematics — broader taxonomic/systematic classification is not present in the captured digest. Pre-registered boundary question: systematics/taxonomy has been discussed as potentially absorbed into botany or zoology (as each contains organismal classification) or into evolutionary biology (phylogenetics). Generator flags ambiguous=true; QC should seek id.loc.gov confirmation and rule on whether the broad systematics community (SBS, cladistics, phylogenetic nomenclature) warrants a peer subfield node or absorption.",
+   "ambiguous": true
+  }
+ ],
+ "edges": [],
+ "notes": [
+  "Generator self-report (2026-06-11, claude-sonnet-4-6):",
+  "SEED DISPOSITION (25 seeds):",
+  "ALL 25 SEEDS PROPOSED: field:biology, subfield:botany, subfield:zoology, subfield:microbiology, subfield:genetics, subfield:genomics, subfield:molecular-biology, subfield:cell-biology, subfield:ecology, subfield:evolutionary-biology, subfield:developmental-biology, subfield:physiology, subfield:anatomy, subfield:immunology, subfield:virology, subfield:marine-biology, subfield:mycology, subfield:parasitology, subfield:systems-biology, subfield:synthetic-biology, subfield:structural-biology, subfield:bioinformatics, subfield:biogeography, subfield:conservation-biology, subfield:systematics.",
+  "No seeds are absorbed/dropped at generation time; all are proposed with appropriate ambiguous flags for QC ruling. Per the batch manifest note, absorption questions are pre-registered and flagged ambiguous=true so QC can rule. Nodes with thin or UNFETCHED classification evidence are flagged ambiguous=true rather than dropped at generation.",
+  "EXISTING-NODE RECONCILIATION: Checked against EXISTING-NODE-IDS.txt (196 nodes). None of the 25 proposed IDs exist canonically. subfield:biochemistry (existing) and subfield:biophysics (existing) are out of generation scope per manifest and were not proposed. domain:life-sciences (existing) was not re-proposed. field:environmental-science (existing, natural-sciences), subfield:paleontology (existing, earth-sciences), subfield:mathematical-biology (existing, formal-sciences), subfield:philosophy-of-biology (existing), subfield:bioethics (existing) — none re-proposed; adjacencies/boundaries noted in node rationale/uncertainty where relevant.",
+  "FINAL NODE COUNT: 26 nodes proposed (1 field:biology + 25 subfields, one per seed). ambiguous=true: 13 nodes. ambiguous=false: 13 nodes.",
+  "AMBIGUOUS=TRUE SUMMARY (13 nodes, QC priority order):",
+  "(1) subfield:physiology — UDC files physiology under 61 Medicine (gate-split vs LCC QP in-continent). Pre-registered medicine-boundary question. QC should rule on LCC-only vs UDC contest; consistent with anatomy ruling.",
+  "(2) subfield:anatomy — UDC files anatomy under 61 Medicine (gate-split vs LCC QM in-continent). Same pattern as physiology. QC should rule consistently with physiology.",
+  "(3) subfield:developmental-biology — scattered LCC ranges (QH471 Reproduction, QL951 Embryology, QM601 Human embryology); no unified 'developmental biology' range in captured outline; UDC classification UNFETCHED. Embryology absorption handled under §12 label rule but classification scatter warrants QC review.",
+  "(4) subfield:genomics — classification evidence UNFETCHED in both LCC and UDC captures. Pre-registered absorption question: genomics into genetics. QC should seek id.loc.gov and rule on absorption vs peer.",
+  "(5) subfield:marine-biology — LCC and UDC classification UNFETCHED (UDC 574 Hydrobiology is partial/adjacent evidence only). Absorption question into ecology. QC priority: thin capture evidence.",
+  "(6) subfield:mycology — LCC QK Cryptogams is adjacent but not mycology-specific; QID hint likely wrong (Q7193 = microbiology). QC should verify QID and confirm whether QK Cryptogams + community criterion is sufficient for peer status vs absorption into botany.",
+  "(7) subfield:parasitology — ALL classification evidence UNFETCHED. Medicine-vs-biology boundary pre-registered. Highest UNFETCHED risk node.",
+  "(8) subfield:systems-biology — ALL classification evidence UNFETCHED. Emerging field (academic_status: emerging). Boundary with subfield:mathematical-biology (existing). QC priority.",
+  "(9) subfield:synthetic-biology — ALL classification evidence UNFETCHED. Engineering-continent boundary (FORD 2.8/2.9) pre-registered. QC should confirm biological-research-wing boundary.",
+  "(10) subfield:structural-biology — ALL classification evidence UNFETCHED. Pre-registered boundary with subfield:biophysics (existing canonical node). QC should rule on absorption into biophysics vs peer vs §13 cross-list.",
+  "(11) subfield:biogeography — UDC 574 names it as an included concept (not a separate top-level entry). LCC cutter UNFETCHED. Absorption into ecology is the main QC question.",
+  "(12) subfield:conservation-biology — LCC QH75 is within Natural history General, not Biology General; UDC 502/504 maps to field:environmental-science (existing). QC should assess whether a separate life-sciences node is warranted or a §13 candidate under environmental-science.",
+  "(13) subfield:systematics — LCC classification UNFETCHED as a distinct range. UDC 579.8 covers microbial systematics only. Absorption vs peer question.",
+  "AMBIGUOUS=FALSE SUMMARY (13 nodes): field:biology, subfield:botany, subfield:zoology, subfield:microbiology, subfield:genetics, subfield:molecular-biology, subfield:cell-biology, subfield:ecology, subfield:evolutionary-biology, subfield:immunology, subfield:virology, subfield:bioinformatics.",
+  "[UNFETCHED] MARKERS USED (per anti-laundering rule):",
+  "- subfield:botany: FORD 1.6 detailed sub-list [UNFETCHED]",
+  "- subfield:genomics: LCC classification [UNFETCHED]; UDC classification [UNFETCHED]; FORD 1.6 sub-list [UNFETCHED]",
+  "- subfield:molecular-biology: LCC classification [UNFETCHED — no dedicated range in captured outline]",
+  "- subfield:developmental-biology: UDC classification [UNFETCHED]",
+  "- subfield:immunology: UDC classification [UNFETCHED]",
+  "- subfield:bioinformatics: UDC classification [UNFETCHED]; LCC QH324.2 is cutter-level (not directly in captured outline; digest-cited but id.loc.gov verification needed at QC)",
+  "- subfield:marine-biology: LCC [UNFETCHED]; UDC beyond partial Hydrobiology reference [UNFETCHED]; FORD 1.6 sub-list [UNFETCHED]",
+  "- subfield:mycology: LCC dedicated mycology cutter [UNFETCHED]; UDC 582.28 [UNFETCHED]",
+  "- subfield:parasitology: ALL LCC and UDC classification [UNFETCHED]",
+  "- subfield:systems-biology: ALL LCC and UDC classification [UNFETCHED]",
+  "- subfield:synthetic-biology: ALL LCC and UDC classification [UNFETCHED]",
+  "- subfield:structural-biology: ALL LCC and UDC classification [UNFETCHED]",
+  "- subfield:biogeography: LCC QH84 cutter [UNFETCHED direct confirmation]",
+  "- subfield:conservation-biology: LCC QH75 cutter [UNFETCHED direct confirmation]",
+  "- subfield:systematics: LCC distinct range [UNFETCHED]; UDC beyond 579.8 microbial [UNFETCHED]",
+  "BOUNDARY DEFERRALS RECORDED (not generated per manifest exclusions):",
+  "- Neuroscience/neurobiology: boundary with cognitive-sciences continent; QP351-495 Neurophysiology stays inside subfield:physiology's LCC range; no separate neuroscience node created.",
+  "- Biotechnology/bioengineering: engineering continent 13c (FORD 2.8/2.9); only the biological-research wing of synthetic-biology is considered here.",
+  "- Clinical medicine, pathology, pharmacology, epidemiology: medicine-and-health continent (pending); QP(901)-(981) Experimental pharmacology is within physiology's LCC range but not proposed as a node.",
+  "- Physical/biological anthropology (UDC 572): boundary with social-sciences continent 13a; not generated.",
+  "- Agriculture/forestry/fisheries/veterinary (FORD 4): separate continent; not generated.",
+  "- subfield:paleontology, subfield:mathematical-biology, field:environmental-science, subfield:philosophy-of-biology, subfield:bioethics: all existing canonical nodes; adjacencies noted but not re-proposed.",
+  "STRUCTURAL DECISION (single-field modeling): biology is proposed as the continent's single field (field:biology, level 1). All biological subfields are level 2 under it. This mirrors the philosophy single-field and algebra-under-mathematics precedents. LCC's separate subclasses (QK Botany, QL Zoology, QM Human anatomy, QP Physiology, QR Microbiology) are shelving granularity, not co-equality claims. FORD 1.6 is one field.",
+  "QID COLLISION FLAGS FOR RESOLVER: (a) subfield:mycology uses Q7193 — this same QID was used as a training-knowledge hint for subfield:microbiology; one or both QID hints are wrong; resolver must confirm. (b) subfield:biogeography uses Q40614 — this same QID appears in the natural-sciences proposal for seismology; one or both is wrong; resolver must verify correct QID for biogeography (possible correct: Q189524).",
+  "CS-SIDE §13 CANDIDATE EVIDENCE (subfield:bioinformatics): bioinformatics has classification homes in CIS — ACM CCS 'Applied computing > Life and medical sciences > Computational biology' and UDC 004 (training-knowledge: 004.6 or similar). This §13 evidence is recorded here for QC but no edge is written (skeleton-first; edges are a separate batch). The CS-side membership edge target would be field:computer-science."
+ ]
+}
