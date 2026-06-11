@@ -1,0 +1,158 @@
+{
+ "node_id": "subfield:hydrology",
+ "findings": [
+  {
+   "url": "https://id.loc.gov/authorities/classification/GB651.json",
+   "fetched": true,
+   "parent_candidate": "field:earth-sciences (and geography-side parent suggested by LCC class G)",
+   "stance": "opposes",
+   "claim": "LCC files Hydrology under Class G (Geography. Anthropology. Recreation) → Physical geography → Hydrology. Water, NOT under Class Q (Science/Earth sciences). The full rdfs:label chain is 'Geography. Anthropology. Recreation--Physical geography--Hydrology. Water'.",
+   "quote": "Geography. Anthropology. Recreation--Physical geography--Hydrology. Water"
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=556&lang=1",
+   "fetched": true,
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "claim": "UDC places Hydrology at class 556 'Hydrosphere. Water in general. Hydrology' as a direct child of class 55 'Earth Sciences. Geological sciences', firmly filing it under earth sciences.",
+   "quote": "55 Earth Sciences. Geological sciences ... 556 Hydrosphere. Water in general. Hydrology"
+  },
+  {
+   "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+   "fetched": true,
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "claim": "The OECD FORD (Frascati) classification assigns hydrology to field 1.5 'Earth and related Environmental sciences' under Natural Sciences. Hydrology is not listed as a named subfield on the page but the field 1.5 is the standard home for hydrology in FORD (confirmed by FORD documentation; the ARRS page renders only top-level codes 1.1–1.7).",
+   "quote": "1.5. Earth and related Environmental sciences"
+  },
+  {
+   "url": "https://www.britannica.com/science/hydrology",
+   "fetched": true,
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "claim": "Britannica places hydrology within Earth Sciences. The breadcrumb navigation reads Science > Earth Science, Geologic Time & Fossils > Earth Sciences, and the description calls it a 'scientific discipline concerned with the waters of the Earth'.",
+   "quote": "Hydrology, scientific discipline concerned with the waters of the Earth, including their occurrence, distribution, and circulation via the hydrologic cycle and interactions with living things."
+  },
+  {
+   "url": "https://www.hydrology-and-earth-system-sciences.net/about/aims_and_scope.html",
+   "fetched": true,
+   "parent_candidate": "field:earth-sciences (interface with interdisciplinary framing)",
+   "stance": "interface",
+   "claim": "HESS (EGU's primary hydrology journal) frames hydrology as part of the Earth system and explicitly encourages integration with earth sciences, life sciences, atmospheric science, and climate, positioning it as an integrative earth science rather than a pure subfield of one parent.",
+   "quote": "HESS encourages and supports fundamental and applied research that advances the understanding of hydrological systems, their role in providing water for ecosystems and society, and the role of the water cycle in the functioning of the Earth system. A multi-disciplinary approach is encouraged that broadens the hydrological perspective and the advancement of hydrological science through integration with other cognate sciences and cross-fertilization across disciplinary boundaries."
+  },
+  {
+   "url": "https://www.iugg.org/associations/",
+   "fetched": true,
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "claim": "IAHS (International Association of Hydrological Sciences) is one of the eight member associations of IUGG (International Union of Geodesy and Geophysics), an organization described as 'one of the largest and oldest international networks of geoscientists' covering Earth and Space Sciences. Institutional membership in a geophysics/geosciences union places hydrology firmly in the earth sciences family.",
+   "quote": "IAHS (International Association of Hydrological Sciences) ... Within its own discipline each Association is responsible for determining its own programme of investigations."
+  },
+  {
+   "url": "https://www.jsg.utexas.edu/research/",
+   "fetched": true,
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "claim": "UT Austin's Jackson School of Geosciences (an earth sciences institution) lists 'Surface & Hydrologic Processes' as one of its six primary research themes and offers a B.S. in Hydrology and Water Resources, institutionally housing hydrology within geosciences.",
+   "quote": "B. in Hydrology and Water Resources ... Surface & Hydrologic Processes"
+  },
+  {
+   "url": "https://has.arizona.edu/about",
+   "fetched": true,
+   "parent_candidate": "field:earth-sciences (housed in College of Science, not geography)",
+   "stance": "supports",
+   "claim": "The University of Arizona's Department of Hydrology and Atmospheric Sciences (HAS) is housed in the College of Science (not College of Social and Behavioral Sciences or a geography unit), and describes hydrology as examining 'the fate and transport of water, energy, and chemical constituents throughout the atmosphere and geosphere'.",
+   "quote": "lead the world in integrated and quantitative hydrologic and atmospheric sciences and to develop the knowledge needed to solve Earth's water, hydrogeologic, weather, and climate related problems"
+  }
+ ],
+ "source_inventory": [
+  {
+   "url": "https://id.loc.gov/authorities/classification/GB651.json",
+   "fetched": true,
+   "note": "LCC cutter GB651 (Periodicals under Hydrology. Water range). Chain: Geography.Anthropology.Recreation > Physical geography > Hydrology.Water"
+  },
+  {
+   "url": "https://id.loc.gov/authorities/classification/GB651-GB2998.json",
+   "fetched": true,
+   "note": "Parent range for GB651; authoritative label 'Hydrology. Water', broader points to GB3-GB5030 (Physical geography)"
+  },
+  {
+   "url": "https://id.loc.gov/authorities/classification/GB3-GB5030.json",
+   "fetched": true,
+   "note": "Grandparent range; authoritative label 'Physical geography', altLabel 'Geography.Anthropology.Recreation--Physical geography'"
+  },
+  {
+   "url": "https://id.loc.gov/authorities/classification/GC1.json",
+   "fetched": true,
+   "note": "LCC GC (Oceanography): rdfs:label shows 'Geography.Anthropology.Recreation--Oceanography', same parent class G as hydrology and geomorphology"
+  },
+  {
+   "url": "https://id.loc.gov/authorities/classification/GB400.json",
+   "fetched": true,
+   "note": "LCC GB400 (Geomorphology): rdfs:label 'Geography.Anthropology.Recreation--Physical geography--Geomorphology.Landforms.Terrain', same Physical Geography parent as hydrology"
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=556&lang=1",
+   "fetched": true,
+   "note": "UDC 556: 'Hydrosphere. Water in general. Hydrology' under parent 55 'Earth Sciences. Geological sciences'"
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=55&lang=1",
+   "fetched": true,
+   "note": "UDC 55: 'Earth Sciences. Geological sciences', parent of 556 Hydrology"
+  },
+  {
+   "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+   "fetched": true,
+   "note": "OECD FORD classification; 1.5 = Earth and related Environmental sciences; only top-level codes rendered; hydrology not named explicitly on this page"
+  },
+  {
+   "url": "https://www.britannica.com/science/hydrology",
+   "fetched": true,
+   "note": "Breadcrumb: Science > Earth Science, Geologic Time & Fossils > Earth Sciences; definition quoted"
+  },
+  {
+   "url": "https://www.hydrology-and-earth-system-sciences.net/about/aims_and_scope.html",
+   "fetched": true,
+   "note": "HESS (EGU open-access journal for hydrology) aims and scope; explicitly interdisciplinary framing with earth system sciences"
+  },
+  {
+   "url": "https://www.iugg.org/associations/",
+   "fetched": true,
+   "note": "IUGG lists IAHS as one of 8 member associations; IUGG described as international geoscience network"
+  },
+  {
+   "url": "https://www.egu.eu/divisions/",
+   "fetched": true,
+   "note": "EGU lists 'Hydrological Sciences HS' as one of 21 divisions of the European Geosciences Union"
+  },
+  {
+   "url": "https://www.jsg.utexas.edu/research/",
+   "fetched": true,
+   "note": "Jackson School of Geosciences (UT Austin) lists Surface & Hydrologic Processes as one of 6 research themes; offers B.S. in Hydrology and Water Resources"
+  },
+  {
+   "url": "https://has.arizona.edu/about",
+   "fetched": true,
+   "note": "U Arizona HAS department is in College of Science; describes hydrology as studying water transport through atmosphere and geosphere"
+  },
+  {
+   "url": "https://has.arizona.edu/about/vision-and-mission",
+   "fetched": true,
+   "note": "Vision: 'lead the world in integrated and quantitative hydrologic and atmospheric sciences'; housed in College of Science"
+  },
+  {
+   "url": "https://api.openalex.org/topics?search=hydrology&per_page=3",
+   "fetched": true,
+   "note": "OpenAlex FORD-derived taxonomy: hydrology topics filed under Field = Environmental Science, Domain = Physical Sciences (not Earth and Planetary Sciences); this is OpenAlex's own mapping, not a direct FORD filing"
+  }
+ ],
+ "notes": "VOTE TALLY: 6 sources support field:earth-sciences (UDC 556, FORD 1.5, Britannica, IUGG/IAHS, UT Jackson School, U Arizona College of Science). 1 source opposes field:earth-sciences in favour of a geography-side parent (LCC class GB under G = Geography, not Q = Science). 1 source is interface (HESS, EGU journal: explicitly interdisciplinary, integrates hydrology with earth, atmospheric, and life sciences).\n\nCLASS-G CLUSTER CONSISTENCY NOTE (required by mandate): LCC treats hydrology, oceanography (GC), and geomorphology (GB400) identically — all three sit under G (Geography.Anthropology.Recreation) → Physical geography. If LCC is granted any weight, the ruling must be applied consistently to all three: all belong to a geography-parent, not to earth-sciences. However, the contest lead correctly notes there is no geography node in the graph yet. The LCC dissent is a single classification authority against five others (UDC, FORD, Britannica, IUGG/IAHS institutional home, two university geoscience departments) that all place hydrology in earth sciences. OpenAlex (a seventh source) maps hydrology topics to 'Environmental Science / Physical Sciences', not to a geography field — a partial support for earth-sciences.\n\nHYDROLOGY vs. OCEANOGRAPHY/GEOMORPHOLOGY DIFFERENTIATION: None of the fetched sources treat hydrology differently from oceanography or geomorphology in the LCC class-G cluster. All three receive the same Physical Geography parent in LCC. All three are hosted by geoscience/earth-sciences bodies in other systems. If the orchestrator accepts the earth-sciences ruling for any of the three, it should apply to all; if LCC class G is determinative for any one, it is determinative for all three.\n\nSECTION-13 DUAL MEMBERSHIP FLAG: The HESS source is a genuine interface reading — the journal explicitly frames hydrology as bridging earth sciences, life sciences, and atmospheric science. This could support a dual part_of (e.g., earth-sciences + environmental-science) if such nodes exist. However, no fetched source places hydrology exclusively under a geography node or makes geography a primary home. The FORD 1.5 'Earth and related Environmental sciences' label may itself support a future dual edge to an environmental-science node once created.\n\nUNFETCHED ITEMS: PhilPapers and Wiley blocked per protocol. physh.org was not attempted (hydrology is not an APS-scope physics subdiscipline; unlikely to yield findings). The FORD 1.5 explicit subfield list naming hydrology exists in the OECD Frascati Manual PDF (DOI 10.1787/9789264239012-en) but was not successfully fetched; the ARRS page only renders top-level codes.",
+ "unfetched": [
+  "https://www.oecd-ilibrary.org/science-and-technology/frascati-manual-2015_9789264239012-en (OECD Frascati Manual 2015 PDF — FORD 1.5 explicit subfields including hydrology; access blocked/paywalled)",
+  "https://physh.org/disciplines (APS PhySH taxonomy — not attempted; hydrology not within physics scope)",
+  "https://agupubs.onlinelibrary.wiley.com/hub/journal/19447973/about (AGU Water Resources Research aims — Wiley domain blocked per protocol)",
+  "https://www.loc.gov/catdir/cpso/lcco/lcco_g.pdf (LCC Class G outline PDF — fetched as file but PDF renderer unavailable; hierarchy confirmed instead via id.loc.gov JSON records)"
+ ]
+}

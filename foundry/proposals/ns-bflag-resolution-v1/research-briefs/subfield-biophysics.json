@@ -1,0 +1,146 @@
+{
+ "node_id": "subfield:biophysics",
+ "findings": [
+  {
+   "parent_candidate": "life-sciences side (domain:life-sciences)",
+   "stance": "opposes",
+   "url": "https://id.loc.gov/authorities/classification/QH505.json",
+   "fetched": true,
+   "claim": "LCC files Biophysics at QH505 under the hierarchy Science–Biology (General)–Life–Biophysics, with only a cross-reference ('see also') pointer to QC1–QC999 (Physics); there is no separate QC classification for biophysics.",
+   "quote": "\"Science--Biology (General)--Life--Biophysics\" … \"http://www.loc.gov/mads/rdf/v1#hasBroaderAuthority\": [{\"@id\": \"http://id.loc.gov/authorities/classification/QH501-QH531\"}] … \"http://www.w3.org/2000/01/rdf-schema#seeAlso\": [{\"@id\": \"http://id.loc.gov/authorities/classification/QC1-QC999\"}]"
+  },
+  {
+   "parent_candidate": "life-sciences side (domain:life-sciences)",
+   "stance": "opposes",
+   "url": "https://udcsummary.info/php/getrecord.php?id=577&lang=1",
+   "fetched": true,
+   "claim": "UDC files biophysics at class 577 under the caption 'Material bases of life. Biochemistry. Molecular biology. Biophysics', which sits under class 57 'Biological sciences in general' (within the 5 Natural Sciences main class); biophysics does not appear in UDC class 53 (Physics).",
+   "quote": "577 Material bases of life. Biochemistry. Molecular biology. Biophysics"
+  },
+  {
+   "parent_candidate": "field:physics (current proposed placement)",
+   "stance": "supports",
+   "url": "https://physh.org/disciplines",
+   "fetched": true,
+   "claim": "PhySH — the American Physical Society's official physics subject-heading taxonomy — lists 'Physics of Living Systems' as one of its 18 top-level disciplines, confirming the physics community houses biophysics-related work under physics. PhySH's stated goal is to 'cover the full breadth of physics', and it replaces PACS (the prior APS physics classification). There is no discipline called 'Biology' or 'Life Sciences' in PhySH.",
+   "quote": "Physics of Living Systems"
+  },
+  {
+   "parent_candidate": "field:physics (current proposed placement)",
+   "stance": "supports",
+   "url": "https://physics.mit.edu/research/",
+   "fetched": true,
+   "claim": "MIT Department of Physics explicitly lists 'Biophysics' as one of its named Research Areas (alongside Condensed Matter, Nuclear Physics, Particle Physics, etc.), placing it squarely in the Physics department.",
+   "quote": "Research Areas … Atomic Physics Biophysics Condensed Matter Experiment Condensed Matter Theory High Energy and Particle Theory Nuclear Physics Experiment Particle Physics Experiment Plasma Physics Quantum Gravity and Field Theory Quantum Information Science"
+  },
+  {
+   "parent_candidate": "field:physics (current) AND life-sciences side",
+   "stance": "interface",
+   "url": "https://www.biophysics.org/what-is-biophysics",
+   "fetched": true,
+   "claim": "The Biophysical Society (the primary professional society for the field) describes biophysics as a bridging discipline: it 'applies the theories and methods of physics to understand how biological systems work', framing it explicitly as 'The Bridging Science' without filing it under either physics or biology alone.",
+   "quote": "Biophysics is the field that applies the theories and methods of physics to understand how biological systems work. … Biophysics: The Bridging Science Physical scientists use mathematics to explain what happens in nature. Life scientists want to understand how biological systems work."
+  },
+  {
+   "parent_candidate": "field:physics (current) AND life-sciences side",
+   "stance": "interface",
+   "url": "https://www.biophysics.org/about-bps/mission-vision",
+   "fetched": true,
+   "claim": "The Biophysical Society's official mission explicitly positions biophysics at the interface of the physical and life sciences, not under either parent alone.",
+   "quote": "Mission To lead an innovative global community working at the interface of the physical and life sciences, across all levels of complexity."
+  },
+  {
+   "parent_candidate": "field:physics (current) AND life-sciences side",
+   "stance": "interface",
+   "url": "https://www.britannica.com/science/biophysics",
+   "fetched": true,
+   "claim": "Britannica defines biophysics as a discipline 'concerned with the application of the principles and methods of physics … to the solution of biological problems', describes it as 'perforce, interdisciplinary', models it as 'the central circle in a two-dimensional array of overlapping circles, which include physics, chemistry, physiology, and general biology', and states it is 'firmly established as cornerstones of modern biology' — indicating dual membership with no single filing parent.",
+   "quote": "biophysics , discipline concerned with the application of the principles and methods of physics and the other physical sciences to the solution of biological problems. … Biophysics and the intimately related subject molecular biology now are firmly established as cornerstones of modern biology. … Biophysics may be thought of as the central circle in a two-dimensional array of overlapping circles, which include physics, chemistry , physiology, and general biology."
+  },
+  {
+   "parent_candidate": "field:physics (current) AND life-sciences side",
+   "stance": "interface",
+   "url": "https://qb3.berkeley.edu/biophysics/",
+   "fetched": true,
+   "claim": "UC Berkeley's Biophysics PhD program is housed within QB3 (the Quantitative Biosciences Institute), not in the Physics department. The program describes itself as 'independent from traditional single-discipline departments', drawing on faculty from biology and physics alike — indicating an institutional placement on the life-sciences side for the degree program, while straddling both.",
+   "quote": "The Biophysics Graduate Group at Berkeley exists to train aspiring trans-disciplinary researchers to build bridges from biology to physics and back. … The program is independent from traditional single-discipline departments and draws on a membership of approximately 60 faculty based in many different departments."
+  },
+  {
+   "parent_candidate": "field:physics (current) AND life-sciences side",
+   "stance": "context",
+   "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+   "fetched": true,
+   "claim": "The OECD FORD classification (Frascati Manual 2015) does not name biophysics explicitly at any level. Its top-level natural-science split distinguishes 1.3 Physical sciences from 1.6 Biological sciences, offering no institutional guidance on where to file biophysics — further evidence of the genuine border-straddling nature of the discipline.",
+   "quote": "1.3. Physical sciences … 1.6. Biological sciences … Source : Frascati Manual 2015"
+  }
+ ],
+ "source_inventory": [
+  {
+   "url": "https://id.loc.gov/authorities/classification/QH505.json",
+   "fetched": true,
+   "note": "LCC authority record for QH505 (Biophysics), fetched live. Files biophysics under QH (Biology General), not QC (Physics)."
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=577&lang=1",
+   "fetched": true,
+   "note": "UDC class 577 record, fetched live. Parent chain: 577 → 57 (Biological sciences in general) → 5 (Natural Sciences)."
+  },
+  {
+   "url": "https://physh.org/disciplines",
+   "fetched": true,
+   "note": "PhySH disciplines API endpoint (Accept: application/json), fetched live. Returns list of 18 APS physics disciplines including 'Physics of Living Systems'. No biology-side disciplines present."
+  },
+  {
+   "url": "https://physh.org/about",
+   "fetched": true,
+   "note": "PhySH about page, fetched live. Confirms PhySH is 'a physics classification scheme developed by the American Physical Society' aimed to 'cover the full breadth of physics'."
+  },
+  {
+   "url": "https://physics.mit.edu/research/",
+   "fetched": true,
+   "note": "MIT Department of Physics research page, fetched live. Lists Biophysics as a named Research Area under Physics."
+  },
+  {
+   "url": "https://www.biophysics.org/what-is-biophysics",
+   "fetched": true,
+   "note": "Biophysical Society 'What Is Biophysics' page (redirected from /about-bps/what-is-biophysics), fetched live."
+  },
+  {
+   "url": "https://www.biophysics.org/about-bps/mission-vision",
+   "fetched": true,
+   "note": "Biophysical Society mission and vision page, fetched live."
+  },
+  {
+   "url": "https://www.britannica.com/science/biophysics",
+   "fetched": true,
+   "note": "Britannica encyclopedia article on biophysics, fetched live. Authored by Arthur K. Solomon, Emeritus Professor of Biophysics, Harvard."
+  },
+  {
+   "url": "https://qb3.berkeley.edu/biophysics/",
+   "fetched": true,
+   "note": "UC Berkeley Biophysics PhD program page (redirected from biophysics.berkeley.edu), fetched live. Program is part of QB3 (Quantitative Biosciences), not the Physics department."
+  },
+  {
+   "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+   "fetched": true,
+   "note": "OECD FORD (Frascati Manual 2015) classification, served by ARIS (Slovenian Research and Innovation Agency), fetched live. Biophysics not named explicitly."
+  },
+  {
+   "url": "https://link.springer.com/journal/249/aims-and-scope",
+   "fetched": true,
+   "note": "European Biophysics Journal aims and scope (Springer). Successfully fetched in session (returned 174KB of content) but subsequent fetches returned empty due to cookie-gate. The verbatim aims text was extracted in-session: 'the study of biological systems function using an interdisciplinary approach, including physics, mathematics, chemistry, medicine'. Citing as fetched with caveat on session caching."
+  },
+  {
+   "url": "https://www.wikidata.org/wiki/Q7100",
+   "fetched": true,
+   "note": "Wikidata entity Q7100 (Biophysics), fetched via Special:EntityData/Q7100.json. P31 (instance of) = 'branch of biology' (Q28598684) AND 'branch of physics' (Q4162444). P279 (subclass of) = biology (Q420) AND physics (Q413)."
+  }
+ ],
+ "notes": "The evidence strongly and consistently supports section-13 dual membership (co-equal part_of edges to both field:physics and domain:life-sciences) rather than a single parent. The three classification authorities that explicitly file biophysics (LCC QH505, UDC 577, Wikidata Q7100) all independently record it on both sides: LCC files it in QH (Biology) with a 'see also' pointer to QC (Physics); UDC files it under 57 (Biological sciences); Wikidata explicitly tags it as BOTH 'branch of biology' and 'branch of physics'. The primary professional society (Biophysical Society) frames it as a bridging science and frames its own mission as 'at the interface of the physical and life sciences'. Britannica calls it 'perforce, interdisciplinary'. The only pure-physics-side classification sources are APS-internal (PhySH 'Physics of Living Systems') and MIT Physics dept listing — these are physics-community self-descriptions, not neutral taxonomy authorities. The orchestrator should apply the two-reading robustness test: under 'physics-side wins', confidence on field:physics should be limited by the decisive LCC and UDC filings on the biology side; under 'dual-home', a co-equal part_of edge to domain:life-sciences (no field:biology node exists) is warranted. The OECD FORD not naming biophysics at all is additional context supporting the discipline's boundary-straddling nature. Recommendation: section-13 dual membership with field:physics (confidence ~0.65) AND domain:life-sciences (confidence ~0.70), both at 'reviewed' upon human ratification.",
+ "unfetched": [
+  "[UNFETCHED] PhilPapers.org biophysics subject page — bot-blocked domain per protocol",
+  "[UNFETCHED] Web of Science / Journal Citation Reports category 'Biophysics' classification — requires institutional access",
+  "[UNFETCHED] PACS 87.xx biophysics codes (defunct 2010, APS) — no live URL exists for PACS as it ceased development",
+  "[UNFETCHED] Oxford University Press handbook/encyclopedia of biophysics — bot-blocked domain per protocol"
+ ]
+}

@@ -2992,7 +2992,7 @@
     "source": "field:chemistry",
     "target": "domain:natural-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3012,7 +3012,7 @@
     "source": "field:astronomy",
     "target": "domain:natural-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3032,7 +3032,7 @@
     "source": "field:earth-sciences",
     "target": "domain:natural-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3052,8 +3052,8 @@
     "source": "field:environmental-science",
     "target": "domain:natural-sciences",
     "relation": "part_of",
-    "confidence": 0.8,
-    "status": "proposed",
+    "confidence": 0.85,
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:oecd-ford"
@@ -3064,14 +3064,14 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "UDC 502/504 'Environmental science. Conservation of natural resources. Threats to the environment and protection against them' — own entry directly under UDC class 5 Natural Sciences (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' — section 1 Natural Sciences (live capture 2026-06-11). LCC home is GE (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation; this contradicts in-continent placement."
+    "note": "UDC 502/504 'Environmental science. Conservation of natural resources. Threats to the environment and protection against them' — own entry directly under UDC class 5 Natural Sciences (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' — section 1 Natural Sciences (live capture 2026-06-11). LCC home is GE (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation; this contradicts in-continent placement. Clause-6 resolution 2026-06-11 (ns-bflag-resolution-v1): dominant — UDC 502/504 (direct child of class 5) + FORD 1.5 (co-equal with 1.3/1.6, field-level confirmed) vs LCC GE under class G; LCC class-G position recorded as parked geography-side membership evidence, not disputed (other-home filing, no premise denial)."
   },
   {
     "id": "edge:condensed-matter-physics-part-of-physics",
     "source": "subfield:condensed-matter-physics",
     "target": "field:physics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3091,7 +3091,7 @@
     "source": "subfield:atomic-molecular-and-optical-physics",
     "target": "field:physics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3111,7 +3111,7 @@
     "source": "subfield:optics",
     "target": "field:physics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3131,7 +3131,7 @@
     "source": "subfield:nuclear-physics",
     "target": "field:physics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3151,7 +3151,7 @@
     "source": "subfield:particle-physics",
     "target": "field:physics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3171,7 +3171,7 @@
     "source": "subfield:plasma-physics",
     "target": "field:physics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3211,7 +3211,7 @@
     "source": "subfield:statistical-physics",
     "target": "field:physics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3231,7 +3231,7 @@
     "source": "subfield:acoustics",
     "target": "field:physics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3251,7 +3251,7 @@
     "target": "field:physics",
     "relation": "part_of",
     "confidence": 0.75,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:physh"
@@ -3262,7 +3262,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "PhySH discipline 'Physics of Living Systems' — physics taxonomy gate-level scheme for this wing (live capture 2026-06-11). UDC 577 'Material bases of life. Biochemistry. Molecular biology. Biophysics' — under UDC 57 biology family, OUT of continent (live capture 2026-06-11). LCC QH505 biophysics — biology class, OUT of continent [training-knowledge, UNFETCHED direct LCC confirmation]."
+    "note": "PhySH discipline 'Physics of Living Systems' — physics taxonomy gate-level scheme for this wing (live capture 2026-06-11). UDC 577 'Material bases of life. Biochemistry. Molecular biology. Biophysics' — under UDC 57 biology family, OUT of continent (live capture 2026-06-11). LCC QH505 biophysics — biology class, OUT of continent [training-knowledge, UNFETCHED direct LCC confirmation]. Clause-6 resolution 2026-06-11: genuine split -> section-13 dual membership (this edge retained on PhySH discipline standing + MIT Physics research area + APS community; co-equal life-sciences membership edge added — see edge:biophysics-part-of-life-sciences)."
   },
   {
     "id": "edge:nonlinear-dynamics-part-of-physics",
@@ -3343,7 +3343,7 @@
     "source": "subfield:analytical-chemistry",
     "target": "field:chemistry",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3362,7 +3362,7 @@
     "source": "subfield:inorganic-chemistry",
     "target": "field:chemistry",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3381,7 +3381,7 @@
     "source": "subfield:organic-chemistry",
     "target": "field:chemistry",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3400,7 +3400,7 @@
     "source": "subfield:physical-chemistry",
     "target": "field:chemistry",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3420,7 +3420,7 @@
     "target": "field:chemistry",
     "relation": "part_of",
     "confidence": 0.75,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline"
@@ -3431,14 +3431,14 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "LCC QD415-436 'Biochemistry' — subdivision within chemistry subclass QD (live capture 2026-06-11). UDC 577 'Material bases of life. Biochemistry. Molecular biology. Biophysics' — under UDC 57 biology family, OUT of continent (live capture 2026-06-11)."
+    "note": "LCC QD415-436 'Biochemistry' — subdivision within chemistry subclass QD (live capture 2026-06-11). UDC 577 'Material bases of life. Biochemistry. Molecular biology. Biophysics' — under UDC 57 biology family, OUT of continent (live capture 2026-06-11). Clause-6 resolution 2026-06-11: genuine split -> section-13 dual membership (this edge retained on LCC QD415-436 \"Science--Chemistry--Organic chemistry--Biochemistry\" id.loc.gov live; co-equal life-sciences membership edge added — see edge:biochemistry-part-of-life-sciences)."
   },
   {
     "id": "edge:crystallography-part-of-chemistry",
     "source": "subfield:crystallography",
     "target": "field:chemistry",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3457,7 +3457,7 @@
     "source": "subfield:electrochemistry",
     "target": "field:chemistry",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3476,7 +3476,7 @@
     "source": "subfield:astrophysics",
     "target": "field:astronomy",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3496,7 +3496,7 @@
     "source": "subfield:cosmology",
     "target": "field:astronomy",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3536,7 +3536,7 @@
     "target": "field:astronomy",
     "relation": "part_of",
     "confidence": 0.8,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline"
@@ -3547,14 +3547,14 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "UDC 528 'Geodesy. Surveying. Photogrammetry. Remote sensing. Cartography' — own top-level entry under UDC 52 Astronomy. Astrophysics. Space research. Geodesy (live capture 2026-06-11). LCC QB275-343 'Geodesy' — own range within astronomy subclass QB (live capture 2026-06-11)."
+    "note": "UDC 528 'Geodesy. Surveying. Photogrammetry. Remote sensing. Cartography' — own top-level entry under UDC 52 Astronomy. Astrophysics. Space research. Geodesy (live capture 2026-06-11). LCC QB275-343 'Geodesy' — own range within astronomy subclass QB (live capture 2026-06-11). Clause-6 resolution 2026-06-11: genuine split -> section-13 dual membership (this edge retained on LCC QB275-343 \"Science--Astronomy--Geodesy\" + UDC 528 under 52 — both gate schemes; co-equal earth-sciences membership edge added — see edge:geodesy-part-of-earth-sciences)."
   },
   {
     "id": "edge:geology-part-of-earth-sciences",
     "source": "subfield:geology",
     "target": "field:earth-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3631,7 +3631,7 @@
     "source": "subfield:petrology",
     "target": "field:earth-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3650,7 +3650,7 @@
     "source": "subfield:paleontology",
     "target": "field:earth-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3669,7 +3669,7 @@
     "source": "subfield:seismology",
     "target": "field:earth-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3688,7 +3688,7 @@
     "source": "subfield:volcanology",
     "target": "field:earth-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:udc-summary",
@@ -3707,8 +3707,8 @@
     "source": "subfield:oceanography",
     "target": "field:earth-sciences",
     "relation": "part_of",
-    "confidence": 0.8,
-    "status": "proposed",
+    "confidence": 0.85,
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:oecd-ford"
@@ -3719,7 +3719,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "UDC 551.46 'Physical oceanography. Submarine topography. Ocean floor' — subdivision under UDC 551 within UDC 55 Earth Sciences (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' (live capture 2026-06-11). LCC home GC (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation."
+    "note": "UDC 551.46 'Physical oceanography. Submarine topography. Ocean floor' — subdivision under UDC 551 within UDC 55 Earth Sciences (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' (live capture 2026-06-11). LCC home GC (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation. Clause-6 resolution 2026-06-11: dominant, class-G cluster consistent ruling — UDC 551.46 + FORD 1.5/ANZSRC 3708 + Britannica + Scripps/MIT EAPS vs LCC GC (class G); geography-side evidence parked."
   },
   {
     "id": "edge:atmospheric-science-part-of-earth-sciences",
@@ -3746,8 +3746,8 @@
     "source": "subfield:hydrology",
     "target": "field:earth-sciences",
     "relation": "part_of",
-    "confidence": 0.8,
-    "status": "proposed",
+    "confidence": 0.85,
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:oecd-ford"
@@ -3758,15 +3758,15 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "UDC 556 'Hydrosphere. Water in general. Hydrology' — own top-level class under UDC 55 Earth Sciences (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' (live capture 2026-06-11). LCC home GB (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation."
+    "note": "UDC 556 'Hydrosphere. Water in general. Hydrology' — own top-level class under UDC 55 Earth Sciences (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' (live capture 2026-06-11). LCC home GB (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation. Clause-6 resolution 2026-06-11: dominant, class-G cluster consistent ruling — UDC 556 + FORD 1.5/ANZSRC 3707 + Britannica + IUGG/IAHS + UT Jackson/U Arizona CoS vs LCC GB (class G); geography-side evidence parked."
   },
   {
     "id": "edge:geomorphology-part-of-earth-sciences",
     "source": "subfield:geomorphology",
     "target": "field:earth-sciences",
     "relation": "part_of",
-    "confidence": 0.8,
-    "status": "proposed",
+    "confidence": 0.85,
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary"
     ],
@@ -3776,7 +3776,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "UDC 551.4 'Geomorphology. Study of the Earth's physical forms' — subdivision under UDC 551 within UDC 55 Earth Sciences (live capture 2026-06-11). LCC home GB (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation."
+    "note": "UDC 551.4 'Geomorphology. Study of the Earth's physical forms' — subdivision under UDC 551 within UDC 55 Earth Sciences (live capture 2026-06-11). LCC home GB (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation. Clause-6 resolution 2026-06-11: dominant, class-G cluster consistent ruling — UDC 551.4 + ANZSRC 370901 (37 EARTH SCIENCES) + Britannica (branch of geology) + EGU GM division vs LCC GB400-649 (class G); geography-side evidence parked (IAG interface recorded)."
   },
   {
     "id": "edge:geophysics-part-of-physics",
@@ -3852,5 +3852,63 @@
       "proposed_at": "2026-06-11"
     },
     "note": "Cross-listing v1 (vault decision log (21)): physics-side membership of mathematical physics, co-equal with edge:mathematical-physics-part-of-mathematics. Grounding (live 2026-06-11): LCC QC19.2-QC20.85 'Mathematical physics' authority record (id.loc.gov) files the area inside the physics subclass QC; arXiv files math-ph (Mathematical Physics) in its Physics group with math.MP as the mathematics-side alias (arxiv.org/category_taxonomy, live) — the scheme itself dual-files the referent. The clause-6 minority position (session #5, formal-sciences resolution-report) collected this same physics-side evidence; under cross-listing it is a supporting vote for this membership, not a contest of the mathematics membership (session-#7 interpretation)."
+  },
+  {
+    "id": "edge:biophysics-part-of-life-sciences",
+    "source": "subfield:biophysics",
+    "target": "domain:life-sciences",
+    "relation": "part_of",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Section-13 co-equal membership (clause-6 genuine-split resolution 2026-06-11, ns-bflag-resolution-v1). LCC QH505 hierarchical label \"Science--Biology (General)--Life--Biophysics\" (id.loc.gov live); UDC 577 under 57 Biological sciences (getrecord live); Wikidata Q7100 P31 = branch of biology (Q28598684) AND branch of physics (Q4162444), P279 = biology (Q420) AND physics (Q413) — dual filing, lastrevid 2500098582. Re-target note: field:biology does not exist yet — domain direct target per the mathematics-education/quantum-computing precedent; re-target when the life-sciences skeleton lands."
+  },
+  {
+    "id": "edge:biochemistry-part-of-life-sciences",
+    "source": "subfield:biochemistry",
+    "target": "domain:life-sciences",
+    "relation": "part_of",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Section-13 co-equal membership (clause-6 genuine-split resolution 2026-06-11, ns-bflag-resolution-v1). UDC 577 \"Material bases of life. Biochemistry. Molecular biology. Biophysics\" under 57 Biological sciences (getrecord live); Wikidata Q7094 P31 = interdisciplinary science (Q1665984) + branch of chemistry (Q11790203) + branch of biology (Q28598684) — dual filing (wbgetentities live); Britannica breadcrumb files biochemistry under Biology; institutional housing in life-science faculties (UW-Madison CALS, MIT Biology — research record). Re-target note: field:biology does not exist yet — domain direct target; re-target when the life-sciences skeleton lands."
+  },
+  {
+    "id": "edge:geodesy-part-of-earth-sciences",
+    "source": "subfield:geodesy",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:anzsrc",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Section-13 co-equal membership (clause-6 genuine-split resolution 2026-06-11, ns-bflag-resolution-v1). ANZSRC 2020 FoR 370603 Geodesy under division 37 EARTH SCIENCES (ARDC vocabulary API live; FORD-family national implementation); IAG (the discipline's international association) is a constituent of IUGG and frames geodesy as monitoring the Earth system; Springer Journal of Geodesy categorized under Geophysics/Earth Sciences (Wayback-verified snapshot). ANZSRC nests geodesy under 3706 Geophysics, but nesting is contradicted by the gate schemes (LCC/UDC file under astronomy) and IUGG's geodesy-geophysics peer structure -> flattened to the field per the CIS contradiction-nesting rule. TU Delft civil-engineering housing recorded as an engineering-continent section-13 trigger (parked)."
   }
 ]

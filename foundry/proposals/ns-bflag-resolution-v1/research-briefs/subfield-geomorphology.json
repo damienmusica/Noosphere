@@ -1,0 +1,134 @@
+{
+ "node_id": "subfield:geomorphology",
+ "findings": [
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "opposes",
+   "url": "https://id.loc.gov/authorities/classification/GB400-GB649.json",
+   "fetched": true,
+   "claim": "Library of Congress Classification places Geomorphology (range GB400–GB649) within Class G (Geography. Anthropology. Recreation), specifically under Physical geography — not under class Q (Science/Geology).",
+   "quote": "Geography. Anthropology. Recreation--Physical geography--Geomorphology. Landforms. Terrain"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://udcsummary.info/php/getrecord.php?id=551.4&lang=1",
+   "fetched": true,
+   "claim": "Universal Decimal Classification places Geomorphology at 551.4 under class 55 (Earth Sciences. Geological sciences), with a see-also reference to 911.2 Physical geography rather than filing it there.",
+   "quote": "551.4 Geomorphology. Study of the Earth's physical forms Including: Continents, islands. Landforms. Morphostructures. Mountains, valleys"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://vocabs.ardc.edu.au/repository/api/lda/anzsrc-2020-for/concept?labelcontains=Geomorphology&_format=json",
+   "fetched": true,
+   "claim": "ANZSRC 2020 Fields of Research (the Australian/NZ implementation of OECD FORD) assigns Geomorphology code 370901 (\"Geomorphology and earth surface processes\") under 3709 (Physical geography and environmental geoscience) within division 37 (EARTH SCIENCES).",
+   "quote": "\"notation\": \"370901\", \"prefLabel\": { \"_value\": \"Geomorphology and earth surface processes\" }"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+   "fetched": true,
+   "claim": "OECD FORD (Frascati Manual 2015) lists Geomorphology implicitly under field 1.5 'Earth and related Environmental sciences' — a Natural Sciences category, distinct from 5.7 'Social and economic geography' where physical geography is sometimes placed.",
+   "quote": "1.5. Earth and related Environmental sciences"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://www.britannica.com/science/geomorphology",
+   "fetched": true,
+   "claim": "Encyclopaedia Britannica treats Geomorphology as a branch of geology ('for full treatment, see geology: Geomorphology') and describes it as 'closely allied' with geophysics, volcanology, and sedimentology — not primarily with human geography.",
+   "quote": "geomorphology, scientific discipline concerned with the description and classification of the Earth's topographic features. A brief treatment of geomorphology follows. For full treatment, see geology: Geomorphology."
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "interface",
+   "url": "https://www.geomorph.org/",
+   "fetched": true,
+   "claim": "The International Association of Geomorphologists (IAG) frames geomorphology as explicitly interdisciplinary, while listing collaborative partnerships with both geoscience bodies (AGU, EGU, GSA) and the International Geographical Union — indicating it bridges earth sciences and geography without filing under either alone.",
+   "quote": "Geomorphology is the Interdisciplinary and Systematic Study of Landforms, their Landscapes and the Earth Surface Processes that create and change them"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://www.egu.eu/gm/",
+   "fetched": true,
+   "claim": "The European Geosciences Union (EGU) hosts Geomorphology as a full peer division (GM) alongside other earth-science divisions (Hydrology HS, Ocean Sciences OS, Seismology SM, Tectonics TS), institutionally positioning it within the geosciences rather than geography.",
+   "quote": "Geomorphology is the scientific study of land-surface features and the dynamic processes that shape them."
+  }
+ ],
+ "source_inventory": [
+  {
+   "url": "https://id.loc.gov/authorities/classification/GB400-GB649.json",
+   "fetched": true,
+   "note": "LCC range record for Geomorphology. Landforms. Terrain (GB400-GB649); rdfs:label confirms class G (Geography) parent; isMemberOfMADSCollection = G"
+  },
+  {
+   "url": "https://id.loc.gov/authorities/classification/GB400.json",
+   "fetched": true,
+   "note": "LCC cutter GB400 record; rdfs:label path: 'Geography. Anthropology. Recreation--Physical geography--Geomorphology. Landforms. Terrain--Periodicals. Societies. Serials'; confirms class G membership"
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=551.4&lang=1",
+   "fetched": true,
+   "note": "UDC 551.4 record for 'Geomorphology. Study of the Earth's physical forms'; parent is 551.1/.4 General geology within class 55 Earth Sciences"
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=55&lang=1",
+   "fetched": true,
+   "note": "UDC class 55 record showing full listing: 551.4 Geomorphology, 551.46 Physical oceanography, 556 Hydrology — all under 55 Earth Sciences"
+  },
+  {
+   "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+   "fetched": true,
+   "note": "OECD FORD (Frascati Manual 2015) top-level taxonomy via Slovenian Research Agency; 1.5 = Earth and related Environmental sciences; no subcategory detail at this URL"
+  },
+  {
+   "url": "https://vocabs.ardc.edu.au/repository/api/lda/anzsrc-2020-for/concept?labelcontains=Geomorphology&_format=json",
+   "fetched": true,
+   "note": "ANZSRC 2020 FoR Linked Data API; code 370901 'Geomorphology and earth surface processes' broader 3709 'Physical geography and environmental geoscience' broader 37 'EARTH SCIENCES'"
+  },
+  {
+   "url": "https://www.britannica.com/science/geomorphology",
+   "fetched": true,
+   "note": "Encyclopaedia Britannica article on geomorphology; filed under Science breadcrumb; cross-references to geology article for full treatment"
+  },
+  {
+   "url": "https://www.geomorph.org/",
+   "fetched": true,
+   "note": "IAG (International Association of Geomorphologists) homepage; tagline identifies geomorphology as 'interdisciplinary'; collaboration list spans both geoscience and geography umbrella bodies"
+  },
+  {
+   "url": "https://www.geomorph.org/about/",
+   "fetched": true,
+   "note": "IAG About page; describes IAG mission and lists collaborators including International Geographical Union alongside AGU, EGU, and GSA"
+  },
+  {
+   "url": "https://www.egu.eu/gm/",
+   "fetched": true,
+   "note": "EGU Division on Geomorphology (GM) page; positions geomorphology as one of ~20 EGU geosciences divisions; full peer of Hydrology HS and Ocean Sciences OS"
+  },
+  {
+   "url": "https://id.loc.gov/authorities/classification/GB651.json",
+   "fetched": true,
+   "note": "LCC GB651 hydrology record; rdfs:label 'Geography. Anthropology. Recreation--Physical geography--Hydrology. Water' confirms hydrology also in class G — same cluster as geomorphology"
+  },
+  {
+   "url": "https://id.loc.gov/authorities/classification/GC201.json",
+   "fetched": true,
+   "note": "LCC GC201 oceanography record; rdfs:label 'Geography. Anthropology. Recreation--Oceanography...' confirms oceanography also in class G — all three cluster disciplines in G"
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=556&lang=1",
+   "fetched": true,
+   "note": "UDC 556 hydrology record; breadcrumb confirms '55 Earth Sciences. Geological sciences > 556 Hydrosphere. Water in general. Hydrology' — same parent as 551.4 geomorphology in UDC"
+  }
+ ],
+ "notes": "OVERALL PICTURE: The scheme-level split is stark and consistent: LCC (GB400–649) files geomorphology under Class G (Geography. Anthropology. Recreation), while UDC (551.4), OECD FORD/ANZSRC 2020 (370901 → 37 EARTH SCIENCES), and Britannica (cross-references to geology) all file it in Earth Sciences. The EGU institutional home (geosciences umbrella) also supports earth sciences. The IAG's own self-description as 'interdisciplinary' plus its dual-umbrella collaboration list (IGU for geography + AGU/EGU/GSA for geosciences) makes it a genuine interface source rather than a vote either way.\n\nCLUSTER CONSISTENCY: Across both LCC and UDC, geomorphology, hydrology, and oceanography are treated identically — all three land in the same parent class. In LCC all three are in class G (Physical geography); in UDC all three are in class 55 (Earth Sciences). This means any consistent-cluster ruling will need to resolve the schema conflict at the level of the cluster, not at individual disciplines. Geomorphology is NOT uniquely geography-leaning compared to hydrology or oceanography in LCC.\n\nGEOGRAPHY VS EARTH-SCIENCES SPLIT: The LCC class G placement is primarily a library organizational convention (physical geography as a sub-discipline of geography), whereas the scientific classification bodies (FORD/ANZSRC, EGU, Britannica→geology) treat it as earth sciences. Physical geography is the explicit bridge concept: in LCC it is a subdivision of class G; in UDC, physical geography (911.2) appears only as a cross-reference from 551.4, not as its classification home. ANZSRC names the parent class '3709 Physical geography and environmental geoscience' but places the whole group within 37 EARTH SCIENCES, not in a geography division. This suggests that 'physical geography' as a label bridges both but that the weight of scientific classification authority falls on earth sciences. A single part_of → field:earth-sciences at proposed/confidence 0.8 is defensible; section-13 dual membership (also part_of geography, if that node existed) would also be justified by the IAG interface finding and LCC evidence.\"",
+ "unfetched": [
+  "https://www.geosociety.org/GSA/About_GSA/Divisions/Geomorphology.aspx — GSA Geomorphology division page, 404 on multiple URL variants tried",
+  "https://physh.org/disciplines — PhysH Physics Subject Headings taxonomy (Accept: application/json returned 461 concepts, none matching 'geomorph', 'earth', or 'landform' — geomorphology is not in PhysH as a physics taxonomy)",
+  "https://www.ref.ac.uk/panels/units-of-assessment/ — UK REF 2029 units fetched (geomorphology spans both UoA 7 'Earth Systems and Environmental Sciences' under Main Panel B and UoA 17 'Geography and Environmental Studies' under Main Panel C, but the UoA sub-pages 404'd; only the index page was confirmed)"
+ ]
+}

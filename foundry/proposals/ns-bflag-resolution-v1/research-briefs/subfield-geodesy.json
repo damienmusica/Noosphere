@@ -1,0 +1,143 @@
+{
+ "node_id": "subfield:geodesy",
+ "findings": [
+  {
+   "parent_candidate": "field:astronomy",
+   "stance": "supports",
+   "url": "https://id.loc.gov/authorities/classification/QB275-QB343.json",
+   "fetched": true,
+   "claim": "The Library of Congress Classification places Geodesy at range QB275–QB343, nested directly inside QB1–QB991 (Astronomy). The hierarchical label reads 'Science--Astronomy--Geodesy'.",
+   "quote": "Science--Astronomy--Geodesy"
+  },
+  {
+   "parent_candidate": "field:astronomy",
+   "stance": "supports",
+   "url": "https://udcsummary.info/php/getrecord.php?id=528&lang=1",
+   "fetched": true,
+   "claim": "UDC class 528 ('Geodesy. Surveying. Photogrammetry. Remote sensing. Cartography') sits inside UDC class 52 ('Astronomy. Astrophysics. Space research. Geodesy'), which is itself under class 5 'MATHEMATICS. NATURAL SCIENCES'. Geodesy is co-listed in the caption of the parent class 52 alongside astronomy.",
+   "quote": "Geodesy. Surveying. Photogrammetry. Remote sensing. Cartography"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://geodesy.science/geodesy-earth-iag/",
+   "fetched": true,
+   "claim": "The International Association of Geodesy (IAG) — the global professional society for geodesy — describes itself as a constituent of the International Union of Geodesy and Geophysics (IUGG) and states that its products are 'relevant to geodesists, researchers in other Earth sciences, national administrations and society in general', positioning geodesy as one Earth science among others rather than a sub-branch of astronomy.",
+   "quote": "to provide geodetic reference frames and other products relevant to geodesists, researchers in other Earth sciences, national administrations and society in general"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://geodesy.science/about-geodesy/",
+   "fetched": true,
+   "claim": "The IAG's own definition of geodesy describes it as the science of measuring the Earth's 'size, shape, gravity field and rotation … as a function of space and time' and frames it as monitoring the Earth system including geosphere, biosphere, cryosphere, hydrosphere and atmosphere — squarely Earth-science framing with no mention of astronomy as a parent field.",
+   "quote": "The task of geodesy is to determine the size, shape, gravity field and rotation of the Earth as a function of space and time."
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://link.springer.com/journal/190/aims-and-scope",
+   "fetched": true,
+   "claim": "Springer's Journal of Geodesy — the flagship peer-reviewed journal — is categorized by Springer's subject taxonomy under 'Geophysics' and 'Earth Sciences' (not under Astronomy). Its aims describe it as concerned with 'scientific problems of geodesy and related interdisciplinary sciences'.",
+   "quote": "The Journal of Geodesy is an international journal concerned with the study of scientific problems of geodesy and related interdisciplinary sciences."
+  },
+  {
+   "parent_candidate": "engineering side (geomatics/civil engineering)",
+   "stance": "supports",
+   "url": "https://www.tudelft.nl/en/ceg",
+   "fetched": true,
+   "claim": "At TU Delft, the department of Geoscience & Remote Sensing — which explicitly lists Geodesy as one of its core research areas — sits within the Faculty of Civil Engineering and Geosciences, providing evidence for institutional housing of geodesy on the engineering-geosciences side rather than exclusively under astronomy.",
+   "quote": "Civil Engineering and Geosciences"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "context",
+   "url": "https://www.iugg.org/iag/",
+   "fetched": true,
+   "claim": "The IUGG's own page for IAG describes the organisation's mission as 'providing a consistent representation of the figure, rotation, and gravity field of the Earth and planets, and their temporal variations', with objectives covering 'Earth observation and global change' — placing geodesy institutionally inside the earth/geophysics sciences umbrella of IUGG, not under any astronomy body.",
+   "quote": "The Mission of IAG is the advancement of geodesy. It is implemented by furthering geodetic theory through research and teaching, by collecting, analyzing, modelling and interpreting observational data, by stimulating technological development and by providing a consistent representation of the figure, rotation, and gravity field of the Earth and planets, and their temporal variations."
+  }
+ ],
+ "source_inventory": [
+  {
+   "url": "https://id.loc.gov/authorities/classification/QB275-QB343.json",
+   "fetched": true,
+   "note": "LCC authority record for range QB275–QB343. Confirms hierarchy: Science > Astronomy > Geodesy. Broader authority: QB1–QB991 (Astronomy)."
+  },
+  {
+   "url": "https://id.loc.gov/authorities/classification/QB275.json",
+   "fetched": true,
+   "note": "LCC record for QB275 (first cutter in the geodesy range). Label confirms 'Science--Astronomy--Geodesy--Periodicals, societies, congresses, serial publications'."
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=528&lang=1",
+   "fetched": true,
+   "note": "UDC class 528 record. Caption: 'Geodesy. Surveying. Photogrammetry. Remote sensing. Cartography'. Parent is UDC 52."
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=52&lang=1",
+   "fetched": true,
+   "note": "UDC class 52 parent record. Caption: 'Astronomy. Astrophysics. Space research. Geodesy'. Geodesy explicitly named in parent class caption alongside astronomy."
+  },
+  {
+   "url": "https://geodesy.science/geodesy-earth-iag/",
+   "fetched": true,
+   "note": "IAG (International Association of Geodesy) main landing page. Self-describes as IUGG constituent; products serve 'researchers in other Earth sciences'."
+  },
+  {
+   "url": "https://geodesy.science/about-geodesy/",
+   "fetched": true,
+   "note": "IAG's formal definition of geodesy. Earth-science framing throughout; no astronomy parent claimed."
+  },
+  {
+   "url": "https://link.springer.com/journal/190/aims-and-scope",
+   "fetched": true,
+   "note": "Journal of Geodesy (Springer) aims-and-scope page. Springer subject taxonomy metadata: snt=['Geophysics','Earth Sciences']."
+  },
+  {
+   "url": "https://www.tudelft.nl/en/ceg",
+   "fetched": true,
+   "note": "TU Delft Faculty of Civil Engineering and Geosciences homepage. Geodesy research housed here via Geoscience & Remote Sensing department."
+  },
+  {
+   "url": "https://www.tudelft.nl/citg/over-faculteit/afdelingen/geoscience-remote-sensing",
+   "fetched": true,
+   "note": "TU Delft Geoscience & Remote Sensing department page. Lists Geodesy as one of four explicit research areas under the Civil Engineering and Geosciences faculty."
+  },
+  {
+   "url": "https://www.iugg.org/iag/",
+   "fetched": true,
+   "note": "IUGG page for IAG. Confirms IAG mission, IUGG membership, and Earth-focused scope."
+  },
+  {
+   "url": "https://www.iugg.org/",
+   "fetched": true,
+   "note": "IUGG homepage. Full name 'International Union of Geodesy and Geophysics'; mission covers 'the shape of the Earth, its gravitational and magnetic fields'."
+  },
+  {
+   "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+   "fetched": true,
+   "note": "OECD FORD (Frascati) taxonomy. Shows top-level categories only: geodesy not named individually. '1.5 Earth and related Environmental sciences' is the natural-sciences home; '2.1 Civil engineering' is the engineering home. No explicit geodesy placement at the granularity this page provides."
+  },
+  {
+   "url": "https://www.britannica.com/science/geodesy",
+   "fetched": false,
+   "note": "[UNFETCHED] Britannica geodesy article returns HTTP 404 (live page removed or moved). Wayback Machine reports no archived snapshots for this URL."
+  },
+  {
+   "url": "https://www.agu.org/learn-and-develop/learn/science-topics/geodesy",
+   "fetched": false,
+   "note": "[UNFETCHED] AGU geodesy page blocked by Cloudflare (HTTP 403/bot block)."
+  },
+  {
+   "url": "https://link.springer.com/journal/40328/aims-and-scope",
+   "fetched": true,
+   "note": "Acta Geodaetica et Geophysica (Springer). Subject taxonomy snt=['Geophysics'] only. Confirms geophysics/earth-sciences categorisation for a geodesy-and-geophysics journal."
+  }
+ ],
+ "notes": "Evidence is consistent and non-trivial to reconcile: LCC and UDC (two major library classification authorities) both file geodesy under an 'Astronomy' parent class, continuing a historical tradition from before satellite geodesy. However, the contemporary scientific community (IAG/IUGG, Springer's Journal of Geodesy, TU Delft faculty structure) uniformly frames geodesy as an Earth science and/or geoscience, not as a branch of astronomy. The LCC/UDC astronomical placement is a legacy artefact of historical classification (geodesy originally used astronomical observations to determine Earth's figure); modern practice separates it. Engineering housing (civil/geomatics) is real but secondary: TU Delft's Civil Engineering and Geosciences faculty houses geodesy, but the department itself is named 'Geoscience & Remote Sensing', and the broader global community (IUGG, IAG) does not frame it primarily as an engineering field. The strongest resolution path: LCC/UDC support field:astronomy as the library-classification home (two 'supports' votes); IAG self-description + Springer taxonomy + IUGG framing give three 'supports' votes for field:earth-sciences; TU Delft provides one engineering-side institutional example. A section-13 dual-membership filing (earth-sciences primary, astronomy as classification-authority note, engineering as an optional second edge at lower confidence) would be consistent with the totality of evidence. The orchestrator should note that LCC and UDC co-list geodesy in the astronomy class caption but UDC class 528 is a standalone top-level entry inside 52, not a strict child of 'astronomy' per se — it is co-equal at the 3-digit level with 520 (astronomical instruments), 521 (celestial mechanics), etc., suggesting the UDC framers treated it as a co-resident rather than a subfield. The LCC structure is unambiguous: QB275–QB343 has QB1–QB991 (Astronomy) as its broader authority, making LCC a clear 'supports' for astronomy.\"",
+ "unfetched": [
+  "https://www.britannica.com/science/geodesy — HTTP 404, no Wayback snapshots",
+  "https://www.agu.org/learn-and-develop/learn/science-topics/geodesy — Cloudflare bot-block (403)"
+ ]
+}

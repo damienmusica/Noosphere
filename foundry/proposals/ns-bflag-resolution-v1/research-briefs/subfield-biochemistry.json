@@ -1,0 +1,155 @@
+{
+ "node_id": "subfield:biochemistry",
+ "findings": [
+  {
+   "parent_candidate": "field:chemistry (current proposed)",
+   "stance": "supports",
+   "url": "https://id.loc.gov/authorities/classification/QD415-QD436.json",
+   "fetched": true,
+   "claim": "The Library of Congress Classification (LCC) places QD415-QD436 'Biochemistry' inside QD241-QD441 'Organic chemistry', itself inside QD1-QD999 'Chemistry'. The full hierarchical label returned by id.loc.gov is 'Science--Chemistry--Organic chemistry--Biochemistry'.",
+   "quote": "\"http://www.w3.org/2000/01/rdf-schema#label\": [{\"@value\": \"Science--Chemistry--Organic chemistry--Biochemistry\"}] ... \"http://www.loc.gov/mads/rdf/v1#authoritativeLabel\": [{\"@value\": \"Biochemistry\"}] ... \"http://www.w3.org/2004/02/skos/core#broader\": [{\"@id\": \"http://id.loc.gov/authorities/classification/QD241-QD441\"}]"
+  },
+  {
+   "parent_candidate": "life-sciences side (UDC / biology)",
+   "stance": "opposes",
+   "url": "https://udcsummary.info/php/getrecord.php?id=577&lang=1",
+   "fetched": true,
+   "claim": "The Universal Decimal Classification (UDC) places class 577 'Material bases of life. Biochemistry. Molecular biology. Biophysics' directly under class 57 'Biological sciences in general', not under class 54 (Chemistry). The UDC thus files biochemistry firmly within biology, not chemistry.",
+   "quote": "577 Material bases of life. Biochemistry. Molecular biology. Biophysics"
+  },
+  {
+   "parent_candidate": "life-sciences side (encyclopedia / biology)",
+   "stance": "opposes",
+   "url": "https://www.britannica.com/science/biochemistry",
+   "fetched": true,
+   "claim": "Britannica's structured breadcrumb JSON-LD categorises the biochemistry article under Science > Biology > Branches of Biology, not under Chemistry. The article definition also explicitly frames biochemistry as the study of processes that occur in living organisms, drawing on chemistry as a tool.",
+   "quote": "{\"@type\": \"BreadcrumbList\", \"itemListElement\": [{\"name\": \"Science\"}, {\"name\": \"Biology\"}, {\"name\": \"Branches of Biology\"}]} ... \"Biochemistry is the study of the chemical substances and processes that occur in plants, animals, and microorganisms and of the changes they undergo during development and life.\""
+  },
+  {
+   "parent_candidate": "section-13 dual membership (chemistry AND life-sciences)",
+   "stance": "interface",
+   "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q7094&props=claims&format=json",
+   "fetched": true,
+   "claim": "Wikidata Q7094 (Biochemistry) simultaneously asserts: P31 (instance of) = Q1665984 'interdisciplinary science', Q11790203 'branch of chemistry', and Q28598684 'branch of biology'; P279 (subclass of) = Q420 'biology' and Q11351 'organic chemistry'; P361 (part of) = Q2329 'chemistry' and Q420 'biology'. No single parent is privileged.",
+   "quote": "P31: [Q1665984 (interdisciplinary science), Q11790203 (branch of chemistry), Q28598684 (branch of biology)] ... P279: [Q420 (biology), Q11351 (organic chemistry)] ... P361: [Q2329 (chemistry), Q420 (biology)]"
+  },
+  {
+   "parent_candidate": "life-sciences side (institutional housing — major society)",
+   "stance": "opposes",
+   "url": "https://www.asbmb.org/about",
+   "fetched": true,
+   "claim": "ASBMB, the primary North American professional society for biochemistry, describes its community as 'molecular life scientists' and frames its mission as advancing 'the molecular nature of life processes', positioning biochemistry within the life-science orbit rather than chemistry.",
+   "quote": "The American Society for Biochemistry and Molecular Biology (ASBMB) is a nonprofit professional society that builds and empowers a broad community of molecular life scientists to advance discovery. ... ASBMB's mission is to advance the science of biochemistry and molecular biology and to promote the understanding of the molecular nature of life processes."
+  },
+  {
+   "parent_candidate": "life-sciences side (institutional housing — universities)",
+   "stance": "opposes",
+   "url": "https://www.biochem.wisc.edu/",
+   "fetched": true,
+   "claim": "The University of Wisconsin–Madison Department of Biochemistry is housed in the College of Agricultural and Life Sciences, not in a chemistry college. The homepage title reads 'Department of Biochemistry — College of Agricultural and Life Sciences — UW–Madison', providing direct institutional evidence of a life-science rather than chemistry home.",
+   "quote": "Department of Biochemistry &#8211; College of Agricultural and Life Sciences &#8211; UW–Madison"
+  },
+  {
+   "parent_candidate": "life-sciences side (institutional housing — MIT biology)",
+   "stance": "opposes",
+   "url": "https://biology.mit.edu/research/biochemistry/",
+   "fetched": true,
+   "claim": "MIT lists 'Biochemistry, Biophysics, and Structural Biology' as a research area within its Department of Biology (not Chemistry). The page is hosted under biology.mit.edu and explicitly enumerates biochemistry alongside other biology research areas such as Cancer Biology, Cell Biology, and Neurobiology.",
+   "quote": "Areas of Research Biochemistry, Biophysics, and Structural Biology Cancer Biology Cell Biology Computational Biology Genetics Human Disease Immunology Microbiology Neurobiology Stem Cell and Developmental Biology"
+  }
+ ],
+ "source_inventory": [
+  {
+   "url": "https://id.loc.gov/authorities/classification/QD415-QD436.json",
+   "fetched": true,
+   "note": "LCC QD415-QD436 classification record returned as JSON-LD via id.loc.gov. Authoritative label and broader relationship directly extracted."
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=577&lang=1",
+   "fetched": true,
+   "note": "UDC class 577 record fetched live. Caption and parent class (57 Biological sciences) confirmed."
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=57&lang=1",
+   "fetched": true,
+   "note": "UDC parent class 57 fetched to confirm it is 'Biological sciences in general' under class 5 Natural Sciences."
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=54&lang=1",
+   "fetched": true,
+   "note": "UDC class 54 (Chemistry) fetched to confirm biochemistry 577 is NOT in the chemistry hierarchy."
+  },
+  {
+   "url": "https://www.britannica.com/science/biochemistry",
+   "fetched": true,
+   "note": "Britannica article on biochemistry. Both meta description and JSON-LD breadcrumb extracted from live page."
+  },
+  {
+   "url": "https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q7094&props=claims&format=json",
+   "fetched": true,
+   "note": "Wikidata API query for Q7094 claims. All P31/P279/P361 values resolved via a second API call for labels."
+  },
+  {
+   "url": "https://www.asbmb.org/about",
+   "fetched": true,
+   "note": "ASBMB about page. Key self-description text extracted from live HTML."
+  },
+  {
+   "url": "https://www.biochem.wisc.edu/",
+   "fetched": true,
+   "note": "UW-Madison Department of Biochemistry homepage. Title confirms College of Agricultural and Life Sciences affiliation."
+  },
+  {
+   "url": "https://www.biochem.wisc.edu/about",
+   "fetched": true,
+   "note": "UW-Madison Biochemistry about page. Mission statement and historical description fetched."
+  },
+  {
+   "url": "https://biology.mit.edu/research/biochemistry/",
+   "fetched": true,
+   "note": "MIT Department of Biology biochemistry research area page. Confirms institutional home in biology, not chemistry."
+  },
+  {
+   "url": "https://biochemistry.stanford.edu/",
+   "fetched": true,
+   "note": "Stanford Biochemistry homepage. Title page shows association with Stanford Medicine (stanfordbiochemistry@stanford.edu), not a chemistry department."
+  },
+  {
+   "url": "https://link.springer.com/journal/10541/aims-and-scope",
+   "fetched": true,
+   "note": "Springer Biochemistry (Moscow) journal aims page. Confirms scope includes biochemistry alongside molecular biology, bioorganic chemistry, microbiology, immunology, physiology, and biomedical sciences."
+  },
+  {
+   "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+   "fetched": true,
+   "note": "OECD FORD (Frascati) top-level classification fetched. Shows 1.4 Chemical sciences and 1.6 Biological sciences as separate top categories, but the page does not expand to show whether biochemistry is sub-filed under 1.4 or 1.6 at the third level."
+  },
+  {
+   "url": "https://www.biochemistry.org/about-us/what-we-do/",
+   "fetched": false,
+   "note": "[UNFETCHED] Biochemical Society (UK) what-we-do page returned 404. Main 'what is biochemistry?' content URL could not be located at /what-is-biochemistry/, /education/what-is-biochemistry/, or /careers/what-is-biochemistry/."
+  },
+  {
+   "url": "https://iubmb.org/about-iubmb/",
+   "fetched": false,
+   "note": "[UNFETCHED] IUBMB (International Union of Biochemistry and Molecular Biology) about page returned 403 Forbidden."
+  },
+  {
+   "url": "http://dewey.info/class/572/e23/",
+   "fetched": false,
+   "note": "[UNFETCHED] dewey.info port 80 connection timed out. Dewey 572 (Biochemistry under 570 Biology) could not be confirmed live."
+  },
+  {
+   "url": "https://pubs.acs.org/journal/bichaw",
+   "fetched": false,
+   "note": "[UNFETCHED] ACS Biochemistry journal page blocked by Cloudflare JS challenge."
+  }
+ ],
+ "unfetched": [
+  "http://dewey.info/class/572/e23/ — dewey.info connection timeout (port 80)",
+  "https://iubmb.org/about-iubmb/ — 403 Forbidden",
+  "https://pubs.acs.org/journal/bichaw — Cloudflare JS block",
+  "https://www.biochemistry.org/what-is-biochemistry/ — 404 Not Found"
+ ],
+ "notes": "Five independent sources (UDC 577, Britannica breadcrumb, Wikidata P31/P279/P361, ASBMB self-description, UW-Madison and MIT institutional housing) all file or frame biochemistry on the biology/life-sciences side, not under chemistry alone. Only LCC (QD415-QD436 inside Organic chemistry class QD) supports the current field:chemistry placement. Wikidata explicitly tags biochemistry as BOTH branch of chemistry and branch of biology AND as an interdisciplinary science — a textbook interface case. The LCC is the one major library classification that nests it under chemistry; UDC takes the opposite position. Institutionally, departments almost universally sit in life-science/medical schools (UW-Madison CALS, MIT Biology, Stanford Medicine), not chemistry colleges. The orchestrator should consider: (a) the current field:chemistry single-home edge is at best a partial view supported only by LCC; (b) a dual part_of to both field:chemistry and domain:life-sciences (or when a field:biology node exists) appears well-warranted by the balance of evidence; (c) Wikidata's 'interdisciplinary science' label supports an interface reading. The Springer Biochemistry (Moscow) aims page is context: it covers biochemistry alongside molecular biology, bioorganic chemistry, microbiology, immunology, physiology, and biomedical sciences — supporting the broad life-science framing rather than a narrow chemistry one."
+}

@@ -426,6 +426,20 @@ non-coverage, never silently dropped.
   databases-and-information-systems ← Q64812807 — both rejected, golden-set must_not_select
   guards added). Node *shape* (combined vs split) is not reopened by anchor availability alone.
 
+- 2026-06-11 natural sciences (clause-6 boundary resolutions, ns-bflag-resolution-v1): LCC's
+  class-G shelving of physical-geography cognates (GE environmental sciences, GC oceanography, GB
+  hydrology/geomorphology) does not defeat natural-sciences/earth-sciences membership when UDC +
+  FORD(+ANZSRC) + community evidence file them there — the class-G position is an other-home
+  filing (no premise denial), recorded as parked geography-side §13 evidence rather than
+  `disputed`, and interpreted once, identically, for the whole cluster; environmental-science's
+  field-level standing is confirmed by FORD 1.5 co-equality and UDC 502/504 depth; biophysics and
+  biochemistry resolve as §13 dual memberships (gate schemes split LCC-vs-UDC head-on; Wikidata
+  dual P31 corroborates) with domain:life-sciences direct targets and re-target notes pending the
+  life-sciences skeleton; geodesy resolves as §13 dual astronomy + earth-sciences, with ANZSRC's
+  geodesy-under-geophysics nesting flattened to the field (contradiction-nesting rule: gate
+  schemes file under astronomy; IUGG treats geodesy and geophysics as peers); TU Delft's
+  civil-engineering housing is a parked engineering-continent §13 trigger.
+
 ## 13. Cross-listing standard (multiple `part_of` memberships)
 
 > Cross-listing policy v1 (CPO-ratified 2026-06-11, vault decision log (21)). Governs disciplines
