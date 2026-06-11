@@ -38,9 +38,10 @@ Data invariants enforced by validation:
 
 ```text
 /data            Canonical accepted graph data (nodes, translations, edges, sources, links, paths).
-                 Four curated continents so far: philosophy, formal sciences, computer &
-                 information sciences, natural sciences — every node/edge promoted through the
-                 curation gate below.
+                 Eight curated continents so far: philosophy, formal sciences, computer &
+                 information sciences, natural sciences, social sciences, life sciences,
+                 engineering & technology, arts & design — every node/edge promoted through
+                 the curation gate below.
 /foundry         Data Foundry working area:
                    batches/    committed batch manifests (resolver/generation inputs)
                    proposals/  committed proposal batches + permanent QC / grounding / resolution /
