@@ -1166,8 +1166,9 @@
       "seed_label": "Bayesian inference",
       "node_id": "method:bayesian-inference",
       "verdict": "verified",
-      "expected_qid": "Q41581",
-      "rank1_expected": true
+      "expected_qid": "Q812535",
+      "rank1_expected": true,
+      "notes": "CORRECTED 2026-06-11 (session #10): /data carried Q41581 = alkane (saturated hydrocarbon) — a seed-era (2026-06-02) human-curated QID that never passed the resolver, caught by this golden-set harness on its first full pass (v4 re-run selected Q812535 \"Bayesian inference\": exact label, enwiki sitelink, 6 aliases, P279 statistical method/statistical inference — multi-signal verified live). The first confirmed residual referent error in /data; fix PR same session. Seed-era QIDs are now an audit-queue category."
     },
     {
       "batch": "batch:machine-learning-foundations-v1",
