@@ -1,0 +1,132 @@
+{
+  "id": "batch:engineering-technology-part-of-edges-v1",
+  "title": "Engineering & Technology part_of Edges v1",
+  "description": "Structural part_of skeleton for the engineering-and-technology continent (parallel round 13c, after the node promotion PR #88): one membership edge per promoted node (31), targeting domain:engineering-and-technology or a field-level parent per gate-scheme nesting; section-12 part_of precedents (contradiction-nesting rule, depth rule, ASL-pillar pattern) and section 13 govern. Edges whose source node is proposed stay status-capped. Construction input only — not canonical graph data; edges only, zero new nodes.",
+  "status": "active",
+  "target_locales": [
+    "en"
+  ],
+  "scope": {
+    "include": [
+      "part_of membership edges for the 31 engineering-technology skeleton nodes promoted in PR #88",
+      "Gate-scheme nesting analysis per edge (LCC class T subclass/range containment; UDC 62/66/67/68/69/60 division containment; FORD section 2 as cross-check)",
+      "Section-13 dual-membership candidates only where externally-sourced classification evidence exists (IR precedent)",
+      "Status caps: edges from proposed nodes (biomedical-engineering, food-engineering, naval-architecture-and-marine-engineering) stay at proposed"
+    ],
+    "exclude": [
+      "New nodes of any kind",
+      "Modification of existing /data edges (the operations-research and control-theory re-target reviews are orchestrator promotion-time work, not generator output)",
+      "Cross-continent edges without classification evidence (parked section-13 candidates — photonics/optics, acoustics, plasma, robotics/AI, geodesy/geomatics — stay recorded, not written)",
+      "Edges into other round branches' nodes (architecture is 13d's; no engineering edge may target it from this batch)"
+    ]
+  },
+  "seed_entities": [
+    {
+      "label": "Engineering and Technology",
+      "expected_node_id": "domain:engineering-and-technology",
+      "expected_type": "domain",
+      "notes": "Domain anchor — direct target for the 10 fields and for subfields whose nesting is scheme-contradicted (contradiction-nesting rule flattens to the nearest un-contradicted parent)."
+    },
+    {
+      "label": "Civil Engineering",
+      "expected_node_id": "field:civil-engineering",
+      "expected_type": "field",
+      "notes": "Parent anchor for the TA-nested subfields (structural, geotechnical, transportation, geomatics) and the case-by-case civil-family questions (hydraulic, construction)."
+    },
+    {
+      "label": "Electrical Engineering",
+      "expected_node_id": "field:electrical-engineering",
+      "expected_type": "field",
+      "notes": "Parent anchor for the TK-nested subfields (telecommunications, computer-engineering; nuclear is scheme-contradicted — pre-registered)."
+    },
+    {
+      "label": "Mechanical Engineering",
+      "expected_node_id": "field:mechanical-engineering",
+      "expected_type": "field",
+      "notes": "Parent anchor for the TJ-nested subfields (robotics; automotive is a pre-registered question)."
+    },
+    {
+      "label": "Chemical Engineering",
+      "expected_node_id": "field:chemical-engineering",
+      "expected_type": "field",
+      "notes": "Parent anchor for the TP/UDC-66-nested subfields (petroleum, food-engineering capped)."
+    },
+    {
+      "label": "Materials Science and Engineering",
+      "expected_node_id": "field:materials-science-and-engineering",
+      "expected_type": "field",
+      "notes": "Parent anchor candidate for nanotechnology (UDC 620.3 under 620) and the metallurgy parent question."
+    },
+    {
+      "label": "Industrial Engineering",
+      "expected_node_id": "field:industrial-engineering",
+      "expected_type": "field",
+      "notes": "Parent anchor candidate for manufacturing/systems-engineering questions; the operations-research re-target target (orchestrator work)."
+    },
+    {
+      "label": "Manufacturing Engineering",
+      "expected_node_id": "subfield:manufacturing-engineering",
+      "expected_type": "subfield",
+      "notes": "Deep-nest parent candidate for textile-engineering (both gate schemes nest textile inside the manufacturing wing — ASL-pillar depth pattern)."
+    }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "wikidata",
+      "purpose": [
+        "identity",
+        "metadata",
+        "source_resolution",
+        "external_link"
+      ],
+      "requires_secret": false,
+      "notes": "CC0. Identity cross-checks only; edge evidence is classification-source grounding."
+    },
+    {
+      "provider": "wikipedia",
+      "purpose": [
+        "external_link",
+        "source_resolution"
+      ],
+      "requires_secret": false,
+      "notes": "External-link / source-resolution pointer only. Never store or cache article bodies."
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "provider": "namuwiki",
+      "reason": "NamuWiki is external-link-only and must never be used as evidence or a source, nor have its content cached."
+    },
+    {
+      "provider": "cloud_llm_api",
+      "reason": "No cloud LLM API calls are permitted in repo tooling, build, validation, or runtime."
+    },
+    {
+      "provider": "scraped_article_body",
+      "reason": "Scraping or crawling third-party article bodies is forbidden; only open, license-compatible data is allowed."
+    }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": [
+      "low",
+      "medium",
+      "historical"
+    ],
+    "requires_strict_review_for": [
+      "living_person",
+      "current_affiliation",
+      "controversial_claim"
+    ]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/engineering-technology-part-of-edges-v1"
+  },
+  "notes": [
+    "Round 13c edge batch (§12 pin d816cb6). Evidence sources are the registered source:lcc-outline, source:udc-summary, source:oecd-ford (no new source registration expected).",
+    "Pre-registered nesting questions: (1) hydraulic-engineering — neither gate scheme nests TC/626-627 under civil (both file them as direct engineering divisions); community housing is civil departments — contradiction-nesting analysis required; (2) construction-engineering — TH and UDC 69 are direct divisions (same pattern); (3) nuclear-engineering — LCC nests TK9001-9401 under TK (electrical) but UDC 621's caption places nuclear technology in the 621 mechanical-general umbrella — scheme-vs-scheme contradiction, flatten candidate; (4) automotive-engineering — TL1-484 and UDC 629.3 sit in the transport-vehicle wing, not under TJ/621 mechanical — community (SAE, ME departments) vs scheme filing; (5) metallurgy — LCC nests TN600-799 inside the TN mining subclass, UDC 669 is a direct division, community housing is materials departments — three-way question; (6) mining/manufacturing/systems/photonics/NAME — no gate-scheme nesting under any field: domain-direct flatten candidates with per-edge notes; (7) textile-engineering — both schemes nest inside the manufacturing wing (TS1300-1865 in TS; UDC 677 in 67): the depth rule allows subfield-under-subfield (ASL-pillar pattern); (8) petroleum-engineering and food-engineering — both schemes nest inside the chemical wing (TP ranges; UDC 665.6/664 in 66): chemical-engineering parents; (9) geomatics/robotics/telecommunications/computer-engineering — single-scheme LCC nesting with the other scheme silent: un-contradicted nesting may deepen (CIS depth rule).",
+    "Section-13 candidates are written only on passing the evidence gate at QC; all currently-parked candidates (photonics/optics, acoustics, plasma, robotics/AI, computer-engineering/CS, geodesy via geomatics) default to recorded-not-written.",
+    "The operations-research and control-theory domain-direct membership edges (existing /data, session #7) are re-target-reviewed by the orchestrator at promotion time (mathematics-education precedent) — generator must not emit edges for them.",
+    "/data remains the source of truth for accepted graph data."
+  ]
+}
