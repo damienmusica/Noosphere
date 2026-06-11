@@ -1,0 +1,102 @@
+{
+  "id": "batch:natural-sciences-part-of-edges-v1",
+  "title": "Natural Sciences part_of Edges v1",
+  "description": "Structural part_of membership skeleton for the natural-sciences continent (fourth continent): one externally-grounded membership edge per promoted skeleton node (41), plus any section-13 co-equal dual memberships the recorded dual filings support (mineralogy UDC-54/LCC-QE, atmospheric-science LCC-QC/UDC-55, geophysics LCC-QC/UDC-550.3, crystallography chemistry/physics). Construction input only. The two recorded re-target triggers (quantum-computing membership re-target to field:physics; mathematical-physics minority-side physics membership) are orchestrator-QC tasks in the same cycle, out of generation scope.",
+  "status": "active",
+  "target_locales": [
+    "en"
+  ],
+  "scope": {
+    "include": [
+      "part_of membership edges for the 41 natural-sciences-skeleton-v1 nodes",
+      "Section-13 co-equal dual memberships where the skeleton QC recorded dual classification filings",
+      "Live classification grounding per edge promotion policy v1 clause 1 (LCC, UDC, FORD, PhySH for the physics wing)"
+    ],
+    "exclude": [
+      "Any non-part_of relation",
+      "Edges for nodes outside the natural-sciences skeleton batch (the quantum-computing re-target and mathematical-physics section-13 edge are orchestrator tasks)",
+      "Editorial-evidenced memberships (structural edges require externally-sourced classification evidence)"
+    ]
+  },
+  "seed_entities": [
+    {
+      "label": "Physics",
+      "expected_node_id": "field:physics",
+      "expected_type": "field",
+      "notes": "Parent anchor for the physics-wing subfields (PhySH is the wing's ratified discipline scheme)."
+    },
+    {
+      "label": "Chemistry",
+      "expected_node_id": "field:chemistry",
+      "expected_type": "field",
+      "notes": "Parent anchor for the chemistry-wing subfields."
+    },
+    {
+      "label": "Astronomy",
+      "expected_node_id": "field:astronomy",
+      "expected_type": "field",
+      "notes": "Parent anchor for the astronomy-wing subfields."
+    },
+    {
+      "label": "Earth Sciences",
+      "expected_node_id": "field:earth-sciences",
+      "expected_type": "field",
+      "notes": "Parent anchor for the earth-wing subfields."
+    },
+    {
+      "label": "Natural Sciences",
+      "expected_node_id": "domain:natural-sciences",
+      "expected_type": "domain",
+      "notes": "Domain anchor for the four field-level edges (chemistry, astronomy, earth sciences, environmental science)."
+    }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "loc",
+      "purpose": [
+        "source_resolution",
+        "metadata"
+      ],
+      "requires_secret": false,
+      "notes": "LCC outline PDFs + id.loc.gov classification authority records (live verification at QC)."
+    },
+    {
+      "provider": "other",
+      "purpose": [
+        "source_resolution",
+        "metadata"
+      ],
+      "requires_secret": false,
+      "notes": "UDC Summary (CC BY-SA 3.0), OECD FORD (arrs.si mirror), PhySH (physh.org, CC0 — registered in sources.json with this batch)."
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "provider": "namuwiki",
+      "reason": "NamuWiki is external-link-only and must never be used as evidence or a source, nor have its content cached."
+    },
+    {
+      "provider": "cloud_llm_api",
+      "reason": "No cloud LLM API calls are permitted in repo tooling, build, validation, or runtime."
+    },
+    {
+      "provider": "scraped_article_body",
+      "reason": "Scraping or crawling third-party article bodies is forbidden; only open, license-compatible data is allowed."
+    }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": [
+      "low"
+    ],
+    "requires_strict_review_for": []
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/natural-sciences-part-of-edges-v1"
+  },
+  "notes": [
+    "Edge promotion policy v1 governs: clause 1 (structural edges with live classification grounding -> reviewed), clause 3 (status cap — edges touching the 7 proposed B-flag nodes stop at proposed), clause 4 (full proposer provenance).",
+    "docs/data-foundry.md section 12 precedent log (incl. the CIS depth rule: un-contradicted gate-scheme nesting may deepen a chain; contradicted nesting flattens to the field) and section 13 (co-equal multiple part_of) are mandatory inputs to the generation order.",
+    "Coverage duty: every one of the 41 skeleton nodes gets exactly one primary membership edge; dual filings recorded at skeleton QC may add section-13 second edges with their own grounding."
+  ]
+}

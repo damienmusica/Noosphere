@@ -2825,5 +2825,620 @@
         "entity": "https://openalex.org/C2778653333"
       }
     }
+  },
+  {
+    "id": "field:chemistry",
+    "type": "field",
+    "domain": "natural_sciences",
+    "level": 1,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2329"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:astronomy",
+    "type": "field",
+    "domain": "natural_sciences",
+    "level": 1,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q333"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:earth-sciences",
+    "type": "field",
+    "domain": "natural_sciences",
+    "level": 1,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q8008"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:environmental-science",
+    "type": "field",
+    "domain": "natural_sciences",
+    "level": 1,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q188847"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:condensed-matter-physics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q214781"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:atomic-molecular-and-optical-physics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1151533"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:optics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q14620"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:nuclear-physics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q81197"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:particle-physics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q18334"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:plasma-physics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q5615097"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:fluid-dynamics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q216320"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:statistical-physics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q677916"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:acoustics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q82811"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:biophysics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7100"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:nonlinear-dynamics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1985198"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:accelerator-physics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q492496"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:soft-matter-physics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11315305"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:analytical-chemistry",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2346"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:inorganic-chemistry",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11165"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:organic-chemistry",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11351"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:physical-chemistry",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11372"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:biochemistry",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7094"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:crystallography",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q160398"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:electrochemistry",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7877"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:astrophysics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q37547"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:cosmology",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q338"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:planetary-science",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q104499"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:geology",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1069"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:geophysics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q46255"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:geochemistry",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q161764"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:mineralogy",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q83353"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:petrology",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q163082"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:paleontology",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7205"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:seismology",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q83371"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:volcanology",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q102904"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:oceanography",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q43518"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:atmospheric-science",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q757520"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:hydrology",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q42250"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:geomorphology",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q52109"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:geodesy",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q131089"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:quantum-information-science",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2122216"
+    },
+    "academic_status": "emerging",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
   }
 ]

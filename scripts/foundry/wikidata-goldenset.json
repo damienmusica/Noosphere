@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "description": "Machine-readable regression golden set for scripts/foundry/resolve-wikidata.ts. Encodes every past verified resolution verdict (philosophy 61 + formal sciences 44 + CS 23 + ML-foundations 11 + seed-era 13), the manual-selection rulings (decision-log (9) path), the upstream gaps, and the rejected orphan stub. The resolver re-run is maintainer-local (network); the comparison (scripts/foundry/goldenset-check.ts) is fully offline against this file — CI stays network-free.",
-  "provenance": "Derived 2026-06-11 (session #10) by joining foundry/batches/*.json seed manifests with /data/nodes.json verified QIDs; manual/gap annotations from the permanent records in foundry/proposals/*/grounding-report.md, qid-adversarial-audit-cis-v1/report.md and the vault decision log (8)(9)(13)(24)(25). Seed-era entries appended 2026-06-11 (session #11) from qid-adversarial-audit-seed-philosophy-v1 (2 corrected: life-sciences Q864->Q864928, arts-and-design Q735->Q2018526).",
+  "description": "Machine-readable regression golden set for scripts/foundry/resolve-wikidata.ts. Encodes every past verified resolution verdict (philosophy 61 + formal sciences 44 + CS 23 + ML-foundations 11 + seed-era 13 + natural sciences 41), the manual-selection rulings (decision-log (9) path), the upstream gaps, and the rejected orphan stub. The resolver re-run is maintainer-local (network); the comparison (scripts/foundry/goldenset-check.ts) is fully offline against this file — CI stays network-free.",
+  "provenance": "Derived 2026-06-11 (session #10) by joining foundry/batches/*.json seed manifests with /data/nodes.json verified QIDs; manual/gap annotations from the permanent records in foundry/proposals/*/grounding-report.md, qid-adversarial-audit-cis-v1/report.md and the vault decision log (8)(9)(13)(24)(25). Seed-era entries appended 2026-06-11 (session #11) from qid-adversarial-audit-seed-philosophy-v1 (2 corrected: life-sciences Q864->Q864928, arts-and-design Q735->Q2018526). Natural-sciences entries appended 2026-06-11 (session #11, resolver v4 first new-continent run; grounding-report in foundry/proposals/natural-sciences-skeleton-v1/).",
   "expectation_semantics": {
     "verified + rank1_expected": "FAIL if expected_qid absent from candidates; WARN if present but not selected_qid; PASS if selected.",
     "verified + manual_path": "INFO either way — v3 baseline did not surface these as rank-1; an improvement (expected_qid surfaced/selected) is reported as IMPROVED, absence is v3 parity, never FAIL.",
@@ -1301,6 +1301,341 @@
       "expected_qid": "Q125977",
       "manual_path": true,
       "notes": "Seed-era human-curated QID, audit-verified (qid-adversarial-audit-seed-philosophy-v1, 2026-06-11)."
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Chemistry",
+      "node_id": "field:chemistry",
+      "verdict": "verified",
+      "expected_qid": "Q2329",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Astronomy",
+      "node_id": "field:astronomy",
+      "verdict": "verified",
+      "expected_qid": "Q333",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Earth Sciences",
+      "node_id": "field:earth-sciences",
+      "verdict": "verified",
+      "expected_qid": "Q8008",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Environmental Science",
+      "node_id": "field:environmental-science",
+      "verdict": "verified",
+      "expected_qid": "Q188847",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Condensed Matter Physics",
+      "node_id": "subfield:condensed-matter-physics",
+      "verdict": "verified",
+      "expected_qid": "Q214781",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Atomic, Molecular and Optical Physics",
+      "node_id": "subfield:atomic-molecular-and-optical-physics",
+      "verdict": "verified",
+      "expected_qid": "Q1151533",
+      "rank1_expected": true,
+      "manual_path": true,
+      "notes": "v4 component fallback recovered the exact compound entity (zero provider hits for the compound query); accepted after orchestrator live re-fetch."
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Optics",
+      "node_id": "subfield:optics",
+      "verdict": "verified",
+      "expected_qid": "Q14620",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Nuclear Physics",
+      "node_id": "subfield:nuclear-physics",
+      "verdict": "verified",
+      "expected_qid": "Q81197",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Particle Physics",
+      "node_id": "subfield:particle-physics",
+      "verdict": "verified",
+      "expected_qid": "Q18334",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Plasma Physics",
+      "node_id": "subfield:plasma-physics",
+      "verdict": "verified",
+      "expected_qid": "Q5615097",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Fluid Dynamics",
+      "node_id": "subfield:fluid-dynamics",
+      "verdict": "verified",
+      "expected_qid": "Q216320",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Statistical Physics and Thermodynamics",
+      "node_id": "subfield:statistical-physics",
+      "verdict": "verified",
+      "expected_qid": "Q677916",
+      "rank1_expected": false,
+      "manual_path": true,
+      "must_not_select": [
+        "Q11473"
+      ],
+      "notes": "Manual override of the v4 component fallback: fallback anchored at absorbed component thermodynamics (Q11473); Q677916 (statistical physics, exact label+enwiki) selected per decision-log (9). Q11473 must never be auto-selected for this node."
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Acoustics",
+      "node_id": "subfield:acoustics",
+      "verdict": "verified",
+      "expected_qid": "Q82811",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Biophysics",
+      "node_id": "subfield:biophysics",
+      "verdict": "verified",
+      "expected_qid": "Q7100",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Nonlinear Dynamics",
+      "node_id": "subfield:nonlinear-dynamics",
+      "verdict": "verified",
+      "expected_qid": "Q1985198",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Accelerator Physics",
+      "node_id": "subfield:accelerator-physics",
+      "verdict": "verified",
+      "expected_qid": "Q492496",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Soft Matter Physics",
+      "node_id": "subfield:soft-matter-physics",
+      "verdict": "verified",
+      "expected_qid": "Q11315305",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Analytical Chemistry",
+      "node_id": "subfield:analytical-chemistry",
+      "verdict": "verified",
+      "expected_qid": "Q2346",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Inorganic Chemistry",
+      "node_id": "subfield:inorganic-chemistry",
+      "verdict": "verified",
+      "expected_qid": "Q11165",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Organic Chemistry",
+      "node_id": "subfield:organic-chemistry",
+      "verdict": "verified",
+      "expected_qid": "Q11351",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Physical Chemistry",
+      "node_id": "subfield:physical-chemistry",
+      "verdict": "verified",
+      "expected_qid": "Q11372",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Biochemistry",
+      "node_id": "subfield:biochemistry",
+      "verdict": "verified",
+      "expected_qid": "Q7094",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Crystallography",
+      "node_id": "subfield:crystallography",
+      "verdict": "verified",
+      "expected_qid": "Q160398",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Electrochemistry",
+      "node_id": "subfield:electrochemistry",
+      "verdict": "verified",
+      "expected_qid": "Q7877",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Astrophysics",
+      "node_id": "subfield:astrophysics",
+      "verdict": "verified",
+      "expected_qid": "Q37547",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Cosmology",
+      "node_id": "subfield:cosmology",
+      "verdict": "verified",
+      "expected_qid": "Q338",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Planetary Science",
+      "node_id": "subfield:planetary-science",
+      "verdict": "verified",
+      "expected_qid": "Q104499",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Geology",
+      "node_id": "subfield:geology",
+      "verdict": "verified",
+      "expected_qid": "Q1069",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Geophysics",
+      "node_id": "subfield:geophysics",
+      "verdict": "verified",
+      "expected_qid": "Q46255",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Geochemistry",
+      "node_id": "subfield:geochemistry",
+      "verdict": "verified",
+      "expected_qid": "Q161764",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Mineralogy",
+      "node_id": "subfield:mineralogy",
+      "verdict": "verified",
+      "expected_qid": "Q83353",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Petrology",
+      "node_id": "subfield:petrology",
+      "verdict": "verified",
+      "expected_qid": "Q163082",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Paleontology",
+      "node_id": "subfield:paleontology",
+      "verdict": "verified",
+      "expected_qid": "Q7205",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Seismology",
+      "node_id": "subfield:seismology",
+      "verdict": "verified",
+      "expected_qid": "Q83371",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Volcanology",
+      "node_id": "subfield:volcanology",
+      "verdict": "verified",
+      "expected_qid": "Q102904",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Oceanography",
+      "node_id": "subfield:oceanography",
+      "verdict": "verified",
+      "expected_qid": "Q43518",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Atmospheric Science",
+      "node_id": "subfield:atmospheric-science",
+      "verdict": "verified",
+      "expected_qid": "Q757520",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Hydrology",
+      "node_id": "subfield:hydrology",
+      "verdict": "verified",
+      "expected_qid": "Q42250",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Geomorphology",
+      "node_id": "subfield:geomorphology",
+      "verdict": "verified",
+      "expected_qid": "Q52109",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Geodesy",
+      "node_id": "subfield:geodesy",
+      "verdict": "verified",
+      "expected_qid": "Q131089",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:natural-sciences-skeleton-v1",
+      "seed_label": "Quantum Information Science",
+      "node_id": "subfield:quantum-information-science",
+      "verdict": "verified",
+      "expected_qid": "Q2122216",
+      "rank1_expected": true
     }
   ]
 }
