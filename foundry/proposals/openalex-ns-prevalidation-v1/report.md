@@ -114,3 +114,40 @@ are additionally reproducible from the `as_of` date + entity URLs (policy (18) r
 | subfield:volcanology | Q102904 | rank-1 | C109902934 "Volcanology" lvl3 | 9,516 | 78,121 |
 | subfield:atmospheric-science | Q757520 | rank-1 | C91586092 "Atmospheric sciences" lvl1 | 1,312,201 | 20,273,083 |
 | subfield:quantum-information-science | Q2122216 | rank-1 | C5320026 "Quantum information science" lvl4 | 44,701 | 538,795 |
+
+## SPN ledger (30 written concepts' entity URLs — session-#12 consolidated pass)
+
+**Session-#12 consolidated pass: 146 snapshot-compatible URLs processed — 22 fresh SPN archives + 120 existing snapshots verified = 142/146 (97.3%); 4 save-timeouts → retry queue; 16 querystring URLs recorded SPN-incompatible (§8). Strategy: existing-snapshot-first (fast, throttle-immune), saves only for the residue with a 25s timeout — the save endpoint opened with immediate 520s/hangs and recovered mid-pass.**
+
+| URL | status | snapshot / note |
+|---|---|---|
+| https://openalex.org/C121332964 | existing snapshot verified | https://web.archive.org/web/20260524031538/https://openalex.org/C121332964 |
+| https://openalex.org/C185592680 | existing snapshot verified | https://web.archive.org/web/20260524032353/https://openalex.org/C185592680 |
+| https://openalex.org/C1276947 | existing snapshot verified | https://web.archive.org/web/20260524032359/https://openalex.org/C1276947 |
+| https://openalex.org/C1965285 | existing snapshot verified | https://web.archive.org/web/20251104071658/https://openalex.org/C1965285 |
+| https://openalex.org/C26873012 | existing snapshot verified | https://web.archive.org/web/20260524043602/https://openalex.org/C26873012 |
+| https://openalex.org/C120665830 | existing snapshot verified | https://web.archive.org/web/20260524043610/https://openalex.org/C120665830 |
+| https://openalex.org/C185544564 | existing snapshot verified | https://web.archive.org/web/20260406090717/https://openalex.org/C185544564 |
+| https://openalex.org/C109214941 | existing snapshot verified | https://web.archive.org/web/20251019111428/https://openalex.org/C109214941 |
+| https://openalex.org/C90278072 | existing snapshot verified | https://web.archive.org/web/20260130124603/https://openalex.org/C90278072 |
+| https://openalex.org/C121864883 | existing snapshot verified | https://web.archive.org/web/20260524043600/https://openalex.org/C121864883 |
+| https://openalex.org/C24890656 | existing snapshot verified | https://web.archive.org/web/20260524031538/https://openalex.org/C24890656 |
+| https://openalex.org/C13476937 | existing snapshot verified | https://web.archive.org/web/20241218175313/https://openalex.org/C13476937 |
+| https://openalex.org/C179104552 | existing snapshot verified | https://web.archive.org/web/20260524032353/https://openalex.org/C179104552 |
+| https://openalex.org/C178790620 | existing snapshot verified | https://web.archive.org/web/20260524032353/https://openalex.org/C178790620 |
+| https://openalex.org/C147789679 | existing snapshot verified | https://web.archive.org/web/20260524044006/https://openalex.org/C147789679 |
+| https://openalex.org/C8010536 | existing snapshot verified | https://web.archive.org/web/20260331161649/https://openalex.org/C8010536 |
+| https://openalex.org/C52859227 | existing snapshot verified | https://web.archive.org/web/20260524044006/https://openalex.org/C52859227 |
+| https://openalex.org/C44870925 | existing snapshot verified | https://web.archive.org/web/20251127171442/https://openalex.org/C44870925 |
+| https://openalex.org/C26405456 | existing snapshot verified | https://web.archive.org/web/20251017115918/https://openalex.org/C26405456 |
+| https://openalex.org/C152551177 | existing snapshot verified | https://web.archive.org/web/20241221205759/https://openalex.org/C152551177 |
+| https://openalex.org/C127313418 | existing snapshot verified | https://web.archive.org/web/20260524032357/https://openalex.org/C127313418 |
+| https://openalex.org/C8058405 | existing snapshot verified | https://web.archive.org/web/20260130021535/https://openalex.org/C8058405 |
+| https://openalex.org/C17409809 | existing snapshot verified | https://web.archive.org/web/20260221105101/https://openalex.org/C17409809 |
+| https://openalex.org/C199289684 | existing snapshot verified | https://web.archive.org/web/20260204123152/https://openalex.org/C199289684 |
+| https://openalex.org/C5900021 | existing snapshot verified | https://web.archive.org/web/20260406090717/https://openalex.org/C5900021 |
+| https://openalex.org/C151730666 | existing snapshot verified | https://web.archive.org/web/20260524043600/https://openalex.org/C151730666 |
+| https://openalex.org/C165205528 | existing snapshot verified | https://web.archive.org/web/20260524044137/https://openalex.org/C165205528 |
+| https://openalex.org/C109902934 | existing snapshot verified | https://web.archive.org/web/20250606185214/https://openalex.org/C109902934 |
+| https://openalex.org/C91586092 | existing snapshot verified | https://web.archive.org/web/20251024132702/https://openalex.org/C91586092 |
+| https://openalex.org/C5320026 | existing snapshot verified | https://web.archive.org/web/20251018221901/https://openalex.org/C5320026 |

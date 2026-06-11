@@ -142,4 +142,85 @@ engineering-continent §13 trigger** for the upcoming engineering session. No di
 
 ### SPN ledger (session #12 serial pass — appended)
 
-(see consolidated table appended at end of session)
+**Session-#12 consolidated pass: 146 snapshot-compatible URLs processed — 22 fresh SPN archives + 120 existing snapshots verified = 142/146 (97.3%); 4 save-timeouts → retry queue; 16 querystring URLs recorded SPN-incompatible (§8). Strategy: existing-snapshot-first (fast, throttle-immune), saves only for the residue with a 25s timeout — the save endpoint opened with immediate 520s/hangs and recovered mid-pass.**
+
+| URL | status | snapshot / note |
+|---|---|---|
+| https://id.loc.gov/authorities/classification/GE1.json | archived (SPN) | https://web.archive.org/web/20260611075310/https://id.loc.gov/authorities/classification/GE1.json |
+| https://id.loc.gov/authorities/classification/G.json | existing snapshot verified | https://web.archive.org/web/20230605174120/https://id.loc.gov/authorities/classification/G.json |
+| https://udcsummary.info/php/getrecord.php?id=5&lang=1 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://udcsummary.info/php/getrecord.php?id=502&lang=1 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp | (reused session-#11 snapshot) | see natural-sciences-skeleton-v1 ledger |
+| https://www.britannica.com/science/environmental-science | existing snapshot verified | https://web.archive.org/web/20251217002308/https://www.britannica.com/science/environmental-science |
+| https://www.nature.com/subjects/environmental-sciences | existing snapshot verified | https://web.archive.org/web/20260317033121/https://www.nature.com/subjects/environmental-sciences |
+| https://nces.ed.gov/ipeds/cipcode/cipdetail.aspx?y=56&cip=03.0104 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://nces.ed.gov/ipeds/cipcode/cipdetail.aspx?y=56&cip=03 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://ourenvironment.berkeley.edu/about | existing snapshot verified | https://web.archive.org/web/20260311183021/https://ourenvironment.berkeley.edu/about |
+| https://evsc.as.virginia.edu/ | existing snapshot verified | https://web.archive.org/web/20260422044811/https://evsc.as.virginia.edu/ |
+| https://www.wikidata.org/wiki/Special:EntityData/Q188847.json | existing snapshot verified | https://web.archive.org/web/20260611054205/https://www.wikidata.org/wiki/Special:EntityData/Q188847.json |
+| https://id.loc.gov/authorities/classification/QH505.json | archived (SPN) | https://web.archive.org/web/20260611075333/https://id.loc.gov/authorities/classification/QH505.json |
+| https://udcsummary.info/php/getrecord.php?id=577&lang=1 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://physh.org/disciplines | (reused session-#11 snapshot) | see natural-sciences-skeleton-v1 ledger |
+| https://physh.org/about | existing snapshot verified | https://web.archive.org/web/20260611023705/https://physh.org/about |
+| https://physics.mit.edu/research/ | existing snapshot verified | https://web.archive.org/web/20260405093800/https://physics.mit.edu/research/ |
+| https://www.biophysics.org/what-is-biophysics | existing snapshot verified | https://web.archive.org/web/20260510120006/https://www.biophysics.org/what-is-biophysics |
+| https://www.biophysics.org/about-bps/mission-vision | existing snapshot verified | https://web.archive.org/web/20250913135640/https://www.biophysics.org/about-bps/mission-vision |
+| https://www.britannica.com/science/biophysics | existing snapshot verified | https://web.archive.org/web/20260220123816/https://www.britannica.com/science/biophysics |
+| https://qb3.berkeley.edu/biophysics/ | existing snapshot verified | https://web.archive.org/web/20260519125701/https://qb3.berkeley.edu/biophysics/ |
+| https://link.springer.com/journal/249/aims-and-scope | existing snapshot verified | https://web.archive.org/web/20260315043031/https://link.springer.com/journal/249/aims-and-scope |
+| https://www.wikidata.org/wiki/Q7100 | existing snapshot verified | https://web.archive.org/web/20260226193838/https://www.wikidata.org/wiki/Q7100 |
+| https://id.loc.gov/authorities/classification/QD415-QD436.json | existing snapshot verified | https://web.archive.org/web/20250426205819/https://id.loc.gov/authorities/classification/QD415-QD436.json |
+| https://udcsummary.info/php/getrecord.php?id=57&lang=1 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://udcsummary.info/php/getrecord.php?id=54&lang=1 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://www.britannica.com/science/biochemistry | existing snapshot verified | https://web.archive.org/web/20260519075413/https://www.britannica.com/science/biochemistry |
+| https://www.wikidata.org/w/api.php?action=wbgetentities&ids=Q7094&props=claims&format=json | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://www.asbmb.org/about | existing snapshot verified | https://web.archive.org/web/20260506045100/https://www.asbmb.org/about |
+| https://www.biochem.wisc.edu/ | existing snapshot verified | https://web.archive.org/web/20260413024400/https://biochem.wisc.edu/ |
+| https://www.biochem.wisc.edu/about | existing snapshot verified | https://web.archive.org/web/20260310104606/https://biochem.wisc.edu/about/ |
+| https://biology.mit.edu/research/biochemistry/ | **[SPN-FAILED]** (save-timeout) | retry queue |
+| https://biochemistry.stanford.edu/ | existing snapshot verified | https://web.archive.org/web/20260604024610/http://biochemistry.stanford.edu/ |
+| https://link.springer.com/journal/10541/aims-and-scope | existing snapshot verified | https://web.archive.org/web/20260114080418/https://link.springer.com/journal/10541/aims-and-scope |
+| https://id.loc.gov/authorities/classification/GC1-GC1581.json | existing snapshot verified | https://web.archive.org/web/20250522235052/https://id.loc.gov/authorities/classification/GC1-GC1581.json |
+| https://udcsummary.info/php/getrecord.php?id=551.46&lang=1 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://udcsummary.info/php/getrecord.php?id=55&lang=1 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-research-classification-anzsrc/latest-release | existing snapshot verified | https://web.archive.org/web/20260602082333/https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-research-classification-anzsrc/latest-release |
+| https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-research-classification-anzsrc/2020/anzsrc2020_for.xlsx | existing snapshot verified | https://web.archive.org/web/20250413200908/https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-research-classification-anzsrc/2020/anzsrc2020_for.xlsx |
+| https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-research-classification-anzsrc/2020/anzsrc2020for_ford_correspondence.xlsx | existing snapshot verified | https://web.archive.org/web/20250123154849/https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-research-classification-anzsrc/2020/anzsrc2020for_ford_correspondence.xlsx |
+| https://www.britannica.com/science/oceanography | existing snapshot verified | https://web.archive.org/web/20260426144746/https://www.britannica.com/science/oceanography |
+| https://scripps.ucsd.edu/about | existing snapshot verified | https://web.archive.org/web/20260602230635/https://scripps.ucsd.edu/about |
+| https://eapsweb.mit.edu/about | existing snapshot verified | https://web.archive.org/web/20240606161522/http://eapsweb.mit.edu/about |
+| https://id.loc.gov/authorities/classification/GB651.json | archived (SPN) | https://web.archive.org/web/20260611075436/https://id.loc.gov/authorities/classification/GB651.json |
+| https://id.loc.gov/authorities/classification/GB651-GB2998.json | existing snapshot verified | https://web.archive.org/web/20260124134810/https://id.loc.gov/authorities/classification/GB651-GB2998.json |
+| https://id.loc.gov/authorities/classification/GB3-GB5030.json | archived (SPN) | https://web.archive.org/web/20260611075459/https://id.loc.gov/authorities/classification/GB3-GB5030.json |
+| https://id.loc.gov/authorities/classification/GC1.json | archived (SPN) | https://web.archive.org/web/20260611075521/https://id.loc.gov/authorities/classification/GC1.json |
+| https://id.loc.gov/authorities/classification/GB400.json | archived (SPN) | https://web.archive.org/web/20260611075544/https://id.loc.gov/authorities/classification/GB400.json |
+| https://udcsummary.info/php/getrecord.php?id=556&lang=1 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://www.britannica.com/science/hydrology | existing snapshot verified | https://web.archive.org/web/20260303110058/https://www.britannica.com/science/hydrology |
+| https://www.hydrology-and-earth-system-sciences.net/about/aims_and_scope.html | existing snapshot verified | https://web.archive.org/web/20260521100408/https://www.hydrology-and-earth-system-sciences.net/about/aims_and_scope.html |
+| https://www.iugg.org/associations/ | existing snapshot verified | https://web.archive.org/web/20240912154013/http://www.iugg.org/associations/ |
+| https://www.egu.eu/divisions/ | **[SPN-FAILED]** (save-timeout) | retry queue |
+| https://www.jsg.utexas.edu/research/ | existing snapshot verified | https://web.archive.org/web/20260519224021/https://www.jsg.utexas.edu/research |
+| https://has.arizona.edu/about | existing snapshot verified | https://web.archive.org/web/20240801112434/https://has.arizona.edu/about/ |
+| https://has.arizona.edu/about/vision-and-mission | **[SPN-FAILED]** (save-timeout) | retry queue |
+| https://api.openalex.org/topics?search=hydrology&per_page=3 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://id.loc.gov/authorities/classification/GB400-GB649.json | archived (SPN) | https://web.archive.org/web/20260611075731/https://id.loc.gov/authorities/classification/GB400-GB649.json |
+| https://udcsummary.info/php/getrecord.php?id=551.4&lang=1 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://vocabs.ardc.edu.au/repository/api/lda/anzsrc-2020-for/concept?labelcontains=Geomorphology&_format=json | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://www.britannica.com/science/geomorphology | existing snapshot verified | https://web.archive.org/web/20260520005920/https://www.britannica.com/science/geomorphology |
+| https://www.geomorph.org/ | existing snapshot verified | https://web.archive.org/web/20260521051653/https://www.geomorph.org/ |
+| https://www.geomorph.org/about/ | existing snapshot verified | https://web.archive.org/web/20210609032937/http://www.geomorph.org/About |
+| https://www.egu.eu/gm/ | existing snapshot verified | https://web.archive.org/web/20260316210322/https://www.egu.eu/gm/ |
+| https://id.loc.gov/authorities/classification/GC201.json | archived (SPN) | https://web.archive.org/web/20260611075752/https://id.loc.gov/authorities/classification/GC201.json |
+| https://id.loc.gov/authorities/classification/QB275-QB343.json | archived (SPN) | https://web.archive.org/web/20260611075247/https://id.loc.gov/authorities/classification/QB275-QB343.json |
+| https://id.loc.gov/authorities/classification/QB275.json | archived (SPN) | https://web.archive.org/web/20260611075815/https://id.loc.gov/authorities/classification/QB275.json |
+| https://udcsummary.info/php/getrecord.php?id=528&lang=1 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://udcsummary.info/php/getrecord.php?id=52&lang=1 | SPN-incompatible (querystring) | content quoted in report; Wikidata states lastrevid-pinned |
+| https://geodesy.science/geodesy-earth-iag/ | existing snapshot verified | https://web.archive.org/web/20260228024952/https://geodesy.science/geodesy-earth-iag/ |
+| https://geodesy.science/about-geodesy/ | existing snapshot verified | https://web.archive.org/web/20260609200317/https://geodesy.science/about-geodesy/ |
+| https://link.springer.com/journal/190/aims-and-scope | existing snapshot verified | https://web.archive.org/web/20260610101028/https://link.springer.com/journal/190/aims-and-scope |
+| https://www.tudelft.nl/en/ceg | existing snapshot verified | https://web.archive.org/web/20260603160034/https://www.tudelft.nl/en/ceg/ |
+| https://www.tudelft.nl/citg/over-faculteit/afdelingen/geoscience-remote-sensing | existing snapshot verified | https://web.archive.org/web/20240817161830/https://www.tudelft.nl/citg/over-faculteit/afdelingen/geoscience-remote-sensing |
+| https://www.iugg.org/iag/ | existing snapshot verified | https://web.archive.org/web/20051125121805/http://www.iugg.org/iag |
+| https://www.iugg.org/ | existing snapshot verified | https://web.archive.org/web/20260509224440/https://iugg.org/ |
+| https://link.springer.com/journal/40328/aims-and-scope | existing snapshot verified | https://web.archive.org/web/20250928011138/https://link.springer.com/journal/40328/aims-and-scope |
+

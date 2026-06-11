@@ -38,7 +38,7 @@ the grounding report).
 
 ### SPN results — final ledger (3 passes + existing-snapshot fallback, 2026-06-11)
 
-**46/48 archived (95.8%)**: 37 fresh SPN saves across three throttle-separated passes + 9 §8 existing-snapshot substitutes (each verified as a real `web/<timestamp>/` redirect; save-prompt redirects were correctly rejected as non-snapshots). 2 × [SPN-FAILED] → next-session retry queue (Q11315305 EntityData; id.loc.gov QC20 — its QC19.2-QC20.85 label is quoted verbatim in the edge-batch records as the textual fallback). Wikidata observed states are independently pinned by `wikidata_lastrevid` in the grounding report. The QC19.2-QC20.85 record URL (edge batch) is included in this ledger.
+**48/48 archived (100% — the 2 retry-queue items were archived by the session-#12 retry pass; ledger rows updated in place)**; original pass was 46/48 (95.8%): 37 fresh SPN saves across three throttle-separated passes + 9 §8 existing-snapshot substitutes (each verified as a real `web/<timestamp>/` redirect; save-prompt redirects were correctly rejected as non-snapshots). 2 × [SPN-FAILED] → next-session retry queue (Q11315305 EntityData; id.loc.gov QC20 — its QC19.2-QC20.85 label is quoted verbatim in the edge-batch records as the textual fallback). Wikidata observed states are independently pinned by `wikidata_lastrevid` in the grounding report. The QC19.2-QC20.85 record URL (edge batch) is included in this ledger.
 
 | URL | status | snapshot / note |
 |---|---|---|
@@ -58,7 +58,7 @@ the grounding report).
 | https://www.wikidata.org/wiki/Special:EntityData/Q7100.json | archived (SPN) | https://web.archive.org/web/20260611054553/https://www.wikidata.org/wiki/Special:EntityData/Q7100.json |
 | https://www.wikidata.org/wiki/Special:EntityData/Q1985198.json | archived (SPN) | https://web.archive.org/web/20260611055630/https://www.wikidata.org/wiki/Special:EntityData/Q1985198.json |
 | https://www.wikidata.org/wiki/Special:EntityData/Q492496.json | archived (SPN) | https://web.archive.org/web/20260611054639/https://www.wikidata.org/wiki/Special:EntityData/Q492496.json |
-| https://www.wikidata.org/wiki/Special:EntityData/Q11315305.json | **[SPN-FAILED]** | repeated save_http=520 + no existing snapshot (save-prompt redirect) — next-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q11315305.json | archived (SPN — session #12 retry) | https://web.archive.org/web/20260611075836/https://www.wikidata.org/wiki/Special:EntityData/Q11315305.json |
 | https://www.wikidata.org/wiki/Special:EntityData/Q2346.json | archived (SPN) | https://web.archive.org/web/20260611054725/https://www.wikidata.org/wiki/Special:EntityData/Q2346.json |
 | https://www.wikidata.org/wiki/Special:EntityData/Q11165.json | archived (SPN) | https://web.archive.org/web/20260611055744/https://www.wikidata.org/wiki/Special:EntityData/Q11165.json |
 | https://www.wikidata.org/wiki/Special:EntityData/Q11351.json | archived (SPN) | https://web.archive.org/web/20260611061428/https://www.wikidata.org/wiki/Special:EntityData/Q11351.json |
@@ -89,4 +89,4 @@ the grounding report).
 | https://id.loc.gov/authorities/classification/QD380.json | archived (SPN) | https://web.archive.org/web/20260611060825/https://id.loc.gov/authorities/classification/QD380.json |
 | https://physh.org/disciplines | existing snapshot verified | https://web.archive.org/web/20251019000706/https://physh.org/disciplines |
 | https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp | existing snapshot verified | https://web.archive.org/web/20260611023459/https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp |
-| https://id.loc.gov/authorities/classification/QC20.json | **[SPN-FAILED]** | save throttled + no existing snapshot (save-prompt redirect rejected) — next-session retry queue; QC19.2-QC20.85 label quoted verbatim in edge-batch records |
+| https://id.loc.gov/authorities/classification/QC20.json | archived (SPN — session #12 retry) | https://web.archive.org/web/20260611075859/https://id.loc.gov/authorities/classification/QC20.json |
