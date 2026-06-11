@@ -2272,9 +2272,9 @@
     "note": "Promoted 2026-06-11: clause-6 vitality research resolved the node's last flag as consensus (established) — no gate-grade source files cybernetics as historical; the systems-science placement was already unopposed (IEEE SMC, ISSS, UDC 007, LCC Q300-390). Endpoint cap lifted; grounding complete since skeleton-part-of-edges-v1. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
   },
   {
-    "id": "edge:operations-research-part-of-engineering-and-technology",
+    "id": "edge:operations-research-part-of-industrial-engineering",
     "source": "subfield:operations-research",
-    "target": "domain:engineering-and-technology",
+    "target": "field:industrial-engineering",
     "relation": "part_of",
     "confidence": 0.7,
     "status": "reviewed",
@@ -2288,7 +2288,7 @@
       "proposed_at": "2026-06-11"
     },
     "disputed": true,
-    "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): engineering membership of operations research, co-equal with edge:operations-research-part-of-mathematics. Grounding (live 2026-06-11): LCC T57-T57.97 'Applied mathematics. Quantitative methods' under Technology--Industrial engineering (id.loc.gov authority record); NSF funds OR as 'Operations Engineering' under its Engineering directorate (nsf.gov/funding/opportunities/oe-operations-engineering); institutional homes are engineering schools (Cornell ORIE, duffield.cornell.edu/orie/about; Berkeley IEOR, ieor.berkeley.edu/about/what-is-ieor). Minority position (permanent): the own-discipline framing — Britannica 'operations research is not a science itself but rather the application of science' (britannica.com/topic/operations-research), EURO and INFORMS positioning OR as its own multidisciplinary practice — contests subordination to any single parent. No education/field-level engineering subtarget exists; targets the domain per §12 (edge depth is free). Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
+    "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): engineering membership of operations research, co-equal with edge:operations-research-part-of-mathematics. Grounding (live 2026-06-11): LCC T57-T57.97 'Applied mathematics. Quantitative methods' under Technology--Industrial engineering (id.loc.gov authority record); NSF funds OR as 'Operations Engineering' under its Engineering directorate (nsf.gov/funding/opportunities/oe-operations-engineering); institutional homes are engineering schools (Cornell ORIE, duffield.cornell.edu/orie/about; Berkeley IEOR, ieor.berkeley.edu/about/what-is-ieor). Minority position (permanent): the own-discipline framing — Britannica 'operations research is not a science itself but rather the application of science' (britannica.com/topic/operations-research), EURO and INFORMS positioning OR as its own multidisciplinary practice — contests subordination to any single parent. No education/field-level engineering subtarget exists; targets the domain per §12 (edge depth is free). Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md. || Re-target executed 2026-06-11 (session #13c, mathematics-education/quantum-computing precedent): the anticipated field-level subtarget now exists (field:industrial-engineering, PR #88). Containment live-verified at the authority-record level: T57.6-T57.97 'Operations research. Systems analysis' sits inside T55.4-T60.8 'Industrial engineering' (id.loc.gov, 2026-06-11); the edge's prior grounding already cited Cornell ORIE / Berkeley IEOR — Industrial Engineering and Operations Research departments. Disputed flag (permanent minority position) and confidence preserved. Review record: foundry/proposals/engineering-technology-part-of-edges-v1/qc-report.md."
   },
   {
     "id": "edge:control-theory-part-of-engineering-and-technology",
@@ -2306,7 +2306,7 @@
       "model_version": "claude-fable-5",
       "proposed_at": "2026-06-11"
     },
-    "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): engineering membership of control theory, co-equal with edge:control-theory-part-of-mathematics. Grounding (live 2026-06-11): LCC TJ212-TJ225 'Control engineering systems. Automatic machinery (General)' under TJ Mechanical engineering and machinery (id.loc.gov; the same authority record cross-references QA402.3-QA402.37 'Control theory (General and linear)' — LCC maintains both homes in one record); Britannica files control systems under technology (britannica.com/technology/control-system); institutional pattern is engineering (MIT 6.241J offered by EECS+Aero, ocw.mit.edu; Imperial Control and Power group in EE, imperial.ac.uk); IFAC frames the field as 'the science and technology of control' (ifac-control.org/about/aims). Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
+    "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): engineering membership of control theory, co-equal with edge:control-theory-part-of-mathematics. Grounding (live 2026-06-11): LCC TJ212-TJ225 'Control engineering systems. Automatic machinery (General)' under TJ Mechanical engineering and machinery (id.loc.gov; the same authority record cross-references QA402.3-QA402.37 'Control theory (General and linear)' — LCC maintains both homes in one record); Britannica files control systems under technology (britannica.com/technology/control-system); institutional pattern is engineering (MIT 6.241J offered by EECS+Aero, ocw.mit.edu; Imperial Control and Power group in EE, imperial.ac.uk); IFAC frames the field as 'the science and technology of control' (ifac-control.org/about/aims). Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md. || Re-target review 2026-06-11 (session #13c): STAYS domain-direct. LCC nests TJ212-225 in TJ (mechanical wing); UDC 681.5 'Automatic control technology. Smart technology' files in class 68 (precision-instruments/manufacturing wing); institutional homes span EE (already recorded above). Three-way wing split -> contradiction-nesting rule -> domain-direct is the correct flatten. Review record: foundry/proposals/engineering-technology-part-of-edges-v1/qc-report.md."
   },
   {
     "id": "edge:mathematics-education-part-of-social-sciences",
@@ -5566,5 +5566,599 @@
       "proposed_at": "2026-06-11"
     },
     "note": "§13 social-sciences-continent candidate noted. Confidence reduced to reflect the multi-home contest. Capped at proposed (endpoint node is proposed — B-flag, clause-6/v1.1 queue)."
+  },
+  {
+    "id": "edge:civil-engineering-part-of-engineering-and-technology",
+    "source": "field:civil-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TA1-2040 'Engineering (General). Civil engineering (General)' — own subclass in class T Technology (captured baseline 2026-06-11). UDC 624 'Civil and structural engineering in general' — direct top-level notation under UDC 62 Engineering (captured baseline 2026-06-11). OECD FORD 2.1 'Civil engineering' — section 2 Engineering and Technology (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:electrical-engineering-part-of-engineering-and-technology",
+    "source": "field:electrical-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TK1-9971 'Electrical engineering. Electronics. Nuclear engineering' — own subclass in class T (captured baseline 2026-06-11). UDC 621.3 'Electrical engineering' — subdivision of UDC 621, which is itself a direct top-level notation under 62 (captured baseline 2026-06-11). OECD FORD 2.2 'Electrical engineering, Electronic engineering, Information engineering' — section 2 (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:mechanical-engineering-part-of-engineering-and-technology",
+    "source": "field:mechanical-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TJ1-1570 'Mechanical engineering and machinery' — own subclass in class T (captured baseline 2026-06-11). UDC 621 'Mechanical engineering in general. Nuclear technology. Electrical engineering. Machinery' — direct top-level notation under UDC 62 (captured baseline 2026-06-11). OECD FORD 2.3 'Mechanical engineering' — section 2 (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:chemical-engineering-part-of-engineering-and-technology",
+    "source": "field:chemical-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TP155-156 'Chemical engineering' within LCC TP 'Chemical technology' — named range in class T (captured baseline 2026-06-11). UDC 66 'Chemical technology. Chemical and related industries' with 66.01/.09 'Special auxiliary subdivision for chemical engineering' including 66.01 'Fundamentals of chemical engineering' — direct top-level notation under UDC 6 Applied Sciences (captured baseline 2026-06-11). OECD FORD 2.4 'Chemical engineering' — section 2 (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:materials-science-and-engineering-part-of-engineering-and-technology",
+    "source": "field:materials-science-and-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TA401-492 'Materials of engineering and construction. Mechanics of materials' — named range within TA subclass (captured baseline 2026-06-11). UDC 620 'Materials testing. Commercial materials. Power stations. Economics of energy' — direct top-level notation under UDC 62 (captured baseline 2026-06-11). OECD FORD 2.5 'Materials engineering' — section 2 (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:environmental-engineering-part-of-engineering-and-technology",
+    "source": "field:environmental-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TD1-1066 'Environmental technology. Sanitary engineering' — own subclass in class T (captured baseline 2026-06-11). UDC 628 'Public health engineering. Water. Sanitation. Illuminating engineering' — direct top-level notation under UDC 62 (captured baseline 2026-06-11). OECD FORD 2.7 'Environmental engineering' — section 2 (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:aerospace-engineering-part-of-engineering-and-technology",
+    "source": "field:aerospace-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TL500-777 'Aeronautics. Aeronautical engineering' and TL787-4050 'Astronautics. Space travel' within LCC subclass TL (captured baseline 2026-06-11). UDC 629.7 'Air and space transport engineering. Aeronautics and aircraft. Rockets and missiles. Astronautics and spacecraft' — subdivision of UDC 629 (Transport vehicle engineering), which is a direct top-level notation under UDC 62 (captured baseline 2026-06-11). OECD FORD 2.3 'Mechanical engineering' bundles aerospace but named institutional independence applies (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:industrial-engineering-part-of-engineering-and-technology",
+    "source": "field:industrial-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC T55.4-60.8 'Industrial engineering. Management engineering' — named range within LCC T (Technology General), confirmed as an authoritative named division at id.loc.gov (live-verified 2026-06-11 per QC ruling in skeleton batch) (captured baseline 2026-06-11). UDC 658.5 'Production engineering and planning. Design. Production management and control' — subdivision within UDC 658 Business management, which is under UDC 65 (captured baseline 2026-06-11). OECD FORD 2.11 'Other engineering and technologies' — section 2 (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:biotechnology-part-of-engineering-and-technology",
+    "source": "field:biotechnology",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 60 'Biotechnology' — own top-level class directly under UDC class 6 Applied Sciences (with subdivisions 601, 602, 604, 606, 608) (captured baseline 2026-06-11). LCC TP248.13-248.65 'Biotechnology' within LCC TP 'Chemical technology' — named range in class T (captured baseline 2026-06-11). OECD FORD 2.8 'Environmental biotechnology' and 2.9 'Industrial biotechnology' — both in section 2 (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:biomedical-engineering-part-of-engineering-and-technology",
+    "source": "field:biomedical-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TA164 'Bioengineering' within LCC TA — named entry in class T engineering subclass (captured baseline 2026-06-11). OECD FORD 2.6 'Medical engineering' — section 2 Engineering and Technology (captured baseline 2026-06-11). LCC R856-857 'Biomedical engineering. Electronics. Instrumentation' — medicine-class co-home (live-verified by QC ruling in skeleton batch, 2026-06-11). || Status-capped at proposed: the source node is proposed (B-flag clause-6 contest or QID gap) — cap clause; the cap lifts with the node's resolution. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): status-capped at promotion (source node proposed, B-flag clause-6 queue); the medicine-side section-13 candidate resolves with the node contest."
+  },
+  {
+    "id": "edge:structural-engineering-part-of-civil-engineering",
+    "source": "subfield:structural-engineering",
+    "target": "field:civil-engineering",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TA630-695 'Structural engineering (General)' — range within LCC TA (civil engineering subclass), establishing structural engineering as a subdivision of the TA civil-engineering class (captured baseline 2026-06-11). UDC 624 'Civil and structural engineering in general' — UDC 624 co-names civil and structural engineering at the same notation level (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:geotechnical-engineering-part-of-civil-engineering",
+    "source": "subfield:geotechnical-engineering",
+    "target": "field:civil-engineering",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TA703-712 'Engineering geology. Rock mechanics. Soil mechanics. Underground construction' and TA715-787 'Earthwork. Foundations' — ranges within LCC TA (civil engineering subclass) (captured baseline 2026-06-11). UDC 624.1 'Substructures. Earthworks. Foundations. Tunnelling' — subdivision of UDC 624 'Civil and structural engineering' (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:transportation-engineering-part-of-civil-engineering",
+    "source": "subfield:transportation-engineering",
+    "target": "field:civil-engineering",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TA1001-1280 'Transportation engineering' — range within LCC TA (civil engineering subclass) (captured baseline 2026-06-11). UDC 625 'Civil engineering of land transport. Railway engineering. Highway engineering' — the UDC caption co-names 'Civil engineering' as the parent context for land transport engineering (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:hydraulic-engineering-part-of-engineering-and-technology",
+    "source": "subfield:hydraulic-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TC1-978 'Hydraulic engineering' — own LCC subclass (TC), separate from TA (civil engineering), at the same level as TA, TJ, TK etc. in class T (captured baseline 2026-06-11). UDC 626/627 'Hydraulic engineering and construction. Water (aquatic) structures' — direct top-level notation under UDC 62, a peer of 624 (civil), 621 (mechanical), 622 (mining) (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:construction-engineering-part-of-engineering-and-technology",
+    "source": "subfield:construction-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TH1-9745 'Building construction' — own LCC subclass (TH), separate from TA (civil engineering), at the same level as TA, TJ, TK etc. in class T (captured baseline 2026-06-11). UDC 69 'Building (construction) trade. Building materials. Building practice and procedure' — direct top-level notation under UDC class 6 Applied Sciences, a peer of 62 (engineering) rather than a subdivision of any single engineering field (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:naval-architecture-and-marine-engineering-part-of-engineering-and-technology",
+    "source": "subfield:naval-architecture-and-marine-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 629.5 'Watercraft engineering. Marine engineering. Boats. Ships. Boatbuilding and shipbuilding' — subdivision of UDC 629 (Transport vehicle engineering), which is a direct top-level notation under UDC 62 (captured baseline 2026-06-11). LCC VM1-989 'Naval architecture. Shipbuilding. Marine engineering' — own LCC subclass VM in class V (Naval science), live-verified by QC ruling in skeleton batch (2026-06-11); class V is out-of-gate for the engineering-and-technology continent. || Status-capped at proposed: the source node is proposed (B-flag clause-6 contest or QID gap) — cap clause; the cap lifts with the node's resolution. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): parenthetical corrected — LCC class V is Naval science (class U is Military science; lcco_v.pdf title line, live). Flatten upheld: no gate scheme nests the combined referent under any engineering field. Status-capped (source node proposed, QID gap)."
+  },
+  {
+    "id": "edge:telecommunications-engineering-part-of-electrical-engineering",
+    "source": "subfield:telecommunications-engineering",
+    "target": "field:electrical-engineering",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TK5101-6720 'Telecommunication' — range within LCC TK 'Electrical engineering. Electronics. Nuclear engineering' (captured baseline 2026-06-11). UDC 654 'Telecommunication and telecontrol (organization, services)' — within UDC 65 Communication and transport industries (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:computer-engineering-part-of-electrical-engineering",
+    "source": "subfield:computer-engineering",
+    "target": "field:electrical-engineering",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TK7885-7895 'Computer engineering. Computer hardware' — range within LCC TK 'Electrical engineering. Electronics. Nuclear engineering', live-verified as 'Computer engineering. Computer hardware' at id.loc.gov (per QC ruling in skeleton batch, 2026-06-11) (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:nuclear-engineering-part-of-engineering-and-technology",
+    "source": "subfield:nuclear-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TK9001-9401 'Nuclear engineering. Atomic power' — range within LCC TK 'Electrical engineering. Electronics. Nuclear engineering' (captured baseline 2026-06-11). UDC 621 caption 'Mechanical engineering in general. Nuclear technology. Electrical engineering. Machinery' — UDC 621 co-names nuclear technology alongside mechanical and electrical at the same notation level (captured baseline 2026-06-11). UDC 621.039 for nuclear engineering sub-notation absent at UDC Summary granularity (live-verified absence per QC ruling in skeleton batch, 2026-06-11). || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): flatten UPHELD on the contradiction reading — consistency with the node-batch criterion-(a) ruling requires treating the UDC 621 caption co-naming of nuclear technology as UDC presence in the 621 (mechanical-general) wing; LCC nests TK9001-9401 in TK (electrical wing). Scheme-vs-scheme wing contradiction -> flatten to domain."
+  },
+  {
+    "id": "edge:robotics-part-of-mechanical-engineering",
+    "source": "subfield:robotics",
+    "target": "field:mechanical-engineering",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TJ210.2-211.47 'Mechanical devices and figures. Automata. Ingenious mechanisms. Robots (General)' — range within LCC TJ 'Mechanical engineering and machinery' (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:manufacturing-engineering-part-of-engineering-and-technology",
+    "source": "subfield:manufacturing-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TS1-2301 'Manufactures' — own LCC subclass (TS), separate from TJ (mechanical), TK (electrical), TA (civil) etc. in class T (captured baseline 2026-06-11). UDC 67 'Various industries, trades and crafts' and UDC 68 'Industries, crafts and trades for finished or assembled articles' — direct top-level notations under UDC class 6 Applied Sciences, peers of UDC 62 (engineering) rather than subdivisions of it (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:metallurgy-part-of-engineering-and-technology",
+    "source": "subfield:metallurgy",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TN600-799 'Metallurgy' — range within LCC TN 'Mining engineering. Metallurgy' (combined subclass, nesting metallurgy inside mining-plus-metallurgy, not inside materials science) (captured baseline 2026-06-11). UDC 669 'Metallurgy' — direct top-level notation within UDC 66 'Chemical technology. Chemical and related industries' (captured baseline 2026-06-11). UDC getrecord id=669 confirms: parent class 66 Chemical technology (captured baseline 2026-06-11). Community: TMS (The Minerals, Metals and Materials Society) — materials-science institutional home. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): flatten UPHELD; the materials-side section-13 candidate FAILS the evidence gate for now — section 13 requires externally-sourced classification grounding per membership, and neither UDC 669 nor LCC TN600-799 nests under the materials anchors (620 / TA401-492); community housing alone cannot create a membership (anti-spam guard). Recorded-not-written."
+  },
+  {
+    "id": "edge:mining-engineering-part-of-engineering-and-technology",
+    "source": "subfield:mining-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TN1-997 'Mining engineering. Metallurgy' — own LCC subclass (TN) in class T (captured baseline 2026-06-11). UDC 622 'Mining' — direct top-level notation under UDC 62, a peer of 621 (mechanical), 624 (civil), 626/627 (hydraulic) (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:petroleum-engineering-part-of-chemical-engineering",
+    "source": "subfield:petroleum-engineering",
+    "target": "field:chemical-engineering",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TP690-692.5 'Petroleum refining. Petroleum products' — range within LCC TP 'Chemical technology' (captured baseline 2026-06-11). UDC 665.6 'Mineral oil technology. Technology of petroleum and allied products' — subdivision of UDC 665, which is within UDC 66 'Chemical technology. Chemical and related industries' (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:nanotechnology-part-of-materials-science-and-engineering",
+    "source": "subfield:nanotechnology",
+    "target": "field:materials-science-and-engineering",
+    "relation": "part_of",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 620.3 'Nanotechnology' — subdivision of UDC 620 'Materials testing. Commercial materials. Power stations. Economics of energy' (captured baseline 2026-06-11). UDC 620 is the primary classification anchor for field:materials-science-and-engineering (per skeleton proposal). OECD FORD 2.10 'Nano-technology' — section 2 (captured baseline 2026-06-11). || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): nest UPHELD — UDC 620.3 sits inside 620, the materials anchor (un-contradicted gate-scheme nesting); FORD 2.10 being a sibling division of FORD 2.5 does not contradict, because FORD is the continent cross-check, not a gate scheme. Precedent candidate recorded in qc-report."
+  },
+  {
+    "id": "edge:systems-engineering-part-of-engineering-and-technology",
+    "source": "subfield:systems-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TA168 'Systems engineering' — entry within LCC TA 'Engineering (General). Civil engineering (General)' (captured baseline 2026-06-11). Note: TA is a dual-labeled subclass combining Engineering General with Civil Engineering — TA168 is in the general-engineering portion of TA, not the civil-specific portion. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): flatten UPHELD — TA168 is a single shelving entry in the general-engineering portion of TA, and library shelving that scatters (or co-locates) books is not a hierarchy claim (ASL-pillar precedent, applied in the flatten direction); INCOSE community is cross-disciplinary. Domain-direct stands."
+  },
+  {
+    "id": "edge:geomatics-part-of-civil-engineering",
+    "source": "subfield:geomatics",
+    "target": "field:civil-engineering",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TA501-625 'Surveying' — range within LCC TA 'Engineering (General). Civil engineering (General)', in the civil-specific portion of TA (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:photonics-part-of-engineering-and-technology",
+    "source": "subfield:photonics",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TA1501-1820 'Applied optics. Photonics' — range within LCC TA 'Engineering (General). Civil engineering (General)' (captured baseline 2026-06-11). UDC 681.7 'Optical apparatus and instruments' — subdivision within UDC 681 'Precision mechanisms and instruments', within UDC 68 'Industries, crafts and trades for finished or assembled articles' — top-level class-6 notation separate from UDC 62 (engineering) (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:automotive-engineering-part-of-engineering-and-technology",
+    "source": "subfield:automotive-engineering",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TL1-484 'Motor vehicles. Cycles' — range within LCC TL 'Motor vehicles. Aeronautics. Astronautics', own LCC subclass (TL), separate from TJ (mechanical engineering), in class T (captured baseline 2026-06-11). UDC 629.3 'Land vehicle engineering (excluding rail vehicles)' — subdivision of UDC 629 'Transport vehicle engineering', which is a direct top-level notation under UDC 62 (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:textile-engineering-part-of-manufacturing-engineering",
+    "source": "subfield:textile-engineering",
+    "target": "subfield:manufacturing-engineering",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TS1300-1865 'Textile industries' — range within LCC TS 'Manufactures' (the manufacturing-engineering LCC anchor subclass) (captured baseline 2026-06-11). UDC 677 'Textile industry' — direct top-level notation within UDC 67 'Various industries, trades and crafts' (the UDC 67/68 manufacturing-engineering anchor) (captured baseline 2026-06-11). || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): deep nest ACCEPTED (ASL-pillar depth pattern) — both gate schemes nest textile inside the manufacturing wing (TS1300-1865 within TS; UDC 677 within 67); the flat rule governs node levels, not edge depth."
+  },
+  {
+    "id": "edge:food-engineering-part-of-chemical-engineering",
+    "source": "subfield:food-engineering",
+    "target": "field:chemical-engineering",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC TP368-456 'Food processing and manufacture' — range within LCC TP 'Chemical technology' (the chemical-engineering LCC anchor) (captured baseline 2026-06-11). UDC 664 'Production and preservation of solid foodstuffs' — direct top-level notation within UDC 66 'Chemical technology. Chemical and related industries' (the chemical-engineering UDC anchor) (captured baseline 2026-06-11). || Status-capped at proposed: the source node is proposed (B-flag clause-6 contest or QID gap) — cap clause; the cap lifts with the node's resolution. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): status-capped at promotion (source node proposed, B-flag clause-6 queue). Nest itself is unanimous (TP368-456 + UDC 664 both inside the chemical wing) — the cap is about the node contest, not this placement."
   }
 ]
