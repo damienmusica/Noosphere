@@ -46,8 +46,7 @@
     {
       "label": "Environmental Science",
       "expected_node_id": "field:environmental-science",
-      "expected_type": "field",
-      "notes": "Level question pre-registered for QC: UDC 502/504 sits directly under class 5 and FORD 1.5 bundles it with earth sciences; LCC home is GE (class G). Field vs subfield-of-earth-sciences is a section-12 dual-criterion call."
+      "expected_type": "field"
     },
     {
       "label": "Condensed Matter Physics",
@@ -62,8 +61,7 @@
     {
       "label": "Optics",
       "expected_node_id": "subfield:optics",
-      "expected_type": "subfield",
-      "notes": "Overlap with AMO physics pre-registered for QC (LCC QC350-467 and UDC 535 give optics its own division; PhySH folds it into Atomic, Molecular & Optical)."
+      "expected_type": "subfield"
     },
     {
       "label": "Nuclear Physics",
@@ -86,10 +84,9 @@
       "expected_type": "subfield"
     },
     {
-      "label": "Statistical Physics",
+      "label": "Statistical Physics and Thermodynamics",
       "expected_node_id": "subfield:statistical-physics",
-      "expected_type": "subfield",
-      "notes": "PhySH discipline is Statistical Physics & Thermodynamics; whether thermodynamics is absorbed here is a generator/QC call under the absorption rule."
+      "expected_type": "subfield"
     },
     {
       "label": "Acoustics",
@@ -99,38 +96,22 @@
     {
       "label": "Biophysics",
       "expected_node_id": "subfield:biophysics",
-      "expected_type": "subfield",
-      "notes": "Cross-continent test pre-registered: PhySH Physics of Living Systems supports in-continent standing; LCC files biophysics at QH505 (biology class). Apply the section-12 two-prong rule."
-    },
-    {
-      "label": "Medical Physics",
-      "expected_node_id": "subfield:medical-physics",
-      "expected_type": "subfield",
-      "notes": "Cross-continent test pre-registered: PhySH discipline, but LCC home R895 and institutional home are medical (biostatistics precedent candidate)."
+      "expected_type": "subfield"
     },
     {
       "label": "Nonlinear Dynamics",
       "expected_node_id": "subfield:nonlinear-dynamics",
-      "expected_type": "subfield",
-      "notes": "PhySH discipline; classification presence outside PhySH is thin (chaos theory files under QA math) — dual-criterion test."
-    },
-    {
-      "label": "Quantum Information Science",
-      "expected_node_id": "subfield:quantum-information-science",
-      "expected_type": "subfield",
-      "notes": "Must reconcile against existing subfield:quantum-computing (CS continent, natural-sciences membership) — distinct node only if the broader QIS identity (communication, sensing, foundations) passes the dual criterion independently; otherwise record as deliberate non-coverage."
+      "expected_type": "subfield"
     },
     {
       "label": "Accelerator Physics",
       "expected_node_id": "subfield:accelerator-physics",
-      "expected_type": "subfield",
-      "notes": "PhySH Accelerators & Beams; LCC/UDC presence thin — dual-criterion test."
+      "expected_type": "subfield"
     },
     {
       "label": "Soft Matter Physics",
       "expected_node_id": "subfield:soft-matter-physics",
-      "expected_type": "subfield",
-      "notes": "PhySH Polymers & Soft Matter; absorption into condensed matter is the open question."
+      "expected_type": "subfield"
     },
     {
       "label": "Analytical Chemistry",
@@ -155,32 +136,17 @@
     {
       "label": "Biochemistry",
       "expected_node_id": "subfield:biochemistry",
-      "expected_type": "subfield",
-      "notes": "Cross-continent test pre-registered: LCC QD415-436 keeps a chemistry home (in-continent) while institutional homes often sit in life-science faculties — two-prong rule decides; record the boundary either way."
+      "expected_type": "subfield"
     },
     {
       "label": "Crystallography",
       "expected_node_id": "subfield:crystallography",
-      "expected_type": "subfield",
-      "notes": "Own divisions in both gate schemes (LCC QD901-999, UDC 548) and an IUCr-anchored community; parent question (chemistry vs physics) is for the edge batch, not this one."
+      "expected_type": "subfield"
     },
     {
       "label": "Electrochemistry",
       "expected_node_id": "subfield:electrochemistry",
-      "expected_type": "subfield",
-      "notes": "Absorption test against physical chemistry (LCC QD552-585 is a subdivision)."
-    },
-    {
-      "label": "Polymer Chemistry",
-      "expected_node_id": "subfield:polymer-chemistry",
-      "expected_type": "subfield",
-      "notes": "Absorption/materials-boundary test."
-    },
-    {
-      "label": "Computational Chemistry",
-      "expected_node_id": "subfield:computational-chemistry",
-      "expected_type": "subfield",
-      "notes": "Absorption test against physical/theoretical chemistry."
+      "expected_type": "subfield"
     },
     {
       "label": "Astrophysics",
@@ -215,20 +181,17 @@
     {
       "label": "Mineralogy",
       "expected_node_id": "subfield:mineralogy",
-      "expected_type": "subfield",
-      "notes": "Dual filing pre-registered: UDC keeps mineralogy in class 54 (chemistry/crystallography wing) while LCC files it at QE351-399 (geology) — section-12/13 handling at QC."
+      "expected_type": "subfield"
     },
     {
       "label": "Petrology",
       "expected_node_id": "subfield:petrology",
-      "expected_type": "subfield",
-      "notes": "Absorption test against geology."
+      "expected_type": "subfield"
     },
     {
       "label": "Paleontology",
       "expected_node_id": "subfield:paleontology",
-      "expected_type": "subfield",
-      "notes": "UDC gives it its own class 56; LCC files it inside QE701-760. Biology boundary recorded but both classification homes are in-continent."
+      "expected_type": "subfield"
     },
     {
       "label": "Seismology",
@@ -238,44 +201,37 @@
     {
       "label": "Volcanology",
       "expected_node_id": "subfield:volcanology",
-      "expected_type": "subfield",
-      "notes": "Dual-criterion test (LCC QE521-545 bundles volcanoes and earthquakes; community standing via IAVCEI)."
+      "expected_type": "subfield"
     },
     {
       "label": "Oceanography",
       "expected_node_id": "subfield:oceanography",
-      "expected_type": "subfield",
-      "notes": "Cross-continent test pre-registered: LCC home GC sits in class G while UDC 551.46 and FORD 1.5 keep it with earth sciences; institutional home (Scripps/WHOI pattern) is geoscience."
+      "expected_type": "subfield"
     },
     {
       "label": "Atmospheric Science",
       "expected_node_id": "subfield:atmospheric-science",
-      "expected_type": "subfield",
-      "notes": "Dual filing pre-registered: LCC files meteorology/climatology at QC851-999 (physics class) while UDC 551.5/551.58 files them under 55 — modern department naming is atmospheric science."
-    },
-    {
-      "label": "Climatology",
-      "expected_node_id": "subfield:climatology",
-      "expected_type": "subfield",
-      "notes": "Absorption test against atmospheric science."
+      "expected_type": "subfield"
     },
     {
       "label": "Hydrology",
       "expected_node_id": "subfield:hydrology",
-      "expected_type": "subfield",
-      "notes": "Cross-continent test pre-registered: LCC home GB (class G) vs UDC 556 in-continent."
+      "expected_type": "subfield"
     },
     {
       "label": "Geomorphology",
       "expected_node_id": "subfield:geomorphology",
-      "expected_type": "subfield",
-      "notes": "Dual-criterion and class-G test (UDC 551.4; LCC GB400s)."
+      "expected_type": "subfield"
     },
     {
       "label": "Geodesy",
       "expected_node_id": "subfield:geodesy",
-      "expected_type": "subfield",
-      "notes": "Cross-continent test pre-registered: LCC QB275-343 and UDC 528 are in-continent (astronomy wing) but the dominant institutional home is geomatics/civil engineering."
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Quantum Information Science",
+      "expected_node_id": "subfield:quantum-information-science",
+      "expected_type": "subfield"
     }
   ],
   "allowed_public_sources": [
@@ -335,6 +291,7 @@
     "Coverage baseline for generation/QC: LCC class Q outline (QB/QC/QD/QE; outline PDF + id.loc.gov authority records for cutter-level checks), UDC class 5 (52-56 plus 502/504 via the UDC Summary getrecord endpoint), OECD FORD section 1 (1.3/1.4/1.5/1.7; arrs.si mirror), and PhySH (physh.org, CC0, JSON API) ratified as the continent's discipline-specific granularity reference for physics subfields (ACM CCS precedent, section-12 source interpretation 2026-06-11) — its 18 disciplines are subfield-granularity references; its 461 concepts sit below skeleton granularity. MSC 2020 and the arXiv category taxonomy stay auxiliary cross-checks. All four baseline sources were live-captured by the orchestrator on 2026-06-11 before this manifest was written.",
     "docs/data-foundry.md section 12 (including its precedent log) is a mandatory input to the generation order (promotion policy v1.3); section 13 governs any multi-membership question raised during QC.",
     "Pre-registered structural questions for QC: (1) biology boundary — life-sciences domain key exists; bioinformatics-to-life-sciences precedent inherited; (2) no duplicate generation for mathematics (formal sciences) or CIS (existing domain) despite UDC 5/FORD 1 filings; (3) dual-filed boundary areas flagged per seed notes (atmospheric science, mineralogy, biochemistry, geodesy, oceanography, hydrology, geomorphology, environmental science level, biophysics, medical physics); (4) quantum-information-science must reconcile against the existing quantum-computing node; (5) post-skeleton re-target triggers recorded in the session order: quantum-computing's domain-direct membership edge re-targets to field:physics once the continent lands, and mathematical-physics's minority-side physics membership is a section-13 candidate.",
-    "/data remains the source of truth for accepted graph data."
+    "/data remains the source of truth for accepted graph data.",
+    "Seeds regenerated mechanically from the QC-passed proposal.json (41 nodes, 2026-06-11) — formal-sciences/CS precedent (PR #30, session #8). Dropped at QC: medical-physics (deferred to medicine-and-health), polymer-chemistry and computational-chemistry (absorbed, v2 re-split candidates)."
   ]
 }
