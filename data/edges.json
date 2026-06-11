@@ -1969,8 +1969,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "Clause-6 resolution 2026-06-11 (dominant position): mathematical physics stays under mathematics — Britannica ('branch of mathematical analysis'), mathematics-department housing at ETH/Columbia/Oxford/UW, MSC 81-83. Minority position (permanent): LCC files mathematical physics under Physics (QC20, id.loc.gov live); interface framing is standard. Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md.",
-    "disputed": true
+    "note": "Clause-6 resolution 2026-06-11 (dominant position): mathematical physics stays under mathematics — Britannica ('branch of mathematical analysis'), mathematics-department housing at ETH/Columbia/Oxford/UW, MSC 81-83. Minority position (permanent): LCC files mathematical physics under Physics (QC20, id.loc.gov live); interface framing is standard. Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md. || Disputed flag retired 2026-06-11 (session #11): the minority physics-side position received its own co-equal section-13 membership (edge:mathematical-physics-part-of-physics) — under the session-#7 interpretation an other-parent filing is a supporting vote for another membership, not a premise denial; no source denies the mathematics membership. Minority record above stays as permanent evidence."
   },
   {
     "id": "edge:applied-mathematics-part-of-mathematics",
@@ -2971,9 +2970,9 @@
     "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): applied-mathematics-side membership of scientific computing, co-equal with edge:scientific-computing-part-of-computer-science. Grounding (live 2026-06-11): Wikidata Q117801 P279 (subclass of) dual-files the field under applied mathematics (Q33521) AND computer science (Q21198) — structural-claim path per the random-variable P361 precedent; SIAM SIAG/CSE fosters collaboration among 'applied mathematicians, computer scientists, domain scientists and engineers' and promotes CSE 'as an academic discipline' (siam.org via Wayback 20240601); dominant math-department homes observed live (UC Davis Mathematics research group, UMD AMSC program, Rice CMOR, UChicago CCAM); NYU Courant lists Scientific Computing under both its CS and Mathematics departments (cims.nyu.edu/research, live). Journal of Scientific Computing self-describes as an 'international interdisciplinary forum' (link.springer.com/journal/10915/aims-and-scope, live) — self-standing framing recorded, no premise-denying source found, hence no disputed tag (session-#7 operational interpretation). Edge depth: subfield-to-subfield allowed (§12: the flat rule governs node levels, not edge depth). Record: foundry/proposals/cis-bflag-resolution-v1/resolution-report.md."
   },
   {
-    "id": "edge:quantum-computing-part-of-natural-sciences",
+    "id": "edge:quantum-computing-part-of-physics",
     "source": "subfield:quantum-computing",
-    "target": "domain:natural-sciences",
+    "target": "field:physics",
     "relation": "part_of",
     "confidence": 0.7,
     "status": "reviewed",
@@ -2986,6 +2985,872 @@
       "model_version": "claude-fable-5",
       "proposed_at": "2026-06-11"
     },
-    "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): physics-side membership of quantum computing, co-equal with edge:quantum-computing-part-of-computer-science. Grounding (live 2026-06-11): MSC2020 official CSV files 81P68 'Quantum computation' under top-level 81 Quantum theory, with the scope note 'For algorithmic aspects, see 68Q12' — the scheme itself partitions the referent between the physics and CS sections (msc2020.org/MSC_2020.csv); arXiv category taxonomy places quant-ph (the field's dedicated preprint category) under the Physics parent group (arxiv.org/category_taxonomy, live); institutional physics anchors observed live: Caltech IQIM is 'a National Science Foundation Physics Frontiers Center' (iqim.caltech.edu), UMD JQI is anchored in the UMD Department of Physics + NIST. Quantum journals self-describe as multi/interdisciplinary (npj Quantum Information audience spans physicists and computer scientists, live) — no premise-denying source found, hence no disputed tag. Re-target note: targets the domain directly because no physics field node exists yet in /data (mathematics-education precedent, §12/§13) — re-target to the physics field when the natural-sciences continent lands. Record: foundry/proposals/cis-bflag-resolution-v1/resolution-report.md."
+    "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): physics-side membership of quantum computing, co-equal with edge:quantum-computing-part-of-computer-science. Grounding (live 2026-06-11): MSC2020 official CSV files 81P68 'Quantum computation' under top-level 81 Quantum theory, with the scope note 'For algorithmic aspects, see 68Q12' — the scheme itself partitions the referent between the physics and CS sections (msc2020.org/MSC_2020.csv); arXiv category taxonomy places quant-ph (the field's dedicated preprint category) under the Physics parent group (arxiv.org/category_taxonomy, live); institutional physics anchors observed live: Caltech IQIM is 'a National Science Foundation Physics Frontiers Center' (iqim.caltech.edu), UMD JQI is anchored in the UMD Department of Physics + NIST. Quantum journals self-describe as multi/interdisciplinary (npj Quantum Information audience spans physicists and computer scientists, live) — no premise-denying source found, hence no disputed tag. Re-target note: targets the domain directly because no physics field node exists yet in /data (mathematics-education precedent, §12/§13) — re-target to the physics field when the natural-sciences continent lands. Record: foundry/proposals/cis-bflag-resolution-v1/resolution-report.md. || Re-target executed 2026-06-11 (session #11, recorded trigger): the natural-sciences continent landed, and field:physics is the proper field-level parent; grounding unchanged (MSC 81P68 under 81 Quantum theory; arXiv quant-ph under the Physics group; IQIM/JQI physics anchors). Previous target: domain:natural-sciences."
+  },
+  {
+    "id": "edge:chemistry-part-of-natural-sciences",
+    "source": "field:chemistry",
+    "target": "domain:natural-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 54 'Chemistry. Crystallography. Mineralogy' — own top-level class under UDC class 5 Natural Sciences (live capture 2026-06-11). LCC QD1-999 Chemistry — subclass of class Q Science (live capture 2026-06-11). OECD FORD 1.4 'Chemical sciences' — section 1 Natural Sciences (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:astronomy-part-of-natural-sciences",
+    "source": "field:astronomy",
+    "target": "domain:natural-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 52 'Astronomy. Astrophysics. Space research. Geodesy' — own top-level class under UDC class 5 (live capture 2026-06-11). LCC QB1-991 Astronomy — subclass of class Q Science (live capture 2026-06-11). OECD FORD 1.3 'Physical sciences' covers astrophysics under section 1 Natural Sciences (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:earth-sciences-part-of-natural-sciences",
+    "source": "field:earth-sciences",
+    "target": "domain:natural-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 55 'Earth Sciences. Geological sciences' — own top-level class under UDC class 5 (live capture 2026-06-11). LCC QE1-996.5 Geology — subclass of class Q Science (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' — section 1 Natural Sciences (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:environmental-science-part-of-natural-sciences",
+    "source": "field:environmental-science",
+    "target": "domain:natural-sciences",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 502/504 'Environmental science. Conservation of natural resources. Threats to the environment and protection against them' — own entry directly under UDC class 5 Natural Sciences (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' — section 1 Natural Sciences (live capture 2026-06-11). LCC home is GE (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation; this contradicts in-continent placement."
+  },
+  {
+    "id": "edge:condensed-matter-physics-part-of-physics",
+    "source": "subfield:condensed-matter-physics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 538.9 'Condensed matter physics. Solid state physics' — subdivision of UDC 53 Physics (live capture 2026-06-11). LCC QC170-197 'Atomic physics. Constitution and properties of matter (Including molecular physics, relativity, quantum theory, and solid state physics)' — within physics subclass QC (live capture 2026-06-11). PhySH discipline 'Condensed Matter, Materials & Applied Physics' — physics taxonomy gate-level scheme (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:atomic-molecular-and-optical-physics-part-of-physics",
+    "source": "subfield:atomic-molecular-and-optical-physics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC QC170-197 'Atomic physics. Constitution and properties of matter' — within physics subclass QC (live capture 2026-06-11). UDC 539.1 'Nuclear physics. Atomic physics. Molecular physics' — subdivision of UDC 53 Physics (live capture 2026-06-11). PhySH discipline 'Atomic, Molecular & Optical' — physics taxonomy (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:optics-part-of-physics",
+    "source": "subfield:optics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 535 'Optics' — own top-level entry under UDC 53 Physics (live capture 2026-06-11). LCC QC350-467 'Optics. Light' — major subdivision within physics subclass QC (live capture 2026-06-11). (PhySH bundles optics into AMO at discipline level — captured baseline 2026-06-11 — but this is scheme-level compression, not a community merger; the two gate-scheme independent major divisions take priority per §12 precedent 2026-06-11.)"
+  },
+  {
+    "id": "edge:nuclear-physics-part-of-physics",
+    "source": "subfield:nuclear-physics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 539.1 'Nuclear physics. Atomic physics. Molecular physics' — subdivision of UDC 53 Physics (live capture 2026-06-11). LCC QC770-798 'Nuclear and particle physics. Atomic energy. Radioactivity' — within physics subclass QC (live capture 2026-06-11). PhySH discipline 'Nuclear Physics' — physics taxonomy (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:particle-physics-part-of-physics",
+    "source": "subfield:particle-physics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC QC793-793.5 'Elementary particle physics' — own cutter subdivision within QC770-798 physics subclass (live capture 2026-06-11). UDC 539.1 — shared range with nuclear physics, subdivision of UDC 53 Physics (live capture 2026-06-11). PhySH discipline 'Particles & Fields' — physics taxonomy (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:plasma-physics-part-of-physics",
+    "source": "subfield:plasma-physics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 533.9 'Plasma physics' — subdivision of UDC 53 Physics (live capture 2026-06-11). LCC QC717.6-718.8 'Plasma physics. Ionized gases' — distinct range within physics subclass QC (live capture 2026-06-11). PhySH discipline 'Plasma Physics' — physics taxonomy (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:fluid-dynamics-part-of-physics",
+    "source": "subfield:fluid-dynamics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 532 'Fluid mechanics in general. Mechanics of liquids (hydromechanics)' and UDC 533.6 'Aerodynamics' — subdivisions of UDC 53 Physics (live capture 2026-06-11). LCC QC120-168.85 'Descriptive and experimental mechanics' — within physics subclass QC (live capture 2026-06-11). PhySH discipline 'Fluid Dynamics' — physics taxonomy (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:statistical-physics-part-of-physics",
+    "source": "subfield:statistical-physics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 536 'Heat. Thermodynamics. Statistical physics' — own top-level entry under UDC 53 Physics (live capture 2026-06-11). LCC QC251-338.5 'Heat' and QC310.15-319 'Thermodynamics' — within physics subclass QC (live capture 2026-06-11). PhySH discipline 'Statistical Physics & Thermodynamics' — physics taxonomy (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:acoustics-part-of-physics",
+    "source": "subfield:acoustics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 534 'Vibrations. Waves. Acoustics' — own top-level entry under UDC 53 Physics (live capture 2026-06-11). LCC QC221-246 'Acoustics. Sound' — major subdivision within physics subclass QC (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:biophysics-part-of-physics",
+    "source": "subfield:biophysics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.75,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "PhySH discipline 'Physics of Living Systems' — physics taxonomy gate-level scheme for this wing (live capture 2026-06-11). UDC 577 'Material bases of life. Biochemistry. Molecular biology. Biophysics' — under UDC 57 biology family, OUT of continent (live capture 2026-06-11). LCC QH505 biophysics — biology class, OUT of continent [training-knowledge, UNFETCHED direct LCC confirmation]."
+  },
+  {
+    "id": "edge:nonlinear-dynamics-part-of-physics",
+    "source": "subfield:nonlinear-dynamics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "PhySH discipline 'Nonlinear Dynamics' — physics taxonomy gate-level scheme (live capture 2026-06-11). LCC classification for chaos theory is QA (mathematics class) [training-knowledge, UNFETCHED direct LCC confirmation — recorded as thin in skeleton]."
+  },
+  {
+    "id": "edge:accelerator-physics-part-of-physics",
+    "source": "subfield:accelerator-physics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "PhySH discipline 'Accelerators & Beams' — physics taxonomy gate-level scheme (live capture 2026-06-11). LCC/UDC classification presence — [training-knowledge, UNFETCHED direct classification confirmation; thin in captured baseline]."
+  },
+  {
+    "id": "edge:soft-matter-physics-part-of-physics",
+    "source": "subfield:soft-matter-physics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "PhySH discipline 'Polymers & Soft Matter' — physics taxonomy gate-level scheme (live capture 2026-06-11). UDC 539.2 'Properties and structure of molecular systems' — partial overlap classification entry under UDC 53 Physics (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:quantum-information-science-part-of-physics",
+    "source": "subfield:quantum-information-science",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "PhySH discipline 'Quantum Information, Science & Technology' — physics taxonomy gate-level scheme (live capture 2026-06-11). Wikidata Q3884376 — unverified training-knowledge hint."
+  },
+  {
+    "id": "edge:analytical-chemistry-part-of-chemistry",
+    "source": "subfield:analytical-chemistry",
+    "target": "field:chemistry",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 543 'Analytical chemistry' — own top-level entry under UDC 54 Chemistry (live capture 2026-06-11). LCC QD71-142 'Analytical chemistry' — own major subdivision within chemistry subclass QD (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:inorganic-chemistry-part-of-chemistry",
+    "source": "subfield:inorganic-chemistry",
+    "target": "field:chemistry",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 546 'Inorganic chemistry' — own top-level entry under UDC 54 Chemistry (live capture 2026-06-11). LCC QD146-197 'Inorganic chemistry' — own major subdivision within chemistry subclass QD (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:organic-chemistry-part-of-chemistry",
+    "source": "subfield:organic-chemistry",
+    "target": "field:chemistry",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 547 'Organic chemistry' — own top-level entry under UDC 54 Chemistry (live capture 2026-06-11). LCC QD241-441 'Organic chemistry' — own major subdivision within chemistry subclass QD (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:physical-chemistry-part-of-chemistry",
+    "source": "subfield:physical-chemistry",
+    "target": "field:chemistry",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 544 'Physical chemistry' — own top-level entry under UDC 54 Chemistry (live capture 2026-06-11). LCC QD450-801 'Physical and theoretical chemistry' — own major subdivision within chemistry subclass QD (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:biochemistry-part-of-chemistry",
+    "source": "subfield:biochemistry",
+    "target": "field:chemistry",
+    "relation": "part_of",
+    "confidence": 0.75,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC QD415-436 'Biochemistry' — subdivision within chemistry subclass QD (live capture 2026-06-11). UDC 577 'Material bases of life. Biochemistry. Molecular biology. Biophysics' — under UDC 57 biology family, OUT of continent (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:crystallography-part-of-chemistry",
+    "source": "subfield:crystallography",
+    "target": "field:chemistry",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 548 'Crystallography' — own top-level entry under UDC 54 Chemistry. Crystallography. Mineralogy (captured baseline 2026-06-11; UDC 54 heading explicitly names crystallography as part of the chemistry class). LCC QD901-999 'Crystallography' — own major subdivision within chemistry subclass QD (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:electrochemistry-part-of-chemistry",
+    "source": "subfield:electrochemistry",
+    "target": "field:chemistry",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 544.6 'Electrochemistry' — subdivision of UDC 544 Physical chemistry under UDC 54 Chemistry (live capture 2026-06-11). LCC QD551-578 'Electrochemistry. Electrolysis' — live-verified at id.loc.gov by QC (skeleton QC 2026-06-11; original generator citation QD552-585 was corrected to QD551-578), subdivision within chemistry subclass QD (skeleton proposal.json, QC-recorded 2026-06-11)."
+  },
+  {
+    "id": "edge:astrophysics-part-of-astronomy",
+    "source": "subfield:astrophysics",
+    "target": "field:astronomy",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC QB460-466 'Astrophysics' — own range within astronomy subclass QB (live capture 2026-06-11). UDC 52 'Astronomy. Astrophysics. Space research.' — astrophysics named in class heading under UDC 52 (live capture 2026-06-11). PhySH discipline 'Gravitation, Cosmology & Astrophysics' — covers astrophysics (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:cosmology-part-of-astronomy",
+    "source": "subfield:cosmology",
+    "target": "field:astronomy",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:physh"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC QB980-991 'Cosmogony. Cosmology' — own range within astronomy subclass QB (live capture 2026-06-11). UDC 524.8 'The Universe. Metagalaxy. Cosmology' — own entry under UDC 52 Astronomy (live capture 2026-06-11). PhySH discipline 'Gravitation, Cosmology & Astrophysics' — covers cosmology (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:planetary-science-part-of-astronomy",
+    "source": "subfield:planetary-science",
+    "target": "field:astronomy",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC QB455-456 'Astrogeology' and QB500.5-785 'Solar system' — own ranges within astronomy subclass QB (live capture 2026-06-11). UDC 523.4 'Planets and their satellites. Planetology' — own entry under UDC 52 Astronomy (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:geodesy-part-of-astronomy",
+    "source": "subfield:geodesy",
+    "target": "field:astronomy",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 528 'Geodesy. Surveying. Photogrammetry. Remote sensing. Cartography' — own top-level entry under UDC 52 Astronomy. Astrophysics. Space research. Geodesy (live capture 2026-06-11). LCC QB275-343 'Geodesy' — own range within astronomy subclass QB (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:geology-part-of-earth-sciences",
+    "source": "subfield:geology",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC QE1-996.5 'Geology' — the entire QE subclass, major division within class Q Science (live capture 2026-06-11). UDC 55 'Earth Sciences. Geological sciences' — class heading names geological sciences, encompassing geology (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:geophysics-part-of-earth-sciences",
+    "source": "subfield:geophysics",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 550.3 'Geophysics' — subdivision under UDC 550 'Ancillary sciences of geology' within UDC 55 Earth Sciences (live capture 2026-06-11). LCC QC801-809 'Geophysics. Cosmic physics' — within physics subclass QC, not QE (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:geochemistry-part-of-earth-sciences",
+    "source": "subfield:geochemistry",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 550.4 'Geochemistry' — subdivision under UDC 550 'Ancillary sciences of geology' within UDC 55 Earth Sciences (live capture 2026-06-11). LCC QE515 geochemistry — training-knowledge, UNFETCHED direct LCC confirmation beyond QE subclass outline."
+  },
+  {
+    "id": "edge:mineralogy-part-of-earth-sciences",
+    "source": "subfield:mineralogy",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC QE351-399.2 'Mineralogy' — own range within geology subclass QE (live capture 2026-06-11). UDC 549 'Mineralogy. Special study of minerals' — own top-level entry under UDC 54 Chemistry. Crystallography. Mineralogy, NOT under UDC 55 Earth Sciences (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:petrology-part-of-earth-sciences",
+    "source": "subfield:petrology",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 552 'Petrology. Petrography' — own top-level class under UDC 55 Earth Sciences (live capture 2026-06-11). LCC QE420-499 'Petrology' — own range within geology subclass QE (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:paleontology-part-of-earth-sciences",
+    "source": "subfield:paleontology",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 56 'Palaeontology' — own top-level class under UDC class 5 Natural Sciences (live capture 2026-06-11). LCC QE701-760 'Paleontology' — own range within geology subclass QE (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:seismology-part-of-earth-sciences",
+    "source": "subfield:seismology",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 551.2 'Internal geodynamics (endogenous processes)' — subdivision under UDC 551 General geology within UDC 55 Earth Sciences; covers seismic activity (live capture 2026-06-11). LCC QE521-545 'Volcanoes and earthquakes' — within geology subclass QE (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:volcanology-part-of-earth-sciences",
+    "source": "subfield:volcanology",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 551.21 'Vulcanicity. Vulcanism. Volcanoes. Eruptive phenomena. Eruptions' — subdivision of UDC 551.2 under UDC 55 Earth Sciences (live capture 2026-06-11). LCC QE521-545 'Volcanoes and earthquakes' — within geology subclass QE (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:oceanography-part-of-earth-sciences",
+    "source": "subfield:oceanography",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 551.46 'Physical oceanography. Submarine topography. Ocean floor' — subdivision under UDC 551 within UDC 55 Earth Sciences (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' (live capture 2026-06-11). LCC home GC (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation."
+  },
+  {
+    "id": "edge:atmospheric-science-part-of-earth-sciences",
+    "source": "subfield:atmospheric-science",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 551.5 'Meteorology' and 551.58 'Climatology' — subdivisions under UDC 551 within UDC 55 Earth Sciences (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' (live capture 2026-06-11). LCC QC851-999 'Meteorology. Climatology' — within physics subclass QC, not within QE earth sciences (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:hydrology-part-of-earth-sciences",
+    "source": "subfield:hydrology",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 556 'Hydrosphere. Water in general. Hydrology' — own top-level class under UDC 55 Earth Sciences (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' (live capture 2026-06-11). LCC home GB (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation."
+  },
+  {
+    "id": "edge:geomorphology-part-of-earth-sciences",
+    "source": "subfield:geomorphology",
+    "target": "field:earth-sciences",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 551.4 'Geomorphology. Study of the Earth's physical forms' — subdivision under UDC 551 within UDC 55 Earth Sciences (live capture 2026-06-11). LCC home GB (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation."
+  },
+  {
+    "id": "edge:geophysics-part-of-physics",
+    "source": "subfield:geophysics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC QC801-809 'Geophysics. Cosmic physics' — within physics subclass QC (live capture 2026-06-11). UDC 550.3 'Geophysics' — under UDC 550 Ancillary sciences of geology within UDC 55 Earth Sciences (captured baseline 2026-06-11, contradicts physics placement)."
+  },
+  {
+    "id": "edge:atmospheric-science-part-of-physics",
+    "source": "subfield:atmospheric-science",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC QC851-999 'Meteorology. Climatology (Including the earth's atmosphere)' — own extensive range within physics subclass QC (live capture 2026-06-11). UDC 551.5/551.58 'Meteorology/Climatology' — within UDC 55 Earth Sciences (captured baseline 2026-06-11, contradicts physics placement)."
+  },
+  {
+    "id": "edge:mineralogy-part-of-chemistry",
+    "source": "subfield:mineralogy",
+    "target": "field:chemistry",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 549 'Mineralogy. Special study of minerals' — own top-level entry under UDC 54 Chemistry. Crystallography. Mineralogy (live capture 2026-06-11). LCC QE351-399.2 'Mineralogy' — within geology/earth-sciences subclass QE (captured baseline 2026-06-11, contradicts chemistry placement)."
+  },
+  {
+    "id": "edge:mathematical-physics-part-of-physics",
+    "source": "subfield:mathematical-physics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Cross-listing v1 (vault decision log (21)): physics-side membership of mathematical physics, co-equal with edge:mathematical-physics-part-of-mathematics. Grounding (live 2026-06-11): LCC QC19.2-QC20.85 'Mathematical physics' authority record (id.loc.gov) files the area inside the physics subclass QC; arXiv files math-ph (Mathematical Physics) in its Physics group with math.MP as the mathematics-side alias (arxiv.org/category_taxonomy, live) — the scheme itself dual-files the referent. The clause-6 minority position (session #5, formal-sciences resolution-report) collected this same physics-side evidence; under cross-listing it is a supporting vote for this membership, not a contest of the mathematics membership (session-#7 interpretation)."
   }
 ]
