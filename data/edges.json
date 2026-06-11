@@ -2801,7 +2801,7 @@
     "target": "field:computer-science",
     "relation": "part_of",
     "confidence": 0.8,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:acm-ccs",
@@ -2813,7 +2813,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "Status capped: endpoint subfield:scientific-computing is proposed (B-type boundary contest with applied mathematics/numerical analysis — clause-6 candidate). Grounding: UDC 004.94 'Simulation' (live 2026-06-11); ACM CCS 'Applied computing > Physical sciences and engineering' + 'Computing methodologies > Modeling and simulation' (live; the generated 'Applied computing > Simulation' path does not exist — corrected); MSC 68Vxx (live; the earlier-cited 68U20 does not exist in MSC2020 — corrected)."
+    "note": "Endpoint cap lifted 2026-06-11: clause-6 resolution found a genuine split (CS vs applied mathematics) dissolved by cross-listing v1 (docs/data-foundry.md §13) — co-equal membership with edge:scientific-computing-part-of-applied-mathematics; B-flag retired with permanent record in foundry/proposals/cis-bflag-resolution-v1/resolution-report.md. Grounding: UDC 004.94 'Simulation' (live 2026-06-11); ACM CCS 'Applied computing > Physical sciences and engineering' + 'Computing methodologies > Modeling and simulation' (live; the generated 'Applied computing > Simulation' path does not exist — corrected); MSC 68Vxx (live; the earlier-cited 68U20 does not exist in MSC2020 — corrected)."
   },
   {
     "id": "edge:quantum-computing-part-of-computer-science",
@@ -2821,7 +2821,7 @@
     "target": "field:computer-science",
     "relation": "part_of",
     "confidence": 0.8,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:msc2020",
@@ -2833,7 +2833,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "Status capped: endpoint subfield:quantum-computing is proposed (B-type boundary contest with physics — clause-6 candidate). LCC QA76.889 'Quantum computers' (id.loc.gov, live 2026-06-11 — inside the continent range); MSC 68Q12 'Quantum algorithms and complexity' + 81P68 'Quantum computation' dual filing (live); ACM CCS quantum branches under 'Theory of computation > Models of computation' and 'Hardware > Emerging technologies' (live)."
+    "note": "Endpoint cap lifted 2026-06-11: clause-6 resolution found a genuine split (CS vs physics) dissolved by cross-listing v1 (docs/data-foundry.md §13) — co-equal membership with edge:quantum-computing-part-of-natural-sciences; B-flag retired with permanent record in foundry/proposals/cis-bflag-resolution-v1/resolution-report.md. LCC QA76.889 'Quantum computers' (id.loc.gov, live 2026-06-11 — inside the continent range); MSC 68Q12 'Quantum algorithms and complexity' + 81P68 'Quantum computation' dual filing (live); ACM CCS quantum branches under 'Theory of computation > Models of computation' and 'Hardware > Emerging technologies' (live)."
   },
   {
     "id": "edge:computer-systems-part-of-computer-science",
@@ -2951,5 +2951,41 @@
       "proposed_at": "2026-06-11"
     },
     "note": "Cross-listing v1 second membership (session #8, 2026-06-11), manifesting through the algorithmic-game-theory wing — mirrors the logic-to-mathematics wing precedent (PR #47): ACM CCS 'Theory of computation > Theory and algorithms for application domains > Algorithmic game theory and mechanism design' (Wayback snapshot, live); MSC 91A68 'Algorithmic game theory and complexity' (live); Princeton CS theory group lists Algorithmic Game Theory as a current research area (theory.cs.princeton.edu, live re-verified 2026-06-11); Game Theory Society: 'applied across a wide variety of fields, including computer science' (gametheorysociety.org/about, live re-verified). Co-equal with edge:game-theory-part-of-mathematics — no primary marker. The economics-primary minority (JEL C7, Handbook anchoring) remains parked pending the social-sciences continent."
+  },
+  {
+    "id": "edge:scientific-computing-part-of-applied-mathematics",
+    "source": "subfield:scientific-computing",
+    "target": "subfield:applied-mathematics",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): applied-mathematics-side membership of scientific computing, co-equal with edge:scientific-computing-part-of-computer-science. Grounding (live 2026-06-11): Wikidata Q117801 P279 (subclass of) dual-files the field under applied mathematics (Q33521) AND computer science (Q21198) — structural-claim path per the random-variable P361 precedent; SIAM SIAG/CSE fosters collaboration among 'applied mathematicians, computer scientists, domain scientists and engineers' and promotes CSE 'as an academic discipline' (siam.org via Wayback 20240601); dominant math-department homes observed live (UC Davis Mathematics research group, UMD AMSC program, Rice CMOR, UChicago CCAM); NYU Courant lists Scientific Computing under both its CS and Mathematics departments (cims.nyu.edu/research, live). Journal of Scientific Computing self-describes as an 'international interdisciplinary forum' (link.springer.com/journal/10915/aims-and-scope, live) — self-standing framing recorded, no premise-denying source found, hence no disputed tag (session-#7 operational interpretation). Edge depth: subfield-to-subfield allowed (§12: the flat rule governs node levels, not edge depth). Record: foundry/proposals/cis-bflag-resolution-v1/resolution-report.md."
+  },
+  {
+    "id": "edge:quantum-computing-part-of-natural-sciences",
+    "source": "subfield:quantum-computing",
+    "target": "domain:natural-sciences",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): physics-side membership of quantum computing, co-equal with edge:quantum-computing-part-of-computer-science. Grounding (live 2026-06-11): MSC2020 official CSV files 81P68 'Quantum computation' under top-level 81 Quantum theory, with the scope note 'For algorithmic aspects, see 68Q12' — the scheme itself partitions the referent between the physics and CS sections (msc2020.org/MSC_2020.csv); arXiv category taxonomy places quant-ph (the field's dedicated preprint category) under the Physics parent group (arxiv.org/category_taxonomy, live); institutional physics anchors observed live: Caltech IQIM is 'a National Science Foundation Physics Frontiers Center' (iqim.caltech.edu), UMD JQI is anchored in the UMD Department of Physics + NIST. Quantum journals self-describe as multi/interdisciplinary (npj Quantum Information audience spans physicists and computer scientists, live) — no premise-denying source found, hence no disputed tag. Re-target note: targets the domain directly because no physics field node exists yet in /data (mathematics-education precedent, §12/§13) — re-target to the physics field when the natural-sciences continent lands. Record: foundry/proposals/cis-bflag-resolution-v1/resolution-report.md."
   }
 ]
