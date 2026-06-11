@@ -4543,5 +4543,380 @@
     "academic_status": "established",
     "created_at": "2026-06-11",
     "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:music",
+    "type": "field",
+    "domain": "arts_and_design",
+    "level": 1,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q638"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:visual-arts",
+    "type": "field",
+    "domain": "arts_and_design",
+    "level": 1,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q36649"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:design",
+    "type": "field",
+    "domain": "arts_and_design",
+    "level": 1,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q82604"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:performing-arts",
+    "type": "field",
+    "domain": "arts_and_design",
+    "level": 1,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q184485"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:architecture",
+    "type": "field",
+    "domain": "arts_and_design",
+    "level": 1,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q12271"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:musicology",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q164204"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:music-theory",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q193544"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:ethnomusicology",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q208365"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:music-education",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q27908"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:art-history",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q50637"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:painting",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11629"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:sculpture",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11634"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:drawing",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2921001"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:printmaking",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q271588"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:photography",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "proposed",
+    "academic_status": "established",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11633"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:graphic-design",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q185925"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:industrial-design",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q243606"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:interior-design",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q179232"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:decorative-arts",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q631931"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:ceramic-arts",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q13464614"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:theatre-studies",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q960543"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:dance",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11639"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:film-studies",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1660187"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:landscape-architecture",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q47844"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:urban-planning",
+    "type": "subfield",
+    "domain": "arts_and_design",
+    "level": 2,
+    "status": "proposed",
+    "academic_status": "established",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q69883"
+    },
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
   }
 ]
