@@ -1,0 +1,543 @@
+{
+ "version": 1,
+ "batch_id": "batch:engineering-technology-skeleton-v1",
+ "proposed_by": {
+  "model_name": "Claude Sonnet",
+  "model_version": "claude-sonnet-4-6",
+  "proposed_at": "2026-06-11"
+ },
+ "nodes": [
+  {
+   "id": "field:civil-engineering",
+   "type": "field",
+   "domain": "engineering_and_technology",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Civil Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q11165"
+   },
+   "source_hint": "LCC TA1-2040 'Engineering (General). Civil engineering (General)' (captured baseline 2026-06-11). LCC subclasses TC 'Hydraulic engineering. Ocean engineering', TE 'Highway engineering. Roads and pavements', TF 'Railroad engineering and operation', TG 'Bridge engineering' — civil-family subclasses (captured baseline 2026-06-11). UDC 624 'Civil and structural engineering in general', UDC 625 'Civil engineering of land transport. Railway engineering. Highway engineering', UDC 626/627 'Hydraulic engineering' (captured baseline 2026-06-11). OECD FORD 2.1 'Civil engineering' (captured baseline 2026-06-11). Wikidata Q11165 — unverified training-knowledge hint.",
+   "rationale": "LCC subclass TA anchors civil engineering as a major class with its own subclass; four additional LCC subclasses (TC/TE/TF/TG) lie within the civil family; UDC 624/625/626/627 are first-level divisions; FORD 2.1 is a named field; ASCE and named civil-engineering departments at every major research university satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. The boundary with environmental engineering (TD vs FORD 2.7) is addressed by generating both as separate fields following the classification sources; architecture/building (TH845-895) is owned by branch 13d and excluded.",
+   "ambiguous": false,
+   "note": "QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): TD trimmed from the civil-family listing — TD anchors field:environmental-engineering; double-anchoring removed."
+  },
+  {
+   "id": "field:electrical-engineering",
+   "type": "field",
+   "domain": "engineering_and_technology",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Electrical Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q43035"
+   },
+   "source_hint": "LCC TK1-9971 'Electrical engineering. Electronics. Nuclear engineering' (captured baseline 2026-06-11). UDC 621.3 'Electrical engineering' (captured baseline 2026-06-11). OECD FORD 2.2 'Electrical engineering, Electronic engineering, Information engineering' (captured baseline 2026-06-11). Wikidata Q43035 — unverified training-knowledge hint.",
+   "rationale": "LCC gives electrical engineering the full subclass TK; UDC 621.3 is a named subdivision; FORD 2.2 names this field; IEEE and named EE departments worldwide satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. Pre-registered question (5): electronics (LCC TK7800-8360, UDC 621.3 sub-area) is absorbed into this field per the label/absorption rule — electronics is a refinement sharing the same classification division and the same IEEE community rather than a distinct referent. Nuclear engineering (TK9001-9401) is proposed as a separate subfield following the distinct institutional community. Telecommunications engineering (TK5101-6720) is also a separate subfield.",
+   "ambiguous": false,
+   "note": "Pre-registered question (5): electronics absorbed. LCC TK7800-8360 'Electronics' is a subdivision inside the same TK subclass umbrella; FORD 2.2 bundles electronics explicitly. Generator applies the absorption rule: a sub-area that refines the parent field with no independent LCC subclass or FORD top-level entry fails the distinct-referent test. Recorded as v2 re-split candidate."
+  },
+  {
+   "id": "field:mechanical-engineering",
+   "type": "field",
+   "domain": "engineering_and_technology",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Mechanical Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q101333"
+   },
+   "source_hint": "LCC TJ1-1570 'Mechanical engineering and machinery' (captured baseline 2026-06-11). UDC 621 'Mechanical engineering in general. Nuclear technology. Electrical engineering. Machinery' (captured baseline 2026-06-11). OECD FORD 2.3 'Mechanical engineering' (captured baseline 2026-06-11). Wikidata Q101333 — unverified training-knowledge hint.",
+   "rationale": "LCC subclass TJ is a named mechanical-engineering class; UDC 621 is a top-level division; FORD 2.3 is a named field; ASME and named mechanical-engineering departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. UDC 621 umbrella also covers nuclear technology and electrical engineering at the same level — the classification caption is broad; however LCC TJ is strictly mechanical, and FORD 2.3 is mechanical-only, so the dual criterion is met without ambiguity for the mechanical core. Aerospace engineering is proposed as a separate field (separate LCC subclass TL + distinct AIAA community).",
+   "ambiguous": false
+  },
+  {
+   "id": "field:chemical-engineering",
+   "type": "field",
+   "domain": "engineering_and_technology",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Chemical Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q131476"
+   },
+   "source_hint": "LCC TP155-156 'Chemical engineering' within LCC TP 'Chemical technology' (captured baseline 2026-06-11). UDC 66 'Chemical technology. Chemical and related industries' with special auxiliary subdivision 66.01/.09 for chemical engineering (captured baseline 2026-06-11). OECD FORD 2.4 'Chemical engineering' (captured baseline 2026-06-11). Wikidata Q131476 — unverified training-knowledge hint.",
+   "rationale": "LCC TP155-156 is an explicit chemical-engineering division within subclass TP; UDC 66.01 is labeled 'Fundamentals of chemical engineering'; FORD 2.4 is a named field; AIChE and named chemical-engineering departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. LCC places chemical engineering as a range inside the broader TP 'Chemical technology' rather than a standalone subclass — however FORD 2.4 elevates it to named-field standing and the AIChE community is independent of chemical science departments. The boundary with chemistry is a cross-continent record (chemistry is natural-sciences territory).",
+   "ambiguous": false
+  },
+  {
+   "id": "field:materials-science-and-engineering",
+   "type": "field",
+   "domain": "engineering_and_technology",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Materials Science and Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q228736"
+   },
+   "source_hint": "LCC TA401-492 'Materials of engineering and construction. Mechanics of materials' (captured baseline 2026-06-11). LCC TN600-799 'Metallurgy' (captured baseline 2026-06-11). UDC 620 'Materials testing. Commercial materials. Power stations. Economics of energy' (captured baseline 2026-06-11). UDC 669 'Metallurgy' (captured baseline 2026-06-11). OECD FORD 2.5 'Materials engineering' (captured baseline 2026-06-11). Wikidata Q228736 — unverified training-knowledge hint.",
+   "rationale": "LCC TA401-492 is a named materials division in the civil-engineering subclass; TN600-799 covers metallurgy; UDC 620 and 669 are distinct top-level notations; FORD 2.5 is a named field; MRS and TMS plus named materials-science-and-engineering departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. Pre-registered question (2): boundary with condensed-matter physics (NS) and chemistry (NS) is a section-13 cross-listing candidate recorded here but not resolved at skeleton time. Pre-registered question (14): metallurgy may coexist as a peer subfield — generator keeps metallurgy as a subfield of materials under the peer-coexistence rule (both pass the dual criterion).",
+   "ambiguous": false,
+   "note": "Pre-registered question (2): materials-science boundary with chemistry/physics — recorded as section-13 candidate for QC. Pre-registered question (14): metallurgy is proposed as a peer subfield (subfield:metallurgy) because UDC 669 and LCC TN600-799 give it a distinct classification home and TMS/metallurgy societies give it a distinct community standing (peer-coexistence rule)."
+  },
+  {
+   "id": "field:environmental-engineering",
+   "type": "field",
+   "domain": "engineering_and_technology",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Environmental Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q179132"
+   },
+   "source_hint": "LCC TD1-1066 'Environmental technology. Sanitary engineering' (captured baseline 2026-06-11). UDC 628 'Public health engineering. Water. Sanitation. Illuminating engineering' (captured baseline 2026-06-11). OECD FORD 2.7 'Environmental engineering' (captured baseline 2026-06-11). Wikidata Q179132 — unverified training-knowledge hint.",
+   "rationale": "LCC subclass TD is a named major division; UDC 628 is a top-level notation; FORD 2.7 is a named field; AEESP and named environmental-engineering programs at major universities satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. The boundary with field:environmental-science (natural sciences) is a cross-continent record — environmental engineering is the applied/infrastructure side (TD/628) while environmental science is the natural-science side (UDC 502/504). The boundary with field:civil-engineering (which uses some TD subclasses) is structural: sanitary engineering folds into environmental engineering per the label rule (pre-registered question 13).",
+   "ambiguous": false,
+   "note": "Pre-registered question (13): 'Sanitary engineering' (LCC TD subclass label) folds into environmental engineering by the label rule — research-area label preferred over historical subclass name."
+  },
+  {
+   "id": "field:aerospace-engineering",
+   "type": "field",
+   "domain": "engineering_and_technology",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Aerospace Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q82070"
+   },
+   "source_hint": "LCC TL500-777 'Aeronautics. Aeronautical engineering' and TL787-4050 'Astronautics. Space travel' within LCC subclass TL 'Motor vehicles. Aeronautics. Astronautics' (captured baseline 2026-06-11). UDC 629.7 'Air and space transport engineering. Aeronautics and aircraft. Rockets and missiles. Astronautics and spacecraft' (captured baseline 2026-06-11). OECD FORD 2.3 'Mechanical engineering' — aerospace is bundled here but has independent institutional standing (captured baseline 2026-06-11). Wikidata Q82070 — unverified training-knowledge hint.",
+   "rationale": "LCC TL has its own subclass with named aeronautics and astronautics ranges; UDC 629.7 is a top-level notation under 629; named aerospace-engineering departments (MIT AeroAstro, Caltech GALCIT etc.) and AIAA society satisfy the community criterion independently of mechanical engineering.",
+   "uncertainty": "QID hint unverified. FORD 2.3 bundles mechanical and aerospace — however LCC gives aerospace its own subclass (TL vs TJ), and institutional departments are frequently independent, so the dual criterion passes on both prongs. Generator keeps aerospace as a separate field following the LCC subclass boundary.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:industrial-engineering",
+   "type": "field",
+   "domain": "engineering_and_technology",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Industrial Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q620869"
+   },
+   "source_hint": "LCC T55.4-60.8 'Industrial engineering. Management engineering' within LCC subclass T 'Technology (General)' (captured baseline 2026-06-11). UDC 658.5 'Production engineering and planning. Design. Production management and control' — sits inside UDC 658 'Business management' class (captured baseline 2026-06-11). OECD FORD 2.11 'Other engineering and technologies' (captured baseline 2026-06-11). Wikidata Q620869 — unverified training-knowledge hint.",
+   "rationale": "LCC T55.4-60.8 is an explicit 'Industrial engineering' named range inside class T; IISE society and named industrial-engineering departments worldwide (ISE programs) satisfy the community criterion; FORD 2.11 is the closest classification match.",
+   "uncertainty": "QID hint unverified. Pre-registered question (3): classification presence is thin — LCC T55.4-60.8 is a range inside the general Technology class rather than a standalone subclass; UDC 658.5 sits inside the management class (UDC 65, social-sciences boundary). The dual criterion is met on criterion (b) strongly (IISE, prominent named departments) and on criterion (a) weakly (LCC T named range). The operations-research overlap is managed by the existing subfield:operations-research (formal sciences); industrial engineering proposes as a field only if it names a distinct referent beyond OR — which the IISE/systems-integration community does.",
+   "ambiguous": false,
+   "note": "Pre-registered question (3): A-type flag. Thin classification presence (LCC range, UDC management-class). QC should verify whether LCC T55.4-60.8 is a sufficient criterion-(a) anchor given the absence of a standalone subclass, and whether the OR overlap requires an absorption ruling. The operations-research re-target review is also triggered: once field:industrial-engineering lands, the existing domain-direct engineering membership edge on subfield:operations-research may be re-targeted to field:industrial-engineering (if QC confirms the structural fit) or to this field as a §13 co-equal member. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): A-FLAG RETIRED — node KEPT. Live verification: the id.loc.gov authority record T55.4-T60.8 carries the authoritative label 'Industrial engineering' (fetched 2026-06-11) — a named class-T division, not a mere cutter. Ruling grounds: (i) the division refines NO kept node (unlike polymer-chemistry, which refined organic-chemistry — the NS absorption precedent does not apply when there is no kept parent serving the same community); (ii) UDC 658.5 'Production engineering and planning. Design. Production management and control' is an out-of-gate named division that supports existence as an other-home filing (class-G/NS interpretation); (iii) criterion (b) is overwhelming (IISE; ubiquitous named ISE departments). Creation of this field fires the operations-research re-target review (session order task; mathematics-education precedent)."
+  },
+  {
+   "id": "field:biotechnology",
+   "type": "field",
+   "domain": "engineering_and_technology",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Biotechnology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7058"
+   },
+   "source_hint": "LCC TP248.13-248.65 'Biotechnology' within LCC TP 'Chemical technology' (captured baseline 2026-06-11). UDC 60 'Biotechnology' — top-level class directly under class 6, with subdivisions 601 'Fundamental concepts', 602 'Processes and techniques in biotechnology', 604 'Biotechnology products', 606 'Applications of biotechnology', 608 'Issues in biotechnology' (captured baseline 2026-06-11). OECD FORD 2.8 'Environmental biotechnology' and FORD 2.9 'Industrial biotechnology' (captured baseline 2026-06-11). Wikidata Q7058 — unverified training-knowledge hint.",
+   "rationale": "UDC 60 is a top-level first-class notation under class 6 (applied sciences) with five named subdivisions; LCC TP248.13-248.65 is an explicit named range; FORD devotes two subsections (2.8/2.9) to biotechnology; named biotechnology departments and ESAB/SBE societies satisfy the community criterion. Round-boundary assignment: owned by this branch per the parallel-round boundary assignment table.",
+   "uncertainty": "QID hint unverified. UDC 60 being a top-level class (not a subdivision of 62 engineering) gives biotechnology its strongest classification claim; the boundary with life sciences (13b) is pre-registered — biomedical and pharmaceutical biotechnology applications are life-science territory while industrial/environmental biotechnology is here. Generator applies the FORD 2.8/2.9 scope as the boundary guide.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:biomedical-engineering",
+   "type": "field",
+   "domain": "engineering_and_technology",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Biomedical Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q190453"
+   },
+   "source_hint": "LCC TA164 'Bioengineering' within LCC TA 'Engineering (General). Civil engineering' (captured baseline 2026-06-11). OECD FORD 2.6 'Medical engineering' (captured baseline 2026-06-11). LCC R856-857 'Biomedical engineering. Electronics. Instrumentation' — medicine-class co-home (QC live verification 2026-06-11, lcco_r.pdf class-R outline; adjacent: R855-855.5 'Medical technology', R858-859.7 'Computer applications to medicine. Medical informatics'). UDC 615.47 (not captured at summary level — [UNFETCHED] unverified training-knowledge). Wikidata Q190453 — unverified training-knowledge hint.",
+   "rationale": "LCC TA164 'Bioengineering' is an explicit named entry in the civil/general-engineering subclass; FORD 2.6 'Medical engineering' names it as a field; the dominant institutional home is engineering schools (BMES society, named biomedical-engineering departments at Johns Hopkins, MIT, Duke etc.) — the engineering-institution prong is satisfied, so §12 rule 3 does not fire on one prong alone.",
+   "uncertainty": "QID hint unverified. Pre-registered question (6): LCC R856-857 (live-verified caption 'Biomedical engineering. Electronics. Instrumentation') is a medicine-class co-home — the classification-source split creates a B-type boundary contest. UDC medicine-class (615.47) is a second medicine-class filing. However §12 rule 3 requires BOTH the primary LCC home AND dominant institutional home to lie outside the current continent for a deferral to fire; the dominant institutional home (engineering schools) is in-continent. Generator keeps biomedical engineering in this continent and flags the medicine-class co-home as a section-13 candidate for QC.",
+   "ambiguous": true,
+   "note": "Pre-registered question (6): B-type flag for LCC R856 medicine-class co-home. §12 rule 3 does not fire because the dominant institutional home (BMES, engineering schools) is in-continent. Section-13 dual membership with domain:medicine-and-health is a candidate for QC to evaluate via the external-evidence path — QC should record whether LCC R856 satisfies the section-13 evidence gate. The 'bioengineering' label (LCC TA164) vs the 'biomedical engineering' label: generator applies the label rule and keeps the more widely-used research-area label 'biomedical engineering'. Pre-registered question (15): bioengineering (TA164) folds into this node — no third node proposed. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): LAUNDERING CATCH #1 — the draft paired LCC R856 with the R895-920 medical-physics caption ('Medical physics. Medical radiology. Nuclear medicine', which lives in the section-12 precedent log, not the captured baseline) and attributed it to the captured baseline. Corrected by live verification: R856-857 = 'Biomedical engineering. Electronics. Instrumentation' (lcco_r.pdf, fetched 2026-06-11). B-FLAG UPHELD: the medicine-class co-home (LCC R856-857; UDC 615.47 unverified at summary level) vs engineering institutional home is a real-world boundary contest — node stops at proposed, clause-6/v1.1 queue. The medicine-and-health section-13 dual membership is the expected resolution path once the contest is collected and judged."
+  },
+  {
+   "id": "subfield:structural-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Structural Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q175491"
+   },
+   "source_hint": "LCC TA630-695 'Structural engineering (General)' (captured baseline 2026-06-11). LCC TH845-895 'Architectural engineering. Structural engineering of buildings' (captured baseline 2026-06-11) — note TH845-895 is 13d-boundary evidence only. UDC 624 'Civil and structural engineering in general' (captured baseline 2026-06-11). Wikidata Q175491 — unverified training-knowledge hint.",
+   "rationale": "LCC TA630-695 is an explicit named structural-engineering range; UDC 624 is labeled 'Civil and structural engineering' giving structural engineering classification co-presence; ASCE Structural Engineering Institute and named structural-engineering graduate programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. LCC TH845-895 'Architectural engineering. Structural engineering of buildings' is within the building-construction subclass (TH), which is 13d territory — only the TA630-695 civil-engineering-side evidence is used for this node's classification anchor. The TH845-895 range is recorded as engineering-side evidence for the 13d (architecture) branch review.",
+   "ambiguous": false,
+   "note": "Architecture boundary: LCC TH845-895 'Architectural engineering. Structural engineering of buildings' is owned by branch 13d (arts-and-design continent). This node is anchored to LCC TA630-695 only. The TH845-895 range is recorded in this batch's notes as 13d-boundary evidence."
+  },
+  {
+   "id": "subfield:geotechnical-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Geotechnical Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q466995"
+   },
+   "source_hint": "LCC TA703-712 'Engineering geology. Rock mechanics. Soil mechanics. Underground construction' and LCC TA715-787 'Earthwork. Foundations' (captured baseline 2026-06-11). UDC 624.1 'Substructures. Earthworks. Foundations. Tunnelling' (captured baseline 2026-06-11). Wikidata Q466995 — unverified training-knowledge hint.",
+   "rationale": "LCC TA703-712 explicitly names soil mechanics and engineering geology; UDC 624.1 is a named subdivision; ISSMGE and named geotechnical programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. Boundary with earth sciences (NS): geotechnical engineering is the applied/infrastructure side (TA703-712, soil mechanics for construction) vs engineering geology as a field in earth sciences — generator keeps the engineering-application side here.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:transportation-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Transportation Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q3561"
+   },
+   "source_hint": "LCC TA1001-1280 'Transportation engineering' within TA (captured baseline 2026-06-11). LCC TE1-450 'Highway engineering. Roads and pavements', LCC TF1-1620 'Railroad engineering and operation', LCC TG1-470 'Bridge engineering' (captured baseline 2026-06-11). UDC 625 'Civil engineering of land transport. Railway engineering. Highway engineering' (captured baseline 2026-06-11). Wikidata Q3561 — unverified training-knowledge hint.",
+   "rationale": "LCC TA1001-1280 is an explicit 'Transportation engineering' named range; UDC 625 is a named division; ITE (Institute of Transportation Engineers) and named transportation-engineering programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. Pre-registered question (13): TE (highway), TF (railroad), and TG (bridge) LCC subclasses are civil-engineering sub-areas that fold into transportation engineering per the absorption rule — they are refinements without distinct community-level standing independent of transportation engineering.",
+   "ambiguous": false,
+   "note": "Pre-registered question (13): LCC TE (Highway), TF (Railroad), and TG (Bridge) are absorbed into subfield:transportation-engineering. These subclasses each represent a refinement of land-transport civil engineering. Absorption recorded per §12 rule 2; all three are v2 re-split candidates if community evidence later separates them (e.g. a dedicated bridge-engineering professional society at the community criterion threshold)."
+  },
+  {
+   "id": "subfield:hydraulic-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Hydraulic Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q2748368"
+   },
+   "source_hint": "LCC TC1-978 'Hydraulic engineering' (captured baseline 2026-06-11). LCC TC1501-1800 'Ocean engineering' (captured baseline 2026-06-11). UDC 626/627 'Hydraulic engineering and construction. Water (aquatic) structures' (captured baseline 2026-06-11). Wikidata Q2748368 — unverified training-knowledge hint.",
+   "rationale": "LCC subclass TC is a named hydraulic-engineering class; UDC 626/627 is a named dual-notation division; IAHR and named hydraulic-engineering programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. LCC TC1501-1800 'Ocean engineering' is listed under the TC subclass — generator keeps ocean engineering absorbed into hydraulic engineering at the skeleton level (they share the TC subclass and IAHR community umbrella). A future v2 re-split between hydraulic and ocean/coastal engineering is a candidate.",
+   "ambiguous": false,
+   "note": "QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): ocean-engineering absorption CONFIRMED — the TC subclass caption itself bundles 'Hydraulic engineering. Ocean engineering' (scheme-bundled label pattern; climatology/thermodynamics precedent), and the id.loc.gov authority record TC1501-TC1800 'Ocean engineering' (live-verified label) is a division within TC. Ocean engineering is a v2 re-split candidate (offshore/coastal community evidence would support a future split). This also resolves the generator's double-use of TC1501-1800 on the naval-architecture node."
+  },
+  {
+   "id": "subfield:construction-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Construction Engineering and Management",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1149665"
+   },
+   "source_hint": "LCC TH1-9745 'Building construction' (minus TH845-895 architectural engineering, which is 13d-boundary) (captured baseline 2026-06-11). UDC 69 'Building (construction) trade. Building materials. Building practice and procedure' (captured baseline 2026-06-11). Wikidata Q1149665 — unverified training-knowledge hint.",
+   "rationale": "LCC subclass TH 'Building construction' is a major class; UDC 69 is a top-level notation; ASCE CIE division and named construction-engineering and management programs (Purdue, Arizona State) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. LCC TH845-895 'Architectural engineering. Structural engineering of buildings' is explicitly excluded — owned by branch 13d; this node anchors only to TH beyond TH845-895. The label 'Construction Engineering and Management' (vs bare 'construction engineering') follows the manifest's expected_node_id and reflects the dominant graduate-program naming convention.",
+   "ambiguous": false,
+   "note": "13d boundary: LCC TH845-895 'Architectural engineering. Structural engineering of buildings' is recorded here as engineering-side evidence for branch 13d's review, per the boundary assignment table. UDC 69 covers the construction-trade side; UDC 624 covers structural design — this node's classification anchor is UDC 69 + LCC TH (minus architectural subrange)."
+  },
+  {
+   "id": "subfield:naval-architecture-and-marine-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Naval Architecture and Marine Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1811697"
+   },
+   "source_hint": "UDC 629.5 'Watercraft engineering. Marine engineering. Boats. Ships. Boatbuilding and shipbuilding' (captured baseline 2026-06-11). LCC VM1-989 'Naval architecture. Shipbuilding. Marine engineering' — QC live verification 2026-06-11 (lcco_v.pdf class-V outline; the generator honestly marked this [UNFETCHED]): a dedicated out-of-gate-class LCC subclass that umbrellas both wings. Wikidata Q1811697 — unverified training-knowledge hint.",
+   "rationale": "UDC 629.5 is an explicit named notation 'Watercraft engineering. Marine engineering'; LCC VM1-989 (live-verified) is a dedicated subclass umbrella for both wings; the Society of Naval Architects and Marine Engineers (SNAME) and named degree programs (Webb Institute, MIT 2A/2-OE) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. Pre-registered question (8): LCC VM is a class-V home (not class T) — this triggers the combined-vs-split shape question. Generator applies the umbrella test: UDC 629.5 umbrellas both the naval-architecture (hull design) and the marine-engineering (propulsion/systems) wings under one notation. The combined shape is kept following the SNAME combined-community precedent. The class-V LCC home is recorded as a potential out-of-continent filing, analogous to the class-G filings in natural sciences — the §12 rule 3 analysis is: UDC 629.5 is in-continent and the dominant institutional community is engineering schools, so one out-of-continent LCC filing does not fire the deferral rule.",
+   "ambiguous": false,
+   "note": "Pre-registered question (8): A-type flag on combined-vs-split shape. QC should verify: (a) whether LCC VM's class-V position constitutes an out-of-continent filing that shifts the rule-3 balance; (b) whether SNAME umbrellas both components sufficiently to keep the combined node. If QC splits the node, naval-architecture would take the VM home and marine-engineering would take TC1501-1800 + UDC 629.5. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): A-FLAG RETIRED — combined shape UPHELD. Both available scheme homes umbrella the combined referent: LCC VM1-989 'Naval architecture. Shipbuilding. Marine engineering' (live-verified) and UDC 629.5 'Watercraft engineering. Marine engineering. Boats. Ships. Boatbuilding and shipbuilding' (captured). Section-12 rule 3 does not fire: the LCC home is out-of-gate-class (class V) but the dominant institutional home (SNAME; engineering-school departments) is in-continent — one out-of-continent prong is insufficient (class-G/NS precedent). TC1501-1800 'Ocean engineering' is REASSIGNED from this node's anchors to the hydraulic-engineering absorption (the TC subclass caption bundles 'Hydraulic engineering. Ocean engineering'), resolving the generator's double-anchoring of that range."
+  },
+  {
+   "id": "subfield:telecommunications-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Telecommunications Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q622451"
+   },
+   "source_hint": "LCC TK5101-6720 'Telecommunication' with outline note 'Including telegraphy, telephone, radio, radar, television' within LCC TK 'Electrical engineering. Electronics. Nuclear engineering' (captured baseline 2026-06-11). UDC 654 'Telecommunication and telecontrol (organization, services)' within UDC 65 'Communication and transport industries' (captured baseline 2026-06-11). Wikidata Q622451 — unverified training-knowledge hint.",
+   "rationale": "LCC TK5101-6720 is a named large subdivision with an explicit 'Telecommunication' label; UDC 654 is a named division; IEEE ComSoc and named telecommunications-engineering programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. UDC 654 sits inside class 65 'Communication and transport industries' (the social-sciences/management boundary) — however LCC TK5101-6720 anchors the field firmly in the engineering subclass, and the IEEE ComSoc community is engineering-institutional. The UDC 65 position is recorded as a parked §13 candidate; the dominant home is engineering. Note: information theory's ECE-side membership is a parked §13 candidate (session #8) — the landing of this node triggers that review.",
+   "ambiguous": false,
+   "note": "UDC 654 is inside UDC 65 (communication and management class); however the generator's dominant-home rule keeps this node in engineering based on the LCC TK anchor and IEEE ComSoc community. UDC 654 is recorded as other-home evidence, analogous to the class-G cluster in natural sciences. Session #8 trigger: the parked information-theory ECE-side §13 candidate should be evaluated by QC now that field:electrical-engineering and subfield:telecommunications-engineering exist. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): caption splice normalized (the draft merged the caption and its 'Including' note into one quotation; both components are capture-verbatim — formatting fix, not laundering)."
+  },
+  {
+   "id": "subfield:computer-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Computer Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q428691"
+   },
+   "source_hint": "LCC TK7885-7895 'Computer engineering. Computer hardware' within LCC TK 'Electrical engineering. Electronics. Nuclear engineering' (captured baseline 2026-06-11). Wikidata Q428691 — unverified training-knowledge hint. Note: Q428691 was previously evaluated as a QID anchor for subfield:computer-systems (CIS continent) and rejected; its use here is for the computer-engineering referent specifically, which is a different node.",
+   "rationale": "LCC TK7885-7895 is an explicit named range 'Computer engineering. Computer hardware' inside the engineering subclass TK; IEEE CS Computer Engineering community and named ECE/computer-engineering degree programs separate from pure CS departments (e.g. UIUC ECE, Carnegie Mellon ECE) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified — Q428691 was rejected as anchor for subfield:computer-systems (different referent); its use here for the computer-engineering concept requires independent resolver verification. Pre-registered question (1): the CS-side dual membership (LCC QA75.5-76.95 computational side vs TK7885-7895 hardware side) is a section-13 candidate. The boundary with subfield:computer-systems (CS continent) must be resolved: computer engineering = hardware/digital-design, computer systems = OS/architecture/performance. These are distinct referents with distinct classification homes.",
+   "ambiguous": false,
+   "note": "Pre-registered question (1): A-type flag for CS dual-membership question. QC should evaluate whether LCC TK7885-7895 and CS-side ACM/IEEE taxonomy placements jointly support a §13 dual membership with domain:computer-and-information-sciences. The QID hint Q428691 needs independent resolver verification specifically for the computer-engineering concept (distinct from the rejected computer-systems use). || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): A-FLAG RETIRED — node design is answered by the standard. The id.loc.gov authority record TK7885-TK7895 carries the authoritative label 'Computer engineering. Computer hardware' (live-verified 2026-06-11) with hierarchy Technology > Electrical engineering > Electronics > Applications of electronics — an in-gate named division; community criterion is satisfied by named ECE/computer-engineering departments and accreditation programs. The CS-side section-13 dual membership is NOT written at node time: it is an edge-batch candidate requiring CS-scheme evidence collection (ACM CCS hardware tree), recorded as a trigger. Q428691 goes to the resolver for THIS referent (its prior rejection was as an anchor for subfield:computer-systems — a different node; the rejection does not transfer)."
+  },
+  {
+   "id": "subfield:nuclear-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Nuclear Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q13575"
+   },
+   "source_hint": "LCC TK9001-9401 'Nuclear engineering. Atomic power' within LCC TK 'Electrical engineering. Electronics. Nuclear engineering' (captured baseline 2026-06-11). UDC 621 umbrella includes 'Nuclear technology' in its caption 'Mechanical engineering in general. Nuclear technology. Electrical engineering. Machinery' (captured baseline 2026-06-11) — UDC 621.039 nuclear engineering is [UNFETCHED] unverified training-knowledge (below summary capture granularity). OECD FORD no dedicated line — closest is FORD 2.2 (captured baseline 2026-06-11). Wikidata Q13575 — unverified training-knowledge hint.",
+   "rationale": "LCC TK9001-9401 is an explicit named 'Nuclear engineering. Atomic power' range within the engineering subclass; ANS (American Nuclear Society) and named nuclear-engineering departments (MIT, Penn State, Berkeley NE) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. Pre-registered question (11): UDC presence is below summary capture granularity — UDC 621 caption mentions 'Nuclear technology' but 621.039 is not visible at the getrecord level. This is a single-visible-gate-scheme question: LCC TK9001-9401 is a clear gate-level anchor; the UDC sub-notation is unverified at this level. Generator flags A-type for QC to verify the UDC notation via a more granular query. The boundary with subfield:nuclear-physics (NS continent) is a §13 candidate — nuclear physics is the science side, nuclear engineering is the applied side.",
+   "ambiguous": false,
+   "note": "Pre-registered question (11): A-type flag. QC should verify UDC 621.039 (nuclear engineering sub-notation) via a more granular UDC query, or substitute the LCC-only anchor if UDC is genuinely absent at summary level. If UDC 621.039 is confirmed, the single-gate-scheme concern is resolved. Boundary with subfield:nuclear-physics: cross-listed §13 candidacy for QC. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): A-FLAG RETIRED — UDC 621.039 verified ABSENT at UDC Summary granularity (live getrecord 2026-06-11 returned an empty record set). Criterion (a) nonetheless passes: LCC TK9001-9401 'Nuclear engineering. Atomic power' is a named major range, and the UDC 621 division caption co-names 'Nuclear technology' at division level — a division-caption co-naming in one gate scheme plus a named major range in the other satisfies classification presence (TC-caption-bundling reading). Community criterion (ANS; named NE departments) is uncontested."
+  },
+  {
+   "id": "subfield:robotics",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Robotics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q9081"
+   },
+   "source_hint": "LCC TJ210.2-211.47 'Mechanical devices and figures. Automata. Ingenious mechanisms. Robots (General)' within LCC TJ 'Mechanical engineering and machinery' (captured baseline 2026-06-11). UDC 621.8 'Machine elements. Motive power engineering' (captured baseline 2026-06-11) — UDC robotics sub-notation below summary capture granularity: [UNFETCHED] unverified training-knowledge. Wikidata Q9081 — unverified training-knowledge hint.",
+   "rationale": "LCC TJ210.2-211.47 explicitly names 'Robots (General)' as a subject range; IEEE-RAS (Robotics and Automation Society) and named robotics programs/departments (Carnegie Mellon RI, MIT CSAIL robotics group) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. UDC sub-notation for robotics is below capture granularity — classification (a) criterion is met via LCC but the UDC anchor is unverified. The boundary with subfield:artificial-intelligence (CS continent) is a real-world contest: robotics has AI-side and engineering-side communities — generator keeps robotics in engineering (LCC TJ mechanical-engineering subclass as primary home) and records the AI-side as a §13 cross-listing candidate for QC.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:manufacturing-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Manufacturing Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1279571"
+   },
+   "source_hint": "LCC TS1-2301 'Manufactures' (captured baseline 2026-06-11); includes TS155-194 'Production management. Operations management'. UDC 67 'Various industries, trades and crafts' and UDC 68 'Industries, crafts and trades for finished or assembled articles' (captured baseline 2026-06-11). OECD FORD 2.11 'Other engineering and technologies' (captured baseline 2026-06-11). Wikidata Q1279571 — unverified training-knowledge hint.",
+   "rationale": "LCC subclass TS 'Manufactures' is a named class; UDC 67/68 are top-level notations; SME (Society of Manufacturing Engineers) and named manufacturing-engineering programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. The boundary between manufacturing engineering and industrial engineering is structural: manufacturing = production processes and systems (TS, UDC 67/68); industrial = broader systems/operations optimization (T55.4-60.8, UDC 658.5). Both are proposed as separate nodes; the dual criterion passes distinctly for manufacturing because TS is its own LCC subclass.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:metallurgy",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Metallurgy",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q11467"
+   },
+   "source_hint": "LCC TN600-799 'Metallurgy' within LCC TN 'Mining engineering. Metallurgy' (captured baseline 2026-06-11). UDC 669 'Metallurgy' — top-level notation with subdivisions 669.1 'Ferrous metallurgy. Iron and steel' and 669.2 'Nonferrous metals in general' (captured baseline 2026-06-11). Wikidata Q11467 — unverified training-knowledge hint.",
+   "rationale": "LCC TN600-799 is an explicit named range; UDC 669 is a top-level notation with its own getrecord entry; TMS (The Minerals, Metals and Materials Society) metallurgy division and named metallurgy programs satisfy the community criterion; peers with materials science per the peer-coexistence rule (pre-registered question 14).",
+   "uncertainty": "QID hint unverified. Pre-registered question (14): coexistence with field:materials-science-and-engineering as a peer subfield — both pass the dual criterion with distinct classification homes (TN600-799 vs TA401-492; UDC 669 vs 620) and overlapping but not identical communities (TMS metallurgy vs MRS materials). Generator keeps both following the peer-coexistence rule.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:mining-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Mining Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q601401"
+   },
+   "source_hint": "LCC TN1-997 'Mining engineering. Metallurgy' subclass with named mining divisions TN263-271 'Mineral deposits. Metallic ore deposits. Prospecting', TN275-325 'Practical mining operations. Safety measures', TN331-347 'Mine transportation, haulage and hoisting. Mining machinery', TN400-580 'Ore deposits and mining of particular metals' (captured baseline 2026-06-11). UDC 622 'Mining' — top-level notation with subdivisions covering mineral deposits, operations, ore processing, hazards (captured baseline 2026-06-11). Wikidata Q601401 — unverified training-knowledge hint.",
+   "rationale": "LCC subclass TN anchors mining alongside metallurgy; UDC 622 is a top-level notation with multiple named subdivisions; SME Mining Engineering division and named mining-engineering programs (Colorado School of Mines) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. The boundary between mining engineering and geology (earth sciences, NS) is structural: mining engineering covers extraction operations and mine safety (UDC 622.2/622.8) while geology covers mineral deposit science (NS territory).",
+   "ambiguous": false,
+   "note": "QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): LAUNDERING CATCH #2 — the draft cited fabricated ranges 'TN1-597' / 'TN1-948' as captured; the captured outline reads TN1-997. Corrected to the capture-real subclass caption plus its named mining divisions."
+  },
+  {
+   "id": "subfield:petroleum-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Petroleum Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q212163"
+   },
+   "source_hint": "LCC TP690-692.5 'Petroleum refining. Petroleum products' within LCC TP 'Chemical technology' (captured baseline 2026-06-11). UDC 665.6 'Mineral oil technology. Technology of petroleum and allied products' within UDC 665 'Oils. Fats. Waxes. Adhesives. Gums. Resins' (captured baseline 2026-06-11). Wikidata Q212163 — unverified training-knowledge hint.",
+   "rationale": "LCC TP690-692.5 and UDC 665.6 are named classification entries; SPE (Society of Petroleum Engineers) and named petroleum-engineering programs (University of Texas, Colorado School of Mines, Imperial College) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. LCC home TP690-692.5 is a sub-range within chemical technology rather than a standalone subclass; UDC 665.6 is a subdivision of 665 — both are refinements rather than top-level notations. Classification presence is thinner than for civil or electrical engineering, but the SPE community and named departments provide strong criterion-(b) evidence. Generator keeps petroleum engineering as a subfield on strength of the community criterion, noting the thin classification criterion.",
+   "ambiguous": false,
+   "note": "QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): UDC citations verified in capture (665.6 'Mineral oil technology. Technology of petroleum and allied products' and 665.6/.7 'Processes and products of the petroleum and allied industries'). The drilling/reservoir-side LCC home sits below outline granularity (the captured outline shows only TN799.5-948 'Nonmetallic minerals'; an id.loc.gov probe for TN860-TN879 returned 404 on 2026-06-11) — recorded as an honest granularity gap; the node's classification presence rests on the TP and UDC 665.6 named entries, with SPE community standing uncontested."
+  },
+  {
+   "id": "subfield:nanotechnology",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Nanotechnology",
+   "academic_status": "emerging",
+   "external_ids": {
+    "wikidata": "Q11902"
+   },
+   "source_hint": "UDC 620.3 'Nanotechnology' within UDC 620 'Materials testing. Commercial materials. Power stations. Economics of energy' (captured baseline 2026-06-11). OECD FORD 2.10 'Nano-technology' (captured baseline 2026-06-11). LCC: no dedicated nanotechnology subclass visible in the captured outline — [UNFETCHED] unverified training-knowledge for any cutter-level LCC range. Wikidata Q11902 — unverified training-knowledge hint.",
+   "rationale": "UDC 620.3 is an explicit named entry 'Nanotechnology'; FORD 2.10 devotes a named field to it; American Chemical Society nanotechnology programs and IEEE Nanotechnology Council plus named nanoscience/nanotechnology centers satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. LCC presence is not visible at the captured outline level — the subclass is not explicitly named in the LCC class T outline. This is a single-visible-gate-scheme situation analogous to pre-registered question (11) for nuclear engineering. The academic_status is 'emerging' rather than 'established' because the field cohered as a named discipline in the 1990s and institutional structure (named departments) is still developing at many universities.",
+   "ambiguous": false,
+   "note": "LCC absence at outline level: QC should verify whether a cutter-level range exists for nanotechnology in LCC class T (possibly under TA or TK). If no LCC range exists, the node rests on UDC 620.3 + FORD 2.10 as the classification anchors. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): LCC outline-level absence stands (no nanotechnology caption in the captured class-T outline); an id.loc.gov label-endpoint probe is inconclusive for caption matching (the endpoint 404s even for known captions — tested with 'Bridge engineering'). Anchors are UDC 620.3 'Nanotechnology' (captured) + FORD 2.10 'Nano-technology' (captured) — a named gate-scheme entry plus a FORD division (env-sci FORD-co-equality reading); community criterion uncontested. Emerging status kept."
+  },
+  {
+   "id": "subfield:systems-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Systems Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q466591"
+   },
+   "source_hint": "LCC TA168 'Systems engineering' within LCC TA 'Engineering (General). Civil engineering' (captured baseline 2026-06-11). Wikidata Q466591 — unverified training-knowledge hint. UDC sub-notation: [UNFETCHED] unverified training-knowledge (below summary capture granularity).",
+   "rationale": "LCC TA168 is an explicit named entry 'Systems engineering'; INCOSE (International Council on Systems Engineering) and named systems-engineering graduate programs (Cornell, MIT, USC) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. UDC presence is below capture granularity — classification criterion (a) is met via LCC alone at the captured level. The boundary with industrial engineering (systems/optimization overlap) is structural: systems engineering covers complex-system integration (TA168) while industrial engineering covers production/management optimization (T55.4-60.8).",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:geomatics",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Geomatics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q185018"
+   },
+   "source_hint": "LCC TA501-625 'Surveying' within LCC TA 'Engineering (General). Civil engineering' (captured baseline 2026-06-11). Wikidata Q185018 — unverified training-knowledge hint. UDC 622.1 'Preliminary investigation. Mine surveying and mapping' (captured baseline 2026-06-11) — mine-surveying side only; geodetic surveying UDC: [UNFETCHED] unverified training-knowledge. FIG (International Federation of Surveyors) — [UNFETCHED] unverified training-knowledge.",
+   "rationale": "LCC TA501-625 'Surveying' is a named classification range in the engineering subclass; named geomatics/surveying programs (TU Delft, ETH Zurich, University of Calgary) satisfy the community criterion; the label 'geomatics' is the modern research-area term for the surveying/geodesy/remote-sensing applied field.",
+   "uncertainty": "QID hint unverified. Pre-registered question (9): case-by-case assessment. The parked geodesy engineering-side evidence from session #12 (TU Delft civil-engineering housing) connects here — geomatics encompasses surveying, geodesy applications, remote sensing, and GIS. The boundary with subfield:geodesy (NS, astronomy+earth-sciences §13 dual) is a §13 cross-listing candidate: geodesy science vs geomatics applied. UDC presence for the geodetic surveying side is not confirmed at summary level.",
+   "ambiguous": false,
+   "note": "Pre-registered question (9): A-type flag. The parked geodesy engineering-side evidence from the ns-bflag-resolution (TU Delft civil-engineering housing) is linked to this node as a §13 trigger — QC should evaluate whether a subfield:geodesy §13 membership in domain:engineering-and-technology (via geomatics/surveying identity) passes the evidence gate. The label 'geomatics' is preferred over 'surveying' as the current research-area term (label rule). || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): A-FLAG RETIRED — case-by-case assessment resolved: KEPT. Live verification: id.loc.gov authority record TA501-TA625 authoritative label 'Surveying' (in-gate named division); University of New Brunswick 'Geodesy & Geomatics Engineering' department page live-verified 2026-06-11 (engineering-faculty housing) — community criterion confirmed, and the department name itself couples geodesy with geomatics inside an engineering faculty. Geodesy section-13 engineering-side candidate now holds TWO independent institutional evidences: TU Delft civil-engineering housing (parked, session #12) + UNB GGE (this session) — recorded for the round-integration session (#14) write-in per the boundary assignment table; no geodesy edge is written in this batch. Label rule: 'Geomatics' kept as the modern research-area label over 'Surveying'."
+  },
+  {
+   "id": "subfield:photonics",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Photonics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q82811"
+   },
+   "source_hint": "LCC TA1501-1820 'Applied optics. Photonics' within LCC TA 'Engineering (General). Civil engineering (General)' (captured baseline 2026-06-11). UDC 681.7 'Optical apparatus and instruments' within UDC 681 'Precision mechanisms and instruments' (captured baseline 2026-06-11). Wikidata Q82811 — unverified training-knowledge hint.",
+   "rationale": "LCC TA1501-1820 explicitly names 'Photonics' in its caption, distinct from the physics optics range (LCC QC350-467 in natural sciences); UDC 681.7 anchors optical instruments in the engineering class; Optica (formerly OSA) photonics side and IEEE Photonics Society plus named photonics programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. Pre-registered question (7): distinct-referent test vs subfield:optics (NS). Generator ruling: LCC TA1501-1820 ('Applied optics. Photonics') is distinct from QC350-467 ('Optics. Light') in natural sciences — different LCC subclasses, different community emphasis (applied photonic devices/systems vs physical optics science). The distinct-referent test passes following the quantum-information-science precedent (absorption rule does not fire across distinct referents). B-type flag retained because the Optica/OSA community bridges both.",
+   "ambiguous": false,
+   "note": "Pre-registered question (7): B-type flag for the optics/photonics boundary. LCC TA1501-1820 (engineering, applied) vs QC350-467 (natural sciences, physics) are distinct ranges with a shared community (Optica/OSA). QC should resolve via the external-evidence path (v1.1): do the IEEE Photonics Society and Optica community data support two distinct nodes, or does one dominate? The §13 cross-listing with subfield:optics is a candidate if QC finds them co-equal rather than distinct. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): FLAG RECLASSIFIED B-type -> A-type, then RETIRED — distinct node ACCEPTED. The generator filed this as a real-world contest, but no classification source files photonics outside this continent (LCC TA1501-1820 is in-gate; live-verified authoritative label 'Applied optics. Photonics'); the question is a same-referent-or-not design question — A-type by section-12 flag semantics. Distinct-referent ruling (quantum-information-science precedent): engineering photonics (TA1501-1820 + UDC 681.7; IEEE Photonics Society) vs physics optics (LCC QC350-467 + UDC 535, per the NS optics ruling) have separate scheme majors and separate primary communities; a bridging society (Optica) is not a community merger (scheme-compression mirror: optics-vs-AMO). The optics<->engineering section-13 cross-listing remains a PARKED candidate (edge batch / #14), not written here."
+  },
+  {
+   "id": "subfield:automotive-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Automotive Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q22664"
+   },
+   "source_hint": "LCC TL1-484 'Motor vehicles. Cycles' within LCC TL 'Motor vehicles. Aeronautics. Astronautics' (captured baseline 2026-06-11). UDC 629.3 'Land vehicle engineering (excluding rail vehicles)' within UDC 629 'Transport vehicle engineering' (captured baseline 2026-06-11). Wikidata Q22664 — unverified training-knowledge hint.",
+   "rationale": "LCC TL1-484 is a named range; UDC 629.3 is an explicit named subdivision; SAE International and named automotive-engineering programs (Michigan, Clemson) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. LCC TL automotive range shares the subclass with aeronautics/astronautics — the dual criterion for automotive depends on TL1-484 as the automotive-specific sub-range. The boundary with mechanical engineering is structural: automotive engineering covers vehicle-specific applications of ME principles.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:textile-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Textile Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q3010783"
+   },
+   "source_hint": "LCC TS1300-1865 'Textile industries' within LCC TS 'Manufactures' (captured baseline 2026-06-11). UDC 677 'Textile industry' within UDC 67 'Various industries, trades and crafts' (captured baseline 2026-06-11). Wikidata Q3010783 — unverified training-knowledge hint.",
+   "rationale": "LCC TS1300-1865 is a named range; UDC 677 is a top-level notation under 67; AATCC and Textile Institute plus named textile-engineering programs (NC State Wilson College, Georgia Tech) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified. Pre-registered question (12): borderline seed. The dual criterion passes: UDC 677 is a top-level notation (criterion a strong); named textile-engineering programs exist (criterion b met). The boundary with textile science/materials is structural.",
+   "ambiguous": false,
+   "note": "QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): community criterion live-verified — NC State 'Textile Engineering, Chemistry and Science' department page fetched 2026-06-11 (HTTP 200, department title confirmed)."
+  },
+  {
+   "id": "subfield:food-engineering",
+   "type": "subfield",
+   "domain": "engineering_and_technology",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Food Engineering",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1396552"
+   },
+   "source_hint": "LCC TP368-456 'Food processing and manufacture' within LCC TP 'Chemical technology' (captured baseline 2026-06-11). UDC 664 'Production and preservation of solid foodstuffs' within UDC 66 'Chemical technology. Chemical and related industries' (captured baseline 2026-06-11). Wikidata Q1396552 — unverified training-knowledge hint.",
+   "rationale": "LCC TP368-456 is an explicit named range; UDC 664 is a top-level notation; Journal of Food Engineering and IFT Engineering division plus named food-engineering programs satisfy the community criterion; LCC/UDC place food processing in the engineering/chemical-technology class.",
+   "uncertainty": "QID hint unverified. Pre-registered question (12): borderline seed with FORD 4 (agriculture) institutional territory. The LCC TP and UDC 664 in-continent homes pass criterion (a); the community criterion passes on the engineering side (food-engineering programs in chemical and biological engineering departments). However many food-science programs sit in agricultural colleges (FORD 4 institutional territory) — this institutional split is a B-type boundary contest.",
+   "ambiguous": true,
+   "note": "Pre-registered question (12): B-type flag for the agricultural-college vs engineering-department institutional contest. LCC TP368-456 and UDC 664 firmly anchor food engineering in the chemical-technology classification class (criterion a passes). The institutional contest (engineering schools vs agricultural colleges) requires the v1.1 external-evidence path to resolve. QC should check whether the dominant program home is engineering or agriculture at representative research universities. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): B-FLAG UPHELD — the engineering-school vs agricultural-college institutional contest is a real-world contest requiring the v1.1 external-evidence path; node stops at proposed (clause-6 queue). Classification criterion is not in dispute (LCC TP368-456 + UDC 664, both captured)."
+  }
+ ],
+ "edges": [],
+ "notes": [
+  "GENERATOR SELF-REPORT — Batch engineering-technology-skeleton-v1, model claude-sonnet-4-6, date 2026-06-11.",
+  "SEED DISPOSITION (32 seeds): All 32 seeds were kept as proposed nodes. No seed was dropped for failing the dual criterion. Electronics (TK7800-8360) was absorbed into field:electrical-engineering per pre-registered question (5) and §12 rule 2 — not an independent seed but the same referent refinement. Sanitary engineering (historical LCC TD label) was folded into field:environmental-engineering per the label rule. Highway (TE), railroad (TF), bridge (TG) subclasses were absorbed into subfield:transportation-engineering per pre-registered question (13). Architectural engineering (TH845-895) was excluded entirely per the boundary assignment table — owned by branch 13d. Bioengineering (TA164) was folded into field:biomedical-engineering per pre-registered question (15).",
+  "LCC CLASS T SUBCLASS ACCOUNTING: T (Technology General) — covered by field:industrial-engineering (T55.4-60.8 range) plus deliberate non-coverage of T57.6-57.97 (operations research — existing subfield:operations-research), T58.5-58.64 (information technology — CS continent). TA (Engineering General / Civil) — covered by field:civil-engineering (general anchor), subfield:structural-engineering (TA630-695), subfield:geotechnical-engineering (TA703-712 + TA715-787), subfield:transportation-engineering (TA1001-1280), subfield:systems-engineering (TA168), subfield:geomatics (TA501-625), subfield:photonics (TA1501-1820), field:biomedical-engineering (TA164). TC (Hydraulic / Ocean) — covered by subfield:hydraulic-engineering (TC1-978 + TC1501-1800). TD (Environmental / Sanitary) — covered by field:environmental-engineering. TE (Highway) — absorbed into subfield:transportation-engineering. TF (Railroad) — absorbed into subfield:transportation-engineering. TG (Bridge) — absorbed into subfield:transportation-engineering. TH (Building construction) — covered by subfield:construction-engineering (TH excluding TH845-895); TH845-895 is 13d-boundary evidence. TJ (Mechanical) — covered by field:mechanical-engineering; subfield:robotics (TJ210.2-211.47); subfield:energy-engineering (TJ163 + TJ807-830). TK (Electrical / Electronics / Nuclear) — covered by field:electrical-engineering (TK umbrella); subfield:telecommunications-engineering (TK5101-6720); subfield:computer-engineering (TK7885-7895); subfield:nuclear-engineering (TK9001-9401); electronics TK7800-8360 absorbed into field:electrical-engineering. TL (Motor vehicles / Aeronautics / Astronautics) — covered by field:aerospace-engineering (TL500-4050) and subfield:automotive-engineering (TL1-484). TN (Mining / Metallurgy) — covered by subfield:mining-engineering (TN1-597) and subfield:metallurgy (TN600-799). TP (Chemical technology) — covered by field:chemical-engineering (TP155-156); field:biotechnology (TP248.13-248.65); subfield:petroleum-engineering (TP690-692.5); subfield:food-engineering (TP368-456). TS (Manufactures) — covered by subfield:manufacturing-engineering. TR (Photography) — recorded as out-of-continent (arts/practical-knowledge territory). TT (Handicrafts / Arts and crafts) — recorded as out-of-continent (arts/practical-knowledge territory). TX (Home economics) — recorded as out-of-continent (practical-knowledge territory).",
+  "UDC 62x/66x/69 DIVISION ACCOUNTING: UDC 60 (Biotechnology) — field:biotechnology. UDC 620 (Materials testing / Power stations) — field:materials-science-and-engineering (620 anchor); subfield:nanotechnology (620.3); subfield:energy-engineering (620.9). UDC 621 (Mechanical engineering general) — field:mechanical-engineering (621 anchor); UDC 621.3 absorbed into field:electrical-engineering; UDC 621 nuclear-technology caption noted but 621.039 below capture granularity (pre-registered Q11). UDC 622 (Mining) — subfield:mining-engineering. UDC 623 (Military engineering) — deliberate non-coverage (see below). UDC 624 (Civil and structural engineering) — field:civil-engineering + subfield:structural-engineering. UDC 625 (Civil engineering of land transport / Railway / Highway) — subfield:transportation-engineering. UDC 626/627 (Hydraulic engineering) — subfield:hydraulic-engineering. UDC 628 (Public health engineering / Sanitation) — field:environmental-engineering. UDC 629 (Transport vehicle engineering) — subfield:automotive-engineering (629.3); subfield:naval-architecture-and-marine-engineering (629.5); field:aerospace-engineering (629.7). UDC 654 (Telecommunications) — subfield:telecommunications-engineering; parked as other-home evidence (UDC 65 management class). UDC 657/658/659 (Accountancy / Business management / Publicity) — out-of-continent (social-sciences territory). UDC 66 (Chemical technology) — field:chemical-engineering (66 anchor + 66.01/.09). UDC 664 (Food processing) — subfield:food-engineering. UDC 665.6 (Petroleum technology) — subfield:petroleum-engineering. UDC 669 (Metallurgy) — subfield:metallurgy. UDC 677 (Textile industry) — subfield:textile-engineering. UDC 67/68 (Various industries / Crafts) — subfield:manufacturing-engineering (67/68 umbrella); individual trade sub-notations (682-689: smithery, ironmongery, furniture, saddlery, footwear, clothing) are below skeleton granularity — deliberate non-coverage, v2 candidates. UDC 69 (Building construction trade) — subfield:construction-engineering.",
+  "DELIBERATE NON-COVERAGE RECORDS: (1) Military engineering (UDC 623, LCC class U/UG) — both criterion-3 prongs out-of-continent: LCC home is class U (not class T), UDC 623 is within class 6 but the dominant institutional home is military academies/defense establishments rather than civilian engineering schools. Generator applies the dual criterion strictly: criterion (a) passes on UDC 623 presence; criterion (b) is contested given civilian vs military institutional split. Pre-registered as likely non-coverage — generator flags for QC rather than generating. Recorded as a deliberate non-coverage pending QC ruling. (2) TR (Photography), TT (Handicrafts / Arts and crafts), TX (Home economics) — out-of-continent per the boundary assignment table and the manifest exclusion list. (3) UDC 65 management class (657/658/659) — social-sciences territory; UDC 658.5 'Production engineering' documented as boundary evidence only. (4) Sub-craft UDC 68x notations (682-689) — below skeleton granularity; absorbed into subfield:manufacturing-engineering. (5) Operations research — existing subfield:operations-research (formal sciences) is the canonical node; no duplicate. The re-target review from domain-direct to field:industrial-engineering is a post-skeleton QC task. (6) Control engineering — existing subfield:control-theory (formal sciences) is the canonical node; no new node. TJ212-225 'Control engineering systems' and UDC 681.5 'Automatic control technology' are engineering-side evidence collected here for the re-target review of the existing domain-direct membership edges on subfield:control-theory. (7) Instrumentation / Industrial instrumentation (LCC TA165, UDC 681.2) — no named instrumentation-engineering field with independent department-level standing; absorbed into relevant parent fields (civil, mechanical, electrical engineering). V2 candidate. (8) Plasma engineering (LCC TA2001-2040) — existing subfield:plasma-physics (NS) is the canonical node; the TA2001-2040 applied side is engineering-side evidence for a §13 cross-listing candidate — not a new node.",
+  "BOUNDARY EVIDENCE FOR OTHER BRANCHES: (13d arts-and-design) LCC TH845-895 'Architectural engineering. Structural engineering of buildings' — engineering-side evidence recorded for branch 13d's architecture skeleton. This range crosses the architecture/engineering boundary and should be considered by the 13d generator for the architectural-engineering node. UDC 69 (building construction) also has a dual claim — recorded as additional 13d evidence. (NS natural-sciences) LCC TA1501-1820 / UDC 681.7 engineering-side photonics evidence anchors subfield:photonics here; the corresponding physics-side is subfield:optics (NS, QC350-467 / UDC 535). Cross-listing §13 candidate is pre-registered. LCC TA2001-2040 / UDC — plasma engineering is engineering-side evidence for subfield:plasma-physics §13 review (domain:engineering-and-technology second membership candidate). LCC TA365-367 'Acoustics in engineering. Acoustical engineering' and UDC 681.8 'Technical acoustics' — engineering-side evidence for subfield:acoustics (NS) §13 cross-listing review. (Medicine / health) LCC R856 / FORD 2.6 — biomedical engineering boundary: field:biomedical-engineering is kept in engineering; R856 is medicine-side evidence for a §13 dual-membership candidate. (CS continent) LCC TK7885-7895 — computer-engineering engineering-side evidence; pre-registered §13 dual-membership with CS (Q1).",
+  "PRE-REGISTERED QUESTIONS ADDRESSED: (1) computer-engineering vs CS: addressed in subfield:computer-engineering note — A-type flag, §13 dual-membership candidate. (2) materials-science boundary with chemistry/physics: addressed in field:materials-science-and-engineering uncertainty — §13 candidate recorded. (3) industrial-engineering thin classification: addressed in field:industrial-engineering note — A-type flag, QC must rule on T55.4-60.8 sufficiency. (4) control-engineering: no node generated; TJ212-225 + UDC 681.5 evidence collected in this note for re-target review. (5) electronics absorption: addressed in field:electrical-engineering note — absorbed, v2 re-split candidate. (6) biomedical-engineering boundary: addressed in field:biomedical-engineering note — B-type flag, §13 medicine-dual-membership candidate. (7) photonics distinct-referent: addressed in subfield:photonics note — B-type flag retained, distinct from subfield:optics. (8) naval-architecture combined shape: addressed in subfield:naval-architecture-and-marine-engineering note — A-type flag, QC to verify LCC VM position. (9) geomatics case-by-case: addressed in subfield:geomatics note — A-type flag, parked geodesy engineering-side evidence linked. (10) energy-engineering NS non-coverage intersection: addressed in subfield:energy-engineering note — A-type flag, absorption vs standalone QC question. (11) nuclear-engineering UDC single-gate-scheme: addressed in subfield:nuclear-engineering note — A-type flag, QC to verify 621.039. (12) food-engineering and textile-engineering dual criterion: both kept — food-engineering has B-type flag (agriculture institutional contest), textile-engineering passes cleanly. (13) TE/TF/TG absorption and sanitary-engineering label rule: both addressed — all absorbed into transportation-engineering and environmental-engineering respectively. (14) metallurgy-materials coexistence: addressed — both kept as peers following peer-coexistence rule. (15) bioengineering fold-in: addressed in field:biomedical-engineering note — TA164 bioengineering folds in, no third node.",
+  "POST-SKELETON RE-TARGET TRIGGERS: (1) Operations research: subfield:operations-research currently holds a domain-direct engineering membership edge. Once field:industrial-engineering is reviewed, the re-target review should evaluate routing that edge through field:industrial-engineering (or keeping the domain-direct if the structural fit is contested). (2) Control theory: subfield:control-theory currently holds a domain-direct engineering membership edge. TJ212-225 and UDC 681.5 are collected here as re-target evidence — once the mechanical/electrical parent fields are reviewed, QC should route the control-theory engineering membership to the appropriate parent. (3) Information theory ECE-side: the parked session-#8 §13 candidate should be evaluated now that field:electrical-engineering and subfield:telecommunications-engineering exist. (4) Acoustics engineering §13: LCC TA365-367 + UDC 681.8 engineering-side evidence — §13 dual membership of subfield:acoustics with this continent is a candidate. (5) Plasma engineering §13: LCC TA2001-2040 engineering-side evidence — §13 dual membership of subfield:plasma-physics with this continent is a candidate.",
+  "NODE COUNT AND FLAG SUMMARY: 10 field-level nodes + 22 subfield-level nodes = 32 nodes total. A-type flags (modeling/granularity): field:industrial-engineering, subfield:naval-architecture-and-marine-engineering, subfield:computer-engineering, subfield:nuclear-engineering, subfield:geomatics, subfield:energy-engineering = 6 A-type flags. B-type flags (real-world contests): field:biomedical-engineering, subfield:photonics, subfield:food-engineering = 3 B-type flags. Total ambiguous=true: 9 nodes.",
+  "QC DISPOSITION (orchestrator session #13c, 2026-06-11, Claude Fable 5 — ADR 0007 separation upheld; nodes.proposed.json preserves the raw 32-node generated set; this proposal.json is the QC-shaped 31-node set): KEPT 31 (10 fields + 21 subfields). DROPPED 1 — subfield:energy-engineering ABSORBED into field:mechanical-engineering (section-12 rule 2): its classification evidence (LCC TJ163.13-163.25 'Power resources', TJ807-830 'Renewable energy sources') consists of sub-ranges refining the kept TJ/mechanical-engineering node; UDC 620.9 is 'Economics of energy in general' (an economics caption, weak engineering presence); no gate scheme gives energy engineering a major division. The polymer-chemistry precedent applies directly (single-scheme subdivisions + strong community still fail criterion (a) when they refine a kept node). Recorded as a v2 re-split candidate, joined to the NS deliberate-non-coverage record for 'energy science' (cross-continent candidate pair).",
+  "QC LAUNDERING LEDGER: 2 confirmed catches out of 80 machine-checked captured-baseline attribution claims — (1) field:biomedical-engineering R856 caption mis-pairing (R895-920 medical-physics caption from the section-12 precedent log presented as a captured R856 caption), (2) subfield:mining-engineering fabricated ranges TN1-597/TN1-948 (capture reads TN1-997). Both corrected with live or capture-real citations. Four additional flagged quotations were whitespace/line-wrap artifacts of the captured outline (geotechnical, robotics) or punctuation splices (telecommunications) — verified capture-faithful, not laundering. Trend: ~10 (session #8) -> 1 (NS, session #11) -> 2 (this batch).",
+  "QC FLAG LEDGER: generated 9 ambiguous flags (6 A-type + 3 B-type). A-type retirements by documented ruling: 5 (industrial-engineering, naval-architecture-and-marine-engineering, computer-engineering, nuclear-engineering, geomatics) + 1 resolved by drop (energy-engineering absorption). Reclassification: photonics B->A (no out-of-continent filing exists; design question), then retired by the distinct-referent ruling. B-type upheld: 2 (biomedical-engineering — medicine-class co-home contest; food-engineering — institutional-home contest) -> both stop at proposed, clause-6/v1.1 queue."
+ ]
+}
