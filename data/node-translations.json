@@ -1262,21 +1262,24 @@
     "locale": "en",
     "label": "Chemistry",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Chemistry is one of the natural sciences, concerned with the substances that make up matter and the changes they undergo. The Encyclopaedia Britannica describes it as \"the science of the properties, composition, and structure of substances (defined as elements and compounds), the transformations they undergo, and the energy that is released or absorbed during these processes,\" noting that chemistry \"is concerned with the properties of atoms and the laws governing their combinations.\" As a top-level field it serves as an umbrella over numerous specialized subfields, including analytical, inorganic, organic, and physical chemistry, as well as crystallography and electrochemistry, each addressing a distinct aspect of the composition, structure, reactivity, or measurement of chemical systems. Its central focus on atoms, molecules, and their transformations distinguishes it from neighboring natural-science fields while linking it closely to physics, the earth sciences, and the life sciences."
   },
   {
     "node_id": "field:astronomy",
     "locale": "en",
     "label": "Astronomy",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Astronomy is the natural science devoted to celestial objects and the phenomena that occur beyond Earth's atmosphere. The Encyclopaedia Britannica characterizes it as the \"science that encompasses the study of all extraterrestrial objects and phenomena,\" adding that \"since the late 19th century, astronomy has expanded to include astrophysics, the application of physical and chemical knowledge to an understanding of the nature of celestial objects.\" As a top-level field within the natural sciences, it studies bodies such as stars, planets, galaxies, and the interstellar and intergalactic medium, as well as the structure and evolution of the universe as a whole. Modern astronomy draws heavily on physics and chemistry through astrophysics, and on observational techniques spanning the electromagnetic spectrum and beyond. It is conventionally treated as a discipline distinct from, though closely allied with, physics and the other physical sciences."
   },
   {
     "node_id": "field:earth-sciences",
     "locale": "en",
     "label": "Earth Sciences",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "The earth sciences form the top-level natural-science field concerned with the planet Earth as a physical system. The Encyclopaedia Britannica defines them as \"the fields of study concerned with the solid Earth, its waters, and the air that envelops it,\" noting that \"included are the geologic, hydrologic, and atmospheric sciences\" and that \"their broad aim is to understand Earth's present features and past evolution and to use this knowledge to benefit humankind.\" As an umbrella field, the earth sciences encompass a range of specialized disciplines—among them geology, which studies the solid Earth, alongside the sciences of the oceans, fresh waters, and atmosphere. The field investigates Earth's composition, structure, processes, and history across spatial and temporal scales, and it connects closely with the other natural sciences, including chemistry and physics, through the study of materials, energy, and planetary processes."
   },
   {
     "node_id": "field:environmental-science",
@@ -1290,7 +1293,8 @@
     "locale": "en",
     "label": "Condensed Matter Physics",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Condensed matter physics studies the properties of solid and liquid substances—materials whose constituent atoms remain in constant proximity. Encyclopaedia Britannica describes it as the \"discipline that treats the thermal, elastic, electrical, magnetic, and optical properties of solid and liquid substances.\" The American Physical Society's Division of Condensed Matter Physics, which the society states was \"Originally called the Division of Solid State Physics (DSSP)\" before being \"renamed the Division of Condensed Matter Physics to recognize that disciplines covered in the division included liquids (quantum fluids) as well as solids,\" characterizes the field as concentrating \"on such topics as superconductivity, semi-conductors, magnetism, complex fluids, and thin films,\" with \"A broad range of physical problems, both applied and basic\" investigated. In the Physics Subject Headings (PhySH) scheme maintained by the American Physical Society it appears as the discipline \"Condensed Matter, Materials & Applied Physics.\""
   },
   {
     "node_id": "subfield:atomic-molecular-and-optical-physics",
@@ -1299,42 +1303,48 @@
     "aliases": [
       "AMO Physics"
     ],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Atomic, molecular and optical (AMO) physics concerns the structure of atoms and simple molecules and their interactions with electrons and with light. The American Physical Society's Division of Atomic, Molecular and Optical Physics (DAMOP) describes its \"central focus\" as \"fundamental research on atoms, simple molecules, electrons and light, and their interactions,\" noting that it works \"through the development of methods for the control and manipulation of atoms, molecules, charged particles and light, through precision measurements and calculations of their properties, and through the invention of new ways to generate light with specific properties.\" The atomic component is treated by Encyclopaedia Britannica as \"the scientific study of the structure of the atom, its energy states, and its interactions with other particles and with electric and magnetic fields.\" In the Physics Subject Headings (PhySH) scheme maintained by the American Physical Society the field appears as the discipline \"Atomic, Molecular & Optical.\""
   },
   {
     "node_id": "subfield:optics",
     "locale": "en",
     "label": "Optics",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Optics is the science of light: its origin, its propagation, and the changes it undergoes and produces. Encyclopaedia Britannica defines it as the \"science concerned with the genesis and propagation of light and with the changes that it undergoes and produces,\" and distinguishes its principal branches, stating that \"Physical optics deals with the nature of light itself\" while \"Geometrical optics has to do with the principles that govern the image-forming properties of devices that make use of light.\" Optica, a scientific society in the field, describes itself as \"the leading society in optics and photonics,\" pairing optics with photonics as its disciplinary domain. The field has a top-level entry (UDC 535 'Optics') in the Universal Decimal Classification scheme."
   },
   {
     "node_id": "subfield:nuclear-physics",
     "locale": "en",
     "label": "Nuclear Physics",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Nuclear physics studies the atomic nucleus, the properties of nuclei and nuclear matter, and the interactions of their constituents. The American Physical Society's Division of Nuclear Physics describes itself as \"comprised of scientists and educators who study fundamental problems related to the nature of matter,\" explaining that \"Nuclear scientists probe the properties of nuclei and nuclear matter and the interactions of their ultimate constituents — quarks and gluons.\" In the Physics Subject Headings (PhySH) scheme maintained by the American Physical Society the field appears as the discipline \"Nuclear Physics.\""
   },
   {
     "node_id": "subfield:particle-physics",
     "locale": "en",
     "label": "Particle Physics",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Particle physics studies the fundamental subatomic particles and the forces through which they interact. Encyclopaedia Britannica defines it as the \"Study of the fundamental subatomic particles, including both matter (and antimatter) and the carrier particles of the fundamental interactions as described by quantum field theory,\" adding that it \"is concerned with structure and forces at this level of existence and below.\" The American Physical Society's Division of Particles and Fields gives its objective as \"the study of fundamental particles and fields, their structure, their interactions and interrelationships, the design and development of high energy accelerators, and the design and development of instrumentation techniques for high energy physics.\" In the Physics Subject Headings (PhySH) scheme maintained by the American Physical Society it appears as the discipline \"Particles & Fields.\""
   },
   {
     "node_id": "subfield:plasma-physics",
     "locale": "en",
     "label": "Plasma Physics",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Plasma physics studies plasmas—ionized media containing roughly equal numbers of positively and negatively charged particles. Encyclopaedia Britannica describes plasma as \"an electrically conducting medium in which there are roughly equal numbers of positively and negatively charged particles, produced when the atoms in a gas become ionized,\" and notes it \"is sometimes referred to as the fourth state of matter, distinct from the solid, liquid, and gaseous states.\" The American Physical Society's Division of Plasma Physics states that its objective is \"the advancement and dissemination of the knowledge, understanding, and applications of plasmas—assemblages of charged particles of natural and laboratory origin,\" spanning \"the study of the fundamental interactions of particles and light in plasmas, the study of astrophysical plasmas from planetary cores to stars, new theoretical and computational techniques to describe plasmas, and the practical application of plasmas.\" In the Physics Subject Headings (PhySH) scheme maintained by the American Physical Society it appears as the discipline \"Plasma Physics.\""
   },
   {
     "node_id": "subfield:fluid-dynamics",
     "locale": "en",
     "label": "Fluid Dynamics",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Fluid dynamics studies the motion of fluids—liquids and gases—and their response to forces. Encyclopaedia Britannica defines the broader field of fluid mechanics as the \"science concerned with the response of fluids to forces exerted upon them,\" identifying it as \"a branch of classical physics.\" The American Physical Society's Division of Fluid Dynamics states that it \"exists for the advancement and diffusion of knowledge of the physics of fluids with special emphasis on the dynamical theories of the liquid, plastic and gaseous states of matter under all conditions of temperature and pressure.\" In the Physics Subject Headings (PhySH) scheme maintained by the American Physical Society it appears as the discipline \"Fluid Dynamics.\""
   },
   {
     "node_id": "subfield:statistical-physics",
@@ -1344,14 +1354,16 @@
       "Thermodynamics",
       "Statistical Mechanics"
     ],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Statistical physics applies statistical methods to systems of many constituents in order to derive their macroscopic properties from the behavior of their microscopic parts. Encyclopaedia Britannica defines statistical mechanics—a core component—as the \"branch of physics that combines the principles and procedures of statistics with the laws of both classical and quantum mechanics, particularly with respect to the field of thermodynamics,\" noting that \"It aims to predict and explain the measurable properties of macroscopic systems\" from their microscopic constituents. The related discipline of thermodynamics is defined by Britannica as the \"science of the relationship between heat, work, temperature, and energy.\" In the Physics Subject Headings (PhySH) scheme maintained by the American Physical Society the field appears as the discipline \"Statistical Physics & Thermodynamics.\""
   },
   {
     "node_id": "subfield:acoustics",
     "locale": "en",
     "label": "Acoustics",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Acoustics is the science of sound—its production, control, transmission, reception, and effects. Encyclopaedia Britannica defines it as the \"science concerned with the production, control, transmission, reception, and effects of sound,\" noting that it began \"with its origins in the study of mechanical vibrations and the radiation of these vibrations through mechanical waves.\" Within the Universal Decimal Classification the field is grouped under UDC 534 'Vibrations. Waves. Acoustics,' reflecting its grounding in vibration and wave phenomena."
   },
   {
     "node_id": "subfield:biophysics",
@@ -1365,49 +1377,56 @@
     "locale": "en",
     "label": "Nonlinear Dynamics",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Nonlinear dynamics studies systems whose governing equations are nonlinear, giving rise to phenomena such as chaos, pattern formation, and turbulence. The American Physical Society's Division on Statistical and Nonlinear Physics (originally a Topical Group) describes its community as \"scientists working on statistical physics and nonlinear dynamics problems, such as phase transitions and critical phenomena, turbulence, pattern formation, avalanches, and chaotic dynamics.\" Chaotic behavior, a central concern of the field, is characterized by Encyclopaedia Britannica as \"the study of apparently random or unpredictable behavior in systems governed by deterministic laws.\" In the Physics Subject Headings (PhySH) scheme maintained by the American Physical Society the field appears as the discipline \"Nonlinear Dynamics.\""
   },
   {
     "node_id": "subfield:accelerator-physics",
     "locale": "en",
     "label": "Accelerator Physics",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Accelerator physics concerns the production, behavior, and use of beams of charged particles and the instruments that generate them. The American Physical Society's Division of Physics of Beams gives its objective as \"the advancement and diffusion of knowledge regarding the nature and behavior of beams and the instruments for their production and use.\" The principal instruments of the field, particle accelerators, are described by Encyclopaedia Britannica as \"any device that produces a beam of fast-moving, electrically charged atomic or subatomic particles,\" used \"in fundamental research on the structure of nuclei, the nature of nuclear forces, and the properties of nuclei not found in nature.\" In the Physics Subject Headings (PhySH) scheme maintained by the American Physical Society the field appears as the discipline \"Accelerators & Beams.\""
   },
   {
     "node_id": "subfield:soft-matter-physics",
     "locale": "en",
     "label": "Soft Matter Physics",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Soft matter physics studies materials that are readily deformed by thermal fluctuations or modest external stresses, including colloids, polymers, gels, foams, and biological and granular matter. The American Physical Society's Division of Soft Matter describes soft matter as \"a broad class of physical states ranging from colloids and micelles to biological and granular matter that are easily deformed by external stresses,\" adding that \"The common feature of these materials is that the predominant physical behaviors occur at energy scales comparable with thermal energy.\" Its stated mission is to \"advance knowledge and build community among the interdisciplinary group of scientists, mathematicians, and engineers working on soft matter physics.\" In the Physics Subject Headings (PhySH) scheme maintained by the American Physical Society it appears within the discipline \"Polymers & Soft Matter.\""
   },
   {
     "node_id": "subfield:analytical-chemistry",
     "locale": "en",
     "label": "Analytical Chemistry",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Analytical chemistry is the subfield of chemistry concerned with determining the composition of matter and the identity, quantity, and structure of its components. The Encyclopaedia Britannica, treating the subject under chemical analysis, describes it as the \"determination of the physical properties or chemical composition of samples of matter,\" noting that \"a large body of systematic procedures intended for these purposes has been continuously evolving in close association with the development of other branches of the physical sciences.\" The disciplinary community frames the field around measurement science: the journal Analytical and Bioanalytical Chemistry states that its scope covers \"fundamental and applied topics of analytical and bioanalytical measurement science\" and \"ranges from novel measurement platforms and their characterization to multidisciplinary approaches.\" The subfield develops and applies methods of qualitative and quantitative analysis, instrumentation, and separation and detection techniques used throughout the natural sciences."
   },
   {
     "node_id": "subfield:inorganic-chemistry",
     "locale": "en",
     "label": "Inorganic Chemistry",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Inorganic chemistry is the subfield of chemistry concerned with the elements and compounds that fall outside the domain of carbon-based organic chemistry. The Encyclopaedia Britannica defines it as the \"field of science concerned with the composition, properties, and structure of chemical elements and compounds that contain little or no carbon,\" and explicitly contrasts it with organic chemistry: \"It is distinguished from organic chemistry, which studies compounds that contain carbon atoms.\" The subfield encompasses the chemistry of metals and minerals, coordination compounds, main-group and transition-element species, and solid-state and organometallic systems, addressing their synthesis, bonding, structure, and reactivity. Within the broader field of chemistry it occupies a recognized major subdivision alongside the organic, physical, and analytical subfields, and it underpins areas such as materials science, catalysis, and the study of inorganic substances throughout the natural sciences."
   },
   {
     "node_id": "subfield:organic-chemistry",
     "locale": "en",
     "label": "Organic Chemistry",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Organic chemistry is the subfield of chemistry devoted to compounds of carbon. The Encyclopaedia Britannica defines it as the \"field of science concerned with the composition, properties, and structure of chemical elements and compounds that contain carbon atoms,\" and explains the field's breadth by noting that \"carbon is unique in the variety and extent of structures that can result from the three-dimensional connections of its atoms.\" The subfield studies the structure, properties, synthesis, and reactions of carbon-containing molecules, ranging from small hydrocarbons to large and structurally elaborate compounds. Within the broader field of chemistry it constitutes a recognized major subdivision, distinguished from inorganic chemistry by its focus on carbon, and it connects closely with the life sciences and with applied areas that rely on the synthesis and transformation of carbon compounds."
   },
   {
     "node_id": "subfield:physical-chemistry",
     "locale": "en",
     "label": "Physical Chemistry",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Physical chemistry is the subfield of chemistry that applies the principles of physics to chemical systems. The Encyclopaedia Britannica describes it as the \"branch of chemistry concerned with interactions and transformations of materials,\" explaining that, \"unlike other branches, it deals with the principles of physics underlying all chemical interactions, seeking to measure, correlate, and explain the quantitative aspects of reactions.\" The subfield encompasses areas such as thermodynamics, chemical kinetics, quantum chemistry, spectroscopy, electrochemistry, and statistical mechanics, providing the quantitative and theoretical foundations used across the rest of chemistry. Within the broader field it forms a recognized major subdivision alongside the analytical, inorganic, and organic subfields, and it serves as a bridge between chemistry and physics in the study of how matter behaves at the molecular and bulk levels."
   },
   {
     "node_id": "subfield:biochemistry",
@@ -1421,91 +1440,104 @@
     "locale": "en",
     "label": "Crystallography",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Crystallography is the subfield concerned with the internal arrangement of matter in crystalline solids. The Encyclopaedia Britannica defines it as the \"branch of science that deals with discerning the arrangement and bonding of atoms in crystalline solids and with the geometric structure of crystal lattices,\" and notes that \"classically, the optical properties of crystals were of value in mineralogy and chemistry for the identification of substances.\" The subfield studies how atoms, ions, and molecules are ordered in periodic structures and the symmetry and geometry of crystal lattices, and it develops and applies experimental methods—diffraction techniques in particular—for determining such structures. Historically allied with mineralogy and chemistry, crystallography provides structural information used widely across the natural sciences, including in the study of minerals, inorganic and organic compounds, and biological macromolecules."
   },
   {
     "node_id": "subfield:electrochemistry",
     "locale": "en",
     "label": "Electrochemistry",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Electrochemistry is the subfield of chemistry that studies the relationship between electricity and chemical change. The Encyclopaedia Britannica defines it as the \"branch of chemistry concerned with the relation between electricity and chemical change,\" noting that \"many spontaneously occurring chemical reactions liberate electrical energy, and some of these reactions are used in batteries and fuel cells to produce electric power,\" while conversely electric energy can be used to drive chemical reactions. The subfield encompasses the study of oxidation–reduction processes, electrodes and electrolytes, electrolysis, and the behavior of ions and charge transfer at interfaces. It underlies technologies such as batteries, fuel cells, electroplating, and corrosion science, and is conventionally treated as closely associated with physical chemistry within the broader field of chemistry."
   },
   {
     "node_id": "subfield:astrophysics",
     "locale": "en",
     "label": "Astrophysics",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Astrophysics is the branch of astronomy that studies the physical properties, composition, and structure of celestial objects and of the universe as a whole, applying the laws of physics to understand cosmic phenomena. The Encyclopaedia Britannica characterizes it as the \"branch of astronomy concerned primarily with the properties and structure of cosmic objects, including the universe as a whole.\" Its identity as a distinct division within astronomy is reflected in standard bibliographic classification: the Library of Congress Classification assigns the range QB460-QB466 to \"Astrophysics (General)\" within the astronomy subclass QB. The field connects observational astronomy with theoretical physics, treating objects such as stars, galaxies, and interstellar matter as physical systems whose behavior can be modeled through the same principles that govern matter and energy on Earth."
   },
   {
     "node_id": "subfield:cosmology",
     "locale": "en",
     "label": "Cosmology",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Cosmology is the study of the physical universe taken as a unified whole, including its large-scale structure, origin, and evolution. The Encyclopaedia Britannica describes it as the \"field of study that brings together the natural sciences, particularly astronomy and physics, in a joint effort to understand the physical universe as a unified whole,\" noting that at the largest scales a distinctive feature emerges in the form of the cosmological expansion. As a recognized division of astronomical study, it occupies its own place in standard library classification: the Library of Congress Classification assigns the range QB980-QB991 the label \"Cosmogony. Cosmology\" within the astronomy subclass QB. The discipline draws jointly on astronomy and physics to describe phenomena that have no counterpart at smaller, local scales."
   },
   {
     "node_id": "subfield:planetary-science",
     "locale": "en",
     "label": "Planetary Science",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Planetary science is the study of planets and other bodies of the solar system, addressing their origin, evolution, structure, and physical and chemical characteristics. NASA's planetary science program \"explores the objects in our solar system to better understand its history and the distribution of life within.\" The field's standing as a distinct area within astronomy is reflected in standard library classification, where the Library of Congress Classification assigns the range QB600-QB701 to \"Planets. Planetology\" within the astronomy subclass QB. Its scholarly community is institutionalized: the Division for Planetary Sciences (DPS), described in its own materials as \"the world's largest professional society of planetary scientists,\" is a division of the American Astronomical Society."
   },
   {
     "node_id": "subfield:geology",
     "locale": "en",
     "label": "Geology",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Geology is the study of the solid Earth — its materials, structure, processes, and history. The Encyclopaedia Britannica defines it as comprising \"the fields of study concerned with the solid Earth,\" noting that geology \"also explores geologic history, which provides a conceptual framework and overview of Earth's evolution.\" Its scope spans the description of Earth materials, the processes that shape the planet, and the reconstruction of past conditions from the rock record. As a major division of the sciences, geology occupies the entire QE subclass of the Library of Congress Classification."
   },
   {
     "node_id": "subfield:geophysics",
     "locale": "en",
     "label": "Geophysics",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Geophysics applies the principles and methods of physics to the study of the Earth. The Encyclopaedia Britannica describes it as a \"major branch of the Earth sciences that applies the principles and methods of physics to the study of the Earth,\" dealing with a wide range of geologic phenomena. Its dual character as both an Earth science and a physics-based discipline is mirrored in standard bibliographic classification: the Library of Congress Classification places \"Geophysics. Cosmic physics\" at QC801-QC809, within the physics subclass QC rather than the geology subclass QE. The field uses physical observations — of gravity, magnetism, seismic wave propagation, heat, and related quantities — to infer the composition, structure, and dynamics of the Earth's interior and surface."
   },
   {
     "node_id": "subfield:geochemistry",
     "locale": "en",
     "label": "Geochemistry",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Geochemistry is the scientific study of the chemistry of the Earth, focusing on the relative abundance, distribution, and movement of the chemical elements and their isotopes within the planet. The Encyclopaedia Britannica defines it as the \"scientific discipline that deals with the relative abundance, distribution, and migration of the Earth's chemical elements and their isotopes.\" The field examines how elements are partitioned among the Earth's materials and reservoirs and how they migrate through geologic processes over time. Geochemistry sits at the interface of the geological and chemical sciences, drawing on chemical analysis and theory to characterize the composition and evolution of rocks, minerals, waters, and other Earth materials."
   },
   {
     "node_id": "subfield:mineralogy",
     "locale": "en",
     "label": "Mineralogy",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Mineralogy is the scientific study of minerals in all their aspects. The Encyclopaedia Britannica defines it as the \"scientific discipline that is concerned with all aspects of minerals, including their physical properties, chemical composition, internal crystal structure, and occurrence and distribution in nature and their origins in terms of the physicochemical conditions of formation.\" The field characterizes naturally occurring crystalline substances by their composition, structure, and properties, and investigates the conditions under which they form. Its identity as an established subject is reflected in standard library classification, where the Library of Congress Classification assigns the range QE351-QE399.2 the label \"Mineralogy\" within the geology subclass QE."
   },
   {
     "node_id": "subfield:petrology",
     "locale": "en",
     "label": "Petrology",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Petrology is the branch of geology concerned with rocks — their composition, texture, structure, occurrence, and origin. The Encyclopaedia Britannica defines it as the \"scientific study of rocks that deals with their composition, texture, and structure; their occurrence and distribution; and their origin in relation to physicochemical conditions and geologic processes,\" and notes that it addresses all three major rock types: igneous, metamorphic, and sedimentary. The field interprets rocks as records of the physical and chemical conditions under which they formed. Its standing as an established subject is reflected in standard library classification, where the Library of Congress Classification assigns the range QE420-QE499 the label \"Petrology\" within the geology subclass QE."
   },
   {
     "node_id": "subfield:paleontology",
     "locale": "en",
     "label": "Paleontology",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Paleontology is the scientific study of past life as preserved in the fossil record. The Encyclopaedia Britannica defines it as the \"scientific study of life of the geologic past that involves the analysis of plant and animal fossils, including those of microscopic size, preserved in rocks,\" and notes that it \"has played a key role in reconstructing Earth's history and has provided much evidence to support the theory of evolution.\" The discipline reconstructs the history of life and ancient environments from fossils ranging from microscopic remains to large organisms. Its identity as an established subject is reflected in standard library classification, where the Library of Congress Classification assigns the range QE701-QE760 the label \"Paleontology\" within the geology subclass QE."
   },
   {
     "node_id": "subfield:seismology",
     "locale": "en",
     "label": "Seismology",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Seismology is the study of earthquakes and of the propagation of seismic waves through the Earth. The Encyclopaedia Britannica defines it as the \"scientific discipline that is concerned with the study of earthquakes and of the propagation of seismic waves within the Earth,\" describing it as a branch of geophysics that has \"provided much information about the composition and state of the planet's interior.\" The field uses recordings of seismic waves both to characterize earthquake sources and to probe the Earth's internal structure. Its scholarly community is institutionalized in bodies such as the Seismological Society of America, which presents its mission in terms of advancing \"the science of seismology.\""
   },
   {
     "node_id": "subfield:volcanology",
     "locale": "en",
     "label": "Volcanology",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Volcanology is the branch of the geologic sciences concerned with volcanoes and volcanic phenomena. The Encyclopaedia Britannica defines it as the \"discipline of the geologic sciences that is concerned with all aspects of volcanic phenomena,\" addressing \"the formation, distribution, and classification of volcanoes as well as with their structure and the kinds of materials ejected during an eruption.\" The field studies how volcanoes form and are distributed, the products of eruptions, and the processes that drive volcanic activity. In the Library of Congress Classification, volcanoes are treated alongside earthquakes in the range QE521-QE545, labeled \"Volcanoes and earthquakes,\" within the geology subclass QE."
   },
   {
     "node_id": "subfield:oceanography",
@@ -1522,7 +1554,8 @@
       "Meteorology",
       "Climatology"
     ],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Atmospheric science is the study of the structure, composition, and dynamics of Earth's atmosphere. The Encyclopaedia Britannica describes it as an \"interdisciplinary field of study that combines the components of physics and chemistry that focus on the structure and dynamics of Earth's atmosphere.\" As an umbrella discipline, it encompasses several traditional areas; Britannica notes that \"the atmospheric sciences are traditionally divided into three topical areas—meteorology (the study and forecasting of weather), climatology (the study of long-term atmospheric patterns and their influences), and aeronomy (the study of the physics and chemistry of the upper atmosphere).\" The field draws on mathematical and computational tools to describe physical and chemical processes spanning timescales from hourly weather changes to long-term climate, treating meteorology and climatology as branches within its scope rather than as separate disciplines."
   },
   {
     "node_id": "subfield:hydrology",
@@ -1550,6 +1583,7 @@
     "locale": "en",
     "label": "Quantum Information Science",
     "aliases": [],
-    "reviewed": true
+    "reviewed": true,
+    "summary": "Quantum information science is an emerging field at the intersection of quantum physics and information theory. NIST describes it as a field that \"marries two of the 20th century's most important scientific developments: quantum physics and information theory,\" and characterizes it as \"using the smallest bits of matter and energy — electrons inside an atom, tiny circuits, massless particles of light — to store, carry and process information.\" The field is broader than quantum computing alone: NIST notes that while \"scientists around the world are developing quantum computers,\" \"other focus areas of quantum information science include quantum sensors for ultra-high-precision measurements and quantum networks that could link devices across cities, nations and ultimately the globe.\" The Physics Subject Headings (PhySH) taxonomy lists \"Quantum Information, Science & Technology\" as a discipline-level research area, spanning quantum computation, communication, and sensing."
   }
 ]
