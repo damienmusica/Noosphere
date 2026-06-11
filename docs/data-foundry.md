@@ -369,6 +369,12 @@ non-coverage, never silently dropped.
   area whose classification homes — LCC CD, UDC 930.25 — lie in another continent's classes waits
   for that continent's skeleton; §13 can cross-list it later); data-science recorded as deliberate
   non-coverage (named departments, no classification division — representation-theory pattern).
+- 2026-06-11 CIS part_of edges (depth rule): un-contradicted gate-scheme nesting may deepen a
+  part_of chain (theory cluster under theoretical-computer-science: CCS nests, UDC is silent, MSC
+  68Q corroborates — ASL-pillar mirror); nesting contradicted by another gate scheme flattens to
+  the field (computer-vision/NLP: CCS nests them under AI, UDC files 004.93 as a sibling of 004.8).
+  First §13 co-equal dual membership written at skeleton time: information-retrieval → computer
+  science (CCS/MSC) and → library-and-information-science (LCC Z699-699.5), no primary marker.
 
 ## 13. Cross-listing standard (multiple `part_of` memberships)
 
