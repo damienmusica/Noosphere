@@ -35,3 +35,55 @@ id.loc.gov QD551-578 / QD380-388 + PhySH disciplines + FORD mirror = 47 URLs) we
 Wayback SPN serially (16s+ spacing). Results appended below; failures recorded honestly as
 [SPN-FAILED] per §8 (observed entity states are independently pinned by `wikidata_lastrevid` in
 the grounding report).
+
+### SPN results (first pass, 2026-06-11 — throttle hit after 10 saves, session-#10 pattern; retry pass follows in-session)
+
+| URL | status | snapshot / note |
+|---|---|---|
+| https://www.wikidata.org/wiki/Special:EntityData/Q2329.json | archived | https://web.archive.org/web/20260611054056/https://www.wikidata.org/wiki/Special:EntityData/Q2329.json |
+| https://www.wikidata.org/wiki/Special:EntityData/Q333.json | archived | https://web.archive.org/web/20260611054118/https://www.wikidata.org/wiki/Special:EntityData/Q333.json |
+| https://www.wikidata.org/wiki/Special:EntityData/Q8008.json | [SPN-FAILED] | save_http=520 (throttle) — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q188847.json | archived | https://web.archive.org/web/20260611054205/https://www.wikidata.org/wiki/Special:EntityData/Q188847.json |
+| https://www.wikidata.org/wiki/Special:EntityData/Q214781.json | [SPN-FAILED] | save_http=520 (throttle) — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q1151533.json | [SPN-FAILED] | save_http=520 (throttle) — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q14620.json | [SPN-FAILED] | save_http=520 (throttle) — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q81197.json | archived | https://web.archive.org/web/20260611054337/https://www.wikidata.org/wiki/Special:EntityData/Q81197.json |
+| https://www.wikidata.org/wiki/Special:EntityData/Q18334.json | archived | https://web.archive.org/web/20260611054400/https://www.wikidata.org/wiki/Special:EntityData/Q18334.json |
+| https://www.wikidata.org/wiki/Special:EntityData/Q5615097.json | archived | https://web.archive.org/web/20260611054422/https://www.wikidata.org/wiki/Special:EntityData/Q5615097.json |
+| https://www.wikidata.org/wiki/Special:EntityData/Q216320.json | archived | https://web.archive.org/web/20260611054445/https://www.wikidata.org/wiki/Special:EntityData/Q216320.json |
+| https://www.wikidata.org/wiki/Special:EntityData/Q677916.json | archived | https://web.archive.org/web/20260611054507/https://www.wikidata.org/wiki/Special:EntityData/Q677916.json |
+| https://www.wikidata.org/wiki/Special:EntityData/Q82811.json | [SPN-FAILED] | save_http=520 (throttle) — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q7100.json | archived | https://web.archive.org/web/20260611054553/https://www.wikidata.org/wiki/Special:EntityData/Q7100.json |
+| https://www.wikidata.org/wiki/Special:EntityData/Q1985198.json | [SPN-FAILED] | save_http=520 (throttle) — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q492496.json | archived | https://web.archive.org/web/20260611054639/https://www.wikidata.org/wiki/Special:EntityData/Q492496.json |
+| https://www.wikidata.org/wiki/Special:EntityData/Q11315305.json | [SPN-FAILED] | save_http=520 (throttle) — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q2346.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q11165.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q11351.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q11372.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q7094.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q160398.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q7877.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q37547.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q338.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q104499.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q1069.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q46255.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q161764.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q83353.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q163082.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q7205.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q83371.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q102904.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q43518.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q757520.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q42250.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q52109.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q131089.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.wikidata.org/wiki/Special:EntityData/Q2122216.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.loc.gov/aba/cataloging/classification/lcco/lcco_q.pdf | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.loc.gov/aba/cataloging/classification/lcco/lcco_r.pdf | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://id.loc.gov/authorities/classification/QD553.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://id.loc.gov/authorities/classification/QD380.json | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://physh.org/disciplines | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
+| https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp | [SPN-FAILED] | pass stopped under throttle before attempt — same-session retry queue |
