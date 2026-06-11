@@ -75,6 +75,16 @@ to make implementation easier.
   stop at `proposed`; no verified grounding → stays in foundry). The CPO
   governs the policy, escalations, and dashboards — not per-item sign-off.
   Full provenance keeps every promotion bulk re-auditable and reversible.
+- Ratified standing policies in force (the vault decision log is the
+  authority; this list is a pointer, not a restatement): node promotion
+  v1–v1.3; edge promotion v1 incl. clause 6 (contested placements) and its
+  recorded operational interpretations; editorial v1 for summaries —
+  **generation model = Opus** (decision (26)), orchestrator QC full
+  fact-check unchanged; cross-listing v1 (co-equal multiple `part_of`,
+  docs/data-foundry.md §13); B-track external-metrics standing policy
+  (decision (27): pre-validation report → write proceeds without per-item
+  sign-off unless an escalation trigger fires); evidence permanence via
+  Wayback snapshots at QC time (docs/data-foundry.md §8, 2026-06-11).
 
 ## Stack and dependencies
 

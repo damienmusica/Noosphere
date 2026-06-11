@@ -37,14 +37,32 @@ Data invariants enforced by validation:
 ## Repository layout
 
 ```text
-/data            JSON seed data (nodes, translations, edges, sources, external links, paths)
-/foundry         Data Foundry batch manifests (construction inputs / candidates, not graph data)
-/docs            Product brief, policies, and Architecture Decision Records (ADRs)
+/data            Canonical accepted graph data (nodes, translations, edges, sources, links, paths).
+                 Three curated continents so far: philosophy, formal sciences, computer &
+                 information sciences — every node/edge promoted through the curation gate below.
+/foundry         Data Foundry working area:
+                   batches/    committed batch manifests (resolver/generation inputs)
+                   proposals/  committed proposal batches + permanent QC / grounding / resolution /
+                               audit reports — see foundry/proposals/README.md for the batch index
+/docs            Product brief, policies, current-phase working brief, and ADRs
 /src/schema      Zod schemas + shared types for all data files
-/scripts         validate-data.ts (data integrity + policy checks), scripts/foundry/* (offline scaffold)
+/scripts         validate-data.ts (data integrity + policy checks), scripts/foundry/* (resolver,
+                 golden-set regression check, claim-anchor citation checker, offline scaffold)
 CLAUDE.md        Persistent instructions for Claude Code sessions
 NOOSPHERE_CLAUDE_CODE_BRIEF.md   Superseded foundation-phase brief (retained for history)
 ```
+
+## How the data is made (and verified)
+
+Every batch follows one loop, with the full paper trail committed: a **batch manifest**
+(`foundry/batches/`) feeds a generation step that must emit **reasoned proposals** (rationale +
+uncertainty + self-flags, [ADR 0007](docs/adr/0007-evidence-kinds-and-reasoned-proposals.md));
+a separate QC context then re-grounds every claim against **live external sources** (Wikidata,
+LCC/UDC/MSC/ACM CCS outlines, encyclopedias — never training-knowledge identifiers), and
+identity-verified entries are promoted into `/data` under CPO-ratified standing policies.
+Each batch leaves a permanent report under `foundry/proposals/` — the whole corpus is
+bulk re-auditable from those records (a first adversarial re-audit measured 0/24 confirmed
+residual identity errors). Details: [`docs/data-foundry.md`](docs/data-foundry.md).
 
 ## Getting started
 
@@ -54,6 +72,12 @@ npm run typecheck     # tsc --noEmit
 npm run validate:data # validates /data against schemas + policy rules
 npm run export:graph  # builds dist/noosphere-graph.json (static, read-only)
 npm run report:graph  # prints an observational graph coverage summary
+
+# Data Foundry tooling (maintainer-local; nothing here runs in CI)
+npm run foundry:validate-batches   # validates batch manifests
+npm run foundry:resolve-wikidata -- foundry/batches/<manifest>.json  # network resolver (local only)
+npm run foundry:goldenset          # offline regression check of resolver output vs verified verdicts
+npm run foundry:claim-anchor -- <captured-page> "<quote>"            # citation QC helper (offline)
 ```
 
 `export:graph` converts the `/data` JSON into a single read-only graph payload at

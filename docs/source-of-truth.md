@@ -44,6 +44,12 @@ working brief governs.
 - **Decision history** (`docs/adr/*`) records *why* the architecture is the way it is, immutably.
 - **Superseded brief** (`NOOSPHERE_CLAUDE_CODE_BRIEF.md`) is retained for history. It documents the
   completed foundation phase and is **not** the current canonical working brief.
+- **Upstream strategy (outside this repo):** since 2026-06-10 the maintainer's Obsidian vault
+  (`Noosphere/` — decision log, roadmap, workflow) is where product strategy and gate decisions are
+  made *before* they land here (see `CLAUDE.md` "Working mode"). On conflict, implementation and
+  policy follow **this repository**; product direction and rationale follow the vault. Curation
+  batch provenance lives in `foundry/proposals/` (indexed in its README), one permanent record per
+  batch.
 
 ## 2. SSOT lifecycle policy
 
