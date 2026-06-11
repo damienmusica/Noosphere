@@ -113,7 +113,10 @@ export const batchOutputSchema = z
   .object({
     /**
      * Where the proposal-skeleton builder writes generated candidate output.
-     * Must live under `dist/foundry/` — generated, never committed.
+     * Must live under `dist/foundry/` — generated, never committed. (Curated
+     * proposal batches that DO get committed live under `foundry/proposals/`,
+     * a separate, manually assembled permanent record — see ADR 0007's
+     * 2026-06-11 clarification note.)
      */
     proposal_dir: z
       .string()

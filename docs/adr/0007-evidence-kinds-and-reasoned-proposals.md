@@ -66,3 +66,12 @@ fields belong in proposal artifacts under `dist/foundry/`, not in accepted graph
 See [`docs/project-charter.md`](../project-charter.md), [`docs/data-foundry.md`](../data-foundry.md),
 [`docs/ai-usage-policy.md`](../ai-usage-policy.md), and
 [ADR 0006](0006-data-foundry-and-llm-boundary.md) (which this ADR relates to but does not supersede).
+
+---
+
+**Clarification (2026-06-11, decision unchanged):** "proposal artifacts under `dist/foundry/`"
+describes where generated artifacts are *born* (gitignored). In practice since 2026-06-10, curated
+proposal batches and their permanent QC/grounding/resolution reports are **committed under
+`foundry/proposals/`** for the durable paper trail (indexed in `foundry/proposals/README.md`);
+they remain untrusted `generated`-tier material either way. This note records current practice —
+the reasoned-proposal contract itself is unchanged.

@@ -1,0 +1,31 @@
+# Foundry proposals — batch index
+
+Committed proposal batches and their **permanent records** (QC, grounding, resolution, audit and
+promotion reports). Everything here is an untrusted `generated`-tier draft or a report *about*
+such drafts — `/data` is the only canonical graph data, and nothing here may be copied into
+`/data` outside the curation gate (see `CLAUDE.md` and `docs/data-foundry.md`).
+
+One line per batch — what it is, when it landed, and what came of it. Dates are the vault
+decision-log dates; PR numbers are the merge trail.
+
+| Batch | What / when / outcome |
+|---|---|
+| `philosophy-skeleton-v1` | First continent skeleton, 2026-06-10 (PR #17, #20, #22–#24): 63 nodes generated → QC → 61/63 resolver/manually-verified QIDs promoted; 2 honest upstream gaps. `grounding-report.md` holds per-QID verdicts (generator QID-hint hallucination ~93% measured here). |
+| `philosophy-summaries-v1` | Editorial pass 1, 2026-06-10 (PR #27): 28 summaries (11 as-drafted / 17 QC-edited / 0 rejected); hint-URL hallucination 41% measured → QC live-verification became standard. |
+| `philosophy-summaries-v2` | Editorial pass 2, 2026-06-10 (PR #33): 30 summaries for newly reviewed nodes; hint-URL hallucination 59% — the measurement that triggered the live-fetch mandate. |
+| `ml-foundations-v1` | Pre-pivot ML-foundations batch (PR #14 artifacts, disposed 2026-06-10): 5 edges promoted to `proposed` under the editorial ladder (PR #36), 7 dropped; `promotion-report.md` records provenance incl. the legacy model-version exemption. |
+| `skeleton-part-of-edges-v1` | Structural `part_of` skeleton for two continents, 2026-06-10 (PR #37–#39): 102 edges generated → QC + live classification grounding (LCC/UDC/MSC) → 83 reviewed / 19 status-capped. |
+| `seed-edges-promotion-v1` | Seed-edge evidence upgrade, 2026-06-11 (PR #40): 6 legacy edges re-grounded on external classification/Wikidata evidence → reviewed; gradient-descent QID resolved manually (Q1199743). |
+| `formal-sciences-skeleton-v1` | Second continent, 2026-06-10 (PR #29–#32): 69 generated → QC shaped to 44 → resolver 44/44 → 25 reviewed + 14 boundary-contested `proposed`; `resolution-report.md` records the clause-6 contest resolutions (2026-06-11, PR #41: consensus 2 / dominant 8 / splits 3). |
+| `formal-sciences-summaries-v1` | Editorial pass 3, 2026-06-11 (PR #42): 35 summaries; first batch under the live-fetch mandate — citation hallucination 0% (69/69). |
+| `computer-and-information-sciences-skeleton-v1` | Third continent, 2026-06-11 (PR #48–#50): 27 nodes (22 reviewed / 5 proposed), ML field→subfield demotion + ID migration, resolver–QC agreement 20/24 + 4 manual selections; §12 precedent lines appended. |
+| `cis-part-of-edges-v1` | CS `part_of` skeleton, 2026-06-11 (PR #51–#52): 28 edges (23 reviewed / 5 capped), first skeleton-time §13 dual membership (IR → CS+LIS); generator hint-laundering (~10 claims) caught and rebuilt by QC. |
+| `cis-summaries-v1` | Editorial pass 4 + first generation-model A/B, 2026-06-11 (PR #55): 23 summaries; Opus 11/11 as-drafted vs Sonnet 1/11 — the measurement behind decision (26) (editorial generation → Opus). |
+| `cis-bflag-resolution-v1` | Clause-6 resolution of the 2 CS B-flags, 2026-06-11 (PR #56): both genuine splits dissolved by cross-listing v1 (§13) — scientific-computing → +applied mathematics, quantum-computing → +natural sciences; no `disputed` tags. |
+| `openalex-stem-prevalidation-v1` | B-track first measurement, 2026-06-11 (PR #43): OpenAlex Concepts rank-1 81% vs Topics structurally unfit → Concepts adopted; implementation append (PR #46) wrote 36 nodes' `external_metrics`. |
+| `openalex-cis-prevalidation-v1` | B-track CS pre-validation, 2026-06-11 (PR #54): rank-1 19/25, duplicate-QID-link anomaly 4/24 measured; implementation append (session #10) wrote 23 nodes + first triangulation-coverage dashboard. |
+| `qid-adversarial-audit-cis-v1` | First adversarial QID audit, 2026-06-11 (PR #54): 24 refutation agents vs all CS verified QIDs → 0/24 confirmed residual referent errors (≤4.2% upper bound); computer-networks anchor recorded as a permanent watch item. |
+
+Conventions: `report.md` = batch-level summary; `qc-report.md` = orchestrator QC verdicts;
+`grounding-report.md` = per-QID resolver/verification record; `resolution-report.md` = clause-6 /
+ambiguity resolutions; `promotion-report.md` = what entered `/data` and under which policy.

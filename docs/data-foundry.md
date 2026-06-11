@@ -99,6 +99,26 @@ curriculum or textbook source where one exists, and fall back to manual
 curation only when none does. The `source_type` field must honestly reflect
 which kind an edge relies on.
 
+### Evidence permanence (Wayback snapshots — standing rule, 2026-06-11)
+
+External pages that QC relies on for a verdict are **archived at verification
+time**: request a Wayback Save Page Now snapshot
+(`https://web.archive.org/save/<URL>` — keyless public endpoint, serial
+requests at a polite interval) and record the snapshot URL alongside the
+citation in the batch's permanent report. The same duty applies to research
+collection and editorial citation records. Rules:
+
+- A snapshot URL counts only if it matches `web.archive.org/web/<timestamp>/…`
+  — a redirect to a save prompt is **not** a snapshot (measured failure mode).
+- Save failures are recorded honestly as `[SPN-FAILED]` — never silently
+  dropped, never substituted with an unverified URL.
+- For bot-blocked domains, verifying an **existing** snapshot
+  (`https://web.archive.org/web/<year>/<URL>` redirect to a real snapshot) is
+  an acceptable substitute; record that snapshot URL instead.
+
+Rationale: live pages drift and die; the corpus's bulk re-auditability
+(vault decision log 2026-06-10 (3)) is only as durable as its evidence URLs.
+
 ## 9. Current implementation sequence
 
 **Depth before breadth.** Take one domain (machine-learning foundations) fully
@@ -128,10 +148,16 @@ Conventions:
 
 - **`/foundry`** holds committed Foundry inputs: batch manifests under `foundry/batches/*.json` and
   templates. These are **construction inputs / candidates**, not canonical graph data.
+- **`foundry/proposals/`** holds **committed proposal batches and their permanent records** (QC,
+  grounding, resolution, audit and promotion reports) — the durable paper trail behind every
+  promotion, indexed in `foundry/proposals/README.md`. Everything there stays untrusted
+  `generated`-tier material; only the curation gate moves content into `/data`.
 - **`/data`** remains the **canonical source of truth** for currently accepted graph data. The
   scaffold never reads from or writes to `/data`.
-- **`dist/foundry/...`** holds **generated** proposal skeletons. It is gitignored and must **not** be
-  committed — regenerate it locally as needed.
+- **`dist/foundry/...`** holds **generated** proposal skeletons and resolver source packs. It is
+  gitignored and must **not** be committed — regenerate it locally as needed. (Generated artifacts
+  are *born* under `dist/foundry/`; what gets **committed** for the permanent record lives under
+  `foundry/proposals/`.)
 
 Commands:
 
