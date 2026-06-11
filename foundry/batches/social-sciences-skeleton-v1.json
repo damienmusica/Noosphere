@@ -1,0 +1,142 @@
+{
+  "id": "batch:social-sciences-skeleton-v1",
+  "title": "Social Sciences Skeleton v1",
+  "description": "Coverage skeleton for the social-sciences continent (fifth continent; parallel round v1 session 13a, merge order 1 — vault parallel-round-v1.md, CPO co-agreed 2026-06-11): field/subfield two-level node set under domain:social-sciences — economics, sociology, political science, education, law, anthropology, media/communications and the human-geography side — each tagged with academic_status. Construction input only — not canonical graph data; nodes only, zero edges (skeleton-first). The junction node already canonical in /data (domain:social-sciences, Q34749, reviewed) is out of generation scope. Psychology (FORD 5.1) and linguistics are excluded this round (cognitive-science / humanities-residual continents own them — boundary assignment table); statistics, game-theory, decision-theory and financial-mathematics are formal-sciences-owned nodes (membership edges only, never node regeneration).",
+  "status": "active",
+  "target_locales": [
+    "en"
+  ],
+  "scope": {
+    "include": [
+      "Social sciences field and subfield coverage skeleton (nodes only)",
+      "Economics areas under LCC HB-HJ (economic theory, demography wing, economic history, industries/labor, transportation, commerce, finance, public finance) and UDC 33 (330-339), FORD 5.2",
+      "Sociology areas under LCC HM-HX (sociology general, social history, family, communities/classes/races, social pathology and welfare, criminology wing) and UDC 31 (303/304/305/308/314/316), FORD 5.4",
+      "Political science areas under LCC class J (JA/JC/JF political theory and institutions, JS local government, JV migration wing, JZ international relations) and UDC 32 (321-329) plus 35 (public administration), FORD 5.6",
+      "Education areas under LCC class L (LA history of education, LB theory and practice, LC special aspects) and UDC 37 (37.01-379.8), FORD 5.3",
+      "Law areas under LCC class K and UDC 34 (340-349), FORD 5.5 — case-by-case: gate-level boundary, §12 rule-3 two-prong test pre-registered (FORD 5.5 and UDC 34-under-3 support the social-sciences side)",
+      "Anthropology areas under LCC GN and UDC 39 plus the UDC 3 caption's 'Cultural anthropology', FORD 5.4 wing — case-by-case: LCC class-G shelving is interpreted under the session #12 class-G precedent (other-home filing)",
+      "Media and communication studies under FORD 5.8 — case-by-case: LCC classification homes (P87-96) sit out-of-continent; two-prong test pre-registered",
+      "Human/social geography side under FORD 5.7 — case-by-case per the boundary assignment table; the four parked physical-geography-side LCC class-G evidence items (env-sci, oceanography, hydrology, geomorphology) are not touched",
+      "Social welfare / social work areas under LCC HV and UDC 36 (364-368)",
+      "Wikidata QID resolution for identity and external_ids"
+    ],
+    "exclude": [
+      "Edges and relations (skeleton-first: dots before lines; part_of skeleton edges are a separate batch)",
+      "Level-3 concepts, persons, works",
+      "Re-proposing any existing /data node (domain:social-sciences and all 195 other canonical nodes; reconcile to existing IDs instead — full ID list injected into the generation order)",
+      "Psychology and cognitive-science areas (FORD 5.1, LCC BF): excluded this round — cognitive-science continent owns them (boundary assignment table, parallel-round-v1.md ②); encounters are recorded, never generated",
+      "Linguistics (humanities-residual continent owns it): encounters recorded only",
+      "Statistics (LCC HA, UDC 311), game theory (LCC HB135-147 wing), decision theory, financial mathematics: formal-sciences-owned nodes — node regeneration forbidden; social-sciences-side membership evidence is edge-batch/§13 business (parked-trigger ledger)",
+      "Mathematics-education node changes (subfield:mathematics-education is canonical with a co-equal domain-direct social-sciences membership; the re-target note fires in the edge batch once field:education exists)",
+      "JEL classification as a source in any role, including citation (all-rights-reserved — session #10 gate-level ruling)",
+      "NamuWiki in any evidence role",
+      "Living scientists and current affiliations"
+    ]
+  },
+  "seed_entities": [
+    {
+      "label": "Economics",
+      "expected_node_id": "field:economics",
+      "expected_type": "field"
+    },
+    {
+      "label": "Sociology",
+      "expected_node_id": "field:sociology",
+      "expected_type": "field"
+    },
+    {
+      "label": "Political Science",
+      "expected_node_id": "field:political-science",
+      "expected_type": "field"
+    },
+    {
+      "label": "Education",
+      "expected_node_id": "field:education",
+      "expected_type": "field"
+    },
+    {
+      "label": "Law",
+      "expected_node_id": "field:law",
+      "expected_type": "field"
+    },
+    {
+      "label": "Anthropology",
+      "expected_node_id": "field:anthropology",
+      "expected_type": "field"
+    },
+    {
+      "label": "Media and Communication Studies",
+      "expected_node_id": "field:media-and-communication-studies",
+      "expected_type": "field"
+    },
+    {
+      "label": "Human Geography",
+      "expected_node_id": "field:human-geography",
+      "expected_type": "field"
+    }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "wikidata",
+      "purpose": [
+        "identity",
+        "metadata",
+        "source_resolution",
+        "external_link"
+      ],
+      "requires_secret": false,
+      "notes": "CC0. Resolver verifies the unverified training-knowledge QID hints in the proposal and fills missing QIDs."
+    },
+    {
+      "provider": "wikipedia",
+      "purpose": [
+        "external_link",
+        "source_resolution"
+      ],
+      "requires_secret": false,
+      "notes": "External-link / source-resolution pointer only. Never store or cache article bodies."
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "provider": "namuwiki",
+      "reason": "NamuWiki is external-link-only and must never be used as evidence or a source, nor have its content cached."
+    },
+    {
+      "provider": "cloud_llm_api",
+      "reason": "No cloud LLM API calls are permitted in repo tooling, build, validation, or runtime."
+    },
+    {
+      "provider": "scraped_article_body",
+      "reason": "Scraping or crawling third-party article bodies is forbidden; only open, license-compatible data is allowed."
+    },
+    {
+      "provider": "jel_classification",
+      "reason": "JEL is all-rights-reserved (session #10 gate-level ruling): unusable as a gate source and not to be cited; economics-side evidence routes through FORD 5.2, LCC HB-HJ, UDC 33 and community presence instead."
+    }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": [
+      "low",
+      "medium",
+      "historical"
+    ],
+    "requires_strict_review_for": [
+      "living_person",
+      "current_affiliation",
+      "controversial_claim"
+    ]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/social-sciences-skeleton-v1"
+  },
+  "notes": [
+    "Continent slot ratified as part of parallel round v1 (vault parallel-round-v1.md; CPO co-agreed 2026-06-11). §12/§13 pinned at commit d816cb6 for the whole round.",
+    "Coverage baseline for generation/QC, all live-captured by the orchestrator on 2026-06-11 before this manifest was written (browser-UA curl; WebFetch is 403 on loc.gov): LCC outline PDFs lcco_h/j/l plus case-by-case lcco_k (law) and lcco_g (GN anthropology ranges); UDC class 3 via the UDC Summary getrecord endpoint — the id=3 response carries the complete class-3 subtree (205 notation/caption records; spot-verified identical against an individual id=316 fetch, so per-subclass captures add no depth); OECD FORD section 5 via the arrs.si mirror (5.1-5.9 captured live, matching the session #12 pre-verified list; Wayback snapshot web/20260611023459). MSC and discipline schemes are cross-checks only; no discipline-specific scheme is ratified as a gate source for this continent.",
+    "docs/data-foundry.md section 12 (including its precedent log) is a mandatory input to the generation order (promotion policy v1.3); section 13 governs any multi-membership question raised during QC.",
+    "Pre-registered structural questions for QC: (1) law — §12 rule-3 two-prong test on the captured K outline (FORD 5.5 and UDC 34 support the social-sciences side; LCC gives law its own class K); (2) anthropology — LCC GN sits in class G: session #12 class-G precedent applies (other-home filing, no premise denial), and physical anthropology (GN49-298) vs cultural/social anthropology (GN301-674) granularity is a generator/QC question; (3) media-and-communications — FORD 5.8 standing vs out-of-continent LCC homes (P87-96); (4) geography — human-geography side only (FORD 5.7), case-by-case; the four parked physical-geography-side class-G evidence items stay parked (encounter is recorded, nothing is touched); (5) psychology/linguistics encounters are record-only (boundary assignment table); (6) statistics (LCC HA + UDC 311 under 3) and demography (HB848-3697 + UDC 314) social-sciences-side standing: statistics is formal-sciences-owned (membership-edge question only); demography's field-vs-subfield standing is a generator/QC question; (7) business/management granularity (LCC HD28-70, HF5001-6182; FORD 5.2 'Economics and Business') is a generator/QC question; (8) post-skeleton re-target triggers recorded in the session order: mathematics-education re-target on field:education creation, game-theory economics-side §13 candidate, decision-theory second membership on an economics target, financial-mathematics social-sciences-side minority membership (disputed edge note).",
+    "/data remains the source of truth for accepted graph data.",
+    "Seed list is the orchestrator's pre-generation scoping anchor (field-level only); per FS/CS/NS precedent the committed seed list is regenerated mechanically from the QC-passed proposal.json."
+  ]
+}
