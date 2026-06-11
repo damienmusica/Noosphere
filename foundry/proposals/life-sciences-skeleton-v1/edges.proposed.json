@@ -1,0 +1,430 @@
+{
+  "version": 1,
+  "batch_id": "batch:life-sciences-skeleton-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-11"
+  },
+  "edges": [
+    {
+      "id": "edge:biology-part-of-life-sciences",
+      "source": "field:biology",
+      "target": "domain:life-sciences",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline",
+        "source:udc-summary",
+        "source:oecd-ford"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QH301-705.5 Biology (General) + UDC 57 Biological sciences in general + OECD FORD 1.6 Biological sciences — all three gate schemes file biology as the single field within the life-sciences family (captured 2026-06-11). FORD 1.6 is one field; biology is the continent's single level-1 field (algebra-under-mathematics / philosophy single-field precedent).",
+      "rationale": "All three gate schemes (LCC, UDC, FORD) designate biology as the single field-level entity within the life-sciences classification family; FORD 1.6 is one field.",
+      "uncertainty": "None — triple gate-scheme agreement with captured live sources; single-field structure is the orchestrator-confirmed ruling.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:botany-part-of-biology",
+      "source": "subfield:botany",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline",
+        "source:udc-summary"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QK Botany (own subclass QK1-989) + UDC 58 Botany (own top-level class under 5 Natural Sciences) — both gate schemes file botany in the biology family (captured 2026-06-11). LCC shelving granularity (separate subclass) is not a co-equality claim; flat peer under field:biology per orchestrator ruling.",
+      "rationale": "Dual gate-scheme classification (LCC QK + UDC 58) and branch-of-biology community standing confirm part_of biology.",
+      "uncertainty": "LCC separate subclass could suggest field-level standing; resolved by FORD 1.6 single-field rule and orchestrator confirmation.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:zoology-part-of-biology",
+      "source": "subfield:zoology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline",
+        "source:udc-summary"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QL Zoology (own subclass QL1-991) + UDC 59 Zoology (own top-level class under 5 Natural Sciences) — both gate schemes file zoology in the biology family (captured 2026-06-11). Flat peer under field:biology per orchestrator ruling.",
+      "rationale": "Dual gate-scheme classification (LCC QL + UDC 59) confirms part_of biology; zoological societies and named departments satisfy community criterion.",
+      "uncertainty": "Same LCC-separate-subclass tension as botany; resolved identically by FORD 1.6 single-field rule.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:microbiology-part-of-biology",
+      "source": "subfield:microbiology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline",
+        "source:udc-summary"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QR Microbiology (own subclass QR1-502) + UDC 579 Microbiology (top-level entry within UDC 57 Biological sciences) — both gate schemes file microbiology in the biology family (captured 2026-06-11).",
+      "rationale": "Dual gate-scheme classification (LCC QR + UDC 579) and ASM community standing confirm part_of biology.",
+      "uncertainty": "Virology (QR355-502) and immunology (QR180-189.5) are sub-ranges of LCC QR but are kept as peer subfields per their own QC-verified classification divisions.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:genetics-part-of-biology",
+      "source": "subfield:genetics",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline",
+        "source:udc-summary"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QH426-470 Genetics (range within QH Biology General) + UDC 575 General genetics. General cytogenetics — both gate schemes file genetics in the biology family (captured 2026-06-11). Genomics (QH447) absorbed into genetics as a cutter-inside-range refinement.",
+      "rationale": "Dual gate-scheme classification (LCC QH426-470 + UDC 575) and Genetics Society community confirm part_of biology.",
+      "uncertainty": "UDC 575 bundles genetics with evolution; evolutionary-biology is kept as a separate peer with its own LCC range (QH359-425).",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:molecular-biology-part-of-biology",
+      "source": "subfield:molecular-biology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline",
+        "source:udc-summary"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QH506 'Molecular biology' (id.loc.gov verified live HTTP 200, 2026-06-11 — cutter inside QH301-705.5 Biology General) + UDC 577 'Material bases of life. Biochemistry. Molecular biology. Biophysics' (names molecular biology explicitly; captured 2026-06-11) — both gate schemes file molecular biology in the biology family. Distinct from biochemistry and biophysics (existing §13 dual-membership nodes).",
+      "rationale": "LCC QH506 live-verified and UDC 577 explicitly names molecular biology; two gate schemes confirm part_of biology; distinct from §13 biochemistry/biophysics.",
+      "uncertainty": "UDC 577 bundles molecular biology with biochemistry and biophysics; the latter two are existing §13 nodes; molecular biology is the residual distinct named component.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:cell-biology-part-of-biology",
+      "source": "subfield:cell-biology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline",
+        "source:udc-summary"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QH573-671 Cytology (range within QH Biology General) + UDC 576 'Cellular and subcellular biology. Cytology' — both gate schemes file cell biology in the biology family (captured 2026-06-11). §12 label rule: modern term 'cell biology' over historical 'cytology'.",
+      "rationale": "Dual gate-scheme classification (LCC QH573-671 Cytology + UDC 576) and ASCB community confirm part_of biology.",
+      "uncertainty": "Node labeled by modern term (cell biology) covering the classical classification term (cytology); §12 label rule applied at QC.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:ecology-part-of-biology",
+      "source": "subfield:ecology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline",
+        "source:udc-summary"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QH540-549.5 Ecology (range within QH Biology General) + UDC 574 'General ecology and biodiversity [Incl. Biocoenology. Hydrobiology. Biogeography]' — both gate schemes file ecology in the biology family (captured 2026-06-11). Distinct from existing field:environmental-science (adjacency, no duplicate).",
+      "rationale": "Dual gate-scheme classification (LCC QH540-549.5 + UDC 574) and ESA community confirm part_of biology.",
+      "uncertainty": "Adjacency with field:environmental-science (existing canonical node) is real; the two are distinct — ecology is biological-science-of-organism-environment; environmental-science is broader and cross-disciplinary.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:evolutionary-biology-part-of-biology",
+      "source": "subfield:evolutionary-biology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline",
+        "source:udc-summary"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QH359-425 Evolution (distinct range within QH Biology General, separate from QH426-470 Genetics) + UDC 575 (Evolution explicitly named in heading alongside Genetics) — both gate schemes file evolutionary biology in the biology family (captured 2026-06-11).",
+      "rationale": "Dual gate-scheme classification (LCC QH359-425 + UDC 575 Evolution-named) and Society for the Study of Evolution community confirm part_of biology.",
+      "uncertainty": "UDC 575 bundles evolution with genetics; kept as a separate peer because LCC gives it a distinct non-overlapping range (QH359-425 vs. QH426-470).",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:developmental-biology-part-of-biology",
+      "source": "subfield:developmental-biology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QH471-489 Reproduction + QL951-991 Embryology + QM601-695 Human embryology (captured 2026-06-11) — LCC-only gate-scheme grounding (no distinct UDC developmental-biology entry in captured digest; §12 label rule: modern unified discipline subsumes scattered older classification terms). Overwhelming BSDB/SDB community; QH491 has no id.loc.gov record, anchored on reproduction/embryology ranges.",
+      "rationale": "LCC provides scattered but clear biology-family coverage for the constituent ranges (reproduction QH471-489, embryology QL951-991); §12 label rule unifies them under the modern disciplinary term; SDB/BSDB community confirms standing.",
+      "uncertainty": "No distinct UDC code for developmental biology in the captured digest; LCC grounding is multi-range and composite rather than a single named cutter. Single gate-scheme grounding only.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:immunology-part-of-biology",
+      "source": "subfield:immunology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QR180-189.5 Immunology (id.loc.gov QR181 'General works' confirms range live; within QR Microbiology subclass, captured 2026-06-11) — LCC-only gate-scheme grounding (UDC distinct immunology entry UNFETCHED in captured digest). AAI/ASI community; medical-immunology adjacency noted.",
+      "rationale": "LCC QR180-189.5 provides a dedicated named classification range in the biology family; AAI/ASI community confirms standing; LCC grounding alone is the captured evidence.",
+      "uncertainty": "UDC distinct immunology entry not present in captured digest (UNFETCHED); single gate-scheme grounding only. Clinical immunology has dominant institutional home in medical schools but basic-science immunology is biology-resident.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:virology-part-of-biology",
+      "source": "subfield:virology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline",
+        "source:udc-summary"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QR355-502 Virology (range within QR Microbiology subclass) + UDC 578 Virology (own top-level entry within UDC 57, separate from 579 Microbiology) — both gate schemes file virology in the biology family (captured 2026-06-11). UDC 578 independence from 579 overrides any absorption-into-microbiology claim.",
+      "rationale": "Dual gate-scheme classification with UDC-level independence (578 separate from 579) and ASV community confirm part_of biology as a peer of microbiology.",
+      "uncertainty": "Virology's LCC range sits inside the QR Microbiology subclass; UDC's separate class entry (578 vs. 579) is the decisive independence signal.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:parasitology-part-of-biology",
+      "source": "subfield:parasitology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QL757 'Parasitology' (id.loc.gov verified live HTTP 200, 2026-06-11 — dedicated range within QL Zoology) — LCC-only gate-scheme grounding (no distinct UDC parasitology entry in captured digest). ASP/BSP community; medical-parasitology adjacency recorded (not blocking — in-continent LCC home is decisive).",
+      "rationale": "LCC QL757 verified live as a dedicated named classification range in the biology family (QL Zoology); ASP/BSP community confirms standing.",
+      "uncertainty": "Single gate-scheme grounding (LCC only); UDC distinct entry UNFETCHED. Medical parasitology has significant institutional home in medical schools; biological parasitology is in-continent per LCC QL.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:mycology-part-of-biology",
+      "source": "subfield:mycology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QK600 'Fungi' (id.loc.gov verified live HTTP 200, 2026-06-11 — dedicated cutter within QK Botany) — LCC-only gate-scheme grounding (no separate UDC mycology entry in captured digest; UDC places fungi within 58 Botany). §12 peer-despite-parent-shelving precedent: kept as flat peer of botany because dedicated cutter (QK600) + distinct kingdom-level community (MSA/BMS; fungi are a separate kingdom).",
+      "rationale": "LCC QK600 'Fungi' live-verified as a dedicated classification range; §12 peer-despite-parent-shelving precedent applies (dedicated cutter + separate-kingdom community).",
+      "uncertainty": "Classification home sits inside QK Botany subclass; kept as peer per §12 precedent, not absorbed. Single gate-scheme grounding (LCC only). No separate UDC class entry.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:systematics-part-of-biology",
+      "source": "subfield:systematics",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QH83 'Classification. Nomenclature' (id.loc.gov verified live HTTP 200, 2026-06-11 — dedicated systematics/taxonomy range within QH Biology General) — LCC-only gate-scheme grounding (UDC 579.8 covers only microbial systematics, not broad biological systematics). SSB/Systematic Biology community + cladistics/phylogenetics; evolutionary-biology adjacency (phylogenetics) recorded.",
+      "rationale": "LCC QH83 live-verified as a dedicated classification range for systematics/taxonomy in the biology family; SSB/Systematic Biology community confirms standing.",
+      "uncertainty": "Single gate-scheme grounding (LCC only); UDC 579.8 covers only microbial systematics, not a broad systematics entry. Evolutionary-biology adjacency (phylogenetics) is real but does not warrant absorption.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:marine-biology-part-of-biology",
+      "source": "subfield:marine-biology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline",
+        "source:udc-summary"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QH90.5-95.7 Aquatic biology (id.loc.gov QH95 'General works' confirms range live, 2026-06-11) + UDC 574 Hydrobiology (named in UDC 574 caption as an included concept within General ecology and biodiversity; captured 2026-06-11) — both gate schemes file aquatic/marine biology in the biology family. Distinct from oceanography (natural sciences, physical ocean science); Woods Hole MBL/Scripps/MBA community.",
+      "rationale": "Dual gate-scheme grounding (LCC QH90.5-95.7 live-verified + UDC 574 Hydrobiology named) and distinct marine-biology community (MBL, Scripps) confirm part_of biology.",
+      "uncertainty": "UDC 574 includes Hydrobiology as a named included concept, not a separate class entry; LCC range is 'Aquatic biology' covering marine and freshwater. Distinct from oceanography.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:bioinformatics-part-of-biology",
+      "source": "subfield:bioinformatics",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 1,
+      "status": "reviewed",
+      "evidence": [
+        "source:lcc-outline"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QH324.2 (id.loc.gov verified live HTTP 200, 2026-06-11 — biology data-processing/bioinformatics cutter inside QH301-705.5 Biology General; cited in §12 precedent log) — LCC-only gate-scheme grounding (UDC UNFETCHED). CS-transfer accepted per session-#8 §12 ruling; EMBL-EBI/Sanger community. CS-side §13 candidate (ACM CCS 'Applied computing > Life and medical sciences') RECORDED; edge not written this session.",
+      "rationale": "LCC QH324.2 live-verified in the biology family; session-#8 §12 CS-transfer ruling accepted; EMBL-EBI/Sanger bioinformatics community confirms in-continent standing.",
+      "uncertainty": "Single gate-scheme grounding (LCC only); UDC classification entry UNFETCHED. CS-side §13 cross-listing candidate is real and recorded but not written here.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:physiology-part-of-biology",
+      "source": "subfield:physiology",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 0.9,
+      "status": "proposed",
+      "evidence": [
+        "source:lcc-outline"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QP Physiology (own subclass QP1-(981), within class Q Science; captured 2026-06-11) — LCC-only gate-scheme grounding; UDC files 612 Human physiology under 61 Medical sciences (out-of-continent). Capped at proposed — node stops at proposed on the LCC-vs-UDC medicine-boundary contest; medicine-side §13 membership parked. APS community supports in-continent biological standing.",
+      "rationale": "LCC QP gives physiology an own subclass within science (class Q), placing it in-continent; APS community confirms general-physiology biological standing.",
+      "uncertainty": "UDC 612 files physiology under 61 Medicine, not under 57 Biology — a head-on gate-scheme split (biophysics/biochemistry LCC-vs-UDC pattern). Clinical/human physiology wing has dominant institutional home in medical faculties.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:anatomy-part-of-biology",
+      "source": "subfield:anatomy",
+      "target": "field:biology",
+      "relation": "part_of",
+      "confidence": 0.9,
+      "status": "proposed",
+      "evidence": [
+        "source:lcc-outline"
+      ],
+      "evidence_kind": "externally_sourced",
+      "proposed_by": {
+        "model_name": "Claude Sonnet",
+        "model_version": "claude-sonnet-4-6",
+        "proposed_at": "2026-06-11"
+      },
+      "note": "LCC QM Human anatomy (own subclass QM1-695) + QL801-950.9 Comparative anatomy (within QL Zoology; both captured 2026-06-11) — LCC-only gate-scheme grounding; UDC files 611 Human anatomy under 61 Medical sciences (out-of-continent; same split as physiology). Capped at proposed — node stops at proposed on the LCC-vs-UDC medicine-boundary contest; medicine-side §13 membership parked. Anatomical Society/AAA community supports in-continent general/comparative anatomy standing.",
+      "rationale": "LCC QM gives anatomy an own subclass within science (class Q), and QL801-950.9 covers comparative anatomy; Anatomical Society/AAA community confirms general/comparative anatomy biological standing.",
+      "uncertainty": "UDC 611 files anatomy under 61 Medicine, not under 57 Biology — same head-on gate-scheme split as physiology. Clinical/human anatomy wing has dominant institutional home in medical schools.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "coverage: 19/19 (1 field→domain + 18 subfield→field); flat two-level structure per orchestrator ruling — no subfield-under-subfield nesting.",
+    "reviewed/proposed split: 17 reviewed + 2 proposed (physiology, anatomy capped at proposed on B-type medicine-boundary contest).",
+    "dual-gate-scheme grounding (both source:lcc-outline + source:udc-summary): biology→life-sciences (+ oecd-ford), botany, zoology, microbiology, genetics, molecular-biology, cell-biology, ecology, evolutionary-biology, virology, marine-biology — 11 edges.",
+    "single-gate-scheme (source:lcc-outline only): developmental-biology (composite LCC ranges, no distinct UDC entry), immunology (UDC UNFETCHED), parasitology (LCC QL757 live-verified, UDC UNFETCHED), mycology (LCC QK600 live-verified, no separate UDC class entry), systematics (LCC QH83 live-verified, UDC 579.8 covers only microbial systematics), bioinformatics (LCC QH324.2 live-verified, UDC UNFETCHED), physiology (UDC 612 under 61 Medicine = out-of-continent), anatomy (UDC 611 under 61 Medicine = out-of-continent) — 8 edges.",
+    "not written: bioinformatics→computer-science (CS-side §13 candidate, parked); biochemistry/biophysics retarget edges (orchestrator retargets separately).",
+    "all classification grounding cited verbatim from foundry/proposals/life-sciences-skeleton-v1/qc-report.md and dist/foundry/captures/life-sciences-skeleton-v1/CAPTURE-DIGEST.md (the only captured/live classification facts)."
+  ]
+}
