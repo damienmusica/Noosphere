@@ -30,7 +30,8 @@
       "node_id": "subfield:ontology",
       "verdict": "verified",
       "expected_qid": "Q44325",
-      "rank1_expected": true
+      "manual_path": true,
+      "notes": "cross-domain homonym (philosophy vs information-science/mathematics senses) — documented v3 limitation, decision log (8): human selection is the answer; resolver is not expected to rank-1 the philosophy sense"
     },
     {
       "batch": "batch:philosophy-skeleton-v1",
@@ -54,7 +55,8 @@
       "node_id": "subfield:logic",
       "verdict": "verified",
       "expected_qid": "Q8078",
-      "rank1_expected": true
+      "manual_path": true,
+      "notes": "cross-domain homonym (philosophy vs information-science/mathematics senses) — documented v3 limitation, decision log (8): human selection is the answer; resolver is not expected to rank-1 the philosophy sense"
     },
     {
       "batch": "batch:philosophy-skeleton-v1",
