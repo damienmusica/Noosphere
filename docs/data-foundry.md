@@ -439,6 +439,102 @@ non-coverage, never silently dropped.
   geodesy-under-geophysics nesting flattened to the field (contradiction-nesting rule: gate
   schemes file under astronomy; IUGG treats geodesy and geophysics as peers); TU Delft's
   civil-engineering housing is a parked engineering-continent §13 trigger.
+- 2026-06-11 social sciences (round 13a node rulings): a continent's LCC footprint is
+  multi-class — a discipline's own top-level LCC class (law's K, political science's J,
+  education's L) is not an out-of-continent filing; rule 3's LCC prong asks whether the home
+  lies in *another continent's* class (law); when both gate schemes file a node in-continent but
+  under different wings, the split contests the **edge**, not the node — the flag moves to the
+  part_of batch (criminology: LCC HV sociology-side vs UDC 343.9 law-side); FORD co-naming an
+  area inside another field's division plus LCC divisions-inside-subclasses plus no UDC
+  in-continent division = the mathematical-logic demotion profile at field rank, even against
+  faculty-level institutional autonomy (business); a live enwiki redirect from a candidate's
+  label to a canonical node's article, combined with the candidate's own QID hint resolving to
+  that canonical entity, is decisive duplicate-referent evidence — the candidate drops and its
+  classification evidence parks as §13 membership evidence for the canonical node
+  (political-theory → political-philosophy); a shallow UDC division directly under the domain
+  digit plus LCC filing inside another field's subclass plus research-center-rank community =
+  subfield, not field (demography).
+- 2026-06-11 SS part_of edges (13a edge rulings): when contradictory depth claims concern
+  *field membership itself* (LCC nests inside a field's subclass while UDC files a peer division
+  directly under the domain digit), the flatten target is the **domain** — the
+  contradiction-nesting rule applied one rank up (demography, public-administration; each
+  scheme's field-side filing parks as §13 evidence); a §13 co-equal dual whose second endpoint
+  is `proposed` is written as a **status-capped edge**, not parked (economic-geography; NS
+  7-capped precedent — capped edges are the designed mechanism for exactly this);
+  un-contradicted gate-scheme nestings deepen per the CIS depth rule (economics 33x, education
+  37x, law 34x clusters), and peer-division agreement between both schemes files a node
+  domain-direct (gender-studies, social-work-and-welfare).
+- 2026-06-11 life sciences (13b rulings): a continent whose classification family splits into
+  several LCC subclasses (QH–QR) but is one FORD field (1.6) is modeled as a **single field with
+  peer subfields** (biology — LCC subclass separation is shelving granularity, not field-level
+  co-equality); a node whose classification home sits inside a sibling subfield's range stays a
+  **peer** when it holds a dedicated range *and* a distinct community identity (mycology — QK600
+  inside botany; optics/AMO pattern), while a candidate whose *only* anchor is a cutter inside a
+  kept node's range serving the same community **absorbs** (genomics — QH447 inside genetics;
+  id.loc.gov cutter-location check); a gate-scheme medicine split (LCC QP/QM in-continent vs UDC
+  611/612 under 61 Medicine) keeps the node in-continent at `proposed` with the medicine-side
+  §13 parked (physiology, anatomy — biophysics/biochemistry pattern); a technique-defined field
+  with no classification division absorbs (structural-biology); emerging fields with departments
+  but no classification division are deliberate non-coverage (systems-/synthetic-biology —
+  data-science pattern); a candidate whose classification anchor IS an existing canonical node's
+  anchor records as a §13 cross-list candidate, never a second node (conservation-biology ←
+  UDC 502/504 = environmental-science's anchor).
+- 2026-06-11 engineering & technology (13c node rulings): a named in-gate class division that
+  refines no kept node passes criterion (a) even without a standalone subclass (industrial
+  engineering — the polymer absorption precedent is confined to candidates refining a
+  same-community kept parent); a gate-scheme **division-caption co-naming** plus a named major
+  range in the other gate scheme satisfies criterion (a) — a UDC Summary granularity gap does
+  not erase caption-level presence (nuclear); an LCC subclass outside the continent's gate
+  classes that umbrellas a combined referent supports the **combined node shape**, and rule 3
+  does not fire while the institutional home is in-continent
+  (naval-architecture-and-marine-engineering ← VM); a generator B-flag with no
+  out-of-continent filing behind it is a *design* question — QC may reclassify B→A and rule it
+  (photonics; QIS distinct-referent precedent applied); when a generator anchors one captured
+  range on two nodes, QC assigns it to exactly one node and records the reassignment on both
+  (double-anchor hygiene — TC1501-1800).
+- 2026-06-11 ENG part_of edges (13c edge rulings): a cross-check scheme's sibling division does
+  not defeat a gate-scheme nesting (nanotechnology — FORD 2.10 ∥ 2.5 vs UDC 620.3 inside 620);
+  a caption co-naming used for criterion (a) places the area in that caption's wing for nesting
+  analysis too — wing-consistency (nuclear: UDC 621 mechanical wing contradicts LCC TK nesting →
+  flatten); a single shelving entry inside a subclass's general portion does not nest the area
+  under that subclass's discipline (systems-engineering ← TA168 — ASL shelving principle applied
+  in the flatten direction).
+- 2026-06-11 arts & design (13d node rulings): the other-home-filing interpretation generalizes
+  beyond class G — LCC class-P (PN theatre/film), class-S (SB landscape architecture), and GV
+  (dance) shelvings do not defeat arts membership when UDC 7 + FORD 6.4 + community file the
+  discipline in-continent (interpreted once, identically, for the cluster; out-of-continent
+  evidence parks record-only); a single-scheme named range plus a strong community fails
+  criterion (a) when the second scheme's nearest caption names a **different referent**
+  (fashion-design — NK4700-4890 Costume vs UDC 746 needlework; v2 re-split candidate); an
+  umbrella and its qualifying children may coexist inside one LCC subclass (decorative-arts NK
+  alongside interior-design and ceramic-arts — contrast computer-systems, whose children failed
+  and absorbed); a generator QID collision between two distinct nodes retires as **hint-input
+  error**, not identity ambiguity — withdraw the hint, keep the node unflagged, let the resolver
+  fill identity (graphic-design; independently mirrored by 13b's mycology collision); UDC 7.01
+  "Theory and philosophy of art" records as arts-side deliberate non-coverage — the philosophy
+  continent's subfield:aesthetics keeps sole custody of the referent (no second node without
+  demonstrated distinct community + classification standing); when both gate schemes file an
+  area only as a subdivision, a strong practitioner community cannot alone carry a skeleton node
+  (composition — MT40-67, UDC 78.02; v2 candidate).
+- 2026-06-11 arts-design part_of edges (13d edge rulings): **discipline-naming parity** is the
+  §13 gate discriminator — a second membership is written when the second scheme files the
+  discipline under a class/range that *names the discipline* (architecture ← LCC TH845-895
+  "Architectural engineering"), and dropped when the second reading is only a shared-subclass
+  coordinate-label (drawing→design — shelving bundling, recorded as candidate); round-internal
+  §13 evidence handoff works — the owning branch live-re-verifies the other branch's recorded
+  dossier before writing the edge (13c dossier → 13d architecture write-in; single-owner
+  assignment table + handoff note in the other branch's report).
+- 2026-06-12 round-1 integration (#14 rulings): the four branches' precedent candidates were
+  cross-checked for mutual contradictions — **none found**; two discriminators recorded to
+  prevent misreading: (i) flag placement under gate-scheme splits — an in-continent *wing* split
+  contests the **edge** (criminology), a cross-continent *gate* split contests the **node**
+  (physiology/anatomy); (ii) peer-vs-absorb inside a parent's range — dedicated range + distinct
+  community = peer (mycology), cutter-only anchor + same community = absorb (genomics).
+  Architecture's engineering-side membership **stays domain-direct** (re-target review executed
+  with field:civil-engineering now existing: LCC TH845-895 and UDC 69 file architectural
+  engineering *beside* civil engineering's TA/624 — the gate schemes separate them, and FORD
+  2.1's bundling is a cross-check scheme, which does not create a nesting per the 13c edge rule;
+  a built-environment field-level parent is a v2 question, not forced by current evidence).
 
 ## 13. Cross-listing standard (multiple `part_of` memberships)
 
