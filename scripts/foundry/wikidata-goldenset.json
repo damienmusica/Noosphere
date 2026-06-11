@@ -1,7 +1,7 @@
 {
   "version": 1,
   "description": "Machine-readable regression golden set for scripts/foundry/resolve-wikidata.ts. Encodes every past verified resolution verdict (philosophy 61 + formal sciences 44 + CS 23 + ML-foundations 11 + seed-era 13 + natural sciences 41), the manual-selection rulings (decision-log (9) path), the upstream gaps, and the rejected orphan stub. The resolver re-run is maintainer-local (network); the comparison (scripts/foundry/goldenset-check.ts) is fully offline against this file — CI stays network-free.",
-  "provenance": "Derived 2026-06-11 (session #10) by joining foundry/batches/*.json seed manifests with /data/nodes.json verified QIDs; manual/gap annotations from the permanent records in foundry/proposals/*/grounding-report.md, qid-adversarial-audit-cis-v1/report.md and the vault decision log (8)(9)(13)(24)(25). Seed-era entries appended 2026-06-11 (session #11) from qid-adversarial-audit-seed-philosophy-v1 (2 corrected: life-sciences Q864->Q864928, arts-and-design Q735->Q2018526). Natural-sciences entries appended 2026-06-11 (session #11, resolver v4 first new-continent run; grounding-report in foundry/proposals/natural-sciences-skeleton-v1/). Social-sciences entries appended 2026-06-11 (session #13a, parallel round v1): 36 verified (35 rank-1 + 1 manual social-work Q205398) + 3 upstream gaps (economic-theory, business-and-management, archaeological-anthropology) — per-QID verdicts in foundry/proposals/social-sciences-skeleton-v1/grounding-report.md.",
+  "provenance": "Derived 2026-06-11 (session #10) by joining foundry/batches/*.json seed manifests with /data/nodes.json verified QIDs; manual/gap annotations from the permanent records in foundry/proposals/*/grounding-report.md, qid-adversarial-audit-cis-v1/report.md and the vault decision log (8)(9)(13)(24)(25). Seed-era entries appended 2026-06-11 (session #11) from qid-adversarial-audit-seed-philosophy-v1 (2 corrected: life-sciences Q864->Q864928, arts-and-design Q735->Q2018526). Natural-sciences entries appended 2026-06-11 (session #11, resolver v4 first new-continent run; grounding-report in foundry/proposals/natural-sciences-skeleton-v1/). Social-sciences entries appended 2026-06-11 (session #13a, parallel round v1): 36 verified (35 rank-1 + 1 manual social-work Q205398) + 3 upstream gaps (economic-theory, business-and-management, archaeological-anthropology) — per-QID verdicts in foundry/proposals/social-sciences-skeleton-v1/grounding-report.md. Arts-design entries appended 2026-06-11 (session #13d, parallel round v1 merge order 4; grounding-report in foundry/proposals/arts-design-skeleton-v1/).",
   "expectation_semantics": {
     "verified + rank1_expected": "FAIL if expected_qid absent from candidates; WARN if present but not selected_qid; PASS if selected.",
     "verified + manual_path": "INFO either way — v3 baseline did not surface these as rank-1; an improvement (expected_qid surfaced/selected) is reported as IMPROVED, absence is v3 parity, never FAIL.",
@@ -2144,6 +2144,232 @@
       "expected_qid": "Q128570",
       "rank1_expected": true,
       "notes": "resolver false-ambiguous (P31=Q28598684); rank-1 confirmed multi-signal (enwiki Bioinformatics; interdisciplinary biology+CS+statistics — corroborates CS-side §13 candidate)."
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Music",
+      "node_id": "field:music",
+      "verdict": "verified",
+      "expected_qid": "Q638",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Visual Arts",
+      "node_id": "field:visual-arts",
+      "verdict": "verified",
+      "expected_qid": "Q36649",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Design",
+      "node_id": "field:design",
+      "verdict": "verified",
+      "expected_qid": "Q82604",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Performing Arts",
+      "node_id": "field:performing-arts",
+      "verdict": "verified",
+      "expected_qid": "Q184485",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Architecture",
+      "node_id": "field:architecture",
+      "verdict": "verified",
+      "expected_qid": "Q12271",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Musicology",
+      "node_id": "subfield:musicology",
+      "verdict": "verified",
+      "expected_qid": "Q164204",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Music Theory",
+      "node_id": "subfield:music-theory",
+      "verdict": "verified",
+      "expected_qid": "Q193544",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Ethnomusicology",
+      "node_id": "subfield:ethnomusicology",
+      "verdict": "verified",
+      "expected_qid": "Q208365",
+      "rank1_expected": true,
+      "notes": "upstream en label currently a typo state (etnomusicology, lastrevid 2499580361) — identity pinned by description+P31+enwiki+alias; watch item"
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Music Education",
+      "node_id": "subfield:music-education",
+      "verdict": "verified",
+      "expected_qid": "Q27908",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Art History",
+      "node_id": "subfield:art-history",
+      "verdict": "verified",
+      "expected_qid": "Q50637",
+      "rank1_expected": true,
+      "must_not_select": [
+        "Q50641"
+      ],
+      "notes": "discipline-vs-phenomenon twin: Q50641 (history of art) is the phenomenon, Q50637 the academic discipline"
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Painting",
+      "node_id": "subfield:painting",
+      "verdict": "verified",
+      "expected_qid": "Q11629",
+      "rank1_expected": true,
+      "must_not_select": [
+        "Q3305213"
+      ],
+      "notes": "object twin guard: Q3305213 is the painting artwork-object class"
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Sculpture",
+      "node_id": "subfield:sculpture",
+      "verdict": "verified",
+      "expected_qid": "Q11634",
+      "rank1_expected": true,
+      "must_not_select": [
+        "Q860861"
+      ],
+      "notes": "object twin guard: Q860861 is the three-dimensional artwork-object class (it was the generator hint)"
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Drawing",
+      "node_id": "subfield:drawing",
+      "verdict": "verified",
+      "expected_qid": "Q2921001",
+      "manual_path": true,
+      "must_not_select": [
+        "Q192521",
+        "Q93184"
+      ],
+      "notes": "manual referent override (session #13d): resolver rank-1 Q192521 = technical drawing (drafting referent) rejected; Q93184 = artwork-object twin holding the enwiki Drawing article; Q2921001 (art of drawing) is the discipline — thin anchor (no enwiki, 5 sitelinks), watch item"
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Printmaking",
+      "node_id": "subfield:printmaking",
+      "verdict": "verified",
+      "expected_qid": "Q271588",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Photography",
+      "node_id": "subfield:photography",
+      "verdict": "verified",
+      "expected_qid": "Q11633",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Graphic Design",
+      "node_id": "subfield:graphic-design",
+      "verdict": "verified",
+      "expected_qid": "Q185925",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Industrial Design",
+      "node_id": "subfield:industrial-design",
+      "verdict": "verified",
+      "expected_qid": "Q243606",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Interior Design",
+      "node_id": "subfield:interior-design",
+      "verdict": "verified",
+      "expected_qid": "Q179232",
+      "rank1_expected": true,
+      "must_not_select": [
+        "Q1329946"
+      ],
+      "notes": "sibling-discipline guard: Q1329946 = interior architecture (near-tie at resolution)"
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Decorative Arts",
+      "node_id": "subfield:decorative-arts",
+      "verdict": "verified",
+      "expected_qid": "Q631931",
+      "manual_path": true,
+      "must_not_select": [
+        "Q207241"
+      ],
+      "notes": "manual umbrella-twin override (session #13d): resolver rank-1 Q207241 = applied arts rejected; Q631931 (decorative art, enwiki Decorative arts) is the LCC NK referent"
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Ceramic Arts",
+      "node_id": "subfield:ceramic-arts",
+      "verdict": "verified",
+      "expected_qid": "Q13464614",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Theatre Studies",
+      "node_id": "subfield:theatre-studies",
+      "verdict": "verified",
+      "expected_qid": "Q960543",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Dance",
+      "node_id": "subfield:dance",
+      "verdict": "verified",
+      "expected_qid": "Q11639",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Film Studies",
+      "node_id": "subfield:film-studies",
+      "verdict": "verified",
+      "expected_qid": "Q1660187",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Landscape Architecture",
+      "node_id": "subfield:landscape-architecture",
+      "verdict": "verified",
+      "expected_qid": "Q47844",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:arts-design-skeleton-v1",
+      "seed_label": "Urban Planning",
+      "node_id": "subfield:urban-planning",
+      "verdict": "verified",
+      "expected_qid": "Q69883",
+      "rank1_expected": true
     }
   ]
 }
