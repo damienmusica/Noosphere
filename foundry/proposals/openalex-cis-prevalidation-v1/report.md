@@ -111,3 +111,154 @@ Status legend: ✓ rank-1 accept candidate / M manual per-item route / ✗ no wr
 - Implementation, if ratified, mirrors PR #46: live re-fetch at write time, `external_ids.openalex`
   first, `external_metrics.openalex` (`works_count`, `cited_by_count`, `as_of`, entity URL), full
   multi-signal re-check per node, anomalies noted per node.
+
+---
+
+## Implementation append (2026-06-11, session #10) — write executed under ratified gate (a) / decision log (27)
+
+**Method (mirrors PR #46):** every count below was **re-queried live** on 2026-06-11
+(api.openalex.org, polite-pool `mailto`, maintainer-local, serial 1.2s spacing, no committed
+scripts). Lookups keyed **only by the verdict table's Concept IDs** (never QID — duplicate-link
+anomaly; never label — dental-calculus trap). Multi-signal re-check passed **23/23**: response ID
+round-trips the requested Concept ID, `display_name` matches the verdict table, the concept's own
+`wikidata` value equals the node's resolver-verified QID, `level` matches. Counts showed no
+material drift vs. the session-#9 prevalidation capture (same-magnitude values throughout, e.g.
+computer-networks 3,561,409 vs "3.56M"; algorithmics exactly 792 both passes).
+
+**Written to /data (23 nodes):** the 19 rank-1 nodes + 4 manual accepts (below), each receiving
+`external_ids.openalex` (verified Concept ID) and
+`external_metrics.openalex = { works_count, cited_by_count, as_of: "2026-06-11", entity }`.
+
+### Manual-case verdicts (decision-log-(9) path, live evidence, permanent record)
+
+All four manual candidates were **accepted** — a different distribution from the formal-sciences
+pass (2 accept / 2 skip), driven by the signals, not a quota: both FS skips failed *identity*
+(display_name or self-description denying the field); none of these four does.
+
+1. **subfield:algorithms-and-data-structures → C34628019 "Algorithmics" — ACCEPT.** Live:
+   display_name "Algorithmics" = the verified QID's referent name (Q13636890, session-#8 manual
+   pick, enwiki "Algorithmics"), concept wikidata = node QID, level 2, works 792, cited_by 6,543.
+   The small works_count was judged explicitly (per the session order): it is a raw fact about the
+   rarely-used umbrella label's tagging volume, not an identity defect — the same semantics
+   already accepted for rank-1 writes knowledge-organization (4,098) and social-computing (4,832).
+   Consistency favors writing the raw fact tied to the verified identity; interpretation stays
+   downstream under the standing works_count caveat. **Per-node note:** the count reflects the
+   niche label "Algorithmics", not the field's literature volume (which OpenAlex tags under
+   sibling object-level concepts).
+2. **subfield:programming-languages → C18701968 "Programming language theory" — ACCEPT.** Live:
+   display_name sits discipline-side of the artifact-vs-discipline split (rank-1 search hit was
+   the Q9143 artifact), concept wikidata = node QID Q2670534, works 2,941, cited_by 20,513.
+   **Per-node note:** concept level 4 — OpenAlex nests the discipline concept deep under the
+   artifact tree; recorded, not an identity signal failure.
+3. **subfield:computer-graphics → C77660652 "Computer graphics" — ACCEPT (clean).** Live:
+   display_name exact, concept wikidata = node QID Q150971, level 2, works 82,443, cited_by
+   1,088,300. The rank-1 search hit ("Computer graphics (images)", Q7600677) is a different
+   referent; the QID route lands discipline-side, as in prevalidation.
+4. **subfield:formal-languages-and-automata-theory → C116248031 "Automata theory" — ACCEPT.**
+   Live: concept wikidata = node QID Q214526, display_name = the QID's referent name, level 3,
+   works 14,705, cited_by 192,680. **Per-node note:** like the node's QID anchor itself
+   (session-#8 manual selection), the concept anchors the automata-theory side of the compound
+   field name; the compound label has no provider entity anywhere measured (cross-provider
+   search-failure family, resolver-v4 queue).
+
+### Duplicate-QID-link notes (4 nodes, permanent per-node record)
+
+Written concept = the major search-rank-1 entity in every case; the minor concept sharing the QID
+link is recorded here per node (QID-only lookup remains forbidden):
+
+| node | written concept | minor concept sharing the QID |
+|---|---|---|
+| subfield:computer-networks | C31258907 "Computer network" | C2985904603 "Information networks" (L2, ~3k works) |
+| subfield:artificial-intelligence | C154945302 "Artificial intelligence" | C2986342778 "Cognitive systems" (L3) |
+| subfield:visualization | C36464697 "Visualization" | C64073096 "Interactive visualization" (L3) |
+| subfield:machine-learning | C119857082 "Machine learning" | C2982736386 "Statistical learning" (L2) |
+
+### Honest gaps (unchanged, per the ratified scope)
+
+- `field:library-and-information-science` — absent upstream (QID lookup 404, no matching concept).
+- `domain:computer-and-information-sciences` — identity collision (Q21198 shared with field:CS;
+  the single concept C41008148 backs the field node only; writing both would double-count).
+
+### Triangulation dashboard — first computation (new standing metric)
+
+**Metric definition.** *Second-provider triangulation coverage* = share of QID-bearing `/data`
+nodes whose verified QID has been **live-observed to be linked by at least one independently
+curated second provider's entity** (currently: OpenAlex Concepts; observation = a lookup recorded
+in a committed report). Three states per node: **confirmed** (provider entity links exactly the
+node's QID), **measured-unconfirmed** (provider checked live; entity absent or links a different
+QID), **unmeasured** (no second-provider pass has covered the node). Unmeasured ≠ absent; a 404
+is a negative *result*, not an identity doubt.
+
+| continent | QID-bearing | measured | confirmed | measured-unconfirmed | unmeasured | coverage (confirmed/QID-bearing) |
+|---|---|---|---|---|---|---|
+| computer & information sciences | 27 | 27 | **25** | 2 | 0 | **92.6%** |
+| formal sciences | 51 | 42 | **36** | 6 | 9 | 70.6% (within measured: 85.7%) |
+| philosophy (humanities) | 62 | 0 | 0 | 0 | 62 | 0% — never measured |
+| other-continent junction/seed nodes | 8 | 0 | 0 | 0 | 8 | — |
+| **total** | **148** | **69** | **61** | **8** | **79** | **41.2%** (within measured: **88.4%**) |
+
+Detail notes:
+- CS measured-unconfirmed 2 = LIS (404) and quantum-computing (Q17995793: `/concepts/wikidata:`
+  lookup 404 **this session**, and no top-5 search hit links the QID — upstream absent).
+- CS confirmed includes `domain:computer-and-information-sciences` via the shared Q21198 ↔
+  C41008148 link (the *QID* is provider-confirmed; the metrics write goes to the field node only).
+- **subfield:scientific-computing confirmed this session (measurement only):** search rank-1
+  C459310 "Computational science" (L1, works 221,878) links exactly Q117801. It is a clean write
+  candidate for a future micro-pass under standing policy (27) — **not written today** because the
+  ratified gate-(a) scope is the 19+4 enumeration (the node was a B-flag when that scope was set).
+- FS measured-unconfirmed 6 = differential-equations (concept carries variant QID Q11214 —
+  metrics written under the recorded granularity-variant judgment, but it is not a confirmation of
+  our Q28575007), time-series-analysis (concept links Q186588, the data object), and the 4
+  upstream-absent (calculus, algebra, topology, applied-statistics). complex-analysis counts as
+  *confirmed* (C107837686 links our Q193756) even though its metrics write was skipped — the
+  triangulation metric tracks QID identity, not metric writes.
+- FS unmeasured 9 = 4 discipline nodes promoted/resolved after the session-#6 snapshot
+  (operations-research, control-theory, mathematics-education, cybernetics) + 5 concept/method
+  nodes (vector-space, bayesian-inference, random-variable, probability-distribution,
+  gradient-descent). Queue candidates for the next B-track pass.
+- Philosophy has had **no OpenAlex pass at all** (B-track ran STEM-first by design; humanities
+  carries the citation-DB under-representation caveat, decision 2026-06-09). The 0% is a
+  measurement-coverage fact, not an identity-quality fact.
+
+### Evidence permanence (new standing rule, first application)
+
+Wayback Save Page Now was requested for all 26 evidence URLs of this write pass (23 written
+concepts' API URLs + the 2 measurement search URLs + C459310). Results are appended below when
+the serial archiving pass completes.
+
+Final SPN results (26 evidence URLs; Wayback anonymous-SPN throttling hit mid-pass — the
+throttled tail was recovered by a spaced retry once the limit lifted):
+
+| evidence | result | snapshot |
+|---|---|---|
+| subfield:computational-complexity-theory | archived | https://web.archive.org/web/20260611022445/https://api.openalex.org/concepts/C179799912 |
+| subfield:software-engineering | archived | https://web.archive.org/web/20260611022625/https://api.openalex.org/concepts/C115903868 |
+| subfield:computer-vision | archived | https://web.archive.org/web/20260611022801/https://api.openalex.org/concepts/C31972630 |
+| subfield:natural-language-processing | archived | https://web.archive.org/web/20260611022920/https://api.openalex.org/concepts/C204321447 |
+| subfield:human-computer-interaction | archived | https://web.archive.org/web/20260611023109/https://api.openalex.org/concepts/C107457646 |
+| subfield:cryptography | archived | https://web.archive.org/web/20260611023235/https://api.openalex.org/concepts/C178489894 |
+| subfield:computer-security | archived | https://web.archive.org/web/20260611023415/https://api.openalex.org/concepts/C38652104 |
+| subfield:theoretical-computer-science | archived | https://web.archive.org/web/20260611023536/https://api.openalex.org/concepts/C80444323 |
+| subfield:information-retrieval | archived | https://web.archive.org/web/20260611023739/https://api.openalex.org/concepts/C23123220 |
+| subfield:knowledge-organization | archived | https://web.archive.org/web/20260611023908/https://api.openalex.org/concepts/C2779810430 |
+| subfield:digital-libraries | archived | https://web.archive.org/web/20260611024131/https://api.openalex.org/concepts/C513874922 |
+| subfield:bibliometrics | archived | https://web.archive.org/web/20260611024435/https://api.openalex.org/concepts/C178315738 |
+| subfield:social-computing | archived | https://web.archive.org/web/20260611024749/https://api.openalex.org/concepts/C74216064 |
+| subfield:history-of-computing | archived | https://web.archive.org/web/20260611025811/https://api.openalex.org/concepts/C2778653333 |
+| field:computer-science | archived | https://web.archive.org/web/20260611030113/https://api.openalex.org/concepts/C41008148 |
+| subfield:computer-networks | archived | https://web.archive.org/web/20260611030448/https://api.openalex.org/concepts/C31258907 |
+| subfield:artificial-intelligence | archived | https://web.archive.org/web/20260611030915/https://api.openalex.org/concepts/C154945302 |
+| subfield:visualization | archived | https://web.archive.org/web/20260611031238/https://api.openalex.org/concepts/C36464697 |
+| subfield:machine-learning | archived | https://web.archive.org/web/20260611031540/https://api.openalex.org/concepts/C119857082 |
+| subfield:algorithms-and-data-structures | archived | https://web.archive.org/web/20260611031834/https://api.openalex.org/concepts/C34628019 |
+| subfield:programming-languages | archived | https://web.archive.org/web/20260611032210/https://api.openalex.org/concepts/C18701968 |
+| subfield:computer-graphics | archived | https://web.archive.org/web/20260611032449/https://api.openalex.org/concepts/C77660652 |
+| subfield:formal-languages-and-automata-theory | archived | https://web.archive.org/web/20260611032730/https://api.openalex.org/concepts/C116248031 |
+| sci-comp-search | **[SPN-FAILED]** | save_http=000 (throttle) — next-session retry queue |
+| quantum-search | **[SPN-FAILED]** | save_http=000 (throttle) — next-session retry queue |
+| sci-comp-concept | **[SPN-FAILED]** | save_http=000 (throttle) — next-session retry queue |
+
+**Success rate: 23/26 (88.5%) — all 23 written nodes' concept evidence URLs archived (100%);** the 3 failures are
+measurement-only URLs (the 2 search queries — SPN rejected the querystring URLs under throttle — and the C459310
+measurement concept). The re-audit path does not depend on SPN: `as_of` + entity URL remain the primary
+re-query keys; snapshots are reinforcement, per the standing rule.
