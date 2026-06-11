@@ -1,0 +1,261 @@
+{
+  "id": "batch:engineering-technology-skeleton-v1",
+  "title": "Engineering & Technology Skeleton v1",
+  "description": "Coverage skeleton for the engineering-and-technology continent (seventh continent, parallel round v1 branch 13c, merge order 3): field/subfield two-level node set under domain:engineering-and-technology — civil, mechanical, electrical, chemical, materials, environmental, aerospace, industrial and biotechnology-side engineering areas — each tagged with academic_status. Construction input only — not canonical graph data; nodes only, zero edges (skeleton-first). The junction node already canonical in /data (domain:engineering-and-technology, Q11023) is out of generation scope. Architecture is owned by round branch 13d (arts-and-design); life-science areas by 13b; biotechnology (FORD 2.8/2.9) is owned by this branch per the round boundary assignment table.",
+  "status": "active",
+  "target_locales": [
+    "en"
+  ],
+  "scope": {
+    "include": [
+      "Engineering and technology field and subfield coverage skeleton (nodes only)",
+      "Civil-engineering-family areas under LCC TA/TC/TD/TE/TF/TG/TH and UDC 624-628 plus 69, FORD 2.1/2.7",
+      "Mechanical and aerospace areas under LCC TJ/TL and UDC 621/629, FORD 2.3",
+      "Electrical, electronic, telecommunication, computer and nuclear engineering areas under LCC TK and UDC 621.3/654, FORD 2.2",
+      "Chemical engineering and process areas under LCC TP and UDC 66, FORD 2.4",
+      "Materials, metallurgy and mining areas under LCC TA401-492/TN and UDC 620/622/669, FORD 2.5",
+      "Biotechnology under UDC 60 and LCC TP248.13-248.65, FORD 2.8/2.9 (owned by this branch per the round assignment table); biomedical engineering under FORD 2.6 with the medicine boundary pre-registered",
+      "Manufacturing and industrial-engineering areas under LCC T55.4-60.8/TS and UDC 67/68, FORD 2.11",
+      "Nanotechnology under UDC 620.3 and FORD 2.10",
+      "Wikidata QID resolution for identity and external_ids"
+    ],
+    "exclude": [
+      "Edges and relations (skeleton-first: dots before lines; part_of skeleton edges are a separate batch)",
+      "Level-3 concepts, persons, works",
+      "Re-proposing any existing /data node (domain:engineering-and-technology and all 195 other canonical nodes; reconcile to existing IDs instead)",
+      "Architecture and architectural engineering (LCC NA + TH845-895, UDC 72): owned by round branch 13d per the boundary assignment table — engineering-side evidence is recorded in this batch's reports only, never as nodes",
+      "Control engineering as a node: subfield:control-theory already exists (formal sciences) with a domain-direct engineering membership edge (LCC TJ212-225); new control-related evidence (UDC 681.5) feeds the re-target review, not a new node",
+      "Operations research / industrial-engineering overlap: subfield:operations-research already exists (formal sciences, LCC T57.6-57.97 evidence on its domain-direct membership edge); no duplicate node — membership/adjacency and the re-target review only",
+      "Existing CS-owned boundary nodes: subfield:computer-security, subfield:cryptography, subfield:software-engineering, subfield:quantum-computing (NS membership), subfield:computer-systems and the rest of the CS continent — computer engineering (LCC TK7885-7895) is in-scope as a new node with a pre-registered CS dual-membership question",
+      "Existing NS-owned boundary nodes: subfield:optics, subfield:acoustics, subfield:plasma-physics (LCC TA1501-1820 applied optics/photonics, TA365-367 acoustical engineering, TA2001-2040 plasma engineering are engineering-side evidence, recorded for cross-listing review — photonics as a possibly-distinct referent is pre-registered)",
+      "Life-sciences areas (13b territory) and medicine (UDC 61, LCC R): medical-physics precedent governs deferrals; FORD 2.6 medical/biomedical engineering is the one pre-registered case-by-case exception",
+      "Management, business administration and accountancy (UDC 657/658/659 sit inside UDC 65 but belong to the social-sciences continent; engineering management evidence is recorded, not generated)",
+      "Photography (LCC TR), handicrafts (LCC TT), home economics (LCC TX): arts/practical-knowledge territory — recorded as out-of-continent, never generated",
+      "Military engineering (UDC 623; LCC UG sits in class U): pre-registered as likely deliberate non-coverage — record, do not generate without passing the dual criterion",
+      "Agriculture and food-science institutional territory (FORD 4): food engineering is the one pre-registered boundary seed (LCC TP368-456 + UDC 664 are in-continent homes)",
+      "Living engineers and current affiliations"
+    ]
+  },
+  "seed_entities": [
+    {
+      "label": "Civil Engineering",
+      "expected_node_id": "field:civil-engineering",
+      "expected_type": "field"
+    },
+    {
+      "label": "Electrical Engineering",
+      "expected_node_id": "field:electrical-engineering",
+      "expected_type": "field"
+    },
+    {
+      "label": "Mechanical Engineering",
+      "expected_node_id": "field:mechanical-engineering",
+      "expected_type": "field"
+    },
+    {
+      "label": "Chemical Engineering",
+      "expected_node_id": "field:chemical-engineering",
+      "expected_type": "field"
+    },
+    {
+      "label": "Materials Science and Engineering",
+      "expected_node_id": "field:materials-science-and-engineering",
+      "expected_type": "field"
+    },
+    {
+      "label": "Environmental Engineering",
+      "expected_node_id": "field:environmental-engineering",
+      "expected_type": "field"
+    },
+    {
+      "label": "Aerospace Engineering",
+      "expected_node_id": "field:aerospace-engineering",
+      "expected_type": "field"
+    },
+    {
+      "label": "Industrial Engineering",
+      "expected_node_id": "field:industrial-engineering",
+      "expected_type": "field"
+    },
+    {
+      "label": "Biotechnology",
+      "expected_node_id": "field:biotechnology",
+      "expected_type": "field"
+    },
+    {
+      "label": "Biomedical Engineering",
+      "expected_node_id": "field:biomedical-engineering",
+      "expected_type": "field"
+    },
+    {
+      "label": "Structural Engineering",
+      "expected_node_id": "subfield:structural-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Geotechnical Engineering",
+      "expected_node_id": "subfield:geotechnical-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Transportation Engineering",
+      "expected_node_id": "subfield:transportation-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Hydraulic Engineering",
+      "expected_node_id": "subfield:hydraulic-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Construction Engineering and Management",
+      "expected_node_id": "subfield:construction-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Naval Architecture and Marine Engineering",
+      "expected_node_id": "subfield:naval-architecture-and-marine-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Telecommunications Engineering",
+      "expected_node_id": "subfield:telecommunications-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Computer Engineering",
+      "expected_node_id": "subfield:computer-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Nuclear Engineering",
+      "expected_node_id": "subfield:nuclear-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Robotics",
+      "expected_node_id": "subfield:robotics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Manufacturing Engineering",
+      "expected_node_id": "subfield:manufacturing-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Metallurgy",
+      "expected_node_id": "subfield:metallurgy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Mining Engineering",
+      "expected_node_id": "subfield:mining-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Petroleum Engineering",
+      "expected_node_id": "subfield:petroleum-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Nanotechnology",
+      "expected_node_id": "subfield:nanotechnology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Systems Engineering",
+      "expected_node_id": "subfield:systems-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Geomatics",
+      "expected_node_id": "subfield:geomatics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Photonics",
+      "expected_node_id": "subfield:photonics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Automotive Engineering",
+      "expected_node_id": "subfield:automotive-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Energy Engineering",
+      "expected_node_id": "subfield:energy-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Textile Engineering",
+      "expected_node_id": "subfield:textile-engineering",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Food Engineering",
+      "expected_node_id": "subfield:food-engineering",
+      "expected_type": "subfield"
+    }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "wikidata",
+      "purpose": [
+        "identity",
+        "metadata",
+        "source_resolution",
+        "external_link"
+      ],
+      "requires_secret": false,
+      "notes": "CC0. Resolver verifies the unverified training-knowledge QID hints in the proposal and fills missing QIDs."
+    },
+    {
+      "provider": "wikipedia",
+      "purpose": [
+        "external_link",
+        "source_resolution"
+      ],
+      "requires_secret": false,
+      "notes": "External-link / source-resolution pointer only. Never store or cache article bodies."
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "provider": "namuwiki",
+      "reason": "NamuWiki is external-link-only and must never be used as evidence or a source, nor have its content cached."
+    },
+    {
+      "provider": "cloud_llm_api",
+      "reason": "No cloud LLM API calls are permitted in repo tooling, build, validation, or runtime."
+    },
+    {
+      "provider": "scraped_article_body",
+      "reason": "Scraping or crawling third-party article bodies is forbidden; only open, license-compatible data is allowed."
+    }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": [
+      "low",
+      "medium",
+      "historical"
+    ],
+    "requires_strict_review_for": [
+      "living_person",
+      "current_affiliation",
+      "controversial_claim"
+    ]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/engineering-technology-skeleton-v1"
+  },
+  "notes": [
+    "Continent launched as branch 13c of parallel round v1 (round design ratified by the CPO 2026-06-11; section-12 snapshot pin = commit d816cb6; promotion merge order 3 with the succession rule).",
+    "Coverage baseline for generation/QC: LCC class T outline (loc.gov outline PDF, fetched 2026-06-11; T/TA/TC/TD/TE/TF/TG/TH/TJ/TK/TL/TN/TP/TS captured in full, plus id.loc.gov authority records for cutter-level checks at QC), UDC class 6 records (60 Biotechnology, 62 Engineering with full 620-629 children, 65 boundary documentation, 66 chemical technology, 669 metallurgy, 67/68 manufacturing industries, 69 building trade — udcsummary.info getrecord endpoint, fetched 2026-06-11; query-string URLs are SPN-incompatible, citations are by notation + caption), and OECD FORD section 2 (2.1-2.11; arrs.si mirror, fetched 2026-06-11, existing snapshot web/20260611023459). No discipline-specific scheme is ratified gate-level for this continent (IEEE/ASME taxonomies were not promoted; LCC/UDC gate + FORD cross-check, with MSC and the arXiv taxonomy as auxiliary cross-checks only).",
+    "docs/data-foundry.md section 12 (including its precedent log, at pin d816cb6) is a mandatory input to the generation order (promotion policy v1.3); section 13 governs any multi-membership question raised during QC.",
+    "Pre-registered structural questions for QC: (1) computer-engineering vs the CS continent — LCC TK7885-7895 is an in-continent home; a CS-side second membership is a section-13 dual-membership candidate (Q428691 is a known computer-engineering QID, previously rejected only as an anchor for subfield:computer-systems); (2) materials-science boundary with chemistry/physics — section-13 candidates to record, not resolve; (3) industrial engineering's classification presence is thin (LCC T55.4-60.8 is a range inside class T; UDC files production engineering at 658.5 inside the management class) — dual-criterion test required, and its creation triggers the operations-research re-target review; (4) control engineering must NOT become a node (existing subfield:control-theory, formal sciences); TJ212-225 and UDC 681.5 evidence feeds the re-target review of the existing domain-direct membership edges; (5) electronics (TK7800-8360) is expected to absorb into electrical-engineering (label/absorption rules) unless the dual criterion separates them; (6) biomedical engineering (FORD 2.6) — LCC R856 and UDC 615.47 are medicine-class homes but the dominant institutional home is engineering schools, so cross-continent rule 3 does not fire on one prong; boundary recorded in uncertainty; (7) photonics vs the existing NS subfield:optics — distinct-referent test (quantum-information-science precedent): TA1501-1820 'Applied optics. Photonics' plus UDC 681.7 vs the physics referent; (8) naval-architecture-and-marine-engineering is a combined-name seed (LCC VM sits in class V, TC1501-1800 ocean engineering is in-continent, UDC 629.5 watercraft engineering) — combined-vs-split shape and any component-anchor question follow the umbrella-test precedent; (9) geomatics/surveying (TA501-625) is case-by-case per the round assignment table — if kept, the parked geodesy engineering-side evidence (TU Delft civil-engineering housing, session #12) is linked in this batch's report as a section-13 candidate, with any write-in deferred to session #14; (10) energy engineering inherits the NS deliberate-non-coverage record for 'energy science' as a cross-continent candidate (TJ163/TJ807-830 + UDC 620.9 + 662.6); (11) nuclear engineering's UDC presence sits below summary granularity (621.039 not visible at getrecord level) — single-visible-gate-scheme question pre-registered; (12) food engineering (TP368-456 + UDC 664 in-continent homes vs agriculture/food-science institutional homes, FORD 4) and textile engineering (UDC 677 + LCC TS1300-1865) are borderline seeds expected to live or die by the dual criterion; (13) highway (TE), railroad (TF) and bridge (TG) engineering are expected to absorb into transportation/civil engineering; sanitary engineering folds into environmental engineering by the label rule; (14) metallurgy and materials-science may coexist as peers if both pass the dual criterion (peer-coexistence rule); (15) bioengineering (TA164) folds into the biotechnology/biomedical-engineering pair — no third node without a distinct referent.",
+    "Post-skeleton re-target triggers recorded in the session order: operations-research and control-theory currently hold domain-direct engineering membership edges (session #7; LCC T57.6-57.97 and TJ212-225) — once proper in-continent parents exist, the re-target review runs under the mathematics-education precedent; information-theory's ECE-side membership is a parked section-13 candidate (session #8) — engineering-scheme filings are collected when the electrical-engineering field lands, written only if the evidence gate passes.",
+    "/data remains the source of truth for accepted graph data."
+  ]
+}
