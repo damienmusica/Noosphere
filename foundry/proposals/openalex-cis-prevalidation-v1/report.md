@@ -262,3 +262,23 @@ throttled tail was recovered by a spaced retry once the limit lifted):
 measurement-only URLs (the 2 search queries — SPN rejected the querystring URLs under throttle — and the C459310
 measurement concept). The re-audit path does not depend on SPN: `as_of` + entity URL remain the primary
 re-query keys; snapshots are reinforcement, per the standing rule.
+
+---
+
+## Session #11 follow-ups (2026-06-11)
+
+**scientific-computing micropass written (standing policy (27), no escalation triggers):**
+C459310 "Computational science" re-queried live at write time — display_name discipline-side,
+`ids.wikidata` → Q117801 = the node's verified QID (ID round-trip), level 1, works_count 221,978,
+cited_by_count 3,952,071 — multi-signal re-check passed; `external_ids.openalex` +
+`external_metrics.openalex` written to /data. Evidence permanence: the C459310 concept URL is now
+archived — https://web.archive.org/web/20260611033400/https://api.openalex.org/concepts/C459310
+(retry pass; the SPN table row "sci-comp-concept [SPN-FAILED]" above is superseded by this entry).
+
+**SPN retry queue disposition:** the two measurement search URLs (sci-comp-search, quantum-search)
+failed again with save_http=000 — querystring URLs are SPN-incompatible (second consecutive
+session; known rejection mode). Closed as permanent [SPN-FAILED]; the quoted search results in
+this report remain the textual record. Retry queue for this batch: empty.
+
+**Triangulation coverage after the micropass:** CS continent 26/27 (96.3%) — scientific-computing
+was the last measured-but-unwritten node.
