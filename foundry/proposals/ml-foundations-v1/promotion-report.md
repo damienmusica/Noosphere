@@ -56,3 +56,26 @@ this directory plus git history. Every edge generated after policy v1 must carry
 The seven dropped edges stay dropped (high-altitude duplicates 3, reverse-conflict 1, drop
 recommendations 3 — see vault roadmap entry and `report.md`). They remain preserved here as
 `generated`, re-auditable.
+
+---
+
+## Erratum (2026-06-11, session #10) — bayesian-inference QID corrected
+
+`method:bayesian-inference` carried `external_ids.wikidata = Q41581`, which denotes **"alkane"
+(acyclic saturated hydrocarbon)** — a wrong referent. The QID was a seed-era (2026-06-02)
+human-curated value that predates the resolver and was never resolver-verified; both adversarial
+audits scoped skeleton-batch QIDs only, so it sat invisible in the "unmeasured" category. It was
+caught by the **golden-set regression harness on its first full pass** (session #10 pit-stop):
+the v4 resolver re-run of this batch's manifest selected Q812535 and the comparison flagged the
+mismatch.
+
+**Correction:** `Q41581 → Q812535` ("Bayesian inference"), multi-signal verified live 2026-06-11
+per the decision-log (9) path — exact English label, enwiki sitelink "Bayesian inference",
+6 English aliases (incl. "Bayesian analysis"), P279 → Q12718609 statistical method + Q938438
+statistical inference, 37 sitelinks. Evidence permanence: live save was SPN-throttled; existing
+snapshot verified instead per the standing rule —
+https://web.archive.org/web/20251206175929id_/https://www.wikidata.org/wiki/Special:EntityData/Q812535.json
+
+The node's identity, edges and status are unaffected (the node always meant the inference method);
+only the external pointer was wrong. **Seed-era QIDs are now a named audit-queue category** —
+the remaining seed-era nodes and the philosophy batch are the session-#11 audit candidates.
