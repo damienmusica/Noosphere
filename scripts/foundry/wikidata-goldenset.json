@@ -2370,6 +2370,277 @@
       "verdict": "verified",
       "expected_qid": "Q69883",
       "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Civil Engineering",
+      "node_id": "field:civil-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q77590",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Electrical Engineering",
+      "node_id": "field:electrical-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q43035",
+      "rank1_expected": true,
+      "manual_path": true,
+      "notes": "Ambiguous (gap 10): runner-up Q12346906 is a 0-enwiki thin double; Q43035 accepted on exact label + enwiki + P31 academic-major/discipline + alias EE."
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Mechanical Engineering",
+      "node_id": "field:mechanical-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q101333",
+      "rank1_expected": true,
+      "manual_path": true,
+      "notes": "Ambiguous (no positive type signal — P31 outside type whitelist): Q101333 accepted on exact label + enwiki + aliases; runner-ups are an iTunes genre and a press-archive category."
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Chemical Engineering",
+      "node_id": "field:chemical-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q83588",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Materials Science and Engineering",
+      "node_id": "field:materials-science-and-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q228736",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Environmental Engineering",
+      "node_id": "field:environmental-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q146326",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Aerospace Engineering",
+      "node_id": "field:aerospace-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q3798668",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Industrial Engineering",
+      "node_id": "field:industrial-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q4489420",
+      "rank1_expected": true,
+      "manual_path": true,
+      "notes": "Ambiguous (gap 30): runner-ups Q6314146 (IE and management) and Q6027873 (IE and OR) are combined entities — different referents; Q4489420 accepted on exact label + enwiki + P31 + alias IE."
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Biotechnology",
+      "node_id": "field:biotechnology",
+      "verdict": "verified",
+      "expected_qid": "Q7108",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Biomedical Engineering",
+      "node_id": "field:biomedical-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q327092",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Structural Engineering",
+      "node_id": "subfield:structural-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q633538",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Geotechnical Engineering",
+      "node_id": "subfield:geotechnical-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q1349130",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Transportation Engineering",
+      "node_id": "subfield:transportation-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q775325",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Hydraulic Engineering",
+      "node_id": "subfield:hydraulic-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q1130265",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Construction Engineering and Management",
+      "node_id": "subfield:construction-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q2674423",
+      "rank1_expected": true,
+      "manual_path": true,
+      "notes": "Compound fallback (zero hits for 'Construction Engineering and Management'): component anchor Q2674423 ACCEPTED under the umbrella test (automata-theory pattern) — its own description covers designing/planning/construction AND management of infrastructure. Q2920921 (management) must never be selected for this seed.",
+      "must_not_select": [
+        "Q2920921"
+      ]
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Naval Architecture and Marine Engineering",
+      "node_id": "subfield:naval-architecture-and-marine-engineering",
+      "verdict": "upstream_gap",
+      "notes": "Honest upstream gap: no combined entity exists; v4 compound fallback surfaced one-wing component anchors — Q1136352 (naval architecture) and Q118291 (marine engineering) each cover one wing only and FAIL the umbrella test (distributed-and-parallel-computing / databases-and-information-systems precedent). Neither may ever be selected for this node.",
+      "must_not_select": [
+        "Q1136352",
+        "Q118291"
+      ]
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Telecommunications Engineering",
+      "node_id": "subfield:telecommunications-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q1061219",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Computer Engineering",
+      "node_id": "subfield:computer-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q428691",
+      "rank1_expected": true,
+      "manual_path": true,
+      "notes": "Ambiguous (gap 10): runner-up Q15841889 is a 0-enwiki thin double. Q428691 accepted FOR THIS REFERENT on exact label + enwiki + P31 trio + aliases (CE, computer systems engineering). Cross-reference: Q428691 is must_not_select on subfield:computer-systems (session #11) — per-seed guards do not transfer."
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Nuclear Engineering",
+      "node_id": "subfield:nuclear-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q83504",
+      "rank1_expected": true,
+      "manual_path": true,
+      "notes": "Ambiguous (no positive type signal — P31 applied science outside whitelist): Q83504 accepted on exact label + enwiki; runner-ups are journals (one orphan stub at -120)."
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Robotics",
+      "node_id": "subfield:robotics",
+      "verdict": "verified",
+      "expected_qid": "Q170978",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Manufacturing Engineering",
+      "node_id": "subfield:manufacturing-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q11049265",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Metallurgy",
+      "node_id": "subfield:metallurgy",
+      "verdict": "verified",
+      "expected_qid": "Q11467",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Mining Engineering",
+      "node_id": "subfield:mining-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q1370637",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Petroleum Engineering",
+      "node_id": "subfield:petroleum-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q1273174",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Nanotechnology",
+      "node_id": "subfield:nanotechnology",
+      "verdict": "verified",
+      "expected_qid": "Q11468",
+      "rank1_expected": true,
+      "manual_path": true,
+      "notes": "Ambiguous (no positive type signal): Q11468 accepted on exact label + enwiki + aliases (nanotech, nanotechnology engineering); generator hint Q11902 was hallucinated."
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Systems Engineering",
+      "node_id": "subfield:systems-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q682496",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Geomatics",
+      "node_id": "subfield:geomatics",
+      "verdict": "verified",
+      "expected_qid": "Q619798",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Photonics",
+      "node_id": "subfield:photonics",
+      "verdict": "verified",
+      "expected_qid": "Q467054",
+      "rank1_expected": true,
+      "manual_path": true,
+      "notes": "Ambiguous (no positive type signal): Q467054 accepted on exact label + enwiki + alias optics-and-photonics; upstream description says branch-of-physics — engineering/physics duality noted, distinct from optics Q14620 (NS node anchor)."
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Automotive Engineering",
+      "node_id": "subfield:automotive-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q124192",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Textile Engineering",
+      "node_id": "subfield:textile-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q20825773",
+      "rank1_expected": true,
+      "notes": "WATCH: 0-sitelink thin anchor rescued by English alias (textile technology) — differential-equations Q28575007 precedent; exact label + P31 academic-major/field-of-study (+Q11023 engineering); monitor upstream maturation."
+    },
+    {
+      "batch": "batch:engineering-technology-skeleton-v1",
+      "seed_label": "Food Engineering",
+      "node_id": "subfield:food-engineering",
+      "verdict": "verified",
+      "expected_qid": "Q6631525",
+      "rank1_expected": true
     }
   ]
 }
