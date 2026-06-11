@@ -2070,8 +2070,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "Clause-6 resolution 2026-06-11 (dominant position): financial mathematics stays under mathematics — SIAM SIAG-FME + SIAM J. Financial Mathematics, mathematics-department program pattern (NYU Courant/FSU/UChicago/UW), MSC 91G, EBSCO ('a field of mathematics'). Minority position (permanent): LCC files the area under Finance (HG106); a real business-school program strand exists (BU Questrom, CMU MSCF). Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md.",
-    "disputed": true
+    "note": "Clause-6 resolution 2026-06-11 (dominant position): financial mathematics stays under mathematics — SIAM SIAG-FME + SIAM J. Financial Mathematics, mathematics-department program pattern (NYU Courant/FSU/UChicago/UW), MSC 91G, EBSCO ('a field of mathematics'). Minority position (permanent): LCC files the area under Finance (HG106); a real business-school program strand exists (BU Questrom, CMU MSCF). Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md. || §13 dissolution 2026-06-11 (session #13a, NS mathematical-physics precedent): the minority-side membership is now written and live-verified (edge:financial-mathematics-part-of-financial-economics, LCC HG106 'Mathematical models' at id.loc.gov) — the single-parent contest dissolves, disputed retires on node and edge; the dominant/minority asymmetry is preserved by per-edge confidence and this permanent note."
   },
   {
     "id": "edge:history-of-mathematics-part-of-mathematics",
@@ -2312,7 +2311,7 @@
   {
     "id": "edge:mathematics-education-part-of-social-sciences",
     "source": "subfield:mathematics-education",
-    "target": "domain:social-sciences",
+    "target": "field:education",
     "relation": "part_of",
     "confidence": 0.7,
     "status": "reviewed",
@@ -2326,7 +2325,7 @@
       "model_version": "claude-fable-5",
       "proposed_at": "2026-06-11"
     },
-    "note": "Cross-listing v1 (vault decision log 2026-06-11 (21)): education-side membership of mathematics education, co-equal with edge:mathematics-education-part-of-mathematics. Grounding (live 2026-06-11): OECD FORD/Frascati files Educational sciences at 5.3 under 5. Social Sciences, with mathematics at 1.1 under Natural Sciences and no mathematics-education subfield anywhere (ARRS mirror, arrs.si); UDC files 37 Education under 3 Social Sciences (udcsummary.info); dominant doctoral-program home is education schools (NYU Steinhardt PhD concentration, steinhardt.nyu.edu, live; Stanford GSE/Penn State CoE same pattern per resolution research); Educational Studies in Mathematics frames the research didactically (link.springer.com/journal/10649). Re-target note: targets the domain directly because no education field node exists yet in /data (§12: the flat rule governs node levels, not edge depth) — re-target to the education field when that continent lands. Record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md."
+    "note": "Re-targeted from domain:social-sciences to field:education (2026-06-11, batch:social-sciences-part-of-edges-v1). Previous target: domain:social-sciences. Grounding unchanged: OECD FORD/Frascati files Educational sciences at 5.3 under 5. Social Sciences (ARRS mirror, arrs.si); UDC 37 Education under 3 Social Sciences (udcsummary.info); doctoral-program home is education schools. Re-target executed once field:education promoted to /data in this session (quantum-computing precedent: re-target note recorded at generation, promotion applies the change). Cross-listing v1 (vault decision log 2026-06-11 (21)) co-equal with edge:mathematics-education-part-of-mathematics."
   },
   {
     "id": "edge:logic-part-of-mathematics",
@@ -4264,5 +4263,806 @@
       "proposed_at": "2026-06-11"
     },
     "note": "LCC QM Human anatomy (own subclass QM1-695) + QL801-950.9 Comparative anatomy (within QL Zoology; both captured 2026-06-11) — LCC-only gate-scheme grounding; UDC files 611 Human anatomy under 61 Medical sciences (out-of-continent; same split as physiology). Capped at proposed — node stops at proposed on the LCC-vs-UDC medicine-boundary contest; medicine-side §13 membership parked. Anatomical Society/AAA community supports in-continent general/comparative anatomy standing."
+  },
+  {
+    "id": "edge:economics-part-of-social-sciences",
+    "source": "field:economics",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "FORD 5.2 'Economics and Business' under 5 Social Sciences (captured 2026-06-11, ARRS mirror arrs.si); UDC 33 'Economics. Economic science' as a top-level division under 3 'Social Sciences' (captured 2026-06-11, udcsummary.info); LCC Class H 'Social Sciences' with subclasses HB-HJ covering economics disciplines (captured 2026-06-11, loc.gov). [UNFETCHED]: Wikidata Q8134 (economics) P31/P279 statements."
+  },
+  {
+    "id": "edge:sociology-part-of-social-sciences",
+    "source": "field:sociology",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "FORD 5.4 'Sociology' under 5 Social Sciences (captured 2026-06-11); UDC 316 as a major division under 3 Social Sciences (captured 2026-06-11); LCC subclass HM 'Sociology' under class H Social Sciences (captured 2026-06-11). [UNFETCHED]: Wikidata Q21201 desc."
+  },
+  {
+    "id": "edge:political-science-part-of-social-sciences",
+    "source": "field:political-science",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "FORD 5.6 'Political science' under 5 Social Sciences (captured 2026-06-11); UDC 32 'Politics' as a top-level division under 3 Social Sciences (captured 2026-06-11); LCC Class J 'Political science' — while a separate LCC class letter from H, FORD and UDC both firmly place political science inside social sciences (captured 2026-06-11). [UNFETCHED]: Wikidata Q36442 desc."
+  },
+  {
+    "id": "edge:education-part-of-social-sciences",
+    "source": "field:education",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "FORD 5.3 'Educational sciences' under 5 Social Sciences (captured 2026-06-11); UDC 37 'Education' as a top-level division under 3 Social Sciences (captured 2026-06-11); LCC Class L 'Education' as its own class — note LCC shelving is separate but FORD and UDC both classify education under social sciences. [UNFETCHED]: Wikidata Q8434 desc."
+  },
+  {
+    "id": "edge:law-part-of-social-sciences",
+    "source": "field:law",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "FORD 5.5 'Law' under 5 Social Sciences (captured 2026-06-11); UDC 34 'Law. Jurisprudence' as a top-level division under 3 Social Sciences (captured 2026-06-11); LCC Class K 'Law' is a separate LCC class from H. [UNFETCHED]: Wikidata Q7748 desc."
+  },
+  {
+    "id": "edge:anthropology-part-of-social-sciences",
+    "source": "field:anthropology",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 39 'Cultural anthropology. Ethnography. Customs.' as a division under 3 Social Sciences (captured 2026-06-11); LCC subclass GN 'Anthropology' under Class G Geography/Anthropology/Recreation (captured 2026-06-11) — LCC Class G is a mixed-content class; FORD files anthropology under 5.9 Other social sciences. [UNFETCHED]: Wikidata Q23404 desc."
+  },
+  {
+    "id": "edge:media-and-communication-studies-part-of-social-sciences",
+    "source": "field:media-and-communication-studies",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "FORD 5.8 'Media and communications' under 5 Social Sciences (captured 2026-06-11); UDC 316.7 'Sociology of culture. Cultural context of social life' (a partial fit — mass communication is a subarea of sociology of culture in UDC, not a top-level division) (captured 2026-06-11). [UNFETCHED]: Wikidata Q11680831 desc; ICA (International Communication Association) classification."
+  },
+  {
+    "id": "edge:human-geography-part-of-social-sciences",
+    "source": "field:human-geography",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 0.75,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "FORD 5.7 'Social and economic geography' under 5 Social Sciences (captured 2026-06-11); LCC GF1-900 'Human ecology. Anthropogeography' inside Class G. [UNFETCHED]: Wikidata Q12831143 desc. [QC 2026-06-11: a generator clause mis-attributing LCC GF to UDC was removed — scheme-misattribution caught by the mechanical audit.]"
+  },
+  {
+    "id": "edge:econometrics-part-of-economics",
+    "source": "subfield:econometrics",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC HB135-147 'Mathematical economics. Quantitative methods', whose Including note reads 'Including econometrics, input-output analysis, game theory' (HB is the economics-family subclass; captured 2026-06-11); UDC 330.4 'Mathematical economics [Including: Econometrics]' under 33 Economics (captured 2026-06-11). [UNFETCHED]: Wikidata Q160039 desc; Econometric Society as institutional anchor."
+  },
+  {
+    "id": "edge:labor-economics-part-of-economics",
+    "source": "subfield:labor-economics",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC HD4801-8943 'Labor. Work. Working class' under subclass HD Industries/Land use/Labor (part of class H economics cluster; captured 2026-06-11); UDC 331 'Labour. Employment. Work. Labour economics' as a division under 33 Economics (captured 2026-06-11). [UNFETCHED]: Wikidata Q28161 desc."
+  },
+  {
+    "id": "edge:economic-history-part-of-economics",
+    "source": "subfield:economic-history",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC HC10-1085 'Economic history and conditions' as a peer subclass to HB within Class H (captured 2026-06-11); UDC 330.8 'History of economic theories, doctrines' under 33 Economics (captured 2026-06-11). [UNFETCHED]: Wikidata Q47398 desc; Economic History Association; EH.net."
+  },
+  {
+    "id": "edge:public-finance-part-of-economics",
+    "source": "subfield:public-finance",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC HJ9-9940 'Public finance' as subclass HJ under Class H (captured 2026-06-11); UDC 336 'Finance [Including: Public finance. Banking. Money]' and 336.1-336.2 public-sector finance, under 33 Economics (captured 2026-06-11). [UNFETCHED]: Wikidata Q274490 desc."
+  },
+  {
+    "id": "edge:international-economics-part-of-economics",
+    "source": "subfield:international-economics",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 339 'Trade. Commerce. International economic relations. World economy' under 33 Economics (captured 2026-06-11); LCC HF1-6182 Commerce / HF1701-2701 Tariff/Free trade under Class H (captured 2026-06-11). [UNFETCHED]: Wikidata Q47417 desc."
+  },
+  {
+    "id": "edge:financial-economics-part-of-economics",
+    "source": "subfield:financial-economics",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC HG1-9999 'Finance' as subclass HG under Class H economics cluster (captured 2026-06-11); UDC 336.7 'Money. Monetary system. Banking. Stock exchanges' under 336 Finance under 33 Economics (captured 2026-06-11). [UNFETCHED]: Wikidata Q2294553 desc; Journal of Financial Economics."
+  },
+  {
+    "id": "edge:social-stratification-part-of-sociology",
+    "source": "subfield:social-stratification",
+    "target": "field:sociology",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 316.34 'Social stratification. Social differentiation [Including: Demographic differentiation]' explicitly nested under 316 Sociology (captured 2026-06-11); LCC HT601-1445 'Classes' under subclass HT 'Communities. Classes. Races' under Class H — HT sits in the sociology family (captured 2026-06-11). [UNFETCHED]: Wikidata Q841628 desc."
+  },
+  {
+    "id": "edge:gender-studies-part-of-social-sciences",
+    "source": "subfield:gender-studies",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 305 'Gender studies', whose Including note reads 'Sex role. Gender. Persons from an interdisciplinary viewpoint' as an independent top-level division under 3 Social Sciences — a peer of 314, 316, 32, 33, etc. (captured 2026-06-11); LCC HQ1101-2030.7 'Women. Feminism' inside subclass HQ 'The family. Marriage. Women' under Class H Social Sciences — HQ is a peer of HM Sociology, not nested under it (captured 2026-06-11). [UNFETCHED]: Wikidata Q1662673 desc."
+  },
+  {
+    "id": "edge:social-work-and-welfare-part-of-social-sciences",
+    "source": "subfield:social-work-and-welfare",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 364 'Social welfare' under 36, which is itself a top-level division under 3 Social Sciences — UDC 36 is a peer of 31x sociology group, 32 politics, 33 economics (captured 2026-06-11); LCC HV 'Social pathology. Social and public welfare. Criminology' as a peer subclass of HM Sociology within Class H (captured 2026-06-11). [UNFETCHED]: Wikidata Q205398 desc."
+  },
+  {
+    "id": "edge:criminology-part-of-sociology",
+    "source": "subfield:criminology",
+    "target": "field:sociology",
+    "relation": "part_of",
+    "confidence": 0.75,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC HV6001-7220.5 'Criminology' inside subclass HV under Class H — HV is in the same social-sciences family as HM Sociology, and HV6035-6197 includes 'Criminal anthropology' and 'criminal sociology' (captured 2026-06-11). [UNFETCHED]: Wikidata Q161733 desc; American Society of Criminology's sociology wing; criminology PhD programs in sociology departments."
+  },
+  {
+    "id": "edge:criminology-part-of-law",
+    "source": "subfield:criminology",
+    "target": "field:law",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 343.9 'Criminology. Criminal sciences. Criminalistics' (whose Including note lists, i.a., organized crime, criminal sociology, forensic science, victimology) explicitly nested under 343 'Criminal law. Penal offences' under 34 'Law. Jurisprudence' (captured 2026-06-11). [UNFETCHED]: Wikidata Q161733 desc; law school criminal-law/criminology courses; Journal of Criminal Law and Criminology."
+  },
+  {
+    "id": "edge:international-relations-part-of-political-science",
+    "source": "subfield:international-relations",
+    "target": "field:political-science",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 327 'International relations. World, global politics' explicitly nested under 32 'Politics' under 3 Social Sciences (captured 2026-06-11); LCC subclass JZ 'International relations' inside Class J 'Political science' (captured 2026-06-11). [UNFETCHED]: Wikidata Q166542 desc; ISA (International Studies Association) as political-science anchored society."
+  },
+  {
+    "id": "edge:comparative-politics-part-of-political-science",
+    "source": "subfield:comparative-politics",
+    "target": "field:political-science",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 323 'Home affairs. Internal policy' nested under 32 Politics (captured 2026-06-11); UDC 328 'Parliaments. Representation of the people' nested under 32 Politics (captured 2026-06-11); LCC JF20-1177 'General. Comparative government' inside subclass JF under Class J Political science (captured 2026-06-11). [UNFETCHED]: Wikidata Q32492 desc; APSA comparative politics section."
+  },
+  {
+    "id": "edge:public-administration-part-of-social-sciences",
+    "source": "subfield:public-administration",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 35 'Public administration. Government. Military affairs' as an independent 2-digit top-level division under 3 Social Sciences — a co-equal peer of 32 Politics, 33 Economics, 34 Law, 37 Education (captured 2026-06-11). [UNFETCHED]: Wikidata Q31728 desc. || QC flattening ruling (2026-06-11, same contradiction-nesting mirror as demography): LCC nests JF1338-2112 inside political science's class J while UDC gives public administration its own 2-digit division 35, a peer of 32 Politics, directly under 3 — contradictory depth claims flatten to the domain. The LCC class-J nesting is recorded as parked political-science-side §13 evidence; [UNFETCHED] the independent professional-school pattern (public policy/administration schools) is consistent with domain-direct standing."
+  },
+  {
+    "id": "edge:jurisprudence-part-of-law",
+    "source": "subfield:jurisprudence",
+    "target": "field:law",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC K201-487 'Jurisprudence. Philosophy and theory of law' inside Class K Law — K is the law class (captured 2026-06-11); UDC 340 'Law in general. Legal methods and auxiliary sciences' includes jurisprudence as a subsection of 34 Law (captured 2026-06-11). [UNFETCHED]: Wikidata Q4932206 desc. Note: subfield node is currently `proposed`."
+  },
+  {
+    "id": "edge:constitutional-law-part-of-law",
+    "source": "subfield:constitutional-law",
+    "target": "field:law",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC K3154-3370 'Constitutional law' as a subsection of Class K Law (captured 2026-06-11); UDC 342 'Public law. Constitutional law. Administrative law' nested under 34 Law (captured 2026-06-11). [UNFETCHED]: Wikidata Q11206 desc."
+  },
+  {
+    "id": "edge:international-law-part-of-law",
+    "source": "subfield:international-law",
+    "target": "field:law",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC KZ2-6795 'Law of nations' inside Class K Law (captured 2026-06-11); UDC 341 'International law' nested under 34 Law (captured 2026-06-11). [UNFETCHED]: Wikidata Q4394526 desc."
+  },
+  {
+    "id": "edge:criminal-law-part-of-law",
+    "source": "subfield:criminal-law",
+    "target": "field:law",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC K5000-5582 'Criminal law and procedure' inside Class K Law (captured 2026-06-11); UDC 343 'Criminal law. Penal offences' nested under 34 Law (captured 2026-06-11). [UNFETCHED]: Wikidata Q146491 desc."
+  },
+  {
+    "id": "edge:civil-law-part-of-law",
+    "source": "subfield:civil-law",
+    "target": "field:law",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC K623-968 'Civil law' inside Class K Law (captured 2026-06-11); UDC 347 'Civil law' nested under 34 Law (captured 2026-06-11). [UNFETCHED]: Wikidata Q222249 desc."
+  },
+  {
+    "id": "edge:cultural-anthropology-part-of-anthropology",
+    "source": "subfield:cultural-anthropology",
+    "target": "field:anthropology",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC GN301-674 'Ethnology. Social and cultural anthropology' inside subclass GN Anthropology (captured 2026-06-11); UDC 39 'Cultural anthropology. Ethnography. Customs.' as a division of the social sciences — the anthropology node's primary UDC anchor (captured 2026-06-11). [UNFETCHED]: Wikidata Q28598 desc; AAA (American Anthropological Association) cultural anthropology section."
+  },
+  {
+    "id": "edge:physical-anthropology-part-of-anthropology",
+    "source": "subfield:physical-anthropology",
+    "target": "field:anthropology",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC GN49-298 'Physical anthropology. Somatology' inside subclass GN Anthropology (captured 2026-06-11). [UNFETCHED]: Wikidata Q27172 desc; American Association of Biological Anthropologists. Note: node is currently `proposed`."
+  },
+  {
+    "id": "edge:curriculum-and-instruction-part-of-education",
+    "source": "subfield:curriculum-and-instruction",
+    "target": "field:education",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC LB1025-1050.75 'Teaching (Principles and practice)' and LB2361-2365 'Curriculum' inside subclass LB 'Theory and practice of education' under Class L Education (captured 2026-06-11); UDC 37.02 'General questions of didactics and method' nested under 37 Education (captured 2026-06-11). [UNFETCHED]: Wikidata Q157416 desc."
+  },
+  {
+    "id": "edge:educational-policy-part-of-education",
+    "source": "subfield:educational-policy",
+    "target": "field:education",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC LC71-120.4 'Education and the state' and LC165-182 'Higher education and the state' inside subclass LC 'Special aspects of education' under Class L Education (captured 2026-06-11); UDC 37.01 'Fundamentals of education. Theory, policy' nested under 37 Education (captured 2026-06-11). [UNFETCHED]: Wikidata Q452348 desc."
+  },
+  {
+    "id": "edge:higher-education-part-of-education",
+    "source": "subfield:higher-education",
+    "target": "field:education",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC LB2300-2430 'Higher education' inside subclass LB under Class L (captured 2026-06-11); UDC 378 'Higher education. Universities. Academic study' nested under 37 Education (captured 2026-06-11). [UNFETCHED]: Wikidata Q136822 desc."
+  },
+  {
+    "id": "edge:special-education-part-of-education",
+    "source": "subfield:special-education",
+    "target": "field:education",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC LC3950-4806.5 'Exceptional children and youth. Special education' inside subclass LC under Class L Education (captured 2026-06-11); UDC 376 'Education, teaching, training of special groups of persons. Special schools' nested under 37 Education (captured 2026-06-11). [UNFETCHED]: Wikidata Q212105 desc."
+  },
+  {
+    "id": "edge:economic-geography-part-of-economics",
+    "source": "subfield:economic-geography",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 332 'Regional economics. Territorial economics. Land economics. Housing economics' under 33 Economics (captured 2026-06-11); LCC HF1021-1027 'Commercial geography. Economic geography' inside subclass HF Commerce under Class H (HF is the economics cluster; captured 2026-06-11); FORD 5.7 'Social and economic geography' co-names economics alongside the geography side (captured 2026-06-11). [UNFETCHED]: Wikidata Q187097 desc; Regional Science Association. || UDC 332 nests regional/territorial economics (economic geography's core) under economics; LCC HF1021-1027 explicitly names 'Economic geography' within Commerce under the economics family. This is the economics-side of a pending §13 dual; the human-geography side is parked as a future trigger (see notes). QC ruling (2026-06-11): §13 co-equal dual with the human-geography side — each membership passes its own captured evidence gate (economics side: LCC HF1021-1027 'Commercial geography. Economic geography' inside HF Commerce + UDC 332 under 33; geography side: FORD 5.7 co-naming — separate edge, status-capped by its proposed endpoint)."
+  },
+  {
+    "id": "edge:urban-and-regional-planning-part-of-social-sciences",
+    "source": "subfield:urban-and-regional-planning",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 35 includes 352/354 local/regional/central administration; UDC 332.3 'Land use [Including: Planning blight]' under 33 Economics; LCC HT165.5-169.9 'City planning' and HT388-395 'Regional economics. Space in economics. Regional planning' inside subclass HT under Class H (captured 2026-06-11). [UNFETCHED]: Wikidata Q149013 desc; ACSP (Association of Collegiate Schools of Planning); American Planning Association. Note: node is `proposed`."
+  },
+  {
+    "id": "edge:mass-communication-part-of-media-and-communication-studies",
+    "source": "subfield:mass-communication",
+    "target": "field:media-and-communication-studies",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC HE8689-8700.95 'Radio and television broadcasting' and HE7601-8700.9 'Telecommunication industry' inside subclass HE under Class H (captured 2026-06-11); FORD 5.8 'Media and communications' is the parent division (captured 2026-06-11). [UNFETCHED]: Wikidata Q853710 desc; ICA Mass Communication division; NCA (National Communication Association). Note: both nodes are `proposed`."
+  },
+  {
+    "id": "edge:game-theory-part-of-economics",
+    "source": "subfield:game-theory",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC HB135-147 'Mathematical economics. Quantitative methods', whose Including note reads 'Including econometrics, input-output analysis, game theory' (explicitly names game theory under HB economic theory; captured 2026-06-11); FORD 5.2 'Economics and Business' as the divisional frame (captured 2026-06-11). [UNFETCHED]: Game Theory Society with its economics-focused wing; Games and Economic Behavior journal (Elsevier); Nobel memorial prizes in economic sciences awarded for game theory contributions (Nash 1994, Harsanyi 1994, Selten 1994, Aumann/Schelling 2005, Roth/Shapley 2012); Wikidata Q44455 desc noting economics affiliation. || LCC HB135-147 explicitly includes game theory in its economics quantitative-methods range; FORD 5.2 frames the divisional home. Co-equal §13 dual: this edge records the economics-side membership, co-equal with the existing mathematics and theoretical-computer-science memberships."
+  },
+  {
+    "id": "edge:decision-theory-part-of-economics",
+    "source": "subfield:decision-theory",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 0.65,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC HB615-715 'Entrepreneurship. Risk and uncertainty. Property' inside subclass HB — the risk/uncertainty wing (captured 2026-06-11) is a partial fit for decision theory under uncertainty. [UNFETCHED]: Decision theory in economics graduate cores (doctoral micro sequences at major economics departments); Theory and Decision journal (Springer); Econometric Society decision-theoretic work; Wikidata Q177571 desc. Note: the JEL classification system is license-forbidden per citation-discipline rules and must not be used. || LCC HB615-715 provides a captured economics anchor via risk/uncertainty content; decision theory is a formal component of economics graduate training. This second membership was parked pending field:economics existence; that node now exists."
+  },
+  {
+    "id": "edge:financial-mathematics-part-of-financial-economics",
+    "source": "subfield:financial-mathematics",
+    "target": "subfield:financial-economics",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC HG1-9999 'Finance' as the class-H anchor for finance (HG106 financial mathematics specifically noted in the existing mathematics-side disputed note as 'LCC files the area under Finance'; captured range HG1-9999 is the captured anchor; captured 2026-06-11). [UNFETCHED]: HG106 specifically; BU Questrom MSMF program; CMU Tepper MSCF program; business-school financial engineering programs; Wikidata Q335632 desc. QC live verification 2026-06-11: LCC HG106 authoritative label 'Mathematical models' under HG Finance (id.loc.gov/authorities/classification/HG106.json, HTTP 200) — the permanent minority note's HG106 filing verified. || The existing fin-math→mathematics edge is DISPUTED with permanent minority note that LCC files fin-math under Finance (HG106) and real business-school programs exist. This minority-side §13 edge dissolves the single-parent contest (mathematical-physics precedent from NS batch). Both edges coexist; no primary marker. QC ruling: with the minority-side membership written and live-verified, the single-parent contest dissolves (NS mathematical-physics precedent) — disputed retires on the node and the mathematics edge; per-edge asymmetry preserved by confidence (mathematics side remains the dominant home)."
+  },
+  {
+    "id": "edge:political-philosophy-part-of-political-science",
+    "source": "subfield:political-philosophy",
+    "target": "field:political-science",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC JC11-605 'Political theory. The state. Theories of the state' inside Class J Political science — JC is political science's own subclass (captured 2026-06-11); UDC 321 'Forms of political organization. States as political powers' nested under 32 Politics under 3 Social Sciences (captured 2026-06-11); [UNFETCHED]: Wikidata Q179805 desc 'sub-discipline of philosophy and political science' (orchestrator-verified 2026-06-11, lastrevid 2502393413); APSA political theory section. Co-equal with the existing edge:political-philosophy-part-of-philosophy. || LCC JC11-605 places political theory inside class J political science's own subclass; UDC 321 nests under 32 Politics. This is the political-science-side §13 co-equal dual, co-equal with the existing philosophy membership. QC-parked evidence from the node batch is now being written."
+  },
+  {
+    "id": "edge:demography-part-of-social-sciences",
+    "source": "subfield:demography",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 314 'Demography. Population studies' — its own division directly under 3 Social Sciences, a peer of 316 Sociology and 33 Economics (captured 2026-06-11); LCC HB848-3697 'Demography. Population. Vital events' inside subclass HB 'Economic theory. Demography' (captured 2026-06-11). || QC flattening ruling (2026-06-11, CIS computer-vision/NLP + geodesy contradiction-nesting mirror): LCC nests demography inside the economics-theory subclass while UDC files it as its own division directly under class 3 — contradictory depth claims flatten to the common ancestor, the domain. The economics-side LCC filing is recorded as parked §13 evidence should an economics-side institutional case materialize."
+  },
+  {
+    "id": "edge:economic-geography-part-of-human-geography",
+    "source": "subfield:economic-geography",
+    "target": "field:human-geography",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "OECD FORD 5.7 'Social and economic geography' — the division co-names the social/human and economic wings of geography (captured 2026-06-11); LCC GF1-900 'Human ecology. Anthropogeography' as the human-geography LCC anchor (captured 2026-06-11). [UNFETCHED] community evidence: AAG Economic Geography specialty group; Economic Geography journal's geography-department editorial base. || Geography-side membership of the §13 co-equal dual (see edge:economic-geography-part-of-economics): FORD 5.7's explicit co-naming is the captured classification grounding for filing economic geography with the human-geography family."
   }
 ]
