@@ -1,7 +1,7 @@
 {
   "version": 1,
   "description": "Machine-readable regression golden set for scripts/foundry/resolve-wikidata.ts. Encodes every past verified resolution verdict (philosophy 61 + formal sciences 44 + CS 23 + ML-foundations 11 + seed-era 13 + natural sciences 41), the manual-selection rulings (decision-log (9) path), the upstream gaps, and the rejected orphan stub. The resolver re-run is maintainer-local (network); the comparison (scripts/foundry/goldenset-check.ts) is fully offline against this file — CI stays network-free.",
-  "provenance": "Derived 2026-06-11 (session #10) by joining foundry/batches/*.json seed manifests with /data/nodes.json verified QIDs; manual/gap annotations from the permanent records in foundry/proposals/*/grounding-report.md, qid-adversarial-audit-cis-v1/report.md and the vault decision log (8)(9)(13)(24)(25). Seed-era entries appended 2026-06-11 (session #11) from qid-adversarial-audit-seed-philosophy-v1 (2 corrected: life-sciences Q864->Q864928, arts-and-design Q735->Q2018526). Natural-sciences entries appended 2026-06-11 (session #11, resolver v4 first new-continent run; grounding-report in foundry/proposals/natural-sciences-skeleton-v1/).",
+  "provenance": "Derived 2026-06-11 (session #10) by joining foundry/batches/*.json seed manifests with /data/nodes.json verified QIDs; manual/gap annotations from the permanent records in foundry/proposals/*/grounding-report.md, qid-adversarial-audit-cis-v1/report.md and the vault decision log (8)(9)(13)(24)(25). Seed-era entries appended 2026-06-11 (session #11) from qid-adversarial-audit-seed-philosophy-v1 (2 corrected: life-sciences Q864->Q864928, arts-and-design Q735->Q2018526). Natural-sciences entries appended 2026-06-11 (session #11, resolver v4 first new-continent run; grounding-report in foundry/proposals/natural-sciences-skeleton-v1/). Social-sciences entries appended 2026-06-11 (session #13a, parallel round v1): 36 verified (35 rank-1 + 1 manual social-work Q205398) + 3 upstream gaps (economic-theory, business-and-management, archaeological-anthropology) — per-QID verdicts in foundry/proposals/social-sciences-skeleton-v1/grounding-report.md.",
   "expectation_semantics": {
     "verified + rank1_expected": "FAIL if expected_qid absent from candidates; WARN if present but not selected_qid; PASS if selected.",
     "verified + manual_path": "INFO either way — v3 baseline did not surface these as rank-1; an improvement (expected_qid surfaced/selected) is reported as IMPROVED, absence is v3 parity, never FAIL.",
@@ -1642,6 +1642,341 @@
       "node_id": "subfield:quantum-information-science",
       "verdict": "verified",
       "expected_qid": "Q2122216",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Economics",
+      "node_id": "field:economics",
+      "verdict": "verified",
+      "expected_qid": "Q8134",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Sociology",
+      "node_id": "field:sociology",
+      "verdict": "verified",
+      "expected_qid": "Q21201",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Political Science",
+      "node_id": "field:political-science",
+      "verdict": "verified",
+      "expected_qid": "Q36442",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Education",
+      "node_id": "field:education",
+      "verdict": "verified",
+      "expected_qid": "Q8434",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Law",
+      "node_id": "field:law",
+      "verdict": "verified",
+      "expected_qid": "Q7748",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Anthropology",
+      "node_id": "field:anthropology",
+      "verdict": "verified",
+      "expected_qid": "Q23404",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Media and Communication Studies",
+      "node_id": "field:media-and-communication-studies",
+      "verdict": "verified",
+      "expected_qid": "Q11680831",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Human Geography",
+      "node_id": "field:human-geography",
+      "verdict": "verified",
+      "expected_qid": "Q12831143",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Business and Management",
+      "node_id": "subfield:business-and-management",
+      "verdict": "upstream_gap",
+      "notes": "upstream gap: rank-1 Q2920921 'management' is a one-wing component anchor (does not umbrella business/marketing/accounting — distributed-and-parallel-computing pattern) — REJECTED; Q4830453 'business' is the enterprise referent — wrong kind; Q18564125 'business management' (P31 academic discipline, alias 'business administration') is the right referent but a 0-sitelink thin entity (live-checked 2026-06-11) — not listed as must-not (may mature). Gap stands.",
+      "must_not_select": [
+        "Q2920921",
+        "Q4830453"
+      ]
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Economic Theory",
+      "node_id": "subfield:economic-theory",
+      "verdict": "upstream_gap",
+      "notes": "upstream gap: rank-1 Q1401304 is 'a model trying to explain economic reality' (referent kind mismatch — an economic theory, not the research area; no P31, no aliases) — REJECTED; generator hint Q185545 is a DELETED entity (HTTP 404, live-checked 2026-06-11). Gap stands; node stays in foundry.",
+      "must_not_select": [
+        "Q1401304"
+      ]
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Econometrics",
+      "node_id": "subfield:econometrics",
+      "verdict": "verified",
+      "expected_qid": "Q160039",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Labor Economics",
+      "node_id": "subfield:labor-economics",
+      "verdict": "verified",
+      "expected_qid": "Q28161",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Economic History",
+      "node_id": "subfield:economic-history",
+      "verdict": "verified",
+      "expected_qid": "Q47398",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Public Finance",
+      "node_id": "subfield:public-finance",
+      "verdict": "verified",
+      "expected_qid": "Q274490",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "International Economics",
+      "node_id": "subfield:international-economics",
+      "verdict": "verified",
+      "expected_qid": "Q47417",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Financial Economics",
+      "node_id": "subfield:financial-economics",
+      "verdict": "verified",
+      "expected_qid": "Q2294553",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Criminology",
+      "node_id": "subfield:criminology",
+      "verdict": "verified",
+      "expected_qid": "Q161733",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Demography",
+      "node_id": "subfield:demography",
+      "verdict": "verified",
+      "expected_qid": "Q37732",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Social Work and Welfare",
+      "node_id": "subfield:social-work-and-welfare",
+      "verdict": "verified",
+      "expected_qid": "Q205398",
+      "manual_path": true,
+      "notes": "manual selection (PDE/statistical-physics pattern — node identity over type-signal score): resolver rank-1 Q828395 'social policy' is a different referent — REJECTED, must never be selected; Q205398 'social work' (desc 'academic discipline and profession', enwiki Social work, 75 sitelinks, lastrevid 2493921034) umbrellas the welfare research community (schools of social work).",
+      "must_not_select": [
+        "Q828395"
+      ]
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Gender Studies",
+      "node_id": "subfield:gender-studies",
+      "verdict": "verified",
+      "expected_qid": "Q1662673",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Social Stratification",
+      "node_id": "subfield:social-stratification",
+      "verdict": "verified",
+      "expected_qid": "Q841628",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "International Relations",
+      "node_id": "subfield:international-relations",
+      "verdict": "verified",
+      "expected_qid": "Q166542",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Public Administration",
+      "node_id": "subfield:public-administration",
+      "verdict": "verified",
+      "expected_qid": "Q31728",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Comparative Politics",
+      "node_id": "subfield:comparative-politics",
+      "verdict": "verified",
+      "expected_qid": "Q32492",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Curriculum and Instruction",
+      "node_id": "subfield:curriculum-and-instruction",
+      "verdict": "verified",
+      "expected_qid": "Q157416",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Educational Policy",
+      "node_id": "subfield:educational-policy",
+      "verdict": "verified",
+      "expected_qid": "Q452348",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Higher Education",
+      "node_id": "subfield:higher-education",
+      "verdict": "verified",
+      "expected_qid": "Q136822",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Special Education",
+      "node_id": "subfield:special-education",
+      "verdict": "verified",
+      "expected_qid": "Q212105",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Jurisprudence",
+      "node_id": "subfield:jurisprudence",
+      "verdict": "verified",
+      "expected_qid": "Q4932206",
+      "rank1_expected": true,
+      "must_not_select": [
+        "Q126842"
+      ],
+      "notes": "rank-1 Q4932206 accepted (exact label+enwiki+99 sitelinks; B-flagged node — identity contest with canonical philosophy-of-law recorded in qc-report); Q126842 IS the canonical subfield:philosophy-of-law entity and must never be selected for this seed."
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Constitutional Law",
+      "node_id": "subfield:constitutional-law",
+      "verdict": "verified",
+      "expected_qid": "Q11206",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "International Law",
+      "node_id": "subfield:international-law",
+      "verdict": "verified",
+      "expected_qid": "Q4394526",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Criminal Law",
+      "node_id": "subfield:criminal-law",
+      "verdict": "verified",
+      "expected_qid": "Q146491",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Civil Law",
+      "node_id": "subfield:civil-law",
+      "verdict": "verified",
+      "expected_qid": "Q222249",
+      "rank1_expected": true,
+      "must_not_select": [
+        "Q5950118"
+      ],
+      "notes": "rank-1 Q222249 accepted (branch-of-law sense: desc 'regulates non-criminal legal relationships', enwiki Civil_law_(common_law) — the generator's pre-registered sense check resolved); Q5950118 is the legal-system (Romano-Germanic) sense and must never be selected."
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Cultural Anthropology",
+      "node_id": "subfield:cultural-anthropology",
+      "verdict": "verified",
+      "expected_qid": "Q28598",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Physical Anthropology",
+      "node_id": "subfield:physical-anthropology",
+      "verdict": "verified",
+      "expected_qid": "Q27172",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Archaeological Anthropology",
+      "node_id": "subfield:archaeological-anthropology",
+      "verdict": "upstream_gap",
+      "notes": "upstream gap: rank-1 Q20431068 'archaeological anthropology' is the correct referent but a near-orphan stub (1 sitelink rowiki-only, 0 EN aliases, no enwiki — live-checked 2026-06-11) — fails the label+sitelink acceptance rule; not listed as must-not (may mature). Q23498 'archaeology' (generator hint) is the whole-discipline referent and must not anchor the anthropology-wing node. Gap stands; node is also B-flagged (clause-6 queue).",
+      "must_not_select": [
+        "Q23498"
+      ]
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Economic Geography",
+      "node_id": "subfield:economic-geography",
+      "verdict": "verified",
+      "expected_qid": "Q187097",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Urban and Regional Planning",
+      "node_id": "subfield:urban-and-regional-planning",
+      "verdict": "verified",
+      "expected_qid": "Q149013",
+      "rank1_expected": true,
+      "must_not_select": [
+        "Q64808211"
+      ],
+      "notes": "rank-1 Q149013 'spatial planning' accepted (carries the exact alias 'urban and regional planning', P31 academic discipline, enwiki Spatial_planning); Q64808211 is a 0-enwiki thin twin with the exact label (duplicate-link twin pattern, session #12) and must never be selected."
+    },
+    {
+      "batch": "batch:social-sciences-skeleton-v1",
+      "seed_label": "Mass Communication",
+      "node_id": "subfield:mass-communication",
+      "verdict": "verified",
+      "expected_qid": "Q853710",
       "rank1_expected": true
     }
   ]

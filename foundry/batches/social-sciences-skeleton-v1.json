@@ -73,6 +73,161 @@
       "label": "Human Geography",
       "expected_node_id": "field:human-geography",
       "expected_type": "field"
+    },
+    {
+      "label": "Business and Management",
+      "expected_node_id": "subfield:business-and-management",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Economic Theory",
+      "expected_node_id": "subfield:economic-theory",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Econometrics",
+      "expected_node_id": "subfield:econometrics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Labor Economics",
+      "expected_node_id": "subfield:labor-economics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Economic History",
+      "expected_node_id": "subfield:economic-history",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Public Finance",
+      "expected_node_id": "subfield:public-finance",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "International Economics",
+      "expected_node_id": "subfield:international-economics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Financial Economics",
+      "expected_node_id": "subfield:financial-economics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Criminology",
+      "expected_node_id": "subfield:criminology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Demography",
+      "expected_node_id": "subfield:demography",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Social Work and Welfare",
+      "expected_node_id": "subfield:social-work-and-welfare",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Gender Studies",
+      "expected_node_id": "subfield:gender-studies",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Social Stratification",
+      "expected_node_id": "subfield:social-stratification",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "International Relations",
+      "expected_node_id": "subfield:international-relations",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Public Administration",
+      "expected_node_id": "subfield:public-administration",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Comparative Politics",
+      "expected_node_id": "subfield:comparative-politics",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Curriculum and Instruction",
+      "expected_node_id": "subfield:curriculum-and-instruction",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Educational Policy",
+      "expected_node_id": "subfield:educational-policy",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Higher Education",
+      "expected_node_id": "subfield:higher-education",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Special Education",
+      "expected_node_id": "subfield:special-education",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Jurisprudence",
+      "expected_node_id": "subfield:jurisprudence",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Constitutional Law",
+      "expected_node_id": "subfield:constitutional-law",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "International Law",
+      "expected_node_id": "subfield:international-law",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Criminal Law",
+      "expected_node_id": "subfield:criminal-law",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Civil Law",
+      "expected_node_id": "subfield:civil-law",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Cultural Anthropology",
+      "expected_node_id": "subfield:cultural-anthropology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Physical Anthropology",
+      "expected_node_id": "subfield:physical-anthropology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Archaeological Anthropology",
+      "expected_node_id": "subfield:archaeological-anthropology",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Economic Geography",
+      "expected_node_id": "subfield:economic-geography",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Urban and Regional Planning",
+      "expected_node_id": "subfield:urban-and-regional-planning",
+      "expected_type": "subfield"
+    },
+    {
+      "label": "Mass Communication",
+      "expected_node_id": "subfield:mass-communication",
+      "expected_type": "subfield"
     }
   ],
   "allowed_public_sources": [
@@ -137,6 +292,7 @@
     "docs/data-foundry.md section 12 (including its precedent log) is a mandatory input to the generation order (promotion policy v1.3); section 13 governs any multi-membership question raised during QC.",
     "Pre-registered structural questions for QC: (1) law — §12 rule-3 two-prong test on the captured K outline (FORD 5.5 and UDC 34 support the social-sciences side; LCC gives law its own class K); (2) anthropology — LCC GN sits in class G: session #12 class-G precedent applies (other-home filing, no premise denial), and physical anthropology (GN49-298) vs cultural/social anthropology (GN301-674) granularity is a generator/QC question; (3) media-and-communications — FORD 5.8 standing vs out-of-continent LCC homes (P87-96); (4) geography — human-geography side only (FORD 5.7), case-by-case; the four parked physical-geography-side class-G evidence items stay parked (encounter is recorded, nothing is touched); (5) psychology/linguistics encounters are record-only (boundary assignment table); (6) statistics (LCC HA + UDC 311 under 3) and demography (HB848-3697 + UDC 314) social-sciences-side standing: statistics is formal-sciences-owned (membership-edge question only); demography's field-vs-subfield standing is a generator/QC question; (7) business/management granularity (LCC HD28-70, HF5001-6182; FORD 5.2 'Economics and Business') is a generator/QC question; (8) post-skeleton re-target triggers recorded in the session order: mathematics-education re-target on field:education creation, game-theory economics-side §13 candidate, decision-theory second membership on an economics target, financial-mathematics social-sciences-side minority membership (disputed edge note).",
     "/data remains the source of truth for accepted graph data.",
-    "Seed list is the orchestrator's pre-generation scoping anchor (field-level only); per FS/CS/NS precedent the committed seed list is regenerated mechanically from the QC-passed proposal.json."
+    "Seed list is the orchestrator's pre-generation scoping anchor (field-level only); per FS/CS/NS precedent the committed seed list is regenerated mechanically from the QC-passed proposal.json.",
+    "Seeds regenerated mechanically from the QC-passed proposal.json (39 nodes, 2026-06-11) — FS/CS/NS precedent. Dropped at QC: political-theory (duplicate referent of canonical political-philosophy, live-verified), urban-sociology, management, marketing, accounting (absorbed, v2 re-split candidates); business-and-management demoted field→subfield."
   ]
 }
