@@ -4003,5 +4003,545 @@
     "academic_status": "established",
     "created_at": "2026-06-11",
     "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:economics",
+    "type": "field",
+    "domain": "social_sciences",
+    "level": 1,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q8134"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:sociology",
+    "type": "field",
+    "domain": "social_sciences",
+    "level": 1,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q21201"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:political-science",
+    "type": "field",
+    "domain": "social_sciences",
+    "level": 1,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q36442"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:education",
+    "type": "field",
+    "domain": "social_sciences",
+    "level": 1,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q8434"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:law",
+    "type": "field",
+    "domain": "social_sciences",
+    "level": 1,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7748"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:anthropology",
+    "type": "field",
+    "domain": "social_sciences",
+    "level": 1,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q23404"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:media-and-communication-studies",
+    "type": "field",
+    "domain": "social_sciences",
+    "level": 1,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11680831"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "field:human-geography",
+    "type": "field",
+    "domain": "social_sciences",
+    "level": 1,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q12831143"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:econometrics",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q160039"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:labor-economics",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q28161"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:economic-history",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q47398"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:public-finance",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q274490"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:international-economics",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q47417"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:financial-economics",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2294553"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:criminology",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q161733"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:demography",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q37732"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:social-work-and-welfare",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q205398"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:gender-studies",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1662673"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:social-stratification",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q841628"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:international-relations",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q166542"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:public-administration",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q31728"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:comparative-politics",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q32492"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:curriculum-and-instruction",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q157416"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:educational-policy",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q452348"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:higher-education",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q136822"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:special-education",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q212105"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:jurisprudence",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q4932206"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:constitutional-law",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11206"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:international-law",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q4394526"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:criminal-law",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q146491"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:civil-law",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q222249"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:cultural-anthropology",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q28598"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:physical-anthropology",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q27172"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:economic-geography",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q187097"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:urban-and-regional-planning",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q149013"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
+  },
+  {
+    "id": "subfield:mass-communication",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q853710"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-11",
+    "updated_at": "2026-06-11"
   }
 ]
