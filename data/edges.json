@@ -1911,8 +1911,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "Pillar of mathematical logic (MSC 03C/D/E/F): part_of chains may run deeper than the flat node levels (§12 precedent, 2026-06-10). Clause-6 resolution 2026-06-11 (dominant position): computability theory stays under mathematical logic — SEP ('a branch of contemporary mathematical logic'), LCC QA9.59, MSC 03D, mathematics-department logic groups (Berkeley/Cornell/Notre Dame/UW-Madison). Minority position (permanent): Britannica notes much specialized work 'belongs as much to computer science as to logic'; computability is core theoretical-CS curriculum. Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md.",
-    "disputed": true
+    "note": "Pillar of mathematical logic (MSC 03C/D/E/F): part_of chains may run deeper than the flat node levels (§12 precedent, 2026-06-10). Clause-6 resolution 2026-06-11 (dominant position): computability theory stays under mathematical logic — SEP ('a branch of contemporary mathematical logic'), LCC QA9.59, MSC 03D, mathematics-department logic groups (Berkeley/Cornell/Notre Dame/UW-Madison). Minority position (permanent): Britannica notes much specialized work 'belongs as much to computer science as to logic'; computability is core theoretical-CS curriculum. Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md. Cross-listing resolution (session #8, 2026-06-11): the minority CS claim is now a written co-equal membership (edge:computability-theory-part-of-theoretical-computer-science); under §13 an other-parent filing is support, not contest — disputed retired (stance record persists in resolution-report.md)."
   },
   {
     "id": "edge:category-theory-part-of-mathematics",
@@ -2032,8 +2031,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "Clause-6 resolution 2026-06-11 (dominant position): game theory stays under mathematics — Britannica ('branch of applied mathematics'), LCC QA269, UDC 519.83, MSC 91A. Minority position (permanent): economics-primary framing of the applications ecosystem (JEL C7, Handbook of Game Theory with Economic Applications) and algorithmic game theory claimed by theoretical CS. Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md.",
-    "disputed": true
+    "note": "Clause-6 resolution 2026-06-11 (dominant position): game theory stays under mathematics — Britannica ('branch of applied mathematics'), LCC QA269, UDC 519.83, MSC 91A. Minority position (permanent): economics-primary framing of the applications ecosystem (JEL C7, Handbook of Game Theory with Economic Applications) and algorithmic game theory claimed by theoretical CS. Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md. Cross-listing resolution (session #8, 2026-06-11): the algorithmic-CS side of the minority is now a written co-equal membership (edge:game-theory-part-of-theoretical-computer-science) — disputed retired under the §13 interpretation; the economics-primary claim stays parked pending the social-sciences continent (JEL C7 stance record persists in resolution-report.md)."
   },
   {
     "id": "edge:information-theory-part-of-mathematics",
@@ -2053,8 +2051,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "Clause-6 resolution 2026-06-11 (dominant position): information theory stays under mathematics — Encyclopedia of Mathematics ('branch of applied mathematics and cybernetics'), Britannica ('a mathematical representation...'), UDC 519.7 cluster, MSC 94. Minority position (permanent): ECE-department operational home (UCSD/UCSB) and theoretical-CS scope claims (SIGACT); LCC files it at Q350-390 under Science (General), neither side. Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md.",
-    "disputed": true
+    "note": "Clause-6 resolution 2026-06-11 (dominant position): information theory stays under mathematics — Encyclopedia of Mathematics ('branch of applied mathematics and cybernetics'), Britannica ('a mathematical representation...'), UDC 519.7 cluster, MSC 94. Minority position (permanent): ECE-department operational home (UCSD/UCSB) and theoretical-CS scope claims (SIGACT); LCC files it at Q350-390 under Science (General), neither side. Full record: foundry/proposals/formal-sciences-skeleton-v1/resolution-report.md. Cross-listing resolution (session #8, 2026-06-11): the SIGACT/CS side of the minority is now a written co-equal membership (edge:information-theory-part-of-computer-science) — disputed retired under the §13 interpretation; the ECE/engineering institutional claim stays a parked membership candidate (stance record persists in resolution-report.md)."
   },
   {
     "id": "edge:financial-mathematics-part-of-mathematics",
@@ -2897,5 +2894,62 @@
       "proposed_at": "2026-06-11"
     },
     "note": "Status capped: endpoint is proposed (QID-less, v1.2). UDC 004.65 'Databases and their structures. Including: DBMS' (live 2026-06-11); LCC QA76.9.D3 'Database management' (id.loc.gov, live); ACM CCS 'Information systems > Data management systems' (live); MSC 68Pxx 'Theory of data' (live)."
+  },
+  {
+    "id": "edge:computability-theory-part-of-theoretical-computer-science",
+    "source": "subfield:computability-theory",
+    "target": "subfield:theoretical-computer-science",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Cross-listing v1 second membership (session #8, 2026-06-11): ACM CCS files 'Theory of computation > Models of computation > Computability' inside the CS classification (Wayback snapshot of dl.acm.org/ccs/ccs_flat.cfm, live); MSC 68Q04 'Classical models of computation (Turing machines, etc.)' (msc2020.org CSV, live) — the discipline's primary MSC home stays 03D under mathematical logic. Britannica recursion-theory: 'Much of the specialized work belongs as much to computer science as to logic' (live re-verified 2026-06-11); computability is core theoretical-CS curriculum. Co-equal with edge:computability-theory-part-of-mathematical-logic — no primary marker."
+  },
+  {
+    "id": "edge:information-theory-part-of-computer-science",
+    "source": "subfield:information-theory",
+    "target": "field:computer-science",
+    "relation": "part_of",
+    "confidence": 0.65,
+    "status": "reviewed",
+    "evidence": [
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Cross-listing v1 second membership (session #8, 2026-06-11): ACM CCS carries 'Mathematics of computing > Information theory' as a branch of the CS classification (Wayback snapshot, live); MSC 68P30 'Coding and information theory ... (aspects in computer science)' + 68Q30 'Algorithmic information theory' (live); ACM SIGACT lists information theory within theoretical-CS scope (sigact.org, live re-verified 2026-06-11). Co-equal with edge:information-theory-part-of-mathematics — no primary marker. The ECE/engineering institutional claim (UCSD/UCSB) remains a parked membership candidate: no engineering-scheme classification filing has been collected (clause-1 gate not yet attempted)."
+  },
+  {
+    "id": "edge:game-theory-part-of-theoretical-computer-science",
+    "source": "subfield:game-theory",
+    "target": "subfield:theoretical-computer-science",
+    "relation": "part_of",
+    "confidence": 0.6,
+    "status": "reviewed",
+    "evidence": [
+      "source:acm-ccs",
+      "source:msc2020"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Cross-listing v1 second membership (session #8, 2026-06-11), manifesting through the algorithmic-game-theory wing — mirrors the logic-to-mathematics wing precedent (PR #47): ACM CCS 'Theory of computation > Theory and algorithms for application domains > Algorithmic game theory and mechanism design' (Wayback snapshot, live); MSC 91A68 'Algorithmic game theory and complexity' (live); Princeton CS theory group lists Algorithmic Game Theory as a current research area (theory.cs.princeton.edu, live re-verified 2026-06-11); Game Theory Society: 'applied across a wide variety of fields, including computer science' (gametheorysociety.org/about, live re-verified). Co-equal with edge:game-theory-part-of-mathematics — no primary marker. The economics-primary minority (JEL C7, Handbook anchoring) remains parked pending the social-sciences continent."
   }
 ]

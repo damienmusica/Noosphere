@@ -527,3 +527,51 @@ in this same change (editorial v1 precondition holds at commit time).
 - Cross-listing applications still parked (unchanged scope): decision-theory second membership
   (economics target node absent), minority-side second edges for the disputed-5 (target continents
   absent) — reopen when those continents land.
+
+## Cross-listing CS-target second memberships (2026-06-11, session #8) — 3 written, parked remainders recorded
+
+> Scope per the session order: only the CS-targeted minority positions of the dominant-8 records.
+> Gate: §13 same-evidence discipline — clause-1 live classification filing in the CS continent's
+> ratified sources (ACM CCS is gate-level for CIS per the §12 2026-06-11 append; MSC 68 cross-check).
+> All previously-collected citation URLs were re-verified live in one pass (4/4 alive, 0%
+> hallucination): Britannica recursion-theory, sigact.org, theory.cs.princeton.edu,
+> gametheorysociety.org/about.
+
+### subfield:computability-theory → subfield:theoretical-computer-science — WRITTEN (reviewed)
+- **Clause-1 filing (live):** ACM CCS "Theory of computation > Models of computation >
+  Computability" (Wayback snapshot 20191108 of ccs_flat.cfm); MSC 68Q04 "Classical models of
+  computation (Turing machines, etc.)" (msc2020.org CSV).
+- **Minority record reused:** Britannica — "much of the specialized work belongs as much to
+  computer science as to logic" (re-verified live); core TCS curriculum.
+- **Flag effect:** node + edge:computability-theory-part-of-mathematical-logic `disputed` retired —
+  the minority became a written co-equal membership; under the session-7 standing interpretation an
+  other-parent filing is support, not contest. The 2026-06-11 clause-6 stance record above persists
+  unchanged.
+
+### subfield:information-theory → field:computer-science — WRITTEN (reviewed)
+- **Clause-1 filing (live):** ACM CCS "Mathematics of computing > Information theory"; MSC 68P30
+  "(aspects in computer science)" + 68Q30 "Algorithmic information theory".
+- **Minority record reused:** SIGACT TCS scope listing (re-verified live — information theory named).
+- **Flag effect:** node + edge:information-theory-part-of-mathematics `disputed` retired. **Parked
+  remainder:** the ECE/engineering institutional claim (UCSD/UCSB) is a future engineering-membership
+  candidate — no engineering-scheme classification filing collected; clause-1 gate not attempted.
+
+### subfield:game-theory → subfield:theoretical-computer-science — WRITTEN (reviewed)
+- **Clause-1 filing (live):** ACM CCS "Theory of computation > Theory and algorithms for application
+  domains > Algorithmic game theory and mechanism design"; MSC 91A68 "Algorithmic game theory and
+  complexity". Membership manifests through the algorithmic-game-theory wing — mirror of the
+  logic→mathematics wing precedent (PR #47).
+- **Minority record reused:** Princeton CS theory group AGT listing (re-verified live); GTS
+  "applied across … computer science" (re-verified live).
+- **Flag effect:** node + edge:game-theory-part-of-mathematics `disputed` retired. **Parked
+  remainder:** the economics-primary claim (JEL C7, Handbook of Game Theory anchoring) awaits the
+  social-sciences continent — stance records above persist.
+
+### Dashboard delta (session #8 cross-listing)
+- Second-membership edges written: 3/3 targeted (all clause-1 gates passed live; 0 parked of the
+  CS-targeted set).
+- Disputed retired: nodes 9 → 6, edges 8 → 5 (remaining: operations-research node + both OR edges
+  [premise-denying minority]; mathematical-physics, mathematical-biology, financial-mathematics,
+  bayesian-statistics, time-series-analysis per their unchanged records).
+- Out of scope (parking unchanged): decision-theory 2nd (economics absent), math-physics/math-bio/
+  fin-math minority sides (target continents absent), philosophy parking 3, upstream-gap 2.
