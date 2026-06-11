@@ -1,0 +1,251 @@
+{
+  "id": "batch:arts-design-skeleton-v1",
+  "title": "Arts and Design Skeleton v1",
+  "description": "Coverage skeleton for the arts-and-design continent (eighth continent, parallel round v1 strand 13d, merge order 4 — vault parallel-round-v1.md, CPO co-agreed 2026-06-11): field/subfield two-level node set under domain:arts-and-design — music, visual arts, design, performing arts and architecture — each tagged with academic_status. Construction input only — not canonical graph data; nodes only, zero edges (skeleton-first). The junction node already canonical in /data (domain:arts-and-design, Q2018526 — session #11 seed-audit corrected anchor) is out of generation scope; subfield:aesthetics (Q35986) is philosophy-continent property and must not be re-proposed or modified. Architecture is owned by this batch per the parallel-round boundary assignment table (13c will not create it); its engineering-side second membership is a same-batch §13 task under separate live evidence.",
+  "status": "active",
+  "target_locales": [
+    "en"
+  ],
+  "scope": {
+    "include": [
+      "Arts and design field and subfield coverage skeleton (nodes only)",
+      "Music areas under LCC class M (M scores / ML literature on music / MT instruction and study) and UDC 78, FORD 6.4 music",
+      "Visual-arts areas under LCC class N (N/NB/NC/ND/NE/NK/NX) and UDC 73-77",
+      "Design areas under LCC NC/NK and UDC 74 (drawing, design, applied arts and crafts)",
+      "Performing-arts areas under UDC 791-793.3 (cinema, theatre, dance), FORD 6.4 performing arts",
+      "Architecture under LCC NA and UDC 72 (classification home — art side primary)",
+      "Physical-planning wing under UDC 71 (landscape architecture, planning) subject to per-seed two-prong tests",
+      "Wikidata QID resolution for identity and external_ids"
+    ],
+    "exclude": [
+      "Edges and relations (skeleton-first: dots before lines; part_of skeleton edges are a separate batch)",
+      "Level-3 concepts, persons, works, movements, styles and periods (UDC 7.03x material)",
+      "Re-proposing any existing /data node (domain:arts-and-design and all 195 other canonical nodes; reconcile to existing IDs instead)",
+      "subfield:aesthetics (Q35986, philosophy continent): UDC 7.01 art-theory candidates must pass an identity-distinct test against it; the philosophy node itself is untouchable",
+      "Recreation, entertainment, games and sport (UDC 793.5-799, 796-799; LCC GV as home class): pre-registered scope-exclusion — community home is sports science / health; record as deliberate non-coverage, do not generate",
+      "Media and communication studies (FORD 5.8 — social-sciences continent, strand 13a; film studies stays in-continent via its UDC 791 classification home)",
+      "Literature, linguistics and other LCC class-P disciplines (humanities-residual continent; theatre/film PN ranges are other-home filings, not an invitation to model literature)",
+      "Music therapy (ML3919-3920 — medicine adjacency), arts administration/patronage (NX700-770 — below skeleton granularity)",
+      "Living artists and current affiliations"
+    ]
+  },
+  "seed_entities": [
+    {
+      "label": "Music",
+      "expected_node_id": "field:music",
+      "expected_type": "field"
+    },
+    {
+      "label": "Visual Arts",
+      "expected_node_id": "field:visual-arts",
+      "expected_type": "field"
+    },
+    {
+      "label": "Design",
+      "expected_node_id": "field:design",
+      "expected_type": "field"
+    },
+    {
+      "label": "Performing Arts",
+      "expected_node_id": "field:performing-arts",
+      "expected_type": "field"
+    },
+    {
+      "label": "Architecture",
+      "expected_node_id": "field:architecture",
+      "expected_type": "field",
+      "notes": "13d-owned per boundary assignment table. Art-side classification home: LCC NA + UDC 72 (both captured). Engineering-side second membership (FORD 2.1 / LCC TH / UDC 69) is a separate-evidence §13 task — not this node's keep question."
+    },
+    {
+      "label": "Musicology",
+      "expected_node_id": "subfield:musicology",
+      "expected_type": "subfield",
+      "notes": "LCC ML (literature on music, incl. ML3797-3799.5 musical research). Humanities-adjacent: in-continent while classification home is class M (assignment-table both-prong rule)."
+    },
+    {
+      "label": "Music Theory",
+      "expected_node_id": "subfield:music-theory",
+      "expected_type": "subfield",
+      "notes": "LCC MT5.5-7 + UDC 781.2; SMT community. Absorption test vs musicology pre-registered."
+    },
+    {
+      "label": "Ethnomusicology",
+      "expected_node_id": "subfield:ethnomusicology",
+      "expected_type": "subfield",
+      "notes": "LCC ML3544-3776 (folk, national, and ethnic music) + UDC 781.7; SEM community."
+    },
+    {
+      "label": "Music Education",
+      "expected_node_id": "subfield:music-education",
+      "expected_type": "subfield",
+      "notes": "LCC subclass MT (instruction and study, incl. MT918-948 school music) + UDC 78.05/780.7; NAfME community. mathematics-education precedent."
+    },
+    {
+      "label": "Music Composition",
+      "expected_node_id": "subfield:music-composition",
+      "expected_type": "subfield",
+      "notes": "LCC MT40-67 + UDC 78.02; conservatory composition departments. Two-prong test pre-registered — may fail (a) as a subdivision-only area."
+    },
+    {
+      "label": "Art History",
+      "expected_node_id": "subfield:art-history",
+      "expected_type": "subfield",
+      "notes": "LCC N5300-7418 (History) + UDC 7.03 axis + FORD 6.4 'history of arts'; CAA community. Humanities-adjacent: in-continent while classification home is class N."
+    },
+    {
+      "label": "Painting",
+      "expected_node_id": "subfield:painting",
+      "expected_type": "subfield",
+      "notes": "LCC ND + UDC 75 — both gate schemes give it a full subclass/division."
+    },
+    {
+      "label": "Sculpture",
+      "expected_node_id": "subfield:sculpture",
+      "expected_type": "subfield",
+      "notes": "LCC NB + UDC 730."
+    },
+    {
+      "label": "Drawing",
+      "expected_node_id": "subfield:drawing",
+      "expected_type": "subfield",
+      "notes": "LCC NC1-940 wing + UDC 741/744. Overlap test vs design wing pre-registered (NC is shared)."
+    },
+    {
+      "label": "Printmaking",
+      "expected_node_id": "subfield:printmaking",
+      "expected_type": "subfield",
+      "notes": "LCC NE (print media) + UDC 76."
+    },
+    {
+      "label": "Photography",
+      "expected_node_id": "subfield:photography",
+      "expected_type": "subfield",
+      "notes": "UDC 77 in-continent major; LCC home is TR (class T, technology) — other-home filing test pre-registered; TR evidence may park as engineering-side §13 candidate (class-G precedent pattern)."
+    },
+    {
+      "label": "Graphic Design",
+      "expected_node_id": "subfield:graphic-design",
+      "expected_type": "subfield",
+      "notes": "LCC NC997-1003 (commercial art) + UDC 766 (applied graphic arts); AIGA community."
+    },
+    {
+      "label": "Industrial Design",
+      "expected_node_id": "subfield:industrial-design",
+      "expected_type": "subfield",
+      "notes": "UDC 7.05 (applications of art in industry) + LCC NK1160-1590 design wing; engineering adjacency (LCC TS171) is a §13 candidate record only — 13c boundary."
+    },
+    {
+      "label": "Fashion Design",
+      "expected_node_id": "subfield:fashion-design",
+      "expected_type": "subfield",
+      "notes": "LCC NK4700-4890 (costume); fashion-school community. Two-prong test pre-registered."
+    },
+    {
+      "label": "Interior Design",
+      "expected_node_id": "subfield:interior-design",
+      "expected_type": "subfield",
+      "notes": "LCC NK1700-2195 (interior decoration) + UDC 747; ASID/CIDA community."
+    },
+    {
+      "label": "Decorative Arts",
+      "expected_node_id": "subfield:decorative-arts",
+      "expected_type": "subfield",
+      "notes": "LCC NK + UDC 745/749. Overlap/absorption tests vs the named design subfields pre-registered (shared NK ranges)."
+    },
+    {
+      "label": "Theatre Studies",
+      "expected_node_id": "subfield:theatre-studies",
+      "expected_type": "subfield",
+      "notes": "UDC 792 + FORD 6.4 performing arts; LCC home PN2000-3307 is a class-P other-home filing (class-G precedent interpretation pre-registered)."
+    },
+    {
+      "label": "Dance",
+      "expected_node_id": "subfield:dance",
+      "expected_type": "subfield",
+      "notes": "UDC 792.8/793.3 (art of movement) + FORD 6.4 performing arts; LCC home GV1580-1799.4 is a class-G other-home filing (precedent interpretation pre-registered)."
+    },
+    {
+      "label": "Film Studies",
+      "expected_node_id": "subfield:film-studies",
+      "expected_type": "subfield",
+      "notes": "UDC 791 (cinema, films) + FORD 6.4 performing arts; SCMS community. FORD 5.8 media-communications is the social-sciences continent (13a) — classification-home rule, no negotiation. LCC PN1993-1999 other-home filing."
+    },
+    {
+      "label": "Landscape Architecture",
+      "expected_node_id": "subfield:landscape-architecture",
+      "expected_type": "subfield",
+      "notes": "UDC 712 (planning of landscape, parks, gardens); ASLA + design-school community. LCC home SB469-476 (class S) — other-home filing test pre-registered."
+    },
+    {
+      "label": "Urban Planning",
+      "expected_node_id": "subfield:urban-planning",
+      "expected_type": "subfield",
+      "notes": "UDC 711 + LCC NA9000-9428 (aesthetics of cities) in-continent; but dominant LCC home HT165-169 (social) and planning-school institutional homes vary — strict two-prong test pre-registered; record-only deferral is an acceptable outcome."
+    },
+    {
+      "label": "Ceramic Arts",
+      "expected_node_id": "subfield:ceramic-arts",
+      "expected_type": "subfield",
+      "notes": "UDC 738 + LCC NK3700-4695. Absorption test vs decorative-arts pre-registered — likely a v2 re-split candidate; generator may rule per §12 rule 2."
+    }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "wikidata",
+      "purpose": [
+        "identity",
+        "metadata",
+        "source_resolution",
+        "external_link"
+      ],
+      "requires_secret": false,
+      "notes": "CC0. Resolver verifies the unverified training-knowledge QID hints in the proposal and fills missing QIDs."
+    },
+    {
+      "provider": "wikipedia",
+      "purpose": [
+        "external_link",
+        "source_resolution"
+      ],
+      "requires_secret": false,
+      "notes": "External-link / source-resolution pointer only. Never store or cache article bodies."
+    }
+  ],
+  "forbidden_sources": [
+    {
+      "provider": "namuwiki",
+      "reason": "NamuWiki is external-link-only and must never be used as evidence or a source, nor have its content cached."
+    },
+    {
+      "provider": "cloud_llm_api",
+      "reason": "No cloud LLM API calls are permitted in repo tooling, build, validation, or runtime."
+    },
+    {
+      "provider": "scraped_article_body",
+      "reason": "Scraping or crawling third-party article bodies is forbidden; only open, license-compatible data is allowed."
+    }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": [
+      "low",
+      "medium",
+      "historical"
+    ],
+    "requires_strict_review_for": [
+      "living_person",
+      "current_affiliation",
+      "controversial_claim"
+    ]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/arts-design-skeleton-v1"
+  },
+  "notes": [
+    "Parallel round v1, strand 13d (vault parallel-round-v1.md — §12 snapshot pin = commit d816cb6; promotion merge order 4 with succession rule).",
+    "Coverage baseline for generation/QC: LCC class M outline (lcco_m.pdf — M/ML/MT) and class N outline (lcco_n.pdf — N/NA/NB/NC/ND/NE/NK/NX), UDC class 7 with children 71-79 (udcsummary.info getrecord), and OECD FORD section 6.4 (arrs.si mirror, live-verified this session; also carries the 2.1 civil-engineering record used by the architecture §13 task). No discipline-specific scheme is ratified for this continent — LCC M·N and UDC 7 are the gate schemes, FORD 6.4 the cross-check. All sources live-captured by the orchestrator on 2026-06-11 before this manifest was written (dist/foundry/captures/arts-design-skeleton-v1/).",
+    "docs/data-foundry.md section 12 (including its precedent log, at pin d816cb6) is a mandatory input to the generation order (promotion policy v1.3); section 13 governs any multi-membership question raised during QC.",
+    "Pre-registered structural questions for QC: (1) architecture dual membership — art side primary (LCC NA + UDC 72 captured), engineering side requires separately live-verified evidence (FORD 2.1 / LCC TH / UDC 69) and is written in the same batch only if its own gate is met (§13 anti-spam guard); (2) UDC 7.01 art-theory candidates take an identity-distinct test against subfield:aesthetics (philosophy node untouched, relations recorded only); (3) recreation/entertainment/sport wing (UDC 793.5-799, 796-799) is scope-excluded as deliberate non-coverage (community home sports science/health); (4) humanities-adjacent areas (musicology, art history) stay in-continent while their classification home is class M/N (humanities-residual continent not yet entered); (5) FORD 5.8 media-communications belongs to social sciences (13a) — film studies stays via UDC 791 classification home; (6) industrial design's engineering adjacency is a §13 candidate record only (13c boundary); (7) photography's LCC TR home and theatre/dance/film's PN/GV homes are other-home filings — class-G precedent interpretation applies when UDC 7 + FORD 6.4 + community file them in-continent; (8) UDC 71 planning wing takes strict per-seed two-prong tests (urban-planning record-only deferral acceptable); (9) decorative-arts overlap/absorption tests vs named design subfields (shared NK ranges).",
+    "/data remains the source of truth for accepted graph data."
+  ]
+}
