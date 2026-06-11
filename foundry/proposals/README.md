@@ -22,9 +22,11 @@ decision-log dates; PR numbers are the merge trail.
 | `cis-part-of-edges-v1` | CS `part_of` skeleton, 2026-06-11 (PR #51–#52): 28 edges (23 reviewed / 5 capped), first skeleton-time §13 dual membership (IR → CS+LIS); generator hint-laundering (~10 claims) caught and rebuilt by QC. |
 | `cis-summaries-v1` | Editorial pass 4 + first generation-model A/B, 2026-06-11 (PR #55): 23 summaries; Opus 11/11 as-drafted vs Sonnet 1/11 — the measurement behind decision (26) (editorial generation → Opus). |
 | `cis-bflag-resolution-v1` | Clause-6 resolution of the 2 CS B-flags, 2026-06-11 (PR #56): both genuine splits dissolved by cross-listing v1 (§13) — scientific-computing → +applied mathematics, quantum-computing → +natural sciences; no `disputed` tags. |
+| `cis-bflag-summaries-v1` | Editorial pass 5, 2026-06-11 (PR #58): 2 summaries for the clause-6-promoted CS nodes — first operational run under decision (26) (Opus generation); citation hallucination 0% (7/7), claim-anchor checker's first live use. |
 | `openalex-stem-prevalidation-v1` | B-track first measurement, 2026-06-11 (PR #43): OpenAlex Concepts rank-1 81% vs Topics structurally unfit → Concepts adopted; implementation append (PR #46) wrote 36 nodes' `external_metrics`. |
 | `openalex-cis-prevalidation-v1` | B-track CS pre-validation, 2026-06-11 (PR #54): rank-1 19/25, duplicate-QID-link anomaly 4/24 measured; implementation append (session #10) wrote 23 nodes + first triangulation-coverage dashboard. |
 | `qid-adversarial-audit-cis-v1` | First adversarial QID audit, 2026-06-11 (PR #54): 24 refutation agents vs all CS verified QIDs → 0/24 confirmed residual referent errors (≤4.2% upper bound); computer-networks anchor recorded as a permanent watch item. |
+| `qid-adversarial-audit-fs-v1` | Second adversarial QID audit, 2026-06-11 (PR #61): 44 refutation agents vs all FS verified QIDs → 0/44 confirmed (cumulative 0/68); differential-equations thin-anchor watch item; same PR recorded the seed-era bayesian-inference erratum (Q41581 → Q812535). |
 
 Conventions: `report.md` = batch-level summary; `qc-report.md` = orchestrator QC verdicts;
 `grounding-report.md` = per-QID resolver/verification record; `resolution-report.md` = clause-6 /
