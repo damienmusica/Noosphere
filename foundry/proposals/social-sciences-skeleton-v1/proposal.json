@@ -1,797 +1,715 @@
 {
-  "version": 1,
-  "batch_id": "batch:social-sciences-skeleton-v1",
-  "proposed_by": {
-    "model_name": "Claude Sonnet",
-    "model_version": "claude-sonnet-4-6",
-    "proposed_at": "2026-06-11"
+ "version": 1,
+ "batch_id": "batch:social-sciences-skeleton-v1",
+ "proposed_by": {
+  "model_name": "Claude Sonnet",
+  "model_version": "claude-sonnet-4-6",
+  "proposed_at": "2026-06-11"
+ },
+ "nodes": [
+  {
+   "id": "field:economics",
+   "type": "field",
+   "domain": "social_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Economics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q8134"
+   },
+   "source_hint": "LCC HB1-3840 'Economic theory. Demography', HC10-1085 'Economic history and conditions', HD28-9999 'Industries. Land use. Labor', HE1-9990 'Transportation and communications', HF1-6182 'Commerce', HG1-9999 'Finance', HJ9-9940 'Public finance' (captured baseline 2026-06-11); UDC 33 'Economics. Economic science' (captured baseline 2026-06-11); OECD FORD 5.2 'Economics and Business' (captured baseline 2026-06-11). Wikidata Q8134 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Economic Association, named economics departments at virtually all research universities worldwide.",
+   "rationale": "Major division in LCC class H (multiple own subclasses HB-HJ), UDC 33 (own 2-digit division), and FORD 5.2; named departments and professional association worldwide — dual criterion satisfied.",
+   "uncertainty": "FORD 5.2 labels this 'Economics and Business', which may imply a merger with business-and-management; LCC treats them in overlapping subclasses (HD, HF); QC should resolve whether one combined field or two is the right model.",
+   "ambiguous": false
   },
-  "nodes": [
-    {
-      "id": "field:economics",
-      "type": "field",
-      "domain": "social_sciences",
-      "level": 1,
-      "status": "generated",
-      "label_en": "Economics",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q8134"
-      },
-      "source_hint": "LCC HB1-3840 'Economic theory. Demography', HC10-1085 'Economic history and conditions', HD28-9999 'Industries. Land use. Labor', HE1-9990 'Transportation and communications', HF1-6182 'Commerce', HG1-9999 'Finance', HJ9-9940 'Public finance' (captured baseline 2026-06-11); UDC 33 'Economics. Economic science' (captured baseline 2026-06-11); OECD FORD 5.2 'Economics and Business' (captured baseline 2026-06-11). Wikidata Q8134 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Economic Association, named economics departments at virtually all research universities worldwide.",
-      "rationale": "Major division in LCC class H (multiple own subclasses HB-HJ), UDC 33 (own 2-digit division), and FORD 5.2; named departments and professional association worldwide — dual criterion satisfied.",
-      "uncertainty": "FORD 5.2 labels this 'Economics and Business', which may imply a merger with business-and-management; LCC treats them in overlapping subclasses (HD, HF); QC should resolve whether one combined field or two is the right model.",
-      "ambiguous": false
-    },
-    {
-      "id": "field:sociology",
-      "type": "field",
-      "domain": "social_sciences",
-      "level": 1,
-      "status": "generated",
-      "label_en": "Sociology",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q21201"
-      },
-      "source_hint": "LCC HM(1)-1281 'Sociology', HN1-995 'Social history and conditions. Social problems. Social reform', HQ1-2044 'The Family. Marriage. Women', HT51-1595 'Communities. Classes. Races', HV1-9960 'Social pathology. Social and public welfare. Criminology', HX1-970.7 'Socialism. Communism. Anarchism' (captured baseline 2026-06-11); UDC 316 'Sociology' (captured baseline 2026-06-11); OECD FORD 5.4 'Sociology' (captured baseline 2026-06-11). Wikidata Q21201 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Sociological Association, named sociology departments at research universities worldwide.",
-      "rationale": "Dedicated LCC subclass HM plus several cognate subclasses (HN, HQ, HT, HV, HX), dedicated UDC 316, and FORD 5.4; named departments and professional association worldwide — dual criterion satisfied.",
-      "uncertainty": "The HV subclass spans both sociology (social pathology/welfare) and criminology; the HX subclass (Socialism/Communism) has community homes partly in political science; boundary assignments among sub-areas are a subfield-level question.",
-      "ambiguous": false
-    },
-    {
-      "id": "field:political-science",
-      "type": "field",
-      "domain": "social_sciences",
-      "level": 1,
-      "status": "generated",
-      "label_en": "Political Science",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q36442"
-      },
-      "source_hint": "LCC class J entirely: JA1-92 'Political science (General)', JC11-605 'Political theory', JF20-2112 'Political institutions and public administration', JS39-8500 'Local government', JV1-9480 'Colonies and colonization. Emigration and immigration', JZ5-6530 'International relations' (captured baseline 2026-06-11); UDC 32 'Politics' (captured baseline 2026-06-11); OECD FORD 5.6 'Political science' (captured baseline 2026-06-11). Wikidata Q36442 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Political Science Association, named political science departments worldwide.",
-      "rationale": "LCC dedicates the entire class J to political science, UDC 32 is an own 2-digit division, FORD 5.6 is named; departments and professional association worldwide — dual criterion fully satisfied.",
-      "uncertainty": "Some subfields (international relations, public administration) have argued for autonomous field status; the dual criterion supports political-science as the field level here, but QC should note these autonomy claims.",
-      "ambiguous": false
-    },
-    {
-      "id": "field:education",
-      "type": "field",
-      "domain": "social_sciences",
-      "level": 1,
-      "status": "generated",
-      "label_en": "Education",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q8434"
-      },
-      "source_hint": "LCC class L entirely: L7-991 'Education (General)', LA5-2396 'History of education', LB5-3640 'Theory and practice of education', LC8-6691 'Special aspects of education' (captured baseline 2026-06-11); UDC 37 'Education' (captured baseline 2026-06-11); OECD FORD 5.3 'Educational sciences' (captured baseline 2026-06-11). Wikidata Q8434 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Educational Research Association, named schools/colleges of education at research universities worldwide.",
-      "rationale": "LCC dedicates the entire class L to education, UDC 37 is a dedicated 2-digit division, FORD 5.3 is named; schools of education and professional associations worldwide — dual criterion fully satisfied.",
-      "uncertainty": "FORD 5.3 labels this 'Educational sciences' (emphasising the research dimension); some classifications treat education as a professional field rather than a research discipline; the node captures the academic/research side.",
-      "ambiguous": false
-    },
-    {
-      "id": "field:law",
-      "type": "field",
-      "domain": "social_sciences",
-      "level": 1,
-      "status": "generated",
-      "label_en": "Law",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q7748"
-      },
-      "source_hint": "LCC class K entirely: K1-7720 'Law in general. Comparative and uniform law. Jurisprudence' with subclasses KD-KZ covering national and international law (captured baseline 2026-06-11); UDC 34 'Law. Jurisprudence' — filed directly under UDC 3 'Social sciences' (captured baseline 2026-06-11); OECD FORD 5.5 'Law' (captured baseline 2026-06-11). Wikidata Q7748 — unverified training-knowledge hint. [UNFETCHED] community evidence: Association of American Law Schools; named law schools and faculties worldwide; law reviews and journals.",
-      "rationale": "FORD 5.5 and UDC 34-under-3 both file law under social sciences; LCC gives law its own class K (separate from class H), raising the cross-continent question per §12 rule-3 two-prong test; both prongs of the test are relevant: LCC primary home is class K (not H), but institutional homes (law faculties) are found across universities alongside social-science departments, and FORD + UDC place law firmly in social sciences.",
-      "uncertainty": "LCC assigns law a standalone class K separate from class H (social sciences), satisfying the 'LCC primary home outside the continent' half of the rule-3 two-prong test; the institutional-home prong is contested (law faculties are often autonomous); this is a pre-registered gate-level boundary question; item deliberately set ambiguous for QC resolution.",
-      "ambiguous": true
-    },
-    {
-      "id": "field:anthropology",
-      "type": "field",
-      "domain": "social_sciences",
-      "level": 1,
-      "status": "generated",
-      "label_en": "Anthropology",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q23404"
-      },
-      "source_hint": "LCC GN1-890 'Anthropology' within class G (captured baseline 2026-06-11) — class-G shelving interpreted as an other-home filing per §12 precedent log 2026-06-11 ns-bflag-resolution-v1; UDC 3 header caption includes 'Cultural anthropology' (captured baseline 2026-06-11); UDC 39 'Cultural anthropology. Ethnography. Customs. Manners. Traditions. Way of life' (captured baseline 2026-06-11); OECD FORD 5.4 'Sociology' — training knowledge that anthropology is grouped with sociology in FORD 5.4, unverified claim of FORD anchor. [UNFETCHED] community evidence: American Anthropological Association, named anthropology departments at research universities worldwide.",
-      "rationale": "LCC GN provides a full subclass for anthropology; UDC 39 and the UDC 3 header include cultural anthropology; §12 precedent (ns-bflag-resolution-v1 class-G other-home filing rule) means LCC's class-G location does not defeat social-sciences membership when UDC and community evidence support it; dual criterion satisfied.",
-      "uncertainty": "LCC class G shelves anthropology alongside geography and recreation (an other-home filing); physical anthropology (GN49-298) is closely related to biological sciences (paleoanthropology); FORD 5.4 does not give anthropology its own division; the field-level standing here relies on the class-G precedent being applied consistently.",
-      "ambiguous": false
-    },
-    {
-      "id": "field:media-and-communication-studies",
-      "type": "field",
-      "domain": "social_sciences",
-      "level": 1,
-      "status": "generated",
-      "label_en": "Media and Communication Studies",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q2041917"
-      },
-      "source_hint": "OECD FORD 5.8 'Media and communications' (captured baseline 2026-06-11). LCC homes (P87-96 Communication. Mass media) lie in LCC class P (Language and Literature) — this class was NOT in the captured outlines; no LCC capture support. UDC capture does not include a dedicated division for mass communication under class 3 (UDC 316.77 would be under sociology, but that subdivision is not explicitly listed in the captured UDC 3 records). Wikidata Q2041917 — unverified training-knowledge hint. [UNFETCHED] community evidence: International Communication Association; named communication and media studies departments; journals such as Journal of Communication.",
-      "rationale": "FORD 5.8 provides a dedicated social-sciences classification division; named departments and professional associations worldwide satisfy criterion (b); included with ambiguous flag because LCC primary home (P87-96) lies outside the captured social-sciences classes, making criterion (a) depend solely on FORD — a pre-registered gate-level question.",
-      "uncertainty": "LCC files communication/media under class P (Language and Literature), not class H; this is the 'LCC home outside the continent' scenario that triggers the §12 rule-3 two-prong test; FORD 5.8 supports social-sciences membership but does not resolve the LCC question; QC must decide whether FORD alone suffices or whether the LCC home is disqualifying.",
-      "ambiguous": true
-    },
-    {
-      "id": "field:human-geography",
-      "type": "field",
-      "domain": "social_sciences",
-      "level": 1,
-      "status": "generated",
-      "label_en": "Human Geography",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q42515"
-      },
-      "source_hint": "LCC GF1-900 'Human ecology. Anthropogeography' within class G (captured baseline 2026-06-11) — class-G shelving interpreted as an other-home filing per §12 precedent log 2026-06-11; OECD FORD 5.7 'Social and economic geography' (captured baseline 2026-06-11). UDC 332 'Regional economics. Territorial economics. Land economics. Housing economics' (captured baseline 2026-06-11) — partial overlap. Wikidata Q42515 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Association of Geographers (human geography division); named human geography departments; journals such as Annals of the American Association of Geographers.",
-      "rationale": "LCC GF provides a dedicated range for human ecology/anthropogeography; FORD 5.7 names social-and-economic geography within social sciences; §12 class-G precedent applies (other-home filing does not defeat social-sciences membership when FORD + community support it); named departments satisfy criterion (b).",
-      "uncertainty": "LCC class G shelves human geography alongside physical geography, oceanography, and recreation (other-home filing); the boundary between human geography and physical geography sub-areas needs careful QC; the physical-geography cognates (GE, GC, GB) have already been resolved as natural-sciences nodes and must not be reopened here.",
-      "ambiguous": true
-    },
-    {
-      "id": "field:business-and-management",
-      "type": "field",
-      "domain": "social_sciences",
-      "level": 1,
-      "status": "generated",
-      "label_en": "Business and Management",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q131436"
-      },
-      "source_hint": "LCC HD28-70 'Management. Industrial management', HF5001-6182 'Business' (captured baseline 2026-06-11); OECD FORD 5.2 'Economics and Business' (captured baseline 2026-06-11) — FORD groups business with economics in a single division. Wikidata Q131436 — unverified training-knowledge hint. [UNFETCHED] community evidence: Academy of Management; AACSB-accredited business schools worldwide; journals such as Academy of Management Review, Administrative Science Quarterly.",
-      "rationale": "LCC HD28-70 and HF5001-6182 give management and business substantial and distinct ranges within class H; named business schools (AACSB) are institutionally autonomous from economics departments; community criterion satisfied; field-vs-absorbed question pre-registered for QC.",
-      "uncertainty": "FORD 5.2 groups economics and business in a single division, suggesting they may be one field; LCC subclasses HD and HF overlap with HB-HG economics ranges; QC must decide whether a separate field node is warranted or whether business-and-management subfields should nest under field:economics.",
-      "ambiguous": true
-    },
-    {
-      "id": "subfield:economic-theory",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Economic Theory",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q185545"
-      },
-      "source_hint": "LCC HB71-3840 'Economic theory. Demography' — specifically HB71-74 'Economics as a science. Relation to other subjects', HB201-206 'Value. Utility', HB221-236 'Price', HB801-843 'Consumption. Demand', HB846-846.8 'Welfare theory' (captured baseline 2026-06-11); UDC 330.1 'Science of economics. Basic economic concepts, theory. Value. Capital. Funds' (captured baseline 2026-06-11). Wikidata Q185545 — unverified training-knowledge hint. [UNFETCHED] community evidence: Journal of Economic Theory; named theory seminars in economics departments worldwide.",
-      "rationale": "LCC HB is a dedicated subclass for economic theory; UDC 330.1 names economic theory explicitly; strong named-community presence in academic economics — dual criterion satisfied.",
-      "uncertainty": "Economic theory is sometimes treated as the core of all economics rather than a distinct subfield; the LCC HB subclass also includes demography (HB848-3697), which is proposed separately; QC should verify scope of the proposed node does not unintentionally absorb demography.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:econometrics",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Econometrics",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q217602"
-      },
-      "source_hint": "LCC HB135-147 'Mathematical economics. Quantitative methods. Including econometrics, input-output analysis, game theory' (captured baseline 2026-06-11); UDC 330.4 'Mathematical economics [Including: Econometrics]' (captured baseline 2026-06-11). Wikidata Q217602 — unverified training-knowledge hint. [UNFETCHED] community evidence: Econometric Society; Econometrica journal; named econometrics courses and tracks in economics programs worldwide.",
-      "rationale": "§12 precedent log explicitly defers econometrics from formal sciences to social sciences ('econometrics→social sciences'); LCC HB135-147 and UDC 330.4 both provide classification presence; Econometric Society and Econometrica satisfy criterion (b).",
-      "uncertainty": "LCC HB135-147 groups econometrics with game theory and input-output analysis under a single cutter; game theory is a formal-sciences-owned node (existing canonical node) — this node covers only the econometrics portion; training knowledge distinguishes these communities.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:labor-economics",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Labor Economics",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q1132580"
-      },
-      "source_hint": "LCC HD4801-8943 'Labor. Work. Working class'; HD5701-6000.9 'Labor market. Labor supply. Labor demand' (captured baseline 2026-06-11); UDC 331 'Labour. Employment. Work. Labour economics. Organization of labour' (captured baseline 2026-06-11). Wikidata Q1132580 — unverified training-knowledge hint. [UNFETCHED] community evidence: Society of Labor Economists; Journal of Labor Economics; dedicated labor economics fields in graduate programs worldwide.",
-      "rationale": "LCC HD4801-8943 is a large dedicated range; UDC 331 is a full 3-digit division; named society and journal; dual criterion fully satisfied.",
-      "uncertainty": "The boundary between labor economics (economic analysis of labor markets) and industrial sociology (HD6951-6957) and labor law (K1701-1841) is blurry at the margins; this node captures the economics-side analysis.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:economic-history",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Economic History",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q842605"
-      },
-      "source_hint": "LCC HC10-1085 'Economic history and conditions' — its own LCC subclass HC (captured baseline 2026-06-11); UDC 330.8 'History of economic theories, doctrines, dogmas' (captured baseline 2026-06-11). Wikidata Q842605 — unverified training-knowledge hint. [UNFETCHED] community evidence: Economic History Association; Journal of Economic History; named economic history fields in history and economics departments.",
-      "rationale": "LCC HC is its own dedicated subclass for economic history; UDC 330.8 covers history of economic thought; named society (Economic History Association) and journal; dual criterion satisfied.",
-      "uncertainty": "Economic history could be considered a subfield of history (humanities) or of economics; it has community homes in both continents; a §13 cross-listing candidate in the edge batch; for now, placed under social-sciences/economics.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:public-finance",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Public Finance",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q847103"
-      },
-      "source_hint": "LCC HJ9-9940 'Public finance' — its own LCC subclass HJ (captured baseline 2026-06-11); UDC 336.1 'Public sector finance. Government finance in general', 336.2 'Public revenue [Including: Fiscal practice. Taxation]', 336.5 'Public expenditure' (captured baseline 2026-06-11). Wikidata Q847103 — unverified training-knowledge hint. [UNFETCHED] community evidence: National Tax Association; National Tax Journal; public finance fields in economics programs worldwide.",
-      "rationale": "LCC HJ is a dedicated subclass for public finance; UDC 336.1/336.2/336.5 provides classification depth; named association and journal; dual criterion satisfied.",
-      "uncertainty": "Public finance overlaps with public administration (JF1338-2112); the distinction is that public finance is the economic analysis of government revenue/expenditure, while public administration covers governance processes — different communities despite institutional overlap.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:international-economics",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "International Economics",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q178751"
-      },
-      "source_hint": "LCC HF1014 'Balance of trade', HF1021-1027 'Commercial geography. Economic geography', HF1701-2701 'Tariff. Free trade. Protectionism' within HF Commerce subclass (captured baseline 2026-06-11); UDC 339.5 'Foreign trade. External trade. International trade [Including: Free trade. Protectionism. Customs. Duties. Tariffs]', 339.7 'International finance', 339.9 'International economy generally. International economic relations. Global economy' (captured baseline 2026-06-11). Wikidata Q178751 — unverified training-knowledge hint. [UNFETCHED] community evidence: Journal of International Economics; dedicated international economics fields in graduate programs; WTO-related policy research.",
-      "rationale": "UDC 339.5/339.7/339.9 form a coherent international economics division; LCC HF1701-2701 covers trade policy; named journal and graduate-program presence; dual criterion satisfied.",
-      "uncertainty": "International economics overlaps heavily with international relations (political science side) at the boundary of political economy; this node captures the economic analysis of international trade and finance.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:financial-economics",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Financial Economics",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q8134"
-      },
-      "source_hint": "LCC HG1-9999 'Finance' — its own LCC subclass HG covering Banking (HG1501-3550), Investment (HG4501-6051), Insurance (HG8011-9999) (captured baseline 2026-06-11); UDC 336.7 'Money. Monetary system. Banking. Stock exchanges [Including: Banks. Banking. Savings and saving banks. Other loan organizations. Stock market. Money market. Capital market. Stock and shares. Credit]' (captured baseline 2026-06-11). Wikidata — training-knowledge hint to be resolved by QC (Q8134 is economics the field; no confident QID for financial-economics specifically available). [UNFETCHED] community evidence: American Finance Association; Journal of Finance; named finance departments in business schools and economics departments.",
-      "rationale": "LCC HG is a large dedicated subclass for finance; UDC 336.7 provides classification depth; named association (AFA) and leading journal; dual criterion satisfied.",
-      "uncertainty": "Existing canonical node subfield:financial-mathematics covers the formal/mathematical modeling side; this node covers the economic analysis of financial markets and institutions — the boundary between financial economics and financial mathematics requires QC attention to ensure no unintended overlap.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:criminology",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Criminology",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q41364"
-      },
-      "source_hint": "LCC HV6001-7220.5 'Criminology' within HV 'Social pathology. Social and public welfare. Criminology' (captured baseline 2026-06-11); UDC 343.9 'Criminology. Criminal sciences. Criminalistics [Including: Organized crime. Kinds of criminal, delinquent. Physical influences on criminality. Criminal anthropometry. Forensic psychology. Criminal pathology. Criminal sociology. Forensic science. Victimology]' — NOTE: UDC 343.9 sits under UDC 343 'Criminal law. Penal offences' within UDC 34 'Law' (captured baseline 2026-06-11). OECD FORD 5.4 'Sociology' — training knowledge that criminology is commonly grouped with sociology, unverified claim. Wikidata Q41364 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Society of Criminology; Criminology journal; named criminology departments and programs.",
-      "rationale": "LCC HV6001-7220.5 provides a large dedicated range within the sociology-side subclass HV; named professional society (ASC) and journal; dual criterion satisfied.",
-      "uncertainty": "UDC files criminology under 343.9 (within criminal law, under UDC 34 Law) rather than under sociology 316; this is a classification split between LCC (social sciences) and UDC (law); criminology's primary community home in most universities is in social-science faculties rather than law schools, but the UDC filing is a real counter-signal — ambiguous flag set for QC.",
-      "ambiguous": true
-    },
-    {
-      "id": "subfield:demography",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Demography",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q37732"
-      },
-      "source_hint": "LCC HB848-3697 'Demography. Population. Vital events' within LCC HB 'Economic theory. Demography' (captured baseline 2026-06-11); UDC 314 'Demography. Population studies' — a 3-digit major division under UDC 3 (captured baseline 2026-06-11). Wikidata Q37732 — unverified training-knowledge hint. [UNFETCHED] community evidence: Population Association of America; Demography journal; named demography programs and departments (e.g., Brown University Population Studies and Training Center).",
-      "rationale": "UDC 314 is a major 3-digit division within class 3 Social Sciences; LCC HB848-3697 is a large range; named society and journal; dual criterion satisfied; proposed as subfield (level 2) rather than field (level 1) because UDC 314 is a single 3-digit notation that does not develop its own multi-digit subtree comparable to UDC 316 Sociology or 33 Economics — a pre-registered QC question.",
-      "uncertainty": "UDC 314 is a full 3-digit major division (comparable to UDC 316 Sociology), which could support field-level standing; LCC places demography within HB (economic theory), not as its own subclass; the field-vs-subfield question is pre-registered for QC; ambiguous flag set.",
-      "ambiguous": true
-    },
-    {
-      "id": "subfield:social-work-and-welfare",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Social Work and Welfare",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q309572"
-      },
-      "source_hint": "LCC HV40-69 'Social service. Social work. Charity organization and practice', HV697-4959 'Protection, assistance and relief' within HV 'Social pathology. Social and public welfare. Criminology' (captured baseline 2026-06-11); UDC 364 'Social welfare' — a major 3-digit division under UDC 36 'Safeguarding the mental and material necessities of life [Including: Social work. Social aid. Housing. Insurance]' (captured baseline 2026-06-11). Wikidata Q309572 — unverified training-knowledge hint. [UNFETCHED] community evidence: Council on Social Work Education; Social Work journal; named schools of social work worldwide.",
-      "rationale": "LCC HV40-69 and HV697-4959 form a substantial range for social work within class H; UDC 364 is a dedicated major division; named accreditation body and journal; dual criterion satisfied.",
-      "uncertainty": "Social work has close ties to sociology, psychology, and public health; the institutional home (schools of social work) is typically within social sciences but sometimes bridges health sciences; the node is scoped to the academic and research dimension of the field.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:gender-studies",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Gender Studies",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q45409"
-      },
-      "source_hint": "UDC 305 'Gender studies [Including: Sex role. Gender. Persons from an interdisciplinary viewpoint]' — a major 3-digit division under UDC 3 Social Sciences (captured baseline 2026-06-11); LCC HQ1101-2030.7 'Women. Feminism' within HQ 'The Family. Marriage. Women' subclass (captured baseline 2026-06-11). Wikidata Q45409 — unverified training-knowledge hint. [UNFETCHED] community evidence: National Women's Studies Association; Gender and Society journal; named gender studies and women's studies departments worldwide.",
-      "rationale": "UDC 305 is a dedicated 3-digit major division for gender studies within class 3; LCC HQ1101-2030.7 provides a substantial named range; named professional association and journal; dual criterion satisfied.",
-      "uncertainty": "Gender studies is interdisciplinary; its community homes span sociology, humanities (literature, philosophy), and cultural studies; FORD 5.4 does not give it its own division; classification presence is strong (UDC 305, LCC HQ range), but the primary parent (sociology vs. a standalone field) is a QC question.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:social-stratification",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Social Stratification",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q1132376"
-      },
-      "source_hint": "LCC HT601-1445 'Classes' and HT1501-1595 'Races' within HT 'Communities. Classes. Races' subclass (captured baseline 2026-06-11); UDC 316.34 'Social stratification. Social differentiation [Including: Demographic differentiation]' (captured baseline 2026-06-11). Wikidata Q1132376 — unverified training-knowledge hint. [UNFETCHED] community evidence: ASA Section on Inequality, Poverty, and Mobility; Social Forces journal; named stratification/inequality research groups at sociology departments worldwide.",
-      "rationale": "LCC HT provides a dedicated subclass treating classes and races as social groups; UDC 316.34 explicitly names social stratification within sociology; named ASA section; dual criterion satisfied.",
-      "uncertainty": "Race and ethnicity research could be a separate subfield from class/status stratification; LCC HT1501-1595 ('Races') and HT601-1445 ('Classes') are distinct ranges that could be split; proposed as a combined node with race-and-ethnicity noted as a v2 re-split candidate.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:urban-sociology",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Urban Sociology",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q1069820"
-      },
-      "source_hint": "LCC HT101-395 'Urban groups. The city. Urban sociology' and HT165.5-169.9 'City planning' within HT 'Communities. Classes. Races' (captured baseline 2026-06-11); UDC 316.35 'Social groups. Social organizations' (captured baseline 2026-06-11) — partial; urban sociology is subsumed but not explicitly named at this level. Wikidata Q1069820 — unverified training-knowledge hint. [UNFETCHED] community evidence: ASA Section on Urban Sociology; Urban Affairs Review; named urban sociology and city studies programs at sociology departments.",
-      "rationale": "LCC HT101-395 explicitly names urban sociology in its range title; named ASA section and journal; dual criterion satisfied.",
-      "uncertainty": "Urban sociology overlaps with urban planning and human geography (HT165.5-169.9 city planning is within the same LCC range); the sociological analysis of cities is distinct from urban planning as a professional field, but the boundary requires care.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:political-theory",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Political Theory",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q179805"
-      },
-      "source_hint": "LCC JC11-605 'Political theory. The state. Theories of the state' — its own LCC subclass JC within class J (captured baseline 2026-06-11); UDC 321 'Forms of political organization. States as political powers' (captured baseline 2026-06-11). Wikidata Q179805 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Political Science Association's political theory section; Political Theory journal; named political theory subfields in political science graduate programs.",
-      "rationale": "LCC JC is a dedicated subclass for political theory; UDC 321 provides classification presence; named APSA section and journal; dual criterion satisfied.",
-      "uncertainty": "Canonical node subfield:political-philosophy (reviewed) covers normative/philosophical questions about politics; political theory in political science includes empirical theory, state theory, and political ideals; the two communities overlap substantially — QC should examine whether these can remain distinct nodes or require consolidation.",
-      "ambiguous": true
-    },
-    {
-      "id": "subfield:international-relations",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "International Relations",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q166542"
-      },
-      "source_hint": "LCC JZ5-6530 'International relations' — its own LCC subclass JZ within class J (captured baseline 2026-06-11); UDC 327 'International relations. World, global politics. International affairs. Foreign policy' (captured baseline 2026-06-11). Wikidata Q166542 — unverified training-knowledge hint. [UNFETCHED] community evidence: International Studies Association; International Organization journal; named IR subfields and departments/schools of international affairs worldwide.",
-      "rationale": "LCC JZ is a dedicated subclass for international relations; UDC 327 is a dedicated 3-digit division; named society and journal; dual criterion fully satisfied.",
-      "uncertainty": "International relations overlaps with international law (KZ) and international economics (UDC 339.9); the IR subfield captures the political-science perspective on interstate and global relations; boundary with international law is addressed by proposing separate nodes for each.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:public-administration",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Public Administration",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q261543"
-      },
-      "source_hint": "LCC JF1338-2112 'Public administration' within JF 'Political institutions and public administration' (captured baseline 2026-06-11); UDC 35 'Public administration. Government. Military affairs' — a major 2-digit division under UDC 3 (captured baseline 2026-06-11). Wikidata Q261543 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Society for Public Administration; Public Administration Review; named public administration and public policy schools worldwide (MPA programs).",
-      "rationale": "LCC JF1338-2112 is a substantial dedicated range; UDC 35 is a major 2-digit division within class 3 (comparable depth to other fields); named society, journal, and graduate-degree programs (MPA); dual criterion satisfied.",
-      "uncertainty": "UDC 35 also covers military affairs (355/359), which has a different community home; the proposed node is scoped to the public-administration portion (352-354 local/regional/central administration); the military-affairs content under UDC 35 is not covered by this node.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:comparative-politics",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Comparative Politics",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q1068473"
-      },
-      "source_hint": "LCC JF20-1177 'General. Comparative government' within JF 'Political institutions and public administration' (captured baseline 2026-06-11); UDC 323 'Home affairs. Internal policy' and 328 'Parliaments. Representation of the people. Governments' (captured baseline 2026-06-11). Wikidata Q1068473 — unverified training-knowledge hint. [UNFETCHED] community evidence: APSA Comparative Politics section; Comparative Political Studies journal; named comparative politics subfields in political science graduate programs.",
-      "rationale": "LCC JF20-1177 is explicitly titled 'Comparative government'; UDC 323 and 328 cover domestic political processes; named APSA section and journal; dual criterion satisfied.",
-      "uncertainty": "Comparative politics as a label refers to a methodological approach (cross-national comparison) as much as a substantive area; the LCC range covers comparative government more broadly; the community identity is well-established despite the methodological framing.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:curriculum-and-instruction",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Curriculum and Instruction",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q847524"
-      },
-      "source_hint": "LCC LB1025-1050.75 'Teaching (Principles and practice)', LB2361-2365 'Curriculum' within LB 'Theory and practice of education' (captured baseline 2026-06-11); UDC 37.02 'General questions of didactics and method [Including: Method and principles of particular theories and systems. Didactic principles]' (captured baseline 2026-06-11). Wikidata Q847524 — unverified training-knowledge hint. [UNFETCHED] community evidence: ASCD (Association for Supervision and Curriculum Development); Journal of Curriculum Studies; named curriculum and instruction programs in schools of education.",
-      "rationale": "LCC LB provides dedicated ranges for teaching and curriculum; UDC 37.02 names didactics and method; named professional association and journal; dual criterion satisfied.",
-      "uncertainty": "Curriculum studies and instructional design are sometimes treated as separate subfields; the combined label reflects common departmental practice (departments of Curriculum and Instruction); v2 re-split candidate if communities diverge.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:educational-policy",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Educational Policy",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q7170251"
-      },
-      "source_hint": "LCC LC65-245 'Social aspects of education', LC71-120.4 'Education and the state' within LC 'Special aspects of education' (captured baseline 2026-06-11); UDC 37.01 'Fundamentals of education. Theory, policy, etc. [Including: Basic concepts. Methods of study. Educational theory and practical pedagogics. Educational policy. Disciplines of educational theory]' (captured baseline 2026-06-11). Wikidata Q7170251 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Educational Research Association's Division L (Educational Policy and Politics); Educational Policy journal; named educational policy programs.",
-      "rationale": "LCC LC71-120.4 is a dedicated range for education-and-state relationships; UDC 37.01 explicitly names educational policy; named AERA division and journal; dual criterion satisfied.",
-      "uncertainty": "Educational policy overlaps heavily with public administration and political science applied to education; the community identity within education schools and education research is distinct enough to justify the separate node.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:higher-education",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Higher Education",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q188088"
-      },
-      "source_hint": "LCC LB2300-2430 'Higher education', LA173-186 'Higher education' (history of higher education) (captured baseline 2026-06-11); UDC 378 'Higher education. Universities. Academic study' — a major 3-digit division under UDC 37 (captured baseline 2026-06-11). Wikidata Q188088 — unverified training-knowledge hint. [UNFETCHED] community evidence: Association for the Study of Higher Education; Higher Education journal; named higher education programs in schools of education.",
-      "rationale": "LCC LB2300-2430 is a dedicated range; UDC 378 is a major 3-digit division; named society and journal; dual criterion satisfied.",
-      "uncertainty": "Higher education research overlaps with educational policy (governance of universities) and curriculum studies; the node is scoped to the academic study of higher education institutions and systems.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:special-education",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Special Education",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q1434166"
-      },
-      "source_hint": "LCC LC3950-4806.5 'Exceptional children and youth. Special education' within LC 'Special aspects of education' (captured baseline 2026-06-11); UDC 376 'Education, teaching, training of special groups of persons. Special schools' (captured baseline 2026-06-11). Wikidata Q1434166 — unverified training-knowledge hint. [UNFETCHED] community evidence: Council for Exceptional Children; Exceptional Children journal; named special education departments and teacher certification programs.",
-      "rationale": "LCC LC3950-4806.5 is a substantial dedicated range; UDC 376 is a dedicated 3-digit division; named professional organization and journal; dual criterion satisfied.",
-      "uncertainty": "Special education has close ties to psychology (educational psychology, LB1050.9-1091) and disability studies; the node covers the instructional and programmatic research side rather than the psychological or medical dimensions.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:jurisprudence",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Jurisprudence",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q4932206"
-      },
-      "source_hint": "LCC K201-487 'Jurisprudence. Philosophy and theory of law' within K 'Law in general. Comparative and uniform law. Jurisprudence' (captured baseline 2026-06-11); UDC 340.1 'Types and forms of law [Including: Enacted law. Statute law. Codification of law. Unwritten law. Common law]', 340.5 'Comparative law' (captured baseline 2026-06-11). Wikidata Q4932206 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Jurisprudence journal; jurisprudence courses in law schools worldwide; named jurisprudence research groups.",
-      "rationale": "LCC K201-487 is a dedicated range for jurisprudence/legal theory; UDC 340 covers law in general including legal theory; named courses and research groups in law schools; dual criterion satisfied.",
-      "uncertainty": "Canonical node subfield:philosophy-of-law (reviewed) covers the philosophical treatment of law; jurisprudence is here scoped to the legal-science tradition (internal legal theory, comparative law methodology) rather than external philosophical critique — overlap is real and QC should examine whether these nodes require consolidation or clearer scope delineation.",
-      "ambiguous": true
-    },
-    {
-      "id": "subfield:constitutional-law",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Constitutional Law",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q484527"
-      },
-      "source_hint": "LCC K3154-3370 'Constitutional law' within K 'Law in general' (captured baseline 2026-06-11); UDC 342 'Public law. Constitutional law. Administrative law' (captured baseline 2026-06-11). Wikidata Q484527 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Constitution Society; constitutional law courses in every law school; journals such as Harvard Law Review focused on constitutional issues.",
-      "rationale": "LCC K3154-3370 is a dedicated range; UDC 342 is a major 3-digit division; named society and universal law-school presence; dual criterion satisfied.",
-      "uncertainty": "Constitutional law is closely linked to public administration and political theory; in some jurisdictions constitutional law also encompasses administrative law (UDC 342.9) — this node's scope covers the constitutional dimension.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:international-law",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "International Law",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q4394526"
-      },
-      "source_hint": "LCC KZ2-6795 'Law of nations' — its own LCC subclass KZ within class K (captured baseline 2026-06-11); also LCC JZ1249-1254 'Relation to other disciplines' and JZ (political science side) overlap; UDC 341 'International law' — a major 3-digit division (captured baseline 2026-06-11). Wikidata Q4394526 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Society of International Law; American Journal of International Law; named international law programs in law schools and international affairs schools.",
-      "rationale": "LCC KZ is a dedicated subclass for international law; UDC 341 is a major 3-digit division with extensive subdivisions; named society and journal; dual criterion satisfied.",
-      "uncertainty": "International law overlaps with international relations (JZ subclass has some overlap); the legal-academic community (law schools) is distinct from the IR-political-science community; both communities are real and a §13 cross-listing is a later-batch candidate.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:criminal-law",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Criminal Law",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q4116534"
-      },
-      "source_hint": "LCC K5000-5582 'Criminal law and procedure' within K 'Law in general' (captured baseline 2026-06-11); UDC 343 'Criminal law. Penal offences' — a major 3-digit division (captured baseline 2026-06-11). Wikidata Q4116534 — unverified training-knowledge hint. [UNFETCHED] community evidence: Criminal law courses in every law school; Journal of Criminal Law and Criminology; named criminal law sections in bar associations.",
-      "rationale": "LCC K5000-5582 is a large dedicated range; UDC 343 is a major 3-digit division; universal law-school presence and named journal; dual criterion satisfied.",
-      "uncertainty": "Criminal law (legal doctrine on offenses and procedure) is distinct from criminology (social-science study of crime causation); both are proposed as separate nodes; the node subfield:criminology is a proposed sociology-side subfield; this node is the law-side counterpart.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:civil-law",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Civil Law",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q1029293"
-      },
-      "source_hint": "LCC K623-968 'Civil law' including K670-709 'Domestic relations. Family law', K720-792 'Property', K830-968 'Obligations' (captured baseline 2026-06-11); UDC 347 'Civil law' — a major 3-digit division covering property, obligations, family law, and succession (captured baseline 2026-06-11). Wikidata Q1029293 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Bar Association Tort Trial and Insurance Practice Section; civil law courses in every law school; journals such as Law and Contemporary Problems.",
-      "rationale": "LCC K623-968 is a large dedicated range; UDC 347 is a major 3-digit division; universal law-school presence; dual criterion satisfied.",
-      "uncertainty": "Civil law as a legal-family concept (civil-law vs. common-law systems) is distinct from civil law as a branch of law (private law covering property, contracts, torts); this node is scoped to the latter (branch sense); training knowledge suggests the Wikidata QID may reflect the legal-family concept instead — to be verified at QC.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:cultural-anthropology",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Cultural Anthropology",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q850709"
-      },
-      "source_hint": "LCC GN301-674 'Ethnology. Social and cultural anthropology' within GN 'Anthropology' (captured baseline 2026-06-11); UDC 39 'Cultural anthropology. Ethnography. Customs. Manners. Traditions. Way of life' — its own major 2-digit division under UDC 3 (captured baseline 2026-06-11); UDC 3 header caption explicitly includes 'Cultural anthropology' (captured baseline 2026-06-11). Wikidata Q850709 — unverified training-knowledge hint. [UNFETCHED] community evidence: AAA Section on Cultural Anthropology; American Ethnologist journal; named cultural anthropology subfields in anthropology departments.",
-      "rationale": "LCC GN301-674 is a large range dedicated to social and cultural anthropology; UDC 39 is a major 2-digit division within class 3 Social Sciences; named AAA section; dual criterion fully satisfied.",
-      "uncertainty": "Social anthropology and cultural anthropology are sometimes distinguished (British vs. American traditions); UDC 39 uses the 'cultural anthropology' label while LCC uses 'social and cultural anthropology' — combined label adopted; a v2 split is possible if communities diverge.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:physical-anthropology",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Physical Anthropology",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q181505"
-      },
-      "source_hint": "LCC GN49-298 'Physical anthropology. Somatology' within GN 'Anthropology' (captured baseline 2026-06-11). UDC classification for physical anthropology: training-knowledge hint suggests UDC 572 (Anthropology) is used, but UDC 572 is not present in the captured UDC 3 records — [UNFETCHED]; UDC 3 header caption does not list physical anthropology explicitly. Wikidata Q181505 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Association of Biological Anthropologists (formerly AAPA); American Journal of Physical Anthropology; physical anthropology subfields in four-field anthropology departments.",
-      "rationale": "LCC GN49-298 is a large dedicated range for physical anthropology within the GN subclass; the four-field model of anthropology (cultural, physical/biological, archaeological, linguistic) is institutionally dominant; named society satisfies criterion (b).",
-      "uncertainty": "Physical anthropology (biological anthropology) has strong ties to life sciences and medicine (GN296-296.5 Medical anthropology); UDC placement is uncertain — UDC 572 may lie outside class 3; this boundary is flagged for QC; a §13 cross-listing with life sciences is a plausible outcome.",
-      "ambiguous": true
-    },
-    {
-      "id": "subfield:archaeological-anthropology",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Archaeological Anthropology",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q23498"
-      },
-      "source_hint": "LCC GN700-890 'Prehistoric archaeology' within GN 'Anthropology' (captured baseline 2026-06-11). UDC placement: training-knowledge hint that archaeology is covered under UDC 902/903 (Archaeology) in class 9, not class 3 — [UNFETCHED]; no UDC 3 capture support. Wikidata Q23498 — unverified training-knowledge hint. [UNFETCHED] community evidence: Society for American Archaeology; American Antiquity journal; archaeo-anthropology subfields in four-field anthropology departments (strong US model).",
-      "rationale": "LCC GN700-890 places prehistoric archaeology within the anthropology subclass; the four-field anthropology model includes archaeology; named society and journal satisfy criterion (b).",
-      "uncertainty": "Archaeology's UDC home is likely in class 9 (not class 3 social sciences), which could trigger the §12 rule-3 two-prong test; in Europe, archaeology is typically a humanities discipline rather than an anthropology subfield; the node reflects the American four-field model but may need §13 treatment; ambiguous flag set for QC.",
-      "ambiguous": true
-    },
-    {
-      "id": "subfield:economic-geography",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Economic Geography",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q43511"
-      },
-      "source_hint": "LCC GF1-900 'Human ecology. Anthropogeography' within class G (captured baseline 2026-06-11); LCC HF1021-1027 'Commercial geography. Economic geography' within HF 'Commerce' (captured baseline 2026-06-11); OECD FORD 5.7 'Social and economic geography' (captured baseline 2026-06-11); UDC 332 'Regional economics. Territorial economics. Land economics. Housing economics' (captured baseline 2026-06-11). Wikidata Q43511 — unverified training-knowledge hint. [UNFETCHED] community evidence: Economic Geography journal; AAG Economic Geography specialty group; named economic geography courses in geography departments.",
-      "rationale": "FORD 5.7 explicitly names social and economic geography within social sciences; LCC provides relevant ranges in both GF and HF; named journal and AAG specialty group; dual criterion satisfied.",
-      "uncertainty": "Economic geography spans geography departments (human-geography parent) and economics departments; it is here proposed as a subfield of field:human-geography though it could alternatively nest under field:economics; a §13 cross-listing is a later-batch candidate.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:urban-and-regional-planning",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Urban and Regional Planning",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q759235"
-      },
-      "source_hint": "LCC HT165.5-169.9 'City planning' and HT388-395 'Regional economics. Space in economics. Regional planning' within HT 'Communities. Classes. Races' (captured baseline 2026-06-11); UDC 332.1 'Regional economics. Territorial economics', 332.5 'Land requirement. Long-term planning of land use' (captured baseline 2026-06-11). Wikidata Q759235 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Institute of Certified Planners (AICP); Journal of the American Planning Association; named planning schools and programs (many jointly housed in architecture, engineering, or social-science faculties).",
-      "rationale": "LCC HT165.5-395 provides classification presence for city planning and regional planning; UDC 332.1/332.5 covers territorial and land-use planning; named credentialing body (AICP) and journal; dual criterion satisfied.",
-      "uncertainty": "Urban and regional planning has institutional homes in social-science faculties but also in engineering and architecture schools; parent assignment (human-geography, sociology, or standalone) is ambiguous; the field also overlaps with urban sociology — ambiguous flag set for QC.",
-      "ambiguous": true
-    },
-    {
-      "id": "subfield:mass-communication",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Mass Communication",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q1371736"
-      },
-      "source_hint": "OECD FORD 5.8 'Media and communications' (captured baseline 2026-06-11) — FORD is the only captured classification source for this area. LCC homes for mass communication (P87-96 Communication. Mass media) lie in LCC class P (Language and Literature), which was NOT in the captured outlines. UDC capture does not include a dedicated mass-communication division under class 3. Wikidata Q1371736 — unverified training-knowledge hint. [UNFETCHED] community evidence: International Communication Association; Journal of Communication; named communication and media studies programs.",
-      "rationale": "FORD 5.8 provides classification presence within social sciences; named ICA society and Journal of Communication satisfy criterion (b); proposed as a subfield under field:media-and-communication-studies (which is itself flagged ambiguous).",
-      "uncertainty": "FORD 5.8 is the only captured classification source; LCC class P (the primary LCC home) was not in the captured outlines; this node inherits the ambiguity of its proposed parent field and should be evaluated by QC in conjunction with the field:media-and-communication-studies decision.",
-      "ambiguous": true
-    },
-    {
-      "id": "subfield:management",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Management",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q2920921"
-      },
-      "source_hint": "LCC HD28-70 'Management. Industrial management' within HD 'Industries. Land use. Labor' (captured baseline 2026-06-11); UDC 334 'Forms of organization and cooperation in the economy' (captured baseline 2026-06-11) — partial match; management as a research field is not explicitly named at the 3-digit level in the captured UDC 3 records. Wikidata Q2920921 — unverified training-knowledge hint. [UNFETCHED] community evidence: Academy of Management; Administrative Science Quarterly; named management departments in business schools worldwide.",
-      "rationale": "LCC HD28-70 provides a substantial dedicated range for management; named Academy of Management and leading journal satisfy criterion (b); proposed as a subfield of field:business-and-management.",
-      "uncertainty": "Management research spans organization theory (overlapping with sociology), strategy, operations, and human resources; its institutional home (business schools) is sometimes separate from social-science departments; the UDC 3 capture does not explicitly name management at a major division level — the UDC classification presence is weaker than for other proposed nodes.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:marketing",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Marketing",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q39809"
-      },
-      "source_hint": "LCC HF5410-5417.5 'Marketing. Distribution of products' within HF 'Commerce' (captured baseline 2026-06-11); UDC 339.1 'General questions of trade and commerce. Market [Including: Supply and demand. Competition. Marketing]' (captured baseline 2026-06-11). Wikidata Q39809 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Marketing Association; Journal of Marketing; named marketing departments in business schools worldwide.",
-      "rationale": "LCC HF5410-5417.5 provides a dedicated range for marketing; UDC 339.1 mentions marketing; named AMA society and Journal of Marketing satisfy criterion (b); proposed as a subfield of field:business-and-management.",
-      "uncertainty": "Marketing research overlaps with consumer behavior (psychology side), economics, and communication studies; the LCC range is a cutter-level subdivision rather than a full subclass; classification presence is narrower than for economics or sociology subfields.",
-      "ambiguous": false
-    },
-    {
-      "id": "subfield:accounting",
-      "type": "subfield",
-      "domain": "social_sciences",
-      "level": 2,
-      "status": "generated",
-      "label_en": "Accounting",
-      "academic_status": "established",
-      "external_ids": {
-        "wikidata": "Q4116"
-      },
-      "source_hint": "LCC HF5601-5689 'Accounting. Bookkeeping' within HF 'Commerce' (captured baseline 2026-06-11); UDC — no dedicated major division for accounting in the captured UDC 3 records; accounting appears within UDC 336 'Finance' at sub-division level, not captured explicitly. Wikidata Q4116 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Accounting Association; The Accounting Review; named accounting departments in business schools worldwide; CPA licensing programs.",
-      "rationale": "LCC HF5601-5689 provides a dedicated range for accounting; named AAA society and The Accounting Review (one of the oldest academic journals in business) satisfy criterion (b); proposed as a subfield of field:business-and-management.",
-      "uncertainty": "UDC classification presence in the captured records is weak (no major-division equivalent found); accounting is sometimes treated as a professional field rather than a research discipline; criterion (a) is marginal here — QC should weigh whether the LCC range alone is sufficient when UDC support is absent.",
-      "ambiguous": true
-    }
-  ],
-  "edges": [],
-  "notes": [
-    "SEED DISPOSITION (8 manifest seeds):",
-    "1. field:economics — KEPT as proposed. LCC HB-HJ (6 own subclasses), UDC 33, FORD 5.2. Note: FORD labels this 'Economics and Business', resolved by proposing field:business-and-management as a separate node (ambiguous) for QC to decide on merger vs. split.",
-    "2. field:sociology — KEPT as proposed. LCC HM-HX (6 own subclasses), UDC 316, FORD 5.4.",
-    "3. field:political-science — KEPT as proposed. LCC entire class J, UDC 32, FORD 5.6.",
-    "4. field:education — KEPT as proposed. LCC entire class L, UDC 37, FORD 5.3.",
-    "5. field:law — KEPT but flagged ambiguous (pre-registered gate-level boundary question). FORD 5.5 and UDC 34-under-3 support social-sciences membership; LCC class K is standalone. §12 rule-3 two-prong test exposed in rationale/uncertainty.",
-    "6. field:anthropology — KEPT as proposed. §12 class-G precedent applied (other-home filing). LCC GN, UDC 39, FORD 5.4 wing.",
-    "7. field:media-and-communication-studies — KEPT but flagged ambiguous (pre-registered gate-level question). FORD 5.8 is the only captured classification source; LCC P87-96 is out-of-continent and not in the captured outlines.",
-    "8. field:human-geography — KEPT but flagged ambiguous (human vs. physical boundary). §12 class-G precedent applied to LCC GF; FORD 5.7 named. Physical-geography cognates (GE, GC, GB) already resolved as natural-sciences nodes — not touched.",
-    "",
-    "ADDITIONS BEYOND SEEDS:",
-    "- field:business-and-management (field, ambiguous): Pre-registered question from manifest. LCC HD28-70 and HF5001-6182 are substantial named ranges; AACSB business schools are institutionally autonomous; FORD 5.2 groups with economics. QC to decide: separate field or subfields absorbed under field:economics.",
-    "- 7 economics subfields: economic-theory, econometrics (per §12 precedent log 'econometrics→social sciences'), labor-economics, economic-history, public-finance, international-economics, financial-economics.",
-    "- 6 sociology subfields: criminology (ambiguous — UDC home under law 343.9), demography (ambiguous — field vs. subfield), social-work-and-welfare, gender-studies, social-stratification, urban-sociology.",
-    "- 4 political-science subfields: political-theory (ambiguous — overlap with canonical subfield:political-philosophy), international-relations, public-administration, comparative-politics.",
-    "- 4 education subfields: curriculum-and-instruction, educational-policy, higher-education, special-education.",
-    "- 5 law subfields: jurisprudence (ambiguous — overlap with canonical subfield:philosophy-of-law), constitutional-law, international-law, criminal-law, civil-law.",
-    "- 3 anthropology subfields: cultural-anthropology, physical-anthropology (ambiguous — life-sciences boundary), archaeological-anthropology (ambiguous — European humanities tradition).",
-    "- 2 human-geography subfields: economic-geography, urban-and-regional-planning (ambiguous — engineering/architecture homes).",
-    "- 1 media/comm subfield: mass-communication (ambiguous — inherits field's ambiguity).",
-    "- 3 business-and-management subfields: management, marketing, accounting (ambiguous — weak UDC presence).",
-    "",
-    "DELIBERATE NON-COVERAGE (candidates considered and rejected):",
-    "- subfield:journalism: Absorbed into mass-communication (§12 absorption rule — refinement of same community serving the same parent; v2 re-split candidate).",
-    "- subfield:development-economics: Absorption candidate. LCC HD72-88 'Economic growth, development, planning' is within HD (Industries subclass) not HB (Economic theory). Strong community (World Bank, Journal of Development Economics) but development economics is arguably a subfield-of-a-subfield; recorded as v2 candidate under economic-theory or standalone.",
-    "- subfield:welfare-economics: Absorbed into economic-theory. LCC HB846-846.8 is a small cutter range; welfare economics is a theoretical branch, not a distinct departmental identity.",
-    "- subfield:monetary-economics: Considered for HG1501-3550 Banking/monetary side. Absorbed into financial-economics. LCC HG covers both; community (monetary economics) is often part of macro/theory programs rather than a distinct department.",
-    "- subfield:transportation-economics: LCC HE1-9990 is a full subclass. Rejected on criterion (b): transportation economics does not have standalone department-level identity; absorbed under economics general. V2 candidate.",
-    "- subfield:industrial-economics: LCC HD2321-4730.9 Industry. Rejected: absorbed into economics/business-and-management; no distinct department-level identity separate from economics programs.",
-    "- subfield:organizational-behavior: LCC HD58.7-58.95. Absorbed into management (§12 absorption rule). Community: OBHDP journal, but institutionally within management departments.",
-    "- subfield:human-resource-management: LCC HF5549-5549.5 Personnel management. Absorbed into management. No standalone department identity separate from management/business schools.",
-    "- subfield:political-sociology: Considered. Rejected on criterion (a): no dedicated LCC range separate from HM (sociology) and JA-JZ (political science); appears within both; no classification presence as a distinct division. Community: ASA section, but no standalone departments. Deliberate non-coverage; v2 candidate.",
-    "- subfield:social-movements: Considered (LCC HN range, UDC 323.2). Absorbed into sociology as a research topic rather than a distinct subfield with department-level identity. V2 candidate.",
-    "- subfield:family-sociology: LCC HQ 'The Family. Marriage. Women' is a full subclass. Rejected: the family-studies community is primarily institutionally housed within sociology departments (not separate departments at most universities); absorbed into sociology field. V2 re-split candidate.",
-    "- subfield:race-and-ethnic-studies: UDC 316.34 and LCC HT1501-1595. Absorbed into social-stratification as a combined node with v2 re-split noted. Community: ASA section exists; standalone race/ethnic studies departments exist; strong case for v2 split.",
-    "- subfield:science-and-technology-studies: No LCC capture in the social-sciences classes; UDC 303 'Methods of the social sciences' is partial; institutional homes in social-science faculties but also engineering. Deferred: insufficient classification presence in captured sources for this continent. V2 candidate.",
-    "- subfield:environmental-sociology: LCC ranges span HN (social reform) and HT (communities). Community: ASA section. Rejected: no dedicated LCC subclass or UDC division; absorbed into sociology. V2 candidate.",
-    "- subfield:political-economy: Spans economics (HB, HJ) and political science (JA); interdisciplinary. Rejected: no dedicated classification division of its own; absorbed as a research tradition within both economics and political science. Cross-listed §13 edge-batch candidate.",
-    "- subfield:military-science: UDC 355/359, LCC U (not captured). Rejected: LCC places military science in class U (not captured; outside class H, J, K, L, G, and not in social sciences captures); insufficient classification presence in captured sources.",
-    "- subfield:insurance-studies: LCC HG8011-9999. Absorbed into financial-economics. No standalone academic department identity.",
-    "- subfield:real-estate-economics: LCC HD1361-1395.5. Absorbed into business-and-management/economics. No standalone department identity at research universities.",
-    "- subfield:immigration-and-migration-studies: LCC JV6001-9480. Strong community (migration journals, sociology/political-science overlap). Rejected on criterion (a): no dedicated classification division separate from JV (which also covers colonization) and HV; v2 candidate under sociology or political science.",
-    "- subfield:public-policy: LCC JF + JK + multiple; FORD does not give it a separate division; overlaps with public administration, economics, political science. Rejected: no single classification home; absorbed across adjacent subfields. V2 candidate.",
-    "- subfield:consumer-behavior: LCC HB801-843. Absorbed into economic-theory/marketing. No standalone department identity.",
-    "- subfield:medieval-law / subfield:comparative-law / subfield:private-international-law: LCC K7000-7720. Rejected as level-3 specializations within law; not distinct fields or subfields per §12 flat two-level rule. Absorption into jurisprudence or civil-law.",
-    "- UDC 303 'Methods of the social sciences': Considered as a methods subfield. Rejected: social-science methodology is a topic covered within each field's methodological training, not a department-level entity; no standalone departments named 'methods of social sciences'. Non-coverage maintained.",
-    "- UDC 304 'Social questions. Social practice. Cultural practice': Considered. Rejected: too broad and no department-level community identity. Absorbed into sociology.",
-    "- UDC 308 'Sociography. Descriptive studies of society': Rejected on criterion (b): no standalone departments; absorbed into sociology/methods.",
-    "- UDC 36 general / UDC 365 'Accommodation' / UDC 366 'Consumerism' / UDC 368 'Insurance': These UDC 36 sub-entries are professional/applied topics without research-department-level standing. Non-coverage maintained except for UDC 364 social welfare (captured as subfield:social-work-and-welfare).",
-    "- UDC 39 GT/GR/HS ranges (Folklore, Manners and customs, Societies): LCC GT, GR, HS are class-G subclasses with social-science relevance but no research-field-level community of their own at the department level; absorbed into cultural-anthropology or folklore (humanities). Non-coverage maintained.",
-    "- LCC HX 'Socialism. Communism. Anarchism': Considered. Rejected on criterion (b): no named academic departments for 'socialism/communism studies'; this is a topic within political theory, sociology, and history rather than a standalone field. Non-coverage maintained.",
-    "- LCC HS 'Societies: secret, benevolent, etc.': Rejected on both criteria: no research division in classification sources, no academic community. Non-coverage maintained.",
-    "- LCC JS 'Local government. Municipal government': Absorbed into public-administration. No standalone academic departments separate from public administration programs.",
-    "- LCC JV 'Colonies and colonization. Emigration and immigration': See immigration note above. LCC JV covers colonization as well as migration; colonial studies is primarily a humanities/history field; migration studies is proposed as v2.",
-    "",
-    "BOUNDARY ENCOUNTERS WITH EXCLUDED CONTINENTS:",
-    "- Psychology (FORD 5.1, LCC BF): Encountered in LCC LC 'Special aspects of education' — LB1050.9-1091 'Educational psychology' is in the education captures. Social psychology (LCC HM1001-1281) appears in the sociology capture. These encounters are recorded only; no nodes generated for psychology. The proposed sociology field inherently includes social psychology as a subarea but no separate subfield node proposed (would require cognitive-science continent sign-off per boundary assignment table).",
-    "- Linguistics: Not encountered in the captured class H, J, L, K, or G outlines; UDC 81 (linguistics) is not in UDC 3 class 3. No encounter.",
-    "- Statistics (LCC HA, UDC 311): LCC HA1-4737 'Statistics' is the first listed subclass in LCC class H; UDC 311 'Statistics as a science. Statistical theory' is present in the captured UDC 3 records. These are formal-sciences-owned nodes (field:statistics, subfield:applied-statistics, etc. already canonical). No regeneration. Social-sciences-side classification evidence noted here for edge-batch use: LCC HA29-32 'Theory and method of social science statistics' and UDC 311.3 'General organization of statistics. Official statistics' indicate social-sciences cross-membership — parked as §13 trigger for the edge batch.",
-    "- Game theory (LCC HB135-147 wing): HB135-147 includes game theory alongside econometrics and input-output analysis. subfield:game-theory is an existing canonical node (formal-sciences-owned). Node regeneration forbidden. Social-sciences-side HB135-147 classification evidence parked as §13 trigger for the edge batch (economics-side minority membership).",
-    "- Decision theory: LCC HB135-147 also implicitly covers decision under uncertainty. subfield:decision-theory is an existing canonical node. Node regeneration forbidden. Parked as §13 trigger.",
-    "- Financial mathematics: subfield:financial-mathematics is an existing canonical node. Boundary with proposed subfield:financial-economics clearly articulated in that node's uncertainty field.",
-    "- Physical geography cognates (GE, GC, GB, GB hydrology/geomorphology): All already resolved as reviewed natural-sciences nodes (subfield:oceanography, subfield:hydrology, subfield:geomorphology, subfield:environmental-science confirmed as canonical). LCC class G shelving recorded as irrelevant to their assignment per §12 precedent log ns-bflag-resolution-v1. Not touched.",
-    "- subfield:mathematics-education: Existing canonical reviewed node. The re-target trigger (to add social-sciences membership edge to field:education once it exists) is a §13 edge-batch item per batch manifest exclusion list. No action here.",
-    "",
-    "UNFETCHED SUMMARY:",
-    "All Wikidata QIDs listed are unverified training-knowledge hints to be resolved by the QC resolver. Community evidence (professional associations, journals, departments, degree programs) throughout is [UNFETCHED] training knowledge, flagged per citation discipline. No network calls made. All classification citations are to the pre-captured baseline files only.",
-    "",
-    "QC FIRST-LOOK ITEMS (priority order):",
-    "1. field:law — continent boundary decision (FORD 5.5 + UDC 34-under-3 vs LCC class K standalone). Gate-level ruling needed.",
-    "2. field:media-and-communication-studies — FORD 5.8 sufficiency question when LCC P87-96 is out-of-continent.",
-    "3. subfield:demography — field vs subfield decision (UDC 314 is a 3-digit major division; LCC HB placement is within economics subclass).",
-    "4. subfield:political-theory — overlap with canonical subfield:political-philosophy (reviewed node).",
-    "5. subfield:jurisprudence — overlap with canonical subfield:philosophy-of-law (reviewed node).",
-    "6. subfield:criminology — UDC files under 343.9 (law) while LCC HV files under social pathology (sociology).",
-    "7. field:business-and-management — separate field vs. subfields absorbed under field:economics (FORD 5.2 merger signal).",
-    "8. subfield:archaeological-anthropology — UDC home likely class 9 (not class 3); European humanities tradition.",
-    "9. subfield:physical-anthropology — life-sciences boundary; UDC capture gap (UDC 572 not in class 3 records).",
-    "10. subfield:accounting — weak UDC class-3 presence; QC should weigh LCC HF range alone."
-  ]
+  {
+   "id": "field:sociology",
+   "type": "field",
+   "domain": "social_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Sociology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q21201"
+   },
+   "source_hint": "LCC HM(1)-1281 'Sociology', HN1-995 'Social history and conditions. Social problems. Social reform', HQ1-2044 'The Family. Marriage. Women', HT51-1595 'Communities. Classes. Races', HV1-9960 'Social pathology. Social and public welfare. Criminology', HX1-970.7 'Socialism. Communism. Anarchism' (captured baseline 2026-06-11); UDC 316 'Sociology' (captured baseline 2026-06-11); OECD FORD 5.4 'Sociology' (captured baseline 2026-06-11). Wikidata Q21201 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Sociological Association, named sociology departments at research universities worldwide.",
+   "rationale": "Dedicated LCC subclass HM plus several cognate subclasses (HN, HQ, HT, HV, HX), dedicated UDC 316, and FORD 5.4; named departments and professional association worldwide — dual criterion satisfied.",
+   "uncertainty": "The HV subclass spans both sociology (social pathology/welfare) and criminology; the HX subclass (Socialism/Communism) has community homes partly in political science; boundary assignments among sub-areas are a subfield-level question.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:political-science",
+   "type": "field",
+   "domain": "social_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Political Science",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q36442"
+   },
+   "source_hint": "LCC class J entirely: JA1-92 'Political science (General)', JC11-605 'Political theory', JF20-2112 'Political institutions and public administration', JS39-8500 'Local government', JV1-9480 'Colonies and colonization. Emigration and immigration', JZ5-6530 'International relations' (captured baseline 2026-06-11); UDC 32 'Politics' (captured baseline 2026-06-11); OECD FORD 5.6 'Political science' (captured baseline 2026-06-11). Wikidata Q36442 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Political Science Association, named political science departments worldwide.",
+   "rationale": "LCC dedicates the entire class J to political science, UDC 32 is an own 2-digit division, FORD 5.6 is named; departments and professional association worldwide — dual criterion fully satisfied.",
+   "uncertainty": "Some subfields (international relations, public administration) have argued for autonomous field status; the dual criterion supports political-science as the field level here, but QC should note these autonomy claims.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:education",
+   "type": "field",
+   "domain": "social_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Education",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q8434"
+   },
+   "source_hint": "LCC class L entirely: L7-991 'Education (General)', LA5-2396 'History of education', LB5-3640 'Theory and practice of education', LC8-6691 'Special aspects of education' (captured baseline 2026-06-11); UDC 37 'Education' (captured baseline 2026-06-11); OECD FORD 5.3 'Educational sciences' (captured baseline 2026-06-11). Wikidata Q8434 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Educational Research Association, named schools/colleges of education at research universities worldwide.",
+   "rationale": "LCC dedicates the entire class L to education, UDC 37 is a dedicated 2-digit division, FORD 5.3 is named; schools of education and professional associations worldwide — dual criterion fully satisfied.",
+   "uncertainty": "FORD 5.3 labels this 'Educational sciences' (emphasising the research dimension); some classifications treat education as a professional field rather than a research discipline; the node captures the academic/research side.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:law",
+   "type": "field",
+   "domain": "social_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Law",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7748"
+   },
+   "source_hint": "LCC class K entirely: K1-7720 'Law in general. Comparative and uniform law. Jurisprudence' with subclasses KD-KZ covering national and international law (captured baseline 2026-06-11); UDC 34 'Law. Jurisprudence' — filed directly under UDC 3 'Social sciences' (captured baseline 2026-06-11); OECD FORD 5.5 'Law' (captured baseline 2026-06-11). Wikidata Q7748 — unverified training-knowledge hint. [UNFETCHED] community evidence: Association of American Law Schools; named law schools and faculties worldwide; law reviews and journals.",
+   "rationale": "FORD 5.5 and UDC 34-under-3 both file law under social sciences; LCC gives law its own class K (separate from class H), raising the cross-continent question per §12 rule-3 two-prong test; both prongs of the test are relevant: LCC primary home is class K (not H), but institutional homes (law faculties) are found across universities alongside social-science departments, and FORD + UDC place law firmly in social sciences.",
+   "uncertainty": "LCC assigns law a standalone class K separate from class H (social sciences), satisfying the 'LCC primary home outside the continent' half of the rule-3 two-prong test; the institutional-home prong is contested (law faculties are often autonomous); this is a pre-registered gate-level boundary question; item deliberately set ambiguous for QC resolution.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:anthropology",
+   "type": "field",
+   "domain": "social_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Anthropology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q23404"
+   },
+   "source_hint": "LCC GN1-890 'Anthropology' within class G (captured baseline 2026-06-11) — class-G shelving interpreted as an other-home filing per §12 precedent log 2026-06-11 ns-bflag-resolution-v1; UDC 3 header caption includes 'Cultural anthropology' (captured baseline 2026-06-11); UDC 39 'Cultural anthropology. Ethnography. Customs. Manners. Traditions. Way of life' (captured baseline 2026-06-11); OECD FORD 5.4 'Sociology' — training knowledge that anthropology is grouped with sociology in FORD 5.4, unverified claim of FORD anchor. [UNFETCHED] community evidence: American Anthropological Association, named anthropology departments at research universities worldwide.",
+   "rationale": "LCC GN provides a full subclass for anthropology; UDC 39 and the UDC 3 header include cultural anthropology; §12 precedent (ns-bflag-resolution-v1 class-G other-home filing rule) means LCC's class-G location does not defeat social-sciences membership when UDC and community evidence support it; dual criterion satisfied.",
+   "uncertainty": "LCC class G shelves anthropology alongside geography and recreation (an other-home filing); physical anthropology (GN49-298) is closely related to biological sciences (paleoanthropology); FORD 5.4 does not give anthropology its own division; the field-level standing here relies on the class-G precedent being applied consistently.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:media-and-communication-studies",
+   "type": "field",
+   "domain": "social_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Media and Communication Studies",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q2041917"
+   },
+   "source_hint": "OECD FORD 5.8 'Media and communications' (captured baseline 2026-06-11). LCC homes (P87-96 Communication. Mass media) lie in LCC class P (Language and Literature) — this class was NOT in the captured outlines; no LCC capture support. UDC capture does not include a dedicated division for mass communication under class 3 (UDC 316.77 would be under sociology, but that subdivision is not explicitly listed in the captured UDC 3 records). Wikidata Q2041917 — unverified training-knowledge hint. [UNFETCHED] community evidence: International Communication Association; named communication and media studies departments; journals such as Journal of Communication.",
+   "rationale": "FORD 5.8 provides a dedicated social-sciences classification division; named departments and professional associations worldwide satisfy criterion (b); included with ambiguous flag because LCC primary home (P87-96) lies outside the captured social-sciences classes, making criterion (a) depend solely on FORD — a pre-registered gate-level question.",
+   "uncertainty": "LCC files communication/media under class P (Language and Literature), not class H; this is the 'LCC home outside the continent' scenario that triggers the §12 rule-3 two-prong test; FORD 5.8 supports social-sciences membership but does not resolve the LCC question; QC must decide whether FORD alone suffices or whether the LCC home is disqualifying.",
+   "ambiguous": true
+  },
+  {
+   "id": "field:human-geography",
+   "type": "field",
+   "domain": "social_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Human Geography",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q42515"
+   },
+   "source_hint": "LCC GF1-900 'Human ecology. Anthropogeography' within class G (captured baseline 2026-06-11) — class-G shelving interpreted as an other-home filing per §12 precedent log 2026-06-11; OECD FORD 5.7 'Social and economic geography' (captured baseline 2026-06-11). UDC 332 'Regional economics. Territorial economics. Land economics. Housing economics' (captured baseline 2026-06-11) — partial overlap. Wikidata Q42515 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Association of Geographers (human geography division); named human geography departments; journals such as Annals of the American Association of Geographers.",
+   "rationale": "LCC GF provides a dedicated range for human ecology/anthropogeography; FORD 5.7 names social-and-economic geography within social sciences; §12 class-G precedent applies (other-home filing does not defeat social-sciences membership when FORD + community support it); named departments satisfy criterion (b).",
+   "uncertainty": "LCC class G shelves human geography alongside physical geography, oceanography, and recreation (other-home filing); the boundary between human geography and physical geography sub-areas needs careful QC; the physical-geography cognates (GE, GC, GB) have already been resolved as natural-sciences nodes and must not be reopened here.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:business-and-management",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Business and Management",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q131436"
+   },
+   "source_hint": "LCC HD28-70 'Management. Industrial management', HF5001-6182 'Business' (captured baseline 2026-06-11); OECD FORD 5.2 'Economics and Business' (captured baseline 2026-06-11) — FORD groups business with economics in a single division. Wikidata Q131436 — unverified training-knowledge hint. [UNFETCHED] community evidence: Academy of Management; AACSB-accredited business schools worldwide; journals such as Academy of Management Review, Administrative Science Quarterly.",
+   "rationale": "QC demotion ruling (2026-06-11, mathematical-logic precedent): LCC files business/management as divisions inside class-H economics-family subclasses (HD28-70 'Management. Industrial management', HF5001-6182 'Business' — captured baseline 2026-06-11), UDC offers no major business division under class 3, and FORD 5.2 co-names it with economics in a single division ('Economics and Business') — classification sources treat the area as a division within the economics wing, not a peer field, while AACSB business schools satisfy the community criterion. Kept as a subfield-level umbrella; management, marketing and accounting are absorbed into it (single-scheme divisions/cutters + strong societies — polymer-chemistry pattern), all recorded as v2 re-split candidates.",
+   "uncertainty": "Business-school institutional autonomy (faculty-level standing) is real and argues for field-level standing; the demotion rests on classification-source rank and can be revisited if a future gate scheme gives business its own major division. Absorbed v2 re-split candidates: management, marketing, accounting (plus organizational-behavior, human-resource-management, finance-the-business-school-wing per generator non-coverage). QID hint unverified.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:economic-theory",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Economic Theory",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q185545"
+   },
+   "source_hint": "LCC HB1-3840 'Economic theory. Demography' — specifically HB71-74 'Economics as a science. Relation to other subjects', HB201-206 'Value. Utility', HB221-236 'Price', HB801-843 'Consumption. Demand', HB846-846.8 'Welfare theory' (captured baseline 2026-06-11); UDC 330.1 'Science of economics. Basic economic concepts, theory. Value. Capital. Funds' (captured baseline 2026-06-11). Wikidata Q185545 — unverified training-knowledge hint. [UNFETCHED] community evidence: Journal of Economic Theory; named theory seminars in economics departments worldwide.",
+   "rationale": "LCC HB is a dedicated subclass for economic theory; UDC 330.1 names economic theory explicitly; strong named-community presence in academic economics — dual criterion satisfied.",
+   "uncertainty": "Economic theory is sometimes treated as the core of all economics rather than a distinct subfield; the LCC HB subclass also includes demography (HB848-3697), which is proposed separately; QC should verify scope of the proposed node does not unintentionally absorb demography.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:econometrics",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Econometrics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q217602"
+   },
+   "source_hint": "LCC HB135-147 'Mathematical economics. Quantitative methods', whose Including note reads 'Including econometrics, input-output analysis, game theory' (captured baseline 2026-06-11); UDC 330.4 'Mathematical economics [Including: Econometrics]' (captured baseline 2026-06-11). Wikidata Q217602 — unverified training-knowledge hint. [UNFETCHED] community evidence: Econometric Society; Econometrica journal; named econometrics courses and tracks in economics programs worldwide.",
+   "rationale": "§12 precedent log explicitly defers econometrics from formal sciences to social sciences ('econometrics→social sciences'); LCC HB135-147 and UDC 330.4 both provide classification presence; Econometric Society and Econometrica satisfy criterion (b).",
+   "uncertainty": "LCC HB135-147 groups econometrics with game theory and input-output analysis under a single cutter; game theory is a formal-sciences-owned node (existing canonical node) — this node covers only the econometrics portion; training knowledge distinguishes these communities.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:labor-economics",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Labor Economics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1132580"
+   },
+   "source_hint": "LCC HD4801-8943 'Labor. Work. Working class'; HD5701-6000.9 'Labor market. Labor supply. Labor demand' (captured baseline 2026-06-11); UDC 331 'Labour. Employment. Work. Labour economics. Organization of labour' (captured baseline 2026-06-11). Wikidata Q1132580 — unverified training-knowledge hint. [UNFETCHED] community evidence: Society of Labor Economists; Journal of Labor Economics; dedicated labor economics fields in graduate programs worldwide.",
+   "rationale": "LCC HD4801-8943 is a large dedicated range; UDC 331 is a full 3-digit division; named society and journal; dual criterion fully satisfied.",
+   "uncertainty": "The boundary between labor economics (economic analysis of labor markets) and industrial sociology (HD6951-6957) and labor law (K1701-1841) is blurry at the margins; this node captures the economics-side analysis.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:economic-history",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Economic History",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q842605"
+   },
+   "source_hint": "LCC HC10-1085 'Economic history and conditions' — its own LCC subclass HC (captured baseline 2026-06-11); UDC 330.8 'History of economic theories, doctrines, dogmas' (captured baseline 2026-06-11). Wikidata Q842605 — unverified training-knowledge hint. [UNFETCHED] community evidence: Economic History Association; Journal of Economic History; named economic history fields in history and economics departments.",
+   "rationale": "LCC HC is its own dedicated subclass for economic history; UDC 330.8 covers history of economic thought; named society (Economic History Association) and journal; dual criterion satisfied.",
+   "uncertainty": "Economic history could be considered a subfield of history (humanities) or of economics; it has community homes in both continents; a §13 cross-listing candidate in the edge batch; for now, placed under social-sciences/economics. QC caveat (2026-06-11): the cited UDC 330.8 'History of economic theories, doctrines, dogmas' names history of economic THOUGHT, a distinct referent from economic history proper — the keep ruling rests on LCC HC's own-subclass rank plus community standing, with UDC support treated as adjacent only.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:public-finance",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Public Finance",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q847103"
+   },
+   "source_hint": "LCC HJ9-9940 'Public finance' — its own LCC subclass HJ (captured baseline 2026-06-11); UDC 336.1 'Public sector finance. Government finance in general', 336.2 'Public revenue [Including: Fiscal practice. Taxation]', 336.5 'Public expenditure' (captured baseline 2026-06-11). Wikidata Q847103 — unverified training-knowledge hint. [UNFETCHED] community evidence: National Tax Association; National Tax Journal; public finance fields in economics programs worldwide.",
+   "rationale": "LCC HJ is a dedicated subclass for public finance; UDC 336.1/336.2/336.5 provides classification depth; named association and journal; dual criterion satisfied.",
+   "uncertainty": "Public finance overlaps with public administration (JF1338-2112); the distinction is that public finance is the economic analysis of government revenue/expenditure, while public administration covers governance processes — different communities despite institutional overlap.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:international-economics",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "International Economics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q178751"
+   },
+   "source_hint": "LCC HF1014 'Balance of trade', HF1021-1027 'Commercial geography. Economic geography', HF1701-2701 'Tariff. Free trade. Protectionism' within HF Commerce subclass (captured baseline 2026-06-11); UDC 339.5 'Foreign trade. External trade. International trade [Including: Free trade. Protectionism. Customs. Duties. Tariffs]', 339.7 'International finance', 339.9 'International economy generally. International economic relations. Global economy' (captured baseline 2026-06-11). Wikidata Q178751 — unverified training-knowledge hint. [UNFETCHED] community evidence: Journal of International Economics; dedicated international economics fields in graduate programs; WTO-related policy research.",
+   "rationale": "UDC 339.5/339.7/339.9 form a coherent international economics division; LCC HF1701-2701 covers trade policy; named journal and graduate-program presence; dual criterion satisfied.",
+   "uncertainty": "International economics overlaps heavily with international relations (political science side) at the boundary of political economy; this node captures the economic analysis of international trade and finance.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:financial-economics",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Financial Economics",
+   "academic_status": "established",
+   "external_ids": {},
+   "source_hint": "LCC HG1-9999 'Finance' — its own LCC subclass HG covering Banking (HG1501-3550), Investment (HG4501-6051), Insurance (HG8011-9999) (captured baseline 2026-06-11); UDC 336.7 'Money. Monetary system. Banking. Stock exchanges [Including: Banks. Banking. Savings and saving banks. Other loan organizations. Stock market. Money market. Capital market. Stock and shares. Credit]' (captured baseline 2026-06-11). Wikidata — no QID hint carried (the generator's Q8134 was the economics field's entity — hint-collision removed at QC; resolver finds the correct entity); (no confident QID for financial-economics specifically available). [UNFETCHED] community evidence: American Finance Association; Journal of Finance; named finance departments in business schools and economics departments.",
+   "rationale": "LCC HG is a large dedicated subclass for finance; UDC 336.7 provides classification depth; named association (AFA) and leading journal; dual criterion satisfied.",
+   "uncertainty": "Existing canonical node subfield:financial-mathematics covers the formal/mathematical modeling side; this node covers the economic analysis of financial markets and institutions — the boundary between financial economics and financial mathematics requires QC attention to ensure no unintended overlap.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:criminology",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Criminology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q41364"
+   },
+   "source_hint": "LCC HV6001-7220.5 'Criminology' within HV 'Social pathology. Social and public welfare. Criminology' (captured baseline 2026-06-11); UDC 343.9 'Criminology. Criminal sciences. Criminalistics [Including: Organized crime. Kinds of criminal, delinquent. Physical influences on criminality. Criminal anthropometry. Forensic psychology. Criminal pathology. Criminal sociology. Forensic science. Victimology]' — NOTE: UDC 343.9 sits under UDC 343 'Criminal law. Penal offences' within UDC 34 'Law' (captured baseline 2026-06-11). OECD FORD 5.4 'Sociology' — training knowledge that criminology is commonly grouped with sociology, unverified claim. Wikidata Q41364 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Society of Criminology; Criminology journal; named criminology departments and programs.",
+   "rationale": "LCC HV6001-7220.5 provides a large dedicated range within the sociology-side subclass HV; named professional society (ASC) and journal; dual criterion satisfied.",
+   "uncertainty": "UDC files criminology under 343.9 (within criminal law, under UDC 34 Law) rather than under sociology 316; this is a classification split between LCC (social sciences) and UDC (law); criminology's primary community home in most universities is in social-science faculties rather than law schools, but the UDC filing is a real counter-signal — ambiguous flag set for QC.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:demography",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Demography",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q37732"
+   },
+   "source_hint": "LCC HB848-3697 'Demography. Population. Vital events' within LCC HB 'Economic theory. Demography' (captured baseline 2026-06-11); UDC 314 'Demography. Population studies' — a 3-digit major division under UDC 3 (captured baseline 2026-06-11). Wikidata Q37732 — unverified training-knowledge hint. [UNFETCHED] community evidence: Population Association of America; Demography journal; named demography programs and departments (e.g., Brown University Population Studies and Training Center).",
+   "rationale": "UDC 314 is a major 3-digit division within class 3 Social Sciences; LCC HB848-3697 is a large range; named society and journal; dual criterion satisfied; proposed as subfield (level 2) rather than field (level 1) because UDC 314 is a single 3-digit notation that does not develop its own multi-digit subtree comparable to UDC 316 Sociology or 33 Economics — a pre-registered QC question.",
+   "uncertainty": "UDC 314 is a full 3-digit major division (comparable to UDC 316 Sociology), which could support field-level standing; LCC places demography within HB (economic theory), not as its own subclass; the field-vs-subfield question is pre-registered for QC; ambiguous flag set.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:social-work-and-welfare",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Social Work and Welfare",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q309572"
+   },
+   "source_hint": "LCC HV40-69 'Social service. Social work. Charity organization and practice', HV697-4959 'Protection, assistance and relief' within HV 'Social pathology. Social and public welfare. Criminology' (captured baseline 2026-06-11); UDC 364 'Social welfare' — a major 3-digit division under UDC 36 'Safeguarding the mental and material necessities of life [Including: Social work. Social aid. Housing. Insurance]' (captured baseline 2026-06-11). Wikidata Q309572 — unverified training-knowledge hint. [UNFETCHED] community evidence: Council on Social Work Education; Social Work journal; named schools of social work worldwide.",
+   "rationale": "LCC HV40-69 and HV697-4959 form a substantial range for social work within class H; UDC 364 is a dedicated major division; named accreditation body and journal; dual criterion satisfied.",
+   "uncertainty": "Social work has close ties to sociology, psychology, and public health; the institutional home (schools of social work) is typically within social sciences but sometimes bridges health sciences; the node is scoped to the academic and research dimension of the field.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:gender-studies",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Gender Studies",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q45409"
+   },
+   "source_hint": "UDC 305 'Gender studies [Including: Sex role. Gender. Persons from an interdisciplinary viewpoint]' — a major 3-digit division under UDC 3 Social Sciences (captured baseline 2026-06-11); LCC HQ1101-2030.7 'Women. Feminism' within HQ 'The Family. Marriage. Women' subclass (captured baseline 2026-06-11). Wikidata Q45409 — unverified training-knowledge hint. [UNFETCHED] community evidence: National Women's Studies Association; Gender and Society journal; named gender studies and women's studies departments worldwide.",
+   "rationale": "UDC 305 is a dedicated 3-digit major division for gender studies within class 3; LCC HQ1101-2030.7 provides a substantial named range; named professional association and journal; dual criterion satisfied.",
+   "uncertainty": "Gender studies is interdisciplinary; its community homes span sociology, humanities (literature, philosophy), and cultural studies; FORD 5.4 does not give it its own division; classification presence is strong (UDC 305, LCC HQ range), but the primary parent (sociology vs. a standalone field) is a QC question.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:social-stratification",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Social Stratification",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1132376"
+   },
+   "source_hint": "LCC HT601-1445 'Classes' and HT1501-1595 'Races' within HT 'Communities. Classes. Races' subclass (captured baseline 2026-06-11); UDC 316.34 'Social stratification. Social differentiation [Including: Demographic differentiation]' (captured baseline 2026-06-11). Wikidata Q1132376 — unverified training-knowledge hint. [UNFETCHED] community evidence: ASA Section on Inequality, Poverty, and Mobility; Social Forces journal; named stratification/inequality research groups at sociology departments worldwide.",
+   "rationale": "LCC HT provides a dedicated subclass treating classes and races as social groups; UDC 316.34 explicitly names social stratification within sociology; named ASA section; dual criterion satisfied.",
+   "uncertainty": "Race and ethnicity research could be a separate subfield from class/status stratification; LCC HT1501-1595 ('Races') and HT601-1445 ('Classes') are distinct ranges that could be split; proposed as a combined node with race-and-ethnicity noted as a v2 re-split candidate.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:international-relations",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "International Relations",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q166542"
+   },
+   "source_hint": "LCC JZ5-6530 'International relations' — its own LCC subclass JZ within class J (captured baseline 2026-06-11); UDC 327 'International relations. World, global politics. International affairs. Foreign policy' (captured baseline 2026-06-11). Wikidata Q166542 — unverified training-knowledge hint. [UNFETCHED] community evidence: International Studies Association; International Organization journal; named IR subfields and departments/schools of international affairs worldwide.",
+   "rationale": "LCC JZ is a dedicated subclass for international relations; UDC 327 is a dedicated 3-digit division; named society and journal; dual criterion fully satisfied.",
+   "uncertainty": "International relations overlaps with international law (KZ) and international economics (UDC 339.9); the IR subfield captures the political-science perspective on interstate and global relations; boundary with international law is addressed by proposing separate nodes for each.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:public-administration",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Public Administration",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q261543"
+   },
+   "source_hint": "LCC JF1338-2112 'Public administration' within JF 'Political institutions and public administration' (captured baseline 2026-06-11); UDC 35 'Public administration. Government. Military affairs' — a major 2-digit division under UDC 3 (captured baseline 2026-06-11). Wikidata Q261543 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Society for Public Administration; Public Administration Review; named public administration and public policy schools worldwide (MPA programs).",
+   "rationale": "LCC JF1338-2112 is a substantial dedicated range; UDC 35 is a major 2-digit division within class 3 (comparable depth to other fields); named society, journal, and graduate-degree programs (MPA); dual criterion satisfied.",
+   "uncertainty": "UDC 35 also covers military affairs (355/359), which has a different community home; the proposed node is scoped to the public-administration portion (352-354 local/regional/central administration); the military-affairs content under UDC 35 is not covered by this node.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:comparative-politics",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Comparative Politics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1068473"
+   },
+   "source_hint": "LCC JF20-1177 'General. Comparative government' within JF 'Political institutions and public administration' (captured baseline 2026-06-11); UDC 323 'Home affairs. Internal policy' and 328 'Parliaments. Representation of the people. Governments' (captured baseline 2026-06-11). Wikidata Q1068473 — unverified training-knowledge hint. [UNFETCHED] community evidence: APSA Comparative Politics section; Comparative Political Studies journal; named comparative politics subfields in political science graduate programs.",
+   "rationale": "LCC JF20-1177 is explicitly titled 'Comparative government'; UDC 323 and 328 cover domestic political processes; named APSA section and journal; dual criterion satisfied.",
+   "uncertainty": "Comparative politics as a label refers to a methodological approach (cross-national comparison) as much as a substantive area; the LCC range covers comparative government more broadly; the community identity is well-established despite the methodological framing.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:curriculum-and-instruction",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Curriculum and Instruction",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q847524"
+   },
+   "source_hint": "LCC LB1025-1050.75 'Teaching (Principles and practice)', LB2361-2365 'Curriculum' within LB 'Theory and practice of education' (captured baseline 2026-06-11); UDC 37.02 'General questions of didactics and method [Including: Method and principles of particular theories and systems. Didactic principles]' (captured baseline 2026-06-11). Wikidata Q847524 — unverified training-knowledge hint. [UNFETCHED] community evidence: ASCD (Association for Supervision and Curriculum Development); Journal of Curriculum Studies; named curriculum and instruction programs in schools of education.",
+   "rationale": "LCC LB provides dedicated ranges for teaching and curriculum; UDC 37.02 names didactics and method; named professional association and journal; dual criterion satisfied.",
+   "uncertainty": "Curriculum studies and instructional design are sometimes treated as separate subfields; the combined label reflects common departmental practice (departments of Curriculum and Instruction); v2 re-split candidate if communities diverge.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:educational-policy",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Educational Policy",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7170251"
+   },
+   "source_hint": "LCC LC65-245 'Social aspects of education', LC71-120.4 'Education and the state' within LC 'Special aspects of education' (captured baseline 2026-06-11); UDC 37.01 'Fundamentals of education. Theory, policy, etc.', whose Including note names 'Educational policy' and 'Disciplines of educational theory' (captured baseline 2026-06-11). Wikidata Q7170251 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Educational Research Association's Division L (Educational Policy and Politics); Educational Policy journal; named educational policy programs.",
+   "rationale": "LCC LC71-120.4 is a dedicated range for education-and-state relationships; UDC 37.01 explicitly names educational policy; named AERA division and journal; dual criterion satisfied.",
+   "uncertainty": "Educational policy overlaps heavily with public administration and political science applied to education; the community identity within education schools and education research is distinct enough to justify the separate node.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:higher-education",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Higher Education",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q188088"
+   },
+   "source_hint": "LCC LB2300-2430 'Higher education', LA173-186 'Higher education' (history of higher education) (captured baseline 2026-06-11); UDC 378 'Higher education. Universities. Academic study' — a major 3-digit division under UDC 37 (captured baseline 2026-06-11). Wikidata Q188088 — unverified training-knowledge hint. [UNFETCHED] community evidence: Association for the Study of Higher Education; Higher Education journal; named higher education programs in schools of education.",
+   "rationale": "LCC LB2300-2430 is a dedicated range; UDC 378 is a major 3-digit division; named society and journal; dual criterion satisfied.",
+   "uncertainty": "Higher education research overlaps with educational policy (governance of universities) and curriculum studies; the node is scoped to the academic study of higher education institutions and systems.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:special-education",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Special Education",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1434166"
+   },
+   "source_hint": "LCC LC3950-4806.5 'Exceptional children and youth. Special education' within LC 'Special aspects of education' (captured baseline 2026-06-11); UDC 376 'Education, teaching, training of special groups of persons. Special schools' (captured baseline 2026-06-11). Wikidata Q1434166 — unverified training-knowledge hint. [UNFETCHED] community evidence: Council for Exceptional Children; Exceptional Children journal; named special education departments and teacher certification programs.",
+   "rationale": "LCC LC3950-4806.5 is a substantial dedicated range; UDC 376 is a dedicated 3-digit division; named professional organization and journal; dual criterion satisfied.",
+   "uncertainty": "Special education has close ties to psychology (educational psychology, LB1050.9-1091) and disability studies; the node covers the instructional and programmatic research side rather than the psychological or medical dimensions.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:jurisprudence",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Jurisprudence",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q4932206"
+   },
+   "source_hint": "LCC K201-487 'Jurisprudence. Philosophy and theory of law' within K 'Law in general. Comparative and uniform law. Jurisprudence' (captured baseline 2026-06-11); UDC 340.1 'Types and forms of law [Including: Enacted law. Statute law. Codification of law. Unwritten law. Common law]', 340.5 'Comparative law' (captured baseline 2026-06-11). Wikidata Q4932206 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Jurisprudence journal; jurisprudence courses in law schools worldwide; named jurisprudence research groups.",
+   "rationale": "LCC K201-487 is a dedicated range for jurisprudence/legal theory; UDC 340 covers law in general including legal theory; named courses and research groups in law schools; dual criterion satisfied.",
+   "uncertainty": "Canonical node subfield:philosophy-of-law (reviewed) covers the philosophical treatment of law; jurisprudence is here scoped to the legal-science tradition (internal legal theory, comparative law methodology) rather than external philosophical critique — overlap is real and QC should examine whether these nodes require consolidation or clearer scope delineation.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:constitutional-law",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Constitutional Law",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q484527"
+   },
+   "source_hint": "LCC K3154-3370 'Constitutional law' within K 'Law in general' (captured baseline 2026-06-11); UDC 342 'Public law. Constitutional law. Administrative law' (captured baseline 2026-06-11). Wikidata Q484527 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Constitution Society; constitutional law courses in every law school; journals such as Harvard Law Review focused on constitutional issues.",
+   "rationale": "LCC K3154-3370 is a dedicated range; UDC 342 is a major 3-digit division; named society and universal law-school presence; dual criterion satisfied.",
+   "uncertainty": "Constitutional law is closely linked to public administration and political theory; in some jurisdictions constitutional law also encompasses administrative law (UDC 342.9) — this node's scope covers the constitutional dimension.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:international-law",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "International Law",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q4394526"
+   },
+   "source_hint": "LCC KZ2-6795 'Law of nations' — its own LCC subclass KZ within class K (captured baseline 2026-06-11); also LCC JZ1249-1254 'Relation to other disciplines' and JZ (political science side) overlap; UDC 341 'International law' — a major 3-digit division (captured baseline 2026-06-11). Wikidata Q4394526 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Society of International Law; American Journal of International Law; named international law programs in law schools and international affairs schools.",
+   "rationale": "LCC KZ is a dedicated subclass for international law; UDC 341 is a major 3-digit division with extensive subdivisions; named society and journal; dual criterion satisfied.",
+   "uncertainty": "International law overlaps with international relations (JZ subclass has some overlap); the legal-academic community (law schools) is distinct from the IR-political-science community; both communities are real and a §13 cross-listing is a later-batch candidate.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:criminal-law",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Criminal Law",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q4116534"
+   },
+   "source_hint": "LCC K5000-5582 'Criminal law and procedure' within K 'Law in general' (captured baseline 2026-06-11); UDC 343 'Criminal law. Penal offences' — a major 3-digit division (captured baseline 2026-06-11). Wikidata Q4116534 — unverified training-knowledge hint. [UNFETCHED] community evidence: Criminal law courses in every law school; Journal of Criminal Law and Criminology; named criminal law sections in bar associations.",
+   "rationale": "LCC K5000-5582 is a large dedicated range; UDC 343 is a major 3-digit division; universal law-school presence and named journal; dual criterion satisfied.",
+   "uncertainty": "Criminal law (legal doctrine on offenses and procedure) is distinct from criminology (social-science study of crime causation); both are proposed as separate nodes; the node subfield:criminology is a proposed sociology-side subfield; this node is the law-side counterpart.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:civil-law",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Civil Law",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1029293"
+   },
+   "source_hint": "LCC K623-968 'Civil law' including K670-709 'Domestic relations. Family law', K720-792 'Property', K830-968 'Obligations' (captured baseline 2026-06-11); UDC 347 'Civil law' — a major 3-digit division covering property, obligations, family law, and succession (captured baseline 2026-06-11). Wikidata Q1029293 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Bar Association Tort Trial and Insurance Practice Section; civil law courses in every law school; journals such as Law and Contemporary Problems.",
+   "rationale": "LCC K623-968 is a large dedicated range; UDC 347 is a major 3-digit division; universal law-school presence; dual criterion satisfied.",
+   "uncertainty": "Civil law as a legal-family concept (civil-law vs. common-law systems) is distinct from civil law as a branch of law (private law covering property, contracts, torts); this node is scoped to the latter (branch sense); training knowledge suggests the Wikidata QID may reflect the legal-family concept instead — to be verified at QC.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:cultural-anthropology",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Cultural Anthropology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q850709"
+   },
+   "source_hint": "LCC GN301-674 'Ethnology. Social and cultural anthropology' within GN 'Anthropology' (captured baseline 2026-06-11); UDC 39 'Cultural anthropology. Ethnography. Customs. Manners. Traditions. Way of life' — its own major 2-digit division under UDC 3 (captured baseline 2026-06-11); UDC 3 header caption explicitly includes 'Cultural anthropology' (captured baseline 2026-06-11). Wikidata Q850709 — unverified training-knowledge hint. [UNFETCHED] community evidence: AAA Section on Cultural Anthropology; American Ethnologist journal; named cultural anthropology subfields in anthropology departments.",
+   "rationale": "LCC GN301-674 is a large range dedicated to social and cultural anthropology; UDC 39 is a major 2-digit division within class 3 Social Sciences; named AAA section; dual criterion fully satisfied.",
+   "uncertainty": "Social anthropology and cultural anthropology are sometimes distinguished (British vs. American traditions); UDC 39 uses the 'cultural anthropology' label while LCC uses 'social and cultural anthropology' — combined label adopted; a v2 split is possible if communities diverge.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:physical-anthropology",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Physical Anthropology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q181505"
+   },
+   "source_hint": "LCC GN49-298 'Physical anthropology. Somatology' within GN 'Anthropology' (captured baseline 2026-06-11). UDC classification for physical anthropology: training-knowledge hint suggests UDC 572 (Anthropology) is used, but UDC 572 is not present in the captured UDC 3 records — [UNFETCHED]; UDC 3 header caption does not list physical anthropology explicitly. Wikidata Q181505 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Association of Biological Anthropologists (formerly AAPA); American Journal of Physical Anthropology; physical anthropology subfields in four-field anthropology departments.",
+   "rationale": "LCC GN49-298 is a large dedicated range for physical anthropology within the GN subclass; the four-field model of anthropology (cultural, physical/biological, archaeological, linguistic) is institutionally dominant; named society satisfies criterion (b).",
+   "uncertainty": "Physical anthropology (biological anthropology) has strong ties to life sciences and medicine (GN296-296.5 Medical anthropology); UDC placement is uncertain — UDC 572 may lie outside class 3; this boundary is flagged for QC; a §13 cross-listing with life sciences is a plausible outcome.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:archaeological-anthropology",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Archaeological Anthropology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q23498"
+   },
+   "source_hint": "LCC GN700-890 'Prehistoric archaeology' within GN 'Anthropology' (captured baseline 2026-06-11). UDC placement: training-knowledge hint that archaeology is covered under UDC 902/903 (Archaeology) in class 9, not class 3 — [UNFETCHED]; no UDC 3 capture support. Wikidata Q23498 — unverified training-knowledge hint. [UNFETCHED] community evidence: Society for American Archaeology; American Antiquity journal; archaeo-anthropology subfields in four-field anthropology departments (strong US model).",
+   "rationale": "LCC GN700-890 places prehistoric archaeology within the anthropology subclass; the four-field anthropology model includes archaeology; named society and journal satisfy criterion (b).",
+   "uncertainty": "Archaeology's UDC home is likely in class 9 (not class 3 social sciences), which could trigger the §12 rule-3 two-prong test; in Europe, archaeology is typically a humanities discipline rather than an anthropology subfield; the node reflects the American four-field model but may need §13 treatment; ambiguous flag set for QC.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:economic-geography",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Economic Geography",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q43511"
+   },
+   "source_hint": "LCC GF1-900 'Human ecology. Anthropogeography' within class G (captured baseline 2026-06-11); LCC HF1021-1027 'Commercial geography. Economic geography' within HF 'Commerce' (captured baseline 2026-06-11); OECD FORD 5.7 'Social and economic geography' (captured baseline 2026-06-11); UDC 332 'Regional economics. Territorial economics. Land economics. Housing economics' (captured baseline 2026-06-11). Wikidata Q43511 — unverified training-knowledge hint. [UNFETCHED] community evidence: Economic Geography journal; AAG Economic Geography specialty group; named economic geography courses in geography departments.",
+   "rationale": "FORD 5.7 explicitly names social and economic geography within social sciences; LCC provides relevant ranges in both GF and HF; named journal and AAG specialty group; dual criterion satisfied.",
+   "uncertainty": "Economic geography spans geography departments (human-geography parent) and economics departments; it is here proposed as a subfield of field:human-geography though it could alternatively nest under field:economics; a §13 cross-listing is a later-batch candidate.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:urban-and-regional-planning",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Urban and Regional Planning",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q759235"
+   },
+   "source_hint": "LCC HT165.5-169.9 'City planning' and HT388-395 'Regional economics. Space in economics. Regional planning' within HT 'Communities. Classes. Races' (captured baseline 2026-06-11); UDC 332.1 'Regional economics. Territorial economics', 332.5 'Land requirement. Long-term planning of land use' (captured baseline 2026-06-11). Wikidata Q759235 — unverified training-knowledge hint. [UNFETCHED] community evidence: American Institute of Certified Planners (AICP); Journal of the American Planning Association; named planning schools and programs (many jointly housed in architecture, engineering, or social-science faculties).",
+   "rationale": "LCC HT165.5-395 provides classification presence for city planning and regional planning; UDC 332.1/332.5 covers territorial and land-use planning; named credentialing body (AICP) and journal; dual criterion satisfied.",
+   "uncertainty": "Urban and regional planning has institutional homes in social-science faculties but also in engineering and architecture schools; parent assignment (human-geography, sociology, or standalone) is ambiguous; the field also overlaps with urban sociology — ambiguous flag set for QC.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:mass-communication",
+   "type": "subfield",
+   "domain": "social_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Mass Communication",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1371736"
+   },
+   "source_hint": "OECD FORD 5.8 'Media and communications' (captured baseline 2026-06-11) — FORD is the only captured classification source for this area. LCC homes for mass communication (P87-96 Communication. Mass media) lie in LCC class P (Language and Literature), which was NOT in the captured outlines. UDC capture does not include a dedicated mass-communication division under class 3. Wikidata Q1371736 — unverified training-knowledge hint. [UNFETCHED] community evidence: International Communication Association; Journal of Communication; named communication and media studies programs.",
+   "rationale": "FORD 5.8 provides classification presence within social sciences; named ICA society and Journal of Communication satisfy criterion (b); proposed as a subfield under field:media-and-communication-studies (which is itself flagged ambiguous).",
+   "uncertainty": "FORD 5.8 is the only captured classification source; LCC class P (the primary LCC home) was not in the captured outlines; this node inherits the ambiguity of its proposed parent field and should be evaluated by QC in conjunction with the field:media-and-communication-studies decision.",
+   "ambiguous": true
+  }
+ ],
+ "edges": [],
+ "notes": [
+  "SEED DISPOSITION (8 manifest seeds):",
+  "1. field:economics — KEPT as proposed. LCC HB-HJ (6 own subclasses), UDC 33, FORD 5.2. Note: FORD labels this 'Economics and Business', resolved by proposing field:business-and-management as a separate node (ambiguous) for QC to decide on merger vs. split.",
+  "2. field:sociology — KEPT as proposed. LCC HM-HX (6 own subclasses), UDC 316, FORD 5.4.",
+  "3. field:political-science — KEPT as proposed. LCC entire class J, UDC 32, FORD 5.6.",
+  "4. field:education — KEPT as proposed. LCC entire class L, UDC 37, FORD 5.3.",
+  "5. field:law — KEPT but flagged ambiguous (pre-registered gate-level boundary question). FORD 5.5 and UDC 34-under-3 support social-sciences membership; LCC class K is standalone. §12 rule-3 two-prong test exposed in rationale/uncertainty.",
+  "6. field:anthropology — KEPT as proposed. §12 class-G precedent applied (other-home filing). LCC GN, UDC 39, FORD 5.4 wing.",
+  "7. field:media-and-communication-studies — KEPT but flagged ambiguous (pre-registered gate-level question). FORD 5.8 is the only captured classification source; LCC P87-96 is out-of-continent and not in the captured outlines.",
+  "8. field:human-geography — KEPT but flagged ambiguous (human vs. physical boundary). §12 class-G precedent applied to LCC GF; FORD 5.7 named. Physical-geography cognates (GE, GC, GB) already resolved as natural-sciences nodes — not touched.",
+  "",
+  "ADDITIONS BEYOND SEEDS:",
+  "- field:business-and-management (field, ambiguous): Pre-registered question from manifest. LCC HD28-70 and HF5001-6182 are substantial named ranges; AACSB business schools are institutionally autonomous; FORD 5.2 groups with economics. QC to decide: separate field or subfields absorbed under field:economics.",
+  "- 7 economics subfields: economic-theory, econometrics (per §12 precedent log 'econometrics→social sciences'), labor-economics, economic-history, public-finance, international-economics, financial-economics.",
+  "- 6 sociology subfields: criminology (ambiguous — UDC home under law 343.9), demography (ambiguous — field vs. subfield), social-work-and-welfare, gender-studies, social-stratification, urban-sociology.",
+  "- 4 political-science subfields: political-theory (ambiguous — overlap with canonical subfield:political-philosophy), international-relations, public-administration, comparative-politics.",
+  "- 4 education subfields: curriculum-and-instruction, educational-policy, higher-education, special-education.",
+  "- 5 law subfields: jurisprudence (ambiguous — overlap with canonical subfield:philosophy-of-law), constitutional-law, international-law, criminal-law, civil-law.",
+  "- 3 anthropology subfields: cultural-anthropology, physical-anthropology (ambiguous — life-sciences boundary), archaeological-anthropology (ambiguous — European humanities tradition).",
+  "- 2 human-geography subfields: economic-geography, urban-and-regional-planning (ambiguous — engineering/architecture homes).",
+  "- 1 media/comm subfield: mass-communication (ambiguous — inherits field's ambiguity).",
+  "- 3 business-and-management subfields: management, marketing, accounting (ambiguous — weak UDC presence).",
+  "",
+  "DELIBERATE NON-COVERAGE (candidates considered and rejected):",
+  "- subfield:journalism: Absorbed into mass-communication (§12 absorption rule — refinement of same community serving the same parent; v2 re-split candidate).",
+  "- subfield:development-economics: Absorption candidate. LCC HD72-88 'Economic growth, development, planning' is within HD (Industries subclass) not HB (Economic theory). Strong community (World Bank, Journal of Development Economics) but development economics is arguably a subfield-of-a-subfield; recorded as v2 candidate under economic-theory or standalone.",
+  "- subfield:welfare-economics: Absorbed into economic-theory. LCC HB846-846.8 is a small cutter range; welfare economics is a theoretical branch, not a distinct departmental identity.",
+  "- subfield:monetary-economics: Considered for HG1501-3550 Banking/monetary side. Absorbed into financial-economics. LCC HG covers both; community (monetary economics) is often part of macro/theory programs rather than a distinct department.",
+  "- subfield:transportation-economics: LCC HE1-9990 is a full subclass. Rejected on criterion (b): transportation economics does not have standalone department-level identity; absorbed under economics general. V2 candidate.",
+  "- subfield:industrial-economics: LCC HD2321-4730.9 Industry. Rejected: absorbed into economics/business-and-management; no distinct department-level identity separate from economics programs.",
+  "- subfield:organizational-behavior: LCC HD58.7-58.95. Absorbed into management (§12 absorption rule). Community: OBHDP journal, but institutionally within management departments.",
+  "- subfield:human-resource-management: LCC HF5549-5549.5 Personnel management. Absorbed into management. No standalone department identity separate from management/business schools.",
+  "- subfield:political-sociology: Considered. Rejected on criterion (a): no dedicated LCC range separate from HM (sociology) and JA-JZ (political science); appears within both; no classification presence as a distinct division. Community: ASA section, but no standalone departments. Deliberate non-coverage; v2 candidate.",
+  "- subfield:social-movements: Considered (LCC HN range, UDC 323.2). Absorbed into sociology as a research topic rather than a distinct subfield with department-level identity. V2 candidate.",
+  "- subfield:family-sociology: LCC HQ 'The Family. Marriage. Women' is a full subclass. Rejected: the family-studies community is primarily institutionally housed within sociology departments (not separate departments at most universities); absorbed into sociology field. V2 re-split candidate.",
+  "- subfield:race-and-ethnic-studies: UDC 316.34 and LCC HT1501-1595. Absorbed into social-stratification as a combined node with v2 re-split noted. Community: ASA section exists; standalone race/ethnic studies departments exist; strong case for v2 split.",
+  "- subfield:science-and-technology-studies: No LCC capture in the social-sciences classes; UDC 303 'Methods of the social sciences' is partial; institutional homes in social-science faculties but also engineering. Deferred: insufficient classification presence in captured sources for this continent. V2 candidate.",
+  "- subfield:environmental-sociology: LCC ranges span HN (social reform) and HT (communities). Community: ASA section. Rejected: no dedicated LCC subclass or UDC division; absorbed into sociology. V2 candidate.",
+  "- subfield:political-economy: Spans economics (HB, HJ) and political science (JA); interdisciplinary. Rejected: no dedicated classification division of its own; absorbed as a research tradition within both economics and political science. Cross-listed §13 edge-batch candidate.",
+  "- subfield:military-science: UDC 355/359, LCC U (not captured). Rejected: LCC places military science in class U (not captured; outside class H, J, K, L, G, and not in social sciences captures); insufficient classification presence in captured sources.",
+  "- subfield:insurance-studies: LCC HG8011-9999. Absorbed into financial-economics. No standalone academic department identity.",
+  "- subfield:real-estate-economics: LCC HD1361-1395.5. Absorbed into business-and-management/economics. No standalone department identity at research universities.",
+  "- subfield:immigration-and-migration-studies: LCC JV6001-9480. Strong community (migration journals, sociology/political-science overlap). Rejected on criterion (a): no dedicated classification division separate from JV (which also covers colonization) and HV; v2 candidate under sociology or political science.",
+  "- subfield:public-policy: LCC JF + JK + multiple; FORD does not give it a separate division; overlaps with public administration, economics, political science. Rejected: no single classification home; absorbed across adjacent subfields. V2 candidate.",
+  "- subfield:consumer-behavior: LCC HB801-843. Absorbed into economic-theory/marketing. No standalone department identity.",
+  "- subfield:medieval-law / subfield:comparative-law / subfield:private-international-law: LCC K7000-7720. Rejected as level-3 specializations within law; not distinct fields or subfields per §12 flat two-level rule. Absorption into jurisprudence or civil-law.",
+  "- UDC 303 'Methods of the social sciences': Considered as a methods subfield. Rejected: social-science methodology is a topic covered within each field's methodological training, not a department-level entity; no standalone departments named 'methods of social sciences'. Non-coverage maintained.",
+  "- UDC 304 'Social questions. Social practice. Cultural practice': Considered. Rejected: too broad and no department-level community identity. Absorbed into sociology.",
+  "- UDC 308 'Sociography. Descriptive studies of society': Rejected on criterion (b): no standalone departments; absorbed into sociology/methods.",
+  "- UDC 36 general / UDC 365 'Accommodation' / UDC 366 'Consumerism' / UDC 368 'Insurance': These UDC 36 sub-entries are professional/applied topics without research-department-level standing. Non-coverage maintained except for UDC 364 social welfare (captured as subfield:social-work-and-welfare).",
+  "- UDC 39 GT/GR/HS ranges (Folklore, Manners and customs, Societies): LCC GT, GR, HS are class-G subclasses with social-science relevance but no research-field-level community of their own at the department level; absorbed into cultural-anthropology or folklore (humanities). Non-coverage maintained.",
+  "- LCC HX 'Socialism. Communism. Anarchism': Considered. Rejected on criterion (b): no named academic departments for 'socialism/communism studies'; this is a topic within political theory, sociology, and history rather than a standalone field. Non-coverage maintained.",
+  "- LCC HS 'Societies: secret, benevolent, etc.': Rejected on both criteria: no research division in classification sources, no academic community. Non-coverage maintained.",
+  "- LCC JS 'Local government. Municipal government': Absorbed into public-administration. No standalone academic departments separate from public administration programs.",
+  "- LCC JV 'Colonies and colonization. Emigration and immigration': See immigration note above. LCC JV covers colonization as well as migration; colonial studies is primarily a humanities/history field; migration studies is proposed as v2.",
+  "",
+  "BOUNDARY ENCOUNTERS WITH EXCLUDED CONTINENTS:",
+  "- Psychology (FORD 5.1, LCC BF): Encountered in LCC LC 'Special aspects of education' — LB1050.9-1091 'Educational psychology' is in the education captures. Social psychology (LCC HM1001-1281) appears in the sociology capture. These encounters are recorded only; no nodes generated for psychology. The proposed sociology field inherently includes social psychology as a subarea but no separate subfield node proposed (would require cognitive-science continent sign-off per boundary assignment table).",
+  "- Linguistics: Not encountered in the captured class H, J, L, K, or G outlines; UDC 81 (linguistics) is not in UDC 3 class 3. No encounter.",
+  "- Statistics (LCC HA, UDC 311): LCC HA1-4737 'Statistics' is the first listed subclass in LCC class H; UDC 311 'Statistics as a science. Statistical theory' is present in the captured UDC 3 records. These are formal-sciences-owned nodes (field:statistics, subfield:applied-statistics, etc. already canonical). No regeneration. Social-sciences-side classification evidence noted here for edge-batch use: LCC HA29-32 'Theory and method of social science statistics' and UDC 311.3 'General organization of statistics. Official statistics' indicate social-sciences cross-membership — parked as §13 trigger for the edge batch.",
+  "- Game theory (LCC HB135-147 wing): HB135-147 includes game theory alongside econometrics and input-output analysis. subfield:game-theory is an existing canonical node (formal-sciences-owned). Node regeneration forbidden. Social-sciences-side HB135-147 classification evidence parked as §13 trigger for the edge batch (economics-side minority membership).",
+  "- Decision theory: LCC HB135-147 also implicitly covers decision under uncertainty. subfield:decision-theory is an existing canonical node. Node regeneration forbidden. Parked as §13 trigger.",
+  "- Financial mathematics: subfield:financial-mathematics is an existing canonical node. Boundary with proposed subfield:financial-economics clearly articulated in that node's uncertainty field.",
+  "- Physical geography cognates (GE, GC, GB, GB hydrology/geomorphology): All already resolved as reviewed natural-sciences nodes (subfield:oceanography, subfield:hydrology, subfield:geomorphology, subfield:environmental-science confirmed as canonical). LCC class G shelving recorded as irrelevant to their assignment per §12 precedent log ns-bflag-resolution-v1. Not touched.",
+  "- subfield:mathematics-education: Existing canonical reviewed node. The re-target trigger (to add social-sciences membership edge to field:education once it exists) is a §13 edge-batch item per batch manifest exclusion list. No action here.",
+  "",
+  "UNFETCHED SUMMARY:",
+  "All Wikidata QIDs listed are unverified training-knowledge hints to be resolved by the QC resolver. Community evidence (professional associations, journals, departments, degree programs) throughout is [UNFETCHED] training knowledge, flagged per citation discipline. No network calls made. All classification citations are to the pre-captured baseline files only.",
+  "",
+  "QC FIRST-LOOK ITEMS (priority order):",
+  "1. field:law — continent boundary decision (FORD 5.5 + UDC 34-under-3 vs LCC class K standalone). Gate-level ruling needed.",
+  "2. field:media-and-communication-studies — FORD 5.8 sufficiency question when LCC P87-96 is out-of-continent.",
+  "3. subfield:demography — field vs subfield decision (UDC 314 is a 3-digit major division; LCC HB placement is within economics subclass).",
+  "4. subfield:political-theory — overlap with canonical subfield:political-philosophy (reviewed node).",
+  "5. subfield:jurisprudence — overlap with canonical subfield:philosophy-of-law (reviewed node).",
+  "6. subfield:criminology — UDC files under 343.9 (law) while LCC HV files under social pathology (sociology).",
+  "7. field:business-and-management — separate field vs. subfields absorbed under field:economics (FORD 5.2 merger signal).",
+  "8. subfield:archaeological-anthropology — UDC home likely class 9 (not class 3); European humanities tradition.",
+  "9. subfield:physical-anthropology — life-sciences boundary; UDC capture gap (UDC 572 not in class 3 records).",
+  "10. subfield:accounting — weak UDC class-3 presence; QC should weigh LCC HF range alone."
+ ]
 }
