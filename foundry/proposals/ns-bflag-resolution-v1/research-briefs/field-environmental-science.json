@@ -1,0 +1,125 @@
+{
+ "node_id": "field:environmental-science",
+ "findings": [
+  {
+   "parent_candidate": "domain:natural-sciences (via LCC GE filing under class G — opposes)",
+   "stance": "opposes",
+   "url": "https://id.loc.gov/authorities/classification/GE1.json",
+   "fetched": true,
+   "claim": "LCC assigns Environmental sciences to GE1–GE350, which is a member of class G (Geography. Anthropology. Recreation), not class Q (Science). The full compound label is 'Geography. Anthropology. Recreation--Environmental sciences'.",
+   "quote": "Geography. Anthropology. Recreation--Environmental sciences"
+  },
+  {
+   "parent_candidate": "domain:natural-sciences (via UDC 502 inside class 5 — supports)",
+   "stance": "supports",
+   "url": "https://udcsummary.info/php/getrecord.php?id=5&lang=1",
+   "fetched": true,
+   "claim": "UDC class 5 (MATHEMATICS. NATURAL SCIENCES) directly contains 502/504 'Environmental science. Conservation of natural resources. Threats to the environment and protection against them', placing environmental science inside the natural sciences top-level class.",
+   "quote": "5 MATHEMATICS. NATURAL SCIENCES ... 502/504 Environmental science. Conservation of natural resources. Threats to the environment and protection against them"
+  },
+  {
+   "parent_candidate": "domain:natural-sciences (via OECD FORD 1.5 — supports)",
+   "stance": "supports",
+   "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+   "fetched": true,
+   "claim": "The OECD Fields of Research and Development (FORD) taxonomy, hosted by the Slovenian Research and Innovation Agency (ARIS), lists '1.5. Earth and related Environmental sciences' as a sub-field directly under '1. Natural Sciences', co-equal with Mathematics, Physical sciences, Chemical sciences, and Biological sciences.",
+   "quote": "1. Natural Sciences 1.1. Mathematics 1.2. Computer and information sciences 1.3. Physical sciences 1.4. Chemical sciences 1.5. Earth and related Environmental sciences 1.6. Biological sciences 1.7. Other natural sciences"
+  },
+  {
+   "parent_candidate": "domain:natural-sciences (Britannica interdisciplinary framing — interface)",
+   "stance": "interface",
+   "url": "https://www.britannica.com/science/environmental-science",
+   "fetched": true,
+   "claim": "Britannica defines environmental science as an 'interdisciplinary academic field that draws on ecology, geology, meteorology, biology, chemistry, engineering, and physics', explicitly framing it as bridging multiple sciences. The editorial breadcrumb places it under 'Science > Environment', not under a single natural-science parent. It explicitly distinguishes environmental science (quantitative, natural science methods) from environmental studies (social/political focus).",
+   "quote": "interdisciplinary academic field that draws on ecology , geology , meteorology , biology , chemistry , engineering , and physics to study environmental problems and human impacts on the environment"
+  },
+  {
+   "parent_candidate": "domain:natural-sciences (Nature portfolio multidisciplinary framing — interface)",
+   "stance": "interface",
+   "url": "https://www.nature.com/subjects/environmental-sciences",
+   "fetched": true,
+   "claim": "Nature Portfolio's subject page for environmental sciences defines it as 'the multidisciplinary study of all aspects of the Earth's physical and biological environments', encompassing environmental chemistry, soil science, ecology, climatology, marine and freshwater systems, and agriculture. No single-parent subject breadcrumb beyond 'nature > subjects' is assigned.",
+   "quote": "Environmental science is the multidisciplinary study of all aspects of the Earth's physical and biological environments. It encompasses environmental chemistry, soil science, ecology, climatology, vegetation cover, marine and freshwater systems, as well as environmental remediation and preservation, and agriculture and land use."
+  },
+  {
+   "parent_candidate": "non-natural-sciences home (NCES CIP 03 — Natural Resources and Conservation framing — context)",
+   "stance": "context",
+   "url": "https://nces.ed.gov/ipeds/cipcode/cipdetail.aspx?y=56&cip=03.0104",
+   "fetched": true,
+   "claim": "The US National Center for Education Statistics CIP (Classification of Instructional Programs) places Environmental Science (03.0104) under CIP family 03 'Natural Resources and Conservation', not under a pure-sciences family. The definition explicitly uses natural-science methods: 'focuses on the application of biological, chemical, and physical principles to the study of the physical environment'.",
+   "quote": "A program that focuses on the application of biological, chemical, and physical principles to the study of the physical environment and the solution of environmental problems, including subjects such as abating or controlling environmental pollution and degradation; the interaction between human society and the natural environment; and natural resources management. Includes instruction in biology, chemistry, physics, geosciences, climatology, statistics, and mathematical modeling."
+  },
+  {
+   "parent_candidate": "institutional housing — interdisciplinary / Natural Resources college framing",
+   "stance": "interface",
+   "url": "https://ourenvironment.berkeley.edu/about",
+   "fetched": true,
+   "claim": "UC Berkeley's Department of Environmental Science, Policy, and Management (ESPM) sits within the Rausser College of Natural Resources and describes itself as 'a multidisciplinary program'. This is institutionally distinct from both a standalone natural-science school and a liberal-arts placement.",
+   "quote": "The Department of Environmental Science, Policy, and Management is a multidisciplinary program that recognizes the urgency of the challenges, and the enormous opportunities that may lead to transformative change."
+  }
+ ],
+ "source_inventory": [
+  {
+   "url": "https://id.loc.gov/authorities/classification/GE1.json",
+   "fetched": true,
+   "note": "LCC GE1-GE350 record. Confirms parent class G (Geography. Anthropology. Recreation). Authoritative label: 'Environmental sciences'. Full compound label: 'Geography. Anthropology. Recreation--Environmental sciences'."
+  },
+  {
+   "url": "https://id.loc.gov/authorities/classification/G.json",
+   "fetched": true,
+   "note": "LCC class G record. Comment: 'G -- GEOGRAPHY. ANTHROPOLOGY. RECREATION'. Members include GE1-GE350. Confirms GE is inside G, not Q."
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=5&lang=1",
+   "fetched": true,
+   "note": "UDC class 5 (MATHEMATICS. NATURAL SCIENCES). Scope note and table directly list 502/504 Environmental science as a direct child."
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=502&lang=1",
+   "fetched": true,
+   "note": "UDC class 502 record. Caption: 'The environment and its protection'. Parent class is 5 (Natural Sciences). Notation 502/504 groups environmental science, conservation of natural resources, and threats."
+  },
+  {
+   "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+   "fetched": true,
+   "note": "ARIS (Slovenian Research and Innovation Agency) host of the OECD FORD taxonomy (Frascati Manual 2015 Annex). Lists 1.5 'Earth and related Environmental sciences' under '1. Natural Sciences'."
+  },
+  {
+   "url": "https://www.britannica.com/science/environmental-science",
+   "fetched": true,
+   "note": "Britannica article. Definition: interdisciplinary academic field. Breadcrumb: Science > Environment. Explicitly distinguishes environmental science from environmental studies."
+  },
+  {
+   "url": "https://www.nature.com/subjects/environmental-sciences",
+   "fetched": true,
+   "note": "Nature Portfolio subject page. Defines environmental science as 'the multidisciplinary study of all aspects of the Earth's physical and biological environments'. No deeper subject parent breadcrumb."
+  },
+  {
+   "url": "https://nces.ed.gov/ipeds/cipcode/cipdetail.aspx?y=56&cip=03.0104",
+   "fetched": true,
+   "note": "NCES CIP 2020 code 03.0104 Environmental Science. Parent family: CIP 03 'Natural Resources and Conservation'. Definition explicitly applies biological, chemical, and physical principles."
+  },
+  {
+   "url": "https://nces.ed.gov/ipeds/cipcode/cipdetail.aspx?y=56&cip=03",
+   "fetched": true,
+   "note": "NCES CIP 2020 family 03 'NATURAL RESOURCES AND CONSERVATION'. The parent family of Environmental Science (03.0104)."
+  },
+  {
+   "url": "https://ourenvironment.berkeley.edu/about",
+   "fetched": true,
+   "note": "UC Berkeley ESPM department. Parent college: Rausser College of Natural Resources. Self-described as 'a multidisciplinary program'."
+  },
+  {
+   "url": "https://evsc.as.virginia.edu/",
+   "fetched": true,
+   "note": "UVA Department of Environmental Sciences. Parent: College and Graduate School of Arts & Sciences. Research areas: Ecology, Atmospheric Science, Geosciences, Hydrology — all natural-science sub-disciplines."
+  },
+  {
+   "url": "https://www.wikidata.org/wiki/Special:EntityData/Q188847.json",
+   "fetched": true,
+   "note": "Wikidata Q188847 (environmental science). P279 subclass of Q8008 (earth science); Q8008 P279 includes Q7991 (natural science). Instance of: academic discipline, branch of science."
+  }
+ ],
+ "notes": "SPLIT ACROSS CLASSIFICATION SYSTEMS — core finding: LCC and UDC/FORD directly conflict. LCC places environmental sciences in class G (Geography/Anthropology/Recreation), outside the Q science classes, which is a hard 'opposes' for domain:natural-sciences. By contrast, UDC (class 5) and OECD FORD (section 1) both file it unambiguously within natural sciences at the same structural level as chemistry, biology, and physics. The FORD evidence is especially strong as it is the primary international research classification used by UNESCO, EU Horizon, and national science agencies; it was last revised in Frascati Manual 2015.\n\nFIELD-LEVEL QUESTION: FORD's 1.5 'Earth and related Environmental sciences' is parallel in structure to 1.3 Physical sciences and 1.6 Biological sciences — all are listed as numerically co-equal sub-fields of Natural Sciences. This supports field-level status within domain:natural-sciences, not a sub-sub-field. UDC similarly places 502/504 as a direct child of class 5, at the same depth as 51 (Mathematics) or 59 (Zoology). CIP places it under 'Natural Resources and Conservation' (03), which is an applied/management framing distinct from pure-science — this is a third classification philosophy and is recorded as context, not a vote for or against natural sciences. Institutional patterns are mixed: Berkeley ESPM is in a Natural Resources college (applied), UVA Environmental Sciences is in Arts & Sciences (umbrella), Yale and Stanford operate as standalone environment/sustainability schools. None of the institutional patterns constitutes a clean 'this is natural sciences' placement.\n\nINTERDISCIPLINARITY vs. PARENT: Britannica and Nature both explicitly call it 'interdisciplinary' or 'multidisciplinary' without assigning a single parent domain — these are correctly coded as 'interface'. The orchestrator should apply the two-reading robustness test: the UDC + FORD reading strongly supports domain:natural-sciences; the LCC reading opposes it; the section-13 dual-membership option could be explored given the LCC split. The field-level modeling (vs. sub-field of earth science) appears reasonable given FORD's treatment: 1.5 is not subordinate to another FORD field, it is co-equal.\n\nENVIRONMENTAL SCIENCE vs. ENVIRONMENTAL STUDIES: Britannica explicitly notes environmental science is quantitative and distinct from environmental studies (social/political). NCES CIP has only one code in 03.01 for environmental science (03.0104); no separate environmental studies code exists in the 03.01 group. This sourced distinction confirms the node represents the science sub-discipline, not the humanities/social-science variant.",
+ "unfetched": []
+}

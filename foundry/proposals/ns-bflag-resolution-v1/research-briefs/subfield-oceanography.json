@@ -1,0 +1,124 @@
+{
+ "node_id": "subfield:oceanography",
+ "findings": [
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "opposes",
+   "url": "https://id.loc.gov/authorities/classification/GC1-GC1581.json",
+   "fetched": true,
+   "claim": "The Library of Congress Classification places Oceanography at GC1–GC1581, which is a member of Class G — labelled 'GEOGRAPHY. ANTHROPOLOGY. RECREATION' — not in any earth sciences class.",
+   "quote": "\"Geography. Anthropology. Recreation--Oceanography\" (rdfs:label on the GC1-GC1581 range record; isMemberOfMADSCollection: http://id.loc.gov/authorities/classification/G)"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://udcsummary.info/php/getrecord.php?id=551.46&lang=1",
+   "fetched": true,
+   "claim": "The Universal Decimal Classification places Physical Oceanography at 551.46, directly under 551.4 (Geomorphology / Earth's physical forms) within division 55 (Earth Sciences / Geological sciences).",
+   "quote": "551.4 Geomorphology. Study of the Earth's physical forms 551.46 Physical oceanography. Submarine topography. Ocean floor Including: Seas. Oceans. Waves. Tides"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+   "fetched": true,
+   "claim": "The OECD FORD (Frascati) classification lists Oceanography under top-level field 1.5 'Earth and related Environmental sciences', one of the six Natural Sciences categories.",
+   "quote": "1.5. Earth and related Environmental sciences"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-research-classification-anzsrc/latest-release",
+   "fetched": true,
+   "claim": "The ANZSRC 2020 Fields of Research classification places Oceanography at code 3708 under Division 37 'EARTH SCIENCES', and the ANZSRC–FORD correspondence file explicitly maps 3708 Oceanography to FORD '1.5 Earth and related Environmental sciences'.",
+   "quote": "EARTH SCIENCES | [code 37] ... Oceanography [3708] (sheet3, rows 83 and 91); FORD correspondence: 1.5 Earth and related Environmental sciences | 37 Earth sciences ... 3708 Oceanography"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://www.britannica.com/science/oceanography",
+   "fetched": true,
+   "claim": "Britannica categorises the Oceanography article under the breadcrumb 'Science > Earth Science, Geologic Time & Fossils > Earth Sciences', and defines oceanography as a 'scientific discipline concerned with all aspects of the world's oceans and seas'.",
+   "quote": "oceanography , scientific discipline concerned with all aspects of the world's oceans and seas, including their physical and chemical properties, their origin and geologic framework, and the life forms that inhabit the marine environment"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "supports",
+   "url": "https://scripps.ucsd.edu/about",
+   "fetched": true,
+   "claim": "Scripps Institution of Oceanography (UC San Diego), one of the world's leading oceanographic research centres, explicitly describes itself as a global earth science research institution, directly linking oceanography to the earth sciences.",
+   "quote": "Scripps Institution of Oceanography at UC San Diego is one of the most important centers for global earth science research and education in the world. Scripps scientists work to understand and protect the planet by investigating our oceans, Earth, and atmosphere"
+  },
+  {
+   "parent_candidate": "field:earth-sciences",
+   "stance": "interface",
+   "url": "https://eapsweb.mit.edu/about",
+   "fetched": true,
+   "claim": "MIT's Department of Earth, Atmospheric and Planetary Sciences (EAPS) was formed in 1983 by merging the Department of Meteorology and Physical Oceanography with the Department of Earth and Planetary Sciences, confirming institutional co-housing of oceanography under earth sciences — but the merger into a combined department also signals its interdisciplinary nature alongside atmospheric and planetary sciences.",
+   "quote": "In 1983, the Department of Meteorology and Physical Oceanography (Course XIX) merged with the Department of Earth and Planetary Sciences to form the department we know today as EAPS (Course XII). EAPS is a vibrant learning community where the turbulent oceans and atmosphere, the inaccessible depths of the inner Earth, the distant planets, and the origins of life all come together under one intellectual roof."
+  }
+ ],
+ "source_inventory": [
+  {
+   "url": "https://id.loc.gov/authorities/classification/GC1-GC1581.json",
+   "fetched": true,
+   "note": "LCC range record for Oceanography (GC1–GC1581). isMemberOfMADSCollection: Class G (Geography. Anthropology. Recreation). rdfs:label synthesises as 'Geography. Anthropology. Recreation--Oceanography'. Related authorities include QC801-QC809 (geomagnetism/earth currents in Q/Science) and QE39 (submarine geology). Fetched via curl."
+  },
+  {
+   "url": "https://id.loc.gov/authorities/classification/G.json",
+   "fetched": true,
+   "note": "LCC Class G top-level record. rdfs:comment: 'G -- GEOGRAPHY. ANTHROPOLOGY. RECREATION'. GC1-GC1581 is listed as a direct member of this collection."
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=551.46&lang=1",
+   "fetched": true,
+   "note": "UDC record for 551.46 (Physical oceanography. Submarine topography. Ocean floor). Parent: 551.4 (Geomorphology). Division: 55 (Earth Sciences. Geological sciences)."
+  },
+  {
+   "url": "https://udcsummary.info/php/getrecord.php?id=55&lang=1",
+   "fetched": true,
+   "note": "UDC division 55 record confirming '55 Earth Sciences. Geological sciences' as parent of 551.46."
+  },
+  {
+   "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+   "fetched": true,
+   "note": "ARIS (Slovenian Research Agency) FORD/Frascati classification list. Oceanography not named individually at the top-level page — this page only shows top-level FORD categories including '1.5 Earth and related Environmental sciences'. The ANZSRC–FORD correspondence file (ABS) confirms the mapping of Oceanography to 1.5."
+  },
+  {
+   "url": "https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-research-classification-anzsrc/latest-release",
+   "fetched": true,
+   "note": "ANZSRC 2020 FoR classification (ABS). Downloaded anzsrc2020_for.xlsx and anzsrc2020for_ford_correspondence.xlsx. Oceanography = Group 3708 under Division 37 Earth Sciences. FORD correspondence file maps 3708 to FORD 1.5 Earth and related Environmental sciences."
+  },
+  {
+   "url": "https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-research-classification-anzsrc/2020/anzsrc2020_for.xlsx",
+   "fetched": true,
+   "note": "ANZSRC 2020 FoR Excel spreadsheet. Downloaded and parsed. Sheet3 row 83: EARTH SCIENCES [37]; row 91: Oceanography [3708]. Scope note: 'This group covers oceanography.'"
+  },
+  {
+   "url": "https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-research-classification-anzsrc/2020/anzsrc2020for_ford_correspondence.xlsx",
+   "fetched": true,
+   "note": "ANZSRC–FORD correspondence Excel. Sheet2 row 53: '1.5 Earth and related Environmental sciences | 37 Earth sciences'; row 60: '3708 Oceanography' — both in the 1.5/37 block."
+  },
+  {
+   "url": "https://www.britannica.com/science/oceanography",
+   "fetched": true,
+   "note": "Britannica article on Oceanography. Breadcrumb (JSON-LD): Science > Earth Science, Geologic Time & Fossils > Earth Sciences. Definition: 'scientific discipline concerned with all aspects of the world's oceans and seas'. Cross-refers to 'hydrologic sciences: Study of the oceans and seas'."
+  },
+  {
+   "url": "https://scripps.ucsd.edu/about",
+   "fetched": true,
+   "note": "Scripps Institution of Oceanography about page. Self-describes as 'one of the most important centers for global earth science research'. Education offerings cover 'ocean, earth, and atmospheric sciences'."
+  },
+  {
+   "url": "https://eapsweb.mit.edu/about",
+   "fetched": true,
+   "note": "MIT EAPS about page. Department formed 1983 from merger of 'Department of Meteorology and Physical Oceanography' with 'Department of Earth and Planetary Sciences'. Graduate programmes include 'Atmospheres, Oceans + Climate' alongside geology, geophysics, planetary science."
+  },
+  {
+   "url": "https://oceanservice.noaa.gov/facts/oceanography.html",
+   "fetched": false,
+   "note": "NOAA oceanography facts page — 404 not found. NOAA government shutdown in effect at fetch time."
+  }
+ ],
+ "notes": "OVERALL SIGNAL: Five of six live-fetched substantive sources (UDC, FORD/ANZSRC, Britannica, Scripps, MIT EAPS) file or frame oceanography under earth sciences. The one outlier is LCC Class G, which places it under 'Geography. Anthropology. Recreation' — a well-known idiosyncrasy of LCC that groups physical geography and its cognate subdisciplines (GC Oceanography, GB Physical geography / Hydrology, GE Environmental Sciences) together under a broad G class that cuts across what most international science classification schemes treat as earth sciences. The LCC stance is a classification-system artefact, not a disciplinary statement.\n\nCLASS-G CLUSTER CONSISTENCY CHECK (mandate from contest description): The three disciplines in the cluster — oceanography, hydrology, geomorphology — are treated IDENTICALLY by LCC (all in Class G) and IDENTICALLY by UDC (all within 551.x under division 55 Earth Sciences: 551.46 oceanography, 551.4 geomorphology, the UDC 551.48 range covers hydrology). FORD/ANZSRC likewise groups them all in Division 37 Earth Sciences (3707 Hydrology, 3708 Oceanography, 3709 Physical geography and environmental geoscience which includes geomorphology). The class-G cluster therefore does NOT differentiate between the three: a consistent ruling of 'earth sciences' is fully supported by UDC, FORD, ANZSRC, Britannica, and institutional homes; LCC is the sole dissenting scheme and it treats all three identically under G.\n\nSECTION-13 DUAL MEMBERSHIP: The MIT EAPS institutional home and Britannica's cross-reference to 'hydrologic sciences' signal that oceanography has strong connections to atmospheric and climate sciences, but no fetched source claims geography as a primary filing. There is no live-fetched evidence supporting a geography-side home (the only geography hook is LCC Class G, whose label is not 'Geography' alone but 'Geography. Anthropology. Recreation'). Section-13 dual membership would require a source explicitly filing it under geography as a co-equal parent, which is not present here.\n\nCONFIDENCE: The earth-sciences placement is well-grounded across independent schemes (UDC, FORD, ANZSRC, Britannica breadcrumb, two major research institutions). LCC Class G is a known structural anomaly in LCC (it groups geography-adjacent physical sciences) and does not constitute a geography vote in the absence of a geography node in the Noosphere graph. The current proposed edge (part_of -> field:earth-sciences, confidence 0.8) is well-supported; confidence could potentially be raised to 0.85–0.9 given the breadth of agreement.\""
+}

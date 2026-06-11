@@ -1,0 +1,262 @@
+{
+ "batch": "d",
+ "summaries": [
+  {
+   "node_id": "field:environmental-science",
+   "summary": "Environmental science is an interdisciplinary natural-science field that, in Encyclopaedia Britannica's words, is an \"interdisciplinary academic field that draws on ecology, geology, meteorology, biology, chemistry, engineering, and physics to study environmental problems and human impacts on the environment.\" Nature Portfolio similarly defines it as \"the multidisciplinary study of all aspects of the Earth's physical and biological environments,\" encompassing areas such as environmental chemistry, soil science, ecology, and climatology. The field is distinguished from environmental studies, which Britannica notes \"emphasizes the human relationship with the environment and the social and political dimensions thereof.\" Classification systems place it among the natural sciences: the Universal Decimal Classification files \"Environmental science. Conservation of natural resources. Threats to the environment and protection against them\" within its main class 5, \"MATHEMATICS. NATURAL SCIENCES.\" Together these sources frame environmental science as a bridging discipline that integrates multiple natural-science domains.",
+   "citations": [
+    {
+     "url": "https://www.britannica.com/science/environmental-science",
+     "supports": "Britannica's definition framing environmental science as an interdisciplinary field drawing on multiple sciences, and its distinction from environmental studies",
+     "quote": "interdisciplinary academic field that draws on ecology, geology, meteorology, biology, chemistry, engineering, and physics to study environmental problems and human impacts on the environment",
+     "fetched": true
+    },
+    {
+     "url": "https://www.britannica.com/science/environmental-science",
+     "supports": "Distinction between environmental science and environmental studies",
+     "quote": "emphasizes the human relationship with the environment and the social and political dimensions thereof",
+     "fetched": true
+    },
+    {
+     "url": "https://www.nature.com/subjects/environmental-sciences",
+     "supports": "Nature Portfolio's definition of environmental science as a multidisciplinary study",
+     "quote": "the multidisciplinary study of all aspects of the Earth's physical and biological environments",
+     "fetched": true
+    },
+    {
+     "url": "https://udcsummary.info/php/getrecord.php?id=5&lang=1",
+     "supports": "UDC places environmental science within the natural-sciences main class",
+     "quote": "MATHEMATICS. NATURAL SCIENCES",
+     "fetched": true
+    }
+   ],
+   "self_flags": [],
+   "unfetched": []
+  },
+  {
+   "node_id": "subfield:biophysics",
+   "summary": "Biophysics is a discipline at the interface of the physical and life sciences. Encyclopaedia Britannica defines it as a \"discipline concerned with the application of the principles and methods of physics and the other physical sciences to the solution of biological problems,\" noting that biophysics and the closely related molecular biology \"now are firmly established as cornerstones of modern biology.\" The Biophysical Society, the field's principal professional society, states its mission as \"To lead an innovative global community working at the interface of the physical and life sciences, across all levels of complexity,\" reflecting a community that spans both parent domains rather than residing in one alone. Classification practice mirrors this dual character: the Universal Decimal Classification files biophysics under its life-sciences captions, listing \"Material bases of life. Biochemistry. Molecular biology. Biophysics\" within \"Biological sciences in general,\" while physics communities study the same subject matter under headings such as the physics of living systems.",
+   "citations": [
+    {
+     "url": "https://www.britannica.com/science/biophysics",
+     "supports": "Britannica's definition of biophysics as applying physics to biological problems",
+     "quote": "discipline concerned with the application of the principles and methods of physics and the other physical sciences to the solution of biological problems",
+     "fetched": true
+    },
+    {
+     "url": "https://www.britannica.com/science/biophysics",
+     "supports": "Britannica framing biophysics as a cornerstone of modern biology",
+     "quote": "now are firmly established as cornerstones of modern biology",
+     "fetched": true
+    },
+    {
+     "url": "https://www.biophysics.org/about-bps/mission-vision",
+     "supports": "Biophysical Society self-description placing biophysics at the interface of the physical and life sciences",
+     "quote": "To lead an innovative global community working at the interface of the physical and life sciences, across all levels of complexity.",
+     "fetched": true
+    },
+    {
+     "url": "https://udcsummary.info/php/getrecord.php?id=577&lang=1",
+     "supports": "UDC files biophysics under the life-sciences captions",
+     "quote": "Material bases of life. Biochemistry. Molecular biology. Biophysics",
+     "fetched": true
+    }
+   ],
+   "self_flags": [],
+   "unfetched": []
+  },
+  {
+   "node_id": "subfield:biochemistry",
+   "summary": "Biochemistry is a discipline at the interface of chemistry and the life sciences. Encyclopaedia Britannica defines it as \"the study of the chemical substances and processes that occur in plants, animals, and microorganisms and of the changes they undergo during development and life.\" Its dual character is visible in classification systems: the Library of Congress Classification files biochemistry under the hierarchy \"Science--Chemistry--Organic chemistry--Biochemistry,\" while Britannica's own subject breadcrumb places the article under Science > Biology > Branches of Biology, and the Universal Decimal Classification lists \"Material bases of life. Biochemistry. Molecular biology. Biophysics\" under \"Biological sciences in general.\" The American Society for Biochemistry and Molecular Biology describes its community as \"molecular life scientists\" and frames its mission as advancing understanding of \"the molecular nature of life processes,\" reflecting a field that draws co-equally on chemical methods and biological subject matter.",
+   "citations": [
+    {
+     "url": "https://www.britannica.com/science/biochemistry",
+     "supports": "Britannica's definition of biochemistry",
+     "quote": "the study of the chemical substances and processes that occur in plants, animals, and microorganisms and of the changes they undergo during development and life",
+     "fetched": true
+    },
+    {
+     "url": "https://id.loc.gov/authorities/classification/QD415-QD436.json",
+     "supports": "LCC files biochemistry under chemistry",
+     "quote": "Science--Chemistry--Organic chemistry--Biochemistry",
+     "fetched": true
+    },
+    {
+     "url": "https://www.britannica.com/science/biochemistry",
+     "supports": "Britannica breadcrumb classifying biochemistry under Branches of Biology",
+     "quote": "Branches of Biology",
+     "fetched": true
+    },
+    {
+     "url": "https://udcsummary.info/php/getrecord.php?id=577&lang=1",
+     "supports": "UDC files biochemistry under the life-sciences captions",
+     "quote": "Material bases of life. Biochemistry. Molecular biology. Biophysics",
+     "fetched": true
+    },
+    {
+     "url": "https://www.asbmb.org/about",
+     "supports": "ASBMB describing its community as molecular life scientists and its mission re molecular nature of life",
+     "quote": "molecular life scientists",
+     "fetched": true
+    },
+    {
+     "url": "https://www.asbmb.org/about",
+     "supports": "ASBMB mission to promote understanding of the molecular nature of life processes",
+     "quote": "the molecular nature of life processes",
+     "fetched": true
+    }
+   ],
+   "self_flags": [],
+   "unfetched": []
+  },
+  {
+   "node_id": "subfield:oceanography",
+   "summary": "Oceanography is an earth science concerned with the world's oceans and seas. Encyclopaedia Britannica defines it as the \"scientific discipline concerned with all aspects of the world's oceans and seas, including their physical and chemical properties, their origin and geologic framework, and the life forms that inhabit the marine environment.\" Britannica's subject breadcrumb places the article under Science > Earth Science, Geologic Time & Fossils > Earth Sciences. Classification systems likewise group it with the earth sciences: the Universal Decimal Classification lists \"Physical oceanography. Submarine topography. Ocean floor\" among the captions of its earth-sciences division. Physical oceanography is institutionally associated with earth-science research, and shares adjacency with physical geography, but its disciplinary home is the earth sciences.",
+   "citations": [
+    {
+     "url": "https://www.britannica.com/science/oceanography",
+     "supports": "Britannica's definition of oceanography",
+     "quote": "scientific discipline concerned with all aspects of the world's oceans and seas, including their physical and chemical properties, their origin and geologic framework, and the life forms that inhabit the marine environment",
+     "fetched": true
+    },
+    {
+     "url": "https://www.britannica.com/science/oceanography",
+     "supports": "Britannica breadcrumb placing oceanography under Earth Sciences",
+     "quote": "Earth Sciences",
+     "fetched": true
+    },
+    {
+     "url": "https://udcsummary.info/php/getrecord.php?id=551.46&lang=1",
+     "supports": "UDC caption for physical oceanography within the earth-sciences division",
+     "quote": "Physical oceanography. Submarine topography. Ocean floor",
+     "fetched": true
+    }
+   ],
+   "self_flags": [],
+   "unfetched": []
+  },
+  {
+   "node_id": "subfield:hydrology",
+   "summary": "Hydrology is an earth science concerned with the waters of the Earth. Encyclopaedia Britannica defines it as the \"scientific discipline concerned with the waters of the Earth, including their occurrence, distribution, and circulation via the hydrologic cycle and interactions with living things,\" adding that it \"also deals with the chemical and physical properties of water in all its phases.\" Britannica's subject breadcrumb places the article under Science > Earth Science, Geologic Time & Fossils > Earth Sciences. The Universal Decimal Classification similarly files \"Hydrosphere. Water in general. Hydrology\" within its division \"Earth Sciences. Geological sciences.\" Hydrology shares adjacency with physical geography, but classification and reference sources frame its disciplinary home as the earth sciences.",
+   "citations": [
+    {
+     "url": "https://www.britannica.com/science/hydrology",
+     "supports": "Britannica's definition of hydrology",
+     "quote": "scientific discipline concerned with the waters of the Earth, including their occurrence, distribution, and circulation via the hydrologic cycle and interactions with living things",
+     "fetched": true
+    },
+    {
+     "url": "https://www.britannica.com/science/hydrology",
+     "supports": "Britannica noting hydrology deals with physical and chemical properties of water",
+     "quote": "also deals with the chemical and physical properties of water in all its phases",
+     "fetched": true
+    },
+    {
+     "url": "https://www.britannica.com/science/hydrology",
+     "supports": "Britannica breadcrumb placing hydrology under Earth Sciences",
+     "quote": "Earth Sciences",
+     "fetched": true
+    },
+    {
+     "url": "https://udcsummary.info/php/getrecord.php?id=556&lang=1",
+     "supports": "UDC files hydrology within the earth-sciences division",
+     "quote": "Hydrosphere. Water in general. Hydrology",
+     "fetched": true
+    },
+    {
+     "url": "https://udcsummary.info/php/getrecord.php?id=556&lang=1",
+     "supports": "UDC parent division for hydrology",
+     "quote": "Earth Sciences. Geological sciences",
+     "fetched": true
+    }
+   ],
+   "self_flags": [],
+   "unfetched": []
+  },
+  {
+   "node_id": "subfield:geomorphology",
+   "summary": "Geomorphology is an earth science concerned with the Earth's surface forms. Encyclopaedia Britannica defines it as the \"scientific discipline concerned with the description and classification of the Earth's topographic features\" and directs readers, for fuller treatment, to its article on geology, indicating its close alignment with the geological sciences. The Universal Decimal Classification files it under the caption \"Geomorphology. Study of the Earth's physical forms\" within its earth-sciences division. Geomorphology shares adjacency with physical geography, but its disciplinary home, as reflected in reference and classification sources, is the earth sciences.",
+   "citations": [
+    {
+     "url": "https://www.britannica.com/science/geomorphology",
+     "supports": "Britannica's definition of geomorphology",
+     "quote": "scientific discipline concerned with the description and classification of the Earth's topographic features",
+     "fetched": true
+    },
+    {
+     "url": "https://www.britannica.com/science/geomorphology",
+     "supports": "Britannica directing fuller treatment to its geology article, aligning geomorphology with geology",
+     "quote": "For full treatment, see geology: Geomorphology",
+     "fetched": true
+    },
+    {
+     "url": "https://udcsummary.info/php/getrecord.php?id=551.4&lang=1",
+     "supports": "UDC caption filing geomorphology within the earth-sciences division",
+     "quote": "Geomorphology. Study of the Earth's physical forms",
+     "fetched": true
+    }
+   ],
+   "self_flags": [],
+   "unfetched": []
+  },
+  {
+   "node_id": "subfield:geodesy",
+   "summary": "Geodesy is the science of measuring the Earth's geometry and physical fields, occupying a dual position between astronomy and the earth sciences. The International Association of Geodesy describes its primary aim as to \"determine the size, shape, gravity field and rotation of the Earth\" as a function of space and time, monitoring the Earth system and measuring global change. Its classical heritage is preserved in library systems: the Library of Congress Classification files geodesy under \"Science--Astronomy--Geodesy,\" and the Universal Decimal Classification places \"Geodesy. Surveying. Photogrammetry. Remote sensing. Cartography\" inside its class \"Astronomy. Astrophysics. Space research. Geodesy.\" Its modern community framing, however, is geoscientific: the International Association of Geodesy is \"one of the constituent associations of the International Union of Geodesy and Geophysics (IUGG),\" situating contemporary geodesy among the geophysical and earth sciences.",
+   "citations": [
+    {
+     "url": "https://geodesy.science/about-geodesy/",
+     "supports": "IAG definition of geodesy's aim",
+     "quote": "determine the size, shape, gravity field and rotation of the Earth",
+     "fetched": true
+    },
+    {
+     "url": "https://id.loc.gov/authorities/classification/QB275-QB343.json",
+     "supports": "LCC files geodesy under astronomy",
+     "quote": "Science--Astronomy--Geodesy",
+     "fetched": true
+    },
+    {
+     "url": "https://udcsummary.info/php/getrecord.php?id=528&lang=1",
+     "supports": "UDC places geodesy within its astronomy class",
+     "quote": "Geodesy. Surveying. Photogrammetry. Remote sensing. Cartography",
+     "fetched": true
+    },
+    {
+     "url": "https://udcsummary.info/php/getrecord.php?id=528&lang=1",
+     "supports": "UDC parent class grouping geodesy with astronomy",
+     "quote": "Astronomy. Astrophysics. Space research. Geodesy",
+     "fetched": true
+    },
+    {
+     "url": "https://geodesy.science/geodesy-earth-iag/",
+     "supports": "IAG as a constituent association of IUGG, situating geodesy in the geosciences",
+     "quote": "one of the constituent associations of the International Union of Geodesy and Geophysics (IUGG)",
+     "fetched": true
+    }
+   ],
+   "self_flags": [],
+   "unfetched": []
+  }
+ ],
+ "spn_queue": [
+  "https://www.britannica.com/science/environmental-science",
+  "https://www.nature.com/subjects/environmental-sciences",
+  "https://udcsummary.info/php/getrecord.php?id=5&lang=1",
+  "https://www.britannica.com/science/biophysics",
+  "https://www.biophysics.org/about-bps/mission-vision",
+  "https://udcsummary.info/php/getrecord.php?id=577&lang=1",
+  "https://www.britannica.com/science/biochemistry",
+  "https://id.loc.gov/authorities/classification/QD415-QD436.json",
+  "https://www.asbmb.org/about",
+  "https://www.britannica.com/science/oceanography",
+  "https://udcsummary.info/php/getrecord.php?id=551.46&lang=1",
+  "https://www.britannica.com/science/hydrology",
+  "https://udcsummary.info/php/getrecord.php?id=556&lang=1",
+  "https://www.britannica.com/science/geomorphology",
+  "https://udcsummary.info/php/getrecord.php?id=551.4&lang=1",
+  "https://geodesy.science/about-geodesy/",
+  "https://id.loc.gov/authorities/classification/QB275-QB343.json",
+  "https://udcsummary.info/php/getrecord.php?id=528&lang=1",
+  "https://geodesy.science/geodesy-earth-iag/"
+ ]
+}

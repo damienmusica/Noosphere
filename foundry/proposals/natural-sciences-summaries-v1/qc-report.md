@@ -77,3 +77,23 @@ and recorded as such.
 ### SPN ledger (appended at end of session #12 pass)
 
 (see table below — appended after the serial pass completed)
+
+## Addendum — batch-d (the seven clause-6-resolved nodes, same session)
+
+After `ns-bflag-resolution-v1` resolved the seven B-contested nodes, a fourth Opus order
+(separate context, identical contract) wrote their summaries with the resolutions as binding
+consistency duties (interface framing for the three §13 dual-membership nodes; earth-science
+framing for the class-G cluster; field-level natural-science framing for environmental-science).
+Raw set preserved as `summaries.batch-d.json`.
+
+| Metric (batch-d, 7 items) | Value |
+|---|---|
+| Cited-URL liveness | 30/30 (0 dead) — 0% streak holds |
+| Verbatim quote checks (citations + every inline span) | 30/30 + 29/29 |
+| Hint-laundering / misattribution | 0 / 0 |
+| QC edits | **1 substantive trim** (oceanography: uncited "institutionally associated…" clause reduced to the cluster-standard closing sentence) |
+| QC backstop | 1 — "physics of living systems" heading verified against the cached PhySH disciplines JSON (discipline "Physics of Living Systems" present) |
+
+Session editorial totals: **41 summaries, 4 substantive QC trims, citation hallucination 0%
+(86/86 unique URLs live or snapshot-verified; 122/122 inline spans verbatim) — 8th consecutive
+0% batch.** Reviewed-node summary coverage after this batch: **188/188**.
