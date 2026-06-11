@@ -225,3 +225,40 @@ Detail notes:
 Wayback Save Page Now was requested for all 26 evidence URLs of this write pass (23 written
 concepts' API URLs + the 2 measurement search URLs + C459310). Results are appended below when
 the serial archiving pass completes.
+
+Final SPN results (26 evidence URLs; Wayback anonymous-SPN throttling hit mid-pass — the
+throttled tail was recovered by a spaced retry once the limit lifted):
+
+| evidence | result | snapshot |
+|---|---|---|
+| subfield:computational-complexity-theory | archived | https://web.archive.org/web/20260611022445/https://api.openalex.org/concepts/C179799912 |
+| subfield:software-engineering | archived | https://web.archive.org/web/20260611022625/https://api.openalex.org/concepts/C115903868 |
+| subfield:computer-vision | archived | https://web.archive.org/web/20260611022801/https://api.openalex.org/concepts/C31972630 |
+| subfield:natural-language-processing | archived | https://web.archive.org/web/20260611022920/https://api.openalex.org/concepts/C204321447 |
+| subfield:human-computer-interaction | archived | https://web.archive.org/web/20260611023109/https://api.openalex.org/concepts/C107457646 |
+| subfield:cryptography | archived | https://web.archive.org/web/20260611023235/https://api.openalex.org/concepts/C178489894 |
+| subfield:computer-security | archived | https://web.archive.org/web/20260611023415/https://api.openalex.org/concepts/C38652104 |
+| subfield:theoretical-computer-science | archived | https://web.archive.org/web/20260611023536/https://api.openalex.org/concepts/C80444323 |
+| subfield:information-retrieval | archived | https://web.archive.org/web/20260611023739/https://api.openalex.org/concepts/C23123220 |
+| subfield:knowledge-organization | archived | https://web.archive.org/web/20260611023908/https://api.openalex.org/concepts/C2779810430 |
+| subfield:digital-libraries | archived | https://web.archive.org/web/20260611024131/https://api.openalex.org/concepts/C513874922 |
+| subfield:bibliometrics | archived | https://web.archive.org/web/20260611024435/https://api.openalex.org/concepts/C178315738 |
+| subfield:social-computing | archived | https://web.archive.org/web/20260611024749/https://api.openalex.org/concepts/C74216064 |
+| subfield:history-of-computing | archived | https://web.archive.org/web/20260611025811/https://api.openalex.org/concepts/C2778653333 |
+| field:computer-science | archived | https://web.archive.org/web/20260611030113/https://api.openalex.org/concepts/C41008148 |
+| subfield:computer-networks | archived | https://web.archive.org/web/20260611030448/https://api.openalex.org/concepts/C31258907 |
+| subfield:artificial-intelligence | archived | https://web.archive.org/web/20260611030915/https://api.openalex.org/concepts/C154945302 |
+| subfield:visualization | archived | https://web.archive.org/web/20260611031238/https://api.openalex.org/concepts/C36464697 |
+| subfield:machine-learning | archived | https://web.archive.org/web/20260611031540/https://api.openalex.org/concepts/C119857082 |
+| subfield:algorithms-and-data-structures | archived | https://web.archive.org/web/20260611031834/https://api.openalex.org/concepts/C34628019 |
+| subfield:programming-languages | archived | https://web.archive.org/web/20260611032210/https://api.openalex.org/concepts/C18701968 |
+| subfield:computer-graphics | archived | https://web.archive.org/web/20260611032449/https://api.openalex.org/concepts/C77660652 |
+| subfield:formal-languages-and-automata-theory | archived | https://web.archive.org/web/20260611032730/https://api.openalex.org/concepts/C116248031 |
+| sci-comp-search | **[SPN-FAILED]** | save_http=000 (throttle) — next-session retry queue |
+| quantum-search | **[SPN-FAILED]** | save_http=000 (throttle) — next-session retry queue |
+| sci-comp-concept | **[SPN-FAILED]** | save_http=000 (throttle) — next-session retry queue |
+
+**Success rate: 23/26 (88.5%) — all 23 written nodes' concept evidence URLs archived (100%);** the 3 failures are
+measurement-only URLs (the 2 search queries — SPN rejected the querystring URLs under throttle — and the C459310
+measurement concept). The re-audit path does not depend on SPN: `as_of` + entity URL remain the primary
+re-query keys; snapshots are reinforcement, per the standing rule.

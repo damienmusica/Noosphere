@@ -12,6 +12,8 @@
     "foundry:validate-batches": "tsx scripts/foundry/validate-batches.ts",
     "foundry:proposal-skeleton": "tsx scripts/foundry/build-proposal-skeleton.ts",
     "foundry:resolve-wikidata": "tsx scripts/foundry/resolve-wikidata.ts",
+    "foundry:goldenset": "tsx scripts/foundry/goldenset-check.ts",
+    "foundry:claim-anchor": "tsx scripts/foundry/claim-anchor-check.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

@@ -243,7 +243,12 @@ export const foundrySourcePackSchema = z
     // v3 (same shape, scoring-knowledge change): journal/periodical/episode/
     // family-name homonym exclusion, negative-score auto-reject (wrong-kind
     // best candidate -> unresolved), parenthetical query sanitization.
-    version: z.literal(3),
+    // v4 (same shape, query-strategy + scoring change, three measured failure
+    // families only): singular-form fallback for plural seed labels,
+    // compound-label component decomposition with forced-ambiguous component
+    // anchors, orphan-stub (0 sitelinks + 0 English aliases) penalty into the
+    // auto-reject path.
+    version: z.literal(4),
     provider: z.literal("wikidata"),
     batch_id: batchIdSchema,
     batch_title: z.string().min(1),
@@ -251,7 +256,7 @@ export const foundrySourcePackSchema = z
     generator: z
       .object({
         name: z.string().min(1),
-        version: z.literal(3),
+        version: z.literal(4),
       })
       .strict(),
     request_policy: requestPolicySchema,
