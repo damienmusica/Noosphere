@@ -4269,7 +4269,7 @@
     "source": "field:economics",
     "target": "domain:social-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4289,7 +4289,7 @@
     "source": "field:sociology",
     "target": "domain:social-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4309,7 +4309,7 @@
     "source": "field:political-science",
     "target": "domain:social-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4329,7 +4329,7 @@
     "source": "field:education",
     "target": "domain:social-sciences",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4447,7 +4447,7 @@
     "source": "subfield:labor-economics",
     "target": "field:economics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4485,7 +4485,7 @@
     "source": "subfield:public-finance",
     "target": "field:economics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4504,7 +4504,7 @@
     "source": "subfield:international-economics",
     "target": "field:economics",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4542,7 +4542,7 @@
     "source": "subfield:social-stratification",
     "target": "field:sociology",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4635,7 +4635,7 @@
     "source": "subfield:international-relations",
     "target": "field:political-science",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4654,7 +4654,7 @@
     "source": "subfield:comparative-politics",
     "target": "field:political-science",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4710,7 +4710,7 @@
     "source": "subfield:constitutional-law",
     "target": "field:law",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4729,7 +4729,7 @@
     "source": "subfield:international-law",
     "target": "field:law",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4748,7 +4748,7 @@
     "source": "subfield:criminal-law",
     "target": "field:law",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4767,7 +4767,7 @@
     "source": "subfield:civil-law",
     "target": "field:law",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4786,7 +4786,7 @@
     "source": "subfield:cultural-anthropology",
     "target": "field:anthropology",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4823,7 +4823,7 @@
     "source": "subfield:curriculum-and-instruction",
     "target": "field:education",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4842,7 +4842,7 @@
     "source": "subfield:educational-policy",
     "target": "field:education",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4861,7 +4861,7 @@
     "source": "subfield:higher-education",
     "target": "field:education",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -4880,7 +4880,7 @@
     "source": "subfield:special-education",
     "target": "field:education",
     "relation": "part_of",
-    "confidence": 1.0,
+    "confidence": 1,
     "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
@@ -5064,5 +5064,507 @@
       "proposed_at": "2026-06-11"
     },
     "note": "OECD FORD 5.7 'Social and economic geography' — the division co-names the social/human and economic wings of geography (captured 2026-06-11); LCC GF1-900 'Human ecology. Anthropogeography' as the human-geography LCC anchor (captured 2026-06-11). [UNFETCHED] community evidence: AAG Economic Geography specialty group; Economic Geography journal's geography-department editorial base. || Geography-side membership of the §13 co-equal dual (see edge:economic-geography-part-of-economics): FORD 5.7's explicit co-naming is the captured classification grounding for filing economic geography with the human-geography family."
+  },
+  {
+    "id": "edge:field-music-part-of-domain-arts-and-design",
+    "source": "field:music",
+    "target": "domain:arts-and-design",
+    "relation": "part_of",
+    "confidence": 0.97,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Three independent classification sources (LCC class M, UDC 78, FORD 6.4) unanimously file Music as a major first-level division of the arts domain."
+  },
+  {
+    "id": "edge:field-visual-arts-part-of-domain-arts-and-design",
+    "source": "field:visual-arts",
+    "target": "domain:arts-and-design",
+    "relation": "part_of",
+    "confidence": 0.97,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC subclass N and the UDC 73–77 cluster both provide first-level classification standing for visual arts within the arts domain; FORD 6.4 'arts' co-lists the domain."
+  },
+  {
+    "id": "edge:field-design-part-of-domain-arts-and-design",
+    "source": "field:design",
+    "target": "domain:arts-and-design",
+    "relation": "part_of",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 74 provides an independent top-level arts-classification home for design; LCC NC and NK subclasses file design disciplines within LCC class N; FORD 6.4 'arts' covers applied/design arts."
+  },
+  {
+    "id": "edge:field-performing-arts-part-of-domain-arts-and-design",
+    "source": "field:performing-arts",
+    "target": "domain:arts-and-design",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "FORD 6.4 explicitly names 'performing arts' as a co-equal component of the arts FORD group; UDC 791/792/793.3 provide multiple named arts-classification divisions within UDC class 7."
+  },
+  {
+    "id": "edge:field-architecture-part-of-domain-arts-and-design",
+    "source": "field:architecture",
+    "target": "domain:arts-and-design",
+    "relation": "part_of",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Section-13 co-equal arts-side membership (primary classification home: LCC NA + UDC 72). Engineering-side membership recorded in edge:field-architecture-part-of-domain-engineering-and-technology. No primary marker."
+  },
+  {
+    "id": "edge:field-architecture-part-of-domain-engineering-and-technology",
+    "source": "field:architecture",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.82,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "Section-13 co-equal engineering-side membership (no primary marker). LCC TH845-895 \"Architectural engineering. Structural engineering of buildings\" (class T) + UDC 69 + FORD 2.1, live-captured 2026-06-11; 13c recorded the same handoff evidence. Targets domain:engineering-and-technology directly — re-target to the engineering field-level parent when it lands (quantum-computing precedent: flat rule governs node levels, not edge depth)."
+  },
+  {
+    "id": "edge:subfield-musicology-part-of-field-music",
+    "source": "subfield:musicology",
+    "target": "field:music",
+    "relation": "part_of",
+    "confidence": 0.96,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC subclass ML is a full independent subclass within LCC class M (Music); UDC 78.03 provides a named division within UDC 78; both schemes unanimously file musicology within Music."
+  },
+  {
+    "id": "edge:subfield-music-theory-part-of-field-music",
+    "source": "subfield:music-theory",
+    "target": "field:music",
+    "relation": "part_of",
+    "confidence": 0.94,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC MT5.5-7 and UDC 781.x entries file music theory within LCC class M (Music) and UDC 78 respectively; both schemes agree on Music as the parent."
+  },
+  {
+    "id": "edge:subfield-ethnomusicology-part-of-field-music",
+    "source": "subfield:ethnomusicology",
+    "target": "field:music",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC ML3544-3776 is a major named range within subclass ML under LCC class M; UDC 781.7 provides a named division within UDC 78; both schemes file ethnomusicology within Music."
+  },
+  {
+    "id": "edge:subfield-music-education-part-of-field-music",
+    "source": "subfield:music-education",
+    "target": "field:music",
+    "relation": "part_of",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC subclass MT is a full independent subclass within LCC class M (Music) entirely devoted to music instruction and study; UDC 780.7 provides a classification anchor; both schemes file music education within Music."
+  },
+  {
+    "id": "edge:subfield-art-history-part-of-field-visual-arts",
+    "source": "subfield:art-history",
+    "target": "field:visual-arts",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC N5300-7418 is a major named History range within subclass N; FORD 6.4 explicitly lists 'history of arts' as a component; both scheme files art history within the visual arts classification home."
+  },
+  {
+    "id": "edge:subfield-painting-part-of-field-visual-arts",
+    "source": "subfield:painting",
+    "target": "field:visual-arts",
+    "relation": "part_of",
+    "confidence": 0.97,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC subclass ND and UDC 75 each give painting independent full-class classification standing within the arts hierarchy; both schemes are unanimous."
+  },
+  {
+    "id": "edge:subfield-sculpture-part-of-field-visual-arts",
+    "source": "subfield:sculpture",
+    "target": "field:visual-arts",
+    "relation": "part_of",
+    "confidence": 0.97,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC subclass NB and UDC 730 both provide independent classification standing for sculpture within the visual-arts hierarchy."
+  },
+  {
+    "id": "edge:subfield-printmaking-part-of-field-visual-arts",
+    "source": "subfield:printmaking",
+    "target": "field:visual-arts",
+    "relation": "part_of",
+    "confidence": 0.96,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC subclass NE and UDC 76 each give printmaking independent full-class classification standing within the arts hierarchy; LCC NE sits under LCC class N confirming visual-arts parentage."
+  },
+  {
+    "id": "edge:subfield-photography-part-of-field-visual-arts",
+    "source": "subfield:photography",
+    "target": "field:visual-arts",
+    "relation": "part_of",
+    "confidence": 0.72,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "§13 arts-side edge only; technology-side membership pending clause-6/v1.1 resolution. Capped at proposed (endpoint node is proposed — B-flag, clause-6/v1.1 queue)."
+  },
+  {
+    "id": "edge:subfield-drawing-part-of-field-visual-arts",
+    "source": "subfield:drawing",
+    "target": "field:visual-arts",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC subclass NC sits under LCC class N (Fine Arts/Visual Arts); UDC 741/744 is a named division within UDC 74; drawing programs are classified as fine-art studio practice under visual arts."
+  },
+  {
+    "id": "edge:subfield-graphic-design-part-of-field-design",
+    "source": "subfield:graphic-design",
+    "target": "field:design",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC NC997-1003 files graphic/commercial art design within LCC subclass NC (which is under class N / design wing); UDC 766 is the design-wing entry of UDC 76; both schemes distinguish graphic design from fine-art printmaking."
+  },
+  {
+    "id": "edge:subfield-industrial-design-part-of-field-design",
+    "source": "subfield:industrial-design",
+    "target": "field:design",
+    "relation": "part_of",
+    "confidence": 0.91,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC NK1160-1590 is the named design range within NK; UDC 7.05 provides the arts-side classification anchor for applied/industrial art; both schemes file industrial design within the arts/design classification space."
+  },
+  {
+    "id": "edge:subfield-interior-design-part-of-field-design",
+    "source": "subfield:interior-design",
+    "target": "field:design",
+    "relation": "part_of",
+    "confidence": 0.94,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC NK1700-2195 is a major named range within LCC subclass NK; UDC 747 is a named entry under UDC 745/749 within UDC 74 (design top-level class); both schemes file interior design within the design/applied-arts classification space."
+  },
+  {
+    "id": "edge:subfield-decorative-arts-part-of-field-design",
+    "source": "subfield:decorative-arts",
+    "target": "field:design",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "LCC subclass NK 'Decorative arts' and UDC 745/749 both file decorative arts within the design/applied-arts wing; NK general/history ranges (NK1-806) and the arts-and-crafts movement (NK1135-1149.5) are the backbone of the decorative-arts umbrella."
+  },
+  {
+    "id": "edge:subfield-ceramic-arts-part-of-field-visual-arts",
+    "source": "subfield:ceramic-arts",
+    "target": "field:visual-arts",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 738 is a named division under UDC 73 'Plastic arts', which is a peer of UDC 75 (Painting) and UDC 730 (Sculpture) — all anchored to field:visual-arts in this skeleton; the UDC 73 parent class confirms visual-arts home as the primary grounding scheme."
+  },
+  {
+    "id": "edge:subfield-theatre-studies-part-of-field-performing-arts",
+    "source": "subfield:theatre-studies",
+    "target": "field:performing-arts",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 792 is a named major division within UDC 79 in-scope wing; FORD 6.4 'performing arts' covers theatre; class-P LCC other-home filing does not disqualify per precedent when UDC + community confirm in-continent standing."
+  },
+  {
+    "id": "edge:subfield-dance-part-of-field-performing-arts",
+    "source": "subfield:dance",
+    "target": "field:performing-arts",
+    "relation": "part_of",
+    "confidence": 0.94,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 792.8 and UDC 793.3 provide two named classification entries within the in-scope UDC 79 performing-arts wing; FORD 6.4 'performing arts' covers dance; class-G LCC other-home does not disqualify per precedent."
+  },
+  {
+    "id": "edge:subfield-film-studies-part-of-field-performing-arts",
+    "source": "subfield:film-studies",
+    "target": "field:performing-arts",
+    "relation": "part_of",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 791 is a named major division within UDC 79 in-scope wing; FORD 6.4 'performing arts' covers film; class-P LCC other-home does not disqualify per precedent when UDC + community confirm in-continent standing."
+  },
+  {
+    "id": "edge:subfield-landscape-architecture-part-of-field-architecture",
+    "source": "subfield:landscape-architecture",
+    "target": "field:architecture",
+    "relation": "part_of",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "UDC 712 is a named division within UDC 71 (class 7); landscape architecture is institutionally housed within architecture and design schools (ASLA accreditation, BLA/MLA degrees); class-G/S precedent confirms in-continent standing via UDC 712 + community."
+  },
+  {
+    "id": "edge:subfield-urban-planning-part-of-field-architecture",
+    "source": "subfield:urban-planning",
+    "target": "field:architecture",
+    "relation": "part_of",
+    "confidence": 0.72,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-11"
+    },
+    "note": "§13 social-sciences-continent candidate noted. Confidence reduced to reflect the multi-home contest. Capped at proposed (endpoint node is proposed — B-flag, clause-6/v1.1 queue)."
   }
 ]
