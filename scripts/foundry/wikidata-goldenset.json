@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "description": "Machine-readable regression golden set for scripts/foundry/resolve-wikidata.ts. Encodes every past verified resolution verdict (philosophy 61 + formal sciences 44 + CS 23 + ML-foundations 11), the manual-selection rulings (decision-log (9) path), the upstream gaps, and the rejected orphan stub. The resolver re-run is maintainer-local (network); the comparison (scripts/foundry/goldenset-check.ts) is fully offline against this file — CI stays network-free.",
-  "provenance": "Derived 2026-06-11 (session #10) by joining foundry/batches/*.json seed manifests with /data/nodes.json verified QIDs; manual/gap annotations from the permanent records in foundry/proposals/*/grounding-report.md, qid-adversarial-audit-cis-v1/report.md and the vault decision log (8)(9)(13)(24)(25).",
+  "description": "Machine-readable regression golden set for scripts/foundry/resolve-wikidata.ts. Encodes every past verified resolution verdict (philosophy 61 + formal sciences 44 + CS 23 + ML-foundations 11 + seed-era 13), the manual-selection rulings (decision-log (9) path), the upstream gaps, and the rejected orphan stub. The resolver re-run is maintainer-local (network); the comparison (scripts/foundry/goldenset-check.ts) is fully offline against this file — CI stays network-free.",
+  "provenance": "Derived 2026-06-11 (session #10) by joining foundry/batches/*.json seed manifests with /data/nodes.json verified QIDs; manual/gap annotations from the permanent records in foundry/proposals/*/grounding-report.md, qid-adversarial-audit-cis-v1/report.md and the vault decision log (8)(9)(13)(24)(25). Seed-era entries appended 2026-06-11 (session #11) from qid-adversarial-audit-seed-philosophy-v1 (2 corrected: life-sciences Q864->Q864928, arts-and-design Q735->Q2018526).",
   "expectation_semantics": {
     "verified + rank1_expected": "FAIL if expected_qid absent from candidates; WARN if present but not selected_qid; PASS if selected.",
     "verified + manual_path": "INFO either way — v3 baseline did not surface these as rank-1; an improvement (expected_qid surfaced/selected) is reported as IMPROVED, absence is v3 parity, never FAIL.",
@@ -1178,6 +1178,129 @@
       "expected_qid": "Q1199743",
       "manual_path": true,
       "notes": "session #5 manual: Q1199743 via sitelink+alias verification"
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Formal Sciences",
+      "node_id": "domain:formal-sciences",
+      "verdict": "verified",
+      "expected_qid": "Q816264",
+      "manual_path": true,
+      "notes": "Seed-era human-curated QID, audit-verified (qid-adversarial-audit-seed-philosophy-v1, 2026-06-11)."
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Natural Sciences",
+      "node_id": "domain:natural-sciences",
+      "verdict": "verified",
+      "expected_qid": "Q7991",
+      "manual_path": true,
+      "notes": "Seed-era human-curated QID, audit-verified (qid-adversarial-audit-seed-philosophy-v1, 2026-06-11)."
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Life Sciences",
+      "node_id": "domain:life-sciences",
+      "verdict": "verified",
+      "expected_qid": "Q864928",
+      "manual_path": true,
+      "notes": "Corrected from seed-era Q864 (= Pokemon, wrong referent) by the session-#11 adversarial audit (qid-adversarial-audit-seed-philosophy-v1).",
+      "must_not_select": [
+        "Q864"
+      ]
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Cognitive Sciences",
+      "node_id": "domain:cognitive-sciences",
+      "verdict": "verified",
+      "expected_qid": "Q147638",
+      "manual_path": true,
+      "notes": "Seed-era human-curated QID, audit-verified (qid-adversarial-audit-seed-philosophy-v1, 2026-06-11)."
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Computer and Information Sciences",
+      "node_id": "domain:computer-and-information-sciences",
+      "verdict": "verified",
+      "expected_qid": "Q21198",
+      "manual_path": true,
+      "notes": "Shares Q21198 with field:computer-science - recorded anchor-policy nuance (session #9 identity-conflict finding); referent verified correct."
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Engineering and Technology",
+      "node_id": "domain:engineering-and-technology",
+      "verdict": "verified",
+      "expected_qid": "Q11023",
+      "manual_path": true,
+      "notes": "Compound OECD-style domain label anchored at the 'engineering' discipline entity; no compound entity exists upstream (audit cross-search)."
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Medicine and Health",
+      "node_id": "domain:medicine-and-health",
+      "verdict": "verified",
+      "expected_qid": "Q11190",
+      "manual_path": true,
+      "notes": "Seed-era human-curated QID, audit-verified (qid-adversarial-audit-seed-philosophy-v1, 2026-06-11)."
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Social Sciences",
+      "node_id": "domain:social-sciences",
+      "verdict": "verified",
+      "expected_qid": "Q34749",
+      "manual_path": true,
+      "notes": "Seed-era human-curated QID, audit-verified (qid-adversarial-audit-seed-philosophy-v1, 2026-06-11)."
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Humanities",
+      "node_id": "domain:humanities",
+      "verdict": "verified",
+      "expected_qid": "Q80083",
+      "manual_path": true,
+      "notes": "Seed-era human-curated QID, audit-verified (qid-adversarial-audit-seed-philosophy-v1, 2026-06-11)."
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Arts and Design",
+      "node_id": "domain:arts-and-design",
+      "verdict": "verified",
+      "expected_qid": "Q2018526",
+      "manual_path": true,
+      "notes": "Corrected from seed-era Q735 (= art, general concept; upstream description assigns the discipline-group sense to Q2018526) by the session-#11 adversarial audit.",
+      "must_not_select": [
+        "Q735"
+      ]
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Computer Science",
+      "node_id": "field:computer-science",
+      "verdict": "verified",
+      "expected_qid": "Q21198",
+      "manual_path": true,
+      "notes": "Seed-era human-curated QID, audit-verified (qid-adversarial-audit-seed-philosophy-v1, 2026-06-11)."
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Physics",
+      "node_id": "field:physics",
+      "verdict": "verified",
+      "expected_qid": "Q413",
+      "manual_path": true,
+      "notes": "Seed-era human-curated QID, audit-verified (qid-adversarial-audit-seed-philosophy-v1, 2026-06-11)."
+    },
+    {
+      "batch": "seed:curation-2026-06-02",
+      "seed_label": "Vector Space",
+      "node_id": "concept:vector-space",
+      "verdict": "verified",
+      "expected_qid": "Q125977",
+      "manual_path": true,
+      "notes": "Seed-era human-curated QID, audit-verified (qid-adversarial-audit-seed-philosophy-v1, 2026-06-11)."
     }
   ]
 }

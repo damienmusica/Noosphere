@@ -27,6 +27,7 @@ decision-log dates; PR numbers are the merge trail.
 | `openalex-cis-prevalidation-v1` | B-track CS pre-validation, 2026-06-11 (PR #54): rank-1 19/25, duplicate-QID-link anomaly 4/24 measured; implementation append (session #10) wrote 23 nodes + first triangulation-coverage dashboard. |
 | `qid-adversarial-audit-cis-v1` | First adversarial QID audit, 2026-06-11 (PR #54): 24 refutation agents vs all CS verified QIDs → 0/24 confirmed residual referent errors (≤4.2% upper bound); computer-networks anchor recorded as a permanent watch item. |
 | `qid-adversarial-audit-fs-v1` | Second adversarial QID audit, 2026-06-11 (PR #61): 44 refutation agents vs all FS verified QIDs → 0/44 confirmed (cumulative 0/68); differential-equations thin-anchor watch item; same PR recorded the seed-era bayesian-inference erratum (Q41581 → Q812535). |
+| `qid-adversarial-audit-seed-philosophy-v1` | Third adversarial QID audit, 2026-06-11: 74 agents vs seed-era 13 + philosophy 61 → **2 confirmed seed-era errors corrected** (life-sciences Q864=Pokémon → Q864928; arts-and-design Q735 → Q2018526), philosophy 0/61; cumulative 2/142 — every confirmed error to date is seed-era, pipeline output 0/129. |
 
 Conventions: `report.md` = batch-level summary; `qc-report.md` = orchestrator QC verdicts;
 `grounding-report.md` = per-QID resolver/verification record; `resolution-report.md` = clause-6 /
