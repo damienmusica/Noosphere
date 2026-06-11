@@ -401,6 +401,24 @@ non-coverage, never silently dropped.
   the field (computer-vision/NLP: CCS nests them under AI, UDC files 004.93 as a sibling of 004.8).
   First §13 co-equal dual membership written at skeleton time: information-retrieval → computer
   science (CCS/MSC) and → library-and-information-science (LCC Z699-699.5), no primary marker.
+- 2026-06-11 natural sciences (rulings): medical-physics deferred to medicine-and-health (LCC
+  R895-920 medicine home + medical institutional home — both rule-3 prongs out-of-continent;
+  bioinformatics/biostatistics precedent; a ratified discipline scheme's *absence* of the area —
+  PhySH — counts against in-continent classification presence); optics kept as a peer of AMO
+  physics (two gate schemes' separate majors — LCC QC350-467, UDC 535 — override a discipline
+  scheme's bundling: scheme compression is not a community merger); quantum-information-science
+  accepted as a distinct node from quantum-computing (absorption rule does not fire across
+  distinct referents — QIS umbrella vs computing implementation; nesting is edge-batch business);
+  polymer-chemistry and computational-chemistry absorbed (graph-theory pattern: single-scheme
+  subdivision or cutter + strong society still fails criterion (a); v2 re-split candidates);
+  electrochemistry kept (dual-scheme subdivisions UDC 544.6 + LCC QD551-578 + independent ECS
+  community — ASL-pillar pattern); a discipline-scheme substitution argument is valid only inside
+  the wing whose manifest ratified the scheme (PhySH covers physics subfields, not chemistry);
+  climatology absorbed into atmospheric-science and thermodynamics into statistical-physics
+  (scheme-bundled label rule); celestial mechanics, radiation physics, electromagnetism,
+  radiation chemistry, photochemistry, stratigraphy, GR-as-standalone, network science, energy
+  science, physics education research recorded as deliberate non-coverage (v2/cross-continent
+  candidates per qc-report).
 
 ## 13. Cross-listing standard (multiple `part_of` memberships)
 

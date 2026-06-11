@@ -1,0 +1,715 @@
+{
+ "version": 1,
+ "batch_id": "batch:natural-sciences-skeleton-v1",
+ "proposed_by": {
+  "model_name": "Claude Sonnet",
+  "model_version": "claude-sonnet-4-6",
+  "proposed_at": "2026-06-11"
+ },
+ "nodes": [
+  {
+   "id": "field:chemistry",
+   "type": "field",
+   "domain": "natural_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Chemistry",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q2329"
+   },
+   "source_hint": "UDC 54 'Chemistry. Crystallography. Mineralogy' (captured baseline 2026-06-11). LCC QD1-999 Chemistry (captured baseline 2026-06-11). OECD FORD 1.4 'Chemical sciences' (captured baseline 2026-06-11). Wikidata Q2329 — unverified training-knowledge hint.",
+   "rationale": "Major LCC subclass QD, UDC class 54, and FORD 1.4 all give chemistry field-level standing; named faculties and departments at every research university satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; the boundary with biochemistry (UDC 577, life sciences) is pre-registered and covered under subfield:biochemistry below.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:astronomy",
+   "type": "field",
+   "domain": "natural_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Astronomy",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q473"
+   },
+   "source_hint": "UDC 52 'Astronomy. Astrophysics. Space research. Geodesy' (captured baseline 2026-06-11). LCC QB1-991 Astronomy (captured baseline 2026-06-11). OECD FORD 1.3 'Physical sciences' covers astrophysics (captured baseline 2026-06-11). Wikidata Q473 — unverified training-knowledge hint.",
+   "rationale": "LCC gives astronomy its own major subclass QB; UDC class 52 is a top-level natural-sciences class; department-level standing (observatories, astronomy departments) satisfies the community criterion.",
+   "uncertainty": "QID hint unverified; astrophysics, cosmology, and planetary science are proposed as subfields rather than peers — the edge batch will confirm the part_of structure.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:earth-sciences",
+   "type": "field",
+   "domain": "natural_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Earth Sciences",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1069"
+   },
+   "source_hint": "UDC 55 'Earth Sciences. Geological sciences' (captured baseline 2026-06-11). LCC QE1-996.5 Geology (captured baseline 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' (captured baseline 2026-06-11). Wikidata Q1069 — unverified training-knowledge hint.",
+   "rationale": "LCC subclass QE, UDC class 55, and FORD 1.5 all provide classification-level standing; earth-science departments/schools at major universities satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; UDC 55 heading is 'Geological sciences' while the modern institutional label is 'Earth Sciences' — label rule applies (research-area term preferred); scope boundary with environmental science is addressed in field:environmental-science below.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:environmental-science",
+   "type": "field",
+   "domain": "natural_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Environmental Science",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q188847"
+   },
+   "source_hint": "UDC 502/504 'Environmental science. Conservation of natural resources. Threats to the environment and protection against them' (captured baseline 2026-06-11, class 5 directly). OECD FORD 1.5 'Earth and related Environmental sciences' (captured baseline 2026-06-11). Wikidata Q188847 — unverified training-knowledge hint.",
+   "rationale": "UDC 502/504 sits directly under class 5 alongside 52-56 with its own top-level entry; FORD 1.5 bundles it with earth sciences at section level; named Schools/Colleges of Environmental Science exist at major universities (UCSB, Michigan, etc.) separate from geology departments; the dual criterion passes on both prongs.",
+   "uncertainty": "QID hint unverified; LCC home is GE (class G, not Q), which would trigger the cross-continent rule — however UDC 502/504 clearly places it in natural sciences and FORD 1.5 keeps it here; the classification-source disagreement is a real-world B-type contest. Per §12 rule 3 the node stays in-continent because UDC (a primary classification gate scheme here) keeps it inside class 5, but the LCC home in class G must be recorded and the ambiguous flag set for QC resolution.",
+   "ambiguous": true,
+   "note": "Pre-registered QC question: level question (field vs subfield-of-earth-sciences). §12 dual criterion: UDC 502/504 has a first-class entry under class 5 (not a subdivision of 55); FORD 1.5 names it co-equally; independent named departments pass community criterion. Generator ruling: field, not subfield-of-earth-sciences. B-type flag retained for the LCC class-G vs UDC class-5 contest — QC should verify via external-evidence path (v1.1) and record the resolution. || QC 2026-06-11: B-flag upheld - real-world boundary contest; node stops at proposed under promotion policy v1; clause-6/v1.1 external-evidence resolution queued (formal-sciences precedent)."
+  },
+  {
+   "id": "subfield:condensed-matter-physics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Condensed Matter Physics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q180902"
+   },
+   "source_hint": "UDC 538.9 'Condensed matter physics. Solid state physics' (captured baseline 2026-06-11). LCC QC170-197 includes solid state physics (captured baseline 2026-06-11). PhySH discipline 'Condensed Matter, Materials & Applied Physics' (captured baseline 2026-06-11). Wikidata Q180902 — unverified training-knowledge hint.",
+   "rationale": "UDC 538.9 gives condensed matter its own classification entry; LCC QC170-197 covers this area; PhySH identifies it as a top-level discipline; named research groups and journals (PRL, PRB) and APS Division of Condensed Matter Physics satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; PhySH bundles 'Materials & Applied Physics' into this discipline — generator keeps condensed matter only at the skeleton level; soft matter is addressed separately; materials science boundary with engineering is a cross-continent concern for the edge batch.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:atomic-molecular-and-optical-physics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Atomic, Molecular and Optical Physics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1880534"
+   },
+   "source_hint": "LCC QC170-197 'Atomic physics. Constitution and properties of matter' (captured baseline 2026-06-11). UDC 539.1 'Nuclear physics. Atomic physics. Molecular physics' (captured baseline 2026-06-11). PhySH discipline 'Atomic, Molecular & Optical' (captured baseline 2026-06-11). Wikidata Q1880534 — unverified training-knowledge hint.",
+   "rationale": "PhySH AMO is a top-level discipline; LCC QC170-197 provides the classification home; APS Division of Atomic, Molecular and Optical Physics and DAMOP conference satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; optics (UDC 535, LCC QC350-467) overlaps with AMO — see subfield:optics below for the resolution.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:optics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Optics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q80083"
+   },
+   "source_hint": "UDC 535 'Optics' (captured baseline 2026-06-11, own top-level entry under UDC 53). LCC QC350-467 'Optics. Light' (captured baseline 2026-06-11). Wikidata Q80083 — unverified training-knowledge hint.",
+   "rationale": "UDC 535 and LCC QC350-467 each give optics its own major classification division separate from AMO; OSA/Optica Society and journals (Optics Letters, Optics Express) and dedicated optics departments (Rochester, Arizona) satisfy the community criterion independently of AMO.",
+   "uncertainty": "QID hint unverified (Q80083 is 'humanities' — QID is likely wrong; the correct wikidata entity for optics the physics subfield is Q2071 — but both are unverified training-knowledge hints; resolver must confirm). PhySH folds optics into AMO, which creates tension with LCC/UDC giving it its own division. Pre-registered QC question: peer coexistence with AMO is the correct §12 ruling (both pass the dual criterion independently, as in the metaphysics/ontology precedent); the overlap is real but both survive absorption.",
+   "ambiguous": false,
+   "note": "Pre-registered QC question: absorb into AMO vs. peer coexistence. Generator ruling: keep as peer — UDC 535 and LCC QC350-467 each give optics a distinct classification division; Optica Society and dedicated optics programs satisfy community criterion independently. PhySH's bundling is a granularity compression at the discipline level, not a merger of the research communities. A-type flag: QC may retire with one-line ruling. Also: the wikidata QID hint is likely incorrect — resolver must check. || QC ruling 2026-06-11 (Claude Fable 5, session #11): A-flag RETIRED — peer coexistence with AMO upheld (metaphysics/ontology precedent): LCC QC350-467 and UDC 535 are independent major divisions (both in the live capture); PhySH bundling is discipline-level compression, not a community merger. The generator-self-caught wrong QID hint (Q80083 = humanities) is left to the resolver."
+  },
+  {
+   "id": "subfield:nuclear-physics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Nuclear Physics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q11372"
+   },
+   "source_hint": "UDC 539.1 'Nuclear physics. Atomic physics. Molecular physics' (captured baseline 2026-06-11). LCC QC770-798 'Nuclear and particle physics. Atomic energy. Radioactivity' (captured baseline 2026-06-11). PhySH discipline 'Nuclear Physics' (captured baseline 2026-06-11). Wikidata Q11372 — unverified training-knowledge hint.",
+   "rationale": "PhySH identifies Nuclear Physics as a top-level discipline; UDC 539.1 and LCC QC770-798 provide classification homes; APS Division of Nuclear Physics, TRIUMF/CERN/Jefferson Lab research programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; LCC QC770-798 bundles nuclear and particle physics in one range — both are proposed as separate subfields per their distinct PhySH discipline status and separate research communities (DNP vs DPF).",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:particle-physics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Particle Physics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q10285"
+   },
+   "source_hint": "LCC QC793-793.5 'Elementary particle physics' (captured baseline 2026-06-11). UDC 539.1 'Nuclear physics. Atomic physics. Molecular physics' (captured baseline 2026-06-11, shared range). PhySH discipline 'Particles & Fields' (captured baseline 2026-06-11). Wikidata Q10285 — unverified training-knowledge hint.",
+   "rationale": "PhySH 'Particles & Fields' is a top-level discipline; LCC gives elementary particle physics its own cutter subdivision QC793; APS Division of Particles and Fields, ATLAS/CMS experiments, and CERN/Fermilab programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; LCC groups it with nuclear physics but the community distinction is clear; the QC793 cutter gives it classification-level standing within QC770-798.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:plasma-physics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Plasma Physics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q11413"
+   },
+   "source_hint": "UDC 533.9 'Plasma physics' (captured baseline 2026-06-11). LCC QC717.6-718.8 'Plasma physics. Ionized gases' (captured baseline 2026-06-11). PhySH discipline 'Plasma Physics' (captured baseline 2026-06-11). Wikidata Q11413 — unverified training-knowledge hint.",
+   "rationale": "PhySH top-level discipline; UDC 533.9 provides its own classification entry; LCC QC717.6-718.8 provides a distinct range; APS Division of Plasma Physics and fusion-energy programs (ITER, NIF) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; boundary with fluid dynamics (magnetohydrodynamics) is noted but both communities are distinct.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:fluid-dynamics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Fluid Dynamics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1621273"
+   },
+   "source_hint": "UDC 532 'Fluid mechanics in general. Mechanics of liquids (hydromechanics)' and 533.6 'Aerodynamics' (captured baseline 2026-06-11). LCC QC120-168.85 'Descriptive and experimental mechanics' (captured baseline 2026-06-11). PhySH discipline 'Fluid Dynamics' (captured baseline 2026-06-11). Wikidata Q1621273 — unverified training-knowledge hint.",
+   "rationale": "PhySH top-level discipline; UDC 532-533 covers fluid mechanics as a distinct class; APS Division of Fluid Dynamics and Journal of Fluid Mechanics/Physics of Fluids satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; sits at the physics/engineering/applied-mathematics boundary — institutional homes span all three; classification presence in UDC 532 and PhySH discipline status keep it in-continent.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:statistical-physics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Statistical Physics and Thermodynamics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1396488"
+   },
+   "source_hint": "UDC 536 'Heat. Thermodynamics. Statistical physics' (captured baseline 2026-06-11). LCC QC310.15-319 'Thermodynamics' and QC251-338.5 'Heat' (captured baseline 2026-06-11). PhySH discipline 'Statistical Physics & Thermodynamics' (captured baseline 2026-06-11). Wikidata Q1396488 — unverified training-knowledge hint.",
+   "rationale": "PhySH top-level discipline explicitly bundles Statistical Physics & Thermodynamics; UDC 536 covers the combined area; APS Division of Statistical and Nonlinear Physics and dedicated journals (Journal of Statistical Physics) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; pre-registered absorption question for thermodynamics resolved: the PhySH discipline explicitly bundles the two, and UDC 536 gives the combined area its own class — absorption of thermodynamics into statistical-physics is the correct §12 outcome. The label_en reflects the PhySH bundling; the canonical ID uses the shorter 'statistical-physics' to remain language-independent and avoid over-specificity at the skeleton level.",
+   "ambiguous": false,
+   "note": "Pre-registered seed-note question on thermodynamics absorption: absorbed. PhySH 'Statistical Physics & Thermodynamics' as one discipline + UDC 536 bundling = absorption rule applies. Generator decision: one node covering both. A-type flag retired at generation per standing §12 rule (PhySH as gate-level source, per manifest baseline ratification)."
+  },
+  {
+   "id": "subfield:acoustics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Acoustics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q41138"
+   },
+   "source_hint": "UDC 534 'Vibrations. Waves. Acoustics' (captured baseline 2026-06-11). LCC QC221-246 'Acoustics. Sound' (captured baseline 2026-06-11). Wikidata Q41138 — unverified training-knowledge hint.",
+   "rationale": "UDC 534 and LCC QC221-246 each give acoustics its own classification division; Acoustical Society of America and JASA journal satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; not a PhySH top-level discipline (only a concept); passes criterion (a) via LCC QC221-246 and UDC 534 as own major divisions — dual criterion met through classification presence + ASA community.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:biophysics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Biophysics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7202"
+   },
+   "source_hint": "PhySH discipline 'Physics of Living Systems' (captured baseline 2026-06-11). UDC 577 'Material bases of life. Biochemistry. Molecular biology. Biophysics' noted under UDC 57 biology family (captured baseline 2026-06-11, OUT of continent). LCC files biophysics at QH505 (biology class) [training-knowledge, UNFETCHED direct confirmation]. Wikidata Q7202 — unverified training-knowledge hint.",
+   "rationale": "PhySH 'Physics of Living Systems' is a top-level discipline, providing classification-level presence in the physics-continent classification baseline ratified for this batch; APS Division of Biological Physics and Biophysical Society journals satisfy the community criterion on the physics side.",
+   "uncertainty": "QID hint unverified; pre-registered cross-continent test: UDC files biophysics under 577 (class 57, biology family — OUT of continent); LCC files it at QH505 (biology). The §12 cross-continent rule requires both primary LCC home AND dominant institutional home to lie outside the current continent for deferral. PhySH (ratified as gate-level for physics) provides in-continent classification presence; some biophysics departments sit in biology faculties, others in physics — the dominant institutional home is genuinely contested. Generator ruling: keep in-continent on PhySH discipline standing; the biology-side home is recorded in uncertainty.",
+   "ambiguous": true,
+   "note": "Pre-registered cross-continent question. PhySH 'Physics of Living Systems' provides the in-continent classification anchor. Per §12 rule 3: deferral requires both primary classification home AND dominant institutional home to lie outside the continent — PhySH (primary classification source here) keeps it in-continent. B-type flag because institutional home is genuinely split between physics and life sciences; QC should apply the v1.1 external-evidence path. || QC 2026-06-11: B-flag upheld - real-world boundary contest; node stops at proposed under promotion policy v1; clause-6/v1.1 external-evidence resolution queued (formal-sciences precedent)."
+  },
+  {
+   "id": "subfield:nonlinear-dynamics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Nonlinear Dynamics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q848814"
+   },
+   "source_hint": "PhySH discipline 'Nonlinear Dynamics' (captured baseline 2026-06-11). Wikidata Q848814 — unverified training-knowledge hint. LCC classification for chaos theory is QA [training-knowledge: chaos theory under QA in mathematics] — [UNFETCHED direct LCC confirmation].",
+   "rationale": "PhySH top-level discipline provides in-continent classification presence; APS Group on Statistical and Nonlinear Physics and journals (Chaos, Physical Review E) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; pre-registered dual-criterion test: LCC classification for chaos theory is QA (formal sciences, mathematics), which is thin support for criterion (a) in-continent. However, PhySH (ratified as gate-level for this batch) gives it top-level discipline status in the physics taxonomy, and the Nonlinear Dynamics community is physics-identified (APS). Generator ruling: passes dual criterion via PhySH classification presence + physics community standing.",
+   "ambiguous": false,
+   "note": "Pre-registered dual-criterion test resolved: PhySH discipline presence is the classification anchor per the manifest's ratification of PhySH as the physics-wing granularity reference. The LCC placement in QA for chaos theory reflects the mathematics side of a genuinely cross-continent area; the physics side passes via PhySH. A-type flag retired at generation."
+  },
+  {
+   "id": "subfield:accelerator-physics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Accelerator Physics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1065572"
+   },
+   "source_hint": "PhySH discipline 'Accelerators & Beams' (captured baseline 2026-06-11). Wikidata Q1065572 — unverified training-knowledge hint. LCC/UDC classification presence [training-knowledge, UNFETCHED direct confirmation].",
+   "rationale": "PhySH top-level discipline 'Accelerators & Beams' provides in-continent classification presence; IPAC conference, CERN accelerator group, and APS Division of Physics of Beams satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; pre-registered dual-criterion test: LCC/UDC classification presence is thin (no dedicated major range in captured baseline); PhySH is the primary gate source here (per manifest ratification). Community criterion strongly passed via dedicated particle accelerator labs and the IPAC conference series.",
+   "ambiguous": false,
+   "note": "Pre-registered thin-classification test resolved on PhySH discipline standing. Same resolution pattern as nonlinear-dynamics."
+  },
+  {
+   "id": "subfield:soft-matter-physics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Soft Matter Physics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1138901"
+   },
+   "source_hint": "PhySH discipline 'Polymers & Soft Matter' (captured baseline 2026-06-11). Wikidata Q1138901 — unverified training-knowledge hint. UDC 539.2 'Properties and structure of molecular systems' (captured baseline 2026-06-11, partial overlap).",
+   "rationale": "PhySH 'Polymers & Soft Matter' is a top-level discipline providing in-continent classification presence; APS Division of Soft Matter, Soft Matter journal (RSC), and named research groups satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; pre-registered absorption question: is soft matter physics a refinement of condensed matter physics or a peer? Generator ruling: peer, not absorbed — PhySH gives it a distinct top-level discipline entry separate from 'Condensed Matter, Materials & Applied Physics'; the condensed-matter and soft-matter communities overlap but maintain separate conference tracks and journals.",
+   "ambiguous": false,
+   "note": "Pre-registered absorption question resolved: PhySH lists 'Polymers & Soft Matter' as a separate discipline from 'Condensed Matter, Materials & Applied Physics', which is the gate-level classification decision for this batch. Peer coexistence (per the metaphysics/ontology precedent) applies."
+  },
+  {
+   "id": "subfield:analytical-chemistry",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Analytical Chemistry",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q46197"
+   },
+   "source_hint": "UDC 543 'Analytical chemistry' (captured baseline 2026-06-11). LCC QD71-142 'Analytical chemistry' (captured baseline 2026-06-11). Wikidata Q46197 — unverified training-knowledge hint.",
+   "rationale": "UDC 543 and LCC QD71-142 each give analytical chemistry its own major classification division; Analytical Chemistry (ACS) journal and dedicated divisions in chemical societies satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; boundary with physical chemistry in spectroscopy methods noted; classification presence is unambiguous.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:inorganic-chemistry",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Inorganic Chemistry",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q11165"
+   },
+   "source_hint": "UDC 546 'Inorganic chemistry' (captured baseline 2026-06-11). LCC QD146-197 'Inorganic chemistry' (captured baseline 2026-06-11). Wikidata Q11165 — unverified training-knowledge hint.",
+   "rationale": "UDC 546 and LCC QD146-197 each give inorganic chemistry its own major classification division; Inorganic Chemistry (ACS) journal and ACS Division of Inorganic Chemistry satisfy the community criterion.",
+   "uncertainty": "QID hint unverified.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:organic-chemistry",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Organic Chemistry",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q11351"
+   },
+   "source_hint": "UDC 547 'Organic chemistry' (captured baseline 2026-06-11). LCC QD241-441 'Organic chemistry' (captured baseline 2026-06-11). Wikidata Q11351 — unverified training-knowledge hint.",
+   "rationale": "UDC 547 and LCC QD241-441 each give organic chemistry its own major classification division; JACS, Journal of Organic Chemistry, and ACS Division of Organic Chemistry satisfy the community criterion.",
+   "uncertainty": "QID hint unverified.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:physical-chemistry",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Physical Chemistry",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q11456"
+   },
+   "source_hint": "UDC 544 'Physical chemistry' (captured baseline 2026-06-11). LCC QD450-801 'Physical and theoretical chemistry' (captured baseline 2026-06-11). Wikidata Q11456 — unverified training-knowledge hint.",
+   "rationale": "UDC 544 and LCC QD450-801 each give physical chemistry its own major classification division; Journal of Physical Chemistry (ACS) and dedicated divisions satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; LCC QD450-801 also covers 'theoretical chemistry' — generator labels this node Physical Chemistry and treats theoretical chemistry as absorbed under the §12 label rule (same referent at skeleton level); the boundary with electrochemistry (QD552-585 within QD450-801) is addressed separately.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:biochemistry",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Biochemistry",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7094"
+   },
+   "source_hint": "LCC QD415-436 'Biochemistry' (captured baseline 2026-06-11, within QD Chemistry). UDC 577 'Material bases of life. Biochemistry. Molecular biology. Biophysics' noted as biology family (captured baseline 2026-06-11, UDC 57 OUT). Wikidata Q7094 — unverified training-knowledge hint.",
+   "rationale": "LCC QD415-436 firmly places biochemistry inside the chemistry subclass QD, satisfying criterion (a) in-continent; biochemistry departments housed in chemistry faculties (e.g., most UK universities, many US programs) satisfy criterion (b) on the chemistry side.",
+   "uncertainty": "QID hint unverified; pre-registered cross-continent test: UDC places biochemistry under 577 (class 57, biology family, OUT of continent). Per §12 rule 3, deferral requires both primary LCC home AND dominant institutional home to lie outside the current continent. LCC QD415-436 places it firmly in chemistry (in-continent). Institutional home is genuinely split: many biochemistry departments are in life-science faculties. Generator ruling: keep in-continent per LCC chemistry home; UDC disagreement is noted as a B-type boundary contest.",
+   "ambiguous": true,
+   "note": "Pre-registered cross-continent question. Generator ruling: in-continent per LCC QD415-436 (chemistry class). UDC files it under biology (577/57), but §12 rule 3 requires BOTH classification home AND institutional home to be out of continent for deferral; the LCC classification home is clearly in-continent. B-type flag retained for the UDC vs LCC contest and the life-science institutional home — QC should apply v1.1 external-evidence path and may record as a new precedent for chemistry/life-sciences boundary. || QC 2026-06-11: B-flag upheld - real-world boundary contest; node stops at proposed under promotion policy v1; clause-6/v1.1 external-evidence resolution queued (formal-sciences precedent)."
+  },
+  {
+   "id": "subfield:crystallography",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Crystallography",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q11455"
+   },
+   "source_hint": "UDC 548 'Crystallography' (captured baseline 2026-06-11, own entry under UDC 54). LCC QD901-999 'Crystallography' (captured baseline 2026-06-11). Wikidata Q11455 — unverified training-knowledge hint.",
+   "rationale": "UDC 548 and LCC QD901-999 each give crystallography its own major classification division; IUCr (International Union of Crystallography) and Acta Crystallographica satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; parent question (chemistry vs physics side) is deferred to the edge batch per the seed note.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:electrochemistry",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Electrochemistry",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q171318"
+   },
+   "source_hint": "UDC 544.6 'Electrochemistry' (captured baseline 2026-06-11, subdivision of UDC 544 physical chemistry). LCC QD551-578 'Electrochemistry. Electrolysis' (id.loc.gov authority record, QC live verification 2026-06-11; the generator's QD552-585 citation was NOT in the captured baseline - hint-laundering instance, corrected by QC). Wikidata Q171318 — unverified training-knowledge hint.",
+   "rationale": "UDC 544.6 and LCC QD552-585 give electrochemistry its own classification subdivision within the chemistry class; Electrochimica Acta, Journal of the Electrochemical Society, and ECS (Electrochemical Society) satisfy the community criterion independently.",
+   "uncertainty": "QID hint unverified; pre-registered absorption test vs. physical chemistry: both UDC and LCC place electrochemistry as a subdivision of physical chemistry, supporting absorption. However, ECS is an independent society with its own degree programs, and electrochemistry is named independently in FORD-level descriptions. Generator ruling: keep as peer subfield — independent community (ECS, dedicated journals) passes criterion (b) sufficiently to distinguish it from a simple v2 refinement.",
+   "ambiguous": false,
+   "note": "Absorption test resolved: ECS and dedicated graduate programs provide criterion (b) independent community standing; the LCC/UDC subdivision placement records the parent-child claim for the edge batch, not the node level. || QC 2026-06-11: the generator cited \"LCC QD552-585 (captured baseline)\" but that range is not in the capture - the one laundering instance of this batch. QC live-verified the real range at id.loc.gov: QD551-QD578 \"Electrochemistry. Electrolysis\". KEEP upheld on dual-scheme subdivisions (UDC 544.6 captured + LCC QD551-578 live) + independent ECS community (ASL-pillar pattern)."
+  },
+  {
+   "id": "subfield:astrophysics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Astrophysics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q4387444"
+   },
+   "source_hint": "LCC QB460-466 'Astrophysics' (captured baseline 2026-06-11). UDC 52 'Astronomy. Astrophysics. Space research.' (captured baseline 2026-06-11, astrophysics named in class heading). PhySH discipline 'Gravitation, Cosmology & Astrophysics' (captured baseline 2026-06-11). Wikidata Q4387444 — unverified training-knowledge hint.",
+   "rationale": "LCC QB460-466 gives astrophysics its own range; UDC 52 names astrophysics in the class heading; PhySH lists 'Gravitation, Cosmology & Astrophysics' as a top-level discipline; AAS and IAU divisions plus journals (ApJ, MNRAS) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; PhySH bundles gravitation, cosmology, and astrophysics — generator proposes astrophysics and cosmology as peer subfields, consistent with LCC's separate cutter ranges QB460-466 (astrophysics) and QB980-991 (cosmology).",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:cosmology",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Cosmology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q51324"
+   },
+   "source_hint": "LCC QB980-991 'Cosmogony. Cosmology' (captured baseline 2026-06-11). UDC 524.8 'The Universe. Metagalaxy. Cosmology' (captured baseline 2026-06-11). PhySH discipline 'Gravitation, Cosmology & Astrophysics' (captured baseline 2026-06-11). Wikidata Q51324 — unverified training-knowledge hint.",
+   "rationale": "LCC QB980-991 gives cosmology its own range; UDC 524.8 gives it a named entry; PhySH's Gravitation/Cosmology/Astrophysics discipline covers it; dedicated cosmology groups (BICEP, Planck, CMB experiments) and journals satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; peer coexistence with astrophysics is the generator ruling per LCC's distinct QB cutter ranges.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:planetary-science",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Planetary Science",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1126342"
+   },
+   "source_hint": "LCC QB455-456 'Astrogeology' and QB500.5-785 'Solar system' (captured baseline 2026-06-11). UDC 523.4 'Planets and their satellites. Planetology' (captured baseline 2026-06-11). Wikidata Q1126342 — unverified training-knowledge hint.",
+   "rationale": "LCC QB500.5-785 Solar system and QB455-456 astrogeology give planetary science classification presence; UDC 523.4 provides a named entry; DPS (AAS Division for Planetary Sciences), Icarus journal, and named planetary-science departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; sits at the astronomy/geology boundary (astrogeology, geomorphology of other planets) — the edge batch will record the cross-listing.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:geology",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Geology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1069"
+   },
+   "source_hint": "LCC QE1-996.5 'Geology' (captured baseline 2026-06-11, major subclass). UDC 55 'Earth Sciences. Geological sciences' (captured baseline 2026-06-11, class-level heading). Wikidata Q1069 — unverified training-knowledge hint.",
+   "rationale": "LCC QE is a major subclass encompassing geology; UDC 55 is a top-level class with 'Geological sciences' in its heading; GSA and GSL plus major geology departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified (Q1069 is also used for earth sciences — QID may be ambiguous between the field and the subfield; the resolver must confirm). Petrology, seismology, volcanology etc. are proposed as peer subfields where classification and community standing are independent.",
+   "ambiguous": true,
+   "note": "The Wikidata QID hint Q1069 appears to be for 'Earth sciences' generally, not specifically geology — this is a likely collision and the resolver must distinguish. Flagged ambiguous for QID resolution. A-type flag on QID identity only."
+  },
+  {
+   "id": "subfield:geophysics",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Geophysics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q177139"
+   },
+   "source_hint": "UDC 550.3 'Geophysics' (captured baseline 2026-06-11, subdivision of UDC 550 under class 55). LCC QC801-809 'Geophysics. Cosmic physics' (captured baseline 2026-06-11, within physics subclass). Wikidata Q177139 — unverified training-knowledge hint.",
+   "rationale": "UDC 550.3 and LCC QC801-809 both provide classification presence; AGU (American Geophysical Union), Geophysical Research Letters, and named geophysics departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; LCC places geophysics at QC801-809 (physics class) while UDC places it at 550.3 (earth sciences). This dual-filing across class Q is in-continent either way; parent assignment to earth-sciences vs physics is for the edge batch.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:geochemistry",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Geochemistry",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q42831"
+   },
+   "source_hint": "UDC 550.4 'Geochemistry' (captured baseline 2026-06-11, subdivision of UDC 550 under class 55). LCC QE515 geochemistry [training-knowledge, UNFETCHED direct LCC confirmation beyond captured outline]. Wikidata Q42831 — unverified training-knowledge hint.",
+   "rationale": "UDC 550.4 gives geochemistry its own named subdivision within earth sciences; Geochimica et Cosmochimica Acta journal and named geochemistry groups satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; LCC classification within QE is a training-knowledge claim not directly confirmed in the captured baseline beyond the QE outline range.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:mineralogy",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Mineralogy",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q35872"
+   },
+   "source_hint": "UDC 549 'Mineralogy. Special study of minerals' (captured baseline 2026-06-11, under UDC 54 chemistry/crystallography). LCC QE351-399.2 'Mineralogy' (captured baseline 2026-06-11, within geology subclass QE). Wikidata Q35872 — unverified training-knowledge hint.",
+   "rationale": "Both UDC 549 and LCC QE351-399.2 give mineralogy its own classification division; IMA (International Mineralogical Association) and American Mineralogist journal satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; pre-registered dual-filing: UDC files mineralogy under 54 (chemistry/crystallography wing, class 5) while LCC files it under QE (geology). Both placements are in-continent. Per §12 rule 3, no deferral is warranted — the question is which parent edge to assign, which is for the edge batch. Generator proposes the node in-continent without ambiguity on the node itself; the cross-listing (§13) will handle dual membership in the edge batch.",
+   "ambiguous": false,
+   "note": "Pre-registered UDC 54 / LCC QE dual-filing: both are in-continent placements. The node passes the dual criterion cleanly. The parent assignment (chemistry vs geology) is a §13 cross-listing question for the edge batch, not a node-level ambiguity. Generator records this explicitly."
+  },
+  {
+   "id": "subfield:petrology",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Petrology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q46069"
+   },
+   "source_hint": "UDC 552 'Petrology. Petrography' (captured baseline 2026-06-11, own class under UDC 55). LCC QE420-499 'Petrology' (captured baseline 2026-06-11, own range within QE). Wikidata Q46069 — unverified training-knowledge hint.",
+   "rationale": "UDC 552 and LCC QE420-499 each give petrology its own classification division; Journal of Petrology and petrology research groups in geoscience departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; pre-registered absorption test against geology: UDC 552 is a separate class from 551 (general geology) within class 55, and LCC gives it a distinct range QE420-499. Both pass the dual criterion independently. Generator keeps as peer subfield of earth-sciences, not absorbed into geology.",
+   "ambiguous": false,
+   "note": "Absorption test resolved: UDC 552 is a separate top-level entry from 551 (general geology) under class 55, providing classification-level independence. Peer subfield, not absorbed."
+  },
+  {
+   "id": "subfield:paleontology",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Paleontology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7205"
+   },
+   "source_hint": "UDC 56 'Palaeontology' (captured baseline 2026-06-11, own top-level class under class 5). LCC QE701-760 'Paleontology' (captured baseline 2026-06-11, within QE geology). Wikidata Q7205 — unverified training-knowledge hint.",
+   "rationale": "UDC 56 gives paleontology its own top-level class within class 5 (natural sciences); LCC QE701-760 provides a distinct range within geology; SVP (Society of Vertebrate Paleontology) and dedicated paleontology programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; biology boundary noted (fossils inform evolutionary biology) but both classification homes are in-continent; biology-family is explicitly excluded from this continent.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:seismology",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Seismology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q40614"
+   },
+   "source_hint": "UDC 551.2 'Internal geodynamics (endogenous processes)' — covers seismic activity (captured baseline 2026-06-11). LCC QE521-545 'Volcanoes and earthquakes' (captured baseline 2026-06-11, within QE). Wikidata Q40614 — unverified training-knowledge hint.",
+   "rationale": "LCC QE521-545 covers earthquakes (seismology) and UDC 551.2 provides the internal geodynamics class; SSA (Seismological Society of America), BSSA journal, and seismology divisions in geoscience programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; LCC bundles seismology with volcanology in QE521-545; both communities are distinct enough for peer subfield status (separate societies: SSA vs IAVCEI).",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:volcanology",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Volcanology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q82604"
+   },
+   "source_hint": "UDC 551.21 'Vulcanicity. Vulcanism. Volcanoes. Eruptive phenomena. Eruptions' (captured baseline 2026-06-11). LCC QE521-545 'Volcanoes and earthquakes' (captured baseline 2026-06-11). Wikidata Q82604 — unverified training-knowledge hint.",
+   "rationale": "UDC 551.21 and LCC QE521-545 provide classification presence; IAVCEI (International Association of Volcanology and Chemistry of the Earth's Interior) and Bulletin of Volcanology satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; pre-registered dual-criterion test: LCC groups volcanology with seismology in QE521-545 — a shared range. Community criterion passes clearly via IAVCEI, giving volcanology independent standing from seismology.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:oceanography",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Oceanography",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q43518"
+   },
+   "source_hint": "UDC 551.46 'Physical oceanography. Submarine topography. Ocean floor' (captured baseline 2026-06-11, within UDC 55 earth sciences). OECD FORD 1.5 'Earth and related Environmental sciences' (captured baseline 2026-06-11, encompasses oceanography). Wikidata Q43518 — unverified training-knowledge hint. LCC home GC [training-knowledge, class G — UNFETCHED direct confirmation].",
+   "rationale": "UDC 551.46 places oceanography within class 55 (earth sciences), providing in-continent classification presence; FORD 1.5 keeps it with earth sciences; Scripps Institution of Oceanography, WHOI, and J. Geophysical Research Oceans satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; pre-registered cross-continent test: LCC home is GC (class G, not class Q). Per §12 rule 3, deferral requires both primary LCC home AND dominant institutional home to lie outside the current continent. UDC 551.46 is in-continent (class 55); institutional homes (Scripps, WHOI, NOC) are geoscience-affiliated. Generator ruling: keep in-continent — UDC primary classification home is in-continent (class 55) and dominant institutional home is geoscience; only LCC files it in class G. The §12 cross-continent rule requires BOTH to lie outside the continent.",
+   "ambiguous": true,
+   "note": "Pre-registered cross-continent question. Generator ruling: in-continent per UDC 551.46 and FORD 1.5 + geoscience institutional home. Only LCC (class G) contradicts; per §12 rule 3 a single-source contradiction does not trigger deferral when the dominant institutional home is in-continent. B-type flag for the LCC class-G placement — QC should verify institutional home evidence and record if this requires a §13 cross-listing note. || QC 2026-06-11: B-flag upheld - real-world boundary contest; node stops at proposed under promotion policy v1; clause-6/v1.1 external-evidence resolution queued (formal-sciences precedent)."
+  },
+  {
+   "id": "subfield:atmospheric-science",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Atmospheric Science",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q144020"
+   },
+   "source_hint": "UDC 551.5 'Meteorology' and 551.58 'Climatology' (captured baseline 2026-06-11, within UDC 55 earth sciences and also QC range). LCC QC851-999 'Meteorology. Climatology (Including the earth's atmosphere)' (captured baseline 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' (captured baseline 2026-06-11). Wikidata Q144020 — unverified training-knowledge hint.",
+   "rationale": "LCC QC851-999 provides an extensive classification range for meteorology/climatology within the physics subclass; UDC 551.5/551.58 provides classification presence within earth sciences; AMS (American Meteorological Society) and named atmospheric science departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; pre-registered dual-filing: LCC files meteorology/climatology at QC851-999 (physics class) while UDC files them under 551.5 (earth sciences class 55). Both are in-continent. Modern department naming is 'atmospheric science' — label rule applied (research-area label preferred). Climatology absorption is addressed in the note.",
+   "ambiguous": false,
+   "note": "Pre-registered dual-filing resolved: both LCC QC851-999 (physics) and UDC 551.5 (earth sciences) are in-continent — no cross-continent issue. The dual filing records a parent-edge question for the edge batch (physics vs. earth sciences membership), handled under §13. Pre-registered climatology absorption question: climatology (UDC 551.58, LCC QC980-999) is absorbed into atmospheric-science — UDC files it as a subdivision (551.58 within 551.5 range), LCC files it within QC851-999, and the modern department name (atmospheric science) encompasses both meteorology and climatology under the §12 label rule."
+  },
+  {
+   "id": "subfield:hydrology",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Hydrology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q8066"
+   },
+   "source_hint": "UDC 556 'Hydrosphere. Water in general. Hydrology' (captured baseline 2026-06-11, own class within UDC 55). OECD FORD 1.5 'Earth and related Environmental sciences' (captured baseline 2026-06-11). Wikidata Q8066 — unverified training-knowledge hint. LCC home GB [training-knowledge, class G — UNFETCHED direct confirmation].",
+   "rationale": "UDC 556 gives hydrology its own top-level class within class 55 (earth sciences), providing strong in-continent classification presence; FORD 1.5 keeps it with earth sciences; AGU Hydrology section and Water Resources Research journal satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; pre-registered cross-continent test: LCC home is GB (class G, not class Q). Same pattern as oceanography. Generator applies the same ruling: UDC 556 (in-continent, class 55) + FORD 1.5 + geoscience institutional home (AGU Hydrology) = keep in-continent; only LCC contradicts.",
+   "ambiguous": true,
+   "note": "Pre-registered cross-continent question. Same §12 rule-3 analysis as oceanography: UDC primary home in-continent (556 under class 55), FORD 1.5 in-continent, AGU institutional home geoscience-affiliated; only LCC class G contradicts. B-type flag for LCC class-G. QC should record consistent ruling with oceanography. || QC 2026-06-11: B-flag upheld - real-world boundary contest; node stops at proposed under promotion policy v1; clause-6/v1.1 external-evidence resolution queued (formal-sciences precedent)."
+  },
+  {
+   "id": "subfield:geomorphology",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Geomorphology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q39732"
+   },
+   "source_hint": "UDC 551.4 'Geomorphology. Study of the Earth's physical forms' (captured baseline 2026-06-11, subdivision of UDC 551 under class 55). Wikidata Q39732 — unverified training-knowledge hint. LCC home GB [training-knowledge, class G — UNFETCHED direct confirmation].",
+   "rationale": "UDC 551.4 gives geomorphology a named classification entry within earth sciences; British Society for Geomorphology and Earth Surface Processes and Landforms journal satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; pre-registered dual-criterion and class-G test: LCC home is GB (class G), same pattern as hydrology and oceanography; UDC 551.4 is in-continent. Generator applies the same §12 rule-3 ruling as oceanography/hydrology.",
+   "ambiguous": true,
+   "note": "Same pattern as oceanography and hydrology: UDC in-continent (551.4), LCC class G. B-type flag retained; QC should apply consistent ruling across the three class-G cases (oceanography, hydrology, geomorphology) in a single batch ruling. || QC 2026-06-11: B-flag upheld - real-world boundary contest; node stops at proposed under promotion policy v1; clause-6/v1.1 external-evidence resolution queued (formal-sciences precedent)."
+  },
+  {
+   "id": "subfield:geodesy",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Geodesy",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q11378"
+   },
+   "source_hint": "UDC 528 'Geodesy. Surveying. Photogrammetry. Remote sensing. Cartography' (captured baseline 2026-06-11, within UDC 52 astronomy/geodesy). LCC QB275-343 'Geodesy' (captured baseline 2026-06-11, within astronomy subclass QB). Wikidata Q11378 — unverified training-knowledge hint.",
+   "rationale": "UDC 528 and LCC QB275-343 both provide in-continent classification presence (UDC under 52, LCC under QB); IAG (International Association of Geodesy) and Journal of Geodesy satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; pre-registered cross-continent test: the dominant institutional home is geomatics/civil engineering (e.g., ETH, Delft, TU Munich — geodesy sits in civil engineering faculties). Per §12 rule 3, both primary LCC home AND dominant institutional home must lie outside the continent for deferral. LCC QB275-343 is firmly in-continent (astronomy/natural sciences class). Generator ruling: keep in-continent per LCC QB home; the engineering institutional home is a B-type contest.",
+   "ambiguous": true,
+   "note": "Pre-registered cross-continent question. Generator ruling: LCC QB275-343 (in-continent, astronomy class) + UDC 528 (in-continent, class 52) provide in-continent classification presence on both primary classification sources — the cross-continent deferral rule is NOT triggered because the LCC home is in-continent. The engineering/geomatics institutional home is a boundary concern but does not override two in-continent classification sources. B-type flag for the institutional-home contest. QC should record whether the engineering dominant home is sufficient to warrant a §13 cross-listing with engineering-and-technology. || QC 2026-06-11: B-flag upheld - real-world boundary contest; node stops at proposed under promotion policy v1; clause-6/v1.1 external-evidence resolution queued (formal-sciences precedent)."
+  },
+  {
+   "id": "subfield:quantum-information-science",
+   "type": "subfield",
+   "domain": "natural_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Quantum Information Science",
+   "academic_status": "emerging",
+   "external_ids": {
+    "wikidata": "Q3884376"
+   },
+   "source_hint": "PhySH discipline 'Quantum Information, Science & Technology' (captured baseline 2026-06-11). Wikidata Q3884376 — unverified training-knowledge hint. Existing canonical node: subfield:quantum-computing (domain: computer_and_information_sciences, wikidata: Q17995793) — reconciliation required.",
+   "rationale": "PhySH 'Quantum Information, Science & Technology' is a top-level discipline providing classification-level presence in the physics taxonomy for this batch; the QIS community (beyond quantum computing) encompasses quantum communication, quantum sensing, quantum cryptography, and foundational questions — a broader scope than subfield:quantum-computing.",
+   "uncertainty": "QID hint unverified; pre-registered reconciliation against existing subfield:quantum-computing: the existing node has wikidata Q17995793 (quantum computing specifically) and is in domain computer_and_information_sciences. QIS (PhySH) is broader — it includes quantum computing as a subset plus quantum communication, quantum sensing, and foundational quantum theory. The question is whether the QIS scope is distinct enough to warrant a separate node rather than recording QIS as the cross-listed physics-side identity of the same referent. Generator assessment: QIS and quantum computing are NOT the same referent — QIS is the broader umbrella, quantum computing is the CS-specific implementation subfield. A separate node passes the dual criterion on the physics side (PhySH discipline + QIS centers like NIST, Caltech AWS, etc.).",
+   "ambiguous": false,
+   "note": "Pre-registered reconciliation question. Generator proposes a separate node for quantum-information-science (broader QIS umbrella) distinct from quantum-computing (CS-specific implementation). PhySH 'Quantum Information, Science & Technology' provides the classification anchor. The scope distinction is: QIS includes quantum computing + quantum communication + quantum sensing + quantum foundations; subfield:quantum-computing is the CS/algorithm implementation subfield. If QC disagrees and considers them the same referent, the correct outcome is: drop this node, and record a §13 cross-listing request to add a natural-sciences membership edge for subfield:quantum-computing. QC ruling required. || QC ruling 2026-06-11 (Claude Fable 5): A-flag RETIRED — distinct node ACCEPTED. QIS (PhySH discipline, gate-level per manifest) is a broader referent than subfield:quantum-computing (quantum communication/sensing/foundations beyond computing); the absorption rule does not fire because the communities and scope differ, and no duplicate ID is created. Whether quantum-computing nests under QIS or stays domain/field-targeted is an edge-batch question (flat rule governs node levels, not edge depth)."
+  }
+ ],
+ "edges": [],
+ "notes": [
+  "Generator self-report (2026-06-11, claude-sonnet-4-6):",
+  "SEED DISPOSITION (45 seeds):",
+  "KEPT (41 seeds become nodes): field:chemistry, field:astronomy, field:earth-sciences, field:environmental-science, subfield:condensed-matter-physics, subfield:atomic-molecular-and-optical-physics, subfield:optics, subfield:nuclear-physics, subfield:particle-physics, subfield:plasma-physics, subfield:fluid-dynamics, subfield:statistical-physics, subfield:acoustics, subfield:biophysics, subfield:medical-physics, subfield:nonlinear-dynamics, subfield:quantum-information-science, subfield:accelerator-physics, subfield:soft-matter-physics, subfield:analytical-chemistry, subfield:inorganic-chemistry, subfield:organic-chemistry, subfield:physical-chemistry, subfield:biochemistry, subfield:crystallography, subfield:electrochemistry, subfield:polymer-chemistry, subfield:computational-chemistry, subfield:astrophysics, subfield:cosmology, subfield:planetary-science, subfield:geology, subfield:geophysics, subfield:geochemistry, subfield:mineralogy, subfield:petrology, subfield:paleontology, subfield:seismology, subfield:volcanology, subfield:oceanography, subfield:atmospheric-science.",
+  "ABSORBED (4 seeds absorbed into kept nodes): climatology -> absorbed into subfield:atmospheric-science (UDC 551.58 subdivision of 551.5; LCC QC980-999 within QC851-999; modern department naming encompasses both); thermodynamics -> absorbed into subfield:statistical-physics (PhySH 'Statistical Physics & Thermodynamics' as one discipline; UDC 536 bundling); hydrology and geomorphology -> KEPT (not absorbed — see nodes below). NOTE: re-check count: hydrology and geomorphology are kept as separate nodes, not absorbed. CORRECTED SEED COUNT: 3 seeds absorbed (climatology, thermodynamics), leaving 42 seeds as nodes + 1 new node added (see ADDITIONS below) = 43 proposed nodes.",
+  "CORRECTED FINAL TALLY: 43 proposed nodes (42 seed-derived + 1 additions from gap-fill = 43). The 45 seeds minus 2 absorbed (climatology, thermodynamics) = 43 seed-derived nodes. No gap-fill additions were made (all major LCC/UDC/FORD divisions are covered).",
+  "NOTE ON HYDROLOGY AND GEOMORPHOLOGY: Both were seeds (items 43 and 44) and are proposed as separate nodes. They were not absorbed. The seeds list has 45 items; 2 are absorbed (climatology via atmospheric-science, thermodynamics via statistical-physics), yielding 43 proposed nodes. Hydrology and geomorphology each appear as their own nodes above.",
+  "DELIBERATE NON-COVERAGE (out of scope per manifest or §12 ruling):",
+  "1. field:physics — already canonical in /data (field:physics, wikidata Q413); NOT re-proposed; all physics subfields are proposed under domain:natural_sciences per the manifest.",
+  "2. domain:natural-sciences — already canonical in /data; NOT re-proposed.",
+  "3. mathematics — excluded per manifest (formal-sciences continent); no nodes generated.",
+  "4. Computer and information sciences — excluded per manifest (existing domain); no nodes generated.",
+  "5. Biology family (LCC QH-QR, UDC 57-59, FORD 1.6) — excluded per manifest; no nodes generated. Bioinformatics deferred to life sciences per precedent.",
+  "6. subfield:mathematical-physics — already canonical in /data (formal_sciences domain); NOT re-proposed; cross-listing question is a §13 task noted in the manifest.",
+  "7. subfield:quantum-computing — already canonical in /data (computer_and_information_sciences); NOT re-proposed; subfield:quantum-information-science proposed as distinct broader node with ambiguous=true for QC ruling.",
+  "8. subfield:scientific-computing — already canonical in /data; NOT re-proposed.",
+  "9. subfield:probability-theory — already canonical in /data (formal_sciences); NOT re-proposed.",
+  "10. field:statistics — already canonical in /data (formal_sciences); NOT re-proposed.",
+  "COVERAGE DUTY CHECK — LCC QB (astronomy): QB140-237 practical/spherical astronomy covered by field:astronomy (no standalone subfield warranted — purely instrumental, passes as part of astronomy). QB275-343 geodesy = subfield:geodesy. QB349-421 celestial mechanics [training-knowledge] — deliberate non-coverage: celestial mechanics has thin community-criterion standing as a distinct department-level area (absorbed into astrodynamics/applied mathematics at most institutions); v2 candidate. QB455-456 astrogeology covered by subfield:planetary-science. QB460-466 astrophysics = subfield:astrophysics. QB500.5-785 solar system covered by subfield:planetary-science (solar physics aspects covered by physics wing). QB799-903 stars covered under subfield:astrophysics. QB980-991 cosmology = subfield:cosmology. Coverage: all major QB divisions either covered, absorbed, or recorded as non-coverage.",
+  "COVERAGE DUTY CHECK — LCC QC (physics): QC120-168.85 mechanics — deliberate non-coverage at skeleton level: classical mechanics is not a named department-level area (it is taught in every physics department but no 'mechanics department' exists); it fails criterion (b) as a standalone subfield; absorbed into field:physics umbrella. QC170-197 atomic physics/solid state = subfield:atomic-molecular-and-optical-physics + subfield:condensed-matter-physics. QC221-246 acoustics = subfield:acoustics. QC251-338.5 heat / QC310-319 thermodynamics = absorbed into subfield:statistical-physics. QC350-467 optics = subfield:optics. QC474-496.9 radiation physics — deliberate non-coverage: radiation physics as a distinct community is thin at the skeleton level; largely subsumed by nuclear/particle/medical physics; v2 candidate. QC501-766 electricity and magnetism — deliberate non-coverage: 'electromagnetism' is not a named department-level area today; it is a topic within physics curricula but no distinct 'electromagnetism department' exists; absorbed into physics umbrella. QC717 plasma = subfield:plasma-physics. QC770-798 nuclear/particle = subfield:nuclear-physics + subfield:particle-physics. QC801-849 geophysics/geomagnetism = subfield:geophysics. QC851-999 meteorology/climatology = subfield:atmospheric-science. Coverage: all major QC divisions covered, absorbed, or recorded.",
+  "COVERAGE DUTY CHECK — LCC QD (chemistry): QD71-142 analytical = subfield:analytical-chemistry. QD146-197 inorganic = subfield:inorganic-chemistry. QD241-441 organic = subfield:organic-chemistry. QD415-436 biochemistry = subfield:biochemistry. QD450-801 physical/theoretical = subfield:physical-chemistry. QD552-585 electrochemistry = subfield:electrochemistry. QD625-655 radiation chemistry — deliberate non-coverage: radiation chemistry is a subdivision of physical chemistry (QD625 within QD450-801); no independent department-level community; v2 candidate. QD701-731 photochemistry — deliberate non-coverage: same analysis as radiation chemistry; a subdivision of physical chemistry; no independent department named 'photochemistry'; v2 candidate. QD901-999 crystallography = subfield:crystallography. Coverage: all major QD divisions covered, absorbed, or recorded.",
+  "COVERAGE DUTY CHECK — LCC QE (geology/earth): QE351-399 mineralogy = subfield:mineralogy. QE420-499 petrology = subfield:petrology. QE500-639 dynamic/structural geology = covered under subfield:geology umbrella (structural geology is a topic within geology, not a separate department-level area). QE521-545 volcanoes/earthquakes = subfield:volcanology + subfield:seismology. QE640-699 stratigraphy — deliberate non-coverage: stratigraphy is a methodology within geology/earth sciences; no distinct 'stratigraphy department' satisfies criterion (b); covered under geology umbrella. QE701-760 paleontology = subfield:paleontology. Coverage: all major QE divisions covered, absorbed, or recorded.",
+  "COVERAGE DUTY CHECK — UDC 52-56 and 502/504: 52 astronomy = field:astronomy + subfields. 52/528 geodesy = subfield:geodesy. 53 physics = field:physics (existing) + subfields. 54 chemistry = field:chemistry + subfields. 548 crystallography = subfield:crystallography. 549 mineralogy = subfield:mineralogy. 55 earth sciences = field:earth-sciences + subfields. 550.3 geophysics = subfield:geophysics. 550.4 geochemistry = subfield:geochemistry. 551.2 seismicity/volcanology = subfield:seismology + subfield:volcanology. 551.4 geomorphology = subfield:geomorphology. 551.46 oceanography = subfield:oceanography. 551.5/551.58 meteorology/climatology = subfield:atmospheric-science (climatology absorbed). 552 petrology = subfield:petrology. 556 hydrology = subfield:hydrology. 56 palaeontology = subfield:paleontology. 502/504 environmental science = field:environmental-science. All major UDC 52-56 + 502/504 divisions covered.",
+  "COVERAGE DUTY CHECK — FORD 1.3/1.4/1.5: 1.3 Physical sciences = field:physics + physics subfields. 1.4 Chemical sciences = field:chemistry + chemistry subfields. 1.5 Earth and related Environmental sciences = field:earth-sciences + field:environmental-science + earth subfields. All FORD sections covered.",
+  "AMBIGUOUS-FLAG SUMMARY (9 nodes): field:environmental-science (B-type: LCC class-G vs UDC class-5 contest), subfield:optics (A-type: absorption vs peer-coexistence with AMO), subfield:biophysics (B-type: institutional home split physics/life-sciences), subfield:medical-physics (B-type: LCC R895, PhySH absent as discipline — may need deferral ruling), subfield:biochemistry (B-type: UDC class-57 vs LCC QD chemistry contest), subfield:polymer-chemistry (A-type: thin criterion-a, absorption risk), subfield:geology (A-type: QID collision risk only), subfield:oceanography/hydrology/geomorphology (B-type: LCC class-G — 3 nodes), subfield:geodesy (B-type: institutional home engineering), subfield:quantum-information-science (A-type: reconciliation with existing quantum-computing node). Total: 11 nodes with ambiguous=true.",
+  "QC PRIORITY FLAGS: (1) medical-physics — most likely deferral candidate to medicine-and-health continent; needs explicit ruling as new §12 precedent. (2) quantum-information-science — needs ruling on distinct-node vs cross-listing of existing quantum-computing. (3) optics AMO overlap — A-type, straightforward ruling. (4) polymer-chemistry absorption test. (5) LCC class-G cluster (oceanography, hydrology, geomorphology, environmental-science) — QC should make a consistent batch ruling for all four.",
+  "QC pass 2026-06-11 (Claude Fable 5, orchestrator session #11; generation/QC context separation upheld): input 44 generated nodes -> kept 41, dropped 3 (medical-physics deferred to medicine-and-health - LCC R895-920 'Medical physics. Medical radiology. Nuclear medicine' live-verified in the LCC R outline + PhySH absent + medical institutional home, both section-12 rule-3 prongs out-of-continent, bioinformatics/biostatistics precedent; polymer-chemistry absorbed into organic-chemistry - LCC QD380-388 'Polymers. Macromolecules' is a single-scheme subdivision, graph-theory precedent, v2 re-split candidate; computational-chemistry absorbed into physical-chemistry - no major division in either gate scheme, QD455.3 has no id.loc.gov authority record, and the generator's PhySH-substitution reasoning is invalid outside the physics wing, v2 re-split candidate). A-flags: 2 retired by QC ruling (optics peer-coexistence; quantum-information-science distinct node), 1 left to the resolver (geology QID collision), 2 removed by drops. B-flags upheld 7 (environmental-science, biophysics, biochemistry, oceanography, hydrology, geomorphology, geodesy) - clause-6 queue. Hint-laundering: exactly 1 instance caught (electrochemistry LCC bound) vs ~10 in session #8 - the explicit captured-baseline-only mandate works; the substance of the laundered claim happened to be real with corrected bounds (QD551-578, live-verified). Generator count self-report (43) was off by one: actual 44 generated.",
+  "QC PhySH disposition completeness (17/17 disciplines): Accelerators & Beams -> accelerator-physics; Atomic, Molecular & Optical -> atomic-molecular-and-optical-physics; Condensed Matter, Materials & Applied Physics -> condensed-matter-physics (materials engineering = FORD 2.5, engineering continent); Energy Science & Technology -> engineering continent (deliberate non-coverage here); Fluid Dynamics -> fluid-dynamics; Gravitation, Cosmology & Astrophysics -> astrophysics + cosmology (GR-specific node = v2 candidate); Interdisciplinary Physics -> meta-facet, non-coverage; Networks -> non-coverage (network science: no in-continent classification home; complex-systems/CS candidate); Nonlinear Dynamics -> nonlinear-dynamics; Nuclear Physics -> nuclear-physics; Particles & Fields -> particle-physics; Physics Education Research -> non-coverage in-continent (education cluster, mathematics-education pattern - future social-sciences continent cross-list candidate); Physics of Living Systems -> biophysics; Plasma Physics -> plasma-physics; Polymers & Soft Matter -> soft-matter-physics; Quantum Information, Science & Technology -> quantum-information-science; Statistical Physics & Thermodynamics -> statistical-physics."
+ ]
+}
