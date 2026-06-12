@@ -78,9 +78,14 @@ to make implementation easier.
 - Ratified standing policies in force (the vault decision log is the
   authority; this list is a pointer, not a restatement): node promotion
   v1–v1.3; edge promotion v1 incl. clause 6 (contested placements) and its
-  recorded operational interpretations; editorial v1 for summaries —
-  **generation model = Opus** (decision (26)), orchestrator QC full
-  fact-check unchanged; cross-listing v1 (co-equal multiple `part_of`,
+  recorded operational interpretations; editorial **v2** for summaries —
+  **generation model = Opus** (decision (26)); QC = machine checks in full
+  (claim-anchor verbatim + cited-URL live survival + SPN §8) + orchestrator
+  close-read on a 30% sample (50% on a policy's first run) with all
+  self-flagged/ambiguous and all [UNFETCHED] items checked in full; one
+  factual error in the sample/flags escalates the whole batch back to full
+  close-read + CPO report (decision (34), 2026-06-12, supersedes the v1
+  "full fact-check" QC clause); cross-listing v1 (co-equal multiple `part_of`,
   docs/data-foundry.md §13); B-track external-metrics standing policy
   (decision (27): pre-validation report → write proceeds without per-item
   sign-off unless an escalation trigger fires); evidence permanence via
