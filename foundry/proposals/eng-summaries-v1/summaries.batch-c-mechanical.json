@@ -1,0 +1,77 @@
+{
+  "batch": "eng-summaries-v1/batch-c-mechanical",
+  "generated_by": "claude-opus-4-8[1m]",
+  "summaries": [
+    {
+      "node_id": "field:mechanical-engineering",
+      "summary": "Mechanical engineering is an engineering branch concerned with physical machines and mechanisms involving force and movement. It combines engineering physics and mathematics with materials science to design, analyze, manufacture, and maintain mechanical systems, and is one of the oldest and broadest engineering branches. Core subject areas include mechanics, dynamics, thermodynamics, materials science, structural analysis, and design. The Library of Congress Classification places the discipline in range TJ1-TJ1570, captioned \"Mechanical engineering and machinery.\" The American Society of Mechanical Engineers, founded in 1880, is the field's principal professional body; ASME states that its mission \"is to advance engineering for the benefit of humanity.\"",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Mechanical_engineering", "supports": "Definition as engineering branch of physical machines/mechanisms; combines physics, math, materials science; oldest and broadest branch.", "quote": "Mechanical engineering is the study of physical machines and mechanisms that may involve force and movement. It is an engineering branch that combines engineering physics and mathematics principles with materials science, to design, analyze, manufacture, and maintain mechanical systems. It is one of the oldest and broadest of the engineering branches.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TJ1-TJ1570.json", "supports": "LCC class range and caption for mechanical engineering.", "quote": "Mechanical engineering and machinery", "fetched": true},
+        {"url": "https://www.asme.org/about-asme", "supports": "ASME self-description and mission.", "quote": "ASME's mission is to advance engineering for the benefit of humanity.", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:aerospace-engineering",
+      "summary": "Aerospace engineering is the primary field of engineering concerned with the development of aircraft and spacecraft. It has two major and overlapping branches, aeronautical engineering and astronautical engineering, while avionics engineering deals with the electronics side of the field. As an application of mechanical-engineering principles to flight vehicles, it draws on aerodynamics, propulsion, structures, and control. The Library of Congress Classification places aeronautics within range TL500-TL778, captioned \"Aeronautics. Aeronautical engineering,\" inside the broader class TL1-TL4050, \"Motor vehicles. Aeronautics. Astronautics.\" The American Institute of Aeronautics and Astronautics, formed in 1963 by the merger of the American Rocket Society and the Institute of the Aerospace Sciences, is described as \"the world's largest technical society dedicated to the global aerospace profession.\"",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Aerospace_engineering", "supports": "Definition; aircraft and spacecraft; aeronautical/astronautical branches; avionics.", "quote": "Aerospace engineering is the primary field of engineering concerned with the development of aircraft and spacecraft. It has two major and overlapping branches: aeronautical engineering and astronautical engineering. Avionics engineering is similar, but deals with the electronics side of aerospace engineering.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TL500-TL778.json", "supports": "LCC caption for aeronautics/aeronautical engineering.", "quote": "Aeronautics. Aeronautical engineering", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TL1-TL4050.json", "supports": "Broader LCC class containing aeronautics and astronautics.", "quote": "Motor vehicles. Aeronautics. Astronautics", "fetched": true},
+        {"url": "https://www.aiaa.org/about", "supports": "AIAA as largest aerospace technical society; 1963 merger origin.", "quote": "AIAA is the world's largest technical society dedicated to the global aerospace profession.", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:automotive-engineering",
+      "summary": "Automotive engineering, along with aerospace engineering and naval architecture, is a branch of vehicle engineering, incorporating elements of mechanical, electrical, electronic, software, and safety engineering as applied to the design, manufacture and operation of motorcycles, automobiles, and trucks and their respective engineering subsystems. The field is research-intensive and applies mathematical models to design, develop, fabricate, and test vehicles or vehicle components from concept to production. The Library of Congress Classification places motor vehicles in range TL1-TL483, captioned \"Motor vehicles.\" The discipline's leading professional body, SAE International, was formerly the Society of Automotive Engineers and \"adopted its current name in 2006 to reflect both its international membership and the increased scope of its activities beyond automotive engineering.\"",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Automotive_engineering", "supports": "Definition as branch of vehicle engineering; integrates mechanical/electrical/electronic/software/safety engineering; research-intensive; design-to-production scope.", "quote": "Automotive engineering, along with aerospace engineering and naval architecture, is a branch of vehicle engineering, incorporating elements of mechanical, electrical, electronic, software, and safety engineering as applied to the design, manufacture and operation of motorcycles, automobiles, and trucks and their respective engineering subsystems.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TL1-TL483.json", "supports": "LCC caption for motor vehicles.", "quote": "Motor vehicles", "fetched": true},
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/SAE_International", "supports": "SAE International formerly Society of Automotive Engineers; renamed 2006.", "quote": "the organization adopted its current name in 2006 to reflect both its international membership and the increased scope of its activities beyond automotive engineering", "fetched": true}
+      ],
+      "self_flags": ["SAE.org about page is JS-rendered; only the tagline was extractable. Substantive SAE description sourced from the live-verified Wikipedia REST summary of SAE_International."],
+      "unfetched": ["https://www.sae.org/about — JS-rendered, only tagline 'Advancing mobility knowledge and solutions' extractable (not load-bearing)."]
+    },
+    {
+      "node_id": "subfield:robotics",
+      "summary": "Robotics is the interdisciplinary study and practice of the design, construction, operation, and use of robots. It usually combines four aspects of design work: a power source, mechanical construction, a control system, and software, integrating mechanical, electrical, and computing engineering to build machines that can sense and act. The Library of Congress Classification places robots within range TJ210.2-TJ211.495, captioned \"Mechanical devices and figures. Automata. Ingenious mechanisms. Robots (General),\" which sits under the mechanical-engineering class TJ1-TJ1570. The IEEE Robotics and Automation Society, the field's principal professional body, states that \"Robotics focuses on systems incorporating sensors and actuators that operate autonomously or semi-autonomously in cooperation with humans.\"",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Robotics", "supports": "Definition; four aspects of design work (power source, mechanical construction, control system, software).", "quote": "Robotics is the interdisciplinary study and practice of the design, construction, operation, and use of robots. A roboticist is someone who specializes in robotics. Robotics usually combines four aspects of design work: a power source, mechanical construction, a control system, and software.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TJ210.2-TJ211.495.json", "supports": "LCC robotics range within mechanical engineering class (broader TJ1-TJ1570).", "quote": "Mechanical devices and figures. Automata. Ingenious mechanisms. Robots (General)", "fetched": true},
+        {"url": "https://www.ieee-ras.org/about-ras", "supports": "IEEE RAS scope statement on what robotics focuses on.", "quote": "Robotics focuses on systems incorporating sensors and actuators that operate autonomously or semi-autonomously in cooperation with humans.", "fetched": true}
+      ],
+      "self_flags": ["Framed as the engineering discipline (mechanical + electrical + computing integration) per the referent pin; LCC home is TJ (mechanical engineering), not a CS class."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:nuclear-engineering",
+      "summary": "Nuclear engineering is the engineering discipline concerned with designing and applying systems that utilize the energy released by nuclear processes. Its most prominent application is the generation of electricity through nuclear fission. The reaction exploits the nuclear binding energy released when atomic nuclei undergo fission, and nuclear fusion is studied as a further means of generation. The Library of Congress Classification places the field in range TK9001-TK9401, captioned \"Nuclear engineering. Atomic power,\" inside the class TK1-TK9971, \"Electrical engineering. Electronics. Nuclear engineering.\" The American Nuclear Society describes itself as \"the premier organization for those that embrace the nuclear sciences and technologies for their vital contributions to improving people's lives and preserving the planet.\"",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Nuclear_engineering", "supports": "Definition as engineering discipline of nuclear-process systems; electricity generation; fission.", "quote": "Nuclear engineering is the engineering discipline concerned with designing and applying systems that utilize the energy released by nuclear processes. The most prominent application of nuclear engineering is the generation of electricity.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TK9001-TK9401.json", "supports": "LCC caption for nuclear engineering.", "quote": "Nuclear engineering. Atomic power", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TK1-TK9971.json", "supports": "Confirms nuclear engineering sits in LCC class TK alongside electrical/electronics.", "quote": "Electrical engineering. Electronics. Nuclear engineering", "fetched": true},
+        {"url": "https://www.ans.org/about/", "supports": "ANS self-description as premier nuclear sciences/technologies organization.", "quote": "The American Nuclear Society (ANS) is the premier organization for those that embrace the nuclear sciences and technologies for their vital contributions to improving people's lives and preserving the planet.", "fetched": true}
+      ],
+      "self_flags": ["Per referent pin: confirmed via LCC that nuclear engineering's class TK9001-TK9401 sits within TK1-TK9971 (Electrical engineering. Electronics. Nuclear engineering), i.e., class TK alongside electrical/electronics. The generator's draft carried an unsourced '~10% of world energy / 439 reactors' figure; the orchestrator trimmed it to keep only the fetched-quote-backed claims."],
+      "unfetched": []
+    }
+  ],
+  "spn_queue": [
+    "https://id.loc.gov/authorities/classification/TJ1-TJ1570.json",
+    "https://id.loc.gov/authorities/classification/TJ210.2-TJ211.495.json",
+    "https://id.loc.gov/authorities/classification/TL500-TL778.json",
+    "https://id.loc.gov/authorities/classification/TL1-TL4050.json",
+    "https://id.loc.gov/authorities/classification/TL1-TL483.json",
+    "https://id.loc.gov/authorities/classification/TK9001-TK9401.json",
+    "https://id.loc.gov/authorities/classification/TK1-TK9971.json",
+    "https://www.asme.org/about-asme",
+    "https://www.aiaa.org/about",
+    "https://www.ans.org/about/",
+    "https://www.ieee-ras.org/about-ras",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/SAE_International"
+  ]
+}

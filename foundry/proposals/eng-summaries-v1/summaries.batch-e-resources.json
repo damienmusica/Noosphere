@@ -1,0 +1,80 @@
+{
+  "batch": "eng-summaries-v1/batch-e-resources",
+  "generated_by": "claude-opus-4-8[1m]",
+  "summaries": [
+    {
+      "node_id": "subfield:manufacturing-engineering",
+      "summary": "Manufacturing engineering, also called production engineering, is a branch of professional engineering concerned with planning, developing, and operating the processes and systems that produce goods. It shares concepts with mechanical, chemical, electrical, and industrial engineering, and requires the ability to plan manufacturing practices; to research and develop tools, processes, machines, and equipment; and to integrate facilities and systems for producing quality products with the optimum expenditure of capital. The Library of Congress classifies the subject under \"Technology--Manufactures\" (class TS). The Society of Manufacturing Engineers, established in 1932, represents the manufacturing industry across North America, including manufacturers, academia, professionals, and students.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Manufacturing_engineering", "supports": "Definition as a branch of professional engineering and its required abilities", "quote": "Manufacturing engineering or production engineering is a branch of professional engineering that shares many common concepts and ideas with other fields of engineering such as mechanical, chemical, electrical, and industrial engineering. Manufacturing engineering requires the ability to plan the practices of manufacturing; to research and to develop tools, processes, machines, and equipment; and to integrate the facilities and systems for producing quality products with the optimum expenditure of capital.", "fetched": true},
+        {"url": "https://www.sme.org/about-sme/", "supports": "The founding of SME in 1932 and the community it represents", "quote": "Established in 1932 as a nonprofit organization, SME represents the entire North American manufacturing industry, including manufacturers, academia, professionals, students, and the communities in which they operate.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TS1.json", "supports": "LCC classification of manufactures under Technology--Manufactures (TS)", "quote": "Technology--Manufactures", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:metallurgy",
+      "summary": "Metallurgy is the science and technology of metals, studying the physical and chemical behavior of metallic elements, their inter-metallic compounds, and their mixtures, known as alloys. The discipline divides broadly into extractive metallurgy and physical metallurgy. Extractive metallurgy is a branch of metallurgical engineering studying the process and methods of extracting metals from their natural mineral deposits, addressing ore types, concentration, separation, and chemical processes to produce pure metals and alloys. Physical and process metallurgy covers metallography, heat treating, corrosion, surface engineering, welding and joining, and mechanical testing, applied to materials such as aluminum, titanium, nonferrous alloys, irons, and steels. The Library of Congress classifies metallurgy at TN600-TN799 under \"Technology--Mining engineering. Metallurgy.\" ASM International is the world's largest association of materials-centric engineers and scientists.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Metallurgy", "supports": "Definition as the study of physical and chemical behavior of metals and alloys", "quote": "Metallurgy is a domain of materials science and engineering that studies the physical and chemical behavior of metallic elements, their inter-metallic compounds, and their mixtures, which are known as alloys.", "fetched": true},
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Extractive_metallurgy", "supports": "Extractive metallurgy as extraction of metals from mineral deposits", "quote": "Extractive metallurgy is a branch of metallurgical engineering studying the process and methods of extraction of metals from their natural mineral deposits.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TN605.json", "supports": "LCC range TN600-TN799 under Technology--Mining engineering. Metallurgy--Metallurgy", "quote": "Technology--Mining engineering. Metallurgy--Metallurgy", "fetched": true},
+        {"url": "https://www.asminternational.org/about/", "supports": "ASM International as the largest materials/metallurgy society", "quote": "ASM International is the world's largest association of materials-centric engineers and scientists.", "fetched": true}
+      ],
+      "self_flags": ["Described on its own terms (extractive + physical metallurgy) per the referent pin and grounded in its own fetched sources, kept distinct from the separate materials-science-and-engineering node. The Wikipedia opener mentions 'materials science and engineering' but the body frames metallurgy's own subdivisions."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:mining-engineering",
+      "summary": "Mining engineering is the engineering discipline concerned with the extraction of minerals from the ground. It is associated with many other disciplines, such as mineral processing, exploration, excavation, geology, metallurgy, geotechnical engineering, and surveying. A mining engineer may manage any phase of mining operations, from exploration and discovery of the mineral resources, through feasibility study, mine design, development of plans, production and operations, to mine closure. The Society for Mining, Metallurgy & Exploration organizes the field into technical divisions spanning Coal & Energy, Environmental, Health & Safety, Industrial Minerals & Aggregates, Mineral & Metallurgical Processing, Mining & Exploration, and Underground Construction, and serves \"the mining, resources and underground construction communities.\" The Library of Congress classifies mining engineering and metallurgy in class TN.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Mining_engineering", "supports": "Definition as extraction of minerals, associated disciplines, and the operational phases a mining engineer manages", "quote": "Mining engineering is the extraction of minerals from the ground. It is associated with many other disciplines, such as mineral processing, exploration, excavation, geology, metallurgy, geotechnical engineering and surveying. A mining engineer may manage any phase of mining operations, from exploration and discovery of the mineral resources, through feasibility study, mine design, development of plans, production and operations to mine closure.", "fetched": true},
+        {"url": "https://www.smenet.org/aboutus", "supports": "SME's seven technical divisions (verbatim from the About Us page navigation)", "quote": "Coal & Energy Environmental Health & Safety Industrial Minerals & Aggregates Mineral & Metallurgical Processing Mining & Exploration Underground Construction", "fetched": true},
+        {"url": "https://www.smenet.org/What-We-Do/Our-Values,-Vision-and-Mission", "supports": "SME mission and the communities it serves", "quote": "serves the mining, resources and underground construction communities for a sustainable future", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TN605.json", "supports": "LCC class TN covers mining engineering and metallurgy", "quote": "Technology--Mining engineering. Metallurgy--Metallurgy", "fetched": true}
+      ],
+      "self_flags": ["QC fixes (orchestrator): (1) the generator's opening-definition quote was a transcription variant; replaced with the exact Wikipedia REST extract ('Mining engineering is the extraction of minerals from the ground...'). (2) The generator quoted SME's coverage as a prose sentence ('coal and energy, environmental matters, health and safety...') that does not appear verbatim on the page — the page lists these as the seven technical *divisions* in its navigation. De-laundered: the summary now names the divisions exactly as the page lists them, and the citation quotes the verbatim division navigation. Both claims verified live against the captured page."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:petroleum-engineering",
+      "summary": "Petroleum engineering is a field of engineering concerned with the activities related to the production of hydrocarbons, which can be either crude oil or natural gas or both. The discipline operates within the upstream sector of the oil and gas industry, covering exploration and production. While geology and geophysics provide static descriptions of reservoir rock, petroleum engineering specializes in estimating recoverable volumes and understanding how oil, water, and gas behave in porous rock under pressure. The Library of Congress classifies the subject at TN860-TN879.5 as \"Petroleum. Petroleum engineering,\" within the broader class for mining engineering and metallurgy. The Society of Petroleum Engineers is described as \"the largest individual-member organization serving engineers, scientists, managers and other professionals in the upstream segment of the oil and gas industry.\"",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Petroleum_engineering", "supports": "Definition as engineering for hydrocarbon production", "quote": "Petroleum engineering is a field of engineering concerned with the activities related to the production of hydrocarbons, which can be either crude oil or natural gas or both.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TN860.json", "supports": "LCC range TN860-TN879.5 labeled Petroleum. Petroleum engineering", "quote": "Petroleum. Petroleum engineering", "fetched": true},
+        {"url": "https://www.spe.org/en/about/", "supports": "SPE as the largest individual-member organization in the upstream oil and gas segment", "quote": "the largest individual-member organization serving engineers, scientists, managers and other professionals in the upstream segment of the oil and gas industry", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:textile-engineering",
+      "summary": "Textile engineering, also termed textile manufacturing, is the engineering discipline concerned with the production and processing of textiles. It is largely based on the conversion of fibre into yarn, then yarn into fabric. These are then dyed or printed and fabricated into cloth, which is converted into useful goods such as clothing, household items, upholstery, and various industrial products. The discipline thus spans fibre science, yarn spinning, fabric formation, and finishing operations including dyeing and printing. The Library of Congress classifies textile industries at TS1300 and above, under \"Technology--Manufactures--Textile industries.\" The Textile Institute, founded in Manchester in 1910, is \"the professional body for people and organisations working in the textile, clothing and footwear associated industries worldwide.\"",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Textile_engineering", "supports": "Definition as conversion of fibre to yarn to fabric to finished goods", "quote": "Textile manufacturing or textile engineering is a major industry. It is largely based on the conversion of fibre into yarn, then yarn into fabric. These are then dyed or printed, fabricated into cloth which is then converted into useful goods such as clothing, household items, upholstery and various industrial products.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TS1300.json", "supports": "LCC TS1300 under Technology--Manufactures--Textile industries", "quote": "Technology--Manufactures--Textile industries", "fetched": true},
+        {"url": "https://www.textileinstitute.org/about-us/", "supports": "The Textile Institute as the professional body for the textile, clothing, and footwear industries", "quote": "The Textile Institute is the professional body for people and organisations working in the textile, clothing and footwear associated industries worldwide.", "fetched": true}
+      ],
+      "self_flags": ["Wikidata anchor (Q20825773) is relatively thin but the referent is correct — described as the engineering discipline of textiles."],
+      "unfetched": ["https://www.britannica.com/technology/textile — Britannica not attempted; typically Cloudflare-blocked for automated fetch."]
+    }
+  ],
+  "spn_queue": [
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Manufacturing_engineering",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Metallurgy",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Extractive_metallurgy",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Mining_engineering",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Petroleum_engineering",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Textile_engineering",
+    "https://id.loc.gov/authorities/classification/TN605.json",
+    "https://id.loc.gov/authorities/classification/TN860.json",
+    "https://id.loc.gov/authorities/classification/TS1.json",
+    "https://id.loc.gov/authorities/classification/TS1300.json",
+    "https://www.spe.org/en/about/",
+    "https://www.smenet.org/aboutus",
+    "https://www.asminternational.org/about/",
+    "https://www.sme.org/about-sme/",
+    "https://www.textileinstitute.org/about-us/"
+  ]
+}

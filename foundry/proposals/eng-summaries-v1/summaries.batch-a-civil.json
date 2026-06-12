@@ -1,0 +1,101 @@
+{
+  "batch": "eng-summaries-v1/batch-a-civil",
+  "generated_by": "claude-opus-4-8[1m]",
+  "summaries": [
+    {
+      "node_id": "field:civil-engineering",
+      "summary": "Civil engineering is the engineering discipline concerned with the design, construction, and maintenance of the built environment and public infrastructure. The American Society of Civil Engineers describes civil engineers as professionals who \"design, build, and maintain the foundation for our modern society – our buildings, roads and bridges, drinking water and energy systems, sea ports and airports, and the infrastructure for a cleaner environment.\" Practitioners typically specialize within the field, with recognized technical areas including structural, geotechnical, transportation, hydraulic, environmental, and construction engineering, as well as surveying. In the Library of Congress Classification, civil engineering is treated as a general engineering domain under the heading \"Technology--Engineering (General). Civil engineering (General).\" The field combines applied mechanics, materials science, and project management to deliver large-scale public works that serve communities over long operational lifespans.",
+      "citations": [
+        {"url": "https://www.asce.org/about-civil-engineering", "supports": "self-description of civil engineering and what civil engineers do", "quote": "design, build, and maintain the foundation for our modern society – our buildings, roads and bridges, drinking water and energy systems, sea ports and airports, and the infrastructure for a cleaner environment", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TA1.json", "supports": "LCC classification heading for civil engineering", "quote": "Technology--Engineering (General). Civil engineering (General)--Periodicals and societies--English", "fetched": true}
+      ],
+      "self_flags": ["Specialization list cross-checked against the ASCE 'about-civil-engineering' page, which enumerates Transportation, Coastal, Structural, Environmental, Geotechnical, Construction, Architectural, Engineering Mechanics, and Utility/Surveying areas."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:structural-engineering",
+      "summary": "Structural engineering is a sub-discipline of civil engineering concerned with the analysis and design of structures that must safely support or resist loads. Wikipedia characterizes it as the field \"in which structural engineers are trained to design the 'bones and joints' that create the form and shape of human-made structures,\" adding that engineers \"must understand and calculate the stability, strength, rigidity and earthquake-susceptibility of built structures for buildings and nonbuilding structures.\" The discipline rests on applied physical laws and empirical knowledge of how different materials and geometries perform under stress. Typical work covers buildings, bridges, towers, and other load-bearing systems, ensuring they withstand gravity, wind, seismic, and service loads. The Library of Congress Classification gives structural engineering its own heading, \"Structural engineering (General),\" within the broader civil engineering range.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/wiki/Structural_engineering", "supports": "definition and core responsibilities of structural engineering", "quote": "in which structural engineers are trained to design the 'bones and joints' that create the form and shape of human-made structures", "fetched": true},
+        {"url": "https://en.wikipedia.org/wiki/Structural_engineering", "supports": "what structural engineers calculate for built structures", "quote": "must understand and calculate the stability, strength, rigidity and earthquake-susceptibility of built structures for buildings and nonbuilding structures", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TA630.json", "supports": "LCC classification heading for structural engineering", "quote": "Technology--Engineering (General). Civil engineering (General)--Structural engineering (General)--Periodicals, societies, congresses, etc.", "fetched": true}
+      ],
+      "self_flags": ["Preferred society source (Institution of Structural Engineers 'what-is-structural-engineering') was 403-blocked; used a live-verified Wikipedia definitional quote plus the LCC authority caption instead."],
+      "unfetched": ["https://www.istructe.org/about-us/what-is-structural-engineering/ — HTTP 403 Forbidden", "https://www.structuralengineering.org/what-is-structural-engineering — domain parked (307 redirect to afternic.com)", "https://www.nspe.org/resources/issues-and-advocacy/take-action/structural-engineering — HTTP 403 Forbidden"]
+    },
+    {
+      "node_id": "subfield:geotechnical-engineering",
+      "summary": "Geotechnical engineering is the branch of civil engineering concerned with the engineering behavior of earth materials. Wikipedia defines it, \"also known as geotechnics,\" as \"the branch of civil engineering concerned with the engineering behavior of earth materials.\" The discipline applies principles of soil mechanics and rock mechanics to investigate subsurface conditions and to design foundations, retaining structures, slopes, embankments, and tunnels. ASCE's Geo-Institute, the field's professional home, describes itself as \"a community of geoprofessionals advancing geotechnical engineering\" whose members \"work to improve infrastructure, reduce risk, and ensure safe, resilient communities.\" The Library of Congress Classification places the related body of knowledge under \"Engineering geology\" within civil engineering. Practitioners assess how soils and rock respond to loading, water, and excavation, providing the geotechnical basis on which surface structures and earthworks depend.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/wiki/Geotechnical_engineering", "supports": "definition of geotechnical engineering", "quote": "Geotechnical engineering, also known as geotechnics, is the branch of civil engineering concerned with the engineering behavior of earth materials.", "fetched": true},
+        {"url": "https://www.geoinstitute.org/about-us", "supports": "professional self-description of the field's institutional home", "quote": "The Geo-Institute (G-I) is a community of geoprofessionals advancing geotechnical engineering.", "fetched": true},
+        {"url": "https://www.geoinstitute.org/about-us", "supports": "scope of geotechnical practice impact", "quote": "Our members work to improve infrastructure, reduce risk, and ensure safe, resilient communities.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TA705.json", "supports": "LCC heading 'Engineering geology' under civil engineering", "quote": "Technology--Engineering (General). Civil engineering (General)--Engineering geology--General works", "fetched": true}
+      ],
+      "self_flags": ["LCC heading is 'Engineering geology' (TA705/TA703), the classification label closest to geotechnical engineering; flagged because the LCC caption term differs from the modern discipline name."],
+      "unfetched": ["https://www.geoinstitute.org/about — HTTP 404 (correct path is /about-us, which was fetched)"]
+    },
+    {
+      "node_id": "subfield:transportation-engineering",
+      "summary": "Transportation engineering is the sub-discipline of civil engineering that applies scientific and engineering principles to the planning, design, operation, and management of transportation systems. Wikipedia defines it as \"the application of technology and scientific principles to the planning, functional design, operation and management of facilities for any mode of transportation to provide for the safe, efficient, rapid, comfortable, convenient, economical, and environmentally compatible movement of people and goods.\" The field spans highway, rail, transit, air, water, and pipeline modes. ASCE's Transportation & Development Institute, established in 2002, is dedicated to \"advancing knowledge and practice in sustainable transportation and development.\" The Library of Congress Classification recognizes the discipline under the heading \"Transportation engineering\" within civil engineering. Work ranges from traffic and pavement design to network operations and infrastructure planning.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/wiki/Transportation_engineering", "supports": "definition and aims of transportation engineering", "quote": "the application of technology and scientific principles to the planning, functional design, operation and management of facilities for any mode of transportation to provide for the safe, efficient, rapid, comfortable, convenient, economical, and environmentally compatible movement of people and goods", "fetched": true},
+        {"url": "https://www.asce.org/communities/institutes-and-technical-groups/transportation-and-development-institute", "supports": "professional society mission and community served", "quote": "Advancing knowledge and practice in sustainable transportation and development.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TA1001.json", "supports": "LCC classification heading for transportation engineering", "quote": "Technology--Engineering (General). Civil engineering (General)--Transportation engineering--Periodicals and societies", "fetched": true}
+      ],
+      "self_flags": ["The phrase 'the community of transportation professionals' was reported by the fetch tool as on-page descriptive text for T&DI; the load-bearing verbatim quote used is the institute mission statement."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:hydraulic-engineering",
+      "summary": "Hydraulic engineering is the sub-discipline of civil engineering concerned with the flow and conveyance of fluids, principally water. Wikipedia states that \"hydraulic engineering as a sub-discipline of civil engineering is concerned with the flow and conveyance of fluids, principally water and sewage.\" The field applies fluid mechanics and hydrology to the design of dams, canals, levees, pipelines, pumping stations, drainage networks, and water- and wastewater-treatment infrastructure. ASCE's Environmental and Water Resources Institute, founded in 1999, frames its mission as \"advancing water resources and environmental solutions to achieve a sustainable future\" and serves as a technical source for environmental and water-related issues. The Library of Congress Classification gives hydraulic engineering its own top-level technology heading, with technical practice classified under \"Technical hydraulics.\" Practitioners manage water supply, flood control, irrigation, and energy generation systems.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/wiki/Hydraulic_engineering", "supports": "definition of hydraulic engineering as a civil-engineering sub-discipline", "quote": "Hydraulic engineering as a sub-discipline of civil engineering is concerned with the flow and conveyance of fluids, principally water and sewage.", "fetched": true},
+        {"url": "https://www.asce.org/communities/institutes-and-technical-groups/environmental-and-water-resources-institute", "supports": "professional society vision for water resources", "quote": "Advancing water resources and environmental solutions to achieve a sustainable future.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TC160.json", "supports": "LCC heading 'Technical hydraulics' under hydraulic engineering", "quote": "Technology--Hydraulic engineering--Technical hydraulics--General works", "fetched": true}
+      ],
+      "self_flags": ["EWRI covers environmental and water resources broadly; cited as the closest ASCE institutional home for hydraulic/water engineering. LCC top-level 'Hydraulic engineering' confirmed separately at TC1."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:construction-engineering",
+      "summary": "Construction engineering and management is the sub-discipline of civil engineering that deals with the planning, methods, and management of building and infrastructure projects. Wikipedia describes construction engineering as a \"professional sub-discipline of civil engineering that deals with the designing, planning, construction, and operations management of infrastructure such as roadways, tunnels, bridges, airports, railroads, facilities, buildings, dams, utilities and other projects.\" Education in the discipline emphasizes \"construction procedures, methods, costs, schedules and personnel management,\" with the objective to deliver a project on time, within budget, and of the desired quality. It integrates engineering design with cost estimating, scheduling, contracts, safety, and resource coordination across a project's lifecycle. The Library of Congress Classification places the related literature under the heading \"Building construction,\" reflecting the discipline's grounding in how civil works are physically realized.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/wiki/Construction_engineering", "supports": "definition and scope of construction engineering and management", "quote": "professional sub-discipline of civil engineering that deals with the designing, planning, construction, and operations management of infrastructure such as roadways, tunnels, bridges, airports, railroads, facilities, buildings, dams, utilities and other projects", "fetched": true},
+        {"url": "https://en.wikipedia.org/wiki/Construction_engineering", "supports": "educational and management focus of the discipline", "quote": "construction procedures, methods, costs, schedules and personnel management", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TH1.json", "supports": "LCC heading 'Building construction' for the construction domain", "quote": "Technology--Building construction--Periodicals and societies. By language of publication--English", "fetched": true}
+      ],
+      "self_flags": ["Kept at discipline level (per node label 'Construction Engineering and Management'), not a how-to. LCC 'Building construction' (TH) is the nearest classification heading; the management dimension is grounded via the Wikipedia education/scope quotes."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:geomatics",
+      "summary": "Geomatics is the engineering discipline concerned with measuring, managing, and analyzing spatial and geographic data. Wikipedia, citing the ISO/TC 211 series of standards, defines geomatics as the \"discipline concerned with the collection, distribution, storage, analysis, processing, presentation of geographic data or geographic information.\" The field is an umbrella for land surveying, geodesy, photogrammetry and remote sensing, Geographic Information Systems (GIS), cartography, satellite positioning (GNSS), and hydrography. It serves as the engineering-side home of geodesy, supplying the spatial reference frameworks and measurements on which mapping, navigation, and infrastructure siting depend. The Library of Congress Classification treats the foundational practice under \"Surveying\" within civil engineering (range TA501–TA625). Geomatics evolved from traditional surveying through integration with computing, providing the spatial-data backbone for civil and environmental projects.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/wiki/Geomatics", "supports": "ISO/TC 211 standards definition of geomatics", "quote": "discipline concerned with the collection, distribution, storage, analysis, processing, presentation of geographic data or geographic information", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TA501.json", "supports": "LCC heading 'Surveying' and range TA501–TA625 within civil engineering", "quote": "Technology--Engineering (General). Civil engineering (General)--Surveying--Periodicals, societies, etc.", "fetched": true}
+      ],
+      "self_flags": ["Described as the spatial-data engineering discipline (umbrella over surveying, geodesy, GIS, remote sensing) per the referent pin — not collapsed into pure geodesy or GIS software. LCC range TA501–TA625 = 'Surveying' was stated by the LCC record fetch. This is the engineering-side home of geodesy (atlas edge:geodesy-part-of-civil-engineering 'via geomatics')."],
+      "unfetched": ["https://www.fig.net/about/general/index.asp — HTTP 403 Forbidden", "https://www.canadiangeomatics.ca/about/what-is-geomatics/ — returned empty body", "https://www.icsm.gov.au/what-we-do/surveying-and-geodesy/what-geomatics — 301 redirect to anzlic.gov.au (cross-host, not followed)"]
+    }
+  ],
+  "spn_queue": [
+    "https://www.asce.org/about-civil-engineering",
+    "https://id.loc.gov/authorities/classification/TA1.json",
+    "https://en.wikipedia.org/wiki/Structural_engineering",
+    "https://id.loc.gov/authorities/classification/TA630.json",
+    "https://en.wikipedia.org/wiki/Geotechnical_engineering",
+    "https://www.geoinstitute.org/about-us",
+    "https://id.loc.gov/authorities/classification/TA705.json",
+    "https://en.wikipedia.org/wiki/Transportation_engineering",
+    "https://www.asce.org/communities/institutes-and-technical-groups/transportation-and-development-institute",
+    "https://id.loc.gov/authorities/classification/TA1001.json",
+    "https://en.wikipedia.org/wiki/Hydraulic_engineering",
+    "https://www.asce.org/communities/institutes-and-technical-groups/environmental-and-water-resources-institute",
+    "https://id.loc.gov/authorities/classification/TC160.json",
+    "https://en.wikipedia.org/wiki/Construction_engineering",
+    "https://id.loc.gov/authorities/classification/TH1.json",
+    "https://en.wikipedia.org/wiki/Geomatics",
+    "https://id.loc.gov/authorities/classification/TA501.json"
+  ]
+}
