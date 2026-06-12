@@ -1,0 +1,83 @@
+{
+  "batch": "arts-summaries-v1/batch-d-perform-arch",
+  "generated_by": "claude-opus-4-8[1m]",
+  "summaries": [
+    {
+      "node_id": "field:performing-arts",
+      "summary": "The performing arts are arts performed for an audience, encompassing disciplines presented before a live audience including theatre, music, and dance. They are distinguished from the visual arts, which produce physical or static objects rather than a transient performance enacted in real time. As a field of study and practice, the performing arts treat the human body, voice, and movement as the primary medium, and the live encounter between performer and spectator as constitutive of the work. Allied performance forms include opera, mime, circus arts, spoken word, and puppetry. In the Library of Congress Classification, dramatic and theatrical performance falls under the range PN2000-PN3307, \"Dramatic representation. The theater,\" within the broader Language and Literature schedule, while music and dance are classed separately under M and GV respectively.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Performing_arts", "supports": "Definition of performing arts as arts performed for an audience; the included disciplines (theatre, music, dance); distinction from the visual arts.", "quote": "The performing arts are arts such as music, dance, and drama which are performed for an audience. They are different from the visual arts, which produce physical or static objects. Performing arts include a range of disciplines which are performed in front of a live audience, including theatre, music, and dance.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/PN2000-PN3307.json", "supports": "LCC range PN2000-PN3307 caption for dramatic/theatrical performance.", "quote": "Dramatic representation. The theater", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:architecture",
+      "summary": "Architecture is the study and practice of designing structures, especially habitable ones. It encompasses the process and the product of sketching, conceiving, planning, designing, and constructing buildings or other elements of the built environment, and it is widely treated as a discipline spanning both art and engineering. Although it utilizes civil engineering techniques, architecture is also considered a visual art, and architectural works are commonly recognized as cultural symbols and artistic expressions of their historical period. In the Library of Congress Classification, architecture occupies the schedule NA, \"Architecture,\" within the fine arts. The profession is organized through bodies such as the American Institute of Architects, which describes itself as \"the largest design organization in the world,\" working to transform the day-to-day practice of architecture toward a healthier and more equitable built environment.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Architecture", "supports": "Definition of architecture as the study and practice of designing structures; that it utilizes civil engineering but is considered a visual art.", "quote": "Architecture is the study and practice of designing structures, especially habitable ones. It utilizes civil engineering techniques, but is considered a visual art.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/NA1-NA9428.json", "supports": "LCC schedule NA caption 'Architecture' within the fine arts.", "quote": "Architecture", "fetched": true},
+        {"url": "https://www.aia.org/about", "supports": "AIA self-description as the largest design organization and its mission for the built environment.", "quote": "As the largest design organization in the world, AIA is working to transform the day-to-day practice of architecture to achieve a zero-carbon, resilient, healthy, just, equitable built environment, for everyone.", "fetched": true}
+      ],
+      "self_flags": ["Referent pin held: the atlas homes architecture in arts-and-design with a recorded §13 engineering-side dual membership (LCC TH845-895 / UDC 69; PR #93 domain-direct ruling). Summary notes the art-and-engineering span while anchoring on LCC NA and AIA."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:theatre-studies",
+      "summary": "Theatre studies is the academic study of theatrical performance in relation to its literary, physical, psychological, sociological, and historical contexts. It is an interdisciplinary field which also encompasses the study of theatrical aesthetics and semiotics, examining not only dramatic texts but also acting, staging, design, audience reception, and the institutions and cultures of performance. The discipline draws on dramatic literature, performance theory, theatre history, and the practical analysis of production, distinguishing the scholarly study of theatre from its professional practice. In the Library of Congress Classification, dramatic and theatrical performance is classed in the range PN2000-PN3307, \"Dramatic representation. The theater,\" within the Language and Literature schedule, reflecting the field's historical roots in the study of drama as a literary and performance form.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Theatre_studies", "supports": "Definition of theatre studies as the study of theatrical performance in literary/physical/psychological/sociological/historical contexts; interdisciplinary field encompassing aesthetics and semiotics.", "quote": "Theatre studies is the study of theatrical performance in relation to its literary, physical, psychological, sociological, and historical contexts. It is an interdisciplinary field which also encompasses the study of theatrical aesthetics and semiotics.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/PN2000-PN3307.json", "supports": "LCC range PN2000-PN3307 caption for dramatic/theatrical performance.", "quote": "Dramatic representation. The theater", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:dance",
+      "summary": "Dance is an art form consisting of sequences of body movements with aesthetic and often symbolic value, either improvised or purposefully selected. Dance can be categorized and described by its choreography, by its repertoire of movements, or by its historical period or place of origin, and it is typically performed with musical accompaniment. As one of the performing arts, dance functions both as creative practice and as a subject of scholarship spanning choreography, technique, ethnography, and dance history. In the Library of Congress Classification, dance is treated under the range GV1580-GV1799.4, \"Dancing,\" within the Recreation and Leisure schedule. The field embraces traditions ranging from classical ballet and modern and contemporary concert dance to folk, social, and ceremonial forms across cultures.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Dance", "supports": "Definition of dance as an art form of sequences of body movements with aesthetic/symbolic value; categorization by choreography, repertoire, period, or origin; typical musical accompaniment.", "quote": "Dance is an art form, consisting of sequences of body movements with aesthetic and often symbolic value, either improvised or purposefully selected. Dance can be categorized and described by its choreography, by its repertoire of movements or by its historical period or place of origin. Dance is typically performed with musical accompaniment, and sometimes with the dancer simultaneously using a musical instrument themselves.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/GV1580-GV1799.4.json", "supports": "LCC range GV1580-GV1799.4 caption 'Dancing'.", "quote": "Dancing", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:film-studies",
+      "summary": "Film studies is an academic discipline that deals with various theoretical, historical, and critical approaches to cinema as an art form and a medium. It treats film not as a craft to be taught but as an object of scholarly inquiry, encompassing film theory, film history, genre and authorship analysis, national cinemas, and the cultural and ideological dimensions of moving images. The discipline is sometimes incorporated into broader media studies programs and is frequently compared to the study of television. It draws methods from literary criticism, art history, semiotics, and cultural studies. In the Library of Congress Classification, motion pictures are classed in the range PN1993-PN1999, \"Motion pictures,\" within the Language and Literature schedule, situating cinema scholarship alongside the study of drama and other narrative arts.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Film_studies", "supports": "Definition of film studies as an academic discipline dealing with theoretical, historical, and critical approaches to cinema as an art form and medium.", "quote": "Film studies is an academic discipline that deals with various theoretical, historical, and critical approaches to cinema as an art form and a medium.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/PN1993-PN1999.json", "supports": "LCC range PN1993-PN1999 caption 'Motion pictures'.", "quote": "Motion pictures", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:landscape-architecture",
+      "summary": "Landscape architecture is the design of outdoor areas, landmarks, and structures to achieve environmental, social-behavioural, or aesthetic outcomes. It involves the systematic design and general engineering of structures for construction and human use, the investigation of existing social, ecological, and soil conditions and processes in the landscape, and the design of interventions that will produce desired outcomes. The discipline thus spans both design and environmental science, shaping parks, gardens, campuses, streetscapes, and public open space. The profession is represented in the United States by the American Society of Landscape Architects, a professional association whose mission is to advance landscape architecture through advocacy, communication, education, and fellowship. The ASLA characterizes the field as one in which \"landscape architects bring together ecology, design, and technology to create places that are healthy beautiful, and built to last.\"",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Landscape_architecture", "supports": "Definition of landscape architecture as the design of outdoor areas/landmarks/structures for environmental, social-behavioural, or aesthetic outcomes.", "quote": "Landscape architecture is the design of outdoor areas, landmarks, and structures to achieve environmental, social-behavioural, or aesthetic outcomes.", "fetched": true},
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/American_Society_of_Landscape_Architects", "supports": "ASLA as a professional association for landscape architects in the US and its mission.", "quote": "The American Society of Landscape Architects (ASLA) is a professional association for landscape architects in the United States. The ASLA's mission is to advance landscape architecture through advocacy, communication, education, and fellowship.", "fetched": true},
+        {"url": "https://www.asla.org/aboutlandscapearchitecture.aspx", "supports": "ASLA's framing of landscape architecture as bringing together ecology, design, and technology.", "quote": "landscape architects bring together ecology, design, and technology to create places that are healthy beautiful, and built to last", "fetched": true}
+      ],
+      "self_flags": ["The 'healthy beautiful' phrasing (no comma) is quoted verbatim from asla.org as it appears on the page — not a transcription error. The landscape-architecture LCC range (SB469-476.5) did not resolve via the JSON API; no LCC caption asserted."],
+      "unfetched": ["https://id.loc.gov/authorities/classification/SB469-SB476.5.json — 404 across SB469-476 variants; SB469 alone resolves only to 'Periodicals. Societies. Serials'. No LCC caption quoted for this node."]
+    }
+  ],
+  "spn_queue": [
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Performing_arts",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Architecture",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Theatre_studies",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Dance",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Film_studies",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Landscape_architecture",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/American_Society_of_Landscape_Architects",
+    "https://id.loc.gov/authorities/classification/NA1-NA9428.json",
+    "https://id.loc.gov/authorities/classification/PN2000-PN3307.json",
+    "https://id.loc.gov/authorities/classification/PN1993-PN1999.json",
+    "https://id.loc.gov/authorities/classification/GV1580-GV1799.4.json",
+    "https://www.aia.org/about",
+    "https://www.asla.org/aboutlandscapearchitecture.aspx"
+  ]
+}

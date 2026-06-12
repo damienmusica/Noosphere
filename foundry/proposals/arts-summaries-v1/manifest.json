@@ -1,0 +1,18 @@
+{
+  "batch": "arts-summaries-v1",
+  "kind": "editorial",
+  "description": "Editorial pass 9 (cleanup session #16, round-1 debt repayment 3a of 3): summaries for the 23 reviewed arts-and-design nodes that landed in the parallel round (13d) with empty summaries (debt-ledger-round1.md §1). QC v2 (decision (34)) at the settled 30% reading sample.",
+  "generation": {
+    "model": "claude-opus-4-8",
+    "contexts": 4,
+    "note": "Four separate generation contexts (ADR 0007), split by arts cluster: batch-a-music (music field + 4 music subfields); batch-b-visual (visual-arts field + 7 visual subfields incl. drawing fine-art pin, decorative-arts Applied-Arts alias, ceramic-arts granularity nuance); batch-c-design (design field + graphic/industrial/interior design); batch-d-perform-arch (performing-arts + architecture fields + theatre/dance/film + landscape-architecture; architecture domain-direct arts home with recorded engineering §13). Contract: live-fetch duty, [UNFETCHED] honest self-marking, anti-laundering, trim-forbidden 4, referent pins. Raw sets preserved as summaries.batch-*.json."
+  },
+  "qc": {
+    "by": "claude-fable-5",
+    "session": "#16",
+    "policy": "editorial QC v2 (decision (34)): mechanical checks 100% + 30% pre-registered reading sample (settled after ENG calibration) + self-flag/[UNFETCHED] backstop full. Generation model = Opus (decision (26)).",
+    "reading_sample": "Pre-registered by md5(node_id) hex ascending, top ceil(23×0.30)=7: music, performing-arts, art-history, ceramic-arts, ethnomusicology, graphic-design, theatre-studies."
+  },
+  "targets": 23,
+  "parent_precondition": "all 23 parent nodes are reviewed; every English translation row is marked reviewed:true."
+}

@@ -1,0 +1,116 @@
+{
+  "batch": "life-summaries-v1/batch-a-organism",
+  "generated_by": "claude-opus-4-8[1m]",
+  "summaries": [
+    {
+      "node_id": "field:biology",
+      "summary": "Biology is the scientific study of life and living organisms, the broad natural science encompassing the structure, function, growth, origin, evolution, and distribution of life. It is unified by fundamental themes: the cell as the basic unit of life, genes and heredity as the basis of inheritance, evolution as the driver of biological diversity, energy transformation sustaining life processes, and homeostasis. As the parent discipline of the life sciences, biology branches into specialized subfields organized around particular groups of organisms, levels of organization, or modes of study, including botany, zoology, microbiology, and systematics. In the Library of Congress Classification, the general literature of biology is gathered under class QH, ranging across periodicals, societies, and serial publications devoted to the science.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Biology", "supports": "Definition of biology and its five unifying themes", "quote": "Biology is the scientific study of life and living organisms. It is a broad natural science that encompasses a wide range of fields and unifying principles that explain the structure, function, growth, origin, evolution, and distribution of life. Central to biology are five fundamental themes: the cell as the basic unit of life, genes and heredity as the basis of inheritance, evolution as the driver of biological diversity, energy transformation for sustaining life processes, and homeostasis, the maintenance of internal stability.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/QH301.json", "supports": "LCC class QH placement for biology (general)", "quote": "Science--Biology (General)--Periodicals, societies, congresses, serial publications", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:botany",
+      "summary": "Botany, also called phytology or plant science, is the branch of natural science and biology that studies plants, especially their anatomy, taxonomy, and ecology. As a major subfield of biology, it spans the form, physiology, classification, distribution, and ecological relationships of plant life, from microscopic algae to flowering trees, alongside the practical uses of plants by humans. Botanical inquiry ranges across plant structure and development, reproduction, genetics, and the diversity of the plant kingdom. In the Library of Congress Classification, the literature of botany is gathered under class QK, organized from periodicals and societies through the systematic treatment of plant groups.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Botany", "supports": "Definition of botany and its core areas of study", "quote": "Botany, also called phytology or plant science, is the branch of natural science and biology that studies plants, especially their anatomy, taxonomy, and ecology.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/QK1.json", "supports": "LCC class QK placement for botany", "quote": "Science--Botany--Periodicals, societies, congresses, serial publications", "fetched": true}
+      ],
+      "self_flags": ["botany.org/about returned navigation/menu content only; not quoted (anti-laundering)."],
+      "unfetched": ["https://botany.org/home/about/about-botany.html — no verbatim definitional prose retrievable (nav/menu only)."]
+    },
+    {
+      "node_id": "subfield:zoology",
+      "summary": "Zoology is the scientific study of animals, including the structure, embryology, classification, habits, and distribution of all animals, both living and extinct, and how they interact with their ecosystems. It is one of the primary branches of biology, with the term derived from Ancient Greek zoion, 'animal,' and logos, 'study of.' As a subfield, zoology encompasses animal morphology and physiology, behavior, evolutionary relationships, and the diversity of the animal kingdom across taxonomic groups. In the Library of Congress Classification, the literature of zoology is collected under class QL, organized from periodicals and societies through the systematic treatment of animal taxa.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Zoology", "supports": "Definition of zoology, its scope, and etymology", "quote": "Zoology is the scientific study of animals. Its studies include the structure, embryology, classification, habits, and distribution of all animals, both living and extinct, and how they interact with their ecosystems.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/QL1.json", "supports": "LCC class QL placement for zoology", "quote": "Science--Zoology--Periodicals, societies, congresses, serial publications", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:microbiology",
+      "summary": "Microbiology is the scientific study of microorganisms, those being of unicellular (single-celled), multicellular, or acellular form. It encompasses numerous sub-disciplines including virology, bacteriology, protistology, mycology, immunology, and parasitology, examining the structure, physiology, genetics, and ecology of microbial life. As a subfield of biology, microbiology investigates organisms generally invisible to the unaided eye, their roles in disease, industry, and the environment, and the techniques used to detect and culture them. In the Library of Congress Classification, the literature of microbiology is gathered under class QR.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Microbiology", "supports": "Definition of microbiology and its sub-disciplines", "quote": "Microbiology is the scientific study of microorganisms, those being of unicellular (single-celled), multicellular, or acellular. Microbiology encompasses numerous sub-disciplines including virology, bacteriology, protistology, mycology, immunology, and parasitology.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/QR1.json", "supports": "LCC class QR placement for microbiology", "quote": "Science--Microbiology--Periodicals, societies, congresses, serial publications", "fetched": true}
+      ],
+      "self_flags": ["ASM 'about' page issued a cross-host 301 redirect and was not re-fetched; no ASM quote claimed as fetched (the draft's ASM characterization sentence was removed at QC)."],
+      "unfetched": ["https://www.asm.org/Membership/Member-Resources/About-ASM — 301 cross-host redirect to http://asm.org; not re-fetched."]
+    },
+    {
+      "node_id": "subfield:mycology",
+      "summary": "Mycology is the branch of biology concerned with the study of fungi, including their taxonomy, genetics, biochemical properties, and use by humans. Fungi serve as sources of food, traditional medicine, and tinder, and figure in poison, infection, and the manufacture of fermented products, with yeasts among the most heavily utilized members of the fungus kingdom. The Mycological Society of America states that its purpose is to promote and advance the science of mycology and to foster and encourage research and education in mycology in all its aspects. As a peer subfield within the life sciences, mycology maintains a dedicated research community spanning fungal systematics, physiology, ecology, and applied uses.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Mycology", "supports": "Definition of mycology and the uses of fungi", "quote": "Mycology is the branch of biology concerned with the study of fungi, including their taxonomy, genetics, biochemical properties, and use by humans. Fungi can be a source of tinder, food, and traditional medicine, as well as entheogens, poison, and infection. Yeasts are among the most heavily utilized members of the fungus kingdom, particularly in food manufacturing.", "fetched": true},
+        {"url": "https://msafungi.org/about/", "supports": "Mycological Society of America statement of purpose, grounding mycology as a discipline with a dedicated community", "quote": "The purpose of the Society is to promote and advance the science of mycology and to foster and encourage research and education in mycology in all its aspects.", "fetched": true}
+      ],
+      "self_flags": ["Referent pin held: kept as a peer subfield with a dedicated range/community."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:virology",
+      "summary": "Virology is the scientific study of biological viruses. It is a subfield of microbiology that focuses on their detection, structure, classification and evolution, their methods of infection and exploitation of host cells for reproduction, their interaction with host organism physiology and immunity, the diseases they cause, the techniques to isolate and culture them, and their use in research and therapy. Virological inquiry spans both the molecular biology of viral replication and the epidemiology of viral disease. In the Library of Congress Classification, the literature of virology is placed under microbiology in class QR.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Virology", "supports": "Definition of virology and its placement as a subfield of microbiology", "quote": "Virology is the scientific study of biological viruses. It is a subfield of microbiology that focuses on their detection, structure, classification and evolution, their methods of infection and exploitation of host cells for reproduction, their interaction with host organism physiology and immunity, the diseases they cause, the techniques to isolate and culture them, and their use in research and therapy.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/QR355.json", "supports": "LCC placement of virology under microbiology (QR)", "quote": "Science--Microbiology--Virology--Periodicals, societies, congresses, serial publications", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:parasitology",
+      "summary": "Parasitology is the study of parasites, their hosts, and the relationship between them. As a biological discipline, the scope of parasitology is not determined by the organism or environment in question but by their way of life, drawing on cell biology, molecular biology, immunology, genetics, and ecology. The field examines parasitic organisms across the tree of life and the host–parasite interactions that shape disease, transmission, and evolution. In the Library of Congress Classification, parasitology is treated within zoology, where its literature is captioned under animal special topics in class QL.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Parasitology", "supports": "Definition of parasitology and its scope defined by way of life", "quote": "Parasitology is the study of parasites, their hosts, and the relationship between them. As a biological discipline, the scope of parasitology is not determined by the organism or environment in question but by their way of life.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/QL757.json", "supports": "LCC caption placing parasitology within zoology", "quote": "Science--Zoology--Animal behavior--Special topics--Parasitology", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:marine-biology",
+      "summary": "Marine biology is the scientific study of the biology of marine life, organisms that inhabit the sea. Given that in biology many phyla, families and genera have some species that live in the sea and others that live on land, marine biology classifies species based on the environment rather than on taxonomy. The discipline spans the diversity, physiology, behavior, and ecology of ocean-dwelling organisms across habitats from coastal zones to the deep sea, together with their interactions and the marine ecosystems they form. As an environment-defined subfield of biology, it draws on zoology, botany, microbiology, and ecology to study life in saltwater settings.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Marine_biology", "supports": "Definition of marine biology and its environment-based (rather than taxonomic) classification of species", "quote": "Marine biology is the scientific study of the biology of marine life, organisms that inhabit the sea. Given that in biology many phyla, families and genera have some species that live in the sea and others that live on land, marine biology classifies species based on the environment rather than on taxonomy.", "fetched": true}
+      ],
+      "self_flags": ["marine-biology LCC range (QH90/QH91) did not resolve (404); no LCC caption asserted."],
+      "unfetched": ["https://id.loc.gov/authorities/classification/QH90.json — HTTP 404 (QH90, QH91 both 404)."]
+    },
+    {
+      "node_id": "subfield:systematics",
+      "summary": "Systematics is the study of the diversification of living forms, both past and present, and the relationships among living things through time. Encompassing taxonomy and phylogenetics, it reconstructs evolutionary trees to represent the branching order and divergence of lineages, and uses these phylogenies to examine trait evolution and the geographic distribution of organisms. The Society of Systematic Biologists describes its mission as advancing the science of systematic biology in all its aspects of theory, principles, methodology, and practice, for both living and fossil organisms. In the Library of Congress Classification, the work of classification and nomenclature falls within natural history in class QH.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Systematics", "supports": "Definition of systematics as the study of diversification and relationships of life", "quote": "Systematics is the study of the diversification of living forms, both past and present, and the relationships among living things through time.", "fetched": true},
+        {"url": "https://www.systbio.org/", "supports": "Society of Systematic Biologists mission, grounding systematics as a discipline covering theory, methodology, and both living and fossil organisms", "quote": "The Society of Systematic Biologists advances the science of systematic biology in all its aspects of theory, principles, methodology, and practice, for both living and fossil organisms, with emphasis on areas of common interest to all systematic biologists regardless of individual specialization.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/QH83.json", "supports": "LCC caption placing classification and nomenclature within natural history (QH)", "quote": "Science--Natural history (General)--Classification. Nomenclature", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    }
+  ],
+  "spn_queue": [
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Biology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Botany",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Zoology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Microbiology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Mycology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Virology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Parasitology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Marine_biology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Systematics",
+    "https://id.loc.gov/authorities/classification/QH301.json",
+    "https://id.loc.gov/authorities/classification/QK1.json",
+    "https://id.loc.gov/authorities/classification/QL1.json",
+    "https://id.loc.gov/authorities/classification/QR1.json",
+    "https://id.loc.gov/authorities/classification/QR355.json",
+    "https://id.loc.gov/authorities/classification/QL757.json",
+    "https://id.loc.gov/authorities/classification/QH83.json",
+    "https://msafungi.org/about/",
+    "https://www.systbio.org/"
+  ]
+}

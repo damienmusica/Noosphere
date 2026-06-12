@@ -1,0 +1,61 @@
+{
+  "batch": "arts-summaries-v1/batch-c-design",
+  "generated_by": "claude-opus-4-8[1m]",
+  "summaries": [
+    {
+      "node_id": "field:design",
+      "summary": "Design is the discipline and practice of conceiving and planning objects, processes, and systems before they are made. A design is the concept or proposal for an intended artefact, and the verb to design names the process of developing it. A design is expected to satisfy goals and constraints within a specific context while accounting for aesthetic, functional, and experiential considerations. The field spans diverse domains, from architectural and engineering drawings and circuit diagrams to sewing patterns and less tangible artefacts such as business process models. In the Library of Congress Classification, design and the decorative and applied arts fall under class NK, captioned \"Decorative arts. Applied arts. Decoration and ornament,\" reflecting the discipline's historical roots in ornament and craft as well as its modern role in shaping manufactured and communicated forms.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Design", "supports": "Definition of design as concept/proposal and the design process; purpose, constraints, and aesthetic/functional/experiential considerations; example artefacts", "quote": "A design is the concept or proposal for an object, process, or system.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/NK1-NK9990.json", "supports": "LCC class NK caption covering decorative/applied arts and design", "quote": "Decorative arts. Applied arts. Decoration and ornament", "fetched": true}
+      ],
+      "self_flags": ["The artefact examples (architectural/engineering drawings, circuit diagrams, sewing patterns, business process models) and the aesthetic/functional/experiential-considerations clause are present in the fetched Wikipedia Design article body; the citation quotes the load-bearing opening definitional sentence."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:graphic-design",
+      "summary": "Graphic design is a profession, academic discipline, and applied art devoted to creating visual communications intended to transmit specific messages to social groups, with specific objectives. It belongs to the broader practice of visual communication, the use of visual elements—signs, typography, drawing, illustration, advertising, animation, and electronic resources—to convey ideas and information. Practitioners combine type, image, color, and layout to inform, persuade, and orient audiences across print and digital media. In the Library of Congress Classification, commercial and advertising graphics are gathered under range NC997-NC1003, captioned \"Commercial art. Advertising art,\" within class NC for drawing and design. The discipline encompasses identity and branding, editorial and publication design, packaging, signage and wayfinding, and increasingly interface and motion graphics.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Graphic_design", "supports": "Definition of graphic design as profession, discipline, and applied art creating visual communications", "quote": "Graphic design is a profession, academic discipline and applied art that involves creating visual communications intended to transmit specific messages to social groups, with specific objectives.", "fetched": true},
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Visual_communication", "supports": "Graphic design as part of visual communication and its visual elements", "quote": "Visual communication is the use of visual elements to convey ideas and information which include signs, typography, drawing, graphic design, illustration, industrial design, advertising, animation, and electronic resources.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/NC997-NC1003.json", "supports": "LCC range for commercial/advertising art covering graphic design", "quote": "Commercial art. Advertising art", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": ["https://www.aiga.org/resources/what-is-graphic-design — HTTP 403 Forbidden (Cloudflare/bot block); no verbatim definitional quote verified."]
+    },
+    {
+      "node_id": "subfield:industrial-design",
+      "summary": "Industrial design is the process of design applied to physical products that are to be manufactured by mass production. It is the creative act of determining and defining a product's form and features, which takes place in advance of the manufacture or production of the product. Industrial manufacture consists of predetermined, standardized, and repeated, often automated, acts of replication, distinguishing the discipline from craft-based design, in which the form is determined personally by the creator largely concurrent with production. The discipline addresses the aesthetics, usability, ergonomics, and producibility of goods ranging from appliances and furniture to vehicles and electronics. The Industrial Designers Society of America, the discipline's principal U.S. professional body, states it exists \"to strengthen the industrial design profession.\"",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Industrial_design", "supports": "Definition of industrial design, its relation to mass production, and contrast with craft-based design", "quote": "Industrial design is a process of design applied to physical products that are to be manufactured by mass production. It is the creative act of determining and defining a product's form and features, which takes place in advance of the manufacture or production of the product. Industrial manufacture consists of predetermined, standardized and repeated, often automated, acts of replication, while craft-based design is a process or approach in which the form of the product is determined personally by the product's creator largely concurrent with the act of its production.", "fetched": true},
+        {"url": "https://www.idsa.org/about-idsa/", "supports": "IDSA as the principal U.S. professional body for the industrial design discipline (mission statement)", "quote": "We exist to strengthen the industrial design profession.", "fetched": true}
+      ],
+      "self_flags": ["Referent pin held: the DESIGN discipline (product/aesthetic/UX), distinct from industrial engineering. IDSA's dedicated 'What is Industrial Design?' page is now a 404; core definition grounded on the Wikipedia REST summary."],
+      "unfetched": ["https://www.idsa.org/about-idsa/what-is-industrial-design/ — resolves to an IDSA 'Page Not Found' (content relocated); no verbatim definition confirmed at this path."]
+    },
+    {
+      "node_id": "subfield:interior-design",
+      "summary": "Interior design is the art and science of enhancing the interior of a building to achieve a healthier and more aesthetically pleasing environment for the people using the space. It is a multifaceted profession that includes conceptual development, space planning, site inspections, programming, research, communicating with the stakeholders of a project, construction management, and execution of the design, drawing on fundamental design principles from the visual arts. In the Library of Congress Classification, the subject occupies range NK1700-NK2195, captioned \"Interior decoration. House decoration,\" within the decorative-arts class NK. The discipline is advanced through accredited higher education: the Council for Interior Design Accreditation describes itself as \"dedicated to advancing the profession of interior design through standards and accreditation in higher education,\" overseeing accredited programs worldwide.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Interior_design", "supports": "Definition of interior design as art and science of enhancing building interiors", "quote": "Interior design is the art and science of enhancing the interior of a building to achieve a healthier and more aesthetically pleasing environment for the people using the space.", "fetched": true},
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Interior_design", "supports": "Scope of the interior-design profession", "quote": "Interior design is a multifaceted profession that includes conceptual development, space planning, site inspections, programming, research, communicating with the stakeholders of a project, construction management, and execution of the design.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/NK1700-NK2195.json", "supports": "LCC range for interior decoration covering interior design", "quote": "Interior decoration. House decoration", "fetched": true},
+        {"url": "https://www.cida.org/", "supports": "CIDA as the accreditation body advancing interior design through standards in higher education", "quote": "We are dedicated to advancing the profession of interior design through standards and accreditation in higher education", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    }
+  ],
+  "spn_queue": [
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Design",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Graphic_design",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Industrial_design",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Interior_design",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Visual_communication",
+    "https://id.loc.gov/authorities/classification/NK1-NK9990.json",
+    "https://id.loc.gov/authorities/classification/NC997-NC1003.json",
+    "https://id.loc.gov/authorities/classification/NK1700-NK2195.json",
+    "https://www.idsa.org/about-idsa/",
+    "https://www.cida.org/"
+  ]
+}
