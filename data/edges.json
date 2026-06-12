@@ -6160,5 +6160,23 @@
       "proposed_at": "2026-06-11"
     },
     "note": "LCC TP368-456 'Food processing and manufacture' — range within LCC TP 'Chemical technology' (the chemical-engineering LCC anchor) (captured baseline 2026-06-11). UDC 664 'Production and preservation of solid foodstuffs' — direct top-level notation within UDC 66 'Chemical technology. Chemical and related industries' (the chemical-engineering UDC anchor) (captured baseline 2026-06-11). || Status-capped at proposed: the source node is proposed (B-flag clause-6 contest or QID gap) — cap clause; the cap lifts with the node's resolution. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): status-capped at promotion (source node proposed, B-flag clause-6 queue). Nest itself is unanimous (TP368-456 + UDC 664 both inside the chemical wing) — the cap is about the node contest, not this placement."
+  },
+  {
+    "id": "edge:geodesy-part-of-civil-engineering",
+    "source": "subfield:geodesy",
+    "target": "field:civil-engineering",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Section-13 co-equal engineering-continent membership (cross-listing v1 §13; ns-bflag-resolution-v1 parked engineering-side trigger, executed session #15 2026-06-12). Engineering-side grounding: LCC TA501-625 'Surveying' within LCC TA 'Engineering (General). Civil engineering (General)' (id.loc.gov live 2026-06-12 — the engineering treatment of geodetic surveying); UNB 'Department of Geodesy and Geomatics Engineering' within the Faculty of Engineering (unb.ca live 2026-06-12); TU Delft houses geodesy in the Faculty of Civil Engineering and Geosciences (Geoscience & Remote Sensing dept, tudelft.nl live 2026-06-12). Membership is 'via geomatics': geomatics (the sibling §13 member of civil-engineering, edge:geomatics-part-of-civil-engineering) is the geospatial-engineering discipline that establishes geodesy's engineering home. Co-equal, NOT containment: UNB pairs geodesy and geomatics co-equally in the department name and Wikidata places geodesy under earth science (P361/P279 Q8008), not under geomatics (geomatics P527 does not list geodesy) — so the edge targets the field directly rather than nesting geodesy under subfield:geomatics. Engineering membership is secondary to the natural-sciences home (astronomy 0.8 / earth-sciences 0.75) -> confidence 0.7. No disputed (no source negates the engineering membership)."
   }
 ]
