@@ -8,12 +8,8 @@
  *
  * Checks whether a quoted claim actually appears in a locally captured page
  * (HTML or text), after normalizing the typographic variants that produced
- * false misses in past QC passes (session #9 measured patterns):
- *   - TeX markup: `$K$-theory` → `K-theory`, `\command{x}` → `x`
- *   - arrow variants: → ⟶ ⇒ ↦ and `->` all normalize to `->`
- *   - hyphen/dash variants: ‐ ‑ ‒ – — ― − all normalize to `-`
- *   - quote variants: curly/angled single+double quotes → straight
- *   - HTML: tags stripped, common entities decoded, whitespace collapsed
+ * false misses in past QC passes — see lib/normalize-text.ts (shared with
+ * fetch-verify.ts so offline and live checks apply identical normalization).
  *
  * IMPORTANT BOUNDARY: a FOUND result means the *string* is on the page after
  * normalization — it does NOT mean the claim is true, in context, or fairly
@@ -22,59 +18,7 @@
  * Fully offline; reads only local files.
  */
 import { readFileSync } from "node:fs";
-
-function normalize(input: string): string {
-  let s = input;
-  // Strip HTML if it looks like markup: remove script/style bodies, then tags.
-  if (/<[a-z!/][^>]*>/i.test(s)) {
-    s = s.replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, " ");
-    s = s.replace(/<[^>]+>/g, " ");
-  }
-  // Decode the entities that actually occur in captured scholarly pages.
-  s = s
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#0?39;|&apos;/g, "'")
-    .replace(/&nbsp;/g, " ")
-    .replace(/&ndash;|&mdash;/g, "-")
-    .replace(/&rarr;|&#8594;/g, "->");
-  // TeX: `$...$` keeps inner text; `\command{arg}` keeps arg; bare `\command` drops.
-  s = s.replace(/\$([^$]*)\$/g, "$1");
-  s = s.replace(/\\[a-zA-Z]+\{([^}]*)\}/g, "$1");
-  s = s.replace(/\\[a-zA-Z]+/g, " ");
-  s = s.replace(/[{}]/g, "");
-  // Arrows → "->" ; hyphen/dash family → "-" ; curly quotes → straight.
-  s = s.replace(/[→⟶⇒↦⇨⟹]/g, "->");
-  s = s.replace(/[‐‑‒–—―−]/g, "-");
-  s = s.replace(/[‘’‚‹›]/g, "'");
-  s = s.replace(/[“”„«»]/g, '"');
-  // Ligatures & soft hyphens that survive PDF/text extraction.
-  s = s.replace(/­/g, "").replace(/ﬁ/g, "fi").replace(/ﬂ/g, "fl");
-  return s.replace(/\s+/g, " ").trim().toLowerCase();
-}
-
-/** Cheap best-effort locator for a near-miss: the line with the most shared tokens. */
-function nearestWindow(haystackRaw: string, needle: string): string {
-  const tokens = new Set(needle.split(/\W+/).filter((t) => t.length > 3));
-  if (tokens.size === 0) return "(no locatable tokens)";
-  let best = "";
-  let bestScore = 0;
-  for (const line of haystackRaw.split(/[\n.]+/)) {
-    const norm = normalize(line);
-    if (!norm) continue;
-    let score = 0;
-    for (const t of tokens) if (norm.includes(t)) score++;
-    if (score > bestScore) {
-      bestScore = score;
-      best = norm.slice(0, 240);
-    }
-  }
-  return bestScore === 0
-    ? "(no line shares tokens with the quote)"
-    : `~${Math.round((bestScore / tokens.size) * 100)}% token overlap: "${best}"`;
-}
+import { normalize, nearestWindow } from "./lib/normalize-text.ts";
 
 function main(): void {
   const [file, ...rest] = process.argv.slice(2);

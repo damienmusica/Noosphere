@@ -49,7 +49,8 @@ Data invariants enforced by validation:
 /docs            Product brief, policies, current-phase working brief, and ADRs
 /src/schema      Zod schemas + shared types for all data files
 /scripts         validate-data.ts (data integrity + policy checks), scripts/foundry/* (resolver,
-                 golden-set regression check, claim-anchor citation checker, offline scaffold)
+                 golden-set regression check, claim-anchor citation checker, fetch-verify live
+                 citation checker, OpenAlex pre-validation table, offline scaffold)
 CLAUDE.md        Persistent instructions for Claude Code sessions
 NOOSPHERE_CLAUDE_CODE_BRIEF.md   Superseded foundation-phase brief (retained for history)
 ```
@@ -80,6 +81,8 @@ npm run foundry:validate-batches   # validates batch manifests
 npm run foundry:resolve-wikidata -- foundry/batches/<manifest>.json  # network resolver (local only)
 npm run foundry:goldenset          # offline regression check of resolver output vs verified verdicts
 npm run foundry:claim-anchor -- <captured-page> "<quote>"            # citation QC helper (offline)
+npm run foundry:fetch-verify -- <summaries.json> [--concurrency N]   # live-fetch + verbatim citation table (network, local only)
+npm run foundry:openalex-prevalidate -- --domains <a,b> [--types t]  # OpenAlex B-track pre-validation table (network, local only)
 ```
 
 `export:graph` converts the `/data` JSON into a single read-only graph payload at
