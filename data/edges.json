@@ -4234,7 +4234,7 @@
     "target": "field:biology",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline"
     ],
@@ -4252,7 +4252,7 @@
     "target": "field:biology",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline"
     ],
@@ -5753,7 +5753,7 @@
     "target": "domain:engineering-and-technology",
     "relation": "part_of",
     "confidence": 0.88,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:oecd-ford"
@@ -6233,5 +6233,1009 @@
       "proposed_at": "2026-06-12"
     },
     "note": "Section-13 co-equal technology membership (cross-listing v1 §13; ss-arts-bflag-resolution-v1, session #16). Grounding: LCC TR1-TR1050 Photography in class T = Technology (id.loc.gov live 2026-06-12, rdfs:label Technology--Photography) — the head-on counterpart to UDC class 77 (arts). Wikidata Q11633 art, science, and practice of creating durable images by recording light. Domain-direct (photographic technology spans optics/chemistry/imaging, no single engineering field is the parent). Co-equal with the visual-arts home; secondary -> confidence 0.7. No disputed."
+  },
+  {
+    "id": "edge:public-health-part-of-medicine-and-health",
+    "source": "field:public-health",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RA Public aspects of medicine (RA1-1270) + UDC 614 Public health under 61 + FORD 3.3 Health sciences. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:pathology-part-of-medicine-and-health",
+    "source": "field:pathology",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RB Pathology (RB1-214) + UDC 616-09 Pathological anatomy/physiology under 61 + FORD 3.1. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:internal-medicine-part-of-medicine-and-health",
+    "source": "field:internal-medicine",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RC Internal medicine (RC31-1245) + UDC 616 Pathology. Clinical medicine under 61. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:surgery-part-of-medicine-and-health",
+    "source": "field:surgery",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RD Surgery (RD1-811) + UDC 617 Surgery under 61 + FORD 3.2. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:ophthalmology-part-of-medicine-and-health",
+    "source": "field:ophthalmology",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RE Ophthalmology (RE1-994) + UDC 617.7 Ophthalmology. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:otolaryngology-part-of-medicine-and-health",
+    "source": "field:otolaryngology",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RF Otorhinolaryngology (RF1-547) + UDC 616.21/.22 under 61. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:obstetrics-and-gynecology-part-of-medicine-and-health",
+    "source": "field:obstetrics-and-gynecology",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RG Gynecology and obstetrics (RG1-991) + UDC 618 Gynaecology. Obstetrics. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:pediatrics-part-of-medicine-and-health",
+    "source": "field:pediatrics",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RJ Pediatrics (RJ1-570) + FORD 3.2 Paediatrics (UDC shelves under organ-system 616.x, no standalone 61x). Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:dentistry-part-of-medicine-and-health",
+    "source": "field:dentistry",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RK Dentistry (RK1-715) + UDC 616.31 Stomatology + MeSH H02.163 Dentistry. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:dermatology-part-of-medicine-and-health",
+    "source": "field:dermatology",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RL Dermatology (RL1-803) + UDC 616.5 Skin. Clinical dermatology. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:psychiatry-part-of-medicine-and-health",
+    "source": "field:psychiatry",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: UDC 616.89 Psychiatry own division under 61 + LCC RC435-571 (shelving under RC, shelving-not-hierarchy) + ABPN/APA institutional independence. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:neurology-part-of-medicine-and-health",
+    "source": "field:neurology",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: UDC 616.8 Neurology own division under 61 + LCC RC346-429 (shelving under RC) + AAN/ABPN independence. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:pharmacology-part-of-medicine-and-health",
+    "source": "field:pharmacology",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RM Therapeutics. Pharmacology (RM1-950) + UDC 615 Pharmacology. Therapeutics. Toxicology + FORD 3.1 + MeSH H02.628. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:pharmacy-part-of-medicine-and-health",
+    "source": "field:pharmacy",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RS Pharmacy and materia medica (RS1-441) + UDC 615.1 General and professional pharmacy + MeSH H02.646. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:nursing-part-of-medicine-and-health",
+    "source": "field:nursing",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 1.0,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclass RT Nursing (RT1-120) + MeSH H02.478 Nursing + FORD 3.3. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:radiology-part-of-medicine-and-health",
+    "source": "field:radiology",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC R895-920 Medical physics. Medical radiology. Nuclear medicine + MeSH H02.403.740 Radiology + FORD 3.2 (clinical imaging specialty). Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:medical-physics-part-of-medicine-and-health",
+    "source": "field:medical-physics",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC R895-920 Medical physics under R + applied-physics discipline (AAPM); transferred from natural sciences per decision (30), PhySH absent/MeSH present. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:anesthesiology-part-of-medicine-and-health",
+    "source": "field:anesthesiology",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RD78.3-87.3 Anesthesiology named range + MeSH H02.403.066 + ABA/ASA independent board (ABMS primary specialty). Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:emergency-medicine-part-of-medicine-and-health",
+    "source": "field:emergency-medicine",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC86-88.9 Medical emergencies. Critical care. First aid + MeSH H02.403.250 + ABEM/ACEP (ABMS primary specialty). Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:physical-and-rehabilitation-medicine-part-of-medicine-and-health",
+    "source": "field:physical-and-rehabilitation-medicine",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RM695-893 Physical medicine + RD792-811 Physical rehabilitation + MeSH H02.403.680 + ABPMR (ABMS primary specialty). Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:alternative-medicine-part-of-medicine-and-health",
+    "source": "field:alternative-medicine",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC subclasses RV Botanic/Thomsonian/eclectic + RX Homeopathy + RZ Other systems of medicine + Wikidata Q188504 non-scientific healing. Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:family-medicine-part-of-medicine-and-health",
+    "source": "field:family-medicine",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC R729.5 Family medicine (live-verified id.loc.gov 2026-06-12, within R728-733 Practice of medicine) + MeSH H02.403.340 General Practice + AAFP (ABMS primary specialty). Gate-anchored division of domain:medicine-and-health."
+  },
+  {
+    "id": "edge:nutrition-science-part-of-public-health",
+    "source": "subfield:nutrition-science",
+    "target": "field:public-health",
+    "relation": "part_of",
+    "confidence": 0.75,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: UDC 613.2 Dietetics. Nutrition under 613 Hygiene + LCC RC620-627 Nutritional diseases + RM214-258 Diet therapy + FORD 3.3 (cross-continent: life-sciences §13 candidate)."
+  },
+  {
+    "id": "edge:cardiology-part-of-internal-medicine",
+    "source": "subfield:cardiology",
+    "target": "field:internal-medicine",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC666-701 Diseases of the circulatory (Cardiovascular) system + UDC 616.1 Cardiovascular under 616 + ACC/AHA, ABIM subspecialty."
+  },
+  {
+    "id": "edge:oncology-part-of-internal-medicine",
+    "source": "subfield:oncology",
+    "target": "field:internal-medicine",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC254-282 Neoplasms. Tumors. Oncology + UDC 616-006 Tumours under 616 + ASCO (medical oncology home; surgical/radiation oncology §13 candidates)."
+  },
+  {
+    "id": "edge:gastroenterology-part-of-internal-medicine",
+    "source": "subfield:gastroenterology",
+    "target": "field:internal-medicine",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC799-869 Diseases of the digestive system. Gastroenterology + UDC 616.3 Digestive system + AGA (hepatology absorbed)."
+  },
+  {
+    "id": "edge:endocrinology-part-of-internal-medicine",
+    "source": "subfield:endocrinology",
+    "target": "field:internal-medicine",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC648-665 Diseases of the endocrine glands. Clinical endocrinology + UDC 616.4 + Endocrine Society."
+  },
+  {
+    "id": "edge:nephrology-part-of-internal-medicine",
+    "source": "subfield:nephrology",
+    "target": "field:internal-medicine",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC870-923 Diseases of the genitourinary system (renal portion) + UDC 616.61 + ASN."
+  },
+  {
+    "id": "edge:pulmonology-part-of-internal-medicine",
+    "source": "subfield:pulmonology",
+    "target": "field:internal-medicine",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC705-779 Diseases of the respiratory system + UDC 616.2 Respiratory system + ATS."
+  },
+  {
+    "id": "edge:hematology-part-of-internal-medicine",
+    "source": "subfield:hematology",
+    "target": "field:internal-medicine",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC633-647.5 Diseases of the blood and blood-forming organs + UDC 616.15 + ASH."
+  },
+  {
+    "id": "edge:rheumatology-part-of-internal-medicine",
+    "source": "subfield:rheumatology",
+    "target": "field:internal-medicine",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC924-924.5 Connective tissues + RC925-935 Musculoskeletal + UDC 616.7 Organs of locomotion + ACR."
+  },
+  {
+    "id": "edge:infectious-diseases-part-of-internal-medicine",
+    "source": "subfield:infectious-diseases",
+    "target": "field:internal-medicine",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC109-216 Infectious and parasitic diseases + UDC 616.9 Communicable diseases + IDSA."
+  },
+  {
+    "id": "edge:geriatrics-part-of-internal-medicine",
+    "source": "subfield:geriatrics",
+    "target": "field:internal-medicine",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC952-954.6 Geriatrics + UDC 613.98/616-053.9 + AGS, ABIM subspecialty."
+  },
+  {
+    "id": "edge:orthopedic-surgery-part-of-surgery",
+    "source": "subfield:orthopedic-surgery",
+    "target": "field:surgery",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RD701-811 Orthopedic surgery + UDC 617.3 Orthopaedics + AAOS."
+  },
+  {
+    "id": "edge:neurosurgery-part-of-surgery",
+    "source": "subfield:neurosurgery",
+    "target": "field:surgery",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RD593-596/RD520-599.5 Surgery by region (neurological) + UDC 617.51/616.8 + AANS."
+  },
+  {
+    "id": "edge:plastic-surgery-part-of-surgery",
+    "source": "subfield:plastic-surgery",
+    "target": "field:surgery",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RD118-120.5 Plastic surgery. Reparative surgery + UDC 617 + ASPS."
+  },
+  {
+    "id": "edge:cardiothoracic-surgery-part-of-surgery",
+    "source": "subfield:cardiothoracic-surgery",
+    "target": "field:surgery",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RD536/RD598 Surgery of the thorax + UDC 617.54 + STS/AATS (thoracic/cardiothoracic surgery)."
+  },
+  {
+    "id": "edge:urology-part-of-surgery",
+    "source": "subfield:urology",
+    "target": "field:surgery",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC870-923 Urology + UDC 616.6 Urogenital system + AUA (surgical subspecialty)."
+  },
+  {
+    "id": "edge:epidemiology-part-of-public-health",
+    "source": "subfield:epidemiology",
+    "target": "field:public-health",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RA648.5-767 Epidemics. Epidemiology + UDC 614.4 Prevention/control of communicable diseases + SER/IEA."
+  },
+  {
+    "id": "edge:biostatistics-part-of-public-health",
+    "source": "subfield:biostatistics",
+    "target": "field:public-health",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RA407-409.5 Health status indicators. Medical statistics and surveys + §12 ruling 2026-06-11 biostatistics medicine-home (formal-sciences statistics is a §13 candidate)."
+  },
+  {
+    "id": "edge:environmental-health-part-of-public-health",
+    "source": "subfield:environmental-health",
+    "target": "field:public-health",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RA565-600 Environmental health + UDC 613.6/614.7 Occupational/environmental hygiene."
+  },
+  {
+    "id": "edge:occupational-medicine-part-of-public-health",
+    "source": "subfield:occupational-medicine",
+    "target": "field:public-health",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RC963-969 Industrial medicine. Industrial hygiene + UDC 613.6 Occupational health hazards + ACOEM."
+  },
+  {
+    "id": "edge:health-policy-and-management-part-of-public-health",
+    "source": "subfield:health-policy-and-management",
+    "target": "field:public-health",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RA410-410.9 Medical economics + RA418-418.5 Medicine and society + MeSH H02.269 Health Services Administration / H02.309 Hospital Administration + FORD 3.3."
+  },
+  {
+    "id": "edge:global-health-part-of-public-health",
+    "source": "subfield:global-health",
+    "target": "field:public-health",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RA441 World health. International cooperation (live-verified id.loc.gov 2026-06-12) + MeSH H02.403.371 Global Health + FORD 3.3."
+  },
+  {
+    "id": "edge:forensic-medicine-part-of-public-health",
+    "source": "subfield:forensic-medicine",
+    "target": "field:public-health",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RA1001-1171 Forensic medicine. Medical jurisprudence. Legal medicine (subclass RA) + MeSH H02.403.330 Forensic Medicine."
+  },
+  {
+    "id": "edge:toxicology-part-of-pharmacology",
+    "source": "subfield:toxicology",
+    "target": "field:pharmacology",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: UDC 615.9 General toxicology under 615 Pharmacology + LCC RA1190-1270 Toxicology + MeSH H02.884 (SOT community; RA environmental/forensic toxicology §13 affinity to public-health)."
+  },
+  {
+    "id": "edge:nuclear-medicine-part-of-radiology",
+    "source": "subfield:nuclear-medicine",
+    "target": "field:radiology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC R895-920 Nuclear medicine (shared range with radiology/medical-physics) + MeSH H02.403 + ABNM (imaging+therapy subspecialty of radiology)."
+  },
+  {
+    "id": "edge:homeopathy-part-of-alternative-medicine",
+    "source": "subfield:homeopathy",
+    "target": "field:alternative-medicine",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RX Homeopathy (own subclass RX1-681) + UDC 615.015.32 + Wikidata Q81058 (academic_status non_academic — uncontested pseudoscience)."
+  },
+  {
+    "id": "edge:chiropractic-part-of-alternative-medicine",
+    "source": "subfield:chiropractic",
+    "target": "field:alternative-medicine",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RZ201-275 Chiropractic under RZ Other systems of medicine + Wikidata Q658096 (academic_status non_academic, profession-vs-pseudoscience status contest)."
+  },
+  {
+    "id": "edge:naturopathy-part-of-alternative-medicine",
+    "source": "subfield:naturopathy",
+    "target": "field:alternative-medicine",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Skeleton part_of: LCC RZ440 Naturopathy (live-verified id.loc.gov 2026-06-12) under RZ + Wikidata Q213403 (academic_status non_academic, status contest)."
+  },
+  {
+    "id": "edge:physiology-part-of-medicine-and-health",
+    "source": "subfield:physiology",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Cross-listing v1 §13 medicine membership (decision (21); debt §2①): UDC 612 Physiology under 61 Medical sciences (captured 2026-06-12). Life-sciences home retained (edge:physiology-part-of-biology, LCC QP). Co-equal, no premise denial (other-home filing = support, session #7 interpretation)."
+  },
+  {
+    "id": "edge:anatomy-part-of-medicine-and-health",
+    "source": "subfield:anatomy",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:udc-summary"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Cross-listing v1 §13 medicine membership (decision (21); debt §2①): UDC 611 Anatomy under 61 Medical sciences (captured 2026-06-12). Life-sciences home retained (edge:anatomy-part-of-biology, LCC QM/QL). Co-equal, no disputed tag."
+  },
+  {
+    "id": "edge:biomedical-engineering-part-of-medicine-and-health",
+    "source": "field:biomedical-engineering",
+    "target": "domain:medicine-and-health",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Cross-listing v1 §13 medicine membership (decision (21); debt §2①): LCC R856-857 Biomedical engineering. Electronics. Instrumentation under R Medicine (captured 2026-06-12). Engineering home retained (edge:biomedical-engineering-part-of-engineering-and-technology, LCC TA164 + FORD 2.6). Co-equal, no disputed tag."
   }
 ]

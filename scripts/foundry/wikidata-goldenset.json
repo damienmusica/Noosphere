@@ -2643,6 +2643,411 @@
       "verdict": "verified",
       "expected_qid": "Q6631525",
       "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Public Health",
+      "node_id": "field:public-health",
+      "verdict": "verified",
+      "expected_qid": "Q189603",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Pathology",
+      "node_id": "field:pathology",
+      "verdict": "verified",
+      "expected_qid": "Q7208",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Internal Medicine",
+      "node_id": "field:internal-medicine",
+      "verdict": "verified",
+      "expected_qid": "Q11180",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Surgery",
+      "node_id": "field:surgery",
+      "verdict": "verified",
+      "expected_qid": "Q40821",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Ophthalmology",
+      "node_id": "field:ophthalmology",
+      "verdict": "verified",
+      "expected_qid": "Q161437",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Otolaryngology",
+      "node_id": "field:otolaryngology",
+      "verdict": "verified",
+      "expected_qid": "Q189553",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Obstetrics and Gynaecology",
+      "node_id": "field:obstetrics-and-gynecology",
+      "verdict": "verified",
+      "expected_qid": "Q80015",
+      "manual_path": true,
+      "rank1_expected": false
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Pediatrics",
+      "node_id": "field:pediatrics",
+      "verdict": "verified",
+      "expected_qid": "Q123028",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Dentistry",
+      "node_id": "field:dentistry",
+      "verdict": "verified",
+      "expected_qid": "Q12128",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Dermatology",
+      "node_id": "field:dermatology",
+      "verdict": "verified",
+      "expected_qid": "Q171171",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Psychiatry",
+      "node_id": "field:psychiatry",
+      "verdict": "verified",
+      "expected_qid": "Q7867",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Neurology",
+      "node_id": "field:neurology",
+      "verdict": "verified",
+      "expected_qid": "Q83042",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Pharmacology",
+      "node_id": "field:pharmacology",
+      "verdict": "verified",
+      "expected_qid": "Q128406",
+      "manual_path": true,
+      "rank1_expected": false
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Pharmacy",
+      "node_id": "field:pharmacy",
+      "verdict": "verified",
+      "expected_qid": "Q614304",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Nursing",
+      "node_id": "field:nursing",
+      "verdict": "verified",
+      "expected_qid": "Q121176",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Radiology",
+      "node_id": "field:radiology",
+      "verdict": "verified",
+      "expected_qid": "Q77604",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Medical Physics",
+      "node_id": "field:medical-physics",
+      "verdict": "verified",
+      "expected_qid": "Q1120908",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Anesthesiology",
+      "node_id": "field:anesthesiology",
+      "verdict": "verified",
+      "expected_qid": "Q615057",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Emergency Medicine",
+      "node_id": "field:emergency-medicine",
+      "verdict": "verified",
+      "expected_qid": "Q2861470",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Physical Medicine and Rehabilitation",
+      "node_id": "field:physical-and-rehabilitation-medicine",
+      "verdict": "verified",
+      "expected_qid": "Q2678675",
+      "manual_path": true,
+      "rank1_expected": false
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Nutrition Science",
+      "node_id": "subfield:nutrition-science",
+      "verdict": "verified",
+      "expected_qid": "Q17652193",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Alternative Medicine",
+      "node_id": "field:alternative-medicine",
+      "verdict": "verified",
+      "expected_qid": "Q188504",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Cardiology",
+      "node_id": "subfield:cardiology",
+      "verdict": "verified",
+      "expected_qid": "Q10379",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Oncology",
+      "node_id": "subfield:oncology",
+      "verdict": "verified",
+      "expected_qid": "Q162555",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Gastroenterology",
+      "node_id": "subfield:gastroenterology",
+      "verdict": "verified",
+      "expected_qid": "Q120569",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Endocrinology",
+      "node_id": "subfield:endocrinology",
+      "verdict": "verified",
+      "expected_qid": "Q162606",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Nephrology",
+      "node_id": "subfield:nephrology",
+      "verdict": "verified",
+      "expected_qid": "Q177635",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Pulmonology",
+      "node_id": "subfield:pulmonology",
+      "verdict": "verified",
+      "expected_qid": "Q203337",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Hematology",
+      "node_id": "subfield:hematology",
+      "verdict": "verified",
+      "expected_qid": "Q103824",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Rheumatology",
+      "node_id": "subfield:rheumatology",
+      "verdict": "verified",
+      "expected_qid": "Q327657",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Infectious Diseases",
+      "node_id": "subfield:infectious-diseases",
+      "verdict": "verified",
+      "expected_qid": "Q788926",
+      "manual_path": true,
+      "rank1_expected": false,
+      "note": "Audit-corrected (qid-adversarial-audit-medicine-v1): resolver rank-1 Q18123741 is the disease OBJECT (P31 class of disease), not the specialty; manual path to Q788926 (P31 medical specialty). Disease-object-vs-specialty homonym trap."
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Geriatrics",
+      "node_id": "subfield:geriatrics",
+      "verdict": "verified",
+      "expected_qid": "Q10384",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Orthopedic Surgery",
+      "node_id": "subfield:orthopedic-surgery",
+      "verdict": "verified",
+      "expected_qid": "Q216685",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Neurosurgery",
+      "node_id": "subfield:neurosurgery",
+      "verdict": "verified",
+      "expected_qid": "Q188449",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Plastic Surgery",
+      "node_id": "subfield:plastic-surgery",
+      "verdict": "verified",
+      "expected_qid": "Q182442",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Cardiothoracic Surgery",
+      "node_id": "subfield:cardiothoracic-surgery",
+      "verdict": "verified",
+      "expected_qid": "Q2964004",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Urology",
+      "node_id": "subfield:urology",
+      "verdict": "verified",
+      "expected_qid": "Q105650",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Epidemiology",
+      "node_id": "subfield:epidemiology",
+      "verdict": "verified",
+      "expected_qid": "Q133805",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Biostatistics",
+      "node_id": "subfield:biostatistics",
+      "verdict": "verified",
+      "expected_qid": "Q214746",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Environmental Health",
+      "node_id": "subfield:environmental-health",
+      "verdict": "verified",
+      "expected_qid": "Q932068",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Occupational Medicine",
+      "node_id": "subfield:occupational-medicine",
+      "verdict": "verified",
+      "expected_qid": "Q628764",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Health Policy and Management",
+      "node_id": "subfield:health-policy-and-management",
+      "verdict": "verified",
+      "expected_qid": "Q18348859",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Global Health",
+      "node_id": "subfield:global-health",
+      "verdict": "verified",
+      "expected_qid": "Q2725393",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Forensic Medicine",
+      "node_id": "subfield:forensic-medicine",
+      "verdict": "verified",
+      "expected_qid": "Q454812",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Toxicology",
+      "node_id": "subfield:toxicology",
+      "verdict": "verified",
+      "expected_qid": "Q7218",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Nuclear Medicine",
+      "node_id": "subfield:nuclear-medicine",
+      "verdict": "verified",
+      "expected_qid": "Q214963",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Homeopathy",
+      "node_id": "subfield:homeopathy",
+      "verdict": "verified",
+      "expected_qid": "Q81058",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Chiropractic",
+      "node_id": "subfield:chiropractic",
+      "verdict": "verified",
+      "expected_qid": "Q658096",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Naturopathy",
+      "node_id": "subfield:naturopathy",
+      "verdict": "verified",
+      "expected_qid": "Q213403",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:medicine-and-health-skeleton-v1",
+      "seed_label": "Family Medicine",
+      "node_id": "field:family-medicine",
+      "verdict": "verified",
+      "expected_qid": "Q3505712",
+      "rank1_expected": true
     }
   ]
 }

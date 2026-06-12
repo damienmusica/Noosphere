@@ -1,0 +1,756 @@
+{
+ "batch_id": "batch:medicine-and-health-skeleton-v1",
+ "grounded_at": "2026-06-12",
+ "nodes": [
+  {
+   "id": "field:public-health",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q189603"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:pathology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q7208"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:internal-medicine",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q11180"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:surgery",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q40821"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:ophthalmology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q161437"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:otolaryngology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q189553"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:obstetrics-and-gynecology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q80015"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:pediatrics",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q123028"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:dentistry",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q12128"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:dermatology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q171171"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:psychiatry",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q7867"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:neurology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q83042"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:pharmacology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q128406"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:pharmacy",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q614304"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:nursing",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q121176"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:radiology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q77604"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:medical-physics",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q1120908"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:anesthesiology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q615057"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:emergency-medicine",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q2861470"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:physical-and-rehabilitation-medicine",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q2678675"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:nutrition-science",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "proposed",
+   "indexable": false,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q17652193"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:alternative-medicine",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "proposed",
+   "indexable": false,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q188504"
+   },
+   "academic_status": "non_academic",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:cardiology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q10379"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:oncology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q162555"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:gastroenterology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q120569"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:endocrinology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q162606"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:nephrology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q177635"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:pulmonology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q203337"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:hematology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q103824"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:rheumatology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q327657"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:infectious-diseases",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q788926"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:geriatrics",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q10384"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:orthopedic-surgery",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q216685"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:neurosurgery",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q188449"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:plastic-surgery",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q182442"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:cardiothoracic-surgery",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q2964004"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:urology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q105650"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:epidemiology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q133805"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:biostatistics",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q214746"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:environmental-health",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q932068"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:occupational-medicine",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q628764"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:health-policy-and-management",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q18348859"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:global-health",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q2725393"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:forensic-medicine",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q454812"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:toxicology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q7218"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:nuclear-medicine",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q214963"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:homeopathy",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q81058"
+   },
+   "academic_status": "non_academic",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:chiropractic",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "proposed",
+   "indexable": false,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q658096"
+   },
+   "academic_status": "non_academic",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "subfield:naturopathy",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "proposed",
+   "indexable": false,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q213403"
+   },
+   "academic_status": "non_academic",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  },
+  {
+   "id": "field:family-medicine",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "reviewed",
+   "indexable": true,
+   "is_living_person": false,
+   "external_ids": {
+    "wikidata": "Q3505712"
+   },
+   "academic_status": "established",
+   "created_at": "2026-06-12",
+   "updated_at": "2026-06-12"
+  }
+ ]
+}

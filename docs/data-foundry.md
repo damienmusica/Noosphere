@@ -535,6 +535,37 @@ non-coverage, never silently dropped.
   engineering *beside* civil engineering's TA/624 — the gate schemes separate them, and FORD
   2.1's bundling is a cross-check scheme, which does not create a nesting per the 13c edge rule;
   a built-environment field-level parent is a v2 question, not forced by current evidence).
+- 2026-06-12 medicine & health (round 2, session #18 rulings): the gate pair is LCC class R +
+  UDC class 61, cross-checks OECD FORD 3 + MeSH H02/H02.403 (PhySH is absent for medicine — a
+  ratified discipline scheme's *absence* is continent-specific, and MeSH replaces it as the
+  discipline cross-check). **ABMS-board structure governs field-vs-subfield level**: an
+  independent ABMS *primary* specialty is a **field** even where the gate scheme *shelves* it
+  inside another subclass — psychiatry/neurology (UDC 616.89/616.8 own divisions but LCC RC
+  shelving), anesthesiology (LCC RD78 under surgery), emergency-medicine (LCC RC86 under internal
+  medicine), physical-and-rehabilitation-medicine (LCC RM695), family-medicine (LCC R729.5) are
+  fields by the shelving-is-not-a-hierarchy precedent, because they serve communities distinct
+  from their LCC parent (the absorption rule fires only for refinements of the *same* community);
+  ABIM/surgical *subspecialties* (cardiology, gastroenterology, …, orthopedic-surgery, urology)
+  are subfields. **Three distinct referents may share one LCC range**: R895-920 carries radiology
+  (clinical imaging specialty), medical-physics (applied-physics discipline, transferred from
+  natural sciences per decision (30) — a natural-sciences drop's *receiving* continent creates it
+  native, no §13 needed), and nuclear-medicine (radiology subspecialty) as distinct nodes
+  (QIS-vs-quantum-computing distinct-referent precedent). nutrition-science demoted field→subfield
+  (UDC 613.2 is a subdivision of 613, LCC anchors are sub-ranges — the business demotion profile;
+  kept cross-continent `ambiguous`, life-sciences §13 candidate). A discipline whose LCC home sits
+  in a *public-aspects* subclass nests there per the gate even against institutional affinity
+  (forensic-medicine → public-health via RA1001-1171, pathology affinity noted; toxicology →
+  pharmacology via UDC 615.9 under 615, RA1190 affinity noted). The medicine-entry §13 cross-lists
+  resolve at continent entry (decision (33)): physiology/anatomy keep life-sciences home + medicine
+  membership (UDC 611/612 under 61), biomedical-engineering keeps engineering home + medicine
+  membership (LCC R856-857) — all co-equal, no `disputed` (other-home filing = support).
+- 2026-06-12 medicine QID audit (session #18): a new homonym class for the adversarial audit —
+  the **disease-object-vs-clinical-specialty** collision. An organ/condition discipline's label
+  (e.g. "infectious diseases") collides with the disease object; the resolver and multi-signal
+  grounding both passed the disease object (Q18123741, P31 *class of disease*) where the specialty
+  (Q788926, P31 *medical specialty*) was meant. The refutation audit caught it by requiring P31 to
+  be a specialty/discipline class, never a `class of disease`. Medicine QID audits must check P31
+  explicitly (label match is insufficient — the order's "임상 동음이의 함정").
 
 ## 13. Cross-listing standard (multiple `part_of` memberships)
 
