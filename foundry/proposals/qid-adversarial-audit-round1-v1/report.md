@@ -128,3 +128,23 @@ The domain is a FORD/OECD classification grouping with no 1:1 Wikidata entity.
 **Why this is a stop-point, not a CTO action:** option A removes a *reviewed* node's QID
 (identity change) — the session order's single conditional gate. No change executed; the anchor
 stands until CPO decides. Recommendation: **(A)**.
+
+## Q21198 dual-anchor — execution record (session #16, 2026-06-12)
+
+**CPO decision (36), 2026-06-12: option (A) ratified and executed this session.**
+
+- `domain:computer-and-information-sciences` → `external_ids` emptied (`{}`), Q21198 removed;
+  `updated_at` 2026-06-12. The domain mirrors the deliberately QID-less practical-knowledge /
+  meta-knowledge precedent; its grounding remains the FORD 1.2 classification filing.
+- `field:computer-science` is now the **sole** holder of Q21198. `/data`'s only QID duplication
+  is eliminated (verified post-change: zero duplicate QIDs across nodes.json).
+- Golden set: the seed entry for the domain re-dispositioned `verified` → `upstream_gap` with
+  `must_not_select: ["Q21198"]` (the anchor must never be re-acquired by the domain seed);
+  field:computer-science's `verified` Q21198 entry unchanged. Offline goldenset check: regression 0.
+- Erratum semantics: the seed-era anchor was not a *referent* error (Q21198 is computer science;
+  the session #9/#15 audits verified the referent) but an **anchor-policy** error — a domain-level
+  classification bucket borrowing its child field's identity. Recorded as such; the audit
+  cumulative residual-error tally (2/252, both seed-era) is unchanged by this disposition.
+
+Session #9 identity-conflict finding → session #15 pit-stop brief → CPO decision (36) → executed
+here. Watch item closed.
