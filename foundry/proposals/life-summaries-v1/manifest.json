@@ -1,0 +1,18 @@
+{
+  "batch": "life-summaries-v1",
+  "kind": "editorial",
+  "description": "Editorial pass 9 (cleanup session #16, round-1 debt repayment 3b of 3): summaries for the 17 reviewed life-sciences nodes that landed in the parallel round (13b, single-field biology model) with empty summaries (debt-ledger-round1.md §1). QC v2 (decision (34)) at the settled 30% reading sample.",
+  "generation": {
+    "model": "claude-opus-4-8",
+    "contexts": 2,
+    "note": "Two separate generation contexts (ADR 0007), split by cluster: batch-a-organism (biology field + botany/zoology/microbiology/mycology/virology/parasitology/marine-biology/systematics); batch-b-molecular (genetics/molecular-biology/cell-biology/immunology/ecology/evolutionary-biology/developmental-biology/bioinformatics; bioinformatics homed in life sciences, CS-side §13 parked). Contract: live-fetch duty, [UNFETCHED] honest self-marking, anti-laundering, trim-forbidden 4, referent pins. Raw sets preserved as summaries.batch-*.json."
+  },
+  "qc": {
+    "by": "claude-fable-5",
+    "session": "#16",
+    "policy": "editorial QC v2 (decision (34)): mechanical checks 100% + 30% pre-registered reading sample + self-flag/[UNFETCHED] backstop full. Generation model = Opus (decision (26)).",
+    "reading_sample": "Pre-registered by md5(node_id) hex ascending, top ceil(17×0.30)=6: bioinformatics, cell-biology, microbiology, parasitology, virology, zoology."
+  },
+  "targets": 17,
+  "parent_precondition": "all 17 parent nodes are reviewed; every English translation row is marked reviewed:true."
+}

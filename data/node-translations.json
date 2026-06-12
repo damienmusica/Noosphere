@@ -1597,6 +1597,7 @@
     "node_id": "field:biology",
     "locale": "en",
     "label": "Biology",
+    "summary": "Biology is the scientific study of life and living organisms, the broad natural science encompassing the structure, function, growth, origin, evolution, and distribution of life. It is unified by fundamental themes: the cell as the basic unit of life, genes and heredity as the basis of inheritance, evolution as the driver of biological diversity, energy transformation sustaining life processes, and homeostasis. As the parent discipline of the life sciences, biology branches into specialized subfields organized around particular groups of organisms, levels of organization, or modes of study, including botany, zoology, microbiology, and systematics. In the Library of Congress Classification, the general literature of biology is gathered under class QH, ranging across periodicals, societies, and serial publications devoted to the science.",
     "aliases": [],
     "reviewed": true
   },
@@ -1604,6 +1605,7 @@
     "node_id": "subfield:botany",
     "locale": "en",
     "label": "Botany",
+    "summary": "Botany, also called phytology or plant science, is the branch of natural science and biology that studies plants, especially their anatomy, taxonomy, and ecology. As a major subfield of biology, it spans the form, physiology, classification, distribution, and ecological relationships of plant life, from microscopic algae to flowering trees, alongside the practical uses of plants by humans. Botanical inquiry ranges across plant structure and development, reproduction, genetics, and the diversity of the plant kingdom. In the Library of Congress Classification, the literature of botany is gathered under class QK, organized from periodicals and societies through the systematic treatment of plant groups.",
     "aliases": [],
     "reviewed": true
   },
@@ -1611,6 +1613,7 @@
     "node_id": "subfield:zoology",
     "locale": "en",
     "label": "Zoology",
+    "summary": "Zoology is the scientific study of animals, including the structure, embryology, classification, habits, and distribution of all animals, both living and extinct, and how they interact with their ecosystems. It is one of the primary branches of biology, with the term derived from Ancient Greek zoion, 'animal,' and logos, 'study of.' As a subfield, zoology encompasses animal morphology and physiology, behavior, evolutionary relationships, and the diversity of the animal kingdom across taxonomic groups. In the Library of Congress Classification, the literature of zoology is collected under class QL, organized from periodicals and societies through the systematic treatment of animal taxa.",
     "aliases": [],
     "reviewed": true
   },
@@ -1618,6 +1621,7 @@
     "node_id": "subfield:microbiology",
     "locale": "en",
     "label": "Microbiology",
+    "summary": "Microbiology is the scientific study of microorganisms, those being of unicellular (single-celled), multicellular, or acellular form. It encompasses numerous sub-disciplines including virology, bacteriology, protistology, mycology, immunology, and parasitology, examining the structure, physiology, genetics, and ecology of microbial life. As a subfield of biology, microbiology investigates organisms generally invisible to the unaided eye, their roles in disease, industry, and the environment, and the techniques used to detect and culture them. In the Library of Congress Classification, the literature of microbiology is gathered under class QR.",
     "aliases": [],
     "reviewed": true
   },
@@ -1625,6 +1629,7 @@
     "node_id": "subfield:genetics",
     "locale": "en",
     "label": "Genetics",
+    "summary": "Genetics is the branch of biology concerned with genes, genetic variation, and heredity in organisms. Because heredity governs how traits pass between generations, the field is foundational to understanding evolution and the basic mechanisms of inheritance from the molecular to the population level. Geneticists study how genes are structured, expressed, transmitted, and altered, using the combined tools of genetics and genomics to investigate a wide range of biological questions and applications. The discipline spans classical transmission genetics, molecular and population genetics, and modern genomics. Professional bodies such as the Genetics Society of America, the professional membership organization for scientific researchers and educators in the field of genetics, organize researchers who advance knowledge of inheritance and apply it across medicine, agriculture, and the study of biological diversity.",
     "aliases": [],
     "reviewed": true
   },
@@ -1632,6 +1637,7 @@
     "node_id": "subfield:molecular-biology",
     "locale": "en",
     "label": "Molecular Biology",
+    "summary": "Molecular biology is the branch of biology that seeks to understand the molecular structures and chemical processes underlying biological activity within and between cells. It centers largely on the study of nucleic acids and proteins, examining the structure, function, and interactions of these macromolecules as they orchestrate processes such as replication, transcription, translation, and protein synthesis. The field is multi-disciplinary, drawing on principles from genetics, biochemistry, physics, mathematics, and, more recently, computer science. By dissecting how genetic information is stored, copied, and converted into functional molecules, molecular biology supplies mechanistic explanations that connect heredity to cellular behavior. Its methods and findings underpin much of contemporary genetics, cell biology, and biotechnology, making it a central integrative discipline within the modern life sciences.",
     "aliases": [],
     "reviewed": true
   },
@@ -1639,6 +1645,7 @@
     "node_id": "subfield:cell-biology",
     "locale": "en",
     "label": "Cell Biology",
+    "summary": "Cell biology, also called cellular biology or cytology, is the branch of biology that studies the structure, function, and behavior of cells. The cell is the basic unit of life responsible for the living and functioning of an organism, and all organisms are made of cells. The discipline encompasses both prokaryotic and eukaryotic cells, with subtopics including cell metabolism, cell communication, the cell cycle, biochemistry, and cell composition. Cell biologists examine how organelles are organized, how cells divide and signal, and how molecular components sustain cellular life. The field connects molecular biology's account of macromolecules to the organized systems of whole cells, and serves as a forum for international research, exemplified by societies such as the American Society for Cell Biology.",
     "aliases": [],
     "reviewed": true
   },
@@ -1646,6 +1653,7 @@
     "node_id": "subfield:ecology",
     "locale": "en",
     "label": "Ecology",
+    "summary": "Ecology is the natural science of the relationships among living organisms and their environment. It considers organisms at multiple scales, including the individual, population, community, ecosystem, and biosphere levels, and analyzes how these interactions shape distribution, abundance, and the flow of energy and matter. Ecologists study competition, predation, symbiosis, nutrient cycling, and the structure of food webs, as well as how disturbance and environmental change affect living systems. The discipline integrates physiology, behavior, evolution, and earth science to explain how biological communities are organized and sustained. Its findings underpin conservation biology, resource management, and responses to environmental challenges, and the field is represented by scholarly bodies such as the Ecological Society of America.",
     "aliases": [],
     "reviewed": true
   },
@@ -1653,6 +1661,7 @@
     "node_id": "subfield:evolutionary-biology",
     "locale": "en",
     "label": "Evolutionary Biology",
+    "summary": "Evolutionary biology is the subfield of biology that analyzes the four mechanisms of evolution: natural selection, mutation, genetic drift, and gene flow. Natural selection was independently discovered as the engine of evolution by Charles Darwin and Alfred Russel Wallace, based on patterns in the geographic distribution of species, while Gregor Mendel discovered the laws of heredity. R. A. Fisher and others unified Darwin and Mendel in the modern synthesis, joining selection with genetics. The field investigates how populations change over generations, how new species arise, and how adaptation and common descent produce the diversity of life. It draws on genetics, paleontology, systematics, and ecology, and provides the historical and mechanistic framework that connects all branches of the biological sciences.",
     "aliases": [],
     "reviewed": true
   },
@@ -1660,6 +1669,7 @@
     "node_id": "subfield:developmental-biology",
     "locale": "en",
     "label": "Developmental Biology",
+    "summary": "Developmental biology is the scientific study of the processes by which animals and plants grow and develop. It investigates how a single fertilized cell gives rise to the organized structures of a mature organism, examining mechanisms of development, differentiation, and growth at the molecular, cellular, genetic, and evolutionary levels. Developmental biologists study cell fate determination, pattern formation, morphogenesis, and the gene regulatory networks that control these events across diverse species. The field connects genetics and cell biology to questions of form and organization, and increasingly links to evolution through the comparison of developmental programs. It is represented by a global community of scientists and educators, including the Society for Developmental Biology, and informs regenerative medicine, stem-cell research, and the understanding of congenital disorders.",
     "aliases": [],
     "reviewed": true
   },
@@ -1681,6 +1691,7 @@
     "node_id": "subfield:immunology",
     "locale": "en",
     "label": "Immunology",
+    "summary": "Immunology is the branch of biology and medicine that covers the study of immune systems in all organisms. The immune system is a network of biological systems that protects an organism from diseases, and immunologists investigate how this network recognizes and responds to pathogens, distinguishes self from non-self, and is regulated in health and disease. The field examines innate and adaptive defenses, the cells and molecules that mediate them, and disorders such as autoimmunity, allergy, and immunodeficiency. Bridging basic biology and clinical practice, immunology informs vaccination, transplantation, and immunotherapy. Professional organizations such as the American Association of Immunologists, considered the world's oldest continuously operating professional society specifically dedicated to the field of immunology, work to advance the field and public understanding of the immune system.",
     "aliases": [],
     "reviewed": true
   },
@@ -1688,6 +1699,7 @@
     "node_id": "subfield:virology",
     "locale": "en",
     "label": "Virology",
+    "summary": "Virology is the scientific study of biological viruses. It is a subfield of microbiology that focuses on their detection, structure, classification and evolution, their methods of infection and exploitation of host cells for reproduction, their interaction with host organism physiology and immunity, the diseases they cause, the techniques to isolate and culture them, and their use in research and therapy. Virological inquiry spans both the molecular biology of viral replication and the epidemiology of viral disease. In the Library of Congress Classification, the literature of virology is placed under microbiology in class QR.",
     "aliases": [],
     "reviewed": true
   },
@@ -1695,6 +1707,7 @@
     "node_id": "subfield:parasitology",
     "locale": "en",
     "label": "Parasitology",
+    "summary": "Parasitology is the study of parasites, their hosts, and the relationship between them. As a biological discipline, the scope of parasitology is not determined by the organism or environment in question but by their way of life, drawing on cell biology, molecular biology, immunology, genetics, and ecology. The field examines parasitic organisms across the tree of life and the host–parasite interactions that shape disease, transmission, and evolution. In the Library of Congress Classification, parasitology is treated within zoology, where its literature is captioned under animal special topics in class QL.",
     "aliases": [],
     "reviewed": true
   },
@@ -1702,6 +1715,7 @@
     "node_id": "subfield:mycology",
     "locale": "en",
     "label": "Mycology",
+    "summary": "Mycology is the branch of biology concerned with the study of fungi, including their taxonomy, genetics, biochemical properties, and use by humans. Fungi serve as sources of food, traditional medicine, and tinder, and figure in poison, infection, and the manufacture of fermented products, with yeasts among the most heavily utilized members of the fungus kingdom. The Mycological Society of America states that its purpose is to promote and advance the science of mycology and to foster and encourage research and education in mycology in all its aspects. As a peer subfield within the life sciences, mycology maintains a dedicated research community spanning fungal systematics, physiology, ecology, and applied uses.",
     "aliases": [],
     "reviewed": true
   },
@@ -1709,6 +1723,7 @@
     "node_id": "subfield:systematics",
     "locale": "en",
     "label": "Systematics",
+    "summary": "Systematics is the study of the diversification of living forms, both past and present, and the relationships among living things through time. Encompassing taxonomy and phylogenetics, it reconstructs evolutionary trees to represent the branching order and divergence of lineages, and uses these phylogenies to examine trait evolution and the geographic distribution of organisms. The Society of Systematic Biologists describes its mission as advancing the science of systematic biology in all its aspects of theory, principles, methodology, and practice, for both living and fossil organisms. In the Library of Congress Classification, the work of classification and nomenclature falls within natural history in class QH.",
     "aliases": [],
     "reviewed": true
   },
@@ -1716,6 +1731,7 @@
     "node_id": "subfield:marine-biology",
     "locale": "en",
     "label": "Marine Biology",
+    "summary": "Marine biology is the scientific study of the biology of marine life, organisms that inhabit the sea. Given that in biology many phyla, families and genera have some species that live in the sea and others that live on land, marine biology classifies species based on the environment rather than on taxonomy. The discipline spans the diversity, physiology, behavior, and ecology of ocean-dwelling organisms across habitats from coastal zones to the deep sea, together with their interactions and the marine ecosystems they form. As an environment-defined subfield of biology, it draws on zoology, botany, microbiology, and ecology to study life in saltwater settings.",
     "aliases": [],
     "reviewed": true
   },
@@ -1723,6 +1739,7 @@
     "node_id": "subfield:bioinformatics",
     "locale": "en",
     "label": "Bioinformatics",
+    "summary": "Bioinformatics is an interdisciplinary field of science that develops computational methods and software tools for understanding biological data, especially when the data sets are large and complex. It synthesizes knowledge from biology, computer science, mathematics, and statistics to acquire, store, analyze, and interpret molecular information such as genome sequences, protein structures, and gene-expression measurements. Bioinformaticians build algorithms and databases for tasks including sequence alignment, genome assembly, structure prediction, and the modeling of biological networks. Though sometimes conflated with computational biology, which emphasizes mathematical modeling of biological systems, bioinformatics focuses on data-analysis methodologies. Within this atlas the field is homed in the life sciences, where it underpins genomics and molecular biology, and it is represented internationally by bodies such as the International Society for Computational Biology.",
     "aliases": [],
     "reviewed": true
   },
@@ -2031,7 +2048,7 @@
     "node_id": "field:music",
     "locale": "en",
     "label": "Music",
-    "summary": "",
+    "summary": "Music is studied and practiced as an academic discipline in university music departments and conservatories, encompassing performance, composition, and the scholarly study of music. In the Library of Congress Classification, music occupies Class M, organized as \"Music and Books on Music,\" with literature on music in Class ML and instruction and study in Class MT. As a field, music spans creative activities commonly divided into composition, improvisation, and performance, and its scholarly branches include musicology, music theory, ethnomusicology, and music education. The American Musicological Society, founded in 1934, was \"crucial in legitimizing musicology as a scholarly discipline,\" reflecting music's establishment as a research field alongside its conservatory training traditions in performance and pedagogy.",
     "aliases": [],
     "reviewed": true
   },
@@ -2039,7 +2056,7 @@
     "node_id": "field:visual-arts",
     "locale": "en",
     "label": "Visual Arts",
-    "summary": "",
+    "summary": "The visual arts are art forms perceived primarily through sight, encompassing painting, drawing, printmaking, sculpture, ceramics, photography, video, filmmaking, design, crafts, and architecture. The field also takes in the applied arts—industrial design, graphic design, fashion design, interior design, and decorative art—alongside disciplines such as performing arts and textile arts that involve visual aspects among other dimensions. In the Library of Congress Classification, the visual arts fall under the broad Fine Arts class N, where subdivisions span history, museums and galleries, and the individual media. The category groups practices that share a basis in the making and study of visual objects and images, distinguishing them from the literary and musical arts.",
     "aliases": [],
     "reviewed": true
   },
@@ -2047,7 +2064,7 @@
     "node_id": "field:design",
     "locale": "en",
     "label": "Design",
-    "summary": "",
+    "summary": "Design is the discipline and practice of conceiving and planning objects, processes, and systems before they are made. A design is the concept or proposal for an intended artefact, and the verb to design names the process of developing it. A design is expected to satisfy goals and constraints within a specific context while accounting for aesthetic, functional, and experiential considerations. The field spans diverse domains, from architectural and engineering drawings and circuit diagrams to sewing patterns and less tangible artefacts such as business process models. In the Library of Congress Classification, design and the decorative and applied arts fall under class NK, captioned \"Decorative arts. Applied arts. Decoration and ornament,\" reflecting the discipline's historical roots in ornament and craft as well as its modern role in shaping manufactured and communicated forms.",
     "aliases": [],
     "reviewed": true
   },
@@ -2055,7 +2072,7 @@
     "node_id": "field:performing-arts",
     "locale": "en",
     "label": "Performing Arts",
-    "summary": "",
+    "summary": "The performing arts are arts performed for an audience, encompassing disciplines presented before a live audience including theatre, music, and dance. They are distinguished from the visual arts, which produce physical or static objects rather than a transient performance enacted in real time. As a field of study and practice, the performing arts treat the human body, voice, and movement as the primary medium, and the live encounter between performer and spectator as constitutive of the work. Allied performance forms include opera, mime, circus arts, spoken word, and puppetry. In the Library of Congress Classification, dramatic and theatrical performance falls under the range PN2000-PN3307, \"Dramatic representation. The theater,\" within the broader Language and Literature schedule, while music and dance are classed separately under M and GV respectively.",
     "aliases": [],
     "reviewed": true
   },
@@ -2063,7 +2080,7 @@
     "node_id": "field:architecture",
     "locale": "en",
     "label": "Architecture",
-    "summary": "",
+    "summary": "Architecture is the study and practice of designing structures, especially habitable ones. It encompasses the process and the product of sketching, conceiving, planning, designing, and constructing buildings or other elements of the built environment, and it is widely treated as a discipline spanning both art and engineering. Although it utilizes civil engineering techniques, architecture is also considered a visual art, and architectural works are commonly recognized as cultural symbols and artistic expressions of their historical period. In the Library of Congress Classification, architecture occupies the schedule NA, \"Architecture,\" within the fine arts. The profession is organized through bodies such as the American Institute of Architects, which describes itself as \"the largest design organization in the world,\" working to transform the day-to-day practice of architecture toward a healthier and more equitable built environment.",
     "aliases": [],
     "reviewed": true
   },
@@ -2071,7 +2088,7 @@
     "node_id": "subfield:musicology",
     "locale": "en",
     "label": "Musicology",
-    "summary": "",
+    "summary": "Musicology is the academic, research-based study of music, as distinct from musical composition or performance. The discipline combines and intersects with many fields, including psychology, sociology, acoustics, neurology, the natural sciences, the formal sciences, and computer science. Its principal scholarly society in the United States, the American Musicological Society (AMS), is \"a musicological organization which researches, promotes and produces publications on music\"; founded in 1934, it \"was crucial in legitimizing musicology as a scholarly discipline.\" In the Library of Congress Classification, scholarly literature on music falls under Class ML, covering the history and criticism of music. Musicology supplies the historical, analytical, and critical scholarship that underpins the wider academic study of music.",
     "aliases": [],
     "reviewed": true
   },
@@ -2079,7 +2096,7 @@
     "node_id": "subfield:music-theory",
     "locale": "en",
     "label": "Music Theory",
-    "summary": "",
+    "summary": "Music theory is the study of theoretical frameworks for understanding the practices and possibilities of music. The Oxford Companion to Music describes three interrelated uses of the term: the \"rudiments\" needed to read music notation, such as key signatures, time signatures, and rhythmic notation; the study of scholars' views on music from antiquity to the present; and a sub-topic of musicology that \"seeks to define processes and general principles in music.\" The Society for Music Theory \"promotes the development of and engagement with music theory as a scholarly and pedagogical discipline.\" In the Library of Congress Classification, instruction and study in music falls under Class MT. The discipline analyzes elements such as harmony, melody, rhythm, form, and counterpoint.",
     "aliases": [],
     "reviewed": true
   },
@@ -2087,7 +2104,7 @@
     "node_id": "subfield:ethnomusicology",
     "locale": "en",
     "label": "Ethnomusicology",
-    "summary": "",
+    "summary": "Ethnomusicology is the multidisciplinary study of music in its cultural context. The discipline investigates social, cognitive, biological, comparative, and other dimensions of music. Ethnomusicologists study music as a reflection of culture and investigate the act of music-making through various immersive, observational, and analytical approaches. The discipline emerged from comparative musicology, initially focusing on non-Western music, but later expanded to embrace the study of all different music. Its principal U.S. learned society, the Society for Ethnomusicology, is, alongside the International Council for Traditional Music and the British Forum for Ethnomusicology, \"one of three major international associations for ethnomusicology.\" Fieldwork-based participant observation distinguishes ethnomusicology from the predominantly text- and score-based methods of historical musicology.",
     "aliases": [],
     "reviewed": true
   },
@@ -2095,7 +2112,7 @@
     "node_id": "subfield:music-education",
     "locale": "en",
     "label": "Music Education",
-    "summary": "",
+    "summary": "Music education is a field of practice in which educators are trained for careers as elementary or secondary music teachers and as school or music conservatory ensemble directors. It is also a research area in which scholars do original research on ways of teaching and learning music, publishing their findings in peer-reviewed journals and teaching undergraduate and graduate education students at university education or music schools who are training to become music teachers. In the United States, the National Association for Music Education (NAfME) is \"a collaborative community that supports music educators and advocates for equitable access to music education.\" Founded in 1907 as the Music Supervisors' National Conference, NAfME represents music educators across the country. In the Library of Congress Classification, music instruction and study fall under Class MT.",
     "aliases": [],
     "reviewed": true
   },
@@ -2103,7 +2120,7 @@
     "node_id": "subfield:art-history",
     "locale": "en",
     "label": "Art History",
-    "summary": "",
+    "summary": "Art history is an academic discipline devoted to the study of artistic production and visual culture throughout human history. Art historians apply a historical method or a philosophical framework—such as historical materialism or critical theory—to analyze artworks, studying art's impact on societies and cultures, the relationship between art and politics, and how styles and formal characteristics have changed over time. The discipline is distinguished from art criticism, which establishes relative artistic value, and from aesthetics, a branch of philosophy. The College Art Association, founded in 1911, \"Promotes excellence in scholarship and teaching in the history and criticism of the visual arts.\" In the Library of Congress Classification, the history of the visual arts occupies the range N5300–N7418.",
     "aliases": [],
     "reviewed": true
   },
@@ -2111,7 +2128,7 @@
     "node_id": "subfield:painting",
     "locale": "en",
     "label": "Painting",
-    "summary": "",
+    "summary": "Painting is a visual art characterized by the practice of applying paint, pigment, color, or other medium to a solid surface. The medium is commonly applied to the base with a brush, though other implements—palette knives, sponges, airbrushes, the artist's fingers, or even a dripping technique that uses gravity—may be used. One who produces paintings is called a painter. As a discipline, painting embraces a wide range of supports, media, and traditions across cultures and historical periods. In the Library of Congress Classification, painting occupies class ND under Fine Arts, the subdivision in which collected writings on the medium are gathered at ND25–ND27.",
     "aliases": [],
     "reviewed": true
   },
@@ -2119,7 +2136,7 @@
     "node_id": "subfield:sculpture",
     "locale": "en",
     "label": "Sculpture",
-    "summary": "",
+    "summary": "Sculpture is the branch of the visual arts that operates in three dimensions, producing artwork physically presented in the dimensions of height, width, and depth. It is one of the plastic arts. Durable sculptural processes originally used carving and modelling—in stone, metal, ceramics, wood, and other materials—but since Modernism there has been almost complete freedom of materials and process. A wide variety of materials may be worked by removal such as carving, assembled by welding or modelling, or moulded or cast. In the Library of Congress Classification, sculpture forms class NB under Fine Arts, with periodicals and societies entered at the head of the range NB1–NB1952.",
     "aliases": [],
     "reviewed": true
   },
@@ -2127,7 +2144,7 @@
     "node_id": "subfield:drawing",
     "locale": "en",
     "label": "Drawing",
-    "summary": "",
+    "summary": "Drawing is a visual art that uses an instrument to mark paper or another two-dimensional surface, or a digital representation of such. Traditionally, the instruments used to create a drawing include pencils, crayons, and ink pens, sometimes in combination; more modern tools include computer styluses with mice, graphics tablets, and gamepads in VR drawing software. As a fine-art discipline, drawing serves both as a preparatory and exploratory practice and as a finished medium in its own right. In the Library of Congress Classification, drawing is grouped with design and illustration in class NC under Fine Arts, the range NC1–NC1940.",
     "aliases": [],
     "reviewed": true
   },
@@ -2135,7 +2152,7 @@
     "node_id": "subfield:printmaking",
     "locale": "en",
     "label": "Printmaking",
-    "summary": "",
+    "summary": "Printmaking is the process of creating artworks by printing, normally on paper, but also on fabric, wood, metal, and other surfaces. Traditional printmaking normally covers only the process of creating prints using a hand-processed technique, rather than a photographic reproduction of a visual artwork which would be printed using an electronic machine; there is, however, some cross-over between traditional and digital printmaking, including risograph. The discipline embraces techniques such as relief, intaglio, planographic, and stencil processes, each capable of yielding multiple original impressions. In the Library of Congress Classification, printmaking falls under print media in class NE, headed by periodicals and societies.",
     "aliases": [],
     "reviewed": true
   },
@@ -2151,7 +2168,7 @@
     "node_id": "subfield:graphic-design",
     "locale": "en",
     "label": "Graphic Design",
-    "summary": "",
+    "summary": "Graphic design is a profession, academic discipline, and applied art devoted to creating visual communications intended to transmit specific messages to social groups, with specific objectives. It belongs to the broader practice of visual communication, the use of visual elements—signs, typography, drawing, illustration, advertising, animation, and electronic resources—to convey ideas and information. Practitioners combine type, image, color, and layout to inform, persuade, and orient audiences across print and digital media. In the Library of Congress Classification, commercial and advertising graphics are gathered under range NC997-NC1003, captioned \"Commercial art. Advertising art,\" within class NC for drawing and design. The discipline encompasses identity and branding, editorial and publication design, packaging, signage and wayfinding, and increasingly interface and motion graphics.",
     "aliases": [],
     "reviewed": true
   },
@@ -2159,7 +2176,7 @@
     "node_id": "subfield:industrial-design",
     "locale": "en",
     "label": "Industrial Design",
-    "summary": "",
+    "summary": "Industrial design is the process of design applied to physical products that are to be manufactured by mass production. It is the creative act of determining and defining a product's form and features, which takes place in advance of the manufacture or production of the product. Industrial manufacture consists of predetermined, standardized, and repeated, often automated, acts of replication, distinguishing the discipline from craft-based design, in which the form is determined personally by the creator largely concurrent with production. The discipline addresses the aesthetics, usability, ergonomics, and producibility of goods ranging from appliances and furniture to vehicles and electronics. The Industrial Designers Society of America, the discipline's principal U.S. professional body, states it exists \"to strengthen the industrial design profession.\"",
     "aliases": [],
     "reviewed": true
   },
@@ -2167,7 +2184,7 @@
     "node_id": "subfield:interior-design",
     "locale": "en",
     "label": "Interior Design",
-    "summary": "",
+    "summary": "Interior design is the art and science of enhancing the interior of a building to achieve a healthier and more aesthetically pleasing environment for the people using the space. It is a multifaceted profession that includes conceptual development, space planning, site inspections, programming, research, communicating with the stakeholders of a project, construction management, and execution of the design, drawing on fundamental design principles from the visual arts. In the Library of Congress Classification, the subject occupies range NK1700-NK2195, captioned \"Interior decoration. House decoration,\" within the decorative-arts class NK. The discipline is advanced through accredited higher education: the Council for Interior Design Accreditation describes itself as \"dedicated to advancing the profession of interior design through standards and accreditation in higher education,\" overseeing accredited programs worldwide.",
     "aliases": [],
     "reviewed": true
   },
@@ -2175,7 +2192,7 @@
     "node_id": "subfield:decorative-arts",
     "locale": "en",
     "label": "Decorative Arts",
-    "summary": "",
+    "summary": "The decorative arts—also known as the applied arts—are arts or crafts whose aim is the design and manufacture of objects that are both beautiful and functional. This includes most of the objects for the interiors of buildings, as well as interior design, but typically excludes architecture. Ceramic art, metalwork, furniture, jewellery, fashion, various forms of the textile arts, and glassware are major groupings. The discipline is distinguished from the fine arts by its orientation toward ornament, craft, and functional objects. In the Library of Congress Classification, the field is class NK, whose caption reads \"Decorative arts. Applied arts. Decoration and ornament.\"",
     "aliases": [
       "Applied Arts"
     ],
@@ -2185,7 +2202,7 @@
     "node_id": "subfield:ceramic-arts",
     "locale": "en",
     "label": "Ceramic Arts",
-    "summary": "",
+    "summary": "Ceramic art, one of the plastic arts, is art made from ceramic materials, including clay. It may take forms such as pottery, tiles, figurines, sculptures, and tableware. While some ceramic products are considered fine art, others are considered decorative, industrial, or applied art objects; ceramics may also be considered artefacts in archaeology. People design, manufacture, and decorate pottery in pottery or ceramic factories, and in one-person pottery studios ceramists or potters produce studio pottery. Ceramics exclude glass and mosaics made from glass tesserae. As an artistic discipline and medium, ceramic art spans utilitarian and sculptural making, sitting within the decorative arts (LCC class NK) while overlapping the fine arts.",
     "aliases": [],
     "reviewed": true
   },
@@ -2193,7 +2210,7 @@
     "node_id": "subfield:theatre-studies",
     "locale": "en",
     "label": "Theatre Studies",
-    "summary": "",
+    "summary": "Theatre studies is the academic study of theatrical performance in relation to its literary, physical, psychological, sociological, and historical contexts. It is an interdisciplinary field which also encompasses the study of theatrical aesthetics and semiotics, examining not only dramatic texts but also acting, staging, design, audience reception, and the institutions and cultures of performance. The discipline draws on dramatic literature, performance theory, theatre history, and the practical analysis of production, distinguishing the scholarly study of theatre from its professional practice. In the Library of Congress Classification, dramatic and theatrical performance is classed in the range PN2000-PN3307, \"Dramatic representation. The theater,\" within the Language and Literature schedule, reflecting the field's historical roots in the study of drama as a literary and performance form.",
     "aliases": [],
     "reviewed": true
   },
@@ -2201,7 +2218,7 @@
     "node_id": "subfield:dance",
     "locale": "en",
     "label": "Dance",
-    "summary": "",
+    "summary": "Dance is an art form consisting of sequences of body movements with aesthetic and often symbolic value, either improvised or purposefully selected. Dance can be categorized and described by its choreography, by its repertoire of movements, or by its historical period or place of origin, and it is typically performed with musical accompaniment. As one of the performing arts, dance functions both as creative practice and as a subject of scholarship spanning choreography, technique, ethnography, and dance history. In the Library of Congress Classification, dance is treated under the range GV1580-GV1799.4, \"Dancing,\" within the Recreation and Leisure schedule. The field embraces traditions ranging from classical ballet and modern and contemporary concert dance to folk, social, and ceremonial forms across cultures.",
     "aliases": [],
     "reviewed": true
   },
@@ -2209,7 +2226,7 @@
     "node_id": "subfield:film-studies",
     "locale": "en",
     "label": "Film Studies",
-    "summary": "",
+    "summary": "Film studies is an academic discipline that deals with various theoretical, historical, and critical approaches to cinema as an art form and a medium. It treats film not as a craft to be taught but as an object of scholarly inquiry, encompassing film theory, film history, genre and authorship analysis, national cinemas, and the cultural and ideological dimensions of moving images. The discipline is sometimes incorporated into broader media studies programs and is frequently compared to the study of television. It draws methods from literary criticism, art history, semiotics, and cultural studies. In the Library of Congress Classification, motion pictures are classed in the range PN1993-PN1999, \"Motion pictures,\" within the Language and Literature schedule, situating cinema scholarship alongside the study of drama and other narrative arts.",
     "aliases": [],
     "reviewed": true
   },
@@ -2217,7 +2234,7 @@
     "node_id": "subfield:landscape-architecture",
     "locale": "en",
     "label": "Landscape Architecture",
-    "summary": "",
+    "summary": "Landscape architecture is the design of outdoor areas, landmarks, and structures to achieve environmental, social-behavioural, or aesthetic outcomes. It involves the systematic design and general engineering of structures for construction and human use, the investigation of existing social, ecological, and soil conditions and processes in the landscape, and the design of interventions that will produce desired outcomes. The discipline thus spans both design and environmental science, shaping parks, gardens, campuses, streetscapes, and public open space. The profession is represented in the United States by the American Society of Landscape Architects, a professional association whose mission is to advance landscape architecture through advocacy, communication, education, and fellowship. The ASLA characterizes the field as one in which \"landscape architects bring together ecology, design, and technology to create places that are healthy beautiful, and built to last.\"",
     "aliases": [],
     "reviewed": true
   },

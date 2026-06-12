@@ -1,0 +1,98 @@
+{
+  "batch": "life-summaries-v1/batch-b-molecular",
+  "generated_by": "claude-opus-4-8[1m]",
+  "summaries": [
+    {
+      "node_id": "subfield:genetics",
+      "summary": "Genetics is the branch of biology concerned with genes, genetic variation, and heredity in organisms. Because heredity governs how traits pass between generations, the field is foundational to understanding evolution and the basic mechanisms of inheritance from the molecular to the population level. Geneticists study how genes are structured, expressed, transmitted, and altered, using the combined tools of genetics and genomics to investigate a wide range of biological questions and applications. The discipline spans classical transmission genetics, molecular and population genetics, and modern genomics. Professional bodies such as the Genetics Society of America, the professional membership organization for scientific researchers and educators in the field of genetics, organize researchers who advance knowledge of inheritance and apply it across medicine, agriculture, and the study of biological diversity.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Genetics", "supports": "Definition of genetics as the study of genes, variation, and heredity, and its centrality to evolution.", "quote": "Genetics is the study of genes, genetic variation, and heredity in organisms.", "fetched": true},
+        {"url": "https://genetics-gsa.org/about-gsa/", "supports": "Genetics Society of America as the professional society for the field.", "quote": "the professional membership organization for scientific researchers and educators in the field of genetics", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:molecular-biology",
+      "summary": "Molecular biology is the branch of biology that seeks to understand the molecular structures and chemical processes underlying biological activity within and between cells. It centers largely on the study of nucleic acids and proteins, examining the structure, function, and interactions of these macromolecules as they orchestrate processes such as replication, transcription, translation, and protein synthesis. The field is multi-disciplinary, drawing on principles from genetics, biochemistry, physics, mathematics, and, more recently, computer science. By dissecting how genetic information is stored, copied, and converted into functional molecules, molecular biology supplies mechanistic explanations that connect heredity to cellular behavior. Its methods and findings underpin much of contemporary genetics, cell biology, and biotechnology, making it a central integrative discipline within the modern life sciences.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Molecular_biology", "supports": "Definition of molecular biology, its focus on nucleic acids and proteins, the processes it studies, and its multi-disciplinary character.", "quote": "Molecular biology is a branch of biology that seeks to understand the molecular structures and chemical processes that are the basis of biological activity within and between cells. It is centered largely on the study of nucleic acids and proteins. It examines the structure, function, and interactions of these macromolecules as they orchestrate processes such as replication, transcription, translation, protein synthesis, and complex biomolecular interactions. The field of molecular biology is multi-disciplinary, relying on principles from genetics, biochemistry, physics, mathematics, and more recently computer science (bioinformatics).", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:cell-biology",
+      "summary": "Cell biology, also called cellular biology or cytology, is the branch of biology that studies the structure, function, and behavior of cells. The cell is the basic unit of life responsible for the living and functioning of an organism, and all organisms are made of cells. The discipline encompasses both prokaryotic and eukaryotic cells, with subtopics including cell metabolism, cell communication, the cell cycle, biochemistry, and cell composition. Cell biologists examine how organelles are organized, how cells divide and signal, and how molecular components sustain cellular life. The field connects molecular biology's account of macromolecules to the organized systems of whole cells, and serves as a forum for international research, exemplified by societies such as the American Society for Cell Biology.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cell_biology", "supports": "Definition of cell biology/cytology, the cell as the basic unit of life, and the subtopics the field encompasses.", "quote": "Cell biology, cellular biology, or cytology, is the branch of biology that studies the structure, function, and behavior of the cells. All organisms are made of cells. A cell is the basic unit of life that is responsible for the living and functioning of an organism. Cell biology encompasses both prokaryotic and eukaryotic cells, with subtopics including the study of cell metabolism, cell communication, cell cycle, biochemistry, and cell composition.", "fetched": true}
+      ],
+      "self_flags": ["ASCB grounding was a trademark tagline only; dropped from citations to avoid a non-definitional quote — the field rests on the fetched Wikipedia definition."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:immunology",
+      "summary": "Immunology is the branch of biology and medicine that covers the study of immune systems in all organisms. The immune system is a network of biological systems that protects an organism from diseases, and immunologists investigate how this network recognizes and responds to pathogens, distinguishes self from non-self, and is regulated in health and disease. The field examines innate and adaptive defenses, the cells and molecules that mediate them, and disorders such as autoimmunity, allergy, and immunodeficiency. Bridging basic biology and clinical practice, immunology informs vaccination, transplantation, and immunotherapy. Professional organizations such as the American Association of Immunologists, considered the world's oldest continuously operating professional society specifically dedicated to the field of immunology, work to advance the field and public understanding of the immune system.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Immunology", "supports": "Definition of immunology as a branch of biology and medicine covering immune systems in all organisms.", "quote": "Immunology is a branch of biology and medicine that covers the study of immune systems in all organisms.", "fetched": true},
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Immune_system", "supports": "Definition of the immune system that immunology studies.", "quote": "The immune system is a network of biological systems that protects an organism from diseases.", "fetched": true},
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/American_Association_of_Immunologists", "supports": "AAI as the field's long-established professional society.", "quote": "It is considered the world's oldest continuously operating professional society specifically dedicated to the field of immunology", "fetched": true}
+      ],
+      "self_flags": ["QC fix: the generator's aai.org quote ('one of the world's largest organizations of immunologists…') was not present on aai.org/About nor in the Wikipedia AAI article — replaced with the verbatim Wikipedia AAI characterization ('world's oldest continuously operating professional society…'), which is the accurate, source-grounded descriptor. Summary text adjusted to match (oldest, not largest)."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:ecology",
+      "summary": "Ecology is the natural science of the relationships among living organisms and their environment. It considers organisms at multiple scales, including the individual, population, community, ecosystem, and biosphere levels, and analyzes how these interactions shape distribution, abundance, and the flow of energy and matter. Ecologists study competition, predation, symbiosis, nutrient cycling, and the structure of food webs, as well as how disturbance and environmental change affect living systems. The discipline integrates physiology, behavior, evolution, and earth science to explain how biological communities are organized and sustained. Its findings underpin conservation biology, resource management, and responses to environmental challenges, and the field is represented by scholarly bodies such as the Ecological Society of America.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Ecology", "supports": "Definition of ecology and the organizational levels it considers.", "quote": "Ecology is the natural science of the relationships among living organisms and their environment. Ecology considers organisms at the individual, population, community, ecosystem, and biosphere levels.", "fetched": true}
+      ],
+      "self_flags": ["ESA 'about'/'what is ecology' pages both returned HTTP 403; ecology rests solely on the fetched Wikipedia definition."],
+      "unfetched": ["https://www.esa.org/about/ — HTTP 403", "https://www.esa.org/about/what-is-ecology/ — HTTP 403"]
+    },
+    {
+      "node_id": "subfield:evolutionary-biology",
+      "summary": "Evolutionary biology is the subfield of biology that analyzes the four mechanisms of evolution: natural selection, mutation, genetic drift, and gene flow. Natural selection was independently discovered as the engine of evolution by Charles Darwin and Alfred Russel Wallace, based on patterns in the geographic distribution of species, while Gregor Mendel discovered the laws of heredity. R. A. Fisher and others unified Darwin and Mendel in the modern synthesis, joining selection with genetics. The field investigates how populations change over generations, how new species arise, and how adaptation and common descent produce the diversity of life. It draws on genetics, paleontology, systematics, and ecology, and provides the historical and mechanistic framework that connects all branches of the biological sciences.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Evolutionary_biology", "supports": "Definition of evolutionary biology, the four mechanisms it analyzes, and the historical figures behind natural selection, heredity, and the modern synthesis.", "quote": "Evolutionary biology is a subfield of biology that analyzes the four mechanisms of evolution: natural selection, mutation, genetic drift, and gene flow. Natural selection was independently discovered as the engine of evolution by Charles Darwin and Alfred Russel Wallace, based on patterns in the geographic distribution of species. Gregor Mendel discovered the laws of heredity. R. A. Fisher unified Darwin and Mendel in the modern synthesis.", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:developmental-biology",
+      "summary": "Developmental biology is the scientific study of the processes by which animals and plants grow and develop. It investigates how a single fertilized cell gives rise to the organized structures of a mature organism, examining mechanisms of development, differentiation, and growth at the molecular, cellular, genetic, and evolutionary levels. Developmental biologists study cell fate determination, pattern formation, morphogenesis, and the gene regulatory networks that control these events across diverse species. The field connects genetics and cell biology to questions of form and organization, and increasingly links to evolution through the comparison of developmental programs. It is represented by a global community of scientists and educators, including the Society for Developmental Biology, and informs regenerative medicine, stem-cell research, and the understanding of congenital disorders.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Developmental_biology", "supports": "Definition of developmental biology as the study of how animals and plants grow and develop.", "quote": "Developmental biology is the scientific study of the processes by which animals and plants grow and develop.", "fetched": true},
+        {"url": "https://www.sdbonline.org/", "supports": "Developmental biology as a field furthered by a global scholarly community, and the levels at which its mechanisms of development, differentiation, and growth are studied.", "quote": "Developmental Biology, the official journal of the Society for Developmental Biology, publishes original research on mechanisms of development, differentiation, and growth in animals and plants at the molecular, cellular, genetic and evolutionary levels.", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:bioinformatics",
+      "summary": "Bioinformatics is an interdisciplinary field of science that develops computational methods and software tools for understanding biological data, especially when the data sets are large and complex. It synthesizes knowledge from biology, computer science, mathematics, and statistics to acquire, store, analyze, and interpret molecular information such as genome sequences, protein structures, and gene-expression measurements. Bioinformaticians build algorithms and databases for tasks including sequence alignment, genome assembly, structure prediction, and the modeling of biological networks. Though sometimes conflated with computational biology, which emphasizes mathematical modeling of biological systems, bioinformatics focuses on data-analysis methodologies. Within this atlas the field is homed in the life sciences, where it underpins genomics and molecular biology, and it is represented internationally by bodies such as the International Society for Computational Biology.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Bioinformatics", "supports": "Definition of bioinformatics as an interdisciplinary field developing computational methods and software tools for biological data.", "quote": "Bioinformatics is an interdisciplinary field of science that develops computational methods and software tools for understanding biological data, especially when the data sets are large and complex.", "fetched": true},
+        {"url": "https://www.iscb.org/about-iscb", "supports": "Bioinformatics/computational biology as represented worldwide by a dedicated international society.", "quote": "the only society representing computational biology and bioinformatics on a worldwide scale", "fetched": true}
+      ],
+      "self_flags": ["Referent pin held: homed in life sciences (a CS-side §13 membership is parked, not written); framed neutrally."],
+      "unfetched": []
+    }
+  ],
+  "spn_queue": [
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Genetics",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Molecular_biology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Cell_biology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Immunology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Immune_system",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Ecology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Evolutionary_biology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Developmental_biology",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Bioinformatics",
+    "https://genetics-gsa.org/about-gsa/",
+    "https://www.aai.org/About",
+    "https://www.sdbonline.org/",
+    "https://www.iscb.org/about-iscb"
+  ]
+}

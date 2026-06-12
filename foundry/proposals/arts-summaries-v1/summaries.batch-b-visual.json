@@ -1,0 +1,97 @@
+{
+  "batch": "arts-summaries-v1/batch-b-visual",
+  "generated_by": "claude-opus-4-8[1m]",
+  "summaries": [
+    {
+      "node_id": "field:visual-arts",
+      "summary": "The visual arts are art forms perceived primarily through sight, encompassing painting, drawing, printmaking, sculpture, ceramics, photography, video, filmmaking, design, crafts, and architecture. The field also takes in the applied arts—industrial design, graphic design, fashion design, interior design, and decorative art—alongside disciplines such as performing arts and textile arts that involve visual aspects among other dimensions. In the Library of Congress Classification, the visual arts fall under the broad Fine Arts class N, where subdivisions span history, museums and galleries, and the individual media. The category groups practices that share a basis in the making and study of visual objects and images, distinguishing them from the literary and musical arts.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Visual_arts", "supports": "Definition and enumeration of visual-arts forms including applied arts", "quote": "The visual arts are art forms such as painting, drawing, printmaking, sculpture, ceramics, photography, video, image, filmmaking, design, crafts, and architecture. Many artistic disciplines such as performing arts, conceptual art, and textile arts, also involve aspects of the visual arts, as well as arts of other types. Within the visual arts, the applied arts, such as industrial design, graphic design, fashion design, interior design, and decorative art are also included.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/N400.json", "supports": "Visual arts sit under Fine Arts class N in the Library of Congress Classification", "quote": "Fine Arts--Visual arts--Art museums, galleries, etc.--Periodicals and societies", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:art-history",
+      "summary": "Art history is an academic discipline devoted to the study of artistic production and visual culture throughout human history. Art historians apply a historical method or a philosophical framework—such as historical materialism or critical theory—to analyze artworks, studying art's impact on societies and cultures, the relationship between art and politics, and how styles and formal characteristics have changed over time. The discipline is distinguished from art criticism, which establishes relative artistic value, and from aesthetics, a branch of philosophy. The College Art Association, founded in 1911, \"Promotes excellence in scholarship and teaching in the history and criticism of the visual arts.\" In the Library of Congress Classification, the history of the visual arts occupies the range N5300–N7418.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Art_history", "supports": "Definition of art history as an academic discipline and its distinction from criticism and aesthetics", "quote": "Art history is an academic discipline devoted to the study of artistic production and visual culture throughout human history. Art historians use a historical method or a philosophy, such as historical materialism or critical theory, to analyze artworks. Among other topics, they study art's impact on societies and cultures, the relationship between art and politics, and how artistic styles and formal characteristics of works of art have changed throughout history. As a discipline, art history is distinguished from art criticism, which is concerned with establishing a relative artistic value for critiquing individual works, and aesthetics, which is a branch of philosophy.", "fetched": true},
+        {"url": "https://www.collegeart.org/about", "supports": "College Art Association as the scholarly society for art history, founded 1911", "quote": "Founded in 1911, the College Art Association: Promotes excellence in scholarship and teaching in the history and criticism of the visual arts", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/N5300.json", "supports": "LCC range for the history of the visual arts", "quote": "Fine Arts--Visual arts--History--General works", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:painting",
+      "summary": "Painting is a visual art characterized by the practice of applying paint, pigment, color, or other medium to a solid surface. The medium is commonly applied to the base with a brush, though other implements—palette knives, sponges, airbrushes, the artist's fingers, or even a dripping technique that uses gravity—may be used. One who produces paintings is called a painter. As a discipline, painting embraces a wide range of supports, media, and traditions across cultures and historical periods. In the Library of Congress Classification, painting occupies class ND under Fine Arts, the subdivision in which collected writings on the medium are gathered at ND25–ND27.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Painting", "supports": "Definition of painting and the implements used", "quote": "Painting is a visual art, characterized by the practice of applying paint, pigment, color, or other medium to a solid surface. The medium is commonly applied to the base with a brush. Other implements, such as palette knives, sponges, airbrushes, the artist's fingers, or even a dripping technique that uses gravity may be used. One who produces paintings is called a painter.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/ND25.json", "supports": "Painting classed under Fine Arts in LCC class ND", "quote": "Fine Arts--Painting--Collected writings", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:sculpture",
+      "summary": "Sculpture is the branch of the visual arts that operates in three dimensions, producing artwork physically presented in the dimensions of height, width, and depth. It is one of the plastic arts. Durable sculptural processes originally used carving and modelling—in stone, metal, ceramics, wood, and other materials—but since Modernism there has been almost complete freedom of materials and process. A wide variety of materials may be worked by removal such as carving, assembled by welding or modelling, or moulded or cast. In the Library of Congress Classification, sculpture forms class NB under Fine Arts, with periodicals and societies entered at the head of the range NB1–NB1952.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Sculpture", "supports": "Definition of sculpture as the three-dimensional branch of the visual arts and its materials/processes", "quote": "Sculpture is the branch of the visual arts that operates in three dimensions. Sculpture is the three-dimensional artwork which is physically presented in the dimensions of height, width and depth. It is one of the plastic arts. Durable sculptural processes originally used carving and modelling, in stone, metal, ceramics, wood and other materials but, since Modernism, there has been almost complete freedom of materials and process. A wide variety of materials may be worked by removal such as carving, assembled by welding or modelling, or moulded or cast.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/NB1.json", "supports": "Sculpture classed under Fine Arts in LCC class NB, range NB1-NB1952", "quote": "Fine Arts--Sculpture--Periodicals and societies", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:drawing",
+      "summary": "Drawing is a visual art that uses an instrument to mark paper or another two-dimensional surface, or a digital representation of such. Traditionally, the instruments used to create a drawing include pencils, crayons, and ink pens, sometimes in combination; more modern tools include computer styluses with mice, graphics tablets, and gamepads in VR drawing software. As a fine-art discipline, drawing serves both as a preparatory and exploratory practice and as a finished medium in its own right. In the Library of Congress Classification, drawing is grouped with design and illustration in class NC under Fine Arts, the range NC1–NC1940.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Drawing", "supports": "Definition of drawing as a visual art and the instruments used", "quote": "Drawing is a visual art that uses an instrument to mark paper or another two-dimensional surface, or a digital representation of such. Traditionally, the instruments used to create a drawing include pencils, crayons, and ink pens, sometimes in combination. More modern tools include computer styluses with mice and graphics tablets and gamepads in VR drawing software.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/NC1.json", "supports": "Drawing grouped with design and illustration in LCC class NC", "quote": "Fine Arts--Drawing. Design. Illustration--Periodicals and societies", "fetched": true}
+      ],
+      "self_flags": ["Referent pin held: fine-art drawing (Q2921001), not technical/engineering drawing. QC fix: the generator's NC1 quote ('NC1-NC1940 (Drawing. Design. Illustration)') was a reformatted notation not present verbatim; replaced with the exact LCC NC1 caption."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:printmaking",
+      "summary": "Printmaking is the process of creating artworks by printing, normally on paper, but also on fabric, wood, metal, and other surfaces. Traditional printmaking normally covers only the process of creating prints using a hand-processed technique, rather than a photographic reproduction of a visual artwork which would be printed using an electronic machine; there is, however, some cross-over between traditional and digital printmaking, including risograph. The discipline embraces techniques such as relief, intaglio, planographic, and stencil processes, each capable of yielding multiple original impressions. In the Library of Congress Classification, printmaking falls under print media in class NE, headed by periodicals and societies.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Printmaking", "supports": "Definition of printmaking and the distinction between traditional and digital printmaking", "quote": "Printmaking is the process of creating artworks by printing, normally on paper, but also on fabric, wood, metal, and other surfaces. 'Traditional printmaking' normally covers only the process of creating prints using a hand-processed technique, rather than a photographic reproduction of a visual artwork which would be printed using an electronic machine; however, there is some cross-over between traditional and digital printmaking, including risograph.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/NE1.json", "supports": "Printmaking classed under print media in LCC class NE", "quote": "Fine Arts--Print media--Printmaking and engraving--Periodicals and societies", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:decorative-arts",
+      "summary": "The decorative arts—also known as the applied arts—are arts or crafts whose aim is the design and manufacture of objects that are both beautiful and functional. This includes most of the objects for the interiors of buildings, as well as interior design, but typically excludes architecture. Ceramic art, metalwork, furniture, jewellery, fashion, various forms of the textile arts, and glassware are major groupings. The discipline is distinguished from the fine arts by its orientation toward ornament, craft, and functional objects. In the Library of Congress Classification, the field is class NK, whose caption reads \"Decorative arts. Applied arts. Decoration and ornament.\"",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Decorative_arts", "supports": "Definition of decorative arts and its major groupings", "quote": "The decorative arts are arts or crafts whose aim is the design and manufacture of objects that are both beautiful and functional. This includes most of the objects for the interiors of buildings, as well as interior design, but typically excludes architecture. Ceramic art, metalwork, furniture, jewellery, fashion, various forms of the textile arts and glassware are major groupings.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/NK1.json", "supports": "Decorative arts / applied arts alias in LCC class NK caption", "quote": "Fine Arts--Decorative arts. Applied arts. Decoration and ornament--Periodicals--American and English", "fetched": true}
+      ],
+      "self_flags": ["alias 'Applied Arts' recorded per referent pin, confirmed verbatim in LCC NK caption"],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:ceramic-arts",
+      "summary": "Ceramic art, one of the plastic arts, is art made from ceramic materials, including clay. It may take forms such as pottery, tiles, figurines, sculptures, and tableware. While some ceramic products are considered fine art, others are considered decorative, industrial, or applied art objects; ceramics may also be considered artefacts in archaeology. People design, manufacture, and decorate pottery in pottery or ceramic factories, and in one-person pottery studios ceramists or potters produce studio pottery. Ceramics exclude glass and mosaics made from glass tesserae. As an artistic discipline and medium, ceramic art spans utilitarian and sculptural making, sitting within the decorative arts (LCC class NK) while overlapping the fine arts.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Ceramic_art", "supports": "Definition of ceramic art, its forms, and its boundaries excluding glass", "quote": "Ceramic art, one of the plastic arts, is art made from ceramic materials, including clay. Ceramic art may take forms such as pottery, tiles, figurines, sculptures, and tableware. While some ceramic products are considered fine art, others are considered decorative, industrial, or applied art objects. Ceramics may also be considered artefacts in archaeology. People design, manufacture, and decorate pottery in pottery or ceramic factories. Some pottery is regarded as art pottery. In one-person pottery studios, ceramists or potters produce studio pottery. Ceramics exclude glass and mosaics made from glass tesserae.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/NK1.json", "supports": "Ceramic art sits within the decorative arts class NK in LCC", "quote": "Fine Arts--Decorative arts. Applied arts. Decoration and ornament--Periodicals--American and English", "fetched": true}
+      ],
+      "self_flags": ["Granularity nuance recorded: anchor Q13464614 reads at the practice/medium level rather than a named academic department (session #15 audit medium non-refutation) — described as the artistic discipline/practice accordingly; not an error."],
+      "unfetched": []
+    }
+  ],
+  "spn_queue": [
+    "https://id.loc.gov/authorities/classification/N400.json",
+    "https://id.loc.gov/authorities/classification/N5300.json",
+    "https://id.loc.gov/authorities/classification/ND25.json",
+    "https://id.loc.gov/authorities/classification/NB1.json",
+    "https://id.loc.gov/authorities/classification/NC1.json",
+    "https://id.loc.gov/authorities/classification/NE1.json",
+    "https://id.loc.gov/authorities/classification/NK1.json",
+    "https://www.collegeart.org/about"
+  ]
+}

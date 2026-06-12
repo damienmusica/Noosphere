@@ -1,0 +1,69 @@
+{
+  "batch": "arts-summaries-v1/batch-a-music",
+  "generated_by": "claude-opus-4-8[1m]",
+  "summaries": [
+    {
+      "node_id": "field:music",
+      "summary": "Music is studied and practiced as an academic discipline in university music departments and conservatories, encompassing performance, composition, and the scholarly study of music. In the Library of Congress Classification, music occupies Class M, organized as \"Music and Books on Music,\" with literature on music in Class ML and instruction and study in Class MT. As a field, music spans creative activities commonly divided into composition, improvisation, and performance, and its scholarly branches include musicology, music theory, ethnomusicology, and music education. The American Musicological Society, founded in 1934, was \"crucial in legitimizing musicology as a scholarly discipline,\" reflecting music's establishment as a research field alongside its conservatory training traditions in performance and pedagogy.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Music", "supports": "Music involves activities divided into composition, improvisation, and performance.", "quote": "Diverse activities are involved in the creation of music, and are often divided into categories of composition, improvisation, and performance.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/M5.json", "supports": "Music is classified under LCC Class M, 'Music and Books on Music.'", "quote": "Music and Books on Music", "fetched": true},
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/American_Musicological_Society", "supports": "The AMS helped establish musicology as a scholarly discipline.", "quote": "Founded in 1934, the AMS was begun by leading American musicologists of the time, and was crucial in legitimizing musicology as a scholarly discipline.", "fetched": true}
+      ],
+      "self_flags": ["www.musicology.org/about resolved to the International Musicological Society, not AMS — referent mismatch, not quoted; AMS grounded on its verified Wikipedia REST summary."],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:musicology",
+      "summary": "Musicology is the academic, research-based study of music, as distinct from musical composition or performance. The discipline combines and intersects with many fields, including psychology, sociology, acoustics, neurology, the natural sciences, the formal sciences, and computer science. Its principal scholarly society in the United States, the American Musicological Society (AMS), is \"a musicological organization which researches, promotes and produces publications on music\"; founded in 1934, it \"was crucial in legitimizing musicology as a scholarly discipline.\" In the Library of Congress Classification, scholarly literature on music falls under Class ML, covering the history and criticism of music. Musicology supplies the historical, analytical, and critical scholarship that underpins the wider academic study of music.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Musicology", "supports": "Definition of musicology and the fields it intersects.", "quote": "Musicology is the academic, research-based study of music, as opposed to musical composition or performance. Musicology research combines and intersects with many fields, including psychology, sociology, acoustics, neurology, natural sciences, formal sciences and computer science.", "fetched": true},
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/American_Musicological_Society", "supports": "The AMS is the U.S. musicological society and legitimized the discipline.", "quote": "The American Musicological Society (AMS) is a musicological organization which researches, promotes and produces publications on music. Founded in 1934, the AMS was begun by leading American musicologists of the time, and was crucial in legitimizing musicology as a scholarly discipline.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/ML159.json", "supports": "Literature on music, including history and criticism, is classified under LCC Class ML.", "quote": "Music and Books on Music--Literature on music--History and criticism--General", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:music-theory",
+      "summary": "Music theory is the study of theoretical frameworks for understanding the practices and possibilities of music. The Oxford Companion to Music describes three interrelated uses of the term: the \"rudiments\" needed to read music notation, such as key signatures, time signatures, and rhythmic notation; the study of scholars' views on music from antiquity to the present; and a sub-topic of musicology that \"seeks to define processes and general principles in music.\" The Society for Music Theory \"promotes the development of and engagement with music theory as a scholarly and pedagogical discipline.\" In the Library of Congress Classification, instruction and study in music falls under Class MT. The discipline analyzes elements such as harmony, melody, rhythm, form, and counterpoint.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Music_theory", "supports": "Definition of music theory and the Oxford Companion's three uses.", "quote": "Music theory is the study of theoretical frameworks for understanding the practices and possibilities of music. The Oxford Companion to Music describes three interrelated uses of the term \"music theory\": The first refers to the \"rudiments\" needed to understand music notation such as key signatures, time signatures, and rhythmic notation; the second is a study of scholars' views on music from antiquity to the present; the third is a sub-topic of musicology that \"seeks to define processes and general principles in music\".", "fetched": true},
+        {"url": "https://societymusictheory.org/about", "supports": "The Society for Music Theory's stated mission.", "quote": "The Society for Music Theory promotes the development of and engagement with music theory as a scholarly and pedagogical discipline.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/MT2.json", "supports": "Instruction and study in music is classified under LCC Class MT.", "quote": "Music and Books on Music--Instruction and study--History", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:ethnomusicology",
+      "summary": "Ethnomusicology is the multidisciplinary study of music in its cultural context. The discipline investigates social, cognitive, biological, comparative, and other dimensions of music. Ethnomusicologists study music as a reflection of culture and investigate the act of music-making through various immersive, observational, and analytical approaches. The discipline emerged from comparative musicology, initially focusing on non-Western music, but later expanded to embrace the study of all different music. Its principal U.S. learned society, the Society for Ethnomusicology, is, alongside the International Council for Traditional Music and the British Forum for Ethnomusicology, \"one of three major international associations for ethnomusicology.\" Fieldwork-based participant observation distinguishes ethnomusicology from the predominantly text- and score-based methods of historical musicology.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Ethnomusicology", "supports": "Definition and scope of ethnomusicology; its emergence from comparative musicology.", "quote": "Ethnomusicology is the multidisciplinary study of music in its cultural context. The discipline investigates social, cognitive, biological, comparative, and other dimensions. Ethnomusicologists study music as a reflection of culture and investigate the act of music-making through various immersive, observational, and analytical approaches. This discipline emerged from comparative musicology, initially focusing on non-Western music, but later expanded to embrace the study of all different music.", "fetched": true},
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Society_for_Ethnomusicology", "supports": "The Society for Ethnomusicology is one of three major international ethnomusicology associations.", "quote": "The Society for Ethnomusicology is, with the International Council for Traditional Music and the British Forum for Ethnomusicology, one of three major international associations for ethnomusicology.", "fetched": true}
+      ],
+      "self_flags": [],
+      "unfetched": ["https://www.ethnomusicology.org/page/AboutEthnomusicol — HTTP 403; Wayback not fetchable here. Grounded SEM on its verified Wikipedia REST summary instead."]
+    },
+    {
+      "node_id": "subfield:music-education",
+      "summary": "Music education is a field of practice in which educators are trained for careers as elementary or secondary music teachers and as school or music conservatory ensemble directors. It is also a research area in which scholars do original research on ways of teaching and learning music, publishing their findings in peer-reviewed journals and teaching undergraduate and graduate education students at university education or music schools who are training to become music teachers. In the United States, the National Association for Music Education (NAfME) is \"a collaborative community that supports music educators and advocates for equitable access to music education.\" Founded in 1907 as the Music Supervisors' National Conference, NAfME represents music educators across the country. In the Library of Congress Classification, music instruction and study fall under Class MT.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Music_education", "supports": "Music education as both a training field and a research area.", "quote": "Music education is a field of practice in which educators are trained for careers as elementary or secondary music teachers, school or music conservatory ensemble directors. Music education is also a research area in which scholars do original research on ways of teaching and learning music.", "fetched": true},
+        {"url": "https://nafme.org/about/", "supports": "NAfME's self-description.", "quote": "NAfME is a collaborative community that supports music educators and advocates for equitable access to music education.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/MT1.json", "supports": "Music instruction and study is classified under LCC Class MT (general works at the head of the schedule).", "quote": "General works", "fetched": true}
+      ],
+      "self_flags": ["NAfME founding year (1907 as Music Supervisors' National Conference) is standard reference history, externally verifiable; the verbatim membership-count figure was dropped to avoid a contestable number."],
+      "unfetched": []
+    }
+  ],
+  "spn_queue": [
+    "https://id.loc.gov/authorities/classification/M5.json",
+    "https://id.loc.gov/authorities/classification/ML159.json",
+    "https://id.loc.gov/authorities/classification/MT1.json",
+    "https://id.loc.gov/authorities/classification/MT2.json",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/American_Musicological_Society",
+    "https://societymusictheory.org/about",
+    "https://nafme.org/about/"
+  ]
+}
