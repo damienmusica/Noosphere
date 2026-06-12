@@ -4409,7 +4409,7 @@
     "target": "domain:social-sciences",
     "relation": "part_of",
     "confidence": 0.75,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary",
@@ -4421,7 +4421,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "FORD 5.7 'Social and economic geography' under 5 Social Sciences (captured 2026-06-11); LCC GF1-900 'Human ecology. Anthropogeography' inside Class G. [UNFETCHED]: Wikidata Q12831143 desc. [QC 2026-06-11: a generator clause mis-attributing LCC GF to UDC was removed — scheme-misattribution caught by the mechanical audit.]"
+    "note": "Clause-6 resolution (ss-arts-bflag-resolution-v1, session #16): OECD FORD 5.7 Social and economic geography under 5. Social Sciences (arrs.si Frascati mirror, live 2026-06-12) directly grounds the social-sciences home. Geography is conventionally a bridge between social and natural science; human geography is its social-activity branch. The unified-geography view (LCC class G; AAG intradisciplinary self-description) is the recorded minority framing and does not negate SS membership; a unified geography node is parked (no physical-geography node yet). No disputed."
   },
   {
     "id": "edge:econometrics-part-of-economics",
@@ -4692,7 +4692,7 @@
     "target": "field:law",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary"
@@ -4703,7 +4703,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "LCC K201-487 'Jurisprudence. Philosophy and theory of law' inside Class K Law — K is the law class (captured 2026-06-11); UDC 340 'Law in general. Legal methods and auxiliary sciences' includes jurisprudence as a subsection of 34 Law (captured 2026-06-11). [UNFETCHED]: Wikidata Q4932206 desc. Note: subfield node is currently `proposed`."
+    "note": "Clause-6 resolution (session #16): identity confirmed as legal theory / legal science. LCC Class K (Law), caption Jurisprudence. Theory and philosophy of law (K201-K487, id.loc.gov live 2026-06-12); Wikidata Q4932206 instance-of branch of legal science, subclass-of legal science + social science. The enwiki/SEP back-merge to philosophy of law is the recorded minority framing (philosophy-of-law is the boundary case), not a negation of law membership. No disputed."
   },
   {
     "id": "edge:constitutional-law-part-of-law",
@@ -4920,7 +4920,7 @@
     "target": "domain:social-sciences",
     "relation": "part_of",
     "confidence": 0.7,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary"
@@ -4931,7 +4931,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "UDC 35 includes 352/354 local/regional/central administration; UDC 332.3 'Land use [Including: Planning blight]' under 33 Economics; LCC HT165.5-169.9 'City planning' and HT388-395 'Regional economics. Space in economics. Regional planning' inside subclass HT under Class H (captured 2026-06-11). [UNFETCHED]: Wikidata Q149013 desc; ACSP (Association of Collegiate Schools of Planning); American Planning Association. Note: node is `proposed`."
+    "note": "Clause-6 resolution (session #16): social-sciences home grounded by LCC HT165.5-HT169.9 City planning within urban sociology (id.loc.gov live 2026-06-12), O*NET social-science occupational family, and Wikidata Q149013 (label spatial planning, alias urban and regional planning) subclass-of planning. Genuine cross-listing: co-equal §13 membership in arts-and-design (edge:urban-and-regional-planning-part-of-arts-and-design) per LCC NA9000 + ANZSRC Built Environment and Design. No disputed (the other filing is a supporting membership, not a negation)."
   },
   {
     "id": "edge:mass-communication-part-of-media-and-communication-studies",
@@ -5342,7 +5342,7 @@
     "target": "field:visual-arts",
     "relation": "part_of",
     "confidence": 0.72,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary"
@@ -5353,7 +5353,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "§13 arts-side edge only; technology-side membership pending clause-6/v1.1 resolution. Capped at proposed (endpoint node is proposed — B-flag, clause-6/v1.1 queue)."
+    "note": "Clause-6 resolution (session #16): visual-arts home grounded by UDC class 77 Photography and similar processes under arts class 7 (UDC main table). Genuine cross-listing: co-equal §13 membership in engineering-and-technology (edge:photography-part-of-engineering-and-technology) per LCC TR1-TR1050 Photography in class T = Technology (id.loc.gov live 2026-06-12). Wikidata Q11633 art, science, and practice. The head-on UDC-arts vs LCC-technology split is the cross-listing basis; no disputed."
   },
   {
     "id": "edge:subfield-drawing-part-of-field-visual-arts",
@@ -5554,7 +5554,7 @@
     "target": "field:architecture",
     "relation": "part_of",
     "confidence": 0.72,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary"
@@ -5565,7 +5565,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "§13 social-sciences-continent candidate noted. Confidence reduced to reflect the multi-home contest. Capped at proposed (endpoint node is proposed — B-flag, clause-6/v1.1 queue)."
+    "note": "Clause-6 resolution (session #16): architecture home grounded by LCC NA9000-NA9428 Aesthetics of cities. City planning and beautifying within Fine Arts/Architecture (id.loc.gov live 2026-06-12) and UDC town planning. Genuine cross-listing: co-equal §13 membership in social-sciences (edge:urban-planning-part-of-social-sciences) per LCC HT165.5 urban sociology + APA policy framing + Wikidata Q69883 type of policy / public administration. Q69883 is a subclass of Q149013 (spatial planning) — kept as the narrower city-scale node distinct from subfield:urban-and-regional-planning (session #14). No disputed."
   },
   {
     "id": "edge:civil-engineering-part-of-engineering-and-technology",
@@ -6148,7 +6148,7 @@
     "target": "field:chemical-engineering",
     "relation": "part_of",
     "confidence": 0.88,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary"
@@ -6159,7 +6159,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "LCC TP368-456 'Food processing and manufacture' — range within LCC TP 'Chemical technology' (the chemical-engineering LCC anchor) (captured baseline 2026-06-11). UDC 664 'Production and preservation of solid foodstuffs' — direct top-level notation within UDC 66 'Chemical technology. Chemical and related industries' (the chemical-engineering UDC anchor) (captured baseline 2026-06-11). || Status-capped at proposed: the source node is proposed (B-flag clause-6 contest or QID gap) — cap clause; the cap lifts with the node's resolution. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): status-capped at promotion (source node proposed, B-flag clause-6 queue). Nest itself is unanimous (TP368-456 + UDC 664 both inside the chemical wing) — the cap is about the node contest, not this placement."
+    "note": "Clause-6 resolution (session #16): engineering home grounded by Wikidata Q6631525 subclass-of engineering (Q11023) + applied science, LCC TP368-TP456 Food processing and manufacture under TP Chemical technology (id.loc.gov live 2026-06-12), and IFT defining food science via chemical engineering. The food-science/agriculture co-home is real institutionally (programs in colleges of agriculture; food engineering listed as a food-science subdiscipline) but is PARKED — the atlas has no agriculture domain/field yet to carry a co-equal §13 edge. No disputed (engineering membership is not negated)."
   },
   {
     "id": "edge:geodesy-part-of-civil-engineering",
@@ -6178,5 +6178,60 @@
       "proposed_at": "2026-06-12"
     },
     "note": "Section-13 co-equal engineering-continent membership (cross-listing v1 §13; ns-bflag-resolution-v1 parked engineering-side trigger, executed session #15 2026-06-12). Engineering-side grounding: LCC TA501-625 'Surveying' within LCC TA 'Engineering (General). Civil engineering (General)' (id.loc.gov live 2026-06-12 — the engineering treatment of geodetic surveying); UNB 'Department of Geodesy and Geomatics Engineering' within the Faculty of Engineering (unb.ca live 2026-06-12); TU Delft houses geodesy in the Faculty of Civil Engineering and Geosciences (Geoscience & Remote Sensing dept, tudelft.nl live 2026-06-12). Membership is 'via geomatics': geomatics (the sibling §13 member of civil-engineering, edge:geomatics-part-of-civil-engineering) is the geospatial-engineering discipline that establishes geodesy's engineering home. Co-equal, NOT containment: UNB pairs geodesy and geomatics co-equally in the department name and Wikidata places geodesy under earth science (P361/P279 Q8008), not under geomatics (geomatics P527 does not list geodesy) — so the edge targets the field directly rather than nesting geodesy under subfield:geomatics. Engineering membership is secondary to the natural-sciences home (astronomy 0.8 / earth-sciences 0.75) -> confidence 0.7. No disputed (no source negates the engineering membership)."
+  },
+  {
+    "id": "edge:urban-and-regional-planning-part-of-arts-and-design",
+    "source": "subfield:urban-and-regional-planning",
+    "target": "domain:arts-and-design",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:anzsrc"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Section-13 co-equal design/built-environment membership (cross-listing v1 §13; ss-arts-bflag-resolution-v1, session #16). Grounding: LCC NA9000-NA9428 Aesthetics of cities. City planning and beautifying within Fine Arts/Architecture (id.loc.gov live 2026-06-12) — LCC dual-files city planning under BOTH HT urban sociology and NA architecture; ANZSRC files Urban and Regional Planning under the Built Environment and Design division. Domain-direct (no single arts/design field is the planning parent; math-ed/quantum-computing domain-direct §13 precedent). Co-equal with the social-sciences home; secondary to it -> confidence 0.7. No disputed."
+  },
+  {
+    "id": "edge:urban-planning-part-of-social-sciences",
+    "source": "subfield:urban-planning",
+    "target": "domain:social-sciences",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Section-13 co-equal social-policy membership (cross-listing v1 §13; ss-arts-bflag-resolution-v1, session #16). Grounding: LCC HT165.5-HT169.9 City planning within urban sociology / Social Sciences (id.loc.gov live 2026-06-12); LCSH City planning maps to Architecture (NA) + Urban sociology (HT) + Sanitary engineering (TD); APA frames the planner remit in social-policy terms; Wikidata Q69883 typed type of policy / public administration. Domain-direct (urban sociology is a sociology subfield, no single SS field is the planning parent). Co-equal with the architecture home; secondary -> confidence 0.7. No disputed."
+  },
+  {
+    "id": "edge:photography-part-of-engineering-and-technology",
+    "source": "subfield:photography",
+    "target": "domain:engineering-and-technology",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-06-12"
+    },
+    "note": "Section-13 co-equal technology membership (cross-listing v1 §13; ss-arts-bflag-resolution-v1, session #16). Grounding: LCC TR1-TR1050 Photography in class T = Technology (id.loc.gov live 2026-06-12, rdfs:label Technology--Photography) — the head-on counterpart to UDC class 77 (arts). Wikidata Q11633 art, science, and practice of creating durable images by recording light. Domain-direct (photographic technology spans optics/chemistry/imaging, no single engineering field is the parent). Co-equal with the visual-arts home; secondary -> confidence 0.7. No disputed."
   }
 ]

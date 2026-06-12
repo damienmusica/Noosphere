@@ -1806,9 +1806,9 @@
     "node_id": "field:human-geography",
     "locale": "en",
     "label": "Human Geography",
-    "summary": "",
+    "summary": "Human geography is the social-science branch of geography that studies how people interact with places, focusing on the spatial relationships between human communities, cultures, economies, and their environments. It examines patterns such as urban sprawl and urban redevelopment using both qualitative and quantitative methods, drawing on sociology, anthropology, economics, and environmental science. Within the OECD's international classification of research fields, it falls under the social sciences as \"Social and economic geography\" (category 5.7). Geography as a whole is conventionally understood as a discipline bridging the social and natural sciences; human geography is the branch concerned with human activity and organization across space, complementary to physical geography. Its subfields include economic, cultural, political, population, and urban geography, each analyzing how social processes shape, and are shaped by, the spaces in which people live.",
     "aliases": [],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "subfield:econometrics",
@@ -1964,9 +1964,9 @@
     "node_id": "subfield:jurisprudence",
     "locale": "en",
     "label": "Jurisprudence",
-    "summary": "",
+    "summary": "Jurisprudence, also known as the theory or philosophy of law, is the examination in a general perspective of what law is and what it ought to be. Within the social sciences it is a subfield of law concerned with the foundations, concepts, and reasoning of legal systems rather than the content of any particular statute. Wikidata describes it as a \"theoretical study of law, by philosophers and social scientists\" and models it as a branch of legal science. The Library of Congress Classification places it in Class K (Law), under the caption \"Jurisprudence. Theory and philosophy of law\" (range K201-K487). Jurisprudence overlaps substantially with the philosophy of law, with which it shares core questions about legal validity, rights, and justice, but it is typically pursued from within legal scholarship as the discipline's theoretical core.",
     "aliases": [],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "subfield:constitutional-law",
@@ -2030,11 +2030,11 @@
     "node_id": "subfield:urban-and-regional-planning",
     "locale": "en",
     "label": "Urban and Regional Planning",
-    "summary": "",
+    "summary": "Urban and regional planning, also called spatial planning, is the management of space and resources through the creation and implementation of plans restricting how space can be used and developed. Normally undertaken by state actors at national, regional, or local levels, it tries to balance the competing demands upon land as a resource, mediating between the demands of the state, market, and local community. The field has a dual disciplinary home. The Library of Congress Classification files city planning both under the social sciences as \"City planning\" within urban sociology (HT165.5-HT169.9) and under fine arts/architecture as \"Aesthetics of cities. City planning and beautifying\" (NA9000-NA9428); the ANZSRC classification places it within Built Environment and Design. It is thus framed as a social-science discipline of regional and spatial organization with an equally grounded home in the design tradition.",
     "aliases": [
       "Spatial Planning"
     ],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "subfield:mass-communication",
@@ -2160,9 +2160,9 @@
     "node_id": "subfield:photography",
     "locale": "en",
     "label": "Photography",
-    "summary": "",
+    "summary": "Photography is the art, application, and practice of creating images by recording light, either electronically by means of an image sensor or chemically by means of a light-sensitive material such as photographic film. Wikidata characterizes it as the \"art, science, and practice of creating durable images by recording light or other electromagnetic radiation,\" capturing its dual nature as both a creative medium and a technical process. That duality is reflected in standard library classifications. The Library of Congress Classification files photography in Class T (Technology), under the caption \"Photography\" (range TR1-TR1050); the Universal Decimal Classification instead places it within the arts, in class 77. The atlas homes photography under the visual arts while cross-listing it into technology, reflecting its inseparable artistic and scientific dimensions.",
     "aliases": [],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "subfield:graphic-design",
@@ -2242,9 +2242,9 @@
     "node_id": "subfield:urban-planning",
     "locale": "en",
     "label": "Urban Planning",
-    "summary": "",
+    "summary": "Urban planning is the process of developing and designing plans for land use and the built environment, including the air, water, and infrastructure passing into and out of urban areas, such as transportation, communications, and distribution networks. A narrower, city-scale subclass of spatial planning, it has historically concerned itself with public welfare, efficiency, sanitation, and the protection and use of the environment, more recently emphasizing health, well-being, and sustainability. The discipline carries a dual character. The Library of Congress Classification maps city planning to architecture (\"Aesthetics of cities. City planning and beautifying,\" NA9000-NA9428) and to urban sociology (\"City planning,\" HT165.5-HT169.9); Wikidata describes it as a \"technical and political process concerned with the use of land and design of the urban environment.\" Its atlas home is architecture and the arts, cross-listed into social policy and public administration.",
     "aliases": [],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "field:civil-engineering",
@@ -2488,7 +2488,8 @@
     "node_id": "subfield:food-engineering",
     "locale": "en",
     "label": "Food Engineering",
+    "summary": "Food engineering is a scientific, academic, and professional field that interprets and applies principles of engineering, science, and mathematics to food manufacturing and operations. It spans the processing, production, handling, storage, conservation, control, packaging, and distribution of food products, drawing on electrical, mechanical, civil, chemical, industrial, and agricultural engineering. Wikidata models it as a subclass of engineering and of applied science, and its core methods derive from chemical and process engineering. The Library of Congress Classification places it in Class T under chemical technology, in the range TP368-TP456, captioned \"Food processing and manufacture.\" While food engineering overlaps with food science, which sits closer to agriculture and concerns the composition and biology of food, food engineering's disciplinary home is engineering: it is the branch that applies process and unit-operation principles to transform raw materials into manufactured food at industrial scale.",
     "aliases": [],
-    "reviewed": false
+    "reviewed": true
   }
 ]
