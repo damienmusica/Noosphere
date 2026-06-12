@@ -1,0 +1,68 @@
+{
+  "batch": "eng-summaries-v1/batch-b-electrical",
+  "generated_by": "claude-opus-4-8[1m]",
+  "summaries": [
+    {
+      "node_id": "field:electrical-engineering",
+      "summary": "Electrical engineering is an engineering discipline concerned with the study, design, and application of equipment, devices, and systems that use electricity, electronics, and electromagnetism. It emerged as an identifiable occupation in the latter half of the 19th century after the commercialization of the electric telegraph, the telephone, and electrical power generation, distribution, and use. The field is the parent discipline for a range of subfields, including telecommunications, computer engineering, power systems, control, signal processing, and photonics. Practitioners work across scales from microelectronic circuits and integrated devices to continent-spanning power grids and communication networks. In the Library of Congress Classification, electrical engineering, electronics, and nuclear engineering are grouped under class TK.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Electrical_engineering", "supports": "Definition, scope (electricity/electronics/electromagnetism), and 19th-century emergence after the telegraph, telephone, and electric power", "quote": "Electrical engineering is an engineering discipline concerned with the study, design, and application of equipment, devices, and systems that use electricity, electronics, and electromagnetism. It emerged as an identifiable occupation in the latter half of the 19th century after the commercialization of the electric telegraph, the telephone, and electrical power generation, distribution, and use.", "fetched": true},
+        {"url": "https://id.loc.gov/authorities/classification/TK1-TK9971.json", "supports": "LCC class TK caption grouping electrical engineering, electronics, and nuclear engineering", "quote": "Electrical engineering. Electronics. Nuclear engineering", "fetched": true}
+      ],
+      "self_flags": ["QC backstop applied: the closing LCC TK sentence was self-flagged by the generator as not live-fetched in its own context; the orchestrator backstopped it with the TK1-TK9971 authority record (fetched live in the batch-c context: caption 'Electrical engineering. Electronics. Nuclear engineering'), which the summary sentence paraphrases. Citation added."],
+      "unfetched": ["Encyclopaedia Britannica 'electrical engineering' — Cloudflare 'Just a moment...' challenge (HTTP 403) via both WebFetch and curl; Wayback Machine not fetchable in this environment.", "IEEE.org 'about' pages — served as a JavaScript single-page-app shell (~6.9 KB, no body text) so no self-description was retrievable as static HTML."]
+    },
+    {
+      "node_id": "subfield:telecommunications-engineering",
+      "summary": "Telecommunications engineering is a subfield of electrical engineering which seeks to design and devise systems of communication at a distance. The work ranges from basic circuit design to strategic mass developments. A telecommunication engineer is responsible for designing and overseeing the installation of telecommunications equipment and facilities, such as complex electronic switching systems, optical fiber cabling, IP networks, and microwave transmission systems. The discipline also overlaps with broadcast engineering. Its subject matter—telephony, radio, fiber-optic and IP networks, and spectrum use—is coordinated internationally by the International Telecommunication Union (ITU), described as \"the United Nations specialized agency for digital technologies (ICTs).\"",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Telecommunications_engineering", "supports": "Definition as a subfield of electrical engineering designing communication-at-a-distance systems, scope of work, and example facilities (switching systems, optical fiber, IP networks, microwave) plus broadcast-engineering overlap", "quote": "Telecommunications engineering is a subfield of Electrical engineering which seeks to design and devise systems of communication at a distance. The work ranges from basic circuit design to strategic mass developments. A telecommunication engineer is responsible for designing and overseeing the installation of telecommunications equipment and facilities, such as complex electronic switching systems, and other plain old telephone service facilities, optical fiber cabling, IP networks, and microwave transmission systems. Telecommunications engineering also overlaps with broadcast engineering.", "fetched": true},
+        {"url": "https://www.itu.int/en/about/Pages/default.aspx", "supports": "Identity and role of the ITU as the international coordinating body for telecommunications/ICTs", "quote": "ITU is the United Nations specialized agency for digital technologies (ICTs).", "fetched": true}
+      ],
+      "self_flags": ["The 'oldest agency' descriptor present on the ITU page was deliberately not asserted to avoid a contestable figure; only the verbatim agency self-description is cited."],
+      "unfetched": ["Encyclopaedia Britannica 'telecommunication' — not attempted live after Britannica was confirmed Cloudflare-blocked for the EE article in this same session."]
+    },
+    {
+      "node_id": "subfield:computer-engineering",
+      "summary": "Computer engineering is a branch of engineering specialized in developing computer hardware and software. As an engineering discipline at the interface of electrical engineering and computing, it spans digital-logic and circuit design, processor and embedded-system architecture, and the system software that runs on that hardware, distinguishing it from computer science as a practice rooted in engineering design. The professional community is served by the IEEE Computer Society, which describes itself as \"Engaging computer engineers, scientists, academia, and industry professionals from all areas of computing,\" and which sets standards and curricula spanning both hardware and software concepts. Computer engineers work on the design and integration of computing systems rather than on abstract computation alone.",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Computer_engineering", "supports": "Core definition of computer engineering as a branch of engineering developing computer hardware and software", "quote": "Computer engineering is a branch of engineering specialized in developing computer hardware and software.", "fetched": true},
+        {"url": "https://www.computer.org/about", "supports": "Existence of computer engineers as a distinct professional community within the IEEE Computer Society, supporting the engineering-discipline framing", "quote": "Engaging computer engineers, scientists, academia, and industry professionals from all areas of computing", "fetched": true}
+      ],
+      "self_flags": ["Per the referent pin, this is framed as the ENGINEERING discipline (EE/computing interface), explicitly NOT a branch of computer science. The 'branch of engineering' wording is taken verbatim from the fetched source. The hardware/software-architecture specifics are standard discipline knowledge, not lifted from a single fetched span."],
+      "unfetched": ["Encyclopaedia Britannica 'computer engineering' — Cloudflare 403 via WebFetch in this session.", "ABET computer-engineering program criteria — not live-fetched; no verbatim ABET span is cited."]
+    },
+    {
+      "node_id": "subfield:photonics",
+      "summary": "Photonics is the science and engineering of generating, detecting, and manipulating light in the form of photons—through emission, transmission, modulation, signal processing, switching, amplification, and sensing. It underpins technologies such as lasers, optical fibers and optical communication, photodetectors, displays, and optical sensing. Photonics coexists with optics; there is no widespread agreement on a sharp boundary between the two, and the term gained currency as photon-based devices and systems matured. The discipline is represented by professional societies including SPIE, \"the largest global optics and photonics professional society,\" and Optica (formerly OSA), \"the society dedicated to promoting the generation, application, archiving and dissemination of knowledge in the field.\"",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Photonics", "supports": "Definition of photonics in terms of generation/detection/manipulation of light as photons (emission, transmission, modulation, switching, amplification, sensing) and the noted lack of a firm boundary with optics", "quote": "Photonics is a branch of optics that involves the application of generation, detection, and manipulation of light in the form of photons through emission, transmission, modulation, signal processing, switching, amplification, and sensing. Even though photonics is a commonly used term, there is no widespread agreement on a clear definition of the term or on the difference between photonics and related fields, such as optics.", "fetched": true},
+        {"url": "https://www.spie.org/about-spie/what-is-spie", "supports": "Existence and self-description of SPIE as the photonics/optics professional society", "quote": "the largest global optics and photonics professional society", "fetched": true},
+        {"url": "https://www.optica.org/about/", "supports": "Optica's self-description as the society promoting knowledge in optics and photonics", "quote": "the society dedicated to promoting the generation, application, archiving and dissemination of knowledge in the field", "fetched": true}
+      ],
+      "self_flags": ["Per the referent pin, photonics is described on its own terms (devices, lasers, optical communication) and NOT merged into optics; the coexistence-with-optics point is stated using the source's own 'no widespread agreement' language."],
+      "unfetched": ["Encyclopaedia Britannica 'photonics' — Britannica confirmed Cloudflare-blocked in this session; not cited.", "SPIE/IEEE Photonics Society dedicated 'what is photonics' definition page — not located/fetched."]
+    },
+    {
+      "node_id": "subfield:systems-engineering",
+      "summary": "Systems engineering is an interdisciplinary field of engineering and engineering management that focuses on how to design, integrate, and manage complex systems over their life cycles. It uses systems-thinking principles to organize the systems engineering body of knowledge, and the resulting engineered system can be defined as a combination of components that work in synergy to collectively perform a useful function. Rather than optimizing parts in isolation, the discipline coordinates requirements, architecture, interfaces, verification, and operations across a system's whole life cycle, from concept through retirement. The international professional society for the discipline is the International Council on Systems Engineering (INCOSE).",
+      "citations": [
+        {"url": "https://en.wikipedia.org/api/rest_v1/page/summary/Systems_engineering", "supports": "Definition as an interdisciplinary field of engineering and engineering management for designing, integrating, and managing complex systems over their life cycles; use of systems-thinking principles; and the synergy-of-components definition of an engineered system", "quote": "Systems engineering is an interdisciplinary field of engineering and engineering management that focuses on how to design, integrate, and manage complex systems over their life cycles. At its core, systems engineering utilizes systems thinking principles to organize the systems engineering body of knowledge. The individual outcome of such efforts, an engineered system, can be defined as a combination of components that work in synergy to collectively perform a useful function.", "fetched": true}
+      ],
+      "self_flags": ["Kept at discipline level per the referent pin. INCOSE is named as the professional society but its PRIMARY verbatim definition was NOT live-fetched (Cloudflare 403); the summary relies on the fetched Wikipedia lead, independently consistent with INCOSE's life-cycle framing. The 'At its core' phrase appears only inside the verbatim citation quote, not in authored summary prose."],
+      "unfetched": ["INCOSE 'About Systems Engineering' definition page (https://www.incose.org/about-systems-engineering/) — Cloudflare 'Just a moment...' challenge (HTTP 403) via both WebFetch and curl.", "SEBoK glossary 'Systems Engineering' (sebokwiki.org) — Cloudflare 403."]
+    }
+  ],
+  "spn_queue": [
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Electrical_engineering",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Telecommunications_engineering",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Computer_engineering",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Photonics",
+    "https://en.wikipedia.org/api/rest_v1/page/summary/Systems_engineering",
+    "https://www.itu.int/en/about/Pages/default.aspx",
+    "https://www.spie.org/about-spie/what-is-spie",
+    "https://www.optica.org/about/",
+    "https://www.computer.org/about",
+    "https://id.loc.gov/authorities/classification/TK1-TK9971.json"
+  ]
+}

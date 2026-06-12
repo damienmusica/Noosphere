@@ -1,0 +1,18 @@
+{
+  "batch": "eng-summaries-v1",
+  "kind": "editorial",
+  "description": "Editorial pass 8 (cleanup session #16, round-1 debt repayment 2 of 3): summaries for the 28 reviewed engineering-and-technology nodes that landed in the parallel round (13c) with empty summaries (debt-ledger-round1.md §1). First scaled run of editorial QC v2 (vault decision (34)).",
+  "generation": {
+    "model": "claude-opus-4-8",
+    "contexts": 5,
+    "note": "Five separate generation contexts (ADR 0007 generation/QC separation), split by engineering cluster for classification consistency: batch-a-civil = civil-engineering field + 6 civil subfields (incl. geomatics, the engineering-side home of geodesy); batch-b-electrical = electrical-engineering + telecom/computer-eng/photonics/systems-eng; batch-c-mechanical = mechanical/aerospace fields + automotive/robotics/nuclear; batch-d-chemical = chemical/materials/environmental/biotechnology/industrial fields + nanotechnology; batch-e-resources = manufacturing/metallurgy/mining/petroleum/textile. Generation contract per node: live-fetch duty, [UNFETCHED] honest self-marking, anti-laundering clause, trim-forbidden 4 ((34)① meta-sentence / uncited scope / interpretive lead-in / excessive subordination), referent pins. Raw generated sets preserved as summaries.batch-*.json."
+  },
+  "qc": {
+    "by": "claude-fable-5",
+    "session": "#16",
+    "policy": "editorial QC v2 (decision (34)): mechanical checks 100% (claim-anchor verbatim + cited-URL live survival + laundering) + pre-registered reading sample 50% (first-batch calibration) + self-flag/[UNFETCHED] backstop full. Generation model = Opus (decision (26)).",
+    "reading_sample": "Pre-registered before QC reading by md5(node_id) hex ascending, top ceil(50%)=14 (ab-split precedent, session #9). Sample: biotechnology, electrical-engineering, industrial-engineering, materials-science-and-engineering, computer-engineering, geomatics, geotechnical-engineering, manufacturing-engineering, metallurgy, nanotechnology, photonics, robotics, structural-engineering, transportation-engineering."
+  },
+  "targets": 28,
+  "parent_precondition": "all 28 parent nodes are reviewed (editorial v1); every English translation row is marked reviewed:true."
+}
