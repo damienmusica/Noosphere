@@ -4318,15 +4318,15 @@
     "type": "field",
     "domain": "social_sciences",
     "level": 1,
-    "status": "proposed",
-    "indexable": false,
+    "status": "reviewed",
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q12831143"
     },
     "academic_status": "established",
     "created_at": "2026-06-11",
-    "updated_at": "2026-06-11"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "subfield:econometrics",
@@ -4747,15 +4747,15 @@
     "type": "subfield",
     "domain": "social_sciences",
     "level": 2,
-    "status": "proposed",
-    "indexable": false,
+    "status": "reviewed",
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q4932206"
     },
     "academic_status": "established",
     "created_at": "2026-06-11",
-    "updated_at": "2026-06-11"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "subfield:constitutional-law",
@@ -4912,15 +4912,15 @@
     "type": "subfield",
     "domain": "social_sciences",
     "level": 2,
-    "status": "proposed",
-    "indexable": false,
+    "status": "reviewed",
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q149013"
     },
     "academic_status": "established",
     "created_at": "2026-06-11",
-    "updated_at": "2026-06-11"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "subfield:mass-communication",
@@ -5260,15 +5260,15 @@
     "type": "subfield",
     "domain": "arts_and_design",
     "level": 2,
-    "status": "proposed",
+    "status": "reviewed",
     "academic_status": "established",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q11633"
     },
     "created_at": "2026-06-11",
-    "updated_at": "2026-06-11"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "subfield:graphic-design",
@@ -5482,15 +5482,15 @@
     "type": "subfield",
     "domain": "arts_and_design",
     "level": 2,
-    "status": "proposed",
+    "status": "reviewed",
     "academic_status": "established",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q69883"
     },
     "created_at": "2026-06-11",
-    "updated_at": "2026-06-11"
+    "updated_at": "2026-06-12"
   },
   {
     "id": "field:civil-engineering",
@@ -6188,14 +6188,14 @@
     "type": "subfield",
     "domain": "engineering_and_technology",
     "level": 2,
-    "status": "proposed",
-    "indexable": false,
+    "status": "reviewed",
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q6631525"
     },
     "academic_status": "established",
     "created_at": "2026-06-11",
-    "updated_at": "2026-06-11"
+    "updated_at": "2026-06-12"
   }
 ]
