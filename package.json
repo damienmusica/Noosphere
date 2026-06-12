@@ -14,6 +14,7 @@
     "foundry:resolve-wikidata": "tsx scripts/foundry/resolve-wikidata.ts",
     "foundry:goldenset": "tsx scripts/foundry/goldenset-check.ts",
     "foundry:claim-anchor": "tsx scripts/foundry/claim-anchor-check.ts",
+    "foundry:openalex-prevalidate": "tsx scripts/foundry/openalex-prevalidate.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
