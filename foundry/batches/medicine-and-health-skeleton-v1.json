@@ -1,0 +1,116 @@
+{
+  "id": "batch:medicine-and-health-skeleton-v1",
+  "title": "Medicine and Health Skeleton v1",
+  "description": "Coverage skeleton for the medicine-and-health continent (round 2, single-depth-first, CPO decision (33) 2026-06-12): field/subfield two-level node set under domain:medicine-and-health. Gate schemes = LCC class R + UDC class 61 (captured-sources.md, baseline 2026-06-12); cross-checks = OECD FORD 3 + MeSH H02/H02.403 (PhySH absent for medicine). Orchestrator pre-captured all four series before generation (decision (30) NS precedent). The seed_entities list is the orchestrator's coverage target; the generator applies the section-12 skeleton standard to decide keep/absorb/level and flags boundary cases. Subfield level assignment in seeds is provisional — the generator/QC rules per the dual criterion.",
+  "status": "active",
+  "target_locales": ["en"],
+  "scope": {
+    "include": [
+      "Medicine-and-health field and subfield coverage skeleton (nodes only)",
+      "Gate-anchored fields: own LCC R subclass (RA public health, RB pathology, RC internal medicine, RD surgery, RE ophthalmology, RF otorhinolaryngology, RG ob/gyn, RJ pediatrics, RK dentistry, RL dermatology, RM pharmacology/therapeutics, RS pharmacy, RT nursing) and/or own UDC 61x division",
+      "Clinical sub-specialties under LCC RC / UDC 616.x as subfields (cardiology 616.1, oncology 616-006, gastroenterology 616.3, endocrinology 616.4, nephrology, pulmonology 616.2, hematology, rheumatology, infectious-diseases 616.9, geriatrics)",
+      "Surgical sub-specialties under LCC RD as subfields (orthopedic, neurosurgery, plastic, cardiothoracic, urology)",
+      "Public-health subfields (epidemiology RA648.5-767, biostatistics, environmental-health RA565-600, occupational-medicine RC963-969, health-policy-and-management RA393-418, global-health)",
+      "medical-physics as a NEW native medicine field (LCC R895-920) — transferred from natural sciences per decision (30); reconcile against any prior NS-dropped record",
+      "psychiatry (UDC 616.89) and neurology (UDC 616.8) as fields by institutional independence over LCC RC shelving (shelving-not-hierarchy precedent), flagged ambiguous for QC",
+      "alternative/non-mainstream systems (LCC RV/RX/RZ): alternative-medicine field + homeopathy/chiropractic/naturopathy subfields, with academic_status tags (non_academic / contested / established as appropriate)",
+      "Wikidata QID resolution for identity and external_ids"
+    ],
+    "exclude": [
+      "Edges and relations (skeleton-first: dots before lines; part_of skeleton edges are a separate batch)",
+      "Level-3 concepts, persons, works — and ALL clinician/researcher person nodes (living-person strict, special discipline 1)",
+      "Re-proposing any existing /data node: domain:medicine-and-health (Q11190), subfield:physiology (Q521), subfield:anatomy (Q514), subfield:immunology (Q101929), field:biomedical-engineering (Q327092) — reconcile to existing IDs; these get medicine section-13 membership in a separate edge/resolution task, not new nodes",
+      "Basic/preclinical sciences whose home is life-sciences: anatomy, physiology, biochemistry, microbiology, immunology stay life-sciences-home (LCC QH/QP/QR) — medicine gets section-13 dual membership only, not a duplicate node (biostatistics is the exception: medicine-home per section-12 ruling 2026-06-11)",
+      "Veterinary medicine (MeSH H02.956 — agriculture/veterinary continent, FORD 4.3)",
+      "Disease/condition nodes (LCC RC organ-disease ranges describe the subfield's object, not the discipline — model the discipline, e.g. cardiology, not 'heart disease')",
+      "Living scientists and current affiliations"
+    ]
+  },
+  "seed_entities": [
+    {"label": "Public Health", "expected_node_id": "field:public-health", "expected_type": "field"},
+    {"label": "Pathology", "expected_node_id": "field:pathology", "expected_type": "field"},
+    {"label": "Internal Medicine", "expected_node_id": "field:internal-medicine", "expected_type": "field"},
+    {"label": "Surgery", "expected_node_id": "field:surgery", "expected_type": "field"},
+    {"label": "Ophthalmology", "expected_node_id": "field:ophthalmology", "expected_type": "field"},
+    {"label": "Otolaryngology", "expected_node_id": "field:otolaryngology", "expected_type": "field"},
+    {"label": "Obstetrics and Gynaecology", "expected_node_id": "field:obstetrics-and-gynecology", "expected_type": "field"},
+    {"label": "Pediatrics", "expected_node_id": "field:pediatrics", "expected_type": "field"},
+    {"label": "Dentistry", "expected_node_id": "field:dentistry", "expected_type": "field"},
+    {"label": "Dermatology", "expected_node_id": "field:dermatology", "expected_type": "field"},
+    {"label": "Psychiatry", "expected_node_id": "field:psychiatry", "expected_type": "field"},
+    {"label": "Neurology", "expected_node_id": "field:neurology", "expected_type": "field"},
+    {"label": "Pharmacology", "expected_node_id": "field:pharmacology", "expected_type": "field"},
+    {"label": "Pharmacy", "expected_node_id": "field:pharmacy", "expected_type": "field"},
+    {"label": "Nursing", "expected_node_id": "field:nursing", "expected_type": "field"},
+    {"label": "Radiology", "expected_node_id": "field:radiology", "expected_type": "field"},
+    {"label": "Medical Physics", "expected_node_id": "field:medical-physics", "expected_type": "field"},
+    {"label": "Anesthesiology", "expected_node_id": "field:anesthesiology", "expected_type": "field"},
+    {"label": "Emergency Medicine", "expected_node_id": "field:emergency-medicine", "expected_type": "field"},
+    {"label": "Physical Medicine and Rehabilitation", "expected_node_id": "field:physical-and-rehabilitation-medicine", "expected_type": "field"},
+    {"label": "Nutrition Science", "expected_node_id": "subfield:nutrition-science", "expected_type": "subfield"},
+    {"label": "Alternative Medicine", "expected_node_id": "field:alternative-medicine", "expected_type": "field"},
+    {"label": "Family Medicine", "expected_node_id": "field:family-medicine", "expected_type": "field"},
+    {"label": "Cardiology", "expected_node_id": "subfield:cardiology", "expected_type": "subfield"},
+    {"label": "Oncology", "expected_node_id": "subfield:oncology", "expected_type": "subfield"},
+    {"label": "Gastroenterology", "expected_node_id": "subfield:gastroenterology", "expected_type": "subfield"},
+    {"label": "Endocrinology", "expected_node_id": "subfield:endocrinology", "expected_type": "subfield"},
+    {"label": "Nephrology", "expected_node_id": "subfield:nephrology", "expected_type": "subfield"},
+    {"label": "Pulmonology", "expected_node_id": "subfield:pulmonology", "expected_type": "subfield"},
+    {"label": "Hematology", "expected_node_id": "subfield:hematology", "expected_type": "subfield"},
+    {"label": "Rheumatology", "expected_node_id": "subfield:rheumatology", "expected_type": "subfield"},
+    {"label": "Infectious Diseases", "expected_node_id": "subfield:infectious-diseases", "expected_type": "subfield"},
+    {"label": "Geriatrics", "expected_node_id": "subfield:geriatrics", "expected_type": "subfield"},
+    {"label": "Orthopedic Surgery", "expected_node_id": "subfield:orthopedic-surgery", "expected_type": "subfield"},
+    {"label": "Neurosurgery", "expected_node_id": "subfield:neurosurgery", "expected_type": "subfield"},
+    {"label": "Plastic Surgery", "expected_node_id": "subfield:plastic-surgery", "expected_type": "subfield"},
+    {"label": "Cardiothoracic Surgery", "expected_node_id": "subfield:cardiothoracic-surgery", "expected_type": "subfield"},
+    {"label": "Urology", "expected_node_id": "subfield:urology", "expected_type": "subfield"},
+    {"label": "Epidemiology", "expected_node_id": "subfield:epidemiology", "expected_type": "subfield"},
+    {"label": "Biostatistics", "expected_node_id": "subfield:biostatistics", "expected_type": "subfield"},
+    {"label": "Environmental Health", "expected_node_id": "subfield:environmental-health", "expected_type": "subfield"},
+    {"label": "Occupational Medicine", "expected_node_id": "subfield:occupational-medicine", "expected_type": "subfield"},
+    {"label": "Health Policy and Management", "expected_node_id": "subfield:health-policy-and-management", "expected_type": "subfield"},
+    {"label": "Global Health", "expected_node_id": "subfield:global-health", "expected_type": "subfield"},
+    {"label": "Forensic Medicine", "expected_node_id": "subfield:forensic-medicine", "expected_type": "subfield"},
+    {"label": "Toxicology", "expected_node_id": "subfield:toxicology", "expected_type": "subfield"},
+    {"label": "Nuclear Medicine", "expected_node_id": "subfield:nuclear-medicine", "expected_type": "subfield"},
+    {"label": "Homeopathy", "expected_node_id": "subfield:homeopathy", "expected_type": "subfield"},
+    {"label": "Chiropractic", "expected_node_id": "subfield:chiropractic", "expected_type": "subfield"},
+    {"label": "Naturopathy", "expected_node_id": "subfield:naturopathy", "expected_type": "subfield"}
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "wikidata",
+      "purpose": ["identity", "metadata", "source_resolution", "external_link"],
+      "requires_secret": false,
+      "notes": "CC0. Resolver verifies the unverified training-knowledge QID hints in the proposal and fills missing QIDs. Medical homonym traps (calculus, etc.) — multi-signal, never label-match."
+    },
+    {
+      "provider": "wikipedia",
+      "purpose": ["external_link", "source_resolution"],
+      "requires_secret": false,
+      "notes": "External-link / source-resolution pointer only. Never store or cache article bodies."
+    }
+  ],
+  "forbidden_sources": [
+    {"provider": "namuwiki", "reason": "External links only; never store article text or treat as primary evidence (project hard constraint)."},
+    {"provider": "cloud_llm", "reason": "No cloud LLM API calls, SDKs, or keys anywhere in repo tooling/build/CI (project hard constraint)."},
+    {"provider": "scraping", "reason": "No scraping or crawling of third-party sites; resolvers use declared public APIs only."}
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": ["low", "medium", "historical"],
+    "requires_strict_review_for": ["living_person", "current_affiliation", "controversial_claim"]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/medicine-and-health-skeleton-v1"
+  },
+  "notes": [
+    "Gate = UDC class 61 + LCC class R (captured 2026-06-12, captured-sources.md). Cross-checks = OECD FORD 3 (3.1-3.5) + MeSH H02/H02.403. PhySH is absent for medicine (NS-only) — MeSH replaces it as the discipline scheme.",
+    "Section-12 skeleton modeling standard (docs/data-foundry.md section 12) is a mandatory generator input. Dual criterion: (a) major division in a gate scheme (UDC/LCC) AND (b) department/society/journal/degree-track community presence. Absorb refinements of a kept node serving the same community (record as v2 re-split candidate). Flat two-level (field/subfield) for node levels; edge depth is free.",
+    "Boundary pre-assignments (special discipline 3): basic medicine (physiology, anatomy, biochemistry clinical side) is life-sciences home with a medicine section-13 dual candidacy; microbiology/immunology stay life-sciences home (QR), medicine section-13 interface only. biostatistics is medicine-home (section-12 biostatistics precedent). These four existing nodes (physiology Q521, anatomy Q514, immunology Q101929, biomedical-engineering Q327092) are reconciled-against excludes — section-13 edges in a separate task, never new nodes.",
+    "Living-person strict (special discipline 1): discipline nodes only; no person nodes this round.",
+    "medical-physics: NEW native medicine field (LCC R895-920), transferred from natural sciences per decision (30). PhySH absent, MeSH present — cross-check accordingly. Distinct referent from radiology (applied physics discipline vs clinical imaging specialty).",
+    "Medical QID homonym traps: dental 'calculus' (works 1.05M), Q141495/Q11216-class OpenAlex duplicate-link anomalies (decisions (19)(38)) — resolver and QC use multi-signal triangulation, never label-string matching. Hint-laundering machine sweep is mandatory at QC (sessions 8-16 pattern)."
+  ]
+}

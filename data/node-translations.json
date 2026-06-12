@@ -1678,14 +1678,14 @@
     "locale": "en",
     "label": "Physiology",
     "aliases": [],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "subfield:anatomy",
     "locale": "en",
     "label": "Anatomy",
     "aliases": [],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "subfield:immunology",
@@ -2323,7 +2323,7 @@
     "locale": "en",
     "label": "Biomedical Engineering",
     "aliases": [],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "subfield:structural-engineering",
@@ -2489,6 +2489,356 @@
     "locale": "en",
     "label": "Food Engineering",
     "summary": "Food engineering is a scientific, academic, and professional field that interprets and applies principles of engineering, science, and mathematics to food manufacturing and operations. It spans the processing, production, handling, storage, conservation, control, packaging, and distribution of food products, drawing on electrical, mechanical, civil, chemical, industrial, and agricultural engineering. Wikidata models it as a subclass of engineering and of applied science, and its core methods derive from chemical and process engineering. The Library of Congress Classification places it in Class T under chemical technology, in the range TP368-TP456, captioned \"Food processing and manufacture.\" While food engineering overlaps with food science, which sits closer to agriculture and concerns the composition and biology of food, food engineering's disciplinary home is engineering: it is the branch that applies process and unit-operation principles to transform raw materials into manufactured food at industrial scale.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:public-health",
+    "locale": "en",
+    "label": "Public Health",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:pathology",
+    "locale": "en",
+    "label": "Pathology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:internal-medicine",
+    "locale": "en",
+    "label": "Internal Medicine",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:surgery",
+    "locale": "en",
+    "label": "Surgery",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:ophthalmology",
+    "locale": "en",
+    "label": "Ophthalmology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:otolaryngology",
+    "locale": "en",
+    "label": "Otolaryngology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:obstetrics-and-gynecology",
+    "locale": "en",
+    "label": "Obstetrics and Gynaecology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:pediatrics",
+    "locale": "en",
+    "label": "Pediatrics",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:dentistry",
+    "locale": "en",
+    "label": "Dentistry",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:dermatology",
+    "locale": "en",
+    "label": "Dermatology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:psychiatry",
+    "locale": "en",
+    "label": "Psychiatry",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:neurology",
+    "locale": "en",
+    "label": "Neurology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:pharmacology",
+    "locale": "en",
+    "label": "Pharmacology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:pharmacy",
+    "locale": "en",
+    "label": "Pharmacy",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:nursing",
+    "locale": "en",
+    "label": "Nursing",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:radiology",
+    "locale": "en",
+    "label": "Radiology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:medical-physics",
+    "locale": "en",
+    "label": "Medical Physics",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:anesthesiology",
+    "locale": "en",
+    "label": "Anesthesiology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:emergency-medicine",
+    "locale": "en",
+    "label": "Emergency Medicine",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "field:physical-and-rehabilitation-medicine",
+    "locale": "en",
+    "label": "Physical Medicine and Rehabilitation",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:nutrition-science",
+    "locale": "en",
+    "label": "Nutrition Science",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "field:alternative-medicine",
+    "locale": "en",
+    "label": "Alternative Medicine",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:cardiology",
+    "locale": "en",
+    "label": "Cardiology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:oncology",
+    "locale": "en",
+    "label": "Oncology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:gastroenterology",
+    "locale": "en",
+    "label": "Gastroenterology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:endocrinology",
+    "locale": "en",
+    "label": "Endocrinology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:nephrology",
+    "locale": "en",
+    "label": "Nephrology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:pulmonology",
+    "locale": "en",
+    "label": "Pulmonology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:hematology",
+    "locale": "en",
+    "label": "Hematology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:rheumatology",
+    "locale": "en",
+    "label": "Rheumatology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:infectious-diseases",
+    "locale": "en",
+    "label": "Infectious Diseases",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:geriatrics",
+    "locale": "en",
+    "label": "Geriatrics",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:orthopedic-surgery",
+    "locale": "en",
+    "label": "Orthopedic Surgery",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:neurosurgery",
+    "locale": "en",
+    "label": "Neurosurgery",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:plastic-surgery",
+    "locale": "en",
+    "label": "Plastic Surgery",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:cardiothoracic-surgery",
+    "locale": "en",
+    "label": "Cardiothoracic Surgery",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:urology",
+    "locale": "en",
+    "label": "Urology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:epidemiology",
+    "locale": "en",
+    "label": "Epidemiology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:biostatistics",
+    "locale": "en",
+    "label": "Biostatistics",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:environmental-health",
+    "locale": "en",
+    "label": "Environmental Health",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:occupational-medicine",
+    "locale": "en",
+    "label": "Occupational Medicine",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:health-policy-and-management",
+    "locale": "en",
+    "label": "Health Policy and Management",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:global-health",
+    "locale": "en",
+    "label": "Global Health",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:forensic-medicine",
+    "locale": "en",
+    "label": "Forensic Medicine",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:toxicology",
+    "locale": "en",
+    "label": "Toxicology",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:nuclear-medicine",
+    "locale": "en",
+    "label": "Nuclear Medicine",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:homeopathy",
+    "locale": "en",
+    "label": "Homeopathy",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:chiropractic",
+    "locale": "en",
+    "label": "Chiropractic",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "subfield:naturopathy",
+    "locale": "en",
+    "label": "Naturopathy",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
+    "node_id": "field:family-medicine",
+    "locale": "en",
+    "label": "Family Medicine",
     "aliases": [],
     "reviewed": true
   }

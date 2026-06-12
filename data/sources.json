@@ -152,5 +152,16 @@
     "share_alike_required": false,
     "url": "https://www.abs.gov.au/statistics/classifications/australian-and-new-zealand-standard-research-classification-anzsrc/latest-release",
     "last_checked_at": "2026-06-11"
+  },
+  {
+    "id": "source:mesh",
+    "name": "Medical Subject Headings (MeSH), U.S. National Library of Medicine (RDF/SPARQL via id.nlm.nih.gov)",
+    "source_type": "reference",
+    "license": "NLM MeSH is in the public domain in the United States (NLM Terms and Conditions); no restrictions on reuse",
+    "commercial_use": true,
+    "attribution_required": false,
+    "share_alike_required": false,
+    "url": "https://id.nlm.nih.gov/mesh/",
+    "last_checked_at": "2026-06-12"
   }
 ]

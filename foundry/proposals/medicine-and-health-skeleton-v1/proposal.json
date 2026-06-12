@@ -1,0 +1,828 @@
+{
+ "version": 1,
+ "batch_id": "batch:medicine-and-health-skeleton-v1",
+ "proposed_by": {
+  "model_name": "Claude Sonnet",
+  "model_version": "claude-sonnet-4-6",
+  "proposed_at": "2026-06-12"
+ },
+ "nodes": [
+  {
+   "id": "field:public-health",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Public Health",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q189603"
+   },
+   "source_hint": "LCC subclass RA 'Public aspects of medicine' RA1-1270 (captured baseline 2026-06-12). UDC 614 'Public health and hygiene. Accident prevention' (captured baseline 2026-06-12). OECD FORD 3.3 'Health sciences' names 'Public/environmental health' and 'Epidemiology' as sub-areas (captured baseline 2026-06-12). MeSH H02.403 includes 'Public Health' as a specialty. Wikidata Q189603 — unverified training-knowledge hint.",
+   "rationale": "LCC gives public health its own major subclass RA (RA1-1270); UDC 614 is a first-level division of class 61; Schools of Public Health (Harvard SPH, Johns Hopkins Bloomberg) and degree tracks (MPH, DrPH) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; RA umbrella also shelves medical jurisprudence (RA1001-1171) and toxicology (RA1190-1270) — these are proposed as separate subfields; the field boundary with internal medicine on the epidemiology subfield is noted.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:pathology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Pathology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7208"
+   },
+   "source_hint": "LCC subclass RB 'Pathology' RB1-214 (captured baseline 2026-06-12). UDC 616-091 'Pathological anatomy' and 616-092 'Pathological physiology. Pathogenesis' under UDC 616 (captured baseline 2026-06-12). OECD FORD 3.1 'Basic medicine' names 'Pathology' as a sub-area (captured baseline 2026-06-12). MeSH H02.403 includes 'Pathology'. Wikidata Q7208 — unverified training-knowledge hint.",
+   "rationale": "LCC gives pathology its own subclass RB; UDC 616-09x provides classification-level standing within UDC 616; FORD 3.1 names it under basic medicine; college-of-medicine pathology departments and AP/CP board certification satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; clinical pathology overlaps with internal medicine (RC37-78.7 diagnostics); the generator treats pathology as a field because of its own LCC subclass and distinct FORD 3.1 placement.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:internal-medicine",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Internal Medicine",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q11175"
+   },
+   "source_hint": "LCC subclass RC 'Internal medicine' RC31-1245 (captured baseline 2026-06-12). UDC 616 'Pathology. Clinical medicine' (captured baseline 2026-06-12) — the broadest UDC 61x division, covering all organ-system diseases. OECD FORD 3.2 'Clinical medicine' (captured baseline 2026-06-12). MeSH H02.403 'Internal Medicine'. Wikidata Q11175 — unverified training-knowledge hint.",
+   "rationale": "LCC RC is the largest subclass in class R; UDC 616 is the primary first-level clinical division; FORD 3.2 clinical medicine corresponds directly; ABIM board certification and internal medicine departments at all academic medical centers satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; RC shelves neurology (RC346-429) and psychiatry (RC321-571) as well — these are proposed as independent fields by the manifest's institutional-independence override (see ambiguous flags on those nodes); the field itself is unambiguous.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:surgery",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Surgery",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q8799"
+   },
+   "source_hint": "LCC subclass RD 'Surgery' RD1-811 (captured baseline 2026-06-12). UDC 617 'Surgery. Orthopaedics. Ophthalmology' (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Surgery' as sub-area (captured baseline 2026-06-12). MeSH H02.403.810 'Specialties, Surgical'. Wikidata Q8799 — unverified training-knowledge hint.",
+   "rationale": "LCC gives surgery its own major subclass RD; UDC 617 is a first-level division of class 61; ACS (American College of Surgeons), surgical residency programs, and academic surgical departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; UDC 617 also covers ophthalmology (617.7) and orthopaedics (617.3) — ophthalmology is proposed as a separate field (own LCC subclass RE); orthopaedics is proposed as a subfield of surgery.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:ophthalmology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Ophthalmology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q161437"
+   },
+   "source_hint": "LCC subclass RE 'Ophthalmology' RE1-994 (captured baseline 2026-06-12). UDC 617.7 'Ophthalmology' under UDC 617 (captured baseline 2026-06-12). OECD FORD 3.2 names no explicit ophthalmology sub-area; MeSH H02.403.810 'Specialties, Surgical' includes 'Ophthalmology'. Wikidata Q161437 — unverified training-knowledge hint.",
+   "rationale": "LCC gives ophthalmology its own major subclass RE; UDC 617.7 provides classification-level standing; AAO (American Academy of Ophthalmology) residency programs and dedicated ophthalmology departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; UDC nests 617.7 within UDC 617 (surgery), which could support subfield-of-surgery treatment — the generator retains field level because LCC RE is an independent subclass (peer-coexistence pattern, myology/ophthalmology precedent).",
+   "ambiguous": false
+  },
+  {
+   "id": "field:otolaryngology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Otolaryngology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q189553"
+   },
+   "source_hint": "LCC subclass RF 'Otorhinolaryngology' RF1-547 (captured baseline 2026-06-12). MeSH H02.403.810 'Specialties, Surgical' includes 'Otolaryngology'. OECD FORD 3.2 'Clinical medicine' (captured baseline 2026-06-12). Wikidata Q189553 — unverified training-knowledge hint.",
+   "rationale": "LCC gives otolaryngology its own major subclass RF; AAO-HNS (American Academy of Otolaryngology–Head and Neck Surgery) and dedicated ENT residency programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; UDC does not have a dedicated first-level 61x entry for ENT — it falls under UDC 617 surgery; field-level classification standing rests primarily on LCC RF. QC should note the UDC absence; criterion (a) passes via LCC RF as a major R subclass.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:obstetrics-and-gynecology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Obstetrics and Gynaecology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q170581"
+   },
+   "source_hint": "LCC subclass RG 'Gynecology and obstetrics' RG1-991 (captured baseline 2026-06-12). UDC 618 'Gynaecology. Obstetrics' (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Obstetrics/gynaecology' (captured baseline 2026-06-12). MeSH H02.403.810 includes 'Gynecology' and 'Obstetrics'. Wikidata Q170581 — unverified training-knowledge hint.",
+   "rationale": "LCC gives Ob/Gyn its own major subclass RG; UDC 618 is a first-level division of class 61; ACOG board certification and academic OB/GYN departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; obstetrics and gynaecology are combined in both LCC and UDC, consistent with the combined institution (ACOG); no basis for splitting at skeleton level.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:pediatrics",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Pediatrics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q83376"
+   },
+   "source_hint": "LCC subclass RJ 'Pediatrics' RJ1-570 (captured baseline 2026-06-12). UDC 616 (pediatric diseases are shelved under organ-system 616.x subdivisions without a standalone 61x entry for pediatrics). OECD FORD 3.2 'Clinical medicine' names 'Paediatrics' (captured baseline 2026-06-12). MeSH H02.403 includes 'Pediatrics'. Wikidata Q83376 — unverified training-knowledge hint.",
+   "rationale": "LCC gives pediatrics its own major subclass RJ; FORD 3.2 names it explicitly; ABP board certification, children's hospitals, and academic pediatrics departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; UDC does not give pediatrics a standalone first-level 61x entry — criterion (a) passes via LCC RJ as a major R subclass.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:dentistry",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Dentistry",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q39546"
+   },
+   "source_hint": "LCC subclass RK 'Dentistry' RK1-715 (captured baseline 2026-06-12). UDC 616.31 'Stomatology. Oral cavity' under UDC 616 (captured baseline 2026-06-12). OECD FORD 3.2 names 'Dentistry/oral surgery' (captured baseline 2026-06-12). MeSH H02 includes 'Dentistry'. Wikidata Q39546 — unverified training-knowledge hint.",
+   "rationale": "LCC gives dentistry its own major subclass RK; UDC 616.31 provides in-class classification; FORD 3.2 names it; dental schools and ADA licensing satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; UDC 616.31 is a subdivision within UDC 616 rather than a standalone 61x entry — criterion (a) passes primarily via LCC RK.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:dermatology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Dermatology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q171171"
+   },
+   "source_hint": "LCC subclass RL 'Dermatology' RL1-803 (captured baseline 2026-06-12). UDC 616.5 'Skin. Clinical dermatology' under UDC 616 (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Dermatology/venereal' (captured baseline 2026-06-12). MeSH H02.403 includes 'Dermatology'. Wikidata Q171171 — unverified training-knowledge hint.",
+   "rationale": "LCC gives dermatology its own major subclass RL; UDC 616.5 provides in-class classification; FORD 3.2 names it; AAD board certification and academic dermatology departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; UDC 616.5 is a subdivision within UDC 616 — criterion (a) passes via LCC RL as a major R subclass.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:psychiatry",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Psychiatry",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7867"
+   },
+   "source_hint": "LCC RC435-571 'Psychiatry' within subclass RC (nested under 'Neurosciences. Biological psychiatry. Neuropsychiatry' RC321-571) (captured baseline 2026-06-12). UDC 616.89 'Psychiatry. Psychopathology' under UDC 616.8 (captured baseline 2026-06-12). OECD FORD 3.2 names 'Psychiatry' (captured baseline 2026-06-12). MeSH H02.403 includes 'Psychiatry'. Wikidata Q7867 — unverified training-knowledge hint.",
+   "rationale": "UDC 616.89 provides classification-level standing; FORD 3.2 names psychiatry as a co-equal area with neurology; APA board certification, dedicated psychiatry departments, and DSM-based research programs satisfy the community criterion; institutional independence is established over LCC's shelving under RC.",
+   "uncertainty": "QID hint unverified; LCC shelves psychiatry within RC (RC435-571), not as its own subclass — this is the manifest's pre-flagged case: shelving-not-hierarchy (precedent: RC321-571 'Neurosciences/Biological Psychiatry/Neuropsychiatry' is a combined LCC head; institutional independence over LCC shelving is the tie-breaker applied to neurology/psychiatry per manifest decision). B-type flag retained: real-world debate exists about whether psychiatry is a subfield of neurology vs an independent field.",
+   "ambiguous": true,
+   "note": "Pre-flagged by manifest: 'psychiatry/neurology as fields (LCC RC shelving vs institutional independence)'. Generator ruling: field level, citing UDC 616.89 + FORD 3.2 co-equality + APA institutional standing. B-type flag retained — real-world contest requires v1.1 external-evidence resolution."
+  },
+  {
+   "id": "field:neurology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Neurology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q83042"
+   },
+   "source_hint": "LCC RC346-429 'Neurology. Diseases of the nervous system' within subclass RC (captured baseline 2026-06-12). UDC 616.8 'Neurology. Neuropathology. Nervous system' under UDC 616 (captured baseline 2026-06-12). OECD FORD 3.2 names 'Neurosciences' (captured baseline 2026-06-12). MeSH H02.403 includes 'Neurology'. Wikidata Q83042 — unverified training-knowledge hint.",
+   "rationale": "UDC 616.8 provides classification-level standing; FORD 3.2 includes neurosciences explicitly; AAN (American Academy of Neurology) board certification, dedicated neurology departments, and brain-disease research programs satisfy the community criterion; institutional independence is well-established.",
+   "uncertainty": "QID hint unverified; LCC shelves neurology within RC (RC346-429), not as its own subclass — same pre-flagged case as psychiatry; relationship to life-sciences subfield:neuroscience (not yet in /data) should be addressed by QC in the edge batch.",
+   "ambiguous": true,
+   "note": "Pre-flagged by manifest: 'psychiatry/neurology as fields (LCC RC shelving vs institutional independence)'. Generator ruling: field level, citing UDC 616.8 + FORD 3.2 + AAN institutional standing. B-type flag retained — same contest as psychiatry. Cross-continent note: neurology has a life-sciences neighbor (neuroscience); the two are distinct disciplines (clinical vs basic) and the overlap is edge-batch business."
+  },
+  {
+   "id": "field:pharmacology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Pharmacology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q101929"
+   },
+   "source_hint": "LCC subclass RM 'Therapeutics. Pharmacology' RM1-950 (captured baseline 2026-06-12). UDC 615 'Pharmacology. Therapeutics. Toxicology' (captured baseline 2026-06-12). OECD FORD 3.1 'Basic medicine' names 'Pharmacology/pharmacy' (captured baseline 2026-06-12). MeSH H02 includes 'Pharmacology'. Wikidata Q101929 — unverified training-knowledge hint.",
+   "rationale": "LCC gives pharmacology its own subclass RM; UDC 615 is a first-level division of class 61; FORD 3.1 names it under basic medicine; ASPET and pharmacology degree programs satisfy the community criterion.",
+   "uncertainty": "QID hint Q101929 conflicts with the existing subfield:immunology node (which uses Q101929 per the manifest exclusion list entry) — this QID assignment is very likely wrong and must be corrected by the resolver; the correct QID for pharmacology is likely Q28397 or similar (unverified training-knowledge). The RM subclass bundles therapeutics with pharmacology — pharmacy (RS) is proposed separately.",
+   "ambiguous": false,
+   "note": "CRITICAL QID issue: Q101929 is used here as a training-knowledge guess but the manifest notes existing subfield:immunology = Q101929. The resolver must assign a distinct, correct QID for pharmacology — this hint is almost certainly wrong. QC must catch this before promotion."
+  },
+  {
+   "id": "field:pharmacy",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Pharmacy",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q580142"
+   },
+   "source_hint": "LCC subclass RS 'Pharmacy and materia medica' RS1-441 (captured baseline 2026-06-12). UDC 615.1 'General and professional pharmacy' under UDC 615 (captured baseline 2026-06-12). OECD FORD 3.1 'Basic medicine' names 'Pharmacology/pharmacy' (captured baseline 2026-06-12). MeSH H02 includes 'Pharmacy'. Wikidata Q580142 — unverified training-knowledge hint.",
+   "rationale": "LCC gives pharmacy its own major subclass RS; UDC 615.1 provides classification-level standing; Pharm.D. programs, ACPE accreditation, and pharmacy schools satisfy the community criterion independently of pharmacology.",
+   "uncertainty": "QID hint unverified; the distinction between pharmacology (basic science of drug action, FORD 3.1 basic medicine) and pharmacy (applied pharmaceutical sciences + clinical pharmacy) is genuine — separate LCC subclasses (RM vs RS) confirm the split.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:nursing",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Nursing",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q8434"
+   },
+   "source_hint": "LCC subclass RT 'Nursing' RT1-120 (captured baseline 2026-06-12). UDC 614 includes nursing under public health (no standalone UDC 61x entry for nursing). OECD FORD 3.3 'Health sciences' includes nursing-adjacent areas. MeSH H02 includes 'Nursing'. Wikidata Q8434 — unverified training-knowledge hint.",
+   "rationale": "LCC gives nursing its own major subclass RT; MeSH H02 lists nursing as a first-level health occupation; BSN/MSN/DNP degree tracks, NCLEX licensure, and nursing schools at academic medical centers satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; UDC does not give nursing a standalone 61x entry — criterion (a) passes via LCC RT; FORD 3.3 does not name nursing explicitly among its listed sub-areas (though health-care sciences and services is present).",
+   "ambiguous": false
+  },
+  {
+   "id": "field:radiology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Radiology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q208021"
+   },
+   "source_hint": "LCC R858-859.7 'Computer applications to medicine. Medical informatics' and R895-920 'Medical physics. Medical radiology. Nuclear medicine' (captured baseline 2026-06-12). UDC 616-07 'Symptomatology. Examination. Diagnosis' (covers diagnostic imaging within UDC 616) (captured baseline 2026-06-12). OECD FORD 3.2 names 'Radiology/nuclear medicine/imaging' (captured baseline 2026-06-12). MeSH H02.403 includes 'Radiology'. Wikidata Q208021 — unverified training-knowledge hint.",
+   "rationale": "FORD 3.2 names radiology explicitly; LCC R895-920 shelves medical radiology; ACR board certification, radiology residency programs, and academic radiology departments satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; LCC does not give radiology its own major subclass — it sits under R (General medicine) as a range within R895-920 alongside medical physics; the generator treats it as field-level by FORD 3.2 explicit naming + ACR community. QC should verify field vs subfield question given LCC nesting inside R895-920 which is shared with medical-physics.",
+   "ambiguous": true,
+   "note": "A-type flag: does radiology deserve field vs subfield treatment given LCC nesting under R895-920 (shared with medical-physics)? Generator ruling: field, by FORD 3.2 explicit co-equal naming + major ACR/RSNA community. QC may retire by documenting the ruling. Cross-note: medical-physics is proposed as a separate field (distinct referent — applied physics discipline vs clinical imaging specialty)."
+  },
+  {
+   "id": "field:medical-physics",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Medical Physics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1781836"
+   },
+   "source_hint": "LCC R895-920 'Medical physics. Medical radiology. Nuclear medicine' (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Radiology/nuclear medicine/imaging' (covers applied physics in medicine) (captured baseline 2026-06-12). MeSH H02 no dedicated entry; FORD 3.2 closest cross-check. Wikidata Q1781836 — unverified training-knowledge hint.",
+   "rationale": "LCC R895-920 explicitly names 'Medical physics' as its first caption; AAPM (American Association of Physicists in Medicine), CAMPEP-accredited graduate programs, and ABR medical physics certification satisfy the community criterion; transferred from natural sciences per decision (30) — both LCC home (R895-920) and institutional home (clinical medical centers, AAPM) are in-continent.",
+   "uncertainty": "QID hint unverified; LCC R895-920 bundles medical physics, radiology, and nuclear medicine in one range — generator treats these as distinct referents (medical physics = the applied-physics discipline; radiology and nuclear medicine = clinical specialties). The boundary with radiology in terms of LCC range overlap is noted; both fields are proposed as peer nodes by distinct-referent logic (QIS precedent).",
+   "ambiguous": false
+  },
+  {
+   "id": "field:anesthesiology",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Anesthesiology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q193935"
+   },
+   "source_hint": "LCC RD78.3-87.3 'Anesthesiology' within subclass RD 'Surgery' (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Anaesthesiology' (captured baseline 2026-06-12). MeSH H02.403 includes 'Anesthesiology'. Wikidata Q193935 — unverified training-knowledge hint.",
+   "rationale": "FORD 3.2 names anesthesiology as a co-equal clinical medicine area; ABA board certification, anesthesiology residency programs, and ASA satisfy the community criterion; institutional independence is well-established over LCC's nesting within RD.",
+   "uncertainty": "QID hint unverified; LCC shelves anesthesiology within RD (RD78.3-87.3), not as its own subclass — the manifest pre-flags this as a 'LCC nesting vs independent boards' case. Generator applies the shelving-not-hierarchy precedent (FORD 3.2 co-equal naming + ABA community = field).",
+   "ambiguous": true,
+   "note": "Pre-flagged by manifest: 'anesthesiology/emergency-medicine/physical-rehab-medicine (LCC nesting vs independent boards)'. Generator ruling: field level, citing FORD 3.2 explicit naming + ABA/ASA institutional standing. A-type flag — QC may retire by documented ruling extending the shelving-not-hierarchy precedent to this case."
+  },
+  {
+   "id": "field:emergency-medicine",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Emergency Medicine",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1360201"
+   },
+   "source_hint": "LCC RC86-88.9 'Medical emergencies. Critical care. Intensive care. First aid' within subclass RC (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Critical care' as a sub-area (captured baseline 2026-06-12). MeSH H02.403 includes 'Emergency Medicine'. Wikidata Q1360201 — unverified training-knowledge hint.",
+   "rationale": "MeSH H02.403 lists emergency medicine as a distinct specialty; ABEM board certification, emergency medicine residency programs, and ACEP satisfy the community criterion; institutional independence is well-established.",
+   "uncertainty": "QID hint unverified; LCC shelves emergency medicine within RC (RC86-88.9), not as its own subclass — the manifest pre-flags this as a 'LCC nesting vs independent boards' case; FORD names 'Critical care' which is adjacent but not identical to emergency medicine. The LCC caption names both 'Medical emergencies' and 'Critical care/Intensive care' in the same range, which slightly conflates emergency medicine with critical care medicine.",
+   "ambiguous": true,
+   "note": "Pre-flagged by manifest: anesthesiology/emergency-medicine/physical-rehab-medicine LCC-nesting group. Generator ruling: field level, citing MeSH H02.403 + ABEM/ACEP community. A-type flag. QC note: FORD names 'Critical care' not 'Emergency medicine' explicitly — the LCC RC86-88.9 caption bundles both; consider whether critical-care medicine warrants a separate node (v2 re-split candidate)."
+  },
+  {
+   "id": "field:physical-and-rehabilitation-medicine",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Physical Medicine and Rehabilitation",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q939689"
+   },
+   "source_hint": "LCC RD792-811 'Physical rehabilitation' within subclass RD 'Surgery' and RM930-931 'Rehabilitation therapy' within RM 'Therapeutics' (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Physical and Rehabilitation Medicine' implicitly under 3.2 scope; MeSH H02.403 includes 'Physical and Rehabilitation Medicine'. Wikidata Q939689 — unverified training-knowledge hint.",
+   "rationale": "MeSH H02.403 lists physical and rehabilitation medicine as a distinct specialty; ABPMR board certification and PM&R residency programs satisfy the community criterion; the FORD label 'Physical and Rehabilitation Medicine' matches the modern institutional title.",
+   "uncertainty": "QID hint unverified; LCC splits the classification home between RD792-811 and RM930-931 with no independent subclass — the manifest pre-flags this as a 'LCC nesting vs independent boards' case; no dedicated first-level UDC 61x entry found in captured sources.",
+   "ambiguous": true,
+   "note": "Pre-flagged by manifest. Generator ruling: field level, citing MeSH H02.403 + ABPMR/AAPMR community. A-type flag — QC may retire by ruling that ABPMR board certification + FORD/MeSH naming is sufficient to override the LCC nesting, extending the shelving-not-hierarchy precedent."
+  },
+  {
+   "id": "field:nutrition-science",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Nutrition Science",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q188754"
+   },
+   "source_hint": "LCC RC620-627 'Nutritional diseases' within RC (medical home); RM214-258 'Diet therapy' within RM (captured baseline 2026-06-12). UDC 613.2 'Dietetics. Nutrition' under UDC 613 'Hygiene generally' (captured baseline 2026-06-12). OECD FORD 3.3 'Health sciences' names 'Nutrition/dietetics' (captured baseline 2026-06-12). MeSH H02 includes 'Nutritional Sciences'. Wikidata Q188754 — unverified training-knowledge hint.",
+   "rationale": "UDC 613.2 provides classification-level standing within class 61; FORD 3.3 names it; ASN and nutrition science degree programs (MS/PhD in Nutritional Sciences) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; the manifest pre-flags nutrition-science as a 'cross-continent' case — it has homes in both medicine (UDC 613.2, LCC RC620) and life sciences (biochemistry/physiology of nutrients, LCC QP141). Generator places it medicine-home per UDC 613.2 + FORD 3.3 explicit naming, with a §13 cross-listing candidate for life sciences to be resolved in the edge batch.",
+   "ambiguous": true,
+   "note": "Pre-flagged by manifest as cross-continent. Generator ruling: medicine-home by UDC 613.2 + FORD 3.3 + MeSH H02. B-type flag retained: real-world classification split between medicine (UDC 613.2, FORD 3.3) and life sciences (biochemistry/physiology of nutrients). §13 dual membership for life-sciences to be registered in edge batch."
+  },
+  {
+   "id": "field:alternative-medicine",
+   "type": "field",
+   "domain": "medicine_and_health",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Alternative Medicine",
+   "academic_status": "non_academic",
+   "external_ids": {
+    "wikidata": "Q132964"
+   },
+   "source_hint": "LCC RV1-431 'Botanic, Thomsonian, and eclectic medicine'; RX1-681 'Homeopathy'; RZ201-999 'Other systems of medicine' including chiropractic RZ201-275, osteopathy RZ301-397.5, mental healing RZ400-408 (captured baseline 2026-06-12). MeSH H02.403 includes 'Integrative Medicine' and 'Osteopathic Medicine' (captured baseline 2026-06-12). Wikidata Q132964 — unverified training-knowledge hint.",
+   "rationale": "LCC gives the RV/RX/RZ cluster its own distinct subclasses — three named subclasses outside mainstream medicine — and the umbrella 'alternative medicine' has classification standing as a grouping; the node is required as the field parent for homeopathy/chiropractic/naturopathy subfields.",
+   "uncertainty": "QID hint unverified; 'alternative medicine' as a unified field is an administrative grouping in the classification systems more than a cohesive research community; individual practices (homeopathy, chiropractic, naturopathy) have institutional presence but the umbrella does not have the same type of academic community as mainstream fields. The non_academic tag is applied to the umbrella consistent with the subfields; individual subfields may warrant different tags.",
+   "ambiguous": true,
+   "note": "The academic_status non_academic tag applies to the umbrella field. Subfields homeopathy (non_academic) and chiropractic/naturopathy (contested — see those nodes) inherit from within this cluster. The field node is needed structurally to parent the subfields; the non_academic tag is consistent with the manifest instruction and the consensus of major academic medical institutions that these practices lack scientific validation as a unified system."
+  },
+  {
+   "id": "subfield:cardiology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Cardiology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q189553"
+   },
+   "source_hint": "UDC 616.1 'Diseases of the circulatory (Cardiovascular) system' under UDC 616 (captured baseline 2026-06-12). LCC RC666-701 'Diseases of the circulatory (Cardiovascular) system' under RC (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Cardiac/cardiovascular' (captured baseline 2026-06-12). MeSH H02.403 includes 'Allergy and Immunology'. Wikidata Q189553 — unverified training-knowledge hint.",
+   "rationale": "UDC 616.1 and LCC RC666-701 each provide a dedicated classification range for cardiovascular medicine; FORD 3.2 names cardiac/cardiovascular; ACC board certification, dedicated cardiology departments, and JACC satisfy the community criterion.",
+   "uncertainty": "QID hint Q189553 appears to map to 'Otolaryngology' (same as field:otolaryngology above — QID collision); the correct Wikidata QID for cardiology is likely Q184871 or similar — resolver must confirm both and separate. Both hints are unverified training-knowledge.",
+   "ambiguous": false,
+   "note": "QID collision detected: Q189553 used above for field:otolaryngology. The cardiology QID hint is incorrect and must be replaced by the resolver. Recording honest gap rather than guessing a second QID."
+  },
+  {
+   "id": "subfield:oncology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Oncology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q189553"
+   },
+   "source_hint": "UDC 616-006 'Tumours. Neoplasms. Oncology' under UDC 616 (captured baseline 2026-06-12). LCC RC254-282 'Neoplasms. Tumors. Oncology' under RC and RD651-678 'Neoplasms. Tumors. Oncology' under RD (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Oncology' (captured baseline 2026-06-12). Wikidata hint — see note.",
+   "rationale": "UDC 616-006 and LCC RC254-282 each provide dedicated classification ranges for oncology; FORD 3.2 names it; ASCO, NCI, oncology fellowship programs, and dedicated cancer centers satisfy the community criterion.",
+   "uncertainty": "QID hint is a placeholder — the correct Wikidata QID for oncology is likely Q162555 or similar (unverified training-knowledge; resolver must assign); the same collision note as cardiology applies. LCC splits oncology between RC and RD (medical vs surgical oncology) — the subfield node captures both wings.",
+   "ambiguous": false,
+   "note": "QID collision: Q189553 is used as a training-knowledge placeholder here and must be corrected by the resolver. Honest gap recorded. Suggest resolver search for 'oncology' discipline QID."
+  },
+  {
+   "id": "subfield:gastroenterology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Gastroenterology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q103517"
+   },
+   "source_hint": "UDC 616.3 'Diseases of the digestive system' under UDC 616 (captured baseline 2026-06-12). LCC RC799-869 'Diseases of the digestive system. Gastroenterology' under RC (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Gastroenterology/hepatology' (captured baseline 2026-06-12). MeSH H02.403 lists gastroenterology as a specialty area. Wikidata Q103517 — unverified training-knowledge hint.",
+   "rationale": "UDC 616.3 and LCC RC799-869 each provide dedicated classification ranges; FORD 3.2 names it; ACG and ASGE fellowship programs, and journals (Gastroenterology, Gut) satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; FORD bundles gastroenterology with hepatology — the subfield node covers both; hepatology as a v2 re-split candidate is noted.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:endocrinology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Endocrinology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q101929"
+   },
+   "source_hint": "UDC 616.4 'Lymphatic/haemopoietic/endocrine systems' under UDC 616 (captured baseline 2026-06-12). LCC RC648-665 'Diseases of the endocrine glands. Clinical endocrinology' under RC (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Endocrinology/metabolism' (captured baseline 2026-06-12). Wikidata hint — see note.",
+   "rationale": "UDC 616.4 and LCC RC648-665 each provide dedicated classification ranges; FORD 3.2 names it; ENDO board certification, endocrinology fellowship programs, and Endocrine Society satisfy the community criterion.",
+   "uncertainty": "QID hint is a placeholder — the same Q101929 collision noted for pharmacology applies here too; the correct QID for endocrinology is likely Q189975 or similar (unverified); resolver must assign a distinct QID. UDC 616.4 bundles lymphatic, haemopoietic, and endocrine — hematology is proposed as a separate subfield from the same UDC range.",
+   "ambiguous": false,
+   "note": "QID collision: Q101929 used as placeholder — also collides with existing subfield:immunology node. Resolver must assign distinct verified QIDs to endocrinology and pharmacology."
+  },
+  {
+   "id": "subfield:nephrology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Nephrology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q189553"
+   },
+   "source_hint": "UDC 616.6 'Urogenital system. Urology' under UDC 616 (captured baseline 2026-06-12). LCC RC870-923 'Diseases of the genitourinary system. Urology' under RC (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Urology/nephrology' (captured baseline 2026-06-12). Wikidata hint — see note.",
+   "rationale": "UDC 616.6 and LCC RC870-923 each provide dedicated classification ranges; FORD 3.2 names urology/nephrology co-equally; ASN fellowship programs and Clinical Journal of the American Society of Nephrology satisfy the community criterion.",
+   "uncertainty": "QID hint is a placeholder — the same Q189553 collision noted for other subfields applies; resolver must assign a distinct, correct QID. FORD bundles nephrology with urology — the generator separates them: nephrology (medical management of kidney disease, subfield of internal-medicine) vs urology (surgical specialty, subfield of surgery); both pass the community criterion independently.",
+   "ambiguous": false,
+   "note": "QID placeholder — resolver must fill. Urology is proposed as a separate subfield under surgery (surgical management); nephrology here is the internal-medicine clinical subfield (kidney disease, dialysis, transplant medicine). Generator ruling: the FORD bundling is not a merger — community evidence clearly distinguishes ASN (nephrology) from AUA (urology)."
+  },
+  {
+   "id": "subfield:pulmonology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Pulmonology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q189553"
+   },
+   "source_hint": "UDC 616.2 'Diseases of the respiratory system' under UDC 616 (captured baseline 2026-06-12). LCC RC705-779 'Diseases of the respiratory system' under RC (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Respiratory' (captured baseline 2026-06-12). Wikidata hint — see note.",
+   "rationale": "UDC 616.2 and LCC RC705-779 each provide dedicated classification ranges; FORD 3.2 names respiratory medicine; CHEST (American College of Chest Physicians), ATS, and pulmonology fellowship programs satisfy the community criterion.",
+   "uncertainty": "QID hint is a placeholder — resolver must assign; same collision pattern as other subfields. Also known as 'respiratory medicine' in British usage — the label 'Pulmonology' is the American standard; QC should confirm label choice.",
+   "ambiguous": false,
+   "note": "QID placeholder. Label note: 'Pulmonology' used per seed manifest; 'Respiratory Medicine' is a common British variant. No identity ambiguity — same referent."
+  },
+  {
+   "id": "subfield:hematology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Hematology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q207538"
+   },
+   "source_hint": "UDC 616.4 'Lymphatic/haemopoietic/endocrine' under UDC 616 (captures haematology within this range) (captured baseline 2026-06-12). LCC RC633-647.5 'Diseases of the blood and blood-forming organs' under RC (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Haematology' (captured baseline 2026-06-12). Wikidata Q207538 — unverified training-knowledge hint.",
+   "rationale": "LCC RC633-647.5 provides a dedicated classification range; FORD 3.2 names haematology; ASH fellowship programs and Blood journal satisfy the community criterion; peer with endocrinology within UDC 616.4 (distinct community — ASH vs ENDO).",
+   "uncertainty": "QID hint unverified; UDC 616.4 bundles hematology with lymphatic and endocrine systems — the generator separates hematology (RC633-647.5) from endocrinology (RC648-665) per distinct LCC ranges and communities.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:rheumatology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Rheumatology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q207048"
+   },
+   "source_hint": "UDC 616.7 'Organs of locomotion. Skeletal/locomotor' under UDC 616 (captured baseline 2026-06-12). LCC RC924-924.5 'Connective tissues' and RC925-935 'Musculoskeletal system' under RC (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Rheumatology' (captured baseline 2026-06-12). Wikidata Q207048 — unverified training-knowledge hint.",
+   "rationale": "UDC 616.7 and LCC RC924-935 each provide dedicated classification ranges; FORD 3.2 names it; ACR fellowship programs and Arthritis & Rheumatology journal satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; LCC RC924-935 bundles connective-tissue and musculoskeletal diseases, both of which are rheumatology's domain.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:infectious-diseases",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Infectious Diseases",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q178587"
+   },
+   "source_hint": "UDC 616.9 'Communicable/infectious diseases' under UDC 616 (captured baseline 2026-06-12). LCC RC109-216 'Infectious and parasitic diseases' under RC (captured baseline 2026-06-12). OECD FORD 3.3 'Health sciences' names 'Infectious diseases' (captured baseline 2026-06-12). Wikidata Q178587 — unverified training-knowledge hint.",
+   "rationale": "UDC 616.9 and LCC RC109-216 each provide dedicated classification ranges; FORD 3.3 names it under health sciences; IDSA fellowship programs and Journal of Infectious Diseases satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; overlaps with life-sciences subfield:microbiology on the basic-science side — the clinical infectious-diseases specialty is the medicine-home node; microbiology (life sciences) is not re-proposed.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:geriatrics",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Geriatrics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q192760"
+   },
+   "source_hint": "LCC RC952-954.6 'Geriatrics' under RC (captured baseline 2026-06-12). UDC 613.9 'Health in relation to age, sex, ethnicity' under UDC 613 (captures geriatric medicine context) (captured baseline 2026-06-12). OECD FORD 3.2 includes geriatrics implicitly under 3.2 clinical scope. MeSH H02.403 includes 'Geriatrics'. Wikidata Q192760 — unverified training-knowledge hint.",
+   "rationale": "LCC RC952-954.6 provides a dedicated classification range; MeSH H02.403 lists geriatrics; AGS and geriatrics fellowship programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; UDC anchor is indirect (613.9 is hygiene/health in relation to age, not a clinical geriatrics range — criterion (a) passes primarily via LCC RC952-954.6 and MeSH).",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:orthopedic-surgery",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Orthopedic Surgery",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q177897"
+   },
+   "source_hint": "LCC RD701-811 'Orthopedic surgery' under RD 'Surgery' (captured baseline 2026-06-12). UDC 617.3 'Orthopaedics' under UDC 617 (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Orthopaedics' (captured baseline 2026-06-12). MeSH H02.403.810 includes 'Orthopedics'. Wikidata Q177897 — unverified training-knowledge hint.",
+   "rationale": "UDC 617.3 and LCC RD701-811 each provide dedicated classification ranges for orthopaedics; FORD 3.2 names it; AAOS fellowship programs and JBJS satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; UDC 617.3 nests within UDC 617 (surgery) — the generator treats it as a subfield of surgery consistent with both gate schemes' placement.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:neurosurgery",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Neurosurgery",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q543269"
+   },
+   "source_hint": "LCC RD520-599.5 'Surgery by region, system, or organ' under RD — includes cranial/spinal surgery (captured baseline 2026-06-12). MeSH H02.403.810 'Specialties, Surgical' includes 'Neurosurgery' (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' (captured baseline 2026-06-12). Wikidata Q543269 — unverified training-knowledge hint.",
+   "rationale": "MeSH H02.403.810 lists neurosurgery as a distinct surgical specialty; ABNS and neurosurgery residency programs satisfy the community criterion; LCC RD520-599.5 covers surgery by organ system including neural structures.",
+   "uncertainty": "QID hint unverified; LCC does not give neurosurgery its own dedicated cutter within RD520-599.5 that is separately named in the captured outline — the criterion (a) evidence is LCC RD520-599.5 (partial) + MeSH H02.403.810 (strong) + FORD 3.2 scope. The classification standing is weaker than for orthopedics; QC may want to review.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:plastic-surgery",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Plastic Surgery",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q189553"
+   },
+   "source_hint": "LCC RD118-120.5 'Plastic surgery. Reparative surgery' under RD (captured baseline 2026-06-12). MeSH H02.403.810 'Specialties, Surgical' includes 'Surgery, Plastic' (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' (captured baseline 2026-06-12). Wikidata hint — see note.",
+   "rationale": "LCC RD118-120.5 provides a dedicated range; MeSH H02.403.810 lists it; ASPS and plastic surgery residency programs satisfy the community criterion.",
+   "uncertainty": "QID hint is a placeholder — resolver must assign; same collision pattern. The boundary with reconstructive surgery is noted (LCC uses 'Reparative surgery' as a joint caption) — the combined node covers both.",
+   "ambiguous": false,
+   "note": "QID placeholder. Reconstructive surgery is absorbed into this node per LCC RD118-120.5's joint caption 'Plastic surgery. Reparative surgery' — v2 re-split candidate if communities diverge."
+  },
+  {
+   "id": "subfield:cardiothoracic-surgery",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Cardiothoracic Surgery",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1194413"
+   },
+   "source_hint": "LCC RD520-599.5 'Surgery by region, system, or organ' under RD — includes thoracic and cardiac surgery (captured baseline 2026-06-12). MeSH H02.403.810 includes 'Thoracic Surgery' (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' (captured baseline 2026-06-12). Wikidata Q1194413 — unverified training-knowledge hint.",
+   "rationale": "MeSH H02.403.810 lists thoracic surgery; STS (Society of Thoracic Surgeons), ABTS fellowship programs, and JTCVS journal satisfy the community criterion; the combined cardiac-and-thoracic node matches modern training program structure.",
+   "uncertainty": "QID hint unverified; LCC RD520-599.5 covers surgery by organ system without giving cardiothoracic surgery its own named range in the captured outline — criterion (a) evidence is primarily MeSH H02.403.810 + LCC RD520-599.5 scope + FORD 3.2. Similar classification-strength issue as neurosurgery.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:urology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Urology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q162555"
+   },
+   "source_hint": "LCC RD520-599.5 'Surgery by region, system, or organ' (includes urologic surgery) and RC870-923 'Diseases of the genitourinary system. Urology' under RC (captured baseline 2026-06-12). UDC 616.6 'Urogenital system. Urology' under UDC 616 (captured baseline 2026-06-12). OECD FORD 3.2 names 'Urology/nephrology' (captured baseline 2026-06-12). MeSH H02.403.810 includes 'Urology'. Wikidata Q162555 — unverified training-knowledge hint.",
+   "rationale": "UDC 616.6 and LCC RC870-923 each provide dedicated classification ranges; MeSH H02.403.810 lists it as a surgical specialty; AUA fellowship programs and Journal of Urology satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; urology sits at the surgery/internal-medicine boundary — LCC places it under both RC (medical) and RD (surgical) ranges; the generator places urology as a subfield of surgery (per MeSH H02.403.810 surgical specialty listing and AUA's surgical identity) while nephrology (proposed separately) covers the internal-medicine kidney-disease side.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:epidemiology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Epidemiology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q34437"
+   },
+   "source_hint": "LCC RA648.5-767 'Epidemics. Epidemiology. Quarantine. Disinfection' under RA (captured baseline 2026-06-12). UDC 614.4 'Prevention and control of communicable diseases' (epidemiology context within UDC 614) (captured baseline 2026-06-12). OECD FORD 3.3 'Health sciences' names 'Epidemiology' (captured baseline 2026-06-12). Wikidata Q34437 — unverified training-knowledge hint.",
+   "rationale": "LCC RA648.5-767 provides a dedicated classification range; FORD 3.3 names epidemiology explicitly; SER and epidemiology PhD programs at schools of public health satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; epidemiology has a methods overlap with biostatistics — both are proposed as separate subfields of public health, consistent with the manifest scope and FORD 3.3 naming both separately.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:biostatistics",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Biostatistics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q864532"
+   },
+   "source_hint": "LCC RA407-409.5 'Health status indicators. Medical statistics and surveys' under RA (captured baseline 2026-06-12). OECD FORD 3.3 'Health sciences' (biostatistics is implied within epidemiology/health sciences scope) (captured baseline 2026-06-12). Section-12 standing ruling 2026-06-11: biostatistics is medicine-home per §12 ruling (biostatistics-as-medicine-home precedent established in natural-sciences QC round). Wikidata Q864532 — unverified training-knowledge hint.",
+   "rationale": "LCC RA407-409.5 provides a classification range for medical statistics; §12 precedent ruling (2026-06-11) explicitly places biostatistics in medicine; ENAR, dedicated biostatistics departments at schools of public health (Harvard, Johns Hopkins), and degree programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; biostatistics has a strong methods link to formal-sciences statistics — the §12 ruling establishes medicine as its primary home (not a second copy); the formal-sciences link is a §13 cross-listing candidate for the edge batch.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:environmental-health",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Environmental Health",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q107469"
+   },
+   "source_hint": "LCC RA565-600 'Environmental health' under RA (captured baseline 2026-06-12). UDC 614.3 'Sanitary inspection' and UDC 614.8 'Accidents. Safety' within UDC 614 (environmental health context) (captured baseline 2026-06-12). OECD FORD 3.3 'Health sciences' names 'Environmental/occupational health' (captured baseline 2026-06-12). Wikidata Q107469 — unverified training-knowledge hint.",
+   "rationale": "LCC RA565-600 provides a dedicated classification range; FORD 3.3 names it; NIEHS, environmental health PhD programs, and Environmental Health Perspectives journal satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; environmental health overlaps with natural-sciences environmental-science (field:environmental-science in /data) on the exposure-science side; the medicine-home placement follows LCC RA565-600 and FORD 3.3; §13 cross-listing with environmental science is a candidate for the edge batch.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:occupational-medicine",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Occupational Medicine",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q189553"
+   },
+   "source_hint": "LCC RC963-969 'Industrial medicine. Industrial hygiene' under RC (captured baseline 2026-06-12). UDC 613.6 'Occupational health hazards' under UDC 613 (captured baseline 2026-06-12). OECD FORD 3.3 'Health sciences' names 'Environmental/occupational health' (captured baseline 2026-06-12). Wikidata hint — see note.",
+   "rationale": "LCC RC963-969 and UDC 613.6 each provide dedicated classification ranges; FORD 3.3 names it; ACOEM and occupational medicine residency programs satisfy the community criterion.",
+   "uncertainty": "QID hint is a placeholder — resolver must assign; same collision pattern. The RC963-969 caption uses 'Industrial medicine' (older term) — the modern research-area label is 'Occupational Medicine'; label rule applies (research-area label preferred).",
+   "ambiguous": false,
+   "note": "QID placeholder. Label note: LCC uses 'Industrial medicine' — modern label 'Occupational Medicine' applied per label rule (research-area term preferred over course/historical term)."
+  },
+  {
+   "id": "subfield:health-policy-and-management",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Health Policy and Management",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1779371"
+   },
+   "source_hint": "LCC RA393-418.5 includes RA393-418 'Medical economics' and RA418-418.5 'Medicine and society. Social medicine. Medical sociology' under RA (captured baseline 2026-06-12). LCC RA410-410.9 'Medical economics' is the closest range. OECD FORD 3.3 'Health sciences' names 'Health care sciences/services' (captured baseline 2026-06-12). Wikidata Q1779371 — unverified training-knowledge hint.",
+   "rationale": "LCC RA393-418 provides a classification range covering medical economics, health-services administration, and public-health regulation; FORD 3.3 names 'Health care sciences/services'; AcademyHealth, health policy PhD programs at SPH, and HSR journal satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; the captured LCC range RA393-418 is somewhat diffuse (law/regulation/economics of medicine) — the generator synthesizes it as 'health policy and management' per FORD naming and community evidence.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:global-health",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Global Health",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q901640"
+   },
+   "source_hint": "LCC RA791-954 'Medical geography. Climatology' and RC955-962 'Arctic medicine. Tropical medicine' under RC (captured baseline 2026-06-12). OECD FORD 3.3 'Health sciences' covers global health within scope (captured baseline 2026-06-12). MeSH H02.403 includes 'Global Health'. Wikidata Q901640 — unverified training-knowledge hint.",
+   "rationale": "MeSH H02.403 lists global health as a distinct specialty; ASTMH, dedicated global health institutes (Johns Hopkins, Harvard), and Lancet journal's global-health section satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; global health lacks a dedicated named LCC range in the captured sources — its nearest anchors are tropical medicine (RC955-962) and medical geography (RA791-954). Classification standing is weaker than most subfields; criterion (a) relies on the MeSH H02.403 listing and LCC coverage of its component topics.",
+   "ambiguous": true,
+   "note": "A-type flag: global health classification standing in LCC/UDC is indirect — no single dedicated named range found in captured-sources.md. Generator proposes it based on MeSH H02.403 explicit listing + strong community. QC should verify whether MeSH H02.403 counts as sufficient criterion (a) evidence for this continent (PhySH precedent: discipline-specific scheme accepted when ratified by manifest — MeSH is ratified in this manifest as the cross-check scheme)."
+  },
+  {
+   "id": "subfield:forensic-medicine",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Forensic Medicine",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q184004"
+   },
+   "source_hint": "LCC RA1001-1171 'Forensic medicine. Medical jurisprudence. Legal medicine' under RA (captured baseline 2026-06-12). OECD FORD 3.5 'Other medical sciences' names 'Forensic science' (captured baseline 2026-06-12). MeSH H02.403 includes 'Forensic Medicine'. Wikidata Q184004 — unverified training-knowledge hint.",
+   "rationale": "LCC RA1001-1171 provides a dedicated classification range; FORD 3.5 names forensic science; NAME (National Association of Medical Examiners) and forensic pathology fellowship programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; 'forensic medicine' overlaps with 'forensic science' — the LCC RA1001-1171 range covers the medical-jurisprudence side; forensic toxicology and criminalistics are out of scope for this node.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:toxicology",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Toxicology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q11376"
+   },
+   "source_hint": "LCC RA1190-1270 'Toxicology. Poisons' under RA (captured baseline 2026-06-12). UDC 615.9 'General toxicology' under UDC 615 (captured baseline 2026-06-12). OECD FORD 3.1 'Basic medicine' names 'Toxicology' (captured baseline 2026-06-12). MeSH H02 includes 'Toxicology'. Wikidata Q11376 — unverified training-knowledge hint.",
+   "rationale": "LCC RA1190-1270 provides a dedicated classification range; UDC 615.9 provides classification-level standing; FORD 3.1 names it under basic medicine; SOT and toxicology PhD programs satisfy the community criterion.",
+   "uncertainty": "QID hint unverified; toxicology has overlapping homes in public health (RA), pharmacology (RM260-263 chemotherapy, drug toxicity), and basic medicine (FORD 3.1) — the generator places it as a subfield of public-health (RA anchor) while noting the pharmacology and basic-medicine relationships. Cross-listing candidates for FORD 3.1 basic-medicine side to be addressed in the edge batch.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:nuclear-medicine",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Nuclear Medicine",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q215631"
+   },
+   "source_hint": "LCC R895-920 'Medical physics. Medical radiology. Nuclear medicine' under R (captured baseline 2026-06-12). OECD FORD 3.2 'Clinical medicine' names 'Radiology/nuclear medicine/imaging' (captured baseline 2026-06-12). MeSH H02.403 is not captured explicitly but FORD 3.2 covers it. Wikidata Q215631 — unverified training-knowledge hint.",
+   "rationale": "LCC R895-920 explicitly names nuclear medicine; FORD 3.2 names it co-equally with radiology/imaging; SNMMI and nuclear medicine fellowship programs satisfy the community criterion; distinct referent from medical physics (clinical therapy/diagnosis using radioisotopes vs applied physics discipline) and from radiology (ionising radiation imaging).",
+   "uncertainty": "QID hint unverified; LCC R895-920 bundles medical physics, radiology, and nuclear medicine — all three are proposed as distinct nodes (peer coexistence by distinct-referent logic, QIS precedent). QC should confirm the three-way split is justified by distinct community evidence.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:homeopathy",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Homeopathy",
+   "academic_status": "non_academic",
+   "external_ids": {
+    "wikidata": "Q132964"
+   },
+   "source_hint": "LCC RX1-681 'Homeopathy' — own dedicated subclass within class R (captured baseline 2026-06-12). MeSH H02.403 does not list homeopathy as a specialty (supporting non_academic tag). Wikidata Q132964 — unverified training-knowledge hint.",
+   "rationale": "LCC gives homeopathy its own dedicated subclass RX — clear criterion (a) satisfaction; criterion (b) is met by practitioner organizations (Liga Medicorum Homoeopathica Internationalis), though not by mainstream academic medicine departments; the non_academic tag reflects the scientific consensus that homeopathy's claimed mechanisms lack empirical support.",
+   "uncertainty": "QID hint Q132964 may map to 'alternative medicine' (same as field:alternative-medicine above — potential collision); resolver must assign the correct QID for homeopathy specifically (likely Q131015 or similar, unverified). The non_academic tag is stable: Cochrane systematic reviews and WHO position statements confirm lack of evidence for efficacy beyond placebo.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:chiropractic",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Chiropractic",
+   "academic_status": "non_academic",
+   "external_ids": {
+    "wikidata": "Q82811"
+   },
+   "source_hint": "LCC RZ201-275 'Chiropractic' within RZ 'Other systems of medicine' (captured baseline 2026-06-12). MeSH H02 includes 'Chiropractic' as a health occupation. Wikidata Q82811 — unverified training-knowledge hint.",
+   "rationale": "LCC RZ201-275 provides a dedicated classification range; MeSH H02 lists chiropractic; DC degree programs and ACA satisfy the community criterion; the non_academic tag reflects contested scientific status (some evidence for musculoskeletal pain, contested evidence for other claims; not a standard academic medical discipline).",
+   "uncertainty": "QID hint unverified; the academic_status is the most contested point: chiropractic has licensed practitioners and accredited DC programs, which some might classify as 'emerging' rather than 'non_academic'. The manifest instructs: 'chiropractic/naturopathy are contested — use non_academic or emerging with a clear uncertainty note'. Generator applies non_academic per the lack of recognition by mainstream academic medicine institutions (AMA, AAMC) as a co-equal academic discipline.",
+   "ambiguous": true,
+   "note": "B-type flag: academic_status for chiropractic is genuinely contested. Generator applies non_academic per manifest guidance and AMA/AAMC institutional non-recognition. A reviewer who considers DC accreditation and some evidence-based manual therapy practice might argue for 'emerging'. The resolution requires external evidence — this is a real-world academic-status contest."
+  },
+  {
+   "id": "subfield:naturopathy",
+   "type": "subfield",
+   "domain": "medicine_and_health",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Naturopathy",
+   "academic_status": "non_academic",
+   "external_ids": {
+    "wikidata": "Q179234"
+   },
+   "source_hint": "LCC RZ201-999 'Other systems of medicine' under RZ (naturopathy is within this range, no dedicated sub-range named in the captured outline; naturopathy falls under RZ440-499 per training knowledge — unverified). MeSH H02 does not list naturopathy. Wikidata Q179234 — unverified training-knowledge hint.",
+   "rationale": "LCC RZ covers naturopathy as part of the 'other systems of medicine' cluster; ND degree programs (AANP, CNME-accredited naturopathic programs) satisfy the community criterion; the non_academic tag reflects that naturopathy's core premises (vis medicatrix naturae, vitalism) are not accepted by mainstream academic medicine.",
+   "uncertainty": "QID hint unverified; unlike homeopathy and chiropractic, naturopathy does not have a clearly named dedicated LCC range in the captured outline — LCC RZ201-999 is the outer bound; the specific cutter for naturopathy (RZ440-499 per training knowledge) is unverified and should be flagged for QC. Criterion (a) is less clear than for homeopathy and chiropractic.",
+   "ambiguous": true,
+   "note": "A-type flag on criterion (a): the captured sources list LCC RZ201-999 as the outer range but do not name a specific naturopathy cutter in the captured outline (only chiropractic RZ201-275 and osteopathy RZ301-397.5 are named). The training-knowledge cutter RZ440-499 for naturopathy is unverified — QC should check against the full LCC schedule. B-type flag retained on academic_status (same contest as chiropractic)."
+  }
+ ],
+ "edges": [],
+ "notes": [
+  "RECONCILED NODES (never re-proposed): domain:medicine-and-health (Q11190 — in /data reviewed), subfield:physiology (Q521 — life-sciences home, /data proposed), subfield:anatomy (Q514 — life-sciences home, /data proposed), subfield:immunology (Q101929 — life-sciences home, /data reviewed), field:biomedical-engineering (Q327092 — engineering home, /data proposed). These five nodes are excluded from this proposal. Their medicine-side §13 dual memberships are deferred to the edge batch.",
+  "NODE COUNT: 49 total proposed — 22 fields (level 1) + 27 subfields (level 2). All 49 seeds are accounted for: 47 directly emitted, 0 absorbed/dropped at this stage (see 'deliberate non-coverage' note below), 2 pre-reconciled (physiology, anatomy — excluded per scope; immunology excluded; biomedical-engineering excluded; domain excluded — five total excluded per reconcile list).",
+  "LEVEL DECISIONS: All 22 fields carry their own major LCC subclass (R[A-Z]) or are explicitly elevated by FORD 3.2/MeSH H02.403 explicit naming + independent board certification (anesthesiology, emergency-medicine, physical-rehabilitation-medicine, neurology, psychiatry). The shelving-not-hierarchy precedent (from social-sciences round) is applied to the psychiatry/neurology/anesthesiology/emergency-medicine/PMR cluster — LCC RC/RD nesting does not determine field vs subfield when FORD + board + community evidence supports independence.",
+  "AMBIGUOUS FLAGS: 9 nodes flagged ambiguous. (1) field:psychiatry — B-type: LCC nesting vs institutional independence; (2) field:neurology — B-type: same contest; (3) field:anesthesiology — A-type: LCC nesting, FORD naming override; (4) field:emergency-medicine — A-type: LCC nesting, MeSH naming override; (5) field:physical-and-rehabilitation-medicine — A-type: LCC nesting, MeSH + ABPMR override; (6) field:nutrition-science — B-type: cross-continent split (medicine vs life-sciences); (7) field:alternative-medicine — structural (non_academic umbrella needed for subfield parenting); (8) subfield:global-health — A-type: indirect LCC/UDC anchors; (9) subfield:radiology — A-type: shared LCC R895-920 range with medical-physics and nuclear-medicine; (10) subfield:chiropractic — B-type: academic_status contest; (11) subfield:naturopathy — A-type: criterion (a) LCC cutter unverified + B-type academic_status.",
+  "QID COLLISION WARNINGS (resolver must address before promotion): Multiple subfield nodes use Q189553 (otolaryngology) as a training-knowledge placeholder due to QID uncertainty — specifically: subfield:cardiology, subfield:oncology (Q189553 is wrong for both, and the field node already uses it), subfield:nephrology, subfield:pulmonology, subfield:plastic-surgery, subfield:occupational-medicine. Additionally Q101929 (immunology) is used as a placeholder for both field:pharmacology and subfield:endocrinology — this conflicts with the existing subfield:immunology node. The resolver MUST replace all these placeholder QIDs with verified correct entities before any promotion.",
+  "DELIBERATE NON-COVERAGE (no nodes emitted): (a) Critical-care medicine — absorbed into emergency-medicine note as a v2 re-split candidate; LCC RC86-88.9 bundles both; FORD names only 'Critical care'; will need separate handling when SCCM community presence is re-evaluated. (b) Hepatology — absorbed into gastroenterology per FORD 3.2 'Gastroenterology/hepatology' joint naming; v2 re-split candidate. (c) Allergology/Allergy-and-Immunology — absorbed; RC581-607 'Immunologic diseases. Allergy' is a range under internal medicine; FORD lists under 3.2; MeSH H02.403 names 'Allergy and Immunology'; community (ACAAI/AAAAI) is real — v2 re-split candidate from internal-medicine. (d) Sports medicine — absorbed; RC1200-1245 is a specialization within RC; FORD 3.3 names it; v2 re-split candidate. (e) Osteopathic medicine — not emitted as a separate node; LCC RZ301-397.5 covers osteopathy in RZ; manifest notes it is 'established in US but alternative-medicine framing is contested'; the generator chose to keep it as a v2 re-split candidate from the alternative-medicine cluster rather than add a 50th node — QC should review this decision specifically.",
+  "MEDICAL-PHYSICS TRANSFER: field:medical-physics is a NEW medicine-continent node, transferred from natural sciences per manifest decision (30) and §12 rule 3. Both LCC home (R895-920) and institutional home (AAPM, clinical medical centers) are in the medicine continent. The natural-sciences skeleton does not currently have a medical-physics node in /data (it was deferred to this batch per 2026-06-11 NS rulings). No conflict with existing data.",
+  "OSTEOPATHIC MEDICINE NOTE: The manifest notes osteopathic medicine is 'established in the US but the alt-medicine framing is contested'. The generator does not propose a separate field:osteopathic-medicine node here because: (1) LCC RZ301-397.5 places it in the alternative-systems cluster (same RZ subclass as chiropractic); (2) the manifest does not include it as a seed; (3) the question of whether osteopathic medicine should be a subfield of alternative-medicine (RZ nesting) or a peer field (DO degree standing) is a genuine B-type contest. Recorded as a QC escalation: QC should decide whether to open a v2 proposal for field:osteopathic-medicine or to keep it as a §13 note on the alternative-medicine field.",
+  "CROSS-LISTING CANDIDATES FOR EDGE BATCH: (a) subfield:biostatistics — §13 formal-sciences statistics membership candidate; (b) field:nutrition-science — §13 life-sciences membership candidate; (c) subfield:environmental-health — §13 natural-sciences environmental-science membership candidate; (d) subfield:toxicology — §13 FORD 3.1 basic-medicine / pharmacology cross-link candidate; (e) field:neurology — §13 life-sciences neuroscience cross-link candidate. These are not additional nodes — they are edge-batch items for the part_of and cross-listing batch.",
+  "SECTION-12 RULE 3 NOTE: The existing /data nodes subfield:physiology and subfield:anatomy each have §13 medicine-side candidacies. These are not new nodes — they are §13 membership edges to be added in the edge batch (life-sciences canonical node → medicine domain direct, or → field:internal-medicine, as the gate scheme evidence supports).",
+  "UDC COVERAGE NOTE: UDC 611 (Anatomy) and UDC 612 (Physiology) are not proposed as new nodes because the referents already exist as /data nodes subfield:anatomy and subfield:physiology (life-sciences home, §13 medicine-side deferred). UDC 613 'Hygiene/Personal health' is covered by the field:public-health node (RA) and its subfields. The UDC 61x full first-level set (611/612/613/614/615/616/617/618) is accounted for across the 22 fields and 27 subfields proposed."
+ ]
+}
