@@ -1229,10 +1229,12 @@
       "batch": "seed:curation-2026-06-02",
       "seed_label": "Computer and Information Sciences",
       "node_id": "domain:computer-and-information-sciences",
-      "verdict": "verified",
-      "expected_qid": "Q21198",
+      "verdict": "upstream_gap",
       "manual_path": true,
-      "notes": "Shares Q21198 with field:computer-science - recorded anchor-policy nuance (session #9 identity-conflict finding); referent verified correct."
+      "notes": "Re-dispositioned 2026-06-12 per CPO decision (36): the seed-era Q21198 anchor (borrowed from the child field) was removed from the domain node — field:computer-science is the sole Q21198 holder. No discipline-group umbrella entity exists upstream (FORD 1.2 / ANZSRC 46 grouping; live cross-search found only ISCIS conference proceedings) — mirrors the deliberately QID-less practical-knowledge / meta-knowledge domains. Domain grounding stays on the FORD 1.2 classification filing. Q21198 must never be re-selected for this seed. Execution record: qid-adversarial-audit-round1-v1/report.md.",
+      "must_not_select": [
+        "Q21198"
+      ]
     },
     {
       "batch": "seed:curation-2026-06-02",
