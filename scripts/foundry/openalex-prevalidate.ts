@@ -4,7 +4,7 @@
  * Usage:
  *   npm run foundry:openalex-prevalidate -- [--domains a,b,c] [--types field,subfield]
  *                                            [--no-metrics-only] [--nodes id1,id2]
- *                                            [--out <path>]
+ *                                            [--out <path>] [--concurrency N]
  *
  * For each selected /data node that carries a verified `external_ids.wikidata`,
  * this tool queries OpenAlex's keyless public Concepts API two ways and emits a
@@ -26,12 +26,18 @@
  *   - Reads /data as ground truth (node id + verified QID); never writes /data.
  *   - Output is candidate comparison material under dist/foundry/ (gitignored),
  *     not a proposal, nothing marked reviewed/indexable.
- *   - No secrets/keys/tokens/OAuth. Read-only, serial, polite delay + descriptive
- *     User-Agent. No SPARQL, no cloud LLM APIs, no NamuWiki, no article bodies.
+ *   - No secrets/keys/tokens/OAuth. Read-only, bounded-concurrency pool
+ *     (default 6, max 8 — session #17 pitstop; was serial) behind a GLOBAL
+ *     politeness gate (~9 req/s < OpenAlex's keyless ~10 rps guidance) +
+ *     descriptive User-Agent. Per-node direct+search two-call structure and
+ *     all verdict logic unchanged; output rows stay in input order
+ *     (deterministic — completion order never affects the table).
+ *     No SPARQL, no cloud LLM APIs, no NamuWiki, no article bodies.
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, isAbsolute, join, resolve } from "node:path";
+import { mapWithConcurrency, RateGate } from "./lib/bounded-pool.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, "..", "..");
@@ -41,8 +47,10 @@ const OUT_DEFAULT = join(REPO_ROOT, "dist", "foundry", "openalex-prevalidation",
 
 const API = "https://api.openalex.org";
 const UA =
-  "Noosphere-Foundry-OpenAlex-Prevalidate/1.0 (research atlas; contact: maintainer; keyless)";
-const DELAY_MS = 250;
+  "Noosphere-Foundry-OpenAlex-Prevalidate/1.1 (research atlas; contact: maintainer; keyless)";
+const DEFAULT_CONCURRENCY = 6;
+const MAX_CONCURRENCY = 8;
+const RATE_GATE_MS = 110; // global spacing between request starts ≈ 9 rps
 
 interface Node {
   id: string;
@@ -82,8 +90,6 @@ function qidFromWikidataUrl(w?: string | null): string | null {
   const m = w.match(/Q\d+/);
   return m ? m[0] : null;
 }
-
-const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 async function getJson(url: string): Promise<unknown | null> {
   try {
@@ -139,21 +145,32 @@ async function main(): Promise<void> {
     });
   }
 
-  process.stderr.write(`Selected ${selected.length} node(s) for OpenAlex pre-validation.\n`);
+  const concurrency = Math.min(
+    MAX_CONCURRENCY,
+    Math.max(
+      1,
+      Number.parseInt(String(args.concurrency ?? DEFAULT_CONCURRENCY), 10) || DEFAULT_CONCURRENCY,
+    ),
+  );
+  process.stderr.write(
+    `Selected ${selected.length} node(s) for OpenAlex pre-validation (concurrency ${concurrency}).\n`,
+  );
 
-  const rows: unknown[] = [];
   const tally = { rank1_clean: 0, manual_candidate: 0, absent: 0, object_concept: 0 };
+  const gate = new RateGate(RATE_GATE_MS);
 
-  for (const n of selected) {
+  // Bounded pool over nodes; per-node the direct+search two-call structure is
+  // unchanged. Rows come back in input order (mapWithConcurrency contract).
+  const rows = await mapWithConcurrency(selected, concurrency, async (n) => {
     const qid = n.external_ids!.wikidata;
     const label = labelOf.get(n.id) ?? n.id;
 
+    await gate.wait();
     const directRaw = (await getJson(`${API}/concepts/wikidata:${qid}`)) as Concept | null;
-    await sleep(DELAY_MS);
+    await gate.wait();
     const searchRaw = (await getJson(
       `${API}/concepts?search=${encodeURIComponent(label)}&per_page=5`,
     )) as { results?: Concept[] } | null;
-    await sleep(DELAY_MS);
 
     const direct = conceptFields(directRaw);
     const searchResults = (searchRaw?.results ?? []).map((c) => conceptFields(c)!);
@@ -176,7 +193,9 @@ async function main(): Promise<void> {
     else verdict = "absent";
     tally[verdict]++;
 
-    rows.push({
+    // Progress lines print in completion order; the table itself is input-ordered.
+    process.stderr.write(`  ${verdict.padEnd(16)} ${n.id} (${qid})\n`);
+    return {
       node_id: n.id,
       type: n.type,
       domain: n.domain,
@@ -198,9 +217,8 @@ async function main(): Promise<void> {
         level: c.level,
         works_count: c.works_count,
       })),
-    });
-    process.stderr.write(`  ${verdict.padEnd(16)} ${n.id} (${qid})\n`);
-  }
+    };
+  });
 
   const outPath = typeof args.out === "string"
     ? isAbsolute(args.out) ? args.out : resolve(REPO_ROOT, args.out)
@@ -212,6 +230,7 @@ async function main(): Promise<void> {
     api: API,
     note: "Candidate multi-signal comparison only. First-pass verdicts are signal-derived; the final accept/skip/manual ruling is the orchestrator's (decision-log (9)). Never written to /data.",
     selected: selected.length,
+    concurrency,
     tally,
     rank1_clean_pct:
       selected.length > 0 ? +((tally.rank1_clean / selected.length) * 100).toFixed(1) : 0,
