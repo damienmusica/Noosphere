@@ -1,0 +1,17 @@
+{
+  "batch": "social-sciences-summaries-v1",
+  "kind": "editorial",
+  "description": "Editorial pass 7 (cleanup session #15, round-1 debt repayment 1 of 3): summaries for the 30 reviewed social-sciences nodes that landed in the parallel round (13a) with empty summaries (debt-ledger-round1.md §1).",
+  "generation": {
+    "model": "claude-opus-4-8",
+    "contexts": 4,
+    "note": "Four separate generation contexts (ADR 0007 generation/QC separation), split by sub-continent for classification consistency: batch-a = 6 fields (economics, sociology, political-science, education, law, anthropology); batch-b = 8 economics-wing subfields + demography; batch-c = 8 sociology/political-science/anthropology subfields; batch-d = 8 education-wing + law-wing subfields. Generation contract per node: live-fetch duty, [UNFETCHED] honest self-marking, anti-laundering clause, SPN centralized to QC. Raw generated sets preserved as summaries.batch-{a,b,c,d}.json."
+  },
+  "qc": {
+    "by": "claude-fable-5",
+    "session": "#15",
+    "policy": "editorial v1 (decision (10)(b)); generation model = Opus (decision (26))"
+  },
+  "targets": 30,
+  "parent_precondition": "all 30 parent nodes are reviewed (editorial v1); every English translation row is marked reviewed:true."
+}

@@ -1,0 +1,291 @@
+{
+  "batch": "social-sciences-summaries-v1/batch-d",
+  "generated_by": "claude-opus-4-8[1m]",
+  "summaries": [
+    {
+      "node_id": "subfield:curriculum-and-instruction",
+      "summary": "Curriculum and instruction is the field of education research concerned with what is taught and how it is taught: the design, organization, and content of curricula and the didactic methods by which they are delivered. Within the American Educational Research Association the field is institutionalized as Division B, \"Curriculum Studies,\" and Division C, \"Learning & Instruction,\" two of the association's standing research divisions. In the Universal Decimal Classification its instructional dimension is grouped under UDC 37.02, captioned \"General questions of didactics and method,\" within the education class (UDC 37). The field examines curriculum aims, subject matter, instructional design, and methods of teaching across the elementary, secondary, and tertiary levels.",
+      "citations": [
+        {
+          "url": "https://www.aera.net/About-AERA/Member-Constituents/Divisions",
+          "supports": "AERA institutionalizes the field as Division B (Curriculum Studies) and Division C (Learning & Instruction)",
+          "quote": "Curriculum Studies",
+          "fetched": true
+        },
+        {
+          "url": "https://www.aera.net/About-AERA/Member-Constituents/Divisions",
+          "supports": "AERA Division C name covering instruction/learning",
+          "quote": "Learning & Instruction",
+          "fetched": true
+        },
+        {
+          "url": "https://udcsummary.info/php/getrecord.php?id=37.02&lang=1",
+          "supports": "UDC caption for the didactics/method (instruction) subdivision of education",
+          "quote": "General questions of didactics and method",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "No standalone Encyclopaedia Britannica definition of 'curriculum and instruction' (or 'curriculum') was usable: the archived britannica.com/topic/curriculum page is an 'Other articles where curriculum is discussed' cross-reference blurb, not a definition, so identity rests on the AERA division names plus the UDC didactics caption — see unfetched.",
+        "The AERA division names are quoted as the association's own constituent labels (fetched from the AERA Divisions page), used as institutional placement, not as evaluative claims.",
+        "Britannica was bot-blocked (HTTP 403) to curl and WebFetch in this environment; all Britannica content in this batch was read from Internet Archive Wayback snapshots of the original pages."
+      ],
+      "unfetched": [
+        "A standalone Encyclopaedia Britannica definition of 'curriculum' or 'curriculum and instruction' — the archived topic page returned only a cross-reference blurb beginning mid-sentence, not usable as a definition."
+      ]
+    },
+    {
+      "node_id": "subfield:educational-policy",
+      "summary": "Educational policy is the field of education research that studies the formation, content, and effects of the policies and political processes governing education systems. Within the American Educational Research Association it is institutionalized as Division L, \"Educational Policy & Politics,\" one of the association's standing research divisions. In the Universal Decimal Classification the policy and theory of education are grouped under UDC 37.01, captioned \"Fundamentals of education. Theory, policy, etc.,\" within the education class (UDC 37). The field analyzes how educational policy is made and implemented and how it shapes practice across levels of schooling.",
+      "citations": [
+        {
+          "url": "https://www.aera.net/About-AERA/Member-Constituents/Divisions",
+          "supports": "AERA institutionalizes the field as Division L, Educational Policy & Politics",
+          "quote": "Educational Policy & Politics",
+          "fetched": true
+        },
+        {
+          "url": "https://udcsummary.info/php/getrecord.php?id=37.01&lang=1",
+          "supports": "UDC caption for the education subdivision covering theory and policy",
+          "quote": "Fundamentals of education. Theory, policy, etc.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "No Internet Archive Wayback snapshot of a britannica.com/topic/education-policy page exists, and Britannica itself was bot-blocked (HTTP 403), so no encyclopedic Britannica definition is cited; identity rests on the AERA Division L institutional label plus the UDC 37.01 caption — see unfetched.",
+        "The AERA Division L Vice President's welcome message on the division page ('our work is not neutral... challenges unjust policies') was deliberately NOT quoted: it is an editorial/advocacy statement, not a neutral scope definition. Only the division's constituent name was used."
+      ],
+      "unfetched": [
+        "An Encyclopaedia Britannica definition of 'educational policy' / 'education policy' — no archived topic page found and Britannica returned HTTP 403."
+      ]
+    },
+    {
+      "node_id": "subfield:higher-education",
+      "summary": "Higher education, as a field of study, is the scholarly inquiry into postsecondary (tertiary) education: its institutions, organization, policy, and outcomes. The Association for the Study of Higher Education (ASHE) describes itself as \"a vibrant scholarly community ... dedicated to advancing the study of higher education,\" with the stated purpose \"To foster scholarly inquiry for the purpose of increasing knowledge about and the understanding of higher education to enhance policy and practice.\" Within the American Educational Research Association the field is institutionalized as Division J, \"Postsecondary Education,\" which the association states \"focuses on scholars, professionals, and students who study postsecondary issues such as higher education organizations, policy, college student experiences and transitions, and university curricular issues.\" Its object of study is grouped in the Universal Decimal Classification under UDC 378, \"Higher education. Universities. Academic study.\"",
+      "citations": [
+        {
+          "url": "https://www.ashe.ws/",
+          "supports": "ASHE self-description as a scholarly community devoted to the study of higher education (full source span: 'a vibrant scholarly community of over 2,000 members dedicated to advancing the study of higher education'; the summary quotes the contiguous span below plus the leading 'a vibrant scholarly community' fragment, omitting the membership count)",
+          "quote": "dedicated to advancing the study of higher education",
+          "fetched": true
+        },
+        {
+          "url": "https://www.ashe.ws/",
+          "supports": "ASHE stated purpose framing higher education as an object of scholarly inquiry",
+          "quote": "To foster scholarly inquiry for the purpose of increasing knowledge about and the understanding of higher education to enhance policy and practice.",
+          "fetched": true
+        },
+        {
+          "url": "https://www.aera.net/Division-J/Postsecondary-Education-J",
+          "supports": "AERA Division J scope statement defining the postsecondary/higher-education research field",
+          "quote": "focuses on scholars, professionals, and students who study postsecondary issues such as higher education organizations, policy, college student experiences and transitions, and university curricular issues",
+          "fetched": true
+        },
+        {
+          "url": "https://udcsummary.info/php/getrecord.php?id=378&lang=1",
+          "supports": "UDC caption for higher education / universities",
+          "quote": "Higher education. Universities. Academic study",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Referent is the FIELD OF STUDY (higher education as researched by ASHE and AERA Division J), per the consistency pin, not a primer on universities. Britannica's britannica.com/topic/higher-education article defines higher education as the educational provision itself ('any of various types of education given in postsecondary institutions of learning'); to keep the field-of-study referent clean I did NOT quote that institution-level definition and anchored identity in ASHE and AERA Division J instead.",
+        "ASHE's first quote contains 'a vibrant scholarly community of over 2,000 members'; 'vibrant' and the membership count are the society's own verbatim self-description, quoted as attributed self-characterization rather than asserted by the atlas. The neutral operative span is 'dedicated to advancing the study of higher education.'"
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:special-education",
+      "summary": "Special education is the field concerned with the education of children whose needs differ from the typical to a degree requiring adapted instruction. Encyclopaedia Britannica defines it as \"the education of children who differ socially, mentally, or physically from the average to such an extent that they require modifications of usual school practices,\" serving \"children with emotional, behavioral, or cognitive impairments or with intellectual, hearing, vision, speech, or learning disabilities; gifted children with advanced academic abilities; and children with orthopedic or neurological impairments.\" The principal learned body in the field, the Council for Exceptional Children (CEC), describes itself as a \"professional organization dedicated to improving the success of children and youth with disabilities and/or gifts and talents.\" In the Universal Decimal Classification the field is grouped under UDC 376, \"Education, teaching, training of special groups of persons. Special schools.\"",
+      "citations": [
+        {
+          "url": "https://web.archive.org/web/20260510032200/https://www.britannica.com/topic/special-education",
+          "supports": "Encyclopaedia Britannica definition of special education",
+          "quote": "the education of children who differ socially, mentally, or physically from the average to such an extent that they require modifications of usual school practices",
+          "fetched": true
+        },
+        {
+          "url": "https://web.archive.org/web/20260510032200/https://www.britannica.com/topic/special-education",
+          "supports": "Britannica enumeration of the populations special education serves",
+          "quote": "children with emotional, behavioral, or cognitive impairments or with intellectual, hearing, vision, speech, or learning disabilities; gifted children with advanced academic abilities; and children with orthopedic or neurological impairments",
+          "fetched": true
+        },
+        {
+          "url": "https://exceptionalchildren.org/about-us",
+          "supports": "CEC self-description as the principal professional organization in special education",
+          "quote": "professional organization dedicated to improving the success of children and youth with disabilities and/or gifts and talents",
+          "fetched": true
+        },
+        {
+          "url": "https://udcsummary.info/php/getrecord.php?id=376&lang=1",
+          "supports": "UDC caption for education of special groups / special schools",
+          "quote": "Education, teaching, training of special groups of persons. Special schools",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "CEC's full sentence reads 'the largest international professional organization dedicated to improving the success of children and youth with disabilities and/or gifts and talents'; I omitted the evaluative qualifier 'the largest international' and quoted only the neutral descriptive span, per the no-ranking style rule.",
+        "Britannica content read from an Internet Archive Wayback snapshot (britannica.com returned HTTP 403 to direct fetches); the quoted spans are verbatim from the archived original page."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:constitutional-law",
+      "summary": "Constitutional law is the branch of law governing the basic structure and powers of the state and the fundamental rights of individuals within it. Encyclopaedia Britannica defines it as \"the body of rules, doctrines, and practices that govern the operation of political communities,\" noting that \"Modern constitutional law is the offspring of nationalism as well as of the idea that the state must protect certain fundamental rights of the individual.\" Britannica adds that \"A political community's constitution articulates the principles determining the institutions to which the task of governing is entrusted, along with their respective powers.\" In the Universal Decimal Classification the field falls under UDC 342, captioned \"Public law. Constitutional law. Administrative law,\" within the law class (UDC 34, \"Law. Jurisprudence\").",
+      "citations": [
+        {
+          "url": "https://web.archive.org/web/20260424190447/https://www.britannica.com/topic/constitutional-law",
+          "supports": "Encyclopaedia Britannica definition of constitutional law",
+          "quote": "the body of rules, doctrines, and practices that govern the operation of political communities",
+          "fetched": true
+        },
+        {
+          "url": "https://web.archive.org/web/20260424190447/https://www.britannica.com/topic/constitutional-law",
+          "supports": "Britannica on the modern origins and rights-protecting purpose of constitutional law",
+          "quote": "Modern constitutional law is the offspring of nationalism as well as of the idea that the state must protect certain fundamental rights of the individual.",
+          "fetched": true
+        },
+        {
+          "url": "https://web.archive.org/web/20260424190447/https://www.britannica.com/topic/constitutional-law",
+          "supports": "Britannica on what a constitution articulates (institutions and their powers)",
+          "quote": "A political community’s constitution articulates the principles determining the institutions to which the task of governing is entrusted, along with their respective powers.",
+          "fetched": true
+        },
+        {
+          "url": "https://udcsummary.info/php/getrecord.php?id=342&lang=1",
+          "supports": "UDC caption placing constitutional law within public law",
+          "quote": "Public law. Constitutional law. Administrative law",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Britannica content read from an Internet Archive Wayback snapshot (britannica.com returned HTTP 403 to curl and WebFetch); quoted spans are verbatim from the archived original page.",
+        "The UDC 34 parent caption 'Law. Jurisprudence' was fetched from the udcsummary.info getrecord endpoint in this batch and is reused across the four law nodes."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:international-law",
+      "summary": "International law is the branch of law governing relations between states and other entities recognized as actors on the international plane. Encyclopaedia Britannica defines it as \"the body of legal rules, norms, and standards that apply between sovereign states and other entities that are legally recognized as international actors,\" noting that \"The term was coined by the English philosopher Jeremy Bentham.\" The American Society of International Law (ASIL) states that its mission \"is to foster the study of international law and to promote the establishment and maintenance of international relations on the basis of law and justice,\" describing itself as an organization \"founded in 1906 and chartered by Congress in 1950.\" In the Universal Decimal Classification the field falls under UDC 341, \"International law,\" within the law class (UDC 34, \"Law. Jurisprudence\").",
+      "citations": [
+        {
+          "url": "https://web.archive.org/web/20260527055718/https://www.britannica.com/topic/international-law",
+          "supports": "Encyclopaedia Britannica definition of international law",
+          "quote": "the body of legal rules, norms, and standards that apply between sovereign states and other entities that are legally recognized as international actors",
+          "fetched": true
+        },
+        {
+          "url": "https://web.archive.org/web/20260527055718/https://www.britannica.com/topic/international-law",
+          "supports": "Britannica attribution of the term to Jeremy Bentham",
+          "quote": "The term was coined by the English philosopher Jeremy Bentham",
+          "fetched": true
+        },
+        {
+          "url": "https://web.archive.org/web/20260429142031/https://asil.org/about/",
+          "supports": "ASIL mission statement framing the study of international law",
+          "quote": "is to foster the study of international law and to promote the establishment and maintenance of international relations on the basis of law and justice",
+          "fetched": true
+        },
+        {
+          "url": "https://web.archive.org/web/20260429142031/https://asil.org/about/",
+          "supports": "ASIL founding and congressional charter facts",
+          "quote": "founded in 1906 and chartered by Congress in 1950",
+          "fetched": true
+        },
+        {
+          "url": "https://udcsummary.info/php/getrecord.php?id=341&lang=1",
+          "supports": "UDC caption for international law",
+          "quote": "International law",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Britannica and ASIL content both read from Internet Archive Wayback snapshots (britannica.com returned HTTP 403; asil.org returned HTTP 403 to direct fetches). Quoted spans are verbatim from the archived original pages.",
+        "Britannica's lead notes that Bentham's definition 'omits individuals and international organizations' as a sign of how the field has evolved; this evolution commentary was paraphrased only via the verbatim Bentham-attribution span and not over-quoted."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:criminal-law",
+      "summary": "Criminal law is the branch of law concerned with offenses against the public and the punishment of those who commit them. Encyclopaedia Britannica defines it as \"the body of law that defines criminal offenses, regulates the apprehension, charging, and trial of suspected persons, and fixes penalties and modes of treatment applicable to convicted offenders.\" Britannica situates it as \"only one of the devices by which organized societies protect the security of individual interests and ensure the survival of the group,\" and notes that the line between criminal law and tort law \"is difficult to draw with real precision.\" In the Universal Decimal Classification the field falls under UDC 343, \"Criminal law. Penal offences,\" within the law class (UDC 34, \"Law. Jurisprudence\").",
+      "citations": [
+        {
+          "url": "https://web.archive.org/web/20260518213511/https://www.britannica.com/topic/criminal-law",
+          "supports": "Encyclopaedia Britannica definition of criminal law",
+          "quote": "the body of law that defines criminal offenses, regulates the apprehension, charging, and trial of suspected persons, and fixes penalties and modes of treatment applicable to convicted offenders",
+          "fetched": true
+        },
+        {
+          "url": "https://web.archive.org/web/20260518213511/https://www.britannica.com/topic/criminal-law",
+          "supports": "Britannica framing criminal law as one device for protecting societal interests",
+          "quote": "only one of the devices by which organized societies protect the security of individual interests and ensure the survival of the group",
+          "fetched": true
+        },
+        {
+          "url": "https://web.archive.org/web/20260518213511/https://www.britannica.com/topic/criminal-law",
+          "supports": "Britannica on the difficulty of distinguishing criminal law from tort law",
+          "quote": "is difficult to draw with real precision",
+          "fetched": true
+        },
+        {
+          "url": "https://udcsummary.info/php/getrecord.php?id=343&lang=1",
+          "supports": "UDC caption for criminal law",
+          "quote": "Criminal law. Penal offences",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Britannica content read from an Internet Archive Wayback snapshot (HTTP 403 on direct fetch); quoted spans are verbatim from the archived original page.",
+        "The third quote ('is difficult to draw with real precision') is a fragment of the sentence 'The distinction between criminal law and tort law is difficult to draw with real precision'; the in-text wording attributes it explicitly to the criminal-law/tort-law distinction so the fragment is not misleading."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:civil-law",
+      "summary": "Civil law, in the branch-of-law sense, is the body of law governing non-criminal legal relationships between persons — the law of contracts, property, torts, family, and obligations — as distinct from criminal law and from public law. Encyclopaedia Britannica characterizes private law, the broader category to which this branch belongs, as \"private law regulating the actions, interests, and obligations of private persons.\" In the Universal Decimal Classification the branch is grouped under UDC 347, captioned \"Civil law,\" which sits alongside UDC 341 \"International law,\" UDC 342 \"Public law. Constitutional law. Administrative law,\" and UDC 343 \"Criminal law. Penal offences\" within the law class (UDC 34, \"Law. Jurisprudence\"). This referent is the substantive branch of private law, not a national or continental legal system.",
+      "citations": [
+        {
+          "url": "https://web.archive.org/web/20250710053233/https://www.britannica.com/topic/private-law",
+          "supports": "Encyclopaedia Britannica characterization of private law as regulating the affairs of private persons (the category containing the civil-law branch)",
+          "quote": "private law regulating the actions, interests, and obligations of private persons",
+          "fetched": true
+        },
+        {
+          "url": "https://udcsummary.info/php/getrecord.php?id=347&lang=1",
+          "supports": "UDC caption placing civil law as a substantive branch within the law class",
+          "quote": "Civil law",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "REFERENT PIN ENFORCED: this summary is written entirely for the BRANCH-OF-LAW sense of civil law (Q222249) — the body of non-criminal law between persons. I deliberately did NOT use Encyclopaedia Britannica's 'civil-law-Romano-Germanic' article (titled 'Civil law', defined there as 'the law of continental Europe, based on an admixture of Roman, Germanic, ecclesiastical, feudal, commercial, and customary law'); that article is the continental LEGAL-SYSTEM sense, a different Wikidata entity, and citing it would contradict the pin.",
+        "Britannica's private-law passage is a cross-reference fragment ('Other articles where private law is discussed: administrative law...') that begins mid-sentence with an ellipsis; the quoted span 'private law regulating the actions, interests, and obligations of private persons' is the verbatim, self-contained operative clause within it. Used as a characterization of the private-law category, not as a full standalone definition of the civil-law branch — the branch's distinct placement is carried by UDC 347.",
+        "The enumeration of contracts, property, torts, family, and obligations as the branch's subject matter is the conventional scope of the branch but is asserted here without a single fetched source enumerating all of them verbatim; QC should confirm against a gate-grade source or trim the enumeration. The UDC 347 caption confirms only the label 'Civil law' and its placement within the law class.",
+        "Britannica content read from Internet Archive Wayback snapshots (HTTP 403 on direct fetch)."
+      ],
+      "unfetched": [
+        "A single gate-grade source defining the civil-law BRANCH (Q222249) verbatim and enumerating contracts/property/torts/family/obligations — Britannica's only matching-title article is the Romano-Germanic legal-system sense (wrong referent), and its private-law entry is a cross-reference fragment, so the branch enumeration in the summary rests on conventional knowledge plus UDC 347 placement rather than a verbatim definitional quote."
+      ]
+    }
+  ],
+  "spn_queue": [
+    "https://www.aera.net/About-AERA/Member-Constituents/Divisions",
+    "https://www.aera.net/Division-J/Postsecondary-Education-J",
+    "https://www.ashe.ws/",
+    "https://exceptionalchildren.org/about-us",
+    "https://udcsummary.info/php/getrecord.php?id=37.01&lang=1",
+    "https://udcsummary.info/php/getrecord.php?id=37.02&lang=1",
+    "https://udcsummary.info/php/getrecord.php?id=341&lang=1",
+    "https://udcsummary.info/php/getrecord.php?id=342&lang=1",
+    "https://udcsummary.info/php/getrecord.php?id=343&lang=1",
+    "https://udcsummary.info/php/getrecord.php?id=347&lang=1",
+    "https://udcsummary.info/php/getrecord.php?id=376&lang=1",
+    "https://udcsummary.info/php/getrecord.php?id=378&lang=1",
+    "https://web.archive.org/web/20260510032200/https://www.britannica.com/topic/special-education",
+    "https://web.archive.org/web/20260424190447/https://www.britannica.com/topic/constitutional-law",
+    "https://web.archive.org/web/20260527055718/https://www.britannica.com/topic/international-law",
+    "https://web.archive.org/web/20260518213511/https://www.britannica.com/topic/criminal-law",
+    "https://web.archive.org/web/20250710053233/https://www.britannica.com/topic/private-law",
+    "https://web.archive.org/web/20260429142031/https://asil.org/about/"
+  ]
+}
