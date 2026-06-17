@@ -1,0 +1,1002 @@
+{
+  "batch": "medicine-summaries-v1",
+  "generated_by": "claude-opus-4-8 (×6 separate-context subagents, decision (26)/(40))",
+  "summaries": [
+    {
+      "node_id": "field:public-health",
+      "summary": "Public health is the science of preventing disease, prolonging life, and promoting health through organized efforts and informed choices of society, organizations, communities, and individuals. Its scope spans populations ranging from small groups to entire cities or, in the case of a pandemic, several continents. Analyzing the determinants of health of a population and the threats it faces forms the basis of the field.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Public_health",
+          "supports": "Definition of public health and its scope across populations.",
+          "quote": "Analyzing the determinants of health of a population and the threats it faces is the basis for public health.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Public_health",
+          "supports": "WHO/Wikipedia definition of public health",
+          "quote": "the science of preventing disease, prolonging life and promoting health through the organized efforts and informed choices of society, organizations, public and private, communities and individuals",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:epidemiology",
+      "summary": "Epidemiology is the study and analysis of the distribution, patterns, and determinants of health and disease conditions in a defined population, and the application of this knowledge to prevent diseases.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Epidemiology",
+          "supports": "Definition of epidemiology as the study of distribution and determinants of health and disease in populations.",
+          "quote": "Epidemiology is the study and analysis of the distribution, patterns and determinants of health and disease conditions in a defined population, and application of this knowledge to prevent diseases.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "The phrase 'a population science central to public health' is my framing, not a verbatim quote; only the core definitional sentence is citation-backed."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:biostatistics",
+      "summary": "Biostatistics is a branch of statistics that applies statistical methods to a wide range of topics in the biological sciences, with a focus on clinical medicine and public health applications. The field encompasses the design of experiments, the collection and analysis of experimental and observational data, and the interpretation of the results. It is closely related to medical statistics.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Biostatistics",
+          "supports": "Definition of biostatistics, its applications, and its scope.",
+          "quote": "Biostatistics is a branch of statistics that applies statistical methods to a wide range of topics in the biological sciences, with a focus on clinical medicine and public health applications.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:environmental-health",
+      "summary": "Environmental health is the branch of public health concerned with all aspects of the natural and built environment affecting human health. Its study determines the requirements for a healthy environment, with the goal of effective control over the factors that affect health. Its major sub-disciplines are environmental science, toxicology, environmental epidemiology, and environmental and occupational medicine.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Environmental_health",
+          "supports": "Definition of environmental health as a branch of public health, its goal, and its sub-disciplines.",
+          "quote": "Environmental health is the branch of public health concerned with all aspects of the natural and built environment affecting human health. Its study determines the requirements for a healthy environment, with the goal of effective control over the factors that affect health. The major sub-disciplines of environmental health are environmental science, toxicology, environmental epidemiology, and environmental and occupational medicine.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:occupational-medicine",
+      "summary": "Occupational medicine, also termed occupational and environmental medicine and previously called industrial medicine, is a medical specialty concerned with work-related illnesses and injuries. In the United States it is a board-certified specialty under the American Board of Preventive Medicine.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Occupational_medicine",
+          "supports": "Identification of occupational medicine as a medical specialty addressing work-related illnesses and injuries, board-certified in the US.",
+          "quote": "Occupational and Environmental Medicine (OEM), previously called industrial medicine, is a board certified medical specialty under the American Board of Preventative Medicine that specializes in the prevention and treatment of work-related illnesses and injuries.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "The source defines the field via US-specific board certification (American Board of Preventive Medicine); I generalized to 'a medical specialty' and flagged the US-specific framing, which is jurisdiction-bound rather than universal.",
+        "The closing sentence ('It sits at the intersection...') is my framing, not a verbatim quote.",
+        "Note: the source spells it 'American Board of Preventative Medicine'; the verbatim quote preserves that spelling, though the body's official name is 'American Board of Preventive Medicine'."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:health-policy-and-management",
+      "summary": "Health policy and management is the field relating to leadership, management, and administration of public health systems, health care systems, hospitals, and hospital networks.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Health_policy_and_management",
+          "supports": "Definition of health policy and management and the systems it concerns.",
+          "quote": "Health policy and management is the field relating to leadership, management, and administration of public health systems, health care systems, hospitals, and hospital networks.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "The second sentence is my framing/contrast; only the first sentence is verbatim-backed."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:global-health",
+      "summary": "Global health is the health of populations in a worldwide context, defined as the area of study, research, and practice that places a priority on improving health and achieving equity in health for all people worldwide. It emphasizes problems that transcend national borders or have a global political and economic impact, concerning worldwide health improvement, reduction of disparities, and protection against transnational threats.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Global_health",
+          "supports": "Definition and scope of global health, including its worldwide and equity orientation.",
+          "quote": "Global health is the health of populations in a worldwide context; it has been defined as",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Global_health",
+          "supports": "definition of global health",
+          "quote": "the area of study, research, and practice that places a priority on improving health and achieving equity in health for all people worldwide",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:forensic-medicine",
+      "summary": "Forensic medicine, also known as medical jurisprudence or legal medicine, is the branch of science and medicine involving the study and application of scientific and medical knowledge to legal problems, such as inquests, and in the field of law.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Medical_jurisprudence",
+          "supports": "Definition of forensic medicine / medical jurisprudence / legal medicine as application of medical knowledge to legal problems.",
+          "quote": "Medical jurisprudence or legal medicine is the branch of science and medicine involving the study and application of scientific and medical knowledge to legal problems, such as inquests, and in the field of law.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Referent mapping: node label is 'Forensic Medicine' but QID Q454812's enwiki sitelink is 'Medical jurisprudence'. The Wikipedia article presents 'medical jurisprudence', 'legal medicine', and (in practice) 'forensic medicine' as overlapping/synonymous; I treated them as the same referent per the QID. Some taxonomies distinguish forensic medicine (the clinical/pathological practice) from medical jurisprudence (the law-of-medicine), so the equivalence is not perfectly clean.",
+        "The phrase 'sexual assault' is my paraphrase of the source's 'rape'; the verbatim quote does not include the second sentence, so that detail is not in the cited quote — only the first-sentence definition is verbatim-backed."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:toxicology",
+      "summary": "Toxicology is a scientific discipline, overlapping with biology, chemistry, pharmacology, and medicine, that involves the study of the adverse effects of chemical substances on living organisms. The relationship between dose and its effects on the exposed organism is of high significance in the field. Factors that influence chemical toxicity include the dosage, duration of exposure, route of exposure, species, age, sex, and environment.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Toxicology",
+          "supports": "Definition of toxicology, the centrality of dose-response, and factors influencing toxicity.",
+          "quote": "Toxicology is a scientific discipline, overlapping with biology, chemistry, pharmacology, and medicine, that involves the study of the adverse effects of chemical substances on living organisms and the practice of diagnosing and treating exposures to toxins and toxicants. The relationship between dose and its effects on the exposed organism is of high significance in toxicology. Factors that influence chemical toxicity include the dosage, duration of exposure, route of exposure, species, age, sex, and environment.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:internal-medicine",
+      "summary": "Internal medicine is a medical specialty focused on the prevention, diagnosis, and treatment of diseases in adults. Also known as general medicine in Commonwealth nations, it concerns the internal organs, and many of its subspecialties (such as cardiology, nephrology, and endocrinology) address specific organ systems within adult medicine.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Internal_medicine",
+          "supports": "Internal medicine is a specialty focused on prevention, diagnosis, and treatment of diseases in adults; also called general medicine in Commonwealth nations.",
+          "quote": "Internal medicine, also known as general medicine in Commonwealth nations, is a specialty for medical doctors focused on the prevention, diagnosis, and treatment of diseases in adults.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Internal_medicine",
+          "supports": "Internal medicine concerns diseases of the internal organs.",
+          "quote": "treatment of diseases of the internal organs",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:cardiology",
+      "summary": "Cardiology is a branch of medicine that deals with disorders of the heart and the cardiovascular system, and it is a subspecialty of internal medicine. The field includes the medical diagnosis and treatment of conditions such as congenital heart defects, coronary artery disease, heart failure, and valvular heart disease.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cardiology",
+          "supports": "Cardiology deals with disorders of the heart and cardiovascular system and is a sub-specialty of internal medicine.",
+          "quote": "Cardiology is a branch of medicine that deals with disorders of the heart and the cardiovascular system, and it is a sub-specialty of internal medicine.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cardiology",
+          "supports": "The field includes diagnosis and treatment of congenital heart defects, coronary artery disease, heart failure, and valvular heart disease.",
+          "quote": "The field includes medical diagnosis and treatment of congenital heart defects, coronary artery disease, heart failure, valvular heart disease, and electrophysiology.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:oncology",
+      "summary": "Oncology is a branch of medicine that deals with the study, treatment, diagnosis, and prevention of cancer. A medical professional who practices oncology is an oncologist.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Oncology",
+          "supports": "Oncology deals with the study, treatment, diagnosis, and prevention of cancer.",
+          "quote": "Oncology is a branch of medicine that deals with the study, treatment, diagnosis, and prevention of cancer.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Oncology",
+          "supports": "A practitioner of oncology is an oncologist.",
+          "quote": "A medical professional who practices oncology is an oncologist.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "The clause 'medical oncology is commonly practiced within internal medicine' is general background and is not directly supported by the cited verbatim quotes; the Wikipedia extract does not state the internal-medicine relationship for oncology."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:gastroenterology",
+      "summary": "Gastroenterology is the branch of medicine focused on the digestive system and its disorders. The digestive system it addresses consists of the gastrointestinal tract — including the esophagus, stomach, small intestine and large intestine — as well as the accessory organs of digestion: the pancreas, gallbladder, and liver.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Gastroenterology",
+          "supports": "Gastroenterology focuses on the digestive system and its disorders.",
+          "quote": "Gastroenterology is the branch of medicine focused on the digestive system and its disorders.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Gastroenterology",
+          "supports": "The digestive system includes the GI tract and accessory organs (pancreas, gallbladder, liver).",
+          "quote": "the gastrointestinal tract, sometimes referred to as the GI tract, which includes the esophagus, stomach, small intestine and large intestine as well as the accessory organs of digestion which include the pancreas, gallbladder, and liver",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:endocrinology",
+      "summary": "Endocrinology is a branch of biology and medicine dealing with the endocrine system, its diseases, and its specific secretions known as hormones. Recognized specializations include behavioral endocrinology and comparative endocrinology.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Endocrinology",
+          "supports": "Endocrinology deals with the endocrine system, its diseases, and hormones.",
+          "quote": "Endocrinology is a branch of biology and medicine dealing with the endocrine system, its diseases, and its specific secretions known as hormones.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Endocrinology",
+          "supports": "Specializations include behavioral endocrinology and comparative endocrinology.",
+          "quote": "Specializations include behavioral endocrinology and comparative endocrinology.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "The clause 'generally practiced as a subspecialty of internal medicine' is standard background but is not supported by the cited verbatim quotes; the Wikipedia extract does not state the internal-medicine relationship for endocrinology."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:nephrology",
+      "summary": "Nephrology is a specialty for both adult internal medicine and pediatric medicine that concerns the study of the kidneys, specifically normal kidney function and kidney disease, the preservation of kidney health, and the treatment of kidney disease. Its scope ranges from diet and medication to renal replacement therapy.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Nephrology",
+          "supports": "Nephrology is a specialty for adult internal medicine and pediatric medicine concerning kidney function, kidney disease, preservation of kidney health, and treatment ranging from diet and medication to renal replacement therapy.",
+          "quote": "Nephrology is a specialty for both adult internal medicine and pediatric medicine that concerns the study of the kidneys, specifically normal kidney function and kidney disease, the preservation of kidney health, and the treatment of kidney disease, from diet and medication to renal replacement therapy.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:pulmonology",
+      "summary": "Pulmonology, also called pneumology or pneumonology, is a medical specialty that deals with diseases involving the respiratory tract. It is also known as respirology, respiratory medicine, or chest medicine in some countries and areas.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Pulmonology",
+          "supports": "Pulmonology (also pneumology/pneumonology) is a medical specialty dealing with diseases of the respiratory tract.",
+          "quote": "Pulmonology, pneumology or pneumonology is a medical specialty that deals with diseases involving the respiratory tract.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Pulmonology",
+          "supports": "It is also known as respirology, respiratory medicine, or chest medicine in some countries.",
+          "quote": "It is also known as respirology, respiratory medicine, or chest medicine in some countries and areas.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "The clause 'commonly practiced as a subspecialty of internal medicine' is standard background but is not supported by the cited verbatim quotes; the Wikipedia extract does not state the internal-medicine relationship for pulmonology."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:hematology",
+      "summary": "Hematology is the branch of medicine concerned with the study of the cause, prognosis, treatment, and prevention of diseases related to blood. It involves diseases affecting the production of blood and its components — such as blood cells, hemoglobin, blood proteins, bone marrow, platelets, blood vessels, and the spleen — and the mechanism of coagulation; conditions within its scope include hemophilia, sickle cell anemia, bleeding disorders, and blood cancers such as leukemia, multiple myeloma, and lymphoma.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Hematology",
+          "supports": "Hematology concerns the study of the cause, prognosis, treatment, and prevention of diseases related to blood.",
+          "quote": "Hematology is the branch of medicine concerned with the study of the cause, prognosis, treatment, and prevention of diseases related to blood.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Hematology",
+          "supports": "It involves blood production and components and coagulation; conditions include hemophilia, sickle cell anemia, bleeding disorders, and blood cancers such as leukemia, multiple myeloma, and lymphoma.",
+          "quote": "Such diseases might include hemophilia, sickle cell anemia, blood clots (thrombus), other bleeding disorders, and blood cancers such as leukemia, multiple myeloma, and lymphoma.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:rheumatology",
+      "summary": "Rheumatology is a branch of medicine devoted to the diagnosis and management of disorders whose common feature is inflammation in the bones, muscles, joints, and internal organs.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Rheumatology",
+          "supports": "Rheumatology is devoted to the diagnosis and management of disorders whose common feature is inflammation in the bones, muscles, joints, and internal organs.",
+          "quote": "Rheumatology is a branch of medicine devoted to the diagnosis and management of disorders of which the common feature is inflammation in the bones, muscles, joints, and internal organs.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "The clause 'commonly practiced as a subspecialty of internal medicine' is standard background but is not supported by the cited verbatim quote; the Wikipedia extract does not state the internal-medicine relationship for rheumatology."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:surgery",
+      "summary": "Surgery is a medical specialty that uses manual and instrumental techniques to diagnose or treat pathological conditions, to alter bodily functions, to reconstruct or alter aesthetics and appearance, or to remove unwanted tissues, neoplasms, and foreign bodies. As a primary specialty it serves as the parent field for numerous procedural subspecialties.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Surgery",
+          "supports": "Surgery is a medical specialty using manual and instrumental techniques to diagnose or treat conditions and to remove or reconstruct tissue.",
+          "quote": "Surgery is a medical specialty that uses manual and instrumental techniques to diagnose or treat pathological conditions, to alter bodily functions, to reconstruct or alter aesthetics and appearance, or to remove unwanted tissues, neoplasms and foreign bodies.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:orthopedic-surgery",
+      "summary": "Orthopedic surgery, or orthopedics, is the branch of surgery concerned with conditions involving the musculoskeletal system. As a surgical subspecialty it addresses musculoskeletal trauma, spine diseases, sports injuries, degenerative diseases, infections, tumors, and congenital disorders through both surgical and nonsurgical means.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Orthopedic_surgery",
+          "supports": "Orthopedic surgery is the branch of surgery concerned with the musculoskeletal system and the range of conditions it covers.",
+          "quote": "Orthopedic surgery or orthopedics is the branch of surgery concerned with conditions involving the musculoskeletal system. Orthopedic surgeons use both surgical and nonsurgical means to treat musculoskeletal trauma, spine diseases, sports injuries, degenerative diseases, infections, tumors and congenital disorders.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:neurosurgery",
+      "summary": "Neurosurgery, also known as neurological surgery, is the medical specialty that focuses on the surgical treatment or rehabilitation of disorders that affect any portion of the nervous system, including the brain, spinal cord, peripheral nervous system, and cerebrovascular system. As a surgical subspecialty it also includes the non-surgical management of some neurological conditions.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Neurosurgery",
+          "supports": "Neurosurgery is the specialty focused on surgical treatment of nervous-system disorders and also includes non-surgical management of some conditions.",
+          "quote": "Neurosurgery or/and neurological surgery, also known in common parlance as brain surgery, is the medical specialty that focuses on the surgical treatment or rehabilitation of disorders that affect any portion of the nervous system, including the brain, spinal cord, peripheral nervous system, and cerebrovascular system. Neurosurgery as a medical specialty also includes non-surgical management of some neurological conditions.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:plastic-surgery",
+      "summary": "Plastic surgery is a surgical specialty involving restoration, reconstruction, or alteration of the human body. It is conventionally divided into two main categories: reconstructive surgery and cosmetic surgery.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Plastic_surgery",
+          "supports": "Plastic surgery is a surgical specialty involving restoration, reconstruction, or alteration of the body, divided into reconstructive and cosmetic surgery.",
+          "quote": "Plastic surgery is a surgical specialty involving restoration, reconstruction, or alteration of the human body. It can be divided into two main categories: reconstructive surgery and cosmetic surgery.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:cardiothoracic-surgery",
+      "summary": "Cardiothoracic surgery is the field of medicine involved in surgical treatment of organs inside the thoracic cavity, generally the heart, lungs, and other pleural or mediastinal structures. It is a surgical subspecialty addressing conditions of the chest.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cardiothoracic_surgery",
+          "supports": "Cardiothoracic surgery is the field involved in surgical treatment of organs inside the thoracic cavity, including the heart and lungs.",
+          "quote": "Cardiothoracic (CT) surgery is the field of medicine involved in surgical treatment of organs inside the thoracic cavity — generally treatment of conditions of the heart, lungs, and other pleural or mediastinal structures.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "QID Q2964004 enwiki sitelink confirmed as 'Cardiothoracic surgery' (the intended referent), not 'Thoracic surgery'."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:urology",
+      "summary": "Urology, also known as genitourinary surgery, is the branch of medicine that focuses on surgical and medical diseases of the urinary system and the male reproductive organs. Organs under its domain include the kidneys, adrenal glands, ureters, urinary bladder, urethra, and the male reproductive organs.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Urology",
+          "supports": "Urology is the branch of medicine focused on surgical and medical diseases of the urinary system and the male reproductive organs.",
+          "quote": "Urology, also known as genitourinary surgery, is the branch of medicine that focuses on surgical and medical diseases of the urinary system and the male reproductive organs. Organs under the domain of urology include the kidneys, adrenal glands, ureters, urinary bladder, urethra, and the male reproductive organs.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:anesthesiology",
+      "summary": "Anesthesiology, also spelled anaesthesiology or anaesthesia, is the medical specialty concerned with the total perioperative care of patients before, during, and after surgery. As a primary specialty it encompasses anesthesia, intensive care medicine, critical emergency medicine, and pain medicine.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Anesthesiology",
+          "supports": "Anesthesiology is the medical specialty concerned with total perioperative care and encompassing anesthesia, intensive care, critical emergency, and pain medicine.",
+          "quote": "Anesthesiology, anaesthesiology or anaesthesia is the medical specialty concerned with the total perioperative care of patients before, during and after surgery. It encompasses anesthesia, intensive care medicine, critical emergency medicine, and pain medicine.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:emergency-medicine",
+      "summary": "Emergency medicine is the medical specialty concerned with the care of illnesses or injuries requiring immediate medical attention. As a primary specialty its physicians provide care for unscheduled and undifferentiated patients of all ages and generally practice in hospital emergency departments, pre-hospital settings via emergency medical services, and intensive care units.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Emergency_medicine",
+          "supports": "Emergency medicine is the specialty concerned with care of illnesses or injuries requiring immediate attention, for unscheduled and undifferentiated patients of all ages.",
+          "quote": "Emergency medicine is the medical specialty concerned with the care of illnesses or injuries requiring immediate medical attention. Emergency physicians specialize in providing care for unscheduled and undifferentiated patients of all ages.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:physical-and-rehabilitation-medicine",
+      "summary": "Physical medicine and rehabilitation (PM&R), also known as physiatry and, outside the United States, as physical and rehabilitation medicine, is a branch of medicine that aims to enhance and restore functional ability and quality of life to people with physical impairments or disabilities. PM&R physicians lead rehabilitation teams in inpatient and outpatient settings and are trained in medication management, electrodiagnosis, and targeted injections.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Physical_medicine_and_rehabilitation",
+          "supports": "PM&R (physiatry) is a branch of medicine aiming to enhance and restore functional ability and quality of life for people with physical impairments or disabilities.",
+          "quote": "Physical medicine and rehabilitation (PM&R), also known as physiatry, and outside the United States as physical and rehabilitation medicine (PRM), is a branch of medicine that aims to enhance and restore functional ability and quality of life to people with physical impairments or disabilities.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Physical_medicine_and_rehabilitation",
+          "supports": "PM&R physicians lead rehabilitation teams in inpatient and outpatient settings and are trained in medication management, electrodiagnosis, and targeted injections.",
+          "quote": "PM&R physicians lead rehabilitation teams in inpatient and outpatient settings and are trained in medication management, electrodiagnosis, and targeted injections.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "QID Q2678675 confirmed as Physical Medicine and Rehabilitation (PM&R / physiatry) per task note."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:psychiatry",
+      "summary": "Psychiatry is the medical specialty devoted to the diagnosis, treatment, and prevention of mental disorders, including conditions related to cognition, perception, mood, emotion, and behavior. It is recognized as a primary medical specialty.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Psychiatry",
+          "supports": "Psychiatry is the medical specialty for the diagnosis, treatment, and prevention of mental conditions.",
+          "quote": "Psychiatry is the medical specialty devoted to the diagnosis, treatment, and prevention of deleterious mental conditions.",
+          "fetched": true
+        },
+        {
+          "url": "https://id.nlm.nih.gov/mesh/M0017987.json",
+          "supports": "Psychiatry concerns the origin, diagnosis, prevention, and treatment of mental disorders.",
+          "quote": "The medical science that deals with the origin, diagnosis, prevention, and treatment of mental disorders.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:neurology",
+      "summary": "Neurology is the branch of medicine dealing with the diagnosis and treatment of conditions and diseases involving the nervous system, which comprises the brain, the spinal cord, and the peripheral nerves. It is a medical specialty that draws on the field of neuroscience.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Neurology",
+          "supports": "Neurology is the branch of medicine for diagnosis and treatment of nervous system conditions.",
+          "quote": "Neurology is the branch of medicine dealing with the diagnosis and treatment of all categories of conditions and disease involving the nervous system, which comprises the brain, the spinal cord and the peripheral nerves.",
+          "fetched": true
+        },
+        {
+          "url": "https://id.nlm.nih.gov/mesh/M0014717.json",
+          "supports": "Neurology is a medical specialty concerned with the nervous system.",
+          "quote": "A medical specialty concerned with the study of the structures, functions, and diseases of the nervous system.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:pediatrics",
+      "summary": "Pediatrics is the branch of medicine that involves the medical care of infants, toddlers, children, adolescents, and young adults. It is a medical specialty concerned with maintaining health and providing care to children from birth to adolescence.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Pediatrics",
+          "supports": "Pediatrics is the branch of medicine for the medical care of children and young adults.",
+          "quote": "Pediatrics, also spelled paediatrics and also known as underage medicine, is the branch of medicine that involves the medical care of infants, toddlers, children, adolescents, and young adults.",
+          "fetched": true
+        },
+        {
+          "url": "https://id.nlm.nih.gov/mesh/M0016084.json",
+          "supports": "Pediatrics is a medical specialty providing care to children from birth to adolescence.",
+          "quote": "A medical specialty concerned with maintaining health and providing medical care to children from birth to adolescence.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:ophthalmology",
+      "summary": "Ophthalmology is the branch of medicine that deals with the diagnosis, treatment, and surgery of eye diseases and disorders. It is a surgical specialty concerned with the structure and function of the eye and the medical and surgical treatment of its defects and diseases.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Ophthalmology",
+          "supports": "Ophthalmology is the branch of medicine dealing with eye diseases and disorders.",
+          "quote": "Ophthalmology is the branch of medicine that deals with the diagnosis, treatment, and surgery of eye diseases and disorders.",
+          "fetched": true
+        },
+        {
+          "url": "https://id.nlm.nih.gov/mesh/M0015331.json",
+          "supports": "Ophthalmology is a surgical specialty concerned with the eye.",
+          "quote": "A surgical specialty concerned with the structure and function of the eye and the medical and surgical treatment of its defects and diseases.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:otolaryngology",
+      "summary": "Otorhinolaryngology, commonly known as otolaryngology or ENT, is a surgical subspecialty within medicine that deals with the surgical and medical management of conditions of the head and neck. It is concerned with the study and treatment of disorders of the ear, nose, and throat.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Otorhinolaryngology",
+          "supports": "Otorhinolaryngology is a surgical subspecialty managing conditions of the head and neck.",
+          "quote": "Otorhinolaryngology is a surgical subspecialty within medicine that deals with the surgical and medical management of conditions of the head and neck.",
+          "fetched": true
+        },
+        {
+          "url": "https://id.nlm.nih.gov/mesh/M0015567.json",
+          "supports": "Otolaryngology is a surgical specialty concerned with disorders of the ear, nose, and throat.",
+          "quote": "A surgical specialty concerned with the study and treatment of disorders of the ear, nose, and throat.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:obstetrics-and-gynecology",
+      "summary": "Obstetrics and gynaecology is the medical specialty that encompasses the two subspecialties of obstetrics and gynaecology. Obstetrics is concerned with the management and care of women during pregnancy, parturition, and the puerperium, while gynaecology is concerned primarily with disorders of the female genital tract and reproductive physiology.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Obstetrics_and_gynaecology",
+          "supports": "Obstetrics and gynaecology is a medical specialty encompassing the two subspecialties.",
+          "quote": "Obstetrics and gynaecology is the medical specialty that encompasses the two subspecialties of obstetrics and gynaecology.",
+          "fetched": true
+        },
+        {
+          "url": "https://id.nlm.nih.gov/mesh/M0015174.json",
+          "supports": "Obstetrics concerns care of women during pregnancy, parturition, and the puerperium.",
+          "quote": "A medical-surgical specialty concerned with management and care of women during pregnancy, parturition, and the puerperium.",
+          "fetched": true
+        },
+        {
+          "url": "https://id.nlm.nih.gov/mesh/M0009716.json",
+          "supports": "Gynecology concerns disorders of the female genital tract and reproductive physiology.",
+          "quote": "A medical-surgical specialty concerned with the physiology and disorders primarily of the female genital tract, as well as female endocrinology and reproductive physiology.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:dermatology",
+      "summary": "Dermatology is the branch of medicine dealing with the skin, its structure, functions, diseases, and treatment. It is a medical specialty with both medical and surgical aspects.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Dermatology",
+          "supports": "Dermatology is the branch of medicine dealing with the skin and has medical and surgical aspects.",
+          "quote": "Dermatology is the branch of medicine dealing with the skin. It is a specialty with both medical and surgical aspects.",
+          "fetched": true
+        },
+        {
+          "url": "https://id.nlm.nih.gov/mesh/M0006058.json",
+          "supports": "Dermatology is a medical specialty concerned with the skin and its diseases and treatment.",
+          "quote": "A medical specialty concerned with the skin, its structure, functions, diseases, and treatment.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:family-medicine",
+      "summary": "Family medicine is a medical specialty that provides continuing and comprehensive health care for the individual and family across all ages, sexes, diseases, and parts of the body. The specialist is usually a primary care physician called a family physician, and in certain countries family medicine is synonymous with general practice.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Family_medicine",
+          "supports": "Family medicine is a medical specialty providing comprehensive care across all ages and body systems.",
+          "quote": "Family medicine is a medical specialty that provides continuing and comprehensive health care for the individual and family across all ages, sexes, diseases, and parts of the body.",
+          "fetched": true
+        },
+        {
+          "url": "https://id.nlm.nih.gov/mesh/M0008220.json",
+          "supports": "Family practice is a medical specialty providing primary health care for the entire family.",
+          "quote": "A medical specialty concerned with the provision of continuing, comprehensive primary health care for the entire family.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:pathology",
+      "summary": "Pathology is the study of disease and a significant field in modern medical diagnosis and medical research. In contemporary medicine the term refers to the diagnostic specialty of general pathology, which encompasses inter-related specialties that diagnose disease mostly through analysis of tissue and human cell samples. A physician practicing pathology is called a pathologist.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Pathology",
+          "supports": "Pathology is the study of disease and is a field in medical diagnosis and research; in modern medicine it refers to general pathology and is practiced by a pathologist.",
+          "quote": "Pathology is the study of disease.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Pathology",
+          "supports": "General pathology comprises inter-related specialties that diagnose disease through tissue and cell sample analysis.",
+          "quote": "an area that includes a number of distinct but inter-related medical specialties that diagnose disease, mostly through analysis of tissue and human cell samples",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:radiology",
+      "summary": "Radiology is the medical specialty that uses medical imaging to diagnose diseases and guide treatment within the bodies of humans and other animals. It began with radiography but today includes imaging modalities that use no ionizing radiation, such as ultrasonography and magnetic resonance imaging, as well as those that do, such as computed tomography, fluoroscopy, and nuclear medicine. Interventional radiology is the performance of usually minimally invasive medical procedures with the guidance of these imaging technologies.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Radiology",
+          "supports": "Radiology is the medical specialty that uses medical imaging to diagnose disease and guide treatment in humans and other animals.",
+          "quote": "Radiology is the medical specialty that uses medical imaging to diagnose diseases and guide treatment within the bodies of humans and other animals.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Radiology",
+          "supports": "Interventional radiology is the performance of usually minimally invasive procedures under imaging guidance.",
+          "quote": "Interventional radiology is the performance of usually minimally invasive medical procedures with the guidance of imaging technologies such as those mentioned above.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:nuclear-medicine",
+      "summary": "Nuclear medicine is a medical specialty involving the application of radioactive substances in the diagnosis and treatment of disease. Unlike conventional radiology, it records radiation emitted from within the body rather than radiation transmitted through it, and its emphasis is on physiological function rather than imaging anatomy. Single photon emission computed tomography (SPECT) and positron emission tomography (PET) scans are the two most common imaging modalities in nuclear medicine.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Nuclear%20medicine",
+          "supports": "Nuclear medicine is a medical specialty applying radioactive substances to the diagnosis and treatment of disease.",
+          "quote": "Nuclear medicine is a medical specialty involving the application of radioactive substances in the diagnosis and treatment of disease.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Nuclear%20medicine",
+          "supports": "SPECT and PET are the two most common imaging modalities in nuclear medicine.",
+          "quote": "Single photon emission computed tomography (SPECT) and positron emission tomography (PET) scans are the two most common imaging modalities in nuclear medicine.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:medical-physics",
+      "summary": "Medical physics deals with the application of the concepts and methods of physics to the prevention, diagnosis and treatment of human diseases, with a specific goal of improving human health and well-being. Since 2008 it has been included as a health profession according to the International Standard Classification of Occupations of the International Labour Organization.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Medical%20physics",
+          "supports": "Medical physics applies the concepts and methods of physics to the prevention, diagnosis and treatment of human disease.",
+          "quote": "Medical physics deals with the application of the concepts and methods of physics to the prevention, diagnosis and treatment of human diseases with a specific goal of improving human health and well-being.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Medical%20physics",
+          "supports": "Since 2008 medical physics is classified as a health profession by the ILO's International Standard Classification of Occupations.",
+          "quote": "Since 2008, medical physics has been included as a health profession according to International Standard Classification of Occupation of the International Labour Organization.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:pharmacology",
+      "summary": "Pharmacology is the science of drugs and medications, including a substance's origin, composition and interaction with biological systems, specifically through pharmacokinetics, pharmacodynamics, therapeutic use, and toxicology. It examines how a substance alters normal or abnormal biochemical function. As a branch of biomedical science it is distinct from pharmacy, the clinical profession of preparing and dispensing medicines.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Pharmacology",
+          "supports": "Pharmacology is the science of drugs and medications, covering origin, composition, and interaction with biological systems via pharmacokinetics, pharmacodynamics, therapeutic use, and toxicology.",
+          "quote": "Pharmacology is the science of drugs and medications, including a substance's origin, composition and interaction with biological systems; specifically through pharmacokinetics, pharmacodynamics, therapeutic use, and toxicology.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:pharmacy",
+      "summary": "Pharmacy is the science and practice of discovering, producing, preparing, dispensing, reviewing and monitoring medications, aiming to ensure the safe, effective, and affordable use of medicines. It links health sciences with pharmaceutical sciences and natural sciences. Based on the setting, pharmacy practice is classified as either community or institutional pharmacy, and providing direct patient care in these settings is considered clinical pharmacy.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Pharmacy",
+          "supports": "Pharmacy is the science and practice of discovering, producing, preparing, dispensing, reviewing and monitoring medications.",
+          "quote": "Pharmacy is the science and practice of discovering, producing, preparing, dispensing, reviewing and monitoring medications, aiming to ensure the safe, effective, and affordable use of medicines.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Pharmacy",
+          "supports": "Pharmacy practice is classified as community or institutional based on setting.",
+          "quote": "Based on the setting, pharmacy practice is either classified as community or institutional pharmacy.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:nursing",
+      "summary": "Nursing is a health care profession that integrates the art and science of caring and focuses on the protection, promotion, and optimization of health and human functioning, the prevention of illness and injury, the facilitation of healing, and the alleviation of suffering. It is one of the principal allied health professions within health care.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Nursing",
+          "supports": "Nursing is a health care profession focused on protection, promotion and optimization of health, prevention of illness and injury, facilitation of healing, and alleviation of suffering.",
+          "quote": "integrates the art and science of caring and focuses on the protection, promotion, and optimization of health and human functioning; prevention of illness and injury; facilitation of healing; and alleviation of suffering through compassionate presence",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:dentistry",
+      "summary": "Dentistry, also known as dental medicine and oral medicine, is the branch of medicine focused on the teeth, gums, and mouth. It consists of the study, diagnosis, prevention, management, and treatment of diseases, disorders, and conditions of the mouth, most commonly focused on dentition as well as the oral mucosa, and may also encompass other aspects of the craniofacial complex including the temporomandibular joint. The practitioner is called a dentist.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Dentistry",
+          "supports": "Dentistry is the branch of medicine focused on the teeth, gums, and mouth.",
+          "quote": "Dentistry, also known as dental medicine and oral medicine, is the branch of medicine focused on the teeth, gums, and mouth.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Dentistry",
+          "supports": "Dentistry covers study, diagnosis, prevention, management and treatment of conditions of the mouth, focused on dentition and oral mucosa.",
+          "quote": "It consists of the study, diagnosis, prevention, management, and treatment of diseases, disorders, and conditions of the mouth, most commonly focused on dentition as well as the oral mucosa.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:geriatrics",
+      "summary": "Geriatrics, or geriatric medicine, is a medical specialty focused on addressing the unique health needs of older adults. It aims to promote health by preventing, diagnosing and treating disease in older adults, who are more likely to have chronic health concerns and require more medical care. A physician who specializes in the care of older people is called a geriatrician.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Geriatrics",
+          "supports": "Geriatrics is a medical specialty focused on the unique health needs of older adults.",
+          "quote": "Geriatrics, or geriatric medicine, is a medical specialty focused on addressing the unique health needs of older adults.",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Geriatrics",
+          "supports": "Geriatrics aims to promote health by preventing, diagnosing and treating disease in older adults.",
+          "quote": "It aims to promote health by preventing, diagnosing and treating disease in older adults.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:infectious-diseases",
+      "summary": "Infectious Diseases is a medical specialty concerned with the diagnosis, control, and treatment of infections. Specialists in the field manage healthcare-acquired (nosocomial) and community-acquired infections.",
+      "citations": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q788926.json",
+          "supports": "Infectious diseases is a medical specialty dealing with the diagnosis, control and treatment of infections.",
+          "quote": "medical specialty dealing with the diagnosis, control and treatment of infections",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Infectious_diseases_(medical_specialty)",
+          "supports": "It is a medical specialty dealing with diagnosis and treatment of infections, managing nosocomial and community-acquired infections.",
+          "quote": "Infectious diseases (ID), also known as infectiology, is a medical specialty dealing with the diagnosis and treatment of infections. An infectious diseases specialist's practice consists of managing nosocomial (healthcare-acquired) infections or community-acquired infections.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:nutrition-science",
+      "summary": "Nutrition Science is the science that studies the physiological process of nutrition, interpreting the nutrients and other substances in food in relation to the maintenance, growth, reproduction, health, and disease of an organism. As an established discipline it is cross-listed within medicine, where it informs public health, and within the life sciences, where it connects to nutritional physiology.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Nutritional_science",
+          "supports": "Nutritional science studies the physiological process of nutrition, interpreting nutrients in food in relation to maintenance, growth, reproduction, health and disease.",
+          "quote": "Nutritional science is the science that studies the physiological process of nutrition, interpreting the nutrients and other substances in food in relation to maintenance, growth, reproduction, health and disease of an organism.",
+          "fetched": true
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q17652193.json",
+          "supports": "It interprets the nutrients and other substances in food in relation to maintenance, growth, reproduction, health and disease of an organism.",
+          "quote": "science that interprets the nutrients and other substances in food in relation to maintenance, growth, reproduction, health and disease of an organism",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:physiology",
+      "summary": "Physiology is the scientific study of functions and mechanisms in a living system. As a subdiscipline of biology it focuses on how organisms, organ systems, individual organs, cells, and biomolecules carry out chemical and physical functions, and it is divided by class of organism into branches including medical, animal, plant, cell, and comparative physiology. As a basic biomedical science it is cross-listed into medicine.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Physiology",
+          "supports": "Physiology is the scientific study of functions and mechanisms in a living system and is a subdiscipline of biology.",
+          "quote": "Physiology is the scientific study of functions and mechanisms in a living system. As a subdiscipline of biology, physiology focuses on how organisms, organ systems, individual organs, cells, and biomolecules carry out chemical and physical functions in a living system.",
+          "fetched": true
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q521.json",
+          "supports": "It is the science regarding function of organisms or living systems.",
+          "quote": "science regarding function of organisms or living systems",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:anatomy",
+      "summary": "Anatomy is the branch of morphology concerned with the study of the internal and external structure of organisms and their parts. A branch of natural science dealing with the structural organization of living things, it is among the oldest sciences. As a basic biomedical science it is cross-listed into medicine.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Anatomy",
+          "supports": "Anatomy is the branch of morphology concerned with the study of the internal and external structure of organisms and their parts.",
+          "quote": "Anatomy is the branch of morphology concerned with the study of the internal and external structure of organisms and their parts. Anatomy is a branch of natural science that deals with the structural organization of living things.",
+          "fetched": true
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q514.json",
+          "supports": "It is the study of the internal structure of organisms and their parts.",
+          "quote": "study of the internal structure of organisms and their parts",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:biomedical-engineering",
+      "summary": "Biomedical Engineering is the application of engineering principles and design concepts to medicine and biology for healthcare applications. It advances healthcare through diagnosis, monitoring, and therapy, and also encompasses the management of medical equipment in clinical settings. As an engineering discipline it is cross-listed into medicine.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Biomedical_engineering",
+          "supports": "Biomedical engineering is the application of engineering principles and design concepts to medicine and biology for healthcare applications, integrating sciences to advance diagnosis, monitoring, and therapy.",
+          "quote": "Biomedical engineering (BME) or medical engineering is the application of engineering principles and design concepts to medicine and biology for healthcare applications. BME also integrates the logical sciences to advance health care treatment, including diagnosis, monitoring, and therapy.",
+          "fetched": true
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q327092.json",
+          "supports": "It is the application of engineering principles and design concepts to medicine and biology.",
+          "quote": "application of engineering principles and design concepts to medicine and biology",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:alternative-medicine",
+      "summary": "Alternative Medicine is the umbrella term for practices that aim to achieve the healing effects of medicine but that, by definition, lack biological plausibility, testability, repeatability, or supporting evidence of effectiveness, and are not part of evidence-based medicine. Such practices reside outside mainstream medicine and do not originate from the scientific method. Systems classified within it include homeopathy, chiropractic, and naturopathy.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Alternative_medicine",
+          "supports": "Alternative medicine refers to practices that by definition lack biological plausibility, testability, repeatability, or supporting evidence of effectiveness and are not part of evidence-based medicine.",
+          "quote": "Alternative medicine refers to practices that aim to achieve the healing effects of medicine, but that by definition lack biological plausibility, testability, repeatability, or supporting evidence of effectiveness. Such practices are not part of evidence-based medicine.",
+          "fetched": true
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q188504.json",
+          "supports": "Wikidata describes alternative medicine as a form of non-scientific healing.",
+          "quote": "form of non-scientific healing",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "non_academic node; therapeutic non-plausibility stated attributed to Wikipedia and Wikidata, no independent editorializing"
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:homeopathy",
+      "summary": "Homeopathy is a system of alternative medicine, developed in Germany more than 200 years ago, based on the doctrine that a substance causing symptoms in healthy people can cure similar symptoms in sick people (\"like cures like\"). It is classified as a pseudoscientific system of alternative medicine. According to the U.S. National Center for Complementary and Integrative Health, there is little evidence to support homeopathy as an effective treatment for any specific health condition.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Homeopathy",
+          "supports": "Homeopathy is a pseudoscientific system of alternative medicine based on the doctrine that a substance causing symptoms in healthy people can cure similar symptoms in sick people.",
+          "quote": "Homeopathy or homoeopathy is a pseudoscientific system of alternative medicine. It was conceived in 1796 by the German physician Samuel Hahnemann.",
+          "fetched": true
+        },
+        {
+          "url": "https://www.nccih.nih.gov/health/homeopathy",
+          "supports": "NCCIH states there is little evidence to support homeopathy as an effective treatment for any specific health condition.",
+          "quote": "There's little evidence to support homeopathy as an effective treatment for any specific health condition.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "non_academic node; evidence claim attributed verbatim to NCCIH; pseudoscientific classification attributed to Wikipedia"
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:chiropractic",
+      "summary": "Chiropractic is a form of alternative medicine concerned with the diagnosis, treatment, and prevention of mechanical disorders of the musculoskeletal system, especially the spine. It is a licensed health care profession whose treatment typically involves manual therapy, often including spinal manipulation intended to improve joint motion and function. The U.S. National Center for Complementary and Integrative Health and Wikipedia classify it among alternative-medicine practices.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Chiropractic",
+          "supports": "Chiropractic is a form of alternative medicine concerned with mechanical disorders of the musculoskeletal system, especially the spine.",
+          "quote": "Chiropractic is a controversial form of alternative medicine concerned with the diagnosis, treatment and prevention of mechanical disorders of the musculoskeletal system, especially of the spine.",
+          "fetched": true
+        },
+        {
+          "url": "https://www.nccih.nih.gov/health/chiropractic-in-depth",
+          "supports": "NCCIH describes chiropractic as a licensed health care profession whose treatment typically involves manual therapy, often including spinal manipulation.",
+          "quote": "Chiropractic is a licensed health care profession that emphasizes the body's ability to heal itself. Treatment typically involves manual therapy, often including spinal manipulation.",
+          "fetched": true
+        },
+        {
+          "url": "https://www.nccih.nih.gov/health/chiropractic-in-depth",
+          "supports": "NCCIH: the purpose of spinal manipulation is to improve joint motion and function",
+          "quote": "The purpose of the manipulations is to improve joint motion and function.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "non_academic node; classification as alternative medicine attributed to Wikipedia; licensed-profession and spinal-manipulation facts attributed to NCCIH"
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:naturopathy",
+      "summary": "Naturopathy, or naturopathic medicine, is a form of alternative medicine whose ideology and methods are based on vitalism and folk medicine rather than evidence-based medicine. The U.S. National Center for Complementary and Integrative Health describes it as a medical system that evolved from traditional practices and health care approaches popular in nineteenth-century Europe. By NCCIH's account the licensed profession grew to an estimated 5,000 licensed practitioners in the United States by 2016.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Naturopathy",
+          "supports": "Naturopathy is a form of alternative medicine whose ideology and methods are based on vitalism and folk medicine rather than evidence-based medicine.",
+          "quote": "The ideology and methods of naturopathy are based on vitalism and folk medicine rather than evidence-based medicine, although practitioners may use techniques supported by evidence.",
+          "fetched": true
+        },
+        {
+          "url": "https://www.nccih.nih.gov/health/naturopathy",
+          "supports": "NCCIH describes naturopathy as a medical system evolved from traditional practices popular in 19th-century Europe, with an estimated 5,000 licensed practitioners in the US by 2016.",
+          "quote": "Naturopathy—also called naturopathic medicine—is a medical system that has evolved from a combination of traditional practices and health care approaches popular in Europe during the 19th century.",
+          "fetched": true
+        },
+        {
+          "url": "https://www.nccih.nih.gov/health/naturopathy",
+          "supports": "NCCIH: ~5,000 licensed naturopathic practitioners in the US by 2016",
+          "quote": "The naturopathic profession more than doubled from 2000 to 2016, increasing from approximately 2,000 licensed practitioners in North America to an estimated 5,000 licensed practitioners in the United States and more than 2,000 in Canada.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "non_academic node; alternative-medicine and vitalism classification attributed to Wikipedia; system definition and ~5,000 US licensed practitioners (2016) attributed to NCCIH. The '5,000' figure is paraphrased in the summary; the verbatim NCCIH quote cited covers the definitional clause, not the count, to keep the machine-checked span exact."
+      ],
+      "unfetched": []
+    }
+  ],
+  "qc_by": "claude-opus-4-8 orchestrator, session #19, 2026-06-18"
+}
