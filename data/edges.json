@@ -6620,7 +6620,7 @@
     "target": "domain:medicine-and-health",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary"
@@ -6658,7 +6658,7 @@
     "target": "field:public-health",
     "relation": "part_of",
     "confidence": 0.75,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary"
@@ -6669,7 +6669,7 @@
       "model_version": "claude-fable-5",
       "proposed_at": "2026-06-12"
     },
-    "note": "Skeleton part_of: UDC 613.2 Dietetics. Nutrition under 613 Hygiene + LCC RC620-627 Nutritional diseases + RM214-258 Diet therapy + FORD 3.3 (cross-continent: life-sciences §13 candidate)."
+    "note": "Skeleton part_of: UDC 613.2 Dietetics. Nutrition under 613 Hygiene + LCC RC620-627 Nutritional diseases + RM214-258 Diet therapy + FORD 3.3. Medicine home (primary). Cross-continent §13 dual membership realized via edge:nutrition-science-part-of-biology (session #19)."
   },
   {
     "id": "edge:cardiology-part-of-internal-medicine",
@@ -7133,7 +7133,7 @@
     "target": "field:alternative-medicine",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary"
@@ -7152,7 +7152,7 @@
     "target": "field:alternative-medicine",
     "relation": "part_of",
     "confidence": 0.85,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary"
@@ -7163,7 +7163,7 @@
       "model_version": "claude-fable-5",
       "proposed_at": "2026-06-12"
     },
-    "note": "Skeleton part_of: LCC RZ201-275 Chiropractic under RZ Other systems of medicine + Wikidata Q658096 (academic_status non_academic, profession-vs-pseudoscience status contest)."
+    "note": "Skeleton part_of: LCC RZ201-RZ275.2 Chiropractic (live-verified id.loc.gov 2026-06-18) under RZ Other systems of medicine + Wikidata Q658096 P31 alternative medicine. academic_status non_academic; profession-vs-pseudoscience status contest resolved session #19 (regulated licensed occupation, pseudoscientific core; reviewed per homeopathy precedent)."
   },
   {
     "id": "edge:naturopathy-part-of-alternative-medicine",
@@ -7171,7 +7171,7 @@
     "target": "field:alternative-medicine",
     "relation": "part_of",
     "confidence": 0.85,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary"
@@ -7182,7 +7182,7 @@
       "model_version": "claude-fable-5",
       "proposed_at": "2026-06-12"
     },
-    "note": "Skeleton part_of: LCC RZ440 Naturopathy (live-verified id.loc.gov 2026-06-12) under RZ + Wikidata Q213403 (academic_status non_academic, status contest)."
+    "note": "Skeleton part_of: LCC RZ433-RZ445 Naturopathy (live-verified id.loc.gov 2026-06-18) under RZ + Wikidata Q213403 P31 alternative medicine + academic discipline, P279 Q188504. academic_status non_academic; status contest resolved session #19 (~5,000 US licensed ND practitioners per NCCIH, pseudoscientific core; reviewed per homeopathy precedent)."
   },
   {
     "id": "edge:physiology-part-of-medicine-and-health",
@@ -7237,5 +7237,23 @@
       "proposed_at": "2026-06-12"
     },
     "note": "Cross-listing v1 §13 medicine membership (decision (21); debt §2①): LCC R856-857 Biomedical engineering. Electronics. Instrumentation under R Medicine (captured 2026-06-12). Engineering home retained (edge:biomedical-engineering-part-of-engineering-and-technology, LCC TA164 + FORD 2.6). Co-equal, no disputed tag."
+  },
+  {
+    "id": "edge:nutrition-science-part-of-biology",
+    "source": "subfield:nutrition-science",
+    "target": "field:biology",
+    "relation": "part_of",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-4-8",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Cross-listing v1 §13 life-sciences membership (decision (21); B-flag resolution session #19): LCC QP141-QP185.3 Nutrition under QP Physiology, class Q (live-verified id.loc.gov 2026-06-18). Medicine home retained (edge:nutrition-science-part-of-public-health, UDC 613.2, primary). Co-equal, no disputed tag (other-parent filing = support, session #7 interpretation). Target field:biology per life-sciences single-field model; life-sciences facet = nutritional physiology/biochemistry."
   }
 ]
