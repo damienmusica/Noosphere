@@ -3634,6 +3634,70 @@
       "seed_label": "Modern History",
       "verdict": "upstream_gap",
       "notes": "no discipline entity — Wikidata models \"modern history\" only as the era \"modern period\" (Q3281534); gate-anchored (LCC D204-475) period sub-discipline; QID-less honest gap, proposed."
+    },
+    {
+      "batch": "batch:formal-founders-v1",
+      "seed_label": "Georg Cantor",
+      "node_id": "person:georg-cantor",
+      "verdict": "verified",
+      "expected_qid": "Q76420",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-founders-v1",
+      "seed_label": "Andrey Kolmogorov",
+      "node_id": "person:andrey-kolmogorov",
+      "verdict": "verified",
+      "expected_qid": "Q153224",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-founders-v1",
+      "seed_label": "Claude Shannon",
+      "node_id": "person:claude-shannon",
+      "verdict": "verified",
+      "expected_qid": "Q92760",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-founders-v1",
+      "seed_label": "George Boole",
+      "node_id": "person:george-boole",
+      "verdict": "verified",
+      "expected_qid": "Q134661",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-founders-v1",
+      "seed_label": "Gottlob Frege",
+      "node_id": "person:gottlob-frege",
+      "verdict": "verified",
+      "expected_qid": "Q60028",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-founders-v1",
+      "seed_label": "Alan Turing",
+      "node_id": "person:alan-turing",
+      "verdict": "verified",
+      "expected_qid": "Q7251",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-founders-v1",
+      "seed_label": "John von Neumann",
+      "node_id": "person:john-von-neumann",
+      "verdict": "verified",
+      "expected_qid": "Q17455",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:formal-founders-v1",
+      "seed_label": "John Nash",
+      "node_id": "person:john-nash",
+      "verdict": "verified",
+      "expected_qid": "Q128736",
+      "rank1_expected": true
     }
   ]
 }

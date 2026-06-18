@@ -9373,5 +9373,157 @@
       "proposed_at": "2026-06-19"
     },
     "note": "Feminist epistemology critiques mainstream/traditional epistemology — its conceptions of objectivity, knowledge, and reason as reflecting an androcentric perspective (SEP Feminist Epistemology: \"Do mainstream philosophical conceptions of objectivity, knowledge, and reason reflect an androcentric perspective?\"; IEP Feminist Epistemology: it \"takes issue with the ways in which traditional epistemological paradigms derive from cases of simple and uncontroversial empirical beliefs\"). Internal complexity recorded: postmodernist critiques of a unified feminist standpoint, and the critique-vs-extension question."
+  },
+  {
+    "id": "edge:georg-cantor-founded-set-theory",
+    "source": "person:georg-cantor",
+    "target": "subfield:set-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.98,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Cantor founded set theory in the 1870s (SEP Set Theory: \"Set theory, as a separate mathematical discipline, begins in the work of Georg Cantor\"; Wikipedia Georg Cantor: \"Cantor's work between 1874 and 1884 is the origin of set theory\"). Plurality preserved (record-not-resolve): SEP's early-set-theory entry quotes Zermelo crediting the theory as \"created by Cantor and Dedekind\" — Dedekind is a co-credited contributor and a candidate for a future founder node; this edge does not adjudicate sole authorship."
+  },
+  {
+    "id": "edge:andrey-kolmogorov-founded-probability-theory",
+    "source": "person:andrey-kolmogorov",
+    "target": "subfield:probability-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.96,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Kolmogorov gave probability theory its modern axiomatic foundation in 1933 (SEP Probability Interpretations: \"Its axiomatization had to wait still longer, in Kolmogorov's classic Foundations of the Theory of Probability (1933)\"; MacTutor Kolmogorov: his 1933 monograph \"built up probability theory in a rigorous way from fundamental axioms in a way comparable with Euclid's treatment of geometry\"). Earlier contributors (Borel, Lévy, von Mises) are recorded in the literature but the measure-theoretic axiomatization is Kolmogorov's."
+  },
+  {
+    "id": "edge:claude-shannon-founded-information-theory",
+    "source": "person:claude-shannon",
+    "target": "subfield:information-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.98,
+    "status": "proposed",
+    "evidence": [
+      "source:mactutor",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Shannon founded information theory with his 1948 paper 'A Mathematical Theory of Communication' (MacTutor Shannon: \"This paper founded the subject of information theory and he proposed a linear schematic model of a communications system\"; SEP Information: optimal-coding theory \"was already established long before Shannon developed its mathematical foundation (Shannon 1948; Shannon & Weaver 1949)\"). Norbert Wiener's contemporaneous cybernetics overlaps but the field credits Shannon as founder."
+  },
+  {
+    "id": "edge:george-boole-founded-mathematical-logic",
+    "source": "person:george-boole",
+    "target": "subfield:mathematical-logic",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Boole founded the algebraic tradition in logic, a co-founding strand of mathematical logic (SEP Boole: \"George Boole (1815–1864) was an English mathematician and a founder of the algebraic tradition in logic\"; MacTutor Boole: his 1854 'Laws of Thought' is \"An investigation into the Laws of Thought, on Which are founded the Mathematical Theories of Logic and Probabilities\"). Plural founding (record-not-resolve): Boole's contribution is the algebraic/symbolic-logic strand; Frege (edge:gottlob-frege-founded-mathematical-logic) founded the predicate-logic strand. Confidence reflects the algebraic-logic vs mathematical-logic terminological nuance, not doubt about Boole's foundational role."
+  },
+  {
+    "id": "edge:gottlob-frege-founded-mathematical-logic",
+    "source": "person:gottlob-frege",
+    "target": "subfield:mathematical-logic",
+    "relation": "founded_or_formalized",
+    "confidence": 0.96,
+    "status": "proposed",
+    "evidence": [
+      "source:mactutor",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Frege founded modern mathematical logic with the predicate calculus of his 1879 Begriffsschrift (MacTutor Frege: \"Frege was one of the founders of modern symbolic logic putting forward the view that mathematics is reducible to logic\"; SEP Frege: \"Frege essentially reconceived the discipline of logic by constructing a formal system which, in effect, constituted the first 'predicate calculus'\"). Co-founding strand with Boole (edge:george-boole-founded-mathematical-logic) — record-not-resolve, neither ranked."
+  },
+  {
+    "id": "edge:alan-turing-founded-computability-theory",
+    "source": "person:alan-turing",
+    "target": "subfield:computability-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Turing formalized computability via the Turing machine in 1936 (SEP Turing Machine: \"Turing's 'automatic machines', as he termed them in 1936, were specifically devised for the computation of real numbers\"; MacTutor Turing: \"Turing introduced an abstract machine, now called a 'Turing machine', which moved from one state to another using a precise finite set of rules\"). Plurality preserved (record-not-resolve): Church's lambda calculus (1936) is an independent co-formalization (Church–Turing thesis) and a candidate for a future founder node; the Turing machine became the canonical model."
+  },
+  {
+    "id": "edge:john-von-neumann-founded-game-theory",
+    "source": "person:john-von-neumann",
+    "target": "subfield:game-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.96,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Von Neumann founded game theory (SEP Game Theory: \"Game theory ... was given its first general mathematical formulation by John von Neumann and Oskar Morgenstern (1944)\"; MacTutor von Neumann: the theory of games is \"one of his most original creations\"). Plural founding (record-not-resolve): the true 1944 co-founder is Oskar Morgenstern — an economist and a candidate for a future (cross-domain) founder node — not Nash; Nash (edge:john-nash-founded-game-theory) later formalized the non-cooperative branch."
+  },
+  {
+    "id": "edge:john-nash-founded-game-theory",
+    "source": "person:john-nash",
+    "target": "subfield:game-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:mactutor",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Nash formalized non-cooperative game theory with the Nash equilibrium (1950) (MacTutor Nash: \"During this period Nash established the mathematical principles of game theory\"; SEP Game Theory: the 1944 von Neumann–Morgenstern breakthrough should be read \"with classic papers of John Nash (1950a, 1950b, 1951)\"). Layered founding (record-not-resolve, not disputed): Nash's foundational formalization extended the 1944 von Neumann–Morgenstern founding rather than co-originating it; founded_or_formalized covers \"helped found or formalize\"."
   }
 ]
