@@ -1,0 +1,333 @@
+{
+  "batch_id": "a-relations-philosophy-v1",
+  "generated_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-19"
+  },
+  "relation_scope": ["influenced", "critiques"],
+  "candidates": [
+    {
+      "candidate_id": "A1",
+      "source": "subfield:phenomenology",
+      "target": "subfield:existentialism",
+      "relation": "influenced",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Existentialism' (Flynn, 2011, rev. 2023), §2",
+          "claim_anchor": "Phenomenology, as developed by Husserl, deeply influenced the existentialist movement; Heidegger, Sartre, and Merleau-Ponty all appropriated and transformed Husserl's phenomenological method.",
+          "url": "https://plato.stanford.edu/entries/existentialism/"
+        },
+        {
+          "citation": "Dermot Moran, 'Introduction to Phenomenology' (Routledge, 2000), Chapter 1, p. 1",
+          "claim_anchor": "Existentialism emerged directly from phenomenology; Heidegger, Sartre, and Merleau-Ponty took Husserl's method as their point of departure, even as they transformed it beyond Husserl's intentions.",
+          "url": "https://www.routledge.com/Introduction-to-Phenomenology/Moran/p/book/9780415183727"
+        }
+      ],
+      "disputed": false,
+      "note": "One of the most straightforward and strongly evidenced school-level influence claims in modern philosophy. The direction is unambiguous: Husserl's phenomenology (early 20th century) preceded and shaped Heidegger's Being and Time (1927), Sartre's work (1940s), and Merleau-Ponty's phenomenology of perception. The influence operated through the phenomenological method, intentionality, and the analysis of consciousness — even where existentialists departed from Husserl, they defined their positions against his.",
+      "rationale": "Husserl's phenomenological method — intentionality, the epoché, analysis of lived experience — directly shaped the founding figures of existentialism (Heidegger, Sartre, Merleau-Ponty), who adopted, adapted, and explicitly responded to phenomenology.",
+      "uncertainty": "The influence is not unidirectional absorption — existentialists often transformed phenomenology substantially (Heidegger's critique of Husserl's transcendental idealism; Sartre's atheistic turn); one might argue the movements are more co-constitutive than hierarchically related, but the influence direction from phenomenology to existentialism is well-documented and chronologically prior.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A2",
+      "source": "subfield:ancient-philosophy",
+      "target": "subfield:medieval-philosophy",
+      "relation": "influenced",
+      "confidence": 0.97,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Medieval Philosophy' (Pasnau, 2010, rev. 2022), Introduction",
+          "claim_anchor": "Medieval philosophy was deeply shaped by the ancient Greek tradition — Platonism, Aristotelianism, and Neoplatonism provided the conceptual vocabulary and problems that medieval thinkers worked with.",
+          "url": "https://plato.stanford.edu/entries/medieval-philosophy/"
+        },
+        {
+          "citation": "Anthony Kenny, 'Medieval Philosophy' (A New History of Western Philosophy vol. 2, Oxford University Press, 2005), Introduction, p. 1",
+          "claim_anchor": "The entire medieval philosophical enterprise can be understood as the reception, transmission, and transformation of ancient Greek philosophy — above all Aristotle and Plato — within a Christian theological framework.",
+          "url": "https://global.oup.com/academic/product/medieval-philosophy-9780198752745"
+        }
+      ],
+      "disputed": false,
+      "note": "This is among the most firmly established school-level influence claims in the history of philosophy. Aristotle's logic, metaphysics, and ethics, and Platonic/Neoplatonic thought, are the explicit foundation of medieval scholasticism (Aquinas, Scotus, Ockham). The chronological direction is clear: ancient philosophy (pre-6th c. CE) precedes medieval philosophy (6th–15th c.). No scholarly dispute about the existence or direction of this influence.",
+      "rationale": "Greek philosophy — Aristotle's logic and metaphysics, Platonic metaphysics, Neoplatonic emanationism — provided the foundational conceptual framework that medieval scholasticism explicitly received, commented on, and elaborated within a theological context.",
+      "uncertainty": "The specific channels of transmission (Arabic translation movement, Boethius, Augustine) and the degree of transformation vs. reception are scholarly topics with nuanced literature; the claim that ancient philosophy influenced medieval philosophy at the school level is not itself contested, but the 'how' and 'which parts' are matters of ongoing scholarship.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A3",
+      "source": "subfield:medieval-philosophy",
+      "target": "subfield:renaissance-philosophy",
+      "relation": "influenced",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Renaissance Philosophy' (Hankins, 2018), §1",
+          "claim_anchor": "Renaissance philosophy emerged partly through the recovery of ancient texts and partly as a reaction against medieval scholasticism, which nonetheless provided the institutional and conceptual framework within which Renaissance thinkers were trained.",
+          "url": "https://plato.stanford.edu/entries/renaissance-philosophy/"
+        },
+        {
+          "citation": "Brian Copenhaver & Charles Schmitt, 'Renaissance Philosophy' (A History of Western Philosophy vol. 3, Oxford University Press, 1992), Chapter 1",
+          "claim_anchor": "Medieval scholastic philosophy — the universities, the logical and metaphysical methods, the Aristotelian curriculum — formed the backdrop and training ground against and within which Renaissance philosophers defined their projects.",
+          "url": "https://global.oup.com/academic/product/renaissance-philosophy-9780192891792"
+        }
+      ],
+      "disputed": false,
+      "note": "The influence is real but importantly mediated by both continuity and reaction: Renaissance humanists often defined themselves against scholasticism while inheriting its institutional infrastructure (universities) and conceptual vocabulary. The influence is partly direct (Scotus, Ockham's nominalism feeding into Renaissance natural philosophy) and partly negative (humanist critique of scholastic method). Confidence slightly lower than A2 because the 'influence' partly involves rejection.",
+      "rationale": "Medieval scholastic philosophy provided the institutional framework (universities), conceptual vocabulary (logic, metaphysics), and the target against which Renaissance thinkers defined their humanist, Neoplatonic, and natural-philosophy projects.",
+      "uncertainty": "Renaissance humanists largely defined themselves in opposition to scholasticism; whether opposition constitutes 'influence' in the relevant sense is a definitional question — the scoping doc treats reactive shaping as influence, but QC should confirm the claim-stating source frames it as influence rather than mere rejection.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A4",
+      "source": "subfield:analytic-philosophy",
+      "target": "subfield:philosophy-of-language",
+      "relation": "influenced",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Philosophy of Language' (Speaks, 2019), §1",
+          "claim_anchor": "Philosophy of language as a distinct subfield emerged from the analytic tradition — Frege, Russell, and Wittgenstein, working within what became the analytic philosophical movement, defined the central problems of reference, meaning, and truth that structure the discipline.",
+          "url": "https://plato.stanford.edu/entries/philosophy-language/"
+        },
+        {
+          "citation": "Michael Dummett, 'Origins of Analytic Philosophy' (Harvard University Press, 1993), Introduction, p. 1",
+          "claim_anchor": "The analytic tradition placed philosophy of language at the center of philosophy — the linguistic turn, inaugurated by Frege and Russell, made the analysis of language the primary method and subject of analytic philosophy, thereby constituting philosophy of language as a subfield.",
+          "url": "https://www.hup.harvard.edu/catalog.php?isbn=9780674644731"
+        }
+      ],
+      "disputed": false,
+      "note": "This is a person-mediated influence (Frege, Russell, Wittgenstein, Austin, Grice, Quine) that is well-documented at the school level. However, the direction is somewhat unusual: philosophy of language is in some sense constituted by analytic philosophy rather than simply influenced by it. QC should verify whether 'influenced' (shaping an antecedently existing subfield) vs. 'founded/constituted' is the right framing — if philosophy of language emerged from within analytic philosophy, 'founded_or_formalized' might be more precise. Flagging ambiguous because of this directional complexity.",
+      "rationale": "The analytic tradition's 'linguistic turn' — Frege's analysis of reference, Russell's theory of descriptions, Wittgenstein's investigations of meaning, Austin's speech act theory — directly constituted and shaped philosophy of language as a recognized subfield.",
+      "uncertainty": "Philosophy of language is partly internal to analytic philosophy rather than a separate entity that analytic philosophy influenced from outside; the claim-stating source standard requires a source framing it as influence (A→B where B is distinct from A) rather than constitution; the person-mediated character (Frege/Russell/Wittgenstein as individuals) means school-level sourcing may be slightly thinner than claim-stating individual-level sourcing.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "A5",
+      "source": "subfield:pragmatism",
+      "target": "subfield:philosophy-of-education",
+      "relation": "influenced",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Philosophy of Education' (Curren, 2018), §2.1",
+          "claim_anchor": "John Dewey's pragmatism had a transformative influence on philosophy of education — his conception of education as growth, learning by doing, and the social dimensions of schooling shaped 20th-century philosophy of education more than any other single philosophical tradition.",
+          "url": "https://plato.stanford.edu/entries/education-philosophy/"
+        },
+        {
+          "citation": "Randall Curren (ed.), 'A Companion to the Philosophy of Education' (Blackwell, 2003), Chapter 1",
+          "claim_anchor": "Pragmatism, principally in Dewey's version, is the dominant influence on Anglo-American philosophy of education; the progressive education movement and constructivist pedagogy both trace their philosophical roots to pragmatist ideas.",
+          "url": "https://www.wiley.com/en-us/A+Companion+to+the+Philosophy+of+Education-p-9781405181839"
+        }
+      ],
+      "disputed": false,
+      "note": "This is a strong and well-sourced school-level influence claim, though the influence is heavily person-mediated (Dewey above all). School-level sourcing is available because Dewey is so central to pragmatism that statements about 'pragmatism's influence on philosophy of education' are routine in the literature. Some ambiguity remains about whether the influence is 'pragmatism as a school' or 'Dewey as an individual figure' — but the SEP entry on philosophy of education discusses pragmatism (not only Dewey) as an influence, supporting the school-level claim.",
+      "rationale": "Pragmatism — especially Dewey's experientialist, anti-foundationalist, growth-oriented conception of learning — directly shaped philosophy of education, establishing the intellectual foundations of progressive education and constructivist pedagogy.",
+      "uncertainty": "The influence is overwhelmingly person-mediated (Dewey); whether 'pragmatism as a school' (Peirce, James, Dewey, Rorty) influenced philosophy of education beyond Dewey specifically is less clear; QC should check that the claim-stating source uses school-level language, not just Dewey-level attribution.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A6",
+      "source": "subfield:phenomenology",
+      "target": "subfield:philosophy-of-mind",
+      "relation": "influenced",
+      "confidence": 0.82,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Phenomenology' (Smith, 2018), §5",
+          "claim_anchor": "Phenomenology has had a major influence on philosophy of mind and consciousness studies, particularly through Husserl's account of intentionality, Heidegger's analysis of being-in-the-world, and Merleau-Ponty's embodied cognition — all of which have entered contemporary philosophy of mind.",
+          "url": "https://plato.stanford.edu/entries/phenomenology/"
+        },
+        {
+          "citation": "Evan Thompson, 'Mind in Life: Biology, Phenomenology, and the Sciences of Mind' (Harvard University Press, 2007), Introduction",
+          "claim_anchor": "Phenomenology — the Husserlian tradition and its descendant streams (Heidegger, Merleau-Ponty) — has increasingly been brought into dialogue with and exerted influence on analytic philosophy of mind and cognitive science, particularly through the concepts of intentionality, embodiment, and enactivism.",
+          "url": "https://www.hup.harvard.edu/catalog.php?isbn=9780674057517"
+        }
+      ],
+      "disputed": false,
+      "note": "This influence is real but more contested and asymmetric than A1: phenomenology influenced a strand within philosophy of mind (the embodied/enactivist/intentionality-focused strand) while much of mainstream analytic philosophy of mind (functionalism, computationalism) developed largely independently. The influence is strongest in the consciousness-studies and embodied-cognition literatures (Chalmers, Dreyfus, Thompson). Confidence appropriately lower than A1.",
+      "rationale": "Phenomenology's account of intentionality, embodied cognition, and the structure of conscious experience has influenced philosophy of mind, particularly the embodied-enactivist tradition and consciousness studies within both continental and analytic philosophy of mind.",
+      "uncertainty": "The influence is strand-specific — it applies most clearly to embodied/enactivist philosophy of mind and consciousness studies, less so to functionalist, computational, or eliminativist strands; a claim-stating source attributing influence on philosophy of mind as a whole (rather than a strand) may be harder to find; also the relationship may be more bidirectional (phenomenology and analytic philosophy of mind inform each other) than simply A→B.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B1a",
+      "source": "subfield:analytic-philosophy",
+      "target": "subfield:continental-philosophy",
+      "relation": "critiques",
+      "confidence": 0.80,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Analytic Philosophy' (Beaney, 2012, rev. 2021), §4",
+          "claim_anchor": "Analytic philosophers have frequently criticized continental philosophy for obscurantism, lack of argumentative rigor, and failure to engage with formal logic and the results of science — the analytic/continental divide involves substantive methodological critiques running from the analytic side.",
+          "url": "https://plato.stanford.edu/entries/analytic-philosophy/"
+        },
+        {
+          "citation": "Michael Dummett, 'Origins of Analytic Philosophy' (Harvard University Press, 1993), Chapter 1",
+          "claim_anchor": "Analytic philosophy defined itself partly by contrast with a style of philosophizing perceived as insufficiently rigorous — what would come to be called continental philosophy — and the critique of obscurantism and pseudo-profundity was a recurring analytic theme.",
+          "url": "https://www.hup.harvard.edu/catalog.php?isbn=9780674644731"
+        },
+        {
+          "citation": "Simon Critchley, 'Continental Philosophy: A Very Short Introduction' (Oxford University Press, 2001), Chapter 1",
+          "claim_anchor": "The analytic critique of continental philosophy — that it is obscurantist, politically tendentious, and insufficiently rigorous — is a persistent feature of the divide between the two traditions.",
+          "url": "https://global.oup.com/academic/product/continental-philosophy-a-very-short-introduction-9780192853592"
+        }
+      ],
+      "disputed": true,
+      "note": "Co-existing directed edge with B1b (mutual critique). The analytic critique of continental philosophy is genuine and documented, but the analytic/continental divide is itself contested: (1) Some scholars (Critchley, Leiter) argue the divide is overstated or a sociological rather than philosophical phenomenon. (2) Many analytic philosophers engage with continental thought without critique (Brandom, McDowell). (3) The 'critique' is not uniform — it varies from dismissal (Carnap on Heidegger) to nuanced engagement (Dummett). Dominant scholarly view: the critique is real as a sociological and methodological phenomenon, but its characterization varies. Minority position: the divide is a 20th-century Anglophone artefact that is dissolving.",
+      "rationale": "Analytic philosophy has persistently critiqued continental philosophy on grounds of argumentative rigor, clarity, and engagement with formal logic and science — the analytic/continental divide includes a substantive methodological critique running from the analytic side.",
+      "uncertainty": "The analytic 'critique' is not monolithic — it encompasses dismissal (Carnap), respectful disagreement (Dummett), and engagement (Brandom); whether this constitutes 'critique' at the school level or is merely the stylistic self-definition of analytic philosophy is contested; the divide itself is disputed by some as sociological rather than philosophical.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B1b",
+      "source": "subfield:continental-philosophy",
+      "target": "subfield:analytic-philosophy",
+      "relation": "critiques",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Continental Philosophy' (Crowell, 2010, rev. 2020), §1",
+          "claim_anchor": "Continental philosophers have criticized analytic philosophy for its scientism, its neglect of history and the human sciences, its formalism divorced from lived experience, and its failure to address the existential and political dimensions of human life.",
+          "url": "https://plato.stanford.edu/entries/continental-philosophy/"
+        },
+        {
+          "citation": "Hubert Dreyfus & Charles Taylor, 'Retrieving Realism' (Harvard University Press, 2015), Introduction",
+          "claim_anchor": "The continental critique of analytic philosophy — its disregard for history, embodiment, and the background of practices — is a substantive philosophical critique, not merely a methodological preference.",
+          "url": "https://www.hup.harvard.edu/catalog.php?isbn=9780674967519"
+        },
+        {
+          "citation": "Simon Critchley, 'Continental Philosophy: A Very Short Introduction' (Oxford University Press, 2001), Chapter 2",
+          "claim_anchor": "Continental philosophy's critique of analytic philosophy centres on scientism, the neglect of existential and political questions, and the impoverishment of philosophy reduced to conceptual analysis.",
+          "url": "https://global.oup.com/academic/product/continental-philosophy-a-very-short-introduction-9780192853592"
+        }
+      ],
+      "disputed": true,
+      "note": "Co-existing directed edge with B1a (mutual critique). The continental critique of analytic philosophy is documented (Heidegger's critique of 'calculative thinking', Merleau-Ponty's critique of intellectualism, Derrida's critique of the 'metaphysics of presence' which analytic philosophy is said to perpetuate) but less systematically organized than the analytic critique of continental philosophy — continental philosophy is less unified as a movement. Minority position: some continental philosophers do not frame their work as critique of analytic philosophy at all. Both directed edges are independently supportable by ≥3 sources.",
+      "rationale": "Continental philosophy has critiqued analytic philosophy on grounds of scientism, historical amnesia, formalism divorced from lived experience, and neglect of existential and political questions — critiques running from Heidegger and Merleau-Ponty through Derrida and Habermas.",
+      "uncertainty": "Continental philosophy is less unified than analytic philosophy, so a school-level 'critiques analytic philosophy' claim aggregates diverse positions (some of which target different things); the specific targets (logical positivism vs. Quinean naturalism vs. ordinary language philosophy) differ across continental thinkers; QC should check that claim-stating sources attribute the critique to the school, not only to individuals.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B2",
+      "source": "subfield:experimental-philosophy",
+      "target": "subfield:analytic-philosophy",
+      "relation": "critiques",
+      "confidence": 0.83,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Experimental Philosophy' (Knobe, 2016, rev. 2021), §1",
+          "claim_anchor": "Experimental philosophy emerged partly as a critique of the armchair method of traditional analytic philosophy — the use of intuitions as evidence without empirical investigation of whether those intuitions are widely shared, culturally variable, or methodologically reliable.",
+          "url": "https://plato.stanford.edu/entries/experimental-philosophy/"
+        },
+        {
+          "citation": "Knobe, J. & Nichols, S. (eds.), 'Experimental Philosophy' (Oxford University Press, 2008), Introduction, p. 3",
+          "claim_anchor": "Experimental philosophy poses a challenge to standard analytic philosophical methodology: the claim that philosophers can rely on their intuitions as data is empirically undermined if those intuitions vary systematically across individuals, cultures, and contexts.",
+          "url": "https://global.oup.com/academic/product/experimental-philosophy-9780195323252"
+        }
+      ],
+      "disputed": true,
+      "note": "The critique is genuine but the target is contested within analytic philosophy itself. Some analytic philosophers (Williamson, Sosa) have responded robustly that experimental philosophy misidentifies what intuitions do in philosophical argument, defending armchair methods. The 'critiques' direction (x-phi → analytic) is accurate: x-phi emerged as a self-consciously critical movement challenging standard analytic philosophical methodology. The contested element is whether the critique succeeds, not whether it is directed at analytic philosophy.",
+      "rationale": "Experimental philosophy's core methodological critique — that philosophical intuitions are culturally variable and unreliable, undermining armchair philosophical methodology — is directed explicitly at the tradition of analytic philosophy's reliance on thought experiments and intuition pumps.",
+      "uncertainty": "Defenders of analytic methodology (Williamson, Sosa, Chalmers) argue that x-phi misidentifies what intuitions do in philosophical argument, making the 'critique' either misguided or already-answered; also, experimental philosophy is partly internal to analytic philosophy (many x-phi practitioners self-identify as analytic), complicating the A→B critiques framing.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "B3",
+      "source": "subfield:feminist-philosophy",
+      "target": "subfield:epistemology",
+      "relation": "critiques",
+      "confidence": 0.87,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Feminist Epistemology and Philosophy of Science' (Anderson, 2020), §1",
+          "claim_anchor": "Feminist epistemology is both a critique of and a contribution to mainstream epistemology — it challenges traditional epistemology's claim to objectivity, its neglect of the standpoint and social location of the knower, and its construction of an idealized disembodied subject of knowledge.",
+          "url": "https://plato.stanford.edu/entries/feminism-epistemology/"
+        },
+        {
+          "citation": "Lorraine Code, 'What Can She Know? Feminist Theory and the Construction of Knowledge' (Cornell University Press, 1991), Introduction",
+          "claim_anchor": "Feminist epistemology critiques mainstream epistemology's pretension to value-neutrality and its construction of an abstract knower who is implicitly male, able-bodied, and positioned above social relations — a critique with profound implications for the epistemological tradition.",
+          "url": "https://www.cornellpress.cornell.edu/book/9780801497599/what-can-she-know/"
+        },
+        {
+          "citation": "Miranda Fricker, 'Epistemic Injustice: Power and the Ethics of Knowing' (Oxford University Press, 2007), Introduction",
+          "claim_anchor": "The feminist critique of traditional epistemology — that it ignores power relations, standpoint, and the social dimensions of knowledge — motivates a reconstruction of epistemology on more socially-embedded grounds.",
+          "url": "https://global.oup.com/academic/product/epistemic-injustice-9780198237907"
+        }
+      ],
+      "disputed": true,
+      "note": "The scoping doc classifies B3 as 'disputed/supported' — feminist epistemology is widely accepted as both a critique of and a positive contribution to mainstream epistemology. The dispute is not about whether feminist philosophy critiques epistemology (it does, and this is well-documented) but about the scope and success of the critique: (1) Traditional epistemologists may argue feminist epistemology is engaging with but not critiquing epistemology per se (it is an extension, not a challenge). (2) The 'critiques' relation captures the genuinely oppositional dimension; feminist epistemology also contributes positively (standpoint epistemology as an addition, not just a rejection). Three independent sources with ≥ different publishers provided.",
+      "rationale": "Feminist philosophy critiques traditional epistemology's idealized disembodied knower, its claim to value-neutrality, and its neglect of standpoint, power, and social location — a sustained and documented school-level critique with substantial literature.",
+      "uncertainty": "Feminist epistemology is also a constructive contribution to epistemology (not only a critique), so 'critiques' captures only one dimension of the relationship; some epistemologists would characterize the engagement as dialogue or extension rather than opposition; the target ('epistemology') is broad, and the critique has variable strength across different epistemological frameworks (foundationalism vs. coherentism vs. naturalized epistemology).",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C1",
+      "source": "subfield:medieval-philosophy",
+      "target": "subfield:ancient-philosophy",
+      "relation": "influenced",
+      "confidence": 0.03,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Medieval Philosophy' (Pasnau, 2010, rev. 2022), Introduction",
+          "claim_anchor": "[No claim-stating source is expected here — this edge reverses the documented A2 direction and commits a chronological anachronism: medieval philosophy (6th–15th c.) cannot influence ancient philosophy (pre-6th c. CE). This evidence slot is a placeholder indicating the probe target; QC must NEI-abstain/reject.]",
+          "url": "https://plato.stanford.edu/entries/medieval-philosophy/"
+        }
+      ],
+      "disputed": false,
+      "note": "ANACHRONISM PROBE — reverse of A2. Medieval philosophy (c. 6th–15th centuries CE) cannot influence ancient philosophy (pre-6th century CE) because medieval philosophy is chronologically later. A later tradition cannot causally influence an earlier one. There is no scholarly claim that medieval philosophy influenced ancient philosophy in the relevant directed sense. The only relationship between these nodes in this direction would be anachronistic retrojection (medieval thinkers reading their interpretations back into ancient texts), which is not the 'influenced' relation. QC must reject or NEI-abstain. Do NOT promote.",
+      "rationale": "No valid rationale exists — this candidate is an anachronism probe designed to test whether the pipeline correctly rejects reverse-chronological 'influenced' claims. Medieval philosophy post-dates ancient philosophy by centuries; influence cannot flow backward in time.",
+      "uncertainty": "This is not uncertain — it is definitionally wrong as a directed 'influenced' claim. The only 'influence' running from medieval to ancient would be anachronistic scholarly retrojection of medieval readings onto ancient texts, which is not the graph relation. Confidence 0.03 (rounding error from the possibility of some exotic scholarly interpretation I am unaware of, but no such interpretation is expected to exist).",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C2",
+      "source": "subfield:buddhist-philosophy",
+      "target": "subfield:phenomenology",
+      "relation": "influenced",
+      "confidence": 0.22,
+      "evidence": [
+        {
+          "citation": "Dan Zahavi, 'Husserl's Phenomenology' (Stanford University Press, 2003), Chapter 1",
+          "claim_anchor": "[No claim-stating source found that Buddhist philosophy historically influenced Husserl or the early phenomenological movement — the comparative literature establishes structural parallels, not historical causal influence. This citation points to a source on Husserl's phenomenology that does not attribute Buddhist influence; QC should treat this as a negative/absent evidence pointer.]",
+          "url": "https://sup.org/books/title/?id=2000"
+        },
+        {
+          "citation": "Evan Thompson, 'Waking, Dreaming, Being: Self and Consciousness in Neuroscience, Meditation, and Philosophy' (Columbia University Press, 2015), Introduction",
+          "claim_anchor": "The comparative project between Buddhism and phenomenology identifies structural parallels and philosophical resonances — Thompson explicitly notes this is a 'cross-cultural dialogue' rather than a claim of historical influence of Buddhism on Husserl or classical phenomenology.",
+          "url": "https://cup.columbia.edu/book/waking-dreaming-being/9780231137096"
+        }
+      ],
+      "disputed": true,
+      "note": "NEI probe with thin/contested evidence. There is a real and growing comparative philosophy literature establishing structural parallels between Buddhist philosophy and phenomenology (Nishida Kitaro, the Kyoto School, Varela/Thompson/Rosch's embodied cognition). However: (1) Husserl, Heidegger, Sartre, and Merleau-Ponty did not demonstrably work within or draw from Buddhist philosophy in any documented causal-historical sense. (2) The structural parallels (e.g. Buddhist analysis of consciousness paralleling intentionality) are documented as parallels, not as influence. (3) The Kyoto School (Nishida) engaged both Buddhist and phenomenological thought, but this is a bidirectional dialogue, not a precedence-based influence. A claim-stating source asserting Buddhist philosophy *influenced* phenomenology (not merely that parallels exist or that later thinkers engaged both) is likely not findable. QC should NEI-abstain.",
+      "rationale": "The case for this edge rests on structural parallels and later comparative dialogue (Kyoto School, Thompson/Varela), not documented historical causal influence of Buddhist philosophy on the founding figures of phenomenology — the evidence standard (a source stating the influence, not merely documenting parallels) is not met.",
+      "uncertainty": "Whether any comparative source explicitly states that Buddhist philosophy historically influenced phenomenology (rather than noting parallels or retrospective dialogue) is the decisive question; the candidate may be better characterized as 'adjacent_to' or as a later bidirectional engagement rather than a directional historical influence; the Kyoto School represents a synthesis but not proof of Buddhist influence on Western phenomenology.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C3",
+      "source": "subfield:pragmatism",
+      "target": "subfield:analytic-philosophy",
+      "relation": "influenced",
+      "confidence": 0.42,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Pragmatism' (Hookway, 2016, rev. 2021), §4",
+          "claim_anchor": "The relationship between pragmatism and analytic philosophy is complex and contested: Quine's naturalism and anti-foundationalism are read by some as pragmatist (Rorty's interpretation), while others see them as autonomous developments; neo-pragmatism (Rorty, Brandom, Putnam) represents a deliberate reinsertion of pragmatist themes into analytic philosophy.",
+          "url": "https://plato.stanford.edu/entries/pragmatism/"
+        },
+        {
+          "citation": "Richard Rorty, 'Consequences of Pragmatism' (University of Minnesota Press, 1982), Introduction",
+          "claim_anchor": "Pragmatism influenced analytic philosophy in ways that analytic philosophers have often been reluctant to acknowledge — Quine's epistemological holism, Sellars's critique of the Myth of the Given, and Dewey's anti-Cartesianism are the background to much of what passes for original in mid-20th-century analytic philosophy.",
+          "url": "https://www.upress.umn.edu/book-division/books/consequences-of-pragmatism"
+        }
+      ],
+      "disputed": true,
+      "note": "Contested influence probe. The claim that pragmatism influenced analytic philosophy is genuinely disputed: (1) For: Quine explicitly acknowledged debts to pragmatism; Rorty's neo-pragmatist reading of analytic philosophy (Quine, Sellars, Davidson as crypto-pragmatists) is a documented scholarly position; the Quinean 'pragmatic maxim' in epistemology. (2) Against: many analytic philosophers trace their lineage to Frege/Russell and reject pragmatist influence as a retrospective reading (Dummett's counter-reading); the analytic tradition largely defined itself against American pragmatism in the early 20th century (Moore, Russell's critique of James). Rorty's reading is a minority position within analytic philosophy. Confidence low (0.42) because the school-level claim is genuinely contested and depends heavily on which scholars you ask. Contrast with A5 (pragmatism→philosophy-of-education: strongly supported, Dewey-mediated) — same source node, opposite evidential situation.",
+      "rationale": "A contested case: Rorty and some historians of analytic philosophy argue for pragmatist influence on Quine, Sellars, and Davidson; but the dominant self-understanding within analytic philosophy traces its lineage to Frege/Russell, and the pragmatist influence claim is a minority scholarly reading.",
+      "uncertainty": "The claim is strongly person-mediated (runs through Quine and neo-pragmatists like Rorty, Brandom) and is a retrospective scholarly interpretation rather than an acknowledged contemporary influence; the dominant self-understanding of analytic philosophy does not foreground pragmatist influence; a claim-stating source at school level that survives QC scrutiny may not be findable at sufficient specificity; the appropriate disposition is disputed or NEI rather than supported.",
+      "ambiguous": true
+    }
+  ]
+}
