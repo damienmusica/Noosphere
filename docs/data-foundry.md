@@ -22,6 +22,12 @@ construct graph data at scale while honoring every charter boundary. The workflo
 into schema-valid, evidence-pointed *candidate* data, then routes it through validation and a
 risk-tiered curation gate before any of it becomes reviewed or indexable.
 
+The graph it builds is a **globe, not a tree** — nodes may carry co-equal multiple parents (§13), and
+the foundry **organizes and connects; it does not adjudicate.** It records the *state* of discourse,
+including the unresolved and contested, rather than resolving it (charter §1). Curation corrects
+identity/referent-axis errors and preserves perspective/context-axis disagreement — see §8's tension
+preservation rule.
+
 ## 3. Allowed inputs
 
 - **Repo-managed JSON** under `/data` (the existing source of truth).
@@ -118,6 +124,33 @@ collection and editorial citation records. Rules:
 
 Rationale: live pages drift and die; the corpus's bulk re-auditability
 (vault decision log 2026-06-10 (3)) is only as durable as its evidence URLs.
+
+### Tension preservation (identity-axis vs perspective-axis — standing QC rule)
+
+Noosphere **records the state of discourse; it does not resolve it** (charter §1). This is the
+standing QC discipline across every risk tier, and it extends to the **propositional-relation layer**
+(`influenced`, `critiques`, `founded_or_formalized`, and similar claim-bearing edges), not only to
+structural placement. (Codified here, ahead of the first propositional-edge batch — policy before
+work. Supersedes the earlier plan to bundle this with that batch's PR.)
+
+- **Correct only on the identity/referent axis.** Fix errors of *what a thing is* — a QID pointing at
+  the wrong entity, a date or attribution that is factually wrong, a relation whose referent is
+  mistaken. These are data-quality errors, and QC corrects or rejects them.
+- **Preserve disagreement on the perspective/context axis.** Where sources genuinely disagree about
+  *interpretation* — whether A influenced or critiqued B, which school is right, how a claim holds
+  within one framework but not another — record the disagreement rather than picking a winner: keep
+  co-existing edges, set `disputed: true`, and preserve the minority position in `note`. Never delete
+  a sourced position or collapse it into one voice.
+- **The only judgment is data-quality, never about the world.** "Is this a genuine scholarly
+  disagreement or an AI hallucination / sourcing error?" is in scope. "Who is right?" is not.
+- **A source floor under contested claims too.** Disagreement is preserved only when each side is
+  sourced; this is the guard against injecting fabricated controversy (no unsourced "some say"). Edge
+  asymmetry is carried per-edge by `confidence`, `disputed`, and `note` — interpretation and display
+  stay downstream.
+
+This is a cost-zero discipline: it needs no new field or schema. Whether a *new structured mechanism*
+(e.g. framework/school/scale qualifier fields) is ever warranted is measurement-first — see the
+relation taxonomy's watch-items; build only on measured need.
 
 ## 9. Current implementation sequence
 

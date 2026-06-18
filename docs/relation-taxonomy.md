@@ -25,6 +25,31 @@ legible and the data reviewable. Do not add relation types casually.
 - `prerequisite_for` edges must not form a cycle (validated; circular prerequisite chains are rejected).
 - Prefer the most specific relation that is accurate. Use `adjacent_to` only as a deliberate placeholder.
 
+## Adequacy and watch-items (measurement-first — no schema change yet)
+
+The 12 relation types above are **ratified as adequate** for the propositional-edge depth pilot
+(formal-sciences `formalizes` / `founded_or_formalized` — see the vault Lane B pipeline design).
+Enum expansion is **forbidden until a measured need** is recorded (charter over-scaffolding guard).
+
+The following are **things to measure, not to build.** Each is encoded first as a `note` convention so
+pressure can be counted; a schema change is proposed only after recurrence crosses a threshold, and
+only through a separate gate (this doc + Zod enum + validator, in one change).
+
+- **`critiques` — premise-attack vs inference-attack.** Argdown distinguishes attacking a premise
+  (`-`) from undercutting an inference step (`_`). For now, record the distinction in `note`; split
+  only if the same structural phrasing recurs across many edges.
+- **framework / school / scale relativity qualifier.** The case-types that `disputed` + `note` cannot
+  cleanly express (e.g. ">2 mutually exclusive positions", "true within framework X, false within Y",
+  "school S asserts, school T denies", scale/era-dependent truth). Measure via the `note` convention
+  **"within-framework: X"**. A qualifier *field* is re-gated by the CPO only on measured threshold —
+  and it would be a **framework/school/scale** field, **not** a confidence number (`confidence` 0–1
+  already exists). Precedent: Argdown deliberately keeps its quantitative "degree of justification"
+  out of core — measurement-first deferral is well-founded, not timid.
+- **`prerequisite_for` under-utilization** (currently a sparse relation) is a **depth-dimension
+  candidate to develop** (more pedagogical/dependency edges), not a schema change. Evidence standard
+  differs from structural edges: a curriculum/textbook source stating the dependency, per
+  [`docs/data-foundry.md`](data-foundry.md) §8.
+
 ## Changing the taxonomy
 
 Adding, renaming, or removing a relation type requires, **in the same change**:
