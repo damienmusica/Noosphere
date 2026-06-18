@@ -3250,6 +3250,390 @@
       "node_id": "subfield:judgment-and-decision-making",
       "verdict": "upstream_gap",
       "notes": "upstream gap (session #21): no JDM discipline entity. Resolver selects Q1331926 'decision making' (process/concept); Q15746672 is the JDM journal — both QC-rejected. Distinct referent from subfield:decision-theory (Q177571, humanities); SJDM society + BF608-635 ground the node; QID-less honest gap."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "field:history",
+      "seed_label": "History",
+      "expected_qid": "Q1066186",
+      "rank1_expected": false,
+      "verdict": "verified",
+      "notes": "discipline QID Q1066186 \"study of history\"; the general-concept homonym Q309 \"history\"=the-past (P31 empty) is the label rank-1 — type re-rank to the discipline entity, not label rank-1."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:historiography",
+      "seed_label": "Historiography",
+      "expected_qid": "Q50675",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:ancient-history",
+      "seed_label": "Ancient History",
+      "expected_qid": "Q41493",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "P31 mixes era (time-interval/historical-period) + field-of-study; era-vs-discipline trap, gate-anchored (LCC D51-90)."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:medieval-history",
+      "seed_label": "Medieval History",
+      "expected_qid": "Q27992545",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "P31 field-of-study + academic-discipline (clean; generator wrongly suspected era-only)."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:military-history",
+      "seed_label": "Military History",
+      "expected_qid": "Q192781",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:cultural-history",
+      "seed_label": "Cultural History",
+      "expected_qid": "Q858517",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:social-history",
+      "seed_label": "Social History",
+      "expected_qid": "Q908604",
+      "rank1_expected": false,
+      "verdict": "verified",
+      "notes": "\"Social History\" journal Q15762332 is label rank-1; discipline Q908604 by type re-rank (P31 field-of-study + branch-of-history)."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:intellectual-history",
+      "seed_label": "Intellectual History",
+      "expected_qid": "Q1195695",
+      "rank1_expected": false,
+      "verdict": "verified",
+      "notes": "near-synonym history-of-ideas Q570018 competes at rank-1; Q1195695 is the label-exact discipline."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:world-history",
+      "seed_label": "World History",
+      "expected_qid": "Q6457238",
+      "rank1_expected": false,
+      "verdict": "verified",
+      "notes": "general concept human-history Q200325 is label rank-1; discipline world-history Q6457238 by type re-rank."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:paleography",
+      "seed_label": "Paleography",
+      "expected_qid": "Q179957",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "label variant palaeography; generator hint Q207892=public-law was a hallucination."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:epigraphy",
+      "seed_label": "Epigraphy",
+      "expected_qid": "Q181260",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "P31 archaeological sub-discipline; generator hint Q83588=chemical-engineering was a hallucination."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "field:linguistics",
+      "seed_label": "Linguistics",
+      "expected_qid": "Q8162",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:phonetics",
+      "seed_label": "Phonetics",
+      "expected_qid": "Q35395",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:phonology",
+      "seed_label": "Phonology",
+      "expected_qid": "Q40998",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:morphology",
+      "seed_label": "Morphology",
+      "expected_qid": "Q38311",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "P31 branch of linguistics — not biological morphology homonym."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:syntax",
+      "seed_label": "Syntax",
+      "expected_qid": "Q37437",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:semantics",
+      "seed_label": "Semantics",
+      "expected_qid": "Q39645",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:pragmatics",
+      "seed_label": "Pragmatics",
+      "expected_qid": "Q181839",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:semiotics",
+      "seed_label": "Semiotics",
+      "expected_qid": "Q60195",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:sociolinguistics",
+      "seed_label": "Sociolinguistics",
+      "expected_qid": "Q160845",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:historical-linguistics",
+      "seed_label": "Historical Linguistics",
+      "expected_qid": "Q190375",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:applied-linguistics",
+      "seed_label": "Applied Linguistics",
+      "expected_qid": "Q321249",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:computational-linguistics",
+      "seed_label": "Computational Linguistics",
+      "expected_qid": "Q182557",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "generator hint Q184898=line-sensor was a hallucination."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:translation-studies",
+      "seed_label": "Translation Studies",
+      "expected_qid": "Q501778",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:discourse-analysis",
+      "seed_label": "Discourse Analysis",
+      "expected_qid": "Q1129466",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "generator hint Q193536=Jakarta-district was a hallucination (self-flagged)."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:dialectology",
+      "seed_label": "Dialectology",
+      "expected_qid": "Q146893",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "generator hint Q169822=bee-pollen was a hallucination."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:psycholinguistics",
+      "seed_label": "Psycholinguistics",
+      "expected_qid": "Q179488",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "generator hint Q131651=Elektra was a hallucination. §13 to psychology (P279)."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:neurolinguistics",
+      "seed_label": "Neurolinguistics",
+      "expected_qid": "Q215948",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "generator hint Q182870=Mario-Puzo was a hallucination. §13 to neuroscience."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:cognitive-linguistics",
+      "seed_label": "Cognitive Linguistics",
+      "expected_qid": "Q508969",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "generator hint Q247965=footballer was a hallucination. §13 to cognitive-psychology (P279)."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "field:literary-studies",
+      "seed_label": "Literary Studies",
+      "expected_qid": "Q208217",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "distinct from literary-theory Q459381 (subfield)."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:literary-theory",
+      "seed_label": "Literary Theory",
+      "expected_qid": "Q459381",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:literary-criticism",
+      "seed_label": "Literary Criticism",
+      "expected_qid": "Q58854",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "P31 branch-of-literature/activity (not academic-discipline class); gate UDC 82.09."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:comparative-literature",
+      "seed_label": "Comparative Literature",
+      "expected_qid": "Q834903",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:narratology",
+      "seed_label": "Narratology",
+      "expected_qid": "Q382451",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:rhetoric",
+      "seed_label": "Rhetoric",
+      "expected_qid": "Q81009",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:poetics",
+      "seed_label": "Poetics",
+      "expected_qid": "Q835023",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "discipline Q835023 over Aristotle's Poetics Q264714 (the book) + journal Q15760690."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "field:religious-studies",
+      "seed_label": "Religious Studies",
+      "expected_qid": "Q34187",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "discipline over the \"Religious Studies\" journal Q7311311."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:theology",
+      "seed_label": "Theology",
+      "expected_qid": "Q34178",
+      "rank1_expected": true,
+      "verdict": "verified"
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:biblical-studies",
+      "seed_label": "Biblical Studies",
+      "expected_qid": "Q794605",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "discipline over Q30149195 \"biblical concept\"."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:comparative-religion",
+      "seed_label": "Comparative Religion",
+      "expected_qid": "Q1075827",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "generator hint Q1200529=Libo-County was a hallucination."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:systematic-theology",
+      "seed_label": "Systematic Theology",
+      "expected_qid": "Q875490",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "P31 branch of theology; generator hint Q1080874=screamo-band was a hallucination."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:practical-theology",
+      "seed_label": "Practical Theology",
+      "expected_qid": "Q1383443",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "generator hint Q1347763=empty-stub was a hallucination."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "field:classics",
+      "seed_label": "Classics",
+      "expected_qid": "Q841090",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "§12 gate field, humanities-home."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "field:archaeology",
+      "seed_label": "Archaeology",
+      "expected_qid": "Q23498",
+      "rank1_expected": true,
+      "verdict": "verified",
+      "notes": "§12 gate field (institutional independence), humanities-home; §13 candidate to anthropology(SS)."
+    },
+    {
+      "batch": "batch:humanities-remainder-skeleton-v1",
+      "node_id": "subfield:modern-history",
+      "seed_label": "Modern History",
+      "verdict": "upstream_gap",
+      "notes": "no discipline entity — Wikidata models \"modern history\" only as the era \"modern period\" (Q3281534); gate-anchored (LCC D204-475) period sub-discipline; QID-less honest gap, proposed."
     }
   ]
 }

@@ -7755,5 +7755,989 @@
       "proposed_at": "2026-06-18"
     },
     "note": "Cross-listing v1 §13 cross-continent membership to social-sciences (decision (21)): educational psychology (Wikidata Q59157) is P279 subclass-of BOTH psychology (Q9418) AND educational sciences (Q861641) and P361 part-of educational sciences (live-verified 2026-06-18); LCC class home is LB (Education). Psychology home retained (edge:educational-psychology-part-of-psychology, primary). Co-equal, no disputed tag (other-parent filing = support, session #7). Target field:education (Q8434), closest existing education-discipline node."
+  },
+  {
+    "id": "edge:history-part-of-humanities",
+    "source": "field:history",
+    "target": "domain:humanities",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class D 'History (General)' D1-2027 + class C 'Auxiliary Sciences of History' C1-51; UDC 93/94 + 930 'Science of history'; FORD 6.1 'History and archaeology'; Wikidata Q1066186 'study of history' P31 academic discipline. Primary humanities branch.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:linguistics-part-of-humanities",
+    "source": "field:linguistics",
+    "target": "domain:humanities",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P 'Philology. Linguistics (General)'; UDC 81 'Linguistics and languages' (first-level); FORD 6.2 'Languages and literature'; Wikidata Q8162 P31 academic discipline. Primary humanities branch.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:literary-studies-part-of-humanities",
+    "source": "field:literary-studies",
+    "target": "domain:humanities",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass PN 'Literature (General)'; UDC 82.09 'Literary criticism. Literary studies'; FORD 6.2; Wikidata Q208217 'literary studies' P31 academic discipline. Primary humanities branch.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:religious-studies-part-of-humanities",
+    "source": "field:religious-studies",
+    "target": "domain:humanities",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass BL 'Religions. Mythology. Rationalism' + BL-BX religion section; UDC 2 'Religion. Theology'; FORD 6.3 'Philosophy, ethics and religion' (religion remainder; philosophy/ethics done); Wikidata Q34187 P31 academic discipline. Primary humanities branch.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:classics-part-of-humanities",
+    "source": "field:classics",
+    "target": "domain:humanities",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass PA 'Classical philology' (Greek+Latin); UDC 80 'Philology'; FORD 6.2/6.1; Wikidata Q841090 'classics' P31 academic discipline. §12 gate: humanities-home (PA gate, Q80083 P527 has-part classics). Institutional independence (SCS).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:archaeology-part-of-humanities",
+    "source": "field:archaeology",
+    "target": "domain:humanities",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: §12 gate: humanities-home. LCC subclass CC 'Archaeology' (class C, auxiliary sciences of history); UDC 902 'Archaeology'; FORD 6.1 'History and archaeology'; Wikidata Q23498 P31 academic discipline + Q80083 P527 has-part archaeology. Field-rank by institutional independence (SAA/AIA, dedicated departments — neuroscience precedent). SS/anthropology cross-membership recorded (§13 candidate).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:historiography-part-of-history",
+    "source": "subfield:historiography",
+    "target": "field:history",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC D1-24.5 General (historiography) + UDC 930 'Science of history. Historiography', 930.1 'history as a science'; Wikidata Q50675 P31 academic discipline.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:ancient-history-part-of-history",
+    "source": "subfield:ancient-history",
+    "target": "field:history",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC D51-90 'Ancient history' (primary division of History-General); UDC 94; Wikidata Q41493 P31 includes field of study (Q1047113). Note: predominantly era-flavoured (time-interval/historical-period P31) — gate-anchored as a period sub-discipline of history.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:medieval-history-part-of-history",
+    "source": "subfield:medieval-history",
+    "target": "field:history",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC D101-203 'Medieval history'; UDC 94; Wikidata Q27992545 P31 field of study (Q2267705) + academic discipline (Q11862829).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:modern-history-part-of-history",
+    "source": "subfield:modern-history",
+    "target": "field:history",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC D(204)-(475) 'Modern history' + D839-2027; UDC 94. QID-less honest gap: Wikidata models 'modern history' only as the era 'modern period' (Q3281534), no discipline entity — gate-anchored period sub-discipline, proposed (capped, endpoint).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:military-history-part-of-history",
+    "source": "subfield:military-history",
+    "target": "field:history",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC D25-27 'Military and naval history'; FORD 6.1; Wikidata Q192781 P31 academic discipline + branch (Q81517619).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:cultural-history-part-of-history",
+    "source": "subfield:cultural-history",
+    "target": "field:history",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass CB 'History of Civilization' CB3-482; UDC 930.85 'cultural history'; Wikidata Q858517 P31 branch of history (Q81517619).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:social-history-part-of-history",
+    "source": "subfield:social-history",
+    "target": "field:history",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class D thematic axis; UDC 930 methodology axis; FORD 6.1; Wikidata Q908604 P31 field of study + branch of history.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:intellectual-history-part-of-history",
+    "source": "subfield:intellectual-history",
+    "target": "field:history",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC D1-24.5 general (history-of-ideas tradition); UDC 930; Wikidata Q1195695 P31 academic discipline + aspect of history (Q17524420). Alias: history of ideas.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:world-history-part-of-history",
+    "source": "subfield:world-history",
+    "target": "field:history",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class D global axis; UDC 94 'General history'; Wikidata Q6457238 'world history' (field of historical study) P31 academic discipline.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:paleography-part-of-history",
+    "source": "subfield:paleography",
+    "target": "field:history",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass CD 'Diplomatics. Archives. Seals' CD1-6471 (auxiliary science of history); UDC 930.2 'methodology / ancillary historical sciences'; Wikidata Q179957 'palaeography' P31 academic discipline.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:epigraphy-part-of-history",
+    "source": "subfield:epigraphy",
+    "target": "field:history",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass CN 'Inscriptions. Epigraphy' CN1-1355 (auxiliary science of history, class C); UDC 930.2; Wikidata Q181260 P31 archaeological sub-discipline (Q4785472). Primary home history (class C gate); §13 candidate to archaeology recorded.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:phonetics-part-of-linguistics",
+    "source": "subfield:phonetics",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P (philology); UDC 81`34 'Phonetics. Phonology'; Wikidata Q35395 P31 branch of linguistics (Q135892289).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:phonology-part-of-linguistics",
+    "source": "subfield:phonology",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P; UDC 81`34 'Phonetics. Phonology'; Wikidata Q40998 P31 branch of linguistics.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:morphology-part-of-linguistics",
+    "source": "subfield:morphology",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P (comparative grammar); UDC 81`36 'Grammar'; Wikidata Q38311 P31 branch of linguistics (not biological morphology).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:syntax-part-of-linguistics",
+    "source": "subfield:syntax",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P (comparative grammar); UDC 81`36 'Grammar'; Wikidata Q37437 P31 branch of linguistics.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:semantics-part-of-linguistics",
+    "source": "subfield:semantics",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P (semantics); UDC 81`37 'Semantics'; Wikidata Q39645 P31 branch of linguistics.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:pragmatics-part-of-linguistics",
+    "source": "subfield:pragmatics",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P (language use/context); UDC 81 linguistics; Wikidata Q181839 P31 branch of linguistics.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:semiotics-part-of-linguistics",
+    "source": "subfield:semiotics",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P 'Semiotics. Signs and symbols'; UDC 81`22 'Semiotics'; FORD 6.2; Wikidata Q60195 P31 academic discipline. Cross-disciplinary (philosophy roots) — primary home linguistics per gate.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:sociolinguistics-part-of-linguistics",
+    "source": "subfield:sociolinguistics",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P; UDC 81`27 'Sociolinguistics'; Wikidata Q160845 P31 branch of linguistics + academic discipline.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:historical-linguistics-part-of-linguistics",
+    "source": "subfield:historical-linguistics",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P (comparative/historical grammar); UDC 81-112 'diachronic/historical linguistics'; Wikidata Q190375 P31 branch of linguistics. Alias: diachronic linguistics.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:applied-linguistics-part-of-linguistics",
+    "source": "subfield:applied-linguistics",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P (applied); UDC 81`33 'Applied linguistics'; Wikidata Q321249 P31 branch of linguistics + academic discipline.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:computational-linguistics-part-of-linguistics",
+    "source": "subfield:computational-linguistics",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P 'Computational linguistics. Natural language processing'; UDC 81`32 'Mathematical/computational linguistics'; Wikidata Q182557 P31 academic discipline + branch of linguistics. Distinct from CS NLP (existing).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:translation-studies-part-of-linguistics",
+    "source": "subfield:translation-studies",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P 'Translating and interpreting'; UDC 81`25 'Translation theory'; Wikidata Q501778 P31 academic discipline.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:discourse-analysis-part-of-linguistics",
+    "source": "subfield:discourse-analysis",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P 'Discourse analysis'; UDC 81`42 'Text linguistics / Discourse analysis'; Wikidata Q1129466 P31 academic discipline.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:dialectology-part-of-linguistics",
+    "source": "subfield:dialectology",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P 'Dialects. Provincialisms'; UDC 81`28 'Dialectology / areal linguistics'; Wikidata Q146893 P31 academic discipline + field of study.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:psycholinguistics-part-of-linguistics",
+    "source": "subfield:psycholinguistics",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P (language acquisition); UDC 81`23 'Psycholinguistics'; Wikidata Q179488 P31 branch of linguistics + P279 linguistics+psychology. Cognitive wing — §13 to field:psychology (cogsci interface, sequential payoff).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:neurolinguistics-part-of-linguistics",
+    "source": "subfield:neurolinguistics",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P (language processing); UDC 81`23 axis; Wikidata Q215948 P31 interdisciplinary science + P279 linguistics+neurology. Cognitive wing — §13 to field:neuroscience (cogsci interface).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:cognitive-linguistics-part-of-linguistics",
+    "source": "subfield:cognitive-linguistics",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC class P (cognitive/language-mind); UDC 81; Wikidata Q508969 P31 branch of linguistics + branch of psychology + P279 linguistics+cognitive psychology. Cognitive wing — §13 to subfield:cognitive-psychology (cogsci interface).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:literary-theory-part-of-literary-studies",
+    "source": "subfield:literary-theory",
+    "target": "field:literary-studies",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass PN; UDC 82.09 'Literary criticism. Literary studies' + 82.02 'Literary schools, trends'; Wikidata Q459381 P31 academic discipline.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:literary-criticism-part-of-literary-studies",
+    "source": "subfield:literary-criticism",
+    "target": "field:literary-studies",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass PN; UDC 82.09 'Literary criticism. Literary studies'; Wikidata Q58854 P31 branch of literature (Q109551317). Scholarly activity/subfield of literary studies (UDC pairs criticism+studies); P31-activity noted.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:comparative-literature-part-of-literary-studies",
+    "source": "subfield:comparative-literature",
+    "target": "field:literary-studies",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass PN 'Comparative literature'; UDC 82.091 'Comparative literary studies. Comparative literature'; Wikidata Q834903 P31 academic major + branch of literature.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:narratology-part-of-literary-studies",
+    "source": "subfield:narratology",
+    "target": "field:literary-studies",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass PN (narrative theory); UDC 82.09; Wikidata Q382451 P31 academic discipline.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:rhetoric-part-of-literary-studies",
+    "source": "subfield:rhetoric",
+    "target": "field:literary-studies",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass PN (rhetoric-adjacent); UDC 80 'Philology' + 808 'Rhetoric', 808.5 'rhetoric of speech'; Wikidata Q81009 P31 academic discipline + field of study.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:poetics-part-of-literary-studies",
+    "source": "subfield:poetics",
+    "target": "field:literary-studies",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass PN (poetry theory); UDC 801.6 'prosody'; Wikidata Q835023 P31 academic discipline + academic major.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:theology-part-of-religious-studies",
+    "source": "subfield:theology",
+    "target": "field:religious-studies",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass BT 'Doctrinal Theology' + BV 'Practical Theology'; UDC 2 'Religion. Theology'; FORD 6.3; Wikidata Q34178 P31 academic discipline.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:biblical-studies-part-of-religious-studies",
+    "source": "subfield:biblical-studies",
+    "target": "field:religious-studies",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass BS 'The Bible'; UDC 2-2 'sacred books / scriptures'; FORD 6.3; Wikidata Q794605 P31 academic discipline.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:comparative-religion-part-of-religious-studies",
+    "source": "subfield:comparative-religion",
+    "target": "field:religious-studies",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata",
+      "source:oecd-ford"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass BL 'Religions. Mythology. Rationalism'; UDC 2; FORD 6.3; Wikidata Q1075827 P31 academic discipline + academic major. Alias: history of religions.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:systematic-theology-part-of-religious-studies",
+    "source": "subfield:systematic-theology",
+    "target": "field:religious-studies",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass BT 'Doctrinal Theology'; UDC 2 doctrinal axis; Wikidata Q875490 P31 branch of theology (Q60310061). Traditionally a division of theology; flattened to subfield under religious-studies per 2-level model. Alias: dogmatic theology.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:practical-theology-part-of-religious-studies",
+    "source": "subfield:practical-theology",
+    "target": "field:religious-studies",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Skeleton part_of: LCC subclass BV 'Practical Theology'; UDC 2-46 'pastoral/practical theology'; Wikidata Q1383443 P31 branch of theology + academic discipline. Flattened to subfield under religious-studies (traditionally a division of theology). Alias: pastoral theology.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:psycholinguistics-part-of-psychology",
+    "source": "subfield:psycholinguistics",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "§13 cross-listing (sequential cogsci interface, decision (45)): Wikidata Q179488 P279 subclass-of linguistics (Q8162) AND psychology (Q9418). Co-equal membership — primary home field:linguistics (humanities), cross-membership field:psychology (cognitive sciences). Resolves the linguistics↔cognition interface against the existing cogsci node.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:cognitive-linguistics-part-of-cognitive-psychology",
+    "source": "subfield:cognitive-linguistics",
+    "target": "subfield:cognitive-psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "§13 cross-listing (sequential cogsci interface, decision (45)): Wikidata Q508969 P279 subclass-of linguistics (Q8162) AND cognitive psychology (Q23373); P31 branch of psychology (Q60680430). Co-equal membership — primary home field:linguistics, cross-membership subfield:cognitive-psychology (cognitive sciences).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:neurolinguistics-part-of-neuroscience",
+    "source": "subfield:neurolinguistics",
+    "target": "field:neuroscience",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "§13 cross-listing (sequential cogsci interface, decision (45)): neurolinguistics = the neuroscience of language; Wikidata Q215948 P31 interdisciplinary science. Cross-membership to field:neuroscience (cognitive sciences). Note: Wikidata P279 lists neurology (Q83042, clinical/medicine) as the clinical sibling — recorded as co-§13 candidate (medicine); confidence 0.85 reflects neuroscience being the disciplinary (not P279-named) parent.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
+  },
+  {
+    "id": "edge:economic-history-part-of-history",
+    "source": "subfield:economic-history",
+    "target": "field:history",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "§13 cross-listing (debt §4 resolution — history continent now exists): Wikidata Q47398 P361 part-of economics (Q8134) AND history (Q309); P31 branch of history (Q81517619). Co-equal membership — primary home social-sciences (economics), cross-membership field:history (humanities).",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    }
   }
 ]

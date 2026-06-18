@@ -1,0 +1,680 @@
+{
+  "version": "1",
+  "batch_id": "humanities-remainder-skeleton-v1",
+  "note": "Final QC-corrected nodes promoted to /data (session #23). QIDs are orchestrator multi-signal P31-verified (16 generator training-knowledge hints were hallucinations, all corrected; see grounding-report.md). 44 reviewed+indexable / 1 proposed (modern-history QID-less honest gap).",
+  "nodes": [
+    {
+      "id": "field:history",
+      "type": "field",
+      "domain": "humanities",
+      "level": 1,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q1066186"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:historiography",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q50675"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:ancient-history",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q41493"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:medieval-history",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q27992545"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:modern-history",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "proposed",
+      "indexable": false,
+      "is_living_person": false,
+      "external_ids": {},
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:military-history",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q192781"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:cultural-history",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q858517"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:social-history",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q908604"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:intellectual-history",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q1195695"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:world-history",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q6457238"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:paleography",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q179957"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:epigraphy",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q181260"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "field:linguistics",
+      "type": "field",
+      "domain": "humanities",
+      "level": 1,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q8162"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:phonetics",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q35395"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:phonology",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q40998"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:morphology",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q38311"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:syntax",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q37437"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:semantics",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q39645"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:pragmatics",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q181839"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:semiotics",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q60195"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:sociolinguistics",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q160845"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:historical-linguistics",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q190375"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:applied-linguistics",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q321249"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:computational-linguistics",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q182557"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:translation-studies",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q501778"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:discourse-analysis",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q1129466"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:dialectology",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q146893"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:psycholinguistics",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q179488"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:neurolinguistics",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q215948"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:cognitive-linguistics",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q508969"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "field:literary-studies",
+      "type": "field",
+      "domain": "humanities",
+      "level": 1,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q208217"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:literary-theory",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q459381"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:literary-criticism",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q58854"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:comparative-literature",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q834903"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:narratology",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q382451"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:rhetoric",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q81009"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:poetics",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q835023"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "field:religious-studies",
+      "type": "field",
+      "domain": "humanities",
+      "level": 1,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q34187"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:theology",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q34178"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:biblical-studies",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q794605"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:comparative-religion",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q1075827"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:systematic-theology",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q875490"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:practical-theology",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q1383443"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "field:classics",
+      "type": "field",
+      "domain": "humanities",
+      "level": 1,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q841090"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "field:archaeology",
+      "type": "field",
+      "domain": "humanities",
+      "level": 1,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q23498"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    }
+  ]
+}
