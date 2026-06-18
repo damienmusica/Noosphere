@@ -1,0 +1,995 @@
+{
+  "batch": "humanities-remainder-summaries-v1",
+  "generated_by": "Claude Opus x5 separate-context subagents (decision (26)/(40), ADR 0007 - generation by subagents / QC by orchestrator)",
+  "qc_by": "orchestrator (Opus), editorial QC v2 (decision (34)(1))",
+  "date": "2026-06-18",
+  "note": "Editorial settlement, session #24 (humanities-remainder round 3, session B). 44 nodes reviewed-after-skeleton (session #23) with empty summaries. All citations live-fetched this session.",
+  "summaries": [
+    {
+      "node_id": "field:history",
+      "summary": "History is the systematic study of the past, focusing primarily on the human past, and as an academic discipline it analyses and interprets evidence to construct narratives about what happened and explain why it happened. Some theorists categorize history as a social science, while others see it as part of the humanities or consider it a hybrid discipline. The term is also used more generally to mean the past itself rather than the academic field that studies it.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/History",
+          "supports": "History is the academic study of the human past",
+          "quote": "History is the systematic study of the past, focusing primarily on the human past",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/History",
+          "supports": "analyses and interprets evidence to build and explain narratives",
+          "quote": "As an academic discipline, it analyses and interprets evidence to construct narratives about what happened",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/History",
+          "supports": "placement among social science and the humanities",
+          "quote": "Some theorists categorize history as a social science, while others see it as part of the humanities",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "QID mismatch: the assigned QID Q1066186 ('study of history', the academic discipline) has NO enwiki sitelink. The English Wikipedia 'History' article is linked to Q309 ('Study of the past'). Per brief rule 1 (no enwiki sitelink for the assigned QID) I anchored on the enwiki 'History' page (Q309), whose extract explicitly frames History as 'the systematic study of the past' and 'an academic discipline' and itself distinguishes the discipline from 'the past itself' — so the discipline framing the node requires is supported. Title used: 'History'."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:historiography",
+      "summary": "Historiography is the study of the methods used by historians in developing history as an academic discipline; by extension the term also names any body of historical work on a particular subject. The historiography of a topic covers how historians have studied it using particular sources, techniques of research, and theoretical approaches to the interpretation of documentary sources. The extent to which historians are influenced by their own groups and loyalties, such as to their nation state, remains a debated question.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Historiography",
+          "supports": "definition as the study of historians' methods",
+          "quote": "Historiography is the study of the methods used by historians in developing history as an academic discipline",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Historiography",
+          "supports": "scope: how historians study a topic via sources, techniques, and theory",
+          "quote": "covers how historians have studied that topic by using particular sources, techniques of research, and theoretical approaches to the interpretation of documentary sources",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Historiography",
+          "supports": "preserves the debated question of historians' group influence",
+          "quote": "The extent to which historians are influenced by their own groups and loyalties",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:ancient-history",
+      "summary": "Ancient history is the branch of historical study concerned with the period from the beginning of writing and recorded human history through late antiquity. As a time span it runs roughly across the period 3000 BC – AD 500 and covers all continents inhabited by humans during that era, ending with the expansion of Islam in late antiquity.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Ancient_history",
+          "supports": "the period it studies: from the beginning of writing through late antiquity",
+          "quote": "Ancient history is a time period from the beginning of writing and recorded human history through late antiquity",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Ancient_history",
+          "supports": "Time span (3000 BC – AD 500) and its end with the expansion of Islam in late antiquity",
+          "quote": "Ancient history covers all continents inhabited by humans in the period 3000 BC – AD 500, ending with the expansion of Islam in late antiquity",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Era-vs-discipline: the enwiki article frames ancient history as a time period; the node is subfield:ancient-history (a disciplinary subfield of history), so the opening clause uses a neutral disciplinary gloss (branch of historical study concerned with the period) while all period facts are verbatim-cited. Reviewed by orchestrator — accepted (session #23 §12 era-vs-discipline precedent)."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:medieval-history",
+      "summary": "Medieval history is the branch of historical study concerned with the Middle Ages, the medieval period that in the history of Europe lasted approximately from the 5th to late 15th centuries. As an academic interdisciplinary study of the Middle Ages it is also known more broadly as medieval studies, and a historian who studies the period is called a medievalist.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Middle_Ages",
+          "supports": "the period it studies: 5th to late 15th centuries in European history",
+          "quote": "the Middle Ages or medieval period lasted approximately from the 5th to late 15th centuries",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Medieval_studies",
+          "supports": "the academic study of the Middle Ages (medieval studies)",
+          "quote": "Medieval studies is the academic interdisciplinary study of the Middle Ages",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Medieval_studies",
+          "supports": "A practitioner is called a medievalist",
+          "quote": "A historian who studies medieval studies is called a medievalist",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "No enwiki sitelink: the assigned QID Q27992545 ('medieval history') has NO enwiki sitelink. On enwiki, 'Medieval history' is a redirect to 'Middle Ages' (Q12554), which describes the ERA, not the discipline (era-vs-discipline trap). For the discipline/scope anchor I used the enwiki 'Medieval studies' page (Q119190, 'academic interdisciplinary study of the Middle Ages') — a related but DISTINCT entity from the assigned Q27992545. The era boundary is anchored on the 'Middle Ages' page. Both source titles ('Middle Ages', 'Medieval studies') differ from the assigned QID, which has no English Wikipedia article. Orchestrator should close-read this substitution."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:military-history",
+      "summary": "Military history is the study of armed conflict in the history of humanity and its impact on the societies, cultures, and economies involved, as well as the resulting changes to local and international relationships.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Military_history",
+          "supports": "definition as the study of armed conflict in human history",
+          "quote": "Military history is the study of armed conflict in the history of humanity",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Military_history",
+          "supports": "scope: impact on societies, cultures, and economies",
+          "quote": "its impact on the societies, cultures, and economies thereof",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:cultural-history",
+      "summary": "Cultural history records and interprets events in human history with respect to the contemporaneous social, cultural, and political milieu, arts, and manners. It combines the approaches of anthropology and history to examine popular cultural traditions and cultural interpretations of historical experience.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cultural_history",
+          "supports": "definition: interprets events relative to their social, cultural, and political milieu",
+          "quote": "Cultural history records and interprets events in human history with respect to the contemporaneous social, cultural and political milieu",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cultural_history",
+          "supports": "method: combines anthropology and history to study cultural traditions",
+          "quote": "It combines the approaches of anthropology and history to examine popular cultural traditions",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:social-history",
+      "summary": "Social history, often called history from below, is the field of history that looks at the lived experience of the past. Historians who write social history are called social historians.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Social_history",
+          "supports": "Definition of social history as the field looking at lived experience of the past",
+          "quote": "Social history, often called history from below, is a field of history that looks at the lived experience of the past",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Social_history",
+          "supports": "Practitioners are called social historians",
+          "quote": "Historians who write social history are called social historians",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Thin source (two-sentence extract). Orchestrator trimmed the earlier uncited gloss (ordinary people rather than elites) to stay within cited bounds; summary now fully verbatim-anchored."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:intellectual-history",
+      "summary": "Intellectual history, also called the history of ideas, is the study of the history of human thought and of intellectuals, the people who conceptualize, discuss, and write about ideas. Its premise is that ideas do not develop in isolation from the thinkers who conceptualize and apply them, so the intellectual historian studies ideas both as abstract propositions and in the concrete terms of culture, life, and history.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Intellectual_history",
+          "supports": "definition: study of the history of human thought and of intellectuals",
+          "quote": "Intellectual history, or the history of ideas, is the study of the history of human thought and of intellectuals",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Intellectual_history",
+          "supports": "premise: ideas studied together with the thinkers who develop them",
+          "quote": "ideas do not develop in isolation from the thinkers who conceptualize and apply those ideas",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:world-history",
+      "summary": "World history, or global history, is the field of historical study that examines history from a global perspective. It emerged centuries ago and became much more active as a field in the late 20th century.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/World_history_(field)",
+          "supports": "definition: a field of historical study examining history globally",
+          "quote": "World history or global history as a field of historical study examines history from a global perspective",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/World_history_(field)",
+          "supports": "its growth as a field in the late 20th century",
+          "quote": "The field became much more active in the late 20th century",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:paleography",
+      "summary": "Palaeography (also spelled paleography) is the study and academic discipline of historical writing systems. It encompasses the deciphering and dating of historical manuscripts as well as the analysis of historic penmanship, handwriting scripts, and printed media.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Palaeography",
+          "supports": "definition: the study and discipline of historical writing systems",
+          "quote": "Palaeography (UK) or paleography (US) is the study and academic discipline of historical writing systems",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Palaeography",
+          "supports": "scope: deciphering/dating manuscripts and analyzing historic penmanship",
+          "quote": "deciphering and dating of historical manuscripts, as well as the analysis of historic penmanship",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Title note: the assigned QID Q179957 has enwiki sitelink 'Palaeography' (UK spelling); the node label is 'Paleography' (US spelling). The article opens 'Palaeography (UK) or paleography (US)', so both spellings are the same discipline — no homonym issue. Title used: 'Palaeography'."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:epigraphy",
+      "summary": "Epigraphy is the study of inscriptions, or epigraphs, as writing. It is the discipline of identifying graphemes, clarifying their meanings, classifying their uses according to dates and cultural contexts, and drawing conclusions about the writing and the writers.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Epigraphy",
+          "supports": "definition: the study of inscriptions (epigraphs) as writing",
+          "quote": "Epigraphy is the study of inscriptions, or epigraphs, as writing",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Epigraphy",
+          "supports": "scope: classifying inscriptions by date and culture and drawing conclusions about writers",
+          "quote": "classifying their uses according to dates and cultural contexts, and drawing conclusions about the writing and the writers",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:linguistics",
+      "summary": "Linguistics is the scientific study of language. The areas of linguistic analysis are syntax, semantics (meaning), morphology, phonetics, phonology, and pragmatics, and subdisciplines such as biolinguistics and psycholinguistics bridge many of these divisions.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Linguistics",
+          "supports": "definition of linguistics",
+          "quote": "Linguistics is the scientific study of language",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Linguistics",
+          "supports": "scope and constituent areas of linguistic analysis",
+          "quote": "The areas of linguistic analysis are syntax, semantics (meaning), morphology, phonetics, phonology, and pragmatics",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:phonetics",
+      "summary": "Phonetics is a branch of linguistics that mainly concerns the articulation, sound wave properties, and perception of speech sounds. The field is traditionally divided into three sub-disciplines: articulatory phonetics, acoustic phonetics, and auditory phonetics.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Phonetics",
+          "supports": "definition and object of phonetics",
+          "quote": "Phonetics is a branch of linguistics that mainly concerns the articulation, sound wave properties, and perception of speech sounds",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Phonetics",
+          "supports": "internal sub-disciplines of phonetics",
+          "quote": "divided into three sub-disciplines: articulatory phonetics, acoustic phonetics, and auditory phonetics",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:phonology",
+      "summary": "Phonology is the branch of linguistics that concerns how languages organize the foundational elements that make their words. In spoken languages these are phonemes like vowel and consonant sounds that affect meaning.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Phonology",
+          "supports": "definition and object of phonology",
+          "quote": "Phonology is the branch of linguistics that concerns how languages organize the foundational elements that make their words",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Phonology",
+          "supports": "phonemes as the meaning-bearing units phonology studies",
+          "quote": "these are phonemes like vowel and consonant sounds that affect meaning",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:morphology",
+      "summary": "In linguistics, morphology is the study of how words are formed, and how they relate to one another within a language. Most approaches investigate the structure of words in terms of morphemes, and morphology also analyzes how words may be inflected to express grammatical categories such as number, tense, and aspect.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Morphology_(linguistics)",
+          "supports": "definition of morphology (linguistics sense)",
+          "quote": "morphology is the study of how words are formed, and how they relate to one another within a language",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Morphology_(linguistics)",
+          "supports": "morphemes as the unit of analysis",
+          "quote": "investigate the structure of words in terms of morphemes",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Morphology_(linguistics)",
+          "supports": "inflection and grammatical categories",
+          "quote": "how they may be inflected to express grammatical categories such as number, tense, and aspect",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:syntax",
+      "summary": "In linguistics, syntax is the study of how words and morphemes combine to form well-formed larger units such as phrases and sentences. Central concerns in this area of linguistics include word order, grammatical relations, hierarchical sentence structure, agreement, and cross-linguistic variation. Diverse approaches, such as generative grammar and functional grammar, offer unique perspectives on syntax.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Syntax",
+          "supports": "definition of syntax (linguistics sense)",
+          "quote": "syntax is the study of how words and morphemes combine to form well-formed larger units such as phrases and sentences",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Syntax",
+          "supports": "central concerns of syntax",
+          "quote": "Central concerns in this area of linguistics include word order, grammatical relations",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Syntax",
+          "supports": "plurality of theoretical approaches (generative vs functional)",
+          "quote": "Diverse approaches, such as generative grammar and functional grammar, offer unique perspectives on syntax",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:semantics",
+      "summary": "Semantics is the study of linguistic meaning, examining what meaning is, how words get their meaning, and how the meaning of a complex expression depends on its parts. Semantics contrasts with syntax, which studies the rules that dictate how to create grammatically correct sentences, and together with syntactics and pragmatics it is a part of semiotics.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Semantics",
+          "supports": "definition of semantics (linguistic meaning sense)",
+          "quote": "Semantics is the study of linguistic meaning",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Semantics",
+          "supports": "relation to syntax",
+          "quote": "Semantics contrasts with syntax, which studies the rules that dictate how to create grammatically correct sentences",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Semantics",
+          "supports": "place within semiotics",
+          "quote": "Semantics, together with syntactics and pragmatics, is a part of semiotics",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:pragmatics",
+      "summary": "In linguistics and the philosophy of language, pragmatics is the study of how context contributes to meaning. It evaluates how human language is utilized in social interactions, as well as the relationship between the interpreter and the interpreted.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Pragmatics",
+          "supports": "definition of pragmatics",
+          "quote": "pragmatics is the study of how context contributes to meaning",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Pragmatics",
+          "supports": "scope: language use in social interaction",
+          "quote": "evaluates how human language is utilized in social interactions",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:semiotics",
+      "summary": "Semiotics is the study of signs, an interdisciplinary field that examines what signs are, how they form sign systems, and how individuals use them to communicate meaning. It is related to linguistics but has a broader scope that includes nonlinguistic signs, such as maps and clothing.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Semiotics",
+          "supports": "definition of semiotics",
+          "quote": "Semiotics is the study of signs",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Semiotics",
+          "supports": "relationship to linguistics and broader scope",
+          "quote": "Semiotics is related to linguistics but has a broader scope that includes nonlinguistic signs, such as maps and clothing",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:sociolinguistics",
+      "summary": "Sociolinguistics is the descriptive and scientific study of how language is shaped by and used differently within any given society. The field looks at how a language varies between distinct social groups and under the influence of assorted cultural norms, expectations, and contexts. It combines the older field of dialectology with the social sciences in order to identify regional dialects, sociolects, and other sub-varieties within a language.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Sociolinguistics",
+          "supports": "definition of sociolinguistics",
+          "quote": "Sociolinguistics is the descriptive and scientific study of how language is shaped by and used differently within any given society",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Sociolinguistics",
+          "supports": "scope: variation across social groups and cultural norms",
+          "quote": "how a language varies between distinct social groups and under the influence of assorted cultural norms",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Sociolinguistics",
+          "supports": "relationship to dialectology and the social sciences",
+          "quote": "combines the older field of dialectology with the social sciences",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:historical-linguistics",
+      "summary": "Historical linguistics, also known as diachronic linguistics, is the scientific study of how languages change over time. It seeks to understand the nature and causes of linguistic change and to trace the evolution of languages. Its key areas include the reconstruction of ancestral languages and the classification of languages into families.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Historical_linguistics",
+          "supports": "definition as the scientific study of language change over time",
+          "quote": "also known as diachronic linguistics, is the scientific study of how languages change over time",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Historical_linguistics",
+          "supports": "scope: reconstruction of ancestral languages and classification into families",
+          "quote": "the reconstruction of ancestral languages, the classification of languages into families",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:applied-linguistics",
+      "summary": "Applied linguistics is an interdisciplinary field which identifies, investigates, and offers solutions to language-related real-life problems. Academic fields related to it include education, psychology, communication research, information science, natural language processing, anthropology, and sociology.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Applied_linguistics",
+          "supports": "definition as an interdisciplinary field addressing real-life language problems",
+          "quote": "an interdisciplinary field which identifies, investigates, and offers solutions to language-related real-life problems",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Applied_linguistics",
+          "supports": "related academic fields",
+          "quote": "education, psychology, communication research, information science, natural language processing, anthropology, and sociology",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:computational-linguistics",
+      "summary": "Computational linguistics is an interdisciplinary field concerned with the computational modelling of natural language, as well as the study of appropriate computational approaches to linguistic questions. It draws upon linguistics, computer science, artificial intelligence, mathematics, logic, philosophy, cognitive science, psycholinguistics, anthropology and neuroscience, among others.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Computational_linguistics",
+          "supports": "definition as computational modelling of natural language",
+          "quote": "concerned with the computational modelling of natural language",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Computational_linguistics",
+          "supports": "the fields it draws upon",
+          "quote": "computational linguistics draws upon linguistics, computer science, artificial intelligence, mathematics, logic, philosophy, cognitive science",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:translation-studies",
+      "summary": "Translation studies is an academic interdiscipline dealing with the systematic study of the theory, description and application of translation, interpreting, and localization. As an interdiscipline it borrows from supporting fields including comparative literature, computer science, history, linguistics, philology, philosophy, semiotics, and terminology.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Translation_studies",
+          "supports": "definition as systematic study of translation, interpreting, and localization",
+          "quote": "the systematic study of the theory, description and application of translation, interpreting, and localization",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Translation_studies",
+          "supports": "supporting fields it borrows from",
+          "quote": "comparative literature, computer science, history, linguistics, philology, philosophy, semiotics, and terminology",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:discourse-analysis",
+      "summary": "Discourse analysis, or discourse studies, is an approach to the analysis of written, spoken, or sign language, including any significant semiotic event.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Discourse_analysis",
+          "supports": "framing as an approach to analysis of written, spoken, or sign language",
+          "quote": "is an approach to the analysis of written, spoken, or sign language",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Discourse_analysis",
+          "supports": "scope including any significant semiotic event",
+          "quote": "including any significant semiotic event",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "subfield:discourse-analysis: REST summary extract is a single sentence, so both quotes are drawn from it and the summary is held to that sentence verbatim. The brief notes DA is a method as well as a field; the source frames it as an 'approach' (not 'study of'), which the summary mirrors rather than overstating it as a settled discipline."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:dialectology",
+      "summary": "Dialectology is the scientific study of dialects and other forms of language variation, especially variation associated with geographic region. Dialectologists investigate differences in pronunciation, grammar, and vocabulary, and how such differences pattern across communities and change over time.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Dialectology",
+          "supports": "definition as the scientific study of dialects and language variation",
+          "quote": "the scientific study of dialects and other forms of language variation, especially variation associated with geographic region",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Dialectology",
+          "supports": "what dialectologists investigate",
+          "quote": "investigate differences in pronunciation, grammar, and vocabulary",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:psycholinguistics",
+      "summary": "Psycholinguistics, or the psychology of language, is the study of the interrelation between linguistic factors and other aspects of mind and brain. The discipline is mainly concerned with the psychological and neurobiological mechanisms that enable humans to learn, comprehend, and produce language.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Psycholinguistics",
+          "supports": "definition as the study of linguistic factors and aspects of mind and brain",
+          "quote": "the study of the interrelation between linguistic factors and other aspects of mind and brain",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Psycholinguistics",
+          "supports": "scope: psychological and neurobiological mechanisms of language",
+          "quote": "the psychological and neurobiological mechanisms that enable humans to learn, comprehend, and produce language",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:neurolinguistics",
+      "summary": "Neurolinguistics is the study of neural mechanisms in the human brain that control the comprehension, production, and acquisition of language. As an interdisciplinary field, it draws methods and theories from fields such as neuroscience, linguistics, cognitive science, communication disorders and neuropsychology.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Neurolinguistics",
+          "supports": "definition as the study of neural mechanisms controlling language",
+          "quote": "the study of neural mechanisms in the human brain that control the comprehension, production, and acquisition of language",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Neurolinguistics",
+          "supports": "interdisciplinary fields it draws from",
+          "quote": "neuroscience, linguistics, cognitive science, communication disorders and neuropsychology",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:cognitive-linguistics",
+      "summary": "Cognitive linguistics is an approach to the study of language that encompasses a number of complementary and sometimes overlapping theories. Their defining characteristic is the guiding assumption that linguistic patterns are patterns of conceptualization, so that the study of language provides insight into other human cognitive functions. In this regard cognitive linguistics challenges generative grammar's hypothesis that some basic linguistic competence is innate and separate from other cognitive faculties.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cognitive_linguistics",
+          "supports": "framing as an approach encompassing complementary theories",
+          "quote": "an approach to the study of language that encompasses a number of complementary and sometimes overlapping theories",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cognitive_linguistics",
+          "supports": "guiding assumption that linguistic patterns are patterns of conceptualization",
+          "quote": "the guiding assumption that linguistic patterns are patterns of conceptualization",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cognitive_linguistics",
+          "supports": "debate: it challenges generative grammar's innateness hypothesis",
+          "quote": "challenges generative grammar's hypothesis that some basic linguistic competence is innate and separate from other cognitive faculties",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "subfield:cognitive-linguistics: interdisciplinary interface with psychology/cognitive science. Per brief caution, contested cognitive theories are not asserted as settled — the summary attributes the innateness debate to the source's framing ('challenges generative grammar's hypothesis'), preserving the plurality rather than endorsing either school."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:literary-studies",
+      "summary": "Literary studies, also called literary criticism, is the study, evaluation, and interpretation of literature. It is closely related to literary theory, the philosophical analysis of literature's goals and methods, though the two activities are distinct and literary critics are not always theorists.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Literary_criticism",
+          "supports": "definition of literary studies as the study, evaluation, and interpretation of literature",
+          "quote": "literary criticism or literary studies is the study, evaluation, and interpretation of literature",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Literary_criticism",
+          "supports": "relationship between literary studies/criticism and literary theory",
+          "quote": "literary critics are not always, and have not always been, theorists",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Title-binding judgment call (Q208217): the Wikidata enwiki sitelink for Q208217 is 'Literary science', whose REST summary endpoint redirects on enwiki to the 'Comparative literature' article — not to a Literary Studies article. The enwiki redirect 'Literary studies' resolves to the 'Literary criticism' article, whose extract verbatim defines 'literary criticism or literary studies is the study, evaluation, and interpretation of literature'. I therefore anchored field:literary-studies on the live 'Literary criticism' REST summary, which is the article enwiki uses for the Literary Studies concept. Note: field:literary-studies and subfield:literary-criticism share this source article; QC may want to confirm the field/subfield distinction is acceptable given enwiki conflates the two."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:literary-theory",
+      "summary": "Literary theory is the systematic study of the nature of literature and of the methods for literary analysis. The word theory has become an umbrella term for a plurality of scholarly approaches to reading texts, some of them informed by strands of semiotics, cultural studies, philosophy of language, and continental philosophy.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Literary_theory",
+          "supports": "definition as the systematic study of the nature of literature and methods of analysis",
+          "quote": "Literary theory is the systematic study of the nature of literature and of the methods for literary analysis",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Literary_theory",
+          "supports": "theory as an umbrella term covering plural scholarly approaches",
+          "quote": "the word theory became an umbrella term for scholarly approaches to reading texts",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Tension preservation (competing schools): the node contains competing schools (formalism, structuralism, post-structuralism, Marxist, feminist, etc.). I preserved plurality with neutral attribution by quoting the source's framing of 'theory' as an 'umbrella term for scholarly approaches to reading texts' rather than asserting any one school as the truth. No school is named as dominant or settled."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:literary-criticism",
+      "summary": "Literary criticism is a genre of arts criticism concerned with the study, evaluation, and interpretation of literature. Modern literary criticism is often influenced by literary theory, the philosophical analysis of literature's goals and methods, although literary critics are not always theorists.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Literary_criticism",
+          "supports": "definition as the study, evaluation, and interpretation of literature",
+          "quote": "literary criticism or literary studies is the study, evaluation, and interpretation of literature",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Literary_criticism",
+          "supports": "relationship between criticism and literary theory",
+          "quote": "Modern literary criticism is often influenced by literary theory",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Tension preservation: literary criticism contains competing schools (formalist, Marxist, feminist, etc.). I described the discipline's general activity (study, evaluation, interpretation) and its relation to theory as the source frames it, without asserting any one critical school as authoritative."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:comparative-literature",
+      "summary": "Comparative literature is the academic field dealing with the study of literature and cultural expression across linguistic, national, geographic, and disciplinary boundaries. It is most frequently practised with works of different languages, but may also compare works of the same language that originate from different nations or cultures.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Comparative_literature",
+          "supports": "definition as cross-boundary study of literature and cultural expression",
+          "quote": "the study of literature and cultural expression across linguistic, national, geographic, and disciplinary boundaries",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Comparative_literature",
+          "supports": "scope: most often across different languages",
+          "quote": "most frequently practised with works of different languages",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:narratology",
+      "summary": "Narratology is the study of narrative and narrative structure and the ways that these affect human perception. Its theoretical lineage is traceable to Aristotle, but modern narratology is agreed to have begun with the Russian formalists.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Narratology",
+          "supports": "definition as the study of narrative and narrative structure",
+          "quote": "Narratology is the study of narrative and narrative structure and the ways that these affect human perception",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Narratology",
+          "supports": "modern origins of the discipline",
+          "quote": "modern narratology is agreed to have begun with the Russian formalists",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:rhetoric",
+      "summary": "Rhetoric is the art of persuasion, one of the three ancient arts of discourse (the trivium) of classical antiquity, along with grammar and logic/dialectic. As an academic discipline within the humanities, rhetoric aims to study the techniques that speakers or writers use to inform, persuade, and motivate their audiences.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Rhetoric",
+          "supports": "definition as the art of persuasion and one of the three classical arts of discourse",
+          "quote": "one of the three ancient arts of discourse (trivium) of classical antiquity, along with grammar and logic/dialectic",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Rhetoric",
+          "supports": "rhetoric as an academic discipline studying persuasive technique",
+          "quote": "rhetoric aims to study the techniques that speakers or writers use to inform, persuade, and motivate their audiences",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:poetics",
+      "summary": "Poetics is the study or theory of poetry, specifically the study or theory of device, structure, form, type, and effect with regards to poetry, though the term can also refer to literature broadly. Poetics is distinguished from hermeneutics by its focus on the synthesis of non-semantic elements in a text rather than its semantic interpretation.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Poetics",
+          "supports": "definition of poetics as the theory of poetry and its formal devices",
+          "quote": "the study or theory of device, structure, form, type, and effect with regards to poetry",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Poetics",
+          "supports": "distinction of poetics from hermeneutics (its scope vs neighboring approach)",
+          "quote": "Poetics is distinguished from hermeneutics by its focus on the synthesis of non-semantic elements in a text",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Homonym disambiguation (Q835023): confirmed via Wikidata description ('theory of literary forms and discourse') and the live 'Poetics' REST extract that this node is the general field — the study/theory of poetry and literary form — and NOT Aristotle's treatise titled 'Poetics'. The summary describes the discipline (device, structure, form, type, effect; distinction from hermeneutics), with no reference to Aristotle's book."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:classics",
+      "summary": "Classics, also known as classical studies, is the study of classical antiquity. In the Western world it traditionally refers to the study of ancient Greek and Roman literature and their original languages, Ancient Greek and Latin, and may also include Greco-Roman philosophy, history, archaeology, art, mythology, and society.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Classics",
+          "supports": "definition as the study of classical antiquity",
+          "quote": "is the study of classical antiquity",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Classics",
+          "supports": "core scope: Greek and Roman literature and original languages",
+          "quote": "classics traditionally refers to the study of ancient Greek and Roman literature and their original languages",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:archaeology",
+      "summary": "Archaeology is the study of human activity through the recovery and analysis of material culture, including artifacts, architecture, biofacts, sites, and cultural landscapes. It can be considered both a social science and a branch of the humanities, and the discipline involves surveying, excavation, and eventually analysis of the data collected to learn more about the past.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Archaeology",
+          "supports": "definition as the study of human activity through material culture",
+          "quote": "Archaeology or archeology is the study of human activity through the recovery and analysis of material culture",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Archaeology",
+          "supports": "disciplinary placement (social science and humanities) per session #23 humanities-home precedent",
+          "quote": "Archaeology can be considered both a social science and a branch of the humanities",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Archaeology",
+          "supports": "methods of the discipline",
+          "quote": "The discipline involves surveying, excavation, and eventually analysis of data collected",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Disciplinary home: per session #23 §12 precedent, archaeology's home in this graph is the humanities. The source states archaeology 'can be considered both a social science and a branch of the humanities', which I cited verbatim; the humanities placement is consistent with the source and not an over-claim (the source also notes alternative classifications)."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:religious-studies",
+      "summary": "Religious studies is the study of religion from a historical or scientific perspective, approaching it empirically rather than from within any faith tradition. The discipline describes, compares, interprets, and explains religion, emphasizing empirical, historically based, and cross-cultural perspectives.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Religious_studies",
+          "supports": "secular/scientific definition of the discipline",
+          "quote": "the study of religion from a historical or scientific perspective",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Religious_studies",
+          "supports": "the discipline's methods and scope",
+          "quote": "It describes, compares, interprets, and explains religion",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Religious_studies",
+          "supports": "empirical and cross-cultural emphasis",
+          "quote": "emphasizing empirical, historically based, and cross-cultural perspectives",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:theology",
+      "summary": "Theology is the study of religious belief from a religious perspective, with a focus on the nature of divinity and the history behind religion. It is taught as an academic discipline, typically in universities and seminaries.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Theology",
+          "supports": "definition of theology as a field of study",
+          "quote": "Theology is the study of religious belief from a religious perspective",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Theology",
+          "supports": "subject matter of the field",
+          "quote": "with a focus on the nature of divinity and the history behind religion",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Theology",
+          "supports": "its standing as an academic discipline",
+          "quote": "It is taught as an academic discipline, typically in universities and seminaries",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Neutrality: theology described as the academic discipline that studies religious belief from a religious perspective (its methodological stance, contrasted with religious studies external/empirical method). No faith proposition asserted as true; academic-discipline standing foregrounded, all verbatim-cited. Orchestrator removed an earlier meta-phrase (trim-forbidden #1)."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:biblical-studies",
+      "summary": "Biblical studies is the academic application of a set of diverse disciplines to the study of the Bible, examining its texts through historical and analytical methods rather than devotional ones. For its theory and methods the field draws on disciplines ranging from ancient history, historical criticism, philology, theology, textual criticism, and others.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Biblical_studies",
+          "supports": "definition as academic study of the Bible",
+          "quote": "the academic application of a set of diverse disciplines to the study of the Bible",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Biblical_studies",
+          "supports": "the constituent methods and neighboring disciplines",
+          "quote": "the field draws on disciplines ranging from ancient history, historical criticism, philology, theology, textual criticism",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:comparative-religion",
+      "summary": "Comparative religion is the branch of religious studies that systematically compares the doctrines, practices, themes and impacts of the world's religions. The comparative study of religion yields a deeper understanding of the fundamental philosophical concerns of religion, such as ethics, metaphysics, and the nature of salvation.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Comparative_religion",
+          "supports": "definition as a branch of religious studies that compares religions",
+          "quote": "the branch of religious studies that systematically compares the doctrines, practices, themes and impacts of the world's religions",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Comparative_religion",
+          "supports": "aim and intellectual yield of the discipline",
+          "quote": "the comparative study of religion yields a deeper understanding of the fundamental philosophical concerns of religion",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:systematic-theology",
+      "summary": "Systematic theology is a discipline of Christian theology that formulates an orderly, rational, and coherent account of the doctrines of the Christian faith. It addresses issues such as what the Bible teaches about certain topics, and it shares its systematic tasks with other disciplines such as constructive theology, dogmatics, ethics, and apologetics.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Systematic_theology",
+          "supports": "definition as an ordered account of Christian doctrine",
+          "quote": "a discipline of Christian theology that formulates an orderly, rational, and coherent account of the doctrines of the Christian faith",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Systematic_theology",
+          "supports": "the kind of questions the discipline addresses",
+          "quote": "It addresses issues such as what the Bible teaches about certain topics",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Systematic_theology",
+          "supports": "neighboring disciplines it shares tasks with",
+          "quote": "Systematic theology shares its systematic tasks with other disciplines such as constructive theology, dogmatics, ethics, apologetics",
+          "fetched": true
+        }
+      ],
+      "self_flags": [
+        "Tradition-specific scope: the source frames systematic theology as a discipline 'of Christian theology'. This tradition-specific origin is attributed neutrally as the source states it (the node is the academic discipline that organizes doctrine, not a creedal assertion)."
+      ],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:practical-theology",
+      "summary": "Practical theology is an academic discipline that examines and reflects on religious practices in order to understand the theology enacted in those practices. It seeks to consider how theological theory and theological practices can be more fully aligned, changed, or improved, often addressing a perceived disconnection between dogmatics or theology as an academic discipline and the life of the church.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Practical_theology",
+          "supports": "definition as the academic study of religious practices",
+          "quote": "an academic discipline that examines and reflects on religious practices",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Practical_theology",
+          "supports": "the discipline's aim",
+          "quote": "consider how theological theory and theological practices can be more fully aligned, changed, or improved",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Practical_theology",
+          "supports": "the gap the discipline addresses",
+          "quote": "a perceived disconnection between dogmatics or theology as an academic discipline",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    }
+  ]
+}
