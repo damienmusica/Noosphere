@@ -7255,5 +7255,505 @@
       "proposed_at": "2026-06-18"
     },
     "note": "Cross-listing v1 §13 life-sciences membership (decision (21); B-flag resolution session #19): LCC QP141-QP185.3 Nutrition under QP Physiology, class Q (live-verified id.loc.gov 2026-06-18). Medicine home retained (edge:nutrition-science-part-of-public-health, UDC 613.2, primary). Co-equal, no disputed tag (other-parent filing = support, session #7 interpretation). Target field:biology per life-sciences single-field model; life-sciences facet = nutritional physiology/biochemistry."
+  },
+  {
+    "id": "edge:psychology-part-of-cognitive-sciences",
+    "source": "field:psychology",
+    "target": "domain:cognitive-sciences",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: LCC BF1-990 (Psychology subclass, entire gate) + UDC 159.9 (Psychology) + Wikidata Q9418 P279 subclass-of Q147638. Psychology is the primary continent-1 branch of cognitive sciences. Gate-anchored."
+  },
+  {
+    "id": "edge:neuroscience-part-of-cognitive-sciences",
+    "source": "field:neuroscience",
+    "target": "domain:cognitive-sciences",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata Q207011 P279 subclass-of Q147638; no own LCC BF range (neuroscience spans QP physiology and RC medicine, not BF). Wikidata-grounded division of domain:cognitive-sciences. Round-1 assignment confirms cogsci ownership."
+  },
+  {
+    "id": "edge:cognitive-psychology-part-of-psychology",
+    "source": "subfield:cognitive-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: LCC BF309-499 Consciousness/Cognition (learning, attention, memory, thinking, psycholinguistics) + UDC 159.95 Higher mental processes + Wikidata P31 branch of psychology (Q60680430). Gate-anchored division of field:psychology."
+  },
+  {
+    "id": "edge:developmental-psychology-part-of-psychology",
+    "source": "subfield:developmental-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: LCC BF712-724.85 Developmental psychology (infant, child, adolescence, adulthood) + Wikidata P31 branch of psychology (Q60680430). Gate-anchored division of field:psychology."
+  },
+  {
+    "id": "edge:social-psychology-part-of-psychology",
+    "source": "subfield:social-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:mesh",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: MeSH F01 'Psychology, Social' (Behavior and Behavior Mechanisms tree) + Wikidata P31 branch of psychology (Q60680430). Gate-anchored division of field:psychology. No discrete BF sub-range (social-psychology spans BF and HM sociology); MeSH F01 is the discipline cross-check."
+  },
+  {
+    "id": "edge:clinical-psychology-part-of-psychology",
+    "source": "subfield:clinical-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata P31 branch of psychology (Q60680430); no discrete captured BF sub-range for clinical psychology proper (overlaps with RC psychiatry in LCC). Wikidata-grounded division of field:psychology."
+  },
+  {
+    "id": "edge:experimental-psychology-part-of-psychology",
+    "source": "subfield:experimental-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: LCC BF180-198.7 Experimental psychology + Wikidata P31 branch of psychology (Q60680430). Gate-anchored division of field:psychology."
+  },
+  {
+    "id": "edge:personality-psychology-part-of-psychology",
+    "source": "subfield:personality-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: LCC BF698-698.9 Personality + Wikidata P31 branch of psychology (Q60680430). Gate-anchored division of field:psychology."
+  },
+  {
+    "id": "edge:comparative-psychology-part-of-psychology",
+    "source": "subfield:comparative-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: LCC BF660-685 Comparative psychology. Animal and human psychology + Wikidata P31 branch of psychology (Q60680430). Gate-anchored division of field:psychology."
+  },
+  {
+    "id": "edge:educational-psychology-part-of-psychology",
+    "source": "subfield:educational-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata P31 branch of psychology (Q60680430); no discrete captured BF sub-range (educational psychology sits primarily under LCC LB education, not BF). Wikidata-grounded division of field:psychology."
+  },
+  {
+    "id": "edge:industrial-and-organizational-psychology-part-of-psychology",
+    "source": "subfield:industrial-and-organizational-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata P31 branch of psychology (Q60680430); no discrete captured BF sub-range (I-O psychology home is LCC HF management/commerce). Wikidata-grounded division of field:psychology."
+  },
+  {
+    "id": "edge:health-psychology-part-of-psychology",
+    "source": "subfield:health-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata P31 branch of psychology (Q60680430); UDC 159.98 Applied psychology (psychotechnology) applies broadly. Wikidata-grounded division of field:psychology."
+  },
+  {
+    "id": "edge:evolutionary-psychology-part-of-psychology",
+    "source": "subfield:evolutionary-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: LCC BF698 area (Personality/Genetic psychology — evolutionary psychology sits in BF699-711 Genetic psychology vicinity) + Wikidata P31 branch of psychology (Q60680430). Gate-anchored division of field:psychology."
+  },
+  {
+    "id": "edge:psychometrics-part-of-psychology",
+    "source": "subfield:psychometrics",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: LCC BF176-176.5 Psychological tests and testing + Wikidata P31 branch of psychology (Q60680430). Gate-anchored division of field:psychology."
+  },
+  {
+    "id": "edge:sensation-and-perception-part-of-psychology",
+    "source": "subfield:sensation-and-perception",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: LCC BF231-299 Sensation. Aesthesiology + UDC 159.93 Sensation. Sensory perception + Wikidata P31 branch of psychology (Q60680430). Gate-anchored division of field:psychology. STATUS CAPPED AT proposed: source node subfield:sensation-and-perception is status=proposed (edge policy clause 3: edge status <= min endpoint status)."
+  },
+  {
+    "id": "edge:neuropsychology-part-of-psychology",
+    "source": "subfield:neuropsychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata P31 branch of psychology (Q60680430); no discrete captured BF sub-range (neuropsychology spans BF and RC neurology). Wikidata-grounded division of field:psychology."
+  },
+  {
+    "id": "edge:positive-psychology-part-of-psychology",
+    "source": "subfield:positive-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata P31 branch of psychology (Q60680430); no discrete captured BF sub-range. Wikidata-grounded division of field:psychology."
+  },
+  {
+    "id": "edge:forensic-psychology-part-of-psychology",
+    "source": "subfield:forensic-psychology",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata P31 branch of psychology (Q60680430); no discrete captured BF sub-range (forensic psychology sits at the interface of BF and law K). Wikidata-grounded division of field:psychology."
+  },
+  {
+    "id": "edge:judgment-and-decision-making-part-of-psychology",
+    "source": "subfield:judgment-and-decision-making",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: LCC BF608-635 Will. Volition. Choice. Control + Wikidata P31 branch of psychology (Q60680430). Gate-anchored division of field:psychology. STATUS CAPPED AT proposed: source node subfield:judgment-and-decision-making is status=proposed (edge policy clause 3: edge status <= min endpoint status)."
+  },
+  {
+    "id": "edge:cognitive-neuroscience-part-of-neuroscience",
+    "source": "subfield:cognitive-neuroscience",
+    "target": "field:neuroscience",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata Q1138951 P279 subclass-of Q207011 (neuroscience); no own BF range — Wikidata-grounded subdiscipline of neuroscience."
+  },
+  {
+    "id": "edge:behavioral-neuroscience-part-of-neuroscience",
+    "source": "subfield:behavioral-neuroscience",
+    "target": "field:neuroscience",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata Q846566 P279 subclass-of Q207011 (neuroscience); no own BF range — Wikidata-grounded subdiscipline of neuroscience."
+  },
+  {
+    "id": "edge:computational-neuroscience-part-of-neuroscience",
+    "source": "subfield:computational-neuroscience",
+    "target": "field:neuroscience",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata Q8037925 P279 subclass-of Q207011 (neuroscience); no own BF range — Wikidata-grounded subdiscipline of neuroscience."
+  },
+  {
+    "id": "edge:systems-neuroscience-part-of-neuroscience",
+    "source": "subfield:systems-neuroscience",
+    "target": "field:neuroscience",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata Q2617516 P279 subclass-of Q207011 (neuroscience); no own BF range — Wikidata-grounded subdiscipline of neuroscience."
+  },
+  {
+    "id": "edge:affective-neuroscience-part-of-neuroscience",
+    "source": "subfield:affective-neuroscience",
+    "target": "field:neuroscience",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata Q3625500 P279 subclass-of Q207011 (neuroscience); no own BF range — Wikidata-grounded subdiscipline of neuroscience."
+  },
+  {
+    "id": "edge:computational-cognitive-science-part-of-cognitive-sciences",
+    "source": "subfield:computational-cognitive-science",
+    "target": "domain:cognitive-sciences",
+    "relation": "part_of",
+    "confidence": 1,
+    "status": "proposed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Skeleton part_of: Wikidata Q147638 P527 'has part' cognitive psychology / AI / cognitive linguistics (hexagon structure); computational-cognitive-science is the integrative core of domain:cognitive-sciences, not a sub-branch of psychology or neuroscience. STATUS CAPPED AT proposed: source node subfield:computational-cognitive-science is status=proposed (edge policy clause 3: edge status <= min endpoint status)."
+  },
+  {
+    "id": "edge:behavioral-neuroscience-part-of-psychology",
+    "source": "subfield:behavioral-neuroscience",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-4-8",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Cross-listing v1 §13 co-equal membership (decision (21)): behavioral neuroscience (= biological psychology / biopsychology, Wikidata Q846566 P31 'branch of psychology', live-verified 2026-06-18) is co-equally a psychology subfield (APA Division 6 'Behavioral Neuroscience and Comparative Psychology'). Neuroscience home retained (edge:behavioral-neuroscience-part-of-neuroscience). Within-continent dual filing, no disputed tag (other-parent filing = support, session #7)."
+  },
+  {
+    "id": "edge:educational-psychology-part-of-education",
+    "source": "subfield:educational-psychology",
+    "target": "field:education",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-4-8",
+      "proposed_at": "2026-06-18"
+    },
+    "note": "Cross-listing v1 §13 cross-continent membership to social-sciences (decision (21)): educational psychology (Wikidata Q59157) is P279 subclass-of BOTH psychology (Q9418) AND educational sciences (Q861641) and P361 part-of educational sciences (live-verified 2026-06-18); LCC class home is LB (Education). Psychology home retained (edge:educational-psychology-part-of-psychology, primary). Co-equal, no disputed tag (other-parent filing = support, session #7). Target field:education (Q8434), closest existing education-discipline node."
   }
 ]
