@@ -8739,5 +8739,140 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-18"
     }
+  },
+  {
+    "id": "edge:set-theory-formalizes-mathematics",
+    "source": "subfield:set-theory",
+    "target": "field:mathematics",
+    "relation": "formalizes",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:nlab",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Set theory provides the standard formal foundation for mathematics (SEP Set Theory: \"set theory has become the standard foundation for mathematics\"; nLab: ZFC is \"the orthodox foundations today\"; Wikipedia ZFC: \"the most common foundation of mathematics\"). Foundational plurality preserved: category theory is a co-existing alternative foundation (edge:category-theory-formalizes-mathematics) — Noosphere records both and adjudicates neither as THE foundation (record-not-resolve)."
+  },
+  {
+    "id": "edge:category-theory-formalizes-mathematics",
+    "source": "subfield:category-theory",
+    "target": "field:mathematics",
+    "relation": "formalizes",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:nlab"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Category theory is a co-equal alternative formal foundation for mathematics (SEP Category Theory: \"a possible alternative to the standard set theoretical foundation for mathematics\"; nLab structural foundations / ETCS). Most associated with Lawvere ETCS and topos theory and often described as a unifying framework rather than a strict ZFC-style foundation — the modest \"alternative foundation\" claim is what is asserted. Plurality with set theory (edge:set-theory-formalizes-mathematics) preserved, not adjudicated."
+  },
+  {
+    "id": "edge:mathematical-logic-formalizes-mathematics",
+    "source": "subfield:mathematical-logic",
+    "target": "field:mathematics",
+    "relation": "formalizes",
+    "confidence": 0.78,
+    "status": "proposed",
+    "evidence": [
+      "source:encyclopedia-of-mathematics",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Mathematical logic supplies the formal languages, proof systems, and model/proof theory that formalize mathematical reasoning and proof (EoM: the branch concerned with \"mathematical proofs and questions in the foundation of mathematics\", enabling \"the formalization of proofs on the basis of [a formal] language\"; SEP Classical Logic: a logic = \"a formal ... language together with a deductive system\"). Scope note: mathematical logic is itself a branch of mathematics; this edge captures its formal-apparatus role for mathematical reasoning, not containment."
+  },
+  {
+    "id": "edge:probability-theory-formalizes-statistics",
+    "source": "subfield:probability-theory",
+    "target": "field:statistics",
+    "relation": "formalizes",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:encyclopedia-of-mathematics"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Probability theory provides the formal/mathematical foundation for (mathematical) statistics — estimation and hypothesis testing rest on it (Wikipedia: \"Mathematical statistics is the application of probability theory ... to statistics\"; EoM Mathematical statistics: methods of estimation/testing are \"based on probability theory\"). Distinct from the prerequisite_for edge (a learning order); descriptive statistics is less probability-dependent (scope caveat)."
+  },
+  {
+    "id": "edge:probability-theory-formalizes-random-variable",
+    "source": "subfield:probability-theory",
+    "target": "concept:random-variable",
+    "relation": "formalizes",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:encyclopedia-of-mathematics",
+      "source:nlab",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Probability theory (measure-theoretic, Kolmogorov 1933) gives the random-variable concept its formal definition as a measurable function on a probability space (EoM: \"a random variable is nothing but a measurable function on a probability space\"; nLab: \"The formalization of this idea in modern probability theory (Kolmogorov 33) is to take a random variable to be a measurable function\")."
+  },
+  {
+    "id": "edge:probability-theory-formalizes-probability-distribution",
+    "source": "subfield:probability-theory",
+    "target": "concept:probability-distribution",
+    "relation": "formalizes",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:encyclopedia-of-mathematics",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Probability theory formalizes the probability-distribution concept as a probability measure under Kolmogorov axioms (EoM: \"Any such measure ... is called a probability distribution ... basic in the axiomatics introduced by A.N. Kolmogorov in 1933\"; Wikipedia: \"a probability measure on (X,A)\"). The concept is partly internal to probability theory — a tight, near-definitional formalization (low information content, recorded)."
+  },
+  {
+    "id": "edge:mathematical-logic-formalizes-set-theory",
+    "source": "subfield:mathematical-logic",
+    "target": "subfield:set-theory",
+    "relation": "formalizes",
+    "confidence": 0.7,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "First-order (mathematical) logic provides the formal framework in which axiomatic set theory (ZFC) is expressed (SEP Set Theory: \"ZFC is an axiom system formulated in first-order logic\"; Wikipedia ZFC: \"Formally, ZFC is a one-sorted theory in first-order logic\"). Generic relation (ZFC as a first-order theory); the converse grounding — set theory supplying model-theoretic semantics for logic — co-exists and is a separate relation."
   }
 ]
