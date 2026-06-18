@@ -8874,5 +8874,393 @@
       "proposed_at": "2026-06-19"
     },
     "note": "First-order (mathematical) logic provides the formal framework in which axiomatic set theory (ZFC) is expressed (SEP Set Theory: \"ZFC is an axiom system formulated in first-order logic\"; Wikipedia ZFC: \"Formally, ZFC is a one-sorted theory in first-order logic\"). Generic relation (ZFC as a first-order theory); the converse grounding — set theory supplying model-theoretic semantics for logic — co-exists and is a separate relation."
+  },
+  {
+    "id": "edge:game-theory-formalizes-economics",
+    "source": "subfield:game-theory",
+    "target": "field:economics",
+    "relation": "formalizes",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Game theory provides the formal models of strategic interaction used throughout economics (Wikipedia Game theory: \"the study of mathematical models of strategic interactions ... used extensively in economics\"; SEP: game theory analyses how \"interacting choices of economic agents produce outcomes\"). Foundational text: von Neumann & Morgenstern 1944."
+  },
+  {
+    "id": "edge:game-theory-formalizes-political-science",
+    "source": "subfield:game-theory",
+    "target": "field:political-science",
+    "relation": "formalizes",
+    "confidence": 0.82,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Game theory provides formal models of strategic political interaction / positive political theory (Wikipedia: \"Early examples of game theory applied to political science are provided by Anthony Downs\"; SEP: party-political polarization \"is often modelled using game-theoretic logic\"). Scope: formalizes the formal/positive-political-theory strand, not all of political science."
+  },
+  {
+    "id": "edge:game-theory-formalizes-evolutionary-biology",
+    "source": "subfield:game-theory",
+    "target": "subfield:evolutionary-biology",
+    "relation": "formalizes",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Evolutionary game theory (evolutionarily stable strategies, replicator dynamics) formalizes frequency-dependent selection (SEP Evolutionary Game Theory, Maynard Smith: \"game theory is more readily applied to biology than to ... economic behaviour\"; Wikipedia: EGT originated 1973 with Maynard Smith & Price)."
+  },
+  {
+    "id": "edge:information-theory-formalizes-telecommunications-engineering",
+    "source": "subfield:information-theory",
+    "target": "subfield:telecommunications-engineering",
+    "relation": "formalizes",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Information theory provides the formal limits (channel capacity, coding) of communication/telecommunication (Wikipedia Information theory: \"the mathematical study of the quantification, storage, and communication of ... information\", formalized by Shannon's 1948 A Mathematical Theory of Communication; Wikipedia Channel capacity: \"the theoretical maximum rate at which information can be reliably transmitted over a communication channel\"). Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:information-theory-formalizes-cryptography",
+    "source": "subfield:information-theory",
+    "target": "subfield:cryptography",
+    "relation": "formalizes",
+    "confidence": 0.88,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Information theory formalizes unconditional (perfect) secrecy (Wikipedia Information-theoretic security: \"information-theoretically secure communication was introduced in 1949 by ... Claude Shannon ... who used it to prove the one-time pad system was secure\"; Wikipedia Information theory lists cryptography among applications). Scope: information-theoretic (not computational) cryptography; computational crypto also rests on number theory (see edge:number-theory-formalizes-cryptography). Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:number-theory-formalizes-cryptography",
+    "source": "subfield:number-theory",
+    "target": "subfield:cryptography",
+    "relation": "formalizes",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Number theory provides the formal basis of public-key cryptography (Wikipedia Number theory: prime numbers \"became the basis for the creation of public-key cryptography algorithms, such as the RSA cryptosystem\"; Wikipedia RSA: \"The security of RSA is related to the difficulty of factoring the product of two large prime numbers\"). Scope: public-key/asymmetric cryptography. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:probability-theory-formalizes-statistical-physics",
+    "source": "subfield:probability-theory",
+    "target": "subfield:statistical-physics",
+    "relation": "formalizes",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:nlab"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Probability theory is the formal substrate of the statistical-mechanics ensemble formalism (Wikipedia Statistical mechanics: macroscopic properties explained via microscopic parameters \"characterized by probability distributions\"; \"The statistical ensemble is a probability distribution over all possible states\"; nLab statistical mechanics: \"an ensemble may be a probability distribution of similar physical systems\"). Gibbs/Boltzmann."
+  },
+  {
+    "id": "edge:partial-differential-equations-formalizes-fluid-dynamics",
+    "source": "subfield:partial-differential-equations",
+    "target": "subfield:fluid-dynamics",
+    "relation": "formalizes",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:nlab"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Partial differential equations (Euler / Navier–Stokes) are the formal governing equations of fluid motion (Wikipedia Navier–Stokes equations: \"are nonlinear partial differential equations\"; nLab: \"The partial differential equation describing viscous hydrodynamics\")."
+  },
+  {
+    "id": "edge:control-theory-formalizes-robotics",
+    "source": "subfield:control-theory",
+    "target": "subfield:robotics",
+    "relation": "formalizes",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Control theory formalizes the motion/feedback-control layer of robotics (Wikipedia Control theory: control theory \"created new fields such as robotics\" and its \"Techniques ... are generally used to convert the higher-level tasks into individual commands that drive the actuators, ... using kinematic and dynamic models of the mechanical structure\"; Wikipedia Robotics: \"The control of a robot involves ... perception, processing, and action\"). Scope: control layer, not perception/planning. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:mathematical-logic-formalizes-theoretical-computer-science",
+    "source": "subfield:mathematical-logic",
+    "target": "subfield:theoretical-computer-science",
+    "relation": "formalizes",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Mathematical logic supplies the computability / formal-methods / type-theory core of theoretical computer science (Wikipedia Theoretical computer science: \"closely related to mathematics and logic\"; formal methods apply \"logic calculi, formal languages, automata theory, and program semantics\"; SEP The Church-Turing Thesis: \"a fundamental claim in the theory of computability\", computability is \"formalism-transcendent\"). Logic is one of several formal roots of TCS."
+  },
+  {
+    "id": "edge:mathematical-logic-formalizes-programming-languages",
+    "source": "subfield:mathematical-logic",
+    "target": "subfield:programming-languages",
+    "relation": "formalizes",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Mathematical logic formalizes programming-language semantics and type systems via the Curry–Howard correspondence (Wikipedia Curry–Howard correspondence: \"a direct relationship between computer programs and mathematical proofs ... sets a form of logic programming on a rigorous foundation\"; Wikipedia Semantics (computer science): formal semantics studies \"the relation between computation and the underlying mathematical structures from fields such as logic, set theory, model theory, category theory\"). Scope: semantics/type systems. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:category-theory-formalizes-programming-languages",
+    "source": "subfield:category-theory",
+    "target": "subfield:programming-languages",
+    "relation": "formalizes",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Category theory formalizes typed/functional programming-language semantics (Wikipedia Category theory: \"Many areas of computer science also rely on category theory, such as functional programming and semantics\"; \"a cartesian closed category is taken as a non-syntactic description of a lambda calculus\"; Wikipedia Semantics (computer science): \"Categorical (or 'functorial') semantics uses category theory as the core mathematical formalism\"). Scope: typed/functional PL (monads, CCC), edge-of-envelope. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:linear-algebra-formalizes-quantum-information-science",
+    "source": "subfield:linear-algebra",
+    "target": "subfield:quantum-information-science",
+    "relation": "formalizes",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:nlab"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Linear algebra (the Hilbert-space / linear-operator formalism) formalizes quantum information (Wikipedia Mathematical formulation of quantum mechanics: \"This mathematical formalism uses mainly a part of functional analysis, especially Hilbert spaces, which are a kind of linear space\"; nLab quantum information: \"Hilbert space-based quantum information theory\", \"FHilb of finite dimensional Hilbert spaces\"). For qubit/finite-dimensional QIS the apparatus is (complex) linear algebra; infinite-dimensional cases use functional analysis."
+  },
+  {
+    "id": "edge:statistics-formalizes-econometrics",
+    "source": "field:statistics",
+    "target": "subfield:econometrics",
+    "relation": "formalizes",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Statistics provides the formal inferential methods of econometrics (Wikipedia Econometrics: \"an application of statistical methods to economic data in order to give empirical content to economic relationships\"; Wikipedia Economics: economic theories \"are frequently tested empirically, largely through the use of econometrics using economic data\"). Near-definitional / low information content (econometrics is defined as applied statistics; cf. wave-1 C6). Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:dynamical-systems-formalizes-ecology",
+    "source": "subfield:dynamical-systems",
+    "target": "subfield:ecology",
+    "relation": "formalizes",
+    "confidence": 0.82,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Dynamical systems (differential-equation models) formalize population dynamics in ecology (Wikipedia Lotka–Volterra equations: \"a pair of first-order nonlinear differential equations, frequently used to describe the dynamics of biological systems in which two species interact\"; Wikipedia Population dynamics: \"a branch of mathematical biology, and uses mathematical techniques such as differential equations to model behaviour\"). Adjacent relation `models`; the differential-equation framework formalizes the dynamics. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:probability-theory-formalizes-financial-economics",
+    "source": "subfield:probability-theory",
+    "target": "subfield:financial-economics",
+    "relation": "formalizes",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Probability theory (stochastic processes) formalizes the asset-pricing / decision-under-uncertainty core of financial economics (Wikipedia Mathematical finance: derivatives pricing uses \"risk-neutral probability ... continuous-time martingales ... Itō calculus, PDEs\"; Wikipedia Financial economics: \"centers on decision making under uncertainty in the context of the financial markets\"). Scope: the probabilistic core; financial economics also has non-probabilistic (certainty/equilibrium) parts. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:statistics-formalizes-machine-learning",
+    "source": "field:statistics",
+    "target": "subfield:machine-learning",
+    "relation": "formalizes",
+    "confidence": 0.78,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Statistics / statistical learning theory provides a formal framework for machine learning (Wikipedia Machine learning: \"Statistics and mathematical optimisation methods compose the foundations of machine learning\"; \"probably approximately correct learning provides a mathematical and statistical framework for describing machine learning\"; Wikipedia Statistical learning theory: \"deals with the statistical inference problem of finding a predictive function based on data\"). Tension preserved (record-not-resolve): the weak claim (statistics provides A formal framework) is supported; the strong claim (ML = statistics) is contested — Breiman's \"two cultures\" (ML and statistics \"closely related ... but distinct in their principal goal\"). Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:optimization-formalizes-operations-research",
+    "source": "subfield:optimization",
+    "target": "subfield:operations-research",
+    "relation": "formalizes",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Mathematical optimization is the formal/mathematical core of operations research (Wikipedia Operations research: \"Employing techniques from other mathematical sciences, such as modeling, statistics, and optimization, operations research arrives at optimal or near-optimal solutions to decision-making problems\"; Wikipedia Mathematical optimization: \"Another field that uses optimization techniques extensively is operations research\"). Scope: optimization is one of several OR techniques but its formal backbone (LP/IP/convex). Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:probability-theory-formalizes-bayesian-inference",
+    "source": "subfield:probability-theory",
+    "target": "method:bayesian-inference",
+    "relation": "formalizes",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Probability theory (Bayes' theorem) formalizes Bayesian inference (Wikipedia Bayesian inference: \"computes the posterior probability according to Bayes' theorem\"; SEP Bayes' Theorem: \"relates the 'direct' probability of a hypothesis conditional on a given body of data ... to the 'inverse' probability of the data conditional on the hypothesis\"). Bayes' theorem is a theorem of probability theory."
+  },
+  {
+    "id": "edge:probability-theory-formalizes-information-theory",
+    "source": "subfield:probability-theory",
+    "target": "subfield:information-theory",
+    "relation": "formalizes",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:nlab"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Probability theory is the formal substrate of information theory — entropy is a functional of a probability distribution (Wikipedia Information theory: \"Information theory is based on probability theory and statistics\"; nLab entropy: \"We can give a precise mathematical definition of the entropy in probability theory. Fix a probability space (X,μ)\"). `formalizes` not `part_of`: information theory is a distinct field built on probability, not a subdomain of it."
+  },
+  {
+    "id": "edge:mathematics-formalizes-economics",
+    "source": "field:mathematics",
+    "target": "field:economics",
+    "relation": "formalizes",
+    "confidence": 0.78,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Mathematics provides the formal framework for modern economic theory (Wikipedia Mathematical economics: \"Economics has become increasingly dependent on mathematical methods\"; \"differential calculus and differential equations, convex sets, and graph theory, were deployed to advance economic theory\"; parallel to the reviewed edge:mathematics-formalizes-physics). Tension preserved (record-not-resolve): the descriptive claim that economics IS mathematized is mainstream; the NORMATIVE \"mathematization debate\" is genuine — SEP Philosophy of Economics records Austrian skepticism \"about the value of mathematical modeling\"; the formalist-revolution critique (Blaug; Mirowski). No source refutes the descriptive claim, so supported with tension note, not disputed."
   }
 ]
