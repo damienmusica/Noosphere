@@ -163,5 +163,49 @@
     "share_alike_required": false,
     "url": "https://id.nlm.nih.gov/mesh/",
     "last_checked_at": "2026-06-12"
+  },
+  {
+    "id": "source:sep",
+    "name": "Stanford Encyclopedia of Philosophy (SEP), Metaphysics Research Lab, Stanford University",
+    "source_type": "reference",
+    "license": "© Metaphysics Research Lab, Stanford University and the individual entry authors; freely accessible online, reuse by permission (cited for reference only)",
+    "commercial_use": false,
+    "attribution_required": true,
+    "share_alike_required": false,
+    "url": "https://plato.stanford.edu/",
+    "last_checked_at": "2026-06-19"
+  },
+  {
+    "id": "source:encyclopedia-of-mathematics",
+    "name": "Encyclopedia of Mathematics (EoM), European Mathematical Society / Springer",
+    "source_type": "reference",
+    "license": "CC BY-SA 3.0 Unported (co-licensed GFDL) — verified 2026-06-19 via the EoM License Notice page (Wayback snapshot web.archive.org/web/20251216223417/https://encyclopediaofmath.org/wiki/Encyclopedia_of_Mathematics:Copyrights)",
+    "commercial_use": true,
+    "attribution_required": true,
+    "share_alike_required": true,
+    "url": "https://encyclopediaofmath.org/",
+    "last_checked_at": "2026-06-19"
+  },
+  {
+    "id": "source:nlab",
+    "name": "nLab (ncatlab.org), the collaborative category-theory/mathematics wiki",
+    "source_type": "reference",
+    "license": "No formal license statement; content used under academic citation/attribution practice (ncatlab.org HomePage license note, verified 2026-06-19)",
+    "commercial_use": false,
+    "attribution_required": true,
+    "share_alike_required": false,
+    "url": "https://ncatlab.org/",
+    "last_checked_at": "2026-06-19"
+  },
+  {
+    "id": "source:wikipedia",
+    "name": "Wikipedia, the free encyclopedia (English) — Wikimedia Foundation",
+    "source_type": "reference",
+    "license": "CC BY-SA 4.0 (text co-licensed GFDL) — Wikimedia Terms of Use",
+    "commercial_use": true,
+    "attribution_required": true,
+    "share_alike_required": true,
+    "url": "https://en.wikipedia.org/",
+    "last_checked_at": "2026-06-19"
   }
 ]

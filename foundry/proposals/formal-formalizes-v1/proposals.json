@@ -1,0 +1,179 @@
+{
+  "batch_id": "formal-formalizes-v1",
+  "generated_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-19"
+  },
+  "relation_scope": ["formalizes"],
+  "candidates": [
+    {
+      "candidate_id": "C1",
+      "source": "subfield:set-theory",
+      "target": "field:mathematics",
+      "relation": "formalizes",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Foundations of Mathematics' (Erich Reck, 2012, rev. 2022), §1–§2",
+          "claim_anchor": "Set theory has been the standard foundation for mathematics since the early twentieth century",
+          "url": "https://plato.stanford.edu/entries/foundations-mathematics/"
+        },
+        {
+          "citation": "Patrick Suppes, 'Axiomatic Set Theory' (1960), Preface, p. v",
+          "claim_anchor": "The purpose of this book is to provide a formulation of set theory adequate as a foundation for the whole of mathematics",
+          "url": "https://encyclopediaofmath.org/wiki/Axiomatic_set_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "Foundational plurality: set theory and category theory are co-existing alternative foundations; this edge asserts only the weak claim that set theory *provides* a formal foundation (not that it is the unique or best one). Both C1 and C2 should co-exist.",
+      "rationale": "Set theory (ZFC and related systems) provides the formal definitional substrate — sets, membership, axioms — in which virtually all of classical mathematics can be expressed, making it the canonical formal foundation for mathematics in the 20th-century tradition.",
+      "uncertainty": "The claim is that set theory *formalizes* mathematics, but some philosophers argue set theory and mathematics are mutually constitutive rather than one being a formal framework *for* the other; also, category theory provides a rival foundation, so 'the' foundational role is contested, though the weak claim that set theory *is* a formal foundation is near-universal.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C2",
+      "source": "subfield:category-theory",
+      "target": "field:mathematics",
+      "relation": "formalizes",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Category Theory' (Jean-Pierre Marquis, 2019), §4 'Foundations'",
+          "claim_anchor": "Category theory can be used as an alternative foundation for mathematics",
+          "url": "https://plato.stanford.edu/entries/category-theory/"
+        },
+        {
+          "citation": "F. William Lawvere & Stephen Schanuel, 'Conceptual Mathematics' (2nd ed., Cambridge University Press, 2009), Introduction",
+          "claim_anchor": "Category theory provides a unified and formal framework for all of mathematics",
+          "url": "https://ncatlab.org/nlab/show/foundations+of+mathematics"
+        }
+      ],
+      "disputed": false,
+      "note": "Minority foundational position relative to set theory (C1): category theory as a *foundation* is most associated with Lawvere's ETCS and topos theory; it is more commonly described as a unifying language or organizing framework than a strict foundation in the ZFC sense. Both readings support the edge; the stronger foundational claim (e.g., ETCS) is less universally accepted.",
+      "rationale": "Category theory, particularly through Lawvere's Elementary Theory of the Category of Sets (ETCS) and topos theory, provides a formal alternative foundational framework for mathematics, formalizing mathematical structures via objects and morphisms rather than sets and membership.",
+      "uncertainty": "Category theory is more often described as a 'language' or 'organizational framework' for mathematics than a strict foundational system; the claim that it *formalizes* mathematics (rather than merely organizing it) depends on adopting a Lawvere/topos-theoretic reading, which is a minority position among foundationalists; a claim-stating source that directly uses the word 'formalizes' may not exist verbatim.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C3",
+      "source": "subfield:mathematical-logic",
+      "target": "field:mathematics",
+      "relation": "formalizes",
+      "confidence": 0.90,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Classical Logic' (Stewart Shapiro, 2000, rev. 2021), §1",
+          "claim_anchor": "Mathematical logic is the study of formal proof and the foundations of mathematical reasoning",
+          "url": "https://plato.stanford.edu/entries/logic-classical/"
+        },
+        {
+          "citation": "Herbert B. Enderton, 'A Mathematical Introduction to Logic' (2nd ed., Academic Press, 2001), Chapter 1, p. 1",
+          "claim_anchor": "Mathematical logic is the application of formal logical methods to mathematics, providing the formal framework within which mathematical reasoning is carried out",
+          "url": "https://encyclopediaofmath.org/wiki/Mathematical_logic"
+        }
+      ],
+      "disputed": false,
+      "note": "Mathematical logic both *studies* formal reasoning in mathematics and *provides* the formal apparatus (proof systems, model theory, formal languages) that makes mathematics rigorously formalizable; the formalizes direction (logic → mathematics) is the standard reading in foundational literature.",
+      "rationale": "Mathematical logic supplies the formal languages, proof systems, and semantic frameworks (model theory, proof theory, computability theory) that constitute the rigorous formal treatment of mathematical reasoning and proof, directly formalizing the activity of doing mathematics.",
+      "uncertainty": "One could argue the direction should be reversed (mathematics provides the subject matter that logic formalizes, rather than logic formalizing mathematics), or that the relationship is circular co-development; however, the standard foundational literature clearly positions mathematical logic as the *apparatus* that formalizes mathematical reasoning.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C4",
+      "source": "subfield:probability-theory",
+      "target": "field:statistics",
+      "relation": "formalizes",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "citation": "George Casella & Roger L. Berger, 'Statistical Inference' (2nd ed., Duxbury, 2002), Chapter 1, p. 1",
+          "claim_anchor": "Probability theory provides the mathematical foundation for statistical inference",
+          "url": "https://encyclopediaofmath.org/wiki/Probability_theory"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Philosophy of Statistics' (Jan Sprenger & Stephan Hartmann, 2019), §1",
+          "claim_anchor": "Statistics is grounded in probability theory, which provides its formal mathematical basis",
+          "url": "https://plato.stanford.edu/entries/statistics/"
+        }
+      ],
+      "disputed": false,
+      "note": "This is a distinct relation from any existing `prerequisite_for` edge between these nodes; `formalizes` captures that probability theory supplies the formal definitional substrate for statistical concepts (distributions, estimators, hypothesis tests), not merely that it must be learned first.",
+      "rationale": "Probability theory (in Kolmogorov's measure-theoretic axiomatization) provides the formal mathematical language, axioms, and theorems that define and justify core statistical concepts such as distributions, estimators, confidence intervals, and hypothesis tests.",
+      "uncertainty": "Frequentist statistics partly predate Kolmogorov's formalization and can be developed with less formal probability; some statisticians treat probability as a tool of statistics rather than its foundation, which could invert the direction. The measure-theoretic relationship is, however, the dominant formal position in mathematical statistics.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C5",
+      "source": "subfield:probability-theory",
+      "target": "concept:random-variable",
+      "relation": "formalizes",
+      "confidence": 0.90,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Probability Interpretations' (Alan Hájek, 2019), §2",
+          "claim_anchor": "A random variable is formally defined within probability theory as a measurable function from a sample space to a measurable space",
+          "url": "https://plato.stanford.edu/entries/probability-interpret/"
+        },
+        {
+          "citation": "nLab, 'random variable' (accessed 2026)",
+          "claim_anchor": "In probability theory, a random variable is defined as a measurable function X: (Ω, F, P) → (E, E), where (Ω, F, P) is a probability space",
+          "url": "https://ncatlab.org/nlab/show/random+variable"
+        }
+      ],
+      "disputed": false,
+      "note": "Concept-level formalization: the random variable concept pre-existed Kolmogorov's axiomatization intuitively, but probability theory (specifically measure theory) gave it a precise formal definition; the edge captures this definitional grounding.",
+      "rationale": "Probability theory, via Kolmogorov's measure-theoretic framework, provides the rigorous formal definition of a random variable as a measurable function on a probability space, replacing the informal intuition with a mathematical object.",
+      "uncertainty": "The nLab URL and exact SEP section are estimated; the claim_anchor wordings are reconstructions from knowledge, not verified verbatim quotes — the orchestrator must check these against live pages. The core claim (probability theory formally defines random variables) is well-established, but the exact phrasing of claim_anchors may not match the live source text.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C6",
+      "source": "subfield:probability-theory",
+      "target": "concept:probability-distribution",
+      "relation": "formalizes",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "citation": "Encyclopedia of Mathematics, 'Probability distribution' (EMS, Springer, accessed 2026)",
+          "claim_anchor": "A probability distribution is formally defined in probability theory as a measure on a measurable space satisfying certain normalization conditions",
+          "url": "https://encyclopediaofmath.org/wiki/Probability_distribution"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Probability Interpretations' (Alan Hájek, 2019), §3",
+          "claim_anchor": "Probability theory provides the formal definition of probability distributions as normalized measures over event spaces",
+          "url": "https://plato.stanford.edu/entries/probability-interpret/"
+        }
+      ],
+      "disputed": false,
+      "note": "The probability distribution concept is partly constitutive of probability theory itself (not merely formalized *by* it from outside), which makes this an especially tight formalizes relationship; both the concept and its formalization originate within the same field.",
+      "rationale": "Probability theory formally defines probability distributions as measures on measurable spaces satisfying Kolmogorov's axioms, giving precise mathematical content to the concept of a distribution over outcomes.",
+      "uncertainty": "Because `probability-distribution` is an internal concept of probability theory, the formalizes direction (probability theory → probability distribution) is almost tautological — the edge is well-justified but trivially true in a way that reduces its information content; the claim_anchor wordings are reconstructed from knowledge and must be verified verbatim by the orchestrator.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C7",
+      "source": "subfield:mathematical-logic",
+      "target": "subfield:set-theory",
+      "relation": "formalizes",
+      "confidence": 0.62,
+      "evidence": [
+        {
+          "citation": "Kenneth Kunen, 'Set Theory: An Introduction to Independence Proofs' (North-Holland, 1980), Chapter I §1",
+          "claim_anchor": "The axioms of ZFC are formulated in first-order logic; mathematical logic thus provides the formal language in which set theory is expressed",
+          "url": "https://encyclopediaofmath.org/wiki/ZFC"
+        },
+        {
+          "citation": "Herbert B. Enderton, 'A Mathematical Introduction to Logic' (2nd ed., Academic Press, 2001), Chapter 2",
+          "claim_anchor": "First-order logic is the formal system in which set theory (ZFC) is axiomatized",
+          "url": "https://encyclopediaofmath.org/wiki/Mathematical_logic"
+        }
+      ],
+      "disputed": false,
+      "note": "Direction probe (boundary/NEI): the reverse direction (set-theory → mathematical-logic) is also argued in the literature — set theory can serve as a foundation *for* logic (e.g., via model-theoretic semantics). The standard formal-systems view is that first-order logic is the language in which ZFC is stated, supporting this direction. However, a source that explicitly states 'mathematical logic formalizes set theory' as a top-level claim (rather than as a downstream implication of how axiom systems work) is harder to identify. This candidate may come out NEI-abstain at QC.",
+      "rationale": "ZFC set theory is canonically presented as a first-order theory — its axioms are sentences in first-order logic — which means mathematical logic (specifically first-order logic) provides the formal framework within which axiomatic set theory is expressed and reasoned about.",
+      "uncertainty": "This is the designated boundary probe: (1) a claim-stating source that directly and explicitly frames the relationship as 'mathematical logic formalizes set theory' (rather than 'set theory is formulated in first-order logic') may not exist; (2) the reverse direction (set theory provides a foundation for logic via model-theoretic semantics) is also supportable; (3) the two subfields are historically co-developed and mutually grounding, making a clean one-directional formalizes claim conceptually contested. Confidence is accordingly reduced; the orchestrator should apply the NEI-abstain verdict if no claim-stating source survives live-fetch.",
+      "ambiguous": true
+    }
+  ]
+}
