@@ -92,7 +92,15 @@ to make implementation easier.
   Wayback snapshots at QC time (docs/data-foundry.md §8, 2026-06-11);
   repo-hygiene devices (decision (29), 2026-06-11): session-close hygiene
   check (vault workflow.md) + machine-enforced proposals-index consistency
-  and local .md link checks in `npm run validate:data`.
+  and local .md link checks in `npm run validate:data`; **propositional
+  `formalizes` auto-`reviewed` ladder (decision (54), 2026-06-19): a
+  (d)-decidable `formalizes` edge auto-promotes `proposed → reviewed` when
+  both endpoints are `reviewed` and the Lane B pipeline returns *supported*
+  (≥2 independent claim-stating live sources + adversarial QC + correct
+  direction); `disputed`/NEI verdicts stop at `proposed`/foundry. Earned by
+  the wave-1+wave-2 measurement (precision 1.0 at N=27, hallucination 0,
+  decisions (51)/(53)). The `influenced`/`critiques` (a)-relations are NOT
+  covered — they keep their own gate.**
 
 ## Stack and dependencies
 
