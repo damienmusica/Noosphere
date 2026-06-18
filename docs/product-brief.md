@@ -21,6 +21,13 @@ learning paths, influence trails, and external references.
 - Concepts, people, works, and methods are nodes.
 - Relationships are roads, routes, or influence lines.
 - Zoom controls detail; search and filters make dense information readable.
+- The map is a **globe, not a tree** — a node may belong to more than one parent (co-equal, no
+  primary marker; a generalization of cross-listing, see [`docs/data-foundry.md`](data-foundry.md)
+  §13), and connections run up, down, and sideways.
+
+Noosphere **connects and organizes; it does not rank or adjudicate.** It records the *state* of
+discourse — including what is unresolved or contested — rather than resolving it (see
+[`docs/project-charter.md`](project-charter.md) §1).
 
 ## MVP scope
 

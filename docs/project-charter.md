@@ -23,6 +23,36 @@ Noosphere is **not**:
 - **not an SEO content farm** — it does not mass-generate thin pages for search traffic;
 - **not a chatbot product** — it does not ship a conversational assistant as its interface.
 
+### Shape: a globe, not a tree
+
+Noosphere's graph is a **globe, not a single hierarchy.** Knowledge is not a tree with one canonical
+root and one path to each topic; it is closer to a globe whose axes bend, meet, and part — a
+discipline can belong to more than one parent, and concepts connect up, down, and sideways. This is
+the native shape, not a workaround. The data model carries **co-equal multiple parents** with no
+primary-parent marker (see [`docs/data-foundry.md`](data-foundry.md) §13) and typed, directional,
+evidence-backed relations that cross the hierarchy. The top-down `part_of` structure is a clean spine
+for navigation — never a claim that knowledge *is* a tree, or that any one arrangement is the
+canonical one.
+
+### Stance: organize, do not adjudicate
+
+Noosphere **organizes and connects; it does not rank, judge, or settle.** Its job is to lay down the
+points and the evidence-backed relationships between them, honestly tagged, so they can be explored —
+not to decide who is right.
+
+- **Noosphere records the *state* of discourse — including the unresolved and the contested — it
+  does not resolve it.** Where scholars genuinely disagree, both sides are recorded (co-existing
+  edges, `disputed: true`, the minority position preserved in `note`). The disagreement is *data to
+  be navigated*, not a verdict to be reached. This follows directly from the north star —
+  relationships have no single right answer; they are evaluated by whether they are *worth
+  exploring*, not by *true/false*.
+- The graph therefore corrects only **identity/referent-axis** errors (e.g. an external ID pointing
+  at the wrong entity) and **preserves perspective/context-axis** disagreement (competing views,
+  schools, framings). The only judgment Noosphere makes is a **data-quality** one — telling a genuine
+  scholarly disagreement apart from a hallucination or a sourcing error — never a judgment about the
+  world. Honest coverage and a source floor under every claim (including contested ones) are
+  disciplines that serve this stance.
+
 ## 2. Product and runtime posture
 
 - **Static/read-only first.** The atlas is served as static, read-only data. Data changes happen
