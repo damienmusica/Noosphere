@@ -595,6 +595,32 @@ non-coverage, never silently dropped.
   to a shallow attachment rather than a deep one; a within-continent §13 co-equal (behavioral-neuroscience
   → both neuroscience and psychology) is as valid as a cross-continent one (cross-listing v1 is
   membership-count-agnostic, not continent-bounded).
+- 2026-06-18 humanities-remainder skeleton (session #23, eleventh / **last academic continent**): a
+  continent with **no single gate scheme** is grounded on a **multi-class gate union** — LCC C/D/E-F
+  (history) + P/PA-PT (linguistics/literature/classics) + BL-BX (religion, with BC-BD/BF/BJ excluded as
+  philosophy/cognitive-science/ethics done), cross-checked against UDC 81/82/2/9 + FORD 6 + Wikidata
+  Q80083's has-part hexagon. The **concept-vs-discipline homonym** rule sharpens into a **general-concept-
+  vs-discipline** rule: where Wikidata conflates the broad concept and the field on one popular item with
+  **empty P31** (history Q309 "the past", sl=316), the skeleton anchors instead on the smaller **explicit
+  discipline entity** (Q1066186 "study of history", P31 academic discipline) — the discipline sense wins
+  over the popular concept sense. The **era-vs-discipline** trap is its period analog: ancient/medieval/
+  modern history are LCC-D primary divisions but Wikidata models them as **time periods**; a period node is
+  `reviewed` only if a discipline/field-of-study P31 entity exists (medieval-history Q27992545), else it is
+  an **honest QID-less gap** at `proposed` (modern-history — only the era "modern period" Q3281534 exists).
+  **Field-rank by institutional independence** extends beyond neuroscience: **archaeology = field** (SAA/AIA,
+  dedicated departments) and **classics = field** (SCS) even though LCC shelves archaeology under class C
+  (auxiliary sciences of history); the gate's shelving depth does not cap discipline rank. **Gate-primary
+  wins the part_of home** when schemes disagree: paleography/epigraphy are LCC class-C auxiliary-of-history
+  → history-home, even though epigraphy's Wikidata P31 is "archaeological sub-discipline" (archaeology §13
+  candidate recorded). **Slicing axes are not sub-disciplines**: the geographic axis (national/regional
+  histories, LCC DA-DX/E-F) and individual-language literatures (PQ-PT) and individual faiths (BM/BP/BQ/BR,
+  religion *objects* not the *study*) are all v2/excluded — model the discipline, not the slice or the object.
+  Theology's traditional divisions (systematic BT, practical BV) **flatten** to subfields of religious-studies
+  under the 2-level model (medicine-subspecialty-flatten precedent). The **last-continent rule**: all residual
+  cross-continent interfaces close here — the linguistics cognitive wing (psycho/neuro/cognitive-linguistics)
+  cross-lists to the existing cogsci nodes (§13, the strict-sequential payoff), economic-history cross-lists
+  to the now-existing history field (debt §4), and media/mass-communication is confirmed **SS-only** (no forced
+  humanities §13) — an interface is *closed* by either a §13 edge or an explicit no-edge ruling, not left open.
 
 ## 13. Cross-listing standard (multiple `part_of` memberships)
 
