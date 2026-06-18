@@ -1,0 +1,495 @@
+{
+  "batch": "cognitive-sciences-summaries-v1",
+  "generated_by": "Claude Opus (4x separated-context subagents, session #22)",
+  "qc_by": "orchestrator (Opus) — fetch-verify full + close-read",
+  "summaries": [
+    {
+      "node_id": "field:psychology",
+      "summary": "Psychology is the scientific study of the mind and behavior, with subject matter that includes the behavior of humans and nonhumans, conscious and unconscious phenomena, and mental processes such as thoughts, feelings, and motives. It is \"an academic discipline of broad scope, crossing the boundaries between the natural and social sciences,\" linking to neuroscience through biological psychology while also functioning as a social science aimed at understanding the behavior of individuals and groups.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Psychology",
+          "supports": "Definition of psychology as the scientific study of the mind and behavior",
+          "quote": "Psychology is the scientific study of the mind and behavior",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Psychology",
+          "supports": "Psychology's placement between the natural and social sciences",
+          "quote": "Psychology is an academic discipline of broad scope, crossing the boundaries between the natural and social sciences",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "field:neuroscience",
+      "summary": "Neuroscience is the scientific study of the nervous system, its functions, and its disorders. It is a multidisciplinary science that combines physiology, anatomy, molecular biology, developmental biology, cytology, psychology, physics, computer science, chemistry, medicine, statistics, and mathematical modeling to understand the properties of neurons, glia, and neural circuits, drawing together the biological, physical, computational, and behavioral sciences in the study of the brain and nervous system.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Neuroscience",
+          "supports": "Definition of neuroscience as the scientific study of the nervous system, its functions, and its disorders",
+          "quote": "Neuroscience is the scientific study of the nervous system, its functions, and its disorders",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Neuroscience",
+          "supports": "Neuroscience is multidisciplinary, combining physiology, anatomy, molecular biology, and other fields",
+          "quote": "It is a multidisciplinary science that combines physiology, anatomy, molecular biology",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:cognitive-psychology",
+      "summary": "Cognitive psychology is \"the scientific study of human mental processes such as attention, language use, memory, perception, problem solving, creativity, and reasoning.\" The field originated in the 1960s in a break from behaviorism, which had held that unobservable mental processes were outside the realm of empirical science. Work derived from cognitive psychology was later integrated into other branches of psychology and into disciplines such as cognitive science, linguistics, and economics.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cognitive_psychology",
+          "supports": "Definition of cognitive psychology and the mental processes it studies",
+          "quote": "Cognitive psychology is the scientific study of human mental processes such as attention, language use, memory, perception, problem solving, creativity, and reasoning",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cognitive_psychology",
+          "supports": "Historical origin of cognitive psychology in a break from behaviorism (tension-preservation, neutral attribution)",
+          "quote": "Cognitive psychology originated in the 1960s in a break from behaviorism",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:developmental-psychology",
+      "summary": "Developmental psychology is \"the scientific study of how and why the human mind grows, changes, and adapts over the course of a human lifetime.\" Originally concerned with infants and children, the field has expanded to include adolescence, adult development, aging, and the entire lifespan. Britannica describes it as \"the branch of psychology concerned with the changes in cognitive, motivational, psychophysiological, and social functioning that occur throughout the human life span.\" It examines change across physical, cognitive, and social emotional dimensions.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Developmental_psychology",
+          "supports": "Core definition and lifespan scope of developmental psychology",
+          "quote": "the scientific study of how and why the human mind grows, changes, and adapts over the course of a human lifetime",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Developmental_psychology",
+          "supports": "Expansion from children to the full lifespan; the three dimensions of change",
+          "quote": "Originally concerned with infants and children, the field has expanded to include adolescence, adult development, aging, and the entire lifespan.",
+          "fetched": true
+        },
+        {
+          "url": "http://web.archive.org/web/20260311083558/https://www.britannica.com/science/developmental-psychology",
+          "supports": "Britannica's characterization of developmental psychology as a branch of psychology spanning the life span",
+          "quote": "the branch of psychology concerned with the changes in cognitive, motivational, psychophysiological, and social functioning that occur throughout the human life span",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:social-psychology",
+      "summary": "Social psychology is \"the methodical study of how thoughts, feelings, and behaviors are influenced by the actual, imagined, or implied presence of others.\" Britannica describes it as \"the scientific study of the behaviour of individuals in their social and cultural setting,\" with the emphasis on human social behaviour. It is a branch of psychology concerned with how the social context shapes individual mental life and conduct.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Social_psychology",
+          "supports": "Core definition of social psychology",
+          "quote": "the methodical study of how thoughts, feelings, and behaviors are influenced by the actual, imagined, or implied presence of others",
+          "fetched": true
+        },
+        {
+          "url": "http://web.archive.org/web/20260517073721/https://www.britannica.com/science/social-psychology",
+          "supports": "Britannica's characterization of social psychology and its focus on social/cultural setting",
+          "quote": "the scientific study of the behaviour of individuals in their social and cultural setting",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:clinical-psychology",
+      "summary": "Clinical psychology is, in the words of Wikipedia, \"an integration of human science, behavioral science, theory, and clinical knowledge aimed at understanding, preventing, and relieving psychological distress or dysfunction as well as promoting well-being and personal growth.\" Central to its practice are \"psychological assessment, diagnosis, clinical formulation, and psychotherapy.\" In many countries it is \"a regulated mental health profession.\"",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Clinical_psychology",
+          "supports": "Core definition of clinical psychology as an integration of sciences aimed at understanding and relieving psychological distress.",
+          "quote": "Clinical psychology is an integration of human science, behavioral science, theory, and clinical knowledge aimed at understanding, preventing, and relieving psychological distress or dysfunction as well as promoting well-being and personal growth",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Clinical_psychology",
+          "supports": "Central activities/methods of the field.",
+          "quote": "Central to its practice are psychological assessment, diagnosis, clinical formulation, and psychotherapy",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Clinical_psychology",
+          "supports": "Professional/regulatory status of the field.",
+          "quote": "In many countries, clinical psychology is a regulated mental health profession",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:experimental-psychology",
+      "summary": "Experimental psychology is \"the work done by those who apply experimental methods to psychological study and the underlying processes.\" Experimental psychologists employ human participants and animal subjects to study topics including sensation, perception, memory, cognition, learning, motivation, and emotion, as well as developmental processes, social psychology, and the neural substrates of these phenomena.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Experimental_psychology",
+          "supports": "Definition of experimental psychology as the application of experimental methods to psychological study",
+          "quote": "Experimental psychology is the work done by those who apply experimental methods to psychological study and the underlying processes",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Experimental_psychology",
+          "supports": "Use of human participants and animal subjects across many topics",
+          "quote": "Experimental psychologists employ human participants and animal subjects to study a great many topics",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:personality-psychology",
+      "summary": "Personality psychology is \"a branch of psychology that examines personality and its variation among individuals.\" It \"aims to show how people are individually different due to psychological forces,\" with areas of focus that include describing what personality is, documenting how personalities develop, and explaining the mental processes of personality and how they affect functioning.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Personality_psychology",
+          "supports": "Definition of personality psychology",
+          "quote": "a branch of psychology that examines personality and its variation among individuals",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Personality_psychology",
+          "supports": "Aim of the field",
+          "quote": "It aims to show how people are individually different due to psychological forces.",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:comparative-psychology",
+      "summary": "Comparative psychology is \"the scientific study of the behavior and mental processes of non-human animals, especially as these relate to the phylogenetic history, adaptive significance, and development of behavior.\" In a broader meaning it includes \"comparisons between different biological and socio-cultural groups, such as species, sexes, developmental stages, ages, and ethnicities.\"",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Comparative_psychology",
+          "supports": "Definition and scope of comparative psychology",
+          "quote": "Comparative psychology is the scientific study of the behavior and mental processes of non-human animals, especially as these relate to the phylogenetic history, adaptive significance, and development of behavior",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Comparative_psychology",
+          "supports": "Broader meaning of the field",
+          "quote": "comparisons between different biological and socio-cultural groups, such as species, sexes, developmental stages, ages, and ethnicities",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:educational-psychology",
+      "summary": "Educational psychology is \"the branch of psychology concerned with the scientific study of human learning.\" It studies learning processes from cognitive and behavioral perspectives, addressing individual differences in intelligence, cognitive development, motivation, self-regulation, and self-concept. \"The field of educational psychology relies heavily on quantitative methods, including testing and measurement,\" to support instructional design, classroom management, and assessment.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Educational_psychology",
+          "supports": "Core definition: branch of psychology studying human learning.",
+          "quote": "Educational psychology is the branch of psychology concerned with the scientific study of human learning",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Educational_psychology",
+          "supports": "Methodological character of the field (quantitative methods, testing and measurement).",
+          "quote": "The field of educational psychology relies heavily on quantitative methods, including testing and measurement",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:industrial-and-organizational-psychology",
+      "summary": "Industrial and organizational (I-O) psychology, per Wikipedia, \"focuses the lens of psychological science on a key aspect of human life, namely, their work lives,\" with goals to \"better understand and optimize the effectiveness, health, and well-being of both individuals and organizations.\" \"It is an applied discipline within psychology and is an international profession.\" \"I-O psychology is also known as occupational psychology in the United Kingdom,\" and by other names elsewhere.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Industrial_and_organizational_psychology",
+          "supports": "Core definition: applies psychological science to people's work lives.",
+          "quote": "focuses the lens of psychological science on a key aspect of human life, namely, their work lives",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Industrial_and_organizational_psychology",
+          "supports": "Status as an applied discipline and international profession.",
+          "quote": "It is an applied discipline within psychology and is an international profession",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Industrial_and_organizational_psychology",
+          "supports": "Alternative names for the field across countries.",
+          "quote": "I-O psychology is also known as occupational psychology in the United Kingdom",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:health-psychology",
+      "summary": "Health psychology is \"the study of psychological and behavioral processes in health, illness, and healthcare.\" \"The discipline is concerned with understanding how psychological, behavioral, and cultural factors contribute to physical health and illness.\" Its practitioners \"take a biopsychosocial approach,\" understanding health as the product of biological, psychological, behavioral, and social processes.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Health_psychology",
+          "supports": "Core definition of health psychology.",
+          "quote": "Health psychology is the study of psychological and behavioral processes in health, illness, and healthcare",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Health_psychology",
+          "supports": "What the discipline studies (factors contributing to physical health and illness).",
+          "quote": "The discipline is concerned with understanding how psychological, behavioral, and cultural factors contribute to physical health and illness",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Health_psychology",
+          "supports": "Characteristic biopsychosocial framing of the field.",
+          "quote": "Health psychologists take a biopsychosocial approach",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:evolutionary-psychology",
+      "summary": "Evolutionary psychology is \"a theoretical approach in psychology that examines cognition and behavior from a modern evolutionary perspective.\" It \"seeks to identify human psychological adaptations with regard to the ancestral problems they evolved to solve,\" treating psychological traits and mechanisms as \"either functional products of natural and sexual selection or non-adaptive by-products of other adaptive traits.\" Britannica characterizes it as \"the study of behaviour, thought, and feeling as viewed through the lens of evolutionary biology.\"",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Evolutionary_psychology",
+          "supports": "Core definition of evolutionary psychology as an evolutionary-perspective approach",
+          "quote": "a theoretical approach in psychology that examines cognition and behavior from a modern evolutionary perspective",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Evolutionary_psychology",
+          "supports": "Aim of identifying psychological adaptations to ancestral problems",
+          "quote": "seeks to identify human psychological adaptations with regard to the ancestral problems they evolved to solve",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Evolutionary_psychology",
+          "supports": "Adaptation vs. by-product framing of psychological traits (definitional tension stated neutrally)",
+          "quote": "either functional products of natural and sexual selection or non-adaptive by-products of other adaptive traits",
+          "fetched": true
+        },
+        {
+          "url": "http://web.archive.org/web/20260427233709/https://www.britannica.com/science/evolutionary-psychology",
+          "supports": "Britannica's characterization of evolutionary psychology through the lens of evolutionary biology",
+          "quote": "the study of behaviour, thought, and feeling as viewed through the lens of evolutionary biology",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:psychometrics",
+      "summary": "Psychometrics is \"a field of study within psychology concerned with the theory and technique of measurement,\" generally covering specialized areas within psychology and education devoted to testing, measurement, assessment, and related activities. It is \"concerned with the objective measurement of latent constructs that cannot be directly observed,\" such as intelligence, personality factors, and educational achievement, which are inferred through mathematical modeling of responses to items on tests and scales.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Psychometrics",
+          "supports": "Definition of psychometrics as a field concerned with the theory and technique of measurement",
+          "quote": "Psychometrics is a field of study within psychology concerned with the theory and technique of measurement",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Psychometrics",
+          "supports": "Focus on objective measurement of unobservable latent constructs",
+          "quote": "Psychometrics is concerned with the objective measurement of latent constructs that cannot be directly observed",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:neuropsychology",
+      "summary": "Neuropsychology is a branch of psychology concerned with how a person's cognition and behavior are related to the brain and the rest of the nervous system. Practitioners in this branch focus on how injuries or illnesses of the brain affect cognitive and behavioral functions, situating it at the intersection of psychology and the neurosciences.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Neuropsychology",
+          "supports": "Neuropsychology is a branch of psychology relating cognition and behavior to the brain and nervous system",
+          "quote": "Neuropsychology is a branch of psychology concerned with how a person's cognition and behavior are related to the brain and the rest of the nervous system",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Neuropsychology",
+          "supports": "Its focus is on how brain injuries or illnesses affect cognitive and behavioral functions",
+          "quote": "focus on how injuries or illnesses of the brain affect cognitive and behavioral functions",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:positive-psychology",
+      "summary": "Positive psychology is \"the scientific study of conditions and processes that contribute to positive psychological states, well-being, positive relationships, and positive institutions.\"",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Positive_psychology",
+          "supports": "Core definition of positive psychology.",
+          "quote": "Positive psychology is the scientific study of conditions and processes that contribute to positive psychological states, well-being, positive relationships, and positive institutions",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:forensic-psychology",
+      "summary": "Forensic psychology is \"the application of scientific knowledge and methods to assist in answering legal questions that may arise in criminal, civil, contractual, personal injury, or other judicial proceedings.\" It sits at the intersection of psychology and law, and \"The American Psychological Association's Specialty Guidelines for Forensic Psychologists reference several psychology sub-disciplines,\" including social, clinical, experimental, counseling, and neuropsychology.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Forensic_psychology",
+          "supports": "Core definition: applying scientific psychology to legal questions.",
+          "quote": "Forensic psychology is the application of scientific knowledge and methods to assist in answering legal questions",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Forensic_psychology",
+          "supports": "Range of legal proceedings the field addresses.",
+          "quote": "may arise in criminal, civil, contractual, personal injury, or other judicial proceedings",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Forensic_psychology",
+          "supports": "Field draws on multiple psychology sub-disciplines per APA Specialty Guidelines.",
+          "quote": "The American Psychological Association's Specialty Guidelines for Forensic Psychologists reference several psychology sub-disciplines",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:cognitive-neuroscience",
+      "summary": "Cognitive neuroscience is the scientific field that is concerned with the study of the biological processes and aspects that underlie cognition, with a specific focus on the neural connections in the brain that are involved in mental processes. It is a branch of both neuroscience and psychology, and it relies upon theories in cognitive science coupled with evidence from neurobiology, and computational modeling.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cognitive_neuroscience",
+          "supports": "Cognitive neuroscience studies the biological processes underlying cognition, focusing on neural connections involved in mental processes",
+          "quote": "Cognitive neuroscience is the scientific field that is concerned with the study of the biological processes and aspects that underlie cognition",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cognitive_neuroscience",
+          "supports": "It is a branch of both neuroscience and psychology",
+          "quote": "Cognitive neuroscience is a branch of both neuroscience and psychology",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Cognitive_neuroscience",
+          "supports": "It relies on cognitive science theory plus neurobiology evidence and computational modeling",
+          "quote": "relies upon theories in cognitive science coupled with evidence from neurobiology, and computational modeling",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:behavioral-neuroscience",
+      "summary": "Behavioral neuroscience, also known as biological psychology, biopsychology, or psychobiology, is part of the broad, interdisciplinary field of neuroscience, with its primary focus being on the biological and neural substrates underlying human experiences and behaviors. Derived from an earlier field known as physiological psychology, it applies the principles of biology to study the physiological, genetic, and developmental mechanisms of behavior in humans and other animals.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Behavioral_neuroscience",
+          "supports": "Behavioral neuroscience is also known as biological psychology, biopsychology, or psychobiology (a single discipline with these aliases)",
+          "quote": "Behavioral neuroscience, also known as biological psychology, biopsychology, or psychobiology",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Behavioral_neuroscience",
+          "supports": "It applies biology to study physiological, genetic, and developmental mechanisms of behavior in humans and other animals",
+          "quote": "applies the principles of biology to study the physiological, genetic, and developmental mechanisms of behavior in humans and other animals",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:computational-neuroscience",
+      "summary": "Computational neuroscience is a branch of neuroscience which employs mathematics, computer science, theoretical analysis and abstractions of the brain to understand the principles that govern the development, structure, physiology and cognitive abilities of the nervous system.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Computational_neuroscience",
+          "supports": "Computational neuroscience is a branch of neuroscience employing mathematics, computer science, and theoretical analysis and abstractions of the brain",
+          "quote": "Computational neuroscience is a branch of neuroscience which employs mathematics, computer science, theoretical analysis and abstractions of the brain",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Computational_neuroscience",
+          "supports": "Its aim is to understand the principles governing the development, structure, physiology and cognitive abilities of the nervous system",
+          "quote": "to understand the principles that govern the development, structure, physiology and cognitive abilities of the nervous system",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:systems-neuroscience",
+      "summary": "Systems neuroscience is a subdiscipline of neuroscience and systems biology that studies the structure and function of various neural circuits and systems that make up the central nervous system of an organism. It is concerned with how nerve cells behave when connected together to form neural pathways, neural circuits, and larger brain networks, addressing how such circuits analyze sensory information, form perceptions, and execute movements.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Systems_neuroscience",
+          "supports": "Systems neuroscience is a subdiscipline of neuroscience and systems biology studying neural circuits and systems of the central nervous system",
+          "quote": "Systems neuroscience is a subdiscipline of neuroscience and systems biology that studies the structure and function of various neural circuits and systems that make up the central nervous system",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Systems_neuroscience",
+          "supports": "It concerns how nerve cells behave when connected into neural pathways, circuits, and larger brain networks",
+          "quote": "how nerve cells behave when connected together to form neural pathways, neural circuits, and larger brain networks",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    },
+    {
+      "node_id": "subfield:affective-neuroscience",
+      "summary": "Affective neuroscience is the study of how the brain processes emotions. This field combines neuroscience with the psychological study of personality, emotion, and mood. The basis of emotions and what emotions are remains an issue of debate within the field of affective neuroscience.",
+      "citations": [
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Affective_neuroscience",
+          "supports": "Affective neuroscience is the study of how the brain processes emotions",
+          "quote": "Affective neuroscience is the study of how the brain processes emotions",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Affective_neuroscience",
+          "supports": "It combines neuroscience with the psychological study of personality, emotion, and mood",
+          "quote": "This field combines neuroscience with the psychological study of personality, emotion, and mood",
+          "fetched": true
+        },
+        {
+          "url": "https://en.wikipedia.org/api/rest_v1/page/summary/Affective_neuroscience",
+          "supports": "The nature/basis of emotions remains debated within the field (tension preservation, neutrally attributed)",
+          "quote": "The basis of emotions and what emotions are remains an issue of debate within the field of affective neuroscience",
+          "fetched": true
+        }
+      ],
+      "self_flags": [],
+      "unfetched": []
+    }
+  ]
+}
