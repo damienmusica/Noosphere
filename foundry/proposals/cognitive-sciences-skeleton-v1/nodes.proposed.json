@@ -1,0 +1,376 @@
+{
+  "batch_id": "batch:cognitive-sciences-skeleton-v1",
+  "note": "Post-QC promotion record (mirrors /data after promotion, excludes the pre-existing domain:cognitive-sciences parent). reviewed=verified-QID + ambiguous-retired; proposed=QID-less honest gap.",
+  "count": 25,
+  "nodes": [
+    {
+      "id": "field:psychology",
+      "type": "field",
+      "domain": "cognitive_sciences",
+      "level": 1,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q9418"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "field:neuroscience",
+      "type": "field",
+      "domain": "cognitive_sciences",
+      "level": 1,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q207011"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:cognitive-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q23373"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:developmental-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q175002"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:social-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q161272"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:clinical-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q199906"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:experimental-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q475042"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:personality-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q271716"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:comparative-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q1483503"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:educational-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q59157"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:industrial-and-organizational-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q2045692"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:health-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q1403186"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:evolutionary-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q219695"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:psychometrics",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q506132"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:sensation-and-perception",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "proposed",
+      "indexable": false,
+      "is_living_person": false,
+      "external_ids": {},
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:neuropsychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q3872"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:positive-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q718809"
+      },
+      "academic_status": "emerging",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:forensic-psychology",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q932219"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:cognitive-neuroscience",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q1138951"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:behavioral-neuroscience",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q846566"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:computational-neuroscience",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q8037925"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:systems-neuroscience",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q2617516"
+      },
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:affective-neuroscience",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "reviewed",
+      "indexable": true,
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q3625500"
+      },
+      "academic_status": "emerging",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:computational-cognitive-science",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "proposed",
+      "indexable": false,
+      "is_living_person": false,
+      "external_ids": {},
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    },
+    {
+      "id": "subfield:judgment-and-decision-making",
+      "type": "subfield",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "proposed",
+      "indexable": false,
+      "is_living_person": false,
+      "external_ids": {},
+      "academic_status": "established",
+      "created_at": "2026-06-18",
+      "updated_at": "2026-06-18"
+    }
+  ]
+}

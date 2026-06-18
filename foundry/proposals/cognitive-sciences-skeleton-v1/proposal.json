@@ -1,0 +1,443 @@
+{
+ "version": 1,
+ "batch_id": "batch:cognitive-sciences-skeleton-v1",
+ "proposed_by": {
+  "model_name": "Claude Sonnet",
+  "model_version": "claude-sonnet-4-6",
+  "proposed_at": "2026-06-18"
+ },
+ "nodes": [
+  {
+   "id": "field:psychology",
+   "type": "field",
+   "domain": "cognitive_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q9418"
+   },
+   "source_hint": "LCC subclass BF 'Psychology' BF1-990 — the discipline's own full subclass in the gate scheme (captured baseline 2026-06-18). UDC 159.9 'Psychology' — first-level division of class 15 (captured baseline 2026-06-18). OECD FORD 5.1 'Psychology and cognitive sciences' (captured baseline 2026-06-18). MeSH F02 'Psychological Phenomena' and F01 'Behavior and Behavior Mechanisms' (captured baseline 2026-06-18). Wikidata Q9418 'psychology' — unverified training-knowledge hint; QC resolver must confirm P31 = academic discipline, not a homonym entity.",
+   "rationale": "LCC grants psychology its own complete subclass BF (BF1-990); UDC 159.9 is a peer first-level division; FORD 5.1 names it; APA (American Psychological Association, 170k+ members), dedicated departments and PhD programs worldwide satisfy the community criterion.",
+   "uncertainty": "QID hint Q9418 unverified — training knowledge; LCC BF also shelves non-academic areas (BF638-648 New Thought, BF839.8-940 physiognomy/phrenology/palmistry) that are explicitly excluded; community criterion is unambiguously met.",
+   "ambiguous": false
+  },
+  {
+   "id": "field:neuroscience",
+   "type": "field",
+   "domain": "cognitive_sciences",
+   "level": 1,
+   "status": "generated",
+   "label_en": "Neuroscience",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q207011"
+   },
+   "source_hint": "Wikidata Q207011 'neuroscience' — unverified training-knowledge hint. LCC RC321-571 (neurology section shelving neuroscience texts, medicine-side) and QP351-495 (neurophysiology in life sciences) — cross-membership per boundary table (captured baseline 2026-06-18). OECD FORD 1.6 'Biological sciences' mentions neuroscience under biological sciences; FORD 3.1 'Basic medicine' includes neuroscience overlap. No own BF sub-range; institutional independence grounds the field status: Society for Neuroscience (58k+ members), dedicated Neuroscience departments and PhD programs worldwide.",
+   "rationale": "Boundary table explicitly assigns neuroscience as cogsci-owned field by institutional independence; Society for Neuroscience (SfN) is a major independent professional society; dedicated neuroscience departments and doctoral programs operate separately from psychology and medicine at most research universities.",
+   "uncertainty": "QID hint Q207011 unverified; neuroscience has no own LCC BF range — grounded via cross-membership (RC321-571 medicine; QP life sciences) + institutional independence; molecular/cellular neuroscience is life-sciences home (§13 candidate, separate edge batch); clinical neuroscience overlaps with medicine's neurology (field:neurology exists — §13/adjacent only); the field-level placement rests on the boundary table's institutional-independence override, which QC should verify against current SfN membership and department counts.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:cognitive-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Cognitive Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q23373"
+   },
+   "source_hint": "LCC BF309-499 'Consciousness. Cognition' — including learning, attention, comprehension, memory, imagination, intelligence, thought and thinking, psycholinguistics, mental fatigue (captured baseline 2026-06-18). UDC 159.95 'Higher mental processes' (captured baseline 2026-06-18). MeSH F02.463 'Mental Processes' (captured baseline 2026-06-18). Wikidata Q23373 — unverified training-knowledge hint; also appears as P527 (has part) of Q147638 domain anchor.",
+   "rationale": "BF309-499 is the largest and most precisely named sub-range in LCC BF, covering the core referents of cognitive psychology; APA Division 3 (Experimental Psychology / Cognitive Science), Journal of Experimental Psychology: General, Cognitive Psychology journal, and dedicated programs satisfy the community criterion.",
+   "uncertainty": "QID hint Q23373 unverified; BF309-499 also shelves psycholinguistics (excluded here — humanities-residual owns) and mental fatigue; the boundary between cognitive psychology and experimental psychology as referents is contested in older literature — distinct communities and institutional identity support two nodes (see experimental-psychology).",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:developmental-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Developmental Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q193498"
+   },
+   "source_hint": "LCC BF712-724.85 'Developmental psychology' — dedicated range including infant, child, adolescence, adulthood (captured baseline 2026-06-18). UDC 159.922 'Mental development and capacity' (captured baseline 2026-06-18). MeSH F01.145 'Human Development' (captured baseline 2026-06-18). Wikidata Q193498 — unverified training-knowledge hint.",
+   "rationale": "BF712-724.85 is an explicitly labeled, dedicated LCC sub-range; UDC 159.922 confirms the division; APA Division 7 (Developmental Psychology), Child Development journal, and dedicated developmental psychology departments satisfy the community criterion.",
+   "uncertainty": "QID hint Q193498 unverified; distinguished from subfield:developmental-biology (Q213713, life-sciences) which is a distinct canonical node — no identity collision; minor overlap with educational psychology on childhood learning.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:social-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Social Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q182790"
+   },
+   "source_hint": "LCC BF725-727 'Class psychology' (the nearest LCC sub-range capturing social/group behavior under BF; captured baseline 2026-06-18) plus broader BF coverage. UDC 159.9 applied section. MeSH F01 'Psychology, Social' (captured baseline 2026-06-18). Wikidata Q182790 — unverified training-knowledge hint; QC must distinguish from Q34736 'social science' and confirm P31 = psychology subfield.",
+   "rationale": "MeSH F01 names 'Psychology, Social' as a distinct category; SPSP (Society for Personality and Social Psychology, 6k+ members), Journal of Personality and Social Psychology, and graduate programs in social psychology satisfy the community criterion; BF725-727 provides in-subclass gate presence.",
+   "uncertainty": "QID hint Q182790 unverified; LCC BF725-727 is a modest sub-range — the main gate presence is MeSH F01 and UDC; social psychology has boundary overlap with sociology (SS continent); the §12 dual criterion is satisfied but the LCC anchor is weaker than for other subfields.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:clinical-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Clinical Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q840454"
+   },
+   "source_hint": "LCC RC466-489 'Clinical psychology' — sub-range within RC (internal medicine / psychiatry class; captured baseline 2026-06-18). UDC 159.97 'Abnormal psychology' (captured baseline 2026-06-18). MeSH F04 'Behavioral Disciplines and Activities' (clinical psychology entry; captured baseline 2026-06-18). Wikidata Q840454 — unverified training-knowledge hint.",
+   "rationale": "LCC RC466-489 provides an explicitly labeled classification range; APA Division 12 (Clinical Psychology), APA-accredited doctoral programs (PsyD/PhD), and licensure boards worldwide satisfy the community criterion; clinical psychology is a psychology-side discipline distinct from medicine's psychiatry.",
+   "uncertainty": "QID hint Q840454 unverified; strong §13 boundary with medicine's field:psychiatry (Q7867, reviewed) — clinical psychology and psychiatry serve overlapping populations; the LCC home RC is the psychiatry subclass, but RC466-489 names clinical psychology specifically; QC should check whether the §13 edge (clinical-psychology ↔ psychiatry) is the correct resolution rather than any re-classification.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:experimental-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Experimental Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1033798"
+   },
+   "source_hint": "LCC BF180-198.7 'Experimental psychology' — dedicated sub-range in the gate scheme (captured baseline 2026-06-18). UDC 159.9 methodology area. Wikidata Q1033798 — unverified training-knowledge hint.",
+   "rationale": "BF180-198.7 is an explicitly labeled LCC sub-range; APA Division 3 (formerly Society of Experimental Psychologists), Journal of Experimental Psychology series, and experimental psychology laboratory programs satisfy the community criterion.",
+   "uncertainty": "QID hint Q1033798 unverified; some researchers consider experimental psychology a methodology umbrella rather than a separate subfield; the LCC explicit range and APA divisional standing preserve the distinct node against absorption into cognitive-psychology (they serve overlapping but distinct research communities).",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:biological-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Biological Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q205302"
+   },
+   "source_hint": "LCC BF501-505 'Motivation' (physiological substrate) and UDC 159.91 'Psychophysiology. Mental physiology' (captured baseline 2026-06-18). MeSH F02.784 'Psychophysiology' (captured baseline 2026-06-18). Wikidata Q205302 — unverified training-knowledge hint; also known as biopsychology or psychobiology.",
+   "rationale": "UDC 159.91 names 'Psychophysiology' as a distinct first-sub-level division under 159.9; MeSH F02 includes Psychophysiology; APA Division 6 (Behavioral Neuroscience and Comparative Psychology), Behavioral Neuroscience journal, and undergraduate/graduate programs in biopsychology satisfy the community criterion.",
+   "uncertainty": "QID hint Q205302 unverified; biological psychology / biopsychology / psychobiology are near-synonyms — the referent is the same community; strong overlap with behavioral-neuroscience (neuroscience branch); retained as a psychology-side subfield because APA Division 6 and degree tracks locate it within the psychology community rather than the neuroscience community.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:personality-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Personality Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1075257"
+   },
+   "source_hint": "LCC BF698-698.9 'Personality' — dedicated sub-range in the gate scheme (captured baseline 2026-06-18). MeSH F01.752 'Personality' (captured baseline 2026-06-18). Wikidata Q1075257 — unverified training-knowledge hint.",
+   "rationale": "BF698-698.9 is a dedicated LCC sub-range; Journal of Personality, Journal of Research in Personality, APA Division 20 (Adult Development and Aging, personality track), and personality psychology programs satisfy the community criterion.",
+   "uncertainty": "QID hint Q1075257 unverified; often studied together with social psychology (SPSP covers both) — retained as distinct because BF698-698.9 is a separate named range and personality assessment/trait theory communities maintain distinct identity.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:comparative-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Comparative Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1143893"
+   },
+   "source_hint": "LCC BF660-685 'Comparative psychology. Animal and human psychology' — dedicated sub-range in the gate scheme (captured baseline 2026-06-18). UDC 159.922 'Comparative psychology' (captured baseline 2026-06-18). Wikidata Q1143893 — unverified training-knowledge hint.",
+   "rationale": "BF660-685 is an explicitly labeled, dedicated LCC sub-range; Journal of Comparative Psychology (APA Division 6 flagship), and comparative cognition laboratory programs satisfy the community criterion.",
+   "uncertainty": "QID hint Q1143893 unverified; overlap with animal behavior / ethology (life sciences); retained in cogsci because the psychology-side community (APA Division 6) frames it within behavioral and evolutionary psychology traditions.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:educational-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Educational Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q621635"
+   },
+   "source_hint": "LCC LB1050-1091 'Educational psychology' — explicitly labeled range in LCC class L (Education; captured baseline 2026-06-18). UDC 37.015.3 'Educational psychology' (captured baseline 2026-06-18). MeSH F02.784 area. Wikidata Q621635 — unverified training-knowledge hint.",
+   "rationale": "LB1050-1091 is an explicitly labeled LCC range; APA Division 15 (Educational Psychology), Educational Psychologist journal, and educational psychology graduate programs satisfy the community criterion; the psychology-side identity is primary.",
+   "uncertainty": "QID hint Q621635 unverified; LCC LB (not BF) places this in the Education class — the LCC home is outside the BF gate subclass; UDC 37.015.3 nests under 37 (Education). §13 candidate for education/social-sciences continent. QC should note this is the clearest dual-home case in this batch: psychology community strong, but classification home is in another continent (L class).",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:industrial-and-organizational-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Industrial and Organizational Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q628827"
+   },
+   "source_hint": "LCC HF5548.8 'Psychology, Industrial' — sub-range in class H (Social Sciences; captured baseline 2026-06-18). UDC 159.9 applied psychology section. MeSH F04.096 'Behavioral Sciences' area. Wikidata Q628827 — unverified training-knowledge hint.",
+   "rationale": "SIOP (Society for Industrial and Organizational Psychology, APA Division 14, 10k+ members), Journal of Applied Psychology, Personnel Psychology, and I/O psychology graduate programs place this firmly within the psychology community.",
+   "uncertainty": "QID hint Q628827 unverified; LCC HF (not BF) places this in the Social Sciences class — same out-of-gate-subclass issue as educational-psychology; §13 candidate for social-sciences continent (management/organizational behavior). QC should confirm that the psychology community identity is primary over the management/SS community.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:health-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Health Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1249762"
+   },
+   "source_hint": "LCC BF636-637 'Applied psychology' — sub-range in the BF gate (captured baseline 2026-06-18). UDC 159.98 'Applied psychology (psychotechnology) in general' (captured baseline 2026-06-18). MeSH F04.754 'Psychology, Applied' area. Wikidata Q1249762 — unverified training-knowledge hint.",
+   "rationale": "APA Division 38 (Health Psychology), Health Psychology journal, behavioral medicine programs, and doctoral specializations in health psychology satisfy the community criterion; the field studies psychological aspects of health, illness, and healthcare.",
+   "uncertainty": "QID hint Q1249762 unverified; §13 candidate for medicine/medicine-and-health continent (strong overlap with behavioral medicine, public health); the classification anchor BF636-637 'Applied psychology' is broader than just health psychology — it umbrellas multiple applied subfields.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:evolutionary-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Evolutionary Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q208163"
+   },
+   "source_hint": "LCC BF698.95 'Evolutionary psychology' — cited sub-range within the BF gate (captured baseline 2026-06-18). UDC 159.9 area. Wikidata Q208163 — unverified training-knowledge hint.",
+   "rationale": "BF698.95 provides a named BF range; Human Behavior and Evolution Society (HBES), Evolutionary Psychological Science journal, and evolutionary psychology graduate tracks satisfy the community criterion.",
+   "uncertainty": "QID hint Q208163 unverified; the field is occasionally contested on scientific-validity grounds (adaptationist vs standard social-science model debates) — this is a paradigmatic contest, not an academic status question; the node reflects the research community that identifies with the label.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:psychometrics",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Psychometrics",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q209934"
+   },
+   "source_hint": "LCC BF176-176.5 'Psychological tests and testing' — dedicated sub-range in the BF gate (captured baseline 2026-06-18). MeSH F04.711 'Psychological Tests' (captured baseline 2026-06-18). Wikidata Q209934 — unverified training-knowledge hint.",
+   "rationale": "BF176-176.5 is a dedicated LCC sub-range; Psychometrika journal, National Council on Measurement in Education, and quantitative psychology graduate programs satisfy the community criterion.",
+   "uncertainty": "QID hint Q209934 unverified; psychometrics is both a branch of psychology and a statistical methodology; the node is placed as a psychology subfield per LCC BF and the APA Quantitative Division 5 community.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:sensation-and-perception",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Sensation and Perception",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q751404"
+   },
+   "source_hint": "LCC BF231-299 'Sensation. Aesthesiology' — dedicated sub-range in the BF gate (captured baseline 2026-06-18). UDC 159.93 'Sensation. Sensory perception' (captured baseline 2026-06-18). MeSH F02 area. Wikidata Q751404 — unverified training-knowledge hint.",
+   "rationale": "BF231-299 is an explicitly labeled, dedicated LCC sub-range; UDC 159.93 confirms the division; Attention, Perception, & Psychophysics journal, Vision Research journal, and sensory science graduate programs satisfy the community criterion.",
+   "uncertainty": "QID hint Q751404 unverified; the philosophy of perception (subfield:philosophy-of-perception, Q3300457, reviewed in humanities) is a distinct node studying the philosophical questions about perception — no identity collision; neuroscience also studies sensory systems but at a different level of analysis.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:neuropsychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Neuropsychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q207066"
+   },
+   "source_hint": "LCC RC386 area (neuropsychology texts within RC) and BF309-499 (cognitive side); explicitly named in several LCC cutters. MeSH F02.463 area. Wikidata Q207066 — unverified training-knowledge hint.",
+   "rationale": "International Neuropsychological Society (INS), APA Division 40 (Society for Clinical Neuropsychology), Neuropsychology journal, and clinical neuropsychology postdoctoral programs satisfy the community criterion; the field bridges psychology and clinical neurology.",
+   "uncertainty": "QID hint Q207066 unverified; neuropsychology bridges cognitive psychology (brain-behavior relationships) and clinical neurology (assessment of neurological patients); §13 candidate for medicine/neurology overlap with field:neurology; retained as cogsci subfield because the primary community identity is psychology-side (APA Division 40, doctoral programs in neuropsychology).",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:abnormal-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Abnormal Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q2054482"
+   },
+   "source_hint": "UDC 159.97 'Abnormal psychology' — named division under 159.9 (captured baseline 2026-06-18). LCC BF area (BF795-839 temperament/character + RC clinical psychiatry cross-member). MeSH F03 axis is excluded (disease objects, not disciplines); MeSH F04 behavioral disciplines cover therapeutic approaches. Wikidata Q2054482 — unverified training-knowledge hint.",
+   "rationale": "UDC 159.97 names abnormal psychology as a distinct division; Journal of Abnormal Psychology (APA flagship), and undergraduate/graduate courses in abnormal psychology satisfy the community criterion as a teaching/research discipline distinct from psychiatry (which is a medical specialty).",
+   "uncertainty": "QID hint Q2054482 unverified; abnormal psychology as a discipline overlaps heavily with clinical psychology and psychiatry — it is primarily a teaching/research frame rather than a professional practice identity; §13 boundary with medicine/psychiatry noted; the discipline node models the academic study of psychopathology, not the disease objects (MeSH F03 excluded per scope).",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:positive-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Positive Psychology",
+   "academic_status": "emerging",
+   "external_ids": {
+    "wikidata": "Q1550984"
+   },
+   "source_hint": "LCC BF636-637 'Applied psychology' (captured baseline 2026-06-18). Wikidata Q1550984 — unverified training-knowledge hint. Institutional grounding: International Positive Psychology Association (IPPA, est. 2007), Journal of Positive Psychology (est. 2006), applied positive psychology master's programs at Penn, East London, etc.",
+   "rationale": "IPPA with dedicated journals and degree tracks since ~2000 satisfy the community criterion; the subfield has a named research program studying well-being, flourishing, and strengths rather than pathology.",
+   "uncertainty": "QID hint Q1550984 unverified; positive psychology is young (~2000 founding by Seligman); some researchers argue it is a research orientation within applied psychology rather than a distinct subfield — the `emerging` tag reflects this; the BF636-637 anchor is the umbrella 'Applied psychology' range, not a dedicated positive-psychology sub-range.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:forensic-psychology",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Forensic Psychology",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1000563"
+   },
+   "source_hint": "LCC RA1148 'Forensic psychology' — explicitly labeled cutter within RA (Public health; captured baseline 2026-06-18). MeSH F04.754 'Psychology, Applied' area. Wikidata Q1000563 — unverified training-knowledge hint.",
+   "rationale": "American Psychology-Law Society (AP-LS, APA Division 41), Journal of Forensic Psychology, and forensic psychology graduate programs satisfy the community criterion; the subfield applies psychological science to legal and criminal justice contexts.",
+   "uncertainty": "QID hint Q1000563 unverified; §13 candidate for law continent (forensic science, criminology); LCC anchor is in RA (Public health) rather than BF directly; retained as cogsci because the primary disciplinary identity is psychology-side (APA Division 41, psychology licensure).",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:cognitive-neuroscience",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Cognitive Neuroscience",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q193536"
+   },
+   "source_hint": "Wikidata Q193536 'cognitive neuroscience' — unverified training-knowledge hint. Wikidata Q147638 P527 list includes 'neurophysiology' (Q660910) as has-part. Institutional grounding: Cognitive Neuroscience Society (CNS, est. 1994), Journal of Cognitive Neuroscience (est. 1989), dedicated cognitive neuroscience programs at Harvard, UCL, etc.",
+   "rationale": "Cognitive Neuroscience Society with dedicated journal and degree programs satisfy the community criterion; the subfield studies the neural mechanisms underlying cognition, bridging neuroscience and cognitive psychology; it is a primary integrative referent of Q147638.",
+   "uncertainty": "QID hint Q193536 unverified; no own LCC BF sub-range — grounded institutionally; overlaps with behavioral-neuroscience and systems-neuroscience; the §12 dual criterion is met via institutional standing even without a dedicated gate-scheme sub-range.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:behavioral-neuroscience",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Behavioral Neuroscience",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q2576700"
+   },
+   "source_hint": "LCC BF660-685 'Comparative psychology. Animal and human psychology' (behavioral side; captured baseline 2026-06-18). MeSH F04.096.879 'Behavioral Sciences' (captured baseline 2026-06-18). Wikidata Q2576700 — unverified training-knowledge hint.",
+   "rationale": "APA Division 6 (Behavioral Neuroscience and Comparative Psychology), Behavioral Neuroscience journal (APA flagship), and behavioral neuroscience doctoral programs satisfy the community criterion; the subfield studies the neural substrates of behavior.",
+   "uncertainty": "QID hint Q2576700 unverified; boundary with biological-psychology is close — both study brain-behavior relationships; behavioral neuroscience is placed under field:neuroscience (neural mechanisms focus) while biological-psychology is placed under field:psychology (psychological processes focus); the distinction is a categorization judgment that QC should validate.",
+   "ambiguous": false
+  },
+  {
+   "id": "subfield:computational-neuroscience",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Computational Neuroscience",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q2601612"
+   },
+   "source_hint": "Wikidata Q2601612 — unverified training-knowledge hint. Institutional grounding: Organization for Computational Neuroscience (OCNS, est. 1989), Journal of Computational Neuroscience (est. 1994), computational neuroscience graduate programs at Gatsby Unit (UCL), Princeton Neuroscience Institute, etc.",
+   "rationale": "OCNS with dedicated journal and graduate programs satisfy the community criterion; the subfield uses mathematical and computational models to understand neural processes; distinct from computational-cognitive-science in that its referent is neural systems, not cognitive modeling.",
+   "uncertainty": "QID hint Q2601612 unverified; §13 candidate for computer-and-information-sciences (strong overlap with CS modeling methods); no own LCC BF or RC sub-range — grounded institutionally; molecular/cellular computational work is life-sciences-adjacent (§13 candidate there too).",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:systems-neuroscience",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Systems Neuroscience",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q7662536"
+   },
+   "source_hint": "Wikidata Q7662536 — unverified training-knowledge hint. Institutional grounding: dedicated systems neuroscience research programs at MIT McGovern Institute, Columbia Zuckerman Institute, Cold Spring Harbor Laboratory; graduate training programs; Current Opinion in Neurobiology (systems section).",
+   "rationale": "Named graduate programs, research institutes, and dedicated journal sections satisfy the community criterion; systems neuroscience studies how neural circuits and systems give rise to function, distinct from computational-neuroscience (modeling focus) and cognitive-neuroscience (cognition focus).",
+   "uncertainty": "QID hint Q7662536 unverified; systems neuroscience lacks a dedicated professional society of its own (absorbed within SfN); the absorption rule consideration: the community is institutionally named at the program/institute level but not at the society level — QC should assess whether this meets the community criterion at subfield rank or should be absorbed into cognitive-neuroscience.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:affective-neuroscience",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Affective Neuroscience",
+   "academic_status": "emerging",
+   "external_ids": {
+    "wikidata": "Q853480"
+   },
+   "source_hint": "LCC BF511-593 'Affection. Feeling. Emotion' (psychology-side; captured baseline 2026-06-18). Wikidata Q853480 — unverified training-knowledge hint. Institutional grounding: Society for Affective Science (SAS, est. 2013), Social Cognitive and Affective Neuroscience (SCAN) journal (est. 2006), Panksepp's Affective Neuroscience (1998) as field-naming text.",
+   "rationale": "LCC BF511-593 provides gate presence on the emotion/affection axis; SCAN journal and Society for Affective Science satisfy the community criterion; the subfield studies neural mechanisms of emotion, mood, and affect.",
+   "uncertainty": "QID hint Q853480 unverified; affective neuroscience is relatively young (Panksepp named it ~1990s) — `emerging` tag reflects this; boundary with cognitive-neuroscience is close (emotion is studied within cognitive neuroscience); the Society for Affective Science is a young cross-disciplinary society. QC should assess whether this passes the community criterion for a standalone subfield or should be absorbed into cognitive-neuroscience as a v2 re-split.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:computational-cognitive-science",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Computational Cognitive Science",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q5160086"
+   },
+   "source_hint": "Wikidata Q5160086 — unverified training-knowledge hint. Institutional grounding: Cognitive Science Society (founded 1979; runs annual CogSci conference); Computational Brain & Behavior journal (est. 2018); programs at MIT BCS, Stanford, CMU CNBC integrating cognitive modeling, Bayesian cognitive science, and rational process models.",
+   "rationale": "Boundary table explicitly lists computational-cognitive-science as cogsci-owned + §13 to CS; Cognitive Science Society with dedicated journal and programs satisfy the community criterion; the subfield builds computational models of human cognition (not neural systems — that is computational-neuroscience) and is a primary integrative referent of Q147638.",
+   "uncertainty": "QID hint Q5160086 unverified; §13 candidate for computer-and-information-sciences (strong overlap with AI and machine learning methods); distinct referent from computational-neuroscience (cognitive modeling vs neural modeling) and from subfield:machine-learning (Q2539, CS) which is engineering-oriented; the distinction may not be obvious to resolvers — QC should verify the QID does not collapse onto machine-learning or AI entities.",
+   "ambiguous": true
+  },
+  {
+   "id": "subfield:judgment-and-decision-making",
+   "type": "subfield",
+   "domain": "cognitive_sciences",
+   "level": 2,
+   "status": "generated",
+   "label_en": "Judgment and Decision Making",
+   "academic_status": "established",
+   "external_ids": {
+    "wikidata": "Q1427826"
+   },
+   "source_hint": "LCC BF608-635 'Will. Volition. Choice. Control' — sub-range in BF gate (captured baseline 2026-06-18). Wikidata Q1427826 — unverified training-knowledge hint. Institutional grounding: Society for Judgment and Decision Making (SJDM, founded 1980), Journal of Behavioral Decision Making, Judgment and Decision Making journal.",
+   "rationale": "LCC BF608-635 provides gate presence on the choice/volition axis; SJDM with dedicated journals satisfy the community criterion; JDM studies psychological processes underlying human judgment and decision behavior — a DISTINCT referent from subfield:decision-theory (Q177571, humanities), which is the formal/normative mathematical theory of rational choice.",
+   "uncertainty": "QID hint Q1427826 unverified; §12 overlap test: JDM (psychological/behavioral, this node) vs decision-theory (formal/normative, Q177571 humanities — already canonical) are distinct referents per manifest guidance; the SJDM community is empirical-behavioral, not formal-mathematical; QC should verify the QID resolves to the behavioral-science entity, not to decision theory proper.",
+   "ambiguous": false
+  }
+ ]
+}

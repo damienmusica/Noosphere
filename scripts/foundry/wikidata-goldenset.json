@@ -3048,6 +3048,208 @@
       "verdict": "verified",
       "expected_qid": "Q3505712",
       "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Psychology",
+      "node_id": "field:psychology",
+      "verdict": "verified",
+      "expected_qid": "Q9418",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Neuroscience",
+      "node_id": "field:neuroscience",
+      "verdict": "verified",
+      "expected_qid": "Q207011",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Cognitive Psychology",
+      "node_id": "subfield:cognitive-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q23373",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Developmental Psychology",
+      "node_id": "subfield:developmental-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q175002",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Social Psychology",
+      "node_id": "subfield:social-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q161272",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Clinical Psychology",
+      "node_id": "subfield:clinical-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q199906",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Experimental Psychology",
+      "node_id": "subfield:experimental-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q475042",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Personality Psychology",
+      "node_id": "subfield:personality-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q271716",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Comparative Psychology",
+      "node_id": "subfield:comparative-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q1483503",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Educational Psychology",
+      "node_id": "subfield:educational-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q59157",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Industrial and Organizational Psychology",
+      "node_id": "subfield:industrial-and-organizational-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q2045692",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Health Psychology",
+      "node_id": "subfield:health-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q1403186",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Evolutionary Psychology",
+      "node_id": "subfield:evolutionary-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q219695",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Neuropsychology",
+      "node_id": "subfield:neuropsychology",
+      "verdict": "verified",
+      "expected_qid": "Q3872",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Positive Psychology",
+      "node_id": "subfield:positive-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q718809",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Forensic Psychology",
+      "node_id": "subfield:forensic-psychology",
+      "verdict": "verified",
+      "expected_qid": "Q932219",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Cognitive Neuroscience",
+      "node_id": "subfield:cognitive-neuroscience",
+      "verdict": "verified",
+      "expected_qid": "Q1138951",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Behavioral Neuroscience",
+      "node_id": "subfield:behavioral-neuroscience",
+      "verdict": "verified",
+      "expected_qid": "Q846566",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Computational Neuroscience",
+      "node_id": "subfield:computational-neuroscience",
+      "verdict": "verified",
+      "expected_qid": "Q8037925",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Systems Neuroscience",
+      "node_id": "subfield:systems-neuroscience",
+      "verdict": "verified",
+      "expected_qid": "Q2617516",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Affective Neuroscience",
+      "node_id": "subfield:affective-neuroscience",
+      "verdict": "verified",
+      "expected_qid": "Q3625500",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Psychometrics",
+      "node_id": "subfield:psychometrics",
+      "verdict": "verified",
+      "expected_qid": "Q506132",
+      "rank1_expected": false,
+      "manual_path": true,
+      "must_not_select": [
+        "Q873512"
+      ],
+      "notes": "Manual override (decision-log (9)): resolver rank-1 Q873512 = 'psychological test' (P31 type-of-test instrument object); QC selected Q506132 'psychometrics' (P31 Q60680430 branch of psychology). Object-vs-discipline homonym; Q873512 must never be auto-selected for this node (session #21)."
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Sensation and Perception",
+      "node_id": "subfield:sensation-and-perception",
+      "verdict": "upstream_gap",
+      "notes": "upstream gap (session #21): no combined sensation-and-perception discipline entity. Resolver selects Q160402 'perception' (the percept/process concept, not the discipline); Q500096 'psychophysics' is narrower and does not umbrella the area (component-anchor rule, session #11) — both QC-rejected referents. BF231-299 + UDC 159.93 ground the node; identity anchor immature."
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Computational Cognitive Science",
+      "node_id": "subfield:computational-cognitive-science",
+      "verdict": "upstream_gap",
+      "notes": "upstream gap (session #21): no computational-cognitive-science discipline entity. Resolver selects Q4874465 'Bayesian cognitive science' (narrow sub-approach, sl=1); Q96319640 is a journal — both QC-rejected. Boundary-table-mandated cogsci-owned node + §13-to-CS candidate; QID-less honest gap."
+    },
+    {
+      "batch": "batch:cognitive-sciences-skeleton-v1",
+      "seed_label": "Judgment and Decision Making",
+      "node_id": "subfield:judgment-and-decision-making",
+      "verdict": "upstream_gap",
+      "notes": "upstream gap (session #21): no JDM discipline entity. Resolver selects Q1331926 'decision making' (process/concept); Q15746672 is the JDM journal — both QC-rejected. Distinct referent from subfield:decision-theory (Q177571, humanities); SJDM society + BF608-635 ground the node; QID-less honest gap."
     }
   ]
 }

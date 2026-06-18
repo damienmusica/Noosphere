@@ -1,0 +1,93 @@
+{
+  "id": "batch:cognitive-sciences-skeleton-v1",
+  "title": "Cognitive Sciences Skeleton v1",
+  "description": "Coverage skeleton for the cognitive-sciences continent (round 3, strict-sequential depth-first, CPO decision (43) 2026-06-18): field/subfield two-level node set under domain:cognitive-sciences (Q147638, reviewed, currently 0 children). Gate scheme = LCC subclass BF (Psychology); contrasts = UDC 159.9 + MeSH tree F + OECD FORD 5.1 + Wikidata Q147638 P279/P527 hexagon (captured-sources.md, baseline 2026-06-18). Orchestrator pre-captured all series before generation (decision (30) NS precedent; (34) skeleton template). Cognitive science is interdisciplinary with no single gate — the generator anchors the discipline hierarchy on LCC BF / Q147638 and uses FORD/MeSH/UDC for corroboration only. The seed_entities list is the orchestrator's coverage target; the generator applies the section-12 skeleton standard to decide keep/absorb/level and flags boundary cases per the captured boundary table.",
+  "status": "active",
+  "target_locales": ["en"],
+  "scope": {
+    "include": [
+      "Cognitive-sciences field and subfield coverage skeleton (nodes only, level 1 field / level 2 subfield)",
+      "field:psychology (LCC BF1-990, UDC 159.9, FORD 5.1) as the anchor field; its branches as subfields (own LCC BF sub-range and/or UDC 159.9x division and/or MeSH F discipline + department/society/journal community presence)",
+      "field:neuroscience as a cogsci-owned field by institutional independence (Society for Neuroscience, dedicated departments/degrees) — no own LCC BF range; grounded via Wikidata Q207011 + RC321-571 (medicine) + QP (life sciences) cross-membership",
+      "Psychology subfields: cognitive, developmental, social, clinical, experimental, biological, personality, comparative, educational, industrial-and-organizational, health, evolutionary, psychometrics, sensation-and-perception, neuropsychology, abnormal, positive, forensic",
+      "Neuroscience subfields: cognitive-neuroscience, behavioral-neuroscience, computational-neuroscience, systems-neuroscience, affective-neuroscience (molecular/cellular = life-sciences home, section-13 only — not new cogsci nodes)",
+      "Integrative cognitive-science subfields: computational-cognitive-science (+ section-13 to CS), judgment-and-decision-making (section-12 overlap test vs subfield:decision-theory Q177571)",
+      "Wikidata QID resolution for identity and external_ids"
+    ],
+    "exclude": [
+      "Edges and relations (skeleton-first: dots before lines; part_of skeleton edges + section-13 are a separate batch)",
+      "Level-3 concepts (cognition, attention, memory, perception-as-percept, etc.), persons, works — and ALL researcher/clinician person nodes (living-person strict)",
+      "Re-proposing any existing /data node: domain:cognitive-sciences (Q147638), subfield:artificial-intelligence (Q11660), subfield:machine-learning (Q2539), subfield:human-computer-interaction (Q207434) [CS]; subfield:philosophy-of-mind (Q23407), subfield:philosophy-of-perception (Q3300457), subfield:philosophy-of-psychiatry (Q27333716), subfield:philosophy-of-cognitive-science (QID-less proposed), subfield:decision-theory (Q177571) [humanities]; field:psychiatry (Q7867), field:neurology (Q83042), subfield:neurosurgery (Q188449) [medicine]; field:anthropology (Q23404), subfield:cultural-anthropology (Q28598), subfield:physical-anthropology (Q27172) [SS]; subfield:developmental-biology (Q213713) [life sciences]",
+      "field:cognitive-science holding Q147638 — the DOMAIN already holds Q147638; do NOT duplicate the QID on a field node (decision (36) Q21198 de-duplication precedent). Cognitive-science-proper integrative content = subfields (cognitive-psychology, cognitive-neuroscience, computational-cognitive-science)",
+      "Linguistics / psycholinguistics / neurolinguistics / cognitive-linguistics (humanities-residual owns, next round — record only, do NOT build a linguistics wing)",
+      "psychiatry / neurology / clinical-neuroscience (medicine exists — section-13/adjacent edges only, separate task)",
+      "Parapsychology, occult sciences (LCC BF1001-2055) — pseudoscience objects, not cognitive-science disciplines; graphology/phrenology/physiognomy/palmistry (historical/non-academic, not cogsci-owned)",
+      "Disease/disorder nodes (MeSH F03 organ-of-the-mind disorders describe the object, not the discipline — model clinical-psychology, not 'anxiety disorder')"
+    ]
+  },
+  "seed_entities": [
+    {"label": "Psychology", "expected_node_id": "field:psychology", "expected_type": "field"},
+    {"label": "Neuroscience", "expected_node_id": "field:neuroscience", "expected_type": "field"},
+    {"label": "Cognitive Psychology", "expected_node_id": "subfield:cognitive-psychology", "expected_type": "subfield"},
+    {"label": "Developmental Psychology", "expected_node_id": "subfield:developmental-psychology", "expected_type": "subfield"},
+    {"label": "Social Psychology", "expected_node_id": "subfield:social-psychology", "expected_type": "subfield"},
+    {"label": "Clinical Psychology", "expected_node_id": "subfield:clinical-psychology", "expected_type": "subfield"},
+    {"label": "Experimental Psychology", "expected_node_id": "subfield:experimental-psychology", "expected_type": "subfield"},
+    {"label": "Biological Psychology", "expected_node_id": "subfield:biological-psychology", "expected_type": "subfield"},
+    {"label": "Personality Psychology", "expected_node_id": "subfield:personality-psychology", "expected_type": "subfield"},
+    {"label": "Comparative Psychology", "expected_node_id": "subfield:comparative-psychology", "expected_type": "subfield"},
+    {"label": "Educational Psychology", "expected_node_id": "subfield:educational-psychology", "expected_type": "subfield"},
+    {"label": "Industrial and Organizational Psychology", "expected_node_id": "subfield:industrial-and-organizational-psychology", "expected_type": "subfield"},
+    {"label": "Health Psychology", "expected_node_id": "subfield:health-psychology", "expected_type": "subfield"},
+    {"label": "Evolutionary Psychology", "expected_node_id": "subfield:evolutionary-psychology", "expected_type": "subfield"},
+    {"label": "Psychometrics", "expected_node_id": "subfield:psychometrics", "expected_type": "subfield"},
+    {"label": "Sensation and Perception", "expected_node_id": "subfield:sensation-and-perception", "expected_type": "subfield"},
+    {"label": "Neuropsychology", "expected_node_id": "subfield:neuropsychology", "expected_type": "subfield"},
+    {"label": "Abnormal Psychology", "expected_node_id": "subfield:abnormal-psychology", "expected_type": "subfield"},
+    {"label": "Positive Psychology", "expected_node_id": "subfield:positive-psychology", "expected_type": "subfield"},
+    {"label": "Forensic Psychology", "expected_node_id": "subfield:forensic-psychology", "expected_type": "subfield"},
+    {"label": "Cognitive Neuroscience", "expected_node_id": "subfield:cognitive-neuroscience", "expected_type": "subfield"},
+    {"label": "Behavioral Neuroscience", "expected_node_id": "subfield:behavioral-neuroscience", "expected_type": "subfield"},
+    {"label": "Computational Neuroscience", "expected_node_id": "subfield:computational-neuroscience", "expected_type": "subfield"},
+    {"label": "Systems Neuroscience", "expected_node_id": "subfield:systems-neuroscience", "expected_type": "subfield"},
+    {"label": "Affective Neuroscience", "expected_node_id": "subfield:affective-neuroscience", "expected_type": "subfield"},
+    {"label": "Computational Cognitive Science", "expected_node_id": "subfield:computational-cognitive-science", "expected_type": "subfield"},
+    {"label": "Judgment and Decision Making", "expected_node_id": "subfield:judgment-and-decision-making", "expected_type": "subfield"}
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "wikidata",
+      "purpose": ["identity", "metadata", "source_resolution", "external_link"],
+      "requires_secret": false,
+      "notes": "CC0. Resolver verifies the unverified training-knowledge QID hints in the proposal and fills missing QIDs. Cognitive-science homonym traps (Q9418 vs Q11633 'psychology' general entity; cognition/learning/memory general concepts vs disciplines; 'social psychology' vs 'sociology') — multi-signal, never label-match."
+    },
+    {
+      "provider": "wikipedia",
+      "purpose": ["external_link", "source_resolution"],
+      "requires_secret": false,
+      "notes": "External-link / source-resolution pointer only. Never store or cache article bodies."
+    }
+  ],
+  "forbidden_sources": [
+    {"provider": "namuwiki", "reason": "External links only; never store article text or treat as primary evidence (project hard constraint)."},
+    {"provider": "cloud_llm", "reason": "No cloud LLM API calls, SDKs, or keys anywhere in repo tooling/build/CI (project hard constraint)."},
+    {"provider": "scraping", "reason": "No scraping or crawling of third-party sites; resolvers use declared public APIs only."}
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": ["low", "medium", "historical"],
+    "requires_strict_review_for": ["living_person", "current_affiliation", "controversial_claim"]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/cognitive-sciences-skeleton-v1"
+  },
+  "notes": [
+    "Gate = LCC subclass BF (captured 2026-06-18, captured-sources.md). Contrasts = UDC 159.9 + MeSH tree F + OECD FORD 5.1 + Wikidata Q147638 P279/P527 hexagon. PhySH absent for cognitive science (NS-only) — MeSH F is the discipline scheme. Cognitive science is interdisciplinary: anchor the hierarchy on LCC BF / Q147638; FORD 5.1 (a social science in Frascati) is contrast only — our model treats cognitive sciences as an independent continent.",
+    "Section-12 skeleton modeling standard (docs/data-foundry.md section 12) is a mandatory generator input. Dual criterion: (a) major division in a gate scheme (LCC BF sub-range / UDC 159.9x / MeSH F discipline) AND (b) department/society/journal/degree-track community presence. Absorb refinements of a kept node serving the same community (record as v2 re-split candidate). Flat two-level (field/subfield); edge depth is free.",
+    "Boundary pre-assignments + handoff table (captured-sources.md) are mandatory generator input. Cognitive science OWNS psychology (all branches) + neuroscience + integrative cognitive-science subfields. Do NOT create: AI/ML/HCI (CS), philosophy-of-mind/perception/psychiatry/cognitive-science (philosophy), psychiatry/neurology (medicine), linguistics/psycholinguistics/cognitive-linguistics (humanities-residual, next round — record only), anthropology (SS). Generation is cogsci; dual membership is section-13 (separate edge batch).",
+    "philosophy-of-cognitive-science (proposed, QID-less, humanities) is a resolution trigger on cogsci entry — review section-13 candidate on the philosophy-side node + promote if grounding mature (separate judgment; no forced promotion). The skeleton does NOT re-create it.",
+    "Living-person strict: discipline nodes only; no person nodes this round.",
+    "Tension preservation (decision (42)(43)): cognitive science is rich in competing paradigms (behaviorism vs cognitivism, symbolism vs connectionism, nature vs nurture, modularity vs embodiment). The A skeleton is part_of-primary; if proposition-edges arise, preserve opposing/minority views (disputed + note + co-existing edges), correct only identity-axis errors. Skeleton nodes themselves are non-disputed disciplines.",
+    "Cognitive-science QID homonym traps: Q9418 'psychology' (the science) vs other 'psychology' entities; cognition/learning/memory/attention general concepts (Q161p-class) vs the disciplines that study them; 'computational neuroscience' vs 'computational cognitive science' (distinct); resolver and QC use multi-signal triangulation (P31 academic discipline / field of study), never label-string matching. Hint-laundering machine sweep is mandatory at QC (sessions 8-19 pattern)."
+  ]
+}
