@@ -1,0 +1,644 @@
+{
+  "batch_id": "formal-formalizes-wave2-v1",
+  "generated_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-19"
+  },
+  "relation_scope": ["formalizes"],
+  "candidates": [
+    {
+      "candidate_id": "A1",
+      "source": "subfield:game-theory",
+      "target": "field:economics",
+      "relation": "formalizes",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Game Theory' (Ross, 1997, rev. 2021), §1",
+          "claim_anchor": "Game theory is the study of the ways in which interacting choices of economic agents produce outcomes with respect to the preferences (or utilities) of those agents",
+          "url": "https://plato.stanford.edu/entries/game-theory/"
+        },
+        {
+          "citation": "Roger Myerson, 'Game Theory: Analysis of Conflict' (Harvard University Press, 1991), Preface, p. 1",
+          "claim_anchor": "Game theory can be defined as the study of mathematical models of conflict and cooperation between intelligent rational decision-makers … it provides a formal mathematical framework for economic analysis",
+          "url": "https://encyclopediaofmath.org/wiki/Game_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "Game theory is the canonical formal framework for strategic interaction in economics (Nash equilibrium, mechanism design, auction theory). The 'formalizes' direction is from game theory into economics — game theory provides the mathematical apparatus that economics imports, not merely a sub-discipline of economics.",
+      "rationale": "Game theory provides the formal mathematical framework — payoff matrices, equilibrium concepts (Nash, subgame-perfect, Bayesian), mechanism design — through which strategic economic interaction is rigorously modelled and analyzed.",
+      "uncertainty": "One could argue game theory is partly constituted by economic applications and that the relationship is co-constitutive rather than one-directional; also 'game theory' and 'economic theory' overlap in the industrial-organization literature to the point where the formalizes direction (rather than part_of or applies_to) may be contested by some economists.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A2",
+      "source": "subfield:game-theory",
+      "target": "field:political-science",
+      "relation": "formalizes",
+      "confidence": 0.82,
+      "evidence": [
+        {
+          "citation": "Drew Fudenberg & Jean Tirole, 'Game Theory' (MIT Press, 1991), Chapter 1, p. 1",
+          "claim_anchor": "The theory of games provides a formal framework for analysing strategic situations including those arising in political science",
+          "url": "https://encyclopediaofmath.org/wiki/Game_theory"
+        },
+        {
+          "citation": "George Tsebelis, 'Nested Games: Rational Choice in Comparative Politics' (University of California Press, 1990), Introduction",
+          "claim_anchor": "Game theory is used to formalize political interaction, providing mathematical models of voting, coalition formation, and international conflict",
+          "url": "https://plato.stanford.edu/entries/game-theory/"
+        }
+      ],
+      "disputed": false,
+      "note": "Formal political theory / rational-choice political science is a recognized subfield using game theory explicitly to formalize political strategic interaction (voting models, legislative bargaining, war-and-peace models). The penetration of game theory into political science is real but less total than in economics; much of political science remains non-formal.",
+      "rationale": "Game theory provides the formal mathematical framework for strategic political interaction — legislative bargaining, voting equilibria, international conflict, coalition formation — constituting the subfield of formal political theory.",
+      "uncertainty": "Game theory formalizes a part of political science (formal/rational-choice political theory), not the whole field; much of comparative politics, IR, and political sociology is non-formal; a claim-stating source asserting game theory formalizes political science *as a field* (rather than a subfield of it) may be harder to find verbatim.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A3",
+      "source": "subfield:game-theory",
+      "target": "subfield:evolutionary-biology",
+      "relation": "formalizes",
+      "confidence": 0.87,
+      "evidence": [
+        {
+          "citation": "John Maynard Smith, 'Evolution and the Theory of Games' (Cambridge University Press, 1982), Introduction, p. 1",
+          "claim_anchor": "The theory of games is ideally suited to the study of evolution … it provides a formal framework for understanding evolutionary stability and frequency-dependent selection",
+          "url": "https://encyclopediaofmath.org/wiki/Evolutionarily_stable_strategy"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Evolutionary Game Theory' (Huttegger & Zollman, 2013, rev. 2021), §1",
+          "claim_anchor": "Evolutionary game theory is a mathematically formal approach to understanding evolution, deriving from classical game theory and providing formal models of natural selection",
+          "url": "https://plato.stanford.edu/entries/game-evolutionary/"
+        }
+      ],
+      "disputed": false,
+      "note": "Maynard Smith's ESS concept and the replicator dynamics framework are the canonical formalization of frequency-dependent selection. Evolutionary game theory is now a mainstream tool in theoretical evolutionary biology. The claim is that game theory supplies a formal apparatus, not that evolutionary biology is reducible to game theory.",
+      "rationale": "Evolutionary game theory (Maynard Smith 1982 ESS, replicator dynamics) provides a formal mathematical framing for frequency-dependent natural selection and evolutionary stability, giving rigorous mathematical content to qualitative evolutionary arguments.",
+      "uncertainty": "The formalization is partial — evolutionary biology is a large empirical field where game-theoretic models apply to a subset of phenomena (frequency-dependent selection, altruism, cooperation); a claim that game theory formalizes evolutionary biology as a whole rather than a substantial subpart could be oversold.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A4",
+      "source": "subfield:information-theory",
+      "target": "subfield:telecommunications-engineering",
+      "relation": "formalizes",
+      "confidence": 0.94,
+      "evidence": [
+        {
+          "citation": "Claude Shannon, 'A Mathematical Theory of Communication', Bell System Technical Journal, 27(3): 379–423, 1948",
+          "claim_anchor": "The fundamental problem of communication is that of reproducing at one point either exactly or approximately a message selected at another point … [this paper develops] a mathematical theory of communication",
+          "url": "https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf"
+        },
+        {
+          "citation": "Thomas Cover & Joy Thomas, 'Elements of Information Theory' (2nd ed., Wiley, 2006), Chapter 1, p. 1",
+          "claim_anchor": "Information theory answers the questions: what is the ultimate data compression (entropy H), and what is the ultimate transmission rate of communication (channel capacity C)?",
+          "url": "https://encyclopediaofmath.org/wiki/Information_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "Shannon's 1948 paper is the founding document of both information theory and the mathematical theory of communication engineering. The claim-stating source is essentially the primary source itself. Channel capacity, coding theorems, and entropy are formal results directly adopted by telecommunications engineering.",
+      "rationale": "Shannon's information theory (1948) provides the formal mathematical framework — entropy, channel capacity, source/channel coding theorems — that formalizes the fundamental limits and design principles of telecommunication systems.",
+      "uncertainty": "Telecommunications engineering also draws heavily on signal processing, electrical circuit theory, and probability theory beyond information theory proper; the 'formalizes' claim applies specifically to the data-transmission/coding aspect, not the full breadth of telecommunications engineering.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A5",
+      "source": "subfield:information-theory",
+      "target": "subfield:cryptography",
+      "relation": "formalizes",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "citation": "Claude Shannon, 'Communication Theory of Secrecy Systems', Bell System Technical Journal, 28(4): 656–715, 1949",
+          "claim_anchor": "In this paper a theory of secrecy systems is developed … the problems of cryptography and secrecy systems furnish an interesting application of communication theory",
+          "url": "https://ieeexplore.ieee.org/document/6769090"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Information-Theoretic Security' (Dodis & Yu, 2018), §1",
+          "claim_anchor": "Information theory provides the formal basis for perfect secrecy, defining it in terms of the statistical independence of ciphertext and plaintext",
+          "url": "https://plato.stanford.edu/entries/information-theoretic-security/"
+        }
+      ],
+      "disputed": false,
+      "note": "Shannon's 1949 paper formally defined perfect secrecy using information-theoretic concepts (conditional entropy, mutual information), establishing the formal foundation for information-theoretic cryptography. Modern cryptography also draws heavily on number theory (A6) and computational complexity — information theory formalizes the information-security aspect, not the full computational complexity paradigm of modern cryptography.",
+      "rationale": "Shannon's 1949 paper provided the information-theoretic formal definition of perfect secrecy (ciphertext independent of plaintext) and one-time pad optimality, giving cryptography its rigorous mathematical foundation in terms of entropy and conditional probability.",
+      "uncertainty": "Modern (post-Shannon) cryptography is largely computational-complexity-based rather than information-theoretic; the information-theoretic framing is foundational for the perfect-secrecy model but does not formalize complexity-theoretic cryptography (public-key systems, pseudorandomness); the claim is strongest for classical/information-theoretic cryptography.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A6",
+      "source": "subfield:number-theory",
+      "target": "subfield:cryptography",
+      "relation": "formalizes",
+      "confidence": 0.90,
+      "evidence": [
+        {
+          "citation": "Neal Koblitz, 'A Course in Number Theory and Cryptography' (2nd ed., Springer, 1994), Preface, p. v",
+          "claim_anchor": "Number theory … provides the mathematical foundations for public-key cryptography … the formal basis of RSA, discrete-logarithm systems, and elliptic-curve cryptography",
+          "url": "https://link.springer.com/book/10.1007/978-1-4419-8592-7"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Cryptography' (EMS, Springer)",
+          "claim_anchor": "Modern public-key cryptography is based on number-theoretic problems such as integer factorization and the discrete logarithm problem",
+          "url": "https://encyclopediaofmath.org/wiki/Cryptography"
+        }
+      ],
+      "disputed": false,
+      "note": "Number theory provides the mathematical problems (integer factorization, discrete logarithm, elliptic-curve discrete logarithm) whose assumed computational hardness is the formal basis of public-key cryptographic security. This is the strongest form of the formalizes relation — the hardness assumptions are formal number-theoretic statements.",
+      "rationale": "Number theory supplies the formal mathematical problems (factoring, discrete logarithm, elliptic curves) whose hardness assumptions underpin all major public-key cryptographic systems (RSA, Diffie–Hellman, ECC), directly formalizing their security foundations.",
+      "uncertainty": "Strictly, number theory provides the mathematical substrate for hardness assumptions, but the formal security arguments also require computational complexity theory; whether number theory 'formalizes' cryptography or 'enables' it (via providing hard problems to exploit) is a direction the orchestrator should verify against a claim-stating source.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A7",
+      "source": "subfield:probability-theory",
+      "target": "subfield:statistical-physics",
+      "relation": "formalizes",
+      "confidence": 0.89,
+      "evidence": [
+        {
+          "citation": "David Chandler, 'Introduction to Modern Statistical Mechanics' (Oxford University Press, 1987), Chapter 1, p. 5",
+          "claim_anchor": "Statistical mechanics rests on probability theory — the macroscopic laws of thermodynamics are derived from a probabilistic description of microscopic states",
+          "url": "https://encyclopediaofmath.org/wiki/Statistical_mechanics"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Statistical physics' (EMS, Springer)",
+          "claim_anchor": "Statistical physics employs probability theory to describe the collective behaviour of large numbers of particles, providing formal mathematical machinery for deriving thermodynamic quantities",
+          "url": "https://encyclopediaofmath.org/wiki/Statistical_physics"
+        }
+      ],
+      "disputed": false,
+      "note": "Statistical mechanics (the core of statistical physics) is explicitly built on probability measures over phase space (Boltzmann, Gibbs ensembles). The Kolmogorov axiomatization provides the formal basis. Stochastic processes (Brownian motion, Langevin dynamics) further embed probability theory in the field.",
+      "rationale": "Probability theory provides the formal mathematical framework — probability measures over phase space, ergodic theory, stochastic processes — through which statistical physics derives macroscopic thermodynamic behaviour from microscopic probabilistic descriptions.",
+      "uncertainty": "Statistical physics also involves significant physical intuition and approximation schemes (mean-field, renormalization group) that outrun the formal content of probability theory per se; the claim is strongest for equilibrium statistical mechanics and weakest for out-of-equilibrium and renormalization-group methods.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A8",
+      "source": "subfield:partial-differential-equations",
+      "target": "subfield:fluid-dynamics",
+      "relation": "formalizes",
+      "confidence": 0.96,
+      "evidence": [
+        {
+          "citation": "Landau & Lifshitz, 'Fluid Mechanics' (Course of Theoretical Physics, Vol. 6, Pergamon, 1987), §1",
+          "claim_anchor": "The equations of motion of a fluid are partial differential equations — the Euler equations (for an ideal fluid) and the Navier–Stokes equations (for a viscous fluid)",
+          "url": "https://encyclopediaofmath.org/wiki/Fluid_dynamics"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Navier–Stokes equations' (EMS, Springer)",
+          "claim_anchor": "The Navier–Stokes equations are a system of partial differential equations that formally describe the motion of viscous fluid substances",
+          "url": "https://encyclopediaofmath.org/wiki/Navier-Stokes_equations"
+        }
+      ],
+      "disputed": false,
+      "note": "This is the strongest cross-continent formalizes candidate: the governing equations of fluid dynamics (Euler, Navier–Stokes) are by construction PDEs; fluid dynamics without its PDE formulation is purely qualitative. The claim-stating sources are the standard textbooks of fluid mechanics themselves.",
+      "rationale": "Partial differential equations are the direct formal apparatus of fluid dynamics: the Euler and Navier–Stokes equations are PDEs that constitute the rigorous mathematical description of fluid motion, making PDEs the definitive formal framing of the entire field.",
+      "uncertainty": "Fluid dynamics also employs dimensional analysis, experimental methods, and large-scale computation that are not reducible to PDE theory; also the mathematical theory of PDEs (existence/uniqueness of Navier–Stokes solutions) remains open (Millennium Prize), but this does not undermine the claim that PDEs are the formal language of fluid dynamics.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A9",
+      "source": "subfield:control-theory",
+      "target": "subfield:robotics",
+      "relation": "formalizes",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "citation": "Bruno Siciliano et al., 'Robotics: Modelling, Planning and Control' (Springer, 2009), Chapter 1, p. 1",
+          "claim_anchor": "Control theory provides the formal mathematical framework for robot motion planning and feedback control, including trajectory planning and stability analysis",
+          "url": "https://encyclopediaofmath.org/wiki/Control_theory"
+        },
+        {
+          "citation": "Mark Spong, Seth Hutchinson & M. Vidyasagar, 'Robot Modeling and Control' (Wiley, 2006), Chapter 1",
+          "claim_anchor": "The mathematical foundations of robot control are provided by control theory — Lyapunov stability, feedback linearization, and optimal control form the formal basis of robot motion control",
+          "url": "https://plato.stanford.edu/entries/feedback-mechanisims/"
+        }
+      ],
+      "disputed": false,
+      "note": "Control theory (Lyapunov stability, PID control, optimal control, feedback linearization) provides the formal mathematical core of robot motion and feedback control. Robotics as an engineering field extends well beyond control theory (perception, planning, HRI), so the formalization is significant but partial.",
+      "rationale": "Control theory — Lyapunov stability analysis, feedback linearization, optimal control, model predictive control — provides the formal mathematical apparatus through which robot motion and feedback control are rigorously specified and designed.",
+      "uncertainty": "Robotics is a broad engineering field encompassing perception, path planning, human-robot interaction, and hardware design, not all of which are formalized by control theory; the 'formalizes' claim applies most clearly to the motion-control and feedback-control subdomains of robotics, and a claim-stating source at the level of the whole field may be too strong.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A10",
+      "source": "subfield:control-theory",
+      "target": "field:electrical-engineering",
+      "relation": "formalizes",
+      "confidence": 0.80,
+      "evidence": [
+        {
+          "citation": "Katsuhiko Ogata, 'Modern Control Engineering' (5th ed., Prentice Hall, 2010), Chapter 1, p. 1",
+          "claim_anchor": "Control engineering is an important part of electrical engineering … control theory provides the formal mathematical framework for the analysis and design of feedback control systems",
+          "url": "https://encyclopediaofmath.org/wiki/Control_theory"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Control theory' (EMS, Springer)",
+          "claim_anchor": "Control theory is the mathematical theory of controlled dynamical systems … it provides the formal basis for the design of control systems in engineering",
+          "url": "https://encyclopediaofmath.org/wiki/Control_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "Control theory is most tightly coupled to the control-systems subdomain of electrical engineering (signal flow graphs, transfer functions, state-space models, stability criteria). Electrical engineering as a whole is a very broad field; the formalization is strongest at the control-systems and signal-processing level, weaker at circuit theory, power systems, and electromagnetics.",
+      "rationale": "Control theory provides the formal mathematical framework — transfer functions, state-space representations, Laplace transforms, stability criteria (Nyquist, Routh–Hurwitz) — through which feedback control systems in electrical engineering are rigorously specified and analyzed.",
+      "uncertainty": "Electrical engineering is extremely broad (electromagnetics, power, devices, signal processing, communications, control) and control theory formalizes only the control-systems portion; a claim that control theory formalizes electrical engineering as a whole is an overgeneralization; a claim-stating source at field level (rather than at the control-systems subfield level) may not exist.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "A11",
+      "source": "subfield:mathematical-logic",
+      "target": "subfield:theoretical-computer-science",
+      "relation": "formalizes",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Philosophy of Computer Science' (Turner & Eden, 2007, rev. 2021), §3",
+          "claim_anchor": "Mathematical logic — particularly computability theory and formal language theory — provides the formal foundations of theoretical computer science",
+          "url": "https://plato.stanford.edu/entries/computer-science/"
+        },
+        {
+          "citation": "Michael Sipser, 'Introduction to the Theory of Computation' (3rd ed., Cengage, 2013), Preface, p. 1",
+          "claim_anchor": "The theory of computation uses mathematical logic and formal languages as its formal apparatus; computability and complexity theory are branches of mathematical logic applied to the study of computation",
+          "url": "https://encyclopediaofmath.org/wiki/Computational_complexity_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "Theoretical computer science historically emerged from mathematical logic (Turing, Church, Kleene). Turing machines, lambda calculus, first-order theories of computation, and formal language theory are all directly logic-derived formal frameworks. TCS is essentially a branch of applied mathematical logic in its foundational core.",
+      "rationale": "Mathematical logic — Turing machines, lambda calculus, formal language theory, computability and decidability — provides the formal mathematical apparatus that constitutes and formalizes the core of theoretical computer science.",
+      "uncertainty": "TCS now includes many areas (graph algorithms, computational geometry, information-theoretic complexity) that draw on combinatorics and algebra rather than mathematical logic per se; the formalizes claim is strongest for the computability/complexity/formal-languages core and weaker for combinatorial TCS.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A12",
+      "source": "subfield:mathematical-logic",
+      "target": "subfield:programming-languages",
+      "relation": "formalizes",
+      "confidence": 0.86,
+      "evidence": [
+        {
+          "citation": "Benjamin Pierce, 'Types and Programming Languages' (MIT Press, 2002), Preface, p. xi",
+          "claim_anchor": "The study of type systems draws heavily on ideas from mathematical logic … the Curry–Howard correspondence establishes a deep formal connection between programs and proofs",
+          "url": "https://plato.stanford.edu/entries/type-theory/"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Type Theory' (Coquand, 2022), §1",
+          "claim_anchor": "Type theory, rooted in mathematical logic, provides the formal semantic framework for programming languages and the formal basis of program verification",
+          "url": "https://plato.stanford.edu/entries/type-theory/"
+        }
+      ],
+      "disputed": false,
+      "note": "The Curry–Howard correspondence, type theory, operational semantics, denotational semantics, and Hoare logic are all logic-derived formal frameworks that have been adopted as the foundational formal apparatus for programming language theory. This is a well-documented formalization relationship in the PL theory literature.",
+      "rationale": "Mathematical logic — type theory (Curry–Howard), denotational semantics, operational semantics, Hoare logic — provides the formal framework through which programming language semantics, correctness, and verification are rigorously stated and studied.",
+      "uncertainty": "Programming languages as a subfield also has engineering aspects (compiler design, implementation) and empirical/HCI aspects (language usability) that are not formalized by mathematical logic; the formalization applies to programming language theory and formal semantics, not necessarily to the whole subfield.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A13",
+      "source": "subfield:category-theory",
+      "target": "subfield:programming-languages",
+      "relation": "formalizes",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "citation": "Eugenio Moggi, 'Notions of Computation and Monads', Information and Computation 93(1): 55–92, 1991",
+          "claim_anchor": "Category theory provides the formal framework for denotational semantics of programming languages; monads formalize computational effects",
+          "url": "https://ncatlab.org/nlab/show/monad+%28in+computer+science%29"
+        },
+        {
+          "citation": "nLab, 'categorical semantics' (accessed 2026)",
+          "claim_anchor": "Categorical semantics provides a formal account of the meaning of programs and type theories using the machinery of category theory, including cartesian closed categories as models of the lambda calculus",
+          "url": "https://ncatlab.org/nlab/show/categorical+semantics"
+        }
+      ],
+      "disputed": false,
+      "note": "Category theory provides the formal semantics of functional programming languages (Haskell monads, cartesian closed categories as lambda-calculus models) and typed lambda calculi. This is a well-established but somewhat specialist connection — it formalizes the functional/type-theoretic corner of programming languages (Haskell, ML, Agda) more than imperative or scripting languages.",
+      "rationale": "Category theory — cartesian closed categories, monads, fibrations, dependent type theory — provides the formal semantic framework for typed functional programming languages and their metatheory (Curry–Howard–Lambek correspondence).",
+      "uncertainty": "The formalization via category theory applies to typed functional and logic-programming languages; it does not have equal penetration in imperative, object-oriented, or dynamic language semantics; the claim 'formalizes programming languages' at subfield level may overstate the coverage.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "A14",
+      "source": "subfield:linear-algebra",
+      "target": "subfield:quantum-information-science",
+      "relation": "formalizes",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "citation": "Michael Nielsen & Isaac Chuang, 'Quantum Computation and Quantum Information' (Cambridge University Press, 2000), Chapter 2, p. 60",
+          "claim_anchor": "The mathematical framework of quantum mechanics — and quantum information — is provided by linear algebra over the complex numbers; quantum states are vectors in a Hilbert space, and operations are linear operators",
+          "url": "https://encyclopediaofmath.org/wiki/Quantum_information"
+        },
+        {
+          "citation": "John Preskill, 'Lecture Notes for Physics 219/Computer Science 219: Quantum Computation' (Caltech, 2021), Chapter 2",
+          "claim_anchor": "The postulates of quantum mechanics can be stated entirely in the language of linear algebra: state vectors in Hilbert space, unitary evolution, and projective measurement are all linear-algebraic concepts",
+          "url": "https://www.theory.caltech.edu/~preskill/ph219/chap2_13.pdf"
+        }
+      ],
+      "disputed": false,
+      "note": "Quantum information science is essentially applied linear algebra over complex Hilbert spaces — qubits are vectors, quantum gates are unitary matrices, measurements are projectors. The Nielsen & Chuang textbook explicitly develops the linear-algebraic foundations as the formal basis of the field in Chapter 2. This is a strong and well-sourced formalization claim.",
+      "rationale": "Linear algebra — Hilbert spaces, unitary operators, tensor products, density matrices — provides the complete formal mathematical framework in which quantum information science is defined, making it the definitive formal framing of the field.",
+      "uncertainty": "Quantum information science also draws on probability theory (measurement statistics), information theory (quantum entropy), and group theory (quantum error correction) beyond linear algebra proper; the claim is accurate as the primary formal language but not that linear algebra is the sole formal apparatus.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A15",
+      "source": "field:statistics",
+      "target": "subfield:econometrics",
+      "relation": "formalizes",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "citation": "Greene, William H., 'Econometric Analysis' (8th ed., Pearson, 2018), Chapter 1, p. 1",
+          "claim_anchor": "Econometrics is the application of statistical methods to economic data … the formal apparatus of econometrics is drawn from mathematical statistics",
+          "url": "https://encyclopediaofmath.org/wiki/Econometrics"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Econometrics' (EMS, Springer)",
+          "claim_anchor": "Econometrics uses statistical theory and methods to provide formal mathematical analysis of economic data and relationships",
+          "url": "https://encyclopediaofmath.org/wiki/Econometrics"
+        }
+      ],
+      "disputed": false,
+      "note": "Econometrics is definitionally the application of statistical (and mathematical-statistical) methods to economic questions — the relationship is close to definitional/tautological. This is the near-tautological case flagged in the scoping document. The information content of the edge is lower than typical cross-continent formalizes edges. It should be recorded but the QC should note the near-definitional character.",
+      "rationale": "Statistics provides the formal inferential apparatus — regression, hypothesis testing, estimation theory, time-series analysis — that constitutes econometrics as a discipline; econometrics is by definition the application of statistical methods to economic data.",
+      "uncertainty": "The relationship is near-tautological (econometrics is defined as statistical methods applied to economics), which reduces the information content of this edge; also, econometrics draws on probability theory and mathematical statistics more specifically than on 'statistics' as a broad field, so the edge-source may be too coarse.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "A16",
+      "source": "subfield:dynamical-systems",
+      "target": "subfield:ecology",
+      "relation": "formalizes",
+      "confidence": 0.82,
+      "evidence": [
+        {
+          "citation": "Simon Levin et al., 'Mathematical and Computational Challenges in Population Biology and Ecosystems Science', Science 275(5298): 334–343, 1997",
+          "claim_anchor": "Dynamical systems theory provides the formal mathematical framework for population dynamics in ecology, including the Lotka–Volterra equations and their generalizations",
+          "url": "https://encyclopediaofmath.org/wiki/Lotka-Volterra_equations"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Lotka–Volterra equations' (EMS, Springer)",
+          "claim_anchor": "The Lotka–Volterra equations are a dynamical-systems model that formalizes predator–prey interaction in ecology",
+          "url": "https://encyclopediaofmath.org/wiki/Lotka-Volterra_equations"
+        }
+      ],
+      "disputed": false,
+      "note": "Lotka–Volterra equations, chemostat models, metapopulation dynamics, and stage-structured population models are all dynamical systems formalizing ecological processes. This is a real and substantive formalization. Ecology is large and empirical; dynamical systems formalize its theoretical/mathematical-ecology core.",
+      "rationale": "Dynamical systems theory — Lotka–Volterra equations, bifurcation analysis, chaos in population dynamics — provides the formal mathematical framework for theoretical ecology, formalizing population dynamics, species interactions, and ecosystem stability.",
+      "uncertainty": "Ecology is a largely empirical science; dynamical systems formalize mathematical/theoretical ecology but much of ecology (field ecology, community ecology, conservation biology) proceeds without dynamical systems as formal apparatus; the formalizes claim is scoped to mathematical ecology.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A17",
+      "source": "subfield:probability-theory",
+      "target": "subfield:financial-economics",
+      "relation": "formalizes",
+      "confidence": 0.87,
+      "evidence": [
+        {
+          "citation": "John Hull, 'Options, Futures, and Other Derivatives' (10th ed., Pearson, 2018), Chapter 13 (Black–Scholes Model)",
+          "claim_anchor": "Probability theory and stochastic calculus — particularly Brownian motion and Ito's lemma — provide the formal mathematical basis for derivative pricing in financial economics",
+          "url": "https://encyclopediaofmath.org/wiki/Black-Scholes_formula"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Mathematical finance' (EMS, Springer)",
+          "claim_anchor": "Mathematical finance (financial economics) is based on probability theory and stochastic processes, which provide the formal mathematical framework for asset pricing and risk management",
+          "url": "https://encyclopediaofmath.org/wiki/Mathematical_finance"
+        }
+      ],
+      "disputed": false,
+      "note": "Stochastic calculus (Itô calculus), martingale pricing, risk-neutral measures, and the Black–Scholes–Merton model are all probability-theoretic formal frameworks adopted by financial economics. This is one of the strongest cross-continent formalizes examples in the social-science domain.",
+      "rationale": "Probability theory — stochastic processes, Itô calculus, martingale theory, risk-neutral pricing — provides the formal mathematical framework for asset pricing, portfolio theory, and risk management in financial economics.",
+      "uncertainty": "Financial economics also includes behavioural and institutional approaches that are not formalized by probability theory; the formalization applies most strongly to mathematical finance / quantitative finance, which is a subfield of financial economics.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A18",
+      "source": "field:statistics",
+      "target": "subfield:machine-learning",
+      "relation": "formalizes",
+      "confidence": 0.82,
+      "evidence": [
+        {
+          "citation": "Vladimir Vapnik, 'The Nature of Statistical Learning Theory' (2nd ed., Springer, 2000), Chapter 1, p. 1",
+          "claim_anchor": "Statistical learning theory provides the formal framework for machine learning, defining the conditions under which learning from data is possible and characterizing the generalization error",
+          "url": "https://encyclopediaofmath.org/wiki/Statistical_learning"
+        },
+        {
+          "citation": "Christopher Bishop, 'Pattern Recognition and Machine Learning' (Springer, 2006), Preface, p. v",
+          "claim_anchor": "Machine learning draws on statistics for its formal foundation … probability theory and statistical inference underpin the formal treatment of learning algorithms",
+          "url": "https://plato.stanford.edu/entries/statistics/"
+        }
+      ],
+      "disputed": true,
+      "note": "Deliberately surface-contested (scoping note A18): Leo Breiman's 'Statistical Modeling: The Two Cultures' (2001) distinguishes algorithmic/ML culture from data-modeling/statistics culture, arguing they are distinct. Many ML practitioners regard ML as having outgrown its statistical formalization (deep learning as 'alchemy' debates). The statistical learning theory / VC-dimension framework does provide a formal foundation, but its adequacy for modern deep learning is contested. The disputed flag is honest here.",
+      "rationale": "Statistical learning theory (VC dimension, PAC learning, bias-variance tradeoff) provides the formal mathematical framework for machine learning generalization, connecting ML practice to formal probability-theoretic guarantees.",
+      "uncertainty": "The Breiman 'two cultures' critique and the limited formal reach of statistical learning theory into modern deep learning (where informal engineering heuristics dominate) mean the formalizes claim is contested; a claim-stating source asserting statistics formalizes machine learning as a whole may be available, but the claim is genuinely disputed in the field.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A19",
+      "source": "subfield:differential-equations",
+      "target": "field:mechanical-engineering",
+      "relation": "formalizes",
+      "confidence": 0.78,
+      "evidence": [
+        {
+          "citation": "Meriam & Kraige, 'Engineering Mechanics: Dynamics' (8th ed., Wiley, 2016), Chapter 1",
+          "claim_anchor": "The equations of motion in mechanical engineering are differential equations — Newton's second law expressed as an ODE formalizes the dynamics of mechanical systems",
+          "url": "https://encyclopediaofmath.org/wiki/Differential_equation"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Differential equation' (EMS, Springer)",
+          "claim_anchor": "Differential equations are the principal mathematical tool for modelling and formally describing dynamical systems in physics and engineering",
+          "url": "https://encyclopediaofmath.org/wiki/Differential_equation"
+        }
+      ],
+      "disputed": false,
+      "note": "Differential equations (ODEs and PDEs) formalize dynamics, vibrations, heat transfer, and fluid flow in mechanical engineering. However, mechanical engineering is extremely broad (manufacturing, materials, thermodynamics, design) and differential equations are not the sole formal apparatus (statics uses linear algebra, materials use constitutive equations). The 'formalizes mechanical engineering' claim at field level is broader than the 'formalizes dynamics' claim and risks overgeneralization — NEI risk flagged.",
+      "rationale": "Differential equations — Newton's second law as ODEs, heat equation, vibration equations — provide the formal mathematical language for the dynamics, heat transfer, and vibration analysis that are central to mechanical engineering.",
+      "uncertainty": "Mechanical engineering is a broad applied field; differential equations formalize its dynamics/vibrations/heat-transfer subdomains but not statics (linear algebra), materials science (constitutive models, continuum mechanics), or design/manufacturing; a claim-stating source framing the whole field relationship may be hard to find and the QC should apply NEI-abstain if none survives live-fetch.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B1",
+      "source": "subfield:optimization",
+      "target": "subfield:operations-research",
+      "relation": "formalizes",
+      "confidence": 0.90,
+      "evidence": [
+        {
+          "citation": "Frederick Hillier & Gerald Lieberman, 'Introduction to Operations Research' (10th ed., McGraw-Hill, 2015), Chapter 1, p. 3",
+          "claim_anchor": "Operations research relies on mathematical optimization as its core formal apparatus — linear programming, integer programming, and nonlinear optimization provide the formal methods for OR decision problems",
+          "url": "https://encyclopediaofmath.org/wiki/Operations_research"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Operations research' (EMS, Springer)",
+          "claim_anchor": "Mathematical optimization (mathematical programming) is the formal mathematical core of operations research",
+          "url": "https://encyclopediaofmath.org/wiki/Operations_research"
+        }
+      ],
+      "disputed": false,
+      "note": "Mathematical optimization (linear programming, integer programming, combinatorial optimization, dynamic programming) is the central formal apparatus of operations research. The relationship is close to definitional — OR is largely defined by applying optimization to decision problems. Stochastic OR also draws on probability theory, but optimization is the primary formal core.",
+      "rationale": "Mathematical optimization — linear programming, integer programming, dynamic programming, combinatorial optimization — provides the formal mathematical apparatus that constitutes the core of operations research as a discipline.",
+      "uncertainty": "Operations research also incorporates simulation, queuing theory (probability), and decision analysis; calling optimization alone the formal framing of the whole field is slightly reductive; but optimization is by far the dominant formal apparatus and the claim is standard in OR textbooks.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "B2",
+      "source": "subfield:probability-theory",
+      "target": "method:bayesian-inference",
+      "relation": "formalizes",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "citation": "Andrew Gelman et al., 'Bayesian Data Analysis' (3rd ed., CRC Press, 2013), Chapter 1, p. 3",
+          "claim_anchor": "Bayesian inference is the formal application of Bayes' theorem within probability theory — the prior, likelihood, and posterior are all probability distributions, and the formal basis is Kolmogorov's axioms",
+          "url": "https://plato.stanford.edu/entries/bayes-theorem/"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Bayes' Theorem' (Hajek & Joyce, 2019), §1",
+          "claim_anchor": "Bayes' theorem is a theorem of probability theory … Bayesian inference is the application of this theorem to update degrees of belief, expressed formally as probability distributions",
+          "url": "https://plato.stanford.edu/entries/bayes-theorem/"
+        }
+      ],
+      "disputed": false,
+      "note": "Bayesian inference is defined formally in terms of probability theory — prior distributions, likelihood functions, posterior distributions, and Bayes' theorem are all probability-theoretic objects. This is a concept-internal formalization: probability theory does not merely inform Bayesian inference but constitutes its formal definition.",
+      "rationale": "Probability theory — Bayes' theorem, prior and posterior distributions, conditional probability under Kolmogorov's axioms — provides the complete formal definition of Bayesian inference, which is entirely expressed as probability-theoretic operations.",
+      "uncertainty": "Bayesian inference is in a sense constituted by probability theory rather than formalized by it from outside; the formalizes direction is appropriate (probability theory is the formal apparatus, Bayesian inference is the application/method) but the relationship is so tight it borders on definitional; also, subjective probability interpretations (de Finetti) complicate the picture.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "B3",
+      "source": "subfield:probability-theory",
+      "target": "subfield:information-theory",
+      "relation": "formalizes",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "citation": "Thomas Cover & Joy Thomas, 'Elements of Information Theory' (2nd ed., Wiley, 2006), Chapter 2, p. 13",
+          "claim_anchor": "Entropy is defined as the expected value of log-probability … information-theoretic quantities (entropy, mutual information, channel capacity) are all formally defined as functionals of probability distributions",
+          "url": "https://encyclopediaofmath.org/wiki/Information_theory"
+        },
+        {
+          "citation": "Shannon, Claude E., 'A Mathematical Theory of Communication', Bell System Technical Journal 27(3): 379–423, 1948, §1",
+          "claim_anchor": "The measure of information — entropy — is formally defined using probability theory … information theory is built on the probabilistic framework",
+          "url": "https://people.math.harvard.edu/~ctm/home/text/others/shannon/entropy/entropy.pdf"
+        }
+      ],
+      "disputed": false,
+      "note": "All fundamental information-theoretic quantities (Shannon entropy, mutual information, KL divergence, channel capacity) are formally defined as functionals of probability distributions. The relationship is slightly different from the cross-continent cases — probability theory and information theory both emerged from Shannon's work and are deeply intertwined rather than hierarchically related. The formalizes direction is defensible but the relationship is partially co-constitutive.",
+      "rationale": "Information-theoretic quantities — Shannon entropy, mutual information, KL divergence, channel capacity — are all formally defined as functionals of probability distributions, making probability theory the direct formal foundation of information theory.",
+      "uncertainty": "Information theory and probability theory co-emerged through Shannon's work and are deeply intertwined; one could argue information theory is a subfield of probability theory (part_of) rather than something probability theory formalizes; also the 'claim-stating source' standard requires a source that explicitly frames the relationship as probability theory formalizing information theory rather than just showing the mathematical connection.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C1",
+      "source": "field:mathematics",
+      "target": "field:economics",
+      "relation": "formalizes",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "citation": "Gerard Debreu, 'Theory of Value: An Axiomatic Analysis of Economic Equilibrium' (Yale University Press, 1959), Preface, p. viii",
+          "claim_anchor": "The mathematical treatment of economics … provides a formal mathematical theory of economic equilibrium, achieving a standard of formal rigour comparable to that of mathematics",
+          "url": "https://encyclopediaofmath.org/wiki/Mathematical_economics"
+        },
+        {
+          "citation": "Mark Blaug, 'The Formalist Revolution of the 1950s', Journal of the History of Economic Thought 25(2): 145–156, 2003",
+          "claim_anchor": "The postwar formalist revolution in economics substituted mathematical rigour for economic insight … the mathematization of economic theory was a real and significant intellectual development but its benefits have been questioned",
+          "url": "https://doi.org/10.1017/S1042771600003574"
+        }
+      ],
+      "disputed": true,
+      "note": "This is the deliberately-disputed probe (Bucket C). Both sides are sourced: (1) mainstream view — mathematics formalizes economics (Debreu's axiomatic general equilibrium theory; Arrow, Samuelson); (2) heterodox critique — the 'formalist revolution' is epistemically dubious, mathematization is not formalization but disguise (Blaug 2003; Tony Lawson's 'Reorienting Economics' 2003; post-Keynesian critiques). The tension is real and should be tension-preserved, not resolved by this generator.",
+      "rationale": "Mathematics provides the formal apparatus — optimization, fixed-point theorems, linear algebra, game theory — through which modern economic theory is expressed, constituting the mathematization of economics since the 1950s Debreu-Arrow era.",
+      "uncertainty": "The 'formalist revolution' critique (Blaug 2003, Lawson) argues that mathematical formalization in economics has imposed inappropriate formal structure on an inherently social object, and that much mathematical economics is empty formalism that obscures rather than clarifies; the claim that mathematics genuinely formalizes economics (vs. merely dresses it in formal clothes) is genuinely disputed among economists and methodologists.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C2",
+      "source": "subfield:game-theory",
+      "target": "field:sociology",
+      "relation": "formalizes",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "citation": "James Coleman, 'Foundations of Social Theory' (Harvard University Press, 1990), Chapter 1",
+          "claim_anchor": "Rational choice theory and game theory provide formal mathematical models of social interaction, constituting the formal apparatus of sociological theory in the rational-choice program",
+          "url": "https://plato.stanford.edu/entries/social-choice/"
+        },
+        {
+          "citation": "Mark Granovetter, 'Economic Action and Social Structure: The Problem of Embeddedness', American Journal of Sociology 91(3): 481–510, 1985",
+          "claim_anchor": "The rational-choice and game-theoretic program in sociology is an inadequate formal framework for social action because it ignores social structure and embeddedness",
+          "url": "https://doi.org/10.1086/228311"
+        }
+      ],
+      "disputed": true,
+      "note": "Deliberately-disputed probe (Bucket C). The rational-choice/game-theoretic program in sociology (Coleman, Elster, Hechter) is a real but contested formalization attempt. Against it: structural sociology (Granovetter's embeddedness), symbolic interactionism, feminist sociology, and cultural sociology all reject rational-choice models as an adequate formal framing of the social. The penetration of game theory into sociology is far lower than into economics. Both sides sourced — tension should be preserved.",
+      "rationale": "Rational-choice sociology and game-theoretic models of social interaction (Coleman, Elster) constitute a genuine program of formalizing sociological phenomena with game-theoretic apparatus.",
+      "uncertainty": "Game theory formalizes only the rational-choice program within sociology, which is a minority position in a field where structural, interpretive, and cultural approaches dominate; the claim that game theory formalizes sociology as a field is strongly contested by most sociologists; a claim-stating source asserting game theory formalizes sociology at field level (not program level) may not exist.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C3",
+      "source": "subfield:linear-algebra",
+      "target": "subfield:machine-learning",
+      "relation": "formalizes",
+      "confidence": 0.38,
+      "evidence": [
+        {
+          "citation": "Goodfellow, Bengio & Courville, 'Deep Learning' (MIT Press, 2016), Chapter 2 (Linear Algebra)",
+          "claim_anchor": "Linear algebra is a fundamental mathematical prerequisite for understanding machine learning … matrix operations and vector spaces are the computational substrate of neural networks",
+          "url": "https://www.deeplearningbook.org/contents/linear_algebra.html"
+        }
+      ],
+      "disputed": false,
+      "note": "This is the designed NEI probe (Bucket C, C3). The scoping document explicitly expects this to fail: 'linear algebra is a *computational tool* used in ML, not a formal *framing* of the field'. The Goodfellow evidence hint calls linear algebra a prerequisite and substrate — *not* a formal framing. No source is expected to say 'linear algebra formalizes machine learning'. The evidence hint supports at most prerequisite_for or enables, not formalizes. QC should NEI-abstain here.",
+      "rationale": "Linear algebra provides the computational substrate of machine learning (matrix operations, eigendecomposition, SVD) but does not constitute the formal framing of the field — it is a tool used within ML, not an apparatus that provides ML's formal conceptual structure.",
+      "uncertainty": "The formalizes direction is very likely not supportable by a claim-stating source — linear algebra is a prerequisite/computational tool for ML but the field's formal framing (to the extent it exists) comes from statistical learning theory (A18, statistics→ML); the appropriate relation may be prerequisite_for or enables rather than formalizes; this candidate is a designed NEI probe and the QC should apply NEI-abstain.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C4",
+      "source": "subfield:set-theory",
+      "target": "field:computer-science",
+      "relation": "formalizes",
+      "confidence": 0.42,
+      "evidence": [
+        {
+          "citation": "Encyclopedia of Mathematics, 'Set theory' (EMS, Springer)",
+          "claim_anchor": "Set theory is the foundation of mathematics and underlies computer science through its role as the formal basis of discrete mathematics and formal language theory",
+          "url": "https://encyclopediaofmath.org/wiki/Set_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "Designed NEI probe (Bucket C, C4). The scoping document notes: 'Set theory underlies CS broadly but no source frames it as *the* formalization of CS at field level; generic-foundation objection'. Set theory provides the background ontology for CS (sets, functions, relations) but the formal apparatus of computer science is more specifically logic, automata theory, type theory, and algorithm analysis. 'Set theory formalizes computer science' at field level is a generic over-claim; QC should NEI-abstain.",
+      "rationale": "Set theory provides the background formal ontology for computer science (sets, functions, relations in data structures and formal language theory) but does not constitute the formal framing of computer science as a field.",
+      "uncertainty": "The formalizes claim at field level is very likely too generic to find a claim-stating source; set theory is one formal ingredient among many (mathematical logic, type theory, combinatorics, linear algebra) in computer science; the specific relationship between set theory and CS is better expressed as part of the foundational background, not as formalizes; QC should apply NEI-abstain if no claim-stating source survives live-fetch.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C5",
+      "source": "subfield:calculus",
+      "target": "field:economics",
+      "relation": "formalizes",
+      "confidence": 0.35,
+      "evidence": [
+        {
+          "citation": "Chiang, Alpha C., 'Fundamental Methods of Mathematical Economics' (4th ed., McGraw-Hill, 2005), Part II",
+          "claim_anchor": "Calculus is applied extensively in economics for marginal analysis — derivatives and optimization are used to formalize equilibrium conditions and utility maximization",
+          "url": "https://encyclopediaofmath.org/wiki/Calculus"
+        }
+      ],
+      "disputed": false,
+      "note": "Designed NEI probe (Bucket C, C5). The scoping document: 'Calculus is a tool used in economics (marginal analysis) but \"calculus formalizes economics\" lacks a claim-stating source; the field-level framing claim is weaker than C1's.' Calculus is used as a computational tool in economics (marginal analysis, optimization), but 'formalizes' implies that calculus provides the formal conceptual structure of economics — which is a much stronger claim. The Chiang evidence hint supports at most applies_to or prerequisite_for (calculus applied to economics), not formalizes. Same-target contrast with A1 (game theory→economics: supported) and C1 (mathematics→economics: disputed): this is the weakest of the three. NEI-abstain expected.",
+      "rationale": "Calculus is used as a computational tool in economics (marginal analysis, optimization) but does not constitute the formal framing of economics as a field — it is a mathematical technique applied within economics rather than the apparatus that formalizes the field.",
+      "uncertainty": "No claim-stating source is expected to say 'calculus formalizes economics' at field level; calculus is a mathematical tool applied in economics (particularly marginal analysis and optimization), but the formal structure of economics as a discipline is more properly attributed to broader mathematical frameworks (game theory, general equilibrium theory, statistics); the appropriate relation is at most applies_to; this is the weakest candidate in the batch.",
+      "ambiguous": true
+    }
+  ]
+}
