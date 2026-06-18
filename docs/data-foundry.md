@@ -566,6 +566,35 @@ non-coverage, never silently dropped.
   (Q788926, P31 *medical specialty*) was meant. The refutation audit caught it by requiring P31 to
   be a specialty/discipline class, never a `class of disease`. Medicine QID audits must check P31
   explicitly (label match is insufficient — the order's "임상 동음이의 함정").
+- 2026-06-18 cognitive sciences (round 3, session #21 rulings): an **interdisciplinary continent**
+  with no single gate scheme anchors its discipline hierarchy on one gate (LCC subclass BF) +
+  the domain's own Wikidata P279/P527 structure (Q147638 hexagon), with UDC/MeSH/FORD as contrasts —
+  FORD's filing of the whole area under a *different* continent (psychology+cognitive science = FORD
+  5.1, a social science) does not move our independent-continent modeling. A discipline the boundary
+  table assigns to the continent but that has **no own sub-range in the gate scheme** takes field
+  rank by institutional independence (neuroscience — no BF range; Society for Neuroscience + dedicated
+  departments/degrees; the psychiatry/neurology-over-RC precedent generalized). **Absorption fires on
+  a Wikidata single-referent collision:** when two seed labels resolve to the *same* QID whose aliases
+  span both (behavioral-neuroscience = biological-psychology = biopsychology, Q846566), they are one
+  node — keep the research-area name, the teaching label becomes an alias (label rule). A course-label
+  area with a journal but **no distinct department/society/degree** absorbs into the discipline whose
+  community it shares (abnormal-psychology → clinical-psychology; the *Journal of Abnormal Psychology*
+  renaming to *Psychopathology and Clinical Science* is the merger signal). The cognitive-science
+  homonym class is **concept/process-vs-discipline** (perception/decision-making/cognition as the
+  thing studied, not the field studying it) and **object-vs-discipline** (psychological-test Q873512
+  vs psychometrics Q506132) — when no clean discipline entity exists (only a concept, a journal, or a
+  narrower sub-approach), the node stays an **honest QID-less gap** at `proposed` (sensation-and-
+  perception, computational-cognitive-science, judgment-and-decision-making) rather than anchoring on
+  the wrong referent. §13 dual-home subfields (a node filed in two continents' gate schemes — e.g.
+  educational-psychology in LCC BF *and* LB, Wikidata P279 subclass-of psychology *and* educational
+  sciences) keep `reviewed` with the second membership written as a co-equal §13 edge, not capped at
+  `proposed` (the dual home is an edge concern, not a node contest — physiology/anatomy precedent).
+- 2026-06-18 cognitive-sciences part_of edges (session #21): an **integrative subfield** that belongs
+  to no single field but to the interdisciplinary whole attaches `part_of` the **domain** directly
+  (computational-cognitive-science → domain:cognitive-sciences), the §12 part_of-depth freedom applied
+  to a shallow attachment rather than a deep one; a within-continent §13 co-equal (behavioral-neuroscience
+  → both neuroscience and psychology) is as valid as a cross-continent one (cross-listing v1 is
+  membership-count-agnostic, not continent-bounded).
 
 ## 13. Cross-listing standard (multiple `part_of` memberships)
 
