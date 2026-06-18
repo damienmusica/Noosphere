@@ -100,7 +100,19 @@ to make implementation easier.
   direction); `disputed`/NEI verdicts stop at `proposed`/foundry. Earned by
   the wave-1+wave-2 measurement (precision 1.0 at N=27, hallucination 0,
   decisions (51)/(53)). The `influenced`/`critiques` (a)-relations are NOT
-  covered — they keep their own gate.**
+  covered — they keep their own gate.**; **person/work node contract v1
+  (decision (58), 2026-06-19): the corpus admits `person`/`work` nodes only
+  for those that founded/formalized an existing `reviewed` field/concept
+  (keep-criteria — not "all famous people"); IDs `person:given-family` /
+  `work:kebab` (names live in node-translations, QID in external_ids);
+  `academic_status` omitted on persons (deceased/living carried by
+  `is_living_person`); node promotion policy v1 extended to persons
+  (QID resolver-verified + `is_living_person` live-confirmed-false →
+  auto-`reviewed`); living-person nodes still require the charter's stricter
+  evidence + CPO review (a stopping point). `founded_or_formalized` edges are
+  a NEW relation class — proposed-first with their own gate, NOT covered by
+  the (54) `formalizes` ladder. Schema unchanged (already enforced by
+  node.ts + validate-data). Full design = vault `founder-node-gate-design.md`.**
 
 ## Stack and dependencies
 
