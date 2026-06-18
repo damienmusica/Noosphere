@@ -1,0 +1,325 @@
+{
+  "batch_id": "formal-founders-v1",
+  "generated_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-19"
+  },
+  "relation_scope": ["founded_or_formalized"],
+  "nodes": [
+    {
+      "id": "person:georg-cantor",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Georg Cantor",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q93176"
+      },
+      "rationale": "Cantor originated set theory in the 1870s through his work on infinite sets and transfinite numbers, which directly founded the subfield `subfield:set-theory`.",
+      "uncertainty": "QID Q93176 is from training knowledge and has not been live-verified — QC must confirm. The exact QID is well-recalled (Cantor is a major historical figure) but QID hallucination rates are high; treat as hint only.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:andrey-kolmogorov",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Andrey Kolmogorov",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q192938"
+      },
+      "rationale": "Kolmogorov's 1933 monograph 'Grundbegriffe der Wahrscheinlichkeitsrechnung' established the modern axiomatic foundations of probability theory, which is the canonical founding act for `subfield:probability-theory`.",
+      "uncertainty": "QID Q192938 is from training knowledge — QC must live-verify. Kolmogorov is not disputed as the axiomatizer of probability, but earlier contributors (Borel, Lévy, von Mises) each have partial claims; the edge target is set-axiomatic probability, where Kolmogorov's priority is clear.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:claude-shannon",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Claude Shannon",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q9068"
+      },
+      "rationale": "Shannon's 1948 paper 'A Mathematical Theory of Communication' founded information theory as a formal discipline, which is the basis for `subfield:information-theory`.",
+      "uncertainty": "QID Q9068 is from training knowledge — QC must live-verify. Shannon's founding of information theory is uncontested; the only minor ambiguity is whether Norbert Wiener's cybernetics work (roughly contemporaneous) should also be considered a co-founding — mainstream historiography treats Shannon as the founder.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:george-boole",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "George Boole",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q167950"
+      },
+      "rationale": "Boole's 1847 'Mathematical Analysis of Logic' and 1854 'Laws of Thought' founded symbolic/Boolean logic, one of the pillars of `subfield:mathematical-logic`; proposed as co-founder with Frege.",
+      "uncertainty": "QID Q167950 is from training knowledge — QC must live-verify. Boole's role in founding mathematical logic is well-established, but 'mathematical logic' as a subfield is more often traced to Frege's predicate logic (1879) as its formal foundation; Boole's contribution is more properly propositional/algebraic logic. The co-founder framing is appropriate but QC should decide whether Boole's contribution is 'founded' or 'contributed foundationally to'.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:gottlob-frege",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Gottlob Frege",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q41135"
+      },
+      "rationale": "Frege's 1879 'Begriffsschrift' introduced predicate logic and quantification, universally recognized as founding modern mathematical logic; proposed as co-founder with Boole for `subfield:mathematical-logic`.",
+      "uncertainty": "QID Q41135 is from training knowledge — QC must live-verify. Frege's role is less ambiguous than Boole's — he is broadly credited with founding modern (predicate) mathematical logic — but 'co-founder' framing with Boole may understate Frege's primacy. The edge is `founded_or_formalized` for both, which correctly captures co-equal edges without ranking.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:alan-turing",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Alan Turing",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q7251"
+      },
+      "rationale": "Turing's 1936 paper 'On Computable Numbers' introduced the Turing machine model, which founded computability theory and is the canonical basis for `subfield:computability-theory`.",
+      "uncertainty": "QID Q7251 is from training knowledge — QC must live-verify. Turing's founding role in computability theory is not disputed; Alonzo Church's lambda calculus (also 1936) is an independent co-founding formalism (Church-Turing thesis), but Turing machines became the canonical model and Turing is standardly credited as the founder of computability theory.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:john-von-neumann",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "John von Neumann",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q46661"
+      },
+      "rationale": "Von Neumann co-founded game theory with Oskar Morgenstern via their 1944 'Theory of Games and Economic Behavior'; proposed as co-founder with Nash for `subfield:game-theory`.",
+      "uncertainty": "QID Q46661 is from training knowledge — QC must live-verify. The co-founder framing here is von Neumann + Morgenstern (1944), not von Neumann + Nash; Nash extended (non-cooperative equilibrium, 1950) rather than co-founded with von Neumann. The order's instruction to pair von Neumann and Nash as co-founders is a simplification — the actual relationship is von Neumann + Morgenstern founded cooperative game theory; Nash extended it to non-cooperative games. Both edges are correctly `founded_or_formalized` but the co-founding characterization is slightly misleading.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:john-nash",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "John Nash",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q184462"
+      },
+      "rationale": "Nash's 1950 dissertation and papers introduced Nash equilibrium for non-cooperative games, a foundational contribution to `subfield:game-theory` that extended and transformed von Neumann–Morgenstern game theory.",
+      "uncertainty": "QID Q184462 is from training knowledge — QC must live-verify. Nash's contribution is indisputably foundational; however, characterizing him as a 'co-founder' of game theory alongside von Neumann is historically contested — Nash extended von Neumann–Morgenstern's existing field rather than co-founding it at the same moment. The `founded_or_formalized` relation is broad enough to cover both founding and foundational formalization, so the edge is defensible.",
+      "ambiguous": true
+    }
+  ],
+  "edges": [
+    {
+      "candidate_id": "F1",
+      "source": "person:georg-cantor",
+      "target": "subfield:set-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.98,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Set Theory' (Incurvati, 2012, rev. 2022), §1 'The Origins of Set Theory'",
+          "claim_anchor": "Set theory was founded by Georg Cantor in the 1870s, when he developed the theory of infinite sets and transfinite numbers in his work on the uniqueness of trigonometric series representations.",
+          "url": "https://plato.stanford.edu/entries/set-theory/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'Georg Ferdinand Ludwig Philipp Cantor' (O'Connor & Robertson, 1996, updated 2004), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Cantor is the founder of set theory, one of the most influential and fundamental creations in the history of mathematics.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Cantor/"
+        }
+      ],
+      "disputed": false,
+      "note": "Cantor's founding of set theory is among the best-documented facts in the history of mathematics. His 1874 paper 'Über eine Eigenschaft des Inbegriffes aller reellen algebraischen Zahlen' is conventionally dated as the starting point; the 1870s saw the development of the Cantor-Dedekind correspondence and the theory of transfinite ordinals and cardinals. No co-founder claim applies — Dedekind contributed but is not co-credited with founding set theory.",
+      "rationale": "Cantor originated set theory in the 1870s through his work on infinite sets; this is the canonical example of a field founding and is uncontested in the scholarly literature.",
+      "uncertainty": "The claim_anchors are from training knowledge of SEP and MacTutor content — verbatim accuracy must be checked by QC against the live pages. The founding attribution itself is not in doubt.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "F2",
+      "source": "person:andrey-kolmogorov",
+      "target": "subfield:probability-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Probability Interpretations' (Hájek, 2002, rev. 2023), §3.2 'Kolmogorov's Axioms'",
+          "claim_anchor": "Kolmogorov's 1933 monograph, Grundbegriffe der Wahrscheinlichkeitsrechnung (Foundations of the Theory of Probability), provided the axiomatic foundations of probability theory that remain standard today.",
+          "url": "https://plato.stanford.edu/entries/probability-interpret/"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Probability theory' (Springer / European Mathematical Society, encyclopediaofmath.org)",
+          "claim_anchor": "The axiomatization of probability theory given by A.N. Kolmogorov in 1933 is generally regarded as the foundation of modern probability theory.",
+          "url": "https://encyclopediaofmath.org/wiki/Probability_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "Kolmogorov's 1933 'Grundbegriffe' is the canonical axiomatic foundation of modern probability theory. Earlier contributions by Borel, Lévy, and von Mises are real but none provided the clean measure-theoretic axiomatization that became the standard. The founding claim here is specifically about the modern axiomatic form of probability theory, which is Kolmogorov's contribution without co-founder ambiguity at the field level.",
+      "rationale": "Kolmogorov's 1933 axiomatic system is the basis of modern probability theory; the founding attribution is universal in probability textbooks and encyclopedia sources.",
+      "uncertainty": "Claim_anchors are from training knowledge of SEP and EoM — verbatim accuracy requires live QC check. The exact section and wording in SEP's 'Probability Interpretations' entry may differ; QC should confirm the EoM URL is stable and the quoted text is verbatim.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "F3",
+      "source": "person:claude-shannon",
+      "target": "subfield:information-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.99,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Information' (Floridi, 2005, rev. 2023), §2 'The Mathematical Theory of Communication'",
+          "claim_anchor": "Claude Shannon's 1948 paper 'A Mathematical Theory of Communication' founded information theory by introducing the concept of entropy as a measure of information and establishing the mathematical framework for analyzing communication systems.",
+          "url": "https://plato.stanford.edu/entries/information/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'Claude Elwood Shannon' (O'Connor & Robertson, 2003), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Shannon is the founder of information theory; his 1948 paper 'A Mathematical Theory of Communication' published in the Bell System Technical Journal is the founding document of the discipline.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Shannon/"
+        }
+      ],
+      "disputed": false,
+      "note": "Shannon's founding of information theory is the least contested founding claim in this batch. The 1948 paper is universally cited as the founding document. Norbert Wiener's contemporaneous cybernetics work overlaps but the information-theory community consistently credits Shannon as the field's founder.",
+      "rationale": "Shannon's 1948 'Mathematical Theory of Communication' introduced entropy, channel capacity, and coding theory — the founding framework of information theory — with no co-founder claim of comparable standing.",
+      "uncertainty": "Claim_anchor verbatim accuracy must be checked by QC. The SEP entry on 'Information' exists but the exact phrasing of Shannon's founding role as quoted here is from training knowledge and may differ from the live text.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "F4",
+      "source": "person:george-boole",
+      "target": "subfield:mathematical-logic",
+      "relation": "founded_or_formalized",
+      "confidence": 0.82,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Boolean Algebra' (Givant & Halmos, 2008, rev. 2022), Introduction",
+          "claim_anchor": "George Boole founded mathematical logic in his 1847 work 'The Mathematical Analysis of Logic', in which he showed that logical inferences could be expressed as algebraic equations.",
+          "url": "https://plato.stanford.edu/entries/boolalg-math/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'George Boole' (O'Connor & Robertson, 1998), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Boole's work on logic, particularly his 1854 'An Investigation of the Laws of Thought', was a foundational contribution to mathematical logic, applying algebraic methods to logical reasoning for the first time.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Boole/"
+        }
+      ],
+      "disputed": false,
+      "note": "Co-founder edge: Boole alongside Frege (F5). Boole's contribution is foundational for algebraic/propositional logic (Boolean algebra), which feeds into mathematical logic, but modern mathematical logic in the predicate-calculus sense is more directly founded by Frege. The edge is `founded_or_formalized` which is broad enough; the note records that Boole's founding contribution is more specifically to the algebraic/propositional tradition. Confidence 0.82 reflects that Boole's claim to founding 'mathematical logic' (as opposed to 'symbolic logic' or 'Boolean algebra') is more contested than Frege's.",
+      "rationale": "Boole's algebraic treatment of logic in 1847/1854 is the first sustained mathematical formalization of logical reasoning and is universally cited as a founding contribution to mathematical logic.",
+      "uncertainty": "The SEP entry used here ('Boolean Algebra') may not contain the exact claim_anchor quoted — QC must verify. More critically: whether Boole's work is better characterized as founding 'symbolic logic' rather than 'mathematical logic' (the subfield target) is a genuine terminological ambiguity. Frege's predicate calculus is the more central founding act for mathematical logic as currently defined.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "F5",
+      "source": "person:gottlob-frege",
+      "target": "subfield:mathematical-logic",
+      "relation": "founded_or_formalized",
+      "confidence": 0.97,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Frege's Logic, Theorem, and Foundations for Arithmetic' (Zalta, 2019, rev. 2023), §1",
+          "claim_anchor": "Frege's 1879 Begriffsschrift introduced the first complete system of predicate logic, and is universally recognized as the founding document of modern mathematical logic.",
+          "url": "https://plato.stanford.edu/entries/frege-logic/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'Friedrich Ludwig Gottlob Frege' (O'Connor & Robertson, 1999), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Frege is the founder of modern mathematical logic; his 1879 work Begriffsschrift introduced quantification and predicate logic, providing the formal language in which all subsequent mathematical logic has been conducted.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Frege/"
+        }
+      ],
+      "disputed": false,
+      "note": "Co-founder edge alongside Boole (F4), but Frege's is the stronger founding claim for 'mathematical logic' as the term is used today (predicate logic, quantification, formal proof). Boole's contribution predates Frege's but is more specifically 'algebraic logic'. Confidence 0.97.",
+      "rationale": "Frege's 1879 Begriffsschrift introduced the predicate calculus and quantification, universally identified as the foundation of modern mathematical logic in its present form.",
+      "uncertainty": "Claim_anchor verbatim accuracy requires live QC check against SEP and MacTutor. The SEP entry 'Frege's Logic, Theorem, and Foundations for Arithmetic' exists and covers this, but the exact quoted sentences are from training knowledge and may differ from the live text.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "F6",
+      "source": "person:alan-turing",
+      "target": "subfield:computability-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.97,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'The Church-Turing Thesis' (Copeland, 2002, rev. 2023), §2 'Turing's Analysis'",
+          "claim_anchor": "Turing's 1936 paper 'On Computable Numbers, with an Application to the Entscheidungsproblem' introduced the Turing machine and is the founding document of computability theory.",
+          "url": "https://plato.stanford.edu/entries/church-turing/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'Alan Mathison Turing' (O'Connor & Robertson, 2003), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Turing founded computability theory with his 1936 paper introducing the concept of the Turing machine, which defined the notion of an effectively computable function and solved the Entscheidungsproblem negatively.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Turing/"
+        }
+      ],
+      "disputed": false,
+      "note": "Alonzo Church's lambda calculus (also 1936) and Emil Post's work are independent co-formalizations of computability; the Church-Turing thesis establishes the equivalence of these formalisms. Turing machines became the canonical model. This edge is for Turing alone; an additional edge for Church could be proposed but is out of scope for this batch.",
+      "rationale": "Turing's 1936 Turing machine model is the canonical formalization of computable functions and the founding contribution to computability theory, universally credited in the literature.",
+      "uncertainty": "Claim_anchor verbatim accuracy requires live QC check. The SEP 'Church-Turing Thesis' entry (Copeland) does cover this but the exact phrasing quoted here is from training knowledge. The MacTutor entry for Turing exists and covers this material; verbatim check needed.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "F7",
+      "source": "person:john-von-neumann",
+      "target": "subfield:game-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Game Theory' (Ross, 1997, rev. 2023), §1 'History'",
+          "claim_anchor": "Game theory was founded by John von Neumann and Oskar Morgenstern with the publication of 'Theory of Games and Economic Behavior' in 1944, which provided the first systematic mathematical treatment of strategic interaction.",
+          "url": "https://plato.stanford.edu/entries/game-theory/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'John von Neumann' (O'Connor & Robertson, 2002), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Von Neumann, together with Oskar Morgenstern, founded game theory with their 1944 book 'Theory of Games and Economic Behavior', establishing the mathematical framework for analyzing strategic decision-making.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Von_Neumann/"
+        }
+      ],
+      "disputed": false,
+      "note": "Von Neumann co-founded game theory with Oskar Morgenstern (1944). Nash's later contribution (1950) extended this to non-cooperative games. The co-founder in the canonical sense is Morgenstern, not Nash — this batch proposes von Neumann (F7) and Nash (F8) as co-existing `founded_or_formalized` edges, but QC should note that the von Neumann–Nash pairing in the order's framing is a historical simplification: von Neumann + Morgenstern co-founded game theory; Nash extended it. Both edges are defensible under `founded_or_formalized` but the 'co-founder' label applied to Nash is contested.",
+      "rationale": "Von Neumann's 1944 'Theory of Games and Economic Behavior' (with Morgenstern) is universally recognized as the founding of game theory as a formal discipline.",
+      "uncertainty": "Claim_anchor verbatim accuracy requires live QC check against SEP and MacTutor. The historical simplification of pairing von Neumann with Nash rather than Morgenstern is noted in uncertainty — QC should consider whether a Morgenstern node should also be added.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "F8",
+      "source": "person:john-nash",
+      "target": "subfield:game-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Game Theory' (Ross, 1997, rev. 2023), §2 'Non-Cooperative Games'",
+          "claim_anchor": "John Nash's 1950 dissertation and subsequent papers introduced the concept of Nash equilibrium for non-cooperative games, a foundational contribution that transformed game theory and for which Nash was awarded the Nobel Prize in Economics in 1994.",
+          "url": "https://plato.stanford.edu/entries/game-theory/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'John Forbes Nash' (O'Connor & Robertson, 2015), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Nash's 1950 paper 'Equilibrium Points in N-Person Games' established the Nash equilibrium concept for non-cooperative games and is one of the most important contributions to game theory, extending the von Neumann–Morgenstern framework to a vastly wider class of strategic situations.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Nash/"
+        }
+      ],
+      "disputed": false,
+      "note": "Nash's contribution is foundational but chronologically later than the von Neumann–Morgenstern founding (1950 vs 1944). The `founded_or_formalized` relation is broad enough to cover formalization-extending contributions like Nash's. The claim here is defensible under the relation type. Confidence 0.88 reflects slight ambiguity about whether Nash 'founded' or 'fundamentally extended' game theory.",
+      "rationale": "Nash's equilibrium concept (1950) is a foundational mathematical formalization for non-cooperative game theory, universally credited as one of the field's core founding contributions.",
+      "uncertainty": "Claim_anchor verbatim accuracy requires live QC check. The MacTutor entry for Nash may be shorter or differently worded; QC should verify. The characterization of Nash as a co-founder of game theory (alongside von Neumann) is historically somewhat loose — Nash extended the field rather than founding it simultaneously. The `founded_or_formalized` relation accommodates this, but QC should record the distinction.",
+      "ambiguous": true
+    }
+  ]
+}
