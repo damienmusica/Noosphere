@@ -9262,5 +9262,116 @@
       "proposed_at": "2026-06-19"
     },
     "note": "Mathematics provides the formal framework for modern economic theory (Wikipedia Mathematical economics: \"Economics has become increasingly dependent on mathematical methods\"; \"differential calculus and differential equations, convex sets, and graph theory, were deployed to advance economic theory\"; parallel to the reviewed edge:mathematics-formalizes-physics). Tension preserved (record-not-resolve): the descriptive claim that economics IS mathematized is mainstream; the NORMATIVE \"mathematization debate\" is genuine — SEP Philosophy of Economics records Austrian skepticism \"about the value of mathematical modeling\"; the formalist-revolution critique (Blaug; Mirowski). No source refutes the descriptive claim, so supported with tension note, not disputed."
+  },
+  {
+    "id": "edge:phenomenology-influenced-existentialism",
+    "source": "subfield:phenomenology",
+    "target": "subfield:existentialism",
+    "relation": "influenced",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:iep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Husserlian phenomenology shaped existentialism — Heidegger, Sartre, and Merleau-Ponty adopted the phenomenological method (SEP Existentialism: \"Following the core maxim of phenomenology introduced by his teacher Husserl, Heidegger's philosophy…\"; IEP Existentialism: \"Sartre… first encountered phenomenology, specifically the philosophical ideas of Edmund Husserl\")."
+  },
+  {
+    "id": "edge:ancient-philosophy-influenced-medieval-philosophy",
+    "source": "subfield:ancient-philosophy",
+    "target": "subfield:medieval-philosophy",
+    "relation": "influenced",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Greek philosophy (Aristotle, Plato) shaped medieval scholasticism (SEP Medieval Philosophy: the translations \"of Aristotle… transformed the university syllabuses in the thirteenth century\"; SEP Influence of Arabic and Islamic Philosophy on the Latin West: the Parisian arts faculty \"declared all known works of Aristotle mandatory reading — a very influential move\")."
+  },
+  {
+    "id": "edge:pragmatism-influenced-philosophy-of-education",
+    "source": "subfield:pragmatism",
+    "target": "subfield:philosophy-of-education",
+    "relation": "influenced",
+    "confidence": 0.88,
+    "status": "proposed",
+    "evidence": [
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Pragmatism, through John Dewey, shaped philosophy of education (SEP Philosophy of Education: \"John Dewey's conception of democratic education has had enduring influence\"; SEP Pragmatism: \"The giant figure in philosophy of education is of course Dewey, who pioneered it as a separate sphere of study\"). Largely Dewey-mediated — a school-level influence carried by a central figure; a person/work node gate would let it be stated more precisely."
+  },
+  {
+    "id": "edge:analytic-philosophy-critiques-continental-philosophy",
+    "source": "subfield:analytic-philosophy",
+    "target": "subfield:continental-philosophy",
+    "relation": "critiques",
+    "confidence": 0.72,
+    "status": "proposed",
+    "evidence": [
+      "source:iep",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Analytic philosophy has critiqued/opposed continental philosophy, paradigmatically Carnap's critique of Heidegger (IEP Analytic Philosophy: it \"found itself opposed both to classical Phenomenology… and also 'Continental'… philosophy\"; SEP Heidegger: \"Friedman (2000) argues that this disputation was the hypocenter of the subsequent analytical/continental divide\"). Tension preserved (record-not-resolve): whether the analytic/continental divide is substantive or overstated/a caricature is itself debated — we record that the critique occurs, not a verdict on its fairness. The reverse direction (continental→analytic) is a separate edge, not yet independently sourced."
+  },
+  {
+    "id": "edge:experimental-philosophy-critiques-analytic-philosophy",
+    "source": "subfield:experimental-philosophy",
+    "target": "subfield:analytic-philosophy",
+    "relation": "critiques",
+    "confidence": 0.75,
+    "status": "proposed",
+    "evidence": [
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Experimental philosophy critiques the armchair/intuition method of traditional (analytic) philosophy (SEP Experimental Philosophy: x-phi \"challenged aspects of non-empirical philosophical methodology, prominently including the use of intuitions as evidence\"; SEP Intuition: the x-phi sources project is \"often presented as a possible means of justifying skepticism regarding some class of philosophical intuitions\"). Tension preserved: the critique's success is debated (restrictionist challenge vs intuition apologetics) and x-phi is internally divided over extending vs undermining the armchair method."
+  },
+  {
+    "id": "edge:feminist-philosophy-critiques-epistemology",
+    "source": "subfield:feminist-philosophy",
+    "target": "subfield:epistemology",
+    "relation": "critiques",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:iep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Feminist epistemology critiques mainstream/traditional epistemology — its conceptions of objectivity, knowledge, and reason as reflecting an androcentric perspective (SEP Feminist Epistemology: \"Do mainstream philosophical conceptions of objectivity, knowledge, and reason reflect an androcentric perspective?\"; IEP Feminist Epistemology: it \"takes issue with the ways in which traditional epistemological paradigms derive from cases of simple and uncontroversial empirical beliefs\"). Internal complexity recorded: postmodernist critiques of a unified feminist standpoint, and the critique-vs-extension question."
   }
 ]
