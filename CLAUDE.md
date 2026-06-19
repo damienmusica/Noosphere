@@ -110,9 +110,22 @@ to make implementation easier.
   (QID resolver-verified + `is_living_person` live-confirmed-false →
   auto-`reviewed`); living-person nodes still require the charter's stricter
   evidence + CPO review (a stopping point). `founded_or_formalized` edges are
-  a NEW relation class — proposed-first with their own gate, NOT covered by
-  the (54) `formalizes` ladder. Schema unchanged (already enforced by
-  node.ts + validate-data). Full design = vault `founder-node-gate-design.md`.**
+  a NEW relation class — initially proposed-first with their own gate (now
+  opened — see the founder-ladder item below). Schema unchanged (already
+  enforced by node.ts + validate-data). Full design = vault
+  `founder-node-gate-design.md`.**; **`founded_or_formalized` auto-`reviewed`
+  ladder (decision (60) opened, decision (61) executed session #32,
+  2026-06-19): a founder edge auto-promotes `proposed → reviewed` when both
+  endpoints are `reviewed` and the Lane B pipeline returns *supported* (≥2
+  independent claim-stating live sources + adversarial perspective-diverse QC +
+  correct person→field direction + identity referent verified);
+  `disputed`/NEI/reject stop at `proposed`/foundry. **★ Living-founder guard:**
+  `is_living_person:true` founders do NOT auto-promote — they stay at the CPO
+  stop-point (charter stricter evidence; double-enforced — a living node is not
+  auto-`reviewed` by node policy v1, so its endpoint fails clause ①). Earned by
+  the wave-1+wave-2 measurement (precision 1.0 at N=20, hallucination 0,
+  rejection fired 5×, decisions (58)/(59)); 1:1 mirror of the (54) `formalizes`
+  ladder. The `influenced`/`critiques` (a)-relations are NOT covered — own gate.**
 
 ## Stack and dependencies
 
