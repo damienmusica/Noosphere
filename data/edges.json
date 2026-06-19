@@ -9969,5 +9969,153 @@
       "proposed_at": "2026-06-19"
     },
     "note": "★ LIVING founder — admitted via CPO living-person review (session #33, decision (62)), NOT the auto-`reviewed` ladder: the living-founder guard (is_living_person:true) blocked auto-promotion and routed to CPO review; the CPO approved on clean double-grounded evidence. Seligman founded positive psychology (Wikipedia Positive psychology: \"Positive psychology began as a new domain of psychology in 1998 when Martin Seligman chose it as the theme for his term as president of the American Psychological Association\"; Wikipedia Martin Seligman: founding editor-in-chief role and APA presidency). Conservative wording: no summary, indexable:false. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:auguste-comte-influenced-emile-durkheim",
+    "source": "person:auguste-comte",
+    "target": "person:emile-durkheim",
+    "relation": "influenced",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:iep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Comte's positivism and his project of a science of society shaped Durkheim's sociological program (IEP Émile Durkheim: Comte and Spencer's \"work had a formative influence on Durkheim\"; \"Durkheim appropriated elements of Comte's positivism as well as elements of his scientific approach to studying societies\"; Wikipedia Émile Durkheim: \"A fundamental influence on Durkheim's thought was the sociological positivism of Auguste Comte\", \"Refining the positivism originally set forth by Auguste Comte\"). Tension preserved (record-not-resolve): the influence is foundational but partial — Durkheim's method \"sought to be free of the metaphysical positivism of Comte\" and he explicitly distanced himself from Comtean metaphysics; we record the influence, not an endorsement. Person-mediated (a)-edge, session #34, proposed-first (the (a)-ladder is not open). Two independent publishers (IEP + Wikipedia)."
+  },
+  {
+    "id": "edge:georg-cantor-influenced-david-hilbert",
+    "source": "person:georg-cantor",
+    "target": "person:david-hilbert",
+    "relation": "influenced",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Cantor's set theory and transfinite numbers shaped Hilbert's mathematical agenda; Hilbert championed them (Wikipedia David Hilbert: \"He adopted and defended Georg Cantor's set theory and transfinite numbers\"; Wikipedia Georg Cantor: \"David Hilbert defended it from its critics by declaring, 'No one shall expel us from the paradise that Cantor has created'\", \"The Continuum hypothesis, introduced by Cantor, was presented by David Hilbert as the first of his twenty-three open problems\"; SEP Set Theory: \"Hilbert, who listed the CH as the first problem in his celebrated list\"). Direction Cantor (1845–1918) → Hilbert (1862–1943), Hilbert championed. Person-mediated (a)-edge, session #34, proposed-first. Independent sources (Wikipedia ×2 distinct articles + SEP)."
+  },
+  {
+    "id": "edge:ronald-fisher-critiques-karl-pearson",
+    "source": "person:ronald-fisher",
+    "target": "person:karl-pearson",
+    "relation": "critiques",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Fisher critiqued Pearson's statistical methods within a long, bitter, mutual dispute (MacTutor Karl Pearson: \"Pearson had a long, bitter, and very public dispute with Fisher\"; \"Fisher ... responded with a paper which criticised examples in the Cooperative Study\"; MacTutor Ronald Fisher: \"the two had a long running dispute\", \"he did not accept Pearson's criticism, feeling that he was correct\"). The substantive critiques include the chi-squared degrees-of-freedom correction and maximum likelihood over Pearson's method of moments. Tension preserved (record-not-resolve): the dispute was mutual and Pearson initiated the 1917 criticism of Fisher; this edge records the documented Fisher→Pearson critique direction, the reverse (Pearson→Fisher) is a separate edge not asserted here. Person-mediated (a)-edge, session #34, proposed-first. Two independent MacTutor articles."
+  },
+  {
+    "id": "edge:henri-poincare-critiques-set-theory",
+    "source": "person:henri-poincare",
+    "target": "subfield:set-theory",
+    "relation": "critiques",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Poincaré was a prominent critic of Cantorian set theory and logicism on predicativist grounds (SEP Henri Poincaré: his theses \"are directed broadly against the founders of modern logic and set theory such as Cantor, Peano, Frege, Russell, Zermelo, and Hilbert\"; Wikipedia Henri Poincaré: \"He strongly opposed Cantorian set theory, objecting to its use of impredicative definitions\", \"in La logique de l'infini, Poincaré extended this criticism to Ernst Zermelo's axiomatization of set theory\"). The apocryphal \"set theory is a disease\" quote is deliberately NOT used — its authenticity is itself questioned (Gray 1991, cited in SEP), an identity-axis QC catch. Person→field (a)-edge, session #34, proposed-first. Two independent publishers (SEP + Wikipedia)."
+  },
+  {
+    "id": "edge:charles-darwin-influenced-evolutionary-psychology",
+    "source": "person:charles-darwin",
+    "target": "subfield:evolutionary-psychology",
+    "relation": "influenced",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Darwin's theory of natural selection is the foundational theoretical ancestor of evolutionary psychology, a cross-domain historical influence (Wikipedia Evolutionary psychology: \"Evolutionary psychology has its historical roots in Charles Darwin's theory of natural selection\"; Darwin \"predicted that psychology would develop an evolutionary basis\"; Wikipedia Charles Darwin: The Expression of the Emotions in Man and Animals \"was an early work of psychology\" discussing \"the evolution of human psychology\"; SEP Evolutionary Psychology: the field's mechanisms are \"adaptations—products of natural selection\"). Direction Darwin (d.1882) → the formal discipline (cohered 1990s); foundational/indirect. Person→subfield cross-domain (a)-edge, session #34, proposed-first. Independent publishers (Wikipedia ×2 + SEP)."
+  },
+  {
+    "id": "edge:evolutionary-biology-influenced-psychology",
+    "source": "subfield:evolutionary-biology",
+    "target": "field:psychology",
+    "relation": "influenced",
+    "confidence": 0.78,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Darwinian evolutionary biology shaped psychology, channeled through functionalism and comparative/evolutionary psychology (Wikipedia Psychology: James, Dewey and Carr \"advanced the idea of functionalism ... which underlined the Darwinian idea of a behavior's usefulness to the individual\"; Wikipedia History of psychology: \"The origins of comparative psychology can be traced to the work of Charles Darwin, whose theory of evolution suggested continuity between human and animal minds\"). Scope note (record-not-resolve): the influence is real but channeled through specific branches (functionalism, comparative & evolutionary psychology), not a uniform field-wide influence; the narrower person-level edge is charles-darwin→evolutionary-psychology. Cross-domain concept-level (a)-edge, session #34, proposed-first. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:information-theory-influenced-cognitive-psychology",
+    "source": "subfield:information-theory",
+    "target": "subfield:cognitive-psychology",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Shannon's information theory shaped the information-processing paradigm of cognitive psychology (Wikipedia Cognitive psychology: \"the work of Donald Broadbent, integrating concepts from human performance research and the recently developed information theory, forged the way in this area\"; Wikipedia Cognitive revolution: early cognitive scientists \"presented their work ... at a meeting of the 'Special Interest Group in Information Theory' at the Massachusetts Institute of Technology\"). Direction information-theory (1948) → cognitive psychology (1950s–60s cognitive revolution). Cross-domain concept-level (a)-edge, session #34, proposed-first. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:genetics-influenced-evolutionary-biology",
+    "source": "subfield:genetics",
+    "target": "subfield:evolutionary-biology",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Mendelian and population genetics reshaped evolutionary biology through the modern synthesis (Wikipedia Modern synthesis (20th century): \"The synthesis combined the ideas of natural selection, Mendelian genetics, and population genetics\"; this \"ended the eclipse of Darwinism and supplanted a variety of non-Darwinian theories\"; Wikipedia Gregor Mendel: \"The combination, in the 1930s and 1940s, of Mendelian genetics with Darwin's theory of natural selection resulted in the modern synthesis of evolutionary biology\"). Note (record-not-resolve): the modern synthesis is a two-way fusion; this edge records genetics as the directional active ingredient (population genetics ended the eclipse of Darwinism). Datable historical event (1920s–40s), hence `influenced` not `formalizes` (contrast the NEI'd probability→statistics constitutive probe). Cross-domain concept-level (a)-edge, session #34, proposed-first. Two independent Wikipedia articles."
   }
 ]
