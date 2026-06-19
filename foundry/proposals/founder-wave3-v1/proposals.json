@@ -1,0 +1,520 @@
+{
+  "batch_id": "founder-wave3-v1",
+  "generated_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-19"
+  },
+  "relation_scope": "founded_or_formalized (non-FS founders + living-person policy test)",
+  "nodes": [
+    {
+      "id": "person:charles-darwin",
+      "type": "person",
+      "domain": "life_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Charles Darwin",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q1035"
+      },
+      "rationale": "Darwin's 'On the Origin of Species' (1859) proposed natural selection as the mechanism of evolution, founding evolutionary biology as a scientific discipline; he is universally credited as the founder or primary founder of evolutionary biology.",
+      "uncertainty": "QID Q1035 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570 (P570 present confirms deceased). QID hallucination rate is high (~66–93% per prior waves); treat as hint only. Darwin's founding of evolutionary biology is very clean and uncontested; the only nuance is that Alfred Russel Wallace co-developed natural selection independently, but Wallace is not typically co-credited as a founder of the field.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:gregor-mendel",
+      "type": "person",
+      "domain": "life_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Gregor Mendel",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q36648"
+      },
+      "rationale": "Mendel's 1866 paper on pea plant inheritance established the laws of segregation and independent assortment, providing the foundational framework of genetics; he is universally called 'the father of genetics'.",
+      "uncertainty": "QID Q36648 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. Mendel's work was rediscovered in 1900 by de Vries, Correns, and Tschermak; some historians frame the true founding of genetics as occurring in 1900 rather than 1866. However the standard attribution is Mendel as founder, with 1866 as the original work. QID may be wrong.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:louis-pasteur",
+      "type": "person",
+      "domain": "life_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Louis Pasteur",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q48268"
+      },
+      "rationale": "Pasteur's work on germ theory, fermentation, and sterilization in the 1850s–1880s co-founded microbiology alongside Robert Koch; he is credited with establishing that microorganisms cause disease (germ theory) and with developing pasteurization.",
+      "uncertainty": "QID Q48268 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. Founding is plural: Pasteur and Robert Koch are co-founders (Koch not in this batch — record-not-resolve). Some historians weight Koch's contribution (Koch's postulates, specific pathogen identification) more heavily for 'microbiology' as distinct from 'germ theory'. The co-founding framing is the standard historiography.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:antoine-lavoisier",
+      "type": "person",
+      "domain": "natural_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Antoine Lavoisier",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q1406"
+      },
+      "rationale": "Lavoisier's systematic quantitative experiments in the 1770s–1780s established the conservation of mass, the modern theory of combustion (oxygen theory), and the systematic nomenclature of chemistry, earning him the title 'father of modern chemistry' and qualifying as co-founder of chemistry as a modern scientific discipline.",
+      "uncertainty": "QID Q1406 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. Referent-watch: 'modern chemistry' is narrower than 'chemistry' (the target is field:chemistry). The claim is framed as 'helped found modern chemistry'; chemistry as a broader practice has ancient roots (alchemy, metallurgy). Some historians also credit Carl Wilhelm Scheele and Joseph Priestley as co-contributors to the chemical revolution. Lavoisier is nonetheless the canonical single named founder.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:auguste-comte",
+      "type": "person",
+      "domain": "social_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Auguste Comte",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q5950"
+      },
+      "rationale": "Comte coined the term 'sociologie' in the 1830s and articulated the first systematic program for a positive science of society; he is credited as the originator of sociology as a named discipline, though the field was developed into its modern institutional form by Durkheim and Weber.",
+      "uncertainty": "QID Q5950 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. Founding is plural and layered: Comte (named the field), Durkheim (institutionalized and gave it a distinct methodology), Weber (interpretive approach). The record-not-resolve policy applies; all three edges co-exist. Some historians contest Comte's founding role, arguing that Ibn Khaldun (14th century) or Montesquieu anticipated sociology; the standard founding attribution remains Comte for the named, modern discipline.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:emile-durkheim",
+      "type": "person",
+      "domain": "social_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Émile Durkheim",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q186373"
+      },
+      "rationale": "Durkheim established the first academic department of sociology (Bordeaux, 1895), published foundational methodological works ('The Division of Labour in Society', 'The Rules of Sociological Method', 'Suicide'), and is co-credited as a founder of modern sociology alongside Comte and Weber.",
+      "uncertainty": "QID Q186373 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. The ID is based on training recall and may be wrong. Founding is plural (Comte + Durkheim + Weber 3-cluster, record-not-resolve). Durkheim's role is more institutional than definitional (Comte named the field; Durkheim institutionalized it). Confidence is high for the founding attribution itself.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:max-weber",
+      "type": "person",
+      "domain": "social_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Max Weber",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q9177"
+      },
+      "rationale": "Weber's 'The Protestant Ethic and the Spirit of Capitalism' (1905), 'Economy and Society' (posthumous), and his interpretive (verstehen) approach to sociology co-founded modern sociology alongside Comte and Durkheim; he is one of the canonical founding figures of the discipline.",
+      "uncertainty": "QID Q9177 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. Founding is plural (Comte + Durkheim + Weber 3-cluster, record-not-resolve). Weber is sometimes characterized more as an early shaper or classical theorist than a founder per se, since Comte coined the name and Durkheim institutionalized it. However, the standard treatment in sociology textbooks credits all three as co-founders.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:adam-smith",
+      "type": "person",
+      "domain": "social_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Adam Smith",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q9381"
+      },
+      "rationale": "Smith's 'The Wealth of Nations' (1776) established systematic economic analysis of markets, division of labor, and value; he is universally called 'the father of economics' or 'father of modern economics' and is the canonical single founder of economics as a discipline.",
+      "uncertainty": "QID Q9381 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. The founding attribution is very clean; minor historiographical nuance that the Physiocrats (Quesnay et al.) preceded Smith and that David Ricardo and J.S. Mill could be considered co-founders of classical economics. The standard attribution remains Smith as sole founder. QID may be off for such a prominent figure.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:franz-boas",
+      "type": "person",
+      "domain": "social_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Franz Boas",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q76692"
+      },
+      "rationale": "Boas established cultural relativism and the four-field approach to anthropology, trained a generation of anthropologists (Mead, Benedict, Kroeber, Sapir), and is called 'the father of American anthropology' and the founder of cultural anthropology as a modern scientific discipline.",
+      "uncertainty": "QID Q76692 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. The founding attribution is for 'cultural anthropology'; the target is subfield:cultural-anthropology. Some historians distinguish 'American anthropology' (Boas's domain) from British social anthropology (Malinowski, Radcliffe-Brown). The 'cultural anthropology' label maps most directly to Boas. Founding attribution is clean.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:wilhelm-wundt",
+      "type": "person",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Wilhelm Wundt",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q57242"
+      },
+      "rationale": "Wundt founded the first experimental psychology laboratory at Leipzig in 1879, established the systematic study of mental processes through controlled experiment, and is universally called 'the father of experimental psychology'; this is the founding act of subfield:experimental-psychology.",
+      "uncertainty": "QID Q57242 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. The founding attribution is one of the cleanest in this batch — Wundt's 1879 laboratory is universally cited as the founding moment of experimental psychology. Minor nuance: Gustav Fechner's psychophysics (1860) preceded Wundt and is sometimes credited as an ancestor of experimental psychology; the standard founding credit goes to Wundt.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:ferdinand-de-saussure",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Ferdinand de Saussure",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q9068"
+      },
+      "rationale": "Saussure's 'Cours de linguistique generale' (posthumous, 1916) introduced the sign/signifier/signified distinction and the notion of the sign system, which directly founded semiology (continental semiotics); he is the canonical founding figure for the semiotic/semiological tradition.",
+      "uncertainty": "QID Q9068 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. Referent-watch: the target is subfield:semiotics; Saussure himself used the term 'semiology' and the 'semiotics' tradition also has a distinct American founder in Charles Sanders Peirce. If the corpus treats semiotics and semiology as co-extensive under the same subfield node, Saussure's claim is as strong as Peirce's. If the subfield primarily names the Peircean tradition, Saussure's founding claim may be weaker. Edge framed as the semiological/continental contribution; QC should check the subfield:semiotics node definition.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:martin-seligman",
+      "type": "person",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Martin Seligman",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q448455"
+      },
+      "rationale": "Seligman launched positive psychology as a named field through his 1998 APA Presidential Address and co-authored foundational texts including 'Authentic Happiness' (2002) and 'Flourishing' (2011); he is universally credited as the founder of positive psychology.",
+      "uncertainty": "QID Q448455 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5; P570 MUST be absent (living). LIVING PERSON — this node does not auto-promote to reviewed; CPO stop-point required per charter + decision (61). Conservative wording only. Birth year 1942; as of 2026-06-19, still living per training recall. QID hallucination ~66–93%; treat as hint only.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:vint-cerf",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Vint Cerf",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q92785"
+      },
+      "rationale": "Cerf co-designed the TCP/IP protocol suite with Bob Kahn (RFC 675, 1974; RFC 793, 1981), which is the foundational technology underlying computer networks; he is widely called 'one of the fathers of the Internet' and co-founder of the internet protocol stack that defines computer networking.",
+      "uncertainty": "QID Q92785 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5; P570 MUST be absent (living). LIVING PERSON — this node does not auto-promote to reviewed; CPO stop-point required per charter + decision (61). Conservative wording only. The founding is plural: Bob Kahn is the equal co-founder (not in this batch — record-not-resolve). The target is subfield:computer-networks specifically, not 'the internet' broadly; Cerf's TCP/IP work is the most direct founding act for computer-networks as a subfield. Birth year 1943; still living per training recall.",
+      "ambiguous": false
+    }
+  ],
+  "edges": [
+    {
+      "candidate_id": "A1",
+      "source": "person:charles-darwin",
+      "target": "subfield:evolutionary-biology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.97,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Evolution' (Lewens, 2007, rev. 2023), §1 The History of Evolutionary Theory",
+          "claim_anchor": "Darwin's On the Origin of Species (1859) is universally regarded as the founding document of evolutionary biology, establishing natural selection as the central mechanism of evolutionary change and providing the first systematic scientific account of the diversity of life.",
+          "url": "https://plato.stanford.edu/entries/evolution/"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, 'Charles Darwin' (last revised 2024)",
+          "claim_anchor": "Darwin's theory of evolution by natural selection, presented in On the Origin of Species (1859), transformed biology and founded the science of evolutionary biology, providing a unifying explanatory framework for the diversity and adaptation of living organisms.",
+          "url": "https://www.britannica.com/biography/Charles-Darwin"
+        }
+      ],
+      "disputed": false,
+      "note": "Clean sole founding. Alfred Russel Wallace co-developed natural selection independently and is an important figure, but the founding of evolutionary biology as a discipline is attributed to Darwin as sole primary founder in standard sources.",
+      "rationale": "Darwin's 'On the Origin of Species' (1859) is the canonical founding document of evolutionary biology; the founding attribution is uncontested.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases of SEP and Britannica content — verbatim accuracy must be verified by QC against live pages. The exact phrasing of both anchors should be treated as approximate. The founding attribution itself is not in doubt.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A2",
+      "source": "person:gregor-mendel",
+      "target": "subfield:genetics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Genetics' (Griffiths & Stotz, 2013, rev. 2023), §1 History of Genetics",
+          "claim_anchor": "Gregor Mendel's experiments with pea plants, published in 1866, established the laws of inheritance that form the foundation of classical genetics; Mendel is universally called the father of genetics.",
+          "url": "https://plato.stanford.edu/entries/genetics/"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, 'Gregor Mendel' (last revised 2024)",
+          "claim_anchor": "Mendel is known as the father of genetics for his groundbreaking study of the inheritance of traits in pea plants, published in 1866; his laws of segregation and independent assortment laid the foundation for the science of genetics.",
+          "url": "https://www.britannica.com/biography/Gregor-Mendel"
+        }
+      ],
+      "disputed": false,
+      "note": "Clean founding. Mendel's 1866 paper was rediscovered in 1900; the 1900 rediscoverers (de Vries, Correns, Tschermak) are sometimes credited as the practical founders of genetics as an active research discipline, but the standard founding attribution runs to Mendel.",
+      "rationale": "Mendel's 1866 pea plant inheritance experiments established the foundational laws of genetics; he is the canonical single founder ('father of genetics').",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The SEP 'Genetics' entry may frame founding somewhat differently; QC should confirm the entry uses 'father of genetics' or equivalent founding language. The founding attribution itself is standard.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A3",
+      "source": "person:louis-pasteur",
+      "target": "subfield:microbiology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Louis Pasteur' (last revised 2024)",
+          "claim_anchor": "Pasteur is credited along with Robert Koch as a founder of microbiology; his experiments on fermentation and his development of germ theory established that microorganisms are responsible for disease and decomposition, providing the foundational principles of the science.",
+          "url": "https://www.britannica.com/biography/Louis-Pasteur"
+        },
+        {
+          "citation": "Wikipedia, 'Microbiology', §History (en.wikipedia.org)",
+          "claim_anchor": "Louis Pasteur and Robert Koch are often cited as the founders of microbiology; Pasteur's work on germ theory and fermentation and Koch's identification of specific disease-causing bacteria in the 1870s–1880s established microbiology as a distinct scientific discipline.",
+          "url": "https://en.wikipedia.org/wiki/Microbiology"
+        }
+      ],
+      "disputed": false,
+      "note": "Plural founding: Pasteur co-exists with Robert Koch as co-founder of microbiology. Koch is not in this batch but his co-founding is noted (record-not-resolve). Both are equally credited in standard sources; Pasteur is associated with germ theory and fermentation, Koch with specific pathogen identification and Koch's postulates.",
+      "rationale": "Pasteur co-founded microbiology through germ theory and fermentation experiments (1850s–1880s); the plural co-founding with Koch is the standard historiography.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. Wikipedia is a non-primary source per policy but is used here for the plural-founding claim alongside Britannica. QC should prefer Britannica as the primary evidence and treat the Wikipedia anchor as secondary. The co-founding attribution is standard.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A4",
+      "source": "person:antoine-lavoisier",
+      "target": "field:chemistry",
+      "relation": "founded_or_formalized",
+      "confidence": 0.87,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Antoine Lavoisier' (last revised 2024)",
+          "claim_anchor": "Lavoisier is called the father of modern chemistry; his rigorous quantitative experiments, development of the oxygen theory of combustion, and creation of a systematic chemical nomenclature transformed chemistry from a collection of empirical observations into a systematic science.",
+          "url": "https://www.britannica.com/biography/Antoine-Lavoisier"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Antoine Lavoisier' (Bensaude-Vincent, 2020), §1 The Chemical Revolution",
+          "claim_anchor": "Lavoisier's chemical revolution in the 1770s–1780s established the quantitative approach and systematic nomenclature that define modern chemistry; he is widely regarded as the principal founder of modern chemistry.",
+          "url": "https://plato.stanford.edu/entries/lavoisier/"
+        }
+      ],
+      "disputed": false,
+      "note": "Referent-watch (per scoping.md): framed as 'helped found modern chemistry'. The target field:chemistry is broader than 'modern chemistry'; ancient and pre-modern chemistry (alchemy, metallurgy) predate Lavoisier. The founding claim is specifically for chemistry as a systematic, quantitative science (the 'chemical revolution'). Confidence 0.87 reflects this referent nuance. The founding of 'modern chemistry' is well-attested; whether the broader field:chemistry node is the right target is a QC question.",
+      "rationale": "Lavoisier's chemical revolution (oxygen theory, conservation of mass, systematic nomenclature) founded modern chemistry as a rigorous scientific discipline; framed as 'helped found modern chemistry' to acknowledge the referent breadth.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The main uncertainty is the referent: 'modern chemistry' vs. the broader field:chemistry node. QC should assess whether the founding-of-modern-chemistry claim satisfactorily grounds a founded_or_formalized edge for the broader field node, or whether a narrower target would be more appropriate. The founding attribution for modern chemistry itself is not contested.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "A5",
+      "source": "person:auguste-comte",
+      "target": "field:sociology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Auguste Comte' (Bourdeau, 2008, rev. 2023), §3 Sociology",
+          "claim_anchor": "Comte coined the term sociology in his Cours de philosophie positive (1830–1842) and is credited as the founder of sociology; his positivist program proposed sociology as the systematic scientific study of human society.",
+          "url": "https://plato.stanford.edu/entries/comte/"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, 'Auguste Comte' (last revised 2023)",
+          "claim_anchor": "Comte is regarded as the father of sociology; he coined the word sociology and developed the positivist philosophy that provided sociology's first systematic theoretical foundation.",
+          "url": "https://www.britannica.com/biography/Auguste-Comte"
+        }
+      ],
+      "disputed": false,
+      "note": "Plural/layered 3-cluster: Comte (A5, coined the term) + Durkheim (A6, institutionalized) + Weber (A7, interpretive approach). All three carry founded_or_formalized edges to field:sociology per the record-not-resolve policy, mirroring the game-theory cluster in wave-1/2. Comte has the strongest lexical founding claim (coined 'sociologie') but the weakest institutional legacy compared to Durkheim.",
+      "rationale": "Comte coined 'sociologie' in the 1830s and articulated the first systematic program for a science of society; he is the standard first-named founder of sociology.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The SEP Comte entry should cover his founding of sociology; QC should confirm the exact entry section and phrasing. The founding attribution is standard for Comte-as-coiner-of-the-term.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A6",
+      "source": "person:emile-durkheim",
+      "target": "field:sociology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Emile Durkheim' (Jones, 2001, rev. 2021), §1 Life and Career",
+          "claim_anchor": "Durkheim is regarded as one of the principal architects of modern sociology; he established the first academic department of sociology and developed the first rigorous sociological methodology in The Rules of Sociological Method (1895) and Suicide (1897).",
+          "url": "https://plato.stanford.edu/entries/durkheim/"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, 'Emile Durkheim' (last revised 2024)",
+          "claim_anchor": "Durkheim is considered one of the founders of modern sociology; he established sociology as an academic discipline with its own distinct subject matter and methods, notably through his study of suicide as a social fact and his articulation of the rules of sociological method.",
+          "url": "https://www.britannica.com/biography/Emile-Durkheim"
+        }
+      ],
+      "disputed": false,
+      "note": "Plural/layered 3-cluster: Comte (A5) + Durkheim (A6) + Weber (A7). Durkheim's contribution is institutional and methodological — he gave sociology its distinct empirical methodology and academic home. All three edges co-exist per record-not-resolve.",
+      "rationale": "Durkheim institutionalized sociology (first academic department, 1895) and gave it a distinct empirical methodology; he is co-credited as a founder of modern sociology in the 3-cluster with Comte and Weber.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The SEP Durkheim entry exists and covers his role well; phrasing may differ from the paraphrase here. The founding attribution in the 3-cluster is standard.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A7",
+      "source": "person:max-weber",
+      "target": "field:sociology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.91,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Max Weber' (Kim, 2007, rev. 2022), §1 Weber's Life and Work",
+          "claim_anchor": "Weber is considered one of the founding figures of modern sociology; his interpretive approach (Verstehen) and his works on rationalization, bureaucracy, and religion established the interpretive tradition in sociology alongside the positivist tradition initiated by Comte and Durkheim.",
+          "url": "https://plato.stanford.edu/entries/weber/"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, 'Max Weber' (last revised 2024)",
+          "claim_anchor": "Weber is generally regarded, alongside Karl Marx and Emile Durkheim, as one of the three principal architects of modern sociology; his interpretive sociological method and his comparative studies of religion, capitalism, and bureaucracy shaped the discipline fundamentally.",
+          "url": "https://www.britannica.com/biography/Max-Weber"
+        }
+      ],
+      "disputed": false,
+      "note": "Plural/layered 3-cluster: Comte (A5) + Durkheim (A6) + Weber (A7). Britannica's formulation credits Marx alongside Weber and Durkheim; Marx is not in this batch (his founding role is more contested for sociology specifically). Weber's founding contribution is his interpretive methodology and the comparative-historical approach. All three edges co-exist per record-not-resolve.",
+      "rationale": "Weber's interpretive sociology and comparative-historical method co-founded modern sociology; he is one of the canonical 3-cluster founders alongside Comte and Durkheim.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. Britannica formulation names Marx as a third co-founder rather than Comte; QC should note this and assess whether a Marx edge would be appropriate in a future batch. The Weber-as-co-founder attribution is itself not in doubt.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A8",
+      "source": "person:adam-smith",
+      "target": "field:economics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.97,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Adam Smith' (Otteson, 2002, rev. 2022), §1 Life and Works",
+          "claim_anchor": "Adam Smith's The Wealth of Nations (1776) is the founding document of modern economics; Smith is universally regarded as the father of economics for his systematic analysis of markets, the division of labor, and the price mechanism.",
+          "url": "https://plato.stanford.edu/entries/smith-moral-social/"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, 'Adam Smith' (last revised 2024)",
+          "claim_anchor": "Adam Smith is considered the father of modern economics; his Wealth of Nations (1776) provided the first comprehensive analysis of economic organization and established economics as a distinct social science.",
+          "url": "https://www.britannica.com/biography/Adam-Smith"
+        }
+      ],
+      "disputed": false,
+      "note": "Clean sole founding. The Physiocrats (especially Quesnay) preceded Smith and are sometimes considered ancestors of economics, but the standard canonical founding attribution runs to Smith as the single named founder with Wealth of Nations (1776).",
+      "rationale": "Smith's 'Wealth of Nations' (1776) is the canonical founding document of economics as a systematic discipline; the founding attribution is uncontested.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The SEP entry for Smith focuses on moral and social philosophy; QC should confirm the entry explicitly covers Wealth of Nations and founding of economics in the relevant section. The Britannica anchor is more directly on point.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A9",
+      "source": "person:franz-boas",
+      "target": "subfield:cultural-anthropology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.94,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Franz Boas' (last revised 2024)",
+          "claim_anchor": "Boas is called the father of American anthropology and is regarded as a founder of cultural anthropology; he introduced cultural relativism, the four-field approach, and trained the first generation of professional anthropologists in the United States.",
+          "url": "https://www.britannica.com/biography/Franz-Boas"
+        },
+        {
+          "citation": "Wikipedia, 'Cultural anthropology', §History (en.wikipedia.org)",
+          "claim_anchor": "Franz Boas is often called the founder of cultural anthropology in the United States; his emphasis on cultural relativism and his empirical approach to studying individual cultures transformed anthropology from an armchair discipline into a fieldwork-based science.",
+          "url": "https://en.wikipedia.org/wiki/Cultural_anthropology"
+        }
+      ],
+      "disputed": false,
+      "note": "Clean founding for American/cultural anthropology. British social anthropology has separate founding figures (Malinowski, Radcliffe-Brown); the target subfield:cultural-anthropology maps most naturally to the Boasian tradition. QC should confirm the subfield:cultural-anthropology node is in the American/Boasian tradition rather than British social anthropology.",
+      "rationale": "Boas founded cultural anthropology through cultural relativism, fieldwork methodology, and training the first generation of professional cultural anthropologists; he is the canonical single founder.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. Wikipedia is used as secondary evidence alongside Britannica; QC should treat Britannica as the primary source. The referent distinction (American cultural anthropology vs. British social anthropology) may affect the founding claim depending on how the subfield:cultural-anthropology node is defined.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A10",
+      "source": "person:wilhelm-wundt",
+      "target": "subfield:experimental-psychology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.97,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Wilhelm Maximilian Wundt' (Araujo, 2016, rev. 2023), §2 Leipzig Laboratory",
+          "claim_anchor": "Wundt founded the first experimental psychology laboratory at Leipzig in 1879, establishing experimental psychology as a distinct scientific discipline separate from philosophy; he is universally called the father of experimental psychology.",
+          "url": "https://plato.stanford.edu/entries/wilhelm-wundt/"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, 'Wilhelm Wundt' (last revised 2024)",
+          "claim_anchor": "Wundt is considered the founder of experimental psychology; his Leipzig laboratory, opened in 1879, was the first dedicated experimental psychology laboratory and attracted students from around the world, making it the birthplace of the discipline.",
+          "url": "https://www.britannica.com/biography/Wilhelm-Wundt"
+        }
+      ],
+      "disputed": false,
+      "note": "Clean sole founding. Wundt's 1879 Leipzig laboratory is one of the most precisely dated founding events in the social/cognitive sciences. Gustav Fechner's psychophysics (1860) is sometimes cited as an ancestor, but Wundt is universally credited as the founder of experimental psychology as a distinct discipline.",
+      "rationale": "Wundt's 1879 Leipzig laboratory founded experimental psychology as a distinct scientific discipline; this is the standard founding attribution, among the cleanest in this batch.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The SEP Wundt entry exists and should contain this founding language; the exact section and phrasing should be verified. The founding attribution itself is among the least uncertain in the entire batch.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A11",
+      "source": "person:ferdinand-de-saussure",
+      "target": "subfield:semiotics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.86,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Semiotics' (Atkin, 2010, rev. 2023), §2 Historical Overview",
+          "claim_anchor": "Ferdinand de Saussure is credited as a founder of semiology, the study of signs and sign systems; his posthumous Cours de linguistique generale (1916) introduced the distinction between signifier and signified and proposed semiology as a general science of signs, establishing one of the two major traditions in semiotics alongside Peirce's.",
+          "url": "https://plato.stanford.edu/entries/semiotics-semiology/"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, 'Semiotics' (last revised 2023)",
+          "claim_anchor": "Saussure is considered a founder of semiology, the European tradition of the study of signs; his concept of the linguistic sign as the arbitrary pairing of signifier and signified provided the theoretical foundation for the semiological tradition in Europe.",
+          "url": "https://www.britannica.com/topic/semiotics"
+        }
+      ],
+      "disputed": false,
+      "note": "Referent-watch (per scoping.md): Saussure founded the semiological (continental/European) tradition. Charles Sanders Peirce independently founded the semiotic (American/Peircean) tradition. The target subfield:semiotics likely encompasses both traditions; if so, Saussure's co-founding claim is appropriate. Confidence 0.86 reflects this referent ambiguity. QC should check whether subfield:semiotics is defined broadly (both traditions) or narrowly (Peircean). The edge is framed as the semiological/continental co-founding contribution.",
+      "rationale": "Saussure's 'Cours de linguistique generale' (1916) founded the semiological/continental tradition; he is co-credited as a founder of the broader field of semiotics alongside Peirce.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The SEP entry for semiotics may be at a different URL (could be 'semiotics' or 'semiotics-semiology'); QC should verify the exact entry. The referent ambiguity (semiology vs. semiotics) is the main uncertainty for this edge; the founding claim itself (for semiology) is clean.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B1",
+      "source": "person:martin-seligman",
+      "target": "subfield:positive-psychology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'positive psychology' (last revised 2023)",
+          "claim_anchor": "Positive psychology was founded by Martin Seligman, who launched the field through his 1998 presidential address to the American Psychological Association and subsequent work including Authentic Happiness (2002), focusing the discipline on human flourishing and well-being rather than pathology.",
+          "url": "https://www.britannica.com/science/positive-psychology"
+        },
+        {
+          "citation": "Wikipedia, 'Positive psychology', §History (en.wikipedia.org)",
+          "claim_anchor": "Positive psychology was launched as a field by Martin Seligman in his 1998 APA Presidential Address; Seligman identified it as a new orientation in psychology focused on positive subjective experiences, positive individual traits, and positive institutions.",
+          "url": "https://en.wikipedia.org/wiki/Positive_psychology"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1942) — this node and edge HALT at the CPO stop-point per decision (61) and the charter's stricter evidence + conservative wording requirement for living persons. The founding attribution is clean and well-documented; the stop-point halt is a procedural gate, not a substantive dispute. Csikszentmihalyi is sometimes named as a co-founder of positive psychology; the standard attribution gives Seligman founding credit.",
+      "rationale": "Seligman launched positive psychology through his 1998 APA Presidential Address; he is the canonical sole founder of the named field.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must independently confirm Seligman is living as of 2026-06-19 (no P570 on Wikidata). CPO review mandatory before any promotion. Wikipedia used as secondary evidence alongside Britannica; both should be live-checked. Csikszentmihalyi's possible co-founding role should be noted at QC.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "B2",
+      "source": "person:vint-cerf",
+      "target": "subfield:computer-networks",
+      "relation": "founded_or_formalized",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Vint Cerf' (last revised 2024)",
+          "claim_anchor": "Cerf, together with Bob Kahn, developed the TCP/IP protocols that form the basis of the internet; he is widely called one of the fathers of the internet and his TCP/IP work is the foundational technical contribution underlying computer networking as a discipline.",
+          "url": "https://www.britannica.com/biography/Vint-Cerf"
+        },
+        {
+          "citation": "Wikipedia, 'Vint Cerf', §Internet pioneer (en.wikipedia.org)",
+          "claim_anchor": "Cerf co-designed the Transmission Control Protocol (TCP) and Internet Protocol (IP) with Bob Kahn; TCP/IP is the foundational protocol suite of the internet and of computer networking; Cerf is called a father of the internet.",
+          "url": "https://en.wikipedia.org/wiki/Vint_Cerf"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1943) — this node and edge HALT at the CPO stop-point per decision (61) and the charter's stricter evidence + conservative wording requirement for living persons. Founding is plural: Bob Kahn is the equal co-founder (not in this batch — record-not-resolve). The target is subfield:computer-networks specifically; the TCP/IP founding is the most direct grounding for this subfield. The 'fathers of the internet' framing in standard sources directly supports this edge.",
+      "rationale": "Cerf co-designed TCP/IP with Bob Kahn (RFC 675, 1974), the foundational protocol suite of computer networking; he is a canonical co-founder of computer networking as a technical discipline.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must independently confirm Cerf is living as of 2026-06-19 (no P570 on Wikidata). CPO review mandatory before any promotion. The founding is plural (Kahn not in batch); QC should consider whether a future Kahn edge is needed. Wikipedia used as secondary evidence; both sources should be live-checked.",
+      "ambiguous": false
+    }
+  ]
+}

@@ -9753,5 +9753,221 @@
       "proposed_at": "2026-06-19"
     },
     "note": "Leibniz founded calculus independently of Newton (MacTutor Leibniz: \"It was during this period in Paris that Leibniz developed the basic features of his version of the calculus\"; Wikipedia History of calculus: \"Infinitesimal calculus was developed in the late 17th century by Isaac Newton and Gottfried Wilhelm Leibniz independently of each other\"). Plural founding preserved (record-not-resolve, not disputed): co-exists with the Newton edge; Leibniz's notation (d, ∫) is the one in standard use."
+  },
+  {
+    "id": "edge:charles-darwin-founded-evolutionary-biology",
+    "source": "person:charles-darwin",
+    "target": "subfield:evolutionary-biology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.97,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Darwin founded evolutionary biology via On the Origin of Species (1859) (Wikipedia Charles Darwin: \"His proposition that all species of life have descended from a common ancestor is now generally accepted and considered a fundamental scientific concept\"; Wikipedia Evolutionary biology: \"Natural selection was independently discovered as the engine of evolution by Charles Darwin and Alfred Russel Wallace\"). Plural co-discovery preserved (record-not-resolve, not disputed): Wallace independently formulated natural selection (1858 joint presentation); this edge does not adjudicate sole authorship. Grounded on two independent Wikipedia articles (person + field); founding attribution is canonical."
+  },
+  {
+    "id": "edge:gregor-mendel-founded-genetics",
+    "source": "person:gregor-mendel",
+    "target": "subfield:genetics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Mendel founded the science of genetics (Wikipedia Gregor Mendel: \"gained posthumous recognition as the founder of the modern science of genetics\"; Wikipedia Genetics: \"Gregor Mendel ... was the first to study genetics scientifically\"). Grounded on two independent Wikipedia articles (person + field); attribution is canonical."
+  },
+  {
+    "id": "edge:louis-pasteur-founded-microbiology",
+    "source": "person:louis-pasteur",
+    "target": "subfield:microbiology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Pasteur is a founder of microbiology (Wikipedia Louis Pasteur: \"He is regarded as one of the founders of modern bacteriology and has been honored as ... the 'father of microbiology' (together with Robert Koch ...)\"; Wikipedia Microbiology: \"Louis Pasteur is considered a father of microbiology\"). Plural founding preserved (record-not-resolve, not disputed): co-credited with Robert Koch (and, for early microscopy, Antonie van Leeuwenhoek); Koch not yet a node. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:antoine-lavoisier-founded-chemistry",
+    "source": "person:antoine-lavoisier",
+    "target": "field:chemistry",
+    "relation": "founded_or_formalized",
+    "confidence": 0.87,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Lavoisier helped found modern chemistry (Wikipedia Antoine Lavoisier: \"a French nobleman and chemist who was central to the 18th-century chemical revolution\"; Wikipedia History of chemistry: \"in 1789, he established the Law of Conservation of Mass\"). Referent note (record-not-resolve): Lavoisier founded/formalized *modern* (quantitative) chemistry — the chemical revolution — rather than chemistry-the-practice, which predates him; founded_or_formalized covers this formalizing act. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:auguste-comte-founded-sociology",
+    "source": "person:auguste-comte",
+    "target": "field:sociology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Comte founded sociology and coined the term (Wikipedia Auguste Comte: \"Comte's ideas were fundamental to the development of sociology, with him inventing the very term and treating the discipline as the crowning achievement of the sciences\"). Plural/layered founding of sociology preserved (record-not-resolve): co-founders Durkheim and Weber carry their own edges; Karl Marx is also frequently co-cited as a principal architect (noted, no node yet). Person + field Wikipedia articles."
+  },
+  {
+    "id": "edge:emile-durkheim-founded-sociology",
+    "source": "person:emile-durkheim",
+    "target": "field:sociology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Durkheim formally established sociology as a discipline (Wikipedia Émile Durkheim: \"He formally established the academic discipline of sociology, and is commonly cited as one of the principal architects of modern social science, along with Karl Marx and Max Weber\"). Plural/layered founding preserved (record-not-resolve): co-exists with the Comte and Weber edges; Marx co-cited (noted, no node yet). Person + field Wikipedia articles."
+  },
+  {
+    "id": "edge:max-weber-founded-sociology",
+    "source": "person:max-weber",
+    "target": "field:sociology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.91,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Weber is a central founding figure of sociology (Wikipedia Max Weber: \"one of the central figures in the development of sociology and the social sciences more generally\"). Plural/layered founding preserved (record-not-resolve): co-exists with the Comte and Durkheim edges. Person + field Wikipedia articles."
+  },
+  {
+    "id": "edge:adam-smith-founded-economics",
+    "source": "person:adam-smith",
+    "target": "field:economics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.97,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Smith founded modern economics / political economy (Wikipedia Adam Smith: \"a Scottish economist and philosopher who was a pioneer in the field of political economy\"; he is widely called the father of economics, The Wealth of Nations, 1776). Two independent Wikipedia articles (person + field); attribution is canonical."
+  },
+  {
+    "id": "edge:franz-boas-founded-cultural-anthropology",
+    "source": "person:franz-boas",
+    "target": "subfield:cultural-anthropology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.94,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Boas founded the American/Boasian tradition of cultural anthropology (Wikipedia Franz Boas: \"a pioneer of modern anthropology who has been called the 'Father of American Anthropology'\"; Wikipedia Cultural anthropology: cultural relativism was \"established as axiomatic in anthropological research by Franz Boas and later popularized by his students\"). Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:wilhelm-wundt-founded-experimental-psychology",
+    "source": "person:wilhelm-wundt",
+    "target": "subfield:experimental-psychology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.97,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Wundt founded experimental psychology (Wikipedia Wilhelm Wundt: \"the first person to call himself a psychologist\"; Wikipedia Experimental psychology: \"Experimental psychology emerged as a modern academic discipline in the 19th century when Wilhelm Wundt introduced a mathematical and experimental approach ... Wundt founded the first psychology laboratory in Leipzig, Germany\"). Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:ferdinand-de-saussure-founded-semiotics",
+    "source": "person:ferdinand-de-saussure",
+    "target": "subfield:semiotics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.86,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Saussure is a founder of semiotics/semiology (Wikipedia Ferdinand de Saussure: \"one of two major founders (together with Charles Sanders Peirce) of semiotics, or semiology, as Saussure called it\"; Wikipedia Semiotics: contrasts \"Ferdinand de Saussure's dyadic model\" with \"Charles Sanders Peirce's triadic model\"). Plural founding preserved (record-not-resolve, not disputed): Peirce is the independent co-founder; not yet a node. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:martin-seligman-founded-positive-psychology",
+    "source": "person:martin-seligman",
+    "target": "subfield:positive-psychology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "★ LIVING founder — admitted via CPO living-person review (session #33, decision (62)), NOT the auto-`reviewed` ladder: the living-founder guard (is_living_person:true) blocked auto-promotion and routed to CPO review; the CPO approved on clean double-grounded evidence. Seligman founded positive psychology (Wikipedia Positive psychology: \"Positive psychology began as a new domain of psychology in 1998 when Martin Seligman chose it as the theme for his term as president of the American Psychological Association\"; Wikipedia Martin Seligman: founding editor-in-chief role and APA presidency). Conservative wording: no summary, indexable:false. Two independent Wikipedia articles."
   }
 ]
