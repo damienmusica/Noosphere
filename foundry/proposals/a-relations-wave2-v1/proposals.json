@@ -1,0 +1,366 @@
+{
+  "batch_id": "a-relations-wave2-v1",
+  "generated_by": "Claude Sonnet / claude-sonnet-4-6",
+  "generated_at": "2026-06-19",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-19"
+  },
+  "proposals": [
+    {
+      "tag": "A1",
+      "source": "person:auguste-comte",
+      "target": "person:emile-durkheim",
+      "relation": "influenced",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "citation": "SEP, 'Émile Durkheim'",
+          "claim_anchor": "Durkheim was deeply influenced by Comte's positivist approach to social science",
+          "url": "https://plato.stanford.edu/entries/durkheim/"
+        },
+        {
+          "citation": "IEP, 'Émile Durkheim (1858–1917)'",
+          "claim_anchor": "Comte's influence on Durkheim is most apparent in the latter's insistence that the study of society be established as a positive science",
+          "url": "https://iep.utm.edu/durkheim/"
+        }
+      ],
+      "disputed": false,
+      "note": "Durkheim later criticized Comte's method and rejected the idea of sociology as purely deductive philosophy; the influence is foundational but Durkheim explicitly distanced himself from Comtean metaphysics. This is an asymmetric intellectual lineage, not endorsement.",
+      "rationale": "Comte invented the term 'sociology' and positivism; Durkheim (b. 1858, d. 1917) worked explicitly in that tradition, framing sociology as a positive science — a debt widely noted in intellectual histories and Durkheim scholarship. Temporal order is correct: Comte (1798–1857) precedes Durkheim's academic career.",
+      "uncertainty": "The claim_anchor phrases are my best recall of what these sources state; the orchestrator must verbatim-verify against live pages. Durkheim also criticized Comte, so the influence is partial and filtered through Spencer; SEP/IEP framing may nuance the direction.",
+      "ambiguous": false
+    },
+    {
+      "tag": "A2",
+      "source": "person:georg-cantor",
+      "target": "person:david-hilbert",
+      "relation": "influenced",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "citation": "SEP, 'David Hilbert'",
+          "claim_anchor": "Hilbert championed Cantor's set theory against its critics, famously declaring 'No one shall expel us from the paradise that Cantor has created'",
+          "url": "https://plato.stanford.edu/entries/hilbert/"
+        },
+        {
+          "citation": "Wikipedia, 'David Hilbert'",
+          "claim_anchor": "Hilbert defended it from its critics, as he believed it was an important mathematical theory. He is quoted as saying 'No one shall expel us from the paradise which Cantor created for us'",
+          "url": "https://en.wikipedia.org/wiki/David_Hilbert"
+        }
+      ],
+      "disputed": false,
+      "note": "The 'Cantor's paradise' quote is the canonical marker; Hilbert's formalist program was in part a project to secure Cantor's infinite set theory on rigorous axiomatic foundations. The influence is well-documented and not contested.",
+      "rationale": "Cantor's work on infinite sets directly shaped Hilbert's mathematical agenda — his defense of the actual infinite, his foundational program, and his first problem (the continuum hypothesis). Temporal order is correct: Cantor (1845–1918) and Hilbert (1862–1943) were contemporaries; Hilbert explicitly championed Cantor.",
+      "uncertainty": "Verbatim anchor phrases are from knowledge, not a live fetch; the orchestrator must check these against the live pages. The influence is so well-attested that contestedness is very low, but exact phrasings in SEP/Wikipedia may differ from my recall.",
+      "ambiguous": false
+    },
+    {
+      "tag": "A3",
+      "source": "person:richard-dedekind",
+      "target": "person:georg-cantor",
+      "relation": "influenced",
+      "confidence": 0.82,
+      "evidence": [
+        {
+          "citation": "SEP, 'Dedekind's Contributions to the Foundations of Mathematics'",
+          "claim_anchor": "Dedekind corresponded extensively with Cantor and his ideas about sets and continuity directly influenced Cantor's development of set theory",
+          "url": "https://plato.stanford.edu/entries/dedekind-foundations/"
+        },
+        {
+          "citation": "Wikipedia, 'Georg Cantor'",
+          "claim_anchor": "Cantor's development of set theory was influenced by his correspondence with Dedekind",
+          "url": "https://en.wikipedia.org/wiki/Georg_Cantor"
+        }
+      ],
+      "disputed": false,
+      "note": "The Dedekind–Cantor correspondence (from 1872 onward) is well-documented historical fact; Dedekind's treatment of infinite sets, cuts, and continuity appears to have shaped Cantor's direction. However, the influence was mutual — Cantor also influenced Dedekind's later work on the foundations of arithmetic. This proposal asserts the Dedekind→Cantor direction as the primary one, based on Dedekind being the older mathematician (b. 1831 vs Cantor b. 1845) and the documented influence of Dedekind's rigor on Cantor's early set-theoretic work. The mutual direction is noted and QC should consider whether a reciprocal edge is needed.",
+      "rationale": "Dedekind (1831–1916) was Cantor's senior colleague and correspondent; Dedekind's construction of the reals (1872 Dedekind cuts) and his treatment of infinite sets preceded and influenced Cantor's foundational work. The direction Dedekind→Cantor is supported by chronology and documented correspondence.",
+      "uncertainty": "The mutual nature of the influence is a genuine concern — this could reasonably be coded as bidirectional. The claim_anchor phrases are from knowledge and must be verbatim-verified by the orchestrator. SEP may give more emphasis to Cantor's independence than to Dedekind's influence.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A4",
+      "source": "person:gottlob-frege",
+      "target": "person:george-boole",
+      "relation": "critiques",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "citation": "SEP, 'Gottlob Frege'",
+          "claim_anchor": "Frege criticized Boole's logic as insufficient for expressing the generality required for mathematical reasoning and for lacking the ability to represent multiply quantified statements",
+          "url": "https://plato.stanford.edu/entries/frege/"
+        },
+        {
+          "citation": "SEP, 'George Boole'",
+          "claim_anchor": "Frege's predicate calculus showed that Boole's algebraic logic could not adequately represent the logical structure of mathematical propositions involving multiple quantifiers",
+          "url": "https://plato.stanford.edu/entries/boole/"
+        }
+      ],
+      "disputed": false,
+      "note": "The direction is Frege (1879 Begriffsschrift) critiques Boole (1847/1854). Frege was explicit that Boole's notation could not represent relational quantification — the critique is documented in Frege's own writings and in scholarship. Note this is a posthumous critique: Boole died 1864, Frege published 1879; the critique is of Boole's *system*, not a direct personal exchange.",
+      "rationale": "Frege's 1879 Begriffsschrift explicitly critiqued the limits of Boolean algebraic logic, arguing it could not handle the full generality needed for mathematical proof — specifically multiple quantification and relational statements. The temporal order is correct: Boole (1815–1864) predates Frege (1848–1925); Frege's work is a critique of the existing Boole-tradition.",
+      "uncertainty": "The exact phrasings of the claim_anchors are from knowledge and must be verbatim-verified. There is also scholarship arguing Frege and Boole are best seen as complementary rather than in pure opposition (they addressed different problems). The 'critiques' relation is apt but some historians frame it as Frege extending rather than refuting Boole.",
+      "ambiguous": false
+    },
+    {
+      "tag": "A5",
+      "source": "person:ronald-fisher",
+      "target": "person:karl-pearson",
+      "relation": "critiques",
+      "confidence": 0.90,
+      "evidence": [
+        {
+          "citation": "Wikipedia, 'Ronald Fisher'",
+          "claim_anchor": "Fisher had a long-running feud with Karl Pearson, criticizing his use of chi-squared tests and his method of moments, arguing that maximum likelihood estimation was superior",
+          "url": "https://en.wikipedia.org/wiki/Ronald_Fisher"
+        },
+        {
+          "citation": "MacTutor, 'Ronald Aylmer Fisher'",
+          "claim_anchor": "Fisher disagreed with Pearson over the correct degrees of freedom in the chi-squared test, a dispute that turned into a bitter personal and professional feud",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Fisher/"
+        }
+      ],
+      "disputed": false,
+      "note": "The Fisher–Pearson feud is well-documented historical fact. Fisher (1890–1962) critiqued Pearson (1857–1936) on multiple statistical fronts: chi-square degrees of freedom, method of moments vs maximum likelihood, and the use of the correlation coefficient. The critique is real and substantive, not merely personal animosity. Fisher also critiqued Pearson's biometry tradition in broader methodological terms.",
+      "rationale": "Fisher documented methodological critiques of Pearson's statistical methods throughout his career — the chi-square degrees-of-freedom correction (1922), the advocacy of maximum likelihood over method of moments, and critiques of Pearson's approach to estimation. Temporal order: Pearson (1857–1936) established statistical methods that Fisher (1890–1962) then systematically critiqued.",
+      "uncertainty": "The exact phrasings must be verbatim-verified against live pages. The 'feud' was partly personal, so framing the relation purely as methodological critique may undersell the personal dimension — but the substantive statistical critiques are the scholarly record.",
+      "ambiguous": false
+    },
+    {
+      "tag": "A6",
+      "source": "person:henri-poincare",
+      "target": "subfield:set-theory",
+      "relation": "critiques",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "citation": "SEP, 'Poincaré's Philosophy of Mathematics'",
+          "claim_anchor": "Poincaré was a severe critic of Cantorian set theory, objecting to the use of impredicative definitions and the actual infinite",
+          "url": "https://plato.stanford.edu/entries/poincare/"
+        },
+        {
+          "citation": "Wikipedia, 'Henri Poincaré'",
+          "claim_anchor": "Poincaré was critical of Cantor's set theory, calling it a 'disease' from which mathematics would eventually recover",
+          "url": "https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9"
+        }
+      ],
+      "disputed": false,
+      "note": "Poincaré's predicativist critique of set theory is documented in his philosophical writings. He objected to the actual infinite, impredicative definitions, and the paradoxes emerging from naive set theory. The 'disease' quote (if genuine) appears in historical accounts; the orchestrator should verify. The target is the field/subfield `subfield:set-theory` rather than a person, which correctly captures that Poincaré critiqued the discipline's foundations, not just Cantor personally.",
+      "rationale": "Poincaré (1854–1912) was a vocal critic of Cantorian set theory and logicism, arguing from a predicativist standpoint that impredicative definitions and the actual infinite introduced irresolvable paradoxes. This critique is a well-documented part of the early-20th-century foundations debate.",
+      "uncertainty": "The exact phrasing of the 'disease' quote and the SEP claim_anchor must be verbatim-verified. The SEP entry is for 'Poincaré's Philosophy of Mathematics' but the exact URL may differ — QC should confirm the correct SEP entry URL. Poincaré's critique was also partly against logicism (Frege/Russell) and not exclusively set-theoretic.",
+      "ambiguous": false
+    },
+    {
+      "tag": "A7",
+      "source": "person:charles-darwin",
+      "target": "subfield:evolutionary-psychology",
+      "relation": "influenced",
+      "confidence": 0.90,
+      "evidence": [
+        {
+          "citation": "SEP, 'Evolutionary Psychology'",
+          "claim_anchor": "Evolutionary psychology traces its origins to Charles Darwin's theory of evolution by natural selection, which implied that psychological traits, like morphological ones, are subject to selection",
+          "url": "https://plato.stanford.edu/entries/evolutionary-psychology/"
+        },
+        {
+          "citation": "Wikipedia, 'Evolutionary psychology'",
+          "claim_anchor": "Evolutionary psychology has its roots in cognitive science and evolutionary biology, with Charles Darwin's theory of natural selection being the primary theoretical ancestor",
+          "url": "https://en.wikipedia.org/wiki/Evolutionary_psychology"
+        }
+      ],
+      "disputed": false,
+      "note": "The cross-domain direction (person→subfield in a different domain) is appropriate here: Darwin (1809–1882) influenced the later emergence of evolutionary psychology as a formal discipline (the modern field cohered ca. 1990s via Barkow, Cosmides, Tooby). The influence is historical/foundational, not contemporaneous.",
+      "rationale": "Darwin's theory of natural selection provided the foundational theoretical framework that evolutionary psychology later built upon — the idea that psychological mechanisms are adaptations shaped by selection. The temporal order is correct: Darwin (d. 1882) precedes the formal discipline (1990s), and his influence is explicitly acknowledged in the field's self-description.",
+      "uncertainty": "The exact claim_anchor phrases must be verbatim-verified. The influence is indirect (mediated by decades of evolutionary biology and cognitive science) — some might argue this is more 'formalizes' than 'influenced', though influenced is the correct relation for a historical/foundational cross-domain shaping.",
+      "ambiguous": false
+    },
+    {
+      "tag": "B1",
+      "source": "subfield:evolutionary-biology",
+      "target": "field:psychology",
+      "relation": "influenced",
+      "confidence": 0.82,
+      "evidence": [
+        {
+          "citation": "SEP, 'Evolutionary Psychology'",
+          "claim_anchor": "Evolutionary biology has influenced psychology broadly, including through functionalism, comparative psychology, and the later emergence of evolutionary psychology as a discipline",
+          "url": "https://plato.stanford.edu/entries/evolutionary-psychology/"
+        },
+        {
+          "citation": "Wikipedia, 'Evolutionary psychology'",
+          "claim_anchor": "Evolutionary psychology is a theoretical approach in psychology that examines psychological structure from a modern evolutionary perspective",
+          "url": "https://en.wikipedia.org/wiki/Evolutionary_psychology"
+        }
+      ],
+      "disputed": false,
+      "note": "This is a broad field-to-field claim. The influence is real but the target `field:psychology` is very broad — evolutionary biology influenced some branches of psychology (comparative, developmental, social) more than others (clinical, cognitive). The claim is at the correct grain for this proposal but QC should note the partial-coverage caveat. The A7 edge (Darwin→evolutionary-psychology) is the more precise form.",
+      "rationale": "Evolutionary biology shaped psychology through multiple channels: 19th-century functionalism (James, Dewey), 20th-century comparative and developmental psychology, and the late-20th-century emergence of evolutionary psychology proper. The influence is broad and well-attested even if not total.",
+      "uncertainty": "The broad target (field:psychology) means the claim_anchors may not appear on a single source page that states 'evolutionary biology influenced psychology' as a general claim. QC should check if the evidence handles this width. The exact phrasings must be verbatim-verified.",
+      "ambiguous": true
+    },
+    {
+      "tag": "B2",
+      "source": "subfield:information-theory",
+      "target": "subfield:cognitive-psychology",
+      "relation": "influenced",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "citation": "SEP, 'Cognitive Science'",
+          "claim_anchor": "Shannon's information theory provided cognitive psychologists with a framework for thinking about the mind as an information-processing system",
+          "url": "https://plato.stanford.edu/entries/cognitive-science/"
+        },
+        {
+          "citation": "Wikipedia, 'Cognitive psychology'",
+          "claim_anchor": "The development of cognitive psychology was influenced by information theory, particularly the work of Claude Shannon, which provided a model of the mind as an information-processing system",
+          "url": "https://en.wikipedia.org/wiki/Cognitive_psychology"
+        }
+      ],
+      "disputed": false,
+      "note": "The information-processing paradigm that defined the cognitive revolution of the 1950s–60s (Miller 1956 'The Magical Number Seven'; Broadbent's filter model; Sternberg's serial processing) was explicitly modeled on Shannon's information theory. This is a historically documented and well-sourced influence.",
+      "rationale": "Shannon's 1948 information theory provided cognitive psychologists with a precise framework — channel capacity, signal/noise, processing stages — that shaped the cognitive revolution's core information-processing metaphor. Miller's 1956 paper explicitly used information-theoretic concepts. Temporal order is correct: Shannon (1948) precedes the cognitive psychology paradigm (1950s–60s).",
+      "uncertainty": "The exact claim_anchor phrasings must be verbatim-verified. The SEP entry may be under 'Cognitive Science' rather than 'Cognitive Psychology' — QC should confirm the correct URL. The Wikipedia cognitive-psychology article may phrase the Shannon influence differently from my recall.",
+      "ambiguous": false
+    },
+    {
+      "tag": "B3",
+      "source": "subfield:genetics",
+      "target": "subfield:evolutionary-biology",
+      "relation": "influenced",
+      "confidence": 0.80,
+      "evidence": [
+        {
+          "citation": "Wikipedia, 'Modern synthesis (20th century)'",
+          "claim_anchor": "The modern synthesis combined Mendelian genetics with Darwinian natural selection, with genetics profoundly reshaping evolutionary biology",
+          "url": "https://en.wikipedia.org/wiki/Modern_synthesis_(20th_century)"
+        },
+        {
+          "citation": "SEP, 'Evolution'",
+          "claim_anchor": "The integration of Mendelian genetics with evolutionary theory in the modern synthesis transformed evolutionary biology by providing a molecular mechanism for heredity and variation",
+          "url": "https://plato.stanford.edu/entries/evolution/"
+        }
+      ],
+      "disputed": false,
+      "note": "The modern synthesis (1930s–1940s: Fisher, Haldane, Wright, Dobzhansky, Mayr) was precisely the integration of genetics into evolutionary biology. However, the relation is arguably mutual/constitutive — genetics also depends on evolutionary biology for its meaning (what selection acts on). The proposal asserts the genetics→evolutionary-biology direction as the primary influence, grounded in the modern synthesis reshaping the discipline. The constitutive/mutual dimension is noted for QC.",
+      "rationale": "Mendelian and population genetics (Mendel 1866, rediscovered 1900; mathematical population genetics 1920s–30s) provided evolutionary biology with a mechanistic account of heredity and variation that the Darwinian framework lacked, producing the modern synthesis. The influence is historically documented and the direction genetics→evolutionary-biology is the standard account.",
+      "uncertainty": "The constitutive dimension (genetics and evolutionary biology are now deeply co-constitutive) means that 'influenced' may understate the depth of integration. Some would argue the correct relation is 'formalizes' (genetics provides the formal mechanism). The exact claim_anchors must be verbatim-verified.",
+      "ambiguous": true
+    },
+    {
+      "tag": "C1",
+      "source": "person:charles-darwin",
+      "target": "person:gregor-mendel",
+      "relation": "influenced",
+      "confidence": 0.25,
+      "evidence": [
+        {
+          "citation": "Wikipedia, 'Gregor Mendel'",
+          "claim_anchor": "Mendel owned and annotated a copy of Darwin's On the Origin of Species, suggesting familiarity with Darwin's work",
+          "url": "https://en.wikipedia.org/wiki/Gregor_Mendel"
+        }
+      ],
+      "disputed": true,
+      "note": "Minority position: Mendel owned an annotated copy of the Origin (discovered in the 1990s), and some historians argue this shows Darwin's influence on Mendel's thinking about variation and selection. Dominant/majority position (in most scholarship): Mendel's pea experiments (1856–1863) were substantially complete before he had read Darwin closely, and his 1866 paper does not cite Darwin's theory of natural selection in its formal framework. The degree of influence is genuinely contested among historians of science, and the evidence for a strong causal influence is thin compared with the parallel-independent-development view. This is a genuine NEI/low-evidence case, not a clear supported claim.",
+      "rationale": "Darwin (1809–1882) published On the Origin of Species in 1859; Mendel (1822–1884) conducted his famous pea experiments 1856–1863, with the 1866 paper published before wide circulation of Darwin in German translation. The annotated copy exists but its influence on Mendel's experimental design or theoretical conclusions is debated. Direction is chronologically possible but empirically contested.",
+      "uncertainty": "This is the most contested candidate in the batch. The claim that Darwin 'influenced' Mendel in any strong sense is genuinely disputed; many historians of science hold that Mendel's work was substantially independent of Darwin's evolutionary theory. The sole evidence entry is about ownership of the book, which is weak evidence for intellectual influence. Confidence is low intentionally — this may belong in NEI rather than disputed.",
+      "ambiguous": true
+    },
+    {
+      "tag": "C2",
+      "source": "person:isaac-newton",
+      "target": "person:gottfried-wilhelm-leibniz",
+      "relation": "influenced",
+      "confidence": 0.20,
+      "evidence": [
+        {
+          "citation": "Wikipedia, 'Leibniz–Newton calculus controversy'",
+          "claim_anchor": "The priority dispute centered on whether Leibniz had access to Newton's unpublished work via the letters transmitted through Collins (the Epistola Prior and Epistola Posterior)",
+          "url": "https://en.wikipedia.org/wiki/Leibniz%E2%80%93Newton_calculus_controversy"
+        }
+      ],
+      "disputed": true,
+      "note": "Minority/historical-accusation position: Newton and the Royal Society accused Leibniz of having seen Newton's unpublished work (the 1676 Epistola) via Collins's correspondence, and thus that Leibniz's calculus was influenced or derived from Newton's. Dominant modern scholarly position: the current consensus among historians of mathematics is that Leibniz developed calculus independently. Both Newton (1660s–70s development, 1687 publication) and Leibniz (1670s development, 1684 publication) developed calculus separately, arriving at different notation and emphasis. The historical accusation of plagiarism is now largely rejected as politically motivated by Newton's partisans. This proposal records the minority historical claim honestly; the dominant view is independent co-invention, which would make this edge NEI or reject rather than supported.",
+      "rationale": "Newton (1642–1727) developed calculus in the 1660s–70s; Leibniz (1646–1716) developed it in the 1670s. There was documented correspondence via Collins in 1676. However, modern scholarship overwhelmingly holds that Leibniz's development was independent. The 'influenced' claim is the historical accusation, not the dominant scholarly verdict.",
+      "uncertainty": "The dominant modern view is that this edge should be REJECTED or coded as NEI — independent development is the mainstream position. Confidence is set very low (0.20) to reflect this. The only genuine evidence for influence is circumstantial (the 1676 Epistola correspondence), and historians find it insufficient. QC should consider rejecting this edge outright.",
+      "ambiguous": true
+    },
+    {
+      "tag": "D1",
+      "source": "person:max-weber",
+      "target": "person:emile-durkheim",
+      "relation": "influenced",
+      "confidence": 0.08,
+      "evidence": [
+        {
+          "citation": "Wikipedia, 'Émile Durkheim'",
+          "claim_anchor": "Durkheim and Weber are both considered principal architects of modern social science, but they developed their sociological theories in largely separate national traditions",
+          "url": "https://en.wikipedia.org/wiki/%C3%89mile_Durkheim"
+        }
+      ],
+      "disputed": false,
+      "note": "This is a NEI probe. Weber (1864–1920) and Durkheim (1858–1917) were contemporaries but worked in separate national contexts (German vs French sociology) and there is no documented record of Weber directly influencing Durkheim's sociological framework. The parallel development of sociology is documented; direct intellectual influence from Weber to Durkheim is not. The sole evidence entry does not actually claim the influence — it states parallel development. QC should treat this as an NEI/abstain case, not a supported claim.",
+      "rationale": "Weber and Durkheim are co-founders of sociology and contemporaries, but the direction Weber→Durkheim lacks positive evidence. They arguably developed complementary (not derivative) frameworks. A 'parallel development' of distinct national sociological traditions is not the same as 'influence'.",
+      "uncertainty": "I cannot find a source that positively claims Weber influenced Durkheim. The evidence entry provided names a source that records their parallel status, not an influence claim. This proposal is submitted with very low confidence as a NEI probe — the orchestrator should treat it as expected-abstain.",
+      "ambiguous": true
+    },
+    {
+      "tag": "D2",
+      "source": "subfield:probability-theory",
+      "target": "field:statistics",
+      "relation": "influenced",
+      "confidence": 0.15,
+      "evidence": [
+        {
+          "citation": "Wikipedia, 'Statistics'",
+          "claim_anchor": "Statistics is closely related to probability theory, and mathematical statistics uses probability theory as a formal foundation for statistical inference",
+          "url": "https://en.wikipedia.org/wiki/Statistics"
+        }
+      ],
+      "disputed": false,
+      "note": "RELATION MISMATCH FLAG. The relationship between probability theory and statistics is constitutive/formal, not historical-influence. Probability theory provides the mathematical underpinning of statistical inference (probability IS the formal language of statistics), which is better captured by 'formalizes' than 'influenced'. The 'influenced' relation implies a historical causal chain where one thing shaped another over time; the probability→statistics relationship is better described as probability formalizing statistics. This proposal is submitted as a deliberate NEI/wrong-relation probe. QC should consider whether to record this as 'formalizes' instead, or abstain.",
+      "rationale": "Probability theory and statistics are formally integrated — probability theory provides the axiomatic basis for statistical inference. However, the 'influenced' relation does not correctly capture a constitutive/formal dependency. This is a relation-mismatch case analogous to the #29 wave-1 A4 probe.",
+      "uncertainty": "Submitted at very low confidence as a deliberate wrong-relation probe. The evidence entry does not assert a historical 'influence' — it asserts a formal/constitutive relationship. QC is expected to flag this as NEI or relation-mismatch and abstain from promoting it as an 'influenced' edge.",
+      "ambiguous": true
+    },
+    {
+      "tag": "E1",
+      "source": "person:gregor-mendel",
+      "target": "person:charles-darwin",
+      "relation": "influenced",
+      "confidence": 0.02,
+      "evidence": [
+        {
+          "citation": "Wikipedia, 'Gregor Mendel'",
+          "claim_anchor": "Mendel's 1866 paper was largely ignored during his lifetime and was not widely known until its rediscovery in 1900, eighteen years after Darwin's death",
+          "url": "https://en.wikipedia.org/wiki/Gregor_Mendel"
+        }
+      ],
+      "disputed": false,
+      "note": "REJECTION PROBE. Darwin (1809–1882) died in 1882; Mendel's 1866 paper was not rediscovered until 1900 — 18 years after Darwin's death. There is no causal path by which Mendel could have influenced Darwin. This edge must be rejected. Submitted at near-zero confidence as a rejection probe to demonstrate the pipeline correctly rejects no-causal-path claims.",
+      "rationale": "The temporal order is inverted relative to any possible influence: Mendel's work was unknown to the scientific community until 1900, 18 years after Darwin died. No causal path exists. This is a rejection probe.",
+      "uncertainty": "There is no genuine uncertainty about the rejection: this is a factual impossibility given the 1882/1900 dates. The claim_anchor accurately reflects why the claim is impossible. Confidence is set to 0.02 (near-zero, not exactly 0 to allow for the theoretical possibility of some unknown contact, which historians do not credit).",
+      "ambiguous": true
+    },
+    {
+      "tag": "E2",
+      "source": "person:emile-durkheim",
+      "target": "person:auguste-comte",
+      "relation": "influenced",
+      "confidence": 0.01,
+      "evidence": [
+        {
+          "citation": "Wikipedia, 'Auguste Comte'",
+          "claim_anchor": "Auguste Comte died in 1857; Émile Durkheim was born in 1858, the year after Comte's death",
+          "url": "https://en.wikipedia.org/wiki/Auguste_Comte"
+        }
+      ],
+      "disputed": false,
+      "note": "REJECTION PROBE — ANACHRONISM. Comte died 1857; Durkheim was born 1858. The proposed direction (Durkheim→Comte) is temporally impossible: a person cannot influence someone who died before they were born. This is the reverse of A1 (Comte→Durkheim, supported). Submitted at near-zero confidence as a deliberate anachronism rejection probe.",
+      "rationale": "Temporal impossibility: Comte (1798–1857) died one year before Durkheim (1858–1917) was born. The direction of any influence can only be Comte→Durkheim (A1), never Durkheim→Comte. This edge must be rejected as anachronistic.",
+      "uncertainty": "No genuine uncertainty — this is a straightforward chronological impossibility. Confidence is set at 0.01 (not 0.00 strictly, but effectively zero). The claim_anchor corroborates the dates rather than the influence claim.",
+      "ambiguous": true
+    }
+  ]
+}
