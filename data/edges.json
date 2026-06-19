@@ -9525,5 +9525,233 @@
       "proposed_at": "2026-06-19"
     },
     "note": "Nash formalized non-cooperative game theory with the Nash equilibrium (1950) (MacTutor Nash: \"During this period Nash established the mathematical principles of game theory\"; SEP Game Theory: the 1944 von Neumann–Morgenstern breakthrough should be read \"with classic papers of John Nash (1950a, 1950b, 1951)\"). Layered founding (record-not-resolve, not disputed): Nash's foundational formalization extended the 1944 von Neumann–Morgenstern founding rather than co-originating it; founded_or_formalized covers \"helped found or formalize\"."
+  },
+  {
+    "id": "edge:oskar-morgenstern-founded-game-theory",
+    "source": "person:oskar-morgenstern",
+    "target": "subfield:game-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Morgenstern co-founded game theory with von Neumann (SEP Game Theory: \"Game theory ... was given its first general mathematical formulation by John von Neumann and Oskar Morgenstern (1944)\"; Wikipedia Game theory: \"Von Neumann's work in game theory culminated in his 1944 book Theory of Games and Economic Behavior, co-authored with Oskar Morgenstern\"). Plural/layered founding preserved (record-not-resolve, not disputed): co-exists with the existing von Neumann and Nash edges — Morgenstern is the true 1944 co-author flagged in the wave-1 (formal-founders-v1) note; this edge does not adjudicate sole authorship."
+  },
+  {
+    "id": "edge:richard-dedekind-founded-set-theory",
+    "source": "person:richard-dedekind",
+    "target": "subfield:set-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Dedekind co-initiated modern set theory with Cantor (Wikipedia Set theory: \"The modern study of set theory was initiated by the German mathematicians Richard Dedekind and Georg Cantor in the 1870s\"; SEP 'Dedekind's Contributions to the Foundations of Mathematics', §2.3 The Rise of Modern Set Theory: \"Dedekind is also among the first to consider, not just sets of numbers, but sets of other kinds of objects as well\"). Plural founding preserved (record-not-resolve, not disputed): Cantor is commonly considered the primary founder; Dedekind is the co-initiator — co-exists with the existing Cantor edge."
+  },
+  {
+    "id": "edge:alonzo-church-founded-computability-theory",
+    "source": "person:alonzo-church",
+    "target": "subfield:computability-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Church co-founded computability theory (Wikipedia Computability theory: \"Computability theory originated in the 1930s, with the work of Kurt Gödel, Alonzo Church, Rózsa Péter, Alan Turing, Stephen Kleene, and Emil Post\"; SEP Church-Turing Thesis: Church (1936) proposed identifying the effectively calculable functions with the recursive / λ-definable functions, and \"the concept of a λ-definable function was due to Church and Kleene\"). Plural founding preserved (record-not-resolve, not disputed): co-exists with the existing Turing edge — the Church–Turing thesis is the joint result."
+  },
+  {
+    "id": "edge:david-hilbert-founded-proof-theory",
+    "source": "person:david-hilbert",
+    "target": "subfield:proof-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "proposed",
+    "evidence": [
+      "source:mactutor",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Hilbert founded proof theory (Beweistheorie) through his program (MacTutor Hilbert: in 1934 and 1939 the two volumes of Grundlagen der Mathematik were published \"which were intended to lead to a 'proof theory', a direct check for the consistency of mathematics\"; SEP 'The Development of Proof Theory', §'Hilbert's old axiomatic proof theory': \"Hilbert's book Grundlagen der Geometrie of 1899 set the stage for the central foundational problems of mathematics of the early decades of the 20th century\"). Layered founding preserved (record-not-resolve, not disputed): Gentzen's 1930s work marks the beginning of post-Gödelian/structural proof theory, building on Hilbert's founding program."
+  },
+  {
+    "id": "edge:carl-friedrich-gauss-founded-number-theory",
+    "source": "person:carl-friedrich-gauss",
+    "target": "subfield:number-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Gauss founded modern number theory with Disquisitiones Arithmeticae (1801) (Wikipedia Number theory: \"Carl Friedrich Gauss (1777–1855) wrote Disquisitiones Arithmeticae (1801), which had an immense influence in the area of number theory and set its agenda for much of the 19th century\"; MacTutor Gauss: \"He published the book Disquisitiones Arithmeticae (Investigations in arithmetic) in the summer of 1801\", the founding systematic treatise of the modern subject)."
+  },
+  {
+    "id": "edge:henri-poincare-founded-algebraic-topology",
+    "source": "person:henri-poincare",
+    "target": "subfield:algebraic-topology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.96,
+    "status": "proposed",
+    "evidence": [
+      "source:mactutor",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Poincaré originated algebraic topology with Analysis Situs (1895) (MacTutor Poincaré: \"He can be said to have been the originator of algebraic topology\"; Wikipedia Henri Poincaré: \"Poincaré is regarded as the creator of the field of algebraic topology\"). MacTutor adds that for 40 years after his first 1894 paper \"essentially all of the ideas and techniques in the subject were based on his work.\""
+  },
+  {
+    "id": "edge:emmy-noether-founded-algebra",
+    "source": "person:emmy-noether",
+    "target": "subfield:algebra",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:mactutor",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Noether founded modern/abstract algebra (MacTutor Noether: 'Idealtheorie in Ringbereichen' (1921) \"was of fundamental importance in the development of modern algebra\"; Wikipedia Emmy Noether: \"a German mathematician who made many important contributions to abstract algebra\"). Terminological nuance (sourced, not doubted): Noether founded specifically *modern/abstract* algebra; the target subfield:algebra is the broader algebra node, so confidence is moderated (parallel to the wave-1 Boole → mathematical-logic case)."
+  },
+  {
+    "id": "edge:norbert-wiener-founded-cybernetics",
+    "source": "person:norbert-wiener",
+    "target": "subfield:cybernetics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.97,
+    "status": "proposed",
+    "evidence": [
+      "source:mactutor",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Wiener founded cybernetics, naming it in his 1948 book Cybernetics (MacTutor Wiener quotes Wiener describing his work as leading \"ultimately to found the discipline of cybernetics\"; Wikipedia Cybernetics: \"According to Norbert Wiener, the word cybernetics was coined by a research group involving himself and Arturo Rosenblueth in the summer of 1947\", and gives Wiener's canonical definition of the field as \"control and communication in the animal and the machine\")."
+  },
+  {
+    "id": "edge:ronald-fisher-founded-mathematical-statistics",
+    "source": "person:ronald-fisher",
+    "target": "subfield:mathematical-statistics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Fisher co-founded modern mathematical statistics (Wikipedia Ronald Fisher: described as \"a genius who almost single-handedly created the foundations for modern statistical science\" and \"as the founder of modern statistics, Fisher made countless contributions, including creating the modern method of maximum likelihood\"; MacTutor Fisher documents his founding statistical work from the theory of errors onward). Plural founding preserved (record-not-resolve, not disputed): co-exists with the Pearson edge."
+  },
+  {
+    "id": "edge:karl-pearson-founded-mathematical-statistics",
+    "source": "person:karl-pearson",
+    "target": "subfield:mathematical-statistics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:mactutor",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Pearson co-founded mathematical statistics (MacTutor Pearson: \"Pearson is known as one of the founders of statistics\"; Wikipedia Karl Pearson: \"He has been credited with establishing the discipline of mathematical statistics\", founding the world's first university statistics department in 1911 and co-founding the journal Biometrika). Plural founding preserved (record-not-resolve, not disputed): co-exists with the Fisher edge."
+  },
+  {
+    "id": "edge:isaac-newton-founded-calculus",
+    "source": "person:isaac-newton",
+    "target": "subfield:calculus",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:mactutor",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Newton founded calculus independently of Leibniz (MacTutor Newton: \"He laid the foundation for differential and integral calculus\", \"several years before its independent discovery by Leibniz\"; Wikipedia History of calculus: \"Infinitesimal calculus was developed in the late 17th century by Isaac Newton and Gottfried Wilhelm Leibniz independently of each other\"). Plural founding preserved (record-not-resolve, not disputed): co-exists with the Leibniz edge — the documented dual independent founding; the priority controversy is historical record, not adjudicated here."
+  },
+  {
+    "id": "edge:gottfried-wilhelm-leibniz-founded-calculus",
+    "source": "person:gottfried-wilhelm-leibniz",
+    "target": "subfield:calculus",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:mactutor",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-19"
+    },
+    "note": "Leibniz founded calculus independently of Newton (MacTutor Leibniz: \"It was during this period in Paris that Leibniz developed the basic features of his version of the calculus\"; Wikipedia History of calculus: \"Infinitesimal calculus was developed in the late 17th century by Isaac Newton and Gottfried Wilhelm Leibniz independently of each other\"). Plural founding preserved (record-not-resolve, not disputed): co-exists with the Newton edge; Leibniz's notation (d, ∫) is the one in standard use."
   }
 ]

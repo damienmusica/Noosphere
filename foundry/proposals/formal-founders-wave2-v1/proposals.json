@@ -1,0 +1,659 @@
+{
+  "batch_id": "formal-founders-wave2-v1",
+  "generated_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-19"
+  },
+  "relation_scope": ["founded_or_formalized"],
+  "nodes": [
+    {
+      "id": "person:oskar-morgenstern",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Oskar Morgenstern",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q77791"
+      },
+      "rationale": "Morgenstern co-authored 'Theory of Games and Economic Behavior' (1944) with von Neumann, which is the canonical founding document of game theory; scoping.md W1 designates him as a documented third co-founder alongside existing nodes person:john-von-neumann and person:john-nash.",
+      "uncertainty": "QID Q77791 is an untrusted training-recall hint — QC must live-verify via Wikidata wbsearchentities + wbgetentities (P31=Q5, P570 present). QID hallucination rate is high (~88–93% per scoping notes); treat as hint only. The 'co-founder' framing for Morgenstern is very clean (he is the named co-author with von Neumann), but wave-1 notes flagged that Nash's relationship to the founding is more 'extension' than co-founding; this node itself is not affected by that nuance.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:richard-dedekind",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Richard Dedekind",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q76489"
+      },
+      "rationale": "Dedekind contributed foundationally to set theory via the Cantor-Dedekind correspondence and his own constructions (Dedekind cuts, 1872); Zermelo is recorded as calling set theory 'created by Cantor and Dedekind'; scoping.md W2 designates him as a co-founder alongside existing node person:georg-cantor.",
+      "uncertainty": "QID Q76489 is an untrusted training-recall hint — QC must live-verify. Dedekind is the less-often-named founder of set theory compared to Cantor; the co-founder framing depends on how broadly 'founded' is read. The Zermelo quotation is a memory-recalled paraphrase; QC should locate and verify the exact Zermelo text.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:alonzo-church",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Alonzo Church",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q110894"
+      },
+      "rationale": "Church introduced lambda calculus (1936) as a formal model of computability, co-establishing computability theory alongside Turing machines; the Church-Turing thesis names both contributions as equivalent; scoping.md W3 designates him as co-founder alongside existing node person:alan-turing.",
+      "uncertainty": "QID Q110894 is an untrusted training-recall hint — QC must live-verify. Church's co-founding of computability theory is well-documented but Turing machines became the dominant canonical model; the 'co-founder' framing is standard in the Church-Turing thesis literature but some historiography treats Church's contribution as co-equal and others as slightly secondary to Turing's. Node itself is not disputed.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:david-hilbert",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "David Hilbert",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q48641"
+      },
+      "rationale": "Hilbert founded proof theory (Beweistheorie) through his formalist program in the 1920s, which introduced the systematic study of formal proofs as mathematical objects; scoping.md W4 designates him as sole founder of subfield:proof-theory.",
+      "uncertainty": "QID Q48641 is an untrusted training-recall hint — QC must live-verify. Hilbert's founding of proof theory is standard in the literature; Gentzen later became a central figure (cut-elimination theorem). The scoping notes this is clean. Confidence will be slightly lowered in the edge because 'Hilbert's program' is sometimes characterized as 'proposed' rather than 'founded' the field, but the standard historiography credits Hilbert as the founder.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:carl-friedrich-gauss",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Carl Friedrich Gauss",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q6722"
+      },
+      "rationale": "Gauss's 1801 'Disquisitiones Arithmeticae' systematized number theory and established it as a rigorous mathematical discipline; scoping.md W5 designates him as founder of subfield:number-theory. This same node also serves as the source for the probe edge P3 (Gauss → probability-theory, which is expected to be rejected).",
+      "uncertainty": "QID Q6722 is an untrusted training-recall hint — QC must live-verify. Gauss's founding of number theory via Disquisitiones is widely attested; the QID for such a prominent historical figure is more likely correct than for less-known figures, but hallucination still possible. Note: this node carries both a genuine edge (W5 → number-theory) and a probe edge (P3 → probability-theory); the probe edge is deliberately false.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:henri-poincare",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Henri Poincaré",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q169428"
+      },
+      "rationale": "Poincaré's 1895 'Analysis Situs' introduced the fundamental group and homology, founding algebraic topology as a discipline; scoping.md W6 designates him as founder of subfield:algebraic-topology.",
+      "uncertainty": "QID Q169428 is an untrusted training-recall hint — QC must live-verify. Poincaré's founding of algebraic topology is well-documented; the QID may be off. Minor terminological nuance: 'Analysis Situs' was the earlier term; later work by Noether and others consolidated the algebraic structure, but Poincaré is universally credited with founding the field.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:emmy-noether",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Emmy Noether",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q17099"
+      },
+      "rationale": "Noether's 1920s work on abstract rings and ideals founded modern abstract algebra; she is widely credited as the founder of abstract/modern algebra; scoping.md W7 designates her as founder of subfield:algebra with a noted terminological nuance (modern/abstract algebra vs. the broader algebra subfield).",
+      "uncertainty": "QID Q17099 is an untrusted training-recall hint — QC must live-verify. The terminological nuance is real: 'algebra' as a subfield node includes pre-Noetherian algebra (polynomial equations, etc.); Noether's contribution is specifically to 'modern/abstract algebra' (ring theory, module theory). The edge confidence will be set lower (~0.85) to reflect this nuance. The node itself is not ambiguous.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:norbert-wiener",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Norbert Wiener",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q128952"
+      },
+      "rationale": "Wiener coined the term 'cybernetics' and published 'Cybernetics: Or Control and Communication in the Animal and the Machine' (1948), founding cybernetics as a formal discipline; scoping.md W8 designates him as founder of subfield:cybernetics.",
+      "uncertainty": "QID Q128952 is an untrusted training-recall hint — QC must live-verify. Wiener's founding of cybernetics is uncontested; he coined the term and wrote the founding text. Minor nuance: Wiener often worked in parallel with other early cyberneticists (Arturo Rosenblueth, Julian Bigelow), but the founding credit is universally his.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:ronald-fisher",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Ronald Fisher",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q216723"
+      },
+      "rationale": "Fisher's work in the 1920s–1930s on maximum likelihood estimation, analysis of variance, and experimental design established the core framework of modern mathematical statistics; scoping.md W9 designates him as co-founder of subfield:mathematical-statistics alongside Pearson.",
+      "uncertainty": "QID Q216723 is an untrusted training-recall hint — QC must live-verify. The Fisher–Pearson co-founding is well-documented; however, Fisher and Pearson had a famous personal dispute. Both are co-existing edges under the record-not-resolve policy. The co-founding framing is the standard historiographical reading.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:karl-pearson",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Karl Pearson",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q179910"
+      },
+      "rationale": "Pearson developed chi-squared test, standard deviation, correlation coefficient, and regression analysis, foundational contributions to mathematical statistics; he is co-credited with Fisher as a founder of mathematical statistics; scoping.md W10 designates him as co-founder of subfield:mathematical-statistics alongside Fisher.",
+      "uncertainty": "QID Q179910 is an untrusted training-recall hint — QC must live-verify. Pearson's contributions predate Fisher's but Fisher extended them significantly. The co-founding framing is standard. The real historical complexity is that Pearson represents the 'biometric' tradition while Fisher represents the 'inferential statistics' tradition; both fall within mathematical statistics.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:isaac-newton",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Isaac Newton",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q935"
+      },
+      "rationale": "Newton independently invented calculus (fluxions) in the 1660s, published in 'Principia' (1687) and 'Opticks' (1704); he is the canonical co-founder of calculus alongside Leibniz; scoping.md W11 designates him as co-founder of subfield:calculus.",
+      "uncertainty": "QID Q935 is an untrusted training-recall hint — QC must live-verify. Newton is one of the most famous historical figures; the QID may be more reliably recalled than for less prominent persons, but hallucination is still possible. Newton and Leibniz independently invented calculus; the notation dispute is historical but both are recognized as co-founders. The node itself is not ambiguous.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:gottfried-wilhelm-leibniz",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Gottfried Wilhelm Leibniz",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q9047"
+      },
+      "rationale": "Leibniz independently invented calculus (with modern notation) in the 1670s–1680s, published 1684–1686; the notation (dy/dx, ∫) became standard; he is the canonical co-founder of calculus alongside Newton; scoping.md W12 designates him as co-founder of subfield:calculus.",
+      "uncertainty": "QID Q9047 is an untrusted training-recall hint — QC must live-verify. Leibniz's calculus notation became the standard used today, which makes his contribution arguably the more directly influential on modern practice; however, both Newton and Leibniz are equally credited as founders. The QID for Leibniz may be off; he is a prominent figure but less uniformly recalled than Newton.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:euclid",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Euclid",
+      "is_living_person": false,
+      "probe": true,
+      "external_ids": {
+        "wikidata": "Q8016"
+      },
+      "rationale": "PROBE-ONLY node. This node exists solely to carry deliberate rejection-probe edge P1 (Euclid → subfield:set-theory). Euclid is a real, well-documented deceased historical person (c. 300 BCE), but this node is NOT being claimed as a genuine founder of set theory. The probe tests anachronism rejection: Euclid predates set theory by approximately 2,200 years (set theory was founded by Cantor in the 1870s CE). This node must NOT be written to /data.",
+      "uncertainty": "QID Q8016 is an untrusted training-recall hint — QC must live-verify (for rejection-probe measurement purposes only). Euclid's personhood is itself slightly uncertain (he may be a legendary or composite figure), but his historical existence as a mathematical author is broadly accepted. The probe's rejection criterion is the anachronism of the edge, not any doubt about the node.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:aristotle",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Aristotle",
+      "is_living_person": false,
+      "probe": true,
+      "external_ids": {
+        "wikidata": "Q868"
+      },
+      "rationale": "PROBE-ONLY node. This node exists solely to carry deliberate rejection-probe edge P4 (Aristotle → subfield:mathematical-logic). Aristotle is a real, well-documented deceased historical person (384–322 BCE), but this node is NOT being claimed as a genuine founder of mathematical/symbolic logic. The probe tests over-broad/referent rejection: Aristotle founded ancient syllogistic logic, but mathematical/symbolic logic as a formal discipline was founded by Boole and Frege in the 19th century. This node must NOT be written to /data.",
+      "uncertainty": "QID Q868 is an untrusted training-recall hint — QC must live-verify (for probe measurement). The attribution ambiguity is well-defined: Aristotle genuinely 'founded' logic in a broad ancient sense; the question is whether this constitutes founding the modern subfield 'mathematical logic'. The rejection rationale is clear.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:pythagoras",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Pythagoras",
+      "is_living_person": false,
+      "probe": true,
+      "external_ids": {
+        "wikidata": "Q10261"
+      },
+      "rationale": "PROBE-ONLY node. This node exists solely to carry deliberate rejection-probe edge P5 (Pythagoras → subfield:number-theory). Pythagoras is a legendary ancient figure (c. 570–495 BCE) associated with number mysticism, but this node is NOT being claimed as a genuine founder of number theory. The probe tests legendary-attribution rejection: the historical Pythagoras is barely documented (most accounts are from centuries later); Pythagorean number mysticism is not the same as modern number theory, which was systematized by Gauss (Disquisitiones, 1801). This node must NOT be written to /data.",
+      "uncertainty": "QID Q10261 is an untrusted training-recall hint — QC must live-verify. Pythagoras's historical existence is itself contested in scholarship; many accounts come from Iamblichus and Porphyry writing ~800 years later. The probe is doubly rejectable: legendary attribution AND anachronism (number mysticism ≠ number theory).",
+      "ambiguous": true
+    }
+  ],
+  "edges": [
+    {
+      "candidate_id": "W1",
+      "source": "person:oskar-morgenstern",
+      "target": "subfield:game-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.97,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Game Theory' (Ross, 1997, rev. 2023), §1 Historical Introduction",
+          "claim_anchor": "The mathematical foundations of game theory were laid by John von Neumann and Oskar Morgenstern in their 1944 book Theory of Games and Economic Behavior, which provided the first systematic mathematical treatment of strategic interaction among rational agents.",
+          "url": "https://plato.stanford.edu/entries/game-theory/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'Oskar Morgenstern' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Morgenstern co-founded game theory with John von Neumann through their 1944 collaboration Theory of Games and Economic Behavior, which created the mathematical framework for analyzing strategic interactions.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Morgenstern/"
+        }
+      ],
+      "disputed": false,
+      "note": "Plural founding: Morgenstern (W1) co-exists with existing edges person:john-von-neumann → subfield:game-theory and person:john-nash → subfield:game-theory (both from wave-1). Wave-1 notes flagged that von Neumann + Morgenstern are the true co-founders of cooperative game theory (1944), while Nash extended to non-cooperative games (1950). All three carry founded_or_formalized edges per the record-not-resolve policy. Morgenstern is the cleaner co-founding claim of the three (he is the named co-author). Also discriminated against probe P2 (Shannon → game-theory, expected reject).",
+      "rationale": "Morgenstern co-authored the 1944 founding document of game theory with von Neumann; this is a direct co-founding attribution, not an extension or influence.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases of SEP and MacTutor content — verbatim accuracy must be verified by QC against live pages. The MacTutor entry for Morgenstern may be shorter or differently phrased than recalled. The founding attribution itself is not in doubt.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "W2",
+      "source": "person:richard-dedekind",
+      "target": "subfield:set-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Set Theory' (Incurvati, 2012, rev. 2022), §1 The Origins of Set Theory",
+          "claim_anchor": "Set theory was developed in the 1870s through the joint work of Georg Cantor and Richard Dedekind, whose correspondence and independent investigations established the basic concepts of infinite sets and transfinite arithmetic.",
+          "url": "https://plato.stanford.edu/entries/set-theory/"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Set theory' (encyclopediaofmath.org, Springer/EMS)",
+          "claim_anchor": "The creation of set theory is generally attributed to Georg Cantor and Richard Dedekind, who in the 1870s developed the theory of infinite sets through both independent work and extensive correspondence.",
+          "url": "https://encyclopediaofmath.org/wiki/Set_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "Plural founding: Dedekind (W2) co-exists with existing edge person:georg-cantor → subfield:set-theory (wave-1). The Zermelo quotation ('created by Cantor and Dedekind') is the standard historiographical support; however Cantor is the more prominent founder and Dedekind's role is sometimes characterized as 'contributor' rather than 'co-founder'. Confidence 0.88 reflects this nuance. Also discriminated against probe P1 (Euclid → set-theory, expected reject).",
+      "rationale": "Dedekind's correspondence with Cantor and his own foundational constructions (Dedekind cuts) are co-foundational for set theory; Zermelo explicitly credits both.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The Zermelo quotation is a paraphrase from memory and may not appear verbatim in the sources cited; QC should locate the original Zermelo reference. Dedekind's founding contribution is well-attested but he is less often named as a 'founder' than Cantor.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "W3",
+      "source": "person:alonzo-church",
+      "target": "subfield:computability-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'The Church-Turing Thesis' (Copeland, 2002, rev. 2023), §2 Turing's Analysis and Church's Thesis",
+          "claim_anchor": "In 1936, Alonzo Church introduced the lambda calculus as a formal model of effective computability, and Church's Thesis — that the lambda-definable functions capture all effectively computable functions — stands as one of the two co-equal founding contributions to computability theory alongside Turing's analysis.",
+          "url": "https://plato.stanford.edu/entries/church-turing/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'Alonzo Church' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Church's 1936 paper 'An Unsolvable Problem of Elementary Number Theory' introduced the lambda calculus and is one of the founding documents of computability theory, establishing independently of Turing the undecidability of the Entscheidungsproblem.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Church/"
+        }
+      ],
+      "disputed": false,
+      "note": "Plural founding: Church (W3) co-exists with existing edge person:alan-turing → subfield:computability-theory (wave-1). The Church-Turing thesis canonically names both contributions as equivalent formalizations. Church's paper appeared slightly before Turing's 1936 paper. Both edges are founded_or_formalized with no dispute.",
+      "rationale": "Church's lambda calculus (1936) is one of the two co-equal founding formalisms of computability theory, named in the Church-Turing thesis alongside Turing machines.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The SEP Copeland entry is well-known and covers Church extensively; the exact phrasing may differ from what is recalled here.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "W4",
+      "source": "person:david-hilbert",
+      "target": "subfield:proof-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.90,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Hilbert's Program' (Zach, 2003, rev. 2023), §2 The Origins of Proof Theory",
+          "claim_anchor": "Hilbert founded proof theory (Beweistheorie) in the 1920s as the mathematical study of formal proofs, introducing the program of formalizing all of mathematics and proving its consistency by finitary means.",
+          "url": "https://plato.stanford.edu/entries/hilbert-program/"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Proof theory' (encyclopediaofmath.org, Springer/EMS)",
+          "claim_anchor": "Proof theory was initiated by David Hilbert in the 1920s as part of his formalist program; it is the branch of mathematical logic that studies the structure and properties of formal mathematical proofs.",
+          "url": "https://encyclopediaofmath.org/wiki/Proof_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "Sole founding: Hilbert is the standard founder of proof theory; Gentzen later developed cut-elimination (1935) and is central to structural proof theory, but Hilbert initiated the field. Scoping notes this is clean. Confidence 0.90 rather than higher because the 'Hilbert's program' framing could be characterized as 'proposed a program' rather than 'founded the subfield'; the standard historiography credits him as founder.",
+      "rationale": "Hilbert initiated proof theory (Beweistheorie) in the 1920s through his formalist program, introducing the systematic mathematical study of formal proofs; he is the standard founder of the subfield.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases of SEP Hilbert's Program and EoM Proof Theory entries — verbatim QC check required. The SEP Zach entry exists and covers this well; the exact phrasing may differ. Minor uncertainty: whether 'Hilbert founded proof theory' or 'Hilbert's program led to proof theory as a discipline' — the former is the standard reading but the distinction exists.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "W5",
+      "source": "person:carl-friedrich-gauss",
+      "target": "subfield:number-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "citation": "MacTutor History of Mathematics, 'Carl Friedrich Gauss' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Gauss's 1801 Disquisitiones Arithmeticae systematized and advanced number theory to such a degree that it is universally regarded as the founding work of modern number theory, establishing the discipline on rigorous mathematical foundations for the first time.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Gauss/"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Number theory' (encyclopediaofmath.org, Springer/EMS)",
+          "claim_anchor": "The modern systematic study of number theory begins with Carl Friedrich Gauss's Disquisitiones Arithmeticae (1801), which organized and extended previous results and introduced the theory of congruences, providing the foundation of modern number theory.",
+          "url": "https://encyclopediaofmath.org/wiki/Number_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "Genuine edge W5. Also compare probe P5 (Pythagoras → same target subfield:number-theory, expected reject). The Gauss–Pythagoras discrimination on the same target is the key (ii) measurement pair for number-theory. Gauss's Disquisitiones is universally cited; the attribution is very clean. Note: the same Gauss node also carries probe edge P3 (Gauss → subfield:probability-theory, expected reject) — that edge is false, this W5 edge is genuine.",
+      "rationale": "Gauss's 1801 Disquisitiones Arithmeticae is universally identified as the founding document of modern number theory; the founding attribution is clean and uncontested.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases of MacTutor and EoM content — verbatim QC check required. The founding attribution itself is one of the most secure in mathematics history.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "W6",
+      "source": "person:henri-poincare",
+      "target": "subfield:algebraic-topology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Poincaré's Philosophy of Mathematics' (Folina, 2014, rev. 2021)",
+          "claim_anchor": "Poincaré's 1895 paper Analysis Situs and its five supplements (1899–1904) founded algebraic topology by introducing the fundamental group, homology groups, and the Euler characteristic as topological invariants.",
+          "url": "https://plato.stanford.edu/entries/poincare-mathematics/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'Jules Henri Poincaré' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Poincaré is regarded as the founder of algebraic topology; his 1895 Analysis Situs introduced the fundamental concepts of the field including the fundamental group and homology, which remain central to algebraic topology today.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Poincare/"
+        }
+      ],
+      "disputed": false,
+      "note": "Sole founding: Poincaré's Analysis Situs (1895) is universally credited as the founding document of algebraic topology. Later workers (Noether, Hopf, etc.) contributed to making the algebraic structure more rigorous but did not displace the founding attribution.",
+      "rationale": "Poincaré's 1895 Analysis Situs introduced fundamental group and homology, founding algebraic topology; this is the canonical founding attribution in standard sources.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The SEP entry is on 'Poincaré's Philosophy of Mathematics' rather than algebraic topology directly; QC should check whether this entry contains the specific founding claim or whether a more direct source (MacTutor, EoM) is better. The MacTutor entry is more likely to contain the direct founding statement.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "W7",
+      "source": "person:emmy-noether",
+      "target": "subfield:algebra",
+      "relation": "founded_or_formalized",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "citation": "MacTutor History of Mathematics, 'Amalie Emmy Noether' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Noether is universally regarded as the founder of modern abstract algebra; her work on abstract ring theory and ideals in the 1920s transformed algebra from a collection of computational techniques into an abstract structural discipline.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Noether_Emmy/"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Algebra' (encyclopediaofmath.org, Springer/EMS)",
+          "claim_anchor": "Modern abstract algebra was largely created through the work of Emmy Noether in the 1920s, who introduced the axiomatic treatment of rings, ideals, and modules that defines the field today.",
+          "url": "https://encyclopediaofmath.org/wiki/Algebra"
+        }
+      ],
+      "disputed": false,
+      "note": "Terminological nuance noted in scoping.md: Noether founded 'modern/abstract algebra'; the subfield target subfield:algebra is the broader node (including pre-Noetherian algebra). Confidence 0.85 reflects this nuance — parallel to wave-1 Boole → mathematical-logic (0.82). The edge is defensible under founded_or_formalized because Noether's work is the founding of algebra as it is currently practiced and defined, even though historical algebra (equations, polynomials) predates her. QC should note this nuance.",
+      "rationale": "Noether's 1920s axiomatic ring theory founded modern/abstract algebra; she is universally credited as the founder of the modern form of the subfield.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The terminological nuance (modern/abstract algebra vs. the broader subfield:algebra node) is the main uncertainty here; the founding attribution for modern algebra is very clean, but whether it applies to the broader 'algebra' subfield is a legitimate question for QC.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "W8",
+      "source": "person:norbert-wiener",
+      "target": "subfield:cybernetics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.97,
+      "evidence": [
+        {
+          "citation": "MacTutor History of Mathematics, 'Norbert Wiener' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Wiener founded cybernetics with his 1948 book Cybernetics: Or Control and Communication in the Animal and the Machine, coining the term and establishing the study of feedback, control, and communication in systems as a formal mathematical discipline.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Wiener_Norbert/"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Cybernetics' or 'Norbert Wiener' — via encyclopediaofmath.org, 'Cybernetics' (encyclopediaofmath.org, Springer/EMS)",
+          "claim_anchor": "Cybernetics as a scientific discipline was founded by Norbert Wiener, who coined the term in his 1948 monograph and defined it as the study of control and communication in the animal and the machine.",
+          "url": "https://encyclopediaofmath.org/wiki/Cybernetics"
+        }
+      ],
+      "disputed": false,
+      "note": "Sole founding: Wiener coined the term and wrote the founding text. The founding attribution is very clean. Minor nuance: collaborators Rosenblueth and Bigelow contributed to early cybernetics ideas, but the founding text and term are Wiener's alone.",
+      "rationale": "Wiener coined 'cybernetics' and published the 1948 founding monograph establishing the field; the founding attribution is uncontested.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The first cited source references a MacTutor entry; QC should verify the MacTutor URL for Wiener. The EoM Cybernetics entry may not exist under that exact URL; QC should also check the EoM URL stability. The founding claim itself is not in doubt.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "W9",
+      "source": "person:ronald-fisher",
+      "target": "subfield:mathematical-statistics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "citation": "MacTutor History of Mathematics, 'Ronald Aylmer Fisher' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Fisher is widely regarded as a founder of modern mathematical statistics; his 1922 paper 'On the Mathematical Foundations of Theoretical Statistics' and subsequent work on maximum likelihood, analysis of variance, and experimental design established the mathematical framework of the discipline.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Fisher/"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Mathematical statistics' (encyclopediaofmath.org, Springer/EMS)",
+          "claim_anchor": "The foundations of mathematical statistics were laid primarily by Karl Pearson and Ronald Fisher in the late 19th and early 20th centuries, with Fisher's contributions including the theory of maximum likelihood estimation, analysis of variance, and the design of experiments.",
+          "url": "https://encyclopediaofmath.org/wiki/Mathematical_statistics"
+        }
+      ],
+      "disputed": false,
+      "note": "Plural founding: Fisher (W9) co-exists with Pearson (W10) on the same target subfield:mathematical-statistics. Fisher and Pearson had a famous personal dispute but are both recognized as founders; the record-not-resolve policy applies. Fisher's co-founding is specifically for inferential statistics and experimental design; Pearson's is for descriptive statistics and biometrics. Both are within mathematical statistics.",
+      "rationale": "Fisher's 1922 paper and subsequent 1930s work established the core inferential framework of mathematical statistics; he is co-credited with Pearson as a founder.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The co-founding framing is well-established; minor uncertainty about whether the EoM URL for 'Mathematical statistics' is exactly as cited.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "W10",
+      "source": "person:karl-pearson",
+      "target": "subfield:mathematical-statistics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "citation": "MacTutor History of Mathematics, 'Karl Pearson' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Pearson is one of the founders of mathematical statistics; his introduction of the chi-squared test (1900), standard deviation, correlation coefficient, and the method of moments provided the foundational tools of modern statistical analysis.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Pearson/"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Mathematical statistics' (encyclopediaofmath.org, Springer/EMS)",
+          "claim_anchor": "The foundations of mathematical statistics were laid primarily by Karl Pearson and Ronald Fisher; Pearson's contributions include the chi-squared test, the concept of standard deviation, and the correlation coefficient, which remain central tools of statistics.",
+          "url": "https://encyclopediaofmath.org/wiki/Mathematical_statistics"
+        }
+      ],
+      "disputed": false,
+      "note": "Plural founding: Pearson (W10) co-exists with Fisher (W9) on the same target. Pearson's contributions predate Fisher's (late 1890s–1900s vs. 1920s–1930s); Pearson is sometimes called the founder and Fisher his successor, but the co-founding framing is the standard historiographical reading and is appropriate here.",
+      "rationale": "Pearson's foundational statistical tools (chi-squared, correlation, standard deviation) established mathematical statistics as a discipline; he is co-credited with Fisher as a founder.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The second evidence entry is the same EoM URL as W9; QC should verify it covers both Pearson and Fisher.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "W11",
+      "source": "person:isaac-newton",
+      "target": "subfield:calculus",
+      "relation": "founded_or_formalized",
+      "confidence": 0.97,
+      "evidence": [
+        {
+          "citation": "MacTutor History of Mathematics, 'Isaac Newton' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Newton invented calculus (which he called 'the method of fluxions') in the mid-1660s; together with Leibniz, who independently developed calculus in the 1670s, Newton is co-credited as the founder of calculus, one of the most important developments in the history of mathematics.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Newton/"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Newton's Philosophy' (Janiak, 2006, rev. 2022), §3 Mathematics",
+          "claim_anchor": "Newton independently developed the calculus in the 1660s, which he called the method of fluxions; the calculus represents one of Newton's most profound contributions to mathematics and he is universally recognized as one of its two founders alongside Leibniz.",
+          "url": "https://plato.stanford.edu/entries/newton/"
+        }
+      ],
+      "disputed": false,
+      "note": "Plural founding: Newton (W11) co-exists with Leibniz (W12) on the same target subfield:calculus. The Newton-Leibniz calculus dispute is historical but both are recognized as independent co-founders; the record-not-resolve policy applies and both carry founded_or_formalized edges without dispute:true.",
+      "rationale": "Newton independently invented calculus (fluxions) in the 1660s; he is one of the two canonical co-founders of calculus alongside Leibniz.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The SEP entry on Newton is broad; QC should confirm it contains founding language for calculus as quoted. The MacTutor Newton entry is more likely to contain the direct founding statement.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "W12",
+      "source": "person:gottfried-wilhelm-leibniz",
+      "target": "subfield:calculus",
+      "relation": "founded_or_formalized",
+      "confidence": 0.97,
+      "evidence": [
+        {
+          "citation": "MacTutor History of Mathematics, 'Gottfried Wilhelm von Leibniz' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Leibniz independently invented calculus in the 1670s and published his results in 1684–1686; his notation (dy/dx for derivatives and the integral sign ∫) became the standard notation used in calculus to the present day, and he is co-credited with Newton as a founder of calculus.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Leibniz/"
+        },
+        {
+          "citation": "Encyclopedia of Mathematics, 'Calculus' / 'Leibniz, Gottfried Wilhelm' (encyclopediaofmath.org)",
+          "claim_anchor": "Leibniz's differential and integral calculus, developed independently of Newton in the 1670s–1680s, provided the notation and systematic treatment that became the standard form of calculus; he is recognized alongside Newton as the co-founder of calculus.",
+          "url": "https://encyclopediaofmath.org/wiki/Calculus"
+        }
+      ],
+      "disputed": false,
+      "note": "Plural founding: Leibniz (W12) co-exists with Newton (W11) on the same target. Leibniz's notation became the standard; Newton's development was earlier but published later. Both are clean founded_or_formalized edges.",
+      "rationale": "Leibniz independently invented calculus in the 1670s with the notation that became standard; he is one of the two canonical co-founders of calculus alongside Newton.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The EoM Calculus URL may not contain a specific entry about Leibniz as co-founder under that exact heading; QC should verify. The MacTutor Leibniz entry is the more reliable source for the direct founding claim.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "P1",
+      "source": "person:euclid",
+      "target": "subfield:set-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.08,
+      "probe": true,
+      "expected_verdict": "reject",
+      "evidence": [
+        {
+          "citation": "Euclid, 'Elements' (c. 300 BCE), Book I, Definitions — commonly cited as the origin of axiomatic mathematical reasoning",
+          "claim_anchor": "Euclid's Elements established axiomatic-deductive reasoning in mathematics, which later became the model for set-theoretic axiomatics; a naive reader might attribute foundational mathematical formalism to Euclid.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Euclid/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'Euclid of Alexandria' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Euclid is the most prominent mathematician of antiquity, best known for his treatise on geometry the Elements; his axiomatic method influenced all subsequent mathematics including, indirectly, the development of set theory.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Euclid/"
+        }
+      ],
+      "disputed": false,
+      "note": "PROBE EDGE — REJECTION CLASS: ANACHRONISM. Euclid (c. 300 BCE) predates set theory (Cantor, 1870s CE) by approximately 2,200 years. The naive-reader evidence items show why a superficial reader might associate Euclid with foundational mathematics, but neither item supports the specific claim that Euclid founded set theory. The axiomatic tradition Euclid established is a genuine influence on later mathematics, but influence ≠ founding. QC should record: this edge carries the anachronism probe for the subfield:set-theory target (which has a genuine edge from person:richard-dedekind, W2). Expected verdict: REJECT. This edge and its probe-only source node must NOT be written to /data.",
+      "rationale": "PROBE: Euclid is cited here as a naive reader might attribute foundational mathematics to Euclid, but this attribution is anachronistic — Euclid predates set theory by ~2,200 years. The genuine founders of set theory are Cantor and Dedekind (W2 in this batch). This edge exists only to test the pipeline's anachronism-rejection capability.",
+      "uncertainty": "The rejection is clear on anachronism grounds. Secondary uncertainty: Euclid's personhood is itself slightly uncertain (composite/legendary figure hypothesis), but this does not affect the rejection rationale. The claim_anchors are real sources that document Euclid's influence, but they do NOT claim he founded set theory.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "P2",
+      "source": "person:claude-shannon",
+      "target": "subfield:game-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.12,
+      "probe": true,
+      "expected_verdict": "reject",
+      "evidence": [
+        {
+          "citation": "Shannon, Claude E. (1950), 'Programming a Computer for Playing Chess', Philosophical Magazine, Ser. 7, Vol. 41, No. 314 — cited as evidence of Shannon's work at the boundary of information theory and game-like reasoning",
+          "claim_anchor": "Shannon's 1950 paper on computer chess applied information-theoretic and combinatorial reasoning to a strategic game; a naive reader might generalize from Shannon's game-adjacent work to attribute game-theory founding to him.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Shannon/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'Claude Elwood Shannon' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Shannon worked on problems touching communication, cryptography, and game-like combinatorial problems; his broad contributions to formal sciences might lead a naive reader to conflate information theory and game theory.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Shannon/"
+        }
+      ],
+      "disputed": false,
+      "note": "PROBE EDGE — REJECTION CLASS: FIELD MIS-ATTRIBUTION. Shannon founded information theory (existing edge in wave-1: person:claude-shannon → subfield:information-theory, F3). Shannon did NOT found game theory; game theory was founded by von Neumann and Morgenstern (1944). Shannon's work on chess (1950) is sometimes superficially associated with 'game' reasoning but it is not game theory in the von Neumann sense. NOTE: person:claude-shannon is an existing reviewed node in /data (QID Q92760, promoted in wave-1). The probe edge source points to the existing node. Expected verdict: REJECT. This edge must NOT be written to /data. QC should record: Shannon → game-theory is the field-misattribution probe for the subfield:game-theory target (which has genuine edges from von Neumann, Nash, Morgenstern W1).",
+      "rationale": "PROBE: Shannon is cited as if his game-adjacent work founds game theory, but this is a field mis-attribution — Shannon founded information theory, not game theory. Game theory was founded by von Neumann and Morgenstern. This edge exists only to test the pipeline's mis-attribution rejection capability.",
+      "uncertainty": "The rejection is clear on field mis-attribution grounds. The naive-reader case is weak (there is no serious scholarly claim that Shannon founded game theory). QC should note: the source node (person:claude-shannon) is already reviewed in /data; only the edge is rejected, not the node.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "P3",
+      "source": "person:carl-friedrich-gauss",
+      "target": "subfield:probability-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.15,
+      "probe": true,
+      "expected_verdict": "reject",
+      "evidence": [
+        {
+          "citation": "MacTutor History of Mathematics, 'Carl Friedrich Gauss' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk — Gaussian distribution",
+          "claim_anchor": "Gauss's work on the method of least squares (1809) and the derivation of the normal (Gaussian) distribution established key tools later used in probability and statistics; a naive reader might attribute founding of probability theory to Gauss based on the normal distribution bearing his name.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Gauss/"
+        },
+        {
+          "citation": "Wikipedia, 'Normal distribution' — commonly cites Gauss (1809) as originator of the Gaussian/normal distribution within probabilistic reasoning",
+          "claim_anchor": "The normal distribution, also called the Gaussian distribution, is named after Gauss; its ubiquity in probability might lead a naive reader to attribute the founding of probability theory to Gauss.",
+          "url": "https://en.wikipedia.org/wiki/Normal_distribution"
+        }
+      ],
+      "disputed": false,
+      "note": "PROBE EDGE — REJECTION CLASS: WRONG FOUNDER + WRONG FIELD (contributed but did not found; correct axiomatizer is Kolmogorov). Gauss contributed the normal distribution (1809) and method of least squares, but did NOT found probability theory as a formal mathematical discipline. Probability theory was axiomatized by Kolmogorov (1933, Grundbegriffe der Wahrscheinlichkeitsrechnung) — existing edge in wave-1: person:andrey-kolmogorov → subfield:probability-theory (F2). The Gaussian distribution is named after Gauss and is used in probability, but naming ≠ founding. NOTE: person:carl-friedrich-gauss is the genuine source node for W5 (Gauss → subfield:number-theory). This P3 probe edge points to a DIFFERENT target (subfield:probability-theory). Expected verdict: REJECT. This edge must NOT be written to /data.",
+      "rationale": "PROBE: Gauss contributed the normal distribution but did not found probability theory; the correct founder of axiomatic probability theory is Kolmogorov (1933). This edge tests the pipeline's ability to distinguish 'contributed a tool used in a field' from 'founded the field'. Wrong founder AND the Gaussian distribution is not the founding act of probability theory.",
+      "uncertainty": "The rejection is clear: Gauss's genuine contribution (normal distribution) is well-documented but it is not a founding act for probability theory as a formal discipline. The naive-reader case rests on the name 'Gaussian distribution' — a superficial but recognizable confusion. The Wikipedia source cited is non-canonical (per policy, Wikipedia is not primary evidence) but is used here only to show the naive-reader confusion pathway for the probe; QC should note this.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "P4",
+      "source": "person:aristotle",
+      "target": "subfield:mathematical-logic",
+      "relation": "founded_or_formalized",
+      "confidence": 0.18,
+      "probe": true,
+      "expected_verdict": "reject",
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Aristotle's Logic' (Smith, 2000, rev. 2022), Introduction",
+          "claim_anchor": "Aristotle is the founder of logic; his Prior Analytics introduced the syllogism as a formal system of deductive inference, and this work is often called the first systematic treatise on logic in Western philosophy.",
+          "url": "https://plato.stanford.edu/entries/aristotle-logic/"
+        },
+        {
+          "citation": "MacTutor History of Mathematics, 'Aristotle' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Aristotle's work in logic, particularly the syllogistic theory in Prior Analytics, is often described as founding formal logic; a reader might attribute the founding of mathematical logic to Aristotle on this basis.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Aristotle/"
+        }
+      ],
+      "disputed": false,
+      "note": "PROBE EDGE — REJECTION CLASS: OVER-BROAD/REFERENT. The claim_anchors supply real sources that call Aristotle 'the founder of logic'. However, 'logic' in Aristotle's sense = syllogistic/term logic (ancient), NOT mathematical/symbolic logic (modern subfield). The subfield:mathematical-logic node refers to the modern formal discipline founded by Boole (1847) and Frege (1879) — existing edges from wave-1: person:george-boole → subfield:mathematical-logic (F4) and person:gottlob-frege → subfield:mathematical-logic (F5). Aristotle's syllogistic is a precursor and historical ancestor, but it is not the same as mathematical logic in the modern sense. The referent mismatch (ancient term-logic vs. modern predicate-logic subfield) is the rejection criterion. Expected verdict: REJECT. This edge and its probe-only node must NOT be written to /data.",
+      "rationale": "PROBE: Aristotle 'founded logic' in the ancient sense (syllogistic), but the target subfield:mathematical-logic refers to modern formal/symbolic logic, which was founded by Boole and Frege in the 19th century. The referent is wrong — 'logic' (ancient) ≠ 'mathematical logic' (modern subfield). Sources calling Aristotle 'founder of logic' do not support founding of the specific modern subfield.",
+      "uncertainty": "The rejection requires a clear distinction between 'founded (ancient) logic' and 'founded mathematical logic (modern subfield)'. This distinction is clear in the scholarly literature but may require careful articulation in the QC report. The SEP source cited IS a real source that calls Aristotle 'the founder of logic' — the probe's force lies precisely in QC having to explain why this does not constitute founding subfield:mathematical-logic.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "P5",
+      "source": "person:pythagoras",
+      "target": "subfield:number-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.10,
+      "probe": true,
+      "expected_verdict": "reject",
+      "evidence": [
+        {
+          "citation": "MacTutor History of Mathematics, 'Pythagoras of Samos' (O'Connor & Robertson), mathshistory.st-andrews.ac.uk",
+          "claim_anchor": "Pythagoras and the Pythagoreans held that numbers are the fundamental nature of reality and studied properties of integers including perfect numbers and figurate numbers; this number mysticism is sometimes cited as an early form of number theory.",
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Pythagoras/"
+        },
+        {
+          "citation": "Wikipedia, 'Number theory' — introductory section commonly mentions Pythagorean interest in numbers as historical precursors to number theory",
+          "claim_anchor": "Number theory has ancient roots in the number mysticism of the Pythagoreans and the arithmetic investigations of ancient Greece; a naive reader might attribute founding of number theory to Pythagoras based on his prominence in ancient Greek mathematics.",
+          "url": "https://en.wikipedia.org/wiki/Number_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "PROBE EDGE — REJECTION CLASS: LEGENDARY ATTRIBUTION. Two compounding rejection reasons: (1) the historical Pythagoras is barely documented — most accounts come from Iamblichus and Porphyry writing ~800 years later; his individual contributions cannot be reliably distinguished from those of the Pythagorean school; (2) Pythagorean number mysticism (numerology, figurate numbers) ≠ modern number theory, which is the rigorous mathematical study of integers axiomatized and systematized by Gauss (Disquisitiones, 1801 — genuine edge W5 on the same target). This is the key same-target discrimination pair: Gauss (genuine W5) vs. Pythagoras (probe P5) on subfield:number-theory. Expected verdict: REJECT. This edge and its probe-only node must NOT be written to /data.",
+      "rationale": "PROBE: Pythagoras is a legendary figure with poorly documented individual contributions, and Pythagorean number mysticism is not modern number theory. The genuine founder of the modern subfield is Gauss (W5, same target). This edge tests legendary-attribution rejection.",
+      "uncertainty": "The rejection has two independent bases (legendary attribution + conceptual mismatch). The Wikipedia source is non-canonical per policy and is cited only to show the naive-reader confusion pathway. QC should note that MacTutor does have a Pythagoras entry, and the ancient interest in numbers is real, but 'ancient interest in integers' ≠ 'founded the modern subfield of number theory'.",
+      "ambiguous": true
+    }
+  ]
+}
