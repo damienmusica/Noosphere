@@ -1,0 +1,209 @@
+[
+  {
+    "case_id": "C3",
+    "source": "subfield:pragmatism",
+    "target": "subfield:analytic-philosophy",
+    "relation": "influenced",
+    "prior_nei_reason": "Contested, no dominant view",
+    "first_fire_candidate": true,
+    "camp_a": {
+      "label": "Pragmatism historically influenced analytic philosophy",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/pragmatism/",
+          "verbatim_quote": "Pragmatism enjoyed renewed attention after Willard Van Orman Quine and Wilfrid Sellars used a revised pragmatism to criticize logical positivism in the 1960s.",
+          "summary": "SEP Pragmatism article explicitly states Quine and Sellars deployed pragmatism against logical positivism — a direct influence-on-analytic-philosophy claim.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM",
+          "confidence_in_quote": "HIGH — retrieved from live SEP page via WebFetch; quote may be paraphrased by retrieval model [UNCERTAIN: verify verbatim]"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/pragmatism/",
+          "verbatim_quote": "Although Lewis and Quine developed a number of pragmatist themes, their analytic allegiance may be seen in their significant focus on theory of knowledge as first philosophy.",
+          "summary": "Same SEP entry acknowledges Quine and C.I. Lewis 'developed pragmatist themes' — partial influence acknowledgment even from an analytic-leaning framing.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM (partial)",
+          "confidence_in_quote": "HIGH — retrieved live [UNCERTAIN: verify section number]"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Pragmatism",
+          "verbatim_quote": "Pragmatism enjoyed renewed attention after Willard Van Orman Quine and Wilfrid Sellars used a revised pragmatism to criticize logical positivism in the 1960s.",
+          "summary": "Wikipedia Pragmatism article makes same claim as SEP — Quine and Sellars deployed pragmatism within analytic philosophy.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM",
+          "confidence_in_quote": "HIGH — retrieved live [UNCERTAIN: may not be verbatim; verify exact wording]"
+        },
+        {
+          "url": "https://ndpr.nd.edu/reviews/pragmatism-and-the-european-traditions-encounters-with-analytic-philosophy-and-phenomenology-before-the-great-divide/",
+          "verbatim_quote": "Every 'isolationist account' of the origins and rises of analytic philosophy, phenomenology, and pragmatism is mistaken.",
+          "summary": "Notre Dame Philosophical Reviews review of Baghramian & Marchetti (eds.) explicitly rejects isolationist accounts that would deny pragmatism-analytic mutual influence.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM",
+          "confidence_in_quote": "HIGH — retrieved live; this is the reviewer's characterization of the book's thesis [UNCERTAIN: may be reviewer's paraphrase]"
+        }
+      ],
+      "independent_claim_stating_count": 3,
+      "note": "Camp A has strong representation across SEP, Wikipedia, and a peer-reviewed book review. The Quine/Sellars channel is the clearest HISTORICAL-INFLUENCE CLAIM. The Rorty/neo-pragmatism channel (Brandom) is also in the literature but leans more retrospective-interpretation than direct causal claim."
+    },
+    "camp_b": {
+      "label": "Analytic philosophy developed independently from / against pragmatism (Frege-Russell lineage primary)",
+      "sources": [
+        {
+          "url": "https://iep.utm.edu/analytic-philosophy/",
+          "verbatim_quote": "Though classical Pragmatism bears some similarity to early analytic philosophy, especially in the work of C. S. Peirce and C. I. Lewis, the pragmatists are usually understood as constituting a separate tradition or school.",
+          "summary": "IEP Analytic Philosophy article explicitly treats pragmatism and analytic philosophy as SEPARATE traditions, not one influencing the other.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM (denial / separate-tradition claim)",
+          "confidence_in_quote": "HIGH — retrieved live via WebFetch"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/pragmatism/",
+          "verbatim_quote": "As the progressive Deweyan 'New Deal' era passed away and the US moved into the Cold War, pragmatism's influence was challenged, as analytic philosophy blossomed and became the dominant methodological orientation in most Anglo-American philosophy departments.",
+          "summary": "SEP Pragmatism article describes analytic philosophy's rise as DISPLACING pragmatism, framing them as distinct competing movements.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM (displacement framing — supports independence narrative)",
+          "confidence_in_quote": "HIGH — retrieved live [UNCERTAIN: verify exact wording; may be retrieval-model paraphrase]"
+        },
+        {
+          "url": "https://aeon.co/essays/pragmatism-is-one-of-the-most-successful-idioms-in-philosophy",
+          "verbatim_quote": "Bertrand Russell was especially known for his vituperative attacks on what he thought was little more than epistemological relativism and short-sighted practicalism.",
+          "summary": "Describes Russell's active opposition to pragmatism — the founder of analytic philosophy explicitly attacked pragmatism rather than drawing from it.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM (denial — Frege/Russell opposed to pragmatism)",
+          "confidence_in_quote": "MEDIUM — search-result snippet, not directly fetched [UNCERTAIN: verify URL and wording]"
+        }
+      ],
+      "independent_claim_stating_count": 2,
+      "note": "Camp B's strongest claim is the IEP 'separate tradition' statement and the SEP displacement narrative. Russell's opposition to James (documented but primary source not directly fetched) supports the independence claim. Note: Camp B is NOT claiming Mendel-style 'separate discovery' — it's claiming the Frege-Russell tradition is primary and pragmatism was an opposing/separate movement. The Rorty neo-pragmatist reading (Camp A) is explicitly described as a minority retrospective interpretation even within the literature."
+    },
+    "provisional_verdict": "FIRE (disputed-balanced)",
+    "reasoning": "Both camps have ≥2 independent claim-stating sources explicitly engaging whether pragmatism historically influenced analytic philosophy (not merely degree or character). The contest is about the EXISTENCE of influence (IEP says 'separate tradition'; SEP and Wikipedia say Quine/Sellars deployed pragmatism within analytic philosophy). Both camps are live scholarly positions — IEP and SEP are peer-maintained encyclopedias. The Rorty-retrospective vs Frege-Russell-lineage debate is a genuine live scholarly dispute about historical influence, not merely a degrees-of-influence question. v2 can fire.",
+    "self_flags": [
+      "The Camp A Quine/Sellars claim is partially acknowledged even in Camp B sources (SEP notes they 'developed pragmatist themes'); this blurs the camps and the orchestrator should assess whether this is existence-of-influence or degree-of-influence dispute.",
+      "Rorty's neo-pragmatist reading is described as 'minority' within analytic philosophy — QC should assess whether Camp A represents a sufficiently mainstream scholarly position to qualify as 'live scholarly position' under v2 clause 3.",
+      "All verbatim quotes are [UNCERTAIN] pending orchestrator live-URL verification — retrieval model may have paraphrased."
+    ]
+  },
+  {
+    "case_id": "C2",
+    "source": "subfield:buddhist-philosophy",
+    "target": "subfield:phenomenology",
+    "relation": "influenced",
+    "prior_nei_reason": "Parallel/comparative ≠ historical influence",
+    "first_fire_candidate": false,
+    "camp_a": {
+      "label": "Buddhist philosophy historically influenced phenomenology",
+      "sources": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12466389/",
+          "verbatim_quote": "Husserl wrote a manuscript titled 'Socrates-Buddha' in January 1926 that reflected on the relationship between phenomenology and Buddhism.",
+          "summary": "PMC article on Husserl and Buddhism (comparative phenomenological analysis) cites Husserl's own 1926 manuscript — demonstrates Husserl engaged with Buddhism, though this is comparative, not causal-influence.",
+          "source_type": "PARALLEL-COMPARATIVE study",
+          "confidence_in_quote": "MEDIUM — from search snippet, URL not fully fetched [UNCERTAIN: verify existence of this PMC article and quote]"
+        },
+        {
+          "url": "https://tricycle.org/magazine/new-way-forward/",
+          "verbatim_quote": "[UNFETCHED — could not retrieve content]",
+          "summary": "Tricycle article 'Phenomenology and Buddhism — A New Way Forward' appeared in search results; likely comparative/dialogue framing rather than historical-influence claim. Not fetched.",
+          "source_type": "PARALLEL-COMPARATIVE study [UNCERTAIN]",
+          "confidence_in_quote": "LOW — not fetched"
+        }
+      ],
+      "independent_claim_stating_count": 0,
+      "note": "Camp A is effectively absent. The Husserl 'Socrates-Buddha' manuscript (1926) shows Husserl was aware of and reflected on Buddhism, but this is a COMPARISON study, not a causal-influence claim (Buddhist philosophy → phenomenology). No retrieved source explicitly states Buddhist philosophy historically influenced Husserl's development of phenomenology or Heidegger's or Merleau-Ponty's. The Kyoto School represents Buddhist philosophers engaging with phenomenology, not the reverse."
+    },
+    "camp_b": {
+      "label": "Buddhist philosophy did not historically influence phenomenology; any connection is comparative/later-dialogue",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/kyoto-school/",
+          "verbatim_quote": "Ueda engages the work of Husserl, Heidegger and other phenomenologists to articulate a religiously charged philosophy.",
+          "summary": "SEP Kyoto School article confirms direction of influence: Buddhist (Kyoto School) philosophers engaged with phenomenology — NOT Buddhist philosophy influencing phenomenology's founding. Direction is reversed from the proposed edge.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM (denial — confirms reverse direction)",
+          "confidence_in_quote": "HIGH — retrieved live via WebFetch"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/kyoto-school/",
+          "verbatim_quote": "Influenced no doubt in part by his contact with Heidegger...Nishitani developed, in his own highly original manner, existential and phenomenological aspects.",
+          "summary": "Same SEP article: Heidegger influenced Nishitani (Kyoto School/Buddhist philosopher), not the other way. Confirms phenomenology → Buddhist-influenced philosophy, not Buddhist philosophy → phenomenology.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM (denial — reverse direction confirmed)",
+          "confidence_in_quote": "HIGH — retrieved live via WebFetch"
+        },
+        {
+          "url": "https://iep.utm.edu/phenom/",
+          "verbatim_quote": "Phenomenology stands in complex relations to a number of different philosophical traditions, most notably British empiricism, Kantian and post-Kantian transcendental philosophy, and French existentialism.",
+          "summary": "IEP Phenomenology article lists phenomenology's intellectual lineage with no mention of Buddhist philosophy — confirming Buddhist philosophy is not recognized as a historical influence on phenomenology.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM (denial by omission — no Buddhist influence listed)",
+          "confidence_in_quote": "HIGH — retrieved live via WebFetch"
+        }
+      ],
+      "independent_claim_stating_count": 3,
+      "note": "Camp B is dominant and well-sourced. SEP Kyoto School (retrieved live) explicitly shows the direction runs FROM phenomenology INTO the Kyoto School, and IEP Phenomenology traces all founding influences within European traditions. No fetched source claims Buddhist philosophy historically influenced the founding of phenomenology."
+    },
+    "provisional_verdict": "NEI",
+    "reasoning": "Camp A has zero HISTORICAL-INFLUENCE CLAIM sources — all comparative/dialogue sources describe parallel structures or later engagement, not causal historical influence of Buddhist philosophy on phenomenology's founding figures. The prior NEI reason ('parallel/comparative ≠ historical influence') is confirmed by live-source retrieval. v2's clause 1 fails (the 'contest' is not about existence/direction of a documented influence — there is no affirmation camp with scholarly sources). The over-fire guard correctly blocks v2 here.",
+    "self_flags": [
+      "Husserl's 1926 'Socrates-Buddha' manuscript is an intriguing data point — if this manuscript shows Buddhism directly informed Husserl's later phenomenological concepts, Camp A could become non-zero. QC should fetch the PMC article (PMC12466389) and assess whether this is comparative reflection or causal influence.",
+      "The Tricycle article was not fetched — flag as [UNFETCHED]; QC must verify.",
+      "The direction question (Buddhist → phenomenology vs. phenomenology → Kyoto School) is clearly resolved by SEP Kyoto School live retrieval, but the orchestrator should independently confirm."
+    ]
+  },
+  {
+    "case_id": "C1",
+    "source": "person:charles-darwin",
+    "target": "person:gregor-mendel",
+    "relation": "influenced",
+    "prior_nei_reason": "Book ownership ≠ scholarly influence claim; dominant view = independent development",
+    "first_fire_candidate": false,
+    "camp_a": {
+      "label": "Darwin historically influenced Mendel (specifically Mendel's 1866 paper and letters to Nägeli)",
+      "sources": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5068835/",
+          "verbatim_quote": "Phraseology from the passages Mendel annotated in his German translation were conspicuously more frequent and more diverse in the final two (10th and 11th) sections.",
+          "summary": "PMC 2016 paper ('Darwin's Influence on Mendel: Evidence from a New Translation') — argues Darwin's annotated Origin of Species directly influenced the language and framing of Mendel's 1866 paper.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM",
+          "confidence_in_quote": "HIGH — retrieved live via WebFetch"
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6972880/",
+          "verbatim_quote": "Darwin's writings directly influenced Mendel's classic 1866 paper, and his letters to Nägeli.",
+          "summary": "PMC 2020 paper ('Mendel and Darwin: untangling a persistent enigma') — states directly that Darwin influenced Mendel's paper and correspondence. Most explicit Camp A claim-stating source found.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM",
+          "confidence_in_quote": "HIGH — retrieved live via WebFetch"
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9335214/",
+          "verbatim_quote": "He mentioned 'the spirit of the Darwinian teaching' in his 1870 paper.",
+          "summary": "PMC 2022 paper on Mendel and Darwin confirms Mendel explicitly referenced 'the spirit of the Darwinian teaching' — direct engagement with Darwin's ideas in his scientific writing.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM",
+          "confidence_in_quote": "HIGH — retrieved live via WebFetch"
+        }
+      ],
+      "independent_claim_stating_count": 3,
+      "note": "Camp A is strong and has shifted the scholarly picture since the prior NEI. Three independent PMC papers (2016, 2020, 2022) all independently argue Darwin influenced Mendel's 1866 paper and subsequent letters. The distinction all Camp A papers make: Darwin did NOT influence Mendel's experimental design (experiments 1856-1863 were before Mendel read Darwin's German translation, 1863) but DID influence Mendel's interpretative framing and writing."
+    },
+    "camp_b": {
+      "label": "Mendel's genetics developed independently of Darwin; any engagement is post-hoc or superficial",
+      "sources": [
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9335310/",
+          "verbatim_quote": "The two ideas—natural selection and Mendelian genetics—never had the opportunity to intertwine during their originators' lifetimes.",
+          "summary": "PMC 2022 paper ('Gregor Johann Mendel and the development of modern evolutionary biology') argues Mendel and Darwin's ideas remained separate and did not intertwine during their lifetimes.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM (partial denial — emphasizes intellectual independence)",
+          "confidence_in_quote": "HIGH — retrieved live via WebFetch"
+        },
+        {
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5068835/",
+          "verbatim_quote": "Origin of Species could have neither motivated nor guided his experiments, but it could have influenced his interpretations.",
+          "summary": "The same 2016 Camp-A paper concedes Darwin could NOT have influenced Mendel's experiments (the core scientific discovery) — only the interpretive framing of the 1866 paper. This is a significant Camp-B concession within a Camp-A source.",
+          "source_type": "HISTORICAL-INFLUENCE CLAIM (partial denial — experiments fully independent)",
+          "confidence_in_quote": "HIGH — retrieved live via WebFetch"
+        }
+      ],
+      "independent_claim_stating_count": 1,
+      "note": "Camp B in its STRONG FORM (Mendel had no Darwin influence whatsoever) is now a minority position. The dominant scholarly view has shifted: even sources skeptical of influence concede Mendel read Darwin. However, a weaker Camp B remains live: the GENETICS itself (the experimental program and laws of inheritance) was independently derived. If the edge is interpreted as 'Darwin influenced Mendel's genetics/scientific discovery', Camp B has support. If interpreted as 'Darwin influenced Mendel's writing and interpretive framing of his 1866 paper', Camp A is dominant. This is a degree/scope-of-influence question, not an existence question. NOTE: The PMC9335310 'independence' source is more accurately classified as DEGREE-CHARACTER debate than outright existence denial."
+    },
+    "provisional_verdict": "NEI",
+    "reasoning": "The prior NEI framing ('book ownership ≠ influence claim') is outdated — multiple live PMC papers now make explicit historical-influence claims about Darwin's effect on Mendel's 1866 paper. However, Camp B does not have ≥2 independent claim-stating sources that DENY the existence of Darwin's influence on Mendel; what Camp B has is the narrower claim that the experimental genetics was independent, conceding the paper's framing was influenced. This makes the dispute a DEGREE-CHARACTER debate (which aspect of Mendel's work was influenced?) rather than an EXISTENCE dispute. v2 clause 1 is not met. The edge itself — if coded as 'Darwin influenced Mendel (scientist-to-scientist influence claim)' — is moving toward SUPPORTED+note, not disputed-balanced. Orchestrator should re-evaluate whether this edge should be promoted as SUPPORTED with note ('influenced Mendel's interpretive framing of his 1866 paper, not his experimental program') rather than filed NEI.",
+    "self_flags": [
+      "IMPORTANT REFRAMING: This case may warrant SUPPORTED+note rather than NEI or disputed-balanced. The scholarly consensus has moved. Three independent PMC papers affirm influence on the 1866 paper. Orchestrator should assess whether the prior NEI was based on an outdated literature picture.",
+      "The Camp B 'independence' claim (PMC9335310) may actually be making a DEGREE-CHARACTER point (the experimental program was independent) not an existence-of-influence denial. QC should assess this carefully.",
+      "Nature/Heredity paper (PMC6972880 / Nature s41437-019-0289-9) is paywalled at Nature but accessible via PMC — verify the full text via PMC, not the Nature URL.",
+      "The prior wave's single evidence entry ('Mendel owned annotated copy') is now reinforced by three stronger PMC papers; this is a genuine scholarly evolution since the prior proposal."
+    ]
+  }
+]
