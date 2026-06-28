@@ -3794,6 +3794,46 @@
       "verdict": "verified",
       "expected_qid": "Q9047",
       "rank1_expected": true
+    },
+    {
+      "batch": "batch:pivotal-influence-v1",
+      "seed_label": "Psychoanalysis",
+      "node_id": "subfield:psychoanalysis",
+      "verdict": "verified",
+      "expected_qid": "Q41630",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:pivotal-influence-v1",
+      "seed_label": "Sigmund Freud",
+      "node_id": "person:sigmund-freud",
+      "verdict": "verified",
+      "expected_qid": "Q9215",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:pivotal-influence-v1",
+      "seed_label": "Friedrich Nietzsche",
+      "node_id": "person:friedrich-nietzsche",
+      "verdict": "verified",
+      "expected_qid": "Q9358",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:pivotal-influence-v1",
+      "seed_label": "Arthur Schopenhauer",
+      "node_id": "person:arthur-schopenhauer",
+      "verdict": "verified",
+      "expected_qid": "Q38193",
+      "rank1_expected": true
+    },
+    {
+      "batch": "batch:pivotal-influence-v1",
+      "seed_label": "Claude Lévi-Strauss",
+      "node_id": "person:claude-levi-strauss",
+      "verdict": "verified",
+      "expected_qid": "Q128126",
+      "rank1_expected": true
     }
   ]
 }

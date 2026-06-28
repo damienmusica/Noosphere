@@ -10117,5 +10117,175 @@
       "proposed_at": "2026-06-19"
     },
     "note": "Mendelian and population genetics reshaped evolutionary biology through the modern synthesis (Wikipedia Modern synthesis (20th century): \"The synthesis combined the ideas of natural selection, Mendelian genetics, and population genetics\"; this \"ended the eclipse of Darwinism and supplanted a variety of non-Darwinian theories\"; Wikipedia Gregor Mendel: \"The combination, in the 1930s and 1940s, of Mendelian genetics with Darwin's theory of natural selection resulted in the modern synthesis of evolutionary biology\"). Note (record-not-resolve): the modern synthesis is a two-way fusion; this edge records genetics as the directional active ingredient (population genetics ended the eclipse of Darwinism). Datable historical event (1920s–40s), hence `influenced` not `formalizes` (contrast the NEI'd probability→statistics constitutive probe). Cross-domain concept-level (a)-edge, session #34, proposed-first. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:psychoanalysis-part-of-psychology",
+    "source": "subfield:psychoanalysis",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:lcc-outline"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "Psychoanalysis is a subfield of psychology (Wikipedia Psychoanalysis: \"Psychoanalysis comprises a set of theories and techniques to discover unconscious processes and their influence on conscious thought, emotion, and behavior\"). §12 dual criterion satisfied: classification presence (LCC BF173–175 within BF Psychology; UDC 159.964.2 within 159.9 Psychology) + community presence (International Psychoanalytical Association accrediting ~35 US training institutes and component organizations worldwide; International Journal of Psychoanalysis; Vienna Psychoanalytic Society from 1908). Boundary with psychiatry noted: a future §13 co-equal cross-listing to field:psychiatry is a candidate (record-not-resolve). New skeleton node admitted to host Freud's founder edge (founder-blocked resolution, decision (65) §1.3)."
+  },
+  {
+    "id": "edge:sigmund-freud-founded-psychoanalysis",
+    "source": "person:sigmund-freud",
+    "target": "subfield:psychoanalysis",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "Freud founded psychoanalysis in the early 1890s (Wikipedia Psychoanalysis: \"Established in the early 1890s by Sigmund Freud\"). person→field direction and identity (QID Q9215, P31=Q5, d.1939) verified. Proposed-first (NOT auto-promoted on the founded_or_formalized ladder) because only one independent live claim-stating source could be fetched at QC time — Britannica (HTTP 403) and IEP (404 slug) were bot-blocked; the ≥2-independent-live-source floor was not cleanly met. Honest grounding gap (SPN §8 discipline); promote on a later wave once a second source is live-verified. (Founder-blocked resolution for the corpus's first pivotal-influence pilot, decision (65)/(66).)"
+  },
+  {
+    "id": "edge:friedrich-nietzsche-influenced-existentialism",
+    "source": "person:friedrich-nietzsche",
+    "target": "subfield:existentialism",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "Nietzsche is a principal precursor of existentialism (SEP Existentialism: \"the conceptual groundwork of the movement was laid much earlier in the nineteenth century by pioneers like Søren Kierkegaard and Friedrich Nietzsche\"; \"Of all the existentialists, Nietzsche was the most influential and prophetic in diagnosing and conceptualizing the crisis\"; Wikipedia Continental philosophy: Nietzsche's \"influence on existentialism\"). Pivotal-influence keep-criteria anchor (K1): independent reviewed-node endpoint subfield:existentialism. (a)-relation proposed-first ((a)-ladder not open, decision (64))."
+  },
+  {
+    "id": "edge:friedrich-nietzsche-influenced-continental-philosophy",
+    "source": "person:friedrich-nietzsche",
+    "target": "subfield:continental-philosophy",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "Nietzsche is a decisive figure of the continental tradition (Wikipedia Continental philosophy: \"Friedrich Nietzsche was a German philosopher whose radical critique of morality, truth, and metaphysics made him one of the most decisive figures in Continental philosophy, especially his influence on existentialism, phenomenology, and post-structuralism\"; SEP Continental Philosophy lists Nietzsche among the tradition's precursor figures). Second independent reviewed-node anchor for the Nietzsche node. (a)-relation proposed-first."
+  },
+  {
+    "id": "edge:arthur-schopenhauer-influenced-friedrich-nietzsche",
+    "source": "person:arthur-schopenhauer",
+    "target": "person:friedrich-nietzsche",
+    "relation": "influenced",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "Schopenhauer strongly shaped the early Nietzsche (SEP Nietzsche: as a student Nietzsche was \"already interested in philosophy, particularly the work of Arthur Schopenhauer\"; Nietzsche devoted Untimely Meditations III, \"Schopenhauer as Educator\" (1874), to him; SEP Schopenhauer's Aesthetics: late-19th/early-20th-c. figures \"such as Nietzsche… were influenced by Schopenhauer's thought\"). person→person influence; existence uncontested. (a)-relation proposed-first."
+  },
+  {
+    "id": "edge:arthur-schopenhauer-influenced-aesthetics",
+    "source": "person:arthur-schopenhauer",
+    "target": "subfield:aesthetics",
+    "relation": "influenced",
+    "confidence": 0.82,
+    "status": "proposed",
+    "evidence": [
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "Schopenhauer made substantial contributions to aesthetics (SEP \"Schopenhauer's Aesthetics\": \"Schopenhauer's aesthetic theory… forms part of his organic philosophical system\"; the entry treats his theory of art and the sublime as a major part of his system). Independent reviewed-node anchor (subfield:aesthetics) for the Schopenhauer node, distinct from his person→person edges to same-wave nodes (keep-criteria K1, anti-clique). (a)-relation proposed-first."
+  },
+  {
+    "id": "edge:ferdinand-de-saussure-influenced-claude-levi-strauss",
+    "source": "person:ferdinand-de-saussure",
+    "target": "person:claude-levi-strauss",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "proposed",
+    "disputed": false,
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "Existence agreed (Wikipedia Structuralism: \"Saussure's work in structural linguistics and semiology greatly influenced Lévi-Strauss\"); the directness is debated — transmission was substantially mediated by Roman Jakobson, whom Lévi-Strauss met at the New School in New York in the early 1940s and through whose (and Trubetzkoy's) phonology he absorbed Saussure's \"system of differences.\" Record-not-resolve: Jakobson is a candidate future node (Saussure→Jakobson→Lévi-Strauss mediation chain); this edge records the Saussurean influence with the mediation noted, not adjudicated. clause-6 v2 existence-vs-degree line: existence agreed, directness/character debated → supported + note, NOT disputed (over-fire guard holds). (a)-relation proposed-first."
+  },
+  {
+    "id": "edge:arthur-schopenhauer-influenced-sigmund-freud",
+    "source": "person:arthur-schopenhauer",
+    "target": "person:sigmund-freud",
+    "relation": "influenced",
+    "confidence": 0.7,
+    "status": "proposed",
+    "disputed": false,
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "Scholarship dominantly affirms Schopenhauer's anticipation of and influence on Freud (SEP \"Schopenhauer's Aesthetics\": late-19th/early-20th-c. figures \"such as Nietzsche, Wagner, Brahms, Freud, Wittgenstein… were influenced by Schopenhauer's thought\"; Schopenhauer's concept of will is widely read as a precursor of Freud's unconscious/id and repression, e.g. Cambridge Companion to Schopenhauer ch.12 \"Schopenhauer, Will, and the Unconscious\"). Tension preserved (record-not-resolve, minority in note): Freud claimed independent development — he stated he was \"compelled to read Schopenhauer\" only after formulating his drive theory, and refused to acknowledge Schopenhauer's priority on repression when Otto Rank raised it. clause-6 v2: existence/anticipation scholarly-agreed, degree/directness debated → supported + note, NOT disputed (over-fire guard: the dissent is the subject's own originality claim, not a live scholarly camp denying the influence). Contrast the Nietzsche→Freud edge, where the scholarly existence-contest IS live. (a)-relation proposed-first."
+  },
+  {
+    "id": "edge:friedrich-nietzsche-influenced-sigmund-freud",
+    "source": "person:friedrich-nietzsche",
+    "target": "person:sigmund-freud",
+    "relation": "influenced",
+    "confidence": 0.5,
+    "status": "proposed",
+    "disputed": true,
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "★ clause-6 v2 disputed-balanced — the corpus's FIRST disputed:true firing (prior cumulative 0/32). The EXISTENCE/DIRECTION of direct influence is genuinely contested, both camps live and sourced, no dominant view; written as a contested claim, not as established (confidence ≈0.5, not positioned as a winner; disputed edges do not auto-promote — stays proposed/human-visible). CAMP A (affirm, ≥2): the parallels are too specific to be coincidental — Freud is held to have drawn on Nietzsche's ideas of the unconscious, repression and sublimation (Chapman & Chapman-Santana, \"The Influence of Nietzsche on Freud's Ideas,\" Br. J. Psychiatry 1995; scholarly-popular syntheses, e.g. psychreg/Borjesson). CAMP B (skeptical/deny, ≥2): Freud repeatedly denied reading Nietzsche; scholars find \"scarce direct textual dependence\" and \"no direct evidence that Freud read Nietzsche systematically before developing psychoanalysis,\" favouring a common-source explanation over direct influence (the \"Nietzsche and Freud: Disaffinities\" literature). This is the textbook balanced split clause-6 v2 was designed to capture (decision (64)/(65)); it could not fire before because the corpus had no contested-influence figures as nodes — now it does. (a)-relation proposed-first."
   }
 ]

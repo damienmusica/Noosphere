@@ -1,0 +1,205 @@
+[
+  {
+    "id": "edge:psychoanalysis-part-of-psychology",
+    "source": "subfield:psychoanalysis",
+    "target": "field:psychology",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "proposed",
+    "evidence": [
+      "source:lcc-outline",
+      "source:udc-summary",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "Classification grounding (UNVERIFIED — QC must check live): LCC BF173-175 falls within BF Psychology, confirming the part_of placement; UDC 159.964.2 falls within 159.9 Psychology. Wikidata: QID for psychoanalysis (Q41630, unverified) should carry P31 = Q11862829 branch-of-science and P279 = Q9418 psychology. A §13 cross-listing to field:neuroscience or domain:humanities (for Lacanian/literary-critical traditions) may be appropriate but is deferred to QC and the edge batch.",
+    "_rationale": "Both LCC (BF173-175 under BF Psychology) and UDC (159.964.2 under 159.9 Psychology) place psychoanalysis as a subfield of psychology; this is the dominant institutional classification.",
+    "_uncertainty": "The §13 humanities cross-membership (Lacanian/literary psychoanalysis is often housed in humanities departments) is a real alternative placement. QC should confirm live LCC BF173-175 range scope. Confidence 0.88 rather than higher to reflect this genuine placement contest.",
+    "_self_flag": false
+  },
+  {
+    "id": "edge:freud-founded-psychoanalysis",
+    "source": "person:sigmund-freud",
+    "target": "subfield:psychoanalysis",
+    "relation": "founded_or_formalized",
+    "confidence": 0.97,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "UNVERIFIED claim anchors (training-knowledge recollections — QC must verify verbatim against live sources): (1) SEP entry 'Freud, Sigmund' (Solms, 2018, rev. 2023), Introduction or §1: 'Sigmund Freud, the founder of psychoanalysis, made his most important contributions to human thought at the turn of the twentieth century.' URL hint: https://plato.stanford.edu/entries/freud/ — QC must confirm entry exists and this phrasing is close to verbatim. (2) Wikipedia, 'Sigmund Freud': 'Freud ... is known as the founder of psychoanalysis.' URL: https://en.wikipedia.org/wiki/Sigmund_Freud — QC must confirm. The founding claim is among the least contested in intellectual history; Breuer's early collaboration (Studies on Hysteria, 1895) is documented but Freud is the sole canonical founder of psychoanalysis as a discipline. Plural founding with Breuer may merit a note; not writing a Breuer edge as it is out of scope.",
+    "_rationale": "Freud is universally credited as the founder of psychoanalysis; this is the primary keep-criteria link that admits him as a person node (person/work contract v1).",
+    "_uncertainty": "The SEP Freud entry may be titled differently or the claim_anchor phrasing may differ significantly from the quoted recollection — QC must live-verify. The Breuer co-contribution is real but does not constitute co-founding in the standard historiography. QID for psychoanalysis endpoint (Q41630) is unverified.",
+    "_self_flag": false
+  },
+  {
+    "id": "edge:nietzsche-influenced-existentialism",
+    "source": "person:friedrich-nietzsche",
+    "target": "subfield:existentialism",
+    "relation": "influenced",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:iep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "UNVERIFIED claim anchors (training-knowledge recollections): (1) SEP entry 'Existentialism' (Crowell, 2010, rev. 2023) — likely discusses Nietzsche as a precursor or proto-existentialist influence. URL hint: https://plato.stanford.edu/entries/existentialism/ (2) IEP entry 'Existentialism' or 'Nietzsche' — standard IEP treatment names Nietzsche as a forerunner of existentialism. URL hint: https://iep.utm.edu/existent/ — QC must check for IEP slug-redirect trap. Key sourced claim (recollection, not verbatim): SEP Existentialism §1 or intro typically identifies Nietzsche alongside Kierkegaard as proto-existentialist influences on the canonical existentialists (Sartre, Heidegger, Camus). Note on scope: Nietzsche is a precursor/influence, not a canonical existentialist; the influenced relation correctly captures this without over-attributing membership. Tension note: some scholars (Kaufmann 1956, Nietzsche: Philosopher, Psychologist, Antichrist) argue Nietzsche is not properly an existentialist at all — this is the perspective/context-axis disagreement, preserved here.",
+    "_rationale": "Nietzsche's influence on 20th-century existentialism (Sartre, Heidegger, Camus) is a standard finding in philosophy of the continental tradition; this is the primary anchor for his admission as a pivotal-influence node.",
+    "_uncertainty": "QC must live-verify the SEP/IEP claim anchors — the exact phrases are from training knowledge and may differ. The IEP slug redirect trap has been recorded as a prior pipeline failure mode. The 'precursor vs member' distinction is real but the influenced relation correctly expresses the precursor role without over-claiming.",
+    "_self_flag": false
+  },
+  {
+    "id": "edge:nietzsche-influenced-continental-philosophy",
+    "source": "person:friedrich-nietzsche",
+    "target": "subfield:continental-philosophy",
+    "relation": "influenced",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:iep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "UNVERIFIED claim anchors (training-knowledge recollections): (1) SEP entry 'Continental Philosophy' (Glendinning, 2006, rev. 2022) — likely includes Nietzsche among the precursor figures (alongside Hegel, Schopenhauer) for the tradition. URL hint: https://plato.stanford.edu/entries/continental-philosophy/ (2) Wikipedia 'Continental philosophy' — standard article treating Nietzsche as a major 19th-century influence on the continental tradition. Tension note: the influenced relation here is extremely broad (Nietzsche influenced nearly every branch of continental philosophy — phenomenology, hermeneutics, post-structuralism, critical theory). QC should consider whether this is over-broad but it is defensible: Nietzsche's critique of metaphysics, morality, and truth is foundational across continental traditions.",
+    "_rationale": "Nietzsche is among the most foundational influences on continental philosophy, engaging with nearly every major movement (phenomenology, existentialism, post-structuralism, hermeneutics); this is well-documented across standard references.",
+    "_uncertainty": "The SEP 'Continental Philosophy' entry may or may not name Nietzsche explicitly in the introduction; QC must check live. The 'influenced' relation is correct but the breadth of influence is so large it may prompt QC to note scope limitations. IEP slug redirect trap applies.",
+    "_self_flag": false
+  },
+  {
+    "id": "edge:schopenhauer-influenced-nietzsche",
+    "source": "person:arthur-schopenhauer",
+    "target": "person:friedrich-nietzsche",
+    "relation": "influenced",
+    "confidence": 0.96,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "UNVERIFIED claim anchors (training-knowledge recollections): (1) SEP entry 'Nietzsche' (Leiter, 2001, rev. 2021) — likely states that Nietzsche was strongly influenced by Schopenhauer in his early career, acknowledged in 'Schopenhauer as Educator' (Untimely Meditations IV, 1874). URL hint: https://plato.stanford.edu/entries/nietzsche/ (2) Wikipedia 'Friedrich Nietzsche' — standard treatment notes Schopenhauer as a major early influence, with Nietzsche later turning against Schopenhauer's pessimism. Key sourced claim (recollection): Nietzsche explicitly titled his 1874 essay 'Schopenhauer als Erzieher' (Schopenhauer as Educator), a primary-source acknowledgement of influence. The later rejection/critique of Schopenhauer's pessimism by Nietzsche is a documented evolution, not a refutation of the influence — both camps (deep influence vs. reactive critique) are real; the influenced relation captures the documented initial phase, with tension preserved in this note.",
+    "_rationale": "Nietzsche's explicit acknowledgement of Schopenhauer as a formative influence (Untimely Meditations IV, 1874) and extensive scholarly documentation make this one of the most well-sourced intellectual influence claims in 19th-century philosophy.",
+    "_uncertainty": "The later-Nietzsche rejection of Schopenhauerian pessimism (e.g., Birth of Tragedy as an 'error' in Nietzsche contra Wagner) means the influenced relationship is historically complex — it was real but also contested internally by Nietzsche. The claim_anchor verbatim accuracy from SEP/Wikipedia must be QC-verified.",
+    "_self_flag": false
+  },
+  {
+    "id": "edge:schopenhauer-influenced-aesthetics",
+    "source": "person:arthur-schopenhauer",
+    "target": "subfield:aesthetics",
+    "relation": "influenced",
+    "confidence": 0.90,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "UNVERIFIED claim anchors (training-knowledge recollections): (1) SEP entry 'Schopenhauer's Aesthetics' (Wicks, 2003, rev. 2021) — this entry specifically treats Schopenhauer's contributions to aesthetics. URL hint: https://plato.stanford.edu/entries/schopenhauer-aesthetics/ (2) SEP 'Aesthetics' entry (Stecker, 2003, rev. 2021) or Wikipedia 'Aesthetics' — likely mentions Schopenhauer among key 19th-century contributors. Key sourced claims (recollections, not verbatim): Schopenhauer's theory of aesthetic contemplation (aesthetic experience as temporary escape from the will), his prioritization of music as the highest art form (Vol. 1, §52 of The World as Will and Representation), and his influence on 19th-20th century aesthetics (Wagner, Tolstoy, Wittgenstein's aesthetic comments). Note: SEP has a dedicated 'Schopenhauer's Aesthetics' entry, which is a strong signal of disciplinary relevance.",
+    "_rationale": "Schopenhauer's aesthetics — aesthetic contemplation as will-less experience, music as the highest art — is documented in SEP's dedicated entry on 'Schopenhauer's Aesthetics' and is a standard reference point in 19th-century aesthetics.",
+    "_uncertainty": "The existence of the SEP 'Schopenhauer's Aesthetics' entry is recalled from training knowledge but must be confirmed live. The influence on aesthetics as a subfield is broad; QC should confirm that multiple independent sources treat Schopenhauer's contribution as a major influence on the subfield (not merely on individuals like Wagner).",
+    "_self_flag": false
+  },
+  {
+    "id": "edge:saussure-influenced-levi-strauss",
+    "source": "person:ferdinand-de-saussure",
+    "target": "person:claude-levi-strauss",
+    "relation": "influenced",
+    "confidence": 0.87,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "note": "DIRECTNESS-CONTESTED — flagged for clause-6 review at QC time. UNVERIFIED claim anchors (training-knowledge recollections): (1) Wikipedia 'Claude Lévi-Strauss' — standard treatment describes Lévi-Strauss as applying Saussurean structural linguistics to anthropology, naming Saussure as a foundational influence. URL hint: https://en.wikipedia.org/wiki/Claude_L%C3%A9vi-Strauss (2) SEP entry 'Claude Lévi-Strauss' (no QC-confirmed entry exists — QC should check whether SEP has a Lévi-Strauss entry; IEP may be more relevant). Directness contest: the Saussure-to-Lévi-Strauss influence is typically mediated through Roman Jakobson's structural linguistics, particularly the Moscow-Prague phonological tradition. Lévi-Strauss and Jakobson met in New York during WWII exile (1940s), and Jakobson is often the more proximate intellectual influence than Saussure directly. The question is whether this edge should be Saussure→Lévi-Strauss (one-hop, as the intellectual root) or Jakobson→Lévi-Strauss (mediated, more direct). The directness-contested flag is raised because of this mediation. QC should: (a) find ≥2 independent sources that directly state Saussure influenced Lévi-Strauss (not just Jakobson was the mediator), (b) consider whether an additional Jakobson→Lévi-Strauss edge would be more accurate.",
+    "_rationale": "Lévi-Strauss explicitly applied Saussurean structural linguistics to ethnographic analysis, founding structural anthropology; this is the principal intellectual-genealogy anchor for his node admission. The edge is to an existing reviewed node (person:ferdinand-de-saussure).",
+    "_uncertainty": "Directness is contested: Jakobson is the more proximate Saussure-to-Lévi-Strauss mediator; some sources may trace the influence as Saussure→Jakobson→Lévi-Strauss rather than Saussure→Lévi-Strauss directly. QC must find ≥2 sources that directly name the Saussure→Lévi-Strauss link. If direct sourcing fails, this edge should be NEI and a Jakobson→Lévi-Strauss edge proposed instead.",
+    "_self_flag": true
+  },
+  {
+    "id": "edge:nietzsche-influenced-freud",
+    "source": "person:friedrich-nietzsche",
+    "target": "person:sigmund-freud",
+    "relation": "influenced",
+    "confidence": 0.55,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "disputed": true,
+    "note": "CLAUSE-6 v2 DISPUTED-BALANCED CANDIDATE — SELF-FLAGGED. This is the headline firing-test for clause-6 v2. Both camps must be represented. CAMP A (affirm influence — best-known sources, UNVERIFIED recollections): (1) Lehrer, R. (1995) 'Nietzsche's Presence in Freud's Life and Thought: On the Origins of a Psychology of Dynamic Unconscious Mental Functioning', Yearbook of Psychoanalysis and Psychotherapy / possibly: Chapman, A.H. & Chapman-Santana, M. (1995) 'The influence of Nietzsche on Freud's ideas', British Journal of Psychiatry, 166(2):251-253. URL hint: https://doi.org/10.1192/bjp.166.2.251 — QC must verify this paper exists at this DOI and contains an affirm-influence claim. (2) Ronald Hayman's Nietzsche biography (1980) and Peter Gay's Freud biography (1988) both reportedly discuss the Nietzsche-Freud intellectual relationship with evidence of influence. (3) Freud's own 1914 paper 'On the History of the Psycho-Analytic Movement' reportedly contains an acknowledgement that Nietzsche anticipated some psychoanalytic ideas (claim from training knowledge, verbatim uncertain). CAMP B (deny / common-source / thematic-affinity — best-known sources, UNVERIFIED recollections): (1) Freud's own denial: in multiple letters and public statements Freud claimed he had not read Nietzsche until late in life and that his own ideas developed independently. Peter Gay's biography (1988) documents these denials. (2) The 'common-source hypothesis' (Ellenberger, H., 'The Discovery of the Unconscious', 1970): Nietzsche and Freud drew on a shared 19th-century German intellectual milieu (Schopenhauer, Hartmann's 'Philosophy of the Unconscious') without Nietzsche directly influencing Freud. (3) 'Thematic-affinity view': similar concepts (unconscious, drives, repression) emerged from the same cultural-intellectual context, not causal influence. Note: Confidence 0.55 reflects the genuine scholarly split. The `disputed:true` flag is set as a candidate marker for QC — QC must adjudicate whether clause-6 v2 actually fires here (the existence of the existence-split and both camps being independently sourced is the test criterion).",
+    "_rationale": "This edge is proposed as the clause-6 v2 disputed-balanced firing-test candidate, per the batch order. The affirm-influence camp (Lehrer, Chapman et al., Gay) and the denial/common-source camp (Freud's own letters, Ellenberger) both have independently sourced claims. The edge is proposed at low confidence (0.55) to reflect the genuine split.",
+    "_uncertainty": "HIGH UNCERTAINTY on all claim anchors — all source recollections are from training knowledge and must be live-verified. The Chapman et al. 1995 Br J Psychiatry paper: QC must confirm it exists at the stated DOI and contains an affirm-influence claim. Freud's explicit denial location (which letters, which public statement): QC must find a verifiable source. Ellenberger 1970 is a well-known scholarly work but the specific claim about common sources vs direct influence must be verified from the text. This is explicitly a QC-must-adjudicate edge.",
+    "_self_flag": true
+  },
+  {
+    "id": "edge:schopenhauer-influenced-freud",
+    "source": "person:arthur-schopenhauer",
+    "target": "person:sigmund-freud",
+    "relation": "influenced",
+    "confidence": 0.62,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "disputed": true,
+    "note": "CLAUSE-6 v2 DISPUTED-BALANCED CANDIDATE — SELF-FLAGGED. CAMP A (affirm influence — UNVERIFIED recollections): (1) Freud himself acknowledged Schopenhauer's anticipation of key psychoanalytic concepts in 'On the History of the Psycho-Analytic Movement' (1914) — Freud reportedly wrote about the 'burden of debt' to Schopenhauer (claim from training knowledge; the exact quotation 'burden of debt' may be a paraphrase of Freud's German). (2) Peter Gay, 'Freud: A Life for Our Time' (1988): reportedly documents that Freud was familiar with Schopenhauer's concept of the will and its parallels to the unconscious. (3) Ellenberger, H. 'The Discovery of the Unconscious' (1970): documents the 19th-century 'discovery of the unconscious' tradition including Schopenhauer as a predecessor. (4) Bryan Magee's 'The Philosophy of Schopenhauer' (1983, Oxford) reportedly discusses Schopenhauer's influence on Freud. CAMP B (skeptical / mediated / common-source — UNVERIFIED recollections): (1) Freud's claim to have avoided reading Schopenhauer until after his own framework was developed, to preserve independence — same denial pattern as Nietzsche. (2) The parallelism between Schopenhauer's 'will' and Freud's 'id' / 'drive' (Trieb) may reflect common-cultural-inheritance rather than causal influence (19th-century German philosophical milieu hypothesis). Note: This edge is somewhat less disputed than Nietzsche→Freud (Freud's acknowledgement of Schopenhauer is more direct than his acknowledgement of Nietzsche) — confidence 0.62. `disputed:true` set as candidate marker; QC must adjudicate whether clause-6 v2 fires.",
+    "_rationale": "Freud's reported 'burden of debt' acknowledgement to Schopenhauer (recollection from Freud 1914) and the extensive scholarly documentation of Schopenhauer→Freud intellectual genealogy make this a sourced influence claim, though the degree and directness are contested.",
+    "_uncertainty": "HIGH UNCERTAINTY on all claim anchors. The 'burden of debt' phrase is from training-knowledge recollection of Freud's 1914 paper — QC must confirm the paper contains this or equivalent language, and what exactly it says. The Ellenberger 1970 and Gay 1988 references are plausible scholarly sources but verbatim claims must be verified. The distinction between Schopenhauer→Freud influence and Schopenhauer→Nietzsche→Freud mediation (if the latter, the direct Schopenhauer→Freud edge may be redundant) should be flagged for QC.",
+    "_self_flag": true
+  }
+]
