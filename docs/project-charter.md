@@ -17,6 +17,14 @@ Noosphere is an **English-first, multilingual-ready, static/read-only knowledge 
 fields, concepts, people, works, methods, and evidence-backed relationships into a navigable
 knowledge graph — a *navigation layer over human knowledge*.
 
+This scope is **people-inclusive by definition**: the globe maps not only fields and concepts but
+the people, works, and discourse that produce and contest knowledge — knowledge cannot be honestly
+mapped apart from those who make it. The field-first build order of the foundation phase (the
+`part_of` skeleton, built first because it is low-risk and cheap to cover) is a **sequencing
+strategy**, never a narrowing of this identity to a "field map." People and works are first-class
+from the definition; the only standing boundary on admitting a person is the stricter evidence and
+owner review required for **living people** (§3, §5) — a matter of responsibility, not of identity.
+
 Noosphere is **not**:
 
 - **not a wiki clone** — it does not reproduce or cache third-party article bodies;
