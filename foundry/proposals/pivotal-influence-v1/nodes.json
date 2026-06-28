@@ -1,0 +1,113 @@
+[
+  {
+    "id": "subfield:psychoanalysis",
+    "type": "subfield",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q41630"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-29",
+    "updated_at": "2026-06-29",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "_rationale": "Dual-criterion satisfied: (1) Classification presence — LCC BF173-175 (Psychoanalysis and psychoanalytic interpretations) and UDC 159.964.2 (Psychoanalysis) both designate psychoanalysis as a distinct discipline-level classification category; (2) Community presence — the International Psychoanalytical Association (IPA, founded 1910) is the oldest and largest professional body; the International Journal of Psychoanalysis (since 1920) is its flagship peer-reviewed journal; dedicated training institutes worldwide (e.g. British Psychoanalytical Society, New York Psychoanalytic Institute) constitute an independent disciplinary community. academic_status=established: continuous institutional presence since 1910, multiple peer-reviewed journals, degree-granting training institutes. Part_of field:psychology (domain:cognitive_sciences) is the dominant institutional home, though cross-disciplinary placement in humanities (literary/cultural theory) is a secondary affiliation the edge batch may later record via §13.",
+    "_uncertainty": "QID Q41630 is from training knowledge and must be live-verified by QC — QID hallucination rates in this pipeline are high (~88%). The exact LCC sub-range BF173-175 vs BF175 only should be verified against the live LCC outline. The domain placement cognitive_sciences (via field:psychology) vs humanities is contested by some practitioners (Lacanian psychoanalysis is housed in humanities departments); the dominant institutional home is psychology/medicine, which is reflected here — minority placement should be noted in the note field at QC time.",
+    "_self_flag": false
+  },
+  {
+    "id": "person:sigmund-freud",
+    "type": "person",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q9215"
+    },
+    "created_at": "2026-06-29",
+    "updated_at": "2026-06-29",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "_rationale": "Freud meets person/work node contract v1 (decision (58)): he founded subfield:psychoanalysis, which is a new reviewed-eligible node proposed in this batch. Deceased 23 September 1939. Keep-criteria: founded/formalized a field/subfield — psychoanalysis. The founder-blocked issue (Freud could not be admitted as a person node without a psychoanalysis subfield node) is resolved by proposing subfield:psychoanalysis in this batch.",
+    "_uncertainty": "QID Q9215 is from training knowledge — QC must live-verify (P31=Q5 human, P570 death date present = 1939). I have moderate confidence in Q9215 as Freud's QID but the hallucination rate for QIDs in this pipeline is ~85–88%; treat as hint only. Death year 1939 is highly confident. Domain placement cognitive_sciences (via field:psychology) vs humanities is the same contested placement as psychoanalysis itself.",
+    "_self_flag": false
+  },
+  {
+    "id": "person:friedrich-nietzsche",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q9358"
+    },
+    "created_at": "2026-06-29",
+    "updated_at": "2026-06-29",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "_rationale": "Pivotal-influence person: Nietzsche is admitted via two independent reviewed-node anchors — subfield:existentialism (reviewed) and subfield:continental-philosophy (reviewed) — both of which are direct targets of proposed influenced edges. He is a documented precursor/influence on 20th-century existentialism (Sartre, Camus, Heidegger all engaged his work directly) and continental philosophy more broadly. NOT a field founder in the strict sense (he did not found existentialism or continental philosophy as institutional fields). Deceased 25 August 1900.",
+    "_uncertainty": "QID Q9358 is from training knowledge — QC must live-verify (P31=Q5, P570 = 1900). Death year 1900 is highly confident. The designation 'precursor to existentialism' is standard but some scholars (Kaufmann, Camus) contest whether Nietzsche himself was an existentialist vs. a mere influence. The pivotal-influence admission is correct under the new policy; the framing 'NOT a field founder' is my assessment and may be contested for certain narrower readings.",
+    "_self_flag": false
+  },
+  {
+    "id": "person:arthur-schopenhauer",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q38193"
+    },
+    "created_at": "2026-06-29",
+    "updated_at": "2026-06-29",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "_rationale": "Pivotal-influence person: Schopenhauer is admitted via two independent reviewed-node anchors — person:friedrich-nietzsche (proposed, both in this batch) and subfield:aesthetics (reviewed). His influence on Nietzsche is one of the most documented intellectual relationships in 19th-century philosophy (Nietzsche explicitly acknowledged Schopenhauer's centrality in 'Schopenhauer as Educator', 1874). His influence on aesthetics (the doctrine of aesthetic contemplation as escape from will, the primacy of music) is well-documented. Deceased 21 September 1860.",
+    "_uncertainty": "QID Q38193 is from training knowledge — QC must live-verify. Death year 1860 is highly confident. The edge to person:nietzsche depends on that node being accepted in this batch; if nietzsche is rejected, the anchor to aesthetics alone remains. The claim that Schopenhauer influenced Freud is more contested (see edge notes) — the node admission itself is grounded in the aesthetics and nietzsche anchors, not the Freud connection.",
+    "_self_flag": false
+  },
+  {
+    "id": "person:claude-levi-strauss",
+    "type": "person",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q56259"
+    },
+    "created_at": "2026-06-29",
+    "updated_at": "2026-06-29",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-29"
+    },
+    "_rationale": "Pivotal-influence person: Lévi-Strauss is admitted via the person:ferdinand-de-saussure → person:claude-levi-strauss influenced edge anchor. Saussure's structuralist linguistics is documented as the intellectual foundation Lévi-Strauss applied to anthropology, creating structural anthropology. The anchor node person:ferdinand-de-saussure is already reviewed in /data. Deceased 30 October 2009. Note: 'structural anthropology' is not a current node — Lévi-Strauss's admission via the Saussure anchor is the order's specified design (Saussure→Lévi-Strauss influence anchor).",
+    "_uncertainty": "QID Q56259 is from training knowledge — QC must live-verify (P31=Q5, P570 = 2009). Death year 2009 is highly confident — Lévi-Strauss died at 100 years old, a well-documented fact. The QID may be Q56259 or a nearby ID; treat as hint. The 'structural anthropology' framing may prompt QC to consider whether a structural-anthropology subfield node should accompany this person node — that is out of scope for this batch but flagged as a coverage question.",
+    "_self_flag": false
+  }
+]

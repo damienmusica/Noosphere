@@ -9400,5 +9400,74 @@
     },
     "created_at": "2026-06-19",
     "updated_at": "2026-06-19"
+  },
+  {
+    "id": "subfield:psychoanalysis",
+    "type": "subfield",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "external_ids": {
+      "wikidata": "Q41630"
+    },
+    "created_at": "2026-06-29",
+    "updated_at": "2026-06-29"
+  },
+  {
+    "id": "person:sigmund-freud",
+    "type": "person",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q9215"
+    },
+    "created_at": "2026-06-29",
+    "updated_at": "2026-06-29"
+  },
+  {
+    "id": "person:friedrich-nietzsche",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q9358"
+    },
+    "created_at": "2026-06-29",
+    "updated_at": "2026-06-29"
+  },
+  {
+    "id": "person:arthur-schopenhauer",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q38193"
+    },
+    "created_at": "2026-06-29",
+    "updated_at": "2026-06-29"
+  },
+  {
+    "id": "person:claude-levi-strauss",
+    "type": "person",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q128126"
+    },
+    "created_at": "2026-06-29",
+    "updated_at": "2026-06-29"
   }
 ]
