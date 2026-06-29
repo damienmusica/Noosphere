@@ -99,8 +99,8 @@ to make implementation easier.
   (≥2 independent claim-stating live sources + adversarial QC + correct
   direction); `disputed`/NEI verdicts stop at `proposed`/foundry. Earned by
   the wave-1+wave-2 measurement (precision 1.0 at N=27, hallucination 0,
-  decisions (51)/(53)). The `influenced`/`critiques` (a)-relations are NOT
-  covered — they keep their own gate.**; **person/work node contract v1
+  decisions (51)/(53)). The `influenced`/`critiques` (a)-relations now have
+  their own ladder too (decision (68) — see the (a)-ladder item below).**; **person/work node contract v1
   (decision (58), 2026-06-19): the corpus admits `person`/`work` nodes only
   for those that founded/formalized an existing `reviewed` field/concept
   (keep-criteria — not "all famous people"); IDs `person:given-family` /
@@ -125,7 +125,23 @@ to make implementation easier.
   auto-`reviewed` by node policy v1, so its endpoint fails clause ①). Earned by
   the wave-1+wave-2 measurement (precision 1.0 at N=20, hallucination 0,
   rejection fired 5×, decisions (58)/(59)); 1:1 mirror of the (54) `formalizes`
-  ladder. The `influenced`/`critiques` (a)-relations are NOT covered — own gate.**
+  ladder. The `influenced`/`critiques` (a)-relations now have their own ladder
+  too — see below.**; **`influenced`/`critiques` (a)-relation auto-`reviewed`
+  ladder (decision (68), executed session #37, 2026-06-29): an (a)-edge
+  auto-promotes `proposed → reviewed` when both endpoints are `reviewed` and the
+  Lane B pipeline returns *supported* (≥2 independent claim-stating live sources +
+  adversarial perspective-diverse QC + correct direction + identity referent
+  verified); **`disputed`/NEI/reject stop at `proposed`/foundry** (clause-6 v2
+  safety net — `nietzsche→freud` disputed correctly held). A record-not-resolve
+  tension/scope `note` does NOT disqualify a supported edge (only `disputed:true`
+  / node `ambiguous` stops the ladder). **★ Living-person guard:**
+  `is_living_person:true` endpoints do NOT auto-promote — CPO stop-point
+  (charter stricter evidence; double-enforced via node policy v1). Earned by the
+  #29+#34+#36 (a)-wave measurement (precision 1.0 on supported verdicts,
+  hallucination 0) + clause-6 v2's first correct fire (decision (67)) validating
+  the safety net; promoted the standing backlog of 20 supported edges. 1:1
+  mirror of the (54) `formalizes` / (60)/(61) `founded_or_formalized` ladders.
+  Full policy = `docs/data-foundry.md` §8.**
 
 ## Stack and dependencies
 
