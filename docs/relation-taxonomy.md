@@ -44,7 +44,12 @@ only through a separate gate (this doc + Zod enum + validator, in one change).
   **"within-framework: X"**. A qualifier *field* is re-gated by the CPO only on measured threshold —
   and it would be a **framework/school/scale** field, **not** a confidence number (`confidence` 0–1
   already exists). Precedent: Argdown deliberately keeps its quantitative "degree of justification"
-  out of core — measurement-first deferral is well-founded, not timid.
+  out of core — measurement-first deferral is well-founded, not timid. (Note: the `disputed: true`
+  flag *itself* is **no longer an unfired mechanism** — it fired on the propositional layer for the
+  first time at `nietzsche → freud` under clause-6 v2, vault decision (67); see
+  [`docs/data-foundry.md`](data-foundry.md) §8. Its prior 0/N non-firing is now understood as roster
+  bias, not a coverage gap, and this qualifier watch-item covers only the cases `disputed` + `note`
+  genuinely cannot express.)
 - **`prerequisite_for` under-utilization** (currently a sparse relation) is a **depth-dimension
   candidate to develop** (more pedagogical/dependency edges), not a schema change. Evidence standard
   differs from structural edges: a curriculum/textbook source stating the dependency, per

@@ -152,6 +152,108 @@ This is a cost-zero discipline: it needs no new field or schema. Whether a *new 
 (e.g. framework/school/scale qualifier fields) is ever warranted is measurement-first — see the
 relation taxonomy's watch-items; build only on measured need.
 
+### Contested propositional relations — clause-6 v2 (standing decision procedure)
+
+The tension-preservation rule states *what* to record; this is the decision procedure that
+operationalizes it for the **propositional-relation layer** (`influenced`, `critiques`,
+`founded_or_formalized`, and similar claim-bearing edges). It is **clause-6 v2** — the v1 dominant-view
+rule (vault decision (15): position the edge on the dominant view, ≥3 sources, minority in `note`)
+generalized so it can also express the *balanced split* v1 structurally could not. Schema is **unchanged**:
+it uses `disputed` (bool), `note`, and `confidence` (0–1), all already present — a **policy /
+operationalization** revision only, no Zod / validator / taxonomy change. Ratified by vault decision (64),
+codified here by decision (68) after it fired correctly without over-firing (decision (67)).
+
+**Run the tree only after** atomize + **≥2 independent claim-stating** grounding sources are live-fetched
+and verbatim-checked + adversarial perspective-diverse counter-evidence QC. The verdict for one
+propositional-relation candidate:
+
+1. **Dominant view affirms, no substantial dissent → `supported`** (reviewed-eligible per the (a)/(d) ladder).
+2. **Dominant view affirms, but a *live, sourced* scholarly minority dissents on EXISTENCE / DIRECTION →
+   `disputed: true` (asymmetric)** — write positioned on the dominant view, `disputed: true`, the minority
+   position and its sources in `note`. *This branch is exactly clause-6 v1 — v1's dominant-view requirement
+   is absorbed here unchanged.*
+3. **No dominant view — genuine split, EXISTENCE / DIRECTION contested, each camp ≥2 independent
+   claim-stating sources → `disputed: true` (balanced)** — write the edge as a *contested claim*, not as
+   established: `disputed: true`, `confidence ≈ 0.5`, **not positioned as a winner**, `note` records both
+   camps as live. *This is the new sub-case v1 could not express — without a dominant view v1 forced these
+   into NEI, recording a live controversy as ignorance.*
+4. **Dominant view denies; the affirming side is discredited / fringe, not a live scholarly position →
+   `reject`** (no edge).
+5. **Insufficient claim-stating sources to characterize the relation at all → NEI** (no edge, honest gap).
+6. **Mutual / bidirectional (both directions documented) → two co-existing directed edges** —
+   bidirectionality ≠ contestation, so neither edge is `disputed`.
+
+**Two load-bearing distinctions.**
+
+- **Existence / direction contested (→ disputed, #2/#3) vs degree / character debated (→ supported + note).**
+  If everyone agrees the relation exists and only its *extent or character* is debated → `supported` + a
+  tension `note` (all agree Comte influenced Durkheim; *how much* is debated). If the *existence or
+  direction itself* is genuinely split → `disputed`.
+- **disputed vs NEI.** `disputed: true` = *we found the debate* — substantial sourced positions on ≥2
+  sides, unresolved; the edge is written because the contestation is itself a documented feature of the
+  discourse ("scholars actively debate whether A influenced B" is a true statement about scholarship —
+  that, not the influence, is what the edge records). `NEI` = *we could not find enough* — insufficient
+  claim-stating sources to characterize the relation at all; about our evidence, not the world's debate;
+  no edge. Operational test: "Is there a body of scholarship that explicitly engages this as a contested
+  question, with sourced positions on multiple sides?" Yes → disputed; "Can we not find sources stating
+  the relation at all?" → NEI.
+
+**Floors and guards.**
+
+- **Source floor on every camp** (no fabricated controversy): a balanced split needs each side ≥2
+  independent claim-stating sources; an asymmetric one needs dominant ≥2 + minority ≥1. Every camp must be
+  a **live scholarly position**, not a discredited / fringe one (that → reject, #4).
+- **No manufactured disputes** (= hallucination-class failure): a disputed edge needs the debate *found in
+  the literature*, not constructed by the pipeline. QC judges **data-quality only** ("is this a real
+  scholarly debate or a sourcing artifact?"), never "who is right."
+- **disputed edges never auto-promote.** Regardless of any ladder, a `disputed: true` edge stays
+  `proposed` / human-visible — these are exactly the claims that warrant eyes. The (a)/(d) auto-`reviewed`
+  ladders explicitly exclude `disputed` / NEI / reject (enforced by the promotion machine-check).
+- **Confidence semantics for a balanced split:** `confidence ≈ 0.5` + `disputed: true` reads as *contested
+  claim*, with the `note` — never as "moderately likely true."
+
+**Firing precedent (decision (67), 2026-06-29).** Branch #3 (balanced split) **fired for the first time** on
+`nietzsche → freud` — existence / direction contested, no dominant view, each camp ≥2 live claim-stating
+sources (Camp A: Chapman et al., *Br. J. Psychiatry* 1995; parallels too specific for coincidence. Camp B:
+Freud's denial of reading Nietzsche, "scarce direct textual dependence", the "Disaffinities" common-source
+literature) → `disputed: true`, conf 0.5, unpositioned, `proposed` (not promoted). In the same batch the
+**over-fire guard held**: `schopenhauer → freud` and `saussure → levi-strauss` were existence-agreed /
+degree-debated and correctly routed to **supported + note** (the existence-vs-degree line), and adversarial
+QC reversed a generation note-error. This is the first propositional-layer `disputed: true` in the corpus
+(cumulative 0/32 → 1/33) — the flag is **confirmed operational**, no longer an untested mechanism.
+
+### Propositional-edge auto-`reviewed` ladders ((a)- and (d)-relations)
+
+clause-6 v2 above is the **safety net** that makes these ladders safe: a contested claim is diverted to
+`disputed` / NEI / reject and never reaches `supported`, so auto-promoting a `supported` edge cannot
+launder a live controversy into `reviewed`. With that net validated (decision (67)), the propositional-edge
+auto-`reviewed` ladders are standing policy.
+
+A propositional edge **auto-promotes `proposed → reviewed`** when **all** hold:
+
+1. **Both endpoints are `reviewed`** (status-cap clause 3, enforced in `validate-data.ts`).
+2. **Verdict = supported** under the Lane B pipeline: ≥2 independent claim-stating sources live-fetched
+   and verbatim-checked, adversarial perspective-diverse QC passed, direction and identity referent correct.
+3. **Not `disputed` / NEI / reject** — these never auto-promote (clause-6 v2); they stop at `proposed` /
+   stay in foundry, human-visible by design.
+4. **★ Living-person guard.** If either endpoint is a living person (`is_living_person: true`), the edge
+   does **not** auto-promote — it stays at the **CPO stop-point** (charter stricter-evidence rule).
+   Double-enforced: a living-person node is not auto-`reviewed` by node policy v1, so its endpoint is not
+   `reviewed` and clause ① already blocks the edge.
+
+A recorded record-not-resolve **tension / scope `note`** on a *supported* edge does **not** disqualify it —
+only `disputed: true` (or a node-level `ambiguous`) stops the ladder (the founder-ladder precedent promoted
+note-bearing edges such as Newton∥Leibniz, Boole∥Frege). Provenance (`proposed_by`, `evidence`,
+`confidence`, `note`) is retained on every promoted edge for bulk re-auditability and reversibility.
+
+- **(a)-relations** (`influenced`, `critiques`) — opened by **decision (68)**, 2026-06-29 (this
+  codification), after the #29 + #34 + #36 (a)-wave measurements (precision 1.0 on every supported verdict,
+  claim-level hallucination 0) **and** clause-6 v2's first correct fire (decision (67)) validating the
+  disputed safety net. Promoted the standing backlog of 20 supported `influenced`/`critiques` edges;
+  `nietzsche → freud` (`disputed`) correctly held at `proposed`.
+- **(d)-relations** — `formalizes` (decision (54)) and `founded_or_formalized` (decisions (60)/(61)) were
+  opened earlier; this rule is their 1:1 mirror.
+
 ## 9. Current implementation sequence
 
 **Depth before breadth.** Take one domain (machine-learning foundations) fully
