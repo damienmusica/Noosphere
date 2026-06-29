@@ -75,3 +75,26 @@ node identity changed; confidences untouched. typecheck + validate:data green (4
 - All NEI/reject verdicts from the three waves (e.g. Dedekind↔Cantor NEI, Newton→Leibniz reject,
   Darwin→Mendel NEI) were **never written to `/data`** — they remain untrusted measurements in each
   batch's `proposals.json`/`qc-report.md`.
+
+## Addendum — `freud → psychoanalysis` founder edge re-grounded + promoted (decision (69))
+
+The one honest grounding gap this batch left open (decision (67)): the `founded_or_formalized` edge
+`sigmund-freud → psychoanalysis` was written **proposed-first** because only one live claim-stating source
+(Wikipedia) could be fetched at #36 QC time — Britannica was HTTP 403 and IEP returned 404 on the slug
+tried. Re-grounded in session #37 (decision (69)) on the **(d)** founder ladder (not the (a)-ladder above):
+
+- **2nd independent live claim-stating source secured:** IEP `iep.utm.edu/freud/` (HTTP 200) —
+  *"Sigmund Freud, the father of psychoanalysis, was a physiologist, medical doctor, psychologist…"*. The
+  #36 404 was a **wrong slug**; the correct `/freud/` is live. Wayback snapshot
+  `web.archive.org/web/20260627144500/https://iep.utm.edu/freud/` verified to contain the claim verbatim
+  (§8 existing-snapshot substitute; SPN itself returned 302).
+- **SEP `plato.stanford.edu/entries/freud/` rejected:** HTTP 200 but body is a reserved *"Not Yet
+  Available"* placeholder — not claim-stating, caught by live verification (the 200-trap guard).
+- **Verdict supported:** Wikipedia + IEP = ≥2 independent live claim-stating; founding attribution
+  canonical (Breuer's precursor "talking cure" is a degree/precursor nuance, not an existence/direction
+  dispute → not `disputed`); person→field direction + identity (Q9215, d.1939) verified; Freud deceased
+  (living-founder guard not triggered); both endpoints `reviewed`.
+- **Promoted `proposed → reviewed`** on the `founded_or_formalized` ladder (decision (61)); `evidence`
+  now `[source:wikipedia, source:iep]`, note updated. Only this edge's status/evidence/note changed
+  (diff 4 ins / 3 del, no reformat); confidence 0.95 unchanged; `source:iep` already registered (0 new
+  sources). typecheck + validate green (464 nodes, 552 edges, 21 sources).
