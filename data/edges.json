@@ -10143,9 +10143,10 @@
     "target": "subfield:psychoanalysis",
     "relation": "founded_or_formalized",
     "confidence": 0.95,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:wikipedia"
+      "source:wikipedia",
+      "source:iep"
     ],
     "evidence_kind": "externally_sourced",
     "proposed_by": {
@@ -10153,7 +10154,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-29"
     },
-    "note": "Freud founded psychoanalysis in the early 1890s (Wikipedia Psychoanalysis: \"Established in the early 1890s by Sigmund Freud\"). person→field direction and identity (QID Q9215, P31=Q5, d.1939) verified. Proposed-first (NOT auto-promoted on the founded_or_formalized ladder) because only one independent live claim-stating source could be fetched at QC time — Britannica (HTTP 403) and IEP (404 slug) were bot-blocked; the ≥2-independent-live-source floor was not cleanly met. Honest grounding gap (SPN §8 discipline); promote on a later wave once a second source is live-verified. (Founder-blocked resolution for the corpus's first pivotal-influence pilot, decision (65)/(66).)"
+    "note": "Freud founded psychoanalysis in the early 1890s. Two independent live claim-stating sources: Wikipedia Psychoanalysis (\"Established in the early 1890s by Sigmund Freud\") and IEP \"Sigmund Freud\" (\"Sigmund Freud, the father of psychoanalysis, was a physiologist, medical doctor, psychologist and influential thinker of the early twentieth century\"; iep.utm.edu/freud/, live HTTP 200; Wayback snapshot web.archive.org/web/20260627144500/https://iep.utm.edu/freud/, §8). person→field direction and identity (QID Q9215, P31=Q5, d.1939) verified; founding attribution canonical — Breuer's precursor 'talking cure' is a degree/precursor nuance, not an existence/direction dispute (not disputed). Promoted proposed→reviewed on the founded_or_formalized auto-reviewed ladder (decision (61)) after re-grounding (decision (69)) closed the #36 single-source gap: the prior IEP 404 was a wrong slug (correct slug /freud/ is live), Britannica still HTTP 403, and SEP plato.stanford.edu/entries/freud/ is a reserved 'Not Yet Available' placeholder (not claim-stating — caught by live verification)."
   },
   {
     "id": "edge:friedrich-nietzsche-influenced-existentialism",
