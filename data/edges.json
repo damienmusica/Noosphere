@@ -10458,7 +10458,7 @@
     "target": "subfield:structural-anthropology",
     "relation": "founded_or_formalized",
     "confidence": 0.93,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:wikipedia"
     ],
@@ -10468,7 +10468,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-30"
     },
-    "note": "Levi-Strauss is the principal founder of structural anthropology (Wikipedia Structural anthropology: \"Structural anthropology is a school of sociocultural anthropology based on Claude Levi-Strauss' 1949 idea ...\"). The founding attribution is sound, but this edge stays PROPOSED because its target subfield:structural-anthropology is itself proposed, not reviewed: structural anthropology is a genuine subfield-vs-absorb modeling contest (Wikidata types it \"branch of anthropology\" Q106720965, supporting a peer subfield, but it is a Levi-Strauss-centric school within sociocultural anthropology, which under section 12 rule 2 + the german-idealism deferral precedent could instead be absorbed into cultural-anthropology). Routed to the CPO movement-axis ruling (session #40 draft Part B). founder ladder clause (1) (both endpoints reviewed) fails on the proposed target -> correctly held at proposed. Identity Q128126 verified."
+    "note": "Levi-Strauss is the principal founder of structural anthropology (Wikipedia Structural anthropology: \"Structural anthropology is a school of sociocultural anthropology based on Claude Levi-Strauss' 1949 idea ...\"). The founding attribution is sound, but this edge stays PROPOSED because its target subfield:structural-anthropology is itself proposed, not reviewed: structural anthropology is a genuine subfield-vs-absorb modeling contest (Wikidata types it \"branch of anthropology\" Q106720965, supporting a peer subfield, but it is a Levi-Strauss-centric school within sociocultural anthropology, which under section 12 rule 2 + the german-idealism deferral precedent could instead be absorbed into cultural-anthropology). Routed to the CPO movement-axis ruling (session #40 draft Part B). founder ladder clause (1) now satisfied: CPO ratified the section-12 movement-axis rule (decision (73)) -> structural-anthropology promoted to reviewed subfield -> both endpoints reviewed + supported -> founder ladder fires -> promoted proposed->reviewed. Identity Q128126 verified."
   },
   {
     "id": "edge:roman-jakobson-influenced-semiotics",
