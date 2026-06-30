@@ -10488,5 +10488,119 @@
       "proposed_at": "2026-06-30"
     },
     "note": "Jakobson's communication model (1960 'Linguistics and Poetics': addresser/message/addressee + context/contact/code) is a standard reference in semiotics, and he drew explicitly on C. S. Peirce's semiotics. The influence is genuine but diffuse and partly bidirectional (Jakobson drew FROM Peircean semiotics as much as he shaped the field), and semiotics had independent foundations (Peirce, Saussure). Held at PROPOSED: a single-source, lower-confidence, direction-ambiguous (a)-edge that does not clearly meet the supported bar; re-examine with stronger directional grounding before promotion. Identity Q156201 verified."
+  },
+  {
+    "id": "edge:logical-positivism-part-of-analytic-philosophy",
+    "source": "concept:logical-positivism",
+    "target": "subfield:analytic-philosophy",
+    "relation": "part_of",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Logical positivism is a historical strand within analytic philosophy (SEP 'Vienna Circle': the movement is labeled \"logical empiricism (or logical positivism or neopositivism)\" and is treated as an analytic-philosophy current). part_of-depth: concept (level 3) under subfield:analytic-philosophy (level 2), per the section-12 part_of-depth freedom. A second part_of to philosophy-of-science is a candidate section-13 dual membership, not written here."
+  },
+  {
+    "id": "edge:moritz-schlick-founded-logical-positivism",
+    "source": "person:moritz-schlick",
+    "target": "concept:logical-positivism",
+    "relation": "founded_or_formalized",
+    "confidence": 0.91,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Schlick founded and led the Vienna Circle, the institutional home of logical positivism (SEP 'Vienna Circle': \"a group of early twentieth-century philosophers who met under the (nominal) leadership of Moritz Schlick\"; corroborated by Wikipedia 'Moritz Schlick' / 'Vienna Circle'). Record-not-resolve co-founding: logical positivism had several principals -- Schlick (organizer/leader), Carnap (systematizer), Neurath (manifesto/unity-of-science) -- so this edge does not claim sole founding. Direction person->concept correct; identity Q57193 verified (P31=Q5, P570 1936-06-22). founder ladder (decision (61)): both endpoints reviewed + supported -> auto-reviewed. Generator QID hint Q57095 was a hallucination (Emanuel Lasker); corrected to Q57193."
+  },
+  {
+    "id": "edge:rudolf-carnap-founded-logical-positivism",
+    "source": "person:rudolf-carnap",
+    "target": "concept:logical-positivism",
+    "relation": "founded_or_formalized",
+    "confidence": 0.94,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Carnap is the most systematic developer/formalizer of logical positivism (SEP 'Vienna Circle' lists \"the philosopher and logician Rudolf Carnap\" as a central member; his Aufbau and Logical Syntax of Language are core texts; corroborated by Wikipedia 'Rudolf Carnap'). 'formalized' fits strongly. Record-not-resolve co-founding (with Schlick, Neurath). Direction correct; identity Q76519 verified (P31=Q5, P570 1970). founder ladder -> auto-reviewed. Generator QID hint Q58050 was a hallucination (a missing/invalid entity); corrected to Q76519."
+  },
+  {
+    "id": "edge:otto-neurath-founded-logical-positivism",
+    "source": "person:otto-neurath",
+    "target": "concept:logical-positivism",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Neurath was a founding member of the Vienna Circle and a principal author of its 1929 manifesto 'The Scientific Conception of the World', driving physicalism and the unity-of-science programme (SEP 'Vienna Circle' lists \"the social scientist Otto Neurath\" as a member; corroborated by Wikipedia 'Otto Neurath'). Record-not-resolve co-founding (with Schlick, Carnap). Direction correct; identity Q78570 verified (P31=Q5, P570 1945). founder ladder -> auto-reviewed. Generator QID hint Q78698 was a hallucination (Elfi Eder); corrected to Q78570."
+  },
+  {
+    "id": "edge:ludwig-wittgenstein-influenced-logical-positivism",
+    "source": "person:ludwig-wittgenstein",
+    "target": "concept:logical-positivism",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "disputed": false,
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "★ clause-6 case (existence agreed / character debated -> supported + note, NOT disputed). Wittgenstein's Tractatus strongly influenced the Vienna Circle, transmitted via Waismann's and Schlick's meetings with him (SEP 'Vienna Circle': \"considerations of this sort appeared to receive a considerable boost due to Waismann's reports of Wittgenstein's meetings with him and Schlick\"). But Wittgenstein was NOT a member and diverged from their verificationism (SEP: \"Wittgenstein's criterion required conclusive verifiability which Carnap's did not\"); he rejected the positivist reading of the Tractatus. Record-not-resolve: the influence existence is uncontested; what is contested is the *character* (the Circle's reading vs Wittgenstein's intent) -> supported + note. No camp denies the influence existed, so not disputed:true. Direction Wittgenstein->logical-positivism correct; both endpoints reviewed; identity Q9391 verified (P31=Q5, P570 1951). (a)-ladder (decision (68)) -> auto-reviewed. Generator QID hint Q9358 was a hallucination (Friedrich Nietzsche); corrected to Q9391."
+  },
+  {
+    "id": "edge:ludwig-wittgenstein-founded-philosophy-of-language",
+    "source": "person:ludwig-wittgenstein",
+    "target": "subfield:philosophy-of-language",
+    "relation": "founded_or_formalized",
+    "confidence": 0.82,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Wittgenstein is a central figure in 20th-century philosophy of language (both the early Tractatus picture theory and the later Philosophical Investigations meaning-as-use). Held at PROPOSED: 'founder of philosophy of language' has multiple strong claimants (Frege is most often credited as the founder; Russell, Austin also principal) -> a clean >=2-source 'Wittgenstein founded philosophy of language' attribution is not established; he is a co-principal, not the sole founder. Re-examine with a precise multi-founder framing (or anchor to analytic-philosophy) before promotion. Identity Q9391 verified."
   }
 ]

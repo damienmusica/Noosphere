@@ -1,0 +1,207 @@
+{
+  "batch_id": "logical-positivism-v1",
+  "generated_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-07-01"
+  },
+  "relation_scope": "concept node (logical positivism) + 4 person nodes (Vienna Circle figures) + part_of + founded_or_formalized + influenced edges; Vienna Circle as institution is OUT OF SCOPE (no membership relation in taxonomy)",
+  "nodes": [
+    {
+      "id": "concept:logical-positivism",
+      "type": "concept",
+      "domain": "humanities",
+      "level": 3,
+      "status": "generated",
+      "academic_status": "historical",
+      "label_en": "Logical Positivism",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q167980"
+      },
+      "rationale": "Logical positivism is a bounded philosophical doctrine (verificationism + anti-metaphysics + unity-of-science) admitted under §12 structural rule 5 as a `concept` node (not a subfield); ratified as this batch's primary target in CPO decision (73) because it is the precise referent for the Vienna Circle figures' founding contributions.",
+      "uncertainty": "QID Q167980 is an untrusted training-recall hint — QC must live-verify via Wikidata P31 and label/sitelink cross-check; QID hallucination rate is ~75–85%. The main substantive uncertainty is the `academic_status` tag: historical is chosen because logical positivism as an active research programme largely dissolved by the 1960s (collapse of strict verificationism; Quine's critique), but some scholarship treats it as a living influence on analytic philosophy and philosophy of science — QC should adjudicate if the tag warrants `established` instead.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:moritz-schlick",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Moritz Schlick",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q57095"
+      },
+      "rationale": "Schlick founded the Vienna Circle in 1924 and was its central organiser until his assassination in 1936; he is the canonical organisational founder of the logical positivism movement and the Vienna Circle, meeting the person/work node contract v1 keep-criterion (founded/formalized the target concept).",
+      "uncertainty": "QID Q57095 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P570 (Schlick died 1936; P570 should be present). QID hallucination rate is ~75–85%. The main substantive uncertainty is whether 'founded' is the correct framing: some historians credit Schlick as organiser rather than doctrinal founder (Carnap and Neurath developed more of the positive doctrine); but standard sources consistently use 'founder' for Schlick's Circle role.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:rudolf-carnap",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Rudolf Carnap",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q58050"
+      },
+      "rationale": "Carnap is widely regarded as the most systematic and influential logical positivist; his 'Logische Aufbau der Welt' (1928) and 'Logical Syntax of Language' (1934) are canonical formalisations of the movement's core claims, meeting the person/work node contract v1 keep-criterion.",
+      "uncertainty": "QID Q58050 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P570 (Carnap died 1970; P570 should be present). QID hallucination rate is ~75–85%. The main uncertainty is whether Carnap's contributions are better captured by the concept's philosophical refinements than by the original movement's founding; Carnap himself moved away from strict verificationism, so 'founded_or_formalized' targets his role in establishing and systematising the doctrine rather than endorsing his later position.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:otto-neurath",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Otto Neurath",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q78698"
+      },
+      "rationale": "Neurath was a core Vienna Circle member and co-authored the movement's 1929 manifesto 'Wissenschaftliche Weltauffassung' (The Scientific Conception of the World) that formally announced logical positivism; he also drove the 'unity of science' programme and physicalism strand, meeting the person/work node contract v1 keep-criterion.",
+      "uncertainty": "QID Q78698 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P570 (Neurath died 1945; P570 should be present). QID hallucination rate is ~75–85%. The main uncertainty is whether Neurath's founding role is as prominent as Schlick's or Carnap's: some historians regard him primarily as the movement's organiser and political voice rather than its philosophical systematiser, but co-authoring the 1929 manifesto is a clear founding act.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:ludwig-wittgenstein",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Ludwig Wittgenstein",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q9358"
+      },
+      "rationale": "Wittgenstein is admitted under the person/work node contract v1 keep-criterion on two independent grounds: (1) his 'Tractatus Logico-Philosophicus' (1921) strongly shaped the Vienna Circle's reading (even as he rejected their interpretation); and (2) he is a principal figure of analytic philosophy and philosophy of language, qualifying for the subfield:philosophy-of-language founder edge independently of the Circle.",
+      "uncertainty": "QID Q9358 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P570 (Wittgenstein died 1951; P570 should be present). QID hallucination rate is ~75–85%. The domain assignment is the key uncertainty: Wittgenstein's work spans philosophy of language, logic, and analytic philosophy — `domain:humanities` is chosen as his primary academic home (same as the reviewed analytic-philosophy and philosophy-of-language anchors), but QC should confirm this is the right domain key for a person node whose work also spans formal sciences (logic).",
+      "ambiguous": true
+    }
+  ],
+  "edges": [
+    {
+      "candidate_id": "P1",
+      "source": "concept:logical-positivism",
+      "target": "subfield:analytic-philosophy",
+      "relation": "part_of",
+      "confidence": 0.88,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [
+        "source:sep",
+        "source:wikipedia"
+      ],
+      "source_hint": "Stanford Encyclopedia of Philosophy, 'Logical Empiricism' (Uebel, rev. 2021) (https://plato.stanford.edu/entries/logical-empiricism/): describes logical positivism/empiricism as a movement within the analytic tradition. Wikipedia, 'Logical positivism' §Philosophy (https://en.wikipedia.org/wiki/Logical_positivism): places logical positivism within 'analytic philosophy'. SEP, 'Analytic Philosophy' (Baldwin, 2010) §The Vienna Circle: treats logical positivism as a defining phase of analytic philosophy's development.",
+      "note": "part_of target choice: `subfield:analytic-philosophy` is chosen over `field:philosophy` because (a) the SEP and Wikipedia consistently place logical positivism inside analytic philosophy as one of its distinctive historical strands, not merely under philosophy generally; (b) `subfield:analytic-philosophy` is a `reviewed` anchor; (c) `subfield:philosophy-of-science` is a co-equal placement candidate (the verificationist programme is a philosophy-of-science doctrine), but the SEP treats logical empiricism under analytic philosophy rather than under philosophy of science — a future QC ruling may add a second `part_of` edge to `subfield:philosophy-of-science` as a §13 dual membership. The `field:philosophy` fallback would lose the specificity rationale; analytic-philosophy is the more precise anchor. Confidence 0.88 reflects strong scholarly consensus with the minor qualification that some historians treat logical positivism as a distinct movement coordinate with analytic philosophy rather than a sub-strand within it.",
+      "rationale": "SEP and Wikipedia place logical positivism within analytic philosophy as one of its historical strands; subfield:analytic-philosophy is the reviewed anchor that best captures the movement's intellectual home.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. A minority view treats logical positivism as a coordinate movement alongside (rather than inside) analytic philosophy; if QC concurs with this view, the edge target should move to field:philosophy and a note should record the analytic-philosophy relationship differently. A second part_of edge to subfield:philosophy-of-science is a future §13 candidate not proposed here.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "F1",
+      "source": "person:moritz-schlick",
+      "target": "concept:logical-positivism",
+      "relation": "founded_or_formalized",
+      "confidence": 0.91,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [
+        "source:sep",
+        "source:wikipedia"
+      ],
+      "source_hint": "Stanford Encyclopedia of Philosophy, 'Logical Empiricism' (Uebel, rev. 2021), §1 History: 'The Vienna Circle was founded by Moritz Schlick in 1924'; describes Schlick as the Circle's central figure. Encyclopaedia Britannica, 'Moritz Schlick' (https://www.britannica.com/biography/Moritz-Schlick): credits Schlick as the founder and leader of the Vienna Circle, the institutional home of logical positivism. Wikipedia, 'Moritz Schlick', §Vienna Circle (https://en.wikipedia.org/wiki/Moritz_Schlick).",
+      "note": "DECEASED: Schlick died 22 June 1936 (assassinated at the University of Vienna). P570 should be present on Wikidata; QC must live-verify. Founding is plural and co-equal: Carnap (F2) and Neurath (F3) co-founded the doctrine alongside Schlick; Schlick's specific contribution is the organisational founding of the Vienna Circle as the movement's institutional body. Record-not-resolve — all three edges co-exist.",
+      "rationale": "Schlick founded the Vienna Circle in 1924, which was the institutional origin of logical positivism; the SEP and Britannica consistently identify him as the Circle's founder and central organisational figure.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. QID Q57095 must be live-verified. The founding attribution is well-attested; the residual uncertainty is whether 'founded_or_formalized' accurately represents Schlick's primarily organisational (rather than doctrinal) contribution relative to Carnap and Neurath, but standard historiography uses 'founder' for him.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "F2",
+      "source": "person:rudolf-carnap",
+      "target": "concept:logical-positivism",
+      "relation": "founded_or_formalized",
+      "confidence": 0.94,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [
+        "source:sep",
+        "source:wikipedia"
+      ],
+      "source_hint": "Stanford Encyclopedia of Philosophy, 'Rudolf Carnap' (Creath, rev. 2022) (https://plato.stanford.edu/entries/carnap/): treats Carnap as the foremost systematiser of logical empiricism; describes 'Logische Aufbau' (1928) and 'Logical Syntax of Language' (1934) as foundational texts. Encyclopaedia Britannica, 'Rudolf Carnap' (https://www.britannica.com/biography/Rudolf-Carnap): credits Carnap as 'the leading figure of the Vienna Circle'. Wikipedia, 'Rudolf Carnap', §Career (https://en.wikipedia.org/wiki/Rudolf_Carnap).",
+      "note": "DECEASED: Carnap died 14 September 1970. P570 should be present on Wikidata; QC must live-verify. Carnap's founding contribution is specifically doctrinal/systematic (formalisation of verificationism, protocol sentences, analyticity); Schlick's is organisational; Neurath's is the unity-of-science/physicalism strand. All three founding edges co-exist as a record-not-resolve co-founding cluster. Carnap later moved toward linguistic frameworks (Meaning and Necessity, 1947) in ways that qualify simple verificationism; the founded_or_formalized edge targets his role in establishing the programme, not his later positions.",
+      "rationale": "Carnap is widely recognised as the most systematic philosophical developer of logical positivism; his 'Logische Aufbau' (1928) is the canonical technical founding document of the movement, and SEP/Britannica identify him as the Circle's leading philosophical figure.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. QID Q58050 must be live-verified. The main uncertainty is that Carnap himself progressively qualified and eventually abandoned strict verificationism, so 'founded_or_formalized' needs to be understood as targeting the doctrine's establishment phase (1920s–1930s), not his mature or post-Circle views. Confidence 0.94 reflects very strong historiographical consensus.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "F3",
+      "source": "person:otto-neurath",
+      "target": "concept:logical-positivism",
+      "relation": "founded_or_formalized",
+      "confidence": 0.88,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [
+        "source:sep",
+        "source:wikipedia"
+      ],
+      "source_hint": "Stanford Encyclopedia of Philosophy, 'Otto Neurath' (Uebel, rev. 2023) (https://plato.stanford.edu/entries/neurath/): describes Neurath as a co-founder and central figure of the Vienna Circle and a principal proponent of the unity-of-science programme and physicalism. Encyclopaedia Britannica, 'Otto Neurath' (https://www.britannica.com/biography/Otto-Neurath): credits Neurath as a co-founder of logical positivism and the unity-of-science movement. Wikipedia, 'Vienna Circle', §Members: lists Neurath as one of the core members and co-author of the 1929 manifesto (https://en.wikipedia.org/wiki/Vienna_Circle).",
+      "note": "DECEASED: Neurath died 22 December 1945. P570 should be present on Wikidata; QC must live-verify. Neurath co-authored the movement's 1929 founding manifesto 'Wissenschaftliche Weltauffassung' with Hans Hahn and Rudolf Carnap — a clear founding-document act. His doctrinal contribution was the unity-of-science programme and physicalism strand of logical positivism, distinct from Carnap's formalisation. Record-not-resolve co-founding cluster with Schlick (F1) and Carnap (F2).",
+      "rationale": "Neurath co-authored the 1929 Vienna Circle manifesto 'Wissenschaftliche Weltauffassung' (with Hahn and Carnap), the movement's founding programmatic document, and drove the unity-of-science programme that was a core strand of logical positivism.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. QID Q78698 must be live-verified. The confidence is 0.88 (vs. Carnap's 0.94) because Neurath's founding role is sometimes characterised as primarily political/organisational and sociological (he led the encyclopaedia project) rather than strictly philosophical; some sources emphasise the political dimensions of his work, but his 1929 manifesto co-authorship is a clear founding-act.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "I1",
+      "source": "person:ludwig-wittgenstein",
+      "target": "concept:logical-positivism",
+      "relation": "influenced",
+      "confidence": 0.85,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [
+        "source:sep",
+        "source:wikipedia"
+      ],
+      "source_hint": "Stanford Encyclopedia of Philosophy, 'Logical Empiricism' (Uebel, rev. 2021), §2: describes the Vienna Circle's intensive study of the Tractatus and how Schlick organised a systematic reading of it; Wittgenstein's picture theory and showing/saying distinction were central to the Circle's early formulations. Stanford Encyclopedia of Philosophy, 'Ludwig Wittgenstein' (Biletzki & Matar, rev. 2021), §3.2: describes the Circle's reading of the Tractatus and Wittgenstein's own resistance to their interpretation. Wikipedia, 'Logical positivism', §Wittgenstein and the Vienna Circle (https://en.wikipedia.org/wiki/Logical_positivism).",
+      "note": "CLAUSE-6 HANDLING (record-not-resolve): The influence EXISTENCE is well-attested (the Circle read and discussed the Tractatus intensively; Wittgenstein met with members, esp. Schlick and Waismann; his picture theory and nonsense/tautology distinction directly shaped the Circle's verificationist programme). However, Wittgenstein himself resisted and ultimately rejected the Circle's verificationist reading of the Tractatus — he considered their interpretation a misreading, and his Philosophical Investigations can be read as a partial critique of positions they attributed to him based on the Tractatus. CLAUSE-6 v2 VERDICT: This is the existence-agreed / character-debated case, NOT existence-contested — everyone agrees the Tractatus shaped the Circle; what is debated is whether Wittgenstein was a positivist, endorsed their reading, or counts as a 'member'. Per clause-6 v2 distinction: 'If everyone agrees the relation exists and only its extent or character is debated → supported + a tension note'. The influence itself is not disputed; the contested dimension (was Wittgenstein a logical positivist? did he endorse their reading?) is a character/framing question about the nature of the influence, not its existence. Therefore: supported + note (NOT disputed: true). The note preserves the tension: Wittgenstein influenced but also rejected the Circle's programme; both facts are on the record.",
+      "rationale": "Wittgenstein's 'Tractatus Logico-Philosophicus' (1921) shaped the Vienna Circle's foundational concepts (picture theory of meaning, the showing/saying distinction, the treatment of tautologies and nonsense); the Circle studied it systematically and it was a direct input to their verificationist programme, making this a clear existence-agreed influenced edge.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. QID Q9358 must be live-verified. The main uncertainty is whether the edge should be ambiguous=true: the influence EXISTENCE is well-attested, but the nature of the influence (the Circle misread Wittgenstein; he rejected their verificationism; the later Wittgenstein explicitly distanced himself from their reading) gives the edge a complex character that could prompt a QC reviewer to question direction or set disputed:true. Clause-6 v2 analysis says supported+note (existence agreed, character debated), not disputed:true — but flagged ambiguous=true here so QC can confirm this routing is correct. If QC finds a sourced camp claiming the Tractatus did NOT materially shape the Circle's verificationism (not just that Wittgenstein disagreed with their reading), the edge should be re-evaluated as disputed.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "I2",
+      "source": "person:ludwig-wittgenstein",
+      "target": "subfield:philosophy-of-language",
+      "relation": "founded_or_formalized",
+      "confidence": 0.82,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [
+        "source:sep",
+        "source:wikipedia"
+      ],
+      "source_hint": "Stanford Encyclopedia of Philosophy, 'Ludwig Wittgenstein' (Biletzki & Matar, rev. 2021), §1: describes Wittgenstein as one of the most important philosophers of language of the 20th century; both the Tractatus and Philosophical Investigations are foundational texts of philosophy of language. Stanford Encyclopedia of Philosophy, 'Philosophy of Language' (Speaks, rev. 2022): discusses Wittgenstein's contributions as foundational across both early and later work. Encyclopaedia Britannica, 'Ludwig Wittgenstein' (https://www.britannica.com/biography/Ludwig-Wittgenstein): identifies him as one of the founders of analytic philosophy with transformative contributions to philosophy of language.",
+      "note": "FOUNDING ATTRIBUTION NUANCE: Philosophy of language as a field has multiple foundational figures — Frege (already in /data via formal-founders-v1, targeting formal logic), Russell, and Wittgenstein are the canonical trio of early analytic philosophy of language. Wittgenstein's contribution spans two phases: the Tractatus (1921) contributed to the early referentialist-logicist tradition, while the Philosophical Investigations (1953) founded the ordinary-language strand that transformed how the discipline understood meaning. SEP treats both phases as foundational. ANCHOR PRECISION: subfield:philosophy-of-language (reviewed) is the precision target here; `subfield:analytic-philosophy` is also a valid anchor but less precise. A Wittgenstein→analytic-philosophy founded_or_formalized edge is equally plausible but redundant given the philosophy-of-language edge. Record-not-resolve: Frege/Russell co-founding edges are a future batch item. CONFIDENCE 0.82: slightly lower than the Vienna Circle edges because the 'founding' claim for philosophy of language is distributed across Frege, Russell, Wittgenstein — Wittgenstein is unambiguously one of the founders but not the sole founder.",
+      "rationale": "Wittgenstein's Tractatus Logico-Philosophicus (1921) and Philosophical Investigations (1953) together constitute foundational contributions to philosophy of language across two major phases; SEP, Britannica, and standard philosophy curricula treat him as a co-founder of the field.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. QID Q9358 must be live-verified. The main uncertainty is whether 'founded_or_formalized' overstates Wittgenstein's role relative to Frege (who arguably did more to set philosophy of language on a rigorous footing); the two approaches are genuinely distinct (Frege's formal semantics vs. Wittgenstein's use-theory) and co-equal in the standard historiography, so record-not-resolve applies. If QC judges that Frege's founding claim is stronger and Wittgenstein's is better captured by 'influenced', the edge should be adjusted accordingly. Flagged ambiguous=true because of this relation-type uncertainty.",
+      "ambiguous": true
+    }
+  ],
+  "coverage_notes": [
+    "SCOPE COMPLIANCE: The Vienna Circle as an `institution` node is OUT OF SCOPE per the generation order (relation taxonomy lacks a membership relation). This is recorded honestly — not a gap of knowledge but a deliberate modeling scope boundary.",
+    "WITTGENSTEIN CLAUSE-6 ANALYSIS: Edge I1 (wittgenstein→logical-positivism `influenced`) is the key clause-6 case. Analysis: existence-agreed (Tractatus shaped the Circle, universally attested) + character-debated (Wittgenstein rejected their reading). Per clause-6 v2, this is supported+note, NOT disputed:true. `ambiguous:true` is set to flag this routing for QC confirmation. If QC finds a sourced camp denying the Tractatus shaped the Circle (not merely Wittgenstein's own rejection of their reading), that would trigger re-evaluation as disputed.",
+    "PART_OF TARGET CHOICE (P1): `subfield:analytic-philosophy` is chosen over `field:philosophy` as the part_of target. Reason: SEP's 'Logical Empiricism' entry places logical positivism within analytic philosophy as a strand; the reviewed anchor `subfield:analytic-philosophy` captures this more precisely than the field. A future §13 co-membership to `subfield:philosophy-of-science` is a QC candidate — logical positivism's verificationist programme is equally a philosophy-of-science doctrine, and the SEP has a major entry for it under philosophy of science. Not proposed here to avoid an untested dual membership without explicit QC instruction.",
+    "WITTGENSTEIN FOUNDER EDGE (I2): The `person:ludwig-wittgenstein → subfield:philosophy-of-language` `founded_or_formalized` edge is proposed with ambiguous:true. The founded_or_formalized relation is defensible (both Tractatus and Investigations are foundational) but the distributed founding (Frege, Russell, Wittgenstein) means QC should judge whether this edge or `influenced` better captures Wittgenstein's role. The order explicitly says 'if well-grounded; ambiguous=true if the precise anchor is unclear' — this is the appropriate caution.",
+    "ACADEMIC_STATUS ON CONCEPT NODE: `academic_status:historical` is applied to concept:logical-positivism per the §12 requirement that discipline nodes (domain/field/subfield) carry academic_status. Note that concept nodes are not discipline nodes per strict reading of the schema, so academic_status may be optional here — QC should confirm whether concept nodes require it. It is included here erring on the side of completeness.",
+    "EVIDENCE ARRAYS: All proposed edges carry at least one source ID from existing data/sources.json entries (source:sep, source:wikipedia). Evidence arrays are populated with these IDs per batch practice. The source_hint fields name the specific articles and verbatim-check targets for QC's live-verification pass. Evidence permanence (Wayback snapshots) is a QC responsibility per §8 standing rule.",
+    "PERSON DOMAIN ASSIGNMENTS: All four person nodes are assigned `domain:humanities` (the home domain of field:philosophy and all philosophy subfields). This is consistent with the person-wave precedents (persons are assigned the domain of their primary discipline).",
+    "RECONCILIATION: Searched data/nodes.json — no existing nodes for concept:logical-positivism, person:moritz-schlick, person:rudolf-carnap, person:otto-neurath, or person:ludwig-wittgenstein. Searched data/edges.json — no existing edges for these nodes. No reconciliation to existing IDs required."
+  ]
+}
