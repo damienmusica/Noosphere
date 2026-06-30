@@ -10288,5 +10288,131 @@
       "proposed_at": "2026-06-29"
     },
     "note": "★ clause-6 v2 disputed-balanced — the corpus's FIRST disputed:true firing (prior cumulative 0/32). The EXISTENCE/DIRECTION of direct influence is genuinely contested, both camps live and sourced, no dominant view; written as a contested claim, not as established (confidence ≈0.5, not positioned as a winner; disputed edges do not auto-promote — stays proposed/human-visible). CAMP A (affirm, ≥2): the parallels are too specific to be coincidental — Freud is held to have drawn on Nietzsche's ideas of the unconscious, repression and sublimation (Chapman & Chapman-Santana, \"The Influence of Nietzsche on Freud's Ideas,\" Br. J. Psychiatry 1995; scholarly-popular syntheses, e.g. psychreg/Borjesson). CAMP B (skeptical/deny, ≥2): Freud repeatedly denied reading Nietzsche; scholars find \"scarce direct textual dependence\" and \"no direct evidence that Freud read Nietzsche systematically before developing psychoanalysis,\" favouring a common-source explanation over direct influence (the \"Nietzsche and Freud: Disaffinities\" literature). This is the textbook balanced split clause-6 v2 was designed to capture (decision (64)/(65)); it could not fire before because the corpus had no contested-influence figures as nodes — now it does. (a)-relation proposed-first."
+  },
+  {
+    "id": "edge:karl-marx-founded-sociology",
+    "source": "person:karl-marx",
+    "target": "field:sociology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-30"
+    },
+    "note": "Marx is widely cited as one of the founders of sociology — the conflict-theory / historical-materialism strand (Wikipedia Sociology: \"Durkheim, Marx, and the German theorist Max Weber are typically cited as the three principal architects of sociology\"; Wikipedia Karl Marx: \"he is often cited as one of the principal architects of modern sociology\"). Record-not-resolve co-founder cluster for field:sociology — co-exists with Comte (coined the term), Durkheim (institutionalized), and Weber (interpretive sociology), all already in /data. Marx predated the discipline's institutionalization and did not identify as a sociologist; his founding role is the conflict-theoretic strand canonized in 20th-century sociology — recorded as character, not contested existence (clause-6 v2 supported, not disputed; the generator's ambiguous flag was reversed on adversarial QC — \"typically cited\" / \"often cited\" is the standard view). Founder ladder auto-promote (both endpoints reviewed + supported, decisions (60)/(61)). Generator QID hint Q9061 verified correct via live resolver (P31=Q5, b.1818 d.1883, P570 present → deceased). Two independent Wikipedia articles (person + field)."
+  },
+  {
+    "id": "edge:robert-koch-founded-microbiology",
+    "source": "person:robert-koch",
+    "target": "subfield:microbiology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-30"
+    },
+    "note": "Koch co-founded microbiology / bacteriology alongside Pasteur (Wikipedia Robert Koch: \"he is regarded as one of the main founders of modern bacteriology\"; \"popularly nicknamed the father of microbiology (with Louis Pasteur)\"; Wikipedia Microbiology: \"Louis Pasteur and Robert Koch ... are often considered to be the fathers of modern microbiology and medical microbiology, respectively\"). Record-not-resolve co-founding pair — co-exists with Pasteur (already in /data, wave3): Pasteur for germ theory / fermentation, Koch for specific pathogen identification (tuberculosis 1882, cholera 1883) and Koch's postulates. Founder ladder auto-promote. Generator QID hint Q37327 was a hallucination (resolved to Samuel Beckett); corrected to Q37193 by live multi-signal resolver verification (P31=Q5, b.1843 d.1910 → deceased). Two independent Wikipedia articles (person + field)."
+  },
+  {
+    "id": "edge:charles-sanders-peirce-founded-semiotics",
+    "source": "person:charles-sanders-peirce",
+    "target": "subfield:semiotics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-30"
+    },
+    "note": "Peirce co-founded semiotics alongside Saussure, as the independent American / triadic tradition (Wikipedia Semiotics: \"Semiotics became a distinct field of inquiry following the works of the philosopher Charles Sanders Peirce and the linguist Ferdinand de Saussure, the founders of the discipline\"; Wikipedia Charles Sanders Peirce: \"He saw logic as the formal branch of semiotics or study of signs, of which he is a founder\"). Record-not-resolve parallel co-founding — co-exists with Saussure (already in /data, wave3): Peirce's triadic model (sign / object / interpretant) vs Saussure's dyadic model (signifier / signified), two genuinely independent traditions. Lineage nuance recorded (SEP Peirce: Peirce's own term 'semeiotic' descends from Scotus / Poinsot and differs in lineage from the Saussure / Morris line that 'semiotics' often denotes) — character, not contested founding. Founder ladder auto-promote. Generator QID hint Q212646 was a hallucination (resolved to Hoffmann-La Roche); corrected to Q187520 (P31=Q5, b.1839 d.1914 → deceased). Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:alfred-russel-wallace-founded-evolutionary-biology",
+    "source": "person:alfred-russel-wallace",
+    "target": "subfield:evolutionary-biology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-30"
+    },
+    "note": "Wallace independently co-discovered natural selection — the founding theory of evolutionary biology — and co-presented it with Darwin (Wikipedia Alfred Russel Wallace: \"He independently conceived the theory of evolution through natural selection; his 1858 paper on the subject was published that year alongside extracts from Charles Darwin's writings\"; Wikipedia Evolutionary biology: \"Natural selection was independently discovered as the engine of evolution by Charles Darwin and Alfred Russel Wallace\"; corroborated by UC Berkeley Understanding Evolution: \"Darwin and the British biologist Alfred Russel Wallace independently conceived of a natural ... way for life to change: a process Darwin called natural selection\"). Record-not-resolve asymmetric co-founding — co-exists with Darwin (already in /data, wave3, whose note already preserves the Wallace co-discovery): standard historiography names Darwin the primary founder (On the Origin of Species, 1859) and Wallace the independent co-discoverer of the founding mechanism (1858 Darwin–Wallace Linnean Society joint presentation). Confidence reflects the asymmetry, not a contested existence (clause-6 v2 supported, not disputed); founded_or_formalized chosen over influenced because co-discovery of the field's central theory is founding-level. Founder ladder auto-promote. Generator QID hint Q160402 was a hallucination (resolved to 'perception'); corrected to Q160627 (P31=Q5, b.1823 d.1913 → deceased)."
+  },
+  {
+    "id": "edge:william-labov-founded-sociolinguistics",
+    "source": "person:william-labov",
+    "target": "subfield:sociolinguistics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-30"
+    },
+    "note": "Labov is widely credited as the founder of variationist sociolinguistics — the quantitative paradigm that made sociolinguistics a scientific discipline (Wikipedia William Labov: \"widely regarded as the founder of the discipline of variationist sociolinguistics\"; Wikipedia Sociolinguistics: \"William Labov ... is often regarded as the founder of variationist sociolinguistics which focuses on the quantitative analysis of variation and change within languages, making sociolinguistics a scientific discipline\"). Record-not-resolve: the founding credit is strongest for the variationist / quantitative strand specifically; the broader field has other pioneers (Ferguson, Gumperz, Hymes, Bernstein) for non-variationist strands. ★ Observe-only living/deceased correction (v2 §3, decision (70)): the session scope assumed Labov living (b.1927), but live P570 verification confirmed he died 2024-12-17 — so he is recorded deceased (is_living_person:false) and rides the deceased founder ladder, not the living-v2 path; the drift ran living→deceased (stricter→looser), exactly the safe-direction self-correction the policy anticipates. Founder ladder auto-promote. Generator QID hint Q378087 was a hallucination (resolved to a Czech village); corrected to Q357923 (P31=Q5, b.1927 d.2024-12-17). Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:george-lakoff-founded-cognitive-linguistics",
+    "source": "person:george-lakoff",
+    "target": "subfield:cognitive-linguistics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-30"
+    },
+    "note": "★ LIVING PERSON (b.1941) — admitted under the living-person handling standing policy v2 (decision (70)), policy-auto (NOT a CPO stop-point): resolver-verified QID identity anchor with P570 live-confirmed absent + ≥2 independent live claim-stating sources + conservative attributed wording; auto-promotes to reviewed when clean (no escalation signal fired). Lakoff is widely credited as one of the founders of cognitive linguistics (Wikipedia Cognitive linguistics frames the field's emergence from \"Wallace Chafe, Charles Fillmore, George Lakoff, Ronald Langacker, and Leonard Talmy\"; the Cognitive Linguistics society's historical background names Lakoff among \"the most influential linguists\" whose work formed the leading strands of the theory; Oxford Bibliographies names Langacker, Lakoff, and Talmy the discipline's \"founding fathers\"). Record-not-resolve multi-founder emergence — no sole founder; Langacker, Talmy, and Fillmore are co-founders (not in this batch); Lakoff's specific contributions are conceptual metaphor theory (Metaphors We Live By, 1980, with Mark Johnson) and prototype-theory work. clause-6 v2 supported, not disputed. Generator QID hint Q315042 was a hallucination (resolved to a Philippine municipality); corrected to Q313772 by live resolver (P31=Q5, b.1941, P570 absent → living)."
+  },
+  {
+    "id": "edge:vint-cerf-founded-internet",
+    "source": "person:vint-cerf",
+    "target": "concept:internet",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-30"
+    },
+    "note": "★ LIVING PERSON (b.1943) — admitted under the living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + ≥2 independent live claim-stating sources + conservative attributed wording; auto-promotes when clean. Cerf is widely credited as one of the 'fathers of the Internet' for co-designing TCP/IP with Robert Kahn (Wikipedia Vint Cerf: \"recognized as one of 'the fathers of the Internet', sharing this title with TCP/IP co-developer Robert Kahn\"; \"co-designed the DoD TCP/IP protocol suite with Kahn\"; corroborated by the 2004 ACM A.M. Turing Award to Cerf and Kahn \"for pioneering work on internetworking, including ... the Internet's basic communications protocols, TCP/IP\"). Referent precision: the target is concept:internet (the specific global system, Wikidata Q75), NOT subfield:computer-networks (the academic field, which predates Cerf — that over-broad referent was the wave3 #33 NEI; this closes that honest gap). Record-not-resolve co-founding — Bob Kahn is the equal co-founder (also living, not a node); the Internet built on earlier packet-switching work (Baran, Davies, Pouzin), so the 'fathers of the Internet' credit attaches specifically to the TCP/IP internetworking contribution. clause-6 v2 supported. concept:internet node admitted as a QC modeling ruling (concept type already in schema; the founded_or_formalized taxonomy admits field/concept targets). Generator QID hint Q92785 was a hallucination (resolved to a comic-book character); corrected to Q92743 (P31=Q5, b.1943, P570 absent → living); concept:internet QID Q75 verified."
   }
 ]
