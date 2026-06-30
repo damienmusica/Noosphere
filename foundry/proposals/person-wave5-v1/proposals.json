@@ -1,0 +1,637 @@
+{
+  "batch_id": "person-wave5-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-07-01"
+  },
+  "relation_scope": "founded_or_formalized — CPO-ratified volume slate of founders anchored to existing reviewed fields; referent-precision concept nodes (generative-grammar, public-key-cryptography, analysis-of-algorithms) proposed per order guidance; living-person handling v2 (decision (70))",
+  "nodes": [
+    {
+      "id": "person:noam-chomsky",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Noam Chomsky",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q9049"
+      },
+      "rationale": "Chomsky founded generative / transformational grammar (Syntactic Structures, 1957), establishing the dominant paradigm in theoretical syntax for the second half of the 20th century; his work is the precise referent of the founding claim — not subfield:syntax as a whole, which predates him.",
+      "uncertainty": "QID Q9049 is an untrusted training-recall hint — QC must live-verify P31=Q5, P569 present, P570 absent (Chomsky born 1928, living as of August 2025). LIVING PERSON — living-person handling v2 applies (decision (70)): stricter evidence floor, auto-promotes when clean. QID hallucination rate is high; treat as hint only. Referent precision: the edge targets concept:generative-grammar, not subfield:syntax.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:donald-knuth",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Donald Knuth",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q42887"
+      },
+      "rationale": "Knuth's The Art of Computer Programming (vol. 1, 1968) founded the rigorous mathematical analysis of algorithms as a discipline — establishing asymptotic analysis, recurrence relations, and correctness proofs as standard tools; he is widely called the 'father of the analysis of algorithms'. The precise referent is concept:analysis-of-algorithms, not subfield:algorithms-and-data-structures as a whole.",
+      "uncertainty": "QID Q42887 is an untrusted training-recall hint — QC must live-verify P31=Q5, P569 present, P570 absent (Knuth born 1938, living as of August 2025). LIVING PERSON — living-person handling v2 applies. QID hallucination rate high; treat as hint only. Referent ambiguity: if QC declines the concept node, the edge should re-target subfield:algorithms-and-data-structures with careful scope wording.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:david-deutsch",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "David Deutsch",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q270768"
+      },
+      "rationale": "Deutsch's 1985 paper ('Quantum Theory, the Church-Turing Principle and the Universal Quantum Computer') is widely credited as founding quantum computing as a formal computational model; he is a co-founder alongside Feynman (theoretical motivation, 1981/82) and Benioff (reversible Hamiltonian, 1980); Shor (1994) extended the field substantially.",
+      "uncertainty": "QID Q270768 is an untrusted training-recall hint — QC must live-verify P31=Q5, P570 absent (Deutsch born 1953, living). LIVING PERSON — living-person handling v2 applies. Co-founding is genuinely plural (Feynman, Benioff, Deutsch, Shor); the correct framing is record-not-resolve. The precise contribution is the formal quantum Turing machine model, not quantum computing as applied engineering. QID may be wrong.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:whitfield-diffie",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Whitfield Diffie",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q298547"
+      },
+      "rationale": "Diffie co-invented public-key cryptography with Hellman in 1976 ('New Directions in Cryptography', IEEE Transactions on Information Theory); this paper founded an entirely new paradigm within subfield:cryptography — the precise referent is concept:public-key-cryptography, not cryptography as a whole, which long predates them.",
+      "uncertainty": "QID Q298547 is an untrusted training-recall hint — QC must live-verify P31=Q5, P570 absent (Diffie born 1944, living). LIVING PERSON — living-person handling v2 applies. Co-founding is plural: Hellman is an equal co-author; Ralph Merkle independently developed related ideas (Merkle puzzles, 1974) and is sometimes added as a co-founder. QID hallucination rate high.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:martin-hellman",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Martin Hellman",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q314958"
+      },
+      "rationale": "Hellman co-invented public-key cryptography with Diffie in 1976 ('New Directions in Cryptography'); equal co-author of the founding paper; the precise referent is concept:public-key-cryptography.",
+      "uncertainty": "QID Q314958 is an untrusted training-recall hint — QC must live-verify P31=Q5, P570 absent (Hellman born 1945, living). LIVING PERSON — living-person handling v2 applies. Same co-founding cluster as Diffie; Merkle is also a co-inventor at the paradigm level; record-not-resolve. QID may be wrong.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:stephen-cook",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Stephen Cook",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q334240"
+      },
+      "rationale": "Cook's 1971 paper ('The Complexity of Theorem Proving Procedures') introduced NP-completeness and polynomial-time reducibility, founding modern computational complexity theory; the anchor subfield:computational-complexity-theory directly names this paradigm (lower referent-precision ambiguity than the Chomsky or Diffie/Hellman cases).",
+      "uncertainty": "QID Q334240 is an untrusted training-recall hint — QC must live-verify P31=Q5, P570 absent (Cook born 1939, living). LIVING PERSON — living-person handling v2 applies. Co-founding is plural: Leonid Levin independently proved Cook's theorem (1973), and Richard Karp's 1972 paper is foundational; record-not-resolve applies. QID may be wrong.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:michael-gazzaniga",
+      "type": "person",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Michael Gazzaniga",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q1928898"
+      },
+      "rationale": "Gazzaniga is widely credited with coining the term 'cognitive neuroscience' and co-founding the field alongside George Miller; his split-brain research and the founding of the Journal of Cognitive Neuroscience (1989) and the Cognitive Neuroscience Society (1994) established the institutional infrastructure of subfield:cognitive-neuroscience.",
+      "uncertainty": "QID Q1928898 is an untrusted training-recall hint — QC must live-verify P31=Q5, P570 absent (Gazzaniga born 1939, living). LIVING PERSON — living-person handling v2 applies. Co-founding is plural: George Miller is cited alongside Gazzaniga as co-coiner of the term (reportedly coined together in a New York City taxi); record-not-resolve applies. QID may be wrong.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:luciano-floridi",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Luciano Floridi",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q1392534"
+      },
+      "rationale": "Floridi is widely credited with founding and systematizing the philosophy of information as a distinct philosophical discipline; his book 'The Philosophy of Information' (OUP 2011) and foundational papers from the late 1990s named, defined, and gave theoretical substance to the field; the anchor is subfield:philosophy-of-information.",
+      "uncertainty": "QID Q1392534 is an untrusted training-recall hint — QC must live-verify P31=Q5, P570 absent (Floridi born 1964, living). LIVING PERSON — living-person handling v2 applies. The philosophy of information is an emerging field (academic_status: emerging in the corpus); some historians may frame Floridi's role as 'systematizer' rather than 'founder' (the distinction is thin here). QID may be wrong.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:leda-cosmides",
+      "type": "person",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Leda Cosmides",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q453347"
+      },
+      "rationale": "Cosmides co-founded evolutionary psychology with John Tooby; their 1992 book 'The Adapted Mind' (co-edited with Barkow) is the canonical founding text of the field; the anchor is subfield:evolutionary-psychology.",
+      "uncertainty": "QID Q453347 is an untrusted training-recall hint — QC must live-verify P31=Q5, P570 absent (Cosmides born 1957, living). LIVING PERSON — living-person handling v2 applies. Co-founding is plural: Tooby is an equal co-founder (edge A10 in this batch); Buss and Pinker are also prominent early figures often cited in founding narratives (record-not-resolve). QID may be wrong.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:john-tooby",
+      "type": "person",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "John Tooby",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q532892"
+      },
+      "rationale": "Tooby co-founded evolutionary psychology with Leda Cosmides; their joint theoretical framework (massive modularity, environment of evolutionary adaptedness) and 'The Adapted Mind' (1992) established evolutionary psychology as a distinct field; the anchor is subfield:evolutionary-psychology.",
+      "uncertainty": "QID Q532892 is an untrusted training-recall hint — QC must live-verify P31=Q5, P570 absent (Tooby born 1952, living). LIVING PERSON — living-person handling v2 applies. Same co-founding cluster as Cosmides; identical record-not-resolve considerations. QID may be wrong.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:daniel-kahneman",
+      "type": "person",
+      "domain": "cognitive_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Daniel Kahneman",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q62887"
+      },
+      "rationale": "Kahneman (with Amos Tversky) co-founded the heuristics-and-biases research program that is the core of judgment and decision-making as an academic subfield; their 1974 Science paper ('Judgment under Uncertainty: Heuristics and Biases') and Prospect Theory (1979) are canonical founding contributions. Kahneman died March 2024.",
+      "uncertainty": "QID Q62887 is an untrusted training-recall hint — QC must live-verify P31=Q5, P570 present (Kahneman died March 27, 2024 per public sources; QC must confirm via Wikidata P570). QID hallucination rate high; treat as hint only. Co-founding is plural: Amos Tversky (deceased 1996, not in this batch) is an equal co-founder; record-not-resolve applies. CRITICAL ENDPOINT NOTE: subfield:judgment-and-decision-making in the corpus is currently status:proposed (not reviewed); the auto-ladder clause ① cannot fire for the founder edge even if QC supports it.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:john-mccarthy",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "John McCarthy",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q92688"
+      },
+      "rationale": "McCarthy coined the term 'artificial intelligence', organized the 1956 Dartmouth Conference (the founding event of the field), and developed the Lisp programming language and formal AI frameworks; he is co-credited as a primary founder of subfield:artificial-intelligence.",
+      "uncertainty": "QID Q92688 is an untrusted training-recall hint — QC must live-verify P31=Q5, P570 present (McCarthy died October 2011; P570 should be present). QID hallucination rate high; treat as hint only. Co-founding is plural: Minsky, Shannon, and Rochester also organized the Dartmouth Conference; record-not-resolve with Minsky (edge B3). QID may be wrong.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:marvin-minsky",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Marvin Minsky",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q154485"
+      },
+      "rationale": "Minsky co-founded AI through co-organizing the Dartmouth Conference (1956) with McCarthy, co-founding the MIT AI Laboratory (1959), and producing foundational theoretical work (Perceptrons, 1969; The Society of Mind, 1986); he is widely named alongside McCarthy as co-founder of AI.",
+      "uncertainty": "QID Q154485 is an untrusted training-recall hint — QC must live-verify P31=Q5, P570 present (Minsky died January 2016; P570 should be present). QID hallucination rate high; treat as hint only. Co-founding is plural: see McCarthy note above; record-not-resolve with edge B2. QID may be wrong.",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:generative-grammar",
+      "type": "concept",
+      "domain": "humanities",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Generative Grammar",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q179692"
+      },
+      "rationale": "Generative / transformational grammar is a distinct paradigm within subfield:syntax founded by Chomsky (Syntactic Structures, 1957); it is the precise referent of Chomsky's founding contribution — subfield:syntax long predates Chomsky, so pointing the founder edge at subfield:syntax would be over-broad (the Cerf/internet lesson). A concept node is needed for edge precision.",
+      "uncertainty": "QID Q179692 is an untrusted training-recall hint — QC must live-verify. Design question: 'generative grammar' and 'transformational grammar' are related but evolving terms (transformational-generative grammar is the early Chomskyan program; 'generative grammar' has become a broader label). QC should settle whether a scope note is needed and whether the concept node is preferred over anchoring directly to subfield:syntax with careful wording.",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:public-key-cryptography",
+      "type": "concept",
+      "domain": "computer_and_information_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Public-Key Cryptography",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q282510"
+      },
+      "rationale": "Public-key cryptography is a distinct paradigm within subfield:cryptography, founded by Diffie and Hellman in 1976; the whole of subfield:cryptography (ciphers, symmetric key, etc.) predates their work, so the founded_or_formalized edges for Diffie and Hellman must target this specific concept rather than the broad subfield.",
+      "uncertainty": "QID Q282510 is an untrusted training-recall hint — QC must live-verify. The concept node is a straightforward modeling choice: public-key cryptography is a well-defined and widely recognized paradigm. Whether Merkle's independent contribution warrants a co-founding edge in this batch or a future one is left to QC.",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:analysis-of-algorithms",
+      "type": "concept",
+      "domain": "computer_and_information_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Analysis of Algorithms",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q1155510"
+      },
+      "rationale": "The rigorous mathematical analysis of algorithms — algorithmic complexity, asymptotic notation, recurrence analysis, correctness proofs — is the paradigm Knuth founded via The Art of Computer Programming; it is a sub-paradigm within subfield:algorithms-and-data-structures. Proposing a concept node follows the order's referent-precision guidance.",
+      "uncertainty": "QID Q1155510 is an untrusted training-recall hint — QC must live-verify. Design question: the order gives QC the option to anchor the Knuth edge to subfield:algorithms-and-data-structures directly with careful wording rather than creating this concept node. QC should decide which path is more precise. Flag ambiguous because this is an explicit modeling question.",
+      "ambiguous": true
+    }
+  ],
+  "edges": [
+    {
+      "candidate_id": "A1",
+      "source": "person:noam-chomsky",
+      "target": "concept:generative-grammar",
+      "relation": "founded_or_formalized",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Noam Chomsky' (last revised 2024)",
+          "claim_anchor": "Chomsky is widely regarded as the founder of modern generative grammar and transformational linguistics; his 1957 work Syntactic Structures introduced transformational-generative grammar and fundamentally changed the study of language.",
+          "url": "https://www.britannica.com/biography/Noam-Chomsky"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Chomsky's Philosophy of Language' (McGilvray, 2019)",
+          "claim_anchor": "Chomsky's generative grammar program, launched with Syntactic Structures (1957), revolutionized linguistics by positing an innate universal grammar; he is credited with founding the generative tradition that has dominated theoretical syntax for over six decades.",
+          "url": "https://plato.stanford.edu/entries/chomsky/"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1928) — living-person handling v2 applies: conservative attributed wording, auto-promotes when clean. Referent precision: edge targets concept:generative-grammar, not subfield:syntax. Co-evolution of the theory: Chomsky's framework went through multiple revisions (Standard Theory, Government and Binding, Minimalist Program); the founding moment is Syntactic Structures 1957 regardless of later revisions.",
+      "rationale": "Chomsky's Syntactic Structures (1957) and its generative-grammar program is the canonical founding of the generative tradition within syntax; all major secondary sources credit him as the founder of generative grammar.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 absent in Wikidata as of QC date. The Britannica anchor may mix political and linguistic biographical material; QC should verify the linguistics founding claim is stated explicitly. The concept:generative-grammar node is new in this batch and must pass its own QC before this edge can advance.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "A2",
+      "source": "person:donald-knuth",
+      "target": "concept:analysis-of-algorithms",
+      "relation": "founded_or_formalized",
+      "confidence": 0.90,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Donald Knuth' (last revised 2024)",
+          "claim_anchor": "Knuth is widely regarded as the father of the analysis of algorithms; his multivolume work The Art of Computer Programming, beginning in 1968, provided the first systematic and rigorous mathematical treatment of algorithm analysis, establishing asymptotic notation and recurrence-relation techniques as standard tools.",
+          "url": "https://www.britannica.com/biography/Donald-Knuth"
+        },
+        {
+          "citation": "ACM A.M. Turing Award citation for Donald E. Knuth (1974)",
+          "claim_anchor": "For his major contributions to the analysis of algorithms and the design of programming languages, and in particular for his contributions to the art of computer programming through his well-known books in a continuous series by this title.",
+          "url": "https://amturing.acm.org/award_winners/knuth_1013631.cfm"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1938) — living-person handling v2 applies. Referent precision: edge targets concept:analysis-of-algorithms. If QC declines the concept node, this edge should re-target subfield:algorithms-and-data-structures with a scope note clarifying Knuth's paradigm-founding role within the analysis sub-field. Knuth also substantially influenced TeX/typesetting (out of scope for this edge).",
+      "rationale": "Knuth's The Art of Computer Programming (1968–) and his 1974 Turing Award citation explicitly name him as the founder of the analysis of algorithms as a rigorous mathematical discipline.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 absent. The ACM Turing Award URL may redirect; QC should verify the exact claim-anchor text is present. The concept:analysis-of-algorithms node is new in this batch; this edge is conditional on it being retained by QC.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "A3",
+      "source": "person:david-deutsch",
+      "target": "subfield:quantum-computing",
+      "relation": "founded_or_formalized",
+      "confidence": 0.86,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'quantum computing' (last revised 2024)",
+          "claim_anchor": "David Deutsch is credited with proposing the first complete theoretical model of a quantum computer in his 1985 paper; he is a founding figure of quantum computing as a formal field alongside Feynman and Benioff.",
+          "url": "https://www.britannica.com/technology/quantum-computer"
+        },
+        {
+          "citation": "Deutsch, D. (1985). 'Quantum Theory, the Church-Turing Principle and the Universal Quantum Computer.' Proceedings of the Royal Society of London A, 400(1818), 97–117.",
+          "claim_anchor": "This paper introduced the quantum Turing machine, establishing the first rigorous theoretical framework for quantum computation.",
+          "url": "https://royalsocietypublishing.org/doi/10.1098/rspa.1985.0070"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1953) — living-person handling v2 applies. Co-founding is plural: Feynman (1981/82), Benioff (1980), Deutsch (1985), Shor (1994) are all part of the founding cluster; Deutsch's specific contribution is the universal quantum computer model. Record-not-resolve — Feynman and Benioff edges not in this batch. Referent: subfield:quantum-computing is the correct direct anchor (Deutsch's work founded the computational field itself).",
+      "rationale": "Deutsch's 1985 paper introduced the quantum Turing machine and founded quantum computing as a formal theoretical field; he is universally named as one of the founding figures.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 absent. The Britannica anchor for a technology article may describe Feynman/Benioff equally prominently; QC should check whether Deutsch's founding role is explicitly stated. The Royal Society paper URL should be verified as live.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "A4",
+      "source": "person:whitfield-diffie",
+      "target": "concept:public-key-cryptography",
+      "relation": "founded_or_formalized",
+      "confidence": 0.96,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'public-key cryptography' (last revised 2023)",
+          "claim_anchor": "Public-key cryptography was invented in 1976 by Whitfield Diffie and Martin Hellman in their paper 'New Directions in Cryptography'; their method founded an entirely new branch of cryptography that underlies modern secure communications.",
+          "url": "https://www.britannica.com/topic/public-key-cryptography"
+        },
+        {
+          "citation": "Diffie, W. & Hellman, M. E. (1976). 'New Directions in Cryptography.' IEEE Transactions on Information Theory, 22(6), 644–654.",
+          "claim_anchor": "We propose two new kinds of cryptographic scheme — a public key cryptosystem and a digital signature scheme — fundamentally changing cryptography by separating encryption and decryption into asymmetric key pairs.",
+          "url": "https://ieeexplore.ieee.org/document/1055638"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1944) — living-person handling v2 applies. Co-founding is co-equal with Hellman (edge A5). Ralph Merkle independently developed Merkle puzzles (1974, published 1978) and is sometimes named as a third co-founder; record-not-resolve — Merkle edge not in this batch. The 1976 paper is an unambiguous founding event with no credible counter-narrative.",
+      "rationale": "Diffie and Hellman's 1976 paper 'New Directions in Cryptography' is the founding document of public-key cryptography; the founding attribution is among the least contested in computer science.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 absent. The IEEE URL for the 1976 paper may be behind a paywall; QC should verify the URL resolves and use a Wayback snapshot if needed.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A5",
+      "source": "person:martin-hellman",
+      "target": "concept:public-key-cryptography",
+      "relation": "founded_or_formalized",
+      "confidence": 0.96,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'public-key cryptography' (last revised 2023)",
+          "claim_anchor": "Public-key cryptography was invented in 1976 by Whitfield Diffie and Martin Hellman in their paper 'New Directions in Cryptography'; their method founded an entirely new branch of cryptography that underlies modern secure communications.",
+          "url": "https://www.britannica.com/topic/public-key-cryptography"
+        },
+        {
+          "citation": "ACM A.M. Turing Award citation for Whitfield Diffie and Martin E. Hellman (2015)",
+          "claim_anchor": "For inventing and promulgating both asymmetric public-key cryptography, including its application to digital signatures, and a practical cryptographic key-exchange method. These are the foundations for most internet security protocols in use today.",
+          "url": "https://amturing.acm.org/award_winners/diffie_8371646.cfm"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1945) — living-person handling v2 applies. Co-founding is co-equal with Diffie (edge A4); same Merkle record-not-resolve note as A4. The 2015 ACM Turing Award explicitly names both Diffie and Hellman for this co-founding contribution.",
+      "rationale": "Hellman is an equal co-author of the 1976 founding paper; the 2015 ACM Turing Award was awarded jointly to Diffie and Hellman for this co-founding.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 absent. The ACM Turing Award URL should be verified for exact anchor text.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A6",
+      "source": "person:stephen-cook",
+      "target": "subfield:computational-complexity-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'NP-complete problem' (last revised 2023)",
+          "claim_anchor": "The concept of NP-completeness was introduced by Stephen Cook in his 1971 paper 'The Complexity of Theorem Proving Procedures', which founded computational complexity theory as a formal discipline by establishing the notion of polynomial-time reducibility and the existence of NP-complete problems.",
+          "url": "https://www.britannica.com/science/NP-complete-problem"
+        },
+        {
+          "citation": "ACM A.M. Turing Award citation for Stephen A. Cook (1982)",
+          "claim_anchor": "For his advancement of our understanding of the complexity of computation in a significant and profound way. His seminal paper, The Complexity of Theorem Proving Procedures, presented at the 1971 ACM Symposium on Theory of Computing, is a milestone in the history of computer science.",
+          "url": "https://amturing.acm.org/award_winners/cook_1800775.cfm"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1939) — living-person handling v2 applies. Co-founding with Levin (independent 1973 result) and Karp (1972, 21 NP-complete problems): record-not-resolve. Cook's specific contribution is the formalization of NP-completeness and polynomial-time reducibility. Referent: subfield:computational-complexity-theory is the correct anchor (named for this paradigm; no concept node needed).",
+      "rationale": "Cook's 1971 paper founded NP-completeness and the formal theory of computational complexity; his 1982 ACM Turing Award citation explicitly names this as a 'milestone in the history of computer science'.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 absent. Turing Award wording should be verified verbatim.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A7",
+      "source": "person:michael-gazzaniga",
+      "target": "subfield:cognitive-neuroscience",
+      "relation": "founded_or_formalized",
+      "confidence": 0.90,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Michael Gazzaniga' (last revised 2024)",
+          "claim_anchor": "Gazzaniga is credited with coining the term 'cognitive neuroscience' along with George Miller and is considered a co-founder of the field; his split-brain research and institutional contributions — including founding the Journal of Cognitive Neuroscience and the Cognitive Neuroscience Society — established the field as a discipline.",
+          "url": "https://www.britannica.com/biography/Michael-Gazzaniga"
+        },
+        {
+          "citation": "Wikipedia, 'Cognitive neuroscience', §History (en.wikipedia.org)",
+          "claim_anchor": "The term 'cognitive neuroscience' was coined by Michael Gazzaniga and George Miller in a New York City taxi cab in the late 1970s; Gazzaniga is widely recognized as one of the founders of cognitive neuroscience.",
+          "url": "https://en.wikipedia.org/wiki/Cognitive_neuroscience"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1939) — living-person handling v2 applies. Co-founding: George Miller co-coined the term; Miller is not in this batch (record-not-resolve). Wikipedia is used as secondary evidence; QC should seek a more authoritative source (e.g., Oxford Handbook of Cognitive Neuroscience preface, which often recounts this history). The taxi-cab anecdote should be verified against a scholarly source.",
+      "rationale": "Gazzaniga is credited as co-coiner of the term 'cognitive neuroscience' and the institutional founder of the field through the Journal of Cognitive Neuroscience (1989) and the Cognitive Neuroscience Society (1994).",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 absent. The Britannica Gazzaniga entry may or may not use the word 'co-founder' explicitly — QC should verify.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A8",
+      "source": "person:luciano-floridi",
+      "target": "subfield:philosophy-of-information",
+      "relation": "founded_or_formalized",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "citation": "Floridi, L. (2011). The Philosophy of Information. Oxford University Press.",
+          "claim_anchor": "Floridi's The Philosophy of Information (OUP 2011) is the first book-length systematic treatment of the philosophy of information as an independent philosophical discipline; it is widely regarded as the defining founding text of the field.",
+          "url": "https://global.oup.com/academic/product/the-philosophy-of-information-9780199232765"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Philosophy of Information' (Adriaans, 2020)",
+          "claim_anchor": "Luciano Floridi has been the principal figure in establishing the philosophy of information as a systematic philosophical discipline; his work since the late 1990s has defined the field's scope and foundational problems.",
+          "url": "https://plato.stanford.edu/entries/information/"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1964) — living-person handling v2 applies. The philosophy of information has academic_status: emerging in the corpus; Floridi's founding role is strong but the field is young. The OUP book URL is a publisher's page, not the full text; QC should verify the URL resolves. The SEP entry may not use the word 'founded' explicitly — QC should check the exact language.",
+      "rationale": "Floridi's body of work — from late-1990s foundational papers through The Philosophy of Information (OUP 2011) — is the founding systematic account of the philosophy of information; standard secondary sources treat him as the field's founder.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 absent. Evidence sources blend a monograph citation with a SEP article; QC should confirm both URLs are live and that claim-anchor text is present. The OUP book citation requires a page reference for the claim-anchor to be verbatim-checkable.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A9",
+      "source": "person:leda-cosmides",
+      "target": "subfield:evolutionary-psychology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'evolutionary psychology' (last revised 2023)",
+          "claim_anchor": "Evolutionary psychology was co-founded in the early 1990s by Leda Cosmides and John Tooby, whose 1992 volume The Adapted Mind (co-edited with Jerome Barkow) is considered the founding text of the field; Cosmides and Tooby established the core theoretical framework of the discipline.",
+          "url": "https://www.britannica.com/science/evolutionary-psychology"
+        },
+        {
+          "citation": "Wikipedia, 'Evolutionary psychology', §History (en.wikipedia.org)",
+          "claim_anchor": "Leda Cosmides and John Tooby are credited as co-founders of evolutionary psychology; their collaboration produced the theoretical foundations of the field, including the concepts of massive modularity and the environment of evolutionary adaptedness.",
+          "url": "https://en.wikipedia.org/wiki/Evolutionary_psychology"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1957) — living-person handling v2 applies. Co-founding: Tooby is the equal co-founder (edge A10). David Buss and Steven Pinker are significant early contributors but are not conventionally named as co-founders in the same sense; record-not-resolve for A9+A10. Wikipedia used as secondary evidence; QC should seek a more authoritative source if possible.",
+      "rationale": "Cosmides and Tooby's The Adapted Mind (1992) is the canonical founding text of evolutionary psychology; Cosmides is universally named as co-founder alongside Tooby.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 absent. The Britannica source should explicitly name Cosmides (and Tooby) as 'co-founders'; QC should verify the exact wording.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A10",
+      "source": "person:john-tooby",
+      "target": "subfield:evolutionary-psychology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'evolutionary psychology' (last revised 2023)",
+          "claim_anchor": "Evolutionary psychology was co-founded in the early 1990s by Leda Cosmides and John Tooby, whose 1992 volume The Adapted Mind (co-edited with Jerome Barkow) is considered the founding text of the field; Cosmides and Tooby established the core theoretical framework of the discipline.",
+          "url": "https://www.britannica.com/science/evolutionary-psychology"
+        },
+        {
+          "citation": "Wikipedia, 'Evolutionary psychology', §History (en.wikipedia.org)",
+          "claim_anchor": "Leda Cosmides and John Tooby are credited as co-founders of evolutionary psychology; their collaboration produced the theoretical foundations of the field, including the concepts of massive modularity and the environment of evolutionary adaptedness.",
+          "url": "https://en.wikipedia.org/wiki/Evolutionary_psychology"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1952) — living-person handling v2 applies. Same co-founding cluster and evidence as A9; record-not-resolve with Cosmides.",
+      "rationale": "Tooby is universally named as co-founder of evolutionary psychology alongside Cosmides; The Adapted Mind (1992) is the canonical founding text.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 absent. Same evidence considerations as A9.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "B1",
+      "source": "person:daniel-kahneman",
+      "target": "subfield:judgment-and-decision-making",
+      "relation": "founded_or_formalized",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Daniel Kahneman' (last revised 2024)",
+          "claim_anchor": "Kahneman, together with Amos Tversky, co-founded the heuristics-and-biases research program that became the core of judgment and decision-making research; their 1974 Science paper 'Judgment under Uncertainty' and their 1979 Prospect Theory paper are the founding documents of the field.",
+          "url": "https://www.britannica.com/biography/Daniel-Kahneman"
+        },
+        {
+          "citation": "Nobel Prize Committee, 'Scientific Background: Foundations of Behavioral Economics' (2002)",
+          "claim_anchor": "Kahneman and Tversky's work on heuristics and biases and Prospect Theory founded behavioral decision-making research as a systematic psychological field; Kahneman received the Nobel Prize in Economic Sciences in 2002 for this foundational contribution.",
+          "url": "https://www.nobelprize.org/prizes/economic-sciences/2002/advanced-information/"
+        }
+      ],
+      "disputed": false,
+      "note": "Kahneman died March 27, 2024 — P570 should be present in Wikidata; QC must verify. Co-founding: Amos Tversky (deceased 1996) is an equal co-founder; not in this batch (record-not-resolve). CRITICAL ENDPOINT STATUS FLAG: subfield:judgment-and-decision-making is currently status:proposed (not reviewed). The auto-ladder clause ① requires both endpoints reviewed; this edge will remain at proposed even if QC returns supported. QC should note this dependency on the dashboard.",
+      "rationale": "Kahneman and Tversky's heuristics-and-biases program (1974) and Prospect Theory (1979) co-founded judgment and decision-making research; the 2002 Nobel Prize citation for Kahneman explicitly grounds this founding claim.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. QC must confirm P570 present for Kahneman (died March 2024). Nobel Prize URL should be verified for exact anchor text. STRUCTURAL DEPENDENCY: target subfield:judgment-and-decision-making is status:proposed — this edge is blocked from auto-ladder until that node is promoted.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B2",
+      "source": "person:john-mccarthy",
+      "target": "subfield:artificial-intelligence",
+      "relation": "founded_or_formalized",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'John McCarthy' (last revised 2024)",
+          "claim_anchor": "John McCarthy coined the term 'artificial intelligence' and organized the 1956 Dartmouth Conference, the founding event of AI as an academic discipline; he is considered one of the principal founders of artificial intelligence.",
+          "url": "https://www.britannica.com/biography/John-McCarthy-American-computer-scientist"
+        },
+        {
+          "citation": "McCarthy, J., Minsky, M. L., Rochester, N., & Shannon, C. E. (1955/2006). 'A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence.' AI Magazine, 27(4), 12–14.",
+          "claim_anchor": "This proposal, co-authored by McCarthy, Minsky, Rochester, and Shannon, organized the 1956 Dartmouth Summer Research Project that founded artificial intelligence as an academic research field; McCarthy is named as the primary organizer and is credited with coining the term 'artificial intelligence'.",
+          "url": "https://ojs.aaai.org/index.php/aimagazine/article/view/1904"
+        }
+      ],
+      "disputed": false,
+      "note": "Deceased (died October 23, 2011); P570 should be present — QC must verify. Co-founding: Minsky, Shannon, and Rochester co-organized the Dartmouth Conference; Minsky is in this batch (edge B3). McCarthy's individual distinction is coining the term 'AI' and leading the proposal. Record-not-resolve with Minsky.",
+      "rationale": "McCarthy coined the term 'artificial intelligence' in the 1956 Dartmouth proposal and organized the founding event; his founding role for subfield:artificial-intelligence is among the clearest in CS historiography.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. QC must verify P570 present for McCarthy (died October 2011). The AAAI journal URL should be verified as live.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "B3",
+      "source": "person:marvin-minsky",
+      "target": "subfield:artificial-intelligence",
+      "relation": "founded_or_formalized",
+      "confidence": 0.94,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Marvin Minsky' (last revised 2024)",
+          "claim_anchor": "Minsky co-organized the 1956 Dartmouth Conference with John McCarthy and co-founded the MIT Artificial Intelligence Laboratory (1959); he is widely considered one of the principal founders of artificial intelligence as an academic discipline.",
+          "url": "https://www.britannica.com/biography/Marvin-Minsky"
+        },
+        {
+          "citation": "McCarthy, J., Minsky, M. L., Rochester, N., & Shannon, C. E. (1955/2006). 'A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence.' AI Magazine, 27(4), 12–14.",
+          "claim_anchor": "Marvin Minsky is named as a co-organizer and co-author of the 1956 Dartmouth Conference proposal, the founding event of artificial intelligence as an academic research field.",
+          "url": "https://ojs.aaai.org/index.php/aimagazine/article/view/1904"
+        }
+      ],
+      "disputed": false,
+      "note": "Deceased (died January 24, 2016); P570 should be present — QC must verify. Co-founding with McCarthy (edge B2); same Dartmouth Conference founding event. Minsky's institutional founding contribution (MIT AI Lab, 1959) is a distinct second prong. Record-not-resolve with McCarthy.",
+      "rationale": "Minsky co-organized the Dartmouth Conference (1956) and co-founded the MIT AI Lab (1959); he is consistently named alongside McCarthy as co-founder of AI.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. QC must verify P570 present for Minsky (died January 2016). Same AAAI URL considerations as B2.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C1",
+      "source": "concept:generative-grammar",
+      "target": "subfield:syntax",
+      "relation": "part_of",
+      "confidence": 0.92,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Generative Grammar' (Harman & Lappin, 2022)",
+          "claim_anchor": "Generative grammar is a theoretical framework within the study of syntax — the branch of linguistics studying the structure of sentences; it is a paradigm within syntax.",
+          "url": "https://plato.stanford.edu/entries/generative-grammar/"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, 'generative grammar' (last revised 2023)",
+          "claim_anchor": "Generative grammar is a theory and methodology within syntax — the branch of linguistics studying the structure of sentences — pioneered by Noam Chomsky.",
+          "url": "https://www.britannica.com/topic/generative-grammar"
+        }
+      ],
+      "disputed": false,
+      "note": "Part_of edge placing concept:generative-grammar within subfield:syntax, following the concept:internet modeling precedent. The SEP URL is a training-recall hint; QC should verify the exact URL and claim-anchor text.",
+      "rationale": "Generative grammar is a paradigm within syntax; a part_of edge to subfield:syntax connects the concept node to the broader graph.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. The SEP may have a different URL slug; QC should verify. Conditional on the concept:generative-grammar node being retained.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C2",
+      "source": "concept:public-key-cryptography",
+      "target": "subfield:cryptography",
+      "relation": "part_of",
+      "confidence": 0.97,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'public-key cryptography' (last revised 2023)",
+          "claim_anchor": "Public-key cryptography is a branch of cryptography that uses asymmetric key pairs; it is a paradigm within the broader field of cryptography.",
+          "url": "https://www.britannica.com/topic/public-key-cryptography"
+        },
+        {
+          "citation": "Wikipedia, 'Public-key cryptography', §Overview (en.wikipedia.org)",
+          "claim_anchor": "Public-key cryptography is a subfield of cryptography that uses pairs of related cryptographic keys.",
+          "url": "https://en.wikipedia.org/wiki/Public-key_cryptography"
+        }
+      ],
+      "disputed": false,
+      "note": "Low ambiguity — the containment of public-key cryptography within cryptography is uncontroversial in all sources.",
+      "rationale": "Public-key cryptography is universally described as a branch or paradigm within cryptography; the part_of relation captures this accurately.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. Low uncertainty for this structural placement.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C3",
+      "source": "concept:analysis-of-algorithms",
+      "target": "subfield:algorithms-and-data-structures",
+      "relation": "part_of",
+      "confidence": 0.93,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'algorithm' (last revised 2024)",
+          "claim_anchor": "The analysis of algorithms — studying computational complexity, efficiency, and correctness of algorithms — is a core sub-area within the broader study of algorithms and data structures.",
+          "url": "https://www.britannica.com/science/algorithm"
+        },
+        {
+          "citation": "Wikipedia, 'Analysis of algorithms', §Introduction (en.wikipedia.org)",
+          "claim_anchor": "The analysis of algorithms is a branch of computer science that studies the efficiency of algorithms, particularly in terms of time and space complexity; it is a sub-topic within the broader area of algorithms and data structures.",
+          "url": "https://en.wikipedia.org/wiki/Analysis_of_algorithms"
+        }
+      ],
+      "disputed": false,
+      "note": "Conditional on the concept:analysis-of-algorithms node being retained by QC. If QC declines that concept node, this edge and the Knuth edge (A2) should be replaced with a re-targeted A2 edge pointing to subfield:algorithms-and-data-structures.",
+      "rationale": "The analysis of algorithms is a core paradigm within algorithms-and-data-structures; the part_of edge connects the concept node to the graph.",
+      "uncertainty": "Claim anchors are training-recall paraphrases — verbatim QC check required. Conditional on the concept node being retained.",
+      "ambiguous": false
+    }
+  ]
+}

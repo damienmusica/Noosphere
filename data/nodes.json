@@ -9680,5 +9680,229 @@
     },
     "created_at": "2026-07-01",
     "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:noam-chomsky",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": true,
+    "external_ids": {
+      "wikidata": "Q9049"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:donald-knuth",
+    "type": "person",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": true,
+    "external_ids": {
+      "wikidata": "Q17457"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:david-deutsch",
+    "type": "person",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": true,
+    "external_ids": {
+      "wikidata": "Q543682"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:whitfield-diffie",
+    "type": "person",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": true,
+    "external_ids": {
+      "wikidata": "Q462089"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:martin-hellman",
+    "type": "person",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": true,
+    "external_ids": {
+      "wikidata": "Q476466"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:stephen-cook",
+    "type": "person",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": true,
+    "external_ids": {
+      "wikidata": "Q62870"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:michael-gazzaniga",
+    "type": "person",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": true,
+    "external_ids": {
+      "wikidata": "Q738789"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:luciano-floridi",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": true,
+    "external_ids": {
+      "wikidata": "Q214119"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:leda-cosmides",
+    "type": "person",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": true,
+    "external_ids": {
+      "wikidata": "Q451962"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:john-tooby",
+    "type": "person",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1701956"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:daniel-kahneman",
+    "type": "person",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q233950"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:john-mccarthy",
+    "type": "person",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q92739"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "person:marvin-minsky",
+    "type": "person",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q204815"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "concept:generative-grammar",
+    "type": "concept",
+    "domain": "humanities",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q36108"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "concept:public-key-cryptography",
+    "type": "concept",
+    "domain": "computer_and_information_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q201339"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
+  },
+  {
+    "id": "concept:analysis-of-algorithms",
+    "type": "concept",
+    "domain": "computer_and_information_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q333464"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01"
   }
 ]
