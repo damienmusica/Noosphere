@@ -141,7 +141,34 @@ to make implementation easier.
   hallucination 0) + clause-6 v2's first correct fire (decision (67)) validating
   the safety net; promoted the standing backlog of 20 supported edges. 1:1
   mirror of the (54) `formalizes` / (60)/(61) `founded_or_formalized` ladders.
-  Full policy = `docs/data-foundry.md` §8.**
+  Full policy = `docs/data-foundry.md` §8.**; **living-person handling standing
+  policy (decision (70), 2026-06-30): the risk axis for a living person is
+  **claim type × source authority × contention — NOT aliveness**. This
+  **supersedes the blanket "living endpoint → CPO stop-point / never
+  auto-promote" framing** in the (54)/(60)/(61)/(68) ladder guards above. A
+  living-person node/edge is held to a *stricter* floor than the deceased path
+  (resolver-verified QID identity anchor [P570 live-confirmed absent] + ORCID/
+  institutional optional + ≥2 independent live claim-stating sources +
+  conservative *attributed* wording; summary allowed but careful) and
+  **auto-promotes to `reviewed` when clean** (clause-6 v2 = supported) —
+  generalizing the Seligman precedent (62), NOT a per-item CPO gate.
+  **Indexability = same earned rule as any node** (`indexable` is SEO-only,
+  orthogonal to explorability — living people are NOT force-`noindex`d).
+  Self-disclosure = provenance **tag**, not a weighting judgment (can't alone
+  meet the ≥2 floor). **Escalation fires only on a narrow signal set**:
+  clause-6 v2 `disputed`/NEI/reject · thin/non-authoritative sourcing · any
+  private-life/reputational/negative content · subject dispute (deferred ops).
+  **CPO governs policy/thresholds/dashboard, not per-item sign-off** (restores
+  (7)/contract 3). Robust to the fluid living/deceased boundary: status is
+  *observed* (P570), never predicted; drift runs living→deceased
+  (stricter→looser) and periodic re-grounding self-corrects. Schema unchanged
+  (`is_living_person` exists; `validate-data` already enforces living
+  external_id≥1 + status∉{draft,generated}). **No unverified legal-doctrine
+  asserted** in docs (GDPR for EU residents = confirm with primary sources if it
+  becomes a concern). Grounded by the #38 deep-research (Wikipedia BLP·Wikidata·
+  OpenAlex·ORCID·Scholia, prior-art unanimous; Noosphere narrower → a-fortiori).
+  Full design = vault `reference/living-person-handling-v2-design.md`; full
+  policy = `docs/data-foundry.md` §8.**
 
 ## Stack and dependencies
 

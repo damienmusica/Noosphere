@@ -23,7 +23,8 @@ mapped apart from those who make it. The field-first build order of the foundati
 `part_of` skeleton, built first because it is low-risk and cheap to cover) is a **sequencing
 strategy**, never a narrowing of this identity to a "field map." People and works are first-class
 from the definition; the only standing boundary on admitting a person is the stricter evidence and
-owner review required for **living people** (§3, §5) — a matter of responsibility, not of identity.
+conservative handling required for **living people** (§3; operationalized in
+[`docs/data-foundry.md`](data-foundry.md) §8) — a matter of responsibility, not of identity.
 
 Noosphere is **not**:
 
@@ -86,6 +87,15 @@ not to decide who is right.
   attribution, and share-alike metadata. Edges may only cite recorded sources.
 - **NamuWiki is external-link-only.** NamuWiki is never registered as a source, never cited as
   evidence, and never cached. It appears only as external links (`content_cached: false`).
+- **Living people: stricter evidence, conservative handling — not a blanket gate.** Claims about
+  living people require stricter evidence and conservative, attributed wording, and are tiered by
+  *claim type × source authority × contention* — not by aliveness alone. Noosphere records only
+  positive, public, professional/scholarly contributions of living people (who founded or influenced
+  what); never their private life, never negative or reputational claims. The owner governs the
+  policy, its thresholds, and an escalation queue — **not** per-item sign-off; only a narrow set of
+  risk signals (a contested claim, thin or non-authoritative sourcing, or any content touching private
+  life or reputation) escalates to review. The operational policy lives in
+  [`docs/data-foundry.md`](data-foundry.md) §8.
 
 ## 4. LLM boundary
 
