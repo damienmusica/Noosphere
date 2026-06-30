@@ -93,7 +93,9 @@ From lowest to highest scrutiny:
   `canonical_work`, and similar historical claims.
 - **High-risk living-person / current / controversial claims** — claims about living people, current
   events, or contested topics. These require the strictest evidence and the most conservative
-  wording, and always need explicit owner review.
+  wording. Living-person claims are governed by the **living-person handling standing policy**
+  (below), which tiers them by *claim type × source authority × contention* rather than by aliveness,
+  and escalates to owner review only on a narrow set of risk signals — not per item.
 
 ### Evidence kinds
 
@@ -236,10 +238,13 @@ A propositional edge **auto-promotes `proposed → reviewed`** when **all** hold
    and verbatim-checked, adversarial perspective-diverse QC passed, direction and identity referent correct.
 3. **Not `disputed` / NEI / reject** — these never auto-promote (clause-6 v2); they stop at `proposed` /
    stay in foundry, human-visible by design.
-4. **★ Living-person guard.** If either endpoint is a living person (`is_living_person: true`), the edge
-   does **not** auto-promote — it stays at the **CPO stop-point** (charter stricter-evidence rule).
-   Double-enforced: a living-person node is not auto-`reviewed` by node policy v1, so its endpoint is not
-   `reviewed` and clause ① already blocks the edge.
+4. **★ Living-person endpoints follow the living-person handling standing policy** (below), not this
+   clause's deceased default. Under that policy a living-person edge/node is held to a *stricter* floor
+   (authoritative identity anchor + ≥2 independent live sources + conservative attributed wording) and
+   auto-promotes to `reviewed` only when no escalation signal fires; a `disputed` / NEI / reject verdict,
+   thin or non-authoritative sourcing, or any private-life / reputational content escalates to owner
+   review instead. This **supersedes** the earlier blanket living-person stop (the N=1 Seligman ad-hoc
+   path, vault decision (62)): the axis is contention × source-authority × claim-type, not aliveness.
 
 A recorded record-not-resolve **tension / scope `note`** on a *supported* edge does **not** disqualify it —
 only `disputed: true` (or a node-level `ambiguous`) stops the ladder (the founder-ladder precedent promoted
@@ -253,6 +258,69 @@ note-bearing edges such as Newton∥Leibniz, Boole∥Frege). Provenance (`propos
   `nietzsche → freud` (`disputed`) correctly held at `proposed`.
 - **(d)-relations** — `formalizes` (decision (54)) and `founded_or_formalized` (decisions (60)/(61)) were
   opened earlier; this rule is their 1:1 mirror.
+
+### Living-person handling — standing policy (vault decision (70), 2026-06-30)
+
+The risk axis for a living person is **claim type × source authority × contention — not aliveness.** This
+mirrors how large knowledge bases carry data on millions of living people *without* per-item human
+sign-off: Wikipedia BLP removes only *contentious* and *poorly-sourced* material (keyed to contention +
+source quality, not to the person being alive); Wikidata admits anything describable by serious public
+references and presumes privacy by *publicness*, not aliveness; OpenAlex/ORCID/Scholia carry living
+researchers at scale on authoritative structured sourcing + disclosed provenance, with human curation as
+post-hoc correction only. Noosphere's scope is strictly *narrower* than any of these (only positive,
+public, canonical scholarly-attribution claims — never private/negative/reputational), so the prior art
+supports this a-fortiori. (Full design + citations: vault `reference/living-person-handling-v2-design.md`.
+This **supersedes** the never-ratified blanket "every living person → owner sign-off" draft.)
+
+Living-person handling is **stricter than the deceased-auto path but is not a blanket owner gate.**
+
+1. **Admission floor (stricter than deceased).** A node/edge touching a living person enters only when it
+   is **(a)** a positive public professional/scholarly attribution (`founded_or_formalized`, `influenced`,
+   `critiques`, …) — the relation taxonomy itself is the guard, since no private/negative relation exists
+   in the corpus; **(b)** anchored by an **authoritative structured identity** — a resolver-verified
+   Wikidata QID is required (P31=Q5 + P569 birth + **P570 live-confirmed absent** + label/sitelink
+   cross-check), with ORCID / official institutional page accepted as additional or alternative anchors
+   (ORCID is *not* mandatory — many older living scholars lack one); **(c)** grounded by the same **≥2
+   independent claim-stating live sources** as the deceased floor; **(d)** written in **conservative,
+   attributed wording** ("X is widely credited with founding Y", never bare superlatives; `note` carries
+   facts + sources only). A summary is *allowed* — written carefully (contribution-focused, non-biographical,
+   neutral), not suppressed.
+2. **Resting state = `reviewed`, auto, when clean.** A living-person edge/node meeting the floor with a
+   clause-6 v2 verdict of *supported* auto-promotes to `reviewed` — generalizing the Seligman precedent
+   (decision (62)), not a per-item owner sign-off. The conservative posture lives in *wording* and
+   *indexability*, not in withholding `reviewed`.
+3. **Indexability = the same earned rule as everyone.** `indexable` is an SEO-only flag (emit
+   `noindex`; see [`seo-policy.md`](seo-policy.md)) and is **orthogonal to in-graph explorability** — a
+   living-person node is fully navigable regardless. Living people are **not** force-`noindex`d; they earn
+   indexability the same way any node does (`reviewed` + original value). Aliveness does not make a node a
+   second-class exploration target.
+4. **Self-disclosure = provenance tag, not a weighting judgment.** A claim sourced from the subject's own
+   ORCID/bio is *recorded with disclosed provenance* (the ORCID trust-marker model), never adjudicated as
+   stronger/weaker — that is left downstream. Self-disclosure alone cannot satisfy the ≥2-independent floor
+   (it is one non-independent source), so the existing floor handles it with no new judgment.
+5. **Escalation to owner review fires only on a narrow signal set:** a clause-6 v2 verdict of
+   `disputed` / NEI / reject (a contested founding/priority is already diverted, human-visible); thin or
+   non-authoritative sourcing (no resolver-verified identity anchor, or < 2 independent live sources); any
+   claim touching private life, reputation, or negative/contentious content (a taxonomy-and-content
+   tripwire); or a subject/institution dispute lodged through a correction route (a downstream operational
+   path, deferred — not a data-policy blocker).
+6. **The owner governs policy, thresholds, and an escalation queue/dashboard — not per-item sign-off**
+   (restoring decision (7) / contract 3). Living-person promotions stay bulk re-auditable via retained
+   provenance.
+
+**Robust to the fluid living/deceased boundary (observe-only, self-correcting).** Living status is *observed*
+at QC time (Wikidata P570 present/absent live-confirmed), never *predicted* from age. Drift only runs
+living → deceased (stricter → looser), so a person who has died since is merely handled *more* carefully
+until the next periodic re-grounding re-checks P570 and moves them to the deceased path. No lifespan
+estimation, no status-tracking burden.
+
+**Schema unchanged** — `is_living_person` already exists (`src/schema/node.ts`); `validate-data.ts` already
+enforces that living-person nodes carry ≥1 external identifier and status ∉ {draft, generated} and that
+living-touching edges are ≥ `proposed`. This is a **policy** codification only. **Legal note:** the
+operational rules above are grounded in the cited prior art; this document deliberately makes **no
+unverified legal-doctrine assertion** (the specific defamation/privacy/GDPR doctrines were not
+source-verified in the session-#38 research). The GDPR position for EU-resident living scholars should be
+confirmed against primary sources if it ever becomes a concrete concern.
 
 ## 9. Current implementation sequence
 
