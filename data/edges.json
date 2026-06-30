@@ -10602,5 +10602,296 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Wittgenstein is a central figure in 20th-century philosophy of language (both the early Tractatus picture theory and the later Philosophical Investigations meaning-as-use). Held at PROPOSED: 'founder of philosophy of language' has multiple strong claimants (Frege is most often credited as the founder; Russell, Austin also principal) -> a clean >=2-source 'Wittgenstein founded philosophy of language' attribution is not established; he is a co-principal, not the sole founder. Re-examine with a precise multi-founder framing (or anchor to analytic-philosophy) before promotion. Identity Q9391 verified."
+  },
+  {
+    "id": "edge:generative-grammar-part-of-syntax",
+    "source": "concept:generative-grammar",
+    "target": "subfield:syntax",
+    "relation": "part_of",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Generative grammar is the dominant paradigm within syntax (concept level 3 under subfield:syntax level 2; section-12 part_of-depth freedom). Both endpoints reviewed."
+  },
+  {
+    "id": "edge:public-key-cryptography-part-of-cryptography",
+    "source": "concept:public-key-cryptography",
+    "target": "subfield:cryptography",
+    "relation": "part_of",
+    "confidence": 0.97,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Public-key (asymmetric) cryptography is a major branch within cryptography. Both endpoints reviewed."
+  },
+  {
+    "id": "edge:analysis-of-algorithms-part-of-algorithms-and-data-structures",
+    "source": "concept:analysis-of-algorithms",
+    "target": "subfield:algorithms-and-data-structures",
+    "relation": "part_of",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Analysis of algorithms (Wikidata Q333464 'study of resources used by an algorithm') is the complexity-analysis core within algorithms-and-data-structures. Both endpoints reviewed."
+  },
+  {
+    "id": "edge:noam-chomsky-founded-generative-grammar",
+    "source": "person:noam-chomsky",
+    "target": "concept:generative-grammar",
+    "relation": "founded_or_formalized",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "★ LIVING PERSON — living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + >=2 independent live claim-stating sources + conservative attributed wording; no escalation signal (clean positive academic-contribution founding) -> auto-reviewed. Chomsky founded generative / transformational grammar (Syntactic Structures 1957; widely attributed as the founder of the generative-grammar paradigm). Referent precision: the precise referent is concept:generative-grammar, NOT subfield:syntax (syntax long predates him) -- mirrors the concept:internet referent-precision ruling. ★ v2 claim-type note: Chomsky is a publicly contentious figure in POLITICS, but the linguistics founding claim is uncontested; v2 risk = claim-type x contention, NOT the person's general controversy, so no escalation. Wikipedia 'Noam Chomsky' + SEP coverage of Chomsky/generative grammar. Identity Q9049 verified (b.1928, P570 absent). founder ladder + v2 -> reviewed. Generator QID hint Q9049 was correct (the only correct hint of 16)."
+  },
+  {
+    "id": "edge:donald-knuth-founded-analysis-of-algorithms",
+    "source": "person:donald-knuth",
+    "target": "concept:analysis-of-algorithms",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "★ LIVING PERSON — living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + >=2 independent live claim-stating sources + conservative attributed wording; no escalation signal (clean positive academic-contribution founding) -> auto-reviewed. Knuth founded the rigorous mathematical analysis of algorithms (The Art of Computer Programming; ACM A.M. Turing Award 1974 cited 'for his major contributions to the analysis of algorithms and the design of programming languages'). Referent: concept:analysis-of-algorithms (the analysis core), not the whole subfield. Wikipedia 'Donald Knuth' + the 1974 Turing citation. Identity Q17457 verified (b.1938, P570 absent). Generator QID hint Q42887 was a hallucination (Pope Clement I); corrected."
+  },
+  {
+    "id": "edge:david-deutsch-founded-quantum-computing",
+    "source": "person:david-deutsch",
+    "target": "subfield:quantum-computing",
+    "relation": "founded_or_formalized",
+    "confidence": 0.86,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "★ LIVING PERSON — living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + >=2 independent live claim-stating sources + conservative attributed wording; no escalation signal (clean positive academic-contribution founding) -> auto-reviewed. Deutsch formulated the universal quantum computer / quantum Turing machine (1985) and the first quantum algorithm, founding the theory of quantum computation. Record-not-resolve co-founding: Feynman (1982 proposal), Benioff, and later Shor are co-principals. Wikipedia 'David Deutsch' + 'Quantum computing'. Identity Q543682 verified (P570 absent). Generator QID hint Q270768 was a hallucination (a French commune); corrected."
+  },
+  {
+    "id": "edge:whitfield-diffie-founded-public-key-cryptography",
+    "source": "person:whitfield-diffie",
+    "target": "concept:public-key-cryptography",
+    "relation": "founded_or_formalized",
+    "confidence": 0.96,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "★ LIVING PERSON — living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + >=2 independent live claim-stating sources + conservative attributed wording; no escalation signal (clean positive academic-contribution founding) -> auto-reviewed. Diffie (with Hellman) introduced public-key cryptography in 'New Directions in Cryptography' (1976); ACM Turing Award 2015 to Diffie and Hellman 'for fundamental contributions to modern cryptography', incl. public-key cryptography. Record-not-resolve co-founding with Martin Hellman (+ Ralph Merkle). Referent: concept:public-key-cryptography, not the whole subfield:cryptography (which predates them). Wikipedia 'Whitfield Diffie' + the 2015 Turing citation. Identity Q462089 verified (b.1944, P570 absent). Generator QID hint Q298547 was a hallucination (Mukesh Ambani); corrected."
+  },
+  {
+    "id": "edge:martin-hellman-founded-public-key-cryptography",
+    "source": "person:martin-hellman",
+    "target": "concept:public-key-cryptography",
+    "relation": "founded_or_formalized",
+    "confidence": 0.96,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "★ LIVING PERSON — living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + >=2 independent live claim-stating sources + conservative attributed wording; no escalation signal (clean positive academic-contribution founding) -> auto-reviewed. Hellman (with Diffie) co-introduced public-key cryptography (Diffie-Hellman key exchange, 1976); ACM Turing Award 2015 (shared with Diffie). Record-not-resolve co-founding with Whitfield Diffie (+ Merkle). Wikipedia 'Martin Hellman' + the 2015 Turing citation. Identity Q476466 verified (b.1945, P570 absent). Generator QID hint Q314958 was a hallucination (a German railway line); corrected."
+  },
+  {
+    "id": "edge:stephen-cook-founded-computational-complexity-theory",
+    "source": "person:stephen-cook",
+    "target": "subfield:computational-complexity-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "★ LIVING PERSON — living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + >=2 independent live claim-stating sources + conservative attributed wording; no escalation signal (clean positive academic-contribution founding) -> auto-reviewed. Cook founded NP-completeness theory (the Cook-Levin theorem, 1971), a central framework of computational complexity; ACM Turing Award 1982 'for his advancement of our understanding of the complexity of computation'. Record-not-resolve co-founding: Leonid Levin (independent) and Richard Karp (21 NP-complete problems) are co-principals. Wikipedia 'Stephen Cook' + the 1982 Turing citation. Identity Q62870 verified (P570 absent). Generator QID hint Q334240 was a hallucination (a Canadian abbey); corrected."
+  },
+  {
+    "id": "edge:michael-gazzaniga-founded-cognitive-neuroscience",
+    "source": "person:michael-gazzaniga",
+    "target": "subfield:cognitive-neuroscience",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "★ LIVING PERSON — living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + >=2 independent live claim-stating sources + conservative attributed wording; no escalation signal (clean positive academic-contribution founding) -> auto-reviewed. Gazzaniga, with George A. Miller, coined the term 'cognitive neuroscience' in 1978 and founded the field. Record-not-resolve co-founding with George A. Miller. Wikipedia 'Michael Gazzaniga' (\"The term cognitive neuroscience was coined by Michael Gazzaniga and George Armitage Miller in 1978\") + 'Cognitive neuroscience'. Identity Q738789 verified (P570 absent). Generator QID hint Q1928898 was a hallucination (Michael Pietsch); corrected."
+  },
+  {
+    "id": "edge:luciano-floridi-founded-philosophy-of-information",
+    "source": "person:luciano-floridi",
+    "target": "subfield:philosophy-of-information",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "★ LIVING PERSON — living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + >=2 independent live claim-stating sources + conservative attributed wording; no escalation signal (clean positive academic-contribution founding) -> auto-reviewed. Floridi launched and systematized the philosophy of information as a research field (late 1990s 'The Philosophy of Information' programme), widely regarded as its principal architect. Wikipedia 'Luciano Floridi' + SEP 'Information' (covering his systematic philosophy of information). Identity Q214119 verified (b.1964, P570 absent). Generator QID hint Q1392534 was a hallucination ('bicycle theft'); corrected."
+  },
+  {
+    "id": "edge:leda-cosmides-founded-evolutionary-psychology",
+    "source": "person:leda-cosmides",
+    "target": "subfield:evolutionary-psychology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "★ LIVING PERSON — living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + >=2 independent live claim-stating sources + conservative attributed wording; no escalation signal (clean positive academic-contribution founding) -> auto-reviewed. Cosmides (with John Tooby) founded evolutionary psychology, co-directing the Center for Evolutionary Psychology (UCSB) and co-editing 'The Adapted Mind' (1992). Record-not-resolve co-founding with John Tooby (+ Buss, Pinker, Daly & Wilson as principals). Wikipedia 'Leda Cosmides' + 'Evolutionary psychology'. Identity Q451962 verified (P570 absent). Generator QID hint Q453347 was a hallucination (a Scientologist); corrected."
+  },
+  {
+    "id": "edge:john-tooby-founded-evolutionary-psychology",
+    "source": "person:john-tooby",
+    "target": "subfield:evolutionary-psychology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Tooby (with Leda Cosmides) co-founded evolutionary psychology (Center for Evolutionary Psychology; 'The Adapted Mind' 1992). Record-not-resolve co-founding with Cosmides. ★ OBSERVE-ONLY self-correction (v2 section 3): Tooby was scoped as living but live-verified DECEASED -- Wikidata P570 = 2023-11-09 -- so routed to the deceased founder ladder (drift living->deceased = stricter->looser, the safe direction). Wikipedia 'John Tooby' + 'Evolutionary psychology'. Identity Q1701956 verified. Generator QID hint Q532892 was a hallucination (invalid); corrected. founder ladder (deceased) -> reviewed."
+  },
+  {
+    "id": "edge:daniel-kahneman-founded-judgment-and-decision-making",
+    "source": "person:daniel-kahneman",
+    "target": "subfield:judgment-and-decision-making",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Kahneman (with Amos Tversky) founded the modern field of judgment and decision-making (heuristics-and-biases programme; prospect theory; Nobel Memorial Prize in Economic Sciences 2002). Record-not-resolve co-founding with Tversky. Held at PROPOSED: founder-ladder clause (1) fails because the target subfield:judgment-and-decision-making is itself status 'proposed', not 'reviewed'. Promotes automatically when the anchor is promoted. Identity Q233950 verified (P570 2024-03-27, deceased). Generator QID hint Q62887 was a hallucination (an 1814-1870 botanist); corrected."
+  },
+  {
+    "id": "edge:john-mccarthy-founded-artificial-intelligence",
+    "source": "person:john-mccarthy",
+    "target": "subfield:artificial-intelligence",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "McCarthy founded artificial intelligence -- he coined the term 'artificial intelligence' and co-organized the 1956 Dartmouth Summer Research Project that launched the field; ACM Turing Award 1971. Record-not-resolve co-founding: Marvin Minsky, Allen Newell, Herbert Simon, Nathaniel Rochester, Claude Shannon were co-principals of the Dartmouth workshop. Wikipedia 'John McCarthy (computer scientist)' + 'Dartmouth workshop'. Identity Q92739 verified (P570 2011-10-24, deceased). Generator QID hint Q92688 was a hallucination (John Pasta, a physicist); corrected. founder ladder -> reviewed."
+  },
+  {
+    "id": "edge:marvin-minsky-founded-artificial-intelligence",
+    "source": "person:marvin-minsky",
+    "target": "subfield:artificial-intelligence",
+    "relation": "founded_or_formalized",
+    "confidence": 0.94,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Minsky co-founded artificial intelligence (co-organizer of the 1956 Dartmouth workshop; co-founder of the MIT AI Lab); ACM Turing Award 1969. Record-not-resolve co-founding with McCarthy, Newell, Simon, Rochester, Shannon. Wikipedia 'Marvin Minsky' + 'Dartmouth workshop'. Identity Q204815 verified (P570 2016-01-24, deceased). Generator QID hint Q154485 was a hallucination (invalid); corrected. founder ladder -> reviewed."
   }
 ]
