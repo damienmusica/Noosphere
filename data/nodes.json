@@ -9469,5 +9469,117 @@
     },
     "created_at": "2026-06-29",
     "updated_at": "2026-06-29"
+  },
+  {
+    "id": "person:karl-marx",
+    "type": "person",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q9061"
+    },
+    "created_at": "2026-06-30",
+    "updated_at": "2026-06-30"
+  },
+  {
+    "id": "person:robert-koch",
+    "type": "person",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q37193"
+    },
+    "created_at": "2026-06-30",
+    "updated_at": "2026-06-30"
+  },
+  {
+    "id": "person:charles-sanders-peirce",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q187520"
+    },
+    "created_at": "2026-06-30",
+    "updated_at": "2026-06-30"
+  },
+  {
+    "id": "person:alfred-russel-wallace",
+    "type": "person",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q160627"
+    },
+    "created_at": "2026-06-30",
+    "updated_at": "2026-06-30"
+  },
+  {
+    "id": "person:william-labov",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q357923"
+    },
+    "created_at": "2026-06-30",
+    "updated_at": "2026-06-30"
+  },
+  {
+    "id": "person:george-lakoff",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": true,
+    "external_ids": {
+      "wikidata": "Q313772"
+    },
+    "created_at": "2026-06-30",
+    "updated_at": "2026-06-30"
+  },
+  {
+    "id": "person:vint-cerf",
+    "type": "person",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": true,
+    "external_ids": {
+      "wikidata": "Q92743"
+    },
+    "created_at": "2026-06-30",
+    "updated_at": "2026-06-30"
+  },
+  {
+    "id": "concept:internet",
+    "type": "concept",
+    "domain": "computer_and_information_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q75"
+    },
+    "created_at": "2026-06-30",
+    "updated_at": "2026-06-30"
   }
 ]

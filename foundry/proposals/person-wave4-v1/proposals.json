@@ -1,0 +1,301 @@
+{
+  "batch_id": "person-wave4-v1",
+  "generated_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-30"
+  },
+  "relation_scope": "founded_or_formalized (deceased surfaced co-founders + living founders, living-person handling v2 first execution)",
+  "nodes": [
+    {
+      "id": "person:karl-marx",
+      "type": "person",
+      "domain": "social_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Karl Marx",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q9061"
+      },
+      "rationale": "Marx's historical-materialism framework and conflict theory constitute a foundational strand of sociology, distinct from Comte's positivist strand and Durkheim/Weber's institutional contributions; Britannica (wave3-A7 note) explicitly names Marx alongside Weber and Durkheim as one of the 'three principal architects of modern sociology'.",
+      "uncertainty": "QID Q9061 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570 (P570 present confirms deceased; Marx died 1883 so P570 should exist). QID hallucination rate is high; treat as hint only. The main uncertainty is whether Marx qualifies as a co-founder of sociology specifically (vs. political economy or historical materialism): his work predates the institutionalisation of sociology, and he never called himself a sociologist; some historians place him as an intellectual influence on sociology rather than a founder. The wave3 scoping noted this tension as a future batch item.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:robert-koch",
+      "type": "person",
+      "domain": "life_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Robert Koch",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q37327"
+      },
+      "rationale": "Koch's postulates (1884), discovery of specific causative bacteria (tuberculosis 1882, cholera 1883), and development of pure-culture methods co-founded microbiology as a distinct scientific discipline alongside Pasteur (already in /data via founder-wave3-v1); standard sources credit Pasteur and Koch jointly as co-founders of microbiology.",
+      "uncertainty": "QID Q37327 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. Founding is plural and co-equal with Pasteur (wave3 A3). Some historians argue Koch's contribution belongs more narrowly to bacteriology or medical microbiology rather than microbiology broadly; the standard historiography uses 'microbiology' for both. QID may be wrong.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:charles-sanders-peirce",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Charles Sanders Peirce",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q212646"
+      },
+      "rationale": "Peirce independently developed the Peircean semiotic tradition (sign/object/interpretant triadic model) in parallel with Saussure's semiological tradition; the Stanford Encyclopedia of Philosophy treats both as co-founders of semiotics from independent traditions; Peirce is the canonical founder of American/pragmatist semiotics.",
+      "uncertainty": "QID Q212646 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. Peirce died 1914 so P570 should exist. The main nuance is whether subfield:semiotics as defined in the corpus encompasses both the Peircean and Saussurean traditions equally, or tilts toward one; the edge is framed as the Peircean co-founding contribution. QID may be wrong.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:alfred-russel-wallace",
+      "type": "person",
+      "domain": "life_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Alfred Russel Wallace",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q160402"
+      },
+      "rationale": "Wallace independently developed natural selection in 1858 and jointly presented the theory with Darwin at the Linnean Society (1 July 1858); he is co-credited as the co-discoverer of natural selection and hence a co-founder of evolutionary biology, supplementing Darwin's already-recorded edge (founder-wave3-v1 A1).",
+      "uncertainty": "QID Q160402 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5 + P569/P570. Wallace died 1913. The founding attribution is co-discovery-level but asymmetric in historiography: Darwin is universally the primary named founder; Wallace's co-founding credit is acknowledged but secondary in most sources. QC should judge whether the evidence supports founded_or_formalized or whether influenced would be more appropriate.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:william-labov",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "William Labov",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q378087"
+      },
+      "rationale": "Labov is widely credited as the founder of variationist sociolinguistics; his studies of linguistic variation (New York department store study 1966, Martha's Vineyard study 1963, AAVE studies) established the empirical methodology and theoretical framework of sociolinguistics as a systematic social science.",
+      "uncertainty": "QID Q378087 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5; P570 MUST be absent (living person, born 1927, still living per training recall as of August 2025). LIVING PERSON — apply living-person handling v2 (decision (70)): stricter evidence floor, conservative attributed wording, auto-promotes when clean (not CPO stop-point per v2). QID hallucination rate high; treat as hint only.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:george-lakoff",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "George Lakoff",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q315042"
+      },
+      "rationale": "Lakoff is widely credited as a co-founder of cognitive linguistics (with Ronald Langacker); his work on conceptual metaphor theory ('Metaphors We Live By', 1980, co-authored with Johnson) and prototype theory established foundational frameworks of cognitive linguistics.",
+      "uncertainty": "QID Q315042 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5; P570 MUST be absent (living person, born 1941, still living per training recall as of August 2025). LIVING PERSON — apply living-person handling v2 (decision (70)). Founding is plural: Ronald Langacker is the equal co-founder (not in this batch — record-not-resolve). Some historians would add Leonard Talmy as a third co-founder. QID may be wrong.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:vint-cerf",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Vint Cerf",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q92785"
+      },
+      "rationale": "Cerf co-designed the TCP/IP protocol suite with Bob Kahn (RFC 675, 1974; RFC 793, 1981), which is the foundational technical infrastructure of the Internet as a specific global communications system; he is widely called 'one of the fathers of the Internet'. This batch targets concept:internet (NEW node), not subfield:computer-networks (the incorrect referent from wave3).",
+      "uncertainty": "QID Q92785 is an untrusted training-recall hint — QC must live-verify via Wikidata P31=Q5; P570 MUST be absent (living, born 1943). LIVING PERSON — apply living-person handling v2 (decision (70)). Founding is plural: Bob Kahn is the equal co-founder (not in this batch — record-not-resolve). Note: person:vint-cerf was also proposed in founder-wave3-v1 (generated, targeting subfield:computer-networks, not promoted to /data); this batch supersedes that attempt with the correct target concept:internet. QID may be wrong.",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:internet",
+      "type": "concept",
+      "domain": "computer_and_information_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Internet",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q75"
+      },
+      "rationale": "The Internet — the specific global system of interconnected computer networks using TCP/IP — is a discrete, corpus-worthy concept distinct from computer-networks as an academic subfield; it is the precise referent for Cerf's and Kahn's founding contribution and warrants its own concept node to allow the founded_or_formalized edge to point at the right referent.",
+      "uncertainty": "QID Q75 is an untrusted training-recall hint — QC must live-verify. DESIGN QUESTION flagged ambiguous: modeling 'the Internet' as a concept node (level 3) vs. as an artifact, technology, or institution is a taxonomy decision for QC to settle. The Internet is arguably an artifact/technology system rather than a purely intellectual concept; QC should assess whether the concept type is appropriate or whether a different type (e.g. method, technology) would better fit the schema. If the node type is wrong, the edge target validity is also at risk.",
+      "ambiguous": true
+    }
+  ],
+  "edges": [
+    {
+      "candidate_id": "A1",
+      "source": "person:karl-marx",
+      "target": "field:sociology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.82,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Max Weber' (last revised 2024)",
+          "claim_anchor": "Weber is generally regarded, alongside Karl Marx and Emile Durkheim, as one of the three principal architects of modern sociology; his interpretive sociological method and his comparative studies of religion, capitalism, and bureaucracy shaped the discipline fundamentally.",
+          "url": "https://www.britannica.com/biography/Max-Weber"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Karl Marx' (Wolff, 2003, rev. 2023), §1 Life and Works",
+          "claim_anchor": "Marx's work on historical materialism, class conflict, and the sociology of capitalism has been foundational for sociology; he is widely regarded as one of the principal founding thinkers of the social sciences alongside Durkheim and Weber.",
+          "url": "https://plato.stanford.edu/entries/marx/"
+        }
+      ],
+      "disputed": false,
+      "note": "Co-founding 4-cluster for field:sociology: Comte (wave3 A5, coined the term) + Durkheim (wave3 A6, institutionalized) + Weber (wave3 A7, interpretive approach) + Marx (A1, conflict theory / historical materialism). Marx is typically framed alongside Weber and Durkheim as a 'three principal architects' cluster (per Britannica's Weber entry, which explicitly names Marx). Record-not-resolve — all four edges co-exist. Marx never identified as a sociologist; his founding role is the conflict-theoretic strand surfaced in sociology textbooks from the 20th century onward.",
+      "rationale": "Britannica's formulation of the founding cluster for sociology explicitly names Marx alongside Weber and Durkheim; his historical-materialism / conflict-theory strand is treated as co-foundational in standard sociology curriculum.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The SEP Marx entry covers his social theory but may not use the word 'founding' for sociology specifically; QC should check the exact language. Confidence 0.82 reflects the genuine historiographical debate about whether Marx is a 'founder' of sociology (he predated the discipline's institutionalization and never aligned with it). The Britannica anchor (from the Weber entry) is the stronger evidence piece here; QC should verify it names Marx.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "A2",
+      "source": "person:robert-koch",
+      "target": "subfield:microbiology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.94,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Robert Koch' (last revised 2024)",
+          "claim_anchor": "Koch, along with Louis Pasteur, is credited as a founder of microbiology; his discovery of the causative agents of tuberculosis (1882) and cholera (1883) and his formulation of Koch's postulates established the bacteriological methods at the core of modern microbiology.",
+          "url": "https://www.britannica.com/biography/Robert-Koch"
+        },
+        {
+          "citation": "Wikipedia, 'Robert Koch', §Legacy (en.wikipedia.org)",
+          "claim_anchor": "Koch is considered one of the founders of microbiology; his methods for growing pure bacterial cultures and his identification of specific disease-causing bacteria provided the foundational experimental framework of bacteriology and microbiology.",
+          "url": "https://en.wikipedia.org/wiki/Robert_Koch"
+        }
+      ],
+      "disputed": false,
+      "note": "Plural co-founding: Robert Koch co-exists with Louis Pasteur (wave3 A3) as co-founder of subfield:microbiology. The two are equal in standard historiography; Pasteur is associated with germ theory and fermentation; Koch with specific pathogen identification and Koch's postulates. Record-not-resolve — both edges co-exist.",
+      "rationale": "Koch's postulates and bacterial discoveries (1882–1883) co-founded microbiology alongside Pasteur; the Pasteur co-founding is already in the wave3 batch; this edge closes the co-founder pair.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. Wikipedia is used as secondary evidence alongside Britannica; QC should treat Britannica as the primary source. The founding attribution is standard and well-attested.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A3",
+      "source": "person:charles-sanders-peirce",
+      "target": "subfield:semiotics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.90,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Semiotics' or 'Semiology' (Atkin, rev. 2023), §2 Historical Background",
+          "claim_anchor": "Charles Sanders Peirce is credited as the founder of the American semiotic tradition; his triadic sign model (sign/object/interpretant) and the concept of semiosis provide the theoretical foundation for Peircean semiotics, one of the two major traditions in the field alongside Saussure's semiology.",
+          "url": "https://plato.stanford.edu/entries/semiotics-semiology/"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, 'Semiotics' (last revised 2023)",
+          "claim_anchor": "Charles Sanders Peirce is considered a founder of semiotics; he developed the triadic model of the sign and the concept of semiosis independently of Saussure, establishing the American tradition of semiotics that stands alongside Saussure's European semiology.",
+          "url": "https://www.britannica.com/topic/semiotics"
+        }
+      ],
+      "disputed": false,
+      "note": "Parallel co-founding (two independent traditions): Peirce (A3, Peircean semiotics — sign/object/interpretant, American tradition) co-exists with Saussure (wave3 A11, semiological/continental tradition). The two traditions are genuinely independent and co-equal within subfield:semiotics as typically defined in academic sources. Record-not-resolve — both edges co-exist. Referent-watch: QC should confirm subfield:semiotics in the corpus encompasses both traditions.",
+      "rationale": "Peirce's triadic sign model and semiosis concept independently founded the American/pragmatist tradition of semiotics; he is the canonical co-founder alongside Saussure.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The exact SEP entry URL may differ (could be 'peirce' or 'semiotics-semiology'); QC should verify. The referent nuance (Peircean semiotics vs. Saussurean semiology as co-traditions within subfield:semiotics) is the main uncertainty.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "A4",
+      "source": "person:alfred-russel-wallace",
+      "target": "subfield:evolutionary-biology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.79,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Alfred Russel Wallace' (last revised 2024)",
+          "claim_anchor": "Wallace independently conceived the theory of natural selection and communicated it to Darwin in 1858; the joint Darwin-Wallace paper presented at the Linnean Society on 1 July 1858 marks the co-discovery of natural selection, making Wallace a co-originator of evolutionary biology.",
+          "url": "https://www.britannica.com/biography/Alfred-Russel-Wallace"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, 'Evolution' (Lewens, 2007, rev. 2023), §1 History of Evolutionary Theory",
+          "claim_anchor": "The theory of evolution by natural selection was presented jointly by Darwin and Wallace at the Linnean Society in 1858; Wallace independently developed the theory and is credited as a co-discoverer of natural selection alongside Darwin.",
+          "url": "https://plato.stanford.edu/entries/evolution/"
+        }
+      ],
+      "disputed": false,
+      "note": "Co-discovery founding, asymmetric in historiography: Darwin (wave3 A1) is the primary named founder; Wallace is the co-discoverer. Wallace's founding credit is genuine (1858 joint presentation) but secondary in most sources. Confidence 0.79 reflects this asymmetry. Record-not-resolve — both edges co-exist. QC should also consider whether 'influenced' (rather than 'founded_or_formalized') is a better relation for Wallace given the historiographical asymmetry; 'founded_or_formalized' is defensible given the 1858 joint presentation.",
+      "rationale": "Wallace's independent development of natural selection, jointly presented with Darwin at the Linnean Society in 1858, grounds a co-founding claim for evolutionary biology; the 1858 joint presentation is the key founding act.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. The main uncertainty is the relation type: some QC traditions would rate Wallace as 'influenced' rather than 'founded_or_formalized' because Darwin is universally treated as the primary founder. The confidence 0.79 flags this edge as a close call for QC to adjudicate.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B1",
+      "source": "person:william-labov",
+      "target": "subfield:sociolinguistics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.94,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'William Labov' (last revised 2024)",
+          "claim_anchor": "Labov is widely credited with founding variationist sociolinguistics; his empirical studies of language variation and change, beginning with his Martha's Vineyard study (1963) and New York City department store study (1966), established the systematic methodology for studying language in its social context.",
+          "url": "https://www.britannica.com/biography/William-Labov"
+        },
+        {
+          "citation": "Wikipedia, 'William Labov', §Influence (en.wikipedia.org)",
+          "claim_anchor": "Labov is often called the founder of sociolinguistics or the father of variationist sociolinguistics; his studies of phonological variation and language change in social context provided the foundational empirical methodology of the field.",
+          "url": "https://en.wikipedia.org/wiki/William_Labov"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1927) — apply living-person handling v2 (decision (70)): conservative attributed wording; stricter evidence floor; auto-promotes when clean per v2. Labov is widely credited with founding variationist sociolinguistics. Note: 'sociolinguistics' as a broader field has multiple contributors (Dell Hymes, John Gumperz are also credited for ethnography-of-communication strand); Labov's founding claim is strongest for the variationist/quantitative strand specifically. The founding attribution for the variationist tradition is well-supported.",
+      "rationale": "Labov is widely credited as the founder of variationist sociolinguistics through his 1963–1966 empirical studies; the founding attribution is well-documented in standard sources.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 is absent on Wikidata as of QC date. The 'variationist' qualifier is important; the broader sociolinguistics field has multiple founding contributors (Hymes, Gumperz) for non-variationist strands. Wikipedia used as secondary evidence; both sources should be live-checked.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "B2",
+      "source": "person:george-lakoff",
+      "target": "subfield:cognitive-linguistics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.91,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'cognitive linguistics' (last revised 2023)",
+          "claim_anchor": "Cognitive linguistics was developed in the 1970s and 1980s principally by George Lakoff and Ronald Langacker; Lakoff's work on conceptual metaphor and prototype theory and Langacker's cognitive grammar together established the foundational frameworks of the field.",
+          "url": "https://www.britannica.com/science/cognitive-linguistics"
+        },
+        {
+          "citation": "Wikipedia, 'Cognitive linguistics', §History (en.wikipedia.org)",
+          "claim_anchor": "Cognitive linguistics as a distinct field emerged in the late 1970s and 1980s, with George Lakoff and Ronald Langacker widely credited as its co-founders; Lakoff's Metaphors We Live By (1980, with Mark Johnson) and his work on prototype theory were foundational contributions.",
+          "url": "https://en.wikipedia.org/wiki/Cognitive_linguistics"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1941) — apply living-person handling v2 (decision (70)): conservative attributed wording; auto-promotes when clean per v2. Founding is plural: Ronald Langacker is the equal co-founder (not in this batch — record-not-resolve). Leonard Talmy is sometimes also credited as a third co-founder; the standard two-founder attribution is Lakoff + Langacker. Lakoff's contribution is specifically conceptual metaphor theory and prototype theory.",
+      "rationale": "Lakoff is widely credited as a co-founder of cognitive linguistics (with Langacker) through his conceptual metaphor theory and prototype theory work in the late 1970s–1980s.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 is absent on Wikidata as of QC date. The co-founding with Langacker is noted (record-not-resolve); QC should consider whether a future Langacker edge is needed. Wikipedia used as secondary evidence alongside Britannica; both should be live-checked.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C1",
+      "source": "person:vint-cerf",
+      "target": "concept:internet",
+      "relation": "founded_or_formalized",
+      "confidence": 0.88,
+      "evidence": [
+        {
+          "citation": "Encyclopaedia Britannica, 'Vint Cerf' (last revised 2024)",
+          "claim_anchor": "Cerf, together with Bob Kahn, co-designed the Transmission Control Protocol and Internet Protocol (TCP/IP), the foundational protocol suite of the Internet; he is widely called one of the fathers of the Internet for this contribution.",
+          "url": "https://www.britannica.com/biography/Vint-Cerf"
+        },
+        {
+          "citation": "Internet Society, 'Vint Cerf: Internet Pioneer and Father of the Internet'",
+          "claim_anchor": "Vint Cerf co-designed TCP/IP with Robert Kahn, providing the technical foundation that made the Internet possible; he is recognized as one of the fathers of the Internet for this co-founding contribution.",
+          "url": "https://www.internetsociety.org/people/vint-cerf/"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON (born 1943) — apply living-person handling v2 (decision (70)): conservative attributed wording; auto-promotes when clean per v2. Founding is plural: Bob Kahn is the equal co-founder (not in this batch — record-not-resolve). TARGET NOTE: This edge targets concept:internet (NEW node in this batch, also generated status); QC must assess the concept:internet node-type question before this edge can advance. If concept:internet is re-typed or rejected, this edge must be updated accordingly. Supersedes the abortive wave3 Cerf→subfield:computer-networks attempt, which failed because computer-networks as an academic subfield predates Cerf's TCP/IP work.",
+      "rationale": "Cerf co-designed TCP/IP with Kahn (RFC 675, 1974), the foundational protocol of the specific global Internet system; he is widely credited as one of the fathers of the Internet — a more precise referent than the broader subfield:computer-networks.",
+      "uncertainty": "Claim_anchors are training-recall paraphrases — verbatim QC check required. LIVING PERSON: QC must confirm P570 is absent on Wikidata as of QC date. The Internet Society source is a non-neutral publisher (Cerf has been closely associated with ISOC); QC should supplement with a more independent secondary source. The main uncertainty is the concept:internet node-type design question (flagged ambiguous on that node); this edge inherits that ambiguity.",
+      "ambiguous": true
+    }
+  ]
+}

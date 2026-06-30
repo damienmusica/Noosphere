@@ -824,6 +824,15 @@ non-coverage, never silently dropped.
   cross-lists to the existing cogsci nodes (§13, the strict-sequential payoff), economic-history cross-lists
   to the now-existing history field (debt §4), and media/mass-communication is confirmed **SS-only** (no forced
   humanities §13) — an interface is *closed* by either a §13 edge or an explicit no-edge ruling, not left open.
+- 2026-06-30 `concept:internet` (person wave 4, session #39): a **`founded_or_formalized` target need not be a
+  §12 skeleton field/subfield** — the relation taxonomy admits a `concept` target, and a major non-discipline
+  referent may be admitted as a `concept` node when it is the *precise* referent of a founding (the Internet,
+  Q75 "global system of connected computer networks", as Cerf+Kahn's referent — **not** the academic field
+  `computer-networks`, which predates them and made the wave-3 Cerf attempt an over-broad-referent NEI). The
+  `concept` type already exists in the schema (precedent: vector-space / random-variable / probability-
+  distribution), so this is a **modeling ruling, not a schema change**. General rule: when a founder's true
+  referent is a system/artifact/concept rather than a discipline, point the edge at a `concept` node for that
+  referent rather than forcing a discipline target (referent precision over skeleton convenience).
 
 ## 13. Cross-listing standard (multiple `part_of` memberships)
 
