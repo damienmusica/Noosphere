@@ -545,6 +545,27 @@ non-coverage, never silently dropped.
    recorded in `uncertainty` and the flag kept true (real-world contest → stops at `proposed`).
 4. **Label rule.** When a pedagogical course label and a research-area label name the same referent,
    keep the research-area node (precedent: abstract-algebra merged into algebra).
+5. **Movement / school-of-thought rule** (decision (73), 2026-06-30). Schools of thought, intellectual
+   movements, doctrines, and named groups are not all the same kind of node, and *"is it a movement?"
+   is not the admission test* — Wikidata types existentialism and pragmatism (both kept subfields) as
+   "philosophical movement," the same class as logical positivism. Decide by what the entity **is**:
+   - **Standing, taught, multi-generational area of study** (classification "branch of X" standing +
+     ongoing scholarship, not a closed historical position) → **`subfield`**, via the dual criterion
+     (precedent: phenomenology / existentialism / pragmatism / critical-theory grandfathered;
+     structural-anthropology promoted — Wikidata "branch of anthropology" Q106720965).
+   - **Bounded doctrine / position / -ism / theory** → **`concept`** node (precedent: logical
+     positivism; structuralism; german-idealism).
+   - **Group / circle / society of named people** → **`institution`** node (precedent: the Vienna
+     Circle — the corpus's first `institution` node, mirroring the `concept:internet` ruling).
+
+   concept/institution movement nodes are **edge-demand-driven** (admitted when a documented relation
+   needs the endpoint — a founder figure, a contested influence — never bulk-generated) and link into
+   the skeleton by edges (`part_of`, `founded_or_formalized`, `influenced`/`critiques`), never
+   inflating the subfield skeleton or double-counting a research area. **No schema change**
+   (`concept`/`institution` already in `nodeTypeSchema`); a dedicated `movement` type is rejected as
+   unnecessary and imprecise (movements are at least two kinds — doctrines and groups). This rule
+   **supersedes** the bare "movement-level granularity deferred" precedent (2026-06-10 philosophy)
+   for new cases, and unparks german-idealism/structuralism under the same edge-demand discipline.
 
 ### Flag semantics under this standard
 
@@ -833,6 +854,15 @@ non-coverage, never silently dropped.
   distribution), so this is a **modeling ruling, not a schema change**. General rule: when a founder's true
   referent is a system/artifact/concept rather than a discipline, point the edge at a `concept` node for that
   referent rather than forcing a discipline target (referent precision over skeleton convenience).
+- 2026-06-30 movement/school axis (decision (73), session #40): §12 structural rule 5 ratified — the
+  three pending cases split three ways by what each *is*: structural-anthropology→`subfield`
+  (promoted proposed→reviewed; Wikidata "branch of anthropology"; founder edge
+  `claude-levi-strauss→structural-anthropology` unblocked and laddered to reviewed), logical
+  positivism→`concept` and Vienna Circle→`institution` (ratified types, built with their Vienna
+  Circle figure wave so the edges are real, not orphan stubs). Diagnosis that drove the rule:
+  Wikidata types existentialism/pragmatism (already kept subfields) identically to the deferred ones
+  ("philosophical movement") → movement-vs-discipline was never the real line; standing-research-area
+  vs bounded-school is. Full design: vault `reference/movement-axis-design.md`.
 
 ## 13. Cross-listing standard (multiple `part_of` memberships)
 
