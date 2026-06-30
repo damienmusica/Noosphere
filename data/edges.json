@@ -10414,5 +10414,79 @@
       "proposed_at": "2026-06-30"
     },
     "note": "★ LIVING PERSON (b.1943) — admitted under the living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + ≥2 independent live claim-stating sources + conservative attributed wording; auto-promotes when clean. Cerf is widely credited as one of the 'fathers of the Internet' for co-designing TCP/IP with Robert Kahn (Wikipedia Vint Cerf: \"recognized as one of 'the fathers of the Internet', sharing this title with TCP/IP co-developer Robert Kahn\"; \"co-designed the DoD TCP/IP protocol suite with Kahn\"; corroborated by the 2004 ACM A.M. Turing Award to Cerf and Kahn \"for pioneering work on internetworking, including ... the Internet's basic communications protocols, TCP/IP\"). Referent precision: the target is concept:internet (the specific global system, Wikidata Q75), NOT subfield:computer-networks (the academic field, which predates Cerf — that over-broad referent was the wave3 #33 NEI; this closes that honest gap). Record-not-resolve co-founding — Bob Kahn is the equal co-founder (also living, not a node); the Internet built on earlier packet-switching work (Baran, Davies, Pouzin), so the 'fathers of the Internet' credit attaches specifically to the TCP/IP internetworking contribution. clause-6 v2 supported. concept:internet node admitted as a QC modeling ruling (concept type already in schema; the founded_or_formalized taxonomy admits field/concept targets). Generator QID hint Q92785 was a hallucination (resolved to a comic-book character); corrected to Q92743 (P31=Q5, b.1943, P570 absent → living); concept:internet QID Q75 verified."
+  },
+  {
+    "id": "edge:roman-jakobson-founded-phonology",
+    "source": "person:roman-jakobson",
+    "target": "subfield:phonology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-30"
+    },
+    "note": "Jakobson co-founded the modern discipline of phonology with Nikolai Trubetzkoy via the Prague Linguistic Circle (Wikipedia Roman Jakobson: \"With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology\"); corroborated independently by the linguistics literature attributing structural phonology and distinctive-feature theory to Trubetzkoy and Jakobson, 1939 (Prague Circle / Grundzuge der Phonologie; Jakobson, Fant & Halle distinctive features). Record-not-resolve co-founding: Trubetzkoy is the equal co-founder (not yet a node; his Grundzuge der Phonologie, 1939, is the foundational text) - a future Trubetzkoy->phonology founder edge sits alongside this one; this edge does not claim sole founding. Direction person->subfield correct; identity Q156201 verified (P31=Q5, P570 1982-07-18). founder ladder (decision (61)): both endpoints reviewed + supported -> auto-reviewed. Generator QID hint Q190412 was a hallucination (Moscow administrative okrug); corrected to Q156201."
+  },
+  {
+    "id": "edge:roman-jakobson-influenced-claude-levi-strauss",
+    "source": "person:roman-jakobson",
+    "target": "person:claude-levi-strauss",
+    "relation": "influenced",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "disputed": false,
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-30"
+    },
+    "note": "Jakobson directly influenced Levi-Strauss: they met at the New School for Social Research / Ecole Libre des Hautes Etudes in New York (Levi-Strauss arrived 1941; the decisive meeting with Jakobson was 1942), and Jakobson introduced Levi-Strauss to structural linguistics, whose phonological method of binary distinctive oppositions became the template for Levi-Strauss's structural analysis of kinship and myth (Wikipedia Roman Jakobson: \"Through his decisive influence on Claude Levi-Strauss ... Jakobson became a pivotal figure in the adaptation of structural analysis to disciplines beyond linguistics, including ... anthropology\"); corroborated independently by the structuralism literature (the New School 1942 meeting; \"Jakobson introduced him to the methods of structural linguistics, which he would go on to apply in his pioneering work on kinship structures\"). Completes the Saussure->Jakobson->Levi-Strauss mediation chain noted on edge:ferdinand-de-saussure-influenced-claude-levi-strauss. Direction Jakobson->Levi-Strauss correct; both endpoints reviewed; identity Q156201/Q128126 verified. (a)-relation auto-reviewed ladder (decision (68)): supported -> auto-reviewed; not disputed (existence and direction agreed)."
+  },
+  {
+    "id": "edge:claude-levi-strauss-founded-structural-anthropology",
+    "source": "person:claude-levi-strauss",
+    "target": "subfield:structural-anthropology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-30"
+    },
+    "note": "Levi-Strauss is the principal founder of structural anthropology (Wikipedia Structural anthropology: \"Structural anthropology is a school of sociocultural anthropology based on Claude Levi-Strauss' 1949 idea ...\"). The founding attribution is sound, but this edge stays PROPOSED because its target subfield:structural-anthropology is itself proposed, not reviewed: structural anthropology is a genuine subfield-vs-absorb modeling contest (Wikidata types it \"branch of anthropology\" Q106720965, supporting a peer subfield, but it is a Levi-Strauss-centric school within sociocultural anthropology, which under section 12 rule 2 + the german-idealism deferral precedent could instead be absorbed into cultural-anthropology). Routed to the CPO movement-axis ruling (session #40 draft Part B). founder ladder clause (1) (both endpoints reviewed) fails on the proposed target -> correctly held at proposed. Identity Q128126 verified."
+  },
+  {
+    "id": "edge:roman-jakobson-influenced-semiotics",
+    "source": "person:roman-jakobson",
+    "target": "subfield:semiotics",
+    "relation": "influenced",
+    "confidence": 0.78,
+    "status": "proposed",
+    "disputed": false,
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-4-6",
+      "proposed_at": "2026-06-30"
+    },
+    "note": "Jakobson's communication model (1960 'Linguistics and Poetics': addresser/message/addressee + context/contact/code) is a standard reference in semiotics, and he drew explicitly on C. S. Peirce's semiotics. The influence is genuine but diffuse and partly bidirectional (Jakobson drew FROM Peircean semiotics as much as he shaped the field), and semiotics had independent foundations (Peirce, Saussure). Held at PROPOSED: a single-source, lower-confidence, direction-ambiguous (a)-edge that does not clearly meet the supported bar; re-examine with stronger directional grounding before promotion. Identity Q156201 verified."
   }
 ]

@@ -9581,5 +9581,34 @@
     },
     "created_at": "2026-06-30",
     "updated_at": "2026-06-30"
+  },
+  {
+    "id": "person:roman-jakobson",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q156201"
+    },
+    "created_at": "2026-06-30",
+    "updated_at": "2026-06-30"
+  },
+  {
+    "id": "subfield:structural-anthropology",
+    "type": "subfield",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q5111399"
+    },
+    "academic_status": "established",
+    "created_at": "2026-06-30",
+    "updated_at": "2026-06-30"
   }
 ]

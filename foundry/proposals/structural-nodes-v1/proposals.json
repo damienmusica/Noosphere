@@ -1,0 +1,116 @@
+{
+  "batch_id": "structural-nodes-v1",
+  "generated_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-4-6",
+    "proposed_at": "2026-06-30"
+  },
+  "relation_scope": "structural gap closure — 2 nodes (subfield:structural-anthropology, person:roman-jakobson) + 4 edges (founded_or_formalized x2, influenced x2)",
+  "nodes": [
+    {
+      "id": "subfield:structural-anthropology",
+      "type": "subfield",
+      "domain": "social_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Structural anthropology",
+      "academic_status": "established",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q860487"
+      },
+      "source_hint": "Wikidata Q860487 (candidate QID — training-recall hint, unverified); Wikipedia 'Structural anthropology'; Encyclopaedia Britannica 'structural anthropology'",
+      "note": "Dual-criterion check (§12 subfield standard): (1) named subfield with standard academic recognition — 'structural anthropology' appears as a named subfield in Britannica, Wikipedia, and SEP entries on Lévi-Strauss; (2) has a principal founder with independent reviewed anchor — Lévi-Strauss (person:claude-levi-strauss, reviewed). CPO scope note: vienna-circle and logical-positivism are explicitly out of scope for this batch (movement-axis question parked). Ambiguity flag: the principal tension is whether structural anthropology is better modeled as a methodological axis within cultural anthropology rather than a peer subfield; it is strongly associated with Lévi-Strauss alone and lacks the multi-contributor institutionalization typical of established subfields. QC should adjudicate the subfield-vs-axis question.",
+      "rationale": "Structural anthropology is a named, academically recognized subfield of anthropology most strongly attributed to Claude Lévi-Strauss (reviewed), arising as a gap from the person-waves (decisions (67)/(71)); it is the direct object of the lévi-strauss→founded_or_formalized edge this batch needs.",
+      "uncertainty": "QID Q860487 is a training-recall guess — QC must live-verify. The main substantive uncertainty is whether structural anthropology is better modeled as a methodological approach within cultural anthropology (concept or method node) rather than a peer subfield of field:anthropology; it is primarily a Lévi-Strauss-era phenomenon, and some would argue it dissolved into broader structuralism rather than persisting as an independent subfield.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:roman-jakobson",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Roman Jakobson",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q190412"
+      },
+      "source_hint": "Wikidata Q190412 (candidate QID — training-recall hint, unverified); Encyclopaedia Britannica 'Roman Jakobson'; Wikipedia 'Roman Jakobson'",
+      "note": "Person/work node contract v1 (decision (58)) keep-criteria: admitted as a principal co-founder of structural phonology (subfield:phonology, reviewed) alongside Nikolai Trubetzkoy in the Prague Linguistic Circle; phonology is the independent reviewed anchor. Jakobson died 1982; P570 should be present in Wikidata. academic_status is omitted per contract v1 (persons carry deceased/living status via is_living_person, not academic_status). The Jakobson admission also resolves the Saussure→Lévi-Strauss mediation chain noted in the pivotal-influence-v1 scoping.md ('Jakobson — candidate node for the Saussure→Lévi-Strauss mediation chain').",
+      "rationale": "Jakobson is a principal co-founder of structural phonology (subfield:phonology, reviewed) via the Prague Linguistic Circle (with Trubetzkoy); admitted under person/work node contract v1 (decision (58)) for this founding contribution and as the historical mediation link between Saussurean linguistics and Lévi-Strauss's structural anthropology.",
+      "uncertainty": "QID Q190412 is a training-recall guess — QC must live-verify via Wikidata P31=Q5 and P570 (death 1982). Co-founding with Trubetzkoy means primacy between the two is record-not-resolve; QC should not adjudicate who was the primary founder. QID hallucination rate high; treat as hint only.",
+      "ambiguous": false
+    }
+  ],
+  "edges": [
+    {
+      "candidate_id": "E1",
+      "source": "person:claude-levi-strauss",
+      "target": "subfield:structural-anthropology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.93,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Encyclopaedia Britannica, 'Claude Lévi-Strauss' (https://www.britannica.com/biography/Claude-Levi-Strauss); Wikipedia, 'Structural anthropology' (https://en.wikipedia.org/wiki/Structural_anthropology); Stanford Encyclopedia of Philosophy, 'Claude Lévi-Strauss' or 'Structuralism'",
+      "note": "Reconciliation note: no existing edge edge:claude-levi-strauss-founded-or-formalized-structural-anthropology (or any variant) was found in data/edges.json at proposal time. The subfield:structural-anthropology target node is NEW in this batch (status generated), so this edge could not have been proposed previously. The lévi-strauss node was admitted in pivotal-influence-v1 with no founder edge because the target node was absent; this edge closes that gap. Both endpoints will be generated status until QC promotes the node. The founding attribution is essentially uncontested: structural anthropology is sometimes called 'Lévi-Strauss's structural anthropology' in secondary literature.",
+      "rationale": "Lévi-Strauss is the canonical and essentially sole founder/formalizer of structural anthropology; the field is defined by his application of structural linguistics methods to kinship, myth, and cultural analysis, starting with 'Elementary Structures of Kinship' (1949) and 'Structural Anthropology' (1958).",
+      "uncertainty": "Claim_anchors will be training-recall paraphrases — verbatim QC check required. The edge's validity inherits the node ambiguity: if QC reclassifies subfield:structural-anthropology as a method or concept node, the edge target changes. There is no serious rival candidate for this founding attribution, but the subfield's scope and persistence are contested.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "E2",
+      "source": "person:roman-jakobson",
+      "target": "subfield:phonology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.90,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Encyclopaedia Britannica, 'Roman Jakobson' (https://www.britannica.com/biography/Roman-Jakobson); Wikipedia, 'Roman Jakobson', §Contributions to linguistics; Wikipedia, 'Prague linguistic circle' (https://en.wikipedia.org/wiki/Prague_linguistic_circle)",
+      "note": "Co-founding with Nikolai Trubetzkoy (record-not-resolve): Jakobson and Trubetzkoy jointly developed structural/Prague School phonology in the 1920s–1930s; Trubetzkoy's 'Principles of Phonology' (Grundzüge der Phonologie, 1939) is typically cited as the foundational text, but Jakobson's parallel contributions (distinctive feature theory) are co-equal in the founding historiography. A future Trubetzkoy node edge would sit alongside this one. The Prague Linguistic Circle is the institutional founding context.",
+      "rationale": "Jakobson co-founded structural phonology (subfield:phonology, reviewed) with Trubetzkoy in the Prague Linguistic Circle; his distinctive-feature theory and phoneme concept are foundational contributions to the subfield.",
+      "uncertainty": "Claim_anchors will be training-recall paraphrases — verbatim QC check required. Trubetzkoy is the equal co-founder and is absent from this batch; QC should note the record-not-resolve co-founding and not read this edge as claiming Jakobson was the sole founder. Confidence 0.90 reflects the very strong founding attribution with the co-founding caveat.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "E3",
+      "source": "person:roman-jakobson",
+      "target": "person:claude-levi-strauss",
+      "relation": "influenced",
+      "confidence": 0.95,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Encyclopaedia Britannica, 'Claude Lévi-Strauss' (mentions Jakobson's role at the New School for Social Research); Wikipedia, 'Structural anthropology' §Influence of Roman Jakobson; Wikipedia, 'Roman Jakobson' §Influence on structuralism",
+      "note": "Endpoint selection decision: the order gives two options — Jakobson → subfield:structural-anthropology OR Jakobson → person:claude-levi-strauss. The person→person edge (E3) is chosen as the primary proposal because: (a) the historical claim is specifically about Jakobson's personal influence on Lévi-Strauss at the New School in New York in the early 1940s, not a diffuse field-level influence; (b) the data already carries edge:ferdinand-de-saussure-influenced-claude-levi-strauss (reviewed, note explicitly mentions 'transmission substantially mediated by Roman Jakobson'), making Jakobson→Lévi-Strauss the natural completion of that mediation chain; (c) person→person is a cleaner historical record-not-resolve pattern. A separate Jakobson→subfield:structural-anthropology edge could be added but would be redundant given E1 (lévi-strauss founded structural-anthropology) and E3 (jakobson influenced lévi-strauss). Confidence 0.95 — the Jakobson→Lévi-Strauss influence at the New School is extensively documented.",
+      "rationale": "Jakobson directly influenced Lévi-Strauss during their overlapping time at the New School for Social Research in New York in the early 1940s; Lévi-Strauss has acknowledged that Jakobson's structural phonology method was the model for his structural analysis of kinship and myth.",
+      "uncertainty": "Claim_anchors will be training-recall paraphrases — verbatim QC check required. The directness of influence is very well-attested in this case (unlike the Saussure→Lévi-Strauss edge which flagged the mediation question); the uncertainty is low but QC should confirm the specific claim about the New School encounter in at least two independent sources.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "E4",
+      "source": "person:roman-jakobson",
+      "target": "subfield:semiotics",
+      "relation": "influenced",
+      "confidence": 0.78,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia, 'Roman Jakobson', §Communication model; SEP entry on structuralism or semiotics if it covers Jakobson's role; Encyclopaedia Britannica, 'semiotics'",
+      "note": "Optional edge per the order ('if you find it well-grounded'). Rationale for including: Jakobson's communication model (addresser/message/addressee + context/contact/code, 1960 'Closing Statement: Linguistics and Poetics') is a canonical semiotic framework widely cited in semiotics literature; his distinctive-feature theory contributed to the sign-system analysis central to semiotics; and his role in transmitting Saussure's structural framework (via Lévi-Strauss and others) means his influence on semiotics is doubly mediated. However: this is a field-level influence, less direct than E3; semiotics had its own independent foundations (Peirce, Saussure); Jakobson's primary identity is as a linguist/phonologist, not a semiotician. Confidence 0.78 reflects genuine but secondary influence.",
+      "rationale": "Jakobson's communication model and his structural linguistics work are acknowledged influences on semiotics as a field; his 1960 'Linguistics and Poetics' communication model is a standard reference in semiotic curricula.",
+      "uncertainty": "The Jakobson→semiotics influence is real but diffuse — QC may judge the evidence insufficient for a 'influenced' edge vs. a weaker 'adjacent_to'; the claim rests on whether the communication model constitutes a field-level influence on semiotics or merely an adjacent contribution. Claim_anchors will be training-recall paraphrases requiring verbatim QC check.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "RECONCILIATION CHECK (levi-strauss→structural-anthropology edge): Searched data/edges.json for any existing edge between person:claude-levi-strauss and subfield:structural-anthropology. No match found. The only existing lévi-strauss edge is edge:ferdinand-de-saussure-influenced-claude-levi-strauss (saussure→levi-strauss, reviewed), direction reversed. The levi-strauss→founded_or_formalized→structural-anthropology edge is genuinely new.",
+    "OUT OF SCOPE per orchestrator: vienna-circle and logical-positivism (movement-axis design question parked, CPO decision required). Not proposed here.",
+    "NODE TYPE DESIGN FLAG (structural-anthropology): The ambiguous flag on subfield:structural-anthropology reflects a genuine modeling question. It qualifies as a subfield by the named-field criterion (academically named, attributed, indexed in Britannica/Wikipedia). The dual-criterion concern is whether it has sufficient institutional persistence as an independent subfield or whether it is better treated as a methodological axis within cultural-anthropology (which would make it a concept or method node). QC should settle this before promotion. If reclassified, edge E1's target must change accordingly.",
+    "TRUBETZKOY NOTE: Nikolai Trubetzkoy is the co-founder of structural phonology alongside Jakobson and is absent from this batch. A future Trubetzkoy person node + founded_or_formalized→subfield:phonology edge is the natural follow-on. Record-not-resolve applies to the Jakobson/Trubetzkoy co-founding.",
+    "EVIDENCE SOURCES: All source_hints name real, publicly checkable sources (Britannica, Wikipedia en, SEP). No new source entries are needed — source:wikipedia, source:sep are already in data/sources.json. Evidence arrays are empty at generated stage per the proposals.json practice for this evidence_kind; QC populates source IDs at review time after live-checking the source_hints.",
+    "DOMAIN ASSIGNMENT: subfield:structural-anthropology is assigned domain:social_sciences to match field:anthropology (reviewed, domain:social_sciences). subfield:phonology is domain:humanities to match field:linguistics (reviewed, domain:humanities). person:roman-jakobson is domain:humanities, consistent with his primary discipline (linguistics/phonology) and matching the peer pattern (person:ferdinand-de-saussure, person:claude-levi-strauss are domain:social_sciences / person:william-labov is domain:humanities for sociolinguistics)."
+  ]
+}
