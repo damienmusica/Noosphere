@@ -82,6 +82,57 @@ Large-scale data construction happens in **batches**, each moving through a fixe
 - Higher risk tiers demand more direct, item-level scrutiny; lower tiers may be accepted on
   process + report evidence for the batch as a whole.
 
+### 7.1 Decision autonomy — CTO-autonomous defaults vs. the narrow stop-set (decision (91))
+
+> **Standing policy, CPO-ratified session #49 (2026-07-02).** The gate axis is **"does this change
+> policy / identity / schema, or trip a narrow risk signal" — NOT "is this a decision."** Routine,
+> rule-covered, and mirror-of-ratified judgments are **CTO-autonomous**; stopping on them is
+> over-gating that costs efficiency for no safety (the twin of defeatism, decision (89); the same move
+> as decision (70), where the risk axis was reset to claim × authority × contention, not aliveness).
+> Every autonomous decision is logged with full provenance → bulk re-auditable and **reversible**, so
+> autonomy carries no accountability cost.
+
+**CTO decides autonomously (proceed, record in the decision log — do not stop):**
+
+1. **Wave scoping** — which nodes/edges/works/people, batch size, and **sequencing among
+   already-sanctioned tracks** (e.g. work-wave ∥ cross-cutting-edge ∥ concept build are all sanctioned
+   phase-2 work; ordering them is not a strategy call). (decision (83).)
+2. **Applying any already-ratified ladder/policy to new items** — node-policy v1; the
+   person / founder / `formalizes` / `(a)` / `work` / `canonical_work` auto-`reviewed` ladders; the
+   living-person floor (decision (70)) when clean.
+3. **Modeling rulings that are 1:1 mirrors or direct corollaries of an already-ratified pattern** —
+   e.g. co-canonical works = the works-layer mirror of a field's multiple founders (decision (90));
+   §12/§13 single-node placements; concept-vs-subfield referent-precision calls.
+4. **Opening a new auto-`reviewed` ladder that is a 1:1 mirror of an already-proven decidable
+   (d)-family ladder**, once the batch measurement meets the standing bar (precision ≈ 1.0,
+   generator-hallucination catch, reject-probe fires): CTO opens **with a notify** (logged; CPO may
+   veto) — not a blocking gate. Same decidable-QID-grounded family only.
+5. **Mechanical QC outcomes** — honesty-gap drops, reject-probe rejections, proposed-holds,
+   record-not-resolve notes, duplicate / relation-choice drops.
+6. **Literature-boundary cases the rule already decides** (decision (86)) — knowledge-work → IN;
+   art-work → Booksphere-reserved.
+7. **Housekeeping** — doc corrections, proposals-index rows, provenance, promotion reports.
+
+**Genuine stop-points (surface to the CPO — the narrow set):**
+
+1. **A brand-new policy / criteria / ladder for a NEW risk family** — one that is *interpretive*, not
+   decidable-QID-grounded, and not a mirror of an existing ladder.
+2. **Schema / taxonomy change** — a new relation type or node type (the CLAUDE.md hard rule:
+   taxonomy + Zod + validation in one change). The CTO drafts it fully; the stop is only the ratify.
+3. **Strategy pivot / phase transition** — declaring a phase complete, spinning up a sister product
+   (Booksphere), or changing the atlas's scope or identity.
+4. **Living-person NARROW escalation signals only** (decision (70)) — clause-6 v2 disputed/NEI/reject ·
+   thin/non-authoritative sourcing · any private-life/reputational/negative content · subject dispute.
+5. **A novel boundary the governing rule is genuinely silent on** — not merely "a boundary case," but
+   one the existing rule does not resolve.
+6. **Live evidence that refutes a ratified premise** — then report, re-model accurately, do not force
+   (decisions (82)/(89)).
+7. **Reversing or contradicting a ratified policy.**
+
+Anything not in the stop-set proceeds. When unsure whether an item is a mirror-of-ratified (autonomous)
+or a new-risk-family (stop), the tie-breaker is the decision (89) discipline: check the rule's *actual*
+safety value by reasoning/research — do not stop on procedural caution alone.
+
 ## 8. Risk tiers
 
 From lowest to highest scrutiny:
@@ -350,6 +401,19 @@ rejected), **direction 18/18**, and **hallucination 0** — the same bar that ea
 rate as person QIDs (9/9 in the pilot), so the **separated-generation + independent live-verification
 contract is the load-bearing safety mechanism regardless of ladder state** — the ladder cannot launder a
 generator hallucination into `/data` because promotion re-verifies every QID live.
+
+### `concept`-node keep-criteria — pre-ratified (decision (91), session #49)
+
+`concept` nodes (field-internal core ideas — e.g. `vector-space`, `logical-positivism`,
+`generative-grammar`) admit under the **same edge-demand discipline** as works (W1) and founders, and
+**promote via node-policy v1** (Wikidata-QID resolver-verified → auto-`reviewed`) — **no new ladder**; the
+build is **CTO-autonomous** (decision (91) §7.1). Criteria: **(C1)** edge-demand founded — the concept
+earns its place by connecting to an existing `reviewed` field/subfield/person via `formalizes` /
+`part_of` / `prerequisite_for` / `(a)`, not "every idea"; **(C2)** QID resolver-verified (referent-precise
+— a concept, not a subfield or a person; the Cerf/#33 and generative-grammar precedent guards over-broad
+targets); **(C3)** referent precision — pick the concept referent, not an over-broad discipline label;
+**(C4)** `indexable` only when `reviewed` per node policy. Multiplicity (many concepts per field) is
+expected and fine — the same posture as co-canonical works and multiple founders.
 
 ### Living-person handling — standing policy (vault decision (70), 2026-06-30)
 

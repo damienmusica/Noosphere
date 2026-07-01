@@ -74,6 +74,21 @@ to make implementation easier.
   auto-promotes on resolver-verified external grounding; QC-ambiguous items
   stop at `proposed`; no verified grounding → stays in foundry). The CPO
   governs the policy, escalations, and dashboards — not per-item sign-off.
+- **Decision autonomy (decision (91), `docs/data-foundry.md` §7.1): the gate
+  axis is "does this change policy/identity/schema or trip a narrow risk
+  signal," NOT "is this a decision."** CTO decides autonomously (proceed, log
+  it) on: wave scoping + sequencing among sanctioned tracks; applying any
+  ratified ladder/policy; modeling rulings that mirror an already-ratified
+  pattern (e.g. co-canonical = founder-multiplicity mirror); mirror-ladder
+  openings post-measurement (notify, CPO may veto); mechanical QC outcomes;
+  rule-covered literature-boundary cases; housekeeping. **Stop only for the
+  narrow set:** a new *risk-family* policy/ladder (not a mirror); a
+  schema/taxonomy change; a strategy pivot / phase transition; living-person
+  narrow escalation signals (70); a boundary the rule is genuinely silent on;
+  live evidence refuting a ratified premise; reversing a ratified policy.
+  Over-gating routine/mirror decisions is the twin of defeatism — the
+  decision (89)/(70) discipline. Autonomous decisions are logged with
+  provenance → reversible.
   Full provenance keeps every promotion bulk re-auditable and reversible.
 - Ratified standing policies in force (the vault decision log is the
   authority; this list is a pointer, not a restatement): node promotion
