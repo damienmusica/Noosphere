@@ -4390,10 +4390,11 @@
     "target": "domain:social-sciences",
     "relation": "part_of",
     "confidence": 0.85,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:udc-summary",
-      "source:oecd-ford"
+      "source:oecd-ford",
+      "source:wikidata",
+      "source:wikipedia"
     ],
     "evidence_kind": "externally_sourced",
     "proposed_by": {
@@ -4401,7 +4402,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "FORD 5.8 'Media and communications' under 5 Social Sciences (captured 2026-06-11); UDC 316.7 'Sociology of culture. Cultural context of social life' (a partial fit — mass communication is a subarea of sociology of culture in UDC, not a top-level division) (captured 2026-06-11). [UNFETCHED]: Wikidata Q11680831 desc; ICA (International Communication Association) classification."
+    "note": "B-flag resolved (2026-07-02 CPO-audit backlog re-adjudication, batch evidence-permanence-backfill-and-backlog-v1): the 2026-06 hold was a gate-scheme split (FORD 5.8 social-sciences vs the field's LCC home in class P, a humanities-continent class). Dominant disciplinary home = social sciences (clause-6 dominant-resolution precedent, PR #41): identity Q11680831 'communication studies' live-verified as an academic discipline (P279 Q34749 social science, 26 sitelinks, enwiki 'Communication studies'), whose lead states outright 'Communication studies is a social science'; FORD 5.8 'Media and communications' sits under 5 Social Sciences. The LCC class-P placement is a shelving location (mass media historically shelved near language/journalism), recorded not forced into a co-equal §13 home (record-not-resolve; decisions (82)/(89) — do not force a minority classification signal). Permanence anchors: enwiki 'Communication studies' https://en.wikipedia.org/w/index.php?title=Communication_studies&oldid=1348110022 (rev as of QC 2026-07-02); LCC class-P outline P87-96 'Communication. Mass media' live-verified https://www.loc.gov/aba/cataloging/classification/lcco/lcco_p.pdf."
   },
   {
     "id": "edge:human-geography-part-of-social-sciences",
@@ -4806,9 +4807,11 @@
     "target": "field:anthropology",
     "relation": "part_of",
     "confidence": 0.95,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:lcc-outline"
+      "source:lcc-outline",
+      "source:wikidata",
+      "source:wikipedia"
     ],
     "evidence_kind": "externally_sourced",
     "proposed_by": {
@@ -4816,7 +4819,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "LCC GN49-298 'Physical anthropology. Somatology' inside subclass GN Anthropology (captured 2026-06-11). [UNFETCHED]: Wikidata Q27172 desc; American Association of Biological Anthropologists. Note: node is currently `proposed`."
+    "note": "B-flag resolved (2026-07-02 CPO-audit backlog re-adjudication, batch evidence-permanence-backfill-and-backlog-v1): the 2026-06 hold was a gate-scheme split (LCC GN in-continent vs UDC 572 in class 5 life-sciences). Dominant disciplinary home = anthropology (clause-6 dominant-resolution precedent): identity Q27172 'biological anthropology' live-verified (P279 Q23404 anthropology, 73 sitelinks, enwiki 'Biological anthropology'); its lead reads 'a natural science discipline concerned with the biological ... aspects of human beings ... This subfield of anthropology'. Home field = anthropology (reviewed). The natural/life-science straddle is real (the lead calls it a natural science) but a cross-domain §13 co-home to life sciences is not forced here — recorded as a future modeling option, not asserted (record-not-resolve; decisions (82)/(89)). LCC GN49-298 'Physical anthropology. Somatology' inside subclass GN Anthropology. Permanence anchor: enwiki 'Biological anthropology' https://en.wikipedia.org/w/index.php?title=Biological_anthropology&oldid=1358785311 (rev as of QC 2026-07-02)."
   },
   {
     "id": "edge:curriculum-and-instruction-part-of-education",
@@ -4939,10 +4942,12 @@
     "target": "field:media-and-communication-studies",
     "relation": "part_of",
     "confidence": 0.8,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
-      "source:oecd-ford"
+      "source:oecd-ford",
+      "source:wikidata",
+      "source:wikipedia"
     ],
     "evidence_kind": "externally_sourced",
     "proposed_by": {
@@ -4950,7 +4955,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "LCC HE8689-8700.95 'Radio and television broadcasting' and HE7601-8700.9 'Telecommunication industry' inside subclass HE under Class H (captured 2026-06-11); FORD 5.8 'Media and communications' is the parent division (captured 2026-06-11). [UNFETCHED]: Wikidata Q853710 desc; ICA Mass Communication division; NCA (National Communication Association). Note: both nodes are `proposed`."
+    "note": "Promoted with its parent field (2026-07-02 CPO-audit backlog re-adjudication, batch evidence-permanence-backfill-and-backlog-v1): both endpoints now reviewed (parent media-and-communication-studies promoted this batch). Identity Q853710 'mass communication' live-verified as an academic discipline (P31 Q11862829 + Q38786485, P279 Q11024, 45 sitelinks, enwiki 'Mass communication'). LCC HE8689-8700.95 'Radio and television broadcasting' inside subclass HE; FORD 5.8 'Media and communications' is the parent division. Permanence anchor: enwiki 'Mass communication' https://en.wikipedia.org/w/index.php?title=Mass_communication&oldid=1359741672 (rev as of QC 2026-07-02)."
   },
   {
     "id": "edge:game-theory-part-of-economics",
