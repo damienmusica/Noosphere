@@ -11324,5 +11324,99 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Ivan Sutherland is widely regarded as a pioneer/father of computer graphics -- his Sketchpad system (1963) laid several foundations of the field; he received the 1988 ACM Turing Award for Sketchpad. Sources (2 independent live-verified Wikipedia articles): 'Ivan Sutherland' (\"widely regarded as a pioneer of computer graphics ... received the 1988 ACM Turing Award for the invention of the Sketchpad ... developed several foundations of modern computer graphics\") + 'Computer graphics' (\"Ivan Sutherland's revolutionary Sketchpad software\"). Record-not-resolve: the field has multiple pioneers (e.g. the Utah school, David C. Evans); Sutherland is the canonical founding figure. Living-person v2 (decision (70)): identity Q62866 verified live (P31=Q5, P569 1938-05-16, P570 absent = living-confirmed, computer scientist), >=2 independent live claim-stating sources, conservative attributed wording, no escalation signal (technical/institutional claim only) -> policy-auto reviewed. Generator-guessed QID was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink."
+  },
+  {
+    "id": "edge:george-miller-founded-cognitive-psychology",
+    "source": "person:george-miller",
+    "target": "subfield:cognitive-psychology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "George A. Miller co-founded cognitive psychology and the cognitive revolution. Sources (2 independent live-verified Wikipedia articles): 'George Armitage Miller' (\"an American psychologist who was one of the founders of cognitive psychology, and more broadly, of cognitive science\"; co-founded the Harvard Center for Cognitive Studies with Jerome Bruner in 1960; 'The Magical Number Seven', 1956) + 'Cognitive psychology' (names Miller among the field's founding figures, 1960). Record-not-resolve plural founding: co-equal with person:ulric-neisser, whose edge:ulric-neisser-founded-cognitive-psychology note named 'George A. Miller' as a co-founder gap -- Neisser gave the field its name and 1967 synthesis; Miller supplied earlier foundational work (1956, 1960) and co-founded the first cognitive-studies center. Founding is co-equal, not exclusive. Identity Q670658 verified live (P31=Q5, P569 1920-02-03, P570 2012-07-22 deceased, psychologist, enwiki 'George Armitage Miller'). Generator-guessed QID (Q733135, an unrelated athletics delegation) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:paul-ehrlich-founded-immunology",
+    "source": "person:paul-ehrlich",
+    "target": "subfield:immunology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:nobelprize",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Paul Ehrlich co-founded immunology via the humoral (side-chain) theory of antibody formation; he shared the 1908 Nobel Prize in Physiology or Medicine with Elie Metchnikoff \"in recognition of their work on immunity\". Sources (2 independent live-verified): NobelPrize.org 1908 Physiology or Medicine (awarded jointly to \"Mechnikov and Paul Ehrlich 'in recognition of their work on immunity'\") + Wikipedia 'Paul Ehrlich' (\"has been called 'father of immunology'\"; shared the 1908 Nobel Prize with Elie Metchnikoff). Record-not-resolve plural founding: co-equal with person:elie-metchnikoff, whose edge:elie-metchnikoff-founded-immunology note named Paul Ehrlich (humoral theory, co-Nobel) as the co-founder -- Metchnikoff supplied the cellular/phagocytosis theory, Ehrlich the humoral/antibody theory. Identity Q57089 verified live (P31=Q5, P569 1854-03-14, P570 1915-08-20 deceased, physician/scientist, enwiki 'Paul Ehrlich') -- distinct from the living biologist Paul R. Ehrlich (population/environmental science). Generator-guessed QID (Q77938 = the applied mathematician William Prager) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:jan-tinbergen-founded-econometrics",
+    "source": "person:jan-tinbergen",
+    "target": "subfield:econometrics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:nobelprize",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Jan Tinbergen is one of the two founding fathers of econometrics (with Ragnar Frisch); they shared the first Nobel Memorial Prize in Economic Sciences (1969). Sources (2 independent live-verified): Wikipedia 'Econometrics' (\"Jan Tinbergen is one of the two founding fathers of econometrics. The other, Ragnar Frisch, also coined the term...\") + NobelPrize.org 1969 Economic Sciences (awarded jointly to \"Frisch and Jan Tinbergen 'for having developed and applied dynamic models for the analysis of economic processes'\"). Record-not-resolve plural founding: co-equal with person:ragnar-frisch, whose edge:ragnar-frisch-founded-econometrics note names Jan Tinbergen as the co-equal co-founder (co-Nobel). Identity Q183181 verified live (P31=Q5, P569 1903-04-12, P570 1994-06-09 deceased, economist, enwiki 'Jan Tinbergen') -- distinct from his brother Nikolaas Tinbergen (ethologist, separate 1973 Nobel in Physiology or Medicine). Generator-guessed QID (Q123280 = Francis Crick) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:george-edward-moore-founded-analytic-philosophy",
+    "source": "person:george-edward-moore",
+    "target": "subfield:analytic-philosophy",
+    "relation": "founded_or_formalized",
+    "confidence": 0.87,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "G. E. Moore is a co-principal founder of analytic philosophy, alongside Frege, Russell, and Wittgenstein. Sources (2 independent live-verified): SEP 'George Edward Moore' (\"the trinity of philosophers at Trinity College Cambridge (the others were Bertrand Russell and Ludwig Wittgenstein) who made Cambridge one of centres of what we now call 'analytical philosophy'\") + Wikipedia 'Analytic philosophy' (\"Central figures in its history include Gottlob Frege, Bertrand Russell, G. E. Moore, and Ludwig Wittgenstein\"; the narrower field \"is usually thought to begin with... Bertrand Russell and G. E. Moore's rejection of Hegelianism\"). Record-not-resolve plural founding: co-equal with person:bertrand-russell (whose edge:bertrand-russell-founded-analytic-philosophy note names 'G. E. Moore' as a co-founder), person:gottlob-frege, and person:ludwig-wittgenstein (all corpus nodes). Moore co-led the revolt against idealism with Russell; 'Principia Ethica' (1903). Identity Q295386 verified live (P31=Q5, P569 1873-11-04, P570 1958-10-24 deceased, philosopher, enwiki 'G. E. Moore'). Generator-guessed QID (Q311854 = the writer Pierre Loti) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:duncan-black-founded-social-choice-theory",
+    "source": "person:duncan-black",
+    "target": "subfield:social-choice-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.84,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Duncan Black laid the foundations of social choice theory -- the median voter theorem and 'The Theory of Committees and Elections' (1958); he is often called 'the father of social choice theory'. Sources (2 independent live-verified): Wikipedia 'Duncan Black' (\"a Scottish economist who laid the foundations of social choice theory and public choice\") + SEP 'Social Choice Theory' (names Duncan Black alongside Kenneth Arrow and Amartya Sen among the field's founding figures). Record-not-resolve plural founding: co-equal with person:kenneth-arrow (1951 axiomatic founding) and person:amartya-sen (1970 reformulation) -- Black's committee/median-voter work (from ~1948) is among the earliest; the existing edge:kenneth-arrow-founded-social-choice-theory and edge:amartya-sen-founded-social-choice-theory notes both flagged Duncan Black as a remaining record-not-resolve corpus gap, which this edge closes. Identity Q1265355 verified live (P31=Q5, P569 1908-05-23, P570 1991-01-14 deceased, economist, enwiki 'Duncan Black') -- disambiguated from other people named Duncan Black. Generator-guessed QID (Q5311021 = 'Dublin quays') was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
   }
 ]

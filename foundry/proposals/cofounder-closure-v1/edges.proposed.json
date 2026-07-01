@@ -1,0 +1,97 @@
+[
+  {
+    "id": "edge:george-miller-founded-cognitive-psychology",
+    "source": "person:george-miller",
+    "target": "subfield:cognitive-psychology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Miller co-founded the cognitive revolution and cognitive psychology: 'The Magical Number Seven' (1956) is one of the field's most-cited founding papers; co-founded the Harvard Center for Cognitive Studies (1960, with Jerome Bruner); co-authored 'Plans and the Structure of Behavior' (1960, with Galanter & Pribram), an early cognitive-science synthesis.",
+    "uncertainty": "QID for person:george-miller is an unverified guess pending live resolver confirmation; the founding claim itself is well-attested but co-equal with Neisser and the broader cognitive-revolution cohort, not a solo attribution.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected to survive live-verification: Wikipedia 'George Armitage Miller' (states Miller was 'one of the founders of cognitive psychology' and co-founded the Harvard Center for Cognitive Studies with Jerome Bruner in 1960) + Wikipedia 'Cognitive psychology' or 'Cognitive revolution' (states Miller's 1956 'Magical Number Seven' paper and 1960 'Plans and the Structure of Behavior' were foundational works of the cognitive revolution) — two independent Wikipedia articles under the single registered source:wikipedia ID, per the session #44 precedent. Record-not-resolve: this is a co-founder pairing with person:ulric-neisser, already a corpus node with edge:ulric-neisser-founded-cognitive-psychology (reviewed) — that edge's own note names 'George A. Miller (with Galanter & Pribram, 1960; co-founded the Harvard Center for Cognitive Studies)' as a co-founder gap; this edge closes that gap. Neisser gave the field its name/first textbook synthesis (1967); Miller supplied earlier foundational experimental/theoretical work (1956, 1960) and co-founded the first dedicated cognitive-studies research center. Founding is co-equal, not exclusive. QID is a generator guess; must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:paul-ehrlich-founded-immunology",
+    "source": "person:paul-ehrlich",
+    "target": "subfield:immunology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": ["source:nobelprize", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Ehrlich co-founded immunology via the humoral (side-chain) theory of antibody formation, sharing the 1908 Nobel Prize in Physiology or Medicine with Elie Metchnikoff 'in recognition of their work on immunity'.",
+    "uncertainty": "QID for person:paul-ehrlich is an unverified guess pending live resolver confirmation; the Nobel co-award and humoral-theory founding claim are well-documented and not contested in the literature surveyed.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected to survive live-verification: NobelPrize.org 1908 Physiology or Medicine prize page (states the prize was awarded jointly to Paul Ehrlich and Ilya Mechnikov 'in recognition of their work on immunity', Ehrlich specifically for the humoral/side-chain theory of antibody formation) + Wikipedia 'Paul Ehrlich' or 'Immunology' (states Ehrlich is credited alongside Metchnikoff as a founder of immunology for the humoral theory of immunity, complementing Metchnikoff's cellular/phagocyte theory). Record-not-resolve: this is a co-founder pairing with person:elie-metchnikoff, already a corpus node with edge:elie-metchnikoff-founded-immunology (reviewed) — that edge's own note names 'Paul Ehrlich (humoral theory, co-Nobel)' as the co-founder; this edge closes that gap and records Ehrlich's humoral-theory half specifically, not a claim of sole founding. QID is a generator guess; must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink) — note the identity-disambiguation risk from the unrelated living biologist Paul R. Ehrlich (population/environmental science), flagged explicitly for the orchestrator."
+  },
+  {
+    "id": "edge:jan-tinbergen-founded-econometrics",
+    "source": "person:jan-tinbergen",
+    "target": "subfield:econometrics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": ["source:nobelprize", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Tinbergen is one of the two founding fathers of econometrics (with Ragnar Frisch), sharing the first Nobel Memorial Prize in Economic Sciences (1969) 'for having developed and applied dynamic models for the analysis of economic processes'.",
+    "uncertainty": "QID for person:jan-tinbergen is an unverified guess pending live resolver confirmation; the co-founding attribution and Nobel co-award are well-documented and not contested.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected to survive live-verification: NobelPrize.org 1969 Economic Sciences prize page (states the first prize was awarded jointly to Ragnar Frisch and Jan Tinbergen 'for having developed and applied dynamic models for the analysis of economic processes') + Wikipedia 'Econometrics' (states 'Jan Tinbergen is one of the two founding fathers of econometrics. The other, Ragnar Frisch, also coined the term...'). Record-not-resolve: this is a co-founder pairing with person:ragnar-frisch, already a corpus node with edge:ragnar-frisch-founded-econometrics (reviewed) — that edge's own note names 'Jan Tinbergen is the co-equal co-founder (co-Nobel)' as the counterpart; this edge closes that explicitly-flagged gap. QID is a generator guess; must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink) — note the identity-disambiguation risk from Jan's brother Nikolaas Tinbergen (ethologist, separate 1973 Nobel in Physiology or Medicine), flagged explicitly for the orchestrator."
+  },
+  {
+    "id": "edge:george-edward-moore-founded-analytic-philosophy",
+    "source": "person:george-edward-moore",
+    "target": "subfield:analytic-philosophy",
+    "relation": "founded_or_formalized",
+    "confidence": 0.87,
+    "status": "generated",
+    "evidence": ["source:sep", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "G. E. Moore co-founded analytic philosophy alongside Frege, Russell, and Wittgenstein via the 'revolt against idealism' (with Russell), 'Principia Ethica' (1903), and 'A Defence of Common Sense' — foundational texts and arguments of the movement.",
+    "uncertainty": "QID for person:george-edward-moore is an unverified guess pending live resolver confirmation; the co-founding attribution is well-documented and explicitly corroborated by the existing Russell edge's own note, which names Moore by name.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected to survive live-verification: SEP 'Analysis' or SEP's Moore entry (analytic method traced through Frege, Russell, and Moore's rebellion against British idealism) + Wikipedia 'Bertrand Russell' (already live-verified per the canonical edge's own note: 'a founder of analytic philosophy, along with his predecessor Gottlob Frege, his friend and colleague G. E. Moore, and his student and protege Ludwig Wittgenstein') or Wikipedia 'G. E. Moore' directly. Record-not-resolve: this is a co-founder pairing with person:bertrand-russell, already a corpus node with edge:bertrand-russell-founded-analytic-philosophy (reviewed) — that edge's own note explicitly names 'G. E. Moore' (co-led the revolt against idealism) alongside person:gottlob-frege and person:ludwig-wittgenstein (both already corpus nodes) as co-founders across distinct strands. This edge closes the Moore gap specifically; it does not claim Moore is the sole founder. QID is a generator guess; must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:duncan-black-founded-social-choice-theory",
+    "source": "person:duncan-black",
+    "target": "subfield:social-choice-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.84,
+    "status": "generated",
+    "evidence": ["source:sep", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Black is widely called 'the father of social choice theory': developed the median voter theorem and wrote 'The Theory of Committees and Elections' (1958), pre-Arrow foundational work in the mathematical analysis of collective decision-making.",
+    "uncertainty": "QID for person:duncan-black is an unverified guess pending live resolver confirmation; identity-disambiguation risk from other people named Duncan Black is the primary concern, flagged ambiguous on the node for that reason (not for the founding claim itself, which is well-attested).",
+    "ambiguous": true,
+    "note": "Claim-stating sources expected to survive live-verification: SEP 'Social Choice Theory' (already live-verified per the existing edge:kenneth-arrow-founded-social-choice-theory note, which quotes SEP stating 'social choice theory took off in the 20th century with the works of Kenneth Arrow, Amartya Sen, and Duncan Black') + Wikipedia 'Duncan Black (economist)' (states Black is regarded as 'the father of social choice theory' for the median voter theorem and 'The Theory of Committees and Elections', 1958). Record-not-resolve: this closes the explicitly-flagged corpus gap named in both edge:kenneth-arrow-founded-social-choice-theory and edge:amartya-sen-founded-social-choice-theory (both reviewed, both already naming Duncan Black as 'not yet a corpus node' / 'a remaining record-not-resolve gap'). Founding is co-equal among Arrow (1951, modern axiomatic founding), Black (median voter theorem, arguably pre-dating Arrow's 1951 book in first publication ~1948), and Sen (1970, reformulation); this edge does not claim Black is the sole founder. QID is a generator guess; must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink), with particular care on identity disambiguation given the common name."
+  }
+]
