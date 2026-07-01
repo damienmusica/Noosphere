@@ -259,6 +259,68 @@ note-bearing edges such as Newton∥Leibniz, Boole∥Frege). Provenance (`propos
 - **(d)-relations** — `formalizes` (decision (54)) and `founded_or_formalized` (decisions (60)/(61)) were
   opened earlier; this rule is their 1:1 mirror.
 
+### `work`-node and `canonical_work`-edge auto-`reviewed` ladders — keep-criteria W1–W5 (decision (88))
+
+The phase-2 work layer (`work` nodes + `canonical_work` edges, first built in `work-wave1`, decision (87))
+promotes on the same **decidable, resolver-grounded** principle as the person / founder ladders. Because a
+`canonical_work` claim ("this text is *the* canonical work for this field/person") is a hard bibliographic
+fact — QID, author, and publication year are checkable against structured sources, not a contestable
+interpretive judgment — it belongs to the **(d)-family** and inherits the clause-6 v2 safety net above.
+
+**`work`-node ladder (mirror of node-promotion policy v1 / the person-node policy).** A `work` node
+auto-promotes to `reviewed` when its Wikidata QID is **resolver-verified live** and both endpoints it
+anchors are already `reviewed`:
+
+1. **P31 is a written/scholarly-work type** — e.g. *written work* (Q47461344), *literary work* (Q7725634),
+   *scientific work* (Q11826511), *academic work* (Q10383930), *treatise* (Q384515), *book* (Q571), or a
+   *scholarly / journal article* (Q13442814 / Q18918145). The guard is that the referent is a **work**, not
+   a person or concept (the Vernadsky *Biosphere* honesty-gap drop, decision (87), failed exactly here — the
+   only candidate QID was a concept, not a decidable book item).
+2. **P50 (author) matches the linked `person` endpoint's QID.**
+3. **P577 (publication year) is present** (decidable date anchor).
+4. **An enwiki sitelink exists** (identity anchor / disambiguation).
+5. **The author `person` and the `field`/`subfield` it anchors are both already `reviewed`.**
+
+**`canonical_work`-edge ladder (1:1 mirror of the (60)/(61) `founded_or_formalized` ladder).** A
+`canonical_work` edge auto-promotes `proposed → reviewed` when **both endpoints are `reviewed`** and the
+Lane B pipeline returns **supported** (≥2 independent claim-stating sources live-fetched and verbatim-checked
++ adversarial perspective-diverse QC + **direction correct** + identity referent verified). `disputed` / NEI
+/ reject stop at `proposed` / stay in foundry (clause-6 v2). **Direction is fixed by the taxonomy** —
+"Work A is canonical for a field, person, or concept B" ⇒ the `work` is **always the `source`**; a
+`person → canonical_work → work` edge is definitionally wrong and `work → part_of → field` is a category
+error (a work is not a subfield). Per work, the canonical triangle is **two edges** —
+`work → canonical_work → field` **and** `work → canonical_work → person` (both are taxonomy-permitted targets;
+not double-counting). **★ Living-author guard:** a work is a neutral artifact (usually low-risk), but when
+its author `is_living_person: true`, run the living-person handling standing policy (below) signal check on
+the author endpoint; the edge/node still auto-promotes only on a clause-6 v2 *supported* verdict with no
+escalation signal.
+
+**keep-criteria W1–W5 (what admits a `work` candidate at all — edge-demand-based, not "every famous book").**
+These earn a work its place in the corpus; a candidate failing any of them stays out or in foundry:
+
+- **W1 — edge-demand founded.** Only foundational / watershed texts that connect to an **existing
+  `reviewed`** person *and* field. Not "all famous works": the corpus admits a work because it completes a
+  person↔work↔field triangle already anchored on both ends (the [literature-boundary rule](../CLAUDE.md),
+  decision (86), is the companion filter — a work enters at the idea boundary because it earns a knowledge
+  connection, not as literature-as-art).
+- **W2 — QID + publication year, decidable.** The work has a Wikidata QID and a P577 date, both
+  live-verifiable (no interpretive judgment needed to admit it).
+- **W3 — author and field both `reviewed`.** Both endpoints exist and are already promoted.
+- **W4 — work-node QID-resolver-verified → auto-`reviewed`** per the work-node ladder above (mirror of node
+  policy v1).
+- **W5 — `canonical_work` direction = work → {field, person}**, with live multi-signal QC (the edge ladder
+  above).
+
+**Earned by measurement, not asserted.** Opened after the `work-wave1` pilot (decision (87)) returned
+**precision 1.0 (18/18 supported)**, **generator-QID-hallucination catch 100% (9/9 caught and corrected)**,
+**rejection-probe 2/2** (Origin→Wallace mis-attribution, Principia→evolutionary-biology anachronism, both
+rejected), **direction 18/18**, and **hallucination 0** — the same bar that earned the founder ladder
+(decision (59), precision 1.0 at N=20). This is the 1:1 mirror of the (54) `formalizes`, (60)/(61)
+`founded_or_formalized`, and (68) (a)-relation ladders. The generator hallucinates work QIDs at the same
+rate as person QIDs (9/9 in the pilot), so the **separated-generation + independent live-verification
+contract is the load-bearing safety mechanism regardless of ladder state** — the ladder cannot launder a
+generator hallucination into `/data` because promotion re-verifies every QID live.
+
 ### Living-person handling — standing policy (vault decision (70), 2026-06-30)
 
 The risk axis for a living person is **claim type × source authority × contention — not aliveness.** This
