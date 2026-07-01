@@ -277,9 +277,30 @@ anchors are already `reviewed`:
    a person or concept (the Vernadsky *Biosphere* honesty-gap drop, decision (87), failed exactly here — the
    only candidate QID was a concept, not a decidable book item).
 2. **P50 (author) matches the linked `person` endpoint's QID.**
-3. **P577 (publication year) is present** (decidable date anchor).
-4. **An enwiki sitelink exists** (identity anchor / disambiguation).
+3. **A decidable publication year** — P577 present, **or** an uncontested publication year confirmed live
+   from a sitelinked/authoritative source (the year is a *decidability* anchor, not necessarily a Wikidata
+   field).
+4. **A canonical-identity anchor — at least one of:** (a) a sitelink on **any** Wikipedia; **or** (b) P50
+   author-match + a decidable year (criterion 3) + work-type P31 + exact-title match **on a
+   substantively-populated item** — not a bare import stub, i.e. carrying an author plus a publication
+   anchor (journal/`P1433`, DOI, or a library/authority identifier) and materially more than the minimum.
 5. **The author `person` and the `field`/`subfield` it anchors are both already `reviewed`.**
+
+> **Criteria 3–4 revised — decision (89), same phase as (88).** The original (88) wording required P577
+> *present* **and** an **enwiki** sitelink. work-wave2 (session #48) surfaced 3 identity-decidable canonical
+> works the enwiki-only rule wrongly excluded: **Turing "On Computable Numbers" (1936, Q20895949)** — 0
+> sitelinks *only because* enwiki documents the paper under the differently-titled article "Turing's proof",
+> though the item carries 23 properties incl. P50=Turing, P577=1936, and P1433=Proc. LMS; **Arrow "Social
+> Choice and Individual Values" (Q4227976)** — sitelinked in 6 languages incl. enwiki, missing only P577
+> (year 1951 uncontested); **Wundt "Grundzüge der physiologischen Psychologie" (1874, Q2883810)** —
+> sitelinked on es/it Wikipedia, missing enwiki + P577. Analysis showed the enwiki-sitelink adds no unique
+> safety: the *wrong-referent* failure mode is already caught by P31=work-type + P50=author (the Vernadsky
+> *Biosphere* drop failed there), the *duplicate/version* mode by P577 + exact-title (Turing's 1936 paper was
+> correctly distinguished from its 1938 correction and Church's review), and the only residual — a
+> non-canonical bibliographic-stub duplicate — is caught by the substantively-populated check plus the
+> orchestrator's manual verification. "enwiki-only" was also anglocentric and defeated by Wikipedia's
+> article-titling. The revision preserves the anchor's *purpose* (canonical identity) without the arbitrary
+> enwiki requirement.
 
 **`canonical_work`-edge ladder (1:1 mirror of the (60)/(61) `founded_or_formalized` ladder).** A
 `canonical_work` edge auto-promotes `proposed → reviewed` when **both endpoints are `reviewed`** and the

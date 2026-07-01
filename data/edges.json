@@ -12554,5 +12554,113 @@
       "proposed_at": "2026-07-01"
     },
     "note": "\"On Crimes and Punishments\" (1764) is Cesare Beccaria's canonical/defining work (author, Wikidata P50=Q223723). Note: first published anonymously in 1764; authorship is undisputed and recorded on Wikidata (generator flagged the anonymous-publication nuance — recorded, not disqualifying). Grounding: 2 independent live Wikipedia articles ('On Crimes and Punishments' + 'Cesare Beccaria'). Identity Q2755269 live-verified (P31 literary work, P50 Q223723, P577 1764, enwiki sitelink); generator QID Q1053526 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:on-computable-numbers-canonical-work-computability-theory",
+    "source": "work:on-computable-numbers",
+    "target": "subfield:computability-theory",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"On Computable Numbers, with an Application to the Entscheidungsproblem\" (Alan Turing, 1936) is the canonical founding paper of computability theory — it introduced the Turing machine and proved the undecidability of the Entscheidungsproblem. Grounding: 2 independent live sources (Wikipedia 'Turing machine' / 'Computability theory' + the paper's role). Identity Q20895949 live-verified (P31 Q13442814 scholarly article, P50 Q7251 Turing, P577 1936, P1433 Q6087100 Proc. LMS; 23 properties — not a stub). Identity anchor (b) per decision (89): the paper has 0 Wikipedia sitelinks only because enwiki documents it under the differently-titled article 'Turing's proof' (the concept item Q7854954 was rejected — P31 not a work). Generator QID Q1798463 corrected. Held at proposed in work-wave2 under the enwiki-only rule; promoted after criterion revision (decision (89))."
+  },
+  {
+    "id": "edge:on-computable-numbers-canonical-work-alan-turing",
+    "source": "work:on-computable-numbers",
+    "target": "person:alan-turing",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"On Computable Numbers\" (1936) is Alan Turing's canonical/defining work (author, Wikidata P50=Q7251). Grounding: 2 independent live Wikipedia articles ('On Computable Numbers'/'Turing's proof' + 'Alan Turing'). Identity Q20895949 live-verified (P31 scholarly article, P50 Q7251, P577 1936, P1433 Proc. LMS, 23 properties); identity anchor (b) per decision (89). Generator QID Q1798463 corrected. Promoted after the (89) criterion revision."
+  },
+  {
+    "id": "edge:social-choice-and-individual-values-canonical-work-social-choice-theory",
+    "source": "work:social-choice-and-individual-values",
+    "target": "subfield:social-choice-theory",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"Social Choice and Individual Values\" (Kenneth Arrow, 1951) is the canonical founding text of social choice theory — its lead states the monograph 'and a theorem within it created modern social choice theory'. Grounding: 2 independent live Wikipedia articles ('Social Choice and Individual Values' + 'Social choice theory'). Identity Q4227976 live-verified (P31 Q47461344 written work, P50 Q192592 Arrow, sitelinked in 6 languages incl. enwiki); year 1951 uncontested (P577 absent on Wikidata — decidable-year via sitelinked source, decision (89) criterion 3). Generator QID Q7554466 corrected. Held at proposed in work-wave2 for missing P577; promoted after the (89) criterion revision."
+  },
+  {
+    "id": "edge:social-choice-and-individual-values-canonical-work-kenneth-arrow",
+    "source": "work:social-choice-and-individual-values",
+    "target": "person:kenneth-arrow",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"Social Choice and Individual Values\" (1951) is Kenneth Arrow's canonical/defining work (author, Wikidata P50=Q192592). Grounding: 2 independent live Wikipedia articles ('Social Choice and Individual Values' + 'Kenneth Arrow'). Identity Q4227976 live-verified (P31 written work, P50 Q192592, 6-language sitelinks); year 1951 uncontested (decision (89) criterion 3). Generator QID Q7554466 corrected. Promoted after the (89) criterion revision."
+  },
+  {
+    "id": "edge:principles-of-physiological-psychology-canonical-work-experimental-psychology",
+    "source": "work:principles-of-physiological-psychology",
+    "target": "subfield:experimental-psychology",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"Principles of Physiological Psychology\" (Grundzüge der physiologischen Psychologie, Wilhelm Wundt, 1874) is a canonical founding text of experimental psychology — the enwiki 'Wilhelm Wundt' article states it 'was the first textbook that was written pertaining to the field of experimental psychology'. (Wundt's 1879 Leipzig laboratory is the institutional founding act; this book is the founding text.) Grounding: 2 independent live sources (Wikipedia 'Wilhelm Wundt' + 'Experimental psychology'). Identity Q2883810 live-verified (P31 Q47461344 written work, P50 Q75814 Wundt; sitelinked on es/it Wikipedia); year 1874 uncontested (P577 absent — decidable-year via source, decision (89) criterion 3); identity anchor (a) non-enwiki sitelink + (b) P50+title. Generator QID Q1974779 corrected. Held at proposed in work-wave2 for missing enwiki sitelink + P577; promoted after the (89) criterion revision."
+  },
+  {
+    "id": "edge:principles-of-physiological-psychology-canonical-work-wilhelm-wundt",
+    "source": "work:principles-of-physiological-psychology",
+    "target": "person:wilhelm-wundt",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"Principles of Physiological Psychology\" (1874) is Wilhelm Wundt's canonical/defining work (author, Wikidata P50=Q75814). Grounding: 2 independent live Wikipedia articles ('Wilhelm Wundt' + 'Experimental psychology'). Identity Q2883810 live-verified (P31 written work, P50 Q75814, es/it sitelinks); year 1874 uncontested (decision (89) criterion 3). Generator QID Q1974779 corrected. Promoted after the (89) criterion revision."
   }
 ]

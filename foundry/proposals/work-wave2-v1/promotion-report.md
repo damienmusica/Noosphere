@@ -70,6 +70,32 @@ introduced. Living endpoints: 0 (all 5 authors deceased). typecheck ✓ validate
 Nodes 560→565 · edges 666→676 · translations →565 · work 9→14 · canonical_work 18→28.
 
 ## Measurement
-Promoted: **10 supported / 0 disputed / 0 NEI; claim hallucination 0.** Ladder discrimination:
+Promoted (initial): **10 supported / 0 disputed / 0 NEI; claim hallucination 0.** Ladder discrimination:
 held 3 (criterion-short), dropped 1 (undecidable), rejected 2 (probes) — the criteria bite. First
 application of the open ladder surfaced 1 policy-refinement question (sitelink substitutability).
+
+## ★ Follow-up — decision (89), same session (CPO-ratified criterion revision + 3 held items promoted)
+The CPO challenged the hold: was there any *researched* safety reason to require an enwiki sitelink, or
+was it reflexive rule-following? Live research on the 3 held items showed **no unique protective value**:
+the *wrong-referent* mode is caught by P31=work-type + P50 (Vernadsky *Biosphere* failed there), the
+*duplicate/version* mode by P577 + exact-title (Turing's 1936 paper was correctly separated from its 1938
+correction + Church's review), and the only residual (a bibliographic-stub duplicate) is excluded here —
+Turing Q20895949 carries **23 properties** incl. DOI + P1433 Proc. LMS; Arrow Q4227976 is **sitelinked in
+6 languages** (incl. enwiki — it was held only for a missing P577, year 1951 uncontested); Wundt Q2883810
+is **sitelinked on es/it Wikipedia** + P50-pinned. "enwiki-only" was also anglocentric. §8 criteria 3–4
+were revised (decision (89)): year decidable via P577 **or** an uncontested sitelinked-source year; identity
+anchor = **any**-Wikipedia sitelink **or** P50+year+work-type+exact-title on a substantively-populated item.
+
+**Promoted `reviewed` → `/data` (3 works + 6 edges), all supported + endpoints reviewed + deceased:**
+- **On Computable Numbers** (Turing, 1936, Q20895949) → computability-theory + Turing. Founding paper of
+  computability (Turing machine). Note: Wikidata description mislabels it "master's thesis" — P1433=Proc. LMS
+  confirms it is the published paper; identity unaffected.
+- **Social Choice and Individual Values** (Arrow, 1951, Q4227976) → social-choice-theory + Arrow. Lead:
+  "created modern social choice theory."
+- **Principles of Physiological Psychology** (Wundt, 1874, Q2883810) → experimental-psychology + Wundt.
+  enwiki 'Wilhelm Wundt': "the first textbook … pertaining to the field of experimental psychology."
+
+Snow remains dropped (P50 undecidable — the (89) revision does not rescue it; correctly so).
+
+**Final batch tally: 8 works + 16 canonical_work edges promoted `reviewed`; 1 drop (Snow); 2 reject probes.**
+Additive-only (+126 ins / 0 del for the 3-item follow-up). typecheck ✓ validate ✓.
