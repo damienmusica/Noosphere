@@ -11418,5 +11418,77 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Duncan Black laid the foundations of social choice theory -- the median voter theorem and 'The Theory of Committees and Elections' (1958); he is often called 'the father of social choice theory'. Sources (2 independent live-verified): Wikipedia 'Duncan Black' (\"a Scottish economist who laid the foundations of social choice theory and public choice\") + SEP 'Social Choice Theory' (names Duncan Black alongside Kenneth Arrow and Amartya Sen among the field's founding figures). Record-not-resolve plural founding: co-equal with person:kenneth-arrow (1951 axiomatic founding) and person:amartya-sen (1970 reformulation) -- Black's committee/median-voter work (from ~1948) is among the earliest; the existing edge:kenneth-arrow-founded-social-choice-theory and edge:amartya-sen-founded-social-choice-theory notes both flagged Duncan Black as a remaining record-not-resolve corpus gap, which this edge closes. Identity Q1265355 verified live (P31=Q5, P569 1908-05-23, P570 1991-01-14 deceased, economist, enwiki 'Duncan Black') -- disambiguated from other people named Duncan Black. Generator-guessed QID (Q5311021 = 'Dublin quays') was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:moritz-schlick-member-of-vienna-circle",
+    "source": "person:moritz-schlick",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.97,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-4-8",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Moritz Schlick founded and chaired the Vienna Circle -- he convened and led the group that met at the University of Vienna from 1924 to 1936. Sources (2 independent live-verified Wikipedia articles): 'Vienna Circle' (\"a group of philosophers and scientists ... who met regularly from 1924 to 1936 at the University of Vienna, chaired by Moritz Schlick\") + 'Moritz Schlick' (\"the founding father of logical positivism and the Vienna Circle\"). Schlick is both founder/chair and a member; recorded as member_of with the founding/leadership role noted. First use of the member_of relation (added this session under the movement-axis rule, decision (73)). Both endpoints reviewed."
+  },
+  {
+    "id": "edge:rudolf-carnap-member-of-vienna-circle",
+    "source": "person:rudolf-carnap",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-4-8",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Rudolf Carnap was a member of the Vienna Circle -- brought to the University of Vienna in 1926 at Schlick's arrangement, he became one of its central figures. Sources (2 independent live-verified Wikipedia articles): 'Rudolf Carnap' (school tradition 'Vienna Circle'; \"In 1926 Schlick and Hahn arranged to bring Rudolf Carnap to the University of Vienna\") + 'Vienna Circle'. Both endpoints reviewed."
+  },
+  {
+    "id": "edge:otto-neurath-member-of-vienna-circle",
+    "source": "person:otto-neurath",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-4-8",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Otto Neurath was a member of the Vienna Circle -- 'one of the leading figures' of the group. Sources (2 independent live-verified Wikipedia articles): 'Otto Neurath' (\"one of the leading figures of the Vienna Circle\") + 'Vienna Circle' (Neurath among those who promoted the Circle). Both endpoints reviewed."
+  },
+  {
+    "id": "edge:vienna-circle-formalized-logical-positivism",
+    "source": "institution:vienna-circle",
+    "target": "concept:logical-positivism",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-4-8",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "The Vienna Circle collectively formulated logical positivism (logical empiricism) -- the doctrine that is the group's defining intellectual product. Sources (2 independent live-verified Wikipedia articles): 'Vienna Circle' (\"The Vienna Circle ... of logical empiricism\") + 'Moritz Schlick' (\"the founding father of logical positivism and the Vienna Circle\"). Record-not-resolve: the individual members Schlick/Carnap/Neurath each also carry founded_or_formalized -> concept:logical-positivism (their individual edges); this edge records the collective vehicle (the group as institution) distinct from the individual founders. This realizes the movement-axis rule (decision (73)): the institution (group) node links to the concept (doctrine) node it produced, tying the Vienna Circle into the skeleton (logical-positivism part_of analytic-philosophy). Both endpoints reviewed."
   }
 ]
