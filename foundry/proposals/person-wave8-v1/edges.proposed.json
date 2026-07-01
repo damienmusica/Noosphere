@@ -1,0 +1,192 @@
+[
+  {
+    "id": "edge:ernst-haeckel-founded-ecology",
+    "source": "person:ernst-haeckel",
+    "target": "subfield:ecology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Haeckel coined the term 'ecology' (Oekologie) in 1866 and defined its founding conceptual scope; the standard single-coiner attribution for the field's name and origin.",
+    "uncertainty": "QID for person:ernst-haeckel is an unverified guess pending live resolver confirmation; founding is genuinely plural, reflected in the ambiguous flag on the node.",
+    "ambiguous": true,
+    "note": "Claim-stating sources expected: Wikipedia's 'Ernst Haeckel' biography article (states Haeckel coined the term Oekologie in 'Generelle Morphologie der Organismen', 1866) and Wikipedia's 'Ecology' field article (credits Haeckel with coining/defining the term and founding concept) — two independent Wikipedia articles per the session #34 precedent, both to be live-verified by the orchestrator. Record-not-resolve: Eugenius Warming is a genuine co-founder for plant ecology specifically, via his 1895 'Oecology of Plants', the first systematic ecology textbook and teaching synthesis of the field; this edge records Haeckel's terminological/conceptual founding, not a sole-founder claim. QID is a generator guess (Q57235); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:rene-just-hauy-founded-crystallography",
+    "source": "person:rene-just-hauy",
+    "target": "subfield:crystallography",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Hauy's law of rational indices, derived from systematic study of crystal cleavage, established the mathematical/structural basis of crystallography; standard 'father of crystallography' attribution.",
+    "uncertainty": "QID for person:rene-just-hauy is an unverified guess pending live resolver confirmation; founding attribution itself is a clean single-founder consensus.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Rene Just Hauy' biography article (states Hauy is 'widely considered' or commonly termed 'the father of crystallography', credits the law of rational indices) and Wikipedia's 'Crystallography' field article (credits Hauy's early systematic theoretical contribution). Record-not-resolve: Nicolas Steno's 1669 law of constancy of interfacial angles is a genuine empirical forerunner predating Hauy's systematic mathematical theory by over a century; this edge records Hauy's theoretical/structural founding specifically, not a claim that crystallographic observation began with him. QID is a generator guess (Q116565); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:john-milne-founded-seismology",
+    "source": "person:john-milne",
+    "target": "subfield:seismology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Milne developed the horizontal-pendulum seismograph and founded the Seismological Society of Japan, establishing systematic instrumental seismology; standard 'father of modern seismology' attribution.",
+    "uncertainty": "QID for person:john-milne is an unverified guess pending live resolver confirmation; 'John Milne' is a common name requiring careful identity disambiguation, and founding is genuinely plural, both reflected in the ambiguous flag on the node.",
+    "ambiguous": true,
+    "note": "Claim-stating sources expected: Wikipedia's 'John Milne' biography article (states Milne is 'known as the father of modern seismology', developed the horizontal-pendulum seismograph, founded the Seismological Society of Japan in 1880) and Wikipedia's 'Seismology' or 'History of seismology' article (credits Milne's instrumental/institutional founding role). Record-not-resolve: this is the 'British seismology in Japan' trio — James Alfred Ewing and Thomas Gray co-developed the horizontal-pendulum seismograph alongside Milne during their shared tenure at the Imperial College of Engineering, Tokyo, in the late 1870s-1880s; this edge records Milne's specific (and most institutionally prominent/durable) founding role, not a sole-inventor claim. IDENTITY CAUTION: 'John Milne' is a common English name; orchestrator must confirm the resolved QID matches the mining engineer/seismologist (1850-1913, Liverpool-born, worked in Japan then Isle of Wight), not another historical John Milne. QID is a generator guess (Q713434); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:john-graunt-founded-demography",
+    "source": "person:john-graunt",
+    "target": "subfield:demography",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Graunt's 1662 'Natural and Political Observations ... upon the Bills of Mortality' is the first systematic statistical analysis of population/mortality data, the founding work of demography.",
+    "uncertainty": "QID for person:john-graunt is an unverified guess with lower confidence than most rows in this batch (sparser modern biographical coverage); founding claim itself is a clean single-founder consensus for demography specifically.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'John Graunt' biography article (states Graunt is 'generally regarded as the founder of demography' or 'the first demographer', author of the 1662 'Bills of Mortality' study) and Wikipedia's 'Demography' field article (credits Graunt's 1662 work as the field's founding statistical study). Record-not-resolve: William Petty is sometimes named as a close collaborator/co-developer of 'political arithmetick', the broader statistical tradition Graunt's work sits within; some historiography also credits Graunt as a co-founder of vital statistics and an early contributor to epidemiology's data-analytic roots (distinct from Snow's later causal-investigation founding of epidemiology proper, also in this batch). This edge records Graunt's demography-founding specifically. QID is a generator guess (Q721755) with LOWER confidence than other rows in this batch — prioritize live verification; must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:john-snow-founded-epidemiology",
+    "source": "person:john-snow",
+    "target": "subfield:epidemiology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.92,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Snow's 1854 Broad Street cholera investigation established the methodology of field epidemiology and disease-mapping; standard 'father of modern epidemiology' attribution.",
+    "uncertainty": "QID for person:john-snow is an unverified guess pending live resolver confirmation; 'John Snow' is an extremely common name requiring careful identity disambiguation, reflected in the ambiguous flag on the node.",
+    "ambiguous": true,
+    "note": "Claim-stating sources expected: Wikipedia's 'John Snow' biography article (states Snow is 'considered one of the founders of' or 'the father of modern epidemiology', describes the 1854 Broad Street pump investigation) and Wikipedia's 'Epidemiology' field article (credits Snow's methodological founding of field epidemiology). Record-not-resolve: none needed for the founding claim itself — clean single-founder consensus for epidemiology's causal-investigative methodology (distinct from Graunt's earlier demographic/statistical data-analytic contribution, also in this batch, which some histories treat as a shared root rather than a rival founding claim). IDENTITY CAUTION: 'John Snow' is an extremely common English name, including a well-known contemporary British journalist/newsreader and the unrelated 'Game of Thrones' character; orchestrator must confirm the resolved QID matches the 19th-century physician/anaesthetist (1813-1858, London). QID is a generator guess (Q131691); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:oswald-schmiedeberg-founded-pharmacology",
+    "source": "person:oswald-schmiedeberg",
+    "target": "field:pharmacology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Schmiedeberg founded the first dedicated pharmacology institute (Strasbourg, 1872) and co-founded the field's foundational journal, training a generation of pharmacologists; standard 'father of modern pharmacology' attribution.",
+    "uncertainty": "QID for person:oswald-schmiedeberg is an unverified guess pending live resolver confirmation; founding attribution itself is a clean single-founder consensus for the institutional/experimental founding.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Oswald Schmiedeberg' biography article (states Schmiedeberg is 'often called the father of modern pharmacology' or the founder of experimental pharmacology, founded the Strasbourg pharmacology institute in 1872 and co-founded Archiv fur experimentelle Pathologie und Pharmakologie) and Wikipedia's 'Pharmacology' field article (credits Schmiedeberg's institutional founding role). Record-not-resolve: pharmacology has older roots in materia medica and pharmacognosy (drug-lore/herbalism traditions) that predate Schmiedeberg by centuries; this edge records his specific founding of pharmacology as an experimental, institution-based scientific discipline, not a claim that no one studied drugs before him. QID is a generator guess (Q71186); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:emil-kraepelin-founded-psychiatry",
+    "source": "person:emil-kraepelin",
+    "target": "field:psychiatry",
+    "relation": "founded_or_formalized",
+    "confidence": 0.87,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Kraepelin's systematic classification of mental disorders founded modern scientific/nosological psychiatry, grounding diagnosis in longitudinal clinical observation.",
+    "uncertainty": "QID for person:emil-kraepelin is an unverified guess pending live resolver confirmation; founding is genuinely plural, reflected in the ambiguous flag on the node.",
+    "ambiguous": true,
+    "note": "Claim-stating sources expected: Wikipedia's 'Emil Kraepelin' biography article (states Kraepelin is 'considered the founder of modern scientific psychiatry, as well as of psychopharmacology and psychiatric genetics') and Wikipedia's 'Psychiatry' field article (credits Kraepelin's classification system as foundational to modern psychiatric nosology). Record-not-resolve: Philippe Pinel's moral-treatment reform (~1793, humane asylum reform predating biological/nosological psychiatry) and Wilhelm Griesinger's biological/somatic framing (~1845, 'mental diseases are diseases of the brain') both predate and feed into Kraepelin's classificatory synthesis; this edge records Kraepelin's specific founding of the modern diagnostic-nosological discipline, not a claim that psychiatric practice began with him. QID is a generator guess (Q60815); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:ernst-chladni-founded-acoustics",
+    "source": "person:ernst-chladni",
+    "target": "subfield:acoustics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.89,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Chladni's technique for visualizing vibration modes (Chladni figures) and his 1787 treatise established experimental acoustics as a discipline; standard 'father of acoustics' attribution.",
+    "uncertainty": "QID for person:ernst-chladni is an unverified guess pending live resolver confirmation; founding attribution itself is a clean single-founder consensus.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Ernst Chladni' biography article (states Chladni is 'sometimes labeled as the father of acoustics', developed the technique of Chladni figures and published 'Die Akustik'/'Entdeckungen uber die Theorie des Klanges') and Wikipedia's 'Acoustics' field article (credits Chladni's experimental/foundational contribution). Record-not-resolve: none needed — clean single-founder consensus for experimental/physical acoustics specifically (music-theoretical treatments of sound predate Chladni but are not treated as founding the scientific discipline). QID is a generator guess (Q76357); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:mathieu-orfila-founded-toxicology",
+    "source": "person:mathieu-orfila",
+    "target": "subfield:toxicology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.89,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Orfila's 1813 'Traite des poisons' systematized the detection and classification of poisons, founding toxicology as a distinct medico-legal science; standard 'father of (forensic) toxicology' attribution.",
+    "uncertainty": "QID for person:mathieu-orfila is an unverified guess pending live resolver confirmation; founding attribution itself is a clean single-founder consensus.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Mathieu Orfila' biography article (states Orfila is 'considered the father of toxicology' and describes the 1813 'Traite des poisons' as the field's founding systematic treatise) and Wikipedia's 'Toxicology' field article (credits Orfila's founding contribution, sometimes specifically 'forensic toxicology'). Record-not-resolve: Paracelsus's 16th-century dose-response principle ('the dose makes the poison') is a genuine philosophical/conceptual forerunner but predates the systematic scientific-medical discipline Orfila established; this edge records Orfila's disciplinary founding, not a claim that no one thought about poisons before him. QID is a generator guess (Q464889); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:victor-moritz-goldschmidt-founded-geochemistry",
+    "source": "person:victor-moritz-goldschmidt",
+    "target": "subfield:geochemistry",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Goldschmidt's systematic study of element distribution and crystal chemistry (Goldschmidt's rules) synthesized crystallography, mineralogy, and cosmochemistry into modern geochemistry; standard 'founder of modern geochemistry' attribution.",
+    "uncertainty": "QID for person:victor-moritz-goldschmidt is an unverified guess pending live resolver confirmation; this is the highest identity-disambiguation risk in the batch (father/son name collision) and founding is genuinely plural, both reflected in the ambiguous flag on the node.",
+    "ambiguous": true,
+    "note": "Claim-stating sources expected: Wikipedia's 'Victor Moritz Goldschmidt' biography article (states he is 'considered the founder of modern geochemistry (and also of crystal chemistry)', formulated Goldschmidt's rules/tolerance factor for ionic substitution) and Wikipedia's 'Geochemistry' field article (credits Goldschmidt's founding synthesis). Record-not-resolve: Vladimir Vernadsky's independent biogeochemistry/Earth-systems tradition (developed roughly contemporaneously in Russia/Ukraine, emphasizing the biosphere's role in elemental cycling) and F. W. Clarke's earlier elemental-abundance compilation work (US Geological Survey, sometimes called 'the father of geochemistry' in American historiography) both run parallel to or predate Goldschmidt's synthesis; this edge records Goldschmidt's specific quantitative crystal-chemical founding contribution, not a claim of sole global priority. **CRITICAL IDENTITY CAUTION**: Victor MORITZ Goldschmidt (1888-1947, Norwegian, the geochemist) must not be confused with his father Victor MORDECHAI Goldschmidt (1853-1933), also a crystallographer with his own Wikidata entry and publication record on crystal morphology/goniometry — a genuine father/son name collision risk. Orchestrator must verify the resolved QID's P569/P570 dates (1888-1947) and occupation/field match the geochemist son specifically. QID is a generator guess (Q71805); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink), with explicit father/son disambiguation as a mandatory extra check beyond the standard identity floor."
+  }
+]
