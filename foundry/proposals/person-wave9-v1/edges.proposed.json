@@ -1,0 +1,135 @@
+[
+  {
+    "id": "edge:andreas-vesalius-founded-anatomy",
+    "source": "person:andreas-vesalius",
+    "target": "subfield:anatomy",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Vesalius's 1543 'De Humani Corporis Fabrica', grounded in direct human dissection rather than inherited Galenic authority, is the founding treatise of modern anatomy as an observational science.",
+    "uncertainty": "QID for person:andreas-vesalius is an unverified guess pending live resolver confirmation; founding attribution itself is a clean single-founder consensus.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Andreas Vesalius' biography article (states Vesalius is 'considered the founder of modern human anatomy', author of 'De Humani Corporis Fabrica', 1543) and Wikipedia's 'Anatomy' field article (credits Vesalius's dissection-based work as founding modern anatomical science). Record-not-resolve: none needed for the founding claim itself — Galen's anatomy (2nd century CE, based on animal dissection due to Roman prohibitions on human dissection) is a superseded predecessor tradition that Vesalius's work explicitly corrected and displaced, not a rival founding of the modern discipline. QID is a generator guess (Q57235); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:carl-linnaeus-founded-systematics",
+    "source": "person:carl-linnaeus",
+    "target": "subfield:systematics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Linnaeus's binomial nomenclature and hierarchical classification system, formalized in 'Systema Naturae' (1735), established the methodological foundation of systematics; standard 'father of modern taxonomy' attribution.",
+    "uncertainty": "QID for person:carl-linnaeus is an unverified guess pending live resolver confirmation; founding is genuinely plural (systematics broadened well beyond Linnaean taxonomy), reflected in the ambiguous flag on the node.",
+    "ambiguous": true,
+    "note": "Claim-stating sources expected: Wikipedia's 'Carl Linnaeus' biography article (states Linnaeus is 'the father of modern taxonomy', formalized binomial nomenclature in 'Systema Naturae', 1735) and Wikipedia's 'Systematics' (or 'Taxonomy (biology)') field article (credits Linnaeus's classification system as the methodological foundation). Record-not-resolve: systematics as a discipline broadened substantially beyond Linnaean rank-based taxonomy in the 20th century, most consequentially via Willi Hennig's cladistics/phylogenetic systematics (grouping by shared derived characters and evolutionary descent), which is now the dominant methodological paradigm in the field; this edge records Linnaeus's foundational methodological contribution (naming and hierarchical classification), not a claim that modern systematics is unchanged from his framework. QID is a generator guess (Q1043); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:james-hutton-founded-geology",
+    "source": "person:james-hutton",
+    "target": "subfield:geology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.87,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Hutton's theory of uniformitarianism, presented in 'Theory of the Earth' (1788), founded geology as a science based on observable natural processes rather than scriptural chronology; standard 'Father of Modern Geology' attribution.",
+    "uncertainty": "QID for person:james-hutton is an unverified guess pending live resolver confirmation; founding is genuinely plural (Lyell's later popularization/systematization), reflected in the ambiguous flag on the node.",
+    "ambiguous": true,
+    "note": "Claim-stating sources expected: Wikipedia's 'James Hutton' biography article (states Hutton is 'often referred to as the father of modern geology', developed the theory of uniformitarianism in 'Theory of the Earth', 1788) and Wikipedia's 'Geology' field article (credits Hutton's uniformitarian theory as foundational to the modern discipline). Record-not-resolve: Charles Lyell popularized and systematized uniformitarianism decades later in 'Principles of Geology' (1830-1833), and it is Lyell's more accessible, widely-read synthesis that is often credited with making uniformitarianism the working consensus of the scientific community (including influencing Darwin); this edge records Hutton's original theoretical founding, not a claim that Lyell's contribution was merely derivative. QID is a generator guess (Q193621); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:karl-ernst-von-baer-founded-developmental-biology",
+    "source": "person:karl-ernst-von-baer",
+    "target": "subfield:developmental-biology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Von Baer's discovery of the mammalian ovum and formulation of von Baer's laws of embryonic development established the empirical and conceptual basis of embryology, developmental biology's historical core; standard 'founding father of embryology' attribution.",
+    "uncertainty": "QID for person:karl-ernst-von-baer is an unverified guess pending live resolver confirmation; founding attribution itself is a clean single-founder consensus for embryology specifically.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Karl Ernst von Baer' biography article (states von Baer is 'known as the founding father of embryology', discovered the mammalian ovum in 1826 and formulated von Baer's laws) and Wikipedia's 'Developmental biology' (or 'Embryology') field article (credits von Baer's foundational contribution to the study of embryonic development). Record-not-resolve: 'developmental biology' as a modern node label denotes a field that has broadened beyond von Baer's descriptive-comparative embryology to include molecular and genetic mechanisms (20th-century onward); this edge records von Baer's founding of the field's historical core (embryology), not a claim that the discipline's later molecular expansion originates with him. QID is a generator guess (Q57262); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:william-morris-davis-founded-geomorphology",
+    "source": "person:william-morris-davis",
+    "target": "subfield:geomorphology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Davis's 'geographical cycle' (cycle of erosion) model gave landform study its first coherent, widely-adopted theoretical framework, founding geomorphology as a systematic discipline; grounded on the 'Geomorphology' field article specifically, not his broader 'father of American geography' epithet.",
+    "uncertainty": "QID for person:william-morris-davis is an unverified guess pending live resolver confirmation; founding is genuinely plural (Gilbert/Powell co-founders of American geomorphology), reflected in the ambiguous flag on the node.",
+    "ambiguous": true,
+    "note": "Claim-stating sources expected: Wikipedia's 'William Morris Davis' biography article (states Davis founded the 'geographical cycle'/'cycle of erosion' model and is credited as a founder of the discipline of geomorphology, though the article's broader framing calls him 'father of American geography') and Wikipedia's 'Geomorphology' field article (credits Davis's cycle-of-erosion model as a founding theoretical framework for the discipline) — this edge deliberately grounds the founding claim on the field article's framing rather than the more general geography epithet, per the order's explicit instruction. Record-not-resolve: G. K. Gilbert and John Wesley Powell are co-founders of American geomorphology; Gilbert in particular is credited by some historians of science with a more process-based, quantitative approach (developed via his studies of the Henry Mountains and Lake Bonneville) that is regarded by some as methodologically prior to or more durable than Davis's more descriptive cyclical model. This edge records Davis's specific founding contribution via the geographical-cycle framework, not a claim of sole priority. QID is a generator guess (Q315967); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:matthew-fontaine-maury-founded-oceanography",
+    "source": "person:matthew-fontaine-maury",
+    "target": "subfield:oceanography",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Maury's systematic charting of winds, currents, and ocean depths, synthesized in 'The Physical Geography of the Sea' (1855) — considered the first oceanography textbook — established the discipline's founding empirical synthesis; standard 'founder of modern oceanography'/'Pathfinder of the Seas' attribution.",
+    "uncertainty": "QID for person:matthew-fontaine-maury is an unverified guess pending live resolver confirmation; founding attribution itself is a clean single-founder consensus.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Matthew Fontaine Maury' biography article (states Maury is known as 'the father of modern oceanography' and 'Pathfinder of the Seas', author of 'The Physical Geography of the Sea', 1855, described as the first oceanography textbook) and Wikipedia's 'Oceanography' field article (credits Maury's systematic charting work and 1855 synthesis as foundational to the discipline). Record-not-resolve: none needed for the founding claim itself — earlier isolated oceanic observations by explorers and naval surveyors (e.g. Cook, Franklin's Gulf Stream chart) are forerunner data points rather than a rival systematic founding synthesis. QID is a generator guess (Q317117); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:georgius-agricola-founded-mineralogy",
+    "source": "person:georgius-agricola",
+    "target": "subfield:mineralogy",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Agricola's 1546 'De natura fossilium' provided the first systematic classification of minerals by physical properties, founding mineralogy as a descriptive science independent of alchemical tradition; standard 'father of mineralogy' attribution.",
+    "uncertainty": "QID for person:georgius-agricola is an unverified guess pending live resolver confirmation; 'Georgius Agricola' is a Latinized humanist-era name shared in form with other 'Agricola' figures, and the founding claim is dual-epithet (mineralogy/metallurgy), both reflected in the ambiguous flag on the node.",
+    "ambiguous": true,
+    "note": "Claim-stating sources expected: Wikipedia's 'Georgius Agricola' biography article (states Agricola is 'known as the father of mineralogy', author of 'De natura fossilium', 1546, and also of 'De re metallica', 1556) and Wikipedia's 'Mineralogy' field article (credits Agricola's systematic classification of minerals as foundational to the discipline). Record-not-resolve: Agricola is equally or more often cited in the historiography as the 'father of metallurgy' for 'De re metallica' (1556); this edge records his mineralogy-founding contribution specifically ('De natura fossilium'), not a claim that mineralogy is his sole or primary legacy — a separate `founded_or_formalized` edge to a metallurgy-adjacent node may be warranted in a future wave if such a node exists. IDENTITY CAUTION: 'Georgius Agricola' (born Georg Bauer, 1494-1555, Saxon scholar) is a Latinized name of a type shared by other Renaissance/humanist-era 'Agricola' figures (e.g. Rudolph Agricola the humanist logician, d. 1485; Johann Agricola the Lutheran theologian, 1494-1566, a near-exact birth-year coincidence); orchestrator must confirm the resolved QID matches the mineralogist/physician of Chemnitz specifically. QID is a generator guess (Q57285); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  }
+]

@@ -11708,5 +11708,131 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Victor Moritz Goldschmidt is a founder of modern geochemistry -- his systematic study of element distribution and crystal chemistry (Goldschmidt's rules) synthesized crystallography, mineralogy, and cosmochemistry into the modern field. Sources (2 independent live-verified Wikipedia articles): 'Victor Moritz Goldschmidt' (\"considered (together with Vladimir Vernadsky) to be the founder of modern geochemistry and crystal chemistry\") + 'Geochemistry'. Record-not-resolve: the biography itself names Vladimir Vernadsky as co-founder (independent biogeochemistry tradition); F. W. Clarke's earlier elemental-abundance compilations are sometimes called geochemistry's founding in US historiography. Identity Q213668 verified live (P31=Q5, P569 1888, P570 1947 deceased, mineralogist/geochemist, enwiki 'Victor Moritz Goldschmidt') -- disambiguated from his father Victor Mordechai Goldschmidt (1853-1933, also a crystallographer): the geochemist is the son, Victor MORITZ (1888-1947). Generator-guessed QID (Q71805 = a German pair skater) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:andreas-vesalius-founded-anatomy",
+    "source": "person:andreas-vesalius",
+    "target": "subfield:anatomy",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Andreas Vesalius is the founder of modern anatomy -- his 'De Humani Corporis Fabrica' (1543), grounded in direct human dissection rather than Galenic authority, is the founding treatise of anatomy as an observational science. Sources (2 independent live-verified Wikipedia articles): 'Andreas Vesalius' ('De Humani Corporis Fabrica', 1543, one of the most influential books on human anatomy) + 'Anatomy' (Vesalius's Fabrica \"marking the rebirth of anatomy\"). Record-not-resolve: Galen's ancient (animal-dissection-based) anatomy is a superseded predecessor that Vesalius corrected, not a rival founding of the modern discipline. Identity Q170267 verified live (P31=Q5, P569 1514, P570 1564 deceased, anatomist/physician, enwiki 'Andreas Vesalius'). Generator-guessed QID (Q57235 = the poet Clemens Brentano) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:carl-linnaeus-founded-systematics",
+    "source": "person:carl-linnaeus",
+    "target": "subfield:systematics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Carl Linnaeus is the father of modern taxonomy -- his binomial nomenclature and hierarchical classification ('Systema Naturae', 1735) founded the methodology of systematics. Sources (2 independent live-verified Wikipedia articles): 'Carl Linnaeus' (\"known as the 'father of modern taxonomy'\") + 'Systematics'. Record-not-resolve: systematics broadened well beyond Linnaean rank-based taxonomy in the 20th century, most consequentially via Willi Hennig's cladistics/phylogenetic systematics; this edge records Linnaeus's foundational methodological contribution, not that the field is unchanged. Identity Q1043 verified live (P31=Q5, P569 1707, P570 1778 deceased, botanist, enwiki 'Carl Linnaeus') -- the generator's guessed QID matched independently (2/7 correct guesses in this batch; still live-verified). Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:james-hutton-founded-geology",
+    "source": "person:james-hutton",
+    "target": "subfield:geology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.87,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "James Hutton is the father of modern geology -- his theory of uniformitarianism ('Theory of the Earth', 1788) founded geology on observable natural processes rather than scriptural chronology. Sources (2 independent live-verified Wikipedia articles): 'James Hutton' (\"Often referred to as the 'Father of Modern Geology'\") + 'Geology'. Record-not-resolve: Charles Lyell later popularized/systematized uniformitarianism ('Principles of Geology', 1830-33), the synthesis that made it scientific consensus; this edge records Hutton's original theoretical founding. Identity Q192927 verified live (P31=Q5, P569 1726, P570 1797 deceased, geologist, enwiki 'James Hutton'). Generator-guessed QID (Q193621 = the French commune Auzances) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:karl-ernst-von-baer-founded-developmental-biology",
+    "source": "person:karl-ernst-von-baer",
+    "target": "subfield:developmental-biology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Karl Ernst von Baer is the founding father of embryology -- he discovered the mammalian ovum (1826) and formulated von Baer's laws of embryonic development. Sources (2 independent live-verified Wikipedia articles): 'Karl Ernst von Baer' (\"considered a, or the, founding father of embryology\") + 'Developmental biology'. Record-not-resolve: developmental-biology as a modern label has broadened beyond von Baer's descriptive-comparative embryology to molecular/genetic mechanisms; this edge records his founding of the field's historical core (embryology). Identity Q57190 verified live (P31=Q5, P569 1792, P570 1876 deceased, naturalist/biologist, enwiki 'Karl Ernst von Baer'). Generator-guessed QID (Q57262 = the French commune Juigne-sur-Sarthe) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:william-morris-davis-founded-geomorphology",
+    "source": "person:william-morris-davis",
+    "target": "subfield:geomorphology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "William Morris Davis founded geomorphology as a systematic discipline -- his 'geographical cycle' / cycle of erosion model (1884-1899) gave landform study its first coherent theoretical framework. Sources (2 independent live-verified Wikipedia articles): 'Geomorphology' (\"the geographical cycle or cycle of erosion model ... developed by William Morris Davis between 1884 and 1899\"; the framework \"known today as 'Davisian'\") + 'William Morris Davis'. Grounded on the field article's crediting rather than his broader 'father of American geography' epithet. Record-not-resolve: G. K. Gilbert and John Wesley Powell are co-founders of American geomorphology (Gilbert's process-based/quantitative approach is regarded by some as more durable than Davis's descriptive cyclical model, which the field article notes is 'largely superseded today'); this edge records Davis's founding via the geographical-cycle framework. Identity Q315967 verified live (P31=Q5, P569 1850, P570 1934 deceased, geographer, enwiki 'William Morris Davis') -- the generator's guessed QID matched independently (2/7 correct in this batch; still live-verified). Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:matthew-fontaine-maury-founded-oceanography",
+    "source": "person:matthew-fontaine-maury",
+    "target": "subfield:oceanography",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Matthew Fontaine Maury is a founder of modern oceanography ('Pathfinder of the Seas') -- his systematic charting of winds, currents, and depths, synthesized in 'The Physical Geography of the Sea' (1855, the first oceanography textbook), founded the discipline. Sources (2 independent live-verified Wikipedia articles): 'Matthew Fontaine Maury' (\"considered a founder of modern oceanography\"; \"Pathfinder of the Seas\") + 'Oceanography'. Record-not-resolve: earlier isolated oceanic observations (e.g. Franklin's Gulf Stream chart) are forerunner data, not a rival systematic founding. Identity Q114385 verified live (P31=Q5, P569 1806, P570 1873 deceased, oceanographer/naval officer, enwiki 'Matthew Fontaine Maury'). Generator-guessed QID (Q317117 = a Syrian university professor) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:georgius-agricola-founded-mineralogy",
+    "source": "person:georgius-agricola",
+    "target": "subfield:mineralogy",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Georgius Agricola is the father of mineralogy -- his 'De natura fossilium' (1546) gave the first systematic classification of minerals by physical properties, beginning the scientific approach to the subject. Sources (2 independent live-verified Wikipedia articles): 'Mineralogy' (\"Georgius Agricola wrote works such as 'De re metallica' (1556) and 'De Natura Fossilium' (1546) which began the scientific approach to the subject\") + 'Georgius Agricola'. Record-not-resolve: Agricola is equally/more often called the 'father of metallurgy' for 'De re metallica'; this edge records his mineralogy-founding specifically. Identity Q76579 verified live (P31=Q5, P569 1494, P570 1555 deceased, mineralogist, enwiki 'Georgius Agricola') -- disambiguated from other Latinized 'Agricola' figures (Rudolph Agricola the humanist d.1485; Johann Agricola the theologian 1494-1566, a near-birth-year coincidence): this is Georg Bauer of Chemnitz. Generator-guessed QID (Q57285 = the conductor Wilhelm Furtwangler) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
   }
 ]
