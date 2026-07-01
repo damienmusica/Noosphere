@@ -11834,5 +11834,221 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Georgius Agricola is the father of mineralogy -- his 'De natura fossilium' (1546) gave the first systematic classification of minerals by physical properties, beginning the scientific approach to the subject. Sources (2 independent live-verified Wikipedia articles): 'Mineralogy' (\"Georgius Agricola wrote works such as 'De re metallica' (1556) and 'De Natura Fossilium' (1546) which began the scientific approach to the subject\") + 'Georgius Agricola'. Record-not-resolve: Agricola is equally/more often called the 'father of metallurgy' for 'De re metallica'; this edge records his mineralogy-founding specifically. Identity Q76579 verified live (P31=Q5, P569 1494, P570 1555 deceased, mineralogist, enwiki 'Georgius Agricola') -- disambiguated from other Latinized 'Agricola' figures (Rudolph Agricola the humanist d.1485; Johann Agricola the theologian 1494-1566, a near-birth-year coincidence): this is Georg Bauer of Chemnitz. Generator-guessed QID (Q57285 = the conductor Wilhelm Furtwangler) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:theodor-schwann-founded-cell-biology",
+    "source": "person:theodor-schwann",
+    "target": "subfield:cell-biology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Theodor Schwann is a co-founder of cell theory, the foundational theory of cell biology -- he extended the cell doctrine to animal tissues (Mikroskopische Untersuchungen, 1839), establishing with the botanist Matthias Jakob Schleiden that all living organisms are composed of cells. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory' (\"a scientific theory first formulated in the mid-nineteenth century, that living organisms are made up of cells, that they are the basic structural/organizational unit of all organisms\"). Record-not-resolve: Schleiden (plant cells) is the co-founder [own node/edge this batch]; Rudolf Virchow added \"omnis cellula e cellula\" (1855) and Robert Hooke coined the term \"cell\" (1665) -- neither nodified. Identity Q76745 verified live (P31=Q5, P569 1810, P570 1882 deceased, physician/physiologist, enwiki 'Theodor Schwann'); generator-guessed QID (Q57247) was a hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:matthias-jakob-schleiden-founded-cell-biology",
+    "source": "person:matthias-jakob-schleiden",
+    "target": "subfield:cell-biology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Matthias Jakob Schleiden is a co-founder of cell theory, the foundational theory of cell biology -- the botanist who (Beiträge zur Phytogenesis, 1838) argued that all plant tissues are composed of cells, the plant-side counterpart to Schwann's extension to animals. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory'. Record-not-resolve: Schwann (animal cells) is the co-founder [own node/edge this batch]; Virchow (cell-from-cell, 1855) and Hooke (\"cell\", 1665) not nodified. Identity Q76747 verified live (P31=Q5, P569 1804, P570 1881 deceased, botanist, enwiki 'Matthias Jakob Schleiden'); generator-guessed QID (Q57249) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:eugenius-warming-founded-ecology",
+    "source": "person:eugenius-warming",
+    "target": "subfield:ecology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Eugenius (Eugen) Warming is a founder of scientific ecology -- his Plantesamfund (1895, translated as Oecology of Plants) is widely regarded as the first textbook of plant ecology and he taught one of the first university courses in the subject. Sources (2 independent live-verified Wikipedia articles): 'Eugenius Warming' (\"a Danish botanist and a pioneering figure in the development of ecology ... Ecologist Robert J. Goodland wrote in 1975: 'If one individual can be singled out to be honoured as the founder of ecology, Warming should gain precedence.'\") + 'Ecology'. Record-not-resolve: Ernst Haeckel (already a node; edge ernst-haeckel-founded-ecology) coined the term 'ecology' (Oecologie, 1866); the two co-found the field by different routes -- Haeckel named it, Warming established it as an empirical botanical discipline. Identity Q355888 verified live (P31=Q5, P569 1840-11-03, P570 1924 deceased, botanist, enwiki 'Eugenius Warming'; note Wikidata records birth 1840 while Wikipedia's lead gives 1841 -- a birth-year source discrepancy, identity otherwise unambiguous); generator-guessed QID (Q705645) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:vladimir-vernadsky-founded-geochemistry",
+    "source": "person:vladimir-vernadsky",
+    "target": "subfield:geochemistry",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Vladimir Vernadsky is a co-founder of geochemistry (and founder of biogeochemistry) -- a Russian/Ukrainian/Soviet mineralogist and geochemist whose work on the distribution and migration of chemical elements, and on the biosphere, established the field alongside crystal-chemistry approaches. Sources (2 independent live-verified Wikipedia articles): 'Vladimir Vernadsky' (\"a Russian, Ukrainian, and Soviet mineralogist and geochemist who is considered one of the founders of geochemistry, biogeochemistry, and radiogeology\") + 'Geochemistry'. Record-not-resolve: Victor Moritz Goldschmidt (already a node; edge victor-moritz-goldschmidt-founded-geochemistry) is the co-founder via crystal chemistry / Goldschmidt's rules; F. W. Clarke's elemental-abundance compilations are sometimes cited as a US founding line -- the biography names Goldschmidt and Vernadsky jointly. Identity Q316371 verified live (P31=Q5, P569 1863, P570 1945 deceased, mineralogist/geochemist, enwiki 'Vladimir Vernadsky'); generator-guessed QID (Q168751) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:charles-lyell-founded-geology",
+    "source": "person:charles-lyell",
+    "target": "subfield:geology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Charles Lyell formalized modern geology -- his Principles of Geology (1830-33) systematized the discipline around uniformitarianism (natural processes acting at present-day intensities), the framework that governed 19th-century geology and shaped Darwin. `founded_or_formalized` is used in its 'formalized' sense: Lyell did not originate geology but established its governing methodological synthesis. Sources (2 independent live-verified Wikipedia articles): 'Charles Lyell' (\"a Scottish geologist ... best known ... as the author of Principles of Geology (1830-33), which presented to a wide public audience the idea that the earth was shaped by the same natural processes still in operation today\") + 'Geology' (\"Sir Charles Lyell (1797-1875) first published his famous book, Principles of Geology, in 1830\") + 'Uniformitarianism'. Record-not-resolve: James Hutton (already a node; edge james-hutton-founded-geology) is 'often viewed as the first modern geologist' and originated uniformitarianism; Georgius Agricola (already a node, mapped to mineralogy) is called 'the founder of geology as a scientific discipline' in some historiography. Hutton originated, Lyell systematized/popularized. Identity Q5333 verified live (P31=Q5, P569 1797, P570 1875 deceased, geologist, enwiki 'Charles Lyell'); generator-guessed QID (Q131691) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:grove-karl-gilbert-founded-geomorphology",
+    "source": "person:grove-karl-gilbert",
+    "target": "subfield:geomorphology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Grove Karl (G. K.) Gilbert is a co-founder of geomorphology -- an American geologist whose process-and-equilibrium studies of landscape evolution, erosion, river incision and sedimentation founded the quantitative/process tradition of the field. Sources (2 independent live-verified Wikipedia articles): 'Grove Karl Gilbert' (\"Gilbert is considered one of the giants of the subdiscipline of geomorphology, having contributed to the understanding of landscape evolution, erosion, river incision, and sedimentation\") + 'Geomorphology' (\"Following the early work of Grove Karl Gilbert around the turn of the 20th century, a group of mainly American natural scientists, geologists and hydraulic engineers ...\"). Record-not-resolve: William Morris Davis (already a node; edge william-morris-davis-founded-geomorphology) founded the historical 'cycle of erosion' tradition; John Wesley Powell popularized the term 'geomorphology' (with W. J. McGee) at the USGS but is not claim-stated as a founder of the discipline in >=2 independent sources, so no Powell edge was written (QC-rejected this batch for referent precision). Identity Q463448 verified live (P31=Q5, P569 1843, P570 1918 deceased, geologist, enwiki 'Grove Karl Gilbert'); generator-guessed QID (Q444147) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:philippe-pinel-founded-psychiatry",
+    "source": "person:philippe-pinel",
+    "target": "field:psychiatry",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Philippe Pinel is a co-founder of clinical psychiatry -- the French physician who introduced 'moral treatment' (traitement moral), campaigned against the chaining of psychiatric patients, and produced an early nosology of mental disorders; often called 'the father of modern psychiatry'. Sources (2 independent live-verified Wikipedia articles): 'Philippe Pinel' (\"a French physician, precursor of psychiatry ... instrumental in the development of a more humane psychological approach to the custody and care of psychiatric patients ... has been described by some as 'the father of modern psychiatry'\") + 'Psychiatry'. Record-not-resolve: Emil Kraepelin (already a node; edge emil-kraepelin-founded-psychiatry) founded the modern nosological/scientific classification; Pinel and Kraepelin co-found by different routes -- Pinel the humane clinical practice, Kraepelin the diagnostic system. Identity Q311594 verified live (P31=Q5, P569 1745, P570 1826 deceased, physician, enwiki 'Philippe Pinel'); generator-guessed QID (Q313650) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:hans-hahn-member-of-vienna-circle",
+    "source": "person:hans-hahn",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.96,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Hans Hahn was a core member of the Vienna Circle -- a mathematician (Hahn-Banach theorem, functional analysis) who was one of the three organizers of its pre-history and a member of the inner circle. Sources (2 independent live-verified Wikipedia articles): 'Vienna Circle' (pre-history \"promoted by Philipp Frank, Hans Hahn and Otto Neurath\"; Inner Circle roster explicitly lists \"... Hans Hahn ...\") + 'Hans Hahn (mathematician)'. Identity Q84552 verified live (P31=Q5, P569 1879, P570 1934 deceased, mathematician, enwiki 'Hans Hahn (mathematician)'); generator-guessed QID (Q57474) hallucination, corrected. Node domain = formal_sciences (primary discipline: mathematics), corrected from the generation order's uniform 'humanities'. Both endpoints reviewed -> member_of, reviewed."
+  },
+  {
+    "id": "edge:herbert-feigl-member-of-vienna-circle",
+    "source": "person:herbert-feigl",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.96,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Herbert Feigl was a member of the Vienna Circle -- a philosopher of science who (with Waismann) proposed the regular 'evening circle' to Schlick in 1924 and later carried logical empiricism to the United States. Sources (2 independent live-verified Wikipedia articles): 'Vienna Circle' (\"In 1924 Schlick's students Friedrich Waismann and Herbert Feigl suggested to their teacher a sort of regular 'evening circle'\"; Inner Circle roster lists \"... Herbert Feigl ...\") + 'Herbert Feigl'. Identity Q93678 verified live (P31=Q5, P569 1902, P570 1988 deceased, philosopher, enwiki 'Herbert Feigl'); generator-guessed QID (Q76370) hallucination, corrected. Both endpoints reviewed -> member_of, reviewed."
+  },
+  {
+    "id": "edge:kurt-godel-member-of-vienna-circle",
+    "source": "person:kurt-godel",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Kurt Gödel was a member of the Vienna Circle -- the logician appears on the Circle's Inner Circle roster and attended its meetings, though he was a peripheral/attending participant whose Platonism diverged sharply from the group's logical empiricism (recorded, not resolved). Sources (2 independent live-verified Wikipedia articles): 'Vienna Circle' (Inner Circle roster explicitly lists \"... Kurt Gödel ...\"; at the 1930 Königsberg congress \"Kurt Gödel announced ... the incompleteness of formal arithmetic\") + 'Kurt Gödel'. member_of records the documented association at the flat granularity the taxonomy provides; the peripheral/dissenting character is noted here rather than laundered into confidence. Identity Q41390 verified live (P31=Q5, P569 1906, P570 1978 deceased, logician/mathematician, enwiki 'Kurt Gödel'); generator-guessed QID (Q9021) hallucination, corrected. Node domain = formal_sciences (primary discipline: logic/mathematics). Both endpoints reviewed -> member_of, reviewed."
+  },
+  {
+    "id": "edge:friedrich-waismann-member-of-vienna-circle",
+    "source": "person:friedrich-waismann",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Friedrich Waismann was a member of the Vienna Circle -- a mathematician-turned-philosopher who (with Feigl) proposed the 1924 evening circle and served as the main interlocutor recording Wittgenstein's conversations with Schlick's group. Sources (2 independent live-verified Wikipedia articles): 'Vienna Circle' (\"In 1924 Schlick's students Friedrich Waismann and Herbert Feigl suggested ... a sort of regular 'evening circle'\"; Inner Circle roster lists \"... Friedrich Waismann ...\") + 'Friedrich Waismann'. Identity Q93826 verified live (P31=Q5, P569 1896, P570 1959 deceased, philosopher, enwiki 'Friedrich Waismann'); generator-guessed QID (Q71799) hallucination, corrected. Both endpoints reviewed -> member_of, reviewed."
+  },
+  {
+    "id": "edge:philipp-frank-member-of-vienna-circle",
+    "source": "person:philipp-frank",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.96,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Philipp Frank was a core member of the Vienna Circle -- a theoretical physicist and philosopher of science (successor to Einstein's chair at the German University in Prague) and one of the three organizers of the Circle's pre-history. Sources (2 independent live-verified Wikipedia articles): 'Vienna Circle' (pre-history \"promoted by Philipp Frank, Hans Hahn and Otto Neurath\"; Inner Circle roster lists \"... Philipp Frank ...\") + 'Philipp Frank'. Identity Q79177 verified live (P31=Q5, P569 1884, P570 1966 deceased, physicist/philosopher, enwiki 'Philipp Frank'); generator-guessed QID (Q57281) hallucination, corrected. Node domain = natural_sciences (primary discipline: physics), corrected from the generation order's uniform 'humanities'. Both endpoints reviewed -> member_of, reviewed."
   }
 ]

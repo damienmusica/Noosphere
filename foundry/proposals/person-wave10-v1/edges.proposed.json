@@ -1,0 +1,249 @@
+[
+  {
+    "id": "edge:theodor-schwann-founded-cell-biology",
+    "source": "person:theodor-schwann",
+    "target": "subfield:cell-biology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Schwann's 1839 'Mikroskopische Untersuchungen' extended cell-based structure to animal tissue and, together with Schleiden's 1838 plant-cell work, established cell theory as a unifying principle of biology.",
+    "uncertainty": "QID for person:theodor-schwann is an unverified guess pending live resolver confirmation. Founding is jointly attributed to Schwann and Schleiden by design; this edge records Schwann's half of the joint founding.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Theodor Schwann' biography article (states Schwann is credited, with Schleiden, as a founder of cell theory; 'Mikroskopische Untersuchungen', 1839) and Wikipedia's 'Cell biology' or 'Cell theory' field article (credits Schwann and Schleiden jointly as founders, ~1838-39). Record-not-resolve: cell theory's fuller historiography also credits Rudolf Virchow (1855, 'omnis cellula e cellula' -- all cells arise from pre-existing cells, completing the theory's third tenet) as a significant contributor, and Robert Hooke (1665, coined the term 'cell' from his microscopic observations of cork) as the discipline's namer/forerunner; neither Virchow nor Hooke is proposed as a node in this batch -- name them here for QC's awareness, not as rival founders of the 1838-39 joint founding this edge records. QID is a generator guess (Q57247); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:matthias-jakob-schleiden-founded-cell-biology",
+    "source": "person:matthias-jakob-schleiden",
+    "target": "subfield:cell-biology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Schleiden's 1838 'Beitrage zur Phytogenesis' proposed that all plant tissue is cellular in nature; together with Schwann's 1839 extension to animal tissue, this jointly established cell theory as biology's unifying structural principle.",
+    "uncertainty": "QID for person:matthias-jakob-schleiden is an unverified guess pending live resolver confirmation. Founding is jointly attributed to Schleiden and Schwann by design; this edge records Schleiden's half of the joint founding.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Matthias Jakob Schleiden' biography article (states Schleiden is credited, with Schwann, as a founder of cell theory; 'Beitrage zur Phytogenesis', 1838) and Wikipedia's 'Cell biology' or 'Cell theory' field article (credits Schleiden and Schwann jointly as founders, ~1838-39). Record-not-resolve: cell theory's fuller historiography also credits Rudolf Virchow (1855, 'omnis cellula e cellula' -- all cells arise from pre-existing cells, completing the theory's third tenet) as a significant contributor, and Robert Hooke (1665, coined the term 'cell') as the discipline's namer/forerunner; neither is proposed as a node in this batch -- named here for QC's awareness, not as rival founders of the 1838-39 joint founding this edge records. QID is a generator guess (Q57249); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:eugenius-warming-founded-ecology",
+    "source": "person:eugenius-warming",
+    "target": "subfield:ecology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Warming's 1895 'Plantesamfund' ('Oecology of Plants'), considered the first textbook of plant ecology, established the systematic scientific study of plant communities in relation to environment, making him a co-founder of scientific ecology alongside Haeckel's earlier conceptual founding.",
+    "uncertainty": "QID for person:eugenius-warming is an unverified guess pending live resolver confirmation. Founding is genuinely plural by design: Haeckel (already `person:ernst-haeckel` -> `subfield:ecology`, reviewed) coined the term and concept (1866); Warming supplied the field's first systematic scientific textbook and methodology (1895) roughly three decades later.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Eugenius Warming' biography article (states Warming is 'often considered the father of the scientific study of plant ecology' or similar, author of 'Plantesamfund', 1895, considered the first textbook of plant ecology) and Wikipedia's 'Ecology' field article (credits Warming's 1895 work as foundational to scientific plant ecology). Record-not-resolve: Ernst Haeckel coined the term 'Oecologie' and gave ecology its first conceptual definition in 1866 ('General Morphology of Organisms'), roughly 30 years before Warming's systematic textbook; this edge records Warming's co-founding contribution to ecology as a scientific practice (empirical, community-based plant ecology), not a claim that he originated the discipline's name or concept -- both are legitimately called founders of different foundational layers (concept vs. scientific practice) of the same field. QID is a generator guess (Q705645); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:vladimir-vernadsky-founded-geochemistry",
+    "source": "person:vladimir-vernadsky",
+    "target": "subfield:geochemistry",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Vernadsky's systematic study of the chemical composition and geochemical cycling of Earth's crust, and his biosphere concept ('The Biosphere', 1926), founded geochemistry (and biogeochemistry) as disciplines, alongside the contemporaneous systematizing work of Victor Moritz Goldschmidt.",
+    "uncertainty": "QID for person:vladimir-vernadsky is an unverified guess pending live resolver confirmation. Founding is genuinely plural by design: Goldschmidt (already `person:victor-moritz-goldschmidt` -> `subfield:geochemistry`, reviewed) is often credited specifically with founding geochemistry as a rigorous quantitative discipline (crystal chemistry, element-distribution laws); Vernadsky's contribution spans geochemistry and biogeochemistry together and is broader in scope.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Vladimir Vernadsky' biography article (states Vernadsky is considered a founder of geochemistry, biogeochemistry, and radiogeology; author of 'The Biosphere', 1926) and Wikipedia's 'Geochemistry' field article (credits Vernadsky, alongside Goldschmidt, as a founder of the discipline). Record-not-resolve: Goldschmidt (Norwegian-German, 1888-1947) is more narrowly credited with founding geochemistry as a rigorous quantitative science via crystal chemistry and the geochemical classification of elements, roughly contemporaneous with Vernadsky's broader biosphere/biogeochemistry program; this edge records Vernadsky's co-founding contribution to geochemistry broadly construed, not a claim of sole priority over Goldschmidt's narrower disciplinary founding. QID is a generator guess (Q168751); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:charles-lyell-founded-geology",
+    "source": "person:charles-lyell",
+    "target": "subfield:geology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Lyell's 'Principles of Geology' (1830-1833) popularized and rigorously systematized uniformitarianism into geology's working methodological consensus, strongly influencing Darwin, making him a co-founder/systematizer of modern geology alongside Hutton's earlier original theoretical founding.",
+    "uncertainty": "QID for person:charles-lyell is an unverified guess pending live resolver confirmation. Founding is genuinely plural by design and already recorded as a record-not-resolve note on the wave-9 `person:james-hutton` -> `subfield:geology` edge (reviewed): Hutton originated uniformitarianism (1788); Lyell's more accessible, evidence-rich synthesis made it the working scientific consensus decades later.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Charles Lyell' biography article (states Lyell's 'Principles of Geology' established the principles of uniformitarianism and made geology a rigorous science, strongly influencing Darwin) and Wikipedia's 'Geology' field article (credits Lyell's systematization of uniformitarianism as foundational to the modern discipline). Record-not-resolve: this mirrors and completes the wave-9 Hutton edge's note -- James Hutton (`person:james-hutton` -> `subfield:geology`, reviewed) originated the theory of uniformitarianism in 'Theory of the Earth' (1788); this edge records Lyell's co-founding/systematizing contribution ('Principles of Geology', 1830-1833) that turned Hutton's original theory into the discipline's working consensus, not a claim that Lyell originated the idea independently of Hutton. QID is a generator guess (Q131691); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:grove-karl-gilbert-founded-geomorphology",
+    "source": "person:grove-karl-gilbert",
+    "target": "subfield:geomorphology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Gilbert's process-based, quantitative studies (Henry Mountains laccoliths, Lake Bonneville shorelines) founded process geomorphology, a co-founding of the discipline alongside Davis's cyclical model already recorded in the wave-9 batch.",
+    "uncertainty": "QID for person:grove-karl-gilbert is an unverified guess pending live resolver confirmation. Founding is genuinely plural by design and already recorded as a record-not-resolve note on the wave-9 `person:william-morris-davis` -> `subfield:geomorphology` edge (reviewed): Gilbert's process-based approach is regarded by some historians of science as methodologically prior to or more durable than Davis's cyclical model.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Grove Karl Gilbert' biography article (states Gilbert is regarded as a founder of modern geomorphology / process geomorphology through his studies of the Henry Mountains and Lake Bonneville) and Wikipedia's 'Geomorphology' field article (credits Gilbert's process-based approach as foundational, alongside or against Davis's cycle-of-erosion model). Record-not-resolve: this mirrors and extends the wave-9 Davis edge's note -- William Morris Davis (`person:william-morris-davis` -> `subfield:geomorphology`, reviewed) founded the discipline via the 'geographical cycle' model; Gilbert's more process-based, quantitative approach is credited by many historians of science as methodologically prior to or more durable than Davis's descriptive cyclical framework. This edge records Gilbert's specific process-based founding contribution, not a claim of sole priority over Davis. QID is a generator guess (Q444147); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:john-wesley-powell-founded-geomorphology",
+    "source": "person:john-wesley-powell",
+    "target": "subfield:geomorphology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.82,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Powell's Colorado River/Grand Canyon surveys, his concept of 'base level' as the limit of fluvial erosion, and his classification of drainage patterns (consequent/antecedent/superimposed) are foundational geomorphological concepts, making him a co-founder of the discipline alongside Davis and Gilbert.",
+    "uncertainty": "QID for person:john-wesley-powell is an unverified guess pending live resolver confirmation. Founding is genuinely plural by design (Davis/Gilbert/Powell as American geomorphology's co-founders). Slightly lower confidence than the Davis/Gilbert edges reflects Powell's primary public reputation as an explorer and government scientist/administrator (first director of the USGS), with his specific disciplinary-founder role somewhat less central in general biographical framing than his exploration legacy, though clearly present in geomorphology-specific historiography.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'John Wesley Powell' biography article (states Powell's surveys and concepts, e.g. base level and drainage classification, were foundational to geomorphology) and Wikipedia's 'Geomorphology' field article (credits Powell, alongside Davis and Gilbert, among the discipline's 19th-century American founders). Record-not-resolve: this extends the wave-9 Davis edge's note and the sibling Gilbert edge in this batch -- Davis, Gilbert, and Powell together are the standard trio credited with founding American geomorphology in the late 19th century, each contributing a different emphasis (Davis: cyclical/descriptive theory; Gilbert: process-based/quantitative method; Powell: fluvial base-level concept and large-scale field survey). This edge records Powell's specific contribution, not a claim of sole priority. QID is a generator guess (Q483134); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:philippe-pinel-founded-psychiatry",
+    "source": "person:philippe-pinel",
+    "target": "field:psychiatry",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Pinel's introduction of 'moral treatment' at the Bicetre and Salpetriere hospitals (removing chains from patients, advocating humane, observation-based clinical care, late 18th century) founded psychiatry as a clinical medical discipline, a co-founding alongside Kraepelin's later nosological/classificatory founding.",
+    "uncertainty": "QID for person:philippe-pinel is an unverified guess pending live resolver confirmation. Founding is genuinely plural by design: Pinel founded psychiatry's clinical/humane-treatment practice (~1790s); Kraepelin (already `person:emil-kraepelin` -> `field:psychiatry`, reviewed) founded its modern diagnostic/nosological classification system roughly a century later. Both are legitimately 'founders' of different foundational layers of the same field.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Philippe Pinel' biography article (states Pinel is 'considered by some to be the father of modern psychiatry', introduced moral treatment and removed chains from patients at Bicetre/Salpetriere) and Wikipedia's 'Psychiatry' field article (credits Pinel's moral-treatment reform as a founding moment of clinical psychiatry). Record-not-resolve: this mirrors and precedes the existing Kraepelin edge -- Emil Kraepelin (`person:emil-kraepelin` -> `field:psychiatry`, reviewed) founded modern psychiatric nosology and diagnostic classification roughly a century after Pinel's clinical/humane-treatment reforms; this edge records Pinel's founding of clinical psychiatric practice, not a claim that he originated Kraepelin's later classificatory framework. QID is a generator guess (Q313650); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:hans-hahn-member-of-vienna-circle",
+    "source": "person:hans-hahn",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.95,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Hahn was a mathematician and founding/core member of the Vienna Circle; he co-arranged (with Schlick) Carnap's move to Vienna in 1926, per the existing Carnap membership edge's own note.",
+    "uncertainty": "QID for person:hans-hahn is an unverified guess pending live resolver confirmation. Core membership (vs. peripheral attendance) is well documented; low identity/attribution risk. Possible name-collision caution: 'Hans Hahn' is a moderately common German name, so QC should confirm the resolved QID is the mathematician (Vienna, 1879-1934) and not another namesake.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Hans Hahn (mathematician)' biography article (states Hahn was a founding member of the Vienna Circle and, with Schlick, arranged Carnap's move to Vienna in 1926) and Wikipedia's 'Vienna Circle' institution article (lists Hahn among its core/founding members). Both target and analogous sibling edges (Schlick, Carnap, Neurath) already `reviewed`. QID is a generator guess (Q57474); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink), with explicit disambiguation against other 'Hans Hahn' namesakes."
+  },
+  {
+    "id": "edge:herbert-feigl-member-of-vienna-circle",
+    "source": "person:herbert-feigl",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.95,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Feigl was a founding member of the Vienna Circle, a student and close associate of Schlick's, who later transplanted logical positivism/empiricism to the United States.",
+    "uncertainty": "QID for person:herbert-feigl is an unverified guess pending live resolver confirmation. Core founding membership is well documented in standard histories of the Circle; low identity/attribution risk.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Herbert Feigl' biography article (states Feigl was a founding member of the Vienna Circle) and Wikipedia's 'Vienna Circle' institution article (lists Feigl among its founding members). QID is a generator guess (Q76370); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:kurt-godel-member-of-vienna-circle",
+    "source": "person:kurt-godel",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.65,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Godel attended Vienna Circle meetings, introduced by Hahn (his doctoral advisor), and is regularly listed among the group's participants in standard histories, though as a peripheral figure who rejected its core logical-positivist program.",
+    "uncertainty": "QID for person:kurt-godel is an unverified guess pending live resolver confirmation. Substantive uncertainty beyond the QID: Godel's status is consistently characterized as peripheral/attending rather than a core organizing member, and he is on record disagreeing with the Circle's verificationist philosophy; confidence set lower than the other Vienna Circle edges in this batch to reflect this, and the relation itself ('member_of' vs. a softer 'associated with', which is not in the taxonomy) may need QC judgment on wording in `note` even if the edge is kept.",
+    "ambiguous": true,
+    "note": "PERIPHERAL-MEMBERSHIP NUANCE (per order): Godel attended Vienna Circle discussions from around 1926, brought in via Hans Hahn, but multiple sources describe him as a quiet, occasional participant who did not subscribe to the group's logical-positivist/verificationist doctrine and kept some intellectual distance (e.g. his Platonist views on mathematics were in tension with the Circle's anti-metaphysical stance). Claim-stating sources expected: Wikipedia's 'Kurt Godel' biography article (describes his attendance at Vienna Circle meetings and his philosophical distance from the group) and Wikipedia's 'Vienna Circle' institution article (if it lists Godel, likely with a qualifier such as 'occasional' or 'peripheral' member). QC should verify whether the sources support a flat `member_of` claim or whether this edge should be held at `proposed` / softened via `note` even after grounding, given the credible case that 'member_of' overstates his level of institutional commitment relative to Schlick/Carnap/Neurath/Hahn/Feigl/Waismann/Frank. QID is a generator guess (Q9021); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:friedrich-waismann-member-of-vienna-circle",
+    "source": "person:friedrich-waismann",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.95,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Waismann was a core member of the Vienna Circle and Schlick's assistant, serving as a primary intermediary who recorded and systematized Wittgenstein's views for the group.",
+    "uncertainty": "QID for person:friedrich-waismann is an unverified guess pending live resolver confirmation. Core membership is well documented in standard histories of the Circle; low identity/attribution risk.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Friedrich Waismann' biography article (states Waismann was a member of the Vienna Circle and Schlick's assistant, intermediary to Wittgenstein) and Wikipedia's 'Vienna Circle' institution article (lists Waismann among its members). QID is a generator guess (Q71799); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink)."
+  },
+  {
+    "id": "edge:philipp-frank-member-of-vienna-circle",
+    "source": "person:philipp-frank",
+    "target": "institution:vienna-circle",
+    "relation": "member_of",
+    "confidence": 0.95,
+    "status": "generated",
+    "evidence": ["source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Frank was a founding member of the Vienna Circle, a physicist-philosopher (successor to Einstein's chair in theoretical physics at the German University in Prague) who later helped found the Institute for the Unity of Science in the US.",
+    "uncertainty": "QID for person:philipp-frank is an unverified guess pending live resolver confirmation. Core founding membership is well documented; low identity/attribution risk, though QC should confirm the resolved QID matches the Vienna Circle physicist-philosopher and not another 'Philipp/Philip Frank' namesake.",
+    "ambiguous": false,
+    "note": "Claim-stating sources expected: Wikipedia's 'Philipp Frank' biography article (states Frank was a founding member of the Vienna Circle) and Wikipedia's 'Vienna Circle' institution article (lists Frank among its founding members). QID is a generator guess (Q57281); must be live-verified (P31=Q5 + P569 + P570 + enwiki sitelink), with explicit disambiguation against other 'Philipp/Philip Frank' namesakes."
+  }
+]
