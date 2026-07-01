@@ -11490,5 +11490,43 @@
       "proposed_at": "2026-07-01"
     },
     "note": "The Vienna Circle collectively formulated logical positivism (logical empiricism) -- the doctrine that is the group's defining intellectual product. Sources (2 independent live-verified Wikipedia articles): 'Vienna Circle' (\"The Vienna Circle ... of logical empiricism\") + 'Moritz Schlick' (\"the founding father of logical positivism and the Vienna Circle\"). Record-not-resolve: the individual members Schlick/Carnap/Neurath each also carry founded_or_formalized -> concept:logical-positivism (their individual edges); this edge records the collective vehicle (the group as institution) distinct from the individual founders. This realizes the movement-axis rule (decision (73)): the institution (group) node links to the concept (doctrine) node it produced, tying the Vienna Circle into the skeleton (logical-positivism part_of analytic-philosophy). Both endpoints reviewed."
+  },
+  {
+    "id": "edge:social-choice-theory-applies-to-political-science",
+    "source": "subfield:social-choice-theory",
+    "target": "field:political-science",
+    "relation": "applies_to",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-4-8",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Social choice theory's methods and results are applied in political science (voting theory, collective decision-making, formal/positive political theory). Sources (2 independent live-verified): SEP 'Social Choice Theory' (\"Its influence extends across economics, political science, philosophy, mathematics, and recently computer science and biology\") + Wikipedia 'Social choice theory'. Modeling note (§13, session #45): social-choice-theory's disciplinary home is welfare economics (its sole part_of parent) -- Wikipedia frames it as 'a branch of welfare economics' that 'contrasts with political science' (normative vs descriptive). The political-science relationship is application/influence, NOT co-equal disciplinary membership; recorded as applies_to rather than a §13 co-equal part_of, because the classification grounding for co-equal membership did not survive live verification. Both endpoints reviewed."
+  },
+  {
+    "id": "edge:social-choice-theory-applies-to-philosophy",
+    "source": "subfield:social-choice-theory",
+    "target": "field:philosophy",
+    "relation": "applies_to",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-4-8",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Social choice theory is applied in philosophy -- normative social choice, social epistemology, and theories of collective rationality/justice. Sources (2 independent live-verified): SEP 'Social Choice Theory' (\"Its influence extends across economics, political science, philosophy, mathematics ...\"; \"applications in the areas of institutional design, welfare economics, and social epistemology\") + Wikipedia 'Social choice theory'; the SEP entry is itself housed in a philosophy encyclopedia. Modeling note (§13): economics is the sole part_of home; philosophy is an application/influence domain, recorded as applies_to (not co-equal part_of). Both endpoints reviewed."
   }
 ]

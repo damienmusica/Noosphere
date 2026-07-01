@@ -890,3 +890,45 @@ non-coverage, never silently dropped.
 - Edge targets follow the §12 precedent that the flat rule governs node levels, not edge depth: a
   membership edge may target a domain directly while the proper field-level parent does not yet
   exist, with a re-target note recorded on the edge.
+- **Co-equal membership vs application/influence — the grounding must actually survive (precedent,
+  session #45).** A field being *used across* several disciplines is not the same as it being a
+  co-equal `part_of` member of each. `social-choice-theory` was surfaced for a §13 cross-listing to
+  political science after Arrow's founder node landed; on live verification the classification
+  grounding did **not** support co-equal membership — Wikipedia frames it as "a branch of welfare
+  economics" that "contrasts with political science" (normative vs descriptive), and SEP says its
+  "influence extends across economics, political science, philosophy, mathematics…". Ruling:
+  `economics` stays the **sole** `part_of` home; the cross-disciplinary reach is recorded as
+  `applies_to political-science` + `applies_to philosophy` (accurate to the sources), **not** a
+  co-equal `part_of`. The §13 evidence bar (externally-sourced classification grounding for
+  membership) is a real gate — when it fails, use `applies_to`/`influenced`, not a forced membership.
+
+## 14. Domain axes: practical-knowledge and meta-knowledge (layer/axis, not continents)
+
+> Lane A ruling (CPO-ratified session #45, 2026-07-01). Closes the long-parked question of the two
+> empty placeholder domains. Grounded in the completed Lane A research brief
+> (`reference/lane-A-practical-meta-scoping-brief.md`: 6 universities + 5 classification systems
+> surveyed, 18 verified sources) and the decision (46) layer/axis intuition.
+
+- **Ruling: both are cross-cutting axes/lenses, not continents.** `domain:practical-knowledge` and
+  `domain:meta-knowledge` are **deprecated** as continent nodes (`status: deprecated`,
+  `indexable: false`). The atlas has **11 academic continents**; practical/theoretical and
+  meta/object are *lenses* applied to existing continents (a depth/altitude dimension per decision
+  (46)), not top-level domains that house distinct knowledge.
+- **Why.** All five classification systems (DDC, UDC, LCC, OECD FORD, UNESCO ISCED-F) organize
+  applied and meta knowledge by subject domain, not by a practical-vs-theoretical or a
+  knowledge-about-knowledge axis; every "applied" or "meta" area maps 1:1 to an existing continent
+  (engineering→engineering, epistemology→philosophy, LIS→information science). No top university
+  builds a "practical knowledge" school housing subjects absent elsewhere; the professional-school
+  split at Harvard/Stanford is a training-modality distinction, not a knowledge-domain one. A flat
+  continent would double-count (an engineering application would need cross-listing to both
+  engineering and practical-knowledge).
+- **Meta-knowledge infrastructure-strand caveat (recorded, not built).** The *epistemic* strand
+  (epistemology, philosophy of science, metascience) is unambiguously distributed within philosophy
+  and STS — clearly axis. The *infrastructure* strand (library & information science; 133 iSchools;
+  Todai's Interdisciplinary Information Studies) has genuine institutional weight. If a future need
+  arises specifically for LIS/information-science coverage, it is admitted **as information science
+  within the existing computer-and-information-sciences continent** (or a scoped subfield), **not**
+  by reviving `domain:meta-knowledge`. Revisit only on a concrete, scoped coverage gap.
+- **`domainKeySchema` enum.** The `practical_knowledge` / `meta_knowledge` enum values are retained
+  but unused (reserved) — removing them is a separate schema change with no current benefit; the
+  deprecation of the domain nodes is what enforces "not a continent."
