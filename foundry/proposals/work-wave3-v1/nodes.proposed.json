@@ -1,0 +1,156 @@
+[
+  {
+    "id": "work:grundlagen-einer-allgemeinen-mannigfaltigkeitslehre",
+    "type": "work",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q19181902"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Cantor's 1883 Grundlagen einer allgemeinen Mannigfaltigkeitslehre is the single most citation-canonical work for founding set theory: it is where Cantor systematically laid out transfinite ordinal numbers, well-ordering, and the philosophical-mathematical justification for the actual infinite, going well beyond the narrower 1874 uncountability paper. Picked over the 1874 paper (too narrow: one theorem, not the systematic foundation) and the 1895-97 Beiträge (later, more mature exposition but the Grundlagen is standardly credited as the founding manifesto).",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved in this session (per the wave1/wave2 precedent, generator QIDs have run 9/9 hallucinated on exact digits). Title/date attribution risk: Cantor's foundational set-theory writing is genuinely spread across several publications (1874, 1883, 1891, 1895-97), and different historians/encyclopedias sometimes credit a different single paper as 'the' founding text; the Grundlagen is my best single pick but this is a judgment call, not a settled fact.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:the-mind-of-primitive-man",
+    "type": "work",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q6858987"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Boas's 1911 The Mind of Primitive Man is his standard founding text for American cultural anthropology and cultural relativism, arguing against biological-racial determinism of culture and intelligence; it is the text most consistently cited as launching the culture-not-race paradigm that defines the subfield.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. Boas also wrote many influential papers and the later, more technical Race, Language, and Culture (1940, a collected-papers volume); The Mind of Primitive Man is the more clearly single, book-length, dated founding text, but the field could plausibly credit the discipline-founding role to Boas's institution-building (Columbia, AAA) more than to any one text.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:cours-de-philosophie-positive",
+    "type": "work",
+    "domain": "social_sciences",
+    "level": 1,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2895878"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Comte's Cours de philosophie positive (1830-1842, six volumes) coined the term 'sociologie' and laid out positivism as the method for the new science of society; it is universally credited as the founding text of sociology as a discipline.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. This is a multi-volume work published across 12 years (1830, 1835, 1838, 1839, 1841, 1842 per volume); Wikidata may model it as one umbrella item, separate volume items, or both, creating identity/version risk distinct from a single-year monograph.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:the-rules-of-sociological-method",
+    "type": "work",
+    "domain": "social_sciences",
+    "level": 1,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1806105"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Durkheim's Les Regles de la methode sociologique (1895) is picked as his ONE canonical work for field:sociology because it is the explicit methodological manifesto that establishes sociology as a discipline with its own object ('social facts') and method, distinct from psychology and philosophy - the most direct discipline-founding claim among his major works. Passed over: The Division of Labour in Society (1893, his dissertation - a substantive application, not a methodological founding statement) and Suicide (1897, a landmark empirical case study demonstrating the method rather than establishing it).",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. The pick among three plausible Durkheim candidates (Rules 1895, Division of Labour 1893, Suicide 1897) is a genuine judgment call - a strong minority view credits Division of Labour (his first major work, introducing organic/mechanical solidarity) or Suicide (most famous single study) as more field-defining than Rules; this is a defensible choice, not a settled fact, and Durkheim is a co-canonical case in field:sociology alongside Comte and Weber (see report).",
+    "ambiguous": true
+  },
+  {
+    "id": "work:the-protestant-ethic-and-the-spirit-of-capitalism",
+    "type": "work",
+    "domain": "social_sciences",
+    "level": 1,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q557184"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Weber's Die protestantische Ethik und der Geist des Kapitalismus (1904-05 essays, 1920 revised book edition) is picked as his ONE canonical work for field:sociology because it is his single most famous, most cited, and most clearly bounded/dated text, and the one most commonly assigned as the canonical Weber reading establishing his interpretive (verstehende) sociology and the religion-economy causal-affinity method. Passed over: Economy and Society (Wirtschaft und Gesellschaft), Weber's magnum opus, because it is an unfinished, posthumously assembled and heavily re-edited compilation (1922, edited by his widow; later critical editions reorganize it substantially) - a much weaker W2 decidability fit (no clean single P577 year, contested editorial structure) than the bounded Protestant Ethic essays/book.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. Publication-date nuance: originally two journal essays (1904, 1905), later revised and republished as a book chapter in Weber's Gesammelte Aufsatze zur Religionssoziologie (1920); Wikidata may date the item to 1905 (original essays) or 1920 (revised book version), and may or may not have a clean separate item from the essay printings. Economy and Society is arguably the more 'important' work by scholarly weight even though it is the weaker single-item candidate - this is a real judgment call flagged for QC.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:an-investigation-of-the-laws-of-thought",
+    "type": "work",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2596947"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Boole's An Investigation of the Laws of Thought (1854) founded Boolean algebra / algebraic logic and is standardly credited, alongside Frege's later Begriffsschrift (1879, already the corpus's canonical_work for subfield:mathematical-logic per work-wave2), as one of the two watershed texts of modern mathematical logic. Proposing this makes mathematical-logic the corpus's FIRST co-canonical subfield (two independent canonical_work edges from two distinct works, both legitimately foundational to different strands - algebraic/Boolean logic vs. quantificational/predicate logic) - flagged explicitly for a modeling ruling (see report).",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. Co-canonical modeling risk: this is the first time the corpus would hold two canonical_work edges into the same subfield target from two different works/authors; whether that is the correct modeling (both genuinely co-founding, non-competing strands) versus a signal that mathematical-logic should be split into two subfields (Boolean/algebraic logic vs. predicate logic) is a judgment call for the curation gate, not resolved here.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:die-aetiologie-der-tuberkulose",
+    "type": "work",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q56599933"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Koch's Die Aetiologie der Tuberkulose (1882 paper announcing the discovery of Mycobacterium tuberculosis, delivered to the Berlin Physiological Society) is proposed as the single most decidable, identity-bounded canonical text for subfield:microbiology from Koch's body of work, because it is the one publication most consistently singled out by name in histories of medicine/microbiology (it is also where Koch's postulates were first articulated in developed form), unlike his more diffuse anthrax (1876) and cholera (1884) work which are usually described rather than cited as a single titled text.",
+    "uncertainty": "This is a HONESTY-GAP BORDERLINE case, weaker than the clean candidates in this batch: Koch, like Pasteur, has a genuinely diffuse body of work across several major papers (anthrax 1876, tuberculosis 1882, cholera 1884), and no single work carries the unambiguous field-founding weight that Origin of Species or Principia carry for their fields. The 1882 tuberculosis paper is my best single pick (most name-recognized, clearest single dated identity, introduces Koch's postulates) but a reasonable case exists for treating microbiology as having no single canonical text at all, mirroring the Pasteur drop recommended in the same batch (see report) - QC should treat this edge with extra scrutiny and consider dropping it too for consistency with the Pasteur non-proposal.",
+    "ambiguous": true
+  }
+]

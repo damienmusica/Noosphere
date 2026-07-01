@@ -263,9 +263,18 @@ note-bearing edges such as Newton∥Leibniz, Boole∥Frege). Provenance (`propos
 
 The phase-2 work layer (`work` nodes + `canonical_work` edges, first built in `work-wave1`, decision (87))
 promotes on the same **decidable, resolver-grounded** principle as the person / founder ladders. Because a
-`canonical_work` claim ("this text is *the* canonical work for this field/person") is a hard bibliographic
+`canonical_work` claim ("this text is *a* canonical work for this field/person") is a hard bibliographic
 fact — QID, author, and publication year are checkable against structured sources, not a contestable
 interpretive judgment — it belongs to the **(d)-family** and inherits the clause-6 v2 safety net above.
+
+> **Co-canonical works permitted — session #49 ruling (decision (90)).** A field/subfield may hold **more
+> than one** `canonical_work` edge (multiple founding/watershed texts), exactly as it may hold multiple
+> `founded_or_formalized` founders (record-not-resolve). Forcing a single "the" canonical text per field
+> would be an arbitrary tie-break and historically false. First cases: `subfield:mathematical-logic` holds
+> both Boole's *Laws of Thought* (algebraic logic) and Frege's *Begriffsschrift* (quantificational logic);
+> `field:sociology` holds Comte's *Cours*, Durkheim's *Rules*, and Weber's *Protestant Ethic*. The bound
+> against dilution is **W1** (watershed/founding texts only — a small set mirroring the field's founders,
+> not "every important book"), the same discipline as the founder layer. Schema unchanged.
 
 **`work`-node ladder (mirror of node-promotion policy v1 / the person-node policy).** A `work` node
 auto-promotes to `reviewed` when its Wikidata QID is **resolver-verified live** and both endpoints it
