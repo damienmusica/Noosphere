@@ -49,7 +49,7 @@ Every proposal artifact you write MUST record the proposer:
 
 - `proposed_by.model_name` — e.g. `Claude Sonnet`.
 - `proposed_by.model_version` — the exact model ID string from your
-  environment context (e.g. `claude-sonnet-4-6`). If your order supplies one,
+  environment context (e.g. `claude-sonnet-5`). If your order supplies one,
   use that verbatim.
 - `proposed_by.proposed_at` — the date supplied in your order (ISO 8601). Do
   not invent dates.

@@ -1,0 +1,122 @@
+{
+  "batch_id": "person-wave6-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-01"
+  },
+  "relation_scope": "person-wave6 — 2 subfield anchors + 1 concept anchor (behavioral-economics, social-choice-theory, fractal-geometry) + 4 founders (Thaler, Sen, Langacker, Mandelbrot) + reconciliation of 2 existing proposed founder edges (Kahneman, Wittgenstein); philosophy-of-language founders + two anchor subfields per order",
+  "nodes": [
+    {
+      "id": "subfield:behavioral-economics",
+      "type": "subfield",
+      "domain": "social_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Behavioral Economics",
+      "academic_status": "established",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q647525"
+      },
+      "source_hint": "Order-supplied Wikidata hint Q647525 for 'behavioral economics'; cross-check against Wikipedia 'Behavioral economics' and standard economics-discipline classifications.",
+      "rationale": "Behavioral economics is a well-established subfield of economics studying the effects of psychological, cognitive, and emotional factors on economic decisions; it has its own journals, conferences, Nobel laureates (Kahneman 2002, Thaler 2017), and university course offerings, meeting the discipline-node bar as a subfield of field:economics.",
+      "uncertainty": "The order-supplied QID Q647525 is an unverified training-recall/order hint — QC must live-verify it resolves to the behavioral-economics discipline entity (not a book, journal, or a differently-scoped article) via Wikidata P31/P279. Boundary question: behavioral economics overlaps heavily with subfield:judgment-and-decision-making (already in the corpus, currently proposed) and with cognitive psychology; QC should confirm this is not a duplicate referent at a different grain before treating it as a distinct node.",
+      "ambiguous": true
+    },
+    {
+      "id": "subfield:social-choice-theory",
+      "type": "subfield",
+      "domain": "social_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Social Choice Theory",
+      "academic_status": "established",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q1971461"
+      },
+      "source_hint": "Order-supplied Wikidata hint Q1971461 for 'social choice theory'; cross-check against Wikipedia 'Social choice theory' and standard economics/political-science discipline classifications.",
+      "rationale": "Social choice theory is an established theoretical framework studying collective decision-making, voting, and welfare aggregation (Arrow's impossibility theorem, Sen's work); it has a dedicated academic society (Society for Social Choice and Welfare), a dedicated journal, and is standardly taught as a distinct subfield within economics (with strong ties to political science and philosophy).",
+      "uncertainty": "The order-supplied QID Q1971461 is an unverified hint — QC must live-verify referent and P31/P279 typing. Boundary question: social choice theory sits at the economics/political-science/philosophy intersection; this proposal anchors it under field:economics per the order, but QC should consider whether a §13 cross-listing to political science is warranted (deferred here, not resolved).",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:fractal-geometry",
+      "type": "concept",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Fractal Geometry",
+      "academic_status": "established",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q193526"
+      },
+      "source_hint": "Best-guess Wikidata hint Q193526 for 'fractal' (the general concept article) — no confident distinct QID for 'fractal geometry' as a named discipline is recalled; QC should search live for a 'fractal geometry' or 'fractal analysis' entity and confirm whether Q193526 (the object/concept 'fractal') or a distinct discipline entity is the better anchor.",
+      "rationale": "Fractal geometry is the mathematical study of self-similar, non-integer-dimensional structures, founded and named by Mandelbrot (1975, 'Les objets fractals'); it is widely covered as a distinct area of mathematics (MSC 28A80 'Fractals', dedicated textbooks, courses) with applications across natural sciences, distinguishing it from an ordinary 'concept' entry that merely describes an object.",
+      "uncertainty": "This is exactly the concept-vs-subfield/defer judgment call the order flags: 'fractal geometry' may not have a clean, distinct academic-discipline Wikidata entity separate from the general 'fractal' object article — MSC2020 lists 'Fractals' (28A80) as a topic within measure/integration/real-functions rather than an independent discipline, and the field's institutional footprint (dedicated journals/societies) is thinner than a typical established subfield. The QID hint is a guess and may point at the wrong granularity (object vs. discipline). QC should decide whether to keep this as a `concept` node, retarget/rename, or defer entirely pending a cleaner anchor.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:richard-thaler",
+      "type": "person",
+      "domain": "social_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Richard Thaler",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q92610"
+      },
+      "rationale": "Thaler is one of the principal founders of behavioral economics, integrating psychological realism into economic theory across a body of work from the late 1970s onward (mental accounting, endowment effect, nudge theory with Cass Sunstein); he received the 2017 Nobel Memorial Prize in Economic Sciences explicitly for this founding contribution.",
+      "uncertainty": "QID Q92610 is an untrusted training-recall hint (born 1945) — QC must live-verify P31=Q5, P569 present, and P570 absent (aliveness is an observed fact for QC to confirm, not an assertion made here). LIVING PERSON — living-person handling v2 applies (decision (70)): stricter evidence floor (resolver-verified identity + ≥2 independent live claim-stating sources + conservative wording), auto-promotes when clean and no escalation signal fires. Co-founding is plural: Kahneman and Tversky's heuristics-and-biases program predates and underlies Thaler's behavioral-economics program (record-not-resolve — see the paired Kahneman edge below); some framings credit Kahneman/Tversky as the foundational psychological input and Thaler as the economist who built the subfield institutionally (Journal of Behavioral Economics, NBER working group). QID may be wrong.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:amartya-sen",
+      "type": "person",
+      "domain": "social_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Amartya Sen",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q125106"
+      },
+      "rationale": "Sen made foundational contributions to social choice theory (his 1970 book 'Collective Choice and Social Welfare' extended and reformulated Arrow's framework, introducing new axiomatic approaches and the liberal paradox) and is a central, widely-cited figure whose work substantially shaped the modern field; he received the 1998 Nobel Memorial Prize in Economic Sciences for contributions to welfare economics, including social choice theory.",
+      "uncertainty": "QID Q125106 is an untrusted training-recall hint (born 1933) — QC must live-verify P31=Q5, P569 present, P570 absent. LIVING PERSON — living-person handling v2 applies (decision (70)). REFERENT-PRECISION FLAG (the order names this explicitly): Sen's Nobel citation and broader legacy are often framed as 'welfare economics' rather than 'social choice theory' narrowly, and Kenneth Arrow (not in this batch) is the more standard 'founder' of modern social choice theory (Arrow's Impossibility Theorem, 1951, predates Sen's 1970 book by two decades) — Sen is more accurately a central/formalizing figure than the originating founder. QC should weigh whether `founded_or_formalized` (vs. a weaker relation, or targeting subfield:welfare-economics instead — which does not yet exist in the corpus) is the correct claim, and whether Arrow should be added as a companion node before this edge is promoted.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:ronald-langacker",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Ronald Langacker",
+      "is_living_person": true,
+      "external_ids": {
+        "wikidata": "Q3439179"
+      },
+      "rationale": "Langacker is a principal founder of cognitive linguistics, developing Cognitive Grammar (starting with his 1976 UC San Diego work and the two-volume 'Foundations of Cognitive Grammar', 1987/1991) as one of the field's foundational theoretical frameworks, alongside George Lakoff's cognitive semantics program.",
+      "uncertainty": "QID Q3439179 is an untrusted training-recall hint (born 1942) — QC must live-verify P31=Q5, P569 present, P570 absent. LIVING PERSON — living-person handling v2 applies (decision (70)). Co-founding is plural: George Lakoff (already `person:george-lakoff` in the corpus) is an equally-credited co-founder via a parallel theoretical program (cognitive semantics / conceptual metaphor theory); record-not-resolve — this batch proposes only the Langacker edge, Lakoff's corresponding founder edge to cognitive-linguistics is not confirmed to already exist and should be checked/added by QC if missing. QID may be wrong.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:benoit-mandelbrot",
+      "type": "person",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Benoit Mandelbrot",
+      "is_living_person": false,
+      "external_ids": {
+        "wikidata": "Q7591"
+      },
+      "rationale": "Mandelbrot coined the term 'fractal' in 1975 ('Les objets fractals: forme, hasard et dimension') and, through 'The Fractal Geometry of Nature' (1982), founded fractal geometry as a coherent mathematical field describing self-similar and non-integer-dimensional structures; he is universally credited as the founder of fractal geometry. Mandelbrot died in 2010.",
+      "uncertainty": "QID Q7591 is an untrusted training-recall hint — QC must live-verify P31=Q5 and P570 present (Mandelbrot died October 14, 2010 per public sources). QID hallucination rate in recent waves has been 66-100%; treat strictly as a hint. This edge's target (`concept:fractal-geometry`, proposed in this same batch) is a NEW node and not yet reviewed — the founder-ladder auto-promotion clause requires both endpoints reviewed, so this edge cannot auto-promote until the concept node itself clears QC and promotion.",
+      "ambiguous": true
+    }
+  ]
+}
