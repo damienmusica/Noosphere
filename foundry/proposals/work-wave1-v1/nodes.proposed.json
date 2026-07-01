@@ -1,0 +1,222 @@
+[
+  {
+    "id": "work:on-the-origin-of-species",
+    "type": "work",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1071850"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Darwin's 1859 book is the canonical founding text of evolutionary biology by natural selection; unambiguous single-work identity.",
+    "uncertainty": "QID is a best-guess recollection of Wikidata's entity for the book (distinct from any author QID); not independently resolved in this session.",
+    "ambiguous": false
+  },
+  {
+    "id": "work:philosophiae-naturalis-principia-mathematica",
+    "type": "work",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11409"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Newton's 1687 Principia is the canonical founding text of classical mechanics and mathematical physics.",
+    "uncertainty": "QID is a best-guess recollection for the work entity; Wikidata may model editions (1st/2nd/3rd Latin editions, English translations) as separate items from a general work item, so resolver should confirm which QID is the umbrella 'work' entity.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:principles-of-geology",
+    "type": "work",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1806354"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Lyell's 1830-33 multi-volume Principles of Geology is his canonical work and the foundational uniformitarian text of modern geology.",
+    "uncertainty": "Published in three volumes (1830, 1832, 1833) over several years; Wikidata may model this as one work item or as separate volume items. QID given is my best guess for the umbrella work.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:the-wealth-of-nations",
+    "type": "work",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q216191"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Smith's 1776 An Inquiry into the Nature and Causes of the Wealth of Nations is the canonical founding text of classical economics.",
+    "uncertainty": "QID is a best-guess recollection; short-title vs. full-title entity naming on Wikidata could differ from my recalled ID.",
+    "ambiguous": false
+  },
+  {
+    "id": "work:de-humani-corporis-fabrica",
+    "type": "work",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1636895"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Vesalius's 1543 De humani corporis fabrica is the canonical founding text of modern human anatomy.",
+    "uncertainty": "QID is a best-guess recollection for the work entity, not independently resolved.",
+    "ambiguous": false
+  },
+  {
+    "id": "work:systema-naturae",
+    "type": "work",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1140615"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Linnaeus's Systema Naturae (1735, with the definitive 10th edition of 1758) established binomial nomenclature and is canonical for systematics/taxonomy.",
+    "uncertainty": "Wikidata likely has separate items for the 1735 1st edition versus the 1758 10th edition (the one that fixes zoological nomenclature under ICZN); my QID guess may point to the wrong edition or an umbrella item. The table's 1735 date is the 1st edition; the 10th edition (1758) is arguably the more commonly cited 'canonical' edition for systematics.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:traite-elementaire-de-chimie",
+    "type": "work",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q3495523"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Lavoisier's 1789 Traité élémentaire de chimie is the canonical founding text of modern chemistry (oxygen theory, chemical nomenclature, conservation of mass).",
+    "uncertainty": "QID is a low-confidence recollection; I am less certain of this specific identifier than for the more famous works in this batch, and it may collide with a related bibliographic or translation item.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:cours-de-linguistique-generale",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1141263"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Saussure's Cours de linguistique générale (1916, posthumous, compiled by students from lecture notes) is the canonical founding text of structuralist linguistics and semiotics.",
+    "uncertainty": "Authorship is posthumous/compiled (editors Bally and Sechehaye reconstructed the text from student notes after Saussure's 1913 death) — this is a genuine authorship-attribution nuance worth flagging even though Saussure is uncontroversially credited as the intellectual author. QID is a best-guess recollection.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:experiments-on-plant-hybridization",
+    "type": "work",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1970864"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Mendel's 1866 paper (Versuche über Pflanzen-Hybriden) founded transmission genetics; canonical for the subfield despite being a journal paper rather than a book.",
+    "uncertainty": "This is a paper/article, not a book — the work node type may need to tolerate this distinction; QID is a best-guess recollection and could be confused with the journal-issue or proceedings item rather than the paper itself.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:the-biosphere",
+    "type": "work",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q4386379"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Vernadsky's 1926 Biosfera founded biogeochemistry as a discipline and the modern scientific concept of the biosphere.",
+    "uncertainty": "QID is a lower-confidence recollection than most items in this batch (Vernadsky's Wikidata footprint is thinner in my training than Darwin/Newton-tier figures); title translation variants (Russian original vs. English 1998 edition 'The Biosphere') may be modeled as separate Wikidata items.",
+    "ambiguous": true
+  }
+]

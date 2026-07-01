@@ -12050,5 +12050,329 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Philipp Frank was a core member of the Vienna Circle -- a theoretical physicist and philosopher of science (successor to Einstein's chair at the German University in Prague) and one of the three organizers of the Circle's pre-history. Sources (2 independent live-verified Wikipedia articles): 'Vienna Circle' (pre-history \"promoted by Philipp Frank, Hans Hahn and Otto Neurath\"; Inner Circle roster lists \"... Philipp Frank ...\") + 'Philipp Frank'. Identity Q79177 verified live (P31=Q5, P569 1884, P570 1966 deceased, physicist/philosopher, enwiki 'Philipp Frank'); generator-guessed QID (Q57281) hallucination, corrected. Node domain = natural_sciences (primary discipline: physics), corrected from the generation order's uniform 'humanities'. Both endpoints reviewed -> member_of, reviewed."
+  },
+  {
+    "id": "edge:on-the-origin-of-species-canonical-work-evolutionary-biology",
+    "source": "work:on-the-origin-of-species",
+    "target": "subfield:evolutionary-biology",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "On the Origin of Species (Charles Darwin, 1859) is a canonical founding text of evolutionary biology. Grounding: 2 independent live-verified Wikipedia articles ('On the Origin of Species' + 'Evolutionary biology'), both stating the founding/canonical role. Identity Q20124 live-verified via enwiki pageprops + wbgetentities (P31 written work, P50 Q1035, P577 1859, enwiki sitelink 'On the Origin of Species'); generator-guessed QID Q1071850 was a hallucination, corrected. First use of canonical_work; proposed-first (Phase-2 work-wave1 measure-first — work-node/canonical_work auto-reviewed ladder not yet open)."
+  },
+  {
+    "id": "edge:on-the-origin-of-species-canonical-work-charles-darwin",
+    "source": "work:on-the-origin-of-species",
+    "target": "person:charles-darwin",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "On the Origin of Species is Charles Darwin's canonical/defining work (authored by Charles Darwin, Wikidata P50=Q1035; published 1859). Grounding: 2 independent live Wikipedia articles ('On the Origin of Species' + 'Charles Darwin'). Identity Q20124 live-verified; proposed-first (ladder not open)."
+  },
+  {
+    "id": "edge:philosophiae-naturalis-principia-mathematica-canonical-work-physics",
+    "source": "work:philosophiae-naturalis-principia-mathematica",
+    "target": "field:physics",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Philosophiæ Naturalis Principia Mathematica (Isaac Newton, 1687) is a canonical founding text of physics. Grounding: 2 independent live-verified Wikipedia articles ('Philosophiæ Naturalis Principia Mathematica' + 'Physics'), both stating the founding/canonical role. Identity Q205921 live-verified via enwiki pageprops + wbgetentities (P31 written work / treatise, P50 Q935, P577 1687, enwiki sitelink 'Philosophiæ Naturalis Principia Mathematica'); generator-guessed QID Q11409 was a hallucination, corrected. First use of canonical_work; proposed-first (Phase-2 work-wave1 measure-first — work-node/canonical_work auto-reviewed ladder not yet open)."
+  },
+  {
+    "id": "edge:philosophiae-naturalis-principia-mathematica-canonical-work-isaac-newton",
+    "source": "work:philosophiae-naturalis-principia-mathematica",
+    "target": "person:isaac-newton",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Philosophiæ Naturalis Principia Mathematica is Isaac Newton's canonical/defining work (authored by Isaac Newton, Wikidata P50=Q935; published 1687). Grounding: 2 independent live Wikipedia articles ('Philosophiæ Naturalis Principia Mathematica' + 'Isaac Newton'). Identity Q205921 live-verified; proposed-first (ladder not open)."
+  },
+  {
+    "id": "edge:principles-of-geology-canonical-work-geology",
+    "source": "work:principles-of-geology",
+    "target": "subfield:geology",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Principles of Geology (Charles Lyell, 1830) is a canonical founding text of geology. Grounding: 2 independent live-verified Wikipedia articles ('Principles of Geology' + 'Geology'), both stating the founding/canonical role. Identity Q1348323 live-verified via enwiki pageprops + wbgetentities (P31 written work, P50 Q5333, P577 1830, enwiki sitelink 'Principles of Geology'); generator-guessed QID Q1806354 was a hallucination, corrected. First use of canonical_work; proposed-first (Phase-2 work-wave1 measure-first — work-node/canonical_work auto-reviewed ladder not yet open)."
+  },
+  {
+    "id": "edge:principles-of-geology-canonical-work-charles-lyell",
+    "source": "work:principles-of-geology",
+    "target": "person:charles-lyell",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Principles of Geology is Charles Lyell's canonical/defining work (authored by Charles Lyell, Wikidata P50=Q5333; published 1830). Grounding: 2 independent live Wikipedia articles ('Principles of Geology' + 'Charles Lyell'). Identity Q1348323 live-verified; proposed-first (ladder not open)."
+  },
+  {
+    "id": "edge:the-wealth-of-nations-canonical-work-economics",
+    "source": "work:the-wealth-of-nations",
+    "target": "field:economics",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "The Wealth of Nations (Adam Smith, 1776) is a canonical founding text of economics. Grounding: 2 independent live-verified Wikipedia articles ('The Wealth of Nations' + 'Economics'), both stating the founding/canonical role. Identity Q233562 live-verified via enwiki pageprops + wbgetentities (P31 literary work, P50 Q9381, P577 1776, enwiki sitelink 'The Wealth of Nations'); generator-guessed QID Q216191 was a hallucination, corrected. First use of canonical_work; proposed-first (Phase-2 work-wave1 measure-first — work-node/canonical_work auto-reviewed ladder not yet open)."
+  },
+  {
+    "id": "edge:the-wealth-of-nations-canonical-work-adam-smith",
+    "source": "work:the-wealth-of-nations",
+    "target": "person:adam-smith",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "The Wealth of Nations is Adam Smith's canonical/defining work (authored by Adam Smith, Wikidata P50=Q9381; published 1776). Grounding: 2 independent live Wikipedia articles ('The Wealth of Nations' + 'Adam Smith'). Identity Q233562 live-verified; proposed-first (ladder not open)."
+  },
+  {
+    "id": "edge:de-humani-corporis-fabrica-canonical-work-anatomy",
+    "source": "work:de-humani-corporis-fabrica",
+    "target": "subfield:anatomy",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "De humani corporis fabrica (Andreas Vesalius, 1543) is a canonical founding text of anatomy. Grounding: 2 independent live-verified Wikipedia articles ('De Humani Corporis Fabrica Libri Septem' + 'Anatomy'), both stating the founding/canonical role. Identity Q1233009 live-verified via enwiki pageprops + wbgetentities (P31 written work / treatise, P50 Q170267, P577 1543, enwiki sitelink 'De Humani Corporis Fabrica Libri Septem'); generator-guessed QID Q1636895 was a hallucination, corrected. First use of canonical_work; proposed-first (Phase-2 work-wave1 measure-first — work-node/canonical_work auto-reviewed ladder not yet open)."
+  },
+  {
+    "id": "edge:de-humani-corporis-fabrica-canonical-work-andreas-vesalius",
+    "source": "work:de-humani-corporis-fabrica",
+    "target": "person:andreas-vesalius",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "De humani corporis fabrica is Andreas Vesalius's canonical/defining work (authored by Andreas Vesalius, Wikidata P50=Q170267; published 1543). Grounding: 2 independent live Wikipedia articles ('De Humani Corporis Fabrica Libri Septem' + 'Andreas Vesalius'). Identity Q1233009 live-verified; proposed-first (ladder not open)."
+  },
+  {
+    "id": "edge:systema-naturae-canonical-work-systematics",
+    "source": "work:systema-naturae",
+    "target": "subfield:systematics",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Systema Naturae (Carl Linnaeus, 1735) is a canonical founding text of systematics. Grounding: 2 independent live-verified Wikipedia articles ('Systema Naturae' + 'Systematics'), both stating the founding/canonical role. Identity Q29270 live-verified via enwiki pageprops + wbgetentities (P31 written work, P50 Q1043, P577 1735, enwiki sitelink 'Systema Naturae'); generator-guessed QID Q1140615 was a hallucination, corrected. First use of canonical_work; proposed-first (Phase-2 work-wave1 measure-first — work-node/canonical_work auto-reviewed ladder not yet open)."
+  },
+  {
+    "id": "edge:systema-naturae-canonical-work-carl-linnaeus",
+    "source": "work:systema-naturae",
+    "target": "person:carl-linnaeus",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Systema Naturae is Carl Linnaeus's canonical/defining work (authored by Carl Linnaeus, Wikidata P50=Q1043; published 1735). Grounding: 2 independent live Wikipedia articles ('Systema Naturae' + 'Carl Linnaeus'). Identity Q29270 live-verified; proposed-first (ladder not open)."
+  },
+  {
+    "id": "edge:traite-elementaire-de-chimie-canonical-work-chemistry",
+    "source": "work:traite-elementaire-de-chimie",
+    "target": "field:chemistry",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Traité élémentaire de chimie (Antoine Lavoisier, 1789) is a canonical founding text of chemistry. Grounding: 2 independent live-verified Wikipedia articles ('Traité Élémentaire de Chimie' + 'Chemistry'), both stating the founding/canonical role. Identity Q2163561 live-verified via enwiki pageprops + wbgetentities (P31 scientific work, P50 Q39607, P577 1789, enwiki sitelink 'Traité Élémentaire de Chimie'); generator-guessed QID Q3495523 was a hallucination, corrected. First use of canonical_work; proposed-first (Phase-2 work-wave1 measure-first — work-node/canonical_work auto-reviewed ladder not yet open)."
+  },
+  {
+    "id": "edge:traite-elementaire-de-chimie-canonical-work-antoine-lavoisier",
+    "source": "work:traite-elementaire-de-chimie",
+    "target": "person:antoine-lavoisier",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Traité élémentaire de chimie is Antoine Lavoisier's canonical/defining work (authored by Antoine Lavoisier, Wikidata P50=Q39607; published 1789). Grounding: 2 independent live Wikipedia articles ('Traité Élémentaire de Chimie' + 'Antoine Lavoisier'). Identity Q2163561 live-verified; proposed-first (ladder not open)."
+  },
+  {
+    "id": "edge:cours-de-linguistique-generale-canonical-work-linguistics",
+    "source": "work:cours-de-linguistique-generale",
+    "target": "field:linguistics",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Cours de linguistique générale (Ferdinand de Saussure, 1916) is a canonical founding text of linguistics. Grounding: 2 independent live-verified Wikipedia articles ('Course in General Linguistics' + 'Linguistics'), both stating the founding/canonical role. Identity Q13231 live-verified via enwiki pageprops + wbgetentities (P31 academic work, P50 Q13230, P577 1916, enwiki sitelink 'Course in General Linguistics'); generator-guessed QID Q1141263 was a hallucination, corrected. First use of canonical_work; proposed-first (Phase-2 work-wave1 measure-first — work-node/canonical_work auto-reviewed ladder not yet open). The Cours founded both structural linguistics (primary anchor) and semiology (Saussure's founder anchor subfield:semiotics; recorded, not double-anchored)."
+  },
+  {
+    "id": "edge:cours-de-linguistique-generale-canonical-work-ferdinand-de-saussure",
+    "source": "work:cours-de-linguistique-generale",
+    "target": "person:ferdinand-de-saussure",
+    "relation": "canonical_work",
+    "confidence": 0.88,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Cours de linguistique générale is Ferdinand de Saussure's canonical work, compiled and published posthumously in 1916 by Charles Bally and Albert Sechehaye from students' notes of Saussure's 1906–1911 Geneva lectures (Saussure d. 1913); attribution to Saussure is standard. Grounding: 2 independent live Wikipedia articles ('Course in General Linguistics' + 'Ferdinand de Saussure'). Identity Q13231 live-verified; proposed-first."
+  },
+  {
+    "id": "edge:experiments-on-plant-hybridization-canonical-work-genetics",
+    "source": "work:experiments-on-plant-hybridization",
+    "target": "subfield:genetics",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Experiments on Plant Hybridization (Gregor Mendel, 1866) is a canonical founding text of genetics. Grounding: 2 independent live-verified Wikipedia articles ('Experiments on Plant Hybridization' + 'Genetics'), both stating the founding/canonical role. Identity Q5421194 live-verified via enwiki pageprops + wbgetentities (P31 scientific work (paper), P50 Q37970, P577 1866, enwiki sitelink 'Experiments on Plant Hybridization'); generator-guessed QID Q1970864 was a hallucination, corrected. First use of canonical_work; proposed-first (Phase-2 work-wave1 measure-first — work-node/canonical_work auto-reviewed ladder not yet open)."
+  },
+  {
+    "id": "edge:experiments-on-plant-hybridization-canonical-work-gregor-mendel",
+    "source": "work:experiments-on-plant-hybridization",
+    "target": "person:gregor-mendel",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Experiments on Plant Hybridization is Gregor Mendel's canonical/defining work (authored by Gregor Mendel, Wikidata P50=Q37970; published 1866). Grounding: 2 independent live Wikipedia articles ('Experiments on Plant Hybridization' + 'Gregor Mendel'). Identity Q5421194 live-verified; proposed-first (ladder not open)."
   }
 ]
