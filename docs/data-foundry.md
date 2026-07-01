@@ -106,7 +106,10 @@ Large-scale data construction happens in **batches**, each moving through a fixe
 4. **Opening a new auto-`reviewed` ladder that is a 1:1 mirror of an already-proven decidable
    (d)-family ladder**, once the batch measurement meets the standing bar (precision ≈ 1.0,
    generator-hallucination catch, reject-probe fires): CTO opens **with a notify** (logged; CPO may
-   veto) — not a blocking gate. Same decidable-QID-grounded family only.
+   veto) — not a blocking gate. Same decidable-QID-grounded family only. **Notify channel (2026-07-02):**
+   a decision-log entry **plus** an explicit "⚠ ladder opened — CPO may veto" marker in both the
+   session-end summary and the roadmap current-stage line, so a real veto window exists before the next
+   wave builds on the opened ladder.
 5. **Mechanical QC outcomes** — honesty-gap drops, reject-probe rejections, proposed-holds,
    record-not-resolve notes, duplicate / relation-choice drops.
 6. **Literature-boundary cases the rule already decides** (decision (86)) — knowledge-work → IN;
@@ -158,25 +161,46 @@ curriculum or textbook source where one exists, and fall back to manual
 curation only when none does. The `source_type` field must honestly reflect
 which kind an edge relies on.
 
-### Evidence permanence (Wayback snapshots — standing rule, 2026-06-11)
+### Evidence permanence (Wayback snapshots / wiki revision permalinks — standing rule, 2026-06-11; amended 2026-07-02)
 
-External pages that QC relies on for a verdict are **archived at verification
-time**: request a Wayback Save Page Now snapshot
-(`https://web.archive.org/save/<URL>` — keyless public endpoint, serial
-requests at a polite interval) and record the snapshot URL alongside the
-citation in the batch's permanent report. The same duty applies to research
-collection and editorial citation records. Rules:
+External pages that QC relies on for a verdict get a **permanence anchor
+recorded at verification time** in the batch's permanent report, alongside the
+citation. The same duty applies to research collection and editorial citation
+records. Two anchor kinds are accepted:
 
-- A snapshot URL counts only if it matches `web.archive.org/web/<timestamp>/…`
-  — a redirect to a save prompt is **not** a snapshot (measured failure mode).
-- Save failures are recorded honestly as `[SPN-FAILED]` — never silently
-  dropped, never substituted with an unverified URL.
-- For bot-blocked domains, verifying an **existing** snapshot
-  (`https://web.archive.org/web/<year>/<URL>` redirect to a real snapshot) is
-  an acceptable substitute; record that snapshot URL instead.
+- **MediaWiki-hosted sources (Wikipedia and sister projects) — revision
+  permalink (preferred, amendment 2026-07-02):** record the permalink of the
+  revision relied on, `https://<lang>.wikipedia.org/w/index.php?title=<title>&oldid=<revid>`
+  (the revid is returned by the same API calls QC already makes, or by
+  `action=query&prop=revisions`). A revision permalink is native, immutable,
+  keyless, and unaffected by later edits or SPN outages — for wiki sources it
+  is an equal-or-better anchor than a Wayback snapshot, and snapshotting a
+  wiki page via SPN is redundant.
+- **All other domains — Wayback Save Page Now snapshot:** request
+  `https://web.archive.org/save/<URL>` (keyless public endpoint, serial
+  requests at a polite interval) and record the snapshot URL. Rules:
+  - A snapshot URL counts only if it matches `web.archive.org/web/<timestamp>/…`
+    — a redirect to a save prompt is **not** a snapshot (measured failure mode).
+  - Save failures are recorded honestly as `[SPN-FAILED]` — never silently
+    dropped, never substituted with an unverified URL.
+  - For bot-blocked domains, verifying an **existing** snapshot
+    (`https://web.archive.org/web/<year>/<URL>` redirect to a real snapshot) is
+    an acceptable substitute; record that snapshot URL instead.
+
+A batch whose verdicts genuinely rely on no external page (offline
+housekeeping, status flips) records the explicit marker `[NO-EXTERNAL-EVIDENCE]`
+in its report instead — never silence.
 
 Rationale: live pages drift and die; the corpus's bulk re-auditability
 (vault decision log 2026-06-10 (3)) is only as durable as its evidence URLs.
+**Compliance history (2026-07-02 CPO audit):** the rule was honored through the
+`formalizes` era, then silently lapsed from the founder waves onward (0 anchors
+across the person/work/a-relation batches of sessions #44–#49). Remediation:
+`foundry/proposals/evidence-permanence-backfill-v1` records revision-as-of-QC-date
+permalinks for all affected reviewed ladder edges, and `validate-data.ts` now
+machine-enforces an anchor (or the explicit marker) in every new batch's records
+(decision (29) hygiene-device pattern; pre-existing batches are grandfathered —
+their coverage lives in the backfill report).
 
 ### Tension preservation (identity-axis vs perspective-axis — standing QC rule)
 
@@ -462,13 +486,20 @@ Living-person handling is **stricter than the deceased-auto path but is not a bl
    path, deferred — not a data-policy blocker).
 6. **The owner governs policy, thresholds, and an escalation queue/dashboard — not per-item sign-off**
    (restoring decision (7) / contract 3). Living-person promotions stay bulk re-auditable via retained
-   provenance.
+   provenance. **Escalation landing spot (2026-07-02):** when a signal from item 5 fires, it is recorded
+   in vault `reference/living-person-escalation-log.md` (one entry per escalation: node/edge, signal,
+   disposition) — designated in advance so the first real escalation has a durable home, not an ad-hoc one.
 
 **Robust to the fluid living/deceased boundary (observe-only, self-correcting).** Living status is *observed*
 at QC time (Wikidata P570 present/absent live-confirmed), never *predicted* from age. Drift only runs
 living → deceased (stricter → looser), so a person who has died since is merely handled *more* carefully
 until the next periodic re-grounding re-checks P570 and moves them to the deceased path. No lifespan
-estimation, no status-tracking burden.
+estimation, no status-tracking burden. **Re-grounding cadence (ratified 2026-07-02):** a P570 sweep of all
+`is_living_person: true` nodes runs at the start of any session that touches the person layer, or when
+more than 30 days have passed since the last sweep, whichever comes first — a handful of keyless
+`wbgetentities` calls at today's N. Outcomes (including living→deceased flips) are logged in the vault
+decision log; the machine-derived count in `npm run report:graph` is the canonical living-person figure
+(hand-incremented counters drift — measured in the 2026-07-02 audit).
 
 **Schema unchanged** — `is_living_person` already exists (`src/schema/node.ts`); `validate-data.ts` already
 enforces that living-person nodes carry ≥1 external identifier and status ∉ {draft, generated} and that

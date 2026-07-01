@@ -353,6 +353,75 @@ const REPO_ROOT = join(__dirname, "..");
       fail(`[${indexFile}] index row references missing batch directory "${name}" (stale index entry)`);
     }
   }
+
+  // --- Repo hygiene: evidence-permanence anchors in new batch records ---------
+  // Every batch committed after 2026-07-02 must carry at least one permanence
+  // anchor in its markdown records — a Wayback snapshot, a MediaWiki revision
+  // permalink (…oldid=NNN), an honest [SPN-FAILED] marker, or the explicit
+  // [NO-EXTERNAL-EVIDENCE] marker (docs/data-foundry.md §8, amended 2026-07-02;
+  // hygiene-device pattern, vault decision (29): the rule lapsed silently for
+  // seven consecutive batches before the 2026-07-02 audit caught it). Batches
+  // predating the check are grandfathered; their retroactive coverage lives in
+  // foundry/proposals/evidence-permanence-backfill-v1. Offline by design.
+  const GRANDFATHERED_BATCHES = new Set([
+    "a-relations-philosophy-v1", "a-relations-wave2-v1", "a-relations-wave3-v1",
+    "arts-design-part-of-edges-v1", "arts-design-skeleton-v1", "arts-summaries-v1",
+    "cis-bflag-resolution-v1", "cis-bflag-summaries-v1", "cis-part-of-edges-v1",
+    "cis-summaries-v1", "clause-6-v2-validation-v1", "cofounder-closure-v1",
+    "cognitive-sciences-bflag-resolution-v1", "cognitive-sciences-part-of-edges-v1",
+    "cognitive-sciences-skeleton-v1", "cognitive-sciences-summaries-v1",
+    "computer-and-information-sciences-skeleton-v1", "eng-summaries-v1",
+    "engineering-technology-part-of-edges-v1", "engineering-technology-skeleton-v1",
+    "formal-formalizes-v1", "formal-formalizes-wave2-v1", "formal-founders-v1",
+    "formal-founders-wave2-v1", "formal-sciences-skeleton-v1", "formal-sciences-summaries-v1",
+    "founder-wave3-v1", "humanities-remainder-bflag-resolution-v1",
+    "humanities-remainder-part-of-edges-v1", "humanities-remainder-skeleton-v1",
+    "humanities-remainder-summaries-v1", "life-sciences-skeleton-v1", "life-summaries-v1",
+    "logical-positivism-v1", "medicine-and-health-part-of-edges-v1",
+    "medicine-and-health-skeleton-v1", "medicine-bflag-resolution-v1", "medicine-summaries-v1",
+    "ml-foundations-v1", "natural-sciences-part-of-edges-v1", "natural-sciences-skeleton-v1",
+    "natural-sciences-summaries-v1", "ns-bflag-resolution-v1", "openalex-cis-prevalidation-v1",
+    "openalex-cognitive-sciences-prevalidation-v1", "openalex-humanities-prevalidation-v1",
+    "openalex-medicine-prevalidation-v1", "openalex-ns-prevalidation-v1",
+    "openalex-round1-prevalidation-v1", "openalex-stem-prevalidation-v1",
+    "person-wave10-v1", "person-wave4-v1", "person-wave5-v1", "person-wave6-v1",
+    "person-wave7-v1", "person-wave8-v1", "person-wave9-v1", "philosophy-skeleton-v1",
+    "philosophy-summaries-v1", "philosophy-summaries-v2", "pivotal-influence-v1",
+    "qid-adversarial-audit-cis-v1", "qid-adversarial-audit-cognitive-sciences-v1",
+    "qid-adversarial-audit-fs-v1", "qid-adversarial-audit-humanities-remainder-v1",
+    "qid-adversarial-audit-medicine-v1", "qid-adversarial-audit-round1-v1",
+    "qid-adversarial-audit-seed-philosophy-v1", "record-not-resolve-closure-v1",
+    "seed-edges-promotion-v1", "skeleton-part-of-edges-v1", "social-sciences-part-of-edges-v1",
+    "social-sciences-skeleton-v1", "social-sciences-summaries-v1", "ss-arts-bflag-resolution-v1",
+    "structural-nodes-v1", "work-wave1-v1", "work-wave2-v1", "work-wave3-v1",
+  ]);
+  const ANCHOR_PATTERNS = [
+    /web\.archive\.org\/web\/\d+/, // Wayback snapshot
+    /[?&](?:amp;)?oldid=\d+/, // MediaWiki revision permalink
+    /\[SPN-FAILED\]/, // honest save failure
+    /\[NO-EXTERNAL-EVIDENCE\]/, // explicit offline-batch marker
+  ];
+  for (const dir of batchDirs) {
+    if (GRANDFATHERED_BATCHES.has(dir)) continue;
+    let mdText = "";
+    try {
+      for (const entry of readdirSync(join(proposalsDir, dir))) {
+        if (entry.endsWith(".md")) {
+          mdText += readFileSync(join(proposalsDir, dir, entry), "utf8");
+        }
+      }
+    } catch (err) {
+      fail(`[foundry/proposals/${dir}] could not read batch records: ${(err as Error).message}`);
+      continue;
+    }
+    if (!ANCHOR_PATTERNS.some((p) => p.test(mdText))) {
+      fail(
+        `[foundry/proposals/${dir}] no evidence-permanence anchor in batch records: ` +
+          `record a Wayback snapshot or wiki revision permalink (…oldid=NNN) for every page QC relied on, ` +
+          `or the explicit [SPN-FAILED] / [NO-EXTERNAL-EVIDENCE] marker (docs/data-foundry.md §8)`,
+      );
+    }
+  }
 }
 
 // --- Repo hygiene: local .md links must resolve --------------------------------
