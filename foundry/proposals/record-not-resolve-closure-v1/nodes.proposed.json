@@ -1,0 +1,38 @@
+[
+  {
+    "id": "person:kenneth-arrow",
+    "type": "person",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q380799"
+    },
+    "_qid_unverified": true,
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "rationale": "Arrow is the originating founder of modern social choice theory: his Impossibility (General Possibility) Theorem in 'Social Choice and Individual Values' (1951) launched the modern field roughly two decades before Sen's 1970 'Collective Choice and Social Welfare'. He is a canonical, unambiguous founder figure (1972 Nobel Memorial Prize in Economic Sciences, shared with John Hicks, cited for 'pioneering contributions to general economic equilibrium theory and welfare theory'). Proposed specifically to close the record-not-resolve note on edge:amartya-sen-founded-social-choice-theory, which already names Arrow as the field originator not yet a corpus node.",
+    "uncertainty": "The `external_ids.wikidata` value is an UNVERIFIED GUESS by the generator (Q380799) and must be live-verified by the orchestrator via P31=Q5 (human) and P569/P570 (born 1921-08-23, died 2017-02-21) before this node may promote past `generated`. Domain choice `social_sciences` mirrors Arrow's institutional home (economics) but he also did foundational work in general equilibrium theory and operations research; social_sciences is correct for the founder-of-social-choice-theory framing but is a judgment call, not a single-fact lookup.",
+    "ambiguous": true
+  },
+  {
+    "id": "person:amos-tversky",
+    "type": "person",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q92747"
+    },
+    "_qid_unverified": true,
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "rationale": "Tversky is Kahneman's equal psychological co-founder of behavioral economics via the heuristics-and-biases research program (Tversky & Kahneman 1974, 'Judgment under Uncertainty: Heuristics and Biases') and prospect theory (Tversky & Kahneman 1979, 'Prospect Theory: An Analysis of Decision under Risk') — the paper most often cited as behavioral economics' founding formal model. Proposed specifically to close the record-not-resolve note on edge:daniel-kahneman-founded-behavioral-economics, which already names Tversky as the equal co-founder not yet a corpus node. Domain mirrors the existing person:daniel-kahneman node (cognitive_sciences), since Tversky was likewise a cognitive/mathematical psychologist by training and institutional home (Stanford Psychology), not an economist.",
+    "uncertainty": "The `external_ids.wikidata` value is an UNVERIFIED GUESS by the generator (Q92747) and must be live-verified by the orchestrator via P31=Q5 (human) and P569/P570 (born 1937-03-16, died 1996-06-02) before this node may promote past `generated`. Tversky died before the 2002 Nobel (Nobel Memorial Prizes are not awarded posthumously), so no Nobel-citation evidence trail exists for him the way it does for Kahneman/Thaler/Sen/Arrow -- his founding-status claim rests on the joint publication record and secondary-source characterization (Kahneman's own public statements that he would have shared the prize with Tversky) rather than a prize citation, which is a slightly different evidentiary shape the orchestrator should weigh.",
+    "ambiguous": true
+  }
+]
