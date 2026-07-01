@@ -19,6 +19,7 @@ legible and the data reviewable. Do not add relation types casually.
 | `critiques` | A critiques, opposes, or challenges B. |
 | `canonical_work` | Work A is canonical for a field, person, or concept B. |
 | `adjacent_to` | A is adjacent/strongly related to B, not yet more specific. |
+| `member_of` | Person/entity A is a member of group/institution B. |
 
 ## Constraints
 
@@ -27,9 +28,14 @@ legible and the data reviewable. Do not add relation types casually.
 
 ## Adequacy and watch-items (measurement-first — no schema change yet)
 
-The 12 relation types above are **ratified as adequate** for the propositional-edge depth pilot
+The 13 relation types above are **ratified as adequate** for the propositional-edge depth pilot
 (formal-sciences `formalizes` / `founded_or_formalized` — see the vault Lane B pipeline design).
 Enum expansion is **forbidden until a measured need** is recorded (charter over-scaffolding guard).
+
+`member_of` was added under exactly that gate (vault decision log, session #45): the ratified
+movement/school axis rule (§12; vault decision (73)) types a *group of named people* — the Vienna
+Circle being the first — as an `institution` node, whose membership edges have no adequate existing
+relation. CPO-ratified this session; added here + in the Zod enum + validated in one change.
 
 The following are **things to measure, not to build.** Each is encoded first as a `note` convention so
 pressure can be counted; a schema change is proposed only after recurrence crosses a threshold, and

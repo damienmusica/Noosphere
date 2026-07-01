@@ -18,6 +18,7 @@ export const relationTypeSchema = z.enum([
   "critiques",
   "canonical_work",
   "adjacent_to",
+  "member_of",
 ]);
 export type RelationType = z.infer<typeof relationTypeSchema>;
 
