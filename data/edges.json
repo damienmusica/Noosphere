@@ -10949,7 +10949,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-01"
     },
-    "note": "Kahneman (with Amos Tversky) provided the psychological foundations of behavioral economics via the heuristics-and-biases program (1974) and prospect theory (1979); Nobel Memorial Prize in Economic Sciences 2002. Record-not-resolve plural founding: Amos Tversky (deceased 1996, not yet a corpus node) is the equal psychological co-founder and Richard Thaler built the economic subfield institutionally (see edge:richard-thaler-founded-behavioral-economics). Sources: Wikipedia 'Behavioral economics'/'Daniel Kahneman' + NobelPrize.org 2002 scientific background. Identity Q233950 verified (P570 2024-03-27, deceased). Generator QID hint was a hallucination; corrected. Deceased founder ladder -> reviewed. Grounded anchor for Kahneman; the daniel-kahneman-founded-judgment-and-decision-making edge stays proposed (JDM label lacks a discipline QID)."
+    "note": "Kahneman (with Amos Tversky) provided the psychological foundations of behavioral economics via the heuristics-and-biases program (1974) and prospect theory (1979); Nobel Memorial Prize in Economic Sciences 2002. Record-not-resolve plural founding: Amos Tversky (deceased 1996; now a corpus node -- see edge:amos-tversky-founded-behavioral-economics) is the equal psychological co-founder and Richard Thaler built the economic subfield institutionally (see edge:richard-thaler-founded-behavioral-economics). Sources: Wikipedia 'Behavioral economics'/'Daniel Kahneman' + NobelPrize.org 2002 scientific background. Identity Q233950 verified (P570 2024-03-27, deceased). Generator QID hint was a hallucination; corrected. Deceased founder ladder -> reviewed. Grounded anchor for Kahneman; the daniel-kahneman-founded-judgment-and-decision-making edge stays proposed (JDM label lacks a discipline QID)."
   },
   {
     "id": "edge:richard-thaler-founded-behavioral-economics",
@@ -10987,7 +10987,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-01"
     },
-    "note": "Sen made founding-grade contributions to modern social choice theory -- 'Collective Choice and Social Welfare' (1970) reformulated the Arrovian framework (social welfare functionals, informational basis, the liberal paradox); Nobel Memorial Prize in Economic Sciences 1998. Record-not-resolve: Kenneth Arrow originated the modern field (Impossibility Theorem, 1951; not yet a corpus node) and Duncan Black is also foundational -- SEP 'Social Choice Theory' names Arrow, Sen, and Black as the figures the field took off with. Scope note: Sen's Nobel citation reads 'welfare economics' broadly; social choice is his core theoretical field. Sources: SEP 'Social Choice Theory' + Wikipedia 'Social choice theory'/'Amartya Sen'. Living-person v2 (decision (70)): identity Q132489 verified (P31=Q5, P569 1933, P570 absent = living-confirmed), >=2 independent live claim-stating sources, conservative wording, no escalation -> policy-auto reviewed. Generator QID hint Q125106 was a hallucination; corrected."
+    "note": "Sen made founding-grade contributions to modern social choice theory -- 'Collective Choice and Social Welfare' (1970) reformulated the Arrovian framework (social welfare functionals, informational basis, the liberal paradox); Nobel Memorial Prize in Economic Sciences 1998. Record-not-resolve: Kenneth Arrow originated the modern field (Impossibility Theorem, 1951; now a corpus node -- see edge:kenneth-arrow-founded-social-choice-theory) and Duncan Black is also foundational (not yet a corpus node) -- SEP 'Social Choice Theory' names Arrow, Sen, and Black as the figures the field took off with. Scope note: Sen's Nobel citation reads 'welfare economics' broadly; social choice is his core theoretical field. Sources: SEP 'Social Choice Theory' + Wikipedia 'Social choice theory'/'Amartya Sen'. Living-person v2 (decision (70)): identity Q132489 verified (P31=Q5, P569 1933, P570 absent = living-confirmed), >=2 independent live claim-stating sources, conservative wording, no escalation -> policy-auto reviewed. Generator QID hint Q125106 was a hallucination; corrected."
   },
   {
     "id": "edge:ronald-langacker-founded-cognitive-linguistics",
@@ -11027,5 +11027,43 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Frege is the primary founder of modern (analytic) philosophy of language -- his sense/reference distinction ('On Sense and Reference', 1892) and logical-semantic framework are standardly treated as its founding moment. Record-not-resolve plural founding: Russell, Wittgenstein (see edge:ludwig-wittgenstein-founded-philosophy-of-language), and Austin are also principal across distinct strands. Sources: SEP (Frege) + IEP 'Language, Philosophy of' + Wikipedia 'Philosophy of language'. Identity Q60028 verified (deceased 1925). Both endpoints reviewed -> deceased founder ladder -> reviewed."
+  },
+  {
+    "id": "edge:kenneth-arrow-founded-social-choice-theory",
+    "source": "person:kenneth-arrow",
+    "target": "subfield:social-choice-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Kenneth Arrow is the originating founder of modern social choice theory -- his impossibility theorem in 'Social Choice and Individual Values' (1951) inaugurated the modern axiomatic field, roughly two decades before Sen (1970). Record-not-resolve plural founding: SEP 'Social Choice Theory' names Arrow, Amartya Sen (see edge:amartya-sen-founded-social-choice-theory), and Duncan Black as the figures the field took off with; Duncan Black is not yet a corpus node (a remaining record-not-resolve gap). Sources (2 independent, live-verified): SEP 'Social Choice Theory' ('social choice theory took off in the 20th century with the works of Kenneth Arrow, Amartya Sen, and Duncan Black') + Wikipedia 'Social choice theory' ('Kenneth Arrow's book Social Choice and Individual Values is often recognized as inaugurating the modern era of social choice theory'). Identity Q192592 verified live (P31=Q5, P569 1921-08-23, P570 2017-02-21 deceased, occupation economist). Generator QID hint Q380799 was a hallucination (M. Pokora, a French singer); corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. Closes the record-not-resolve gap flagged in edge:amartya-sen-founded-social-choice-theory."
+  },
+  {
+    "id": "edge:amos-tversky-founded-behavioral-economics",
+    "source": "person:amos-tversky",
+    "target": "subfield:behavioral-economics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:nobelprize"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Amos Tversky is Daniel Kahneman's equal psychological co-founder of behavioral economics -- the heuristics-and-biases program (Tversky & Kahneman 1974) and prospect theory (1979), a seminal formal core of the field. Record-not-resolve plural founding: co-equal with Kahneman (see edge:daniel-kahneman-founded-behavioral-economics) on the psychological side and Richard Thaler (see edge:richard-thaler-founded-behavioral-economics) on the economic side. Evidentiary asymmetry (recorded, not a defect): Tversky died in 1996, before the 2002 Nobel awarded to Kahneman (Nobel prizes are not posthumous), so his evidence is the joint-program record, not a laureate citation. Sources (2 independent, live-verified): Wikipedia 'Amos Tversky'/'Behavioral economics' (prospect theory 'is considered one of the seminal works of behavioral economics'; Tversky named among the founding psychologists of the field) + NobelPrize.org 2002 press release ('Together with Amos Tversky (deceased in 1996), he has formulated prospect theory'). Identity Q474333 verified live (P31=Q5, P569 1937-03-16, P570 1996-06-02 deceased, occupation psychologist, enwiki sitelink 'Amos Tversky'). Generator QID hint Q92747 was a hallucination (Eric Schmidt); corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. Closes the record-not-resolve gap flagged in edge:daniel-kahneman-founded-behavioral-economics."
   }
 ]
