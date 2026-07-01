@@ -1,0 +1,483 @@
+[
+  {
+    "id": "edge:on-the-origin-of-species-canonical-evolutionary-biology",
+    "source": "work:on-the-origin-of-species",
+    "target": "subfield:evolutionary-biology",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "On the Origin of Species (1859) is the founding text of the theory of evolution by natural selection and is canonical for evolutionary biology as a subfield.",
+    "rationale": "Universally cited as THE founding book of evolutionary biology; near-zero scholarly disagreement on this attribution.",
+    "uncertainty": "None material to the field-level claim; risk is confined to the work node's QID, not this relation.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:on-the-origin-of-species-canonical-charles-darwin",
+    "source": "work:on-the-origin-of-species",
+    "target": "person:charles-darwin",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "On the Origin of Species (1859), authored by Charles Darwin, is Darwin's defining and canonical work.",
+    "rationale": "Darwin is the sole author of record; the work is unambiguously his single most defining publication.",
+    "uncertainty": "None material.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:principia-canonical-physics",
+    "source": "work:philosophiae-naturalis-principia-mathematica",
+    "target": "field:physics",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Principia (1687) established the laws of motion and universal gravitation and is the canonical founding text of classical mechanics/physics.",
+    "rationale": "Standard history-of-science consensus; MacTutor and general encyclopedic sources treat Principia as the founding text of mathematical physics.",
+    "uncertainty": "None material to the field-level claim.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:principia-canonical-isaac-newton",
+    "source": "work:philosophiae-naturalis-principia-mathematica",
+    "target": "person:isaac-newton",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Principia (1687), authored by Isaac Newton, is Newton's defining and canonical work.",
+    "rationale": "Newton is sole author of record; Principia is his single most defining publication over the Opticks and other works.",
+    "uncertainty": "None material.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:principles-of-geology-canonical-geology",
+    "source": "work:principles-of-geology",
+    "target": "subfield:geology",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Principles of Geology (1830-33) established uniformitarianism as the working framework of modern geology and is canonical for the subfield.",
+    "rationale": "Widely credited (including by Darwin's own citation of it during the Beagle voyage) as the text that made uniformitarianism the operating paradigm of geology.",
+    "uncertainty": "MacTutor's coverage of Lyell is thinner than for mathematicians; the citation is plausible but less certain than for the mathematics/physics entries in this batch.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:principles-of-geology-canonical-charles-lyell",
+    "source": "work:principles-of-geology",
+    "target": "person:charles-lyell",
+    "relation": "canonical_work",
+    "confidence": 0.88,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Principles of Geology (1830-33), authored by Charles Lyell, is Lyell's defining and canonical work.",
+    "rationale": "Lyell is sole author of record; Principles of Geology is unambiguously his defining publication.",
+    "uncertainty": "Only one candidate source cited here (Wikipedia) rather than two independent ones; QC should find a second (e.g. a geology-history reference) before promotion.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:wealth-of-nations-canonical-economics",
+    "source": "work:the-wealth-of-nations",
+    "target": "field:economics",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "The Wealth of Nations (1776) is the founding text of classical economics and modern economic theory; canonical for the field.",
+    "rationale": "Textbook-level consensus across economics history; SEP's entry on Adam Smith treats it as his central economic work founding the discipline.",
+    "uncertainty": "None material to the field-level claim.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:wealth-of-nations-canonical-adam-smith",
+    "source": "work:the-wealth-of-nations",
+    "target": "person:adam-smith",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "The Wealth of Nations (1776), authored by Adam Smith, is Smith's defining and canonical work (alongside The Theory of Moral Sentiments, but Wealth of Nations is the canonical economics work).",
+    "rationale": "Smith is sole author of record; Wealth of Nations is the work for which he is canonically known in economics (Moral Sentiments is his other major work but belongs to moral philosophy, not this field target).",
+    "uncertainty": "Smith wrote two major works; note explicitly scopes this edge to the economics-canonical one to avoid conflating with Moral Sentiments.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:de-humani-corporis-fabrica-canonical-anatomy",
+    "source": "work:de-humani-corporis-fabrica",
+    "target": "subfield:anatomy",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "De humani corporis fabrica (1543) is the founding text of modern human anatomy based on direct dissection, replacing Galenic anatomy; canonical for the subfield.",
+    "rationale": "Standard history-of-medicine consensus; treated as the starting point of modern anatomical science.",
+    "uncertainty": "MacTutor's coverage of Vesalius (a physician, not mathematician) may be thin or absent; QC should verify or substitute a more relevant specialist source.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:de-humani-corporis-fabrica-canonical-andreas-vesalius",
+    "source": "work:de-humani-corporis-fabrica",
+    "target": "person:andreas-vesalius",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "De humani corporis fabrica (1543), authored by Andreas Vesalius, is Vesalius's defining and canonical work.",
+    "rationale": "Vesalius is sole author of record; the Fabrica is unambiguously his defining publication.",
+    "uncertainty": "Only one candidate source cited; QC should add a second independent source before promotion.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:systema-naturae-canonical-systematics",
+    "source": "work:systema-naturae",
+    "target": "subfield:systematics",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Systema Naturae established binomial nomenclature and the hierarchical classification system that founded modern biological systematics; canonical for the subfield.",
+    "rationale": "Universally credited in taxonomy/systematics as the founding classification work.",
+    "uncertainty": "The 10th edition (1758) rather than the 1st (1735) is the one formally fixed as the starting point of zoological nomenclature under the ICZN; the note and edge treat the work as a single canonical entity across editions, which is a simplification QC should check against how the work node itself resolves.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:systema-naturae-canonical-carl-linnaeus",
+    "source": "work:systema-naturae",
+    "target": "person:carl-linnaeus",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Systema Naturae, authored by Carl Linnaeus, is Linnaeus's defining and canonical work.",
+    "rationale": "Linnaeus is sole author of record; Systema Naturae is unambiguously his defining publication.",
+    "uncertainty": "Same edition-identity caveat as the field-level edge above.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:traite-elementaire-de-chimie-canonical-chemistry",
+    "source": "work:traite-elementaire-de-chimie",
+    "target": "field:chemistry",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Traité élémentaire de chimie (1789) systematized the new chemical nomenclature and the oxygen theory of combustion, founding modern chemistry; canonical for the field.",
+    "rationale": "Standard history-of-chemistry consensus (\"father of modern chemistry\" narrative); SEP's history-of-chemistry-adjacent entries typically cite this text.",
+    "uncertainty": "SEP coverage of this specific work (as opposed to Lavoisier the person) is not confirmed by me; QC should verify the SEP citation resolves to relevant content or substitute oxford-bibliographies.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:traite-elementaire-de-chimie-canonical-antoine-lavoisier",
+    "source": "work:traite-elementaire-de-chimie",
+    "target": "person:antoine-lavoisier",
+    "relation": "canonical_work",
+    "confidence": 0.88,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Traité élémentaire de chimie (1789), authored by Antoine Lavoisier, is Lavoisier's defining and canonical work.",
+    "rationale": "Lavoisier is sole author of record; this text is his most defining publication.",
+    "uncertainty": "Only one candidate source cited; QC should add a second independent source before promotion.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:cours-de-linguistique-generale-canonical-semiotics",
+    "source": "work:cours-de-linguistique-generale",
+    "target": "subfield:semiotics",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Cours de linguistique générale (1916) established structuralist sign theory (signifier/signified) and is a founding text of modern semiotics as well as structural linguistics; canonical for the subfield.",
+    "rationale": "Standard intellectual-history consensus (Saussure as a co-founder of modern semiotics alongside Peirce); SEP's Saussure/semiotics-adjacent entries support this.",
+    "uncertainty": "Semiotics has two independent founding lineages (Saussure's semiology and Peirce's semiotics); the field-level canonical claim is accurate for the Saussurean/structuralist strand specifically, not exclusive founding of the whole subfield. Flagged for record-not-resolve.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:cours-de-linguistique-generale-canonical-ferdinand-de-saussure",
+    "source": "work:cours-de-linguistique-generale",
+    "target": "person:ferdinand-de-saussure",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Cours de linguistique générale is Saussure's canonical work, though published posthumously (1916, three years after his 1913 death) and compiled by editors Charles Bally and Albert Sechehaye from students' lecture notes rather than from a manuscript Saussure himself finalized.",
+    "rationale": "Universally attributed to Saussure as the source of his ideas despite posthumous/compiled editorship; standard practice in intellectual history to credit the lecturer, not the editors, as author.",
+    "uncertainty": "Authorship is a compiled reconstruction, not an autograph text - a legitimate attribution nuance for QC to weigh, though not one that changes the standard attribution.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:experiments-on-plant-hybridization-canonical-genetics",
+    "source": "work:experiments-on-plant-hybridization",
+    "target": "subfield:genetics",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Mendel's 1866 paper established the laws of inheritance (segregation and independent assortment) and is the founding text of transmission genetics; canonical for the subfield.",
+    "rationale": "Universally credited as the founding document of genetics, notwithstanding its 1900 rediscovery lag.",
+    "uncertainty": "None material to the field-level claim.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:experiments-on-plant-hybridization-canonical-gregor-mendel",
+    "source": "work:experiments-on-plant-hybridization",
+    "target": "person:gregor-mendel",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Experiments on Plant Hybridization (1866), authored by Gregor Mendel, is Mendel's defining and canonical work.",
+    "rationale": "Mendel is sole author of record; this paper is unambiguously his defining publication.",
+    "uncertainty": "None material.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:the-biosphere-canonical-geochemistry",
+    "source": "work:the-biosphere",
+    "target": "subfield:geochemistry",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Vernadsky's 1926 Biosfera (The Biosphere) founded biogeochemistry as a discipline by treating living matter as a geological force; canonical for the geochemistry subfield.",
+    "rationale": "Standard history-of-science credit to Vernadsky for founding biogeochemistry via this text.",
+    "uncertainty": "Only one candidate source cited; my confidence in Vernadsky-specific sourcing is lower than for the other figures in this batch. QC should find a second independent source (e.g. oxford-bibliographies) before promotion.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:the-biosphere-canonical-vladimir-vernadsky",
+    "source": "work:the-biosphere",
+    "target": "person:vladimir-vernadsky",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "The Biosphere (1926), authored by Vladimir Vernadsky, is Vernadsky's defining and canonical work.",
+    "rationale": "Vernadsky is sole author of record; this text is his most cited and defining publication internationally.",
+    "uncertainty": "Only one candidate source cited; QC should add a second independent source before promotion. Title/translation-variant identity risk also applies here (see node uncertainty).",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:on-the-origin-of-species-canonical-alfred-russel-wallace-PROBE",
+    "source": "work:on-the-origin-of-species",
+    "target": "person:alfred-russel-wallace",
+    "relation": "canonical_work",
+    "confidence": 0.4,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "probe": "reject-expected",
+    "note": "REJECTION PROBE (intended flaw): Wallace independently co-discovered natural selection and co-presented the 1858 Darwin-Wallace paper, but he did not author On the Origin of Species - Darwin alone wrote and published the 1859 book. This edge misattributes Darwin's canonical work to Wallace and should be rejected; Wallace's own canonical work would be a different text (e.g. Darwinism, 1889).",
+    "rationale": "Deliberately proposed as a discrimination test for QC: Wallace's genuine historical connection to natural selection makes this a plausible-looking but incorrect canonical_work claim, distinct from a random misattribution.",
+    "uncertainty": "This edge is expected to be wrong by construction; the failure mode being tested is authorship misattribution via co-discoverer confusion, not a genuine uncertainty about the facts.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:principia-canonical-evolutionary-biology-PROBE",
+    "source": "work:philosophiae-naturalis-principia-mathematica",
+    "target": "subfield:evolutionary-biology",
+    "relation": "canonical_work",
+    "confidence": 0.2,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "probe": "reject-expected",
+    "note": "REJECTION PROBE (intended flaw): Principia (1687) is a foundational text of classical mechanics and mathematical physics, published nearly two centuries before Darwin's theory of evolution (1859) and addressing an entirely unrelated domain (motion, gravitation, mathematics) rather than biological descent with modification. This is an anachronistic and domain-mismatched claim and should be rejected.",
+    "rationale": "Deliberately proposed as a discrimination test for QC: tests whether the pipeline catches a clear cross-domain, cross-era mismatch rather than only subtle misattributions.",
+    "uncertainty": "This edge is expected to be wrong by construction; the failure mode being tested is anachronism/domain mismatch, not a genuine uncertainty about the facts.",
+    "ambiguous": true
+  }
+]
