@@ -1,0 +1,141 @@
+{
+  "batch_id": "person-wave6-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-01"
+  },
+  "relation_scope": "part_of (3 anchor placements) + founded_or_formalized (6 founder edges, incl. reconciliation notes for the 2 pre-existing proposed edges the orchestrator will handle separately)",
+  "edges": [
+    {
+      "candidate_id": "P1",
+      "source": "subfield:behavioral-economics",
+      "target": "field:economics",
+      "relation": "part_of",
+      "confidence": 0.95,
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Behavioral economics' (lead section describes it as a subfield/method of economic analysis); standard economics curricula and JEL classification codes (D90/D91) list it under economics.",
+      "note": "Structural placement; low ambiguity — behavioral economics is universally classified as a subfield of economics (not psychology), despite its heavy psychological content.",
+      "rationale": "Behavioral economics is consistently classified in university departments, JEL codes, and encyclopedic sources as a subfield of economics.",
+      "uncertainty": "No live source fetch performed at generation time — this is a training-recall claim, not a citation. QC must live-verify the Wikipedia claim-anchor text and consider whether a JEL-classification source should be registered.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "P2",
+      "source": "subfield:social-choice-theory",
+      "target": "field:economics",
+      "relation": "part_of",
+      "confidence": 0.85,
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Social choice theory' (lead section frames it as a theoretical framework within economics and political science); JEL classification code D71 'Social Choice; Clubs; Committees; Associations' sits under economics.",
+      "note": "Placement judgment call: social choice theory is genuinely interdisciplinary (economics, political science, philosophy). This edge anchors it under field:economics per the order's instruction; QC should consider whether a §13 cross-listing to political science is warranted in a follow-up batch rather than resolving it here.",
+      "rationale": "Social choice theory's canonical texts (Arrow, Sen) and its primary academic home (economics departments, JEL D71) place it within economics, though the field is interdisciplinary.",
+      "uncertainty": "No live source fetch performed at generation time. The economics-only placement may be contested by political-science-side sources; QC should check for a dominant-view determination or flag for §13 cross-listing rather than treating this as settled.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "P3",
+      "source": "concept:fractal-geometry",
+      "target": "field:mathematics",
+      "relation": "part_of",
+      "confidence": 0.9,
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Fractal' / 'Fractal geometry' (describes fractal geometry as a branch of mathematics); MSC2020 code 28A80 'Fractals' sits under classification 28 (Measure and integration), itself a branch of mathematics; Encyclopedia of Mathematics likely has a 'fractal' entry (unverified).",
+      "note": "This edge is conditional on the concept:fractal-geometry node itself being retained by QC at the discipline grain the order asks about (see that node's ambiguity flag); if QC retargets or renames the node, this part_of edge should follow.",
+      "rationale": "Fractal geometry is a mathematical subject (self-similarity, Hausdorff/fractal dimension, iterated function systems) properly classified within field:mathematics.",
+      "uncertainty": "No live source fetch performed at generation time. Placement within field:mathematics (rather than, say, as a cross-listed applied/natural-sciences concept given fractals' heavy use in physics/biology/finance) is the mathematics-centric framing; QC may want a companion note on applications rather than a second part_of edge.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "F1",
+      "source": "person:daniel-kahneman",
+      "target": "subfield:behavioral-economics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.88,
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Daniel Kahneman' and 'Behavioral economics' (both credit Kahneman and Tversky's heuristics-and-biases and prospect-theory work as foundational to behavioral economics); Nobel Prize Committee 'Scientific Background: Foundations of Behavioral Economics' (2002) — the official citation document for Kahneman's Nobel Memorial Prize in Economic Sciences, explicitly titled around this founding claim.",
+      "note": "RECORD-NOT-RESOLVE: Kahneman is credited jointly with Amos Tversky (deceased 1996, not yet a corpus node) as the psychological co-founders of behavioral economics; Richard Thaler (proposed alongside this edge, see F2) is credited as the economist who built the subfield's institutional and disciplinary structure. All three names recur together in standard founding narratives — this is genuinely plural founding, not a single-founder claim.",
+      "rationale": "Kahneman and Tversky's heuristics-and-biases research program (1974 Science paper) and Prospect Theory (1979) are the canonical psychological foundations of behavioral economics; the 2002 Nobel Prize committee's background document is explicitly framed around this founding contribution to economics.",
+      "uncertainty": "Claim anchors are training-recall paraphrases, not live-fetched citations — QC must independently verify via live fetch. This is a SEPARATE, ADDITIONAL claim from the corpus's existing `edge:daniel-kahneman-founded-judgment-and-decision-making` (status proposed, target subfield:judgment-and-decision-making) — Kahneman plausibly co-founded both adjacent subfields via the same body of work, but QC should confirm this is not double-counting the same contribution against two overlapping targets before promoting both.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "F2",
+      "source": "person:richard-thaler",
+      "target": "subfield:behavioral-economics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.93,
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Richard Thaler' (describes him as a founder/pioneer of behavioral economics); Nobel Prize Committee, 'Richard H. Thaler: Integrating Economics with Psychology' (2017 Nobel Memorial Prize in Economic Sciences scientific background document) — the official citation explicitly frames Thaler's Nobel around founding this integration.",
+      "note": "RECORD-NOT-RESOLVE: Kahneman and Tversky's earlier psychological research (1970s) is foundational and precedes Thaler's work; Thaler himself has repeatedly credited Kahneman and Tversky as the intellectual origin of behavioral economics while being recognized as the economist who systematized it into a distinct economic subfield (mental accounting 1980, Journal of Economic Perspectives 'Anomalies' column, founding the field's institutional presence). See the paired Kahneman edge (F1).",
+      "rationale": "Thaler is one of the two or three most commonly named founders of behavioral economics in encyclopedic and Nobel-committee sources; his 2017 Nobel Memorial Prize in Economic Sciences was awarded explicitly for founding contributions to behavioral economics.",
+      "uncertainty": "Claim anchors are training-recall paraphrases, not live-fetched citations — QC must independently verify via live fetch (Nobel Prize URL and exact wording). LIVING PERSON: QC must confirm P570 absent for Thaler before applying living-person handling v2's promotion path.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "F3",
+      "source": "person:amartya-sen",
+      "target": "subfield:social-choice-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.72,
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Social choice theory' and 'Amartya Sen' (both describe Sen as a central/major contributor who reshaped the field via 'Collective Choice and Social Welfare', 1970); Nobel Prize Committee, 'Amartya Sen: Contributions to Welfare Economics' (1998 Nobel Memorial Prize in Economic Sciences scientific background document).",
+      "note": "RECORD-NOT-RESOLVE, AND WEAKER FOUNDING CLAIM THAN OTHER EDGES IN THIS BATCH: Kenneth Arrow (not a corpus node; not in this batch) is the more standard originating founder of modern social choice theory via Arrow's Impossibility Theorem (1951) and 'Social Choice and Individual Values' (1951) — two decades before Sen's 1970 book. Sen is more precisely a foundational/central formalizing figure who substantially extended and reshaped the field (introducing the liberal paradox, capability-based welfare reasoning, and reformulating Arrovian axioms) and whose 1998 Nobel citation is for 'welfare economics' broadly, not 'social choice theory' narrowly. This edge is proposed at lower confidence than the other founder edges in this batch specifically because of this weaker fit; QC should seriously consider whether `founded_or_formalized` is the correct relation here at all, versus a different framing, and should add Arrow as a companion node before any promotion.",
+      "rationale": "Sen's 'Collective Choice and Social Welfare' (1970) is widely cited as one of the two or three canonical texts of social choice theory and is credited with revitalizing and substantially reformulating the field after Arrow's original impossibility result; multiple encyclopedic sources describe him in founder-adjacent terms for the modern (post-1970) phase of the field.",
+      "uncertainty": "This is the batch's highest-uncertainty founder claim (see the order's explicit referent-precision flag: 'Sen ↔ social-choice vs welfare-economics'). Claim anchors are training-recall paraphrases, not live-fetched citations. LIVING PERSON: QC must confirm P570 absent for Sen. QC should weigh downgrading this to a non-founder relation, retargeting to a not-yet-existing subfield:welfare-economics, or holding it entirely pending an Arrow node.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "F4",
+      "source": "person:ronald-langacker",
+      "target": "subfield:cognitive-linguistics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.91,
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Cognitive linguistics' and 'Ronald Langacker' (both credit Langacker's Cognitive Grammar as one of the two founding frameworks of the field, alongside Lakoff's cognitive semantics); SEP or IEP may have a relevant entry on cognitive linguistics or philosophy of linguistics (unverified — not confirmed to exist at generation time).",
+      "note": "RECORD-NOT-RESOLVE: George Lakoff (`person:george-lakoff`, already a reviewed corpus node) is the equally-credited co-founder of cognitive linguistics via a parallel research program (cognitive semantics, conceptual metaphor theory, 'Metaphors We Live By' 1980 with Mark Johnson). Langacker's Cognitive Grammar and Lakoff's cognitive semantics are the field's two foundational pillars, developed roughly contemporaneously (mid-to-late 1970s–1980s) and largely independently before converging into the unified cognitive-linguistics movement (e.g. the founding of the journal Cognitive Linguistics, 1990, and the International Cognitive Linguistics Association, 1989/1990).",
+      "rationale": "Langacker's Cognitive Grammar, developed from the mid-1970s and systematized in 'Foundations of Cognitive Grammar' (1987, 1991), is one of the two foundational theoretical frameworks of cognitive linguistics and is treated as such in every standard history of the field.",
+      "uncertainty": "Claim anchors are training-recall paraphrases, not live-fetched citations — QC must independently verify via live fetch. LIVING PERSON: QC must confirm P570 absent for Langacker before applying living-person handling v2. QC should check whether a corresponding `person:george-lakoff → subfield:cognitive-linguistics` founder edge already exists in `/data`; if not, it is a natural companion to add.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "F5",
+      "source": "person:benoit-mandelbrot",
+      "target": "concept:fractal-geometry",
+      "relation": "founded_or_formalized",
+      "confidence": 0.95,
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Benoit Mandelbrot' and 'Fractal' (both credit Mandelbrot with coining the term 'fractal' in 1975 and founding fractal geometry via 'The Fractal Geometry of Nature', 1982); MacTutor History of Mathematics Archive likely has a Mandelbrot biography (unverified — plausible given MacTutor's coverage of modern mathematicians, but not confirmed at generation time).",
+      "note": "Mandelbrot's founding role is close to uncontested — he coined the term and wrote the field-defining monograph, building on earlier mathematical work (Cantor sets, Koch snowflake, Julia/Fatou theory from the early 20th century) that he unified and popularized into a coherent discipline. Some historians frame Mandelbrot as more precisely the 'namer and synthesizer' of pre-existing mathematical objects into a new field, rather than the inventor of the underlying mathematics — a nuance worth preserving in the note but not rising to genuine plural co-founding in the way the other edges in this batch do.",
+      "rationale": "Mandelbrot coined the term 'fractal' (1975) and, through 'The Fractal Geometry of Nature' (1982), is universally credited as the founder of fractal geometry as a distinct field of mathematical study.",
+      "uncertainty": "Claim anchors are training-recall paraphrases, not live-fetched citations — QC must independently verify via live fetch. QC must confirm P570 present for Mandelbrot (died 2010). This edge is fully conditional on `concept:fractal-geometry` being retained by QC at this grain (see that node's ambiguity flag) — if QC retargets to a differently-scoped node or defers the concept entirely, this edge must follow.",
+      "ambiguous": true
+    }
+  ],
+  "reconciliation_notes": [
+    "This batch does NOT re-propose or duplicate `edge:ludwig-wittgenstein-founded-philosophy-of-language` (existing, status proposed, source person:ludwig-wittgenstein, target subfield:philosophy-of-language) — the order states the orchestrator will promote it directly with a co-founder note (Frege/Russell/Austin also central). No action taken here beyond the F6 note below.",
+    "This batch does NOT re-propose or duplicate `edge:daniel-kahneman-founded-judgment-and-decision-making` (existing, status proposed, source person:daniel-kahneman, target subfield:judgment-and-decision-making) — per the order, the JDM label is ungroundable and this edge stays proposed. See F1 above for the SEPARATE new Kahneman→behavioral-economics claim proposed in this batch, which QC should confirm is not double-counting against the existing JDM edge."
+  ],
+  "frege_note": {
+    "candidate_id": "F6",
+    "source": "person:gottlob-frege",
+    "target": "subfield:philosophy-of-language",
+    "relation": "founded_or_formalized",
+    "confidence": 0.87,
+    "evidence_kind": "externally_sourced",
+    "evidence": [],
+    "source_hint": "Stanford Encyclopedia of Philosophy, likely entry on Frege or on philosophy of language history (unverified exact URL/slug at generation time — SEP has an extensive Frege entry given his centrality to analytic philosophy); Wikipedia 'Philosophy of language' §History (credits Frege's 'On Sense and Reference', 1892, and his broader work on sense/reference, as founding modern philosophy of language).",
+    "note": "PRIMARY FOUNDER framing per the order: Frege's distinction between Sinn (sense) and Bedeutung (reference) in 'On Sense and Reference' (1892) and his broader logical/semantic framework are standardly treated as the founding moment of philosophy of language as a distinct analytic discipline, predating and substantially shaping Russell's (theory of descriptions, 1905), Wittgenstein's (Tractatus 1921, Philosophical Investigations 1953), and Austin's (speech act theory, 1950s) contributions. RECORD-NOT-RESOLVE: this is nonetheless a genuinely plural founding cluster — Russell, Wittgenstein (already proposed via the existing edge noted above), and Austin are all commonly co-named as founders/shapers of the field in different sub-strands (logical analysis, ordinary language philosophy, speech act theory), and some historiographies treat philosophy of language as having no single founder. This edge is offered as a candidate companion to the existing Wittgenstein edge, per the order's framing that Frege is PRIMARY — QC/orchestrator should decide whether to formally add it in this batch's promotion pass or treat it as a future candidate; it is included here as a fully reasoned proposal either way.",
+    "rationale": "Frege's 1892 sense/reference distinction and his broader logicist program are widely credited as founding modern (analytic) philosophy of language, predating the other major contributors named in the order.",
+    "uncertainty": "Claim anchors are training-recall paraphrases, not live-fetched citations — QC must independently verify via live fetch of an SEP or equivalent entry. QC must confirm P570 present for Frege (died 1925). The 'primary founder' framing versus 'one of several founders' framing is itself a judgment call some sources would contest; record-not-resolve is the safer framing and is carried in the note.",
+    "ambiguous": true
+  }
+}

@@ -10591,9 +10591,10 @@
     "target": "subfield:philosophy-of-language",
     "relation": "founded_or_formalized",
     "confidence": 0.82,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:wikipedia"
+      "source:wikipedia",
+      "source:iep"
     ],
     "evidence_kind": "externally_sourced",
     "proposed_by": {
@@ -10601,7 +10602,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-07-01"
     },
-    "note": "Wittgenstein is a central figure in 20th-century philosophy of language (both the early Tractatus picture theory and the later Philosophical Investigations meaning-as-use). Held at PROPOSED: 'founder of philosophy of language' has multiple strong claimants (Frege is most often credited as the founder; Russell, Austin also principal) -> a clean >=2-source 'Wittgenstein founded philosophy of language' attribution is not established; he is a co-principal, not the sole founder. Re-examine with a precise multi-founder framing (or anchor to analytic-philosophy) before promotion. Identity Q9391 verified."
+    "note": "Wittgenstein is a co-principal founder of modern philosophy of language (early Tractatus picture theory; later Philosophical Investigations meaning-as-use). Record-not-resolve plural founding: Frege is the primary founder (see edge:gottlob-frege-founded-philosophy-of-language), with Russell and Austin also principal across distinct strands. Re-adjudicated session #43 with the multi-founder framing -> co-principal-founder attribution is well supported (Britannica/IEP 'Language, Philosophy of' + Wikipedia 'Philosophy of language'). Identity Q9391 verified (deceased 1951). Both endpoints reviewed -> deceased founder ladder -> reviewed."
   },
   {
     "id": "edge:generative-grammar-part-of-syntax",
@@ -10856,7 +10857,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-07-01"
     },
-    "note": "Kahneman (with Amos Tversky) founded the modern field of judgment and decision-making (heuristics-and-biases programme; prospect theory; Nobel Memorial Prize in Economic Sciences 2002). Record-not-resolve co-founding with Tversky. Held at PROPOSED: founder-ladder clause (1) fails because the target subfield:judgment-and-decision-making is itself status 'proposed', not 'reviewed'. Promotes automatically when the anchor is promoted. Identity Q233950 verified (P570 2024-03-27, deceased). Generator QID hint Q62887 was a hallucination (an 1814-1870 botanist); corrected."
+    "note": "Kahneman (with Amos Tversky) founded the heuristics-and-biases / judgment-and-decision-making research program (prospect theory 1979; Nobel Memorial Prize in Economic Sciences 2002). Held at PROPOSED -- honest gap (session #43): subfield:judgment-and-decision-making has no academic-discipline Wikidata QID (only the journal Q15746672 exists), so it cannot be resolver-grounded to reviewed under node promotion policy v1. Kahneman's grounded founder anchor is instead edge:daniel-kahneman-founded-behavioral-economics (reviewed; behavioral-economics Q647525). Record-not-resolve co-founding with Tversky. Identity Q233950 verified (P570 2024-03-27, deceased). Generator QID hint Q62887 was a hallucination (an 1814-1870 botanist); corrected."
   },
   {
     "id": "edge:john-mccarthy-founded-artificial-intelligence",
@@ -10893,5 +10894,138 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Minsky co-founded artificial intelligence (co-organizer of the 1956 Dartmouth workshop; co-founder of the MIT AI Lab); ACM Turing Award 1969. Record-not-resolve co-founding with McCarthy, Newell, Simon, Rochester, Shannon. Wikipedia 'Marvin Minsky' + 'Dartmouth workshop'. Identity Q204815 verified (P570 2016-01-24, deceased). Generator QID hint Q154485 was a hallucination (invalid); corrected. founder ladder -> reviewed."
+  },
+  {
+    "id": "edge:behavioral-economics-part-of-economics",
+    "source": "subfield:behavioral-economics",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Behavioral economics is universally classified as a subfield of economics (JEL D90/D91) despite its psychological content. Structural placement; both endpoints reviewed."
+  },
+  {
+    "id": "edge:social-choice-theory-part-of-economics",
+    "source": "subfield:social-choice-theory",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Social choice theory is interdisciplinary (economics/political science/philosophy); anchored to economics as primary home (JEL D71; canonical texts by Arrow and Sen are economics). Political-science/philosophy overlap recorded; a possible §13 cross-listing follow-up."
+  },
+  {
+    "id": "edge:daniel-kahneman-founded-behavioral-economics",
+    "source": "person:daniel-kahneman",
+    "target": "subfield:behavioral-economics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:nobelprize"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Kahneman (with Amos Tversky) provided the psychological foundations of behavioral economics via the heuristics-and-biases program (1974) and prospect theory (1979); Nobel Memorial Prize in Economic Sciences 2002. Record-not-resolve plural founding: Amos Tversky (deceased 1996, not yet a corpus node) is the equal psychological co-founder and Richard Thaler built the economic subfield institutionally (see edge:richard-thaler-founded-behavioral-economics). Sources: Wikipedia 'Behavioral economics'/'Daniel Kahneman' + NobelPrize.org 2002 scientific background. Identity Q233950 verified (P570 2024-03-27, deceased). Generator QID hint was a hallucination; corrected. Deceased founder ladder -> reviewed. Grounded anchor for Kahneman; the daniel-kahneman-founded-judgment-and-decision-making edge stays proposed (JDM label lacks a discipline QID)."
+  },
+  {
+    "id": "edge:richard-thaler-founded-behavioral-economics",
+    "source": "person:richard-thaler",
+    "target": "subfield:behavioral-economics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:nobelprize"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Thaler is a principal founder of behavioral economics -- 'Toward a Positive Theory of Consumer Choice' (1980), which Kahneman called 'the founding text of behavioral economics'; Nobel Memorial Prize in Economic Sciences 2017 ('Integrating Economics with Psychology'). Record-not-resolve co-founding with Kahneman and Tversky (psychological origin). Sources: Wikipedia 'Richard Thaler' + NobelPrize.org 2017 scientific background. Living-person v2 (decision (70)): identity Q371212 verified (P31=Q5, P569 1945, P570 absent = living-confirmed), >=2 independent live claim-stating sources, conservative attributed wording, no escalation signal -> policy-auto reviewed. Generator QID hint Q92610 was a hallucination; corrected."
+  },
+  {
+    "id": "edge:amartya-sen-founded-social-choice-theory",
+    "source": "person:amartya-sen",
+    "target": "subfield:social-choice-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Sen made founding-grade contributions to modern social choice theory -- 'Collective Choice and Social Welfare' (1970) reformulated the Arrovian framework (social welfare functionals, informational basis, the liberal paradox); Nobel Memorial Prize in Economic Sciences 1998. Record-not-resolve: Kenneth Arrow originated the modern field (Impossibility Theorem, 1951; not yet a corpus node) and Duncan Black is also foundational -- SEP 'Social Choice Theory' names Arrow, Sen, and Black as the figures the field took off with. Scope note: Sen's Nobel citation reads 'welfare economics' broadly; social choice is his core theoretical field. Sources: SEP 'Social Choice Theory' + Wikipedia 'Social choice theory'/'Amartya Sen'. Living-person v2 (decision (70)): identity Q132489 verified (P31=Q5, P569 1933, P570 absent = living-confirmed), >=2 independent live claim-stating sources, conservative wording, no escalation -> policy-auto reviewed. Generator QID hint Q125106 was a hallucination; corrected."
+  },
+  {
+    "id": "edge:ronald-langacker-founded-cognitive-linguistics",
+    "source": "person:ronald-langacker",
+    "target": "subfield:cognitive-linguistics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:oxford-bibliographies"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Langacker is a founder of cognitive linguistics and creator of Cognitive Grammar ('Foundations of Cognitive Grammar', 1987/1991). Record-not-resolve co-founding: George Lakoff (existing corpus node; edge:george-lakoff-founded-cognitive-linguistics) and Leonard Talmy are equally credited -- Oxford Bibliographies 'Cognitive Linguistics' names Langacker, Lakoff, and Talmy as the founding fathers. Sources: Wikipedia 'Ronald Langacker'/'Cognitive linguistics' + Oxford Bibliographies 'Cognitive Linguistics'. Living-person v2 (decision (70)): identity Q726075 verified (P31=Q5, P569 1942, P570 absent = living-confirmed), >=2 independent live claim-stating sources, conservative wording, no escalation -> policy-auto reviewed. Generator QID hint Q3439179 was a hallucination; corrected."
+  },
+  {
+    "id": "edge:gottlob-frege-founded-philosophy-of-language",
+    "source": "person:gottlob-frege",
+    "target": "subfield:philosophy-of-language",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:iep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Frege is the primary founder of modern (analytic) philosophy of language -- his sense/reference distinction ('On Sense and Reference', 1892) and logical-semantic framework are standardly treated as its founding moment. Record-not-resolve plural founding: Russell, Wittgenstein (see edge:ludwig-wittgenstein-founded-philosophy-of-language), and Austin are also principal across distinct strands. Sources: SEP (Frege) + IEP 'Language, Philosophy of' + Wikipedia 'Philosophy of language'. Identity Q60028 verified (deceased 1925). Both endpoints reviewed -> deceased founder ladder -> reviewed."
   }
 ]
