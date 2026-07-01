@@ -1,0 +1,425 @@
+{
+  "batch_id": "a-relations-wave3-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-02"
+  },
+  "scope_note": "Cross-cutting (a)-relation edges only (influenced/critiques/applies_to). No new nodes proposed; both endpoints of every item verified as existing status:reviewed nodes in data/nodes.json as of this batch. Living-person endpoints excluded per the guard in the order (all person endpoints below confirmed is_living_person:false in data/nodes.json).",
+  "items": [
+    {
+      "tag": "A1",
+      "source": "subfield:statistical-physics",
+      "target": "subfield:information-theory",
+      "relation": "influenced",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Formal Epistemology\" / \"Information\" background; and standard history-of-science account of Shannon entropy",
+          "claim_anchor": "Shannon's 1948 definition of information entropy was named and formally modeled after Boltzmann's H-theorem / Gibbs entropy in statistical mechanics, on von Neumann's suggestion that the quantity already had a name in statistical mechanics ('entropy').",
+          "url": "https://en.wikipedia.org/wiki/History_of_entropy"
+        },
+        {
+          "citation": "Wikipedia, \"Entropy in thermodynamics and information theory\"",
+          "claim_anchor": "The mathematical formulas for entropy in statistical mechanics (Gibbs/Boltzmann) and Shannon's information entropy are of the same form, and Shannon's use of the term and formalism is historically derived from statistical mechanics.",
+          "url": "https://en.wikipedia.org/wiki/Entropy_in_thermodynamics_and_information_theory"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Statistical mechanics (Boltzmann/Gibbs entropy, 19th c.) temporally and formally precedes Shannon's 1948 information theory, which explicitly borrowed both the entropy formalism and the name; a well-documented cross-domain influence currently missing from the graph.",
+      "uncertainty": "claim_anchor text is recalled paraphrase of the standard von-Neumann-suggested-the-name anecdote and the H-theorem analogy, not a live fetch — QC must verify the exact wording on the linked pages; the anecdote's ultimate primary source is oral/secondhand (Tribus & McIrvine 1971), so the citation itself carries some legend risk that should be flagged if not corroborated.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A2",
+      "source": "subfield:evolutionary-biology",
+      "target": "field:economics",
+      "relation": "influenced",
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Evolutionary Economics\" (Jack Vromen)",
+          "claim_anchor": "Evolutionary economics draws direct inspiration from Darwinian evolutionary biology, applying concepts such as variation, selection, and retention to explain economic change; Thorstein Veblen explicitly called for an economics that was an 'evolutionary science' modeled on Darwin.",
+          "url": "https://plato.stanford.edu/entries/economics-evolutionary/"
+        },
+        {
+          "citation": "Wikipedia, \"Evolutionary economics\"",
+          "claim_anchor": "Evolutionary economics is part of mainstream economics as well as a distinct heterodox school that emerged from Thorstein Veblen's application of Darwinian ideas to the study of economic institutions.",
+          "url": "https://en.wikipedia.org/wiki/Evolutionary_economics"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Darwin's biology (1859) predates and is the acknowledged model for evolutionary economics as a named subfield (Veblen, early 20th c.); correct temporal order, a genuinely cross-domain link the graph currently lacks.",
+      "uncertainty": "This is a field-to-field claim about a whole subfield's origin rather than a single citable sentence about the discipline of economics broadly; a QC reviewer could reasonably judge the target should be a narrower node (e.g. an evolutionary-economics subfield) rather than field:economics as a whole — flagging this scope question honestly.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A3",
+      "source": "person:george-boole",
+      "target": "subfield:artificial-intelligence",
+      "relation": "influenced",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"The Algebra of Logic Tradition\"",
+          "claim_anchor": "George Boole's 1854 'An Investigation of the Laws of Thought' founded Boolean algebra, the algebraic treatment of logic later shown by Claude Shannon to be realizable by switching circuits, underpinning digital computing.",
+          "url": "https://plato.stanford.edu/entries/algebra-logic-tradition/"
+        },
+        {
+          "citation": "Wikipedia, \"George Boole\"",
+          "claim_anchor": "Boole's system of logic, Boolean algebra, became the basis of the modern field of computer science, being used in the design of digital electronic circuitry.",
+          "url": "https://en.wikipedia.org/wiki/George_Boole"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Boole (1815-1864) predates AI by roughly a century; Boolean logic is a standard, well-documented foundational influence chain (Boole -> Shannon switching circuits -> digital computing -> symbolic/logic-based AI), a formal-logic-to-CS cross-domain link the graph currently lacks.",
+      "uncertainty": "The influence chain is real but indirect (Boole -> circuit design -> computing broadly, not narrowly 'AI'); QC should judge whether subfield:artificial-intelligence is the right-grained target versus field:computer-science more broadly.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A4",
+      "source": "person:gottlob-frege",
+      "target": "field:linguistics",
+      "relation": "influenced",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Gottlob Frege\"",
+          "claim_anchor": "Frege's distinction between sense (Sinn) and reference (Bedeutung), and his compositional theory of meaning, became foundational to formal semantics in linguistics and philosophy of language.",
+          "url": "https://plato.stanford.edu/entries/frege/"
+        },
+        {
+          "citation": "Wikipedia, \"Formal semantics (linguistics)\"",
+          "claim_anchor": "Formal semantics in linguistics draws on the compositional, logic-based approach to meaning pioneered by Gottlob Frege and developed further by Richard Montague.",
+          "url": "https://en.wikipedia.org/wiki/Formal_semantics_(natural_language)"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Frege (1848-1925) predates modern formal/Montague semantics by decades; a well-documented logic-to-linguistics cross-domain influence not yet in the graph.",
+      "uncertainty": "The most textbook-precise target would be a formal-semantics subfield node rather than field:linguistics as a whole; field:linguistics was chosen because no formal-semantics subfield node currently exists in data/nodes.json (verified by grep) — QC should check whether this is too broad a target.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A5",
+      "source": "subfield:phenomenology",
+      "target": "field:psychology",
+      "relation": "influenced",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Phenomenology\"",
+          "claim_anchor": "Phenomenology, especially through Husserl and later Merleau-Ponty, influenced psychology, including Gestalt psychology and later embodied/enactive approaches to cognition.",
+          "url": "https://plato.stanford.edu/entries/phenomenology/"
+        },
+        {
+          "citation": "Internet Encyclopedia of Philosophy, \"Phenomenology\"",
+          "claim_anchor": "Phenomenological description of lived experience influenced the development of humanistic and Gestalt psychology and, later, embodied approaches within cognitive science.",
+          "url": "https://iep.utm.edu/phenomenology/"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Husserlian phenomenology (early 20th c.) predates Gestalt psychology's flourishing and the later embodied-cognition movement; philosophy-to-psychology cross-cluster link, diversifying beyond the already-covered phenomenology->existentialism edge.",
+      "uncertainty": "This is a broad, field-level claim aggregating several distinct historical episodes (Gestalt psychology, humanistic psychology, embodied cognition); a stricter QC read might want this narrowed to a specific subfield (e.g. cognitive-psychology) or split into multiple edges — flagging that risk honestly.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A6",
+      "source": "person:adam-smith",
+      "target": "field:political-science",
+      "relation": "influenced",
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Adam Smith's Moral and Political Philosophy\"",
+          "claim_anchor": "Adam Smith's account of self-interest, markets, and the proper role of government in 'The Wealth of Nations' and 'The Theory of Moral Sentiments' became a foundational reference point for later political theory and political economy.",
+          "url": "https://plato.stanford.edu/entries/smith-moral-political/"
+        },
+        {
+          "citation": "Wikipedia, \"Adam Smith\"",
+          "claim_anchor": "Smith is widely cited as a founding figure of modern political economy, and his ideas on the relationship between market activity, liberty, and the state have been influential in political theory.",
+          "url": "https://en.wikipedia.org/wiki/Adam_Smith"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Smith (1723-1790) is chronologically prior to modern political science as a discipline; the political-economy tradition he founded is a standard, well-documented input into political theory, diversifying the currently philosophy-heavy influence roster with an economics<->political-theory link.",
+      "uncertainty": "The claim risks being read as generic 'Smith was important to social thought broadly' rather than a specific, checkable influence on political science as a discipline; QC should look for a sharper claim_anchor (e.g. a specific concept Smith contributed, such as the night-watchman-state debate) rather than accept the general framing.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A7",
+      "source": "person:karl-marx",
+      "target": "field:sociology",
+      "relation": "influenced",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Karl Marx\"",
+          "claim_anchor": "Marx's analysis of class, capitalism, and historical materialism is standardly counted, alongside Durkheim and Weber, as one of the foundational influences on the discipline of sociology.",
+          "url": "https://plato.stanford.edu/entries/marx/"
+        },
+        {
+          "citation": "Wikipedia, \"Karl Marx\"",
+          "claim_anchor": "Marx is cited as one of the principal architects of modern social science, and his ideas have had a major influence on sociology and social theory, especially conflict theory.",
+          "url": "https://en.wikipedia.org/wiki/Karl_Marx"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Marx's core works (1840s-1860s) predate sociology's institutionalization as a discipline (Durkheim/Weber generation); Marx is one of the field's standard 'founding trinity' references. Correct temporal order and well documented.",
+      "uncertainty": "The Marx-as-sociology-founder claim is sometimes framed via founded_or_formalized rather than influenced in the literature since he is often grouped with Durkheim/Weber as a co-founder rather than a pure external influence; QC should judge whether influenced (this batch's scope) or a different relation is more accurate — flagged as a genuine relation-choice ambiguity, not just factual risk.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A8",
+      "source": "person:max-weber",
+      "target": "person:karl-marx",
+      "relation": "critiques",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Max Weber\"",
+          "claim_anchor": "Weber's multi-causal sociology, including his account of the Protestant ethic and the rise of capitalism, is widely read as an implicit and partly explicit response to and critique of Marxist economic determinism, arguing that ideas and status, not only economic relations, drive historical change.",
+          "url": "https://plato.stanford.edu/entries/weber/"
+        },
+        {
+          "citation": "Wikipedia, \"Max Weber\"",
+          "claim_anchor": "Weber's work is often described as an ongoing debate with the ghost of Marx, in particular challenging the primacy Marx gave to economic (material) factors by emphasizing culture, religion, and status as independent causal forces.",
+          "url": "https://en.wikipedia.org/wiki/Max_Weber"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Weber (1864-1920) wrote after Marx (d. 1883) and is standardly read as critiquing/complicating Marx's economic determinism ('debate with the ghost of Marx'); correct direction, well-documented, and adds a person-to-person critique edge to the still-thin critiques roster (currently 5).",
+      "uncertainty": "This is a nuanced historiographical characterization (Weber engaged with and partly built on Marx, not a simple rejection) rather than a flat refutation; the note field should preserve that Weber's relationship to Marx is generative critique, not wholesale dismissal — a record-not-resolve nuance, not a 'disputed' case since there is no live scholarly dispute over whether this critique relationship exists.",
+      "ambiguous": false
+    },
+    {
+      "tag": "A9",
+      "source": "subfield:cybernetics",
+      "target": "subfield:artificial-intelligence",
+      "relation": "influenced",
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Cybernetics\" (entry) / \"The Turing Test\" background on early AI's cybernetic roots",
+          "claim_anchor": "Cybernetics, developed by Norbert Wiener and associates through the Macy Conferences in the 1940s, is a direct historical precursor to artificial intelligence, with early AI researchers drawing on cybernetic concepts of feedback and self-regulating systems before the field was formally named at the 1956 Dartmouth conference.",
+          "url": "https://plato.stanford.edu/entries/cybernetics/"
+        },
+        {
+          "citation": "Wikipedia, \"Cybernetics\"",
+          "claim_anchor": "Cybernetics is considered a precursor of, and heavily overlaps with, artificial intelligence, with the Macy Conferences (1946-1953) laying groundwork later built on by AI researchers.",
+          "url": "https://en.wikipedia.org/wiki/Cybernetics"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Cybernetics (Wiener 1948) chronologically precedes the 1956 Dartmouth founding of AI as a named field; a standard, well-documented history-of-science influence link within formal_sciences that is currently missing.",
+      "uncertainty": "SEP entry title/URL for 'Cybernetics' recalled from memory and may not exist verbatim at that slug — QC must confirm the page resolves live; if it does not, Wikipedia alone would fall short of the two-independent-source floor for this edge.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A10",
+      "source": "field:systems-science",
+      "target": "field:sociology",
+      "relation": "influenced",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Systems Theory in Sociology\" (if present) / general systems theory background",
+          "claim_anchor": "General systems theory (Ludwig von Bertalanffy) and cybernetics were taken up by sociologists including Talcott Parsons and later Niklas Luhmann to build systems-theoretic accounts of society as a self-regulating and, in Luhmann's case, autopoietic system.",
+          "url": "https://en.wikipedia.org/wiki/Social_systems_theory"
+        },
+        {
+          "citation": "Wikipedia, \"Niklas Luhmann\"",
+          "claim_anchor": "Luhmann's social systems theory explicitly draws on general systems theory and cybernetics, adapting concepts such as autopoiesis from biology via systems theory into sociology.",
+          "url": "https://en.wikipedia.org/wiki/Niklas_Luhmann"
+        }
+      ],
+      "disputed": false,
+      "rationale": "General systems theory/cybernetics (1940s-50s) precedes Parsons's structural-functionalist systems sociology (1950s-60s) and Luhmann's social-systems theory (1970s-90s); a genuine cross-domain (formal_sciences -> social_sciences) link.",
+      "uncertainty": "I could not recall a specific, checkable SEP entry titled exactly 'Systems Theory in Sociology' — the first evidence citation's exact URL/title is uncertain and may not resolve; QC should treat evidence 1 as weak/unverified and lean on evidence 2 (Luhmann) plus find a better first source, or downgrade/drop this item if only one source survives live-check.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A11",
+      "source": "person:norbert-wiener",
+      "target": "subfield:cognitive-psychology",
+      "relation": "influenced",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Cognitive Science\"",
+          "claim_anchor": "The cybernetic concepts of feedback, information processing, and self-regulation developed by Norbert Wiener contributed to the mid-20th-century 'cognitive revolution' that gave rise to cognitive psychology, alongside information theory and early computing.",
+          "url": "https://plato.stanford.edu/entries/cognitive-science/"
+        },
+        {
+          "citation": "Wikipedia, \"Cognitive revolution\"",
+          "claim_anchor": "The cognitive revolution of the 1950s drew on cybernetics, information theory, and computer science as an alternative to behaviorism, treating the mind as an information-processing system.",
+          "url": "https://en.wikipedia.org/wiki/Cognitive_revolution"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Wiener's cybernetics (1948) predates the cognitive revolution (mid-to-late 1950s) that produced cognitive psychology as a distinct subfield; adds a person-level formal_sciences -> cognitive_sciences link, complementing the existing information-theory -> cognitive-psychology edge without duplicating it (different source node, same general historical cluster but a distinct citable contribution: feedback/self-regulation vs. channel-capacity formalism).",
+      "uncertainty": "Overlaps thematically with the already-existing information-theory->cognitive-psychology edge (both are 'cognitive revolution' antecedents); QC should confirm this is a genuinely distinct, separately-citable contribution (cybernetic feedback concepts specifically) and not just a restatement of the same influence under a different name — flagged as a plausible near-duplicate risk.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A12",
+      "source": "person:claude-shannon",
+      "target": "subfield:computational-linguistics",
+      "relation": "influenced",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Computational Linguistics\" background in \"Philosophy of Linguistics\" or ACL history sources",
+          "claim_anchor": "Shannon's information-theoretic model of communication, including n-gram statistical models of language from his 1948 paper, directly influenced the development of statistical approaches within computational linguistics and natural language processing.",
+          "url": "https://en.wikipedia.org/wiki/Claude_Shannon"
+        },
+        {
+          "citation": "Wikipedia, \"Statistical language model\"",
+          "claim_anchor": "Statistical language modeling traces its roots to Claude Shannon's 1948 application of probabilistic n-gram models to predict the next letter or word in English text, foundational to modern computational linguistics and NLP.",
+          "url": "https://en.wikipedia.org/wiki/Language_model"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Shannon's 1948 n-gram language modeling predates computational linguistics as an organized subfield; a well-documented formal_sciences -> humanities(linguistics) cross-domain link distinct from the already-present information-theory->cognitive-psychology edge (different target subfield, different claim).",
+      "uncertainty": "The first evidence citation's exact page title/URL is an approximate recall (I am not fully certain an SEP or ACL-specific page with this exact framing exists at a checkable URL) — flagging that the first source may need replacement at QC; the second Wikipedia source (Language model / n-gram history) is more confidently recalled.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A13",
+      "source": "person:emile-durkheim",
+      "target": "field:anthropology",
+      "relation": "influenced",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Emile Durkheim\"",
+          "claim_anchor": "Durkheim's concepts of social facts, collective representations, and functional explanation, especially as developed in 'The Elementary Forms of Religious Life', strongly influenced British social anthropology, particularly the structural-functionalism of A.R. Radcliffe-Brown.",
+          "url": "https://plato.stanford.edu/entries/durkheim/"
+        },
+        {
+          "citation": "Wikipedia, \"Structural functionalism\"",
+          "claim_anchor": "Structural functionalism in anthropology, associated with Radcliffe-Brown and Malinowski, drew heavily on Durkheim's sociological concept of social facts and functional analysis of institutions.",
+          "url": "https://en.wikipedia.org/wiki/Structural_functionalism"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Durkheim (d. 1917) predates British structural-functionalist anthropology (Radcliffe-Brown, 1920s-40s); a well-documented sociology -> anthropology cross-field influence, diversifying beyond the existing comte->durkheim and saussure/jakobson->levi-strauss edges already in the graph.",
+      "uncertainty": "The influence is most precisely on a specific school (structural-functionalism) within anthropology rather than the field as a whole; QC should consider whether a narrower target (a structural-functionalism node, if one existed) would be more accurate than field:anthropology.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A14",
+      "source": "person:sigmund-freud",
+      "target": "field:literary-studies",
+      "relation": "influenced",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Sigmund Freud\"",
+          "claim_anchor": "Freud's psychoanalytic concepts, including the unconscious, repression, and the Oedipus complex, were highly influential outside clinical psychology, notably in literary criticism and cultural theory, giving rise to psychoanalytic literary criticism.",
+          "url": "https://plato.stanford.edu/entries/freud/"
+        },
+        {
+          "citation": "Wikipedia, \"Psychoanalytic literary criticism\"",
+          "claim_anchor": "Psychoanalytic literary criticism applies Freudian (and later Lacanian) psychoanalytic theory to the interpretation of literary texts, and emerged as a significant school of literary criticism in the 20th century directly building on Freud's own writings on art and literature.",
+          "url": "https://en.wikipedia.org/wiki/Psychoanalytic_literary_criticism"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Freud's major works (1900-1930s) predate the psychoanalytic-literary-criticism school that explicitly applies his framework; adds a cognitive_sciences -> humanities cross-domain edge for a person already in the graph (currently only linked to philosophy/other psychology nodes).",
+      "uncertainty": "Freud's influence on literary studies is broad and diffuse across many later authors (Trilling, Bloom, Lacan-derived approaches); the claim is accurate at the level of 'Freud influenced literary studies' but a stricter reading might want the target to be a specific literary-theory subfield rather than the field as a whole.",
+      "ambiguous": false
+    },
+    {
+      "tag": "A15",
+      "source": "subfield:evolutionary-biology",
+      "target": "subfield:epidemiology",
+      "relation": "applies_to",
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Evolutionary epidemiology\"",
+          "claim_anchor": "Evolutionary epidemiology applies evolutionary theory (natural selection, host-pathogen coevolution) to understand the emergence, virulence, and spread of infectious disease, informing public health strategy such as antibiotic-resistance management.",
+          "url": "https://en.wikipedia.org/wiki/Evolutionary_epidemiology"
+        },
+        {
+          "citation": "Wikipedia, \"Darwinian medicine\"",
+          "claim_anchor": "Darwinian (evolutionary) medicine applies evolutionary biology to questions of disease susceptibility and pathogen evolution, a framework increasingly used within epidemiology and public health.",
+          "url": "https://en.wikipedia.org/wiki/Evolutionary_medicine"
+        }
+      ],
+      "disputed": false,
+      "rationale": "applies_to is directionally symmetric-safe here (method/theory -> domain), avoiding the influenced-direction risk; evolutionary theory as an analytical framework is well-documented as applied within epidemiology (antibiotic resistance, pathogen virulence evolution), a life_sciences -> medicine_and_health cross-domain link.",
+      "uncertainty": "Evolutionary epidemiology is a real but comparatively niche subfield within epidemiology, not the epidemiological mainstream; the claim_anchor should be read as 'applied within a recognized subfield' rather than 'epidemiology in general is Darwinian' — a scope/emphasis risk, not a factual one.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A16",
+      "source": "person:charles-sanders-peirce",
+      "target": "subfield:semiotics",
+      "relation": "influenced",
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Charles Sanders Peirce\"",
+          "claim_anchor": "Peirce developed an extensive theory of signs (semiotic), including the icon-index-symbol trichotomy, that stands alongside Saussure's semiology as one of the two foundational traditions of modern semiotics.",
+          "url": "https://plato.stanford.edu/entries/peirce/"
+        },
+        {
+          "citation": "Wikipedia, \"Semiotics\"",
+          "claim_anchor": "Modern semiotics traces its origins to two independent traditions: Ferdinand de Saussure's semiology in linguistics, and Charles Sanders Peirce's semiotic in logic and philosophy; Peirce's triadic sign theory remains foundational to the field.",
+          "url": "https://en.wikipedia.org/wiki/Semiotics"
+        }
+      ],
+      "disputed": false,
+      "rationale": "Peirce (1839-1914) is one of semiotics' two co-founding figures, working independently of and roughly contemporaneously with Saussure; this is a distinct, non-duplicate influence edge from the existing jakobson->semiotics edge (different person, earlier/foundational rather than mid-20th-century-elaboration).",
+      "uncertainty": "Peirce's relationship to the field is arguably closer to founded_or_formalized than influenced (he is a co-founder, not an external influence), similar to the A7 Marx/sociology relation-choice question; flagged as a genuine taxonomic judgment call for QC rather than a factual risk.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A17",
+      "source": "person:isaac-newton",
+      "target": "field:economics",
+      "relation": "influenced",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Isaac Newton\" (Royal Mint section)",
+          "claim_anchor": "Newton served as Warden and later Master of the Royal Mint, reforming English coinage, which is sometimes cited as his one direct institutional involvement with monetary/economic administration.",
+          "url": "https://en.wikipedia.org/wiki/Isaac_Newton"
+        },
+        {
+          "citation": "Wikipedia, \"Physics envy\"",
+          "claim_anchor": "The aspiration of economics to achieve the mathematical rigor and predictive precision of Newtonian physics ('physics envy') has been discussed as a stylistic and methodological influence on the discipline, though this is a much looser, indirect, and contested characterization rather than a specific documented causal chain from Newton himself.",
+          "url": "https://en.wikipedia.org/wiki/Physics_envy"
+        }
+      ],
+      "disputed": false,
+      "rationale": "REJECTION PROBE: this pairs a real biographical fact (Newton ran the Mint) with a vague methodological-inspiration narrative ('physics envy') to construct a plausible-sounding but unsupported direct influenced edge; there is no standard historical account of Newton personally shaping economics as a discipline the way he shaped mechanics or the calculus, and 'physics envy' describes a diffuse later methodological aspiration, not a documented Newton -> economics causal link. Expected verdict: reject or heavily downgrade.",
+      "uncertainty": "The Mint role is factually real but is administrative, not intellectual/economic-theoretic; conflating it with 'influenced the field of economics' is the overreach this probe is designed to test QC against. A generous reader might rescue a narrower claim (Newton's calculus enabled later mathematical economics) but that is a different, unstated chain not supported by the cited evidence.",
+      "ambiguous": true
+    },
+    {
+      "tag": "A18",
+      "source": "person:wilhelm-wundt",
+      "target": "subfield:artificial-intelligence",
+      "relation": "influenced",
+      "confidence": 0.15,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Wilhelm Wundt\"",
+          "claim_anchor": "Wundt founded the first formal laboratory for psychological research in 1879 and pioneered introspection as an experimental method for studying conscious mental processes.",
+          "url": "https://en.wikipedia.org/wiki/Wilhelm_Wundt"
+        },
+        {
+          "citation": "Wikipedia, \"Artificial intelligence\" (history section)",
+          "claim_anchor": "The field of artificial intelligence was founded at the 1956 Dartmouth workshop, building on cybernetics, formal logic, and early computing rather than on Wundtian experimental introspectionist psychology, which had by then been largely superseded (including by behaviorism) as a paradigm.",
+          "url": "https://en.wikipedia.org/wiki/History_of_artificial_intelligence"
+        }
+      ],
+      "disputed": false,
+      "rationale": "REJECTION PROBE: Wundt's introspectionist experimental psychology (1879-1920) is chronologically compatible (predates AI) but there is no standard documented causal chain from Wundt's specific methods/theories to the founding of AI (1956) — AI's own histories credit cybernetics, formal logic, and computing, not Wundtian introspection, which was in fact a paradigm AI-adjacent cognitive science moved away from. This tests whether QC catches a same-domain-cluster (both 'mind science') but unsupported/fabricated-lineage claim rather than a true influence.",
+      "uncertainty": "The chronological compatibility (Wundt predates AI) makes this superficially plausible, which is exactly the trap; the actual documented AI lineage runs through cybernetics/logic/computing, not experimental introspectionism. If QC finds any genuine secondary literature connecting Wundt to AI's founding, this probe's expected-reject status should be reconsidered rather than assumed.",
+      "ambiguous": true
+    }
+  ]
+}

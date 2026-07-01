@@ -1,0 +1,356 @@
+[
+  {
+    "id": "edge:grundlagen-mannigfaltigkeitslehre-canonical-set-theory",
+    "source": "work:grundlagen-einer-allgemeinen-mannigfaltigkeitslehre",
+    "target": "subfield:set-theory",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:encyclopedia-of-mathematics"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Grundlagen einer allgemeinen Mannigfaltigkeitslehre (1883) systematically introduced transfinite ordinals, well-ordering, and the philosophical justification for the actual infinite; standardly credited as Cantor's founding manifesto for set theory.",
+    "rationale": "History-of-mathematics consensus (Encyclopedia of Mathematics, standard set-theory histories) credits the 1883 Grundlagen as the text where Cantor's set theory became a systematic mathematical-philosophical program, not just an isolated theorem.",
+    "uncertainty": "Cantor's foundational writing spans several publications (1874, 1883, 1891, 1895-97); crediting one as 'the' canonical founding text is a defensible but contestable single-work pick.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:grundlagen-mannigfaltigkeitslehre-canonical-georg-cantor",
+    "source": "work:grundlagen-einer-allgemeinen-mannigfaltigkeitslehre",
+    "target": "person:georg-cantor",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:encyclopedia-of-mathematics"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Grundlagen einer allgemeinen Mannigfaltigkeitslehre, authored solely by Georg Cantor, is among his defining works, alongside the later Beitrage zur Begrundung der transfiniten Mengenlehre (1895-97).",
+    "rationale": "Cantor is sole author of record; scoped specifically to the text credited as the founding manifesto of set theory as opposed to his other major papers.",
+    "uncertainty": "Cantor has more than one major set-theory publication; this edge is scoped to the one standardly credited as the discipline-founding text, consistent with the field-level edge above.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:mind-of-primitive-man-canonical-cultural-anthropology",
+    "source": "work:the-mind-of-primitive-man",
+    "target": "subfield:cultural-anthropology",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Mind of Primitive Man (1911) argued against biological-racial determinism of culture and intelligence, founding the culture-not-race paradigm at the core of American cultural anthropology.",
+    "rationale": "Standard history-of-anthropology consensus credits this text as Boas's founding statement of cultural relativism against 19th-century racial-evolutionary anthropology.",
+    "uncertainty": "None material to the field-level claim; Boas's discipline-founding role also rests substantially on institution-building (Columbia, AAA), not text alone, but the text is the standard canonical citation.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:mind-of-primitive-man-canonical-franz-boas",
+    "source": "work:the-mind-of-primitive-man",
+    "target": "person:franz-boas",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Mind of Primitive Man, authored by Franz Boas, is Boas's most widely cited single defining work.",
+    "rationale": "Boas is sole author of record; this text is the one most consistently credited as his defining publication over his many other papers.",
+    "uncertainty": "Boas was a prolific author across a long career (also Race, Language, and Culture, 1940, a collected-papers volume); this edge scopes to the single-book text standardly credited as founding the field.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:cours-de-philosophie-positive-canonical-sociology",
+    "source": "work:cours-de-philosophie-positive",
+    "target": "field:sociology",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Cours de philosophie positive (1830-1842) coined the term 'sociologie' and laid out positivism as the method for the new science of society; universally credited as founding sociology as a discipline. Co-canonical with Durkheim's Rules of Sociological Method and Weber's Protestant Ethic in this batch (see report) - Comte is the earliest/foundational-naming layer, Durkheim the methodological-institutional layer, Weber the interpretive/comparative layer.",
+    "rationale": "Textbook-level consensus (SEP's Comte entry, standard sociology-history texts) that Comte coined the discipline's name and founding program.",
+    "uncertainty": "None material to the field-level claim; multi-volume publication history (1830-1842) creates identity/version risk at the node level, not the relation claim.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:cours-de-philosophie-positive-canonical-auguste-comte",
+    "source": "work:cours-de-philosophie-positive",
+    "target": "person:auguste-comte",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Cours de philosophie positive, authored by Auguste Comte, is Comte's defining and canonical work.",
+    "rationale": "Comte is sole author of record; this text is unambiguously the work for which he is canonically known as the founder of positivism and sociology.",
+    "uncertainty": "None material.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:rules-of-sociological-method-canonical-sociology",
+    "source": "work:the-rules-of-sociological-method",
+    "target": "field:sociology",
+    "relation": "canonical_work",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Rules of Sociological Method (1895) is Durkheim's explicit methodological manifesto establishing sociology's autonomous object ('social facts') and method. Co-canonical with Comte's Cours and Weber's Protestant Ethic in this batch (see report).",
+    "rationale": "Standard history-of-sociology consensus credits this text as Durkheim's foundational methodological statement, distinct from his other major works.",
+    "uncertainty": "Durkheim has 3 plausible canonical-work candidates (Rules 1895, Division of Labour 1893, Suicide 1897); this pick is a defensible but contestable single-work selection, argued in the node rationale and report.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:rules-of-sociological-method-canonical-emile-durkheim",
+    "source": "work:the-rules-of-sociological-method",
+    "target": "person:emile-durkheim",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Rules of Sociological Method, authored by Emile Durkheim, is scoped as his canonical methodological text distinct from The Division of Labour in Society and Suicide.",
+    "rationale": "Durkheim is sole author of record; scoped specifically to the text credited with founding sociological method, matching the field-level edge above.",
+    "uncertainty": "Durkheim wrote at least two other works with strong independent claims to being 'his' canonical work (Division of Labour, Suicide); this is a single-work pick among plausible alternatives, not a settled fact.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:protestant-ethic-canonical-sociology",
+    "source": "work:the-protestant-ethic-and-the-spirit-of-capitalism",
+    "target": "field:sociology",
+    "relation": "canonical_work",
+    "confidence": 0.87,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Protestant Ethic and the Spirit of Capitalism (1904-05 essays, 1920 book) is Weber's most famous and most cited single bounded text, establishing his interpretive (verstehende) sociology and religion-economy causal-affinity method. Co-canonical with Comte's Cours and Durkheim's Rules in this batch (see report). Passed over Economy and Society for W2 decidability reasons (see node rationale).",
+    "rationale": "Standard history-of-sociology consensus treats this as Weber's canonical, most widely assigned text, even though Economy and Society is arguably weightier by scholarly volume.",
+    "uncertainty": "A reasonable case exists for crediting Economy and Society (Weber's unfinished magnum opus) as more field-defining by scholarly weight; this pick favors single-item decidability (W2) over scholarly-importance ranking, a genuine judgment call flagged for QC.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:protestant-ethic-canonical-max-weber",
+    "source": "work:the-protestant-ethic-and-the-spirit-of-capitalism",
+    "target": "person:max-weber",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Protestant Ethic and the Spirit of Capitalism, authored by Max Weber, is scoped as his most widely cited single work, distinct from the posthumous, editorially-contested Economy and Society.",
+    "rationale": "Weber is sole author of record; scoped specifically to the single bounded text most commonly credited as his canonical work, matching the field-level edge above.",
+    "uncertainty": "Economy and Society has a strong competing claim to being Weber's 'defining' work by scholarly weight; this is a single-work pick among plausible alternatives, not a settled fact.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:laws-of-thought-canonical-mathematical-logic",
+    "source": "work:an-investigation-of-the-laws-of-thought",
+    "target": "subfield:mathematical-logic",
+    "relation": "canonical_work",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "CO-CANONICAL (flag for curation): An Investigation of the Laws of Thought (1854) founded Boolean/algebraic logic. subfield:mathematical-logic already has work:begriffsschrift (Frege, 1879) as its canonical_work (work-wave2). This edge would make mathematical-logic the corpus's first subfield with TWO canonical_work edges - both legitimately foundational to distinct strands (algebraic logic vs. quantificational/predicate logic). See report for the explicit modeling-ruling flag.",
+    "rationale": "SEP's entries on Boole and on the history of logic credit Laws of Thought as founding algebraic/Boolean logic, a distinct and equally foundational strand from Frege's quantificational logic.",
+    "uncertainty": "First co-canonical case in the corpus; whether two canonical_work edges into one subfield is the right model (vs. splitting mathematical-logic into algebraic-logic and predicate-logic subfields) is a genuine open modeling question for the curation gate, not resolved by this proposal.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:laws-of-thought-canonical-george-boole",
+    "source": "work:an-investigation-of-the-laws-of-thought",
+    "target": "person:george-boole",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "An Investigation of the Laws of Thought, authored by George Boole, is Boole's defining and canonical work.",
+    "rationale": "Boole is sole author of record; this text is unambiguously the work for which he is canonically known.",
+    "uncertainty": "None material.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:aetiologie-der-tuberkulose-canonical-microbiology",
+    "source": "work:die-aetiologie-der-tuberkulose",
+    "target": "subfield:microbiology",
+    "relation": "canonical_work",
+    "confidence": 0.55,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "HONESTY-GAP BORDERLINE (flag for curation): Die Aetiologie der Tuberkulose (1882) is Koch's most name-recognized single paper (identifies M. tuberculosis, articulates Koch's postulates), but Koch's body of work is genuinely diffuse across several major papers (anthrax 1876, tuberculosis 1882, cholera 1884) with no single dominant book-length watershed the way Origin of Species or Principia function for their fields. Proposed as the least-bad single candidate; QC should weigh dropping this alongside the companion Pasteur non-proposal (see report) for consistency.",
+    "rationale": "This paper is the one most consistently singled out by name in medical-history sources and is where Koch's postulates were first developed, giving it the strongest single-item identity of Koch's papers.",
+    "uncertainty": "Field-founding credit for microbiology is arguably distributed across Koch's several major papers and Pasteur's parallel body of work, not concentrated in one text; low confidence that this single edge captures the field's true founding-text structure.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:aetiologie-der-tuberkulose-canonical-robert-koch",
+    "source": "work:die-aetiologie-der-tuberkulose",
+    "target": "person:robert-koch",
+    "relation": "canonical_work",
+    "confidence": 0.6,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Die Aetiologie der Tuberkulose, authored by Robert Koch, is his single most name-recognized paper, though scoped with the same honesty-gap caveat as the field-level edge above.",
+    "rationale": "Koch is sole author of record; this paper is the one most consistently credited by name as his defining publication among several major candidates.",
+    "uncertainty": "Koch's anthrax (1876) and cholera (1884) work have independent strong claims to being 'his' defining contribution; this single-work pick is genuinely contestable, mirroring the field-level edge's honesty-gap flag.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:laws-of-thought-canonical-gottlob-frege-PROBE",
+    "source": "work:an-investigation-of-the-laws-of-thought",
+    "target": "person:gottlob-frege",
+    "relation": "canonical_work",
+    "confidence": 0.25,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "probe": "reject-expected",
+    "note": "REJECTION PROBE (intended flaw) - expected reject: An Investigation of the Laws of Thought (1854) was authored solely by George Boole, a generation before Frege's Begriffsschrift (1879). Frege is a real, historically adjacent figure - both are foundational mathematical logicians whose works are co-canonical for subfield:mathematical-logic in this very batch - which is exactly what makes this a plausible-looking but incorrect attribution rather than a random misattribution. Frege did not author Boole's book; P50 must resolve to Boole only.",
+    "rationale": "Deliberately proposed as a discrimination test for QC: tests whether the pipeline catches misattribution between two co-canonical, field-adjacent authors within the same subfield rather than only unrelated names - a harder case than wave-2's von Neumann probe because both figures are genuinely, currently proposed as co-founders of the very same subfield.",
+    "uncertainty": "This edge is expected to be wrong by construction; the failure mode being tested is misattribution between two legitimately co-canonical authors in the same subfield, not a genuine uncertainty about the facts.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:cours-de-philosophie-positive-canonical-cultural-anthropology-PROBE",
+    "source": "work:cours-de-philosophie-positive",
+    "target": "subfield:cultural-anthropology",
+    "relation": "canonical_work",
+    "confidence": 0.15,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "probe": "reject-expected",
+    "note": "REJECTION PROBE (intended flaw) - expected reject: Cours de philosophie positive (1830-1842) founded sociology, not cultural anthropology. Comte and Boas are both social-sciences founders of 19th/early-20th-century vintage, and positivism's comparative-societies framing has superficial thematic adjacency to anthropology, which is exactly what makes this a plausible-looking but incorrect field pairing rather than a random domain mismatch. Comte's Cours is not the founding or canonical text of cultural-anthropology; it should be rejected as a wrong-subfield attribution.",
+    "rationale": "Deliberately proposed as a discrimination test for QC: tests whether the pipeline catches a wrong-subfield claim between two adjacent social-sciences fields (sociology vs. cultural anthropology) that share superficial 19th-century comparative-societies framing, mirroring wave-2's adjacent-subfield anachronism probe.",
+    "uncertainty": "This edge is expected to be wrong by construction; the failure mode being tested is cross-attribution between adjacent social-sciences subfields, not a genuine uncertainty about the facts.",
+    "ambiguous": true
+  }
+]

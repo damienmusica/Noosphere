@@ -12662,5 +12662,457 @@
       "proposed_at": "2026-07-01"
     },
     "note": "\"Principles of Physiological Psychology\" (1874) is Wilhelm Wundt's canonical/defining work (author, Wikidata P50=Q75814). Grounding: 2 independent live Wikipedia articles ('Wilhelm Wundt' + 'Experimental psychology'). Identity Q2883810 live-verified (P31 written work, P50 Q75814, es/it sitelinks); year 1874 uncontested (decision (89) criterion 3). Generator QID Q1974779 corrected. Promoted after the (89) criterion revision."
+  },
+  {
+    "id": "edge:grundlagen-mannigfaltigkeitslehre-canonical-work-set-theory",
+    "source": "work:grundlagen-einer-allgemeinen-mannigfaltigkeitslehre",
+    "target": "subfield:set-theory",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:encyclopedia-of-mathematics"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Cantor's \"Grundlagen einer allgemeinen Mannigfaltigkeitslehre\" (1883) systematically introduced transfinite ordinal numbers and well-ordering; a founding text of set theory. Grounding: 2 independent live sources (Wikipedia \"Foundations of a General Theory of Aggregates\" + Encyclopedia of Mathematics). Identity Q29167832 live-verified (P31 Q13442814 scholarly article, P50 Q76420 Cantor, P577 1883, plus DOI 10.1007/BF01446819 and P1433 publication anchor → §8 identity-anchor (b) on a substantively-populated item; 0 sitelinks). Generator QID Q19181902 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:grundlagen-mannigfaltigkeitslehre-canonical-work-georg-cantor",
+    "source": "work:grundlagen-einer-allgemeinen-mannigfaltigkeitslehre",
+    "target": "person:georg-cantor",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:encyclopedia-of-mathematics"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "\"Grundlagen einer allgemeinen Mannigfaltigkeitslehre\" (1883) is a canonical work of Georg Cantor (author, Wikidata P50=Q76420). Note: Cantor's founding set-theory writing spans several publications (1874, 1883, 1895–97); this edge scopes to the 1883 Grundlagen as the systematic founding manifesto (recorded, not disqualifying). Identity Q29167832 live-verified. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:mind-of-primitive-man-canonical-work-cultural-anthropology",
+    "source": "work:the-mind-of-primitive-man",
+    "target": "subfield:cultural-anthropology",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Franz Boas's \"The Mind of Primitive Man\" (1911) argued that culture, not biological race, shapes human mental life; a founding text of cultural anthropology and cultural relativism. Grounding: 2 independent live sources (Wikipedia \"The Mind of Primitive Man\" + SEP). Identity Q7751530 live-verified (P31 Q7725634 literary work, P50 Q76857 Boas, P577 1911, 2 sitelinks → §8 identity-anchor (a)). Generator QID Q6858987 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:mind-of-primitive-man-canonical-work-franz-boas",
+    "source": "work:the-mind-of-primitive-man",
+    "target": "person:franz-boas",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "\"The Mind of Primitive Man\" (1911) is a canonical work of Franz Boas (author, Wikidata P50=Q76857). Identity Q7751530 live-verified. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:cours-de-philosophie-positive-canonical-work-sociology",
+    "source": "work:cours-de-philosophie-positive",
+    "target": "field:sociology",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Auguste Comte's \"Cours de philosophie positive\" (1830–1842) coined the term \"sociology\" and set out positivism as the method for a science of society; a founding text of sociology. CO-CANONICAL: sociology holds three canonical works (Comte's Cours, Durkheim's Rules, Weber's Protestant Ethic) — mirroring the field's multiple founded_or_formalized founders (record-not-resolve); permitted per the co-canonical ruling (session #49, decision (90)). Grounding: 2 independent live sources (Wikipedia \"The Course in Positive Philosophy\" + SEP Comte). Identity Q3490518 live-verified (P31 Q47461344 written work, P50 Q12718 Comte, 10 sitelinks → §8 anchor (a)); year 1830–1842 uncontested (§8 criterion 3). Generator QID Q2895878 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:cours-de-philosophie-positive-canonical-work-auguste-comte",
+    "source": "work:cours-de-philosophie-positive",
+    "target": "person:auguste-comte",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "\"Cours de philosophie positive\" (1830–1842) is the canonical work of Auguste Comte (author, Wikidata P50=Q12718). Identity Q3490518 live-verified. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:rules-of-sociological-method-canonical-work-sociology",
+    "source": "work:the-rules-of-sociological-method",
+    "target": "field:sociology",
+    "relation": "canonical_work",
+    "confidence": 0.88,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Émile Durkheim's \"The Rules of Sociological Method\" (1895) established \"social facts\" as sociology's distinct object of study; a founding text of sociological method. CO-CANONICAL with Comte's Cours and Weber's Protestant Ethic (co-canonical ruling, session #49). Note: Durkheim has three plausible canonical candidates (Rules 1895, Division of Labour 1893, Suicide 1897); this edge scopes to Rules as the methodological founding statement (recorded, not disqualifying). Grounding: 2 independent live sources (Wikipedia \"The Rules of Sociological Method\" + SEP Durkheim). Identity Q588341 live-verified (P31 Q7725634 literary work, P50 Q15948 Durkheim, P577 1895, 10 sitelinks). Generator QID Q1806105 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:rules-of-sociological-method-canonical-work-emile-durkheim",
+    "source": "work:the-rules-of-sociological-method",
+    "target": "person:emile-durkheim",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "\"The Rules of Sociological Method\" (1895) is a canonical work of Émile Durkheim (author, Wikidata P50=Q15948), scoped as his methodological founding text distinct from The Division of Labour and Suicide. Identity Q588341 live-verified. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:protestant-ethic-canonical-work-sociology",
+    "source": "work:the-protestant-ethic-and-the-spirit-of-capitalism",
+    "target": "field:sociology",
+    "relation": "canonical_work",
+    "confidence": 0.87,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Max Weber's \"The Protestant Ethic and the Spirit of Capitalism\" (1904–05) traced an affinity between ascetic Protestantism and modern capitalism; a founding text of interpretive (verstehende) sociology. CO-CANONICAL with Comte's Cours and Durkheim's Rules (co-canonical ruling, session #49). Note: Economy and Society has a competing claim by scholarly weight but is a posthumous, editorially-contested compilation (weaker single-item decidability); this edge scopes to the bounded Protestant Ethic (recorded, not disqualifying). Grounding: 2 independent live sources (Wikipedia \"The Protestant Ethic and the Spirit of Capitalism\" + SEP Weber). Identity Q392937 live-verified (P31 Q47461344 written work, P50 Q9387 Weber, P577 1905, 37 sitelinks). Generator QID Q557184 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:protestant-ethic-canonical-work-max-weber",
+    "source": "work:the-protestant-ethic-and-the-spirit-of-capitalism",
+    "target": "person:max-weber",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "\"The Protestant Ethic and the Spirit of Capitalism\" (1904–05) is a canonical work of Max Weber (author, Wikidata P50=Q9387), scoped as his most widely cited single bounded text distinct from the posthumous Economy and Society. Identity Q392937 live-verified. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:laws-of-thought-canonical-work-mathematical-logic",
+    "source": "work:an-investigation-of-the-laws-of-thought",
+    "target": "subfield:mathematical-logic",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "George Boole's \"An Investigation of the Laws of Thought\" (1854) founded the algebraic treatment of logic (Boolean algebra); a founding text of mathematical logic. CO-CANONICAL: mathematical-logic now holds two canonical works — Boole's Laws of Thought (algebraic logic) and Frege's Begriffsschrift (quantificational logic, work-wave2) — two distinct, non-competing founding strands; the corpus's first co-canonical subfield, permitted per the co-canonical ruling (session #49, decision (90)). Grounding: 2 independent live sources (Wikipedia \"The Laws of Thought\" + SEP algebra-of-logic tradition). Identity Q7746455 live-verified (P31 Q7725634 literary work, P50 Q134661 Boole, P577 1854, 4 sitelinks). Generator QID Q2596947 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:laws-of-thought-canonical-work-george-boole",
+    "source": "work:an-investigation-of-the-laws-of-thought",
+    "target": "person:george-boole",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "\"An Investigation of the Laws of Thought\" (1854) is the canonical work of George Boole (author, Wikidata P50=Q134661). Identity Q7746455 live-verified. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:statistical-physics-influenced-information-theory",
+    "source": "subfield:statistical-physics",
+    "target": "subfield:information-theory",
+    "relation": "influenced",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Statistical mechanics (Boltzmann/Gibbs entropy, 19th c.) supplied both the entropy formalism and the name that Shannon adopted for information theory (1948). Grounding: 2 independent live Wikipedia articles (\"Entropy in thermodynamics and information theory\": Shannon/Hartley expressions \"are similar to the mathematics of statistical mechanics\" established by Boltzmann and Gibbs; \"History of entropy\"). Direction/temporal order correct (stat-mech precedes 1948). The von-Neumann-named-it anecdote carries legend risk and is not load-bearing here (the shared formalism is). (a)-relation auto-reviewed via the (68) ladder."
+  },
+  {
+    "id": "edge:evolutionary-biology-influenced-economics",
+    "source": "subfield:evolutionary-biology",
+    "target": "field:economics",
+    "relation": "influenced",
+    "confidence": 0.6,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Darwinian evolutionary biology (1859) is the acknowledged model for evolutionary economics (Thorstein Veblen, early 20th c.), which applies variation/selection/retention to economic change. Grounding: 2 independent live sources (Wikipedia \"Evolutionary economics\": term coined by Veblen, \"economic science should embrace the Darwinian theory\"; SEP \"Evolutionary Economics\"). Direction/temporal order correct. Record-not-resolve: the influence enters economics via the evolutionary-economics tradition (field-level target; no evolutionary-economics subfield node exists yet)."
+  },
+  {
+    "id": "edge:gottlob-frege-influenced-linguistics",
+    "source": "person:gottlob-frege",
+    "target": "field:linguistics",
+    "relation": "influenced",
+    "confidence": 0.65,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Frege's (1848–1925) sense/reference distinction and compositional theory of meaning became foundational to formal semantics in linguistics (later developed by Montague). Grounding: 2 independent live sources (Wikipedia \"Formal semantics (natural language)\": \"approaches to formal semantics, such as the works of Gottlob Frege…\"; SEP \"Gottlob Frege\"). Direction/temporal order correct. Record-not-resolve: the influence is on formal semantics specifically (field-level target; no formal-semantics subfield node exists yet)."
+  },
+  {
+    "id": "edge:phenomenology-influenced-psychology",
+    "source": "subfield:phenomenology",
+    "target": "field:psychology",
+    "relation": "influenced",
+    "confidence": 0.55,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:iep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Husserlian phenomenology (early 20th c.) influenced psychology, notably Gestalt and humanistic psychology and later embodied/enactive approaches. Grounding: 2 independent live sources (SEP \"Phenomenology\" + IEP \"Phenomenology\"; Wikipedia \"Phenomenology\" corroborates the Gestalt-theory link). Direction/temporal order correct. Record-not-resolve: broad field-level target aggregating several historical episodes."
+  },
+  {
+    "id": "edge:cybernetics-influenced-artificial-intelligence",
+    "source": "subfield:cybernetics",
+    "target": "subfield:artificial-intelligence",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Cybernetics (Wiener, 1948; Macy Conferences) is a direct historical precursor to artificial intelligence, which was named at the 1956 Dartmouth workshop. Grounding: 2 independent live Wikipedia articles (\"History of artificial intelligence\": \"Norbert Wiener's cybernetics described control and stability…\" among AI's roots; \"Cybernetics\"). Direction/temporal order correct (1948 precedes 1956). The generator's SEP \"Cybernetics\" citation was dropped (entry returns HTTP 404); two independent Wikipedia articles satisfy the floor."
+  },
+  {
+    "id": "edge:systems-science-influenced-sociology",
+    "source": "field:systems-science",
+    "target": "field:sociology",
+    "relation": "influenced",
+    "confidence": 0.5,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "General systems theory / cybernetics (1940s–50s) were taken up by sociologists — Talcott Parsons's action theory and Niklas Luhmann's social systems theory. Grounding: 2 independent live Wikipedia articles (\"Systems theory\": lists sociology among adopting fields incl. Parsons and Luhmann; \"Niklas Luhmann\"). Direction/temporal order correct. Record-not-resolve: cross-domain (formal_sciences → social_sciences) influence channeled through Parsons/Luhmann."
+  },
+  {
+    "id": "edge:claude-shannon-influenced-computational-linguistics",
+    "source": "person:claude-shannon",
+    "target": "subfield:computational-linguistics",
+    "relation": "influenced",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Shannon's information-theoretic model and n-gram statistical models of language (1948) influenced statistical approaches in computational linguistics/NLP. Grounding: 2 independent live sources (Wikipedia \"Language model\": n-gram history, \"Shannon-style experiments\"; SEP \"Computational Linguistics\", entry live). Direction/temporal order correct (1948 predates computational linguistics as an organized subfield)."
+  },
+  {
+    "id": "edge:emile-durkheim-influenced-anthropology",
+    "source": "person:emile-durkheim",
+    "target": "field:anthropology",
+    "relation": "influenced",
+    "confidence": 0.65,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Durkheim's (d. 1917) concepts of social facts and functional explanation strongly influenced British social anthropology, especially the structural-functionalism of Radcliffe-Brown. Grounding: 2 independent live sources (Wikipedia \"Structural functionalism\": theorists incl. Radcliffe-Brown drew on Durkheim; SEP \"Émile Durkheim\"). Direction/temporal order correct. Record-not-resolve: the influence is most precisely on structural-functionalism within anthropology (field-level target)."
+  },
+  {
+    "id": "edge:sigmund-freud-influenced-literary-studies",
+    "source": "person:sigmund-freud",
+    "target": "field:literary-studies",
+    "relation": "influenced",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Freud's psychoanalytic concepts (1900–1930s) gave rise to psychoanalytic literary criticism. Grounding: 2 independent live sources (Wikipedia \"Psychoanalytic literary criticism\": \"informed by the tradition of psychoanalysis begun by Sigmund Freud\"; SEP \"Sigmund Freud\"). Direction/temporal order correct. Record-not-resolve: broad, diffuse influence on the field via the psychoanalytic-criticism school (field-level target)."
+  },
+  {
+    "id": "edge:max-weber-critiques-karl-marx",
+    "source": "person:max-weber",
+    "target": "person:karl-marx",
+    "relation": "critiques",
+    "confidence": 0.75,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Weber (1864–1920, after Marx d. 1883) is standardly read as critiquing/complicating Marx's economic determinism, emphasizing ideas, religion and status as independent causal forces (\"debate with the ghost of Marx\"). Direction/temporal order correct. Held at proposed: live checks confirmed the Weber–Marx co-founding association and a \"critical impulse\" framing, but did not verbatim-surface the explicit critique-of-economic-determinism statement in the two sources fetched (SEP Weber + Wikipedia Max Weber); proposed-first pending a confirming claim-stating source. Generative critique, not wholesale rejection (record-not-resolve)."
+  },
+  {
+    "id": "edge:norbert-wiener-influenced-cognitive-psychology",
+    "source": "person:norbert-wiener",
+    "target": "subfield:cognitive-psychology",
+    "relation": "influenced",
+    "confidence": 0.65,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Wiener's cybernetic concepts of feedback and self-regulation (1948) contributed to the mid-20th-century cognitive revolution that produced cognitive psychology. Direction/temporal order correct. Held at proposed: near-duplicate risk with the existing information-theory → cognitive-psychology edge (both \"cognitive revolution\" antecedents); the distinct cybernetic-feedback contribution is real but I under-promote to avoid redundancy pending a source that separates it cleanly from the channel-capacity claim."
+  },
+  {
+    "id": "edge:evolutionary-biology-applies-to-epidemiology",
+    "source": "subfield:evolutionary-biology",
+    "target": "subfield:epidemiology",
+    "relation": "applies_to",
+    "confidence": 0.6,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Evolutionary theory (natural selection, host–pathogen coevolution) is applied within epidemiology (evolutionary epidemiology, Darwinian medicine) to model virulence and antibiotic-resistance. applies_to direction is method/theory → domain (safe). Held at proposed: live check confirmed evolutionary/Darwinian medicine but did not surface the epidemiology-specific link in the fetched intro; evolutionary epidemiology is a genuine but niche subfield — proposed-first pending a confirming epidemiology-anchored source."
   }
 ]
