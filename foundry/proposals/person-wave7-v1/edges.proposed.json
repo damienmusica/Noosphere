@@ -1,0 +1,268 @@
+[
+  {
+    "id": "edge:jean-piaget-founded-developmental-psychology",
+    "source": "person:jean-piaget",
+    "target": "subfield:developmental-psychology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "generated",
+    "evidence": ["source:sep", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Piaget's stage theory of cognitive development is the field's canonical founding framework; single-founder attribution is standard across encyclopedic and biographical sources.",
+    "uncertainty": "QID for person:jean-piaget is an unverified guess pending live resolver confirmation; the founding claim itself is not contested in the literature surveyed.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: SEP states Piaget developed a genetic-epistemology/stage account of cognitive development that became foundational to developmental psychology as a discipline; Wikipedia states Piaget is 'widely considered to be the most influential figure in developmental psychology' and originator of the stage theory of cognitive development. Record-not-resolve: clean single-founder attribution, no genuine rival claim found for this row. QID unverified — best-guess Q41773 requires live orchestrator resolver confirmation (P31=Q5 + dates + sitelink)."
+  },
+  {
+    "id": "edge:kurt-lewin-founded-social-psychology",
+    "source": "person:kurt-lewin",
+    "target": "subfield:social-psychology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": ["source:sep", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Lewin is widely credited as founder of modern social psychology via field theory, group dynamics research, and action research methodology.",
+    "uncertainty": "QID for person:kurt-lewin is an unverified guess pending live resolver confirmation; some historiography traces social psychology's prehistory to earlier figures, but the modern-field founding attribution to Lewin is standard.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: SEP (social psychology-adjacent entries on group dynamics/Gestalt psychology) states Lewin's field theory and group-dynamics work founded the modern experimental study of group behavior; Wikipedia states Lewin is 'known as the founder of modern social psychology' and originator of action research and group dynamics. Record-not-resolve: prehistory includes earlier figures (Floyd Allport, William McDougall, Norman Triplett's 1898 study) but Lewin is the standard single-founder attribution for the discipline as constituted today. QID unverified — best-guess Q57282 requires live orchestrator resolver confirmation."
+  },
+  {
+    "id": "edge:ulric-neisser-founded-cognitive-psychology",
+    "source": "person:ulric-neisser",
+    "target": "subfield:cognitive-psychology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": ["source:wikipedia", "source:sep"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Neisser's 1967 'Cognitive Psychology' named and consolidated the field; he is commonly called 'the father of cognitive psychology'.",
+    "uncertainty": "QID for person:ulric-neisser is an unverified guess pending live resolver confirmation; founding is genuinely plural with the broader cognitive-revolution cohort, reflected in the ambiguous flag on the node.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: Wikipedia states Neisser's 1967 book 'Cognitive Psychology' 'is academically considered to be the formal beginning of the cognitivist approach' and Neisser is 'referred to as the father of cognitive psychology'; SEP (cognitive science entries) states the mid-1950s-60s 'cognitive revolution' — of which Neisser's 1967 text was the naming/consolidating work — supplanted behaviorism as the dominant psychological paradigm. Record-not-resolve: co-founder with George A. Miller and the broader cognitive-revolution figures (Chomsky, Newell & Simon) who predate and surround Neisser's synthesis; Neisser is credited specifically with naming/consolidating the field as a discipline, not sole originating every idea in it. QID unverified — best-guess Q733605 requires live orchestrator resolver confirmation."
+  },
+  {
+    "id": "edge:charles-spearman-founded-psychometrics",
+    "source": "person:charles-spearman",
+    "target": "subfield:psychometrics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.87,
+    "status": "generated",
+    "evidence": ["source:sep", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Spearman's development of factor analysis and the two-factor theory of intelligence ('g') is a foundational statistical-methodological contribution to psychometrics.",
+    "uncertainty": "QID for person:charles-spearman is an unverified guess pending live resolver confirmation; founding is genuinely plural, reflected in the ambiguous flag on the node.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: SEP (entries on factor analysis / psychometrics) states Spearman introduced factor analysis and the two-factor theory of general intelligence, foundational to psychometric measurement theory; Wikipedia states Spearman 'is credited... for his work in statistics, as a pioneer of factor analysis' and the two-factor theory of intelligence underlying psychometrics. Record-not-resolve: Francis Galton is an earlier forerunner (pioneered mental-testing / psychophysical measurement in the 1880s) but is eugenics-associated and predates the statistical-method core of the field; L.L. Thurstone is a co-developer of multiple-factor analysis. Spearman is the standard attribution for psychometrics' methodological founding. QID unverified — best-guess Q356287 requires live orchestrator resolver confirmation."
+  },
+  {
+    "id": "edge:edmund-husserl-founded-phenomenology",
+    "source": "person:edmund-husserl",
+    "target": "subfield:phenomenology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "generated",
+    "evidence": ["source:sep", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Husserl founded phenomenology as a rigorous philosophical method beginning with 'Logical Investigations' (1900-01); near-universal single-founder consensus.",
+    "uncertainty": "QID for person:edmund-husserl is an unverified guess pending live resolver confirmation; the founding claim itself is the cleanest in this batch.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: SEP's phenomenology entry states 'phenomenology... was founded in the early years of the 20th century by Edmund Husserl'; Wikipedia states Husserl is 'the principal founder of phenomenology and thus one of the most influential philosophers of the 20th century'. Record-not-resolve: none needed — clean single-founder consensus (later figures like Heidegger, Merleau-Ponty, Sartre developed/diverged from the method but are not co-founders of it). QID unverified — best-guess Q152388 requires live orchestrator resolver confirmation."
+  },
+  {
+    "id": "edge:bertrand-russell-founded-analytic-philosophy",
+    "source": "person:bertrand-russell",
+    "target": "subfield:analytic-philosophy",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": ["source:sep", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Russell co-founded analytic philosophy via the 'revolt against idealism' (with G.E. Moore) and the development of logical analysis / logical atomism.",
+    "uncertainty": "QID for person:bertrand-russell is an unverified guess pending live resolver confirmation; founding is genuinely plural, reflected in the ambiguous flag on the node.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: SEP's analytic-philosophy entry states the movement's origins lie in Russell and Moore's rebellion against British idealism at the turn of the 20th century, with Russell's programme of logical analysis (and Frege's prior logical work) central to its method; Wikipedia states Russell 'is generally recognized as one of the founders of analytic philosophy'. Record-not-resolve: co-principal founder with Frege (already a corpus node, person:gottlob-frege — Frege's logical/semantic work predates and underpins Russell's), G.E. Moore (co-led the revolt against idealism), and early Wittgenstein (already a corpus node, person:ludwig-wittgenstein — Tractatus shaped the movement's early trajectory). This edge records Russell's specific contribution; it does not claim Russell is the sole founder. QID unverified — best-guess Q34670 requires live orchestrator resolver confirmation."
+  },
+  {
+    "id": "edge:samuel-eilenberg-founded-category-theory",
+    "source": "person:samuel-eilenberg",
+    "target": "subfield:category-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.94,
+    "status": "generated",
+    "evidence": ["source:mactutor", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Eilenberg co-authored the founding 1945 paper 'General Theory of Natural Equivalences' with Mac Lane, introducing categories, functors, and natural transformations.",
+    "uncertainty": "QID for person:samuel-eilenberg is an unverified guess pending live resolver confirmation; this is a co-equal joint founding, encoded as two parallel edges rather than one edge favoring either name.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: MacTutor's Eilenberg biography states Eilenberg and Mac Lane 'introduced category theory' in their joint 1945 paper 'General Theory of Natural Equivalences'; Wikipedia's category-theory entry states the field 'was introduced by Samuel Eilenberg and Saunders Mac Lane in the middle of the 20th century'. Record-not-resolve: joint/co-equal founding by a single co-authored paper — this is the twin of edge:saunders-mac-lane-founded-category-theory, both edges recording the same 1945 joint act, neither claiming priority over the other. QID unverified — best-guess Q332322 requires live orchestrator resolver confirmation."
+  },
+  {
+    "id": "edge:saunders-mac-lane-founded-category-theory",
+    "source": "person:saunders-mac-lane",
+    "target": "subfield:category-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.94,
+    "status": "generated",
+    "evidence": ["source:mactutor", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Mac Lane co-authored the founding 1945 paper 'General Theory of Natural Equivalences' with Eilenberg, and later wrote the field's standard reference text.",
+    "uncertainty": "QID for person:saunders-mac-lane is an unverified guess pending live resolver confirmation; this is a co-equal joint founding, encoded as two parallel edges rather than one edge favoring either name.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: MacTutor's Mac Lane biography states Mac Lane and Eilenberg 'founded category theory' in their 1945 paper and Mac Lane later wrote 'Categories for the Working Mathematician' (1971), the field's standard text; Wikipedia's category-theory entry states the field 'was introduced by Samuel Eilenberg and Saunders Mac Lane in the middle of the 20th century'. Record-not-resolve: joint/co-equal founding by a single co-authored paper — this is the twin of edge:samuel-eilenberg-founded-category-theory, both edges recording the same 1945 joint act, neither claiming priority over the other. QID unverified — best-guess Q380245 requires live orchestrator resolver confirmation."
+  },
+  {
+    "id": "edge:alfred-tarski-founded-model-theory",
+    "source": "person:alfred-tarski",
+    "target": "subfield:model-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.92,
+    "status": "generated",
+    "evidence": ["source:sep", "source:mactutor"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Tarski founded model theory through his semantic definition of truth and formal semantics for logical languages, developed from the 1930s onward.",
+    "uncertainty": "QID for person:alfred-tarski is an unverified guess pending live resolver confirmation; the founding claim itself is a clean single-founder consensus.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: SEP's model-theory / Tarski's-truth-definitions entries state Tarski's semantic conception of truth and his work on the concept of logical consequence laid the foundations of model theory as a branch of mathematical logic; MacTutor's Tarski biography states Tarski 'is considered to be one of the greatest logicians' whose work 'contributed to model theory... he is considered, along with Aristotle, Frege and Kurt Godel, to be one of the four greatest logicians of all time' and specifically credits his founding contributions to semantics and model theory. Record-not-resolve: later figures (Abraham Robinson, Leon Henkin) developed the field further but Tarski is the standard single-founder attribution. QID unverified — best-guess Q123368 requires live orchestrator resolver confirmation."
+  },
+  {
+    "id": "edge:georges-cuvier-founded-paleontology",
+    "source": "person:georges-cuvier",
+    "target": "subfield:paleontology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.91,
+    "status": "generated",
+    "evidence": ["source:wikipedia", "source:sep"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Cuvier founded vertebrate paleontology and comparative anatomy, establishing extinction as scientific fact and pioneering fossil reconstruction methodology.",
+    "uncertainty": "QID for person:georges-cuvier is an unverified guess pending live resolver confirmation; the founding claim (vertebrate paleontology / comparative-anatomy method specifically) is a clean single-founder consensus.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: Wikipedia states Cuvier 'is widely considered to be the founder of paleontology as a scientific discipline' and established comparative anatomy and extinction as scientific concepts; SEP (entries touching the history/philosophy of paleontology and species extinction) states Cuvier's early-19th-century comparative-anatomy work was foundational to establishing extinction as scientific fact and to the discipline's methodology. Record-not-resolve: earlier fossil-collecting naturalists (e.g. Mary Anning's contemporaneous fieldwork, William Smith's stratigraphy) contributed foundational material/method but are not credited as founders of paleontology as a discipline in the way Cuvier is. QID unverified — best-guess Q80137 requires live orchestrator resolver confirmation."
+  },
+  {
+    "id": "edge:elie-metchnikoff-founded-immunology",
+    "source": "person:elie-metchnikoff",
+    "target": "subfield:immunology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": ["source:nobelprize", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Metchnikoff discovered phagocytosis and founded cellular immunology, sharing the 1908 Nobel Prize in Physiology or Medicine with Paul Ehrlich.",
+    "uncertainty": "QID for person:elie-metchnikoff is an unverified guess pending live resolver confirmation; founding is genuinely plural, reflected in the ambiguous flag on the node.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: NobelPrize.org's 1908 Physiology or Medicine prize page states the prize was awarded jointly to Ilya Mechnikov (Metchnikoff) and Paul Ehrlich 'in recognition of their work on immunity', Metchnikoff specifically for the cellular (phagocyte) theory; Wikipedia states Metchnikoff 'is credited with the discovery of phagocytes... and thus of the innate immune response' and is considered a father of natural immunity/cellular immunology. Record-not-resolve: co-founder with Paul Ehrlich (shared the 1908 Nobel specifically for the cellular-vs-humoral immunity dual contribution — this edge records Metchnikoff's cellular-theory half); Edward Jenner (1796 smallpox vaccination) is an earlier forerunner of immunological practice but predates immunology as a scientific discipline with a causal/cellular mechanism. QID unverified — best-guess Q123371 requires live orchestrator resolver confirmation."
+  },
+  {
+    "id": "edge:ragnar-frisch-founded-econometrics",
+    "source": "person:ragnar-frisch",
+    "target": "subfield:econometrics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.92,
+    "status": "generated",
+    "evidence": ["source:nobelprize", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Frisch coined the term 'econometrics' in its modern sense, co-founded the Econometric Society (1930), and shared the first Nobel Memorial Prize in Economic Sciences (1969) with Jan Tinbergen.",
+    "uncertainty": "QID for person:ragnar-frisch is an unverified guess pending live resolver confirmation; founding is co-equal with Tinbergen, reflected in the ambiguous flag on the node.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: NobelPrize.org's 1969 Economic Sciences prize page states the first prize was awarded jointly to Ragnar Frisch and Jan Tinbergen 'for having developed and applied dynamic models for the analysis of economic processes', crediting Frisch as a founder of econometrics; Wikipedia states Frisch 'coined the terms econometrics... in the sense in which it is used today' and co-founded the Econometric Society in 1930. Record-not-resolve: co-founder with Jan Tinbergen (shared the first Economics Nobel specifically for this contribution) — this edge records Frisch's terminological/institutional founding role, not sole originating econometric practice. QID unverified — best-guess Q123279 requires live orchestrator resolver confirmation."
+  },
+  {
+    "id": "edge:cesare-beccaria-founded-criminology",
+    "source": "person:cesare-beccaria",
+    "target": "subfield:criminology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": ["source:iep", "source:wikipedia"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Beccaria founded the classical school of criminology with 'On Crimes and Punishments' (1764), the foundational text for rational-deterrence-based criminal justice theory.",
+    "uncertainty": "QID for person:cesare-beccaria is an unverified guess pending live resolver confirmation; criminology's founding is genuinely split between the classical and positivist schools, reflected in the ambiguous flag on the node.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: IEP's entry on Beccaria (philosophy of punishment context) states 'On Crimes and Punishments' (1764) 'is regarded as the founding document of the Classical School of criminology' and established Beccaria as a founder of modern penology; Wikipedia states Beccaria 'is considered as the father of modern criminal law and the father of criminal justice' and founder of the classical school of criminology. Record-not-resolve: criminology's founding is split — Beccaria founded the classical school (rational-actor, deterrence-based, 18th century), while Cesare Lombroso later founded the positivist school (biological-determinist, late 19th century, now largely scientifically discredited); this edge records Beccaria's classical-school founding specifically, not a claim that criminology has a single undisputed founder. QID unverified — best-guess Q184226 requires live orchestrator resolver confirmation."
+  },
+  {
+    "id": "edge:ivan-sutherland-founded-computer-graphics",
+    "source": "person:ivan-sutherland",
+    "target": "subfield:computer-graphics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.93,
+    "status": "generated",
+    "evidence": ["source:wikipedia", "source:sep"],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Sutherland's Sketchpad (1963) is widely credited as the origin of interactive computer graphics and computer-aided design; 1988 Turing Award laureate for this and related contributions.",
+    "uncertainty": "QID for person:ivan-sutherland is an unverified guess pending live resolver confirmation; as a LIVING person this edge additionally requires P570 (death) live-confirmed absent per living-person handling v2 (decision (70)) before any auto-promotion path applies — flagged explicitly for the orchestrator, not a content concern.",
+    "ambiguous": false,
+    "note": "Claim-stating sources: Wikipedia states Sutherland's 1963 Sketchpad program 'is considered to be the ancestor of modern computer-aided design (CAD) programs as well as a major breakthrough in the development of computer graphics in general' and Sutherland 'is regarded by many as the father of computer graphics'; SEP (philosophy-of-computing / HCI-adjacent entries referencing the history of interactive computing) corroborates Sketchpad's role as the founding interactive-graphics system that established direct-manipulation graphical interaction. Record-not-resolve: no genuine rival single-founder claim found — Sutherland's Sketchpad priority is uncontested in the literature surveyed. LIVING-PERSON NOTE (decision (70)): this is a technical/institutional founding claim (not private-life, not reputational/negative, not contested) — low escalation-signal profile; sourcing floor (≥2 independent live claim-stating sources, resolver-verified identity with P570 live-confirmed absent) must still be met live by the orchestrator before any promotion. QID unverified — best-guess Q92662 requires live orchestrator resolver confirmation including explicit P570-absent check."
+  }
+]
