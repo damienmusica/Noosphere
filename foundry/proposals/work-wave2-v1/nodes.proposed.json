@@ -1,0 +1,200 @@
+[
+  {
+    "id": "work:a-mathematical-theory-of-communication",
+    "type": "work",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1770447"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Shannon's 1948 Bell System Technical Journal paper is the founding text of information theory, introducing entropy, channel capacity, and the mathematical formalization of communication.",
+    "uncertainty": "QID is a best-guess recollection of Wikidata's entity for the paper (distinct from the person QID Q92760), not independently resolved in this session; Wikidata may or may not have a dedicated work item separate from a general description.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:cybernetics",
+    "type": "work",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1230999"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Wiener's 1948 book coined and founded cybernetics as a field studying control and communication in animals and machines.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved; the short generic title 'Cybernetics' increases risk of collision with a disambiguation or concept item rather than the book-work item.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:begriffsschrift",
+    "type": "work",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q383092"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Frege's 1879 Begriffsschrift introduced the first full system of quantificational (predicate) logic and is the canonical founding text of modern mathematical/symbolic logic.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. Low identity-collision risk since the title is a unique coined term, but exact digits are uncertain.",
+    "ambiguous": false
+  },
+  {
+    "id": "work:on-computable-numbers",
+    "type": "work",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1798463"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Turing's 1936 paper introduced the Turing machine and proved the undecidability of the Entscheidungsproblem, founding computability theory.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved; this is a journal paper (Proceedings of the London Mathematical Society) rather than a book, mirroring wave-1's Mendel precedent for paper-type work nodes.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:the-interpretation-of-dreams",
+    "type": "work",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q844976"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Freud's 1899/1900 Die Traumdeutung introduced the theory of the unconscious and dream-interpretation method that founded psychoanalysis.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. Publication-date nuance: the book was published in November 1899 but dated 1900 by the publisher, a minor dating ambiguity worth flagging though not affecting canonicity.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:social-choice-and-individual-values",
+    "type": "work",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7554466"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Arrow's 1951 monograph proved the Arrow impossibility theorem and founded modern social choice theory.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. Based on Arrow's 1951 doctoral dissertation; Wikidata may model the dissertation and the published monograph as separate or merged items.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:on-crimes-and-punishments",
+    "type": "work",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1053526"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Beccaria's 1764 Dei delitti e delle pene founded classical criminology and modern penology, arguing against torture and capital punishment on rational/utilitarian grounds.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved; originally published anonymously, which is a minor authorship-attribution nuance (uncontroversially resolved historically, but worth noting) rather than a genuine identity risk.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:on-the-mode-of-communication-of-cholera",
+    "type": "work",
+    "domain": "medicine_and_health",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q6075331"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Snow's 1855 monograph (expanding his 1849 pamphlet, incorporating the 1854 Broad Street pump investigation) established waterborne transmission of cholera and founded modern epidemiology.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved; there are two editions (1849 pamphlet, expanded 1855 edition with the Broad Street analysis) that Wikidata may model as separate items — the 1855 edition is the one the order dates and the one usually cited as foundational.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:principles-of-physiological-psychology",
+    "type": "work",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1974779"
+    },
+    "created_at": "2026-07-01",
+    "updated_at": "2026-07-01",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "rationale": "Wundt's 1874 Grundzüge der physiologischen Psychologie founded experimental psychology as an independent scientific discipline, laying groundwork for his 1879 Leipzig laboratory.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved; the work went through multiple substantially revised editions (up to a 6th edition decades later) that Wikidata may model as one umbrella item or split by edition — my guess targets the 1874 first edition per the order's date.",
+    "ambiguous": true
+  }
+]

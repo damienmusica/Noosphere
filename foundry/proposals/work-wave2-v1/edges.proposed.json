@@ -1,0 +1,444 @@
+[
+  {
+    "id": "edge:a-mathematical-theory-of-communication-canonical-information-theory",
+    "source": "work:a-mathematical-theory-of-communication",
+    "target": "subfield:information-theory",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:encyclopedia-of-mathematics"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "A Mathematical Theory of Communication (1948) introduced entropy and channel capacity and is universally treated as the founding text of information theory.",
+    "rationale": "Textbook-level consensus; near-zero scholarly disagreement that this single paper founded the field.",
+    "uncertainty": "None material to the field-level claim; risk is confined to the work node's QID.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:a-mathematical-theory-of-communication-canonical-claude-shannon",
+    "source": "work:a-mathematical-theory-of-communication",
+    "target": "person:claude-shannon",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:encyclopedia-of-mathematics"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "A Mathematical Theory of Communication (1948), authored solely by Claude Shannon, is Shannon's defining and canonical work.",
+    "rationale": "Shannon is sole author of record; the paper is unambiguously his single most defining publication.",
+    "uncertainty": "None material.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:cybernetics-canonical-cybernetics-subfield",
+    "source": "work:cybernetics",
+    "target": "subfield:cybernetics",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Wiener's 1948 Cybernetics: Or Control and Communication in the Animal and the Machine coined the term and founded the field; canonical for the subfield.",
+    "rationale": "Standard history-of-science consensus; the book's title is the field's name, about as direct an attribution as exists.",
+    "uncertainty": "None material to the field-level claim.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:cybernetics-canonical-norbert-wiener",
+    "source": "work:cybernetics",
+    "target": "person:norbert-wiener",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Cybernetics (1948), authored by Norbert Wiener, is Wiener's defining and canonical work.",
+    "rationale": "Wiener is sole author of record; the book is unambiguously his defining publication.",
+    "uncertainty": "None material.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:begriffsschrift-canonical-mathematical-logic",
+    "source": "work:begriffsschrift",
+    "target": "subfield:mathematical-logic",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:encyclopedia-of-mathematics"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Begriffsschrift (1879) introduced quantificational logic and is the canonical founding text of modern mathematical/symbolic logic.",
+    "rationale": "Universally credited in histories and philosophy-of-logic references (SEP's Frege and logic entries) as the founding document of modern formal logic.",
+    "uncertainty": "None material to the field-level claim.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:begriffsschrift-canonical-gottlob-frege",
+    "source": "work:begriffsschrift",
+    "target": "person:gottlob-frege",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Begriffsschrift (1879), authored by Gottlob Frege, is Frege's canonical logic-founding work (alongside Grundgesetze der Arithmetik, but Begriffsschrift is the canonical text for logic's founding as opposed to Frege's later philosophy-of-arithmetic project).",
+    "rationale": "Frege is sole author of record; Begriffsschrift is the work for which he is canonically credited with founding modern logic, distinct from his other major work Grundgesetze der Arithmetik.",
+    "uncertainty": "Frege has more than one major work (Begriffsschrift 1879, Die Grundlagen der Arithmetik 1884, Grundgesetze der Arithmetik 1893/1903); this edge is scoped specifically to the logic-founding text, which is the correct match for the mathematical-logic subfield target.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:on-computable-numbers-canonical-computability-theory",
+    "source": "work:on-computable-numbers",
+    "target": "subfield:computability-theory",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:encyclopedia-of-mathematics"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "On Computable Numbers, with an Application to the Entscheidungsproblem (1936) introduced the Turing machine and founded computability theory; canonical for the subfield.",
+    "rationale": "Universally credited (SEP's Turing and Church-Turing thesis entries) as the founding document of computability theory.",
+    "uncertainty": "None material to the field-level claim.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:on-computable-numbers-canonical-alan-turing",
+    "source": "work:on-computable-numbers",
+    "target": "person:alan-turing",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "On Computable Numbers (1936), authored solely by Alan Turing, is Turing's defining and canonical work.",
+    "rationale": "Turing is sole author of record; this paper is unambiguously his single most defining publication in this domain.",
+    "uncertainty": "None material.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:the-interpretation-of-dreams-canonical-psychoanalysis",
+    "source": "work:the-interpretation-of-dreams",
+    "target": "subfield:psychoanalysis",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "The Interpretation of Dreams (1899/1900) introduced the theory of the unconscious and dream-analysis method that founded psychoanalysis; canonical for the subfield.",
+    "rationale": "Universally cited as Freud's founding psychoanalytic text; near-zero scholarly disagreement on this attribution.",
+    "uncertainty": "None material to the field-level claim.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:the-interpretation-of-dreams-canonical-sigmund-freud",
+    "source": "work:the-interpretation-of-dreams",
+    "target": "person:sigmund-freud",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "The Interpretation of Dreams, authored by Sigmund Freud, is widely regarded as Freud's single most defining and canonical work.",
+    "rationale": "Freud is sole author of record; this text is standardly treated as his central founding work over his many other publications.",
+    "uncertainty": "Freud wrote many other influential works (e.g. Civilization and Its Discontents); this edge scopes to the one standardly credited as founding psychoanalysis specifically.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:social-choice-and-individual-values-canonical-social-choice-theory",
+    "source": "work:social-choice-and-individual-values",
+    "target": "subfield:social-choice-theory",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:nobelprize"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Social Choice and Individual Values (1951) proved Arrow's impossibility theorem and founded modern social choice theory; canonical for the subfield.",
+    "rationale": "Universally credited (SEP's social choice theory entry, and cited in Arrow's 1972 Nobel Prize documentation) as the founding text of the field.",
+    "uncertainty": "None material to the field-level claim.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:social-choice-and-individual-values-canonical-kenneth-arrow",
+    "source": "work:social-choice-and-individual-values",
+    "target": "person:kenneth-arrow",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:nobelprize"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Social Choice and Individual Values, authored by Kenneth Arrow, is Arrow's defining and canonical work, cited prominently in his 1972 Nobel Memorial Prize in Economic Sciences citation.",
+    "rationale": "Arrow is sole author of record; this text is unambiguously the work for which he is canonically known, corroborated by the Nobel Prize citation.",
+    "uncertainty": "None material.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:on-crimes-and-punishments-canonical-criminology",
+    "source": "work:on-crimes-and-punishments",
+    "target": "subfield:criminology",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "On Crimes and Punishments (1764) argued for proportionate, rational punishment and against torture/capital punishment, founding classical criminology; canonical for the subfield.",
+    "rationale": "Standard history-of-criminology consensus; treated as the origin point of the classical school of criminology.",
+    "uncertainty": "None material to the field-level claim.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:on-crimes-and-punishments-canonical-cesare-beccaria",
+    "source": "work:on-crimes-and-punishments",
+    "target": "person:cesare-beccaria",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "On Crimes and Punishments, authored by Cesare Beccaria (originally published anonymously in 1764, authorship established shortly after), is Beccaria's defining and canonical work.",
+    "rationale": "Beccaria is the historically established sole author; the text is unambiguously his defining publication despite its original anonymous publication.",
+    "uncertainty": "Originally published anonymously due to the sensitivity of its arguments; authorship was established and is uncontroversial today, but this is a genuine historical nuance worth flagging.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:on-the-mode-of-communication-of-cholera-canonical-epidemiology",
+    "source": "work:on-the-mode-of-communication-of-cholera",
+    "target": "subfield:epidemiology",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:oxford-bibliographies"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "On the Mode of Communication of Cholera (1855) established waterborne disease transmission via the Broad Street pump investigation and founded modern epidemiology; canonical for the subfield.",
+    "rationale": "Standard history-of-medicine/public-health consensus; Snow's Broad Street analysis is the textbook founding case study of epidemiology.",
+    "uncertainty": "None material to the field-level claim.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:on-the-mode-of-communication-of-cholera-canonical-john-snow",
+    "source": "work:on-the-mode-of-communication-of-cholera",
+    "target": "person:john-snow",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:oxford-bibliographies"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "On the Mode of Communication of Cholera, authored by John Snow, is Snow's defining and canonical work.",
+    "rationale": "Snow is sole author of record; this text is unambiguously the work for which he is canonically known as 'the father of epidemiology'.",
+    "uncertainty": "None material. Explicitly avoided citing source:mactutor here per the order's caution (mathematics-only archive, not a fit for a physician).",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:principles-of-physiological-psychology-canonical-experimental-psychology",
+    "source": "work:principles-of-physiological-psychology",
+    "target": "subfield:experimental-psychology",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Principles of Physiological Psychology (1874) laid the groundwork for treating psychology as an independent experimental science, preceding Wundt's founding of the first psychology laboratory (1879); canonical for the subfield.",
+    "rationale": "Standard history-of-psychology consensus (SEP's Wundt entry) credits this text as the theoretical foundation of experimental psychology as a discipline.",
+    "uncertainty": "None material to the field-level claim.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:principles-of-physiological-psychology-canonical-wilhelm-wundt",
+    "source": "work:principles-of-physiological-psychology",
+    "target": "person:wilhelm-wundt",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "Principles of Physiological Psychology, authored by Wilhelm Wundt, is Wundt's defining and canonical work.",
+    "rationale": "Wundt is sole author of record; this text is standardly treated as his defining publication over his many other writings.",
+    "uncertainty": "Wundt was a prolific author across a long career; this edge scopes to the text standardly credited as founding experimental psychology, consistent with the field-level edge above.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:a-mathematical-theory-of-communication-canonical-john-von-neumann-PROBE",
+    "source": "work:a-mathematical-theory-of-communication",
+    "target": "person:john-von-neumann",
+    "relation": "canonical_work",
+    "confidence": 0.3,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:encyclopedia-of-mathematics"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "probe": "reject-expected",
+    "note": "REJECTION PROBE (intended flaw) - expected reject: A Mathematical Theory of Communication (1948) was authored solely by Claude Shannon. Von Neumann is a real, historically adjacent figure (he corresponded with Shannon and is sometimes credited, per anecdote, with suggesting Shannon call his quantity 'entropy'), which is exactly what makes this a plausible-looking but incorrect attribution rather than a random misattribution. Von Neumann did not co-author or write this paper; it should be rejected as a canonical_work claim.",
+    "rationale": "Deliberately proposed as a discrimination test for QC: tests whether the pipeline catches misattribution to a historically-adjacent-but-non-authoring figure rather than only wholly unrelated names.",
+    "uncertainty": "This edge is expected to be wrong by construction; the failure mode being tested is misattribution via a real but non-authorial historical connection, not a genuine uncertainty about the facts.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:on-computable-numbers-canonical-information-theory-PROBE",
+    "source": "work:on-computable-numbers",
+    "target": "subfield:information-theory",
+    "relation": "canonical_work",
+    "confidence": 0.2,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:encyclopedia-of-mathematics"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "probe": "reject-expected",
+    "note": "REJECTION PROBE (intended flaw) - expected reject: On Computable Numbers (1936) is Turing's founding paper of computability theory, published 12 years before Shannon's 1948 A Mathematical Theory of Communication founded information theory. Though both are formal-sciences subfields with some conceptual adjacency (both concern encoding/formalizing abstract processes), Turing's 1936 paper is not the canonical founding text of information theory - that is Shannon 1948. This is an anachronistic cross-attribution and should be rejected.",
+    "rationale": "Deliberately proposed as a discrimination test for QC: tests whether the pipeline catches a wrong-field claim between two adjacent formal-sciences subfields that share superficial thematic similarity (both involve Bell Labs-era / mid-20th-century mathematical formalization), a harder case than a totally unrelated domain mismatch.",
+    "uncertainty": "This edge is expected to be wrong by construction; the failure mode being tested is anachronism/cross-attribution between adjacent subfields, not a genuine uncertainty about the facts.",
+    "ambiguous": true
+  }
+]
