@@ -12374,5 +12374,185 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Experiments on Plant Hybridization is Gregor Mendel's canonical/defining work (authored by Gregor Mendel, Wikidata P50=Q37970; published 1866). Grounding: 2 independent live Wikipedia articles ('Experiments on Plant Hybridization' + 'Gregor Mendel'). Identity Q5421194 live-verified; proposed-first (ladder not open)."
+  },
+  {
+    "id": "edge:a-mathematical-theory-of-communication-canonical-work-information-theory",
+    "source": "work:a-mathematical-theory-of-communication",
+    "target": "subfield:information-theory",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"A Mathematical Theory of Communication\" (Claude Shannon, 1948) is the canonical founding text of information theory. Grounding: 2 independent live Wikipedia articles ('A Mathematical Theory of Communication' — lead states Shannon's 1948 Bell System Technical Journal article — + 'Information theory'). Identity Q724029 live-verified via enwiki pageprops + wbgetentities (P31 Q13442814 scholarly article, P50 Q92760 Shannon, P577 1948, enwiki sitelink present); generator-guessed QID Q1770447 was a hallucination, corrected. Auto-reviewed via the now-open canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:a-mathematical-theory-of-communication-canonical-work-claude-shannon",
+    "source": "work:a-mathematical-theory-of-communication",
+    "target": "person:claude-shannon",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"A Mathematical Theory of Communication\" (1948) is Claude Shannon's canonical/defining work (author, Wikidata P50=Q92760). Grounding: 2 independent live Wikipedia articles ('A Mathematical Theory of Communication' + 'Claude Shannon'). Identity Q724029 live-verified (P31 scholarly article, P50 Q92760, P577 1948, enwiki sitelink); generator QID Q1770447 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:cybernetics-canonical-work-cybernetics",
+    "source": "work:cybernetics",
+    "target": "subfield:cybernetics",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"Cybernetics: Or Control and Communication in the Animal and the Machine\" (Norbert Wiener, 1948) is the canonical founding text of cybernetics — its lead states it is the first public use of the term and 'laid the theoretical foundation' for the field. Grounding: 2 independent live Wikipedia articles ('Cybernetics: Or Control...' + 'Cybernetics'). Identity Q16953441 live-verified (P31 Q47461344 written work, P50 Q178577 Wiener, P577 1948, enwiki sitelink); generator QID Q1230999 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:cybernetics-canonical-work-norbert-wiener",
+    "source": "work:cybernetics",
+    "target": "person:norbert-wiener",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"Cybernetics\" (1948) is Norbert Wiener's canonical/defining work (author, Wikidata P50=Q178577). Grounding: 2 independent live Wikipedia articles ('Cybernetics: Or Control...' + 'Norbert Wiener'). Identity Q16953441 live-verified (P31 written work, P50 Q178577, P577 1948, enwiki sitelink); generator QID Q1230999 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:begriffsschrift-canonical-work-mathematical-logic",
+    "source": "work:begriffsschrift",
+    "target": "subfield:mathematical-logic",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"Begriffsschrift\" (Gottlob Frege, 1879) is a canonical founding text of mathematical logic — the first modern formal system with quantifiers and bound variables. Grounding: 2 independent live sources (Wikipedia 'Begriffsschrift' lead 'a book on logic by Gottlob Frege, published in 1879' + the SEP entry on Frege). Identity Q814390 live-verified (P31 Q47461344 written work, P50 Q60028 Frege, P577 1879, enwiki sitelink); generator QID Q383092 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:begriffsschrift-canonical-work-gottlob-frege",
+    "source": "work:begriffsschrift",
+    "target": "person:gottlob-frege",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"Begriffsschrift\" (1879) is a canonical work of Gottlob Frege (author, Wikidata P50=Q60028). Note: Frege authored several foundational logic works (Begriffsschrift, Die Grundlagen der Arithmetik, Grundgesetze der Arithmetik); this edge scopes specifically to Begriffsschrift as the founding formal-logic text (generator flagged this scoping ambiguous — recorded, not disqualifying). Grounding: 2 independent live Wikipedia articles ('Begriffsschrift' + 'Gottlob Frege'). Identity Q814390 live-verified (P31 written work, P50 Q60028, P577 1879, enwiki sitelink); generator QID Q383092 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:the-interpretation-of-dreams-canonical-work-psychoanalysis",
+    "source": "work:the-interpretation-of-dreams",
+    "target": "subfield:psychoanalysis",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"The Interpretation of Dreams\" (Sigmund Freud, 1899/1900) is the canonical founding text of psychoanalysis — its lead names Freud 'the founder of psychoanalysis' and the work as introducing his theory of the unconscious. (Wikidata P577 imprint year 1900; first published Nov 1899.) Grounding: 2 independent live Wikipedia articles ('The Interpretation of Dreams' + 'Psychoanalysis'). Identity Q726382 live-verified (P31 Q7725634 literary work, P50 Q9215 Freud, P577 1900, enwiki sitelink); generator QID Q844976 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:the-interpretation-of-dreams-canonical-work-sigmund-freud",
+    "source": "work:the-interpretation-of-dreams",
+    "target": "person:sigmund-freud",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"The Interpretation of Dreams\" (1899/1900) is Sigmund Freud's canonical/defining work (author, Wikidata P50=Q9215). Grounding: 2 independent live Wikipedia articles ('The Interpretation of Dreams' + 'Sigmund Freud'). Identity Q726382 live-verified (P31 literary work, P50 Q9215, P577 1900, enwiki sitelink); generator QID Q844976 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:on-crimes-and-punishments-canonical-work-criminology",
+    "source": "work:on-crimes-and-punishments",
+    "target": "subfield:criminology",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"On Crimes and Punishments\" (Dei delitti e delle pene, Cesare Beccaria, 1764) is a canonical founding text of classical criminology — its lead calls it 'a founding work in the field of penology' (a criminology subfield; Beccaria is standardly named the father of classical criminology). Scope note recorded, not disqualifying. Grounding: 2 independent live Wikipedia articles ('On Crimes and Punishments' + 'Criminology'). Identity Q2755269 live-verified (P31 Q7725634 literary work, P50 Q223723 Beccaria, P577 1764, enwiki sitelink); generator QID Q1053526 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
+  },
+  {
+    "id": "edge:on-crimes-and-punishments-canonical-work-cesare-beccaria",
+    "source": "work:on-crimes-and-punishments",
+    "target": "person:cesare-beccaria",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-01"
+    },
+    "note": "\"On Crimes and Punishments\" (1764) is Cesare Beccaria's canonical/defining work (author, Wikidata P50=Q223723). Note: first published anonymously in 1764; authorship is undisputed and recorded on Wikidata (generator flagged the anonymous-publication nuance — recorded, not disqualifying). Grounding: 2 independent live Wikipedia articles ('On Crimes and Punishments' + 'Cesare Beccaria'). Identity Q2755269 live-verified (P31 literary work, P50 Q223723, P577 1764, enwiki sitelink); generator QID Q1053526 corrected. Auto-reviewed via the canonical_work ladder (decision (88))."
   }
 ]
