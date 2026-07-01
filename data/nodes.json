@@ -151,24 +151,24 @@
     "type": "domain",
     "domain": "practical_knowledge",
     "level": 0,
-    "status": "reviewed",
-    "indexable": true,
+    "status": "deprecated",
+    "indexable": false,
     "is_living_person": false,
     "external_ids": {},
     "created_at": "2026-06-02",
-    "updated_at": "2026-06-02"
+    "updated_at": "2026-07-01"
   },
   {
     "id": "domain:meta-knowledge",
     "type": "domain",
     "domain": "meta_knowledge",
     "level": 0,
-    "status": "reviewed",
-    "indexable": true,
+    "status": "deprecated",
+    "indexable": false,
     "is_living_person": false,
     "external_ids": {},
     "created_at": "2026-06-02",
-    "updated_at": "2026-06-02"
+    "updated_at": "2026-07-01"
   },
   {
     "id": "field:mathematics",
