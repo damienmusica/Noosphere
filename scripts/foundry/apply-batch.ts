@@ -96,22 +96,37 @@ if (decision.rejections.length > 0) {
   writeLedger(REJECTIONS_LEDGER, [...loadRejections(), ...decision.rejections]);
   console.log(`✓ appended ${decision.rejections.length} entr(ies) to foundry/rejections.json`);
 }
-if (decision.held.length > 0) {
-  // The held ledger is a WORKLIST (latest blocking condition per id), not the
-  // audit trail — that lives in the decision files. A re-triage of an already-
-  // held id therefore SUPERSEDES the prior entry instead of duplicating it;
-  // label-only entries (no id) still plain-append.
+// The held ledger is a WORKLIST (latest blocking condition per id), not the
+// audit trail — that lives in the decision files. Two worklist semantics:
+//   - a re-triage of an already-held id SUPERSEDES the prior entry,
+//   - a promotion to reviewed RESOLVES the id's held entry (the blocking
+//     condition no longer exists) — it is dropped, with a log line.
+// Label-only entries (no id) always plain-append.
+const promotedToReviewed = new Set(
+  decision.promotions.filter((p) => p.to === "reviewed" && p.from !== "reviewed").map((p) => p.id),
+);
+if (decision.held.length > 0 || promotedToReviewed.size > 0) {
   const existingHeld = loadHeld();
   const incomingIds = new Set(
     decision.held.filter((h) => h.id).map((h) => h.id as string),
   );
-  const keptHeld = existingHeld.filter((h) => !h.id || !incomingIds.has(h.id));
-  const superseded = existingHeld.length - keptHeld.length;
-  writeLedger(HELD_LEDGER, [...keptHeld, ...decision.held]);
-  console.log(
-    `✓ appended ${decision.held.length} entr(ies) to foundry/held.json` +
-      (superseded > 0 ? ` (${superseded} prior entr(ies) for the same id(s) superseded)` : ""),
+  const keptHeld = existingHeld.filter(
+    (h) => !h.id || (!incomingIds.has(h.id) && !promotedToReviewed.has(h.id)),
   );
+  const resolved = existingHeld.filter((h) => h.id && promotedToReviewed.has(h.id));
+  const superseded = existingHeld.length - keptHeld.length - resolved.length;
+  if (decision.held.length > 0 || resolved.length > 0) {
+    writeLedger(HELD_LEDGER, [...keptHeld, ...decision.held]);
+    if (decision.held.length > 0) {
+      console.log(
+        `✓ appended ${decision.held.length} entr(ies) to foundry/held.json` +
+          (superseded > 0 ? ` (${superseded} prior entr(ies) for the same id(s) superseded)` : ""),
+      );
+    }
+    for (const r of resolved) {
+      console.log(`✓ held entry resolved by promotion to reviewed: ${r.id}`);
+    }
+  }
 }
 
 console.log(

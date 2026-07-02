@@ -458,12 +458,13 @@ every function is preserved by an alternative anchor set:
 A `field`/`subfield` node with **no Wikidata discipline entity** satisfies the identity-anchor
 requirement when **all** of the following hold:
 
-1. **A category/entry ID in a CPO-ratified expert disciplinary taxonomy**, recorded in `external_ids`
-   (e.g. `philpapers: philosophy-of-race`). **Ratified taxonomy authorities: PhilPapers (philosophy) —
-   currently the whole list.** Adding a taxonomy authority is a CPO gate (mirror of the source-registry
-   discipline). This keeps the clause conservative: it admits exactly the recognized cases, not the
-   honest-gap pool — the eight skeleton-era QID-less gaps (computer-systems, sensation-and-perception,
-   modern-history, …) have no ratified taxonomy standing and remain parked.
+1. **A category/entry ID in a ratified expert disciplinary taxonomy**, recorded in `external_ids`
+   (e.g. `philpapers: philosophy-of-race`, `acm_ccs: Computer systems organization`,
+   `nces_cip: 14.2201`, `apa_psycinfo: 2320`). Admission of a taxonomy authority is governed by the
+   **taxonomy-authority criteria v1** below (ratified 2026-07-02): an authority that clearly passes
+   all five criteria may be admitted by CTO mirror-ruling (notify + CPO veto window); any borderline
+   criterion is a CPO stop. The ratified registry lives in that subsection. This keeps the clause
+   conservative: it admits exactly the recognized cases, not the honest-gap pool.
 2. **≥2 additional independent authoritative sources** treating it as a named field — an SEP/IEP entry,
    a dedicated peer-reviewed journal, a major university-press handbook/companion — live-verified with
    §8 permanence anchors at promotion time.
@@ -483,6 +484,51 @@ three-authority anchor). This clause is the node-layer 1:1 mirror of the work-no
 (decision (89)): the anchor's *purpose* (identity decidability) is preserved; the arbitrary
 single-provider requirement is removed. QID-less `reviewed` precedent: the practical-knowledge /
 meta-knowledge domains (decision (36)).
+
+#### Taxonomy-authority criteria v1 (ratified 2026-07-02, session #56)
+
+Which taxonomies may serve as a v1.4 clause-1 identity anchor is decided by five **hard criteria —
+all required**. They are grounded in knowledge-organization *warrant theory* (Hulme's literary
+warrant; Beghtol's semantic warrant, of which institutional/educational warrant justifies classes by
+the existence of departments, journals, and scholarly associations) rather than invented ad hoc; the
+KOS registry BARTOC and the construction standards ISO 25964 / ANSI-NISO Z39.19 serve as supporting
+signals, not gates.
+
+- **T1 — institutional warrant.** The curator is a premier institution of the classified domain: its
+  top scholarly/professional society, a national or intergovernmental official body, or the
+  discipline's canonical scholarly index.
+- **T2 — field-denoting by construction.** Entries denote fields of study (research areas or named
+  degree-program fields). A system whose entries can be journals, works, eras, or psychological
+  processes fails; library shelving classifications (LCC, UDC) fail T2 and remain clause-2
+  supporting authorities only.
+- **T3 — referent decidability.** Stable per-category IDs or slugs.
+- **T4 — machine re-auditability.** Publicly consultable stable URLs, no authentication; hard
+  bot-blocked domains qualify via the established Wayback existing-snapshot anchor path.
+- **T5 — adoption warrant.** The classified community itself uses the system at scale (paper
+  tagging, mandated institutional reporting, canonical literature indexing or browsing).
+
+Supporting signals (recorded, never gating): BARTOC registration, ISO 25964 / Z39.19-conformant
+structure, versioned releases, multilingual coverage. Two overrides are absolute: **repo-forbidden
+sources stay forbidden** even if they pass academically (e.g. JEL), and per-node promotion still
+requires v1.4 clauses 2–4 in full — the criteria govern only which taxonomies clause 1 may cite.
+
+**Compound-label ruling.** When no single category umbrellas a compound node (session-#11 umbrella
+test), the node may anchor on the **minimal ID-set** that jointly covers it, recorded as one
+semicolon-joined `external_ids` value with the shape noted — the identity mirror of cross-listing
+v1's co-equal multiplicity.
+
+**Ratified registry:**
+
+| Authority | Domain | Provider key | Criteria notes |
+|---|---|---|---|
+| PhilPapers category taxonomy | philosophy | `philpapers` | Inaugural (93) case, retroactively passes T1–T5 |
+| ACM Computing Classification System 2012 | computing | `acm_ccs` | Category names are the stable slugs; dl.acm.org is hard bot-blocked → T4 via Wayback snapshots |
+| NCES Classification of Instructional Programs (CIP 2020) | any (degree-program fields) | `nces_cip` | T2 note: entries denote *teaching-community* field referents (federal IPEDS reporting = T5) |
+| APA PsycInfo Classification Categories | psychology | `apa_psycinfo` | Official public code list at apa.org; live-verified 2026-07-02 |
+
+Clear-pass future candidates surfaced by the criteria (not yet ratified, each still needs its
+mirror-ruling with live verification): MeSH (NLM, medicine), MSC 2020 (AMS/zbMATH, mathematics),
+PhySH (APS, physics), OECD FORD (intergovernmental).
 
 ### Living-person handling — standing policy (vault decision (70), 2026-06-30)
 

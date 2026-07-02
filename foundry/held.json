@@ -162,59 +162,24 @@
     "recorded_at": "2026-07-02"
   },
   {
-    "id": "subfield:computer-systems",
-    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q428691 rejected — computer engineering — separate field (goldenset must_not_select, session #10/#11 verdict). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
-    "recheck": "machine",
-    "batch_id": "qid-gap-recheck-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:databases-and-information-systems",
-    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q64812807 rejected — information systems studies — does not cover the databases component (umbrella test, session #11; goldenset must_not_select). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
-    "recheck": "machine",
-    "batch_id": "qid-gap-recheck-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:distributed-and-parallel-computing",
-    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q180634 rejected — distributed computing — does not umbrella parallel computing (umbrella test, session #11; goldenset must_not_select). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
-    "recheck": "machine",
-    "batch_id": "qid-gap-recheck-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:computational-cognitive-science",
-    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q4874465 rejected — Bayesian cognitive science — narrow sub-approach, not the discipline (session #21 rejection). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
-    "recheck": "machine",
+    "id": "subfield:modern-history",
+    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1): only Q3281534 'modern period' (era, not a discipline). The REAL gate is the §12 period-axis ruling (does the atlas admit period subfields at all) — bundled with subfield:modern-philosophy in the planned §12 amendment (decision (99) item 2). Not a resolver item and not a v1.4 taxonomy candidate until §12 rules the node shape.",
+    "recheck": "manual",
     "batch_id": "qid-gap-recheck-v1",
     "recorded_at": "2026-07-02"
   },
   {
     "id": "subfield:judgment-and-decision-making",
-    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q1331926 rejected — decision making — process/concept, not the discipline (session #21 rejection). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+    "blocking_condition": "v1.4 clause-1 candidate ELIMINATED by live verification (2026-07-02): the APA PsycInfo Classification contains NO judgment/decision category (2300 Human Experimental Psychology subcodes checked in full; 2340 Cognitive Processes is the nearest umbrella but does not name the field). SJDM society + its journal remain clause-2 material without a clause-1 taxonomy anchor. Parked honestly until a qualifying taxonomy authority for the area appears (taxonomy-authority criteria v1) or a Wikidata discipline entity is created upstream (machine recheck via foundry/batches/qid-gap-recheck-v1.json).",
     "recheck": "machine",
-    "batch_id": "qid-gap-recheck-v1",
+    "batch_id": "taxonomy-anchor-wave1-v1",
     "recorded_at": "2026-07-02"
   },
   {
-    "id": "subfield:sensation-and-perception",
-    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q160402 rejected — perception — percept/process concept, not the discipline (session #21 rejection). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+    "id": "subfield:computational-cognitive-science",
+    "blocking_condition": "No qualifying clause-1 taxonomy authority exists (taxonomy-authority criteria v1 sweep, 2026-07-02): Cambridge Handbook of Computational Cognitive Sciences (CUP 2023) + journal Computational Brain & Behavior are clause-2 material only. Parked honestly until a qualifying taxonomy authority appears or a Wikidata discipline entity is created upstream (machine recheck via foundry/batches/qid-gap-recheck-v1.json).",
     "recheck": "machine",
-    "batch_id": "qid-gap-recheck-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:naval-architecture-and-marine-engineering",
-    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q1136352 rejected — naval architecture — component; does not umbrella marine engineering (umbrella test; combined stub Q101910631 remains rejected). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
-    "recheck": "machine",
-    "batch_id": "qid-gap-recheck-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:modern-history",
-    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1): only Q3281534 'modern period' (era, not a discipline). The REAL gate is the §12 period-axis ruling (does the atlas admit period subfields at all) — bundled with subfield:modern-philosophy in the planned §12 amendment (decision (99) item 2). Not a resolver item and not a v1.4 taxonomy candidate until §12 rules the node shape.",
-    "recheck": "manual",
-    "batch_id": "qid-gap-recheck-v1",
+    "batch_id": "taxonomy-anchor-wave1-v1",
     "recorded_at": "2026-07-02"
   }
 ]
