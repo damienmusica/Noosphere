@@ -1,0 +1,53 @@
+{
+  "id": "batch:qid-gap-recheck-v1",
+  "title": "QID-gap recheck v1 — the 8 compound-label upstream gaps",
+  "description": "Periodic live re-resolution of the 8 QID-less compound-label subfields held in foundry/held.json (resolver-v4 queue bucket, recheck-wave2-v1). All 8 are recorded upstream_gap in scripts/foundry/wikidata-goldenset.json with per-seed QC rejection rulings (sessions #9/#10/#11/#21) and were live re-confirmed as honest gaps by decision (92) (session #50, 2026-07-02). Resolver v4 (singular fallback + compound decomposition + orphan-stub penalty) has existed since 2026-06-11 — this manifest is NOT a resolver capability test; it measures whether Wikidata has since grown a usable upstream discipline entity for any of the 8. Triage rule: compare every selection against the goldenset must_not_select lists and the session-#11 umbrella test (a component anchor is acceptable only when the component term umbrellas the combined community) before treating any hit as new.",
+  "status": "active",
+  "target_locales": ["en"],
+  "scope": {
+    "include": [
+      "Re-resolution ONLY of the 8 held QID-less compound-label subfields; no new nodes, no new proposals",
+      "Any newly-appeared upstream entity must pass multi-signal verification (P31 discipline-kind, sitelinks, enwiki) — never label-match alone"
+    ],
+    "exclude": [
+      "Everything else in /data and the held ledger",
+      "Node-shape changes (splitting compound nodes is a §12 ruling, not a resolver outcome)"
+    ]
+  },
+  "seed_entities": [
+    { "label": "Computer Systems", "expected_node_id": "subfield:computer-systems", "expected_type": "subfield" },
+    { "label": "Databases and Information Systems", "expected_node_id": "subfield:databases-and-information-systems", "expected_type": "subfield" },
+    { "label": "Distributed and Parallel Computing", "expected_node_id": "subfield:distributed-and-parallel-computing", "expected_type": "subfield" },
+    { "label": "Computational Cognitive Science", "expected_node_id": "subfield:computational-cognitive-science", "expected_type": "subfield" },
+    { "label": "Judgment and Decision Making", "expected_node_id": "subfield:judgment-and-decision-making", "expected_type": "subfield" },
+    { "label": "Sensation and Perception", "expected_node_id": "subfield:sensation-and-perception", "expected_type": "subfield" },
+    { "label": "Modern History", "expected_node_id": "subfield:modern-history", "expected_type": "subfield" },
+    { "label": "Naval Architecture and Marine Engineering", "expected_node_id": "subfield:naval-architecture-and-marine-engineering", "expected_type": "subfield" }
+  ],
+  "allowed_public_sources": [
+    {
+      "provider": "wikidata",
+      "purpose": ["identity", "source_resolution"],
+      "requires_secret": false,
+      "notes": "CC0. Known traps per goldenset: Q105981125 (0-sitelink orphan stub) and Q428691 (computer engineering — separate field) for computer-systems; Q180634 (distributed computing) fails the umbrella test for the combined node; Q64812807 (information systems studies) does not cover databases; Q160402 (perception, process concept) and Q500096 (psychophysics, narrower) rejected for sensation-and-perception; Q4874465 (Bayesian cognitive science, narrow) and Q96319640 (journal) rejected for computational-cognitive-science; Q1331926 (decision making, process) and Q15746672 (journal) rejected for JDM; Q3281534 (modern period, era not discipline) for modern-history; Q101910631 (0-sitelink combined stub) for naval-architecture."
+    }
+  ],
+  "forbidden_sources": [
+    { "provider": "namuwiki", "reason": "External links only; never primary evidence (charter hard constraint)." },
+    { "provider": "cloud_llm", "reason": "No cloud LLM API calls in repo tooling (charter hard constraint)." },
+    { "provider": "scraping", "reason": "No scraping or crawling of third-party sites (charter hard constraint)." }
+  ],
+  "risk_policy": {
+    "default_tier": "low",
+    "allowed_tiers": ["low", "medium", "historical"],
+    "requires_strict_review_for": ["living_person", "current_affiliation", "controversial_claim"]
+  },
+  "output": {
+    "proposal_dir": "dist/foundry/proposals/qid-gap-recheck-v1"
+  },
+  "notes": [
+    "Recheck manifest — resolver measurement only; produces a source pack, never proposals.",
+    "If a seed newly resolves clean (multi-signal, not in must_not_select), the verdict is a NEW goldenset entry + a node-promotion-v1 candidate via the standard decision-file flow.",
+    "If all 8 remain gaps, the honest unblock paths are (a) periodic upstream recheck and (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93) — CPO gate)."
+  ]
+}

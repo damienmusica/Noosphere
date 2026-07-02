@@ -97,8 +97,21 @@ if (decision.rejections.length > 0) {
   console.log(`✓ appended ${decision.rejections.length} entr(ies) to foundry/rejections.json`);
 }
 if (decision.held.length > 0) {
-  writeLedger(HELD_LEDGER, [...loadHeld(), ...decision.held]);
-  console.log(`✓ appended ${decision.held.length} entr(ies) to foundry/held.json`);
+  // The held ledger is a WORKLIST (latest blocking condition per id), not the
+  // audit trail — that lives in the decision files. A re-triage of an already-
+  // held id therefore SUPERSEDES the prior entry instead of duplicating it;
+  // label-only entries (no id) still plain-append.
+  const existingHeld = loadHeld();
+  const incomingIds = new Set(
+    decision.held.filter((h) => h.id).map((h) => h.id as string),
+  );
+  const keptHeld = existingHeld.filter((h) => !h.id || !incomingIds.has(h.id));
+  const superseded = existingHeld.length - keptHeld.length;
+  writeLedger(HELD_LEDGER, [...keptHeld, ...decision.held]);
+  console.log(
+    `✓ appended ${decision.held.length} entr(ies) to foundry/held.json` +
+      (superseded > 0 ? ` (${superseded} prior entr(ies) for the same id(s) superseded)` : ""),
+  );
 }
 
 console.log(

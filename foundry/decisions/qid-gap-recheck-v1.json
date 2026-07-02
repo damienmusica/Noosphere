@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "batch_id": "qid-gap-recheck-v1",
+  "decided_at": "2026-07-02",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-02"
+  },
+  "identity": [
+    {
+      "node_id": "subfield:computer-systems",
+      "provider": "wikidata",
+      "external_id": "Q428691",
+      "verified": false,
+      "method": "resolver",
+      "retrieved_at": "2026-07-02",
+      "notes": "qid-gap-recheck-v1 live re-measurement: resolver v4 best candidate REJECTED — computer engineering — separate field (goldenset must_not_select, session #10/#11 verdict). Self-flagged ambiguous by the resolver; no new upstream discipline entity has appeared."
+    },
+    {
+      "node_id": "subfield:databases-and-information-systems",
+      "provider": "wikidata",
+      "external_id": "Q64812807",
+      "verified": false,
+      "method": "resolver",
+      "retrieved_at": "2026-07-02",
+      "notes": "qid-gap-recheck-v1 live re-measurement: resolver v4 best candidate REJECTED — information systems studies — does not cover the databases component (umbrella test, session #11; goldenset must_not_select). Self-flagged ambiguous by the resolver; no new upstream discipline entity has appeared."
+    },
+    {
+      "node_id": "subfield:distributed-and-parallel-computing",
+      "provider": "wikidata",
+      "external_id": "Q180634",
+      "verified": false,
+      "method": "resolver",
+      "retrieved_at": "2026-07-02",
+      "notes": "qid-gap-recheck-v1 live re-measurement: resolver v4 best candidate REJECTED — distributed computing — does not umbrella parallel computing (umbrella test, session #11; goldenset must_not_select). Self-flagged ambiguous by the resolver; no new upstream discipline entity has appeared."
+    },
+    {
+      "node_id": "subfield:computational-cognitive-science",
+      "provider": "wikidata",
+      "external_id": "Q4874465",
+      "verified": false,
+      "method": "resolver",
+      "retrieved_at": "2026-07-02",
+      "notes": "qid-gap-recheck-v1 live re-measurement: resolver v4 best candidate REJECTED — Bayesian cognitive science — narrow sub-approach, not the discipline (session #21 rejection). Self-flagged ambiguous by the resolver; no new upstream discipline entity has appeared."
+    },
+    {
+      "node_id": "subfield:judgment-and-decision-making",
+      "provider": "wikidata",
+      "external_id": "Q1331926",
+      "verified": false,
+      "method": "resolver",
+      "retrieved_at": "2026-07-02",
+      "notes": "qid-gap-recheck-v1 live re-measurement: resolver v4 best candidate REJECTED — decision making — process/concept, not the discipline (session #21 rejection). Self-flagged ambiguous by the resolver; no new upstream discipline entity has appeared."
+    },
+    {
+      "node_id": "subfield:sensation-and-perception",
+      "provider": "wikidata",
+      "external_id": "Q160402",
+      "verified": false,
+      "method": "resolver",
+      "retrieved_at": "2026-07-02",
+      "notes": "qid-gap-recheck-v1 live re-measurement: resolver v4 best candidate REJECTED — perception — percept/process concept, not the discipline (session #21 rejection). Self-flagged ambiguous by the resolver; no new upstream discipline entity has appeared."
+    },
+    {
+      "node_id": "subfield:modern-history",
+      "provider": "wikidata",
+      "external_id": "Q3281534",
+      "verified": false,
+      "method": "resolver",
+      "retrieved_at": "2026-07-02",
+      "notes": "qid-gap-recheck-v1 live re-measurement: resolver v4 best candidate REJECTED — modern period — era, not a discipline (humanities-remainder ruling). Self-flagged ambiguous by the resolver; no new upstream discipline entity has appeared."
+    },
+    {
+      "node_id": "subfield:naval-architecture-and-marine-engineering",
+      "provider": "wikidata",
+      "external_id": "Q1136352",
+      "verified": false,
+      "method": "resolver",
+      "retrieved_at": "2026-07-02",
+      "notes": "qid-gap-recheck-v1 live re-measurement: resolver v4 best candidate REJECTED — naval architecture — component; does not umbrella marine engineering (umbrella test; combined stub Q101910631 remains rejected). Self-flagged ambiguous by the resolver; no new upstream discipline entity has appeared."
+    }
+  ],
+  "held": [
+    {
+      "id": "subfield:computer-systems",
+      "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q428691 rejected — computer engineering — separate field (goldenset must_not_select, session #10/#11 verdict). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+      "recheck": "machine",
+      "batch_id": "qid-gap-recheck-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "subfield:databases-and-information-systems",
+      "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q64812807 rejected — information systems studies — does not cover the databases component (umbrella test, session #11; goldenset must_not_select). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+      "recheck": "machine",
+      "batch_id": "qid-gap-recheck-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "subfield:distributed-and-parallel-computing",
+      "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q180634 rejected — distributed computing — does not umbrella parallel computing (umbrella test, session #11; goldenset must_not_select). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+      "recheck": "machine",
+      "batch_id": "qid-gap-recheck-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "subfield:computational-cognitive-science",
+      "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q4874465 rejected — Bayesian cognitive science — narrow sub-approach, not the discipline (session #21 rejection). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+      "recheck": "machine",
+      "batch_id": "qid-gap-recheck-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "subfield:judgment-and-decision-making",
+      "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q1331926 rejected — decision making — process/concept, not the discipline (session #21 rejection). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+      "recheck": "machine",
+      "batch_id": "qid-gap-recheck-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "subfield:sensation-and-perception",
+      "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q160402 rejected — perception — percept/process concept, not the discipline (session #21 rejection). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+      "recheck": "machine",
+      "batch_id": "qid-gap-recheck-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "subfield:naval-architecture-and-marine-engineering",
+      "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q1136352 rejected — naval architecture — component; does not umbrella marine engineering (umbrella test; combined stub Q101910631 remains rejected). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+      "recheck": "machine",
+      "batch_id": "qid-gap-recheck-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "subfield:modern-history",
+      "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1): only Q3281534 'modern period' (era, not a discipline). The REAL gate is the §12 period-axis ruling (does the atlas admit period subfields at all) — bundled with subfield:modern-philosophy in the planned §12 amendment (decision (99) item 2). Not a resolver item and not a v1.4 taxonomy candidate until §12 rules the node shape.",
+      "recheck": "manual",
+      "batch_id": "qid-gap-recheck-v1",
+      "recorded_at": "2026-07-02"
+    }
+  ],
+  "notes": [
+    "Session #56 resolver-v4 pit-stop CLOSURE, not construction: measure-first re-examination found resolver v4 (singular-form fallback + compound decomposition + orphan-stub penalty) already implemented AND goldenset-measured on 2026-06-11 (commit 5f38cc4, sessions #10-#11), with all 8 held compound-label subfields recorded upstream_gap + per-seed QC rejection rulings (sessions #9/#10/#11/#21), live-reconfirmed by decision (92) (session #50). The roadmap queue item 'build resolver v4 first' was stale language; per decision (89), the plan was re-verified against evidence before executing.",
+    "Live re-measurement today (8 seeds, resolver v4, source pack dist/foundry/source-packs/qid-gap-recheck-v1/wikidata.json regenerable from the committed manifest): 8/8 resolve only to the KNOWN-REJECTED referents (Q428691, Q64812807, Q180634, Q4874465, Q1331926, Q160402, Q3281534, Q1136352), 8/8 self-flagged ambiguous by the resolver, 0 new upstream discipline entities. The upstream gap is current as of today; identity records above carry the verified:false groundings.",
+    "Held-ledger entries corrected accordingly (supersede-by-id): trigger is NOT 'resolver v4' (done since June) but (a) upstream entity creation — machine recheck via the committed recheck manifest — or (b) v1.4 alternative-anchor taxonomy extension, a CPO gate. modern-history routes to the §12 period-axis ruling instead.",
+    "v1.4 taxonomy-authority CANDIDATES for CPO consideration (identifiers are candidates from goldenset notes + domain knowledge — every one must be live-verified with §8 permanence anchors at ratification per v1.4 clause 2): [CS trio] ACM Computing Classification System (CCS 2012) — computer-systems (Computer systems organization), databases-and-information-systems (Information systems / Data management systems), distributed-and-parallel-computing (Parallel/Distributed computing methodologies); supporting: ACM TOCS, IEEE TPDS, VLDB Journal, ACM/IEEE CS curriculum knowledge areas. [naval-arch] NCES CIP (candidate code 14.2401 'Naval Architecture and Marine Engineering', exact combined label) + SNAME/RINA societies + ABET program criteria + Journal of Ship Research. [sensation-and-perception] APA PsycINFO Classification (Sensory Perception category) + LCC BF231-299 + UDC 159.93 (already gate-grade) + Attention, Perception & Psychophysics (Psychonomic Society). [judgment-and-decision-making] SJDM society + its journal Judgment and Decision Making + Blackwell/Cambridge JDM handbooks + LCC BF608-635. [computational-cognitive-science] WEAKEST standing: Cambridge Handbook of Computational Cognitive Sciences (CUP 2023) + journal Computational Brain & Behavior; no obvious expert taxonomy — may honestly remain parked."
+  ]
+}
