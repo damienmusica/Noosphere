@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "batch_id": "concept-layer-wave1-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-02"
+  },
+  "nodes": [
+    {
+      "id": "concept:natural-selection",
+      "type": "concept",
+      "domain": "life_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Natural selection",
+      "external_ids": {
+        "wikidata": "Q1148765"
+      },
+      "source_hint": "Wikidata Q1148765 'natural selection' (unverified hint, re-verify live at QC); Wikipedia 'Natural selection'; Wikipedia 'Charles Darwin'; existing reviewed edge:charles-darwin-founded-evolutionary-biology already grounds Darwin->evolutionary-biology at the field level, this node adds the specific mechanism concept.",
+      "rationale": "C1 edge-demand: natural selection is the specific mechanism Darwin proposed and that grounds subfield:evolutionary-biology (already reviewed) -- the concept is a more precise referent than the whole subfield, mirroring the generative-grammar/public-key-cryptography precedent (a founder's core idea, not the umbrella field). C3: 'natural selection' is the mechanism-concept, not 'evolutionary-biology' the discipline or 'evolution' the broader process.",
+      "uncertainty": "Wikidata concept items for 'natural selection' vs 'evolution by natural selection' vs 'Darwinism' can overlap; QID must be resolver-verified as the mechanism-concept (not the broader 'evolution' Q1063 or the historical-doctrine 'Darwinism' Q193540). Co-discovery with Alfred Russel Wallace (already a person node, currently unconnected to this concept) is a plausible companion edge QC may want to add.",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:the-unconscious",
+      "type": "concept",
+      "domain": "cognitive_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "The unconscious",
+      "external_ids": {
+        "wikidata": "Q483960"
+      },
+      "source_hint": "Wikidata Q483960 'unconscious mind' (unverified hint, re-verify live at QC); Wikipedia 'Unconscious mind'; existing reviewed edge:sigmund-freud-founded-psychoanalysis already grounds Freud->psychoanalysis, this node adds the specific theoretical construct Freud is most famous for formalizing.",
+      "rationale": "C1 edge-demand: the unconscious is Freud's core theoretical construct, more precise than the whole subfield:psychoanalysis (already reviewed) it underlies -- same referent-precision pattern as generative-grammar under syntax. C3: targets the specific construct, not the discipline.",
+      "uncertainty": "The concept of an unconscious mind predates Freud (e.g. von Hartmann, Schopenhauer's will) -- Freud formalized/systematized it clinically rather than originating the bare idea, so the founded_or_formalized edge should be framed as formalization, not sole origination (mirrors the Lavoisier/chemistry 'formalized modern X' pattern). QID must be checked against the more general 'unconscious' vs the Freudian-specific construct.",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:turing-machine",
+      "type": "concept",
+      "domain": "formal_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Turing machine",
+      "external_ids": {
+        "wikidata": "Q193034"
+      },
+      "source_hint": "Wikidata Q193034 'Turing machine' (unverified hint, re-verify live at QC); Wikipedia 'Turing machine'; existing reviewed edge:alan-turing-founded-computability-theory already grounds Turing->computability-theory at the subfield level.",
+      "rationale": "C1 edge-demand: the Turing machine is the specific formal device Turing introduced in 1936, more precise than subfield:computability-theory (already reviewed) which it underlies -- same pattern as public-key-cryptography under cryptography. C3: targets the concrete abstract-machine concept, not the whole subfield.",
+      "uncertainty": "None expected on identity (Turing machine is an unambiguous, well-known Wikidata concept item distinct from 'computability theory' Q622210-family and from 'universal Turing machine' Q928316, a narrower related item QC should not confuse it with).",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:nash-equilibrium",
+      "type": "concept",
+      "domain": "formal_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Nash equilibrium",
+      "external_ids": {
+        "wikidata": "Q210737"
+      },
+      "source_hint": "Wikidata Q210737 'Nash equilibrium' (unverified hint, re-verify live at QC); Wikipedia 'Nash equilibrium'; existing reviewed edge:john-nash-founded-game-theory already grounds Nash->game-theory at the subfield level.",
+      "rationale": "C1 edge-demand: the Nash equilibrium is Nash's specific 1950s formalization within subfield:game-theory (already reviewed), more precise than the whole subfield -- same pattern as nash-founded-game-theory being layered/specific rather than the 1944 von Neumann-Morgenstern founding. C3: targets the solution-concept, not the discipline.",
+      "uncertainty": "None expected on identity (Nash equilibrium is an unambiguous, canonical Wikidata concept item). The existing edge:john-nash-founded-game-theory targets the subfield; this new edge targets the concept specifically -- both can coexist (concept is a refinement, not a duplicate) but QC should confirm this isn't read as double-counting the same founding act twice.",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:mendelian-inheritance",
+      "type": "concept",
+      "domain": "life_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Mendelian inheritance",
+      "external_ids": {
+        "wikidata": "Q164860"
+      },
+      "source_hint": "Wikidata Q164860 'Mendelian inheritance' (unverified hint, re-verify live at QC); Wikipedia 'Mendelian inheritance'; existing reviewed edge:gregor-mendel-founded-genetics already grounds Mendel->genetics at the subfield level.",
+      "rationale": "C1 edge-demand: Mendelian inheritance is Mendel's specific set of inheritance laws underlying subfield:genetics (already reviewed), more precise than the whole subfield -- same pattern as mendelian-inheritance being the founder's core idea rather than the discipline umbrella. C3: targets the laws/pattern-of-inheritance concept, not the discipline.",
+      "uncertainty": "None expected on identity (Mendelian inheritance / Mendel's laws is an unambiguous, canonical Wikidata concept item, distinct from the broader 'heredity' Q170382).",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:social-fact",
+      "type": "concept",
+      "domain": "social_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Social fact",
+      "external_ids": {
+        "wikidata": "Q1273441"
+      },
+      "source_hint": "Wikidata Q1273441 'social fact' (unverified hint, re-verify live at QC); Wikipedia 'Social fact'; SEP or IEP entries on Durkheim; existing reviewed edge:emile-durkheim-founded-sociology already grounds Durkheim->sociology at the field level.",
+      "rationale": "C1 edge-demand: 'social fact' (fait social) is Durkheim's signature methodological concept (The Rules of Sociological Method, 1895) underlying field:sociology (already reviewed), more precise than the whole field. C3: targets Durkheim's specific methodological construct, not the discipline.",
+      "uncertainty": "The QID hint is lower-confidence than the others in this batch -- 'social fact' as a distinct Wikidata concept item (vs. being merged into a Durkheim-biography or 'Rules of Sociological Method' work item) should be specifically re-verified live, since Durkheim's concepts are sometimes only documented as sub-sections of biographical/work articles rather than standalone concept items.",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:bureaucracy",
+      "type": "concept",
+      "domain": "social_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Bureaucracy (rational-legal authority)",
+      "external_ids": {
+        "wikidata": "Q182970"
+      },
+      "source_hint": "Wikidata Q182970 'bureaucracy' (unverified hint, re-verify live at QC); Wikipedia 'Bureaucracy' and 'Max Weber'; existing reviewed edge:max-weber-founded-sociology already grounds Weber->sociology at the field level.",
+      "rationale": "C1 edge-demand: Weber's ideal-type theory of rational-legal bureaucracy is one of his signature formal constructs within field:sociology (already reviewed), more precise than the whole field. C3: intended referent is Weber's specific theoretical concept (rational-legal authority / the bureaucratic ideal type), not the generic real-world institution of 'bureaucracy' as an object of study.",
+      "ambiguous": true,
+      "uncertainty": "HIGH REFERENT RISK flagged explicitly: the plain Wikidata item for 'bureaucracy' (Q182970, if that is even the correct QID) most likely models bureaucracy-the-institution/phenomenon in general, not Weber's specific theoretical construct -- this may fail C3 referent precision (an over-broad, non-Weber-specific referent) and QC should check whether a narrower item (e.g. 'rational-legal authority' or 'Weberian bureaucracy') exists, or whether this candidate should be renamed/rejected as too broad. This is the single most likely drop in this batch."
+    },
+    {
+      "id": "concept:invisible-hand",
+      "type": "concept",
+      "domain": "social_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Invisible hand",
+      "external_ids": {
+        "wikidata": "Q1636152"
+      },
+      "source_hint": "Wikidata Q1636152 'invisible hand' (unverified hint, re-verify live at QC); Wikipedia 'Invisible hand'; existing reviewed edge:adam-smith-founded-economics already grounds Smith->economics at the field level.",
+      "rationale": "C1 edge-demand: the invisible hand is Adam Smith's signature metaphor/concept (The Wealth of Nations, 1776) for market self-organization underlying field:economics (already reviewed), more precise than the whole field. C3: targets Smith's specific concept, not the discipline.",
+      "uncertainty": "None major expected on identity (invisible hand is a well-known, canonical Wikidata concept item distinct from the broader 'market economy' or 'laissez-faire' items).",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:intentionality",
+      "type": "concept",
+      "domain": "humanities",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Intentionality",
+      "external_ids": {
+        "wikidata": "Q464896"
+      },
+      "source_hint": "Wikidata Q464896 'intentionality' (unverified hint, re-verify live at QC); SEP 'Intentionality'; Wikipedia 'Edmund Husserl'; existing reviewed edge:edmund-husserl-founded-phenomenology already grounds Husserl->phenomenology at the subfield level.",
+      "rationale": "C1 edge-demand: intentionality (consciousness as always 'consciousness of something') is Husserl's central methodological concept underlying subfield:phenomenology (already reviewed), more precise than the whole subfield. C3: targets the specific philosophical concept, not the discipline.",
+      "uncertainty": "The concept of intentionality originates with Brentano (Husserl's teacher), not Husserl himself -- Husserl developed/formalized it into the cornerstone of the phenomenological method, so the founded_or_formalized edge should be framed as formalization/development within phenomenology specifically, not origination of the bare idea. A companion person:franz-brentano node is a plausible future addition QC may flag but is out of this batch's scope (no such node exists yet).",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:lambda-calculus",
+      "type": "concept",
+      "domain": "formal_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Lambda calculus",
+      "external_ids": {
+        "wikidata": "Q193695"
+      },
+      "source_hint": "Wikidata Q193695 'lambda calculus' (unverified hint, re-verify live at QC); Wikipedia 'Lambda calculus'; existing reviewed edge:alonzo-church-founded-computability-theory already grounds Church->computability-theory at the subfield level.",
+      "rationale": "C1 edge-demand: lambda calculus is Church's specific 1930s formal system underlying subfield:computability-theory (already reviewed), more precise than the whole subfield -- same referent-precision pattern used for concept:turing-machine in this same batch (Church and Turing's parallel formalizations both warrant their own concept nodes per the existing edge's own note: 'a candidate for a future founder node'). C3: targets the specific formal system, not the discipline.",
+      "uncertainty": "None expected on identity (lambda calculus is an unambiguous, canonical Wikidata concept item). Note this batch proposes BOTH concept:turing-machine and concept:lambda-calculus as the two parallel 1936 formalizations underlying the same subfield -- record-not-resolve plural founding, mirroring the existing Church/Turing edge pair at the subfield level; not a duplicate.",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:symbolic-ai",
+      "type": "concept",
+      "domain": "computer_and_information_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Symbolic artificial intelligence",
+      "external_ids": {
+        "wikidata": "Q1057307"
+      },
+      "source_hint": "Wikidata Q1057307 'symbolic artificial intelligence' (unverified hint, re-verify live at QC); Wikipedia 'Symbolic artificial intelligence' (GOFAI); existing reviewed edges edge:john-mccarthy-founded-artificial-intelligence and edge:marvin-minsky-founded-artificial-intelligence already ground both founders -> subfield:artificial-intelligence at the subfield level.",
+      "rationale": "C1 edge-demand: symbolic AI ('Good Old-Fashioned AI') is the specific founding paradigm of the 1956 Dartmouth-era approach within subfield:artificial-intelligence (already reviewed) that McCarthy and Minsky are most associated with, more precise than the whole subfield -- same referent-precision pattern as generative-grammar under syntax. C3: targets the specific paradigm/school, not the discipline; distinguished from the later, non-overlapping connectionist/statistical-learning paradigm (subfield:machine-learning, a separate reviewed node) which this concept explicitly is NOT part of.",
+      "uncertainty": "QID for 'symbolic artificial intelligence' / GOFAI should be specifically re-verified live -- it is sometimes merged into or redirected from broader 'artificial intelligence' items on Wikidata, which would fail C3 referent precision (same trap as the Cerf/#33 over-broad-target precedent this order references). Minsky's specific association is with frame-based/symbolic representation and the physical-symbol-system hypothesis (with Newell and Simon, neither yet a node) more narrowly than McCarthy's broader field-founding role -- framing nuance for QC, not an existence dispute.",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:false-consciousness",
+      "type": "concept",
+      "domain": "social_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "False consciousness",
+      "external_ids": {
+        "wikidata": "Q1698191"
+      },
+      "source_hint": "Wikidata Q1698191 'false consciousness' (unverified hint, re-verify live at QC); Wikipedia 'False consciousness'; existing reviewed edge:karl-marx-founded-sociology already grounds Marx->sociology at the field level.",
+      "rationale": "C1 edge-demand: false consciousness is a signature concept of the Marxist/conflict-theory strand of field:sociology (already reviewed) that Marx's founding-edge note explicitly names as 'the conflict-theory / historical-materialism strand', more precise than the whole field. C3: targets the specific ideological-critique concept, not the discipline.",
+      "uncertainty": "The term 'false consciousness' does not appear verbatim in Marx's own writings (it is usually attributed to Engels's 1893 letter to Franz Mehring, and later systematized by Lukacs and others) -- attribution to Marx specifically should be framed as the broader Marxist tradition Marx founded, not a direct Marx quotation; QC should verify whether founded_or_formalized to Marx personally is defensible or whether this concept is better anchored via influenced rather than founded_or_formalized. This is a real identity/attribution risk, not just a framing nuance.",
+      "ambiguous": true
+    }
+  ]
+}

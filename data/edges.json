@@ -13351,7 +13351,7 @@
     "target": "subfield:philosophy-of-mind",
     "relation": "influenced",
     "confidence": 0.7,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:sep",
       "source:wikipedia"
@@ -13362,7 +13362,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "★ LIVING PERSON (person:noam-chomsky, is_living_person:true) — living-person floor (decision (70)) applies. Chomsky's 1959 review of Skinner's 'Verbal Behavior' helped end behaviorism's dominance and drive the cognitive turn. Held at proposed on MODELING PRECISION, not a risk signal: the accurate model is influenced→philosophy-of-mind (as written here) but the generator proposed it as `critiques→philosophy-of-mind`, which mis-states the target (he critiqued behaviorism, a position, not the field); re-modeled to `influenced` and held pending a behaviorism node or a cleaner target. No escalation signal (no private/reputational/contested content). Permanence: SEP 'Behaviorism' https://web.archive.org/web/20260702000718/https://plato.stanford.edu/entries/behaviorism/ · WP https://en.wikipedia.org/w/index.php?title=Verbal_Behavior&oldid=1349511694."
+    "note": "Promoted 2026-07-02 (a-relations-wave5 held-recheck): re-modeled critiques->influenced (Chomsky's 1959 review of Skinner's Verbal Behavior drove the cognitive turn in philosophy of mind). ★ LIVING PERSON (Q9049): living-person floor met (decision (70)) — QID resolver-verified, P570 absent (living confirmed), >=2 independent live sources (SEP Behaviorism + WP Verbal Behavior), conservative attributed wording, no escalation signal. Permanence: SEP https://plato.stanford.edu/entries/behaviorism/ · WP https://en.wikipedia.org/w/index.php?title=Verbal_Behavior&oldid=1349511694."
   },
   {
     "id": "edge:bertrand-russell-influenced-computer-science",
@@ -13418,5 +13418,1020 @@
       "proposed_at": "2026-07-02"
     },
     "note": "Cybernetics (Wiener, 1948) is listed among the fields that fed systems engineering. Held at proposed: thin at the 'influenced' bar — the WP Systems-engineering history frames cybernetics as one of many contributing disciplines (incl. operations research, aerospace program management), and WP Cybernetics does not reciprocally state the link; single clear claim-stating source. Permanence: WP https://en.wikipedia.org/w/index.php?title=Systems_engineering&oldid=1347426079."
+  },
+  {
+    "id": "edge:natural-selection-part-of-evolutionary-biology",
+    "source": "concept:natural-selection",
+    "target": "subfield:evolutionary-biology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q43478 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=Natural_selection&oldid=1353996056 · Wikidata Q43478 (immutable)."
+  },
+  {
+    "id": "edge:charles-darwin-founded-natural-selection",
+    "source": "person:charles-darwin",
+    "target": "concept:natural-selection",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Natural selection founded/formalized by Charles Darwin (standard/eponymous attribution). Direction person->concept. Permanence: WP https://en.wikipedia.org/w/index.php?title=Natural_selection&oldid=1353996056 · Wikidata Q43478 (immutable). (founder ladder; supported)."
+  },
+  {
+    "id": "edge:the-unconscious-part-of-psychoanalysis",
+    "source": "concept:the-unconscious",
+    "target": "subfield:psychoanalysis",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q192105 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=Unconscious_mind&oldid=1354908929 · Wikidata Q192105 (immutable)."
+  },
+  {
+    "id": "edge:sigmund-freud-founded-the-unconscious",
+    "source": "person:sigmund-freud",
+    "target": "concept:the-unconscious",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The unconscious founded/formalized by Sigmund Freud (standard/eponymous attribution). Direction person->concept. Permanence: WP https://en.wikipedia.org/w/index.php?title=Unconscious_mind&oldid=1354908929 · Wikidata Q192105 (immutable). (founder ladder; supported)."
+  },
+  {
+    "id": "edge:turing-machine-part-of-computability-theory",
+    "source": "concept:turing-machine",
+    "target": "subfield:computability-theory",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q163310 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=Turing_machine&oldid=1361925546 · Wikidata Q163310 (immutable)."
+  },
+  {
+    "id": "edge:alan-turing-founded-turing-machine",
+    "source": "person:alan-turing",
+    "target": "concept:turing-machine",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Turing machine founded/formalized by Alan Turing (standard/eponymous attribution). Direction person->concept. Permanence: WP https://en.wikipedia.org/w/index.php?title=Turing_machine&oldid=1361925546 · Wikidata Q163310 (immutable). (founder ladder; supported)."
+  },
+  {
+    "id": "edge:nash-equilibrium-part-of-game-theory",
+    "source": "concept:nash-equilibrium",
+    "target": "subfield:game-theory",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q23389 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=Nash_equilibrium&oldid=1360354244 · Wikidata Q23389 (immutable)."
+  },
+  {
+    "id": "edge:john-nash-founded-nash-equilibrium",
+    "source": "person:john-nash",
+    "target": "concept:nash-equilibrium",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Nash equilibrium founded/formalized by John Nash (standard/eponymous attribution). Direction person->concept. Permanence: WP https://en.wikipedia.org/w/index.php?title=Nash_equilibrium&oldid=1360354244 · Wikidata Q23389 (immutable). (founder ladder; supported)."
+  },
+  {
+    "id": "edge:mendelian-inheritance-part-of-genetics",
+    "source": "concept:mendelian-inheritance",
+    "target": "subfield:genetics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q185055 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=Mendelian_inheritance&oldid=1362067676 · Wikidata Q185055 (immutable)."
+  },
+  {
+    "id": "edge:gregor-mendel-founded-mendelian-inheritance",
+    "source": "person:gregor-mendel",
+    "target": "concept:mendelian-inheritance",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Mendelian inheritance founded/formalized by Gregor Mendel (standard/eponymous attribution). Direction person->concept. Permanence: WP https://en.wikipedia.org/w/index.php?title=Mendelian_inheritance&oldid=1362067676 · Wikidata Q185055 (immutable). (founder ladder; supported)."
+  },
+  {
+    "id": "edge:social-fact-part-of-sociology",
+    "source": "concept:social-fact",
+    "target": "field:sociology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q972877 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=Social_fact&oldid=1328548420 · Wikidata Q972877 (immutable)."
+  },
+  {
+    "id": "edge:emile-durkheim-founded-social-fact",
+    "source": "person:emile-durkheim",
+    "target": "concept:social-fact",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Social fact founded/formalized by Emile Durkheim (standard/eponymous attribution). Direction person->concept. Permanence: WP https://en.wikipedia.org/w/index.php?title=Social_fact&oldid=1328548420 · Wikidata Q972877 (immutable). (founder ladder; supported)."
+  },
+  {
+    "id": "edge:invisible-hand-part-of-economics",
+    "source": "concept:invisible-hand",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q376644 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=Invisible_hand&oldid=1358921063 · Wikidata Q376644 (immutable)."
+  },
+  {
+    "id": "edge:adam-smith-founded-invisible-hand",
+    "source": "person:adam-smith",
+    "target": "concept:invisible-hand",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Invisible hand founded/formalized by Adam Smith (standard/eponymous attribution). Direction person->concept. Permanence: WP https://en.wikipedia.org/w/index.php?title=Invisible_hand&oldid=1358921063 · Wikidata Q376644 (immutable). (founder ladder; supported)."
+  },
+  {
+    "id": "edge:intentionality-part-of-phenomenology",
+    "source": "concept:intentionality",
+    "target": "subfield:phenomenology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q654390 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=Intentionality&oldid=1355666928 · Wikidata Q654390 (immutable)."
+  },
+  {
+    "id": "edge:edmund-husserl-founded-intentionality",
+    "source": "person:edmund-husserl",
+    "target": "concept:intentionality",
+    "relation": "founded_or_formalized",
+    "confidence": 0.6,
+    "status": "proposed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "founder held: intentionality was reintroduced by Brentano (no node) and developed by Husserl; single-founder attribution to Husserl is imprecise — concept promoted via part_of edge-demand, founder edge held pending Brentano node/cleaner framing. Permanence: WP https://en.wikipedia.org/w/index.php?title=Intentionality&oldid=1355666928 · Wikidata Q654390 (immutable)."
+  },
+  {
+    "id": "edge:lambda-calculus-part-of-computability-theory",
+    "source": "concept:lambda-calculus",
+    "target": "subfield:computability-theory",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q242028 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=Lambda_calculus&oldid=1361655104 · Wikidata Q242028 (immutable)."
+  },
+  {
+    "id": "edge:alonzo-church-founded-lambda-calculus",
+    "source": "person:alonzo-church",
+    "target": "concept:lambda-calculus",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Lambda calculus founded/formalized by Alonzo Church (standard/eponymous attribution). Direction person->concept. Permanence: WP https://en.wikipedia.org/w/index.php?title=Lambda_calculus&oldid=1361655104 · Wikidata Q242028 (immutable). (founder ladder; supported)."
+  },
+  {
+    "id": "edge:symbolic-ai-part-of-artificial-intelligence",
+    "source": "concept:symbolic-ai",
+    "target": "subfield:artificial-intelligence",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q5514059 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=Symbolic_artificial_intelligence&oldid=1360607279 · Wikidata Q5514059 (immutable)."
+  },
+  {
+    "id": "edge:marvin-minsky-founded-symbolic-ai",
+    "source": "person:marvin-minsky",
+    "target": "concept:symbolic-ai",
+    "relation": "founded_or_formalized",
+    "confidence": 0.6,
+    "status": "proposed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "founder held: symbolic AI (GOFAI) was co-founded by Newell/Simon/McCarthy/Minsky; single-founder attribution to Minsky held pending co-founder modeling (record-not-resolve). Permanence: WP https://en.wikipedia.org/w/index.php?title=Symbolic_artificial_intelligence&oldid=1360607279 · Wikidata Q5514059 (immutable)."
+  },
+  {
+    "id": "edge:false-consciousness-part-of-sociology",
+    "source": "concept:false-consciousness",
+    "target": "field:sociology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q2581738 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=False_consciousness&oldid=1356297528 · Wikidata Q2581738 (immutable)."
+  },
+  {
+    "id": "edge:karl-marx-influenced-false-consciousness",
+    "source": "person:karl-marx",
+    "target": "concept:false-consciousness",
+    "relation": "influenced",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "'False consciousness' is associated with the Marxist tradition; the exact term is from Engels/Lukacs rather than Marx's own writings, so recorded as influenced (identity-axis caution, not founded_or_formalized). Permanence: WP https://en.wikipedia.org/w/index.php?title=False_consciousness&oldid=1356297528 · Wikidata Q2581738 (immutable). ((a)-ladder; supported)."
+  },
+  {
+    "id": "edge:bureaucracy-part-of-sociology",
+    "source": "concept:bureaucracy",
+    "target": "field:sociology",
+    "relation": "part_of",
+    "confidence": 0.8,
+    "status": "proposed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Held proposed: QID Q72468 is the GENERIC administrative-system concept, not Weber's sociological rational-legal ideal-type — referent-precision (C3) mismatch; promoting would misattribute (bureaucracy-as-institution long predates Weber). Awaits a Weber-ideal-type referent. Permanence: WP https://en.wikipedia.org/w/index.php?title=Bureaucracy&oldid=1362037974 · Wikidata Q72468."
+  },
+  {
+    "id": "edge:max-weber-founded-bureaucracy",
+    "source": "person:max-weber",
+    "target": "concept:bureaucracy",
+    "relation": "founded_or_formalized",
+    "confidence": 0.6,
+    "status": "proposed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Held proposed with the node (referent-precision): Weber formalized the sociological ideal-type of bureaucracy, but Q72468 models the generic institution. Permanence: WP https://en.wikipedia.org/w/index.php?title=Bureaucracy&oldid=1362037974 · Wikidata Q72468."
+  },
+  {
+    "id": "edge:tractatus-logico-philosophicus-canonical-work-philosophy-of-language",
+    "source": "work:tractatus-logico-philosophicus",
+    "target": "subfield:philosophy-of-language",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Tractatus Logico-Philosophicus (1921), canonical work. QID Q655717 resolver-verified live 2026-07-02 (P31=work-type, P50 matches ludwig-wittgenstein, P577/decidable year 1921); generator QID hallucinated, corrected at QC. Permanence: WP https://en.wikipedia.org/w/index.php?title=Tractatus_Logico-Philosophicus&oldid=1362050109 · Wikidata Q655717 (immutable, P50=ludwig-wittgenstein, P577=1921)."
+  },
+  {
+    "id": "edge:tractatus-logico-philosophicus-canonical-work-ludwig-wittgenstein",
+    "source": "work:tractatus-logico-philosophicus",
+    "target": "person:ludwig-wittgenstein",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Tractatus Logico-Philosophicus (1921), canonical work. QID Q655717 resolver-verified live 2026-07-02 (P31=work-type, P50 matches ludwig-wittgenstein, P577/decidable year 1921); generator QID hallucinated, corrected at QC. Permanence: WP https://en.wikipedia.org/w/index.php?title=Tractatus_Logico-Philosophicus&oldid=1362050109 · Wikidata Q655717 (immutable, P50=ludwig-wittgenstein, P577=1921)."
+  },
+  {
+    "id": "edge:logical-investigations-canonical-work-phenomenology",
+    "source": "work:logical-investigations",
+    "target": "subfield:phenomenology",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Logical Investigations (1900), canonical work. QID Q3421975 resolver-verified live 2026-07-02 (P31=work-type, P50 matches edmund-husserl, P577/decidable year 1900); generator QID hallucinated, corrected at QC. Permanence: WP https://en.wikipedia.org/w/index.php?title=Logical_Investigations&oldid=1030200824 · Wikidata Q3421975 (immutable, P50=edmund-husserl, P577=1900)."
+  },
+  {
+    "id": "edge:logical-investigations-canonical-work-edmund-husserl",
+    "source": "work:logical-investigations",
+    "target": "person:edmund-husserl",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Logical Investigations (1900), canonical work. QID Q3421975 resolver-verified live 2026-07-02 (P31=work-type, P50 matches edmund-husserl, P577/decidable year 1900); generator QID hallucinated, corrected at QC. Permanence: WP https://en.wikipedia.org/w/index.php?title=Logical_Investigations&oldid=1030200824 · Wikidata Q3421975 (immutable, P50=edmund-husserl, P577=1900)."
+  },
+  {
+    "id": "edge:structural-anthropology-canonical-work-structural-anthropology",
+    "source": "work:structural-anthropology",
+    "target": "subfield:structural-anthropology",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Structural Anthropology (1958), canonical work. QID Q2844127 resolver-verified live 2026-07-02 (P31=work-type, P50 matches claude-levi-strauss, P577/decidable year 1958); generator QID hallucinated, corrected at QC. Permanence: WP https://en.wikipedia.org/w/index.php?title=Structural_anthropology&oldid=1265460381 · Wikidata Q2844127 (immutable, P50=claude-levi-strauss, P577=1958)."
+  },
+  {
+    "id": "edge:structural-anthropology-canonical-work-claude-levi-strauss",
+    "source": "work:structural-anthropology",
+    "target": "person:claude-levi-strauss",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Structural Anthropology (1958), canonical work. QID Q2844127 resolver-verified live 2026-07-02 (P31=work-type, P50 matches claude-levi-strauss, P577/decidable year 1958); generator QID hallucinated, corrected at QC. Permanence: WP https://en.wikipedia.org/w/index.php?title=Structural_anthropology&oldid=1265460381 · Wikidata Q2844127 (immutable, P50=claude-levi-strauss, P577=1958)."
+  },
+  {
+    "id": "edge:syntactic-structures-canonical-work-syntax",
+    "source": "work:syntactic-structures",
+    "target": "subfield:syntax",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Syntactic Structures (1957), canonical work. QID Q1198080 resolver-verified live 2026-07-02 (P31=work-type, P50 matches noam-chomsky, P577/decidable year 1957); generator QID hallucinated, corrected at QC. LIVING author (Chomsky): neutral bibliographic artifact, no escalation signal -> promotes (work-node living-author guard, decision (70)). Permanence: WP https://en.wikipedia.org/w/index.php?title=Syntactic_Structures&oldid=1361577289 · Wikidata Q1198080 (immutable, P50=noam-chomsky, P577=1957)."
+  },
+  {
+    "id": "edge:syntactic-structures-canonical-work-noam-chomsky",
+    "source": "work:syntactic-structures",
+    "target": "person:noam-chomsky",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Syntactic Structures (1957), canonical work. QID Q1198080 resolver-verified live 2026-07-02 (P31=work-type, P50 matches noam-chomsky, P577/decidable year 1957); generator QID hallucinated, corrected at QC. LIVING author (Chomsky): neutral bibliographic artifact, no escalation signal -> promotes (work-node living-author guard, decision (70)). Permanence: WP https://en.wikipedia.org/w/index.php?title=Syntactic_Structures&oldid=1361577289 · Wikidata Q1198080 (immutable, P50=noam-chomsky, P577=1957)."
+  },
+  {
+    "id": "edge:the-social-stratification-of-english-in-new-york-city-canonical-work-sociolinguistics",
+    "source": "work:the-social-stratification-of-english-in-new-york-city",
+    "target": "subfield:sociolinguistics",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Social Stratification of English in New York City (1966), canonical work. QID Q130572843 resolver-verified live 2026-07-02 (P31=work-type, P50 matches william-labov, P577/decidable year 1966); generator QID hallucinated, corrected at QC. Permanence: Wikidata Q130572843 (immutable, P50=william-labov, P577=1966)."
+  },
+  {
+    "id": "edge:the-social-stratification-of-english-in-new-york-city-canonical-work-william-labov",
+    "source": "work:the-social-stratification-of-english-in-new-york-city",
+    "target": "person:william-labov",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Social Stratification of English in New York City (1966), canonical work. QID Q130572843 resolver-verified live 2026-07-02 (P31=work-type, P50 matches william-labov, P577/decidable year 1966); generator QID hallucinated, corrected at QC. Permanence: Wikidata Q130572843 (immutable, P50=william-labov, P577=1966)."
+  },
+  {
+    "id": "edge:capital-volume-i-canonical-work-sociology",
+    "source": "work:capital-volume-i",
+    "target": "field:sociology",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Capital, Volume I (1867), canonical work. QID Q58784 resolver-verified live 2026-07-02 (P31=work-type, P50 matches karl-marx, P577/decidable year 1867); generator QID hallucinated, corrected at QC. Co-canonical (decision (90)): 4th canonical work for sociology (after Comte/Durkheim/Weber). Permanence: WP https://en.wikipedia.org/w/index.php?title=Das_Kapital&oldid=1361725528 · Wikidata Q58784 (immutable, P50=karl-marx, P577=1867)."
+  },
+  {
+    "id": "edge:capital-volume-i-canonical-work-karl-marx",
+    "source": "work:capital-volume-i",
+    "target": "person:karl-marx",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Capital, Volume I (1867), canonical work. QID Q58784 resolver-verified live 2026-07-02 (P31=work-type, P50 matches karl-marx, P577/decidable year 1867); generator QID hallucinated, corrected at QC. Co-canonical (decision (90)): 4th canonical work for sociology (after Comte/Durkheim/Weber). Permanence: WP https://en.wikipedia.org/w/index.php?title=Das_Kapital&oldid=1361725528 · Wikidata Q58784 (immutable, P50=karl-marx, P577=1867)."
+  },
+  {
+    "id": "edge:the-problems-of-philosophy-canonical-work-analytic-philosophy",
+    "source": "work:the-problems-of-philosophy",
+    "target": "subfield:analytic-philosophy",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Problems of Philosophy (1912), canonical work. QID Q3393210 resolver-verified live 2026-07-02 (P31=work-type, P50 matches bertrand-russell, P577/decidable year 1912); generator QID hallucinated, corrected at QC. Co-canonical (decision (90)): 1st canonical work for analytic-philosophy. Permanence: WP https://en.wikipedia.org/w/index.php?title=The_Problems_of_Philosophy&oldid=1332860932 · Wikidata Q3393210 (immutable, P50=bertrand-russell, P577=1912)."
+  },
+  {
+    "id": "edge:the-problems-of-philosophy-canonical-work-bertrand-russell",
+    "source": "work:the-problems-of-philosophy",
+    "target": "person:bertrand-russell",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikidata",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Problems of Philosophy (1912), canonical work. QID Q3393210 resolver-verified live 2026-07-02 (P31=work-type, P50 matches bertrand-russell, P577/decidable year 1912); generator QID hallucinated, corrected at QC. Co-canonical (decision (90)): 1st canonical work for analytic-philosophy. Permanence: WP https://en.wikipedia.org/w/index.php?title=The_Problems_of_Philosophy&oldid=1332860932 · Wikidata Q3393210 (immutable, P50=bertrand-russell, P577=1912)."
+  },
+  {
+    "id": "edge:charles-lyell-influenced-evolutionary-biology",
+    "source": "person:charles-lyell",
+    "target": "subfield:evolutionary-biology",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Lyell's uniformitarian geology and deep-time framework directly enabled Darwinian evolutionary biology (Darwin carried Principles of Geology on the Beagle). Direction correct (Lyell predates/shaped the field); distinct from lyell-founded-geology. Permanence: WP https://en.wikipedia.org/w/index.php?title=Charles_Lyell&oldid=1355730169 · WP https://en.wikipedia.org/w/index.php?title=On_the_Origin_of_Species&oldid=1361718398. ((a)-ladder decision (68); supported)."
+  },
+  {
+    "id": "edge:emil-kraepelin-influenced-philosophy-of-psychiatry",
+    "source": "person:emil-kraepelin",
+    "target": "subfield:philosophy-of-psychiatry",
+    "relation": "influenced",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Kraepelin's nosology is a central reference point in philosophy of psychiatry's debates over psychiatric classification. Direction correct; distinct from kraepelin-founded-psychiatry. Permanence: SEP https://web.archive.org/web/20260702035321/https://plato.stanford.edu/entries/psychiatry/ · WP https://en.wikipedia.org/w/index.php?title=Emil_Kraepelin&oldid=1359782916. ((a)-ladder decision (68); supported)."
+  },
+  {
+    "id": "edge:emmy-noether-influenced-physics",
+    "source": "person:emmy-noether",
+    "target": "field:physics",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Noether's theorem (symmetry <-> conservation laws) is foundational to theoretical physics. Direction correct; distinct from noether-founded-algebra (cross-domain formal->natural). Permanence: WP https://en.wikipedia.org/w/index.php?title=Noether's_theorem&oldid=1355852918 · WP https://en.wikipedia.org/w/index.php?title=Isaac_Newton&oldid=1362116224 [context]. ((a)-ladder decision (68); supported)."
+  },
+  {
+    "id": "edge:alonzo-church-influenced-programming-languages",
+    "source": "person:alonzo-church",
+    "target": "subfield:programming-languages",
+    "relation": "influenced",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Church's lambda calculus is the acknowledged theoretical basis of functional programming languages. Direction correct; distinct from church-founded-computability-theory. Permanence: SEP https://web.archive.org/web/20260702035437/https://plato.stanford.edu/entries/lambda-calculus/ · WP https://en.wikipedia.org/w/index.php?title=Lambda_calculus&oldid=1361655104. ((a)-ladder decision (68); supported)."
+  },
+  {
+    "id": "edge:isaac-newton-influenced-philosophy-of-science",
+    "source": "person:isaac-newton",
+    "target": "subfield:philosophy-of-science",
+    "relation": "influenced",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Newton's methodology (Rules of Reasoning, 'hypotheses non fingo') profoundly shaped philosophy of science. Direction correct; distinct from the Principia canonical_work edges. Permanence: SEP https://web.archive.org/web/20260702035500/https://plato.stanford.edu/entries/newton/ · SEP https://web.archive.org/web/20260702035621/https://plato.stanford.edu/entries/newton-principia/. ((a)-ladder decision (68); supported)."
+  },
+  {
+    "id": "edge:franz-boas-influenced-philosophy-of-race",
+    "source": "person:franz-boas",
+    "target": "subfield:philosophy-of-race",
+    "relation": "influenced",
+    "confidence": 0.65,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Boas's anti-essentialist critique of biological race is a standard reference point in philosophy of race. Direction correct (Boas early-20thc -> the philosophical subfield). Permanence: SEP https://web.archive.org/web/20260702034306/https://plato.stanford.edu/entries/race/ · WP https://en.wikipedia.org/w/index.php?title=Franz_Boas&oldid=1359301314. ((a)-ladder decision (68); supported)."
+  },
+  {
+    "id": "edge:phenomenology-influenced-philosophy-of-technology",
+    "source": "subfield:phenomenology",
+    "target": "subfield:philosophy-of-technology",
+    "relation": "influenced",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Phenomenology (esp. Heidegger's 'The Question Concerning Technology') is a founding tradition of philosophy of technology (postphenomenology, Ihde). Source = the tradition (Heidegger has no node). Direction correct. Permanence: SEP https://web.archive.org/web/20260702035645/https://plato.stanford.edu/entries/technology/ · WP https://en.wikipedia.org/w/index.php?title=Philosophy_of_technology&oldid=1359005281. ((a)-ladder decision (68); supported)."
+  },
+  {
+    "id": "edge:vladimir-vernadsky-influenced-environmental-science",
+    "source": "person:vladimir-vernadsky",
+    "target": "field:environmental-science",
+    "relation": "influenced",
+    "confidence": 0.55,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Held proposed: Vernadsky's biosphere concept -> environmental science is real but diffuse; already has founded_or_formalized->geochemistry; field-grain target broad."
+  },
+  {
+    "id": "edge:andreas-vesalius-influenced-art-history",
+    "source": "person:andreas-vesalius",
+    "target": "subfield:art-history",
+    "relation": "influenced",
+    "confidence": 0.5,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Held proposed: the Fabrica's anatomical illustration influenced art, but 'influenced art-history' (the scholarly discipline) is indirect/weak; not a standard claim."
+  },
+  {
+    "id": "edge:alfred-russel-wallace-influenced-philosophy-of-biology",
+    "source": "person:alfred-russel-wallace",
+    "target": "subfield:philosophy-of-biology",
+    "relation": "influenced",
+    "confidence": 0.5,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Held proposed: niche teleology/selection-limits claim; SEP 'wallace' entry does not exist (slug 404); insufficient clean sourcing."
+  },
+  {
+    "id": "edge:karl-pearson-influenced-sociology",
+    "source": "person:karl-pearson",
+    "target": "field:sociology",
+    "relation": "influenced",
+    "confidence": 0.55,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Held proposed: Pearson's statistics adopted in quantitative sociology is diffuse; field-grain target broad."
+  },
+  {
+    "id": "edge:george-lakoff-critiques-philosophy-of-mind",
+    "source": "person:george-lakoff",
+    "target": "subfield:philosophy-of-mind",
+    "relation": "critiques",
+    "confidence": 0.65,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Held proposed: ★ LIVING PERSON (Lakoff, P570 absent). Embodied-mind thesis (Philosophy in the Flesh) challenges traditional philosophy of mind, but 'critiques the field' is broad-target modeling (mirrors the chomsky discipline); held on modeling precision, not a living-person escalation signal."
+  },
+  {
+    "id": "edge:georges-cuvier-influenced-archaeology",
+    "source": "person:georges-cuvier",
+    "target": "field:archaeology",
+    "relation": "influenced",
+    "confidence": 0.55,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Held proposed: Cuvier's stratigraphy/comparative method reached archaeology indirectly (via geology); diffuse, field-grain broad."
+  },
+  {
+    "id": "edge:gottfried-wilhelm-leibniz-influenced-computability-theory",
+    "source": "person:gottfried-wilhelm-leibniz",
+    "target": "subfield:computability-theory",
+    "relation": "influenced",
+    "confidence": 0.55,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Held proposed: Leibniz's calculus ratiocinator as a precursor to computability is a long-range mediated claim; better as a looser precursor framing."
+  },
+  {
+    "id": "edge:ronald-fisher-influenced-epidemiology",
+    "source": "person:ronald-fisher",
+    "target": "subfield:epidemiology",
+    "relation": "influenced",
+    "confidence": 0.7,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Held proposed: Fisher's experimental design/statistics underpin epidemiological method, but the epidemiology-specific link was not surfaced verbatim live (Bradford Hill more direct); thin (mirrors wave3 evo-bio->epidemiology hold)."
+  },
+  {
+    "id": "edge:kurt-lewin-influenced-education",
+    "source": "person:kurt-lewin",
+    "target": "field:education",
+    "relation": "influenced",
+    "confidence": 0.6,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Held proposed: Lewin's action-research adopted in education is real but the 2nd generator source was about Dewey (not Lewin) — thin/indirect sourcing (self-flagged)."
   }
 ]
