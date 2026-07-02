@@ -1202,14 +1202,22 @@ re-audit replays them; deleting one deletes the ability to re-audit.
 ### 15.3 Standard batch flow (commands)
 
 ```bash
+# 0. (optional) polite source-corpus collection for generation grounding —
+#    same politeness engine as fetch-verify (lib/polite-fetch.ts); never hand-roll fetch loops
+npm run foundry:fetch-corpus -- <urls.json|urls.txt> --out <scratch-dir>
 # 1. (regime-dependent, §15.7) generation subagent → v2 proposals, no provider IDs
 # 2. label→candidate resolution (existing resolver, §11)
 npm run foundry:resolve-wikidata -- foundry/batches/<manifest>.json
-# 3. orchestrator drafts foundry/decisions/<batch>.json (verdicts + sources read)
+# 3. orchestrator drafts foundry/decisions/<batch>.json (verdicts + sources read);
+#    schema-valid skeleton + editorial/metadata-flip seeding:
+npm run foundry:draft-decision -- <batch-id> --qc-by "<model_name>=<model_version>" \
+    [--summaries <merged.json>] [--flip-indexable <id,…>]
 # 4. batched identity re-confirmation (50 QIDs/HTTP call) + committed cache
 npm run foundry:verify-identity -- foundry/decisions/<batch>.json --write
 # 5. permanence anchors: wiki revision permalinks + Wayback snapshots
-npm run foundry:anchor -- foundry/decisions/<batch>.json --write
+#    (timeouts + SPN circuit breaker: 3 consecutive save failures → stale-snapshot
+#    fallback + honest [SPN-FAILED] pending; --no-spn for known-dead SPN days)
+npm run foundry:anchor -- foundry/decisions/<batch>.json --write [--no-spn]
 # 6. promotion arithmetic (read-only; apply-batch re-runs it before writing)
 npm run foundry:ladder-check -- foundry/decisions/<batch>.json
 # 7. THE one write path: preflight → ladders → canonical write → full validate
@@ -1234,6 +1242,14 @@ stay interactive and arrive as recorded verdict fields; the *arithmetic* over th
 reviewed? ≥2 independent sources? living guard? which clause?) is pure code, identical every
 session. **A divergence between this code and ratified policy text is a stop-point** — fix the
 transcription in the same change as the vault ruling, never silently.
+
+Metadata-flip refinement (CPO-ratified 2026-07-02, the first divergence this stop-point caught in
+production): a `reviewed→reviewed` promotion op is a **metadata flip** (`set_indexable` /
+`set_note`), not a promotion — it does not (re)earn reviewed status and demands no node ladder.
+Safety clause: a metadata-flip op carrying `set_external_ids` / `set_evidence` is a blocking
+violation (identity/evidence changes must ride a real status transition, where a ladder sanction
+is demanded). The indexable earned rule (reviewed status + reviewed default-locale translation)
+stays machine-enforced by `validate-data` independently of the ladder gate.
 
 ### 15.5 Identity cache — cache identity, never truth
 

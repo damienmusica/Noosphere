@@ -13,6 +13,19 @@
  *     Anonymous SPN is rate-limited — the script spaces requests and backs
  *     off on 429; a batch of 10–20 URLs takes minutes, which is fine.
  *
+ * SPN resilience (v1.1 hardening, 2026-07-02 — SPN outages measured on two
+ * consecutive sessions, #54 full outage + #55 multi-minute hang):
+ *   - every network call carries an explicit timeout (SPN saves used to hang
+ *     a run indefinitely on a dead endpoint),
+ *   - a circuit breaker OPENS after 3 consecutive SPN failures: the rest of
+ *     the run stops attempting saves and degrades to the stale-snapshot
+ *     fallback + honest pending entries immediately,
+ *   - `--no-spn` skips saves outright (same honest degradation) for days SPN
+ *     is known-dead.
+ *   Degradation is HONEST either way: a stale snapshot predating QC is
+ *   recorded together with an [SPN-FAILED] pending entry — for wiki URLs the
+ *   revision permalink remains the exact as-of-QC anchor (§8).
+ *
  * Failures are recorded HONESTLY in `anchors_pending` (the [SPN-FAILED]
  * discipline, docs/data-foundry.md §8) — re-run the script until the queue
  * clears; apply-batch surfaces pending anchors on every run.
@@ -25,7 +38,7 @@
  *
  * Usage:
  *   npm run foundry:anchor -- foundry/decisions/<batch>.json [--write]
- *       [--max-snapshot-age-days=7] [--strict]
+ *       [--max-snapshot-age-days=7] [--no-spn] [--strict]
  */
 import { readFileSync, writeFileSync } from "node:fs";
 
@@ -37,6 +50,11 @@ const USER_AGENT =
 const SAVE_SPACING_MS = 12_000;
 const POLL_ATTEMPTS = 6;
 const POLL_INTERVAL_MS = 10_000;
+/** Explicit timeouts — an SPN save against a dead endpoint must fail, not hang the run. */
+const SAVE_TIMEOUT_MS = 30_000;
+const LOOKUP_TIMEOUT_MS = 15_000;
+/** Consecutive SPN failures before the circuit opens for the rest of the run. */
+const SPN_BREAKER_THRESHOLD = 3;
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 const today = new Date().toISOString().slice(0, 10);
@@ -55,7 +73,7 @@ async function waybackAvailable(url: string): Promise<{ snapshot_url: string; ti
   try {
     const res = await fetch(
       `https://archive.org/wayback/available?url=${encodeURIComponent(url)}`,
-      { headers: { "user-agent": USER_AGENT } },
+      { headers: { "user-agent": USER_AGENT }, signal: AbortSignal.timeout(LOOKUP_TIMEOUT_MS) },
     );
     if (res.ok) {
       const body = (await res.json()) as {
@@ -73,7 +91,7 @@ async function waybackAvailable(url: string): Promise<{ snapshot_url: string; ti
     const bare = url.replace(/^https?:\/\//, "");
     const res = await fetch(
       `https://web.archive.org/cdx/search/cdx?url=${encodeURIComponent(bare)}&limit=-1&fl=timestamp,statuscode&filter=statuscode:200`,
-      { headers: { "user-agent": USER_AGENT } },
+      { headers: { "user-agent": USER_AGENT }, signal: AbortSignal.timeout(LOOKUP_TIMEOUT_MS) },
     );
     if (res.ok) {
       const text = (await res.text()).trim();
@@ -93,6 +111,7 @@ async function requestSave(url: string): Promise<{ ok: boolean; status: number }
     const res = await fetch(`https://web.archive.org/save/${url}`, {
       headers: { "user-agent": USER_AGENT },
       redirect: "follow",
+      signal: AbortSignal.timeout(SAVE_TIMEOUT_MS),
     });
     return { ok: res.ok, status: res.status };
   } catch {
@@ -115,11 +134,20 @@ async function wikiRevisionPermalink(url: string): Promise<string | null> {
   const api =
     `https://${parsed.hostname}/w/api.php?action=query&prop=revisions&rvprop=ids` +
     `&titles=${encodeURIComponent(title)}&redirects=1&format=json`;
-  const res = await fetch(api, { headers: { "user-agent": USER_AGENT } });
-  if (!res.ok) return null;
-  const body = (await res.json()) as {
+  let body: {
     query?: { pages?: Record<string, { title?: string; revisions?: { revid?: number }[] }> };
   };
+  try {
+    const res = await fetch(api, {
+      headers: { "user-agent": USER_AGENT },
+      signal: AbortSignal.timeout(LOOKUP_TIMEOUT_MS),
+    });
+    if (!res.ok) return null;
+    body = (await res.json()) as typeof body;
+  } catch {
+    // network error/timeout must degrade to a pending entry, not crash the run
+    return null;
+  }
   const pages = Object.values(body.query?.pages ?? {});
   const revid = pages[0]?.revisions?.[0]?.revid;
   const resolvedTitle = pages[0]?.title;
@@ -132,11 +160,12 @@ async function wikiRevisionPermalink(url: string): Promise<string | null> {
 const args = process.argv.slice(2);
 const writeBack = args.includes("--write");
 const strict = args.includes("--strict");
+const noSpn = args.includes("--no-spn");
 const maxAgeArg = args.find((a) => a.startsWith("--max-snapshot-age-days="));
 const maxSnapshotAgeDays = maxAgeArg ? Number(maxAgeArg.split("=")[1]) : 7;
 const decisionPath = args.find((a) => !a.startsWith("--"));
 if (!decisionPath) {
-  die("usage: npm run foundry:anchor -- foundry/decisions/<batch>.json [--write] [--strict]");
+  die("usage: npm run foundry:anchor -- foundry/decisions/<batch>.json [--write] [--no-spn] [--strict]");
 }
 
 async function main(): Promise<void> {
@@ -165,6 +194,27 @@ async function main(): Promise<void> {
   const revisions = new Map<string, string>();
   const pending: { url: string; reason: string }[] = [];
   let firstSave = true;
+  let spnConsecutiveFailures = 0;
+  let spnCircuitOpen = false;
+
+  /** Honest degradation used when SPN is skipped (flag) or the circuit is open. */
+  const degradeWithoutSave = (
+    url: string,
+    existing: { snapshot_url: string; timestamp: string } | null,
+    why: string,
+  ): void => {
+    if (existing) {
+      snapshots.set(url, existing.snapshot_url);
+      pending.push({
+        url,
+        reason: `[SPN-FAILED] fresh save skipped (${why}); using ${Math.round(ageDays(existing.timestamp))}d-old snapshot (predates QC)`,
+      });
+      console.log(`  ⚠ snapshot  ${url} → ${existing.snapshot_url} (stale fallback, ${why})`);
+    } else {
+      pending.push({ url, reason: `[SPN-FAILED] fresh save skipped (${why}) and no prior snapshot exists` });
+      console.log(`  ✗ snapshot  ${url} (${why}, no prior snapshot)`);
+    }
+  };
 
   for (const work of workByUrl.values()) {
     if (work.needsRevision) {
@@ -187,6 +237,15 @@ async function main(): Promise<void> {
       continue;
     }
 
+    if (noSpn || spnCircuitOpen) {
+      degradeWithoutSave(
+        work.url,
+        existing,
+        noSpn ? "--no-spn" : `SPN circuit open after ${SPN_BREAKER_THRESHOLD} consecutive failures`,
+      );
+      continue;
+    }
+
     if (!firstSave) await sleep(SAVE_SPACING_MS);
     firstSave = false;
     console.log(`  … saving   ${work.url}`);
@@ -203,15 +262,26 @@ async function main(): Promise<void> {
     }
     if (found) {
       snapshots.set(work.url, found);
+      spnConsecutiveFailures = 0;
       console.log(`  ✓ snapshot  ${work.url} → ${found}`);
-    } else if (existing) {
-      // Honest fallback: an older snapshot beats none, and the pending queue records the gap.
-      snapshots.set(work.url, existing.snapshot_url);
-      pending.push({ url: work.url, reason: `[SPN-FAILED] fresh save did not materialize; using ${Math.round(ageDays(existing.timestamp))}d-old snapshot` });
-      console.log(`  ⚠ snapshot  ${work.url} → ${existing.snapshot_url} (stale fallback, save pending)`);
     } else {
-      pending.push({ url: work.url, reason: "[SPN-FAILED] save did not materialize and no prior snapshot exists" });
-      console.log(`  ✗ snapshot  ${work.url}`);
+      spnConsecutiveFailures++;
+      if (spnConsecutiveFailures >= SPN_BREAKER_THRESHOLD && !spnCircuitOpen) {
+        spnCircuitOpen = true;
+        console.log(
+          `  ⚠ SPN circuit OPEN — ${SPN_BREAKER_THRESHOLD} consecutive saves failed to materialize; ` +
+            `remaining URLs degrade to stale-snapshot fallback + pending (re-run when SPN recovers)`,
+        );
+      }
+      if (existing) {
+        // Honest fallback: an older snapshot beats none, and the pending queue records the gap.
+        snapshots.set(work.url, existing.snapshot_url);
+        pending.push({ url: work.url, reason: `[SPN-FAILED] fresh save did not materialize; using ${Math.round(ageDays(existing.timestamp))}d-old snapshot` });
+        console.log(`  ⚠ snapshot  ${work.url} → ${existing.snapshot_url} (stale fallback, save pending)`);
+      } else {
+        pending.push({ url: work.url, reason: "[SPN-FAILED] save did not materialize and no prior snapshot exists" });
+        console.log(`  ✗ snapshot  ${work.url}`);
+      }
     }
   }
 

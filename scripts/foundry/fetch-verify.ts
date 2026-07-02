@@ -51,7 +51,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { basename, dirname, isAbsolute, join, resolve } from "node:path";
 import { normalize, nearestWindow } from "./lib/normalize-text.ts";
-import { mapWithConcurrency, sleep } from "./lib/bounded-pool.ts";
+import { MAX_CONCURRENCY, fetchUrlsPolitely } from "./lib/polite-fetch.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, "..", "..");
@@ -59,25 +59,12 @@ const OUT_DEFAULT = join(REPO_ROOT, "dist", "foundry", "fetch-verify", "report.j
 
 const UA =
   "Noosphere-Foundry-Fetch-Verify/1.0 (research atlas citation QC; contact: maintainer; fetches only cited URLs)";
-const TIMEOUT_MS = 20_000;
-const SAME_HOST_GAP_MS = 250;
-const RETRY_BACKOFF_MS = [1_000, 4_000];
-const MAX_CONCURRENCY = 8;
 
 interface Claim {
   node_id: string | null;
   url: string;
   quote: string;
   source_file: string;
-}
-
-interface FetchOutcome {
-  url: string;
-  final: "live" | "binary" | "unverified";
-  http_status: number | null;
-  attempts: number;
-  error: string | null;
-  body: string | null; // raw text, kept in memory for claim checks only
 }
 
 function parseArgs(argv: string[]): { files: string[]; opts: Record<string, string | boolean> } {
@@ -122,33 +109,6 @@ function loadClaims(file: string): { claims: Claim[]; skipped: number } {
   return { claims, skipped };
 }
 
-function looksBinary(contentType: string | null, body: string): boolean {
-  if (contentType && /\b(pdf|octet-stream|image|zip)\b/i.test(contentType)) return true;
-  return body.slice(0, 4096).includes("\u0000");
-}
-
-async function attemptFetch(url: string): Promise<Omit<FetchOutcome, "url" | "attempts">> {
-  try {
-    const res = await fetch(url, {
-      headers: { "User-Agent": UA, Accept: "text/html,application/json,text/plain,*/*" },
-      redirect: "follow",
-      signal: AbortSignal.timeout(TIMEOUT_MS),
-    });
-    if (!res.ok) {
-      // Drain body politely; status alone decides.
-      await res.text().catch(() => "");
-      return { final: "unverified", http_status: res.status, error: `http ${res.status}`, body: null };
-    }
-    const body = await res.text();
-    if (looksBinary(res.headers.get("content-type"), body))
-      return { final: "binary", http_status: res.status, error: null, body: null };
-    return { final: "live", http_status: res.status, error: null, body };
-  } catch (e) {
-    const msg = e instanceof Error ? (e.name === "TimeoutError" ? "timeout" : e.message) : String(e);
-    return { final: "unverified", http_status: null, error: msg, body: null };
-  }
-}
-
 async function main(): Promise<void> {
   const { files, opts } = parseArgs(process.argv.slice(2));
   if (files.length === 0) {
@@ -172,61 +132,28 @@ async function main(): Promise<void> {
     skippedNoQuote += skipped;
   }
 
-  // Dedupe URLs, group by host (same-host serial, hosts parallel — politeness).
+  // Dedupe URLs; host grouping + politeness live in lib/polite-fetch.ts (shared
+  // with fetch-corpus — v1.1 hardening, behavior unchanged).
   const uniqueUrls = [...new Set(claims.map((c) => c.url))].sort();
-  const hostGroups = new Map<string, string[]>();
-  const invalid: FetchOutcome[] = [];
-  for (const url of uniqueUrls) {
-    try {
-      const host = new URL(url).hostname;
-      const group = hostGroups.get(host);
-      if (group) group.push(url);
-      else hostGroups.set(host, [url]);
-    } catch {
-      invalid.push({ url, final: "unverified", http_status: null, attempts: 0, error: "invalid URL", body: null });
-    }
-  }
+  const hostCount = new Set(
+    uniqueUrls.map((u) => {
+      try {
+        return new URL(u).hostname;
+      } catch {
+        return u;
+      }
+    }),
+  ).size;
   process.stderr.write(
     `fetch-verify: ${claims.length} claim(s), ${uniqueUrls.length} unique URL(s) across ` +
-      `${hostGroups.size} host(s), concurrency ${concurrency}\n`,
+      `${hostCount} host(s), concurrency ${concurrency}\n`,
   );
 
-  // Pass 1 — concurrent across hosts.
-  const outcomes = new Map<string, FetchOutcome>();
-  for (const o of invalid) outcomes.set(o.url, o);
-  const groups = [...hostGroups.entries()].sort(([a], [b]) => a.localeCompare(b));
-  await mapWithConcurrency(groups, concurrency, async ([, urls]) => {
-    for (let i = 0; i < urls.length; i++) {
-      const url = urls[i]!;
-      const r = await attemptFetch(url);
-      outcomes.set(url, { url, attempts: 1, ...r });
-      process.stderr.write(`  ${r.final.padEnd(10)} ${r.http_status ?? "---"} ${url}\n`);
-      if (i < urls.length - 1) await sleep(SAME_HOST_GAP_MS);
-    }
+  const outcomes = await fetchUrlsPolitely(uniqueUrls, {
+    ua: UA,
+    concurrency,
+    log: (line) => process.stderr.write(line + "\n"),
   });
-
-  // Pass 2 — SERIAL backoff retries for everything unverified (safety floor:
-  // never call a page dead off one anonymous-throttle 520/429/timeout).
-  const retryQueue = uniqueUrls.filter((u) => outcomes.get(u)?.final === "unverified");
-  if (retryQueue.length > 0)
-    process.stderr.write(`retry pass: ${retryQueue.length} URL(s), serial backoff ≤${RETRY_BACKOFF_MS.length}\n`);
-  for (const url of retryQueue) {
-    const prev = outcomes.get(url)!;
-    for (const backoff of RETRY_BACKOFF_MS) {
-      await sleep(backoff);
-      const r = await attemptFetch(url);
-      prev.attempts++;
-      prev.http_status = r.http_status ?? prev.http_status;
-      if (r.final !== "unverified") {
-        Object.assign(prev, r);
-        process.stderr.write(`  recovered  ${r.http_status ?? "---"} ${url}\n`);
-        break;
-      }
-      prev.error = r.error;
-    }
-    if (prev.final === "unverified")
-      process.stderr.write(`  unverified ${prev.http_status ?? "---"} ${url} (${prev.error})\n`);
-  }
 
   // Claim checks — input order preserved (determinism).
   const normalizedCache = new Map<string, string>();
