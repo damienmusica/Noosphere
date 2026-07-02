@@ -1,65 +1,9 @@
 [
   {
-    "node_id": "field:mathematics",
+    "node_id": "concept:probability-distribution",
     "locale": "en",
     "provider": "wikipedia",
-    "url": "https://en.wikipedia.org/wiki/Mathematics",
-    "link_type": "further_reading",
-    "content_cached": false
-  },
-  {
-    "node_id": "field:mathematics",
-    "locale": "en",
-    "provider": "wikidata",
-    "url": "https://www.wikidata.org/wiki/Q395",
-    "link_type": "identifier",
-    "content_cached": false
-  },
-  {
-    "node_id": "field:physics",
-    "locale": "en",
-    "provider": "wikipedia",
-    "url": "https://en.wikipedia.org/wiki/Physics",
-    "link_type": "further_reading",
-    "content_cached": false
-  },
-  {
-    "node_id": "subfield:machine-learning",
-    "locale": "en",
-    "provider": "wikipedia",
-    "url": "https://en.wikipedia.org/wiki/Machine_learning",
-    "link_type": "further_reading",
-    "content_cached": false
-  },
-  {
-    "node_id": "field:mathematics",
-    "locale": "ko",
-    "provider": "namuwiki",
-    "url": "https://namu.wiki/w/%EC%88%98%ED%95%99",
-    "link_type": "further_reading",
-    "content_cached": false
-  },
-  {
-    "node_id": "subfield:probability-theory",
-    "locale": "en",
-    "provider": "wikipedia",
-    "url": "https://en.wikipedia.org/wiki/Probability_theory",
-    "link_type": "further_reading",
-    "content_cached": false
-  },
-  {
-    "node_id": "subfield:calculus",
-    "locale": "en",
-    "provider": "wikipedia",
-    "url": "https://en.wikipedia.org/wiki/Calculus",
-    "link_type": "further_reading",
-    "content_cached": false
-  },
-  {
-    "node_id": "subfield:optimization",
-    "locale": "en",
-    "provider": "wikipedia",
-    "url": "https://en.wikipedia.org/wiki/Mathematical_optimization",
+    "url": "https://en.wikipedia.org/wiki/Probability_distribution",
     "link_type": "further_reading",
     "content_cached": false
   },
@@ -72,10 +16,34 @@
     "content_cached": false
   },
   {
-    "node_id": "concept:probability-distribution",
+    "node_id": "field:mathematics",
+    "locale": "en",
+    "provider": "wikidata",
+    "url": "https://www.wikidata.org/wiki/Q395",
+    "link_type": "identifier",
+    "content_cached": false
+  },
+  {
+    "node_id": "field:mathematics",
     "locale": "en",
     "provider": "wikipedia",
-    "url": "https://en.wikipedia.org/wiki/Probability_distribution",
+    "url": "https://en.wikipedia.org/wiki/Mathematics",
+    "link_type": "further_reading",
+    "content_cached": false
+  },
+  {
+    "node_id": "field:mathematics",
+    "locale": "ko",
+    "provider": "namuwiki",
+    "url": "https://namu.wiki/w/%EC%88%98%ED%95%99",
+    "link_type": "further_reading",
+    "content_cached": false
+  },
+  {
+    "node_id": "field:physics",
+    "locale": "en",
+    "provider": "wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Physics",
     "link_type": "further_reading",
     "content_cached": false
   },
@@ -84,6 +52,38 @@
     "locale": "en",
     "provider": "wikipedia",
     "url": "https://en.wikipedia.org/wiki/Gradient_descent",
+    "link_type": "further_reading",
+    "content_cached": false
+  },
+  {
+    "node_id": "subfield:calculus",
+    "locale": "en",
+    "provider": "wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Calculus",
+    "link_type": "further_reading",
+    "content_cached": false
+  },
+  {
+    "node_id": "subfield:machine-learning",
+    "locale": "en",
+    "provider": "wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Machine_learning",
+    "link_type": "further_reading",
+    "content_cached": false
+  },
+  {
+    "node_id": "subfield:optimization",
+    "locale": "en",
+    "provider": "wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Mathematical_optimization",
+    "link_type": "further_reading",
+    "content_cached": false
+  },
+  {
+    "node_id": "subfield:probability-theory",
+    "locale": "en",
+    "provider": "wikipedia",
+    "url": "https://en.wikipedia.org/wiki/Probability_theory",
     "link_type": "further_reading",
     "content_cached": false
   }

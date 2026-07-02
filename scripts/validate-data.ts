@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { z } from "zod";
 
+import { DATA_FILES, checkCanonicalFormat } from "./lib/canonical-data.ts";
 import { nodeSchema } from "../src/schema/node.ts";
 import { nodeTranslationSchema } from "../src/schema/node-translation.ts";
 import { edgeSchema } from "../src/schema/edge.ts";
@@ -114,10 +115,41 @@ for (const s of sources) {
   }
 }
 
+// --- Canonical file format ----------------------------------------------------
+// Every data file must be byte-identical to its canonical serialization
+// (scripts/lib/canonical-data.ts: id-sorted, 2-space indent, trailing newline).
+// This is what lets write tooling regenerate files without ever producing
+// spurious diffs on untouched items (ops-efficiency package, 2026-07-02).
+for (const file of DATA_FILES) {
+  let raw = "";
+  try {
+    raw = readFileSync(join(DATA_DIR, file), "utf8");
+  } catch {
+    continue; // unreadable file already reported by the loader above
+  }
+  const deviation = checkCanonicalFormat(file, raw);
+  if (deviation) {
+    fail(`[${file}] not in canonical form (${deviation}) — run: npm run format:data`);
+  }
+}
+
 // --- Duplicate IDs -----------------------------------------------------------
 checkDuplicates("nodes.json", nodes.map((n) => n.id));
 checkDuplicates("edges.json", edges.map((e) => e.id));
 checkDuplicates("sources.json", sources.map((s) => s.id));
+
+// --- Provider-ID uniqueness ---------------------------------------------------
+// Two nodes must never share the same external identifier (Wikidata QID,
+// OpenAlex ID, ...): one real-world referent gets exactly one node. This is the
+// machine backstop against parallel batches modeling the same subject twice
+// (ops-efficiency package, 2026-07-02; duplicates as of adoption: zero).
+checkDuplicates(
+  "nodes.json",
+  nodes.flatMap((n) =>
+    Object.entries(n.external_ids).map(([provider, value]) => `${provider}:${value}`),
+  ),
+  "external_id",
+);
 
 // Computed/interpreted metric keys are forbidden inside external_metrics: only
 // raw provider-API facts may be recorded (OpenAlex field design, vault decision

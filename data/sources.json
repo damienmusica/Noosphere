@@ -1,126 +1,5 @@
 [
   {
-    "id": "source:manual-curation-v1",
-    "name": "Noosphere manual curation v1",
-    "source_type": "manual",
-    "license": "project-owned",
-    "commercial_use": true,
-    "attribution_required": false,
-    "share_alike_required": false,
-    "url": null,
-    "last_checked_at": "2026-06-02"
-  },
-  {
-    "id": "source:wikidata",
-    "name": "Wikidata",
-    "source_type": "open_data",
-    "license": "CC0",
-    "commercial_use": true,
-    "attribution_required": false,
-    "share_alike_required": false,
-    "url": "https://www.wikidata.org/",
-    "last_checked_at": "2026-06-02"
-  },
-  {
-    "id": "source:openalex",
-    "name": "OpenAlex",
-    "source_type": "scholarly",
-    "license": "CC0",
-    "commercial_use": true,
-    "attribution_required": false,
-    "share_alike_required": false,
-    "url": "https://openalex.org/",
-    "last_checked_at": "2026-06-02"
-  },
-  {
-    "id": "source:book-mathematics-for-machine-learning",
-    "name": "Mathematics for Machine Learning (Deisenroth, Faisal & Ong, Cambridge University Press)",
-    "source_type": "scholarly",
-    "license": "All rights reserved (authors' free PDF at the book site)",
-    "commercial_use": false,
-    "attribution_required": true,
-    "share_alike_required": false,
-    "url": "https://mml-book.github.io/",
-    "last_checked_at": "2026-06-10"
-  },
-  {
-    "id": "source:book-convex-optimization",
-    "name": "Convex Optimization (Boyd & Vandenberghe, Cambridge University Press)",
-    "source_type": "scholarly",
-    "license": "All rights reserved (authors' free PDF at the Stanford book page)",
-    "commercial_use": false,
-    "attribution_required": true,
-    "share_alike_required": false,
-    "url": "https://web.stanford.edu/~boyd/cvxbook/",
-    "last_checked_at": "2026-06-10"
-  },
-  {
-    "id": "source:book-bayesian-data-analysis",
-    "name": "Bayesian Data Analysis, 3rd ed. (Gelman, Carlin, Stern, Dunson, Vehtari & Rubin, CRC Press)",
-    "source_type": "scholarly",
-    "license": "All rights reserved (authors' non-commercial PDF at the book page)",
-    "commercial_use": false,
-    "attribution_required": true,
-    "share_alike_required": false,
-    "url": "http://www.stat.columbia.edu/~gelman/book/",
-    "last_checked_at": "2026-06-10"
-  },
-  {
-    "id": "source:book-a-first-course-in-probability",
-    "name": "A First Course in Probability (Sheldon M. Ross, Pearson)",
-    "source_type": "scholarly",
-    "license": "All rights reserved (proprietary textbook; referenced only)",
-    "commercial_use": false,
-    "attribution_required": true,
-    "share_alike_required": false,
-    "url": "https://openlibrary.org/works/OL17047555W",
-    "last_checked_at": "2026-06-10"
-  },
-  {
-    "id": "source:udc-summary",
-    "name": "UDC Summary (Universal Decimal Classification, UDC Consortium)",
-    "source_type": "reference",
-    "license": "CC BY-SA 3.0",
-    "commercial_use": true,
-    "attribution_required": true,
-    "share_alike_required": true,
-    "url": "https://udcsummary.info/",
-    "last_checked_at": "2026-06-10"
-  },
-  {
-    "id": "source:lcc-outline",
-    "name": "Library of Congress Classification Outline",
-    "source_type": "reference",
-    "license": "Public domain (U.S. government work)",
-    "commercial_use": true,
-    "attribution_required": false,
-    "share_alike_required": false,
-    "url": "https://www.loc.gov/aba/cataloging/classification/lcco/",
-    "last_checked_at": "2026-06-10"
-  },
-  {
-    "id": "source:msc2020",
-    "name": "Mathematics Subject Classification 2020 (AMS / zbMATH)",
-    "source_type": "reference",
-    "license": "CC BY-NC-SA 4.0",
-    "commercial_use": false,
-    "attribution_required": true,
-    "share_alike_required": true,
-    "url": "https://msc2020.org/",
-    "last_checked_at": "2026-06-10"
-  },
-  {
-    "id": "source:oecd-ford",
-    "name": "OECD Fields of Research and Development (FORD) classification, Frascati Manual 2015 (accessed via the ARRS mirror)",
-    "source_type": "reference",
-    "license": "© OECD; reuse with attribution per OECD Terms and Conditions (CC BY 4.0 for OECD content published as of 2024-07-01)",
-    "commercial_use": true,
-    "attribution_required": true,
-    "share_alike_required": false,
-    "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
-    "last_checked_at": "2026-06-11"
-  },
-  {
     "id": "source:acm-ccs",
     "name": "ACM Computing Classification System 2012 (CCS), Association for Computing Machinery",
     "source_type": "reference",
@@ -129,17 +8,6 @@
     "attribution_required": true,
     "share_alike_required": false,
     "url": "https://dl.acm.org/ccs",
-    "last_checked_at": "2026-06-11"
-  },
-  {
-    "id": "source:physh",
-    "name": "PhySH — Physics Subject Headings, American Physical Society",
-    "source_type": "reference",
-    "license": "CC0 1.0 (physh.org/licensing; wording verified 2026-06-11 via Wayback snapshot web.archive.org/web/20260611023511/https://physh.org/licensing)",
-    "commercial_use": true,
-    "attribution_required": false,
-    "share_alike_required": false,
-    "url": "https://physh.org",
     "last_checked_at": "2026-06-11"
   },
   {
@@ -154,26 +22,48 @@
     "last_checked_at": "2026-06-11"
   },
   {
-    "id": "source:mesh",
-    "name": "Medical Subject Headings (MeSH), U.S. National Library of Medicine (RDF/SPARQL via id.nlm.nih.gov)",
-    "source_type": "reference",
-    "license": "NLM MeSH is in the public domain in the United States (NLM Terms and Conditions); no restrictions on reuse",
-    "commercial_use": true,
-    "attribution_required": false,
-    "share_alike_required": false,
-    "url": "https://id.nlm.nih.gov/mesh/",
-    "last_checked_at": "2026-06-12"
-  },
-  {
-    "id": "source:sep",
-    "name": "Stanford Encyclopedia of Philosophy (SEP), Metaphysics Research Lab, Stanford University",
-    "source_type": "reference",
-    "license": "© Metaphysics Research Lab, Stanford University and the individual entry authors; freely accessible online, reuse by permission (cited for reference only)",
+    "id": "source:book-a-first-course-in-probability",
+    "name": "A First Course in Probability (Sheldon M. Ross, Pearson)",
+    "source_type": "scholarly",
+    "license": "All rights reserved (proprietary textbook; referenced only)",
     "commercial_use": false,
     "attribution_required": true,
     "share_alike_required": false,
-    "url": "https://plato.stanford.edu/",
-    "last_checked_at": "2026-06-19"
+    "url": "https://openlibrary.org/works/OL17047555W",
+    "last_checked_at": "2026-06-10"
+  },
+  {
+    "id": "source:book-bayesian-data-analysis",
+    "name": "Bayesian Data Analysis, 3rd ed. (Gelman, Carlin, Stern, Dunson, Vehtari & Rubin, CRC Press)",
+    "source_type": "scholarly",
+    "license": "All rights reserved (authors' non-commercial PDF at the book page)",
+    "commercial_use": false,
+    "attribution_required": true,
+    "share_alike_required": false,
+    "url": "http://www.stat.columbia.edu/~gelman/book/",
+    "last_checked_at": "2026-06-10"
+  },
+  {
+    "id": "source:book-convex-optimization",
+    "name": "Convex Optimization (Boyd & Vandenberghe, Cambridge University Press)",
+    "source_type": "scholarly",
+    "license": "All rights reserved (authors' free PDF at the Stanford book page)",
+    "commercial_use": false,
+    "attribution_required": true,
+    "share_alike_required": false,
+    "url": "https://web.stanford.edu/~boyd/cvxbook/",
+    "last_checked_at": "2026-06-10"
+  },
+  {
+    "id": "source:book-mathematics-for-machine-learning",
+    "name": "Mathematics for Machine Learning (Deisenroth, Faisal & Ong, Cambridge University Press)",
+    "source_type": "scholarly",
+    "license": "All rights reserved (authors' free PDF at the book site)",
+    "commercial_use": false,
+    "attribution_required": true,
+    "share_alike_required": false,
+    "url": "https://mml-book.github.io/",
+    "last_checked_at": "2026-06-10"
   },
   {
     "id": "source:encyclopedia-of-mathematics",
@@ -184,28 +74,6 @@
     "attribution_required": true,
     "share_alike_required": true,
     "url": "https://encyclopediaofmath.org/",
-    "last_checked_at": "2026-06-19"
-  },
-  {
-    "id": "source:nlab",
-    "name": "nLab (ncatlab.org), the collaborative category-theory/mathematics wiki",
-    "source_type": "reference",
-    "license": "No formal license statement; content used under academic citation/attribution practice (ncatlab.org HomePage license note, verified 2026-06-19)",
-    "commercial_use": false,
-    "attribution_required": true,
-    "share_alike_required": false,
-    "url": "https://ncatlab.org/",
-    "last_checked_at": "2026-06-19"
-  },
-  {
-    "id": "source:wikipedia",
-    "name": "Wikipedia, the free encyclopedia (English) — Wikimedia Foundation",
-    "source_type": "reference",
-    "license": "CC BY-SA 4.0 (text co-licensed GFDL) — Wikimedia Terms of Use",
-    "commercial_use": true,
-    "attribution_required": true,
-    "share_alike_required": true,
-    "url": "https://en.wikipedia.org/",
     "last_checked_at": "2026-06-19"
   },
   {
@@ -220,6 +88,17 @@
     "last_checked_at": "2026-06-19"
   },
   {
+    "id": "source:lcc-outline",
+    "name": "Library of Congress Classification Outline",
+    "source_type": "reference",
+    "license": "Public domain (U.S. government work)",
+    "commercial_use": true,
+    "attribution_required": false,
+    "share_alike_required": false,
+    "url": "https://www.loc.gov/aba/cataloging/classification/lcco/",
+    "last_checked_at": "2026-06-10"
+  },
+  {
     "id": "source:mactutor",
     "name": "MacTutor History of Mathematics Archive, University of St Andrews",
     "source_type": "reference",
@@ -228,6 +107,50 @@
     "attribution_required": true,
     "share_alike_required": false,
     "url": "https://mathshistory.st-andrews.ac.uk/",
+    "last_checked_at": "2026-06-19"
+  },
+  {
+    "id": "source:manual-curation-v1",
+    "name": "Noosphere manual curation v1",
+    "source_type": "manual",
+    "license": "project-owned",
+    "commercial_use": true,
+    "attribution_required": false,
+    "share_alike_required": false,
+    "url": null,
+    "last_checked_at": "2026-06-02"
+  },
+  {
+    "id": "source:mesh",
+    "name": "Medical Subject Headings (MeSH), U.S. National Library of Medicine (RDF/SPARQL via id.nlm.nih.gov)",
+    "source_type": "reference",
+    "license": "NLM MeSH is in the public domain in the United States (NLM Terms and Conditions); no restrictions on reuse",
+    "commercial_use": true,
+    "attribution_required": false,
+    "share_alike_required": false,
+    "url": "https://id.nlm.nih.gov/mesh/",
+    "last_checked_at": "2026-06-12"
+  },
+  {
+    "id": "source:msc2020",
+    "name": "Mathematics Subject Classification 2020 (AMS / zbMATH)",
+    "source_type": "reference",
+    "license": "CC BY-NC-SA 4.0",
+    "commercial_use": false,
+    "attribution_required": true,
+    "share_alike_required": true,
+    "url": "https://msc2020.org/",
+    "last_checked_at": "2026-06-10"
+  },
+  {
+    "id": "source:nlab",
+    "name": "nLab (ncatlab.org), the collaborative category-theory/mathematics wiki",
+    "source_type": "reference",
+    "license": "No formal license statement; content used under academic citation/attribution practice (ncatlab.org HomePage license note, verified 2026-06-19)",
+    "commercial_use": false,
+    "attribution_required": true,
+    "share_alike_required": false,
+    "url": "https://ncatlab.org/",
     "last_checked_at": "2026-06-19"
   },
   {
@@ -240,6 +163,28 @@
     "share_alike_required": false,
     "url": "https://www.nobelprize.org/",
     "last_checked_at": "2026-07-01"
+  },
+  {
+    "id": "source:oecd-ford",
+    "name": "OECD Fields of Research and Development (FORD) classification, Frascati Manual 2015 (accessed via the ARRS mirror)",
+    "source_type": "reference",
+    "license": "© OECD; reuse with attribution per OECD Terms and Conditions (CC BY 4.0 for OECD content published as of 2024-07-01)",
+    "commercial_use": true,
+    "attribution_required": true,
+    "share_alike_required": false,
+    "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+    "last_checked_at": "2026-06-11"
+  },
+  {
+    "id": "source:openalex",
+    "name": "OpenAlex",
+    "source_type": "scholarly",
+    "license": "CC0",
+    "commercial_use": true,
+    "attribution_required": false,
+    "share_alike_required": false,
+    "url": "https://openalex.org/",
+    "last_checked_at": "2026-06-02"
   },
   {
     "id": "source:oxford-bibliographies",
@@ -262,5 +207,60 @@
     "share_alike_required": false,
     "url": "https://philpapers.org/",
     "last_checked_at": "2026-07-02"
+  },
+  {
+    "id": "source:physh",
+    "name": "PhySH — Physics Subject Headings, American Physical Society",
+    "source_type": "reference",
+    "license": "CC0 1.0 (physh.org/licensing; wording verified 2026-06-11 via Wayback snapshot web.archive.org/web/20260611023511/https://physh.org/licensing)",
+    "commercial_use": true,
+    "attribution_required": false,
+    "share_alike_required": false,
+    "url": "https://physh.org",
+    "last_checked_at": "2026-06-11"
+  },
+  {
+    "id": "source:sep",
+    "name": "Stanford Encyclopedia of Philosophy (SEP), Metaphysics Research Lab, Stanford University",
+    "source_type": "reference",
+    "license": "© Metaphysics Research Lab, Stanford University and the individual entry authors; freely accessible online, reuse by permission (cited for reference only)",
+    "commercial_use": false,
+    "attribution_required": true,
+    "share_alike_required": false,
+    "url": "https://plato.stanford.edu/",
+    "last_checked_at": "2026-06-19"
+  },
+  {
+    "id": "source:udc-summary",
+    "name": "UDC Summary (Universal Decimal Classification, UDC Consortium)",
+    "source_type": "reference",
+    "license": "CC BY-SA 3.0",
+    "commercial_use": true,
+    "attribution_required": true,
+    "share_alike_required": true,
+    "url": "https://udcsummary.info/",
+    "last_checked_at": "2026-06-10"
+  },
+  {
+    "id": "source:wikidata",
+    "name": "Wikidata",
+    "source_type": "open_data",
+    "license": "CC0",
+    "commercial_use": true,
+    "attribution_required": false,
+    "share_alike_required": false,
+    "url": "https://www.wikidata.org/",
+    "last_checked_at": "2026-06-02"
+  },
+  {
+    "id": "source:wikipedia",
+    "name": "Wikipedia, the free encyclopedia (English) — Wikimedia Foundation",
+    "source_type": "reference",
+    "license": "CC BY-SA 4.0 (text co-licensed GFDL) — Wikimedia Terms of Use",
+    "commercial_use": true,
+    "attribution_required": true,
+    "share_alike_required": true,
+    "url": "https://en.wikipedia.org/",
+    "last_checked_at": "2026-06-19"
   }
 ]

@@ -7,6 +7,7 @@
   "type": "module",
   "scripts": {
     "validate:data": "tsx scripts/validate-data.ts",
+    "format:data": "tsx scripts/format-data.ts",
     "export:graph": "tsx scripts/export-graph.ts",
     "report:graph": "tsx scripts/report-graph.ts",
     "foundry:validate-batches": "tsx scripts/foundry/validate-batches.ts",
