@@ -1,0 +1,156 @@
+[
+  {
+    "id": "work:theory-of-games-and-economic-behavior",
+    "type": "work",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1188594"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Von Neumann & Morgenstern's Theory of Games and Economic Behavior (1944) is the watershed treatise standardly credited with founding game theory as a mathematical discipline and launching its application to economics; it completes the person-work-field triangle for subfield:game-theory, which already carries founded_or_formalized edges from both authors (person:john-von-neumann, person:oskar-morgenstern) but no canonical_work. game-theory's own existing formalizes-economics edge in /data already cites 'von Neumann & Morgenstern 1944' by name in its note, independently corroborating this pick.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved in this session (per wave1-4 precedent, generator work QIDs run close to 100% hallucinated on exact digits - orchestrator must re-verify live). Two-author work: P50 will need to resolve to BOTH von Neumann and Morgenstern, not a single person, which is a genuine identity-anchor complication versus the batch's single-author candidates (mirrors the wave4 Problems-of-Philosophy/Principia-Mathematica co-authorship judgment call, but here I propose both person edges rather than picking one sole author, since both are already independently reviewed founders of the same subfield).",
+    "ambiguous": true
+  },
+  {
+    "id": "work:computing-machinery-and-intelligence",
+    "type": "work",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1138524"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Turing's Computing Machinery and Intelligence (1950, Mind) proposes the Turing Test and is the standard founding text for artificial intelligence as a field of inquiry; it completes the triangle for subfield:artificial-intelligence, which already carries founded_or_formalized edges from person:john-mccarthy and person:marvin-minsky but no canonical_work yet, and gives Turing (already canonical for computability-theory via the existing work:on-computable-numbers) a second, clearly distinct canonical work in a different subfield - not a duplicate of the 1936 decidability paper.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. Field-target judgment call: the paper could also be argued as foundational to philosophy-of-mind (the Turing Test as a philosophical criterion of mind), but artificial-intelligence is the more referent-precise, standardly-cited target given the paper's disciplinary reception history and the subfield's existing McCarthy/Minsky founder edges.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:on-formally-undecidable-propositions",
+    "type": "work",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1798944"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Godel's 1931 paper 'Uber formal unentscheidbare Satze der Principia Mathematica und verwandter Systeme I' (On Formally Undecidable Propositions of Principia Mathematica and Related Systems I), proving the incompleteness theorems, is the single most consequential watershed text in 20th-century mathematical logic; it completes the triangle for subfield:mathematical-logic (already co-canonical under decision (90) with Boole's Laws of Thought and Frege's Begriffsschrift - a third founding text is consistent with that ruling, not dilution, since Godel's result is a distinct, universally-recognized watershed rather than an incremental addition) and person:kurt-godel (reviewed, no existing canonical_work).",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved; German-language 1931 journal-article title with special characters creates elevated identity/version risk (a plausible failure mode is a Wikidata item that conflates the paper with the general 'incompleteness theorems' concept article rather than the specific journal-article work item - mirrors the wave4 Vernadsky Biosphere honesty-gap pattern the work-node ladder criterion 1 exists to catch). Referent-precision note: Godel has no existing founded_or_formalized edge to mathematical-logic in /data (only an influenced edge to philosophy-of-mathematics), so this canonical_work edge is not matching a pre-existing founder edge the way most of this batch's other picks do - a weaker structural anchor than the others, flagged for QC's attention.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:opticks",
+    "type": "work",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1140309"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Newton's Opticks (1704) is his second major treatise, standardly credited as the founding text of physical optics (particle theory of light, prism/spectrum experiments); it completes the triangle for subfield:optics (reviewed, indexable, no existing canonical_work) and gives Newton (already canonical for field:physics via work:philosophiae-naturalis-principia-mathematica) a second, clearly distinct canonical work in a different subfield - not a duplicate or dilution of the existing Principia edge, mirroring this batch's Turing on-computable-numbers/computing-machinery-and-intelligence pattern of one founder, two distinct watershed texts in two distinct subfields.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved - flagged HIGH RISK: I am not confident in this specific QID digit string (I also nearly duplicated another guess in this same batch while drafting, which I caught and corrected - a self-observed signal of low recall confidence on Newton-adjacent QIDs specifically). Treat as a strong honesty-gap candidate if resolver search does not cleanly return a distinct Opticks work-type item separate from work:philosophiae-naturalis-principia-mathematica (Q46469 in /data).",
+    "ambiguous": true
+  },
+  {
+    "id": "work:the-complexity-of-theorem-proving-procedures",
+    "type": "work",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q30076200"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Cook's 'The Complexity of Theorem-Proving Procedures' (1971, STOC), proving the Cook-Levin theorem and introducing NP-completeness, is the founding paper of computational complexity theory as a field of study; completes the triangle for subfield:computational-complexity-theory, which already carries person:stephen-cook's founded_or_formalized edge in /data but no canonical_work.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. LIVING-AUTHOR FLAG: Stephen Cook is living (is_living_person: true on his existing /data person node) - the living-person handling standing policy signal check applies to the person-endpoint edge at QC/promotion time (resolver-verified QID identity anchor, P570 live-confirmed absent, >=2 independent live sources, conservative attributed wording), though the work itself is a bounded 1971 conference paper with no contemporary contentious content. Leonid Levin independently discovered NP-completeness around the same time (Cook-Levin theorem); scoping sole authorship to Cook for this specific paper (not a joint work) is a defensible but real judgment call the field-level history could contest.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:the-concept-of-truth-in-formalized-languages",
+    "type": "work",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q3986324"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Tarski's 'The Concept of Truth in Formalized Languages' (Polish original 1933, German 1935, English 1956) formulates the semantic theory of truth (Tarski's T-schema) and is standardly credited as founding model theory as a distinct branch of mathematical logic; completes the triangle for subfield:model-theory, which already carries person:alfred-tarski's founded_or_formalized edge in /data but no canonical_work.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. Multi-language/multi-year publication history (Polish 1933 -> German 1935 -> English 1956) creates real identity/version risk at the node level, comparable to the wave4 Husserl Logical Investigations two-volume/two-year pattern - QC should confirm which Wikidata item (if any) is treated as the canonical single work versus separate translation-edition items.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:on-sense-and-reference",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1497216"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Frege's 'Uber Sinn und Bedeutung' (On Sense and Reference, 1892) introduces the sense/reference distinction and is the single most-cited founding paper of modern philosophy of language; completes the triangle for subfield:philosophy-of-language, which already carries person:gottlob-frege's founded_or_formalized edge in /data but no canonical_work from Frege specifically (Frege's other canonical work, Begriffsschrift, is scoped to subfield:mathematical-logic in /data, a different subfield - not a duplicate). Co-canonical with work:tractatus-logico-philosophicus (already canonical for philosophy-of-language per work-wave4) under decision (90)'s co-canonical ruling - two founding texts for one subfield, consistent with the ruling's own examples.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. Short journal-article identity risk similar to the Godel and Cook picks in this batch (a plausible failure mode is no clean standalone Wikidata item, or an item that is really about the sense/reference concept rather than the journal article) - flagged for honesty-gap scrutiny at QC alongside those two.",
+    "ambiguous": true
+  }
+]

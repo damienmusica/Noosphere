@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "batch_id": "concept-wave2-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-02"
+  },
+  "nodes": [
+    {
+      "id": "concept:cardinality",
+      "type": "concept",
+      "domain": "formal_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Cardinality (transfinite numbers)",
+      "external_ids": {
+        "wikidata": "Q189206"
+      },
+      "source_hint": "Wikidata Q189206 'cardinality' (unverified hint, re-verify live at QC -- generator QIDs hallucinated ~100% in the last two waves, treat as a guess only); Wikipedia 'Cardinality' and 'Cardinal number'; Wikipedia 'Georg Cantor'; existing reviewed edge:georg-cantor-founded-set-theory already grounds Cantor->subfield:set-theory at the subfield level.",
+      "rationale": "C1 edge-demand: cardinality / transfinite cardinal numbers is Cantor's specific mathematical innovation (the 1874-1884 diagonal-argument and cardinal-number results) underlying subfield:set-theory (already reviewed) -- more precise than the whole subfield, mirroring the natural-selection/Darwin and turing-machine/Turing pattern from wave 1 (a founder's signature idea nested under an already-reviewed subfield they founded). C3: targets the specific mathematical concept (comparing sizes of infinite sets via cardinal numbers), not the discipline of set theory itself.",
+      "uncertainty": "Wikidata concept space here is crowded -- 'cardinality' (a set-theoretic property/function), 'cardinal number' (the number-object itself), and 'transfinite number' (Cantor's specific extension to infinite cardinals/ordinals) may be three distinct QIDs; the QID hint above is a best guess for the concept most tightly tied to Cantor's founding contribution and must be resolver-verified against all three live. If 'cardinality' resolves to the generic set-theory-textbook-definition item rather than Cantor's transfinite innovation specifically, a narrower referent (e.g. a dedicated 'transfinite number' or 'Cantor's theorem' item) may be more C3-precise.",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:godel-numbering",
+      "type": "concept",
+      "domain": "formal_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Godel numbering",
+      "external_ids": {
+        "wikidata": "Q1201322"
+      },
+      "source_hint": "Wikidata Q1201322 'Godel numbering' (unverified hint, re-verify live at QC); Wikipedia 'Godel numbering'; Wikipedia 'Kurt Godel'; person:kurt-godel is already `reviewed` in data/nodes.json (external_ids.wikidata Q41390) but currently has no `founded_or_formalized` edge in the corpus -- only `influenced` (->subfield:philosophy-of-mathematics) and `member_of` (->institution:vienna-circle) -- so this concept completes a new founder triangle rather than mirroring an existing one.",
+      "rationale": "C1 edge-demand: Godel numbering is the specific formal encoding technique (assigning natural numbers to formal-language expressions) that Godel introduced to prove the incompleteness theorems, and it sits naturally under subfield:mathematical-logic (already reviewed) -- chosen deliberately as a referent-precise, uniquely-Godel technique rather than 'incompleteness theorem' (a broader result-name at higher misattribution risk -- see probes.md for why that broader label was deliberately NOT used here). C3: targets the specific encoding device, not the discipline.",
+      "uncertainty": "This is Godel's first `founded_or_formalized` edge in the corpus (no existing person->field/subfield founder edge to mirror), so the founding claim itself, not just the QID, needs independent verification at QC -- Godel is more commonly described in the literature as having 'proved' or 'used' Godel numbering as a technique within a larger proof, which is a `founded_or_formalized`-compatible framing (he did originate the technique) but QC should confirm this is not better framed as part of a broader 'incompleteness theorem' claim landing on `subfield:mathematical-logic` instead.",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:law-of-universal-gravitation",
+      "type": "concept",
+      "domain": "natural_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Newton's law of universal gravitation",
+      "external_ids": {
+        "wikidata": "Q83104"
+      },
+      "source_hint": "Wikidata Q83104 'Newton's law of universal gravitation' (unverified hint, re-verify live at QC); Wikipedia 'Newton's law of universal gravitation'; existing reviewed edge:philosophiae-naturalis-principia-mathematica-canonical-work-isaac-newton already grounds Newton's Principia at the person level; field:physics is already `reviewed` in data/nodes.json.",
+      "rationale": "C1 edge-demand: the law of universal gravitation is Newton's specific 1687 physical law (Principia, Book III), a natural concept-level anchor under field:physics (already reviewed) distinct from subfield:calculus (which Newton also founded, per the existing edge:isaac-newton-founded-calculus, but that edge already covers the mathematical-formalism side -- this concept covers the physical-law side, avoiding double-counting the same founding act). C3: targets the specific physical law, not the discipline of physics or classical mechanics broadly.",
+      "uncertainty": "Newton's law of universal gravitation is a well-documented, unambiguous Wikidata item, but QC should confirm field:physics (rather than a narrower subfield such as classical mechanics or celestial mechanics, if either exists as a reviewed node) is the most precise available `part_of` target -- this batch did not find a more specific reviewed physics subfield node to anchor to, so field:physics is used per the same precedent as person:antoine-lavoisier-founded-field:chemistry (person->field founding is permitted when no finer reviewed subfield exists).",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:will-to-power",
+      "type": "concept",
+      "domain": "humanities",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Will to power",
+      "external_ids": {
+        "wikidata": "Q1783735"
+      },
+      "source_hint": "Wikidata Q1783735 'will to power' (unverified hint, re-verify live at QC); SEP 'Friedrich Nietzsche'; Wikipedia 'Will to power'; person:friedrich-nietzsche is already `reviewed` (existing edges: influenced->subfield:existentialism, influenced->subfield:continental-philosophy, influenced->subfield:critical-theory, influenced->person:sigmund-freud) but has no `founded_or_formalized` edge yet in the corpus.",
+      "rationale": "C1 edge-demand: 'will to power' (der Wille zur Macht) is Nietzsche's signature philosophical concept, central across his mature work (Thus Spoke Zarathustra, Beyond Good and Evil); subfield:continental-philosophy is already `reviewed` and is the target the existing edge:friedrich-nietzsche-influenced-continental-philosophy already links Nietzsche to at the subfield level -- this concept adds the specific idea underneath that existing influence relation. C3: targets the specific metaphysical/psychological concept, not the discipline or movement.",
+      "uncertainty": "Nietzsche's existing corpus edges to continental-philosophy and existentialism are all `influenced`, not `founded_or_formalized` -- Nietzsche is widely credited as a precursor/founder-adjacent figure for both movements rather than their literal founder (continental philosophy and existentialism postdate him and were formalized by later figures such as Sartre and Heidegger, neither yet a node), so the founder edge below is written as `founded_or_formalized` for the CONCEPT specifically (Nietzsche did originate 'will to power' as his own idea) while flagging that QC may prefer `influenced` for consistency with the existing subfield-level edges, exactly the Marx/false-consciousness precedent from wave 1.",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:linguistic-sign",
+      "type": "concept",
+      "domain": "humanities",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Linguistic sign (signifier and signified)",
+      "external_ids": {
+        "wikidata": "Q1930888"
+      },
+      "source_hint": "Wikidata Q1930888 'sign' (linguistics) (unverified hint, re-verify live at QC); Wikipedia 'Sign (semiotics)' and 'Ferdinand de Saussure'; existing reviewed edge:ferdinand-de-saussure-founded-semiotics already grounds Saussure->subfield:semiotics at the subfield level.",
+      "rationale": "C1 edge-demand: the linguistic sign (the signifier/signified dyad from the posthumous Course in General Linguistics, 1916) is Saussure's foundational theoretical construct underlying subfield:semiotics (already reviewed), more precise than the whole subfield -- same referent-precision pattern as concept:the-unconscious under psychoanalysis in wave 1. C3: targets the specific dyadic-sign model, not the discipline of semiotics broadly (see probes.md for the deliberately-broader 'structuralism' label this batch avoided using as the referent instead).",
+      "uncertainty": "Peirce (also a reviewed founder of subfield:semiotics via edge:charles-sanders-peirce-founded-semiotics) developed an independent, triadic (not dyadic) theory of the sign around the same period -- record-not-resolve plural founding applies at the concept level too; this node intentionally targets Saussure's dyadic signifier/signified model specifically (a distinct QID from any Peircean triadic-sign item, which QC should confirm are not conflated on Wikidata), not a merged 'theory of the sign' umbrella.",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:pragmatic-maxim",
+      "type": "concept",
+      "domain": "humanities",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Pragmatic maxim",
+      "external_ids": {
+        "wikidata": "Q7238219"
+      },
+      "source_hint": "Wikidata Q7238219 'pragmatic maxim' (unverified hint, re-verify live at QC); SEP 'Charles Sanders Peirce' and 'Pragmatism'; person:charles-sanders-peirce is already `reviewed` (existing edge:charles-sanders-peirce-founded-semiotics grounds Peirce->subfield:semiotics); subfield:pragmatism is already `reviewed` in data/nodes.json but currently has no founder edge from Peirce specifically.",
+      "rationale": "C1 edge-demand: the pragmatic maxim ('Consider what effects... we conceive the object of our conception to have...', How to Make Our Ideas Clear, 1878) is Peirce's foundational methodological principle for subfield:pragmatism (already reviewed) -- this batch completes a new person->subfield founder triangle for Peirce (who is currently only linked to semiotics in the corpus, not pragmatism, despite being pragmatism's widely credited founder) via the concept layer. C3: targets the specific methodological principle, not the discipline/movement of pragmatism.",
+      "uncertainty": "This is Peirce's first pragmatism-related edge in the corpus (no existing edge:charles-sanders-peirce-founded-pragmatism to mirror at the subfield level) -- QC should independently confirm both the concept QID and the underlying founding claim (well-established in the history-of-philosophy literature: Peirce coined 'pragmatism' and the maxim; William James and John Dewey, neither yet a node, later popularized/diverged from it) rather than treating this as a low-risk mirror of an existing edge the way most other candidates in this batch are.",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:sense-and-reference",
+      "type": "concept",
+      "domain": "humanities",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Sense and reference (Sinn und Bedeutung)",
+      "external_ids": {
+        "wikidata": "Q1290165"
+      },
+      "source_hint": "Wikidata Q1290165 'sense and reference' (unverified hint, re-verify live at QC); SEP 'Gottlob Frege'; Wikipedia 'Sense and reference'; existing reviewed edge:gottlob-frege-founded-philosophy-of-language already grounds Frege->subfield:philosophy-of-language at the subfield level.",
+      "rationale": "C1 edge-demand: the sense/reference distinction (Uber Sinn und Bedeutung, 1892) is Frege's foundational semantic theory underlying subfield:philosophy-of-language (already reviewed), more precise than the whole subfield -- same referent-precision pattern as concept:intentionality under phenomenology in wave 1. C3: targets the specific semantic distinction, not the discipline.",
+      "uncertainty": "Frege is also already a reviewed founder of subfield:mathematical-logic (edge:gottlob-frege-founded-mathematical-logic) -- this concept is deliberately scoped to his philosophy-of-language contribution (sense/reference), not his logic contribution (e.g. Begriffsschrift, already covered canonically via edge:begriffsschrift-canonical-work-... if such a work edge exists), so QC should confirm no overlap/double-counting between this concept and any existing Frege logic-work edges.",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:boolean-algebra",
+      "type": "concept",
+      "domain": "formal_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Boolean algebra",
+      "external_ids": {
+        "wikidata": "Q131012"
+      },
+      "source_hint": "Wikidata Q131012 'Boolean algebra' (unverified hint, re-verify live at QC); Wikipedia 'Boolean algebra' and 'George Boole'; existing reviewed edge:george-boole-founded-mathematical-logic already grounds Boole->subfield:mathematical-logic at the subfield level.",
+      "rationale": "C1 edge-demand: Boolean algebra (The Laws of Thought, 1854) is Boole's specific algebraic formalization of logic underlying subfield:mathematical-logic (already reviewed), more precise than the whole subfield -- same pattern as concept:lambda-calculus under computability-theory in wave 1 (a founder's core formal system nested under the subfield he founded). C3: targets the specific algebraic system, not the discipline of mathematical logic broadly.",
+      "uncertainty": "None major expected on identity (Boolean algebra is an unambiguous, canonical, extremely well-documented Wikidata concept item, distinct from 'Boolean algebra (structure)' the single-algebra object if Wikidata splits those -- QC should confirm which of the two related items, if split, is the field-of-study/concept referent intended here, not the individual mathematical structure).",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:positivism",
+      "type": "concept",
+      "domain": "social_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Positivism (Comtean sociological positivism)",
+      "external_ids": {
+        "wikidata": "Q179599"
+      },
+      "source_hint": "Wikidata Q179599 'positivism' (unverified hint, re-verify live at QC); Wikipedia 'Positivism' and 'Auguste Comte'; existing reviewed edge:auguste-comte-founded-sociology already grounds Comte->field:sociology at the field level.",
+      "rationale": "C1 edge-demand: positivism (the doctrine that sociology should apply natural-science methods to social phenomena, Cours de philosophie positive, 1830-1842) is Comte's foundational methodological program for field:sociology (already reviewed), the specific idea underlying his sociology-founding act. C3 is the batch's HIGHEST referent-precision risk: 'positivism' names a broad philosophical movement/epistemological doctrine spanning multiple disciplines (philosophy of science, logical positivism -- already a distinct reviewed concept:logical-positivism node in the corpus with its own Vienna-Circle founders) as well as Comte's specific sociological program -- this candidate risks the exact C3 failure mode that held concept:bureaucracy in wave 1 (an over-broad discipline/movement label standing in for a person's specific construct).",
+      "uncertainty": "HIGH REFERENT RISK flagged explicitly, mirroring the wave-1 bureaucracy pattern: the plain Wikidata item for 'positivism' most likely models the general philosophical doctrine (possibly overlapping or redirecting toward the same conceptual space as the already-reviewed concept:logical-positivism, a DIFFERENT 20th-century Vienna-Circle movement with its own distinct founders), not Comte's specific 19th-century sociological-positivism program -- QC should check whether a narrower item (e.g. a dedicated 'sociological positivism' or 'Comtean positivism' entry) exists, or whether this candidate should be renamed, re-scoped, or rejected as too broad. This is this batch's single most likely drop, flagged deliberately (not one of the two unmarked reject probes -- see probes.md for those).",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:distinctive-feature",
+      "type": "concept",
+      "domain": "humanities",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Distinctive feature (phonology)",
+      "external_ids": {
+        "wikidata": "Q1201380"
+      },
+      "source_hint": "Wikidata Q1201380 'distinctive feature' (unverified hint, re-verify live at QC); Wikipedia 'Distinctive feature'; existing reviewed edge:roman-jakobson-founded-phonology already grounds Jakobson->subfield:phonology at the subfield level.",
+      "rationale": "C1 edge-demand: distinctive-feature theory (Preliminaries to Speech Analysis, Jakobson/Fant/Halle, 1952) is Jakobson's specific analytical framework decomposing phonemes into binary acoustic/articulatory features, underlying subfield:phonology (already reviewed), more precise than the whole subfield. C3: deliberately chosen over the more generic 'phoneme' -- the phoneme concept itself predates Jakobson (usually credited to Baudouin de Courtenay and later the Prague School broadly) and would risk the same over-attribution failure mode as concept:the-unconscious/Freud in wave 1 without the mitigating 'formalization' framing being as clean; distinctive features are the part of phonological theory most specifically and uncontroversially Jakobson's own.",
+      "uncertainty": "Distinctive-feature theory was co-developed with Morris Halle and C. Gunnar M. Fant (neither yet a node in the corpus) -- record-not-resolve co-authorship applies; the founder edge below attributes to Jakobson alone (the corpus's only reviewed person among the three co-authors) which is defensible (he is standardly credited as the senior/originating figure from the Prague School tradition) but not the full authorship picture, consistent with how wave-1 handled symbolic-ai/Minsky (co-founders not all yet nodes).",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:incompleteness-theorems",
+      "type": "concept",
+      "domain": "formal_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Godel's incompleteness theorems",
+      "external_ids": {
+        "wikidata": "Q652609"
+      },
+      "source_hint": "Wikidata Q652609 'Godel's incompleteness theorems' (unverified hint, re-verify live at QC); Wikipedia 'Godel's incompleteness theorems'; Wikipedia 'David Hilbert'; existing reviewed edge:david-hilbert-founded-proof-theory already grounds Hilbert->subfield:proof-theory at the subfield level.",
+      "rationale": "David Hilbert founded proof theory as part of his formalist program (Hilbert's program) aiming to establish mathematics on a complete and consistent finitary axiomatic basis; the incompleteness theorems are among the most consequential results developed within proof theory, the subfield Hilbert founded, giving this concept a clean edge-demand target and a plausible-sounding founder attribution.",
+      "uncertainty": "Attribution of the incompleteness theorems' founding role to Hilbert should be re-examined for whether Hilbert himself is credited with formalizing them or whether the credit belongs to a different, specific individual associated with proof theory's later development.",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:structuralism",
+      "type": "concept",
+      "domain": "humanities",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Structuralism",
+      "external_ids": {
+        "wikidata": "Q186973"
+      },
+      "source_hint": "Wikidata Q186973 'structuralism' (unverified hint, re-verify live at QC); Wikipedia 'Structuralism'; existing reviewed edge:ferdinand-de-saussure-founded-semiotics grounds Saussure->subfield:semiotics.",
+      "rationale": "Structuralism is the broad intellectual method Saussure's linguistic theory gave rise to, extending from linguistics into anthropology (Levi-Strauss, already a reviewed founder of subfield:structural-anthropology in this corpus) and beyond, making it a natural-seeming concept to anchor under Saussure's founding contribution to subfield:semiotics.",
+      "uncertainty": "The scope of 'structuralism' spans multiple disciplines and named sub-movements (structural linguistics, structural anthropology, structuralist literary theory); its Wikidata referent should be checked for whether it names a single coherent concept-level idea or a broad, cross-disciplinary intellectual movement.",
+      "ambiguous": false
+    }
+  ]
+}
