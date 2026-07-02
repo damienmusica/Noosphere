@@ -1,0 +1,115 @@
+[
+  {
+    "id": "edge:alfred-russel-wallace-influenced-philosophy-of-biology",
+    "blocking_condition": "Insufficient clean sourcing: niche teleology/selection-limits claim; SEP 'wallace' entry does not exist (slug 404). Needs alternative authoritative sources.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:andreas-vesalius-influenced-art-history",
+    "blocking_condition": "Modeling ruling: Fabrica influenced art, but 'influenced art-history' (the scholarly discipline) is indirect/weak — not a standard claim. Needs a re-ruling or a finer-grained target, not re-verification.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:antoine-lavoisier-influenced-physics",
+    "blocking_condition": "Target too broad (field:physics); a thermodynamics-grained target would be accurate but no such node exists yet. Trigger: thermodynamics-class node created.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:bertrand-russell-influenced-computer-science",
+    "blocking_condition": "Diffuse/mediated (via Church, Curry–Howard, Martin-Löf) and field:computer-science too broad; a programming-languages/type-theory-grained target would be cleaner. Trigger: type-theory-class node created.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:cybernetics-influenced-systems-engineering",
+    "blocking_condition": "Thin at the 'influenced' bar: single clear claim-stating source (WP systems-engineering history lists cybernetics among many contributors; WP Cybernetics does not reciprocate). Needs a second independent claim-stating source.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:georges-cuvier-influenced-archaeology",
+    "blocking_condition": "Indirect (stratigraphy/comparative method reached archaeology via geology); diffuse, field-grain broad. Needs a re-ruling or finer target.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:gottfried-wilhelm-leibniz-influenced-computability-theory",
+    "blocking_condition": "Long-range mediated claim (calculus ratiocinator as precursor); better as a looser precursor framing. Modeling ruling needed, not re-verification.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:karl-pearson-influenced-sociology",
+    "blocking_condition": "Diffuse (statistics adopted in quantitative sociology); field-grain target broad.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:kurt-lewin-influenced-education",
+    "blocking_condition": "Thin/indirect sourcing: second generator source was about Dewey, not Lewin (self-flagged). Needs a second independent Lewin-specific claim-stating source.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:norbert-wiener-influenced-cognitive-psychology",
+    "blocking_condition": "Near-duplicate risk with the existing information-theory→cognitive-psychology edge (both 'cognitive revolution' antecedents); needs a dedup ruling on the distinct cybernetic-feedback contribution.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:roman-jakobson-influenced-semiotics",
+    "blocking_condition": "Influence genuine but diffuse and partly bidirectional (Jakobson drew FROM Peircean semiotics); semiotics had independent foundations (Peirce, Saussure). Needs a direction/scope ruling.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:ronald-fisher-influenced-epidemiology",
+    "blocking_condition": "Epidemiology-specific link not surfaced verbatim live (Bradford Hill more direct); thin. Mirrors the wave-3 evo-bio→epidemiology hold.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:vladimir-vernadsky-influenced-environmental-science",
+    "blocking_condition": "Real but diffuse; Vernadsky already carries founded_or_formalized→geochemistry; field-grain target broad.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:edmund-husserl-founded-intentionality",
+    "blocking_condition": "Single-founder attribution imprecise: intentionality reintroduced by Brentano (no node), developed by Husserl. Trigger: person:franz-brentano node created (co-founder pattern, mirrors cofounder-closure-v1).",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:marvin-minsky-founded-symbolic-ai",
+    "blocking_condition": "Symbolic AI (GOFAI) co-founded by Newell/Simon/McCarthy/Minsky; single-founder attribution held pending co-founder modeling (record-not-resolve). Trigger: co-founder person nodes created (cofounder-closure pattern).",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:george-lakoff-critiques-philosophy-of-mind",
+    "blocking_condition": "Broad-target modeling precision: 'critiques the field' mirrors the chomsky discipline ruling; held on modeling precision, NOT a living-person escalation signal (Lakoff, P570 absent).",
+    "recheck": "manual",
+    "batch_id": "recheck-wave1-v1",
+    "recorded_at": "2026-07-02",
+    "note": "Living person — (70) floor applies whenever re-framed; attributed wording required."
+  }
+]

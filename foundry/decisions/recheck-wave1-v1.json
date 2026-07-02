@@ -1,0 +1,353 @@
+{
+  "version": 1,
+  "batch_id": "recheck-wave1-v1",
+  "decided_at": "2026-07-02",
+  "qc_by": {
+    "model_name": "Claude Fable",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-02"
+  },
+  "adds": {
+    "sources": [
+      {
+        "id": "source:britannica",
+        "name": "Encyclopædia Britannica",
+        "source_type": "reference",
+        "license": "Proprietary (all rights reserved); cited by reference only, no content cached",
+        "commercial_use": false,
+        "attribution_required": true,
+        "share_alike_required": false,
+        "url": "https://www.britannica.com/",
+        "last_checked_at": "2026-07-02"
+      }
+    ]
+  },
+  "promotions": [
+    {
+      "kind": "edge",
+      "id": "edge:economic-geography-part-of-human-geography",
+      "from": "proposed",
+      "to": "reviewed",
+      "set_evidence": [
+        "source:oecd-ford",
+        "source:wikipedia",
+        "source:wikidata"
+      ],
+      "set_note": "Live-verified 2026-07-02: WP lead states verbatim 'Economic geography is the subfield of human geography'; Wikidata Q187097 P279 subclass-of Q12831143 (human geography); OECD FORD 5.7 'Social and economic geography' (captured 2026-06-11). Co-equal cross-listing with the existing reviewed economic-geography→economics membership (cross-listing v1 — WP lead itself notes it 'can also be considered a subfield or method in economics'). Edge promotion policy v1 structural tier; supported."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:decision-theory-part-of-economics",
+      "from": "proposed",
+      "to": "reviewed",
+      "set_evidence": [
+        "source:lcc-outline",
+        "source:wikipedia",
+        "source:wikidata"
+      ],
+      "set_note": "Live-verified 2026-07-02: WP lead states 'Decision theory or the theory of rational choice is a branch of probability, economics, and analytic philosophy'; Wikidata Q177571 P279 includes Q8134 (economics); LCC HB615-715 'Entrepreneurship. Risk and uncertainty' inside HB 'Economic theory. Demography' (live-reproduced from lcco_h.pdf). Clears the 2026-06-11 'partial fit' hold with direct claim-stating evidence. Co-equal cross-listing with the reviewed part_of→philosophy (the WP lead names both memberships, plus probability — a probability/statistics co-listing remains an open candidate). Edge promotion policy v1 structural tier; supported."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:criminology-part-of-law",
+      "from": "proposed",
+      "to": "reviewed",
+      "set_evidence": [
+        "source:udc-summary",
+        "source:britannica"
+      ],
+      "set_note": "UDC 343.9 'Criminology. Criminal sciences. Criminalistics' nested under 343 'Criminal law. Penal offences' under 34 'Law. Jurisprudence' (captured 2026-06-11); Britannica: European universities 'treat criminology as part of legal education', and the Institute of Criminology 'is part of the law faculty of the University of Cambridge' (snapshot 2026-06-02). Record-not-resolve: Britannica's definition frames criminology as the study of the *nonlegal* aspects of crime — the law membership is classificatory/institutional, co-equal with the sociology membership (cross-listing v1); together the pair records the field's genuinely split academic placement. Edge promotion policy v1 structural tier; supported."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:criminology-part-of-sociology",
+      "from": "proposed",
+      "to": "reviewed",
+      "set_evidence": [
+        "source:lcc-outline",
+        "source:britannica",
+        "source:wikipedia"
+      ],
+      "set_note": "LCC HV6001-7220.5 'Criminology' within Class H social sciences (Subclass HV 'Social pathology. Social and public welfare. Criminology', incl. HV6035-6197 criminal anthropology/criminal sociology — live-reproduced 2026-07-02 from lcco_h.pdf); Britannica: criminological research and teaching 'usually divided between departments of sociology or social administration, law faculties' (snapshot 2026-06-02); WP lead: criminology 'draws primarily upon the research of sociologists'. Record-not-resolve: sources frame criminology as an interdisciplinary social/behavioural science rather than strictly sociology-contained — the membership is co-equal with law (cross-listing v1). Edge promotion policy v1 structural tier; supported."
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "edge:economic-geography-part-of-human-geography",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Economic_geography",
+          "retrieved_at": "2026-07-02",
+          "quote": "Economic geography is the subfield of human geography that studies economic activity and factors affecting it.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Economic_geography&oldid=1343737292"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q187097",
+          "retrieved_at": "2026-07-02",
+          "quote": "P279 (subclass of) → Q12831143 (human geography); also Q524273 (social geography), Q8134 (economics)",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260524044031/https://www.wikidata.org/wiki/Q187097",
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q187097&oldid=2511270914"
+        },
+        {
+          "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+          "retrieved_at": "2026-06-11",
+          "quote": "OECD FORD 5.7 'Social and economic geography' (recorded capture, B-track prevalidation 2026-06-11)",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260611023459/https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp"
+        }
+      ]
+    },
+    {
+      "subject_id": "edge:decision-theory-part-of-economics",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Decision_theory",
+          "retrieved_at": "2026-07-02",
+          "quote": "Decision theory or the theory of rational choice is a branch of probability, economics, and analytic philosophy that uses expected utility and probability to model how individuals would behave rationally under uncertainty.",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260620165415/https://en.wikipedia.org/wiki/Decision_theory",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Decision_theory&oldid=1360283692"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q177571",
+          "retrieved_at": "2026-07-02",
+          "quote": "P279 (subclass of) includes Q8134 (economics), alongside Q5862903 (probability theory) and Q12483 (statistics)",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20251112232212/https://www.wikidata.org/wiki/Q177571",
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q177571&oldid=2506103612"
+        },
+        {
+          "url": "https://www.loc.gov/aba/cataloging/classification/lcco/lcco_h.pdf",
+          "retrieved_at": "2026-07-02",
+          "quote": "HB615-715 Entrepreneurship. Risk and uncertainty — inside Subclass HB, HB1-3840 Economic theory. Demography",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702083053/https://www.loc.gov/aba/cataloging/classification/lcco/lcco_h.pdf"
+        }
+      ]
+    },
+    {
+      "subject_id": "edge:criminology-part-of-law",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://udcsummary.info/",
+          "retrieved_at": "2026-06-11",
+          "quote": "UDC 343.9 'Criminology. Criminal sciences. Criminalistics' nested under 343 'Criminal law. Penal offences' under 34 'Law. Jurisprudence' (recorded capture 2026-06-11)",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260607095749/https://udcsummary.info/"
+        },
+        {
+          "url": "https://www.britannica.com/science/criminology",
+          "retrieved_at": "2026-07-02",
+          "snapshot_url": "https://web.archive.org/web/20260602142910/https://www.britannica.com/science/criminology",
+          "quote": "Universities in Europe have tended to treat criminology as part of legal education [...] the Institute of Criminology is part of the law faculty of the University of Cambridge",
+          "independent": true
+        }
+      ],
+      "notes": "Definitional counterpoint recorded: Britannica opens 'criminology, scientific study of the nonlegal aspects of crime' — law membership is classificatory/institutional (record-not-resolve)."
+    },
+    {
+      "subject_id": "edge:criminology-part-of-sociology",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.loc.gov/aba/cataloging/classification/lcco/lcco_h.pdf",
+          "retrieved_at": "2026-07-02",
+          "quote": "Subclass HV — Social pathology. Social and public welfare. Criminology; HV6001-7220.5 Criminology; HV6035-6197 Criminal anthropology",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702083053/https://www.loc.gov/aba/cataloging/classification/lcco/lcco_h.pdf"
+        },
+        {
+          "url": "https://www.britannica.com/science/criminology",
+          "retrieved_at": "2026-07-02",
+          "snapshot_url": "https://web.archive.org/web/20260602142910/https://www.britannica.com/science/criminology",
+          "quote": "in other schools criminological research and teaching have usually been divided between departments of sociology or social administration, law faculties",
+          "independent": true
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Criminology",
+          "retrieved_at": "2026-07-02",
+          "quote": "Criminology is a multidisciplinary field in both the behavioural and social sciences, which draws primarily upon the research of sociologists",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260630193857/https://en.wikipedia.org/wiki/Criminology",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Criminology&oldid=1361116720"
+        }
+      ],
+      "notes": "LCC places criminology in the social-sciences class (HV), adjacent to rather than inside HM Sociology — containment tension recorded (record-not-resolve); co-equal with the law membership."
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "edge:economic-geography-part-of-human-geography",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:decision-theory-part-of-economics",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:criminology-part-of-law",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:criminology-part-of-sociology",
+      "ladder": "edge-promotion-v1-structural"
+    }
+  ],
+  "held": [
+    {
+      "id": "edge:alfred-russel-wallace-influenced-philosophy-of-biology",
+      "blocking_condition": "Insufficient clean sourcing: niche teleology/selection-limits claim; SEP 'wallace' entry does not exist (slug 404). Needs alternative authoritative sources.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:andreas-vesalius-influenced-art-history",
+      "blocking_condition": "Modeling ruling: Fabrica influenced art, but 'influenced art-history' (the scholarly discipline) is indirect/weak — not a standard claim. Needs a re-ruling or a finer-grained target, not re-verification.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:antoine-lavoisier-influenced-physics",
+      "blocking_condition": "Target too broad (field:physics); a thermodynamics-grained target would be accurate but no such node exists yet. Trigger: thermodynamics-class node created.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:bertrand-russell-influenced-computer-science",
+      "blocking_condition": "Diffuse/mediated (via Church, Curry–Howard, Martin-Löf) and field:computer-science too broad; a programming-languages/type-theory-grained target would be cleaner. Trigger: type-theory-class node created.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:cybernetics-influenced-systems-engineering",
+      "blocking_condition": "Thin at the 'influenced' bar: single clear claim-stating source (WP systems-engineering history lists cybernetics among many contributors; WP Cybernetics does not reciprocate). Needs a second independent claim-stating source.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:georges-cuvier-influenced-archaeology",
+      "blocking_condition": "Indirect (stratigraphy/comparative method reached archaeology via geology); diffuse, field-grain broad. Needs a re-ruling or finer target.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:gottfried-wilhelm-leibniz-influenced-computability-theory",
+      "blocking_condition": "Long-range mediated claim (calculus ratiocinator as precursor); better as a looser precursor framing. Modeling ruling needed, not re-verification.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:karl-pearson-influenced-sociology",
+      "blocking_condition": "Diffuse (statistics adopted in quantitative sociology); field-grain target broad.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:kurt-lewin-influenced-education",
+      "blocking_condition": "Thin/indirect sourcing: second generator source was about Dewey, not Lewin (self-flagged). Needs a second independent Lewin-specific claim-stating source.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:norbert-wiener-influenced-cognitive-psychology",
+      "blocking_condition": "Near-duplicate risk with the existing information-theory→cognitive-psychology edge (both 'cognitive revolution' antecedents); needs a dedup ruling on the distinct cybernetic-feedback contribution.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:roman-jakobson-influenced-semiotics",
+      "blocking_condition": "Influence genuine but diffuse and partly bidirectional (Jakobson drew FROM Peircean semiotics); semiotics had independent foundations (Peirce, Saussure). Needs a direction/scope ruling.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:ronald-fisher-influenced-epidemiology",
+      "blocking_condition": "Epidemiology-specific link not surfaced verbatim live (Bradford Hill more direct); thin. Mirrors the wave-3 evo-bio→epidemiology hold.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:vladimir-vernadsky-influenced-environmental-science",
+      "blocking_condition": "Real but diffuse; Vernadsky already carries founded_or_formalized→geochemistry; field-grain target broad.",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:edmund-husserl-founded-intentionality",
+      "blocking_condition": "Single-founder attribution imprecise: intentionality reintroduced by Brentano (no node), developed by Husserl. Trigger: person:franz-brentano node created (co-founder pattern, mirrors cofounder-closure-v1).",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:marvin-minsky-founded-symbolic-ai",
+      "blocking_condition": "Symbolic AI (GOFAI) co-founded by Newell/Simon/McCarthy/Minsky; single-founder attribution held pending co-founder modeling (record-not-resolve). Trigger: co-founder person nodes created (cofounder-closure pattern).",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02"
+    },
+    {
+      "id": "edge:george-lakoff-critiques-philosophy-of-mind",
+      "blocking_condition": "Broad-target modeling precision: 'critiques the field' mirrors the chomsky discipline ruling; held on modeling precision, NOT a living-person escalation signal (Lakoff, P570 absent).",
+      "recheck": "manual",
+      "batch_id": "recheck-wave1-v1",
+      "recorded_at": "2026-07-02",
+      "note": "Living person — (70) floor applies whenever re-framed; attributed wording required."
+    }
+  ],
+  "notes": [
+    "First production run of the decision-file toolchain (ops-efficiency package, docs/data-foundry.md §15).",
+    "Scope: the 2026-07-02 foundry:recheck-held sweep surfaced 32 no-structural-blocker proposed edges. Note-level triage: 16 are deliberate holds with still-valid recorded reasons (ledgered above — re-verifying them cannot clear a modeling ruling); 12 are policy-blocked (editorial/legacy evidence_kind — stop at proposed until an editorial edge ladder opens); 4 part_of edges were genuinely verification-blocked ([UNFETCHED] supplementary evidence) and are promoted here after live grounding.",
+    "Adversarial checks: direction (no source states the reverse containment for any of the four); referent identity unambiguous (Q161733, Q187097, Q177571 confirmed against node labels); tension honestly recorded on both criminology memberships (record-not-resolve) rather than resolved by fiat.",
+    "applies_to boundary flag for CPO (non-blocking): edge:evolutionary-biology-applies-to-epidemiology is externally_sourced with reviewed endpoints, but whether applies_to belongs to the edge-promotion-v1 structural tier is not stated in ratified text — held out of this wave; needs a one-line ruling.",
+    "source:britannica registered (reference, proprietary, cite-by-reference-only) — first use as edge evidence; previously external-links-only."
+  ],
+  "anchors_pending": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Economic_geography",
+      "reason": "[SPN-FAILED] save did not materialize and no prior snapshot exists"
+    },
+    {
+      "url": "https://www.wikidata.org/wiki/Q187097",
+      "reason": "[SPN-FAILED] fresh save did not materialize; using 39d-old snapshot"
+    },
+    {
+      "url": "https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp",
+      "reason": "[SPN-FAILED] fresh save did not materialize; using 21d-old snapshot"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Decision_theory",
+      "reason": "[SPN-FAILED] fresh save did not materialize; using 12d-old snapshot"
+    },
+    {
+      "url": "https://www.wikidata.org/wiki/Q177571",
+      "reason": "[SPN-FAILED] fresh save did not materialize; using 232d-old snapshot"
+    },
+    {
+      "url": "https://udcsummary.info/",
+      "reason": "[SPN-FAILED] fresh save did not materialize; using 25d-old snapshot"
+    }
+  ]
+}

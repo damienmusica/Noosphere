@@ -3022,9 +3022,10 @@
     "target": "field:law",
     "relation": "part_of",
     "confidence": 0.8,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:udc-summary"
+      "source:udc-summary",
+      "source:britannica"
     ],
     "evidence_kind": "externally_sourced",
     "proposed_by": {
@@ -3032,7 +3033,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "UDC 343.9 'Criminology. Criminal sciences. Criminalistics' (whose Including note lists, i.a., organized crime, criminal sociology, forensic science, victimology) explicitly nested under 343 'Criminal law. Penal offences' under 34 'Law. Jurisprudence' (captured 2026-06-11). [UNFETCHED]: Wikidata Q161733 desc; law school criminal-law/criminology courses; Journal of Criminal Law and Criminology."
+    "note": "UDC 343.9 'Criminology. Criminal sciences. Criminalistics' nested under 343 'Criminal law. Penal offences' under 34 'Law. Jurisprudence' (captured 2026-06-11); Britannica: European universities 'treat criminology as part of legal education', and the Institute of Criminology 'is part of the law faculty of the University of Cambridge' (snapshot 2026-06-02). Record-not-resolve: Britannica's definition frames criminology as the study of the *nonlegal* aspects of crime — the law membership is classificatory/institutional, co-equal with the sociology membership (cross-listing v1); together the pair records the field's genuinely split academic placement. Edge promotion policy v1 structural tier; supported."
   },
   {
     "id": "edge:criminology-part-of-sociology",
@@ -3040,9 +3041,11 @@
     "target": "field:sociology",
     "relation": "part_of",
     "confidence": 0.75,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:lcc-outline"
+      "source:lcc-outline",
+      "source:britannica",
+      "source:wikipedia"
     ],
     "evidence_kind": "externally_sourced",
     "proposed_by": {
@@ -3050,7 +3053,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "LCC HV6001-7220.5 'Criminology' inside subclass HV under Class H — HV is in the same social-sciences family as HM Sociology, and HV6035-6197 includes 'Criminal anthropology' and 'criminal sociology' (captured 2026-06-11). [UNFETCHED]: Wikidata Q161733 desc; American Society of Criminology's sociology wing; criminology PhD programs in sociology departments."
+    "note": "LCC HV6001-7220.5 'Criminology' within Class H social sciences (Subclass HV 'Social pathology. Social and public welfare. Criminology', incl. HV6035-6197 criminal anthropology/criminal sociology — live-reproduced 2026-07-02 from lcco_h.pdf); Britannica: criminological research and teaching 'usually divided between departments of sociology or social administration, law faculties' (snapshot 2026-06-02); WP lead: criminology 'draws primarily upon the research of sociologists'. Record-not-resolve: sources frame criminology as an interdisciplinary social/behavioural science rather than strictly sociology-contained — the membership is co-equal with law (cross-listing v1). Edge promotion policy v1 structural tier; supported."
   },
   {
     "id": "edge:critical-theory-part-of-philosophy",
@@ -3394,9 +3397,11 @@
     "target": "field:economics",
     "relation": "part_of",
     "confidence": 0.65,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:lcc-outline"
+      "source:lcc-outline",
+      "source:wikipedia",
+      "source:wikidata"
     ],
     "evidence_kind": "externally_sourced",
     "proposed_by": {
@@ -3404,7 +3409,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "LCC HB615-715 'Entrepreneurship. Risk and uncertainty. Property' inside subclass HB — the risk/uncertainty wing (captured 2026-06-11) is a partial fit for decision theory under uncertainty. [UNFETCHED]: Decision theory in economics graduate cores (doctoral micro sequences at major economics departments); Theory and Decision journal (Springer); Econometric Society decision-theoretic work; Wikidata Q177571 desc. Note: the JEL classification system is license-forbidden per citation-discipline rules and must not be used. || LCC HB615-715 provides a captured economics anchor via risk/uncertainty content; decision theory is a formal component of economics graduate training. This second membership was parked pending field:economics existence; that node now exists."
+    "note": "Live-verified 2026-07-02: WP lead states 'Decision theory or the theory of rational choice is a branch of probability, economics, and analytic philosophy'; Wikidata Q177571 P279 includes Q8134 (economics); LCC HB615-715 'Entrepreneurship. Risk and uncertainty' inside HB 'Economic theory. Demography' (live-reproduced from lcco_h.pdf). Clears the 2026-06-11 'partial fit' hold with direct claim-stating evidence. Co-equal cross-listing with the reviewed part_of→philosophy (the WP lead names both memberships, plus probability — a probability/statistics co-listing remains an open candidate). Edge promotion policy v1 structural tier; supported."
   },
   {
     "id": "edge:decision-theory-part-of-philosophy",
@@ -3810,10 +3815,11 @@
     "target": "field:human-geography",
     "relation": "part_of",
     "confidence": 0.85,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:lcc-outline",
-      "source:oecd-ford"
+      "source:oecd-ford",
+      "source:wikipedia",
+      "source:wikidata"
     ],
     "evidence_kind": "externally_sourced",
     "proposed_by": {
@@ -3821,7 +3827,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "OECD FORD 5.7 'Social and economic geography' — the division co-names the social/human and economic wings of geography (captured 2026-06-11); LCC GF1-900 'Human ecology. Anthropogeography' as the human-geography LCC anchor (captured 2026-06-11). [UNFETCHED] community evidence: AAG Economic Geography specialty group; Economic Geography journal's geography-department editorial base. || Geography-side membership of the §13 co-equal dual (see edge:economic-geography-part-of-economics): FORD 5.7's explicit co-naming is the captured classification grounding for filing economic geography with the human-geography family."
+    "note": "Live-verified 2026-07-02: WP lead states verbatim 'Economic geography is the subfield of human geography'; Wikidata Q187097 P279 subclass-of Q12831143 (human geography); OECD FORD 5.7 'Social and economic geography' (captured 2026-06-11). Co-equal cross-listing with the existing reviewed economic-geography→economics membership (cross-listing v1 — WP lead itself notes it 'can also be considered a subfield or method in economics'). Edge promotion policy v1 structural tier; supported."
   },
   {
     "id": "edge:economic-history-part-of-economics",
