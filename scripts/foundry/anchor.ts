@@ -100,7 +100,7 @@ async function requestSave(url: string): Promise<{ ok: boolean; status: number }
   }
 }
 
-/** Wikipedia revision permalink for /wiki/<title> URLs (any language edition). */
+/** MediaWiki revision permalink for /wiki/<title> URLs (Wikipedia + Wikidata). */
 async function wikiRevisionPermalink(url: string): Promise<string | null> {
   let parsed: URL;
   try {
@@ -108,7 +108,7 @@ async function wikiRevisionPermalink(url: string): Promise<string | null> {
   } catch {
     return null;
   }
-  if (!/(^|\.)wikipedia\.org$/.test(parsed.hostname)) return null;
+  if (!/(^|\.)(wikipedia|wikidata)\.org$/.test(parsed.hostname)) return null;
   const match = /^\/wiki\/(.+)$/.exec(parsed.pathname);
   if (!match?.[1]) return null;
   const title = decodeURIComponent(match[1]);
@@ -149,7 +149,7 @@ async function main(): Promise<void> {
     for (const s of v.sources) {
       const existing = workByUrl.get(s.url) ?? { url: s.url, needsSnapshot: false, needsRevision: false };
       if (!s.snapshot_url) existing.needsSnapshot = true;
-      if (!s.revision_permalink && /(^|\.)wikipedia\.org/.test(new URL(s.url).hostname)) {
+      if (!s.revision_permalink && /(^|\.)(wikipedia|wikidata)\.org$/.test(new URL(s.url).hostname)) {
         existing.needsRevision = true;
       }
       if (existing.needsSnapshot || existing.needsRevision) workByUrl.set(s.url, existing);

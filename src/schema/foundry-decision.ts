@@ -158,6 +158,18 @@ export const promotionOpSchema = z
     set_external_ids: z.record(z.string(), z.string()).optional(),
     /** Flip node indexability (nodes only; validate-data enforces the earned rule). */
     set_indexable: z.boolean().optional(),
+    /**
+     * Replace the item's `note` — promoted edges carry the grounding narrative
+     * + permanence anchors inline (established (68)-wave pattern), replacing
+     * the pre-promotion hold note.
+     */
+    set_note: z.string().optional(),
+    /**
+     * Replace the edge's `evidence` (edges only) — promotion often upgrades
+     * the evidence set to the sources QC actually grounded on. IDs must exist
+     * in the post-apply source registry.
+     */
+    set_evidence: z.array(idSchema).min(1).optional(),
     note: z.string().optional(),
   })
   .strict();

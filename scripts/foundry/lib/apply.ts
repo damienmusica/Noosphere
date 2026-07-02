@@ -118,6 +118,17 @@ export function buildPostState(decision: FoundryDecision, current: CurrentData):
       continue;
     }
     item.status = p.to;
+    if (p.set_note !== undefined) item.note = p.set_note;
+    if (p.set_evidence !== undefined) {
+      if (p.kind !== "edge") {
+        fail(`promotions: ${p.kind} ${p.id} cannot take set_evidence (edges only)`);
+      } else {
+        for (const ev of p.set_evidence) {
+          if (!sourceIds.has(ev)) fail(`promotions: edge ${p.id} set_evidence cites unknown source ${ev}`);
+        }
+        item.evidence = p.set_evidence;
+      }
+    }
     if (p.kind === "node") {
       if (p.set_external_ids) {
         const existing = { ...(item.external_ids as Record<string, string> | undefined) };

@@ -63,8 +63,11 @@ if (proposedNodes.length > 0) {
   console.log("");
 }
 
+const ledgeredIds = new Set(held.map((h) => h.id).filter(Boolean));
 const endpointBlocked: string[] = [];
 const disputedHeld: string[] = [];
+const policyBlocked: string[] = [];
+const ledgered: string[] = [];
 const recheckCandidates: string[] = [];
 for (const e of proposedEdges) {
   const source = nodesById.get(String(e.source));
@@ -74,6 +77,12 @@ for (const e of proposedEdges) {
     endpointBlocked.push(`${e.id} (waiting on ${blockers.map((n) => (n ? `${n.id}:${n.status}` : "missing")).join(", ")})`);
   } else if (e.disputed) {
     disputedHeld.push(`${e.id} (clause-6 v2 hold — needs a new supported verdict)`);
+  } else if (ledgeredIds.has(String(e.id))) {
+    ledgered.push(`${e.id} (see held-ledger entry above)`);
+  } else if (e.evidence_kind !== "externally_sourced") {
+    // Editorial-evidenced (or evidence-kind-less legacy) edges stop at proposed
+    // by edge promotion policy v1 — re-verifying them cannot promote them.
+    policyBlocked.push(`${e.id} (${e.relation}, evidence_kind=${e.evidence_kind ?? "none"})`);
   } else {
     recheckCandidates.push(`${e.id} (${e.relation})`);
   }
@@ -88,12 +97,26 @@ if (disputedHeld.length > 0) {
   for (const s of disputedHeld) console.log(`  - ${s}`);
   console.log("");
 }
+if (policyBlocked.length > 0) {
+  console.log("Policy-blocked edges (editorial/legacy evidence — stop at proposed until an editorial ladder opens):");
+  for (const s of policyBlocked) console.log(`  - ${s}`);
+  console.log("");
+}
+if (ledgered.length > 0) {
+  console.log("Ledgered holds (blocking condition recorded in foundry/held.json — not naive candidates):");
+  for (const s of ledgered) console.log(`  - ${s}`);
+  console.log("");
+}
 if (recheckCandidates.length > 0) {
   console.log("★ RECHECK CANDIDATES — no structural blocker detected; endpoints all");
   console.log("  reviewed. These were verdict-blocked (NEI) or never re-run:");
   for (const s of recheckCandidates) console.log(`  - ${s}`);
   console.log("");
 }
-if (endpointBlocked.length + disputedHeld.length + recheckCandidates.length === 0 && proposedNodes.length === 0) {
+if (
+  endpointBlocked.length + disputedHeld.length + policyBlocked.length +
+    ledgered.length + recheckCandidates.length === 0 &&
+  proposedNodes.length === 0
+) {
   console.log("Nothing held anywhere. ✓");
 }
