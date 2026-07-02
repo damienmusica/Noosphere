@@ -1,0 +1,443 @@
+{
+  "batch_id": "a-relations-wave4-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-02"
+  },
+  "scope_note": "Cross-cutting (a)-relation edges only (influenced/critiques; applies_to reserved for the strictly-more-accurate case). No new nodes proposed. All 16 real candidates + 2 unmarked rejection probes (see separate probes.md) verified against data/nodes.json (both endpoints status:reviewed) and deduped against data/edges.json (all existing influenced/critiques/applies_to/founded_or_formalized/canonical_work/formalizes edges enumerated before drafting). Continues sessions #49-50 (a-relations-wave3-v1) Stage-3 axis-2 densification.",
+  "candidates": [
+    {
+      "candidate_id": "B1",
+      "source": "person:alan-turing",
+      "target": "subfield:philosophy-of-mind",
+      "relation": "influenced",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"The Turing Test\"",
+          "claim_anchor": "Turing's 1950 paper 'Computing Machinery and Intelligence' and its imitation-game proposal became a central reference point in philosophy of mind debates over machine intelligence, functionalism, and what it would take for a system to think.",
+          "url": "https://plato.stanford.edu/entries/turing-test/"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Functionalism\"",
+          "claim_anchor": "Turing's work on computation and the Turing-machine model of mind is standardly cited as a key historical input into the rise of functionalist theories of mind in the mid-to-late 20th century.",
+          "url": "https://plato.stanford.edu/entries/functionalism/"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Turing's 1936-1950 work chronologically precedes the functionalism/philosophy-of-mind debates it shaped (Putnam's machine functionalism explicitly builds on the Turing-machine model); a well-documented formal_sciences -> philosophy cross-domain link not yet in the graph.",
+      "uncertainty": "The claim is precise for functionalism specifically but the target field:philosophy-of-mind is broader than functionalism alone; QC should confirm the SEP pages verbatim-support a general 'influenced philosophy of mind' framing rather than only the narrower functionalism sub-debate.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B2",
+      "source": "person:kurt-godel",
+      "target": "subfield:philosophy-of-mathematics",
+      "relation": "influenced",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Kurt Godel\"",
+          "claim_anchor": "Godel's 1931 incompleteness theorems reshaped philosophy of mathematics, undermining Hilbert's formalist program and fueling ongoing debate over mathematical Platonism, the nature of mathematical truth, and the limits of formal systems.",
+          "url": "https://plato.stanford.edu/entries/goedel/"
+        },
+        {
+          "citation": "Wikipedia, \"Godel's incompleteness theorems\"",
+          "claim_anchor": "The incompleteness theorems have had a lasting influence on the philosophy of mathematics, bearing on questions of formalism, Platonism, and the foundations of mathematics.",
+          "url": "https://en.wikipedia.org/wiki/G%C3%B6del%27s_incompleteness_theorems"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Godel (1931) is chronologically prior to and the direct cause of subsequent philosophy-of-mathematics debate over formalism/Platonism; a canonical, well-documented influence link between a founding formal-sciences figure and a philosophy subfield, currently absent from the graph.",
+      "uncertainty": "Godel already has other edges in the graph (e.g. to Hilbert); this is a distinct claim (impact on a philosophy subfield rather than on a person) so should not be a duplicate, but QC should confirm no existing Godel->philosophy-of-mathematics edge was missed.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "B3",
+      "source": "person:john-von-neumann",
+      "target": "subfield:computer-systems",
+      "relation": "influenced",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Von Neumann architecture\"",
+          "claim_anchor": "The von Neumann architecture, describing a stored-program computer with a single memory for both instructions and data, was outlined in von Neumann's 1945 'First Draft of a Report on the EDVAC' and became the dominant design template for computer systems.",
+          "url": "https://en.wikipedia.org/wiki/Von_Neumann_architecture"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, \"John von Neumann\"",
+          "claim_anchor": "Von Neumann's design concepts for stored-program computers, developed in the mid-1940s, became foundational to the architecture of virtually all subsequent general-purpose computers.",
+          "url": "https://www.britannica.com/biography/John-von-Neumann"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Von Neumann's 1945 EDVAC report predates and directly founds the dominant computer-systems architecture paradigm; a standard, textbook-level, well-documented cross-domain (mathematics-trained figure -> computer-systems subfield) influence link not yet in the graph (distinct from his already-modeled founded_or_formalized game-theory edge).",
+      "uncertainty": "Some historians debate the precise attribution of the architecture concept between von Neumann and the broader Moore School/Eckert-Mauchly team; the 'von Neumann architecture' naming is itself part of this historiographical dispute, though von Neumann's authorship of the report itself is undisputed.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B4",
+      "source": "person:noam-chomsky",
+      "target": "subfield:philosophy-of-mind",
+      "relation": "critiques",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Chomsky's review of Skinner's Verbal Behavior\"",
+          "claim_anchor": "Chomsky's 1959 review of B.F. Skinner's 'Verbal Behavior' argued that behaviorist accounts could not explain human language acquisition, a critique widely credited with undermining behaviorism as a dominant paradigm and contributing to the cognitive revolution in philosophy of mind and psychology.",
+          "url": "https://en.wikipedia.org/wiki/Verbal_Behavior"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Behaviorism\"",
+          "claim_anchor": "Chomsky's review is standardly cited in histories of philosophy of mind as a central episode in the decline of behaviorism and the rise of cognitivist and representational theories of mind.",
+          "url": "https://plato.stanford.edu/entries/behaviorism/"
+        }
+      ],
+      "disputed": false,
+      "note": "Living-person endpoint: source is_living_person:true (person:noam-chomsky). Living-person policy floor applies at QC (resolver-verified identity anchor + >=2 independent live claim-stating sources + conservative wording).",
+      "rationale": "Chomsky's 1959 review predates and is a direct causal input into the decline of behaviorist philosophy of mind; correct direction, a well-documented linguistics-to-philosophy critique currently missing from the graph, diversifying the thin critiques roster (currently 6).",
+      "uncertainty": "The critique target is technically behaviorism as a psychological/philosophical position rather than 'philosophy of mind' as a whole field; QC should judge whether subfield:philosophy-of-mind is the right-grained target or whether a narrower behaviorism-specific node would be more precise.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B5",
+      "source": "person:bertrand-russell",
+      "target": "field:computer-science",
+      "relation": "influenced",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Principia Mathematica\"",
+          "claim_anchor": "Russell and Whitehead's type theory, developed in Principia Mathematica (1910-1913) to resolve the logical paradoxes, later influenced type systems in programming languages and formal methods in computer science.",
+          "url": "https://plato.stanford.edu/entries/principia-mathematica/"
+        },
+        {
+          "citation": "Wikipedia, \"Type theory\"",
+          "claim_anchor": "Russell's theory of types, originally developed to avoid Russell's paradox in set theory, became a foundation for type systems used in programming languages and proof assistants in computer science.",
+          "url": "https://en.wikipedia.org/wiki/Type_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Russell's type theory (1908-1913) chronologically precedes and is the acknowledged historical root of type theory in programming languages/formal methods, decades before computer science existed as a discipline; a logic-to-computing cross-domain link.",
+      "uncertainty": "The influence chain is real but indirect and mediated by many decades and intermediate figures (Church, Curry-Howard correspondence, Martin-Lof); field:computer-science as a whole is a broad target versus a narrower programming-languages or type-theory node, and QC should weigh whether the claim is too diffuse at this grain.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B6",
+      "source": "person:edmund-husserl",
+      "target": "subfield:philosophy-of-cognitive-science",
+      "relation": "influenced",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Phenomenological Approaches to Ethics and Information Technology\" background / \"Phenomenology\"",
+          "claim_anchor": "Husserlian phenomenology's analysis of intentionality and lived experience is a recognized historical antecedent of embodied, enactive, and extended approaches within philosophy of cognitive science, particularly via Merleau-Ponty's uptake of Husserl and its later reception by researchers such as Varela, Thompson, and Rosch.",
+          "url": "https://plato.stanford.edu/entries/phenomenology/"
+        },
+        {
+          "citation": "Internet Encyclopedia of Philosophy, \"Embodied Cognition\"",
+          "claim_anchor": "Embodied and enactive approaches to cognitive science explicitly draw on the phenomenological tradition founded by Husserl and developed by Merleau-Ponty, treating lived bodily experience as central to cognition.",
+          "url": "https://iep.utm.edu/embodcog/"
+        }
+      ],
+      "disputed": false,
+      "note": "Touches subfield:philosophy-of-cognitive-science per the order's guidance to include only with well-attested sourcing; the embodied/enactive-cognition lineage from Husserl via Merleau-Ponty is a standard textbook account, not a forced inclusion.",
+      "rationale": "Husserl (d. 1938) predates and is the acknowledged root (via Merleau-Ponty) of the embodied/enactive cognitive-science tradition (Varela et al., 1990s); a genuine philosophy -> philosophy-of-cognitive-science link distinct from the already-existing broader phenomenology -> psychology edge (wave3 A5), since this targets the specifically philosophical subfield rather than psychology as a discipline.",
+      "uncertainty": "Overlaps thematically with the existing subfield:phenomenology -> field:psychology edge; QC must judge whether this is a genuinely distinct, separately-citable contribution (philosophy-of-cognitive-science as a philosophical subfield, via Merleau-Ponty/enactivism specifically) or too close a near-duplicate given the shared Husserl-phenomenology root — flagged honestly as a plausible overlap risk given the wave3 Wiener/cognitive-psychology near-duplicate lesson.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B7",
+      "source": "subfield:existentialism",
+      "target": "field:literary-studies",
+      "relation": "influenced",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Existentialism\"",
+          "claim_anchor": "Existentialist philosophy, especially through Sartre and Camus, was expressed as much in literary and dramatic works as in philosophical treatises, and directly shaped 20th-century literary movements including the Theatre of the Absurd and existentialist fiction.",
+          "url": "https://plato.stanford.edu/entries/existentialism/"
+        },
+        {
+          "citation": "Wikipedia, \"Existentialism\" (Literature section)",
+          "claim_anchor": "Existentialist themes of absurdity, freedom, and authenticity, articulated by Sartre, Camus, and Kafka, profoundly influenced 20th-century literature and literary criticism, giving rise to sustained scholarly study of existentialist literature.",
+          "url": "https://en.wikipedia.org/wiki/Existentialism"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Existentialism as a philosophical movement (1930s-1960s, Sartre/Camus) is chronologically and causally prior to its uptake as a subject and mode of literary-critical analysis; a philosophy -> literary-studies cross-domain link, complementing but not duplicating the existing phenomenology -> existentialism edge (different pair, different domains).",
+      "uncertainty": "Sartre and Camus were themselves both philosophers and literary authors, so the 'influence' framing risks blurring self-expression with cross-field influence; a stricter reading might prefer a narrower target such as a literary-theory or literary-criticism subfield rather than the field as a whole.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B8",
+      "source": "person:claude-levi-strauss",
+      "target": "subfield:literary-theory",
+      "relation": "influenced",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Structuralism\"",
+          "claim_anchor": "Levi-Strauss's structural anthropology, applying Saussurean linguistic structuralism to myth and kinship, was a central model for the structuralist literary theory and criticism that emerged in the 1960s-70s (e.g. Barthes, Genette).",
+          "url": "https://plato.stanford.edu/entries/structuralism/"
+        },
+        {
+          "citation": "Wikipedia, \"Structuralism\" (Literary theory section)",
+          "claim_anchor": "Levi-Strauss's structural analysis of myths directly inspired structuralist literary theorists such as Roland Barthes and Gerard Genette, who applied similar structural methods to narrative and literary texts.",
+          "url": "https://en.wikipedia.org/wiki/Structuralism"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Levi-Strauss's structural anthropology (1950s-60s) predates and is the acknowledged model for structuralist literary theory (Barthes, Genette, 1960s-70s); an anthropology -> literary-theory cross-domain link, distinct from the existing Levi-Strauss edges (Saussure->Levi-Strauss, Jakobson->Levi-Strauss, Levi-Strauss->structural-anthropology) which are all inbound or same-field.",
+      "uncertainty": "The influence runs through an intermediate step (Barthes/Genette adapting the method), so this is a one-hop-removed claim rather than Levi-Strauss writing literary theory himself; QC should confirm the sources verbatim support 'influenced literary theory' rather than only 'influenced Barthes specifically'.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B9",
+      "source": "person:antoine-lavoisier",
+      "target": "field:physics",
+      "relation": "influenced",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Antoine Lavoisier\"",
+          "claim_anchor": "Lavoisier's law of conservation of mass, established through quantitative experiments in the 1770s-80s, became a foundational principle adopted into physics as well as chemistry, underpinning later thermodynamic reasoning about closed systems.",
+          "url": "https://en.wikipedia.org/wiki/Antoine_Lavoisier"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, \"Conservation of mass\"",
+          "claim_anchor": "The law of conservation of mass, first rigorously demonstrated by Lavoisier, is a cornerstone principle shared across physics and chemistry and a precursor to 19th-century conservation-law physics including early thermodynamics.",
+          "url": "https://www.britannica.com/science/conservation-of-mass"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Lavoisier's conservation-of-mass work (1770s-80s) predates 19th-century conservation-law physics/thermodynamics; a genuine chemistry -> physics cross-domain link, distinct from his already-modeled founded_or_formalized edge to field:chemistry (a different, cross-domain claim rather than a restatement of his own field-founding).",
+      "uncertainty": "The claim is broad ('conservation of mass' underpinning 'physics') rather than a single sharply citable episode; a stricter QC read might want a narrower target (e.g. a thermodynamics subfield, which does not currently exist as its own node) rather than field:physics as a whole.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B10",
+      "source": "person:henri-poincare",
+      "target": "subfield:dynamical-systems",
+      "relation": "influenced",
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Chaos\"",
+          "claim_anchor": "Poincare's work on the three-body problem in the 1890s revealed sensitive dependence on initial conditions and is standardly credited as founding the qualitative, geometric study of dynamical systems that later developed into chaos theory.",
+          "url": "https://plato.stanford.edu/entries/chaos/"
+        },
+        {
+          "citation": "Wikipedia, \"Henri Poincare\"",
+          "claim_anchor": "Poincare's qualitative approach to differential equations and his discovery of sensitive dependence on initial conditions in the three-body problem laid the foundations of modern dynamical systems theory and chaos theory.",
+          "url": "https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Poincare's three-body-problem work (1890s) chronologically precedes and directly founds the qualitative/dynamical-systems approach later formalized as a subfield; this could arguably be founded_or_formalized rather than influenced (a genuine relation-choice judgment call, flagged honestly), but influenced is chosen since the modern dynamical-systems subfield as institutionally organized postdates Poincare by decades and involved many later contributors (Birkhoff, Smale).",
+      "uncertainty": "Relation-choice ambiguity: some historical accounts would credit Poincare as the founder of dynamical systems (favoring founded_or_formalized) rather than merely an influence; QC should judge which relation is more accurate, similar to the wave3 Marx/Peirce relation-choice flags.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B11",
+      "source": "person:jean-piaget",
+      "target": "subfield:philosophy-of-mind",
+      "relation": "influenced",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Jean Piaget\" (background in \"Innateness and Cognitive Development\")",
+          "claim_anchor": "Piaget's genetic epistemology and constructivist account of cognitive development were taken up in philosophy of mind debates over nativism versus constructivism, notably in Piaget's own published exchange with Chomsky (the 1975 Royaumont debate).",
+          "url": "https://plato.stanford.edu/entries/innateness-cognition/"
+        },
+        {
+          "citation": "Wikipedia, \"Piaget-Chomsky debates\"",
+          "claim_anchor": "The 1975 debate between Piaget and Chomsky at the Abbaye de Royaumont on the origins of knowledge became a landmark reference point in philosophy of mind and cognitive science discussions of nativism versus constructivism.",
+          "url": "https://en.wikipedia.org/wiki/Piaget%E2%80%93Chomsky_debates"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Piaget's genetic epistemology (1920s-70s) and the 1975 Royaumont debate predate and directly feed into ongoing nativism/constructivism debates in philosophy of mind; a developmental-psychology -> philosophy cross-domain link not yet in the graph.",
+      "uncertainty": "This is a narrower claim (Piaget's specific contribution to the nativism/constructivism debate) than 'influenced philosophy of mind' broadly; QC should confirm the target grain (subfield:philosophy-of-mind vs. a narrower node) is appropriate and that the Royaumont-debate framing is verbatim-supported rather than a paraphrase overreach.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B12",
+      "source": "person:amos-tversky",
+      "target": "field:economics",
+      "relation": "critiques",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Rational Choice, Bounded Rationality, and Microfoundations\" background",
+          "claim_anchor": "Kahneman and Tversky's prospect theory and heuristics-and-biases research programme (1970s-80s) directly challenged the expected-utility-maximizing rational-agent model that had been standard in neoclassical economics, documenting systematic deviations from rational choice.",
+          "url": "https://plato.stanford.edu/entries/rationality-bounded/"
+        },
+        {
+          "citation": "Wikipedia, \"Prospect theory\"",
+          "claim_anchor": "Prospect theory, developed by Kahneman and Tversky, was explicitly formulated as a descriptive alternative to expected utility theory, challenging its normative dominance in economics and giving rise to behavioral economics.",
+          "url": "https://en.wikipedia.org/wiki/Prospect_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "Companion to the already-existing Kahneman/Tversky founded_or_formalized -> subfield:behavioral-economics edges; this is a distinct claim (a critique of mainstream economics' rational-agent assumption) rather than a restatement of the founding claim, chosen as person:amos-tversky (rather than duplicating on Kahneman, who already has 2 edges) to spread roster coverage.",
+      "rationale": "Tversky and Kahneman's prospect-theory critique (1979) is chronologically situated within and explicitly targeted at the neoclassical rational-choice paradigm; correct direction, well-documented, adds to the thin critiques roster (currently 6) with a psychology -> economics cross-domain critique distinct from the person-to-person critiques already present.",
+      "uncertainty": "This is jointly Kahneman-and-Tversky work; attributing it to Tversky alone (rather than as a joint edge, which the schema does not support with two sources) is a simplification — QC should decide whether Tversky alone is an adequate proxy or whether a parallel Kahneman edge is also warranted (risk of implying sole authorship).",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B13",
+      "source": "subfield:psychoanalysis",
+      "target": "subfield:film-studies",
+      "relation": "influenced",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "citation": "Internet Encyclopedia of Philosophy, \"Psychoanalytic Film Theory\" background in \"Sigmund Freud\"",
+          "claim_anchor": "Psychoanalytic concepts, especially as reinterpreted through Lacan, became central to 1970s-80s film theory (e.g. Laura Mulvey's 'Visual Pleasure and Narrative Cinema'), analyzing spectatorship, identification, and desire in cinema.",
+          "url": "https://iep.utm.edu/freud/"
+        },
+        {
+          "citation": "Wikipedia, \"Psychoanalytic film theory\"",
+          "claim_anchor": "Psychoanalytic film theory, drawing on Freudian and Lacanian psychoanalysis, became a major paradigm in academic film studies from the 1970s onward, exemplified by Laura Mulvey's influential application of psychoanalytic concepts to cinematic spectatorship.",
+          "url": "https://en.wikipedia.org/wiki/Psychoanalytic_film_theory"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Psychoanalysis (Freud, early 20th c.; Lacan, mid-20th c.) predates 1970s psychoanalytic film theory; a distinct cognitive_sciences -> arts_and_design/humanities cross-domain link from the existing Freud -> literary-studies edge (wave3 A14), since this targets film studies specifically via the Lacanian mediation rather than Freud's own direct literary writings.",
+      "uncertainty": "The most immediate influence chain runs through Lacan (not modeled as a node in this graph) rather than Freud directly, so subfield:psychoanalysis is used as the source to capture the tradition rather than overclaiming a direct Freud-to-film-studies link; QC should confirm this framing is accurate and not a Lacan-shaped gap being papered over.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B14",
+      "source": "person:carl-friedrich-gauss",
+      "target": "subfield:geodesy",
+      "relation": "influenced",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Carl Friedrich Gauss\" (Geodesy section)",
+          "claim_anchor": "Gauss directed the geodetic survey of the Kingdom of Hanover in the 1820s-30s, developing the method of least squares and Gaussian curvature theory for the earth's surface, contributing foundational mathematical methods to geodesy.",
+          "url": "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, \"Carl Friedrich Gauss\"",
+          "claim_anchor": "Gauss's geodetic survey work led him to develop differential geometry of surfaces (Theorema Egregium) and least-squares estimation, both of which became foundational mathematical tools for the discipline of geodesy.",
+          "url": "https://www.britannica.com/biography/Carl-Friedrich-Gauss"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Gauss's geodetic survey work (1820s-30s) directly precedes and mathematically founds modern geodesy's core techniques (least squares, curvature); a mathematics -> earth-sciences cross-domain link, distinct from Gauss's existing founded_or_formalized edge to subfield:number-theory (a different subfield, non-overlapping claim).",
+      "uncertainty": "This could arguably be founded_or_formalized rather than influenced given how foundational and hands-on Gauss's contribution was (directing the actual survey); flagged as a genuine relation-choice judgment call for QC, similar to the Poincare/dynamical-systems item (B10).",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B15",
+      "source": "person:friedrich-nietzsche",
+      "target": "subfield:critical-theory",
+      "relation": "influenced",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Critical Theory\"",
+          "claim_anchor": "Nietzsche's genealogical method and critique of morality, alongside Marx and Freud, are standardly identified (following Paul Ricoeur's 'masters of suspicion' framing) as key precursors to the Frankfurt School's critical theory, particularly its critique of ideology and instrumental reason.",
+          "url": "https://plato.stanford.edu/entries/critical-theory/"
+        },
+        {
+          "citation": "Wikipedia, \"Frankfurt School\"",
+          "claim_anchor": "Frankfurt School critical theorists such as Adorno and Horkheimer drew on Nietzsche's critique of Enlightenment rationality and morality in developing their critique of instrumental reason in works such as 'Dialectic of Enlightenment'.",
+          "url": "https://en.wikipedia.org/wiki/Frankfurt_School"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Nietzsche (d. 1900) predates the Frankfurt School's critical theory (1930s-40s) which explicitly drew on his genealogical critique of reason and morality; adds a distinct target (critical-theory) for a person already well-connected in the graph (existentialism, continental-philosophy, Schopenhauer, Freud), diversifying beyond his existing edges rather than duplicating them.",
+      "uncertainty": "Nietzsche's influence on critical theory is real but somewhat diffuse and mediated through the 'masters of suspicion' framing (a secondary characterization by Ricoeur) rather than a single direct citable statement; QC should verify the SEP page verbatim supports this specific lineage claim.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B16",
+      "source": "subfield:cybernetics",
+      "target": "subfield:systems-engineering",
+      "relation": "influenced",
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Systems engineering\" (History section)",
+          "claim_anchor": "Systems engineering as a discipline drew on cybernetics' concepts of feedback, control, and self-regulating systems, developed by Norbert Wiener and collaborators in the 1940s, in formalizing methods for managing complex engineered systems.",
+          "url": "https://en.wikipedia.org/wiki/Systems_engineering"
+        },
+        {
+          "citation": "Wikipedia, \"Cybernetics\"",
+          "claim_anchor": "Cybernetics' feedback-control concepts influenced multiple engineering and management disciplines in the mid-20th century, including the emergence of systems engineering as a formal discipline for managing complex technical systems.",
+          "url": "https://en.wikipedia.org/wiki/Cybernetics"
+        }
+      ],
+      "disputed": false,
+      "note": "",
+      "rationale": "Cybernetics (Wiener, 1948) chronologically precedes the formal emergence of systems engineering as a named discipline (1950s-60s, e.g. at Bell Labs and in aerospace/defense projects); a formal_sciences -> engineering_and_technology cross-domain link, distinct from the already-existing cybernetics -> artificial-intelligence edge (wave3 A9, different target domain and claim).",
+      "uncertainty": "The Wikipedia 'Systems engineering' history section's exact framing of the cybernetics connection is recalled rather than freshly fetched; QC should verify the history section verbatim credits cybernetics rather than crediting only operations research/aerospace program management as the primary origin, which would weaken this specific claim_anchor.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B17",
+      "source": "person:charles-darwin",
+      "target": "field:law",
+      "relation": "influenced",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Social Darwinism\"",
+          "claim_anchor": "Social Darwinism, a set of loosely Darwin-inspired social theories applying 'survival of the fittest' rhetoric to society, was invoked by some late-19th/early-20th-century legal and political thinkers, but is widely regarded by historians as a distortion of Darwin's own biological theory rather than an application he endorsed or a direct contribution to legal theory.",
+          "url": "https://en.wikipedia.org/wiki/Social_Darwinism"
+        },
+        {
+          "citation": "Wikipedia, \"Charles Darwin\"",
+          "claim_anchor": "Darwin's own work was on biological evolution by natural selection; he did not write on jurisprudence or legal theory, and his name became attached to legal/social movements (e.g. eugenics-influenced law) only through later, contested extensions of his ideas by others.",
+          "url": "https://en.wikipedia.org/wiki/Charles_Darwin"
+        }
+      ],
+      "disputed": false,
+      "note": "REJECTION PROBE (unmarked in this array; see probes.md). Pairs a real figure with a real but contested and indirect later movement (Social Darwinism) to construct a plausible-sounding but unsupported direct 'Darwin influenced law' edge; Darwin himself made no contribution to legal theory, and Social Darwinism's application within law (e.g. Lochner-era jurisprudence, eugenics statutes) is a mediated, contested, third-party extension often explicitly disclaimed as inconsistent with Darwin's actual biology. Expected verdict: reject.",
+      "rationale": "Constructed to test whether QC catches an anachronistic/misattributed causal chain: a genuine historical figure (Darwin) linked via a real but loosely-associated intermediate movement (Social Darwinism) to a field (law) he never engaged with, rather than a documented direct influence.",
+      "uncertainty": "The trap is that 'Social Darwinism' is a real, checkable term and some legal historians do discuss its rhetorical use in early-20th-century jurisprudence, which could tempt a generous reader into accepting the edge; the correct read is that this is Darwin's name being borrowed by others, not Darwin influencing law, and reputable sources are explicit that Social Darwinism misrepresents Darwin's own views.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "B18",
+      "source": "person:georg-cantor",
+      "target": "subfield:psychoanalysis",
+      "relation": "influenced",
+      "confidence": 0.15,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Georg Cantor\"",
+          "claim_anchor": "Cantor suffered from recurring mental illness (likely bipolar disorder) later in life, and some later commentators have speculatively psychoanalyzed his mathematical obsession with infinity in relation to his mental state, but Cantor's own set-theoretic work had no documented engagement with or influence on the field of psychoanalysis, which was founded independently by Freud starting in the 1890s.",
+          "url": "https://en.wikipedia.org/wiki/Georg_Cantor"
+        },
+        {
+          "citation": "Wikipedia, \"Sigmund Freud\"",
+          "claim_anchor": "Freud's psychoanalytic theory developed out of his clinical work in neurology and psychiatry in Vienna in the 1890s, with no documented connection to or citation of Cantor's set theory or mathematical work on transfinite numbers.",
+          "url": "https://en.wikipedia.org/wiki/Sigmund_Freud"
+        }
+      ],
+      "disputed": false,
+      "note": "REJECTION PROBE (unmarked in this array; see probes.md). Constructs a superficially interesting biographical coincidence (Cantor's mental illness, later psychobiographical speculation about him) into a fabricated disciplinary influence claim (mathematics -> psychoanalysis) with no documented causal chain; Freud's psychoanalysis has an independent origin in clinical neurology/psychiatry. Expected verdict: reject.",
+      "rationale": "Tests whether QC catches a construct-without-documented-causal-chain probe: two real, contemporaneous figures (Cantor d.1918, Freud d.1939) sharing a thematic proximity (mental illness, the unconscious/infinite as topics) but with no historical record of Cantor's mathematics influencing Freud's theory or the field of psychoanalysis.",
+      "uncertainty": "Both are real historical figures who were roughly contemporaneous, which gives superficial plausibility; the actual sources describe only speculative later psychobiography of Cantor himself, not a documented Cantor-to-psychoanalysis influence chain, and Freud's own intellectual formation is independently and thoroughly documented as arising from clinical neurology/psychiatry (Charcot, Breuer) rather than mathematics.",
+      "ambiguous": true
+    }
+  ]
+}

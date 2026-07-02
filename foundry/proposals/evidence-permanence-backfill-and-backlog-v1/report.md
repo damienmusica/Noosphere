@@ -219,33 +219,41 @@ One row per reviewed edge; anchor = the revision of each grounding article live 
 | `william-labov-founded-sociolinguistics` | [William Labov @1356581526](https://en.wikipedia.org/w/index.php?title=William_Labov&oldid=1356581526)<br>[Sociolinguistics @1361106073](https://en.wikipedia.org/w/index.php?title=Sociolinguistics&oldid=1361106073) |
 | `william-morris-davis-founded-geomorphology` | [Geomorphology @1361867766](https://en.wikipedia.org/w/index.php?title=Geomorphology&oldid=1361867766)<br>[William Morris Davis @1331278428](https://en.wikipedia.org/w/index.php?title=William_Morris_Davis&oldid=1331278428) |
 
-### A.2 SPN-pending (non-Wikipedia-primary or parser-miss) — honest gaps
+### A.2 Non-Wikipedia-primary and parser-miss — SPN sweep executed (session #51, 2026-07-02)
 
-Recorded, never silently dropped (§8). These cite established scholarly reference works (SEP/MacTutor/IEP/EoM/nLab) with stable URLs; a future SPN sweep will snapshot them. Most are 2026-06-19 `formalizes`/`founded_or_formalized` and philosophy `(a)`-edges.
+The 27 `[SPN-PENDING]` gaps recorded at backfill time were swept 2026-07-02 (CPO surface-item ②
+resolved). Anchors below: Wayback snapshots (fresh Save Page Now, or an existing snapshot for
+bot-blocked domains) for the non-wiki scholarly refs; native oldid revision permalinks for the
+parser-miss edges. **5 SPN-FAILED** are recorded honestly (§8 — never silently dropped): all are
+bot-blocked domains (SEP `analytic-philosophy` / `logic-classical` / `probability-interpret` ·2 ·
+Wiley) that also returned no existing snapshot at sweep time; **every one of those edges retains a
+second, successfully-anchored source**, so no edge is left without a permanence anchor. Sweep
+totals: 33 fresh + 5 existing snapshots anchored, 5 SPN-FAILED across the 22 non-wiki edges; 5/5
+parser-miss resolved to oldid permalinks.
 
-**SEP/MacTutor/IEP/EoM/nLab primary (22):**
-- `alan-turing-founded-computability-theory` `[SPN-PENDING]`
-- `analytic-philosophy-critiques-continental-philosophy` `[SPN-PENDING]`
-- `ancient-philosophy-influenced-medieval-philosophy` `[SPN-PENDING]`
-- `andrey-kolmogorov-founded-probability-theory` `[SPN-PENDING]`
-- `arthur-schopenhauer-influenced-aesthetics` `[SPN-PENDING]`
-- `arthur-schopenhauer-influenced-friedrich-nietzsche` `[SPN-PENDING]`
-- `arthur-schopenhauer-influenced-sigmund-freud` `[SPN-PENDING]`
-- `category-theory-formalizes-mathematics` `[SPN-PENDING]`
-- `claude-shannon-founded-information-theory` `[SPN-PENDING]`
-- `david-hilbert-founded-proof-theory` `[SPN-PENDING]`
-- `experimental-philosophy-critiques-analytic-philosophy` `[SPN-PENDING]`
-- `feminist-philosophy-critiques-epistemology` `[SPN-PENDING]`
-- `george-boole-founded-mathematical-logic` `[SPN-PENDING]`
-- `gottlob-frege-founded-mathematical-logic` `[SPN-PENDING]`
-- `john-nash-founded-game-theory` `[SPN-PENDING]`
-- `john-von-neumann-founded-game-theory` `[SPN-PENDING]`
-- `ludwig-wittgenstein-influenced-logical-positivism` `[SPN-PENDING]`
-- `mathematical-logic-formalizes-mathematics` `[SPN-PENDING]`
-- `phenomenology-influenced-existentialism` `[SPN-PENDING]`
-- `pragmatism-influenced-philosophy-of-education` `[SPN-PENDING]`
-- `probability-theory-formalizes-random-variable` `[SPN-PENDING]`
-- `ronald-fisher-critiques-karl-pearson` `[SPN-PENDING]`
+**SEP/MacTutor/IEP/EoM/nLab primary (22) — SPN sweep executed 2026-07-02 (session #51):**
+- `alan-turing-founded-computability-theory` — [mathshistory.st-andrews.ac.uk…](https://web.archive.org/web/20260630062314/https://mathshistory.st-andrews.ac.uk/Biographies/Turing/) (SPN fresh); [plato.stanford.edu…](https://web.archive.org/web/20260701234135/https://plato.stanford.edu/entries/church-turing/) (SPN fresh)
+- `analytic-philosophy-critiques-continental-philosophy` — [global.oup.com…](https://web.archive.org/web/20230330230654/https://global.oup.com/academic/product/continental-philosophy-a-very-short-introduction-9780192853592) (existing snapshot); `[SPN-FAILED]` https://plato.stanford.edu/entries/analytic-philosophy/; [www.hup.harvard.edu…](https://web.archive.org/web/20260701235020/https://www.hup.harvard.edu/books/9780674644731) (SPN fresh)
+- `ancient-philosophy-influenced-medieval-philosophy` — [global.oup.com…](https://web.archive.org/web/20260701233540/https://global.oup.com/academic/product/medieval-philosophy-9780198752745?cc=us&lang=en&) (SPN fresh); [plato.stanford.edu…](https://web.archive.org/web/20260701234657/https://plato.stanford.edu/entries/medieval-philosophy/) (SPN fresh)
+- `andrey-kolmogorov-founded-probability-theory` — [encyclopediaofmath.org…](https://web.archive.org/web/20250817133504/https://encyclopediaofmath.org/wiki/Probability_theory) (existing snapshot); `[SPN-FAILED]` https://plato.stanford.edu/entries/probability-interpret/
+- `arthur-schopenhauer-influenced-aesthetics` — [plato.stanford.edu…](https://web.archive.org/web/20260701234811/https://plato.stanford.edu/entries/schopenhauer-aesthetics/) (SPN fresh)
+- `arthur-schopenhauer-influenced-friedrich-nietzsche` — [plato.stanford.edu…](https://web.archive.org/web/20260701234725/https://plato.stanford.edu/entries/nietzsche/) (SPN fresh); [plato.stanford.edu…](https://web.archive.org/web/20260701234811/https://plato.stanford.edu/entries/schopenhauer-aesthetics/) (SPN fresh)
+- `arthur-schopenhauer-influenced-sigmund-freud` — [plato.stanford.edu…](https://web.archive.org/web/20260701234811/https://plato.stanford.edu/entries/schopenhauer-aesthetics/) (SPN fresh)
+- `category-theory-formalizes-mathematics` — [ncatlab.org…](https://web.archive.org/web/20260618175357/https://ncatlab.org/nlab/show/foundation+of+mathematics) (SPN fresh); [plato.stanford.edu…](https://web.archive.org/web/20260701234107/https://plato.stanford.edu/entries/category-theory/) (SPN fresh)
+- `claude-shannon-founded-information-theory` — [mathshistory.st-andrews.ac.uk…](https://web.archive.org/web/20260630060902/https://mathshistory.st-andrews.ac.uk/Biographies/Shannon/) (SPN fresh); [plato.stanford.edu…](https://web.archive.org/web/20260701234543/https://plato.stanford.edu/entries/information/) (SPN fresh)
+- `david-hilbert-founded-proof-theory` — [encyclopediaofmath.org…](https://web.archive.org/web/20251211030811/https://encyclopediaofmath.org/wiki/Proof_theory) (existing snapshot); [plato.stanford.edu…](https://web.archive.org/web/20260701234516/https://plato.stanford.edu/entries/hilbert-program/) (SPN fresh)
+- `experimental-philosophy-critiques-analytic-philosophy` — [global.oup.com…](https://web.archive.org/web/20260701233444/https://global.oup.com/academic/product/experimental-philosophy-9780195323252?cc=us&lang=en&) (SPN fresh); [plato.stanford.edu…](https://web.archive.org/web/20260701234258/https://plato.stanford.edu/entries/experimental-philosophy/) (SPN fresh)
+- `feminist-philosophy-critiques-epistemology` — [global.oup.com…](https://web.archive.org/web/20260701233422/https://global.oup.com/academic/product/epistemic-injustice-9780198237907?cc=us&lang=en&) (SPN fresh); [plato.stanford.edu…](https://web.archive.org/web/20260701234326/https://plato.stanford.edu/entries/feminism-epistemology/) (SPN fresh); [www.cornellpress.cornell.edu…](https://web.archive.org/web/20260701234954/https://www.cornellpress.cornell.edu/book/9780801497599/what-can-she-know/) (SPN fresh)
+- `george-boole-founded-mathematical-logic` — [mathshistory.st-andrews.ac.uk…](https://web.archive.org/web/20260501160108/https://mathshistory.st-andrews.ac.uk/Biographies/Boole/) (existing snapshot); [plato.stanford.edu…](https://web.archive.org/web/20260701234040/https://plato.stanford.edu/entries/boolalg-math/) (SPN fresh)
+- `gottlob-frege-founded-mathematical-logic` — [mathshistory.st-andrews.ac.uk…](https://web.archive.org/web/20260701233714/https://mathshistory.st-andrews.ac.uk/Biographies/Frege/) (SPN fresh); [plato.stanford.edu…](https://web.archive.org/web/20260701234354/https://plato.stanford.edu/entries/frege-logic/) (SPN fresh)
+- `john-nash-founded-game-theory` — [mathshistory.st-andrews.ac.uk…](https://web.archive.org/web/20260701233748/https://mathshistory.st-andrews.ac.uk/Biographies/Nash/) (SPN fresh); [plato.stanford.edu…](https://web.archive.org/web/20260701234448/https://plato.stanford.edu/entries/game-theory/) (SPN fresh)
+- `john-von-neumann-founded-game-theory` — [mathshistory.st-andrews.ac.uk…](https://web.archive.org/web/20260613003017/https://mathshistory.st-andrews.ac.uk/Biographies/Von_Neumann/) (SPN fresh); [plato.stanford.edu…](https://web.archive.org/web/20260701234448/https://plato.stanford.edu/entries/game-theory/) (SPN fresh)
+- `ludwig-wittgenstein-influenced-logical-positivism` — [plato.stanford.edu…](https://web.archive.org/web/20260701234630/https://plato.stanford.edu/entries/logical-empiricism/) (SPN fresh); [plato.stanford.edu…](https://web.archive.org/web/20260701234906/https://plato.stanford.edu/entries/wittgenstein/) (SPN fresh)
+- `mathematical-logic-formalizes-mathematics` — [encyclopediaofmath.org…](https://web.archive.org/web/20260218055713/https://encyclopediaofmath.org/wiki/Mathematical_logic) (existing snapshot); `[SPN-FAILED]` https://plato.stanford.edu/entries/logic-classical/
+- `phenomenology-influenced-existentialism` — [plato.stanford.edu…](https://web.archive.org/web/20260701234231/https://plato.stanford.edu/entries/existentialism/) (SPN fresh); [www.routledge.com…](https://web.archive.org/web/20260701235049/https://www.routledge.com/Introduction-to-Phenomenology/Moran/p/book/9780415183727) (SPN fresh)
+- `pragmatism-influenced-philosophy-of-education` — [plato.stanford.edu…](https://web.archive.org/web/20260701234204/https://plato.stanford.edu/entries/education-philosophy/) (SPN fresh); `[SPN-FAILED]` https://www.wiley.com/en-us/A+Companion+to+the+Philosophy+of+Education-p-9781405181839
+- `probability-theory-formalizes-random-variable` — [ncatlab.org…](https://web.archive.org/web/20260618175249/https://ncatlab.org/nlab/show/random+variable) (SPN fresh); `[SPN-FAILED]` https://plato.stanford.edu/entries/probability-interpret/
+- `ronald-fisher-critiques-karl-pearson` — [mathshistory.st-andrews.ac.uk…](https://web.archive.org/web/20260619002257/https://mathshistory.st-andrews.ac.uk/Biographies/Fisher/) (SPN fresh)
 
 **Work→author edges — Wikidata P50 anchor, no live page (6):**
 - `cours-de-philosophie-positive-canonical-work-auguste-comte` — permanence via Wikidata QID (immutable); field-side sibling carries the oldid anchor
@@ -255,9 +263,9 @@ Recorded, never silently dropped (§8). These cite established scholarly referen
 - `protestant-ethic-canonical-work-max-weber` — permanence via Wikidata QID (immutable); field-side sibling carries the oldid anchor
 - `rules-of-sociological-method-canonical-work-emile-durkheim` — permanence via Wikidata QID (immutable); field-side sibling carries the oldid anchor
 
-**Parser-miss (5, wiki-cited):**
-- `game-theory-formalizes-evolutionary-biology` `[SPN-PENDING]`
-- `game-theory-formalizes-political-science` `[SPN-PENDING]`
-- `george-lakoff-founded-cognitive-linguistics` `[SPN-PENDING]`
-- `probability-theory-formalizes-probability-distribution` `[SPN-PENDING]`
-- `probability-theory-formalizes-statistics` `[SPN-PENDING]`
+**Parser-miss (5) — resolved to oldid permalinks 2026-07-02 (claim phrases verified present in each revision):**
+- `game-theory-formalizes-evolutionary-biology` — [Evolutionary game theory @1351521336](https://en.wikipedia.org/w/index.php?title=Evolutionary_game_theory&oldid=1351521336)
+- `game-theory-formalizes-political-science` — [Game theory @1361235138](https://en.wikipedia.org/w/index.php?title=Game_theory&oldid=1361235138)
+- `george-lakoff-founded-cognitive-linguistics` — [Cognitive linguistics @1360631682](https://en.wikipedia.org/w/index.php?title=Cognitive_linguistics&oldid=1360631682)
+- `probability-theory-formalizes-probability-distribution` — [Probability distribution @1360730124](https://en.wikipedia.org/w/index.php?title=Probability_distribution&oldid=1360730124)
+- `probability-theory-formalizes-statistics` — [Mathematical statistics @1360283754](https://en.wikipedia.org/w/index.php?title=Mathematical_statistics&oldid=1360283754)

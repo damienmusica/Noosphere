@@ -92,7 +92,10 @@ to make implementation easier.
   Full provenance keeps every promotion bulk re-auditable and reversible.
 - Ratified standing policies in force (the vault decision log is the
   authority; this list is a pointer, not a restatement): node promotion
-  v1–v1.3; edge promotion v1 incl. clause 6 (contested placements) and its
+  v1–v1.4 (v1.4 = QID-less-but-recognized alternative identity anchor via a
+  CPO-ratified expert disciplinary taxonomy [currently PhilPapers only] + ≥2
+  independent authorities, decision (93), docs/data-foundry.md §8); edge
+  promotion v1 incl. clause 6 (contested placements) and its
   recorded operational interpretations; editorial **v2** for summaries —
   **generation model = Opus** (decision (26)); QC = machine checks in full
   (claim-anchor verbatim + cited-URL live survival + SPN §8) + orchestrator
