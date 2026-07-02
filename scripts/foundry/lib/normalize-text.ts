@@ -67,6 +67,19 @@ export function normalize(input: string): string {
     .replace(/&rarr;|&#8594;/g, "->")
     .replace(/&#91;/g, "[")
     .replace(/&#93;/g, "]");
+  // Named typographic/accented entities (session #57 measured pattern: SEP
+  // serves &rsquo;/&ldquo;/&ouml;-family entities in running prose — 12/202
+  // retrofit quotes false-missed on live SEP pages until these decode). The
+  // quote/dash normalizers below then unify the decoded characters. Symmetric
+  // and content-free: decoding maps markup to the character a reader sees.
+  const NAMED_ENTITIES: Record<string, string> = {
+    rsquo: "'", lsquo: "'", sbquo: "'", rdquo: '"', ldquo: '"', bdquo: '"',
+    hellip: "...", ouml: "ö", auml: "ä", uuml: "ü", iuml: "ï", euml: "ë",
+    eacute: "é", egrave: "è", ecirc: "ê", agrave: "à", acirc: "â",
+    ocirc: "ô", ucirc: "û", ccedil: "ç", ntilde: "ñ", oslash: "ø",
+    aring: "å", aelig: "æ", oelig: "œ", szlig: "ß",
+  };
+  s = s.replace(/&([a-zA-Z]+);/g, (m, name: string) => NAMED_ENTITIES[name.toLowerCase()] ?? m);
   // Decode any remaining numeric HTML entities (decimal + hex) to their real
   // characters — the dash/quote/space normalizers below then handle the results.
   s = s

@@ -1,0 +1,1959 @@
+{
+  "version": 1,
+  "batch_id": "citation-retrofit-v1",
+  "decided_at": "2026-07-03",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-03"
+  },
+  "translation_updates": [
+    {
+      "node_id": "person:daniel-kahneman",
+      "locale": "en",
+      "summary": "Daniel Kahneman (1934–2024) was an Israeli-American psychologist widely regarded as a founder of behavioral economics and best known for his work on the psychology of judgment and decision-making, for which he was awarded the 2002 Nobel Memorial Prize in Economic Sciences together with Vernon L. Smith. Working with Amos Tversky and others, he established a cognitive basis for common human errors arising from heuristics and biases and developed prospect theory, findings that challenged the assumption of human rationality in modern economic theory. His 2011 book Thinking, Fast and Slow summarized much of this research and became a best seller.",
+      "reviewed": true
+    },
+    {
+      "node_id": "work:an-investigation-of-the-laws-of-thought",
+      "locale": "en",
+      "summary": "An Investigation of the Laws of Thought is a book by the English mathematician George Boole, published in 1854. It developed an algebraic treatment of logic in which logical reasoning is expressed through symbolic operations, laying the groundwork for what is now known as Boolean algebra. It is a founding work of modern symbolic and mathematical logic.",
+      "reviewed": true
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "person:daniel-kahneman",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "work:an-investigation-of-the-laws-of-thought",
+      "ladder": "editorial-v2"
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "subfield:philosophy-of-race",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/race/",
+          "retrieved_at": "2026-07-03",
+          "quote": "The concept of race has historically signified the division of humanity into a small number of groups based upon five criteria",
+          "independent": true
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/race/",
+          "retrieved_at": "2026-07-03",
+          "quote": "the widespread position that discrete or essentialist races are socially constructed, not biologically real",
+          "independent": false
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/race/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Racial skepticism holds that because racial naturalism is false, races of any type do not exist",
+          "independent": false
+        }
+      ]
+    },
+    {
+      "subject_id": "subfield:physical-anthropology",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Biological_anthropology",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a natural science discipline concerned with the biological and behavioral aspects of human beings, their extinct hominin ancestors",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Biological_anthropology&oldid=1358785311"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Biological_anthropology",
+          "retrieved_at": "2026-07-03",
+          "quote": "Paleoanthropology is the study of fossil evidence for human evolution",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Biological_anthropology&oldid=1358785311"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Biological_anthropology",
+          "retrieved_at": "2026-07-03",
+          "quote": "Forensic anthropology is the application of the science of physical anthropology and human osteology in a legal setting",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Biological_anthropology&oldid=1358785311"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:internet",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Internet",
+          "retrieved_at": "2026-07-03",
+          "quote": "The set of communication protocols to enable internetworking on the Internet arose from research and development commissioned in the 1970s by the Defense Advanced Research Projects Agency (DARPA) of the United States Department of Defense",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Internet&oldid=1361947836"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Internet",
+          "retrieved_at": "2026-07-03",
+          "quote": "The Internet carries a vast range of information services and resources, such as the interlinked hypertext documents and applications of the World Wide Web",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Internet&oldid=1361947836"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Internet",
+          "retrieved_at": "2026-07-03",
+          "quote": "The technical underpinning and standardization of the core protocols is an activity of the non-profit Internet Engineering Task Force (IETF)",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Internet&oldid=1361947836"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:generative-grammar",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Generative_grammar",
+          "retrieved_at": "2026-07-03",
+          "quote": "generative grammar is a research tradition in linguistics that aims to explain the cognitive basis of language by formulating and testing explicit models of humans' subconscious grammatical knowledge",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Generative_grammar&oldid=1360677330"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Generative_grammar",
+          "retrieved_at": "2026-07-03",
+          "quote": "The earliest version of Chomsky's model was called transformational grammar, with subsequent iterations known as government and binding theory and the Minimalist Program",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Generative_grammar&oldid=1360677330"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Generative_grammar",
+          "retrieved_at": "2026-07-03",
+          "quote": "Competence is the collection of subconscious rules that one knows when one knows a language",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Generative_grammar&oldid=1360677330"
+        }
+      ]
+    },
+    {
+      "subject_id": "subfield:behavioral-economics",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Behavioral_economics",
+          "retrieved_at": "2026-07-03",
+          "quote": "Behavioral economics is the study of the psychological (e.g. cognitive, behavioral, affective, social) factors involved in the decisions of individuals or institutions, and how these decisions deviate from those implied by traditional economic theory",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Behavioral_economics&oldid=1357481755"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Behavioral_economics",
+          "retrieved_at": "2026-07-03",
+          "quote": "Behavioral economics is primarily concerned with the bounds of rationality of economic agents",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Behavioral_economics&oldid=1357481755"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Behavioral_economics",
+          "retrieved_at": "2026-07-03",
+          "quote": "Kahneman and Tversky utilising prospect theory determined three generalisations; gains are treated differently than losses",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Behavioral_economics&oldid=1357481755"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:sigmund-freud",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://iep.utm.edu/freud/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Sigmund Freud, the father of psychoanalysis, was a physiologist, medical doctor, psychologist and influential thinker of the early twentieth century",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702034423/https://iep.utm.edu/freud/"
+        },
+        {
+          "url": "https://iep.utm.edu/freud/",
+          "retrieved_at": "2026-07-03",
+          "quote": "He articulated and refined the concepts of the unconscious, infantile sexuality and repression, and he proposed a tripartite account of the mind",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260702034423/https://iep.utm.edu/freud/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Sigmund_Freud",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an Austrian neurologist and the founder of psychoanalysis, a clinical method for evaluating and treating pathologies arising from conflicts in the psyche",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Sigmund_Freud&oldid=1362025123"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:claude-levi-strauss",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Claude_L%C3%A9vi-Strauss",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Belgian-born French anthropologist and ethnologist whose work was key in the development of the theories of structuralism and structural anthropology",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Claude_L%C3%A9vi-Strauss&oldid=1361412957"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Claude_L%C3%A9vi-Strauss",
+          "retrieved_at": "2026-07-03",
+          "quote": "Lévi-Strauss sought to apply the structural linguistics of Ferdinand de Saussure to anthropology",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Claude_L%C3%A9vi-Strauss&oldid=1361412957"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Claude_L%C3%A9vi-Strauss",
+          "retrieved_at": "2026-07-03",
+          "quote": "The Elementary Structures of Kinship was published in 1949 and quickly came to be regarded as one of the most important anthropological works on kinship",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Claude_L%C3%A9vi-Strauss&oldid=1361412957"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:charles-darwin",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Charles_Darwin",
+          "retrieved_at": "2026-07-03",
+          "quote": "Darwin published his theory of evolution with compelling evidence in On the Origin of Species (1859)",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Darwin&oldid=1360793412"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Charles_Darwin",
+          "retrieved_at": "2026-07-03",
+          "quote": "it was his five-year voyage on HMS Beagle from 1831 to 1836 that truly established Darwin as an eminent geologist",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Darwin&oldid=1360793412"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/darwinism/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Darwinism designates a distinctive form of evolutionary explanation for the history and diversity of life on earth. Its original formulation is provided in the first edition of On the Origin of Species in 1859",
+          "independent": true
+        }
+      ]
+    },
+    {
+      "subject_id": "person:edmund-husserl",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/husserl/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Edmund Husserl (1859–1938) is the founding father of phenomenology and a figure with a decisive impact on the development of twentieth century philosophy",
+          "independent": true
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/husserl/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Husserl is primarily known for his analyses of intentionality, perception, temporality, embodiment and intersubjectivity",
+          "independent": false
+        },
+        {
+          "url": "https://iep.utm.edu/husserl/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Phenomenology can be roughly described as the sustained attempt to describe experiences (and the “things themselves”) without metaphysical and theoretical speculations",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260619155534/https://iep.utm.edu/husserl/"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:on-the-origin-of-species",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a work of scientific literature by the English naturalist Charles Darwin that is considered to be the foundation of evolutionary biology",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=On_the_Origin_of_Species&oldid=1361718398"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species",
+          "retrieved_at": "2026-07-03",
+          "quote": "Darwin's book introduced the scientific theory that populations evolve over the course of generations through a process of natural selection",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=On_the_Origin_of_Species&oldid=1361718398"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/darwinism/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Its original formulation is provided in the first edition of On the Origin of Species in 1859",
+          "independent": true
+        }
+      ]
+    },
+    {
+      "subject_id": "work:cours-de-linguistique-generale",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Course_in_General_Linguistics",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a book about linguistics compiled by Charles Bally and Albert Sechehaye from notes on lectures given by historical-comparative linguist Ferdinand de Saussure at the University of Geneva between 1906 and 1911",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Course_in_General_Linguistics&oldid=1356605029"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Course_in_General_Linguistics",
+          "retrieved_at": "2026-07-03",
+          "quote": "It was published in 1916, after Saussure's death, and is generally regarded as the starting point of structural linguistics",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Course_in_General_Linguistics&oldid=1356605029"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Course_in_General_Linguistics",
+          "retrieved_at": "2026-07-03",
+          "quote": "To consider a language synchronically is to study it \"as a complete system at a given point in time,\"",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Course_in_General_Linguistics&oldid=1356605029"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:tractatus-logico-philosophicus",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tractatus_Logico-Philosophicus",
+          "retrieved_at": "2026-07-03",
+          "quote": "is the only book-length philosophical work by the Austrian philosopher Ludwig Wittgenstein that was published during his lifetime",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Tractatus_Logico-Philosophicus&oldid=1362050109"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tractatus_Logico-Philosophicus",
+          "retrieved_at": "2026-07-03",
+          "quote": "The project had a broad goal: to identify the relationship between language and reality, and to define the limits of science",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Tractatus_Logico-Philosophicus&oldid=1362050109"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/wittgenstein/",
+          "retrieved_at": "2026-07-03",
+          "quote": "the early Wittgenstein is epitomized in his Tractatus Logico-Philosophicus",
+          "independent": true
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:natural-selection",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Natural_selection",
+          "retrieved_at": "2026-07-03",
+          "quote": "Natural selection is the differential survival and reproduction of individuals due to differences in the relative fitness endowed on them by their own particular complement of observable characteristics",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Natural_selection&oldid=1353996056"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Natural_selection",
+          "retrieved_at": "2026-07-03",
+          "quote": "The concept, published by Darwin and Alfred Russel Wallace in a joint presentation of papers in 1858",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Natural_selection&oldid=1353996056"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/natural-selection/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Charles Darwin and Alfred Wallace are the two co-discoverers of natural selection",
+          "independent": true
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:nash-equilibrium",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nash_equilibrium",
+          "retrieved_at": "2026-07-03",
+          "quote": "a Nash equilibrium is a situation where no player could gain more by changing their own strategy (holding all other players' strategies fixed) in a game",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Nash_equilibrium&oldid=1360354244"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nash_equilibrium",
+          "retrieved_at": "2026-07-03",
+          "quote": "A Nash equilibrium is the most commonly used solution concept for non-cooperative games",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Nash_equilibrium&oldid=1360354244"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/game-theory/",
+          "retrieved_at": "2026-07-03",
+          "quote": "the ‘Nash’ here refers to John Nash, the Nobel laureate mathematician who in Nash (1950) did most to extend and generalize von Neumann & Morgenstern’s pioneering work",
+          "independent": true
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:invisible-hand",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Invisible_hand",
+          "retrieved_at": "2026-07-03",
+          "quote": "The invisible hand is a metaphor inspired by the scottish economist and moral philosopher Adam Smith that describes the incentives which free markets sometimes create for self-interested people to accidentally act in the public interest",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Invisible_hand&oldid=1358921063"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Invisible_hand",
+          "retrieved_at": "2026-07-03",
+          "quote": "Smith originally mentioned the term in two specific, but different, economic examples",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Invisible_hand&oldid=1358921063"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Invisible_hand",
+          "retrieved_at": "2026-07-03",
+          "quote": "The invisible hand is explicitly mentioned only once in the Wealth of Nations, in a specialized chapter not about free trade but about capital investment",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Invisible_hand&oldid=1358921063"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:symbolic-ai",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence",
+          "retrieved_at": "2026-07-03",
+          "quote": "is the term for the collection of all methods in artificial intelligence research that are based on high-level symbolic (human-readable) representations of problems, logic, and search",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Symbolic_artificial_intelligence&oldid=1360607279"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence",
+          "retrieved_at": "2026-07-03",
+          "quote": "Symbolic AI was the dominant paradigm of AI research from the mid-1950s until the mid-1990s",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Symbolic_artificial_intelligence&oldid=1360607279"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence",
+          "retrieved_at": "2026-07-03",
+          "quote": "Researchers in the 1960s and the 1970s were convinced that symbolic approaches would eventually succeed in creating a machine with artificial general intelligence",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Symbolic_artificial_intelligence&oldid=1360607279"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:de-humani-corporis-fabrica",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/De_humani_corporis_fabrica",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a set of books on human anatomy written by Andreas Vesalius (1514–1564) and published in 1543",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=De_Humani_Corporis_Fabrica_Libri_Septem&oldid=1352479774"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/De_humani_corporis_fabrica",
+          "retrieved_at": "2026-07-03",
+          "quote": "It was a major advance in the history of anatomy over the long-dominant work of Galen",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=De_Humani_Corporis_Fabrica_Libri_Septem&oldid=1352479774"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/De_humani_corporis_fabrica",
+          "retrieved_at": "2026-07-03",
+          "quote": "The collection of books is based on his Paduan lectures, during which he deviated from common practice by dissecting a corpse to illustrate what he was discussing",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=De_Humani_Corporis_Fabrica_Libri_Septem&oldid=1352479774"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:experiments-on-plant-hybridization",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Experiments_on_Plant_Hybridization",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a seminal paper written in 1865 and published in 1866 by Gregor Mendel, an Augustinian friar considered to be the founder of modern genetics",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Experiments_on_Plant_Hybridization&oldid=1356375892"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Experiments_on_Plant_Hybridization",
+          "retrieved_at": "2026-07-03",
+          "quote": "Mendel laid out the genetic model later known as Mendelian inheritance or Mendelian genetics",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Experiments_on_Plant_Hybridization&oldid=1356375892"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Experiments_on_Plant_Hybridization",
+          "retrieved_at": "2026-07-03",
+          "quote": "It was not until the early 20th century that Mendel's work was rediscovered and his ideas used to help form the modern synthesis",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Experiments_on_Plant_Hybridization&oldid=1356375892"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:on-crimes-and-punishments",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/On_Crimes_and_Punishments",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a treatise written by Cesare Beccaria in 1764. The treatise condemned torture and the death penalty and was a founding work in the field of penology",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=On_Crimes_and_Punishments&oldid=1351517400"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/On_Crimes_and_Punishments",
+          "retrieved_at": "2026-07-03",
+          "quote": "The book was the first full-scale work to tackle criminal reform and to suggest that criminal justice should conform to rational principles",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=On_Crimes_and_Punishments&oldid=1351517400"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/On_Crimes_and_Punishments",
+          "retrieved_at": "2026-07-03",
+          "quote": "crimes of every kind should be less frequent, in proportion to the evil they produce to society",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=On_Crimes_and_Punishments&oldid=1351517400"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:grundlagen-einer-allgemeinen-mannigfaltigkeitslehre",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Georg_Cantor",
+          "retrieved_at": "2026-07-03",
+          "quote": "published in 1883, was the most important of the six and was also published as a separate monograph",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Georg_Cantor&oldid=1361025127"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Georg_Cantor",
+          "retrieved_at": "2026-07-03",
+          "quote": "It contained Cantor's reply to his critics and showed how the transfinite numbers are a systematic extension of the natural numbers",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Georg_Cantor&oldid=1361025127"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/settheory-early/",
+          "retrieved_at": "2026-07-03",
+          "quote": "The transfinite ordinals were introduced as new numbers in an important mathematico-philosophical paper of 1883, Grundlagen einer allgemeinen Mannigfaltigkeitslehre",
+          "independent": true
+        }
+      ]
+    },
+    {
+      "subject_id": "work:the-rules-of-sociological-method",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Rules_of_Sociological_Method",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a book by Émile Durkheim, first published in 1895. It is recognized as being the direct result of Durkheim's own project of establishing sociology as a positivist social science",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Rules_of_Sociological_Method&oldid=1300661555"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Rules_of_Sociological_Method",
+          "retrieved_at": "2026-07-03",
+          "quote": "the first and most fundamental rule is: Consider social facts as things",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Rules_of_Sociological_Method&oldid=1300661555"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Rules_of_Sociological_Method",
+          "retrieved_at": "2026-07-03",
+          "quote": "sociologists, without preconceptions and prejudices, must study social facts as real, objective phenomena",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Rules_of_Sociological_Method&oldid=1300661555"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:logical-investigations",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/husserl/",
+          "retrieved_at": "2026-07-03",
+          "quote": "his reflections on these themes ultimately led to the publication of the monumental Logical Investigations in 1900–1901, which Husserl himself considered his “breakthrough” to phenomenology",
+          "independent": true
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/husserl/",
+          "retrieved_at": "2026-07-03",
+          "quote": "to offer a criticism of psychologism and to argue that scientific knowledge presupposes ideality",
+          "independent": false
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/husserl/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Husserl writes that his overarching aim is to provide a new foundation for logic and epistemology",
+          "independent": false
+        }
+      ]
+    },
+    {
+      "subject_id": "work:the-social-stratification-of-english-in-new-york-city",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/William_Labov",
+          "retrieved_at": "2026-07-03",
+          "quote": "his study of the varieties of English spoken in New York City, published as The Social Stratification of English in New York City (1966), have been influential in social dialectology",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=William_Labov&oldid=1356581526"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Variationist_sociolinguistics",
+          "retrieved_at": "2026-07-03",
+          "quote": "studies of language variation and its correlation with sociological categories, such as William Labov's 1963 paper \"The Social Motivation of a Sound Change,\" led to the foundation of sociolinguistics as a subfield of linguistics",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Variation_(linguistics)&oldid=1354527639"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/William_Labov",
+          "retrieved_at": "2026-07-03",
+          "quote": "published as The Social Stratification of English in New York City (1966), have been influential in social dialectology",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=William_Labov&oldid=1356581526"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/New_York_City_English",
+          "retrieved_at": "2026-07-03",
+          "quote": "According to Labov, New York City speakers' loss of the r sound after vowels",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=New_York_City_English&oldid=1361495753"
+        }
+      ],
+      "notes": "generator/orchestrator flags: UNANCHORED: the specific finding that postvocalic 'r' correlates with social class and speech style (showing variation is socially structured and quantifiable) — not found in any available live capture. The work's own Wikipedia page was not captured (status unverified); the live William Labov and Variationist sociolinguistics captures name the 1966 book and its founding role but do not state the postvocalic-r / class-and-style result. This looks like capture-coverage drift, not the source being wrong — the finding is well documented on the work's own page, which was simply not among the live bodies. | PARTIAL-RESOLVED by orchestrator: hinted book article is 404 on enwiki; title/date/influence anchored via William_Labov page, the (r) variable via New_York_City_English prose. The precise class-correlation phrasing remains composite (Britannica bot-blocked) — honest note in verdict."
+    },
+    {
+      "subject_id": "subfield:philosophy-of-cognitive-science",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/cognitive-science/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Cognitive science is the interdisciplinary study of mind and intelligence, embracing philosophy, psychology, artificial intelligence, neuroscience, linguistics, and anthropology.",
+          "independent": true
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/cognitive-science/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Cognitive science raises many interesting methodological questions that are worthy of investigation by philosophers of science. What is the nature of representation?",
+          "independent": false
+        }
+      ]
+    },
+    {
+      "subject_id": "subfield:mass-communication",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mass_communication",
+          "retrieved_at": "2026-07-03",
+          "quote": "Mass communication is the process of communicating and exchanging information through mass media to large population segments.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Mass_communication&oldid=1362243327"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Mass_communication",
+          "retrieved_at": "2026-07-03",
+          "quote": "Mass communication, unlike interpersonal communication and organizational communication, focuses on particular resources transmitting information to numerous receivers.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Mass_communication&oldid=1362243327"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Influence_of_mass_media",
+          "retrieved_at": "2026-07-03",
+          "quote": "media influence and the media effect are topics relating to mass media and media culture's effects on individuals' or audiences' thoughts, attitudes, and behaviors",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Influence_of_mass_media&oldid=1360035270"
+        }
+      ]
+    },
+    {
+      "subject_id": "subfield:structural-anthropology",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Structural_anthropology",
+          "retrieved_at": "2026-07-03",
+          "quote": "Structural anthropology is a school of sociocultural anthropology based on Claude Lévi-Strauss' 1949 idea that immutable deep structures exist in all cultures",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Structural_anthropology&oldid=1265460381"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Structural_anthropology",
+          "retrieved_at": "2026-07-03",
+          "quote": "including those of Ferdinand de Saussure, Roman Jakobson, Émile Durkheim and Marcel Mauss",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Structural_anthropology&oldid=1265460381"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Structural_anthropology",
+          "retrieved_at": "2026-07-03",
+          "quote": "people think about the world in terms of binary opposites—such as high and low, inside and outside, person and animal, life and death—and that every culture can be understood in terms of these opposites.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Structural_anthropology&oldid=1265460381"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:public-key-cryptography",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Public-key_cryptography",
+          "retrieved_at": "2026-07-03",
+          "quote": "Public-key cryptography, or asymmetric cryptography, is the field of cryptographic systems that use pairs of related keys. Each key pair consists of a public key and a corresponding private key.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Public-key_cryptography&oldid=1361274505"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange",
+          "retrieved_at": "2026-07-03",
+          "quote": "Published in 1976 by Diffie and Hellman, this is the earliest publicly known work that proposed the idea of a private key and a corresponding public key.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Diffie%E2%80%93Hellman_key_exchange&oldid=1352263080"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Public-key_cryptography",
+          "retrieved_at": "2026-07-03",
+          "quote": "a generalization of Cocks's scheme was independently invented by Ron Rivest, Adi Shamir and Leonard Adleman, all then at MIT.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Public-key_cryptography&oldid=1361274505"
+        }
+      ]
+    },
+    {
+      "subject_id": "subfield:social-choice-theory",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/social-choice/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Social choice theory is the study of collective decision procedures and mechanisms.",
+          "independent": true
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/social-choice/",
+          "retrieved_at": "2026-07-03",
+          "quote": "social choice theory took off in the 20th century with the works of Kenneth Arrow, Amartya Sen, and Duncan Black.",
+          "independent": false
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/arrows-theorem/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Kenneth Arrow’s “impossibility” theorem",
+          "independent": true
+        }
+      ]
+    },
+    {
+      "subject_id": "person:emile-durkheim",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%89mile_Durkheim",
+          "retrieved_at": "2026-07-03",
+          "quote": "He formally established the academic discipline of sociology, and is commonly cited as one of the principal architects of modern social science, along with Karl Marx and Max Weber.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=%C3%89mile_Durkheim&oldid=1362236290"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%89mile_Durkheim",
+          "retrieved_at": "2026-07-03",
+          "quote": "followed in 1895 by Les Règles de la méthode sociologique (The Rules of Sociological Method).",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=%C3%89mile_Durkheim&oldid=1362236290"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%89mile_Durkheim",
+          "retrieved_at": "2026-07-03",
+          "quote": "with its aim being to discover structural social facts",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=%C3%89mile_Durkheim&oldid=1362236290"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:gottlob-frege",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/frege/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Frege essentially reconceived the discipline of logic by constructing a formal system which, in effect, constituted the first ‘predicate calculus’.",
+          "independent": true
+        },
+        {
+          "url": "https://iep.utm.edu/frege/",
+          "retrieved_at": "2026-07-03",
+          "quote": "His theory of meaning, especially his distinction between the sense and reference of linguistic expressions, was groundbreaking in semantics and the philosophy of language.",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260515184559/https://iep.utm.edu/frege/"
+        },
+        {
+          "url": "https://iep.utm.edu/frege/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Frege is often called the founder of modern logic, and he is sometimes even heralded as the founder of analytic philosophy.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260515184559/https://iep.utm.edu/frege/"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:max-weber",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/weber/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Weber is known as a principal architect of modern social science along with Karl Marx and Émile Durkheim.",
+          "independent": true
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Max_Weber",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German sociologist, historian, jurist, and political economist who was one of the central figures in the development of sociology and the social sciences more generally.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Max_Weber&oldid=1361488712"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Max_Weber",
+          "retrieved_at": "2026-07-03",
+          "quote": "Weber also argued that the Protestant work ethic influenced the creation of modern capitalism in The Protestant Ethic and the Spirit of Capitalism.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Max_Weber&oldid=1361488712"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:noam-chomsky",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Noam_Chomsky",
+          "retrieved_at": "2026-07-03",
+          "quote": "Chomsky is also a major figure in analytic philosophy and one of the founders of the field of cognitive science.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Noam_Chomsky&oldid=1361048686"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Noam_Chomsky",
+          "retrieved_at": "2026-07-03",
+          "quote": "He created or co-created the universal grammar theory, the generative grammar theory, the Chomsky hierarchy, and the minimalist program.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Noam_Chomsky&oldid=1361048686"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Noam_Chomsky",
+          "retrieved_at": "2026-07-03",
+          "quote": "Chomsky is widely recognized as having helped to spark the cognitive revolution in the human sciences",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Noam_Chomsky&oldid=1361048686"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:philosophiae-naturalis-principia-mathematica",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a book by Sir Isaac Newton that expounds Newton's laws of motion and his law of universal gravitation.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Philosophi%C3%A6_Naturalis_Principia_Mathematica&oldid=1361196779"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica",
+          "retrieved_at": "2026-07-03",
+          "quote": "The Principia is written in Latin and comprises three volumes",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Philosophi%C3%A6_Naturalis_Principia_Mathematica&oldid=1361196779"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/newton/",
+          "retrieved_at": "2026-07-03",
+          "quote": "the single most important work in the transformation of early modern natural philosophy into modern physical science.",
+          "independent": true
+        }
+      ]
+    },
+    {
+      "subject_id": "work:a-mathematical-theory-of-communication",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication",
+          "retrieved_at": "2026-07-03",
+          "quote": "\"A Mathematical Theory of Communication\" is an article by mathematician Claude Shannon published in Bell System Technical Journal in 1948.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=A_Mathematical_Theory_of_Communication&oldid=1359011097"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication",
+          "retrieved_at": "2026-07-03",
+          "quote": "it gave rise to the field of information theory",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=A_Mathematical_Theory_of_Communication&oldid=1359011097"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication",
+          "retrieved_at": "2026-07-03",
+          "quote": "This work is known for introducing the concepts of channel capacity as well as the noisy channel coding theorem.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=A_Mathematical_Theory_of_Communication&oldid=1359011097"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:capital-volume-i",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Das_Kapital,_Volume_I",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a foundational text in Marxist theory by Karl Marx. His magnum opus, the work is a critical analysis of political economy, meant to reveal the economic patterns underpinning the capitalist mode of production.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Das_Kapital&oldid=1361725528"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Das_Kapital,_Volume_I",
+          "retrieved_at": "2026-07-03",
+          "quote": "of which only the first was published during Marx's lifetime, in 1867; the others were completed from his manuscripts and published by his collaborator Friedrich Engels in 1885 and 1894.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Das_Kapital&oldid=1361725528"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:the-unconscious",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Unconscious_mind",
+          "retrieved_at": "2026-07-03",
+          "quote": "the unconscious mind (or the unconscious) is the part of the psyche that is not available to introspection.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Unconscious_mind&oldid=1354908929"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Unconscious_mind",
+          "retrieved_at": "2026-07-03",
+          "quote": "In psychoanalytic theory, the unconscious mind consists of ideas and drives that have been subject to the mechanism of repression",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Unconscious_mind&oldid=1354908929"
+        },
+        {
+          "url": "https://iep.utm.edu/freud/",
+          "retrieved_at": "2026-07-03",
+          "quote": "He articulated and refined the concepts of the unconscious, infantile sexuality and repression",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702034423/https://iep.utm.edu/freud/"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:mendelian-inheritance",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mendelian_inheritance",
+          "retrieved_at": "2026-07-03",
+          "quote": "Mendelian inheritance (also known as Mendelism) is a type of biological inheritance following the principles originally proposed by Gregor Mendel in 1865 and 1866, re-discovered in 1900 by Hugo de Vries and Carl Correns",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Mendelian_inheritance&oldid=1362067676"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Mendelian_inheritance",
+          "retrieved_at": "2026-07-03",
+          "quote": "they became the core of classical genetics",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Mendelian_inheritance&oldid=1362067676"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Mendelian_inheritance",
+          "retrieved_at": "2026-07-03",
+          "quote": "a nineteenth-century Moravian monk who formulated his ideas after conducting simple hybridization experiments with pea plants",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Mendelian_inheritance&oldid=1362067676"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:intentionality",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/intentionality/",
+          "retrieved_at": "2026-07-03",
+          "quote": "In philosophy, intentionality is the power of minds and mental states to be about, to represent, or to stand for, things, properties and states of affairs.",
+          "independent": true
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/intentionality/",
+          "retrieved_at": "2026-07-03",
+          "quote": "the idea, if not the word itself, was introduced into philosophy by Franz Brentano in the last quarter of the nineteenth century",
+          "independent": false
+        },
+        {
+          "url": "https://iep.utm.edu/intentio/",
+          "retrieved_at": "2026-07-03",
+          "quote": "led Brentano (1884) to regard intentionality as “the mark of the mental”",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260520172239/https://iep.utm.edu/intentio/"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:false-consciousness",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/False_consciousness",
+          "retrieved_at": "2026-07-03",
+          "quote": "In Marxist theory, false consciousness is a term describing the ways in which material, ideological, and institutional processes are said to mislead members of the proletariat and other class actors within capitalist societies",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=False_consciousness&oldid=1356297528"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/False_consciousness",
+          "retrieved_at": "2026-07-03",
+          "quote": "The term was never used by Karl Marx. It was used once by his associate Friedrich Engels to describe an incomplete insight into ideology, and then theorized by later Marxists starting in the 1920s.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=False_consciousness&oldid=1356297528"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:systema-naturae",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Systema_Naturae",
+          "retrieved_at": "2026-07-03",
+          "quote": "is one of the major works of Swedish botanist, zoologist, and physician Carl Linnaeus (1707–1778) and introduced the Linnaean taxonomy.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Systema_Naturae&oldid=1358076593"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Systema_Naturae",
+          "retrieved_at": "2026-07-03",
+          "quote": "The first edition was published in 1735.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Systema_Naturae&oldid=1358076593"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Systema_Naturae",
+          "retrieved_at": "2026-07-03",
+          "quote": "The tenth edition of this book (1758), published in Stockholm, is considered the starting point of zoological nomenclature.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Systema_Naturae&oldid=1358076593"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:cybernetics",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cybernetics:_Or_Control_and_Communication_in_the_Animal_and_the_Machine",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a book written by Norbert Wiener and published in 1948.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cybernetics%3A_Or_Control_and_Communication_in_the_Animal_and_the_Machine&oldid=1335885128"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cybernetics:_Or_Control_and_Communication_in_the_Animal_and_the_Machine",
+          "retrieved_at": "2026-07-03",
+          "quote": "It is the first public usage of the term \"cybernetics\" to refer to self-regulating mechanisms.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cybernetics%3A_Or_Control_and_Communication_in_the_Animal_and_the_Machine&oldid=1335885128"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:social-choice-and-individual-values",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Social_Choice_and_Individual_Values",
+          "retrieved_at": "2026-07-03",
+          "quote": "Kenneth Arrow's monograph Social Choice and Individual Values (1951; revised in 1963 and 2012) and a theorem within it created modern social choice theory",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Social_Choice_and_Individual_Values&oldid=1335439505"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Social_Choice_and_Individual_Values",
+          "retrieved_at": "2026-07-03",
+          "quote": "The theorem states that, absent restrictions on either individual preferences or neutrality of the constitution to feasible alternatives, there exists no social choice rule that satisfies a set of plausible requirements.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Social_Choice_and_Individual_Values&oldid=1335439505"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/arrows-theorem/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Kenneth Arrow’s “impossibility” theorem—the “general possibility” theorem, as he called it",
+          "independent": true
+        }
+      ]
+    },
+    {
+      "subject_id": "work:the-mind-of-primitive-man",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Mind_of_Primitive_Man",
+          "retrieved_at": "2026-07-03",
+          "quote": "The Mind of Primitive Man is a 1911 book by anthropologist Franz Boas which takes a critical look at the concept of primitive culture.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Mind_of_Primitive_Man&oldid=1341129795"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Mind_of_Primitive_Man",
+          "retrieved_at": "2026-07-03",
+          "quote": "It is considered an important work in cultural anthropology and the methodological concept of cultural relativism.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Mind_of_Primitive_Man&oldid=1341129795"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Franz_Boas",
+          "retrieved_at": "2026-07-03",
+          "quote": "Boas also worked to demonstrate that differences in human behavior are not primarily determined by innate biological dispositions but are largely the result of cultural differences acquired through social learning.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Franz_Boas&oldid=1359301314"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:the-protestant-ethic-and-the-spirit-of-capitalism",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Protestant_Ethic_and_the_Spirit_of_Capitalism",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a book written by Max Weber, a German sociologist, economist, and politician. First written as a series of essays, the original German text was composed in 1904 and 1905",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Protestant_Ethic_and_the_Spirit_of_Capitalism&oldid=1353077594"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Protestant_Ethic_and_the_Spirit_of_Capitalism",
+          "retrieved_at": "2026-07-03",
+          "quote": "the Protestant work ethic was an important influence on the emergence of modern capitalism",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Protestant_Ethic_and_the_Spirit_of_Capitalism&oldid=1353077594"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Protestant_Ethic_and_the_Spirit_of_Capitalism",
+          "retrieved_at": "2026-07-03",
+          "quote": "It is considered a founding text in economic sociology and a milestone contribution to sociological thought in general.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Protestant_Ethic_and_the_Spirit_of_Capitalism&oldid=1353077594"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:structural-anthropology",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q2844127.json",
+          "retrieved_at": "2026-07-03",
+          "quote": "recueil d'articles de Claude",
+          "independent": true
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Special:EntityData/Q2844127.json",
+          "retrieved_at": "2026-07-03",
+          "quote": "paru en 1958",
+          "independent": false
+        },
+        {
+          "url": "https://fr.wikipedia.org/wiki/Anthropologie_structurale",
+          "retrieved_at": "2026-07-03",
+          "quote": "Anthropologie Structurale (1958), Anthropologie Structurale deux (1973)",
+          "independent": true,
+          "revision_permalink": "https://fr.wikipedia.org/w/index.php?title=Anthropologie_structurale&oldid=237038785"
+        }
+      ],
+      "notes": "generator/orchestrator flags: RESOLVED by orchestrator: hinted enwiki (book) URL is a genuine 404 (no English article exists; Q2844127 has fr/es sitelinks only) and SEP has no Levi-Strauss entry — anchored via Wikidata fr description + frwiki article instead. Hint-liveness gap recorded."
+    },
+    {
+      "subject_id": "work:the-problems-of-philosophy",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Problems_of_Philosophy",
+          "retrieved_at": "2026-07-03",
+          "quote": "The Problems of Philosophy is a 1912 book by the philosopher Bertrand Russell, in which the author attempts to create a brief and accessible guide to the problems of philosophy.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Problems_of_Philosophy&oldid=1362155450"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Problems_of_Philosophy",
+          "retrieved_at": "2026-07-03",
+          "quote": "his famous 1910 distinction between knowledge by acquaintance and knowledge by description",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Problems_of_Philosophy&oldid=1362155450"
+        }
+      ]
+    },
+    {
+      "subject_id": "field:media-and-communication-studies",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Media_studies",
+          "retrieved_at": "2026-07-03",
+          "quote": "Media studies is a discipline and field of study that deals with the content, history, and effects of various media",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Media_studies&oldid=1360707964"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Media_studies",
+          "retrieved_at": "2026-07-03",
+          "quote": "media studies may draw on traditions from both the social sciences and the humanities",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Media_studies&oldid=1360707964"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Communication_studies",
+          "retrieved_at": "2026-07-03",
+          "quote": "Communication studies is a social science that uses various methods of empirical investigation and critical analysis to develop a body of knowledge",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Communication_studies&oldid=1348110022"
+        }
+      ]
+    },
+    {
+      "subject_id": "subfield:psychoanalysis",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://iep.utm.edu/freud/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Sigmund Freud, the father of psychoanalysis, was a physiologist, medical doctor, psychologist and influential thinker of the early twentieth century.",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702034423/https://iep.utm.edu/freud/"
+        },
+        {
+          "url": "https://iep.utm.edu/freud/",
+          "retrieved_at": "2026-07-03",
+          "quote": "he articulated and refined the concepts of the unconscious, infantile sexuality and repression, and he proposed a tripartite account of the mind’s structure",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260702034423/https://iep.utm.edu/freud/"
+        },
+        {
+          "url": "https://iep.utm.edu/freud/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Freud elaborated the theory that the mind is a complex energy-system, the structural investigation of which is the proper province of psychology.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260702034423/https://iep.utm.edu/freud/"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:logical-positivism",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/logical-empiricism/",
+          "retrieved_at": "2026-07-03",
+          "quote": "logical empiricism is a philosophic movement rather than a set of doctrines, and it flourished in the 1920s and 30s in several centers in europe",
+          "independent": true
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/logical-empiricism/",
+          "retrieved_at": "2026-07-03",
+          "quote": "hans hahn, moritz schlick, rudolf carnap, and otto neurath were leaders of the vienna circle, and kurt gödel regularly attended its meetings.",
+          "independent": false
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/logical-empiricism/",
+          "retrieved_at": "2026-07-03",
+          "quote": "the strict verificationist view that in order to be meaningful a claim must be implied by a finite number of observation sentences.",
+          "independent": false
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:analysis-of-algorithms",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Analysis_of_algorithms",
+          "retrieved_at": "2026-07-03",
+          "quote": "the analysis of algorithms is the process of finding the computational complexity of algorithms",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Analysis_of_algorithms&oldid=1316448807"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Analysis_of_algorithms",
+          "retrieved_at": "2026-07-03",
+          "quote": "big o notation , big-omega notation and big-theta notation are used to this end.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Analysis_of_algorithms&oldid=1316448807"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a comprehensive multi-volume monograph (volumes 1–7) written by the computer scientist Donald Knuth presenting programming algorithms and their analysis",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Art_of_Computer_Programming&oldid=1362150524"
+        }
+      ]
+    },
+    {
+      "subject_id": "institution:vienna-circle",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/vienna-circle/",
+          "retrieved_at": "2026-07-03",
+          "quote": "The Vienna Circle was a group of early twentieth-century philosophers who sought to reconceptualize empiricism",
+          "independent": true
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/vienna-circle/",
+          "retrieved_at": "2026-07-03",
+          "quote": "who met under the (nominal) leadership of moritz schlick for often weekly discussions of problems in the philosophy of science during academic terms in the years from 1924 to 1936.",
+          "independent": false
+        },
+        {
+          "url": "https://iep.utm.edu/vienna-circle/",
+          "retrieved_at": "2026-07-03",
+          "quote": "In 1929 Hahn, Neurath and Carnap published the manifesto of the circle: Wissenschaftliche Weltauffassung. Der Wiener Kreis (A Scientific World-View. The Vienna Circle).",
+          "independent": true
+        }
+      ]
+    },
+    {
+      "subject_id": "person:friedrich-nietzsche",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/nietzsche/",
+          "retrieved_at": "2026-07-03",
+          "quote": "friedrich nietzsche (1844–1900) was a german philosopher and cultural critic who published intensively in the 1870s and 1880s.",
+          "independent": true
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/nietzsche/",
+          "retrieved_at": "2026-07-03",
+          "quote": "He is famous for uncompromising criticisms of traditional European morality and religion, as well as of conventional philosophical ideas",
+          "independent": false
+        },
+        {
+          "url": "https://iep.utm.edu/nietzsche/",
+          "retrieved_at": "2026-07-03",
+          "quote": "in section 230 of beyond good and evil , nietzsche states that his philosophical work aims to “translate humanity back into nature”",
+          "independent": true
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Friedrich_Nietzsche",
+          "retrieved_at": "2026-07-03",
+          "quote": "especially in schools of continental philosophy such as existentialism",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Friedrich_Nietzsche&oldid=1361594903"
+        }
+      ],
+      "notes": "generator/orchestrator flags: UNANCHORED: 'commonly cited as a major influence on existentialism, continental philosophy, and critical theory' — not found in the prose of the available SEP/IEP captures (existentialism/continental philosophy appear only in navbox/related-entries lists, which are excluded). Likely page-drift/section placement rather than the sources denying it; the influence claim is standard but not directly quotable from these captures."
+    },
+    {
+      "subject_id": "person:alan-turing",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/turing/",
+          "retrieved_at": "2026-07-03",
+          "quote": "alan turing (1912–1954) never described himself as a philosopher, but his 1950 paper “computing machinery and intelligence” is one of the most frequently cited in modern philosophical literature",
+          "independent": true
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/turing/",
+          "retrieved_at": "2026-07-03",
+          "quote": "his 1936–7 paper “on computable numbers, with an application to the entscheidungsproblem.” his work can be regarded as the foundation of computer science",
+          "independent": false
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alan_Turing",
+          "retrieved_at": "2026-07-03",
+          "quote": "providing a formalisation of the concepts of algorithm and computation with the turing machine",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alan_Turing&oldid=1362088307"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:karl-marx",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Karl_Marx",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a german philosopher, social and political theorist, economist, journalist, and revolutionary socialist",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Karl_Marx&oldid=1362249126"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Karl_Marx",
+          "retrieved_at": "2026-07-03",
+          "quote": "analyzing class struggle under capitalism and predicting the system's overthrow by the proletariat",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Karl_Marx&oldid=1362249126"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Karl_Marx",
+          "retrieved_at": "2026-07-03",
+          "quote": "undertook a critique of classical political economy in his magnum opus, das kapital (1867–1894).",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Karl_Marx&oldid=1362249126"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/False_consciousness",
+          "retrieved_at": "2026-07-03",
+          "quote": "In Marxist theory, false consciousness is a term describing the ways in which material, ideological, and institutional processes are said to mislead members of the proletariat",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=False_consciousness&oldid=1356297528"
+        }
+      ],
+      "notes": "generator/orchestrator flags: UNANCHORED: 'closely associated with the concept of false consciousness' — 'false consciousness' appears only in the Wikipedia table-of-contents heading (navbox-like), not asserted in a running-prose sentence in the available captures. SEP Marx capture returned no usable body ('not yet available'). The association is standard but not directly quotable here."
+    },
+    {
+      "subject_id": "person:donald-knuth",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Donald_Knuth",
+          "retrieved_at": "2026-07-03",
+          "quote": "is an american computer scientist and mathematician.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Donald_Knuth&oldid=1360322990"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Donald_Knuth",
+          "retrieved_at": "2026-07-03",
+          "quote": "knuth has been called the \"father of the analysis of algorithms",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Donald_Knuth&oldid=1360322990"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Donald_Knuth",
+          "retrieved_at": "2026-07-03",
+          "quote": "knuth is the author of the multi-volume work the art of computer programming",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Donald_Knuth&oldid=1360322990"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:the-wealth-of-nations",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wealth_of_Nations",
+          "retrieved_at": "2026-07-03",
+          "quote": "an inquiry into the nature and causes of the wealth of nations , usually referred to by its shortened title the wealth of nations , is a book by scottish economist and moral philosopher adam smith",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Wealth_of_Nations&oldid=1361622943"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wealth_of_Nations",
+          "retrieved_at": "2026-07-03",
+          "quote": "been described as \"the first formulation of a comprehensive system of political economy",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Wealth_of_Nations&oldid=1361622943"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Wealth_of_Nations",
+          "retrieved_at": "2026-07-03",
+          "quote": "smith argued that free trade eventually makes all actors better off.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Wealth_of_Nations&oldid=1361622943"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:the-interpretation-of-dreams",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Interpretation_of_Dreams",
+          "retrieved_at": "2026-07-03",
+          "quote": "is an 1899 book by sigmund freud , the founder of psychoanalysis , in which the author introduces his theory of the unconscious with respect to dream interpretation",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Interpretation_of_Dreams&oldid=1341587144"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Interpretation_of_Dreams",
+          "retrieved_at": "2026-07-03",
+          "quote": "in freud's view, all dreams are forms of \" wish fulfillment \"",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Interpretation_of_Dreams&oldid=1341587144"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Interpretation_of_Dreams",
+          "retrieved_at": "2026-07-03",
+          "quote": "The manifest content refers to the remembered narrative that plays out in the dream itself. The latent content refers to the underlying meaning of the dream.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Interpretation_of_Dreams&oldid=1341587144"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:on-computable-numbers",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Turing%27s_proof",
+          "retrieved_at": "2026-07-03",
+          "quote": "Turing's proof is a proof by Alan Turing submitted on 12 November 1936 and first published in 1937",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Turing's_proof&oldid=1360602642"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/turing/",
+          "retrieved_at": "2026-07-03",
+          "quote": "his 1936–7 paper “on computable numbers, with an application to the entscheidungsproblem.” his work can be regarded as the foundation of computer science and of the artificial intelligence program.",
+          "independent": true
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Turing%27s_proof",
+          "retrieved_at": "2026-07-03",
+          "quote": "there is no single algorithm that infallibly gives a correct \"yes\" or \"no\" answer to each instance of the problem.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Turing's_proof&oldid=1360602642"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:turing-machine",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Turing_machine",
+          "retrieved_at": "2026-07-03",
+          "quote": "A Turing machine is a mathematical model of computation describing an abstract machine",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Turing_machine&oldid=1361925546"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Turing_machine",
+          "retrieved_at": "2026-07-03",
+          "quote": "The machine operates on an infinite memory tape divided into discrete cells",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Turing_machine&oldid=1361925546"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/turing-machine/",
+          "retrieved_at": "2026-07-03",
+          "quote": "today, they are considered to be one of the foundational models of computability and (theoretical) computer science.",
+          "independent": true
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:social-fact",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Social_fact",
+          "retrieved_at": "2026-07-03",
+          "quote": "in sociology , social facts are values, cultural norms, and social structures that transcend the individual and can exercise social control",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Social_fact&oldid=1328548420"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Social_fact",
+          "retrieved_at": "2026-07-03",
+          "quote": "the french sociologist émile durkheim defined the term, and argued that the discipline of sociology should be understood as the empirical study of social facts.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Social_fact&oldid=1328548420"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Social_fact",
+          "retrieved_at": "2026-07-03",
+          "quote": "in the rules of sociological method durkheim laid out a theory of sociology as \"the science of social facts\".",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Social_fact&oldid=1328548420"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:lambda-calculus",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Lambda_calculus",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a formal system for expressing computation based on function abstraction and application using variable binding and substitution",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Lambda_calculus&oldid=1361655104"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Lambda_calculus",
+          "retrieved_at": "2026-07-03",
+          "quote": "it was introduced by the mathematician alonzo church in the 1930s as part of his research into the foundations of mathematics",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Lambda_calculus&oldid=1361655104"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Lambda_calculus",
+          "retrieved_at": "2026-07-03",
+          "quote": "it is a universal model of computation that can be used to simulate any turing machine",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Lambda_calculus&oldid=1361655104"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:principles-of-geology",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Principles_of_Geology",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a book by the scottish geologist charles lyell that was first published in 3 volumes from 1830 to 1833.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Principles_of_Geology&oldid=1360126876"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Principles_of_Geology",
+          "retrieved_at": "2026-07-03",
+          "quote": "lyell used the theory of uniformitarianism to describe how the earth's surface was changing over time.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Principles_of_Geology&oldid=1360126876"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Principles_of_Geology",
+          "retrieved_at": "2026-07-03",
+          "quote": "this volume is what darwin took with him on his voyage on the beagle",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Principles_of_Geology&oldid=1360126876"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:traite-elementaire-de-chimie",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Trait%C3%A9_%C3%A9l%C3%A9mentaire_de_chimie",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a textbook written by antoine lavoisier published in 1789",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Trait%C3%A9_%C3%89l%C3%A9mentaire_de_Chimie&oldid=1354179399"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Trait%C3%A9_%C3%A9l%C3%A9mentaire_de_chimie",
+          "retrieved_at": "2026-07-03",
+          "quote": "it is considered to be the first modern chemical textbook.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Trait%C3%A9_%C3%89l%C3%A9mentaire_de_Chimie&oldid=1354179399"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Trait%C3%A9_%C3%A9l%C3%A9mentaire_de_chimie",
+          "retrieved_at": "2026-07-03",
+          "quote": "the book defines an element as a single substance that can't be broken down by chemical analysis",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Trait%C3%A9_%C3%89l%C3%A9mentaire_de_Chimie&oldid=1354179399"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:begriffsschrift",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Begriffsschrift",
+          "retrieved_at": "2026-07-03",
+          "quote": "begriffsschrift (german for, roughly, \"concept-writing\") is a book on logic by gottlob frege , published in 1879, and the formal system set out in that book.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Begriffsschrift&oldid=1353573485"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Begriffsschrift",
+          "retrieved_at": "2026-07-03",
+          "quote": "the calculus contains the first appearance of quantified variables, and is essentially classical bivalent second-order logic with identity.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Begriffsschrift&oldid=1353573485"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/frege/",
+          "retrieved_at": "2026-07-03",
+          "quote": "constituted the first ‘predicate calculus’. in this formal system, frege developed an analysis of quantified statements",
+          "independent": true
+        }
+      ]
+    },
+    {
+      "subject_id": "work:principles-of-physiological-psychology",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wilhelm_Wundt",
+          "retrieved_at": "2026-07-03",
+          "quote": "grundzüge der physiologischen psychologie (principles of physiological psychology), (1874; 6th ed. 1908–1911, 3 vols.)",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Wilhelm_Wundt&oldid=1361411640"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Wilhelm_Wundt",
+          "retrieved_at": "2026-07-03",
+          "quote": "important in the history of psychology, principles of physiological psychology , in 1874. this was the first textbook that was written pertaining to the field of experimental psychology.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Wilhelm_Wundt&oldid=1361411640"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Wilhelm_Wundt",
+          "retrieved_at": "2026-07-03",
+          "quote": "he is widely regarded as the \"father of experimental psychology",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Wilhelm_Wundt&oldid=1361411640"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:cours-de-philosophie-positive",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Course_of_Positive_Philosophy",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a series of texts written by the french philosopher of science and founding sociologist , auguste comte , between 1830 and 1842.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Course_of_Positive_Philosophy&oldid=1357993571"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Course_of_Positive_Philosophy",
+          "retrieved_at": "2026-07-03",
+          "quote": "within the work he unveiled the epistemological perspective of positivism .",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Course_of_Positive_Philosophy&oldid=1357993571"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Course_of_Positive_Philosophy",
+          "retrieved_at": "2026-07-03",
+          "quote": "it has been described as a foundational text for the discipline of sociology.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Course_of_Positive_Philosophy&oldid=1357993571"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:an-investigation-of-the-laws-of-thought",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/The_Laws_of_Thought",
+          "retrieved_at": "2026-07-03",
+          "quote": "an investigation of the laws of thought: on which are founded the mathematical theories of logic and probabilities by george boole , published in 1854, is the second of boole's two monographs on algebraic logic .",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=The_Laws_of_Thought&oldid=1315882804"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/boole/",
+          "retrieved_at": "2026-07-03",
+          "quote": "george boole (1815–1864) was an english mathematician and a founder of the algebraic tradition in logic.",
+          "independent": true
+        }
+      ],
+      "notes": "generator/orchestrator flags: PARTIAL: the summary states the work is 'laying out what is now known as Boolean algebra'. The Wikipedia capture explicitly qualifies this, saying the book is 'often, but mistakenly, credited as being the source of what we know today as boolean algebra' (Boole's algebra differs from modern Boolean algebra). The core claim (algebraic/symbolic treatment of logic, a founding work of mathematical logic) IS anchored; only the exact 'Boolean algebra' equation is nuanced by the source."
+    },
+    {
+      "subject_id": "work:syntactic-structures",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Syntactic_Structures",
+          "retrieved_at": "2026-07-03",
+          "quote": "syntactic structures is a seminal work in linguistics by american linguist noam chomsky , originally published in 1957.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Syntactic_Structures&oldid=1362247355"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Syntactic_Structures",
+          "retrieved_at": "2026-07-03",
+          "quote": "in it, chomsky introduced his idea of a transformational generative grammar",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Syntactic_Structures&oldid=1362247355"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Syntactic_Structures",
+          "retrieved_at": "2026-07-03",
+          "quote": "it is recognized as one of the most significant and influential linguistic studies of the 20th century.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Syntactic_Structures&oldid=1362247355"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:kurt-godel",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kurt_G%C3%B6del",
+          "retrieved_at": "2026-07-03",
+          "quote": "Considered along with Aristotle and Gottlob Frege to be one of the most significant logicians in history",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Kurt_G%C3%B6del&oldid=1362231693"
+        }
+      ],
+      "notes": "Re-anchor after measured live drift (2026-07-02 Wikipedia edit added an Oxford comma to the lead, breaking the editorial-batch3 quote): fresh stable anchor recorded; the batch-3 verdict remains auditable via its oldid permalink."
+    },
+    {
+      "subject_id": "person:daniel-kahneman",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Daniel_Kahneman",
+          "retrieved_at": "2026-07-03",
+          "quote": "best known for his work on the psychology of judgment and decision-making as well as behavioral economics",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Daniel_Kahneman&oldid=1360144751"
+        }
+      ],
+      "notes": "Anchor for the softened JDM wording (translation update in this decision): the graph's kahneman->judgment-and-decision-making founder edge is proposed, so the summary now mirrors the source's own 'best known for his work on' framing instead of asserting founding."
+    }
+  ],
+  "notes": [
+    "Citation retrofit for editorial batches 1+2 (structural-summaries-v1 15 + phase2-summaries-v1 32 + works-remainder 21 = 68 shipped indexable summaries): the mid-point inspection confirmed these carried NO recorded verbatim claim-anchor quotes, leaving them outside mechanical laundering detection (decision (34) machine-check gap). This decision records 2-3 live-verified verbatim anchors per summary — 68 subjects, 200+ citations, ALL machine-verified verbatim on live pages via foundry:fetch-verify (final pass 201/202 + 2 replacement spans spot-verified; effective 100%). Generation of quote candidates = 3 separate-context Opus subagents reading the polite fetch-corpus captures; orchestrator handled flags, patches and verification.",
+    "Honest findings surfaced by the retrofit: (1) batch-2 source_hints included two GENUINE 404s for work:structural-anthropology (enwiki '(book)' title that has never existed - Q2844127 has fr/es sitelinks only - and a nonexistent SEP 'levi-strauss' entry) -> re-anchored via Wikidata EntityData fr description + frwiki article; hint-liveness was evidently never checked at batch-2 QC, which is exactly the gap this retrofit closes. (2) The Labov SSENYC book article also does not exist on enwiki; title/1966/influence anchored via William_Labov page, the postvocalic-(r) variable via New_York_City_English prose; the precise class-correlation phrasing remains composite (Britannica bot-blocked; recorded honestly). (3) person:friedrich-nietzsche influence claim anchored from the live enwiki lead (existentialism/continental philosophy verbatim; critical-theory limb remains prose-unanchored, 'commonly cited' framing retained). (4) person:karl-marx false-consciousness association anchored via the enwiki False_consciousness lead ('In Marxist theory, false consciousness is...').",
+    "Two editorial corrections ride along (editorial-v2, anchors machine-verified): person:daniel-kahneman JDM clause softened to the source's own 'best known for his work on' framing (founder edge is proposed, audit finding); work:an-investigation-of-the-laws-of-thought 'laying out what is now known as Boolean algebra' -> 'laying the groundwork for...' (the enwiki article explicitly qualifies the credit: 'often, but mistakenly, credited').",
+    "Tool delta discovered by this batch: SEP serves named HTML entities (&rsquo;/&ldquo;/&ouml; family) that the normalizer did not decode - 12/202 quotes false-missed until normalize-text.ts gained a named-entity table (measured pattern, symmetric+content-free, same family as the #55 numeric-entity fix). Included in this branch.",
+    "Britannica (46 hinted URLs) is hard bot-blocked and contributed ZERO anchors - all quotes anchor on live-verifiable SEP/IEP/Wikipedia/Wikidata/frwiki sources instead."
+  ],
+  "anchors_pending": [
+    {
+      "url": "https://plato.stanford.edu/entries/race/",
+      "reason": "[SPN-FAILED] save did not materialize and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/darwinism/",
+      "reason": "[SPN-FAILED] save did not materialize and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/husserl/",
+      "reason": "[SPN-FAILED] save did not materialize and no prior snapshot exists"
+    },
+    {
+      "url": "https://iep.utm.edu/husserl/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures); using 13d-old snapshot (predates QC)"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/wittgenstein/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/natural-selection/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/game-theory/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/settheory-early/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/cognitive-science/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/social-choice/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/arrows-theorem/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/frege/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://iep.utm.edu/frege/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures); using 48d-old snapshot (predates QC)"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/weber/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/newton/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/intentionality/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://iep.utm.edu/intentio/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures); using 43d-old snapshot (predates QC)"
+    },
+    {
+      "url": "https://www.wikidata.org/wiki/Special:EntityData/Q2844127.json",
+      "reason": "could not resolve wiki revision id"
+    },
+    {
+      "url": "https://www.wikidata.org/wiki/Special:EntityData/Q2844127.json",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/logical-empiricism/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/vienna-circle/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://iep.utm.edu/vienna-circle/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/nietzsche/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://iep.utm.edu/nietzsche/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/turing/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/turing-machine/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    },
+    {
+      "url": "https://plato.stanford.edu/entries/boole/",
+      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+    }
+  ]
+}
