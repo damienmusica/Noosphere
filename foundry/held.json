@@ -111,5 +111,110 @@
     "batch_id": "recheck-wave1-v1",
     "recorded_at": "2026-07-02",
     "note": "Living person — (70) floor applies whenever re-framed; attributed wording required."
+  },
+  {
+    "id": "subfield:computational-cognitive-science",
+    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
+    "recheck": "machine",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:computer-systems",
+    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
+    "recheck": "machine",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:databases-and-information-systems",
+    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
+    "recheck": "machine",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:distributed-and-parallel-computing",
+    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
+    "recheck": "machine",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:judgment-and-decision-making",
+    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
+    "recheck": "machine",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:modern-history",
+    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
+    "recheck": "machine",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:naval-architecture-and-marine-engineering",
+    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
+    "recheck": "machine",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:sensation-and-perception",
+    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
+    "recheck": "machine",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:esotericism-and-theosophy",
+    "blocking_condition": "QID Q7988481 (Western esotericism) present but held on a section-12 granularity/label-referent tension: node slug 'esotericism-and-theosophy' vs QID referent 'Western esotericism'. Rule-silent modeling hold, NOT a verification gap — needs a section-12 granularity ruling (stop-set: new modeling policy), not re-resolution. Ref decision (92) 3 rule-silent modeling.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:modern-philosophy",
+    "blocking_condition": "QID Q860746 (early modern philosophy) present but held on a section-12 period-axis tension: node slug 'modern-philosophy' vs QID referent 'early modern philosophy' — a period-axis subfield the granularity rule is silent on. Needs a section-12 ruling, not re-resolution. Ref decision (92).",
+    "recheck": "manual",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:social-philosophy",
+    "blocking_condition": "QID Q180592 (social philosophy) present but held on a section-12 granularity tension (overlap with political philosophy / ethics / sociology). Rule-silent modeling hold; needs a section-12 granularity ruling, not re-resolution. Ref decision (92). Note: edge:social-philosophy-part-of-philosophy waits on this node.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "concept:bureaucracy",
+    "blocking_condition": "C3 referent-precision: QID Q72468 is the GENERIC administrative-system concept (bureaucracy-as-institution long predates Weber), NOT the Weberian sociological rational-legal ideal-type asserted by the founder edge. Promoting would misattribute. Awaits a Weber-ideal-type referent node (or a re-scoping ruling). Held together with its 2 edges. Ref edge notes 2026-07-02 (Weber founder wave).",
+    "recheck": "manual",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:bureaucracy-part-of-sociology",
+    "blocking_condition": "Held with concept:bureaucracy (C3 referent-precision: Q72468 generic institution vs Weberian ideal-type). See node hold.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:max-weber-founded-bureaucracy",
+    "blocking_condition": "Held with concept:bureaucracy (C3 referent-precision: Weber formalized the sociological ideal-type, but Q72468 models the generic institution). See node hold.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "edge:evolutionary-biology-applies-to-epidemiology",
+    "blocking_condition": "CPO ruling (session #55, 2026-07-02): applies_to is a substantive claim, NOT a classification placement, so it is not a structural-tier edge and does not ride edge-promotion-v1-structural. Held at proposed until a (d)-type applies_to ladder is designed and measured on its own. Sole non-structural recheck candidate surfaced by recheck-wave1.",
+    "recheck": "manual",
+    "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
   }
 ]
