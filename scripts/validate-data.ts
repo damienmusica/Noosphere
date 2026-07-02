@@ -13,6 +13,8 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 import { z } from "zod";
 
+import { DATA_FILES, checkCanonicalFormat } from "./lib/canonical-data.ts";
+import { foundryProposalV2Schema } from "../src/schema/foundry-proposal.ts";
 import { nodeSchema } from "../src/schema/node.ts";
 import { nodeTranslationSchema } from "../src/schema/node-translation.ts";
 import { edgeSchema } from "../src/schema/edge.ts";
@@ -114,10 +116,41 @@ for (const s of sources) {
   }
 }
 
+// --- Canonical file format ----------------------------------------------------
+// Every data file must be byte-identical to its canonical serialization
+// (scripts/lib/canonical-data.ts: id-sorted, 2-space indent, trailing newline).
+// This is what lets write tooling regenerate files without ever producing
+// spurious diffs on untouched items (ops-efficiency package, 2026-07-02).
+for (const file of DATA_FILES) {
+  let raw = "";
+  try {
+    raw = readFileSync(join(DATA_DIR, file), "utf8");
+  } catch {
+    continue; // unreadable file already reported by the loader above
+  }
+  const deviation = checkCanonicalFormat(file, raw);
+  if (deviation) {
+    fail(`[${file}] not in canonical form (${deviation}) — run: npm run format:data`);
+  }
+}
+
 // --- Duplicate IDs -----------------------------------------------------------
 checkDuplicates("nodes.json", nodes.map((n) => n.id));
 checkDuplicates("edges.json", edges.map((e) => e.id));
 checkDuplicates("sources.json", sources.map((s) => s.id));
+
+// --- Provider-ID uniqueness ---------------------------------------------------
+// Two nodes must never share the same external identifier (Wikidata QID,
+// OpenAlex ID, ...): one real-world referent gets exactly one node. This is the
+// machine backstop against parallel batches modeling the same subject twice
+// (ops-efficiency package, 2026-07-02; duplicates as of adoption: zero).
+checkDuplicates(
+  "nodes.json",
+  nodes.flatMap((n) =>
+    Object.entries(n.external_ids).map(([provider, value]) => `${provider}:${value}`),
+  ),
+  "external_id",
+);
 
 // Computed/interpreted metric keys are forbidden inside external_metrics: only
 // raw provider-API facts may be recorded (OpenAlex field design, vault decision
@@ -420,6 +453,47 @@ const REPO_ROOT = join(__dirname, "..");
           `record a Wayback snapshot or wiki revision permalink (…oldid=NNN) for every page QC relied on, ` +
           `or the explicit [SPN-FAILED] / [NO-EXTERNAL-EVIDENCE] marker (docs/data-foundry.md §8)`,
       );
+    }
+  }
+
+  // --- Repo hygiene: proposal contract v2 for new batches ---------------------
+  // Generator-guessed provider IDs measured ~100% hallucinated across every
+  // wave, so proposal contract v2 (ops-efficiency package, 2026-07-02) bans
+  // them at the schema level: new proposal artifacts must be version-2
+  // envelopes — blind `referent` descriptions instead of `external_ids`, and
+  // no QID/OpenAlex shapes anywhere in the text. Batches committed before the
+  // cutover are frozen as v1 history (never retro-validated: 6/18 already
+  // drift from the v1 schema, which is exactly why v2 is machine-checked).
+  const PRE_V2_PROPOSAL_DIRS = new Set([
+    ...GRANDFATHERED_BATCHES,
+    "a-relations-wave4-v1", "a-relations-wave5-v1", "a-relations-wave6-v1",
+    "concept-layer-wave1-v1", "concept-wave2-v1",
+    "evidence-permanence-backfill-and-backlog-v1", "phase2-summaries-v1",
+    "philosophy-identity-anchor-v1", "structural-summaries-v1",
+    "work-wave4-v1", "work-wave5-v1",
+  ]);
+  const PROPOSAL_ARTIFACT_FILES = ["proposal.json", "nodes.proposed.json", "edges.proposed.json"];
+  for (const dir of batchDirs) {
+    if (PRE_V2_PROPOSAL_DIRS.has(dir)) continue;
+    for (const artifact of PROPOSAL_ARTIFACT_FILES) {
+      const artifactPath = join(proposalsDir, dir, artifact);
+      if (!existsSync(artifactPath)) continue;
+      let parsed: unknown;
+      try {
+        parsed = JSON.parse(readFileSync(artifactPath, "utf8"));
+      } catch (err) {
+        fail(`[foundry/proposals/${dir}/${artifact}] could not read/parse JSON: ${(err as Error).message}`);
+        continue;
+      }
+      const result = foundryProposalV2Schema.safeParse(parsed);
+      if (!result.success) {
+        for (const issue of result.error.issues.slice(0, 10)) {
+          fail(
+            `[foundry/proposals/${dir}/${artifact}] proposal contract v2: ` +
+              `${issue.path.join(".") || "(root)"}: ${issue.message}`,
+          );
+        }
+      }
     }
   }
 }

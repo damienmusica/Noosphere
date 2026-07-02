@@ -121,3 +121,135 @@ export const foundryProposalSchema = z
   })
   .strict();
 export type FoundryProposal = z.infer<typeof foundryProposalSchema>;
+
+// ---------------------------------------------------------------------------
+// Proposal contract v2 (ops-efficiency package, CPO-ratified 2026-07-02).
+//
+// Measured across every generation wave, generator-guessed Wikidata QIDs were
+// ~100% hallucinated (9/9, 12/12, 20/20, 21/21, 7/7 wrong) — zero signal, plus
+// a copy-contamination risk while plausible-looking QIDs sit in drafts. v2
+// removes the guessing step at the schema level:
+//
+//   - `external_ids` is GONE from proposed nodes. Identity resolution is the
+//     deterministic resolver's job (scripts/foundry/resolve-wikidata.ts),
+//     never the generator's.
+//   - Every proposed node instead carries `referent`: a discriminating
+//     description of the intended real-world referent, written BLIND (from
+//     the generator's own knowledge, no lookups). The resolver matches label
+//     + referent against live candidates independently; a mismatch between
+//     what the generator meant and what resolves is an error signal the old
+//     contract could not produce.
+//   - No provider identifiers may appear ANYWHERE in a v2 artifact — not in
+//     source_hint, rationale, uncertainty, notes. Enforced by a string scan
+//     over the whole envelope (QID shapes, wikidata/openalex URLs/IDs).
+// ---------------------------------------------------------------------------
+
+/** Provider-ID shapes that must not leak into v2 proposal text. */
+export const PROVIDER_ID_LEAK_PATTERNS: readonly RegExp[] = [
+  /\bQ\d+\b/, // Wikidata QID
+  /\b[WAC]\d{6,}\b/, // OpenAlex work/author/concept IDs
+  /wikidata\.org/i,
+  /openalex\.org/i,
+];
+
+/** Scan every string value in an artifact for provider-ID leaks. */
+export function findProviderIdLeaks(value: unknown, path = "$"): string[] {
+  const leaks: string[] = [];
+  if (typeof value === "string") {
+    for (const pattern of PROVIDER_ID_LEAK_PATTERNS) {
+      const match = pattern.exec(value);
+      if (match) leaks.push(`${path}: "${match[0]}"`);
+    }
+  } else if (Array.isArray(value)) {
+    value.forEach((v, i) => leaks.push(...findProviderIdLeaks(v, `${path}[${i}]`)));
+  } else if (value && typeof value === "object") {
+    for (const [k, v] of Object.entries(value)) {
+      leaks.push(...findProviderIdLeaks(v, `${path}.${k}`));
+    }
+  }
+  return leaks;
+}
+
+/** A v2 candidate node: label + blind referent description, no provider IDs. */
+export const proposedNodeV2Schema = z
+  .object({
+    id: idSchema,
+    type: nodeTypeSchema,
+    /** Required for every node except `domain` nodes themselves. */
+    domain: domainKeySchema.optional(),
+    /** Depth hint: 0 = domain, 1 = field, 2 = subfield, ... */
+    level: z.number().int().min(0),
+    /** Proposals are always lowest-trust drafts. */
+    status: z.literal("generated"),
+    /** English display label for review (canonical labels live in node-translations). */
+    label_en: z.string().min(1),
+    /**
+     * Blind discriminating description of the intended real-world referent:
+     * which entity is meant, with enough context to disambiguate homonyms
+     * (e.g. "calculus — the branch of mathematics on limits and derivatives,
+     * not the dental deposit or the arachnid genus"). Written from the
+     * generator's own knowledge, no lookups. The resolver matches this
+     * independently; never restate a guessed identifier here.
+     */
+    referent: z.string().min(20, "referent must actually describe the entity"),
+    /** Coverage-skeleton tag; required for discipline nodes (domain/field/subfield). */
+    academic_status: academicStatusSchema.optional(),
+    /** Unverified pointer (textbook, classification entry) for QC — not a citation, never a provider ID. */
+    source_hint: z.string().optional(),
+    note: z.string().optional(),
+    ...reasonedProposalFields,
+  })
+  .strict()
+  .refine((node) => node.type === "domain" || node.domain !== undefined, {
+    message: "Non-domain nodes must declare a `domain`",
+    path: ["domain"],
+  })
+  .refine(
+    (node) =>
+      !["domain", "field", "subfield"].includes(node.type) ||
+      node.academic_status !== undefined,
+    {
+      message: "Discipline nodes (domain/field/subfield) must declare `academic_status`",
+      path: ["academic_status"],
+    },
+  );
+export type ProposedNodeV2 = z.infer<typeof proposedNodeV2Schema>;
+
+/** A v2 candidate edge — shape unchanged from v1; the leak scan covers its text. */
+export const proposedEdgeV2Schema = proposedEdgeSchema;
+export type ProposedEdgeV2 = z.infer<typeof proposedEdgeV2Schema>;
+
+/**
+ * v2 batch reference: either a formal manifest ID (`batch:foo-v1`) or the
+ * proposal directory name (`foo-v1`) — recent lightweight batches key on the
+ * directory and have no manifest, so both are honest references.
+ */
+export const proposalBatchRefSchema = z
+  .string()
+  .regex(
+    /^(?:batch:)?[a-z0-9]+(?:-[a-z0-9]+)*$/,
+    "batch reference must be batch:<kebab> or the proposal directory name",
+  );
+
+/** The v2 proposal envelope. One artifact per file, no provider IDs anywhere. */
+export const foundryProposalV2Schema = z
+  .object({
+    version: z.literal(2),
+    batch_id: proposalBatchRefSchema,
+    proposed_by: proposerSchema,
+    nodes: z.array(proposedNodeV2Schema).default([]),
+    edges: z.array(proposedEdgeV2Schema).default([]),
+    notes: z.array(z.string().min(1)).default([]),
+  })
+  .strict()
+  .superRefine((artifact, ctx) => {
+    for (const leak of findProviderIdLeaks(artifact)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message:
+          `provider ID leaked into v2 proposal (${leak}) — generators must not ` +
+          `guess or restate Wikidata/OpenAlex identifiers; describe the referent instead`,
+      });
+    }
+  });
+export type FoundryProposalV2 = z.infer<typeof foundryProposalV2Schema>;

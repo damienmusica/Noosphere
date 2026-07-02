@@ -7,6 +7,7 @@
   "type": "module",
   "scripts": {
     "validate:data": "tsx scripts/validate-data.ts",
+    "format:data": "tsx scripts/format-data.ts",
     "export:graph": "tsx scripts/export-graph.ts",
     "report:graph": "tsx scripts/report-graph.ts",
     "foundry:validate-batches": "tsx scripts/foundry/validate-batches.ts",
@@ -16,6 +17,12 @@
     "foundry:claim-anchor": "tsx scripts/foundry/claim-anchor-check.ts",
     "foundry:fetch-verify": "tsx scripts/foundry/fetch-verify.ts",
     "foundry:openalex-prevalidate": "tsx scripts/foundry/openalex-prevalidate.ts",
+    "foundry:ladder-check": "tsx scripts/foundry/ladder-check.ts",
+    "foundry:verify-identity": "tsx scripts/foundry/verify-identity.ts",
+    "foundry:anchor": "tsx scripts/foundry/anchor.ts",
+    "foundry:report": "tsx scripts/foundry/report.ts",
+    "foundry:recheck-held": "tsx scripts/foundry/recheck-held.ts",
+    "foundry:apply-batch": "tsx scripts/foundry/apply-batch.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {

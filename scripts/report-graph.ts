@@ -229,5 +229,44 @@ if (relationEntries.length === 0) {
 } else {
   for (const [relation, count] of relationEntries) out(`- ${relation}: ${count}`);
 }
+out();
+
+// --- 9. Editorial gap ----------------------------------------------------------
+// Structure lands faster than public-facing prose, so the summary gap grows by
+// design — the dashboard makes it a TRACKED, BOUNDED number instead of a silent
+// one (ops-efficiency package, 2026-07-02). The priority list is degree-ordered:
+// the gap that readers actually hit closes first. Editorial batches should be
+// drawn from the top of this list.
+const EDITORIAL_PRIORITY_LIMIT = 20;
+const enTranslationByNode = new Map(
+  translations.filter((t) => t.locale === "en").map((t) => [t.node_id, t]),
+);
+const reviewedNodes = nodes.filter((n) => n.status === "reviewed");
+const summaryGap = reviewedNodes.filter((n) => {
+  const t = enTranslationByNode.get(n.id);
+  return !t || t.summary.trim() === "";
+});
+const unreviewedSummaries = reviewedNodes.filter((n) => {
+  const t = enTranslationByNode.get(n.id);
+  return t !== undefined && t.summary.trim() !== "" && !t.reviewed;
+});
+
+out("Editorial gap (summary coverage)");
+out(`- Reviewed nodes: ${reviewedNodes.length}`);
+out(
+  `- Reviewed nodes without an en summary: ${summaryGap.length} ` +
+    `(${reviewedNodes.length > 0 ? Math.round((summaryGap.length / reviewedNodes.length) * 100) : 0}% gap)`,
+);
+out(`- Reviewed nodes with a summary awaiting editorial review: ${unreviewedSummaries.length}`);
+const gapRanked = summaryGap
+  .map((n) => n.id)
+  .sort((a, b) => degreeOf(b) - degreeOf(a) || byString(a, b))
+  .slice(0, EDITORIAL_PRIORITY_LIMIT);
+out(`- Editorial priority (degree-ordered, limit ${EDITORIAL_PRIORITY_LIMIT}):`);
+if (gapRanked.length === 0) {
+  out("  - (none — gap closed)");
+} else {
+  for (const id of gapRanked) out(`  - ${id} — degree ${degreeOf(id)}`);
+}
 
 console.log(lines.join("\n"));

@@ -11,7 +11,9 @@
       "field:statistics",
       "subfield:machine-learning"
     ],
-    "evidence": ["source:manual-curation-v1"]
+    "evidence": [
+      "source:manual-curation-v1"
+    ]
   },
   {
     "id": "path:math-to-physics",
@@ -19,7 +21,12 @@
     "indexable": true,
     "title": "From Mathematics to Physics",
     "description": "How mathematical structure underpins the study of the physical world.",
-    "node_sequence": ["field:mathematics", "field:physics"],
-    "evidence": ["source:manual-curation-v1"]
+    "node_sequence": [
+      "field:mathematics",
+      "field:physics"
+    ],
+    "evidence": [
+      "source:manual-curation-v1"
+    ]
   }
 ]
