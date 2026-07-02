@@ -14,6 +14,7 @@ import { dirname, join } from "node:path";
 import { z } from "zod";
 
 import { DATA_FILES, checkCanonicalFormat } from "./lib/canonical-data.ts";
+import { foundryProposalV2Schema } from "../src/schema/foundry-proposal.ts";
 import { nodeSchema } from "../src/schema/node.ts";
 import { nodeTranslationSchema } from "../src/schema/node-translation.ts";
 import { edgeSchema } from "../src/schema/edge.ts";
@@ -452,6 +453,47 @@ const REPO_ROOT = join(__dirname, "..");
           `record a Wayback snapshot or wiki revision permalink (…oldid=NNN) for every page QC relied on, ` +
           `or the explicit [SPN-FAILED] / [NO-EXTERNAL-EVIDENCE] marker (docs/data-foundry.md §8)`,
       );
+    }
+  }
+
+  // --- Repo hygiene: proposal contract v2 for new batches ---------------------
+  // Generator-guessed provider IDs measured ~100% hallucinated across every
+  // wave, so proposal contract v2 (ops-efficiency package, 2026-07-02) bans
+  // them at the schema level: new proposal artifacts must be version-2
+  // envelopes — blind `referent` descriptions instead of `external_ids`, and
+  // no QID/OpenAlex shapes anywhere in the text. Batches committed before the
+  // cutover are frozen as v1 history (never retro-validated: 6/18 already
+  // drift from the v1 schema, which is exactly why v2 is machine-checked).
+  const PRE_V2_PROPOSAL_DIRS = new Set([
+    ...GRANDFATHERED_BATCHES,
+    "a-relations-wave4-v1", "a-relations-wave5-v1", "a-relations-wave6-v1",
+    "concept-layer-wave1-v1", "concept-wave2-v1",
+    "evidence-permanence-backfill-and-backlog-v1", "phase2-summaries-v1",
+    "philosophy-identity-anchor-v1", "structural-summaries-v1",
+    "work-wave4-v1", "work-wave5-v1",
+  ]);
+  const PROPOSAL_ARTIFACT_FILES = ["proposal.json", "nodes.proposed.json", "edges.proposed.json"];
+  for (const dir of batchDirs) {
+    if (PRE_V2_PROPOSAL_DIRS.has(dir)) continue;
+    for (const artifact of PROPOSAL_ARTIFACT_FILES) {
+      const artifactPath = join(proposalsDir, dir, artifact);
+      if (!existsSync(artifactPath)) continue;
+      let parsed: unknown;
+      try {
+        parsed = JSON.parse(readFileSync(artifactPath, "utf8"));
+      } catch (err) {
+        fail(`[foundry/proposals/${dir}/${artifact}] could not read/parse JSON: ${(err as Error).message}`);
+        continue;
+      }
+      const result = foundryProposalV2Schema.safeParse(parsed);
+      if (!result.success) {
+        for (const issue of result.error.issues.slice(0, 10)) {
+          fail(
+            `[foundry/proposals/${dir}/${artifact}] proposal contract v2: ` +
+              `${issue.path.join(".") || "(root)"}: ${issue.message}`,
+          );
+        }
+      }
     }
   }
 }

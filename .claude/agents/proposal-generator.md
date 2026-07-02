@@ -57,25 +57,41 @@ Every proposal artifact you write MUST record the proposer:
 This is what makes the corpus bulk re-auditable by future models. Omitting it
 invalidates the batch.
 
-## Output rules (hard)
+## Output rules (hard) — proposal contract v2 (2026-07-02)
 
 - Write ONLY under `foundry/proposals/<batch-id>/` (the order names the batch
   ID). Typical files: `nodes.proposed.json`, `edges.proposed.json`,
-  `report.md`.
+  `report.md`. JSON artifacts are **version-2 envelopes**
+  (`foundryProposalV2Schema` in `src/schema/foundry-proposal.ts`), enforced by
+  `npm run validate:data`.
 - NEVER write to `/data`, `src/`, `scripts/`, `docs/`, or any config file.
 - All items get status `generated` (lowest trust). Nothing you produce is
   `reviewed` or `indexable`.
 - IDs must be stable, language-independent, matching
-  `^[a-z]+:[a-z0-9]+(?:-[a-z0-9]+)*$`. Provider IDs (Wikidata QID, OpenAlex)
-  go in `external_ids`, never used as the node ID. Never derive IDs from
-  display labels in other languages.
+  `^[a-z]+:[a-z0-9]+(?:-[a-z0-9]+)*$`. Never derive IDs from display labels in
+  other languages.
+- **NO provider identifiers, anywhere.** Do not guess, mention, or restate
+  Wikidata QIDs, OpenAlex IDs, or wikidata.org/openalex.org URLs — not in
+  `external_ids` (the field no longer exists in v2), not in `source_hint`,
+  `rationale`, `uncertainty`, or notes. Measured across every generation wave,
+  guessed QIDs were ~100% hallucinated: zero signal, pure contamination risk.
+  Identity resolution is the deterministic resolver's job, never yours.
+- **Every proposed node carries `referent` instead**: a discriminating
+  description of the real-world referent you mean, written blind from your
+  own knowledge (e.g. "calculus — the branch of mathematics on limits and
+  derivatives, not the dental deposit or the arachnid genus"). Make it
+  specific enough that a resolver ranking homonymous candidates picks the
+  right one. Your blind description is matched independently against live
+  candidates — a mismatch is a valuable error signal, so describe what you
+  MEAN, not what you expect a database to say.
 - Follow the order's scope exactly: if it says nodes only (skeleton-first),
   propose no edges. If it requires `academic_status` tags, every node gets one
   of `established | emerging | historical | non-academic`, with the rationale
   covering the tag choice.
-- Evidence hints must name real, checkable sources (Wikidata QIDs, standard
-  references). Mark them as unverified hints for QC — not citations. NamuWiki
-  is never a source or evidence of any kind.
+- Evidence hints must name real, checkable sources by title/name (textbooks,
+  standard references, encyclopedia entry names — never provider IDs). Mark
+  them as unverified hints for QC — not citations. NamuWiki is never a source
+  or evidence of any kind.
 - No network calls, no scraping, no secrets. Work from the repo, the order,
   and your own knowledge — and flag knowledge-only claims honestly via
   `uncertainty`/`ambiguous`.
