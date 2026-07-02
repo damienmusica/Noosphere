@@ -19,6 +19,8 @@
     "foundry:openalex-prevalidate": "tsx scripts/foundry/openalex-prevalidate.ts",
     "foundry:ladder-check": "tsx scripts/foundry/ladder-check.ts",
     "foundry:verify-identity": "tsx scripts/foundry/verify-identity.ts",
+    "foundry:anchor": "tsx scripts/foundry/anchor.ts",
+    "foundry:report": "tsx scripts/foundry/report.ts",
     "foundry:apply-batch": "tsx scripts/foundry/apply-batch.ts",
     "typecheck": "tsc --noEmit"
   },
