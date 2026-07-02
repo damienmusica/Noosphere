@@ -1,0 +1,398 @@
+[
+  {
+    "id": "edge:tractatus-canonical-philosophy-of-language",
+    "source": "work:tractatus-logico-philosophicus",
+    "target": "subfield:philosophy-of-language",
+    "relation": "canonical_work",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Tractatus Logico-Philosophicus (1921) proposes the picture theory of meaning and the limits-of-language thesis; standardly credited as a founding text of 20th-century analytic philosophy of language.",
+    "rationale": "SEP's Wittgenstein entry and standard histories of analytic philosophy credit the Tractatus as the founding statement of his picture theory of meaning, anchoring philosophy-of-language as the most referent-precise target subfield.",
+    "uncertainty": "The Tractatus is also foundational to analytic-philosophy more broadly (already founded by Russell/Moore in /data); scoping to philosophy-of-language specifically, not analytic-philosophy generally, is a referent-precision judgment call.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:tractatus-canonical-ludwig-wittgenstein",
+    "source": "work:tractatus-logico-philosophicus",
+    "target": "person:ludwig-wittgenstein",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Tractatus Logico-Philosophicus, authored solely by Ludwig Wittgenstein, is his defining early-period work, distinct from the posthumous Philosophical Investigations.",
+    "rationale": "Wittgenstein is sole author of record; this is the text most consistently credited as his canonical early masterwork.",
+    "uncertainty": "Philosophical Investigations (1953) has an independent strong claim to being 'the' canonical Wittgenstein text for his later philosophy; this edge scopes to the earlier, author-finalized single work.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:logical-investigations-canonical-phenomenology",
+    "source": "work:logical-investigations",
+    "target": "subfield:phenomenology",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Logical Investigations (1900-01) is standardly credited as the founding text of phenomenology, introducing intentionality and the descriptive method Husserl later systematized.",
+    "rationale": "SEP's phenomenology and Husserl entries credit Logical Investigations as the text that launched the phenomenological movement.",
+    "uncertainty": "Ideas I (1913) has an independent strong claim as the more mature, programmatic statement of transcendental phenomenology; this is a defensible but contestable single-work pick.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:logical-investigations-canonical-edmund-husserl",
+    "source": "work:logical-investigations",
+    "target": "person:edmund-husserl",
+    "relation": "canonical_work",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Logical Investigations, authored by Edmund Husserl, is scoped as his phenomenology-founding text, distinct from the later Ideas I.",
+    "rationale": "Husserl is sole author of record; scoped to the text credited with founding the phenomenological method, matching the field-level edge above.",
+    "uncertainty": "Ideas I is a plausible alternative single-work pick for 'the' canonical Husserl text; not a settled fact.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:structural-anthropology-canonical-structural-anthropology-subfield",
+    "source": "work:structural-anthropology",
+    "target": "subfield:structural-anthropology",
+    "relation": "canonical_work",
+    "confidence": 0.87,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Anthropologie structurale (Structural Anthropology, 1958) is the essay collection most consistently cited as naming and consolidating structural anthropology as method, applying structural-linguistic tools to kinship and myth.",
+    "rationale": "Standard history-of-anthropology consensus credits this collection as Levi-Strauss's methodological manifesto for structural anthropology.",
+    "uncertainty": "The Elementary Structures of Kinship (1949) has an independent strong claim as his foundational monograph; this is a compiled-essay-volume vs. single-monograph judgment call, milder version of the wave3 Husserl/Comte identity-risk pattern.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:structural-anthropology-canonical-claude-levi-strauss",
+    "source": "work:structural-anthropology",
+    "target": "person:claude-levi-strauss",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Structural Anthropology, authored by Claude Levi-Strauss, is scoped as his methodological-manifesto text, distinct from The Elementary Structures of Kinship and Tristes Tropiques.",
+    "rationale": "Levi-Strauss is sole author of record (essay collection assembled by him, not posthumous); scoped to the text credited with naming/founding structural anthropology as method.",
+    "uncertainty": "Elementary Structures of Kinship is a plausible alternative single-work pick; a genuine judgment call among several major Levi-Strauss texts.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:syntactic-structures-canonical-syntax",
+    "source": "work:syntactic-structures",
+    "target": "subfield:syntax",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Syntactic Structures (1957) launched generative/transformational grammar, reorienting the subfield of syntax around formal generative rule systems; universally named as the watershed text for modern syntactic theory.",
+    "rationale": "Standard histories of linguistics (SEP's Chomsky entry, textbook consensus) credit this short monograph as the founding text of generative syntax.",
+    "uncertainty": "Living-author note: Chomsky is living; the living-person handling standing policy signal check applies to the person-endpoint edge at promotion, though the work is a bounded 1957 historical text.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:syntactic-structures-canonical-noam-chomsky",
+    "source": "work:syntactic-structures",
+    "target": "person:noam-chomsky",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Syntactic Structures, authored by Noam Chomsky, is his most historically watershed single text, distinct from the later Aspects of the Theory of Syntax (1965) and concept:generative-grammar's own founded_or_formalized edge already in /data.",
+    "rationale": "Chomsky is sole author of record; this is the text most consistently credited as launching his generative program.",
+    "uncertainty": "Living-person handling standing policy applies to this edge's person endpoint at promotion (identity anchor, sourcing floor, conservative wording) per docs/data-foundry.md §8.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:social-stratification-nyc-canonical-sociolinguistics",
+    "source": "work:the-social-stratification-of-english-in-new-york-city",
+    "target": "subfield:sociolinguistics",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Social Stratification of English in New York City (1966), the department-store 'r' study, is standardly credited as founding variationist sociolinguistics as a quantitative empirical discipline.",
+    "rationale": "Standard histories of sociolinguistics credit this dissertation-monograph as the field's methodological launch point, distinct from earlier dialectology.",
+    "uncertainty": "HONESTY-GAP CANDIDATE (flag for QC): weakest-confidence QID guess in the batch - a narrower, specialized dissertation-monograph less likely to carry a clean, well-populated Wikidata item than the batch's more famous candidates; if no decidable item is found at QC, this should be treated as an honesty-gap drop, mirroring the wave3 Koch/Pasteur pattern.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:social-stratification-nyc-canonical-william-labov",
+    "source": "work:the-social-stratification-of-english-in-new-york-city",
+    "target": "person:william-labov",
+    "relation": "canonical_work",
+    "confidence": 0.83,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Social Stratification of English in New York City, authored by William Labov, is his most consistently named single watershed text.",
+    "rationale": "Labov is sole author of record; this is the text most consistently credited as founding his empirical program, matching the field-level edge and existing founded_or_formalized edge to subfield:sociolinguistics in /data.",
+    "uncertainty": "Same honesty-gap QID risk as the field-level edge above; scoped identically.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:kindersprache-aphasie-canonical-phonology",
+    "source": "work:kindersprache-aphasie-und-allgemeine-lautgesetze",
+    "target": "subfield:phonology",
+    "relation": "canonical_work",
+    "confidence": 0.8,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Kindersprache, Aphasie und allgemeine Lautgesetze (1941) proposes markedness and universal implicational laws of phonological acquisition/loss; a founding text of structuralist phonology, matching Jakobson's existing founded_or_formalized edge to subfield:phonology in /data.",
+    "rationale": "Standard histories of structuralist linguistics credit this monograph as a key founding statement of markedness theory in phonology.",
+    "uncertainty": "HONESTY-GAP CANDIDATE (flag for QC): highest-risk QID guess in the batch - a German-language 1941 monograph, less likely to carry a clean, well-populated Wikidata item than the batch's other candidates; treat as a likely honesty-gap drop at QC if no decidable item resolves, mirroring the wave3 Koch/Pasteur pattern.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:kindersprache-aphasie-canonical-roman-jakobson",
+    "source": "work:kindersprache-aphasie-und-allgemeine-lautgesetze",
+    "target": "person:roman-jakobson",
+    "relation": "canonical_work",
+    "confidence": 0.78,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Kindersprache, Aphasie und allgemeine Lautgesetze, authored by Roman Jakobson, is scoped as his single-authored phonology-founding monograph, distinct from co-authored/edited later volumes (e.g. Fundamentals of Language, 1956).",
+    "rationale": "Jakobson is sole author of record for this monograph; scoped to match the field-level edge above.",
+    "uncertainty": "Same honesty-gap QID risk as the field-level edge; Jakobson's broader structuralist/semiotics essay corpus has an independent claim to his defining contribution, making this single-work pick a real judgment call.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:capital-vol-1-canonical-sociology",
+    "source": "work:capital-volume-i",
+    "target": "field:sociology",
+    "relation": "canonical_work",
+    "confidence": 0.86,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Das Kapital, Volume I (1867) is Marx's single, book-length, author-published systematic treatise, extending sociology's existing co-canonical set (Comte's Cours, Durkheim's Rules, Weber's Protestant Ethic, work-wave3) under decision (90)'s co-canonical ruling. Matches person:karl-marx's existing founded_or_formalized edge to field:sociology in /data.",
+    "rationale": "Standard histories of social theory credit Capital as foundational to the critical/materialist strand of sociology, distinct from Comte's positivist, Durkheim's methodological, and Weber's interpretive strands.",
+    "uncertainty": "Field-target judgment call: Capital could plausibly be scoped to field:economics instead (only Smith's Wealth of Nations holds that edge currently); scoped to sociology here to match Marx's existing founder edge, flagged for QC to weigh the alternative.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:capital-vol-1-canonical-karl-marx",
+    "source": "work:capital-volume-i",
+    "target": "person:karl-marx",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Das Kapital, Volume I, authored solely by Karl Marx (Volumes II-III were posthumously edited and published by Engels), is his defining, author-finalized single work.",
+    "rationale": "Marx is sole author of record for Volume I specifically (unlike Volumes II-III); this is the text most consistently credited as his canonical treatise.",
+    "uncertainty": "The Communist Manifesto (1848, co-authored with Engels, a political tract rather than scholarly treatise) is a more famous but less field-founding text under the literature-boundary rule; Capital Vol. I is the more defensible knowledge-work pick.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:problems-of-philosophy-canonical-analytic-philosophy",
+    "source": "work:the-problems-of-philosophy",
+    "target": "subfield:analytic-philosophy",
+    "relation": "canonical_work",
+    "confidence": 0.75,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Problems of Philosophy (1912) is Russell's widely-assigned statement of his epistemology (knowledge by acquaintance vs. description); extends analytic-philosophy's existing co-canonical founder set (Russell, Moore already founded_or_formalized in /data) under decision (90)'s co-canonical ruling.",
+    "rationale": "Commonly cited as a canonical entry point to Russell's analytic method; matches his existing founded_or_formalized edge to subfield:analytic-philosophy in /data.",
+    "uncertainty": "WEAKEST edge in the batch (flag for QC): Principia Mathematica (1910-13, co-authored with Whitehead) has a stronger formal claim to founding analytic philosophy's logicist program by scholarly weight, but was passed over here for sole-authorship cleanliness and to avoid a title/identity collision with the already-canonical Newton Principia in /data; QC should weigh whether this is the right single-work pick or whether Russell should be left without a canonical_work edge this wave.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:problems-of-philosophy-canonical-bertrand-russell",
+    "source": "work:the-problems-of-philosophy",
+    "target": "person:bertrand-russell",
+    "relation": "canonical_work",
+    "confidence": 0.75,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Problems of Philosophy, authored solely by Bertrand Russell, is scoped as his single-author canonical introductory-epistemology text, distinct from the co-authored Principia Mathematica.",
+    "rationale": "Russell is sole author of record for this text (unlike Principia Mathematica, co-authored with Whitehead); picked to keep authorship unambiguous for the person-endpoint edge.",
+    "uncertainty": "Same judgment call as the field-level edge: Principia Mathematica is arguably the more field-defining Russell work but was excluded for co-authorship and title-collision reasons; a genuinely contestable single-work pick.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:tractatus-canonical-bertrand-russell-x1",
+    "source": "work:tractatus-logico-philosophicus",
+    "target": "person:bertrand-russell",
+    "relation": "canonical_work",
+    "confidence": 0.4,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "note": "Bertrand Russell wrote the introduction to the Tractatus Logico-Philosophicus and was instrumental in securing its publication and English translation, and was Wittgenstein's mentor at Cambridge, making an authorship attribution to Russell a plausible-looking but incorrect claim rather than a random misattribution.",
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Proposed as a discrimination test for QC: tests whether the pipeline catches misattribution to a genuinely adjacent scholar (mentor, introduction-writer, publication advocate) rather than only unrelated names - a harder case than a random-name probe.",
+    "uncertainty": "This edge is expected to be wrong by construction; the failure mode being tested is misattribution to an adjacent-but-non-authoring figure, not a genuine uncertainty about the facts.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:syntactic-structures-canonical-sociolinguistics-x2",
+    "source": "work:syntactic-structures",
+    "target": "subfield:sociolinguistics",
+    "relation": "canonical_work",
+    "confidence": 0.3,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Syntactic Structures (1957) founded generative syntax, not sociolinguistics; Chomsky and Labov are both major 20th-century American linguists sometimes juxtaposed/contrasted in histories of linguistics (formalist vs. variationist approaches), and this batch's own Labov Social Stratification edge is the correct canonical_work for sociolinguistics, which is exactly what makes this a plausible-looking but incorrect field pairing rather than a random domain mismatch.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Proposed as a discrimination test for QC: tests whether the pipeline catches a wrong-subfield claim between two adjacent linguistics subfields (syntax/generative grammar vs. sociolinguistics) that share a discipline and era but not a method or founding text.",
+    "uncertainty": "This edge is expected to be wrong by construction; the failure mode being tested is cross-attribution between adjacent linguistics subfields, not a genuine uncertainty about the facts.",
+    "ambiguous": true
+  }
+]

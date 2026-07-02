@@ -1360,7 +1360,7 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "philpapers": "philosophy-of-race"
@@ -1375,7 +1375,7 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "philpapers": "philosophy-of-cognitive-science"
@@ -4304,7 +4304,7 @@
     "domain": "social_sciences",
     "level": 1,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q11680831"
@@ -4874,7 +4874,7 @@
     "domain": "social_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q27172"
@@ -4928,7 +4928,7 @@
     "domain": "social_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q853710"
@@ -9407,12 +9407,12 @@
     "domain": "cognitive_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "external_ids": {
       "wikidata": "Q41630"
     },
     "created_at": "2026-06-29",
-    "updated_at": "2026-06-29"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:sigmund-freud",
@@ -9574,13 +9574,13 @@
     "domain": "computer_and_information_sciences",
     "level": 3,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q75"
     },
     "created_at": "2026-06-30",
-    "updated_at": "2026-06-30"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:roman-jakobson",
@@ -9602,14 +9602,14 @@
     "domain": "social_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q5111399"
     },
     "academic_status": "established",
     "created_at": "2026-06-30",
-    "updated_at": "2026-06-30"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "concept:logical-positivism",
@@ -9617,13 +9617,13 @@
     "domain": "humanities",
     "level": 3,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q193627"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:moritz-schlick",
@@ -9869,13 +9869,13 @@
     "domain": "humanities",
     "level": 3,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q36108"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "concept:public-key-cryptography",
@@ -9883,13 +9883,13 @@
     "domain": "computer_and_information_sciences",
     "level": 3,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q201339"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "concept:analysis-of-algorithms",
@@ -9897,13 +9897,13 @@
     "domain": "computer_and_information_sciences",
     "level": 3,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q333464"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "subfield:behavioral-economics",
@@ -9911,14 +9911,14 @@
     "domain": "social_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q647525"
     },
     "academic_status": "established",
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "subfield:social-choice-theory",
@@ -9926,14 +9926,14 @@
     "domain": "social_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q1971461"
     },
     "academic_status": "established",
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:richard-thaler",
@@ -10277,13 +10277,13 @@
     "domain": "humanities",
     "level": 3,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q208238"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:ernst-haeckel",
@@ -11009,6 +11009,272 @@
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q7746455"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:natural-selection",
+    "type": "concept",
+    "domain": "life_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q43478"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:the-unconscious",
+    "type": "concept",
+    "domain": "cognitive_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q192105"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:turing-machine",
+    "type": "concept",
+    "domain": "formal_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q163310"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:nash-equilibrium",
+    "type": "concept",
+    "domain": "formal_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q23389"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:mendelian-inheritance",
+    "type": "concept",
+    "domain": "life_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q185055"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:social-fact",
+    "type": "concept",
+    "domain": "social_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q972877"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:invisible-hand",
+    "type": "concept",
+    "domain": "social_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q376644"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:intentionality",
+    "type": "concept",
+    "domain": "humanities",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q654390"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:lambda-calculus",
+    "type": "concept",
+    "domain": "formal_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q242028"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:symbolic-ai",
+    "type": "concept",
+    "domain": "computer_and_information_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q5514059"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:false-consciousness",
+    "type": "concept",
+    "domain": "social_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2581738"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:bureaucracy",
+    "type": "concept",
+    "domain": "social_sciences",
+    "level": 3,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q72468"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "work:tractatus-logico-philosophicus",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q655717"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "work:logical-investigations",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q3421975"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "work:structural-anthropology",
+    "type": "work",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2844127"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "work:syntactic-structures",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1198080"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "work:the-social-stratification-of-english-in-new-york-city",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q130572843"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "work:capital-volume-i",
+    "type": "work",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q58784"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02"
+  },
+  {
+    "id": "work:the-problems-of-philosophy",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q3393210"
     },
     "created_at": "2026-07-02",
     "updated_at": "2026-07-02"

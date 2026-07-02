@@ -1,0 +1,178 @@
+[
+  {
+    "id": "work:tractatus-logico-philosophicus",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q844737"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Wittgenstein's Tractatus Logico-Philosophicus (1921, German; 1922 English translation) is his single, bounded, universally-cited founding text: it proposes the picture theory of meaning and the limits-of-language thesis that anchors 20th-century analytic philosophy of language. Picked over the posthumous Philosophical Investigations (1953, compiled after his death from notebooks, editorially assembled - a weaker single-item decidability fit, the same 'assembled work' problem that disqualified Weber's Economy and Society in work-wave3) as the clean, author-finalized candidate.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved in this session (per wave1-3 precedent, generator work QIDs have run close to 100% hallucinated on exact digits - orchestrator must re-verify live). Field-target judgment call: the Tractatus is foundational to both subfield:philosophy-of-language and subfield:analytic-philosophy broadly (Russell and Moore are already founders of the latter); I scope the canonical_work edge to philosophy-of-language specifically since that is the more referent-precise match to the book's actual thesis (meaning, logic, the sayable/unsayable), not a claim that it single-handedly founded all of analytic philosophy.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:logical-investigations",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1497521"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Husserl's Logische Untersuchungen (Logical Investigations, 1900-01, two volumes) is standardly credited as the founding text of phenomenology, introducing intentionality and the descriptive-psychological method that Husserl later systematized. Picked over the later, more programmatic Ideas I (Ideen zu einer reinen Phanomenologie, 1913) because Logical Investigations is the text historians of philosophy most consistently name as the discipline-founding work, even though Ideas I is where Husserl's transcendental turn is fully stated.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. This is a genuine two-candidate judgment call (Logical Investigations vs. Ideas I) comparable to the Durkheim/Weber picks in work-wave3; a reasonable minority view credits Ideas I as the more mature statement of phenomenological method. Also a two-volume, two-year (1900/1901) publication, creating some identity/version risk at the node level similar to Comte's multi-volume Cours.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:structural-anthropology",
+    "type": "work",
+    "domain": "social_sciences",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q3488370"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Levi-Strauss's Anthropologie structurale (Structural Anthropology, 1958) is the essay collection most consistently cited by name as consolidating and naming structural anthropology as a method, applying Saussurean/Jakobsonian structural linguistics to kinship and myth. Picked over The Elementary Structures of Kinship (1949, his dissertation - a substantive application to one domain, kinship, rather than the general methodological statement) as the more direct discipline-naming text, mirroring the wave3 Durkheim Rules-vs-Division-of-Labour reasoning.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. Genuine judgment call among Levi-Strauss's major works (Elementary Structures of Kinship 1949, Structural Anthropology 1958, Tristes Tropiques 1955 - the last being closer to travel-memoir/literary than treatise and correctly excluded under the literature-boundary rule); Structural Anthropology is an essay collection assembled by Levi-Strauss himself (not posthumous), but still a compiled volume rather than a single continuous monograph, a milder version of the Husserl/Comte identity-risk pattern.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:syntactic-structures",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1770512"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Chomsky's Syntactic Structures (1957) is the single, short, sharply-bounded monograph that launched generative/transformational grammar and reoriented the subfield of syntax around formal generative rule systems; it is the text universally named as the watershed for modern syntactic theory, distinct from Chomsky's later, more diffuse Aspects of the Theory of Syntax (1965) and his broader philosophical writing.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. Living-author note: Chomsky is living (is_living_person true on his existing person node), so the living-person handling standing policy signal check applies to the person-endpoint edge at QC/promotion time, even though the work itself is a 1957 historical text with no contemporary contentious content.",
+    "ambiguous": false
+  },
+  {
+    "id": "work:the-social-stratification-of-english-in-new-york-city",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q7561234"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Labov's The Social Stratification of English in New York City (1966, his revised Columbia dissertation) is the landmark empirical study - the department-store 'r' study - standardly credited as founding variationist sociolinguistics as a quantitative empirical discipline, distinct from earlier dialectology. It is Labov's most consistently named single watershed text.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved; this QID guess is the weakest-confidence one in the batch (a narrower, more specialized dissertation-monograph than the other candidates, so I have lower confidence Wikidata carries a clean, well-populated item for it versus treating it as a lesser-documented bibliographic entry) - flagged for extra QC scrutiny on the honesty-gap axis.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:kindersprache-aphasie-und-allgemeine-lautgesetze",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q19180675"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Jakobson's Kindersprache, Aphasie und allgemeine Lautgesetze (Child Language, Aphasia and Phonological Universals, 1941) is his single-authored monograph proposing markedness and universal implicational laws of phonological acquisition/loss, standardly credited as a founding text of structuralist phonology distinct from his many co-authored/edited later volumes (e.g. Fundamentals of Language, 1956, co-authored with Morris Halle).",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved - this is the highest-risk QID guess in the batch (a German-language 1941 monograph, less likely to have a clean, well-populated Wikidata item than the more famous English-language candidates in this batch); if no decidable item exists this should be treated as an honesty-gap drop at QC, mirroring the wave3 Koch/Pasteur pattern. Jakobson also has a strong independent claim via his structuralist/semiotics essays more broadly, so crediting one single 1941 book is a judgment call.",
+    "ambiguous": true
+  },
+  {
+    "id": "work:capital-volume-i",
+    "type": "work",
+    "domain": "social_sciences",
+    "level": 1,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1063455"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Marx's Das Kapital, Volume I (Capital: A Critique of Political Economy, 1867) is his single, book-length, author-published (unlike Volumes II-III, posthumously edited by Engels) systematic treatise; it is the work for which Marx is most directly credited as a founder of sociology/political economy as critical social science, extending the corpus's existing person:karl-marx -> field:sociology founded_or_formalized edge. Volume I alone is chosen over the collected three-volume Capital or the shorter, more political/programmatic Communist Manifesto (1848, a political tract rather than a scholarly treatise - the closer analogue to the literature-boundary exclusion) for W2 decidability (author-published, single clean year) - mirroring the wave3 Weber choice of the bounded Protestant Ethic over the posthumously-assembled Economy and Society.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. Field-target judgment call: Capital could plausibly be argued as more canonical for field:economics (already co-canonical there is not yet the case - only Smith's Wealth of Nations holds that edge) than for field:sociology; I scope it to sociology to match Marx's existing founded_or_formalized edge in /data, but QC should weigh whether economics is the more precise referent, or whether both are defensible (a second co-canonical candidate, not proposed here to keep this batch bounded).",
+    "ambiguous": true
+  },
+  {
+    "id": "work:the-problems-of-philosophy",
+    "type": "work",
+    "domain": "humanities",
+    "level": 2,
+    "status": "generated",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2113883"
+    },
+    "created_at": "2026-07-02",
+    "updated_at": "2026-07-02",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Russell's The Problems of Philosophy (1912) is his single-authored, widely-assigned introductory-but-substantive statement of his epistemology (knowledge by acquaintance vs. description) and is commonly cited as a canonical entry point to his analytic method; picked instead of the co-authored Principia Mathematica (1910-13, with Whitehead, and whose title collides with Newton's already-canonical Philosophiae Naturalis Principia Mathematica in /data, creating a distinct-work identity risk) to keep sole authorship clean and avoid a QID/title collision with the existing Newton work node.",
+    "uncertainty": "QID is a best-guess recollection, not independently resolved. This is a real judgment call: Principia Mathematica (with Whitehead) has a much stronger formal claim to founding analytic philosophy's logicist program and is arguably the more field-defining Russell text by scholarly weight, but its co-authorship (P50 would need to resolve to two people, not match a single existing reviewed person endpoint cleanly) and title-collision risk with the Newton work made The Problems of Philosophy the safer single-author, single-item pick for this batch; QC may prefer a differently-scoped Russell candidate.",
+    "ambiguous": true
+  }
+]

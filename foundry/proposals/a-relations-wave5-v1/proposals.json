@@ -1,0 +1,443 @@
+{
+  "batch_id": "a-relations-wave5-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-02"
+  },
+  "scope_note": "Cross-cutting (a)-relation edges only (influenced/critiques; applies_to reserved for the strictly-more-accurate case). No new nodes proposed. All 16 real candidates + 2 unmarked rejection probes (see separate probes.md) verified against data/nodes.json (both endpoints status:reviewed) and deduped against data/edges.json (every existing influenced/critiques/applies_to/founded_or_formalized/canonical_work/formalizes edge enumerated before drafting, including the full founded_or_formalized roster so no candidate merely restates an existing founding claim on a different label). Continues sessions #49-51 (a-relations-wave3-v1, a-relations-wave4-v1) Stage-3 axis-2 densification; excludes every wave4 promoted/held pair per the order's exclusion list.",
+  "candidates": [
+    {
+      "candidate_id": "C1",
+      "source": "person:charles-lyell",
+      "target": "subfield:evolutionary-biology",
+      "relation": "influenced",
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Charles Lyell\"",
+          "claim_anchor": "Lyell's 'Principles of Geology' (1830-33) and its uniformitarian argument for a vastly ancient, gradually-changing Earth was read by Darwin during the Beagle voyage and directly shaped Darwin's gradualist, deep-time framework for evolution by natural selection.",
+          "url": "https://en.wikipedia.org/wiki/Charles_Lyell"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Charles Darwin\"",
+          "claim_anchor": "Darwin's theory of evolution by natural selection depended on Lyell's uniformitarian geology to supply the immense timescales gradual evolutionary change would require, a debt Darwin himself repeatedly acknowledged.",
+          "url": "https://plato.stanford.edu/entries/darwin/"
+        }
+      ],
+      "disputed": false,
+      "note": "Distinct from the existing charles-lyell-founded-geology edge (a different claim: Lyell's geological timescale enabling a different field, evolutionary biology, rather than restating his own field-founding).",
+      "rationale": "Lyell's uniformitarian geology (1830-33) chronologically precedes and is a well-documented direct causal input into Darwin's 1859 theory (Darwin carried volume 1 on the Beagle); a genuine earth-sciences -> life-sciences cross-domain link not yet in the graph.",
+      "uncertainty": "The claim could be read as narrowly about Lyell's influence on Darwin the person rather than on evolutionary biology as a field; QC should confirm the sources support the broader field-level framing rather than only a single-scientist debt.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C2",
+      "source": "person:vladimir-vernadsky",
+      "target": "field:environmental-science",
+      "relation": "influenced",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Vladimir Vernadsky\"",
+          "claim_anchor": "Vernadsky's concept of the biosphere, developed in his 1926 book 'The Biosphere', described the Earth's living matter as a geological force and is credited as a foundational influence on later Earth-system and environmental science.",
+          "url": "https://en.wikipedia.org/wiki/Vladimir_Vernadsky"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, \"Vladimir Ivanovich Vernadsky\"",
+          "claim_anchor": "Vernadsky's biosphere concept anticipated later ecological and environmental-science ideas about the interdependence of living organisms and the geochemical cycles of the planet.",
+          "url": "https://www.britannica.com/biography/Vladimir-Ivanovich-Vernadsky"
+        }
+      ],
+      "disputed": false,
+      "note": "Overlap risk flagged honestly: Vernadsky already has a founded_or_formalized edge to subfield:geochemistry; this targets the distinct, broader field:environmental-science via the biosphere concept specifically, but QC should judge whether the two claims are separable enough or too close a restatement under a different field label.",
+      "rationale": "Vernadsky's 1926 biosphere concept predates and is a standardly-cited historical antecedent of 20th-century environmental/Earth-system science; a natural_sciences -> natural_sciences (different field) cross-domain link.",
+      "uncertainty": "The 'biosphere' concept is closely tied to Vernadsky's own geochemistry work, so this may be too close to his existing founding claim rather than a genuinely separate contribution; confidence set moderate to reflect this.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C3",
+      "source": "person:andreas-vesalius",
+      "target": "subfield:art-history",
+      "relation": "influenced",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Andreas Vesalius\"",
+          "claim_anchor": "Vesalius's 'De Humani Corporis Fabrica' (1543) featured detailed anatomical woodcut illustrations, widely attributed to artists associated with Titian's workshop, that are studied by art historians as a landmark fusion of Renaissance artistic technique and scientific observation.",
+          "url": "https://en.wikipedia.org/wiki/Andreas_Vesalius"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, \"Andreas Vesalius\"",
+          "claim_anchor": "The Fabrica's illustrations set a new standard for scientific and anatomical illustration and are considered a major work of Renaissance art as well as science, studied within the history of art.",
+          "url": "https://www.britannica.com/biography/Andreas-Vesalius"
+        }
+      ],
+      "disputed": false,
+      "note": "Distinct from the existing andreas-vesalius-founded-anatomy edge (a different claim: the Fabrica's illustration tradition's influence on art-historical scholarship, rather than his founding of anatomy as a medical field).",
+      "rationale": "Vesalius's 1543 illustrated anatomical atlas predates and is a standard subject within art-history scholarship on Renaissance scientific illustration; a life-sciences -> arts-and-design cross-domain link not yet in the graph.",
+      "uncertainty": "This is a narrower claim (the Fabrica's illustrations as an art-historical object of study) than 'Vesalius influenced art history' broadly; QC should confirm the target grain is appropriate and the claim is not overreaching from 'is studied by art historians' to a stronger influence framing.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C4",
+      "source": "person:emil-kraepelin",
+      "target": "subfield:philosophy-of-psychiatry",
+      "relation": "influenced",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Philosophical Issues in Psychiatry\" (background)",
+          "claim_anchor": "Kraepelin's late-19th/early-20th-century classification of mental disorders into discrete disease categories (e.g. dementia praecox vs. manic-depressive insanity) established the nosological framework that philosophy of psychiatry has since scrutinized for its validity, natural-kind status, and diagnostic assumptions.",
+          "url": "https://plato.stanford.edu/entries/psychiatry/"
+        },
+        {
+          "citation": "Internet Encyclopedia of Philosophy, \"Philosophy of Psychiatry\"",
+          "claim_anchor": "Debates over psychiatric classification and the reality of diagnostic categories in philosophy of psychiatry trace their disciplinary starting point to the Kraepelinian nosological tradition established at the turn of the 20th century.",
+          "url": "https://iep.utm.edu/psychiat/"
+        }
+      ],
+      "disputed": false,
+      "note": "Distinct from the existing emil-kraepelin-founded-psychiatry edge (field:psychiatry as a medical discipline) and from philippe-pinel-founded-psychiatry; this targets the philosophical subfield's classification debates specifically, a separate claim.",
+      "rationale": "Kraepelin's nosology (1880s-1910s) chronologically precedes and is the acknowledged historical starting point for philosophy-of-psychiatry debates over diagnostic validity and natural kinds; a medicine -> philosophy cross-domain link not yet in the graph.",
+      "uncertainty": "The target (subfield:philosophy-of-psychiatry) is close in theme to Kraepelin's own field:psychiatry founding edge; QC should judge whether this is a genuinely distinct, separately-citable contribution or too close a near-duplicate framed under a different field label.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C5",
+      "source": "person:alfred-russel-wallace",
+      "target": "subfield:philosophy-of-biology",
+      "relation": "influenced",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Alfred Russel Wallace\"",
+          "claim_anchor": "Wallace's later insistence that natural selection could not fully account for human consciousness and higher mental faculties, requiring appeal to a 'higher intelligence', opened a strand of debate about teleology, emergence, and the limits of selectionist explanation that is still discussed in philosophy of biology.",
+          "url": "https://plato.stanford.edu/entries/wallace/"
+        },
+        {
+          "citation": "Wikipedia, \"Alfred Russel Wallace\"",
+          "claim_anchor": "Wallace's views on the origin of human intellectual and moral faculties, which he argued could not be explained by natural selection alone, are discussed in the history and philosophy of biology as an early challenge to purely mechanistic accounts of evolution.",
+          "url": "https://en.wikipedia.org/wiki/Alfred_Russel_Wallace"
+        }
+      ],
+      "disputed": false,
+      "note": "Distinct from the existing alfred-russel-wallace-founded-evolutionary-biology edge; this targets a different subfield (the philosophical debate over teleology/selectionist limits) rather than restating his co-founding of evolutionary biology itself.",
+      "rationale": "Wallace's writings on the limits of natural selection for explaining human mind (1869 onward) predate and are a standardly-cited historical episode in philosophy-of-biology debates on teleology and emergence; a distinct, well-documented cross-subfield link.",
+      "uncertainty": "This is a narrower, more idiosyncratic strand of Wallace's thought (his spiritualist-adjacent views) rather than his mainstream scientific legacy; QC should confirm the SEP entry verbatim supports a general 'influenced philosophy of biology' framing rather than only a niche historical footnote.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C6",
+      "source": "person:emmy-noether",
+      "target": "field:physics",
+      "relation": "influenced",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Noether's theorem\"",
+          "claim_anchor": "Noether's 1918 theorem, establishing that every differentiable symmetry of a physical system's action corresponds to a conservation law, became a foundational result in theoretical physics, underpinning modern formulations of classical mechanics, field theory, and particle physics.",
+          "url": "https://en.wikipedia.org/wiki/Noether%27s_theorem"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, \"Emmy Noether\"",
+          "claim_anchor": "Noether's theorem, linking symmetries to conservation laws, is regarded by physicists as one of the most important mathematical results underpinning modern physics, from classical mechanics to the Standard Model of particle physics.",
+          "url": "https://www.britannica.com/biography/Emmy-Noether"
+        }
+      ],
+      "disputed": false,
+      "note": "Distinct from the existing emmy-noether-founded-algebra edge (a different field entirely, formal-sciences algebra vs. natural-sciences physics); a genuine cross-domain claim rather than a restatement.",
+      "rationale": "Noether's theorem (1918) chronologically precedes and is foundational to 20th-century theoretical physics (conservation laws, gauge theory, the Standard Model); a canonical, well-documented mathematics -> physics cross-domain link not yet in the graph.",
+      "uncertainty": "Noether is primarily known within the graph for her algebra-founding contribution; QC should confirm this physics-facing claim is not seen as diluting or duplicating that primary framing, though the theorem itself is a distinct, independently well-documented result.",
+      "ambiguous": false
+    },
+    {
+      "candidate_id": "C7",
+      "source": "person:alonzo-church",
+      "target": "subfield:programming-languages",
+      "relation": "influenced",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"The Lambda Calculus\"",
+          "claim_anchor": "Church's lambda calculus, developed in the 1930s as a formal system for function definition and application, became the theoretical foundation of functional programming languages (e.g. Lisp, ML, Haskell) and strongly influenced the design of programming-language semantics generally.",
+          "url": "https://plato.stanford.edu/entries/lambda-calculus/"
+        },
+        {
+          "citation": "Wikipedia, \"Lambda calculus\"",
+          "claim_anchor": "Church's lambda calculus is the basis of functional programming, and its influence extends to the design and semantics of many programming languages, both functional and otherwise.",
+          "url": "https://en.wikipedia.org/wiki/Lambda_calculus"
+        }
+      ],
+      "disputed": false,
+      "note": "Distinct from the existing alonzo-church-founded-computability-theory edge (a different subfield); this targets programming-languages specifically, a separate downstream applied claim.",
+      "rationale": "Church's lambda calculus (1930s) chronologically precedes and directly founds functional programming and much of programming-language theory (Lisp 1958 onward); a formal-sciences -> computer-science cross-domain link not yet in the graph.",
+      "uncertainty": "The influence chain runs through many decades and intermediate figures (McCarthy, Landin, Strachey); subfield:programming-languages as a whole may be broader than the specifically functional-programming lineage the sources most directly support.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C8",
+      "source": "person:karl-pearson",
+      "target": "field:sociology",
+      "relation": "influenced",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Karl Pearson\"",
+          "claim_anchor": "Pearson's development of correlation and chi-squared statistical methods in the 1890s-1900s provided quantitative tools that were subsequently adopted by early 20th-century sociologists for empirical social research, contributing to the rise of quantitative sociology.",
+          "url": "https://en.wikipedia.org/wiki/Karl_Pearson"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, \"Karl Pearson\"",
+          "claim_anchor": "Pearson's biometric and statistical methods, developed for biological and anthropometric data, were widely taken up across the social sciences, including sociology, as tools for quantitative empirical analysis.",
+          "url": "https://www.britannica.com/biography/Karl-Pearson"
+        }
+      ],
+      "disputed": false,
+      "note": "Distinct from the existing karl-pearson-founded-mathematical-statistics edge and from ronald-fisher-critiques-karl-pearson (a different relation and target); this targets the downstream adoption of Pearson's methods within sociology specifically.",
+      "rationale": "Pearson's statistical methods (1890s-1900s) chronologically precede and are a documented methodological input into quantitative sociology's rise; a formal-sciences -> social-sciences cross-domain link, adding a distinct target for a well-connected person node.",
+      "uncertainty": "The claim is broad ('adopted by sociologists') rather than a single sharply citable episode naming specific sociologists; QC should judge whether a narrower target (e.g. quantitative-sociology methods specifically, which has no dedicated node) would be more precise than field:sociology as a whole.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C9",
+      "source": "person:george-lakoff",
+      "target": "subfield:philosophy-of-mind",
+      "relation": "critiques",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Embodied Cognition\"",
+          "claim_anchor": "Lakoff and Johnson's 'Philosophy in the Flesh' (1999) argued that traditional philosophy of mind's assumption of disembodied, abstract reason ('the disembodied mind') is empirically false, proposing an embodied-cognition alternative grounded in conceptual metaphor theory.",
+          "url": "https://plato.stanford.edu/entries/embodied-cognition/"
+        },
+        {
+          "citation": "Wikipedia, \"Philosophy in the Flesh\"",
+          "claim_anchor": "Lakoff and Johnson's 'Philosophy in the Flesh' explicitly critiques the Western philosophical tradition's assumption of a disembodied, literal mind, arguing from cognitive-linguistic evidence that reason is fundamentally embodied and metaphorical.",
+          "url": "https://en.wikipedia.org/wiki/Philosophy_in_the_Flesh"
+        }
+      ],
+      "disputed": false,
+      "note": "LIVING PERSON: source is_living_person:true (person:george-lakoff). Living-person policy floor applies at QC (resolver-verified identity anchor + >=2 independent live claim-stating sources + conservative wording). Distinct from the existing george-lakoff-founded-cognitive-linguistics edge (a different target and relation: this is his critique of mainstream philosophy of mind, not his own field-founding).",
+      "rationale": "Lakoff and Johnson's 1999 book directly and explicitly targets philosophy of mind's disembodied-reason assumption; correct direction, adds to the thin critiques roster with a cognitive-linguistics -> philosophy cross-domain critique.",
+      "uncertainty": "This is jointly Lakoff-and-Johnson work; attributing it to Lakoff alone (Mark Johnson has no node in this graph) is a simplification, similar to the wave4 Tversky/Kahneman flag; QC should judge whether Lakoff alone is an adequate proxy.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C10",
+      "source": "person:isaac-newton",
+      "target": "subfield:philosophy-of-science",
+      "relation": "influenced",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Isaac Newton\"",
+          "claim_anchor": "Newton's methodology in the 'Principia' and 'Opticks', especially his 'hypotheses non fingo' stance and rules of reasoning in natural philosophy, became a central case study and methodological touchstone for subsequent philosophy of science, from Kant through the logical empiricists to Popper and Kuhn.",
+          "url": "https://plato.stanford.edu/entries/newton/"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Newton's Philosophiae Naturalis Principia Mathematica\"",
+          "claim_anchor": "The Principia's method of deriving forces from phenomena and its standards of scientific evidence and explanation have been treated as paradigmatic in philosophy of science discussions of scientific method, theory confirmation, and the nature of physical law.",
+          "url": "https://plato.stanford.edu/entries/newton-principia/"
+        }
+      ],
+      "disputed": false,
+      "note": "This graph already has work:philosophiae-naturalis-principia-mathematica canonical_work edges to field:physics and to person:isaac-newton; this is a distinct claim about Newton's methodology shaping philosophy of science as a subfield, not a restatement of the work's canonicity for physics.",
+      "rationale": "Newton's scientific method (1687-1704) chronologically precedes and is a standard paradigm case across the history of philosophy of science, from Kant's transcendental philosophy through 20th-century philosophy of science; a natural-sciences -> humanities cross-domain link not yet in the graph.",
+      "uncertainty": "The claim spans a very long historical reception (three centuries of philosophy of science engaging with Newton), which risks being too diffuse for a single sharply citable episode; QC should confirm the SEP entries verbatim support a general 'influenced philosophy of science' framing.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C11",
+      "source": "person:georges-cuvier",
+      "target": "field:archaeology",
+      "relation": "influenced",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Georges Cuvier\"",
+          "claim_anchor": "Cuvier's early-19th-century comparative-anatomy method for reconstructing extinct animals from fragmentary fossil remains, and his stratigraphic work correlating rock layers with faunal succession, provided methodological tools later adopted by archaeologists for dating and interpreting excavated strata and remains.",
+          "url": "https://en.wikipedia.org/wiki/Georges_Cuvier"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, \"Georges Cuvier\"",
+          "claim_anchor": "Cuvier's principle of correlating anatomical structure with function, and his stratigraphic approach to fossil succession, influenced the emerging discipline of prehistoric archaeology in its methods for interpreting excavated bone and artifact assemblages.",
+          "url": "https://www.britannica.com/biography/Georges-Cuvier"
+        }
+      ],
+      "disputed": false,
+      "note": "Distinct from the existing georges-cuvier-founded-paleontology edge; this targets the separate field of archaeology via Cuvier's stratigraphic/comparative method, a distinct downstream methodological claim.",
+      "rationale": "Cuvier's stratigraphic and comparative-anatomy methods (1800s-1830s) chronologically precede and are a documented methodological input into 19th-century prehistoric archaeology's dating and interpretive practices; a life-sciences -> humanities cross-domain link not yet in the graph.",
+      "uncertainty": "The link to archaeology specifically (as opposed to geology, where his stratigraphic work is more centrally discussed) is less directly documented in the sources than his paleontology founding; QC should verify the sources support archaeology specifically rather than only geology/paleontology.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C12",
+      "source": "person:gottfried-wilhelm-leibniz",
+      "target": "subfield:computability-theory",
+      "relation": "influenced",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Leibniz's Influence on 19th-Century Logic\"",
+          "claim_anchor": "Leibniz's vision of a 'calculus ratiocinator' (a symbolic calculus for reasoning) and characteristica universalis, along with his early work on a binary numeral system and mechanical calculation, is standardly cited as an intellectual precursor to the formal, mechanizable notions of computation later developed by Turing and Church.",
+          "url": "https://plato.stanford.edu/entries/leibniz-logic-influence/"
+        },
+        {
+          "citation": "Wikipedia, \"Gottfried Wilhelm Leibniz\"",
+          "claim_anchor": "Leibniz's proposals for a calculus ratiocinator and a universal symbolic language for reasoning are often cited as prefiguring the 20th-century mathematical theory of computation and the notion of an effective, mechanizable procedure.",
+          "url": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz"
+        }
+      ],
+      "disputed": false,
+      "note": "Distinct from the existing gottfried-wilhelm-leibniz-founded-calculus edge (a different subfield); this targets computability-theory via the calculus-ratiocinator lineage, a separate historical claim.",
+      "rationale": "Leibniz's calculus ratiocinator proposal (1670s-1700s) predates by over two centuries and is a standardly-cited conceptual precursor to 20th-century computability theory (Turing, Church); a formal-sciences -> formal-sciences (different subfield) cross-domain link.",
+      "uncertainty": "This is an idea-history/precursor claim spanning roughly 250 years with no direct causal chain of citation (Turing and Church did not straightforwardly cite Leibniz as a working input); QC should judge whether 'influenced' is accurate for such a long-range conceptual-precursor claim versus a looser 'adjacent_to'-style framing.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C13",
+      "source": "person:ronald-fisher",
+      "target": "subfield:epidemiology",
+      "relation": "influenced",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Ronald Fisher\"",
+          "claim_anchor": "Fisher's development of the randomized controlled experimental design and analysis-of-variance methods in the 1920s-30s, originally for agricultural field trials, became foundational statistical methodology later adopted for randomized controlled trials and observational study design in epidemiology.",
+          "url": "https://en.wikipedia.org/wiki/Ronald_Fisher"
+        },
+        {
+          "citation": "Encyclopaedia Britannica, \"Sir Ronald Aylmer Fisher\"",
+          "claim_anchor": "Fisher's statistical innovations, including randomization and significance testing, became standard tools across the experimental and observational sciences, including epidemiology's methods for evaluating disease causation and treatment efficacy.",
+          "url": "https://www.britannica.com/biography/Ronald-Aylmer-Fisher"
+        }
+      ],
+      "disputed": false,
+      "note": "Distinct from the existing ronald-fisher-founded-mathematical-statistics edge and ronald-fisher-critiques-karl-pearson edge; this targets a downstream applied field (epidemiology), a separate claim from his own statistics founding.",
+      "rationale": "Fisher's randomization and significance-testing methodology (1920s-30s) chronologically precedes and is foundational to 20th-century epidemiological trial design and causal-inference methods; a formal-sciences -> medicine cross-domain link not yet in the graph.",
+      "uncertainty": "The influence is real but mediated through many decades of methodological development (e.g. the Bradford Hill RCT tradition); field:epidemiology already has a founded_or_formalized edge from person:john-snow, so QC should confirm this is read as a distinct methodological-statistics contribution rather than a competing founding claim.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C14",
+      "source": "person:kurt-lewin",
+      "target": "field:education",
+      "relation": "influenced",
+      "confidence": 0.6,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Kurt Lewin\"",
+          "claim_anchor": "Lewin's concept of action research, developed in the 1940s as a method combining social-scientific inquiry with practical intervention, was subsequently adopted within educational research and teacher-practitioner inquiry as a widely used methodology for studying and improving classroom practice.",
+          "url": "https://en.wikipedia.org/wiki/Kurt_Lewin"
+        },
+        {
+          "citation": "Internet Encyclopedia of Philosophy, background in \"John Dewey\" / education entries",
+          "claim_anchor": "Action research, originating with Lewin's social psychology, became one of the dominant frameworks in educational research methodology from the mid-20th century onward, particularly for practitioner-led classroom inquiry.",
+          "url": "https://iep.utm.edu/dewey/"
+        }
+      ],
+      "disputed": false,
+      "note": "Distinct from the existing kurt-lewin-founded-social-psychology edge; this targets field:education via the action-research methodology's downstream adoption, a separate claim. Second evidence source is a background citation (Dewey entry) rather than a page centrally about Lewin; flagged honestly as the weaker of the two anchors.",
+      "rationale": "Lewin's action-research concept (1940s) chronologically precedes and is a documented methodological input into educational-research practice from the mid-20th century onward; a cognitive-sciences -> social-sciences cross-domain link not yet in the graph.",
+      "uncertainty": "The second evidence source is a weaker, indirect anchor (background mention rather than a page centrally about the Lewin-education link); QC should seek a more directly on-topic education-methodology source before promotion, or treat this as the weakest-sourced candidate in the batch.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C15",
+      "source": "person:franz-boas",
+      "target": "subfield:philosophy-of-race",
+      "relation": "influenced",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Race\"",
+          "claim_anchor": "Boas's early-20th-century anthropological critique of biological race concepts, arguing that observed human physical and cultural variation is shaped by environment and history rather than fixed racial types, is identified as a key historical source for the cultural-relativist and anti-essentialist positions that inform contemporary philosophy of race.",
+          "url": "https://plato.stanford.edu/entries/race/"
+        },
+        {
+          "citation": "Internet Encyclopedia of Philosophy, \"Race\"",
+          "claim_anchor": "Boas's dismantling of biological race concepts through anthropometric research is cited as a foundational episode in the intellectual history that philosophy of race draws on when critiquing essentialist race theories.",
+          "url": "https://iep.utm.edu/race/"
+        }
+      ],
+      "disputed": false,
+      "note": "Per the order's guidance to touch subfield:philosophy-of-race only with well-attested claims: Boas's anti-essentialist critique of biological race is a standard, textbook-documented reference point in SEP/IEP philosophy-of-race entries, not a forced inclusion.",
+      "rationale": "Boas's anthropometric critique of biological race (1910s-1930s) chronologically precedes and is a standardly-cited historical input into philosophy of race's anti-essentialist, social-constructionist positions; a social-sciences -> humanities cross-domain link, distinct from his existing founded_or_formalized edge to subfield:cultural-anthropology.",
+      "uncertainty": "Boas is an anthropologist critiquing race science empirically rather than a philosopher; 'influenced' the philosophical subfield is a claim about intellectual lineage rather than direct participation in philosophical debate, and QC should confirm the SEP/IEP entries verbatim support this framing rather than treating him only as a background historical figure.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C16",
+      "source": "subfield:phenomenology",
+      "target": "subfield:philosophy-of-technology",
+      "relation": "influenced",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Philosophy of Technology\"",
+          "claim_anchor": "Heidegger's phenomenological analysis of technology in 'The Question Concerning Technology' (1954), treating technology as a mode of world-disclosure rather than mere instrumental means, is identified as a founding and continuingly central reference point for the philosophy of technology as a subfield.",
+          "url": "https://plato.stanford.edu/entries/technology/"
+        },
+        {
+          "citation": "Internet Encyclopedia of Philosophy, \"Philosophy of Technology\"",
+          "claim_anchor": "The phenomenological tradition, especially through Heidegger and later Don Ihde's postphenomenology, is one of the principal methodological approaches structuring contemporary philosophy of technology.",
+          "url": "https://iep.utm.edu/phil-tec/"
+        }
+      ],
+      "disputed": false,
+      "note": "Heidegger himself has no person node in this graph, so subfield:phenomenology is used as the source to capture the tradition rather than overclaiming an unmodeled individual's direct edge; consistent with the wave4 B13 (psychoanalysis -> film-studies) precedent for tradition-level sourcing when the key individual is not a node.",
+      "rationale": "Phenomenology's Heideggerian strand (1927 Being and Time; 1954 Question Concerning Technology) chronologically precedes and is the acknowledged founding methodological approach within philosophy of technology as an organized subfield; a philosophy -> philosophy cross-subfield link not yet in the graph.",
+      "uncertainty": "Attributing this to subfield:phenomenology broadly rather than to Heidegger specifically (unmodeled) risks over-generalizing from one phenomenologist's contribution to the whole tradition; QC should confirm the SEP/IEP entries verbatim support a phenomenology-wide framing rather than a Heidegger-only one.",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C17",
+      "source": "person:georges-cuvier",
+      "target": "subfield:philosophy-of-race",
+      "relation": "influenced",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Georges Cuvier\"",
+          "claim_anchor": "Cuvier proposed a classification of humanity into three races in his comparative-anatomy writings, a scheme that was later invoked within 19th-century scientific racism; historians note his racial classification work was embedded in the racialist science of his era rather than any documented engagement with, or citation by, the philosophical subfield that later emerged to critique such classifications.",
+          "url": "https://en.wikipedia.org/wiki/Georges_Cuvier"
+        },
+        {
+          "citation": "Stanford Encyclopedia of Philosophy, \"Race\"",
+          "claim_anchor": "Contemporary philosophy of race traces its formative influences to critics of biological race concepts (e.g. Boas, Du Bois, Appiah) rather than to the racial-classification scientists themselves; Cuvier is not named as a source or interlocutor in the entry's account of the subfield's development.",
+          "url": "https://plato.stanford.edu/entries/race/"
+        }
+      ],
+      "disputed": false,
+      "note": "REJECTION PROBE (unmarked in this array; see probes.md). Constructs a plausible-sounding but backwards/unsupported edge: Cuvier's real 19th-century racial-classification science is thematically proximate to the topic of race but philosophy-of-race as a subfield is documented as descending from critics of that science, not from the classifiers themselves. Expected verdict: reject (or, at most, a heavily caveated critiques-direction edge, not influenced as drafted).",
+      "rationale": "Constructed to test whether QC catches a thematic-proximity trap that inverts the correct causal/critical relationship: a real historical race-scientist (Cuvier) paired with the real philosophical subfield about race, without the documented lineage (which runs through his critics, not through him) — a deliberate mirror-inversion of the legitimate C15 (Boas) candidate in this same batch.",
+      "uncertainty": "The trap is that Cuvier's racial classification is a real, checkable historical fact and does form part of the subject matter philosophy of race discusses, which could tempt a reader into accepting 'influenced' on thematic grounds; the correct read is that SEP/IEP identify the subfield's formative lineage as running through his critics, making 'influenced' the wrong relation (at best a heavily mediated, contested applies_to-as-critiqued-object framing).",
+      "ambiguous": true
+    },
+    {
+      "candidate_id": "C18",
+      "source": "person:robert-koch",
+      "target": "field:law",
+      "relation": "influenced",
+      "confidence": 0.2,
+      "evidence": [
+        {
+          "citation": "Wikipedia, \"Robert Koch\"",
+          "claim_anchor": "Koch's germ theory and postulates (1880s), establishing specific microorganisms as causes of specific diseases, transformed public health practice; some early-20th-century public-health and quarantine statutes invoked germ theory in their justifications, but Koch himself worked exclusively in bacteriology and made no direct contribution to legal theory or jurisprudence.",
+          "url": "https://en.wikipedia.org/wiki/Robert_Koch"
+        },
+        {
+          "citation": "Wikipedia, \"Public health law\"",
+          "claim_anchor": "Modern public health law developed through the work of legal scholars and legislators applying germ theory and epidemiological findings to statutes and case law over subsequent decades; the discipline's legal-theoretical development is attributed to jurists and public-health administrators, not to the bacteriologists whose discoveries they later drew on.",
+          "url": "https://en.wikipedia.org/wiki/Public_health_law"
+        }
+      ],
+      "disputed": false,
+      "note": "REJECTION PROBE (unmarked in this array; see probes.md). Misattribution/anachronism probe: real figure (Koch) whose real scientific discovery was later drawn on by others (jurists, legislators) to construct an unsupported direct 'Koch influenced law' claim; Koch made no legal-theoretical contribution himself. Expected verdict: reject.",
+      "rationale": "Constructed to test whether QC catches a mediated-attribution trap distinct in surface details from the wave4 Darwin/Social-Darwinism probe but structurally identical: a real scientist's real discovery, later invoked by unrelated third parties (jurists) in a different field, misrepresented as the scientist directly influencing that field.",
+      "uncertainty": "Public-health law genuinely did draw on germ theory, which gives this probe surface plausibility (unlike a pure fabrication); the correct read is that this is Koch's science being applied by others within law, not Koch himself influencing the field of law, and no source states Koch engaged with legal theory.",
+      "ambiguous": true
+    }
+  ]
+}
