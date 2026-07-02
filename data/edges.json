@@ -2701,7 +2701,7 @@
     "target": "field:computer-science",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:acm-ccs",
       "source:udc-summary",
@@ -2713,7 +2713,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "Status capped: endpoint subfield:computer-systems is proposed (QID-less, v1.2 alternative grounding). ACM CCS top branch 'Computer systems organization' (live 2026-06-11); UDC 004.2 'Computer architecture' + 004.45 'System software. Including: Operating systems' (live); MSC 68Mxx (live)."
+    "note": "Structural part_of grounded on ACM CCS 2012: 'Computer systems organization' is a top-level branch of the computing classification. Permanence: https://web.archive.org/web/20260509235215/https://dl.acm.org/ccs. Endpoint promoted via node-promotion v1.4 (taxonomy-anchor-wave1-v1); edge promoted qid-wave-edges-v1, 2026-07-03."
   },
   {
     "id": "edge:computer-vision-part-of-computer-science",
@@ -3303,7 +3303,7 @@
     "target": "field:computer-science",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline",
@@ -3316,7 +3316,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "Status capped: endpoint is proposed (QID-less, v1.2). UDC 004.65 'Databases and their structures. Including: DBMS' (live 2026-06-11); LCC QA76.9.D3 'Database management' (id.loc.gov, live); ACM CCS 'Information systems > Data management systems' (live); MSC 68Pxx 'Theory of data' (live)."
+    "note": "Structural part_of grounded on ACM CCS 2012: the 'Information systems' top-level branch (containing Data management systems) places the area inside computing. Permanence: https://web.archive.org/web/20260509235215/https://dl.acm.org/ccs. Edge promoted qid-wave-edges-v1, 2026-07-03."
   },
   {
     "id": "edge:david-deutsch-founded-quantum-computing",
@@ -3644,7 +3644,7 @@
     "target": "field:computer-science",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
       "source:acm-ccs"
@@ -3655,7 +3655,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "Status capped: endpoint is proposed (QID-less, v1.2). UDC 004.75 'Distributed processing systems' (live 2026-06-11); ACM CCS parallel/distributed/concurrent computing-methodology branches and 'Computer systems organization > Architectures > Distributed architectures' (live)."
+    "note": "Structural part_of grounded on ACM CCS 2012: both ID-set anchor branches live under Computing methodologies in the computing classification. Permanence: https://web.archive.org/web/20260509235215/https://dl.acm.org/ccs. Edge promoted qid-wave-edges-v1, 2026-07-03."
   },
   {
     "id": "edge:donald-knuth-founded-analysis-of-algorithms",
@@ -9224,7 +9224,7 @@
     "target": "domain:engineering-and-technology",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary"
@@ -9235,7 +9235,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-11"
     },
-    "note": "UDC 629.5 'Watercraft engineering. Marine engineering. Boats. Ships. Boatbuilding and shipbuilding' — subdivision of UDC 629 (Transport vehicle engineering), which is a direct top-level notation under UDC 62 (captured baseline 2026-06-11). LCC VM1-989 'Naval architecture. Shipbuilding. Marine engineering' — own LCC subclass VM in class V (Naval science), live-verified by QC ruling in skeleton batch (2026-06-11); class V is out-of-gate for the engineering-and-technology continent. || Status-capped at proposed: the source node is proposed (B-flag clause-6 contest or QID gap) — cap clause; the cap lifts with the node's resolution. || QC ruling 2026-06-11 (Claude Fable 5, orchestrator session #13c): parenthetical corrected — LCC class V is Naval science (class U is Military science; lcco_v.pdf title line, live). Flatten upheld: no gate scheme nests the combined referent under any engineering field. Status-capped (source node proposed, QID gap)."
+    "note": "Structural part_of grounded on NCES CIP 2020: code 14.2201 sits in CIP series 14 (Engineering); definition text verbatim on the live detail page. UDC 629.5 corroborates. Edge promoted qid-wave-edges-v1, 2026-07-03."
   },
   {
     "id": "edge:nephrology-part-of-internal-medicine",
@@ -12684,7 +12684,7 @@
     "target": "field:psychology",
     "relation": "part_of",
     "confidence": 1,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:lcc-outline",
       "source:udc-summary",
@@ -12696,7 +12696,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-18"
     },
-    "note": "Skeleton part_of: LCC BF231-299 Sensation. Aesthesiology + UDC 159.93 Sensation. Sensory perception + Wikidata P31 branch of psychology (Q60680430). Gate-anchored division of field:psychology. STATUS CAPPED AT proposed: source node subfield:sensation-and-perception is status=proposed (edge policy clause 3: edge status <= min endpoint status)."
+    "note": "Structural part_of grounded on the APA PsycInfo Classification: 2320 Sensory Perception sits under 2300 Human Experimental Psychology. Permanence: https://web.archive.org/web/20260702133104/https://www.apa.org/pubs/databases/training/class-codes. LCC BF231-299 + UDC 159.93 corroborate. Edge promoted qid-wave-edges-v1, 2026-07-03."
   },
   {
     "id": "edge:set-theory-formalizes-mathematics",

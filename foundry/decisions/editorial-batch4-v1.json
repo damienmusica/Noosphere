@@ -1,0 +1,2921 @@
+{
+  "version": 1,
+  "batch_id": "editorial-batch4-v1",
+  "decided_at": "2026-07-03",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-03"
+  },
+  "translation_updates": [
+    {
+      "node_id": "person:alfred-russel-wallace",
+      "locale": "en",
+      "summary": "Alfred Russel Wallace (1823–1913) was an English naturalist, explorer, and biologist who independently conceived the theory of evolution through natural selection, his 1858 paper being published alongside extracts from Charles Darwin's writings. Through extensive fieldwork in the Amazon basin and the Malay Archipelago, he studied the geographical distribution of animal species, identifying the faunal divide now termed the Wallace Line and becoming known as a founding figure of biogeography. He was regarded as one of the leading evolutionary thinkers of the 19th century, working on warning coloration and reinforcement, and remained a prolific writer on both scientific and social questions.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:alfred-tarski",
+      "locale": "en",
+      "summary": "Alfred Tarski (1901–1983) was a Polish-American logician and mathematician best known for his work on model theory, metamathematics, and algebraic logic. Educated at the University of Warsaw and a member of the Lwów–Warsaw school of logic, he immigrated to the United States in 1939 and carried out research at the University of California, Berkeley, from 1942 until his death. His biographers state that, along with his contemporary Kurt Gödel, he changed the face of logic in the twentieth century, especially through his work on the concept of truth and the theory of models.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:amos-tversky",
+      "locale": "en",
+      "summary": "Amos Tversky (1937–1996) was an Israeli cognitive and mathematical psychologist and a key figure in the discovery of systematic human cognitive bias and the handling of risk. His early work with Daniel Kahneman focused on the psychology of prediction and probability judgment, and together they developed prospect theory, considered one of the seminal works of behavioral economics that aims to explain irrational human economic choices. Six years after Tversky's death, Kahneman received the 2002 Nobel Memorial Prize in Economic Sciences for work done in collaboration with him.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:andrey-kolmogorov",
+      "locale": "en",
+      "summary": "Andrey Kolmogorov (1903–1987) was a Soviet mathematician who played a central role in the creation of modern probability theory. He also gave fundamental contributions to the mathematics of topology, intuitionistic logic, turbulence, classical mechanics, functional analysis, algorithmic information theory, and computational complexity. His work is widely regarded as foundational to the formalization of probability as a mathematical discipline.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:cesare-beccaria",
+      "locale": "en",
+      "summary": "Cesare Beccaria (1738–1794) was an Italian criminologist, jurist, philosopher, and economist best remembered for his 1764 treatise On Crimes and Punishments, which condemned torture and the death penalty. That work was a founding contribution to penology and the classical school of criminology, and Beccaria is considered the father of modern criminal law and of criminal justice. According to John Bessler, his works had a profound influence on the Founding Fathers of the United States.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:charles-spearman",
+      "locale": "en",
+      "summary": "Charles Spearman (1863–1945) was an English psychologist known for his work in statistics, as a pioneer of factor analysis, and for Spearman's rank correlation coefficient. He did seminal work on models for human intelligence, including his theory that disparate cognitive test scores reflect a single general intelligence factor, for which he coined the term g factor. His statistical approach to mental measurement is foundational to the field of psychometrics.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:duncan-black",
+      "locale": "en",
+      "summary": "Duncan Black (1908–1991) was a Scottish economist who laid the foundations of social choice theory and public choice. He was responsible for unearthing the work of many early political scientists, including Charles Lutwidge Dodgson, and devised the Black electoral system, a Condorcet method in which the Borda winner is chosen in the absence of a Condorcet winner. His work is regarded as foundational to the formal study of collective decision-making.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:elie-metchnikoff",
+      "locale": "en",
+      "summary": "Élie Metchnikoff (1845–1916) was a zoologist from the Russian Empire best known for his research in immunology, and he and Paul Ehrlich were jointly awarded the 1908 Nobel Prize in Physiology or Medicine in recognition of their work on immunity. Honoured as the \"father of innate immunity\", he was the first to discover the immune process of phagocytosis and the cell responsible for it in 1882, laying a foundation for the concept of cell-mediated immunity. His and Ehrlich's works are together regarded as the foundation of the science of immunology.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:emil-kraepelin",
+      "locale": "en",
+      "summary": "Emil Kraepelin (1856–1926) was a German psychiatrist identified by Hans Eysenck's Encyclopedia of Psychology as partially responsible for laying the foundations of modern scientific psychiatry, psychopharmacology, and psychiatric genetics. He believed the chief origin of psychiatric disease to be a combination of biological process and genetic disorder, and his theories dominated psychiatry at the start of the 20th century, enjoying a revival at the century's end despite the intervening psychodynamic influence of Sigmund Freud. He has been described as a \"scientific manager\" who developed a large-scale, clinically oriented, epidemiological research programme.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:ernst-chladni",
+      "locale": "en",
+      "summary": "Ernst Chladni (1756–1827) was a German physicist and musician whose most important work, for which he is sometimes labeled the father of acoustics, included research on vibrating plates and the calculation of the speed of sound for different gases. He also undertook pioneering work in the study of meteorites and is regarded by some as the father of meteoritics. His experiments on the vibration of plates are foundational to the physical study of sound.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:ernst-haeckel",
+      "locale": "en",
+      "summary": "Ernst Haeckel (1834–1919) was a German zoologist, naturalist, and philosopher who discovered, described, and named thousands of new species and coined many terms in biology, including ecology, phylum, phylogeny, and ontogeny. He promoted and popularised Charles Darwin's work in Germany and developed the disproven but influential recapitulation theory, summed up by the dictum \"ontogeny recapitulates phylogeny\". His illustrated Kunstformen der Natur went on to influence the Art Nouveau movement, though he also promoted scientific racism and Social Darwinism.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:eugenius-warming",
+      "locale": "en",
+      "summary": "Eugenius Warming (1841–1924) was a Danish botanist and a pioneering figure in the development of ecology. In 1895 he published Plantesamfund, often regarded as the first textbook on plant ecology, and he taught an early university course in ecology. The ecologist Robert J. Goodland wrote that if one individual were to be singled out as the founder of ecology, Warming should gain precedence.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:friedrich-waismann",
+      "locale": "en",
+      "summary": "Friedrich Waismann (1896–1959) was an Austrian mathematician, physicist, and philosopher. He is best known for being a member of the Vienna Circle and one of the key theorists in logical positivism. His association with the Circle placed him among the central figures of that movement in early twentieth-century philosophy.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:george-edward-moore",
+      "locale": "en",
+      "summary": "G. E. Moore (1873–1958) was an English philosopher who, alongside Bertrand Russell, Ludwig Wittgenstein, and earlier Gottlob Frege, was an initiator of analytic philosophy. He and Russell began de-emphasising the idealism then prevalent among British philosophers and became known for advocating common-sense concepts and contributing to ethics, epistemology, and metaphysics. As Professor of Philosophy at the University of Cambridge he edited the journal Mind and was described by Ray Monk as \"the most revered philosopher of his era\".",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:george-miller",
+      "locale": "en",
+      "summary": "George A. Miller (1920–2012) was an American psychologist who was one of the founders of cognitive psychology and, more broadly, of cognitive science, and he also contributed to the birth of psycholinguistics. He authored the paper \"The Magical Number Seven, Plus or Minus Two,\" observing an average limit of about seven items for human short-term memory capacity, and directed the development of the WordNet database. Rejecting the then-reigning behaviorism, he devised experimental techniques and mathematical methods to analyze mental processes, and is considered one of the great twentieth-century psychologists.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:georges-cuvier",
+      "locale": "en",
+      "summary": "Georges Cuvier (1769–1832) was a French naturalist and zoologist sometimes referred to as the \"founding father of paleontology,\" and was instrumental in establishing the fields of comparative anatomy and paleontology by comparing living animals with fossils. His work is considered the foundation of vertebrate paleontology, and he established extinction as a scientific fact at a time when it was widely regarded as controversial speculation. He was also the most influential proponent of catastrophism in early nineteenth-century geology.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:georgius-agricola",
+      "locale": "en",
+      "summary": "Georgius Agricola (1494–1555) was a German Renaissance humanist scholar, mineralogist, and metallurgist who took a particular interest in the mining and refining of metals. For his groundbreaking work De Natura Fossilium, published in 1546, he is generally referred to as the father of mineralogy and the founder of geology as a scientific discipline. He is also well known for De re metallica libri XII, a comprehensive study of mining and metallurgy published one year after his death, which served as the standard reference work for two centuries.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:grove-karl-gilbert",
+      "locale": "en",
+      "summary": "Grove Karl Gilbert (1843–1918), known in academic literature by the abbreviated name G. K. Gilbert, was an American geologist. His geological studies are associated with the development of the field of geomorphology.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:hans-hahn",
+      "locale": "en",
+      "summary": "Hans Hahn (1879–1934) was an Austrian mathematician and philosopher who made contributions to functional analysis, topology, set theory, the calculus of variations, real analysis, and order theory. In philosophy he was among the main logical positivists of the Vienna Circle. His association with the Circle placed him among the central figures of that early twentieth-century movement.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:herbert-feigl",
+      "locale": "en",
+      "summary": "Herbert Feigl (1902–1988) was an Austrian-American philosopher and an early member of the Vienna Circle. He coined the term \"nomological danglers\". His membership placed him among the figures associated with the Circle's philosophical movement.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:james-hutton",
+      "locale": "en",
+      "summary": "James Hutton (1726–1797) was a Scottish geologist, naturalist, and physician often referred to as the \"Father of Modern Geology,\" who played a key role in establishing geology as a modern science. He advanced the idea that the physical world's remote history can be inferred from evidence in present-day rocks and was one of the earliest proponents of what later became known as uniformitarianism. Though similar reflections appeared in the work of contemporaries such as Buffon, it is chiefly Hutton's pioneering work that established the field.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:jan-tinbergen",
+      "locale": "en",
+      "summary": "Jan Tinbergen (1903–1994) was a Dutch economist who was awarded the first Nobel Memorial Prize in Economic Sciences in 1969, which he shared with Ragnar Frisch for developing and applying dynamic models for the analysis of economic processes. He is widely considered one of the most influential economists of the 20th century and one of the founding fathers of econometrics. His contributions include the development of the first macroeconometric models and the solution of the identification problem.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:john-graunt",
+      "locale": "en",
+      "summary": "John Graunt (1620–1674) has been regarded as the founder of demography. He was one of the first demographers, and perhaps the first epidemiologist, though by profession he was a haberdasher. His early analysis of mortality records is considered foundational to the statistical study of populations.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:john-mccarthy",
+      "locale": "en",
+      "summary": "John McCarthy (1927–2011) was an American computer scientist and cognitive scientist who was one of the founders of the discipline of artificial intelligence. He co-authored the proposal for the Dartmouth workshop that coined the term \"artificial intelligence,\" led the development of the Lisp programming language family, and created garbage collection. He spent most of his career at Stanford University and received the 1971 Turing Award for his contributions to AI.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:john-milne",
+      "locale": "en",
+      "summary": "John Milne (1850–1913) was a British geologist and mining engineer who worked on a horizontal seismograph. His instrument work is associated with the development of the study of earthquakes.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:john-snow",
+      "locale": "en",
+      "summary": "John Snow (1813–1858) was an English physician and a leader in the development of anaesthesia and medical hygiene. He is considered one of the founders of modern epidemiology, in part because of his work in tracing the source of a cholera outbreak in London's Soho to a particular public water pump. His findings inspired fundamental changes in the water and waste systems of London and a significant improvement in general public health.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:john-tooby",
+      "locale": "en",
+      "summary": "John Tooby (1952–2023) was an American anthropologist who, together with his psychologist wife Leda Cosmides, pioneered the field of evolutionary psychology. His collaborative work with Cosmides is credited with shaping that field's foundations.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:karl-ernst-von-baer",
+      "locale": "en",
+      "summary": "Karl Ernst von Baer (1792–1876) was a Baltic German scientist and explorer—naturalist, biologist, geologist, and geographer—who is widely considered a founding father of embryology, the study of animal development. He conducted pioneering work on the development of the embryo, and is regarded as a foundational figure for developmental biology. He was also a member of the Russian Academy of Sciences and a co-founder of the Russian Geographical Society.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:kurt-lewin",
+      "locale": "en",
+      "summary": "Kurt Lewin (1890–1947) was a German-American psychologist regarded as one of the modern pioneers of social, organizational, and applied psychology in the United States. He is often recognized as the \"founder of social psychology\" and was among the first to study group dynamics and organizational development. A 2002 survey ranked him as the 18th-most cited psychologist of the 20th century.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:louis-pasteur",
+      "locale": "en",
+      "summary": "Louis Pasteur (1822–1895) was a French chemist, pharmacist, and microbiologist renowned for his discoveries of the principles of vaccination, microbial fermentation, and pasteurization. He is regarded as one of the founders of modern bacteriology and has been honored as the \"father of microbiology\" (together with Robert Koch). His work disproving spontaneous generation and supporting the germ theory of disease laid foundations for hygiene, public health, and much of modern medicine.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:marvin-minsky",
+      "locale": "en",
+      "summary": "Marvin Minsky (1927–2016) was an American mathematician who conducted research in the cognitive and computer science aspects of artificial intelligence (AI). He joined MIT in 1958, where he co-founded the institution's AI laboratory, and—alongside computer scientist John McCarthy and others—has been called one of the \"fathers of AI.\" He received many honors for his work, including the ACM Turing Award in 1969.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:mathieu-orfila",
+      "locale": "en",
+      "summary": "Mathieu Orfila (1787–1853) was a Spanish-born French toxicologist and chemist, regarded as the father of modern toxicology. His work established the scientific study of poisons and their effects, and he is credited as a founding figure of toxicology as a discipline.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:matthew-fontaine-maury",
+      "locale": "en",
+      "summary": "Matthew Fontaine Maury (1806–1873) was an American oceanographer and naval officer, nicknamed the \"Pathfinder of the Seas\" and considered a founder of modern oceanography. His book The Physical Geography of the Sea (1855) was the first comprehensive work on oceanography to be published. His uniform system of recording oceanographic data was adopted by navies and merchant marines worldwide.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:matthias-jakob-schleiden",
+      "locale": "en",
+      "summary": "Matthias Jakob Schleiden (1804–1881) was a German botanist and a co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow. His formulation of cell theory—that plants are composed of cells—is foundational to cell biology.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:moritz-schlick",
+      "locale": "en",
+      "summary": "Moritz Schlick (1882–1936) was a German philosopher and physicist described as the founding father of logical positivism and the Vienna Circle. He led the Vienna Circle until he was murdered by a former student in 1936.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:oskar-morgenstern",
+      "locale": "en",
+      "summary": "Oskar Morgenstern (1902–1977) was a German-born economist who, in collaboration with mathematician John von Neumann, is credited with founding the field of game theory and its application to the social sciences and strategic decision-making. He also made significant contributions to decision theory, including the von Neumann–Morgenstern utility theorem.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:oswald-schmiedeberg",
+      "locale": "en",
+      "summary": "Oswald Schmiedeberg (1838–1921) was a Baltic German pharmacologist who became the first professor of pharmacology at the University of Strasbourg, where he remained for 46 years. Having trained most of the European professors of his era, he is regarded as a founding figure of modern pharmacology and was a major factor in the success of the German pharmaceutical industry.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:otto-neurath",
+      "locale": "en",
+      "summary": "Otto Neurath (1882–1945) was an Austrian-born philosopher of science, sociologist, and political economist, and one of the leading figures of the Vienna Circle. A proponent of logical positivism, he was also known for inventing the ISOTYPE method of pictorial statistics and for innovations in museum practice. He fled his native country in 1934.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:paul-ehrlich",
+      "locale": "en",
+      "summary": "Paul Ehrlich (1854–1915) was a German physician and scientist who worked in the fields of hematology, immunology, and antimicrobial chemotherapy, and has been called the \"father of immunology.\" He shared the 1908 Nobel Prize in Physiology or Medicine with Élie Metchnikoff for their work on immunity, and his laboratory discovered the first effective treatment for syphilis, initiating the concept of chemotherapy.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:philipp-frank",
+      "locale": "en",
+      "summary": "Philipp Frank (1884–1966) was an Austrian-American physicist, mathematician, and philosopher of the early-to-mid 20th century. He was a logical positivist and a member of the Vienna Circle, and was influenced by Ernst Mach.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:philippe-pinel",
+      "locale": "en",
+      "summary": "Philippe Pinel (1745–1826) was a French physician and precursor of psychiatry who has been described by some as \"the father of modern psychiatry.\" He was instrumental in the development of a more humane approach to the care of psychiatric patients—later known as moral therapy—and worked to abolish the shackling of mental patients. He also made notable contributions to the classification of mental disorders.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:ragnar-frisch",
+      "locale": "en",
+      "summary": "Ragnar Frisch (1895–1973) was an influential Norwegian economist and econometrician, and one of the major contributors to establishing economics as a quantitative, statistically informed science. He coined the term econometrics in 1926 and was a founder of the Econometric Society in 1930. His later work on business-cycle modeling, together with Jan Tinbergen, won the first Nobel Memorial Prize in Economic Sciences in 1969.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:rene-just-hauy",
+      "locale": "en",
+      "summary": "René Just Haüy (1743–1822) was a French priest and mineralogist, commonly styled the Abbé Haüy. For his innovative work on crystal structure and his four-volume Traité de Minéralogie (1801), he is often referred to as the \"Father of Modern Crystallography.\" During the French Revolution he also helped to establish the metric system.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:richard-dedekind",
+      "locale": "en",
+      "summary": "Richard Dedekind (1831–1916) was a German mathematician who made important contributions to number theory, abstract algebra, and the axiomatic foundations of arithmetic. He is considered a pioneer in the development of modern set theory and of the philosophy of mathematics known as logicism. His best-known contribution is the definition of real numbers through the notion of the Dedekind cut.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:robert-koch",
+      "locale": "en",
+      "summary": "Robert Koch (1843–1910) was a German physician and microbiologist who won the 1905 Nobel Prize in Physiology or Medicine for his work on tuberculosis. As the discoverer of the causative agents of tuberculosis, cholera, and anthrax, he is regarded as one of the main founders of modern bacteriology and is popularly nicknamed the father of microbiology (with Louis Pasteur). His work provided direct proof for the germ theory of disease and formalized Koch's postulates.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:rudolf-carnap",
+      "locale": "en",
+      "summary": "Rudolf Carnap (1891–1970) was a German philosopher and logician who was active in Europe before 1935 and in the United States thereafter. He was a major member of the Vienna Circle and an advocate of logical positivism.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:samuel-eilenberg",
+      "locale": "en",
+      "summary": "Samuel Eilenberg (1913–1998) was a Polish-American mathematician who co-founded category theory—together with Saunders Mac Lane—as well as homological algebra. Category theory grew from this collaborative work into a foundational area of modern mathematics.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:saunders-mac-lane",
+      "locale": "en",
+      "summary": "Saunders Mac Lane (1909–2005) was an American mathematician who co-founded category theory together with Samuel Eilenberg. Their collaborative work established category theory as a foundational framework in modern mathematics.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:theodor-schwann",
+      "locale": "en",
+      "summary": "Theodor Schwann (1810–1882) was a German physician and physiologist whose most significant contribution to biology is considered to be the extension of cell theory to animals—foundational work for cell biology. His other contributions include the discovery of Schwann cells in the peripheral nervous system, the discovery of pepsin, and the coining of the term \"metabolism.\"",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:ulric-neisser",
+      "locale": "en",
+      "summary": "Ulric Neisser (1928–2012) was a German-American psychologist and Cornell University professor who has been referred to as the \"father of cognitive psychology.\" In 1967 he published Cognitive Psychology, which brought him instant recognition in the field and was considered an attack on behaviorist paradigms. He researched perception and memory, arguing that memory is largely reconstructed rather than a snapshot of the moment.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:victor-moritz-goldschmidt",
+      "locale": "en",
+      "summary": "Victor Moritz Goldschmidt (1888–1947) was a Norwegian-Jewish mineralogist considered—together with Vladimir Vernadsky—to be the founder of modern geochemistry and crystal chemistry. He is also known as the developer of the Goldschmidt Classification of elements.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:vladimir-vernadsky",
+      "locale": "en",
+      "summary": "Vladimir Vernadsky (1863–1945) was a Russian, Ukrainian, and Soviet mineralogist and geochemist who is considered one of the founders of geochemistry, biogeochemistry, and radiogeology. He was also a founder and the first president of the Ukrainian Academy of Sciences. He is most noted for his 1926 book The Biosphere, in which he hypothesized that life is a geological force that shapes the earth.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:william-labov",
+      "locale": "en",
+      "summary": "William Labov (1927–2024) was an American linguist widely regarded as the founder of the discipline of variationist sociolinguistics. He has been described as an enormously original and influential figure who created much of the methodology of sociolinguistics, and as one of the most influential linguists of the 20th and 21st centuries. He was a professor in the linguistics department of the University of Pennsylvania.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:william-morris-davis",
+      "locale": "en",
+      "summary": "William Morris Davis (1850–1934) was an American geographer, geologist, geomorphologist, and meteorologist, often called the \"father of American geography.\" He studied geology and geography at Harvard and later taught there, and his legacy lives on in geomorphology, the study of landforms. He is regarded as a founding figure of geomorphology as a field.",
+      "reviewed": true
+    },
+    {
+      "node_id": "concept:distinctive-feature",
+      "locale": "en",
+      "summary": "In linguistics, a distinctive feature is the most basic unit of phonological structure that distinguishes one sound from another within a language, such as the feature [+voice], which distinguishes the bilabial plosives [p] and [b]. Distinctive features are grouped into categories according to the natural classes of segments they describe: major class features, laryngeal features, manner features, and place features. The first distinctive feature theory was created by Russian linguist Roman Jakobson in 1941; features have traditionally been specified by binary values, an approach formally adopted in \"Sound Pattern of English\" by Noam Chomsky and Morris Halle in 1968.",
+      "reviewed": true
+    },
+    {
+      "node_id": "concept:godel-numbering",
+      "locale": "en",
+      "summary": "In mathematical logic, a Gödel numbering is a function that assigns to each symbol and well-formed formula of some formal language a unique natural number, called its Gödel number. Kurt Gödel developed the concept for the proof of his incompleteness theorems. It can be interpreted as an encoding in which a number is assigned to each symbol of a mathematical notation, so that sequences of symbols can be represented by natural numbers, facilitating their manipulation in formal theories of arithmetic. Since the publishing of Gödel's paper in 1931, the term has been used to refer to more general assignments of natural numbers to mathematical objects.",
+      "reviewed": true
+    },
+    {
+      "node_id": "concept:law-of-universal-gravitation",
+      "locale": "en",
+      "summary": "Newton's law of universal gravitation describes gravity as a force by stating that every particle attracts every other particle in the universe with a force that is proportional to their masses and inversely proportional to the square of the distance between their centers of mass. It is a general physical law derived from empirical observations by what Isaac Newton called inductive reasoning; it is a part of classical mechanics and was formulated in Newton's Philosophiæ Naturalis Principia Mathematica, first published on 5 July 1687. Its publication has become known as the \"first great unification,\" marking the unification of gravity on Earth with known astronomical behaviors. The law was later superseded by Albert Einstein's theory of general relativity but continues to be used as an excellent approximation of the effects of gravity in most applications.",
+      "reviewed": true
+    },
+    {
+      "node_id": "concept:pragmatic-maxim",
+      "locale": "en",
+      "summary": "The pragmatic maxim, also known as the maxim of pragmatism or the maxim of pragmaticism, is a maxim of logic formulated by Charles Sanders Peirce. Serving as a normative recommendation or a regulative principle in the normative science of logic, its function is to guide the conduct of thought toward the achievement of its purpose, advising on an optimal way of \"attaining clearness of apprehension.\" Peirce first stated it in 1878 in \"How to Make Our Ideas Clear,\" advising that one should consider what conceivable practical effects the object of a conception might have, and that our conception of these effects is the whole of our conception of the object.",
+      "reviewed": true
+    },
+    {
+      "node_id": "concept:will-to-power",
+      "locale": "en",
+      "summary": "The will to power (German: der Wille zur Macht) is a concept in the philosophy of Friedrich Nietzsche that describes what Nietzsche may have believed to be the main driving force in humans. He never systematically defined it, leaving its interpretation open to debate. Broadly, his use of the term has been summarized as self-determination, the concept of actualizing one's will onto oneself or one's surroundings.",
+      "reviewed": true
+    },
+    {
+      "node_id": "work:computing-machinery-and-intelligence",
+      "locale": "en",
+      "summary": "\"Computing Machinery and Intelligence\" is a paper written by Alan Turing on the topic of artificial intelligence, published in 1950 in Mind. It was the first to introduce his concept of what is now known as the Turing test to the general public. The paper considers the question \"Can machines think?\" and, holding that the words \"think\" and \"machine\" cannot clearly be defined, proposes to replace the question with a closely related one expressed in relatively unambiguous words, substituting a simple, unambiguous concept for the term \"think.\"",
+      "reviewed": true
+    },
+    {
+      "node_id": "work:on-formally-undecidable-propositions",
+      "locale": "en",
+      "summary": "\"On Formally Undecidable Propositions of Principia Mathematica and Related Systems I\" (German: \"Über formal unentscheidbare Sätze der Principia Mathematica und verwandter Systeme I\") is a paper in mathematical logic by Kurt Gödel. Submitted November 17, 1930, it was originally published in German in the 1931 volume of Monatshefte für Mathematik und Physik. The paper contains Gödel's incompleteness theorems, now fundamental results in logic that have many implications for consistency proofs in mathematics, and is also known for introducing new techniques that Gödel invented to prove the incompleteness theorems.",
+      "reviewed": true
+    },
+    {
+      "node_id": "work:on-sense-and-reference",
+      "locale": "en",
+      "summary": "In the philosophy of language, the distinction between sense and reference was an idea of the German philosopher and mathematician Gottlob Frege in 1892, in his paper \"On Sense and Reference\" (German: \"Über Sinn und Bedeutung\"), reflecting the two ways he believed a singular term may have meaning. The reference (Bedeutung) of a proper name is the object it means or indicates, whereas its sense (Sinn) is what the name expresses. Frege held that sense is something possessed by a name whether or not it has a reference, and that different names may have the same reference but different senses. Much of analytic philosophy is traceable to Frege's philosophy of language.",
+      "reviewed": true
+    },
+    {
+      "node_id": "work:opticks",
+      "locale": "en",
+      "summary": "Opticks: or, A Treatise of the Reflexions, Refractions, Inflexions and Colours of Light is a collection of three books by Isaac Newton that was published in English in 1704, with a scholarly Latin translation appearing in 1706. The treatise analyses the fundamental nature of light by means of the refraction of light with prisms and lenses, the diffraction of light by closely spaced sheets of glass, and the behaviour of colour mixtures with spectral lights or pigment powders. Opticks was Newton's second major work on physical science and is considered one of the three major works on optics during the Scientific Revolution, alongside Johannes Kepler's Astronomiae Pars Optica and Christiaan Huygens' Treatise on Light.",
+      "reviewed": true
+    },
+    {
+      "node_id": "work:theory-of-games-and-economic-behavior",
+      "locale": "en",
+      "summary": "Theory of Games and Economic Behavior, published in 1944 by Princeton University Press, is a book by mathematician John von Neumann and economist Oskar Morgenstern which is considered the groundbreaking text that created the interdisciplinary research field of game theory. In its introduction to the 60th anniversary edition, Princeton University Press describes the book as \"the classic work upon which modern-day game theory is based.\"",
+      "reviewed": true
+    },
+    {
+      "node_id": "subfield:computer-systems",
+      "locale": "en",
+      "summary": "Computer systems is the area of computing concerned with the design, implementation, analysis, evaluation, and use of computer systems and systems software, classified in the ACM Computing Classification System under \"Computer systems organization.\" The field is served by dedicated venues such as ACM Transactions on Computer Systems, which presents research and development results on the design, implementation, analysis, evaluation, and use of computer systems and systems software, and by USENIX, the Advanced Computing Systems Association, the professional community of computing-systems researchers and practitioners.",
+      "reviewed": true
+    },
+    {
+      "node_id": "subfield:databases-and-information-systems",
+      "locale": "en",
+      "summary": "Databases and information systems is the area of computing concerned with the principles, techniques, and applications of database management systems and data management technology, classified in the ACM Computing Classification System under \"Information systems,\" including data management systems. The field is served by the ACM Special Interest Group on Management of Data (SIGMOD), which is concerned with the principles, techniques and applications of database management systems and data management technology, and by the VLDB Endowment, which promotes and exchanges scholarly work in databases and related fields throughout the world.",
+      "reviewed": true
+    },
+    {
+      "node_id": "subfield:distributed-and-parallel-computing",
+      "locale": "en",
+      "summary": "Distributed and parallel computing is the area of computing concerned with parallel and distributed computing methodologies, classified in the ACM Computing Classification System under \"Parallel computing methodologies\" and distributed computing methodologies. The field is served by the IEEE International Parallel & Distributed Processing Symposium (IPDPS), the premier symposium of the combined community, and by the Journal of Parallel and Distributed Computing, a dedicated journal whose title names the combined field.",
+      "reviewed": true
+    },
+    {
+      "node_id": "subfield:naval-architecture-and-marine-engineering",
+      "locale": "en",
+      "summary": "Naval architecture and marine engineering is the area of engineering concerned with the design, construction, and operation of ships and marine structures, classified in the NCES Classification of Instructional Programs under \"Naval Architecture and Marine Engineering\" (14.2201). The field is served by the Society of Naval Architects and Marine Engineers (SNAME), whose mission is advancing the art, science, and practice of naval architecture and marine engineering, and by the Royal Institution of Naval Architects (RINA), which represents naval architects, maritime engineers and associated professionals in 140 countries.",
+      "reviewed": true
+    },
+    {
+      "node_id": "subfield:sensation-and-perception",
+      "locale": "en",
+      "summary": "Sensation and perception is the area of psychology concerned with sensory processes, perception, attention, and psychophysics, classified in the APA PsycInfo classification under \"Sensory Perception\" (2320) and in the Library of Congress Classification under sensation (BF231-BF299). The field is served by dedicated journals such as Attention, Perception, & Psychophysics, the official journal of the Psychonomic Society, which encompasses all areas of research in sensory processes, perception, attention, and psychophysics.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:amartya-sen",
+      "locale": "en",
+      "summary": "Amartya Sen (born 1933) is an Indian economist and philosopher widely recognized for his contributions to welfare economics and social choice theory. In 1998 he received the Nobel Prize in Economic Sciences for his contributions to welfare economics, and he has also made major contributions to social choice theory, development economics, and the measurement of well-being. He is the Thomas W. Lamont University Professor and professor of economics and philosophy at Harvard University, and in 1999 received India's highest civilian honour, the Bharat Ratna.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:david-deutsch",
+      "locale": "en",
+      "summary": "David Deutsch (born 1953) is a British physicist at the University of Oxford who is often described as the \"father of quantum computing\". He pioneered the field of quantum computation by formulating a description for a quantum Turing machine, as well as specifying an algorithm designed to run on a quantum computer. He is a visiting professor at the Centre for Quantum Computation in the Clarendon Laboratory of the University of Oxford and a proponent of the many-worlds interpretation of quantum mechanics.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:george-lakoff",
+      "locale": "en",
+      "summary": "George Lakoff (born 1941) is an American cognitive linguist and philosopher, best known for his thesis that people's lives are significantly influenced by the conceptual metaphors they use to explain complex phenomena. His conceptual metaphor thesis was introduced in his and Mark Johnson's 1980 book Metaphors We Live By and has found applications in a number of academic disciplines. He served as professor of linguistics at the University of California, Berkeley, from 1972 until his retirement in 2016.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:ivan-sutherland",
+      "locale": "en",
+      "summary": "Ivan Sutherland (born 1938) is an American computer scientist widely regarded as a pioneer of computer graphics. He received the 1988 ACM Turing Award for the invention of the Sketchpad, an early predecessor to the graphical user interface, and his contributions to computer graphics. He is a member of the National Academy of Engineering and the National Academy of Sciences, and in 2012 was awarded the Kyoto Prize in Advanced Technology for \"pioneering achievements in the development of computer graphics and interactive interfaces\".",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:leda-cosmides",
+      "locale": "en",
+      "summary": "Leda Cosmides (born 1957) is an American psychologist who, together with anthropologist John Tooby, pioneered the field of evolutionary psychology. Her work with Tooby is widely credited with establishing evolutionary psychology as a research program. She is recognized as a co-founder of the field.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:luciano-floridi",
+      "locale": "en",
+      "summary": "Luciano Floridi (born 1964) is an Italian and British philosopher best known for his work in the philosophy of information and information ethics. He is John K. Castle Professor in the Practice of Cognitive Science and Founding Director of the Digital Ethics Center at Yale University, and was the founder and director of the interdepartmental research group on the philosophy of information at the University of Oxford. He has received many awards, including the Knight of the Grand Cross of the Order of Merit, and according to Scopus was the most cited living philosopher in the world in 2020.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:martin-hellman",
+      "locale": "en",
+      "summary": "Martin Hellman (born 1945) is an American cryptologist and mathematician, best known for his invention of public-key cryptography in cooperation with Whitfield Diffie and Ralph Merkle. He was elected a member of the National Academy of Engineering in 2002 for contributions to the theory and practice of cryptography. In 2015, he and Whitfield Diffie won the ACM Turing Award.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:martin-seligman",
+      "locale": "en",
+      "summary": "Martin Seligman (born 1942) is an American psychologist widely regarded as a strong promoter of positive psychology within the scientific community. He is the Zellerbach Family Professor of Psychology at the University of Pennsylvania and director of the university's Positive Psychology Center, and his theory of learned helplessness is well known among scientific and clinical psychologists. He was elected president of the American Psychological Association for 1998, and a 2002 Review of General Psychology survey ranked him as the 31st most cited psychologist of the 20th century.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:michael-gazzaniga",
+      "locale": "en",
+      "summary": "Michael Gazzaniga (born 1939) is an American cognitive neuroscientist and professor emeritus of psychology at the University of California, Santa Barbara. He is widely recognized as a founding figure in cognitive neuroscience. He is the founder and retired director of the SAGE Center for the Study of the Mind at UCSB, which he directed from 2006 to 2023.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:richard-thaler",
+      "locale": "en",
+      "summary": "Richard Thaler (born 1945) is an American economist and a theorist in behavioral economics, serving as the Charles R. Walgreen Distinguished Service Professor of Behavioral Science and Economics at the University of Chicago Booth School of Business. In 2017 he was awarded the Nobel Memorial Prize in Economic Sciences for his contributions to behavioral economics. The Royal Swedish Academy of Sciences stated that his contributions have been instrumental in creating the new and rapidly expanding field of behavioral economics.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:ronald-langacker",
+      "locale": "en",
+      "summary": "Ronald Langacker (born 1942) is an American linguist and professor emeritus at the University of California, San Diego, best known as one of the founders of the cognitive linguistics movement and the creator of cognitive grammar. He has also made significant contributions to the comparative study of Uto-Aztecan languages. He has published several articles on historical Uto-Aztecan linguistics and edited collections of grammar sketches of under-described Uto-Aztecan languages.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:stephen-cook",
+      "locale": "en",
+      "summary": "Stephen Cook (born 1939) is an American-Canadian computer scientist and mathematician widely considered one of the forefathers of computational complexity theory. He has made significant contributions to the fields of complexity theory and proof complexity, and is a university professor emeritus at the University of Toronto. He won the 1982 ACM Turing Award.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:vint-cerf",
+      "locale": "en",
+      "summary": "Vint Cerf (born 1943) is an American Internet pioneer recognized as one of \"the fathers of the Internet\", sharing this title with TCP/IP co-developer Robert Kahn. He is widely credited, alongside Kahn, with the co-development of the TCP/IP protocols underlying the Internet. He has received honorary degrees and awards including the National Medal of Technology, the Turing Award, the Presidential Medal of Freedom, and membership in the National Academy of Engineering.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:whitfield-diffie",
+      "locale": "en",
+      "summary": "Whitfield Diffie (born 1944) is an American cryptographer and mathematician, and one of the pioneers of public-key cryptography along with Martin Hellman and Ralph Merkle. Diffie and Hellman's 1976 paper New Directions in Cryptography introduced a radically new method of distributing cryptographic keys, and their technique became known as Diffie-Hellman key exchange. He later served as Vice President for Information Security and Cryptography at ICANN and as a visiting scholar at Stanford University's Center for International Security and Cooperation.",
+      "reviewed": true
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "person:alfred-russel-wallace",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:alfred-tarski",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:amos-tversky",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:andrey-kolmogorov",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:cesare-beccaria",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:charles-spearman",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:duncan-black",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:elie-metchnikoff",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:emil-kraepelin",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:ernst-chladni",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:ernst-haeckel",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:eugenius-warming",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:friedrich-waismann",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:george-edward-moore",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:george-miller",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:georges-cuvier",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:georgius-agricola",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:grove-karl-gilbert",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:hans-hahn",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:herbert-feigl",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:james-hutton",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:jan-tinbergen",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:john-graunt",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:john-mccarthy",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:john-milne",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:john-snow",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:john-tooby",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:karl-ernst-von-baer",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:kurt-lewin",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:louis-pasteur",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:marvin-minsky",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:mathieu-orfila",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:matthew-fontaine-maury",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:matthias-jakob-schleiden",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:moritz-schlick",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:oskar-morgenstern",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:oswald-schmiedeberg",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:otto-neurath",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:paul-ehrlich",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:philipp-frank",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:philippe-pinel",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:ragnar-frisch",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:rene-just-hauy",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:richard-dedekind",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:robert-koch",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:rudolf-carnap",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:samuel-eilenberg",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:saunders-mac-lane",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:theodor-schwann",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:ulric-neisser",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:victor-moritz-goldschmidt",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:vladimir-vernadsky",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:william-labov",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:william-morris-davis",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "concept:distinctive-feature",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "concept:godel-numbering",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "concept:law-of-universal-gravitation",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "concept:pragmatic-maxim",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "concept:will-to-power",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "work:computing-machinery-and-intelligence",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "work:on-formally-undecidable-propositions",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "work:on-sense-and-reference",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "work:opticks",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "work:theory-of-games-and-economic-behavior",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "subfield:computer-systems",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "subfield:databases-and-information-systems",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "subfield:distributed-and-parallel-computing",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "subfield:naval-architecture-and-marine-engineering",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "subfield:sensation-and-perception",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:amartya-sen",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:david-deutsch",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:george-lakoff",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:ivan-sutherland",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:leda-cosmides",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:luciano-floridi",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:martin-hellman",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:martin-seligman",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:michael-gazzaniga",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:richard-thaler",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:ronald-langacker",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:stephen-cook",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:vint-cerf",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:whitfield-diffie",
+      "ladder": "editorial-v2"
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "person:alfred-russel-wallace",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_Russel_Wallace",
+          "retrieved_at": "2026-07-03",
+          "quote": "Alfred Russel Wallace (8 January 1823 – 7 November 1913) was an English naturalist, explorer, geographer, anthropologist, biologist and illustrator.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_Russel_Wallace&oldid=1360504172"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_Russel_Wallace",
+          "retrieved_at": "2026-07-03",
+          "quote": "He was considered the 19th century's leading expert on the geographical distribution of animal species, and is sometimes called the \"father of biogeography\", or more specifically of zoogeography.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_Russel_Wallace&oldid=1360504172"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_Russel_Wallace",
+          "retrieved_at": "2026-07-03",
+          "quote": "He independently conceived the theory of evolution through natural selection",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_Russel_Wallace&oldid=1360504172"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:alfred-tarski",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_Tarski",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Polish-American logician and mathematician. A prolific author best known for his work on model theory, metamathematics, and algebraic logic",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_Tarski&oldid=1359831797"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_Tarski",
+          "retrieved_at": "2026-07-03",
+          "quote": "he changed the face of logic in the twentieth century, especially through his work on the concept of truth and the theory of models.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_Tarski&oldid=1359831797"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:amos-tversky",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Amos_Tversky",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an Israeli cognitive and mathematical psychologist and a key figure in the discovery of systematic human cognitive bias and handling of risk.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Amos_Tversky&oldid=1361411477"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Amos_Tversky",
+          "retrieved_at": "2026-07-03",
+          "quote": "later they worked together to develop prospect theory, which aims to explain irrational human economic choices and is considered one of the seminal works of behavioral economics.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Amos_Tversky&oldid=1361411477"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:andrey-kolmogorov",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Andrey_Kolmogorov",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Soviet mathematician who played a central role in the creation of modern probability theory.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Andrey_Kolmogorov&oldid=1361412733"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Andrey_Kolmogorov",
+          "retrieved_at": "2026-07-03",
+          "quote": "He also gave fundamental contributions to the mathematics of topology, intuitionistic logic, turbulence, classical mechanics, functional analysis, algorithmic information theory and computational complexity.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Andrey_Kolmogorov&oldid=1361412733"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:cesare-beccaria",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cesare_Beccaria",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an Italian criminologist, jurist, philosopher, economist, and politician.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cesare_Beccaria&oldid=1355538301"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cesare_Beccaria",
+          "retrieved_at": "2026-07-03",
+          "quote": "his treatise On Crimes and Punishments (1764), which condemned torture and the death penalty, and was a founding work in the field of penology and the classical school of criminology.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cesare_Beccaria&oldid=1355538301"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cesare_Beccaria",
+          "retrieved_at": "2026-07-03",
+          "quote": "Beccaria is considered the father of modern criminal law and the father of criminal justice.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cesare_Beccaria&oldid=1355538301"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:charles-spearman",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Charles_Spearman",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an English psychologist known for work in statistics, as a pioneer of factor analysis, and for Spearman's rank correlation coefficient.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Spearman&oldid=1361412073"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Charles_Spearman",
+          "retrieved_at": "2026-07-03",
+          "quote": "his theory that disparate cognitive test scores reflect a single general intelligence factor and coining the term g factor.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Spearman&oldid=1361412073"
+        }
+      ],
+      "notes": "flags: Extract does not use the word \"psychometrics\"; the founding-of-psychometrics claim is anchored via his pioneering statistical work on factor analysis and mental measurement rather than a verbatim label."
+    },
+    {
+      "subject_id": "person:duncan-black",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Duncan_Black",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Scottish economist who laid the foundations of social choice theory and public choice.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Duncan_Black&oldid=1360900739"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Duncan_Black",
+          "retrieved_at": "2026-07-03",
+          "quote": "was responsible for the Black electoral system, a Condorcet method whereby, in the absence of a Condorcet winner (e.g. due to a cycle), the Borda winner is chosen.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Duncan_Black&oldid=1360900739"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:elie-metchnikoff",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%89lie_Metchnikoff",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a zoologist from the Russian Empire of Moldavian noble ancestry best known for his research in immunology",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=%C3%89lie_Metchnikoff&oldid=1354949971"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%89lie_Metchnikoff",
+          "retrieved_at": "2026-07-03",
+          "quote": "Metchnikoff was the first to discover a process of immunity called phagocytosis",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=%C3%89lie_Metchnikoff&oldid=1354949971"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/%C3%89lie_Metchnikoff",
+          "retrieved_at": "2026-07-03",
+          "quote": "Their works are regarded as the foundation of the science of immunology.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=%C3%89lie_Metchnikoff&oldid=1354949971"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:emil-kraepelin",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Emil_Kraepelin",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German psychiatrist. Fellow psychiatrist Hans Eysenck's Encyclopedia of Psychology identified him as partially responsible for laying the foundations of modern scientific psychiatry",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Emil_Kraepelin&oldid=1362266485"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Emil_Kraepelin",
+          "retrieved_at": "2026-07-03",
+          "quote": "Kraepelin's theories dominated psychiatry at the start of the 20th century",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Emil_Kraepelin&oldid=1362266485"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:ernst-chladni",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ernst_Chladni",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German physicist and musician. His most important work, for which he is sometimes labeled the father of acoustics, included research on vibrating plates and the calculation of the speed of sound for different gases.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ernst_Chladni&oldid=1359073196"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ernst_Chladni",
+          "retrieved_at": "2026-07-03",
+          "quote": "He also undertook pioneering work in the study of meteorites and is regarded by some as the father of meteoritics.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ernst_Chladni&oldid=1359073196"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:ernst-haeckel",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ernst_Haeckel",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German zoologist, naturalist, eugenicist, philosopher, physician, professor, marine biologist and artist. He discovered, described and named thousands of new species, mapped a genealogical tree relating all life forms and coined many terms in biology, including ecology, phylum, phylogeny, ontogeny, and Protista.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ernst_Haeckel&oldid=1360783493"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ernst_Haeckel",
+          "retrieved_at": "2026-07-03",
+          "quote": "Haeckel promoted and popularised Charles Darwin's work in Germany and developed the disproven but influential recapitulation theory",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ernst_Haeckel&oldid=1360783493"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:eugenius-warming",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Eugenius_Warming",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Danish botanist and a pioneering figure in the development of ecology.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Eugenius_Warming&oldid=1361416337"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Eugenius_Warming",
+          "retrieved_at": "2026-07-03",
+          "quote": "In 1895 Warming published Plantesamfund, often regarded as the first textbook (1895) on plant ecology, and he taught an early university course in ecology.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Eugenius_Warming&oldid=1361416337"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Eugenius_Warming",
+          "retrieved_at": "2026-07-03",
+          "quote": "If one individual can be singled out to be honoured as the founder of ecology, Warming should gain precedence.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Eugenius_Warming&oldid=1361416337"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:friedrich-waismann",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Friedrich_Waismann",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an Austrian mathematician, physicist, and philosopher.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Friedrich_Waismann&oldid=1360675753"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Friedrich_Waismann",
+          "retrieved_at": "2026-07-03",
+          "quote": "He is best known for being a member of the Vienna Circle and one of the key theorists in logical positivism.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Friedrich_Waismann&oldid=1360675753"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:george-edward-moore",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/G._E._Moore",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an English philosopher who, alongside Bertrand Russell, Ludwig Wittgenstein and earlier Gottlob Frege, was an initiator of analytic philosophy.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=G._E._Moore&oldid=1359829230"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/G._E._Moore",
+          "retrieved_at": "2026-07-03",
+          "quote": "became known for advocating common-sense concepts and contributing to ethics, epistemology and metaphysics.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=G._E._Moore&oldid=1359829230"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:george-miller",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Armitage_Miller",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an American psychologist who was one of the founders of cognitive psychology, and more broadly, of cognitive science.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=George_Armitage_Miller&oldid=1361793809"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Armitage_Miller",
+          "retrieved_at": "2026-07-03",
+          "quote": "he observed that many different experimental findings considered together reveal the presence of an average limit of seven for human short-term memory capacity.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=George_Armitage_Miller&oldid=1361793809"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:georges-cuvier",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Georges_Cuvier",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a French naturalist and zoologist, sometimes referred to as the \"founding father of paleontology\".",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Georges_Cuvier&oldid=1355582131"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Georges_Cuvier",
+          "retrieved_at": "2026-07-03",
+          "quote": "was instrumental in establishing the fields of comparative anatomy and paleontology through his work in comparing living animals with fossils.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Georges_Cuvier&oldid=1355582131"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Georges_Cuvier",
+          "retrieved_at": "2026-07-03",
+          "quote": "Cuvier's work is considered the foundation of vertebrate paleontology",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Georges_Cuvier&oldid=1355582131"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:georgius-agricola",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Georgius_Agricola",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German Renaissance humanist scholar, mineralogist and metallurgist.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Georgius_Agricola&oldid=1345170424"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Georgius_Agricola",
+          "retrieved_at": "2026-07-03",
+          "quote": "For his groundbreaking work De Natura Fossilium published in 1546, he is generally referred to as the father of mineralogy and the founder of geology as a scientific discipline.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Georgius_Agricola&oldid=1345170424"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:grove-karl-gilbert",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Grove_Karl_Gilbert",
+          "retrieved_at": "2026-07-03",
+          "quote": "Grove Karl Gilbert (May 6, 1843 – May 1, 1918)",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Grove_Karl_Gilbert&oldid=1338254219"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Grove_Karl_Gilbert",
+          "retrieved_at": "2026-07-03",
+          "quote": "known by the abbreviated name G. K. Gilbert in academic literature, was an American geologist.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Grove_Karl_Gilbert&oldid=1338254219"
+        }
+      ],
+      "notes": "flags: The extract is a one-line lead that states only that Gilbert was an American geologist; it does not contain any founding/formalizing claim for geomorphology (graph_out founded_or_formalized -> geomorphology). No verbatim quote anchoring the founding claim is available from this extract."
+    },
+    {
+      "subject_id": "person:hans-hahn",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hans_Hahn_(mathematician)",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an Austrian mathematician and philosopher who made contributions to functional analysis, topology, set theory, the calculus of variations, real analysis, and order theory.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Hans_Hahn_(mathematician)&oldid=1362236475"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hans_Hahn_(mathematician)",
+          "retrieved_at": "2026-07-03",
+          "quote": "In philosophy he was among the main logical positivists of the Vienna Circle.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Hans_Hahn_(mathematician)&oldid=1362236475"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:herbert-feigl",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Herbert_Feigl",
+          "retrieved_at": "2026-07-03",
+          "quote": "philosopher and an early member of the Vienna Circle",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Herbert_Feigl&oldid=1356269272"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Herbert_Feigl",
+          "retrieved_at": "2026-07-03",
+          "quote": "He coined the term \"nomological danglers\".",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Herbert_Feigl&oldid=1356269272"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:james-hutton",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/James_Hutton",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Scottish geologist, agriculturalist, chemical manufacturer, naturalist and physician. Often referred to as the \"Father of Modern Geology,\" he played a key role in establishing geology as a modern science.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=James_Hutton&oldid=1360045017"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/James_Hutton",
+          "retrieved_at": "2026-07-03",
+          "quote": "He was one of the earliest proponents of what in the 1830s became known as uniformitarianism",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=James_Hutton&oldid=1360045017"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:jan-tinbergen",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jan_Tinbergen",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Dutch economist who was awarded the first Nobel Memorial Prize in Economic Sciences in 1969, which he shared with Ragnar Frisch",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jan_Tinbergen&oldid=1361412234"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Jan_Tinbergen",
+          "retrieved_at": "2026-07-03",
+          "quote": "one of the most influential economists of the 20th century and one of the founding fathers of econometrics.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jan_Tinbergen&oldid=1361412234"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:john-graunt",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/John_Graunt",
+          "retrieved_at": "2026-07-03",
+          "quote": "John Graunt (24 April 1620 – 18 April 1674) has been regarded as the founder of demography.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Graunt&oldid=1350480621"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/John_Graunt",
+          "retrieved_at": "2026-07-03",
+          "quote": "Graunt was one of the first demographers, and perhaps the first epidemiologist, though by profession he was a haberdasher.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Graunt&oldid=1350480621"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:john-mccarthy",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an American computer scientist and cognitive scientist. He was one of the founders of the discipline of artificial intelligence",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_McCarthy_(computer_scientist)&oldid=1360042003"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/John_McCarthy_(computer_scientist)",
+          "retrieved_at": "2026-07-03",
+          "quote": "He co-authored the proposal for the Dartmouth workshop which coined the term \"artificial intelligence\" (AI), led the development of the symbolic programming language family Lisp",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_McCarthy_(computer_scientist)&oldid=1360042003"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:john-milne",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/John_Milne",
+          "retrieved_at": "2026-07-03",
+          "quote": "John Milne (30 December 1850 – 31 July 1913) was a British geologist and mining engineer",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Milne&oldid=1357584139"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/John_Milne",
+          "retrieved_at": "2026-07-03",
+          "quote": "geologist and mining engineer who worked on a horizontal seismograph.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Milne&oldid=1357584139"
+        }
+      ],
+      "notes": "flags: The extract is a single sentence stating Milne was a British geologist and mining engineer who worked on a horizontal seismograph; it contains no explicit founding/formalizing claim for seismology (graph_out founded_or_formalized -> seismology). No verbatim quote anchoring the founding claim is available from this extract."
+    },
+    {
+      "subject_id": "person:john-snow",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/John_Snow",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an English physician and a leader in the development of anaesthesia and medical hygiene.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Snow&oldid=1358852016"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/John_Snow",
+          "retrieved_at": "2026-07-03",
+          "quote": "He is considered one of the founders of modern epidemiology and early germ theory, in part because of his work in tracing the source of a cholera outbreak in London's Soho, which he identified as a particular public water pump.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Snow&oldid=1358852016"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:john-tooby",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/John_Tooby",
+          "retrieved_at": "2026-07-03",
+          "quote": "John Tooby (July 26, 1952 – November 10, 2023) was an American anthropologist",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Tooby&oldid=1348592646"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/John_Tooby",
+          "retrieved_at": "2026-07-03",
+          "quote": "together with his psychologist wife Leda Cosmides, pioneered the field of evolutionary psychology.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Tooby&oldid=1348592646"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:karl-ernst-von-baer",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Karl_Ernst_von_Baer",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Baltic German scientist and explorer",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Karl_Ernst_von_Baer&oldid=1361409394"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Karl_Ernst_von_Baer",
+          "retrieved_at": "2026-07-03",
+          "quote": "is considered a, or the, founding father of embryology",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Karl_Ernst_von_Baer&oldid=1361409394"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Karl_Ernst_von_Baer",
+          "retrieved_at": "2026-07-03",
+          "quote": "a co-founder of the Russian Geographical Society",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Karl_Ernst_von_Baer&oldid=1361409394"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:kurt-lewin",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kurt_Lewin",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German-American psychologist, known as one of the modern pioneers of social, organizational, and applied psychology",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Kurt_Lewin&oldid=1354725353"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Kurt_Lewin",
+          "retrieved_at": "2026-07-03",
+          "quote": "Lewin is often recognized as the \"founder of social psychology\" and was one of the first to study group dynamics",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Kurt_Lewin&oldid=1354725353"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:louis-pasteur",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Louis_Pasteur",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a French chemist, pharmacist, and microbiologist",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Louis_Pasteur&oldid=1361413267"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Louis_Pasteur",
+          "retrieved_at": "2026-07-03",
+          "quote": "He is regarded as one of the founders of modern bacteriology and has been honored as the \"father of bacteriology\" and the \"father of microbiology\" (together with Robert Koch",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Louis_Pasteur&oldid=1361413267"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:marvin-minsky",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Marvin_Minsky",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an American mathematician who conducted research in the cognitive and computer science aspects of artificial intelligence (AI)",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Marvin_Minsky&oldid=1362202339"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Marvin_Minsky",
+          "retrieved_at": "2026-07-03",
+          "quote": "and others have been called the \"fathers of AI\"",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Marvin_Minsky&oldid=1362202339"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Marvin_Minsky",
+          "retrieved_at": "2026-07-03",
+          "quote": "he co-founded MIT's AI laboratory",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Marvin_Minsky&oldid=1362202339"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:mathieu-orfila",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Mathieu_Orfila",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Spanish born French toxicologist and chemist, regarded as father of modern toxicology",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Mathieu_Orfila&oldid=1358970920"
+        }
+      ],
+      "notes": "flags: Extract is a single short sentence (209 chars); nationality, dates, and the founding-of-toxicology claim are all present, but there is no detail on specific works to cite."
+    },
+    {
+      "subject_id": "person:matthew-fontaine-maury",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Matthew_Fontaine_Maury",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an American oceanographer and naval officer",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Matthew_Fontaine_Maury&oldid=1361426835"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Matthew_Fontaine_Maury",
+          "retrieved_at": "2026-07-03",
+          "quote": "is considered a founder of modern oceanography",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Matthew_Fontaine_Maury&oldid=1361426835"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Matthew_Fontaine_Maury",
+          "retrieved_at": "2026-07-03",
+          "quote": "his book, The Physical Geography of the Sea (1855), was the first comprehensive work on oceanography to be published",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Matthew_Fontaine_Maury&oldid=1361426835"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:matthias-jakob-schleiden",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Matthias_Jakob_Schleiden",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Matthias_Jakob_Schleiden&oldid=1361381031"
+        }
+      ],
+      "notes": "flags: Extract (266 chars) grounds the founding claim as 'co-founder of cell theory'; the graph target is subfield:cell-biology, which the extract does not name by that exact phrase."
+    },
+    {
+      "subject_id": "person:moritz-schlick",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Moritz_Schlick",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German philosopher, physicist, and the founding father of logical positivism and the Vienna Circle",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Moritz_Schlick&oldid=1360580204"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:oskar-morgenstern",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Oskar_Morgenstern",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German-born economist",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Oskar_Morgenstern&oldid=1360145152"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Oskar_Morgenstern",
+          "retrieved_at": "2026-07-03",
+          "quote": "In collaboration with mathematician John von Neumann, he is credited with founding the field of game theory and its application to social sciences and strategic decision-making",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Oskar_Morgenstern&oldid=1360145152"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:oswald-schmiedeberg",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Oswald_Schmiedeberg",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Baltic German pharmacologist",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Oswald_Schmiedeberg&oldid=1349936322"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Oswald_Schmiedeberg",
+          "retrieved_at": "2026-07-03",
+          "quote": "becoming the first professor of pharmacology at the University of Strasbourg, where he remained for 46 years",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Oswald_Schmiedeberg&oldid=1349936322"
+        }
+      ],
+      "notes": "flags: Extract calls him the 'first professor of pharmacology' and notes he 'trained most of the European professors', strongly implying founder status, but does not use the exact phrase 'founder of pharmacology'."
+    },
+    {
+      "subject_id": "person:otto-neurath",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Otto_Neurath",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an Austrian-born philosopher of science, sociologist, and political economist",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Otto_Neurath&oldid=1350965325"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Otto_Neurath",
+          "retrieved_at": "2026-07-03",
+          "quote": "Neurath was one of the leading figures of the Vienna Circle",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Otto_Neurath&oldid=1350965325"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Otto_Neurath",
+          "retrieved_at": "2026-07-03",
+          "quote": "invented the ISOTYPE method of pictorial statistics",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Otto_Neurath&oldid=1350965325"
+        }
+      ],
+      "notes": "flags: Modeling note binds: do not credit solo founding of logical positivism. Extract supports Vienna Circle leadership but does not itself assert Neurath founded logical positivism; summary frames him as a leading figure/proponent, not sole founder."
+    },
+    {
+      "subject_id": "person:paul-ehrlich",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Paul_Ehrlich",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German physician and scientist who worked in the fields of hematology, immunology and antimicrobial chemotherapy",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Paul_Ehrlich&oldid=1361410654"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Paul_Ehrlich",
+          "retrieved_at": "2026-07-03",
+          "quote": "Ehrlich has been called \"father of immunology\"",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Paul_Ehrlich&oldid=1361410654"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Paul_Ehrlich",
+          "retrieved_at": "2026-07-03",
+          "quote": "He shared the 1908 Nobel Prize in Physiology or Medicine with Élie Metchnikoff",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Paul_Ehrlich&oldid=1361410654"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:philipp-frank",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Philipp_Frank",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an Austrian-American physicist, mathematician and philosopher",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Philipp_Frank&oldid=1348271754"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Philipp_Frank",
+          "retrieved_at": "2026-07-03",
+          "quote": "He was a logical positivist, and a member of the Vienna Circle",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Philipp_Frank&oldid=1348271754"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:philippe-pinel",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Philippe_Pinel",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a French physician, precursor of psychiatry",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Philippe_Pinel&oldid=1328903857"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Philippe_Pinel",
+          "retrieved_at": "2026-07-03",
+          "quote": "has been described by some as \"the father of modern psychiatry\"",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Philippe_Pinel&oldid=1328903857"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Philippe_Pinel",
+          "retrieved_at": "2026-07-03",
+          "quote": "He was instrumental in the development of a more humane psychological approach to the custody and care of psychiatric patients",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Philippe_Pinel&oldid=1328903857"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:ragnar-frisch",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ragnar_Frisch",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an influential Norwegian economist and econometrician",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ragnar_Frisch&oldid=1341542061"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ragnar_Frisch",
+          "retrieved_at": "2026-07-03",
+          "quote": "He coined the term econometrics in 1926",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ragnar_Frisch&oldid=1341542061"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ragnar_Frisch",
+          "retrieved_at": "2026-07-03",
+          "quote": "together with Jan Tinbergen, won the first Nobel Memorial Prize in Economic Sciences in 1969",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ragnar_Frisch&oldid=1341542061"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:rene-just-hauy",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ren%C3%A9_Just_Ha%C3%BCy",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a French priest and mineralogist",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ren%C3%A9_Just_Ha%C3%BCy&oldid=1359697757"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ren%C3%A9_Just_Ha%C3%BCy",
+          "retrieved_at": "2026-07-03",
+          "quote": "he is often referred to as the \"Father of Modern Crystallography\"",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ren%C3%A9_Just_Ha%C3%BCy&oldid=1359697757"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ren%C3%A9_Just_Ha%C3%BCy",
+          "retrieved_at": "2026-07-03",
+          "quote": "Due to his innovative work on crystal structure and his four-volume Traité de Minéralogie (1801)",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ren%C3%A9_Just_Ha%C3%BCy&oldid=1359697757"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:richard-dedekind",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Richard_Dedekind",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German mathematician who made important contributions to number theory, abstract algebra (particularly ring theory), and the axiomatic foundations of arithmetic",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Richard_Dedekind&oldid=1361926827"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Richard_Dedekind",
+          "retrieved_at": "2026-07-03",
+          "quote": "He is also considered a pioneer in the development of modern set theory",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Richard_Dedekind&oldid=1361926827"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Richard_Dedekind",
+          "retrieved_at": "2026-07-03",
+          "quote": "His best known contribution is the definition of real numbers through the notion of Dedekind cut",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Richard_Dedekind&oldid=1361926827"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:robert-koch",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Robert_Koch",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German physician and microbiologist",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Koch&oldid=1361412700"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Robert_Koch",
+          "retrieved_at": "2026-07-03",
+          "quote": "he is regarded as one of the main founders of modern bacteriology",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Koch&oldid=1361412700"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Robert_Koch",
+          "retrieved_at": "2026-07-03",
+          "quote": "he is popularly nicknamed the father of microbiology (with Louis Pasteur)",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Koch&oldid=1361412700"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:rudolf-carnap",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Carnap",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German philosopher and logician",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Carnap&oldid=1361397477"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Carnap",
+          "retrieved_at": "2026-07-03",
+          "quote": "He was a major member of the Vienna Circle and an advocate of logical positivism",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Carnap&oldid=1361397477"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:samuel-eilenberg",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Samuel_Eilenberg",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Polish-American mathematician who co-founded category theory (with Saunders Mac Lane) and homological algebra",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Samuel_Eilenberg&oldid=1294981755"
+        }
+      ],
+      "notes": "flags: Extract is very short (175 chars); it grounds nationality, and the co-founding claim, but contains no further biographical or work detail beyond category theory and homological algebra."
+    },
+    {
+      "subject_id": "person:saunders-mac-lane",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Saunders_Mac_Lane",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an American mathematician who co-founded category theory with Samuel Eilenberg",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Saunders_Mac_Lane&oldid=1361540317"
+        }
+      ],
+      "notes": "flags: Extract is very short (166 chars); it grounds nationality and the co-founding claim only, with no further biographical or work detail."
+    },
+    {
+      "subject_id": "person:theodor-schwann",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Theodor_Schwann",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German physician and physiologist",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theodor_Schwann&oldid=1332233065"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Theodor_Schwann",
+          "retrieved_at": "2026-07-03",
+          "quote": "His most significant contribution to biology is considered to be the extension of cell theory to animals",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theodor_Schwann&oldid=1332233065"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Theodor_Schwann",
+          "retrieved_at": "2026-07-03",
+          "quote": "the discovery of Schwann cells in the peripheral nervous system",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theodor_Schwann&oldid=1332233065"
+        }
+      ],
+      "notes": "flags: Graph target is subfield:cell-biology; extract grounds the founding claim via 'extension of cell theory to animals' but does not use the exact phrase 'cell biology'."
+    },
+    {
+      "subject_id": "person:ulric-neisser",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ulric_Neisser",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a German-American psychologist, Cornell University professor",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ulric_Neisser&oldid=1342427506"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ulric_Neisser",
+          "retrieved_at": "2026-07-03",
+          "quote": "He has been referred to as the \"father of cognitive psychology\"",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ulric_Neisser&oldid=1342427506"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ulric_Neisser",
+          "retrieved_at": "2026-07-03",
+          "quote": "In 1967, Neisser published Cognitive Psychology",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ulric_Neisser&oldid=1342427506"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:victor-moritz-goldschmidt",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Victor_Goldschmidt",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Norwegian-Jewish mineralogist considered (together with Vladimir Vernadsky) to be the founder of modern geochemistry and crystal chemistry",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Victor_Goldschmidt&oldid=1358662452"
+        }
+      ],
+      "notes": "flags: Extract is a single sentence (263 chars); nationality, the co-founding claim, and one key contribution (Goldschmidt Classification) are present, but no dates appear in the body text—dates are taken from the extract's leading parenthetical."
+    },
+    {
+      "subject_id": "person:vladimir-vernadsky",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vladimir_Vernadsky",
+          "retrieved_at": "2026-07-03",
+          "quote": "was a Russian, Ukrainian, and Soviet mineralogist and geochemist who is considered one of the founders of geochemistry, biogeochemistry, and radiogeology",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Vladimir_Vernadsky&oldid=1361248776"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Vladimir_Vernadsky",
+          "retrieved_at": "2026-07-03",
+          "quote": "Vladimir Vernadsky is most noted for his 1926 book The Biosphere",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Vladimir_Vernadsky&oldid=1361248776"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:william-labov",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/William_Labov",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an American linguist widely regarded as the founder of the discipline of variationist sociolinguistics",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=William_Labov&oldid=1356581526"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/William_Labov",
+          "retrieved_at": "2026-07-03",
+          "quote": "one of the most influential linguists of the 20th and 21st centuries",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=William_Labov&oldid=1356581526"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:william-morris-davis",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/William_Morris_Davis",
+          "retrieved_at": "2026-07-03",
+          "quote": "was an American geographer, geologist, geomorphologist, and meteorologist, often called the \"father of American geography\"",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=William_Morris_Davis&oldid=1331278428"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/William_Morris_Davis",
+          "retrieved_at": "2026-07-03",
+          "quote": "Though his legacy lives on in geomorphology",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=William_Morris_Davis&oldid=1331278428"
+        }
+      ],
+      "notes": "flags: Graph founding target is subfield:geomorphology; extract calls him 'father of American geography' and says 'his legacy lives on in geomorphology' but does not use the exact phrase 'founder of geomorphology'."
+    },
+    {
+      "subject_id": "concept:distinctive-feature",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Distinctive_feature",
+          "retrieved_at": "2026-07-03",
+          "quote": "a distinctive feature is the most basic unit of phonological structure that distinguishes one sound from another within a language",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Distinctive_feature&oldid=1337515400"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Distinctive_feature",
+          "retrieved_at": "2026-07-03",
+          "quote": "Distinctive features are grouped into categories according to the natural classes of segments they describe: major class features, laryngeal features, manner features, and place features.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Distinctive_feature&oldid=1337515400"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Distinctive_feature",
+          "retrieved_at": "2026-07-03",
+          "quote": "the first distinctive feature theory was created by Russian linguist Roman Jakobson in 1941",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Distinctive_feature&oldid=1337515400"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Distinctive_feature",
+          "retrieved_at": "2026-07-03",
+          "quote": "this theory about distinctive features being binary was formally adopted in \"Sound Pattern of English\" by Noam Chomsky and Morris Halle in 1968",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Distinctive_feature&oldid=1337515400"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:godel-numbering",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/G%C3%B6del_numbering",
+          "retrieved_at": "2026-07-03",
+          "quote": "a Gödel numbering is a function that assigns to each symbol and well-formed formula of some formal language a unique natural number, called its Gödel number",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=G%C3%B6del_numbering&oldid=1343580865"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/G%C3%B6del_numbering",
+          "retrieved_at": "2026-07-03",
+          "quote": "Kurt Gödel developed the concept for the proof of his incompleteness theorems.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=G%C3%B6del_numbering&oldid=1343580865"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/G%C3%B6del_numbering",
+          "retrieved_at": "2026-07-03",
+          "quote": "Since the publishing of Gödel's paper in 1931, the term \"Gödel numbering\" or \"Gödel code\" has been used to refer to more general assignments of natural numbers to mathematical objects.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=G%C3%B6del_numbering&oldid=1343580865"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:law-of-universal-gravitation",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Newton's_law_of_universal_gravitation",
+          "retrieved_at": "2026-07-03",
+          "quote": "every particle attracts every other particle in the universe with a force that is proportional to their masses and inversely proportional to the square of the distance between their centers of mass",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Newton's_law_of_universal_gravitation&oldid=1361608324"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Newton's_law_of_universal_gravitation",
+          "retrieved_at": "2026-07-03",
+          "quote": "It is a part of classical mechanics and was formulated in Newton's work Philosophiæ Naturalis Principia Mathematica",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Newton's_law_of_universal_gravitation&oldid=1361608324"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Newton's_law_of_universal_gravitation",
+          "retrieved_at": "2026-07-03",
+          "quote": "Newton's law was later superseded by Albert Einstein's theory of general relativity, but the universality of the gravitational constant is intact and the law still continues to be used as an excellent approximation",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Newton's_law_of_universal_gravitation&oldid=1361608324"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:pragmatic-maxim",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Pragmatic_maxim",
+          "retrieved_at": "2026-07-03",
+          "quote": "The pragmatic maxim, also known as the maxim of pragmatism or the maxim of pragmaticism, is a maxim of logic formulated by Charles Sanders Peirce.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Pragmatic_maxim&oldid=1354168397"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Pragmatic_maxim",
+          "retrieved_at": "2026-07-03",
+          "quote": "its function is to guide the conduct of thought toward the achievement of its purpose, advising on an optimal way of \"attaining clearness of apprehension\"",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Pragmatic_maxim&oldid=1354168397"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Pragmatic_maxim",
+          "retrieved_at": "2026-07-03",
+          "quote": "Consider what effects, that might conceivably have practical bearings, we conceive the object of our conception to have. Then, our conception of these effects is the whole of our conception of the object.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Pragmatic_maxim&oldid=1354168397"
+        }
+      ]
+    },
+    {
+      "subject_id": "concept:will-to-power",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Will_to_power",
+          "retrieved_at": "2026-07-03",
+          "quote": "The will to power (German: der Wille zur Macht) is a concept in the philosophy of Friedrich Nietzsche. The will to power describes what Nietzsche may have believed to be the main driving force in humans.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Will_to_power&oldid=1325900804"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Will_to_power",
+          "retrieved_at": "2026-07-03",
+          "quote": "He never systematically defined it, leaving its interpretation open to debate.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Will_to_power&oldid=1325900804"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Will_to_power",
+          "retrieved_at": "2026-07-03",
+          "quote": "His use of the term can be summarized as self-determination, the concept of actualizing one's will onto oneself or one's surroundings, and it coincides heavily with egoism.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Will_to_power&oldid=1325900804"
+        }
+      ],
+      "notes": "flags: modeling_note flags contested interpretations; summary attributes the characterization to the source and preserves the extract's hedged wording (\"may have believed,\" \"open to debate\")."
+    },
+    {
+      "subject_id": "work:computing-machinery-and-intelligence",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Computing_Machinery_and_Intelligence",
+          "retrieved_at": "2026-07-03",
+          "quote": "The paper, published in 1950 in Mind, was the first to introduce his concept of what is now known as the Turing test to the general public.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Computing_Machinery_and_Intelligence&oldid=1361401367"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Computing_Machinery_and_Intelligence",
+          "retrieved_at": "2026-07-03",
+          "quote": "Turing's paper considers the question \"Can machines think?\" Turing says that since the words \"think\" and \"machine\" cannot clearly be defined, we should \"replace the question by another, which is closely related to it and is expressed in relatively unambiguous words.\"",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Computing_Machinery_and_Intelligence&oldid=1361401367"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:on-formally-undecidable-propositions",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/On_Formally_Undecidable_Propositions_of_Principia_Mathematica_and_Related_Systems",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a paper in mathematical logic by Kurt Gödel.  Submitted November 17, 1930, it was originally published in German in the 1931 volume of Monatshefte für Mathematik und Physik.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=On_Formally_Undecidable_Propositions_of_Principia_Mathematica_and_Related_Systems&oldid=1180437711"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/On_Formally_Undecidable_Propositions_of_Principia_Mathematica_and_Related_Systems",
+          "retrieved_at": "2026-07-03",
+          "quote": "The paper contains Gödel's incompleteness theorems, now fundamental results in logic that have many implications for consistency proofs in mathematics. The paper is also known for introducing new techniques that Gödel invented to prove the incompleteness theorems.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=On_Formally_Undecidable_Propositions_of_Principia_Mathematica_and_Related_Systems&oldid=1180437711"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:on-sense-and-reference",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Sense_and_reference",
+          "retrieved_at": "2026-07-03",
+          "quote": "the distinction between sense and reference was an idea of the German philosopher and mathematician Gottlob Frege in 1892 (in his paper \"On Sense and Reference\"; German: \"Über Sinn und Bedeutung\"), reflecting the two ways he believed a singular term may have meaning",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Sense_and_reference&oldid=1355689334"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Sense_and_reference",
+          "retrieved_at": "2026-07-03",
+          "quote": "The reference (or \"referent\"; Bedeutung) of a proper name is the object it means or indicates (bedeuten), whereas its sense (Sinn) is what the name expresses.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Sense_and_reference&oldid=1355689334"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Sense_and_reference",
+          "retrieved_at": "2026-07-03",
+          "quote": "Much of analytic philosophy is traceable to Frege's philosophy of language.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Sense_and_reference&oldid=1355689334"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:opticks",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Opticks",
+          "retrieved_at": "2026-07-03",
+          "quote": "Opticks: or, A Treatise of the Reflexions, Refractions, Inflexions and Colours of Light is a collection of three books by Isaac Newton that was published in English in 1704 (a scholarly Latin translation appeared in 1706).",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Opticks&oldid=1358337717"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Opticks",
+          "retrieved_at": "2026-07-03",
+          "quote": "The treatise analyses the fundamental nature of light by means of the refraction of light with prisms and lenses, the diffraction of light by closely spaced sheets of glass, and the behaviour of colour mixtures with spectral lights or pigment powders.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Opticks&oldid=1358337717"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Opticks",
+          "retrieved_at": "2026-07-03",
+          "quote": "Opticks was Newton's second major work on physical science",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Opticks&oldid=1358337717"
+        }
+      ]
+    },
+    {
+      "subject_id": "work:theory-of-games-and-economic-behavior",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Theory_of_Games_and_Economic_Behavior",
+          "retrieved_at": "2026-07-03",
+          "quote": "is a book by mathematician John von Neumann and economist Oskar Morgenstern which is considered the groundbreaking text that created the interdisciplinary research field of game theory",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theory_of_Games_and_Economic_Behavior&oldid=1352441311"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Theory_of_Games_and_Economic_Behavior",
+          "retrieved_at": "2026-07-03",
+          "quote": "the classic work upon which modern-day game theory is based",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theory_of_Games_and_Economic_Behavior&oldid=1352441311"
+        }
+      ]
+    },
+    {
+      "subject_id": "subfield:computer-systems",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://dl.acm.org/journal/tocs",
+          "retrieved_at": "2026-07-03",
+          "quote": "ACM Transactions on Computer Systems (TOCS) presents research and development results on the design, implementation, analysis, evaluation, and use of computer systems and systems software.",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20251118145429/https://dl.acm.org/journal/tocs"
+        },
+        {
+          "url": "https://www.usenix.org/about/",
+          "retrieved_at": "2026-07-03",
+          "quote": "USENIX, the Advanced Computing Systems Association",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260630190936/https://www.usenix.org/about/"
+        },
+        {
+          "url": "https://dl.acm.org/ccs",
+          "retrieved_at": "2026-07-03",
+          "quote": "Computer systems organization",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260509235215/https://dl.acm.org/ccs"
+        }
+      ]
+    },
+    {
+      "subject_id": "subfield:databases-and-information-systems",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://sigmod.org",
+          "retrieved_at": "2026-07-03",
+          "quote": "The ACM Special Interest Group on Management of Data is concerned with the principles, techniques and applications of database management systems and data management technology",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702132248/https://sigmod.org/"
+        },
+        {
+          "url": "https://vldb.org",
+          "retrieved_at": "2026-07-03",
+          "quote": "promoting and exchanging scholarly work in databases and related fields throughout the world",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702132435/https://vldb.org/"
+        },
+        {
+          "url": "https://dl.acm.org/ccs",
+          "retrieved_at": "2026-07-03",
+          "quote": "Data management systems",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260509235215/https://dl.acm.org/ccs"
+        }
+      ]
+    },
+    {
+      "subject_id": "subfield:distributed-and-parallel-computing",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://dl.acm.org/ccs",
+          "retrieved_at": "2026-07-03",
+          "quote": "Parallel computing methodologies",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260509235215/https://dl.acm.org/ccs"
+        },
+        {
+          "url": "https://www.ipdps.org",
+          "retrieved_at": "2026-07-03",
+          "quote": "IEEE International Parallel & Distributed Processing Symposium",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702132625/https://www.ipdps.org"
+        },
+        {
+          "url": "https://www.sciencedirect.com/journal/journal-of-parallel-and-distributed-computing",
+          "retrieved_at": "2026-07-03",
+          "quote": "Journal of Parallel and Distributed Computing",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260201164653/https://www.sciencedirect.com/journal/journal-of-parallel-and-distributed-computing"
+        }
+      ]
+    },
+    {
+      "subject_id": "subfield:naval-architecture-and-marine-engineering",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://nces.ed.gov/ipeds/cipcode/cipdetail.aspx?y=56&cipid=90538",
+          "retrieved_at": "2026-07-03",
+          "quote": "Naval Architecture and Marine Engineering",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702132721/https://nces.ed.gov/ipeds/cipcode/cipdetail.aspx?y=56&cipid=90538"
+        },
+        {
+          "url": "https://www.sname.org",
+          "retrieved_at": "2026-07-03",
+          "quote": "Advancing the art, science, and practice of naval architecture and marine engineering",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702132910/https://www.sname.org"
+        },
+        {
+          "url": "https://rina.org.uk",
+          "retrieved_at": "2026-07-03",
+          "quote": "naval architects, maritime engineers and associated professionals in 140 countries",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260627071552/https://www.rina.org.uk/"
+        }
+      ]
+    },
+    {
+      "subject_id": "subfield:sensation-and-perception",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://www.apa.org/pubs/databases/training/class-codes",
+          "retrieved_at": "2026-07-03",
+          "quote": "Sensory Perception",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702133104/https://www.apa.org/pubs/databases/training/class-codes"
+        },
+        {
+          "url": "https://link.springer.com/journal/13414",
+          "retrieved_at": "2026-07-03",
+          "quote": "Attention, Perception, & Psychophysics is a journal that encompasses all areas of research in sensory processes, perception, attention, and psychophysics. Official journal of the Psychonomic Society.",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260519004942/https://link.springer.com/journal/13414"
+        },
+        {
+          "url": "https://id.loc.gov/authorities/classification/BF231-BF299.json",
+          "retrieved_at": "2026-07-03",
+          "quote": "Sensation--Psychology",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702133247/https://id.loc.gov/authorities/classification/BF231-BF299.json"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:amartya-sen",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Amartya_Sen",
+          "retrieved_at": "2026-07-03",
+          "quote": "born 3 November 1933) is an Indian economist and philosopher. Sen has taught and worked in England and the United States since 1972. In 1998, he received the Nobel Prize in Economic Sciences",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Amartya_Sen&oldid=1357652977"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Amartya_Sen",
+          "retrieved_at": "2026-07-03",
+          "quote": "He has also made major contributions to social choice theory, economic and social justice, economic theories of famines, decision theory, development economics, public health",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Amartya_Sen&oldid=1357652977"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Amartya_Sen",
+          "retrieved_at": "2026-07-03",
+          "quote": "Sen is currently the Thomas W. Lamont University Professor, and professor of economics and philosophy, at Harvard University.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Amartya_Sen&oldid=1357652977"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Amartya_Sen",
+          "retrieved_at": "2026-07-03",
+          "quote": "In 1999, he received India's highest civilian honour, Bharat Ratna, for his contribution to welfare economics.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Amartya_Sen&oldid=1357652977"
+        }
+      ],
+      "notes": "living (70): attributed wording, professional content only; P570 live-confirmed absent 2026-07-03."
+    },
+    {
+      "subject_id": "person:david-deutsch",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/David_Deutsch",
+          "retrieved_at": "2026-07-03",
+          "quote": "born 18 May 1953) is a British physicist at the University of Oxford who is often described as the \"father of quantum computing\".",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=David_Deutsch&oldid=1358046749"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/David_Deutsch",
+          "retrieved_at": "2026-07-03",
+          "quote": "He pioneered the field of quantum computation by formulating a description for a quantum Turing machine, as well as specifying an algorithm designed to run on a quantum computer.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=David_Deutsch&oldid=1358046749"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/David_Deutsch",
+          "retrieved_at": "2026-07-03",
+          "quote": "He is a visiting professor in the Department of Atomic and Laser Physics at the Centre for Quantum Computation (CQC) in the Clarendon Laboratory of the University of Oxford.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=David_Deutsch&oldid=1358046749"
+        }
+      ],
+      "notes": "living (70): attributed wording, professional content only; P570 live-confirmed absent 2026-07-03."
+    },
+    {
+      "subject_id": "person:george-lakoff",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Lakoff",
+          "retrieved_at": "2026-07-03",
+          "quote": "born May 24, 1941) is an American cognitive linguist and philosopher, best known for his thesis that people's lives are significantly influenced by the conceptual metaphors they use",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=George_Lakoff&oldid=1353369984"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Lakoff",
+          "retrieved_at": "2026-07-03",
+          "quote": "The conceptual metaphor thesis, introduced in his and Mark Johnson's 1980 book Metaphors We Live By has found applications in a number of academic disciplines.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=George_Lakoff&oldid=1353369984"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Lakoff",
+          "retrieved_at": "2026-07-03",
+          "quote": "Lakoff served as professor of linguistics at the University of California, Berkeley, from 1972 until his retirement in 2016.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=George_Lakoff&oldid=1353369984"
+        }
+      ],
+      "notes": "living (70): attributed wording, professional content only; P570 live-confirmed absent 2026-07-03."
+    },
+    {
+      "subject_id": "person:ivan-sutherland",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ivan_Sutherland",
+          "retrieved_at": "2026-07-03",
+          "quote": "Ivan Edward Sutherland (born May 16, 1938) is an American computer scientist and Internet pioneer, widely regarded as a pioneer of computer graphics.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ivan_Sutherland&oldid=1354347775"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ivan_Sutherland",
+          "retrieved_at": "2026-07-03",
+          "quote": "He received the 1988 ACM Turing Award for the invention of the Sketchpad, an early predecessor to the sort of graphical user interface that has become ubiquitous in personal computers, and his contributions to computer graphics.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ivan_Sutherland&oldid=1354347775"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ivan_Sutherland",
+          "retrieved_at": "2026-07-03",
+          "quote": "In 2012, he was awarded the Kyoto Prize in Advanced Technology for \"pioneering achievements in the development of computer graphics and interactive interfaces\".",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ivan_Sutherland&oldid=1354347775"
+        }
+      ],
+      "notes": "living (70): attributed wording, professional content only; P570 live-confirmed absent 2026-07-03."
+    },
+    {
+      "subject_id": "person:leda-cosmides",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Leda_Cosmides",
+          "retrieved_at": "2026-07-03",
+          "quote": "Leda Cosmides (born May 1957) is an American psychologist, who, together with anthropologist husband John Tooby, pioneered the field of evolutionary psychology.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Leda_Cosmides&oldid=1348592552"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Leda_Cosmides",
+          "retrieved_at": "2026-07-03",
+          "quote": "together with anthropologist husband John Tooby, pioneered the field of evolutionary psychology.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Leda_Cosmides&oldid=1348592552"
+        }
+      ],
+      "notes": "living (70) tranche; flags: Short extract (single sentence); summary restricted to co-pioneering claim with Tooby co-attribution, no year of specific work available in extract."
+    },
+    {
+      "subject_id": "person:luciano-floridi",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Luciano_Floridi",
+          "retrieved_at": "2026-07-03",
+          "quote": "Floridi is best known for his work on two areas of philosophical research: the philosophy of information, and information ethics (also known as digital ethics or computer ethics)",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Luciano_Floridi&oldid=1342351200"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Luciano_Floridi",
+          "retrieved_at": "2026-07-03",
+          "quote": "He is John K. Castle Professor in the Practice of Cognitive Science and Founding Director of the Digital Ethics Center at Yale University.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Luciano_Floridi&oldid=1342351200"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Luciano_Floridi",
+          "retrieved_at": "2026-07-03",
+          "quote": "for which he received many awards, including the Knight of the Grand Cross of the Order of Merit, Italy's most prestigious honor. According to Scopus, Floridi was the most cited living philosopher in the world in 2020.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Luciano_Floridi&oldid=1342351200"
+        }
+      ],
+      "notes": "living (70): attributed wording, professional content only; P570 live-confirmed absent 2026-07-03."
+    },
+    {
+      "subject_id": "person:martin-hellman",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Martin_Hellman",
+          "retrieved_at": "2026-07-03",
+          "quote": "Martin Edward Hellman (born October 2, 1945) is an American cryptologist and mathematician, best known for his invention of public-key cryptography in cooperation with Whitfield Diffie and Ralph Merkle.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Hellman&oldid=1342910559"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Martin_Hellman",
+          "retrieved_at": "2026-07-03",
+          "quote": "Hellman was elected a member of the National Academy of Engineering in 2002 for contributions to the theory and practice of cryptography.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Hellman&oldid=1342910559"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Martin_Hellman",
+          "retrieved_at": "2026-07-03",
+          "quote": "In 2015, he and Whitfield Diffie won the ACM Turing Award.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Hellman&oldid=1342910559"
+        }
+      ],
+      "notes": "living (70): attributed wording, professional content only; P570 live-confirmed absent 2026-07-03."
+    },
+    {
+      "subject_id": "person:martin-seligman",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Martin_Seligman",
+          "retrieved_at": "2026-07-03",
+          "quote": "born August 12, 1942) is an American psychologist, educator, and author of self-help books. Seligman is a strong promoter within the scientific community of his theories of well-being and positive psychology. His theory of learned helplessness is popular among scientific and clinical psychologists.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Seligman&oldid=1344289987"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Martin_Seligman",
+          "retrieved_at": "2026-07-03",
+          "quote": "Seligman is the Zellerbach Family Professor of Psychology in the University of Pennsylvania's Department of Psychology.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Seligman&oldid=1344289987"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Martin_Seligman",
+          "retrieved_at": "2026-07-03",
+          "quote": "A Review of General Psychology survey, published in 2002, ranked Seligman as the 31st most cited psychologist of the 20th century.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Seligman&oldid=1344289987"
+        }
+      ],
+      "notes": "living (70): attributed wording, professional content only; P570 live-confirmed absent 2026-07-03."
+    },
+    {
+      "subject_id": "person:michael-gazzaniga",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Michael_Gazzaniga",
+          "retrieved_at": "2026-07-03",
+          "quote": "Michael Saunders Gazzaniga (born December 12, 1939) is an American cognitive neuroscientist and professor emeritus of psychology at the University of California, Santa Barbara.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Michael_Gazzaniga&oldid=1358268516"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Michael_Gazzaniga",
+          "retrieved_at": "2026-07-03",
+          "quote": "He is the founder and retired director of the SAGE Center for the Study of the Mind at UCSB (2006–2023).",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Michael_Gazzaniga&oldid=1358268516"
+        }
+      ],
+      "notes": "living (70) tranche; flags: Short extract; 'founding figure in cognitive neuroscience' standing is attributed per graph modeling_note (Sperry lineage), not stated verbatim in extract — extract confirms only 'cognitive neuroscientist' role and SAGE Center founding."
+    },
+    {
+      "subject_id": "person:richard-thaler",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Richard_Thaler",
+          "retrieved_at": "2026-07-03",
+          "quote": "born September 12, 1945) is an American economist",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Richard_Thaler&oldid=1348481541"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Richard_Thaler",
+          "retrieved_at": "2026-07-03",
+          "quote": "In 2017, he was awarded the Nobel Memorial Prize in Economic Sciences for his contributions to behavioral economics.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Richard_Thaler&oldid=1348481541"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Richard_Thaler",
+          "retrieved_at": "2026-07-03",
+          "quote": "His empirical findings and theoretical insights have been instrumental in creating the new and rapidly expanding field of behavioral economics.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Richard_Thaler&oldid=1348481541"
+        }
+      ],
+      "notes": "living (70): attributed wording, professional content only; P570 live-confirmed absent 2026-07-03."
+    },
+    {
+      "subject_id": "person:ronald-langacker",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ronald_Langacker",
+          "retrieved_at": "2026-07-03",
+          "quote": "Ronald Wayne Langacker (born December 27, 1942) is an American linguist and professor emeritus at the University of California, San Diego. He is best known as one of the founders of the cognitive linguistics movement and the creator of cognitive grammar.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ronald_Langacker&oldid=1197938824"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ronald_Langacker",
+          "retrieved_at": "2026-07-03",
+          "quote": "He has also made significant contributions to the comparative study of Uto-Aztecan languages, publishing several articles on historical Uto-Aztecan linguistics, as well as editing collections of grammar sketches of under-described Uto-Aztecan languages.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ronald_Langacker&oldid=1197938824"
+        }
+      ],
+      "notes": "living (70): attributed wording, professional content only; P570 live-confirmed absent 2026-07-03."
+    },
+    {
+      "subject_id": "person:stephen-cook",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Stephen_Cook",
+          "retrieved_at": "2026-07-03",
+          "quote": "Stephen Arthur Cook (born December 14, 1939) is an American-Canadian computer scientist and mathematician who has made significant contributions to the fields of complexity theory and proof complexity.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Stephen_Cook&oldid=1351724976"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Stephen_Cook",
+          "retrieved_at": "2026-07-03",
+          "quote": "Cook is considered one of the forefathers of computational complexity theory. He won the 1982 ACM Turing Award.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Stephen_Cook&oldid=1351724976"
+        }
+      ],
+      "notes": "living (70): attributed wording, professional content only; P570 live-confirmed absent 2026-07-03."
+    },
+    {
+      "subject_id": "person:vint-cerf",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Vint_Cerf",
+          "retrieved_at": "2026-07-03",
+          "quote": "is an American Internet pioneer and is recognized as one of \"the fathers of the Internet\", sharing this title with TCP/IP co-developer Robert Kahn",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Vint_Cerf&oldid=1355092836"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Vint_Cerf",
+          "retrieved_at": "2026-07-03",
+          "quote": "He has received honorary degrees and awards that include the National Medal of Technology, the Turing Award, the Presidential Medal of Freedom, the Marconi Prize, and membership in the National Academy of Engineering.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Vint_Cerf&oldid=1355092836"
+        }
+      ],
+      "notes": "living (70): attributed wording, professional content only; P570 live-confirmed absent 2026-07-03."
+    },
+    {
+      "subject_id": "person:whitfield-diffie",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Whitfield_Diffie",
+          "retrieved_at": "2026-07-03",
+          "quote": "born June 5, 1944) is an American cryptographer and mathematician and one of the pioneers of public-key cryptography along with Martin Hellman and Ralph Merkle.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Whitfield_Diffie&oldid=1346434482"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Whitfield_Diffie",
+          "retrieved_at": "2026-07-03",
+          "quote": "Diffie and Hellman's 1976 paper New Directions in Cryptography introduced a radically new method of distributing cryptographic keys, that helped solve key distribution—a fundamental problem in cryptography. Their technique became known as Diffie–Hellman key exchange.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Whitfield_Diffie&oldid=1346434482"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Whitfield_Diffie",
+          "retrieved_at": "2026-07-03",
+          "quote": "Diffie served for two and a half years as Vice President for Information Security and Cryptography at the Internet Corporation for Assigned Names and Numbers (2010–2012). He has also served as a visiting scholar (2009–2010) and affiliate (2010–2012) at the Freeman Spogli Institute's Center for International Security and Cooperation at Stanford University",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Whitfield_Diffie&oldid=1346434482"
+        }
+      ],
+      "notes": "living (70): attributed wording, professional content only; P570 live-confirmed absent 2026-07-03."
+    }
+  ],
+  "identity": [
+    {
+      "node_id": "person:amartya-sen",
+      "provider": "wikidata",
+      "external_id": "Q132489",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:david-deutsch",
+      "provider": "wikidata",
+      "external_id": "Q543682",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:george-lakoff",
+      "provider": "wikidata",
+      "external_id": "Q313772",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:ivan-sutherland",
+      "provider": "wikidata",
+      "external_id": "Q62866",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:leda-cosmides",
+      "provider": "wikidata",
+      "external_id": "Q451962",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:luciano-floridi",
+      "provider": "wikidata",
+      "external_id": "Q214119",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:martin-hellman",
+      "provider": "wikidata",
+      "external_id": "Q476466",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:martin-seligman",
+      "provider": "wikidata",
+      "external_id": "Q320927",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:michael-gazzaniga",
+      "provider": "wikidata",
+      "external_id": "Q738789",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:richard-thaler",
+      "provider": "wikidata",
+      "external_id": "Q371212",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:ronald-langacker",
+      "provider": "wikidata",
+      "external_id": "Q726075",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:stephen-cook",
+      "provider": "wikidata",
+      "external_id": "Q62870",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:vint-cerf",
+      "provider": "wikidata",
+      "external_id": "Q92743",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    },
+    {
+      "node_id": "person:whitfield-diffie",
+      "provider": "wikidata",
+      "external_id": "Q462089",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03",
+      "p570_absent_confirmed_at": "2026-07-03",
+      "notes": "living-person aliveness observed (P570 absent) for the (70) editorial tranche; node already reviewed, summary is attributed-wording."
+    }
+  ],
+  "notes": [
+    "Editorial batch 4: the editorial-gap tail — 83 reviewed nodes summarized (68 deceased persons + 5 concepts + 5 works + 5 v1.4-promoted subfields + 14 LIVING persons as a (70) tranche). This closes the reviewed-node en-summary gap to 0. Generation = 4 separate-context Opus subagents (2 deceased-person groups, 1 concept/work/subfield, 1 living tranche) grounded in polite fetch-corpus enwiki lead extracts; orchestrator QC = machine claim-anchor (fetch-verify effective 200/200: 193 live-pass + 7 bot-blocked/JS-shell subfield sources verified via their taxonomy-anchor-wave1 Wayback snapshots/offline captures, snapshot_url recorded) + FULL close-read of all 14 living + all 13 self-flagged + a deterministic deceased sample.",
+    "Living (70) tranche fully compliant: 14 living persons, present tense, no birth-death dates, attributed wording for every standing claim ('widely regarded as', 'often described as', 'one of the founders of'), professional content only (prizes/appointments = safe factual content; no private life/health/controversy), co-attribution honored (Diffie WITH Hellman/Merkle; Cerf WITH Kahn; Cosmides WITH Tooby; Eilenberg/Mac Lane). P570 live-confirmed absent for all 14 on 2026-07-03 (aliveness observed, never predicted — decision (70)); recorded as identity observations.",
+    "The 5 subfield summaries anchor on the field's own ratified taxonomy sources (ACM CCS via USENIX/TOCS/SIGMOD/VLDB/IPDPS/JPDC framing; NCES CIP + SNAME/RINA; APA PsycInfo + AP&P/LCC) copied from the taxonomy-anchor-wave1-v1 verdicts — bot-blocked/JS-shell hosts carry Wayback snapshot_url (T4 path); ACM CCS + APA quotes re-confirmed offline against local captures this session.",
+    "Modeling honesty: self-flags on 13 deceased items are all capture-thinness or attribution-precision (co-founder framing for cell theory Schleiden/Schwann, category theory Eilenberg/Mac Lane, geochemistry Goldschmidt/Vernadsky; Vienna Circle members not credited with solo founding; Spearman's psychometrics anchored via his statistical/factor-analysis work as the extract lacks the exact word). will-to-power described with attributed, contested-interpretation framing.",
+    "Britannica contributed nothing (not used); all anchors are live-verifiable enwiki + the wave-1 taxonomy sources. Deceased-persons enwiki extract fetch hit Wikipedia 429 throttling for 28/78 on the concurrent pass — recovered via serial slow re-fetch (all 78 captured); noted as a fetch-corpus throughput observation, not a data issue."
+  ],
+  "anchors_pending": []
+}
