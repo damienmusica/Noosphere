@@ -18,8 +18,10 @@
  *     (id optional — used as the output filename slug)
  *   - plain text: one URL per line (lines starting with # ignored)
  *
- * Output (under --out, REQUIRED — point it at the session scratchpad or
- * dist/; never the repo tree):
+ * Output (under --out, REQUIRED — the session scratchpad, /tmp, or dist/.
+ * Any other path inside the repo tree is REFUSED: fetched page bodies must
+ * never be cached into the repo — charter "external content is linked, not
+ * stored"):
  *   - one body file per live URL: <slug>.html / <slug>.txt by content shape
  *   - manifest.json — deterministic (sorted by url): id, url, status,
  *     http_status, attempts, error, file, bytes, retrieved_at
@@ -32,9 +34,13 @@
  *     saved (manual capture path, same as fetch-verify).
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { isAbsolute, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { dirname, isAbsolute, join, relative, resolve, sep } from "node:path";
 
 import { MAX_CONCURRENCY, fetchUrlsPolitely } from "./lib/polite-fetch.ts";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = resolve(__dirname, "..", "..");
 
 const UA =
   "Noosphere-Foundry-Fetch-Corpus/1.0 (research atlas source grounding; contact: maintainer; fetches only listed URLs)";
@@ -76,6 +82,12 @@ function loadRows(file: string): InputRow[] {
     .map((url) => ({ id: null, url }));
 }
 
+/** True when `child` is `parent` or a path beneath it (path segments, not string prefixes). */
+function isInside(parent: string, child: string): boolean {
+  const rel = relative(parent, child);
+  return rel === "" || (rel !== ".." && !rel.startsWith(`..${sep}`) && !isAbsolute(rel));
+}
+
 /** Deterministic filename slug: id when given, else host+path, sanitized. */
 function slugFor(row: InputRow): string {
   const base = row.id ?? row.url.replace(/^https?:\/\//, "");
@@ -104,6 +116,18 @@ async function main(): Promise<void> {
     Math.max(1, Number.parseInt(String(opts.concurrency ?? MAX_CONCURRENCY), 10) || MAX_CONCURRENCY),
   );
 
+  // Fetched page bodies must never be cached into the repo tree (charter:
+  // external content is linked, not stored); dist/ is the only sanctioned
+  // in-repo output area. Checked before any network happens.
+  const outAbs = isAbsolute(outDir) ? outDir : resolve(process.cwd(), outDir);
+  if (isInside(REPO_ROOT, outAbs) && !isInside(join(REPO_ROOT, "dist"), outAbs)) {
+    console.error(
+      `fetch-corpus: refusing --out ${outAbs} — inside the repo tree; page bodies must not be cached into the repo.\n` +
+        `Use the session scratchpad, /tmp, or a directory under ${join(REPO_ROOT, "dist")}${sep}`,
+    );
+    process.exit(2);
+  }
+
   const rows = loadRows(input);
   const byUrl = new Map<string, InputRow>();
   for (const r of rows) if (!byUrl.has(r.url)) byUrl.set(r.url, r);
@@ -118,23 +142,24 @@ async function main(): Promise<void> {
     log: (line) => process.stderr.write(line + "\n"),
   });
 
-  const outAbs = isAbsolute(outDir) ? outDir : resolve(process.cwd(), outDir);
   mkdirSync(outAbs, { recursive: true });
   const today = new Date().toISOString().slice(0, 10);
 
-  // Slug collisions (two URLs, same slug) get a numeric suffix — deterministic
-  // because uniqueUrls is sorted.
-  const usedSlugs = new Map<string, number>();
+  // Slug collisions (two URLs, same slug) get a numeric suffix. The FINAL
+  // chosen slug is what gets registered, so a suffixed slug can never collide
+  // with a natural "<slug>-N" from another URL — deterministic because
+  // uniqueUrls is sorted.
+  const usedSlugs = new Set<string>();
   const manifest = uniqueUrls.map((url) => {
     const row = byUrl.get(url)!;
     const o = outcomes.get(url)!;
     let file: string | null = null;
     let bytes: number | null = null;
     if (o.final === "live" && o.body !== null) {
-      let slug = slugFor(row);
-      const n = usedSlugs.get(slug) ?? 0;
-      usedSlugs.set(slug, n + 1);
-      if (n > 0) slug = `${slug}-${n + 1}`;
+      const base = slugFor(row);
+      let slug = base;
+      for (let n = 2; usedSlugs.has(slug); n++) slug = `${base}-${n}`;
+      usedSlugs.add(slug);
       const ext = /<[a-z!/][^>]*>/i.test(o.body.slice(0, 2048)) ? "html" : "txt";
       file = `${slug}.${ext}`;
       writeFileSync(join(outAbs, file), o.body);

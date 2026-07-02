@@ -8,8 +8,10 @@
  *
  * Per node it confirms:
  *   - the entity exists and is not a redirect (redirects reported),
- *   - the node's en label matches the entity's label/aliases/enwiki sitelink
- *     (normalized; a mismatch means "wrong entity", the classic QC catch),
+ *   - the node's en label EXACTLY matches (after normalization) the entity's
+ *     label, an alias, or the enwiki sitelink title; substring-only
+ *     containment does NOT verify — it fails with a manual-referent-check
+ *     note (a mismatch means "wrong entity", the classic QC catch),
  *   - person nodes: P570 (date of death) presence vs `is_living_person` —
  *     aliveness is OBSERVED, never assumed (decision (70)); for living
  *     persons the P570 check always goes live (never served from cache).
@@ -33,7 +35,8 @@
  *   npm run foundry:verify-identity -- --qids Q42,Q7251   # ad-hoc lookup
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { pathToFileURL } from "node:url";
+import { dirname, join, resolve } from "node:path";
 
 import { normalize } from "./lib/normalize-text.ts";
 import { REPO_ROOT, die, loadCurrentData, loadDecision } from "./lib/decision-io.ts";
@@ -138,6 +141,30 @@ function toCached(qid: string, entity: Record<string, unknown> | undefined): Cac
     missing: false,
     retrieved_at: today,
   };
+}
+
+export type LabelMatch =
+  | { kind: "exact" }
+  | { kind: "containment"; matched: string }
+  | { kind: "none" };
+
+/**
+ * Label-match semantics for the wrong-entity catch: only an EXACT match —
+ * after normalize() + lowercase — against the entity label, an alias, or the
+ * enwiki sitelink title counts as verified. Substring containment is NOT
+ * verification (a short alias contained in a longer node label would pass
+ * for the wrong entity); it is reported separately, with the candidate it
+ * matched against, so the caller can demand a manual referent check.
+ */
+export function matchLabel(nodeLabel: string, candidates: (string | null)[]): LabelMatch {
+  const want = normalize(nodeLabel).toLowerCase();
+  const names = candidates.filter((c): c is string => Boolean(c));
+  for (const c of names) if (normalize(c).toLowerCase() === want) return { kind: "exact" };
+  for (const c of names) {
+    const h = normalize(c).toLowerCase();
+    if (h && want && (h.includes(want) || want.includes(h))) return { kind: "containment", matched: c };
+  }
+  return { kind: "none" };
 }
 
 /** Fetch (or cache-serve) entities. `forceLive` QIDs always hit the network. */
@@ -255,10 +282,13 @@ async function main(): Promise<void> {
     if (e.missing) problems.push("entity missing on Wikidata");
     if (e.redirect_to) problems.push(`QID redirects to ${e.redirect_to} — record the canonical id`);
     if (!e.missing && label) {
-      const want = normalize(label).toLowerCase();
-      const haystack = [e.label_en ?? "", ...e.aliases_en, e.enwiki_title ?? ""]
-        .map((s) => normalize(s).toLowerCase());
-      if (!haystack.some((h) => h && (h === want || h.includes(want) || want.includes(h)))) {
+      const match = matchLabel(label, [e.label_en, ...e.aliases_en, e.enwiki_title]);
+      if (match.kind === "containment") {
+        problems.push(
+          `label containment only — manual referent check required: node says "${label}", ` +
+            `nearest entity name "${match.matched}" (entity label "${e.label_en ?? "(none)"}")`,
+        );
+      } else if (match.kind === "none") {
         problems.push(
           `label mismatch: node says "${label}", entity says "${e.label_en ?? "(none)"}" — likely wrong entity`,
         );
@@ -309,4 +339,8 @@ async function main(): Promise<void> {
   console.log(`\n✓ all ${subjects.length} identit(ies) verified.`);
 }
 
-await main();
+// The CLI body runs only when this file is the entrypoint — matchLabel is
+// importable for unit tests without touching the network or a decision file.
+if (process.argv[1] && pathToFileURL(resolve(process.argv[1])).href === import.meta.url) {
+  await main();
+}

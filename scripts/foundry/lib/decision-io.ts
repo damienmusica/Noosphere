@@ -81,3 +81,23 @@ export function loadHeld(): HeldEntry[] {
 export function writeLedger(path: string, entries: unknown[]): void {
   writeFileSync(path, JSON.stringify(entries, null, 2) + "\n");
 }
+
+/** The identity fields under which a ledger entry counts as already recorded. */
+type LedgerIdentity = { id?: string; label?: string; batch_id: string; recorded_at: string };
+
+/**
+ * Idempotence filter for ledger appends: an incoming entry whose identity
+ * (id/label + batch_id + recorded_at) already exists in the ledger is skipped,
+ * so re-applying a decision never duplicates ledger entries. Rejections carry
+ * no `id` (label-keyed); held entries may carry either or both.
+ */
+export function filterAlreadyLedgered<T extends LedgerIdentity>(
+  existing: readonly T[],
+  incoming: readonly T[],
+): { fresh: T[]; skipped: number } {
+  const key = (e: LedgerIdentity) =>
+    JSON.stringify([e.id ?? null, e.label ?? null, e.batch_id, e.recorded_at]);
+  const seen = new Set(existing.map(key));
+  const fresh = incoming.filter((e) => !seen.has(key(e)));
+  return { fresh, skipped: incoming.length - fresh.length };
+}

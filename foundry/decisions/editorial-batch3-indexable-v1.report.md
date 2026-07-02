@@ -46,7 +46,8 @@
 ## Tally
 
 - Adds: 0 nodes, 0 edges, 0 sources, 0 translations, 0 external links.
-- Reviewed outcomes: 0 adds + 34 promotions (all ladder-sanctioned above).
+- Reviewed outcomes: 0 adds + 0 promotions (all ladder-sanctioned above).
+- metadata flips: 34 (set_indexable/set_note).
 - Editorial summary updates: 0.
 
 ## §8 permanence anchors

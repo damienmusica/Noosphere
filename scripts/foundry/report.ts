@@ -122,13 +122,21 @@ push();
 const reviewedAdds =
   decision.adds.nodes.filter((n) => n.status === "reviewed").length +
   decision.adds.edges.filter((e) => e.status === "reviewed").length;
-const reviewedPromotions = decision.promotions.filter((p) => p.to === "reviewed").length;
+// A reviewed→reviewed op is a metadata flip (set_indexable/set_note), not a
+// promotion — only real promotions fall under the ladder-sanctioned claim.
+const reviewedPromotions = decision.promotions.filter(
+  (p) => p.from !== "reviewed" && p.to === "reviewed",
+).length;
+const metadataFlips = decision.promotions.filter(
+  (p) => p.from === "reviewed" && p.to === "reviewed",
+).length;
 push(
   `- Adds: ${decision.adds.nodes.length} nodes, ${decision.adds.edges.length} edges, ` +
     `${decision.adds.sources.length} sources, ${decision.adds.translations.length} translations, ` +
     `${decision.adds.external_links.length} external links.`,
 );
 push(`- Reviewed outcomes: ${reviewedAdds} adds + ${reviewedPromotions} promotions (all ladder-sanctioned above).`);
+if (metadataFlips > 0) push(`- metadata flips: ${metadataFlips} (set_indexable/set_note).`);
 push(`- Editorial summary updates: ${decision.translation_updates.length}.`);
 if (decision.held.length > 0) {
   push(`- **Held** (${decision.held.length}):`);

@@ -68,7 +68,11 @@ to make implementation easier.
 - Single-tool operation via Claude Code. Strategy/decisions upstream lives in
   the Obsidian vault folder `Noosphere/` (index.md decision log, roadmap.md).
   Read those at session start; do not reconstruct state from memory.
-- Generation and QC must run in separate sessions (ADR 0007 contract).
+- Generation and QC run in separate sessions exactly when the promotion gate
+  includes an LLM verdict; fully mechanical gates (resolver-verified identity +
+  liveness + schema) may be orchestrator-drafted (regime split,
+  `docs/data-foundry.md` §15.7; vault decision log 2026-06-10 + ADR 0007
+  amendment 2026-07-02).
 - Promotion (`generated → proposed → reviewed`) follows the human-ratified
   standing policy (vault decision log 2026-06-10: the structural tier
   auto-promotes on resolver-verified external grounding; QC-ambiguous items
@@ -98,9 +102,12 @@ to make implementation easier.
   criteria v1** (T1 기관보증 · T2 분야-지시 구조 · T3 지시체 결정성 · T4 기계
   재감사성 · T5 채택보증 — 전부 하드; 명백 전건 통과 = CTO 미러-자율(통지+거부권),
   애매 = CPO 정지; 레포 금지 소스 오버라이드 불가; ratified registry = PhilPapers ·
-  ACM CCS 2012 · NCES CIP · APA PsycInfo, decision (102), docs/data-foundry.md §8); edge
+  ACM CCS 2012 · NCES CIP · APA PsycInfo + registry machine-enforced, decision
+  (102), docs/data-foundry.md §8); edge
   promotion v1 incl. clause 6 (contested placements) and its
-  recorded operational interpretations; editorial **v2** for summaries —
+  recorded operational interpretations (clause 6/structural tier =
+  classification placements {part_of, member_of, adjacent_to}, machine-enforced
+  2026-07-02); editorial **v2** for summaries —
   **generation model = Opus** (decision (26)); QC = machine checks in full
   (claim-anchor verbatim + cited-URL live survival + SPN §8) + orchestrator
   close-read on a 30% sample (50% on a policy's first run) with all

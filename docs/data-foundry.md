@@ -196,7 +196,7 @@ Rationale: live pages drift and die; the corpus's bulk re-auditability
 **Compliance history (2026-07-02 CPO audit):** the rule was honored through the
 `formalizes` era, then silently lapsed from the founder waves onward (0 anchors
 across the person/work/a-relation batches of sessions #44–#49). Remediation:
-`foundry/proposals/evidence-permanence-backfill-v1` records revision-as-of-QC-date
+`foundry/proposals/evidence-permanence-backfill-and-backlog-v1` records revision-as-of-QC-date
 permalinks for all affected reviewed ladder edges, and `validate-data.ts` now
 machine-enforces an anchor (or the explicit marker) in every new batch's records
 (decision (29) hygiene-device pattern; pre-existing batches are grandfathered —
@@ -238,7 +238,10 @@ rule (vault decision (15): position the edge on the dominant view, ≥3 sources,
 generalized so it can also express the *balanced split* v1 structurally could not. Schema is **unchanged**:
 it uses `disputed` (bool), `note`, and `confidence` (0–1), all already present — a **policy /
 operationalization** revision only, no Zod / validator / taxonomy change. Ratified by vault decision (64),
-codified here by decision (68) after it fired correctly without over-firing (decision (67)).
+codified here by decision (68) after it fired correctly without over-firing (decision (67)). The
+counterpart **classification-placement (structural) relation set is `{part_of, member_of, adjacent_to}`,
+machine-enforced in the ladder gate** (ratified 2026-07-02); `applies_to` is excluded from the structural
+set per the session-#55 ruling.
 
 **Run the tree only after** atomize + **≥2 independent claim-stating** grounding sources are live-fetched
 and verbatim-checked + adversarial perspective-diverse counter-evidence QC. The verdict for one
@@ -288,6 +291,9 @@ propositional-relation candidate:
   ladders explicitly exclude `disputed` / NEI / reject (enforced by the promotion machine-check).
 - **Confidence semantics for a balanced split:** `confidence ≈ 0.5` + `disputed: true` reads as *contested
   claim*, with the `note` — never as "moderately likely true."
+- **Confidence semantics without `disputed`:** a non-disputed low-`confidence` `reviewed` edge reads as
+  *verified relation, weak strength* — the relation passed the gate and the number carries strength only;
+  distinct from the `confidence ≈ 0.5` + `disputed: true` contested-balance idiom above.
 
 **Firing precedent (decision (67), 2026-06-29).** Branch #3 (balanced split) **fired for the first time** on
 `nietzsche → freud` — existence / direction contested, no dominant view, each camp ≥2 live claim-stating
@@ -311,6 +317,9 @@ A propositional edge **auto-promotes `proposed → reviewed`** when **all** hold
 1. **Both endpoints are `reviewed`** (status-cap clause 3, enforced in `validate-data.ts`).
 2. **Verdict = supported** under the Lane B pipeline: ≥2 independent claim-stating sources live-fetched
    and verbatim-checked, adversarial perspective-diverse QC passed, direction and identity referent correct.
+   *Operational interpretation (decision (62)): for founder-class claims, two independent Wikipedia
+   articles — the person article and the field article — count as two claim-stating sources; the lower
+   source diversity is recorded honestly.*
 3. **Not `disputed` / NEI / reject** — these never auto-promote (clause-6 v2); they stop at `proposed` /
    stay in foundry, human-visible by design.
 4. **★ Living-person endpoints follow the living-person handling standing policy** (below), not this
@@ -525,6 +534,9 @@ v1's co-equal multiplicity.
 | ACM Computing Classification System 2012 | computing | `acm_ccs` | Category names are the stable slugs; dl.acm.org is hard bot-blocked → T4 via Wayback snapshots |
 | NCES Classification of Instructional Programs (CIP 2020) | any (degree-program fields) | `nces_cip` | T2 note: entries denote *teaching-community* field referents (federal IPEDS reporting = T5) |
 | APA PsycInfo Classification Categories | psychology | `apa_psycinfo` | Official public code list at apa.org; live-verified 2026-07-02 |
+
+The ratified registry is **machine-enforced as a provider-key set in the ladder gate**; admitting a
+new authority updates this table **and** the gate constant in the same change.
 
 Clear-pass future candidates surfaced by the criteria (not yet ratified, each still needs its
 mirror-ruling with live verification): MeSH (NLM, medicine), MSC 2020 (AMS/zbMATH, mathematics),
@@ -1243,7 +1255,10 @@ sources / translations / links), status promotions, editorial summary updates, *
 independence flag), **identity records** (provider, id, method, retrieved_at, and for living
 persons the P570-absent observation date), **ladder sanctions** for every reviewed outcome,
 rejection/held ledger entries, and pending anchors. Decision files are the audit trail: bulk
-re-audit replays them; deleting one deletes the ability to re-audit.
+re-audit replays them; deleting one deletes the ability to re-audit. **Replay recipe (measured,
+2026-07-02 inspection):** check out `/data` as of the commit *before* the first replayed batch
+(`git checkout <commit> -- data/`), then apply the decision files in chronological order with the
+*current* toolchain — the inspection reproduced HEAD byte-identically this way.
 
 ### 15.3 Standard batch flow (commands)
 
@@ -1299,7 +1314,8 @@ stays machine-enforced by `validate-data` independently of the ladder gate.
 
 ### 15.5 Identity cache — cache identity, never truth
 
-`foundry/cache/wikidata-entities.json` (committed) caches QID→entity snapshots (label, P31, P570
+`foundry/cache/wikidata-entities.json` (committed; created on first use — absent until the first
+cached resolution) caches QID→entity snapshots (label, P31, P570
 presence, retrieved_at) with a TTL (`--max-age-days`, default 90). **Claim-support verdicts are
 never cached anywhere** — temporal validity is their point. Living persons are never served from
 cache for P570: aliveness is observed live at promotion time (decision (70)), never assumed.
@@ -1337,7 +1353,8 @@ In practice:
 ### 15.8 Ledgers: held and rejected candidates
 
 `foundry/held.json` (blocked items with their blocking condition and machine/manual recheck flag)
-and `foundry/rejections.json` (rejected candidates with reasons) are appended by `apply-batch` from
+and `foundry/rejections.json` (rejected candidates with reasons; created on first use — absent until
+the first rejection is ledgered) are appended by `apply-batch` from
 each decision file. `foundry:recheck-held` renders both against current `/data` state at session
 start — a cleared blocker surfaces instead of rotting, and `apply-batch` refuses to silently
 re-admit a rejected label (`override_rejections` makes re-admission explicit). Generation orders
