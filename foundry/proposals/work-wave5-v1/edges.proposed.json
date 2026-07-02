@@ -1,0 +1,376 @@
+[
+  {
+    "id": "edge:theory-of-games-canonical-game-theory",
+    "source": "work:theory-of-games-and-economic-behavior",
+    "target": "subfield:game-theory",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Theory of Games and Economic Behavior (1944) is standardly credited as founding game theory as a mathematical discipline; matches both authors' existing founded_or_formalized edges to subfield:game-theory in /data.",
+    "rationale": "Standard histories of mathematics and economics (SEP's game theory entry, standard textbooks) credit this treatise as the discipline's founding text; subfield:game-theory's own existing formalizes-economics edge in /data already names this work in its note.",
+    "uncertainty": "Two-author work: this field-level edge does not itself carry the co-authorship complication, but the two paired person-level edges below do (P50 must resolve to both authors).",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:theory-of-games-canonical-john-von-neumann",
+    "source": "work:theory-of-games-and-economic-behavior",
+    "target": "person:john-von-neumann",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Theory of Games and Economic Behavior, co-authored by John von Neumann and Oskar Morgenstern, is von Neumann's canonical game-theory text alongside his mathematical foundations of quantum mechanics and computer architecture work.",
+    "rationale": "Von Neumann is credited as principal co-author and originator of the formal minimax/utility framework; matches his existing founded_or_formalized edge to subfield:game-theory in /data.",
+    "uncertainty": "Co-authored work: P50 will resolve to two people, not one; this edge and the Morgenstern edge below are a paired co-canonical-author pattern, not a contested single-author pick.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:theory-of-games-canonical-oskar-morgenstern",
+    "source": "work:theory-of-games-and-economic-behavior",
+    "target": "person:oskar-morgenstern",
+    "relation": "canonical_work",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Theory of Games and Economic Behavior, co-authored by Oskar Morgenstern and John von Neumann, is Morgenstern's defining, most-cited single work.",
+    "rationale": "Morgenstern is credited as co-author who brought the economics framing and applications; matches his existing founded_or_formalized edge to subfield:game-theory in /data.",
+    "uncertainty": "Same co-authorship pairing as the von Neumann edge above; Morgenstern's individual contribution relative to von Neumann's is debated by historians of economics, but joint authorship of record is not in dispute.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:computing-machinery-canonical-artificial-intelligence",
+    "source": "work:computing-machinery-and-intelligence",
+    "target": "subfield:artificial-intelligence",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Computing Machinery and Intelligence (1950) proposes the Turing Test and is the standard founding text for AI as a field of inquiry, matching subfield:artificial-intelligence's existing McCarthy/Minsky founder edges in /data.",
+    "rationale": "Standard histories of computer science and AI (SEP's Turing Test entry, standard AI textbooks) credit this paper as the discipline's philosophical and methodological founding statement, predating McCarthy's 1956 coining of the term 'artificial intelligence.'",
+    "uncertainty": "Field-target judgment call: the paper is also foundational to philosophy-of-mind via the Turing Test as a criterion of mind; scoped here to artificial-intelligence as the more standard, discipline-defining target.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:computing-machinery-canonical-alan-turing",
+    "source": "work:computing-machinery-and-intelligence",
+    "target": "person:alan-turing",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Computing Machinery and Intelligence, authored solely by Alan Turing, is his AI-founding text, distinct from his 1936 'On Computable Numbers' (already canonical for subfield:computability-theory in /data).",
+    "rationale": "Turing is sole author of record; this is the text most consistently credited with launching AI as a field, giving Turing a second, clearly distinct canonical work alongside his existing computability-theory one.",
+    "uncertainty": "None beyond the shared QID-verification and field-scoping uncertainty already noted at the node level.",
+    "ambiguous": false
+  },
+  {
+    "id": "edge:on-formally-undecidable-canonical-mathematical-logic",
+    "source": "work:on-formally-undecidable-propositions",
+    "target": "subfield:mathematical-logic",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Godel's 1931 incompleteness paper is a third co-canonical founding text for subfield:mathematical-logic alongside Boole's Laws of Thought and Frege's Begriffsschrift (decision (90)).",
+    "rationale": "SEP's Godel entry and standard histories of logic universally credit this paper as the single most consequential result in 20th-century mathematical logic.",
+    "uncertainty": "Godel has no existing founded_or_formalized edge to subfield:mathematical-logic in /data (only an influenced edge to philosophy-of-mathematics) - this canonical_work edge is not backed by a pre-existing founder edge the way most of this batch's other picks are, a weaker structural anchor flagged for QC.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:on-formally-undecidable-canonical-kurt-godel",
+    "source": "work:on-formally-undecidable-propositions",
+    "target": "person:kurt-godel",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "On Formally Undecidable Propositions, authored solely by Kurt Godel, is his single defining watershed paper.",
+    "rationale": "Godel is sole author of record; this is the text universally credited as his defining contribution.",
+    "uncertainty": "Same referent-precision/identity-risk note as the field-level edge above (German title, journal-article-vs-concept-item risk).",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:opticks-canonical-optics",
+    "source": "work:opticks",
+    "target": "subfield:optics",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Opticks (1704) is standardly credited as the founding text of physical optics (particle theory of light, prism/spectrum experiments), distinct from Newton's Principia (already canonical for field:physics in /data).",
+    "rationale": "Standard histories of physics credit Opticks as the founding systematic treatise of the subfield, giving Newton a second, clearly distinct canonical work in a different subfield from Principia.",
+    "uncertainty": "HONESTY-GAP CANDIDATE (flag for QC): QID for this work is a low-confidence guess (see node-level uncertainty); if resolver search does not cleanly return a distinct work-type item, treat as a likely honesty-gap drop, mirroring the wave3/wave4 Koch/Pasteur/Jakobson pattern.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:opticks-canonical-isaac-newton",
+    "source": "work:opticks",
+    "target": "person:isaac-newton",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Opticks, authored solely by Isaac Newton, is his second canonical work alongside Principia (already canonical for field:physics via a distinct work node in /data) - co-canonical at the person level across two distinct subfields, not a duplicate.",
+    "rationale": "Newton is sole author of record; this is the text most consistently credited as founding physical optics as a systematic subfield.",
+    "uncertainty": "Same honesty-gap QID risk as the field-level edge above.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:complexity-theorem-proving-canonical-computational-complexity-theory",
+    "source": "work:the-complexity-of-theorem-proving-procedures",
+    "target": "subfield:computational-complexity-theory",
+    "relation": "canonical_work",
+    "confidence": 0.92,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Complexity of Theorem-Proving Procedures (1971) proves the Cook-Levin theorem and introduces NP-completeness; standardly credited as founding computational complexity theory, matching person:stephen-cook's existing founded_or_formalized edge in /data.",
+    "rationale": "Standard theoretical-computer-science histories and textbooks (Sipser, Garey & Johnson) credit this STOC paper as the field's founding result.",
+    "uncertainty": "LIVING-AUTHOR NOTE: Stephen Cook is living; the living-person handling standing policy signal check applies to the person-endpoint edge at promotion. Leonid Levin's independent discovery (Cook-Levin theorem) means sole-Cook authorship framing for the paper itself is correct (Levin's paper is a separate, Russian-language publication), but field-level historical credit is sometimes given jointly - a nuance for QC's note field, not a reason to reject.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:complexity-theorem-proving-canonical-stephen-cook",
+    "source": "work:the-complexity-of-theorem-proving-procedures",
+    "target": "person:stephen-cook",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Complexity of Theorem-Proving Procedures, authored solely by Stephen Cook, is his defining, most-cited single work.",
+    "rationale": "Cook is sole author of record for this specific paper; matches his existing founded_or_formalized edge to subfield:computational-complexity-theory in /data.",
+    "uncertainty": "LIVING-AUTHOR NOTE: Stephen Cook is living - living-person handling standing policy applies (resolver-verified QID identity anchor, P570 live-confirmed absent, >=2 independent live sources, conservative attributed wording) at promotion; per that policy this can auto-promote when clean, it is not a blanket stop.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:concept-of-truth-canonical-model-theory",
+    "source": "work:the-concept-of-truth-in-formalized-languages",
+    "target": "subfield:model-theory",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Concept of Truth in Formalized Languages formulates the semantic theory of truth (Tarski's T-schema); standardly credited as founding model theory, matching person:alfred-tarski's existing founded_or_formalized edge in /data.",
+    "rationale": "SEP's Tarski entry and standard histories of mathematical logic credit this work as founding the semantic/model-theoretic approach to formal languages.",
+    "uncertainty": "Multi-language, multi-year publication history (Polish 1933 / German 1935 / English 1956) creates identity/version risk; QC should confirm the canonical single Wikidata item.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:concept-of-truth-canonical-alfred-tarski",
+    "source": "work:the-concept-of-truth-in-formalized-languages",
+    "target": "person:alfred-tarski",
+    "relation": "canonical_work",
+    "confidence": 0.88,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The Concept of Truth in Formalized Languages, authored solely by Alfred Tarski, is his defining, most-cited single work.",
+    "rationale": "Tarski is sole author of record; matches his existing founded_or_formalized edge to subfield:model-theory in /data.",
+    "uncertainty": "Same multi-language/version identity risk as the field-level edge above.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:on-sense-and-reference-canonical-philosophy-of-language",
+    "source": "work:on-sense-and-reference",
+    "target": "subfield:philosophy-of-language",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "On Sense and Reference (1892) introduces the sense/reference distinction; a second co-canonical founding text for subfield:philosophy-of-language alongside Wittgenstein's Tractatus (work-wave4, decision (90)).",
+    "rationale": "SEP's Frege entry and standard histories of analytic philosophy universally credit this paper as the founding text of modern philosophy of language, matching Frege's existing founded_or_formalized edge to subfield:philosophy-of-language in /data.",
+    "uncertainty": "Co-canonical with the Tractatus edge already in /data; consistent with decision (90) but worth QC double-checking this is a genuine second founding text and not dilution.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:on-sense-and-reference-canonical-gottlob-frege",
+    "source": "work:on-sense-and-reference",
+    "target": "person:gottlob-frege",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "On Sense and Reference, authored solely by Gottlob Frege, is scoped as his philosophy-of-language-founding paper, distinct from Begriffsschrift (already canonical for subfield:mathematical-logic in /data via a different work node).",
+    "rationale": "Frege is sole author of record; this is the paper most consistently credited as founding modern philosophy of language, giving Frege a second, clearly distinct canonical work in a different subfield.",
+    "uncertainty": "Same honesty-gap QID risk as the field-level edge above (short journal-article identity risk).",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:theory-of-games-canonical-john-nash-x1",
+    "source": "work:theory-of-games-and-economic-behavior",
+    "target": "person:john-nash",
+    "relation": "canonical_work",
+    "confidence": 0.4,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "note": "John Nash is a Nobel-laureate founder of game theory (person:john-nash already carries a founded_or_formalized edge to subfield:game-theory in /data) and is closely, genuinely associated with this book's subject matter, making an authorship attribution to Nash a plausible-looking but incorrect claim rather than a random misattribution - Nash's actual foundational contribution (the Nash equilibrium) came in his own 1950/1951 papers, roughly six to seven years after this 1944 book, which he did not co-author.",
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Proposed as a discrimination test for QC: tests whether the pipeline catches misattribution to a genuinely adjacent, independently-reviewed co-founder of the same subfield (both Nash and the true authors are 'game theory founders' in /data) rather than only unrelated names - the same trap class as the wave4 Tractatus-to-Russell probe (mentor/adjacent-figure misattribution), applied here to a same-subfield-co-founder relationship.",
+    "uncertainty": "This edge is expected to be wrong by construction; the failure mode being tested is misattribution to a genuinely adjacent co-founder who did not author this specific work, not a genuine uncertainty about the facts.",
+    "ambiguous": true
+  },
+  {
+    "id": "edge:on-formally-undecidable-canonical-philosophy-of-mathematics-x2",
+    "source": "work:on-formally-undecidable-propositions",
+    "target": "subfield:philosophy-of-mathematics",
+    "relation": "canonical_work",
+    "confidence": 0.35,
+    "status": "generated",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "note": "Godel's 1931 paper is a mathematical-logic proof (a formal incompleteness result), not a philosophy-of-mathematics treatise; person:kurt-godel does carry a genuine influenced edge to subfield:philosophy-of-mathematics in /data (the theorem's reception reshaped debates on formalism/Platonism), which is exactly what makes retargeting the canonical_work edge itself to philosophy-of-mathematics a plausible-looking but incorrect relation-type/subfield substitution rather than a random domain mismatch - this batch's own field-level edge for the same work correctly targets subfield:mathematical-logic.",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "rationale": "Proposed as a discrimination test for QC: tests whether the pipeline distinguishes a work's canonical_work subfield (where it was written/proven, mathematical-logic) from a genuinely-sourced but differently-typed influenced relation the same work already has elsewhere in /data (philosophy-of-mathematics) - a subtler trap than a purely random wrong-field pairing.",
+    "uncertainty": "This edge is expected to be wrong by construction; the failure mode being tested is conflating a work's canonical disciplinary home with an adjacent, differently-typed and already-correctly-recorded influence relation, not a genuine uncertainty about the facts.",
+    "ambiguous": true
+  }
+]

@@ -13072,7 +13072,7 @@
     "target": "person:karl-marx",
     "relation": "critiques",
     "confidence": 0.75,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:wikipedia",
       "source:sep"
@@ -13083,7 +13083,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "Weber (1864–1920, after Marx d. 1883) is standardly read as critiquing/complicating Marx's economic determinism, emphasizing ideas, religion and status as independent causal forces (\"debate with the ghost of Marx\"). Direction/temporal order correct. Held at proposed: live checks confirmed the Weber–Marx co-founding association and a \"critical impulse\" framing, but did not verbatim-surface the explicit critique-of-economic-determinism statement in the two sources fetched (SEP Weber + Wikipedia Max Weber); proposed-first pending a confirming claim-stating source. Generative critique, not wholesale rejection (record-not-resolve)."
+    "note": "Weber (1864–1920, after Marx d. 1883) is standardly read as critiquing/complicating Marx's economic determinism, emphasizing ideas, religion and status as independent causal forces (\"debate with the ghost of Marx\"). Direction/temporal order correct. a-relations-wave6 re-adjudication (session #53) surfaced the explicit critique-of-materialism statements verbatim in ≥2 independent live sources: Wikipedia Max Weber — \"compared to Marx's support for the material world's primacy over the world of ideas, Weber valued ideas as motivating individuals' actions\" and \"While Weber drew upon Marx's interpretation of class conflict in his definition of class, he did not see it as defining all social relations\"; SEP Weber — the Protestant Ethic thesis characterized as \"a non-Marxist genealogy of modern capitalism.\" Supported (clause-6 v2 #1: dominant view affirms, no substantial dissent) → auto-reviewed via the (a)-relation ladder (decision (68)); both endpoints reviewed, both deceased. §8 permanence anchors: WP oldid https://en.wikipedia.org/w/index.php?title=Max_Weber&oldid=1361488712 + SEP Weber Wayback SPN https://web.archive.org/web/20260702062208/https://plato.stanford.edu/entries/weber/. Record-not-resolve: Weber also drew on Marx — a generative critique, not wholesale rejection (the mutual Marx→Weber influence is not asserted as a separate edge this pass)."
   },
   {
     "id": "edge:norbert-wiener-influenced-cognitive-psychology",
@@ -14433,5 +14433,383 @@
       "proposed_at": "2026-07-02"
     },
     "note": "Held proposed: Lewin's action-research adopted in education is real but the 2nd generator source was about Dewey (not Lewin) — thin/indirect sourcing (self-flagged)."
+  },
+  {
+    "id": "edge:godel-numbering-part-of-mathematical-logic",
+    "source": "concept:godel-numbering",
+    "target": "subfield:mathematical-logic",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Gödel numbering (the assignment of unique natural numbers to formal-language expressions) is a core concept of mathematical logic. Concept-node QID Q1451046 live-verified (referent = the encoding technique; description matches). §8: WP oldid https://en.wikipedia.org/wiki/G%C3%B6del_numbering (oldid=1343580865). concept keep-criteria C1–C4 (decision (91)); node-policy v1 auto-reviewed, both endpoints reviewed."
+  },
+  {
+    "id": "edge:kurt-godel-founded-godel-numbering",
+    "source": "person:kurt-godel",
+    "target": "concept:godel-numbering",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Kurt Gödel introduced Gödel numbering in his 1931 incompleteness paper. ≥2 independent claim-stating sources: WP \"Gödel numbering\" + Wikidata structured description (\"assignment of each symbol and well-formed formula of a formal language a unique natural number\"). Generator QID hint Q1201322 was a hallucination (resolved to \"Detlef Opitz\", a German writer); corrected live to Q1451046. §8 anchor WP oldid=1343580865. Deceased founder (d.1978) — founder-ladder (60)/(61) auto-reviewed, supported."
+  },
+  {
+    "id": "edge:law-of-universal-gravitation-part-of-physics",
+    "source": "concept:law-of-universal-gravitation",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Newton's law of universal gravitation is a foundational concept of physics. Concept-node QID Q134465 live-verified (P31=Q214070 physical law). §8: WP oldid=1361608324. person→field-level placement permitted where no finer reviewed subfield exists. C1–C4 (decision (91)); node-policy v1 auto-reviewed."
+  },
+  {
+    "id": "edge:isaac-newton-founded-law-of-universal-gravitation",
+    "source": "person:isaac-newton",
+    "target": "concept:law-of-universal-gravitation",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Isaac Newton formulated the law of universal gravitation in the Principia (1687). ≥2 independent claim-stating: WP \"Newton's law of universal gravitation\" + Wikidata (P31 physical law; the law bears Newton's name). Generator QID hint Q83104 was a hallucination (Italian comune \"Montecosaro\"); corrected live to Q134465. §8 WP oldid=1361608324. Deceased founder (d.1727) — founder-ladder auto-reviewed, supported."
+  },
+  {
+    "id": "edge:will-to-power-part-of-continental-philosophy",
+    "source": "concept:will-to-power",
+    "target": "subfield:continental-philosophy",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The will to power (der Wille zur Macht) is a core concept of continental philosophy. Concept-node QID Q583998 live-verified (P31=Q131841 idea; P50=Q9358 Nietzsche). §8: WP oldid=1325900804. C1–C4 (decision (91)); node-policy v1 auto-reviewed."
+  },
+  {
+    "id": "edge:friedrich-nietzsche-founded-will-to-power",
+    "source": "person:friedrich-nietzsche",
+    "target": "concept:will-to-power",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Friedrich Nietzsche originated the will to power as his signature concept (Beyond Good and Evil, Thus Spoke Zarathustra). ≥2 independent claim-stating: WP \"Will to power\" + Wikidata (P50=Q9358 Nietzsche on the concept item). Generator QID hint Q1783735 was a hallucination (\"Synods held at Troyes\"); corrected live to Q583998. §8 WP oldid=1325900804. Deceased (d.1900). founded_or_formalized for the concept (his own idea) — the existing Nietzsche→continental-philosophy/existentialism edges are influenced; this adds the underlying concept. Founder-ladder auto-reviewed, supported."
+  },
+  {
+    "id": "edge:pragmatic-maxim-part-of-pragmatism",
+    "source": "concept:pragmatic-maxim",
+    "target": "subfield:pragmatism",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "The pragmatic maxim is the founding methodological principle of pragmatism. Concept-node QID Q1780130 live-verified (Wikidata description: \"maxim of logic formulated by Charles Sanders Peirce\" — referent unambiguous even though P31 untyped upstream). §8: WP oldid=1354168397. C1–C4 (decision (91)); node-policy v1 auto-reviewed."
+  },
+  {
+    "id": "edge:charles-sanders-peirce-founded-pragmatic-maxim",
+    "source": "person:charles-sanders-peirce",
+    "target": "concept:pragmatic-maxim",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Charles Sanders Peirce formulated the pragmatic maxim (\"How to Make Our Ideas Clear\", 1878). ≥2 independent claim-stating: WP \"Pragmatic maxim\" + Wikidata description naming Peirce. Generator QID hint Q7238219 was a hallucination (South African settlement \"Praktiseer\"); corrected live to Q1780130. §8 WP oldid=1354168397. Deceased (d.1914). Completes a new Peirce→pragmatism founder triangle (Peirce previously only linked to semiotics). Founder-ladder auto-reviewed, supported."
+  },
+  {
+    "id": "edge:distinctive-feature-part-of-phonology",
+    "source": "concept:distinctive-feature",
+    "target": "subfield:phonology",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Distinctive feature (the minimal contrastive unit of phonological structure) is a core concept of phonology. Concept-node QID Q1152224 live-verified (Wikidata description: \"the most basic unit of phonological structure\"). §8: WP oldid=1337515400. C1–C4 (decision (91)); node-policy v1 auto-reviewed."
+  },
+  {
+    "id": "edge:roman-jakobson-founded-distinctive-feature",
+    "source": "person:roman-jakobson",
+    "target": "concept:distinctive-feature",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Roman Jakobson developed distinctive-feature theory (Preliminaries to Speech Analysis, Jakobson/Fant/Halle, 1952). ≥2 independent claim-stating: WP \"Distinctive feature\" + Wikidata description. Generator QID hint Q1201380 was a hallucination (German politician \"Detlef Thomsen\"); corrected live to Q1152224. §8 WP oldid=1337515400. Deceased (d.1982). Record-not-resolve: co-developed with Halle and Fant (not yet nodes); Jakobson is the standardly-credited originating figure. Founder-ladder auto-reviewed, supported."
+  },
+  {
+    "id": "edge:theory-of-games-and-economic-behavior-canonical-work-game-theory",
+    "source": "work:theory-of-games-and-economic-behavior",
+    "target": "subfield:game-theory",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Theory of Games and Economic Behavior (von Neumann & Morgenstern, 1944) is the canonical founding treatise of game theory. Work-node QID Q5226156 live-verified (P31=Q47461344 written work, P50=Q17455+Q94028, P577=1944). Generator QID hint Q1188594 was a hallucination (Wikimedia list article); corrected live to Q5226156. §8: WP oldid=1352441311. canonical_work ladder W1–W5 (decisions (88)/(89)/(90)) auto-reviewed; direction work→field."
+  },
+  {
+    "id": "edge:theory-of-games-and-economic-behavior-canonical-work-john-von-neumann",
+    "source": "work:theory-of-games-and-economic-behavior",
+    "target": "person:john-von-neumann",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Theory of Games and Economic Behavior (1944) is a canonical work of John von Neumann (co-author). Work QID Q5226156 P50 includes Q17455 (von Neumann) — verified. Co-authored work: two person edges (vN + Morgenstern), mirroring decision (90) multi-founder at the person axis. §8 WP oldid=1352441311. W1–W5 auto-reviewed; direction work→person."
+  },
+  {
+    "id": "edge:theory-of-games-and-economic-behavior-canonical-work-oskar-morgenstern",
+    "source": "work:theory-of-games-and-economic-behavior",
+    "target": "person:oskar-morgenstern",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Theory of Games and Economic Behavior (1944) is a canonical work of Oskar Morgenstern (co-author). Work QID Q5226156 P50 includes Q94028 (Morgenstern) — verified against person:oskar-morgenstern node QID Q94028. §8 WP oldid=1352441311. W1–W5 auto-reviewed; direction work→person."
+  },
+  {
+    "id": "edge:computing-machinery-and-intelligence-canonical-work-artificial-intelligence",
+    "source": "work:computing-machinery-and-intelligence",
+    "target": "subfield:artificial-intelligence",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Computing Machinery and Intelligence (Turing, 1950, Mind) — introducing the Turing test — is a canonical founding text of artificial intelligence. Work QID Q772056 live-verified (P31=Q13442814 scholarly article, P50=Q7251 Turing, P577=1950). Generator QID hint Q1138524 was a hallucination (Pauly–Wissowa encyclopedia); corrected live to Q772056. §8 WP oldid=1361401367. Distinct from Turing's 1936 computability paper (different subfield). W1–W5 auto-reviewed; direction work→field."
+  },
+  {
+    "id": "edge:computing-machinery-and-intelligence-canonical-work-alan-turing",
+    "source": "work:computing-machinery-and-intelligence",
+    "target": "person:alan-turing",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Computing Machinery and Intelligence (1950) is a canonical work of Alan Turing. Work QID Q772056 P50=Q7251 (Turing) — verified. §8 WP oldid=1361401367. W1–W5 auto-reviewed; direction work→person."
+  },
+  {
+    "id": "edge:on-formally-undecidable-propositions-canonical-work-mathematical-logic",
+    "source": "work:on-formally-undecidable-propositions",
+    "target": "subfield:mathematical-logic",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "On Formally Undecidable Propositions of Principia Mathematica and Related Systems (Gödel, 1931), proving the incompleteness theorems, is a canonical watershed text of mathematical logic. Work QID Q7090984 live-verified (P31=Q13442814 scholarly article, P50=Q41390 Gödel, P577=1931). Generator QID hint Q1798944 was a hallucination (plant species \"Scapania calcicola\"); corrected live to Q7090984. §8: WP oldid=1361575140. Co-canonical (decision (90)) with Boole's Laws of Thought and Frege's Begriffsschrift for mathematical-logic — a distinct universally-recognized watershed, not dilution. W1–W5 auto-reviewed; direction work→field."
+  },
+  {
+    "id": "edge:on-formally-undecidable-propositions-canonical-work-kurt-godel",
+    "source": "work:on-formally-undecidable-propositions",
+    "target": "person:kurt-godel",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "On Formally Undecidable Propositions (1931) is the canonical work of Kurt Gödel. Work QID Q7090984 P50=Q41390 (Gödel) — verified. §8 WP oldid=1361575140. W1–W5 auto-reviewed; direction work→person."
+  },
+  {
+    "id": "edge:opticks-canonical-work-optics",
+    "source": "work:opticks",
+    "target": "subfield:optics",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Opticks (Newton, 1704) is a canonical founding text of physical optics. Work QID Q74263 live-verified (P31=Q47461344 written work, P50=Q935 Newton, P577=1704). Generator QID hint Q1140309 was a hallucination (2006 TV film \"The Path to 9/11\"); corrected live to Q74263. §8: WP oldid=1358337717. Distinct from Newton's Principia (different subfield). W1–W5 auto-reviewed; direction work→field."
+  },
+  {
+    "id": "edge:opticks-canonical-work-isaac-newton",
+    "source": "work:opticks",
+    "target": "person:isaac-newton",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Opticks (1704) is a canonical work of Isaac Newton. Work QID Q74263 P50=Q935 (Newton) — verified. §8 WP oldid=1358337717. W1–W5 auto-reviewed; direction work→person."
+  },
+  {
+    "id": "edge:on-sense-and-reference-canonical-work-philosophy-of-language",
+    "source": "work:on-sense-and-reference",
+    "target": "subfield:philosophy-of-language",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "On Sense and Reference (Über Sinn und Bedeutung, Frege, 1892) — introducing the sense/reference distinction — is a canonical founding paper of philosophy of language. Work QID Q330955 live-verified (P31=Q13442814 scholarly article, P50=Q60028 Frege, P577=1892). Generator QID hint Q1497216 was a hallucination (\"Schlagintweit brothers\"); corrected live to Q330955. §8: WP oldid=1355689334. Co-canonical (decision (90)) with the Tractatus (work-wave4) for philosophy-of-language. NB: the paired concept:sense-and-reference candidate was dropped at QC — Q330955 is the paper (a work), not a distinct concept item, so it is modeled once, as this work. W1–W5 auto-reviewed; direction work→field."
+  },
+  {
+    "id": "edge:on-sense-and-reference-canonical-work-gottlob-frege",
+    "source": "work:on-sense-and-reference",
+    "target": "person:gottlob-frege",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "On Sense and Reference (1892) is a canonical work of Gottlob Frege. Work QID Q330955 P50=Q60028 (Frege) — verified. Distinct from Begriffsschrift (scoped to mathematical-logic). §8 WP oldid=1355689334. W1–W5 auto-reviewed; direction work→person."
   }
 ]

@@ -1,0 +1,684 @@
+{
+  "version": 1,
+  "batch_id": "phase2-summaries-v1",
+  "kind": "node-summary",
+  "proposed_by": {
+    "model_name": "Claude Opus",
+    "model_version": "claude-opus-4-8",
+    "proposed_at": "2026-07-02"
+  },
+  "items": [
+    {
+      "node_id": "person:sigmund-freud",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Sigmund Freud (1856–1939) was an Austrian neurologist who founded psychoanalysis, a theory of the mind and a method for treating psychological disorders centered on the idea that unconscious mental processes shape thought and behavior. He developed influential concepts including the unconscious, repression, and the interpretation of dreams, and set them out in works such as The Interpretation of Dreams (1899/1900). His ideas were widely influential across psychology, psychiatry, and the humanities, including literary studies, while also drawing sustained scientific and philosophical criticism.",
+      "source_hints": [
+        {
+          "source": "Internet Encyclopedia of Philosophy — Sigmund Freud",
+          "url": "https://iep.utm.edu/freud/"
+        },
+        {
+          "source": "Britannica — Sigmund Freud",
+          "url": "https://www.britannica.com/biography/Sigmund-Freud"
+        },
+        {
+          "source": "Wikipedia — Sigmund Freud",
+          "url": "https://en.wikipedia.org/wiki/Sigmund_Freud"
+        }
+      ],
+      "rationale": "Contribution-focused: attributes the founding of psychoanalysis (matches founded_or_formalized edge to subfield:psychoanalysis and to concept:the-unconscious), names The Interpretation of Dreams (matches canonical_work edge) and influence on literary studies (matches influenced edge). Dates and content are standard-reference. Flag for QC: 'The Interpretation of Dreams' has a genuine 1899/1900 dating ambiguity (published Nov 1899, dated 1900) — verify wording is acceptable; IEP slug 'freud' is my best guess."
+    },
+    {
+      "node_id": "person:emile-durkheim",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Émile Durkheim (1858–1917) was a French sociologist widely regarded as one of the principal founders of sociology as an academic discipline. He argued that societies should be studied through \"social facts\" — ways of acting and thinking that are external to and coercive upon individuals — and applied this program in studies of the division of labor, suicide, and religion, set out in works such as The Rules of Sociological Method. His work also influenced anthropology, and he is commonly credited with helping to establish sociology's distinctive methods and subject matter.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Émile Durkheim",
+          "url": "https://plato.stanford.edu/entries/durkheim/"
+        },
+        {
+          "source": "Britannica — Émile Durkheim",
+          "url": "https://www.britannica.com/biography/Emile-Durkheim"
+        },
+        {
+          "source": "Wikipedia — Émile Durkheim",
+          "url": "https://en.wikipedia.org/wiki/%C3%89mile_Durkheim"
+        }
+      ],
+      "rationale": "Contribution-focused: names the founding of sociology (matches founded_or_formalized to field:sociology), the social-fact concept (matches founded_or_formalized to concept:social-fact), The Rules of Sociological Method (matches canonical_work edge), and influence on anthropology (matches influenced edge). Standard-reference content; dates standard. Flag for QC: SEP has a 'durkheim' entry (verify slug); the Wikipedia URL uses percent-encoded É."
+    },
+    {
+      "node_id": "person:friedrich-nietzsche",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Friedrich Nietzsche (1844–1900) was a German philosopher and philologist whose work addressed morality, religion, culture, and the nature of value, developing themes such as the critique of traditional morality, the \"will to power,\" and perspectivism. Writing in works including Thus Spoke Zarathustra and Beyond Good and Evil, he became one of the most influential figures in modern thought. He is commonly cited as a major influence on existentialism, continental philosophy, and critical theory, and his reception drew on and reacted against earlier thinkers such as Arthur Schopenhauer.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Friedrich Nietzsche",
+          "url": "https://plato.stanford.edu/entries/nietzsche/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Friedrich Nietzsche",
+          "url": "https://iep.utm.edu/nietzsche/"
+        },
+        {
+          "source": "Britannica — Friedrich Nietzsche",
+          "url": "https://www.britannica.com/biography/Friedrich-Nietzsche"
+        }
+      ],
+      "rationale": "Contribution-focused: names his major themes and works and the influence on existentialism, continental philosophy, and critical theory (matches the three reviewed influenced edges); notes Schopenhauer's influence on him (matches the schopenhauer→nietzsche edge). Standard-reference; dates standard. Note: the nietzsche→freud edge is only 'proposed' in the corpus, so it is deliberately not asserted here. Flag for QC: verify SEP/IEP slugs 'nietzsche'."
+    },
+    {
+      "node_id": "person:claude-levi-strauss",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Claude Lévi-Strauss (1908–2009) was a French anthropologist widely regarded as the founder of structural anthropology, an approach that analyzes culture — including myth, kinship, and classification — as systems of underlying structures modeled on the relational logic of structural linguistics. Drawing on the linguistics of Ferdinand de Saussure and Roman Jakobson, he set out this program in works such as The Elementary Structures of Kinship and Structural Anthropology. His methods were highly influential across the social sciences and the humanities, including literary theory.",
+      "source_hints": [
+        {
+          "source": "Britannica — Claude Lévi-Strauss",
+          "url": "https://www.britannica.com/biography/Claude-Levi-Strauss"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Claude Lévi-Strauss",
+          "url": "https://iep.utm.edu/levi-strauss/"
+        },
+        {
+          "source": "Wikipedia — Claude Lévi-Strauss",
+          "url": "https://en.wikipedia.org/wiki/Claude_L%C3%A9vi-Strauss"
+        }
+      ],
+      "rationale": "Contribution-focused: names the founding of structural anthropology (matches founded_or_formalized edge), the Saussure and Jakobson influences on him (matches both influenced→levi-strauss edges), the Structural Anthropology work (matches canonical_work edge), and influence on literary theory (matches influenced edge). Standard-reference; dates standard. Flag for QC: IEP slug 'levi-strauss' is a best guess and may not exist — verify or substitute; Wikipedia URL percent-encodes é."
+    },
+    {
+      "node_id": "person:gottlob-frege",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Gottlob Frege (1848–1925) was a German logician, mathematician, and philosopher widely regarded as a founder of modern mathematical logic and analytic philosophy of language. In his Begriffsschrift (1879) he introduced a formal system of quantified logic that transformed the discipline, and he developed foundational analyses of concepts such as sense and reference. His work is commonly credited with helping to establish mathematical logic and the philosophy of language, and it influenced later work in linguistics.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Gottlob Frege",
+          "url": "https://plato.stanford.edu/entries/frege/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Gottlob Frege",
+          "url": "https://iep.utm.edu/frege/"
+        },
+        {
+          "source": "Britannica — Gottlob Frege",
+          "url": "https://www.britannica.com/biography/Gottlob-Frege"
+        }
+      ],
+      "rationale": "Contribution-focused: names the founding of mathematical logic and philosophy of language (matches both founded_or_formalized edges), the Begriffsschrift (matches canonical_work edge to work:begriffsschrift), and influence on linguistics (matches influenced edge). Sense/reference is standard Frege content. Dates standard. Flag for QC: verify SEP/IEP slugs 'frege'."
+    },
+    {
+      "node_id": "person:alan-turing",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Alan Turing (1912–1954) was a British mathematician and logician widely regarded as a founder of computability theory and a pioneer of theoretical computer science. In his 1936 paper \"On Computable Numbers,\" he introduced the abstract computing device now known as the Turing machine and used it to address the Entscheidungsproblem, establishing a formal notion of what it means for a function to be effectively computable. His ideas about machine intelligence, including the test later named after him, were also influential in the philosophy of mind.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Alan Turing",
+          "url": "https://plato.stanford.edu/entries/turing/"
+        },
+        {
+          "source": "Britannica — Alan Turing",
+          "url": "https://www.britannica.com/biography/Alan-Turing"
+        },
+        {
+          "source": "Wikipedia — Alan Turing",
+          "url": "https://en.wikipedia.org/wiki/Alan_Turing"
+        }
+      ],
+      "rationale": "Contribution-focused: names the founding of computability theory (matches founded_or_formalized edge), the Turing machine (matches founded_or_formalized to concept:turing-machine), 'On Computable Numbers' (matches canonical_work edge), and influence on philosophy of mind (matches influenced edge). 1936 date and Entscheidungsproblem are standard. Flag for QC: verify SEP slug 'turing'."
+    },
+    {
+      "node_id": "person:charles-darwin",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Charles Darwin (1809–1882) was a British naturalist widely regarded as the founder of evolutionary biology, best known for proposing that species evolve over generations through the process of natural selection. He set out this theory with extensive evidence in On the Origin of Species (1859), drawing on observations from his voyage on HMS Beagle and decades of subsequent study. His work reshaped the biological sciences and has also been cited as an influence on fields such as evolutionary psychology.",
+      "source_hints": [
+        {
+          "source": "Britannica — Charles Darwin",
+          "url": "https://www.britannica.com/biography/Charles-Darwin"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Darwinism",
+          "url": "https://plato.stanford.edu/entries/darwinism/"
+        },
+        {
+          "source": "Wikipedia — Charles Darwin",
+          "url": "https://en.wikipedia.org/wiki/Charles_Darwin"
+        }
+      ],
+      "rationale": "Contribution-focused: names the founding of evolutionary biology (matches founded_or_formalized edge), natural selection (matches founded_or_formalized to concept:natural-selection), On the Origin of Species 1859 (matches canonical_work edge), and influence on evolutionary psychology (matches influenced edge). Dates standard. Flag for QC: SEP may not have a person-'darwin' entry — I used the topical 'darwinism' entry as the anchor; verify that slug exists, else substitute."
+    },
+    {
+      "node_id": "person:max-weber",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Max Weber (1864–1920) was a German sociologist, historian, and political economist widely regarded as one of the founders of modern sociology. He is known for analyses of rationalization, authority, and bureaucracy, for his interpretive (verstehen) approach to social action, and for The Protestant Ethic and the Spirit of Capitalism, which argued for a connection between certain religious ideas and the development of capitalism. His account of social and economic development is often contrasted with that of Karl Marx.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Max Weber",
+          "url": "https://plato.stanford.edu/entries/weber/"
+        },
+        {
+          "source": "Britannica — Max Weber",
+          "url": "https://www.britannica.com/biography/Max-Weber-German-sociologist"
+        },
+        {
+          "source": "Wikipedia — Max Weber",
+          "url": "https://en.wikipedia.org/wiki/Max_Weber"
+        }
+      ],
+      "rationale": "Contribution-focused: names the founding of sociology (matches founded_or_formalized to field:sociology), bureaucracy (matches founded_or_formalized to concept:bureaucracy, though that edge is 'proposed' so worded as one theme among several, not a strong claim), The Protestant Ethic (matches canonical_work edge), and the contrast with Marx (matches the weber→marx 'critiques' edge, which is 'proposed' — hence neutral 'often contrasted with' wording rather than asserting a critique). Dates standard. Flag for QC: verify SEP slug 'weber' and the Britannica disambiguated slug 'Max-Weber-German-sociologist'."
+    },
+    {
+      "node_id": "person:karl-marx",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Karl Marx (1818–1883) was a German philosopher, economist, and social theorist whose analysis of capitalism, class, and history has been widely influential across the social sciences, including sociology. In works such as Capital (Das Kapital), he analyzed the workings of capitalist production, value, and class relations, developing a materialist conception of history. His ideas are closely associated with the concept of false consciousness and gave rise to a broad tradition of Marxist thought in economics, politics, sociology, and philosophy.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Karl Marx",
+          "url": "https://plato.stanford.edu/entries/marx/"
+        },
+        {
+          "source": "Britannica — Karl Marx",
+          "url": "https://www.britannica.com/biography/Karl-Marx"
+        },
+        {
+          "source": "Wikipedia — Karl Marx",
+          "url": "https://en.wikipedia.org/wiki/Karl_Marx"
+        }
+      ],
+      "rationale": "Contribution-focused: names influence on sociology (matches founded_or_formalized to field:sociology), Capital (matches canonical_work edge to work:capital-volume-i), and association with false consciousness (matches the marx→false-consciousness 'influenced' edge — worded as 'closely associated with' not 'coined', since the corpus records 'influenced', and the term's precise origin is contested). Standard-reference; dates standard. Flag for QC: verify SEP slug 'marx'."
+    },
+    {
+      "node_id": "person:edmund-husserl",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Edmund Husserl (1859–1938) was a German philosopher widely regarded as the founder of phenomenology, the philosophical study of the structures of consciousness and experience as they are given from a first-person point of view. Central to his work is the notion of intentionality — the directedness of consciousness toward objects — which he developed in works such as Logical Investigations and Ideas. His phenomenological method influenced later philosophy, including existentialism and, more broadly, the philosophy of cognitive science.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Edmund Husserl",
+          "url": "https://plato.stanford.edu/entries/husserl/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Edmund Husserl",
+          "url": "https://iep.utm.edu/husserl/"
+        },
+        {
+          "source": "Britannica — Edmund Husserl",
+          "url": "https://www.britannica.com/biography/Edmund-Husserl"
+        }
+      ],
+      "rationale": "Contribution-focused: names the founding of phenomenology (matches founded_or_formalized to subfield:phenomenology), intentionality (matches founded_or_formalized to concept:intentionality — 'proposed', so 'central to his work' rather than a strong sole-founder claim; and Brentano's prior use of the term is well known), Logical Investigations (matches canonical_work edge), and influence on philosophy of cognitive science (matches influenced edge). Dates standard. Flag for QC: verify SEP/IEP slugs 'husserl'; note intentionality predates Husserl (Brentano) — wording avoids claiming he originated the term."
+    },
+    {
+      "node_id": "person:noam-chomsky",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Noam Chomsky is an American linguist and cognitive scientist widely credited with founding generative grammar, an approach that treats a language's grammar as a finite system of explicit rules generating its grammatical sentences and as a representation of speakers' tacit linguistic knowledge. His work introduced the influential hypothesis of an innate universal grammar and helped shift linguistics and cognitive science toward the study of the mind, contributing to the mid-twentieth-century \"cognitive revolution.\" He is also widely known as a public intellectual.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Noam Chomsky",
+          "url": "https://plato.stanford.edu/entries/chomsky/"
+        },
+        {
+          "source": "Britannica — Noam Chomsky",
+          "url": "https://www.britannica.com/biography/Noam-Chomsky"
+        },
+        {
+          "source": "Wikipedia — Noam Chomsky",
+          "url": "https://en.wikipedia.org/wiki/Noam_Chomsky"
+        }
+      ],
+      "rationale": "LIVING person (decision (70)) — strictly contribution-focused, non-biographical, conservative attributed wording ('widely credited with founding'), present tense with no birth/death dating. Names founding of generative grammar (matches founded_or_formalized edge) and influence on philosophy of mind / cognitive science (matches influenced edge). Political views/activism deliberately excluded per prompt; only a single neutral clause noting he is 'also widely known as a public intellectual' — no positions, no controversy. Flag for QC: verify SEP slug 'chomsky'; confirm the summary stays within the uncontested scholarly attribution."
+    },
+    {
+      "node_id": "person:donald-knuth",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Donald Knuth is an American computer scientist widely credited with helping to establish the analysis of algorithms as a rigorous area of computer science, principally through his multi-volume work The Art of Computer Programming. He is also known for creating the TeX typesetting system and for foundational contributions to the theory and mathematical analysis of algorithms. His work is commonly regarded as central to the development of computer science as a mathematical discipline.",
+      "source_hints": [
+        {
+          "source": "Britannica — Donald Knuth",
+          "url": "https://www.britannica.com/biography/Donald-Knuth"
+        },
+        {
+          "source": "Wikipedia — Donald Knuth",
+          "url": "https://en.wikipedia.org/wiki/Donald_Knuth"
+        },
+        {
+          "source": "Wikipedia — The Art of Computer Programming",
+          "url": "https://en.wikipedia.org/wiki/The_Art_of_Computer_Programming"
+        }
+      ],
+      "rationale": "LIVING person (decision (70)) — strictly contribution-focused, non-biographical, conservative attributed wording ('widely credited with helping to establish'), present tense with no birth/death dating. Names the analysis of algorithms (matches founded_or_formalized to concept:analysis-of-algorithms), The Art of Computer Programming, and TeX (both standard, uncontested attributions). Flag for QC: no SEP/IEP entry expected for Knuth; hints are Britannica + Wikipedia — verify the Britannica biography slug exists (if not, drop to the two Wikipedia anchors)."
+    },
+    {
+      "node_id": "work:on-the-origin-of-species",
+      "locale": "en",
+      "status": "generated",
+      "summary": "On the Origin of Species is an 1859 book by Charles Darwin that presents the theory of evolution by natural selection, arguing that species descend with modification from common ancestors and that natural selection is a principal mechanism driving this change. Marshalling extensive evidence from natural history, breeding, and biogeography, it is widely regarded as one of the foundational and most influential works of modern biology and as the canonical text establishing evolutionary biology.",
+      "source_hints": [
+        {
+          "source": "Britannica — On the Origin of Species",
+          "url": "https://www.britannica.com/topic/On-the-Origin-of-Species"
+        },
+        {
+          "source": "Wikipedia — On the Origin of Species",
+          "url": "https://en.wikipedia.org/wiki/On_the_Origin_of_Species"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Darwinism",
+          "url": "https://plato.stanford.edu/entries/darwinism/"
+        }
+      ],
+      "rationale": "Work-focused: what the text is (1859 book by Darwin), why canonical (foundational for evolutionary biology) — matches canonical_work edges to person:charles-darwin and subfield:evolutionary-biology. Standard-reference; 1859 date standard. Flag for QC: verify the Britannica topic slug 'On-the-Origin-of-Species'."
+    },
+    {
+      "node_id": "work:philosophiae-naturalis-principia-mathematica",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Philosophiæ Naturalis Principia Mathematica (\"Mathematical Principles of Natural Philosophy\"), commonly called the Principia, is a work by Isaac Newton first published in 1687 that sets out his laws of motion and the law of universal gravitation. Written in Latin and using geometrical methods, it provides a unified mathematical account of terrestrial and celestial motion and is widely regarded as one of the most important works in the history of science and a foundational text of classical physics.",
+      "source_hints": [
+        {
+          "source": "Britannica — Philosophiae Naturalis Principia Mathematica",
+          "url": "https://www.britannica.com/topic/Philosophiae-Naturalis-Principia-Mathematica"
+        },
+        {
+          "source": "Wikipedia — Philosophiæ Naturalis Principia Mathematica",
+          "url": "https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Isaac Newton",
+          "url": "https://plato.stanford.edu/entries/newton/"
+        }
+      ],
+      "rationale": "Work-focused: what the text is (Newton's 1687 Principia), its content (laws of motion + universal gravitation), why canonical (foundational for classical physics) — matches canonical_work edges to person:isaac-newton and field:physics. Standard-reference; 1687 date standard. Flag for QC: verify the Britannica topic slug; Wikipedia URL percent-encodes æ."
+    },
+    {
+      "node_id": "work:the-wealth-of-nations",
+      "locale": "en",
+      "status": "generated",
+      "summary": "The Wealth of Nations, full title An Inquiry into the Nature and Causes of the Wealth of Nations, is a 1776 work by the Scottish philosopher and economist Adam Smith. It analyzes how national wealth arises from the division of labor, productive labor, and markets coordinated through self-interested exchange, and argues broadly in favor of free trade and limited government intervention. It is widely regarded as a foundational text of modern economics and as the canonical work marking the emergence of the discipline as a systematic field of study.",
+      "source_hints": [
+        {
+          "source": "Britannica — The Wealth of Nations",
+          "url": "https://www.britannica.com/topic/The-Wealth-of-Nations"
+        },
+        {
+          "source": "Wikipedia — The Wealth of Nations",
+          "url": "https://en.wikipedia.org/wiki/The_Wealth_of_Nations"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Adam Smith",
+          "url": "https://plato.stanford.edu/entries/smith-moral-political/"
+        }
+      ],
+      "rationale": "Work-focused: what the text is (Smith's 1776 book, full title given), core content (division of labor, markets), why canonical (foundational for economics) — matches canonical_work edges to person:adam-smith and field:economics. Standard-reference; 1776 date standard. Flag for QC: SEP's Adam Smith entry is titled 'Adam Smith's Moral and Political Philosophy' (slug 'smith-moral-political') — verify that slug; verify Britannica topic slug."
+    },
+    {
+      "node_id": "work:cours-de-linguistique-generale",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Cours de linguistique générale (\"Course in General Linguistics\") is a foundational work of modern linguistics, compiled by students from lecture notes and published in 1916, after his death, under the name of the Swiss linguist Ferdinand de Saussure. It sets out key distinctions such as langue and parole, the synchronic and diachronic study of language, and the arbitrary nature of the linguistic sign, treating language as a system of signs. It is widely regarded as a founding text of structural linguistics and a major influence on structuralism across the humanities.",
+      "source_hints": [
+        {
+          "source": "Britannica — Ferdinand de Saussure",
+          "url": "https://www.britannica.com/biography/Ferdinand-de-Saussure"
+        },
+        {
+          "source": "Wikipedia — Course in General Linguistics",
+          "url": "https://en.wikipedia.org/wiki/Course_in_General_Linguistics"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Ferdinand de Saussure / Structuralism",
+          "url": "https://plato.stanford.edu/entries/structuralism-linguistics/"
+        }
+      ],
+      "rationale": "Work-focused: what the text is (1916 posthumous compilation attributed to Saussure), core content (langue/parole, synchronic/diachronic, arbitrariness of the sign), why canonical (founding text of structural linguistics) — matches canonical_work edges to person:ferdinand-de-saussure and field:linguistics. Standard-reference; 1916 date standard. Flag for QC: the SEP slug 'structuralism-linguistics' is a best guess and may not exist — verify or substitute; the anchor could instead point to Britannica's Saussure biography (given)."
+    },
+    {
+      "node_id": "work:a-mathematical-theory-of-communication",
+      "locale": "en",
+      "status": "generated",
+      "summary": "\"A Mathematical Theory of Communication\" is a 1948 paper by Claude Shannon, published in the Bell System Technical Journal, that founded the field of information theory. It introduced a quantitative measure of information (entropy), the modeling of communication sources and channels, and results on the fundamental limits of data compression and reliable transmission over noisy channels. It is widely regarded as the canonical work establishing information theory and is foundational to modern communications, computing, and data science.",
+      "source_hints": [
+        {
+          "source": "Wikipedia — A Mathematical Theory of Communication",
+          "url": "https://en.wikipedia.org/wiki/A_Mathematical_Theory_of_Communication"
+        },
+        {
+          "source": "Britannica — Information theory",
+          "url": "https://www.britannica.com/science/information-theory"
+        },
+        {
+          "source": "Wikipedia — Claude Shannon",
+          "url": "https://en.wikipedia.org/wiki/Claude_Shannon"
+        }
+      ],
+      "rationale": "Work-focused: what the text is (Shannon's 1948 paper in BSTJ), core content (entropy, channel capacity, compression/transmission limits), why canonical (founding information theory) — matches canonical_work edges to person:claude-shannon and subfield:information-theory. Standard-reference; 1948 date standard. Flag for QC: no SEP/IEP entry expected; Britannica anchor is the topical 'information-theory' page — verify slug."
+    },
+    {
+      "node_id": "work:the-interpretation-of-dreams",
+      "locale": "en",
+      "status": "generated",
+      "summary": "The Interpretation of Dreams (German: Die Traumdeutung) is a book by Sigmund Freud, published in 1899 and dated 1900, that presents his theory that dreams are disguised fulfillments of unconscious wishes and can be analyzed to reveal repressed mental content. It introduces influential concepts such as the distinction between the manifest and latent content of dreams and the mechanisms of dream-work, and lays out central ideas of psychoanalysis. It is widely regarded as one of Freud's foundational works and a canonical text of psychoanalysis.",
+      "source_hints": [
+        {
+          "source": "Britannica — The Interpretation of Dreams",
+          "url": "https://www.britannica.com/topic/The-Interpretation-of-Dreams"
+        },
+        {
+          "source": "Wikipedia — The Interpretation of Dreams",
+          "url": "https://en.wikipedia.org/wiki/The_Interpretation_of_Dreams"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Sigmund Freud",
+          "url": "https://iep.utm.edu/freud/"
+        }
+      ],
+      "rationale": "Work-focused: what the text is (Freud's book, 1899/1900), core content (dreams as wish-fulfillment, manifest/latent, dream-work), why canonical (foundational text of psychoanalysis) — matches canonical_work edges to person:sigmund-freud and subfield:psychoanalysis. Flag for QC: genuine 1899/1900 dating ambiguity stated explicitly (published Nov 1899, imprint 1900) — verify wording; verify Britannica topic slug and IEP 'freud' slug."
+    },
+    {
+      "node_id": "work:tractatus-logico-philosophicus",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Tractatus Logico-Philosophicus is a philosophical work by Ludwig Wittgenstein, first published in German in 1921 and in English translation in 1922. Written as a series of numbered propositions, it advances a picture theory of meaning and analyzes the relationship between language, thought, and the world, culminating in claims about the limits of what can be meaningfully said. It is widely regarded as a major work of analytic philosophy and a canonical text in the philosophy of language and logic.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Ludwig Wittgenstein",
+          "url": "https://plato.stanford.edu/entries/wittgenstein/"
+        },
+        {
+          "source": "Britannica — Tractatus Logico-Philosophicus",
+          "url": "https://www.britannica.com/topic/Tractatus-Logico-Philosophicus"
+        },
+        {
+          "source": "Wikipedia — Tractatus Logico-Philosophicus",
+          "url": "https://en.wikipedia.org/wiki/Tractatus_Logico-Philosophicus"
+        }
+      ],
+      "rationale": "Work-focused: what the text is (Wittgenstein, 1921 German / 1922 English), core content (picture theory of meaning, limits of language), why canonical (philosophy of language) — matches canonical_work edges to person:ludwig-wittgenstein and subfield:philosophy-of-language. Standard-reference; dates standard. Flag for QC: verify SEP slug 'wittgenstein' and Britannica topic slug."
+    },
+    {
+      "node_id": "work:capital-volume-i",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Capital, Volume I (German: Das Kapital, Volume I) is an 1867 work of political economy by Karl Marx, the first and only volume he published in his lifetime; the later volumes were edited from his manuscripts and published after his death. It presents a critical analysis of capitalist production, developing Marx's account of the commodity, value, and the extraction of surplus value from labor. It is widely regarded as a foundational text of Marxist thought and has been highly influential across economics and the social sciences, including sociology.",
+      "source_hints": [
+        {
+          "source": "Britannica — Das Kapital",
+          "url": "https://www.britannica.com/topic/Das-Kapital"
+        },
+        {
+          "source": "Wikipedia — Das Kapital, Volume I",
+          "url": "https://en.wikipedia.org/wiki/Das_Kapital,_Volume_I"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Karl Marx",
+          "url": "https://plato.stanford.edu/entries/marx/"
+        }
+      ],
+      "rationale": "Work-focused: what the text is (Marx, Volume I 1867, the only volume published in his lifetime), core content (commodity, value, surplus value), why canonical (foundational Marxist text, influential in sociology) — matches canonical_work edges to person:karl-marx and field:sociology (the corpus files this under sociology, not economics, so the summary keeps 'across economics and the social sciences, including sociology'). Standard-reference; 1867 date standard. Flag for QC: verify Britannica 'Das-Kapital' topic slug and the Wikipedia article title for Volume I (comma + underscore); verify SEP 'marx' slug."
+    },
+    {
+      "node_id": "work:on-computable-numbers",
+      "locale": "en",
+      "status": "generated",
+      "summary": "\"On Computable Numbers, with an Application to the Entscheidungsproblem\" is a 1936 paper by Alan Turing that introduces the abstract computing device now known as the Turing machine and defines the notion of a computable number. Using this framework, Turing showed that certain problems, including the decision problem (Entscheidungsproblem) for first-order logic, cannot be solved by any such machine. It is widely regarded as a founding paper of computability theory and theoretical computer science.",
+      "source_hints": [
+        {
+          "source": "Wikipedia — Turing's proof / On Computable Numbers",
+          "url": "https://en.wikipedia.org/wiki/Turing%27s_proof"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Alan Turing",
+          "url": "https://plato.stanford.edu/entries/turing/"
+        },
+        {
+          "source": "Britannica — Alan Turing",
+          "url": "https://www.britannica.com/biography/Alan-Turing"
+        }
+      ],
+      "rationale": "Work-focused: what the text is (Turing's 1936 paper), core content (Turing machine, computable numbers, unsolvability of the Entscheidungsproblem), why canonical (founding computability theory) — matches canonical_work edges to person:alan-turing and subfield:computability-theory. Standard-reference; 1936 date standard. Flag for QC: there may be no dedicated Wikipedia article titled exactly 'On Computable Numbers' — content may live under 'Turing's proof' or the Turing machine article; verify the anchor and substitute the correct Wikipedia URL if needed. Verify SEP 'turing' slug."
+    },
+    {
+      "node_id": "concept:natural-selection",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Natural selection is the process by which heritable traits that improve an organism's chances of survival and reproduction tend to become more common in a population over successive generations, while less advantageous traits become rarer. It was proposed as a principal mechanism of evolution by Charles Darwin (and independently by Alfred Russel Wallace) in the mid-nineteenth century and set out in detail in On the Origin of Species (1859). It is a central concept of evolutionary biology and, together with other mechanisms, accounts for the adaptation and diversification of living things.",
+      "source_hints": [
+        {
+          "source": "Britannica — Natural selection",
+          "url": "https://www.britannica.com/science/natural-selection"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Natural Selection",
+          "url": "https://plato.stanford.edu/entries/natural-selection/"
+        },
+        {
+          "source": "Wikipedia — Natural selection",
+          "url": "https://en.wikipedia.org/wiki/Natural_selection"
+        }
+      ],
+      "rationale": "Concept-focused: what the idea is (differential survival/reproduction of heritable traits), who formalized it (Darwin — matches founded_or_formalized edge; Wallace credited independently, standard), which field (part of evolutionary biology — matches part_of edge). Standard-reference; dates standard. Flag for QC: verify SEP slug 'natural-selection' and Britannica 'natural-selection' slug."
+    },
+    {
+      "node_id": "concept:the-unconscious",
+      "locale": "en",
+      "status": "generated",
+      "summary": "In psychoanalysis, the unconscious is the part of the mind comprising mental processes — such as wishes, memories, and drives — that are not accessible to conscious awareness but are held to influence thought, emotion, and behavior. The concept was central to the psychoanalytic theory developed by Sigmund Freud, who held that unconscious material is kept from awareness by repression and can be inferred through phenomena such as dreams and slips. It is a foundational idea of psychoanalysis, though the notion of unconscious mental processes has a longer history and is understood differently across later psychology.",
+      "source_hints": [
+        {
+          "source": "Britannica — The unconscious",
+          "url": "https://www.britannica.com/science/the-unconscious"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Sigmund Freud",
+          "url": "https://iep.utm.edu/freud/"
+        },
+        {
+          "source": "Wikipedia — Unconscious mind",
+          "url": "https://en.wikipedia.org/wiki/Unconscious_mind"
+        }
+      ],
+      "rationale": "Concept-focused: what the idea is (inaccessible mental processes influencing behavior), who developed it in psychoanalysis (Freud — matches founded_or_formalized edge; conservative 'central to' plus the standard caveat that unconscious-mind ideas predate Freud), which field (part of psychoanalysis — matches part_of edge). Standard-reference. Flag for QC: verify the Britannica 'the-unconscious' slug (may instead be under a broader 'unconscious' page); IEP 'freud' slug."
+    },
+    {
+      "node_id": "concept:turing-machine",
+      "locale": "en",
+      "status": "generated",
+      "summary": "A Turing machine is an abstract model of computation, introduced by Alan Turing in 1936, consisting of an infinite tape, a read/write head, and a finite set of states and rules that determine its behavior. Despite its simplicity, it can capture the notion of any effectively computable procedure, and it is used to make precise what it means for a function to be computable and for a problem to be decidable. It is a foundational concept of computability theory and theoretical computer science, closely associated with the Church–Turing thesis.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Turing Machines",
+          "url": "https://plato.stanford.edu/entries/turing-machine/"
+        },
+        {
+          "source": "Britannica — Turing machine",
+          "url": "https://www.britannica.com/technology/Turing-machine"
+        },
+        {
+          "source": "Wikipedia — Turing machine",
+          "url": "https://en.wikipedia.org/wiki/Turing_machine"
+        }
+      ],
+      "rationale": "Concept-focused: what the idea is (abstract computation model: tape, head, states/rules), who formalized it (Turing 1936 — matches founded_or_formalized edge), which field (part of computability theory — matches part_of edge). Church–Turing thesis is standard associated content. Flag for QC: verify SEP slug 'turing-machine' and Britannica 'Turing-machine' slug."
+    },
+    {
+      "node_id": "concept:nash-equilibrium",
+      "locale": "en",
+      "status": "generated",
+      "summary": "A Nash equilibrium is a solution concept in game theory describing a set of strategies, one for each player, such that no player can improve their outcome by unilaterally changing strategy while the others keep theirs fixed. It was introduced by the mathematician John Nash in the early 1950s, who proved that such an equilibrium exists in a broad class of games. It is a central concept of non-cooperative game theory and is widely applied in economics, political science, and other fields that model strategic interaction.",
+      "source_hints": [
+        {
+          "source": "Britannica — Nash equilibrium",
+          "url": "https://www.britannica.com/science/Nash-equilibrium"
+        },
+        {
+          "source": "Wikipedia — Nash equilibrium",
+          "url": "https://en.wikipedia.org/wiki/Nash_equilibrium"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Game Theory",
+          "url": "https://plato.stanford.edu/entries/game-theory/"
+        }
+      ],
+      "rationale": "Concept-focused: what the idea is (no player benefits from unilateral deviation), who formalized it (John Nash, early 1950s — matches founded_or_formalized edge from person:john-nash), which field (part of game theory — matches part_of edge to subfield:game-theory). Standard-reference. Flag for QC: verify Britannica 'Nash-equilibrium' slug; SEP 'game-theory' is the topical anchor (not a dedicated Nash-equilibrium entry)."
+    },
+    {
+      "node_id": "concept:mendelian-inheritance",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Mendelian inheritance is the set of principles describing how discrete hereditary units — now identified with genes — are passed from parents to offspring, including the segregation of paired factors during reproduction and the independent assortment of different factors. These principles derive from the mid-nineteenth-century experiments of Gregor Mendel on pea plants, whose work was rediscovered around 1900 and became foundational to the science of genetics. Mendelian inheritance forms the classical basis of genetics, later extended and refined by the discovery of chromosomes, linkage, and molecular genetics.",
+      "source_hints": [
+        {
+          "source": "Britannica — Mendelian inheritance / Mendelism",
+          "url": "https://www.britannica.com/science/Mendelism"
+        },
+        {
+          "source": "Wikipedia — Mendelian inheritance",
+          "url": "https://en.wikipedia.org/wiki/Mendelian_inheritance"
+        },
+        {
+          "source": "Britannica — Gregor Mendel",
+          "url": "https://www.britannica.com/biography/Gregor-Mendel"
+        }
+      ],
+      "rationale": "Concept-focused: what the idea is (segregation + independent assortment of hereditary factors), who formalized it (Mendel's pea experiments, rediscovered c.1900 — matches founded_or_formalized edge from person:gregor-mendel), which field (part of genetics — matches part_of edge). Standard-reference. Flag for QC: Britannica may title this 'Mendelism' rather than 'Mendelian-inheritance' — verify the slug; the two additional anchors (Wikipedia, Britannica Mendel bio) back the attribution."
+    },
+    {
+      "node_id": "concept:social-fact",
+      "locale": "en",
+      "status": "generated",
+      "summary": "A social fact is a concept introduced by the sociologist Émile Durkheim to denote ways of acting, thinking, and feeling that are external to individuals and exert a coercive influence over them, such as laws, customs, moral rules, and institutions. Durkheim argued that social facts are the proper subject matter of sociology and should be studied objectively, \"as things,\" rather than reduced to individual psychology. The concept is foundational to sociology and to Durkheim's program for establishing it as an autonomous science.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Émile Durkheim",
+          "url": "https://plato.stanford.edu/entries/durkheim/"
+        },
+        {
+          "source": "Britannica — Social fact",
+          "url": "https://www.britannica.com/topic/social-fact"
+        },
+        {
+          "source": "Wikipedia — Social fact",
+          "url": "https://en.wikipedia.org/wiki/Social_fact"
+        }
+      ],
+      "rationale": "Concept-focused: what the idea is (external, coercive ways of acting/thinking), who formalized it (Durkheim — matches founded_or_formalized edge), which field (part of sociology — matches part_of edge). 'Study social facts as things' is standard Durkheim content. Flag for QC: verify the Britannica 'social-fact' topic slug (may instead be covered within the Durkheim biography) and SEP 'durkheim' slug."
+    },
+    {
+      "node_id": "concept:invisible-hand",
+      "locale": "en",
+      "status": "generated",
+      "summary": "The \"invisible hand\" is a metaphor associated with the economist Adam Smith, used to describe how individuals pursuing their own self-interest in a market can unintentionally promote outcomes that benefit society as a whole. Smith used the phrase sparingly in his writings, including The Wealth of Nations, and it has since become a widely cited shorthand in economics for the idea that decentralized, self-interested exchange can produce socially beneficial coordination without central direction. It remains a foundational and much-discussed concept in economics, subject to varied interpretation.",
+      "source_hints": [
+        {
+          "source": "Britannica — Invisible hand",
+          "url": "https://www.britannica.com/topic/invisible-hand"
+        },
+        {
+          "source": "Wikipedia — Invisible hand",
+          "url": "https://en.wikipedia.org/wiki/Invisible_hand"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Adam Smith",
+          "url": "https://plato.stanford.edu/entries/smith-moral-political/"
+        }
+      ],
+      "rationale": "Concept-focused: what the idea is (self-interest unintentionally yielding social benefit), who formalized it (Smith — matches founded_or_formalized edge from person:adam-smith; the 'used sparingly' caveat and 'subject to varied interpretation' are standard and preserve interpretive tension per the QC rule), which field (part of economics — matches part_of edge). Flag for QC: verify Britannica 'invisible-hand' slug; SEP Smith entry slug 'smith-moral-political'."
+    },
+    {
+      "node_id": "concept:intentionality",
+      "locale": "en",
+      "status": "generated",
+      "summary": "In philosophy, intentionality is the property of mental states of being about, directed at, or representing objects or states of affairs. The term in its modern sense was reintroduced by Franz Brentano, who treated directedness toward an object as the mark of the mental, and it was central to the phenomenology developed by Edmund Husserl, who made the analysis of intentional consciousness a core part of his method. Intentionality is a central topic in phenomenology and the philosophy of mind, where it figures in debates about mental representation and consciousness.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Intentionality",
+          "url": "https://plato.stanford.edu/entries/intentionality/"
+        },
+        {
+          "source": "Internet Encyclopedia of Philosophy — Intentionality",
+          "url": "https://iep.utm.edu/intentio/"
+        },
+        {
+          "source": "Britannica — Intentionality",
+          "url": "https://www.britannica.com/topic/intentionality"
+        }
+      ],
+      "rationale": "Concept-focused: what the idea is (aboutness/directedness of mental states), who is associated with it (Brentano reintroduced it, Husserl made it central to phenomenology — matches founded_or_formalized edge from person:edmund-husserl, which is 'proposed'; wording credits Brentano too, since the corpus edge is proposed and the Brentano origin is standard — this preserves accuracy and interpretive care), which field (part of phenomenology — matches part_of edge). Flag for QC: verify SEP slug 'intentionality' and IEP slug 'intentio' (best guess — IEP intentionality slug is uncertain)."
+    },
+    {
+      "node_id": "concept:lambda-calculus",
+      "locale": "en",
+      "status": "generated",
+      "summary": "The lambda calculus is a formal system for expressing computation based on function abstraction and application, introduced by the logician Alonzo Church in the 1930s. Using a small set of rules for defining and applying functions, it provides a universal model of computation equivalent in power to the Turing machine, a correspondence expressed in the Church–Turing thesis. It is a foundational concept in computability theory and in the theory of programming languages, where it underlies functional programming.",
+      "source_hints": [
+        {
+          "source": "Stanford Encyclopedia of Philosophy — The Lambda Calculus",
+          "url": "https://plato.stanford.edu/entries/lambda-calculus/"
+        },
+        {
+          "source": "Britannica — Lambda calculus / Alonzo Church",
+          "url": "https://www.britannica.com/biography/Alonzo-Church"
+        },
+        {
+          "source": "Wikipedia — Lambda calculus",
+          "url": "https://en.wikipedia.org/wiki/Lambda_calculus"
+        }
+      ],
+      "rationale": "Concept-focused: what the idea is (formal system of function abstraction/application), who formalized it (Church, 1930s — matches founded_or_formalized edge from person:alonzo-church), which field (part of computability theory — matches part_of edge), plus the standard equivalence-to-Turing-machines (Church–Turing thesis). Flag for QC: SEP 'lambda-calculus' slug is a best guess and may not exist — verify or substitute; Britannica anchor points to the Church biography."
+    },
+    {
+      "node_id": "concept:symbolic-ai",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Symbolic artificial intelligence is an approach to AI that represents knowledge using explicit symbols and rules and performs reasoning by manipulating these symbolic representations, for example through logic, search, and rule-based systems. It was the dominant paradigm of AI research from the mid-twentieth century into the 1980s, associated with early figures of the field such as those at the founding Dartmouth workshop, and includes expert systems and logic-based reasoning. It is often contrasted with connectionist and statistical machine-learning approaches, and remains a recognized subfield of artificial intelligence.",
+      "source_hints": [
+        {
+          "source": "Wikipedia — Symbolic artificial intelligence",
+          "url": "https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence"
+        },
+        {
+          "source": "Britannica — Artificial intelligence",
+          "url": "https://www.britannica.com/technology/artificial-intelligence"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — The Philosophy of Artificial Intelligence / Logic and AI",
+          "url": "https://plato.stanford.edu/entries/logic-ai/"
+        }
+      ],
+      "rationale": "Concept-focused: what the idea is (explicit symbols + rules, reasoning by symbol manipulation), which field (part of artificial intelligence — matches part_of edge). The corpus founder edge (minsky→symbolic-ai) is only 'proposed', so I deliberately do NOT credit a single founder — instead the neutral, standard 'associated with early figures / Dartmouth workshop' framing avoids overclaiming. Contrast with connectionist/statistical ML is standard. Flag for QC: verify SEP slug 'logic-ai' (best guess); Britannica anchor is the general AI page."
+    },
+    {
+      "node_id": "concept:false-consciousness",
+      "locale": "en",
+      "status": "generated",
+      "summary": "False consciousness is a concept in the Marxist tradition referring to a systematically mistaken understanding of one's true social and economic situation, especially the way in which members of a subordinate class may hold beliefs that serve the interests of a dominant class rather than their own. Although the specific term is generally attributed to Friedrich Engels rather than to Karl Marx himself, it is closely associated with Marx's account of ideology and class, and it was developed by later Marxist theorists. It remains a discussed concept in sociology and social and political theory.",
+      "source_hints": [
+        {
+          "source": "Wikipedia — False consciousness",
+          "url": "https://en.wikipedia.org/wiki/False_consciousness"
+        },
+        {
+          "source": "Britannica — False consciousness",
+          "url": "https://www.britannica.com/topic/false-consciousness"
+        },
+        {
+          "source": "Stanford Encyclopedia of Philosophy — Karl Marx",
+          "url": "https://plato.stanford.edu/entries/marx/"
+        }
+      ],
+      "rationale": "Concept-focused: what the idea is (mistaken understanding of one's class situation serving a dominant class), association with Marx (matches the marx→false-consciousness 'influenced' edge — note it is 'influenced', NOT founded_or_formalized, and the term is standardly attributed to Engels not Marx; the summary states this attribution honestly rather than crediting Marx with coining it — accuracy on the identity axis), which field (part of sociology — matches part_of edge). Flag for QC: verify the Britannica 'false-consciousness' topic slug (may live within a broader 'ideology' page); confirm the Engels-attribution note in the cited sources; SEP 'marx' slug."
+    }
+  ]
+}

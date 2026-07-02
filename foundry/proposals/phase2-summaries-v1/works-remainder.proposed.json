@@ -1,0 +1,264 @@
+{
+  "version": 1,
+  "batch_id": "phase2-summaries-v1",
+  "kind": "node-summary",
+  "proposed_by": {
+    "model_name": "Claude Opus",
+    "model_version": "claude-opus-4-8",
+    "proposed_at": "2026-07-02"
+  },
+  "items": [
+    {
+      "node_id": "work:principles-of-geology",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Principles of Geology is a work by the Scottish geologist Charles Lyell, published in three volumes between 1830 and 1833, that argued Earth's features are the product of gradual, ongoing natural processes acting over immense periods of time. It gave systematic form to the doctrine of uniformitarianism, holding that the same causes observable today have operated throughout geological history. The book was highly influential on nineteenth-century earth science and on Charles Darwin's thinking about deep time.",
+      "source_hints": [
+        { "source": "Wikipedia — Principles of Geology", "url": "https://en.wikipedia.org/wiki/Principles_of_Geology" },
+        { "source": "Britannica — Charles Lyell", "url": "https://www.britannica.com/biography/Charles-Lyell" },
+        { "source": "Britannica — Uniformitarianism", "url": "https://www.britannica.com/science/uniformitarianism" }
+      ],
+      "rationale": "Asserts authorship (Lyell), dates (1830-33, three volumes), thesis (uniformitarianism, deep time), and influence on Darwin. Standard. Wikipedia title reliable; Britannica anchors on Lyell and uniformitarianism rather than the book itself. QID Q1348323."
+    },
+    {
+      "node_id": "work:de-humani-corporis-fabrica",
+      "locale": "en",
+      "status": "generated",
+      "summary": "De humani corporis fabrica (On the Fabric of the Human Body) is an illustrated treatise on human anatomy by the Flemish physician Andreas Vesalius, published in 1543. Based on Vesalius's own dissections, it corrected numerous long-standing errors inherited from Galen and set a new standard for anatomical observation and illustration. It is widely regarded as a founding work of modern anatomy.",
+      "source_hints": [
+        { "source": "Wikipedia — De humani corporis fabrica", "url": "https://en.wikipedia.org/wiki/De_humani_corporis_fabrica" },
+        { "source": "Britannica — Andreas Vesalius", "url": "https://www.britannica.com/biography/Andreas-Vesalius" },
+        { "source": "Britannica — De humani corporis fabrica libri septem", "url": "https://www.britannica.com/topic/De-humani-corporis-fabrica-libri-septem" }
+      ],
+      "rationale": "Asserts authorship (Vesalius), date (1543), method (own dissections, correcting Galen), and founding status for modern anatomy. Standard. Wikipedia title reliable; Britannica book-topic slug 'De-humani-corporis-fabrica-libri-septem' is a GUESS — verify. QID Q1233009."
+    },
+    {
+      "node_id": "work:systema-naturae",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Systema Naturae is a work by the Swedish naturalist Carl Linnaeus, first published in 1735 and expanded through many later editions, that set out a hierarchical classification of the natural world into kingdoms, classes, orders, genera, and species. Its tenth edition (1758) is taken as the starting point for the modern system of binomial nomenclature for animals. It is a foundational work of biological taxonomy.",
+      "source_hints": [
+        { "source": "Wikipedia — Systema Naturae", "url": "https://en.wikipedia.org/wiki/Systema_Naturae" },
+        { "source": "Britannica — Carl Linnaeus", "url": "https://www.britannica.com/biography/Carolus-Linnaeus" },
+        { "source": "Britannica — Binomial nomenclature", "url": "https://www.britannica.com/science/binomial-nomenclature" }
+      ],
+      "rationale": "Asserts authorship (Linnaeus), first edition (1735), the 10th-edition (1758) nomenclatural starting point, and founding status for taxonomy. Standard. Britannica biography slug 'Carolus-Linnaeus' is a GUESS (may redirect to 'Carl-Linnaeus') — verify. QID Q29270."
+    },
+    {
+      "node_id": "work:traite-elementaire-de-chimie",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Traite elementaire de chimie (Elementary Treatise on Chemistry) is a textbook by the French chemist Antoine Lavoisier, published in 1789, that presented chemistry on the basis of careful quantitative measurement and the law of conservation of mass. It introduced a reformed chemical nomenclature and a list of elements defined as substances not decomposable by then-available means, rejecting the phlogiston theory. It is regarded as a founding text of modern chemistry.",
+      "source_hints": [
+        { "source": "Wikipedia — Traité élémentaire de chimie", "url": "https://en.wikipedia.org/wiki/Trait%C3%A9_%C3%A9l%C3%A9mentaire_de_chimie" },
+        { "source": "Britannica — Antoine-Laurent Lavoisier", "url": "https://www.britannica.com/biography/Antoine-Lavoisier" },
+        { "source": "Wikipedia — Antoine Lavoisier", "url": "https://en.wikipedia.org/wiki/Antoine_Lavoisier" }
+      ],
+      "rationale": "Asserts authorship (Lavoisier), date (1789), content (conservation of mass, reformed nomenclature, rejection of phlogiston), and founding status for modern chemistry. Standard. Wikipedia title has accented chars (URL-encoded) — verify the exact article title survives (may be under the English title). QID Q2163561."
+    },
+    {
+      "node_id": "work:experiments-on-plant-hybridization",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Experiments on Plant Hybridization (Versuche uber Pflanzen-Hybriden) is a paper by the monk and naturalist Gregor Mendel, presented in 1865 and published in 1866, reporting his breeding experiments with pea plants. From patterns of inheritance across generations it inferred the discrete factors and segregation rules now known as Mendelian inheritance. Largely overlooked at the time, it became foundational to genetics after its rediscovery around 1900.",
+      "source_hints": [
+        { "source": "Wikipedia — Experiments on Plant Hybridization", "url": "https://en.wikipedia.org/wiki/Experiments_on_Plant_Hybridization" },
+        { "source": "Britannica — Gregor Mendel", "url": "https://www.britannica.com/biography/Gregor-Mendel" },
+        { "source": "Britannica — Mendelism", "url": "https://www.britannica.com/science/Mendelism" }
+      ],
+      "rationale": "Asserts authorship (Mendel), dates (presented 1865, published 1866), pea-plant experiments, discrete inheritance/segregation, and founding status for genetics after ~1900 rediscovery. Standard. Wikipedia article title is a GUESS (may be under 'Experiments on Plant Hybridization' or the German title) — verify. QID Q5421194."
+    },
+    {
+      "node_id": "work:cybernetics",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Cybernetics: Or Control and Communication in the Animal and the Machine is a book by the American mathematician Norbert Wiener, first published in 1948. It proposed a unified study of control, feedback, and communication in living organisms and machines, drawing together ideas from engineering, neuroscience, and statistics. The book named and founded the field of cybernetics.",
+      "source_hints": [
+        { "source": "Wikipedia — Cybernetics: Or Control and Communication in the Animal and the Machine", "url": "https://en.wikipedia.org/wiki/Cybernetics:_Or_Control_and_Communication_in_the_Animal_and_the_Machine" },
+        { "source": "Britannica — Cybernetics", "url": "https://www.britannica.com/science/cybernetics" },
+        { "source": "Britannica — Norbert Wiener", "url": "https://www.britannica.com/biography/Norbert-Wiener" }
+      ],
+      "rationale": "Asserts authorship (Wiener), date (1948), content (control, feedback, communication in animal and machine), and founding of cybernetics. Standard. Wikipedia full-title URL is a GUESS (may redirect from a shorter title) — verify. QID Q16953441."
+    },
+    {
+      "node_id": "work:begriffsschrift",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Begriffsschrift (Concept-Script) is a short book by the German mathematician and philosopher Gottlob Frege, published in 1879, that introduced a formal notation for a logic of quantifiers and variables. It presented the first system of modern predicate (quantificational) logic, superseding the term logic inherited from Aristotle. It is a foundational work in modern logic and analytic philosophy.",
+      "source_hints": [
+        { "source": "Wikipedia — Begriffsschrift", "url": "https://en.wikipedia.org/wiki/Begriffsschrift" },
+        { "source": "Stanford Encyclopedia of Philosophy — Gottlob Frege", "url": "https://plato.stanford.edu/entries/frege/" },
+        { "source": "Stanford Encyclopedia of Philosophy — Frege's Logic", "url": "https://plato.stanford.edu/entries/frege-logic/" }
+      ],
+      "rationale": "Asserts authorship (Frege), date (1879), content (first modern predicate/quantificational logic), and founding status. Standard. SEP slugs 'frege' and 'frege-logic' are GUESSES — verify (batch 1 saw SEP 404s). QID Q814390."
+    },
+    {
+      "node_id": "work:on-crimes-and-punishments",
+      "locale": "en",
+      "status": "generated",
+      "summary": "On Crimes and Punishments (Dei delitti e delle pene) is a treatise by the Italian jurist and philosopher Cesare Beccaria, published in 1764. It criticized arbitrary and cruel punishment, argued against torture and the death penalty, and held that penalties should be proportionate, prompt, and fixed by law to deter crime. It is a founding work of modern criminology and of classical liberal penal reform.",
+      "source_hints": [
+        { "source": "Wikipedia — On Crimes and Punishments", "url": "https://en.wikipedia.org/wiki/On_Crimes_and_Punishments" },
+        { "source": "Britannica — Cesare Beccaria", "url": "https://www.britannica.com/biography/Cesare-Beccaria" },
+        { "source": "Stanford Encyclopedia of Philosophy — Cesare Beccaria", "url": "https://plato.stanford.edu/entries/beccaria/" }
+      ],
+      "rationale": "Asserts authorship (Beccaria), date (1764), content (against torture/death penalty; proportionate, prompt, legally-fixed punishment), and founding status for criminology/penal reform. Standard. SEP slug 'beccaria' is a GUESS — verify. QID Q2755269."
+    },
+    {
+      "node_id": "work:social-choice-and-individual-values",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Social Choice and Individual Values is a book by the American economist Kenneth Arrow, first published in 1951. It gave a formal analysis of aggregating individual preferences into a collective ranking and proved Arrow's impossibility theorem, showing that no aggregation rule can simultaneously satisfy a small set of reasonable fairness conditions. It is a founding work of modern social choice theory.",
+      "source_hints": [
+        { "source": "Wikipedia — Social Choice and Individual Values", "url": "https://en.wikipedia.org/wiki/Social_Choice_and_Individual_Values" },
+        { "source": "Stanford Encyclopedia of Philosophy — Arrow's Theorem", "url": "https://plato.stanford.edu/entries/arrows-theorem/" },
+        { "source": "Britannica — Kenneth Arrow", "url": "https://www.britannica.com/biography/Kenneth-Arrow" }
+      ],
+      "rationale": "Asserts authorship (Arrow), date (1951), content (preference aggregation, impossibility theorem), and founding status for social choice theory. Standard. SEP slug 'arrows-theorem' is a GUESS — verify. QID Q4227976."
+    },
+    {
+      "node_id": "work:principles-of-physiological-psychology",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Principles of Physiological Psychology (Grundzuge der physiologischen Psychologie) is a work by the German scientist Wilhelm Wundt, first published in 1873-1874. It set out a program for treating psychology as an experimental science grounded in physiology and the study of immediate conscious experience. It is regarded as a founding text of experimental psychology.",
+      "source_hints": [
+        { "source": "Wikipedia — Principles of Physiological Psychology", "url": "https://en.wikipedia.org/wiki/Principles_of_Physiological_Psychology" },
+        { "source": "Britannica — Wilhelm Wundt", "url": "https://www.britannica.com/biography/Wilhelm-Wundt" },
+        { "source": "Wikipedia — Wilhelm Wundt", "url": "https://en.wikipedia.org/wiki/Wilhelm_Wundt" }
+      ],
+      "rationale": "Asserts authorship (Wundt), date (1873-74), program (experimental psychology grounded in physiology), and founding status. Standard. Wikipedia English article title 'Principles of Physiological Psychology' is a GUESS — verify it isn't only under the German title or the Wundt biography. QID Q2883810."
+    },
+    {
+      "node_id": "work:grundlagen-einer-allgemeinen-mannigfaltigkeitslehre",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Grundlagen einer allgemeinen Mannigfaltigkeitslehre (Foundations of a General Theory of Manifolds) is a monograph by the German mathematician Georg Cantor, published in 1883. It systematically developed the theory of transfinite numbers and the treatment of infinite sets, defending the actual infinite as a legitimate mathematical object. It is a foundational work in the development of set theory.",
+      "source_hints": [
+        { "source": "Wikipedia — Georg Cantor", "url": "https://en.wikipedia.org/wiki/Georg_Cantor" },
+        { "source": "Stanford Encyclopedia of Philosophy — The Early Development of Set Theory", "url": "https://plato.stanford.edu/entries/settheory-early/" },
+        { "source": "Britannica — Georg Cantor", "url": "https://www.britannica.com/biography/Georg-Ferdinand-Ludwig-Philipp-Cantor" }
+      ],
+      "rationale": "Asserts authorship (Cantor), date (1883), content (transfinite numbers, actual infinite, infinite sets), and foundational status for set theory. Likely no dedicated English Wikipedia article for the work; anchoring on Cantor biography + SEP set-theory history. SEP slug 'settheory-early' and Britannica long-form slug are GUESSES — verify. QID Q29167832."
+    },
+    {
+      "node_id": "work:the-mind-of-primitive-man",
+      "locale": "en",
+      "status": "generated",
+      "summary": "The Mind of Primitive Man is a book by the German-American anthropologist Franz Boas, first published in 1911. It argued against ranking human groups on a single evolutionary scale and against equating race, language, and culture, holding that cultural differences reflect history and environment rather than innate biological capacity. It is a foundational statement of cultural relativism in modern anthropology.",
+      "source_hints": [
+        { "source": "Wikipedia — The Mind of Primitive Man", "url": "https://en.wikipedia.org/wiki/The_Mind_of_Primitive_Man" },
+        { "source": "Britannica — Franz Boas", "url": "https://www.britannica.com/biography/Franz-Boas" },
+        { "source": "Wikipedia — Franz Boas", "url": "https://en.wikipedia.org/wiki/Franz_Boas" }
+      ],
+      "rationale": "Asserts authorship (Boas), date (1911), content (against racial ranking; separating race/language/culture; cultural relativism), and foundational status. Standard. Wikipedia article title is a GUESS — verify vs. the Boas biography. QID Q7751530."
+    },
+    {
+      "node_id": "work:cours-de-philosophie-positive",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Cours de philosophie positive (Course in Positive Philosophy) is a work by the French philosopher Auguste Comte, published in six volumes between 1830 and 1842. It set out his doctrine of positivism, including the law of three stages and a classification of the sciences, and proposed a positive science of society for which he coined the term sociology. It is a founding work of positivism and of sociology.",
+      "source_hints": [
+        { "source": "Wikipedia — Course of Positive Philosophy", "url": "https://en.wikipedia.org/wiki/Course_of_Positive_Philosophy" },
+        { "source": "Stanford Encyclopedia of Philosophy — Auguste Comte", "url": "https://plato.stanford.edu/entries/comte/" },
+        { "source": "Britannica — Auguste Comte", "url": "https://www.britannica.com/biography/Auguste-Comte" }
+      ],
+      "rationale": "Asserts authorship (Comte), dates (1830-42, six volumes), content (positivism, law of three stages, classification of sciences, coining 'sociology'), and founding status. Standard. Wikipedia English title 'Course of Positive Philosophy' is a GUESS — verify. SEP slug 'comte' reliable. QID Q3490518."
+    },
+    {
+      "node_id": "work:the-rules-of-sociological-method",
+      "locale": "en",
+      "status": "generated",
+      "summary": "The Rules of Sociological Method (Les Regles de la methode sociologique) is a book by the French sociologist Emile Durkheim, published in 1895. It argued that sociology has a distinct subject matter of social facts, which are to be treated as external, constraining realities and studied objectively \"as things.\" It is a founding methodological statement of sociology as an autonomous science.",
+      "source_hints": [
+        { "source": "Wikipedia — The Rules of Sociological Method", "url": "https://en.wikipedia.org/wiki/The_Rules_of_Sociological_Method" },
+        { "source": "Britannica — Emile Durkheim", "url": "https://www.britannica.com/biography/Emile-Durkheim" },
+        { "source": "Stanford Encyclopedia of Philosophy — Emile Durkheim", "url": "https://plato.stanford.edu/entries/durkheim/" }
+      ],
+      "rationale": "Asserts authorship (Durkheim), date (1895), content (social facts studied objectively 'as things'), and founding status for sociological method. Standard. SEP slug 'durkheim' reliable; titles reliable. QID Q588341."
+    },
+    {
+      "node_id": "work:the-protestant-ethic-and-the-spirit-of-capitalism",
+      "locale": "en",
+      "status": "generated",
+      "summary": "The Protestant Ethic and the Spirit of Capitalism (Die protestantische Ethik und der Geist des Kapitalismus) is a work by the German sociologist Max Weber, published as essays in 1904-1905. It argued that ascetic Protestantism, especially Calvinist ideas about vocation and worldly discipline, contributed to the cultural attitudes that fostered modern capitalism. It is a landmark work in the sociology of religion and of economic life.",
+      "source_hints": [
+        { "source": "Wikipedia — The Protestant Ethic and the Spirit of Capitalism", "url": "https://en.wikipedia.org/wiki/The_Protestant_Ethic_and_the_Spirit_of_Capitalism" },
+        { "source": "Britannica — The Protestant Ethic and the Spirit of Capitalism", "url": "https://www.britannica.com/topic/The-Protestant-Ethic-and-the-Spirit-of-Capitalism" },
+        { "source": "Britannica — Max Weber", "url": "https://www.britannica.com/biography/Max-Weber-German-sociologist" }
+      ],
+      "rationale": "Asserts authorship (Weber), date (1904-05), thesis (ascetic Protestantism and the spirit of capitalism), and landmark status. Standard, non-overclaiming wording. Titles reliable; Britannica biography disambiguated slug 'Max-Weber-German-sociologist' — verify. QID Q392937."
+    },
+    {
+      "node_id": "work:an-investigation-of-the-laws-of-thought",
+      "locale": "en",
+      "status": "generated",
+      "summary": "An Investigation of the Laws of Thought is a book by the English mathematician George Boole, published in 1854. It developed an algebraic treatment of logic in which logical reasoning is expressed through symbolic operations, laying out what is now known as Boolean algebra. It is a founding work of modern symbolic and mathematical logic.",
+      "source_hints": [
+        { "source": "Wikipedia — The Laws of Thought", "url": "https://en.wikipedia.org/wiki/The_Laws_of_Thought" },
+        { "source": "Britannica — George Boole", "url": "https://www.britannica.com/biography/George-Boole" },
+        { "source": "Stanford Encyclopedia of Philosophy — George Boole", "url": "https://plato.stanford.edu/entries/boole/" }
+      ],
+      "rationale": "Asserts authorship (Boole), date (1854), content (algebra of logic / Boolean algebra), and founding status for symbolic logic. Standard. Wikipedia article is under 'The Laws of Thought' (redirect from full title likely). SEP slug 'boole' is a GUESS — verify. QID Q7746455."
+    },
+    {
+      "node_id": "work:logical-investigations",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Logical Investigations (Logische Untersuchungen) is a work by the German philosopher Edmund Husserl, published in two parts in 1900-1901. It criticized psychologism in logic and developed detailed analyses of meaning, intentionality, and the structure of experience. It is a founding work of the phenomenological movement.",
+      "source_hints": [
+        { "source": "Wikipedia — Logical Investigations (Husserl)", "url": "https://en.wikipedia.org/wiki/Logical_Investigations_(Husserl)" },
+        { "source": "Stanford Encyclopedia of Philosophy — Edmund Husserl", "url": "https://plato.stanford.edu/entries/husserl/" },
+        { "source": "Britannica — Edmund Husserl", "url": "https://www.britannica.com/biography/Edmund-Husserl" }
+      ],
+      "rationale": "Asserts authorship (Husserl), date (1900-01), content (critique of psychologism, intentionality), and founding status for phenomenology. Standard. Wikipedia title disambiguator '(Husserl)' is a GUESS — verify. SEP slug 'husserl' reliable. QID Q3421975."
+    },
+    {
+      "node_id": "work:structural-anthropology",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Structural Anthropology (Anthropologie structurale) is a collection of essays by the French anthropologist Claude Levi-Strauss, first published in 1958. It applied models drawn from structural linguistics to kinship, myth, and social organization, arguing that cultural phenomena can be analyzed as systems of underlying relations. It is a foundational work of structuralist anthropology.",
+      "source_hints": [
+        { "source": "Wikipedia — Structural Anthropology (book)", "url": "https://en.wikipedia.org/wiki/Structural_Anthropology_(book)" },
+        { "source": "Britannica — Claude Levi-Strauss", "url": "https://www.britannica.com/biography/Claude-Levi-Strauss" },
+        { "source": "Stanford Encyclopedia of Philosophy — Claude Levi-Strauss", "url": "https://plato.stanford.edu/entries/levi-strauss/" }
+      ],
+      "rationale": "Asserts authorship (Levi-Strauss), date (1958), content (structural linguistics applied to kinship/myth), and founding status for structuralist anthropology. Standard. Wikipedia title disambiguator '(book)' is a GUESS — verify. SEP slug 'levi-strauss' is a GUESS — verify. QID Q2844127."
+    },
+    {
+      "node_id": "work:syntactic-structures",
+      "locale": "en",
+      "status": "generated",
+      "summary": "Syntactic Structures is a short book by the linguist Noam Chomsky, published in 1957. It introduced a formal, generative approach to grammar in which a finite set of rules generates the sentences of a language, and argued for transformational rules relating sentence structures. It is widely regarded as a founding work of generative grammar and a catalyst of modern theoretical linguistics.",
+      "source_hints": [
+        { "source": "Wikipedia — Syntactic Structures", "url": "https://en.wikipedia.org/wiki/Syntactic_Structures" },
+        { "source": "Britannica — Syntactic Structures", "url": "https://www.britannica.com/topic/Syntactic-Structures" },
+        { "source": "Wikipedia — Generative grammar", "url": "https://en.wikipedia.org/wiki/Generative_grammar" }
+      ],
+      "rationale": "Work by a LIVING author (Chomsky) — summary is about the TEXT (1957 book), not the author's biography; attributed founding wording ('widely regarded as a founding work'). Asserts authorship, date, content (generative/transformational grammar), founding status. Deliberately omitted SEP (batch-1 SEP 'chomsky' 404); Wikipedia/Britannica are the reliable anchors. Britannica topic slug 'Syntactic-Structures' is a GUESS — verify. QID Q1198080."
+    },
+    {
+      "node_id": "work:the-social-stratification-of-english-in-new-york-city",
+      "locale": "en",
+      "status": "generated",
+      "summary": "The Social Stratification of English in New York City is a study by the linguist William Labov, first published in 1966 and based on his doctoral research. Using systematic recorded interviews, it demonstrated that variation in features such as postvocalic \"r\" correlates with social class and speech style, showing that linguistic variation is socially structured and quantifiable. It is a foundational work of variationist sociolinguistics.",
+      "source_hints": [
+        { "source": "Wikipedia — The Social Stratification of English in New York City", "url": "https://en.wikipedia.org/wiki/The_Social_Stratification_of_English_in_New_York_City" },
+        { "source": "Wikipedia — William Labov", "url": "https://en.wikipedia.org/wiki/William_Labov" },
+        { "source": "Wikipedia — Variationist sociolinguistics", "url": "https://en.wikipedia.org/wiki/Variationist_sociolinguistics" }
+      ],
+      "rationale": "Work by a LIVING author (Labov, per coordinator) — summary is about the TEXT (1966 study), not the author's biography; no aliveness/death claim made about Labov. Asserts authorship, date, method/finding (postvocalic-r variation correlates with class/style), founding status for variationist sociolinguistics. Standard. Wikipedia dedicated-article title is a GUESS — the study may lack its own article and live under the Labov biography; verify. QID Q130572843."
+    },
+    {
+      "node_id": "work:the-problems-of-philosophy",
+      "locale": "en",
+      "status": "generated",
+      "summary": "The Problems of Philosophy is a book by the British philosopher Bertrand Russell, published in 1912. Written as a concise introduction, it examines questions about knowledge, perception, the existence of matter, universals, and the distinction between knowledge by acquaintance and knowledge by description. It is widely used as a classic introductory text in the analytic tradition.",
+      "source_hints": [
+        { "source": "Wikipedia — The Problems of Philosophy", "url": "https://en.wikipedia.org/wiki/The_Problems_of_Philosophy" },
+        { "source": "Stanford Encyclopedia of Philosophy — Bertrand Russell", "url": "https://plato.stanford.edu/entries/russell/" },
+        { "source": "Britannica — Bertrand Russell", "url": "https://www.britannica.com/biography/Bertrand-Russell" }
+      ],
+      "rationale": "Asserts authorship (Russell), date (1912), content (knowledge, perception, universals, acquaintance/description), and role as a classic introduction. Standard. SEP slug 'russell' reliable; Wikipedia title reliable. QID Q3393210."
+    }
+  ]
+}
