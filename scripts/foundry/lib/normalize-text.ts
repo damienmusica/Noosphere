@@ -21,14 +21,33 @@
  * Both rules are SYMMETRIC (quote and page get identical treatment) and
  * content-free, so they only remove mechanical noise — they cannot make a
  * laundered (absent) quote match.
+ *
+ * Session #55 measured patterns (live-fetch false misses on already-verified
+ * editorial person citations against Wikipedia's Parsoid read-view HTML — all
+ * mechanical artifacts, 12/102 quotes; each fix verified SYMMETRIC + content-free
+ * against adversarial fabricated quotes that stay correctly absent):
+ *   - Parsoid `data-mw='{…&lt;/ref>…}'` attributes embed a literal `>`, so the
+ *     naive `<[^>]+>` tag matcher terminated early and leaked JSON into the lead
+ *     text → a quote-aware tag matcher skips `>` inside quoted attribute values.
+ *   - numeric HTML entities the named-entity table missed (`&#160;` nbsp,
+ *     `&#8211;` en-dash, `&#32;` space, …) → decode decimal + hex to real chars.
+ *   - single-letter footnote markers (`[a]`, `[b]`) alongside the digit ones.
+ *   - quote/apostrophe-adjacent spaces from split spans (`psychology "`,
+ *     `Cantor 's`, `" impossibility theorem "`) → space next to `'`/`"` removed.
+ *   - space around a dash from a wikilink boundary (`algebra <a>…</a>—essential`
+ *     → `algebra -essential`) → spaces around `-` collapsed, but never inside an
+ *     `->` arrow (negative lookahead preserves arrow-matching behavior).
  */
 
 export function normalize(input: string): string {
   let s = input;
   // Strip HTML if it looks like markup: remove script/style bodies, then tags.
-  if (/<[a-z!/][^>]*>/i.test(s)) {
+  // The tag matcher is quote-aware — a `>` inside a quoted attribute value (e.g.
+  // Parsoid `data-mw='{…&lt;/ref>…}'`) must NOT end the tag, or the JSON leaks
+  // into the running text and corrupts a lead-sentence quote (session #55).
+  if (/<[a-z!/]/i.test(s)) {
     s = s.replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, " ");
-    s = s.replace(/<[^>]+>/g, " ");
+    s = s.replace(/<[a-zA-Z!/][^>"']*(?:(?:"[^"]*"|'[^']*')[^>"']*)*>/g, " ");
   }
   // Decode the entities that actually occur in captured scholarly pages.
   s = s
@@ -42,6 +61,11 @@ export function normalize(input: string): string {
     .replace(/&rarr;|&#8594;/g, "->")
     .replace(/&#91;/g, "[")
     .replace(/&#93;/g, "]");
+  // Decode any remaining numeric HTML entities (decimal + hex) to their real
+  // characters — the dash/quote/space normalizers below then handle the results.
+  s = s
+    .replace(/&#(\d+);/g, (_m, n: string) => codePoint(Number.parseInt(n, 10)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_m, h: string) => codePoint(Number.parseInt(h, 16)));
   // TeX: `$...$` keeps inner text; `\command{arg}` keeps arg; bare `\command` drops.
   s = s.replace(/\$([^$]*)\$/g, "$1");
   s = s.replace(/\\[a-zA-Z]+\{([^}]*)\}/g, "$1");
@@ -54,13 +78,29 @@ export function normalize(input: string): string {
   s = s.replace(/[“”„«»]/g, '"');
   // Ligatures & soft hyphens that survive PDF/text extraction.
   s = s.replace(/­/g, "").replace(/ﬁ/g, "fi").replace(/ﬂ/g, "fl");
-  // Wikipedia-style numeric footnote markers interjected in running prose.
-  s = s.replace(/\[\s*\d+\s*\]/g, " ");
+  // Wikipedia-style footnote markers interjected in running prose — numeric
+  // (`[1]`) and single-letter note markers (`[a]`, `[b]`).
+  s = s.replace(/\[\s*\d+\s*\]/g, " ").replace(/\[\s*[a-z]\s*\]/gi, " ");
   s = s.replace(/\s+/g, " ").trim().toLowerCase();
-  // Tag/marker stripping leaves stray spaces around punctuation — remove
-  // space before closing punctuation and after an opening bracket.
+  // Tag/marker stripping leaves stray spaces around punctuation — remove space
+  // before closing punctuation, after an opening bracket, and adjacent to a
+  // straight quote/apostrophe (split spans render `psychology "` / `Cantor 's`).
   s = s.replace(/ ([,.;:!?)\]])/g, "$1").replace(/([([]) /g, "$1");
+  s = s.replace(/ (['"])/g, "$1").replace(/(['"]) /g, "$1");
+  // A wikilink boundary can leave a space beside a dash (`algebra -essential`);
+  // collapse spaces around a hyphen/dash — but never inside an `->` arrow.
+  s = s.replace(/ *-(?!>) */g, "-");
   return s;
+}
+
+/** Safe String.fromCodePoint — an out-of-range value becomes a space, not a throw. */
+function codePoint(n: number): string {
+  if (!Number.isFinite(n) || n < 0 || n > 0x10ffff) return " ";
+  try {
+    return String.fromCodePoint(n);
+  } catch {
+    return " ";
+  }
 }
 
 /** Cheap best-effort locator for a near-miss: the line with the most shared tokens. */

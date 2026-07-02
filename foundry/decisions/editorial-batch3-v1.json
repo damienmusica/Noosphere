@@ -1,0 +1,1388 @@
+{
+  "version": 1,
+  "batch_id": "editorial-batch3-v1",
+  "decided_at": "2026-07-02",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-02"
+  },
+  "translation_updates": [
+    {
+      "node_id": "person:isaac-newton",
+      "locale": "en",
+      "summary": "Isaac Newton (1643–1727) was an English mathematician and physicist who was a key figure in the Scientific Revolution and is regarded as one of two independent inventors of infinitesimal calculus, which he developed independently of Gottfried Wilhelm Leibniz. In his Philosophiæ Naturalis Principia Mathematica (1687) he formulated the laws of motion and universal gravitation, achieving the first great unification in physics and establishing classical mechanics. He also made seminal contributions to optics, collected in his 1704 book Opticks, and his work is considered among the most influential in bringing forth modern science.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:kurt-godel",
+      "locale": "en",
+      "summary": "Kurt Gödel (1906–1978) was a logician, mathematician, and philosopher regarded as one of the most significant logicians in history. He is best known for his incompleteness theorems, published in 1931, which address the limitations of formal axiomatic systems; to prove them he developed the technique now known as Gödel numbering, which codes formal expressions as natural numbers. His discoveries profoundly influenced scientific and philosophical thinking in the 20th century and were associated with the foundational research of figures such as Bertrand Russell and David Hilbert.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:roman-jakobson",
+      "locale": "en",
+      "summary": "Roman Jakobson (1896–1982) was a Russian linguist and literary theorist, a pioneer of structural linguistics who, with Nikolai Trubetzkoy, developed new techniques for analyzing linguistic sound systems, in effect founding the modern discipline of phonology. His celebrated theory of distinctive features articulated underlying linguistic universals and decisively influenced the early thinking of Noam Chomsky. Through his influence on Claude Lévi-Strauss and others, and drawing on C. S. Peirce's semiotics, Jakobson helped extend structural analysis to disciplines beyond linguistics.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:adam-smith",
+      "locale": "en",
+      "summary": "Adam Smith (1723–1790) was a Scottish economist and philosopher, a pioneer in the field of political economy and a key figure during the Scottish Enlightenment who is widely seen as the \"father of economics.\" He is best known for An Inquiry into the Nature and Causes of the Wealth of Nations (1776), regarded as marking the inception of modern economic scholarship as a comprehensive system and an academic discipline. In it he laid the foundational principles of classical free-market economic theory, developing the concept of division of labour and explaining how rational self-interest and competition can lead to economic prosperity.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:alonzo-church",
+      "locale": "en",
+      "summary": "Alonzo Church (1903–1995) was an American mathematician, logician, and philosopher who made major contributions to mathematical logic and the foundations of theoretical computer science. He is best known for the lambda calculus, the Church–Turing thesis, and his proof of the unsolvability of the Entscheidungsproblem. Alongside his doctoral student Alan Turing, Church is considered one of the founders of computer science, and the lambda calculus later became foundational to the study of programming languages.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:andreas-vesalius",
+      "locale": "en",
+      "summary": "Andreas Vesalius (1514–1564) was an anatomist and physician, often referred to as the founder of modern human anatomy. He wrote De Humani Corporis Fabrica Libri Septem, considered one of the most influential books on human anatomy and a major advance over the long-dominant work of Galen. Born in Brussels, he was a professor at the University of Padua and later became Imperial physician at the court of Emperor Charles V.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:antoine-lavoisier",
+      "locale": "en",
+      "summary": "Antoine Lavoisier (1743–1794) was a French chemist central to the 18th-century chemical revolution, whose work had a large influence on both the history of chemistry and the history of biology. He is noted for his discovery of the role oxygen plays in combustion, opposing the prior phlogiston theory, and for confirming the law of conservation of mass through precise quantitative measurement. He set out his reforms in the Traité élémentaire de chimie, wrote the first extensive list of elements, and helped reform chemical nomenclature.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:arthur-schopenhauer",
+      "locale": "en",
+      "summary": "Arthur Schopenhauer (1788–1860) was a German philosopher and writer, best known for his 1818 work The World as Will and Representation, which characterizes the phenomenal world as the manifestation of a blind and irrational noumenal will. Building on the transcendental idealism of Immanuel Kant, he developed an atheistic metaphysical and ethical system whose work has been described as an exemplary manifestation of philosophical pessimism. His writing on aesthetics, morality, and psychology had a posthumous impact across disciplines and influenced many thinkers and artists.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:auguste-comte",
+      "locale": "en",
+      "summary": "Auguste Comte (1798–1857) was a French philosopher and writer who formulated the doctrine of positivism and is often regarded as the first philosopher of science in the modern sense. His ideas were fundamental to the development of sociology, a discipline whose very term he invented and which he treated as the crowning achievement of the sciences. His concept of sociology set the tone for early social theorists, evolving into the modern academic sociology presented by Émile Durkheim.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:bertrand-russell",
+      "locale": "en",
+      "summary": "Bertrand Russell (1872–1970) was an English philosopher, logician, and mathematician regarded as a founder of analytic philosophy, along with his predecessor Gottlob Frege, his colleague G. E. Moore, and his student Ludwig Wittgenstein. Together with his former teacher Alfred North Whitehead, he wrote Principia Mathematica, a major attempt to reduce the whole of mathematics to logic. His work in logic and the foundations of mathematics later influenced the development of computer science.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:charles-lyell",
+      "locale": "en",
+      "summary": "Charles Lyell (1797–1875) was a Scottish geologist who demonstrated the power of known natural causes in explaining the earth's history. He is best known as the author of Principles of Geology (1830–33), which presented to a wide public audience the idea that the earth was shaped by the same natural processes still in operation today, a gradualistic view later dubbed \"uniformitarianism.\" A close friend of Charles Darwin, he contributed significantly to Darwin's thinking on the processes involved in evolution.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:claude-shannon",
+      "locale": "en",
+      "summary": "Claude Shannon (1916–2001) was an American mathematician, electrical engineer, and cryptographer known as the \"father of information theory\" and the man who laid the foundations of the Information Age. His 1948 paper \"A Mathematical Theory of Communication\" laid the foundations for the field of information theory, and his earlier work was the first to describe the use of Boolean algebra as essential to digital electronic circuits. His theory has been applied across many disciplines, and its formal treatment of communication became foundational to fields such as computational linguistics.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:ferdinand-de-saussure",
+      "locale": "en",
+      "summary": "Ferdinand de Saussure (1857–1913) was a Swiss linguist and philosopher widely regarded as a founder of modern structural linguistics and, together with Charles Sanders Peirce, as one of two major founders of semiotics (which he called semiology). His posthumously published Cours de linguistique générale set out the structural approach to language, distinguishing the sign's signifier and signified and treating language as a system of relations. His ideas reshaped 20th-century linguistics and the study of signs, and influenced structuralist thinkers such as Claude Lévi-Strauss.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:franz-boas",
+      "locale": "en",
+      "summary": "Franz Boas (1858–1942) was a German-American anthropologist widely regarded as a founder of modern cultural anthropology, often called the \"Father of American Anthropology.\" A leading proponent of cultural relativism and a prominent opponent of the scientific racism of his day, he argued that human behavior is shaped largely by culture acquired through social learning rather than by innate biological traits. Through his many influential students and works such as The Mind of Primitive Man, Boas profoundly shaped American anthropology and debates about race.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:georg-cantor",
+      "locale": "en",
+      "summary": "Georg Cantor (1845–1918) was a mathematician widely regarded as the founder of set theory, which became a fundamental theory in mathematics. He established the importance of one-to-one correspondence between sets, defined infinite and well-ordered sets, and proved that the real numbers are more numerous than the natural numbers, developing a theory of transfinite cardinal and ordinal numbers. His work, controversial and resisted by contemporaries such as Henri Poincaré, was later defended by David Hilbert, who declared that no one should expel mathematicians from the paradise Cantor had created.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:gregor-mendel",
+      "locale": "en",
+      "summary": "Gregor Mendel (1822–1884) was an Austrian biologist and Augustinian friar widely regarded as the founder of the modern science of genetics. His pea plant experiments, conducted between 1856 and 1863, established many of the rules of heredity now known as the laws of Mendelian inheritance, published in 1866. The profound significance of his work went unrecognized until its rediscovery around 1900, when researchers independently verified his findings and ushered in the modern age of genetics.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:henri-poincare",
+      "locale": "en",
+      "summary": "Henri Poincaré (1854–1912) was a French mathematician, theoretical physicist, and philosopher of science widely regarded as the creator of the field of algebraic topology. In his research on the three-body problem he became the first person to discover a chaotic deterministic system, laying foundations of modern chaos theory and the study of dynamical systems, and he later formulated the Poincaré conjecture. A skeptic of Cantorian set theory, he was among the contemporaries who resisted Cantor's transfinite mathematics.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:john-von-neumann",
+      "locale": "en",
+      "summary": "John von Neumann (1903–1957) was a Hungarian and American mathematician, physicist, and computer scientist who, with Oskar Morgenstern in Theory of Games and Economic Behavior, was a co-founder of game theory. His work spanned mathematics, physics, economics, computing, and statistics, and he helped establish the mathematical framework of quantum physics and functional analysis. His formalization of a stored-program design influenced the architecture of modern computer systems.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:karl-pearson",
+      "locale": "en",
+      "summary": "Karl Pearson (1857–1936) was an English biostatistician and mathematician widely credited with establishing the discipline of mathematical statistics. He founded the world's first university statistics department at University College London in 1911 and contributed significantly to the field of biometrics. A protégé and biographer of Francis Galton, his statistical methods influenced the social sciences, though he was also a proponent of eugenics and Social Darwinism.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:ludwig-wittgenstein",
+      "locale": "en",
+      "summary": "Ludwig Wittgenstein (1889–1951) was an Austro-British philosopher who worked in logic, philosophy of mathematics, philosophy of mind, and philosophy of language, and is regarded as a foundational figure in the philosophy of language. His early work, the Tractatus Logico-Philosophicus (1921), examined the logical relationship between propositions and the world and strongly influenced logical positivism. His later thought, articulated in the posthumous Philosophical Investigations, argued instead that the meaning of words is best understood as their use within a language game.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:norbert-wiener",
+      "locale": "en",
+      "summary": "Norbert Wiener (1894–1964) was an American mathematician, computer scientist, and philosopher widely regarded as the originator of cybernetics, the science of communication and control in living things and machines. A professor of mathematics at MIT, he did early work on stochastic and mathematical noise processes relevant to communication and control systems. His ideas about feedback and intelligent behavior influenced figures including John von Neumann and Claude Shannon and helped shape cognitive psychology and early artificial intelligence.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:ronald-fisher",
+      "locale": "en",
+      "summary": "Ronald Fisher (1890–1962) was a British polymath, active as a mathematician, statistician, biologist, and geneticist, widely regarded as a founder of modern mathematical statistics. Working at the Rothamsted Experimental Station, he developed the analysis of variance (ANOVA), the method of maximum likelihood, and the principles of the design of experiments, and he also helped found population genetics. His statistical methods, developed partly in a well-known rivalry with Karl Pearson, went on to influence fields such as epidemiology.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:carl-friedrich-gauss",
+      "locale": "en",
+      "summary": "Carl Friedrich Gauss (1777–1855) was a German mathematician, astronomer, geodesist, and physicist whose foundational contributions to number theory are set out in his masterpiece Disquisitiones Arithmeticae, including the law of quadratic reciprocity. His work reached across algebra, analysis, geometry, statistics, and probability, and he introduced concepts such as Gaussian curvature and the method of least squares. He led the geodetic survey of the Kingdom of Hanover and was one of the founders of geophysics, connecting his mathematics to geodesy and the study of Earth's magnetic field.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:carl-linnaeus",
+      "locale": "en",
+      "summary": "Carl Linnaeus (1707–1778) was a Swedish biologist and physician widely regarded as a founder of modern biological systematics, remembered as the \"father of modern taxonomy\" for formalizing binomial nomenclature, the modern system of naming organisms. He set out this system in his Systema Naturae, first published in the Netherlands in 1735, and spent subsequent decades collecting and classifying plants, animals, and minerals. His conventions for naming species remain foundational to biology, and he is also considered one of the founders of modern ecology.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:charles-sanders-peirce",
+      "locale": "en",
+      "summary": "Charles Sanders Peirce (1839–1914) was an American scientist, mathematician, logician, and philosopher widely regarded as a founder of pragmatism and, independently of Ferdinand de Saussure, of semiotics, the study of signs. Trained as a chemist and employed as a scientist for thirty years, he made major contributions to logic, including theories of relations and quantification, and formulated the pragmatic maxim at the heart of pragmatist thought. He saw logic as the formal branch of semiotics, of which he is a founder, developing a sign theory that foreshadowed later debates in the philosophy of language.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:daniel-kahneman",
+      "locale": "en",
+      "summary": "Daniel Kahneman (1934–2024) was an Israeli-American psychologist widely regarded as a founder of behavioral economics and of the psychology of judgment and decision-making, for which he was awarded the 2002 Nobel Memorial Prize in Economic Sciences together with Vernon L. Smith. Working with Amos Tversky and others, he established a cognitive basis for common human errors arising from heuristics and biases and developed prospect theory, findings that challenged the assumption of human rationality in modern economic theory. His 2011 book Thinking, Fast and Slow summarized much of this research and became a best seller.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:david-hilbert",
+      "locale": "en",
+      "summary": "David Hilbert (1862–1943) was a German mathematician and philosopher of mathematics widely regarded as a co-founder of proof theory and mathematical logic, and one of the most influential mathematicians of all time. He discovered and developed a broad range of fundamental ideas, including invariant theory, the foundations of geometry, and the foundations of mathematics, and in 1900 presented a collection of problems that set a course for mathematical research of the 20th century. He adopted and defended Georg Cantor's set theory and transfinite numbers, helping establish the rigorous foundations on which modern logic was built.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:emmy-noether",
+      "locale": "en",
+      "summary": "Emmy Noether (1882–1935) was a German mathematician widely regarded as a founder of modern abstract algebra, who developed theories of rings, fields, and algebras that reshaped the discipline. In her 1921 paper Idealtheorie in Ringbereichen she developed the theory of ideals in commutative rings into a widely applicable tool, and objects satisfying her ascending chain condition are called Noetherian in her honor. In physics, Noether's theorem explains the connection between symmetry and conservation laws, a result that has profoundly influenced the development of modern physics.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:george-boole",
+      "locale": "en",
+      "summary": "George Boole (1815–1864) was an English mathematician, philosopher, and logician widely regarded as a founder of modern mathematical logic, best known as the author of The Laws of Thought (1854), which contains Boolean algebra. He developed this algebra of logic, which laid the groundwork for the algebra of logic tradition and forms the foundation of digital circuit design and modern computer science. His ideas were expanded by scholars such as Charles Sanders Peirce, and later Claude Shannon employed Boolean algebra in the design of electrical switching systems, helping lay the foundations for the Information Age.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:gottfried-wilhelm-leibniz",
+      "locale": "en",
+      "summary": "Gottfried Wilhelm Leibniz (1646–1716) was a German polymath, mathematician, and philosopher who is credited, alongside Isaac Newton, with the creation of calculus, which he developed independently of Newton's work. His notation for calculus has been favored as the conventional and more exact expression of the subject and remains in use today; he is also credited with devising the modern binary number system that underlies digital computing. A leading rationalist philosopher whose vision of formal reasoning is cited as a distant precursor to computability theory, his work anticipated modern logic and still influences contemporary analytic philosophy.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:jean-piaget",
+      "locale": "en",
+      "summary": "Jean Piaget (1896–1980) was a Swiss psychologist widely regarded as a founder of developmental psychology, known for his work on child development. His theory of cognitive development and his epistemological view are together called genetic epistemology, and his account of how children construct knowledge established development as a major sub-discipline in psychology. Described as the great pioneer of the constructivist theory of knowing, his ideas were widely popularized in the 1960s, and by the end of the 20th century he was second only to B. F. Skinner as the most-cited psychologist.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:john-nash",
+      "locale": "en",
+      "summary": "John Nash (1928–2015) was an American mathematician who made fundamental contributions to game theory, real algebraic geometry, differential geometry, and partial differential equations. As a graduate student at Princeton he introduced concepts including the Nash equilibrium, now considered central to game theory and its applications across the sciences, and extended equilibrium analysis to non-cooperative games. For these contributions he shared the 1994 Nobel Prize in Economics with fellow game theorists John Harsanyi and Reinhard Selten, and in 2015 received the Abel Prize for his work on partial differential equations.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:kenneth-arrow",
+      "locale": "en",
+      "summary": "Kenneth Arrow (1921–2017) was an American economist, mathematician, and political theorist widely regarded as a founder of modern social choice theory, and a major figure in postwar neoclassical economic theory. His contributions to social choice theory, notably his impossibility theorem, together with his work on general equilibrium analysis, are among his most significant achievements. He received the Nobel Memorial Prize in Economic Sciences in 1972 along with John Hicks, and his work on endogenous growth theory and the economics of information was also foundational.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:wilhelm-wundt",
+      "locale": "en",
+      "summary": "Wilhelm Wundt (1832–1920) was a German physiologist and philosopher widely regarded as the \"father of experimental psychology\" and one of the fathers of modern psychology, being the first person to call himself a psychologist. In 1879, at the University of Leipzig, he founded the first formal laboratory for psychological research, an event that marked psychology as an independent field of study distinct from philosophy and biology. He also established the first academic journal for psychological research, Philosophische Studien, to publish his institute's work.",
+      "reviewed": true
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "person:isaac-newton",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:kurt-godel",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:roman-jakobson",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:adam-smith",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:alonzo-church",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:andreas-vesalius",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:antoine-lavoisier",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:arthur-schopenhauer",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:auguste-comte",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:bertrand-russell",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:charles-lyell",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:claude-shannon",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:ferdinand-de-saussure",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:franz-boas",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:georg-cantor",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:gregor-mendel",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:henri-poincare",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:john-von-neumann",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:karl-pearson",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:ludwig-wittgenstein",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:norbert-wiener",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:ronald-fisher",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:carl-friedrich-gauss",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:carl-linnaeus",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:charles-sanders-peirce",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:daniel-kahneman",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:david-hilbert",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:emmy-noether",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:george-boole",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:gottfried-wilhelm-leibniz",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:jean-piaget",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:john-nash",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:kenneth-arrow",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:wilhelm-wundt",
+      "ladder": "editorial-v2"
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "person:isaac-newton",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Isaac_Newton",
+          "retrieved_at": "2026-07-02",
+          "quote": "was an English polymath who was a mathematician, physicist, astronomer, alchemist, theologian, author and inventor",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260629171756/https://en.wikipedia.org/wiki/Isaac_Newton",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Isaac_Newton&oldid=1362116224"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Isaac_Newton",
+          "retrieved_at": "2026-07-02",
+          "quote": "shares credit with the German mathematician Gottfried Wilhelm Leibniz for formulating infinitesimal calculus, although he developed calculus years before Leibniz",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260629171756/https://en.wikipedia.org/wiki/Isaac_Newton",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Isaac_Newton&oldid=1362116224"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Isaac_Newton",
+          "retrieved_at": "2026-07-02",
+          "quote": "In the Principia, Newton formulated the laws of motion and universal gravitation that formed the dominant scientific viewpoint for centuries",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260629171756/https://en.wikipedia.org/wiki/Isaac_Newton",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Isaac_Newton&oldid=1362116224"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:kurt-godel",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kurt_G%C3%B6del",
+          "retrieved_at": "2026-07-02",
+          "quote": "April 28, 1906 – January 14, 1978) was a  logician, mathematician, cosmologist and philosopher",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260701203156/https://en.wikipedia.org/wiki/Kurt_G%C3%B6del",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Kurt_G%C3%B6del&oldid=1362102798"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Kurt_G%C3%B6del",
+          "retrieved_at": "2026-07-02",
+          "quote": "Gödel developed a technique now known as Gödel numbering, which codes formal expressions as natural numbers",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701203156/https://en.wikipedia.org/wiki/Kurt_G%C3%B6del",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Kurt_G%C3%B6del&oldid=1362102798"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Kurt_G%C3%B6del",
+          "retrieved_at": "2026-07-02",
+          "quote": "Gödel profoundly influenced scientific and philosophical thinking in the 20th century",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701203156/https://en.wikipedia.org/wiki/Kurt_G%C3%B6del",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Kurt_G%C3%B6del&oldid=1362102798"
+        }
+      ],
+      "notes": "generator self-flags: Extract does not state nationality directly (born into a wealthy German-speaking family in Brno; emigrated to the US in 1939); summary omits an explicit nationality label to stay within the source."
+    },
+    {
+      "subject_id": "person:roman-jakobson",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Jakobson",
+          "retrieved_at": "2026-07-02",
+          "quote": "1896 – 18 July 1982) was a Russian linguist and literary theorist",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702093522/https://en.wikipedia.org/wiki/Roman_Jakobson",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Roman_Jakobson&oldid=1358215180"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Jakobson",
+          "retrieved_at": "2026-07-02",
+          "quote": "With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260702093522/https://en.wikipedia.org/wiki/Roman_Jakobson",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Roman_Jakobson&oldid=1358215180"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Jakobson",
+          "retrieved_at": "2026-07-02",
+          "quote": "his celebrated theory of  distinctive features, decisively influenced the early thinking of Noam Chomsky",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260702093522/https://en.wikipedia.org/wiki/Roman_Jakobson",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Roman_Jakobson&oldid=1358215180"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:adam-smith",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Adam_Smith",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a Scottish economist and philosopher who was a pioneer in the field of political economy and key figure during the Scottish Enlightenment",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260629141600/https://en.wikipedia.org/wiki/Adam_Smith",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Adam_Smith&oldid=1359870939"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Adam_Smith",
+          "retrieved_at": "2026-07-02",
+          "quote": "marking the inception of modern economic scholarship as a comprehensive system and an academic discipline",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260629141600/https://en.wikipedia.org/wiki/Adam_Smith",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Adam_Smith&oldid=1359870939"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Adam_Smith",
+          "retrieved_at": "2026-07-02",
+          "quote": "he developed the concept of division of labour and expounded upon how rational self-interest and competition can lead to economic prosperity",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260629141600/https://en.wikipedia.org/wiki/Adam_Smith",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Adam_Smith&oldid=1359870939"
+        }
+      ],
+      "notes": "generator self-flags: modeling_note lists concept:invisible-hand, but the extract's lead does not use the phrase \"invisible hand\"; summary anchors the underlying self-interest/competition idea from the source rather than asserting the named term."
+    },
+    {
+      "subject_id": "person:alonzo-church",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Alonzo_Church",
+          "retrieved_at": "2026-07-02",
+          "quote": "Alonzo Church (June 14, 1903 – August 11, 1995) was an American computer scientist, mathematician, logician, and philosopher",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260626093626/https://en.wikipedia.org/wiki/Alonzo_Church",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alonzo_Church&oldid=1353059027"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alonzo_Church",
+          "retrieved_at": "2026-07-02",
+          "quote": "He is best known for the lambda calculus, the Church–Turing thesis, proving the unsolvability of the Entscheidungsproblem",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260626093626/https://en.wikipedia.org/wiki/Alonzo_Church",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alonzo_Church&oldid=1353059027"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alonzo_Church",
+          "retrieved_at": "2026-07-02",
+          "quote": "Alongside his doctoral student Alan Turing, Church is considered one of the founders of computer science",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260626093626/https://en.wikipedia.org/wiki/Alonzo_Church",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alonzo_Church&oldid=1353059027"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:andreas-vesalius",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Andreas_Vesalius",
+          "retrieved_at": "2026-07-02",
+          "quote": "Vesalius is often referred to as the founder of modern human anatomy",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260629064033/https://en.wikipedia.org/wiki/Andreas_Vesalius",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Andreas_Vesalius&oldid=1354613183"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Andreas_Vesalius",
+          "retrieved_at": "2026-07-02",
+          "quote": "which is considered one of the most influential books on human anatomy and a major advance over the long-dominant work of Galen",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260629064033/https://en.wikipedia.org/wiki/Andreas_Vesalius",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Andreas_Vesalius&oldid=1354613183"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Andreas_Vesalius",
+          "retrieved_at": "2026-07-02",
+          "quote": "Andries van Wezel (31 December 1514 – 15 October 1564), Latinized as Andreas Vesalius",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260629064033/https://en.wikipedia.org/wiki/Andreas_Vesalius",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Andreas_Vesalius&oldid=1354613183"
+        }
+      ],
+      "notes": "generator self-flags: Extract does not give a modern nationality label (born in Brussels, then part of the Habsburg Netherlands); summary omits nationality to stay within the source."
+    },
+    {
+      "subject_id": "person:antoine-lavoisier",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antoine_Lavoisier",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a French nobleman and chemist who was central to the 18th-century chemical revolution",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260625085626/https://en.wikipedia.org/wiki/Antoine_Lavoisier",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antoine_Lavoisier&oldid=1358761697"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antoine_Lavoisier",
+          "retrieved_at": "2026-07-02",
+          "quote": "Lavoisier is noted for his discovery of the role oxygen plays in combustion, opposing the prior phlogiston theory of combustion",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260625085626/https://en.wikipedia.org/wiki/Antoine_Lavoisier",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antoine_Lavoisier&oldid=1358761697"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antoine_Lavoisier",
+          "retrieved_at": "2026-07-02",
+          "quote": "its mass always remains the same (now known as the law of conservation of mass)",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260625085626/https://en.wikipedia.org/wiki/Antoine_Lavoisier",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antoine_Lavoisier&oldid=1358761697"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:arthur-schopenhauer",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Arthur_Schopenhauer",
+          "retrieved_at": "2026-07-02",
+          "quote": "Arthur Schopenhauer (22 February 1788 – 21 September 1860) was a German philosopher and writer",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702093717/https://en.wikipedia.org/wiki/Arthur_Schopenhauer",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Arthur_Schopenhauer&oldid=1360306299"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Arthur_Schopenhauer",
+          "retrieved_at": "2026-07-02",
+          "quote": "He is known for his 1818 work The World as Will and Representation (expanded in 1844), which characterizes the phenomenal world as the manifestation of a blind and irrational noumenal will",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260702093717/https://en.wikipedia.org/wiki/Arthur_Schopenhauer",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Arthur_Schopenhauer&oldid=1360306299"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Arthur_Schopenhauer",
+          "retrieved_at": "2026-07-02",
+          "quote": "His writing on aesthetics, morality and psychology has influenced many thinkers and artists",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260702093717/https://en.wikipedia.org/wiki/Arthur_Schopenhauer",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Arthur_Schopenhauer&oldid=1360306299"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:auguste-comte",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Auguste_Comte",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a French philosopher, mathematician and writer who formulated the doctrine of positivism",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260629030140/https://en.wikipedia.org/wiki/Auguste_Comte",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Auguste_Comte&oldid=1359719364"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Auguste_Comte",
+          "retrieved_at": "2026-07-02",
+          "quote": "Comte's ideas were fundamental to the development of sociology, with him inventing the very term and treating the discipline as the crowning achievement of the sciences",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260629030140/https://en.wikipedia.org/wiki/Auguste_Comte",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Auguste_Comte&oldid=1359719364"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Auguste_Comte",
+          "retrieved_at": "2026-07-02",
+          "quote": "evolving into modern academic sociology presented by Émile Durkheim as practical and objective social research",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260629030140/https://en.wikipedia.org/wiki/Auguste_Comte",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Auguste_Comte&oldid=1359719364"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:bertrand-russell",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bertrand_Russell",
+          "retrieved_at": "2026-07-02",
+          "quote": "3rd Earl Russell (18 May 1872 – 2 February 1970), was an English philosopher, logician, mathematician, and public intellectual",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260701205827/https://en.wikipedia.org/wiki/Bertrand_Russell",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Bertrand_Russell&oldid=1362134762"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Bertrand_Russell",
+          "retrieved_at": "2026-07-02",
+          "quote": "He was one of the early 20th century's prominent logicians and a founder of analytic philosophy, along with his predecessor Gottlob Frege",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701205827/https://en.wikipedia.org/wiki/Bertrand_Russell",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Bertrand_Russell&oldid=1362134762"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Bertrand_Russell",
+          "retrieved_at": "2026-07-02",
+          "quote": "Russell wrote Principia Mathematica, a milestone in the development of classical logic and a major attempt to reduce the whole of mathematics to logic",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701205827/https://en.wikipedia.org/wiki/Bertrand_Russell",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Bertrand_Russell&oldid=1362134762"
+        }
+      ],
+      "notes": "generator self-flags: Graph edge influenced->computer-science is not stated explicitly in the extract; summary phrases the connection cautiously via his logic/foundations work rather than asserting a direct claim from the source."
+    },
+    {
+      "subject_id": "person:charles-lyell",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Charles_Lyell",
+          "retrieved_at": "2026-07-02",
+          "quote": "1st Baronet (14 November 1797 – 22 February 1875) was a Scottish geologist who demonstrated the power of known natural causes in explaining the earth's history",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260702093850/https://en.wikipedia.org/wiki/Charles_Lyell",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Lyell&oldid=1355730169"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Charles_Lyell",
+          "retrieved_at": "2026-07-02",
+          "quote": "as the author of Principles of Geology (1830–33), which presented to a wide public audience the idea that the earth was shaped by the same natural processes still in operation today",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260702093850/https://en.wikipedia.org/wiki/Charles_Lyell",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Lyell&oldid=1355730169"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Charles_Lyell",
+          "retrieved_at": "2026-07-02",
+          "quote": "He was a close friend of Charles Darwin, and contributed significantly to Darwin's thinking on the processes involved in evolution",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260702093850/https://en.wikipedia.org/wiki/Charles_Lyell",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Lyell&oldid=1355730169"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:claude-shannon",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Claude_Shannon",
+          "retrieved_at": "2026-07-02",
+          "quote": "was an American polymath who was a mathematician, electrical engineer, computer scientist, cryptographer, and inventor known as the \"father of information theory\"",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260701193939/https://en.wikipedia.org/wiki/Claude_Shannon",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Claude_Shannon&oldid=1362159816"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Claude_Shannon",
+          "retrieved_at": "2026-07-02",
+          "quote": "His 1948 paper \"A Mathematical Theory of Communication\" laid the foundations for the field of information theory",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701193939/https://en.wikipedia.org/wiki/Claude_Shannon",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Claude_Shannon&oldid=1362159816"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Claude_Shannon",
+          "retrieved_at": "2026-07-02",
+          "quote": "Shannon was the first to describe the use of Boolean algebra—essential to all digital electronic circuits",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701193939/https://en.wikipedia.org/wiki/Claude_Shannon",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Claude_Shannon&oldid=1362159816"
+        }
+      ],
+      "notes": "generator self-flags: Graph edge influenced->computational-linguistics is not stated in the extract; summary attaches it cautiously as an application area rather than a sourced claim."
+    },
+    {
+      "subject_id": "person:ferdinand-de-saussure",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ferdinand_de_Saussure",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a Swiss linguist, semiotician and philosopher",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260701044948/https://en.wikipedia.org/wiki/Ferdinand_de_Saussure",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ferdinand_de_Saussure&oldid=1362071647"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ferdinand_de_Saussure",
+          "retrieved_at": "2026-07-02",
+          "quote": "one of two major founders (together with Charles Sanders Peirce) of semiotics, or semiology, as Saussure called it",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701044948/https://en.wikipedia.org/wiki/Ferdinand_de_Saussure",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ferdinand_de_Saussure&oldid=1362071647"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ferdinand_de_Saussure",
+          "retrieved_at": "2026-07-02",
+          "quote": "His ideas laid a foundation for many significant developments in both linguistics and semiotics in the 20th century.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701044948/https://en.wikipedia.org/wiki/Ferdinand_de_Saussure",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ferdinand_de_Saussure&oldid=1362071647"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:franz-boas",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Franz_Boas",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a German-American anthropologist and ethnomusicologist",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260701013236/https://en.wikipedia.org/wiki/Franz_Boas",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Franz_Boas&oldid=1359301314"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Franz_Boas",
+          "retrieved_at": "2026-07-02",
+          "quote": "He was a pioneer of modern anthropology who has been called the \"Father of American Anthropology\"",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701013236/https://en.wikipedia.org/wiki/Franz_Boas",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Franz_Boas&oldid=1359301314"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Franz_Boas",
+          "retrieved_at": "2026-07-02",
+          "quote": "Boas was one of the most prominent opponents of the then-popular ideologies of scientific racism",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701013236/https://en.wikipedia.org/wiki/Franz_Boas",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Franz_Boas&oldid=1359301314"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:georg-cantor",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Georg_Cantor",
+          "retrieved_at": "2026-07-02",
+          "quote": "played a pivotal role in the creation of set theory, which has become a fundamental theory in mathematics",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260617023408/https://en.wikipedia.org/wiki/Georg_Cantor",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Georg_Cantor&oldid=1361025127"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Georg_Cantor",
+          "retrieved_at": "2026-07-02",
+          "quote": "This caused it to encounter resistance from mathematical contemporaries such as Leopold Kronecker and Henri Poincaré",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260617023408/https://en.wikipedia.org/wiki/Georg_Cantor",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Georg_Cantor&oldid=1361025127"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Georg_Cantor",
+          "retrieved_at": "2026-07-02",
+          "quote": "proved that the real numbers are more numerous than the natural numbers",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260617023408/https://en.wikipedia.org/wiki/Georg_Cantor",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Georg_Cantor&oldid=1361025127"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:gregor-mendel",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gregor_Mendel",
+          "retrieved_at": "2026-07-02",
+          "quote": "gained posthumous recognition as the founder of the modern science of genetics",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260630041101/https://en.wikipedia.org/wiki/Gregor_Mendel",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Gregor_Mendel&oldid=1359563680"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Gregor_Mendel",
+          "retrieved_at": "2026-07-02",
+          "quote": "Mendel's pea plant experiments conducted between 1856 and 1863 established many of the rules of heredity, now referred to as the laws of Mendelian inheritance",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260630041101/https://en.wikipedia.org/wiki/Gregor_Mendel",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Gregor_Mendel&oldid=1359563680"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Gregor_Mendel",
+          "retrieved_at": "2026-07-02",
+          "quote": "The profound significance of Mendel's work was not recognized until the turn of the 20th century",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260630041101/https://en.wikipedia.org/wiki/Gregor_Mendel",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Gregor_Mendel&oldid=1359563680"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:henri-poincare",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a French mathematician, theoretical physicist, engineer, and philosopher of science",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260618053020/https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Henri_Poincar%C3%A9&oldid=1361412875"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9",
+          "retrieved_at": "2026-07-02",
+          "quote": "Poincaré is regarded as the creator of the field of algebraic topology",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260618053020/https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Henri_Poincar%C3%A9&oldid=1361412875"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9",
+          "retrieved_at": "2026-07-02",
+          "quote": "Poincaré became the first person to discover a chaotic deterministic system which laid the foundations of modern chaos theory",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260618053020/https://en.wikipedia.org/wiki/Henri_Poincar%C3%A9",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Henri_Poincar%C3%A9&oldid=1361412875"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:john-von-neumann",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/John_von_Neumann",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a Hungarian and American mathematician, physicist, computer scientist and engineer",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260630212758/https://en.wikipedia.org/wiki/John_von_Neumann",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_von_Neumann&oldid=1361559007"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/John_von_Neumann",
+          "retrieved_at": "2026-07-02",
+          "quote": "in the development of functional analysis, and in game theory",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260630212758/https://en.wikipedia.org/wiki/John_von_Neumann",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_von_Neumann&oldid=1361559007"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/John_von_Neumann",
+          "retrieved_at": "2026-07-02",
+          "quote": "making major contributions to many fields, including mathematics, physics, economics, computing, and statistics",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260630212758/https://en.wikipedia.org/wiki/John_von_Neumann",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_von_Neumann&oldid=1361559007"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:karl-pearson",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Karl_Pearson",
+          "retrieved_at": "2026-07-02",
+          "quote": "was an English biostatistician and mathematician",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260630032539/https://en.wikipedia.org/wiki/Karl_Pearson",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Karl_Pearson&oldid=1359450552"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Karl_Pearson",
+          "retrieved_at": "2026-07-02",
+          "quote": "He has been credited with establishing the discipline of mathematical statistics.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260630032539/https://en.wikipedia.org/wiki/Karl_Pearson",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Karl_Pearson&oldid=1359450552"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Karl_Pearson",
+          "retrieved_at": "2026-07-02",
+          "quote": "He founded the world's first university statistics department at University College London in 1911",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260630032539/https://en.wikipedia.org/wiki/Karl_Pearson",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Karl_Pearson&oldid=1359450552"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:ludwig-wittgenstein",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ludwig_Wittgenstein",
+          "retrieved_at": "2026-07-02",
+          "quote": "was an Austro-British philosopher who worked in logic, philosophy of mathematics, philosophy of mind, and philosophy of language",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260701210008/https://en.wikipedia.org/wiki/Ludwig_Wittgenstein",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ludwig_Wittgenstein&oldid=1362092015"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ludwig_Wittgenstein",
+          "retrieved_at": "2026-07-02",
+          "quote": "his philosophical work was published in the Tractatus Logico-Philosophicus in 1921",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701210008/https://en.wikipedia.org/wiki/Ludwig_Wittgenstein",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ludwig_Wittgenstein&oldid=1362092015"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ludwig_Wittgenstein",
+          "retrieved_at": "2026-07-02",
+          "quote": "arguing that the meaning of words is best understood as their use within a given language game",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701210008/https://en.wikipedia.org/wiki/Ludwig_Wittgenstein",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ludwig_Wittgenstein&oldid=1362092015"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:norbert-wiener",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Norbert_Wiener",
+          "retrieved_at": "2026-07-02",
+          "quote": "was an American computer scientist, mathematician, and philosopher",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260623100125/https://en.wikipedia.org/wiki/Norbert_Wiener",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Norbert_Wiener&oldid=1362051426"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Norbert_Wiener",
+          "retrieved_at": "2026-07-02",
+          "quote": "Wiener is considered the originator of cybernetics, the science of communication as it relates to living things and machines",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260623100125/https://en.wikipedia.org/wiki/Norbert_Wiener",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Norbert_Wiener&oldid=1362051426"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Norbert_Wiener",
+          "retrieved_at": "2026-07-02",
+          "quote": "His work heavily influenced computer pioneer John von Neumann, information theorist Claude Shannon",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260623100125/https://en.wikipedia.org/wiki/Norbert_Wiener",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Norbert_Wiener&oldid=1362051426"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:ronald-fisher",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ronald_Fisher",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a British polymath who was active as a mathematician, statistician, biologist, geneticist, and academic",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260623114319/https://en.wikipedia.org/wiki/Ronald_Fisher",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ronald_Fisher&oldid=1362122854"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ronald_Fisher",
+          "retrieved_at": "2026-07-02",
+          "quote": "as the founder of modern statistics, Fisher made countless contributions, including creating the modern method of maximum likelihood",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260623114319/https://en.wikipedia.org/wiki/Ronald_Fisher",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ronald_Fisher&oldid=1362122854"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ronald_Fisher",
+          "retrieved_at": "2026-07-02",
+          "quote": "developed the analysis of variance (ANOVA)",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260623114319/https://en.wikipedia.org/wiki/Ronald_Fisher",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ronald_Fisher&oldid=1362122854"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:carl-friedrich-gauss",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a German mathematician, astronomer, geodesist, and physicist",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260628170210/https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Carl_Friedrich_Gauss&oldid=1361542707"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
+          "retrieved_at": "2026-07-02",
+          "quote": "In number theory, he made numerous contributions, such as the composition law, the law of quadratic reciprocity",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260628170210/https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Carl_Friedrich_Gauss&oldid=1361542707"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
+          "retrieved_at": "2026-07-02",
+          "quote": "Gauss led the geodetic survey of the Kingdom of Hanover",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260628170210/https://en.wikipedia.org/wiki/Carl_Friedrich_Gauss",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Carl_Friedrich_Gauss&oldid=1361542707"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:carl-linnaeus",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Carl_Linnaeus",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a Swedish biologist and physician who formalised binomial nomenclature, the modern system of naming organisms",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260701170621/https://en.wikipedia.org/wiki/Carl_Linnaeus",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Carl_Linnaeus&oldid=1354911007"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Carl_Linnaeus",
+          "retrieved_at": "2026-07-02",
+          "quote": "He is known as the \"father of modern taxonomy\"",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701170621/https://en.wikipedia.org/wiki/Carl_Linnaeus",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Carl_Linnaeus&oldid=1354911007"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Carl_Linnaeus",
+          "retrieved_at": "2026-07-02",
+          "quote": "He is also considered one of the founders of modern ecology.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701170621/https://en.wikipedia.org/wiki/Carl_Linnaeus",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Carl_Linnaeus&oldid=1354911007"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:charles-sanders-peirce",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Charles_Sanders_Peirce",
+          "retrieved_at": "2026-07-02",
+          "quote": "was an American scientist, mathematician, logician, and philosopher who is sometimes known as \"the father of pragmatism\"",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260701022330/https://en.wikipedia.org/wiki/Charles_Sanders_Peirce",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Sanders_Peirce&oldid=1360341221"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Charles_Sanders_Peirce",
+          "retrieved_at": "2026-07-02",
+          "quote": "He saw logic as the formal branch of semiotics or study of signs, of which he is a founder",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701022330/https://en.wikipedia.org/wiki/Charles_Sanders_Peirce",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Sanders_Peirce&oldid=1360341221"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Charles_Sanders_Peirce",
+          "retrieved_at": "2026-07-02",
+          "quote": "Peirce made major contributions to logic, such as theories of relations and quantification",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701022330/https://en.wikipedia.org/wiki/Charles_Sanders_Peirce",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Sanders_Peirce&oldid=1360341221"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:daniel-kahneman",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Daniel_Kahneman",
+          "retrieved_at": "2026-07-02",
+          "quote": "was an Israeli-American psychologist best known for his work on the psychology of judgment and decision-making as well as behavioral economics, for which he was awarded the 2002 Nobel Memorial Prize in Economic Sciences together with Vernon L. Smith",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260625090107/https://en.wikipedia.org/wiki/Daniel_Kahneman",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Daniel_Kahneman&oldid=1360144751"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Daniel_Kahneman",
+          "retrieved_at": "2026-07-02",
+          "quote": "Kahneman established a cognitive basis for common human errors that arise from heuristics and biases, and developed prospect theory",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260625090107/https://en.wikipedia.org/wiki/Daniel_Kahneman",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Daniel_Kahneman&oldid=1360144751"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Daniel_Kahneman",
+          "retrieved_at": "2026-07-02",
+          "quote": "his book Thinking, Fast and Slow, which summarizes much of his research, was published and became a best seller",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260625090107/https://en.wikipedia.org/wiki/Daniel_Kahneman",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Daniel_Kahneman&oldid=1360144751"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:david-hilbert",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/David_Hilbert",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a German mathematician and philosopher of mathematics and one of the most influential mathematicians of all time",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260617190603/https://en.wikipedia.org/wiki/David_Hilbert",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=David_Hilbert&oldid=1361411809"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/David_Hilbert",
+          "retrieved_at": "2026-07-02",
+          "quote": "He was a co-founder of proof theory and mathematical logic.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260617190603/https://en.wikipedia.org/wiki/David_Hilbert",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=David_Hilbert&oldid=1361411809"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/David_Hilbert",
+          "retrieved_at": "2026-07-02",
+          "quote": "He adopted and defended Georg Cantor's set theory and transfinite numbers.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260617190603/https://en.wikipedia.org/wiki/David_Hilbert",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=David_Hilbert&oldid=1361411809"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:emmy-noether",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Emmy_Noether",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a German mathematician who made many important contributions to abstract algebra",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260630222919/https://en.wikipedia.org/wiki/Emmy_Noether",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Emmy_Noether&oldid=1361643955"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Emmy_Noether",
+          "retrieved_at": "2026-07-02",
+          "quote": "she developed theories of rings, fields, and algebras",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260630222919/https://en.wikipedia.org/wiki/Emmy_Noether",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Emmy_Noether&oldid=1361643955"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Emmy_Noether",
+          "retrieved_at": "2026-07-02",
+          "quote": "In physics, Noether's theorem explains the connection between symmetry and conservation laws.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260630222919/https://en.wikipedia.org/wiki/Emmy_Noether",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Emmy_Noether&oldid=1361643955"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:george-boole",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Boole",
+          "retrieved_at": "2026-07-02",
+          "quote": "was an English autodidact, mathematician, philosopher and logician",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260626042510/https://en.wikipedia.org/wiki/George_Boole",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=George_Boole&oldid=1360311532"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Boole",
+          "retrieved_at": "2026-07-02",
+          "quote": "is best known as the author of The Laws of Thought (1854), which contains Boolean algebra",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260626042510/https://en.wikipedia.org/wiki/George_Boole",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=George_Boole&oldid=1360311532"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/George_Boole",
+          "retrieved_at": "2026-07-02",
+          "quote": "Boolean logic, essential to computer programming, is credited with helping to lay the foundations for the Information Age.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260626042510/https://en.wikipedia.org/wiki/George_Boole",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=George_Boole&oldid=1360311532"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:gottfried-wilhelm-leibniz",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a German polymath active as a mathematician, philosopher, scientist, and diplomat who is credited, alongside Isaac Newton, with the creation of calculus",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260701162344/https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Gottfried_Wilhelm_Leibniz&oldid=1361544867"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+          "retrieved_at": "2026-07-02",
+          "quote": "his major achievement was the development of differential and integral calculus, independently of Newton's developments",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701162344/https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Gottfried_Wilhelm_Leibniz&oldid=1361544867"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+          "retrieved_at": "2026-07-02",
+          "quote": "The work of Leibniz anticipated modern logic and still influences contemporary analytic philosophy",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260701162344/https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Gottfried_Wilhelm_Leibniz&oldid=1361544867"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:jean-piaget",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jean_Piaget",
+          "retrieved_at": "2026-07-02",
+          "quote": "was a Swiss psychologist known for his work on child development",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260623191949/https://en.wikipedia.org/wiki/Jean_Piaget",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jean_Piaget&oldid=1361412864"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Jean_Piaget",
+          "retrieved_at": "2026-07-02",
+          "quote": "Piaget's theory of cognitive development and epistemological view are together called genetic epistemology",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260623191949/https://en.wikipedia.org/wiki/Jean_Piaget",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jean_Piaget&oldid=1361412864"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Jean_Piaget",
+          "retrieved_at": "2026-07-02",
+          "quote": "This then led to the emergence of the study of development as a major sub-discipline in psychology.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260623191949/https://en.wikipedia.org/wiki/Jean_Piaget",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jean_Piaget&oldid=1361412864"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:john-nash",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/John_Forbes_Nash_Jr.",
+          "retrieved_at": "2026-07-02",
+          "quote": "was an American mathematician who made fundamental contributions to game theory, real algebraic geometry, differential geometry, and partial differential equations",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260628011424/https://en.wikipedia.org/wiki/John_Forbes_Nash_Jr.",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Forbes_Nash_Jr.&oldid=1359356139"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/John_Forbes_Nash_Jr.",
+          "retrieved_at": "2026-07-02",
+          "quote": "Nash introduced a number of concepts (including the Nash equilibrium and the Nash bargaining solution), which are now considered central to game theory",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260628011424/https://en.wikipedia.org/wiki/John_Forbes_Nash_Jr.",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Forbes_Nash_Jr.&oldid=1359356139"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/John_Forbes_Nash_Jr.",
+          "retrieved_at": "2026-07-02",
+          "quote": "Nash and fellow game theorists John Harsanyi and Reinhard Selten were awarded the 1994 Nobel Prize in Economics.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260628011424/https://en.wikipedia.org/wiki/John_Forbes_Nash_Jr.",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Forbes_Nash_Jr.&oldid=1359356139"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:kenneth-arrow",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Kenneth_Arrow",
+          "retrieved_at": "2026-07-02",
+          "quote": "was an American economist, mathematician and political theorist",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260626004604/https://en.wikipedia.org/wiki/Kenneth_Arrow",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Kenneth_Arrow&oldid=1346032669"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Kenneth_Arrow",
+          "retrieved_at": "2026-07-02",
+          "quote": "His contributions to social choice theory, notably his \"impossibility theorem\", and his work on general equilibrium analysis are significant.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260626004604/https://en.wikipedia.org/wiki/Kenneth_Arrow",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Kenneth_Arrow&oldid=1346032669"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Kenneth_Arrow",
+          "retrieved_at": "2026-07-02",
+          "quote": "the Nobel Memorial Prize in Economic Sciences in 1972, along with John Hicks",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260626004604/https://en.wikipedia.org/wiki/Kenneth_Arrow",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Kenneth_Arrow&oldid=1346032669"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:wilhelm-wundt",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Wilhelm_Wundt",
+          "retrieved_at": "2026-07-02",
+          "quote": "He is widely regarded as the \"father of experimental psychology\".",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260622153056/https://en.wikipedia.org/wiki/Wilhelm_Wundt",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Wilhelm_Wundt&oldid=1361411640"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Wilhelm_Wundt",
+          "retrieved_at": "2026-07-02",
+          "quote": "In 1879, at the University of Leipzig, Wundt founded the first formal laboratory for psychological research.",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260622153056/https://en.wikipedia.org/wiki/Wilhelm_Wundt",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Wilhelm_Wundt&oldid=1361411640"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Wilhelm_Wundt",
+          "retrieved_at": "2026-07-02",
+          "quote": "was the first person to call himself a psychologist",
+          "independent": false,
+          "snapshot_url": "https://web.archive.org/web/20260622153056/https://en.wikipedia.org/wiki/Wilhelm_Wundt",
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Wilhelm_Wundt&oldid=1361411640"
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Editorial batch 3 (person layer): 34 top-degree reviewed person nodes given en summaries. Generation = 3 separate-context Opus subagents (ADR 0007 context separation) grounded ONLY in provided enwiki lead extracts; orchestrator (Fable 5) QC = machine claim-anchor verbatim (fetch-verify: 102/102 quotes verbatim on live enwiki after normalization; 0 miss, 0 unverified) + close-read.",
+    "All 34 persons deceased (is_living_person:false) — no (70) living-person path exercised this batch (living persons deferred to a careful follow-up tranche).",
+    "Co-founding / contested modeling respected per graph: Newton & Leibniz co-developed calculus independently; Saussure & Peirce co-founded semiotics (two traditions); Pearson & Fisher both founders of mathematical statistics with mutual critique; Poincare a set-theory critic; Cantor influenced Hilbert; von Neumann & Nash distinct game-theory contributions.",
+    "INDEXABLE FLIP DEFERRED (CPO stop-point flag): flipping these reviewed+summarized nodes to indexable requires a reviewed->reviewed promotion op, which ladder-check treats as a reviewed outcome demanding a node-promotion ladder (editorial-v2 does not sanction node promotions) -> blocking violation. Editorial-v2 sanctions also read as dangling because reviewedOutcomes ignores translation_updates. Both are ladders.ts modeling gaps for the editorial-through-toolchain path; proposed patch surfaced to CPO. Summary gap closed 112->78; indexable flip follows once the ladder-check refinement is ratified."
+  ],
+  "anchors_pending": []
+}
