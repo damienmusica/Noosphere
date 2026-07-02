@@ -439,6 +439,51 @@ targets); **(C3)** referent precision — pick the concept referent, not an over
 **(C4)** `indexable` only when `reviewed` per node policy. Multiplicity (many concepts per field) is
 expected and fine — the same posture as co-canonical works and multiple founders.
 
+### Node identity anchor — alternative anchor for QID-less-but-recognized fields (node-policy v1.4, decision (93))
+
+Node-policy v1's identity requirement is a **resolver-verified Wikidata QID**. The session #50 backlog
+re-adjudication (decision (92)) surfaced two subfields — `philosophy-of-race` and
+`philosophy-of-cognitive-science` — with **no Wikidata discipline entity at all** (live-reconfirmed
+2026-07-02: only journal/article items) yet strong multi-authority recognition. Per the decision (89)
+discipline, the QID requirement's *actual* safety value was decomposed and live-researched (2026-07-02);
+every function is preserved by an alternative anchor set:
+
+| QID safety function | Alternative-anchor coverage |
+|---|---|
+| Referent decidability (*which* thing) | Category ID in an expert-curated disciplinary taxonomy (stable slug) |
+| Journal-vs-discipline / era-vs-discipline trap (P31/P279) | The taxonomy classifies *research areas* by construction; encyclopedia entry + handbook confirm a field-of-study referent |
+| Multi-signal bar (orphan-stub guard) | ≥3 independent authorities is a stronger bar than one QID + sitelinks |
+| Machine re-auditability (resolver) | Stable URLs + §8 permanence anchors (Wayback; existing-snapshot path for bot-blocked domains) |
+
+A `field`/`subfield` node with **no Wikidata discipline entity** satisfies the identity-anchor
+requirement when **all** of the following hold:
+
+1. **A category/entry ID in a CPO-ratified expert disciplinary taxonomy**, recorded in `external_ids`
+   (e.g. `philpapers: philosophy-of-race`). **Ratified taxonomy authorities: PhilPapers (philosophy) —
+   currently the whole list.** Adding a taxonomy authority is a CPO gate (mirror of the source-registry
+   discipline). This keeps the clause conservative: it admits exactly the recognized cases, not the
+   honest-gap pool — the eight skeleton-era QID-less gaps (computer-systems, sensation-and-perception,
+   modern-history, …) have no ratified taxonomy standing and remain parked.
+2. **≥2 additional independent authoritative sources** treating it as a named field — an SEP/IEP entry,
+   a dedicated peer-reviewed journal, a major university-press handbook/companion — live-verified with
+   §8 permanence anchors at promotion time.
+3. **No conflicting referent** — the journal-vs-discipline and era-vs-discipline rejections still apply
+   in full.
+4. **Wikidata re-checked at promotion time** — if a discipline QID has appeared upstream, the standard
+   node-policy v1 path applies instead (and the QID is recorded alongside the taxonomy ID).
+
+Promotion under this clause runs as a normal re-adjudication batch with full provenance (bulk
+re-auditable, reversible). First cases (2026-07-02, all anchors live-verified):
+`subfield:philosophy-of-race` (PhilPapers category; SEP "Race"; *Critical Philosophy of Race*, ISSN
+2165-8684, Penn State UP; *The Oxford Handbook of Philosophy and Race*, OUP 2017, DOI
+10.1093/oxfordhb/9780190236953.001.0001) and `subfield:philosophy-of-cognitive-science` (PhilPapers
+category; SEP "Cognitive Science"; *The Oxford Handbook of Philosophy of Cognitive Science*, OUP 2012,
+DOI 10.1093/oxfordhb/9780195309799.001.0001 — no exact-title dedicated journal; honestly recorded as a
+three-authority anchor). This clause is the node-layer 1:1 mirror of the work-node criteria 3–4 revision
+(decision (89)): the anchor's *purpose* (identity decidability) is preserved; the arbitrary
+single-provider requirement is removed. QID-less `reviewed` precedent: the practical-knowledge /
+meta-knowledge domains (decision (36)).
+
 ### Living-person handling — standing policy (vault decision (70), 2026-06-30)
 
 The risk axis for a living person is **claim type × source authority × contention — not aliveness.** This

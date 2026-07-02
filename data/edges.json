@@ -1480,10 +1480,11 @@
     "target": "field:philosophy",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary",
-      "source:lcc-outline"
+      "source:lcc-outline",
+      "source:philpapers"
     ],
     "evidence_kind": "externally_sourced",
     "proposed_by": {
@@ -1491,7 +1492,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+    "note": "Promoted 2026-07-02 (philosophy-identity-anchor-v1): endpoint reviewed under node-policy v1.4 alternative identity anchor (decision (93)); philosophy placement grounded by UDC/LCC + PhilPapers category-tree residency (category live-verified, Wayback-anchored in the batch report)."
   },
   {
     "id": "edge:philosophy-of-cognitive-science-part-of-philosophy",
@@ -1499,9 +1500,10 @@
     "target": "field:philosophy",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
-      "source:udc-summary"
+      "source:udc-summary",
+      "source:philpapers"
     ],
     "evidence_kind": "externally_sourced",
     "proposed_by": {
@@ -1509,7 +1511,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap). LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+    "note": "Promoted 2026-07-02 (philosophy-identity-anchor-v1): endpoint reviewed under node-policy v1.4 alternative identity anchor (decision (93)). LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25) + PhilPapers category-tree residency (Wayback-anchored in the batch report)."
   },
   {
     "id": "edge:systems-science-part-of-formal-sciences",
@@ -13119,5 +13121,302 @@
       "proposed_at": "2026-07-02"
     },
     "note": "Evolutionary theory (natural selection, host–pathogen coevolution) is applied within epidemiology (evolutionary epidemiology, Darwinian medicine) to model virulence and antibiotic-resistance. applies_to direction is method/theory → domain (safe). Held at proposed: live check confirmed evolutionary/Darwinian medicine but did not surface the epidemiology-specific link in the fetched intro; evolutionary epidemiology is a genuine but niche subfield — proposed-first pending a confirming epidemiology-anchored source."
+  },
+  {
+    "id": "edge:alan-turing-influenced-philosophy-of-mind",
+    "source": "person:alan-turing",
+    "target": "subfield:philosophy-of-mind",
+    "relation": "influenced",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Turing's 1936–1950 work (esp. 'Computing Machinery and Intelligence', 1950) became a central reference point in philosophy of mind — the Turing-machine model of mind is a standard historical input to functionalism (Putnam). Direction correct (predates the debates it shaped). Two independent SEP entries: 'The Turing Test' and 'Functionalism'. Permanence: SEP https://web.archive.org/web/20260701235949/https://plato.stanford.edu/entries/turing-test/ · SEP https://web.archive.org/web/20260702000015/https://plato.stanford.edu/entries/functionalism/. (a)-ladder decision (68); supported."
+  },
+  {
+    "id": "edge:kurt-godel-influenced-philosophy-of-mathematics",
+    "source": "person:kurt-godel",
+    "target": "subfield:philosophy-of-mathematics",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Gödel's 1931 incompleteness theorems reshaped philosophy of mathematics (undermined Hilbert's formalism; fuel for Platonism/foundations debate). Direction correct. Permanence: SEP https://web.archive.org/web/20260702000042/https://plato.stanford.edu/entries/goedel/ · WP https://en.wikipedia.org/w/index.php?title=G%C3%B6del%27s_incompleteness_theorems&oldid=1361575140. (a)-ladder (68); supported."
+  },
+  {
+    "id": "edge:edmund-husserl-influenced-philosophy-of-cognitive-science",
+    "source": "person:edmund-husserl",
+    "target": "subfield:philosophy-of-cognitive-science",
+    "relation": "influenced",
+    "confidence": 0.6,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Husserlian phenomenology (intentionality, lived experience) is the acknowledged root — via Merleau-Ponty — of the embodied/enactive tradition in philosophy of cognitive science (Varela/Thompson/Rosch, 1991). Record-not-resolve: mediated via Merleau-Ponty/enactivism. Distinct target from the reviewed phenomenology→psychology edge (the philosophical subfield, not the discipline). Two independent SEP entries: 'Phenomenology' and 'Embodied Cognition'. Permanence: SEP https://web.archive.org/web/20260702000108/https://plato.stanford.edu/entries/phenomenology/ · SEP https://web.archive.org/web/20260702000145/https://plato.stanford.edu/entries/embodied-cognition/. (a)-ladder (68); supported."
+  },
+  {
+    "id": "edge:existentialism-influenced-literary-studies",
+    "source": "subfield:existentialism",
+    "target": "field:literary-studies",
+    "relation": "influenced",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Existentialism (Sartre/Camus, 1930s–60s) shaped 20th-c. literature and literary-critical study (Theatre of the Absurd, existentialist fiction). Direction correct (movement→field). Note: Sartre/Camus were themselves philosopher-authors (self-expression/influence blur recorded). Permanence: SEP https://web.archive.org/web/20260701234231/https://plato.stanford.edu/entries/existentialism/ · WP https://en.wikipedia.org/w/index.php?title=Existentialism&oldid=1357728536. (a)-ladder (68); supported."
+  },
+  {
+    "id": "edge:claude-levi-strauss-influenced-literary-theory",
+    "source": "person:claude-levi-strauss",
+    "target": "subfield:literary-theory",
+    "relation": "influenced",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Lévi-Strauss's structural anthropology (1950s–60s) was the model for structuralist literary theory (Barthes, Genette, 1960s–70s). Record-not-resolve: mediated via Barthes/Genette. Direction correct. Two independent claim-stating WP articles (SEP has no general 'structuralism' entry): 'Structuralism' https://en.wikipedia.org/w/index.php?title=Structuralism&oldid=1356196844 and 'Literary theory' https://en.wikipedia.org/w/index.php?title=Literary_theory&oldid=1354713855. (a)-ladder (68); supported."
+  },
+  {
+    "id": "edge:henri-poincare-influenced-dynamical-systems",
+    "source": "person:henri-poincare",
+    "target": "subfield:dynamical-systems",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Poincaré's three-body-problem work (1890s) founded the qualitative/geometric study of dynamical systems (sensitive dependence → chaos theory). Relation-choice note: arguably founded_or_formalized; influenced chosen conservatively (modern subfield institutionally postdates Poincaré — Birkhoff/Smale). Direction correct. Permanence: SEP https://web.archive.org/web/20260702000227/https://plato.stanford.edu/entries/chaos/ · WP https://en.wikipedia.org/w/index.php?title=Henri_Poincaré&oldid=1361412875. (a)-ladder (68); supported."
+  },
+  {
+    "id": "edge:jean-piaget-influenced-philosophy-of-mind",
+    "source": "person:jean-piaget",
+    "target": "subfield:philosophy-of-mind",
+    "relation": "influenced",
+    "confidence": 0.55,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Piaget's genetic epistemology and the 1975 Royaumont debate with Chomsky feed the nativism-vs-constructivism debate in philosophy of mind / cognitive science. Direction correct. Permanence: SEP 'Innateness and Contemporary Theories of Cognition' https://web.archive.org/web/20260702000304/https://plato.stanford.edu/entries/innateness-cognition/ · WP https://en.wikipedia.org/w/index.php?title=Jean_Piaget&oldid=1361412864 (carries the Royaumont debate; the generator's cited 'Piaget–Chomsky debates' article does not exist — substituted at QC). (a)-ladder (68); supported."
+  },
+  {
+    "id": "edge:amos-tversky-critiques-economics",
+    "source": "person:amos-tversky",
+    "target": "field:economics",
+    "relation": "critiques",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Tversky (with Kahneman) — prospect theory (1979) — was framed as a descriptive challenge to the expected-utility rational-agent model standard in neoclassical economics. Direction correct (challenges the paradigm). Note: joint Kahneman–Tversky work; attributed to Tversky to spread roster (Kahneman already carries 2 edges); deceased (d.1996). Permanence: SEP 'Bounded Rationality' https://web.archive.org/web/20260702000359/https://plato.stanford.edu/entries/bounded-rationality/ · WP https://en.wikipedia.org/w/index.php?title=Prospect_theory&oldid=1355782602. (a)-ladder (68); supported."
+  },
+  {
+    "id": "edge:psychoanalysis-influenced-film-studies",
+    "source": "subfield:psychoanalysis",
+    "target": "subfield:film-studies",
+    "relation": "influenced",
+    "confidence": 0.65,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Psychoanalysis (Freud early-20th-c.; Lacan mid-century) became a central paradigm of 1970s–80s film theory (Metz, Mulvey's 'Visual Pleasure and Narrative Cinema'). Record-not-resolve: mediated via Lacan (not a node); source = the psychoanalysis tradition. Direction correct. Two independent WP articles: 'Film theory' https://en.wikipedia.org/w/index.php?title=Film_theory&oldid=1355786936 and 'Psychoanalytic film theory' https://en.wikipedia.org/w/index.php?title=Psychoanalytic_film_theory&oldid=1292189056. (a)-ladder (68); supported."
+  },
+  {
+    "id": "edge:carl-friedrich-gauss-influenced-geodesy",
+    "source": "person:carl-friedrich-gauss",
+    "target": "subfield:geodesy",
+    "relation": "influenced",
+    "confidence": 0.7,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Gauss's geodetic survey of Hanover (1820s–30s) produced least-squares and surface-curvature methods foundational to geodesy. Relation-choice note: arguably founded_or_formalized; influenced chosen conservatively. Direction correct. Permanence: WP https://en.wikipedia.org/w/index.php?title=Carl_Friedrich_Gauss&oldid=1361542707 · MacTutor https://web.archive.org/web/20260630054702/https://mathshistory.st-andrews.ac.uk/Biographies/Gauss/. (a)-ladder (68); supported."
+  },
+  {
+    "id": "edge:friedrich-nietzsche-influenced-critical-theory",
+    "source": "person:friedrich-nietzsche",
+    "target": "subfield:critical-theory",
+    "relation": "influenced",
+    "confidence": 0.65,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Nietzsche (d.1900) — genealogical critique of morality/reason — is a standard precursor (Ricoeur's 'masters of suspicion') of Frankfurt School critical theory (Adorno/Horkheimer, 'Dialectic of Enlightenment'). Direction correct. Distinct from Nietzsche's existing edges (existentialism, continental-philosophy). Permanence: SEP 'Critical Theory' https://web.archive.org/web/20260702000438/https://plato.stanford.edu/entries/critical-theory/ · WP https://en.wikipedia.org/w/index.php?title=Dialectic_of_Enlightenment&oldid=1344562773 (carries the Nietzsche lineage; the generator's 'Frankfurt School' cite did not, in-extract — substituted at QC). (a)-ladder (68); supported."
+  },
+  {
+    "id": "edge:john-von-neumann-influenced-computer-systems",
+    "source": "person:john-von-neumann",
+    "target": "subfield:computer-systems",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Von Neumann's 1945 EDVAC report outlined the stored-program architecture dominant in computer systems. Held at proposed: target subfield:computer-systems is itself proposed (QID-less honest gap) → status-cap clause 3 blocks auto-promotion; also a live historiographical dispute over attribution (Moore School / Eckert–Mauchly team). Permanence: WP https://en.wikipedia.org/w/index.php?title=Von_Neumann_architecture&oldid=1360745761."
+  },
+  {
+    "id": "edge:noam-chomsky-influenced-philosophy-of-mind",
+    "source": "person:noam-chomsky",
+    "target": "subfield:philosophy-of-mind",
+    "relation": "influenced",
+    "confidence": 0.7,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "★ LIVING PERSON (person:noam-chomsky, is_living_person:true) — living-person floor (decision (70)) applies. Chomsky's 1959 review of Skinner's 'Verbal Behavior' helped end behaviorism's dominance and drive the cognitive turn. Held at proposed on MODELING PRECISION, not a risk signal: the accurate model is influenced→philosophy-of-mind (as written here) but the generator proposed it as `critiques→philosophy-of-mind`, which mis-states the target (he critiqued behaviorism, a position, not the field); re-modeled to `influenced` and held pending a behaviorism node or a cleaner target. No escalation signal (no private/reputational/contested content). Permanence: SEP 'Behaviorism' https://web.archive.org/web/20260702000718/https://plato.stanford.edu/entries/behaviorism/ · WP https://en.wikipedia.org/w/index.php?title=Verbal_Behavior&oldid=1349511694."
+  },
+  {
+    "id": "edge:bertrand-russell-influenced-computer-science",
+    "source": "person:bertrand-russell",
+    "target": "field:computer-science",
+    "relation": "influenced",
+    "confidence": 0.5,
+    "status": "proposed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Russell's type theory (1908–13) is the historical root of type systems in programming languages. Held at proposed: diffuse/mediated (via Church, Curry–Howard, Martin-Löf, decades removed) and field:computer-science is too broad a target; a narrower programming-languages/type-theory target would be cleaner. Permanence: SEP 'Principia Mathematica' https://web.archive.org/web/20260702000746/https://plato.stanford.edu/entries/principia-mathematica/."
+  },
+  {
+    "id": "edge:antoine-lavoisier-influenced-physics",
+    "source": "person:antoine-lavoisier",
+    "target": "field:physics",
+    "relation": "influenced",
+    "confidence": 0.5,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Lavoisier's law of conservation of mass (1770s–80s) is shared across chemistry and physics. Held at proposed: 'influenced field:physics' is diffuse — physics conservation laws have independent origins and the target field is too broad; a thermodynamics-grained target (no node yet) would be more accurate. Permanence: WP https://en.wikipedia.org/w/index.php?title=Antoine_Lavoisier&oldid=1358761697."
+  },
+  {
+    "id": "edge:cybernetics-influenced-systems-engineering",
+    "source": "subfield:cybernetics",
+    "target": "subfield:systems-engineering",
+    "relation": "influenced",
+    "confidence": 0.6,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-02"
+    },
+    "note": "Cybernetics (Wiener, 1948) is listed among the fields that fed systems engineering. Held at proposed: thin at the 'influenced' bar — the WP Systems-engineering history frames cybernetics as one of many contributing disciplines (incl. operations research, aerospace program management), and WP Cybernetics does not reciprocally state the link; single clear claim-stating source. Permanence: WP https://en.wikipedia.org/w/index.php?title=Systems_engineering&oldid=1347426079."
   }
 ]
