@@ -105,7 +105,20 @@ export function buildPostState(decision: FoundryDecision, current: CurrentData):
   }
 
   // --- Promotions: status flips on existing items -------------------------------
+  // One promotion op per (kind, id) per decision: reviewedOutcomes and the
+  // held-ledger resolution key on THE op's final status — a second op on the
+  // same item makes that ambiguous. Split into separate batches.
+  const seenPromotions = new Set<string>();
   for (const p of decision.promotions) {
+    const promotionKey = `${p.kind} ${p.id}`;
+    if (seenPromotions.has(promotionKey)) {
+      fail(
+        `promotions: ${p.kind} ${p.id} appears in more than one promotion op — ` +
+          `one promotion op per item per decision (split into separate batches)`,
+      );
+      continue;
+    }
+    seenPromotions.add(promotionKey);
     const index = p.kind === "node" ? nodeIndex.get(p.id) : edgeIndex.get(p.id);
     const collection = p.kind === "node" ? raw.nodes : raw.edges;
     if (index === undefined) {

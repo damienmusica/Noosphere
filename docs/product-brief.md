@@ -35,7 +35,8 @@ Build a **read-only, English-first, data-driven** foundation for exploring a cur
 
 Initial target scale (aspirational, not required for the first milestone):
 
-- 12 top-level domains.
+- 11 academic continents (10 active domain nodes; philosophy/humanities split, practical/meta
+  domains deprecated — see [`docs/data-foundry.md`](data-foundry.md) §14).
 - 80–150 mid-level fields.
 - 300–1,000 nodes, 500–3,000 edges.
 - 5–10 curated learning paths.

@@ -34,9 +34,15 @@
  *   - single-letter footnote markers (`[a]`, `[b]`) alongside the digit ones.
  *   - quote/apostrophe-adjacent spaces from split spans (`psychology "`,
  *     `Cantor 's`, `" impossibility theorem "`) → space next to `'`/`"` removed.
- *   - space around a dash from a wikilink boundary (`algebra <a>…</a>—essential`
- *     → `algebra -essential`) → spaces around `-` collapsed, but never inside an
- *     `->` arrow (negative lookahead preserves arrow-matching behavior).
+ *   - a ONE-sided space beside a dash from a wikilink boundary
+ *     (`algebra <a>…</a>—essential` → `algebra -essential`) → the one-sided
+ *     space collapses into the dash, but never inside an `->` arrow. BOTH-sided
+ *     spaced dashes (` - `, real punctuation) are PRESERVED as word separators:
+ *     the original collapse-everything rule let a fabricated hyphenated quote
+ *     (`in-depth`) falsely match spaced-dash prose (`in — depth`) — a false
+ *     PASS violating the content-free invariant above; corrected per the
+ *     2026-07-02 inspection finding (protect ` - `, collapse one-sided
+ *     artifacts, restore).
  */
 
 export function normalize(input: string): string {
@@ -87,9 +93,17 @@ export function normalize(input: string): string {
   // straight quote/apostrophe (split spans render `psychology "` / `Cantor 's`).
   s = s.replace(/ ([,.;:!?)\]])/g, "$1").replace(/([([]) /g, "$1");
   s = s.replace(/ (['"])/g, "$1").replace(/(['"]) /g, "$1");
-  // A wikilink boundary can leave a space beside a dash (`algebra -essential`);
-  // collapse spaces around a hyphen/dash — but never inside an `->` arrow.
-  s = s.replace(/ *-(?!>) */g, "-");
+  // A wikilink boundary can leave a ONE-sided space beside a dash
+  // (`algebra -essential`); only that one-sided artifact may collapse into the
+  // dash — never inside an `->` arrow. A BOTH-sided spaced dash (` - `) is real
+  // punctuation and must survive as a word separator: collapsing it would let a
+  // fabricated hyphenated quote (`in-depth`) falsely match spaced-dash prose
+  // (`in — depth`), breaking the content-free invariant (2026-07-02
+  // inspection). Protect ` - ` with a placeholder, collapse the one-sided
+  // artifacts, then restore.
+  s = s.replace(/ - /g, "\x01");
+  s = s.replace(/ -(?=[^>\s])/g, "-").replace(/(?<=\S)-(?!>) /g, "-");
+  s = s.replace(/\x01/g, " - ");
   return s;
 }
 

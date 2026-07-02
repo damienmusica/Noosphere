@@ -14,7 +14,7 @@ import { dirname, join } from "node:path";
 import { z } from "zod";
 
 import { DATA_FILES, checkCanonicalFormat } from "./lib/canonical-data.ts";
-import { foundryProposalV2Schema } from "../src/schema/foundry-proposal.ts";
+import { findProviderIdLeaks, foundryProposalV2Schema } from "../src/schema/foundry-proposal.ts";
 import { nodeSchema } from "../src/schema/node.ts";
 import { nodeTranslationSchema } from "../src/schema/node-translation.ts";
 import { edgeSchema } from "../src/schema/edge.ts";
@@ -351,6 +351,30 @@ for (const path of learningPaths) {
 // entry point to the permanent records; artifact/index drift is the measured
 // decay mode this check exists for. Offline by design — CI stays network-free.
 const REPO_ROOT = join(__dirname, "..");
+
+/**
+ * Provider-ID leak scan over EVERY *.json file in one proposal batch directory
+ * (§15.6 bans QID/OpenAlex shapes "anywhere in a v2 artifact" — not just the
+ * three canonical artifact filenames). Files that fail to parse are scanned as
+ * raw text so a malformed artifact cannot hide a leak. Offline: reads only the
+ * given directory. Exported for unit tests.
+ */
+export function scanProposalJsonDir(dir: string): string[] {
+  const findings: string[] = [];
+  for (const entry of readdirSync(dir).sort()) {
+    if (!entry.endsWith(".json")) continue;
+    const raw = readFileSync(join(dir, entry), "utf8");
+    let value: unknown = raw;
+    try {
+      value = JSON.parse(raw);
+    } catch {
+      // unparseable JSON still gets the raw-text scan; the artifact loop
+      // separately reports the parse failure for canonical artifact files
+    }
+    for (const leak of findProviderIdLeaks(value)) findings.push(`${entry} ${leak}`);
+  }
+  return findings;
+}
 {
   const proposalsDir = join(REPO_ROOT, "foundry", "proposals");
   const indexFile = "foundry/proposals/README.md";
@@ -461,9 +485,11 @@ const REPO_ROOT = join(__dirname, "..");
   // wave, so proposal contract v2 (ops-efficiency package, 2026-07-02) bans
   // them at the schema level: new proposal artifacts must be version-2
   // envelopes — blind `referent` descriptions instead of `external_ids`, and
-  // no QID/OpenAlex shapes anywhere in the text. Batches committed before the
-  // cutover are frozen as v1 history (never retro-validated: 6/18 already
-  // drift from the v1 schema, which is exactly why v2 is machine-checked).
+  // no QID/OpenAlex shapes anywhere in a v2 artifact (§15.6) — enforced by a
+  // leak scan over EVERY *.json in the batch directory, not just the three
+  // canonical artifact filenames. Batches committed before the cutover are
+  // frozen as v1 history (never retro-validated: 6/18 already drift from the
+  // v1 schema, which is exactly why v2 is machine-checked).
   const PRE_V2_PROPOSAL_DIRS = new Set([
     ...GRANDFATHERED_BATCHES,
     "a-relations-wave4-v1", "a-relations-wave5-v1", "a-relations-wave6-v1",
@@ -475,6 +501,16 @@ const REPO_ROOT = join(__dirname, "..");
   const PROPOSAL_ARTIFACT_FILES = ["proposal.json", "nodes.proposed.json", "edges.proposed.json"];
   for (const dir of batchDirs) {
     if (PRE_V2_PROPOSAL_DIRS.has(dir)) continue;
+    try {
+      for (const leak of scanProposalJsonDir(join(proposalsDir, dir))) {
+        fail(
+          `[foundry/proposals/${dir}] proposal contract v2: provider ID leaked (${leak}) — ` +
+            `no QID/OpenAlex shapes anywhere in a v2 artifact (docs/data-foundry.md §15.6)`,
+        );
+      }
+    } catch (err) {
+      fail(`[foundry/proposals/${dir}] could not scan for provider-ID leaks: ${(err as Error).message}`);
+    }
     for (const artifact of PROPOSAL_ARTIFACT_FILES) {
       const artifactPath = join(proposalsDir, dir, artifact);
       if (!existsSync(artifactPath)) continue;

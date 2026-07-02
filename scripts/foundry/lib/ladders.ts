@@ -16,9 +16,12 @@
  *
  * Ladders encoded (pointers, not restatements — see docs/data-foundry.md §8):
  *   node-promotion-v1        resolver-verified external grounding
- *   node-promotion-v1.4      QID-less alternative identity anchor (93)
+ *   node-promotion-v1.4      QID-less alternative identity anchor (93);
+ *                            anchor provider must be in the ratified
+ *                            taxonomy-authority registry (102)
  *   living-person-v2         stricter floor, auto-promotes when clean (70)
- *   edge-promotion-v1-structural / -clause6   (15) incl. contested placements
+ *   edge-promotion-v1-structural / -clause6   (15) incl. contested placements;
+ *                            classification relations only (2026-07-02)
  *   formalizes-auto-54 / founded-or-formalized-auto-60 / a-relation-auto-68
  *   editorial-v2             summaries (26)/(34) — machine checks live in
  *                            claim-anchor/fetch-verify scripts, not here
@@ -53,6 +56,23 @@ const EDGE_AUTO_LADDER: Record<string, Ladder> = {
   influenced: "a-relation-auto-68",
   critiques: "a-relation-auto-68",
 };
+
+// Ratified 2026-07-02 — clause 6 and the structural tier sanction classification
+// placements only; applies_to is EXCLUDED per the session-#55 CPO ruling
+// (substantive claim, not a placement); propositional relations promote via
+// their own ladders ((54)/(60)(61)/(68)) or manual-cpo (decision-log pointer
+// required).
+const CLASSIFICATION_RELATIONS = new Set(["part_of", "member_of", "adjacent_to"]);
+
+// Executable transcription of the docs/data-foundry.md §8 taxonomy-authority
+// registry (criteria v1, ratified 2026-07-02); adding an authority = update the
+// §8 table AND this set in the same change (decision-(96) discipline).
+const RATIFIED_TAXONOMY_PROVIDERS = new Set([
+  "philpapers",
+  "acm_ccs",
+  "nces_cip",
+  "apa_psycinfo",
+]);
 
 function independentSources(verdict: VerdictRecord | undefined): number {
   return verdict?.sources.filter((s) => s.independent).length ?? 0;
@@ -97,6 +117,26 @@ export function checkLadders(input: LadderInput): LadderFinding[] {
   const sanctionBySubject = new Map(decision.sanctions.map((s) => [s.subject_id, s]));
   const outcomes = reviewedOutcomes(input);
   const outcomeIds = new Set(outcomes.map((o) => o.id));
+
+  // set_external_ids is earned in-batch: every provider/value written onto a
+  // node must be backed by a verified identity record in THIS decision — the
+  // identity trail is what makes an external_ids write re-auditable (proposal
+  // contract v2 bans generator-emitted provider IDs, so verification is the
+  // only path in).
+  for (const p of decision.promotions) {
+    if (!p.set_external_ids) continue;
+    for (const [provider, value] of Object.entries(p.set_external_ids)) {
+      const backed = (identityByNode.get(p.id) ?? []).some(
+        (r) => r.provider === provider && r.external_id === value && r.verified,
+      );
+      if (!backed) {
+        violation(
+          p.id,
+          `set_external_ids requires a verified identity record in this decision (none matches ${provider}:${value})`,
+        );
+      }
+    }
+  }
 
   // Metadata-flip ops (reviewed→reviewed): only set_indexable/set_note may ride
   // them — anything identity- or evidence-bearing must go through a real status
@@ -181,9 +221,29 @@ export function checkLadders(input: LadderInput): LadderFinding[] {
           violation(id, `living-person nodes promote via living-person-v2, not node-promotion-v1`, ladder);
         }
       } else if (ladder === "node-promotion-v1.4") {
-        const alt = verifiedIds.find((r) => r.provider !== "wikidata");
+        const alt = verifiedIds.find((r) => RATIFIED_TAXONOMY_PROVIDERS.has(r.provider));
         if (!alt) {
-          violation(id, `node-promotion-v1.4 requires a verified non-wikidata identity anchor (e.g. philpapers)`, ladder);
+          const unratified = verifiedIds.filter((r) => r.provider !== "wikidata");
+          if (unratified.length > 0) {
+            violation(
+              id,
+              `node-promotion-v1.4 anchor provider(s) ${unratified.map((r) => r.provider).join(", ")} not in the ratified taxonomy-authority registry ` +
+                `(docs/data-foundry.md §8: ${[...RATIFIED_TAXONOMY_PROVIDERS].join(", ")})`,
+              ladder,
+            );
+          } else {
+            violation(
+              id,
+              `node-promotion-v1.4 requires a verified identity anchor from the ratified taxonomy-authority registry (docs/data-foundry.md §8)`,
+              ladder,
+            );
+          }
+        } else if (node.external_ids[alt.provider] !== alt.external_id) {
+          violation(
+            id,
+            `verified ${alt.provider} anchor ${alt.external_id} is not in the node's external_ids (found: ${node.external_ids[alt.provider] ?? "none"})`,
+            ladder,
+          );
         }
         if (verdict?.verdict !== "supported" || independentSources(verdict) < 2) {
           violation(id, `node-promotion-v1.4 requires a supported verdict with ≥2 independent authorities`, ladder);
@@ -238,6 +298,13 @@ export function checkLadders(input: LadderInput): LadderFinding[] {
     }
 
     if (ladder === "edge-promotion-v1-structural") {
+      if (!CLASSIFICATION_RELATIONS.has(edge.relation)) {
+        violation(
+          id,
+          `relation "${edge.relation}" is not a classification placement — the edge-promotion-v1 family sanctions classification placements only; promote via ${EDGE_AUTO_LADDER[edge.relation] ?? "manual-cpo"}`,
+          ladder,
+        );
+      }
       if (edge.evidence_kind !== "externally_sourced") {
         violation(id, `structural tier requires evidence_kind externally_sourced`, ladder);
       }
@@ -248,6 +315,15 @@ export function checkLadders(input: LadderInput): LadderFinding[] {
         violation(id, `structural tier requires a supported verdict grounded in ≥1 independent source`, ladder);
       }
     } else if (ladder === "edge-promotion-v1-clause6") {
+      // Clause 6 is a clause OF the structural-tier policy — the same
+      // classification-placement whitelist binds it.
+      if (!CLASSIFICATION_RELATIONS.has(edge.relation)) {
+        violation(
+          id,
+          `relation "${edge.relation}" is not a classification placement — the edge-promotion-v1 family sanctions classification placements only; promote via ${EDGE_AUTO_LADDER[edge.relation] ?? "manual-cpo"}`,
+          ladder,
+        );
+      }
       if (!edge.disputed) {
         violation(id, `clause-6 sanction on an edge without disputed:true`, ladder);
       }

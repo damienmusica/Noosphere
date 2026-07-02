@@ -75,3 +75,10 @@ proposal batches and their permanent QC/grounding/resolution reports are **commi
 `foundry/proposals/`** for the durable paper trail (indexed in `foundry/proposals/README.md`);
 they remain untrusted `generated`-tier material either way. This note records current practice —
 the reasoned-proposal contract itself is unchanged.
+
+**Amendment (2026-07-02, generation regime split — ratified):** separated generation is required
+**iff** the promotion gate includes an LLM verdict (a supported/disputed-class judgment). When the
+gate is fully mechanical (resolver-verified identity + liveness + schema), the orchestrator may
+draft the item list directly; the generation/QC context-separation contract itself is unchanged —
+what changed is when a separate generation context adds decorrelation value. Full policy:
+[`docs/data-foundry.md`](../data-foundry.md) §15.7.

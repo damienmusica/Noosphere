@@ -10,7 +10,7 @@ legible and the data reviewable. Do not add relation types casually.
 | `part_of` | A is a subdomain, subfield, or component of B. |
 | `prerequisite_for` | A is a useful learning prerequisite for B. |
 | `influenced` | A influenced B historically, intellectually, or methodologically. |
-| `founded_or_formalized` | A person or work helped found or formalize field/concept B. |
+| `founded_or_formalized` | A person, work, or institution (named group) helped found or formalize field/concept B. |
 | `formalizes` | A provides a formal mathematical/logical framing for B. |
 | `models` | A models or represents B. |
 | `measures` | A provides measurement/observation methods for B. |

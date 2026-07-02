@@ -146,14 +146,14 @@
           "retrieved_at": "2026-07-02",
           "quote": "The ACM Special Interest Group on Management of Data is concerned with the principles, techniques and applications of database management systems and data management technology",
           "independent": true,
-          "snapshot_url": "https://web.archive.org/web/20260609234806/https://sigmod.org/"
+          "snapshot_url": "https://web.archive.org/web/20260702132248/https://sigmod.org/"
         },
         {
           "url": "https://vldb.org",
           "retrieved_at": "2026-07-02",
           "quote": "promoting and exchanging scholarly work in databases and related fields throughout the world",
           "independent": true,
-          "snapshot_url": "https://web.archive.org/web/20260610203152/https://www.vldb.org/"
+          "snapshot_url": "https://web.archive.org/web/20260702132435/https://vldb.org/"
         }
       ],
       "notes": "v1.4: clause-1 = acm_ccs 'Information systems' (umbrella incl. Data management systems); clause-2 = ACM SIGMOD (field society, mission verbatim) + VLDB Endowment (VLDB Journal since 1992, purpose verbatim); clause-3 = journal/article referents rejected (goldenset); clause-4 = Wikidata re-checked same day (qid-gap-recheck-v1)."
@@ -195,14 +195,14 @@
           "retrieved_at": "2026-07-02",
           "quote": "Naval Architecture and Marine Engineering",
           "independent": true,
-          "snapshot_url": "https://web.archive.org/web/20260406071303/https://nces.ed.gov/ipeds/cipcode/cipdetail.aspx?y=56&cipid=90538"
+          "snapshot_url": "https://web.archive.org/web/20260702132721/https://nces.ed.gov/ipeds/cipcode/cipdetail.aspx?y=56&cipid=90538"
         },
         {
           "url": "https://www.sname.org",
           "retrieved_at": "2026-07-02",
           "quote": "Advancing the art, science, and practice of naval architecture and marine engineering",
           "independent": true,
-          "snapshot_url": "https://web.archive.org/web/20260527201158/https://sname.org/"
+          "snapshot_url": "https://web.archive.org/web/20260702132910/https://www.sname.org"
         },
         {
           "url": "https://rina.org.uk",
@@ -237,7 +237,7 @@
           "retrieved_at": "2026-07-02",
           "quote": "Sensation--Psychology",
           "independent": true,
-          "snapshot_url": "https://web.archive.org/web/20260123070036/https://id.loc.gov/authorities/classification/BF231-BF299.json"
+          "snapshot_url": "https://web.archive.org/web/20260702133247/https://id.loc.gov/authorities/classification/BF231-BF299.json"
         }
       ],
       "notes": "v1.4: clause-1 = apa_psycinfo 2320; clause-2 = Attention, Perception, & Psychophysics (Psychonomic Society dedicated journal, aims verbatim) + LCC BF231-BF299 authority record (id.loc.gov live) with UDC 159.93 already gate-grade from the cognitive-sciences skeleton baseline; clause-3 = Q160402 'perception' (process concept) and Q500096 'psychophysics' (narrower) rejections stand; clause-4 = Wikidata re-checked same day."
@@ -288,26 +288,5 @@
     "Live verification corrected a memory-sourced candidate: CIP code for Naval Architecture and Marine Engineering is 14.2201, NOT 14.2401 (= Ocean Engineering) - the criteria's live-check discipline caught it before it could enter /data.",
     "JDM + computational-cognitive-science held entries superseded with post-sweep conditions (JDM's APA clause-1 candidate eliminated by full category-list check). modern-history unchanged (waits on the section-12 period-axis ruling). indexable NOT flipped for the 5 promoted nodes - they have no editorial summaries yet (earned rule)."
   ],
-  "anchors_pending": [
-    {
-      "url": "https://sigmod.org",
-      "reason": "[SPN-FAILED] fresh save did not materialize; using 23d-old snapshot"
-    },
-    {
-      "url": "https://vldb.org",
-      "reason": "[SPN-FAILED] fresh save did not materialize; using 22d-old snapshot"
-    },
-    {
-      "url": "https://nces.ed.gov/ipeds/cipcode/cipdetail.aspx?y=56&cipid=90538",
-      "reason": "[SPN-FAILED] fresh save did not materialize; using 87d-old snapshot"
-    },
-    {
-      "url": "https://www.sname.org",
-      "reason": "[SPN-FAILED] fresh save did not materialize; using 36d-old snapshot"
-    },
-    {
-      "url": "https://id.loc.gov/authorities/classification/BF231-BF299.json",
-      "reason": "[SPN-FAILED] fresh save did not materialize; using 160d-old snapshot"
-    }
-  ]
+  "anchors_pending": []
 }

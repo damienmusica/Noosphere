@@ -5,9 +5,14 @@
  * Wayback snapshot, paste both into the record). For every verdict source in
  * the decision file that still lacks anchors:
  *
- *   - Wikipedia URLs get a revision permalink (…&oldid=NNN) via the wiki's
- *     own API (keyless, read-only).
- *   - Every URL gets a Wayback snapshot: reuse a recent one when the
+ *   - Wikipedia/Wikidata URLs get a revision permalink (…&oldid=NNN) via the
+ *     wiki's own API (keyless, read-only). Per §8 (2026-07-02 revision) the
+ *     oldid permalink IS the permanence anchor for wiki sources: a source that
+ *     has (or obtains this run) a permalink is excluded from the snapshot
+ *     pipeline entirely — no SPN attempts, no [SPN-FAILED] ghosts — and
+ *     --write drops any leftover pending entries for wiki URLs that carry a
+ *     permalink.
+ *   - Every other URL gets a Wayback snapshot: reuse a recent one when the
  *     availability API has it (default ≤7 days old), otherwise request an
  *     anonymous Save-Page-Now capture and poll until it materializes.
  *     Anonymous SPN is rate-limited — the script spaces requests and backs
@@ -28,7 +33,11 @@
  *
  * Failures are recorded HONESTLY in `anchors_pending` (the [SPN-FAILED]
  * discipline, docs/data-foundry.md §8) — re-run the script until the queue
- * clears; apply-batch surfaces pending anchors on every run.
+ * clears; apply-batch surfaces pending anchors on every run. [SPN-FAILED]
+ * entries queue their URLs for retry: the next run re-attempts a snapshot even
+ * when a stale fallback was already recorded, and a fresh snapshot (within the
+ * max age) REPLACES the recorded stale one; a still-stale result only renews
+ * the pending entry, never silently drops it.
  *
  * With `--write`, snapshot_url / revision_permalink are written back into the
  * decision file's verdict sources and anchors_pending is updated.
@@ -119,6 +128,15 @@ async function requestSave(url: string): Promise<{ ok: boolean; status: number }
   }
 }
 
+/** wikipedia.org/wikidata.org — hosts where the oldid permalink is the permanence anchor (§8). */
+function isWikiHost(url: string): boolean {
+  try {
+    return /(^|\.)(wikipedia|wikidata)\.org$/.test(new URL(url).hostname);
+  } catch {
+    return false;
+  }
+}
+
 /** MediaWiki revision permalink for /wiki/<title> URLs (Wikipedia + Wikidata). */
 async function wikiRevisionPermalink(url: string): Promise<string | null> {
   let parsed: URL;
@@ -171,26 +189,48 @@ if (!decisionPath) {
 async function main(): Promise<void> {
   const decision = loadDecision(decisionPath!);
 
+  // [SPN-FAILED] pending entries are exactly the stale-fallback/no-snapshot
+  // cases queued for retry — their URLs need a snapshot attempt even when a
+  // stale snapshot_url is already recorded.
+  const retryUrls = new Set(
+    decision.anchors_pending.filter((p) => p.reason.includes("[SPN-FAILED]")).map((p) => p.url),
+  );
+
   // Collect distinct URLs that still need anchoring.
-  type Work = { url: string; needsSnapshot: boolean; needsRevision: boolean };
+  type Work = { url: string; isWiki: boolean; hasPermalink: boolean; needsSnapshot: boolean; needsRevision: boolean };
   const workByUrl = new Map<string, Work>();
   for (const v of decision.verdicts) {
     for (const s of v.sources) {
-      const existing = workByUrl.get(s.url) ?? { url: s.url, needsSnapshot: false, needsRevision: false };
-      if (!s.snapshot_url) existing.needsSnapshot = true;
-      if (!s.revision_permalink && /(^|\.)(wikipedia|wikidata)\.org$/.test(new URL(s.url).hostname)) {
-        existing.needsRevision = true;
+      const isWiki = isWikiHost(s.url);
+      const existing =
+        workByUrl.get(s.url) ??
+        { url: s.url, isWiki, hasPermalink: false, needsSnapshot: false, needsRevision: false };
+      if (s.revision_permalink) existing.hasPermalink = true;
+      if (isWiki && !s.revision_permalink) existing.needsRevision = true;
+      // A wiki source carrying an oldid permalink is fully anchored (§8) — no
+      // snapshot work. Everyone else needs a snapshot when it's missing or
+      // when a prior run left an [SPN-FAILED] retry entry for the URL.
+      if (!(isWiki && s.revision_permalink) && (!s.snapshot_url || retryUrls.has(s.url))) {
+        existing.needsSnapshot = true;
       }
       if (existing.needsSnapshot || existing.needsRevision) workByUrl.set(s.url, existing);
     }
   }
-  if (workByUrl.size === 0) {
+  if (workByUrl.size === 0 && !writeBack) {
     console.log("nothing to anchor — every verdict source already carries its anchors.");
     return;
   }
-  console.log(`anchoring ${workByUrl.size} URL(s)...`);
+  if (workByUrl.size === 0) {
+    // --write still runs: pending entries for permalink-anchored wiki URLs
+    // (ghosts) are dropped below even when no fetch work remains.
+    console.log("nothing to anchor — every verdict source already carries its anchors.");
+  } else {
+    console.log(`anchoring ${workByUrl.size} URL(s)...`);
+  }
 
-  const snapshots = new Map<string, string>();
+  // `fresh` = obtained/reused within max age this run; only fresh snapshots
+  // may REPLACE a previously recorded (stale-fallback) snapshot_url.
+  const snapshots = new Map<string, { url: string; fresh: boolean }>();
   const revisions = new Map<string, string>();
   const pending: { url: string; reason: string }[] = [];
   let firstSave = true;
@@ -204,7 +244,7 @@ async function main(): Promise<void> {
     why: string,
   ): void => {
     if (existing) {
-      snapshots.set(url, existing.snapshot_url);
+      snapshots.set(url, { url: existing.snapshot_url, fresh: false });
       pending.push({
         url,
         reason: `[SPN-FAILED] fresh save skipped (${why}); using ${Math.round(ageDays(existing.timestamp))}d-old snapshot (predates QC)`,
@@ -229,10 +269,17 @@ async function main(): Promise<void> {
       await sleep(500);
     }
     if (!work.needsSnapshot) continue;
+    // §8: a wiki URL whose permalink exists (or resolved just above) needs no
+    // snapshot — the snapshot pipeline runs for wiki URLs only as a backup
+    // when revision resolution failed.
+    if (work.isWiki && (work.hasPermalink || revisions.has(work.url))) {
+      console.log(`  ✓ anchored  ${work.url} (wiki oldid permalink — snapshot not required, §8)`);
+      continue;
+    }
 
     const existing = await waybackAvailable(work.url);
     if (existing && ageDays(existing.timestamp) <= maxSnapshotAgeDays) {
-      snapshots.set(work.url, existing.snapshot_url);
+      snapshots.set(work.url, { url: existing.snapshot_url, fresh: true });
       console.log(`  ✓ snapshot  ${work.url} → ${existing.snapshot_url} (existing, ${Math.round(ageDays(existing.timestamp))}d old)`);
       continue;
     }
@@ -261,7 +308,7 @@ async function main(): Promise<void> {
       if (check && ageDays(check.timestamp) <= maxSnapshotAgeDays) found = check.snapshot_url;
     }
     if (found) {
-      snapshots.set(work.url, found);
+      snapshots.set(work.url, { url: found, fresh: true });
       spnConsecutiveFailures = 0;
       console.log(`  ✓ snapshot  ${work.url} → ${found}`);
     } else {
@@ -275,7 +322,7 @@ async function main(): Promise<void> {
       }
       if (existing) {
         // Honest fallback: an older snapshot beats none, and the pending queue records the gap.
-        snapshots.set(work.url, existing.snapshot_url);
+        snapshots.set(work.url, { url: existing.snapshot_url, fresh: false });
         pending.push({ url: work.url, reason: `[SPN-FAILED] fresh save did not materialize; using ${Math.round(ageDays(existing.timestamp))}d-old snapshot` });
         console.log(`  ⚠ snapshot  ${work.url} → ${existing.snapshot_url} (stale fallback, save pending)`);
       } else {
@@ -294,15 +341,26 @@ async function main(): Promise<void> {
       for (const s of v.sources ?? []) {
         const snap = snapshots.get(s.url);
         const rev = revisions.get(s.url);
-        if (snap && !s.snapshot_url) s.snapshot_url = snap;
+        // Fill an empty snapshot_url; an already-recorded one may only be
+        // REPLACED when the URL was queued for retry ([SPN-FAILED]) and this
+        // run's snapshot is fresh — a stale fallback never overwrites.
+        if (snap && (!s.snapshot_url || (retryUrls.has(s.url) && snap.fresh))) s.snapshot_url = snap.url;
         if (rev && !s.revision_permalink) s.revision_permalink = rev;
+      }
+    }
+    // Wiki URLs whose source carries an oldid permalink are fully anchored
+    // (§8) — any pending entry for them is a ghost and is dropped.
+    const wikiAnchored = new Set<string>();
+    for (const v of raw.verdicts ?? []) {
+      for (const s of v.sources ?? []) {
+        if (s.revision_permalink && isWikiHost(s.url)) wikiAnchored.add(s.url);
       }
     }
     const touched = new Set([...workByUrl.keys()]);
     raw.anchors_pending = [
       ...(raw.anchors_pending ?? []).filter((p) => !touched.has(p.url)),
       ...pending,
-    ];
+    ].filter((p) => !wikiAnchored.has(p.url));
     writeFileSync(decisionPath!, JSON.stringify(raw, null, 2) + "\n");
     console.log(`✓ wrote anchors into ${decisionPath} (${snapshots.size} snapshots, ${revisions.size} revision permalinks, ${pending.length} pending)`);
   } else if (pending.length > 0) {

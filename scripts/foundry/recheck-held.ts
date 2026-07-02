@@ -2,7 +2,7 @@
  * Re-evaluate held/blocked items — the silent-recall fix, run at session start
  * (vault workflow session ritual).
  *
- * Two sweeps, both offline (no network, no LLM):
+ * Three sweeps, all offline (no network, no LLM):
  *
  * 1. Ledger sweep (foundry/held.json): for every held entry, report the
  *    item's CURRENT /data state next to its recorded blocking condition —
@@ -16,12 +16,20 @@
  *    nudge), or no-detectable-blocker (= verdict-blocked or never re-run:
  *    exactly the recheck candidates).
  *
+ * 3. Pending-anchor sweep (foundry/decisions/*.json): every `anchors_pending`
+ *    entry across all committed decision files — the SPN-outage backlog that
+ *    otherwise only surfaces during apply-batch. Re-run
+ *    `foundry:anchor -- <decision> --write` when SPN recovers.
+ *
  * Output is a worklist for the orchestrator; nothing is written. Promotion
  * still goes through a decision file + apply-batch.
  *
  * Usage: npm run foundry:recheck-held
  */
-import { loadCurrentData, loadHeld } from "./lib/decision-io.ts";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+
+import { DECISIONS_DIR, loadCurrentData, loadHeld } from "./lib/decision-io.ts";
 
 const data = loadCurrentData();
 const held = loadHeld();
@@ -118,5 +126,36 @@ if (
     ledgered.length + recheckCandidates.length === 0 &&
   proposedNodes.length === 0
 ) {
-  console.log("Nothing held anywhere. ✓");
+  console.log("Nothing held anywhere. ✓\n");
+}
+
+// --- 3. Pending-anchor sweep -------------------------------------------------------
+// Evidence-permanence anchors that failed at anchor time ([SPN-FAILED]) sit in
+// each decision file's `anchors_pending`; without this sweep they only surface
+// during apply-batch. Lenient read on purpose: one malformed decision file must
+// not kill the session-start worklist.
+const pendingAnchors: string[] = [];
+for (const entry of readdirSync(DECISIONS_DIR).sort()) {
+  if (!entry.endsWith(".json")) continue;
+  let decision: unknown;
+  try {
+    decision = JSON.parse(readFileSync(join(DECISIONS_DIR, entry), "utf8"));
+  } catch (err) {
+    pendingAnchors.push(`${entry}: could not read/parse decision file — ${(err as Error).message}`);
+    continue;
+  }
+  if (!decision || typeof decision !== "object") continue;
+  const d = decision as { batch_id?: unknown; anchors_pending?: unknown };
+  const batchId = typeof d.batch_id === "string" ? d.batch_id : entry.replace(/\.json$/, "");
+  if (!Array.isArray(d.anchors_pending)) continue;
+  for (const a of d.anchors_pending as { url?: unknown; reason?: unknown }[]) {
+    pendingAnchors.push(`${batchId}: ${String(a?.url ?? "(no url)")} — ${String(a?.reason ?? "(no reason)")}`);
+  }
+}
+console.log("Pending permanence anchors (re-run foundry:anchor -- <decision> --write when SPN recovers):");
+if (pendingAnchors.length > 0) {
+  for (const s of pendingAnchors) console.log(`  - ${s}`);
+  console.log(`  ${pendingAnchors.length} pending anchor(s) total.`);
+} else {
+  console.log("  none");
 }
