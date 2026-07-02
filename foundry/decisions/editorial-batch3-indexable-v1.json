@@ -1,0 +1,255 @@
+{
+  "version": 1,
+  "batch_id": "editorial-batch3-indexable-v1",
+  "decided_at": "2026-07-02",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-02"
+  },
+  "promotions": [
+    {
+      "kind": "node",
+      "id": "person:isaac-newton",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:kurt-godel",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:roman-jakobson",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:adam-smith",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:alonzo-church",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:andreas-vesalius",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:antoine-lavoisier",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:arthur-schopenhauer",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:auguste-comte",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:bertrand-russell",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:charles-lyell",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:claude-shannon",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:ferdinand-de-saussure",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:franz-boas",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:georg-cantor",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:gregor-mendel",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:henri-poincare",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:john-von-neumann",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:karl-pearson",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:ludwig-wittgenstein",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:norbert-wiener",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:ronald-fisher",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:carl-friedrich-gauss",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:carl-linnaeus",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:charles-sanders-peirce",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:daniel-kahneman",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:david-hilbert",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:emmy-noether",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:george-boole",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:gottfried-wilhelm-leibniz",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:jean-piaget",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:john-nash",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:kenneth-arrow",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:wilhelm-wundt",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    }
+  ],
+  "notes": [
+    "Indexable earned-rule flip for the 34 editorial-batch3 person nodes (all deceased), executed under the CPO-ratified metadata-flip refinement (2026-07-02, session #55 ext.): a reviewed->reviewed op carrying only set_indexable/set_note is a metadata flip, not a promotion, and demands no node ladder; the earned rule (reviewed status + reviewed en translation) remains machine-enforced by validate-data.",
+    "Eligibility computed mechanically: status=reviewed AND indexable=false AND en translation reviewed=true with non-empty summary -> exactly the 34 batch-3 nodes (0 strays, 0 living persons). Corpus-wide retroactive audit (covers the #53 batch-2 flips): 0 indexable nodes violate the earned rule.",
+    "Ladder-gate safety clause exercised in self-test: a reviewed->reviewed op with set_external_ids/set_evidence is a blocking violation (identity/evidence changes require a real status transition)."
+  ]
+}

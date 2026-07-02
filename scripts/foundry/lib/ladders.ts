@@ -69,7 +69,12 @@ function reviewedOutcomes(input: LadderInput): { kind: "node" | "edge"; id: stri
     if (e.status === "reviewed") out.push({ kind: "edge", id: e.id });
   }
   for (const p of decision.promotions) {
-    if (p.to === "reviewed") out.push({ kind: p.kind, id: p.id });
+    // A reviewed→reviewed op is a metadata flip (set_indexable/set_note), not a
+    // promotion — it does not (re)earn reviewed status, so it demands no node
+    // ladder (CPO-ratified 2026-07-02, session #55 ext.). The indexable earned
+    // rule stays machine-enforced by validate-data (indexable ⟹ reviewed
+    // status + reviewed en translation), so no gate is lost here.
+    if (p.to === "reviewed" && p.from !== "reviewed") out.push({ kind: p.kind, id: p.id });
   }
   return out;
 }
@@ -93,9 +98,33 @@ export function checkLadders(input: LadderInput): LadderFinding[] {
   const outcomes = reviewedOutcomes(input);
   const outcomeIds = new Set(outcomes.map((o) => o.id));
 
-  // Dangling sanctions: a sanction must describe a reviewed outcome of THIS batch.
+  // Metadata-flip ops (reviewed→reviewed): only set_indexable/set_note may ride
+  // them — anything identity- or evidence-bearing must go through a real status
+  // transition, where a ladder sanction is demanded (CPO-ratified 2026-07-02).
+  for (const p of decision.promotions) {
+    if (p.from !== "reviewed" || p.to !== "reviewed") continue;
+    if (p.set_external_ids || p.set_evidence) {
+      violation(
+        p.id,
+        `reviewed→reviewed is a metadata flip: set_external_ids/set_evidence require a real status transition`,
+      );
+    }
+    if (p.kind === "node" && p.set_indexable !== undefined) {
+      advisory(
+        p.id,
+        `indexable flip — earned rule (reviewed status + reviewed en translation) enforced by validate-data`,
+      );
+    }
+  }
+
+  // Dangling sanctions: a sanction must describe a reviewed outcome of THIS
+  // batch — or an editorial translation subject (editorial-v2 sanctions cover
+  // translation_updates, which reviewedOutcomes deliberately does not count).
+  const editorialSubjects = new Set(
+    decision.translation_updates.filter((tu) => tu.reviewed).map((tu) => tu.node_id),
+  );
   for (const s of decision.sanctions) {
-    if (!outcomeIds.has(s.subject_id)) {
+    if (!outcomeIds.has(s.subject_id) && !editorialSubjects.has(s.subject_id)) {
       advisory(s.subject_id, `sanction (${s.ladder}) has no reviewed outcome in this decision`, s.ladder);
     }
   }
