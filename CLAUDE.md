@@ -218,8 +218,10 @@ npm run validate:data  # tsx scripts/validate-data.ts (incl. canonical-format + 
 npm run format:data    # rewrite /data into canonical form (semantic no-op, verified)
 
 # Batch flow (docs/data-foundry.md §15.3):
+npm run foundry:fetch-corpus    -- <urls.json|txt> --out <scratch-dir>     # local-only network; polite source collection (never hand-roll fetch loops)
+npm run foundry:draft-decision  -- <batch-id> --qc-by "<name>=<version>"   # offline; schema-valid decision skeleton (+ --summaries / --flip-indexable seeding)
 npm run foundry:verify-identity -- foundry/decisions/<batch>.json --write  # local-only network
-npm run foundry:anchor          -- foundry/decisions/<batch>.json --write  # local-only network
+npm run foundry:anchor          -- foundry/decisions/<batch>.json --write  # local-only network (SPN circuit breaker; --no-spn on outage days)
 npm run foundry:ladder-check    -- foundry/decisions/<batch>.json          # offline
 npm run foundry:apply-batch     -- foundry/decisions/<batch>.json          # offline; THE write path
 npm run foundry:report          -- foundry/decisions/<batch>.json --write  # offline

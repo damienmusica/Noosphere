@@ -17,6 +17,8 @@
     "foundry:claim-anchor": "tsx scripts/foundry/claim-anchor-check.ts",
     "foundry:fetch-verify": "tsx scripts/foundry/fetch-verify.ts",
     "foundry:openalex-prevalidate": "tsx scripts/foundry/openalex-prevalidate.ts",
+    "foundry:draft-decision": "tsx scripts/foundry/draft-decision.ts",
+    "foundry:fetch-corpus": "tsx scripts/foundry/fetch-corpus.ts",
     "foundry:ladder-check": "tsx scripts/foundry/ladder-check.ts",
     "foundry:verify-identity": "tsx scripts/foundry/verify-identity.ts",
     "foundry:anchor": "tsx scripts/foundry/anchor.ts",
