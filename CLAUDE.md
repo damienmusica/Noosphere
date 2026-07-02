@@ -187,6 +187,22 @@ to make implementation easier.
   OpenAlex·ORCID·Scholia, prior-art unanimous; Noosphere narrower → a-fortiori).
   Full design = vault `reference/living-person-handling-v2-design.md`; full
   policy = `docs/data-foundry.md` §8.**
+- **Ops-efficiency package (CPO-ratified 2026-07-02) — full spec =
+  `docs/data-foundry.md` §15 (pointer, not restatement):** a batch's QC
+  outcome is a committed **decision file** (`foundry/decisions/<batch>.json`);
+  **`foundry:apply-batch` is the ONLY write path to /data** (hand-rolled
+  session write scripts are retired); ladder arithmetic is code
+  (`foundry:ladder-check` — divergence from ratified policy text is a
+  stop-point); /data has ONE canonical byte format (`format:data`, enforced —
+  the old "preserve original indentation" hand-editing is obsolete);
+  provider-ID uniqueness enforced; **proposal contract v2** (generators emit
+  blind `referent` descriptions, provider IDs schema-banned — QIDs measured
+  ~100% hallucinated); **generation regime split** (separated generation
+  required ⟺ the promotion gate includes an LLM verdict; canon-enumeration /
+  mechanical-closure / identity-dominated waves may be orchestrator-drafted);
+  identity cache caches identity never truth (living P570 always live);
+  held/rejection ledgers + `foundry:recheck-held` at session start;
+  editorial-gap dashboard in `report:graph`.
 
 ## Stack and dependencies
 
@@ -198,5 +214,17 @@ to make implementation easier.
 
 ```bash
 npm run typecheck      # tsc --noEmit
-npm run validate:data  # tsx scripts/validate-data.ts
+npm run validate:data  # tsx scripts/validate-data.ts (incl. canonical-format + v2-proposal checks)
+npm run format:data    # rewrite /data into canonical form (semantic no-op, verified)
+
+# Batch flow (docs/data-foundry.md §15.3):
+npm run foundry:verify-identity -- foundry/decisions/<batch>.json --write  # local-only network
+npm run foundry:anchor          -- foundry/decisions/<batch>.json --write  # local-only network
+npm run foundry:ladder-check    -- foundry/decisions/<batch>.json          # offline
+npm run foundry:apply-batch     -- foundry/decisions/<batch>.json          # offline; THE write path
+npm run foundry:report          -- foundry/decisions/<batch>.json --write  # offline
+
+# Session start ritual:
+npm run foundry:recheck-held   # held/blocked worklist
+npm run report:graph           # incl. editorial-gap dashboard
 ```

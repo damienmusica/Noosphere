@@ -1164,3 +1164,126 @@ non-coverage, never silently dropped.
 - **`domainKeySchema` enum.** The `practical_knowledge` / `meta_knowledge` enum values are retained
   but unused (reserved) — removing them is a separate schema change with no current benefit; the
   deprecation of the domain nodes is what enforces "not a continent."
+
+## 15. Deterministic foundry toolchain — decision files and the one write path (2026-07-02)
+
+Ratified as the **ops-efficiency package** (CPO, 2026-07-02; vault decision log). The package
+answers one diagnosis: eight of the ten measured operational inefficiencies shared a root cause —
+*a batch's promotion decision existed only in orchestrator conversation context plus hand-written
+prose*, so writing, anchoring, reporting, caching, and held-item recall were all re-derived by hand
+every session. The fix is to materialize the decision as data and hang deterministic tools off it.
+Everything below is offline/maintainer-local, LLM-free, and CI-safe (network jobs are resolver-class
+and never run in CI — §11 boundaries).
+
+### 15.1 Canonical /data format
+
+Every `/data` file has exactly one byte representation: top-level items sorted by a stable per-file
+key, 2-space indent, trailing newline (`scripts/lib/canonical-data.ts`). `npm run validate:data`
+fails on deviation; `npm run format:data` rewrites (after proving the rewrite is a semantic no-op).
+Consequences: write tooling can regenerate files without spurious diffs on untouched items, and
+sorted insertion keeps parallel batches from colliding at the file tail. The old "preserve original
+indentation, avoid reformatting unrelated items" hand-editing discipline is **obsolete**.
+
+Two invariants added with it: node **provider-ID uniqueness** (no two nodes may share a Wikidata
+QID / OpenAlex ID — the machine backstop against duplicate modeling of one referent) and the
+existing slug-ID uniqueness.
+
+### 15.2 Promotion decision files (the keystone)
+
+A batch's QC outcome is a committed, machine-readable **decision file** at
+`foundry/decisions/<batch-id>.json` (`src/schema/foundry-decision.ts`): adds (nodes / edges /
+sources / translations / links), status promotions, editorial summary updates, **verdict records**
+(every source QC read: url, retrieved_at, snapshot, revision permalink, verbatim quote,
+independence flag), **identity records** (provider, id, method, retrieved_at, and for living
+persons the P570-absent observation date), **ladder sanctions** for every reviewed outcome,
+rejection/held ledger entries, and pending anchors. Decision files are the audit trail: bulk
+re-audit replays them; deleting one deletes the ability to re-audit.
+
+### 15.3 Standard batch flow (commands)
+
+```bash
+# 1. (regime-dependent, §15.7) generation subagent → v2 proposals, no provider IDs
+# 2. label→candidate resolution (existing resolver, §11)
+npm run foundry:resolve-wikidata -- foundry/batches/<manifest>.json
+# 3. orchestrator drafts foundry/decisions/<batch>.json (verdicts + sources read)
+# 4. batched identity re-confirmation (50 QIDs/HTTP call) + committed cache
+npm run foundry:verify-identity -- foundry/decisions/<batch>.json --write
+# 5. permanence anchors: wiki revision permalinks + Wayback snapshots
+npm run foundry:anchor -- foundry/decisions/<batch>.json --write
+# 6. promotion arithmetic (read-only; apply-batch re-runs it before writing)
+npm run foundry:ladder-check -- foundry/decisions/<batch>.json
+# 7. THE one write path: preflight → ladders → canonical write → full validate
+npm run foundry:apply-batch -- foundry/decisions/<batch>.json
+# 8. report skeleton (facts generated; commentary section stays LLM/human)
+npm run foundry:report -- foundry/decisions/<batch>.json --write
+# session start ritual additions:
+npm run foundry:recheck-held   # held/blocked worklist (silent-recall fix)
+npm run report:graph           # includes the editorial-gap dashboard
+```
+
+Hand-rolled per-session write scripts against `/data` are **retired**; `foundry:apply-batch` is the
+only sanctioned write path for batch outcomes.
+
+### 15.4 Ladder arithmetic is code
+
+`scripts/foundry/lib/ladders.ts` is the executable transcription of the ratified promotion ladders
+(node v1 / v1.4, living-person v2 (70), edge structural / clause-6, formalizes (54),
+founded_or_formalized (60)/(61), a-relations (68), editorial v2, manual-cpo). The vault decision
+log remains the authority: the LLM judgments (supported/disputed, direction, identity referent)
+stay interactive and arrive as recorded verdict fields; the *arithmetic* over them (endpoints
+reviewed? ≥2 independent sources? living guard? which clause?) is pure code, identical every
+session. **A divergence between this code and ratified policy text is a stop-point** — fix the
+transcription in the same change as the vault ruling, never silently.
+
+### 15.5 Identity cache — cache identity, never truth
+
+`foundry/cache/wikidata-entities.json` (committed) caches QID→entity snapshots (label, P31, P570
+presence, retrieved_at) with a TTL (`--max-age-days`, default 90). **Claim-support verdicts are
+never cached anywhere** — temporal validity is their point. Living persons are never served from
+cache for P570: aliveness is observed live at promotion time (decision (70)), never assumed.
+
+### 15.6 Proposal contract v2 — no provider IDs from generators
+
+Measured across every generation wave, generator-guessed QIDs were ~100% hallucinated (9/9, 12/12,
+20/20, 21/21, 7/7). v2 (`foundryProposalV2Schema`) removes the guessing step at the schema level:
+`external_ids` is gone from proposals; every proposed node instead carries a **blind `referent`
+description** (discriminating, written from the generator's own knowledge, no lookups) that the
+resolver matches independently — a description/resolution mismatch is an error signal the old
+contract could not produce. No QID/OpenAlex shapes may appear anywhere in a v2 artifact (string
+scan, enforced by `validate:data` on all post-cutover batches). Deliberately NOT adopted: giving
+the generator resolver access — it would anchor the referent description to whatever resolved,
+destroying the blind-description checksum, and resolvers are maintainer-local anyway.
+
+### 15.7 Generation regime split (ADR 0007 amendment, ratified 2026-07-02)
+
+**Separated generation is required exactly when the promotion gate includes an LLM judgment**
+(a supported/disputed-class verdict). When the gate is fully mechanical — resolver-verified
+identity + liveness + schema — the gate itself is uncorrelated with every context, so the
+error-decorrelation argument does not bind and the orchestrator may draft the item list directly.
+In practice:
+
+- **Separated generation stays** for: (a)-relations, `formalizes` / `founded_or_formalized`
+  claims, contested placements, any novel evidence-backed edge wave.
+- **Orchestrator-drafted lists are permitted** for: enumeration of an externally defined canon
+  (the external authority is the real generator), mechanical closure waves (mirrors, backfills,
+  cross-listing expansions — items are *derived*, not proposed), and identity-dominated node waves
+  whose entire promotion path is resolver-verified.
+- Selection/coverage bias is bounded by the gap dashboards and by the gates not caring who
+  proposed an item. The generation/QC **context-separation contract itself is unchanged** — what
+  changed is when a separate generation context adds decorrelation value at all.
+
+### 15.8 Ledgers: held and rejected candidates
+
+`foundry/held.json` (blocked items with their blocking condition and machine/manual recheck flag)
+and `foundry/rejections.json` (rejected candidates with reasons) are appended by `apply-batch` from
+each decision file. `foundry:recheck-held` renders both against current `/data` state at session
+start — a cleared blocker surfaces instead of rotting, and `apply-batch` refuses to silently
+re-admit a rejected label (`override_rejections` makes re-admission explicit). Generation orders
+should paste the relevant rejection-ledger entries into the subagent's context.
+
+### 15.9 Editorial-gap dashboard
+
+`npm run report:graph` reports the summary gap (reviewed nodes without an `en` summary — 112 of
+589, 19%, at adoption) with a degree-ordered priority list, so editorial batches close the gap
+readers actually hit first. The gap is inventory, acceptable while tracked and bounded; a WIP cap
+remains an open CPO knob if the trend line grows.
