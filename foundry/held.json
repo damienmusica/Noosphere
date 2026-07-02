@@ -113,62 +113,6 @@
     "note": "Living person — (70) floor applies whenever re-framed; attributed wording required."
   },
   {
-    "id": "subfield:computational-cognitive-science",
-    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
-    "recheck": "machine",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:computer-systems",
-    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
-    "recheck": "machine",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:databases-and-information-systems",
-    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
-    "recheck": "machine",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:distributed-and-parallel-computing",
-    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
-    "recheck": "machine",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:judgment-and-decision-making",
-    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
-    "recheck": "machine",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:modern-history",
-    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
-    "recheck": "machine",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:naval-architecture-and-marine-engineering",
-    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
-    "recheck": "machine",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:sensation-and-perception",
-    "blocking_condition": "QID-less compound-term subfield: no single-entity Wikidata match (journals/papers/conferences only; naval-arch combined entity Q101910631 is a 0-sitelink stub failing multi-signal). node-promotion v1/v1.4 identity anchor unmet. Queued for resolver v4 pit-stop (singular-form fallback + component decomposition + alias-union + orphan-stub strong-flag); re-resolve AFTER resolver v4 is built and measured (measure-first — not before). Ref decision (92) 8 QID-less honest gaps.",
-    "recheck": "machine",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
     "id": "subfield:esotericism-and-theosophy",
     "blocking_condition": "QID Q7988481 (Western esotericism) present but held on a section-12 granularity/label-referent tension: node slug 'esotericism-and-theosophy' vs QID referent 'Western esotericism'. Rule-silent modeling hold, NOT a verification gap — needs a section-12 granularity ruling (stop-set: new modeling policy), not re-resolution. Ref decision (92) 3 rule-silent modeling.",
     "recheck": "manual",
@@ -215,6 +159,62 @@
     "blocking_condition": "CPO ruling (session #55, 2026-07-02): applies_to is a substantive claim, NOT a classification placement, so it is not a structural-tier edge and does not ride edge-promotion-v1-structural. Held at proposed until a (d)-type applies_to ladder is designed and measured on its own. Sole non-structural recheck candidate surfaced by recheck-wave1.",
     "recheck": "manual",
     "batch_id": "recheck-wave2-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:computer-systems",
+    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q428691 rejected — computer engineering — separate field (goldenset must_not_select, session #10/#11 verdict). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+    "recheck": "machine",
+    "batch_id": "qid-gap-recheck-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:databases-and-information-systems",
+    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q64812807 rejected — information systems studies — does not cover the databases component (umbrella test, session #11; goldenset must_not_select). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+    "recheck": "machine",
+    "batch_id": "qid-gap-recheck-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:distributed-and-parallel-computing",
+    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q180634 rejected — distributed computing — does not umbrella parallel computing (umbrella test, session #11; goldenset must_not_select). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+    "recheck": "machine",
+    "batch_id": "qid-gap-recheck-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:computational-cognitive-science",
+    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q4874465 rejected — Bayesian cognitive science — narrow sub-approach, not the discipline (session #21 rejection). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+    "recheck": "machine",
+    "batch_id": "qid-gap-recheck-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:judgment-and-decision-making",
+    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q1331926 rejected — decision making — process/concept, not the discipline (session #21 rejection). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+    "recheck": "machine",
+    "batch_id": "qid-gap-recheck-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:sensation-and-perception",
+    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q160402 rejected — perception — percept/process concept, not the discipline (session #21 rejection). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+    "recheck": "machine",
+    "batch_id": "qid-gap-recheck-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:naval-architecture-and-marine-engineering",
+    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1, resolver v4): best candidate Q1136352 rejected — naval architecture — component; does not umbrella marine engineering (umbrella test; combined stub Q101910631 remains rejected). Resolver capability is NOT the blocker (v4 singular/component fallbacks + orphan-stub penalty have existed since 2026-06-11 and surface only the known-rejected candidates, all self-flagged ambiguous). Unblock paths: (a) upstream discipline entity appears — periodic machine recheck by re-running foundry/batches/qid-gap-recheck-v1.json; (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93): adding a taxonomy authority is a CPO gate) — candidate authorities recorded in the qid-gap-recheck-v1 decision notes.",
+    "recheck": "machine",
+    "batch_id": "qid-gap-recheck-v1",
+    "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:modern-history",
+    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1): only Q3281534 'modern period' (era, not a discipline). The REAL gate is the §12 period-axis ruling (does the atlas admit period subfields at all) — bundled with subfield:modern-philosophy in the planned §12 amendment (decision (99) item 2). Not a resolver item and not a v1.4 taxonomy candidate until §12 rules the node shape.",
+    "recheck": "manual",
+    "batch_id": "qid-gap-recheck-v1",
     "recorded_at": "2026-07-02"
   }
 ]
