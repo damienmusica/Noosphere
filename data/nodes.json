@@ -33,7 +33,7 @@
     "domain": "humanities",
     "level": 3,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q1152224"
@@ -75,7 +75,7 @@
     "domain": "formal_sciences",
     "level": 3,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q1451046"
@@ -145,7 +145,7 @@
     "domain": "natural_sciences",
     "level": 3,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q134465"
@@ -215,7 +215,7 @@
     "domain": "humanities",
     "level": 3,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q1780130"
@@ -341,7 +341,7 @@
     "domain": "humanities",
     "level": 3,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q583998"
@@ -2071,13 +2071,13 @@
     "domain": "life_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q160627"
     },
     "created_at": "2026-06-30",
-    "updated_at": "2026-06-30"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:alfred-tarski",
@@ -2085,13 +2085,13 @@
     "domain": "formal_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q207534"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:alonzo-church",
@@ -2113,13 +2113,13 @@
     "domain": "social_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q132489"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:amos-tversky",
@@ -2127,13 +2127,13 @@
     "domain": "cognitive_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q474333"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:andreas-vesalius",
@@ -2155,13 +2155,13 @@
     "domain": "formal_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q153224"
     },
     "created_at": "2026-06-19",
-    "updated_at": "2026-06-19"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:antoine-lavoisier",
@@ -2253,13 +2253,13 @@
     "domain": "social_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q223723"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:charles-darwin",
@@ -2309,13 +2309,13 @@
     "domain": "cognitive_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q356611"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:claude-levi-strauss",
@@ -2365,13 +2365,13 @@
     "domain": "computer_and_information_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q543682"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:david-hilbert",
@@ -2407,13 +2407,13 @@
     "domain": "social_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q1265355"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:edmund-husserl",
@@ -2435,13 +2435,13 @@
     "domain": "life_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q172254"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:emil-kraepelin",
@@ -2449,13 +2449,13 @@
     "domain": "medicine_and_health",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q76828"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:emile-durkheim",
@@ -2491,13 +2491,13 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q213579"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:ernst-haeckel",
@@ -2505,13 +2505,13 @@
     "domain": "life_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q48246"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:eugenius-warming",
@@ -2519,13 +2519,13 @@
     "domain": "life_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q355888"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:ferdinand-de-saussure",
@@ -2575,13 +2575,13 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q93826"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:georg-cantor",
@@ -2617,13 +2617,13 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q295386"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:george-lakoff",
@@ -2631,13 +2631,13 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q313772"
     },
     "created_at": "2026-06-30",
-    "updated_at": "2026-06-30"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:george-miller",
@@ -2645,13 +2645,13 @@
     "domain": "cognitive_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q670658"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:georges-cuvier",
@@ -2659,13 +2659,13 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q171969"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:georgius-agricola",
@@ -2673,13 +2673,13 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q76579"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:gottfried-wilhelm-leibniz",
@@ -2729,13 +2729,13 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q463448"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:hans-hahn",
@@ -2743,13 +2743,13 @@
     "domain": "formal_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q84552"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:henri-poincare",
@@ -2771,13 +2771,13 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q93678"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:isaac-newton",
@@ -2799,13 +2799,13 @@
     "domain": "computer_and_information_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q62866"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:james-hutton",
@@ -2813,13 +2813,13 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q192927"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:jan-tinbergen",
@@ -2827,13 +2827,13 @@
     "domain": "social_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q183181"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:jean-piaget",
@@ -2855,13 +2855,13 @@
     "domain": "social_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q454938"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:john-mccarthy",
@@ -2869,13 +2869,13 @@
     "domain": "computer_and_information_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q92739"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:john-milne",
@@ -2883,13 +2883,13 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q2739759"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:john-nash",
@@ -2911,13 +2911,13 @@
     "domain": "medicine_and_health",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q356407"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:john-tooby",
@@ -2925,13 +2925,13 @@
     "domain": "cognitive_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q1701956"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:john-von-neumann",
@@ -2953,13 +2953,13 @@
     "domain": "life_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q57190"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:karl-marx",
@@ -3023,13 +3023,13 @@
     "domain": "cognitive_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q77106"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:leda-cosmides",
@@ -3037,13 +3037,13 @@
     "domain": "cognitive_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q451962"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:louis-pasteur",
@@ -3051,13 +3051,13 @@
     "domain": "life_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q529"
     },
     "created_at": "2026-06-19",
-    "updated_at": "2026-06-19"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:luciano-floridi",
@@ -3065,13 +3065,13 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q214119"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:ludwig-wittgenstein",
@@ -3093,13 +3093,13 @@
     "domain": "computer_and_information_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q476466"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:martin-seligman",
@@ -3107,13 +3107,13 @@
     "domain": "cognitive_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q320927"
     },
     "created_at": "2026-06-19",
-    "updated_at": "2026-06-19"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:marvin-minsky",
@@ -3121,13 +3121,13 @@
     "domain": "cognitive_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q204815"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:mathieu-orfila",
@@ -3135,13 +3135,13 @@
     "domain": "medicine_and_health",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q704342"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:matthew-fontaine-maury",
@@ -3149,13 +3149,13 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q114385"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:matthias-jakob-schleiden",
@@ -3163,13 +3163,13 @@
     "domain": "life_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q76747"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:max-weber",
@@ -3191,13 +3191,13 @@
     "domain": "cognitive_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q738789"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:moritz-schlick",
@@ -3205,13 +3205,13 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q57193"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:noam-chomsky",
@@ -3247,13 +3247,13 @@
     "domain": "formal_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q94028"
     },
     "created_at": "2026-06-19",
-    "updated_at": "2026-06-19"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:oswald-schmiedeberg",
@@ -3261,13 +3261,13 @@
     "domain": "medicine_and_health",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q77409"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:otto-neurath",
@@ -3275,13 +3275,13 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q78570"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:paul-ehrlich",
@@ -3289,13 +3289,13 @@
     "domain": "life_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q57089"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:philipp-frank",
@@ -3303,13 +3303,13 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q79177"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:philippe-pinel",
@@ -3317,13 +3317,13 @@
     "domain": "medicine_and_health",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q311594"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:ragnar-frisch",
@@ -3331,13 +3331,13 @@
     "domain": "social_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q187988"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:rene-just-hauy",
@@ -3345,13 +3345,13 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q316515"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:richard-dedekind",
@@ -3359,13 +3359,13 @@
     "domain": "formal_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q76556"
     },
     "created_at": "2026-06-19",
-    "updated_at": "2026-06-19"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:richard-thaler",
@@ -3373,13 +3373,13 @@
     "domain": "social_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q371212"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:robert-koch",
@@ -3387,13 +3387,13 @@
     "domain": "life_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q37193"
     },
     "created_at": "2026-06-30",
-    "updated_at": "2026-06-30"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:roman-jakobson",
@@ -3429,13 +3429,13 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q726075"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:rudolf-carnap",
@@ -3443,13 +3443,13 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q76519"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:samuel-eilenberg",
@@ -3457,13 +3457,13 @@
     "domain": "formal_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q535833"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:saunders-mac-lane",
@@ -3471,13 +3471,13 @@
     "domain": "formal_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q441223"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:sigmund-freud",
@@ -3499,13 +3499,13 @@
     "domain": "computer_and_information_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q62870"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:theodor-schwann",
@@ -3513,13 +3513,13 @@
     "domain": "life_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q76745"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:ulric-neisser",
@@ -3527,13 +3527,13 @@
     "domain": "cognitive_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q62895"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:victor-moritz-goldschmidt",
@@ -3541,13 +3541,13 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q213668"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:vint-cerf",
@@ -3555,13 +3555,13 @@
     "domain": "computer_and_information_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q92743"
     },
     "created_at": "2026-06-30",
-    "updated_at": "2026-06-30"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:vladimir-vernadsky",
@@ -3569,13 +3569,13 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q316371"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:whitfield-diffie",
@@ -3583,13 +3583,13 @@
     "domain": "computer_and_information_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": true,
     "external_ids": {
       "wikidata": "Q462089"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:wilhelm-wundt",
@@ -3611,13 +3611,13 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q357923"
     },
     "created_at": "2026-06-30",
-    "updated_at": "2026-06-30"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "person:william-morris-davis",
@@ -3625,13 +3625,13 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q315967"
     },
     "created_at": "2026-07-01",
-    "updated_at": "2026-07-01"
+    "updated_at": "2026-07-02"
   },
   {
     "id": "subfield:accelerator-physics",
@@ -5038,7 +5038,7 @@
     "domain": "computer_and_information_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "acm_ccs": "Computer systems organization"
@@ -5416,7 +5416,7 @@
     "domain": "computer_and_information_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "acm_ccs": "Information systems"
@@ -5662,7 +5662,7 @@
     "domain": "computer_and_information_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "acm_ccs": "Parallel computing methodologies; Distributed computing methodologies"
@@ -8316,7 +8316,7 @@
     "domain": "engineering_and_technology",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "nces_cip": "14.2201"
@@ -10107,7 +10107,7 @@
     "domain": "cognitive_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "apa_psycinfo": "2320"
@@ -11001,7 +11001,7 @@
     "domain": "computer_and_information_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q772056"
@@ -11141,7 +11141,7 @@
     "domain": "formal_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q7090984"
@@ -11155,7 +11155,7 @@
     "domain": "humanities",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q330955"
@@ -11183,7 +11183,7 @@
     "domain": "natural_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q74263"
@@ -11393,7 +11393,7 @@
     "domain": "formal_sciences",
     "level": 2,
     "status": "reviewed",
-    "indexable": false,
+    "indexable": true,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q5226156"

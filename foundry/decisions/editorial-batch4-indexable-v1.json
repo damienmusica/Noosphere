@@ -1,0 +1,613 @@
+{
+  "version": 1,
+  "batch_id": "editorial-batch4-indexable-v1",
+  "decided_at": "2026-07-02",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-02"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "node",
+      "id": "concept:distinctive-feature",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "concept:godel-numbering",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "concept:law-of-universal-gravitation",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "concept:pragmatic-maxim",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "concept:will-to-power",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:alfred-russel-wallace",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:alfred-tarski",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:amartya-sen",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:amos-tversky",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:andrey-kolmogorov",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:cesare-beccaria",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:charles-spearman",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:david-deutsch",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:duncan-black",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:elie-metchnikoff",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:emil-kraepelin",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:ernst-chladni",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:ernst-haeckel",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:eugenius-warming",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:friedrich-waismann",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:george-edward-moore",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:george-lakoff",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:george-miller",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:georges-cuvier",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:georgius-agricola",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:grove-karl-gilbert",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:hans-hahn",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:herbert-feigl",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:ivan-sutherland",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:james-hutton",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:jan-tinbergen",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:john-graunt",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:john-mccarthy",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:john-milne",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:john-snow",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:john-tooby",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:karl-ernst-von-baer",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:kurt-lewin",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:leda-cosmides",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:louis-pasteur",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:luciano-floridi",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:martin-hellman",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:martin-seligman",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:marvin-minsky",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:mathieu-orfila",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:matthew-fontaine-maury",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:matthias-jakob-schleiden",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:michael-gazzaniga",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:moritz-schlick",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:oskar-morgenstern",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:oswald-schmiedeberg",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:otto-neurath",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:paul-ehrlich",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:philipp-frank",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:philippe-pinel",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:ragnar-frisch",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:rene-just-hauy",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:richard-dedekind",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:richard-thaler",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:robert-koch",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:ronald-langacker",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:rudolf-carnap",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:samuel-eilenberg",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:saunders-mac-lane",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:stephen-cook",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:theodor-schwann",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:ulric-neisser",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:victor-moritz-goldschmidt",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:vint-cerf",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:vladimir-vernadsky",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:whitfield-diffie",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:william-labov",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:william-morris-davis",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "subfield:computer-systems",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "subfield:databases-and-information-systems",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "subfield:distributed-and-parallel-computing",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "subfield:naval-architecture-and-marine-engineering",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "subfield:sensation-and-perception",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "work:computing-machinery-and-intelligence",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "work:on-formally-undecidable-propositions",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "work:on-sense-and-reference",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "work:opticks",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "work:theory-of-games-and-economic-behavior",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    }
+  ],
+  "translation_updates": [],
+  "verdicts": [],
+  "identity": [],
+  "sanctions": [],
+  "rejections": [],
+  "held": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Indexable earned-rule flip for the 83 editorial-batch4 nodes (68 deceased persons + 5 concepts + 5 works + 5 subfields + 14 LIVING persons). Metadata-flip path (reviewed->reviewed, set_indexable only) ratified 2026-07-02; validate-data enforces indexable => reviewed status + reviewed en translation independently.",
+    "Living persons included per decision (70): indexable is the SAME earned rule as any node — SEO-only, orthogonal to explorability; living people are NOT force-noindexed. All 14 carry reviewed attributed-wording summaries (editorial-batch4-v1) and P570-absent observations.",
+    "Closes the public-surface gap in lockstep with the summary gap: reviewed en-summary gap 0%, and every reviewed+summarized node now indexable."
+  ]
+}

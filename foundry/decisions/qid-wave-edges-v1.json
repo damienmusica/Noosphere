@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "batch_id": "qid-wave-edges-v1",
+  "decided_at": "2026-07-03",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-03"
+  },
+  "promotions": [
+    {
+      "kind": "edge",
+      "id": "edge:computer-systems-part-of-computer-science",
+      "from": "proposed",
+      "to": "reviewed",
+      "set_note": "Structural part_of grounded on ACM CCS 2012: 'Computer systems organization' is a top-level branch of the computing classification. Permanence: https://web.archive.org/web/20260509235215/https://dl.acm.org/ccs. Endpoint promoted via node-promotion v1.4 (taxonomy-anchor-wave1-v1); edge promoted qid-wave-edges-v1, 2026-07-03."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:databases-and-information-systems-part-of-computer-science",
+      "from": "proposed",
+      "to": "reviewed",
+      "set_note": "Structural part_of grounded on ACM CCS 2012: the 'Information systems' top-level branch (containing Data management systems) places the area inside computing. Permanence: https://web.archive.org/web/20260509235215/https://dl.acm.org/ccs. Edge promoted qid-wave-edges-v1, 2026-07-03."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:distributed-and-parallel-computing-part-of-computer-science",
+      "from": "proposed",
+      "to": "reviewed",
+      "set_note": "Structural part_of grounded on ACM CCS 2012: both ID-set anchor branches live under Computing methodologies in the computing classification. Permanence: https://web.archive.org/web/20260509235215/https://dl.acm.org/ccs. Edge promoted qid-wave-edges-v1, 2026-07-03."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:naval-architecture-and-marine-engineering-part-of-engineering-and-technology",
+      "from": "proposed",
+      "to": "reviewed",
+      "set_note": "Structural part_of grounded on NCES CIP 2020: code 14.2201 sits in CIP series 14 (Engineering); definition text verbatim on the live detail page. UDC 629.5 corroborates. Edge promoted qid-wave-edges-v1, 2026-07-03."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:sensation-and-perception-part-of-psychology",
+      "from": "proposed",
+      "to": "reviewed",
+      "set_note": "Structural part_of grounded on the APA PsycInfo Classification: 2320 Sensory Perception sits under 2300 Human Experimental Psychology. Permanence: https://web.archive.org/web/20260702133104/https://www.apa.org/pubs/databases/training/class-codes. LCC BF231-299 + UDC 159.93 corroborate. Edge promoted qid-wave-edges-v1, 2026-07-03."
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "edge:computer-systems-part-of-computer-science",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://dl.acm.org/ccs",
+          "retrieved_at": "2026-07-03",
+          "snapshot_url": "https://web.archive.org/web/20260509235215/https://dl.acm.org/ccs",
+          "quote": "Computer systems organization",
+          "independent": true
+        }
+      ],
+      "notes": "Structural placement grounded on the field's own ratified taxonomy: 'Computer systems organization' is a TOP-LEVEL branch of the ACM Computing Classification System — placement inside computing by construction (offline claim-anchor vs the Wayback capture; dl.acm.org hard bot-blocked, T4 Wayback path). Skeleton evidence (acm-ccs, udc-summary, msc2020) unchanged; the only blocker was the endpoint's proposed status, resolved by taxonomy-anchor-wave1-v1."
+    },
+    {
+      "subject_id": "edge:databases-and-information-systems-part-of-computer-science",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://dl.acm.org/ccs",
+          "retrieved_at": "2026-07-03",
+          "snapshot_url": "https://web.archive.org/web/20260509235215/https://dl.acm.org/ccs",
+          "quote": "Data management systems",
+          "independent": true
+        }
+      ],
+      "notes": "'Information systems' (containing 'Data management systems') is a top-level branch of the ACM Computing Classification System — placement inside computing by construction (offline claim-anchor vs Wayback capture). Skeleton evidence unchanged; blocker was endpoint status, resolved."
+    },
+    {
+      "subject_id": "edge:distributed-and-parallel-computing-part-of-computer-science",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://dl.acm.org/ccs",
+          "retrieved_at": "2026-07-03",
+          "snapshot_url": "https://web.archive.org/web/20260509235215/https://dl.acm.org/ccs",
+          "quote": "Parallel computing methodologies",
+          "independent": true
+        }
+      ],
+      "notes": "The node's ratified ID-set anchor ('Parallel computing methodologies; Distributed computing methodologies') consists of two branches of the ACM Computing Classification System — placement inside computing by construction (offline claim-anchor vs Wayback capture). Skeleton evidence unchanged; blocker was endpoint status, resolved."
+    },
+    {
+      "subject_id": "edge:naval-architecture-and-marine-engineering-part-of-engineering-and-technology",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://nces.ed.gov/ipeds/cipcode/cipdetail.aspx?y=56&cipid=90538",
+          "retrieved_at": "2026-07-03",
+          "quote": "the analysis of related engineering problems",
+          "independent": true
+        }
+      ],
+      "notes": "CIP 14.2201 sits in CIP series 14 (Engineering) and its live definition describes the program as applying principles to design/development and 'the analysis of related engineering problems' — engineering placement verbatim on the live nces.ed.gov page (fetch-verify PASS today). Skeleton evidence (lcc-outline, udc-summary incl. UDC 629.5 watercraft engineering) unchanged; blocker was endpoint status, resolved."
+    },
+    {
+      "subject_id": "edge:sensation-and-perception-part-of-psychology",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.apa.org/pubs/databases/training/class-codes",
+          "retrieved_at": "2026-07-03",
+          "snapshot_url": "https://web.archive.org/web/20260702133104/https://www.apa.org/pubs/databases/training/class-codes",
+          "quote": "Human Experimental Psychology",
+          "independent": true
+        }
+      ],
+      "notes": "APA PsycInfo Classification places code 2320 (Sensory Perception) under 2300 'Human Experimental Psychology' — placement inside psychology by the field's own classification (apa.org serves a JS shell to plain fetchers; verified offline vs the 2026-07-02 Wayback capture, T4 Wayback path). Skeleton evidence (LCC BF231-299, UDC 159.93) unchanged; blocker was endpoint status, resolved."
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "edge:computer-systems-part-of-computer-science",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:databases-and-information-systems-part-of-computer-science",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:distributed-and-parallel-computing-part-of-computer-science",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:naval-architecture-and-marine-engineering-part-of-engineering-and-technology",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:sensation-and-perception-part-of-psychology",
+      "ladder": "edge-promotion-v1-structural"
+    }
+  ],
+  "notes": [
+    "Structural-tier follow-through of taxonomy-anchor-wave1-v1: the 5 part_of edges of the newly v1.4-promoted subfields were skeleton-grounded (acm-ccs/udc/lcc registry evidence) and capped ONLY by their endpoints' proposed status — surfaced automatically by foundry:recheck-held after the wave-1 promotions. Each verdict re-grounds the placement today on the node's own ratified taxonomy authority (the clause-1 anchor doubles as classification-placement evidence by construction).",
+    "Verification paths: CCS quotes offline claim-anchor vs the Wayback capture (dl.acm.org hard bot-blocked, established T4 path) 4/4 FOUND; NCES CIP quote fetch-verify PASS live; APA quote verified vs the 2026-07-02 Wayback capture (apa.org serves a ~1KB JS shell to plain fetchers — noted for the criteria registry: T4 for APA runs on the Wayback path like ACM).",
+    "First production wave through the classification-placement relation guard (inspection patch A1): all 5 relations are part_of, sanctioned edge-promotion-v1-structural."
+  ]
+}
