@@ -1,0 +1,173 @@
+{
+  "version": 1,
+  "batch_id": "s12-holds-resolution-v1",
+  "decided_at": "2026-07-03",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-03"
+  },
+  "promotions": [
+    {
+      "kind": "node",
+      "id": "subfield:social-philosophy",
+      "from": "proposed",
+      "to": "reviewed",
+      "set_external_ids": {
+        "wikidata": "Q180592"
+      }
+    },
+    {
+      "kind": "edge",
+      "id": "edge:social-philosophy-part-of-philosophy",
+      "from": "proposed",
+      "to": "reviewed",
+      "set_note": "Promoted via edge-promotion-v1-structural (classification placement, endpoints reviewed): PhilPapers files Social Philosophy inside its philosophy taxonomy (under Social and Political Philosophy), corroborating the original UDC class-1 anchoring. Unblocked by the section-12 hold-resolution ruling on the source endpoint (decision (106), 2026-07-03)."
+    },
+    {
+      "kind": "node",
+      "id": "subfield:esotericism-and-theosophy",
+      "from": "proposed",
+      "to": "deprecated"
+    },
+    {
+      "kind": "edge",
+      "id": "edge:esotericism-and-theosophy-part-of-philosophy",
+      "from": "proposed",
+      "to": "deprecated",
+      "set_note": "Deprecated with its source endpoint subfield:esotericism-and-theosophy (section-12 hold-resolution clause 4, edge co-migration; decision (106), 2026-07-03)."
+    },
+    {
+      "kind": "node",
+      "id": "subfield:modern-philosophy",
+      "from": "proposed",
+      "to": "deprecated"
+    },
+    {
+      "kind": "edge",
+      "id": "edge:modern-philosophy-part-of-philosophy",
+      "from": "proposed",
+      "to": "deprecated",
+      "set_note": "Deprecated with its source endpoint subfield:modern-philosophy (section-12 hold-resolution clause 4, edge co-migration; decision (106), 2026-07-03)."
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "subfield:social-philosophy",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://philpapers.org/browse/social-philosophy",
+          "retrieved_at": "2026-07-03",
+          "snapshot_url": "http://web.archive.org/web/20260224174724/https://philpapers.org/browse/social-philosophy",
+          "independent": true
+        },
+        {
+          "url": "https://philpapers.org/browse/social-and-political-philosophy",
+          "retrieved_at": "2026-07-03",
+          "snapshot_url": "http://web.archive.org/web/20260520172819/https://philpapers.org/browse/social-and-political-philosophy",
+          "independent": true
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q180592",
+          "retrieved_at": "2026-07-03",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q180592&oldid=2511566288"
+        }
+      ],
+      "notes": "Section-12 hold-resolution clause 3 (adjacent-overlap): PhilPapers maintains a dedicated 'Social Philosophy' category (page title 'Social Philosophy - Bibliography - PhilPapers'; 7,570 entries; subcategories incl. 'Social Philosophy, Misc') as a second-level unit under Social and Political Philosophy. The overlap concern (political philosophy / ethics / sociology) does not defeat admission: the taxonomy keeps the exact-name category, and the corpus's existing subfield:political-philosophy is a distinct sibling concern (PhilPapers slices the political wing as Political Theory / History of Political Philosophy / topical categories). Live philpapers.org Cloudflare-blocked at QC time — Wayback snapshots are the verification surface (section-8 bot-block pattern, decisions (104)/(105) precedent)."
+    },
+    {
+      "subject_id": "edge:social-philosophy-part-of-philosophy",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://philpapers.org/browse/social-and-political-philosophy",
+          "retrieved_at": "2026-07-03",
+          "snapshot_url": "http://web.archive.org/web/20260520172819/https://philpapers.org/browse/social-and-political-philosophy",
+          "independent": true
+        }
+      ],
+      "notes": "Classification placement: Social Philosophy sits inside PhilPapers' philosophy taxonomy (value-theory cluster > Social and Political Philosophy > Social Philosophy), corroborating the edge's original UDC class-1 evidence. Direction subfield->field confirmed by the taxonomy nesting."
+    },
+    {
+      "subject_id": "subfield:esotericism-and-theosophy",
+      "verdict": "reject",
+      "sources": [],
+      "notes": "Section-12 hold-resolution clause 1: referent mismatch established (slug 'esotericism-and-theosophy' vs Q7988481 'Western esotericism') -> deprecate unconditionally; regeneration admission test FAILS — Wayback CDX enumeration of archived philpapers.org/browse/* slugs (11,908 collapsed urlkeys, retrieved 2026-07-03 via http://web.archive.org/cdx/search/cdx?url=philpapers.org/browse/&matchType=prefix&collapse=urlkey) contains zero esoter*/theosoph* category slugs (only the leaf 'hegel-mysticism'), so PhilPapers maintains no such unit. The field's academic home is religious studies (ESSWE / Aries), which has no ratified taxonomy in the decision-(102) registry — admitting one is a CPO gate. Reject = the node as shaped leaves /data (deprecated); the precise referent stays a ledgered future candidate, not a rejected label."
+    },
+    {
+      "subject_id": "subfield:modern-philosophy",
+      "verdict": "reject",
+      "sources": [
+        {
+          "url": "https://philpapers.org/browse/17th18th-century-philosophy",
+          "retrieved_at": "2026-07-03",
+          "snapshot_url": "http://web.archive.org/web/20260520181904/https://philpapers.org/browse/17th18th-century-philosophy",
+          "independent": true
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q860746",
+          "retrieved_at": "2026-07-03",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q860746&oldid=2504796126"
+        }
+      ],
+      "notes": "Section-12 hold-resolution clauses 1+2: referent mismatch established (slug 'modern-philosophy' vs Q860746 'early modern philosophy') -> deprecate unconditionally. Period-axis admission FAILS the strict name-identity test (CPO ruling 2026-07-03): PhilPapers' History of Western Philosophy units are Ancient Greek and Roman / Medieval and Renaissance / 17th/18th Century / 19th Century / 20th Century Philosophy — no 'Early Modern Philosophy' unit by name (Wayback CDX 2026-07-03 confirms no early-modern-philosophy browse slug; only the leaf 'early-modern-scholasticism'), and nearby-unit referent bridging (17th/18th Century ~ early modern) is disallowed — the equivalence is itself contestable at the Renaissance boundary (T3 tension)."
+    }
+  ],
+  "identity": [
+    {
+      "node_id": "subfield:social-philosophy",
+      "provider": "wikidata",
+      "external_id": "Q180592",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03"
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "subfield:social-philosophy",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "edge:social-philosophy-part-of-philosophy",
+      "ladder": "edge-promotion-v1-structural"
+    }
+  ],
+  "held": [
+    {
+      "id": "subfield:esotericism-and-theosophy",
+      "blocking_condition": "Section-12 hold-resolution clause 1 ruled 2026-07-03 (decision (106)): node + part_of edge DEPRECATED on referent mismatch (slug vs Q7988481 'Western esotericism'). Regeneration as subfield:western-esotericism blocked — precise referent fails skeleton admission: PhilPapers (the philosophy registry taxonomy) maintains no esotericism/theosophy category (0/11,908 archived browse slugs, Wayback CDX 2026-07-03); academic home is religious studies (ESSWE/Aries), no ratified taxonomy in the (102) registry. Re-creation triggers: (a) a religious-studies taxonomy authority admitted to the (102) registry (CPO gate) with a Western-esotericism unit by name, or (b) PhilPapers adding the category.",
+      "recheck": "manual",
+      "batch_id": "s12-holds-resolution-v1",
+      "recorded_at": "2026-07-03"
+    },
+    {
+      "id": "subfield:modern-philosophy",
+      "blocking_condition": "Section-12 hold-resolution clauses 1+2 ruled 2026-07-03 (decision (106)): node + part_of edge DEPRECATED on referent mismatch (slug vs Q860746 'early modern philosophy'). Regeneration as subfield:early-modern-philosophy blocked by the strict name-identity test — PhilPapers' period units are 17th/18th Century Philosophy etc., no 'Early Modern Philosophy' unit by name; nearby-unit referent bridging disallowed (CPO ruling). Re-creation triggers: (a) a ratified taxonomy maintaining an Early Modern Philosophy unit by name, or (b) the future dedicated period-axis design admitting era-cut nodes outside the field skeleton.",
+      "recheck": "manual",
+      "batch_id": "s12-holds-resolution-v1",
+      "recorded_at": "2026-07-03"
+    },
+    {
+      "id": "subfield:modern-history",
+      "blocking_condition": "Section-12 hold-resolution clause 2 ruled 2026-07-03 (decision (106)) — the period axis is now governed by standing rule, no longer rule-silent: LCC D204-475 era ranges are shelving classification (T2 fail — literature shelving is not field curation), and the (102) registry contains no history disciplinary taxonomy at all, so the era-unit cannot hold clause-1-grade standing. Node stays proposed in /data as an honest parked gap (QID-less: Wikidata still models 'modern history' only as the era Q3281534). Unpark triggers: (a) a history disciplinary taxonomy admitted to the (102) registry (CPO gate) maintaining a Modern History unit by name, or (b) the future dedicated period-axis design.",
+      "recheck": "manual",
+      "batch_id": "s12-holds-resolution-v1",
+      "recorded_at": "2026-07-03"
+    }
+  ],
+  "notes": [
+    "First execution of the section-12 hold-resolution standard (CPO-ratified 2026-07-03, decision (106), with 4 tightening amendments over the vault draft: conditional regeneration, strict name-identity for the period axis, edge co-migration, successor provenance). Resolves all 4 rule-silent modeling holds from recheck-wave2-v1 / qid-gap-recheck-v1.",
+    "Dispositions: social-philosophy node+edge -> reviewed (clause 3 admit; PhilPapers exact-name category verified); esotericism-and-theosophy node+edge -> deprecated + held re-creation trigger (clause 1: referent mismatch, admission fails); modern-philosophy node+edge -> deprecated + held re-creation trigger (clauses 1+2: referent mismatch, strict name test fails); modern-history -> no /data change, held entry superseded with the clause-2 ruling (stays proposed, honest parked gap).",
+    "PhilPapers live site is Cloudflare-blocked at QC time (memory-documented bot-block); all PhilPapers verification ran against real Wayback snapshots (2026-02-24 / 2026-05-20), recorded as snapshot_url per the section-8 bot-block pattern — pre-filled, not SPN'd, to avoid anchoring a Cloudflare challenge page. Absence claims (esotericism, early-modern) are grounded in the Wayback CDX slug enumeration quoted in the verdicts (re-runnable query, 11,908 collapsed urlkeys).",
+    "subfield:social-philosophy promotes to reviewed WITHOUT an en summary — this reopens the editorial gap dashboard at 1 (reviewed en-summary gap was 0 after decision (105)); indexable stays false until the earned editorial flip. Queue it for the next editorial batch.",
+    "No aliases lost: the deprecated nodes' referent-precise en labels ('Western Esotericism (philosophy of)', 'Early Modern Philosophy') remain in node-translations on the deprecated IDs for future successor seeding.",
+    "Node-level ruling narratives live in this decision file's verdicts and the held ledger — the node schema carries no note field (only edges do); the three node set_note drafts were moved here accordingly."
+  ],
+  "anchors_pending": []
+}

@@ -4418,7 +4418,7 @@
     "target": "field:philosophy",
     "relation": "part_of",
     "confidence": 0.7,
-    "status": "proposed",
+    "status": "deprecated",
     "evidence": [
       "source:udc-summary"
     ],
@@ -4428,7 +4428,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "B-type real-world contest kept (mirrors the endpoint node's boundary flag): stops at proposed pending v1.1 research — see foundry/proposals/skeleton-part-of-edges-v1/qc-report.md."
+    "note": "Deprecated with its source endpoint subfield:esotericism-and-theosophy (section-12 hold-resolution clause 4, edge co-migration; decision (106), 2026-07-03)."
   },
   {
     "id": "edge:ethics-of-ai-part-of-philosophy",
@@ -8977,7 +8977,7 @@
     "target": "field:philosophy",
     "relation": "part_of",
     "confidence": 0.95,
-    "status": "proposed",
+    "status": "deprecated",
     "evidence": [
       "source:udc-summary",
       "source:lcc-outline"
@@ -8988,7 +8988,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap)."
+    "note": "Deprecated with its source endpoint subfield:modern-philosophy (section-12 hold-resolution clause 4, edge co-migration; decision (106), 2026-07-03)."
   },
   {
     "id": "edge:molecular-biology-part-of-biology",
@@ -12952,7 +12952,7 @@
     "target": "field:philosophy",
     "relation": "part_of",
     "confidence": 0.9,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:udc-summary"
     ],
@@ -12962,7 +12962,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-10"
     },
-    "note": "Capped at proposed: endpoint node is proposed (edge promotion policy v1, status cap). LCC shelves this area under its host discipline; philosophy residency grounded by UDC class-1 anchoring + the node-level v1.1 resolution record (PR #25)."
+    "note": "Promoted via edge-promotion-v1-structural (classification placement, endpoints reviewed): PhilPapers files Social Philosophy inside its philosophy taxonomy (under Social and Political Philosophy), corroborating the original UDC class-1 anchoring. Unblocked by the section-12 hold-resolution ruling on the source endpoint (decision (106), 2026-07-03)."
   },
   {
     "id": "edge:social-psychology-part-of-psychology",

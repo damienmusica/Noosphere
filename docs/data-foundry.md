@@ -857,6 +857,43 @@ non-coverage, never silently dropped.
    **supersedes** the bare "movement-level granularity deferred" precedent (2026-06-10 philosophy)
    for new cases, and unparks german-idealism/structuralism under the same edge-demand discipline.
 
+### Hold-resolution standard (rule-silent modeling holds)
+
+> CPO-ratified 2026-07-03 (vault decision log (106)). Resolves the rule-silent modeling hold
+> family (referent-precision, period-axis, adjacent-overlap) by **reusing taxonomy-authority
+> criteria v1** (decision (102), §8) on the modeling axis — no new concepts. Subsequent
+> same-shape cases are CTO mirror-autonomous (decision (91)); every disposition runs through a
+> verification batch (live confirmation + §8 anchoring + decision file), so it stays re-auditable.
+
+1. **Referent-precision disposition.** When a node's slug/label diverges from its ratified
+   referent's standard name, the node is never kept as-is. **Deprecation is unconditional once
+   the referent mismatch is established** (IDs are immutable — never edited in place; generalizes
+   the C3 referent-precision discipline and the `concept:internet` precedent). **Regeneration
+   under the referent-precise ID is conditional**: it happens only when the precise referent
+   independently passes skeleton admission (the dual criterion, or clause 2/3 below where they
+   govern); otherwise the disposition is deprecate → held parking, with the re-creation trigger
+   recorded in the ledger. Redirect-style aliases are preserved in `node-translations`; the
+   deprecation's decision file and held-ledger entry record the successor ID when a successor
+   exists (mirror of the held-ledger supersede semantics, decision (101) — the node schema itself
+   carries no note field).
+2. **Period-axis subfields.** An era-cut subfield is admitted to the skeleton only when the
+   era-unit itself holds clause-①-grade taxonomy standing under a ratified disciplinary taxonomy
+   (taxonomy-authority criteria v1, T1–T5 all hard). **Strict name-identity governs** (CPO ruling
+   2026-07-03): the ratified taxonomy must maintain a category under that name as its own unit —
+   the mirror of clause 3. Shelving classifications (LCC era ranges) alone fail T2 (literature
+   shelving is not field curation), and a *nearby* period category under a *different* unit name
+   does not qualify the candidate (no referent-equivalence bridging — e.g. PhilPapers "17th/18th
+   Century Philosophy" does not admit `early-modern-philosophy`). Failing candidates stay honestly
+   parked: the period axis is a future dedicated axis, not field skeleton.
+3. **Adjacent-overlap granularity.** A candidate overlapping an adjacent field is admitted when
+   the field's own ratified taxonomy maintains a category under exactly that name. If only a
+   combined category exists, the combined form is the node shape — subject to no double-coverage
+   with existing nodes.
+4. **Edge co-migration (execution clause).** A deprecate/regenerate disposition handles the
+   node's edges in the same verification batch — edges whose endpoint is deprecated are deprecated
+   with it, and re-written against the successor when admission holds (`foundry:apply-batch`
+   referential integrity keeps this machine-checked).
+
 ### Flag semantics under this standard
 
 - Generators apply this standard directly; a design question this standard answers needs **no**
@@ -1153,6 +1190,20 @@ non-coverage, never silently dropped.
   Wikidata types existentialism/pragmatism (already kept subfields) identically to the deferred ones
   ("philosophical movement") → movement-vs-discipline was never the real line; standing-research-area
   vs bounded-school is. Full design: vault `reference/movement-axis-design.md`.
+- 2026-07-03 hold-resolution standard first execution (decision (106), batch
+  `s12-holds-resolution-v1`): the four recheck-wave2 rule-silent holds resolved under the new
+  standard — social-philosophy **admitted** (clause 3: PhilPapers maintains "Social Philosophy" as
+  its own category under Social and Political Philosophy; node + part_of edge `reviewed`);
+  esotericism-and-theosophy **deprecated, regeneration blocked** (clause 1: referent mismatch with
+  Q7988481 "Western esotericism"; PhilPapers has no esotericism/theosophy unit — 0/11,908 archived
+  browse slugs; academic home is religious studies, outside the (102) registry);
+  modern-philosophy **deprecated, regeneration blocked** (clauses 1+2: referent mismatch with
+  Q860746 "early modern philosophy"; strict name-identity fails — PhilPapers' period units are
+  "17th/18th Century Philosophy" etc., no "Early Modern Philosophy" unit by name);
+  modern-history **stays parked** (clause 2: LCC era ranges are shelving = T2 fail; no history
+  taxonomy in the registry). PhilPapers verification ran against Wayback snapshots (live site
+  Cloudflare-blocked) — the §8 bot-block pattern; re-creation triggers ledgered in
+  `foundry/held.json`.
 
 ## 13. Cross-listing standard (multiple `part_of` memberships)
 
