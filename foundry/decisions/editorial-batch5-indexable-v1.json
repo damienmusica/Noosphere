@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "batch_id": "editorial-batch5-indexable-v1",
+  "decided_at": "2026-07-03",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-03"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "node",
+      "id": "subfield:social-philosophy",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    }
+  ],
+  "translation_updates": [],
+  "verdicts": [],
+  "identity": [],
+  "sanctions": [],
+  "rejections": [],
+  "held": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Indexable earned-rule flip for subfield:social-philosophy after editorial-batch5-v1 lands its reviewed en summary (metadata-flip path, reviewed->reviewed set_indexable only; validate-data enforces indexable => reviewed status + reviewed en translation). Restores the all-reviewed-indexable public surface (595/595 after this pair)."
+  ]
+}

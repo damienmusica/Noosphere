@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "batch_id": "editorial-batch5-v1",
+  "decided_at": "2026-07-03",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-03"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [],
+  "translation_updates": [
+    {
+      "node_id": "subfield:social-philosophy",
+      "locale": "en",
+      "summary": "Social philosophy is the philosophical study of society and its institutions, approached in terms of ethical values rather than empirical relations. It emphasizes understanding the social contexts of political, legal, moral, and cultural questions, and develops theoretical frameworks ranging from social ontology and care ethics to cosmopolitan theories of democracy, natural law, human rights, gender equity, and global justice. Its questions overlap considerably with those of ethics and value theory, and it is broadly interdisciplinary, examining areas such as phenomenology, epistemology, and philosophy of language from a sociological perspective. Following a distinction drawn by Leo Strauss, social philosophy is distinguished from political philosophy in that it approaches largely the same subject matter from the broader vantage of “society”.",
+      "reviewed": true
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "subfield:social-philosophy",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Social_philosophy",
+          "retrieved_at": "2026-07-03",
+          "quote": "Social philosophy is the study and interpretation of society and social institutions in terms of ethical values rather than empirical relations.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Social_philosophy&oldid=1326731330"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Social_philosophy",
+          "retrieved_at": "2026-07-03",
+          "quote": "Social philosophers emphasize understanding the social contexts for political, legal, moral and cultural questions, and the development of novel theoretical frameworks, from social ontology to care ethics to cosmopolitan theories of democracy, natural law, human rights, gender equity and global justice.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Social_philosophy&oldid=1326731330"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Social_philosophy",
+          "retrieved_at": "2026-07-03",
+          "quote": "There is often a considerable overlap between the questions addressed by social philosophy and ethics or value theory.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Social_philosophy&oldid=1326731330"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Social_philosophy",
+          "retrieved_at": "2026-07-03",
+          "quote": "Social philosophy is broadly interdisciplinary, looking at all of phenomenology, epistemology, and philosophy of language from a sociological perspective; phenomenological sociology, social epistemology and sociology of language respectively.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Social_philosophy&oldid=1326731330"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Social_philosophy",
+          "retrieved_at": "2026-07-03",
+          "quote": "In his book, What is Political Philosophy, Leo Strauss made distinctions between social and political philosophy. Both fields of philosophy center around essentially the same subject, but social philosophy takes those questions from the broader view of \"society\".",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Social_philosophy&oldid=1326731330"
+        }
+      ]
+    }
+  ],
+  "identity": [],
+  "sanctions": [
+    {
+      "subject_id": "subfield:social-philosophy",
+      "ladder": "editorial-v2"
+    }
+  ],
+  "rejections": [],
+  "held": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Editorial batch 5 (single-node tail): fills the en summary for subfield:social-philosophy, reopened as the sole editorial gap by its s12-holds-resolution-v1 promotion (decision (106)). Generation = separated-context Opus agent over the fetch-corpus enwiki extract (editorial v2, decision (76) roles); QC = fetch-verify 5/5 PASS live + orchestrator close-read in full (single item).",
+    "Orchestrator patches during close-read (decision (34)/(104) flag-ruling path, re-verified after patching): (1) the generator's first sentence verbatim-copied the article lead — paraphrased; (2) the Leo Strauss attribution was not covered by its citation — quote extended to the verbatim two-sentence passage naming Strauss. Both re-passed fetch-verify.",
+    "Note for the record: the ethics/value-theory overlap sentence anchors on article prose that carries a [citation needed] tag upstream — kept as a mild descriptive claim whose quote is verbatim live article prose; flagged here for re-audit honesty."
+  ]
+}
