@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "batch_id": "editorial-batch6-v1",
+  "decided_at": "2026-07-03",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-03"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [],
+  "translation_updates": [
+    {
+      "node_id": "concept:tripartite-classification-of-authority",
+      "locale": "en",
+      "summary": "The tripartite classification of authority is Max Weber's typology of three ideal types of legitimate domination, which rarely appear in their pure form. It distinguishes charismatic authority, which grows out of the personal charm or strength of an individual personality; traditional authority, in which legitimacy comes from tradition or custom; and rational-legal authority, based on a system of rules applied administratively and judicially in accordance with known principles. The three forms are described as appearing in a hierarchical development order, with states progressing from charismatic through traditional to rational-legal authority, the form characteristic of a modern liberal democracy.",
+      "reviewed": true
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "concept:tripartite-classification-of-authority",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripartite_classification_of_authority",
+          "retrieved_at": "2026-07-03",
+          "quote": "The German sociologist Max Weber (1864–1920) distinguished three ideal types of legitimate political leadership /domination/ authority",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Tripartite_classification_of_authority&oldid=1336607101"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripartite_classification_of_authority",
+          "retrieved_at": "2026-07-03",
+          "quote": "These three types are ideal types and rarely appear in their pure form.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Tripartite_classification_of_authority&oldid=1336607101"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripartite_classification_of_authority",
+          "retrieved_at": "2026-07-03",
+          "quote": "Charismatic authority grows out of the personal charm or the strength of an individual personality.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Tripartite_classification_of_authority&oldid=1336607101"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripartite_classification_of_authority",
+          "retrieved_at": "2026-07-03",
+          "quote": "In systems based around traditional authority, legitimacy comes from tradition or custom, even the nominal personal ruler(s) being subject to it; Weber described it as \"the authority of the eternal yesterday\" and identified it as the source of authority for monarchies.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Tripartite_classification_of_authority&oldid=1336607101"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripartite_classification_of_authority",
+          "retrieved_at": "2026-07-03",
+          "quote": "Legal authority, also known as rational-legal authority, is based on a system of rules that is applied administratively and judicially in accordance with known principles.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Tripartite_classification_of_authority&oldid=1336607101"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripartite_classification_of_authority",
+          "retrieved_at": "2026-07-03",
+          "quote": "The three forms of authority are said to appear in a \"hierarchical development order\".",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Tripartite_classification_of_authority&oldid=1336607101"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripartite_classification_of_authority",
+          "retrieved_at": "2026-07-03",
+          "quote": "States progress from charismatic authority, to traditional authority, and finally reach the state of rational-legal authority which is characteristic of a modern liberal democracy.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Tripartite_classification_of_authority&oldid=1336607101"
+        }
+      ]
+    }
+  ],
+  "identity": [],
+  "sanctions": [
+    {
+      "subject_id": "concept:tripartite-classification-of-authority",
+      "ladder": "editorial-v2"
+    }
+  ],
+  "rejections": [],
+  "held": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Editorial batch 6 (single-node tail): fills the en summary for concept:tripartite-classification-of-authority, the reviewed node created by weber-referent-precision-v1 (C3 re-scope). Generation = separated-context Opus agent over the fetch-corpus enwiki extract (editorial v2, decision (76) roles); QC = fetch-verify 7/7 PASS live + full orchestrator close-read (single item).",
+    "Orchestrator patches during close-read (decision (34)/(104) flag-ruling path, re-verified after patching): (1) the Weber-attribution lead claim and the traditional-authority clause had no covering citations — added (lead quote uses the live tag-stripped rendering 'leadership /domination/ authority'); (2) the developmental-sequence sentence over-attributed to Weber ('Weber presented these as arising...') where the article's voice is unattributed ('The three forms of authority are said to appear...') — reworded to the neutral 'are described as appearing' and anchored on the article's own sentence."
+  ]
+}

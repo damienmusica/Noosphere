@@ -18,14 +18,14 @@
     "type": "concept",
     "domain": "social_sciences",
     "level": 3,
-    "status": "proposed",
+    "status": "deprecated",
     "indexable": false,
     "is_living_person": false,
     "external_ids": {
       "wikidata": "Q72468"
     },
     "created_at": "2026-07-02",
-    "updated_at": "2026-07-02"
+    "updated_at": "2026-07-03"
   },
   {
     "id": "concept:distinctive-feature",
@@ -306,6 +306,20 @@
     },
     "created_at": "2026-07-02",
     "updated_at": "2026-07-02"
+  },
+  {
+    "id": "concept:tripartite-classification-of-authority",
+    "type": "concept",
+    "domain": "social_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q3565078"
+    },
+    "created_at": "2026-07-03",
+    "updated_at": "2026-07-03"
   },
   {
     "id": "concept:turing-machine",

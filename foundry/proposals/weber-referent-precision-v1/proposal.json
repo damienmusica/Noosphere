@@ -1,0 +1,148 @@
+{
+  "version": 2,
+  "batch_id": "weber-referent-precision-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-03"
+  },
+  "nodes": [
+    {
+      "id": "concept:weberian-bureaucracy",
+      "type": "concept",
+      "domain": "social_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Weberian bureaucracy (ideal type)",
+      "referent": "Max Weber's sociological ideal-type model of bureaucratic organization: a rational-legal administrative form characterized by fixed jurisdictional areas governed by rules, hierarchical office structure, management based on written documents (files), separation of the official's private life/property from the office, technical training and expertise as a qualification for appointment, and a full-time salaried career officialdom. This is Weber's specific theoretical construct as developed in Economy and Society, NOT the generic real-world institution of large-scale administrative organization (which predates Weber by millennia and exists independent of his theory), and not a normative or popular ('red tape') sense of the word.",
+      "source_hint": "Max Weber, Economy and Society (Wirtschaft und Gesellschaft), part III, section on 'Bureaucracy'; standard secondary treatment in Stanford Encyclopedia of Philosophy's entry on Max Weber and in sociology textbooks' 'ideal types' chapters.",
+      "note": "Proposed as the direct referent-precise replacement target for the held edge:max-weber-founded-bureaucracy, which currently points at concept:bureaucracy (the generic administrative institution) — a referent mismatch since that institution long predates Weber.",
+      "rationale": "This is the most faithful, narrowest referent for Weber's actual contribution: he did not invent bureaucracy as an institution, he formalized a specific analytic ideal-type describing it, and that ideal-type (not the institution) is what should be the target of a founded_or_formalized claim.",
+      "uncertainty": "Risk of a hair-splitting duplicate: a resolver or reviewer could judge this insufficiently distinct from concept:bureaucracy to warrant a separate node rather than a corrected/renamed version of the same node (i.e. QC might prefer re-scoping concept:bureaucracy in place over adding a sibling node). Label choice ('ideal type' qualifier) is my own gloss, not a fixed canonical name found in a single title-matchable source.",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:legitimate-authority",
+      "type": "concept",
+      "domain": "social_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Legitimate authority (Weber's typology of domination)",
+      "referent": "Max Weber's tripartite typology of legitimate domination/authority (Herrschaft): traditional authority (resting on established custom), charismatic authority (resting on the exceptional personal qualities of a leader), and legal-rational authority (resting on a belief in the legality of enacted rules and the right of those elevated to authority under such rules to issue commands). This is Weber's specific sociological/political-theory typology of why subjects accept domination as legitimate, developed in Economy and Society — NOT a generic dictionary sense of 'legitimate power', and not to be confused with the philosophical literature on political legitimacy generally (which is broader and not uniquely Weberian). Bureaucracy is, in this typology, the characteristic administrative apparatus of legal-rational authority, but the typology itself is the broader, more encompassing Weberian contribution.",
+      "source_hint": "Max Weber, Economy and Society, part I, section on 'The Types of Legitimate Domination'; standard secondary treatment in the Stanford Encyclopedia of Philosophy entry on Max Weber and in political sociology textbooks.",
+      "note": "Second-ranked alternative/companion target: broader than the bureaucracy ideal-type but still precisely and recognizably Weberian, and it is the theoretical framework within which Weber situates bureaucracy as the organizational expression of legal-rational authority.",
+      "rationale": "Recognized, citable, and distinctly Weberian; captures the deeper theoretical apparatus (legitimate domination) that motivates and explains his account of bureaucracy, so a founded_or_formalized edge here would still carry real substance of the original claim even though it is one level more abstract than 'bureaucracy' itself.",
+      "uncertainty": "Less directly responsive to the original claim's wording ('bureaucracy') than concept:weberian-bureaucracy — a reviewer could judge this too broad a substitute, effectively changing the subject from bureaucracy to authority/domination in general. Also plausible this already has close overlap with existing or future 'authority'/'legitimacy' nodes in political philosophy, which I did not find in the current corpus but cannot rule out being proposed elsewhere.",
+      "ambiguous": true
+    },
+    {
+      "id": "concept:rationalization-weber",
+      "type": "concept",
+      "domain": "social_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Rationalization (Weberian social theory)",
+      "referent": "Max Weber's thesis of rationalization: the long-run historical process by which traditional, value-oriented, and charismatic forms of social action and organization are progressively displaced by calculable, rule-bound, means-end-efficient ('formally rational') ones — spanning law, administration, the economy, and religion. Its most cited emblem is the 'iron cage' (stahlhartes Gehause) image describing modern rationalized life as constraining. This is Weber's broad diagnostic social theory, NOT the narrower logical/mathematical sense of 'rationalization' (e.g. rationalizing an equation or expression), and not identical to Enlightenment 'rationalism' as a philosophical doctrine. Bureaucracy is, for Weber, the paradigm institutional carrier of rationalization in the administrative sphere, but rationalization is the encompassing macro-thesis, not a synonym for bureaucracy.",
+      "source_hint": "Max Weber, The Protestant Ethic and the Spirit of Capitalism (closing chapter, 'iron cage'/stahlhartes Gehause passage) and Economy and Society; standard treatment in the Stanford Encyclopedia of Philosophy entry on Max Weber.",
+      "note": "Third-ranked, broadest alternative: strongly and distinctively Weberian and well recognized, but the furthest of the three from the original claim's specific subject matter (bureaucracy) since rationalization is a civilization-wide thesis of which bureaucratization is only one instance.",
+      "rationale": "Extremely well-attested as Weber's own formalization (arguably his single most famous macro-thesis) and closely linked to bureaucracy in his own writing (bureaucracy is the rationalized administrative form), so it preserves real thematic continuity with the held claim while being unambiguously a distinct, non-generic referent.",
+      "uncertainty": "Weakest match to the literal original claim: a founded_or_formalized edge from Weber to 'rationalization' answers a different (broader) question than the one that prompted the hold ('what did Weber contribute regarding bureaucracy specifically'). There is also a plausible future concept:the-protestant-ethic-thesis or concept:iron-cage node that could fragment this differently; I flag this as the least stable of the three candidates.",
+      "ambiguous": true
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:max-weber-founded-weberian-bureaucracy",
+      "source": "person:max-weber",
+      "target": "concept:weberian-bureaucracy",
+      "relation": "founded_or_formalized",
+      "confidence": 0.85,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Max Weber, Economy and Society, 'Bureaucracy' section; Stanford Encyclopedia of Philosophy entry on Max Weber.",
+      "rationale": "Direct 1:1 replacement of the held edge:max-weber-founded-bureaucracy, retargeted at the referent-precise ideal-type node rather than the generic institution; this is the most literal and defensible reading of 'Weber founded/formalized [something about] bureaucracy'.",
+      "uncertainty": "Confidence reflects strong textual/secondary-source consensus that Weber's ideal-type formulation is original to him, but the edge inherits whatever residual scoping risk attaches to the node itself (see node uncertainty).",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:weberian-bureaucracy-part-of-sociology",
+      "source": "concept:weberian-bureaucracy",
+      "target": "field:sociology",
+      "relation": "part_of",
+      "confidence": 0.9,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Standard sociology curricula/textbooks classify organizational theory and Weber's ideal types under sociology; mirrors the existing (held) edge:bureaucracy-part-of-sociology placement.",
+      "rationale": "This is a classical-sociology concept taught and classified within sociology (organizational sociology / classical theory); placement mirrors the already-proposed generic-bureaucracy edge's target field.",
+      "uncertainty": "Could plausibly also carry a secondary part_of into political science/public administration if such a field node exists in the corpus at the time of QC; I did not find one to check against in this pass, so only the sociology placement is proposed.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:max-weber-founded-legitimate-authority",
+      "source": "person:max-weber",
+      "target": "concept:legitimate-authority",
+      "relation": "founded_or_formalized",
+      "confidence": 0.85,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Max Weber, Economy and Society, 'The Types of Legitimate Domination'; Stanford Encyclopedia of Philosophy entry on Max Weber.",
+      "rationale": "Weber's tripartite authority typology is a well-documented original formalization, and it is the theoretical home of his account of bureaucracy as the apparatus of legal-rational authority — a substantively faithful, if broader, alternative target.",
+      "uncertainty": "As with the node, this edge answers a broader question than the original narrow bureaucracy claim; a strict reading of the held claim's scope might judge this edge out of scope for a 'referent-precision fix' rather than a scope expansion.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:legitimate-authority-part-of-sociology",
+      "source": "concept:legitimate-authority",
+      "target": "field:sociology",
+      "relation": "part_of",
+      "confidence": 0.85,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Standard treatment of Weber's authority typology appears in sociology (political sociology, classical theory) curricula and textbooks.",
+      "rationale": "The typology of legitimate domination is canonically taught within sociology (political sociology / classical sociological theory), matching the field placement used for the sibling bureaucracy concept.",
+      "uncertainty": "Also plausibly part_of a political-science field if one exists as a fine-grained node in the corpus; not confirmed against current data in this pass, so only sociology is proposed.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:max-weber-founded-rationalization-weber",
+      "source": "person:max-weber",
+      "target": "concept:rationalization-weber",
+      "relation": "founded_or_formalized",
+      "confidence": 0.8,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Max Weber, The Protestant Ethic and the Spirit of Capitalism (closing chapter); Stanford Encyclopedia of Philosophy entry on Max Weber.",
+      "rationale": "Rationalization is widely regarded as Weber's own signature macro-thesis, giving this edge strong sourcing, though it is the loosest fit to the original bureaucracy-scoped claim among the three candidates.",
+      "uncertainty": "Weakest scope-match to the original held claim; if QC wants a narrow 1:1 referent fix rather than a broader thematic substitute, this candidate is the most likely to be dropped.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:rationalization-weber-part-of-sociology",
+      "source": "concept:rationalization-weber",
+      "target": "field:sociology",
+      "relation": "part_of",
+      "confidence": 0.85,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Rationalization is standardly treated as a core concept of classical sociological theory (alongside Weber's other contributions) in sociology curricula and textbooks.",
+      "rationale": "Rationalization is canonical subject matter within sociology (classical theory / sociology of religion, given its development in The Protestant Ethic), matching the field placement of the sibling candidates.",
+      "uncertainty": "Rationalization also has recognized homes in philosophy (critical theory, e.g. Habermas's uptake) and political economy; sociology is proposed as the primary/most direct placement given Weber's own disciplinary location, but a philosophy-side cross-listing is plausible and not proposed here.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "This batch answers a single held C3 referent-precision problem: edge:max-weber-founded-bureaucracy (in data/edges.json, status proposed) currently targets concept:bureaucracy, whose node record models the generic administrative institution that long predates Weber. Promoting that edge as-is would misattribute an ancient institution's existence to Weber.",
+    "Three ranked candidate re-scoped targets are proposed, from narrowest/most-faithful to broadest: (1) concept:weberian-bureaucracy — Weber's own ideal-type model of bureaucratic organization, the most literal 1:1 replacement; (2) concept:legitimate-authority — his typology of traditional/charismatic/legal-rational domination, the theoretical framework bureaucracy sits inside; (3) concept:rationalization-weber — his broader rationalization thesis ('iron cage'), of which bureaucratization is one instance. QC/CTO should pick one (most likely candidate 1) rather than treat all three as independently promotable, unless a deliberate multi-edge founder record is wanted; they are offered as ranked alternatives, not a package.",
+    "No action is proposed on the original concept:bureaucracy node or its held edge:max-weber-founded-bureaucracy / edge:bureaucracy-part-of-sociology — those remain for QC/CTO to formally deprecate, redirect, or leave in place as the generic-institution node once (if) a precise-referent replacement is adopted. That disposition decision is out of scope for this generation order.",
+    "Deliberately NOT proposed: a node for 'iron cage' or 'The Protestant Ethic and the Spirit of Capitalism' thesis as a separate fourth candidate — work:the-protestant-ethic-and-the-spirit-of-capitalism already exists as a canonical work node in /data with a canonical_work-style relationship likely more appropriate than a fresh concept node; introducing a fourth concept candidate here risked over-fragmenting an already close set. Also not proposed: any edge touching field nodes outside social_sciences (e.g. political science, philosophy, public administration) because I could not confirm matching field/subfield IDs exist in the current skeleton within this order's read-only scope — QC should check for those homes before finalizing part_of placement.",
+    "No provider identifiers (Wikidata QIDs, OpenAlex IDs) appear anywhere in this artifact per proposal contract v2; referent descriptions are written blind from the generator's own knowledge for independent resolver matching.",
+    "All three node candidates and their dependent edges are self-flagged ambiguous:true or carry an ambiguous rationale/uncertainty pair, reflecting genuine contestability in scope selection (which Weberian construct best answers 'his contribution to bureaucracy') rather than low confidence in the underlying facts themselves.",
+    "[NO-EXTERNAL-EVIDENCE] Generation was blind by contract v2 (no lookups; referent descriptions from the generator's own knowledge). QC redaction 2026-07-03: two provider-ID mentions the generator echoed from /data edge notes into this artifact were removed post-generation (contract v2 machine check, ladder-check catch) — identity resolution lives in the decision file foundry/decisions/weber-referent-precision-v1.json, where every QC-read page carries an oldid permalink or an [SPN-FAILED] pending entry."
+  ]
+}
