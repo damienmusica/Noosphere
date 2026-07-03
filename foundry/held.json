@@ -113,27 +113,6 @@
     "note": "Living person — (70) floor applies whenever re-framed; attributed wording required."
   },
   {
-    "id": "subfield:esotericism-and-theosophy",
-    "blocking_condition": "QID Q7988481 (Western esotericism) present but held on a section-12 granularity/label-referent tension: node slug 'esotericism-and-theosophy' vs QID referent 'Western esotericism'. Rule-silent modeling hold, NOT a verification gap — needs a section-12 granularity ruling (stop-set: new modeling policy), not re-resolution. Ref decision (92) 3 rule-silent modeling.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:modern-philosophy",
-    "blocking_condition": "QID Q860746 (early modern philosophy) present but held on a section-12 period-axis tension: node slug 'modern-philosophy' vs QID referent 'early modern philosophy' — a period-axis subfield the granularity rule is silent on. Needs a section-12 ruling, not re-resolution. Ref decision (92).",
-    "recheck": "manual",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:social-philosophy",
-    "blocking_condition": "QID Q180592 (social philosophy) present but held on a section-12 granularity tension (overlap with political philosophy / ethics / sociology). Rule-silent modeling hold; needs a section-12 granularity ruling, not re-resolution. Ref decision (92). Note: edge:social-philosophy-part-of-philosophy waits on this node.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
     "id": "concept:bureaucracy",
     "blocking_condition": "C3 referent-precision: QID Q72468 is the GENERIC administrative-system concept (bureaucracy-as-institution long predates Weber), NOT the Weberian sociological rational-legal ideal-type asserted by the founder edge. Promoting would misattribute. Awaits a Weber-ideal-type referent node (or a re-scoping ruling). Held together with its 2 edges. Ref edge notes 2026-07-02 (Weber founder wave).",
     "recheck": "manual",
@@ -162,13 +141,6 @@
     "recorded_at": "2026-07-02"
   },
   {
-    "id": "subfield:modern-history",
-    "blocking_condition": "Wikidata upstream gap re-measured 2026-07-02 (batch:qid-gap-recheck-v1): only Q3281534 'modern period' (era, not a discipline). The REAL gate is the §12 period-axis ruling (does the atlas admit period subfields at all) — bundled with subfield:modern-philosophy in the planned §12 amendment (decision (99) item 2). Not a resolver item and not a v1.4 taxonomy candidate until §12 rules the node shape.",
-    "recheck": "manual",
-    "batch_id": "qid-gap-recheck-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
     "id": "subfield:judgment-and-decision-making",
     "blocking_condition": "v1.4 clause-1 candidate ELIMINATED by live verification (2026-07-02): the APA PsycInfo Classification contains NO judgment/decision category (2300 Human Experimental Psychology subcodes checked in full; 2340 Cognitive Processes is the nearest umbrella but does not name the field). SJDM society + its journal remain clause-2 material without a clause-1 taxonomy anchor. Parked honestly until a qualifying taxonomy authority for the area appears (taxonomy-authority criteria v1) or a Wikidata discipline entity is created upstream (machine recheck via foundry/batches/qid-gap-recheck-v1.json).",
     "recheck": "machine",
@@ -181,5 +153,26 @@
     "recheck": "machine",
     "batch_id": "taxonomy-anchor-wave1-v1",
     "recorded_at": "2026-07-02"
+  },
+  {
+    "id": "subfield:esotericism-and-theosophy",
+    "blocking_condition": "Section-12 hold-resolution clause 1 ruled 2026-07-03 (decision (106)): node + part_of edge DEPRECATED on referent mismatch (slug vs Q7988481 'Western esotericism'). Regeneration as subfield:western-esotericism blocked — precise referent fails skeleton admission: PhilPapers (the philosophy registry taxonomy) maintains no esotericism/theosophy category (0/11,908 archived browse slugs, Wayback CDX 2026-07-03); academic home is religious studies (ESSWE/Aries), no ratified taxonomy in the (102) registry. Re-creation triggers: (a) a religious-studies taxonomy authority admitted to the (102) registry (CPO gate) with a Western-esotericism unit by name, or (b) PhilPapers adding the category.",
+    "recheck": "manual",
+    "batch_id": "s12-holds-resolution-v1",
+    "recorded_at": "2026-07-03"
+  },
+  {
+    "id": "subfield:modern-philosophy",
+    "blocking_condition": "Section-12 hold-resolution clauses 1+2 ruled 2026-07-03 (decision (106)): node + part_of edge DEPRECATED on referent mismatch (slug vs Q860746 'early modern philosophy'). Regeneration as subfield:early-modern-philosophy blocked by the strict name-identity test — PhilPapers' period units are 17th/18th Century Philosophy etc., no 'Early Modern Philosophy' unit by name; nearby-unit referent bridging disallowed (CPO ruling). Re-creation triggers: (a) a ratified taxonomy maintaining an Early Modern Philosophy unit by name, or (b) the future dedicated period-axis design admitting era-cut nodes outside the field skeleton.",
+    "recheck": "manual",
+    "batch_id": "s12-holds-resolution-v1",
+    "recorded_at": "2026-07-03"
+  },
+  {
+    "id": "subfield:modern-history",
+    "blocking_condition": "Section-12 hold-resolution clause 2 ruled 2026-07-03 (decision (106)) — the period axis is now governed by standing rule, no longer rule-silent: LCC D204-475 era ranges are shelving classification (T2 fail — literature shelving is not field curation), and the (102) registry contains no history disciplinary taxonomy at all, so the era-unit cannot hold clause-1-grade standing. Node stays proposed in /data as an honest parked gap (QID-less: Wikidata still models 'modern history' only as the era Q3281534). Unpark triggers: (a) a history disciplinary taxonomy admitted to the (102) registry (CPO gate) maintaining a Modern History unit by name, or (b) the future dedicated period-axis design.",
+    "recheck": "manual",
+    "batch_id": "s12-holds-resolution-v1",
+    "recorded_at": "2026-07-03"
   }
 ]
