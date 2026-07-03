@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "batch_id": "editorial-batch6-indexable-v1",
+  "decided_at": "2026-07-03",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-03"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "node",
+      "id": "concept:tripartite-classification-of-authority",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    }
+  ],
+  "translation_updates": [],
+  "verdicts": [],
+  "identity": [],
+  "sanctions": [],
+  "rejections": [],
+  "held": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Indexable earned-rule flip for concept:tripartite-classification-of-authority after editorial-batch6-v1 lands its reviewed en summary (metadata-flip path; validate-data enforces the earned rule). Restores all-reviewed-indexable (596/596 after this pair)."
+  ]
+}

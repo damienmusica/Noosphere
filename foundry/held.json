@@ -113,27 +113,6 @@
     "note": "Living person — (70) floor applies whenever re-framed; attributed wording required."
   },
   {
-    "id": "concept:bureaucracy",
-    "blocking_condition": "C3 referent-precision: QID Q72468 is the GENERIC administrative-system concept (bureaucracy-as-institution long predates Weber), NOT the Weberian sociological rational-legal ideal-type asserted by the founder edge. Promoting would misattribute. Awaits a Weber-ideal-type referent node (or a re-scoping ruling). Held together with its 2 edges. Ref edge notes 2026-07-02 (Weber founder wave).",
-    "recheck": "manual",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "edge:bureaucracy-part-of-sociology",
-    "blocking_condition": "Held with concept:bureaucracy (C3 referent-precision: Q72468 generic institution vs Weberian ideal-type). See node hold.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "edge:max-weber-founded-bureaucracy",
-    "blocking_condition": "Held with concept:bureaucracy (C3 referent-precision: Weber formalized the sociological ideal-type, but Q72468 models the generic institution). See node hold.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave2-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
     "id": "edge:evolutionary-biology-applies-to-epidemiology",
     "blocking_condition": "CPO ruling (session #55, 2026-07-02): applies_to is a substantive claim, NOT a classification placement, so it is not a structural-tier edge and does not ride edge-promotion-v1-structural. Held at proposed until a (d)-type applies_to ladder is designed and measured on its own. Sole non-structural recheck candidate surfaced by recheck-wave1.",
     "recheck": "manual",
@@ -173,6 +152,27 @@
     "blocking_condition": "Section-12 hold-resolution clause 2 ruled 2026-07-03 (decision (106)) — the period axis is now governed by standing rule, no longer rule-silent: LCC D204-475 era ranges are shelving classification (T2 fail — literature shelving is not field curation), and the (102) registry contains no history disciplinary taxonomy at all, so the era-unit cannot hold clause-1-grade standing. Node stays proposed in /data as an honest parked gap (QID-less: Wikidata still models 'modern history' only as the era Q3281534). Unpark triggers: (a) a history disciplinary taxonomy admitted to the (102) registry (CPO gate) maintaining a Modern History unit by name, or (b) the future dedicated period-axis design.",
     "recheck": "manual",
     "batch_id": "s12-holds-resolution-v1",
+    "recorded_at": "2026-07-03"
+  },
+  {
+    "id": "concept:bureaucracy",
+    "blocking_condition": "C3 hold RESOLVED by re-scope 2026-07-03 (decision (108), batch weber-referent-precision-v1): node + 2 edges DEPRECATED (generic-institution referent Q72468 cannot carry Weber's founder claim); the claim now lives on edge:max-weber-founded-tripartite-classification-of-authority (successor concept node Q3565078, reviewed). REMAINING TRIGGER: the narrow 1:1 referent (Weber's bureaucracy ideal-type, proposal weber-referent-precision-v1 candidate 1 'concept:weberian-bureaucracy') is identity-blocked — no recognized entity (Q113625093 'theory of bureaucracy' = 0-sitelink orphan stub 2026-07-03). Re-create the narrow concept + retarget/augment the founder record iff that entity (or an equivalent) gains multi-signal standing (sitelinks + description + P31).",
+    "recheck": "manual",
+    "batch_id": "weber-referent-precision-v1",
+    "recorded_at": "2026-07-03"
+  },
+  {
+    "id": "edge:max-weber-founded-bureaucracy",
+    "blocking_condition": "CLOSED 2026-07-03 (decision (108)): deprecated and re-scoped to edge:max-weber-founded-tripartite-classification-of-authority (reviewed, founder ladder (60)/(61)). No further work on this id — audit record in foundry/decisions/weber-referent-precision-v1.json.",
+    "recheck": "manual",
+    "batch_id": "weber-referent-precision-v1",
+    "recorded_at": "2026-07-03"
+  },
+  {
+    "id": "edge:bureaucracy-part-of-sociology",
+    "blocking_condition": "CLOSED 2026-07-03 (decision (108)): deprecated with its endpoint; the sociological placement now lives on edge:tripartite-classification-of-authority-part-of-sociology (reviewed, structural tier). No further work on this id — audit record in foundry/decisions/weber-referent-precision-v1.json.",
+    "recheck": "manual",
+    "batch_id": "weber-referent-precision-v1",
     "recorded_at": "2026-07-03"
   }
 ]

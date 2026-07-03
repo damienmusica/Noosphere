@@ -1,0 +1,255 @@
+{
+  "version": 1,
+  "batch_id": "weber-referent-precision-v1",
+  "decided_at": "2026-07-03",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-03"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [
+      {
+        "id": "concept:tripartite-classification-of-authority",
+        "type": "concept",
+        "domain": "social_sciences",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q3565078"
+        },
+        "created_at": "2026-07-03",
+        "updated_at": "2026-07-03"
+      }
+    ],
+    "translations": [
+      {
+        "node_id": "concept:tripartite-classification-of-authority",
+        "locale": "en",
+        "label": "Tripartite classification of authority",
+        "summary": "",
+        "aliases": [
+          "Weber's typology of legitimate domination",
+          "three types of legitimate rule",
+          "legitimate authority (Weber)"
+        ],
+        "reviewed": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge:max-weber-founded-tripartite-classification-of-authority",
+        "source": "person:max-weber",
+        "target": "concept:tripartite-classification-of-authority",
+        "relation": "founded_or_formalized",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:sep",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-03"
+        },
+        "note": "Referent-precise re-scope of the deprecated edge:max-weber-founded-bureaucracy (C3 hold, recheck-wave2-v1): Weber's founder claim points at his own theoretical construct — the tripartite typology of legitimate domination (traditional / charismatic / legal-rational), of which bureaucracy is the characteristic legal-rational apparatus — not at the generic institution of bureaucracy that predates him. Claim-stating sources: enwiki Tripartite classification of authority ('The German sociologist Max Weber (1864–1920) distinguished three ideal types of legitimate political leadership/domination/authority') + SEP Max Weber ('Weber famously moved on to identify three ideal types of legitimate domination'); Wikidata Q3565078 carries P61 discoverer-or-inventor = Q9387 Max Weber. Generated as ranked candidate 2 of proposal weber-referent-precision-v1 (candidate 1, the Weberian-bureaucracy ideal type itself, is identity-blocked: no recognized entity — see held ledger). Permanence: enwiki oldid + SEP snapshot in the decision file."
+      },
+      {
+        "id": "edge:tripartite-classification-of-authority-part-of-sociology",
+        "source": "concept:tripartite-classification-of-authority",
+        "target": "field:sociology",
+        "relation": "part_of",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-03"
+        },
+        "note": "Classification placement: the typology is classical-sociology subject matter — enwiki Rational-legal authority places it in sociology discourse ('In sociology, the concept of rational-legal domination comes from Max Weber's tripartite classification of authority') and the enwiki lead frames Weber as 'The German sociologist'. Mirrors the concept-in-field placement pattern (logical-positivism → analytic-philosophy). Replaces the deprecated edge:bureaucracy-part-of-sociology in the same batch (§12 clause 4 edge co-migration)."
+      }
+    ],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "node",
+      "id": "concept:bureaucracy",
+      "from": "proposed",
+      "to": "deprecated"
+    },
+    {
+      "kind": "edge",
+      "id": "edge:max-weber-founded-bureaucracy",
+      "from": "proposed",
+      "to": "deprecated",
+      "set_note": "Deprecated 2026-07-03 (C3 referent-precision, §12 hold-resolution clause 1 mirror; decision (108)): the claim's true referent is Weber's own theoretical construct, not the generic administrative institution Q72468 that predates him by millennia. Re-scoped to edge:max-weber-founded-tripartite-classification-of-authority in the same batch (weber-referent-precision-v1)."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:bureaucracy-part-of-sociology",
+      "from": "proposed",
+      "to": "deprecated",
+      "set_note": "Deprecated with its source endpoint concept:bureaucracy (§12 hold-resolution clause 4, edge co-migration; decision (108)): the generic institution of bureaucracy is not sociology's disciplinary construct — the sociological subject matter is carried by the re-scoped typology node's part_of edge written in the same batch."
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "concept:tripartite-classification-of-authority",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3565078",
+          "retrieved_at": "2026-07-03",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q3565078&oldid=2293886262"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripartite_classification_of_authority",
+          "retrieved_at": "2026-07-03",
+          "quote": "The German sociologist Max Weber (1864–1920) distinguished three ideal types of legitimate political leadership /domination/ authority",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Tripartite_classification_of_authority&oldid=1336607101"
+        }
+      ],
+      "notes": "Identity: Q3565078 label 'tripartite classification of authority', en description 'M. Weber's classification of authority into charismatic, traditional, and legal types', 8 sitelinks incl. enwiki, P61 (discoverer or inventor) = Q9387 Max Weber. Node slug matches the entity's standard name exactly (C3 discipline: the generator's slug gloss 'legitimate-authority' was corrected at QC identity resolution — a generic-label slug over a Weber-specific entity would recreate the very slug↔referent mismatch this batch resolves; the generator's own uncertainty note flagged the label as a gloss). Multi-signal passes where candidate 1 failed."
+    },
+    {
+      "subject_id": "edge:max-weber-founded-tripartite-classification-of-authority",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripartite_classification_of_authority",
+          "retrieved_at": "2026-07-03",
+          "quote": "The German sociologist Max Weber (1864–1920) distinguished three ideal types of legitimate political leadership /domination/ authority",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Tripartite_classification_of_authority&oldid=1336607101"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/weber/",
+          "retrieved_at": "2026-07-03",
+          "quote": "Weber famously moved on to identify three ideal types of legitimate domination based on, respectively, charisma, tradition, and legal rationality.",
+          "independent": true
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q3565078",
+          "retrieved_at": "2026-07-03",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q3565078&oldid=2293886262"
+        }
+      ],
+      "notes": "Adversarial perspective-diverse QC (founder ladder (60)/(61)): [attribution] both enwiki and SEP attribute the typology solely to Weber; no counter-claimant found in either source — the 'predates-the-founder' trap that killed the bureaucracy claim does NOT apply (a typology is a theoretical construct created by its author, unlike the institution it classifies). [direction] person→concept correct; the construct appears in Weber's Economy and Society. [identity] target entity is Weber-specific by description AND by P61=Q9387; source person Q9387 verified. [living-person] Weber d. 1920 — deceased path. ≥2 independent claim-stating live sources (enwiki + SEP), Wikidata structured claim as third corroboration."
+    },
+    {
+      "subject_id": "edge:tripartite-classification-of-authority-part-of-sociology",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rational-legal_authority",
+          "retrieved_at": "2026-07-03",
+          "quote": "In sociology, the concept of rational-legal domination comes from Max Weber's tripartite classification of authority",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rational-legal_authority&oldid=1348826867"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Tripartite_classification_of_authority",
+          "retrieved_at": "2026-07-03",
+          "quote": "The German sociologist Max Weber (1864–1920) distinguished three ideal types of legitimate political leadership /domination/ authority",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Tripartite_classification_of_authority&oldid=1336607101"
+        }
+      ],
+      "notes": "Classification placement (structural tier): enwiki explicitly locates the typology in sociology discourse; the construct is classical sociological theory by authorship and curriculum. Concept-in-field placement mirrors logical-positivism → analytic-philosophy. No competing disciplinary home asserted by the read sources (SEP treats Weber under philosophy biographically but locates the domination typology in his sociology — 'his other sociologies of, for instance, law, city, music, domination, and economy')."
+    },
+    {
+      "subject_id": "concept:bureaucracy",
+      "verdict": "reject",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bureaucracy",
+          "retrieved_at": "2026-07-03",
+          "quote": "The German sociologist Max Weber (1864–1920) was the first to study bureaucracy formally, and his works led to the popularization of this term.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Bureaucracy&oldid=1362037974"
+        }
+      ],
+      "notes": "C3 referent-precision confirmed against live sources: Q72468 models the generic administrative institution; enwiki's own formulation ('first to STUDY bureaucracy formally') distinguishes studying/theorizing the pre-existing institution from creating it — exactly the misattribution the hold flagged. The precise referent for a 1:1 replacement (Weber's bureaucracy ideal-type, proposal candidate 1 'concept:weberian-bureaucracy') is identity-blocked: wbsearchentities 2026-07-03 finds no recognized entity ('Weberian bureaucracy' zero hits; Q113625093 'theory of bureaucracy' is a 0-sitelink, description-less orphan stub failing multi-signal — naval-architecture Q101910631 precedent). Disposition: node + both edges deprecated; the founder claim re-scoped one level up to the recognized typology entity (candidate 2); candidate 1 ledgered as a future re-creation trigger; candidate 3 (rationalization) not adopted — generator's own ranking marks it loosest-fit, and one precise re-scope suffices."
+    }
+  ],
+  "identity": [
+    {
+      "node_id": "concept:tripartite-classification-of-authority",
+      "provider": "wikidata",
+      "external_id": "Q3565078",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-03"
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "concept:tripartite-classification-of-authority",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "edge:max-weber-founded-tripartite-classification-of-authority",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:tripartite-classification-of-authority-part-of-sociology",
+      "ladder": "edge-promotion-v1-structural"
+    }
+  ],
+  "rejections": [],
+  "held": [
+    {
+      "id": "concept:bureaucracy",
+      "blocking_condition": "C3 hold RESOLVED by re-scope 2026-07-03 (decision (108), batch weber-referent-precision-v1): node + 2 edges DEPRECATED (generic-institution referent Q72468 cannot carry Weber's founder claim); the claim now lives on edge:max-weber-founded-tripartite-classification-of-authority (successor concept node Q3565078, reviewed). REMAINING TRIGGER: the narrow 1:1 referent (Weber's bureaucracy ideal-type, proposal weber-referent-precision-v1 candidate 1 'concept:weberian-bureaucracy') is identity-blocked — no recognized entity (Q113625093 'theory of bureaucracy' = 0-sitelink orphan stub 2026-07-03). Re-create the narrow concept + retarget/augment the founder record iff that entity (or an equivalent) gains multi-signal standing (sitelinks + description + P31).",
+      "recheck": "manual",
+      "batch_id": "weber-referent-precision-v1",
+      "recorded_at": "2026-07-03"
+    },
+    {
+      "id": "edge:max-weber-founded-bureaucracy",
+      "blocking_condition": "CLOSED 2026-07-03 (decision (108)): deprecated and re-scoped to edge:max-weber-founded-tripartite-classification-of-authority (reviewed, founder ladder (60)/(61)). No further work on this id — audit record in foundry/decisions/weber-referent-precision-v1.json.",
+      "recheck": "manual",
+      "batch_id": "weber-referent-precision-v1",
+      "recorded_at": "2026-07-03"
+    },
+    {
+      "id": "edge:bureaucracy-part-of-sociology",
+      "blocking_condition": "CLOSED 2026-07-03 (decision (108)): deprecated with its endpoint; the sociological placement now lives on edge:tripartite-classification-of-authority-part-of-sociology (reviewed, structural tier). No further work on this id — audit record in foundry/decisions/weber-referent-precision-v1.json.",
+      "recheck": "manual",
+      "batch_id": "weber-referent-precision-v1",
+      "recorded_at": "2026-07-03"
+    }
+  ],
+  "override_rejections": [],
+  "anchors_pending": [
+    {
+      "url": "https://plato.stanford.edu/entries/weber/",
+      "reason": "[SPN-FAILED] save did not materialize and no prior snapshot exists"
+    }
+  ],
+  "notes": [
+    "Resolves the last §12-family manual hold: the recheck-wave2-v1 C3 referent-precision bundle (concept:bureaucracy + edge:max-weber-founded-bureaucracy + edge:bureaucracy-part-of-sociology). CPO directed processing 2026-07-03; disposition is a CTO mirror ruling of the ratified patterns (§12 hold-resolution clause 1 (106) + the concept:internet referent-precision precedent #39).",
+    "Regime split honored (§15.7 — founder gate includes an LLM verdict): generation = separated-context Sonnet 5 proposal-generator agent (foundry/proposals/weber-referent-precision-v1/proposal.json, blind referents, 3 ranked candidates, all self-flagged ambiguous); QC/identity/verdicts = orchestrator with live Wikidata resolution + fetch-corpus sources (enwiki ×4, SEP, all live 200).",
+    "QC candidate adjudication: candidate 1 (weberian-bureaucracy ideal-type, most faithful) FAILS identity — no recognized entity; candidate 2 (the typology) ADOPTED with the slug corrected to the entity's standard name (tripartite-classification-of-authority — the generator's 'legitimate-authority' gloss would have recreated a generic-slug↔specific-referent C3); candidate 3 (rationalization) NOT adopted (generator-ranked loosest fit; one precise re-scope suffices — Q17936 exists if a future wave wants it).",
+    "The new reviewed node lands WITHOUT an en summary — editorial gap reopens at 1; the companion editorial batch (editorial-batch6) fills it in the same session/PR, mirroring the (107) social-philosophy pattern.",
+    "Held-ledger hygiene: the two deprecated edge ids are superseded with CLOSED records (promotion-to-reviewed auto-resolution does not fire on deprecations); the node id keeps a live re-creation trigger for the identity-blocked narrow referent."
+  ]
+}

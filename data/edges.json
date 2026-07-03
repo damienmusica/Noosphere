@@ -1590,7 +1590,7 @@
     "target": "field:sociology",
     "relation": "part_of",
     "confidence": 0.8,
-    "status": "proposed",
+    "status": "deprecated",
     "evidence": [
       "source:wikidata",
       "source:wikipedia"
@@ -1601,7 +1601,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "Held proposed: QID Q72468 is the GENERIC administrative-system concept, not Weber's sociological rational-legal ideal-type — referent-precision (C3) mismatch; promoting would misattribute (bureaucracy-as-institution long predates Weber). Awaits a Weber-ideal-type referent. Permanence: WP https://en.wikipedia.org/w/index.php?title=Bureaucracy&oldid=1362037974 · Wikidata Q72468."
+    "note": "Deprecated with its source endpoint concept:bureaucracy (§12 hold-resolution clause 4, edge co-migration; decision (108)): the generic institution of bureaucracy is not sociology's disciplinary construct — the sociological subject matter is carried by the re-scoped typology node's part_of edge written in the same batch."
   },
   {
     "id": "edge:business-ethics-part-of-philosophy",
@@ -8558,7 +8558,7 @@
     "target": "concept:bureaucracy",
     "relation": "founded_or_formalized",
     "confidence": 0.6,
-    "status": "proposed",
+    "status": "deprecated",
     "evidence": [
       "source:wikidata",
       "source:wikipedia"
@@ -8569,7 +8569,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "Held proposed with the node (referent-precision): Weber formalized the sociological ideal-type of bureaucracy, but Q72468 models the generic institution. Permanence: WP https://en.wikipedia.org/w/index.php?title=Bureaucracy&oldid=1362037974 · Wikidata Q72468."
+    "note": "Deprecated 2026-07-03 (C3 referent-precision, §12 hold-resolution clause 1 mirror; decision (108)): the claim's true referent is Weber's own theoretical construct, not the generic administrative institution Q72468 that predates him by millennia. Re-scoped to edge:max-weber-founded-tripartite-classification-of-authority in the same batch (weber-referent-precision-v1)."
   },
   {
     "id": "edge:max-weber-founded-sociology",
@@ -8588,6 +8588,26 @@
       "proposed_at": "2026-06-19"
     },
     "note": "Weber is a central founding figure of sociology (Wikipedia Max Weber: \"one of the central figures in the development of sociology and the social sciences more generally\"). Plural/layered founding preserved (record-not-resolve): co-exists with the Comte and Durkheim edges. Person + field Wikipedia articles."
+  },
+  {
+    "id": "edge:max-weber-founded-tripartite-classification-of-authority",
+    "source": "person:max-weber",
+    "target": "concept:tripartite-classification-of-authority",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-03"
+    },
+    "note": "Referent-precise re-scope of the deprecated edge:max-weber-founded-bureaucracy (C3 hold, recheck-wave2-v1): Weber's founder claim points at his own theoretical construct — the tripartite typology of legitimate domination (traditional / charismatic / legal-rational), of which bureaucracy is the characteristic legal-rational apparatus — not at the generic institution of bureaucracy that predates him. Claim-stating sources: enwiki Tripartite classification of authority ('The German sociologist Max Weber (1864–1920) distinguished three ideal types of legitimate political leadership/domination/authority') + SEP Max Weber ('Weber famously moved on to identify three ideal types of legitimate domination'); Wikidata Q3565078 carries P61 discoverer-or-inventor = Q9387 Max Weber. Generated as ranked candidate 2 of proposal weber-referent-precision-v1 (candidate 1, the Weberian-bureaucracy ideal type itself, is identity-blocked: no recognized entity — see held ledger). Permanence: enwiki oldid + SEP snapshot in the decision file."
   },
   {
     "id": "edge:mechanical-engineering-part-of-engineering-and-technology",
@@ -14418,6 +14438,24 @@
       "proposed_at": "2026-06-11"
     },
     "note": "LCC TA1001-1280 'Transportation engineering' — range within LCC TA (civil engineering subclass) (captured baseline 2026-06-11). UDC 625 'Civil engineering of land transport. Railway engineering. Highway engineering' — the UDC caption co-names 'Civil engineering' as the parent context for land transport engineering (captured baseline 2026-06-11)."
+  },
+  {
+    "id": "edge:tripartite-classification-of-authority-part-of-sociology",
+    "source": "concept:tripartite-classification-of-authority",
+    "target": "field:sociology",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-03"
+    },
+    "note": "Classification placement: the typology is classical-sociology subject matter — enwiki Rational-legal authority places it in sociology discourse ('In sociology, the concept of rational-legal domination comes from Max Weber's tripartite classification of authority') and the enwiki lead frames Weber as 'The German sociologist'. Mirrors the concept-in-field placement pattern (logical-positivism → analytic-philosophy). Replaces the deprecated edge:bureaucracy-part-of-sociology in the same batch (§12 clause 4 edge co-migration)."
   },
   {
     "id": "edge:turing-machine-part-of-computability-theory",
