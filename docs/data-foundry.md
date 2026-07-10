@@ -542,6 +542,22 @@ Clear-pass future candidates surfaced by the criteria (not yet ratified, each st
 mirror-ruling with live verification): MeSH (NLM, medicine), MSC 2020 (AMS/zbMATH, mathematics),
 PhySH (APS, physics), OECD FORD (intergovernmental).
 
+### Editorial summaries — editorial v2 QC regime (vault decision (34), 2026-06-12)
+
+Editorial summaries ship under the **editorial v2** sanctioned path (§15.4 ladder registry). The QC
+regime, ratified as decision (34) (supersedes the v1 "full fact-check" clause; its machine-check gap
+was retroactively closed corpus-wide by (104) citation-retrofit):
+
+- **Machine checks run in full on every item**: claim-anchor verbatim verification (`fetch-verify`),
+  cited-URL live survival, and §8 evidence-permanence anchoring (Wayback / wiki oldid).
+- **Orchestrator close-read on a 30% sample** (50% on a policy's first run), plus **in full**: every
+  self-flagged or ambiguous item and every `[UNFETCHED]` item.
+- **One factual error** in the sample or flags escalates the whole batch back to full close-read
+  plus a CPO report.
+- Generation-model routing is governed by the vault decision log (decisions (76)/(99)③ as of
+  2026-07: proposal generation = Sonnet 5; editorial generation, orchestration, and QC = Opus;
+  editorial-on-Sonnet-5 is a watch item). Separated-context generation applies per ADR 0007 / §15.7.
+
 ### Living-person handling — standing policy (vault decision (70), 2026-06-30)
 
 The risk axis for a living person is **claim type × source authority × contention — not aliveness.** This
