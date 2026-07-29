@@ -926,9 +926,9 @@
     "node_id": "person:allen-newell",
     "locale": "en",
     "label": "Allen Newell",
-    "summary": "",
+    "summary": "Allen Newell (1927–1992) was an American computer scientist and cognitive psychologist who worked at the RAND Corporation before moving to Carnegie Mellon University. With Herbert A. Simon and programmer Cliff Shaw, he built the Information Processing Language and, in 1956, the Logic Theorist — one of the earliest artificial intelligence programs — followed the next year by the General Problem Solver; his contributions to those programs are credited with helping establish artificial intelligence as a field. Newell and Simon went on to formulate the physical symbol system hypothesis — that intelligent behavior in general amounts to symbol manipulation of the sort their own programs performed — and in 1975 the two shared the ACM Turing Award for their contributions to artificial intelligence and the psychology of human cognition.",
     "aliases": [],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "person:alonzo-church",
@@ -1259,11 +1259,11 @@
     "node_id": "person:franz-brentano",
     "locale": "en",
     "label": "Franz Brentano",
-    "summary": "",
+    "summary": "Franz Brentano (1838–1917) was a German philosopher and psychologist whose 1874 book Psychology from an Empirical Standpoint, regarded as his major work, is credited with bringing the scholastic-era notion of intentionality — the idea that mental acts are directed at objects — back into modern philosophical discussion. He trained and served as a Catholic priest before withdrawing in 1873 over the church's newly declared dogma of papal infallibility, and in 1874 took a full professorship at the University of Vienna. He lost that position in 1880: Austro-Hungarian law barred former priests from marrying, and after he and Ida von Lieben wed abroad the authorities declined to reinstate him, so he taught on as an unsalaried Privatdozent until 1895. His Vienna students included Edmund Husserl, Sigmund Freud, Alexius Meinong, Carl Stumpf, and Kazimierz Twardowski. Husserl, who studied under Brentano before founding the phenomenological movement, carried the concept of intentionality forward along his own, distinct lines rather than co-originating it. Drawing heavily on Aristotle and later scholastic philosophy, Brentano is now often described as anticipating both the phenomenological and analytic traditions in twentieth-century philosophy.",
     "aliases": [
       "Franz Clemens Brentano"
     ],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "person:friedrich-nietzsche",
@@ -1424,11 +1424,11 @@
     "node_id": "person:herbert-simon",
     "locale": "en",
     "label": "Herbert A. Simon",
-    "summary": "",
+    "summary": "Herbert A. Simon (1916–2001) was an American polymath whose contributions spanned computer science, economics, and cognitive psychology; he is best known for the concepts of bounded rationality and satisficing in decision-making. Together with Allen Newell, he built some of the earliest artificial intelligence programs, including the Logic Theory Machine (1956) and the General Problem Solver (1957); that work is often cited as foundational to artificial intelligence and to neighboring fields such as operations research, management science, and cognitive science. Simon and Newell shared the 1975 ACM Turing Award, and in 1978 Simon alone received the Nobel Memorial Prize in Economic Sciences for his research into decision-making within economic organizations.",
     "aliases": [
       "Herbert Alexander Simon"
     ],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "person:isaac-newton",
@@ -4768,11 +4768,11 @@
     "node_id": "subfield:thermodynamics",
     "locale": "en",
     "label": "Thermodynamics",
-    "summary": "",
+    "summary": "Thermodynamics is the branch of physics that examines how heat and work move energy through physical systems, and how that exchange constrains matter and radiation through the related concept of entropy. Four governing laws describe these exchanges in measurable, macroscopic terms, while statistical mechanics supplies a microscopic account of the same behavior. The field took shape in the early nineteenth century out of efforts to improve the efficiency of steam engines, with Sadi Carnot's 1824 analysis of engine efficiency an early landmark; Rudolf Clausius introduced the term entropy in 1865 while working out the second law. The field now comprises several distinct branches — including chemical, equilibrium, non-equilibrium, classical, and statistical thermodynamics — each built on a different model or applied to a different class of system.",
     "aliases": [
       "classical thermodynamics"
     ],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "subfield:time-series-analysis",
@@ -4818,12 +4818,12 @@
     "node_id": "subfield:type-theory",
     "locale": "en",
     "label": "Type theory",
-    "summary": "",
+    "summary": "In mathematical logic and theoretical computer science, type theory studies formal systems that sort expressions and mathematical objects into types, with each type restricting how an expression may be formed and used, in a way loosely comparable to how a data type constrains values in a programming language. Bertrand Russell worked out the approach between 1902 and 1908 to avoid paradoxes such as the one bearing his name in naive set theory, arriving by 1908 at a hierarchy of types paired with a reducibility axiom, both later formalized in his and Alfred North Whitehead's Principia Mathematica (1910–1913). In the twentieth century the field developed alongside Alonzo Church's lambda calculus and now includes systems such as Per Martin-Löf's intuitionistic type theory, which supports a constructive approach to mathematical foundations, and Thierry Coquand's calculus of constructions, which underlies proof assistants including Rocq (formerly Coq) and Lean.",
     "aliases": [
       "theory of types",
       "type systems"
     ],
-    "reviewed": false
+    "reviewed": true
   },
   {
     "node_id": "subfield:urban-and-regional-planning",
