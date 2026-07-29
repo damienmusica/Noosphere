@@ -1,0 +1,1210 @@
+{
+  "version": 1,
+  "batch_id": "concept-wave3-v1",
+  "decided_at": "2026-07-29",
+  "qc_by": {
+    "model_name": "Claude Opus",
+    "model_version": "claude-opus-5",
+    "proposed_at": "2026-07-29"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [
+      {
+        "id": "concept:conservation-of-mass",
+        "type": "concept",
+        "domain": "natural_sciences",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q483948"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "concept:cell-theory",
+        "type": "concept",
+        "domain": "life_sciences",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q177935"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "concept:germ-theory-of-disease",
+        "type": "concept",
+        "domain": "life_sciences",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q1425837"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "concept:uniformitarianism",
+        "type": "concept",
+        "domain": "natural_sciences",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q208650"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "concept:entropy",
+        "type": "concept",
+        "domain": "natural_sciences",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q45003"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "concept:bounded-rationality",
+        "type": "concept",
+        "domain": "social_sciences",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q814385"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "concept:ideal-type",
+        "type": "concept",
+        "domain": "social_sciences",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q1052882"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      }
+    ],
+    "translations": [
+      {
+        "node_id": "concept:conservation-of-mass",
+        "locale": "en",
+        "label": "Conservation of mass",
+        "summary": "",
+        "aliases": [
+          "law of conservation of mass",
+          "conservation of matter"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "concept:cell-theory",
+        "locale": "en",
+        "label": "Cell theory",
+        "summary": "",
+        "aliases": [],
+        "reviewed": false
+      },
+      {
+        "node_id": "concept:germ-theory-of-disease",
+        "locale": "en",
+        "label": "Germ theory of disease",
+        "summary": "",
+        "aliases": [
+          "germ theory"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "concept:uniformitarianism",
+        "locale": "en",
+        "label": "Uniformitarianism",
+        "summary": "",
+        "aliases": [
+          "principle of uniformitarianism"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "concept:entropy",
+        "locale": "en",
+        "label": "Entropy",
+        "summary": "",
+        "aliases": [
+          "thermodynamic entropy"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "concept:bounded-rationality",
+        "locale": "en",
+        "label": "Bounded rationality",
+        "summary": "",
+        "aliases": [],
+        "reviewed": false
+      },
+      {
+        "node_id": "concept:ideal-type",
+        "locale": "en",
+        "label": "Ideal type",
+        "summary": "",
+        "aliases": [
+          "Idealtypus",
+          "ideal types"
+        ],
+        "reviewed": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge:conservation-of-mass-part-of-chemistry",
+        "source": "concept:conservation-of-mass",
+        "target": "field:chemistry",
+        "relation": "part_of",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Structural tier. The law is a foundational principle of chemistry; enwiki treats it as the anchor of the discipline's quantitative era (\"Antoine Lavoisier's discovery of the law of conservation of mass led to many new findings in the 19th century\"). Wikidata Q483948 P31 = Q36382 scientific law."
+      },
+      {
+        "id": "edge:antoine-lavoisier-founded-conservation-of-mass",
+        "source": "person:antoine-lavoisier",
+        "target": "concept:conservation-of-mass",
+        "relation": "founded_or_formalized",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Wikidata Q483948 carries P61 (discoverer or inventor) = Q39607 Antoine Lavoisier — a structural cross-confirmation of the prose claim, the same signal pattern that supported the Weber typology edge in decision (108). Record-not-resolve scope note: enwiki states the priority history in the same breath — \"mass conservation in chemical reactions was primarily demonstrated by Jean Rey (in 1630) and finally confirmed by Antoine Lavoisier in the late 18th century\" — and a Lomonosov priority claim is also current. Lavoisier's founder standing is for the law as chemistry's quantitative principle, not for first noticing the phenomenon; neither precursor is a corpus node."
+      },
+      {
+        "id": "edge:cell-theory-part-of-cell-biology",
+        "source": "concept:cell-theory",
+        "target": "subfield:cell-biology",
+        "relation": "part_of",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Structural tier, uncontested. Wikidata Q177935 P31 = Q3239681 scientific theory."
+      },
+      {
+        "id": "edge:theodor-schwann-founded-cell-theory",
+        "source": "person:theodor-schwann",
+        "target": "concept:cell-theory",
+        "relation": "founded_or_formalized",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Co-founder edge, record-not-resolve. enwiki names both men in one sentence: \"Credit for developing cell theory is usually given to two scientists: Theodor Schwann and Matthias Jakob Schleiden.\" Wikidata Q177935 P61 lists three inventors — Schleiden, Schwann and Rudolf Virchow. Honest gap recorded rather than papered over: Virchow (omnis cellula e cellula, the third clause of the modern doctrine) is not a corpus node, so this batch records two of the three; the generator flagged exactly this."
+      },
+      {
+        "id": "edge:matthias-jakob-schleiden-founded-cell-theory",
+        "source": "person:matthias-jakob-schleiden",
+        "target": "concept:cell-theory",
+        "relation": "founded_or_formalized",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Co-founder edge, the twin of the Schwann edge and not a duplicate of it — the source names both jointly and the corpus records multiple founders. Same Virchow gap note."
+      },
+      {
+        "id": "edge:germ-theory-of-disease-part-of-microbiology",
+        "source": "concept:germ-theory-of-disease",
+        "target": "subfield:microbiology",
+        "relation": "part_of",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Structural tier. Wikidata Q1425837 P31 = Q3239681 scientific theory, 31 sitelinks. Admitted on this membership alone: both proposed founder edges failed QC (see the verdict), so this concept enters on its disciplinary home rather than on a person claim — C1 edge-demand is satisfied by part_of."
+      },
+      {
+        "id": "edge:uniformitarianism-part-of-geology",
+        "source": "concept:uniformitarianism",
+        "target": "subfield:geology",
+        "relation": "part_of",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Structural tier. Wikidata Q208650 P31 = principle + philosophical theory; enwiki frames it as the founding methodological principle of geology, proposed in contrast to catastrophism."
+      },
+      {
+        "id": "edge:james-hutton-founded-uniformitarianism",
+        "source": "person:james-hutton",
+        "target": "concept:uniformitarianism",
+        "relation": "founded_or_formalized",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Sole founder edge. enwiki: uniformitarianism \"was originally proposed in contrast to catastrophism by British naturalists in the late 18th century, starting with the work of the geologist James Hutton in his many books including Theory of the Earth\", and \"In 1785 James Hutton proposed an opposing, self-maintaining infinite cycle\". The term itself was coined later by William Whewell, who is not a corpus node — recorded, not asserted. The proposed companion edge for Charles Lyell was declined at QC: the same article calls his role popularisation, not founding."
+      },
+      {
+        "id": "edge:entropy-part-of-thermodynamics",
+        "source": "concept:entropy",
+        "target": "subfield:thermodynamics",
+        "relation": "part_of",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Structural tier, and the only edge on this node. enwiki: \"Entropy is central to the second law of thermodynamics\", and \"The concept of entropy is described by two principal approaches, the macroscopic perspective of classical thermodynamics, and the microscopic description central to statistical mechanics.\" The statistical-mechanics strand is a real second home, but the corpus node is named statistical-physics rather than statistical mechanics, so a §13 co-equal membership is deliberately NOT written on a near-name — single parent, strand recorded. No founder edge: the term is Clausius's, and no Clausius node exists."
+      },
+      {
+        "id": "edge:bounded-rationality-part-of-economics",
+        "source": "concept:bounded-rationality",
+        "target": "field:economics",
+        "relation": "part_of",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:sep"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Structural tier. Target chosen as field:economics rather than subfield:behavioral-economics — the generator left this open and flagged it. enwiki places the concept broadly (\"as used in economics, political science, and related disciplines\") and neither source files it under behavioral economics specifically. Filing it in the narrower subfield would assert a placement the sources do not; the behavioral-economics affinity is real and recorded here instead."
+      },
+      {
+        "id": "edge:herbert-simon-founded-bounded-rationality",
+        "source": "person:herbert-simon",
+        "target": "concept:bounded-rationality",
+        "relation": "founded_or_formalized",
+        "confidence": 0.95,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:sep"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "The batch's strongest founder claim: enwiki states the coinage outright (\"Bounded rationality was coined by Herbert A. Simon\") and SEP's dedicated entry is built on Simon 1955a. Second edge for person:herbert-simon, added in the same session as the node itself (held-trigger-nodes-v1)."
+      },
+      {
+        "id": "edge:ideal-type-part-of-sociology",
+        "source": "concept:ideal-type",
+        "target": "field:sociology",
+        "relation": "part_of",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Structural tier. Wikidata Q1052882 P31 = Q151885 concept — the cleanest concept typing in the batch, and exactly the C3 signal the keep-criteria ask for."
+      },
+      {
+        "id": "edge:max-weber-founded-ideal-type",
+        "source": "person:max-weber",
+        "target": "concept:ideal-type",
+        "relation": "founded_or_formalized",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:sep"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Two independent publishers attribute the methodology to Weber: SEP \"The methodology of 'ideal type' (Idealtypus) is another testimony to such a broadly ethical intention of Weber\"; enwiki \"Weber states that an 'ideal type' never seeks to claim its validity in terms of a reproduction of or correspondence with social reality.\" Joins Weber's existing reviewed edges on the tripartite authority typology and his critique of Marx."
+      }
+    ],
+    "external_links": []
+  },
+  "promotions": [],
+  "translation_updates": [],
+  "verdicts": [
+    {
+      "subject_id": "concept:conservation-of-mass",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q483948",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q483948&oldid=2515869802"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Conservation_of_mass",
+          "retrieved_at": "2026-07-29",
+          "quote": "Antoine Lavoisier 's discovery of the law of conservation of mass led to many new findings in the 19th century.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Conservation_of_mass&oldid=1365127168"
+        }
+      ],
+      "notes": "Identity live 2026-07-29: Q483948, P31 = Q36382 scientific law, P279 = Q205805, 72 sitelinks, 23 properties, and P61 (discoverer or inventor) = Q39607 Lavoisier. Referent-precise: the law, disambiguated at search time from Q11382 conservation of energy and from two scientific-article homonyms. C3 passes — a scientific law is a bounded doctrine, not a discipline."
+    },
+    {
+      "subject_id": "concept:cell-theory",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q177935",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q177935&oldid=2523318691"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cell_theory",
+          "retrieved_at": "2026-07-29",
+          "quote": "Credit for developing cell theory is usually given to two scientists: Theodor Schwann and Matthias Jakob Schleiden",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cell_theory&oldid=1365081375"
+        }
+      ],
+      "notes": "Identity live 2026-07-29: Q177935, P31 = Q3239681 scientific theory, 71 sitelinks, P61 = Q76747 Schleiden + Q76745 Schwann + Q76432 Virchow. Disambiguated from three scientific-article homonyms returned by the same search."
+    },
+    {
+      "subject_id": "concept:germ-theory-of-disease",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1425837",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q1425837&oldid=2400656197"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Germ_theory_of_disease",
+          "retrieved_at": "2026-07-29",
+          "quote": "Basic forms of germ theory were proposed by Girolamo Fracastoro in 1546, and expanded upon by Marcus von Plenciz in 1762.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Germ_theory_of_disease&oldid=1363463071"
+        }
+      ],
+      "notes": "Identity live 2026-07-29: Q1425837, P31 = Q3239681 scientific theory, 31 sitelinks; the only search hit, no homonym risk. The referent explicitly excludes germ-plasm theory and germ-layer theory, a real trap the generator named. Node admitted; both proposed founder edges failed — see the separate verdicts."
+    },
+    {
+      "subject_id": "concept:uniformitarianism",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q208650",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q208650&oldid=2520026444"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Uniformitarianism",
+          "retrieved_at": "2026-07-29",
+          "quote": "uniformitarianism was originally proposed in contrast to catastrophism by British naturalists in the late 18th century, starting with the work of the geologist James Hutton",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Uniformitarianism&oldid=1340745341"
+        }
+      ],
+      "notes": "Identity live 2026-07-29: Q208650, P31 = Q211364 principle + Q5389993 philosophical theory, 48 sitelinks, 20 properties, no P61. Disambiguated from three scientific-article homonyms."
+    },
+    {
+      "subject_id": "concept:entropy",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q45003",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q45003&oldid=2517117836"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Entropy",
+          "retrieved_at": "2026-07-29",
+          "quote": "Entropy is central to the second law of thermodynamics",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Entropy&oldid=1361126134"
+        }
+      ],
+      "notes": "★ Identity required a second, targeted search. The bare label 'entropy' returns a journal, four video games, a split EP, a yacht and a Buffy episode before any physics item — the noisiest label in the batch. Q45003 'entropy — physical property of the state of a system, measure of disorder' is the thermodynamic referent, distinguished from Q204570 information entropy (a genuinely different quantity that would be the wrong node here) and from Q5380792, a near-duplicate item. Recorded because a label-match-only resolver would have failed this one outright."
+    },
+    {
+      "subject_id": "concept:bounded-rationality",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q814385",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q814385&oldid=2522544066"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Bounded_rationality",
+          "retrieved_at": "2026-07-29",
+          "quote": "Bounded rationality was coined by Herbert A.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Bounded_rationality&oldid=1340186617"
+        }
+      ],
+      "notes": "Identity live 2026-07-29: Q814385, P31 = Q29028649 economic concept, P279 = Q177571 + Q44455, 23 sitelinks. Disambiguated from a 2020 item and two journal articles."
+    },
+    {
+      "subject_id": "concept:ideal-type",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1052882",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q1052882&oldid=2520685351"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ideal_type",
+          "retrieved_at": "2026-07-29",
+          "quote": "Weber states that an \"ideal type\" never seeks to claim its validity in terms of a reproduction of or correspondence with social reality.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ideal_type&oldid=1348687628"
+        }
+      ],
+      "notes": "Identity live 2026-07-29: Q1052882, P31 = Q151885 concept — the cleanest C3 typing in the batch — P279 = Q21146257 type, 20 sitelinks, 22 properties. Disambiguated from an Ideal typewriter item and two journal articles; the generator's flagged colloquial-'ideal type' homonym does not carry a competing entity."
+    },
+    {
+      "subject_id": "edge:antoine-lavoisier-founded-conservation-of-mass",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Conservation_of_mass",
+          "retrieved_at": "2026-07-29",
+          "quote": "Antoine Lavoisier 's discovery of the law of conservation of mass led to many new findings in the 19th century.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Conservation_of_mass&oldid=1365127168"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Conservation_of_mass",
+          "retrieved_at": "2026-07-29",
+          "quote": "mass conservation in chemical reactions was primarily demonstrated by Jean Rey (in 1630) and finally confirmed by Antoine Lavoisier in the late 18th century",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Conservation_of_mass&oldid=1365127168"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q483948",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q483948&oldid=2515869802"
+        }
+      ],
+      "notes": "Prose claim plus a structural cross-confirmation (P61 = Lavoisier). Adversarial check found and recorded the priority literature in the source itself (Jean Rey 1630; a Lomonosov claim is also current) — that is a scope qualification on what Lavoisier founded, not a rival founder for the law as chemistry's quantitative principle, so it routes to supported + note under the existence-vs-degree line rather than to disputed."
+    },
+    {
+      "subject_id": "edge:theodor-schwann-founded-cell-theory",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cell_theory",
+          "retrieved_at": "2026-07-29",
+          "quote": "Credit for developing cell theory is usually given to two scientists: Theodor Schwann and Matthias Jakob Schleiden",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cell_theory&oldid=1365081375"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q177935",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q177935&oldid=2523318691"
+        }
+      ],
+      "notes": "One sentence names both founders; Wikidata P61 independently lists Schleiden, Schwann and Virchow. Adversarial check: Virchow's third clause is a real part of the modern doctrine and he is missing from the corpus — recorded as an honest gap on both edges rather than silently reducing the theory to two authors."
+    },
+    {
+      "subject_id": "edge:matthias-jakob-schleiden-founded-cell-theory",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cell_theory",
+          "retrieved_at": "2026-07-29",
+          "quote": "Credit for developing cell theory is usually given to two scientists: Theodor Schwann and Matthias Jakob Schleiden",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cell_theory&oldid=1365081375"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q177935",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q177935&oldid=2523318691"
+        }
+      ],
+      "notes": "Twin of the Schwann edge; same grounding and same Virchow gap."
+    },
+    {
+      "subject_id": "edge:james-hutton-founded-uniformitarianism",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Uniformitarianism",
+          "retrieved_at": "2026-07-29",
+          "quote": "uniformitarianism was originally proposed in contrast to catastrophism by British naturalists in the late 18th century, starting with the work of the geologist James Hutton",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Uniformitarianism&oldid=1340745341"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Uniformitarianism",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1785 James Hutton proposed an opposing, self-maintaining infinite cycle based on natural history and not on the Biblical account.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Uniformitarianism&oldid=1340745341"
+        }
+      ],
+      "notes": "★ QC split a proposed co-founder pair. The generator proposed Hutton and Lyell together as originator and systematiser, and was confident enough to leave the pair unflagged — its only unflagged multi-founder claim. The source separates them explicitly: uniformitarianism starts \"with the work of the geologist James Hutton\", while \"Hutton's work was later refined by scientist John Playfair and popularised by geologist Charles Lyell's Principles of Geology in 1830.\" Popularisation is not founding, so the Lyell edge is rejected and Hutton's stands alone. Source diversity is honestly low (one article, two separate passages)."
+    },
+    {
+      "subject_id": "edge:herbert-simon-founded-bounded-rationality",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Bounded_rationality",
+          "retrieved_at": "2026-07-29",
+          "quote": "Bounded rationality was coined by Herbert A.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Bounded_rationality&oldid=1340186617"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/bounded-rationality/",
+          "retrieved_at": "2026-07-29",
+          "quote": "Bounded rationality now describes a wide range of descriptive, normative, and prescriptive accounts of effective behavior which depart from the assumptions of perfect rationality.",
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/bounded-rationality/"
+        }
+      ],
+      "notes": "Explicit coinage claim plus a dedicated SEP entry built on Simon 1955a. Two publishers. No dissent on existence or direction. The quote is truncated at 'Herbert A.' because the sentence-splitter treats the initial as a stop — the full sentence names Simon, and fetch-verify confirms the string verbatim."
+    },
+    {
+      "subject_id": "edge:max-weber-founded-ideal-type",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/weber/",
+          "retrieved_at": "2026-07-29",
+          "quote": "The methodology of \"ideal type\" ( Idealtypus ) is another testimony to such a broadly ethical intention of Weber.",
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/weber/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ideal_type",
+          "retrieved_at": "2026-07-29",
+          "quote": "Weber states that an \"ideal type\" never seeks to claim its validity in terms of a reproduction of or correspondence with social reality.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ideal_type&oldid=1348687628"
+        }
+      ],
+      "notes": "Two independent publishers attribute the methodology to Weber. Adversarial check: no rival originator is named in either source, and the corpus's existing Weber edges are consistent with this one rather than duplicative of it."
+    },
+    {
+      "subject_id": "edge:conservation-of-mass-part-of-chemistry",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q483948",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q483948&oldid=2515869802"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Conservation_of_mass",
+          "retrieved_at": "2026-07-29",
+          "quote": "Antoine Lavoisier 's discovery of the law of conservation of mass led to many new findings in the 19th century.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Conservation_of_mass&oldid=1365127168"
+        }
+      ],
+      "notes": "Structural tier, uncontested."
+    },
+    {
+      "subject_id": "edge:cell-theory-part-of-cell-biology",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q177935",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q177935&oldid=2523318691"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cell_theory",
+          "retrieved_at": "2026-07-29",
+          "quote": "Credit for developing cell theory is usually given to two scientists: Theodor Schwann and Matthias Jakob Schleiden",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cell_theory&oldid=1365081375"
+        }
+      ],
+      "notes": "Structural tier, uncontested."
+    },
+    {
+      "subject_id": "edge:germ-theory-of-disease-part-of-microbiology",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1425837",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q1425837&oldid=2400656197"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Germ_theory_of_disease",
+          "retrieved_at": "2026-07-29",
+          "quote": "Basic forms of germ theory were proposed by Girolamo Fracastoro in 1546, and expanded upon by Marcus von Plenciz in 1762.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Germ_theory_of_disease&oldid=1363463071"
+        }
+      ],
+      "notes": "Structural tier, uncontested."
+    },
+    {
+      "subject_id": "edge:uniformitarianism-part-of-geology",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q208650",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q208650&oldid=2520026444"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Uniformitarianism",
+          "retrieved_at": "2026-07-29",
+          "quote": "uniformitarianism was originally proposed in contrast to catastrophism by British naturalists in the late 18th century, starting with the work of the geologist James Hutton",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Uniformitarianism&oldid=1340745341"
+        }
+      ],
+      "notes": "Structural tier, uncontested."
+    },
+    {
+      "subject_id": "edge:entropy-part-of-thermodynamics",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q45003",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q45003&oldid=2517117836"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Entropy",
+          "retrieved_at": "2026-07-29",
+          "quote": "Entropy is central to the second law of thermodynamics",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Entropy&oldid=1361126134"
+        }
+      ],
+      "notes": "Structural tier. The statistical-mechanics second home is real and recorded on the edge, but deliberately not written as a §13 co-equal membership onto subfield:statistical-physics — that is a near-name, not the same unit, and §12 clause 3 strict name-identity is the standing discipline against bridging on near-names."
+    },
+    {
+      "subject_id": "edge:bounded-rationality-part-of-economics",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q814385",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q814385&oldid=2522544066"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Bounded_rationality",
+          "retrieved_at": "2026-07-29",
+          "quote": "Bounded rationality was coined by Herbert A.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Bounded_rationality&oldid=1340186617"
+        }
+      ],
+      "notes": "Structural tier. Target choice recorded on the edge: field:economics over subfield:behavioral-economics, because neither source files it in the narrower unit."
+    },
+    {
+      "subject_id": "edge:ideal-type-part-of-sociology",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1052882",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q1052882&oldid=2520685351"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ideal_type",
+          "retrieved_at": "2026-07-29",
+          "quote": "Weber states that an \"ideal type\" never seeks to claim its validity in terms of a reproduction of or correspondence with social reality.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ideal_type&oldid=1348687628"
+        }
+      ],
+      "notes": "Structural tier, uncontested."
+    },
+    {
+      "subject_id": "edge:charles-lyell-founded-uniformitarianism",
+      "verdict": "reject",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Uniformitarianism",
+          "retrieved_at": "2026-07-29",
+          "quote": "Hutton's work was later refined by scientist John Playfair and popularised by geologist Charles Lyell 's Principles of Geology in 1830.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Uniformitarianism&oldid=1340745341"
+        }
+      ],
+      "notes": "Proposed by the generator as a co-founder alongside Hutton, unflagged. The source distinguishes the two roles in one sentence: Lyell popularised, Playfair refined, Hutton originated. Popularisation does not meet the founded_or_formalized bar. Rejected, not held — the source is clear rather than thin."
+    },
+    {
+      "subject_id": "edge:louis-pasteur-founded-germ-theory-of-disease",
+      "verdict": "not_enough_evidence",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Germ_theory_of_disease",
+          "retrieved_at": "2026-07-29",
+          "quote": "Basic forms of germ theory were proposed by Girolamo Fracastoro in 1546, and expanded upon by Marcus von Plenciz in 1762.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Germ_theory_of_disease&oldid=1363463071"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Germ_theory_of_disease",
+          "retrieved_at": "2026-07-29",
+          "quote": "A transitional period began in the late 1850s with the work of Louis Pasteur .",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Germ_theory_of_disease&oldid=1363463071"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q1425837",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q1425837&oldid=2400656197"
+        }
+      ],
+      "notes": "The proposed founder claim does not survive the article's own history: the theory is stated to originate with Fracastoro in 1546, two centuries before Pasteur, whose contribution the article frames as beginning a 'transitional period'. Wikidata does carry P61 = Q529 Pasteur, but a structural claim that contradicts the prose history of the same referent is a signal to check, not a licence to promote. NEI at the founder bar — about our evidence, not about Pasteur."
+    },
+    {
+      "subject_id": "edge:robert-koch-founded-germ-theory-of-disease",
+      "verdict": "not_enough_evidence",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Germ_theory_of_disease",
+          "retrieved_at": "2026-07-29",
+          "quote": "This work was later extended by Robert Koch in the 1880s.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Germ_theory_of_disease&oldid=1363463071"
+        }
+      ],
+      "notes": "Weaker than the Pasteur claim on both signals: the article says Koch extended the work, and Wikidata's P61 for Q1425837 does not list him at all. NEI at the founder bar. Koch's own founder standing in the corpus is a separate, already-settled question."
+    },
+    {
+      "subject_id": "concept:division-of-labour",
+      "verdict": "reject",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q207449",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q207449&oldid=2515852253"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Division_of_labour",
+          "retrieved_at": "2026-07-29",
+          "quote": "In a brief passage of his The City of God , Augustine seems to be aware of the role of different social layers in the production of goods",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Division_of_labour&oldid=1366211289"
+        }
+      ],
+      "notes": "★ C3 referent-precision rejection, and a direct mirror of the concept:bureaucracy ruling (decision (108)). Q207449 is the generic phenomenon — 'separation of tasks in any system' — with no P31 at all and P279 = social behavior + human behavior, i.e. modelled as a behaviour rather than a doctrine, and carrying no P61. The article's own structure is decisive: 'Pre-modern theories' runs Plato, Xenophon, Augustine and medieval Muslim scholars before 'Modern theories' reaches Adam Smith as one of eleven named theorists. A phenomenon that predates its proposed founder by two millennia cannot carry his founder claim — exactly the trap that deprecated concept:bureaucracy. Smith's actual contribution is already carried by work:the-wealth-of-nations, which exists and is reviewed."
+    },
+    {
+      "subject_id": "concept:cardinality",
+      "verdict": "not_enough_evidence",
+      "identity_referent_verified": false,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4049983",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q4049983&oldid=2518872674"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q28727773",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q28727773&oldid=2455271064"
+        }
+      ],
+      "notes": "The concept-wave2 C3 hold is confirmed live, not merely carried forward. Q4049983 has 57 sitelinks and 31 properties but its own English description encodes the ambiguity that caused the hold — cardinality measured 'either as a cardinal number or as the equivalen[ce class]' — and its P279 parents are cardinal function, class function and index number, i.e. it is modelled as a kind of function rather than as the concept of set size. The same-label alternative Q28727773 is a 0-sitelink, 4-property orphan stub. Neither is a decidable concept referent. Held again with the reason sharpened from the wave-2 wording."
+    },
+    {
+      "subject_id": "concept:boolean-algebra",
+      "verdict": "not_enough_evidence",
+      "identity_referent_verified": false,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q173183",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q173183&oldid=2520160537"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q4973304",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q4973304&oldid=2509122379"
+        }
+      ],
+      "notes": "★ The proposal contract v2 blind-referent checksum firing exactly as designed. The generator described its intended referent as Boole's specific formal algebraic system, deliberately distinct from the disciplinary sense that caused the wave-2 hold. Live resolution returns neither: Q173183 is typed P31 = Q1936384 branch of mathematics — the disciplinary referent, hold confirmed — and Q4973304 is 'lattice that models the classical propositional logic', an algebraic structure, not Boole's system. Description-versus-resolution mismatch is the error signal the v2 contract exists to produce, and it is the reason this candidate stays out. Separate note for a future skeleton wave: whether subfield:boolean-algebra is admissible under the §12 dual criterion is a different question from this one, and is not decided here."
+    },
+    {
+      "subject_id": "concept:theory-of-relativity",
+      "verdict": "reject",
+      "identity_referent_verified": false,
+      "sources": [],
+      "notes": "Rejection probe, planted unmarked by the orchestrator in the generation slate with Henri Poincaré named as the person endpoint. It fired partially at generation time: the generator refused founded_or_formalized, wrote influenced at confidence 0.65, named Einstein as the mainstream-credited founder, verified that no Einstein node exists in the corpus, and put this candidate first on its own QC list. That is the correct refusal. QC completes it by declining admission this wave — a relativity node whose only person link is Poincaré would misrepresent the attribution, and the fix is a node, not an edge."
+    },
+    {
+      "subject_id": "concept:evolution",
+      "verdict": "reject",
+      "identity_referent_verified": false,
+      "sources": [],
+      "notes": "Rejection probe, planted unmarked. It fired at generation time: the generator proposed it but flagged that its edge pair duplicates the exact endpoints of the already-reviewed concept:natural-selection edges and asked QC to confirm the referents are distinct before promoting both. They are not distinct enough to admit — 'evolution' as a bare label collides with subfield:evolutionary-biology on one side and concept:natural-selection on the other, which is the same over-broad-label failure that held 'positivism' against concept:logical-positivism in wave 2. C3 reject."
+    }
+  ],
+  "identity": [
+    {
+      "node_id": "concept:conservation-of-mass",
+      "provider": "wikidata",
+      "external_id": "Q483948",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "concept:cell-theory",
+      "provider": "wikidata",
+      "external_id": "Q177935",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "concept:germ-theory-of-disease",
+      "provider": "wikidata",
+      "external_id": "Q1425837",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "concept:uniformitarianism",
+      "provider": "wikidata",
+      "external_id": "Q208650",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "concept:entropy",
+      "provider": "wikidata",
+      "external_id": "Q45003",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "concept:bounded-rationality",
+      "provider": "wikidata",
+      "external_id": "Q814385",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "concept:ideal-type",
+      "provider": "wikidata",
+      "external_id": "Q1052882",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "concept:conservation-of-mass",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "concept:cell-theory",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "concept:germ-theory-of-disease",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "concept:uniformitarianism",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "concept:entropy",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "concept:bounded-rationality",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "concept:ideal-type",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "edge:conservation-of-mass-part-of-chemistry",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:antoine-lavoisier-founded-conservation-of-mass",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:cell-theory-part-of-cell-biology",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:theodor-schwann-founded-cell-theory",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:matthias-jakob-schleiden-founded-cell-theory",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:germ-theory-of-disease-part-of-microbiology",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:uniformitarianism-part-of-geology",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:james-hutton-founded-uniformitarianism",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:entropy-part-of-thermodynamics",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:bounded-rationality-part-of-economics",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:herbert-simon-founded-bounded-rationality",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:ideal-type-part-of-sociology",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:max-weber-founded-ideal-type",
+      "ladder": "founded-or-formalized-auto-60"
+    }
+  ],
+  "rejections": [
+    {
+      "label": "Charles Lyell founded uniformitarianism",
+      "referent": "person:charles-lyell -> concept:uniformitarianism, founded_or_formalized",
+      "kind": "edge",
+      "reason": "Source distinguishes the roles explicitly: Hutton originated, Playfair refined, Lyell popularised. Popularisation does not meet the founded_or_formalized bar. Do not re-propose without a source that states founding.",
+      "batch_id": "concept-wave3-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "label": "evolution (as a concept node)",
+      "referent": "concept:evolution, the bare label",
+      "kind": "node",
+      "reason": "Rejection probe, fired. C3 over-broad label colliding with subfield:evolutionary-biology and concept:natural-selection, whose Darwin edge pair it duplicates endpoint-for-endpoint. Same failure mode as the wave-2 'positivism' hold.",
+      "batch_id": "concept-wave3-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "label": "theory of relativity (as a concept node, this wave)",
+      "referent": "concept:theory-of-relativity with person:henri-poincare as its only person link",
+      "kind": "node",
+      "reason": "Rejection probe, fired at generation time — the generator refused the founder relation and named the Einstein gap itself. Declined this wave because the attribution would be misrepresented, not because the concept is unwanted. Re-admissible once person:albert-einstein exists; that is a node task, not an edge task.",
+      "batch_id": "concept-wave3-v1",
+      "recorded_at": "2026-07-29"
+    }
+  ],
+  "held": [
+    {
+      "id": "concept:division-of-labour",
+      "label": "division of labour",
+      "blocking_condition": "C3 referent-precision, ruled 2026-07-29 (concept-wave3-v1) as a direct mirror of the concept:bureaucracy disposition (decision (108)): the identity candidate is the generic phenomenon 'separation of tasks in any system', carrying no P31, no discoverer/inventor property, and P279 parents of social behavior and human behavior. Its own article places Plato, Xenophon, Augustine and medieval Muslim scholars before Adam Smith, who appears as one of eleven named modern theorists — a phenomenon predating its proposed founder by two millennia cannot carry his founder claim. Smith's contribution is already carried by work:the-wealth-of-nations (reviewed). Unblock: a referent-precise successor concept that is Smith's own construct rather than the general phenomenon, and that independently passes concept keep-criteria C1-C4.",
+      "recheck": "manual",
+      "batch_id": "concept-wave3-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "id": "concept:cardinality",
+      "label": "cardinality",
+      "blocking_condition": "C3 hold from concept-wave2-v1, re-confirmed live 2026-07-29 with a sharpened reason. Q4049983 (57 sitelinks, 31 properties) encodes the ambiguity in its own description — cardinality measured either as a cardinal number or as an equivalence class — and is modelled as a kind of function (P279 = cardinal function, class function, index number) rather than as the concept of set size. The same-label alternative Q28727773 is a 0-sitelink orphan stub. Unblock: an upstream entity that decides the referent, or a §12 ruling that fixes which of the three senses the corpus carries.",
+      "recheck": "manual",
+      "batch_id": "concept-wave3-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "id": "concept:boolean-algebra",
+      "label": "boolean algebra",
+      "blocking_condition": "C3 hold from concept-wave2-v1, re-confirmed live 2026-07-29. The generator's blind referent was Boole's specific formal algebraic system; resolution returns neither that nor anything close — Q173183 is P31 = branch of mathematics (the disciplinary referent that caused the original hold) and Q4973304 is a lattice structure. The description-versus-resolution mismatch is the v2 contract's error signal. Unblock: an upstream entity for Boole's system as a bounded doctrine. Separate and undecided: whether subfield:boolean-algebra is admissible under the §12 dual criterion, which is a skeleton question, not a concept question.",
+      "recheck": "manual",
+      "batch_id": "concept-wave3-v1",
+      "recorded_at": "2026-07-29"
+    }
+  ],
+  "held_resolutions": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Track D of session #60 — concept-layer wave 3, coverage expansion under keep-criteria C1-C4 (decision (91), CTO-autonomous). Slate of 12 scoped by the orchestrator, including 2 unmarked rejection probes; generation by separated-context Claude Sonnet 5 (proposal-generator), QC and identity by the orchestrator against live sources.",
+    "Outcome: 7 concepts + 13 edges reviewed · 3 candidates held on C3 · 2 probes fired · 3 proposed founder edges rejected or NEI. The generator declined nothing outright and proposed all 12; every removal is a QC outcome.",
+    "★ Both probes fired at generation time rather than only at QC. theory-of-relativity: the generator refused founded_or_formalized for Poincaré, wrote influenced instead, named Einstein as the credited founder, checked that no Einstein node exists, and ranked the candidate first on its own QC list. evolution: it proposed the node but flagged that the edge pair duplicates concept:natural-selection's endpoints exactly and asked QC to confirm distinctness first. In both cases the generator's uncertainty field carried the objection that decided the candidate.",
+    "★ QC's own catch was the one claim the generator was confident about. Hutton and Lyell were proposed together as a co-founder pair and left unflagged — the only unflagged multi-founder claim in the batch. The source separates them in a single sentence: Hutton originated, Playfair refined, Lyell popularised. The Lyell edge is rejected. Confidence and correctness were inversely related here, which is the argument against sampling QC by the generator's flag list.",
+    "★ Two proposed founder edges failed on the same shape as the concept:bureaucracy ruling: a phenomenon or theory that long predates the person cannot carry their founder claim. Germ theory is stated to originate with Fracastoro in 1546 — Pasteur begins a 'transitional period' and Koch 'extended' the work, so both founder edges are NEI and the concept enters on its disciplinary membership alone. Division of labour fails harder and is held outright, its article running from Plato to Adam Smith as the eleventh named theorist.",
+    "Note on trusting structural signals: Wikidata carries P61 = Pasteur for germ theory while the same referent's prose history gives the origin to Fracastoro. P61 is a strong corroborating signal when it agrees with the prose (it did for Lavoisier, Schwann and Schleiden) and a flag to check when it does not. It was not treated as sufficient on its own in either direction.",
+    "Both wave-2 C3 holds were re-examined rather than re-listed, and both stay held with sharper reasons derived from live resolution. boolean-algebra is the clearest production firing so far of the v2 blind-referent checksum: the generator described Boole's system, the resolver returned a discipline and a lattice, and the mismatch is what kept it out.",
+    "concept:entropy required a second targeted search — the bare label returns a journal, four video games, a split EP, a yacht and a Buffy episode before any physics item. Recorded because a label-match-only resolver would have failed it outright."
+  ]
+}

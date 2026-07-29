@@ -801,6 +801,25 @@
     "note": "Lavoisier helped found modern chemistry (Wikipedia Antoine Lavoisier: \"a French nobleman and chemist who was central to the 18th-century chemical revolution\"; Wikipedia History of chemistry: \"in 1789, he established the Law of Conservation of Mass\"). Referent note (record-not-resolve): Lavoisier founded/formalized *modern* (quantitative) chemistry — the chemical revolution — rather than chemistry-the-practice, which predates him; founded_or_formalized covers this formalizing act. Two independent Wikipedia articles."
   },
   {
+    "id": "edge:antoine-lavoisier-founded-conservation-of-mass",
+    "source": "person:antoine-lavoisier",
+    "target": "concept:conservation-of-mass",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Wikidata Q483948 carries P61 (discoverer or inventor) = Q39607 Antoine Lavoisier — a structural cross-confirmation of the prose claim, the same signal pattern that supported the Weber typology edge in decision (108). Record-not-resolve scope note: enwiki states the priority history in the same breath — \"mass conservation in chemical reactions was primarily demonstrated by Jean Rey (in 1630) and finally confirmed by Antoine Lavoisier in the late 18th century\" — and a Lomonosov priority claim is also current. Lavoisier's founder standing is for the law as chemistry's quantitative principle, not for first noticing the phenomenon; neither precursor is a corpus node."
+  },
+  {
     "id": "edge:antoine-lavoisier-influenced-physics",
     "source": "person:antoine-lavoisier",
     "target": "field:physics",
@@ -1604,6 +1623,25 @@
     "note": "LCC QK Botany (own subclass QK1-989) + UDC 58 Botany (own top-level class under 5 Natural Sciences) — both gate schemes file botany in the biology family (captured 2026-06-11). LCC shelving granularity (separate subclass) is not a co-equality claim; flat peer under field:biology per orchestrator ruling."
   },
   {
+    "id": "edge:bounded-rationality-part-of-economics",
+    "source": "concept:bounded-rationality",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier. Target chosen as field:economics rather than subfield:behavioral-economics — the generator left this open and flagged it. enwiki places the concept broadly (\"as used in economics, political science, and related disciplines\") and neither source files it under behavioral economics specifically. Filing it in the narrower subfield would assert a placement the sources do not; the behavioral-economics affinity is real and recorded here instead."
+  },
+  {
     "id": "edge:buddhist-philosophy-part-of-philosophy",
     "source": "subfield:buddhist-philosophy",
     "target": "field:philosophy",
@@ -1904,6 +1942,25 @@
       "proposed_at": "2026-06-11"
     },
     "note": "LCC QH573-671 Cytology (range within QH Biology General) + UDC 576 'Cellular and subcellular biology. Cytology' — both gate schemes file cell biology in the biology family (captured 2026-06-11). §12 label rule: modern term 'cell biology' over historical 'cytology'."
+  },
+  {
+    "id": "edge:cell-theory-part-of-cell-biology",
+    "source": "concept:cell-theory",
+    "target": "subfield:cell-biology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier, uncontested. Wikidata Q177935 P31 = Q3239681 scientific theory."
   },
   {
     "id": "edge:cesare-beccaria-founded-criminology",
@@ -2827,6 +2884,25 @@
       "proposed_at": "2026-06-11"
     },
     "note": "UDC 538.9 'Condensed matter physics. Solid state physics' — subdivision of UDC 53 Physics (live capture 2026-06-11). LCC QC170-197 'Atomic physics. Constitution and properties of matter (Including molecular physics, relativity, quantum theory, and solid state physics)' — within physics subclass QC (live capture 2026-06-11). PhySH discipline 'Condensed Matter, Materials & Applied Physics' — physics taxonomy gate-level scheme (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:conservation-of-mass-part-of-chemistry",
+    "source": "concept:conservation-of-mass",
+    "target": "field:chemistry",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier. The law is a foundational principle of chemistry; enwiki treats it as the anchor of the discipline's quantitative era (\"Antoine Lavoisier's discovery of the law of conservation of mass led to many new findings in the 19th century\"). Wikidata Q483948 P31 = Q36382 scientific law."
   },
   {
     "id": "edge:constitutional-law-part-of-law",
@@ -4279,6 +4355,25 @@
       "proposed_at": "2026-06-12"
     },
     "note": "Skeleton part_of: LCC RC648-665 Diseases of the endocrine glands. Clinical endocrinology + UDC 616.4 + Endocrine Society."
+  },
+  {
+    "id": "edge:entropy-part-of-thermodynamics",
+    "source": "concept:entropy",
+    "target": "subfield:thermodynamics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier, and the only edge on this node. enwiki: \"Entropy is central to the second law of thermodynamics\", and \"The concept of entropy is described by two principal approaches, the macroscopic perspective of classical thermodynamics, and the microscopic description central to statistical mechanics.\" The statistical-mechanics strand is a real second home, but the corpus node is named statistical-physics rather than statistical mechanics, so a §13 co-equal membership is deliberately NOT written on a near-name — single parent, strand recorded. No founder edge: the term is Clausius's, and no Clausius node exists."
   },
   {
     "id": "edge:environmental-engineering-part-of-engineering-and-technology",
@@ -5952,6 +6047,25 @@
     "note": "Skeleton part_of: LCC RC952-954.6 Geriatrics + UDC 613.98/616-053.9 + AGS, ABIM subspecialty."
   },
   {
+    "id": "edge:germ-theory-of-disease-part-of-microbiology",
+    "source": "concept:germ-theory-of-disease",
+    "target": "subfield:microbiology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier. Wikidata Q1425837 P31 = Q3239681 scientific theory, 31 sitelinks. Admitted on this membership alone: both proposed founder edges failed QC (see the verdict), so this concept enters on its disciplinary home rather than on a person claim — C1 edge-demand is satisfied by part_of."
+  },
+  {
     "id": "edge:global-health-part-of-public-health",
     "source": "subfield:global-health",
     "target": "field:public-health",
@@ -6389,6 +6503,25 @@
     "note": "Co-founder edge, record-not-resolve — the twin of edge:allen-newell-founded-artificial-intelligence, not a duplicate of it: the sources name the two men jointly and the corpus records multiple founders. Same target correction and same tension note as that edge. enwiki Herbert A. Simon: 'Simon was a pioneer in the field of artificial intelligence, creating with Allen Newell the Logic Theory Machine (1956) and the General Problem Solver (GPS) (1957) programs'; enwiki Symbolic artificial intelligence carries the foundations claim naming both. Domain tag cognitive_sciences records this node's corpus role (the AI / cognitive-science founding, mirroring person:marvin-minsky); Simon's Nobel-recognized economics work is a separate, currently unmodelled strand."
   },
   {
+    "id": "edge:herbert-simon-founded-bounded-rationality",
+    "source": "person:herbert-simon",
+    "target": "concept:bounded-rationality",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "The batch's strongest founder claim: enwiki states the coinage outright (\"Bounded rationality was coined by Herbert A. Simon\") and SEP's dedicated entry is built on Simon 1955a. Second edge for person:herbert-simon, added in the same session as the node itself (held-trigger-nodes-v1)."
+  },
+  {
     "id": "edge:hermeneutics-part-of-philosophy",
     "source": "subfield:hermeneutics",
     "target": "field:philosophy",
@@ -6622,6 +6755,25 @@
       "proposed_at": "2026-06-11"
     },
     "note": "UDC 556 'Hydrosphere. Water in general. Hydrology' — own top-level class under UDC 55 Earth Sciences (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' (live capture 2026-06-11). LCC home GB (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation. Clause-6 resolution 2026-06-11: dominant, class-G cluster consistent ruling — UDC 556 + FORD 1.5/ANZSRC 3707 + Britannica + IUGG/IAHS + UT Jackson/U Arizona CoS vs LCC GB (class G); geography-side evidence parked."
+  },
+  {
+    "id": "edge:ideal-type-part-of-sociology",
+    "source": "concept:ideal-type",
+    "target": "field:sociology",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier. Wikidata Q1052882 P31 = Q151885 concept — the cleanest concept typing in the batch, and exactly the C3 signal the keep-criteria ask for."
   },
   {
     "id": "edge:immunology-part-of-biology",
@@ -7109,6 +7261,24 @@
       "proposed_at": "2026-07-01"
     },
     "note": "James Hutton is the father of modern geology -- his theory of uniformitarianism ('Theory of the Earth', 1788) founded geology on observable natural processes rather than scriptural chronology. Sources (2 independent live-verified Wikipedia articles): 'James Hutton' (\"Often referred to as the 'Father of Modern Geology'\") + 'Geology'. Record-not-resolve: Charles Lyell later popularized/systematized uniformitarianism ('Principles of Geology', 1830-33), the synthesis that made it scientific consensus; this edge records Hutton's original theoretical founding. Identity Q192927 verified live (P31=Q5, P569 1726, P570 1797 deceased, geologist, enwiki 'James Hutton'). Generator-guessed QID (Q193621 = the French commune Auzances) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:james-hutton-founded-uniformitarianism",
+    "source": "person:james-hutton",
+    "target": "concept:uniformitarianism",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Sole founder edge. enwiki: uniformitarianism \"was originally proposed in contrast to catastrophism by British naturalists in the late 18th century, starting with the work of the geologist James Hutton in his many books including Theory of the Earth\", and \"In 1785 James Hutton proposed an opposing, self-maintaining infinite cycle\". The term itself was coined later by William Whewell, who is not a corpus node — recorded, not asserted. The proposed companion edge for Charles Lyell was declined at QC: the same article calls his role popularisation, not founding."
   },
   {
     "id": "edge:jan-tinbergen-founded-econometrics",
@@ -8627,6 +8797,25 @@
     "note": "Matthias Jakob Schleiden is a co-founder of cell theory, the foundational theory of cell biology -- the botanist who (Beiträge zur Phytogenesis, 1838) argued that all plant tissues are composed of cells, the plant-side counterpart to Schwann's extension to animals. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory'. Record-not-resolve: Schwann (animal cells) is the co-founder [own node/edge this batch]; Virchow (cell-from-cell, 1855) and Hooke (\"cell\", 1665) not nodified. Identity Q76747 verified live (P31=Q5, P569 1804, P570 1881 deceased, botanist, enwiki 'Matthias Jakob Schleiden'); generator-guessed QID (Q57249) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
   },
   {
+    "id": "edge:matthias-jakob-schleiden-founded-cell-theory",
+    "source": "person:matthias-jakob-schleiden",
+    "target": "concept:cell-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-founder edge, the twin of the Schwann edge and not a duplicate of it — the source names both jointly and the corpus records multiple founders. Same Virchow gap note."
+  },
+  {
     "id": "edge:max-weber-critiques-karl-marx",
     "source": "person:max-weber",
     "target": "person:karl-marx",
@@ -8663,6 +8852,25 @@
       "proposed_at": "2026-07-02"
     },
     "note": "Deprecated 2026-07-03 (C3 referent-precision, §12 hold-resolution clause 1 mirror; decision (108)): the claim's true referent is Weber's own theoretical construct, not the generic administrative institution Q72468 that predates him by millennia. Re-scoped to edge:max-weber-founded-tripartite-classification-of-authority in the same batch (weber-referent-precision-v1)."
+  },
+  {
+    "id": "edge:max-weber-founded-ideal-type",
+    "source": "person:max-weber",
+    "target": "concept:ideal-type",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Two independent publishers attribute the methodology to Weber: SEP \"The methodology of 'ideal type' (Idealtypus) is another testimony to such a broadly ethical intention of Weber\"; enwiki \"Weber states that an 'ideal type' never seeks to claim its validity in terms of a reproduction of or correspondence with social reality.\" Joins Weber's existing reviewed edges on the tripartite authority typology and his critique of Marx."
   },
   {
     "id": "edge:max-weber-founded-sociology",
@@ -14268,6 +14476,25 @@
     "note": "Theodor Schwann is a co-founder of cell theory, the foundational theory of cell biology -- he extended the cell doctrine to animal tissues (Mikroskopische Untersuchungen, 1839), establishing with the botanist Matthias Jakob Schleiden that all living organisms are composed of cells. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory' (\"a scientific theory first formulated in the mid-nineteenth century, that living organisms are made up of cells, that they are the basic structural/organizational unit of all organisms\"). Record-not-resolve: Schleiden (plant cells) is the co-founder [own node/edge this batch]; Rudolf Virchow added \"omnis cellula e cellula\" (1855) and Robert Hooke coined the term \"cell\" (1665) -- neither nodified. Identity Q76745 verified live (P31=Q5, P569 1810, P570 1882 deceased, physician/physiologist, enwiki 'Theodor Schwann'); generator-guessed QID (Q57247) was a hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
   },
   {
+    "id": "edge:theodor-schwann-founded-cell-theory",
+    "source": "person:theodor-schwann",
+    "target": "concept:cell-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-founder edge, record-not-resolve. enwiki names both men in one sentence: \"Credit for developing cell theory is usually given to two scientists: Theodor Schwann and Matthias Jakob Schleiden.\" Wikidata Q177935 P61 lists three inventors — Schleiden, Schwann and Rudolf Virchow. Honest gap recorded rather than papered over: Virchow (omnis cellula e cellula, the third clause of the modern doctrine) is not a corpus node, so this batch records two of the three; the generator flagged exactly this."
+  },
+  {
     "id": "edge:theology-part-of-religious-studies",
     "source": "subfield:theology",
     "target": "field:religious-studies",
@@ -14645,6 +14872,25 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Ulric Neisser named and consolidated cognitive psychology as a field with his 1967 book 'Cognitive Psychology'. Sources (2 independent live-verified Wikipedia articles): 'Ulric Neisser' (\"referred to as the 'father of cognitive psychology'\") + 'Cognitive psychology' (\"Ulric Neisser put the term 'cognitive psychology' into common use through his 1967 book Cognitive Psychology\"). Record-not-resolve plural founding: the 1950s-60s cognitive revolution had many co-founders -- George A. Miller (with Galanter & Pribram, 1960; co-founded the Harvard Center for Cognitive Studies), Jerome Bruner, Noam Chomsky (already a corpus node); Neisser gave the field its name and first synthesis. Identity Q62895 verified live (P31=Q5, P569 1928-12-08, P570 2012-02-17 deceased, psychologist). Generator-guessed QID was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:uniformitarianism-part-of-geology",
+    "source": "concept:uniformitarianism",
+    "target": "subfield:geology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier. Wikidata Q208650 P31 = principle + philosophical theory; enwiki frames it as the founding methodological principle of geology, proposed in contrast to catastrophism."
   },
   {
     "id": "edge:urban-and-regional-planning-part-of-arts-and-design",

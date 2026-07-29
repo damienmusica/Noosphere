@@ -8,6 +8,14 @@
     "reviewed": true
   },
   {
+    "node_id": "concept:bounded-rationality",
+    "locale": "en",
+    "label": "Bounded rationality",
+    "summary": "Bounded rationality is the idea that human decision-making is constrained by the difficulty of the problem, the cognitive capacity of the mind, and the time available, so that people typically settle for a satisfactory option rather than an optimal one. The term was coined by Herbert Simon as an alternative to the idealized rational-agent models built into expected-utility theory, and it has been used as a modeling basis across economics, political science, and related disciplines, not only within behavioral economics narrowly. Simon contrasted this satisficing approach with the classical assumption of unlimited computational and informational resources, and later researchers, including Gerd Gigerenzer, extended the concept by arguing that simple heuristics can outperform theoretically optimal procedures under real-world constraints. The concept remains actively used and debated across political science, economics, psychology, law, philosophy, and cognitive science.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
     "node_id": "concept:bureaucracy",
     "locale": "en",
     "label": "Bureaucracy",
@@ -16,11 +24,40 @@
     "reviewed": false
   },
   {
+    "node_id": "concept:cell-theory",
+    "locale": "en",
+    "label": "Cell theory",
+    "summary": "Cell theory holds that all living organisms are composed of cells, that the cell is the basic unit of structure and function in life, and that new cells arise only from pre-existing ones. The first two tenets are usually credited to Theodor Schwann and Matthias Jakob Schleiden in 1839, building on earlier microscopic observations by Robert Hooke and Antonie van Leeuwenhoek, though Schleiden's own account of new cells forming by crystallization was later abandoned. Rudolf Virchow added the third tenet in 1855, though the underlying idea had already been proposed by Robert Remak. Some modern biologists continue to debate whether non-cellular entities such as viruses should count as living, since they are an exception to the theory's central claim.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "concept:conservation-of-mass",
+    "locale": "en",
+    "label": "Conservation of mass",
+    "summary": "Conservation of mass is the principle that the total mass of a closed system remains unchanged over time, whatever internal processes act on it. Early experimental support is attributed to Jean Rey in the seventeenth century, and Mikhail Lomonosov articulated the law in 1756, but the more influential and widely credited demonstrations came from Antoine Lavoisier's later eighteenth-century experiments, which helped displace phlogiston theory and establish quantitative chemistry. The law holds only in the classical, non-relativistic regime; at very high energies or in systems with strong gravitational fields, mass and energy conservation must be treated jointly rather than separately.",
+    "aliases": [
+      "law of conservation of mass",
+      "conservation of matter"
+    ],
+    "reviewed": true
+  },
+  {
     "node_id": "concept:distinctive-feature",
     "locale": "en",
     "label": "Distinctive feature",
     "summary": "In linguistics, a distinctive feature is the most basic unit of phonological structure that distinguishes one sound from another within a language, such as the feature [+voice], which distinguishes the bilabial plosives [p] and [b]. Distinctive features are grouped into categories according to the natural classes of segments they describe: major class features, laryngeal features, manner features, and place features. The first distinctive feature theory was created by Russian linguist Roman Jakobson in 1941; features have traditionally been specified by binary values, an approach formally adopted in \"Sound Pattern of English\" by Noam Chomsky and Morris Halle in 1968.",
     "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "concept:entropy",
+    "locale": "en",
+    "label": "Entropy",
+    "summary": "Entropy is a thermodynamic state variable that quantifies the number of microscopic configurations, or microstates, consistent with a system's macroscopic condition. It is central to the second law of thermodynamics, which holds that the entropy of an isolated system left to evolve spontaneously cannot decrease over time, so such systems tend toward the state of highest entropy, or thermodynamic equilibrium. The concept originated in classical thermodynamics, where Rudolf Clausius defined it in 1865 as the ratio of an infinitesimal quantity of heat to temperature, and it was later given a statistical, microscopic foundation by Ludwig Boltzmann in terms of the possible arrangements of a system's atoms and molecules. Entropy is accordingly approached in two complementary ways: macroscopically, through classical thermodynamics, and microscopically, through statistical mechanics.",
+    "aliases": [
+      "thermodynamic entropy"
+    ],
     "reviewed": true
   },
   {
@@ -43,11 +80,32 @@
     "reviewed": true
   },
   {
+    "node_id": "concept:germ-theory-of-disease",
+    "locale": "en",
+    "label": "Germ theory of disease",
+    "summary": "Germ theory holds that microorganisms, or pathogens, cause infectious disease, and it displaced the earlier miasma theory that attributed illness to foul air. Basic versions of the idea were proposed by Girolamo Fracastoro in 1546 and elaborated by Marcus von Plenciz in 1762, well before either found scientific acceptance. A transitional period toward acceptance began in the late 1850s with Louis Pasteur's work on fermentation and spontaneous generation, and Robert Koch extended this work in the 1880s, including formulating criteria for linking specific microorganisms to specific diseases. By the end of the 1880s miasma theory was losing ground to germ theory among scientists, and a period of rapid bacteriological discovery followed.",
+    "aliases": [
+      "germ theory"
+    ],
+    "reviewed": true
+  },
+  {
     "node_id": "concept:godel-numbering",
     "locale": "en",
     "label": "Gödel numbering",
     "summary": "In mathematical logic, a Gödel numbering is a function that assigns to each symbol and well-formed formula of some formal language a unique natural number, called its Gödel number. Kurt Gödel developed the concept for the proof of his incompleteness theorems. It can be interpreted as an encoding in which a number is assigned to each symbol of a mathematical notation, so that sequences of symbols can be represented by natural numbers, facilitating their manipulation in formal theories of arithmetic. Since the publishing of Gödel's paper in 1931, the term has been used to refer to more general assignments of natural numbers to mathematical objects.",
     "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "concept:ideal-type",
+    "locale": "en",
+    "label": "Ideal type",
+    "summary": "The ideal type is a methodological construct developed by the sociologist Max Weber for use in comparative and interpretive social science. It is formed by selectively emphasizing certain features of a phenomenon and combining them into a unified analytical construct that does not correspond exactly to any single concrete case; Weber used the German word 'ideal' to mean the world of ideas rather than perfection or a statistical average. Because an ideal type is an admittedly artificial, one-sided construction, Weber held that its worth cannot be judged by how closely it corresponds to reality, only by its usefulness as an interpretive tool. Weber applied the method to build typologies, including four types of social action (zweckrational, wertrational, affektual, and traditional) and three ideal types of legitimate domination, using it to analyze both general phenomena, such as capitalism, and historically specific cases, such as the Protestant ethic.",
+    "aliases": [
+      "Idealtypus",
+      "ideal types"
+    ],
     "reviewed": true
   },
   {
@@ -203,6 +261,16 @@
     "label": "Turing machine",
     "summary": "A Turing machine is an abstract model of computation, introduced by Alan Turing in 1936, consisting of an infinite tape, a read/write head, and a finite set of states and rules that determine its behavior. Despite its simplicity, it can capture the notion of any effectively computable procedure, and it is used to make precise what it means for a function to be computable and for a problem to be decidable. It is a foundational concept of computability theory and theoretical computer science, closely associated with the Church–Turing thesis.",
     "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "concept:uniformitarianism",
+    "locale": "en",
+    "label": "Uniformitarianism",
+    "summary": "Uniformitarianism is the assumption that the natural laws and processes observed in the present have operated in the same way throughout the past and apply everywhere, underlying the geological maxim that the present is the key to the past. The idea originated with the geologist James Hutton in the late eighteenth century, was subsequently refined by John Playfair, and was popularized by Charles Lyell starting with his Principles of Geology in 1830; the term itself was coined by William Whewell in a review of Lyell's book. It was developed in opposition to catastrophism, which held that Earth's history was shaped mainly by sudden, large-scale upheavals. Many modern geologists no longer hold to a strict gradualist version of the idea, instead viewing Earth's history as a slow process punctuated by occasional catastrophic events.",
+    "aliases": [
+      "principle of uniformitarianism"
+    ],
     "reviewed": true
   },
   {

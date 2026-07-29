@@ -30,5 +30,29 @@
     "reason": "Rejected at the proposed grain and re-grounded, not dropped: no source asserts a symbolic-AI founding for either man; enwiki Symbolic artificial intelligence describes their work inside the paradigm. The claim the sources do state is the AI-founding one, written in this batch as edge:allen-newell-founded-artificial-intelligence and edge:herbert-simon-founded-artificial-intelligence. Recorded so a later wave does not silently re-propose the symbolic-AI form.",
     "batch_id": "held-trigger-nodes-v1",
     "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Charles Lyell founded uniformitarianism",
+    "referent": "person:charles-lyell -> concept:uniformitarianism, founded_or_formalized",
+    "kind": "edge",
+    "reason": "Source distinguishes the roles explicitly: Hutton originated, Playfair refined, Lyell popularised. Popularisation does not meet the founded_or_formalized bar. Do not re-propose without a source that states founding.",
+    "batch_id": "concept-wave3-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "evolution (as a concept node)",
+    "referent": "concept:evolution, the bare label",
+    "kind": "node",
+    "reason": "Rejection probe, fired. C3 over-broad label colliding with subfield:evolutionary-biology and concept:natural-selection, whose Darwin edge pair it duplicates endpoint-for-endpoint. Same failure mode as the wave-2 'positivism' hold.",
+    "batch_id": "concept-wave3-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "theory of relativity (as a concept node, this wave)",
+    "referent": "concept:theory-of-relativity with person:henri-poincare as its only person link",
+    "kind": "node",
+    "reason": "Rejection probe, fired at generation time — the generator refused the founder relation and named the Einstein gap itself. Declined this wave because the attribution would be misrepresented, not because the concept is unwanted. Re-admissible once person:albert-einstein exists; that is a node task, not an edge task.",
+    "batch_id": "concept-wave3-v1",
+    "recorded_at": "2026-07-29"
   }
 ]
