@@ -148,7 +148,12 @@ async function wikiRevisionPermalink(url: string): Promise<string | null> {
   if (!/(^|\.)(wikipedia|wikidata)\.org$/.test(parsed.hostname)) return null;
   const match = /^\/wiki\/(.+)$/.exec(parsed.pathname);
   if (!match?.[1]) return null;
-  const title = decodeURIComponent(match[1]);
+  let title = decodeURIComponent(match[1]);
+  // Special:EntityData/<QID>.<ext> is Wikidata's data endpoint, not a wiki page:
+  // the API reports it as a special page with no revisions. The permanence anchor
+  // is the underlying entity page's revision.
+  const entityData = /^Special:EntityData\/([QPL]\d+)(?:\.\w+)?$/.exec(title);
+  if (entityData?.[1]) title = entityData[1];
   const api =
     `https://${parsed.hostname}/w/api.php?action=query&prop=revisions&rvprop=ids` +
     `&titles=${encodeURIComponent(title)}&redirects=1&format=json`;

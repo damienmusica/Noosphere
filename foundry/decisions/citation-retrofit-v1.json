@@ -265,7 +265,7 @@
           "retrieved_at": "2026-07-03",
           "quote": "Phenomenology can be roughly described as the sustained attempt to describe experiences (and the “things themselves”) without metaphysical and theoretical speculations",
           "independent": true,
-          "snapshot_url": "https://web.archive.org/web/20260619155534/https://iep.utm.edu/husserl/"
+          "snapshot_url": "https://web.archive.org/web/20260725144121/https://iep.utm.edu/husserl/"
         }
       ]
     },
@@ -812,14 +812,14 @@
           "retrieved_at": "2026-07-03",
           "quote": "His theory of meaning, especially his distinction between the sense and reference of linguistic expressions, was groundbreaking in semantics and the philosophy of language.",
           "independent": true,
-          "snapshot_url": "https://web.archive.org/web/20260515184559/https://iep.utm.edu/frege/"
+          "snapshot_url": "https://web.archive.org/web/20260729014229/https://iep.utm.edu/frege/"
         },
         {
           "url": "https://iep.utm.edu/frege/",
           "retrieved_at": "2026-07-03",
           "quote": "Frege is often called the founder of modern logic, and he is sometimes even heralded as the founder of analytic philosophy.",
           "independent": false,
-          "snapshot_url": "https://web.archive.org/web/20260515184559/https://iep.utm.edu/frege/"
+          "snapshot_url": "https://web.archive.org/web/20260729014229/https://iep.utm.edu/frege/"
         }
       ]
     },
@@ -1024,7 +1024,7 @@
           "retrieved_at": "2026-07-03",
           "quote": "led Brentano (1884) to regard intentionality as “the mark of the mental”",
           "independent": true,
-          "snapshot_url": "https://web.archive.org/web/20260520172239/https://iep.utm.edu/intentio/"
+          "snapshot_url": "https://web.archive.org/web/20260722143518/https://iep.utm.edu/intentio/"
         }
       ]
     },
@@ -1183,13 +1183,15 @@
           "url": "https://www.wikidata.org/wiki/Special:EntityData/Q2844127.json",
           "retrieved_at": "2026-07-03",
           "quote": "recueil d'articles de Claude",
-          "independent": true
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q2844127&oldid=2461427820"
         },
         {
           "url": "https://www.wikidata.org/wiki/Special:EntityData/Q2844127.json",
           "retrieved_at": "2026-07-03",
           "quote": "paru en 1958",
-          "independent": false
+          "independent": false,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q2844127&oldid=2461427820"
         },
         {
           "url": "https://fr.wikipedia.org/wiki/Anthropologie_structurale",
@@ -1849,111 +1851,91 @@
   "anchors_pending": [
     {
       "url": "https://plato.stanford.edu/entries/race/",
-      "reason": "[SPN-FAILED] save did not materialize and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/darwinism/",
-      "reason": "[SPN-FAILED] save did not materialize and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/husserl/",
-      "reason": "[SPN-FAILED] save did not materialize and no prior snapshot exists"
-    },
-    {
-      "url": "https://iep.utm.edu/husserl/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures); using 13d-old snapshot (predates QC)"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/wittgenstein/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/natural-selection/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/game-theory/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/settheory-early/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/cognitive-science/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/social-choice/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/arrows-theorem/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/frege/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
-    },
-    {
-      "url": "https://iep.utm.edu/frege/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures); using 48d-old snapshot (predates QC)"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/weber/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/newton/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/intentionality/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
-    },
-    {
-      "url": "https://iep.utm.edu/intentio/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures); using 43d-old snapshot (predates QC)"
-    },
-    {
-      "url": "https://www.wikidata.org/wiki/Special:EntityData/Q2844127.json",
-      "reason": "could not resolve wiki revision id"
-    },
-    {
-      "url": "https://www.wikidata.org/wiki/Special:EntityData/Q2844127.json",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/logical-empiricism/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/vienna-circle/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://iep.utm.edu/vienna-circle/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/nietzsche/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://iep.utm.edu/nietzsche/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/turing/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/turing-machine/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     },
     {
       "url": "https://plato.stanford.edu/entries/boole/",
-      "reason": "[SPN-FAILED] fresh save skipped (SPN circuit open after 3 consecutive failures) and no prior snapshot exists"
+      "reason": "[SPN-FAILED] fresh save skipped (--no-spn) and no prior snapshot exists"
     }
   ]
 }
