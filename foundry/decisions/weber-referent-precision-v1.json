@@ -142,7 +142,8 @@
           "url": "https://plato.stanford.edu/entries/weber/",
           "retrieved_at": "2026-07-03",
           "quote": "Weber famously moved on to identify three ideal types of legitimate domination based on, respectively, charisma, tradition, and legal rationality.",
-          "independent": true
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/weber/"
         },
         {
           "url": "https://www.wikidata.org/wiki/Q3565078",
@@ -239,12 +240,7 @@
     }
   ],
   "override_rejections": [],
-  "anchors_pending": [
-    {
-      "url": "https://plato.stanford.edu/entries/weber/",
-      "reason": "[SPN-FAILED] save did not materialize and no prior snapshot exists"
-    }
-  ],
+  "anchors_pending": [],
   "notes": [
     "Resolves the last §12-family manual hold: the recheck-wave2-v1 C3 referent-precision bundle (concept:bureaucracy + edge:max-weber-founded-bureaucracy + edge:bureaucracy-part-of-sociology). CPO directed processing 2026-07-03; disposition is a CTO mirror ruling of the ratified patterns (§12 hold-resolution clause 1 (106) + the concept:internet referent-precision precedent #39).",
     "Regime split honored (§15.7 — founder gate includes an LLM verdict): generation = separated-context Sonnet 5 proposal-generator agent (foundry/proposals/weber-referent-precision-v1/proposal.json, blind referents, 3 ranked candidates, all self-flagged ambiguous); QC/identity/verdicts = orchestrator with live Wikidata resolution + fetch-corpus sources (enwiki ×4, SEP, all live 200).",

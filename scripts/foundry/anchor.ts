@@ -12,6 +12,12 @@
  *     pipeline entirely — no SPN attempts, no [SPN-FAILED] ghosts — and
  *     --write drops any leftover pending entries for wiki URLs that carry a
  *     permalink.
+ *   - plato.stanford.edu URLs get a SEP fixed-edition permalink
+ *     (/archives/<edition>/entries/<slug>/), recorded in the same
+ *     revision_permalink field. SEP designates those editions for citation and
+ *     never modifies them once archived, so they are the same anchor kind as a
+ *     wiki oldid — and they are SEP's only path: the site is excluded from the
+ *     Wayback Machine outright, so no snapshot can ever materialize for it.
  *   - Every other URL gets a Wayback snapshot: reuse a recent one when the
  *     availability API has it (default ≤7 days old), otherwise request an
  *     anonymous Save-Page-Now capture and poll until it materializes.
@@ -148,7 +154,12 @@ async function wikiRevisionPermalink(url: string): Promise<string | null> {
   if (!/(^|\.)(wikipedia|wikidata)\.org$/.test(parsed.hostname)) return null;
   const match = /^\/wiki\/(.+)$/.exec(parsed.pathname);
   if (!match?.[1]) return null;
-  const title = decodeURIComponent(match[1]);
+  let title = decodeURIComponent(match[1]);
+  // Special:EntityData/<QID>.<ext> is Wikidata's data endpoint, not a wiki page:
+  // the API reports it as a special page with no revisions. The permanence anchor
+  // is the underlying entity page's revision.
+  const entityData = /^Special:EntityData\/([QPL]\d+)(?:\.\w+)?$/.exec(title);
+  if (entityData?.[1]) title = entityData[1];
   const api =
     `https://${parsed.hostname}/w/api.php?action=query&prop=revisions&rvprop=ids` +
     `&titles=${encodeURIComponent(title)}&redirects=1&format=json`;
@@ -171,6 +182,82 @@ async function wikiRevisionPermalink(url: string): Promise<string | null> {
   const resolvedTitle = pages[0]?.title;
   if (!revid || !resolvedTitle) return null;
   return `https://${parsed.hostname}/w/index.php?title=${encodeURIComponent(resolvedTitle.replace(/ /g, "_"))}&oldid=${revid}`;
+}
+
+/** plato.stanford.edu — SEP anchors on its own fixed editions (§8). */
+function isSepHost(url: string): boolean {
+  try {
+    return new URL(url).hostname === "plato.stanford.edu";
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * SEP fixed editions in force on a retrieval date, most recent first.
+ *
+ * SEP publishes four fixed editions a year (spring/summer/fall/winter); the
+ * edition covering a date is the most recent one published on or before it.
+ * Earlier editions follow as fallbacks — an entry published after an older
+ * edition was frozen simply does not exist there, and the probe skips it.
+ */
+function sepEditionCandidates(retrievedAt: string): string[] {
+  const date = new Date(retrievedAt);
+  if (Number.isNaN(date.getTime())) return [];
+  const year = date.getUTCFullYear();
+  const month = date.getUTCMonth() + 1;
+  const quarters: [string, number][] = [
+    ["spr", 3],
+    ["sum", 6],
+    ["fall", 9],
+    ["win", 12],
+  ];
+  const editions: string[] = [];
+  for (let y = year; y >= year - 2; y--) {
+    for (let i = quarters.length - 1; i >= 0; i--) {
+      const quarter = quarters[i]!;
+      if (y < year || quarter[1] <= month) editions.push(`${quarter[0]}${y}`);
+    }
+  }
+  return editions;
+}
+
+/**
+ * SEP fixed-edition permalink for /entries/<slug>/ URLs.
+ *
+ * SEP publishes periodically fixed editions under /archives/<edition>/ which it
+ * designates for citation and "neither updates nor modifies in any way once the
+ * archive is made". That is the same anchor kind as a wiki oldid permalink —
+ * publisher-run, immutable, keyless, unaffected by later revision — and it is
+ * SEP's ONLY anchor path: plato.stanford.edu is excluded from the Wayback
+ * Machine outright ("This URL has been excluded from the Wayback Machine",
+ * measured 2026-07-29 across the 2024-2026 range), so SPN can never
+ * materialize a snapshot for it.
+ */
+async function sepEditionPermalink(url: string, retrievedAt: string): Promise<string | null> {
+  let parsed: URL;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return null;
+  }
+  if (parsed.hostname !== "plato.stanford.edu") return null;
+  const slug = /^\/entries\/([^/]+)\/?$/.exec(parsed.pathname)?.[1];
+  if (!slug) return null;
+  for (const edition of sepEditionCandidates(retrievedAt)) {
+    const candidate = `https://plato.stanford.edu/archives/${edition}/entries/${slug}/`;
+    try {
+      const res = await fetch(candidate, {
+        headers: { "user-agent": USER_AGENT },
+        signal: AbortSignal.timeout(LOOKUP_TIMEOUT_MS),
+      });
+      if (res.ok) return candidate;
+    } catch {
+      // network error/timeout — try the next edition
+    }
+    await sleep(500);
+  }
+  return null;
 }
 
 // --- Main ------------------------------------------------------------------------
@@ -197,20 +284,39 @@ async function main(): Promise<void> {
   );
 
   // Collect distinct URLs that still need anchoring.
-  type Work = { url: string; isWiki: boolean; hasPermalink: boolean; needsSnapshot: boolean; needsRevision: boolean };
+  type Work = {
+    url: string;
+    isWiki: boolean;
+    isSep: boolean;
+    retrievedAt: string;
+    hasPermalink: boolean;
+    needsSnapshot: boolean;
+    needsRevision: boolean;
+  };
   const workByUrl = new Map<string, Work>();
   for (const v of decision.verdicts) {
     for (const s of v.sources) {
       const isWiki = isWikiHost(s.url);
+      const isSep = isSepHost(s.url);
+      // Hosts whose publisher runs its own immutable-edition permalinks (§8).
+      const hasEditionAnchor = isWiki || isSep;
       const existing =
         workByUrl.get(s.url) ??
-        { url: s.url, isWiki, hasPermalink: false, needsSnapshot: false, needsRevision: false };
+        {
+          url: s.url,
+          isWiki,
+          isSep,
+          retrievedAt: s.retrieved_at,
+          hasPermalink: false,
+          needsSnapshot: false,
+          needsRevision: false,
+        };
       if (s.revision_permalink) existing.hasPermalink = true;
-      if (isWiki && !s.revision_permalink) existing.needsRevision = true;
-      // A wiki source carrying an oldid permalink is fully anchored (§8) — no
-      // snapshot work. Everyone else needs a snapshot when it's missing or
-      // when a prior run left an [SPN-FAILED] retry entry for the URL.
-      if (!(isWiki && s.revision_permalink) && (!s.snapshot_url || retryUrls.has(s.url))) {
+      if (hasEditionAnchor && !s.revision_permalink) existing.needsRevision = true;
+      // A source carrying its publisher's immutable permalink is fully anchored
+      // (§8) — no snapshot work. Everyone else needs a snapshot when it's
+      // missing or when a prior run left an [SPN-FAILED] retry entry.
+      if (!(hasEditionAnchor && s.revision_permalink) && (!s.snapshot_url || retryUrls.has(s.url))) {
         existing.needsSnapshot = true;
       }
       if (existing.needsSnapshot || existing.needsRevision) workByUrl.set(s.url, existing);
@@ -258,22 +364,35 @@ async function main(): Promise<void> {
 
   for (const work of workByUrl.values()) {
     if (work.needsRevision) {
-      const permalink = await wikiRevisionPermalink(work.url);
+      const permalink = work.isSep
+        ? await sepEditionPermalink(work.url, work.retrievedAt)
+        : await wikiRevisionPermalink(work.url);
       if (permalink) {
         revisions.set(work.url, permalink);
-        console.log(`  ✓ revision  ${work.url} → ${permalink}`);
+        console.log(`  ✓ ${work.isSep ? "edition " : "revision"}  ${work.url} → ${permalink}`);
       } else {
-        pending.push({ url: work.url, reason: "could not resolve wiki revision id" });
-        console.log(`  ✗ revision  ${work.url}`);
+        pending.push({
+          url: work.url,
+          reason: work.isSep
+            ? "could not resolve a SEP fixed edition containing this entry"
+            : "could not resolve wiki revision id",
+        });
+        console.log(`  ✗ ${work.isSep ? "edition " : "revision"}  ${work.url}`);
       }
       await sleep(500);
     }
     if (!work.needsSnapshot) continue;
-    // §8: a wiki URL whose permalink exists (or resolved just above) needs no
-    // snapshot — the snapshot pipeline runs for wiki URLs only as a backup
-    // when revision resolution failed.
-    if (work.isWiki && (work.hasPermalink || revisions.has(work.url))) {
-      console.log(`  ✓ anchored  ${work.url} (wiki oldid permalink — snapshot not required, §8)`);
+    // §8: a URL whose publisher permalink exists (or resolved just above) needs
+    // no snapshot — the snapshot pipeline runs for those hosts only as a backup
+    // when permalink resolution failed. For SEP there is no backup: it is
+    // excluded from the Wayback Machine, so an unresolved entry stays pending.
+    if ((work.isWiki || work.isSep) && (work.hasPermalink || revisions.has(work.url))) {
+      const kind = work.isSep ? "SEP fixed edition" : "wiki oldid permalink";
+      console.log(`  ✓ anchored  ${work.url} (${kind} — snapshot not required, §8)`);
+      continue;
+    }
+    if (work.isSep) {
+      console.log(`  ✗ anchored  ${work.url} (SEP is excluded from the Wayback Machine — no snapshot path)`);
       continue;
     }
 
@@ -348,19 +467,20 @@ async function main(): Promise<void> {
         if (rev && !s.revision_permalink) s.revision_permalink = rev;
       }
     }
-    // Wiki URLs whose source carries an oldid permalink are fully anchored
-    // (§8) — any pending entry for them is a ghost and is dropped.
-    const wikiAnchored = new Set<string>();
+    // URLs whose source carries its publisher's immutable permalink — a wiki
+    // oldid or a SEP fixed edition — are fully anchored (§8); any pending entry
+    // for them is a ghost and is dropped.
+    const editionAnchored = new Set<string>();
     for (const v of raw.verdicts ?? []) {
       for (const s of v.sources ?? []) {
-        if (s.revision_permalink && isWikiHost(s.url)) wikiAnchored.add(s.url);
+        if (s.revision_permalink && (isWikiHost(s.url) || isSepHost(s.url))) editionAnchored.add(s.url);
       }
     }
     const touched = new Set([...workByUrl.keys()]);
     raw.anchors_pending = [
       ...(raw.anchors_pending ?? []).filter((p) => !touched.has(p.url)),
       ...pending,
-    ].filter((p) => !wikiAnchored.has(p.url));
+    ].filter((p) => !editionAnchored.has(p.url));
     writeFileSync(decisionPath!, JSON.stringify(raw, null, 2) + "\n");
     console.log(`✓ wrote anchors into ${decisionPath} (${snapshots.size} snapshots, ${revisions.size} revision permalinks, ${pending.length} pending)`);
   } else if (pending.length > 0) {
