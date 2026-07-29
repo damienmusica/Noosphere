@@ -1401,6 +1401,19 @@ reviewed? ≥2 independent sources? living guard? which clause?) is pure code, i
 session. **A divergence between this code and ratified policy text is a stop-point** — fix the
 transcription in the same change as the vault ruling, never silently.
 
+**Second divergence caught in production (2026-07-29, session #60, batch `work-wave6-v1`).** Decision
+(88) opened the `canonical_work`-edge auto-`reviewed` ladder in session #48 as the 1:1 mirror of
+(60)/(61), and §8 documents it in full — but `EDGE_AUTO_LADDER` in `lib/ladders.ts` had no entry for
+the relation, so **no ladder could sanction a `canonical_work` edge at all**. Work waves 1–5 all
+predate this toolchain (§15 landed in session #54), so work-wave6 was the first `canonical_work` batch
+ever to run through `ladder-check` — which is why a four-wave-old gap surfaced only then. Fixed by
+transcription in the same change: ladder id `canonical-work-auto-88` added to `ladderSchema` and to
+the relation map, and admitted to the propositional branch that already enforces supported-verdict,
+≥2 independent claim-stating sources, `direction_confirmed` and `identity_referent_verified`. No
+policy was added and nothing relaxed. **The general lesson: a ladder's transcription is only exercised
+when a batch of that relation runs through the gate, so relation families that have not had a batch
+since §15 are the places to expect further gaps.**
+
 Metadata-flip refinement (CPO-ratified 2026-07-02, the first divergence this stop-point caught in
 production): a `reviewed→reviewed` promotion op is a **metadata flip** (`set_indexable` /
 `set_note`), not a promotion — it does not (re)earn reviewed status and demands no node ladder.
