@@ -14,20 +14,6 @@
     "recorded_at": "2026-07-02"
   },
   {
-    "id": "edge:antoine-lavoisier-influenced-physics",
-    "blocking_condition": "Target too broad (field:physics); a thermodynamics-grained target would be accurate but no such node exists yet. Trigger: thermodynamics-class node created.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "edge:bertrand-russell-influenced-computer-science",
-    "blocking_condition": "Diffuse/mediated (via Church, Curry–Howard, Martin-Löf) and field:computer-science too broad; a programming-languages/type-theory-grained target would be cleaner. Trigger: type-theory-class node created.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
     "id": "edge:cybernetics-influenced-systems-engineering",
     "blocking_condition": "Thin at the 'influenced' bar: single clear claim-stating source (WP systems-engineering history lists cybernetics among many contributors; WP Cybernetics does not reciprocate). Needs a second independent claim-stating source.",
     "recheck": "manual",
@@ -86,20 +72,6 @@
   {
     "id": "edge:vladimir-vernadsky-influenced-environmental-science",
     "blocking_condition": "Real but diffuse; Vernadsky already carries founded_or_formalized→geochemistry; field-grain target broad.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "edge:edmund-husserl-founded-intentionality",
-    "blocking_condition": "Single-founder attribution imprecise: intentionality reintroduced by Brentano (no node), developed by Husserl. Trigger: person:franz-brentano node created (co-founder pattern, mirrors cofounder-closure-v1).",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "edge:marvin-minsky-founded-symbolic-ai",
-    "blocking_condition": "Symbolic AI (GOFAI) co-founded by Newell/Simon/McCarthy/Minsky; single-founder attribution held pending co-founder modeling (record-not-resolve). Trigger: co-founder person nodes created (cofounder-closure pattern).",
     "recheck": "manual",
     "batch_id": "recheck-wave1-v1",
     "recorded_at": "2026-07-02"
@@ -164,5 +136,13 @@
     "batch_id": "held-ledger-hygiene-v1",
     "recorded_at": "2026-07-29",
     "note": "Re-triaged manual→trigger by held-ledger-hygiene-v1; blocking condition unchanged verbatim from s12-holds-resolution-v1 (2026-07-03). Parked at proposed, not deprecated — which is exactly why the trigger flag has to live on the entry and cannot be read off status."
+  },
+  {
+    "id": "edge:antoine-lavoisier-influenced-physics",
+    "blocking_condition": "Held since recheck-wave1-v1 (2026-07-02) as too broad at field:physics, with the recorded trigger 'thermodynamics-class node created'. That trigger is now RETIRED as refuted: subfield:thermodynamics was created in held-trigger-nodes-v1 (2026-07-29) and the retarget still fails. Live evidence — enwiki Thermodynamics does not mention Lavoisier at all; enwiki History of thermodynamics assigns his calorimetry work to thermochemistry ('a subject which became known as thermochemistry'); enwiki Thermochemistry's only foundation sentence carries an inline [citation needed] and is about Black's experiments. Verdict NEI at every grain tested (physics, thermodynamics, thermochemistry). New unblock condition: ≥2 independent claim-stating sources asserting a *founding or influence* relation between Lavoisier and a specific heat-science discipline — not a contribution/apparatus claim, and not a [citation needed] sentence. A subfield:thermochemistry node would be the natural target if such sources are found; it is deliberately NOT created on this batch's speculative demand.",
+    "recheck": "manual",
+    "batch_id": "held-trigger-nodes-v1",
+    "recorded_at": "2026-07-29",
+    "note": "Supersedes the recheck-wave1-v1 entry. The correction itself is the finding: a hold's recorded trigger is a hypothesis, and this one did not survive its own test. Cf. decision (110), where a recorded diagnosis ('SPN circuit open, awaiting recovery') was likewise a misdiagnosis."
   }
 ]

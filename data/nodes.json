@@ -2108,6 +2108,20 @@
     "updated_at": "2026-07-02"
   },
   {
+    "id": "person:allen-newell",
+    "type": "person",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q439245"
+    },
+    "created_at": "2026-07-29",
+    "updated_at": "2026-07-29"
+  },
+  {
     "id": "person:alonzo-church",
     "type": "person",
     "domain": "formal_sciences",
@@ -2570,6 +2584,20 @@
     "updated_at": "2026-07-02"
   },
   {
+    "id": "person:franz-brentano",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q57196"
+    },
+    "created_at": "2026-07-29",
+    "updated_at": "2026-07-29"
+  },
+  {
     "id": "person:friedrich-nietzsche",
     "type": "person",
     "domain": "humanities",
@@ -2792,6 +2820,20 @@
     },
     "created_at": "2026-07-01",
     "updated_at": "2026-07-02"
+  },
+  {
+    "id": "person:herbert-simon",
+    "type": "person",
+    "domain": "cognitive_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q181529"
+    },
+    "created_at": "2026-07-29",
+    "updated_at": "2026-07-29"
   },
   {
     "id": "person:isaac-newton",
@@ -10677,6 +10719,21 @@
     }
   },
   {
+    "id": "subfield:thermodynamics",
+    "type": "subfield",
+    "domain": "natural_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q11473"
+    },
+    "created_at": "2026-07-29",
+    "updated_at": "2026-07-29"
+  },
+  {
     "id": "subfield:time-series-analysis",
     "type": "subfield",
     "domain": "formal_sciences",
@@ -10778,6 +10835,21 @@
     "academic_status": "established",
     "created_at": "2026-06-11",
     "updated_at": "2026-06-12"
+  },
+  {
+    "id": "subfield:type-theory",
+    "type": "subfield",
+    "domain": "formal_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "academic_status": "established",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1056428"
+    },
+    "created_at": "2026-07-29",
+    "updated_at": "2026-07-29"
   },
   {
     "id": "subfield:urban-and-regional-planning",

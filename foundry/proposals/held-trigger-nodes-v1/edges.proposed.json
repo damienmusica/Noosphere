@@ -1,0 +1,109 @@
+{
+  "version": 2,
+  "batch_id": "held-trigger-nodes-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-29"
+  },
+  "nodes": [],
+  "edges": [
+    {
+      "id": "edge:franz-brentano-founded-intentionality",
+      "source": "person:franz-brentano",
+      "target": "concept:intentionality",
+      "relation": "founded_or_formalized",
+      "confidence": 0.75,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Stanford Encyclopedia of Philosophy entry 'Intentionality'; Stanford Encyclopedia of Philosophy entry 'Franz Brentano'; Brentano, Psychology from an Empirical Standpoint (1874), the 'intentional inexistence' passage.",
+      "rationale": "Brentano's Psychology from an Empirical Standpoint (1874) reintroduced 'intentionality' — the property of mental states being directed at an object — as the defining mark of the mental, launching its modern career in philosophy of mind and phenomenology. This closes the founder-attribution gap the corpus already flagged: the existing held edge:edmund-husserl-founded-intentionality (data/edges.json, proposed) carries the note 'intentionality was reintroduced by Brentano (no node) and developed by Husserl; single-founder attribution to Husserl is imprecise ... founder edge held pending Brentano node'. That node now exists in this batch, so the founder edge belongs on Brentano, not Husserl.",
+      "uncertainty": "Brentano did not coin the underlying concept — 'intentio' is a medieval scholastic term (via Aquinas, tracing to Aristotle) that Brentano revived and repurposed as a modern psychological/philosophical criterion. 'founded_or_formalized' is defensible as 'formalized the modern technical usage', but a stricter reader could prefer 'influenced' if a revival-of-a-prior-term is judged insufficient for founding. This is knowledge-only and unverified against any live source; I have not fetched the SEP entry and cannot confirm its exact current wording, only that an entry on this topic with this general framing exists to my knowledge.",
+      "ambiguous": true,
+      "note": "Record-not-resolve companion to the existing held edge:edmund-husserl-founded-intentionality: standard histories treat Brentano as reviver/originator of the modern concept and Husserl as its major developer (intentional acts, noesis/noema) — not co-equal founders in the same sense, so this edge does not imply Husserl's founder claim should be promoted unchanged; QC should reconsider both edges together now that both endpoints exist."
+    },
+    {
+      "id": "edge:allen-newell-founded-symbolic-ai",
+      "source": "person:allen-newell",
+      "target": "concept:symbolic-ai",
+      "relation": "founded_or_formalized",
+      "confidence": 0.65,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Allen Newell'; Wikipedia 'Symbolic artificial intelligence'; Newell & Simon, 'Computer Science as Empirical Inquiry: Symbols and Search' (1976 ACM Turing Award Lecture, the physical symbol system hypothesis); Newell, Shaw & Simon, Logic Theorist (1956).",
+      "rationale": "Newell (with Simon and Cliff Shaw) built the Logic Theorist (1956), often cited as the first AI program and an explicitly symbolic-reasoning system, and the General Problem Solver (1957); Newell & Simon's physical symbol system hypothesis (1976 Turing lecture) is the canonical theoretical statement of the symbolic/GOFAI research program. This closes a gap the corpus already named: the existing edge:marvin-minsky-founded-symbolic-ai (proposed, held) carries the note 'symbolic AI (GOFAI) was co-founded by Newell/Simon/McCarthy/Minsky; single-founder attribution to Minsky held pending co-founder modeling (record-not-resolve)'.",
+      "ambiguous": true,
+      "uncertainty": "Knowledge-only, no live source check. The exact boundary of the 'founder set' for symbolic AI varies by source — some accounts foreground the Dartmouth workshop cohort (adding Rochester, Shannon), others foreground the Newell/Simon Carnegie line specifically; this edge asserts Newell's membership in the credited group, not sole or primary origination (record-not-resolve). Confidence is set to match, not exceed, the existing held Minsky edge's own (still-proposed) confidence, since both rest on the same unverified claim class.",
+      "note": "Record-not-resolve alongside person:herbert-simon (this batch), person:marvin-minsky and person:john-mccarthy (both also proposed this batch to the same target) — none of these four edges claims sole founding."
+    },
+    {
+      "id": "edge:herbert-simon-founded-symbolic-ai",
+      "source": "person:herbert-simon",
+      "target": "concept:symbolic-ai",
+      "relation": "founded_or_formalized",
+      "confidence": 0.65,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Herbert A. Simon'; Wikipedia 'Symbolic artificial intelligence'; Newell & Simon, 'Computer Science as Empirical Inquiry: Symbols and Search' (1976 ACM Turing Award Lecture); Newell, Shaw & Simon, Logic Theorist (1956).",
+      "rationale": "Simon (with Newell and Cliff Shaw) co-built the Logic Theorist (1956) and General Problem Solver (1957), and co-authored the physical symbol system hypothesis (Newell & Simon, 1976 Turing lecture) — the same joint theoretical foundation cited for Newell's edge in this batch. Simon shared the 1975 ACM Turing Award with Newell specifically for this work. Closes the same corpus-named gap as the Newell edge (edge:marvin-minsky-founded-symbolic-ai's held note names 'Newell/Simon/McCarthy/Minsky').",
+      "ambiguous": true,
+      "uncertainty": "Same knowledge-only caveat as the Newell edge: no live source check, founder-set boundary varies across accounts, and this is explicitly a shared/joint claim with Newell (their contributions are typically described as an inseparable partnership, not two independent achievements) — record-not-resolve, not sole founding.",
+      "note": "Record-not-resolve alongside person:allen-newell (this batch, near-identical joint rationale — the Newell/Simon partnership is usually described as a single collaborative body of work), person:marvin-minsky and person:john-mccarthy (both also proposed this batch to the same target)."
+    },
+    {
+      "id": "edge:antoine-lavoisier-influenced-thermodynamics",
+      "source": "person:antoine-lavoisier",
+      "target": "subfield:thermodynamics",
+      "relation": "influenced",
+      "confidence": 0.5,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Antoine Lavoisier' and 'History of thermodynamics'; Lavoisier & Laplace, Mémoire sur la chaleur (1783); standard history-of-science treatments of caloric theory's role in the run-up to 19th-century thermodynamics.",
+      "rationale": "Lavoisier's quantitative calorimetry with Laplace (Mémoire sur la chaleur, 1783) and his articulation of the caloric theory of heat, together with the law of conservation of mass, are cited by historians of science as early conceptual and methodological precursor work that fed into the eventual formation of thermodynamics as a field in the 19th century (Carnot, Clausius, Kelvin, Joule). This closes the grain gap the corpus already named: the existing edge:antoine-lavoisier-influenced-physics (proposed, held) carries the note '\"influenced field:physics\" is diffuse — physics conservation laws have independent origins and the target field is too broad; a thermodynamics-grained target (no node yet) would be more accurate'.",
+      "ambiguous": true,
+      "uncertainty": "This is a diffuse, multi-decade historical-influence claim, not a founding claim — Lavoisier died in 1794, decades before thermodynamics existed as a named field (the term dates to c.1849), and his caloric theory of heat was later abandoned in favor of the mechanical/kinetic theory of heat, so the 'influence' is better described as early quantitative groundwork than a direct intellectual lineage. A QC reviewer could reasonably judge this still too indirect for an edge at all — correcting the grain (subfield:thermodynamics instead of field:physics) resolves the breadth objection in the original held note but not necessarily the diffuseness objection underneath it; I flag this honestly rather than resolve it myself.",
+      "note": "Direct successor to the held edge:antoine-lavoisier-influenced-physics; that edge's own note anticipated exactly this retarget once a thermodynamics-grained node existed. QC should consider whether the original physics-targeted edge should now be deprecated in favor of this one, or whether both are independently defensible (chemistry's conservation-of-mass legacy in physics generally vs. calorimetry's legacy in thermodynamics specifically) — that disposition call is out of this batch's scope."
+    },
+    {
+      "id": "edge:bertrand-russell-founded-type-theory",
+      "source": "person:bertrand-russell",
+      "target": "subfield:type-theory",
+      "relation": "founded_or_formalized",
+      "confidence": 0.8,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Stanford Encyclopedia of Philosophy entry 'Type Theory'; Russell, 'Mathematical Logic as Based on the Theory of Types' (American Journal of Mathematics, 1908); Whitehead & Russell, Principia Mathematica (1910-13).",
+      "rationale": "Russell introduced the theory of types in 'Mathematical Logic as Based on the Theory of Types' (1908) to resolve Russell's paradox, then developed it into the ramified theory of types in Principia Mathematica (1910-13, with Whitehead); standard histories of logic credit this 1908 work as the origin of type theory as a branch of mathematical logic and foundations of mathematics. This targets a different, better-grained node than the corpus's existing held claim: the existing edge:bertrand-russell-influenced-computer-science (relation 'influenced', held, target field:computer-science) carries the note '\"Russell's type theory (1908-13) is the historical root of type systems in programming languages. Held at proposed: diffuse/mediated (via Church, Curry-Howard, Martin-Loef, decades removed) and field:computer-science is too broad a target; a narrower programming-languages/type-theory target would be cleaner.\"' Targeting subfield:type-theory directly (rather than field:computer-science) removes that mediation problem, since this is the field Russell originated, not a downstream application of it decades later.",
+      "ambiguous": true,
+      "uncertainty": "Principia Mathematica's type theory was jointly authored with Alfred North Whitehead, who is not a node added by this batch; this edge asserts Russell's share of what standard histories treat as a joint originating contribution (record-not-resolve), not sole authorship — a companion Whitehead edge is a plausible future gap, not proposed here. I am also assuming subfield:type-theory denotes the mathematical-logic/foundations discipline (Russell's ramified theory of types and its descendants, e.g. simple type theory, Martin-Loef type theory) rather than a narrower construal limited to programming-language type systems; if the orchestrator's node instead means the latter specifically, this edge is mis-grained the same way the held computer-science edge was, and 'influenced' (with a note on the Church/Curry-Howard/Martin-Loef mediation chain) would be the more defensible relation. I have not live-verified the SEP entry's title or exact content.",
+      "note": "Distinct from and does not replace the existing held edge:bertrand-russell-influenced-computer-science (a separate, more diffuse programming-languages-lineage claim, relation 'influenced' not 'founded_or_formalized'); that edge's own disposition is out of this batch's scope."
+    },
+    {
+      "id": "edge:john-mccarthy-founded-symbolic-ai",
+      "source": "person:john-mccarthy",
+      "target": "concept:symbolic-ai",
+      "relation": "founded_or_formalized",
+      "confidence": 0.65,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'John McCarthy (computer scientist)'; Wikipedia 'Symbolic artificial intelligence'; Wikipedia 'Dartmouth workshop'; McCarthy, 'Programs with Common Sense' (1959, the Advice Taker proposal).",
+      "rationale": "McCarthy is named among the co-founders of symbolic AI in the corpus's own existing held note: edge:marvin-minsky-founded-symbolic-ai's note lists 'Newell/Simon/McCarthy/Minsky' as GOFAI's co-founders. McCarthy organized the 1956 Dartmouth workshop, coined the term 'artificial intelligence', and developed core symbolic-AI apparatus — LISP as the primary early symbolic-AI programming language, the Advice Taker proposal (1959), and later situation calculus and circumscription for symbolic knowledge representation and reasoning.",
+      "ambiguous": true,
+      "uncertainty": "McCarthy already holds a reviewed edge:john-mccarthy-founded-artificial-intelligence to the broader subfield:artificial-intelligence. This edge asserts a narrower, additional claim specifically about the symbolic-AI paradigm within AI, which a reviewer could judge redundant with the existing broader edge (i.e. 'founded AI' already subsumes 'founded symbolic AI') rather than a distinct contribution worth its own edge. I follow the precedent already in the corpus: person:marvin-minsky holds both a reviewed founded_or_formalized edge to subfield:artificial-intelligence AND a held proposed founded_or_formalized edge to concept:symbolic-ai side by side, so this is not a novel pattern, but the overlap risk is real and I flag it rather than assume the precedent settles it.",
+      "note": "Record-not-resolve alongside person:allen-newell and person:herbert-simon (both proposed this batch to the same target) and the existing person:marvin-minsky edge; none of these four edges claims sole founding of symbolic AI."
+    }
+  ],
+  "notes": [
+    "Scope: edges only, per order. No nodes proposed. Six person-target pairs were evaluated and yielded a proposed edge; two (person:marvin-minsky <-> subfield:type-theory, person:herbert-simon <-> subfield:thermodynamics) were evaluated on the same terms and declined — no defensible sourceable relation found, not a coverage oversight. See report.md for the full per-pair reasoning trace including the declines.",
+    "Four of the six proposed edges (Brentano-intentionality, Lavoisier-thermodynamics, Russell-type-theory, and the Newell/Simon/McCarthy symbolic-ai set) are direct retargets/completions of claims the corpus had already articulated and held pending exactly the nodes this batch adds (see each edge's own note quoting the prior held-edge language it responds to). This is the batch's namesake: 'held-trigger' nodes unlocking previously-blocked, already-reasoned edges rather than introducing new claims from scratch.",
+    "[QC REDACTION 2026-07-29] The generator asserted compliance with the no-provider-identifier rule by naming the forbidden provider domains verbatim, which the contract-v2 string scan in validate-data correctly flagged as a leak. Orchestrator redaction, original meaning preserved: no provider identifiers of any kind appear anywhere in this artifact. All factual claims are knowledge-only and unverified against live sources per the order-s no-network-access constraint; every edge-s uncertainty field says so explicitly rather than presenting recalled claims with citation-grade confidence.",
+    "All evidence arrays are left empty by design (no verified source IDs to cite pre-QC); source_hint on every edge names specific, checkable titles/entries for the orchestrator to fetch and verify, not citations.",
+    "Deliberately not proposed: an edge for Alfred North Whitehead's share of type theory (he is not a node in this batch) and a disposition call on the older, coarser-grained held edges (edge:antoine-lavoisier-influenced-physics, edge:bertrand-russell-influenced-computer-science, edge:edmund-husserl-founded-intentionality) that these new edges partially supersede in grain — resolving those is a QC/curation decision, not this batch's scope."
+  ]
+}

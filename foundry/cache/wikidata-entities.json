@@ -1,4 +1,37 @@
 {
+  "Q1056428": {
+    "qid": "Q1056428",
+    "label_en": "type theory",
+    "aliases_en": [
+      "theory of types"
+    ],
+    "enwiki_title": "Type theory",
+    "p31": [
+      "Q1936384"
+    ],
+    "p570_present": false,
+    "redirect_to": null,
+    "missing": false,
+    "retrieved_at": "2026-07-29"
+  },
+  "Q11473": {
+    "qid": "Q11473",
+    "label_en": "thermodynamics",
+    "aliases_en": [
+      "thermo-dynamics",
+      "thermal science",
+      "pyro-dynamics"
+    ],
+    "enwiki_title": "Thermodynamics",
+    "p31": [
+      "Q4162444",
+      "Q11862829"
+    ],
+    "p570_present": false,
+    "redirect_to": null,
+    "missing": false,
+    "retrieved_at": "2026-07-29"
+  },
   "Q180592": {
     "qid": "Q180592",
     "label_en": "social philosophy",
@@ -15,6 +48,22 @@
     "missing": false,
     "retrieved_at": "2026-07-03"
   },
+  "Q181529": {
+    "qid": "Q181529",
+    "label_en": "Herbert Simon",
+    "aliases_en": [
+      "Herbert Alexander Simon",
+      "Herbert A. Simon"
+    ],
+    "enwiki_title": "Herbert A. Simon",
+    "p31": [
+      "Q5"
+    ],
+    "p570_present": true,
+    "redirect_to": null,
+    "missing": false,
+    "retrieved_at": "2026-07-29"
+  },
   "Q3565078": {
     "qid": "Q3565078",
     "label_en": "tripartite classification of authority",
@@ -27,5 +76,35 @@
     "redirect_to": null,
     "missing": false,
     "retrieved_at": "2026-07-03"
+  },
+  "Q439245": {
+    "qid": "Q439245",
+    "label_en": "Allen Newell",
+    "aliases_en": [],
+    "enwiki_title": "Allen Newell",
+    "p31": [
+      "Q5"
+    ],
+    "p570_present": true,
+    "redirect_to": null,
+    "missing": false,
+    "retrieved_at": "2026-07-29"
+  },
+  "Q57196": {
+    "qid": "Q57196",
+    "label_en": "Franz Brentano",
+    "aliases_en": [
+      "Franz Clemens Honoratus Hermann Brentano",
+      "Franz Clemens Brentano",
+      "Franz Clemens Honoratus Hermann Josef Brentano"
+    ],
+    "enwiki_title": "Franz Brentano",
+    "p31": [
+      "Q5"
+    ],
+    "p570_present": true,
+    "redirect_to": null,
+    "missing": false,
+    "retrieved_at": "2026-07-29"
   }
 }

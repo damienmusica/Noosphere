@@ -923,6 +923,14 @@
     "reviewed": true
   },
   {
+    "node_id": "person:allen-newell",
+    "locale": "en",
+    "label": "Allen Newell",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+  },
+  {
     "node_id": "person:alonzo-church",
     "locale": "en",
     "label": "Alonzo Church",
@@ -1248,6 +1256,16 @@
     "reviewed": true
   },
   {
+    "node_id": "person:franz-brentano",
+    "locale": "en",
+    "label": "Franz Brentano",
+    "summary": "",
+    "aliases": [
+      "Franz Clemens Brentano"
+    ],
+    "reviewed": false
+  },
+  {
     "node_id": "person:friedrich-nietzsche",
     "locale": "en",
     "label": "Friedrich Nietzsche",
@@ -1401,6 +1419,16 @@
     "aliases": [],
     "summary": "Herbert Feigl (1902–1988) was an Austrian-American philosopher and an early member of the Vienna Circle. He coined the term \"nomological danglers\". His membership placed him among the figures associated with the Circle's philosophical movement.",
     "reviewed": true
+  },
+  {
+    "node_id": "person:herbert-simon",
+    "locale": "en",
+    "label": "Herbert A. Simon",
+    "summary": "",
+    "aliases": [
+      "Herbert Alexander Simon"
+    ],
+    "reviewed": false
   },
   {
     "node_id": "person:isaac-newton",
@@ -4737,6 +4765,16 @@
     "reviewed": true
   },
   {
+    "node_id": "subfield:thermodynamics",
+    "locale": "en",
+    "label": "Thermodynamics",
+    "summary": "",
+    "aliases": [
+      "classical thermodynamics"
+    ],
+    "reviewed": false
+  },
+  {
     "node_id": "subfield:time-series-analysis",
     "locale": "en",
     "label": "Time Series Analysis",
@@ -4775,6 +4813,17 @@
     "summary": "Transportation engineering is the sub-discipline of civil engineering that applies scientific and engineering principles to the planning, design, operation, and management of transportation systems. Wikipedia defines it as \"the application of technology and scientific principles to the planning, functional design, operation and management of facilities for any mode of transportation to provide for the safe, efficient, rapid, comfortable, convenient, economical, and environmentally compatible movement of people and goods.\" The field spans highway, rail, transit, air, water, and pipeline modes. ASCE's Transportation & Development Institute, established in 2002, is dedicated to \"advancing knowledge and practice in sustainable transportation and development.\" The Library of Congress Classification recognizes the discipline under the heading \"Transportation engineering\" within civil engineering. Work ranges from traffic and pavement design to network operations and infrastructure planning.",
     "aliases": [],
     "reviewed": true
+  },
+  {
+    "node_id": "subfield:type-theory",
+    "locale": "en",
+    "label": "Type theory",
+    "summary": "",
+    "aliases": [
+      "theory of types",
+      "type systems"
+    ],
+    "reviewed": false
   },
   {
     "node_id": "subfield:urban-and-regional-planning",

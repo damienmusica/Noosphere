@@ -372,6 +372,24 @@
     "note": "§12 edge-depth (ASL-pillar precedent): ACM CCS files 'Design and analysis of algorithms' inside the 'Theory of computation' top branch (Wayback snapshot of dl.acm.org/ccs/ccs_flat.cfm, live 2026-06-11); MSC 68Q25 'Analysis of algorithms and problem complexity' sits inside 68Q Theory of computing (msc2020.org CSV, live). Divergence recorded: MSC also gives algorithms its own top subsection 68W (algorithm-engineering wing); the un-contradicted gate-scheme nesting governs."
   },
   {
+    "id": "edge:allen-newell-founded-artificial-intelligence",
+    "source": "person:allen-newell",
+    "target": "subfield:artificial-intelligence",
+    "relation": "founded_or_formalized",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-founder edge, record-not-resolve — joins the existing reviewed founder edges for John McCarthy and Marvin Minsky on this same field. Target corrected at QC from the generator's concept:symbolic-ai to subfield:artificial-intelligence: no source states that Newell founded symbolic AI as such, whereas two independent articles state the AI-founding claim (enwiki Symbolic artificial intelligence: 'their work laid the foundations of the field of artificial intelligence'; enwiki Logic Theorist: 'In 1955, when Newell and Simon began to work on the Logic Theorist, the field of artificial intelligence did not yet exist'). Recorded tension: enwiki Dartmouth workshop names Shannon, McCarthy, Rochester and Minsky as the 'founding fathers' and does not list Newell — the two framings are about different acts (convening the field's naming conference vs. building its first program), and both are kept."
+  },
+  {
     "id": "edge:alonzo-church-founded-computability-theory",
     "source": "person:alonzo-church",
     "target": "subfield:computability-theory",
@@ -1281,12 +1299,31 @@
     "note": "Bertrand Russell is a co-principal founder of analytic philosophy. Sources (2 independent live-verified): SEP 'Analysis' (analytic method \"In the work of Frege and Russell\") + Wikipedia 'Bertrand Russell' (\"a founder of analytic philosophy, along with his predecessor Gottlob Frege, his friend and colleague G. E. Moore, and his student and protege Ludwig Wittgenstein\"). Record-not-resolve plural founding: Gottlob Frege (already a corpus node -- person:gottlob-frege), G. E. Moore, and Ludwig Wittgenstein (already a corpus node -- person:ludwig-wittgenstein) are co-founders across distinct strands. Identity Q33760 verified live (P31=Q5, P569 1872-05-18, P570 1970-02-02 deceased, logician/philosopher). Generator-guessed QID was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
   },
   {
+    "id": "edge:bertrand-russell-founded-type-theory",
+    "source": "person:bertrand-russell",
+    "target": "subfield:type-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Relation corrected at QC from the generator's default reading and from the deprecated edge:bertrand-russell-influenced-computer-science: the live sources state origination, not downstream influence — SEP 'Type Theory': 'The theory of types was introduced by Russell in order to cope with some contradictions he found in his account of set theory'; enwiki Type theory: 'By 1908, Russell arrived at a ramified theory of types together with an axiom of reducibility, both of which appeared in Whitehead and Russell's Principia Mathematica'. Honest gap: Principia is co-authored with Whitehead, but both sources attribute the type theory specifically to Russell, and no person:alfred-north-whitehead node exists; a Whitehead co-founder edge is left for a later wave rather than asserted here. Resolves the recheck-wave1-v1 hold on the diffuse Russell→computer-science edge by re-grounding the claim at the grain the sources support."
+  },
+  {
     "id": "edge:bertrand-russell-influenced-computer-science",
     "source": "person:bertrand-russell",
     "target": "field:computer-science",
     "relation": "influenced",
     "confidence": 0.5,
-    "status": "proposed",
+    "status": "deprecated",
     "evidence": [
       "source:sep",
       "source:wikipedia"
@@ -1297,7 +1334,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "Russell's type theory (1908–13) is the historical root of type systems in programming languages. Held at proposed: diffuse/mediated (via Church, Curry–Howard, Martin-Löf, decades removed) and field:computer-science is too broad a target; a narrower programming-languages/type-theory target would be cleaner. Permanence: SEP 'Principia Mathematica' https://web.archive.org/web/20260702000746/https://plato.stanford.edu/entries/principia-mathematica/."
+    "note": "Deprecated 2026-07-29 (grain; decision-log session #60). Its own recheck-wave1-v1 blocking condition read 'Diffuse/mediated (via Church, Curry–Howard, Martin-Löf) and field:computer-science too broad; a programming-languages/type-theory-grained target would be cleaner.' Re-grounded at that grain as edge:bertrand-russell-founded-type-theory in this batch, where the sources support origination rather than diffuse influence."
   },
   {
     "id": "edge:biblical-studies-part-of-religious-studies",
@@ -3892,7 +3929,7 @@
     "target": "concept:intentionality",
     "relation": "founded_or_formalized",
     "confidence": 0.6,
-    "status": "proposed",
+    "status": "deprecated",
     "evidence": [
       "source:wikidata",
       "source:wikipedia"
@@ -3903,7 +3940,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "founder held: intentionality was reintroduced by Brentano (no node) and developed by Husserl; single-founder attribution to Husserl is imprecise — concept promoted via part_of edge-demand, founder edge held pending Brentano node/cleaner framing. Permanence: WP https://en.wikipedia.org/w/index.php?title=Intentionality&oldid=1355666928 · Wikidata Q654390 (immutable)."
+    "note": "Deprecated 2026-07-29 (over-attribution on the identity/referent axis; decision-log session #60). The recheck-wave1-v1 hold anticipated a co-founder resolution once a Brentano node existed. Live re-verification does not support co-founding: enwiki Edmund Husserl states 'Another important element that Husserl took over from Brentano was intentionality', and SEP describes Husserl's contribution as his *analyses* and *interpretation* of intentionality. The founding claim is written on edge:franz-brentano-founded-intentionality and Husserl's actual relation on edge:franz-brentano-influenced-edmund-husserl, both in this batch."
   },
   {
     "id": "edge:edmund-husserl-founded-phenomenology",
@@ -5126,6 +5163,44 @@
     "note": "Boas's anti-essentialist critique of biological race is a standard reference point in philosophy of race. Direction correct (Boas early-20thc -> the philosophical subfield). Permanence: SEP https://web.archive.org/web/20260702034306/https://plato.stanford.edu/entries/race/ · WP https://en.wikipedia.org/w/index.php?title=Franz_Boas&oldid=1359301314. ((a)-ladder decision (68); supported)."
   },
   {
+    "id": "edge:franz-brentano-founded-intentionality",
+    "source": "person:franz-brentano",
+    "target": "concept:intentionality",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Four independent claim-stating sources agree on the same verb — Brentano *introduced/reintroduced* intentionality into contemporary philosophy (enwiki Franz Brentano; enwiki Intentionality; SEP 'Franz Brentano'; SEP 'Intentionality'). Record-not-resolve scope note: the concept is medieval-scholastic in origin and Brentano's act is a reintroduction, not an invention — every source says so explicitly, and the founder claim is scoped to its standing in contemporary philosophy. This edge replaces the over-attributed edge:edmund-husserl-founded-intentionality, deprecated in the same batch: the live sources state Husserl took the concept over from Brentano rather than founding it. Resolves the recheck-wave1-v1 hold whose recorded trigger was exactly 'person:franz-brentano node created'."
+  },
+  {
+    "id": "edge:franz-brentano-influenced-edmund-husserl",
+    "source": "person:franz-brentano",
+    "target": "person:edmund-husserl",
+    "relation": "influenced",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "The relation the sources actually assert, written in place of the deprecated Husserl→intentionality founder edge (the same batch's honest re-model, §12 clause-1 mirror). enwiki Edmund Husserl: 'Franz Brentano is often credited as being his most important influence, e.g., with regard to intentionality' and 'Another important element that Husserl took over from Brentano was intentionality'; SEP 'Intentionality' describes Husserl as 'a student of Brentano's'; enwiki Franz Brentano records the inheritance of his intentionality work by Husserl's phenomenology. Direction is uncontested (Brentano 1838–1917 taught Husserl 1859–1938). Husserl's own contribution — the phenomenological analysis of intentionality via noema and epoché — is a development of the concept, recorded here as influence rather than as co-founding, because no source frames it as founding."
+  },
+  {
     "id": "edge:friedrich-nietzsche-founded-will-to-power",
     "source": "person:friedrich-nietzsche",
     "target": "concept:will-to-power",
@@ -6294,6 +6369,24 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Herbert Feigl was a member of the Vienna Circle -- a philosopher of science who (with Waismann) proposed the regular 'evening circle' to Schlick in 1924 and later carried logical empiricism to the United States. Sources (2 independent live-verified Wikipedia articles): 'Vienna Circle' (\"In 1924 Schlick's students Friedrich Waismann and Herbert Feigl suggested to their teacher a sort of regular 'evening circle'\"; Inner Circle roster lists \"... Herbert Feigl ...\") + 'Herbert Feigl'. Identity Q93678 verified live (P31=Q5, P569 1902, P570 1988 deceased, philosopher, enwiki 'Herbert Feigl'); generator-guessed QID (Q76370) hallucination, corrected. Both endpoints reviewed -> member_of, reviewed."
+  },
+  {
+    "id": "edge:herbert-simon-founded-artificial-intelligence",
+    "source": "person:herbert-simon",
+    "target": "subfield:artificial-intelligence",
+    "relation": "founded_or_formalized",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-founder edge, record-not-resolve — the twin of edge:allen-newell-founded-artificial-intelligence, not a duplicate of it: the sources name the two men jointly and the corpus records multiple founders. Same target correction and same tension note as that edge. enwiki Herbert A. Simon: 'Simon was a pioneer in the field of artificial intelligence, creating with Allen Newell the Logic Theory Machine (1956) and the General Problem Solver (GPS) (1957) programs'; enwiki Symbolic artificial intelligence carries the foundations claim naming both. Domain tag cognitive_sciences records this node's corpus role (the AI / cognitive-science founding, mirroring person:marvin-minsky); Simon's Nobel-recognized economics work is a separate, currently unmodelled strand."
   },
   {
     "id": "edge:hermeneutics-part-of-philosophy",
@@ -8140,7 +8233,7 @@
     "target": "concept:symbolic-ai",
     "relation": "founded_or_formalized",
     "confidence": 0.6,
-    "status": "proposed",
+    "status": "deprecated",
     "evidence": [
       "source:wikidata",
       "source:wikipedia"
@@ -8151,7 +8244,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "founder held: symbolic AI (GOFAI) was co-founded by Newell/Simon/McCarthy/Minsky; single-founder attribution to Minsky held pending co-founder modeling (record-not-resolve). Permanence: WP https://en.wikipedia.org/w/index.php?title=Symbolic_artificial_intelligence&oldid=1360607279 · Wikidata Q5514059 (immutable)."
+    "note": "Deprecated 2026-07-29 (wrong grain + already recorded; decision-log session #60). No source states that Minsky founded symbolic AI as such — enwiki Symbolic artificial intelligence places him inside it, in the 'scruffies' strand with Papert. The claim the sources do state is the AI-founding one (enwiki Marvin Minsky quoting the Computer History Museum: 'for co-founding the field of artificial intelligence'), and that claim is already carried by the reviewed edge:marvin-minsky-founded-artificial-intelligence. Mirrors the session-#49 drop rule (a candidate whose founded_or_formalized edge already exists) and the (108) referent-grain precedent."
   },
   {
     "id": "edge:mass-communication-part-of-media-and-communication-studies",
@@ -14269,6 +14362,25 @@
     "note": "Theory of Games and Economic Behavior (1944) is a canonical work of Oskar Morgenstern (co-author). Work QID Q5226156 P50 includes Q94028 (Morgenstern) — verified against person:oskar-morgenstern node QID Q94028. §8 WP oldid=1352441311. W1–W5 auto-reviewed; direction work→person."
   },
   {
+    "id": "edge:thermodynamics-part-of-physics",
+    "source": "subfield:thermodynamics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier, uncontested. enwiki lead states the membership directly; Wikidata Q11473 carries P31 = Q4162444 'branch of physics' and P361 (part of) = Q413 physics. Fills a real skeleton gap: field:physics already held subfield:statistical-physics but not thermodynamics itself."
+  },
+  {
     "id": "edge:time-series-analysis-part-of-statistics",
     "source": "subfield:time-series-analysis",
     "target": "field:statistics",
@@ -14475,6 +14587,46 @@
       "proposed_at": "2026-07-02"
     },
     "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q163310 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=Turing_machine&oldid=1361925546 · Wikidata Q163310 (immutable)."
+  },
+  {
+    "id": "edge:type-theory-part-of-mathematical-logic",
+    "source": "subfield:type-theory",
+    "target": "subfield:mathematical-logic",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-equal §13 membership, first of two — the 1:1 mirror of subfield:computability-theory, which holds exactly this pair of parents (session #8). Both parents are named in one sentence by the primary source, so this is a written co-equal membership from the start, not a contest: enwiki 'In mathematical logic, and theoretical computer science, type theory is the study of formal systems…'; SEP 'The topic of type theory is fundamental both in logic and computer science.' Wikidata Q1056428 P31 = branch of mathematics, P1269 (facet of) names both Q1166618 mathematical logic and Q2878974 theoretical computer science. part_of chains may run deeper than the flat node levels (§12 structural rule 1 precedent). No primary-parent marker."
+  },
+  {
+    "id": "edge:type-theory-part-of-theoretical-computer-science",
+    "source": "subfield:type-theory",
+    "target": "subfield:theoretical-computer-science",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-equal §13 membership, second of two — same single-sentence grounding as edge:type-theory-part-of-mathematical-logic, which it is co-equal with (no primary marker). enwiki also records the applied reach ('Type theories are used in the study of programming languages (type systems), formal logic, and the formalization of mathematics'), which is why the CS membership is a real classification home and not merely an application."
   },
   {
     "id": "edge:ulric-neisser-founded-cognitive-psychology",

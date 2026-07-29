@@ -1,0 +1,34 @@
+[
+  {
+    "label": "Marvin Minsky influenced/founded type theory",
+    "referent": "person:marvin-minsky → subfield:type-theory, any relation",
+    "kind": "edge",
+    "reason": "Rejection probe, planted by the orchestrator and declined by the generation subagent before QC saw it: 'Minsky's documented work has no known connection to formal type theory, and I know of no claim-stating source linking them.' Confirmed at QC — no source in the batch corpus links them. Probe fired correctly.",
+    "batch_id": "held-trigger-nodes-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Herbert Simon influenced/founded thermodynamics",
+    "referent": "person:herbert-simon → subfield:thermodynamics, any relation",
+    "kind": "edge",
+    "reason": "Rejection probe, planted by the orchestrator and declined by the generation subagent before QC saw it: the entropy-adjacent language in The Sciences of the Artificial is 'metaphorical borrowing, not a sourceable scholarly contribution.' Confirmed at QC. Probe fired correctly.",
+    "batch_id": "held-trigger-nodes-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "John McCarthy founded symbolic AI",
+    "referent": "person:john-mccarthy → concept:symbolic-ai, founded_or_formalized",
+    "kind": "edge",
+    "reason": "Duplicate at a wrong grain. The generation subagent proposed it while flagging the overlap itself; QC rejects it. The sourced claim is the AI-founding one (enwiki John McCarthy: 'He was one of the founders of the discipline of artificial intelligence'), already carried by the reviewed edge:john-mccarthy-founded-artificial-intelligence. No source states a symbolic-AI founding. Session-#49 drop rule (founded_or_formalized already exists) plus the grain correction applied to the whole symbolic-AI cluster in this batch.",
+    "batch_id": "held-trigger-nodes-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Allen Newell / Herbert Simon founded symbolic AI",
+    "referent": "person:allen-newell and person:herbert-simon → concept:symbolic-ai, founded_or_formalized",
+    "kind": "edge",
+    "reason": "Rejected at the proposed grain and re-grounded, not dropped: no source asserts a symbolic-AI founding for either man; enwiki Symbolic artificial intelligence describes their work inside the paradigm. The claim the sources do state is the AI-founding one, written in this batch as edge:allen-newell-founded-artificial-intelligence and edge:herbert-simon-founded-artificial-intelligence. Recorded so a later wave does not silently re-propose the symbolic-AI form.",
+    "batch_id": "held-trigger-nodes-v1",
+    "recorded_at": "2026-07-29"
+  }
+]
