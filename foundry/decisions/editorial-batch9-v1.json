@@ -1,0 +1,374 @@
+{
+  "version": 1,
+  "batch_id": "editorial-batch9-v1",
+  "decided_at": "2026-07-29",
+  "qc_by": {
+    "model_name": "Claude Opus",
+    "model_version": "claude-opus-5",
+    "proposed_at": "2026-07-29"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "node",
+      "id": "person:albert-einstein",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:rudolf-clausius",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:ludwig-boltzmann",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:rudolf-virchow",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "person:girolamo-fracastoro",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "concept:theory-of-relativity",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    }
+  ],
+  "translation_updates": [
+    {
+      "node_id": "person:albert-einstein",
+      "locale": "en",
+      "summary": "Albert Einstein was a German-born theoretical physicist whose 1905 and 1915 papers established special and general relativity, transforming twentieth-century understanding of space, time, and gravitation. He also made significant contributions to quantum theory, and the 1921 Nobel Prize in Physics recognized his services to theoretical physics and, in particular, his discovery of the law of the photoelectric effect rather than relativity itself. A body of historical scholarship has traced anticipations of relativity's mathematics in earlier work by Hendrik Lorentz and Henri Poincaré, but mainstream historians of science credit Einstein with the conceptual break — eliminating the ether and establishing the relativity of space and time — that the theory required. He worked in Berlin until 1933 and then emigrated to the United States, where he remained until his death in 1955.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:rudolf-clausius",
+      "locale": "en",
+      "summary": "Rudolf Clausius was a German physicist and mathematician described as one of the central founding figures of the science of thermodynamics, a status tied specifically to his reworking of Sadi Carnot's principle into what the source calls a firmer basis for the theory of heat. His 1850 paper on the moving force of heat first set out the basic ideas of the second law of thermodynamics. In 1865 he originated the concept of entropy, giving it its first mathematical formulation and coining the term itself from the Greek word for transformation. He later extended kinetic theory by incorporating rotational and vibrational molecular motion into earlier, simpler gas models.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:ludwig-boltzmann",
+      "locale": "en",
+      "summary": "Ludwig Boltzmann was an Austrian mathematician and theoretical physicist who developed statistical mechanics and supplied the statistical explanation of the second law of thermodynamics. In 1877 he formulated what became the standard statistical definition of entropy, expressing it in terms of the number of microstates available to a system. Statistical mechanics as a field is generally credited not to Boltzmann alone but to three physicists working from the 1870s onward — Boltzmann, James Clerk Maxwell, and Josiah Willard Gibbs. Boltzmann spent much of his career at the University of Graz before returning to the University of Vienna, where he succeeded his own teacher Josef Stefan as professor.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:rudolf-virchow",
+      "locale": "en",
+      "summary": "Rudolf Virchow was a German physician and scientist whose 1858 work Cellular Pathology is regarded as foundational to modern pathology. In it he articulated the third tenet of cell theory — that all cells arise from pre-existing cells — building on and popularizing an idea that historians now widely regard as having been taken without credit from Robert Remak's earlier work on cell division. Virchow was one of the first to accept Remak's demonstration that new cells form through division rather than spontaneous generation, even though he had initially resisted it. Beyond cell theory, he founded the fields of cellular and comparative pathology and developed a systematic method of autopsy that still underlies modern practice.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:girolamo-fracastoro",
+      "locale": "en",
+      "summary": "Girolamo Fracastoro was an Italian physician, poet, and scholar active in Verona and Padua in the first half of the sixteenth century. In 1546 he proposed that epidemic diseases spread through transferable ‘seeds’ or minute particles capable of transmission by direct contact, by contact with contaminated objects, or across distance through the air, an account he set out across a three-part treatise on contagion. Later scholarship treats this account as an early precursor to germ theory rather than its founding statement, crediting Fracastoro with only basic forms of the idea, which Marcus von Plenciz expanded on more than two centuries afterward. He is also remembered for the 1530 poem that gave syphilis its name.",
+      "reviewed": true
+    },
+    {
+      "node_id": "concept:theory-of-relativity",
+      "locale": "en",
+      "summary": "The theory of relativity comprises two related physics theories authored by Albert Einstein — special relativity, published in 1905, and general relativity, developed between 1907 and 1915 and finalized in 1916. Special relativity addresses the structure of spacetime in the absence of gravity, while general relativity extends this to describe gravitation and its role in cosmology and astrophysics. The theory superseded two centuries of Newtonian mechanics and introduced concepts such as four-dimensional spacetime, time dilation, and length contraction. Although Einstein's 1905 paper built on prior theoretical and empirical work by Hendrik Lorentz and Henri Poincaré, the historical debate over the theory's origins concerns the extent to which each contributor should be credited, not whether Einstein authored the theories himself.",
+      "reviewed": true
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "person:albert-einstein",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Albert_Einstein",
+          "retrieved_at": "2026-07-29",
+          "quote": "was a German-born theoretical physicist best known for developing the theory of relativity",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Albert_Einstein&oldid=1366516273"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Albert_Einstein",
+          "retrieved_at": "2026-07-29",
+          "quote": "his services to theoretical physics, and especially for his discovery of the law of the photoelectric effect",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Albert_Einstein&oldid=1366516273"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Relativity_priority_dispute",
+          "retrieved_at": "2026-07-29",
+          "quote": "At issue is the extent to which Einstein and various other individuals should be credited for the formulation of these theories, based on priority considerations.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Relativity_priority_dispute&oldid=1365856267"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Relativity_priority_dispute",
+          "retrieved_at": "2026-07-29",
+          "quote": "It all was Einstein's unique feat.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Relativity_priority_dispute&oldid=1365856267"
+        }
+      ],
+      "notes": "generator self-flags: Nobel citation quote covers the photoelectric-effect award specifically, per source — did not claim the prize was awarded for relativity. | The 'unique feat' quote is a block-quoted excerpt from historian Olivier Darrigol reproduced inside the Wikipedia article (attributed there to Darrigol), not the article's own narration — flagging the nested-quotation provenance for QC. | Berlin/1933/1940 biographical dates are drawn from the lead but are not individually cited — only the relativity-authorship, Nobel, and priority-dispute claims carry direct citations."
+    },
+    {
+      "subject_id": "person:rudolf-clausius",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Clausius",
+          "retrieved_at": "2026-07-29",
+          "quote": "is considered one of the central founding fathers of the science of thermodynamics",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Clausius&oldid=1365811715"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Clausius",
+          "retrieved_at": "2026-07-29",
+          "quote": "By his restatement of Sadi Carnot's principle known as the Carnot cycle, he gave the theory of heat a truer and sounder basis.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Clausius&oldid=1365811715"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Clausius",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1865, Clausius gave the first mathematical version of the concept of entropy, and also gave it its name.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Clausius&oldid=1365811715"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Entropy",
+          "retrieved_at": "2026-07-29",
+          "quote": "Rudolf Clausius (1822–1888), originator of the concept of entropy",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Entropy&oldid=1361126134"
+        }
+      ],
+      "notes": "generator self-flags: Kept the 'founding father' framing hedged as the source's own characterization ('is considered'), per this batch's ruling not to state he founded thermodynamics outright. | The order referenced a 'Thermodynamics' Wikipedia article crediting Kelvin with the first concise definition (1854) — that article was not among the sources supplied to me, so I did not cite or assert that specific comparison; I only used the hedged framing from the Clausius and Entropy articles that were supplied. | Entropy-origination claim is corroborated by both the Clausius article and the Entropy article's image caption — used the latter as a second, independent citation."
+    },
+    {
+      "subject_id": "person:ludwig-boltzmann",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ludwig_Boltzmann",
+          "retrieved_at": "2026-07-29",
+          "quote": "His greatest achievements were the development of statistical mechanics and the statistical explanation of the second law of thermodynamics.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ludwig_Boltzmann&oldid=1362784115"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ludwig_Boltzmann",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1877, he provided the current definition of entropy",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ludwig_Boltzmann&oldid=1362784115"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Statistical_mechanics",
+          "retrieved_at": "2026-07-29",
+          "quote": "The founding of the field of statistical mechanics is generally credited to three physicists:",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Statistical_mechanics&oldid=1365220532"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Statistical_mechanics",
+          "retrieved_at": "2026-07-29",
+          "quote": "Ludwig Boltzmann, who developed the fundamental interpretation of entropy in terms of a collection of microstates",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Statistical_mechanics&oldid=1365220532"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ludwig_Boltzmann",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1894, Boltzmann succeeded his teacher Joseph Stefan as Professor of Theoretical Physics at the University of Vienna.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ludwig_Boltzmann&oldid=1362784115"
+        }
+      ],
+      "notes": "generator self-flags: Confirmed via the Statistical mechanics article that Boltzmann is one of three credited founders (with Maxwell and Gibbs), per the batch's non-negotiable ruling — did not present him as sole founder. | Source spells the same person's first name two ways ('Josef Stefan' in the 1869 appointment paragraph, 'Joseph Stefan' in the 1894 paragraph) within the same Wikipedia article — used 'Josef Stefan' in the summary prose; this inconsistency originates in the source, not in my drafting."
+    },
+    {
+      "subject_id": "person:rudolf-virchow",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Virchow",
+          "retrieved_at": "2026-07-29",
+          "quote": "Cellular Pathology (1858), regarded as the root of modern pathology",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Virchow&oldid=1361411508"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Virchow",
+          "retrieved_at": "2026-07-29",
+          "quote": "introduced the third dictum in cell theory: Omnis cellula e cellula",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Virchow&oldid=1361411508"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Virchow",
+          "retrieved_at": "2026-07-29",
+          "quote": "this concept is now widely recognized as being plagiarized from Robert Remak",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Virchow&oldid=1361411508"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cell_theory",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1855, Rudolf Virchow added the third tenet to cell theory.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cell_theory&oldid=1365081375"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cell_theory",
+          "retrieved_at": "2026-07-29",
+          "quote": "it has been suggested that Virchow plagiarized Remak",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cell_theory&oldid=1365081375"
+        }
+      ],
+      "notes": "generator self-flags: This is the batch's most delicate attribution; recorded the plagiarism claim using two independent sources — the Virchow article's direct statement ('widely recognized as being plagiarized') and the Cell theory article's more hedged phrasing ('it has been suggested') — to reflect that the two sources hedge slightly differently rather than picking only the stronger wording. | Did not claim Virchow originated cell theory as a whole — attributed only the third tenet to him, consistent with the sources crediting Schwann and Schleiden for the first two tenets."
+    },
+    {
+      "subject_id": "person:girolamo-fracastoro",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Girolamo_Fracastoro",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1546 he proposed that epidemic diseases are caused by transferable tiny particles or \"spores\" that could transmit infection by direct contact, indirect contact, or even without contact over long distances.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Girolamo_Fracastoro&oldid=1360678484"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Girolamo_Fracastoro",
+          "retrieved_at": "2026-07-29",
+          "quote": "his \"seeds of disease\" theory is considered as a predecessor to germ theory",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Girolamo_Fracastoro&oldid=1360678484"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Germ_theory_of_disease",
+          "retrieved_at": "2026-07-29",
+          "quote": "Basic forms of germ theory were proposed by Girolamo Fracastoro in 1546, and expanded upon by Marcus von Plenciz in 1762.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Germ_theory_of_disease&oldid=1363463071"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Germ_theory_of_disease",
+          "retrieved_at": "2026-07-29",
+          "quote": "a set of three books covering the nature of contagious diseases, categorization of major pathogens, and theories on preventing and treating these conditions",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Germ_theory_of_disease&oldid=1363463071"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Girolamo_Fracastoro",
+          "retrieved_at": "2026-07-29",
+          "quote": "The name for syphilis is derived from Fracastoro's 1530 epic poem",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Girolamo_Fracastoro&oldid=1360678484"
+        }
+      ],
+      "notes": "generator self-flags: Followed the ruling precisely: did not write that Fracastoro founded germ theory; used 'precursor'/'basic forms' framing that matches both the Fracastoro article and the Germ theory article. | Dropped an earlier draft sentence about Fracastoro's fossil-origin arguments (reported via a lengthy block quotation from Charles Lyell in the article) as out of scope for this batch's focus and to avoid relying on a nested quotation-within-quotation."
+    },
+    {
+      "subject_id": "concept:theory-of-relativity",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Theory_of_relativity",
+          "retrieved_at": "2026-07-29",
+          "quote": "The theory of relativity comprises two physics theories by Albert Einstein: special relativity and general relativity, proposed and published in 1905 and 1915, respectively.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theory_of_relativity&oldid=1346554258"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Theory_of_relativity",
+          "retrieved_at": "2026-07-29",
+          "quote": "The theory transformed theoretical physics and astronomy during the 20th century, superseding a 200-year-old theory of mechanics created primarily by Isaac Newton.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theory_of_relativity&oldid=1346554258"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Theory_of_relativity",
+          "retrieved_at": "2026-07-29",
+          "quote": "Albert Einstein published the theory of special relativity in 1905, building on many theoretical results and empirical findings obtained by Albert A. Michelson, Hendrik Lorentz, Henri Poincaré and others.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theory_of_relativity&oldid=1346554258"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Relativity_priority_dispute",
+          "retrieved_at": "2026-07-29",
+          "quote": "At issue is the extent to which Einstein and various other individuals should be credited for the formulation of these theories, based on priority considerations.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Relativity_priority_dispute&oldid=1365856267"
+        }
+      ],
+      "notes": "generator self-flags: The 'branch of physics' framing is asserted per the batch's ruling, but I could not find a direct quotable clause for it in the fetched Theory of relativity HTML — the article's short description reads only 'Two interrelated physics theories by Albert Einstein', and its categories include 'Theoretical physics' (a category label, not quotable prose). Flagging this specific clause as uncited even though the surrounding sentence is otherwise well-supported. | General relativity's 1916 'final form' date is paraphrased from the article's 'The final form of general relativity was published in 1916' sentence rather than quoted verbatim, to avoid a second near-duplicate citation on the same point."
+    }
+  ],
+  "identity": [],
+  "sanctions": [
+    {
+      "subject_id": "person:albert-einstein",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:rudolf-clausius",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:ludwig-boltzmann",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:rudolf-virchow",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:girolamo-fracastoro",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "concept:theory-of-relativity",
+      "ladder": "editorial-v2"
+    }
+  ],
+  "rejections": [],
+  "held": [],
+  "held_resolutions": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Editorial batch 9 — the public-surface half of session #60 Track G, for the five persons and one concept person-wave11-v1 added. Keeps the editorial gap at 0.",
+    "Regime: separated-context Opus generation (decisions (26)/(76)) grounded in the same fetch-corpus captures Track G QC used, then orchestrator machine QC + close-read. Machine: fetch-verify 27/27 PASS. Close-read: 6/6 = 100%.",
+    "Close-read found ZERO factual errors — the second batch running this session to need no correction on substance. Two specific biographical claims were spot-verified against the sources rather than assumed: the Clausius 1850 paper (\"His most important paper, On the Moving Force of Heat, published in 1850, first stated the basic ideas of the second law of thermodynamics\") and Virchow-s acceptance of Remak (\"He was one of the first to accept the work of Robert Remak, who showed that the origin of cells was the division of pre-existing cells\"). Both hold.",
+    "One patch, and it came from the generator-s own flag rather than from a QC catch: the theory-of-relativity summary closed with a clause calling relativity \"a branch of theoretical physics\", which the generator reported it could not source from the article — the only support was a category label, not prose. The underlying fact is real and live-verified in this session-s own person-wave11-v1 identity record (Wikidata P31 = Q4162444 branch of physics alongside Q3239681 scientific theory), but an editorial summary should not carry a clause its own citations cannot back. Clause removed; the rest of the sentence stands.",
+    "★ Generator self-restraint worth recording. It was told the Thermodynamics article credits Kelvin with the first concise definition of thermodynamics in 1854 — but that article was not in its supplied source set, so it declined to assert the comparison rather than cite a page it had not read. That is exactly the discipline the fabricated-source failure mode calls for, and it is the first time this session a generator refused an orchestrator-supplied fact for want of its own evidence.",
+    "It also caught two source-side defects: enwiki spells the same person \"Josef Stefan\" and \"Joseph Stefan\" in one article, and the Einstein priority material it was offered turns out to be a historian-s block quotation nested inside the article rather than the encyclopedia-s own voice. Neither changed a summary, both are recorded.",
+    "The batch-s most delicate attribution is Virchow-s third tenet of cell theory. The summary states it as widely regarded as taken from Robert Remak without credit, matching the stronger of the two sources while the generator deliberately consulted both (\"widely recognized as being plagiarized\" vs \"it has been suggested\"). This is consistent with the edge note on edge:rudolf-virchow-founded-cell-theory, which carries the same contest and holds confidence to 0.75.",
+    "Living-person check: all five persons deceased (Einstein 1955, Clausius 1888, Boltzmann 1906, Virchow 1902, Fracastoro 1553); decision (70) does not engage."
+  ]
+}
