@@ -54,5 +54,21 @@
     "reason": "Rejection probe, fired at generation time — the generator refused the founder relation and named the Einstein gap itself. Declined this wave because the attribution would be misrepresented, not because the concept is unwanted. Re-admissible once person:albert-einstein exists; that is a node task, not an edge task.",
     "batch_id": "concept-wave3-v1",
     "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Alfred North Whitehead (as a person node, this wave)",
+    "referent": "person:alfred-north-whitehead",
+    "kind": "node",
+    "reason": "Honesty-gap drop. He does not close the type-theory co-authorship gap he was slated for — both sources attribute the theory to Russell — and his own sourced founder claim (process philosophy) has no endpoint in the corpus, so admitting him would create an isolated node. Re-admissible when a process-philosophy endpoint exists or a source attributes the type theory to him jointly.",
+    "batch_id": "person-wave11-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Alfred North Whitehead founded type theory",
+    "referent": "person:alfred-north-whitehead -> subfield:type-theory, founded_or_formalized",
+    "kind": "edge",
+    "reason": "No source attributes the type theory to Whitehead. SEP: 'The theory of types was introduced by Russell'; enwiki Principia Mathematica says only that PM adopted it. Do not re-propose on co-authorship of Principia alone.",
+    "batch_id": "person-wave11-v1",
+    "recorded_at": "2026-07-29"
   }
 ]

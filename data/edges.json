@@ -241,6 +241,25 @@
     "note": "Turing's 1936–1950 work (esp. 'Computing Machinery and Intelligence', 1950) became a central reference point in philosophy of mind — the Turing-machine model of mind is a standard historical input to functionalism (Putnam). Direction correct (predates the debates it shaped). Two independent SEP entries: 'The Turing Test' and 'Functionalism'. Permanence: SEP https://web.archive.org/web/20260701235949/https://plato.stanford.edu/entries/turing-test/ · SEP https://web.archive.org/web/20260702000015/https://plato.stanford.edu/entries/functionalism/. (a)-ladder decision (68); supported."
   },
   {
+    "id": "edge:albert-einstein-founded-theory-of-relativity",
+    "source": "person:albert-einstein",
+    "target": "concept:theory-of-relativity",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "enwiki opens the article with the attribution — \"The theory of relativity comprises two physics theories by Albert Einstein\" — and Wikidata Q43514's own English description says the same. Recorded tension, not resolved: a whole enwiki article (Relativity priority dispute) documents the Lorentz/Poincaré priority literature. Under §8 clause-6 v2 that is a share-and-priority debate on top of an agreed founding, not a contested existence or direction, so it routes to supported plus this note rather than to disputed. Poincaré's contribution is written as its own edge in this batch instead of being buried here."
+  },
+  {
     "id": "edge:alfred-russel-wallace-founded-evolutionary-biology",
     "source": "person:alfred-russel-wallace",
     "target": "subfield:evolutionary-biology",
@@ -6066,6 +6085,24 @@
     "note": "Structural tier. Wikidata Q1425837 P31 = Q3239681 scientific theory, 31 sitelinks. Admitted on this membership alone: both proposed founder edges failed QC (see the verdict), so this concept enters on its disciplinary home rather than on a person claim — C1 edge-demand is satisfied by part_of."
   },
   {
+    "id": "edge:girolamo-fracastoro-influenced-germ-theory-of-disease",
+    "source": "person:girolamo-fracastoro",
+    "target": "concept:germ-theory-of-disease",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "★ Relation corrected at QC from the generator's `founded_or_formalized`. The two sources do not agree on the strength: enwiki Germ theory of disease says \"Basic forms of germ theory were proposed by Girolamo Fracastoro in 1546\", but Fracastoro's own article calls the same work a precursor — \"his 'seeds of disease' theory is considered as a predecessor to germ theory\". One founding claim and one predecessor claim do not clear the founder ladder's two-independent-claim-stating-sources bar, whereas both support influence. This leaves concept:germ-theory-of-disease still without a founder edge, which is the honest state: Pasteur and Koch were ruled NEI in concept-wave3-v1, and Marcus von Plenciz, named alongside Fracastoro, is not a corpus node."
+  },
+  {
     "id": "edge:global-health-part-of-public-health",
     "source": "subfield:global-health",
     "target": "field:public-health",
@@ -6465,6 +6502,24 @@
       "proposed_at": "2026-07-02"
     },
     "note": "Poincaré's three-body-problem work (1890s) founded the qualitative/geometric study of dynamical systems (sensitive dependence → chaos theory). Relation-choice note: arguably founded_or_formalized; influenced chosen conservatively (modern subfield institutionally postdates Poincaré — Birkhoff/Smale). Direction correct. Permanence: SEP https://web.archive.org/web/20260702000227/https://plato.stanford.edu/entries/chaos/ · WP https://en.wikipedia.org/w/index.php?title=Henri_Poincaré&oldid=1361412875. (a)-ladder (68); supported."
+  },
+  {
+    "id": "edge:henri-poincare-influenced-theory-of-relativity",
+    "source": "person:henri-poincare",
+    "target": "concept:theory-of-relativity",
+    "relation": "influenced",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "The corpus's way of recording the priority literature without adjudicating it: Poincaré's contribution is real and documented, and it is influence rather than founding. enwiki Relativity priority dispute states that Einstein's publications \"referred only to a small number of his predecessors for fundamental results on which he based his theories, most notably to the work of Henri Poincaré and Hendrik Lorentz for special relativity\". Hendrik Lorentz is named in the same breath and is not a corpus node — honest gap. This edge is also what makes the concept admissible at all: it was rejected in concept-wave3-v1 precisely because Poincaré would have been its only person link."
   },
   {
     "id": "edge:herbert-feigl-member-of-vienna-circle",
@@ -8253,6 +8308,42 @@
       "proposed_at": "2026-07-01"
     },
     "note": "★ LIVING PERSON — living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + >=2 independent live claim-stating sources + conservative attributed wording; no escalation signal (clean positive academic-contribution founding) -> auto-reviewed. Floridi launched and systematized the philosophy of information as a research field (late 1990s 'The Philosophy of Information' programme), widely regarded as its principal architect. Wikipedia 'Luciano Floridi' + SEP 'Information' (covering his systematic philosophy of information). Identity Q214119 verified (b.1964, P570 absent). Generator QID hint Q1392534 was a hallucination ('bicycle theft'); corrected."
+  },
+  {
+    "id": "edge:ludwig-boltzmann-formalizes-entropy",
+    "source": "person:ludwig-boltzmann",
+    "target": "concept:entropy",
+    "relation": "formalizes",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "`formalizes`, deliberately not `founded_or_formalized`: Clausius originated the concept in 1865 and Boltzmann supplied its statistical foundation twelve years later. enwiki Ludwig Boltzmann: \"In 1877, he provided the current definition of entropy\"; enwiki Entropy: \"In 1877, Boltzmann visualized a probabilistic way to measure the entropy of an ensemble of ideal gas particles, in which he defined entropy as proportional to the natural logarithm of the number of microstates such a gas could occupy.\" The relation choice is the whole point — recording both men as co-founders would erase the fact that one gave the concept its macroscopic definition and the other its microscopic one."
+  },
+  {
+    "id": "edge:ludwig-boltzmann-founded-statistical-physics",
+    "source": "person:ludwig-boltzmann",
+    "target": "subfield:statistical-physics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-founder edge, record-not-resolve. The field article states \"The founding of the field of statistical mechanics is generally credited to three physicists\" and names Boltzmann first, for developing \"the fundamental interpretation of entropy in terms of a collection of microstates\"; the person article independently calls the development of statistical mechanics one of his greatest achievements. Honest gaps: Maxwell and Gibbs, the other two credited founders, are not corpus nodes. Naming note: en.wikipedia.org/wiki/Statistical_physics is a redirect to Statistical mechanics, so the citation is anchored on the canonical title per §8; enwiki treats the two as one topic and this node's QID (Q677916) sitelinks to that article, while Wikidata separately keeps Q188715 for statistical mechanics."
   },
   {
     "id": "edge:ludwig-wittgenstein-founded-philosophy-of-language",
@@ -12808,6 +12899,44 @@
     "note": "Rudolf Carnap was a member of the Vienna Circle -- brought to the University of Vienna in 1926 at Schlick's arrangement, he became one of its central figures. Sources (2 independent live-verified Wikipedia articles): 'Rudolf Carnap' (school tradition 'Vienna Circle'; \"In 1926 Schlick and Hahn arranged to bring Rudolf Carnap to the University of Vienna\") + 'Vienna Circle'. Both endpoints reviewed."
   },
   {
+    "id": "edge:rudolf-clausius-founded-entropy",
+    "source": "person:rudolf-clausius",
+    "target": "concept:entropy",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "The batch's strongest claim, and it closes a gap this session opened: concept:entropy was admitted in concept-wave3-v1 with no founder edge at all because Clausius was not a node. enwiki Rudolf Clausius lists \"Originator of the concept of entropy\" among his known-for entries and states \"In 1865 he introduced the concept of entropy\"; enwiki Entropy independently says \"In 1865, German physicist Rudolf Clausius, one of the leading founders of the field of thermodynamics, defined it as the quotient of an infinitesimal amount of heat to the instantaneous temperature.\" Two independent articles, same claim."
+  },
+  {
+    "id": "edge:rudolf-virchow-founded-cell-theory",
+    "source": "person:rudolf-virchow",
+    "target": "concept:cell-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Third co-founder edge on concept:cell-theory, closing the gap concept-wave3-v1 recorded when it admitted Schwann and Schleiden only; Wikidata Q177935's P61 lists all three. ★ Attribution tension recorded prominently rather than in passing: enwiki Rudolf Virchow states that Cellular Pathology (1858) \"introduced the third dictum in cell theory\" but adds that the concept \"is now widely recognized as being plagiarized from Robert Remak\", and enwiki Cell theory says the idea \"had already been proposed by Robert Remak\". What the sources agree on is that Virchow introduced the third tenet *into cell theory*; what they contest is whether the idea was his. The edge is written for the former and confidence is set at 0.75 for the latter. Robert Remak is not a corpus node — an honest gap, and the one most worth closing next on this concept."
+  },
+  {
     "id": "edge:rules-of-sociological-method-canonical-work-emile-durkheim",
     "source": "work:the-rules-of-sociological-method",
     "target": "person:emile-durkheim",
@@ -14587,6 +14716,25 @@
       "proposed_at": "2026-07-02"
     },
     "note": "Theory of Games and Economic Behavior (1944) is a canonical work of Oskar Morgenstern (co-author). Work QID Q5226156 P50 includes Q94028 (Morgenstern) — verified against person:oskar-morgenstern node QID Q94028. §8 WP oldid=1352441311. W1–W5 auto-reviewed; direction work→person."
+  },
+  {
+    "id": "edge:theory-of-relativity-part-of-physics",
+    "source": "concept:theory-of-relativity",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier, uncontested. Wikidata Q43514 carries P31 = Q3239681 scientific theory alongside Q4162444 branch of physics; the theory typing is the one this concept node relies on, and the dual typing is recorded rather than glossed."
   },
   {
     "id": "edge:thermodynamics-part-of-physics",

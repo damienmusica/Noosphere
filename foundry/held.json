@@ -170,5 +170,13 @@
     "recheck": "manual",
     "batch_id": "concept-wave3-v1",
     "recorded_at": "2026-07-29"
+  },
+  {
+    "id": "edge:rudolf-clausius-founded-thermodynamics",
+    "label": "Rudolf Clausius founded thermodynamics",
+    "blocking_condition": "NEI ruled 2026-07-29 (person-wave11-v1): one claim-stating founder source, not two. enwiki Rudolf Clausius says he 'is considered one of the central founding fathers of the science of thermodynamics', but enwiki Thermodynamics — the field article the (62) operational interpretation relies on as the second source — states a contribution rather than a founding ('restated Carnot's principle ... and gave the theory of heat a more accurate and sounder basis') and credits Lord Kelvin with the first concise definition in 1854. Unblock: a second independent claim-stating source for a Clausius founding of thermodynamics. Note that this is a multi-founder field in the sources (Carnot, Kelvin, Clausius, Joule), so the eventual shape is likely several co-founder edges rather than one.",
+    "recheck": "manual",
+    "batch_id": "person-wave11-v1",
+    "recorded_at": "2026-07-29"
   }
 ]
