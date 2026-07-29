@@ -14,27 +14,6 @@
     "recorded_at": "2026-07-02"
   },
   {
-    "id": "edge:antoine-lavoisier-influenced-physics",
-    "blocking_condition": "Target too broad (field:physics); a thermodynamics-grained target would be accurate but no such node exists yet. Trigger: thermodynamics-class node created.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "edge:bertrand-russell-influenced-computer-science",
-    "blocking_condition": "Diffuse/mediated (via Church, Curry–Howard, Martin-Löf) and field:computer-science too broad; a programming-languages/type-theory-grained target would be cleaner. Trigger: type-theory-class node created.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "edge:cybernetics-influenced-systems-engineering",
-    "blocking_condition": "Thin at the 'influenced' bar: single clear claim-stating source (WP systems-engineering history lists cybernetics among many contributors; WP Cybernetics does not reciprocate). Needs a second independent claim-stating source.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
     "id": "edge:georges-cuvier-influenced-archaeology",
     "blocking_condition": "Indirect (stratigraphy/comparative method reached archaeology via geology); diffuse, field-grain broad. Needs a re-ruling or finer target.",
     "recheck": "manual",
@@ -56,13 +35,6 @@
     "recorded_at": "2026-07-02"
   },
   {
-    "id": "edge:kurt-lewin-influenced-education",
-    "blocking_condition": "Thin/indirect sourcing: second generator source was about Dewey, not Lewin (self-flagged). Needs a second independent Lewin-specific claim-stating source.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
     "id": "edge:norbert-wiener-influenced-cognitive-psychology",
     "blocking_condition": "Near-duplicate risk with the existing information-theory→cognitive-psychology edge (both 'cognitive revolution' antecedents); needs a dedup ruling on the distinct cybernetic-feedback contribution.",
     "recheck": "manual",
@@ -77,29 +49,8 @@
     "recorded_at": "2026-07-02"
   },
   {
-    "id": "edge:ronald-fisher-influenced-epidemiology",
-    "blocking_condition": "Epidemiology-specific link not surfaced verbatim live (Bradford Hill more direct); thin. Mirrors the wave-3 evo-bio→epidemiology hold.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
     "id": "edge:vladimir-vernadsky-influenced-environmental-science",
     "blocking_condition": "Real but diffuse; Vernadsky already carries founded_or_formalized→geochemistry; field-grain target broad.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "edge:edmund-husserl-founded-intentionality",
-    "blocking_condition": "Single-founder attribution imprecise: intentionality reintroduced by Brentano (no node), developed by Husserl. Trigger: person:franz-brentano node created (co-founder pattern, mirrors cofounder-closure-v1).",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "edge:marvin-minsky-founded-symbolic-ai",
-    "blocking_condition": "Symbolic AI (GOFAI) co-founded by Newell/Simon/McCarthy/Minsky; single-founder attribution held pending co-founder modeling (record-not-resolve). Trigger: co-founder person nodes created (cofounder-closure pattern).",
     "recheck": "manual",
     "batch_id": "recheck-wave1-v1",
     "recorded_at": "2026-07-02"
@@ -120,59 +71,115 @@
     "recorded_at": "2026-07-02"
   },
   {
-    "id": "subfield:judgment-and-decision-making",
-    "blocking_condition": "v1.4 clause-1 candidate ELIMINATED by live verification (2026-07-02): the APA PsycInfo Classification contains NO judgment/decision category (2300 Human Experimental Psychology subcodes checked in full; 2340 Cognitive Processes is the nearest umbrella but does not name the field). SJDM society + its journal remain clause-2 material without a clause-1 taxonomy anchor. Parked honestly until a qualifying taxonomy authority for the area appears (taxonomy-authority criteria v1) or a Wikidata discipline entity is created upstream (machine recheck via foundry/batches/qid-gap-recheck-v1.json).",
-    "recheck": "machine",
-    "batch_id": "taxonomy-anchor-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "subfield:computational-cognitive-science",
-    "blocking_condition": "No qualifying clause-1 taxonomy authority exists (taxonomy-authority criteria v1 sweep, 2026-07-02): Cambridge Handbook of Computational Cognitive Sciences (CUP 2023) + journal Computational Brain & Behavior are clause-2 material only. Parked honestly until a qualifying taxonomy authority appears or a Wikidata discipline entity is created upstream (machine recheck via foundry/batches/qid-gap-recheck-v1.json).",
-    "recheck": "machine",
-    "batch_id": "taxonomy-anchor-wave1-v1",
-    "recorded_at": "2026-07-02"
+    "id": "concept:bureaucracy",
+    "blocking_condition": "C3 hold RESOLVED by re-scope 2026-07-03 (decision (108), batch weber-referent-precision-v1): node + 2 edges DEPRECATED (generic-institution referent Q72468 cannot carry Weber's founder claim); the claim now lives on edge:max-weber-founded-tripartite-classification-of-authority (successor concept node Q3565078, reviewed). REMAINING TRIGGER: the narrow 1:1 referent (Weber's bureaucracy ideal-type, proposal weber-referent-precision-v1 candidate 1 'concept:weberian-bureaucracy') is identity-blocked — no recognized entity (Q113625093 'theory of bureaucracy' = 0-sitelink orphan stub 2026-07-03). Re-create the narrow concept + retarget/augment the founder record iff that entity (or an equivalent) gains multi-signal standing (sitelinks + description + P31).",
+    "recheck": "trigger",
+    "batch_id": "held-ledger-hygiene-v1",
+    "recorded_at": "2026-07-29",
+    "note": "Re-triaged manual→trigger by held-ledger-hygiene-v1; blocking condition unchanged verbatim from weber-referent-precision-v1 (2026-07-03). Nothing to work on until the upstream entity gains standing."
   },
   {
     "id": "subfield:esotericism-and-theosophy",
     "blocking_condition": "Section-12 hold-resolution clause 1 ruled 2026-07-03 (decision (106)): node + part_of edge DEPRECATED on referent mismatch (slug vs Q7988481 'Western esotericism'). Regeneration as subfield:western-esotericism blocked — precise referent fails skeleton admission: PhilPapers (the philosophy registry taxonomy) maintains no esotericism/theosophy category (0/11,908 archived browse slugs, Wayback CDX 2026-07-03); academic home is religious studies (ESSWE/Aries), no ratified taxonomy in the (102) registry. Re-creation triggers: (a) a religious-studies taxonomy authority admitted to the (102) registry (CPO gate) with a Western-esotericism unit by name, or (b) PhilPapers adding the category.",
-    "recheck": "manual",
-    "batch_id": "s12-holds-resolution-v1",
-    "recorded_at": "2026-07-03"
+    "recheck": "trigger",
+    "batch_id": "held-ledger-hygiene-v1",
+    "recorded_at": "2026-07-29",
+    "note": "Re-triaged manual→trigger by held-ledger-hygiene-v1; blocking condition unchanged verbatim from s12-holds-resolution-v1 (2026-07-03). Both triggers are upstream events."
   },
   {
     "id": "subfield:modern-philosophy",
     "blocking_condition": "Section-12 hold-resolution clauses 1+2 ruled 2026-07-03 (decision (106)): node + part_of edge DEPRECATED on referent mismatch (slug vs Q860746 'early modern philosophy'). Regeneration as subfield:early-modern-philosophy blocked by the strict name-identity test — PhilPapers' period units are 17th/18th Century Philosophy etc., no 'Early Modern Philosophy' unit by name; nearby-unit referent bridging disallowed (CPO ruling). Re-creation triggers: (a) a ratified taxonomy maintaining an Early Modern Philosophy unit by name, or (b) the future dedicated period-axis design admitting era-cut nodes outside the field skeleton.",
-    "recheck": "manual",
-    "batch_id": "s12-holds-resolution-v1",
-    "recorded_at": "2026-07-03"
+    "recheck": "trigger",
+    "batch_id": "held-ledger-hygiene-v1",
+    "recorded_at": "2026-07-29",
+    "note": "Re-triaged manual→trigger by held-ledger-hygiene-v1; blocking condition unchanged verbatim from s12-holds-resolution-v1 (2026-07-03). Both triggers are upstream events."
   },
   {
     "id": "subfield:modern-history",
     "blocking_condition": "Section-12 hold-resolution clause 2 ruled 2026-07-03 (decision (106)) — the period axis is now governed by standing rule, no longer rule-silent: LCC D204-475 era ranges are shelving classification (T2 fail — literature shelving is not field curation), and the (102) registry contains no history disciplinary taxonomy at all, so the era-unit cannot hold clause-1-grade standing. Node stays proposed in /data as an honest parked gap (QID-less: Wikidata still models 'modern history' only as the era Q3281534). Unpark triggers: (a) a history disciplinary taxonomy admitted to the (102) registry (CPO gate) maintaining a Modern History unit by name, or (b) the future dedicated period-axis design.",
-    "recheck": "manual",
-    "batch_id": "s12-holds-resolution-v1",
-    "recorded_at": "2026-07-03"
+    "recheck": "trigger",
+    "batch_id": "held-ledger-hygiene-v1",
+    "recorded_at": "2026-07-29",
+    "note": "Re-triaged manual→trigger by held-ledger-hygiene-v1; blocking condition unchanged verbatim from s12-holds-resolution-v1 (2026-07-03). Parked at proposed, not deprecated — which is exactly why the trigger flag has to live on the entry and cannot be read off status."
   },
   {
-    "id": "concept:bureaucracy",
-    "blocking_condition": "C3 hold RESOLVED by re-scope 2026-07-03 (decision (108), batch weber-referent-precision-v1): node + 2 edges DEPRECATED (generic-institution referent Q72468 cannot carry Weber's founder claim); the claim now lives on edge:max-weber-founded-tripartite-classification-of-authority (successor concept node Q3565078, reviewed). REMAINING TRIGGER: the narrow 1:1 referent (Weber's bureaucracy ideal-type, proposal weber-referent-precision-v1 candidate 1 'concept:weberian-bureaucracy') is identity-blocked — no recognized entity (Q113625093 'theory of bureaucracy' = 0-sitelink orphan stub 2026-07-03). Re-create the narrow concept + retarget/augment the founder record iff that entity (or an equivalent) gains multi-signal standing (sitelinks + description + P31).",
+    "id": "edge:antoine-lavoisier-influenced-physics",
+    "blocking_condition": "Held since recheck-wave1-v1 (2026-07-02) as too broad at field:physics, with the recorded trigger 'thermodynamics-class node created'. That trigger is now RETIRED as refuted: subfield:thermodynamics was created in held-trigger-nodes-v1 (2026-07-29) and the retarget still fails. Live evidence — enwiki Thermodynamics does not mention Lavoisier at all; enwiki History of thermodynamics assigns his calorimetry work to thermochemistry ('a subject which became known as thermochemistry'); enwiki Thermochemistry's only foundation sentence carries an inline [citation needed] and is about Black's experiments. Verdict NEI at every grain tested (physics, thermodynamics, thermochemistry). New unblock condition: ≥2 independent claim-stating sources asserting a *founding or influence* relation between Lavoisier and a specific heat-science discipline — not a contribution/apparatus claim, and not a [citation needed] sentence. A subfield:thermochemistry node would be the natural target if such sources are found; it is deliberately NOT created on this batch's speculative demand.",
     "recheck": "manual",
-    "batch_id": "weber-referent-precision-v1",
-    "recorded_at": "2026-07-03"
+    "batch_id": "held-trigger-nodes-v1",
+    "recorded_at": "2026-07-29",
+    "note": "Supersedes the recheck-wave1-v1 entry. The correction itself is the finding: a hold's recorded trigger is a hypothesis, and this one did not survive its own test. Cf. decision (110), where a recorded diagnosis ('SPN circuit open, awaiting recovery') was likewise a misdiagnosis."
   },
   {
-    "id": "edge:max-weber-founded-bureaucracy",
-    "blocking_condition": "CLOSED 2026-07-03 (decision (108)): deprecated and re-scoped to edge:max-weber-founded-tripartite-classification-of-authority (reviewed, founder ladder (60)/(61)). No further work on this id — audit record in foundry/decisions/weber-referent-precision-v1.json.",
-    "recheck": "manual",
-    "batch_id": "weber-referent-precision-v1",
-    "recorded_at": "2026-07-03"
+    "id": "subfield:computational-cognitive-science",
+    "blocking_condition": "Two independent unblock paths, both re-measured 2026-07-29 (session #60) and both still closed. (1) Upstream Wikidata: live re-resolution returns Q4874465 'Bayesian cognitive science' at score 40 — a narrower area, already on the goldenset must_not_select list — and the journal item. No discipline entity exists. (2) v1.4 clause-1 taxonomy anchor: no ratified authority (PhilPapers / ACM CCS / NCES CIP / APA PsycInfo) maintains a category under this name; CIP names 'Cognitive Science', which under §12 clause 3 strict name-identity does not admit the computational sub-area (the same rule that blocked early-modern-philosophy on a nearby PhilPapers unit). Clause-2 material (Cambridge Handbook of Computational Cognitive Sciences, CUP 2023; journal Computational Brain & Behavior) remains real but cannot stand without clause 1. Unblock: a Wikidata discipline entity appearing upstream (machine recheck, foundry/batches/qid-gap-recheck-v1.json), or a ratified taxonomy adding a unit under exactly this name.",
+    "recheck": "machine",
+    "batch_id": "qid-gap-recheck-v2",
+    "recorded_at": "2026-07-29",
+    "note": "Supersedes the taxonomy-anchor-wave1-v1 entry of 2026-07-02 to record the fresh measurement date. Substance unchanged — that is the finding."
   },
   {
-    "id": "edge:bureaucracy-part-of-sociology",
-    "blocking_condition": "CLOSED 2026-07-03 (decision (108)): deprecated with its endpoint; the sociological placement now lives on edge:tripartite-classification-of-authority-part-of-sociology (reviewed, structural tier). No further work on this id — audit record in foundry/decisions/weber-referent-precision-v1.json.",
+    "id": "subfield:judgment-and-decision-making",
+    "blocking_condition": "Two independent unblock paths, both re-measured 2026-07-29 (session #60) and both still closed. (1) Upstream Wikidata: live re-resolution returns Q1331926 'decision making' at score 40 — the cognitive *process*, not the discipline, and already on the goldenset must_not_select list — plus the journal item. This is the same P31 process-vs-field trap the resolver has rejected since session #11. (2) v1.4 clause-1 taxonomy anchor: the APA PsycInfo Classification was swept in full on 2026-07-02 (all 2300 Human Experimental Psychology subcodes) and contains no judgment/decision category; 2340 Cognitive Processes is the nearest umbrella and does not name the field. NCES CIP has no program under this name either. SJDM and its journal remain clause-2 material without a clause-1 anchor. Unblock: a Wikidata discipline entity appearing upstream (machine recheck), or a ratified taxonomy adding a unit under exactly this name.",
+    "recheck": "machine",
+    "batch_id": "qid-gap-recheck-v2",
+    "recorded_at": "2026-07-29",
+    "note": "Supersedes the taxonomy-anchor-wave1-v1 entry of 2026-07-02 to record the fresh measurement date. Substance unchanged — that is the finding."
+  },
+  {
+    "id": "concept:division-of-labour",
+    "label": "division of labour",
+    "blocking_condition": "C3 referent-precision, ruled 2026-07-29 (concept-wave3-v1) as a direct mirror of the concept:bureaucracy disposition (decision (108)): the identity candidate is the generic phenomenon 'separation of tasks in any system', carrying no P31, no discoverer/inventor property, and P279 parents of social behavior and human behavior. Its own article places Plato, Xenophon, Augustine and medieval Muslim scholars before Adam Smith, who appears as one of eleven named modern theorists — a phenomenon predating its proposed founder by two millennia cannot carry his founder claim. Smith's contribution is already carried by work:the-wealth-of-nations (reviewed). Unblock: a referent-precise successor concept that is Smith's own construct rather than the general phenomenon, and that independently passes concept keep-criteria C1-C4.",
     "recheck": "manual",
-    "batch_id": "weber-referent-precision-v1",
-    "recorded_at": "2026-07-03"
+    "batch_id": "concept-wave3-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "id": "concept:cardinality",
+    "label": "cardinality",
+    "blocking_condition": "C3 hold from concept-wave2-v1, re-confirmed live 2026-07-29 with a sharpened reason. Q4049983 (57 sitelinks, 31 properties) encodes the ambiguity in its own description — cardinality measured either as a cardinal number or as an equivalence class — and is modelled as a kind of function (P279 = cardinal function, class function, index number) rather than as the concept of set size. The same-label alternative Q28727773 is a 0-sitelink orphan stub. Unblock: an upstream entity that decides the referent, or a §12 ruling that fixes which of the three senses the corpus carries.",
+    "recheck": "manual",
+    "batch_id": "concept-wave3-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "id": "concept:boolean-algebra",
+    "label": "boolean algebra",
+    "blocking_condition": "C3 hold from concept-wave2-v1, re-confirmed live 2026-07-29. The generator's blind referent was Boole's specific formal algebraic system; resolution returns neither that nor anything close — Q173183 is P31 = branch of mathematics (the disciplinary referent that caused the original hold) and Q4973304 is a lattice structure. The description-versus-resolution mismatch is the v2 contract's error signal. Unblock: an upstream entity for Boole's system as a bounded doctrine. Separate and undecided: whether subfield:boolean-algebra is admissible under the §12 dual criterion, which is a skeleton question, not a concept question.",
+    "recheck": "manual",
+    "batch_id": "concept-wave3-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "id": "edge:rudolf-clausius-founded-thermodynamics",
+    "label": "Rudolf Clausius founded thermodynamics",
+    "blocking_condition": "NEI ruled 2026-07-29 (person-wave11-v1): one claim-stating founder source, not two. enwiki Rudolf Clausius says he 'is considered one of the central founding fathers of the science of thermodynamics', but enwiki Thermodynamics — the field article the (62) operational interpretation relies on as the second source — states a contribution rather than a founding ('restated Carnot's principle ... and gave the theory of heat a more accurate and sounder basis') and credits Lord Kelvin with the first concise definition in 1854. Unblock: a second independent claim-stating source for a Clausius founding of thermodynamics. Note that this is a multi-founder field in the sources (Carnot, Kelvin, Clausius, Joule), so the eventual shape is likely several co-founder edges rather than one.",
+    "recheck": "manual",
+    "batch_id": "person-wave11-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "id": "edge:cybernetics-influenced-systems-engineering",
+    "blocking_condition": "Re-measured live 2026-07-29 (a-relations-wave7-v1) and STILL THIN — the recheck-wave1-v1 condition is confirmed, not merely carried forward. The requirement was a second independent claim-stating source. There is none: the enwiki Cybernetics article does not mention systems engineering at all (zero occurrences), and the enwiki Systems engineering article names cybernetics only inside an enumeration of fields it \"overlaps\" — \"industrial engineering, production systems engineering, process systems engineering, mechanical engineering, ... cybernetics, aerospace engineering, organizational studies, civil engineering and project management\". An overlap list is not a claim that A influenced B; treating it as one would be exactly the manufactured-relation failure clause-6 v2 guards against. Unblock unchanged: a source that states the influence.",
+    "recheck": "manual",
+    "batch_id": "a-relations-wave7-v1",
+    "recorded_at": "2026-07-29",
+    "note": "Supersedes the recheck-wave1-v1 entry of 2026-07-02 to record the fresh measurement date. The substance is unchanged, and that is the finding."
+  },
+  {
+    "id": "edge:kurt-lewin-influenced-education",
+    "blocking_condition": "Re-measured live 2026-07-29 (a-relations-wave7-v1) and STILL THIN. The requirement was a second independent, Lewin-specific claim-stating source (the original generator's second source turned out to be about Dewey). The enwiki Kurt Lewin article yields no claim that he influenced education as a discipline — the only education-related passages are about his own schooling. Unblock unchanged.",
+    "recheck": "manual",
+    "batch_id": "a-relations-wave7-v1",
+    "recorded_at": "2026-07-29",
+    "note": "Supersedes the recheck-wave1-v1 entry of 2026-07-02 to record the fresh measurement date."
+  },
+  {
+    "id": "edge:ronald-fisher-influenced-epidemiology",
+    "blocking_condition": "Re-measured live 2026-07-29 (a-relations-wave7-v1) and STILL THIN. The epidemiology-specific link is not surfaced by either endpoint's article: the enwiki Ronald Fisher article's only epidemiology occurrence is a journal name inside a reference, and the enwiki Epidemiology article does not mention Fisher at all. The original triage's observation that Bradford Hill is the more direct figure stands. Unblock unchanged: a claim-stating source for a Fisher-to-epidemiology influence, or a re-ruling that the accurate claim belongs on statistics rather than epidemiology.",
+    "recheck": "manual",
+    "batch_id": "a-relations-wave7-v1",
+    "recorded_at": "2026-07-29",
+    "note": "Supersedes the recheck-wave1-v1 entry of 2026-07-02 to record the fresh measurement date. Mirrors the wave-3 evolutionary-biology-to-epidemiology hold, which fails the same way."
   }
 ]

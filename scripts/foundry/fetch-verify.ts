@@ -11,6 +11,15 @@
  * Input formats (auto-detected per file):
  *   - editorial summaries batch: { summaries: [{ node_id, citations: [{ url, quote, … }] }] }
  *   - flat claim list: [{ node_id?, url, quote }]
+ *   - promotion decision file: foundry/decisions/<batch>.json — every
+ *     verdicts[].sources[] entry carrying a `quote`. Verification targets the
+ *     §8 permanence anchor when one is recorded (`revision_permalink`, i.e. the
+ *     wiki oldid or SEP fixed edition), falling back to the live `url`: the
+ *     anchor is what the audit trail actually claims, so it is what must hold
+ *     the quote. Sources with no quote (identity-only Wikidata reads) are
+ *     skipped, not counted as misses. Added 2026-07-29 — sessions had been
+ *     hand-converting decision files into flat arrays every time, which is the
+ *     re-derived-by-hand pattern §15 exists to remove.
  *
  * What it does:
  *   1. Collects all (node_id, url, quote) claims; dedupes URLs.
@@ -103,8 +112,22 @@ function loadClaims(file: string): { claims: Claim[]; skipped: number } {
   } else if (parsed && typeof parsed === "object" && Array.isArray((parsed as { summaries?: unknown[] }).summaries)) {
     for (const s of (parsed as { summaries: { node_id?: string; citations?: { url?: string; quote?: string }[] }[] }).summaries)
       for (const c of s.citations ?? []) push(s.node_id, c.url, c.quote);
+  } else if (parsed && typeof parsed === "object" && Array.isArray((parsed as { verdicts?: unknown[] }).verdicts)) {
+    // Promotion decision file. Verify against the recorded permanence anchor
+    // where one exists — that URL is what the audit trail points a future
+    // re-auditor at. A quote-less source is an identity read, not a claim.
+    type DecisionSource = { url?: string; quote?: string; revision_permalink?: string };
+    const verdicts = (parsed as { verdicts: { subject_id?: string; sources?: DecisionSource[] }[] }).verdicts;
+    for (const v of verdicts) {
+      for (const s of v.sources ?? []) {
+        if (typeof s.quote !== "string" || !s.quote.trim()) continue;
+        push(v.subject_id, s.revision_permalink ?? s.url, s.quote);
+      }
+    }
   } else {
-    throw new Error(`${file}: unrecognized input shape (expected summaries batch or flat claim array)`);
+    throw new Error(
+      `${file}: unrecognized input shape (expected summaries batch, flat claim array, or decision file)`,
+    );
   }
   return { claims, skipped };
 }

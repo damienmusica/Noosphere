@@ -111,6 +111,44 @@
     "note": "Invisible hand founded/formalized by Adam Smith (standard/eponymous attribution). Direction person->concept. Permanence: WP https://en.wikipedia.org/w/index.php?title=Invisible_hand&oldid=1358921063 · Wikidata Q376644 (immutable). (founder ladder; supported)."
   },
   {
+    "id": "edge:administrative-behavior-canonical-work-bounded-rationality",
+    "source": "work:administrative-behavior",
+    "target": "concept:bounded-rationality",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "W1: the book that introduced the ideas concept:bounded-rationality names, completing a triangle anchored by edge:herbert-simon-founded-bounded-rationality from concept-wave3-v1. Simon's own 1988 assessment, quoted in the article, lists \"the bounded rationality notions\" among the book's principal novelties, and a 2001 obituary quoted there says it \"reject[ed] the notion of an omniscient 'economic man'\" in favour of an \"administrative man\" who \"satisfices\". Wikidata Q4683452: P31 = literary work, P50 = Q181529 Simon, P577 = 1947, 4 sitelinks."
+  },
+  {
+    "id": "edge:administrative-behavior-canonical-work-herbert-simon",
+    "source": "work:administrative-behavior",
+    "target": "person:herbert-simon",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Person leg. P50 = Q181529 matches the person node's verified QID. Second corpus work for Simon is not at issue — he has none yet."
+  },
+  {
     "id": "edge:aerospace-engineering-part-of-engineering-and-technology",
     "source": "field:aerospace-engineering",
     "target": "domain:engineering-and-technology",
@@ -239,6 +277,25 @@
       "proposed_at": "2026-07-02"
     },
     "note": "Turing's 1936–1950 work (esp. 'Computing Machinery and Intelligence', 1950) became a central reference point in philosophy of mind — the Turing-machine model of mind is a standard historical input to functionalism (Putnam). Direction correct (predates the debates it shaped). Two independent SEP entries: 'The Turing Test' and 'Functionalism'. Permanence: SEP https://web.archive.org/web/20260701235949/https://plato.stanford.edu/entries/turing-test/ · SEP https://web.archive.org/web/20260702000015/https://plato.stanford.edu/entries/functionalism/. (a)-ladder decision (68); supported."
+  },
+  {
+    "id": "edge:albert-einstein-founded-theory-of-relativity",
+    "source": "person:albert-einstein",
+    "target": "concept:theory-of-relativity",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "enwiki opens the article with the attribution — \"The theory of relativity comprises two physics theories by Albert Einstein\" — and Wikidata Q43514's own English description says the same. Recorded tension, not resolved: a whole enwiki article (Relativity priority dispute) documents the Lorentz/Poincaré priority literature. Under §8 clause-6 v2 that is a share-and-priority debate on top of an agreed founding, not a contested existence or direction, so it routes to supported plus this note rather than to disputed. Poincaré's contribution is written as its own edge in this batch instead of being buried here."
   },
   {
     "id": "edge:alfred-russel-wallace-founded-evolutionary-biology",
@@ -370,6 +427,24 @@
       "proposed_at": "2026-06-11"
     },
     "note": "§12 edge-depth (ASL-pillar precedent): ACM CCS files 'Design and analysis of algorithms' inside the 'Theory of computation' top branch (Wayback snapshot of dl.acm.org/ccs/ccs_flat.cfm, live 2026-06-11); MSC 68Q25 'Analysis of algorithms and problem complexity' sits inside 68Q Theory of computing (msc2020.org CSV, live). Divergence recorded: MSC also gives algorithms its own top subsection 68W (algorithm-engineering wing); the un-contradicted gate-scheme nesting governs."
+  },
+  {
+    "id": "edge:allen-newell-founded-artificial-intelligence",
+    "source": "person:allen-newell",
+    "target": "subfield:artificial-intelligence",
+    "relation": "founded_or_formalized",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-founder edge, record-not-resolve — joins the existing reviewed founder edges for John McCarthy and Marvin Minsky on this same field. Target corrected at QC from the generator's concept:symbolic-ai to subfield:artificial-intelligence: no source states that Newell founded symbolic AI as such, whereas two independent articles state the AI-founding claim (enwiki Symbolic artificial intelligence: 'their work laid the foundations of the field of artificial intelligence'; enwiki Logic Theorist: 'In 1955, when Newell and Simon began to work on the Logic Theorist, the field of artificial intelligence did not yet exist'). Recorded tension: enwiki Dartmouth workshop names Shannon, McCarthy, Rochester and Minsky as the 'founding fathers' and does not list Newell — the two framings are about different acts (convening the field's naming conference vs. building its first program), and both are kept."
   },
   {
     "id": "edge:alonzo-church-founded-computability-theory",
@@ -781,6 +856,25 @@
       "proposed_at": "2026-06-19"
     },
     "note": "Lavoisier helped found modern chemistry (Wikipedia Antoine Lavoisier: \"a French nobleman and chemist who was central to the 18th-century chemical revolution\"; Wikipedia History of chemistry: \"in 1789, he established the Law of Conservation of Mass\"). Referent note (record-not-resolve): Lavoisier founded/formalized *modern* (quantitative) chemistry — the chemical revolution — rather than chemistry-the-practice, which predates him; founded_or_formalized covers this formalizing act. Two independent Wikipedia articles."
+  },
+  {
+    "id": "edge:antoine-lavoisier-founded-conservation-of-mass",
+    "source": "person:antoine-lavoisier",
+    "target": "concept:conservation-of-mass",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Wikidata Q483948 carries P61 (discoverer or inventor) = Q39607 Antoine Lavoisier — a structural cross-confirmation of the prose claim, the same signal pattern that supported the Weber typology edge in decision (108). Record-not-resolve scope note: enwiki states the priority history in the same breath — \"mass conservation in chemical reactions was primarily demonstrated by Jean Rey (in 1630) and finally confirmed by Antoine Lavoisier in the late 18th century\" — and a Lomonosov priority claim is also current. Lavoisier's founder standing is for the law as chemistry's quantitative principle, not for first noticing the phenomenon; neither precursor is a corpus node."
   },
   {
     "id": "edge:antoine-lavoisier-influenced-physics",
@@ -1281,12 +1375,31 @@
     "note": "Bertrand Russell is a co-principal founder of analytic philosophy. Sources (2 independent live-verified): SEP 'Analysis' (analytic method \"In the work of Frege and Russell\") + Wikipedia 'Bertrand Russell' (\"a founder of analytic philosophy, along with his predecessor Gottlob Frege, his friend and colleague G. E. Moore, and his student and protege Ludwig Wittgenstein\"). Record-not-resolve plural founding: Gottlob Frege (already a corpus node -- person:gottlob-frege), G. E. Moore, and Ludwig Wittgenstein (already a corpus node -- person:ludwig-wittgenstein) are co-founders across distinct strands. Identity Q33760 verified live (P31=Q5, P569 1872-05-18, P570 1970-02-02 deceased, logician/philosopher). Generator-guessed QID was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
   },
   {
+    "id": "edge:bertrand-russell-founded-type-theory",
+    "source": "person:bertrand-russell",
+    "target": "subfield:type-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Relation corrected at QC from the generator's default reading and from the deprecated edge:bertrand-russell-influenced-computer-science: the live sources state origination, not downstream influence — SEP 'Type Theory': 'The theory of types was introduced by Russell in order to cope with some contradictions he found in his account of set theory'; enwiki Type theory: 'By 1908, Russell arrived at a ramified theory of types together with an axiom of reducibility, both of which appeared in Whitehead and Russell's Principia Mathematica'. Honest gap: Principia is co-authored with Whitehead, but both sources attribute the type theory specifically to Russell, and no person:alfred-north-whitehead node exists; a Whitehead co-founder edge is left for a later wave rather than asserted here. Resolves the recheck-wave1-v1 hold on the diffuse Russell→computer-science edge by re-grounding the claim at the grain the sources support."
+  },
+  {
     "id": "edge:bertrand-russell-influenced-computer-science",
     "source": "person:bertrand-russell",
     "target": "field:computer-science",
     "relation": "influenced",
     "confidence": 0.5,
-    "status": "proposed",
+    "status": "deprecated",
     "evidence": [
       "source:sep",
       "source:wikipedia"
@@ -1297,7 +1410,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "Russell's type theory (1908–13) is the historical root of type systems in programming languages. Held at proposed: diffuse/mediated (via Church, Curry–Howard, Martin-Löf, decades removed) and field:computer-science is too broad a target; a narrower programming-languages/type-theory target would be cleaner. Permanence: SEP 'Principia Mathematica' https://web.archive.org/web/20260702000746/https://plato.stanford.edu/entries/principia-mathematica/."
+    "note": "Deprecated 2026-07-29 (grain; decision-log session #60). Its own recheck-wave1-v1 blocking condition read 'Diffuse/mediated (via Church, Curry–Howard, Martin-Löf) and field:computer-science too broad; a programming-languages/type-theory-grained target would be cleaner.' Re-grounded at that grain as edge:bertrand-russell-founded-type-theory in this batch, where the sources support origination rather than diffuse influence."
   },
   {
     "id": "edge:biblical-studies-part-of-religious-studies",
@@ -1565,6 +1678,25 @@
       "proposed_at": "2026-06-11"
     },
     "note": "LCC QK Botany (own subclass QK1-989) + UDC 58 Botany (own top-level class under 5 Natural Sciences) — both gate schemes file botany in the biology family (captured 2026-06-11). LCC shelving granularity (separate subclass) is not a co-equality claim; flat peer under field:biology per orchestrator ruling."
+  },
+  {
+    "id": "edge:bounded-rationality-part-of-economics",
+    "source": "concept:bounded-rationality",
+    "target": "field:economics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier. Target chosen as field:economics rather than subfield:behavioral-economics — the generator left this open and flagged it. enwiki places the concept broadly (\"as used in economics, political science, and related disciplines\") and neither source files it under behavioral economics specifically. Filing it in the narrower subfield would assert a placement the sources do not; the behavioral-economics affinity is real and recorded here instead."
   },
   {
     "id": "edge:buddhist-philosophy-part-of-philosophy",
@@ -1867,6 +1999,25 @@
       "proposed_at": "2026-06-11"
     },
     "note": "LCC QH573-671 Cytology (range within QH Biology General) + UDC 576 'Cellular and subcellular biology. Cytology' — both gate schemes file cell biology in the biology family (captured 2026-06-11). §12 label rule: modern term 'cell biology' over historical 'cytology'."
+  },
+  {
+    "id": "edge:cell-theory-part-of-cell-biology",
+    "source": "concept:cell-theory",
+    "target": "subfield:cell-biology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier, uncontested. Wikidata Q177935 P31 = Q3239681 scientific theory."
   },
   {
     "id": "edge:cesare-beccaria-founded-criminology",
@@ -2790,6 +2941,25 @@
       "proposed_at": "2026-06-11"
     },
     "note": "UDC 538.9 'Condensed matter physics. Solid state physics' — subdivision of UDC 53 Physics (live capture 2026-06-11). LCC QC170-197 'Atomic physics. Constitution and properties of matter (Including molecular physics, relativity, quantum theory, and solid state physics)' — within physics subclass QC (live capture 2026-06-11). PhySH discipline 'Condensed Matter, Materials & Applied Physics' — physics taxonomy gate-level scheme (live capture 2026-06-11)."
+  },
+  {
+    "id": "edge:conservation-of-mass-part-of-chemistry",
+    "source": "concept:conservation-of-mass",
+    "target": "field:chemistry",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier. The law is a foundational principle of chemistry; enwiki treats it as the anchor of the discipline's quantitative era (\"Antoine Lavoisier's discovery of the law of conservation of mass led to many new findings in the 19th century\"). Wikidata Q483948 P31 = Q36382 scientific law."
   },
   {
     "id": "edge:constitutional-law-part-of-law",
@@ -3892,7 +4062,7 @@
     "target": "concept:intentionality",
     "relation": "founded_or_formalized",
     "confidence": 0.6,
-    "status": "proposed",
+    "status": "deprecated",
     "evidence": [
       "source:wikidata",
       "source:wikipedia"
@@ -3903,7 +4073,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "founder held: intentionality was reintroduced by Brentano (no node) and developed by Husserl; single-founder attribution to Husserl is imprecise — concept promoted via part_of edge-demand, founder edge held pending Brentano node/cleaner framing. Permanence: WP https://en.wikipedia.org/w/index.php?title=Intentionality&oldid=1355666928 · Wikidata Q654390 (immutable)."
+    "note": "Deprecated 2026-07-29 (over-attribution on the identity/referent axis; decision-log session #60). The recheck-wave1-v1 hold anticipated a co-founder resolution once a Brentano node existed. Live re-verification does not support co-founding: enwiki Edmund Husserl states 'Another important element that Husserl took over from Brentano was intentionality', and SEP describes Husserl's contribution as his *analyses* and *interpretation* of intentionality. The founding claim is written on edge:franz-brentano-founded-intentionality and Husserl's actual relation on edge:franz-brentano-influenced-edmund-husserl, both in this batch."
   },
   {
     "id": "edge:edmund-husserl-founded-phenomenology",
@@ -4242,6 +4412,25 @@
       "proposed_at": "2026-06-12"
     },
     "note": "Skeleton part_of: LCC RC648-665 Diseases of the endocrine glands. Clinical endocrinology + UDC 616.4 + Endocrine Society."
+  },
+  {
+    "id": "edge:entropy-part-of-thermodynamics",
+    "source": "concept:entropy",
+    "target": "subfield:thermodynamics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier, and the only edge on this node. enwiki: \"Entropy is central to the second law of thermodynamics\", and \"The concept of entropy is described by two principal approaches, the macroscopic perspective of classical thermodynamics, and the microscopic description central to statistical mechanics.\" The statistical-mechanics strand is a real second home, but the corpus node is named statistical-physics rather than statistical mechanics, so a §13 co-equal membership is deliberately NOT written on a near-name — single parent, strand recorded. No founder edge: the term is Clausius's, and no Clausius node exists."
   },
   {
     "id": "edge:environmental-engineering-part-of-engineering-and-technology",
@@ -5126,6 +5315,44 @@
     "note": "Boas's anti-essentialist critique of biological race is a standard reference point in philosophy of race. Direction correct (Boas early-20thc -> the philosophical subfield). Permanence: SEP https://web.archive.org/web/20260702034306/https://plato.stanford.edu/entries/race/ · WP https://en.wikipedia.org/w/index.php?title=Franz_Boas&oldid=1359301314. ((a)-ladder decision (68); supported)."
   },
   {
+    "id": "edge:franz-brentano-founded-intentionality",
+    "source": "person:franz-brentano",
+    "target": "concept:intentionality",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Four independent claim-stating sources agree on the same verb — Brentano *introduced/reintroduced* intentionality into contemporary philosophy (enwiki Franz Brentano; enwiki Intentionality; SEP 'Franz Brentano'; SEP 'Intentionality'). Record-not-resolve scope note: the concept is medieval-scholastic in origin and Brentano's act is a reintroduction, not an invention — every source says so explicitly, and the founder claim is scoped to its standing in contemporary philosophy. This edge replaces the over-attributed edge:edmund-husserl-founded-intentionality, deprecated in the same batch: the live sources state Husserl took the concept over from Brentano rather than founding it. Resolves the recheck-wave1-v1 hold whose recorded trigger was exactly 'person:franz-brentano node created'."
+  },
+  {
+    "id": "edge:franz-brentano-influenced-edmund-husserl",
+    "source": "person:franz-brentano",
+    "target": "person:edmund-husserl",
+    "relation": "influenced",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "The relation the sources actually assert, written in place of the deprecated Husserl→intentionality founder edge (the same batch's honest re-model, §12 clause-1 mirror). enwiki Edmund Husserl: 'Franz Brentano is often credited as being his most important influence, e.g., with regard to intentionality' and 'Another important element that Husserl took over from Brentano was intentionality'; SEP 'Intentionality' describes Husserl as 'a student of Brentano's'; enwiki Franz Brentano records the inheritance of his intentionality work by Husserl's phenomenology. Direction is uncontested (Brentano 1838–1917 taught Husserl 1859–1938). Husserl's own contribution — the phenomenological analysis of intentionality via noema and epoché — is a development of the concept, recorded here as influence rather than as co-founding, because no source frames it as founding."
+  },
+  {
     "id": "edge:friedrich-nietzsche-founded-will-to-power",
     "source": "person:friedrich-nietzsche",
     "target": "concept:will-to-power",
@@ -5877,6 +6104,43 @@
     "note": "Skeleton part_of: LCC RC952-954.6 Geriatrics + UDC 613.98/616-053.9 + AGS, ABIM subspecialty."
   },
   {
+    "id": "edge:germ-theory-of-disease-part-of-microbiology",
+    "source": "concept:germ-theory-of-disease",
+    "target": "subfield:microbiology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier. Wikidata Q1425837 P31 = Q3239681 scientific theory, 31 sitelinks. Admitted on this membership alone: both proposed founder edges failed QC (see the verdict), so this concept enters on its disciplinary home rather than on a person claim — C1 edge-demand is satisfied by part_of."
+  },
+  {
+    "id": "edge:girolamo-fracastoro-influenced-germ-theory-of-disease",
+    "source": "person:girolamo-fracastoro",
+    "target": "concept:germ-theory-of-disease",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "★ Relation corrected at QC from the generator's `founded_or_formalized`. The two sources do not agree on the strength: enwiki Germ theory of disease says \"Basic forms of germ theory were proposed by Girolamo Fracastoro in 1546\", but Fracastoro's own article calls the same work a precursor — \"his 'seeds of disease' theory is considered as a predecessor to germ theory\". One founding claim and one predecessor claim do not clear the founder ladder's two-independent-claim-stating-sources bar, whereas both support influence. This leaves concept:germ-theory-of-disease still without a founder edge, which is the honest state: Pasteur and Koch were ruled NEI in concept-wave3-v1, and Marcus von Plenciz, named alongside Fracastoro, is not a corpus node."
+  },
+  {
     "id": "edge:global-health-part-of-public-health",
     "source": "subfield:global-health",
     "target": "field:public-health",
@@ -6278,6 +6542,24 @@
     "note": "Poincaré's three-body-problem work (1890s) founded the qualitative/geometric study of dynamical systems (sensitive dependence → chaos theory). Relation-choice note: arguably founded_or_formalized; influenced chosen conservatively (modern subfield institutionally postdates Poincaré — Birkhoff/Smale). Direction correct. Permanence: SEP https://web.archive.org/web/20260702000227/https://plato.stanford.edu/entries/chaos/ · WP https://en.wikipedia.org/w/index.php?title=Henri_Poincaré&oldid=1361412875. (a)-ladder (68); supported."
   },
   {
+    "id": "edge:henri-poincare-influenced-theory-of-relativity",
+    "source": "person:henri-poincare",
+    "target": "concept:theory-of-relativity",
+    "relation": "influenced",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "The corpus's way of recording the priority literature without adjudicating it: Poincaré's contribution is real and documented, and it is influence rather than founding. enwiki Relativity priority dispute states that Einstein's publications \"referred only to a small number of his predecessors for fundamental results on which he based his theories, most notably to the work of Henri Poincaré and Hendrik Lorentz for special relativity\". Hendrik Lorentz is named in the same breath and is not a corpus node — honest gap. This edge is also what makes the concept admissible at all: it was rejected in concept-wave3-v1 precisely because Poincaré would have been its only person link."
+  },
+  {
     "id": "edge:herbert-feigl-member-of-vienna-circle",
     "source": "person:herbert-feigl",
     "target": "institution:vienna-circle",
@@ -6294,6 +6576,43 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Herbert Feigl was a member of the Vienna Circle -- a philosopher of science who (with Waismann) proposed the regular 'evening circle' to Schlick in 1924 and later carried logical empiricism to the United States. Sources (2 independent live-verified Wikipedia articles): 'Vienna Circle' (\"In 1924 Schlick's students Friedrich Waismann and Herbert Feigl suggested to their teacher a sort of regular 'evening circle'\"; Inner Circle roster lists \"... Herbert Feigl ...\") + 'Herbert Feigl'. Identity Q93678 verified live (P31=Q5, P569 1902, P570 1988 deceased, philosopher, enwiki 'Herbert Feigl'); generator-guessed QID (Q76370) hallucination, corrected. Both endpoints reviewed -> member_of, reviewed."
+  },
+  {
+    "id": "edge:herbert-simon-founded-artificial-intelligence",
+    "source": "person:herbert-simon",
+    "target": "subfield:artificial-intelligence",
+    "relation": "founded_or_formalized",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-founder edge, record-not-resolve — the twin of edge:allen-newell-founded-artificial-intelligence, not a duplicate of it: the sources name the two men jointly and the corpus records multiple founders. Same target correction and same tension note as that edge. enwiki Herbert A. Simon: 'Simon was a pioneer in the field of artificial intelligence, creating with Allen Newell the Logic Theory Machine (1956) and the General Problem Solver (GPS) (1957) programs'; enwiki Symbolic artificial intelligence carries the foundations claim naming both. Domain tag cognitive_sciences records this node's corpus role (the AI / cognitive-science founding, mirroring person:marvin-minsky); Simon's Nobel-recognized economics work is a separate, currently unmodelled strand."
+  },
+  {
+    "id": "edge:herbert-simon-founded-bounded-rationality",
+    "source": "person:herbert-simon",
+    "target": "concept:bounded-rationality",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "The batch's strongest founder claim: enwiki states the coinage outright (\"Bounded rationality was coined by Herbert A. Simon\") and SEP's dedicated entry is built on Simon 1955a. Second edge for person:herbert-simon, added in the same session as the node itself (held-trigger-nodes-v1)."
   },
   {
     "id": "edge:hermeneutics-part-of-philosophy",
@@ -6529,6 +6848,25 @@
       "proposed_at": "2026-06-11"
     },
     "note": "UDC 556 'Hydrosphere. Water in general. Hydrology' — own top-level class under UDC 55 Earth Sciences (live capture 2026-06-11). OECD FORD 1.5 'Earth and related Environmental sciences' (live capture 2026-06-11). LCC home GB (class G, not class Q) — training-knowledge, UNFETCHED direct LCC confirmation. Clause-6 resolution 2026-06-11: dominant, class-G cluster consistent ruling — UDC 556 + FORD 1.5/ANZSRC 3707 + Britannica + IUGG/IAHS + UT Jackson/U Arizona CoS vs LCC GB (class G); geography-side evidence parked."
+  },
+  {
+    "id": "edge:ideal-type-part-of-sociology",
+    "source": "concept:ideal-type",
+    "target": "field:sociology",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier. Wikidata Q1052882 P31 = Q151885 concept — the cleanest concept typing in the batch, and exactly the C3 signal the keep-criteria ask for."
   },
   {
     "id": "edge:immunology-part-of-biology",
@@ -7018,6 +7356,24 @@
     "note": "James Hutton is the father of modern geology -- his theory of uniformitarianism ('Theory of the Earth', 1788) founded geology on observable natural processes rather than scriptural chronology. Sources (2 independent live-verified Wikipedia articles): 'James Hutton' (\"Often referred to as the 'Father of Modern Geology'\") + 'Geology'. Record-not-resolve: Charles Lyell later popularized/systematized uniformitarianism ('Principles of Geology', 1830-33), the synthesis that made it scientific consensus; this edge records Hutton's original theoretical founding. Identity Q192927 verified live (P31=Q5, P569 1726, P570 1797 deceased, geologist, enwiki 'James Hutton'). Generator-guessed QID (Q193621 = the French commune Auzances) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
   },
   {
+    "id": "edge:james-hutton-founded-uniformitarianism",
+    "source": "person:james-hutton",
+    "target": "concept:uniformitarianism",
+    "relation": "founded_or_formalized",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Sole founder edge. enwiki: uniformitarianism \"was originally proposed in contrast to catastrophism by British naturalists in the late 18th century, starting with the work of the geologist James Hutton in his many books including Theory of the Earth\", and \"In 1785 James Hutton proposed an opposing, self-maintaining infinite cycle\". The term itself was coined later by William Whewell, who is not a corpus node — recorded, not asserted. The proposed companion edge for Charles Lyell was declined at QC: the same article calls his role popularisation, not founding."
+  },
+  {
     "id": "edge:jan-tinbergen-founded-econometrics",
     "source": "person:jan-tinbergen",
     "target": "subfield:econometrics",
@@ -7262,7 +7618,7 @@
     "target": "subfield:computer-systems",
     "relation": "influenced",
     "confidence": 0.85,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:wikipedia"
     ],
@@ -7272,7 +7628,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "Von Neumann's 1945 EDVAC report outlined the stored-program architecture dominant in computer systems. Held at proposed: target subfield:computer-systems is itself proposed (QID-less honest gap) → status-cap clause 3 blocks auto-promotion; also a live historiographical dispute over attribution (Moore School / Eckert–Mauchly team). Permanence: WP https://en.wikipedia.org/w/index.php?title=Von_Neumann_architecture&oldid=1360745761."
+    "note": "Promoted 2026-07-29 (a-relations-wave7-v1, ladder (68)). Both recorded blockers are resolved. (1) The status cap: the target subfield:computer-systems was `proposed` when this edge was written and has since been promoted to `reviewed` under node-policy v1.4 (ACM CCS anchor, decision (102)) — clause 3 no longer blocks it. (2) The sourcing: two independent claim-stating articles now support it — enwiki First Draft of a Report on the EDVAC (\"It contains the first published description of the logical design of a computer using the stored-program concept, which has come to be known as the von Neumann architecture\") and enwiki Von Neumann architecture (\"is a computer architecture based on the First Draft of a Report on the EDVAC , written by John von Neumann in 1945, describing designs discussed with John Mauchly and J.\"). The attribution dispute the original note flagged is preserved rather than resolved: the same source states \"the name has become controversial due to von Neumann's failure to name other contributors\", and the second names Mauchly and Eckert as participants in the designs discussed. That is a credit-and-share contest on top of an agreed authorship and influence — the existence-vs-share line of §8 clause-6 v2 — so it routes to supported plus this note, the same ruling shape applied to Einstein and relativity in person-wave11-v1 the same day. Neither Mauchly nor Eckert is a corpus node; honest gap."
   },
   {
     "id": "edge:judgment-and-decision-making-part-of-psychology",
@@ -7992,6 +8348,42 @@
     "note": "★ LIVING PERSON — living-person handling standing policy v2 (decision (70)), policy-auto: resolver-verified QID anchor with P570 live-confirmed absent + >=2 independent live claim-stating sources + conservative attributed wording; no escalation signal (clean positive academic-contribution founding) -> auto-reviewed. Floridi launched and systematized the philosophy of information as a research field (late 1990s 'The Philosophy of Information' programme), widely regarded as its principal architect. Wikipedia 'Luciano Floridi' + SEP 'Information' (covering his systematic philosophy of information). Identity Q214119 verified (b.1964, P570 absent). Generator QID hint Q1392534 was a hallucination ('bicycle theft'); corrected."
   },
   {
+    "id": "edge:ludwig-boltzmann-formalizes-entropy",
+    "source": "person:ludwig-boltzmann",
+    "target": "concept:entropy",
+    "relation": "formalizes",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "`formalizes`, deliberately not `founded_or_formalized`: Clausius originated the concept in 1865 and Boltzmann supplied its statistical foundation twelve years later. enwiki Ludwig Boltzmann: \"In 1877, he provided the current definition of entropy\"; enwiki Entropy: \"In 1877, Boltzmann visualized a probabilistic way to measure the entropy of an ensemble of ideal gas particles, in which he defined entropy as proportional to the natural logarithm of the number of microstates such a gas could occupy.\" The relation choice is the whole point — recording both men as co-founders would erase the fact that one gave the concept its macroscopic definition and the other its microscopic one."
+  },
+  {
+    "id": "edge:ludwig-boltzmann-founded-statistical-physics",
+    "source": "person:ludwig-boltzmann",
+    "target": "subfield:statistical-physics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-founder edge, record-not-resolve. The field article states \"The founding of the field of statistical mechanics is generally credited to three physicists\" and names Boltzmann first, for developing \"the fundamental interpretation of entropy in terms of a collection of microstates\"; the person article independently calls the development of statistical mechanics one of his greatest achievements. Honest gaps: Maxwell and Gibbs, the other two credited founders, are not corpus nodes. Naming note: en.wikipedia.org/wiki/Statistical_physics is a redirect to Statistical mechanics, so the citation is anchored on the canonical title per §8; enwiki treats the two as one topic and this node's QID (Q677916) sitelinks to that article, while Wikidata separately keeps Q188715 for statistical mechanics."
+  },
+  {
     "id": "edge:ludwig-wittgenstein-founded-philosophy-of-language",
     "source": "person:ludwig-wittgenstein",
     "target": "subfield:philosophy-of-language",
@@ -8140,7 +8532,7 @@
     "target": "concept:symbolic-ai",
     "relation": "founded_or_formalized",
     "confidence": 0.6,
-    "status": "proposed",
+    "status": "deprecated",
     "evidence": [
       "source:wikidata",
       "source:wikipedia"
@@ -8151,7 +8543,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "founder held: symbolic AI (GOFAI) was co-founded by Newell/Simon/McCarthy/Minsky; single-founder attribution to Minsky held pending co-founder modeling (record-not-resolve). Permanence: WP https://en.wikipedia.org/w/index.php?title=Symbolic_artificial_intelligence&oldid=1360607279 · Wikidata Q5514059 (immutable)."
+    "note": "Deprecated 2026-07-29 (wrong grain + already recorded; decision-log session #60). No source states that Minsky founded symbolic AI as such — enwiki Symbolic artificial intelligence places him inside it, in the 'scruffies' strand with Papert. The claim the sources do state is the AI-founding one (enwiki Marvin Minsky quoting the Computer History Museum: 'for co-founding the field of artificial intelligence'), and that claim is already carried by the reviewed edge:marvin-minsky-founded-artificial-intelligence. Mirrors the session-#49 drop rule (a candidate whose founded_or_formalized edge already exists) and the (108) referent-grain precedent."
   },
   {
     "id": "edge:mass-communication-part-of-media-and-communication-studies",
@@ -8534,6 +8926,25 @@
     "note": "Matthias Jakob Schleiden is a co-founder of cell theory, the foundational theory of cell biology -- the botanist who (Beiträge zur Phytogenesis, 1838) argued that all plant tissues are composed of cells, the plant-side counterpart to Schwann's extension to animals. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory'. Record-not-resolve: Schwann (animal cells) is the co-founder [own node/edge this batch]; Virchow (cell-from-cell, 1855) and Hooke (\"cell\", 1665) not nodified. Identity Q76747 verified live (P31=Q5, P569 1804, P570 1881 deceased, botanist, enwiki 'Matthias Jakob Schleiden'); generator-guessed QID (Q57249) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
   },
   {
+    "id": "edge:matthias-jakob-schleiden-founded-cell-theory",
+    "source": "person:matthias-jakob-schleiden",
+    "target": "concept:cell-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-founder edge, the twin of the Schwann edge and not a duplicate of it — the source names both jointly and the corpus records multiple founders. Same Virchow gap note."
+  },
+  {
     "id": "edge:max-weber-critiques-karl-marx",
     "source": "person:max-weber",
     "target": "person:karl-marx",
@@ -8570,6 +8981,25 @@
       "proposed_at": "2026-07-02"
     },
     "note": "Deprecated 2026-07-03 (C3 referent-precision, §12 hold-resolution clause 1 mirror; decision (108)): the claim's true referent is Weber's own theoretical construct, not the generic administrative institution Q72468 that predates him by millennia. Re-scoped to edge:max-weber-founded-tripartite-classification-of-authority in the same batch (weber-referent-precision-v1)."
+  },
+  {
+    "id": "edge:max-weber-founded-ideal-type",
+    "source": "person:max-weber",
+    "target": "concept:ideal-type",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Two independent publishers attribute the methodology to Weber: SEP \"The methodology of 'ideal type' (Idealtypus) is another testimony to such a broadly ethical intention of Weber\"; enwiki \"Weber states that an 'ideal type' never seeks to claim its validity in terms of a reproduction of or correspondence with social reality.\" Joins Weber's existing reviewed edges on the tripartite authority typology and his critique of Marx."
   },
   {
     "id": "edge:max-weber-founded-sociology",
@@ -9870,6 +10300,44 @@
       "proposed_at": "2026-07-02"
     },
     "note": "On Sense and Reference (Über Sinn und Bedeutung, Frege, 1892) — introducing the sense/reference distinction — is a canonical founding paper of philosophy of language. Work QID Q330955 live-verified (P31=Q13442814 scholarly article, P50=Q60028 Frege, P577=1892). Generator QID hint Q1497216 was a hallucination (\"Schlagintweit brothers\"); corrected live to Q330955. §8: WP oldid=1355689334. Co-canonical (decision (90)) with the Tractatus (work-wave4) for philosophy-of-language. NB: the paired concept:sense-and-reference candidate was dropped at QC — Q330955 is the paper (a work), not a distinct concept item, so it is modeled once, as this work. W1–W5 auto-reviewed; direction work→field."
+  },
+  {
+    "id": "edge:on-the-electrodynamics-of-moving-bodies-canonical-work-albert-einstein",
+    "source": "work:on-the-electrodynamics-of-moving-bodies",
+    "target": "person:albert-einstein",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Person leg of the canonical triangle. P50 = Q937 matches the person node's verified QID exactly."
+  },
+  {
+    "id": "edge:on-the-electrodynamics-of-moving-bodies-canonical-work-theory-of-relativity",
+    "source": "work:on-the-electrodynamics-of-moving-bodies",
+    "target": "concept:theory-of-relativity",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "W1: the founding paper of special relativity, completing a triangle already anchored at both ends (Einstein's founder edge on this concept was written in person-wave11-v1 the same day). enwiki Annus mirabilis papers: \"The third paper introduced Einstein's special theory of relativity\", identified there as \"Zur Elektrodynamik bewegter Körper\" (\"On the Electrodynamics of Moving Bodies\"). Wikidata Q3020388: P31 = scholarly article, P50 = Q937 Einstein, P577 = 1905, P1433 = Annalen der Physik, 9 sitelinks — every W2–W4 signal present, the cleanest identity in the batch."
   },
   {
     "id": "edge:on-the-origin-of-species-canonical-work-charles-darwin",
@@ -11443,6 +11911,44 @@
     }
   },
   {
+    "id": "edge:principia-mathematica-canonical-work-bertrand-russell",
+    "source": "work:principia-mathematica",
+    "target": "person:bertrand-russell",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Person leg, single-author by necessity rather than by claim. Wikidata P50 lists BOTH Q33760 Russell and Q183372 Whitehead, and the enwiki lead names both — but person:alfred-north-whitehead does not exist, having been deliberately dropped as an honesty gap in person-wave11-v1 the same day (no corpus endpoint for his own founder claim). The co-authorship is therefore recorded here on the edge and in that batch's rejection ledger, not silently reduced. Confidence is held at 0.85 for exactly that incompleteness."
+  },
+  {
+    "id": "edge:principia-mathematica-canonical-work-mathematical-logic",
+    "source": "work:principia-mathematica",
+    "target": "subfield:mathematical-logic",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "W1, and the FOURTH co-canonical work for this subfield — joining Boole's Laws of Thought, Frege's Begriffsschrift and Gödel's 1931 paper. Decision (90) permits multiplicity and W1 bounds it: PM is a watershed text by any account, not \"another important book\". enwiki: \"The Principia Mathematica (often abbreviated PM) is a three-volume work on the foundations of mathematics written by the mathematician–philosophers Alfred North Whitehead and Bertrand Russell and published in 1910, 1912, and 1913.\" ★ Two identity wrinkles recorded rather than smoothed: Wikidata Q163335 carries P31 = Q277759 book series (not one of criterion 1's enumerated work types, though it satisfies the guard's actual purpose — the referent is a work, not a person or concept — and the three volumes exist as separate items Q62092387/Q62092410/Q62092422), and its P577 reads 1917, which is an edition date rather than the 1910–1913 publication the prose gives. Criterion 3's alternative applies: the uncontested years are confirmed live from the sitelinked article. 35 sitelinks, P50 = both authors."
+  },
+  {
     "id": "edge:principles-of-geology-canonical-work-charles-lyell",
     "source": "work:principles-of-geology",
     "target": "person:charles-lyell",
@@ -11885,6 +12391,44 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-18"
     }
+  },
+  {
+    "id": "edge:psychology-from-an-empirical-standpoint-canonical-work-franz-brentano",
+    "source": "work:psychology-from-an-empirical-standpoint",
+    "target": "person:franz-brentano",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Person leg. P50 = Q57196 matches the person node's verified QID."
+  },
+  {
+    "id": "edge:psychology-from-an-empirical-standpoint-canonical-work-intentionality",
+    "source": "work:psychology-from-an-empirical-standpoint",
+    "target": "concept:intentionality",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "W1: the text in which intentionality re-entered contemporary philosophy — the same 1874 book the four sources behind edge:franz-brentano-founded-intentionality all name. enwiki: \"Psychology from an Empirical Standpoint (German: Psychologie vom empirischen Standpunkte; 1874; second edition 1924) is an 1874 book by the Austrian philosopher Franz Brentano\". Note the article calls him Austrian while the Brentano person node's sources call him German — a source-side inconsistency, recorded, immaterial to identity."
   },
   {
     "id": "edge:psychology-part-of-cognitive-sciences",
@@ -12505,6 +13049,44 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Rudolf Carnap was a member of the Vienna Circle -- brought to the University of Vienna in 1926 at Schlick's arrangement, he became one of its central figures. Sources (2 independent live-verified Wikipedia articles): 'Rudolf Carnap' (school tradition 'Vienna Circle'; \"In 1926 Schlick and Hahn arranged to bring Rudolf Carnap to the University of Vienna\") + 'Vienna Circle'. Both endpoints reviewed."
+  },
+  {
+    "id": "edge:rudolf-clausius-founded-entropy",
+    "source": "person:rudolf-clausius",
+    "target": "concept:entropy",
+    "relation": "founded_or_formalized",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "The batch's strongest claim, and it closes a gap this session opened: concept:entropy was admitted in concept-wave3-v1 with no founder edge at all because Clausius was not a node. enwiki Rudolf Clausius lists \"Originator of the concept of entropy\" among his known-for entries and states \"In 1865 he introduced the concept of entropy\"; enwiki Entropy independently says \"In 1865, German physicist Rudolf Clausius, one of the leading founders of the field of thermodynamics, defined it as the quotient of an infinitesimal amount of heat to the instantaneous temperature.\" Two independent articles, same claim."
+  },
+  {
+    "id": "edge:rudolf-virchow-founded-cell-theory",
+    "source": "person:rudolf-virchow",
+    "target": "concept:cell-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Third co-founder edge on concept:cell-theory, closing the gap concept-wave3-v1 recorded when it admitted Schwann and Schleiden only; Wikidata Q177935's P61 lists all three. ★ Attribution tension recorded prominently rather than in passing: enwiki Rudolf Virchow states that Cellular Pathology (1858) \"introduced the third dictum in cell theory\" but adds that the concept \"is now widely recognized as being plagiarized from Robert Remak\", and enwiki Cell theory says the idea \"had already been proposed by Robert Remak\". What the sources agree on is that Virchow introduced the third tenet *into cell theory*; what they contest is whether the idea was his. The edge is written for the former and confidence is set at 0.75 for the latter. Robert Remak is not a corpus node — an honest gap, and the one most worth closing next on this concept."
   },
   {
     "id": "edge:rules-of-sociological-method-canonical-work-emile-durkheim",
@@ -14175,6 +14757,25 @@
     "note": "Theodor Schwann is a co-founder of cell theory, the foundational theory of cell biology -- he extended the cell doctrine to animal tissues (Mikroskopische Untersuchungen, 1839), establishing with the botanist Matthias Jakob Schleiden that all living organisms are composed of cells. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory' (\"a scientific theory first formulated in the mid-nineteenth century, that living organisms are made up of cells, that they are the basic structural/organizational unit of all organisms\"). Record-not-resolve: Schleiden (plant cells) is the co-founder [own node/edge this batch]; Rudolf Virchow added \"omnis cellula e cellula\" (1855) and Robert Hooke coined the term \"cell\" (1665) -- neither nodified. Identity Q76745 verified live (P31=Q5, P569 1810, P570 1882 deceased, physician/physiologist, enwiki 'Theodor Schwann'); generator-guessed QID (Q57247) was a hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
   },
   {
+    "id": "edge:theodor-schwann-founded-cell-theory",
+    "source": "person:theodor-schwann",
+    "target": "concept:cell-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-founder edge, record-not-resolve. enwiki names both men in one sentence: \"Credit for developing cell theory is usually given to two scientists: Theodor Schwann and Matthias Jakob Schleiden.\" Wikidata Q177935 P61 lists three inventors — Schleiden, Schwann and Rudolf Virchow. Honest gap recorded rather than papered over: Virchow (omnis cellula e cellula, the third clause of the modern doctrine) is not a corpus node, so this batch records two of the three; the generator flagged exactly this."
+  },
+  {
     "id": "edge:theology-part-of-religious-studies",
     "source": "subfield:theology",
     "target": "field:religious-studies",
@@ -14267,6 +14868,44 @@
       "proposed_at": "2026-07-02"
     },
     "note": "Theory of Games and Economic Behavior (1944) is a canonical work of Oskar Morgenstern (co-author). Work QID Q5226156 P50 includes Q94028 (Morgenstern) — verified against person:oskar-morgenstern node QID Q94028. §8 WP oldid=1352441311. W1–W5 auto-reviewed; direction work→person."
+  },
+  {
+    "id": "edge:theory-of-relativity-part-of-physics",
+    "source": "concept:theory-of-relativity",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier, uncontested. Wikidata Q43514 carries P31 = Q3239681 scientific theory alongside Q4162444 branch of physics; the theory typing is the one this concept node relies on, and the dual typing is recorded rather than glossed."
+  },
+  {
+    "id": "edge:thermodynamics-part-of-physics",
+    "source": "subfield:thermodynamics",
+    "target": "field:physics",
+    "relation": "part_of",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier, uncontested. enwiki lead states the membership directly; Wikidata Q11473 carries P31 = Q4162444 'branch of physics' and P361 (part of) = Q413 physics. Fills a real skeleton gap: field:physics already held subfield:statistical-physics but not thermodynamics itself."
   },
   {
     "id": "edge:time-series-analysis-part-of-statistics",
@@ -14477,6 +15116,46 @@
     "note": "Concept placement (concept-layer-wave1, node-policy v1, decision (91) C1-C4). QID Q163310 resolver-verified live 2026-07-02 (generator QID was hallucinated; corrected at QC). Permanence: WP https://en.wikipedia.org/w/index.php?title=Turing_machine&oldid=1361925546 · Wikidata Q163310 (immutable)."
   },
   {
+    "id": "edge:type-theory-part-of-mathematical-logic",
+    "source": "subfield:type-theory",
+    "target": "subfield:mathematical-logic",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-equal §13 membership, first of two — the 1:1 mirror of subfield:computability-theory, which holds exactly this pair of parents (session #8). Both parents are named in one sentence by the primary source, so this is a written co-equal membership from the start, not a contest: enwiki 'In mathematical logic, and theoretical computer science, type theory is the study of formal systems…'; SEP 'The topic of type theory is fundamental both in logic and computer science.' Wikidata Q1056428 P31 = branch of mathematics, P1269 (facet of) names both Q1166618 mathematical logic and Q2878974 theoretical computer science. part_of chains may run deeper than the flat node levels (§12 structural rule 1 precedent). No primary-parent marker."
+  },
+  {
+    "id": "edge:type-theory-part-of-theoretical-computer-science",
+    "source": "subfield:type-theory",
+    "target": "subfield:theoretical-computer-science",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Opus",
+      "model_version": "claude-opus-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Co-equal §13 membership, second of two — same single-sentence grounding as edge:type-theory-part-of-mathematical-logic, which it is co-equal with (no primary marker). enwiki also records the applied reach ('Type theories are used in the study of programming languages (type systems), formal logic, and the formalization of mathematics'), which is why the CS membership is a real classification home and not merely an application."
+  },
+  {
     "id": "edge:ulric-neisser-founded-cognitive-psychology",
     "source": "person:ulric-neisser",
     "target": "subfield:cognitive-psychology",
@@ -14493,6 +15172,25 @@
       "proposed_at": "2026-07-01"
     },
     "note": "Ulric Neisser named and consolidated cognitive psychology as a field with his 1967 book 'Cognitive Psychology'. Sources (2 independent live-verified Wikipedia articles): 'Ulric Neisser' (\"referred to as the 'father of cognitive psychology'\") + 'Cognitive psychology' (\"Ulric Neisser put the term 'cognitive psychology' into common use through his 1967 book Cognitive Psychology\"). Record-not-resolve plural founding: the 1950s-60s cognitive revolution had many co-founders -- George A. Miller (with Galanter & Pribram, 1960; co-founded the Harvard Center for Cognitive Studies), Jerome Bruner, Noam Chomsky (already a corpus node); Neisser gave the field its name and first synthesis. Identity Q62895 verified live (P31=Q5, P569 1928-12-08, P570 2012-02-17 deceased, psychologist). Generator-guessed QID was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:uniformitarianism-part-of-geology",
+    "source": "concept:uniformitarianism",
+    "target": "subfield:geology",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Structural tier. Wikidata Q208650 P31 = principle + philosophical theory; enwiki frames it as the founding methodological principle of geology, proposed in contrast to catastrophism."
   },
   {
     "id": "edge:urban-and-regional-planning-part-of-arts-and-design",

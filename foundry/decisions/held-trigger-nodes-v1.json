@@ -1,0 +1,818 @@
+{
+  "version": 1,
+  "batch_id": "held-trigger-nodes-v1",
+  "decided_at": "2026-07-29",
+  "qc_by": {
+    "model_name": "Claude Opus",
+    "model_version": "claude-opus-5",
+    "proposed_at": "2026-07-29"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [
+      {
+        "id": "subfield:thermodynamics",
+        "type": "subfield",
+        "domain": "natural_sciences",
+        "level": 2,
+        "status": "reviewed",
+        "academic_status": "established",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q11473"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "subfield:type-theory",
+        "type": "subfield",
+        "domain": "formal_sciences",
+        "level": 2,
+        "status": "reviewed",
+        "academic_status": "established",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q1056428"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "person:franz-brentano",
+        "type": "person",
+        "domain": "humanities",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q57196"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "person:allen-newell",
+        "type": "person",
+        "domain": "cognitive_sciences",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q439245"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "person:herbert-simon",
+        "type": "person",
+        "domain": "cognitive_sciences",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q181529"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      }
+    ],
+    "translations": [
+      {
+        "node_id": "subfield:thermodynamics",
+        "locale": "en",
+        "label": "Thermodynamics",
+        "summary": "",
+        "aliases": [
+          "classical thermodynamics"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "subfield:type-theory",
+        "locale": "en",
+        "label": "Type theory",
+        "summary": "",
+        "aliases": [
+          "theory of types",
+          "type systems"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "person:franz-brentano",
+        "locale": "en",
+        "label": "Franz Brentano",
+        "summary": "",
+        "aliases": [
+          "Franz Clemens Brentano"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "person:allen-newell",
+        "locale": "en",
+        "label": "Allen Newell",
+        "summary": "",
+        "aliases": [],
+        "reviewed": false
+      },
+      {
+        "node_id": "person:herbert-simon",
+        "locale": "en",
+        "label": "Herbert A. Simon",
+        "summary": "",
+        "aliases": [
+          "Herbert Alexander Simon"
+        ],
+        "reviewed": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge:thermodynamics-part-of-physics",
+        "source": "subfield:thermodynamics",
+        "target": "field:physics",
+        "relation": "part_of",
+        "confidence": 0.95,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Opus",
+          "model_version": "claude-opus-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Structural tier, uncontested. enwiki lead states the membership directly; Wikidata Q11473 carries P31 = Q4162444 'branch of physics' and P361 (part of) = Q413 physics. Fills a real skeleton gap: field:physics already held subfield:statistical-physics but not thermodynamics itself."
+      },
+      {
+        "id": "edge:type-theory-part-of-mathematical-logic",
+        "source": "subfield:type-theory",
+        "target": "subfield:mathematical-logic",
+        "relation": "part_of",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:sep",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Opus",
+          "model_version": "claude-opus-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Co-equal §13 membership, first of two — the 1:1 mirror of subfield:computability-theory, which holds exactly this pair of parents (session #8). Both parents are named in one sentence by the primary source, so this is a written co-equal membership from the start, not a contest: enwiki 'In mathematical logic, and theoretical computer science, type theory is the study of formal systems…'; SEP 'The topic of type theory is fundamental both in logic and computer science.' Wikidata Q1056428 P31 = branch of mathematics, P1269 (facet of) names both Q1166618 mathematical logic and Q2878974 theoretical computer science. part_of chains may run deeper than the flat node levels (§12 structural rule 1 precedent). No primary-parent marker."
+      },
+      {
+        "id": "edge:type-theory-part-of-theoretical-computer-science",
+        "source": "subfield:type-theory",
+        "target": "subfield:theoretical-computer-science",
+        "relation": "part_of",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:sep",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Opus",
+          "model_version": "claude-opus-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Co-equal §13 membership, second of two — same single-sentence grounding as edge:type-theory-part-of-mathematical-logic, which it is co-equal with (no primary marker). enwiki also records the applied reach ('Type theories are used in the study of programming languages (type systems), formal logic, and the formalization of mathematics'), which is why the CS membership is a real classification home and not merely an application."
+      },
+      {
+        "id": "edge:franz-brentano-founded-intentionality",
+        "source": "person:franz-brentano",
+        "target": "concept:intentionality",
+        "relation": "founded_or_formalized",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:sep"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Four independent claim-stating sources agree on the same verb — Brentano *introduced/reintroduced* intentionality into contemporary philosophy (enwiki Franz Brentano; enwiki Intentionality; SEP 'Franz Brentano'; SEP 'Intentionality'). Record-not-resolve scope note: the concept is medieval-scholastic in origin and Brentano's act is a reintroduction, not an invention — every source says so explicitly, and the founder claim is scoped to its standing in contemporary philosophy. This edge replaces the over-attributed edge:edmund-husserl-founded-intentionality, deprecated in the same batch: the live sources state Husserl took the concept over from Brentano rather than founding it. Resolves the recheck-wave1-v1 hold whose recorded trigger was exactly 'person:franz-brentano node created'."
+      },
+      {
+        "id": "edge:franz-brentano-influenced-edmund-husserl",
+        "source": "person:franz-brentano",
+        "target": "person:edmund-husserl",
+        "relation": "influenced",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:sep"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Opus",
+          "model_version": "claude-opus-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "The relation the sources actually assert, written in place of the deprecated Husserl→intentionality founder edge (the same batch's honest re-model, §12 clause-1 mirror). enwiki Edmund Husserl: 'Franz Brentano is often credited as being his most important influence, e.g., with regard to intentionality' and 'Another important element that Husserl took over from Brentano was intentionality'; SEP 'Intentionality' describes Husserl as 'a student of Brentano's'; enwiki Franz Brentano records the inheritance of his intentionality work by Husserl's phenomenology. Direction is uncontested (Brentano 1838–1917 taught Husserl 1859–1938). Husserl's own contribution — the phenomenological analysis of intentionality via noema and epoché — is a development of the concept, recorded here as influence rather than as co-founding, because no source frames it as founding."
+      },
+      {
+        "id": "edge:allen-newell-founded-artificial-intelligence",
+        "source": "person:allen-newell",
+        "target": "subfield:artificial-intelligence",
+        "relation": "founded_or_formalized",
+        "confidence": 0.8,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Co-founder edge, record-not-resolve — joins the existing reviewed founder edges for John McCarthy and Marvin Minsky on this same field. Target corrected at QC from the generator's concept:symbolic-ai to subfield:artificial-intelligence: no source states that Newell founded symbolic AI as such, whereas two independent articles state the AI-founding claim (enwiki Symbolic artificial intelligence: 'their work laid the foundations of the field of artificial intelligence'; enwiki Logic Theorist: 'In 1955, when Newell and Simon began to work on the Logic Theorist, the field of artificial intelligence did not yet exist'). Recorded tension: enwiki Dartmouth workshop names Shannon, McCarthy, Rochester and Minsky as the 'founding fathers' and does not list Newell — the two framings are about different acts (convening the field's naming conference vs. building its first program), and both are kept."
+      },
+      {
+        "id": "edge:herbert-simon-founded-artificial-intelligence",
+        "source": "person:herbert-simon",
+        "target": "subfield:artificial-intelligence",
+        "relation": "founded_or_formalized",
+        "confidence": 0.8,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Co-founder edge, record-not-resolve — the twin of edge:allen-newell-founded-artificial-intelligence, not a duplicate of it: the sources name the two men jointly and the corpus records multiple founders. Same target correction and same tension note as that edge. enwiki Herbert A. Simon: 'Simon was a pioneer in the field of artificial intelligence, creating with Allen Newell the Logic Theory Machine (1956) and the General Problem Solver (GPS) (1957) programs'; enwiki Symbolic artificial intelligence carries the foundations claim naming both. Domain tag cognitive_sciences records this node's corpus role (the AI / cognitive-science founding, mirroring person:marvin-minsky); Simon's Nobel-recognized economics work is a separate, currently unmodelled strand."
+      },
+      {
+        "id": "edge:bertrand-russell-founded-type-theory",
+        "source": "person:bertrand-russell",
+        "target": "subfield:type-theory",
+        "relation": "founded_or_formalized",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:sep"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Relation corrected at QC from the generator's default reading and from the deprecated edge:bertrand-russell-influenced-computer-science: the live sources state origination, not downstream influence — SEP 'Type Theory': 'The theory of types was introduced by Russell in order to cope with some contradictions he found in his account of set theory'; enwiki Type theory: 'By 1908, Russell arrived at a ramified theory of types together with an axiom of reducibility, both of which appeared in Whitehead and Russell's Principia Mathematica'. Honest gap: Principia is co-authored with Whitehead, but both sources attribute the type theory specifically to Russell, and no person:alfred-north-whitehead node exists; a Whitehead co-founder edge is left for a later wave rather than asserted here. Resolves the recheck-wave1-v1 hold on the diffuse Russell→computer-science edge by re-grounding the claim at the grain the sources support."
+      }
+    ],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "edge",
+      "id": "edge:edmund-husserl-founded-intentionality",
+      "from": "proposed",
+      "to": "deprecated",
+      "set_note": "Deprecated 2026-07-29 (over-attribution on the identity/referent axis; decision-log session #60). The recheck-wave1-v1 hold anticipated a co-founder resolution once a Brentano node existed. Live re-verification does not support co-founding: enwiki Edmund Husserl states 'Another important element that Husserl took over from Brentano was intentionality', and SEP describes Husserl's contribution as his *analyses* and *interpretation* of intentionality. The founding claim is written on edge:franz-brentano-founded-intentionality and Husserl's actual relation on edge:franz-brentano-influenced-edmund-husserl, both in this batch."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:marvin-minsky-founded-symbolic-ai",
+      "from": "proposed",
+      "to": "deprecated",
+      "set_note": "Deprecated 2026-07-29 (wrong grain + already recorded; decision-log session #60). No source states that Minsky founded symbolic AI as such — enwiki Symbolic artificial intelligence places him inside it, in the 'scruffies' strand with Papert. The claim the sources do state is the AI-founding one (enwiki Marvin Minsky quoting the Computer History Museum: 'for co-founding the field of artificial intelligence'), and that claim is already carried by the reviewed edge:marvin-minsky-founded-artificial-intelligence. Mirrors the session-#49 drop rule (a candidate whose founded_or_formalized edge already exists) and the (108) referent-grain precedent."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:bertrand-russell-influenced-computer-science",
+      "from": "proposed",
+      "to": "deprecated",
+      "set_note": "Deprecated 2026-07-29 (grain; decision-log session #60). Its own recheck-wave1-v1 blocking condition read 'Diffuse/mediated (via Church, Curry–Howard, Martin-Löf) and field:computer-science too broad; a programming-languages/type-theory-grained target would be cleaner.' Re-grounded at that grain as edge:bertrand-russell-founded-type-theory in this batch, where the sources support origination rather than diffuse influence."
+    }
+  ],
+  "translation_updates": [],
+  "verdicts": [
+    {
+      "subject_id": "subfield:thermodynamics",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q11473",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q11473&oldid=2523293812"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Thermodynamics",
+          "retrieved_at": "2026-07-29",
+          "quote": "Thermodynamics is a branch of physics that deals with heat, work, and temperature, and their relation to energy, entropy, and the physical properties of matter and radiation.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Thermodynamics&oldid=1362668588"
+        }
+      ],
+      "notes": "Identity resolved live (wbsearchentities → wbgetentities, 2026-07-29): Q11473 'thermodynamics', 156 sitelinks, 85 properties, P31 = Q4162444 branch of physics + Q11862829 academic discipline, P279 = Q14632398 physical science, P361 = Q413 physics. Referent-precise: the discipline, not the history-of (Q2376736) or the quantum/statistical specializations (Q12212546 / Q25442324), all of which were returned in the same search and rejected. §12 dual criterion: (a) a major division of physics in every classification scheme; (b) departments, journals and degree tracks throughout. Admitted as coverage in its own right — its originally hoped-for edge demand did not survive QC (see the Lavoisier note)."
+    },
+    {
+      "subject_id": "subfield:type-theory",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q1056428",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q1056428&oldid=2518326441"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Type_theory",
+          "retrieved_at": "2026-07-29",
+          "quote": "In mathematical logic, and theoretical computer science, type theory is the study of formal systems that classify expressions or mathematical objects by their types.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Type_theory&oldid=1365858283"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/type-theory/",
+          "retrieved_at": "2026-07-29",
+          "quote": "The topic of type theory is fundamental both in logic and computer science.",
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/type-theory/"
+        }
+      ],
+      "notes": "Identity resolved live 2026-07-29: Q1056428 'type theory', en description 'study of type systems in mathematical logic and computer science', 26 sitelinks, P31 = Q1936384 branch of mathematics, P279 = Q649732 formal system, P1269 (facet of) = mathematics, logic, theoretical computer science, mathematical logic. Referent-precise: the discipline, not 'history of type theory' (Q5871008) or the unrelated book/dissertation items returned by the same search. This answers the generation subagent's own highest-priority QC flag — it could not tell whether the node meant the mathematical-logic discipline or narrow programming-language type systems, and flagged that the answer flips the correct relation for the Russell edge. The live sources settle it: the node is the discipline spanning both homes, which is why it is cross-listed rather than filed under one."
+    },
+    {
+      "subject_id": "person:franz-brentano",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q57196",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q57196&oldid=2516859871"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Franz_Brentano",
+          "retrieved_at": "2026-07-29",
+          "quote": "is credited with having reintroduced the medieval scholastic concept of intentionality into contemporary philosophy",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Franz_Brentano&oldid=1352550060"
+        }
+      ],
+      "notes": "Identity resolved live 2026-07-29: Q57196, P31 = Q5, P569 = 1838-01-16, P570 = 1917-03-17 (deceased — the deceased ladder applies, no living-person gate), 50 sitelinks, 171 properties. Disambiguated against three homonyms returned by the same search — Q94831774 (German painter), Q1446569 (Franz Dominicus Brentano), Q53157132 (Franz Anton Brentano)."
+    },
+    {
+      "subject_id": "person:allen-newell",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q439245",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q439245&oldid=2517465372"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Allen_Newell",
+          "retrieved_at": "2026-07-29",
+          "quote": "He and Simon were awarded the ACM Turing Award in 1975 for their contributions to artificial intelligence and the psychology of human cognition.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Allen_Newell&oldid=1343727464"
+        }
+      ],
+      "notes": "Identity resolved live 2026-07-29: Q439245, P31 = Q5, P569 = 1927-03-19, P570 = 1992-07-19 (deceased), 35 sitelinks, 72 properties. Only one person candidate returned by the search."
+    },
+    {
+      "subject_id": "person:herbert-simon",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q181529",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q181529&oldid=2515847517"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Herbert_A._Simon",
+          "retrieved_at": "2026-07-29",
+          "quote": "Simon was a pioneer in the field of artificial intelligence, creating with Allen Newell the Logic Theory Machine (1956) and the General Problem Solver (GPS) (1957) programs.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Herbert_A._Simon&oldid=1361323308"
+        }
+      ],
+      "notes": "Identity resolved live 2026-07-29: Q181529 'Herbert Simon', P31 = Q5, P569 = 1916-06-15, P570 = 2001-02-09 (deceased), 70 sitelinks, 156 properties. Disambiguated against four scientific-article items with 'Herbert A. Simon' in the title, returned by the same search."
+    },
+    {
+      "subject_id": "edge:franz-brentano-founded-intentionality",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Franz_Brentano",
+          "retrieved_at": "2026-07-29",
+          "quote": "is credited with having reintroduced the medieval scholastic concept of intentionality into contemporary philosophy",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Franz_Brentano&oldid=1352550060"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Intentionality",
+          "retrieved_at": "2026-07-29",
+          "quote": "The concept of intentionality was reintroduced in 19th-century contemporary philosophy by Franz Brentano",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Intentionality&oldid=1355666928"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/brentano/",
+          "retrieved_at": "2026-07-29",
+          "quote": "is mainly known for his work in philosophy of psychology, especially for having introduced the notion of intentionality to contemporary philosophy",
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/brentano/"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/intentionality/",
+          "retrieved_at": "2026-07-29",
+          "quote": "ever since the idea, if not the word itself, was introduced into philosophy by Franz Brentano in the last quarter of the nineteenth century",
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/intentionality/"
+        }
+      ],
+      "notes": "Four independent claim-stating sources, two publishers. Direction is unambiguous in all four (Brentano → the concept). Adversarial check: the competing attribution is to medieval scholasticism, which every source names explicitly and which the scope note records — that is a scope qualification, not a rival founder, so it is a supported-plus-note case rather than a disputed one (the existence-vs-degree line, §8 clause-6 v2). Second adversarial check: the previously-recorded rival was Husserl, and the same sources place him downstream of Brentano — see the Husserl deprecation in this batch.",
+      "direction_confirmed": true
+    },
+    {
+      "subject_id": "edge:franz-brentano-influenced-edmund-husserl",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Edmund_Husserl",
+          "retrieved_at": "2026-07-29",
+          "quote": "Another important element that Husserl took over from Brentano was intentionality",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Edmund_Husserl&oldid=1365533587"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/intentionality/",
+          "retrieved_at": "2026-07-29",
+          "quote": "who was both the founder of phenomenology and a student of Brentano's",
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/intentionality/"
+        }
+      ],
+      "notes": "Two independent claim-stating sources, two publishers, plus a third corroboration in enwiki Edmund Husserl ('Franz Brentano is often credited as being his most important influence, e.g., with regard to intentionality'). No dissent found on existence or direction; the teacher-student relation is a matter of record. Not disputed.",
+      "direction_confirmed": true
+    },
+    {
+      "subject_id": "edge:allen-newell-founded-artificial-intelligence",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence",
+          "retrieved_at": "2026-07-29",
+          "quote": "Herbert Simon and Allen Newell studied human problem-solving skills and attempted to formalize them, and their work laid the foundations of the field of artificial intelligence",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Symbolic_artificial_intelligence&oldid=1360607279"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Logic_Theorist",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1955, when Newell and Simon began to work on the Logic Theorist, the field of artificial intelligence did not yet exist",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Logic_Theorist&oldid=1366443812"
+        }
+      ],
+      "notes": "Two independent claim-stating articles (decision (62) operational interpretation: distinct articles count as independent sources, and the lower source diversity — both Wikipedia — is recorded honestly rather than hidden). Adversarial counter-evidence WAS found and is recorded on the edge: enwiki Dartmouth workshop lists the field's 'founding fathers' as Shannon, McCarthy, Rochester and Minsky, omitting Newell. Judged existence-agreed / share-debated rather than existence-contested — the two source families describe different founding acts — so the §8 rule routes it to supported + tension note, not disputed. Target grain corrected from the generator's concept:symbolic-ai: no source asserts a symbolic-AI founding for anyone, which was the generation subagent's own third QC flag ('all four trace back to a single piece of internal provenance'). That flag was correct and is why the whole symbolic-AI founder cluster was re-grounded.",
+      "direction_confirmed": true
+    },
+    {
+      "subject_id": "edge:herbert-simon-founded-artificial-intelligence",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Symbolic_artificial_intelligence",
+          "retrieved_at": "2026-07-29",
+          "quote": "Herbert Simon and Allen Newell studied human problem-solving skills and attempted to formalize them, and their work laid the foundations of the field of artificial intelligence",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Symbolic_artificial_intelligence&oldid=1360607279"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Herbert_A._Simon",
+          "retrieved_at": "2026-07-29",
+          "quote": "Simon was a pioneer in the field of artificial intelligence, creating with Allen Newell the Logic Theory Machine (1956) and the General Problem Solver (GPS) (1957) programs.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Herbert_A._Simon&oldid=1361323308"
+        }
+      ],
+      "notes": "Two independent claim-stating articles; same adversarial counter-evidence and same existence-vs-share ruling as the Newell edge. Wording check: the person article says 'pioneer', the field article says 'laid the foundations of the field' — the founding claim rests on the latter, and the note keeps both framings rather than upgrading 'pioneer' silently.",
+      "direction_confirmed": true
+    },
+    {
+      "subject_id": "edge:bertrand-russell-founded-type-theory",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/type-theory/",
+          "retrieved_at": "2026-07-29",
+          "quote": "The theory of types was introduced by Russell in order to cope with some contradictions he found in his account of set theory",
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/type-theory/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Type_theory",
+          "retrieved_at": "2026-07-29",
+          "quote": "By 1908, Russell arrived at a ramified theory of types together with an axiom of reducibility",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Type_theory&oldid=1365858283"
+        }
+      ],
+      "notes": "Two independent claim-stating sources, two publishers, both asserting origination. Adversarial checks: (1) Whitehead's co-authorship of Principia — both sources attribute the type theory itself to Russell, and Principia is named as where it appeared, so the attribution survives; the gap is recorded on the edge rather than papered over. (2) Later type theories (Church's simple theory, Martin-Löf's intuitionistic type theory, both named in the same enwiki article) are successors within the discipline, not rival founders. (3) The precursor question — Frege's stratification — is not framed by either source as the founding of type theory.",
+      "direction_confirmed": true
+    },
+    {
+      "subject_id": "edge:thermodynamics-part-of-physics",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Thermodynamics",
+          "retrieved_at": "2026-07-29",
+          "quote": "Thermodynamics is a branch of physics that deals with heat, work, and temperature, and their relation to energy, entropy, and the physical properties of matter and radiation.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Thermodynamics&oldid=1362668588"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q11473",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q11473&oldid=2523293812"
+        }
+      ],
+      "notes": "Structural tier. Wikidata carries both P31 = branch of physics and P361 = physics; the enwiki lead states it in one sentence. Uncontested."
+    },
+    {
+      "subject_id": "edge:type-theory-part-of-mathematical-logic",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Type_theory",
+          "retrieved_at": "2026-07-29",
+          "quote": "In mathematical logic, and theoretical computer science, type theory is the study of formal systems that classify expressions or mathematical objects by their types.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Type_theory&oldid=1365858283"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/type-theory/",
+          "retrieved_at": "2026-07-29",
+          "quote": "The topic of type theory is fundamental both in logic and computer science.",
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/type-theory/"
+        }
+      ],
+      "notes": "Structural tier, §13 co-equal membership. Both memberships are asserted by the same lead sentence, so neither parent is a minority claim; this is the cleanest possible §13 case and the direct mirror of subfield:computability-theory's two parents."
+    },
+    {
+      "subject_id": "edge:type-theory-part-of-theoretical-computer-science",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Type_theory",
+          "retrieved_at": "2026-07-29",
+          "quote": "In mathematical logic, and theoretical computer science, type theory is the study of formal systems that classify expressions or mathematical objects by their types.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Type_theory&oldid=1365858283"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/type-theory/",
+          "retrieved_at": "2026-07-29",
+          "quote": "The topic of type theory is fundamental both in logic and computer science.",
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/type-theory/"
+        }
+      ],
+      "notes": "Structural tier, §13 co-equal membership (second parent). §13's session-#45 guard was checked explicitly: this is not an 'applied across' case being forced into membership — the classification source names theoretical computer science as a home in the definitional sentence, which is exactly the grounding social-choice-theory failed to produce."
+    },
+    {
+      "subject_id": "edge:antoine-lavoisier-influenced-physics",
+      "verdict": "not_enough_evidence",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Thermodynamics",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Thermodynamics&oldid=1362668588"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/History_of_thermodynamics",
+          "retrieved_at": "2026-07-29",
+          "quote": "Joseph Black and Antoine Lavoisier made important contributions in the precise measurement of heat changes using the calorimeter, a subject which became known as thermochemistry",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=History_of_thermodynamics&oldid=1348030733"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Thermochemistry",
+          "retrieved_at": "2026-07-29",
+          "quote": "The world's first ice-calorimeter, used in the winter of 1782–83, by Antoine Lavoisier and Pierre-Simon Laplace, to determine the heat evolved in various chemical changes",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Thermochemistry&oldid=1353863068"
+        }
+      ],
+      "notes": "★ The recorded trigger was refuted by live evidence, which is the batch's most important negative result. The recheck-wave1-v1 hold read 'a thermodynamics-grained target would be accurate but no such node exists yet. Trigger: thermodynamics-class node created.' On live check that premise does not hold: enwiki Thermodynamics does not mention Lavoisier at all (0 occurrences), and enwiki History of thermodynamics routes his heat work to *thermochemistry*, not thermodynamics. Retargeting to the thermochemistry grain was then tested and also failed the bar: the only foundation sentence available ('These experiments mark the foundation of thermochemistry') carries an inline [citation needed] tag and refers to Black's experiments, while the Lavoisier sentence is a joint contribution claim, not a founding claim, and is a single source. Verdict NEI (§8 clause-6 v2 branch 5) — about our evidence, not about the world. The edge stays proposed and held with a corrected blocking condition; subfield:thermodynamics is still admitted in this batch, on the §12 dual criterion in its own right, not on this edge demand."
+    }
+  ],
+  "identity": [
+    {
+      "node_id": "subfield:thermodynamics",
+      "provider": "wikidata",
+      "external_id": "Q11473",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "subfield:type-theory",
+      "provider": "wikidata",
+      "external_id": "Q1056428",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "person:franz-brentano",
+      "provider": "wikidata",
+      "external_id": "Q57196",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "person:allen-newell",
+      "provider": "wikidata",
+      "external_id": "Q439245",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "person:herbert-simon",
+      "provider": "wikidata",
+      "external_id": "Q181529",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "subfield:thermodynamics",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "subfield:type-theory",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:franz-brentano",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:allen-newell",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:herbert-simon",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "edge:thermodynamics-part-of-physics",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:type-theory-part-of-mathematical-logic",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:type-theory-part-of-theoretical-computer-science",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:franz-brentano-founded-intentionality",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:franz-brentano-influenced-edmund-husserl",
+      "ladder": "a-relation-auto-68"
+    },
+    {
+      "subject_id": "edge:allen-newell-founded-artificial-intelligence",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:herbert-simon-founded-artificial-intelligence",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:bertrand-russell-founded-type-theory",
+      "ladder": "founded-or-formalized-auto-60"
+    }
+  ],
+  "rejections": [
+    {
+      "label": "Marvin Minsky influenced/founded type theory",
+      "referent": "person:marvin-minsky → subfield:type-theory, any relation",
+      "kind": "edge",
+      "reason": "Rejection probe, planted by the orchestrator and declined by the generation subagent before QC saw it: 'Minsky's documented work has no known connection to formal type theory, and I know of no claim-stating source linking them.' Confirmed at QC — no source in the batch corpus links them. Probe fired correctly.",
+      "batch_id": "held-trigger-nodes-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "label": "Herbert Simon influenced/founded thermodynamics",
+      "referent": "person:herbert-simon → subfield:thermodynamics, any relation",
+      "kind": "edge",
+      "reason": "Rejection probe, planted by the orchestrator and declined by the generation subagent before QC saw it: the entropy-adjacent language in The Sciences of the Artificial is 'metaphorical borrowing, not a sourceable scholarly contribution.' Confirmed at QC. Probe fired correctly.",
+      "batch_id": "held-trigger-nodes-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "label": "John McCarthy founded symbolic AI",
+      "referent": "person:john-mccarthy → concept:symbolic-ai, founded_or_formalized",
+      "kind": "edge",
+      "reason": "Duplicate at a wrong grain. The generation subagent proposed it while flagging the overlap itself; QC rejects it. The sourced claim is the AI-founding one (enwiki John McCarthy: 'He was one of the founders of the discipline of artificial intelligence'), already carried by the reviewed edge:john-mccarthy-founded-artificial-intelligence. No source states a symbolic-AI founding. Session-#49 drop rule (founded_or_formalized already exists) plus the grain correction applied to the whole symbolic-AI cluster in this batch.",
+      "batch_id": "held-trigger-nodes-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "label": "Allen Newell / Herbert Simon founded symbolic AI",
+      "referent": "person:allen-newell and person:herbert-simon → concept:symbolic-ai, founded_or_formalized",
+      "kind": "edge",
+      "reason": "Rejected at the proposed grain and re-grounded, not dropped: no source asserts a symbolic-AI founding for either man; enwiki Symbolic artificial intelligence describes their work inside the paradigm. The claim the sources do state is the AI-founding one, written in this batch as edge:allen-newell-founded-artificial-intelligence and edge:herbert-simon-founded-artificial-intelligence. Recorded so a later wave does not silently re-propose the symbolic-AI form.",
+      "batch_id": "held-trigger-nodes-v1",
+      "recorded_at": "2026-07-29"
+    }
+  ],
+  "held": [
+    {
+      "id": "edge:antoine-lavoisier-influenced-physics",
+      "blocking_condition": "Held since recheck-wave1-v1 (2026-07-02) as too broad at field:physics, with the recorded trigger 'thermodynamics-class node created'. That trigger is now RETIRED as refuted: subfield:thermodynamics was created in held-trigger-nodes-v1 (2026-07-29) and the retarget still fails. Live evidence — enwiki Thermodynamics does not mention Lavoisier at all; enwiki History of thermodynamics assigns his calorimetry work to thermochemistry ('a subject which became known as thermochemistry'); enwiki Thermochemistry's only foundation sentence carries an inline [citation needed] and is about Black's experiments. Verdict NEI at every grain tested (physics, thermodynamics, thermochemistry). New unblock condition: ≥2 independent claim-stating sources asserting a *founding or influence* relation between Lavoisier and a specific heat-science discipline — not a contribution/apparatus claim, and not a [citation needed] sentence. A subfield:thermochemistry node would be the natural target if such sources are found; it is deliberately NOT created on this batch's speculative demand.",
+      "recheck": "manual",
+      "batch_id": "held-trigger-nodes-v1",
+      "recorded_at": "2026-07-29",
+      "note": "Supersedes the recheck-wave1-v1 entry. The correction itself is the finding: a hold's recorded trigger is a hypothesis, and this one did not survive its own test. Cf. decision (110), where a recorded diagnosis ('SPN circuit open, awaiting recovery') was likewise a misdiagnosis."
+    }
+  ],
+  "held_resolutions": [
+    {
+      "id": "edge:edmund-husserl-founded-intentionality",
+      "reason": "Closed by deprecation in this batch. The hold's trigger (a Brentano node) fired, and the resolution is that the founder claim belongs to Brentano alone — Husserl's relation is recorded as edge:franz-brentano-influenced-edmund-husserl. No further work on this id."
+    },
+    {
+      "id": "edge:marvin-minsky-founded-symbolic-ai",
+      "reason": "Closed by deprecation in this batch. The hold's trigger (co-founder person nodes) fired, and the resolution is that the founder claim exists only at the artificial-intelligence grain, where Minsky already holds a reviewed edge. No further work on this id."
+    },
+    {
+      "id": "edge:bertrand-russell-influenced-computer-science",
+      "reason": "Closed by deprecation in this batch. The hold's trigger (a type-theory-class node) fired, and the claim was re-grounded as edge:bertrand-russell-founded-type-theory. No further work on this id."
+    }
+  ],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Track B of session #60 — the held-trigger node wave. Roadmap item (b), the branch chosen first because it is the only one that expands coverage and clears held items at the same time.",
+    "Regime (§15.7): the five node adds are identity-dominated and orchestrator-drafted (every promotion signal is resolver-verified). The propositional edges include LLM verdicts, so they came from a separated-context generation subagent (Claude Sonnet 5, proposal-generator, foundry/proposals/held-trigger-nodes-v1/edges.proposed.json) and were QC'd here against live sources. Two rejection probes were planted in the generation order and both fired before QC saw them.",
+    "★ QC overturned three of the four planned resolutions, in each case by fetching the page instead of trusting the recorded trigger. (1) The symbolic-AI founder cluster: no source states that Minsky, McCarthy, Newell or Simon founded *symbolic AI*; the sourced claim is at the artificial-intelligence grain, where McCarthy and Minsky already hold reviewed edges. Newell and Simon are added there; Minsky's symbolic-AI edge is deprecated as a wrong-grain duplicate. (2) Husserl→intentionality: the anticipated co-founder resolution is refuted — the sources say Husserl took the concept over from Brentano — so the founder edge is deprecated and replaced by Brentano→intentionality plus Brentano→influenced→Husserl. (3) Lavoisier: the recorded trigger itself was wrong; see that hold's corrected blocking condition.",
+    "The generation subagent's own top QC flags were both correct and both changed the outcome: it could not tell which referent subfield:type-theory named (settled live: the discipline spanning mathematical logic and theoretical CS, hence the §13 cross-listing), and it warned that all four symbolic-AI founder edges traced back to one internal note rather than to any live source. That warning is exactly what the live check confirmed. Recording it because it is evidence that the generation/QC split is doing the work it was designed to do — the generator flagged a laundering risk in its own output.",
+    "subfield:thermodynamics is kept even though the edge demand that motivated it evaporated: a missing top-level branch of physics is a real skeleton gap under the §12 dual criterion (field:physics carried statistical-physics but not thermodynamics), and subfield admission is dual-criterion, not edge-demand, unlike concept/work admission.",
+    "Deceased-ladder check: all three new persons carry a live P570 (Brentano 1917, Newell 1992, Simon 2001), so the living-person policy (70) does not engage and no escalation signal exists in this batch.",
+    "Nodes land reviewed with indexable:false and empty summaries; the editorial batch that earns their public surface follows as a separate batch, per the earned rule."
+  ]
+}

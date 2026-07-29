@@ -55,6 +55,14 @@ const EDGE_AUTO_LADDER: Record<string, Ladder> = {
   founded_or_formalized: "founded-or-formalized-auto-60",
   influenced: "a-relation-auto-68",
   critiques: "a-relation-auto-68",
+  // Decision (88), §8: the canonical_work-edge auto-`reviewed` ladder, opened as
+  // the 1:1 mirror of (60)/(61). Transcribed 2026-07-29 — it had been ratified
+  // since session #48 but never entered this map, so no ladder could sanction a
+  // canonical_work edge. Work waves 1–5 predate the §15 decision-file toolchain,
+  // so work-wave6 was the first canonical_work batch to reach ladder-check and
+  // the first to surface the gap. §15.4 declares policy/code divergence a
+  // stop-point; this is the transcription of ratified policy, not a new rule.
+  canonical_work: "canonical-work-auto-88",
 };
 
 // Ratified 2026-07-02 — clause 6 and the structural tier sanction classification
@@ -336,6 +344,7 @@ export function checkLadders(input: LadderInput): LadderFinding[] {
     } else if (
       ladder === "formalizes-auto-54" ||
       ladder === "founded-or-formalized-auto-60" ||
+      ladder === "canonical-work-auto-88" ||
       ladder === "a-relation-auto-68"
     ) {
       const expected = EDGE_AUTO_LADDER[edge.relation];

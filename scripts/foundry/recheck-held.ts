@@ -8,7 +8,9 @@
  *    item's CURRENT /data state next to its recorded blocking condition —
  *    a promotion blocker that has since cleared shows up instead of rotting.
  *    `recheck: machine` entries whose referenced edge now has all-reviewed
- *    endpoints are flagged UNBLOCKED.
+ *    endpoints are flagged UNBLOCKED. `recheck: trigger` entries are split out
+ *    as TRIGGER WATCH — they clear only on an upstream event, so they are not
+ *    open work and must not inflate the session-start worklist.
  *
  * 2. Derived sweep (/data): every `proposed` node/edge, grouped by what
  *    still blocks it — endpoint-not-reviewed (with the endpoint named),
@@ -38,22 +40,45 @@ const nodesById = new Map(data.nodes.map((n) => [String(n.id), n]));
 const edgesById = new Map(data.edges.map((e) => [String(e.id), e]));
 
 // --- 1. Ledger sweep -------------------------------------------------------------
+// Two groups, because a flat list overstates the open worklist. `recheck:
+// trigger` entries are watch items: the ruling that held them recorded an
+// UPSTREAM condition (an entity gains standing, a taxonomy authority admits a
+// unit, a design lands), so there is nothing to push on until it fires. The
+// flag is carried on the entry rather than inferred from status, because
+// `deprecated` is ambiguous — a deprecation may or may not record a trigger,
+// and an honest parked gap can sit at `proposed` with the same semantics.
+// A hold that is terminally over leaves the ledger entirely, via a decision
+// file's `held_resolutions` (or automatically, on promotion to reviewed).
+function renderHeldEntry(h: (typeof held)[number]): void {
+  const item = h.id ? nodesById.get(h.id) ?? edgesById.get(h.id) : undefined;
+  let state = h.id ? (item ? `status=${item.status}` : "NOT IN /data") : "(no id — foundry-only)";
+  let verdict = "";
+  if (h.id && item && edgesById.has(h.id)) {
+    const source = nodesById.get(String(item.source));
+    const target = nodesById.get(String(item.target));
+    const blocked = [source, target].filter((n) => n && n.status !== "reviewed");
+    if (blocked.length === 0 && h.recheck === "machine") verdict = "  ← UNBLOCKED? endpoints all reviewed";
+    else if (blocked.length > 0) state += `; blocking endpoints: ${blocked.map((n) => n!.id).join(", ")}`;
+  }
+  console.log(`  [${h.recheck}] ${h.id ?? h.label} (${h.batch_id}, ${h.recorded_at})`);
+  console.log(`      blocked on: ${h.blocking_condition}`);
+  console.log(`      now: ${state}${verdict}\n`);
+}
+
+const openHeld = held.filter((h) => h.recheck !== "trigger");
+const triggerWatch = held.filter((h) => h.recheck === "trigger");
+
 if (held.length > 0) {
-  console.log(`Held ledger (${held.length} entr(ies)):\n`);
-  for (const h of held) {
-    const item = h.id ? nodesById.get(h.id) ?? edgesById.get(h.id) : undefined;
-    let state = h.id ? (item ? `status=${item.status}` : "NOT IN /data") : "(no id — foundry-only)";
-    let verdict = "";
-    if (h.id && item && edgesById.has(h.id)) {
-      const source = nodesById.get(String(item.source));
-      const target = nodesById.get(String(item.target));
-      const blocked = [source, target].filter((n) => n && n.status !== "reviewed");
-      if (blocked.length === 0 && h.recheck === "machine") verdict = "  ← UNBLOCKED? endpoints all reviewed";
-      else if (blocked.length > 0) state += `; blocking endpoints: ${blocked.map((n) => n!.id).join(", ")}`;
-    }
-    console.log(`  [${h.recheck}] ${h.id ?? h.label} (${h.batch_id}, ${h.recorded_at})`);
-    console.log(`      blocked on: ${h.blocking_condition}`);
-    console.log(`      now: ${state}${verdict}\n`);
+  console.log(
+    `Held ledger: ${openHeld.length} open, ${triggerWatch.length} trigger-watch (${held.length} total).\n`,
+  );
+  if (openHeld.length > 0) {
+    console.log("Open holds (there is work to do):\n");
+    for (const h of openHeld) renderHeldEntry(h);
+  }
+  if (triggerWatch.length > 0) {
+    console.log("Trigger watch (blocked upstream — act only if the recorded trigger fires):\n");
+    for (const h of triggerWatch) renderHeldEntry(h);
   }
 } else {
   console.log("Held ledger: empty.\n");

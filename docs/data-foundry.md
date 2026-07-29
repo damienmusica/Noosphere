@@ -1401,6 +1401,19 @@ reviewed? ≥2 independent sources? living guard? which clause?) is pure code, i
 session. **A divergence between this code and ratified policy text is a stop-point** — fix the
 transcription in the same change as the vault ruling, never silently.
 
+**Second divergence caught in production (2026-07-29, session #60, batch `work-wave6-v1`).** Decision
+(88) opened the `canonical_work`-edge auto-`reviewed` ladder in session #48 as the 1:1 mirror of
+(60)/(61), and §8 documents it in full — but `EDGE_AUTO_LADDER` in `lib/ladders.ts` had no entry for
+the relation, so **no ladder could sanction a `canonical_work` edge at all**. Work waves 1–5 all
+predate this toolchain (§15 landed in session #54), so work-wave6 was the first `canonical_work` batch
+ever to run through `ladder-check` — which is why a four-wave-old gap surfaced only then. Fixed by
+transcription in the same change: ladder id `canonical-work-auto-88` added to `ladderSchema` and to
+the relation map, and admitted to the propositional branch that already enforces supported-verdict,
+≥2 independent claim-stating sources, `direction_confirmed` and `identity_referent_verified`. No
+policy was added and nothing relaxed. **The general lesson: a ladder's transcription is only exercised
+when a batch of that relation runs through the gate, so relation families that have not had a batch
+since §15 are the places to expect further gaps.**
+
 Metadata-flip refinement (CPO-ratified 2026-07-02, the first divergence this stop-point caught in
 production): a `reviewed→reviewed` promotion op is a **metadata flip** (`set_indexable` /
 `set_note`), not a promotion — it does not (re)earn reviewed status and demands no node ladder.
@@ -1449,13 +1462,40 @@ In practice:
 
 ### 15.8 Ledgers: held and rejected candidates
 
-`foundry/held.json` (blocked items with their blocking condition and machine/manual recheck flag)
-and `foundry/rejections.json` (rejected candidates with reasons; created on first use — absent until
+`foundry/held.json` (blocked items with their blocking condition and a recheck flag) and
+`foundry/rejections.json` (rejected candidates with reasons; created on first use — absent until
 the first rejection is ledgered) are appended by `apply-batch` from
 each decision file. `foundry:recheck-held` renders both against current `/data` state at session
 start — a cleared blocker surfaces instead of rotting, and `apply-batch` refuses to silently
 re-admit a rejected label (`override_rejections` makes re-admission explicit). Generation orders
 should paste the relevant rejection-ledger entries into the subagent's context.
+
+**The held ledger is a worklist, not the audit trail** — the audit trail is the decision files. Three
+ways an entry leaves or changes state, all of them deliberate:
+
+- **Resolved** — the id is promoted to `reviewed`; `apply-batch` drops the entry automatically,
+  because the blocking condition provably no longer exists.
+- **Closed** — the hold ended in a terminal disposition that is *not* a promotion (the id was
+  deprecated, or a modeling ruling re-scoped the work onto a different id). The decision file states
+  this in **`held_resolutions: [{ id, reason }]`** and `apply-batch` drops the entry, logging the
+  reason. Closure is *stated*, never inferred from status: a deprecation may or may not record a
+  regeneration trigger, so `deprecated` alone decides nothing. `apply-batch` refuses a closure whose
+  id is not on the worklist (a typo must not pass as a silent no-op) and refuses an id that is both
+  held and closed in the same decision.
+- **Trigger-watch** — the entry stays, but `recheck: "trigger"` records that it clears only on an
+  **upstream** event nobody here can act on (an entity gains multi-signal standing; a taxonomy
+  authority is admitted to the (102) registry; a deferred design lands). `recheck-held` renders
+  those in their own group and counts open vs trigger-watch separately, so watch items do not
+  inflate the session-start worklist. This flag lives on the entry rather than being derived from
+  `/data`, because a parked gap can honestly sit at `proposed` (`subfield:modern-history`) while a
+  terminally-closed item sits at `deprecated`.
+
+**Why (measured 2026-07-29/30, batch `held-ledger-hygiene-v1`).** Until then `apply-batch` had exactly
+one exit from the worklist — promotion to `reviewed` — so the six entries that decisions (106)/(108)
+closed or parked on 2026-07-03 kept surfacing at every session start as open work. Of the five whose
+item was by then `deprecated`, only two were terminally over; the other three carried live
+re-creation triggers, and a fourth trigger entry was parked at `proposed`. A status-derived rule
+would have dropped three live triggers and kept one — which is why both mechanisms are explicit data.
 
 ### 15.9 Editorial-gap dashboard
 

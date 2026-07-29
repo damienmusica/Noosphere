@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "batch_id": "a-relations-wave7-v1",
+  "decided_at": "2026-07-29",
+  "qc_by": {
+    "model_name": "Claude Opus",
+    "model_version": "claude-opus-5",
+    "proposed_at": "2026-07-29"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "edge",
+      "id": "edge:john-von-neumann-influenced-computer-systems",
+      "from": "proposed",
+      "to": "reviewed",
+      "set_note": "Promoted 2026-07-29 (a-relations-wave7-v1, ladder (68)). Both recorded blockers are resolved. (1) The status cap: the target subfield:computer-systems was `proposed` when this edge was written and has since been promoted to `reviewed` under node-policy v1.4 (ACM CCS anchor, decision (102)) — clause 3 no longer blocks it. (2) The sourcing: two independent claim-stating articles now support it — enwiki First Draft of a Report on the EDVAC (\"It contains the first published description of the logical design of a computer using the stored-program concept, which has come to be known as the von Neumann architecture\") and enwiki Von Neumann architecture (\"is a computer architecture based on the First Draft of a Report on the EDVAC , written by John von Neumann in 1945, describing designs discussed with John Mauchly and J.\"). The attribution dispute the original note flagged is preserved rather than resolved: the same source states \"the name has become controversial due to von Neumann's failure to name other contributors\", and the second names Mauchly and Eckert as participants in the designs discussed. That is a credit-and-share contest on top of an agreed authorship and influence — the existence-vs-share line of §8 clause-6 v2 — so it routes to supported plus this note, the same ruling shape applied to Einstein and relativity in person-wave11-v1 the same day. Neither Mauchly nor Eckert is a corpus node; honest gap."
+    }
+  ],
+  "translation_updates": [],
+  "verdicts": [
+    {
+      "subject_id": "edge:john-von-neumann-influenced-computer-systems",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/First_Draft_of_a_Report_on_the_EDVAC",
+          "retrieved_at": "2026-07-29",
+          "quote": "It contains the first published description of the logical design of a computer using the stored-program concept, which has come to be known as the von Neumann architecture",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=First_Draft_of_a_Report_on_the_EDVAC&oldid=1351402508"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Von_Neumann_architecture",
+          "retrieved_at": "2026-07-29",
+          "quote": "is a computer architecture based on the First Draft of a Report on the EDVAC , written by John von Neumann in 1945, describing designs discussed with John Mauchly and J.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Von_Neumann_architecture&oldid=1360745761"
+        }
+      ],
+      "notes": "The one recheck candidate `foundry:recheck-held` surfaced at session start with no structural blocker. Adversarial counter-evidence was sought and found in the sources themselves — the naming controversy over von Neumann's failure to credit the Moore School team — and it is a share dispute, not an existence or direction dispute: both articles state that he wrote the 1945 report and that the architecture derives from it. Supported + note under the existence-vs-share line, consistent with the relativity ruling made earlier in this same session."
+    }
+  ],
+  "identity": [],
+  "sanctions": [
+    {
+      "subject_id": "edge:john-von-neumann-influenced-computer-systems",
+      "ladder": "a-relation-auto-68"
+    }
+  ],
+  "rejections": [],
+  "held": [
+    {
+      "id": "edge:cybernetics-influenced-systems-engineering",
+      "blocking_condition": "Re-measured live 2026-07-29 (a-relations-wave7-v1) and STILL THIN — the recheck-wave1-v1 condition is confirmed, not merely carried forward. The requirement was a second independent claim-stating source. There is none: the enwiki Cybernetics article does not mention systems engineering at all (zero occurrences), and the enwiki Systems engineering article names cybernetics only inside an enumeration of fields it \"overlaps\" — \"industrial engineering, production systems engineering, process systems engineering, mechanical engineering, ... cybernetics, aerospace engineering, organizational studies, civil engineering and project management\". An overlap list is not a claim that A influenced B; treating it as one would be exactly the manufactured-relation failure clause-6 v2 guards against. Unblock unchanged: a source that states the influence.",
+      "recheck": "manual",
+      "batch_id": "a-relations-wave7-v1",
+      "recorded_at": "2026-07-29",
+      "note": "Supersedes the recheck-wave1-v1 entry of 2026-07-02 to record the fresh measurement date. The substance is unchanged, and that is the finding."
+    },
+    {
+      "id": "edge:kurt-lewin-influenced-education",
+      "blocking_condition": "Re-measured live 2026-07-29 (a-relations-wave7-v1) and STILL THIN. The requirement was a second independent, Lewin-specific claim-stating source (the original generator's second source turned out to be about Dewey). The enwiki Kurt Lewin article yields no claim that he influenced education as a discipline — the only education-related passages are about his own schooling. Unblock unchanged.",
+      "recheck": "manual",
+      "batch_id": "a-relations-wave7-v1",
+      "recorded_at": "2026-07-29",
+      "note": "Supersedes the recheck-wave1-v1 entry of 2026-07-02 to record the fresh measurement date."
+    },
+    {
+      "id": "edge:ronald-fisher-influenced-epidemiology",
+      "blocking_condition": "Re-measured live 2026-07-29 (a-relations-wave7-v1) and STILL THIN. The epidemiology-specific link is not surfaced by either endpoint's article: the enwiki Ronald Fisher article's only epidemiology occurrence is a journal name inside a reference, and the enwiki Epidemiology article does not mention Fisher at all. The original triage's observation that Bradford Hill is the more direct figure stands. Unblock unchanged: a claim-stating source for a Fisher-to-epidemiology influence, or a re-ruling that the accurate claim belongs on statistics rather than epidemiology.",
+      "recheck": "manual",
+      "batch_id": "a-relations-wave7-v1",
+      "recorded_at": "2026-07-29",
+      "note": "Supersedes the recheck-wave1-v1 entry of 2026-07-02 to record the fresh measurement date. Mirrors the wave-3 evolutionary-biology-to-epidemiology hold, which fails the same way."
+    }
+  ],
+  "held_resolutions": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Track F of session #60 — (a)-relations wave 7, run as a re-adjudication wave. That is the same shape as a-relations-wave6-v1 (decision (95)), which re-grounded held influenced/critiques edges from the orchestrator context rather than generating new candidates; §15.7's separated-generation requirement governs generation, and re-adjudicating an existing /data edge against live sources is a verdict, not a proposal.",
+    "Outcome: 1 promotion, 3 holds re-confirmed by live measurement. A modest wave by count, and an honest one — three of the four candidates were tested and failed, which is the result rather than a shortfall.",
+    "★ The promotion clears the single recheck candidate `foundry:recheck-held` surfaced at session start. Both of its recorded blockers had to be checked separately: the status cap (its target subfield:computer-systems was `proposed` when the edge was written, and was promoted under node-policy v1.4 by decision (102) in the meantime) and the sourcing. Two independent claim-stating articles now support it.",
+    "★ The attribution dispute is preserved, not resolved — and the ruling is deliberately the same shape as the relativity ruling made earlier in this session. enwiki states the von Neumann architecture name \"has become controversial due to von Neumann's failure to name other contributors\", and the companion article names Mauchly and Eckert as participants in the designs discussed. Both articles nonetheless state that he wrote the 1945 report and that the architecture derives from it. Existence and direction agreed, credit contested → supported + note, under §8's existence-vs-share line. Two priority disputes adjudicated the same way in one session is the consistency that discipline is for.",
+    "★ The three re-confirmed holds are the batch's substantive content, because each was tested against a specific, falsifiable condition and each failed for a stated reason. cybernetics→systems-engineering deserves the sharpest note: the only candidate second source is an enumeration of fields systems engineering \"overlaps\", and reading an overlap list as an influence claim is precisely the manufactured-relation failure clause-6 v2 exists to prevent. Recording why a plausible-looking source does not count is worth more than the hold itself.",
+    "All three holds are re-stamped with today's date so the ledger shows when each was last actually measured rather than rotting at its 2026-07-02 stamp — the same hygiene applied in Track A and Track C.",
+    "[NO-EXTERNAL-EVIDENCE] does not apply: this batch's verdict rests on live pages, anchored below."
+  ]
+}

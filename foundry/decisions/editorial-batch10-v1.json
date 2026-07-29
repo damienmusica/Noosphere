@@ -1,0 +1,261 @@
+{
+  "version": 1,
+  "batch_id": "editorial-batch10-v1",
+  "decided_at": "2026-07-29",
+  "qc_by": {
+    "model_name": "Claude Opus",
+    "model_version": "claude-opus-5",
+    "proposed_at": "2026-07-29"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "node",
+      "id": "work:on-the-electrodynamics-of-moving-bodies",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "work:psychology-from-an-empirical-standpoint",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "work:principia-mathematica",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    },
+    {
+      "kind": "node",
+      "id": "work:administrative-behavior",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true
+    }
+  ],
+  "translation_updates": [
+    {
+      "node_id": "work:on-the-electrodynamics-of-moving-bodies",
+      "locale": "en",
+      "summary": "\"On the Electrodynamics of Moving Bodies\" was the third of the four papers Albert Einstein published in Annalen der Physik during his 1905 \"miracle year,\" submitted on 30 June and appearing in print on 26 September. In it Einstein reworked the mechanics of bodies moving at speeds approaching that of light so as to reconcile them with Maxwell's equations for electricity and magnetism. The paper's two postulates, that physical laws hold in every inertial frame and that the speed of light is constant for all observers, became the basis of what was subsequently named the special theory of relativity. Mass-energy equivalence was not part of this paper; Einstein derived that result separately in a fourth 1905 paper published later that autumn.",
+      "reviewed": true
+    },
+    {
+      "node_id": "work:psychology-from-an-empirical-standpoint",
+      "locale": "en",
+      "summary": "Franz Brentano, described in this source as an Austrian philosopher, published Psychologie vom empirischen Standpunkte in 1874, arguing that psychology should aim to establish exact laws in the manner of the natural sciences. He originally planned the work in six books but completed only two before falling ill, leaving the project unfinished. In it Brentano reintroduced the concept of intentionality into the philosophy of mind, describing it as the mark distinguishing mental phenomena from physical phenomena. The book established Brentano's reputation, helped constitute psychology as a scientific discipline, and influenced Husserlian phenomenology, currents of analytic philosophy, gestalt psychology, and Alexius Meinong's theory of objects.",
+      "reviewed": true
+    },
+    {
+      "node_id": "work:principia-mathematica",
+      "locale": "en",
+      "summary": "Principia Mathematica, often abbreviated PM, is a three-volume work on the foundations of mathematics written by Alfred North Whitehead and Bertrand Russell and published by Cambridge University Press in 1910, 1912 and 1913. Its central technical device was the theory of types, adopted to rule out the unrestricted comprehension of classes and properties that gives rise to paradoxes such as the Russell set; the ramified version of this theory was specifically Russell's. Although the work's coverage stopped short of real analysis, by its third volume it was evident that a large body of known mathematics could in principle be developed within the formal system PM established. The book went on to popularize symbolic logic and is credited with advancing the subject.",
+      "reviewed": true
+    },
+    {
+      "node_id": "work:administrative-behavior",
+      "locale": "en",
+      "summary": "Herbert A. Simon's Administrative Behavior: a Study of Decision-Making Processes in Administrative Organization was published by Macmillan in New York in 1947, its first edition growing out of Simon's doctoral thesis in political science at the University of Chicago. The book treated decision-making as the core of administration and proposed that real administrators are not perfectly rational optimizers but instead \"satisfice,\" settling for a course of action that is merely satisfactory rather than optimal. Simon later wrote that he had built the book squarely on Chester Barnard's The Functions of the Executive and remained deeply indebted to it, while counting the bounded rationality notions among the genuinely novel contributions the book made. Administrative Behavior became foundational to the Carnegie School of organizational economics, and its ideas were later cited in Simon's 1978 Nobel Memorial Prize in Economic Sciences.",
+      "reviewed": true
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "work:on-the-electrodynamics-of-moving-bodies",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Annus_Mirabilis_papers",
+          "retrieved_at": "2026-07-29",
+          "quote": "his third paper that year, was received on 30 June and published 26 September",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Annus_mirabilis_papers&oldid=1362588239"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Annus_Mirabilis_papers",
+          "retrieved_at": "2026-07-29",
+          "quote": "It reconciles Maxwell's equations for electricity and magnetism with the laws of mechanics by introducing major changes to mechanics close to the speed of light.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Annus_mirabilis_papers&oldid=1362588239"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Albert_Einstein",
+          "retrieved_at": "2026-07-29",
+          "quote": "The theory developed in this paper later became known as Einstein's special theory of relativity.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Albert_Einstein&oldid=1366516273"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Theory_of_relativity",
+          "retrieved_at": "2026-07-29",
+          "quote": "It was introduced in Einstein's 1905 paper \"On the Electrodynamics of Moving Bodies\"",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theory_of_relativity&oldid=1346554258"
+        }
+      ],
+      "notes": "generator self-flags: The two-postulate framing (relativity principle + constant light speed) is well attested in wp-electrodynamics.html body text but I did not select a direct quote for it to keep citations focused on the paper's identity/dating and its relation to the other three papers — QC may want a fifth citation for the postulates if that claim needs direct backing. | Deliberately excluded any mention of E=mc2 per the batch ruling; worth a QC double-check that no phrase in the summary could be misread as crediting this paper with mass-energy equivalence."
+    },
+    {
+      "subject_id": "work:psychology-from-an-empirical-standpoint",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Psychology_from_an_Empirical_Standpoint",
+          "retrieved_at": "2026-07-29",
+          "quote": "is an 1874 book by the Austrian philosopher Franz Brentano, in which the author argues that the goal of psychology should be to establish exact laws.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Psychology_from_an_Empirical_Standpoint&oldid=1355358013"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Psychology_from_an_Empirical_Standpoint",
+          "retrieved_at": "2026-07-29",
+          "quote": "Brentano originally intended to produce a large work consisting of six books",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Psychology_from_an_Empirical_Standpoint&oldid=1355358013"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Psychology_from_an_Empirical_Standpoint",
+          "retrieved_at": "2026-07-29",
+          "quote": "Brentano reintroduced the concept of intentionality into the philosophy of mind.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Psychology_from_an_Empirical_Standpoint&oldid=1355358013"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Psychology_from_an_Empirical_Standpoint",
+          "retrieved_at": "2026-07-29",
+          "quote": "the mark which distinguishes mental phenomena from physical phenomena",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Psychology_from_an_Empirical_Standpoint&oldid=1355358013"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Psychology_from_an_Empirical_Standpoint",
+          "retrieved_at": "2026-07-29",
+          "quote": "helped to establish psychology as a scientific discipline, and influenced Husserlian phenomenology, analytic philosophy, gestalt psychology, and the philosopher Alexius Meinong's theory of objects.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Psychology_from_an_Empirical_Standpoint&oldid=1355358013"
+        }
+      ],
+      "notes": "generator self-flags: Nationality: this article calls Brentano 'Austrian'; other sources commonly call him German. Kept 'Austrian' per the batch ruling (prefer the cited article) and flagging the discrepancy here for QC awareness rather than breaking the encyclopedic tone with an inline caveat. | The 'mark which distinguishes mental phenomena from physical phenomena' quote is Roger Scruton's paraphrase of Brentano as reported in the article, not a direct Brentano quote -- the article itself notes Scruton considers Brentano's own intentionality passage 'obscure and hesitant.' The summary presents it as Brentano's description; QC may want it hedged as Scruton's gloss instead. | Could not confirm from this source alone whether 'Psychologie vom empirischen Standpunkte' or 'Psychologie vom empirischen Standpunkt' is the more standard modern citation form; the article says the latter is 'more commonly cited' but the original 1874 title uses the former, which is what I used given the work node concerns the original 1874 publication."
+    },
+    {
+      "subject_id": "work:principia-mathematica",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Principia_Mathematica",
+          "retrieved_at": "2026-07-29",
+          "quote": "Alfred North Whitehead and Bertrand Russell and published in 1910, 1912, and 1913",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Principia_Mathematica&oldid=1356011315"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Principia_Mathematica",
+          "retrieved_at": "2026-07-29",
+          "quote": "Cambridge University Press",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Principia_Mathematica&oldid=1356011315"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Principia_Mathematica",
+          "retrieved_at": "2026-07-29",
+          "quote": "This third aim motivated the adoption of the theory of types in PM.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Principia_Mathematica&oldid=1356011315"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Principia_Mathematica",
+          "retrieved_at": "2026-07-29",
+          "quote": "Russell's ramification of the theory of types",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Principia_Mathematica&oldid=1356011315"
+        }
+      ],
+      "notes": "generator self-flags: The 'Cambridge University Press' quote comes from the article's infobox/reference apparatus rather than body prose (confirmed present in the full page text). If QC's matcher only scans <p> body text this citation may need to be swapped for a prose sentence -- I did not find the publisher named in running prose in this article. | Per the batch ruling I kept Whitehead named as full co-author alongside Russell throughout and did not present the work as Russell's alone, but the corpus reportedly has no node for Whitehead -- flagging as a possible graph-completeness gap, not a summary-accuracy issue. | Omitted the 1925-1927 second edition (new introduction, Appendix A/B/C) for concision since the batch ruling's facts concern the original three volumes; flag in case QC wants the second edition mentioned."
+    },
+    {
+      "subject_id": "work:administrative-behavior",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Administrative_Behavior",
+          "retrieved_at": "2026-07-29",
+          "quote": "Administrative Behavior: a Study of Decision-Making Processes in Administrative Organization is a book written by Herbert A. Simon",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Administrative_Behavior&oldid=1344919009"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Administrative_Behavior",
+          "retrieved_at": "2026-07-29",
+          "quote": "The first edition was published in 1947",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Administrative_Behavior&oldid=1344919009"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Administrative_Behavior",
+          "retrieved_at": "2026-07-29",
+          "quote": "New York: Macmillan.",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Administrative_Behavior&oldid=1344919009"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Administrative_Behavior",
+          "retrieved_at": "2026-07-29",
+          "quote": "the bounded rationality notions",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Administrative_Behavior&oldid=1344919009"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Administrative_Behavior",
+          "retrieved_at": "2026-07-29",
+          "quote": "Of course I built squarely on Barnard, and have always felt deeply indebted to him",
+          "independent": false,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Administrative_Behavior&oldid=1344919009"
+        }
+      ],
+      "notes": "generator self-flags: The 'New York: Macmillan.' quote sits in the article's References/citation list rather than body prose (confirmed present in the full page text). Flag in case QC's matcher is restricted to body paragraphs only. | The 'satisfice' / 'administrative man' claim and the closing sentence about the Carnegie School and the 1978 Nobel Memorial Prize are well supported by the source's lead paragraph but were not given their own citation entries (already at 5, the stated maximum) -- QC may want to verify these against the article directly: the lead calls the book 'epoch-making' in the Nobel citation and states it 'laid the foundation for the economic movement known as the Carnegie School.' | Kept Simon's own hedge about Barnard per the batch ruling (heavy debt acknowledged) rather than presenting bounded rationality as an unqualified original contribution."
+    }
+  ],
+  "identity": [],
+  "sanctions": [
+    {
+      "subject_id": "work:on-the-electrodynamics-of-moving-bodies",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "work:psychology-from-an-empirical-standpoint",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "work:principia-mathematica",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "work:administrative-behavior",
+      "ladder": "editorial-v2"
+    }
+  ],
+  "rejections": [],
+  "held": [],
+  "held_resolutions": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Editorial batch 10 — the public-surface half of session #60 Track E, for the four works work-wave6-v1 added. Keeps the editorial gap at 0.",
+    "Regime: separated-context Opus generation (decisions (26)/(76)), then orchestrator machine QC + close-read. Machine: fetch-verify 18/18 PASS. Close-read: 4/4 = 100%. Zero factual errors — the third batch this session to need no substantive correction.",
+    "★ The generator caught a citation-provenance problem in its own draft that QC would have had to work to find. In the Brentano summary, the phrase describing intentionality as the mark distinguishing mental from physical phenomena traces to Roger Scruton-s paraphrase as reported in the article — not to Brentano-s own words — and the article itself notes Scruton finds Brentano-s own passage \"obscure and hesitant\". The generator flagged this rather than letting a commentator-s gloss read as the author-s. Kept as written because the substance is independently established: SEP-s Intentionality entry, read during Track B QC of this same session, states that Brentano held intentionality to be the hallmark of the mental. Provenance recorded here so a later reader does not have to rediscover it.",
+    "It also honoured the nationality ruling exactly — the cited article calls Brentano Austrian while the person node-s sources call him German, and the summary says \"described in this source as an Austrian philosopher\", carrying the attribution rather than silently choosing. That is the right shape for a source-side discrepancy.",
+    "The Einstein paper summary does what the ruling asked and then some: it excludes mass-energy equivalence and adds an explicit sentence assigning that result to the fourth 1905 paper, so a reader cannot mis-attribute it. The Principia summary names Whitehead as full co-author throughout, which matters because the corpus has no Whitehead node — the graph gap is recorded on the edge, and the prose does not paper over it.",
+    "Living-person check: no subject is a person; decision (70) does not engage."
+  ]
+}

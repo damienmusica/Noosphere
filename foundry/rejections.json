@@ -1,0 +1,122 @@
+[
+  {
+    "label": "Marvin Minsky influenced/founded type theory",
+    "referent": "person:marvin-minsky → subfield:type-theory, any relation",
+    "kind": "edge",
+    "reason": "Rejection probe, planted by the orchestrator and declined by the generation subagent before QC saw it: 'Minsky's documented work has no known connection to formal type theory, and I know of no claim-stating source linking them.' Confirmed at QC — no source in the batch corpus links them. Probe fired correctly.",
+    "batch_id": "held-trigger-nodes-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Herbert Simon influenced/founded thermodynamics",
+    "referent": "person:herbert-simon → subfield:thermodynamics, any relation",
+    "kind": "edge",
+    "reason": "Rejection probe, planted by the orchestrator and declined by the generation subagent before QC saw it: the entropy-adjacent language in The Sciences of the Artificial is 'metaphorical borrowing, not a sourceable scholarly contribution.' Confirmed at QC. Probe fired correctly.",
+    "batch_id": "held-trigger-nodes-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "John McCarthy founded symbolic AI",
+    "referent": "person:john-mccarthy → concept:symbolic-ai, founded_or_formalized",
+    "kind": "edge",
+    "reason": "Duplicate at a wrong grain. The generation subagent proposed it while flagging the overlap itself; QC rejects it. The sourced claim is the AI-founding one (enwiki John McCarthy: 'He was one of the founders of the discipline of artificial intelligence'), already carried by the reviewed edge:john-mccarthy-founded-artificial-intelligence. No source states a symbolic-AI founding. Session-#49 drop rule (founded_or_formalized already exists) plus the grain correction applied to the whole symbolic-AI cluster in this batch.",
+    "batch_id": "held-trigger-nodes-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Allen Newell / Herbert Simon founded symbolic AI",
+    "referent": "person:allen-newell and person:herbert-simon → concept:symbolic-ai, founded_or_formalized",
+    "kind": "edge",
+    "reason": "Rejected at the proposed grain and re-grounded, not dropped: no source asserts a symbolic-AI founding for either man; enwiki Symbolic artificial intelligence describes their work inside the paradigm. The claim the sources do state is the AI-founding one, written in this batch as edge:allen-newell-founded-artificial-intelligence and edge:herbert-simon-founded-artificial-intelligence. Recorded so a later wave does not silently re-propose the symbolic-AI form.",
+    "batch_id": "held-trigger-nodes-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Charles Lyell founded uniformitarianism",
+    "referent": "person:charles-lyell -> concept:uniformitarianism, founded_or_formalized",
+    "kind": "edge",
+    "reason": "Source distinguishes the roles explicitly: Hutton originated, Playfair refined, Lyell popularised. Popularisation does not meet the founded_or_formalized bar. Do not re-propose without a source that states founding.",
+    "batch_id": "concept-wave3-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "evolution (as a concept node)",
+    "referent": "concept:evolution, the bare label",
+    "kind": "node",
+    "reason": "Rejection probe, fired. C3 over-broad label colliding with subfield:evolutionary-biology and concept:natural-selection, whose Darwin edge pair it duplicates endpoint-for-endpoint. Same failure mode as the wave-2 'positivism' hold.",
+    "batch_id": "concept-wave3-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "theory of relativity (as a concept node, this wave)",
+    "referent": "concept:theory-of-relativity with person:henri-poincare as its only person link",
+    "kind": "node",
+    "reason": "Rejection probe, fired at generation time — the generator refused the founder relation and named the Einstein gap itself. Declined this wave because the attribution would be misrepresented, not because the concept is unwanted. Re-admissible once person:albert-einstein exists; that is a node task, not an edge task.",
+    "batch_id": "concept-wave3-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Alfred North Whitehead (as a person node, this wave)",
+    "referent": "person:alfred-north-whitehead",
+    "kind": "node",
+    "reason": "Honesty-gap drop. He does not close the type-theory co-authorship gap he was slated for — both sources attribute the theory to Russell — and his own sourced founder claim (process philosophy) has no endpoint in the corpus, so admitting him would create an isolated node. Re-admissible when a process-philosophy endpoint exists or a source attributes the type theory to him jointly.",
+    "batch_id": "person-wave11-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Alfred North Whitehead founded type theory",
+    "referent": "person:alfred-north-whitehead -> subfield:type-theory, founded_or_formalized",
+    "kind": "edge",
+    "reason": "No source attributes the type theory to Whitehead. SEP: 'The theory of types was introduced by Russell'; enwiki Principia Mathematica says only that PM adopted it. Do not re-propose on co-authorship of Principia alone.",
+    "batch_id": "person-wave11-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Cellular Pathology (Virchow, 1858)",
+    "referent": "the German original Die Cellularpathologie (Berlin, 1858)",
+    "kind": "node",
+    "reason": "W2 fail. No upstream item for the German original; the only candidate is the 1863 English translation, typed 'version, edition or translation' with 0 sitelinks. Description-versus-resolution mismatch. Do not re-propose against the translation.",
+    "batch_id": "work-wave6-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Lectures on Gas Theory (Boltzmann, 1896–98)",
+    "referent": "Vorlesungen über Gastheorie",
+    "kind": "node",
+    "reason": "W2 fail. No Wikidata item exists under the English or German title in any spelling. Honest gap.",
+    "batch_id": "work-wave6-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Clausius's 1865 entropy memoir",
+    "referent": "the paper in which Clausius introduced and named entropy",
+    "kind": "node",
+    "reason": "W2 fail. No Wikidata item. The generator ranked this its own weakest identity case and declined to invent a title.",
+    "batch_id": "work-wave6-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Human Problem Solving (Newell & Simon, 1972)",
+    "referent": "the 1972 Prentice-Hall book",
+    "kind": "node",
+    "reason": "Duplicate upstream modeling (two competing items for one referent, neither substantively populated) plus no dedicated enwiki article — the title redirects to Herbert A. Simon. Re-checkable when upstream merges or an article exists.",
+    "batch_id": "work-wave6-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "De Contagione et Contagiosis Morbis (Fracastoro, 1546)",
+    "referent": "Fracastoro's treatise on contagion, as a canonical work for germ theory",
+    "kind": "node",
+    "reason": "Declined by the GENERATOR on W1, citing this session's own ruling: edge:girolamo-fracastoro-influenced-germ-theory-of-disease was deliberately corrected from founded_or_formalized to influenced hours earlier, with the note that the concept is 'still without a founder edge, which is the honest state'. A canonical_work claim presupposes the founding status the corpus had just declined to assert. Recorded because the generator reached this by reading the corpus, not by being told.",
+    "batch_id": "work-wave6-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Economy and Society (Weber)",
+    "referent": "Weber's posthumous compilation, as a canonical work for sociology",
+    "kind": "node",
+    "reason": "Declined by the GENERATOR, citing the note already on edge:protestant-ethic-canonical-work-sociology, which had itself named and rejected Economy and Society as 'a posthumous, editorially-contested compilation (weaker single-item decidability)'. It also observed that admitting it would make Weber the corpus's first author with two canonical works aimed at one field. Recorded for the same reason as above.",
+    "batch_id": "work-wave6-v1",
+    "recorded_at": "2026-07-29"
+  }
+]

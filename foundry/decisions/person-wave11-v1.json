@@ -1,0 +1,828 @@
+{
+  "version": 1,
+  "batch_id": "person-wave11-v1",
+  "decided_at": "2026-07-29",
+  "qc_by": {
+    "model_name": "Claude Opus",
+    "model_version": "claude-opus-5",
+    "proposed_at": "2026-07-29"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [
+      {
+        "id": "person:albert-einstein",
+        "type": "person",
+        "domain": "natural_sciences",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q937"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "person:rudolf-clausius",
+        "type": "person",
+        "domain": "natural_sciences",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q30693"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "person:ludwig-boltzmann",
+        "type": "person",
+        "domain": "natural_sciences",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q84296"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "person:rudolf-virchow",
+        "type": "person",
+        "domain": "medicine_and_health",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q76432"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "person:girolamo-fracastoro",
+        "type": "person",
+        "domain": "medicine_and_health",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q318593"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "concept:theory-of-relativity",
+        "type": "concept",
+        "domain": "natural_sciences",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q43514"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      }
+    ],
+    "translations": [
+      {
+        "node_id": "person:albert-einstein",
+        "locale": "en",
+        "label": "Albert Einstein",
+        "summary": "",
+        "aliases": [],
+        "reviewed": false
+      },
+      {
+        "node_id": "person:rudolf-clausius",
+        "locale": "en",
+        "label": "Rudolf Clausius",
+        "summary": "",
+        "aliases": [
+          "Rudolf Julius Emanuel Clausius"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "person:ludwig-boltzmann",
+        "locale": "en",
+        "label": "Ludwig Boltzmann",
+        "summary": "",
+        "aliases": [],
+        "reviewed": false
+      },
+      {
+        "node_id": "person:rudolf-virchow",
+        "locale": "en",
+        "label": "Rudolf Virchow",
+        "summary": "",
+        "aliases": [],
+        "reviewed": false
+      },
+      {
+        "node_id": "person:girolamo-fracastoro",
+        "locale": "en",
+        "label": "Girolamo Fracastoro",
+        "summary": "",
+        "aliases": [
+          "Hieronymus Fracastorius"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "concept:theory-of-relativity",
+        "locale": "en",
+        "label": "Theory of relativity",
+        "summary": "",
+        "aliases": [
+          "relativity",
+          "special and general relativity"
+        ],
+        "reviewed": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge:theory-of-relativity-part-of-physics",
+        "source": "concept:theory-of-relativity",
+        "target": "field:physics",
+        "relation": "part_of",
+        "confidence": 0.95,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Structural tier, uncontested. Wikidata Q43514 carries P31 = Q3239681 scientific theory alongside Q4162444 branch of physics; the theory typing is the one this concept node relies on, and the dual typing is recorded rather than glossed."
+      },
+      {
+        "id": "edge:albert-einstein-founded-theory-of-relativity",
+        "source": "person:albert-einstein",
+        "target": "concept:theory-of-relativity",
+        "relation": "founded_or_formalized",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "enwiki opens the article with the attribution — \"The theory of relativity comprises two physics theories by Albert Einstein\" — and Wikidata Q43514's own English description says the same. Recorded tension, not resolved: a whole enwiki article (Relativity priority dispute) documents the Lorentz/Poincaré priority literature. Under §8 clause-6 v2 that is a share-and-priority debate on top of an agreed founding, not a contested existence or direction, so it routes to supported plus this note rather than to disputed. Poincaré's contribution is written as its own edge in this batch instead of being buried here."
+      },
+      {
+        "id": "edge:henri-poincare-influenced-theory-of-relativity",
+        "source": "person:henri-poincare",
+        "target": "concept:theory-of-relativity",
+        "relation": "influenced",
+        "confidence": 0.75,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "The corpus's way of recording the priority literature without adjudicating it: Poincaré's contribution is real and documented, and it is influence rather than founding. enwiki Relativity priority dispute states that Einstein's publications \"referred only to a small number of his predecessors for fundamental results on which he based his theories, most notably to the work of Henri Poincaré and Hendrik Lorentz for special relativity\". Hendrik Lorentz is named in the same breath and is not a corpus node — honest gap. This edge is also what makes the concept admissible at all: it was rejected in concept-wave3-v1 precisely because Poincaré would have been its only person link."
+      },
+      {
+        "id": "edge:rudolf-clausius-founded-entropy",
+        "source": "person:rudolf-clausius",
+        "target": "concept:entropy",
+        "relation": "founded_or_formalized",
+        "confidence": 0.95,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "The batch's strongest claim, and it closes a gap this session opened: concept:entropy was admitted in concept-wave3-v1 with no founder edge at all because Clausius was not a node. enwiki Rudolf Clausius lists \"Originator of the concept of entropy\" among his known-for entries and states \"In 1865 he introduced the concept of entropy\"; enwiki Entropy independently says \"In 1865, German physicist Rudolf Clausius, one of the leading founders of the field of thermodynamics, defined it as the quotient of an infinitesimal amount of heat to the instantaneous temperature.\" Two independent articles, same claim."
+      },
+      {
+        "id": "edge:ludwig-boltzmann-formalizes-entropy",
+        "source": "person:ludwig-boltzmann",
+        "target": "concept:entropy",
+        "relation": "formalizes",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "`formalizes`, deliberately not `founded_or_formalized`: Clausius originated the concept in 1865 and Boltzmann supplied its statistical foundation twelve years later. enwiki Ludwig Boltzmann: \"In 1877, he provided the current definition of entropy\"; enwiki Entropy: \"In 1877, Boltzmann visualized a probabilistic way to measure the entropy of an ensemble of ideal gas particles, in which he defined entropy as proportional to the natural logarithm of the number of microstates such a gas could occupy.\" The relation choice is the whole point — recording both men as co-founders would erase the fact that one gave the concept its macroscopic definition and the other its microscopic one."
+      },
+      {
+        "id": "edge:ludwig-boltzmann-founded-statistical-physics",
+        "source": "person:ludwig-boltzmann",
+        "target": "subfield:statistical-physics",
+        "relation": "founded_or_formalized",
+        "confidence": 0.8,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Co-founder edge, record-not-resolve. The field article states \"The founding of the field of statistical mechanics is generally credited to three physicists\" and names Boltzmann first, for developing \"the fundamental interpretation of entropy in terms of a collection of microstates\"; the person article independently calls the development of statistical mechanics one of his greatest achievements. Honest gaps: Maxwell and Gibbs, the other two credited founders, are not corpus nodes. Naming note: en.wikipedia.org/wiki/Statistical_physics is a redirect to Statistical mechanics, so the citation is anchored on the canonical title per §8; enwiki treats the two as one topic and this node's QID (Q677916) sitelinks to that article, while Wikidata separately keeps Q188715 for statistical mechanics."
+      },
+      {
+        "id": "edge:rudolf-virchow-founded-cell-theory",
+        "source": "person:rudolf-virchow",
+        "target": "concept:cell-theory",
+        "relation": "founded_or_formalized",
+        "confidence": 0.75,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Third co-founder edge on concept:cell-theory, closing the gap concept-wave3-v1 recorded when it admitted Schwann and Schleiden only; Wikidata Q177935's P61 lists all three. ★ Attribution tension recorded prominently rather than in passing: enwiki Rudolf Virchow states that Cellular Pathology (1858) \"introduced the third dictum in cell theory\" but adds that the concept \"is now widely recognized as being plagiarized from Robert Remak\", and enwiki Cell theory says the idea \"had already been proposed by Robert Remak\". What the sources agree on is that Virchow introduced the third tenet *into cell theory*; what they contest is whether the idea was his. The edge is written for the former and confidence is set at 0.75 for the latter. Robert Remak is not a corpus node — an honest gap, and the one most worth closing next on this concept."
+      },
+      {
+        "id": "edge:girolamo-fracastoro-influenced-germ-theory-of-disease",
+        "source": "person:girolamo-fracastoro",
+        "target": "concept:germ-theory-of-disease",
+        "relation": "influenced",
+        "confidence": 0.8,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "★ Relation corrected at QC from the generator's `founded_or_formalized`. The two sources do not agree on the strength: enwiki Germ theory of disease says \"Basic forms of germ theory were proposed by Girolamo Fracastoro in 1546\", but Fracastoro's own article calls the same work a precursor — \"his 'seeds of disease' theory is considered as a predecessor to germ theory\". One founding claim and one predecessor claim do not clear the founder ladder's two-independent-claim-stating-sources bar, whereas both support influence. This leaves concept:germ-theory-of-disease still without a founder edge, which is the honest state: Pasteur and Koch were ruled NEI in concept-wave3-v1, and Marcus von Plenciz, named alongside Fracastoro, is not a corpus node."
+      }
+    ],
+    "external_links": []
+  },
+  "promotions": [],
+  "translation_updates": [],
+  "verdicts": [
+    {
+      "subject_id": "person:albert-einstein",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q937",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q937&oldid=2524382135"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Theory_of_relativity",
+          "retrieved_at": "2026-07-29",
+          "quote": "The theory of relativity comprises two physics theories by Albert Einstein",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theory_of_relativity&oldid=1346554258"
+        }
+      ],
+      "notes": "Identity live 2026-07-29: Q937, P31 = Q5, P570 = 1955-04-18 (deceased), 320 sitelinks, 443 properties. Disambiguated from a medical school and a train service returned by the same search."
+    },
+    {
+      "subject_id": "person:rudolf-clausius",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q30693",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q30693&oldid=2521158978"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Clausius",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1865 he introduced the concept of entropy",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Clausius&oldid=1365811715"
+        }
+      ],
+      "notes": "Identity live 2026-07-29: Q30693, P31 = Q5, P570 = 1888-08-24 (deceased), 79 sitelinks, 146 properties. Disambiguated from a photograph item and a Cologne street."
+    },
+    {
+      "subject_id": "person:ludwig-boltzmann",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q84296",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q84296&oldid=2517096989"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ludwig_Boltzmann",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1877, he provided the current definition of entropy",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ludwig_Boltzmann&oldid=1362784115"
+        }
+      ],
+      "notes": "Identity live 2026-07-29: Q84296, P31 = Q5, P570 present (two competing dates, 1906-09-05 and 1906-09-06 — deceased either way, and the discrepancy is recorded rather than silently picked), 89 sitelinks, 188 properties. Disambiguated from a photograph item and the Ludwig Boltzmann Gesellschaft."
+    },
+    {
+      "subject_id": "person:rudolf-virchow",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q76432",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q76432&oldid=2524074209"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Virchow",
+          "retrieved_at": "2026-07-29",
+          "quote": "introduced the third dictum in cell theory",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Virchow&oldid=1361411508"
+        }
+      ],
+      "notes": "Identity live 2026-07-29: Q76432, P31 = Q5, P570 = 1902-09-05 (deceased), 78 sitelinks, 206 properties. This is the same QID that appears in Q177935's P61 (discoverer or inventor) list for cell theory, which is an independent cross-confirmation that the person node and the founder claim point at the same referent. Disambiguated from a prize and a medal named after him."
+    },
+    {
+      "subject_id": "person:girolamo-fracastoro",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q318593",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q318593&oldid=2514748159"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Germ_theory_of_disease",
+          "retrieved_at": "2026-07-29",
+          "quote": "Basic forms of germ theory were proposed by Girolamo Fracastoro in 1546",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Germ_theory_of_disease&oldid=1363463071"
+        }
+      ],
+      "notes": "Identity live 2026-07-29: Q318593, P31 = Q5, P570 = 1553-08-06 (deceased), 45 sitelinks, 138 properties. Disambiguated from a Verona lyceum named after him and a 1930 scientific article."
+    },
+    {
+      "subject_id": "concept:theory-of-relativity",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q43514",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q43514&oldid=2517110638"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Theory_of_relativity",
+          "retrieved_at": "2026-07-29",
+          "quote": "The theory of relativity comprises two physics theories by Albert Einstein",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theory_of_relativity&oldid=1346554258"
+        }
+      ],
+      "notes": "★ Re-admitted from the rejection ledger, explicitly via override_rejections. concept-wave3-v1 rejected this node — it was one of that batch's two planted probes — and recorded the reason precisely: not that the concept was unwanted, but that its only available person link was Poincaré, which would have misrepresented the attribution. The ledger entry stated the re-admission condition as \"re-admissible once person:albert-einstein exists; that is a node task, not an edge task.\" Einstein is added in this batch, so the condition is met and the re-admission is the ledger working as designed rather than a reversal of it. Identity live 2026-07-29: Q43514, 144 sitelinks, 76 properties, P31 = scientific theory + branch of physics; disambiguated from a Dream On episode and three scientific articles."
+    },
+    {
+      "subject_id": "edge:albert-einstein-founded-theory-of-relativity",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Theory_of_relativity",
+          "retrieved_at": "2026-07-29",
+          "quote": "The theory of relativity comprises two physics theories by Albert Einstein",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theory_of_relativity&oldid=1346554258"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q43514",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q43514&oldid=2517110638"
+        }
+      ],
+      "notes": "Adversarial counter-evidence was sought and found: enwiki maintains an entire Relativity priority dispute article. Read in full, it documents a debate over credit and priority in which Einstein's authorship of the 1905 and 1915 papers is not in question — the contested matter is how much he owed to Lorentz and Poincaré. Existence and direction agreed, share debated, so §8 routes it to supported plus a tension note rather than to disputed. The minority position is not buried: it is written as its own reviewed edge for Poincaré."
+    },
+    {
+      "subject_id": "edge:henri-poincare-influenced-theory-of-relativity",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Relativity_priority_dispute",
+          "retrieved_at": "2026-07-29",
+          "quote": "most notably to the work of Henri Poincaré and Hendrik Lorentz for special relativity",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Relativity_priority_dispute&oldid=1365856267"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/History_of_special_relativity",
+          "retrieved_at": "2026-07-29",
+          "quote": "Working with Lorentz's aether theory, Henri Poincaré , having earlier proposed the \"relativity principle\" as a general law of nature",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=History_of_special_relativity&oldid=1363950802"
+        }
+      ],
+      "notes": "Two independent claim-stating articles after the ladder gate refused a single-source promotion — the gate doing exactly its job. enwiki Relativity priority dispute records that Einstein referred \"most notably to the work of Henri Poincaré and Hendrik Lorentz for special relativity\"; enwiki History of special relativity independently describes Poincaré \"having earlier proposed the relativity principle as a general law of nature\" and using it in 1905 to correct Lorentz's transformation formulas. Influence rather than founding, direction uncontested (the work predates the 1905 paper). Lorentz is named in both and is not a corpus node — honest gap."
+    },
+    {
+      "subject_id": "edge:rudolf-clausius-founded-entropy",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Clausius",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1865 he introduced the concept of entropy",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Clausius&oldid=1365811715"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Entropy",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1865, German physicist Rudolf Clausius , one of the leading founders of the field of thermodynamics, defined it as the quotient of an infinitesimal amount of heat to the instantaneous temperature .",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Entropy&oldid=1361126134"
+        }
+      ],
+      "notes": "Two independent articles state the same claim, and the person article's known-for list separately reads \"Originator of the concept of entropy\". No dissent found. This closes a gap opened deliberately in concept-wave3-v1, where the concept was admitted with a part_of edge only."
+    },
+    {
+      "subject_id": "edge:ludwig-boltzmann-formalizes-entropy",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Ludwig_Boltzmann",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1877, he provided the current definition of entropy",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ludwig_Boltzmann&oldid=1362784115"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Entropy",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1877, Boltzmann visualized a probabilistic way to measure the entropy of an ensemble of ideal gas particles",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Entropy&oldid=1361126134"
+        }
+      ],
+      "notes": "Two independent articles, both dating the contribution to 1877 and both describing it as supplying a definition to an existing concept rather than originating one. That is what decided `formalizes` over `founded_or_formalized` — the twelve-year gap after Clausius is in both sources."
+    },
+    {
+      "subject_id": "edge:ludwig-boltzmann-founded-statistical-physics",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Statistical_mechanics",
+          "retrieved_at": "2026-07-29",
+          "quote": "The founding of the field of statistical mechanics is generally credited to three physicists",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Statistical_mechanics&oldid=1365220532"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Ludwig_Boltzmann",
+          "retrieved_at": "2026-07-29",
+          "quote": "His greatest achievements were the development of statistical mechanics and the statistical explanation of the second law of thermodynamics .",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Ludwig_Boltzmann&oldid=1362784115"
+        }
+      ],
+      "notes": "Two independent claim-stating articles after the ladder gate refused a single-source promotion: the field article says \"The founding of the field of statistical mechanics is generally credited to three physicists\" and names Boltzmann first, and the person article says \"His greatest achievements were the development of statistical mechanics and the statistical explanation of the second law of thermodynamics.\" That is the (62) operational interpretation — person article plus field article — and the lower source diversity is recorded rather than hidden. Honest gaps: Maxwell and Gibbs, the other two credited founders, are not corpus nodes.\n\n★ Naming check, and it overturned the orchestrator's first reasoning. This session refused a near-name bridge earlier (concept:entropy was not cross-listed onto subfield:statistical-physics on the strength of a statistical-mechanics mention), so the same question was put to this edge — and the first answer written down, that the founding sentence sits in an article titled Statistical physics, was WRONG. en.wikipedia.org/wiki/Statistical_physics is a REDIRECT to Statistical mechanics; the citation was silently pointing at a different page title than the one named. Verified live: the API reports redirects [{from: Statistical physics, to: Statistical mechanics}]. Per §8 the citation is therefore anchored on the canonical URL. The substantive conclusion survives and is in fact strengthened: English Wikipedia does not treat the two as distinct topics at all, and Wikidata Q677916 (statistical physics, this node's QID) carries an enwiki sitelink whose target is that same merged article — so the founding claim is about this node's referent, not bridged across from a differently-named unit. Wikidata does keep two items (Q677916 and Q188715 statistical mechanics); that divergence is recorded, not resolved."
+    },
+    {
+      "subject_id": "edge:rudolf-virchow-founded-cell-theory",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cell_theory",
+          "retrieved_at": "2026-07-29",
+          "quote": "In 1855, Rudolf Virchow added the third tenet to cell theory.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cell_theory&oldid=1365081375"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Virchow",
+          "retrieved_at": "2026-07-29",
+          "quote": "introduced the third dictum in cell theory",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Virchow&oldid=1361411508"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q177935",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q177935&oldid=2523318691"
+        }
+      ],
+      "notes": "★ Two independent articles agree Virchow introduced the third tenet into cell theory, and Wikidata's P61 for the concept lists him alongside Schwann and Schleiden. Both articles also record that the idea was Remak's — \"now widely recognized as being plagiarized from Robert Remak\" (Virchow article) and \"had already been proposed by Robert Remak\" (Cell theory article). The distinction that decided the verdict: what is agreed is his role in putting the tenet into the theory; what is contested is originating the idea. That is the existence-versus-share line, so supported with the contest recorded on the edge and confidence held down to 0.75. Remak is the honest gap most worth closing next."
+    },
+    {
+      "subject_id": "edge:girolamo-fracastoro-influenced-germ-theory-of-disease",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Germ_theory_of_disease",
+          "retrieved_at": "2026-07-29",
+          "quote": "Basic forms of germ theory were proposed by Girolamo Fracastoro in 1546",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Germ_theory_of_disease&oldid=1363463071"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Girolamo_Fracastoro",
+          "retrieved_at": "2026-07-29",
+          "quote": "theory is considered as a predecessor to germ theory",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Girolamo_Fracastoro&oldid=1360678484"
+        }
+      ],
+      "notes": "★ QC downgraded the relation from the generator's founded_or_formalized. The sources disagree in strength: one calls it a proposal of basic forms of the theory, the other calls the same work a predecessor to it. The founder ladder requires two independent claim-stating sources for founding; there is one. Both support influence. Recording the weaker relation that both sources carry is the honest option, and it leaves concept:germ-theory-of-disease with no founder edge — which is the accurate state of the evidence, not an oversight."
+    },
+    {
+      "subject_id": "edge:theory-of-relativity-part-of-physics",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q43514",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q43514&oldid=2517110638"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Theory_of_relativity",
+          "retrieved_at": "2026-07-29",
+          "quote": "The theory of relativity comprises two physics theories by Albert Einstein",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theory_of_relativity&oldid=1346554258"
+        }
+      ],
+      "notes": "Structural tier, uncontested."
+    },
+    {
+      "subject_id": "edge:rudolf-clausius-founded-thermodynamics",
+      "verdict": "not_enough_evidence",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Clausius",
+          "retrieved_at": "2026-07-29",
+          "quote": "is considered one of the central founding fathers of the science of thermodynamics",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Clausius&oldid=1365811715"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Thermodynamics",
+          "retrieved_at": "2026-07-29",
+          "quote": "German physicist and mathematician Rudolf Clausius restated Carnot's principle known as the Carnot cycle and gave the theory of heat a more accurate and sounder basis.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Thermodynamics&oldid=1362668588"
+        }
+      ],
+      "notes": "Proposed by the generator at 0.72 with an ambiguous flag, and the flag was right. The person article does state founding, but the field article — the second source the (62) operational interpretation relies on — states a contribution rather than a founding, and credits Lord Kelvin with the first concise definition of thermodynamics in 1854 and Carnot with the prior principle Clausius restated. One claim-stating founder source is not two. NEI, held. Clausius's entropy founder edge is unaffected and stands at 0.95."
+    },
+    {
+      "subject_id": "person:alfred-north-whitehead",
+      "verdict": "reject",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+          "retrieved_at": "2026-07-29",
+          "quote": "He created the philosophical school known as process philosophy",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Principia_Mathematica",
+          "retrieved_at": "2026-07-29",
+          "quote": "This third aim motivated the adoption of the theory of types in PM .",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Principia_Mathematica&oldid=1356011315"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/type-theory/",
+          "retrieved_at": "2026-07-29",
+          "quote": "The theory of types was introduced by Russell in order to cope with some contradictions he found in his account of set theory",
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/type-theory/"
+        }
+      ],
+      "notes": "★ Honesty-gap node drop, reached independently by the generator and by QC. Whitehead was on this batch's slate to close the co-authorship gap recorded on edge:bertrand-russell-founded-type-theory. He does not close it: both type-theory sources attribute the theory itself to Russell, and the Principia article says only that PM adopted it. His own sourced founder claim is process philosophy — \"He created the philosophical school known as process philosophy\" — but no corpus node exists for that referent, and inventing one to justify a person node would invert the edge-demand discipline. Admitting him would create an isolated node; the drop mirrors the Snow and Vernadsky-Biosphere honesty gaps. Re-admissible when a process-philosophy endpoint exists or a source attributes the type theory to him jointly."
+    }
+  ],
+  "identity": [
+    {
+      "node_id": "person:albert-einstein",
+      "provider": "wikidata",
+      "external_id": "Q937",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "person:rudolf-clausius",
+      "provider": "wikidata",
+      "external_id": "Q30693",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "person:ludwig-boltzmann",
+      "provider": "wikidata",
+      "external_id": "Q84296",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "person:rudolf-virchow",
+      "provider": "wikidata",
+      "external_id": "Q76432",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "person:girolamo-fracastoro",
+      "provider": "wikidata",
+      "external_id": "Q318593",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "concept:theory-of-relativity",
+      "provider": "wikidata",
+      "external_id": "Q43514",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "person:albert-einstein",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:rudolf-clausius",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:ludwig-boltzmann",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:rudolf-virchow",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:girolamo-fracastoro",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "concept:theory-of-relativity",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "edge:theory-of-relativity-part-of-physics",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:albert-einstein-founded-theory-of-relativity",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:henri-poincare-influenced-theory-of-relativity",
+      "ladder": "a-relation-auto-68"
+    },
+    {
+      "subject_id": "edge:rudolf-clausius-founded-entropy",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:ludwig-boltzmann-formalizes-entropy",
+      "ladder": "formalizes-auto-54"
+    },
+    {
+      "subject_id": "edge:ludwig-boltzmann-founded-statistical-physics",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:rudolf-virchow-founded-cell-theory",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:girolamo-fracastoro-influenced-germ-theory-of-disease",
+      "ladder": "a-relation-auto-68"
+    }
+  ],
+  "rejections": [
+    {
+      "label": "Alfred North Whitehead (as a person node, this wave)",
+      "referent": "person:alfred-north-whitehead",
+      "kind": "node",
+      "reason": "Honesty-gap drop. He does not close the type-theory co-authorship gap he was slated for — both sources attribute the theory to Russell — and his own sourced founder claim (process philosophy) has no endpoint in the corpus, so admitting him would create an isolated node. Re-admissible when a process-philosophy endpoint exists or a source attributes the type theory to him jointly.",
+      "batch_id": "person-wave11-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "label": "Alfred North Whitehead founded type theory",
+      "referent": "person:alfred-north-whitehead -> subfield:type-theory, founded_or_formalized",
+      "kind": "edge",
+      "reason": "No source attributes the type theory to Whitehead. SEP: 'The theory of types was introduced by Russell'; enwiki Principia Mathematica says only that PM adopted it. Do not re-propose on co-authorship of Principia alone.",
+      "batch_id": "person-wave11-v1",
+      "recorded_at": "2026-07-29"
+    }
+  ],
+  "held": [
+    {
+      "id": "edge:rudolf-clausius-founded-thermodynamics",
+      "label": "Rudolf Clausius founded thermodynamics",
+      "blocking_condition": "NEI ruled 2026-07-29 (person-wave11-v1): one claim-stating founder source, not two. enwiki Rudolf Clausius says he 'is considered one of the central founding fathers of the science of thermodynamics', but enwiki Thermodynamics — the field article the (62) operational interpretation relies on as the second source — states a contribution rather than a founding ('restated Carnot's principle ... and gave the theory of heat a more accurate and sounder basis') and credits Lord Kelvin with the first concise definition in 1854. Unblock: a second independent claim-stating source for a Clausius founding of thermodynamics. Note that this is a multi-founder field in the sources (Carnot, Kelvin, Clausius, Joule), so the eventual shape is likely several co-founder edges rather than one.",
+      "recheck": "manual",
+      "batch_id": "person-wave11-v1",
+      "recorded_at": "2026-07-29"
+    }
+  ],
+  "held_resolutions": [],
+  "override_rejections": [
+    "theory of relativity (as a concept node, this wave)"
+  ],
+  "anchors_pending": [],
+  "notes": [
+    "Track G of session #60 — person-layer expansion, scoped by a single rule: every candidate is someone whose absence was recorded as an explicit honest gap in a decision file earlier in this same session. That makes the edge demand verifiable rather than asserted.",
+    "Regime (§15.7): the six node adds are identity-dominated and orchestrator-drafted; the propositional edges came from a separated-context Claude Sonnet 5 generator and were QC'd here against live sources.",
+    "Gaps closed: concept:entropy had no founder edge (Clausius, and Boltzmann's formalization); concept:cell-theory had two of three founders (Virchow); concept:theory-of-relativity was rejected for want of Einstein. Gaps that stayed open on the evidence: concept:germ-theory-of-disease still has no founder edge, and Clausius does not get a thermodynamics founder edge.",
+    "★ Two QC corrections to the generator's proposals. (1) Fracastoro was proposed as germ theory's founder; the sources split — one says he proposed basic forms of the theory, his own article calls it a predecessor — so the relation was downgraded to influenced, leaving the concept founder-less, which is the accurate state. (2) The Clausius thermodynamics edge was proposed at 0.72 with an ambiguous flag and is held NEI: the field article states a contribution, not a founding.",
+    "★ The generator and QC independently reached the same conclusion on Whitehead: no edge, and therefore no node. He was slated to close the Principia co-authorship gap on the Russell type-theory edge and does not close it — both sources attribute the theory to Russell. His own sourced founder claim is process philosophy, which has no corpus endpoint. Admitting him would have created an isolated node, so the node is dropped as an honesty gap rather than justified by inventing an endpoint for it.",
+    "★ concept:theory-of-relativity is re-admitted from the rejection ledger via override_rejections. It was a planted probe in concept-wave3-v1 and the rejection recorded its own re-admission condition — 're-admissible once person:albert-einstein exists' — which this batch meets. The ledger did what it exists to do: it stopped a misattributed node and then told the next wave exactly what would unblock it.",
+    "Priority disputes were recorded, never adjudicated. Relativity has a dedicated enwiki priority-dispute article and Poincaré gets his own reviewed influence edge rather than a footnote; the Virchow third-tenet edge carries the Remak plagiarism finding on its face and is held to 0.75 for it. In both cases what the sources agree on and what they contest were separated before choosing the verdict.",
+    "★ A redirect check overturned the orchestrator's own written reasoning mid-batch. Having refused a near-name bridge earlier in this session, the Boltzmann statistical-physics edge was justified on the ground that its founding sentence sat in an article titled Statistical physics — and that was wrong: that title is a REDIRECT to Statistical mechanics. This is the same class of failure decision (110) found in the IEP fuzzy redirect, where a citation silently reached a different document than the one named. The conclusion survived the correction and was strengthened — enwiki does not distinguish the two topics, and Q677916 sitelinks to the merged article — but the citation was re-anchored on the canonical URL per §8 and the reasoning rewritten. Recorded because the near-miss, not the outcome, is the useful part.",
+    "Deceased-ladder check: all five persons carry a live P570 (Einstein 1955, Clausius 1888, Boltzmann 1906, Virchow 1902, Fracastoro 1553). Boltzmann's item carries two competing death dates a day apart; recorded rather than silently resolved, and immaterial to the ladder.",
+    "The ladder gate refused two edges on first run — Poincaré→relativity and Boltzmann→statistical-physics — each having only one claim-stating source. Both were resolved by finding a genuine second source rather than by downgrading the relation or lowering the bar, and the search is recorded in each verdict. This is the \"ladders are code\" discipline working as designed: the arithmetic caught what prose confidence would have waved through."
+  ]
+}

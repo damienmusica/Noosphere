@@ -8,6 +8,14 @@
     "reviewed": true
   },
   {
+    "node_id": "concept:bounded-rationality",
+    "locale": "en",
+    "label": "Bounded rationality",
+    "summary": "Bounded rationality is the idea that human decision-making is constrained by the difficulty of the problem, the cognitive capacity of the mind, and the time available, so that people typically settle for a satisfactory option rather than an optimal one. The term was coined by Herbert Simon as an alternative to the idealized rational-agent models built into expected-utility theory, and it has been used as a modeling basis across economics, political science, and related disciplines, not only within behavioral economics narrowly. Simon contrasted this satisficing approach with the classical assumption of unlimited computational and informational resources, and later researchers, including Gerd Gigerenzer, extended the concept by arguing that simple heuristics can outperform theoretically optimal procedures under real-world constraints. The concept remains actively used and debated across political science, economics, psychology, law, philosophy, and cognitive science.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
     "node_id": "concept:bureaucracy",
     "locale": "en",
     "label": "Bureaucracy",
@@ -16,11 +24,40 @@
     "reviewed": false
   },
   {
+    "node_id": "concept:cell-theory",
+    "locale": "en",
+    "label": "Cell theory",
+    "summary": "Cell theory holds that all living organisms are composed of cells, that the cell is the basic unit of structure and function in life, and that new cells arise only from pre-existing ones. The first two tenets are usually credited to Theodor Schwann and Matthias Jakob Schleiden in 1839, building on earlier microscopic observations by Robert Hooke and Antonie van Leeuwenhoek, though Schleiden's own account of new cells forming by crystallization was later abandoned. Rudolf Virchow added the third tenet in 1855, though the underlying idea had already been proposed by Robert Remak. Some modern biologists continue to debate whether non-cellular entities such as viruses should count as living, since they are an exception to the theory's central claim.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "concept:conservation-of-mass",
+    "locale": "en",
+    "label": "Conservation of mass",
+    "summary": "Conservation of mass is the principle that the total mass of a closed system remains unchanged over time, whatever internal processes act on it. Early experimental support is attributed to Jean Rey in the seventeenth century, and Mikhail Lomonosov articulated the law in 1756, but the more influential and widely credited demonstrations came from Antoine Lavoisier's later eighteenth-century experiments, which helped displace phlogiston theory and establish quantitative chemistry. The law holds only in the classical, non-relativistic regime; at very high energies or in systems with strong gravitational fields, mass and energy conservation must be treated jointly rather than separately.",
+    "aliases": [
+      "law of conservation of mass",
+      "conservation of matter"
+    ],
+    "reviewed": true
+  },
+  {
     "node_id": "concept:distinctive-feature",
     "locale": "en",
     "label": "Distinctive feature",
     "summary": "In linguistics, a distinctive feature is the most basic unit of phonological structure that distinguishes one sound from another within a language, such as the feature [+voice], which distinguishes the bilabial plosives [p] and [b]. Distinctive features are grouped into categories according to the natural classes of segments they describe: major class features, laryngeal features, manner features, and place features. The first distinctive feature theory was created by Russian linguist Roman Jakobson in 1941; features have traditionally been specified by binary values, an approach formally adopted in \"Sound Pattern of English\" by Noam Chomsky and Morris Halle in 1968.",
     "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "concept:entropy",
+    "locale": "en",
+    "label": "Entropy",
+    "summary": "Entropy is a thermodynamic state variable that quantifies the number of microscopic configurations, or microstates, consistent with a system's macroscopic condition. It is central to the second law of thermodynamics, which holds that the entropy of an isolated system left to evolve spontaneously cannot decrease over time, so such systems tend toward the state of highest entropy, or thermodynamic equilibrium. The concept originated in classical thermodynamics, where Rudolf Clausius defined it in 1865 as the ratio of an infinitesimal quantity of heat to temperature, and it was later given a statistical, microscopic foundation by Ludwig Boltzmann in terms of the possible arrangements of a system's atoms and molecules. Entropy is accordingly approached in two complementary ways: macroscopically, through classical thermodynamics, and microscopically, through statistical mechanics.",
+    "aliases": [
+      "thermodynamic entropy"
+    ],
     "reviewed": true
   },
   {
@@ -43,11 +80,32 @@
     "reviewed": true
   },
   {
+    "node_id": "concept:germ-theory-of-disease",
+    "locale": "en",
+    "label": "Germ theory of disease",
+    "summary": "Germ theory holds that microorganisms, or pathogens, cause infectious disease, and it displaced the earlier miasma theory that attributed illness to foul air. Basic versions of the idea were proposed by Girolamo Fracastoro in 1546 and elaborated by Marcus von Plenciz in 1762, well before either found scientific acceptance. A transitional period toward acceptance began in the late 1850s with Louis Pasteur's work on fermentation and spontaneous generation, and Robert Koch extended this work in the 1880s, including formulating criteria for linking specific microorganisms to specific diseases. By the end of the 1880s miasma theory was losing ground to germ theory among scientists, and a period of rapid bacteriological discovery followed.",
+    "aliases": [
+      "germ theory"
+    ],
+    "reviewed": true
+  },
+  {
     "node_id": "concept:godel-numbering",
     "locale": "en",
     "label": "Gödel numbering",
     "summary": "In mathematical logic, a Gödel numbering is a function that assigns to each symbol and well-formed formula of some formal language a unique natural number, called its Gödel number. Kurt Gödel developed the concept for the proof of his incompleteness theorems. It can be interpreted as an encoding in which a number is assigned to each symbol of a mathematical notation, so that sequences of symbols can be represented by natural numbers, facilitating their manipulation in formal theories of arithmetic. Since the publishing of Gödel's paper in 1931, the term has been used to refer to more general assignments of natural numbers to mathematical objects.",
     "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "concept:ideal-type",
+    "locale": "en",
+    "label": "Ideal type",
+    "summary": "The ideal type is a methodological construct developed by the sociologist Max Weber for use in comparative and interpretive social science. It is formed by selectively emphasizing certain features of a phenomenon and combining them into a unified analytical construct that does not correspond exactly to any single concrete case; Weber used the German word 'ideal' to mean the world of ideas rather than perfection or a statistical average. Because an ideal type is an admittedly artificial, one-sided construction, Weber held that its worth cannot be judged by how closely it corresponds to reality, only by its usefulness as an interpretive tool. Weber applied the method to build typologies, including four types of social action (zweckrational, wertrational, affektual, and traditional) and three ideal types of legitimate domination, using it to analyze both general phenomena, such as capitalism, and historically specific cases, such as the Protestant ethic.",
+    "aliases": [
+      "Idealtypus",
+      "ideal types"
+    ],
     "reviewed": true
   },
   {
@@ -186,6 +244,17 @@
     "reviewed": true
   },
   {
+    "node_id": "concept:theory-of-relativity",
+    "locale": "en",
+    "label": "Theory of relativity",
+    "summary": "The theory of relativity comprises two related physics theories authored by Albert Einstein — special relativity, published in 1905, and general relativity, developed between 1907 and 1915 and finalized in 1916. Special relativity addresses the structure of spacetime in the absence of gravity, while general relativity extends this to describe gravitation and its role in cosmology and astrophysics. The theory superseded two centuries of Newtonian mechanics and introduced concepts such as four-dimensional spacetime, time dilation, and length contraction. Although Einstein's 1905 paper built on prior theoretical and empirical work by Hendrik Lorentz and Henri Poincaré, the historical debate over the theory's origins concerns the extent to which each contributor should be credited, not whether Einstein authored the theories himself.",
+    "aliases": [
+      "relativity",
+      "special and general relativity"
+    ],
+    "reviewed": true
+  },
+  {
     "node_id": "concept:tripartite-classification-of-authority",
     "locale": "en",
     "label": "Tripartite classification of authority",
@@ -203,6 +272,16 @@
     "label": "Turing machine",
     "summary": "A Turing machine is an abstract model of computation, introduced by Alan Turing in 1936, consisting of an infinite tape, a read/write head, and a finite set of states and rules that determine its behavior. Despite its simplicity, it can capture the notion of any effectively computable procedure, and it is used to make precise what it means for a function to be computable and for a problem to be decidable. It is a foundational concept of computability theory and theoretical computer science, closely associated with the Church–Turing thesis.",
     "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "concept:uniformitarianism",
+    "locale": "en",
+    "label": "Uniformitarianism",
+    "summary": "Uniformitarianism is the assumption that the natural laws and processes observed in the present have operated in the same way throughout the past and apply everywhere, underlying the geological maxim that the present is the key to the past. The idea originated with the geologist James Hutton in the late eighteenth century, was subsequently refined by John Playfair, and was popularized by Charles Lyell starting with his Principles of Geology in 1830; the term itself was coined by William Whewell in a review of Lyell's book. It was developed in opposition to catastrophism, which held that Earth's history was shaped mainly by sudden, large-scale upheavals. Many modern geologists no longer hold to a strict gradualist version of the idea, instead viewing Earth's history as a slow process punctuated by occasional catastrophic events.",
+    "aliases": [
+      "principle of uniformitarianism"
+    ],
     "reviewed": true
   },
   {
@@ -903,6 +982,14 @@
     "reviewed": true
   },
   {
+    "node_id": "person:albert-einstein",
+    "locale": "en",
+    "label": "Albert Einstein",
+    "summary": "Albert Einstein was a German-born theoretical physicist whose 1905 and 1915 papers established special and general relativity, transforming twentieth-century understanding of space, time, and gravitation. He also made significant contributions to quantum theory, and the 1921 Nobel Prize in Physics recognized his services to theoretical physics and, in particular, his discovery of the law of the photoelectric effect rather than relativity itself. A body of historical scholarship has traced anticipations of relativity's mathematics in earlier work by Hendrik Lorentz and Henri Poincaré, but mainstream historians of science credit Einstein with the conceptual break — eliminating the ether and establishing the relativity of space and time — that the theory required. He worked in Berlin until 1933 and then emigrated to the United States, where he remained until his death in 1955.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
     "node_id": "person:alfred-russel-wallace",
     "locale": "en",
     "label": "Alfred Russel Wallace",
@@ -920,6 +1007,14 @@
       "Alfred Teitelbaum"
     ],
     "summary": "Alfred Tarski (1901–1983) was a Polish-American logician and mathematician best known for his work on model theory, metamathematics, and algebraic logic. Educated at the University of Warsaw and a member of the Lwów–Warsaw school of logic, he immigrated to the United States in 1939 and carried out research at the University of California, Berkeley, from 1942 until his death. His biographers state that, along with his contemporary Kurt Gödel, he changed the face of logic in the twentieth century, especially through his work on the concept of truth and the theory of models.",
+    "reviewed": true
+  },
+  {
+    "node_id": "person:allen-newell",
+    "locale": "en",
+    "label": "Allen Newell",
+    "summary": "Allen Newell (1927–1992) was an American computer scientist and cognitive psychologist who worked at the RAND Corporation before moving to Carnegie Mellon University. With Herbert A. Simon and programmer Cliff Shaw, he built the Information Processing Language and, in 1956, the Logic Theorist — one of the earliest artificial intelligence programs — followed the next year by the General Problem Solver; his contributions to those programs are credited with helping establish artificial intelligence as a field. Newell and Simon went on to formulate the physical symbol system hypothesis — that intelligent behavior in general amounts to symbol manipulation of the sort their own programs performed — and in 1975 the two shared the ACM Turing Award for their contributions to artificial intelligence and the psychology of human cognition.",
+    "aliases": [],
     "reviewed": true
   },
   {
@@ -1248,6 +1343,16 @@
     "reviewed": true
   },
   {
+    "node_id": "person:franz-brentano",
+    "locale": "en",
+    "label": "Franz Brentano",
+    "summary": "Franz Brentano (1838–1917) was a German philosopher and psychologist whose 1874 book Psychology from an Empirical Standpoint, regarded as his major work, is credited with bringing the scholastic-era notion of intentionality — the idea that mental acts are directed at objects — back into modern philosophical discussion. He trained and served as a Catholic priest before withdrawing in 1873 over the church's newly declared dogma of papal infallibility, and in 1874 took a full professorship at the University of Vienna. He lost that position in 1880: Austro-Hungarian law barred former priests from marrying, and after he and Ida von Lieben wed abroad the authorities declined to reinstate him, so he taught on as an unsalaried Privatdozent until 1895. His Vienna students included Edmund Husserl, Sigmund Freud, Alexius Meinong, Carl Stumpf, and Kazimierz Twardowski. Husserl, who studied under Brentano before founding the phenomenological movement, carried the concept of intentionality forward along his own, distinct lines rather than co-originating it. Drawing heavily on Aristotle and later scholastic philosophy, Brentano is now often described as anticipating both the phenomenological and analytic traditions in twentieth-century philosophy.",
+    "aliases": [
+      "Franz Clemens Brentano"
+    ],
+    "reviewed": true
+  },
+  {
     "node_id": "person:friedrich-nietzsche",
     "locale": "en",
     "label": "Friedrich Nietzsche",
@@ -1336,6 +1441,16 @@
     "reviewed": true
   },
   {
+    "node_id": "person:girolamo-fracastoro",
+    "locale": "en",
+    "label": "Girolamo Fracastoro",
+    "summary": "Girolamo Fracastoro was an Italian physician, poet, and scholar active in Verona and Padua in the first half of the sixteenth century. In 1546 he proposed that epidemic diseases spread through transferable ‘seeds’ or minute particles capable of transmission by direct contact, by contact with contaminated objects, or across distance through the air, an account he set out across a three-part treatise on contagion. Later scholarship treats this account as an early precursor to germ theory rather than its founding statement, crediting Fracastoro with only basic forms of the idea, which Marcus von Plenciz expanded on more than two centuries afterward. He is also remembered for the 1530 poem that gave syphilis its name.",
+    "aliases": [
+      "Hieronymus Fracastorius"
+    ],
+    "reviewed": true
+  },
+  {
     "node_id": "person:gottfried-wilhelm-leibniz",
     "locale": "en",
     "label": "Gottfried Wilhelm Leibniz",
@@ -1400,6 +1515,16 @@
     "label": "Herbert Feigl",
     "aliases": [],
     "summary": "Herbert Feigl (1902–1988) was an Austrian-American philosopher and an early member of the Vienna Circle. He coined the term \"nomological danglers\". His membership placed him among the figures associated with the Circle's philosophical movement.",
+    "reviewed": true
+  },
+  {
+    "node_id": "person:herbert-simon",
+    "locale": "en",
+    "label": "Herbert A. Simon",
+    "summary": "Herbert A. Simon (1916–2001) was an American polymath whose contributions spanned computer science, economics, and cognitive psychology; he is best known for the concepts of bounded rationality and satisficing in decision-making. Together with Allen Newell, he built some of the earliest artificial intelligence programs, including the Logic Theory Machine (1956) and the General Problem Solver (1957); that work is often cited as foundational to artificial intelligence and to neighboring fields such as operations research, management science, and cognitive science. Simon and Newell shared the 1975 ACM Turing Award, and in 1978 Simon alone received the Nobel Memorial Prize in Economic Sciences for his research into decision-making within economic organizations.",
+    "aliases": [
+      "Herbert Alexander Simon"
+    ],
     "reviewed": true
   },
   {
@@ -1593,6 +1718,14 @@
     "label": "Luciano Floridi",
     "aliases": [],
     "summary": "Luciano Floridi (born 1964) is an Italian and British philosopher best known for his work in the philosophy of information and information ethics. He is John K. Castle Professor in the Practice of Cognitive Science and Founding Director of the Digital Ethics Center at Yale University, and was the founder and director of the interdepartmental research group on the philosophy of information at the University of Oxford. He has received many awards, including the Knight of the Grand Cross of the Order of Merit, and according to Scopus was the most cited living philosopher in the world in 2020.",
+    "reviewed": true
+  },
+  {
+    "node_id": "person:ludwig-boltzmann",
+    "locale": "en",
+    "label": "Ludwig Boltzmann",
+    "summary": "Ludwig Boltzmann was an Austrian mathematician and theoretical physicist who developed statistical mechanics and supplied the statistical explanation of the second law of thermodynamics. In 1877 he formulated what became the standard statistical definition of entropy, expressing it in terms of the number of microstates available to a system. Statistical mechanics as a field is generally credited not to Boltzmann alone but to three physicists working from the 1870s onward — Boltzmann, James Clerk Maxwell, and Josiah Willard Gibbs. Boltzmann spent much of his career at the University of Graz before returning to the University of Vienna, where he succeeded his own teacher Josef Stefan as professor.",
+    "aliases": [],
     "reviewed": true
   },
   {
@@ -1852,6 +1985,24 @@
     "label": "Rudolf Carnap",
     "aliases": [],
     "summary": "Rudolf Carnap (1891–1970) was a German philosopher and logician who was active in Europe before 1935 and in the United States thereafter. He was a major member of the Vienna Circle and an advocate of logical positivism.",
+    "reviewed": true
+  },
+  {
+    "node_id": "person:rudolf-clausius",
+    "locale": "en",
+    "label": "Rudolf Clausius",
+    "summary": "Rudolf Clausius was a German physicist and mathematician described as one of the central founding figures of the science of thermodynamics, a status tied specifically to his reworking of Sadi Carnot's principle into what the source calls a firmer basis for the theory of heat. His 1850 paper on the moving force of heat first set out the basic ideas of the second law of thermodynamics. In 1865 he originated the concept of entropy, giving it its first mathematical formulation and coining the term itself from the Greek word for transformation. He later extended kinetic theory by incorporating rotational and vibrational molecular motion into earlier, simpler gas models.",
+    "aliases": [
+      "Rudolf Julius Emanuel Clausius"
+    ],
+    "reviewed": true
+  },
+  {
+    "node_id": "person:rudolf-virchow",
+    "locale": "en",
+    "label": "Rudolf Virchow",
+    "summary": "Rudolf Virchow was a German physician and scientist whose 1858 work Cellular Pathology is regarded as foundational to modern pathology. In it he articulated the third tenet of cell theory — that all cells arise from pre-existing cells — building on and popularizing an idea that historians now widely regard as having been taken without credit from Robert Remak's earlier work on cell division. Virchow was one of the first to accept Remak's demonstration that new cells form through division rather than spontaneous generation, even though he had initially resisted it. Beyond cell theory, he founded the fields of cellular and comparative pathology and developed a systematic method of autopsy that still underlies modern practice.",
+    "aliases": [],
     "reviewed": true
   },
   {
@@ -4737,6 +4888,16 @@
     "reviewed": true
   },
   {
+    "node_id": "subfield:thermodynamics",
+    "locale": "en",
+    "label": "Thermodynamics",
+    "summary": "Thermodynamics is the branch of physics that examines how heat and work move energy through physical systems, and how that exchange constrains matter and radiation through the related concept of entropy. Four governing laws describe these exchanges in measurable, macroscopic terms, while statistical mechanics supplies a microscopic account of the same behavior. The field took shape in the early nineteenth century out of efforts to improve the efficiency of steam engines, with Sadi Carnot's 1824 analysis of engine efficiency an early landmark; Rudolf Clausius introduced the term entropy in 1865 while working out the second law. The field now comprises several distinct branches — including chemical, equilibrium, non-equilibrium, classical, and statistical thermodynamics — each built on a different model or applied to a different class of system.",
+    "aliases": [
+      "classical thermodynamics"
+    ],
+    "reviewed": true
+  },
+  {
     "node_id": "subfield:time-series-analysis",
     "locale": "en",
     "label": "Time Series Analysis",
@@ -4774,6 +4935,17 @@
     "label": "Transportation Engineering",
     "summary": "Transportation engineering is the sub-discipline of civil engineering that applies scientific and engineering principles to the planning, design, operation, and management of transportation systems. Wikipedia defines it as \"the application of technology and scientific principles to the planning, functional design, operation and management of facilities for any mode of transportation to provide for the safe, efficient, rapid, comfortable, convenient, economical, and environmentally compatible movement of people and goods.\" The field spans highway, rail, transit, air, water, and pipeline modes. ASCE's Transportation & Development Institute, established in 2002, is dedicated to \"advancing knowledge and practice in sustainable transportation and development.\" The Library of Congress Classification recognizes the discipline under the heading \"Transportation engineering\" within civil engineering. Work ranges from traffic and pavement design to network operations and infrastructure planning.",
     "aliases": [],
+    "reviewed": true
+  },
+  {
+    "node_id": "subfield:type-theory",
+    "locale": "en",
+    "label": "Type theory",
+    "summary": "In mathematical logic and theoretical computer science, type theory studies formal systems that sort expressions and mathematical objects into types, with each type restricting how an expression may be formed and used, in a way loosely comparable to how a data type constrains values in a programming language. Bertrand Russell worked out the approach between 1902 and 1908 to avoid paradoxes such as the one bearing his name in naive set theory, arriving by 1908 at a hierarchy of types paired with a reducibility axiom, both later formalized in his and Alfred North Whitehead's Principia Mathematica (1910–1913). In the twentieth century the field developed alongside Alonzo Church's lambda calculus and now includes systems such as Per Martin-Löf's intuitionistic type theory, which supports a constructive approach to mathematical foundations, and Thierry Coquand's calculus of constructions, which underlies proof assistants including Rocq (formerly Coq) and Lean.",
+    "aliases": [
+      "theory of types",
+      "type systems"
+    ],
     "reviewed": true
   },
   {
@@ -4851,6 +5023,16 @@
     "summary": "\"A Mathematical Theory of Communication\" is a 1948 paper by Claude Shannon, published in the Bell System Technical Journal, that founded the field of information theory. It introduced a quantitative measure of information (entropy), the modeling of communication sources and channels, and results on the fundamental limits of data compression and reliable transmission over noisy channels. It is widely regarded as the canonical work establishing information theory and is foundational to modern communications, computing, and data science.",
     "aliases": [
       "The Mathematical Theory of Communication"
+    ],
+    "reviewed": true
+  },
+  {
+    "node_id": "work:administrative-behavior",
+    "locale": "en",
+    "label": "Administrative Behavior",
+    "summary": "Herbert A. Simon's Administrative Behavior: a Study of Decision-Making Processes in Administrative Organization was published by Macmillan in New York in 1947, its first edition growing out of Simon's doctoral thesis in political science at the University of Chicago. The book treated decision-making as the core of administration and proposed that real administrators are not perfectly rational optimizers but instead \"satisfice,\" settling for a course of action that is merely satisfactory rather than optimal. Simon later wrote that he had built the book squarely on Chester Barnard's The Functions of the Executive and remained deeply indebted to it, while counting the bounded rationality notions among the genuinely novel contributions the book made. Administrative Behavior became foundational to the Carnegie School of organizational economics, and its ideas were later cited in Simon's 1978 Nobel Memorial Prize in Economic Sciences.",
+    "aliases": [
+      "Administrative Behavior: A Study of Decision-Making Processes in Administrative Organization"
     ],
     "reviewed": true
   },
@@ -4997,6 +5179,16 @@
     "reviewed": true
   },
   {
+    "node_id": "work:on-the-electrodynamics-of-moving-bodies",
+    "locale": "en",
+    "label": "On the Electrodynamics of Moving Bodies",
+    "summary": "\"On the Electrodynamics of Moving Bodies\" was the third of the four papers Albert Einstein published in Annalen der Physik during his 1905 \"miracle year,\" submitted on 30 June and appearing in print on 26 September. In it Einstein reworked the mechanics of bodies moving at speeds approaching that of light so as to reconcile them with Maxwell's equations for electricity and magnetism. The paper's two postulates, that physical laws hold in every inertial frame and that the speed of light is constant for all observers, became the basis of what was subsequently named the special theory of relativity. Mass-energy equivalence was not part of this paper; Einstein derived that result separately in a fourth 1905 paper published later that autumn.",
+    "aliases": [
+      "Zur Elektrodynamik bewegter Körper"
+    ],
+    "reviewed": true
+  },
+  {
     "node_id": "work:on-the-origin-of-species",
     "locale": "en",
     "label": "On the Origin of Species",
@@ -5026,6 +5218,16 @@
     "reviewed": true
   },
   {
+    "node_id": "work:principia-mathematica",
+    "locale": "en",
+    "label": "Principia Mathematica",
+    "summary": "Principia Mathematica, often abbreviated PM, is a three-volume work on the foundations of mathematics written by Alfred North Whitehead and Bertrand Russell and published by Cambridge University Press in 1910, 1912 and 1913. Its central technical device was the theory of types, adopted to rule out the unrestricted comprehension of classes and properties that gives rise to paradoxes such as the Russell set; the ramified version of this theory was specifically Russell's. Although the work's coverage stopped short of real analysis, by its third volume it was evident that a large body of known mathematics could in principle be developed within the formal system PM established. The book went on to popularize symbolic logic and is credited with advancing the subject.",
+    "aliases": [
+      "PM"
+    ],
+    "reviewed": true
+  },
+  {
     "node_id": "work:principles-of-geology",
     "locale": "en",
     "label": "Principles of Geology",
@@ -5040,6 +5242,16 @@
     "summary": "Principles of Physiological Psychology (Grundzuge der physiologischen Psychologie) is a work by the German scientist Wilhelm Wundt, first published in 1873-1874. It set out a program for treating psychology as an experimental science grounded in physiology and the study of immediate conscious experience. It is regarded as a founding text of experimental psychology.",
     "aliases": [
       "Grundzüge der physiologischen Psychologie"
+    ],
+    "reviewed": true
+  },
+  {
+    "node_id": "work:psychology-from-an-empirical-standpoint",
+    "locale": "en",
+    "label": "Psychology from an Empirical Standpoint",
+    "summary": "Franz Brentano, described in this source as an Austrian philosopher, published Psychologie vom empirischen Standpunkte in 1874, arguing that psychology should aim to establish exact laws in the manner of the natural sciences. He originally planned the work in six books but completed only two before falling ill, leaving the project unfinished. In it Brentano reintroduced the concept of intentionality into the philosophy of mind, describing it as the mark distinguishing mental phenomena from physical phenomena. The book established Brentano's reputation, helped constitute psychology as a scientific discipline, and influenced Husserlian phenomenology, currents of analytic philosophy, gestalt psychology, and Alexius Meinong's theory of objects.",
+    "aliases": [
+      "Psychologie vom empirischen Standpunkte"
     ],
     "reviewed": true
   },

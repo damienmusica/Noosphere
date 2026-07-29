@@ -1,12 +1,12 @@
 {
   "id": "batch:qid-gap-recheck-v1",
-  "title": "QID-gap recheck v1 — the 8 compound-label upstream gaps",
-  "description": "Periodic live re-resolution of the 8 QID-less compound-label subfields held in foundry/held.json (resolver-v4 queue bucket, recheck-wave2-v1). All 8 are recorded upstream_gap in scripts/foundry/wikidata-goldenset.json with per-seed QC rejection rulings (sessions #9/#10/#11/#21) and were live re-confirmed as honest gaps by decision (92) (session #50, 2026-07-02). Resolver v4 (singular fallback + compound decomposition + orphan-stub penalty) has existed since 2026-06-11 — this manifest is NOT a resolver capability test; it measures whether Wikidata has since grown a usable upstream discipline entity for any of the 8. Triage rule: compare every selection against the goldenset must_not_select lists and the session-#11 umbrella test (a component anchor is acceptable only when the component term umbrellas the combined community) before treating any hit as new.",
+  "title": "QID-gap recheck v1 — the remaining compound-label upstream gaps",
+  "description": "Periodic live re-resolution of the QID-less compound-label subfields held in foundry/held.json (resolver-v4 queue bucket, recheck-wave2-v1). Each is recorded upstream_gap in scripts/foundry/wikidata-goldenset.json with per-seed QC rejection rulings (sessions #9/#10/#11/#21) and was live re-confirmed as an honest gap by decision (92) (session #50, 2026-07-02). Resolver v4 (singular fallback + compound decomposition + orphan-stub penalty) has existed since 2026-06-11 — this manifest is NOT a resolver capability test; it measures whether Wikidata has since grown a usable upstream discipline entity. Triage rule: compare every selection against the goldenset must_not_select lists and the session-#11 umbrella test (a component anchor is acceptable only when the component term umbrellas the combined community) before treating any hit as new. Seed list trimmed 2026-07-29 (session #60): five of the original eight had been promoted since — computer-systems, databases-and-information-systems and distributed-and-parallel-computing on ACM CCS anchors, sensation-and-perception on APA PsycInfo 2320 and naval-architecture-and-marine-engineering on NCES CIP 14.2201, all under node-policy v1.4 (decision (102)). Leaving them in overstated the gap and re-resolved already-answered labels on every run.",
   "status": "active",
   "target_locales": ["en"],
   "scope": {
     "include": [
-      "Re-resolution ONLY of the 8 held QID-less compound-label subfields; no new nodes, no new proposals",
+      "Re-resolution ONLY of the held QID-less compound-label subfields still at `proposed` in /data; no new nodes, no new proposals",
       "Any newly-appeared upstream entity must pass multi-signal verification (P31 discipline-kind, sitelinks, enwiki) — never label-match alone"
     ],
     "exclude": [
@@ -15,14 +15,9 @@
     ]
   },
   "seed_entities": [
-    { "label": "Computer Systems", "expected_node_id": "subfield:computer-systems", "expected_type": "subfield" },
-    { "label": "Databases and Information Systems", "expected_node_id": "subfield:databases-and-information-systems", "expected_type": "subfield" },
-    { "label": "Distributed and Parallel Computing", "expected_node_id": "subfield:distributed-and-parallel-computing", "expected_type": "subfield" },
     { "label": "Computational Cognitive Science", "expected_node_id": "subfield:computational-cognitive-science", "expected_type": "subfield" },
     { "label": "Judgment and Decision Making", "expected_node_id": "subfield:judgment-and-decision-making", "expected_type": "subfield" },
-    { "label": "Sensation and Perception", "expected_node_id": "subfield:sensation-and-perception", "expected_type": "subfield" },
-    { "label": "Modern History", "expected_node_id": "subfield:modern-history", "expected_type": "subfield" },
-    { "label": "Naval Architecture and Marine Engineering", "expected_node_id": "subfield:naval-architecture-and-marine-engineering", "expected_type": "subfield" }
+    { "label": "Modern History", "expected_node_id": "subfield:modern-history", "expected_type": "subfield" }
   ],
   "allowed_public_sources": [
     {
@@ -48,6 +43,7 @@
   "notes": [
     "Recheck manifest — resolver measurement only; produces a source pack, never proposals.",
     "If a seed newly resolves clean (multi-signal, not in must_not_select), the verdict is a NEW goldenset entry + a node-promotion-v1 candidate via the standard decision-file flow.",
-    "If all 8 remain gaps, the honest unblock paths are (a) periodic upstream recheck and (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93) — CPO gate)."
+    "If every seed remains a gap, the honest unblock paths are (a) periodic upstream recheck and (b) node-promotion v1.4 alternative-anchor taxonomy extension (decision (93) — CPO gate).",
+    "Measurement 2026-07-29 (session #60): 3/3 still gaps, every selection a known must_not_select referent — computational-cognitive-science → Bayesian cognitive science (narrower, score 40), judgment-and-decision-making → decision making (the process, not the discipline), modern-history → modern period (the era). Zero new upstream entities. Note that a v1.4 clause-1 taxonomy path is separately closed for the first two by strict name-identity (§12 clause 3): no ratified authority maintains a category under either name — APA PsycInfo was swept in full for JDM in 2026-07-02 and CIP names Cognitive Science, not Computational Cognitive Science. These are stable, versioned taxonomies, so re-sweeping them on a short cycle measures nothing; the upstream-Wikidata recheck is the live signal."
   ]
 }

@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "batch_id": "person-wave11-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-29"
+  },
+  "nodes": [
+    {
+      "id": "concept:theory-of-relativity",
+      "type": "concept",
+      "domain": "natural_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Theory of Relativity",
+      "referent": "The physical theory of relativity in physics -- special relativity (1905: constancy of the speed of light and the unification of space and time into spacetime, replacing Newtonian absolute space and time) and general relativity (1915: gravity as the curvature of spacetime) -- not the general philosophical doctrine of relativism, not a single specific equation or paper, and not the Lorentz-transformation mathematics considered on its own apart from the physical reinterpretation Einstein gave it.",
+      "source_hint": "Wikipedia 'Theory of relativity' / 'Special relativity' / 'General relativity'; Encyclopedia Britannica 'relativity'.",
+      "note": "Re-admission of a node declined in concept-wave3-v1 (recorded in foundry/rejections.json) solely for lack of an Einstein person node ('re-admissible once person:albert-einstein exists'); that gap is now closed. Henri Poincare (already a reviewed node) and Albert Einstein both receive edges to this concept in the companion edges.proposed.json for this batch, positioned per clause-6 v2 rather than as competing founder claims -- see that file for the reasoning.",
+      "rationale": "Re-admits the concept-wave3-v1 rejection now that person:albert-einstein exists in the corpus: the node was withheld only because its sole available person link was Poincare, and the rejection record itself named this as a node-task gap, not an edge-task or concept-worthiness problem. The theory of relativity is a foundational, canonical concept of modern physics with a clean structural home under field:physics.",
+      "uncertainty": "I have not live-verified this node's disambiguation from adjacent physics/philosophy homonyms (special relativity and general relativity as possible separate structured items, philosophical relativism, or narrower Lorentz-transformation-only items) this session. The sibling concepts admitted in concept-wave3-v1 (entropy in particular) needed a targeted, non-obvious disambiguation search before their identity resolved cleanly, so this is a real risk class for this node, not a formality.",
+      "ambiguous": true
+    }
+  ],
+  "notes": []
+}
