@@ -111,6 +111,44 @@
     "note": "Invisible hand founded/formalized by Adam Smith (standard/eponymous attribution). Direction person->concept. Permanence: WP https://en.wikipedia.org/w/index.php?title=Invisible_hand&oldid=1358921063 · Wikidata Q376644 (immutable). (founder ladder; supported)."
   },
   {
+    "id": "edge:administrative-behavior-canonical-work-bounded-rationality",
+    "source": "work:administrative-behavior",
+    "target": "concept:bounded-rationality",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "W1: the book that introduced the ideas concept:bounded-rationality names, completing a triangle anchored by edge:herbert-simon-founded-bounded-rationality from concept-wave3-v1. Simon's own 1988 assessment, quoted in the article, lists \"the bounded rationality notions\" among the book's principal novelties, and a 2001 obituary quoted there says it \"reject[ed] the notion of an omniscient 'economic man'\" in favour of an \"administrative man\" who \"satisfices\". Wikidata Q4683452: P31 = literary work, P50 = Q181529 Simon, P577 = 1947, 4 sitelinks."
+  },
+  {
+    "id": "edge:administrative-behavior-canonical-work-herbert-simon",
+    "source": "work:administrative-behavior",
+    "target": "person:herbert-simon",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Person leg. P50 = Q181529 matches the person node's verified QID. Second corpus work for Simon is not at issue — he has none yet."
+  },
+  {
     "id": "edge:aerospace-engineering-part-of-engineering-and-technology",
     "source": "field:aerospace-engineering",
     "target": "domain:engineering-and-technology",
@@ -7580,7 +7618,7 @@
     "target": "subfield:computer-systems",
     "relation": "influenced",
     "confidence": 0.85,
-    "status": "proposed",
+    "status": "reviewed",
     "evidence": [
       "source:wikipedia"
     ],
@@ -7590,7 +7628,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "Von Neumann's 1945 EDVAC report outlined the stored-program architecture dominant in computer systems. Held at proposed: target subfield:computer-systems is itself proposed (QID-less honest gap) → status-cap clause 3 blocks auto-promotion; also a live historiographical dispute over attribution (Moore School / Eckert–Mauchly team). Permanence: WP https://en.wikipedia.org/w/index.php?title=Von_Neumann_architecture&oldid=1360745761."
+    "note": "Promoted 2026-07-29 (a-relations-wave7-v1, ladder (68)). Both recorded blockers are resolved. (1) The status cap: the target subfield:computer-systems was `proposed` when this edge was written and has since been promoted to `reviewed` under node-policy v1.4 (ACM CCS anchor, decision (102)) — clause 3 no longer blocks it. (2) The sourcing: two independent claim-stating articles now support it — enwiki First Draft of a Report on the EDVAC (\"It contains the first published description of the logical design of a computer using the stored-program concept, which has come to be known as the von Neumann architecture\") and enwiki Von Neumann architecture (\"is a computer architecture based on the First Draft of a Report on the EDVAC , written by John von Neumann in 1945, describing designs discussed with John Mauchly and J.\"). The attribution dispute the original note flagged is preserved rather than resolved: the same source states \"the name has become controversial due to von Neumann's failure to name other contributors\", and the second names Mauchly and Eckert as participants in the designs discussed. That is a credit-and-share contest on top of an agreed authorship and influence — the existence-vs-share line of §8 clause-6 v2 — so it routes to supported plus this note, the same ruling shape applied to Einstein and relativity in person-wave11-v1 the same day. Neither Mauchly nor Eckert is a corpus node; honest gap."
   },
   {
     "id": "edge:judgment-and-decision-making-part-of-psychology",
@@ -10264,6 +10302,44 @@
     "note": "On Sense and Reference (Über Sinn und Bedeutung, Frege, 1892) — introducing the sense/reference distinction — is a canonical founding paper of philosophy of language. Work QID Q330955 live-verified (P31=Q13442814 scholarly article, P50=Q60028 Frege, P577=1892). Generator QID hint Q1497216 was a hallucination (\"Schlagintweit brothers\"); corrected live to Q330955. §8: WP oldid=1355689334. Co-canonical (decision (90)) with the Tractatus (work-wave4) for philosophy-of-language. NB: the paired concept:sense-and-reference candidate was dropped at QC — Q330955 is the paper (a work), not a distinct concept item, so it is modeled once, as this work. W1–W5 auto-reviewed; direction work→field."
   },
   {
+    "id": "edge:on-the-electrodynamics-of-moving-bodies-canonical-work-albert-einstein",
+    "source": "work:on-the-electrodynamics-of-moving-bodies",
+    "target": "person:albert-einstein",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Person leg of the canonical triangle. P50 = Q937 matches the person node's verified QID exactly."
+  },
+  {
+    "id": "edge:on-the-electrodynamics-of-moving-bodies-canonical-work-theory-of-relativity",
+    "source": "work:on-the-electrodynamics-of-moving-bodies",
+    "target": "concept:theory-of-relativity",
+    "relation": "canonical_work",
+    "confidence": 0.95,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "W1: the founding paper of special relativity, completing a triangle already anchored at both ends (Einstein's founder edge on this concept was written in person-wave11-v1 the same day). enwiki Annus mirabilis papers: \"The third paper introduced Einstein's special theory of relativity\", identified there as \"Zur Elektrodynamik bewegter Körper\" (\"On the Electrodynamics of Moving Bodies\"). Wikidata Q3020388: P31 = scholarly article, P50 = Q937 Einstein, P577 = 1905, P1433 = Annalen der Physik, 9 sitelinks — every W2–W4 signal present, the cleanest identity in the batch."
+  },
+  {
     "id": "edge:on-the-origin-of-species-canonical-work-charles-darwin",
     "source": "work:on-the-origin-of-species",
     "target": "person:charles-darwin",
@@ -11835,6 +11911,44 @@
     }
   },
   {
+    "id": "edge:principia-mathematica-canonical-work-bertrand-russell",
+    "source": "work:principia-mathematica",
+    "target": "person:bertrand-russell",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Person leg, single-author by necessity rather than by claim. Wikidata P50 lists BOTH Q33760 Russell and Q183372 Whitehead, and the enwiki lead names both — but person:alfred-north-whitehead does not exist, having been deliberately dropped as an honesty gap in person-wave11-v1 the same day (no corpus endpoint for his own founder claim). The co-authorship is therefore recorded here on the edge and in that batch's rejection ledger, not silently reduced. Confidence is held at 0.85 for exactly that incompleteness."
+  },
+  {
+    "id": "edge:principia-mathematica-canonical-work-mathematical-logic",
+    "source": "work:principia-mathematica",
+    "target": "subfield:mathematical-logic",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "W1, and the FOURTH co-canonical work for this subfield — joining Boole's Laws of Thought, Frege's Begriffsschrift and Gödel's 1931 paper. Decision (90) permits multiplicity and W1 bounds it: PM is a watershed text by any account, not \"another important book\". enwiki: \"The Principia Mathematica (often abbreviated PM) is a three-volume work on the foundations of mathematics written by the mathematician–philosophers Alfred North Whitehead and Bertrand Russell and published in 1910, 1912, and 1913.\" ★ Two identity wrinkles recorded rather than smoothed: Wikidata Q163335 carries P31 = Q277759 book series (not one of criterion 1's enumerated work types, though it satisfies the guard's actual purpose — the referent is a work, not a person or concept — and the three volumes exist as separate items Q62092387/Q62092410/Q62092422), and its P577 reads 1917, which is an edition date rather than the 1910–1913 publication the prose gives. Criterion 3's alternative applies: the uncontested years are confirmed live from the sitelinked article. 35 sitelinks, P50 = both authors."
+  },
+  {
     "id": "edge:principles-of-geology-canonical-work-charles-lyell",
     "source": "work:principles-of-geology",
     "target": "person:charles-lyell",
@@ -12277,6 +12391,44 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-18"
     }
+  },
+  {
+    "id": "edge:psychology-from-an-empirical-standpoint-canonical-work-franz-brentano",
+    "source": "work:psychology-from-an-empirical-standpoint",
+    "target": "person:franz-brentano",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "Person leg. P50 = Q57196 matches the person node's verified QID."
+  },
+  {
+    "id": "edge:psychology-from-an-empirical-standpoint-canonical-work-intentionality",
+    "source": "work:psychology-from-an-empirical-standpoint",
+    "target": "concept:intentionality",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-29"
+    },
+    "note": "W1: the text in which intentionality re-entered contemporary philosophy — the same 1874 book the four sources behind edge:franz-brentano-founded-intentionality all name. enwiki: \"Psychology from an Empirical Standpoint (German: Psychologie vom empirischen Standpunkte; 1874; second edition 1924) is an 1874 book by the Austrian philosopher Franz Brentano\". Note the article calls him Austrian while the Brentano person node's sources call him German — a source-side inconsistency, recorded, immaterial to identity."
   },
   {
     "id": "edge:psychology-part-of-cognitive-sciences",

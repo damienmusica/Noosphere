@@ -70,5 +70,53 @@
     "reason": "No source attributes the type theory to Whitehead. SEP: 'The theory of types was introduced by Russell'; enwiki Principia Mathematica says only that PM adopted it. Do not re-propose on co-authorship of Principia alone.",
     "batch_id": "person-wave11-v1",
     "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Cellular Pathology (Virchow, 1858)",
+    "referent": "the German original Die Cellularpathologie (Berlin, 1858)",
+    "kind": "node",
+    "reason": "W2 fail. No upstream item for the German original; the only candidate is the 1863 English translation, typed 'version, edition or translation' with 0 sitelinks. Description-versus-resolution mismatch. Do not re-propose against the translation.",
+    "batch_id": "work-wave6-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Lectures on Gas Theory (Boltzmann, 1896–98)",
+    "referent": "Vorlesungen über Gastheorie",
+    "kind": "node",
+    "reason": "W2 fail. No Wikidata item exists under the English or German title in any spelling. Honest gap.",
+    "batch_id": "work-wave6-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Clausius's 1865 entropy memoir",
+    "referent": "the paper in which Clausius introduced and named entropy",
+    "kind": "node",
+    "reason": "W2 fail. No Wikidata item. The generator ranked this its own weakest identity case and declined to invent a title.",
+    "batch_id": "work-wave6-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Human Problem Solving (Newell & Simon, 1972)",
+    "referent": "the 1972 Prentice-Hall book",
+    "kind": "node",
+    "reason": "Duplicate upstream modeling (two competing items for one referent, neither substantively populated) plus no dedicated enwiki article — the title redirects to Herbert A. Simon. Re-checkable when upstream merges or an article exists.",
+    "batch_id": "work-wave6-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "De Contagione et Contagiosis Morbis (Fracastoro, 1546)",
+    "referent": "Fracastoro's treatise on contagion, as a canonical work for germ theory",
+    "kind": "node",
+    "reason": "Declined by the GENERATOR on W1, citing this session's own ruling: edge:girolamo-fracastoro-influenced-germ-theory-of-disease was deliberately corrected from founded_or_formalized to influenced hours earlier, with the note that the concept is 'still without a founder edge, which is the honest state'. A canonical_work claim presupposes the founding status the corpus had just declined to assert. Recorded because the generator reached this by reading the corpus, not by being told.",
+    "batch_id": "work-wave6-v1",
+    "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "Economy and Society (Weber)",
+    "referent": "Weber's posthumous compilation, as a canonical work for sociology",
+    "kind": "node",
+    "reason": "Declined by the GENERATOR, citing the note already on edge:protestant-ethic-canonical-work-sociology, which had itself named and rejected Economy and Society as 'a posthumous, editorially-contested compilation (weaker single-item decidability)'. It also observed that admitting it would make Weber the corpus's first author with two canonical works aimed at one field. Recorded for the same reason as above.",
+    "batch_id": "work-wave6-v1",
+    "recorded_at": "2026-07-29"
   }
 ]

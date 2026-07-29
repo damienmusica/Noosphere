@@ -14,13 +14,6 @@
     "recorded_at": "2026-07-02"
   },
   {
-    "id": "edge:cybernetics-influenced-systems-engineering",
-    "blocking_condition": "Thin at the 'influenced' bar: single clear claim-stating source (WP systems-engineering history lists cybernetics among many contributors; WP Cybernetics does not reciprocate). Needs a second independent claim-stating source.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
     "id": "edge:georges-cuvier-influenced-archaeology",
     "blocking_condition": "Indirect (stratigraphy/comparative method reached archaeology via geology); diffuse, field-grain broad. Needs a re-ruling or finer target.",
     "recheck": "manual",
@@ -42,13 +35,6 @@
     "recorded_at": "2026-07-02"
   },
   {
-    "id": "edge:kurt-lewin-influenced-education",
-    "blocking_condition": "Thin/indirect sourcing: second generator source was about Dewey, not Lewin (self-flagged). Needs a second independent Lewin-specific claim-stating source.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
     "id": "edge:norbert-wiener-influenced-cognitive-psychology",
     "blocking_condition": "Near-duplicate risk with the existing information-theory→cognitive-psychology edge (both 'cognitive revolution' antecedents); needs a dedup ruling on the distinct cybernetic-feedback contribution.",
     "recheck": "manual",
@@ -58,13 +44,6 @@
   {
     "id": "edge:roman-jakobson-influenced-semiotics",
     "blocking_condition": "Influence genuine but diffuse and partly bidirectional (Jakobson drew FROM Peircean semiotics); semiotics had independent foundations (Peirce, Saussure). Needs a direction/scope ruling.",
-    "recheck": "manual",
-    "batch_id": "recheck-wave1-v1",
-    "recorded_at": "2026-07-02"
-  },
-  {
-    "id": "edge:ronald-fisher-influenced-epidemiology",
-    "blocking_condition": "Epidemiology-specific link not surfaced verbatim live (Bradford Hill more direct); thin. Mirrors the wave-3 evo-bio→epidemiology hold.",
     "recheck": "manual",
     "batch_id": "recheck-wave1-v1",
     "recorded_at": "2026-07-02"
@@ -178,5 +157,29 @@
     "recheck": "manual",
     "batch_id": "person-wave11-v1",
     "recorded_at": "2026-07-29"
+  },
+  {
+    "id": "edge:cybernetics-influenced-systems-engineering",
+    "blocking_condition": "Re-measured live 2026-07-29 (a-relations-wave7-v1) and STILL THIN — the recheck-wave1-v1 condition is confirmed, not merely carried forward. The requirement was a second independent claim-stating source. There is none: the enwiki Cybernetics article does not mention systems engineering at all (zero occurrences), and the enwiki Systems engineering article names cybernetics only inside an enumeration of fields it \"overlaps\" — \"industrial engineering, production systems engineering, process systems engineering, mechanical engineering, ... cybernetics, aerospace engineering, organizational studies, civil engineering and project management\". An overlap list is not a claim that A influenced B; treating it as one would be exactly the manufactured-relation failure clause-6 v2 guards against. Unblock unchanged: a source that states the influence.",
+    "recheck": "manual",
+    "batch_id": "a-relations-wave7-v1",
+    "recorded_at": "2026-07-29",
+    "note": "Supersedes the recheck-wave1-v1 entry of 2026-07-02 to record the fresh measurement date. The substance is unchanged, and that is the finding."
+  },
+  {
+    "id": "edge:kurt-lewin-influenced-education",
+    "blocking_condition": "Re-measured live 2026-07-29 (a-relations-wave7-v1) and STILL THIN. The requirement was a second independent, Lewin-specific claim-stating source (the original generator's second source turned out to be about Dewey). The enwiki Kurt Lewin article yields no claim that he influenced education as a discipline — the only education-related passages are about his own schooling. Unblock unchanged.",
+    "recheck": "manual",
+    "batch_id": "a-relations-wave7-v1",
+    "recorded_at": "2026-07-29",
+    "note": "Supersedes the recheck-wave1-v1 entry of 2026-07-02 to record the fresh measurement date."
+  },
+  {
+    "id": "edge:ronald-fisher-influenced-epidemiology",
+    "blocking_condition": "Re-measured live 2026-07-29 (a-relations-wave7-v1) and STILL THIN. The epidemiology-specific link is not surfaced by either endpoint's article: the enwiki Ronald Fisher article's only epidemiology occurrence is a journal name inside a reference, and the enwiki Epidemiology article does not mention Fisher at all. The original triage's observation that Bradford Hill is the more direct figure stands. Unblock unchanged: a claim-stating source for a Fisher-to-epidemiology influence, or a re-ruling that the accurate claim belongs on statistics rather than epidemiology.",
+    "recheck": "manual",
+    "batch_id": "a-relations-wave7-v1",
+    "recorded_at": "2026-07-29",
+    "note": "Supersedes the recheck-wave1-v1 entry of 2026-07-02 to record the fresh measurement date. Mirrors the wave-3 evolutionary-biology-to-epidemiology hold, which fails the same way."
   }
 ]

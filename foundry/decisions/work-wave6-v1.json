@@ -1,0 +1,728 @@
+{
+  "version": 1,
+  "batch_id": "work-wave6-v1",
+  "decided_at": "2026-07-29",
+  "qc_by": {
+    "model_name": "Claude Opus",
+    "model_version": "claude-opus-5",
+    "proposed_at": "2026-07-29"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [
+      {
+        "id": "work:on-the-electrodynamics-of-moving-bodies",
+        "type": "work",
+        "domain": "natural_sciences",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q3020388"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "work:psychology-from-an-empirical-standpoint",
+        "type": "work",
+        "domain": "humanities",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q7256401"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "work:principia-mathematica",
+        "type": "work",
+        "domain": "formal_sciences",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q163335"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      },
+      {
+        "id": "work:administrative-behavior",
+        "type": "work",
+        "domain": "social_sciences",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q4683452"
+        },
+        "created_at": "2026-07-29",
+        "updated_at": "2026-07-29"
+      }
+    ],
+    "translations": [
+      {
+        "node_id": "work:on-the-electrodynamics-of-moving-bodies",
+        "locale": "en",
+        "label": "On the Electrodynamics of Moving Bodies",
+        "summary": "",
+        "aliases": [
+          "Zur Elektrodynamik bewegter Körper"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "work:psychology-from-an-empirical-standpoint",
+        "locale": "en",
+        "label": "Psychology from an Empirical Standpoint",
+        "summary": "",
+        "aliases": [
+          "Psychologie vom empirischen Standpunkte"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "work:principia-mathematica",
+        "locale": "en",
+        "label": "Principia Mathematica",
+        "summary": "",
+        "aliases": [
+          "PM"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "work:administrative-behavior",
+        "locale": "en",
+        "label": "Administrative Behavior",
+        "summary": "",
+        "aliases": [
+          "Administrative Behavior: A Study of Decision-Making Processes in Administrative Organization"
+        ],
+        "reviewed": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge:on-the-electrodynamics-of-moving-bodies-canonical-work-theory-of-relativity",
+        "source": "work:on-the-electrodynamics-of-moving-bodies",
+        "target": "concept:theory-of-relativity",
+        "relation": "canonical_work",
+        "confidence": 0.95,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "W1: the founding paper of special relativity, completing a triangle already anchored at both ends (Einstein's founder edge on this concept was written in person-wave11-v1 the same day). enwiki Annus mirabilis papers: \"The third paper introduced Einstein's special theory of relativity\", identified there as \"Zur Elektrodynamik bewegter Körper\" (\"On the Electrodynamics of Moving Bodies\"). Wikidata Q3020388: P31 = scholarly article, P50 = Q937 Einstein, P577 = 1905, P1433 = Annalen der Physik, 9 sitelinks — every W2–W4 signal present, the cleanest identity in the batch."
+      },
+      {
+        "id": "edge:on-the-electrodynamics-of-moving-bodies-canonical-work-albert-einstein",
+        "source": "work:on-the-electrodynamics-of-moving-bodies",
+        "target": "person:albert-einstein",
+        "relation": "canonical_work",
+        "confidence": 0.95,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Person leg of the canonical triangle. P50 = Q937 matches the person node's verified QID exactly."
+      },
+      {
+        "id": "edge:psychology-from-an-empirical-standpoint-canonical-work-intentionality",
+        "source": "work:psychology-from-an-empirical-standpoint",
+        "target": "concept:intentionality",
+        "relation": "canonical_work",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "W1: the text in which intentionality re-entered contemporary philosophy — the same 1874 book the four sources behind edge:franz-brentano-founded-intentionality all name. enwiki: \"Psychology from an Empirical Standpoint (German: Psychologie vom empirischen Standpunkte; 1874; second edition 1924) is an 1874 book by the Austrian philosopher Franz Brentano\". Note the article calls him Austrian while the Brentano person node's sources call him German — a source-side inconsistency, recorded, immaterial to identity."
+      },
+      {
+        "id": "edge:psychology-from-an-empirical-standpoint-canonical-work-franz-brentano",
+        "source": "work:psychology-from-an-empirical-standpoint",
+        "target": "person:franz-brentano",
+        "relation": "canonical_work",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Person leg. P50 = Q57196 matches the person node's verified QID."
+      },
+      {
+        "id": "edge:principia-mathematica-canonical-work-mathematical-logic",
+        "source": "work:principia-mathematica",
+        "target": "subfield:mathematical-logic",
+        "relation": "canonical_work",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "W1, and the FOURTH co-canonical work for this subfield — joining Boole's Laws of Thought, Frege's Begriffsschrift and Gödel's 1931 paper. Decision (90) permits multiplicity and W1 bounds it: PM is a watershed text by any account, not \"another important book\". enwiki: \"The Principia Mathematica (often abbreviated PM) is a three-volume work on the foundations of mathematics written by the mathematician–philosophers Alfred North Whitehead and Bertrand Russell and published in 1910, 1912, and 1913.\" ★ Two identity wrinkles recorded rather than smoothed: Wikidata Q163335 carries P31 = Q277759 book series (not one of criterion 1's enumerated work types, though it satisfies the guard's actual purpose — the referent is a work, not a person or concept — and the three volumes exist as separate items Q62092387/Q62092410/Q62092422), and its P577 reads 1917, which is an edition date rather than the 1910–1913 publication the prose gives. Criterion 3's alternative applies: the uncontested years are confirmed live from the sitelinked article. 35 sitelinks, P50 = both authors."
+      },
+      {
+        "id": "edge:principia-mathematica-canonical-work-bertrand-russell",
+        "source": "work:principia-mathematica",
+        "target": "person:bertrand-russell",
+        "relation": "canonical_work",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Person leg, single-author by necessity rather than by claim. Wikidata P50 lists BOTH Q33760 Russell and Q183372 Whitehead, and the enwiki lead names both — but person:alfred-north-whitehead does not exist, having been deliberately dropped as an honesty gap in person-wave11-v1 the same day (no corpus endpoint for his own founder claim). The co-authorship is therefore recorded here on the edge and in that batch's rejection ledger, not silently reduced. Confidence is held at 0.85 for exactly that incompleteness."
+      },
+      {
+        "id": "edge:administrative-behavior-canonical-work-bounded-rationality",
+        "source": "work:administrative-behavior",
+        "target": "concept:bounded-rationality",
+        "relation": "canonical_work",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "W1: the book that introduced the ideas concept:bounded-rationality names, completing a triangle anchored by edge:herbert-simon-founded-bounded-rationality from concept-wave3-v1. Simon's own 1988 assessment, quoted in the article, lists \"the bounded rationality notions\" among the book's principal novelties, and a 2001 obituary quoted there says it \"reject[ed] the notion of an omniscient 'economic man'\" in favour of an \"administrative man\" who \"satisfices\". Wikidata Q4683452: P31 = literary work, P50 = Q181529 Simon, P577 = 1947, 4 sitelinks."
+      },
+      {
+        "id": "edge:administrative-behavior-canonical-work-herbert-simon",
+        "source": "work:administrative-behavior",
+        "target": "person:herbert-simon",
+        "relation": "canonical_work",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-29"
+        },
+        "note": "Person leg. P50 = Q181529 matches the person node's verified QID. Second corpus work for Simon is not at issue — he has none yet."
+      }
+    ],
+    "external_links": []
+  },
+  "promotions": [],
+  "translation_updates": [],
+  "verdicts": [
+    {
+      "subject_id": "work:on-the-electrodynamics-of-moving-bodies",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3020388",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q3020388&oldid=2511844764"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Annus_Mirabilis_papers",
+          "retrieved_at": "2026-07-29",
+          "quote": "The third paper introduced Einstein's special theory of relativity",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Annus_mirabilis_papers&oldid=1362588239"
+        }
+      ],
+      "notes": "W2–W4 all pass on live signals: Q3020388, P31 = Q13442814 scholarly article, P50 = Q937 Einstein, P577 = 1905, P1433 = Q275655 Annalen der Physik, 9 sitelinks, 26 properties. Sole search hit — no homonym risk. The cleanest work identity in the batch."
+    },
+    {
+      "subject_id": "work:psychology-from-an-empirical-standpoint",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7256401",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q7256401&oldid=2413132347"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Psychology_from_an_Empirical_Standpoint",
+          "retrieved_at": "2026-07-29",
+          "quote": "is an 1874 book by the Austrian philosopher Franz Brentano",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Psychology_from_an_Empirical_Standpoint&oldid=1355358013"
+        }
+      ],
+      "notes": "Q7256401, P31 = Q7725634 literary work, P50 = Q57196 Brentano, 4 sitelinks, 11 properties. P577 is ABSENT — criterion 3's alternative applies (an uncontested publication year confirmed live from a sitelinked source), and 1874 is stated in the article lead and in the Brentano article both. This is the exact shape decision (89) revised the criteria for (the Arrow case). Criterion 4(a) satisfied by the sitelinks."
+    },
+    {
+      "subject_id": "work:principia-mathematica",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q163335",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q163335&oldid=2521669172"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Principia_Mathematica",
+          "retrieved_at": "2026-07-29",
+          "quote": "The Principia Mathematica (often abbreviated PM ) is a three-volume work on the foundations of mathematics written by the mathematician–philosophers Alfred North Whitehead and Bertrand Russell and published in 1910, 1912, and 1913.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Principia_Mathematica&oldid=1356011315"
+        }
+      ],
+      "notes": "★ Two wrinkles, both recorded rather than smoothed. (1) P31 = Q277759 'book series', which is not one of criterion 1's enumerated work types. Judged to satisfy the criterion's stated guard — 'the referent is a work, not a person or concept' — and the typing reflects the three-volume publication, whose volumes exist as separate items (Q62092387/Q62092410/Q62092422). Per decision (89)'s discipline the anchor's purpose (canonical identity) is what matters, not an arbitrary enumeration; 35 sitelinks and P50 = both authors make identity fully decidable. (2) P577 = 1917 conflicts with the prose publication years 1910/1912/1913 — an edition date. Criterion 3's alternative applies. Both wrinkles are the kind that would have been invisible without live resolution."
+    },
+    {
+      "subject_id": "work:administrative-behavior",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4683452",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q4683452&oldid=2387078693"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Administrative_Behavior",
+          "retrieved_at": "2026-07-29",
+          "quote": "Administrative Behavior: a Study of Decision-Making Processes in Administrative Organization is a book written by Herbert A.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Administrative_Behavior&oldid=1344919009"
+        }
+      ],
+      "notes": "Q4683452, P31 = Q7725634 literary work, P50 = Q181529 Simon, P577 = 1947, 4 sitelinks, 15 properties, plus OCLC and LC Class in the article infobox. Disambiguated from three journal-article homonyms and a nursing-journal item returned by the same search. The quote truncates at 'Herbert A.' because the sentence-splitter treats the initial as a stop; fetch-verify confirms the string verbatim."
+    },
+    {
+      "subject_id": "edge:on-the-electrodynamics-of-moving-bodies-canonical-work-theory-of-relativity",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3020388",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q3020388&oldid=2511844764"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Annus_Mirabilis_papers",
+          "retrieved_at": "2026-07-29",
+          "quote": "The third paper introduced Einstein's special theory of relativity",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Annus_mirabilis_papers&oldid=1362588239"
+        }
+      ],
+      "notes": "Direction fixed by the taxonomy — the work is always the source. Both endpoints reviewed; the author leg's P50 matches the person node's verified QID, which is the identity check the canonical_work ladder turns on. Adversarial check: no rival authorship or field attribution surfaced for any of the four works."
+    },
+    {
+      "subject_id": "edge:on-the-electrodynamics-of-moving-bodies-canonical-work-albert-einstein",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q3020388",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q3020388&oldid=2511844764"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Annus_Mirabilis_papers",
+          "retrieved_at": "2026-07-29",
+          "quote": "The third paper introduced Einstein's special theory of relativity",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Annus_mirabilis_papers&oldid=1362588239"
+        }
+      ],
+      "notes": "Direction fixed by the taxonomy — the work is always the source. Both endpoints reviewed; the author leg's P50 matches the person node's verified QID, which is the identity check the canonical_work ladder turns on. Adversarial check: no rival authorship or field attribution surfaced for any of the four works."
+    },
+    {
+      "subject_id": "edge:psychology-from-an-empirical-standpoint-canonical-work-intentionality",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7256401",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q7256401&oldid=2413132347"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Psychology_from_an_Empirical_Standpoint",
+          "retrieved_at": "2026-07-29",
+          "quote": "is an 1874 book by the Austrian philosopher Franz Brentano",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Psychology_from_an_Empirical_Standpoint&oldid=1355358013"
+        }
+      ],
+      "notes": "Direction fixed by the taxonomy — the work is always the source. Both endpoints reviewed; the author leg's P50 matches the person node's verified QID, which is the identity check the canonical_work ladder turns on. Adversarial check: no rival authorship or field attribution surfaced for any of the four works."
+    },
+    {
+      "subject_id": "edge:psychology-from-an-empirical-standpoint-canonical-work-franz-brentano",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q7256401",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q7256401&oldid=2413132347"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Psychology_from_an_Empirical_Standpoint",
+          "retrieved_at": "2026-07-29",
+          "quote": "is an 1874 book by the Austrian philosopher Franz Brentano",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Psychology_from_an_Empirical_Standpoint&oldid=1355358013"
+        }
+      ],
+      "notes": "Direction fixed by the taxonomy — the work is always the source. Both endpoints reviewed; the author leg's P50 matches the person node's verified QID, which is the identity check the canonical_work ladder turns on. Adversarial check: no rival authorship or field attribution surfaced for any of the four works."
+    },
+    {
+      "subject_id": "edge:principia-mathematica-canonical-work-mathematical-logic",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q163335",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q163335&oldid=2521669172"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Principia_Mathematica",
+          "retrieved_at": "2026-07-29",
+          "quote": "The Principia Mathematica (often abbreviated PM ) is a three-volume work on the foundations of mathematics written by the mathematician–philosophers Alfred North Whitehead and Bertrand Russell and published in 1910, 1912, and 1913.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Principia_Mathematica&oldid=1356011315"
+        }
+      ],
+      "notes": "Direction fixed by the taxonomy — the work is always the source. Both endpoints reviewed; the author leg's P50 matches the person node's verified QID, which is the identity check the canonical_work ladder turns on. Adversarial check: no rival authorship or field attribution surfaced for any of the four works."
+    },
+    {
+      "subject_id": "edge:principia-mathematica-canonical-work-bertrand-russell",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q163335",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q163335&oldid=2521669172"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Principia_Mathematica",
+          "retrieved_at": "2026-07-29",
+          "quote": "The Principia Mathematica (often abbreviated PM ) is a three-volume work on the foundations of mathematics written by the mathematician–philosophers Alfred North Whitehead and Bertrand Russell and published in 1910, 1912, and 1913.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Principia_Mathematica&oldid=1356011315"
+        }
+      ],
+      "notes": "Direction fixed by the taxonomy — the work is always the source. Both endpoints reviewed; the author leg's P50 matches the person node's verified QID, which is the identity check the canonical_work ladder turns on. Adversarial check: no rival authorship or field attribution surfaced for any of the four works."
+    },
+    {
+      "subject_id": "edge:administrative-behavior-canonical-work-bounded-rationality",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4683452",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q4683452&oldid=2387078693"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Administrative_Behavior",
+          "retrieved_at": "2026-07-29",
+          "quote": "Administrative Behavior: a Study of Decision-Making Processes in Administrative Organization is a book written by Herbert A.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Administrative_Behavior&oldid=1344919009"
+        }
+      ],
+      "notes": "Direction fixed by the taxonomy — the work is always the source. Both endpoints reviewed; the author leg's P50 matches the person node's verified QID, which is the identity check the canonical_work ladder turns on. Adversarial check: no rival authorship or field attribution surfaced for any of the four works."
+    },
+    {
+      "subject_id": "edge:administrative-behavior-canonical-work-herbert-simon",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q4683452",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q4683452&oldid=2387078693"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Administrative_Behavior",
+          "retrieved_at": "2026-07-29",
+          "quote": "Administrative Behavior: a Study of Decision-Making Processes in Administrative Organization is a book written by Herbert A.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Administrative_Behavior&oldid=1344919009"
+        }
+      ],
+      "notes": "Direction fixed by the taxonomy — the work is always the source. Both endpoints reviewed; the author leg's P50 matches the person node's verified QID, which is the identity check the canonical_work ladder turns on. Adversarial check: no rival authorship or field attribution surfaced for any of the four works."
+    },
+    {
+      "subject_id": "work:cellular-pathology",
+      "verdict": "not_enough_evidence",
+      "identity_referent_verified": false,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q42187748",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q42187748&oldid=2398649873"
+        }
+      ],
+      "notes": "★ Declined on a description-versus-resolution mismatch — the v2 blind-referent checksum firing on a work wave. The generator described \"Rudolf Virchow's 1858 treatise, German original 'Die Cellularpathologie...' (Berlin: August Hirschwald, 1858)\". No Wikidata item exists for that German original: searching the German title returns nothing, and the best English-title candidate is Q42187748 'Cellular pathology as based upon physiological...' — explicitly typed P31 = Q3331189 'version, edition or translation' (plus Q17537576 creative work), dated 1863, i.e. the English translation, with **0 sitelinks**. Criterion 1 wants a work, not an edition; criterion 4(a) fails on sitelinks; and the referent the generator meant is not the referent that resolved. W2 fail. Held out honestly rather than anchored on a translation."
+    },
+    {
+      "subject_id": "work:lectures-on-gas-theory",
+      "verdict": "not_enough_evidence",
+      "identity_referent_verified": false,
+      "sources": [],
+      "notes": "Declined, W2 fail: no Wikidata item exists for Boltzmann's Vorlesungen über Gastheorie. Searched under the English title and under the German original (both with and without the umlaut) — zero hits in every form. The generator flagged the two-part 1896/1898 publication as a structural risk; the actual blocker is simpler and harder, which is that the work has no upstream item at all. Mirrors the Vernadsky Biosphere and Snow honesty-gap drops."
+    },
+    {
+      "subject_id": "work:clausius-entropy-memoir-1865",
+      "verdict": "not_enough_evidence",
+      "identity_referent_verified": false,
+      "sources": [],
+      "notes": "Declined, W2 fail: no Wikidata item for Clausius's 1865 memoir. The generator had itself ranked this the batch's weakest identity case, could not name the German title from memory, and deliberately wrote a descriptive rendering rather than assert false precision — the right call, and it also declined the order's suggested 'Theory of Heat' framing on the ground that the name belongs to a later compilation with weaker single-item decidability. Searching the actual paper title (Über verschiedene für die Anwendung bequeme Formen der Hauptgleichungen der mechanischen Wärmetheorie) returns nothing. concept:entropy therefore keeps its founder edge but gains no canonical work."
+    },
+    {
+      "subject_id": "work:human-problem-solving",
+      "verdict": "not_enough_evidence",
+      "identity_referent_verified": false,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q30078096",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q30078096&oldid=2482905044"
+        },
+        {
+          "url": "https://www.wikidata.org/wiki/Q131851273",
+          "retrieved_at": "2026-07-29",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q131851273&oldid=2377019991"
+        }
+      ],
+      "notes": "★ Declined on a duplicate-plus-thin identity, caught only by live checks. Two competing Wikidata items exist for the same 1972 book: Q30078096 (P31 literary work, P50 = both Newell and Simon, P577 = 1972, 1 sitelink, but only **5 properties**) and Q131851273 (P31 written work, P50 = Newell only, 0 sitelinks, 11 properties). Upstream duplicate modeling of one referent is precisely the failure mode the /data provider-ID-uniqueness invariant exists to keep out. Worse, the enwiki title 'Human Problem Solving' is a **redirect to Herbert A. Simon** — there is no dedicated article, so the claim-stating source base for a canonical_work verdict is absent. Not admitted; re-checkable once upstream merges the items or an article exists."
+    }
+  ],
+  "identity": [
+    {
+      "node_id": "work:on-the-electrodynamics-of-moving-bodies",
+      "provider": "wikidata",
+      "external_id": "Q3020388",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "work:psychology-from-an-empirical-standpoint",
+      "provider": "wikidata",
+      "external_id": "Q7256401",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "work:principia-mathematica",
+      "provider": "wikidata",
+      "external_id": "Q163335",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    },
+    {
+      "node_id": "work:administrative-behavior",
+      "provider": "wikidata",
+      "external_id": "Q4683452",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-29"
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "work:on-the-electrodynamics-of-moving-bodies",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "work:psychology-from-an-empirical-standpoint",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "work:principia-mathematica",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "work:administrative-behavior",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "edge:on-the-electrodynamics-of-moving-bodies-canonical-work-theory-of-relativity",
+      "ladder": "canonical-work-auto-88"
+    },
+    {
+      "subject_id": "edge:on-the-electrodynamics-of-moving-bodies-canonical-work-albert-einstein",
+      "ladder": "canonical-work-auto-88"
+    },
+    {
+      "subject_id": "edge:psychology-from-an-empirical-standpoint-canonical-work-intentionality",
+      "ladder": "canonical-work-auto-88"
+    },
+    {
+      "subject_id": "edge:psychology-from-an-empirical-standpoint-canonical-work-franz-brentano",
+      "ladder": "canonical-work-auto-88"
+    },
+    {
+      "subject_id": "edge:principia-mathematica-canonical-work-mathematical-logic",
+      "ladder": "canonical-work-auto-88"
+    },
+    {
+      "subject_id": "edge:principia-mathematica-canonical-work-bertrand-russell",
+      "ladder": "canonical-work-auto-88"
+    },
+    {
+      "subject_id": "edge:administrative-behavior-canonical-work-bounded-rationality",
+      "ladder": "canonical-work-auto-88"
+    },
+    {
+      "subject_id": "edge:administrative-behavior-canonical-work-herbert-simon",
+      "ladder": "canonical-work-auto-88"
+    }
+  ],
+  "rejections": [
+    {
+      "label": "Cellular Pathology (Virchow, 1858)",
+      "referent": "the German original Die Cellularpathologie (Berlin, 1858)",
+      "kind": "node",
+      "reason": "W2 fail. No upstream item for the German original; the only candidate is the 1863 English translation, typed 'version, edition or translation' with 0 sitelinks. Description-versus-resolution mismatch. Do not re-propose against the translation.",
+      "batch_id": "work-wave6-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "label": "Lectures on Gas Theory (Boltzmann, 1896–98)",
+      "referent": "Vorlesungen über Gastheorie",
+      "kind": "node",
+      "reason": "W2 fail. No Wikidata item exists under the English or German title in any spelling. Honest gap.",
+      "batch_id": "work-wave6-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "label": "Clausius's 1865 entropy memoir",
+      "referent": "the paper in which Clausius introduced and named entropy",
+      "kind": "node",
+      "reason": "W2 fail. No Wikidata item. The generator ranked this its own weakest identity case and declined to invent a title.",
+      "batch_id": "work-wave6-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "label": "Human Problem Solving (Newell & Simon, 1972)",
+      "referent": "the 1972 Prentice-Hall book",
+      "kind": "node",
+      "reason": "Duplicate upstream modeling (two competing items for one referent, neither substantively populated) plus no dedicated enwiki article — the title redirects to Herbert A. Simon. Re-checkable when upstream merges or an article exists.",
+      "batch_id": "work-wave6-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "label": "De Contagione et Contagiosis Morbis (Fracastoro, 1546)",
+      "referent": "Fracastoro's treatise on contagion, as a canonical work for germ theory",
+      "kind": "node",
+      "reason": "Declined by the GENERATOR on W1, citing this session's own ruling: edge:girolamo-fracastoro-influenced-germ-theory-of-disease was deliberately corrected from founded_or_formalized to influenced hours earlier, with the note that the concept is 'still without a founder edge, which is the honest state'. A canonical_work claim presupposes the founding status the corpus had just declined to assert. Recorded because the generator reached this by reading the corpus, not by being told.",
+      "batch_id": "work-wave6-v1",
+      "recorded_at": "2026-07-29"
+    },
+    {
+      "label": "Economy and Society (Weber)",
+      "referent": "Weber's posthumous compilation, as a canonical work for sociology",
+      "kind": "node",
+      "reason": "Declined by the GENERATOR, citing the note already on edge:protestant-ethic-canonical-work-sociology, which had itself named and rejected Economy and Society as 'a posthumous, editorially-contested compilation (weaker single-item decidability)'. It also observed that admitting it would make Weber the corpus's first author with two canonical works aimed at one field. Recorded for the same reason as above.",
+      "batch_id": "work-wave6-v1",
+      "recorded_at": "2026-07-29"
+    }
+  ],
+  "held": [],
+  "held_resolutions": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Track E of session #60 — phase-2 work layer, wave 6, under keep-criteria W1–W5. Slate of 10 scoped by the orchestrator; several candidates were only proposable because their person or concept endpoints were added earlier in this same session.",
+    "Outcome: 4 works + 8 canonical_work edges reviewed, 6 of 10 candidates declined. The high decline rate is the wave's actual result, not a shortfall — W2 (a decidable upstream item) is a hard criterion and four candidates simply do not have one.",
+    "★ The generator declined two candidates on its own by reading the corpus's recorded reasoning, which is new behaviour worth noting. It refused Fracastoro's De Contagione because this session had ruled hours earlier that concept:germ-theory-of-disease has no founder edge, so a canonical-work claim would presuppose a founding the corpus had just declined to assert. And it refused Weber's Economy and Society by quoting the note already sitting on edge:protestant-ethic-canonical-work-sociology, which had named and rejected that exact book as an editorially-contested posthumous compilation. Neither refusal was prompted; both are correct.",
+    "★ QC declined four more, all on live identity, none of which prose could have caught. cellular-pathology resolves only to an 1863 English translation explicitly typed 'version, edition or translation' with 0 sitelinks — the blind-referent checksum firing, since the generator described the 1858 German original. lectures-on-gas-theory and the Clausius 1865 memoir have no upstream item at all, in any title or spelling. human-problem-solving has TWO competing items for one referent — upstream duplicate modeling, exactly what /data's provider-ID-uniqueness invariant exists to exclude — and its enwiki title is a redirect to Herbert A. Simon, so there is no dedicated article to ground a verdict on.",
+    "★ Principia Mathematica was admitted with two identity wrinkles recorded rather than smoothed: P31 is 'book series' rather than one of criterion 1's enumerated work types, and P577 reads 1917 against a prose publication of 1910/1912/1913. Both were judged under decision (89)'s discipline — preserve the anchor's purpose (canonical identity: 35 sitelinks, P50 = both authors, exact title) rather than enforce an enumeration for its own sake. It becomes mathematical-logic's FOURTH co-canonical work, which decision (90) permits and W1 bounds.",
+    "The Whitehead co-authorship gap is carried on the Russell edge face and held its confidence to 0.85. Wikidata's P50 for Q163335 lists both authors; person:alfred-north-whitehead was deliberately dropped as an honesty gap in person-wave11-v1 the same day, so the work has one author leg by necessity, not by claim.",
+    "Source-side inconsistency recorded: the enwiki article on Brentano's book calls him Austrian while the Brentano person node's sources call him German. Immaterial to identity; noted so a later reader does not mistake it for a corpus error.",
+    "★ The ladder gate surfaced a code-versus-policy divergence, which §15.4 declares a stop-point: decision (88) opened the canonical_work-edge auto-reviewed ladder in session #48 as the 1:1 mirror of (60)/(61), but scripts/foundry/lib/ladders.ts had no entry for the relation, so NO ladder could sanction a canonical_work edge. Work waves 1–5 all predate the §15 decision-file toolchain (which landed in session #54), so work-wave6 is the first canonical_work batch ever to run through ladder-check — which is why the gap stayed invisible for four waves. Fixed by transcription in the same change, per the rule: ladder id canonical-work-auto-88 added to ladderSchema and to EDGE_AUTO_LADDER, and admitted to the propositional branch that already enforces supported-verdict, ≥2-independent-sources, direction_confirmed and identity_referent_verified. This adds no policy and relaxes nothing — the eight edges in this batch were then held to exactly the (88) bar. Flagged for CPO visibility in the decision log, mirroring how decision (103) handled its two gate divergences."
+  ]
+}

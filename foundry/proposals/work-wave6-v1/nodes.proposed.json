@@ -1,0 +1,122 @@
+{
+  "version": 2,
+  "batch_id": "work-wave6-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-29"
+  },
+  "nodes": [
+    {
+      "id": "work:on-the-electrodynamics-of-moving-bodies",
+      "type": "work",
+      "domain": "natural_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "On the Electrodynamics of Moving Bodies",
+      "referent": "Albert Einstein's 1905 special-relativity paper, German original 'Zur Elektrodynamik bewegter Koerper', published in Annalen der Physik, vol. 17 -- the single journal article introducing special relativity (relativity of simultaneity, time dilation, length contraction). Not general relativity (1915), not a book, and referent is the original 1905 journal article, not any later translation-anthology reprint (e.g. the 1923 'The Principle of Relativity' English collection) treated as a separate bibliographic item.",
+      "source_hint": "General physics-history treatment of special relativity (Encyclopedia Britannica 'special relativity'; standard Einstein biographies); Annalen der Physik 1905 vol. 17 as original venue.",
+      "rationale": "W1: unambiguously a watershed, not merely an important paper -- every standard history of physics credits this specific paper with originating special relativity. Completes the person-work-concept triangle for person:albert-einstein (reviewed) and concept:theory-of-relativity (reviewed), which already carries Einstein's founded_or_formalized edge and a separate influenced edge from Poincare but no canonical_work yet; this would be the first.",
+      "uncertainty": "High confidence in German title, year, and journal (well-attested, frequently cited fact). Residual identity risk: several later English translations exist under differently-worded titles inside anthologies; a resolver could plausibly match a translation-collection item rather than the original 1905 journal article, which would misdate/mistype the referent.",
+      "ambiguous": true
+    },
+    {
+      "id": "work:cellular-pathology",
+      "type": "work",
+      "domain": "life_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Cellular Pathology",
+      "referent": "Rudolf Virchow's 1858 treatise, German original 'Die Cellularpathologie in ihrer Begruendung auf physiologische und pathologische Gewebelehre' (Berlin: August Hirschwald, 1858), developed from his 1858 lecture course -- the text stating 'omnis cellula e cellula' (every cell arises from a pre-existing cell) and extending cell theory into pathology. Not any unrelated modern textbook sharing the generic phrase 'cellular pathology', and referent is the first (1858) German edition, not the revised 2nd German edition (1859) that the standard English translation (Frank Chance, 1860) is based on.",
+      "source_hint": "Encyclopedia Britannica 'Rudolf Virchow'; general history-of-medicine/cell-biology textbook treatment of the third tenet of cell theory.",
+      "rationale": "Completes the person-work-concept triangle for person:rudolf-virchow (reviewed) and concept:cell-theory (reviewed), which already carries THREE founder edges (Schleiden, Schwann, Virchow, all founded_or_formalized) but no canonical_work. This book is the specific, well-attested text stating Virchow's 'omnis cellula e cellula' extension, the clear single most-credited primary text for his contribution -- not merely an important book among many.",
+      "uncertainty": "Confident in author, year (1858), and core content. Two real risks: (1) the long compound German title may have small transcription variance from the live bibliographic record; (2) publication-history complexity -- originated as an 1858 lecture course, and the standard-cited English translation (1860) is based on a slightly revised 2nd German edition (1859) rather than the 1858 first edition intended here as referent.",
+      "ambiguous": true
+    },
+    {
+      "id": "work:psychology-from-an-empirical-standpoint",
+      "type": "work",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Psychology from an Empirical Standpoint",
+      "referent": "Franz Brentano's 1874 treatise, German original 'Psychologie vom empirischen Standpunkte' (Leipzig: Duncker & Humblot, 1874) -- only the first volume of a larger planned work was ever completed in this form. Introduces 'intentional inexistence' (every mental phenomenon is characterized by reference to an object/content) as the mark of the mental, the founding statement of the modern philosophical concept of intentionality. Not any unrelated modern psychology-methods text sharing a similar generic descriptive title, and distinct from the substantially revised 2nd edition (1911, with an added appendix partly revising his view).",
+      "source_hint": "Stanford Encyclopedia of Philosophy entries on Franz Brentano and on Intentionality.",
+      "rationale": "Completes the person-work-concept triangle for person:franz-brentano (reviewed) and concept:intentionality (reviewed), which already carries TWO founder edges (Brentano and Husserl, both founded_or_formalized) but no canonical_work. Husserl's own canonical work in this corpus (Logical Investigations) is separately scoped to subfield:phenomenology, so this would be the first canonical_work specifically for concept:intentionality, not a duplicate or dilution.",
+      "uncertainty": "High confidence in author, year, and core content (a very well-documented case in the history of philosophy of mind). Residual risk: the work was only ever completed as a single volume (planned continuations never appeared), and I am not certain whether the live bibliographic record scopes to that single 1874 volume specifically or conflates it with a later combined/revised edition; minor translation-title risk also applies (the standard English translation, Rancurello/Terrell/McAlister, appeared only in 1973).",
+      "ambiguous": true
+    },
+    {
+      "id": "work:principia-mathematica",
+      "type": "work",
+      "domain": "formal_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Principia Mathematica",
+      "referent": "The three-volume treatise by Alfred North Whitehead and Bertrand Russell (Cambridge University Press; vol. 1: 1910, vol. 2: 1912, vol. 3: 1913), attempting to derive the foundations of mathematics from symbolic logic (the logicist program) and introducing the ramified theory of types to avoid Russell's paradox. This is explicitly NOT Isaac Newton's 'Philosophiae Naturalis Principia Mathematica' (1687, already a separate corpus work: work:philosophiae-naturalis-principia-mathematica) -- different authors, different centuries, different subject matter, sharing only the generic Latin words 'Principia Mathematica' in the title.",
+      "source_hint": "Stanford Encyclopedia of Philosophy entries on Principia Mathematica and on Bertrand Russell; general histories of mathematical logic.",
+      "rationale": "Completes a person-work-field triangle for subfield:mathematical-logic (reviewed), already co-canonical with THREE other founding texts (Boole's Laws of Thought, Frege's Begriffsschrift, Goedel's incompleteness paper) per decision (90); a fourth co-canonical work is consistent with that ruling's own framing of mathematical logic as having multiple watershed founding texts -- Principia Mathematica is as universally credited a watershed as the other three. Also completes person:bertrand-russell's (reviewed) triangle; Russell has no existing canonical_work in the corpus.",
+      "uncertainty": "CO-AUTHORSHIP GAP, handled honestly per the order's instruction: this work was co-authored by Alfred North Whitehead, who does NOT exist as a person node in this corpus (deliberately excluded in a prior wave as an honesty-gap drop -- his sourced founder claims have no corpus endpoint). Only ONE work-to-person edge is proposed here (to Russell), not a false sole-authorship framing; the referent above states joint authorship explicitly. A future batch should add person:alfred-north-whitehead if re-admissible and a matching canonical_work edge -- until then this triangle is honestly incomplete on the co-author side. Separately: the work spans three volumes across three years (1910/1912/1913) treated here as one unified referent; a resolver may instead find distinct per-volume bibliographic items.",
+      "ambiguous": true
+    },
+    {
+      "id": "work:administrative-behavior",
+      "type": "work",
+      "domain": "social_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Administrative Behavior",
+      "referent": "Herbert A. Simon's 1947 book 'Administrative Behavior: A Study of Decision-Making Processes in Administrative Organization' (New York: Macmillan, 1947), developed from his 1942 doctoral dissertation -- introduces 'satisficing' and the critique of the classical 'economic man' assumption underlying bounded rationality, cited in Simon's 1978 Nobel Memorial Prize in Economic Sciences award. Referent is the original 1947 first edition, not the substantially revised later editions (2nd ed. 1957 added a long new introduction; 3rd ed. 1976; 4th ed. 1997).",
+      "source_hint": "Nobel Prize committee's 1978 award materials for Herbert Simon; Stanford Encyclopedia of Philosophy entry on bounded rationality; general behavioral-economics/decision-theory textbook treatment.",
+      "rationale": "Completes the person-work-concept triangle for person:herbert-simon (reviewed) and concept:bounded-rationality (reviewed), which already carries Simon's founded_or_formalized edge but no canonical_work. This is the standard-credited originating book-length text (predating his explicit later coinage of the term 'bounded rationality') where the critique of full rationality and the satisficing alternative are first developed at length -- a watershed, not merely an important book.",
+      "uncertainty": "High confidence in author, title, and 1947 year (well-documented, Nobel-linked fact). Real edition risk: the book went through four editions across 50 years with substantive additions each time, and the widely-cited 2nd edition (1957) introduction is sometimes treated by secondary sources as where 'bounded rationality' language most crystallizes -- referent is intended as the 1947 first edition per the order's stated year, but a wrong-edition match by the resolver would misdate the founding claim by a decade.",
+      "ambiguous": true
+    },
+    {
+      "id": "work:lectures-on-gas-theory",
+      "type": "work",
+      "domain": "natural_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Lectures on Gas Theory",
+      "referent": "Ludwig Boltzmann's two-part treatise, German original 'Vorlesungen ueber Gastheorie' (Leipzig: J.A. Barth), Part I published 1896 and Part II published 1898 -- his systematic textbook presentation of the kinetic theory of gases and statistical mechanics, including the Boltzmann equation and the statistical interpretation of entropy. The standard English translation (Stephen G. Brush, University of California Press, 1964) combines both parts into one volume; referent here is the combined two-part German original (1896-98) as one work, not a single standalone paper such as Boltzmann's earlier 1872 H-theorem article.",
+      "source_hint": "Encyclopedia Britannica 'Ludwig Boltzmann'; general history-of-physics treatment of the kinetic theory of gases and statistical mechanics.",
+      "rationale": "Completes the person-work-field triangle for person:ludwig-boltzmann (reviewed) and subfield:statistical-physics (reviewed), which already carries Boltzmann's founded_or_formalized edge (and a separate formalizes edge to concept:entropy) but no canonical_work. This two-part treatise is standardly credited as Boltzmann's definitive, systematic statement of statistical mechanics -- the textbook that consolidated and taught the field he substantially founded.",
+      "uncertainty": "Real structural risk flagged explicitly: this is a TWO-PART work published in two different years (1896, 1898), treated here as one unified referent (matching how the standard English translation combines them) rather than two separate work-nodes -- the live bibliographic record may instead be split into two distinct items by volume, which QC should resolve deliberately rather than have silently defaulted to one part's year. Moderate, not high, confidence in exact German title spelling/diacritics.",
+      "ambiguous": true
+    },
+    {
+      "id": "work:clausius-entropy-memoir-1865",
+      "type": "work",
+      "domain": "natural_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "On Various Forms of the Fundamental Equations of the Mechanical Theory of Heat",
+      "referent": "Rudolf Clausius's 1865 paper, presented to the Zurich Philosophical Society and published in Annalen der Physik (German original title approximately 'Ueber verschiedene fuer die Anwendung bequeme Formen der Hauptgleichungen der mechanischen Waermetheorie', 1865) -- the paper in which Clausius coined the term 'entropy' (from Greek for 'transformation') and stated the second law of thermodynamics as 'the entropy of the universe tends to a maximum.' Distinct from his earlier 1850s papers establishing the second law before the entropy concept/name existed, and distinct from the later multi-paper English-language collected volume 'The Mechanical Theory of Heat' that anthologized this and other Clausius papers in translation.",
+      "source_hint": "General thermodynamics/history-of-physics textbook treatment of Clausius's coinage of 'entropy' (standard 'history of the second law' sections); Encyclopedia Britannica 'Rudolf Clausius'.",
+      "rationale": "Completes the person-work-concept triangle for person:rudolf-clausius (reviewed) and concept:entropy (reviewed), which already carries Clausius's founded_or_formalized edge (plus Boltzmann's separate formalizes edge) but no canonical_work. This is the single specific paper where the term and core statement of entropy originate -- as watershed as any candidate in this batch.",
+      "uncertainty": "SUBSTANTIAL TITLE RISK -- flagged as the batch's weakest identity case. I recall the existence, year (1865), venue (Annalen der Physik, following a Zurich Philosophical Society presentation), and content (coinage of 'entropy', the 'entropy of the universe tends to a maximum' statement) with reasonable confidence as frequently repeated physics-history facts, but cannot verify the exact German title transcription character-for-character, nor the precise English translation title used when later reprinted. I deliberately used a plain descriptive English rendering rather than asserting false precision, and deliberately did NOT use the order's alternative framing 'Theory of Heat' as the primary referent, because that name more properly belongs to Clausius's multi-paper collected-works volume (a compilation, weaker single-item decidability -- compare the corpus's own recorded reasoning in edge:protestant-ethic-canonical-work-sociology, which explicitly downgraded a posthumous compilation for the identical reason) rather than to the single 1865 memoir that actually introduces entropy. The resolver should anchor on author+year+content and correct the title string as needed rather than trust it verbatim.",
+      "ambiguous": true
+    },
+    {
+      "id": "work:human-problem-solving",
+      "type": "work",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Human Problem Solving",
+      "referent": "The 1972 book by Allen Newell and Herbert A. Simon (Englewood Cliffs, NJ: Prentice-Hall, 1972) -- an information-processing-theory account of human cognition and problem-solving, presenting the General Problem Solver framework and production-system models built from their earlier joint work (Logic Theorist 1956, GPS 1957). A watershed text bridging cognitive psychology and artificial intelligence, distinct from either author's earlier standalone conference papers on the same underlying programs.",
+      "source_hint": "General cognitive-science/AI-history textbook treatment of Newell and Simon's information-processing psychology; general histories of artificial intelligence covering the Logic Theorist / GPS lineage.",
+      "rationale": "Completes the co-founder-work-field triangle for subfield:artificial-intelligence (reviewed), which already carries BOTH person:allen-newell's and person:herbert-simon's founded_or_formalized edges but no canonical_work, and already holds one co-canonical work (Turing's 'Computing Machinery and Intelligence'). A second, distinctly-authored co-canonical work is consistent with decision (90)'s established pattern for this exact subfield. Both authors are present in the corpus (unlike the Whitehead/Russell case above), so the triangle can be completed honestly for both.",
+      "uncertainty": "Moderate confidence in title, authors, and 1972 year (well-attested, standard citation in cognitive-science and AI history). Field-target judgment call, flagged explicitly: this book is at least as strongly associated with cognitive psychology / cognitive science as with AI proper (frequently cited as a founding text of the information-processing approach to cognitive psychology), and a reviewer could reasonably argue a cognitive-science subfield is the more referent-precise target -- artificial-intelligence was chosen to match the order's stated endpoint and because both authors' existing founder edges already anchor to that exact subfield, but this is a real judgment call, not a settled fact.",
+      "ambiguous": true
+    }
+  ],
+  "edges": [],
+  "notes": [
+    "Declined candidate 3 (Fracastoro, 'De Contagione et Contagiosis Morbis' [1546] -> concept:germ-theory-of-disease): W1 fail. The existing reviewed edge edge:girolamo-fracastoro-influenced-germ-theory-of-disease was deliberately QC-corrected this same session from founded_or_formalized to influenced, with an explicit note stating the concept is 'still without a founder edge, which is the honest state.' Proposing this book as the concept's canonical_work would contradict that recorded, reasoned non-founding ruling and risks the same anachronism failure mode already caught once this session (Principia -> evolutionary-biology). Not proposed.",
+    "Declined candidate 8 (Weber, 'Economy and Society' -> field:sociology): decidability/dilution fail. The existing reviewed edge edge:protestant-ethic-canonical-work-sociology already explicitly considered and rejected Economy and Society by name in its own note: it is 'a posthumous, editorially-contested compilation (weaker single-item decidability)'; that edge deliberately scoped to the bounded Protestant Ethic instead. Re-proposing Economy and Society would also be the corpus's first same-author-same-field second canonical_work (no existing precedent for one author holding two canonical works pointed at the identical field target) -- exactly the dilution W1 exists to bound. Not proposed.",
+    "Candidate 5's co-author Alfred North Whitehead is not a corpus person node (deliberate honesty-gap drop in a prior wave); the Principia Mathematica triangle is proposed with only the Russell person-edge, not a fabricated sole-authorship framing. See the node's own uncertainty field.",
+    "No edges are proposed on nodes not included here; this file and edges.proposed.json in this batch directory are the complete work-wave6-v1 output (8 of 10 slate candidates proposed, 2 declined)."
+  ]
+}

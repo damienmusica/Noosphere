@@ -125,6 +125,18 @@ export const ladderSchema = z.enum([
   "formalizes-auto-54",
   /** founded_or_formalized auto-reviewed ladder (decisions (60)/(61)). */
   "founded-or-formalized-auto-60",
+  /**
+   * The `canonical_work`-edge auto-`reviewed` ladder (decision (88), §8) — the
+   * 1:1 mirror of founded-or-formalized-auto-60, with keep-criteria W1–W5.
+   * Transcribed 2026-07-29: decision (88) opened it in session #48, but
+   * `lib/ladders.ts` had no entry for `canonical_work`, so no ladder could
+   * sanction such an edge. Waves 1–5 predate the §15 decision-file toolchain
+   * (which landed in session #54), which is why the gap stayed invisible until
+   * work-wave6 became the first canonical_work batch to run through
+   * `ladder-check`. Divergence between ratified policy and this code is a
+   * declared stop-point (§15.4); this is the transcription, not a new policy.
+   */
+  "canonical-work-auto-88",
   /** influenced/critiques (a)-relation auto-reviewed ladder (decision (68)). */
   "a-relation-auto-68",
   /** Editorial policy v2 (summaries; decision (26)/(34)). */
