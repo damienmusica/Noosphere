@@ -5,7 +5,8 @@
  * CPO-ratified 2026-07-02). The flow:
  *
  *   1. Parse the decision file (src/schema/foundry-decision.ts); fail on a
- *      self-contradictory decision (an id both held and promoted to reviewed).
+ *      self-contradictory decision (an id both held and promoted to reviewed,
+ *      or both held and closed) and on a closure of an id that is not held.
  *   2. Build the post-apply state in memory; fail on any structural error
  *      (existing IDs, broken references, provider-ID collisions, ...).
  *   3. Enforce the ratified promotion ladders (lib/ladders.ts) — nothing
@@ -17,7 +18,9 @@
  *   6. Run the full validate:data suite over the written files. On failure,
  *      only /data needs `git restore` — the ledgers have not been touched.
  *   7. Only after validation passes, append the held/rejection ledgers
- *      (idempotent: entries already ledgered verbatim are skipped).
+ *      (idempotent: entries already ledgered verbatim are skipped) and drop
+ *      held entries this batch resolved (promotion) or closed (terminal
+ *      disposition that is not a promotion — `held_resolutions`).
  *
  * Usage:
  *   npm run foundry:apply-batch -- foundry/decisions/<batch-id>.json [--dry-run]
@@ -65,6 +68,28 @@ if (contradictions.length > 0) {
     console.error(`✗ decision is self-contradictory: ${id} is both promoted to reviewed and held`);
   }
   process.exit(1);
+}
+
+// An id cannot be both re-held and terminally closed in the same decision, and
+// closing an id that is not on the worklist is an authoring error too — a silent
+// no-op would hide a typo'd id behind a green run.
+const closureIds = new Set(decision.held_resolutions.map((r) => r.id));
+const closureContradictions = [...closureIds].filter((id) => heldIdsInDecision.has(id));
+if (closureContradictions.length > 0) {
+  for (const id of closureContradictions) {
+    console.error(`✗ decision is self-contradictory: ${id} is both held and closed`);
+  }
+  process.exit(1);
+}
+if (closureIds.size > 0) {
+  const ledgeredNow = new Set(loadHeld().map((h) => h.id).filter(Boolean));
+  const notHeld = [...closureIds].filter((id) => !ledgeredNow.has(id));
+  if (notHeld.length > 0) {
+    for (const id of notHeld) {
+      console.error(`✗ held_resolutions closes ${id}, which is not in foundry/held.json`);
+    }
+    process.exit(1);
+  }
 }
 
 const post = buildPostState(decision, loadCurrentData());
@@ -148,26 +173,29 @@ if (decision.rejections.length > 0) {
   );
 }
 // The held ledger is a WORKLIST (latest blocking condition per id), not the
-// audit trail — that lives in the decision files. Two worklist semantics:
+// audit trail — that lives in the decision files. Three worklist semantics:
 //   - a re-triage of an already-held id SUPERSEDES the prior entry,
 //   - a promotion to reviewed RESOLVES the id's held entry (the blocking
-//     condition no longer exists) — it is dropped, with a log line.
+//     condition no longer exists) — it is dropped, with a log line,
+//   - an explicit `held_resolutions` entry CLOSES the id (terminal disposition
+//     that is not a promotion: deprecated, or re-scoped onto another id).
 // Label-only entries (no id) always plain-append. Duplicates are filtered
 // BEFORE supersession so a re-applied verbatim entry keeps, not drops, the
 // existing one.
 const promotedToReviewed = new Set(
   decision.promotions.filter((p) => p.to === "reviewed" && p.from !== "reviewed").map((p) => p.id),
 );
-if (decision.held.length > 0 || promotedToReviewed.size > 0) {
+if (decision.held.length > 0 || promotedToReviewed.size > 0 || closureIds.size > 0) {
   const existingHeld = loadHeld();
   const { fresh: freshHeld, skipped: heldSkipped } = filterAlreadyLedgered(existingHeld, decision.held);
   const incomingIds = new Set(freshHeld.filter((h) => h.id).map((h) => h.id as string));
   const keptHeld = existingHeld.filter(
-    (h) => !h.id || (!incomingIds.has(h.id) && !promotedToReviewed.has(h.id)),
+    (h) => !h.id || (!incomingIds.has(h.id) && !promotedToReviewed.has(h.id) && !closureIds.has(h.id)),
   );
   const resolved = existingHeld.filter((h) => h.id && promotedToReviewed.has(h.id));
-  const superseded = existingHeld.length - keptHeld.length - resolved.length;
-  if (freshHeld.length > 0 || resolved.length > 0) {
+  const closed = existingHeld.filter((h) => h.id && closureIds.has(h.id));
+  const superseded = existingHeld.length - keptHeld.length - resolved.length - closed.length;
+  if (freshHeld.length > 0 || resolved.length > 0 || closed.length > 0) {
     writeLedger(HELD_LEDGER, [...keptHeld, ...freshHeld]);
   }
   if (decision.held.length > 0) {
@@ -179,6 +207,9 @@ if (decision.held.length > 0 || promotedToReviewed.size > 0) {
   }
   for (const r of resolved) {
     console.log(`✓ held entry resolved by promotion to reviewed: ${r.id}`);
+  }
+  for (const r of decision.held_resolutions) {
+    console.log(`✓ held entry closed: ${r.id} — ${r.reason}`);
   }
 }
 

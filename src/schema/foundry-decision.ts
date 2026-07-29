@@ -210,14 +210,44 @@ export const heldEntrySchema = z
     id: idSchema.optional(),
     label: z.string().optional(),
     blocking_condition: z.string().min(1),
-    /** machine: recheck-held can re-evaluate it; manual: needs a human/LLM look. */
-    recheck: z.enum(["machine", "manual"]),
+    /**
+     * How this hold can ever clear:
+     *   machine — recheck-held can re-evaluate it from /data state alone;
+     *   manual  — needs a human/LLM look, and there is work to do now;
+     *   trigger — nothing to work on: it clears only if an UPSTREAM event
+     *             happens (an entity gains standing, a taxonomy authority
+     *             admits a unit, a design lands). Rendered separately at
+     *             session start so watch items do not inflate the worklist.
+     */
+    recheck: z.enum(["machine", "manual", "trigger"]),
     batch_id: proposalBatchRefSchema,
     recorded_at: isoDateSchema,
     note: z.string().optional(),
   })
   .strict();
 export type HeldEntry = z.infer<typeof heldEntrySchema>;
+
+/**
+ * A held entry this batch terminally closes.
+ *
+ * `apply-batch` drops a held entry automatically when its id is promoted to
+ * `reviewed` — the blocking condition provably no longer exists. But a hold can
+ * also end in a *non-reviewed* terminal disposition: the id is deprecated, or a
+ * modeling ruling re-scopes the work onto a different id. Those had no exit from
+ * the worklist, so closed items kept surfacing at session start as if they were
+ * open (measured 2026-07-30: 3 of 25 entries, closed by decisions (106)/(108)).
+ * Closure is stated explicitly here rather than inferred from status, because
+ * `deprecated` is genuinely ambiguous — a deprecation that records a
+ * regeneration trigger is still live work.
+ */
+export const heldResolutionSchema = z
+  .object({
+    id: idSchema,
+    /** Why the hold is terminally closed — cite the ruling that closed it. */
+    reason: z.string().min(1),
+  })
+  .strict();
+export type HeldResolution = z.infer<typeof heldResolutionSchema>;
 
 // --- The decision file --------------------------------------------------------------
 
@@ -253,6 +283,8 @@ export const foundryDecisionSchema = z
     rejections: z.array(rejectionEntrySchema).default([]),
     /** Held items → appended to foundry/held.json. */
     held: z.array(heldEntrySchema).default([]),
+    /** Held ids this batch terminally closes → dropped from foundry/held.json. */
+    held_resolutions: z.array(heldResolutionSchema).default([]),
     /**
      * Labels from foundry/rejections.json this batch deliberately overrides
      * (re-admitting a previously rejected candidate requires saying so).

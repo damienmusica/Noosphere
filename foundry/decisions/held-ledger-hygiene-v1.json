@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "batch_id": "held-ledger-hygiene-v1",
+  "decided_at": "2026-07-29",
+  "qc_by": {
+    "model_name": "Claude Opus",
+    "model_version": "claude-opus-5",
+    "proposed_at": "2026-07-29"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [],
+  "translation_updates": [],
+  "verdicts": [],
+  "identity": [],
+  "sanctions": [],
+  "rejections": [],
+  "held": [
+    {
+      "id": "concept:bureaucracy",
+      "blocking_condition": "C3 hold RESOLVED by re-scope 2026-07-03 (decision (108), batch weber-referent-precision-v1): node + 2 edges DEPRECATED (generic-institution referent Q72468 cannot carry Weber's founder claim); the claim now lives on edge:max-weber-founded-tripartite-classification-of-authority (successor concept node Q3565078, reviewed). REMAINING TRIGGER: the narrow 1:1 referent (Weber's bureaucracy ideal-type, proposal weber-referent-precision-v1 candidate 1 'concept:weberian-bureaucracy') is identity-blocked — no recognized entity (Q113625093 'theory of bureaucracy' = 0-sitelink orphan stub 2026-07-03). Re-create the narrow concept + retarget/augment the founder record iff that entity (or an equivalent) gains multi-signal standing (sitelinks + description + P31).",
+      "recheck": "trigger",
+      "batch_id": "held-ledger-hygiene-v1",
+      "recorded_at": "2026-07-29",
+      "note": "Re-triaged manual→trigger by held-ledger-hygiene-v1; blocking condition unchanged verbatim from weber-referent-precision-v1 (2026-07-03). Nothing to work on until the upstream entity gains standing."
+    },
+    {
+      "id": "subfield:esotericism-and-theosophy",
+      "blocking_condition": "Section-12 hold-resolution clause 1 ruled 2026-07-03 (decision (106)): node + part_of edge DEPRECATED on referent mismatch (slug vs Q7988481 'Western esotericism'). Regeneration as subfield:western-esotericism blocked — precise referent fails skeleton admission: PhilPapers (the philosophy registry taxonomy) maintains no esotericism/theosophy category (0/11,908 archived browse slugs, Wayback CDX 2026-07-03); academic home is religious studies (ESSWE/Aries), no ratified taxonomy in the (102) registry. Re-creation triggers: (a) a religious-studies taxonomy authority admitted to the (102) registry (CPO gate) with a Western-esotericism unit by name, or (b) PhilPapers adding the category.",
+      "recheck": "trigger",
+      "batch_id": "held-ledger-hygiene-v1",
+      "recorded_at": "2026-07-29",
+      "note": "Re-triaged manual→trigger by held-ledger-hygiene-v1; blocking condition unchanged verbatim from s12-holds-resolution-v1 (2026-07-03). Both triggers are upstream events."
+    },
+    {
+      "id": "subfield:modern-philosophy",
+      "blocking_condition": "Section-12 hold-resolution clauses 1+2 ruled 2026-07-03 (decision (106)): node + part_of edge DEPRECATED on referent mismatch (slug vs Q860746 'early modern philosophy'). Regeneration as subfield:early-modern-philosophy blocked by the strict name-identity test — PhilPapers' period units are 17th/18th Century Philosophy etc., no 'Early Modern Philosophy' unit by name; nearby-unit referent bridging disallowed (CPO ruling). Re-creation triggers: (a) a ratified taxonomy maintaining an Early Modern Philosophy unit by name, or (b) the future dedicated period-axis design admitting era-cut nodes outside the field skeleton.",
+      "recheck": "trigger",
+      "batch_id": "held-ledger-hygiene-v1",
+      "recorded_at": "2026-07-29",
+      "note": "Re-triaged manual→trigger by held-ledger-hygiene-v1; blocking condition unchanged verbatim from s12-holds-resolution-v1 (2026-07-03). Both triggers are upstream events."
+    },
+    {
+      "id": "subfield:modern-history",
+      "blocking_condition": "Section-12 hold-resolution clause 2 ruled 2026-07-03 (decision (106)) — the period axis is now governed by standing rule, no longer rule-silent: LCC D204-475 era ranges are shelving classification (T2 fail — literature shelving is not field curation), and the (102) registry contains no history disciplinary taxonomy at all, so the era-unit cannot hold clause-1-grade standing. Node stays proposed in /data as an honest parked gap (QID-less: Wikidata still models 'modern history' only as the era Q3281534). Unpark triggers: (a) a history disciplinary taxonomy admitted to the (102) registry (CPO gate) maintaining a Modern History unit by name, or (b) the future dedicated period-axis design.",
+      "recheck": "trigger",
+      "batch_id": "held-ledger-hygiene-v1",
+      "recorded_at": "2026-07-29",
+      "note": "Re-triaged manual→trigger by held-ledger-hygiene-v1; blocking condition unchanged verbatim from s12-holds-resolution-v1 (2026-07-03). Parked at proposed, not deprecated — which is exactly why the trigger flag has to live on the entry and cannot be read off status."
+    }
+  ],
+  "held_resolutions": [
+    {
+      "id": "edge:max-weber-founded-bureaucracy",
+      "reason": "Terminally closed by decision (108) (batch weber-referent-precision-v1): deprecated and re-scoped to edge:max-weber-founded-tripartite-classification-of-authority (reviewed, founder ladder (60)/(61)). Its own blocking_condition states 'No further work on this id' — it has been carried on the worklist since 2026-07-03 only because apply-batch could resolve a hold on promotion-to-reviewed and on nothing else."
+    },
+    {
+      "id": "edge:bureaucracy-part-of-sociology",
+      "reason": "Terminally closed by decision (108) (batch weber-referent-precision-v1): deprecated with its endpoint; the sociological placement now lives on edge:tripartite-classification-of-authority-part-of-sociology (reviewed, structural tier). Its own blocking_condition states 'No further work on this id'. Audit record: foundry/decisions/weber-referent-precision-v1.json."
+    }
+  ],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "[NO-EXTERNAL-EVIDENCE] — worklist hygiene only. No /data item is added, promoted, or edited by this batch; no verdict rests on any external page.",
+    "Diagnosis (measured 2026-07-29/30 against HEAD 97f4958): the held ledger showed 25 entries at session start, but 6 of them were not open work. apply-batch had exactly one exit from the worklist — `promotions[].to === 'reviewed'` — so a hold that ended in any other terminal disposition could never leave. Decisions (106) and (108) closed or parked 6 entries in 2026-07-03; all 6 kept surfacing at every session start since.",
+    "Two mechanisms added, both deliberate data rather than inference. (1) `held_resolutions` on the decision file closes a hold that ended in a non-promotion terminal disposition; apply-batch refuses a closure whose id is not on the worklist, so a typo cannot pass silently. (2) `recheck: 'trigger'` marks a hold whose blocking condition is an upstream event nobody here can act on; recheck-held renders those in their own group and reports open vs trigger-watch counts separately.",
+    "Why closure is stated and not inferred from status: of the 5 ledger entries whose item is now `deprecated`, only 2 are terminally over. The other 3 record live re-creation triggers, and a 4th trigger entry (subfield:modern-history) is parked at `proposed`, not deprecated at all. A status-derived rule would have dropped 3 live triggers and kept 1. The exact blocking_condition texts were re-read before this batch was authored rather than inferred from the roadmap's estimate ('6~8 already disposed'); the measured split is 2 closed / 4 trigger-watch / 19 open.",
+    "Blocking-condition prose for the 4 re-triaged entries is carried over verbatim from decisions (106)/(108) — only `recheck`, `batch_id`, `recorded_at` and `note` change. The audit trail stays in foundry/decisions/s12-holds-resolution-v1.json and weber-referent-precision-v1.json; held.json is a worklist, not the audit trail (§15.8)."
+  ]
+}

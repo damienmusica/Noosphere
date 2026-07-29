@@ -144,6 +144,10 @@ if (decision.held.length > 0) {
     push(`  - ${h.id ? `\`${h.id}\`` : h.label}: ${h.blocking_condition} (recheck: ${h.recheck})`);
   }
 }
+if (decision.held_resolutions.length > 0) {
+  push(`- **Held entries closed** (${decision.held_resolutions.length}, dropped from foundry/held.json):`);
+  for (const r of decision.held_resolutions) push(`  - \`${r.id}\`: ${r.reason}`);
+}
 if (decision.rejections.length > 0) {
   push(`- **Rejected** (${decision.rejections.length}, recorded in foundry/rejections.json):`);
   for (const r of decision.rejections) push(`  - ${r.label}: ${r.reason}`);
