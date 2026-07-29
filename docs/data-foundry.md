@@ -161,12 +161,14 @@ curriculum or textbook source where one exists, and fall back to manual
 curation only when none does. The `source_type` field must honestly reflect
 which kind an edge relies on.
 
-### Evidence permanence (Wayback snapshots / wiki revision permalinks — standing rule, 2026-06-11; amended 2026-07-02)
+### Evidence permanence (Wayback snapshots / wiki revision permalinks — standing rule, 2026-06-11; amended 2026-07-02, 2026-07-29)
 
 External pages that QC relies on for a verdict get a **permanence anchor
 recorded at verification time** in the batch's permanent report, alongside the
 citation. The same duty applies to research collection and editorial citation
-records. Two anchor kinds are accepted:
+records. Three anchor kinds are accepted — the publisher's own immutable
+edition is preferred wherever one exists, and a Wayback snapshot is the
+fallback for everyone else:
 
 - **MediaWiki-hosted sources (Wikipedia and sister projects) — revision
   permalink (preferred, amendment 2026-07-02):** record the permalink of the
@@ -176,11 +178,39 @@ records. Two anchor kinds are accepted:
   keyless, and unaffected by later edits or SPN outages — for wiki sources it
   is an equal-or-better anchor than a Wayback snapshot, and snapshotting a
   wiki page via SPN is redundant.
+- **Publisher-run fixed editions (Stanford Encyclopedia of Philosophy) —
+  edition permalink (amendment 2026-07-29):** SEP publishes periodically fixed
+  editions at `https://plato.stanford.edu/archives/<edition>/entries/<slug>/`,
+  which it designates for citation and whose content is "neither updated nor
+  modified in any way once the archive is made". Record the edition in force at
+  QC time — the most recent one published on or before the retrieval date — in
+  the same `revision_permalink` field. This is the same anchor kind as a wiki
+  revision permalink: publisher-run, immutable, keyless, unaffected by later
+  revision and by SPN outages.
+  **For SEP this is the only anchor path.** plato.stanford.edu is excluded from
+  the Wayback Machine outright — a save returns a well-formed
+  `web/<timestamp>/` redirect, but fetching it yields HTTP 403 and "This URL
+  has been excluded from the Wayback Machine" (measured 2026-07-29 across the
+  2024–2026 range). No snapshot can ever materialize, so SPN must not be
+  attempted for SEP: it only deepens anonymous-SPN throttling.
+  `foundry:anchor` resolves the edition automatically, probing earlier editions
+  as fallbacks for entries younger than the edition in force.
 - **All other domains — Wayback Save Page Now snapshot:** request
   `https://web.archive.org/save/<URL>` (keyless public endpoint, serial
   requests at a polite interval) and record the snapshot URL. Rules:
   - A snapshot URL counts only if it matches `web.archive.org/web/<timestamp>/…`
     — a redirect to a save prompt is **not** a snapshot (measured failure mode).
+  - The `web/<timestamp>/` shape alone is **not** proof of capture: an excluded
+    URL yields exactly that redirect and then 403s with an exclusion notice
+    (measured 2026-07-29, SEP). Materialization is confirmed by fetching the
+    snapshot and finding the page's own content — which is what
+    `foundry:anchor` polls for, and why its [SPN-FAILED] entries are trustworthy
+    even when the save endpoint reported success.
+  - Redirecting sources must be anchored on their **canonical** URL. IEP
+    fuzzy-redirects unknown slugs to a *different* entry (measured: a
+    `/nietzsche/` citation reached "Nietzsche: Philosophical Psychology"),
+    so a snapshot taken through a redirect can silently anchor the wrong
+    document — resolve `%{url_effective}` first, then anchor and cite that.
   - Save failures are recorded honestly as `[SPN-FAILED]` — never silently
     dropped, never substituted with an unverified URL.
   - For bot-blocked domains, verifying an **existing** snapshot
