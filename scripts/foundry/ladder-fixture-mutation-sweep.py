@@ -7,7 +7,7 @@ alongside anything else that reads that file. Run it manually:
 
     python3 scripts/foundry/ladder-fixture-mutation-sweep.py
 
-For each of 29 plausible transcription errors — a threshold moved by one, a
+For each of 44 plausible transcription errors — a threshold moved by one, a
 relation dropped from a registry, a safety net weakened, a boolean requirement
 inverted — it patches, runs `ladder-fixtures.ts`, and records whether a fixture
 caught it. A SURVIVED mutation is an uncovered rule: the fixture suite would
@@ -19,11 +19,20 @@ failing a fixture. That is a defect in the mutation operator (it produced
 type-unsafe code), not evidence of coverage — rewrite that case as a
 realistic, type-safe mistranscription before trusting it.
 
-Measured 2026-07-30 (decision (114)): 29/29 caught, 0 survived. The first run
-scored 24/29 and named six real blind spots, all since covered — see
-docs/data-foundry.md §15.4. Adding a fixture without a mutation that fails
-when the fixture is removed is unmeasured coverage; extend MUTATIONS with it.
+Interrupt-safe: the mutation is reverted in a `finally`, and `restore` is also
+registered with `atexit`, so a Ctrl-C or a kill still leaves the working tree
+as it was found.
+
+Measured 2026-07-30 (decision (114)): 44/44 caught, 0 survived, over 55
+fixtures. History worth keeping: the first sweep was 29 mutations and scored
+24/29, naming six blind spots; an independent adequacy audit of THIS SWEEP then
+found fifteen further rules in checkLadders that no mutation targeted at all —
+including decision (70) applied to an edge endpoint and the whole edge side of
+the promotions branch. Both rounds are the same lesson: adding a fixture without
+a mutation that fails when the fixture is removed is unmeasured coverage. Extend
+MUTATIONS whenever you touch lib/ladders.ts.
 """
+import atexit
 import subprocess
 import sys
 
@@ -65,6 +74,22 @@ MUTATIONS = [
     ("boolean: identity_referent_verified not required", 'ladder !== "formalizes-auto-54" && verdict.identity_referent_verified !== true', "false", 1),
     ("boolean: v1 accepts unverified identity records", 'const wikidata = verifiedIds.find((r) => r.provider === "wikidata");', 'const wikidata = identities.find((r) => r.provider === "wikidata");', 1),
     ("boolean: v1.4 accepts unverified anchor records", "const alt = verifiedIds.find((r) => RATIFIED_TAXONOMY_PROVIDERS.has(r.provider));", "const alt = identities.find((r) => RATIFIED_TAXONOMY_PROVIDERS.has(r.provider));", 1),
+    # --- rules added after the first sweep (2026-07-30 adequacy audit) ------
+    ("(70) edge endpoint: in-batch living promotion check dropped", 'if (promotedNow && nodeSanction?.ladder !== "living-person-v2") {', "if (false) {", 1),
+    ("(70) edge endpoint: floor advisory removed", "advisory(id, `living endpoint ${endpoint.id}: (70) floor applies", "advisory(id, `REMOVED (70) floor", 1),
+    ("dangling-sanction advisory escalated to violation", "advisory(s.subject_id, `sanction (${s.ladder}) has no reviewed outcome in this decision`, s.ladder);", "violation(s.subject_id, `sanction (${s.ladder}) has no reviewed outcome in this decision`, s.ladder);", 1),
+    ("v1 external_ids mismatch check dropped", 'node.external_ids["wikidata"] !== wikidata.external_id', "false", 1),
+    ("v1.4 external_ids mismatch check dropped", "node.external_ids[alt.provider] !== alt.external_id", "false", 1),
+    ("clause 6 loses its OWN classification whitelist copy", "!CLASSIFICATION_RELATIONS.has(edge.relation)", "false", 2),
+    ("v1.4 living-person exclusion dropped", "if (node.is_living_person) {", "if (false) {", 2),
+    ("living-person-v2 non-living guard dropped", "if (!node.is_living_person) {", "if (false) {", 1),
+    ("missing post-apply NODE downgraded to advisory", "violation(id, `sanctioned node not found in post-apply state`, ladder);", "advisory(id, `sanctioned node not found in post-apply state`, ladder);", 1),
+    ("missing post-apply EDGE downgraded to advisory", "violation(id, `sanctioned edge not found in post-apply state`, ladder);", "advisory(id, `sanctioned edge not found in post-apply state`, ladder);", 1),
+    ("structural evidence_kind requirement dropped", 'if (edge.evidence_kind !== "externally_sourced") {', "if (false) {", 1),
+    ("structural disputed-lane guard dropped", "if (edge.disputed) {", "if (false) {", 1),
+    ("clause 6 disputed:true requirement dropped", "if (!edge.disputed) {", "if (false) {", 1),
+    ("clause 6 minority-note requirement dropped", "if (!edge.note?.trim()) {", "if (false) {", 1),
+    ("auto ladder no-verdict guard downgraded to advisory", "violation(id, `${ladder} requires a recorded Lane B verdict`, ladder);", "advisory(id, `${ladder} requires a recorded Lane B verdict`, ladder);", 1),
 ]
 
 
@@ -90,6 +115,13 @@ def restore():
 
 
 original = open(TARGET).read()
+
+# Interrupt safety: any exit path — Ctrl-C, an exception, a kill from the parent
+# harness — must leave the working tree as it was found. Without this, an
+# interrupted sweep silently leaves lib/ladders.ts mutated and the NEXT command
+# to read it (ladder-check, apply-batch, CI) runs against injected code.
+atexit.register(restore)
+
 rc, out = run_fixtures()
 if rc != 0:
     print("BASELINE FAILED — aborting sweep")
@@ -106,8 +138,10 @@ for name, needle, repl, n in MUTATIONS:
         print(f"  ?? NOT APPLIED  {name}")
         continue
     open(TARGET, "w").write(mutated)
-    rc, out = run_fixtures()
-    restore()
+    try:
+        rc, out = run_fixtures()
+    finally:
+        restore()
     fixture_lines = [l.strip() for l in out.splitlines() if l.strip().startswith("\u2717") and "fixtures:" not in l]
     if rc == 0:
         survived.append(name)

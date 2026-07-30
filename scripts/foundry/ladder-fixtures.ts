@@ -84,16 +84,27 @@ const CONTEXT: Node[] = [
   mkNode("field:fixture-parent", { type: "field", level: 1 }),
   mkNode("work:fixture-work", { type: "work" }),
   mkNode("subfield:fixture-proposed", { status: "proposed" }),
+  // An already-reviewed LIVING person, so edge fixtures can exercise the
+  // decision-(70) endpoint cross-check in both of its arms.
+  mkNode("person:fixture-living-ctx", { type: "person", is_living_person: true }),
 ];
 
 type Fixture = {
   name: string;
-  /** "pass" = zero violations; "block" = ≥1 violation containing `fragment`. */
-  expect: "pass" | "block";
+  /**
+   * "pass"     — zero violations.
+   * "block"    — ≥1 violation containing `fragment`.
+   * "advisory" — zero violations AND ≥1 advisory containing `fragment`.
+   *              Advisories change gate behaviour when they silently become
+   *              violations (or vanish), so they need coverage too.
+   */
+  expect: "pass" | "block" | "advisory";
   fragment?: string;
   decision: FoundryDecision;
-  /** Post-apply state for promotion subjects not present in adds. */
+  /** Post-apply nodes for subjects not present in `adds` (promotion targets). */
   extraPost?: Node[];
+  /** Post-apply edges for edge subjects promoted rather than added. */
+  extraPostEdges?: Edge[];
 };
 
 const fixtures: Fixture[] = [
@@ -487,6 +498,201 @@ const fixtures: Fixture[] = [
     }),
     extraPost: [mkNode("concept:fixture-a", { type: "concept", external_ids: { wikidata: "Q9" } })],
   },
+
+  // ---- gaps found by the mutation-sweep adequacy audit (2026-07-30) --------
+  // Each of the following covers a rule that had NO fixture and NO mutation:
+  // the suite could have shipped with the rule deleted and stayed green.
+
+  // decision (70) applied to an EDGE ENDPOINT — the intersection of the two
+  // most policy-sensitive rules, previously with zero coverage in either arm.
+  {
+    name: "(70) edge endpoint: living endpoint promoted in-batch must use living-person-v2",
+    expect: "block",
+    fragment: "must use living-person-v2",
+    decision: mkDecision({
+      adds: {
+        nodes: [mkNode("person:fixture-living-new", { type: "person", is_living_person: true, external_ids: { wikidata: "Q3" } })],
+        edges: [mkEdge("edge:fixture-living", "person:fixture-living-new", "subfield:fixture-field", "influenced")],
+      },
+      identity: [{ node_id: "person:fixture-living-new", provider: "wikidata", external_id: "Q3", verified: true, method: "wbgetentities", retrieved_at: DATE }],
+      verdicts: [
+        { subject_id: "edge:fixture-living", verdict: "supported", direction_confirmed: true, identity_referent_verified: true, sources: src(true, 2) },
+        { subject_id: "person:fixture-living-new", verdict: "supported", sources: src(true, 2) },
+      ],
+      sanctions: [
+        { subject_id: "edge:fixture-living", ladder: "a-relation-auto-68" },
+        { subject_id: "person:fixture-living-new", ladder: "node-promotion-v1" },
+      ],
+    }),
+  },
+  {
+    name: "(70) edge endpoint: already-reviewed living endpoint raises the floor advisory",
+    expect: "advisory",
+    fragment: "(70) floor applies",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-living-ctx", "person:fixture-living-ctx", "subfield:fixture-field", "influenced")] },
+      verdicts: [{ subject_id: "edge:fixture-living-ctx", verdict: "supported", direction_confirmed: true, identity_referent_verified: true, sources: src(true, 2) }],
+      sanctions: [{ subject_id: "edge:fixture-living-ctx", ladder: "a-relation-auto-68" }],
+    }),
+  },
+  // The EDGE side of the promotions branch (the node side is covered above).
+  {
+    name: "promotion path: edge proposed→reviewed clean (structural tier)",
+    expect: "pass",
+    decision: mkDecision({
+      promotions: [{ kind: "edge", id: "edge:fixture-promoted", from: "proposed", to: "reviewed" }],
+      verdicts: [{ subject_id: "edge:fixture-promoted", verdict: "supported", sources: src(true, 1) }],
+      sanctions: [{ subject_id: "edge:fixture-promoted", ladder: "edge-promotion-v1-structural" }],
+    }),
+    extraPostEdges: [mkEdge("edge:fixture-promoted", "subfield:fixture-field", "field:fixture-parent", "part_of")],
+  },
+  {
+    name: "promotion path: edge proposed→reviewed without a sanction is blocked",
+    expect: "block",
+    fragment: "ends reviewed but has no ladder sanction",
+    decision: mkDecision({
+      promotions: [{ kind: "edge", id: "edge:fixture-promoted", from: "proposed", to: "reviewed" }],
+    }),
+    extraPostEdges: [mkEdge("edge:fixture-promoted", "subfield:fixture-field", "field:fixture-parent", "part_of")],
+  },
+  // Dangling sanction: a sanction whose subject never ends reviewed.
+  {
+    name: "dangling sanction raises an advisory",
+    expect: "advisory",
+    fragment: "has no reviewed outcome in this decision",
+    decision: mkDecision({
+      sanctions: [{ subject_id: "concept:fixture-orphan", ladder: "node-promotion-v1" }],
+    }),
+  },
+  // Verified identity present but written onto a DIFFERENT value (copy-paste QID).
+  {
+    name: "node-promotion-v1 blocks a verified QID absent from external_ids",
+    expect: "block",
+    fragment: "is not in the node's external_ids",
+    decision: mkDecision({
+      adds: { nodes: [mkNode("concept:fixture-a", { type: "concept", external_ids: { wikidata: "Q2" } })] },
+      identity: [{ node_id: "concept:fixture-a", provider: "wikidata", external_id: "Q1", verified: true, method: "wbgetentities", retrieved_at: DATE }],
+      sanctions: [{ subject_id: "concept:fixture-a", ladder: "node-promotion-v1" }],
+    }),
+  },
+  {
+    name: "node-promotion-v1.4 blocks a verified anchor absent from external_ids",
+    expect: "block",
+    fragment: "is not in the node's external_ids",
+    decision: mkDecision({
+      adds: { nodes: [mkNode("subfield:fixture-b", { external_ids: { philpapers: "cat-2" } })] },
+      identity: [{ node_id: "subfield:fixture-b", provider: "philpapers", external_id: "cat-1", verified: true, method: "manual", retrieved_at: DATE }],
+      verdicts: [{ subject_id: "subfield:fixture-b", verdict: "supported", sources: src(true, 2) }],
+      sanctions: [{ subject_id: "subfield:fixture-b", ladder: "node-promotion-v1.4" }],
+    }),
+  },
+  // clause 6 carries its OWN copy of the classification-placement whitelist;
+  // the structural copy being covered says nothing about this one.
+  {
+    name: "clause 6 blocks a non-classification relation (its own whitelist copy)",
+    expect: "block",
+    fragment: "not a classification placement",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-c6-bad", "subfield:fixture-field", "field:fixture-parent", "formalizes", { disputed: true, note: "Minority position: fixture." })] },
+      verdicts: [{ subject_id: "edge:fixture-c6-bad", verdict: "supported", sources: src(true, 3) }],
+      sanctions: [{ subject_id: "edge:fixture-c6-bad", ladder: "edge-promotion-v1-clause6" }],
+    }),
+  },
+  // The living-person ladder guards, in both directions, on the v1.4 sibling.
+  {
+    name: "living person cannot ride node-promotion-v1.4",
+    expect: "block",
+    fragment: "living-person nodes promote via living-person-v2, not node-promotion-v1.4",
+    decision: mkDecision({
+      adds: { nodes: [mkNode("person:fixture-alive", { type: "person", is_living_person: true, external_ids: { philpapers: "cat-1" } })] },
+      identity: [{ node_id: "person:fixture-alive", provider: "philpapers", external_id: "cat-1", verified: true, method: "manual", retrieved_at: DATE }],
+      verdicts: [{ subject_id: "person:fixture-alive", verdict: "supported", sources: src(true, 2) }],
+      sanctions: [{ subject_id: "person:fixture-alive", ladder: "node-promotion-v1.4" }],
+    }),
+  },
+  {
+    name: "living-person-v2 blocks a sanction on a non-living node",
+    expect: "block",
+    fragment: "sanction on a node that is not is_living_person",
+    decision: mkDecision({
+      adds: { nodes: [mkNode("person:fixture-dead", { type: "person", external_ids: { wikidata: "Q4" } })] },
+      identity: [{ node_id: "person:fixture-dead", provider: "wikidata", external_id: "Q4", verified: true, method: "wbgetentities", retrieved_at: DATE, p570_absent_confirmed_at: DATE }],
+      verdicts: [{ subject_id: "person:fixture-dead", verdict: "supported", sources: src(true, 2) }],
+      sanctions: [{ subject_id: "person:fixture-dead", ladder: "living-person-v2" }],
+    }),
+  },
+  // Defensive guards against a sanction pointing at an id that does not exist.
+  {
+    name: "sanctioned node missing from post-apply state is blocked",
+    expect: "block",
+    fragment: "sanctioned node not found in post-apply state",
+    decision: mkDecision({
+      promotions: [{ kind: "node", id: "concept:fixture-ghost", from: "proposed", to: "reviewed" }],
+      sanctions: [{ subject_id: "concept:fixture-ghost", ladder: "node-promotion-v1" }],
+    }),
+  },
+  {
+    name: "sanctioned edge missing from post-apply state is blocked",
+    expect: "block",
+    fragment: "sanctioned edge not found in post-apply state",
+    decision: mkDecision({
+      promotions: [{ kind: "edge", id: "edge:fixture-ghost", from: "proposed", to: "reviewed" }],
+      sanctions: [{ subject_id: "edge:fixture-ghost", ladder: "edge-promotion-v1-structural" }],
+    }),
+  },
+  // Structural-tier and clause-6 preconditions other than the source floor.
+  // evidence_kind is optional in the schema (legacy seed edges predate it), so
+  // an absent value is a reachable case, not a dead branch.
+  {
+    name: "structural tier blocks an edge with no evidence_kind",
+    expect: "block",
+    fragment: "structural tier requires evidence_kind externally_sourced",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-partof", "subfield:fixture-field", "field:fixture-parent", "part_of", { evidence_kind: undefined })] },
+      verdicts: [{ subject_id: "edge:fixture-partof", verdict: "supported", sources: src(true, 1) }],
+      sanctions: [{ subject_id: "edge:fixture-partof", ladder: "edge-promotion-v1-structural" }],
+    }),
+  },
+  {
+    name: "structural tier blocks a disputed placement (clause 6's lane)",
+    expect: "block",
+    fragment: "disputed placements promote via edge-promotion-v1-clause6",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-partof", "subfield:fixture-field", "field:fixture-parent", "part_of", { disputed: true, note: "Minority position: fixture." })] },
+      verdicts: [{ subject_id: "edge:fixture-partof", verdict: "supported", sources: src(true, 1) }],
+      sanctions: [{ subject_id: "edge:fixture-partof", ladder: "edge-promotion-v1-structural" }],
+    }),
+  },
+  {
+    name: "clause 6 blocks an undisputed edge",
+    expect: "block",
+    fragment: "clause-6 sanction on an edge without disputed:true",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-partof", "subfield:fixture-field", "field:fixture-parent", "part_of", { note: "Minority position: fixture." })] },
+      verdicts: [{ subject_id: "edge:fixture-partof", verdict: "supported", sources: src(true, 3) }],
+      sanctions: [{ subject_id: "edge:fixture-partof", ladder: "edge-promotion-v1-clause6" }],
+    }),
+  },
+  {
+    name: "clause 6 blocks a disputed edge with no minority position in note",
+    expect: "block",
+    fragment: "clause 6 requires the minority position recorded in note",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-disputed", "subfield:fixture-field", "field:fixture-parent", "part_of", { disputed: true })] },
+      verdicts: [{ subject_id: "edge:fixture-disputed", verdict: "supported", sources: src(true, 3) }],
+      sanctions: [{ subject_id: "edge:fixture-disputed", ladder: "edge-promotion-v1-clause6" }],
+    }),
+  },
+  // The auto-ladder's first line of defence, before any sub-check runs.
+  {
+    name: "auto ladder blocks an edge with no recorded verdict at all",
+    expect: "block",
+    fragment: "requires a recorded Lane B verdict",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-influenced", "person:fixture-founder", "subfield:fixture-field", "influenced")] },
+      sanctions: [{ subject_id: "edge:fixture-influenced", ladder: "a-relation-auto-68" }],
+    }),
+  },
 ];
 
 // --- Runner -------------------------------------------------------------------
@@ -498,16 +704,25 @@ for (const f of fixtures) {
   for (const n of f.extraPost ?? []) postNodesById.set(n.id, n);
   for (const n of f.decision.adds.nodes) postNodesById.set(n.id, n);
   const postEdgesById = new Map<string, Edge>();
+  for (const e of f.extraPostEdges ?? []) postEdgesById.set(e.id, e);
   for (const e of f.decision.adds.edges) postEdgesById.set(e.id, e);
 
   const findings: LadderFinding[] = checkLadders({ decision: f.decision, postNodesById, postEdgesById });
   const violations = findings.filter((x) => x.level === "violation");
+  const advisories = findings.filter((x) => x.level === "advisory");
 
   let ok: boolean;
   let detail = "";
   if (f.expect === "pass") {
     ok = violations.length === 0;
     if (!ok) detail = violations.map((v) => `${v.subject_id}: ${v.message}`).join(" | ");
+  } else if (f.expect === "advisory") {
+    const hasAdvisory = advisories.some((a) => a.message.includes(f.fragment!));
+    ok = violations.length === 0 && hasAdvisory;
+    if (!ok)
+      detail = violations.length
+        ? `expected no violations, got: ${violations.map((v) => v.message).join(" | ")}`
+        : `expected an advisory containing "${f.fragment}"; got: ${advisories.map((a) => a.message).join(" | ") || "none"}`;
   } else {
     ok = violations.some((v) => v.message.includes(f.fragment!));
     if (!ok)
