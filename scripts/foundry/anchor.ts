@@ -279,8 +279,18 @@ async function main(): Promise<void> {
   // [SPN-FAILED] pending entries are exactly the stale-fallback/no-snapshot
   // cases queued for retry — their URLs need a snapshot attempt even when a
   // stale snapshot_url is already recorded.
+  // [ORIGIN-GONE] entries are terminal (decision (116)): the origin URL is
+  // permanently unreachable, so a retry can never succeed and the recorded
+  // snapshot is already the permanent anchor. Queueing them would re-attempt a
+  // dead URL on every run and re-brand the entry [SPN-FAILED], hiding a settled
+  // state behind a retryable-looking one.
   const retryUrls = new Set(
-    decision.anchors_pending.filter((p) => p.reason.includes("[SPN-FAILED]")).map((p) => p.url),
+    decision.anchors_pending
+      .filter((p) => p.reason.includes("[SPN-FAILED]") && !p.reason.includes("[ORIGIN-GONE]"))
+      .map((p) => p.url),
+  );
+  const terminalUrls = new Set(
+    decision.anchors_pending.filter((p) => p.reason.includes("[ORIGIN-GONE]")).map((p) => p.url),
   );
 
   // Collect distinct URLs that still need anchoring.
@@ -316,7 +326,13 @@ async function main(): Promise<void> {
       // A source carrying its publisher's immutable permalink is fully anchored
       // (§8) — no snapshot work. Everyone else needs a snapshot when it's
       // missing or when a prior run left an [SPN-FAILED] retry entry.
-      if (!(hasEditionAnchor && s.revision_permalink) && (!s.snapshot_url || retryUrls.has(s.url))) {
+      // A terminal [ORIGIN-GONE] URL is settled: its recorded snapshot IS the
+      // permanent anchor and the origin cannot be fetched again. Never queue it.
+      if (
+        !terminalUrls.has(s.url) &&
+        !(hasEditionAnchor && s.revision_permalink) &&
+        (!s.snapshot_url || retryUrls.has(s.url))
+      ) {
         existing.needsSnapshot = true;
       }
       if (existing.needsSnapshot || existing.needsRevision) workByUrl.set(s.url, existing);
@@ -478,7 +494,10 @@ async function main(): Promise<void> {
     }
     const touched = new Set([...workByUrl.keys()]);
     raw.anchors_pending = [
-      ...(raw.anchors_pending ?? []).filter((p) => !touched.has(p.url)),
+      // Terminal entries survive every write-back: they are a settled state, not
+      // an in-flight attempt, and nothing this run does can resolve them.
+      ...(raw.anchors_pending ?? []).filter((p) => p.reason.includes("[ORIGIN-GONE]")),
+      ...(raw.anchors_pending ?? []).filter((p) => !p.reason.includes("[ORIGIN-GONE]") && !touched.has(p.url)),
       ...pending,
     ].filter((p) => !editionAnchored.has(p.url));
     writeFileSync(decisionPath!, JSON.stringify(raw, null, 2) + "\n");

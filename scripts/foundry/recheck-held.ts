@@ -159,7 +159,16 @@ if (
 // each decision file's `anchors_pending`; without this sweep they only surface
 // during apply-batch. Lenient read on purpose: one malformed decision file must
 // not kill the session-start worklist.
+//
+// Two classes, rendered apart (decision (116), mirroring the held-ledger
+// open/trigger split of (111)): [SPN-FAILED] is retryable — the origin is alive
+// and a later run can still capture it. [ORIGIN-GONE] is terminal — the origin
+// URL is permanently unreachable, so no re-run can ever clear it, and the
+// recorded snapshot is the permanent anchor. Without the second class a dead
+// origin masquerades as a pending retry forever, which is exactly the
+// misdiagnosis decision (110) paid for at the SPN backlog.
 const pendingAnchors: string[] = [];
+const terminalAnchors: string[] = [];
 for (const entry of readdirSync(DECISIONS_DIR).sort()) {
   if (!entry.endsWith(".json")) continue;
   let decision: unknown;
@@ -174,13 +183,23 @@ for (const entry of readdirSync(DECISIONS_DIR).sort()) {
   const batchId = typeof d.batch_id === "string" ? d.batch_id : entry.replace(/\.json$/, "");
   if (!Array.isArray(d.anchors_pending)) continue;
   for (const a of d.anchors_pending as { url?: unknown; reason?: unknown }[]) {
-    pendingAnchors.push(`${batchId}: ${String(a?.url ?? "(no url)")} — ${String(a?.reason ?? "(no reason)")}`);
+    const reason = String(a?.reason ?? "(no reason)");
+    const line = `${batchId}: ${String(a?.url ?? "(no url)")} — ${reason}`;
+    if (reason.includes("[ORIGIN-GONE]")) terminalAnchors.push(line);
+    else pendingAnchors.push(line);
   }
 }
 console.log("Pending permanence anchors (re-run foundry:anchor -- <decision> --write when SPN recovers):");
 if (pendingAnchors.length > 0) {
   for (const s of pendingAnchors) console.log(`  - ${s}`);
-  console.log(`  ${pendingAnchors.length} pending anchor(s) total.`);
+  console.log(`  ${pendingAnchors.length} retryable pending anchor(s).`);
 } else {
   console.log("  none");
+}
+
+if (terminalAnchors.length > 0) {
+  console.log("");
+  console.log("Terminal anchors ([ORIGIN-GONE] — origin permanently unreachable; the recorded snapshot IS the anchor, do NOT re-run):");
+  for (const s of terminalAnchors) console.log(`  - ${s}`);
+  console.log(`  ${terminalAnchors.length} terminal anchor(s) — no action available.`);
 }

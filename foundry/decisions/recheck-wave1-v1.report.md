@@ -61,16 +61,11 @@
 - https://www.wikidata.org/wiki/Q177571 → https://web.archive.org/web/20251112232212/https://www.wikidata.org/wiki/Q177571
 - https://www.wikidata.org/wiki/Q177571 → https://www.wikidata.org/w/index.php?title=Q177571&oldid=2506103612
 - https://www.loc.gov/aba/cataloging/classification/lcco/lcco_h.pdf → https://web.archive.org/web/20260702083053/https://www.loc.gov/aba/cataloging/classification/lcco/lcco_h.pdf
-- https://udcsummary.info/ → https://web.archive.org/web/20260607095749/https://udcsummary.info/
+- https://udcsummary.info/ → https://web.archive.org/web/20260702083405/https://udcsummary.info/
 - https://www.britannica.com/science/criminology → https://web.archive.org/web/20260602142910/https://www.britannica.com/science/criminology
 - https://en.wikipedia.org/wiki/Criminology → https://web.archive.org/web/20260630193857/https://en.wikipedia.org/wiki/Criminology
 - https://en.wikipedia.org/wiki/Criminology → https://en.wikipedia.org/w/index.php?title=Criminology&oldid=1361116720
-- https://en.wikipedia.org/wiki/Economic_geography — [SPN-FAILED] save did not materialize and no prior snapshot exists
-- https://www.wikidata.org/wiki/Q187097 — [SPN-FAILED] fresh save did not materialize; using 39d-old snapshot
-- https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp — [SPN-FAILED] fresh save did not materialize; using 21d-old snapshot
-- https://en.wikipedia.org/wiki/Decision_theory — [SPN-FAILED] fresh save did not materialize; using 12d-old snapshot
-- https://www.wikidata.org/wiki/Q177571 — [SPN-FAILED] fresh save did not materialize; using 232d-old snapshot
-- https://udcsummary.info/ — [SPN-FAILED] fresh save did not materialize; using 25d-old snapshot
+- https://www.arrs.si/en/gradivo/sifranti/sif-frascati.asp — [ORIGIN-GONE] Terminal, re-measured live 2026-07-30 (decision (116)). The origin is permanently unreachable, not waiting on SPN: ARRS was reorganised into ARIS and www.arrs.si now 301s to www.aris-rs.si, where this path returns 404 and the whole /gradivo/sifranti/ tree is gone (the new site is an SPA that answers route_or_alias_not_found). No re-run can ever capture it. The recorded 2026-06-11 Wayback snapshot still resolves 200 and IS the permanent anchor, so evidence permanence is satisfied and nothing is lost. The prior reason ('[SPN-FAILED] fresh save did not materialize') was accurate about SPN (the save endpoint returns 523 today) but wrong about the cause, and it queued a dead URL for retry forever — the same misdiagnosis shape decision (110) paid for. Note for a future reader: this source is the third and weakest support for edge:economic-geography-part-of-human-geography; the edge stands on two independent claim-stating sources without it, and this one's recorded quote is a structure summary of OECD FORD 5.7 ('Social and economic geography'), not verbatim prose stating the part_of claim.
 
 ## Orchestrator commentary
 

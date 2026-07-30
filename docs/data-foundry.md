@@ -9,7 +9,7 @@ model, relation taxonomy, policies) for the topics they own. See
 This brief describes the **methodology and boundaries**. It does not, by itself, build Data Foundry
 tooling — that happens in later, explicit PRs (see the implementation sequence below).
 
-> **Codified through vault decision (115).** This document is a projection of the vault decision
+> **Codified through vault decision (116).** This document is a projection of the vault decision
 > log: a decision after this cursor must either land its normative text here (or in the artifact it
 > names) or record an explicit no-op in its decision-log entry — and the session-end ritual bumps
 > the cursor either way. A decision without a concrete artifact has not happened yet.
@@ -217,7 +217,23 @@ fallback for everyone else:
     so a snapshot taken through a redirect can silently anchor the wrong
     document — resolve `%{url_effective}` first, then anchor and cite that.
   - Save failures are recorded honestly as `[SPN-FAILED]` — never silently
-    dropped, never substituted with an unverified URL.
+    dropped, never substituted with an unverified URL. `[SPN-FAILED]` means
+    **retryable**: the origin is alive and a later run may still capture it, so
+    `foundry:anchor` re-queues it every run.
+  - A pending anchor whose **origin has permanently died** is marked
+    `[ORIGIN-GONE]` instead (decision (116)). It is terminal: `foundry:anchor`
+    never re-queues it and `recheck-held` renders it in its own group, apart
+    from the retryable ones. The recorded snapshot IS the permanent anchor, so
+    evidence permanence is already satisfied and nothing is lost — the entry
+    exists to state a settled fact, not to ask for work. Reclassifying to
+    `[ORIGIN-GONE]` requires a live re-measurement recorded in the reason
+    (what the origin returns now, and that the snapshot still resolves).
+    **This class exists because its absence reproduced a known failure**: with
+    only `[SPN-FAILED]` available, a dead origin masqueraded as a pending retry
+    indefinitely — the same "waiting for recovery" misdiagnosis decision (110)
+    paid for across a 29-item backlog, recurring one level up in the tool's own
+    vocabulary. A ledger needs an exit for every way an item can actually end
+    (the (111) held-ledger lesson, mirrored here).
   - For bot-blocked domains, verifying an **existing** snapshot
     (`https://web.archive.org/web/<year>/<URL>` redirect to a real snapshot) is
     an acceptable substitute; record that snapshot URL instead.
