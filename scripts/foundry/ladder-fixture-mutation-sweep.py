@@ -3,11 +3,14 @@
 
 MAINTAINER TOOL, NOT CI. It patches `scripts/foundry/lib/ladders.ts` in place
 and restores it from git after each case, so it must never run in a pipeline
-alongside anything else that reads that file. Run it manually:
+alongside anything else that reads that file — and never with UNCOMMITTED
+changes to that file: restore() reverts to HEAD and will silently wipe them
+(measured 2026-07-30: it ate an uncommitted comment edit). Commit first, then
+sweep. Run it manually:
 
     python3 scripts/foundry/ladder-fixture-mutation-sweep.py
 
-For each of 44 plausible transcription errors — a threshold moved by one, a
+For each of 49 plausible transcription errors — a threshold moved by one, a
 relation dropped from a registry, a safety net weakened, a boolean requirement
 inverted — it patches, runs `ladder-fixtures.ts`, and records whether a fixture
 caught it. A SURVIVED mutation is an uncovered rule: the fixture suite would
@@ -74,6 +77,12 @@ MUTATIONS = [
     ("boolean: identity_referent_verified not required", 'ladder !== "formalizes-auto-54" && verdict.identity_referent_verified !== true', "false", 1),
     ("boolean: v1 accepts unverified identity records", 'const wikidata = verifiedIds.find((r) => r.provider === "wikidata");', 'const wikidata = identities.find((r) => r.provider === "wikidata");', 1),
     ("boolean: v1.4 accepts unverified anchor records", "const alt = verifiedIds.find((r) => RATIFIED_TAXONOMY_PROVIDERS.has(r.provider));", "const alt = identities.find((r) => RATIFIED_TAXONOMY_PROVIDERS.has(r.provider));", 1),
+    # --- decision (115): prerequisite_for declared exclusion ----------------
+    ("(115): prerequisite_for smuggled into CLASSIFICATION_RELATIONS", '"part_of", "member_of", "adjacent_to"', '"part_of", "member_of", "adjacent_to", "prerequisite_for"', 1),
+    ("(115): prerequisite_for smuggled in as a-relation-auto-68", 'critiques: "a-relation-auto-68",', 'critiques: "a-relation-auto-68",\n  prerequisite_for: "a-relation-auto-68",', 1),
+    ("(115): prerequisite_for smuggled in as formalizes-auto-54", 'critiques: "a-relation-auto-68",', 'critiques: "a-relation-auto-68",\n  prerequisite_for: "formalizes-auto-54",', 1),
+    ("(115): prerequisite_for smuggled in as founded-or-formalized-auto-60", 'critiques: "a-relation-auto-68",', 'critiques: "a-relation-auto-68",\n  prerequisite_for: "founded-or-formalized-auto-60",', 1),
+    ("(115): prerequisite_for smuggled in as canonical-work-auto-88", 'critiques: "a-relation-auto-68",', 'critiques: "a-relation-auto-68",\n  prerequisite_for: "canonical-work-auto-88",', 1),
     # --- rules added after the first sweep (2026-07-30 adequacy audit) ------
     ("(70) edge endpoint: in-batch living promotion check dropped", 'if (promotedNow && nodeSanction?.ladder !== "living-person-v2") {', "if (false) {", 1),
     ("(70) edge endpoint: floor advisory removed", "advisory(id, `living endpoint ${endpoint.id}: (70) floor applies", "advisory(id, `REMOVED (70) floor", 1),

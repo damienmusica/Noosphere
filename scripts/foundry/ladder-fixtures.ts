@@ -256,6 +256,65 @@ const fixtures: Fixture[] = [
       sanctions: [{ subject_id: "edge:fixture-applies", ladder: "edge-promotion-v1-structural" }],
     }),
   },
+  // decision (115): prerequisite_for is a DECLARED exclusion (transcribing
+  // (15) clause 2 — editorial-class, stops at proposed). These two fixtures
+  // lock the exclusion in both gates: if prerequisite_for ever enters
+  // CLASSIFICATION_RELATIONS or EDGE_AUTO_LADDER without a ratified ladder,
+  // one of them fails.
+  {
+    name: "structural tier blocks prerequisite_for (decision (115) exclusion)",
+    expect: "block",
+    fragment: "not a classification placement",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-prereq", "subfield:fixture-field", "field:fixture-parent", "prerequisite_for")] },
+      verdicts: [{ subject_id: "edge:fixture-prereq", verdict: "supported", sources: src(true, 2) }],
+      sanctions: [{ subject_id: "edge:fixture-prereq", ladder: "edge-promotion-v1-structural" }],
+    }),
+  },
+  // One block fixture per auto ladder: the exclusion must hold against
+  // smuggling prerequisite_for into EDGE_AUTO_LADDER under ANY of the four
+  // ladder ids, not just one — each verdict is otherwise fully clean, so the
+  // relation mapping is the only thing standing between the edge and reviewed.
+  {
+    name: "a-relation-auto-68 does not sanction prerequisite_for ((115) exclusion)",
+    expect: "block",
+    fragment: "not sanctioned by a-relation-auto-68",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-prereq", "subfield:fixture-field", "field:fixture-parent", "prerequisite_for")] },
+      verdicts: [{ subject_id: "edge:fixture-prereq", verdict: "supported", direction_confirmed: true, identity_referent_verified: true, sources: src(true, 2) }],
+      sanctions: [{ subject_id: "edge:fixture-prereq", ladder: "a-relation-auto-68" }],
+    }),
+  },
+  {
+    name: "formalizes-auto-54 does not sanction prerequisite_for ((115) exclusion)",
+    expect: "block",
+    fragment: "not sanctioned by formalizes-auto-54",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-prereq", "subfield:fixture-field", "field:fixture-parent", "prerequisite_for")] },
+      verdicts: [{ subject_id: "edge:fixture-prereq", verdict: "supported", direction_confirmed: true, identity_referent_verified: true, sources: src(true, 2) }],
+      sanctions: [{ subject_id: "edge:fixture-prereq", ladder: "formalizes-auto-54" }],
+    }),
+  },
+  {
+    name: "founded-or-formalized-auto-60 does not sanction prerequisite_for ((115) exclusion)",
+    expect: "block",
+    fragment: "not sanctioned by founded-or-formalized-auto-60",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-prereq", "person:fixture-founder", "subfield:fixture-field", "prerequisite_for")] },
+      verdicts: [{ subject_id: "edge:fixture-prereq", verdict: "supported", direction_confirmed: true, identity_referent_verified: true, sources: src(true, 2) }],
+      sanctions: [{ subject_id: "edge:fixture-prereq", ladder: "founded-or-formalized-auto-60" }],
+    }),
+  },
+  {
+    name: "canonical-work-auto-88 does not sanction prerequisite_for ((115) exclusion)",
+    expect: "block",
+    fragment: "not sanctioned by canonical-work-auto-88",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-prereq", "work:fixture-work", "subfield:fixture-field", "prerequisite_for")] },
+      verdicts: [{ subject_id: "edge:fixture-prereq", verdict: "supported", direction_confirmed: true, identity_referent_verified: true, sources: src(true, 2) }],
+      sanctions: [{ subject_id: "edge:fixture-prereq", ladder: "canonical-work-auto-88" }],
+    }),
+  },
   {
     name: "structural tier blocks at 0 independent sources (threshold ≥1)",
     expect: "block",

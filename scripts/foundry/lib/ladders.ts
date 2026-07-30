@@ -14,7 +14,7 @@
  * stop-point: fix the transcription in the same change as the vault ruling,
  * never silently.
  *
- * Codified through vault decision (114). A decision after this cursor must
+ * Codified through vault decision (115). A decision after this cursor must
  * either update this transcription (with its golden fixture in
  * ladder-fixtures.ts, which guards threshold fidelity in CI) or record an
  * explicit no-op in its decision-log entry; the session-end ritual bumps the
@@ -75,7 +75,12 @@ const EDGE_AUTO_LADDER: Record<string, Ladder> = {
 // placements only; applies_to is EXCLUDED per the session-#55 CPO ruling
 // (substantive claim, not a placement); propositional relations promote via
 // their own ladders ((54)/(60)(61)/(68)) or manual-cpo (decision-log pointer
-// required).
+// required). prerequisite_for is ALSO excluded — from this set and from
+// EDGE_AUTO_LADDER — per decision (115) (2026-07-30), which transcribes
+// decision (15) clause 2: editorial-class pedagogical claims stop at
+// `proposed`; a reviewed ladder requires a measured editorial-precision pilot
+// first. The absence of a prerequisite_for entry anywhere in this file is a
+// declared exclusion, not an oversight; golden fixtures lock it.
 const CLASSIFICATION_RELATIONS = new Set(["part_of", "member_of", "adjacent_to"]);
 
 // Executable transcription of the docs/data-foundry.md §8 taxonomy-authority

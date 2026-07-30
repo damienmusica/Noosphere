@@ -53,7 +53,10 @@ export type Proposer = z.infer<typeof proposerSchema>;
  * Evidence kind per ADR 0007 §A. Externally-sourced evidence backs structural
  * claims (e.g. `part_of` grounded in a classification source); editorial
  * evidence backs pedagogical/curatorial judgment (`prerequisite_for`,
- * `adjacent_to`, ...).
+ * learning-path curation). `adjacent_to` no longer belongs in the editorial
+ * examples: it joined the classification-placement set {part_of, member_of,
+ * adjacent_to} (ratified 2026-07-02, decision (103)) and is externally
+ * sourced like its siblings — stale listing caught by the (115) review.
  */
 export const evidenceKindSchema = z.enum(["externally_sourced", "editorial"]);
 export type EvidenceKind = z.infer<typeof evidenceKindSchema>;
