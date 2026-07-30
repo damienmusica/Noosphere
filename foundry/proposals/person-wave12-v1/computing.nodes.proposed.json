@@ -1,0 +1,54 @@
+{
+  "version": 2,
+  "batch_id": "person-wave12-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-30"
+  },
+  "nodes": [
+    {
+      "id": "person:john-mauchly",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "John Mauchly",
+      "referent": "John William Mauchly (1907-1980), American physicist, co-designer with J. Presper Eckert of the ENIAC (completed 1945 at the University of Pennsylvania, generally credited as the first general-purpose electronic digital computer) and of the EDVAC and UNIVAC I computers; co-founder of the Eckert-Mauchly Computer Corporation. Distinct from any other person surnamed Mauchly and from John von Neumann, who separately authored the 'First Draft of a Report on the EDVAC' describing the architecture that later took his name.",
+      "source_hint": "Wikipedia 'John Mauchly' [UNFETCHED]; Wikipedia 'ENIAC' [UNFETCHED]; Wikipedia 'EDVAC' [UNFETCHED] -- these are the pages the corpus's existing edge:john-von-neumann-influenced-computer-systems note already cites as naming Mauchly a co-designer.",
+      "note": "Requested by the order to close the honest gap flagged on the reviewed edge:john-von-neumann-influenced-computer-systems ('Neither Mauchly nor Eckert is a corpus node; honest gap').",
+      "rationale": "Mauchly is independently notable (co-inventor of ENIAC and UNIVAC I, both landmark machines) and is already named as a co-designer in the source underlying the corpus's existing reviewed von Neumann/computer-systems edge; adding the node lets QC decide the edge question on its merits instead of by omission.",
+      "uncertainty": "I have not live-verified Mauchly's birth/death dates or the precise ENIAC/EDVAC/UNIVAC attribution wording against a live source this session. The credit-sharing among Mauchly, Eckert, von Neumann, and John Atanasoff (whose earlier work was found to anticipate some of ENIAC's central ideas in the 1973 Honeywell v. Sperry Rand patent ruling) is a genuine, still-cited historical controversy that QC should be aware of when wording any downstream claim, though it does not affect the identity of this referent.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:j-presper-eckert",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "J. Presper Eckert",
+      "referent": "John Adam Presper Eckert Jr. (1919-1995), American electrical engineer, chief engineer and co-designer with John Mauchly of the ENIAC (completed 1945) and the EDVAC, inventor of the mercury delay-line memory used in EDVAC and UNIVAC, and co-founder with Mauchly of the Eckert-Mauchly Computer Corporation, the company that produced the UNIVAC I. Distinct from any other person surnamed Eckert.",
+      "source_hint": "Wikipedia 'J. Presper Eckert' [UNFETCHED]; Wikipedia 'ENIAC' [UNFETCHED]; Wikipedia 'EDVAC' [UNFETCHED] -- the same source family the existing edge:john-von-neumann-influenced-computer-systems note cites for naming Eckert a co-designer.",
+      "note": "Requested by the order to close the honest gap flagged on the reviewed edge:john-von-neumann-influenced-computer-systems ('Neither Mauchly nor Eckert is a corpus node; honest gap').",
+      "rationale": "Eckert is independently notable as ENIAC/EDVAC's chief engineer and a UNIVAC co-inventor and is already named as a co-designer in the source underlying the corpus's existing reviewed von Neumann/computer-systems edge; adding the node lets QC decide the edge question on its merits instead of by omission.",
+      "uncertainty": "I have not live-verified Eckert's birth/death dates or the precise ENIAC/EDVAC/UNIVAC attribution wording against a live source this session. The same Atanasoff priority-dispute caveat noted on the Mauchly node applies to Eckert; it does not affect the identity of this referent.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:nikolai-trubetzkoy",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Nikolai Trubetzkoy",
+      "referent": "Prince Nikolai Sergeyevich Trubetzkoy (1890-1938), Russian-born linguist and philologist, a founding member of the Prague Linguistic Circle who co-developed structural phonology and distinctive-feature analysis together with Roman Jakobson in the 1920s-30s; author of the posthumously published foundational text 'Grundzuge der Phonologie' (Principles of Phonology, 1939). Specifically the linguist of the Prague Circle -- not any other bearer of the same Russian princely surname (Trubetzkoy/Troubetzkoy is a large aristocratic family with several notable members in other fields, e.g. music and diplomacy).",
+      "source_hint": "Wikipedia 'Nikolai Trubetzkoy' [UNFETCHED]; Wikipedia 'Roman Jakobson' [UNFETCHED this session -- the passage is quoted secondhand from the existing reviewed edge's note: 'With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology']; Encyclopedia Britannica 'Nikolai Sergeyevich, Prince Trubetskoy' [UNFETCHED].",
+      "note": "Explicitly anticipated by the reviewed edge:roman-jakobson-founded-phonology note: 'Trubetzkoy is the equal co-founder (not yet a node; his Grundzuge der Phonologie, 1939, is the foundational text) - a future Trubetzkoy->phonology founder edge sits alongside this one; this edge does not claim sole founding.'",
+      "rationale": "The corpus's own reviewed Jakobson/phonology edge names Trubetzkoy as an equal co-founder of modern phonology via the Prague Linguistic Circle and explicitly anticipates this exact node+edge pair; adding the node closes a gap the corpus has already flagged as intended future work, not a new claim being introduced.",
+      "uncertainty": "I have not live-verified Trubetzkoy's dates or the Wikipedia/Britannica wording against a live source this session -- the quoted Jakobson-article sentence is carried over secondhand from the existing edge's note rather than freshly read. The surname Trubetzkoy/Troubetzkoy belongs to a large Russian princely family with several notable bearers (composers, diplomats, a sculptor), so QC's resolver should confirm it is matching the linguist (1890-1938, Prague Circle) and not a namesake.",
+      "ambiguous": true
+    }
+  ],
+  "notes": []
+}

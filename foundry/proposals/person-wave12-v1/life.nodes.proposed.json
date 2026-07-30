@@ -1,0 +1,57 @@
+{
+  "version": 2,
+  "batch_id": "person-wave12-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-30"
+  },
+  "nodes": [
+    {
+      "id": "person:robert-remak",
+      "type": "person",
+      "domain": "medicine_and_health",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Robert Remak",
+      "referent": "Robert Remak (1815-1865), German-Jewish physician, neurologist, and embryologist, born in Poznan/Posen (then Prussia) and working mainly in Berlin -- established that new animal cells arise through the division of pre-existing cells and worked out the differentiation of the three embryonic germ layers, and separately discovered unmyelinated nerve fibers ('fibers of Remak') and autonomic ganglia later named for him. Historically credited by some sources as the true originator of the 'cells only arise from pre-existing cells' tenet later published by Rudolf Virchow. NOT his grandson, the 20th-century mathematician Robert Remak (1888-1942) known for group-theory decomposition results, and not any other person sharing the surname.",
+      "source_hint": "Encyclopedia Britannica 'Robert Remak'; general history-of-cell-biology and history-of-embryology references on Remak's 1850s cell-division and germ-layer work -- not fetched this session [UNFETCHED]. Also see this repo's own data/edges.json note on edge:rudolf-virchow-founded-cell-theory, which I did read, for the Remak priority allegation as already recorded in the reviewed corpus.",
+      "note": "Proposed specifically to close the gap the corpus's own reviewed Virchow edge names by name: '...Robert Remak is not a corpus node -- an honest gap, and the one most worth closing next on this concept.'",
+      "rationale": "Directly requested by the order and by the corpus's own reviewed data: the edge:rudolf-virchow-founded-cell-theory note explicitly names Remak as the next gap to close on concept:cell-theory. Remak is independently notable beyond this one priority question (embryology's germ-layer work, discovery of unmyelinated nerve fibers), so the node is warranted on ordinary compass grounds even apart from the contested edge proposed alongside it.",
+      "uncertainty": "Biographical details (exact dates, birthplace, institutional affiliations) are from my own knowledge, not re-verified against a live source this session -- QC should confirm dates and spelling against a fetched biographical source before promotion. The homonym risk with his mathematician grandson (also named Robert Remak) is real and worth QC's explicit disambiguation check, not just my flag.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:marcus-von-plenciz",
+      "type": "person",
+      "domain": "medicine_and_health",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Marcus von Plenciz",
+      "referent": "Marcus Antonius von Plenciz (also written Marc Anton Plenciz or Plencic; c. 1705-1786), Austrian physician practicing in Vienna -- in his 1762 work Opera medico-physica proposed that each infectious disease is caused by its own specific, distinct kind of minute living organism ('contagium animatum'), an elaboration of Girolamo Fracastoro's earlier 1546 'seeds of disease' contagion theory, roughly a century before the germ theory of disease was experimentally confirmed by Louis Pasteur and Robert Koch. Not to be confused with any other bearer of the surname von Plenciz/Plenciz.",
+      "source_hint": "Wikipedia 'Germ theory of disease' -- already read via this repo's own reviewed edge:girolamo-fracastoro-influenced-germ-theory-of-disease note (data/edges.json), which is itself sourced to that article and states 'Basic forms of germ theory were proposed by Girolamo Fracastoro in 1546, and expanded upon by Marcus von Plenciz in 1762.' A dedicated biographical source on von Plenciz specifically has not been fetched this session [UNFETCHED] -- the name spelling, exact dates, and the 'Opera medico-physica' title above are from my own knowledge, not re-verified.",
+      "note": "No edge proposed to concept:germ-theory-of-disease in this batch -- see the reasoning recorded in the companion edges.proposed.json notes array (same 'expander, not originator' pattern the corpus already declined an edge for entirely in the case of Charles Lyell on uniformitarianism).",
+      "rationale": "Named directly in the order and in the corpus's own reviewed edge note as the 1762 'expander' of germ theory alongside Fracastoro. Proposed as a node on ordinary compass grounds (an independently identifiable historical figure with a specific, real scientific claim to his name) even though no edge is proposed for him in this batch -- see uncertainty and the edges-file notes.",
+      "uncertainty": "This is the weakest-sourced node in the batch: my only textual anchor is the single already-reviewed quote ('expanded upon... in 1762'), thinner than what the corpus required to award even Fracastoro (the stronger, originating role in the same sentence) an `influenced` rather than `founded_or_formalized` edge. All biographical specifics (full name, dates, the 'Opera medico-physica' title, the 'contagium animatum' framing) are unverified knowledge-only claims from me, not sourced this session -- QC should treat the referent description itself, not just the missing edge, as needing a live check before promotion. It is plausible QC's live check finds this figure too thinly attested to be worth a node at all, independent of the edge question.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:william-whewell",
+      "type": "person",
+      "domain": "natural_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "William Whewell",
+      "referent": "William Whewell (1794-1866), English polymath, philosopher and historian of science, Master of Trinity College, Cambridge -- coined numerous scientific terms including 'scientist', 'physicist', 'uniformitarianism', and 'catastrophism' (the latter two introduced in his 1832 review of Charles Lyell's Principles of Geology, contrasting Lyell's gradualist position with the catastrophist view Whewell himself was more sympathetic to), and wrote History of the Inductive Sciences and Philosophy of the Inductive Sciences. Not to be confused with any other person named Whewell.",
+      "source_hint": "Encyclopedia Britannica 'William Whewell'; Wikipedia 'William Whewell' and 'Uniformitarianism' (history/etymology section) -- the specific claim that Whewell coined the term is already read via this repo's own reviewed edge:james-hutton-founded-uniformitarianism note (data/edges.json): 'The term itself was coined later by William Whewell, who is not a corpus node.' Full biographical sourcing, and the specific claim about the 1832 review and Whewell's own catastrophist sympathies, have not been fetched this session [UNFETCHED] -- from my own knowledge.",
+      "note": "No edge proposed to concept:uniformitarianism in this batch -- see the reasoning recorded in the companion edges.proposed.json notes array.",
+      "rationale": "Directly named in the corpus's own reviewed edge note as the coiner of 'uniformitarianism', with that note explicitly flagging his absence as a corpus node. Independently notable well beyond this one term (major 19th-century philosopher of science, coined 'scientist' itself), so the node is warranted on ordinary compass grounds regardless of the no-edge call recorded alongside it.",
+      "uncertainty": "Domain classification is a judgment call I am not confident in: placed under natural_sciences to match the immediate demanding context (concept:uniformitarianism and person:james-hutton/person:charles-lyell are natural_sciences), but Whewell's broader and arguably primary notability is as a philosopher and historian of science, which this corpus might prefer to classify under humanities once a philosophy-of-science home exists for him -- QC should treat this as open. The claim that Whewell personally favored catastrophism over Lyell's uniformitarianism is from my own knowledge, not verified this session, and if wrong would undercut part of the referent description (though not his authorship of the term itself, which the corpus's own already-reviewed note already establishes).",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "Group scope (life, person-wave12-v1): three candidates ordered, three nodes proposed, one edge proposed (Remak only). person:marcus-von-plenciz and person:william-whewell are proposed as nodes without edges to their respective demanding concepts -- full reasoning for both no-edge calls is recorded in the companion edges.proposed.json notes array, not repeated in full here.",
+    "No academic_status is set on any of these three nodes: academic_status is required only for domain/field/subfield nodes per the v2 schema, and person nodes do not carry it."
+  ]
+}

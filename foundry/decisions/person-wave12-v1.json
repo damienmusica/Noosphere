@@ -1,0 +1,569 @@
+{
+  "version": 1,
+  "batch_id": "person-wave12-v1",
+  "decided_at": "2026-07-30",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-30"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [
+      {
+        "id": "person:robert-remak",
+        "type": "person",
+        "domain": "medicine_and_health",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q62088"
+        },
+        "created_at": "2026-07-30",
+        "updated_at": "2026-07-30"
+      },
+      {
+        "id": "person:james-clerk-maxwell",
+        "type": "person",
+        "domain": "natural_sciences",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q9095"
+        },
+        "created_at": "2026-07-30",
+        "updated_at": "2026-07-30"
+      },
+      {
+        "id": "person:josiah-willard-gibbs",
+        "type": "person",
+        "domain": "natural_sciences",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q153243"
+        },
+        "created_at": "2026-07-30",
+        "updated_at": "2026-07-30"
+      },
+      {
+        "id": "person:hendrik-lorentz",
+        "type": "person",
+        "domain": "natural_sciences",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q41688"
+        },
+        "created_at": "2026-07-30",
+        "updated_at": "2026-07-30"
+      },
+      {
+        "id": "person:alfred-north-whitehead",
+        "type": "person",
+        "domain": "humanities",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q183372"
+        },
+        "created_at": "2026-07-30",
+        "updated_at": "2026-07-30"
+      }
+    ],
+    "translations": [
+      {
+        "node_id": "person:robert-remak",
+        "locale": "en",
+        "label": "Robert Remak",
+        "reviewed": false
+      },
+      {
+        "node_id": "person:james-clerk-maxwell",
+        "locale": "en",
+        "label": "James Clerk Maxwell",
+        "reviewed": false
+      },
+      {
+        "node_id": "person:josiah-willard-gibbs",
+        "locale": "en",
+        "label": "Josiah Willard Gibbs",
+        "reviewed": false
+      },
+      {
+        "node_id": "person:hendrik-lorentz",
+        "locale": "en",
+        "label": "Hendrik Lorentz",
+        "reviewed": false
+      },
+      {
+        "node_id": "person:alfred-north-whitehead",
+        "locale": "en",
+        "label": "Alfred North Whitehead",
+        "reviewed": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge:robert-remak-founded-cell-theory",
+        "source": "person:robert-remak",
+        "target": "concept:cell-theory",
+        "relation": "founded_or_formalized",
+        "confidence": 0.8,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-30"
+        },
+        "note": "Co-founder edge completing the priority record the corpus already carries on edge:rudolf-virchow-founded-cell-theory (conf 0.75), which states Virchow's third dictum \"is now widely recognized as being plagiarized\" from Remak. Record-not-resolve: both edges stand, neither adjudicates the priority. Live sources state Remak's origination unhedged in wiki voice — enwiki Robert Remak: \"who discovered that the origin of cells was by the division of pre-existing cells\"; enwiki Cell theory: \"the idea that all cells come from pre-existing cells had already been proposed by Robert Remak\"; enwiki Rudolf Virchow independently: \"He was one of the first to accept the work of Robert Remak, who showed that the origin of cells was the division of pre-existing cells.\" Not flagged disputed: clause-6 v2 governs a contested PLACEMENT taken on the dominant side, and this is two co-founders recorded side by side (decision (90)), not a placement this corpus is choosing between."
+      },
+      {
+        "id": "edge:james-clerk-maxwell-founded-statistical-physics",
+        "source": "person:james-clerk-maxwell",
+        "target": "subfield:statistical-physics",
+        "relation": "founded_or_formalized",
+        "confidence": 0.8,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-30"
+        },
+        "note": "Second of the three co-founders the already-reviewed Boltzmann edge recorded as an honest gap. enwiki Statistical mechanics (canonical target — \"Statistical physics\" redirects there, resolved live before citing, per the §8 redirect rule): \"The founding of the field of statistical mechanics is generally credited to three physicists\", naming Maxwell; enwiki Josiah Willard Gibbs states it from the other side: \"Together with James Clerk Maxwell and Ludwig Boltzmann, Gibbs founded 'statistical mechanics'\"."
+      },
+      {
+        "id": "edge:josiah-willard-gibbs-founded-statistical-physics",
+        "source": "person:josiah-willard-gibbs",
+        "target": "subfield:statistical-physics",
+        "relation": "founded_or_formalized",
+        "confidence": 0.8,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-30"
+        },
+        "note": "Third co-founder, closing the gap the Boltzmann edge recorded. enwiki Josiah Willard Gibbs: \"Together with James Clerk Maxwell and Ludwig Boltzmann, Gibbs founded 'statistical mechanics', a term that he coined\"; corroborated by the three-founder sentence in enwiki Statistical mechanics. QC note: an independent verifier read the field article's compressed per-founder line as assigning Gibbs the narrower role of naming the field, which would have been a role-separation problem under the Hutton/Lyell rule; the person article resolves it by stating founding and coining together, so the founder claim survives on its own source rather than on the compressed summary."
+      },
+      {
+        "id": "edge:hendrik-lorentz-influenced-theory-of-relativity",
+        "source": "person:hendrik-lorentz",
+        "target": "concept:theory-of-relativity",
+        "relation": "influenced",
+        "confidence": 0.75,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:mactutor",
+          "source:nobelprize"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-30"
+        },
+        "note": "Mirrors the disposition the corpus already took for Poincaré on this same concept: influence, not founding — the priority literature is recorded, not adjudicated. Six independent claim-stating sources, and every one separates deriving the transformation from founding the theory: enwiki Theory of relativity: \"Albert Einstein published the theory of special relativity in 1905, building on many theoretical results and empirical findings obtained by Albert A. Michelson, Hendrik Lorentz, Henri Poincaré and others\"; MacTutor: \"Lorentz transformations, which he introduced in 1904, form the basis of Einstein's special theory of relativity.\" The relativity-priority article also records Lorentz's own disclaimer (\"the theory of relativity is really solely Einstein's work\"), which is why founded_or_formalized was declined."
+      },
+      {
+        "id": "edge:principia-mathematica-canonical-work-alfred-north-whitehead",
+        "source": "work:principia-mathematica",
+        "target": "person:alfred-north-whitehead",
+        "relation": "canonical_work",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:sep"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-30"
+        },
+        "note": "Completes the co-author leg of the already-reviewed edge:principia-mathematica-canonical-work-bertrand-russell (same relation, same confidence). Three independent claim-stating sources: enwiki Principia Mathematica, \"written by the mathematician–philosophers Alfred North Whitehead and Bertrand Russell\"; SEP 'Principia Mathematica', \"Alfred North Whitehead and Bertrand Russell's monumental\" work; enwiki Alfred North Whitehead, \"He wrote the three-volume Principia Mathematica (1910–1913), with his former student Bertrand Russell.\" This edge was adjudicated by the orchestrator directly: the per-person verifiers were scoped to the founding/influence claims and none tested it under the canonical_work ladder — surfaced by the batch's completeness critic."
+      }
+    ],
+    "external_links": []
+  },
+  "promotions": [],
+  "translation_updates": [],
+  "verdicts": [
+    {
+      "subject_id": "person:robert-remak",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q62088",
+          "retrieved_at": "2026-07-30",
+          "quote": "Robert Remak Polish/German embryologist, physiologist, and neurologist (1815–1865)",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q62088&oldid=2523976253"
+        }
+      ],
+      "notes": "Identity quote is the live Wikidata label + English description as rendered on the anchored revision; the structured proof of identity is the `identity` record (provider/external_id/verified/method), not this string."
+    },
+    {
+      "subject_id": "person:james-clerk-maxwell",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q9095",
+          "retrieved_at": "2026-07-30",
+          "quote": "James Clerk Maxwell Scottish physicist (1831–1879)",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q9095&oldid=2518558494"
+        }
+      ],
+      "notes": "Identity quote is the live Wikidata label + English description as rendered on the anchored revision; the structured proof of identity is the `identity` record (provider/external_id/verified/method), not this string."
+    },
+    {
+      "subject_id": "person:josiah-willard-gibbs",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q153243",
+          "retrieved_at": "2026-07-30",
+          "quote": "Josiah Willard Gibbs American scientist (1839–1903)",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q153243&oldid=2521828847"
+        }
+      ],
+      "notes": "Identity quote is the live Wikidata label + English description as rendered on the anchored revision; the structured proof of identity is the `identity` record (provider/external_id/verified/method), not this string."
+    },
+    {
+      "subject_id": "person:hendrik-lorentz",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q41688",
+          "retrieved_at": "2026-07-30",
+          "quote": "Hendrik Lorentz Dutch physicist (1853–1928)",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q41688&oldid=2522912916"
+        }
+      ],
+      "notes": "Identity quote is the live Wikidata label + English description as rendered on the anchored revision; the structured proof of identity is the `identity` record (provider/external_id/verified/method), not this string."
+    },
+    {
+      "subject_id": "person:alfred-north-whitehead",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://www.wikidata.org/wiki/Q183372",
+          "retrieved_at": "2026-07-30",
+          "quote": "Alfred North Whitehead English mathematician and philosopher (1861–1947)",
+          "independent": true,
+          "revision_permalink": "https://www.wikidata.org/w/index.php?title=Q183372&oldid=2522970411"
+        }
+      ],
+      "notes": "Identity quote is the live Wikidata label + English description as rendered on the anchored revision; the structured proof of identity is the `identity` record (provider/external_id/verified/method), not this string."
+    },
+    {
+      "subject_id": "edge:robert-remak-founded-cell-theory",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Robert_Remak",
+          "retrieved_at": "2026-07-30",
+          "quote": "Robert Remak (26 July 1815 – 29 August 1865) was an embryologist, physiologist and neurologist, born in Posen, Prussia, who discovered that the origin of cells was by the division of pre-existing cells.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Remak&oldid=1341566404"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cell_theory",
+          "retrieved_at": "2026-07-30",
+          "quote": "However, the idea that all cells come from pre-existing cells had already been proposed by Robert Remak; it has been suggested that Virchow plagiarized Remak.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cell_theory&oldid=1365081375"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Rudolf_Virchow",
+          "retrieved_at": "2026-07-30",
+          "quote": "He was one of the first to accept the work of Robert Remak, who showed that the origin of cells was the division of pre-existing cells.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Rudolf_Virchow&oldid=1361411508"
+        }
+      ],
+      "notes": "Referent disambiguated against his grandson Robert Remak (1888–1942), the group-theory mathematician."
+    },
+    {
+      "subject_id": "edge:james-clerk-maxwell-founded-statistical-physics",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Statistical_mechanics",
+          "retrieved_at": "2026-07-30",
+          "quote": "The founding of the field of statistical mechanics is generally credited to three physicists:",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Statistical_mechanics&oldid=1365220532"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/James_Clerk_Maxwell",
+          "retrieved_at": "2026-07-30",
+          "quote": "Maxwell was also key in the creation of statistical mechanics.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=James_Clerk_Maxwell&oldid=1365632977"
+        }
+      ]
+    },
+    {
+      "subject_id": "edge:josiah-willard-gibbs-founded-statistical-physics",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Josiah_Willard_Gibbs",
+          "retrieved_at": "2026-07-30",
+          "quote": "Together with James Clerk Maxwell and Ludwig Boltzmann, Gibbs founded \"statistical mechanics\", a term that he coined to identify the branch of theoretical physics that accounts for the observed thermodynamic properties of systems",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Josiah_Willard_Gibbs&oldid=1366423689"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Statistical_mechanics",
+          "retrieved_at": "2026-07-30",
+          "quote": "The founding of the field of statistical mechanics is generally credited to three physicists:",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Statistical_mechanics&oldid=1365220532"
+        }
+      ],
+      "notes": "Referent disambiguated against his father Josiah Willard Gibbs Sr. (1790–1861), the linguist/theologian."
+    },
+    {
+      "subject_id": "edge:hendrik-lorentz-influenced-theory-of-relativity",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Theory_of_relativity",
+          "retrieved_at": "2026-07-30",
+          "quote": "Albert Einstein published the theory of special relativity in 1905, building on many theoretical results and empirical findings obtained by Albert A. Michelson, Hendrik Lorentz, Henri Poincaré and others.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Theory_of_relativity&oldid=1346554258"
+        },
+        {
+          "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Lorentz/",
+          "retrieved_at": "2026-07-30",
+          "quote": "Lorentz transformations, which he introduced in 1904, form the basis of Einstein's special theory of relativity.",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260419144237/https://mathshistory.st-andrews.ac.uk/Biographies/Lorentz/"
+        },
+        {
+          "url": "https://www.nobelprize.org/prizes/physics/1902/lorentz/biographical/",
+          "retrieved_at": "2026-07-30",
+          "quote": "The so-called Lorentz transformation (1904) was based on the fact that electromagnetic forces between charges are subject to slight alterations due to their motion, resulting in a minute contraction in the size of moving bodies.",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260716151655/https://www.nobelprize.org/prizes/physics/1902/lorentz/biographical/"
+        }
+      ],
+      "notes": "Referent disambiguated against Konrad Lorenz the ethologist and against a same-label non-person entity."
+    },
+    {
+      "subject_id": "edge:principia-mathematica-canonical-work-alfred-north-whitehead",
+      "verdict": "supported",
+      "direction_confirmed": true,
+      "identity_referent_verified": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Principia_Mathematica",
+          "retrieved_at": "2026-07-30",
+          "quote": "The Principia Mathematica (often abbreviated PM) is a three-volume work on the foundations of mathematics written by the mathematician–philosophers Alfred North Whitehead and Bertrand Russell and published in 1910, 1912, and 1913.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Principia_Mathematica&oldid=1356011315"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/principia-mathematica/",
+          "retrieved_at": "2026-07-30",
+          "quote": "This entry briefly describes the history and significance of Alfred North Whitehead and Bertrand Russell",
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/principia-mathematica/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+          "retrieved_at": "2026-07-30",
+          "quote": "He wrote the three-volume Principia Mathematica (1910–1913), with his former student Bertrand Russell.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+        }
+      ]
+    }
+  ],
+  "identity": [
+    {
+      "node_id": "person:robert-remak",
+      "provider": "wikidata",
+      "external_id": "Q62088",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-30",
+      "notes": "Live-resolved this session by an independent verifier context (never from memory); P570 present, so decision (70) does not engage."
+    },
+    {
+      "node_id": "person:james-clerk-maxwell",
+      "provider": "wikidata",
+      "external_id": "Q9095",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-30",
+      "notes": "Live-resolved this session by an independent verifier context (never from memory); P570 present, so decision (70) does not engage."
+    },
+    {
+      "node_id": "person:josiah-willard-gibbs",
+      "provider": "wikidata",
+      "external_id": "Q153243",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-30",
+      "notes": "Live-resolved this session by an independent verifier context (never from memory); P570 present, so decision (70) does not engage."
+    },
+    {
+      "node_id": "person:hendrik-lorentz",
+      "provider": "wikidata",
+      "external_id": "Q41688",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-30",
+      "notes": "Live-resolved this session by an independent verifier context (never from memory); P570 present, so decision (70) does not engage."
+    },
+    {
+      "node_id": "person:alfred-north-whitehead",
+      "provider": "wikidata",
+      "external_id": "Q183372",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-30",
+      "notes": "Live-resolved this session by an independent verifier context (never from memory); P570 present, so decision (70) does not engage."
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "person:robert-remak",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:james-clerk-maxwell",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:josiah-willard-gibbs",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:hendrik-lorentz",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:alfred-north-whitehead",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "edge:robert-remak-founded-cell-theory",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:james-clerk-maxwell-founded-statistical-physics",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:josiah-willard-gibbs-founded-statistical-physics",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:hendrik-lorentz-influenced-theory-of-relativity",
+      "ladder": "a-relation-auto-68"
+    },
+    {
+      "subject_id": "edge:principia-mathematica-canonical-work-alfred-north-whitehead",
+      "ladder": "canonical-work-auto-88"
+    }
+  ],
+  "rejections": [
+    {
+      "label": "William Whewell → concept:uniformitarianism",
+      "referent": "English polymath (1794–1866), Q333922; coined the term 'uniformitarianism' (and 'catastrophism', 'scientist') in his 1832 review of Lyell.",
+      "kind": "edge",
+      "reason": "Rejected on the role-separation rule. Four independent claim-stating sources agree on exactly one thing — Whewell COINED THE NAME — and every one of them separates that from originating the doctrine (Hutton) and from developing and popularising it (Lyell). No relation in docs/relation-taxonomy.md expresses 'coined the term for': founded_or_formalized would assert origination the sources explicitly assign to Hutton, and influenced would assert an effect on the theory's content that no source states. The corpus already declined Lyell on this same concept for the weaker-role reason; naming is weaker still. The absence stays recorded where it already is — in the note on edge:james-hutton-founded-uniformitarianism, which says so honestly. A person node with no admissible edge would be an isolated node, so none is created. Re-admit only if a term-coinage relation is ever ratified, or if sources are found crediting Whewell with the doctrine's content.",
+      "batch_id": "person-wave12-v1",
+      "recorded_at": "2026-07-30"
+    }
+  ],
+  "held": [
+    {
+      "id": "person:marcus-von-plenciz",
+      "blocking_condition": "Marcus von Plenciz → concept:germ-theory-of-disease: no edge admitted. Independent live verification returned DISPUTED and found that even `influenced` fails the ≥2 independent claim-stating floor: the one source that states a relation (enwiki Germ theory of disease) says he 'expanded upon' Fracastoro, which is the expander role the Hutton/Lyell rule excludes from a founder edge, and no second source states any relation to the theory at all. ★ Correction of this batch's own order: the generation order asserted that 'a prior wave DECLINED him an edge on expander-not-originator grounds'. That is FALSE — grep of foundry/decisions/person-wave11-v1.json and its proposals returns zero rejection, held or verdict entries for him; he appears only inside the note text of edge:girolamo-fracastoro-influenced-germ-theory-of-disease as a recorded gap. The orchestrator fabricated a precedent and fed it to a generator and a verifier. The verdict survives because it rests on live sources, not on the false premise, but the premise is recorded here as an error. Unblock: ≥2 independent claim-stating sources asserting a founding or influence relation between von Plenciz and germ theory — a contribution/priority claim about contagium animatum is not enough.",
+      "recheck": "manual",
+      "batch_id": "person-wave12-v1",
+      "recorded_at": "2026-07-30"
+    },
+    {
+      "id": "person:john-mauchly",
+      "blocking_condition": "John Mauchly and J. Presper Eckert → subfield:computer-systems: BOTH held, deliberately together. Independent verification split them on identical evidence — Mauchly REJECT (0 independent claim-stating sources at subfield grain) and Eckert SUPPORTED/influenced (3) — which the batch critic flagged as an inconsistency rather than a finding about the two men, since the generator proposed them as parallel edges at identical confidence and the sources co-credit them throughout. Admitting one and not the other would put an asymmetric pair in /data on a difference no source states. The grain is the real problem: both men demonstrably co-designed ENIAC and EDVAC, and neither claim is about the SUBFIELD of computer systems, which is the diffuse field-grain influence this corpus has repeatedly held. Unblock: create work:eniac / work:edvac (or a stored-program-architecture concept node) and record the machine-level credit through canonical_work, where the evidence is strong — that is the right shape, and it is on the next-wave slate. Also recorded from Mauchly's own refutation trail: person:john-atanasoff is named by the 1973 Honeywell v. Sperry Rand ruling and is absent from the corpus.",
+      "recheck": "manual",
+      "batch_id": "person-wave12-v1",
+      "recorded_at": "2026-07-30"
+    },
+    {
+      "id": "person:nikolai-trubetzkoy",
+      "blocking_condition": "Nikolai Trubetzkoy → subfield:phonology: held at not_enough_evidence, reversing this batch's own expectation. The note on edge:roman-jakobson-founded-phonology anticipates 'a future Trubetzkoy→phonology founder edge', and the generator proposed exactly that at confidence 0.88 — but live verification found only ONE independent claim-stating source at the phonology grain (Jakobson's own biography), below the ≥2 floor, and found that every source using explicit founder-grade language for Trubetzkoy scopes it to MORPHOPHONOLOGY, not phonology, while naming Baudouin de Courtenay as a prior claimant there. This is the corpus's own grain discipline firing against a claim its own edge note invited. Unblock: either ≥2 independent claim-stating sources at the phonology grain, or a subfield:morphophonology node (with person:baudouin-de-courtenay considered alongside), where the founder-grade sourcing actually sits.",
+      "recheck": "manual",
+      "batch_id": "person-wave12-v1",
+      "recorded_at": "2026-07-30"
+    }
+  ],
+  "held_resolutions": [],
+  "override_rejections": [],
+  "anchors_pending": [
+    {
+      "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Lorentz/",
+      "reason": "[SPN-FAILED] fresh save did not materialize; using 102d-old snapshot"
+    },
+    {
+      "url": "https://www.nobelprize.org/prizes/physics/1902/lorentz/biographical/",
+      "reason": "[SPN-FAILED] fresh save did not materialize; using 14d-old snapshot"
+    }
+  ],
+  "notes": [
+    "Person wave 12 — the slate of people that already-reviewed edge notes demanded but the corpus lacked. Ten candidates in, five nodes and five edges out: the wave's real output is that HALF the slate did not survive live verification, and every one of those reversals came from a rule this corpus had already paid for.",
+    "Regime: three separated-context generators (proposal-generator, self-reported claude-sonnet-5, no network, provider IDs banned — a post-hoc grep of all six proposal files found zero QIDs, so contract v2 held) ran in parallel with ten INDEPENDENT live verifiers (claude-sonnet-5) that never read the proposals and worked from /data plus live sources, each mandated to resolve identity live and then try to REFUTE the claim. Orchestrator (claude-fable-5) adjudicated. Generation ≠ QC context throughout (ADR 0007 / §15.7).",
+    "★ Promoted: Remak→cell-theory (the priority record the Virchow edge has carried since person-wave11 at conf 0.75 is now two co-founder edges, record-not-resolve); Maxwell and Gibbs→statistical-physics (the two honest gaps the Boltzmann edge named); Lorentz→theory-of-relativity as INFLUENCED, mirroring Poincaré — six claim-stating sources and every one separates deriving the transformation from founding the theory, including Lorentz's own disclaimer; Principia→canonical_work→Whitehead, completing the Russell leg.",
+    "★ Five reversals, each by a named rule. Whewell REJECTED: four sources agree he coined the name and all four separate that from Hutton's origination and Lyell's popularisation — no taxonomy relation expresses 'coined the term for', and the corpus already declined Lyell here for a stronger role. von Plenciz HELD: the only relation-stating source says 'expanded upon', the expander role the same rule excludes. Trubetzkoy HELD at NEI — his own edge note invited a founder edge, and the grain discipline refused it: founder-grade language scopes to morphophonology, not phonology, with a prior claimant. Mauchly and Eckert HELD TOGETHER: verification split them on identical evidence, and the split is an artifact, not a fact about the two men — the machine-level credit is strong and the subfield grain is not.",
+    "★ Orchestrator error recorded, not buried: the generation order asserted that a prior wave had DECLINED von Plenciz an edge. It had not — wave11's decision file and proposals contain zero entries for him; he existed only inside another edge's note as a recorded gap. A fabricated precedent was fed to both a generator and a verifier. The verdict survives because it rests on live sources rather than on the premise, but this is the third occurrence in two sessions of the orchestrator asserting a corpus fact without checking it (the others: the (115) draft's 'the code enforces this only by absence', and the (113) sweep's 'no current document references it' — both refuted by the file that did). The order template needs the same discipline the generators already have: cite the corpus, or do not assert it.",
+    "Whitehead's domain is recorded as humanities to match his co-author person:bertrand-russell, and it is a judgment call the batch critic contested: person:georg-cantor, person:gottlob-frege, person:kurt-godel and person:alfred-tarski are all formal_sciences, making Russell the outlier. Kept as humanities because Whitehead's own lead leads with process philosophy, and because a co-authored work should not straddle two domains on its two legs. Cheap to flip later with a promotion op if a ruling prefers consistency with the logicians.",
+    "Honest gaps this batch recorded rather than papered over, and the next wave's natural slate: subfield:process-philosophy (Whitehead's best-known independent contribution — his node exists now, his largest claim still cannot be written); work:eniac / work:edvac and person:john-atanasoff (the right home for the Mauchly/Eckert credit); subfield:morphophonology and person:baudouin-de-courtenay (where Trubetzkoy's founder-grade sourcing actually sits)."
+  ]
+}
