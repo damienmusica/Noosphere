@@ -895,6 +895,25 @@
     "note": "Lavoisier's law of conservation of mass (1770s–80s) is shared across chemistry and physics. Held at proposed: 'influenced field:physics' is diffuse — physics conservation laws have independent origins and the target field is too broad; a thermodynamics-grained target was expected to be more accurate, but subfield:thermodynamics was created 2026-07-29 and the retarget was then tested live and failed at every grain; the held-ledger entry for this edge carries that re-measurement and the replacement unblock condition. Permanence: WP https://en.wikipedia.org/w/index.php?title=Antoine_Lavoisier&oldid=1358761697. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
+    "id": "edge:antonie-van-leeuwenhoek-founded-microbiology",
+    "source": "person:antonie-van-leeuwenhoek",
+    "target": "subfield:microbiology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:britannica",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-30"
+    },
+    "note": "Closes the gap edge:louis-pasteur-founded-microbiology has recorded as live since it was written. Sources (2 independent, registered): Britannica 'Antonie van Leeuwenhoek' -- 'Through his microscopic observations of organisms such as bacteria and protozoa, Antonie van Leeuwenhoek effectively began the discipline of microbiology'; enwiki Microbiology -- 'He is considered a father of microbiology as he used simple single-lensed microscopes of his own design.' Two peer-reviewed articles were also read and state the epithet flatly, recorded here as corroboration rather than as evidence entries (no registered source): Lane 2015, Phil. Trans. R. Soc. B (doi:10.1098/rstb.2014.0344, PMC4360124) -- 'Leeuwenhoek is universally acknowledged as the father of microbiology'; Kutschera 2023, Microorganisms (doi:10.3390/microorganisms11081994, PMC10458164). ★ The corpus's own prior note UNDERSTATED him: it called him 'co-credited for early microscopy', which is a narrower claim than the field-grain founder epithet the live sources state unqualifiedly. Verification was aimed specifically at that narrower reading and it did not survive. Record-not-resolve plural founding: joins edge:louis-pasteur-founded-microbiology and edge:robert-koch-founded-microbiology; the ~150-year gap between his observations and the 19th-century founding of the discipline is real and is why the confidence is 0.9 rather than higher, not a dispute about the epithet. Namesake explicitly excluded at identity time: Q15762938 is a Springer scientific journal of the same name."
+  },
+  {
     "id": "edge:applied-linguistics-part-of-linguistics",
     "source": "subfield:applied-linguistics",
     "target": "field:linguistics",
@@ -8382,7 +8401,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-19"
     },
-    "note": "Pasteur is a founder of microbiology (Wikipedia Louis Pasteur: \"He is regarded as one of the founders of modern bacteriology and has been honored as ... the 'father of microbiology' (together with Robert Koch ...)\"; Wikipedia Microbiology: \"Louis Pasteur is considered a father of microbiology\"). Plural founding preserved (record-not-resolve, not disputed): co-credited with Robert Koch, whose side is now recorded by edge:robert-koch-founded-microbiology. Antonie van Leeuwenhoek, co-credited for early microscopy, is still not a corpus node — that gap is live. Two independent Wikipedia articles. [Note refreshed 2026-07-30, decision (118): the original text said \"Koch not yet a node\", which went stale when person:robert-koch and his founder edge were both admitted. The claim and its sources are unchanged.]"
+    "note": "Pasteur is a founder of microbiology (Wikipedia Louis Pasteur: \"He is regarded as one of the founders of modern bacteriology and has been honored as ... the 'father of microbiology' (together with Robert Koch ...)\"; Wikipedia Microbiology: \"Louis Pasteur is considered a father of microbiology\"). Plural founding preserved (record-not-resolve, not disputed): co-credited with Robert Koch, whose side is now recorded by edge:robert-koch-founded-microbiology. Antonie van Leeuwenhoek is now person:antonie-van-leeuwenhoek with edge:antonie-van-leeuwenhoek-founded-microbiology; live verification found the field-grain founder epithet stated unqualifiedly, so 'co-credited for early microscopy' understated him. Two independent Wikipedia articles. [Note refreshed 2026-07-30, decision (118): the original text said \"Koch not yet a node\", which went stale when person:robert-koch and his founder edge were both admitted. The claim and its sources are unchanged.] [Note refreshed 2026-07-31, decision (120): the gap this note recorded was closed by the same batch that refreshed it. Recording the closure in the same change is the rule decision (119) was paid for. The claim, its sources and its confidence are unchanged.]"
   },
   {
     "id": "edge:luciano-floridi-founded-philosophy-of-information",
@@ -9573,6 +9592,26 @@
     }
   },
   {
+    "id": "edge:morphophonology-part-of-linguistics",
+    "source": "subfield:morphophonology",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:britannica",
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-30"
+    },
+    "note": "Sibling of subfield:phonology and subfield:morphology under field:linguistics, not a child of either. ★ The generator proposed a §13 co-equal cross-listing under BOTH parents and independent verification refused it: every source that states a genus makes LINGUISTICS the parent (Britannica 'morphophonemics, in linguistics, study of the relationship between morphology and phonology'; enwiki 'the branch of linguistics that studies the interaction between morphological and phonological or phonetic processes'; Crystal's Dictionary of Linguistics and Phonetics 'A branch of linguistics'), while the language relating it to phonology and morphology is INTERFACE language, not membership language. Wikidata Q661093 agrees structurally: P361 = Q8162 linguistics, with no P279 and no P361/P279 to Q40998 phonology or Q38311 morphology. Cross-listing is for genuine co-equal membership (§13), not for a field that sits between two others by subject matter."
+  },
+  {
     "id": "edge:mycology-part-of-biology",
     "source": "subfield:mycology",
     "target": "field:biology",
@@ -9873,6 +9912,25 @@
       "proposed_at": "2026-06-12"
     },
     "note": "Skeleton part_of: LCC RD593-596/RD520-599.5 Surgery by region (neurological) + UDC 617.51/616.8 + AANS."
+  },
+  {
+    "id": "edge:nikolai-trubetzkoy-founded-phonology",
+    "source": "person:nikolai-trubetzkoy",
+    "target": "subfield:phonology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:oxford-bibliographies",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-30"
+    },
+    "note": "Co-founder edge completing the record edge:roman-jakobson-founded-phonology has carried since 2026-06: 'Trubetzkoy is the equal co-founder ... a future Trubetzkoy->phonology founder edge sits alongside this one.' Sources (2 independent, registered): Oxford Bibliographies in Linguistics, Battistella, 'Nikolai Trubetzkoy' (DOI 10.1093/obo/9780199772810-0179) -- 'Nikolai Sergeyevich Trubetzkoy is regarded by many as the creator of the science of phonology'; enwiki Roman Jakobson -- 'With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology.' Two further claim-stating sources were read and are recorded but not used as evidence because neither provider is registered in data/sources.json: the University of Vienna's '650 plus' history project ('Trubetzkoy is considered the founder of phonology') and Honeybone's entry in Key Thinkers in Linguistics and the Philosophy of Language (Edinburgh UP, 2005) ('One of the founding fathers of phonology'). ★ REVERSES the person-wave12-v1 hold, on the FIRST branch of that hold's own unblock clause (>=2 independent claim-stating sources at the phonology grain), not the second. The reversal is a search-path difference, not a change in the world: wave 12's verifier found one such source, this pass found four. Counterweight recorded, not resolved: Britannica designates no founder of phonology at all and lists him among five 'Key People', and Oxford Bibliographies partly attributes his results to 'his extension of Saussurean insights'. Record-not-resolve -- this edge does not claim sole founding and does not adjudicate priority against Jakobson or Baudouin de Courtenay."
   },
   {
     "id": "edge:noam-chomsky-founded-generative-grammar",
@@ -12992,7 +13050,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-30"
     },
-    "note": "Jakobson co-founded the modern discipline of phonology with Nikolai Trubetzkoy via the Prague Linguistic Circle (Wikipedia Roman Jakobson: \"With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology\"); corroborated independently by the linguistics literature attributing structural phonology and distinctive-feature theory to Trubetzkoy and Jakobson, 1939 (Prague Circle / Grundzuge der Phonologie; Jakobson, Fant & Halle distinctive features). Record-not-resolve co-founding: Trubetzkoy is the equal co-founder (not yet a node; his Grundzuge der Phonologie, 1939, is the foundational text) - a future Trubetzkoy->phonology founder edge sits alongside this one; this edge does not claim sole founding. Direction person->subfield correct; identity Q156201 verified (P31=Q5, P570 1982-07-18). founder ladder (decision (61)): both endpoints reviewed + supported -> auto-reviewed. Generator QID hint Q190412 was a hallucination (Moscow administrative okrug); corrected to Q156201."
+    "note": "Jakobson co-founded the modern discipline of phonology with Nikolai Trubetzkoy via the Prague Linguistic Circle (Wikipedia Roman Jakobson: \"With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology\"); corroborated independently by the linguistics literature attributing structural phonology and distinctive-feature theory to Trubetzkoy and Jakobson, 1939 (Prague Circle / Grundzuge der Phonologie; Jakobson, Fant & Halle distinctive features). Record-not-resolve co-founding: Trubetzkoy is the equal co-founder (person:nikolai-trubetzkoy, whose Grundzuge der Phonologie, 1939, is the foundational text) and edge:nikolai-trubetzkoy-founded-phonology now stands alongside this one; this edge does not claim sole founding. Direction person->subfield correct; identity Q156201 verified (P31=Q5, P570 1982-07-18). founder ladder (decision (61)): both endpoints reviewed + supported -> auto-reviewed. Generator QID hint Q190412 was a hallucination (Moscow administrative okrug); corrected to Q156201. [Note refreshed 2026-07-31, decision (120): the gap this note recorded was closed by the same batch that refreshed it. Recording the closure in the same change is the rule decision (119) was paid for. The claim, its sources and its confidence are unchanged.]"
   },
   {
     "id": "edge:roman-jakobson-influenced-claude-levi-strauss",

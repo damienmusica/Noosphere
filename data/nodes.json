@@ -2346,6 +2346,20 @@
     "updated_at": "2026-07-02"
   },
   {
+    "id": "person:antonie-van-leeuwenhoek",
+    "type": "person",
+    "domain": "life_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q43522"
+    },
+    "created_at": "2026-07-31",
+    "updated_at": "2026-07-31"
+  },
+  {
     "id": "person:arthur-schopenhauer",
     "type": "person",
     "domain": "humanities",
@@ -3478,6 +3492,20 @@
     },
     "created_at": "2026-07-01",
     "updated_at": "2026-07-02"
+  },
+  {
+    "id": "person:nikolai-trubetzkoy",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q159491"
+    },
+    "created_at": "2026-07-31",
+    "updated_at": "2026-07-31"
   },
   {
     "id": "person:noam-chomsky",
@@ -8410,6 +8438,20 @@
     "academic_status": "established",
     "created_at": "2026-06-18",
     "updated_at": "2026-06-18"
+  },
+  {
+    "id": "subfield:morphophonology",
+    "type": "subfield",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q661093"
+    },
+    "created_at": "2026-07-31",
+    "updated_at": "2026-07-31"
   },
   {
     "id": "subfield:music-education",

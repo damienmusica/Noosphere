@@ -1,0 +1,358 @@
+{
+  "version": 1,
+  "batch_id": "endpoint-closure-wave13-v1",
+  "decided_at": "2026-07-31",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-31"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [
+      {
+        "id": "subfield:morphophonology",
+        "type": "subfield",
+        "domain": "humanities",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q661093"
+        },
+        "created_at": "2026-07-31",
+        "updated_at": "2026-07-31"
+      },
+      {
+        "id": "person:nikolai-trubetzkoy",
+        "type": "person",
+        "domain": "humanities",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q159491"
+        },
+        "created_at": "2026-07-31",
+        "updated_at": "2026-07-31"
+      },
+      {
+        "id": "person:antonie-van-leeuwenhoek",
+        "type": "person",
+        "domain": "life_sciences",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q43522"
+        },
+        "created_at": "2026-07-31",
+        "updated_at": "2026-07-31"
+      }
+    ],
+    "translations": [
+      {
+        "node_id": "subfield:morphophonology",
+        "locale": "en",
+        "label": "Morphophonology",
+        "summary": "",
+        "aliases": [
+          "morphophonemics",
+          "morphonology"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "person:nikolai-trubetzkoy",
+        "locale": "en",
+        "label": "Nikolai Trubetzkoy",
+        "summary": "",
+        "aliases": [
+          "Nikolai Sergeyevich Trubetzkoy",
+          "N. S. Trubetzkoy"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "person:antonie-van-leeuwenhoek",
+        "locale": "en",
+        "label": "Antonie van Leeuwenhoek",
+        "summary": "",
+        "aliases": [
+          "Antony van Leeuwenhoek",
+          "Anton van Leeuwenhoek"
+        ],
+        "reviewed": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge:morphophonology-part-of-linguistics",
+        "source": "subfield:morphophonology",
+        "target": "field:linguistics",
+        "relation": "part_of",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:britannica",
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-30"
+        },
+        "note": "Sibling of subfield:phonology and subfield:morphology under field:linguistics, not a child of either. ★ The generator proposed a §13 co-equal cross-listing under BOTH parents and independent verification refused it: every source that states a genus makes LINGUISTICS the parent (Britannica 'morphophonemics, in linguistics, study of the relationship between morphology and phonology'; enwiki 'the branch of linguistics that studies the interaction between morphological and phonological or phonetic processes'; Crystal's Dictionary of Linguistics and Phonetics 'A branch of linguistics'), while the language relating it to phonology and morphology is INTERFACE language, not membership language. Wikidata Q661093 agrees structurally: P361 = Q8162 linguistics, with no P279 and no P361/P279 to Q40998 phonology or Q38311 morphology. Cross-listing is for genuine co-equal membership (§13), not for a field that sits between two others by subject matter."
+      },
+      {
+        "id": "edge:nikolai-trubetzkoy-founded-phonology",
+        "source": "person:nikolai-trubetzkoy",
+        "target": "subfield:phonology",
+        "relation": "founded_or_formalized",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:oxford-bibliographies",
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-30"
+        },
+        "note": "Co-founder edge completing the record edge:roman-jakobson-founded-phonology has carried since 2026-06: 'Trubetzkoy is the equal co-founder ... a future Trubetzkoy->phonology founder edge sits alongside this one.' Sources (2 independent, registered): Oxford Bibliographies in Linguistics, Battistella, 'Nikolai Trubetzkoy' (DOI 10.1093/obo/9780199772810-0179) -- 'Nikolai Sergeyevich Trubetzkoy is regarded by many as the creator of the science of phonology'; enwiki Roman Jakobson -- 'With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology.' Two further claim-stating sources were read and are recorded but not used as evidence because neither provider is registered in data/sources.json: the University of Vienna's '650 plus' history project ('Trubetzkoy is considered the founder of phonology') and Honeybone's entry in Key Thinkers in Linguistics and the Philosophy of Language (Edinburgh UP, 2005) ('One of the founding fathers of phonology'). ★ REVERSES the person-wave12-v1 hold, on the FIRST branch of that hold's own unblock clause (>=2 independent claim-stating sources at the phonology grain), not the second. The reversal is a search-path difference, not a change in the world: wave 12's verifier found one such source, this pass found four. Counterweight recorded, not resolved: Britannica designates no founder of phonology at all and lists him among five 'Key People', and Oxford Bibliographies partly attributes his results to 'his extension of Saussurean insights'. Record-not-resolve -- this edge does not claim sole founding and does not adjudicate priority against Jakobson or Baudouin de Courtenay."
+      },
+      {
+        "id": "edge:antonie-van-leeuwenhoek-founded-microbiology",
+        "source": "person:antonie-van-leeuwenhoek",
+        "target": "subfield:microbiology",
+        "relation": "founded_or_formalized",
+        "confidence": 0.9,
+        "status": "reviewed",
+        "evidence": [
+          "source:britannica",
+          "source:wikipedia"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-07-30"
+        },
+        "note": "Closes the gap edge:louis-pasteur-founded-microbiology has recorded as live since it was written. Sources (2 independent, registered): Britannica 'Antonie van Leeuwenhoek' -- 'Through his microscopic observations of organisms such as bacteria and protozoa, Antonie van Leeuwenhoek effectively began the discipline of microbiology'; enwiki Microbiology -- 'He is considered a father of microbiology as he used simple single-lensed microscopes of his own design.' Two peer-reviewed articles were also read and state the epithet flatly, recorded here as corroboration rather than as evidence entries (no registered source): Lane 2015, Phil. Trans. R. Soc. B (doi:10.1098/rstb.2014.0344, PMC4360124) -- 'Leeuwenhoek is universally acknowledged as the father of microbiology'; Kutschera 2023, Microorganisms (doi:10.3390/microorganisms11081994, PMC10458164). ★ The corpus's own prior note UNDERSTATED him: it called him 'co-credited for early microscopy', which is a narrower claim than the field-grain founder epithet the live sources state unqualifiedly. Verification was aimed specifically at that narrower reading and it did not survive. Record-not-resolve plural founding: joins edge:louis-pasteur-founded-microbiology and edge:robert-koch-founded-microbiology; the ~150-year gap between his observations and the 19th-century founding of the discipline is real and is why the confidence is 0.9 rather than higher, not a dispute about the epithet. Namesake explicitly excluded at identity time: Q15762938 is a Springer scientific journal of the same name."
+      }
+    ],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "edge",
+      "id": "edge:roman-jakobson-founded-phonology",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_note": "Jakobson co-founded the modern discipline of phonology with Nikolai Trubetzkoy via the Prague Linguistic Circle (Wikipedia Roman Jakobson: \"With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology\"); corroborated independently by the linguistics literature attributing structural phonology and distinctive-feature theory to Trubetzkoy and Jakobson, 1939 (Prague Circle / Grundzuge der Phonologie; Jakobson, Fant & Halle distinctive features). Record-not-resolve co-founding: Trubetzkoy is the equal co-founder (person:nikolai-trubetzkoy, whose Grundzuge der Phonologie, 1939, is the foundational text) and edge:nikolai-trubetzkoy-founded-phonology now stands alongside this one; this edge does not claim sole founding. Direction person->subfield correct; identity Q156201 verified (P31=Q5, P570 1982-07-18). founder ladder (decision (61)): both endpoints reviewed + supported -> auto-reviewed. Generator QID hint Q190412 was a hallucination (Moscow administrative okrug); corrected to Q156201. [Note refreshed 2026-07-31, decision (120): the gap this note recorded was closed by the same batch that refreshed it. Recording the closure in the same change is the rule decision (119) was paid for. The claim, its sources and its confidence are unchanged.]",
+      "note": "gap closed by this same batch (decision (119) rule)"
+    },
+    {
+      "kind": "edge",
+      "id": "edge:louis-pasteur-founded-microbiology",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_note": "Pasteur is a founder of microbiology (Wikipedia Louis Pasteur: \"He is regarded as one of the founders of modern bacteriology and has been honored as ... the 'father of microbiology' (together with Robert Koch ...)\"; Wikipedia Microbiology: \"Louis Pasteur is considered a father of microbiology\"). Plural founding preserved (record-not-resolve, not disputed): co-credited with Robert Koch, whose side is now recorded by edge:robert-koch-founded-microbiology. Antonie van Leeuwenhoek is now person:antonie-van-leeuwenhoek with edge:antonie-van-leeuwenhoek-founded-microbiology; live verification found the field-grain founder epithet stated unqualifiedly, so 'co-credited for early microscopy' understated him. Two independent Wikipedia articles. [Note refreshed 2026-07-30, decision (118): the original text said \"Koch not yet a node\", which went stale when person:robert-koch and his founder edge were both admitted. The claim and its sources are unchanged.] [Note refreshed 2026-07-31, decision (120): the gap this note recorded was closed by the same batch that refreshed it. Recording the closure in the same change is the rule decision (119) was paid for. The claim, its sources and its confidence are unchanged.]",
+      "note": "gap closed by this same batch (decision (119) rule)"
+    }
+  ],
+  "translation_updates": [],
+  "verdicts": [
+    {
+      "subject_id": "edge:morphophonology-part-of-linguistics",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.britannica.com/science/morphophonemics",
+          "retrieved_at": "2026-07-31",
+          "quote": "morphophonemics , in linguistics , study of the relationship between morphology ( q.v. ) and phonology ( q.v. ).",
+          "independent": true,
+          "revision_permalink": "http://web.archive.org/web/20251108171615/https://www.britannica.com/science/morphophonemics",
+          "snapshot_url": "https://web.archive.org/web/20251108171615/https://www.britannica.com/science/morphophonemics"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Morphophonology",
+          "retrieved_at": "2026-07-31",
+          "quote": "Morphophonology (also morphophonemics or morphonology) is the branch of linguistics that studies the interaction between morphological and phonological or phonetic processes.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Morphophonology&oldid=1360947317"
+        }
+      ],
+      "notes": "Placement corrected at verification from the generator's cross-listing proposal to a single linguistics parent; the reasoning is on the edge note."
+    },
+    {
+      "subject_id": "edge:nikolai-trubetzkoy-founded-phonology",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.oxfordbibliographies.com/display/document/obo-9780199772810/obo-9780199772810-0179.xml",
+          "retrieved_at": "2026-07-31",
+          "quote": "Nikolai Sergeyevich Trubetzkoy is regarded by many as the creator of the science of phonology.",
+          "independent": true,
+          "revision_permalink": "https://web.archive.org/web/20250821032504/https://www.oxfordbibliographies.com/display/document/obo-9780199772810/obo-9780199772810-0179.xml",
+          "snapshot_url": "https://web.archive.org/web/20250821032504/https://www.oxfordbibliographies.com/display/document/obo-9780199772810/obo-9780199772810-0179.xml"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Roman_Jakobson",
+          "retrieved_at": "2026-07-31",
+          "quote": "With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Roman_Jakobson&oldid=1365161259"
+        }
+      ],
+      "notes": "Reverses the person-wave12-v1 NEI hold on its own first unblock branch. No coinage risk: the term phonology predates him and the coinage attributed to him is 'Sprachbund'. Expander framing exists in Oxford Bibliographies ('extension of Saussurean insights') and Britannica designates no founder at all — both recorded on the edge, neither decisive against four claim-stating sources."
+    },
+    {
+      "subject_id": "edge:antonie-van-leeuwenhoek-founded-microbiology",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://www.britannica.com/biography/Antonie-van-Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "Through his microscopic observations of organisms such as bacteria and protozoa, Antonie van Leeuwenhoek effectively began the discipline of microbiology.",
+          "independent": true,
+          "revision_permalink": "https://web.archive.org/web/20250101123931/https://www.britannica.com/biography/Antonie-van-Leeuwenhoek",
+          "snapshot_url": "https://web.archive.org/web/20260708201029/https://www.britannica.com/biography/Antonie-van-Leeuwenhoek"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Microbiology",
+          "retrieved_at": "2026-07-31",
+          "quote": "He is considered a father of microbiology as he used simple single-lensed microscopes of his own design.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Microbiology&oldid=1358572173"
+        }
+      ],
+      "notes": "The named refutation target — that sources credit only microscopy and first observation — was tested against the sources and failed; two peer-reviewed articles state the field-grain epithet flatly. Journal namesake Q15762938 excluded at identity time."
+    }
+  ],
+  "identity": [
+    {
+      "node_id": "subfield:morphophonology",
+      "provider": "wikidata",
+      "external_id": "Q661093",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-30"
+    },
+    {
+      "node_id": "person:nikolai-trubetzkoy",
+      "provider": "wikidata",
+      "external_id": "Q159491",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-30"
+    },
+    {
+      "node_id": "person:antonie-van-leeuwenhoek",
+      "provider": "wikidata",
+      "external_id": "Q43522",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-07-30"
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "subfield:morphophonology",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:nikolai-trubetzkoy",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:antonie-van-leeuwenhoek",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "edge:morphophonology-part-of-linguistics",
+      "ladder": "edge-promotion-v1-structural"
+    },
+    {
+      "subject_id": "edge:nikolai-trubetzkoy-founded-phonology",
+      "ladder": "founded-or-formalized-auto-60"
+    },
+    {
+      "subject_id": "edge:antonie-van-leeuwenhoek-founded-microbiology",
+      "ladder": "founded-or-formalized-auto-60"
+    }
+  ],
+  "rejections": [],
+  "held": [
+    {
+      "id": "subfield:process-philosophy",
+      "blocking_condition": "REJECTED as a `subfield` node, and the founder edge it existed for returned NEI. Two independent failures. ⑴ NODE TYPE AND PARENT: the ratified philosophy authority (PhilPapers, decision (102) registry) files it `Metaphysics > Global Metaphysical Theories > Process Philosophy`, siblings Idealism / Dualism / Logical Atomism — decision (73) structural rule 5's second branch verbatim (bounded doctrine/position/theory → `concept` node), not a field or tradition; PhilPapers' own 'Philosophical Traditions' tree does not contain it. Anchor (live philpapers.org is Cloudflare-403): http://web.archive.org/web/20260218155005/https://philpapers.org/browse/process-philosophy. ⑵ DUAL CRITERION limb (a) fails: no LCC philosophy division (lcco_b.pdf downloaded and extracted; id.loc.gov returns only Z7128.P88, a bibliography cutter), no UDC division (class 14 expands only to 140/141), and Wikidata Q2114360 carries no P279 at all. SEP's own entry negates the school reading: 'process philosophy is a complex and highly diversified field that is not tied to any school, method, position, or even paradigmatic notion of process.' Recorded against, not hidden: LCSH sh85107138 gives skos:broader = Philosophy, and the corpus's existing sibling schools (pragmatism, existentialism, phenomenology) are labelled 'grandfathered' by decision (73) — they show the shape exists, not that a new candidate clears the gate. UNBLOCK: propose it as `concept:process-philosophy` `part_of subfield:metaphysics`, and only when a documented edge demands the endpoint (rule 5 makes concept nodes edge-demand-driven) — which means the Whitehead claim below must clear first.",
+      "recheck": "manual",
+      "batch_id": "endpoint-closure-wave13-v1",
+      "recorded_at": "2026-07-31"
+    },
+    {
+      "id": "person:alfred-north-whitehead",
+      "blocking_condition": "person:alfred-north-whitehead → founded_or_formalized → process philosophy: NOT ENOUGH EVIDENCE, and the corpus's own summary of him is what the sources contradict. SEP's Whitehead entry states twice that no school formed around him — 'Whitehead did not, however, inspire any school of thought during his lifetime' and 'Whitehead's philosophical views posthumously inspired the movement of process philosophy'. SEP's process-philosophy entry names a different founder outright: 'it is the Greek theoretician Heraclitus of Ephesus … who is commonly recognized as the founder of the process approach', and places Whitehead downstream of Hegel. INVERTED COINAGE RISK: Whitehead called his own position 'philosophy of organism'; the label 'process philosophy' was applied to him by others — the mirror image of the Whewell rejection rather than a repeat of it. What the sources DO support is narrower and plural: REP, 'the movement inaugurated by Whitehead and extended by Hartshorne', and IEP's section heading 'The Whitehead-Hartshorne Tradition'. UNBLOCK: a node at the Whitehead-Hartshorne grain (with person:charles-hartshorne considered alongside under record-not-resolve), or ≥2 independent claim-stating sources putting him at founder grade for process philosophy as such. ★ SEPARATE AND LIVE: the reviewed, indexable en summary of this node asserts 'He created the philosophical school known as process philosophy' — a faithful quote of enwiki, contradicted by SEP. That is an editorial matter, not an edge matter, and is left for an editorial pass rather than rewritten inside a node/edge batch.",
+      "recheck": "manual",
+      "batch_id": "endpoint-closure-wave13-v1",
+      "recorded_at": "2026-07-31"
+    },
+    {
+      "id": "person:baudouin-de-courtenay",
+      "blocking_condition": "person:baudouin-de-courtenay → influenced → subfield:morphophonology: REJECTED at that target. Every reference work that treats morphophonology as its subject is silent about him — enwiki Morphophonology (oldid 1360947317, full wikitext swept for Baudouin/Courtenay) mentions him ZERO times and traces the origins to Jakobson and to Chomsky & Halle. ★ A DIFFERENT TARGET IS SUPPORTED and is the honest unblock: person:baudouin-de-courtenay → influenced → subfield:phonology, on Britannica ('linguist who regarded language sounds as structural entities, rather than mere physical phenomena, and thus anticipated the modern linguistic concern with language structure'; 'Views expressed in his major work, Versuch einer Theorie phonetischer Alternationen (1895) … have become a part of modern linguistic science') plus Honeybone in the Oxford Handbook of Historical Phonology, which names Kruszewski (1881) and Baudouin de Courtenay (1895) as 'the earliest signs (in the modern era) of work which focused on synchronic phonological' patterning. NOT admitted in this batch for two stated reasons rather than one: it is a claim surfaced by verification rather than proposed and independently checked, and only one of its two sources has a provider registered in data/sources.json. UNBLOCK: run that edge through a normal generation/verification pass, and either register the second provider or find a registered-source equivalent.",
+      "recheck": "manual",
+      "batch_id": "endpoint-closure-wave13-v1",
+      "recorded_at": "2026-07-31"
+    },
+    {
+      "id": "edge:nikolai-trubetzkoy-founded-morphophonology",
+      "blocking_condition": "DISPUTED — the evidence genuinely splits between founding and coinage, so clause-6 v2 stops it. Founding language exists: the Great Soviet Encyclopedia via a mirror ('N. S. Trubetskoi, the founder of morphophonemics, formulated the discipline's three main tasks') and Tiffou ('Il revient à N. Trubetzkoy (1957) d'avoir posé les bases de la morphophonologie'). Coinage language exists just as clearly: dewiki Morphonologie ('Der Begriff \\u201aMorphonologie\\u2018 wurde 1929 von … Trubetzkoy … vorgeschlagen'), its Trubetzkoy biography ('1929 schlug er den Begriff Morphonologie vor'), and Basbøll 2015, which credits him only with the term's use. The venues also differ in weight — the founding-grade citations come from an encyclopedia mirror and a PDF scan host, the coinage citations from the reference works themselves. Under the rule that killed the Whewell candidate, coining a term is not founding; under record-not-resolve, a real split is recorded rather than adjudicated. Held in foundry rather than written at `proposed`, because the founding-grade sources are not ones this corpus would cite. UNBLOCK: ≥2 independent claim-stating sources at founder grade from providers this corpus can cite, OR a ruling that the coinage reading is settled, in which case this becomes a permanent rejection.",
+      "recheck": "manual",
+      "batch_id": "endpoint-closure-wave13-v1",
+      "recorded_at": "2026-07-31"
+    }
+  ],
+  "held_resolutions": [
+    {
+      "id": "person:nikolai-trubetzkoy",
+      "reason": "person-wave12-v1 held him at NEI with the unblock clause 'either ≥2 independent claim-stating sources at the phonology grain, or a subfield:morphophonology node (with person:baudouin-de-courtenay considered alongside)'. Resolved on the FIRST branch: four claim-stating sources at the phonology grain were found live (Oxford Bibliographies, University of Vienna '650 plus', Honeybone in Key Thinkers in Linguistics and the Philosophy of Language, enwiki Roman Jakobson), two of them from registered providers. edge:nikolai-trubetzkoy-founded-phonology is admitted at reviewed. The second branch was also built (subfield:morphophonology exists as of this batch) but did NOT carry him — the morphophonology-grained founder claim came back disputed and is held separately. Recorded plainly: wave 12's verifier found one such source and this pass found four, which is a difference between two search paths, not a change in the world."
+    }
+  ],
+  "override_rejections": [],
+  "anchors_pending": [
+    {
+      "url": "https://www.britannica.com/science/morphophonemics",
+      "reason": "[SPN-FAILED] fresh save did not materialize; using 264d-old snapshot"
+    },
+    {
+      "url": "https://www.oxfordbibliographies.com/display/document/obo-9780199772810/obo-9780199772810-0179.xml",
+      "reason": "[SPN-FAILED] fresh save did not materialize; using 343d-old snapshot"
+    },
+    {
+      "url": "https://www.britannica.com/biography/Antonie-van-Leeuwenhoek",
+      "reason": "[SPN-FAILED] fresh save did not materialize; using 22d-old snapshot"
+    }
+  ],
+  "notes": [
+    "Wave 13 = the endpoints the person-wave12-v1 holds and reviewed edge notes demanded. Seven claims, three admitted, four reversed — the same shape as wave 12, and the reversals are again the batch's real output.",
+    "★ The order's headline slate item died on the corpus's own ratified authority. subfield:process-philosophy was named by the session order as the row where 'Whitehead's biggest claim' would finally become writable; PhilPapers files it as a metaphysical THEORY beside Logical Atomism, which decision (73) rule 5 maps to a concept node, and the dual criterion fails outright on classification presence. The founder edge it existed for then returned NEI on SEP saying twice that no school formed around Whitehead.",
+    "★ A live /data finding, not just a declined edge: the reviewed, indexable en summary of person:alfred-north-whitehead asserts 'He created the philosophical school known as process philosophy'. It is a faithful quote of enwiki and it is contradicted by SEP. Recorded in the held ledger for an editorial pass rather than rewritten inside a node/edge batch.",
+    "★ Same-commit staleness handled by rule. Admitting Trubetzkoy and Leeuwenhoek falsifies edge:roman-jakobson-founded-phonology and edge:louis-pasteur-founded-microbiology, which recorded both absences. Both notes are refreshed in THIS decision file — the discipline decision (119) was paid for hours earlier in this same session, applied to its own successor batch.",
+    "★ Verification corrected the generator on placement, not just on truth: the proposed §13 co-equal cross-listing of morphophonology under both phonology and morphology was refused, because every genus-stating source says linguistics and the language relating it to the two neighbours is interface language. Cross-listing is for co-equal membership, not for a field that sits between two others by subject matter.",
+    "Anchors: SPN circuit opened after 3 consecutive save failures, so the three bot-blocked providers degrade to stale-snapshot fallback + [SPN-FAILED] pending. The claims do not depend on the pending saves — every quote was verified verbatim against an existing resolvable snapshot or wiki oldid (fetch-verify 6/6 PASS, MISS 0)."
+  ]
+}

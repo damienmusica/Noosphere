@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "batch_id": "endpoint-closure-wave13-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-30"
+  },
+  "nodes": [
+    {
+      "id": "subfield:process-philosophy",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Process Philosophy",
+      "referent": "The 20th-century philosophical school founded by Alfred North Whitehead holding that reality is fundamentally constituted by processes, events, and 'occasions of experience' in dynamic relation, rather than by static, independently-existing substances -- systematized in Whitehead's Process and Reality (1929) and continued institutionally through process theology (Charles Hartshorne and successors) and dedicated research bodies such as the Center for Process Studies. Distinct from the older, looser sense of 'process philosophy' sometimes applied retrospectively to any thinker emphasizing flux or becoming (e.g. Heraclitus's flux doctrine, Henri Bergson's duree) and distinct from informal, non-philosophical uses of the phrase in organizational or management theory -- this referent is specifically the bounded 20th-century school originating with Whitehead, the same school named by this corpus's own reviewed summary of him.",
+      "academic_status": "established",
+      "source_hint": "This repo's own reviewed data/node-translations.json entry for person:alfred-north-whitehead (read directly this session, reviewed: true): 'He created the philosophical school known as process philosophy, arguing that reality consists of processes rather than material objects and that processes are best defined by their relations with other processes; his Process and Reality is regarded as that school's foundational text.' A Stanford Encyclopedia of Philosophy entry titled approximately 'Process Philosophy' and an Encyclopaedia Britannica 'process philosophy' entry are my recollection of standard reference coverage for this topic, but neither has been fetched this session [UNFETCHED].",
+      "note": "Closes a gap the corpus's own prior wave already flagged but left open. foundry/proposals/person-wave12-v1/physics.nodes.proposed.json (an unreviewed proposal artifact, not /data, but read directly this session) states in its notes array: 'No edge is proposed toward Whitehead's best-known independent contribution, process philosophy: subfield:process-philosophy does not exist in the corpus (grep-confirmed against data/nodes.json), per the order's explicit constraint. Recorded as an honest gap on the node's own uncertainty field rather than forced onto a different target.' This node exists to let that gap finally be closed on its merits.",
+      "rationale": "Directly demanded by the reviewed Whitehead translation's own description of him as having 'created the philosophical school known as process philosophy,' and by the prior wave's own recorded honest gap quoted above. Modeled as a `subfield` placed directly `part_of` field:philosophy (see companion edges file), mirroring this corpus's existing treatment of other philosophical schools -- analytic-philosophy, continental-philosophy, existentialism, phenomenology, pragmatism, scholasticism, critical-theory -- all of which sit at the same level under field:philosophy rather than nested inside a narrower subfield such as metaphysics, even though several of them (this one included) are substantively about metaphysical questions.",
+      "uncertainty": "I have not live-verified an SEP or Britannica entry for 'process philosophy' this session -- my direct source is the corpus's own already-reviewed translation text, corroborated only by my own general knowledge (which is strong on this specific point: 'process philosophy' as Whitehead's school is a standard designation in histories of 20th-century philosophy). The `academic_status: established` tag is a judgment call, not a verified fact: I am treating this like pragmatism/existentialism/phenomenology/critical-theory (historical origin, but continuing organized scholarly activity -- process theology, the Center for Process Studies, the journal Process Studies) rather than like scholasticism (`historical`, a closed medieval school) -- QC should confirm the field still has active, organized scholarship before promoting this tag as-is. I deliberately did not propose a second `part_of` edge cross-listing this node under subfield:metaphysics via the corpus's §13 dual-membership allowance, even though process philosophy is substantively a metaphysical theory: none of its sibling schools in this corpus are modeled with a second parent, and inventing a new dual-membership precedent without an explicit instruction to do so would be overreach on my part, not carefulness -- QC may reasonably decide otherwise.",
+      "ambiguous": true
+    }
+  ],
+  "notes": []
+}
