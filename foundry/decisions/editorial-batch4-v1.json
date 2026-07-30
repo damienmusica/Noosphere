@@ -3,8 +3,8 @@
   "batch_id": "editorial-batch4-v1",
   "decided_at": "2026-07-03",
   "qc_by": {
-    "model_name": "Claude Fable 5",
-    "model_version": "claude-fable-5",
+    "model_name": "Claude Opus 4.8",
+    "model_version": "claude-opus-4-8",
     "proposed_at": "2026-07-03"
   },
   "translation_updates": [
@@ -2915,7 +2915,9 @@
     "Living (70) tranche fully compliant: 14 living persons, present tense, no birth-death dates, attributed wording for every standing claim ('widely regarded as', 'often described as', 'one of the founders of'), professional content only (prizes/appointments = safe factual content; no private life/health/controversy), co-attribution honored (Diffie WITH Hellman/Merkle; Cerf WITH Kahn; Cosmides WITH Tooby; Eilenberg/Mac Lane). P570 live-confirmed absent for all 14 on 2026-07-03 (aliveness observed, never predicted — decision (70)); recorded as identity observations.",
     "The 5 subfield summaries anchor on the field's own ratified taxonomy sources (ACM CCS via USENIX/TOCS/SIGMOD/VLDB/IPDPS/JPDC framing; NCES CIP + SNAME/RINA; APA PsycInfo + AP&P/LCC) copied from the taxonomy-anchor-wave1-v1 verdicts — bot-blocked/JS-shell hosts carry Wayback snapshot_url (T4 path); ACM CCS + APA quotes re-confirmed offline against local captures this session.",
     "Modeling honesty: self-flags on 13 deceased items are all capture-thinness or attribution-precision (co-founder framing for cell theory Schleiden/Schwann, category theory Eilenberg/Mac Lane, geochemistry Goldschmidt/Vernadsky; Vienna Circle members not credited with solo founding; Spearman's psychometrics anchored via his statistical/factor-analysis work as the extract lacks the exact word). will-to-power described with attributed, contested-interpretation framing.",
-    "Britannica contributed nothing (not used); all anchors are live-verifiable enwiki + the wave-1 taxonomy sources. Deceased-persons enwiki extract fetch hit Wikipedia 429 throttling for 28/78 on the concurrent pass — recovered via serial slow re-fetch (all 78 captured); noted as a fetch-corpus throughput observation, not a data issue."
+    "Britannica contributed nothing (not used); all anchors are live-verifiable enwiki + the wave-1 taxonomy sources. Deceased-persons enwiki extract fetch hit Wikipedia 429 throttling for 28/78 on the concurrent pass — recovered via serial slow re-fetch (all 78 captured); noted as a fetch-corpus throughput observation, not a data issue.",
+    "★ PROVENANCE CORRECTION 2026-07-30 (session #61). This file's qc_by originally claimed Claude Fable 5 (claude-fable-5). THAT CLAIM WAS FALSE for the QC-and-ship window. Verified from the Claude Code session transcript, which records the actual model ID on every assistant message: the session silently fell back claude-fable-5 → claude-opus-4-8 at 22:49:05 UTC 2026-07-02, two minutes after the last of this batch's four generation agents returned (22:47:02 UTC); the decision-file write (22:52 UTC), apply, and commit (bdc4709, 22:55:03 UTC — the session's final minutes) all ran on claude-opus-4-8. At most the first ~2 minutes of post-generation QC fell inside the claude-fable-5 window. qc_by is corrected to the measured value; the original claim is preserved in this note as the audit trail of the error. Same failure shape as the session #60 correction (PR #165): the orchestrator recorded the session's intended model rather than the model the harness was actually running.",
+    "★ GENERATION CLAIM VERIFIED TRUE by the same measurement. The four separate-context generation subagents for this batch ran 22:40:20–22:47:02 UTC 2026-07-02 and their own transcripts record claude-opus-4-8 on every assistant message — the 'Opus subagents' claim in this file stands, now verified rather than suspect. The same sessions' proposal-generation agents record claude-sonnet-5 as requested, confirming per-call model routing was honoured on 2026-07-01/02/03: the env.CLAUDE_CODE_SUBAGENT_MODEL override that silently rerouted session #60's editorial batches did not exist (or did not bite) when batches 3–6 were generated."
   ],
   "anchors_pending": []
 }
