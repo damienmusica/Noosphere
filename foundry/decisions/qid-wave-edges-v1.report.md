@@ -1,6 +1,6 @@
 # qid-wave-edges-v1 — promotion decision report
 
-**Decided 2026-07-03** · QC by Claude Fable 5 (`claude-fable-5`) · generated from `foundry/decisions/qid-wave-edges-v1.json` by `npm run foundry:report`.
+**Decided 2026-07-03** · QC by Claude Opus 4.8 (`claude-opus-4-8`) · generated from `foundry/decisions/qid-wave-edges-v1.json` by `npm run foundry:report`.
 
 > ⚠ **STRUCTURAL PREFLIGHT FAILED** (5 errors) — this decision does not apply cleanly:
 > - promotions: edge edge:computer-systems-part-of-computer-science has status "reviewed", expected "proposed"

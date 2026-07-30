@@ -3,8 +3,8 @@
   "batch_id": "recheck-wave2-v1",
   "decided_at": "2026-07-02",
   "qc_by": {
-    "model_name": "Claude Fable 5",
-    "model_version": "claude-fable-5",
+    "model_name": "Claude Opus 4.8",
+    "model_version": "claude-opus-4-8",
     "proposed_at": "2026-07-02"
   },
   "held": [
@@ -117,6 +117,7 @@
   "notes": [
     "Session #55 Track B: honest triage of the 12 skeleton-era proposed nodes + the bureaucracy Weber-wave node + the applies_to CPO ruling. No naive promotion (recheck-wave1 discipline) — every item ledgered with its real blocking condition so recheck-held tracks them machine-readably instead of only in prose notes.",
     "Buckets: 8 QID-less compound subfields = resolver v4 queue (machine recheck once resolver v4 is built + measured); 3 rule-silent modeling (esotericism / modern- / social-philosophy = section-12 granularity/period-axis, manual — needs a modeling ruling, a stop-set item); 1 C3 referent-precision (bureaucracy + its 2 edges: Q72468 generic institution vs Weber ideal-type); 1 CPO applies_to ruling (evolutionary-biology-applies-to-epidemiology).",
-    "recheck-held worklist after this batch: applies_to candidate resolved (ledgered); node backlog now machine-tracked. Next engineering pit-stop = resolver v4 (measure-first) to re-attack the 8 QID-less compound subfields."
+    "recheck-held worklist after this batch: applies_to candidate resolved (ledgered); node backlog now machine-tracked. Next engineering pit-stop = resolver v4 (measure-first) to re-attack the 8 QID-less compound subfields.",
+    "★ PROVENANCE CORRECTION 2026-07-30 (session #61, follow-up to PR #167). This file's qc_by originally claimed Claude Fable 5 (claude-fable-5). THAT CLAIM WAS FALSE. A full sweep of every decision file's qc_by against the Claude Code session transcripts (which record the actual model ID on every assistant message) attributed this batch to the same silent fallback window as editorial-batch3-v1: the session fell back claude-fable-5 → claude-opus-4-8 at 09:00:10 UTC 2026-07-02, this batch's substantive work ran 09:36–09:55 UTC under claude-opus-4-8, and it was committed in 2fdb0e8 (09:55:04 UTC) — 86 minutes before the session returned to claude-fable-5. A few post-commit touches (11:33–12:12 UTC) ran under claude-fable-5 and are recorded here for completeness. qc_by is corrected to the measured value; the original claim is preserved in this note as the audit trail of the error."
   ]
 }

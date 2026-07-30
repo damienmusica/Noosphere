@@ -3,8 +3,8 @@
   "batch_id": "qid-wave-edges-v1",
   "decided_at": "2026-07-03",
   "qc_by": {
-    "model_name": "Claude Fable 5",
-    "model_version": "claude-fable-5",
+    "model_name": "Claude Opus 4.8",
+    "model_version": "claude-opus-4-8",
     "proposed_at": "2026-07-03"
   },
   "promotions": [
@@ -145,6 +145,7 @@
   "notes": [
     "Structural-tier follow-through of taxonomy-anchor-wave1-v1: the 5 part_of edges of the newly v1.4-promoted subfields were skeleton-grounded (acm-ccs/udc/lcc registry evidence) and capped ONLY by their endpoints' proposed status — surfaced automatically by foundry:recheck-held after the wave-1 promotions. Each verdict re-grounds the placement today on the node's own ratified taxonomy authority (the clause-1 anchor doubles as classification-placement evidence by construction).",
     "Verification paths: CCS quotes offline claim-anchor vs the Wayback capture (dl.acm.org hard bot-blocked, established T4 path) 4/4 FOUND; NCES CIP quote fetch-verify PASS live; APA quote verified vs the 2026-07-02 Wayback capture (apa.org serves a ~1KB JS shell to plain fetchers — noted for the criteria registry: T4 for APA runs on the Wayback path like ACM).",
-    "First production wave through the classification-placement relation guard (inspection patch A1): all 5 relations are part_of, sanctioned edge-promotion-v1-structural."
+    "First production wave through the classification-placement relation guard (inspection patch A1): all 5 relations are part_of, sanctioned edge-promotion-v1-structural.",
+    "★ PROVENANCE CORRECTION 2026-07-30 (session #61, follow-up to PR #167). This file's qc_by originally claimed Claude Fable 5 (claude-fable-5). THAT CLAIM WAS FALSE for the decision's write-and-ship: the session transcript records the silent fallback claude-fable-5 → claude-opus-4-8 at 22:49:05 UTC 2026-07-02, and this decision file's write, apply, and commit (bdc4709, 22:55:03 UTC — the session's final minutes, same window as editorial-batch4-v1) all ran on claude-opus-4-8. Two planning mentions at 22:29 UTC fell inside the claude-fable-5 window and are recorded here for completeness; the model that authored, applied, and committed the decision was claude-opus-4-8. qc_by is corrected to the measured value; the original claim is preserved in this note as the audit trail of the error."
   ]
 }
