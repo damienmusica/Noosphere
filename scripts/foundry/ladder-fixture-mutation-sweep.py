@@ -2,11 +2,13 @@
 """Mutation sweep: does the golden ladder fixture suite actually have teeth?
 
 MAINTAINER TOOL, NOT CI. It patches `scripts/foundry/lib/ladders.ts` in place
-and restores it from git after each case, so it must never run in a pipeline
-alongside anything else that reads that file — and never with UNCOMMITTED
-changes to that file: restore() reverts to HEAD and will silently wipe them
-(measured 2026-07-30: it ate an uncommitted comment edit). Commit first, then
-sweep. Run it manually:
+and restores it after each case, so it must never run in a pipeline alongside
+anything else that reads that file. It is now safe to run with uncommitted work
+on the target — restore() writes back an in-memory copy rather than reverting to
+HEAD (decision (121)). It was not always: the git-based restore ate an
+uncommitted comment edit on 2026-07-30 and the entire decision-(121) gate on
+2026-07-31, the second time during the very run that was fixing this file. Run
+it manually:
 
     python3 scripts/foundry/ladder-fixture-mutation-sweep.py
 
@@ -83,6 +85,10 @@ MUTATIONS = [
     ("(115): prerequisite_for smuggled in as formalizes-auto-54", 'critiques: "a-relation-auto-68",', 'critiques: "a-relation-auto-68",\n  prerequisite_for: "formalizes-auto-54",', 1),
     ("(115): prerequisite_for smuggled in as founded-or-formalized-auto-60", 'critiques: "a-relation-auto-68",', 'critiques: "a-relation-auto-68",\n  prerequisite_for: "founded-or-formalized-auto-60",', 1),
     ("(115): prerequisite_for smuggled in as canonical-work-auto-88", 'critiques: "a-relation-auto-68",', 'critiques: "a-relation-auto-68",\n  prerequisite_for: "canonical-work-auto-88",', 1),
+    # --- decision (121): node-admission gates -------------------------------
+    ("(121): isolated-node gate dropped", "if (!reviewedEdgeEndpoints.has(id)) {", "if (false) {", 1),
+    ("(121): isolated-node gate downgraded to advisory", "`ends reviewed with no reviewed edge — an isolated node is not admitted (decision (121))`,\n          ladder,\n        );", "`ends reviewed with no reviewed edge`, ladder);", 1),
+    ("(121): isolation check counts proposed edges too", 'if (edge.status !== "reviewed") continue;', "if (false) continue;", 1),
     # --- rules added after the first sweep (2026-07-30 adequacy audit) ------
     ("(70) edge endpoint: in-batch living promotion check dropped", 'if (promotedNow && nodeSanction?.ladder !== "living-person-v2") {', "if (false) {", 1),
     ("(70) edge endpoint: floor advisory removed", "advisory(id, `living endpoint ${endpoint.id}: (70) floor applies", "advisory(id, `REMOVED (70) floor", 1),
@@ -119,11 +125,22 @@ def run_fixtures():
     return p.returncode, p.stdout + p.stderr
 
 
-def restore():
-    subprocess.run(["git", "checkout", "--", "scripts/foundry/lib/ladders.ts"], cwd=REPO, check=True)
-
-
 original = open(TARGET).read()
+
+
+def restore():
+    """Restore from the in-memory copy, never from git.
+
+    `git checkout --` reverts the target to HEAD, so it silently DELETES any
+    uncommitted work on that file. Measured twice: 2026-07-30 it ate a comment
+    edit, and 2026-07-31 it ate the whole decision-(121) node-admission gate
+    while that change was being written — during the very run that was fixing
+    this file's cosmetic half. Reading the file once and writing that text back
+    has the same effect for a committed file, works on an uncommitted one, and
+    removes the "commit first" footgun entirely.
+    """
+    with open(TARGET, "w") as fh:
+        fh.write(original)
 
 # Interrupt safety: any exit path — Ctrl-C, an exception, a kill from the parent
 # harness — must leave the working tree as it was found. Without this, an
@@ -171,6 +188,9 @@ if unapplied:
     for u in unapplied:
         print(f"  - {u}")
 
-# final cleanliness check
-p = subprocess.run(["git", "status", "--short"], cwd=REPO, capture_output=True, text=True)
-print(f"\ngit status after sweep: {'CLEAN' if not p.stdout.strip() else 'DIRTY -> ' + p.stdout}")
+# Final cleanliness check. Compare the TARGET against the in-memory copy, not
+# the whole tree against git: a repo-wide git check reports the maintainer's own
+# uncommitted work as though the sweep left residue, and a check that cries wolf
+# gets ignored (measured 2026-07-31 — it fired on the very change that added the
+# decision-(121) mutations).
+print(f"\ntarget file after sweep: {'as found' if open(TARGET).read() == original else 'RESIDUE LEFT — restore failed'}")

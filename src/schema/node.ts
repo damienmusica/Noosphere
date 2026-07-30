@@ -1,6 +1,15 @@
 import { z } from "zod";
 import { idSchema, isoDateSchema } from "./id.ts";
 
+/**
+ * Ratified node classes. `tool` was removed by decision (121): it entered here
+ * in the bootstrap commit, no decision ever adjudicated it, it had zero
+ * instances in 60 days, and it was measurably harmful — a session handover
+ * document cited it as evidence of a policy gate that does not exist, and a
+ * probe showed `tool:eniac` passing ladder-check green. Adding a class back is
+ * a CPO ruling with keep-criteria, not an enum edit (see docs/data-foundry.md
+ * §12 structural rule 5 and the decision (73) test).
+ */
 export const nodeTypeSchema = z.enum([
   "domain",
   "field",
@@ -9,7 +18,6 @@ export const nodeTypeSchema = z.enum([
   "person",
   "work",
   "method",
-  "tool",
   "institution",
 ]);
 export type NodeType = z.infer<typeof nodeTypeSchema>;
