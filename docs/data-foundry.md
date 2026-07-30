@@ -1435,6 +1435,36 @@ policy was added and nothing relaxed. **The general lesson: a ladder's transcrip
 when a batch of that relation runs through the gate, so relation families that have not had a batch
 since §15 are the places to expect further gaps.**
 
+**Golden fixtures guard threshold fidelity (decision (114)).** `scripts/foundry/ladder-fixtures.ts`
+gives every ladder both a passing fixture and a fixture blocked exactly at its ratified threshold,
+runs offline in CI (`npm run foundry:ladder-fixtures`), and validates each synthetic decision through
+the real Zod schema first, so decision-schema drift surfaces there too. Its target is the failure
+class a prose co-change obligation cannot catch: an omission or a mistranscribed threshold is
+invisible until a batch of that shape executes. **When a decision changes a ladder threshold, the
+relation map, or a safety net, update the fixtures in the same change** — a fixture and §8 that
+disagree are themselves a stop-point.
+
+The harness is itself audited by mutation: `npm run foundry:ladder-mutation-sweep` (maintainer tool,
+not CI — it patches `lib/ladders.ts` in place and restores it in a `finally` plus an `atexit` hook,
+so an interrupted run still leaves the tree clean) injects plausible transcription errors and reports
+any that no fixture catches. Measured 2026-07-30: **44 mutations, 44 caught, over 55 fixtures.**
+
+Both rounds of that measurement are worth keeping, because each round refuted the previous round's
+confidence. The first sweep (29 mutations) scored **24/29** and named six uncovered rules: the
+`living-person-v2` source floor, `member_of` and `adjacent_to` missing from the classification
+whitelist, `critiques` missing from the auto-ladder map, `node-promotion-v1.4` accepting an
+unverified anchor record, and the entire `promotions` branch of `reviewedOutcomes` — the path most
+real batches take — escaping ladder scrutiny with the suite still green. An independent adequacy
+audit *of that sweep* then found fifteen further rules no mutation targeted at all, including
+decision (70) applied to an **edge endpoint** (the intersection of the two most policy-sensitive
+rules) and the **edge** side of the promotions branch, which the fixture harness could not even
+construct until it was extended. Advisory findings had no coverage of any kind; the runner now
+asserts on them too.
+
+**A fixture without a mutation that fails when the fixture is removed is unmeasured coverage.** Run
+the sweep after adding a fixture, and add a mutation for every rule you touch — the assertion "this
+suite has teeth" is only ever as good as its last measurement.
+
 Metadata-flip refinement (CPO-ratified 2026-07-02, the first divergence this stop-point caught in
 production): a `reviewed→reviewed` promotion op is a **metadata flip** (`set_indexable` /
 `set_note`), not a promotion — it does not (re)earn reviewed status and demands no node ladder.

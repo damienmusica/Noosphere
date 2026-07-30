@@ -78,13 +78,12 @@ npm run validate:data # validates /data against schemas + policy rules
 npm run export:graph  # builds dist/noosphere-graph.json (static, read-only)
 npm run report:graph  # prints an observational graph coverage summary
 
-# Data Foundry tooling (maintainer-local; nothing here runs in CI)
-npm run foundry:validate-batches   # validates batch manifests
+# Data Foundry tooling — the authoritative command list is docs/data-foundry.md §15.3
+# (the batch flow) and AGENTS.md. Two of these run in CI, the rest are maintainer-local.
+npm run foundry:validate-batches   # validates batch manifests (runs in CI)
+npm run foundry:ladder-fixtures    # golden promotion-ladder fixtures (runs in CI)
 npm run foundry:resolve-wikidata -- foundry/batches/<manifest>.json  # network resolver (local only)
-npm run foundry:goldenset          # offline regression check of resolver output vs verified verdicts
-npm run foundry:claim-anchor -- <captured-page> "<quote>"            # citation QC helper (offline)
-npm run foundry:fetch-verify -- <summaries.json> [--concurrency N]   # live-fetch + verbatim citation table (network, local only)
-npm run foundry:openalex-prevalidate -- --domains <a,b> [--types t]  # OpenAlex B-track pre-validation table (network, local only)
+npm run foundry:fetch-verify -- <decision-or-summaries.json>         # live verbatim citation check (network, local only)
 ```
 
 `export:graph` converts the `/data` JSON into a single read-only graph payload at
