@@ -301,6 +301,27 @@ const fixtures: Fixture[] = [
     expect: [],
   },
   {
+    name: "'Neither X nor Y is a corpus node' fires, with subjects taken from inside the phrase",
+    rule: "NEITHER_NOR_ABSENT — the construction carries no 'not' and its subjects follow the phrase",
+    edges: [
+      E(
+        "edge:john-von-neumann-influenced-computer-systems",
+        "person:john-von-neumann",
+        "subfield:computer-systems",
+        "The attribution dispute is preserved rather than resolved. Neither John Mauchly nor J. Presper Eckert is a corpus node; honest gap.",
+      ),
+    ],
+    nodes: ["person:john-mauchly", "person:john-von-neumann", "subfield:computer-systems"],
+    labels: [
+      ["John Mauchly", "person:john-mauchly"],
+      ["J. Presper Eckert", "person:j-presper-eckert"],
+    ],
+    // Mauchly exists and fires; Eckert is genuinely still absent and stays silent.
+    expect: [
+      hit("edge:john-von-neumann-influenced-computer-systems", "person:john-mauchly", "node-absent"),
+    ],
+  },
+  {
     name: "silent when the named node is genuinely still missing",
     rule: "the detector reports closure, not the existence of a gap",
     edges: [
