@@ -113,5 +113,18 @@ npm run foundry:report          -- foundry/decisions/<batch>.json --write  # off
 
 # Session start ritual:
 npm run foundry:recheck-held   # held/blocked worklist
-npm run report:graph           # incl. editorial-gap dashboard
+npm run report:graph           # incl. editorial-gap dashboard + stale recorded gaps
+
+# Stale-gap detector, whose own coverage is measured (docs/data-foundry.md §15.10):
+npm run report:gap-fixtures        # offline; CI-gated golden fixtures, one per closure shape
+npm run report:gap-mutation-sweep  # offline; maintainer tool — audits the fixtures themselves
 ```
+
+### Recorded gaps (decision (119))
+
+A note that says something is missing is a ledger entry, not commentary — the next wave's slate is
+built from it. **Write gap sentences with node and edge IDs** (`person:robert-hooke is still not a
+corpus node`), never bare prose names: only the ID form is machine-checkable. **When you refresh a
+gap note, re-check every clause of the replacement against `/data`** — decision (118)'s repair
+rewrote two notes into a claim that was already 29 days false, and the next session's order copied
+it into its slate as a task.
