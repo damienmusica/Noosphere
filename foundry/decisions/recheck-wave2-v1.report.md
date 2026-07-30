@@ -1,6 +1,6 @@
 # recheck-wave2-v1 — promotion decision report
 
-**Decided 2026-07-02** · QC by Claude Fable 5 (`claude-fable-5`) · generated from `foundry/decisions/recheck-wave2-v1.json` by `npm run foundry:report`.
+**Decided 2026-07-02** · QC by Claude Opus 4.8 (`claude-opus-4-8`) · generated from `foundry/decisions/recheck-wave2-v1.json` by `npm run foundry:report`.
 
 > ✓ ladder-check: every reviewed outcome is sanctioned.
 
