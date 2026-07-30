@@ -140,6 +140,17 @@ const fixtures: Fixture[] = [
     }),
   },
   {
+    name: "node-promotion-v1.4 blocks an unverified anchor record",
+    expect: "block",
+    fragment: "requires a verified identity anchor from the ratified taxonomy-authority registry",
+    decision: mkDecision({
+      adds: { nodes: [mkNode("subfield:fixture-b", { external_ids: { philpapers: "cat-1" } })] },
+      identity: [{ node_id: "subfield:fixture-b", provider: "philpapers", external_id: "cat-1", verified: false, method: "manual", retrieved_at: DATE }],
+      verdicts: [{ subject_id: "subfield:fixture-b", verdict: "supported", sources: src(true, 2) }],
+      sanctions: [{ subject_id: "subfield:fixture-b", ladder: "node-promotion-v1.4" }],
+    }),
+  },
+  {
     name: "node-promotion-v1.4 blocks an unratified anchor provider",
     expect: "block",
     fragment: "not in the ratified taxonomy-authority registry",
@@ -173,6 +184,17 @@ const fixtures: Fixture[] = [
     }),
   },
   {
+    name: "living-person-v2 blocks at 1 independent source (threshold ≥2)",
+    expect: "block",
+    fragment: "≥2 independent live claim-stating sources",
+    decision: mkDecision({
+      adds: { nodes: [mkNode("person:fixture-alive", { type: "person", is_living_person: true, external_ids: { wikidata: "Q2" } })] },
+      identity: [{ node_id: "person:fixture-alive", provider: "wikidata", external_id: "Q2", verified: true, method: "wbgetentities", retrieved_at: DATE, p570_absent_confirmed_at: DATE }],
+      verdicts: [{ subject_id: "person:fixture-alive", verdict: "supported", sources: src(true, 1) }],
+      sanctions: [{ subject_id: "person:fixture-alive", ladder: "living-person-v2" }],
+    }),
+  },
+  {
     name: "living person cannot ride node-promotion-v1",
     expect: "block",
     fragment: "living-person nodes promote via living-person-v2",
@@ -190,6 +212,27 @@ const fixtures: Fixture[] = [
       adds: { edges: [mkEdge("edge:fixture-partof", "subfield:fixture-field", "field:fixture-parent", "part_of")] },
       verdicts: [{ subject_id: "edge:fixture-partof", verdict: "supported", sources: src(true, 1) }],
       sanctions: [{ subject_id: "edge:fixture-partof", ladder: "edge-promotion-v1-structural" }],
+    }),
+  },
+  // member_of and adjacent_to are the other two ratified classification
+  // placements; without their own pass fixtures, dropping either from
+  // CLASSIFICATION_RELATIONS is a silent (88)-shaped regression.
+  {
+    name: "structural tier clean member_of promotion",
+    expect: "pass",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-memberof", "subfield:fixture-field", "field:fixture-parent", "member_of")] },
+      verdicts: [{ subject_id: "edge:fixture-memberof", verdict: "supported", sources: src(true, 1) }],
+      sanctions: [{ subject_id: "edge:fixture-memberof", ladder: "edge-promotion-v1-structural" }],
+    }),
+  },
+  {
+    name: "structural tier clean adjacent_to promotion",
+    expect: "pass",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-adjacent", "subfield:fixture-field", "field:fixture-parent", "adjacent_to")] },
+      verdicts: [{ subject_id: "edge:fixture-adjacent", verdict: "supported", sources: src(true, 1) }],
+      sanctions: [{ subject_id: "edge:fixture-adjacent", ladder: "edge-promotion-v1-structural" }],
     }),
   },
   {
@@ -282,6 +325,17 @@ const fixtures: Fixture[] = [
       sanctions: [{ subject_id: "edge:fixture-influenced", ladder: "a-relation-auto-68" }],
     }),
   },
+  // critiques rides the same (68) ladder as influenced; it needs its own pass
+  // fixture or dropping it from EDGE_AUTO_LADDER goes unnoticed.
+  {
+    name: "a-relation-auto-68 clean critiques promotion",
+    expect: "pass",
+    decision: mkDecision({
+      adds: { edges: [mkEdge("edge:fixture-critiques", "person:fixture-founder", "subfield:fixture-field", "critiques")] },
+      verdicts: [{ subject_id: "edge:fixture-critiques", verdict: "supported", direction_confirmed: true, identity_referent_verified: true, sources: src(true, 2) }],
+      sanctions: [{ subject_id: "edge:fixture-critiques", ladder: "a-relation-auto-68" }],
+    }),
+  },
   {
     name: "a-relation-auto-68 blocks without direction_confirmed",
     expect: "block",
@@ -369,6 +423,30 @@ const fixtures: Fixture[] = [
       adds: { edges: [mkEdge("edge:fixture-influenced", "person:fixture-founder", "subfield:fixture-field", "influenced")] },
       verdicts: [{ subject_id: "edge:fixture-influenced", verdict: "supported", direction_confirmed: true, identity_referent_verified: true, sources: src(true, 2) }],
     }),
+  },
+  // The `promotions` path (proposed→reviewed on an existing item) is how most
+  // real batches earn reviewed status, and it reaches the ladders through a
+  // different branch of reviewedOutcomes than `adds`. Both branches need
+  // fixtures: without the BLOCK case below, disabling the promotions branch
+  // entirely would let every promotion escape ladder scrutiny silently.
+  {
+    name: "promotion path: proposed→reviewed clean (node-promotion-v1)",
+    expect: "pass",
+    decision: mkDecision({
+      promotions: [{ kind: "node", id: "concept:fixture-promoted", from: "proposed", to: "reviewed", set_external_ids: { wikidata: "Q7" } }],
+      identity: [{ node_id: "concept:fixture-promoted", provider: "wikidata", external_id: "Q7", verified: true, method: "wbgetentities", retrieved_at: DATE }],
+      sanctions: [{ subject_id: "concept:fixture-promoted", ladder: "node-promotion-v1" }],
+    }),
+    extraPost: [mkNode("concept:fixture-promoted", { type: "concept", external_ids: { wikidata: "Q7" } })],
+  },
+  {
+    name: "promotion path: proposed→reviewed without a sanction is blocked",
+    expect: "block",
+    fragment: "ends reviewed but has no ladder sanction",
+    decision: mkDecision({
+      promotions: [{ kind: "node", id: "concept:fixture-promoted", from: "proposed", to: "reviewed" }],
+    }),
+    extraPost: [mkNode("concept:fixture-promoted", { type: "concept", external_ids: { wikidata: "Q7" } })],
   },
   {
     name: "safety net: metadata flip cannot carry set_evidence",
