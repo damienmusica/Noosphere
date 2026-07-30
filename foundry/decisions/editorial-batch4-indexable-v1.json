@@ -3,8 +3,8 @@
   "batch_id": "editorial-batch4-indexable-v1",
   "decided_at": "2026-07-02",
   "qc_by": {
-    "model_name": "Claude Fable 5",
-    "model_version": "claude-fable-5",
+    "model_name": "Claude Opus 4.8",
+    "model_version": "claude-opus-4-8",
     "proposed_at": "2026-07-02"
   },
   "adds": {
@@ -608,6 +608,7 @@
   "notes": [
     "Indexable earned-rule flip for the 83 editorial-batch4 nodes (68 deceased persons + 5 concepts + 5 works + 5 subfields + 14 LIVING persons). Metadata-flip path (reviewed->reviewed, set_indexable only) ratified 2026-07-02; validate-data enforces indexable => reviewed status + reviewed en translation independently.",
     "Living persons included per decision (70): indexable is the SAME earned rule as any node — SEO-only, orthogonal to explorability; living people are NOT force-noindexed. All 14 carry reviewed attributed-wording summaries (editorial-batch4-v1) and P570-absent observations.",
-    "Closes the public-surface gap in lockstep with the summary gap: reviewed en-summary gap 0%, and every reviewed+summarized node now indexable."
+    "Closes the public-surface gap in lockstep with the summary gap: reviewed en-summary gap 0%, and every reviewed+summarized node now indexable.",
+    "★ PROVENANCE CORRECTION 2026-07-30 (session #61). This file's qc_by originally claimed Claude Fable 5 (claude-fable-5). THAT CLAIM WAS FALSE: this flip decision was written, applied and committed in the same window as editorial-batch4-v1 (commit bdc4709, 22:55:03 UTC 2026-07-02), after the session's silent fallback claude-fable-5 → claude-opus-4-8 at 22:49:05 UTC — measured from the Claude Code session transcript, which records the actual model ID on every assistant message. qc_by is corrected to the measured value; the original claim is preserved in this note as the audit trail of the error. See editorial-batch4-v1.json for the full measurement; same failure shape as the session #60 correction (PR #165)."
   ]
 }

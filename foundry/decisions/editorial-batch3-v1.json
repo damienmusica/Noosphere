@@ -3,8 +3,8 @@
   "batch_id": "editorial-batch3-v1",
   "decided_at": "2026-07-02",
   "qc_by": {
-    "model_name": "Claude Fable 5",
-    "model_version": "claude-fable-5",
+    "model_name": "Claude Opus 4.8",
+    "model_version": "claude-opus-4-8",
     "proposed_at": "2026-07-02"
   },
   "translation_updates": [
@@ -1379,10 +1379,12 @@
     }
   ],
   "notes": [
-    "Editorial batch 3 (person layer): 34 top-degree reviewed person nodes given en summaries. Generation = 3 separate-context Opus subagents (ADR 0007 context separation) grounded ONLY in provided enwiki lead extracts; orchestrator (Fable 5) QC = machine claim-anchor verbatim (fetch-verify: 102/102 quotes verbatim on live enwiki after normalization; 0 miss, 0 unverified) + close-read.",
+    "Editorial batch 3 (person layer): 34 top-degree reviewed person nodes given en summaries. Generation = 3 separate-context Opus subagents (ADR 0007 context separation) grounded ONLY in provided enwiki lead extracts; orchestrator QC (recorded as Fable 5 — see the provenance correction below; the orchestrator actually ran on claude-opus-4-8) = machine claim-anchor verbatim (fetch-verify: 102/102 quotes verbatim on live enwiki after normalization; 0 miss, 0 unverified) + close-read.",
     "All 34 persons deceased (is_living_person:false) — no (70) living-person path exercised this batch (living persons deferred to a careful follow-up tranche).",
     "Co-founding / contested modeling respected per graph: Newton & Leibniz co-developed calculus independently; Saussure & Peirce co-founded semiotics (two traditions); Pearson & Fisher both founders of mathematical statistics with mutual critique; Poincare a set-theory critic; Cantor influenced Hilbert; von Neumann & Nash distinct game-theory contributions.",
-    "INDEXABLE FLIP DEFERRED (CPO stop-point flag): flipping these reviewed+summarized nodes to indexable requires a reviewed->reviewed promotion op, which ladder-check treats as a reviewed outcome demanding a node-promotion ladder (editorial-v2 does not sanction node promotions) -> blocking violation. Editorial-v2 sanctions also read as dangling because reviewedOutcomes ignores translation_updates. Both are ladders.ts modeling gaps for the editorial-through-toolchain path; proposed patch surfaced to CPO. Summary gap closed 112->78; indexable flip follows once the ladder-check refinement is ratified."
+    "INDEXABLE FLIP DEFERRED (CPO stop-point flag): flipping these reviewed+summarized nodes to indexable requires a reviewed->reviewed promotion op, which ladder-check treats as a reviewed outcome demanding a node-promotion ladder (editorial-v2 does not sanction node promotions) -> blocking violation. Editorial-v2 sanctions also read as dangling because reviewedOutcomes ignores translation_updates. Both are ladders.ts modeling gaps for the editorial-through-toolchain path; proposed patch surfaced to CPO. Summary gap closed 112->78; indexable flip follows once the ladder-check refinement is ratified.",
+    "★ PROVENANCE CORRECTION 2026-07-30 (session #61). This file's qc_by originally claimed Claude Fable 5 (claude-fable-5). THAT CLAIM WAS FALSE — the orchestrator context was on claude-opus-4-8 for this batch's entire lifecycle. Verified from the Claude Code session transcript, which records the actual model ID on every assistant message: the main session silently fell back from claude-fable-5 to claude-opus-4-8 at 09:00:10 UTC 2026-07-02, before this batch's generation order (09:13:57 UTC), and returned to claude-fable-5 only at 11:21:02 UTC — 86 minutes after this batch's commit (2fdb0e8, 09:55:04 UTC). Every orchestrator action in between — generation launch, QC, decision-file write, apply, commit — ran on claude-opus-4-8. qc_by is corrected to the measured value; the original claim is preserved in this note as the audit trail of the error. Same failure shape as the session #60 correction (PR #165): the orchestrator recorded the session's intended model rather than the model the harness was actually running.",
+    "★ GENERATION CLAIM VERIFIED TRUE by the same measurement. The three separate-context generation subagents for this batch ran 09:13:57–09:16:10 UTC 2026-07-02 and their own transcripts record claude-opus-4-8 on every assistant message — the 'Opus subagents' claim in this file stands, now verified rather than suspect. The same sessions' proposal-generation agents record claude-sonnet-5 as requested, confirming per-call model routing was honoured on 2026-07-01/02/03: the env.CLAUDE_CODE_SUBAGENT_MODEL override that silently rerouted session #60's editorial batches did not exist (or did not bite) when batches 3–6 were generated."
   ],
   "anchors_pending": []
 }
