@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "batch_id": "stale-note-refresh-v1",
+  "decided_at": "2026-07-30",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-30"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "edge",
+      "id": "edge:ferdinand-de-saussure-founded-semiotics",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_note": "Saussure is a founder of semiotics/semiology (Wikipedia Ferdinand de Saussure: \"one of two major founders (together with Charles Sanders Peirce) of semiotics, or semiology, as Saussure called it\"; Wikipedia Semiotics: contrasts \"Ferdinand de Saussure's dyadic model\" with \"Charles Sanders Peirce's triadic model\"). Plural founding preserved (record-not-resolve, not disputed): Peirce is the independent co-founder, and edge:charles-sanders-peirce-founded-semiotics now records that side. Two independent Wikipedia articles. [Note refreshed 2026-07-30, decision (118): the original text ended \"Peirce is the independent co-founder; not yet a node\", which went stale when person:charles-sanders-peirce and his founder edge were both admitted. The claim and its sources are unchanged.]",
+      "note": "Metadata flip (set_note only): stale honest-gap prose refreshed. No claim, source, confidence or status changes."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:louis-pasteur-founded-microbiology",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_note": "Pasteur is a founder of microbiology (Wikipedia Louis Pasteur: \"He is regarded as one of the founders of modern bacteriology and has been honored as ... the 'father of microbiology' (together with Robert Koch ...)\"; Wikipedia Microbiology: \"Louis Pasteur is considered a father of microbiology\"). Plural founding preserved (record-not-resolve, not disputed): co-credited with Robert Koch, whose side is now recorded by edge:robert-koch-founded-microbiology. Antonie van Leeuwenhoek, co-credited for early microscopy, is still not a corpus node — that gap is live. Two independent Wikipedia articles. [Note refreshed 2026-07-30, decision (118): the original text said \"Koch not yet a node\", which went stale when person:robert-koch and his founder edge were both admitted. The claim and its sources are unchanged.]",
+      "note": "Metadata flip (set_note only): stale honest-gap prose refreshed. No claim, source, confidence or status changes."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:theodor-schwann-founded-cell-theory",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_note": "Co-founder edge, record-not-resolve. enwiki names both men in one sentence: \"Credit for developing cell theory is usually given to two scientists: Theodor Schwann and Matthias Jakob Schleiden.\" Wikidata Q177935 P61 lists three inventors — Schleiden, Schwann and Rudolf Virchow. The third clause is now recorded by edge:rudolf-virchow-founded-cell-theory, and alongside it edge:robert-remak-founded-cell-theory carries the priority contest over that same clause (Virchow's dictum is widely said to have been taken from Remak) — both stand, neither adjudicates. [Note refreshed 2026-07-30, decision (118): the original text said Virchow \"is not a corpus node, so this batch records two of the three\", which went stale when Virchow was admitted in person-wave11 and Remak in person-wave12. The claim and its sources are unchanged.]",
+      "note": "Metadata flip (set_note only): stale honest-gap prose refreshed. No claim, source, confidence or status changes."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:henri-poincare-influenced-theory-of-relativity",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_note": "The corpus's way of recording the priority literature without adjudicating it: Poincaré's contribution is real and documented, and it is influence rather than founding. enwiki Relativity priority dispute states that Einstein's publications \"referred only to a small number of his predecessors for fundamental results on which he based his theories, most notably to the work of Henri Poincaré and Hendrik Lorentz for special relativity\". Hendrik Lorentz is named in the same breath and now carries his own edge, edge:hendrik-lorentz-influenced-theory-of-relativity, on the same `influenced` disposition — the gap this note recorded is closed. This edge is also what makes the concept admissible at all: it was rejected in concept-wave3-v1 precisely because Poincaré would have been its only person link. [Note refreshed 2026-07-30, decision (118): the sentence above replaced a recorded gap that had gone false. The claim, its sources and its confidence are unchanged.]",
+      "note": "Metadata flip (set_note only): stale honest-gap prose refreshed. No claim, source, confidence or status changes."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:kenneth-arrow-founded-social-choice-theory",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_note": "Kenneth Arrow is the originating founder of modern social choice theory -- his impossibility theorem in 'Social Choice and Individual Values' (1951) inaugurated the modern axiomatic field, roughly two decades before Sen (1970). Record-not-resolve plural founding: SEP 'Social Choice Theory' names Arrow, Amartya Sen (see edge:amartya-sen-founded-social-choice-theory), and Duncan Black as the figures the field took off with; Duncan Black is a corpus node (person:duncan-black); whether he earns his own founder edge on this field has not been adjudicated, so the plural-founding record here is still one edge short of what the source names. Sources (2 independent, live-verified): SEP 'Social Choice Theory' ('social choice theory took off in the 20th century with the works of Kenneth Arrow, Amartya Sen, and Duncan Black') + Wikipedia 'Social choice theory' ('Kenneth Arrow's book Social Choice and Individual Values is often recognized as inaugurating the modern era of social choice theory'). Identity Q192592 verified live (P31=Q5, P569 1921-08-23, P570 2017-02-21 deceased, occupation economist). Generator QID hint Q380799 was a hallucination (M. Pokora, a French singer); corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. Closes the record-not-resolve gap flagged in edge:amartya-sen-founded-social-choice-theory. [Note refreshed 2026-07-30, decision (118): the sentence above replaced a recorded gap that had gone false. The claim, its sources and its confidence are unchanged.]",
+      "note": "Metadata flip (set_note only): stale honest-gap prose refreshed. No claim, source, confidence or status changes."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:rudolf-virchow-founded-cell-theory",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_note": "Third co-founder edge on concept:cell-theory, closing the gap concept-wave3-v1 recorded when it admitted Schwann and Schleiden only; Wikidata Q177935's P61 lists all three. ★ Attribution tension recorded prominently rather than in passing: enwiki Rudolf Virchow states that Cellular Pathology (1858) \"introduced the third dictum in cell theory\" but adds that the concept \"is now widely recognized as being plagiarized from Robert Remak\", and enwiki Cell theory says the idea \"had already been proposed by Robert Remak\". What the sources agree on is that Virchow introduced the third tenet *into cell theory*; what they contest is whether the idea was his. The edge is written for the former and confidence is set at 0.75 for the latter. Robert Remak is now a corpus node and carries edge:robert-remak-founded-cell-theory alongside this one — the gap this note called the one most worth closing is closed, and the priority contest is recorded on both edges without either adjudicating it. [Note refreshed 2026-07-30, decision (118): the sentence above replaced a recorded gap that had gone false. The claim, its sources and its confidence are unchanged.]",
+      "note": "Metadata flip (set_note only): stale honest-gap prose refreshed. No claim, source, confidence or status changes."
+    },
+    {
+      "kind": "edge",
+      "id": "edge:amartya-sen-founded-social-choice-theory",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_note": "Sen made founding-grade contributions to modern social choice theory -- 'Collective Choice and Social Welfare' (1970) reformulated the Arrovian framework (social welfare functionals, informational basis, the liberal paradox); Nobel Memorial Prize in Economic Sciences 1998. Record-not-resolve: Kenneth Arrow originated the modern field (Impossibility Theorem, 1951; now a corpus node -- see edge:kenneth-arrow-founded-social-choice-theory) and Duncan Black is also foundational (person:duncan-black is a corpus node; whether he earns his own founder edge here has not been adjudicated) -- SEP 'Social Choice Theory' names Arrow, Sen, and Black as the figures the field took off with. Scope note: Sen's Nobel citation reads 'welfare economics' broadly; social choice is his core theoretical field. Sources: SEP 'Social Choice Theory' + Wikipedia 'Social choice theory'/'Amartya Sen'. Living-person v2 (decision (70)): identity Q132489 verified (P31=Q5, P569 1933, P570 absent = living-confirmed), >=2 independent live claim-stating sources, conservative wording, no escalation -> policy-auto reviewed. Generator QID hint Q125106 was a hallucination; corrected. [Note refreshed 2026-07-30, decision (118): the sentence above replaced a recorded gap that had gone false. The claim, its sources and its confidence are unchanged.]",
+      "note": "Metadata flip (set_note only): stale honest-gap prose refreshed. No claim, source, confidence or status changes."
+    }
+  ],
+  "translation_updates": [],
+  "verdicts": [],
+  "identity": [],
+  "sanctions": [],
+  "rejections": [],
+  "held": [],
+  "held_resolutions": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Stale-note refresh. Three `reviewed` edges carried honest-gap prose that had gone false: each said a co-founder was 'not yet a node' / 'not a corpus node', and in all three cases the person node AND the co-founder edge were admitted by later waves (Peirce, Koch, Virchow — and now Remak alongside Virchow). Recorded gaps are load-bearing in this corpus: they are how the next wave's slate gets built, and a gap that silently closed is worse than no gap, because a reader trusts it.",
+    "★ Two of the six were made stale BY THIS SESSION: person-wave12 admitted Lorentz and Remak, which silently falsified the gap notes on edge:henri-poincare-influenced-theory-of-relativity and edge:rudolf-virchow-founded-cell-theory that named them. That is the systematic hazard here — admitting a node falsifies every recorded gap that named it, in the same commit, invisibly. The first pass of this batch missed both because it worked from a hand-built list of three; a name-to-node scan found them. A third case (Duncan Black on edge:kenneth-arrow-founded-social-choice-theory) had been stale since before this session and nobody had noticed.",
+    "★ The seventh entry was found by the detector this batch ships, not by hand: a manual scan caught Duncan Black on edge:kenneth-arrow-founded-social-choice-theory and missed the identical stale sentence on edge:amartya-sen-founded-social-choice-theory. The detector earned its place before it was committed.",
+    "Surfaced by the session #61 closeout audit's next-work inventory, which also flagged three FALSE positives worth not re-chasing — those same three notes are the whole set; no other edge note in /data claims a missing referent that now exists (re-checked this session).",
+    "Shape: reviewed→reviewed metadata flips carrying set_note only, the CPO-ratified path (2026-07-02, session #55 ext.). No ladder sanction is demanded and none is claimed: nothing (re)earns reviewed here. Each refreshed note states what it replaced and why, so the correction is auditable from the note itself rather than only from this file.",
+    "One live gap deliberately preserved: Antonie van Leeuwenhoek, co-credited in the Pasteur note for early microscopy, is still absent from the corpus. The refreshed note keeps that gap explicit instead of dropping the sentence wholesale.",
+    "[NO-EXTERNAL-EVIDENCE] This batch makes no factual claim and reads no external page: every quote in every refreshed note is carried over verbatim from the note it replaces, and the claims those quotes support were verified when the edges were promoted. The only new assertions are about corpus state (which node/edge ids exist), verified by reading /data."
+  ]
+}

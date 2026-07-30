@@ -269,4 +269,58 @@ if (gapRanked.length === 0) {
   for (const id of gapRanked) out(`  - ${id} — degree ${degreeOf(id)}`);
 }
 
+// --- 10. Stale recorded gaps ----------------------------------------------------
+// An edge note that records "X is not a corpus node" is load-bearing: it is how
+// the next wave's slate gets built. Admitting X silently falsifies every such
+// note that named them — in the same commit, invisibly, and a later reader
+// trusts the stale sentence. Measured 2026-07-30 (decision (118)): six notes had
+// gone false, and TWO of the six were falsified by the very batch that ran
+// hours earlier in the same session; a third had been stale for weeks unnoticed.
+// This is a report, not a validator: the detector matches an en label against
+// gap phrasing, which is a heuristic, and a false positive must not fail CI.
+// The phrasing is always "<Name> … not a corpus node". Attribute by looking
+// BACKWARD from each gap phrase to the nearest known label, rather than forward
+// from a label: a note may name the same person several times (a source quote
+// plus the gap sentence), and a forward scan from the first mention silently
+// misses the gap — measured, that exact bug made the first version of this
+// detector report a clean corpus while six notes were stale.
+const GAP_PHRASE = /(?:is |are )?(?:still |now )?not (?:yet )?a corpus node|not yet a node|has no corpus node/g;
+const LABEL_LOOKBEHIND = 90;
+const labelToNode = new Map<string, string>();
+for (const [nodeId, tr] of enTranslationByNode) {
+  const label = (tr as { label?: string }).label;
+  if (label && label.trim().length > 3) labelToNode.set(label.trim(), nodeId);
+}
+type StaleGap = { edgeId: string; label: string; nodeId: string };
+const staleGaps: StaleGap[] = [];
+for (const e of edges) {
+  const note = e.note;
+  if (!note) continue;
+  // Only the live prose: text after a dated refresh stamp quotes what it replaced.
+  const live = note.split("[Note refreshed")[0] ?? "";
+  for (const m of live.matchAll(GAP_PHRASE)) {
+    const at = m.index ?? 0;
+    const prefix = live.slice(Math.max(0, at - LABEL_LOOKBEHIND), at);
+    // Longest match wins, so "Robert Remak" is preferred over a bare surname.
+    let best: { label: string; nodeId: string } | undefined;
+    for (const [label, nodeId] of labelToNode) {
+      if (!prefix.includes(label)) continue;
+      if (!best || label.length > best.label.length) best = { label, nodeId };
+    }
+    if (best && !staleGaps.some((g) => g.edgeId === e.id && g.nodeId === best!.nodeId)) {
+      staleGaps.push({ edgeId: e.id, label: best.label, nodeId: best.nodeId });
+    }
+  }
+}
+out("");
+out("Stale recorded gaps (an edge note calls someone absent who is now a corpus node)");
+if (staleGaps.length === 0) {
+  out("  - none");
+} else {
+  for (const g of staleGaps.sort((a, b) => byString(a.edgeId, b.edgeId))) {
+    out(`  - ${g.edgeId} — names "${g.label}" as missing, but ${g.nodeId} exists`);
+  }
+  out(`  ${staleGaps.length} stale gap note(s) — refresh via a set_note metadata flip.`);
+}
+
 console.log(lines.join("\n"));

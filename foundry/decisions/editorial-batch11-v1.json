@@ -1,0 +1,294 @@
+{
+  "version": 1,
+  "batch_id": "editorial-batch11-v1",
+  "decided_at": "2026-07-30",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-30"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "node",
+      "id": "person:robert-remak",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true,
+      "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+    },
+    {
+      "kind": "node",
+      "id": "person:james-clerk-maxwell",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true,
+      "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+    },
+    {
+      "kind": "node",
+      "id": "person:josiah-willard-gibbs",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true,
+      "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+    },
+    {
+      "kind": "node",
+      "id": "person:hendrik-lorentz",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true,
+      "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+    },
+    {
+      "kind": "node",
+      "id": "person:alfred-north-whitehead",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true,
+      "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+    }
+  ],
+  "translation_updates": [
+    {
+      "node_id": "person:robert-remak",
+      "locale": "en",
+      "summary": "Robert Remak (1815–1865) was an embryologist, physiologist and neurologist, born in Posen, Prussia, who is credited with discovering that cells originate by the division of pre-existing cells. He reached the conclusion by observing dividing red blood cells in chicken embryos and then confirming the same pattern in every frog egg immediately after fertilization. The article reports, attributing the assessment to the historian Paul Weindling, that Rudolf Virchow plagiarized this notion from him; the attribution is recorded here as the source states it, not adjudicated. Remak is also known for reducing Karl Ernst von Baer's four germ layers to the three still used today.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:james-clerk-maxwell",
+      "locale": "en",
+      "summary": "James Clerk Maxwell (1831–1879) was a Scottish physicist and mathematician whose classical theory of electromagnetic radiation was the first to describe electricity, magnetism and light as manifestations of one phenomenon — an achievement the article calls the second great unification in physics after Newton's. He was also key in the creation of statistical mechanics, and the first to derive the Maxwell–Boltzmann distribution describing the kinetic theory of gases. In 1871 he returned to Cambridge as the first Cavendish Professor of Physics, overseeing construction of the Cavendish Laboratory, and the article regards him as a founder of the modern field of electrical engineering.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:josiah-willard-gibbs",
+      "locale": "en",
+      "summary": "Josiah Willard Gibbs (1839–1903) was an American mechanical engineer and scientist who made fundamental theoretical contributions to physics, chemistry and mathematics. Together with James Clerk Maxwell and Ludwig Boltzmann he created statistical mechanics — a term he coined — explaining the laws of thermodynamics as consequences of the statistical properties of ensembles of a system's possible states. His work applying thermodynamics is described as instrumental in transforming physical chemistry into a rigorous deductive science, and as a mathematician he created modern vector calculus independently of Oliver Heaviside.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:hendrik-lorentz",
+      "locale": "en",
+      "summary": "Hendrik Lorentz (1853–1928) was a Dutch theoretical physicist who shared the 1902 Nobel Prize in Physics with Pieter Zeeman for their discovery and theoretical explanation of the Zeeman effect. He derived the Lorentz transformation of the special theory of relativity, as well as the Lorentz force describing the force on a charged particle in an electromagnetic field. The article states that in 1905 Einstein used many of the concepts, mathematical tools and results Lorentz had discussed in writing the paper known today as special relativity — influence on the theory rather than authorship of it. Lorentz was also one of the few scientists who supported Einstein's search for general relativity from the beginning.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:alfred-north-whitehead",
+      "locale": "en",
+      "summary": "Alfred North Whitehead (1861–1947) was an English mathematician and philosopher. With his former student Bertrand Russell he wrote the three-volume Principia Mathematica (1910–1913), considered one of the twentieth century's most important works in mathematical logic. He created the philosophical school known as process philosophy, arguing that reality consists of processes rather than material objects and that processes are best defined by their relations with other processes; his Process and Reality is regarded as that school's foundational text.",
+      "reviewed": true
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "person:robert-remak",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Robert_Remak",
+          "retrieved_at": "2026-07-30",
+          "quote": "Robert Remak (26 July 1815 – 29 August 1865) was an embryologist, physiologist and neurologist, born in Posen, Prussia, who discovered that the origin of cells was by the division of pre-existing cells.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Remak&oldid=1341566404"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Robert_Remak",
+          "retrieved_at": "2026-07-30",
+          "quote": "According to historian Paul Weindling, Rudolf Virchow, one of the founders of modern cell theory, plagiarized Remak's notion that all cells come from pre-existing cells.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Remak&oldid=1341566404"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Robert_Remak",
+          "retrieved_at": "2026-07-30",
+          "quote": "He is best known for reducing Karl Ernst von Baer's four germ layers to three: the ectoderm, mesoderm, and endoderm.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Remak&oldid=1341566404"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:james-clerk-maxwell",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/James_Clerk_Maxwell",
+          "retrieved_at": "2026-07-30",
+          "quote": "who was responsible for the classical theory of electromagnetic radiation, which was the first theory to describe electricity, magnetism and light as different manifestations of the same phenomenon.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=James_Clerk_Maxwell&oldid=1365632977"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/James_Clerk_Maxwell",
+          "retrieved_at": "2026-07-30",
+          "quote": "Maxwell's equations for electromagnetism achieved the second great unification in physics, where the first one had been realised by Isaac Newton.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=James_Clerk_Maxwell&oldid=1365632977"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/James_Clerk_Maxwell",
+          "retrieved_at": "2026-07-30",
+          "quote": "Maxwell was also key in the creation of statistical mechanics.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=James_Clerk_Maxwell&oldid=1365632977"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/James_Clerk_Maxwell",
+          "retrieved_at": "2026-07-30",
+          "quote": "In 1871, Maxwell returned to Cambridge as the first Cavendish Professor of Physics, overseeing the construction of the Cavendish Laboratory.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=James_Clerk_Maxwell&oldid=1365632977"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/James_Clerk_Maxwell",
+          "retrieved_at": "2026-07-30",
+          "quote": "As a result of his work he is regarded as a founder of the modern field of electrical engineering.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=James_Clerk_Maxwell&oldid=1365632977"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:josiah-willard-gibbs",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Josiah_Willard_Gibbs",
+          "retrieved_at": "2026-07-30",
+          "quote": "was an American mechanical engineer and scientist who made fundamental theoretical contributions to physics, chemistry, and mathematics.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Josiah_Willard_Gibbs&oldid=1366423689"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Josiah_Willard_Gibbs",
+          "retrieved_at": "2026-07-30",
+          "quote": "Together with James Clerk Maxwell and Ludwig Boltzmann, he created statistical mechanics (a term that he coined), explaining the laws of thermodynamics as consequences of the statistical properties of ensembles of the possible states of a physical system composed of many particles.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Josiah_Willard_Gibbs&oldid=1366423689"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Josiah_Willard_Gibbs",
+          "retrieved_at": "2026-07-30",
+          "quote": "His work on the applications of thermodynamics was instrumental in transforming physical chemistry into a rigorous deductive science.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Josiah_Willard_Gibbs&oldid=1366423689"
+        }
+      ],
+      "notes": "The article sentence on his international reputation was dropped from the summary together with its quote: it is present verbatim on the anchored revision but the claim-anchor matcher would not match it (quote/whitespace normalisation), and an unanchored sentence is not shipped."
+    },
+    {
+      "subject_id": "person:hendrik-lorentz",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Hendrik_Lorentz",
+          "retrieved_at": "2026-07-30",
+          "quote": "(18 July 1853 – 4 February 1928) was a Dutch theoretical physicist who shared the 1902 Nobel Prize in Physics with Pieter Zeeman for their discovery and theoretical explanation of the Zeeman effect.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Hendrik_Lorentz&oldid=1361413016"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hendrik_Lorentz",
+          "retrieved_at": "2026-07-30",
+          "quote": "He derived the Lorentz transformation of the special theory of relativity, as well as the Lorentz force, which describes the force acting on a charged particle in an electromagnetic field.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Hendrik_Lorentz&oldid=1361413016"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hendrik_Lorentz",
+          "retrieved_at": "2026-07-30",
+          "quote": "In 1905, Einstein would use many of the concepts, mathematical tools and results Lorentz discussed to write his paper titled Zur Elektrodynamik bewegter Körper (On the electrodynamics of moving bodies), known today as the special theory of relativity.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Hendrik_Lorentz&oldid=1361413016"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Hendrik_Lorentz",
+          "retrieved_at": "2026-07-30",
+          "quote": "Lorentz was one of few scientists who supported Einstein's search for general relativity from the beginning",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Hendrik_Lorentz&oldid=1361413016"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:alfred-north-whitehead",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+          "retrieved_at": "2026-07-30",
+          "quote": "Alfred North Whitehead (15 February 1861 – 30 December 1947) was an English mathematician and philosopher. He created the philosophical school known as process philosophy",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+          "retrieved_at": "2026-07-30",
+          "quote": "He wrote the three-volume Principia Mathematica (1910–1913), with his former student Bertrand Russell. Principia Mathematica is considered one of the twentieth century's most important works in mathematical logic",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+          "retrieved_at": "2026-07-30",
+          "quote": "Whitehead argued that reality consists of processes rather than material objects, and that processes are best defined by their relations with other processes",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+          "retrieved_at": "2026-07-30",
+          "quote": "Whitehead's philosophical works – particularly Process and Reality – are regarded as the foundational texts of process philosophy.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+        }
+      ]
+    }
+  ],
+  "identity": [],
+  "sanctions": [
+    {
+      "subject_id": "person:robert-remak",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:james-clerk-maxwell",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:josiah-willard-gibbs",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:hendrik-lorentz",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:alfred-north-whitehead",
+      "ladder": "editorial-v2"
+    }
+  ],
+  "rejections": [],
+  "held": [],
+  "held_resolutions": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Editorial batch 11 — the public surface for the five persons person-wave12-v1 added. Restores the editorial gap to 0% and flips all five to indexable (earned rule: reviewed status + reviewed en summary, machine-enforced by validate-data).",
+    "Regime: separated-context generation (self-reported claude-sonnet-5) grounded ONLY in five fetch-corpus enwiki captures, then orchestrator machine QC + close-read. Machine: fetch-verify 19/19 PASS against the anchored revisions. Close-read: 5/5 = 100%.",
+    "★ Close-read patched four of the five summaries for ONE shared defect, and it is the same shape decision (34) exists to catch: biographical detail whose only support is an infobox field or a table-of-contents heading, presented as if the article stated it in prose. Maxwell had 'dimensional analysis, structural rigidity, and an early foundation for control theory' — all three appear only as section headings and infobox Known-for entries; dropped. Remak 'worked mainly in Berlin', Gibbs 'at Yale ... in New Haven' and Lorentz 'at Leiden' were likewise infobox-only; dropped. The generator supplied no anchor quote for any of them, which is exactly the signal — it flagged its own uncertainty elsewhere but not here.",
+    "Two further trims for anchor integrity rather than fact: Gibbs's international-reputation sentence is present verbatim on the anchored revision but the claim-anchor matcher would not match it (quote/whitespace normalisation), and his lead sentence carries an IPA pronunciation that the rendered page splits. Rather than ship a sentence the machine cannot re-check, the claim was dropped and the quote re-cut. An unanchored sentence is not shipped.",
+    "Whitehead: process philosophy is described as biography, which is what the sources support, and NOT as a corpus relation — subfield:process-philosophy still does not exist, and that gap stays recorded in person-wave12-v1 rather than being implied closed by prose here.",
+    "Living-person check: all five subjects long dead (Remak 1865, Maxwell 1879, Gibbs 1903, Lorentz 1928, Whitehead 1947), P570 present on all five as re-confirmed in person-wave12-v1; decision (70) does not engage.",
+    "Recorded for a future maintainer: the Remak article is internally inconsistent about his birth date (infobox 12 July 1815, lead 26 July 1815). The summary avoids the day entirely and the quote follows the lead. Not resolved here — flagged by the generator, and worth a note if another source is ever consulted."
+  ]
+}
