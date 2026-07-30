@@ -25,3 +25,4 @@ jobs:
       - run: npm run export:graph
       - run: npm run report:graph
       - run: npm run foundry:validate-batches
+      - run: npm run foundry:ladder-fixtures

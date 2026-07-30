@@ -9,6 +9,11 @@ model, relation taxonomy, policies) for the topics they own. See
 This brief describes the **methodology and boundaries**. It does not, by itself, build Data Foundry
 tooling — that happens in later, explicit PRs (see the implementation sequence below).
 
+> **Codified through vault decision (114).** This document is a projection of the vault decision
+> log: a decision after this cursor must either land its normative text here (or in the artifact it
+> names) or record an explicit no-op in its decision-log entry — and the session-end ritual bumps
+> the cursor either way. A decision without a concrete artifact has not happened yet.
+
 ## 1. The data bottleneck
 
 Noosphere's main constraint is **high-quality graph data, not UI**. A polished interface over a thin
@@ -526,7 +531,7 @@ meta-knowledge domains (decision (36)).
 
 #### Taxonomy-authority criteria v1 (ratified 2026-07-02, session #56)
 
-Which taxonomies may serve as a v1.4 clause-1 identity anchor is decided by five **hard criteria —
+Which taxonomies may serve as a clause-1 identity anchor under this rule is decided by five **hard criteria —
 all required**. They are grounded in knowledge-organization *warrant theory* (Hulme's literary
 warrant; Beghtol's semantic warrant, of which institutional/educational warrant justifies classes by
 the existence of departments, journals, and scholarly associations) rather than invented ad hoc; the
@@ -549,7 +554,7 @@ signals, not gates.
 Supporting signals (recorded, never gating): BARTOC registration, ISO 25964 / Z39.19-conformant
 structure, versioned releases, multilingual coverage. Two overrides are absolute: **repo-forbidden
 sources stay forbidden** even if they pass academically (e.g. JEL), and per-node promotion still
-requires v1.4 clauses 2–4 in full — the criteria govern only which taxonomies clause 1 may cite.
+requires the rule's clauses 2–4 in full — the criteria govern only which taxonomies clause 1 may cite.
 
 **Compound-label ruling.** When no single category umbrellas a compound node (session-#11 umbrella
 test), the node may anchor on the **minimal ID-set** that jointly covers it, recorded as one
@@ -587,6 +592,10 @@ was retroactively closed corpus-wide by (104) citation-retrofit):
 - Generation-model routing is governed by the vault decision log (decisions (76)/(99)③ as of
   2026-07: proposal generation = Sonnet 5; editorial generation, orchestration, and QC = Opus;
   editorial-on-Sonnet-5 is a watch item). Separated-context generation applies per ADR 0007 / §15.7.
+- **Model-ID self-report is mandatory in every editorial generation order** (decisions (112)–(114)):
+  the generator's reply states the exact model ID read from its own environment, and the decision
+  file records that **reported** value — never the ordered one. A harness-level override or silent
+  fallback can run the order on a different model than requested (measured in session #60).
 
 ### Living-person handling — standing policy (vault decision (70), 2026-06-30)
 
@@ -847,7 +856,8 @@ the same boundaries.
 
 ## 12. Skeleton modeling standard (granularity & structure)
 
-> Promotion policy v1.3 (CPO-ratified 2026-06-10, vault decision log (14)). This section is a
+> The skeleton modeling standard (CPO-ratified 2026-06-10 as promotion policy v1.3, vault decision
+> log (14); cited by stable name per decision (114)). This section is a
 > **mandatory input to every skeleton generation order**. It converts recurring design questions —
 > previously raised per-node via `ambiguous` flags — into standing rules. It accretes precedents:
 > each new QC ruling on a case this standard does not cover is appended here as one line, so the
@@ -950,7 +960,8 @@ non-coverage, never silently dropped.
   this standard as precedent. **Every retirement is reported per batch on the dashboard**; the
   retirement count trending down across continents is the measure of this standard's quality.
 - **B-type flags** (real-world contests): never retired by ruling alone — resolution requires the
-  v1.1 external-evidence path (≥2 independent sources, URL-cited, permanent resolution record).
+  contested-claim external-evidence path (ratified in policy v1.1: ≥2 independent sources,
+  URL-cited, permanent resolution record).
 
 ### Precedent log (append one line per new QC ruling)
 
@@ -1356,6 +1367,16 @@ re-audit replays them; deleting one deletes the ability to re-audit. **Replay re
 2026-07-02 inspection):** check out `/data` as of the commit *before* the first replayed batch
 (`git checkout <commit> -- data/`), then apply the decision files in chronological order with the
 *current* toolchain — the inspection reproduced HEAD byte-identically this way.
+
+**Provenance records fact, not intent (decisions (112)–(114)).** Every LLM-touching generation
+order must require the agent to state the exact model ID read from its own environment, and
+`proposed_by`/`qc_by` record the **reported or measured** value, never the requested one — a
+harness-level env override or a silent mid-session fallback can run the work on a different model
+than the one asked for. Both failure shapes are measured, not hypothetical: session #60's four
+editorial batches ran on a different model than ordered, and a full sweep of all decision files
+against the session transcripts (which log the actual model ID on every assistant message) found
+five false `qc_by` claims, corrected in PRs #165/#167/#168. The transcript is the ground truth for
+the orchestrator's own `qc_by`; the sweep is the detector for this class.
 
 ### 15.3 Standard batch flow (commands)
 

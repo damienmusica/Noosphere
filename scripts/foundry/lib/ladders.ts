@@ -14,6 +14,12 @@
  * stop-point: fix the transcription in the same change as the vault ruling,
  * never silently.
  *
+ * Codified through vault decision (114). A decision after this cursor must
+ * either update this transcription (with its golden fixture in
+ * ladder-fixtures.ts, which guards threshold fidelity in CI) or record an
+ * explicit no-op in its decision-log entry; the session-end ritual bumps the
+ * cursor either way.
+ *
  * Ladders encoded (pointers, not restatements — see docs/data-foundry.md §8):
  *   node-promotion-v1        resolver-verified external grounding
  *   node-promotion-v1.4      QID-less alternative identity anchor (93);

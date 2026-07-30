@@ -16,19 +16,29 @@ relation taxonomy owns relation types). For overall **identity, posture, and bou
 durable project charter governs; for scope and intent **in the current phase**, the current-phase
 working brief governs.
 
-| Document | Role | Authority |
-| --- | --- | --- |
-| `README.md` | Public/project entry point and quick orientation. | Orientation only — must stay concise; not the project brain. |
-| `docs/project-charter.md` | **Durable, top-level charter**: identity, posture, boundaries, LLM boundary, Data Foundry principle. | Canonical for long-lived identity/posture/boundaries across phases. |
-| `docs/product-brief.md` | Product definition, scope, and product intent. | Authoritative for product intent. |
-| `docs/data-foundry.md` | **Current-phase working brief** for the data methodology / Data Foundry phase. | Canonical for scope and intent **in the current phase**. Phase-scoped, defers to the charter. |
-| `CLAUDE.md` | Persistent **operational** instructions for Claude Code agents. | Authoritative for agent behavior/workflow; points to the canonical docs rather than restating them. |
-| `docs/data-model.md` + `src/schema/*` | Data shape and validation expectations. | Source of truth for data shape; the Zod schemas are the executable form. |
-| `docs/relation-taxonomy.md` | Allowed edge relation types. | Source of truth for relations (kept in lockstep with `src/schema/edge.ts`). |
-| `docs/license-policy.md`, `docs/security-policy.md`, `docs/seo-policy.md`, `docs/ai-usage-policy.md` | Policy-level constraints. | Authoritative for their respective policy domains. |
-| `docs/admin-roadmap.md` | Phased plan for admin/database (intentionally deferred). | Authoritative for *when* deferred capabilities may be reconsidered. |
-| `docs/adr/*` | Historical architectural decisions. | Append-only decision history — do not rewrite; supersede with new ADRs. |
-| `NOOSPHERE_CLAUDE_CODE_BRIEF.md` | **Superseded** foundation-phase working brief. | Historical context only. Superseded for current work by the charter + Data Foundry brief; not the current canonical brief. |
+Every governing artifact also declares a **lifecycle state** (adopted 2026-07-30, vault decision
+(114); PEP 1 pattern): **frozen** — append-only history, never edited in place (supersede instead);
+**active** — edited in place so it always states current policy; **derived** — a reading aid with no
+authority of its own, defended by an explicit non-authority declaration and a named change trigger;
+**codified** — the executable form of a rule (the code is the enforcement; divergence from the
+ratified text is a stop-point, §15.4). Outside the repo, the vault decision log `index.md` is
+**frozen** and the vault `roadmap.md`/`workflow.md` are **active**.
+
+| Document | Role | Authority | Lifecycle |
+| --- | --- | --- | --- |
+| `README.md` | Public/project entry point and quick orientation. | Orientation only — must stay concise; not the project brain. | active |
+| `docs/project-charter.md` | **Durable, top-level charter**: identity, posture, boundaries, LLM boundary, Data Foundry principle. | Canonical for long-lived identity/posture/boundaries across phases. | active |
+| `docs/product-brief.md` | Product definition, scope, and product intent. | Authoritative for product intent. | active |
+| `docs/data-foundry.md` | **Current-phase working brief** for the data methodology / Data Foundry phase. | Canonical for scope and intent **in the current phase**. Phase-scoped, defers to the charter. | active |
+| `CLAUDE.md` / `AGENTS.md` + `.claude/rules/*` | Persistent **operational** instructions and action cards for coding agents. | Authoritative for agent behavior/workflow; points to the canonical docs rather than restating them. | derived |
+| `docs/data-model.md` + `src/schema/*` | Data shape and validation expectations. | Source of truth for data shape; the Zod schemas are the executable form. | codified |
+| `docs/relation-taxonomy.md` | Allowed edge relation types. | Source of truth for relations (kept in lockstep with `src/schema/edge.ts`). | active |
+| `scripts/foundry/lib/ladders.ts` + `scripts/validate-data.ts` | Executable transcription of the promotion ladders and data invariants. | Enforcement form of §8/§15 rules; golden fixtures guard threshold fidelity in CI. | codified |
+| `foundry/decisions/*.json` | Committed batch decision files (audit trail, §15.2). | The re-audit record; replay-bearing. | frozen (corrections append provenance notes) |
+| `docs/license-policy.md`, `docs/security-policy.md`, `docs/seo-policy.md`, `docs/ai-usage-policy.md` | Policy-level constraints. | Authoritative for their respective policy domains. | active |
+| `docs/admin-roadmap.md` | Phased plan for admin/database (intentionally deferred). | Authoritative for *when* deferred capabilities may be reconsidered. | active |
+| `docs/adr/*` | Historical architectural decisions. | Append-only decision history — do not rewrite; supersede with new ADRs. | frozen |
+| `NOOSPHERE_CLAUDE_CODE_BRIEF.md` | **Superseded** foundation-phase working brief. | Historical context only. Superseded for current work by the charter + Data Foundry brief; not the current canonical brief. | frozen |
 
 ### How the layers fit together
 
@@ -67,6 +77,11 @@ These principles govern how authority moves between documents over the life of t
   to the long-lived charter/product brief and the current ADRs rather than re-deriving them.
 - **ADRs are append-only.** If a decision changes, add a **new ADR that supersedes** the old one
   (link both directions); do not edit the original decision's intent out of history.
+- **Cite rules by stable name, not by version.** (Adopted 2026-07-30, vault decision (114).) Version
+  tags (`v1.3`, `v1.4`, `clause-6 v2`) are provenance inside a rule's own history; prose written from
+  now on cites the rule's stable name (e.g. *node identity anchor*, *contested propositional
+  relations*) so a revision does not stale every reference. Ladder ids in schemas and committed
+  decision files are **replay-bearing values and are never renamed**.
 - **`CLAUDE.md` stays operational.** It should remain a short set of working rules that points agents
   to the current canonical source-of-truth docs — it is not the place to accumulate product narrative.
 - **`README.md` stays concise.** It should orient and link; it must not become the entire project
