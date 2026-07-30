@@ -66,6 +66,18 @@ Do **not**: rewrite the whole project at once; add major dependencies without ju
 introduce a database, auth, admin, scraping, payments, or ads; add secrets; or remove policies
 to make implementation easier.
 
+### Staging and merging (both rules were paid for, 2026-07-30, decision (116))
+
+- **Never `git add -A` while subagents are writing into the working tree.** Stage explicit paths.
+  A background generation workflow was mid-write when an unrelated commit ran `git add -A`; it swept
+  in one half-written proposal file, and an incomplete batch directory fails the batch-hygiene
+  invariants (README index row, evidence-permanence anchor), so main went red.
+- **"no checks reported" is not green — it is a registration race.** `gh pr checks --watch` returns
+  it when the workflow has not registered yet, and merging on it puts an unverified commit on main.
+  Poll until the checks actually conclude, then merge.
+- A batch directory under `foundry/proposals/` is valid only when **complete**. Do not commit
+  in-flight drafts; ship the batch with its README index row and anchors in one change.
+
 ## Data Foundry 승급 정책
 
 이 레포의 승급 정책(ladder), 결정 자율성 경계, ops 패키지는 **`docs/data-foundry.md` §8 / §15**가
