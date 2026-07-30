@@ -9,7 +9,7 @@ model, relation taxonomy, policies) for the topics they own. See
 This brief describes the **methodology and boundaries**. It does not, by itself, build Data Foundry
 tooling — that happens in later, explicit PRs (see the implementation sequence below).
 
-> **Codified through vault decision (118).** This document is a projection of the vault decision
+> **Codified through vault decision (120).** This document is a projection of the vault decision
 > log: a decision after this cursor must either land its normative text here (or in the artifact it
 > names) or record an explicit no-op in its decision-log entry — and the session-end ritual bumps
 > the cursor either way. A decision without a concrete artifact has not happened yet.
@@ -1590,3 +1590,58 @@ would have dropped three live triggers and kept one — which is why both mechan
 589, 19%, at adoption) with a degree-ordered priority list, so editorial batches close the gap
 readers actually hit first. The gap is inventory, acceptable while tracked and bounded; a WIP cap
 remains an open CPO knob if the trend line grows.
+
+### 15.10 Recorded gaps are a ledger (decision (119))
+
+A `reviewed` edge note that records something missing — "X is not a corpus node", "whether he
+earns his own founder edge has not been adjudicated", "no founder edge" — is **not commentary**.
+It is how the next wave's slate is built, so a reader trusts it, and when the missing thing
+arrives the sentence silently becomes false in the same commit. Decision (118) established that
+and built the first detector. This section records what measuring that detector then showed.
+
+**A gap closes in more than one way, and a detector that watches one of them reports a reassuring
+"none" about the rest.** (118)'s detector watched node arrival, phrased "not a corpus node". A
+full sweep of every absence phrasing in `data/edges.json` found **17 stale records** standing
+behind its zero — closing by node arrival, by a ruling being made, by a founder edge landing, and
+in one case by a degree claim being overtaken. This is decision (116) in a third ledger: **a
+record must account for every way the thing it tracks can actually end** ((116) for anchor
+terminal states, (111) for held-ledger exits).
+
+**★ The repair is the highest-risk moment.** Two of the 17 were *written by* the (118) refresh.
+Rewriting the Arrow and Sen notes on 2026-07-30, it replaced "Duncan Black is not a corpus node"
+with "whether he earns his own founder edge has not been adjudicated" — and that edge had been
+`reviewed` since 2026-07-01. The false clause then propagated into the next session's work order
+as a slate item. **When refreshing a gap note, re-check every clause of the replacement against
+`/data`, not only the clause that went stale.** A half-fix carries a fresh date and is therefore
+trusted harder than the record it replaced.
+
+**Convention — gap sentences name IDs.** Write `person:robert-hooke is still not a corpus node`,
+not `Hooke is not nodified`. The detector's deterministic lane checks a named `type:slug` against
+`/data` with nothing guessed; its prose-label lane is a heuristic and always will be. Measured:
+the reworked detector reaches **7 of the 17** on the un-repaired corpus with **zero false
+positives**, and the other 10 are prose names. Surname matching was implemented as a way to reach
+them and **rejected on measurement** — it immediately produced false positives on Fracastoro,
+Pasteur, Koch and Comte, and a detector that cries wolf makes "none" worthless. **Absence by
+omission** (annotating two of three co-founders as corpus nodes and silently leaving the third
+unannotated) is not regex-detectable at all; it is a known limit, not a covered case.
+
+**The check is itself measured, which is the part (118) skipped.** Its verification was a one-off
+manual counter-example that nothing re-performs; `git ls-tree` at that commit shows no fixture for
+it. Now:
+
+```bash
+npm run report:gap-fixtures        # offline; CI-gated golden fixtures, one per closure shape
+npm run report:gap-mutation-sweep  # offline; maintainer tool — audits the fixtures themselves
+```
+
+Extend both whenever `scripts/lib/stale-gaps.ts` changes, exactly as §15.4 requires for the ladder.
+Two defects surfaced during that measurement and **neither was found by reading the code**: a false
+positive on real data (an unrelated ID 196 characters from the gap phrase posing as its subject —
+fixed by measuring how far real gap sentences actually sit from their subject) and a missed closure
+shape (a `canonical_work` note owes a leg that shares the edge's *source*, not its *target*).
+
+**Live gaps must keep saying so.** A refresh batch closes the records that went false and leaves
+the ones that are still true untouched — `person:robert-hooke`, Whitehead's absent type-theory
+edge and Antonie van Leeuwenhoek's absence were all deliberately preserved by
+`stale-note-refresh-v2`. Sweeping a true gap because it looks like the others is the same error in
+the other direction.

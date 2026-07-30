@@ -1,0 +1,57 @@
+{
+  "version": 2,
+  "batch_id": "endpoint-closure-wave13-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-30"
+  },
+  "nodes": [
+    {
+      "id": "subfield:morphophonology",
+      "type": "subfield",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Morphophonology",
+      "referent": "Morphophonology (also morphophonemics or morphonology), the branch of linguistics that studies the interaction between morphological structure (word formation, inflection, derivation) and phonological patterning -- specifically, how a morpheme's phonological shape alternates depending on its morphological environment (allomorphy, external/internal sandhi, ablaut/apophony, morphologically triggered vowel harmony or consonant mutation). It sits at the interface of subfield:morphology and subfield:phonology within field:linguistics; the term ('Morphonologie') was introduced by Nikolai Trubetzkoy in the late 1920s to name this as a distinct object of study. Distinct from morphology and phonology as standalone branches, and from generative phonology as one specific later theoretical framework for treating some of the same alternations.",
+      "academic_status": "established",
+      "source_hint": "Own knowledge of standard linguistics terminology (e.g. the shape of the Wikipedia 'Morphophonology' article, and general linguistics glossaries/textbooks that list morphophonology as a standard branch alongside morphology and phonology) -- not fetched this session [UNFETCHED]. The classification-system anchors this corpus's sibling linguistics subfields use (LCC/UDC/Wikidata skeleton sourcing, see e.g. edge:phonology-part-of-linguistics) have not been checked for this specific node; I do not know the exact LCC/UDC codes from memory.",
+      "note": "Proposed to give the Trubetzkoy and Baudouin de Courtenay candidates in this wave a grain-disciplined target, per foundry/held.json's own unblock clause for person:nikolai-trubetzkoy, which names 'a subfield:morphophonology node (with person:baudouin-de-courtenay considered alongside)' as one resolution path -- I read that held entry directly. Independently, this is also a genuine, textbook-standard subdiscipline of linguistics, not manufactured solely to host the two person edges.",
+      "rationale": "Morphophonology is a well-established, commonly taught branch of linguistics distinct from both of its parent subfields (it is not simply 'phonology' or 'morphology' under another name -- it has its own object of study, the morphology-conditioned alternation), and the corpus already models comparable interface subfields elsewhere (e.g. subfield:computability-theory as an interface of subfield:mathematical-logic and subfield:theoretical-computer-science). Admitting it also lets the two person candidates in this batch earn their place at the correct grain instead of at the too-broad field:linguistics or subfield:phonology grain.",
+      "uncertainty": "I am reasonably confident the node itself will survive a live check (this is standard terminology, not an obscure or contested coinage). The genuinely open question is the two-parent cross-listing choice on the companion edges file: I have not verified live classification-system codes, so it is possible a live check finds morphophonology classified only under phonology's own code with no independent morphology-side classification, in which case a single-parent placement (phonology only) would be more defensible than the two-parent cross-listing I am proposing. See the companion edges file for the specific refutation conditions on each part_of edge.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:nikolai-trubetzkoy",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Nikolai Trubetzkoy",
+      "referent": "Prince Nikolai Sergeyevich Trubetzkoy (1890-1938), Russian-born linguist and philologist, professor at the University of Vienna from 1922 until his death, and a founding member of the Prague Linguistic Circle. Son of the philosopher Sergei Nikolaevich Trubetskoy (first elected rector of Moscow University, d. 1905) -- not to be confused with his father, or with other members of the same princely Trubetskoy/Trubetzkoy family who were prominent academics in the same era. Author of the posthumously published Grundzuge der Phonologie (Principles of Phonology, 1939), the foundational text of Prague School structural phonology, which includes a dedicated chapter on 'Morphonologie'; earlier, in a paper of around 1929 in the Prague Circle's own Travaux, he introduced 'morphonologie' (morphophonology) as a named object of study distinct from phonology proper. Also worked on comparative Caucasian and Slavic historical linguistics and, separately, wrote on Eurasianism as a cultural-political movement. Not to be confused with any other linguist sharing the surname Trubetzkoy/Trubetskoy.",
+      "source_hint": "Own knowledge of Prague School linguistics history (Grundzuge der Phonologie 1939; the c.1929 'Sur la morphonologie' paper in Travaux du Cercle Linguistique de Prague) -- not fetched this session [UNFETCHED]. Also grounded in this repo's own already-reviewed edge:roman-jakobson-founded-phonology (data/edges.json), which I did read, and which names Trubetzkoy as Jakobson's 'equal co-founder' of phonology via the same 1939 book, and in foundry/held.json's blocking_condition on this same person id, which I also read directly (see the companion edges file notes for how I used, without deferring to, that record).",
+      "note": "This node is proposed only together with the founded_or_formalized edge to subfield:morphophonology in the companion edges file -- per this order's own standing rule, a person with no admissible edge is not admitted on its own.",
+      "rationale": "Independently notable as a central figure of 20th-century structural linguistics (co-founder, with Jakobson, of the already-reviewed edge:roman-jakobson-founded-phonology target) and as the specific originator of morphophonology as a named subdiscipline -- see the companion edge for the founder-grade reasoning at that grain.",
+      "uncertainty": "Biographical specifics (the father-son relationship to Sergei Trubetskoy, the c.1929 paper's exact date and venue, the 'Morphonologie' chapter title) are from my own knowledge, not re-verified against a live source this session -- QC should confirm dates, the exact paper title/year, and the family relationship before promotion. The Eurasianism detail is included only as background color and is not load-bearing for either proposed edge.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:baudouin-de-courtenay",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Jan Baudouin de Courtenay",
+      "referent": "Jan Ignacy Niecislaw Baudouin de Courtenay (1845-1929), Polish linguist of French Huguenot descent, who held professorships at Kazan, Dorpat (Tartu), Kraków, and St Petersburg/Petrograd. Founder, together with his student Mikolaj Kruszewski, of the Kazan School of linguistics; credited with an early, psychologically-grounded formulation of the phoneme as a functional unit of sound, and with distinguishing purely phonetically conditioned sound alternations ('divergences') from morphologically/grammatically conditioned ones ('correlations') in his 1890s work -- a distinction widely treated in histories of linguistics as the direct forerunner of what Trubetzkoy later named and systematized as morphophonology. Also worked on Slavic dialectology and general linguistic theory, and is credited with influencing Ferdinand de Saussure's structuralism. Not to be confused with any other bearer of the (uncommon) surname Baudouin de Courtenay.",
+      "source_hint": "Own knowledge of the history of the Kazan School and of early phoneme theory -- not fetched this session [UNFETCHED]. Also grounded in foundry/held.json's blocking_condition on person:nikolai-trubetzkoy, which I read directly and which names Baudouin de Courtenay as 'a prior claimant' at the morphophonology grain -- used here as corroboration that some source places him at this specific grain, not as the source of the biographical description itself, which is from my own knowledge.",
+      "note": "This node is proposed only together with the influenced edge to subfield:morphophonology in the companion edges file, per the same admission rule as person:nikolai-trubetzkoy above.",
+      "rationale": "Independently notable as founder of the Kazan School and an early phoneme theorist, and specifically relevant to this wave as the pre-Trubetzkoy figure whose work is standardly credited as the direct forerunner of morphophonology -- see the companion edge for why that is proposed as `influenced` rather than `founded_or_formalized`.",
+      "uncertainty": "Biographical specifics (exact institutional posts, dates, the 'divergences'/'correlations' terminology) are from my own knowledge, not re-verified against a live source this session -- QC should confirm before promotion. It is also possible a live check finds him better known, and more strongly claim-stated, for the general phoneme concept than for the specific morphophonology forerunner role this batch focuses on; that would still support the node (via a different, better-attested edge not proposed here) even if the specific proposed edge needed to change.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "Group scope (linguistics, endpoint-closure-wave13-v1): three nodes proposed (subfield:morphophonology, person:nikolai-trubetzkoy, person:baudouin-de-courtenay), each only together with the edge(s) that earn its place -- see the companion linguistics.edges.proposed.json for the edges and for two candidates from the order that are resolved as NO EDGE / NO NODE (Trubetzkoy->phonology re-adjudication; Baudouin de Courtenay->historical-linguistics)."
+  ]
+}

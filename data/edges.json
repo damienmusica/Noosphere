@@ -239,7 +239,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-19"
     },
-    "note": "Turing formalized computability via the Turing machine in 1936 (SEP Turing Machine: \"Turing's 'automatic machines', as he termed them in 1936, were specifically devised for the computation of real numbers\"; MacTutor Turing: \"Turing introduced an abstract machine, now called a 'Turing machine', which moved from one state to another using a precise finite set of rules\"). Plurality preserved (record-not-resolve): Church's lambda calculus (1936) is an independent co-formalization (Church–Turing thesis) and a candidate for a future founder node; the Turing machine became the canonical model."
+    "note": "Turing formalized computability via the Turing machine in 1936 (SEP Turing Machine: \"Turing's 'automatic machines', as he termed them in 1936, were specifically devised for the computation of real numbers\"; MacTutor Turing: \"Turing introduced an abstract machine, now called a 'Turing machine', which moved from one state to another using a precise finite set of rules\"). Plurality preserved (record-not-resolve): Church's lambda calculus (1936) is an independent co-formalization (Church–Turing thesis), now recorded as person:alonzo-church with edge:alonzo-church-founded-computability-theory; the Turing machine became the canonical model. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:alan-turing-founded-turing-machine",
@@ -539,7 +539,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-01"
     },
-    "note": "Sen made founding-grade contributions to modern social choice theory -- 'Collective Choice and Social Welfare' (1970) reformulated the Arrovian framework (social welfare functionals, informational basis, the liberal paradox); Nobel Memorial Prize in Economic Sciences 1998. Record-not-resolve: Kenneth Arrow originated the modern field (Impossibility Theorem, 1951; now a corpus node -- see edge:kenneth-arrow-founded-social-choice-theory) and Duncan Black is also foundational (person:duncan-black is a corpus node; whether he earns his own founder edge here has not been adjudicated) -- SEP 'Social Choice Theory' names Arrow, Sen, and Black as the figures the field took off with. Scope note: Sen's Nobel citation reads 'welfare economics' broadly; social choice is his core theoretical field. Sources: SEP 'Social Choice Theory' + Wikipedia 'Social choice theory'/'Amartya Sen'. Living-person v2 (decision (70)): identity Q132489 verified (P31=Q5, P569 1933, P570 absent = living-confirmed), >=2 independent live claim-stating sources, conservative wording, no escalation -> policy-auto reviewed. Generator QID hint Q125106 was a hallucination; corrected. [Note refreshed 2026-07-30, decision (118): the sentence above replaced a recorded gap that had gone false. The claim, its sources and its confidence are unchanged.]"
+    "note": "Sen made founding-grade contributions to modern social choice theory -- 'Collective Choice and Social Welfare' (1970) reformulated the Arrovian framework (social welfare functionals, informational basis, the liberal paradox); Nobel Memorial Prize in Economic Sciences 1998. Record-not-resolve: Kenneth Arrow originated the modern field (Impossibility Theorem, 1951; now a corpus node -- see edge:kenneth-arrow-founded-social-choice-theory) and Duncan Black is also foundational (person:duncan-black, whose own edge:duncan-black-founded-social-choice-theory has been reviewed since 2026-07-01) -- SEP 'Social Choice Theory' names Arrow, Sen, and Black as the figures the field took off with. Scope note: Sen's Nobel citation reads 'welfare economics' broadly; social choice is his core theoretical field. Sources: SEP 'Social Choice Theory' + Wikipedia 'Social choice theory'/'Amartya Sen'. Living-person v2 (decision (70)): identity Q132489 verified (P31=Q5, P569 1933, P570 absent = living-confirmed), >=2 independent live claim-stating sources, conservative wording, no escalation -> policy-auto reviewed. Generator QID hint Q125106 was a hallucination; corrected. [Note refreshed 2026-07-30, decision (118), and again 2026-07-31, decision (119): the (118) refresh replaced a stale gap sentence with a new claim that was itself already false — edge:duncan-black-founded-social-choice-theory had been reviewed since 2026-07-01, and the session #63 work order copied that false clause into its slate as a task. The claim, its sources and its confidence are unchanged.]"
   },
   {
     "id": "edge:amos-tversky-critiques-economics",
@@ -892,7 +892,26 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "Lavoisier's law of conservation of mass (1770s–80s) is shared across chemistry and physics. Held at proposed: 'influenced field:physics' is diffuse — physics conservation laws have independent origins and the target field is too broad; a thermodynamics-grained target (no node yet) would be more accurate. Permanence: WP https://en.wikipedia.org/w/index.php?title=Antoine_Lavoisier&oldid=1358761697."
+    "note": "Lavoisier's law of conservation of mass (1770s–80s) is shared across chemistry and physics. Held at proposed: 'influenced field:physics' is diffuse — physics conservation laws have independent origins and the target field is too broad; a thermodynamics-grained target was expected to be more accurate, but subfield:thermodynamics was created 2026-07-29 and the retarget was then tested live and failed at every grain; the held-ledger entry for this edge carries that re-measurement and the replacement unblock condition. Permanence: WP https://en.wikipedia.org/w/index.php?title=Antoine_Lavoisier&oldid=1358761697. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
+  },
+  {
+    "id": "edge:antonie-van-leeuwenhoek-founded-microbiology",
+    "source": "person:antonie-van-leeuwenhoek",
+    "target": "subfield:microbiology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:britannica",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-30"
+    },
+    "note": "Closes the gap edge:louis-pasteur-founded-microbiology has recorded as live since it was written. Sources (2 independent, registered): Britannica 'Antonie van Leeuwenhoek' -- 'Through his microscopic observations of organisms such as bacteria and protozoa, Antonie van Leeuwenhoek effectively began the discipline of microbiology'; enwiki Microbiology -- 'He is considered a father of microbiology as he used simple single-lensed microscopes of his own design.' Two peer-reviewed articles were also read and state the epithet flatly, recorded here as corroboration rather than as evidence entries (no registered source): Lane 2015, Phil. Trans. R. Soc. B (doi:10.1098/rstb.2014.0344, PMC4360124) -- 'Leeuwenhoek is universally acknowledged as the father of microbiology'; Kutschera 2023, Microorganisms (doi:10.3390/microorganisms11081994, PMC10458164). ★ The corpus's own prior note UNDERSTATED him: it called him 'co-credited for early microscopy', which is a narrower claim than the field-grain founder epithet the live sources state unqualifiedly. Verification was aimed specifically at that narrower reading and it did not survive. Record-not-resolve plural founding: joins edge:louis-pasteur-founded-microbiology and edge:robert-koch-founded-microbiology; the ~150-year gap between his observations and the 19th-century founding of the discipline is real and is why the confidence is 0.9 rather than higher, not a dispute about the epithet. Namesake explicitly excluded at identity time: Q15762938 is a Springer scientific journal of the same name."
   },
   {
     "id": "edge:applied-linguistics-part-of-linguistics",
@@ -1165,7 +1184,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-19"
     },
-    "note": "Comte founded sociology and coined the term (Wikipedia Auguste Comte: \"Comte's ideas were fundamental to the development of sociology, with him inventing the very term and treating the discipline as the crowning achievement of the sciences\"). Plural/layered founding of sociology preserved (record-not-resolve): co-founders Durkheim and Weber carry their own edges; Karl Marx is also frequently co-cited as a principal architect (noted, no node yet). Person + field Wikipedia articles."
+    "note": "Comte founded sociology and coined the term (Wikipedia Auguste Comte: \"Comte's ideas were fundamental to the development of sociology, with him inventing the very term and treating the discipline as the crowning achievement of the sciences\"). Plural/layered founding of sociology preserved (record-not-resolve): co-founders Durkheim and Weber carry their own edges; Karl Marx is also frequently co-cited as a principal architect and now carries his own edge (person:karl-marx, edge:karl-marx-founded-sociology). Person + field Wikipedia articles. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:auguste-comte-influenced-emile-durkheim",
@@ -1372,7 +1391,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-01"
     },
-    "note": "Bertrand Russell is a co-principal founder of analytic philosophy. Sources (2 independent live-verified): SEP 'Analysis' (analytic method \"In the work of Frege and Russell\") + Wikipedia 'Bertrand Russell' (\"a founder of analytic philosophy, along with his predecessor Gottlob Frege, his friend and colleague G. E. Moore, and his student and protege Ludwig Wittgenstein\"). Record-not-resolve plural founding: Gottlob Frege (already a corpus node -- person:gottlob-frege), G. E. Moore, and Ludwig Wittgenstein (already a corpus node -- person:ludwig-wittgenstein) are co-founders across distinct strands. Identity Q33760 verified live (P31=Q5, P569 1872-05-18, P570 1970-02-02 deceased, logician/philosopher). Generator-guessed QID was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+    "note": "Bertrand Russell is a co-principal founder of analytic philosophy. Sources (2 independent live-verified): SEP 'Analysis' (analytic method \"In the work of Frege and Russell\") + Wikipedia 'Bertrand Russell' (\"a founder of analytic philosophy, along with his predecessor Gottlob Frege, his friend and colleague G. E. Moore, and his student and protege Ludwig Wittgenstein\"). Record-not-resolve plural founding: Gottlob Frege (person:gottlob-frege), G. E. Moore (person:george-edward-moore, with edge:george-edward-moore-founded-analytic-philosophy) and Ludwig Wittgenstein (person:ludwig-wittgenstein) are co-founders across distinct strands; all three are corpus nodes. Identity Q33760 verified live (P31=Q5, P569 1872-05-18, P570 1970-02-02 deceased, logician/philosopher). Generator-guessed QID was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:bertrand-russell-founded-type-theory",
@@ -1391,7 +1410,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-29"
     },
-    "note": "Relation corrected at QC from the generator's default reading and from the deprecated edge:bertrand-russell-influenced-computer-science: the live sources state origination, not downstream influence — SEP 'Type Theory': 'The theory of types was introduced by Russell in order to cope with some contradictions he found in his account of set theory'; enwiki Type theory: 'By 1908, Russell arrived at a ramified theory of types together with an axiom of reducibility, both of which appeared in Whitehead and Russell's Principia Mathematica'. Honest gap: Principia is co-authored with Whitehead, but both sources attribute the type theory specifically to Russell, and no person:alfred-north-whitehead node exists; a Whitehead co-founder edge is left for a later wave rather than asserted here. Resolves the recheck-wave1-v1 hold on the diffuse Russell→computer-science edge by re-grounding the claim at the grain the sources support."
+    "note": "Relation corrected at QC from the generator's default reading and from the deprecated edge:bertrand-russell-influenced-computer-science: the live sources state origination, not downstream influence — SEP 'Type Theory': 'The theory of types was introduced by Russell in order to cope with some contradictions he found in his account of set theory'; enwiki Type theory: 'By 1908, Russell arrived at a ramified theory of types together with an axiom of reducibility, both of which appeared in Whitehead and Russell's Principia Mathematica'. Honest gap: Principia is co-authored with Whitehead, but both sources attribute the type theory specifically to Russell, and person:alfred-north-whitehead has been a corpus node since 2026-07-30 while still holding no type-theory edge of his own; the sources continue to attribute the theory to Russell alone, so this edge asserts no Whitehead claim and that remains a live gap rather than an oversight. Resolves the recheck-wave1-v1 hold on the diffuse Russell→computer-science edge by re-grounding the claim at the grain the sources support. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:bertrand-russell-influenced-computer-science",
@@ -4336,7 +4355,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-19"
     },
-    "note": "Durkheim formally established sociology as a discipline (Wikipedia Émile Durkheim: \"He formally established the academic discipline of sociology, and is commonly cited as one of the principal architects of modern social science, along with Karl Marx and Max Weber\"). Plural/layered founding preserved (record-not-resolve): co-exists with the Comte and Weber edges; Marx co-cited (noted, no node yet). Person + field Wikipedia articles."
+    "note": "Durkheim formally established sociology as a discipline (Wikipedia Émile Durkheim: \"He formally established the academic discipline of sociology, and is commonly cited as one of the principal architects of modern social science, along with Karl Marx and Max Weber\"). Plural/layered founding preserved (record-not-resolve): co-exists with the Comte and Weber edges; Marx co-cited and now recorded (person:karl-marx, edge:karl-marx-founded-sociology). Person + field Wikipedia articles. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:emile-durkheim-influenced-anthropology",
@@ -4430,7 +4449,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-29"
     },
-    "note": "Structural tier, and the only edge on this node. enwiki: \"Entropy is central to the second law of thermodynamics\", and \"The concept of entropy is described by two principal approaches, the macroscopic perspective of classical thermodynamics, and the microscopic description central to statistical mechanics.\" The statistical-mechanics strand is a real second home, but the corpus node is named statistical-physics rather than statistical mechanics, so a §13 co-equal membership is deliberately NOT written on a near-name — single parent, strand recorded. No founder edge: the term is Clausius's, and no Clausius node exists."
+    "note": "Structural tier; the only edge on concept:entropy when this was written, and now one of three. enwiki: \"Entropy is central to the second law of thermodynamics\", and \"The concept of entropy is described by two principal approaches, the macroscopic perspective of classical thermodynamics, and the microscopic description central to statistical mechanics.\" The statistical-mechanics strand is a real second home, but the corpus node is named statistical-physics rather than statistical mechanics, so a §13 co-equal membership is deliberately NOT written on a near-name — single parent, strand recorded. The founder edge this note once recorded as missing now exists: person:rudolf-clausius was admitted 2026-07-29 and edge:rudolf-clausius-founded-entropy records his origination of the term, with edge:ludwig-boltzmann-formalizes-entropy alongside it. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:environmental-engineering-part-of-engineering-and-technology",
@@ -5004,7 +5023,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-29"
     },
-    "note": "Existence agreed (Wikipedia Structuralism: \"Saussure's work in structural linguistics and semiology greatly influenced Lévi-Strauss\"); the directness is debated — transmission was substantially mediated by Roman Jakobson, whom Lévi-Strauss met at the New School in New York in the early 1940s and through whose (and Trubetzkoy's) phonology he absorbed Saussure's \"system of differences.\" Record-not-resolve: Jakobson is a candidate future node (Saussure→Jakobson→Lévi-Strauss mediation chain); this edge records the Saussurean influence with the mediation noted, not adjudicated. clause-6 v2 existence-vs-degree line: existence agreed, directness/character debated → supported + note, NOT disputed (over-fire guard holds). (a)-relation proposed-first."
+    "note": "Existence agreed (Wikipedia Structuralism: \"Saussure's work in structural linguistics and semiology greatly influenced Lévi-Strauss\"); the directness is debated — transmission was substantially mediated by Roman Jakobson, whom Lévi-Strauss met at the New School in New York in the early 1940s and through whose (and Trubetzkoy's) phonology he absorbed Saussure's \"system of differences.\" Record-not-resolve: the Saussure→Jakobson→Lévi-Strauss mediation chain is now written in /data — person:roman-jakobson carries edge:roman-jakobson-influenced-claude-levi-strauss — so this edge records the Saussurean influence beside it rather than in place of it. clause-6 v2 existence-vs-degree line: existence agreed, directness/character debated → supported + note, NOT disputed (over-fire guard holds). (a)-relation proposed-first. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:field-architecture-part-of-domain-arts-and-design",
@@ -5898,7 +5917,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-19"
     },
-    "note": "Cantor founded set theory in the 1870s (SEP Set Theory: \"Set theory, as a separate mathematical discipline, begins in the work of Georg Cantor\"; Wikipedia Georg Cantor: \"Cantor's work between 1874 and 1884 is the origin of set theory\"). Plurality preserved (record-not-resolve): SEP's early-set-theory entry quotes Zermelo crediting the theory as \"created by Cantor and Dedekind\" — Dedekind is a co-credited contributor and a candidate for a future founder node; this edge does not adjudicate sole authorship."
+    "note": "Cantor founded set theory in the 1870s (SEP Set Theory: \"Set theory, as a separate mathematical discipline, begins in the work of Georg Cantor\"; Wikipedia Georg Cantor: \"Cantor's work between 1874 and 1884 is the origin of set theory\"). Plurality preserved (record-not-resolve): SEP's early-set-theory entry quotes Zermelo crediting the theory as \"created by Cantor and Dedekind\" — Dedekind is a co-credited contributor and now carries his own edge (person:richard-dedekind, edge:richard-dedekind-founded-set-theory); this edge does not adjudicate sole authorship. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:georg-cantor-influenced-david-hilbert",
@@ -7648,7 +7667,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-19"
     },
-    "note": "Von Neumann founded game theory (SEP Game Theory: \"Game theory ... was given its first general mathematical formulation by John von Neumann and Oskar Morgenstern (1944)\"; MacTutor von Neumann: the theory of games is \"one of his most original creations\"). Plural founding (record-not-resolve): the true 1944 co-founder is Oskar Morgenstern — an economist and a candidate for a future (cross-domain) founder node — not Nash; Nash (edge:john-nash-founded-game-theory) later formalized the non-cooperative branch."
+    "note": "Von Neumann founded game theory (SEP Game Theory: \"Game theory ... was given its first general mathematical formulation by John von Neumann and Oskar Morgenstern (1944)\"; MacTutor von Neumann: the theory of games is \"one of his most original creations\"). Plural founding (record-not-resolve): the true 1944 co-founder is Oskar Morgenstern — an economist, admitted as person:oskar-morgenstern with edge:oskar-morgenstern-founded-game-theory — not Nash; Nash (edge:john-nash-founded-game-theory) later formalized the non-cooperative branch. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:john-von-neumann-influenced-computer-systems",
@@ -7833,7 +7852,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-01"
     },
-    "note": "Kenneth Arrow is the originating founder of modern social choice theory -- his impossibility theorem in 'Social Choice and Individual Values' (1951) inaugurated the modern axiomatic field, roughly two decades before Sen (1970). Record-not-resolve plural founding: SEP 'Social Choice Theory' names Arrow, Amartya Sen (see edge:amartya-sen-founded-social-choice-theory), and Duncan Black as the figures the field took off with; Duncan Black is a corpus node (person:duncan-black); whether he earns his own founder edge on this field has not been adjudicated, so the plural-founding record here is still one edge short of what the source names. Sources (2 independent, live-verified): SEP 'Social Choice Theory' ('social choice theory took off in the 20th century with the works of Kenneth Arrow, Amartya Sen, and Duncan Black') + Wikipedia 'Social choice theory' ('Kenneth Arrow's book Social Choice and Individual Values is often recognized as inaugurating the modern era of social choice theory'). Identity Q192592 verified live (P31=Q5, P569 1921-08-23, P570 2017-02-21 deceased, occupation economist). Generator QID hint Q380799 was a hallucination (M. Pokora, a French singer); corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. Closes the record-not-resolve gap flagged in edge:amartya-sen-founded-social-choice-theory. [Note refreshed 2026-07-30, decision (118): the sentence above replaced a recorded gap that had gone false. The claim, its sources and its confidence are unchanged.]"
+    "note": "Kenneth Arrow is the originating founder of modern social choice theory -- his impossibility theorem in 'Social Choice and Individual Values' (1951) inaugurated the modern axiomatic field, roughly two decades before Sen (1970). Record-not-resolve plural founding: SEP 'Social Choice Theory' names Arrow, Amartya Sen (see edge:amartya-sen-founded-social-choice-theory), and Duncan Black as the figures the field took off with; all three now carry a founder edge on this field -- person:duncan-black's is edge:duncan-black-founded-social-choice-theory, reviewed since 2026-07-01, so the plural-founding record the source names is complete. Sources (2 independent, live-verified): SEP 'Social Choice Theory' ('social choice theory took off in the 20th century with the works of Kenneth Arrow, Amartya Sen, and Duncan Black') + Wikipedia 'Social choice theory' ('Kenneth Arrow's book Social Choice and Individual Values is often recognized as inaugurating the modern era of social choice theory'). Identity Q192592 verified live (P31=Q5, P569 1921-08-23, P570 2017-02-21 deceased, occupation economist). Generator QID hint Q380799 was a hallucination (M. Pokora, a French singer); corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. Closes the record-not-resolve gap flagged in edge:amartya-sen-founded-social-choice-theory. [Note refreshed 2026-07-30, decision (118), and again 2026-07-31, decision (119): the (118) refresh replaced a stale gap sentence with a new claim that was itself already false — edge:duncan-black-founded-social-choice-theory had been reviewed since 2026-07-01, and the session #63 work order copied that false clause into its slate as a task. The claim, its sources and its confidence are unchanged.]"
   },
   {
     "id": "edge:knowledge-organization-part-of-library-and-information-science",
@@ -8382,7 +8401,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-19"
     },
-    "note": "Pasteur is a founder of microbiology (Wikipedia Louis Pasteur: \"He is regarded as one of the founders of modern bacteriology and has been honored as ... the 'father of microbiology' (together with Robert Koch ...)\"; Wikipedia Microbiology: \"Louis Pasteur is considered a father of microbiology\"). Plural founding preserved (record-not-resolve, not disputed): co-credited with Robert Koch, whose side is now recorded by edge:robert-koch-founded-microbiology. Antonie van Leeuwenhoek, co-credited for early microscopy, is still not a corpus node — that gap is live. Two independent Wikipedia articles. [Note refreshed 2026-07-30, decision (118): the original text said \"Koch not yet a node\", which went stale when person:robert-koch and his founder edge were both admitted. The claim and its sources are unchanged.]"
+    "note": "Pasteur is a founder of microbiology (Wikipedia Louis Pasteur: \"He is regarded as one of the founders of modern bacteriology and has been honored as ... the 'father of microbiology' (together with Robert Koch ...)\"; Wikipedia Microbiology: \"Louis Pasteur is considered a father of microbiology\"). Plural founding preserved (record-not-resolve, not disputed): co-credited with Robert Koch, whose side is now recorded by edge:robert-koch-founded-microbiology. Antonie van Leeuwenhoek is now person:antonie-van-leeuwenhoek with edge:antonie-van-leeuwenhoek-founded-microbiology; live verification found the field-grain founder epithet stated unqualifiedly, so 'co-credited for early microscopy' understated him. Two independent Wikipedia articles. [Note refreshed 2026-07-30, decision (118): the original text said \"Koch not yet a node\", which went stale when person:robert-koch and his founder edge were both admitted. The claim and its sources are unchanged.] [Note refreshed 2026-07-31, decision (120): the gap this note recorded was closed by the same batch that refreshed it. Recording the closure in the same change is the rule decision (119) was paid for. The claim, its sources and its confidence are unchanged.]"
   },
   {
     "id": "edge:luciano-floridi-founded-philosophy-of-information",
@@ -8437,7 +8456,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-29"
     },
-    "note": "Co-founder edge, record-not-resolve. The field article states \"The founding of the field of statistical mechanics is generally credited to three physicists\" and names Boltzmann first, for developing \"the fundamental interpretation of entropy in terms of a collection of microstates\"; the person article independently calls the development of statistical mechanics one of his greatest achievements. Honest gaps: Maxwell and Gibbs, the other two credited founders, are not corpus nodes. Naming note: en.wikipedia.org/wiki/Statistical_physics is a redirect to Statistical mechanics, so the citation is anchored on the canonical title per §8; enwiki treats the two as one topic and this node's QID (Q677916) sitelinks to that article, while Wikidata separately keeps Q188715 for statistical mechanics."
+    "note": "Co-founder edge, record-not-resolve. The field article states \"The founding of the field of statistical mechanics is generally credited to three physicists\" and names Boltzmann first, for developing \"the fundamental interpretation of entropy in terms of a collection of microstates\"; the person article independently calls the development of statistical mechanics one of his greatest achievements. The other two credited founders are now recorded: person:james-clerk-maxwell and person:josiah-willard-gibbs, admitted 2026-07-30, each carry their own founder edge on this field (edge:james-clerk-maxwell-founded-statistical-physics, edge:josiah-willard-gibbs-founded-statistical-physics). Naming note: en.wikipedia.org/wiki/Statistical_physics is a redirect to Statistical mechanics, so the citation is anchored on the canonical title per §8; enwiki treats the two as one topic and this node's QID (Q677916) sitelinks to that article, while Wikidata separately keeps Q188715 for statistical mechanics. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:ludwig-wittgenstein-founded-philosophy-of-language",
@@ -8979,7 +8998,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-01"
     },
-    "note": "Matthias Jakob Schleiden is a co-founder of cell theory, the foundational theory of cell biology -- the botanist who (Beiträge zur Phytogenesis, 1838) argued that all plant tissues are composed of cells, the plant-side counterpart to Schwann's extension to animals. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory'. Record-not-resolve: Schwann (animal cells) is the co-founder [own node/edge this batch]; Virchow (cell-from-cell, 1855) and Hooke (\"cell\", 1665) not nodified. Identity Q76747 verified live (P31=Q5, P569 1804, P570 1881 deceased, botanist, enwiki 'Matthias Jakob Schleiden'); generator-guessed QID (Q57249) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+    "note": "Matthias Jakob Schleiden is a co-founder of cell theory, the foundational theory of cell biology -- the botanist who (Beiträge zur Phytogenesis, 1838) argued that all plant tissues are composed of cells, the plant-side counterpart to Schwann's extension to animals. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory'. Record-not-resolve: Schwann (animal cells) is the co-founder [own node/edge this batch]; Virchow (cell-from-cell, 1855) is now person:rudolf-virchow with edge:rudolf-virchow-founded-cell-theory; Robert Hooke (\"cell\", 1665) is still not a corpus node — that gap is live. Identity Q76747 verified live (P31=Q5, P569 1804, P570 1881 deceased, botanist, enwiki 'Matthias Jakob Schleiden'); generator-guessed QID (Q57249) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:matthias-jakob-schleiden-founded-cell-theory",
@@ -9573,6 +9592,26 @@
     }
   },
   {
+    "id": "edge:morphophonology-part-of-linguistics",
+    "source": "subfield:morphophonology",
+    "target": "field:linguistics",
+    "relation": "part_of",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:britannica",
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-30"
+    },
+    "note": "Sibling of subfield:phonology and subfield:morphology under field:linguistics, not a child of either. ★ The generator proposed a §13 co-equal cross-listing under BOTH parents and independent verification refused it: every source that states a genus makes LINGUISTICS the parent (Britannica 'morphophonemics, in linguistics, study of the relationship between morphology and phonology'; enwiki 'the branch of linguistics that studies the interaction between morphological and phonological or phonetic processes'; Crystal's Dictionary of Linguistics and Phonetics 'A branch of linguistics'), while the language relating it to phonology and morphology is INTERFACE language, not membership language. Wikidata Q661093 agrees structurally: P361 = Q8162 linguistics, with no P279 and no P361/P279 to Q40998 phonology or Q38311 morphology. Cross-listing is for genuine co-equal membership (§13), not for a field that sits between two others by subject matter."
+  },
+  {
     "id": "edge:mycology-part-of-biology",
     "source": "subfield:mycology",
     "target": "field:biology",
@@ -9873,6 +9912,25 @@
       "proposed_at": "2026-06-12"
     },
     "note": "Skeleton part_of: LCC RD593-596/RD520-599.5 Surgery by region (neurological) + UDC 617.51/616.8 + AANS."
+  },
+  {
+    "id": "edge:nikolai-trubetzkoy-founded-phonology",
+    "source": "person:nikolai-trubetzkoy",
+    "target": "subfield:phonology",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:oxford-bibliographies",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-30"
+    },
+    "note": "Co-founder edge completing the record edge:roman-jakobson-founded-phonology has carried since 2026-06: 'Trubetzkoy is the equal co-founder ... a future Trubetzkoy->phonology founder edge sits alongside this one.' Sources (2 independent, registered): Oxford Bibliographies in Linguistics, Battistella, 'Nikolai Trubetzkoy' (DOI 10.1093/obo/9780199772810-0179) -- 'Nikolai Sergeyevich Trubetzkoy is regarded by many as the creator of the science of phonology'; enwiki Roman Jakobson -- 'With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology.' Two further claim-stating sources were read and are recorded but not used as evidence because neither provider is registered in data/sources.json: the University of Vienna's '650 plus' history project ('Trubetzkoy is considered the founder of phonology') and Honeybone's entry in Key Thinkers in Linguistics and the Philosophy of Language (Edinburgh UP, 2005) ('One of the founding fathers of phonology'). ★ REVERSES the person-wave12-v1 hold, on the FIRST branch of that hold's own unblock clause (>=2 independent claim-stating sources at the phonology grain), not the second. The reversal is a search-path difference, not a change in the world: wave 12's verifier found one such source, this pass found four. Counterweight recorded, not resolved: Britannica designates no founder of phonology at all and lists him among five 'Key People', and Oxford Bibliographies partly attributes his results to 'his extension of Saussurean insights'. Record-not-resolve -- this edge does not claim sole founding and does not adjudicate priority against Jakobson or Baudouin de Courtenay."
   },
   {
     "id": "edge:noam-chomsky-founded-generative-grammar",
@@ -12002,7 +12060,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-29"
     },
-    "note": "Person leg, single-author by necessity rather than by claim. Wikidata P50 lists BOTH Q33760 Russell and Q183372 Whitehead, and the enwiki lead names both — but person:alfred-north-whitehead does not exist, having been deliberately dropped as an honesty gap in person-wave11-v1 the same day (no corpus endpoint for his own founder claim). The co-authorship is therefore recorded here on the edge and in that batch's rejection ledger, not silently reduced. Confidence is held at 0.85 for exactly that incompleteness."
+    "note": "Person leg. Wikidata P50 lists BOTH Q33760 Russell and Q183372 Whitehead, and the enwiki lead names both; person:alfred-north-whitehead was admitted 2026-07-30 and the co-author leg edge:principia-mathematica-canonical-work-alfred-north-whitehead now stands beside this one, so the co-authorship is recorded in /data rather than only in prose. Confidence stays at 0.85, matching the sibling leg. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:principia-mathematica-canonical-work-mathematical-logic",
@@ -12992,7 +13050,7 @@
       "model_version": "claude-sonnet-4-6",
       "proposed_at": "2026-06-30"
     },
-    "note": "Jakobson co-founded the modern discipline of phonology with Nikolai Trubetzkoy via the Prague Linguistic Circle (Wikipedia Roman Jakobson: \"With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology\"); corroborated independently by the linguistics literature attributing structural phonology and distinctive-feature theory to Trubetzkoy and Jakobson, 1939 (Prague Circle / Grundzuge der Phonologie; Jakobson, Fant & Halle distinctive features). Record-not-resolve co-founding: Trubetzkoy is the equal co-founder (not yet a node; his Grundzuge der Phonologie, 1939, is the foundational text) - a future Trubetzkoy->phonology founder edge sits alongside this one; this edge does not claim sole founding. Direction person->subfield correct; identity Q156201 verified (P31=Q5, P570 1982-07-18). founder ladder (decision (61)): both endpoints reviewed + supported -> auto-reviewed. Generator QID hint Q190412 was a hallucination (Moscow administrative okrug); corrected to Q156201."
+    "note": "Jakobson co-founded the modern discipline of phonology with Nikolai Trubetzkoy via the Prague Linguistic Circle (Wikipedia Roman Jakobson: \"With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology\"); corroborated independently by the linguistics literature attributing structural phonology and distinctive-feature theory to Trubetzkoy and Jakobson, 1939 (Prague Circle / Grundzuge der Phonologie; Jakobson, Fant & Halle distinctive features). Record-not-resolve co-founding: Trubetzkoy is the equal co-founder (person:nikolai-trubetzkoy, whose Grundzuge der Phonologie, 1939, is the foundational text) and edge:nikolai-trubetzkoy-founded-phonology now stands alongside this one; this edge does not claim sole founding. Direction person->subfield correct; identity Q156201 verified (P31=Q5, P570 1982-07-18). founder ladder (decision (61)): both endpoints reviewed + supported -> auto-reviewed. Generator QID hint Q190412 was a hallucination (Moscow administrative okrug); corrected to Q156201. [Note refreshed 2026-07-31, decision (120): the gap this note recorded was closed by the same batch that refreshed it. Recording the closure in the same change is the rule decision (119) was paid for. The claim, its sources and its confidence are unchanged.]"
   },
   {
     "id": "edge:roman-jakobson-influenced-claude-levi-strauss",
@@ -14847,7 +14905,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-01"
     },
-    "note": "Theodor Schwann is a co-founder of cell theory, the foundational theory of cell biology -- he extended the cell doctrine to animal tissues (Mikroskopische Untersuchungen, 1839), establishing with the botanist Matthias Jakob Schleiden that all living organisms are composed of cells. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory' (\"a scientific theory first formulated in the mid-nineteenth century, that living organisms are made up of cells, that they are the basic structural/organizational unit of all organisms\"). Record-not-resolve: Schleiden (plant cells) is the co-founder [own node/edge this batch]; Rudolf Virchow added \"omnis cellula e cellula\" (1855) and Robert Hooke coined the term \"cell\" (1665) -- neither nodified. Identity Q76745 verified live (P31=Q5, P569 1810, P570 1882 deceased, physician/physiologist, enwiki 'Theodor Schwann'); generator-guessed QID (Q57247) was a hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+    "note": "Theodor Schwann is a co-founder of cell theory, the foundational theory of cell biology -- he extended the cell doctrine to animal tissues (Mikroskopische Untersuchungen, 1839), establishing with the botanist Matthias Jakob Schleiden that all living organisms are composed of cells. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory' (\"a scientific theory first formulated in the mid-nineteenth century, that living organisms are made up of cells, that they are the basic structural/organizational unit of all organisms\"). Record-not-resolve: Schleiden (plant cells) is the co-founder [own node/edge this batch]; Rudolf Virchow added \"omnis cellula e cellula\" (1855) and is now person:rudolf-virchow with edge:rudolf-virchow-founded-cell-theory; Robert Hooke coined the term \"cell\" (1665) and is still not a corpus node — that gap is live. Identity Q76745 verified live (P31=Q5, P569 1810, P570 1882 deceased, physician/physiologist, enwiki 'Theodor Schwann'); generator-guessed QID (Q57247) was a hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
   },
   {
     "id": "edge:theodor-schwann-founded-cell-theory",

@@ -1,0 +1,76 @@
+{
+  "version": 2,
+  "batch_id": "endpoint-closure-wave13-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-30"
+  },
+  "edges": [
+    {
+      "id": "edge:morphophonology-part-of-morphology",
+      "source": "subfield:morphophonology",
+      "target": "subfield:morphology",
+      "relation": "part_of",
+      "confidence": 0.75,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Own knowledge that morphophonology's subject matter -- how a morpheme's phonological shape changes according to its morphological environment -- draws on morphological analysis (what the morphemes and their combinatorics are). Not independently fetched or checked against LCC/UDC/Wikidata this session [UNFETCHED], unlike every sibling linguistics part_of edge in this corpus (e.g. edge:morphology-part-of-linguistics), which is the same classification-system standard QC should apply here.",
+      "note": "Cross-listing (docs/data-foundry.md §13), companion edge to edge:morphophonology-part-of-phonology below -- morphophonology genuinely sits at the interface of both parent subfields, paralleling this corpus's own subfield:computability-theory -> subfield:mathematical-logic + subfield:theoretical-computer-science precedent (an interface between two subfields of the same field, not a field-to-field cross-list like subfield:biochemistry).",
+      "rationale": "Morphophonology cannot be fully characterized without morphological analysis (the identity and combinatorics of the morphemes undergoing alternation) -- this is a genuine two-parent interface of the kind §13 exists to record, not a case where one parent is clearly primary and the other merely adjacent.",
+      "uncertainty": "Strongest live source a verifier would likely find: a general linguistics reference (Wikipedia 'Morphophonology', a glossary of linguistic terms, or a standard 'branches of linguistics' textbook diagram) describing morphophonology as bridging morphology and phonology -- I expect this to be easy to find and uncontroversial, but have not fetched it. What would refute this specific edge: a live LCC/UDC/Wikidata classification check (the same standard used for every sibling part_of edge in this corpus) that files morphophonology only under phonology's own classification code with no independent morphology-side classification -- in which case this edge, not the phonology one, should be dropped rather than both kept by default.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:morphophonology-part-of-phonology",
+      "source": "subfield:morphophonology",
+      "target": "subfield:phonology",
+      "relation": "part_of",
+      "confidence": 0.82,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Own knowledge that morphophonology's alternations are phonological in nature (what governs the sound change itself), and that its founding text (Trubetzkoy's Grundzuge der Phonologie, 1939) is itself a phonology book with a dedicated 'Morphonologie' chapter, suggesting classification systems are at least as likely to house morphophonology under phonology as under morphology. Not independently fetched or checked against LCC/UDC/Wikidata this session [UNFETCHED].",
+      "note": "Cross-listing (docs/data-foundry.md §13), companion edge to edge:morphophonology-part-of-morphology above. Confidence set slightly higher than the morphology-side edge specifically because the field's own founding text was published as part of a phonology monograph, not a morphology one -- a real (if soft) signal about which parent a live classification check is more likely to confirm strongly.",
+      "rationale": "Morphophonology's alternations are phonological processes (what sound change occurs), triggered by morphological conditioning -- both the process type and the discipline's own founding text (a phonology monograph) point to phonology as at least a co-equal, and possibly primary, parent.",
+      "uncertainty": "Strongest live source a verifier would likely find: the same general linguistics references as the morphology-side edge, plus Trubetzkoy's own Grundzuge der Phonologie being classed as a phonology work despite containing the morphonology chapter. What would refute this: a live check finding morphophonology classified independently of phonology (e.g. filed under general grammar/morphology only) -- unlikely on my own recollection, but not fetched this session.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:nikolai-trubetzkoy-founded-morphophonology",
+      "source": "person:nikolai-trubetzkoy",
+      "target": "subfield:morphophonology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.8,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Own knowledge of Trubetzkoy's c.1929 paper ('Sur la morphonologie', Travaux du Cercle Linguistique de Prague) introducing and delineating morphonology/morphophonology as a distinct object of study, and of the dedicated 'Morphonologie' chapter in his 1939 Grundzuge der Phonologie giving it its first systematic full-length treatment -- not fetched this session [UNFETCHED]. Independently corroborated (not sourced from) by foundry/held.json's blocking_condition on this same person id, which I read directly and which records that a prior wave's live verification found founder-grade language for Trubetzkoy specifically scoped to the morphophonology grain.",
+      "note": "Fulfils the second path named in foundry/held.json's own unblock clause for person:nikolai-trubetzkoy: 'a subfield:morphophonology node (with person:baudouin-de-courtenay considered alongside), where the founder-grade sourcing actually sits.' See the notes array below for why the first path (a phonology-grain edge) is deliberately NOT re-proposed in this batch.",
+      "rationale": "Trubetzkoy did not merely coin a convenient label for an area others had already delineated (the coining-exclusion pattern this order names, and the pattern this corpus already declined an edge for entirely in Whewell/uniformitarianism) -- his 1929 paper is credited with defining morphophonology's object of study for the first time, and his 1939 book gave it its first systematic treatment. That is founding/formalizing a subdiscipline, which the coining exclusion does not reach.",
+      "uncertainty": "Strongest live source a verifier would likely find: the Wikipedia 'Morphophonology' article's history/etymology section (crediting Trubetzkoy's c.1929 coining and definition) together with a Trubetzkoy biography (Wikipedia or Britannica) noting the Grundzuge der Phonologie chapter -- two independent articles, matching this corpus's own founder-ladder practice (decision (62)) of counting the person article plus the field/concept article as two claim-stating sources. What would refute this: live sources framing the 1929 paper as merely naming alternations Baudouin de Courtenay and others had already described piecemeal, with no distinct definitional act of Trubetzkoy's own -- collapsing this into the coining-exclusion pattern after all -- or fewer than two independent sources using explicit founder-grade language at this specific grain. This is the strongest, most specific claim in this batch, but it rests entirely on my own unverified recollection of the 1929 paper's existence and role, which I could not fetch this session.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:baudouin-de-courtenay-influenced-morphophonology",
+      "source": "person:baudouin-de-courtenay",
+      "target": "subfield:morphophonology",
+      "relation": "influenced",
+      "confidence": 0.62,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Own knowledge of Baudouin de Courtenay's 1890s Kazan School distinction between phonetically conditioned ('divergent') and morphologically/grammatically conditioned ('correlative') sound alternations, commonly treated in histories of phonology as the direct forerunner of Trubetzkoy's morphonology -- not fetched this session [UNFETCHED]. Also grounded in foundry/held.json's blocking_condition on person:nikolai-trubetzkoy, which I read directly and which names Baudouin de Courtenay as 'a prior claimant' at the morphophonology grain, without specifying what relation grade the underlying source used -- I am not copying a grade from that record, since it does not state one.",
+      "note": "Deliberately proposed at `influenced`, not `founded_or_formalized`, despite the held record's 'prior claimant' framing -- see rationale and uncertainty for why I stepped down from the stronger relation on my own independent reasoning.",
+      "rationale": "Baudouin de Courtenay's 1890s work is, as far as I can honestly reconstruct, standardly treated as the forerunner Trubetzkoy built on and explicitly named -- not as an independent, competing act of founding the same named subdiscipline himself: he neither used the term nor, on my own recollection, delineated it as a distinct field of study the way Trubetzkoy's 1929 paper did. That is the textbook shape of `influenced`, unlike the subfield:microbiology precedent (Pasteur/Koch, with the live Leeuwenhoek gap) where multiple figures each independently claimed founder-grade credit for the same specific content.",
+      "uncertainty": "Strongest live source a verifier would likely find: a general history-of-phonology or history-of-linguistics source (e.g. a Wikipedia 'Morphophonology' or 'Jan Baudouin de Courtenay' history section) describing his divergent/correlative-alternation distinction as anticipating or laying groundwork for morphophonology. What would refute or change this: if live sources instead credit Baudouin de Courtenay with founding-grade language for morphophonology specifically (not just the general phoneme concept), rivaling Trubetzkoy's -- QC should upgrade this to `founded_or_formalized` alongside Trubetzkoy under the record-not-resolve plural-founder norm already established for subfield:microbiology. Conversely, if live sources tie his relevant work only to the general phoneme/phonology concept with no specific link to morphophonology, even `influenced` at this target would be too strong and QC should decline this edge, leaving him to earn his corpus place through a different, better-attested edge not proposed in this batch.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "person:nikolai-trubetzkoy -> founded_or_formalized -> subfield:phonology (order candidate 4, RE-ADJUDICATION of the foundry/held.json entry) resolved as NO EDGE, on my own fresh reconstruction -- not by deferring to the prior hold, though I did read it (per the order's own instruction to read prior batches) and it converges with the conclusion below. My own independent recollection is that Trubetzkoy's most distinctively HIS founder-grade credit (as opposed to jointly-with-Jakobson credit, already captured in the existing reviewed edge:roman-jakobson-founded-phonology) centers specifically on morphophonology -- the c.1929 paper and the Grundzuge der Phonologie 'Morphonologie' chapter. The general 'founder of phonology' language I can recall tends to be JOINT (Trubetzkoy + Jakobson + the wider Prague Circle), which the corpus already records via the Jakobson edge, rather than an independently-attributed solo claim for Trubetzkoy at the general-phonology grain. A second, solo founded_or_formalized edge at that same broad target would need its own independent 2-source floor at that specific grain (decision (62)'s operational standard), and I cannot honestly claim that from memory alone. Channeling the founder-grade credit I am confident of into the morphophonology-grain edge proposed above is, in my own judgment, the more honest and better-supported placement. This proposal does not resolve the held item by fiat -- it supplies the specific alternative the item's own unblock clause names as sufficient ('a subfield:morphophonology node ... where the founder-grade sourcing actually sits'), and leaves the general-phonology-grain question itself for a live verifier with real search access, which I do not have this session.",
+    "person:baudouin-de-courtenay -> founded_or_formalized -> subfield:historical-linguistics (order candidate 5) resolved as NO EDGE and NO NODE-JUSTIFYING claim on this target. Historical-comparative linguistics as a field was established by the early-19th-century generation (Rasmus Rask 1814, Jacob Grimm 1822, Franz Bopp) and consolidated by the Neogrammarians (Brugmann, Osthoff, Leskien) from the 1870s -- decades before Baudouin de Courtenay's own active period (Kazan School, 1870s-1890s) and well before his 1929 death. A founder's contribution cannot postdate the founding of the thing it supposedly founds, so founded_or_formalized to the field itself is unavailable to him regardless of how significant his other work was -- this is the same referent-predates-the-claimant problem this corpus's own precedent already excluded Whewell/uniformitarianism on, not the separate coining-exclusion. His own best-attested, most distinctive contribution (the phoneme concept, the phonetic/psychophonetic alternation distinction) is synchronic/structural, not historical-comparative; to the extent he engaged historical linguistics at all it was as a critic pushing back against strict Neogrammarian sound-law regularity by incorporating psychological and analogical factors -- a critique/refinement of an existing paradigm, not a founding act. I cannot honestly name a narrower subfield grain (e.g. an internal-reconstruction or sound-change-theory node) where founder-grade sourcing for him might actually sit, because no such node exists in /data for me to check and I have no live source this session to propose one from -- declining entirely rather than guessing a narrower target.",
+    "Group scope note: this file proposes four edges (two cross-listing part_of edges for the new subfield:morphophonology node, and one edge each for person:nikolai-trubetzkoy and person:baudouin-de-courtenay). Both ordered person candidates in this wave resolve to a single proposed edge each, at the morphophonology grain; the two other ordered candidates (Trubetzkoy->phonology re-adjudication, Baudouin de Courtenay->historical-linguistics) are resolved as NO EDGE per the reasoning above, consistent with this order's framing that decline is a legitimate and possibly correct outcome."
+  ]
+}

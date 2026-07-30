@@ -29,6 +29,7 @@ import { edgeSchema } from "../src/schema/edge.ts";
 import { sourceSchema } from "../src/schema/source.ts";
 import { externalLinkSchema } from "../src/schema/external-link.ts";
 import { learningPathSchema } from "../src/schema/learning-path.ts";
+import { findStaleGaps } from "./lib/stale-gaps.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, "..", "data");
@@ -270,55 +271,44 @@ if (gapRanked.length === 0) {
 }
 
 // --- 10. Stale recorded gaps ----------------------------------------------------
-// An edge note that records "X is not a corpus node" is load-bearing: it is how
-// the next wave's slate gets built. Admitting X silently falsifies every such
-// note that named them — in the same commit, invisibly, and a later reader
-// trusts the stale sentence. Measured 2026-07-30 (decision (118)): six notes had
-// gone false, and TWO of the six were falsified by the very batch that ran
-// hours earlier in the same session; a third had been stale for weeks unnoticed.
-// This is a report, not a validator: the detector matches an en label against
-// gap phrasing, which is a heuristic, and a false positive must not fail CI.
-// The phrasing is always "<Name> … not a corpus node". Attribute by looking
-// BACKWARD from each gap phrase to the nearest known label, rather than forward
-// from a label: a note may name the same person several times (a source quote
-// plus the gap sentence), and a forward scan from the first mention silently
-// misses the gap — measured, that exact bug made the first version of this
-// detector report a clean corpus while six notes were stale.
-const GAP_PHRASE = /(?:is |are )?(?:still |now )?not (?:yet )?a corpus node|not yet a node|has no corpus node/g;
-const LABEL_LOOKBEHIND = 90;
+// An edge note that records something missing is load-bearing: it is how the
+// next wave's slate gets built, so a later reader trusts it. When the missing
+// thing arrives, the sentence silently becomes false in the same commit.
+// Detection lives in scripts/lib/stale-gaps.ts, which enumerates the ways a
+// recorded gap can actually close — a node arriving, and a ruling being made —
+// after the first version of this section watched only the first and reported
+// "none" while the corpus held live instances of both (decisions (118), (119)).
+// A report, not a validator: the label lane is heuristic and a false positive
+// must not fail CI. Its own coverage is measured by npm run report:gap-fixtures.
 const labelToNode = new Map<string, string>();
 for (const [nodeId, tr] of enTranslationByNode) {
   const label = (tr as { label?: string }).label;
   if (label && label.trim().length > 3) labelToNode.set(label.trim(), nodeId);
 }
-type StaleGap = { edgeId: string; label: string; nodeId: string };
-const staleGaps: StaleGap[] = [];
-for (const e of edges) {
-  const note = e.note;
-  if (!note) continue;
-  // Only the live prose: text after a dated refresh stamp quotes what it replaced.
-  const live = note.split("[Note refreshed")[0] ?? "";
-  for (const m of live.matchAll(GAP_PHRASE)) {
-    const at = m.index ?? 0;
-    const prefix = live.slice(Math.max(0, at - LABEL_LOOKBEHIND), at);
-    // Longest match wins, so "Robert Remak" is preferred over a bare surname.
-    let best: { label: string; nodeId: string } | undefined;
-    for (const [label, nodeId] of labelToNode) {
-      if (!prefix.includes(label)) continue;
-      if (!best || label.length > best.label.length) best = { label, nodeId };
-    }
-    if (best && !staleGaps.some((g) => g.edgeId === e.id && g.nodeId === best!.nodeId)) {
-      staleGaps.push({ edgeId: e.id, label: best.label, nodeId: best.nodeId });
-    }
-  }
-}
+const staleGaps = findStaleGaps({
+  edges: edges.map((e) => ({
+    id: e.id,
+    source: e.source,
+    target: e.target,
+    relation: e.relation,
+    note: e.note,
+  })),
+  nodeIds: new Set(nodes.map((n) => n.id)),
+  labelToNode,
+});
 out("");
-out("Stale recorded gaps (an edge note calls someone absent who is now a corpus node)");
+out("Stale recorded gaps (a note records something as missing that the corpus now has)");
 if (staleGaps.length === 0) {
   out("  - none");
 } else {
-  for (const g of staleGaps.sort((a, b) => byString(a.edgeId, b.edgeId))) {
-    out(`  - ${g.edgeId} — names "${g.label}" as missing, but ${g.nodeId} exists`);
+  for (const g of staleGaps) {
+    const what =
+      g.kind === "node-absent"
+        ? `names "${g.subject}" as missing, but ${g.nodeId} exists`
+        : g.kind === "founder-edge-absent"
+          ? `says "${g.subject}" has no founder edge, but ${g.closedBy} exists`
+          : `says the ruling on "${g.subject}" is still owed, but ${g.closedBy} exists`;
+    out(`  - ${g.edgeId} — ${what}  [${g.kind}/${g.lane}: "${g.phrase}"]`);
   }
   out(`  ${staleGaps.length} stale gap note(s) — refresh via a set_note metadata flip.`);
 }

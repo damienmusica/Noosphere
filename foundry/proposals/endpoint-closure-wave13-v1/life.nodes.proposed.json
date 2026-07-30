@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "batch_id": "endpoint-closure-wave13-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-30"
+  },
+  "nodes": [
+    {
+      "id": "person:antonie-van-leeuwenhoek",
+      "type": "person",
+      "domain": "life_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Antonie van Leeuwenhoek",
+      "referent": "Antonie Philips van Leeuwenhoek (1632-1723), Dutch tradesman and self-taught scientist from Delft, Dutch Republic. Ground his own single-lens glass spheres into the most powerful magnifying lenses of his era and, beginning in the 1670s, was the first person to observe and describe (via letters to the Royal Society of London) a wide range of microorganisms he called 'animalcules' -- now recognized as protozoa and bacteria -- along with spermatozoa, red blood cells, and striated muscle fibers. Commonly credited in general reference works as a/the 'father of microbiology' for opening the microbial world to direct observation, roughly two centuries before Pasteur and Koch established microbiology's disease-causing/experimental theoretical framework. NOT the eponymous scientific journal 'Antonie van Leeuwenhoek: International Journal of General and Molecular Microbiology' (Springer, named in his honor), and not any other person sharing the surname van Leeuwenhoek.",
+      "source_hint": "Wikipedia 'Antonie van Leeuwenhoek' (recalled: the article's own opening line describes him as 'commonly known as \"the Father of Microbiology\"') and Wikipedia 'Microbiology' (recalled: its history section names him, alongside Pasteur and Koch, among those credited as a father of the field) -- not fetched this session [UNFETCHED]. This is the same source pair the corpus already cites for edge:louis-pasteur-founded-microbiology (Wikipedia 'Louis Pasteur' + Wikipedia 'Microbiology'); I am recalling, not re-verifying, that the 'Microbiology' article's history section also credits Leeuwenhoek. Biographical specifics (dates, birthplace, 'animalcules' terminology, list of first observations) are likewise from my own knowledge, not re-verified this session.",
+      "note": "Proposed specifically to close the gap the corpus's own reviewed Pasteur edge names by name: 'Antonie van Leeuwenhoek, co-credited for early microscopy, is still not a corpus node -- that gap is live.' (edge:louis-pasteur-founded-microbiology, data/edges.json). See the companion edges.proposed.json for the adjudication of which relation and target that sourcing actually supports.",
+      "rationale": "Directly named in the corpus's own reviewed data as a live, named gap. Independently notable well beyond the founder question -- first person to observe bacteria, protozoa, spermatozoa and red blood cells -- so the node is warranted on ordinary compass grounds even if QC's live check on the companion edge lands on a narrower relation than proposed.",
+      "uncertainty": "All biographical and bibliographic specifics are unverified recollection, not fetched this session -- QC should confirm dates, the 'animalcules' framing, and the list of first observations against a live source before promotion. The namesake risk (the Springer journal bearing his name) is real and is addressed explicitly in the referent text above, but QC's resolver check should still confirm it discriminates correctly against that journal entity.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "Candidate-3 search (life sciences, reviewed-note-named gaps): I grepped data/edges.json for every 'not a corpus node' / 'not yet a node' / 'live gap' style note across the whole corpus, then checked every subfield with zero or few founder edges (botany, zoology, physiology, marine-biology, mathematical-biology, molecular-biology all have zero founder-tier edges, but that is unaddressed coverage, not a gap a reviewed note names -- I did not treat absence-of-attempt as equivalent to a named gap). The only life-sciences item any reviewed edge note names as a live, unclosed gap is Antonie van Leeuwenhoek (quoted above). Developmental biology (Karl Ernst von Baer), evolutionary biology (Darwin/Wallace), genetics (Mendel), and cell theory/cell biology (Schwann/Schleiden/Virchow/Remak) all have their named record-not-resolve co-founders already admitted as of this session (Virchow and Remak both landed 2026-07-30 per the refreshed notes I read) or, in Robert Hooke's case (named in edge:theodor-schwann-founded-cell-biology as 'neither nodified'), the note frames him as a coiner of the term 'cell', not a founder claim -- structurally the same coining-not-founding exclusion this corpus already applies to William Whewell, so I did not treat it as an open candidate worth proposing without being asked. I am reporting this rather than inventing a third candidate to fill the slot."
+  ]
+}
