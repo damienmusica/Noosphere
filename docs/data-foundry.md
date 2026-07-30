@@ -9,7 +9,7 @@ model, relation taxonomy, policies) for the topics they own. See
 This brief describes the **methodology and boundaries**. It does not, by itself, build Data Foundry
 tooling — that happens in later, explicit PRs (see the implementation sequence below).
 
-> **Codified through vault decision (114).** This document is a projection of the vault decision
+> **Codified through vault decision (115).** This document is a projection of the vault decision
 > log: a decision after this cursor must either land its normative text here (or in the artifact it
 > names) or record an explicit no-op in its decision-log entry — and the session-end ritual bumps
 > the cursor either way. A decision without a concrete artifact has not happened yet.
@@ -276,7 +276,27 @@ operationalization** revision only, no Zod / validator / taxonomy change. Ratifi
 codified here by decision (68) after it fired correctly without over-firing (decision (67)). The
 counterpart **classification-placement (structural) relation set is `{part_of, member_of, adjacent_to}`,
 machine-enforced in the ladder gate** (ratified 2026-07-02); `applies_to` is excluded from the structural
-set per the session-#55 ruling.
+set per the session-#55 ruling. **`prerequisite_for` is likewise excluded from every auto ladder and from
+the structural tier** (decision (115), 2026-07-30, transcribing decision (15) clause 2 of 2026-06-10):
+prerequisite claims are editorial-class pedagogical judgments whose automatic path stops at `proposed`; a
+reviewed ladder may open only after a designed and *measured* editorial-precision pilot (the same
+(d)-type path `applies_to` awaits), with the evidence standard already named in
+`docs/relation-taxonomy.md` — a curriculum/textbook source *stating the dependency*.
+
+The enforcement topology, stated honestly (the (115) adversarial review corrected the first draft
+here): the **class-level** invariant has been declared and machine-enforced all along —
+`validate-data.ts` hard-fails any `reviewed` edge with `evidence_kind: "editorial"`, citing (15) by
+date, since decision (16). What was **underdeclared was the relation level**: nothing in §8, the
+`ladders.ts` whitelist comment, or the fixtures said that `prerequisite_for`'s absence from
+`EDGE_AUTO_LADDER` was a decision rather than an oversight — the partial "(88) one level up" shape.
+That third is what (115) closes. Consequently a *labeled* editorial edge has **no machine path to
+`reviewed` at all** (even a `manual-cpo` sanction aborts at the validator); only the five legacy
+`proposed` prerequisite edges that predate `evidence_kind` could ride `manual-cpo`, and that route
+still demands an explicit CPO decision-log pointer — the designed escape hatch, not a gap. Labeling
+backfill for those five is a recorded follow-up (promotion ops carry no `set_evidence_kind`; needs a
+small toolchain capability). The three `reviewed` prerequisite edges stand on git evidence: born
+`reviewed` in the bootstrap commit (`0c29df2`, `source:manual-curation-v1`), status never changed
+since, predating edge promotion policy v1 entirely.
 
 **Run the tree only after** atomize + **≥2 independent claim-stating** grounding sources are live-fetched
 and verbatim-checked + adversarial perspective-diverse counter-evidence QC. The verdict for one
