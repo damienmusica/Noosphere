@@ -9,7 +9,7 @@ model, relation taxonomy, policies) for the topics they own. See
 This brief describes the **methodology and boundaries**. It does not, by itself, build Data Foundry
 tooling — that happens in later, explicit PRs (see the implementation sequence below).
 
-> **Codified through vault decision (120).** This document is a projection of the vault decision
+> **Codified through vault decision (121).** This document is a projection of the vault decision
 > log: a decision after this cursor must either land its normative text here (or in the artifact it
 > names) or record an explicit no-op in its decision-log entry — and the session-end ritual bumps
 > the cursor either way. A decision without a concrete artifact has not happened yet.
@@ -1274,6 +1274,23 @@ non-coverage, never silently dropped.
   distribution), so this is a **modeling ruling, not a schema change**. General rule: when a founder's true
   referent is a system/artifact/concept rather than a discipline, point the edge at a `concept` node for that
   referent rather than forcing a discipline target (referent precision over skeleton convenience).
+- 2026-07-31 artifact referents and node-class admission (decision (121), session #63): the ENIAC
+  question — do machines get nodes? — is answered by **decision (71), which already ruled it**: an
+  artifact/system referent points at a `concept` node, executed in `concept:internet`. **No artifact
+  class, no charter amendment, no relation added.** The `work` layer cannot take a machine and the
+  refusal is an *identity* fact, not a scope fence: Q169399 ENIAC has P31 = one-of-a-kind computer,
+  **no P50 and no P577** (only P1619, date of official opening), so W-criteria 1, 2 and 3 fail at
+  once and decision (89)'s relaxation logic has no anchor left to preserve. `canonical_work` is
+  additionally fixed as work-sourced, so re-typing the referent rescues nothing. Measured demand:
+  **5 named artifacts across 844 edges and 634 nodes**, all already carried by reviewed edges
+  without artifact nodes, and **0 of 66 recorded gaps** names a machine. ★ The honest cost, recorded
+  rather than hidden: "Mauchly and Eckert designed ENIAC" is stated uncontested by four registered
+  sources and has **no edge form in this atlas**. Biographical facts about a person belong in that
+  person's editorial summary; the edge layer records how knowledge connects. ★★ The ruling was
+  written **only after** the gates that would enforce it were put in code — synthetic `work:eniac`,
+  `concept:eniac` and `tool:eniac` decision files, each carrying nothing but a verified QID, all
+  passed `ladder-check` green beforehand, because W1–W5 and C1–C4 were prose and nothing read
+  `node.type`. **A ruling about which node classes may exist is worthless while that is true.**
 - 2026-06-30 movement/school axis (decision (73), session #40): §12 structural rule 5 ratified — the
   three pending cases split three ways by what each *is*: structural-anthropology→`subfield`
   (promoted proposed→reviewed; Wikidata "branch of anthropology"; founder edge
@@ -1645,3 +1662,35 @@ the ones that are still true untouched — `person:robert-hooke`, Whitehead's ab
 edge and Antonie van Leeuwenhoek's absence were all deliberately preserved by
 `stale-note-refresh-v2`. Sweeping a true gap because it looks like the others is the same error in
 the other direction.
+
+### 15.11 Node admission is enforced, not described (decision (121))
+
+The keep-criteria that decide **which nodes may exist** — W1–W5 for works, C1–C4 for concepts, the
+standing "an isolated node is not admitted" refusal — were prose for the whole of the foundation
+phase. `scripts/foundry/lib/ladders.ts` never read `node.type`, and `scripts/validate-data.ts` has
+no type-conditional rule. Measured 2026-07-31: three synthetic decision files — `work:eniac`,
+`concept:eniac`, `tool:eniac` — each carrying nothing but a verified Wikidata identity record and a
+`node-promotion-v1` sanction, **all passed `foundry:ladder-check` green**, including a node type no
+decision has ever adjudicated.
+
+Two of those gates can be decided mechanically, so they are:
+
+- **Which classes exist is the schema enum, and only the schema enum.** `tool` was removed from it
+  (bootstrap scaffolding, never adjudicated, zero instances, and it had already misled a session
+  handover into citing a policy gate that does not exist). A second list inside the ladder was
+  written and then deliberately **removed** — two lists drift, and drift between a declaration and
+  its enforcement is the failure this whole section exists to stop. Adding a class back is a CPO
+  ruling with keep-criteria attached, per §12 structural rule 5 and the decision (73) test, not an
+  enum edit.
+- **A reviewed node must carry at least one reviewed edge.** Measured 626/626 across all eight
+  types the day it was encoded, zero exceptions. A `proposed` edge does not rescue a node from
+  isolation; there is a fixture for that.
+
+What remains prose is the part a machine cannot decide — whether a candidate is *watershed*, whether
+a referent is *precise*. That is the correct division, and it is now explicit rather than accidental.
+
+**Both mutation sweeps restore from an in-memory copy, never from git.** The ladder sweep's
+`git checkout --` restore deleted the decision-(121) gate mid-write — the second measured instance
+of a footgun its own docstring warned about, and the first time it destroyed a whole change rather
+than a comment. The same fix removes a false alarm in both sweeps' final check, which compared
+against git and so reported the maintainer's own uncommitted work as sweep residue.

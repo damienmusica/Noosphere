@@ -117,6 +117,30 @@ const fixtures: Fixture[] = [
       identity: [{ node_id: "concept:fixture-a", provider: "wikidata", external_id: "Q1", verified: true, method: "wbgetentities", retrieved_at: DATE }],
       sanctions: [{ subject_id: "concept:fixture-a", ladder: "node-promotion-v1" }],
     }),
+    extraPostEdges: [mkEdge("edge:fixture-a-anchor", "concept:fixture-a", "field:fixture-parent", "part_of")],
+  },
+  {
+    name: "node admission blocks a reviewed node with no reviewed edge (decision (121))",
+    expect: "block",
+    fragment: "an isolated node is not admitted",
+    decision: mkDecision({
+      adds: { nodes: [mkNode("concept:fixture-a", { type: "concept", external_ids: { wikidata: "Q1" } })] },
+      identity: [{ node_id: "concept:fixture-a", provider: "wikidata", external_id: "Q1", verified: true, method: "wbgetentities", retrieved_at: DATE }],
+      sanctions: [{ subject_id: "concept:fixture-a", ladder: "node-promotion-v1" }],
+    }),
+  },
+  {
+    name: "an edge that is only `proposed` does not rescue a node from isolation",
+    expect: "block",
+    fragment: "an isolated node is not admitted",
+    decision: mkDecision({
+      adds: { nodes: [mkNode("concept:fixture-a", { type: "concept", external_ids: { wikidata: "Q1" } })] },
+      identity: [{ node_id: "concept:fixture-a", provider: "wikidata", external_id: "Q1", verified: true, method: "wbgetentities", retrieved_at: DATE }],
+      sanctions: [{ subject_id: "concept:fixture-a", ladder: "node-promotion-v1" }],
+    }),
+    extraPostEdges: [
+      mkEdge("edge:fixture-a-weak", "concept:fixture-a", "field:fixture-parent", "part_of", { status: "proposed" }),
+    ],
   },
   {
     name: "node-promotion-v1 blocks unverified identity",
@@ -138,6 +162,7 @@ const fixtures: Fixture[] = [
       verdicts: [{ subject_id: "subfield:fixture-b", verdict: "supported", sources: src(true, 2) }],
       sanctions: [{ subject_id: "subfield:fixture-b", ladder: "node-promotion-v1.4" }],
     }),
+    extraPostEdges: [mkEdge("edge:fixture-b-anchor", "subfield:fixture-b", "field:fixture-parent", "part_of")],
   },
   {
     name: "node-promotion-v1.4 blocks at 1 independent authority (threshold ≥2)",
@@ -182,6 +207,7 @@ const fixtures: Fixture[] = [
       verdicts: [{ subject_id: "person:fixture-alive", verdict: "supported", sources: src(true, 2) }],
       sanctions: [{ subject_id: "person:fixture-alive", ladder: "living-person-v2" }],
     }),
+    extraPostEdges: [mkEdge("edge:fixture-alive-anchor", "person:fixture-alive", "field:fixture-parent", "part_of")],
   },
   {
     name: "living-person-v2 blocks without p570_absent_confirmed_at",
@@ -508,6 +534,7 @@ const fixtures: Fixture[] = [
       sanctions: [{ subject_id: "concept:fixture-promoted", ladder: "node-promotion-v1" }],
     }),
     extraPost: [mkNode("concept:fixture-promoted", { type: "concept", external_ids: { wikidata: "Q7" } })],
+    extraPostEdges: [mkEdge("edge:fixture-promoted-anchor", "concept:fixture-promoted", "field:fixture-parent", "part_of")],
   },
   {
     name: "promotion path: proposed→reviewed without a sanction is blocked",

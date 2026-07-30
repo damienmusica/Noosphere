@@ -56,6 +56,9 @@ MUTATIONS = [
     ("vocabulary: 'nodified' verb form dropped", "|(?:not|neither) nodified", "", 1),
     ("vocabulary: 'neither' arm of the nodified form dropped", "(?:not|neither) nodified", "not nodified", 1),
     ("vocabulary: founder-edge lane blinded entirely", "/no founder edge|without a founder edge/gi", "/(?!)/gi", 1),
+    ("vocabulary: 'neither X nor Y' family blinded", "/neither[^;]{0,120}?\\bnor\\b[^;]{0,120}?(?:is|are) (?:a )?corpus nodes?/gi", "/(?!)/gi", 1),
+    ("neither-nor: span excludes periods again (breaks on 'J. Presper')", "[^;]{0,120}?(?:is|are) (?:a )?corpus nodes?", "[^.;]{0,120}?(?:is|are) (?:a )?corpus nodes?", 1),
+    ("suppression: resolution window starts at phrase START again", "resolvedInline(live, at + span.length, subject)", "resolvedInline(live, at, subject)", 1),
     ("vocabulary: 'without a founder edge' dropped", "|without a founder edge", "", 1),
     (
         "vocabulary: adjudication lane blinded entirely",
@@ -187,5 +190,6 @@ if unapplied:
     for u in unapplied:
         print(f"  - {u}")
 
-p = subprocess.run(["git", "status", "--short", "--", TARGET], cwd=REPO, capture_output=True, text=True)
-print(f"\ntarget file after sweep: {'as found' if not p.stdout.strip() or '??' in p.stdout else 'MODIFIED -> ' + p.stdout}")
+# Compare against the in-memory copy, never against git: git also reports the
+# maintainer's own uncommitted edits, and a check that cries wolf gets ignored.
+print(f"\ntarget file after sweep: {'as found' if open(TARGET).read() == original else 'RESIDUE LEFT — restore failed'}")

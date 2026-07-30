@@ -14,7 +14,7 @@
  * stop-point: fix the transcription in the same change as the vault ruling,
  * never silently.
  *
- * Codified through vault decision (120). A decision after this cursor must
+ * Codified through vault decision (121). A decision after this cursor must
  * either update this transcription (with its golden fixture in
  * ladder-fixtures.ts, which guards threshold fidelity in CI) or record an
  * explicit no-op in its decision-log entry; the session-end ritual bumps the
@@ -136,6 +136,13 @@ export function checkLadders(input: LadderInput): LadderFinding[] {
   const sanctionBySubject = new Map(decision.sanctions.map((s) => [s.subject_id, s]));
   const outcomes = reviewedOutcomes(input);
   const outcomeIds = new Set(outcomes.map((o) => o.id));
+  /** Endpoints of every reviewed edge in the post-apply graph. */
+  const reviewedEdgeEndpoints = new Set<string>();
+  for (const edge of postEdgesById.values()) {
+    if (edge.status !== "reviewed") continue;
+    reviewedEdgeEndpoints.add(edge.source);
+    reviewedEdgeEndpoints.add(edge.target);
+  }
 
   // set_external_ids is earned in-batch: every provider/value written onto a
   // node must be backed by a verified identity record in THIS decision — the
@@ -222,6 +229,29 @@ export function checkLadders(input: LadderInput): LadderFinding[] {
         violation(id, `sanctioned node not found in post-apply state`, ladder);
         continue;
       }
+
+      // --- Node-admission gates (decision (121)) --------------------------
+      // Until now the keep-criteria that decide WHICH nodes may exist — W1–W5
+      // for works, C1–C4 for concepts, the isolated-node refusal — lived only
+      // in docs/data-foundry.md, and nothing here read `node.type`. Measured
+      // 2026-07-31 while adjudicating the ENIAC referent question: synthetic
+      // `work:eniac`, `concept:eniac` and `tool:eniac` decision files, each
+      // carrying nothing but a verified QID, ALL passed ladder-check green —
+      // including a type no decision has ever ratified. Which CLASSES may exist
+      // is now enforced one layer up, by the schema enum (decision (121) removed
+      // `tool` from it), so this gate carries the part the enum cannot see.
+      // Every reviewed node in this corpus carries at least one reviewed edge:
+      // measured 626/626 across all eight types the day this was written, zero
+      // exceptions. It is the rule behind every "an isolated node is not
+      // admitted" refusal in the decision log, and it was enforced by nobody.
+      if (!reviewedEdgeEndpoints.has(id)) {
+        violation(
+          id,
+          `ends reviewed with no reviewed edge — an isolated node is not admitted (decision (121))`,
+          ladder,
+        );
+      }
+
       const identities = identityByNode.get(id) ?? [];
       const verifiedIds = identities.filter((r) => r.verified);
 

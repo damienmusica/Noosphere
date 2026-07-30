@@ -94,6 +94,18 @@ const EDGE_UNADJUDICATED =
  */
 const FOUNDER_EDGE_ABSENT = /no founder edge|without a founder edge/gi;
 
+/**
+ * "Neither X nor Y is a corpus node" — a family the audit named and the first
+ * build skipped, then found live on the very note a later policy decision
+ * turned on. It needs its own handling because the construction carries no
+ * "not", and because its subjects sit INSIDE the phrase rather than before it,
+ * so the backward attribution every other family uses cannot see them. The
+ * span may not exclude periods: measured, the first build did and stopped dead
+ * at "J. Presper Eckert" — initials are ordinary inside a personal name.
+ */
+const NEITHER_NOR_ABSENT =
+  /neither[^;]{0,120}?\bnor\b[^;]{0,120}?(?:is|are) (?:a )?corpus nodes?/gi;
+
 /** Marks the tail of a note as historical rather than a live claim. */
 const REFRESH_STAMP = "[Note refreshed";
 /** Inline "the gap above has since been closed" bookkeeping. */
@@ -155,7 +167,12 @@ function livePart(note: string): string {
   return at === -1 ? note : note.slice(0, at);
 }
 
-/** Is the gap at `at` already answered later in the same note, for this subject? */
+/**
+ * Is the gap already answered later in the same note, for this subject?
+ * `at` must be the END of the matched phrase, never its start — the phrase
+ * itself can contain words the resolution vocabulary looks for, and measured,
+ * "Neither X nor Y is a corpus node" suppressed itself that way.
+ */
 function resolvedInline(live: string, at: number, subject: string): boolean {
   const after = live.slice(at, at + RESOLUTION_LOOKAHEAD);
   if (!INLINE_RESOLUTION.test(after)) return false;
@@ -216,7 +233,7 @@ export function findStaleGaps(input: StaleGapInput): StaleGap[] {
         const at = m.index ?? 0;
         const id = idBefore(live, at, ABSENCE_LOOKBEHIND);
         if (!id || !nodeIds.has(id)) continue;
-        if (resolvedInline(live, at, id)) continue;
+        if (resolvedInline(live, at + m[0].length, id)) continue;
         push({
           edgeId: e.id,
           kind: "node-absent",
@@ -235,7 +252,7 @@ export function findStaleGaps(input: StaleGapInput): StaleGap[] {
       const at = m.index ?? 0;
       const best = labelBefore(live, at, labelToNode);
       if (!best || !nodeIds.has(best.nodeId)) continue;
-      if (resolvedInline(live, at, best.label)) continue;
+      if (resolvedInline(live, at + m[0].length, best.label)) continue;
       push({
         edgeId: e.id,
         kind: "node-absent",
@@ -270,7 +287,7 @@ export function findStaleGaps(input: StaleGapInput): StaleGap[] {
         pairs.get(`${e.source}|${id}`) ??
         pairs.get(`${id}|${e.source}`);
       if (!closedBy || closedBy === e.id) continue;
-      if (resolvedInline(live, at, id)) continue;
+      if (resolvedInline(live, at + m[0].length, id)) continue;
       push({
         edgeId: e.id,
         kind: "edge-unadjudicated",
@@ -282,6 +299,31 @@ export function findStaleGaps(input: StaleGapInput): StaleGap[] {
       });
     }
 
+    // --- "neither X nor Y is a corpus node": subjects are inside the phrase ---
+    NEITHER_NOR_ABSENT.lastIndex = 0;
+    for (const m of live.matchAll(NEITHER_NOR_ABSENT)) {
+      const span = m[0];
+      const at = m.index ?? 0;
+      const subjects = new Map<string, string>();
+      for (const id of span.match(NODE_ID_RE) ?? []) subjects.set(id, id);
+      for (const [label, nodeId] of labelToNode) {
+        if (span.includes(label)) subjects.set(label, nodeId);
+      }
+      for (const [subject, nodeId] of subjects) {
+        if (!nodeIds.has(nodeId)) continue;
+        if (resolvedInline(live, at + span.length, subject)) continue;
+        push({
+          edgeId: e.id,
+          kind: "node-absent",
+          lane: subject === nodeId ? "explicit-id" : "label",
+          phrase: span,
+          subject,
+          nodeId,
+          closedBy: nodeId,
+        });
+      }
+    }
+
     // --- founder-edge-absent (deterministic: any founder edge on that node?) --
     FOUNDER_EDGE_ABSENT.lastIndex = 0;
     for (const m of live.matchAll(FOUNDER_EDGE_ABSENT)) {
@@ -290,7 +332,7 @@ export function findStaleGaps(input: StaleGapInput): StaleGap[] {
       if (!id) continue;
       const closedBy = founded.get(id);
       if (!closedBy || closedBy === e.id) continue;
-      if (resolvedInline(live, at, id)) continue;
+      if (resolvedInline(live, at + m[0].length, id)) continue;
       push({
         edgeId: e.id,
         kind: "founder-edge-absent",
