@@ -94,6 +94,8 @@ npm run foundry:draft-decision  -- <batch-id> --qc-by "<name>=<version>"   # off
 npm run foundry:verify-identity -- foundry/decisions/<batch>.json --write  # local-only network
 npm run foundry:anchor          -- foundry/decisions/<batch>.json --write  # local-only network (SPN circuit breaker; --no-spn on outage days)
 npm run foundry:ladder-check    -- foundry/decisions/<batch>.json          # offline
+npm run foundry:ladder-fixtures                                            # offline; CI-gated golden fixtures (run after ANY ladder change)
+npm run foundry:ladder-mutation-sweep                                      # offline; maintainer tool — audits the fixtures themselves (patches lib/ladders.ts, restores)
 npm run foundry:apply-batch     -- foundry/decisions/<batch>.json          # offline; THE write path
 npm run foundry:report          -- foundry/decisions/<batch>.json --write  # offline
 

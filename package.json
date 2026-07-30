@@ -21,6 +21,7 @@
     "foundry:fetch-corpus": "tsx scripts/foundry/fetch-corpus.ts",
     "foundry:ladder-check": "tsx scripts/foundry/ladder-check.ts",
     "foundry:ladder-fixtures": "tsx scripts/foundry/ladder-fixtures.ts",
+    "foundry:ladder-mutation-sweep": "python3 scripts/foundry/ladder-fixture-mutation-sweep.py",
     "foundry:verify-identity": "tsx scripts/foundry/verify-identity.ts",
     "foundry:anchor": "tsx scripts/foundry/anchor.ts",
     "foundry:report": "tsx scripts/foundry/report.ts",

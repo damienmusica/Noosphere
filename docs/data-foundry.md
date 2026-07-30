@@ -1435,6 +1435,26 @@ policy was added and nothing relaxed. **The general lesson: a ladder's transcrip
 when a batch of that relation runs through the gate, so relation families that have not had a batch
 since §15 are the places to expect further gaps.**
 
+**Golden fixtures guard threshold fidelity (decision (114)).** `scripts/foundry/ladder-fixtures.ts`
+gives every ladder both a passing fixture and a fixture blocked exactly at its ratified threshold,
+runs offline in CI (`npm run foundry:ladder-fixtures`), and validates each synthetic decision through
+the real Zod schema first, so decision-schema drift surfaces there too. Its target is the failure
+class a prose co-change obligation cannot catch: an omission or a mistranscribed threshold is
+invisible until a batch of that shape executes. **When a decision changes a ladder threshold, the
+relation map, or a safety net, update the fixtures in the same change** — a fixture and §8 that
+disagree are themselves a stop-point.
+
+The harness is itself audited by mutation: `python3 scripts/foundry/ladder-fixture-mutation-sweep.py`
+(maintainer tool, not CI — it patches `lib/ladders.ts` in place and restores it after each case)
+injects 29 plausible transcription errors and reports any that no fixture catches. Measured
+2026-07-30: **29/29 caught**. Its first run scored 24/29 and named six real blind spots — the
+`living-person-v2` source floor, `member_of` and `adjacent_to` missing from the classification
+whitelist, `critiques` missing from the auto-ladder map, `node-promotion-v1.4` accepting an
+unverified anchor record, and — most serious — the entire `promotions` branch of `reviewedOutcomes`,
+the path most real batches take, escaping ladder scrutiny without any fixture noticing. Fixtures for
+all six landed in the same change. **A new fixture without a mutation that fails when it is removed
+is unmeasured coverage**; run the sweep after adding one.
+
 Metadata-flip refinement (CPO-ratified 2026-07-02, the first divergence this stop-point caught in
 production): a `reviewed→reviewed` promotion op is a **metadata flip** (`set_indexable` /
 `set_note`), not a promotion — it does not (re)earn reviewed status and demands no node ladder.
