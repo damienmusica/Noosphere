@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "batch_id": "artifact-referent-ruling-v1",
+  "decided_at": "2026-07-31",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-31"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "edge",
+      "id": "edge:john-von-neumann-influenced-computer-systems",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_note": "Promoted 2026-07-29 (a-relations-wave7-v1, ladder (68)). Both recorded blockers are resolved. (1) The status cap: the target subfield:computer-systems was `proposed` when this edge was written and has since been promoted to `reviewed` under node-policy v1.4 (ACM CCS anchor, decision (102)) — clause 3 no longer blocks it. (2) The sourcing: two independent claim-stating articles now support it — enwiki First Draft of a Report on the EDVAC (\"It contains the first published description of the logical design of a computer using the stored-program concept, which has come to be known as the von Neumann architecture\") and enwiki Von Neumann architecture (\"is a computer architecture based on the First Draft of a Report on the EDVAC , written by John von Neumann in 1945, describing designs discussed with John Mauchly and J.\"). The attribution dispute the original note flagged is preserved rather than resolved: the same source states \"the name has become controversial due to von Neumann's failure to name other contributors\", and the second names Mauchly and Eckert as participants in the designs discussed. That is a credit-and-share contest on top of an agreed authorship and influence — the existence-vs-share line of §8 clause-6 v2 — so it routes to supported plus this note, the same ruling shape applied to Einstein and relativity in person-wave11-v1 the same day. Neither person:john-mauchly nor person:j-presper-eckert is a corpus node; honest gap. Written with IDs rather than surnames on purpose: in prose this sentence was invisible to the stale-gap detector, which is how decision (121) found it while adjudicating the very question it records. [Note refreshed 2026-07-31, decision (121): the gap sentence was rewritten into the machine-checkable ID form. The claim, its sources and its confidence are unchanged.]",
+      "note": "gap sentence rewritten into the detectable ID form (decision (121))"
+    }
+  ],
+  "translation_updates": [],
+  "verdicts": [],
+  "identity": [],
+  "sanctions": [],
+  "rejections": [],
+  "held": [
+    {
+      "id": "person:john-mauchly",
+      "blocking_condition": "John Mauchly and J. Presper Eckert: still held, with the unblock clause CORRECTED by decision (121). ★ The previous clause — 'create work:eniac / work:edvac ... and record the machine-level credit through canonical_work' — was unexecutable in BOTH halves, and neither failure is a scope refusal. (a) `work:eniac` fails three W-criteria simultaneously on live identity facts: Q169399 P31 = Q28542014 one-of-a-kind computer (criterion 1, the Vernadsky guard), no P50 at all (criterion 2), and no P577 — its only date is P1619, date of official opening (W2). Machines have no author and no publication, so there is no anchor left for decision (89)'s relaxation logic to preserve. (b) `canonical_work` is fixed by the taxonomy as work-sourced ('the work is always the source'), so re-typing the referent to a concept does not rescue it either. (c) The one document the two men did author, 'Automatic High Speed Computing: A Progress Report on the EDVAC' (1945-09-30), has no Wikidata item; and Q5452926 'First Draft of a Report on the EDVAC' is admissible as a work but its sole P50 is von Neumann, so it can carry canonical_work to him and to nobody else. CORRECTED UNBLOCK: decision (71)'s ratified rule governs — 'when a founder's true referent is a system/artifact/concept rather than a discipline, point the edge at a concept node for that referent' — so the shape is a `concept` referent plus `founded_or_formalized`, the 1:1 mirror of person:vint-cerf → concept:internet. Which referent (Q189088 von Neumann architecture, Q1134867 stored-program computer, or the machine itself) is a referent-precision call for a normal wave with Lane B verification, NOT for this ruling. ★ Sourcing measured 2026-07-31 and recorded so the next wave does not have to rediscover it: the MACHINE-grain claim is strong and abundant — enwiki ENIAC 'ENIAC was designed by John Mauchly and J. Presper Eckert', enwiki John Mauchly 'along with J. Presper Eckert, designed ENIAC ... as well as EDVAC', MacTutor Mauchly 'collaborated in the construction of', Britannica 'The ENIAC was designed and built by', plus Wikidata P287 designed-by naming both. The CONCEPT-grain claim is currently ONE source: enwiki Von Neumann architecture, 'Eckert and Mauchly had essentially finished designing a stored program computer before discussing the ideas with von Neumann' (cited there to Bergin 2000 p.34). enwiki Stored-program computer mentions neither man; MacTutor von Neumann mentions neither. So this ruling gives them an admissible SHAPE, not an admission — it moves the blockage from 'no expressible form' to 'one claim-stating source short', which is a testable condition rather than an impossible one. ★ A cheaper route was surfaced and is worth trying first: person:john-von-neumann already carries a reviewed 0.85 `influenced` edge to subfield:computer-systems grounded on the EDVAC report, and the same two articles say that report was 'based on the work of Eckert and Mauchly'. Wave 12 split the two men at that grain on identical evidence and called the split an artifact of search paths; the Trubetzkoy precedent of 2026-07-31 says the correct move for that shape is a re-search, not a new mechanism.",
+      "recheck": "manual",
+      "batch_id": "artifact-referent-ruling-v1",
+      "recorded_at": "2026-07-31"
+    },
+    {
+      "id": "person:j-presper-eckert",
+      "blocking_condition": "Held on exactly the same terms as person:john-mauchly — see that entry for the corrected unblock clause and the measured sourcing. ★ This row exists because he did not have one: wave 12 held both men deliberately together but wrote a single ledger entry under Mauchly's ID, so `foundry:recheck-held` has never machine-checked Eckert's own /data state and would not have noticed if he were admitted alone. A ledger entry whose subject is only named in prose is not a ledger entry; that is the same defect decision (119) fixed for gap notes, in a second ledger.",
+      "recheck": "manual",
+      "batch_id": "artifact-referent-ruling-v1",
+      "recorded_at": "2026-07-31"
+    },
+    {
+      "id": "person:john-atanasoff",
+      "blocking_condition": "Recorded rather than admitted. His claim is artifact-grained like Mauchly's and Eckert's — enwiki leads with 'credited with inventing the first electronic digital computer' — and the ideas the sources attribute to him are either pre-existing (binary arithmetic, Boolean logic) or artifact-adjacent (regenerative capacitor memory), so he has no in-scope concept referent of his own today. The 1973 Honeywell v. Sperry Rand ruling states a person-to-person derivation ('Eckert and Mauchly ... derived that subject matter from one Dr. John Vincent Atanasoff'), not a claim about any field or concept; a court ruling is also a different evidence kind from the claim-stating scholarly sources §8 requires, and the same article preserves counter-evidence in the same breath. UNBLOCK: he is downstream of the Mauchly/Eckert admission — an `influenced` edge between two person nodes needs both endpoints — and it would carry `disputed: true` when written.",
+      "recheck": "manual",
+      "batch_id": "artifact-referent-ruling-v1",
+      "recorded_at": "2026-07-31"
+    }
+  ],
+  "held_resolutions": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Decision (121) — the CPO ruling on whether this atlas admits machines, delegated to the CTO and decided after a ten-agent panel whose three designs were ALL refuted as fatal by their own adversarial pass. What survived is smaller than any of them proposed.",
+    "★ The question could not be answered safely as posed, because nothing enforced any answer. Synthetic work:eniac, concept:eniac and tool:eniac decision files — each carrying only a verified QID — all passed ladder-check green, including a type no decision ever adjudicated. That is fixed in code first (schema enum is now the single source of truth for node classes; `tool` removed; the isolated-node rule is a violation, measured 626/626), and only then is the substantive ruling worth writing down.",
+    "★ NO artifact node class, and no charter amendment: decision (71) already ratified the rule for this family — an artifact/system referent points at a `concept` node — and executed it in concept:internet. Measured demand does not justify more: 5 named artifacts across 844 edges and 634 nodes, all already carried by reviewed edges without artifact nodes, and 0 of 66 recorded gaps names a machine.",
+    "★ The honest cost, stated rather than hidden: the claim about these two men that four registered sources state uncontested — that they designed ENIAC — has no edge form in this atlas and will not get one. Biographical facts about a person live in that person's editorial summary; the edge layer records how knowledge connects. All three panel designs named this as their own strongest objection, and it is the right trade only because the alternative is a node class with no keep-criteria, no relation that fits (zero of thirteen express 'built'), and a measured demand of five.",
+    "This ruling admits nothing. The referent-precision call goes to a normal wave with Lane B verification, now that the gates it would be checked against actually exist."
+  ]
+}
