@@ -181,5 +181,26 @@
     "batch_id": "a-relations-wave7-v1",
     "recorded_at": "2026-07-29",
     "note": "Supersedes the recheck-wave1-v1 entry of 2026-07-02 to record the fresh measurement date. Mirrors the wave-3 evolutionary-biology-to-epidemiology hold, which fails the same way."
+  },
+  {
+    "id": "person:marcus-von-plenciz",
+    "blocking_condition": "Marcus von Plenciz → concept:germ-theory-of-disease: no edge admitted. Independent live verification returned DISPUTED and found that even `influenced` fails the ≥2 independent claim-stating floor: the one source that states a relation (enwiki Germ theory of disease) says he 'expanded upon' Fracastoro, which is the expander role the Hutton/Lyell rule excludes from a founder edge, and no second source states any relation to the theory at all. ★ Correction of this batch's own order: the generation order asserted that 'a prior wave DECLINED him an edge on expander-not-originator grounds'. That is FALSE — grep of foundry/decisions/person-wave11-v1.json and its proposals returns zero rejection, held or verdict entries for him; he appears only inside the note text of edge:girolamo-fracastoro-influenced-germ-theory-of-disease as a recorded gap. The orchestrator fabricated a precedent and fed it to a generator and a verifier. The verdict survives because it rests on live sources, not on the false premise, but the premise is recorded here as an error. Unblock: ≥2 independent claim-stating sources asserting a founding or influence relation between von Plenciz and germ theory — a contribution/priority claim about contagium animatum is not enough.",
+    "recheck": "manual",
+    "batch_id": "person-wave12-v1",
+    "recorded_at": "2026-07-30"
+  },
+  {
+    "id": "person:john-mauchly",
+    "blocking_condition": "John Mauchly and J. Presper Eckert → subfield:computer-systems: BOTH held, deliberately together. Independent verification split them on identical evidence — Mauchly REJECT (0 independent claim-stating sources at subfield grain) and Eckert SUPPORTED/influenced (3) — which the batch critic flagged as an inconsistency rather than a finding about the two men, since the generator proposed them as parallel edges at identical confidence and the sources co-credit them throughout. Admitting one and not the other would put an asymmetric pair in /data on a difference no source states. The grain is the real problem: both men demonstrably co-designed ENIAC and EDVAC, and neither claim is about the SUBFIELD of computer systems, which is the diffuse field-grain influence this corpus has repeatedly held. Unblock: create work:eniac / work:edvac (or a stored-program-architecture concept node) and record the machine-level credit through canonical_work, where the evidence is strong — that is the right shape, and it is on the next-wave slate. Also recorded from Mauchly's own refutation trail: person:john-atanasoff is named by the 1973 Honeywell v. Sperry Rand ruling and is absent from the corpus.",
+    "recheck": "manual",
+    "batch_id": "person-wave12-v1",
+    "recorded_at": "2026-07-30"
+  },
+  {
+    "id": "person:nikolai-trubetzkoy",
+    "blocking_condition": "Nikolai Trubetzkoy → subfield:phonology: held at not_enough_evidence, reversing this batch's own expectation. The note on edge:roman-jakobson-founded-phonology anticipates 'a future Trubetzkoy→phonology founder edge', and the generator proposed exactly that at confidence 0.88 — but live verification found only ONE independent claim-stating source at the phonology grain (Jakobson's own biography), below the ≥2 floor, and found that every source using explicit founder-grade language for Trubetzkoy scopes it to MORPHOPHONOLOGY, not phonology, while naming Baudouin de Courtenay as a prior claimant there. This is the corpus's own grain discipline firing against a claim its own edge note invited. Unblock: either ≥2 independent claim-stating sources at the phonology grain, or a subfield:morphophonology node (with person:baudouin-de-courtenay considered alongside), where the founder-grade sourcing actually sits.",
+    "recheck": "manual",
+    "batch_id": "person-wave12-v1",
+    "recorded_at": "2026-07-30"
   }
 ]

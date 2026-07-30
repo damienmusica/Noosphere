@@ -118,5 +118,13 @@
     "reason": "Declined by the GENERATOR, citing the note already on edge:protestant-ethic-canonical-work-sociology, which had itself named and rejected Economy and Society as 'a posthumous, editorially-contested compilation (weaker single-item decidability)'. It also observed that admitting it would make Weber the corpus's first author with two canonical works aimed at one field. Recorded for the same reason as above.",
     "batch_id": "work-wave6-v1",
     "recorded_at": "2026-07-29"
+  },
+  {
+    "label": "William Whewell → concept:uniformitarianism",
+    "referent": "English polymath (1794–1866), Q333922; coined the term 'uniformitarianism' (and 'catastrophism', 'scientist') in his 1832 review of Lyell.",
+    "kind": "edge",
+    "reason": "Rejected on the role-separation rule. Four independent claim-stating sources agree on exactly one thing — Whewell COINED THE NAME — and every one of them separates that from originating the doctrine (Hutton) and from developing and popularising it (Lyell). No relation in docs/relation-taxonomy.md expresses 'coined the term for': founded_or_formalized would assert origination the sources explicitly assign to Hutton, and influenced would assert an effect on the theory's content that no source states. The corpus already declined Lyell on this same concept for the weaker-role reason; naming is weaker still. The absence stays recorded where it already is — in the note on edge:james-hutton-founded-uniformitarianism, which says so honestly. A person node with no admissible edge would be an isolated node, so none is created. Re-admit only if a term-coinage relation is ever ratified, or if sources are found crediting Whewell with the doctrine's content.",
+    "batch_id": "person-wave12-v1",
+    "recorded_at": "2026-07-30"
   }
 ]

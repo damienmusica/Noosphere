@@ -6485,6 +6485,26 @@
     "note": "Skeleton part_of: LCC RC633-647.5 Diseases of the blood and blood-forming organs + UDC 616.15 + ASH."
   },
   {
+    "id": "edge:hendrik-lorentz-influenced-theory-of-relativity",
+    "source": "person:hendrik-lorentz",
+    "target": "concept:theory-of-relativity",
+    "relation": "influenced",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:mactutor",
+      "source:nobelprize"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-30"
+    },
+    "note": "Mirrors the disposition the corpus already took for Poincaré on this same concept: influence, not founding — the priority literature is recorded, not adjudicated. Six independent claim-stating sources, and every one separates deriving the transformation from founding the theory: enwiki Theory of relativity: \"Albert Einstein published the theory of special relativity in 1905, building on many theoretical results and empirical findings obtained by Albert A. Michelson, Hendrik Lorentz, Henri Poincaré and others\"; MacTutor: \"Lorentz transformations, which he introduced in 1904, form the basis of Einstein's special theory of relativity.\" The relativity-priority article also records Lorentz's own disclaimer (\"the theory of relativity is really solely Einstein's work\"), which is why founded_or_formalized was declined."
+  },
+  {
     "id": "edge:henri-poincare-critiques-set-theory",
     "source": "person:henri-poincare",
     "target": "subfield:set-theory",
@@ -7338,6 +7358,24 @@
     "note": "Ivan Sutherland is widely regarded as a pioneer/father of computer graphics -- his Sketchpad system (1963) laid several foundations of the field; he received the 1988 ACM Turing Award for Sketchpad. Sources (2 independent live-verified Wikipedia articles): 'Ivan Sutherland' (\"widely regarded as a pioneer of computer graphics ... received the 1988 ACM Turing Award for the invention of the Sketchpad ... developed several foundations of modern computer graphics\") + 'Computer graphics' (\"Ivan Sutherland's revolutionary Sketchpad software\"). Record-not-resolve: the field has multiple pioneers (e.g. the Utah school, David C. Evans); Sutherland is the canonical founding figure. Living-person v2 (decision (70)): identity Q62866 verified live (P31=Q5, P569 1938-05-16, P570 absent = living-confirmed, computer scientist), >=2 independent live claim-stating sources, conservative attributed wording, no escalation signal (technical/institutional claim only) -> policy-auto reviewed. Generator-guessed QID was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink."
   },
   {
+    "id": "edge:james-clerk-maxwell-founded-statistical-physics",
+    "source": "person:james-clerk-maxwell",
+    "target": "subfield:statistical-physics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-30"
+    },
+    "note": "Second of the three co-founders the already-reviewed Boltzmann edge recorded as an honest gap. enwiki Statistical mechanics (canonical target — \"Statistical physics\" redirects there, resolved live before citing, per the §8 redirect rule): \"The founding of the field of statistical mechanics is generally credited to three physicists\", naming Maxwell; enwiki Josiah Willard Gibbs states it from the other side: \"Together with James Clerk Maxwell and Ludwig Boltzmann, Gibbs founded 'statistical mechanics'\"."
+  },
+  {
     "id": "edge:james-hutton-founded-geology",
     "source": "person:james-hutton",
     "target": "subfield:geology",
@@ -7629,6 +7667,24 @@
       "proposed_at": "2026-07-02"
     },
     "note": "Promoted 2026-07-29 (a-relations-wave7-v1, ladder (68)). Both recorded blockers are resolved. (1) The status cap: the target subfield:computer-systems was `proposed` when this edge was written and has since been promoted to `reviewed` under node-policy v1.4 (ACM CCS anchor, decision (102)) — clause 3 no longer blocks it. (2) The sourcing: two independent claim-stating articles now support it — enwiki First Draft of a Report on the EDVAC (\"It contains the first published description of the logical design of a computer using the stored-program concept, which has come to be known as the von Neumann architecture\") and enwiki Von Neumann architecture (\"is a computer architecture based on the First Draft of a Report on the EDVAC , written by John von Neumann in 1945, describing designs discussed with John Mauchly and J.\"). The attribution dispute the original note flagged is preserved rather than resolved: the same source states \"the name has become controversial due to von Neumann's failure to name other contributors\", and the second names Mauchly and Eckert as participants in the designs discussed. That is a credit-and-share contest on top of an agreed authorship and influence — the existence-vs-share line of §8 clause-6 v2 — so it routes to supported plus this note, the same ruling shape applied to Einstein and relativity in person-wave11-v1 the same day. Neither Mauchly nor Eckert is a corpus node; honest gap."
+  },
+  {
+    "id": "edge:josiah-willard-gibbs-founded-statistical-physics",
+    "source": "person:josiah-willard-gibbs",
+    "target": "subfield:statistical-physics",
+    "relation": "founded_or_formalized",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-30"
+    },
+    "note": "Third co-founder, closing the gap the Boltzmann edge recorded. enwiki Josiah Willard Gibbs: \"Together with James Clerk Maxwell and Ludwig Boltzmann, Gibbs founded 'statistical mechanics', a term that he coined\"; corroborated by the three-founder sentence in enwiki Statistical mechanics. QC note: an independent verifier read the field article's compressed per-founder line as assigning Gibbs the narrower role of naming the field, which would have been a role-separation problem under the Hutton/Lyell rule; the person article resolves it by stating founding and coining together, so the founder claim survives on its own source rather than on the compressed summary."
   },
   {
     "id": "edge:judgment-and-decision-making-part-of-psychology",
@@ -11911,6 +11967,25 @@
     }
   },
   {
+    "id": "edge:principia-mathematica-canonical-work-alfred-north-whitehead",
+    "source": "work:principia-mathematica",
+    "target": "person:alfred-north-whitehead",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-30"
+    },
+    "note": "Completes the co-author leg of the already-reviewed edge:principia-mathematica-canonical-work-bertrand-russell (same relation, same confidence). Three independent claim-stating sources: enwiki Principia Mathematica, \"written by the mathematician–philosophers Alfred North Whitehead and Bertrand Russell\"; SEP 'Principia Mathematica', \"Alfred North Whitehead and Bertrand Russell's monumental\" work; enwiki Alfred North Whitehead, \"He wrote the three-volume Principia Mathematica (1910–1913), with his former student Bertrand Russell.\" This edge was adjudicated by the orchestrator directly: the per-person verifiers were scoped to the founding/influence claims and none tested it under the canonical_work ladder — surfaced by the batch's completeness critic."
+  },
+  {
     "id": "edge:principia-mathematica-canonical-work-bertrand-russell",
     "source": "work:principia-mathematica",
     "target": "person:bertrand-russell",
@@ -12846,6 +12921,24 @@
       "proposed_at": "2026-06-30"
     },
     "note": "Koch co-founded microbiology / bacteriology alongside Pasteur (Wikipedia Robert Koch: \"he is regarded as one of the main founders of modern bacteriology\"; \"popularly nicknamed the father of microbiology (with Louis Pasteur)\"; Wikipedia Microbiology: \"Louis Pasteur and Robert Koch ... are often considered to be the fathers of modern microbiology and medical microbiology, respectively\"). Record-not-resolve co-founding pair — co-exists with Pasteur (already in /data, wave3): Pasteur for germ theory / fermentation, Koch for specific pathogen identification (tuberculosis 1882, cholera 1883) and Koch's postulates. Founder ladder auto-promote. Generator QID hint Q37327 was a hallucination (resolved to Samuel Beckett); corrected to Q37193 by live multi-signal resolver verification (P31=Q5, b.1843 d.1910 → deceased). Two independent Wikipedia articles (person + field)."
+  },
+  {
+    "id": "edge:robert-remak-founded-cell-theory",
+    "source": "person:robert-remak",
+    "target": "concept:cell-theory",
+    "relation": "founded_or_formalized",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-07-30"
+    },
+    "note": "Co-founder edge completing the priority record the corpus already carries on edge:rudolf-virchow-founded-cell-theory (conf 0.75), which states Virchow's third dictum \"is now widely recognized as being plagiarized\" from Remak. Record-not-resolve: both edges stand, neither adjudicates the priority. Live sources state Remak's origination unhedged in wiki voice — enwiki Robert Remak: \"who discovered that the origin of cells was by the division of pre-existing cells\"; enwiki Cell theory: \"the idea that all cells come from pre-existing cells had already been proposed by Robert Remak\"; enwiki Rudolf Virchow independently: \"He was one of the first to accept the work of Robert Remak, who showed that the origin of cells was the division of pre-existing cells.\" Not flagged disputed: clause-6 v2 governs a contested PLACEMENT taken on the dominant side, and this is two co-founders recorded side by side (decision (90)), not a placement this corpus is choosing between."
   },
   {
     "id": "edge:robotics-part-of-mechanical-engineering",

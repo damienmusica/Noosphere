@@ -1,0 +1,76 @@
+{
+  "version": 2,
+  "batch_id": "person-wave12-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-30"
+  },
+  "edges": [
+    {
+      "id": "edge:james-clerk-maxwell-founded-statistical-physics",
+      "source": "person:james-clerk-maxwell",
+      "target": "subfield:statistical-physics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.72,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Encyclopedia Britannica 'James Clerk Maxwell' and 'statistical mechanics'; general history-of-physics textbook treatments of the kinetic theory of gases. [UNFETCHED this session -- only the already-reviewed edge:ludwig-boltzmann-founded-statistical-physics's note in data/edges.json has been directly read.]",
+      "note": "Co-founder edge alongside the already-reviewed edge:ludwig-boltzmann-founded-statistical-physics, whose note states 'The founding of the field of statistical mechanics is generally credited to three physicists' and names Maxwell as one of the honest corpus gaps. Mirrors the corpus's established multi-founder pattern for a single field (decision (90): a field may carry several founded_or_formalized edges).",
+      "rationale": "Maxwell's 1860s kinetic-theory-of-gases work, including his statistical treatment of molecular velocity distributions (later extended by Boltzmann into the joint Maxwell-Boltzmann distribution), is standardly credited as one of the founding contributions to statistical/kinetic physics -- the reviewed sibling edge's own note names him as a co-credited founder alongside Boltzmann and Gibbs, which is the direct textual basis for this edge.",
+      "uncertainty": "I have not live-verified the exact wording, weighting, or ordering of credit given to Maxwell versus Boltzmann and Gibbs in the underlying field article beyond the quote already captured in the sibling edge's note -- some historiography treats Maxwell's 1860s work as a kinetic-theory precursor rather than statistical mechanics proper (which only became a named, systematic subfield with Boltzmann's and Gibbs's later work), which would argue for `influenced` rather than `founded_or_formalized`. QC's live check should weigh this distinction explicitly rather than take the co-founder framing as already settled.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:josiah-willard-gibbs-founded-statistical-physics",
+      "source": "person:josiah-willard-gibbs",
+      "target": "subfield:statistical-physics",
+      "relation": "founded_or_formalized",
+      "confidence": 0.76,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Encyclopedia Britannica 'Josiah Willard Gibbs' and 'statistical mechanics'; general history-of-physics textbook treatments of Gibbs's 1902 'Elementary Principles in Statistical Mechanics'. [UNFETCHED this session -- only the already-reviewed edge:ludwig-boltzmann-founded-statistical-physics's note in data/edges.json has been directly read.]",
+      "note": "Co-founder edge alongside the already-reviewed edge:ludwig-boltzmann-founded-statistical-physics, whose note names Gibbs as one of the three physicists generally credited with founding the field.",
+      "rationale": "Gibbs's 1902 monograph gave statistical mechanics its systematic mathematical formulation and, by common attribution, its name -- a squarely founder-grade contribution occurring after Maxwell's and Boltzmann's earlier work, which is why this edge is held at a modestly higher confidence than the Maxwell edge (formalization/systematization reads more clearly as founding than earlier precursor work does). The reviewed sibling edge's own note names Gibbs as a co-credited founder alongside Boltzmann and Maxwell.",
+      "uncertainty": "I have not live-verified the exact wording of the field article's credit to Gibbs beyond the quote already captured in the sibling edge's note, nor the 'coined/popularized the term statistical mechanics' claim specifically -- if a live check finds the term predates Gibbs or is credited elsewhere, that detail (not the founder claim itself) should be corrected by QC.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:hendrik-lorentz-influenced-theory-of-relativity",
+      "source": "person:hendrik-lorentz",
+      "target": "concept:theory-of-relativity",
+      "relation": "influenced",
+      "confidence": 0.68,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Encyclopedia Britannica 'Hendrik Lorentz' and 'relativity'; general history-of-physics references on the Lorentz transformation, the Lorentz force law, and Lorentz's electron theory as precursors to special relativity. [UNFETCHED this session -- only the already-reviewed edge:henri-poincare-influenced-theory-of-relativity's note in data/edges.json has been directly read.]",
+      "note": "Mirrors the disposition already recorded on the reviewed edge:henri-poincare-influenced-theory-of-relativity: `influenced`, not `founded_or_formalized`, so this edge records Lorentz's real, sourced contribution without adjudicating the Einstein/Poincare/Lorentz priority question, per the order's explicit instruction to mirror Poincare's positioning unless evidence plainly demands otherwise -- it does not here, since the same source quoted on the Poincare edge names Lorentz in the identical sentence and at the identical grain.",
+      "rationale": "The already-reviewed Poincare edge's own note (read in-repo, data/edges.json) quotes a relativity-priority-dispute source stating Einstein's publications referred 'most notably to the work of Henri Poincaré and Hendrik Lorentz for special relativity', and explicitly names Lorentz as a corpus gap in that same sentence. Lorentz's transformation equations and electron theory are the direct pre-1905 mathematical precursor on which special relativity's kinematics was built, which is why `influenced` (a real, substantial, non-founding contribution) is the correct relation rather than `founded_or_formalized`.",
+      "uncertainty": "As with the sibling Poincare edge, `influenced` may over- or under-state Lorentz's centrality relative to mainstream historiography -- Lorentz himself originally interpreted his transformation as a physical/electrodynamic hypothesis (length contraction, a mathematical 'local time' convenience) rather than the relativistic spacetime reinterpretation Einstein (and, per the Poincare edge, arguably Poincare) gave it, and how much weight that distinction should carry is part of the same contested priority literature already flagged on the Einstein and Poincare edges. I have not live-verified any source beyond the sibling edge's note quoted above.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:principia-mathematica-canonical-work-alfred-north-whitehead",
+      "source": "work:principia-mathematica",
+      "target": "person:alfred-north-whitehead",
+      "relation": "canonical_work",
+      "confidence": 0.85,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Principia Mathematica' (lead, naming both Whitehead and Russell as authors). [UNFETCHED this session -- only the already-reviewed edge:principia-mathematica-canonical-work-bertrand-russell's note in data/edges.json has been directly read.]",
+      "note": "Person leg completing the pair already begun by the reviewed edge:principia-mathematica-canonical-work-bertrand-russell, whose own note (read in-repo, data/edges.json) records that authorship metadata lists both Whitehead and Russell as authors and states the co-authorship was 'recorded here on the edge ... not silently reduced' pending a Whitehead person node. This edge closes that gap now that person:alfred-north-whitehead is proposed in this same batch.",
+      "rationale": "Whitehead is Principia Mathematica's full co-author alongside Russell (per the order's own framing and the sibling edge's note); the work is standardly treated as the single most canonical item of Whitehead's mathematical/logical career, on the same basis already accepted by QC for the parallel, already-reviewed Russell edge.",
+      "uncertainty": "I have not independently re-verified the authorship split this session beyond what the sibling edge's note already records; some historical accounts describe Russell as having done more of the actual drafting while Whitehead's distinct mathematical contributions concentrated in particular volumes (e.g. the material on relations and geometry) -- a nuance neither this edge nor its Russell sibling attempts to capture. Confidence is held at the same level as the reviewed Russell-leg edge for consistency, not because I have independently re-derived it this session.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "No edge from person:alfred-north-whitehead to subfield:type-theory is proposed. The already-reviewed edge:bertrand-russell-founded-type-theory's own note attributes the theory specifically to Russell in both underlying sources and explicitly declined to assert a Whitehead claim on that basis; the prior generation wave reached the same conclusion for the same reason. This batch treats that as settled absent new sourcing and only closes the node-existence gap it left open.",
+    "Confidence values for the two statistical-physics co-founder edges (Maxwell 0.72, Gibbs 0.76) are held slightly below the already-reviewed Boltzmann edge's 0.8, reflecting that this generator is relying on the Boltzmann edge's note rather than an independently read primary source for the Maxwell/Gibbs claims specifically -- a deliberate, conservative gap, not a claim that Boltzmann's role is stronger than theirs.",
+    "All four edges in this file were demanded directly by named gaps in already-reviewed, in-repo edge notes (data/edges.json); no edge in this file targets a node this generator invented a claim for beyond what those notes already state."
+  ]
+}

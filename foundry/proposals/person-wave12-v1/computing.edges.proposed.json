@@ -1,0 +1,62 @@
+{
+  "version": 2,
+  "batch_id": "person-wave12-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-07-30"
+  },
+  "edges": [
+    {
+      "id": "edge:john-mauchly-influenced-computer-systems",
+      "source": "person:john-mauchly",
+      "target": "subfield:computer-systems",
+      "relation": "influenced",
+      "confidence": 0.75,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Von Neumann architecture' [UNFETCHED this session; quoted secondhand from the existing edge's note: 'describing designs discussed with John Mauchly and J. [Presper Eckert]']; Wikipedia 'ENIAC' and 'EDVAC' [UNFETCHED] for Mauchly's direct co-design role.",
+      "note": "Parity edge: proposed at the same relation (influenced, not founded_or_formalized) and the same target as the corpus's already-reviewed edge:john-von-neumann-influenced-computer-systems, which names Mauchly as a co-designer and records 'Neither Mauchly nor Eckert is a corpus node; honest gap' as the reason this edge did not already exist.",
+      "rationale": "Mauchly co-designed ENIAC and EDVAC, machines standardly treated as founding events for the practice of building electronic computer systems, and is named directly in the source grounding the existing reviewed von Neumann edge to this same subfield. I did not propose founded_or_formalized: the corpus's own calibration already treats von Neumann -- the person whose report specifically named and described the architecture concept most central to 'computer systems' as a subfield -- as merely 'influenced' at this grain, not a founder, and subfield:computer-systems (ACM CCS 'computer systems organization') spans decades of subsequent research well beyond any one 1940s machine. Giving Mauchly a stronger relation than von Neumann for the identical target would be an inconsistent, inflated claim, so I matched the existing edge's relation instead.",
+      "uncertainty": "This is a genuine judgment call, not a settled one: the corpus has repeatedly held broad field-grain influence edges for being diffuse (e.g. Cuvier->archaeology, Pearson->sociology, Vernadsky->environmental-science, all currently held per foundry/held.json), and QC may reasonably conclude the same applies here and hold or decline this edge rather than promote it -- a no-edge outcome is legitimate and I do not think it is clearly wrong. Unlike those held cases, Mauchly's link is a direct co-design credit within the very same historical episode the reviewed von Neumann edge already cites, not an indirect diffusion of ideas into an unrelated field, which is why I proposed the edge rather than omitting it outright. I have not live-verified the 'Von Neumann architecture' article's exact current wording this session. The ENIAC patent was later invalidated (Honeywell v. Sperry Rand, 1973) on grounds that some central ideas derived from John Atanasoff's earlier work -- a priority complication this edge's confidence does not attempt to resolve.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:j-presper-eckert-influenced-computer-systems",
+      "source": "person:j-presper-eckert",
+      "target": "subfield:computer-systems",
+      "relation": "influenced",
+      "confidence": 0.75,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Von Neumann architecture' [UNFETCHED this session; quoted secondhand from the existing edge's note: 'describing designs discussed with John Mauchly and J. [Presper Eckert]']; Wikipedia 'ENIAC' and 'EDVAC' [UNFETCHED] for Eckert's direct engineering role.",
+      "note": "Parity edge, same reasoning as the companion Mauchly edge in this batch: matches the relation and target of the already-reviewed edge:john-von-neumann-influenced-computer-systems, which names Eckert as a co-designer and records the same honest gap.",
+      "rationale": "Eckert was chief engineer and co-designer of ENIAC and EDVAC and is named directly in the source grounding the existing reviewed von Neumann edge to this same subfield; his hardware-engineering role (including inventing the mercury delay-line memory used in EDVAC/UNIVAC) is at least as concrete a claim on 'computer systems' as von Neumann's report. Kept at influenced rather than founded_or_formalized for the same calibration-parity reason given on the Mauchly edge: promoting Eckert past von Neumann's own relation to the identical target would be inconsistent, and the subfield spans far more than one 1940s engineering project.",
+      "uncertainty": "Same held-precedent caveat as the Mauchly edge: the corpus has repeatedly held broad field-grain influence edges as too diffuse (foundry/held.json), and a QC decision to hold or decline this edge instead of promoting it would be legitimate. I have not live-verified the source wording this session, and I have not independently confirmed whether mainstream treatments credit Eckert's specific engineering contributions differently enough from Mauchly's more conceptual/proposing role to warrant different confidence between the two edges -- I treated them as parallel because they are consistently co-credited in the sources I recall.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:nikolai-trubetzkoy-founded-phonology",
+      "source": "person:nikolai-trubetzkoy",
+      "target": "subfield:phonology",
+      "relation": "founded_or_formalized",
+      "confidence": 0.88,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Roman Jakobson' [UNFETCHED this session; quoted secondhand from the existing edge's note: 'With Nikolai Trubetzkoy, he developed revolutionary new techniques for the analysis of linguistic sound systems, in effect founding the modern discipline of phonology']; Wikipedia 'Nikolai Trubetzkoy' and 'Prague linguistic circle' [UNFETCHED]; general linguistics-historiography treatment of 'Grundzuge der Phonologie' (1939) as the founding text of structural phonology.",
+      "note": "This is exactly the edge the corpus's existing reviewed edge:roman-jakobson-founded-phonology note anticipates: 'Trubetzkoy is the equal co-founder (not yet a node; his Grundzuge der Phonologie, 1939, is the foundational text) - a future Trubetzkoy->phonology founder edge sits alongside this one; this edge does not claim sole founding.' Proposed as a plural-founding edge (record-not-resolve), not a competing claim against the existing Jakobson edge.",
+      "rationale": "The same sentence already grounding the reviewed Jakobson edge names Trubetzkoy jointly ('With Nikolai Trubetzkoy, he developed...'), i.e. an origination-role claim, not a later refinement -- the exact distinction the order asks me to police before granting founded_or_formalized. Trubetzkoy's 'Grundzuge der Phonologie' (1939) is standardly treated in linguistics historiography as the founding text of structural phonology, alongside his and Jakobson's joint Prague Circle work in the 1930s, and his death in 1938 places his contribution before, not after, the discipline's founding moment -- consistent with a founder claim rather than a later-refiner one.",
+      "uncertainty": "I have not live-verified the Jakobson-article sentence directly this session -- it is carried over secondhand from the existing reviewed edge's note rather than freshly read against a live source, so QC should re-confirm the exact wording before treating it as settled. I also have not independently checked whether any mainstream source frames Trubetzkoy's role as junior to Jakobson's (which would argue for a lower confidence or a different relation) rather than strictly equal; I am treating 'equal co-founder' on the strength of the existing edge's own note, which is itself not a fresh live check.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "Considered and declined creating work nodes for ENIAC, EDVAC, or UNIVAC, or a stored-program/von-Neumann-architecture concept node, to carry canonical_work-style credit for Mauchly and Eckert directly -- out of this batch's people-only scope; flagged as a possible future gap, not resolved here.",
+    "Considered a held/no-edge recommendation for both Mauchly and Eckert edges given the corpus's repeated pattern of holding diffuse field-grain influence edges (foundry/held.json: Cuvier->archaeology, Pearson->sociology, Jakobson->semiotics, Vernadsky->environmental-science). Proposed the edges rather than withholding them because the Mauchly/Eckert link is a direct co-design credit inside the same historical episode already grounding the reviewed von Neumann edge to this exact target, not an indirect diffusion of ideas into an unrelated field -- but both edges are marked ambiguous and QC should treat hold/decline as a live option, not a formality.",
+    "John Atanasoff (ENIAC priority dispute, Honeywell v. Sperry Rand 1973) and Marcus von Plenciz -- style additional co-contributors are not at issue here, but the general pattern of this corpus (record-not-resolve; name the gap, do not silently omit it) is followed: the Atanasoff priority question is recorded as an honest gap on both computer-systems edges rather than resolved by this generator.",
+    "No edges proposed beyond the three specified in the order (Mauchly and Eckert to subfield:computer-systems; Trubetzkoy to subfield:phonology) -- did not add speculative edges to field:computer-science, field:linguistics, or other concept nodes for any of the three people, to keep this batch scoped to what the order's cited existing edges actually demand."
+  ]
+}
