@@ -1,0 +1,311 @@
+{
+  "version": 1,
+  "batch_id": "editorial-batch12-v1",
+  "decided_at": "2026-07-31",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-07-31"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [],
+    "translations": [],
+    "edges": [],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "node",
+      "id": "subfield:morphophonology",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true,
+      "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+    },
+    {
+      "kind": "node",
+      "id": "person:nikolai-trubetzkoy",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true,
+      "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+    },
+    {
+      "kind": "node",
+      "id": "person:antonie-van-leeuwenhoek",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_indexable": true,
+      "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+    }
+  ],
+  "translation_updates": [
+    {
+      "node_id": "subfield:morphophonology",
+      "locale": "en",
+      "summary": "Morphophonology, also called morphophonemics or morphonology, is the branch of linguistics that studies the interaction between morphological and phonological or phonetic processes. Its chief focus is the sound changes that take place in morphemes, the minimal meaningful units, when they combine to form words. Analysis in the field often involves an attempt to give a series of formal rules or constraints that successfully predict the regular sound changes occurring in the morphemes of a given language. Such a series of rules converts a theoretical underlying representation into a surface form that is pronounced, and the units which compose the underlying representations of morphemes are sometimes called morphophonemes. Since the 1960s, in particular with the work of the generative school, many linguists have regarded surface phones as derived from underlying morphophonemes through a single system of (morpho)phonological rules.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:nikolai-trubetzkoy",
+      "locale": "en",
+      "summary": "Nikolai Trubetzkoy (1890–1938) was a Russian linguist and historian whose teachings formed a nucleus of the Prague School of structural linguistics. He is widely considered to be the founder of morphophonology. After graduating from Moscow University in 1913 he lectured there until the Russian Revolution, then moved to the University of Rostov-on-Don and the University of Sofia before taking the chair of Professor of Slavic Philology at the University of Vienna, which he held from 1922 to 1938. His chief contributions to linguistics lie in the domain of phonology, particularly in the analyses of the phonological systems of individual languages and in the search for general and universal phonological laws. His principal work, Grundzüge der Phonologie (Principles of Phonology), was issued posthumously; in it he defined the phoneme as the smallest distinctive unit within the structure of a given language, and it was crucial in establishing phonology as a discipline separate from phonetics. His views are sometimes hard to distinguish from those of his friend Roman Jakobson.",
+      "reviewed": true
+    },
+    {
+      "node_id": "person:antonie-van-leeuwenhoek",
+      "locale": "en",
+      "summary": "Antonie van Leeuwenhoek (1632–1723) was a Dutch microbiologist and microscopist, largely self-taught in science, who is commonly known as \"the Father of Microbiology\". Using single-lensed microscopes of his own design and make, he was the first to observe and to experiment with microbes. He was also the first to document microscopic observations of muscle fibers, bacteria, spermatozoa, red blood cells, and crystals in gouty tophi, and was among the first to see blood flow in capillaries. Although he did not write any books, he described his discoveries in letters to the Royal Society, which published many of them in its Philosophical Transactions; he wrote only in his own colloquial Dutch and never published a proper scientific paper in Latin. His credibility was questioned when he sent the Royal Society a copy of his first observations of microscopic single-celled organisms, dated 9 October 1676, and those observations were initially met with some skepticism before being fully acknowledged by the society in 1677. He kept his technique to himself, maintaining throughout his life that there were aspects of microscope construction \"which I only keep for myself\", and for centuries his exact method remained unknown.",
+      "reviewed": true
+    }
+  ],
+  "verdicts": [
+    {
+      "subject_id": "subfield:morphophonology",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Morphophonology",
+          "retrieved_at": "2026-07-31",
+          "quote": "Morphophonology (also morphophonemics or morphonology) is the branch of linguistics that studies the interaction between morphological and phonological or phonetic processes.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Morphophonology&oldid=1360947317"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Morphophonology",
+          "retrieved_at": "2026-07-31",
+          "quote": "Its chief focus is the sound changes that take place in morphemes (minimal meaningful units) when they combine to form words.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Morphophonology&oldid=1360947317"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Morphophonology",
+          "retrieved_at": "2026-07-31",
+          "quote": "Morphophonological analysis often involves an attempt to give a series of formal rules or constraints that successfully predict the regular sound changes occurring in the morphemes of a given language.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Morphophonology&oldid=1360947317"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Morphophonology",
+          "retrieved_at": "2026-07-31",
+          "quote": "Such a series of rules converts a theoretical underlying representation into a surface form that is pronounced.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Morphophonology&oldid=1360947317"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Morphophonology",
+          "retrieved_at": "2026-07-31",
+          "quote": "The units which compose the underlying representations of morphemes are sometimes called morphophonemes.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Morphophonology&oldid=1360947317"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Morphophonology",
+          "retrieved_at": "2026-07-31",
+          "quote": "Since the 1960s (in particular with the work of the generative school, such as Chomsky and Halle's The Sound Pattern of English) many linguists have moved away from making such a split, instead regarding the surface phones as being derived from the underlying morphophonemes (which may be referred to using various terminology) through a single system of (morpho)phonological rules.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Morphophonology&oldid=1360947317"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:nikolai-trubetzkoy",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Nikolai_Trubetzkoy",
+          "retrieved_at": "2026-07-31",
+          "quote": "16 April 1890 – 25 June 1938) was a Russian linguist and historian whose teachings formed a nucleus of the Prague School of structural linguistics.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Nikolai_Trubetzkoy&oldid=1363353164"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nikolai_Trubetzkoy",
+          "retrieved_at": "2026-07-31",
+          "quote": "He is widely considered to be the founder of morphophonology.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Nikolai_Trubetzkoy&oldid=1363353164"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nikolai_Trubetzkoy",
+          "retrieved_at": "2026-07-31",
+          "quote": "After he graduated from the Moscow University (1913), Trubetzkoy delivered lectures there until the Russian Revolution, when he moved first to the University of Rostov-on-Don, then to the University of Sofia (1920–1922) and finally took the chair of Professor of Slavic Philology at the University of Vienna (1922–1938).",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Nikolai_Trubetzkoy&oldid=1363353164"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nikolai_Trubetzkoy",
+          "retrieved_at": "2026-07-31",
+          "quote": "Trubetzkoy's chief contributions to linguistics lie in the domain of phonology, particularly in the analyses of the phonological systems of individual languages and in the search for general and universal phonological laws.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Nikolai_Trubetzkoy&oldid=1363353164"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nikolai_Trubetzkoy",
+          "retrieved_at": "2026-07-31",
+          "quote": "His magnum opus, Grundzüge der Phonologie (Principles of Phonology)",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Nikolai_Trubetzkoy&oldid=1363353164"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nikolai_Trubetzkoy",
+          "retrieved_at": "2026-07-31",
+          "quote": "was issued posthumously in which he defined the phoneme as the smallest distinctive unit within the structure of a given language.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Nikolai_Trubetzkoy&oldid=1363353164"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nikolai_Trubetzkoy",
+          "retrieved_at": "2026-07-31",
+          "quote": "It was crucial in establishing phonology as a discipline separate from phonetics.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Nikolai_Trubetzkoy&oldid=1363353164"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Nikolai_Trubetzkoy",
+          "retrieved_at": "2026-07-31",
+          "quote": "It is sometimes hard to distinguish Trubetzkoy's views from those of his friend Roman Jakobson, who should be credited with spreading the Prague School views on phonology after Trubetzkoy's death.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Nikolai_Trubetzkoy&oldid=1363353164"
+        }
+      ]
+    },
+    {
+      "subject_id": "person:antonie-van-leeuwenhoek",
+      "verdict": "supported",
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "A largely self-taught man in science, he is commonly known as \"the Father of Microbiology\", and one of the first microscopists and microbiologists.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "was a Dutch microbiologist and microscopist in the Golden Age of Dutch art, science and technology.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "Antonie van Leeuwenhoek was born in Delft, Dutch Republic, on 24 October 1632.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "He died at the age of 90, on 26 August 1723, and was buried four days later in the Oude Kerk in Delft.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "Using single-lensed microscopes of his own design and make, Van Leeuwenhoek was the first to observe and to experiment with microbes, which he originally referred to as dierkens, diertgens or diertjes.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "He was also the first to document microscopic observations of muscle fibers, bacteria, spermatozoa, red blood cells, and crystals in gouty tophi, and was among the first to see blood flow in capillaries.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "Although Van Leeuwenhoek did not write any books, he described his discoveries in chaotic letters to the Royal Society, which published many of his letters in their Philosophical Transactions.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "He only wrote letters in his own colloquial Dutch; he never published a proper scientific paper in Latin.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "His credibility was questioned when he sent the Royal Society a copy of his first observations of microscopic single-celled organisms dated 9 October 1676.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "Thus, even with his established reputation with the Royal Society as a reliable observer, his observations of microscopic life were initially met with some skepticism.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "Van Leeuwenhoek's observations were fully acknowledged by the Royal Society.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "Finally in 1677,",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "Van Leeuwenhoek maintained throughout his life that there were aspects of microscope construction \"which I only keep for myself\", in particular his most critical secret of how he made the lenses.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Antonie_van_Leeuwenhoek",
+          "retrieved_at": "2026-07-31",
+          "quote": "For centuries, Van Leeuwenhoek's exact method remained unknown.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Antonie_van_Leeuwenhoek&oldid=1360991389"
+        }
+      ]
+    }
+  ],
+  "identity": [],
+  "sanctions": [
+    {
+      "subject_id": "subfield:morphophonology",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:nikolai-trubetzkoy",
+      "ladder": "editorial-v2"
+    },
+    {
+      "subject_id": "person:antonie-van-leeuwenhoek",
+      "ladder": "editorial-v2"
+    }
+  ],
+  "rejections": [],
+  "held": [],
+  "held_resolutions": [],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "Editorial batch 12 — the public surface for the three nodes endpoint-closure-wave13-v1 admitted. Restores the editorial gap to 0% and flips all three to indexable (earned rule: reviewed status + reviewed en summary, machine-enforced by validate-data).",
+    "Regime: separated-context generation, three independent contexts, each grounded ONLY in a local fetch-corpus capture of its own subject article and forbidden to fetch. All three self-reported claude-opus-5. Machine: claim-anchor 28/28 found offline, fetch-verify 28/28 PASS against the anchored revisions, MISS 0. Close-read 3/3 = 100% (decision (34) asks 30%; at N=3 sampling is pointless).",
+    "★ The defect that forced four patches last batch did NOT recur, and the reason is worth recording as a method rather than luck. The generation order required a verbatim BODY-PROSE quote for every sentence written, on the stated ground that the last batch's tell was the generator being unable to anchor exactly those claims. The Leeuwenhoek generator then found the trap on its own and refused it: the article's strongest epithet — 'universally acknowledged as the father of microbiology because he was the first to undisputedly discover/observe...' — lives inside a {{#tag:ref}} FOOTNOTE, and its 'known_for' infobox field repeats it. The summary therefore carries only what the body prose says, 'he is commonly known as \"the Father of Microbiology\"', hedge intact. A reviewer expecting the stronger wording should know the article body does not contain it.",
+    "★ Close-read patch 1 — MODALITY. The Trubetzkoy draft rendered the article's 'who should be credited with spreading the Prague School views on phonology' as 'who is credited with'. That converts the source's normative recommendation into a descriptive fact in Noosphere's own voice. The relative clause was dropped rather than either restating a recommendation as fact or having this atlas speak prescriptively; the retained clause is fully anchored, and the Jakobson connection is already carried in /data by edge:roman-jakobson-founded-phonology.",
+    "★ Close-read patch 2 — AN ANCHOR THAT DID NOT COVER ITS OWN CLAIM. The morphophonology draft's final sentence ends 'through a single system of (morpho)phonological rules', but the quote supplied for it was truncated mid-parenthesis and stopped before that clause. The clause is true — it is in the source sentence — so the defect was the anchor, not the fact. Replaced with the full source sentence and re-verified. This is the failure mode the whole anchor-per-sentence rule exists to surface, caught by reading the quote against its own claim rather than by trusting a PASS count: all 28 quotes passed the matcher both before and after this fix.",
+    "★ A tension recorded rather than resolved, the same care batch 11 took with Whitehead and process philosophy. The Trubetzkoy summary states 'He is widely considered to be the founder of morphophonology' — verbatim from the article's lead, hedge preserved — while edge:nikolai-trubetzkoy-founded-morphophonology is held at DISPUTED in foundry (decision (120)), because the founding-grade sources for that claim come from an encyclopedia mirror and a PDF scan host while the reference works credit only the term's coinage. These are different bars and both are honest: a summary reports the state of discourse with its attribution, and the edge layer requires >=2 claim-stating sources from providers this corpus can cite. The summary does not assert a corpus relation and the hold is untouched.",
+    "Recorded because it is the reverse asymmetry: Trubetzkoy's own article lead does NOT call him a founder of phonology — that is the grain the corpus DID admit (edge:nikolai-trubetzkoy-founded-phonology), and it rests on other sources entirely (Oxford Bibliographies, the University of Vienna history project, Honeybone in Key Thinkers, enwiki Roman Jakobson). The summary carries what this article supports — 'his chief contributions to linguistics lie in the domain of phonology' and that Grundzuege der Phonologie 'was crucial in establishing phonology as a discipline separate from phonetics' — without upgrading either into a founding claim.",
+    "Living-person check: both subjects long dead (Leeuwenhoek 1723, Trubetzkoy 1938), P570 present on both as live-confirmed in endpoint-closure-wave13-v1. Decision (70) does not engage.",
+    "Namesake guard: the Leeuwenhoek article documents that a Springer microbiology journal is named after him. That is clean body prose and was deliberately NOT used, so the person's public page cannot be read as describing the journal — the same Q15762938 confusion the wave-13 identity record excluded.",
+    "Recorded for a future maintainer: the Leeuwenhoek article is internally inconsistent about how many letters he wrote to the Royal Society — 'some 190' in one section and 'approximately 560' in another. The generator flagged it and dropped the count rather than pick one or average them; the summary keeps only the qualitative claim. Same shape as the Remak birth-date inconsistency recorded in batch 11."
+  ]
+}
