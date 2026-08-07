@@ -1,0 +1,68 @@
+{
+  "version": 2,
+  "batch_id": "computing-wave1-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-08-08"
+  },
+  "nodes": [
+    {
+      "id": "person:john-mauchly",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "John Mauchly",
+      "referent": "John William Mauchly (1907-1980), American physicist and engineer, co-designer with J. Presper Eckert of the ENIAC (completed 1945, Moore School of Electrical Engineering, University of Pennsylvania) and of the EDVAC, and co-founder with Eckert of the Eckert-Mauchly Computer Corporation, which built UNIVAC I. Specifically the ENIAC/EDVAC/UNIVAC co-designer -- not any other person surnamed Mauchly, and not to be conflated with John von Neumann, who separately authored the 'First Draft of a Report on the EDVAC' describing the stored-program architecture.",
+      "source_hint": "Wikipedia 'John Mauchly'; Wikipedia 'ENIAC'; Wikipedia 'EDVAC'; Wikipedia 'First Draft of a Report on the EDVAC'; Encyclopedia Britannica biography of John Mauchly -- named per this order's slate and the held-ledger sourcing note dated 2026-07-31; none fetched live this session.",
+      "note": "Re-proposed after person-wave12-v1 (2026-07-30) held both Mauchly and Eckert on an edge-grain/consistency question, not a node-identity question, and decision (121) (2026-07-31) then corrected the ledger row's unblock clause for this ID.",
+      "rationale": "Mauchly is independently notable as ENIAC/EDVAC/UNIVAC's co-designer, already named as a recorded honest gap on the reviewed edge:john-von-neumann-influenced-computer-systems, and is the explicit slate item in this order following decision (121)'s corrected unblock clause.",
+      "uncertainty": "I have not live-verified Mauchly's dates or the exact ENIAC/EDVAC/UNIVAC attribution wording against a live source this session -- source_hint entries are unverified pointers for QC to fetch. The credit-sharing among Mauchly, Eckert, von Neumann and Atanasoff for different facets of early computing is a genuine, still-cited historical controversy (see the disputed Atanasoff edges proposed in this same batch); it does not affect the identity of this referent.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:j-presper-eckert",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "J. Presper Eckert",
+      "referent": "John Adam Presper Eckert Jr. (1919-1995), American electrical engineer, chief engineer and co-designer with John Mauchly of the ENIAC (completed 1945) and the EDVAC, inventor of the mercury delay-line memory used in EDVAC and UNIVAC, and co-founder with Mauchly of the Eckert-Mauchly Computer Corporation, which built UNIVAC I. Specifically the ENIAC/EDVAC/UNIVAC co-designer and chief engineer -- not any other person surnamed Eckert.",
+      "source_hint": "Wikipedia 'J. Presper Eckert'; Wikipedia 'ENIAC'; Wikipedia 'EDVAC'; Encyclopedia Britannica biography of J. Presper Eckert -- the same source family named for the companion Mauchly node; none fetched live this session.",
+      "note": "This node exists as its own held-ledger row only as of decision (121)'s follow-up correction (2026-07-31): person-wave12-v1 held both men under a single ledger entry keyed to Mauchly's ID, so foundry:recheck-held never machine-checked Eckert independently.",
+      "rationale": "Eckert is independently notable as ENIAC/EDVAC's chief engineer and inventor of the mercury delay-line memory, already implicated in the same recorded honest gap as Mauchly on edge:john-von-neumann-influenced-computer-systems, and is the explicit companion slate item in this order.",
+      "uncertainty": "I have not live-verified Eckert's dates or the exact attribution wording against a live source this session. I have not independently confirmed whether mainstream sources differentiate Eckert's hardware-engineering role from Mauchly's more conceptual role enough to warrant different confidence between their parallel edges in this batch -- I treated them as parity (record-not-resolve) rather than asserting equal but distinct contributions.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:john-atanasoff",
+      "type": "person",
+      "domain": "computer_and_information_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "John Atanasoff",
+      "referent": "John Vincent Atanasoff (1903-1995), American physicist and inventor, professor at Iowa State College, who together with graduate student Clifford Berry built the Atanasoff-Berry Computer (ABC) around 1937-1942 -- an early special-purpose electronic digital calculating device using binary arithmetic and regenerative (dynamic) capacitor memory to solve systems of linear equations. Central figure in the 1973 US federal court case Honeywell, Inc. v. Sperry Rand Corp., which invalidated the ENIAC patent partly on a finding that some of ENIAC's subject matter derived from Atanasoff's earlier work. Specifically the Iowa State physicist of the ABC / ENIAC-patent-trial episode -- not any other person bearing the common Bulgarian surname Atanasoff.",
+      "source_hint": "Wikipedia 'John Vincent Atanasoff'; Wikipedia 'Atanasoff-Berry Computer'; Wikipedia 'ENIAC' (patent-invalidation section) -- named per this order's item 4 and its quoted ruling language; none fetched live this session.",
+      "note": "Downstream node: exists to support the disputed influenced edges from Atanasoff to Mauchly and Eckert proposed in this same batch (order item 4). No founded_or_formalized edge is proposed for Atanasoff himself: his own credit is artifact-grained (the ABC machine) and, like Mauchly and Eckert's ENIAC/EDVAC credit, has no in-scope concept referent of its own under decision (121) -- the ideas the sources attribute to him (binary arithmetic, Boolean logic, regenerative capacitor memory) are either pre-existing or artifact-adjacent, matching the held-ledger's own assessment.",
+      "rationale": "Atanasoff is independently notable (built the ABC; central to the Honeywell v. Sperry Rand ENIAC-patent ruling) and is required as a source endpoint for the disputed Atanasoff-to-Mauchly and Atanasoff-to-Eckert edges this order requests -- without this node those edges have no source endpoint.",
+      "uncertainty": "I have not live-verified Atanasoff's dates or the ABC's technical description against a live source this session. The framing 'credited with inventing the first electronic digital computer' is itself part of a live historical priority dispute (ENIAC vs. ABC; general-purpose/programmable vs. special-purpose/fixed-function; whether the ABC was ever completed to full working spec) that does not affect who this referent is, only how his contribution should be characterized in prose -- an editorial-layer question, not a node-identity one.",
+      "ambiguous": false
+    },
+    {
+      "id": "concept:stored-program-computer",
+      "type": "concept",
+      "domain": "computer_and_information_sciences",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Stored-program computer",
+      "referent": "The stored-program computer concept: a computer architecture design in which both program instructions and data are held together, in the same read-write, electronically addressable memory, with instructions fetched and executed sequentially from that memory during a run -- as distinct from earlier or contemporaneous designs where the program was set externally (e.g. the original 1945 ENIAC's plugboard/switch wiring, before its 1948 conversion to a primitive stored-program mode). This is the general architectural idea/lineage, first fully articulated in written form in 'First Draft of a Report on the EDVAC' (1945). Proposed here as distinct from the narrower 'von Neumann architecture' label -- a name for one specific written description of the idea, credited to a single author, and already recorded elsewhere in this corpus as a controversial name because it omits other contributors. Not any single physical machine (not ENIAC, not EDVAC as artifacts) and not the general field/subfield of computer engineering.",
+      "source_hint": "Wikipedia 'Stored-program computer'; Wikipedia 'Von Neumann architecture'; Wikipedia 'First Draft of a Report on the EDVAC' -- named per this order's item 3 framing and the held-ledger's 2026-07-31 sourcing note (one known claim-stating source: enwiki 'Von Neumann architecture', 'Eckert and Mauchly had essentially finished designing a stored program computer before discussing the ideas with von Neumann'); none fetched live this session.",
+      "note": "This is the referent decision item 3 of this order requires. I selected the stored-program-computer concept over (a) the machine itself -- ENIAC/EDVAC are artifacts, and decision (121) already ruled machines get no node class of their own -- and (b) 'von Neumann architecture' specifically -- that name credits one author, and the corpus's own reviewed edge:john-von-neumann-influenced-computer-systems note already records the naming as controversial for excluding Mauchly and Eckert. A name neutral among the three co-contributors this batch proposes as founders (Mauchly, Eckert, von Neumann) is the referent-precision choice, mirroring concept:internet's neutral naming relative to Cerf/Kahn co-founding of the Internet.",
+      "rationale": "A concept-node referent is required to carry Mauchly's and Eckert's founding-grade credit at all, per decision (121)'s ruling that work:eniac and canonical_work cannot carry it: the artifact layer is closed, but the relation taxonomy admits a concept target for exactly this shape (the concept:internet precedent, decision (71)). Edge-demand (concept keep-criterion C1) is satisfied by three proposed founder edges in this same batch (Mauchly, Eckert, von Neumann).",
+      "uncertainty": "This is a genuine referent-precision judgment call, not a settled identification -- I have not run this description against a live resolver this session. Real risk: a resolver could return a 'von Neumann architecture' entity instead of a separate 'stored-program computer' entity (the two are closely related and sometimes conflated in secondary sources), or could return no clean single-entity match at all -- the same C3 failure mode that held concept:boolean-algebra and concept:cardinality in earlier waves. If the resolver cannot cleanly separate the two referents, QC should treat that as a live finding to hold on, not a generator error to route around.",
+      "ambiguous": true
+    }
+  ],
+  "notes": []
+}

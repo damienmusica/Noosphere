@@ -1,0 +1,451 @@
+{
+ "version": 1,
+ "batch_id": "existentialism-wave1-v1",
+ "decided_at": "2026-08-08",
+ "qc_by": {
+  "model_name": "Claude Fable 5",
+  "model_version": "claude-fable-5",
+  "proposed_at": "2026-08-08"
+ },
+ "adds": {
+  "sources": [],
+  "nodes": [
+   {
+    "id": "person:soren-kierkegaard",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+     "wikidata": "Q6512"
+    },
+    "created_at": "2026-08-08",
+    "updated_at": "2026-08-08"
+   },
+   {
+    "id": "person:jean-paul-sartre",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+     "wikidata": "Q9364"
+    },
+    "created_at": "2026-08-08",
+    "updated_at": "2026-08-08"
+   },
+   {
+    "id": "person:martin-heidegger",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+     "wikidata": "Q48301"
+    },
+    "created_at": "2026-08-08",
+    "updated_at": "2026-08-08"
+   }
+  ],
+  "translations": [
+   {
+    "node_id": "person:soren-kierkegaard",
+    "locale": "en",
+    "label": "Søren Kierkegaard",
+    "summary": "",
+    "aliases": [
+     "Soren Kierkegaard",
+     "Søren Aabye Kierkegaard"
+    ],
+    "reviewed": false
+   },
+   {
+    "node_id": "person:jean-paul-sartre",
+    "locale": "en",
+    "label": "Jean-Paul Sartre",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+   },
+   {
+    "node_id": "person:martin-heidegger",
+    "locale": "en",
+    "label": "Martin Heidegger",
+    "summary": "",
+    "aliases": [],
+    "reviewed": false
+   }
+  ],
+  "edges": [
+   {
+    "id": "edge:soren-kierkegaard-influenced-existentialism",
+    "source": "person:soren-kierkegaard",
+    "target": "subfield:existentialism",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+     "source:sep",
+     "source:wikipedia",
+     "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+     "model_name": "Claude Sonnet 5",
+     "model_version": "claude-sonnet-5",
+     "proposed_at": "2026-08-08"
+    },
+    "note": "Kierkegaard laid the conceptual groundwork of existentialism — the precursor grain, at exact parity with edge:friedrich-nietzsche-influenced-existentialism (0.85), which rests on the SAME SEP sentence naming Kierkegaard FIRST: 'the conceptual groundwork of the movement was laid much earlier in the nineteenth century by pioneers like Søren Kierkegaard and Friedrich Nietzsche' (SEP Existentialism). Also SEP: 'The existentialist critique of theoretical detachment was pioneered by Kierkegaard'; enwiki (oldid 1365518285): 'widely considered to be the first existentialist philosopher'; Britannica: 'was a major influence on existentialism and Protestant theology'. The 'father of existentialism' label is recorded WITH its own deflation, not laundered into founding: SEP's Kierkegaard entry deflates it twice in its own voice ('this label obscures at least as much as it reveals'; 'however unhelpful that label may otherwise be'), and founded_or_formalized is refuted on the referent-postdates-founder test — the movement organized in the 20th century, ~85 years after his death (1855), and enwiki states the arrow's direction: the 1930s 'ascendant existentialist movement pointed to him as a precursor'. Alternate-referent guard: enwiki's own-voice founder language ('founder of Christian psychology and of existential psychology and therapy') is for existential psychology, a different target — not transferred. Identity Q6512 verified live (P31=Q5, 1813-05-05 / 1855-11-11). a-relation ladder (decision (68)): both endpoints reviewed + supported -> auto-reviewed."
+   },
+   {
+    "id": "edge:jean-paul-sartre-influenced-existentialism",
+    "source": "person:jean-paul-sartre",
+    "target": "subfield:existentialism",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+     "source:britannica",
+     "source:iep",
+     "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+     "model_name": "Claude Sonnet 5",
+     "model_version": "claude-sonnet-5",
+     "proposed_at": "2026-08-08"
+    },
+    "note": "Sartre is the movement's central 20th-century figure — admitted at influenced after founded_or_formalized was REJECTED at verification: zero instances of founder/founded/father-of language for Sartre in any registered provider, and the entire SEP Existentialism entry contains no founding attribution for ANYONE (conspicuous silence recorded as evidence). The label history is recorded, not credited: 'existentialism' was coined by Gabriel Marcel and first applied TO Sartre at a 1945 colloquium — Sartre rejected it there, then adopted it publicly (1945-10-29); enwiki: he 'adopted the term existentialism for his own philosophy in the 1940s' and his 1945 lecture 'helped popularize existentialist thought' — adopt-label and popularise are both non-founding (Whewell rule family). What the sources DO assert: Britannica 'best known as the leading exponent of existentialism in the 20th century'; IEP 'In the public consciousness, at least, Sartre must surely be the central figure of existentialism' and 'In 1943 Being and Nothingness, the groundwork of the Existentialist movement in France was published' (work-level and France-scoped — flagged as future canonical_work demand, not person-level founding); enwiki (oldid 1367693189): 'one of the key figures in the philosophy of existentialism'. Member-vs-influence blur recorded (he is constitutively a member, not an external influence — the same blur the corpus already records for Sartre/Camus on edge:existentialism-influenced-literary-studies); even his signature formula has acknowledged antecedents (enwiki: 'similar notions can be found in the thought of existentialist philosophers such as Heidegger, and Kierkegaard'). Identity Q9364 verified live (P31=Q5, 1905-06-21 / 1980-04-15). a-relation ladder (decision (68)): both endpoints reviewed + supported -> auto-reviewed."
+   },
+   {
+    "id": "edge:martin-heidegger-influenced-existentialism",
+    "source": "person:martin-heidegger",
+    "target": "subfield:existentialism",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+     "source:wikipedia",
+     "source:sep",
+     "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+     "model_name": "Claude Sonnet 5",
+     "model_version": "claude-sonnet-5",
+     "proposed_at": "2026-08-08"
+    },
+    "note": "Heidegger's work is developmentally central to existentialism (enwiki, oldid 1366448599: 'was a German philosopher whose work was central to the development of phenomenology, hermeneutics, and existentialism'; SEP Existentialism: 'Heidegger's conception of being-in-the-world articulates three related ideas that will become central to twentieth-century existentialism and phenomenology'; 'The influence of Heidegger on Sartre's 1943 Being and Nothingness is marked'). HIS OWN REJECTION OF THE LABEL IS RECORDED: enwiki Existentialism (oldid 1357728536): 'Heidegger distanced himself from Sartre's position and existentialism in general in his Letter on Humanism', holding that 'the reversal of a metaphysical statement remains a metaphysical statement' — the disavowal targets MEMBERSHIP, not influence, and no source denies or even hedges the influence (SEP is silent about the disavowal and treats him as groundwork-layer). Membership is the contested grain (Britannica: 'counted among the main exponents of existentialism' vs the disavowal) — record-not-resolve, so influenced is the conservative correct relation. The same articles record his caveat that 'Sartre had misread his work' in the same breath as the influence claim. Not founded: the conceptual groundwork predates him (Kierkegaard/Nietzsche per SEP) and the mid-century movement is French. Identity Q48301 verified live (P31=Q5, 1889-09-26 / 1976-05-26). a-relation ladder (decision (68))."
+   },
+   {
+    "id": "edge:martin-heidegger-influenced-philosophy-of-technology",
+    "source": "person:martin-heidegger",
+    "target": "subfield:philosophy-of-technology",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+     "source:sep",
+     "source:wikipedia",
+     "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+     "model_name": "Claude Sonnet 5",
+     "model_version": "claude-sonnet-5",
+     "proposed_at": "2026-08-08"
+    },
+    "note": "SEP's Philosophy of Technology entry (sum2026 fixed edition, the anchored version) asserts the person-level influence directly: 'the work of these founding figures of humanities philosophy of technology has been taken further by a second and third generation of scholars—in particular the work of Heidegger remains an important source of inspiration', and treats Heidegger as the canon's most prominent figure ('her position in the canon of humanities philosophy of technology is not as prominent as is Heidegger's', of Arendt). This closes the gap the reviewed edge:phenomenology-influenced-philosophy-of-technology note preserved verbatim ('Heidegger has no node') — that note is refreshed in this same decision file (decision (119) rule); the two edges carry different grains (tradition-level vs person-level). NOT founded_or_formalized: Ernst Kapp 'was the first to use the term philosophy of technology in his book Eine Philosophie der Technik (1877 [2018])' — the field's name and tradition predate Heidegger by decades (Whewell-family block on founding, irrelevant to influence). Edition note: the live SEP text additionally records Heidegger's own disavowal of doing philosophy of technology; that sentence is not in the sum2026 anchored edition and is not load-bearing here. Identity Q48301. a-relation ladder (decision (68))."
+   },
+   {
+    "id": "edge:martin-heidegger-influenced-phenomenology",
+    "source": "person:martin-heidegger",
+    "target": "subfield:phenomenology",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+     "source:wikipedia",
+     "source:sep",
+     "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+     "model_name": "Claude Sonnet 5",
+     "model_version": "claude-sonnet-5",
+     "proposed_at": "2026-08-08"
+    },
+    "note": "Heidegger redirected phenomenology after his teacher Husserl founded it (enwiki 'Phenomenology (philosophy)', oldid 1362572183: 'By shifting the center of gravity to existence in what he calls fundamental ontology, Heidegger altered the subsequent direction of phenomenology'; SEP Phenomenology: 'it came into its own in the early 20th century in the works of Husserl, Heidegger, Sartre, Merleau-Ponty and others'; enwiki Heidegger: 'Edmund Husserl, the founder of phenomenology, was Heidegger's teacher and a major influence on his thought'). FOUNDING NOT CLAIMED, recorded against: SEP's launch sentence ('the philosophical tradition launched in the first half of the 20th century by Edmund Husserl, Martin Heidegger, Maurice Merleau-Ponty, Jean-Paul Sartre, et al.') could read as co-founding, but the corpus scopes the discipline's founding to Husserl (edge:edmund-husserl-founded-phenomenology, 0.95 reviewed), Husserl is Heidegger's own teacher, and crediting the student would invert the predates-the-founder logic; member_of was considered and declined (its ratified targets are named-group institution nodes, and subfield:phenomenology is not one). Identity Q48301. a-relation ladder (decision (68))."
+   }
+  ],
+  "external_links": []
+ },
+ "promotions": [
+  {
+   "kind": "edge",
+   "id": "edge:phenomenology-influenced-philosophy-of-technology",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_note": "Phenomenology (esp. Heidegger's 'The Question Concerning Technology') is a founding tradition of philosophy of technology (postphenomenology, Ihde). Source = the tradition; the person-level claim is now carried by person:martin-heidegger via edge:martin-heidegger-influenced-philosophy-of-technology. Direction correct. Permanence: SEP https://web.archive.org/web/20260702035645/https://plato.stanford.edu/entries/technology/ · WP https://en.wikipedia.org/w/index.php?title=Philosophy_of_technology&oldid=1359005281. ((a)-ladder decision (68); supported). [Note refreshed 2026-08-08, session #64 existentialism-wave1-v1: the gap this note recorded ('Heidegger has no node') was closed by the same batch that refreshed it (decision (119) rule). The claim, its sources and its confidence are unchanged.]",
+   "note": "gap closed by this same batch (decision (119) rule)"
+  }
+ ],
+ "translation_updates": [],
+ "verdicts": [
+  {
+   "subject_id": "edge:soren-kierkegaard-influenced-existentialism",
+   "verdict": "supported",
+   "identity_referent_verified": true,
+   "direction_confirmed": true,
+   "sources": [
+    {
+     "url": "https://plato.stanford.edu/entries/existentialism/",
+     "retrieved_at": "2026-08-08",
+     "quote": "the conceptual groundwork of the movement was laid much earlier in the nineteenth century by pioneers like Søren Kierkegaard and Friedrich Nietzsche",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/existentialism/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+     "retrieved_at": "2026-08-08",
+     "quote": "was a Danish philosopher, Lutheran theologian, poet, social critic, and religious author who is widely considered to be the first existentialist philosopher.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=S%C3%B8ren_Kierkegaard&oldid=1365518285"
+    },
+    {
+     "url": "https://www.britannica.com/biography/Soren-Kierkegaard",
+     "retrieved_at": "2026-08-08",
+     "quote": "was a Danish philosopher, theologian, and cultural critic who was a major influence on existentialism and Protestant theology in the 20th century.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260802124050/https://www.britannica.com/biography/Soren-Kierkegaard"
+    }
+   ],
+   "notes": "Refutation-first verifier: founded_or_formalized refuted on referent-postdates-founder (~85 years); precursor grain survives at Nietzsche parity. SEP deflates the paternity label twice in its own voice. Verifier self-reported model ID: claude-fable-5."
+  },
+  {
+   "subject_id": "edge:jean-paul-sartre-influenced-existentialism",
+   "verdict": "supported",
+   "identity_referent_verified": true,
+   "direction_confirmed": true,
+   "sources": [
+    {
+     "url": "https://www.britannica.com/biography/Jean-Paul-Sartre",
+     "retrieved_at": "2026-08-08",
+     "quote": "was a French philosopher, novelist, and playwright, best known as the leading exponent of existentialism in the 20th century.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260723084244/https://www.britannica.com/biography/Jean-Paul-Sartre"
+    },
+    {
+     "url": "https://iep.utm.edu/existent/",
+     "retrieved_at": "2026-08-08",
+     "quote": "In the public consciousness, at least, Sartre must surely be the central figure of existentialism.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260802113204/https://iep.utm.edu/existent/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Jean-Paul_Sartre",
+     "retrieved_at": "2026-08-08",
+     "quote": "Sartre was one of the key figures in the philosophy of existentialism (and phenomenology)",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jean-Paul_Sartre&oldid=1367693189"
+    }
+   ],
+   "notes": "The ordered founded_or_formalized claim was REJECTED (see rejections); influenced admitted on the verifier-gathered centrality/exponent language. Verifier self-reported model ID: claude-fable-5."
+  },
+  {
+   "subject_id": "edge:martin-heidegger-influenced-existentialism",
+   "verdict": "supported",
+   "identity_referent_verified": true,
+   "direction_confirmed": true,
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Martin_Heidegger",
+     "retrieved_at": "2026-08-08",
+     "quote": "was a German philosopher whose work was central to the development of phenomenology, hermeneutics, and existentialism.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Heidegger&oldid=1366448599"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/existentialism/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Heidegger’s conception of being-in-the-world articulates three related ideas that will become central to twentieth-century existentialism and phenomenology.",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/existentialism/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Martin_Heidegger",
+     "retrieved_at": "2026-08-08",
+     "quote": "The influence of Heidegger on Sartre’s 1943 Being and Nothingness is marked. Heidegger himself, however, argued that Sartre had misread his work.",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Heidegger&oldid=1366448599"
+    }
+   ],
+   "notes": "Label-rejection complication confirmed and recorded (Letter on Humanism); it targets membership, not influence — no source denies the influence. Verifier self-reported model ID: claude-fable-5."
+  },
+  {
+   "subject_id": "edge:martin-heidegger-influenced-philosophy-of-technology",
+   "verdict": "supported",
+   "identity_referent_verified": true,
+   "direction_confirmed": true,
+   "sources": [
+    {
+     "url": "https://plato.stanford.edu/entries/technology/",
+     "retrieved_at": "2026-08-08",
+     "quote": "the work of these founding figures of humanities philosophy of technology has been taken further by a second and third generation of scholars—in particular the work of Heidegger remains an important source of inspiration",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/technology/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/technology/",
+     "retrieved_at": "2026-08-08",
+     "quote": "her position in the canon of humanities philosophy of technology is not as prominent as is Heidegger’s",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/technology/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Martin_Heidegger",
+     "retrieved_at": "2026-08-08",
+     "quote": "was a German philosopher whose work was central to the development of phenomenology, hermeneutics, and existentialism.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Heidegger&oldid=1366448599"
+    }
+   ],
+   "notes": "Corpus-phrase target survived: the tradition-level note stands, and the anchored SEP edition names Heidegger person-specifically among the founding figures whose work 'remains an important source of inspiration'. Founding blocked by Kapp's 1877 coinage (anchored edition, verbatim: 'Ernst Kapp, who was the first to use the term philosophy of technology in his book Eine Philosophie der Technik (1877 [2018])'). ★ EDITION DISCREPANCY recorded: the live verifier quoted 'key thinkers from continental philosophy—notably Heidegger—have been a great influence…' and a Heidegger disavowal sentence from the LIVE SEP entry; the sum2026 fixed edition this decision anchors does not contain either sentence (the entry text differs between live and the archived edition). The quotes above are sum2026-verbatim, orchestrator-verified; the claim survives identically in both texts. Verifier self-reported model ID: claude-fable-5."
+  },
+  {
+   "subject_id": "edge:martin-heidegger-influenced-phenomenology",
+   "verdict": "supported",
+   "identity_referent_verified": true,
+   "direction_confirmed": true,
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Phenomenology_(philosophy)",
+     "retrieved_at": "2026-08-08",
+     "quote": "By shifting the center of gravity to existence in what he calls fundamental ontology, Heidegger altered the subsequent direction of phenomenology.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Phenomenology_(philosophy)&oldid=1362572183"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/phenomenology/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Phenomenology has been practiced in various guises for centuries, but it came into its own in the early 20th century in the works of Husserl, Heidegger, Sartre, Merleau-Ponty and others.",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/phenomenology/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Martin_Heidegger",
+     "retrieved_at": "2026-08-08",
+     "quote": "Edmund Husserl, the founder of phenomenology, was Heidegger’s teacher and a major influence on his thought.",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Heidegger&oldid=1366448599"
+    }
+   ],
+   "notes": "SEP's co-founding-flavored launch sentence recorded against; corpus scopes founding to Husserl. member_of structurally declined. Verifier self-reported model ID: claude-fable-5."
+  }
+ ],
+ "identity": [
+  {
+   "node_id": "person:soren-kierkegaard",
+   "provider": "wikidata",
+   "external_id": "Q6512",
+   "verified": true,
+   "method": "wbgetentities",
+   "retrieved_at": "2026-08-07"
+  },
+  {
+   "node_id": "person:jean-paul-sartre",
+   "provider": "wikidata",
+   "external_id": "Q9364",
+   "verified": true,
+   "method": "wbgetentities",
+   "retrieved_at": "2026-08-07"
+  },
+  {
+   "node_id": "person:martin-heidegger",
+   "provider": "wikidata",
+   "external_id": "Q48301",
+   "verified": true,
+   "method": "wbgetentities",
+   "retrieved_at": "2026-08-07"
+  }
+ ],
+ "sanctions": [
+  {
+   "subject_id": "person:soren-kierkegaard",
+   "ladder": "node-promotion-v1"
+  },
+  {
+   "subject_id": "person:jean-paul-sartre",
+   "ladder": "node-promotion-v1"
+  },
+  {
+   "subject_id": "person:martin-heidegger",
+   "ladder": "node-promotion-v1"
+  },
+  {
+   "subject_id": "edge:soren-kierkegaard-influenced-existentialism",
+   "ladder": "a-relation-auto-68"
+  },
+  {
+   "subject_id": "edge:jean-paul-sartre-influenced-existentialism",
+   "ladder": "a-relation-auto-68"
+  },
+  {
+   "subject_id": "edge:martin-heidegger-influenced-existentialism",
+   "ladder": "a-relation-auto-68"
+  },
+  {
+   "subject_id": "edge:martin-heidegger-influenced-philosophy-of-technology",
+   "ladder": "a-relation-auto-68"
+  },
+  {
+   "subject_id": "edge:martin-heidegger-influenced-phenomenology",
+   "ladder": "a-relation-auto-68"
+  }
+ ],
+ "rejections": [
+  {
+   "label": "Sartre founded/formalized existentialism",
+   "referent": "person:jean-paul-sartre → founded_or_formalized → subfield:existentialism",
+   "kind": "edge",
+   "batch_id": "existentialism-wave1-v1",
+   "recorded_at": "2026-08-08",
+   "reason": "REJECTED at the founding grade (verifier-suggested claim confidence 0.2): zero instances of founder/founded/father-of language for Sartre across SEP, IEP, enwiki and Britannica; the entire SEP Existentialism entry contains no founding attribution for anyone (conspicuous silence); the founding-grade language sources actually use is 'leading exponent' (Britannica), 'central figure ... in the public consciousness, at least' (IEP, hedged), 'one of the key figures' (enwiki), 'most popular voices of this movement' (SEP). The label was coined by Marcel and applied TO Sartre (rejected 1945, adopted later) — being-labelled is not founding; adopt-and-popularise is not founding. Both of the order's grain traps confirmed. Admitted instead at influenced 0.8 (edge:jean-paul-sartre-influenced-existentialism). IEP's 'In 1943 Being and Nothingness, the groundwork of the Existentialist movement in France was published' is work-level and France-scoped — flagged as future canonical_work demand."
+  },
+  {
+   "label": "Gabriel Marcel founded/formalized existentialism (unmarked reject probe)",
+   "referent": "person:gabriel-marcel → founded_or_formalized → subfield:existentialism",
+   "kind": "edge",
+   "batch_id": "existentialism-wave1-v1",
+   "recorded_at": "2026-08-08",
+   "reason": "Probe fired correctly at BOTH stages. Generation: the Sonnet generator refused the ordered relation outright, reasoning that the order's own naming-is-not-founding clause applies with no principled exception for the namer. Verification (0.97 reject): coinage confirmed (SEP: 'The word, first introduced by Marcel in 1943'; enwiki: 'coined by the French Catholic philosopher Gabriel Marcel in the mid-1940s', first applied to Sartre) but coinage is not founding (Whewell rule); Marcel 'dissociated himself from figures such as Jean-Paul Sartre, preferring the term philosophy of existence or neo-Socrateanism', later 'came to reject the label himself'; IEP: 'a noted opponent of atheistic existentialism'; SEP's dedicated Marcel entry never uses founding language for existentialism; and SEP directly undercuts the 'formalized' prong: the word 'is certainly not a reference to a coherent system or philosophical school'."
+  },
+  {
+   "label": "Gabriel Marcel (node, this batch)",
+   "referent": "person:gabriel-marcel",
+   "kind": "node",
+   "batch_id": "existentialism-wave1-v1",
+   "recorded_at": "2026-08-08",
+   "reason": "No admissible edge this batch (isolated-node precedent). The generator's fallback influenced 0.6 was not admitted: the verifier's evidence points to member/contributor grain ('leading Christian existentialist'; 'often regarded as the first French existentialist') complicated by his own dissociation and opposition to the movement's dominant strand, and even the narrower Christian-existentialism paternity is occupied ('Søren Kierkegaard, the father of Christian existentialism' — who died 34 years before Marcel was born). Declined without prejudice: re-proposable if a Christian-existentialism-grain examination or stronger influence sourcing arrives."
+  }
+ ],
+ "held": [],
+ "held_resolutions": [],
+ "override_rejections": [],
+ "anchors_pending": [],
+ "notes": [
+  "existentialism-wave1-v1: builds the founding layer subfield:existentialism lacked (zero person-level edges beyond Nietzsche) and closes the Heidegger gap a reviewed note preserved verbatim. Generation = separated-context Sonnet agent (claude-sonnet-5 self-reported, no network, provider-ID self-scan clean); verification = independent contexts, refutation-first, live identity (self-reported claude-fable-5); adjudication = orchestrator (claude-fable-5, environment-stated).",
+  "★ The wave's substantive finding, confirmed independently by generator and verifiers: NO founded_or_formalized edge exists anywhere in this batch — at the person-to-existentialism grain, founding-grade language could not be supported for ANY of the four slate figures (Kierkegaard/Nietzsche get precursor language with the paternity label deflated by SEP itself; Sartre gets exponent/centrality language; Heidegger explicitly disavowed; Marcel coined the name and dissociated). SEP Existentialism uses no founding language for anyone. The subfield's founding layer is honestly an INFLUENCE layer.",
+  "Probe outcome: the Marcel row was an unmarked reject probe — the generator refused the ordered relation at generation time (streak holds in this batch, unlike computing-wave1-v1's von Neumann probe), and verification confirmed at 0.97.",
+  "Sartre downgrade: the generator downgraded from the order's implied founding framing on its own; verification independently confirmed with the zero-founder-language finding. Order grain-traps (a) and (b) both fired as designed.",
+  "Heidegger gap note on edge:phenomenology-influenced-philosophy-of-technology refreshed in this same decision file (decision (119) rule); every clause of the replacement re-checked against /data.",
+  "Future candidates recorded, not proposed: canonical_work wave for Being and Time / Being and Nothingness (IEP work-level groundwork language); a Christian-existentialism-grain examination for Marcel.",
+  "Britannica quotes (Kierkegaard, Sartre) were machine-checked verbatim against their recorded Wayback snapshots by the orchestrator, in the article-body lead (three occurrences each on-page; the two metadata/openGraph copies were disregarded, the body occurrence is the one anchored). Live pages are Cloudflare-403 today."
+ ]
+}

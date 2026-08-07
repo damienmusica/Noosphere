@@ -1,0 +1,675 @@
+{
+ "version": 1,
+ "batch_id": "editorial-batch14-v1",
+ "decided_at": "2026-08-08",
+ "qc_by": {
+  "model_name": "Claude Fable 5",
+  "model_version": "claude-fable-5",
+  "proposed_at": "2026-08-08"
+ },
+ "adds": {
+  "sources": [],
+  "nodes": [],
+  "translations": [],
+  "edges": [],
+  "external_links": []
+ },
+ "promotions": [
+  {
+   "kind": "node",
+   "id": "person:john-mauchly",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  },
+  {
+   "kind": "node",
+   "id": "person:j-presper-eckert",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  },
+  {
+   "kind": "node",
+   "id": "concept:eniac",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  },
+  {
+   "kind": "node",
+   "id": "person:martin-heidegger",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  },
+  {
+   "kind": "node",
+   "id": "person:soren-kierkegaard",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  },
+  {
+   "kind": "node",
+   "id": "person:jean-paul-sartre",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  },
+  {
+   "kind": "node",
+   "id": "person:robert-hooke",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  },
+  {
+   "kind": "node",
+   "id": "person:baudouin-de-courtenay",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  }
+ ],
+ "translation_updates": [
+  {
+   "node_id": "person:john-mauchly",
+   "locale": "en",
+   "summary": "John Mauchly (1907–1980) was an American physicist who, along with J. Presper Eckert, designed ENIAC, the first programmable, electronic, general-purpose digital computer, built during World War II at the Moore School of Electrical Engineering at the University of Pennsylvania. In August 1942 he proposed an all-electronic calculating machine that could help the U.S. Army calculate complex ballistics tables, and he partnered with Eckert, a research associate, because he was not himself an electronics expert. Together the two started the first computer company, the Eckert–Mauchly Computer Corporation, and designed BINAC and UNIVAC I, the first commercial computer made in the United States; in 1950 the firm was acquired by Remington Rand. The ENIAC patent was voided by the 1973 decision in the landmark federal court case Honeywell, Inc. v. Sperry Rand Corp., which held that the ENIAC inventors had derived the subject matter of the electronic digital computer from John Atanasoff, whose Atanasoff–Berry computer Mauchly had examined in June 1941.",
+   "reviewed": true
+  },
+  {
+   "node_id": "person:j-presper-eckert",
+   "locale": "en",
+   "summary": "J. Presper Eckert (1919–1995) was an American electrical engineer and computer pioneer who, with John Mauchly, designed ENIAC, the first programmable, electronic, general-purpose digital computer. He had entered the Moore School of Electrical Engineering at the University of Pennsylvania in 1937 and had almost completed a master's degree when, in May 1943, he was appointed chief engineer on the project with the specific task of designing the electronic circuits; among the problems he solved was how a machine with 18,000 valves could function when the valves were relatively unreliable. With Mauchly he also presented the first course in computing topics (the Moore School Lectures), founded the Eckert–Mauchly Computer Corporation, and designed the first commercial computer in the U.S., the UNIVAC, which incorporated his invention of the mercury delay-line memory. Between 1948 and 1966 he took out patents on 85 inventions, almost all electronic in nature, and in 1969 he was awarded the US National Medal of Science.",
+   "reviewed": true
+  },
+  {
+   "node_id": "concept:eniac",
+   "locale": "en",
+   "summary": "ENIAC (Electronic Numerical Integrator and Computer) was the first programmable, electronic, general-purpose digital computer, completed in 1945; other computers had some of these features, but ENIAC was the first to have them all. It was designed by John Mauchly and J. Presper Eckert at the Moore School of Electrical Engineering at the University of Pennsylvania to calculate artillery firing tables for the United States Army's Ballistic Research Laboratory, though its first program was a study of the feasibility of the thermonuclear weapon. Built with more than 17,000 vacuum tubes and occupying the basement of the Moore School, it was programmed by plugboard and switches, with the disadvantage that it took days to rewire the machine for each new problem. Its patent was voided by the 1973 decision in the landmark federal court case Honeywell, Inc. v. Sperry Rand Corp., which gave legal recognition to John Atanasoff as the inventor of the first electronic digital computer and put that invention in the public domain.",
+   "reviewed": true
+  },
+  {
+   "node_id": "person:martin-heidegger",
+   "locale": "en",
+   "summary": "Martin Heidegger (1889–1976) was a German philosopher whose work was central to the development of phenomenology, hermeneutics, and existentialism. In his magnum opus, Being and Time (1927), he introduced the concept of Dasein (\"being-there\") to describe the distinctive character of human existence and sought to reawaken what he called \"the question of being,\" which he believed had been neglected or obscured throughout the history of Western philosophy since the ancient Greeks. His later work turned increasingly to questions of technology, language, art, and poetry, and Being and Time together with his many essays and lectures profoundly influenced subsequent movements in European philosophy, including Jean-Paul Sartre's existentialism, Hans-Georg Gadamer's hermeneutics, and Jacques Derrida's deconstruction — though he published \"On Humanism\" in 1947 to clarify his differences with Sartre and French existentialism. His legacy has been complicated and shadowed by his involvement with Nazism: in April 1933 he was elected rector of the University of Freiburg and joined the Nazi Party.",
+   "reviewed": true
+  },
+  {
+   "node_id": "person:soren-kierkegaard",
+   "locale": "en",
+   "summary": "Søren Kierkegaard (1813–1855) was a Danish philosopher, Lutheran theologian, poet, social critic, and religious author whose work — almost all of which was written in the 1840s — spans philosophy, theology, religious and devotional writing, literary criticism, psychology and social critique. Much of his philosophical work deals with how one lives as a \"single individual,\" highlighting the importance of authenticity, personal choice and commitment; his early work was written using pseudonyms who presented distinctive viewpoints, and the works of that period include Either/Or (1843), Fear and Trembling (1843), and Concluding Unscientific Postscript (1846). He is widely considered to be the first existentialist philosopher and is often dubbed the \"father of existentialism,\" a label that obscures at least as much as it reveals, especially to those who associate existentialism with atheistic figures such as Sartre. His thought influenced thinkers in the phenomenological and existential traditions, including Heidegger, Sartre, Jaspers, Marcel, and Lévinas, but also thinkers in very different philosophical traditions, such as Wittgenstein.",
+   "reviewed": true
+  },
+  {
+   "node_id": "person:jean-paul-sartre",
+   "locale": "en",
+   "summary": "Jean-Paul Sartre (1905–1980) was a French philosopher, playwright, novelist, and political activist, best known as the leading exponent of existentialism in the 20th century and one of the key figures in that philosophy and in phenomenology. In his principal philosophical work, Being and Nothingness (1943), he places human consciousness, or no-thingness (néant), in opposition to being, or thingness (être), and develops the conflict between conformity in \"bad faith\" (mauvaise foi) and an \"authentic\" way of being; thousands of Parisians packed into his public lecture Existentialism Is a Humanism towards the end of 1945, which offered an accessible version of that difficult treatise. Few philosophers have been as famous in their own lifetime: he founded and co-edited Les Temps Modernes, mobilised various forms of political protest and action, and was a celebrity and public intellectual par excellence, especially in the period after Liberation through to the early 1960s. He was awarded the 1964 Nobel Prize in Literature despite attempting to refuse it, saying that he always declined official honours and that a writer should not allow himself to be turned into an institution.",
+   "reviewed": true
+  },
+  {
+   "node_id": "person:robert-hooke",
+   "locale": "en",
+   "summary": "Robert Hooke (1635–1703) was an English polymath who was active as a physicist, astronomer, geologist, meteorologist, and architect, and who from 1662 was the Royal Society's first Curator of Experiments. In 1660 he discovered the law of elasticity that bears his name — that the stretching of a solid body is proportional to the force applied to it — first describing it in an anagram whose solution he published in 1678 as Ut tensio, sic vis (\"As the extension, so the force\"). His 1665 book Micrographia, based on observations made with a compound microscope that he designed, first used the word cell to name the microscopic honeycomb cavities in cork and encouraged microscopic investigations. He also inferred that gravity obeys an inverse square law, offered a wave theory of light to explain the diffraction he discovered in 1672, and, after the Great Fire of London in 1666, performed more than half of the city's property line surveys.",
+   "reviewed": true
+  },
+  {
+   "node_id": "person:baudouin-de-courtenay",
+   "locale": "en",
+   "summary": "Jan Baudouin de Courtenay (1845–1929) was a Polish and Russian linguist and Slavist, best known for his theory of the phoneme and phonetic alternations, who regarded language sounds as structural entities rather than mere physical phenomena and thus anticipated the modern linguistic concern with language structure. He spent most of his career at Imperial Russian universities — Kazan, Dorpat, and St. Petersburg — and at Kraków in Austria-Hungary, established the Kazan School of linguistics in the mid-1870s, and from 1919 to 1929 was a professor at the re-established University of Warsaw in independent Poland. Together with his students Mikołaj Kruszewski and Lev Shcherba he shaped the modern usage of the term \"phoneme,\" which had been coined in 1873 by the French linguist Antoni Dufriche-Desgenettes, and he was an early champion of synchronic linguistics, which he developed contemporaneously with the structuralist linguistic theory of Ferdinand de Saussure. His work had a major influence on 20th-century linguistic theory and served as a foundation for several schools of phonology: the Leningrad, Moscow, and Prague schools of phonology all arose directly from his distinction between physiophonetic and psychophonetic alternations.",
+   "reviewed": true
+  }
+ ],
+ "verdicts": [
+  {
+   "subject_id": "person:john-mauchly",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/John_Mauchly",
+     "retrieved_at": "2026-08-08",
+     "quote": "was an American physicist who, along with J. Presper Eckert, designed ENIAC, the first general-purpose electronic digital computer, as well as EDVAC, BINAC and UNIVAC I, the first commercial computer made in the United States",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Mauchly&oldid=1357213830"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "Later, in August 1942, Mauchly proposed an all-electronic calculating machine that could help the U.S. Army calculate complex ballistics tables.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=ENIAC&oldid=1365289299"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "He partnered with research associate J. Presper Eckert, as Mauchly wasn't an electronics expert, to draft an electronic computer that could work at an excellent pace.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=ENIAC&oldid=1365289299"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/John_Mauchly",
+     "retrieved_at": "2026-08-08",
+     "quote": "Together, Mauchly and Eckert started the first computer company, the Eckert–Mauchly Computer Corporation (EMCC)",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Mauchly&oldid=1357213830"
+    },
+    {
+     "url": "https://www.britannica.com/biography/John-Mauchly",
+     "retrieved_at": "2026-08-08",
+     "quote": "In 1950 the Eckert–Mauchly Computer Corporation was acquired by Remington Rand, Inc.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260102105803/https://www.britannica.com/biography/John-Mauchly"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "was voided by the 1973 decision of the landmark federal court case Honeywell, Inc. v. Sperry Rand Corp.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=ENIAC&oldid=1365289299"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "that the ENIAC inventors had derived the subject matter of the electronic digital computer from Atanasoff",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=ENIAC&oldid=1365289299"
+    }
+   ]
+  },
+  {
+   "subject_id": "person:j-presper-eckert",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/J._Presper_Eckert",
+     "retrieved_at": "2026-08-08",
+     "quote": "was an American electrical engineer and computer pioneer. With John Mauchly, he designed the first general-purpose electronic digital computer (ENIAC)",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=J._Presper_Eckert&oldid=1361713244"
+    },
+    {
+     "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Eckert_John/",
+     "retrieved_at": "2026-08-08",
+     "quote": "In 1937, after graduating from school, he entered the Moore School of Electrical Engineering at the University of Pennsylvania from where he graduated in 1941.",
+     "independent": true
+    },
+    {
+     "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Eckert_John/",
+     "retrieved_at": "2026-08-08",
+     "quote": "At this time, May 1943, Eckert had almost completed the work for his masters degree and he was appointed as chief engineer on the project with the specific task of designing the electronic circuits.",
+     "independent": true
+    },
+    {
+     "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Eckert_John/",
+     "retrieved_at": "2026-08-08",
+     "quote": "One of the major problems which had to be solved was how a machine with 18000 valves could function when the valves were relatively unreliable.",
+     "independent": true
+    },
+    {
+     "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Eckert_John/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Between 1948 and 1966 Eckert took out patents on 85 inventions, almost all electronic in nature.",
+     "independent": true
+    },
+    {
+     "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Eckert_John/",
+     "retrieved_at": "2026-08-08",
+     "quote": "perhaps the most prestigious honour was being awarded the US National Medal of Science in 1969",
+     "independent": true
+    }
+   ]
+  },
+  {
+   "subject_id": "concept:eniac",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "was the first programmable , electronic , general-purpose digital computer , completed in 1945.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=ENIAC&oldid=1365289299"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "Other computers had some of these features, but ENIAC was the first to have them all.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=ENIAC&oldid=1365289299"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "ENIAC was designed by John Mauchly and J. Presper Eckert to calculate artillery firing tables for the United States Army",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=ENIAC&oldid=1365289299"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "However, its first program was a study of the feasibility of the thermonuclear weapon.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=ENIAC&oldid=1365289299"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "Like the British Colossus, it was programmed by plugboard and switches.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=ENIAC&oldid=1365289299"
+    },
+    {
+     "url": "https://www.britannica.com/technology/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "The disadvantage was that it took days to rewire the machine for each new problem.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260801160056/https://www.britannica.com/technology/ENIAC"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "gave legal recognition to Atanasoff as the inventor of the first electronic digital computer; and put the invention of the electronic digital computer in the public domain",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=ENIAC&oldid=1365289299"
+    }
+   ]
+  },
+  {
+   "subject_id": "person:martin-heidegger",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Martin_Heidegger",
+     "retrieved_at": "2026-08-08",
+     "quote": "was a German philosopher whose work was central to the development of phenomenology, hermeneutics, and existentialism.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Heidegger&oldid=1366448599"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Martin_Heidegger",
+     "retrieved_at": "2026-08-08",
+     "quote": "he introduced the concept of Dasein (\"being-there\") to describe the distinctive character of human existence",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Heidegger&oldid=1366448599"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Martin_Heidegger",
+     "retrieved_at": "2026-08-08",
+     "quote": "Heidegger sought to reawaken what he called \"the question of being\"",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Heidegger&oldid=1366448599"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Martin_Heidegger",
+     "retrieved_at": "2026-08-08",
+     "quote": "This question, he believed, had been neglected or obscured throughout the history of Western philosophy since the ancient Greeks.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Heidegger&oldid=1366448599"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Martin_Heidegger",
+     "retrieved_at": "2026-08-08",
+     "quote": "His later work turned increasingly to questions of technology, language, art, and poetry",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Heidegger&oldid=1366448599"
+    },
+    {
+     "url": "https://plato.stanford.edu/archives/sum2026/entries/heidegger/",
+     "retrieved_at": "2026-08-08",
+     "quote": "His magnum opus, Being and Time (1927), and his many essays and lectures, profoundly influenced subsequent movements in European philosophy",
+     "independent": true
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Martin_Heidegger",
+     "retrieved_at": "2026-08-08",
+     "quote": "He also published \"On Humanism\" in 1947 to clarify his differences with Jean-Paul Sartre and French existentialism.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Heidegger&oldid=1366448599"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Martin_Heidegger",
+     "retrieved_at": "2026-08-08",
+     "quote": "Heidegger's legacy has been complicated and shadowed by his involvement with Nazism. In April 1933, he was elected rector of the University of Freiburg and joined the Nazi Party",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Heidegger&oldid=1366448599"
+    }
+   ]
+  },
+  {
+   "subject_id": "person:soren-kierkegaard",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+     "retrieved_at": "2026-08-08",
+     "quote": "was a Danish philosopher, Lutheran theologian, poet, social critic, and religious author",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=S%C3%B8ren_Kierkegaard&oldid=1365518285"
+    },
+    {
+     "url": "https://plato.stanford.edu/archives/sum2026/entries/kierkegaard/",
+     "retrieved_at": "2026-08-08",
+     "quote": "whose work—almost all of which was written in the 1840s—is difficult to categorize, spanning philosophy, theology, religious and devotional writing, literary criticism, psychology and social critique",
+     "independent": true
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+     "retrieved_at": "2026-08-08",
+     "quote": "Much of his philosophical work deals with the issues around how one lives as a \"single individual\", highlighting the importance of authenticity, personal choice and commitment",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=S%C3%B8ren_Kierkegaard&oldid=1365518285"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+     "retrieved_at": "2026-08-08",
+     "quote": "Kierkegaard's early work was written using pseudonyms, who presented distinctive viewpoints and interacted in complex dialogue.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=S%C3%B8ren_Kierkegaard&oldid=1365518285"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+     "retrieved_at": "2026-08-08",
+     "quote": "Kierkegaard's magnum opus Either/Or was published 20 February 1843.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=S%C3%B8ren_Kierkegaard&oldid=1365518285"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+     "retrieved_at": "2026-08-08",
+     "quote": "On 16 October 1843, Kierkegaard published three more books about love and faith and several more discourses. Fear and Trembling was published under the pseudonym Johannes de Silentio.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=S%C3%B8ren_Kierkegaard&oldid=1365518285"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+     "retrieved_at": "2026-08-08",
+     "quote": "Kierkegaard wrote his Concluding Unscientific Postscript to Philosophical Fragments in 1846",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=S%C3%B8ren_Kierkegaard&oldid=1365518285"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+     "retrieved_at": "2026-08-08",
+     "quote": "who is widely considered to be the first existentialist philosopher",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=S%C3%B8ren_Kierkegaard&oldid=1365518285"
+    },
+    {
+     "url": "https://plato.stanford.edu/archives/sum2026/entries/kierkegaard/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Also often dubbed the \"father of existentialism\", this label obscures at least as much as it reveals, especially to those who associate existentialism with atheistic figures such as Sartre.",
+     "independent": true
+    },
+    {
+     "url": "https://plato.stanford.edu/archives/sum2026/entries/kierkegaard/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Kierkegaard's thought has certainly influenced thinkers in the phenomenological and existential traditions (including Heidegger, Sartre, Jaspers, Marcel, and Lévinas), but also thinkers in very different philosophical traditions, such as Wittgenstein",
+     "independent": true
+    }
+   ]
+  },
+  {
+   "subject_id": "person:jean-paul-sartre",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://www.britannica.com/biography/Jean-Paul-Sartre",
+     "retrieved_at": "2026-08-08",
+     "quote": "was a French philosopher, novelist, and playwright, best known as the leading exponent of existentialism in the 20th century.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260723084244/https://www.britannica.com/biography/Jean-Paul-Sartre"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Jean-Paul_Sartre",
+     "retrieved_at": "2026-08-08",
+     "quote": "Sartre was one of the key figures in the philosophy of existentialism (and phenomenology)",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jean-Paul_Sartre&oldid=1367693189"
+    },
+    {
+     "url": "https://www.britannica.com/biography/Jean-Paul-Sartre",
+     "retrieved_at": "2026-08-08",
+     "quote": "Sartre places human consciousness, or no-thingness (néant), in opposition to being, or thingness (être).",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260723084244/https://www.britannica.com/biography/Jean-Paul-Sartre"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Jean-Paul_Sartre",
+     "retrieved_at": "2026-08-08",
+     "quote": "The conflict between oppressive, spiritually destructive conformity ( mauvaise foi , literally, ' bad faith ') and an \" authentic \" way of \" being \" became the dominant theme of Sartre's early work, a theme embodied in his principal philosophical work Being and Nothingness",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jean-Paul_Sartre&oldid=1367693189"
+    },
+    {
+     "url": "https://plato.stanford.edu/archives/sum2026/entries/sartre/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Many thousands of Parisians packed into his public lecture, Existentialism is a Humanism, towards the end of 1945",
+     "independent": true
+    },
+    {
+     "url": "https://plato.stanford.edu/archives/sum2026/entries/sartre/",
+     "retrieved_at": "2026-08-08",
+     "quote": "That lecture offered an accessible version of his difficult treatise, Being and Nothingness (1943)",
+     "independent": true
+    },
+    {
+     "url": "https://plato.stanford.edu/archives/sum2026/entries/sartre/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Few philosophers have been as famous in their own life-time as Jean-Paul Sartre (1905–80).",
+     "independent": true
+    },
+    {
+     "url": "https://plato.stanford.edu/archives/sum2026/entries/sartre/",
+     "retrieved_at": "2026-08-08",
+     "quote": "He founded and co-edited Les Temps Modernes and mobilised various forms of political protest and action. In short, he was a celebrity and public intellectual par excellence, especially in the period after Liberation through to the early 1960s.",
+     "independent": true
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Jean-Paul_Sartre",
+     "retrieved_at": "2026-08-08",
+     "quote": "He was awarded the 1964 Nobel Prize in Literature despite attempting to refuse it, saying that he always declined official honors and that \"a writer should not allow himself to be turned into an institution\".",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jean-Paul_Sartre&oldid=1367693189"
+    }
+   ]
+  },
+  {
+   "subject_id": "person:robert-hooke",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Robert_Hooke",
+     "retrieved_at": "2026-08-08",
+     "quote": "was an English polymath who was active as a physicist ('natural philosopher'), astronomer, geologist, meteorologist, and architect.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Hooke&oldid=1367205638"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Robert_Hooke",
+     "retrieved_at": "2026-08-08",
+     "quote": "Hooke was a Fellow of the Royal Society and from 1662, he was its first Curator of Experiments.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Hooke&oldid=1367205638"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Robert_Hooke",
+     "retrieved_at": "2026-08-08",
+     "quote": "In 1660, Hooke discovered the law of elasticity that bears his name",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Hooke&oldid=1367205638"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Robert_Hooke",
+     "retrieved_at": "2026-08-08",
+     "quote": "whose solution he published in 1678 as Ut tensio, sic vis (\"As the extension, so the force\")",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Hooke&oldid=1367205638"
+    },
+    {
+     "url": "https://www.britannica.com/biography/Robert-Hooke",
+     "retrieved_at": "2026-08-08",
+     "quote": "which states that the stretching of a solid body (e.g., metal, wood) is proportional to the force applied to it",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260714155139/https://www.britannica.com/biography/Robert-Hooke"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Robert_Hooke",
+     "retrieved_at": "2026-08-08",
+     "quote": "Hooke's 1665 book Micrographia, in which he coined the term cell, encouraged microscopic investigations.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Hooke&oldid=1367205638"
+    },
+    {
+     "url": "https://www.britannica.com/biography/Robert-Hooke",
+     "retrieved_at": "2026-08-08",
+     "quote": "first used the word cell to name the microscopic honeycomb cavities in cork",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260714155139/https://www.britannica.com/biography/Robert-Hooke"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Robert_Hooke",
+     "retrieved_at": "2026-08-08",
+     "quote": "In physics, Hooke inferred that gravity obeys an inverse square law",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Hooke&oldid=1367205638"
+    },
+    {
+     "url": "https://www.britannica.com/biography/Robert-Hooke",
+     "retrieved_at": "2026-08-08",
+     "quote": "In 1672 he discovered the phenomenon of diffraction (the bending of light rays around corners); to explain it, he offered the wave theory of light.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260714155139/https://www.britannica.com/biography/Robert-Hooke"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Robert_Hooke",
+     "retrieved_at": "2026-08-08",
+     "quote": "After the Great Fire of London in 1666, Hooke (as a surveyor and architect) attained wealth and esteem by performing more than half of the property line surveys",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Robert_Hooke&oldid=1367205638"
+    }
+   ]
+  },
+  {
+   "subject_id": "person:baudouin-de-courtenay",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Jan_Baudouin_de_Courtenay",
+     "retrieved_at": "2026-08-08",
+     "quote": "was a prominent Polish and Russian linguist and Slavist, best known for his theory of the phoneme and phonetic alternations.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jan_Baudouin_de_Courtenay&oldid=1365158762"
+    },
+    {
+     "url": "https://www.britannica.com/biography/Jan-Niecislaw-Baudouin-de-Courtenay",
+     "retrieved_at": "2026-08-08",
+     "quote": "was a linguist who regarded language sounds as structural entities, rather than mere physical phenomena, and thus anticipated the modern linguistic concern with language structure.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20250917185434/https://www.britannica.com/biography/Jan-Niecislaw-Baudouin-de-Courtenay"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Jan_Baudouin_de_Courtenay",
+     "retrieved_at": "2026-08-08",
+     "quote": "For most of his life Baudouin de Courtenay worked at Imperial Russian universities: Kazan (1874–1883), Dorpat (now Estonia) (1883–1893), Kraków (1893–1899) in Austria-Hungary, and St. Petersburg (1900–1918)",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jan_Baudouin_de_Courtenay&oldid=1365158762"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Jan_Baudouin_de_Courtenay",
+     "retrieved_at": "2026-08-08",
+     "quote": "Baudouin de Courtenay established the Kazan School of linguistics in the mid-1870s",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jan_Baudouin_de_Courtenay&oldid=1365158762"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Jan_Baudouin_de_Courtenay",
+     "retrieved_at": "2026-08-08",
+     "quote": "In 1919–1929 he was a professor at the re-established University of Warsaw in independent Poland.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jan_Baudouin_de_Courtenay&oldid=1365158762"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Jan_Baudouin_de_Courtenay",
+     "retrieved_at": "2026-08-08",
+     "quote": "which had been coined in 1873 by the French linguist Antoni Dufriche-Desgenettes",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jan_Baudouin_de_Courtenay&oldid=1365158762"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Jan_Baudouin_de_Courtenay",
+     "retrieved_at": "2026-08-08",
+     "quote": "His work had a major influence on 20th-century linguistic theory, and it served as a foundation for several schools of phonology.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jan_Baudouin_de_Courtenay&oldid=1365158762"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Jan_Baudouin_de_Courtenay",
+     "retrieved_at": "2026-08-08",
+     "quote": "Three major schools of 20th-century phonology arose directly from his distinction between physiophonetic (phonological) and psychophonetic (morphophonological) alternations: the Leningrad school of phonology, the Moscow school of phonology, and the Prague school of phonology.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jan_Baudouin_de_Courtenay&oldid=1365158762"
+    }
+   ]
+  }
+ ],
+ "identity": [],
+ "sanctions": [
+  {
+   "subject_id": "person:john-mauchly",
+   "ladder": "editorial-v2"
+  },
+  {
+   "subject_id": "person:j-presper-eckert",
+   "ladder": "editorial-v2"
+  },
+  {
+   "subject_id": "concept:eniac",
+   "ladder": "editorial-v2"
+  },
+  {
+   "subject_id": "person:martin-heidegger",
+   "ladder": "editorial-v2"
+  },
+  {
+   "subject_id": "person:soren-kierkegaard",
+   "ladder": "editorial-v2"
+  },
+  {
+   "subject_id": "person:jean-paul-sartre",
+   "ladder": "editorial-v2"
+  },
+  {
+   "subject_id": "person:robert-hooke",
+   "ladder": "editorial-v2"
+  },
+  {
+   "subject_id": "person:baudouin-de-courtenay",
+   "ladder": "editorial-v2"
+  }
+ ],
+ "rejections": [],
+ "held": [],
+ "held_resolutions": [],
+ "override_rejections": [],
+ "anchors_pending": [],
+ "notes": [
+  "Editorial batch 14: en summaries for the 8 reviewed nodes admitted this session (person-wave13-v1, computing-wave1-v1, existentialism-wave1-v1) + indexable flips. person:john-atanasoff (proposed) deliberately has no summary — not reviewed, not in the editorial gap.",
+  "Generation: separated-context Opus subagent, self-reported model ID claude-opus-5[1m] (provenance records the reported value). Method = batch-12/13 regime: live fetch via curl, per-sentence verbatim BODY-PROSE citation mandate, plus an explicit constraint sheet carrying this session's adjudications (no Sartre founder language; Kierkegaard paternity label only hedged-and-attributed with SEP's own deflation carried inline; ENIAC firsts always with the full qualifier stack; the bare \"first electronic digital computer\" title appears ONLY inside the Honeywell holding where it belongs to Atanasoff; Hooke never founds cell biology; Baudouin's summary itself attributes the phoneme coinage to Dufriche-Desgenettes 1873).",
+  "QC close-read patch (1): the generator cited Britannica's works list for the Kierkegaard book dates — a list is page furniture under the body-prose rule — so QC re-anchored that sentence to three enwiki BODY sentences (Either/Or \"published 20 February 1843\"; \"On 16 October 1843 … Fear and Trembling was published under the pseudonym Johannes de Silentio\"; \"wrote his Concluding Unscientific Postscript to Philosophical Fragments in 1846\"). Summary text unchanged; only the anchor moved.",
+  "Recorded, not smoothed: the Eckert summary says \"18,000 valves\" (MacTutor's reliability-problem framing, quoted) while the ENIAC summary says \"more than 17,000 vacuum tubes\" (Britannica, quoted) — different sources round the tube count differently (17,468 at completion per common accounts); each sentence is faithful to its own source and the two do not contradict.",
+  "Two NEW §8 anchors introduced by this batch: enwiki ENIAC oldid 1365289299 was already a wave anchor; enwiki Robert Hooke oldid 1367205638 is new (the wave anchored Cell (biology)/Cell theory instead). Six other enwiki oldids match the wave anchors exactly — no drift between generation and QC.",
+  "Britannica quotes ride the same Wayback snapshots recorded by the waves (live pages Cloudflare-403; SPN down today). Britannica Top Questions / FAQ JSON-LD / openGraph text quoted zero times (the generator parsed and excluded them; the Hooke Top-Questions block contains a truncated variant that was not used).",
+  "Heidegger summary includes the Nazism involvement sentence (enwiki body prose verbatim, conservative wording) — a summary that omitted it would curate the record; he is deceased and the facts are uncontested.",
+  "★ fetch-verify FALSE-MISS ruling (3 claims, all on enwiki ENIAC oldid 1365289299): the tool reports MISS but its own best-overlap windows contain Parsoid attribute soup (data-mw JSON, id=\"mw…\" attrs) — its normalization of this specific page swallows sentence interiors. The orchestrator fetched the same oldid URL independently (curl + tag-strip + entity-decode + whitespace-collapse, run twice) and all three quotes are present verbatim: 'was the first programmable , electronic , general-purpose digital computer , completed in 1945.' · 'Other computers had some of these features, but ENIAC was the first to have them all.' (the tool's own detail shows ~100% token overlap on this one) · 'ENIAC was designed by John Mauchly and J. Presper Eckert to calculate artillery firing tables for the United States Army'. Ruled false-miss under the tool's own contract ('Final verdicts are the orchestrator's'). This is the decision (98) Parsoid false-miss family, new variant — NAMED TOOLING FOLLOW-UP for session #65: reproduce with this page, extend normalize-text.ts, and add it as a fixture (normalize-text changes require the fixture regression per standing rule)."
+ ]
+}

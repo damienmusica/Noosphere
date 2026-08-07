@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "batch_id": "person-wave13-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-08-08"
+  },
+  "nodes": [
+    {
+      "id": "person:baudouin-de-courtenay",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Jan Baudouin de Courtenay",
+      "referent": "Jan Ignacy Niecislaw Baudouin de Courtenay (1845-1929), Polish linguist of French-Huguenot noble descent who held professorships at Kazan, Dorpat/Tartu, Krakow, and St Petersburg/Petrograd, and co-founded (with his student Mikolaj Kruszewski) the Kazan School of linguistics. Credited with an early, psychologically grounded theory of the phoneme, and with distinguishing purely phonetic sound alternations from morphologically/grammatically conditioned ones in work of the 1890s -- commonly cited in histories of linguistics as anticipating the structural/synchronic concerns later systematized by 20th-century phonology. Also worked on Slavic dialectology and general linguistic theory. Not to be confused with any other bearer of the same uncommon compound surname, and distinct from his student and collaborator Mikolaj Kruszewski and from the later Prague School phonologists (Trubetzkoy, Jakobson) whose work he anticipated but did not belong to.",
+      "source_hint": "Own knowledge of the history of the Kazan School and early phoneme/alternation theory -- not fetched this session [UNFETCHED]. This session's order also relays two source excerpts directly, which I have not independently verified: Encyclopaedia Britannica ('linguist who regarded language sounds as structural entities, rather than mere physical phenomena, and thus anticipated the modern linguistic concern with language structure'; 'Views expressed in his major work, Versuch einer Theorie phonetischer Alternationen (1895) ... have become a part of modern linguistic science') and Honeybone, in the Oxford Handbook of Historical Phonology (naming Kruszewski 1881 and Baudouin de Courtenay 1895 as 'the earliest signs (in the modern era) of work which focused on synchronic phonological' patterning). Additional registered-provider-family candidates for QC to try, none of which I have checked live this session: Wikipedia 'Jan Baudouin de Courtenay' and Wikipedia 'Phonology' (history section), and a possible Oxford Bibliographies entry on the history of phonology or on Baudouin de Courtenay by name.",
+      "note": "Reconciles to the ID already used for this person in foundry/proposals/endpoint-closure-wave13-v1 (still status generated, not promoted): that batch proposed him with an `influenced` edge to subfield:morphophonology, which foundry/held.json subsequently records as REJECTED (enwiki Morphophonology, full text swept, zero mentions of him) with subfield:phonology named as the honest replacement target. This batch proposes that replacement edge only -- see the companion linguistics.edges.proposed.json. No edge to subfield:morphophonology is proposed here, per this order's explicit instruction.",
+      "rationale": "Named directly by foundry/held.json as the supported unblock for this person: the ledger states verbatim that person:baudouin-de-courtenay -> influenced -> subfield:phonology is 'the honest unblock' after the morphophonology target failed live verification, citing Britannica and Honeybone (Oxford Handbook of Historical Phonology). Proposing the node together with that corrected-target edge follows the order and closes a ledger-recorded gap at the grain the ledger itself identifies as supported.",
+      "uncertainty": "The Britannica and Honeybone excerpts reach me via the order/ledger, not a live read this session, so I cannot independently confirm their exact wording, surrounding context, or whether either source states language strong enough for founded_or_formalized rather than influenced. The Honeybone chapter has no registered provider in data/sources.json; QC needs either a second registered-family source (candidates named above) or a formal registration of that chapter/volume before promotion under this corpus's usual two-independent-source practice.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "Single-candidate batch: this file proposes exactly the node named by the order's slate item 1, reconciled to the existing person:baudouin-de-courtenay ID from endpoint-closure-wave13-v1 rather than minting a new one. No edge to subfield:morphophonology is proposed (explicitly excluded by the order and by foundry/held.json's own rejection record for that target). See linguistics.edges.proposed.json for the single proposed edge (influenced -> subfield:phonology) and its sourcing caveats."
+  ]
+}

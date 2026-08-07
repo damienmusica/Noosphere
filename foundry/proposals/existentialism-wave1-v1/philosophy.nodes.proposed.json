@@ -1,0 +1,64 @@
+{
+  "version": 2,
+  "batch_id": "existentialism-wave1-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-08-08"
+  },
+  "nodes": [
+    {
+      "id": "person:soren-kierkegaard",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Søren Kierkegaard",
+      "referent": "Søren Aabye Kierkegaard (1813-1855), the Danish philosopher, theologian, and social critic based in Copenhagen, author of Either/Or, Fear and Trembling, The Concept of Anxiety, and The Sickness Unto Death, standardly credited as the earliest and most direct 19th-century precursor of existentialist philosophy through his focus on individual subjective existence, anxiety, and the leap of faith -- not any other person named Kierkegaard, and not the Kierkegaard research institutes/societies that bear his name.",
+      "source_hint": "Stanford Encyclopedia of Philosophy 'Søren Kierkegaard' and 'Existentialism' entries; Internet Encyclopedia of Philosophy 'Kierkegaard' entry; Encyclopaedia Britannica 'Søren Kierkegaard'; Wikipedia 'Søren Kierkegaard'. [UNFETCHED this session -- general knowledge, not live-verified; QC must live-check.]",
+      "rationale": "Anchors the person:soren-kierkegaard node needed for the founding-layer edge to subfield:existentialism ordered this wave; Kierkegaard is one of the two named 'pioneers' in the corpus's own already-reviewed edge:friedrich-nietzsche-influenced-existentialism note (quoting SEP's 'the conceptual groundwork of the movement was laid much earlier in the nineteenth century by pioneers like Søren Kierkegaard and Friedrich Nietzsche'), so this node closes the asymmetry of Nietzsche having a node/edge while Kierkegaard, named in the identical sentence, does not.",
+      "uncertainty": "Identity is not genuinely ambiguous (Kierkegaard is uniquely identified, no notable homonym); this flag concerns only unverified provenance -- I have not live-fetched any source this session, and dates/titles are from training knowledge.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:jean-paul-sartre",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Jean-Paul Sartre",
+      "referent": "Jean-Paul Charles Aymard Sartre (1905-1980), the French philosopher, playwright, novelist, and public intellectual, author of Being and Nothingness (1943) and the 1945 lecture Existentialism Is a Humanism, the philosopher most closely associated in the public mind with 20th-century (specifically postwar French) existentialism, longtime partner of Simone de Beauvoir -- not any other person named Sartre.",
+      "source_hint": "Stanford Encyclopedia of Philosophy 'Jean-Paul Sartre' and 'Existentialism' entries; Internet Encyclopedia of Philosophy 'Jean-Paul Sartre'; Encyclopaedia Britannica 'Jean-Paul Sartre'; Wikipedia 'Jean-Paul Sartre' and 'Existentialism Is a Humanism'. [UNFETCHED this session.]",
+      "rationale": "Anchors the node needed for Sartre's edge to subfield:existentialism; Sartre is the philosopher most publicly identified with the term and movement even though (per this batch's grain analysis -- see companion edges file and report.md) I decline to credit him with founding it.",
+      "uncertainty": "Identity unambiguous. Provenance unverified this session (no network); the substantive uncertainty about what relation/grain his contribution supports is recorded on the edge, not the node.",
+      "ambiguous": false
+    },
+    {
+      "id": "person:martin-heidegger",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Martin Heidegger",
+      "referent": "Martin Heidegger (1889-1976), the German philosopher of Messkirch, professor at Freiburg and Marburg, author of Being and Time (1927) and The Question Concerning Technology (1954), whose phenomenological/hermeneutic ontology profoundly reshaped 20th-century Continental philosophy, despite Heidegger's own explicit rejection of the 'existentialist' label (notably in his Letter on Humanism, responding to Sartre) -- not any other person surnamed Heidegger.",
+      "source_hint": "Stanford Encyclopedia of Philosophy 'Martin Heidegger', 'Existentialism', and 'Phenomenology' entries; Internet Encyclopedia of Philosophy 'Heidegger'; Encyclopaedia Britannica 'Martin Heidegger'; Wikipedia 'Martin Heidegger' and 'Letter on Humanism'. [UNFETCHED this session.]",
+      "rationale": "Anchors the node needed for three edges ordered this wave (existentialism, philosophy-of-technology, phenomenology) and closes the gap explicitly named verbatim in the corpus's own reviewed edge:phenomenology-influenced-philosophy-of-technology note ('Heidegger has no node') and in foundry/proposals/endpoint-closure-wave13-v1's declined-candidate note, both read this session.",
+      "uncertainty": "Identity unambiguous. Provenance unverified this session (no network).",
+      "ambiguous": false
+    },
+    {
+      "id": "person:gabriel-marcel",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Gabriel Marcel",
+      "referent": "Gabriel Honore Marcel (1889-1973), the French philosopher, playwright, and music critic, a Catholic convert whose own philosophy of being, participation, and intersubjectivity (Metaphysical Journal, 1927; Being and Having) is usually classed as 'Christian existentialism,' though Marcel himself preferred 'Neo-Socratic' and resisted the existentialist label for his own work; standardly credited with applying the term 'existentialist' to Jean-Paul Sartre's philosophy in the mid-1940s -- not any other person named Gabriel Marcel.",
+      "source_hint": "Stanford Encyclopedia of Philosophy 'Gabriel Marcel' and 'Existentialism' entries; Internet Encyclopedia of Philosophy 'Gabriel Marcel'; Encyclopaedia Britannica 'Gabriel Marcel'; Wikipedia 'Gabriel Marcel'. [UNFETCHED this session.]",
+      "rationale": "Ordered this wave as the philosopher credited with naming the movement; the node itself is well-justified independent of that framing -- Marcel is a substantial, independently notable 20th-century philosopher with his own body of work predating and running parallel to Sartre's -- so the node is proposed even though (see companion edges file and report.md) I decline the order's suggested founded_or_formalized grain for the edge.",
+      "uncertainty": "Identity unambiguous. Provenance unverified this session (no network); the substantive grain question is recorded on the edge/report, not the node.",
+      "ambiguous": false
+    }
+  ],
+  "notes": []
+}

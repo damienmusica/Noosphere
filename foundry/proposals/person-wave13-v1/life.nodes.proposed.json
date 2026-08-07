@@ -1,0 +1,42 @@
+{
+  "version": 2,
+  "batch_id": "person-wave13-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-08-08"
+  },
+  "nodes": [
+    {
+      "id": "person:robert-hooke",
+      "type": "person",
+      "domain": "life_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Robert Hooke",
+      "referent": "Robert Hooke (1635-1703), English natural philosopher, architect, and polymath; Curator of Experiments for the Royal Society of London and later Gresham Professor of Geometry. In Micrographia (1665), examining a thin slice of cork under a compound microscope he built and improved himself, he observed a honeycomb-like array of tiny box-like pores and named them 'cells' after the small rooms (cellulae) of monks -- the first published use of the word in this biological sense, though what he actually saw were the empty walls of dead plant tissue, not living cells with contents. Also known for Hooke's law of elasticity, early telescopic astronomy, arguing that fossils were the organic remains of once-living creatures, horology, and architecture (as Christopher Wren's assistant rebuilding London after the Great Fire). Sole intended referent is this 17th-century Royal Society natural philosopher -- not any other person named Robert Hooke, and not to be conflated with the plant genus or any modern namesake.",
+      "source_hint": "Own knowledge of Micrographia (1665) and the cork/cellulae naming episode -- standard history-of-science material (e.g. Wikipedia 'Robert Hooke', Wikipedia 'Micrographia', the history section of Wikipedia 'Cell (biology)', Encyclopaedia Britannica 'Robert Hooke' and 'cell'); not fetched this session [UNFETCHED].",
+      "note": "Proposed only together with the companion edges in life.edges.proposed.json. Per this corpus's own precedent (foundry/rejections.json, William Whewell -> concept:uniformitarianism: 'A person node with no admissible edge would be an isolated node, so none is created'), this node's admission is coupled to at least one of the two proposed edges surviving QC.",
+      "rationale": "Named directly, without needing an ID, as a live and twice-recorded corpus gap: both edge:matthias-jakob-schleiden-founded-cell-biology and edge:theodor-schwann-founded-cell-biology (data/edges.json, reviewed) state verbatim that 'Robert Hooke (\"cell\", 1665) is still not a corpus node -- that gap is live.' The node is also independently warranted on ordinary compass grounds: he is a major, extensively documented figure in the history of science generally, not merely a name attached to one contested edge.",
+      "uncertainty": "The node's biographical warrant is solid and low-risk (uncontested, well-documented facts). The genuine open question, coupling back to the node's admissibility, is whether either proposed edge survives a live check without repeating the coining-is-not-founding exclusion this corpus already applied to William Whewell -- see the companion edges file for the specific risk on each edge. If a live check finds neither edge supportable even at `influenced`, this node should not be admitted alone.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:marcello-malpighi",
+      "type": "person",
+      "domain": "life_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Marcello Malpighi",
+      "referent": "Marcello Malpighi (1628-1694), Italian physician and biologist, professor at Bologna, Pisa, and Messina, and later personal physician to Pope Innocent XII; one of the first scientists to make systematic, sustained use of the microscope to investigate biological fine structure. Discovered pulmonary and other capillaries, completing William Harvey's account of blood circulation by finding the missing structural link between arteries and veins, and described fine tissue structures across many organs and organisms -- the excretory tubules in insects that bear his name (Malpighian tubules), structures in the kidney and spleen also named for him (Malpighian corpuscles/bodies), and the layered structure of skin. Also conducted detailed microscopic studies of plant anatomy (Anatome Plantarum) and of the silkworm and chick embryo. Widely credited in general reference works as a founder of microscopic anatomy / histology. Not to be confused with any other bearer of the Malpighi surname, nor with the plant genus Malpighia or family Malpighiaceae named in his honor.",
+      "source_hint": "Own knowledge of Malpighi's microscopic-anatomy work (capillaries, Malpighian tubules/corpuscles, plant anatomy) -- standard history-of-biology/medicine material (e.g. Wikipedia 'Marcello Malpighi', Encyclopaedia Britannica 'Marcello Malpighi'); not fetched this session [UNFETCHED].",
+      "note": "Proposed only together with the companion edge in life.edges.proposed.json, on the same no-isolated-node footing as person:robert-hooke above. The order specified this candidate at relation founded_or_formalized -> subfield:cell-biology; see the companion edges file for why I am proposing the same target at a deliberately downgraded relation instead, with the reasoning disclosed rather than silently substituted.",
+      "rationale": "Proposed on the order's own stated ground: an independently well-documented major figure in the history of microscopic biology, whose extensive tissue-structure work across animal and plant subjects is warranted as a corpus node regardless of exactly which edge grade the companion edge survives QC at.",
+      "uncertainty": "Biographical specifics (institutional posts, exact list of named structures, publication titles) are from my own recollection, not re-verified against a live source this session -- QC should confirm before promotion. As with Hooke, this node's admission is coupled to the companion edge surviving QC at some relation; if QC finds even `influenced` unsupported at the proposed target, see the companion edge's uncertainty for the suggested alternative (a physiology- or anatomy-grain target), which is not proposed in this batch.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "Two candidates, both from the order's slate. person:robert-hooke: HARD RULE from the order (the Whewell precedent) forbids founded_or_formalized -> subfield:cell-biology; both proposed edges use `influenced` instead, at two existing sibling targets (subfield:cell-biology and concept:cell-theory), mirroring how this corpus already double-targets Schleiden and Schwann. A microscopy-grain target was considered and declined: no subfield/method node for microscopy exists in this corpus, and creating one is a structural taxonomy decision out of scope for this narrow batch. person:marcello-malpighi: the order's stated relation (founded_or_formalized -> subfield:cell-biology) is downgraded to `influenced` at the same target -- disclosed explicitly in the companion edge and in report.md, not silently substituted -- because I cannot honestly recall two independent sources using founder-grade language for 'cell biology' by name for Malpighi (the epithet I can confidently recall is founder of microscopic anatomy/histology, a related but distinct field with no target node in this corpus)."
+  ]
+}

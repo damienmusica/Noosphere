@@ -1,0 +1,487 @@
+{
+ "version": 1,
+ "batch_id": "computing-wave1-v1",
+ "decided_at": "2026-08-08",
+ "qc_by": {
+  "model_name": "Claude Fable 5",
+  "model_version": "claude-fable-5",
+  "proposed_at": "2026-08-08"
+ },
+ "adds": {
+  "sources": [],
+  "nodes": [
+   {
+    "id": "person:john-mauchly",
+    "type": "person",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+     "wikidata": "Q522162"
+    },
+    "created_at": "2026-08-08",
+    "updated_at": "2026-08-08"
+   },
+   {
+    "id": "person:j-presper-eckert",
+    "type": "person",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+     "wikidata": "Q457906"
+    },
+    "created_at": "2026-08-08",
+    "updated_at": "2026-08-08"
+   },
+   {
+    "id": "person:john-atanasoff",
+    "type": "person",
+    "domain": "computer_and_information_sciences",
+    "level": 2,
+    "status": "proposed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+     "wikidata": "Q314308"
+    },
+    "created_at": "2026-08-08",
+    "updated_at": "2026-08-08"
+   },
+   {
+    "id": "concept:eniac",
+    "type": "concept",
+    "domain": "computer_and_information_sciences",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": false,
+    "is_living_person": false,
+    "external_ids": {
+     "wikidata": "Q169399"
+    },
+    "created_at": "2026-08-08",
+    "updated_at": "2026-08-08"
+   }
+  ],
+  "translations": [
+   {
+    "node_id": "person:john-mauchly",
+    "locale": "en",
+    "label": "John Mauchly",
+    "summary": "",
+    "aliases": [
+     "John William Mauchly"
+    ],
+    "reviewed": false
+   },
+   {
+    "node_id": "person:j-presper-eckert",
+    "locale": "en",
+    "label": "J. Presper Eckert",
+    "summary": "",
+    "aliases": [
+     "John Adam Presper Eckert Jr."
+    ],
+    "reviewed": false
+   },
+   {
+    "node_id": "person:john-atanasoff",
+    "locale": "en",
+    "label": "John Vincent Atanasoff",
+    "summary": "",
+    "aliases": [
+     "John Atanasoff",
+     "John V. Atanasoff"
+    ],
+    "reviewed": false
+   },
+   {
+    "node_id": "concept:eniac",
+    "locale": "en",
+    "label": "ENIAC",
+    "summary": "",
+    "aliases": [
+     "Electronic Numerical Integrator and Computer"
+    ],
+    "reviewed": false
+   }
+  ],
+  "edges": [
+   {
+    "id": "edge:john-mauchly-influenced-computer-systems",
+    "source": "person:john-mauchly",
+    "target": "subfield:computer-systems",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+     "source:wikipedia",
+     "source:britannica",
+     "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+     "model_name": "Claude Sonnet 5",
+     "model_version": "claude-sonnet-5",
+     "proposed_at": "2026-08-08"
+    },
+    "note": "Mauchly co-designed the machines that defined early computer-systems organization (enwiki 'John Mauchly', oldid 1357213830: 'was an American physicist who, along with J. Presper Eckert, designed ENIAC, the first general-purpose electronic digital computer, as well as EDVAC, BINAC and UNIVAC I'; enwiki 'ENIAC', oldid 1365289299: 'ENIAC was designed by John Mauchly and J. Presper Eckert'; Britannica: 'co-inventor in 1946, with John P. Eckert, of the Electronic Numerical Integrator and Computer (ENIAC), the first general-purpose electronic computer'), and enwiki 'Von Neumann architecture' (oldid 1360745761) ties both men into the design discussions the canonical architecture is based on. Counter-evidence recorded, not hidden: the 1973 Honeywell v. Sperry Rand finding ('derived that subject matter from one Dr. John Vincent Atanasoff') and Britannica's hedge that ENIAC 'incorporated features developed by John V. Atanasoff' — that dispute is carried by edge:john-atanasoff-influenced-john-mauchly (proposed, disputed), and it targets invention priority, not the influence this edge claims. Mirror of edge:john-von-neumann-influenced-computer-systems (reviewed 0.85). Wave-12's split verification on these two men did not recur: both verifiers landed supported on live evidence this pass. ★ ORDER CITATION CORRECTED (recorded, fourth incident of this shape): the session-64 order asserted enwiki 'First Draft of a Report on the EDVAC' describes the report as 'based on the work of Eckert and Mauchly' — two independent verifiers fetched the article (oldid 1351402508) and that wording appears nowhere in it. The substance is real but lives in enwiki 'Von Neumann architecture' (oldid 1360745761): 'is a computer architecture based on the First Draft of a Report on the EDVAC, written by John von Neumann in 1945, describing designs discussed with John Mauchly and J. Presper Eckert' and 'The attribution of the invention of the architecture to von Neumann is incorrect. Eckert and Mauchly had essentially finished designing a stored program computer before discussing the ideas with von Neumann'."
+   },
+   {
+    "id": "edge:j-presper-eckert-influenced-computer-systems",
+    "source": "person:j-presper-eckert",
+    "target": "subfield:computer-systems",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+     "source:wikipedia",
+     "source:mactutor",
+     "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+     "model_name": "Claude Sonnet 5",
+     "model_version": "claude-sonnet-5",
+     "proposed_at": "2026-08-08"
+    },
+    "note": "Eckert co-designed ENIAC and proposed the first practical stored-program hardware (enwiki 'J. Presper Eckert', oldid 1361713244: 'With John Mauchly, he designed the first general-purpose electronic digital computer (ENIAC)'; MacTutor: 'With John Mauchly he invented ENIAC: the first general-purpose electronic digital computer'; enwiki 'Von Neumann architecture', oldid 1360745761: 'Eckert and Mauchly had essentially finished designing a stored program computer before discussing the ideas with von Neumann'). Counter-evidence recorded: the First Draft that transmitted the stored-program design 'bore only von Neumann's name (to the consternation of Eckert and Mauchly)', and Eckert's own 'Eckert architecture' counter-claim is attributed as his belief, not settled history. Britannica's Eckert biography was unreachable this pass (live 403 + Wayback availability outage) — recorded as [UNFETCHED], not used. Identity note: Wikidata P569 1919-04-06 vs enwiki lead 'April 9, 1919' — dates differ by three days; both sources agree on year and identity is unambiguous (Q457906, P570 1995-06-03 matches enwiki). Mirror of edge:john-von-neumann-influenced-computer-systems (reviewed 0.85)."
+   },
+   {
+    "id": "edge:john-mauchly-founded-eniac",
+    "source": "person:john-mauchly",
+    "target": "concept:eniac",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+     "source:wikipedia",
+     "source:britannica",
+     "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+     "model_name": "Claude Sonnet 5",
+     "model_version": "claude-sonnet-5",
+     "proposed_at": "2026-08-08"
+    },
+    "note": "Mauchly co-created ENIAC, the first programmable, electronic, general-purpose digital computer — decision (71) artifact-referent shape (mirror: edge:vint-cerf-founded-internet -> concept:internet), executing decision (121)'s corrected unblock. Sources: enwiki 'ENIAC' (oldid 1365289299): 'ENIAC was designed by John Mauchly and J. Presper Eckert'; enwiki 'John Mauchly' (oldid 1357213830): 'designed ENIAC, the first general-purpose electronic digital computer'; Britannica 'ENIAC' (article body, byline Freiberger & Swaine — the page's Top Questions and FAQ blocks are AI-generated and were excluded): 'American physicist John Mauchly, American engineer J. Presper Eckert, Jr., and their colleagues at the Moore School of Electrical Engineering at the University of Pennsylvania led a government-funded project to build an all-electronic computer'. Record-not-resolve, both recorded: (1) the two-person credit is the sources' own lead simplification — enwiki names seven assisting design engineers and six women programmers, Britannica adds Herman Goldstine's direction; (2) Honeywell v. Sperry Rand (1973) voided the ENIAC patent, found the subject matter 'derived ... from one Dr. John Vincent Atanasoff', and gave legal recognition to Atanasoff for the FIRST ELECTRONIC DIGITAL COMPUTER title — which is why this node's gloss keeps the full qualifier stack 'first programmable, electronic, general-purpose' (enwiki) that the ruling does not strip. The design-credit claim this edge states is asserted in the same articles that preserve the ruling. founded-or-formalized ladder (decision (60)): both endpoints reviewed + supported -> auto-reviewed."
+   },
+   {
+    "id": "edge:j-presper-eckert-founded-eniac",
+    "source": "person:j-presper-eckert",
+    "target": "concept:eniac",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+     "source:wikipedia",
+     "source:britannica",
+     "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+     "model_name": "Claude Sonnet 5",
+     "model_version": "claude-sonnet-5",
+     "proposed_at": "2026-08-08"
+    },
+    "note": "Eckert co-created ENIAC as chief engineer — decision (71) artifact-referent shape (mirror: edge:vint-cerf-founded-internet), executing decision (121)'s corrected unblock, alongside edge:john-mauchly-founded-eniac (equal co-creation, record-not-resolve). Sources: enwiki 'J. Presper Eckert' (oldid 1361713244): 'With John Mauchly, he designed the first general-purpose electronic digital computer (ENIAC)'; MacTutor: 'With John Mauchly he invented ENIAC: the first general-purpose electronic digital computer'; Britannica 'ENIAC' article body (byline Freiberger & Swaine) names both men in its lead credit sentence; enwiki 'ENIAC' (oldid 1365289299): 'ENIAC was designed by John Mauchly and J. Presper Eckert'. Same record-not-resolve caveats as the Mauchly edge (team simplification; Honeywell v. Sperry Rand priority ruling — the ruling names Eckert only via the joint patent, and no source documents personal Atanasoff-Eckert contact, which is why the Atanasoff disputed edge targets Mauchly alone). founded-or-formalized ladder (decision (60)): both endpoints reviewed + supported -> auto-reviewed."
+   },
+   {
+    "id": "edge:john-atanasoff-influenced-john-mauchly",
+    "source": "person:john-atanasoff",
+    "target": "person:john-mauchly",
+    "relation": "influenced",
+    "confidence": 0.55,
+    "status": "proposed",
+    "disputed": true,
+    "evidence": [
+     "source:wikipedia",
+     "source:britannica",
+     "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+     "model_name": "Claude Sonnet 5",
+     "model_version": "claude-sonnet-5",
+     "proposed_at": "2026-08-08"
+    },
+    "note": "GENUINELY DISPUTED — written at proposed with disputed:true per the held-ledger unblock and the nietzsche-influenced-freud precedent; clause-6 v2 stops promotion while the dispute is live. FOR: the 1973 Honeywell v. Sperry Rand finding 3.1.2 ('Eckert and Mauchly did not themselves invent the automatic electronic computer, but instead derived that subject matter from one Dr. John Vincent Atanasoff' — a primary-source blockquote of the ruling, recorded as such); uncontested contact prose in both providers (enwiki 'John Vincent Atanasoff', oldid 1358599454: 'In June 1941 Mauchly visited Atanasoff in Ames, Iowa for four days, staying as his houseguest. Atanasoff and Mauchly discussed the prototype ABC, examined it, and reviewed Atanasoff's design manuscript'; Britannica: 'Mauchly had visited Atanasoff in 1941, had extensive discussions with Atanasoff and Berry about the ABC, and witnessed the ABC in operation'); and Mauchly's own 1941 letter contemplating 'building some sort of computer which incorporates some of the features of your machine'. AGAINST: Mauchly 'consistently maintained that it was the use of high-speed electronic flip-flops in cosmic-ray counting devices at Swarthmore College that gave him the idea for computing at electronic speeds'; critics' component-level dissimilarity arguments (enwiki Honeywell article voice: 'why did he not appropriate for the ENIAC Atanasoff's add-subtract mechanism'); and the dispute remains a live scholarly battleground (IEEE Annals). A court ruling is a different evidence kind from claim-stating scholarly prose — the encyclopedic REPORTING of the ruling and the contact facts are what this edge cites. Quotation instability recorded: the two enwiki articles render finding 3.1.2 with slightly different wording; the Honeywell-article blockquote version is the one quoted here. The Eckert leg was REJECTED, not merely omitted: see rejections."
+   }
+  ],
+  "external_links": []
+ },
+ "promotions": [],
+ "translation_updates": [],
+ "verdicts": [
+  {
+   "subject_id": "edge:john-mauchly-influenced-computer-systems",
+   "verdict": "supported",
+   "identity_referent_verified": true,
+   "direction_confirmed": true,
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/John_Mauchly",
+     "retrieved_at": "2026-08-08",
+     "quote": "was an American physicist who, along with J. Presper Eckert, designed ENIAC, the first general-purpose electronic digital computer, as well as EDVAC, BINAC and UNIVAC I",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Mauchly&oldid=1357213830"
+    },
+    {
+     "url": "https://www.britannica.com/biography/John-Mauchly",
+     "retrieved_at": "2026-08-08",
+     "quote": "was an American physicist and engineer, co-inventor in 1946, with John P. Eckert , of the Electronic Numerical Integrator and Computer (ENIAC), the first general-purpose electronic computer.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260102105803/https://www.britannica.com/biography/John-Mauchly"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Von_Neumann_architecture",
+     "retrieved_at": "2026-08-08",
+     "quote": "is a computer architecture based on the First Draft of a Report on the EDVAC, written by John von Neumann in 1945, describing designs discussed with John Mauchly and J. Presper Eckert",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Von_Neumann_architecture&oldid=1360745761"
+    }
+   ],
+   "notes": "Independent verifier, refutation-first, live identity Q522162 (P31=Q5, 1907-1980). Wave-12 split did not recur. Verifier self-reported model ID: claude-fable-5."
+  },
+  {
+   "subject_id": "edge:j-presper-eckert-influenced-computer-systems",
+   "verdict": "supported",
+   "identity_referent_verified": true,
+   "direction_confirmed": true,
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/J._Presper_Eckert",
+     "retrieved_at": "2026-08-08",
+     "quote": "With John Mauchly, he designed the first general-purpose electronic digital computer (ENIAC)",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=J._Presper_Eckert&oldid=1361713244"
+    },
+    {
+     "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Eckert_John/",
+     "retrieved_at": "2026-08-08",
+     "quote": "With John Mauchly he invented ENIAC: the first general-purpose electronic digital computer.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260210165441/https://mathshistory.st-andrews.ac.uk/Biographies/Eckert_John/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Von_Neumann_architecture",
+     "retrieved_at": "2026-08-08",
+     "quote": "The attribution of the invention of the architecture to von Neumann is incorrect. Eckert and Mauchly had essentially finished designing a stored program computer before discussing the ideas with von Neumann",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Von_Neumann_architecture&oldid=1360745761"
+    }
+   ],
+   "notes": "Independent verifier, refutation-first, live identity Q457906. Britannica [UNFETCHED] (403 + Wayback outage), recorded honestly. Verifier self-reported model ID: claude-fable-5."
+  },
+  {
+   "subject_id": "edge:john-mauchly-founded-eniac",
+   "verdict": "supported",
+   "identity_referent_verified": true,
+   "direction_confirmed": true,
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/John_Mauchly",
+     "retrieved_at": "2026-08-08",
+     "quote": "along with J. Presper Eckert, designed ENIAC, the first general-purpose electronic digital computer",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Mauchly&oldid=1357213830"
+    },
+    {
+     "url": "https://www.britannica.com/technology/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "American physicist John Mauchly , American engineer J. Presper Eckert, Jr. , and their colleagues at the Moore School of Electrical Engineering at the University of Pennsylvania led a government-funded project to build an all-electronic computer",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260801160056/https://www.britannica.com/technology/ENIAC"
+    },
+    {
+     "url": "https://www.britannica.com/technology/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "ENIAC , the first programmable general-purpose electronic digital computer , built during World War II by the United States .",
+     "independent": false,
+     "snapshot_url": "https://web.archive.org/web/20260801160056/https://www.britannica.com/technology/ENIAC"
+    }
+   ],
+   "notes": "Referent-precision verifier: ENIAC is the best-supported founding referent for both men; EDVAC real but secondary; stored-program lineage rejected as referent (Turing 1936 antecedent, \"popularized\" language, and its paternity is itself the dispute). Verifier self-reported model ID: claude-fable-5."
+  },
+  {
+   "subject_id": "edge:j-presper-eckert-founded-eniac",
+   "verdict": "supported",
+   "identity_referent_verified": true,
+   "direction_confirmed": true,
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/J._Presper_Eckert",
+     "retrieved_at": "2026-08-08",
+     "quote": "With John Mauchly, he designed the first general-purpose electronic digital computer (ENIAC)",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=J._Presper_Eckert&oldid=1361713244"
+    },
+    {
+     "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Eckert_John/",
+     "retrieved_at": "2026-08-08",
+     "quote": "With John Mauchly he invented ENIAC: the first general-purpose electronic digital computer.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260210165441/https://mathshistory.st-andrews.ac.uk/Biographies/Eckert_John/"
+    },
+    {
+     "url": "https://www.britannica.com/technology/ENIAC",
+     "retrieved_at": "2026-08-08",
+     "quote": "American physicist John Mauchly , American engineer J. Presper Eckert, Jr. , and their colleagues at the Moore School of Electrical Engineering at the University of Pennsylvania led a government-funded project to build an all-electronic computer",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260801160056/https://www.britannica.com/technology/ENIAC"
+    }
+   ],
+   "notes": "Same referent-precision pass as the Mauchly leg. Verifier self-reported model ID: claude-fable-5."
+  },
+  {
+   "subject_id": "edge:john-atanasoff-influenced-john-mauchly",
+   "verdict": "disputed",
+   "identity_referent_verified": true,
+   "direction_confirmed": true,
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/John_Vincent_Atanasoff",
+     "retrieved_at": "2026-08-08",
+     "quote": "In June 1941 Mauchly visited Atanasoff in Ames, Iowa for four days, staying as his houseguest. Atanasoff and Mauchly discussed the prototype ABC, examined it, and reviewed Atanasoff's design manuscript.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=John_Vincent_Atanasoff&oldid=1358599454"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Honeywell,_Inc._v._Sperry_Rand_Corp.",
+     "retrieved_at": "2026-08-08",
+     "quote": "Eckert and Mauchly did not themselves invent the automatic electronic computer, but instead derived that subject matter from one Dr. John Vincent Atanasoff",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Honeywell,_Inc._v._Sperry_Rand_Corp.&oldid=1337951244"
+    },
+    {
+     "url": "https://www.britannica.com/biography/John-V-Atanasoff",
+     "retrieved_at": "2026-08-08",
+     "quote": "Mauchly had visited Atanasoff in 1941, had extensive discussions with Atanasoff and Berry about the ABC, and witnessed the ABC in operation.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20251110050806/https://www.britannica.com/biography/John-V-Atanasoff"
+    }
+   ],
+   "notes": "Verdict disputed (verifier suggestion 0.55): sourced positions on both sides, live scholarly battleground (IEEE Annals). Mauchly leg only — the Eckert leg was rejected on total silence (see rejections). Verifier self-reported model ID: claude-fable-5."
+  }
+ ],
+ "identity": [
+  {
+   "node_id": "person:john-mauchly",
+   "provider": "wikidata",
+   "external_id": "Q522162",
+   "verified": true,
+   "method": "wbgetentities",
+   "retrieved_at": "2026-08-07"
+  },
+  {
+   "node_id": "person:j-presper-eckert",
+   "provider": "wikidata",
+   "external_id": "Q457906",
+   "verified": true,
+   "method": "wbgetentities",
+   "retrieved_at": "2026-08-07"
+  },
+  {
+   "node_id": "person:john-atanasoff",
+   "provider": "wikidata",
+   "external_id": "Q314308",
+   "verified": true,
+   "method": "wbgetentities",
+   "retrieved_at": "2026-08-07"
+  },
+  {
+   "node_id": "concept:eniac",
+   "provider": "wikidata",
+   "external_id": "Q169399",
+   "verified": true,
+   "method": "wbgetentities",
+   "retrieved_at": "2026-08-07"
+  }
+ ],
+ "sanctions": [
+  {
+   "subject_id": "person:john-mauchly",
+   "ladder": "node-promotion-v1"
+  },
+  {
+   "subject_id": "person:j-presper-eckert",
+   "ladder": "node-promotion-v1"
+  },
+  {
+   "subject_id": "concept:eniac",
+   "ladder": "node-promotion-v1"
+  },
+  {
+   "subject_id": "edge:john-mauchly-influenced-computer-systems",
+   "ladder": "a-relation-auto-68"
+  },
+  {
+   "subject_id": "edge:j-presper-eckert-influenced-computer-systems",
+   "ladder": "a-relation-auto-68"
+  },
+  {
+   "subject_id": "edge:john-mauchly-founded-eniac",
+   "ladder": "founded-or-formalized-auto-60"
+  },
+  {
+   "subject_id": "edge:j-presper-eckert-founded-eniac",
+   "ladder": "founded-or-formalized-auto-60"
+  }
+ ],
+ "rejections": [
+  {
+   "label": "stored-program computer as the founding referent (concept node + three founder edges)",
+   "referent": "concept:stored-program-computer; person:john-mauchly / person:j-presper-eckert / person:john-von-neumann → founded_or_formalized → concept:stored-program-computer",
+   "kind": "edge",
+   "batch_id": "computing-wave1-v1",
+   "recorded_at": "2026-08-08",
+   "reason": "The generator chose concept:stored-program-computer as the Lane-B referent; independent referent-precision verification rejected it on three grounds: (1) the referent predates the claimed founders — enwiki 'Stored-program computer' (oldid 1366970646): 'The concept of the stored-program computer can be traced back to the 1936 theoretical concept of a universal Turing machine'; (2) the credit language for Mauchly/Eckert at that grain is 'popularized the concept of the stored program' (enwiki John Mauchly) — popularise is not founding (Whewell rule); (3) the concept's paternity is ITSELF the live Eckert-vs-von-Neumann dispute, so no founder edge into it could be written undisputed. The von Neumann leg was a SEEDED PROBE (his First Draft as 'founding document of the lineage'): the generator FAILED to refuse it, proposing it at 0.85; verification killed it with the referent — recorded honestly as the first generation-time probe miss after two waves of generation-time refusals. ENIAC is the verified referent (concept:eniac, this batch). This rejection does not bar a future stored-program-computer node arriving with edge demand at honest grains (e.g. formalizes/influenced), only the founder edges as proposed."
+  },
+  {
+   "label": "Atanasoff influenced Eckert (the Eckert leg)",
+   "referent": "person:john-atanasoff → influenced → person:j-presper-eckert",
+   "kind": "edge",
+   "batch_id": "computing-wave1-v1",
+   "recorded_at": "2026-08-08",
+   "reason": "REJECTED on total silence, distinct from the disputed Mauchly leg: the entire enwiki J. Presper Eckert biography (oldid 1361713244, 14.5KB, grepped whole) contains zero mentions of Atanasoff, the ABC, or Honeywell v. Sperry Rand; Britannica's paraphrase of the ruling names only Mauchly ('Mauchly had not considered such a device until his time with Atanasoff'); no fetched source documents any Atanasoff-Eckert contact. The 1973 ruling's joint phrasing ('Eckert and Mauchly ... derived') flows through the joint patent, and the documented influence path runs Atanasoff → Mauchly → (ENIAC partnership). Re-proposable only if claim-stating prose of person-level influence on Eckert himself surfaces."
+  }
+ ],
+ "held": [],
+ "held_resolutions": [
+  {
+   "id": "person:john-mauchly",
+   "reason": "ADMITTED this batch, both lanes of decision (121)'s corrected unblock executed: Lane A person:john-mauchly → influenced → subfield:computer-systems (reviewed 0.85, von-Neumann-edge mirror) and Lane B referent-precision resolved to concept:eniac with edge:john-mauchly-founded-eniac (reviewed 0.9, decision (71) shape, vint-cerf mirror). The cheap path the order named (re-search) was run by independent verifiers and both men survived on live evidence — wave-12's split did not recur."
+  },
+  {
+   "id": "person:j-presper-eckert",
+   "reason": "ADMITTED this batch on the same terms as Mauchly (his own ledger row, created by decision (121) precisely so his /data state is machine-checked separately, resolves with his own edges: edge:j-presper-eckert-influenced-computer-systems reviewed 0.85, edge:j-presper-eckert-founded-eniac reviewed 0.9)."
+  },
+  {
+   "id": "person:john-atanasoff",
+   "reason": "RESOLVED AS WRITTEN-AT-PROPOSED, exactly per the ledger's unblock clause: both endpoint persons landed this batch, and edge:john-atanasoff-influenced-john-mauchly is written at proposed with disputed:true (clause-6 v2 stops promotion while the dispute is live; nietzsche-influenced-freud precedent). The Eckert leg was rejected on total silence — see rejections. His node enters at proposed (not reviewed: decision (121) requires a reviewed edge for a reviewed node, and his only edge is proposed)."
+  }
+ ],
+ "override_rejections": [],
+ "anchors_pending": [
+  {
+   "url": "https://mathshistory.st-andrews.ac.uk/Biographies/Eckert_John/",
+   "reason": "[SPN-FAILED] fresh save did not materialize; using 178d-old snapshot"
+  }
+ ],
+ "notes": [
+  "computing-wave1-v1: executes decision (121)'s corrected unblock for the Mauchly/Eckert holds. Generation = separated-context Sonnet agent (claude-sonnet-5 self-reported, no network, zero provider-ID leaks on post-hoc scan); verification = independent contexts that never opened the proposals (refutation-first, live identity; self-reported claude-fable-5); adjudication = orchestrator (claude-fable-5, environment-stated).",
+  "★ ORDER CITATION CORRECTED (recorded, fourth incident of this shape): the session-64 order asserted enwiki 'First Draft of a Report on the EDVAC' describes the report as 'based on the work of Eckert and Mauchly' — two independent verifiers fetched the article (oldid 1351402508) and that wording appears nowhere in it. The substance is real but lives in enwiki 'Von Neumann architecture' (oldid 1360745761): 'is a computer architecture based on the First Draft of a Report on the EDVAC, written by John von Neumann in 1945, describing designs discussed with John Mauchly and J. Presper Eckert' and 'The attribution of the invention of the architecture to von Neumann is incorrect. Eckert and Mauchly had essentially finished designing a stored program computer before discussing the ideas with von Neumann'.",
+  "★ Probe outcome (recorded honestly): the seeded von-Neumann founder edge was NOT refused at generation (proposed at 0.85, argued from source-family parity); independent verification killed it with the referent rejection. This breaks the two-wave streak of generation-time probe refusals — the catch moved one stage right. QC regime held; the streak record should not be cited as if unbroken.",
+  "Referent precision (the judgment decision (121) deferred to a normal wave): ENIAC, as concept:eniac, over EDVAC (secondary) and over stored-program-computer (rejected — see rejections). The node gloss must keep enwiki's full qualifier stack 'first programmable, electronic, general-purpose digital computer' because Honeywell v. Sperry Rand strips the bare 'first electronic digital computer' title to Atanasoff.",
+  "Identity hygiene recorded: Eckert P569 discrepancy (Wikidata 1919-04-06 vs enwiki 'April 9, 1919'); Britannica Eckert biography [UNFETCHED] this pass (live 403, Wayback availability outage at fetch time); Britannica ENIAC Top Questions blocks are explicitly AI-generated ('This answer is created from Britannica articles using AI') and were excluded — only the Freiberger & Swaine article body was quoted.",
+  "Britannica anchors ride existing Wayback snapshots recorded in the verdicts (SPN down today, circuit breaker fired earlier this session); fresh saves on an SPN recovery day.",
+  "Britannica quote transcription rule (wave13 precedent): quotes are recorded with the rendered link-boundary spacing (' , ') exactly as the archived page text reads after tag-stripping. All four Britannica quotes in this file were machine-checked verbatim against their recorded Wayback snapshots by the orchestrator (live pages are Cloudflare-403). The Britannica ENIAC page's 'designed and built' sentence appears ONLY in AI-generated FAQ/Top-Questions furniture and was NOT used; the article-body lead (Freiberger & Swaine byline) is what is quoted.",
+  "MacTutor URL corrected at QC: the orchestrator's guessed slug Eckert_J_Presper 404s; the real biography is Biographies/Eckert_John/ (verified live 200, born 9 April 1919, quote verbatim present). Wallace J. Eckert homonym risk checked — the page is John Presper Eckert Jr.",
+  "anchors_pending hygiene: the entry for Biographies/Eckert_J_Presper/ was removed by hand — that URL was the orchestrator's QC-time guess, 404s, and was never a source anyone cited; leaving it would queue a dead URL for retry forever (the decision (110)/(116) misdiagnosis shape). The real MacTutor page (Biographies/Eckert_John/) has a 2026-02-10 snapshot recorded and a fresh save pending on SPN recovery."
+ ]
+}

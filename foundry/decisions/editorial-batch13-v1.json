@@ -1,0 +1,134 @@
+{
+ "version": 1,
+ "batch_id": "editorial-batch13-v1",
+ "decided_at": "2026-08-08",
+ "qc_by": {
+  "model_name": "Claude Fable 5",
+  "model_version": "claude-fable-5",
+  "proposed_at": "2026-08-08"
+ },
+ "adds": {
+  "sources": [],
+  "nodes": [],
+  "translations": [],
+  "edges": [],
+  "external_links": []
+ },
+ "promotions": [],
+ "translation_updates": [
+  {
+   "node_id": "person:alfred-north-whitehead",
+   "locale": "en",
+   "summary": "Alfred North Whitehead (1861–1947) was an English mathematician and philosopher. With his former student Bertrand Russell he wrote the three-volume Principia Mathematica (1910–1913), considered one of the twentieth century’s most important works in mathematical logic. He later argued that reality consists of processes rather than material objects and that processes are best defined by their relations with other processes — the ontology of his “philosophy of organism,” also called process philosophy. He did not, however, inspire any school of thought during his lifetime; his philosophical views posthumously inspired the movement of process philosophy, and his philosophical works — particularly Process and Reality (1929) — are regarded as its foundational texts.",
+   "reviewed": true
+  }
+ ],
+ "verdicts": [
+  {
+   "subject_id": "person:alfred-north-whitehead",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+     "retrieved_at": "2026-08-08",
+     "quote": "Alfred North Whitehead (15 February 1861 – 30 December 1947) was an English mathematician and philosopher.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+     "retrieved_at": "2026-08-08",
+     "quote": "He wrote the three-volume Principia Mathematica (1910–1913), with his former student Bertrand Russell. Principia Mathematica is considered one of the twentieth century’s most important works in mathematical logic",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+     "retrieved_at": "2026-08-08",
+     "quote": "Whitehead argued that reality consists of processes rather than material objects, and that processes are best defined by their relations with other processes",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+     "retrieved_at": "2026-08-08",
+     "quote": "Beginning in the late 1910s and early 1920s, Whitehead gradually turned his attention from mathematics to philosophy of science, and finally to metaphysics.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+     "retrieved_at": "2026-08-08",
+     "quote": "Whitehead’s philosophical works – particularly Process and Reality – are regarded as the foundational texts of process philosophy.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+     "retrieved_at": "2026-08-08",
+     "quote": "Lectures from 1927 to 1928 were published in 1929 as a book named Process and Reality",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/whitehead/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Whitehead’s ultimate ontology—the ontology of ‘the philosophy of organism’ or ‘process philosophy’—is one of internally related organism-like elementary processes (called ‘actual occasions’ or ‘actual entities’)",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/whitehead/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/whitehead/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Whitehead did not, however, inspire any school of thought during his lifetime, and most of his students distanced themselves from parts of his teachings that they considered anachronistic.",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/whitehead/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/whitehead/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Moreover, Whitehead’s philosophical views posthumously inspired the movement of process philosophy and theology",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/whitehead/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/process-philosophy/",
+     "retrieved_at": "2026-08-08",
+     "quote": "championed most explicitly by Alfred N. Whitehead in his “philosophy of organism,” worked out during the early decades of the 20th century.",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/process-philosophy/"
+    }
+   ]
+  }
+ ],
+ "identity": [],
+ "sanctions": [
+  {
+   "subject_id": "person:alfred-north-whitehead",
+   "ladder": "editorial-v2"
+  }
+ ],
+ "rejections": [],
+ "held": [
+  {
+   "id": "person:alfred-north-whitehead",
+   "blocking_condition": "person:alfred-north-whitehead → founded_or_formalized → process philosophy: NOT ENOUGH EVIDENCE. SEP's Whitehead entry states twice that no school formed around him — 'Whitehead did not, however, inspire any school of thought during his lifetime' and 'Whitehead's philosophical views posthumously inspired the movement of process philosophy'. SEP's process-philosophy entry names a different founder outright: 'it is the Greek theoretician Heraclitus of Ephesus … who is commonly recognized as the founder of the process approach', and places Whitehead downstream of Hegel. INVERTED COINAGE RISK: Whitehead called his own position 'philosophy of organism'; the label 'process philosophy' was applied to him by others — the mirror image of the Whewell rejection rather than a repeat of it. What the sources DO support is narrower and plural: REP, 'the movement inaugurated by Whitehead and extended by Hartshorne', and IEP's section heading 'The Whitehead-Hartshorne Tradition'. UNBLOCK: a node at the Whitehead-Hartshorne grain (with person:charles-hartshorne considered alongside under record-not-resolve), or ≥2 independent claim-stating sources putting him at founder grade for process philosophy as such. ★ SUMMARY CLAUSE RESOLVED by editorial-batch13-v1 (2026-08-08): the prior entry recorded that this node's reviewed, indexable en summary asserted 'He created the philosophical school known as process philosophy' — that assertion is now removed from data/node-translations.json and replaced with SEP-anchored wording (no school in his lifetime; posthumous inspiration of the movement). The edge-layer NEI above is untouched by that repair and remains the live blocker.",
+   "recheck": "manual",
+   "batch_id": "editorial-batch13-v1",
+   "recorded_at": "2026-08-08"
+  }
+ ],
+ "held_resolutions": [],
+ "override_rejections": [],
+ "anchors_pending": [],
+ "notes": [
+  "Editorial batch 13: single-node revision of person:alfred-north-whitehead, executing the editorial pass the endpoint-closure-wave13-v1 hold explicitly deferred (★ SEPARATE AND LIVE clause).",
+  "Generation: separated-context Opus subagent, self-reported model ID claude-opus-5[1m] (provenance records the reported value, not the ordered one; order requested opus). Method = batch-12 regime: live fetch via curl, per-sentence verbatim BODY-PROSE citation mandate; the generator confirmed every SEP quote sits in a <p> element (not blockquote) and every enwiki quote is lead-section prose outside the infobox and refs. enwiki fetched at oldid 1361815510.",
+  "Dropped claim: 'He created the philosophical school known as process philosophy' — a faithful quote of enwiki lead prose, but contradicted twice by SEP body prose, and enwiki's own supporting ref is a page-citation footnote (furniture, not usable under the body-prose rule). No edge or evidence chain depends on the dropped sentence: the node's only edges are the two Principia canonical_work legs.",
+  "QC close-read patches (2, recorded per batch-12 practice): (1) the generator's draft attributed the correction inline ('The Stanford Encyclopedia of Philosophy records that…') — 0 of 634 existing summaries name a source inline; house form per decision (122) Trubetzkoy is the attribution-hedge without inline source naming, so the frame was removed and the substance kept, every remaining clause re-anchored verbatim; (2) 'his works' → 'his philosophical works' — the enwiki quote says 'philosophical works', and the shorter form would claim more than the quote covers (his mathematical works are not foundational texts of process philosophy).",
+  "Corrected while editing: 'foundational text' (singular, old summary) → 'foundational texts' (plural) with 'works' plural and Process and Reality singled out — the old singular over-narrowed the enwiki claim.",
+  "Held supersede in the same change (decision (119) same-commit staleness rule): the wave13 hold on person:alfred-north-whitehead described the summary defect as live; left unedited it would have become a false ledger clause the moment this batch applied. The edge-layer NEI and its unblock are carried over verbatim; only the summary clause is marked resolved.",
+  "Britannica returned HTTP 403 (bot block) and was not consulted; no claim rests on it. NamuWiki not consulted. No provider IDs in the generation output (post-hoc check).",
+  "Heraclitus clause (SEP process-philosophy) considered and held out of the summary: in a person summary it reads as a digression; it belongs on a future process-philosophy concept node if edge demand creates one."
+ ]
+}
