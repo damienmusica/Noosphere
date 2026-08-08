@@ -1,0 +1,331 @@
+{
+  "version": 1,
+  "batch_id": "process-philosophy-grain-v1",
+  "decided_at": "2026-08-08",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-08-08"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [
+      {
+        "id": "concept:process-philosophy",
+        "type": "concept",
+        "domain": "humanities",
+        "level": 3,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q2114360"
+        },
+        "created_at": "2026-08-08",
+        "updated_at": "2026-08-08"
+      },
+      {
+        "id": "person:charles-hartshorne",
+        "type": "person",
+        "domain": "humanities",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q1064777"
+        },
+        "created_at": "2026-08-08",
+        "updated_at": "2026-08-08"
+      }
+    ],
+    "translations": [
+      {
+        "node_id": "concept:process-philosophy",
+        "locale": "en",
+        "label": "Process philosophy",
+        "summary": "",
+        "aliases": [
+          "processism",
+          "ontology of becoming"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "person:charles-hartshorne",
+        "locale": "en",
+        "label": "Charles Hartshorne",
+        "summary": "",
+        "aliases": [],
+        "reviewed": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge:process-and-reality-canonical-work-process-philosophy",
+        "source": "work:process-and-reality",
+        "target": "concept:process-philosophy",
+        "relation": "canonical_work",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:sep",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-08-08"
+        },
+        "note": "Process and Reality is canonical for process philosophy (enwiki Alfred North Whitehead, oldid 1361815510: 'Whitehead's philosophical works – particularly Process and Reality – are regarded as the foundational texts of process philosophy'; enwiki Process philosophy, oldid 1365901441: 'In 1929, Whitehead produced the most famous work of process philosophy, Process and Reality'). Work→concept is an explicitly ratified canonical_work shape with three reviewed precedents (psychology-from-an-empirical-standpoint→intentionality · on-the-electrodynamics-of-moving-bodies→theory-of-relativity · administrative-behavior→bounded-rationality). This is the DOCUMENTED EDGE DEMAND the subfield:process-philosophy hold's unblock required for the concept form — demand that arrived via work-wave7-v1's admission of the work, independent of the founder question (which closes as a measured permanent rejection in this same batch). Zero counter-evidence at the work grain: the SEP contradiction attacks person-founding, not the work's canonical status. canonical-work ladder (decision (88))."
+      },
+      {
+        "id": "edge:alfred-north-whitehead-influenced-process-philosophy",
+        "source": "person:alfred-north-whitehead",
+        "target": "concept:process-philosophy",
+        "relation": "influenced",
+        "confidence": 0.8,
+        "status": "reviewed",
+        "evidence": [
+          "source:sep",
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-08-08"
+        },
+        "note": "The SEP-supported grain for Whitehead's relation to process philosophy, replacing the permanently rejected founder claim (see this batch's rejection entry): SEP Whitehead (sum2026): 'Whitehead's philosophical views posthumously inspired the movement of process philosophy and theology' and 'Later, he was instrumental in pioneering the approach to metaphysics now known as process philosophy'. Influenced-not-founded precedent: edge:ludwig-wittgenstein-influenced-logical-positivism. The live enwiki-vs-SEP split is recorded, not resolved: enwiki's lead (oldid 1361815510) still asserts 'He created the philosophical school known as process philosophy' on a footnote page-citation already ruled furniture in editorial-batch13-v1, and the same article's own body contradicts the school reading ('Whitehead referred to his metaphysical system as the \"philosophy of organism,\" but it would become known more widely as \"process philosophy.\"'); the corpus adjudicated toward SEP in editorial-batch13 and a measured sweep this session found zero clean founder-grade registered sources. Record-not-resolve plural influence: person:charles-hartshorne's influence edge stands alongside (this batch). a-relation ladder (decision (68))."
+      },
+      {
+        "id": "edge:charles-hartshorne-influenced-process-philosophy",
+        "source": "person:charles-hartshorne",
+        "target": "concept:process-philosophy",
+        "relation": "influenced",
+        "confidence": 0.75,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:iep",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-08-08"
+        },
+        "note": "Hartshorne is the second name the term 'process philosophy' is primarily associated with (IEP Process Philosophy: 'the term \"process philosophy\" is primarily associated with the work of the philosophers Alfred North Whitehead (1861-1947) and Charles Hartshorne (1897-2000)'; enwiki Charles Hartshorne, oldid 1359826539: 'Hartshorne is also noted for developing Alfred North Whitehead's process philosophy into process theology'). Grain adjudicated conservatively at influenced, with BOTH cautions recorded: (1) NOT founding — no registered source applies founding verbs to him for process philosophy, and SEP Process Philosophy assigns follower-era language ('the early followers of Whitehead such as Hartshorne and Paul Weiss'); (2) NOT a mere disciple — SEP Charles Hartshorne: 'Most of the major elements of Hartshorne's philosophy were already apparent by the time he became familiar with Whitehead's thought, contrary to a popular misconception', and IEP warns 'It is a mistake, however, to style him as Whitehead's disciple'. The taxonomy has no finer relation for independent co-development; influenced plus this note is the record-not-resolve form. His strongest principal-figure language is scoped to process THEISM/theology ('its chief exponents', SEP Process Theism) — a future grain with no corpus node, recorded not proposed. Identity Q1064777 verified live (P31=Q5, 1897-06-05 / 2000-10-09 — the circulating death year 2003 is wrong and appeared in the orchestrator's own verification order, caught and corrected by the verifier). a-relation ladder (decision (68))."
+      },
+      {
+        "id": "edge:process-philosophy-part-of-metaphysics",
+        "source": "concept:process-philosophy",
+        "target": "subfield:metaphysics",
+        "relation": "part_of",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:philpapers",
+          "source:wikipedia",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Fable 5",
+          "model_version": "claude-fable-5",
+          "proposed_at": "2026-08-08"
+        },
+        "note": "Structural placement prescribed verbatim by the subfield:process-philosophy hold's unblock ('propose it as concept:process-philosophy part_of subfield:metaphysics'). Anchor: PhilPapers — the ratified philosophy taxonomy authority (decision (102) registry) — files it 'Metaphysics > Global Metaphysical Theories > Process Philosophy', siblings Idealism / Dualism / Logical Atomism (live-verified at the wave-13 rejection; live philpapers.org is Cloudflare-403, snapshot http://web.archive.org/web/20260218155005/https://philpapers.org/browse/process-philosophy). enwiki corroborates the broader genus ('is an approach in philosophy that identifies processes, changes, or shifting relationships as the only real experience of everyday living', oldid 1365901441); the metaphysics grain rides the registry placement. Wikidata Q2114360 P31 = philosophical movement, P279 absent (re-verified live this session) — recorded as mild typing tension alongside SEP's 'not tied to any school' caveat; the concept typing itself was ratified by the wave-13 rejection under decision (73) rule 5. PROVENANCE: this edge was added at adjudication by the orchestrator (proposed_by reflects that), because the generation order omitted the unblock's part_of prescription — an order-drafting omission, recorded. Structural ladder (edge-promotion-v1-structural)."
+      }
+    ],
+    "external_links": []
+  },
+  "promotions": [],
+  "translation_updates": [],
+  "verdicts": [
+    {
+      "subject_id": "edge:process-and-reality-canonical-work-process-philosophy",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+          "retrieved_at": "2026-08-08",
+          "quote": "Whitehead’s philosophical works – particularly Process and Reality – are regarded as the foundational texts of process philosophy.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Process_philosophy",
+          "retrieved_at": "2026-08-08",
+          "quote": "In 1929, Whitehead produced the most famous work of process philosophy, Process and Reality",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Process_philosophy&oldid=1365901441"
+        }
+      ],
+      "notes": "Verified by the concept-demand verifier (refutation-first, live): zero counter-evidence at the work grain. Verifier self-reported model ID: claude-fable-5."
+    },
+    {
+      "subject_id": "edge:alfred-north-whitehead-influenced-process-philosophy",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://plato.stanford.edu/entries/whitehead/",
+          "retrieved_at": "2026-08-08",
+          "quote": "Moreover, Whitehead’s philosophical views posthumously inspired the movement of process philosophy and theology",
+          "independent": true,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/whitehead/"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/whitehead/",
+          "retrieved_at": "2026-08-08",
+          "quote": "Later, he was instrumental in pioneering the approach to metaphysics now known as process philosophy.",
+          "independent": false,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/whitehead/"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+          "retrieved_at": "2026-08-08",
+          "quote": "Whitehead referred to his metaphysical system as the \"philosophy of organism,\" but it would become known more widely as \"process philosophy.\"",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+        }
+      ],
+      "notes": "The founder-grade claim was swept across SEP/enwiki/IEP/Britannica/PhilPapers by an independent verifier: 0 clean founder-grade registered sources — see this batch's rejection entry. Verifier self-reported model ID: claude-fable-5."
+    },
+    {
+      "subject_id": "edge:charles-hartshorne-influenced-process-philosophy",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Charles_Hartshorne",
+          "retrieved_at": "2026-08-08",
+          "quote": "Hartshorne is also noted for developing Alfred North Whitehead's process philosophy into process theology.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Hartshorne&oldid=1359826539"
+        },
+        {
+          "url": "https://iep.utm.edu/processp/",
+          "retrieved_at": "2026-08-08",
+          "quote": "the term “process philosophy” is primarily associated with the work of the philosophers Alfred North Whitehead (1861-1947) and Charles Hartshorne (1897-2000)",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260805122838/https://iep.utm.edu/processp/"
+        },
+        {
+          "url": "https://plato.stanford.edu/entries/process-philosophy/",
+          "retrieved_at": "2026-08-08",
+          "quote": "Charles Hartshorne, perhaps the most eminent American philosopher of religion of the Twentieth century, adopted and expanded Whitehead’s ideas for a process view of God and developed the position of process theism",
+          "independent": false,
+          "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/process-philosophy/"
+        }
+      ],
+      "notes": "Founding refuted by silence (no founding verbs anywhere); disciple framing refuted by SEP's own pushback — both recorded on the edge note. Identity Q1064777, P570 2000-10-09 (the orchestrator's order carried the circulating wrong year 2003; the verifier corrected it). Verifier self-reported model ID: claude-fable-5."
+    },
+    {
+      "subject_id": "edge:process-philosophy-part-of-metaphysics",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://philpapers.org/browse/process-philosophy",
+          "retrieved_at": "2026-08-08",
+          "quote": "Metaphysics > Global Metaphysical Theories > Process Philosophy (registry placement; siblings Idealism / Dualism / Logical Atomism)",
+          "independent": true,
+          "snapshot_url": "http://web.archive.org/web/20260218155005/https://philpapers.org/browse/process-philosophy"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Process_philosophy",
+          "retrieved_at": "2026-08-08",
+          "quote": "is an approach in philosophy that identifies processes, changes, or shifting relationships as the only real experience of everyday living",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Process_philosophy&oldid=1365901441"
+        }
+      ],
+      "notes": "The registry placement is the taxonomy-authority anchor (decision (102)); the quote field records the placement path, not prose — the snapshot is the anchor. enwiki corroborates the broader genus."
+    }
+  ],
+  "identity": [
+    {
+      "node_id": "concept:process-philosophy",
+      "provider": "wikidata",
+      "external_id": "Q2114360",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-08-08"
+    },
+    {
+      "node_id": "person:charles-hartshorne",
+      "provider": "wikidata",
+      "external_id": "Q1064777",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-08-08"
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "concept:process-philosophy",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:charles-hartshorne",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "edge:process-and-reality-canonical-work-process-philosophy",
+      "ladder": "canonical-work-auto-88"
+    },
+    {
+      "subject_id": "edge:alfred-north-whitehead-influenced-process-philosophy",
+      "ladder": "a-relation-auto-68"
+    },
+    {
+      "subject_id": "edge:charles-hartshorne-influenced-process-philosophy",
+      "ladder": "a-relation-auto-68"
+    },
+    {
+      "subject_id": "edge:process-philosophy-part-of-metaphysics",
+      "ladder": "edge-promotion-v1-structural"
+    }
+  ],
+  "rejections": [
+    {
+      "label": "Whitehead founded/formalized process philosophy (permanent, measured)",
+      "referent": "person:alfred-north-whitehead → founded_or_formalized → concept:process-philosophy (or any process-philosophy endpoint)",
+      "kind": "edge",
+      "batch_id": "process-philosophy-grain-v1",
+      "recorded_at": "2026-08-08",
+      "reason": "PERMANENTLY REJECTED on a full measured sweep (independent verifier, refutation-first, live 2026-08-08, all registered providers): count of clean claim-stating registered sources at founder grade for process philosophy AS SUCH = 0, at most 1 counting enwiki's lead sentence ('He created the philosophical school known as process philosophy') — which rests on a footnote page-citation already ruled furniture in editorial-batch13-v1 and is contradicted by the same article's own body ('Whitehead referred to his metaphysical system as the \"philosophy of organism,\" but it would become known more widely as \"process philosophy.\"'). Against: SEP Whitehead (sum2026) denies any school in his lifetime twice; SEP Process Philosophy names Heraclitus 'commonly recognized as the founder of the process approach' and states the field 'is not tied to any school, method, position, or even paradigmatic notion of process'; SEP's strongest single-person language is 'instrumental in pioneering' (pioneering ≠ founding); Britannica's Whitehead article uses 'process philosophy' only in its Top Questions furniture; PhilPapers' category page has no editorial prose; IEP associates the TERM with the Whitehead-Hartshorne pair. The supported grain is influenced (edge:alfred-north-whitehead-influenced-process-philosophy, this batch, 0.8). Re-openable only by new founder-grade claim-stating sources from ≥2 registered providers — the standing bar, now with a measured baseline of zero."
+    }
+  ],
+  "held": [],
+  "held_resolutions": [
+    {
+      "id": "subfield:process-philosophy",
+      "reason": "RESOLVED — the unblock executed in full, in the concept form it prescribed: concept:process-philosophy (reviewed, Q2114360) + edge:process-philosophy-part-of-metaphysics (the unblock's verbatim part_of prescription) + documented edge demand (edge:process-and-reality-canonical-work-process-philosophy — two claim-stating enwiki articles; work-wave7-v1 admitted the work). The unblock's 'the Whitehead claim below must clear first' clause is resolved in the direction it did not anticipate but whose guard it satisfies: the founder claim CLOSED (permanent rejection on a measured sweep, this batch) rather than cleared, and the demand arrived independently via the work's canonical grain — the node is not a target-of-convenience for an unverified founder edge; the founder edge does not exist and cannot be written."
+    },
+    {
+      "id": "person:alfred-north-whitehead",
+      "reason": "RESOLVED — both unblock paths measured and dispositioned. Path 2 (≥2 founder-grade registered sources for process philosophy as such): measured at ZERO clean sources by a full registered-provider sweep → converted to a permanent rejection (this batch). Path 1 (a node at the Whitehead-Hartshorne grain with Hartshorne considered alongside under record-not-resolve): executed — concept:process-philosophy admitted with edge:alfred-north-whitehead-influenced-process-philosophy (0.8, the SEP-supported grain) standing alongside edge:charles-hartshorne-influenced-process-philosophy (0.75) and the work-canonical edge from Process and Reality. The summary clause was already resolved by editorial-batch13-v1."
+    }
+  ],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "process-philosophy-grain-v1: executes the measured unblocks of the two oldest philosophy holds. Measurement = 3 independent verifier contexts (refutation-first, live, never read proposals; all self-reported claude-fable-5): path-2 founder sweep (0 clean sources), Hartshorne grain (founding refuted by silence; extender/theism grains supported), concept demand+shape (edge demand supported ~0.85 via the work-canonical grain). Generation = separated-context Sonnet (claude-sonnet-5 self-reported, no network, 2 nodes + 3 edges, 0 refusals); adjudication = orchestrator (claude-fable-5).",
+    "★ Order-drafting errors recorded (both caught by the machine/verifiers, not the orchestrator): (1) the orchestrator's verification order carried the circulating wrong Hartshorne death year (2003; measured 2000-10-09); (2) the generation order omitted the unblock's verbatim part_of prescription — the edge was added at adjudication with proposed_by reflecting the orchestrator, and the omission is recorded on the edge note.",
+    "The SEP 'not tied to any school' caveat and Wikidata P31=philosophical-movement/P279-absent state are recorded as typing tension on the part_of edge note — the concept typing itself was ratified by the wave-13 rejection (decision (73) rule 5, PhilPapers Global Metaphysical Theories placement).",
+    "Future grain recorded, not proposed: process theism/theology (Hartshorne's strongest principal-figure language, SEP Process Theism 'its chief exponents') — no corpus node, no current edge demand.",
+    "Editorial batch 16 follows for the two new summaries; the Heraclitus clause (SEP Process Philosophy) belongs in concept:process-philosophy's summary per the editorial-batch13 decision note."
+  ]
+}

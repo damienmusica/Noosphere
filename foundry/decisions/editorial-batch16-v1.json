@@ -1,0 +1,216 @@
+{
+ "version": 1,
+ "batch_id": "editorial-batch16-v1",
+ "decided_at": "2026-08-08",
+ "qc_by": {
+  "model_name": "Claude Fable 5",
+  "model_version": "claude-fable-5",
+  "proposed_at": "2026-08-08"
+ },
+ "adds": {
+  "sources": [],
+  "nodes": [],
+  "translations": [],
+  "edges": [],
+  "external_links": []
+ },
+ "promotions": [
+  {
+   "kind": "node",
+   "id": "concept:process-philosophy",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  },
+  {
+   "kind": "node",
+   "id": "person:charles-hartshorne",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  }
+ ],
+ "translation_updates": [
+  {
+   "node_id": "concept:process-philosophy",
+   "locale": "en",
+   "summary": "Process philosophy is an approach in philosophy, centered on ontology and metaphysics, that identifies processes, changes, or shifting relationships as fundamental and posits transient occasions of change or becoming as the most fundamental things of the ordinary everyday real world. Based on the premise that being is dynamic, it opposes the substance metaphysics that has been the dominant research paradigm in the history of Western philosophy since Aristotle; in the Western tradition it is Heraclitus of Ephesus (born ca. 560 B.C.E.) who is commonly recognized as the founder of the process approach. The term is primarily associated with the work of Alfred North Whitehead and Charles Hartshorne, and in 1929 Whitehead produced the most famous work of process philosophy, Process and Reality. It is a complex and highly diversified field that is not tied to any school, method, position, or even paradigmatic notion of process, and it remains a research paradigm currently in use all around the world.",
+   "reviewed": true
+  },
+  {
+   "node_id": "person:charles-hartshorne",
+   "locale": "en",
+   "summary": "Charles Hartshorne (1897–2000) was an American philosopher who concentrated primarily on the philosophy of religion and metaphysics, but also contributed to ornithology. He is considered by many philosophers to be one of the most important philosophers of religion and metaphysicians of the twentieth century; he developed the neoclassical idea of God and produced a modal proof of the existence of God that was a development of Anselm of Canterbury's ontological argument. He is also noted for developing Alfred North Whitehead's process philosophy into process theology, and he and Whitehead are regarded as the chief exponents of process theism. Most of the major elements of his philosophy were already apparent by the time he became familiar with Whitehead's thought, however, and it is a mistake to style him as Whitehead's disciple, since he departed from the older philosopher on a number of points.",
+   "reviewed": true
+  }
+ ],
+ "verdicts": [
+  {
+   "subject_id": "concept:process-philosophy",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Process_philosophy",
+     "retrieved_at": "2026-08-08",
+     "quote": "is an approach in philosophy that identifies processes, changes, or shifting relationships as the only real experience of everyday living",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Process_philosophy&oldid=1365901441"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Process_philosophy",
+     "retrieved_at": "2026-08-08",
+     "quote": "process philosophy posits transient occasions of change or becoming as the most fundamental things of the ordinary everyday real world",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Process_philosophy&oldid=1365901441"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/process-philosophy/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Process philosophy centers on ontology and metaphysics, but it has full systematic scope",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/process-philosophy/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/process-philosophy/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Process philosophy is based on the premise that being is dynamic and that the dynamic nature of being should be the primary focus of any comprehensive philosophical account of reality and our place within it.",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/process-philosophy/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/process-philosophy/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Process philosophy opposes ‘substance metaphysics,’ the dominant research paradigm in the history of Western philosophy since Aristotle.",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/process-philosophy/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/process-philosophy/",
+     "retrieved_at": "2026-08-08",
+     "quote": "In the Western tradition it is the Greek theoretician Heraclitus of Ephesus (born ca. 560 B.C.E.) who is commonly recognized as the founder of the process approach.",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/process-philosophy/"
+    },
+    {
+     "url": "https://iep.utm.edu/processp/",
+     "retrieved_at": "2026-08-08",
+     "quote": "the term “process philosophy” is primarily associated with the work of the philosophers Alfred North Whitehead (1861-1947) and Charles Hartshorne (1897-2000)",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260805122838/https://iep.utm.edu/processp/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Process_philosophy",
+     "retrieved_at": "2026-08-08",
+     "quote": "In 1929, Whitehead produced the most famous work of process philosophy, Process and Reality",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Process_philosophy&oldid=1365901441"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/process-philosophy/",
+     "retrieved_at": "2026-08-08",
+     "quote": "process philosophy is a complex and highly diversified field that is not tied to any school, method, position, or even paradigmatic notion of process",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/process-philosophy/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/process-philosophy/",
+     "retrieved_at": "2026-08-08",
+     "quote": "it is a research paradigm that currently is in use all around the world",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/process-philosophy/"
+    }
+   ]
+  },
+  {
+   "subject_id": "person:charles-hartshorne",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Charles_Hartshorne",
+     "retrieved_at": "2026-08-08",
+     "quote": "was an American philosopher who concentrated primarily on the philosophy of religion and metaphysics, but also contributed to ornithology.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Hartshorne&oldid=1359826539"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Charles_Hartshorne",
+     "retrieved_at": "2026-08-08",
+     "quote": "June 5, 1897 – October 9, 2000",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Hartshorne&oldid=1359826539"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/hartshorne/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Charles Hartshorne (pronounced Harts-horne) is considered by many philosophers to be one of the most important philosophers of religion and metaphysicians of the twentieth century.",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/hartshorne/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Charles_Hartshorne",
+     "retrieved_at": "2026-08-08",
+     "quote": "He developed the neoclassical idea of God and produced a modal proof of the existence of God that was a development of Anselm of Canterbury's ontological argument",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Hartshorne&oldid=1359826539"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Charles_Hartshorne",
+     "retrieved_at": "2026-08-08",
+     "quote": "Hartshorne is also noted for developing Alfred North Whitehead's process philosophy into process theology.",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Charles_Hartshorne&oldid=1359826539"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/process-theism/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Philosophers Speak of God demonstrates that Whitehead and Hartshorne are not the sole representatives of process theism, although they are its chief exponents.",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/process-theism/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/hartshorne/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Most of the major elements of Hartshorne’s philosophy were already apparent by the time he became familiar with Whitehead’s thought, contrary to a popular misconception.",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/hartshorne/"
+    },
+    {
+     "url": "https://iep.utm.edu/hart-d-t/",
+     "retrieved_at": "2026-08-08",
+     "quote": "It is a mistake, however, to style him as Whitehead’s disciple for he departed from the older philosopher on a number of points",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260501180004/https://iep.utm.edu/hart-d-t/"
+    }
+   ]
+  }
+ ],
+ "identity": [],
+ "sanctions": [
+  {
+   "subject_id": "concept:process-philosophy",
+   "ladder": "editorial-v2"
+  },
+  {
+   "subject_id": "person:charles-hartshorne",
+   "ladder": "editorial-v2"
+  }
+ ],
+ "rejections": [],
+ "held": [],
+ "held_resolutions": [],
+ "override_rejections": [],
+ "anchors_pending": [
+  {
+   "url": "https://iep.utm.edu/hart-d-t/",
+   "reason": "[SPN-FAILED] fresh save did not materialize; using 99d-old snapshot"
+  }
+ ],
+ "notes": [
+  "Editorial batch 16: summaries + indexable flips for the two process-philosophy-grain-v1 nodes. Generation = separated-context Opus subagent, self-reported model ID claude-opus-5[1m] (recorded value; the generator itself flagged that a prompt-declared ID is not a measurement and pointed at the transcript JSONL as the authoritative ledger — the flag is recorded with the value).",
+  "Ruling compliance verified at close-read: the word founder appears once in the concept summary and is attached to Heraclitus (the SEP-mandated clause); Whitehead carries only the permitted shapes; the school reading is counterweighted in the summary text itself (SEP 'not tied to any school' carried verbatim); no inline source naming anywhere (the constraint entered the standing order this batch, and the generator complied — first batch with zero draft-time occurrences after three consecutive patches).",
+  "QC judgments recorded: (1) the generator's compression 'as fundamental' (vs enwiki's over-reaching 'only real experience of everyday living') accepted — the fundamentality claim rides the second enwiki sentence verbatim; (2) the offered 'not the sole representatives' repair for the chief-exponents clause considered and declined — chief adequately implies non-exclusivity and the SEP quote is on record; (3) the independence guard (S4, Hartshorne) kept flat on two independent sources per the generator's own defense of it.",
+  "Provenance hygiene from the generator, recorded: zero oldid drift across all three anchored enwiki revisions (re-verified live); SEP live pages byte-matched the sum2026 editions (and the 'Summer 2012' string on the live Process Philosophy page is a bibliography citation of the superseded Rescher entry, not an edition label — trap recorded); Hartshorne death date re-confirmed 2000-10-09 by two providers."
+ ]
+}

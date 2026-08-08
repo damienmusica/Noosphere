@@ -336,6 +336,20 @@
     "updated_at": "2026-06-10"
   },
   {
+    "id": "concept:process-philosophy",
+    "type": "concept",
+    "domain": "humanities",
+    "level": 3,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q2114360"
+    },
+    "created_at": "2026-08-08",
+    "updated_at": "2026-08-08"
+  },
+  {
     "id": "concept:public-key-cryptography",
     "type": "concept",
     "domain": "computer_and_information_sciences",
@@ -2484,6 +2498,20 @@
     },
     "created_at": "2026-06-19",
     "updated_at": "2026-07-02"
+  },
+  {
+    "id": "person:charles-hartshorne",
+    "type": "person",
+    "domain": "humanities",
+    "level": 2,
+    "status": "reviewed",
+    "indexable": true,
+    "is_living_person": false,
+    "external_ids": {
+      "wikidata": "Q1064777"
+    },
+    "created_at": "2026-08-08",
+    "updated_at": "2026-08-08"
   },
   {
     "id": "person:charles-lyell",

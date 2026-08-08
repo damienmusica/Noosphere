@@ -298,6 +298,26 @@
     "note": "enwiki opens the article with the attribution — \"The theory of relativity comprises two physics theories by Albert Einstein\" — and Wikidata Q43514's own English description says the same. Recorded tension, not resolved: a whole enwiki article (Relativity priority dispute) documents the Lorentz/Poincaré priority literature. Under §8 clause-6 v2 that is a share-and-priority debate on top of an agreed founding, not a contested existence or direction, so it routes to supported plus this note rather than to disputed. Poincaré's contribution is written as its own edge in this batch instead of being buried here."
   },
   {
+    "id": "edge:alfred-north-whitehead-influenced-process-philosophy",
+    "source": "person:alfred-north-whitehead",
+    "target": "concept:process-philosophy",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "The SEP-supported grain for Whitehead's relation to process philosophy, replacing the permanently rejected founder claim (see this batch's rejection entry): SEP Whitehead (sum2026): 'Whitehead's philosophical views posthumously inspired the movement of process philosophy and theology' and 'Later, he was instrumental in pioneering the approach to metaphysics now known as process philosophy'. Influenced-not-founded precedent: edge:ludwig-wittgenstein-influenced-logical-positivism. The live enwiki-vs-SEP split is recorded, not resolved: enwiki's lead (oldid 1361815510) still asserts 'He created the philosophical school known as process philosophy' on a footnote page-citation already ruled furniture in editorial-batch13-v1, and the same article's own body contradicts the school reading ('Whitehead referred to his metaphysical system as the \"philosophy of organism,\" but it would become known more widely as \"process philosophy.\"'); the corpus adjudicated toward SEP in editorial-batch13 and a measured sweep this session found zero clean founder-grade registered sources. Record-not-resolve plural influence: person:charles-hartshorne's influence edge stands alongside (this batch). a-relation ladder (decision (68))."
+  },
+  {
     "id": "edge:alfred-russel-wallace-founded-evolutionary-biology",
     "source": "person:alfred-russel-wallace",
     "target": "subfield:evolutionary-biology",
@@ -2171,6 +2191,26 @@
       "proposed_at": "2026-06-19"
     },
     "note": "Darwin's theory of natural selection is the foundational theoretical ancestor of evolutionary psychology, a cross-domain historical influence (Wikipedia Evolutionary psychology: \"Evolutionary psychology has its historical roots in Charles Darwin's theory of natural selection\"; Darwin \"predicted that psychology would develop an evolutionary basis\"; Wikipedia Charles Darwin: The Expression of the Emotions in Man and Animals \"was an early work of psychology\" discussing \"the evolution of human psychology\"; SEP Evolutionary Psychology: the field's mechanisms are \"adaptations—products of natural selection\"). Direction Darwin (d.1882) → the formal discipline (cohered 1990s); foundational/indirect. Person→subfield cross-domain (a)-edge, session #34, proposed-first. Independent publishers (Wikipedia ×2 + SEP)."
+  },
+  {
+    "id": "edge:charles-hartshorne-influenced-process-philosophy",
+    "source": "person:charles-hartshorne",
+    "target": "concept:process-philosophy",
+    "relation": "influenced",
+    "confidence": 0.75,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:iep",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Hartshorne is the second name the term 'process philosophy' is primarily associated with (IEP Process Philosophy: 'the term \"process philosophy\" is primarily associated with the work of the philosophers Alfred North Whitehead (1861-1947) and Charles Hartshorne (1897-2000)'; enwiki Charles Hartshorne, oldid 1359826539: 'Hartshorne is also noted for developing Alfred North Whitehead's process philosophy into process theology'). Grain adjudicated conservatively at influenced, with BOTH cautions recorded: (1) NOT founding — no registered source applies founding verbs to him for process philosophy, and SEP Process Philosophy assigns follower-era language ('the early followers of Whitehead such as Hartshorne and Paul Weiss'); (2) NOT a mere disciple — SEP Charles Hartshorne: 'Most of the major elements of Hartshorne's philosophy were already apparent by the time he became familiar with Whitehead's thought, contrary to a popular misconception', and IEP warns 'It is a mistake, however, to style him as Whitehead's disciple'. The taxonomy has no finer relation for independent co-development; influenced plus this note is the record-not-resolve form. His strongest principal-figure language is scoped to process THEISM/theology ('its chief exponents', SEP Process Theism) — a future grain with no corpus node, recorded not proposed. Identity Q1064777 verified live (P31=Q5, 1897-06-05 / 2000-10-09 — the circulating death year 2003 is wrong and appeared in the orchestrator's own verification order, caught and corrected by the verifier). a-relation ladder (decision (68))."
   },
   {
     "id": "edge:charles-lyell-founded-geology",
@@ -12653,6 +12693,46 @@
       "proposed_at": "2026-08-08"
     },
     "note": "Process and Reality (1929) is the pinnacle of Whitehead's metaphysical work (enwiki Alfred North Whitehead, oldid 1361815510: 'Whitehead's philosophical works – particularly Process and Reality – are regarded as the foundational texts of process philosophy' and 'Lectures from 1927 to 1928 were published in 1929 as a book named Process and Reality'; IEP Whitehead: 'the pinnacle of Whitehead's metaphysical work came with his monumental Process and Reality in 1929'). BOUNDARY KEPT: this is a work -> person biography-grade edge and does not touch the held process-philosophy school question — the founded_or_formalized NEI on person:alfred-north-whitehead stands unchanged, and this note makes no school-founding claim. His second canonical_work edge alongside the co-authored work:principia-mathematica (different work, different claim — not a dilution). Identity Q455957 verified live (P50 = Q183372 matching, P577 1929 — the widely-cited 1978 Griffin/Sherburne corrected edition misdating risk the generator flagged is resolved: the item dates to the original; 9 sitelinks); the P50-less 0-sitelink bibliographic twin Q130330690 and the paperback edition item Q126697610 were excluded and recorded. canonical-work ladder (decision (88))."
+  },
+  {
+    "id": "edge:process-and-reality-canonical-work-process-philosophy",
+    "source": "work:process-and-reality",
+    "target": "concept:process-philosophy",
+    "relation": "canonical_work",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Process and Reality is canonical for process philosophy (enwiki Alfred North Whitehead, oldid 1361815510: 'Whitehead's philosophical works – particularly Process and Reality – are regarded as the foundational texts of process philosophy'; enwiki Process philosophy, oldid 1365901441: 'In 1929, Whitehead produced the most famous work of process philosophy, Process and Reality'). Work→concept is an explicitly ratified canonical_work shape with three reviewed precedents (psychology-from-an-empirical-standpoint→intentionality · on-the-electrodynamics-of-moving-bodies→theory-of-relativity · administrative-behavior→bounded-rationality). This is the DOCUMENTED EDGE DEMAND the subfield:process-philosophy hold's unblock required for the concept form — demand that arrived via work-wave7-v1's admission of the work, independent of the founder question (which closes as a measured permanent rejection in this same batch). Zero counter-evidence at the work grain: the SEP contradiction attacks person-founding, not the work's canonical status. canonical-work ladder (decision (88))."
+  },
+  {
+    "id": "edge:process-philosophy-part-of-metaphysics",
+    "source": "concept:process-philosophy",
+    "target": "subfield:metaphysics",
+    "relation": "part_of",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:philpapers",
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Fable 5",
+      "model_version": "claude-fable-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Structural placement prescribed verbatim by the subfield:process-philosophy hold's unblock ('propose it as concept:process-philosophy part_of subfield:metaphysics'). Anchor: PhilPapers — the ratified philosophy taxonomy authority (decision (102) registry) — files it 'Metaphysics > Global Metaphysical Theories > Process Philosophy', siblings Idealism / Dualism / Logical Atomism (live-verified at the wave-13 rejection; live philpapers.org is Cloudflare-403, snapshot http://web.archive.org/web/20260218155005/https://philpapers.org/browse/process-philosophy). enwiki corroborates the broader genus ('is an approach in philosophy that identifies processes, changes, or shifting relationships as the only real experience of everyday living', oldid 1365901441); the metaphysics grain rides the registry placement. Wikidata Q2114360 P31 = philosophical movement, P279 absent (re-verified live this session) — recorded as mild typing tension alongside SEP's 'not tied to any school' caveat; the concept typing itself was ratified by the wave-13 rejection under decision (73) rule 5. PROVENANCE: this edge was added at adjudication by the orchestrator (proposed_by reflects that), because the generation order omitted the unblock's part_of prescription — an order-drafting omission, recorded. Structural ladder (edge-promotion-v1-structural)."
   },
   {
     "id": "edge:programming-languages-part-of-computer-science",
