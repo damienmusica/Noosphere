@@ -9,7 +9,7 @@ model, relation taxonomy, policies) for the topics they own. See
 This brief describes the **methodology and boundaries**. It does not, by itself, build Data Foundry
 tooling — that happens in later, explicit PRs (see the implementation sequence below).
 
-> **Codified through vault decision (124).** This document is a projection of the vault decision
+> **Codified through vault decision (126).** This document is a projection of the vault decision
 > log: a decision after this cursor must either land its normative text here (or in the artifact it
 > names) or record an explicit no-op in its decision-log entry — and the session-end ritual bumps
 > the cursor either way. A decision without a concrete artifact has not happened yet.
