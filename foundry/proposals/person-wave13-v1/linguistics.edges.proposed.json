@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "batch_id": "person-wave13-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-08-08"
+  },
+  "edges": [
+    {
+      "id": "edge:baudouin-de-courtenay-influenced-phonology",
+      "source": "person:baudouin-de-courtenay",
+      "target": "subfield:phonology",
+      "relation": "influenced",
+      "confidence": 0.68,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Relayed (not independently fetched this session [UNFETCHED]) from this order and from foundry/held.json's blocking_condition on this same person ID: Encyclopaedia Britannica, 'Jan Baudouin de Courtenay' entry -- 'linguist who regarded language sounds as structural entities, rather than mere physical phenomena, and thus anticipated the modern linguistic concern with language structure'; 'Views expressed in his major work, Versuch einer Theorie phonetischer Alternationen (1895) ... have become a part of modern linguistic science.' Second source named by the order: Honeybone, in the Oxford Handbook of Historical Phonology -- names Kruszewski (1881) and Baudouin de Courtenay (1895) as 'the earliest signs (in the modern era) of work which focused on synchronic phonological' patterning. Only the Britannica citation has a registered provider (source:britannica); the Honeybone chapter does not. Additional registered-provider-family candidates for QC to try as a second source: Wikipedia 'Jan Baudouin de Courtenay' and Wikipedia 'Phonology' (source:wikipedia, history/precursors section), and a possible Oxford Bibliographies (source:oxford-bibliographies) entry on the history of phonology or on this person by name.",
+      "note": "Reconciles to person:baudouin-de-courtenay (same ID used in endpoint-closure-wave13-v1). Replaces, per foundry/held.json's own recorded unblock, the previously-proposed and subsequently-REJECTED target subfield:morphophonology (enwiki Morphophonology, oldid 1360947317, full wikitext swept, zero mentions of him) -- that edge is deliberately NOT reproduced here. Proposed at `influenced`, not `founded_or_formalized`: both quoted excerpts frame him as anticipating/contributing to a structural concern later developed by the field, not as the field's founder.",
+      "rationale": "Both sources named by the order and the held ledger independently frame Baudouin de Courtenay's 1890s work as an early anticipation of structural/synchronic phonology -- Britannica in general-reference terms ('anticipated the modern linguistic concern with language structure', his views 'have become a part of modern linguistic science') and Honeybone in specialist-historiographic terms (naming him, jointly with Kruszewski, among 'the earliest signs (in the modern era)' of synchronic phonological work). That is the textbook shape of `influenced` -- a precursor whose work shaped the field's later development -- not a first-person founding act, and it is the target the ledger itself records as the honest, sourced alternative to the rejected morphophonology claim.",
+      "uncertainty": "I have not read either source live this session; both excerpts are relayed via the order and the held ledger, not independently verified. Risks QC should specifically check: (1) whether the surrounding Britannica text or the full Honeybone chapter in fact uses founder-grade language that would argue for `founded_or_formalized` instead of the more conservative `influenced` I am proposing; (2) whether the Honeybone chapter can be registered as a source, or whether an equivalent registered-family source (Wikipedia, Oxford Bibliographies -- candidates named in source_hint) independently states the same claim, since only one of the two cited sources currently has a registered provider in data/sources.json and this corpus's practice is two independent sources; (3) whether this claim, examined live, is better framed as influencing subfield:phonology specifically versus a broader structuralism/general-linguistics target -- I chose phonology because that is the target foundry/held.json itself records as supported, not because I independently re-derived it.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "Single-edge batch: only the ledger-supported target (influenced -> subfield:phonology) is proposed. No edge to subfield:morphophonology is proposed, per the order's explicit hard instruction and per foundry/held.json's own rejection record for that target (enwiki Morphophonology sweep, zero mentions)."
+  ]
+}

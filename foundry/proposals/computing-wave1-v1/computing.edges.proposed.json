@@ -1,0 +1,123 @@
+{
+  "version": 2,
+  "batch_id": "computing-wave1-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-08-08"
+  },
+  "edges": [
+    {
+      "id": "edge:john-mauchly-influenced-computer-systems",
+      "source": "person:john-mauchly",
+      "target": "subfield:computer-systems",
+      "relation": "influenced",
+      "confidence": 0.8,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'ENIAC' ('ENIAC was designed by John Mauchly and J. Presper Eckert'); Wikipedia 'John Mauchly' ('along with J. Presper Eckert, designed ENIAC ... as well as EDVAC'); Wikipedia 'First Draft of a Report on the EDVAC' (this corpus's reviewed edge:john-von-neumann-influenced-computer-systems already quotes that article's Von Neumann architecture companion piece describing the report as based on the work of Eckert and Mauchly); MacTutor biography of Mauchly; Encyclopedia Britannica -- all named per this order and the held-ledger's 2026-07-31 sourcing note; none fetched live this session.",
+      "note": "LANE A (cheap path). Anchor precedent named by this order: edge:john-von-neumann-influenced-computer-systems is reviewed at 0.85, grounded in the same EDVAC-report source family, and its own note already records 'Neither person:john-mauchly nor person:j-presper-eckert is a corpus node; honest gap' -- this edge (with the companion Eckert edge and the two nodes in this batch) proposes to close that named gap. Deliberately kept at influenced, not founded_or_formalized, for calibration parity with the von Neumann edge: von Neumann's report is what specifically names and describes the architecture concept, and even that edge only earns 'influenced' at this subfield grain (ACM CCS 'computer systems organization' spans decades beyond any 1940s machine) -- giving Mauchly a stronger relation than von Neumann at the identical target would be an inconsistent, inflated claim. The founding-grade credit for Mauchly specifically is instead routed to concept:stored-program-computer in this same batch (Lane B), a narrower and more precise referent than this subfield.",
+      "rationale": "Mauchly co-designed ENIAC and EDVAC -- machines standardly treated as founding events for the practice this subfield now covers -- and is named directly in the same source family already grounding a reviewed 0.85 edge from von Neumann to this exact target.",
+      "uncertainty": "This is a re-attempt of a claim person-wave12-v1 (2026-07-30) held: independent verification split Mauchly (rejected) and Eckert (supported) on identical evidence that session, and QC judged that split an artifact of two different search paths rather than a fact about the two men, holding both rather than admitting an asymmetric pair. I am proposing both again, symmetrically, at 0.8 (up from that wave's 0.75) on the strength of the additional named sources in this order -- but I have not live-verified any of them this session, and a second split verification remains a live possibility QC should treat as a real outcome, not a search-path failure to correct away. Overlap risk: if both this edge and the Lane B founded_or_formalized edge to concept:stored-program-computer land, they encode overlapping but distinct claims (broad subfield influence via machine-building vs. narrower concept-founding) -- plausible legitimate co-existence (mirroring the Einstein/relativity-plus-von-Neumann/computer-systems pattern already in this corpus), but QC should judge whether both are warranted or only one.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:j-presper-eckert-influenced-computer-systems",
+      "source": "person:j-presper-eckert",
+      "target": "subfield:computer-systems",
+      "relation": "influenced",
+      "confidence": 0.8,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'ENIAC' ('ENIAC was designed by John Mauchly and J. Presper Eckert'); Wikipedia 'J. Presper Eckert'; Wikipedia 'First Draft of a Report on the EDVAC' (via the same Von Neumann architecture companion-piece framing already quoted on the reviewed von Neumann edge); MacTutor biography of Eckert; Encyclopedia Britannica -- same source family as the companion Mauchly edge; none fetched live this session.",
+      "note": "LANE A companion edge to edge:john-mauchly-influenced-computer-systems; same anchor precedent (edge:john-von-neumann-influenced-computer-systems, reviewed 0.85) and same calibration-parity reasoning (kept at influenced, not founded_or_formalized, since even von Neumann's report-author edge only earns influenced at this subfield grain). Eckert's specific role -- chief engineer, mercury delay-line memory inventor -- is at least as concrete an engineering claim on 'computer systems' as Mauchly's more conceptual/proposing role, which is why this edge is proposed at the same confidence rather than lower.",
+      "rationale": "Eckert was chief engineer and co-designer of ENIAC and EDVAC and is named directly in the same source family grounding the reviewed von Neumann edge to this exact target; his hardware-engineering contribution (including the mercury delay-line memory used in EDVAC/UNIVAC) is a concrete, direct claim on this subfield.",
+      "uncertainty": "Same held-precedent caveat as the companion Mauchly edge: person-wave12-v1 verification split this exact pair on identical evidence (Eckert supported, Mauchly rejected), and that split was judged a search-path artifact rather than a fact -- QC re-testing this pair could reproduce the split, reverse it, or confirm both, and all three are legitimate outcomes I am not trying to pre-empt. I have not live-verified the source wording this session, and I have not independently confirmed whether mainstream treatments credit Eckert's engineering contribution differently enough from Mauchly's proposing role to warrant a confidence difference between the two edges -- treated as parity (record-not-resolve) here.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:john-mauchly-founded-stored-program-computer",
+      "source": "person:john-mauchly",
+      "target": "concept:stored-program-computer",
+      "relation": "founded_or_formalized",
+      "confidence": 0.55,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Von Neumann architecture' -- the single currently-known claim-stating sentence, per the held-ledger's 2026-07-31 sourcing note: 'Eckert and Mauchly had essentially finished designing a stored program computer before discussing the ideas with von Neumann' (that article cites this to a Bergin-edited 2000 history-of-computing volume; I have not verified that citation itself). None fetched live this session.",
+      "note": "LANE B (decision (71) shape), requested by this order's item 3. Honest floor disclosure: the held ledger records this as ONE known claim-stating source, short of the usual two-source floor for a clause-6 v2 supported verdict -- this proposal does not assume that floor is already cleared, only that it is worth a live re-search (the Trubetzkoy precedent recorded in this corpus: a prior split or gap can be a search-path artifact rather than a fact about the world). Companion edges in this batch: person:j-presper-eckert and person:john-von-neumann carry the same relation to the same target -- record-not-resolve shared credit for one design lineage, not competing claims.",
+      "rationale": "The single known source states directly that Mauchly, jointly with Eckert, had essentially finished the stored-program design before von Neumann's involvement -- an origination-grade claim, not a later-refinement one, at exactly the concept grain decision (121) requires (a concept referent, not a machine).",
+      "uncertainty": "Confidence set well below this corpus's usual supported-edge range specifically because only one claim-stating source is currently known to me, not two -- I am not asserting the evidentiary floor is cleared, only that this is a testable, non-impossible claim per decision (121)'s corrected ruling. A live search could turn up a second corroborating source (raising this toward a normal founder-edge confidence) or could turn up nothing further, in which case NEI is the honest QC outcome and matches the 'one source short' diagnosis already on record in foundry/held.json. I have not independently verified the Bergin-volume citation the source_hint mentions. This edge also depends on concept:stored-program-computer landing with the correct referent -- if QC redirects or holds that node, this edge's target may need to change with it.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:j-presper-eckert-founded-stored-program-computer",
+      "source": "person:j-presper-eckert",
+      "target": "concept:stored-program-computer",
+      "relation": "founded_or_formalized",
+      "confidence": 0.55,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'Von Neumann architecture' -- the same single currently-known claim-stating sentence as the companion Mauchly edge: 'Eckert and Mauchly had essentially finished designing a stored program computer before discussing the ideas with von Neumann'. None fetched live this session.",
+      "note": "LANE B companion edge to edge:john-mauchly-founded-stored-program-computer; same single-source floor disclosure and same record-not-resolve framing alongside the von Neumann edge to the identical target.",
+      "rationale": "The same single known source names Eckert jointly with Mauchly as having essentially finished the stored-program design before von Neumann's involvement -- the identical origination-grade claim as the companion Mauchly edge, at the concept grain decision (121) requires.",
+      "uncertainty": "Identical floor caveat to the companion Mauchly edge: one known claim-stating source, not two: this is a testable candidate, not an asserted supported verdict. I have not independently checked whether the single source differentiates Eckert's specific contribution to the stored-program idea from Mauchly's -- both are named jointly in the one sentence I have, so I treated them as parity. Same dependency on concept:stored-program-computer's referent landing correctly.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:john-von-neumann-founded-stored-program-computer",
+      "source": "person:john-von-neumann",
+      "target": "concept:stored-program-computer",
+      "relation": "founded_or_formalized",
+      "confidence": 0.85,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Wikipedia 'First Draft of a Report on the EDVAC' ('It contains the first published description of the logical design of a computer using the stored-program concept'); Wikipedia 'Von Neumann architecture' ('is a computer architecture based on the First Draft of a Report on the EDVAC, written by John von Neumann in 1945'); Wikipedia 'Stored-program computer' -- the same source family already grounding the reviewed edge:john-von-neumann-influenced-computer-systems (0.85). None fetched live this session.",
+      "note": "Requested by item 5 of this order: von Neumann's report is 'the founding document of the lineage' this concept records. Proposed as co-existing with, not competing against, the reviewed edge:john-von-neumann-influenced-computer-systems -- that edge is the broad subfield-influence claim (0.85), this one is the precise concept-founding claim at the referent decision (121) calls for. Record-not-resolve on credit-sharing: the same source family grounding this edge is the one whose reviewed note already states the 'von Neumann architecture' name 'has become controversial due to von Neumann's failure to name other contributors' -- this batch's choice of the neutral label concept:stored-program-computer, plus the companion Mauchly and Eckert edges to the identical target, is the record-not-resolve response to that named tension, not a resolution of it.",
+      "rationale": "The 'First Draft of a Report on the EDVAC' is, on this corpus's own already-verified evidence, the founding written articulation of the stored-program concept, authored solely by von Neumann -- the clearest and best-sourced of the three founder edges in this batch.",
+      "uncertainty": "I have not live-verified any of the three named articles' current wording this session. Calibration note: I set this at 0.85, parity with the existing reviewed edge, because the underlying source family is the same one already accepted at that confidence for a weaker relation (influenced) to a broader target (subfield) -- a founded_or_formalized claim to the narrower, more precisely matched concept target seems at least as well supported, but QC may reasonably calibrate differently since 'author of the founding report' and 'founder of the concept' are not strictly identical claims. The ambiguous flag reflects dependence on the unverified concept node landing with the correct referent, not doubt about von Neumann's role itself.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:john-atanasoff-influenced-john-mauchly",
+      "source": "person:john-atanasoff",
+      "target": "person:john-mauchly",
+      "relation": "influenced",
+      "confidence": 0.5,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "1973 US District Court ruling, Honeywell, Inc. v. Sperry Rand Corp. (D. Minn.), as quoted in this order: 'Eckert and Mauchly ... derived that subject matter from one Dr. John Vincent Atanasoff'; Wikipedia 'Atanasoff-Berry Computer'; Wikipedia 'John Vincent Atanasoff'; Wikipedia 'ENIAC' (patent-invalidation section) -- for the counter-evidence described below. None fetched live this session.",
+      "note": "SHOULD CARRY disputed:true AT PROMOTION (clause-6 v2) -- the proposal-artifact schema (foundryProposalV2Schema) has no disputed field of its own, so this intent is recorded here in prose for QC to set explicitly when writing the canonical edge, per this order's item 4. Counter-evidence recorded rather than hidden, per this order's explicit instruction: from my own recollection and NOT independently live-verified this session (QC must locate and quote the actual sentences rather than rely on this paraphrase), the same secondary-source family that reports the ruling's derivation finding commonly also records that the Atanasoff-Berry Computer was a fixed-purpose linear-equation solver rather than a general-purpose, programmable machine like ENIAC, that it was never completed to full working spec as originally designed, and that many computer historians dispute how much of ENIAC's actual design the ruling's 'derived' language should be read to cover versus how much was independently developed -- i.e. the derivation finding and a qualification of it appear together in the same source family, which is the specific pattern this order asked not to be hidden. Evidence-kind flag: the primary source here is a court ruling, not a claim-stating scholarly/encyclopedic source of the kind Sec.8 otherwise requires -- recorded honestly rather than smoothed over, per the held-ledger's own observation.",
+      "rationale": "This order requires this edge as a downstream item once person:john-atanasoff and person:john-mauchly both land, on the strength of the 1973 court ruling's derivation finding, with the counter-evidence recorded alongside rather than omitted.",
+      "uncertainty": "This edge only makes sense if both person:john-atanasoff and person:john-mauchly are admitted through the curation gate -- it is proposed conditionally on that (order item 4: 'these edges are downstream'). Confidence set at 0.5 to read as a contested claim (the clause-6 v2 balanced-split idiom) rather than a moderately-likely-true relation, since I cannot determine from memory alone whether this is an asymmetric dominant-view-plus-dissent case (clause-6 v2 branch 2) or a genuine balanced split (branch 3) -- that determination needs live sourcing QC should perform. The evidence-kind mismatch (legal ruling vs. scholarly claim-stating source) is itself a live methodological question for QC, not resolved by this proposal.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:john-atanasoff-influenced-j-presper-eckert",
+      "source": "person:john-atanasoff",
+      "target": "person:j-presper-eckert",
+      "relation": "influenced",
+      "confidence": 0.5,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "1973 US District Court ruling, Honeywell, Inc. v. Sperry Rand Corp. (D. Minn.), as quoted in this order: 'Eckert and Mauchly ... derived that subject matter from one Dr. John Vincent Atanasoff'; Wikipedia 'Atanasoff-Berry Computer'; Wikipedia 'John Vincent Atanasoff'; Wikipedia 'ENIAC' (patent-invalidation section) -- for the same counter-evidence described on the companion Mauchly edge. None fetched live this session.",
+      "note": "SHOULD CARRY disputed:true AT PROMOTION (clause-6 v2), identical basis to the companion edge:john-atanasoff-influenced-john-mauchly -- the proposal-artifact schema has no disputed field, so this intent is recorded in prose for QC. Counter-evidence: identical to the companion edge's note (same ruling names both Eckert and Mauchly jointly as the derivers) -- not restated in full here to avoid duplicating unverified paraphrase; see that edge's note for the full text, which applies equally to this one.",
+      "rationale": "Identical basis to the companion Atanasoff-to-Mauchly edge: the same 1973 ruling names Eckert jointly with Mauchly as having derived subject matter from Atanasoff, so the same downstream, disputed influenced edge is proposed here for the Eckert endpoint.",
+      "uncertainty": "Identical to the companion edge: conditional on both person:john-atanasoff and person:j-presper-eckert landing through the curation gate; confidence 0.5 for the same contested-claim reasons; the clause-6 v2 branch (asymmetric vs. balanced split) is undetermined from memory alone and needs live sourcing; the evidence-kind mismatch (court ruling vs. scholarly source) is the same live methodological question.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "Both Lane A (person -> influenced -> subfield:computer-systems) and Lane B (person -> founded_or_formalized -> concept:stored-program-computer) are proposed for Mauchly and Eckert, per this order's framing of them as two shapes to try rather than a forced single choice. They are not intended as redundant: Lane A is the broad, well-evidenced machine-building-influenced-the-field claim; Lane B is the narrower, thinner-sourced concept-founding claim decision (121) specifically asked this wave to attempt. QC should judge whether one, both, or neither clears the promotion floor -- this generator does not pre-select.",
+    "No work or canonical_work items are proposed for ENIAC or EDVAC. Decision (121) already ruled work:eniac impossible on identity grounds (no P50, no P577) and canonical_work fixed as work-sourced; re-litigating that ruling was out of scope for this batch.",
+    "No founded_or_formalized edge is proposed for John Atanasoff himself -- his own credit is artifact-grained (the ABC) with no in-scope concept referent under the same decision (121) logic that blocks a bare machine credit for Mauchly and Eckert, and this order did not request one.",
+    "No edge is proposed directly between Mauchly and Eckert (e.g. member_of a shared institution, or a mutual influenced pair) -- not requested by this order's slate, and proposing it would be scope creep beyond the five numbered items.",
+    "Nothing in this slate was refused outright: every item is proposed, with confidence and the ambiguous flag calibrated to reflect real sourcing thinness (Lane B Mauchly/Eckert edges, single known source) or genuine live contestation (the Atanasoff edges) rather than withheld."
+  ]
+}

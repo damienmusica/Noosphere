@@ -1,0 +1,60 @@
+{
+  "version": 2,
+  "batch_id": "person-wave13-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-08-08"
+  },
+  "edges": [
+    {
+      "id": "edge:robert-hooke-influenced-cell-biology",
+      "source": "person:robert-hooke",
+      "target": "subfield:cell-biology",
+      "relation": "influenced",
+      "confidence": 0.6,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Own knowledge (Wikipedia 'Robert Hooke', Wikipedia 'Cell (biology)' history section, Encyclopaedia Britannica 'cell' -- standard reference material on the 1665 cork/cellulae episode); not fetched this session [UNFETCHED]. History-of-cell-biology sources routinely open their historical narrative with this episode as the point of origin for 'cell' as an object of study, before crediting Schleiden/Schwann/Virchow with the actual theory roughly 170 years later.",
+      "note": "Record-not-resolve, additive not competing: subfield:cell-biology already carries two reviewed founded_or_formalized edges at confidence 0.9 (edge:matthias-jakob-schleiden-founded-cell-biology, edge:theodor-schwann-founded-cell-biology), both of whose own notes name Hooke as this exact recorded gap. This edge is deliberately the weaker `influenced`, not `founded_or_formalized`, per this order's HARD RULE: naming/observing a structure is not founding a discipline -- the same exclusion this corpus already applied to William Whewell's coining of 'uniformitarianism' (foundry/rejections.json). A microscopy-grain target was considered and declined: no subfield/method node for microscopy exists in this corpus, and creating one is a structural taxonomy decision out of scope for this narrow person-wave batch.",
+      "rationale": "Hooke's 1665 observation and naming of 'cells' in cork is the historically standard point of origin cited when introducing the object of study that cell biology as a field investigates -- a genuine influence on what later scientists observed and how they described it, clearly distinct from and much weaker than founding the discipline, which the sources credit to Schleiden, Schwann, and Virchow over a century and a half later.",
+      "uncertainty": "This is the harder of the two Hooke edges to defend cleanly against the Whewell precedent. Whewell was rejected because he coined a name for a doctrine that already existed and was developed entirely by others (Hutton originated it, Lyell developed and popularized it), with sources stating this explicitly. Hooke's case differs in that his naming accompanied a genuine FIRST empirical observation -- no one had described or depicted this microstructure before him -- not a post-hoc label on someone else's already-finished work; that distinction is what I am relying on to propose `influenced` rather than decline outright. But I hold real uncertainty whether live sources actually state an influence on the FIELD's later development, as opposed to merely crediting him with the terminology in isolation (etymology only, no stated causal/intellectual link). If live verification finds the latter, this edge should be declined on the same structural grounds as Whewell, not merely left at a lower confidence -- QC should check this specifically rather than assume `influenced` is automatically a safe fallback relation.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:robert-hooke-influenced-cell-theory",
+      "source": "person:robert-hooke",
+      "target": "concept:cell-theory",
+      "relation": "influenced",
+      "confidence": 0.55,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Own knowledge (Wikipedia 'Cell theory' history section, which in my recollection opens its historical narrative with Hooke's 1665 naming before moving to Schleiden/Schwann/Virchow; Encyclopaedia Britannica 'cell theory'); not fetched this session [UNFETCHED].",
+      "note": "Record-not-resolve, same footing as edge:robert-hooke-influenced-cell-biology above: concept:cell-theory already carries reviewed founded_or_formalized edges from person:matthias-jakob-schleiden and person:theodor-schwann (and, per the refreshed notes on those edges, Rudolf Virchow now also holds one at subfield:cell-biology and, on my understanding, at cell-theory too). This edge is proposed at the deliberately weaker `influenced` grade and is additive, not competing.",
+      "rationale": "Cell theory's own standard historical framing, as I recall it, treats Hooke's coining of 'cell' as the terminological and observational starting point the theory's later founders built on -- a slightly more specific and, in my recollection, more commonly and explicitly stated claim than the field-level cell-biology version above, since histories of the theory specifically tend to open with this exact episode.",
+      "uncertainty": "Lower confidence than the cell-biology edge because the temporal and conceptual gap is larger: Hooke observed empty cell walls in dead cork tissue and had no theory of cells as universal units of life, while cell theory (1838-39) is a specific 19th-century doctrine about all living matter. Some historians may frame Hooke's episode as pure prehistory/etymology rather than a substantive influence on the theory's actual content, which would be the same objection that sank Whewell. I am genuinely unsure which framing a live source-check would support, hence the lower confidence and the ambiguous flag; if QC's live check finds the theory-history sources treat Hooke as etymological color only, decline this edge specifically -- the cell-biology edge above may still survive independently since it targets the broader field rather than the specific 19th-century doctrine.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:marcello-malpighi-influenced-cell-biology",
+      "source": "person:marcello-malpighi",
+      "target": "subfield:cell-biology",
+      "relation": "influenced",
+      "confidence": 0.5,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Own knowledge (Wikipedia 'Marcello Malpighi', Encyclopaedia Britannica 'Marcello Malpighi'); not fetched this session [UNFETCHED]. My recollection of the standard epithet used for him in general reference works is 'founder of microscopic anatomy' or 'histology' specifically, not 'cell biology' by name -- I do not have confident recall of two independent sources using founder-grade language for cell biology as such.",
+      "note": "DELIBERATE DOWNGRADE, disclosed not laundered: the order specified `founded_or_formalized` at this exact target ('proposed on the strength of his microscopy work'). I am proposing `influenced` at the SAME target instead. Record-not-resolve: subfield:cell-biology already carries two reviewed founded_or_formalized edges at confidence 0.9 from Schleiden and Schwann, whose own notes name Hooke -- not Malpighi -- as the recorded gap at this target; this proposed edge is additive at a much weaker grade, not a competing founder claim, and Malpighi's absence from those existing notes as a 'named gap' is a signal I am treating honestly rather than ignoring.",
+      "rationale": "Malpighi's sustained, foundational microscopic investigation of animal and plant tissue structure -- predating cell theory by roughly a century and a half -- plausibly influenced the observational tradition cell biology later grew from, but I cannot honestly support the order's stated `founded_or_formalized` relation to this specific target from my own knowledge: the epithet I can confidently recall associated with him is founder of microscopic anatomy/histology, a related but distinct field with no target node in this corpus, not cell biology by name. I am proposing the weaker `influenced` relation at the same target rather than silently matching the stronger relation the order suggested, and rather than refusing outright, because I do think a real (if diffuse) influence claim survives even without founder-grade specificity for this exact target.",
+      "uncertainty": "This is a deliberate downgrade from the order's stated relation, not a confident independent claim -- I hold real uncertainty about whether even `influenced` at this specific target (subfield:cell-biology, as opposed to subfield:anatomy or subfield:physiology, both already present in /data and plausibly a more precise home for his actual credited contribution) will survive a live check. QC should specifically verify: (1) whether any registered-family source states a founder-grade or even influence-grade claim connecting Malpighi to cell biology BY NAME, as opposed to microscopic anatomy/histology; (2) whether subfield:anatomy or subfield:physiology would be a more defensible target for a future wave -- not proposed here since the order named only cell-biology and I chose not to expand scope beyond the slate on my own initiative.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "Three edges total: two for Robert Hooke (both `influenced`, at subfield:cell-biology and concept:cell-theory -- founded_or_formalized is explicitly barred by this order's HARD RULE and by the Whewell precedent), one for Marcello Malpighi (`influenced` at subfield:cell-biology, a disclosed downgrade from the order's stated founded_or_formalized). All three are additive to, not competing with, the corpus's existing reviewed founder edges at these targets (Schleiden, Schwann, and per refreshed notes, Virchow) -- record-not-resolve is applied explicitly in every note field, not left implicit.",
+    "Declined and not proposed: a Robert Hooke edge to subfield:microbiology (a mold/fungus sketch in Micrographia is sometimes cited as an early published depiction of a microorganism, but I do not have confident recall of registered-family sources framing this as an influence on the discipline microbiology, as opposed to a curiosity within a broader observational work -- proposing it would risk manufacturing a third target to pad the edge count rather than reporting a claim I can actually stand behind). A histology/microscopic-anatomy-grain edge for Malpighi at subfield:anatomy or subfield:physiology (plausibly the more precise home for his actual credited contribution, but not named by the order's slate; proposing it would be scope expansion beyond the three explicit slate items, flagged instead as a note for a future wave in report.md)."
+  ]
+}

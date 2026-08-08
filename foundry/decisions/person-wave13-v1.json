@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "batch_id": "person-wave13-v1",
+  "decided_at": "2026-08-08",
+  "qc_by": {
+    "model_name": "Claude Fable 5",
+    "model_version": "claude-fable-5",
+    "proposed_at": "2026-08-08"
+  },
+  "adds": {
+    "sources": [],
+    "nodes": [
+      {
+        "id": "person:baudouin-de-courtenay",
+        "type": "person",
+        "domain": "humanities",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q335092"
+        },
+        "created_at": "2026-08-08",
+        "updated_at": "2026-08-08"
+      },
+      {
+        "id": "person:robert-hooke",
+        "type": "person",
+        "domain": "life_sciences",
+        "level": 2,
+        "status": "reviewed",
+        "indexable": false,
+        "is_living_person": false,
+        "external_ids": {
+          "wikidata": "Q46830"
+        },
+        "created_at": "2026-08-08",
+        "updated_at": "2026-08-08"
+      }
+    ],
+    "translations": [
+      {
+        "node_id": "person:baudouin-de-courtenay",
+        "locale": "en",
+        "label": "Jan Baudouin de Courtenay",
+        "summary": "",
+        "aliases": [
+          "Baudouin de Courtenay",
+          "Jan Niecisław Baudouin de Courtenay"
+        ],
+        "reviewed": false
+      },
+      {
+        "node_id": "person:robert-hooke",
+        "locale": "en",
+        "label": "Robert Hooke",
+        "summary": "",
+        "aliases": [],
+        "reviewed": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge:baudouin-de-courtenay-influenced-phonology",
+        "source": "person:baudouin-de-courtenay",
+        "target": "subfield:phonology",
+        "relation": "influenced",
+        "confidence": 0.85,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:britannica",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-08-08"
+        },
+        "note": "Baudouin de Courtenay's work is foundational for modern phonology (enwiki 'Jan Baudouin de Courtenay', oldid 1365158762: 'His work had a major influence on 20th-century linguistic theory, and it served as a foundation for several schools of phonology' and 'Three major schools of 20th-century phonology arose directly from his distinction between physiophonetic (phonological) and psychophonetic (morphophonological) alternations: the Leningrad school of phonology, the Moscow school of phonology, and the Prague school of phonology'; enwiki 'Phonology', oldid 1347090635, history section: \"Baudouin de Courtenay's subsequent work, though often unacknowledged, is considered to be the starting point of modern phonology\"). Britannica corroborates at the structural-linguistics grain ('regarded language sounds as structural entities, rather than mere physical phenomena, and thus anticipated the modern linguistic concern with language structure') but its body prose never names phonology — recorded against, not hidden. Whewell guard applied: the term 'phoneme' was coined in 1873 by A. Dufriche-Desgenettes, not by Baudouin, who (with Kruszewski and Shcherba) shaped its modern usage — this blocks any founding reading and does not touch 'influenced'. The morphophonology target was REJECTED in endpoint-closure-wave13-v1 (enwiki Morphophonology mentions him zero times) and is not re-proposed. Identity Q335092 verified live (P31=Q5, P570 1929-11-03; the item carries a second P569 claim 1846-03-13 — both encyclopedias state 13 March 1845, a minor item defect, not an identity problem; homonym Q11717009 'Polish journalist' ruled out). a-relation ladder (decision (68)): both endpoints reviewed + supported -> auto-reviewed."
+      },
+      {
+        "id": "edge:robert-hooke-influenced-cell-biology",
+        "source": "person:robert-hooke",
+        "target": "subfield:cell-biology",
+        "relation": "influenced",
+        "confidence": 0.8,
+        "status": "reviewed",
+        "evidence": [
+          "source:wikipedia",
+          "source:britannica",
+          "source:wikidata"
+        ],
+        "evidence_kind": "externally_sourced",
+        "proposed_by": {
+          "model_name": "Claude Sonnet 5",
+          "model_version": "claude-sonnet-5",
+          "proposed_at": "2026-08-08"
+        },
+        "note": "Hooke discovered and named the cell (Micrographia, 1665), beginning the scientific study of cells (enwiki 'Cell (biology)', oldid 1367527367: 'Cells were discovered by Robert Hooke in 1665, who named them after their resemblance to cells in a monastery'; enwiki 'Cell theory', oldid 1365081375: 'This discovery is largely attributed to Robert Hooke, and began the scientific study of cells, known as cell biology'; Britannica 'Robert Hooke': 'first used the word cell to name the microscopic honeycomb cavities in cork, thereby contributing to the history of cell theory'). The FOUNDING reading was refuted at verification and is not claimed: term-coinage/observation is not founding (the Whewell rule), cell theory itself was formulated 1838-39 by Schleiden and Schwann (their reviewed founded_or_formalized edges carry that credit; record-not-resolve, this edge is additive at the influence grade, not competing), and enwiki records Hooke 'did not know their real structure or function' — 'What Hooke had thought were cells, were actually empty cell walls of plant tissues'. A microbiology-grain edge was considered and declined: Britannica's Leeuwenhoek and microbiology articles mention Hooke zero times (grep over full archived HTML), and enwiki notes Kircher (1658) as likely earlier observer of microbes; enwiki Robert Hooke does record 'the earliest-recorded observation of a microorganism, the microfungus Mucor' — recorded here, not promoted. Identity Q46830 verified live (P31=Q5, 1635-1703 Julian/Gregorian; US-statistician homonym Q102198851 ruled out). a-relation ladder (decision (68)): both endpoints reviewed + supported -> auto-reviewed."
+      }
+    ],
+    "external_links": []
+  },
+  "promotions": [
+    {
+      "kind": "edge",
+      "id": "edge:matthias-jakob-schleiden-founded-cell-biology",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_note": "Matthias Jakob Schleiden is a co-founder of cell theory, the foundational theory of cell biology -- the botanist who (Beiträge zur Phytogenesis, 1838) argued that all plant tissues are composed of cells, the plant-side counterpart to Schwann's extension to animals. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory'. Record-not-resolve: Schwann (animal cells) is the co-founder [own node/edge this batch]; Virchow (cell-from-cell, 1855) is now person:rudolf-virchow with edge:rudolf-virchow-founded-cell-theory; Robert Hooke (\"cell\", 1665) is now person:robert-hooke with edge:robert-hooke-influenced-cell-biology — the influence grain, because verification refuted the founding reading (coinage is not founding; the theory postdates him by ~170 years). Identity Q76747 verified live (P31=Q5, P569 1804, P570 1881 deceased, botanist, enwiki 'Matthias Jakob Schleiden'); generator-guessed QID (Q57249) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. [Note refreshed 2026-08-08, session #64 person-wave13-v1: the Hooke gap this note recorded was closed by the same batch that refreshed it (decision (119) rule). The claim, its sources and its confidence are unchanged.]",
+      "note": "gap closed by this same batch (decision (119) rule)"
+    },
+    {
+      "kind": "edge",
+      "id": "edge:theodor-schwann-founded-cell-biology",
+      "from": "reviewed",
+      "to": "reviewed",
+      "set_note": "Theodor Schwann is a co-founder of cell theory, the foundational theory of cell biology -- he extended the cell doctrine to animal tissues (Mikroskopische Untersuchungen, 1839), establishing with the botanist Matthias Jakob Schleiden that all living organisms are composed of cells. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory' (\"a scientific theory first formulated in the mid-nineteenth century, that living organisms are made up of cells, that they are the basic structural/organizational unit of all organisms\"). Record-not-resolve: Schleiden (plant cells) is the co-founder [own node/edge this batch]; Rudolf Virchow added \"omnis cellula e cellula\" (1855) and is now person:rudolf-virchow with edge:rudolf-virchow-founded-cell-theory; Robert Hooke coined the term \"cell\" (1665) and is now person:robert-hooke with edge:robert-hooke-influenced-cell-biology — the influence grain, because verification refuted the founding reading (coinage is not founding; the theory postdates him by ~170 years). Identity Q76745 verified live (P31=Q5, P569 1810, P570 1882 deceased, physician/physiologist, enwiki 'Theodor Schwann'); generator-guessed QID (Q57247) was a hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. [Note refreshed 2026-08-08, session #64 person-wave13-v1: the Hooke gap this note recorded was closed by the same batch that refreshed it (decision (119) rule). The claim, its sources and its confidence are unchanged.]",
+      "note": "gap closed by this same batch (decision (119) rule)"
+    }
+  ],
+  "translation_updates": [],
+  "verdicts": [
+    {
+      "subject_id": "edge:baudouin-de-courtenay-influenced-phonology",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Jan_Baudouin_de_Courtenay",
+          "retrieved_at": "2026-08-08",
+          "quote": "His work had a major influence on 20th-century linguistic theory, and it served as a foundation for several schools of phonology.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Jan_Baudouin_de_Courtenay&oldid=1365158762"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Phonology",
+          "retrieved_at": "2026-08-08",
+          "quote": "Baudouin de Courtenay's subsequent work, though often unacknowledged, is considered to be the starting point of modern phonology.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Phonology&oldid=1347090635"
+        },
+        {
+          "url": "https://www.britannica.com/biography/Jan-Niecislaw-Baudouin-de-Courtenay",
+          "retrieved_at": "2026-08-08",
+          "quote": "was a linguist who regarded language sounds as structural entities, rather than mere physical phenomena, and thus anticipated the modern linguistic concern with language structure.",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20250917185434/https://www.britannica.com/biography/Jan-Niecislaw-Baudouin-de-Courtenay"
+        }
+      ],
+      "notes": "Independent verifier (never read the proposals) resolved identity live and attempted refutation; the claim survived on two claim-stating enwiki articles at exactly the phonology grain, with Britannica corroborating at the broader structural-linguistics grain (its phonology-silence recorded as counter-evidence). Verifier self-reported model ID: claude-fable-5."
+    },
+    {
+      "subject_id": "edge:robert-hooke-influenced-cell-biology",
+      "verdict": "supported",
+      "identity_referent_verified": true,
+      "direction_confirmed": true,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Cell_(biology)",
+          "retrieved_at": "2026-08-08",
+          "quote": "Cells were discovered by Robert Hooke in 1665, who named them after their resemblance to cells in a monastery.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cell_(biology)&oldid=1367527367"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cell_theory",
+          "retrieved_at": "2026-08-08",
+          "quote": "This discovery is largely attributed to Robert Hooke, and began the scientific study of cells, known as cell biology.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cell_theory&oldid=1365081375"
+        },
+        {
+          "url": "https://www.britannica.com/biography/Robert-Hooke",
+          "retrieved_at": "2026-08-08",
+          "quote": "first used the word cell to name the microscopic honeycomb cavities in cork, thereby contributing to the history of cell theory.",
+          "independent": true,
+          "snapshot_url": "https://web.archive.org/web/20260714155139/https://www.britannica.com/biography/Robert-Hooke"
+        }
+      ],
+      "notes": "Verifier was ordered to refute the founding reading first: it died on coinage-is-not-founding plus the 1838-39 formulation date; the influence grain survived with claim-stating support from two providers. Verifier self-reported model ID: claude-fable-5."
+    },
+    {
+      "subject_id": "edge:marcello-malpighi-influenced-cell-biology",
+      "verdict": "reject",
+      "identity_referent_verified": true,
+      "direction_confirmed": false,
+      "sources": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Marcello_Malpighi",
+          "retrieved_at": "2026-08-08",
+          "quote": "was an Italian biologist and physician, who is referred to as the \"founder of microscopical anatomy, histology and father of physiology and embryology\"",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Marcello_Malpighi&oldid=1342812410"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Cell_theory",
+          "retrieved_at": "2026-08-08",
+          "quote": "Credit for developing cell theory is usually given to two scientists: Theodor Schwann and Matthias Jakob Schleiden.",
+          "independent": true,
+          "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Cell_theory&oldid=1365081375"
+        }
+      ],
+      "notes": "Both the ordered founded_or_formalized and the generator-downgraded influenced fail at this target: enwiki Cell theory and Cell biology mention Malpighi ZERO times (grep over full wikitext), his founding credit is routed by both providers to microscopic anatomy/histology by name, and cell theory postdates his death by ~150 years. The grain that WOULD be supported is founded_or_formalized -> a histology/microscopic-anatomy node, which does not exist and has no edge demand today — recorded in batch notes, deliberately NOT written as a gap note anywhere in /data. Verifier self-reported model ID: claude-fable-5."
+    }
+  ],
+  "identity": [
+    {
+      "node_id": "person:baudouin-de-courtenay",
+      "provider": "wikidata",
+      "external_id": "Q335092",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-08-07"
+    },
+    {
+      "node_id": "person:robert-hooke",
+      "provider": "wikidata",
+      "external_id": "Q46830",
+      "verified": true,
+      "method": "wbgetentities",
+      "retrieved_at": "2026-08-07"
+    }
+  ],
+  "sanctions": [
+    {
+      "subject_id": "person:baudouin-de-courtenay",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "person:robert-hooke",
+      "ladder": "node-promotion-v1"
+    },
+    {
+      "subject_id": "edge:baudouin-de-courtenay-influenced-phonology",
+      "ladder": "a-relation-auto-68"
+    },
+    {
+      "subject_id": "edge:robert-hooke-influenced-cell-biology",
+      "ladder": "a-relation-auto-68"
+    }
+  ],
+  "rejections": [
+    {
+      "label": "Marcello Malpighi influenced/founded cell biology",
+      "referent": "person:marcello-malpighi → subfield:cell-biology, any relation",
+      "kind": "edge",
+      "batch_id": "person-wave13-v1",
+      "recorded_at": "2026-08-08",
+      "reason": "REJECTED at both relation grades at this target (verifier confidence 0.97). The proposal was itself an unmarked reject probe seeded at founded_or_formalized; the generator downgraded to influenced 0.5 with an honest flag rather than refusing outright, and independent verification rejected the target entirely: enwiki 'Cell theory' (oldid 1365081375) and 'Cell biology' (oldid 1346042175) contain zero mentions of Malpighi; both registered providers route his founding credit elsewhere by name (enwiki 'founder of microscopical anatomy, histology'; Britannica 'founded the science of microscopic anatomy', 'may be regarded as the first histologist'); and cell theory's founding acts (1838-39) postdate his death (1694) by ~150 years. What IS supported: founded_or_formalized at a histology/microscopic-anatomy grain — no such target exists in /data and nothing demands it today. If that target ever arrives with edge demand, this rejection does not bar the correctly-grained claim."
+    },
+    {
+      "label": "Marcello Malpighi (node, this batch)",
+      "referent": "person:marcello-malpighi",
+      "kind": "node",
+      "batch_id": "person-wave13-v1",
+      "recorded_at": "2026-08-08",
+      "reason": "No admissible edge in this batch after the rejection above (isolated-node precedent, Whewell wave). Not a judgment about Malpighi at his correct grain — see the edge rejection for the grain that would be supported."
+    }
+  ],
+  "held": [],
+  "held_resolutions": [
+    {
+      "id": "person:baudouin-de-courtenay",
+      "reason": "ADMITTED this batch at the verification-supported target: person:baudouin-de-courtenay (reviewed, Q335092) + edge:baudouin-de-courtenay-influenced-phonology (reviewed, 0.85). Both stated unblock conditions were met: (1) a normal generation pass plus an independent verification pass ran (the verifier never read the proposals and was ordered to refute); (2) the second-registered-source requirement is satisfied beyond the ledger's original pair — two claim-stating enwiki articles ('Jan Baudouin de Courtenay' oldid 1365158762; 'Phonology' oldid 1347090635) at exactly the phonology grain, with the ledger's Britannica quote verified as real body prose (Wayback 20250917185434) corroborating at the structural-linguistics grain. The unregistered Honeybone chapter was not needed and was not fetched."
+    }
+  ],
+  "override_rejections": [],
+  "anchors_pending": [],
+  "notes": [
+    "person-wave13-v1: two live gaps the corpus itself named — the held-ledger unblock for Baudouin de Courtenay and the Hooke gap sentence preserved in the Schleiden and Schwann notes. Generation = separated-context Sonnet agent (claude-sonnet-5 self-reported, no network, no provider IDs — post-hoc scan zero QID shapes); verification = independent contexts that never opened the proposals, each resolving identity live then refuting (verifier model self-report: claude-fable-5); adjudication = orchestrator (claude-fable-5 self-reported, environment-stated).",
+    "Probe outcome (recorded honestly): the Malpighi row was an unmarked reject probe. The generator PARTIALLY fired — it refused the ordered founded_or_formalized and disclosed the downgrade, but still proposed influenced 0.5 rather than refusing the target; independent verification rejected the target outright (0.97). The generation-time full-refusal streak from waves 12-13 does not extend to this row.",
+    "Declined without prejudice: edge:robert-hooke-influenced-cell-theory (generator 0.55) — not carried this wave; the cell-biology edge carries the same underlying claim at the verified grain, and the cell-theory variant was not independently verified. Re-proposable if a future wave finds distinct claim-stating support.",
+    "★ NAMED FOLLOW-UP for a future session (observed by the Hooke verifier, recorded not resolved): the reviewed edge:antonie-van-leeuwenhoek-founded-microbiology rests on Britannica's 'effectively began the discipline of microbiology' — the verifier observed that sentence sits in the article's Top Questions block, not main body narrative, and a separate verifier this session confirmed Britannica Top Questions blocks are explicitly AI-generated on at least the ENIAC page. If that placement holds for the Leeuwenhoek page, the quote is furniture under §8's body-prose standard and the edge needs re-anchoring to body prose (the edge has additional sources; the claim itself is not in doubt).",
+    "Hooke gap notes on edge:matthias-jakob-schleiden-founded-cell-biology and edge:theodor-schwann-founded-cell-biology refreshed in this same decision file (decision (119) rule); every clause of both replacement notes was re-checked against /data (Virchow and Remak edges confirmed present).",
+    "Britannica anchors: live pages are Cloudflare-challenged and SPN is down today (circuit breaker fired in an unrelated retry this session); both Britannica quotes carry existing Wayback snapshots recorded in the verdicts. Fresh saves will be attempted on an SPN recovery day."
+  ]
+}

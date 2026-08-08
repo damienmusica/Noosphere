@@ -1,0 +1,106 @@
+{
+  "version": 2,
+  "batch_id": "existentialism-wave1-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-08-08"
+  },
+  "edges": [
+    {
+      "id": "edge:soren-kierkegaard-influenced-existentialism",
+      "source": "person:soren-kierkegaard",
+      "target": "subfield:existentialism",
+      "relation": "influenced",
+      "confidence": 0.85,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Stanford Encyclopedia of Philosophy 'Existentialism' -- the exact sentence already quoted verbatim in this corpus's own reviewed edge:friedrich-nietzsche-influenced-existentialism note: 'the conceptual groundwork of the movement was laid much earlier in the nineteenth century by pioneers like Søren Kierkegaard and Friedrich Nietzsche'. Also: Internet Encyclopedia of Philosophy 'Existentialism'; Encyclopaedia Britannica 'existentialism' (commonly names Kierkegaard 'the father of existentialism'); Wikipedia 'Existentialism' and 'Søren Kierkegaard'.",
+      "note": "Deliberately mirrors edge:friedrich-nietzsche-influenced-existentialism (same relation, same confidence, same SEP sentence naming both men as 'pioneers' who laid the movement's 'conceptual groundwork') rather than treating Kierkegaard as the movement's founder. Per this batch's grain reasoning (see report.md): a referent (subfield:existentialism, a 20th-century movement) cannot be founded by a 19th-century precursor absent explicit founding-grade language, so precursor/groundwork language reads as influenced, not founded_or_formalized, symmetric with the existing Nietzsche edge.",
+      "rationale": "Kierkegaard is named in the identical SEP sentence, at the identical precursor grain, as the already-reviewed Nietzsche edge -- both are called 'pioneers' who 'laid the conceptual groundwork' roughly a century before the named 20th-century movement existed. Treating the two symmetrically (same relation, same confidence) is the corpus-consistent reading of that one source sentence, and Kierkegaard is, if anything, the more standardly credited of the two 'fathers of existentialism' in secondary literature (Britannica, IEP), which supports rather than undercuts this confidence level.",
+      "uncertainty": "Genuine tension: several sources (recalled, not live-verified this session) go further than 'pioneer'/'groundwork' language and call Kierkegaard outright 'the father of existentialism' or similar founder-grade phrasing -- stronger language than what grounds the existing Nietzsche edge. I deliberately have NOT upgraded to founded_or_formalized because (a) I cannot state the precise founder-grade wording with confidence this session (no network), (b) a referent that postdates its 'founder' by a century needs explicit founding language rather than precursor language by default, and (c) symmetry with the reviewed Nietzsche edge (identical source sentence) argues for identical relation. QC's live check should specifically test whether Britannica or another registered-family source states founder-grade language strongly and specifically enough to justify upgrading this edge -- flagged here rather than resolved unilaterally.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:jean-paul-sartre-influenced-existentialism",
+      "source": "person:jean-paul-sartre",
+      "target": "subfield:existentialism",
+      "relation": "influenced",
+      "confidence": 0.72,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Stanford Encyclopedia of Philosophy 'Existentialism' and 'Jean-Paul Sartre' entries; Internet Encyclopedia of Philosophy 'Existentialism'; Encyclopaedia Britannica 'existentialism' and 'Jean-Paul Sartre' (recalled framing: Sartre as the philosopher 'most closely identified with' or 'most closely associated with' the term); Wikipedia 'Existentialism', 'Jean-Paul Sartre', and 'Existentialism Is a Humanism' (his defining 1945 lecture/essay).",
+      "note": "REFUSAL OF ORDERED RELATION, DOWNGRADED: this batch's order asked me to reason explicitly about whether founding-grade language exists for Sartre, distinct from the fact that he embraced a label coined/applied by others (Gabriel Marcel -- see person:gabriel-marcel's companion edge and note). I looked and could not recall it with confidence: what I recall consistently across SEP/Britannica/Wikipedia is 'most closely associated with', 'leading exponent of', 'did the most to popularize/define' -- popularizing and defining-for-the-public-mind language, not origination language of the kind that grounds e.g. edge:edmund-husserl-founded-phenomenology or edge:alfred-north-whitehead-founded-process-philosophy in this corpus. I am therefore declining founded_or_formalized for Sartre and proposing the more conservative influenced instead, on the strength of Existentialism Is a Humanism functioning as the movement's most consequential public-defining statement -- shaping how existentialism was understood and received, even though Sartre is also constitutively a member of the movement rather than a purely external influence on it (an imperfect fit this taxonomy has no better relation for; see report.md).",
+      "rationale": "Sartre's 1945 lecture/essay Existentialism Is a Humanism is standardly treated as the text that gave existentialism its most widely-known public definition and defense, shaping the movement's reception and self-understanding for a general audience -- a real, historically documented influence on how the movement as a whole came to be understood, distinct from either coining its name (Marcel's act) or merely being labelled by others.",
+      "uncertainty": "I have not live-verified precise source wording this session (no network) -- this is a knowledge-only claim. The relation itself is an imperfect fit: influenced ordinarily describes an outside force shaping something, whereas Sartre is also a paradigm member of the very movement this edge targets, not simply an external influence on it; I chose it as the closest existing taxonomy relation rather than forcing founded_or_formalized (declined -- see note). QC should treat this as one of the batch's most judgment-dependent edges and weigh whether adjacent_to would be the more honest placeholder instead.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:martin-heidegger-influenced-existentialism",
+      "source": "person:martin-heidegger",
+      "target": "subfield:existentialism",
+      "relation": "influenced",
+      "confidence": 0.85,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Stanford Encyclopedia of Philosophy 'Existentialism' entry (recalled: lists Heidegger alongside Kierkegaard/Nietzsche/Jaspers among the philosophers existentialism draws on, while separately noting his rejection of the label); Internet Encyclopedia of Philosophy 'Existentialism' and 'Heidegger'; Wikipedia 'Existentialism', 'Martin Heidegger', and 'Letter on Humanism' (his explicit 1946 reply distancing his own thought from Sartre's existentialism); Encyclopaedia Britannica 'existentialism'.",
+      "note": "Heidegger explicitly rejected being classified as an existentialist, most notably in his Letter on Humanism, written partly in response to Sartre's Existentialism Is a Humanism -- recorded here per the order's instruction. This rejection is treated as a reason to use influenced rather than founded_or_formalized or member_of, not as a reason to omit the edge: Being and Time (1927) is standardly treated as one of the direct sources Sartre's Being and Nothingness (1943) responds to and builds on, and Heidegger is routinely discussed as one of existentialism's central intellectual sources regardless of his own self-classification.",
+      "rationale": "Heidegger's Being and Time predates and is widely treated as a direct source for Sartre's and other French existentialists' work, and standard reference treatments (SEP, IEP, Wikipedia, recalled) group Heidegger among the philosophers whose work existentialism draws on -- a clear, low-risk influenced claim independent of the self-labelling question.",
+      "uncertainty": "I have not live-verified precise source wording this session (no network). Confidence is not higher because Heidegger's own objection to the label creates a real interpretive question some sources may weight differently (e.g. treating him as squarely 'Continental philosophy'/'phenomenology' rather than 'existentialism' at all) -- QC's live check should confirm registered-family sources actually place him in existentialism's influence set specifically, not just in phenomenology's.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:martin-heidegger-influenced-philosophy-of-technology",
+      "source": "person:martin-heidegger",
+      "target": "subfield:philosophy-of-technology",
+      "relation": "influenced",
+      "confidence": 0.8,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "The claim and its exact textual anchor are already captured verbatim in this corpus's own reviewed edge:phenomenology-influenced-philosophy-of-technology note (data/edges.json, read this session): 'Phenomenology (esp. Heidegger's \"The Question Concerning Technology\") is a founding tradition of philosophy of technology (postphenomenology, Ihde). Source = the tradition (Heidegger has no node).' Underlying sources per that note: Stanford Encyclopedia of Philosophy 'Philosophy of Technology' entry; Wikipedia 'Philosophy of technology'.",
+      "note": "This edge exists to close the exact gap that reviewed note names by ID: 'Heidegger has no node.' Now that person:martin-heidegger is proposed in this batch, this edge lets the direct person-level claim (his specific essay, not just 'the tradition') stand alongside the existing subfield:phenomenology -> philosophy-of-technology edge rather than replacing it -- both are kept because they record different grains (a whole tradition vs. one person's specific, named, canonical text within it).",
+      "rationale": "The corpus's own already-reviewed edge note directly identifies The Question Concerning Technology as the specific founding text driving postphenomenology/Ihde's tradition within philosophy of technology, and explicitly flags the absence of a Heidegger node as the reason the claim was recorded one level up (at the tradition level) instead. Proposing this edge follows that reviewed note's own stated intent to the letter.",
+      "uncertainty": "I have not re-fetched the SEP philosophy-of-technology entry this session; I am relying on the corpus's own already-reviewed note as the direct textual basis rather than an independent live read. Relation is influenced (matching the existing tradition-level edge's relation) rather than founded_or_formalized: The Question Concerning Technology is a founding influence on a specific later school (postphenomenology) within philosophy of technology, not a claim that Heidegger founded the whole subfield, which has other roots too (e.g. engineering-philosophy traditions predating him).",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:martin-heidegger-influenced-phenomenology",
+      "source": "person:martin-heidegger",
+      "target": "subfield:phenomenology",
+      "relation": "influenced",
+      "confidence": 0.82,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Stanford Encyclopedia of Philosophy 'Phenomenology' and 'Martin Heidegger' entries (recalled: Heidegger's existential/hermeneutic redirection of Husserlian phenomenology, hugely influential on Sartre, Merleau-Ponty, Gadamer, Levinas); Internet Encyclopedia of Philosophy 'Phenomenology'; Wikipedia 'Phenomenology (philosophy)' and 'Martin Heidegger'.",
+      "note": "Considered and declined: founded_or_formalized (subfield:phenomenology is already reviewed as founded_or_formalized by person:edmund-husserl, Heidegger's own teacher -- crediting the student with founding his teacher's field would repeat the predates-the-founder-type error this corpus has held against elsewhere, just inverted) and member_of (this corpus's ratified §12 movement/school axis rule types member_of targets as named-group institution nodes -- e.g. the Vienna Circle -- and subfield:phenomenology is modeled as a subfield, not an institution, so member_of does not structurally fit here; flagged honestly per the order's instruction rather than forced).",
+      "rationale": "Heidegger's Being and Time is standardly treated as the most consequential redirection of phenomenology after Husserl -- the existential/hermeneutic turn that shaped essentially every major phenomenologist who followed him. influenced is the taxonomy's correct relation for 'shaped the field's subsequent direction without being its originator', which is exactly Heidegger's documented role relative to Husserl's founding.",
+      "uncertainty": "I have not live-verified precise source wording this session (no network). I considered whether phenomenology's grain is fine enough that Heidegger's specific branch (existential/hermeneutic phenomenology) deserves its own node rather than folding his contribution into the parent subfield -- that would be a legitimate future-wave candidate but is out of this wave's node-cap and scope.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:gabriel-marcel-influenced-existentialism",
+      "source": "person:gabriel-marcel",
+      "target": "subfield:existentialism",
+      "relation": "influenced",
+      "confidence": 0.6,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Stanford Encyclopedia of Philosophy 'Gabriel Marcel' and 'Existentialism' entries; Internet Encyclopedia of Philosophy 'Gabriel Marcel'; Encyclopaedia Britannica 'Gabriel Marcel'; Wikipedia 'Gabriel Marcel' and 'Existentialism' (recalled: Marcel's Metaphysical Journal, 1927, and Being and Having predate Sartre's major existentialist work and independently develop themes of being, participation, and intersubjectivity later central to the movement; Marcel also standardly credited with applying the term 'existentialist' to Sartre's philosophy in the mid-1940s).",
+      "note": "REFUSAL OF ORDERED RELATION, DOWNGRADED: the order suggested founded_or_formalized for Marcel, justified as 'the philosopher who gave the movement its name.' Naming/applying a label to someone else's philosophy is the same kind of act this batch's own order explicitly rules insufficient for founding when discussing Sartre ('coining a term is NOT founding... being labelled is not founding either') -- I could not find a principled reason the same act would count as founding when performed by the namer rather than merely received by the named, so I am not resting a founded_or_formalized claim on the naming fact alone. I also could not recall founder-grade language crediting Marcel with founding the whole of subfield:existentialism (as opposed to being one of several core 20th-century French existentialist philosophers, alongside Sartre, Beauvoir, Camus, and Merleau-Ponty) -- the founder-grade language I can recall attaches to Kierkegaard, not to Marcel. What IS well-supported is Marcel's own early (1920s-30s), independent, theistic strand of existentialist-adjacent thought, which is the actual basis for this edge. The naming episode is recorded here as a real historical fact, not as the edge's justification.",
+      "rationale": "Marcel's Metaphysical Journal (1927) and Being and Having develop themes -- facticity, embodiment, intersubjective 'being-with' -- independently of and largely predating Sartre's major existentialist work, contributing what is usually called the movement's Christian/theistic strand; this is a real, if less totalizing, shaping contribution to the movement's overall character, which is what influenced records.",
+      "uncertainty": "This is the batch's weakest-sourced edge by my own assessment (hence the lower confidence). I have not live-verified precise source wording this session (no network), and I am less confident here than on the Sartre edge that registered-family sources state this 'influenced the movement's character' framing explicitly, as opposed to simply listing Marcel among the movement's core 20th-century members -- QC should treat this as the row most likely to need downgrading to adjacent_to or dropping entirely if a live check finds only membership-listing language and no genuine influence-stating language specific to Marcel's contribution.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "Slate row 2 (Sartre) and slate row 5 (Marcel) are both proposed at a DOWNGRADED relation (influenced, not founded_or_formalized) relative to what the order suggested or what a naive reading of the slate implies. Both downgrades are explained in full on the respective edge's own `note` field, and summarized together in report.md, per the order's explicit invitation to refuse a slate row's stated relation/grain when it cannot be honestly supported.",
+    "Work nodes (Being and Time, Being and Nothingness, Existentialism Is a Humanism, Metaphysical Journal) are out of scope per the order's explicit instruction and are not proposed here, even though several edge rationales above reference them as the underlying textual basis for a claim.",
+    "No new subfield node (e.g. a narrower 'Christian existentialism' node for Marcel's specific strand) is proposed -- out of this wave's scope and node cap; flagged in report.md as a possible future-wave candidate."
+  ]
+}

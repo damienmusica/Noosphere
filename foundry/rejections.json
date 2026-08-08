@@ -126,5 +126,61 @@
     "reason": "Rejected on the role-separation rule. Four independent claim-stating sources agree on exactly one thing — Whewell COINED THE NAME — and every one of them separates that from originating the doctrine (Hutton) and from developing and popularising it (Lyell). No relation in docs/relation-taxonomy.md expresses 'coined the term for': founded_or_formalized would assert origination the sources explicitly assign to Hutton, and influenced would assert an effect on the theory's content that no source states. The corpus already declined Lyell on this same concept for the weaker-role reason; naming is weaker still. The absence stays recorded where it already is — in the note on edge:james-hutton-founded-uniformitarianism, which says so honestly. A person node with no admissible edge would be an isolated node, so none is created. Re-admit only if a term-coinage relation is ever ratified, or if sources are found crediting Whewell with the doctrine's content.",
     "batch_id": "person-wave12-v1",
     "recorded_at": "2026-07-30"
+  },
+  {
+    "label": "Marcello Malpighi influenced/founded cell biology",
+    "referent": "person:marcello-malpighi → subfield:cell-biology, any relation",
+    "kind": "edge",
+    "reason": "REJECTED at both relation grades at this target (verifier confidence 0.97). The proposal was itself an unmarked reject probe seeded at founded_or_formalized; the generator downgraded to influenced 0.5 with an honest flag rather than refusing outright, and independent verification rejected the target entirely: enwiki 'Cell theory' (oldid 1365081375) and 'Cell biology' (oldid 1346042175) contain zero mentions of Malpighi; both registered providers route his founding credit elsewhere by name (enwiki 'founder of microscopical anatomy, histology'; Britannica 'founded the science of microscopic anatomy', 'may be regarded as the first histologist'); and cell theory's founding acts (1838-39) postdate his death (1694) by ~150 years. What IS supported: founded_or_formalized at a histology/microscopic-anatomy grain — no such target exists in /data and nothing demands it today. If that target ever arrives with edge demand, this rejection does not bar the correctly-grained claim.",
+    "batch_id": "person-wave13-v1",
+    "recorded_at": "2026-08-08"
+  },
+  {
+    "label": "Marcello Malpighi (node, this batch)",
+    "referent": "person:marcello-malpighi",
+    "kind": "node",
+    "reason": "No admissible edge in this batch after the rejection above (isolated-node precedent, Whewell wave). Not a judgment about Malpighi at his correct grain — see the edge rejection for the grain that would be supported.",
+    "batch_id": "person-wave13-v1",
+    "recorded_at": "2026-08-08"
+  },
+  {
+    "label": "stored-program computer as the founding referent (concept node + three founder edges)",
+    "referent": "concept:stored-program-computer; person:john-mauchly / person:j-presper-eckert / person:john-von-neumann → founded_or_formalized → concept:stored-program-computer",
+    "kind": "edge",
+    "reason": "The generator chose concept:stored-program-computer as the Lane-B referent; independent referent-precision verification rejected it on three grounds: (1) the referent predates the claimed founders — enwiki 'Stored-program computer' (oldid 1366970646): 'The concept of the stored-program computer can be traced back to the 1936 theoretical concept of a universal Turing machine'; (2) the credit language for Mauchly/Eckert at that grain is 'popularized the concept of the stored program' (enwiki John Mauchly) — popularise is not founding (Whewell rule); (3) the concept's paternity is ITSELF the live Eckert-vs-von-Neumann dispute, so no founder edge into it could be written undisputed. The von Neumann leg was a SEEDED PROBE (his First Draft as 'founding document of the lineage'): the generator FAILED to refuse it, proposing it at 0.85; verification killed it with the referent — recorded honestly as the first generation-time probe miss after two waves of generation-time refusals. ENIAC is the verified referent (concept:eniac, this batch). This rejection does not bar a future stored-program-computer node arriving with edge demand at honest grains (e.g. formalizes/influenced), only the founder edges as proposed.",
+    "batch_id": "computing-wave1-v1",
+    "recorded_at": "2026-08-08"
+  },
+  {
+    "label": "Atanasoff influenced Eckert (the Eckert leg)",
+    "referent": "person:john-atanasoff → influenced → person:j-presper-eckert",
+    "kind": "edge",
+    "reason": "REJECTED on total silence, distinct from the disputed Mauchly leg: the entire enwiki J. Presper Eckert biography (oldid 1361713244, 14.5KB, grepped whole) contains zero mentions of Atanasoff, the ABC, or Honeywell v. Sperry Rand; Britannica's paraphrase of the ruling names only Mauchly ('Mauchly had not considered such a device until his time with Atanasoff'); no fetched source documents any Atanasoff-Eckert contact. The 1973 ruling's joint phrasing ('Eckert and Mauchly ... derived') flows through the joint patent, and the documented influence path runs Atanasoff → Mauchly → (ENIAC partnership). Re-proposable only if claim-stating prose of person-level influence on Eckert himself surfaces.",
+    "batch_id": "computing-wave1-v1",
+    "recorded_at": "2026-08-08"
+  },
+  {
+    "label": "Sartre founded/formalized existentialism",
+    "referent": "person:jean-paul-sartre → founded_or_formalized → subfield:existentialism",
+    "kind": "edge",
+    "reason": "REJECTED at the founding grade (verifier-suggested claim confidence 0.2): zero instances of founder/founded/father-of language for Sartre across SEP, IEP, enwiki and Britannica; the entire SEP Existentialism entry contains no founding attribution for anyone (conspicuous silence); the founding-grade language sources actually use is 'leading exponent' (Britannica), 'central figure ... in the public consciousness, at least' (IEP, hedged), 'one of the key figures' (enwiki), 'most popular voices of this movement' (SEP). The label was coined by Marcel and applied TO Sartre (rejected 1945, adopted later) — being-labelled is not founding; adopt-and-popularise is not founding. Both of the order's grain traps confirmed. Admitted instead at influenced 0.8 (edge:jean-paul-sartre-influenced-existentialism). IEP's 'In 1943 Being and Nothingness, the groundwork of the Existentialist movement in France was published' is work-level and France-scoped — flagged as future canonical_work demand.",
+    "batch_id": "existentialism-wave1-v1",
+    "recorded_at": "2026-08-08"
+  },
+  {
+    "label": "Gabriel Marcel founded/formalized existentialism (unmarked reject probe)",
+    "referent": "person:gabriel-marcel → founded_or_formalized → subfield:existentialism",
+    "kind": "edge",
+    "reason": "Probe fired correctly at BOTH stages. Generation: the Sonnet generator refused the ordered relation outright, reasoning that the order's own naming-is-not-founding clause applies with no principled exception for the namer. Verification (0.97 reject): coinage confirmed (SEP: 'The word, first introduced by Marcel in 1943'; enwiki: 'coined by the French Catholic philosopher Gabriel Marcel in the mid-1940s', first applied to Sartre) but coinage is not founding (Whewell rule); Marcel 'dissociated himself from figures such as Jean-Paul Sartre, preferring the term philosophy of existence or neo-Socrateanism', later 'came to reject the label himself'; IEP: 'a noted opponent of atheistic existentialism'; SEP's dedicated Marcel entry never uses founding language for existentialism; and SEP directly undercuts the 'formalized' prong: the word 'is certainly not a reference to a coherent system or philosophical school'.",
+    "batch_id": "existentialism-wave1-v1",
+    "recorded_at": "2026-08-08"
+  },
+  {
+    "label": "Gabriel Marcel (node, this batch)",
+    "referent": "person:gabriel-marcel",
+    "kind": "node",
+    "reason": "No admissible edge this batch (isolated-node precedent). The generator's fallback influenced 0.6 was not admitted: the verifier's evidence points to member/contributor grain ('leading Christian existentialist'; 'often regarded as the first French existentialist') complicated by his own dissociation and opposition to the movement's dominant strand, and even the narrower Christian-existentialism paternity is occupied ('Søren Kierkegaard, the father of Christian existentialism' — who died 34 years before Marcel was born). Declined without prejudice: re-proposable if a Christian-existentialism-grain examination or stronger influence sourcing arrives.",
+    "batch_id": "existentialism-wave1-v1",
+    "recorded_at": "2026-08-08"
   }
 ]

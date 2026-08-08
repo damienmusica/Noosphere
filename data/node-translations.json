@@ -51,6 +51,16 @@
     "reviewed": true
   },
   {
+    "node_id": "concept:eniac",
+    "locale": "en",
+    "label": "ENIAC",
+    "summary": "ENIAC (Electronic Numerical Integrator and Computer) was the first programmable, electronic, general-purpose digital computer, completed in 1945; other computers had some of these features, but ENIAC was the first to have them all. It was designed by John Mauchly and J. Presper Eckert at the Moore School of Electrical Engineering at the University of Pennsylvania to calculate artillery firing tables for the United States Army's Ballistic Research Laboratory, though its first program was a study of the feasibility of the thermonuclear weapon. Built with more than 17,000 vacuum tubes and occupying the basement of the Moore School, it was programmed by plugboard and switches, with the disadvantage that it took days to rewire the machine for each new problem. Its patent was voided by the 1973 decision in the landmark federal court case Honeywell, Inc. v. Sperry Rand Corp., which gave legal recognition to John Atanasoff as the inventor of the first electronic digital computer and put that invention in the public domain.",
+    "aliases": [
+      "Electronic Numerical Integrator and Computer"
+    ],
+    "reviewed": true
+  },
+  {
     "node_id": "concept:entropy",
     "locale": "en",
     "label": "Entropy",
@@ -993,7 +1003,7 @@
     "node_id": "person:alfred-north-whitehead",
     "locale": "en",
     "label": "Alfred North Whitehead",
-    "summary": "Alfred North Whitehead (1861–1947) was an English mathematician and philosopher. With his former student Bertrand Russell he wrote the three-volume Principia Mathematica (1910–1913), considered one of the twentieth century's most important works in mathematical logic. He created the philosophical school known as process philosophy, arguing that reality consists of processes rather than material objects and that processes are best defined by their relations with other processes; his Process and Reality is regarded as that school's foundational text.",
+    "summary": "Alfred North Whitehead (1861–1947) was an English mathematician and philosopher. With his former student Bertrand Russell he wrote the three-volume Principia Mathematica (1910–1913), considered one of the twentieth century’s most important works in mathematical logic. He later argued that reality consists of processes rather than material objects and that processes are best defined by their relations with other processes — the ontology of his “philosophy of organism,” also called process philosophy. He did not, however, inspire any school of thought during his lifetime; his philosophical views posthumously inspired the movement of process philosophy, and his philosophical works — particularly Process and Reality (1929) — are regarded as its foundational texts.",
     "aliases": [],
     "reviewed": true
   },
@@ -1112,6 +1122,17 @@
       "Isidore Auguste Marie François Xavier Comte"
     ],
     "summary": "Auguste Comte (1798–1857) was a French philosopher and writer who formulated the doctrine of positivism and is often regarded as the first philosopher of science in the modern sense. His ideas were fundamental to the development of sociology, a discipline whose very term he invented and which he treated as the crowning achievement of the sciences. His concept of sociology set the tone for early social theorists, evolving into the modern academic sociology presented by Émile Durkheim.",
+    "reviewed": true
+  },
+  {
+    "node_id": "person:baudouin-de-courtenay",
+    "locale": "en",
+    "label": "Jan Baudouin de Courtenay",
+    "summary": "Jan Baudouin de Courtenay (1845–1929) was a Polish and Russian linguist and Slavist, best known for his theory of the phoneme and phonetic alternations, who regarded language sounds as structural entities rather than mere physical phenomena and thus anticipated the modern linguistic concern with language structure. He spent most of his career at Imperial Russian universities — Kazan, Dorpat, and St. Petersburg — and at Kraków in Austria-Hungary, established the Kazan School of linguistics in the mid-1870s, and from 1919 to 1929 was a professor at the re-established University of Warsaw in independent Poland. Together with his students Mikołaj Kruszewski and Lev Shcherba he shaped the modern usage of the term \"phoneme,\" which had been coined in 1873 by the French linguist Antoni Dufriche-Desgenettes, and he was an early champion of synchronic linguistics, which he developed contemporaneously with the structuralist linguistic theory of Ferdinand de Saussure. His work had a major influence on 20th-century linguistic theory and served as a foundation for several schools of phonology: the Leningrad, Moscow, and Prague schools of phonology all arose directly from his distinction between physiophonetic and psychophonetic alternations.",
+    "aliases": [
+      "Baudouin de Courtenay",
+      "Jan Niecisław Baudouin de Courtenay"
+    ],
     "reviewed": true
   },
   {
@@ -1575,6 +1596,16 @@
     "reviewed": true
   },
   {
+    "node_id": "person:j-presper-eckert",
+    "locale": "en",
+    "label": "J. Presper Eckert",
+    "summary": "J. Presper Eckert (1919–1995) was an American electrical engineer and computer pioneer who, with John Mauchly, designed ENIAC, the first programmable, electronic, general-purpose digital computer. He had entered the Moore School of Electrical Engineering at the University of Pennsylvania in 1937 and had almost completed a master's degree when, in May 1943, he was appointed chief engineer on the project with the specific task of designing the electronic circuits; among the problems he solved was how a machine with 18,000 valves could function when the valves were relatively unreliable. With Mauchly he also presented the first course in computing topics (the Moore School Lectures), founded the Eckert–Mauchly Computer Corporation, and designed the first commercial computer in the U.S., the UNIVAC, which incorporated his invention of the mercury delay-line memory. Between 1948 and 1966 he took out patents on 85 inventions, almost all electronic in nature, and in 1969 he was awarded the US National Medal of Science.",
+    "aliases": [
+      "John Adam Presper Eckert Jr."
+    ],
+    "reviewed": true
+  },
+  {
     "node_id": "person:james-clerk-maxwell",
     "locale": "en",
     "label": "James Clerk Maxwell",
@@ -1599,6 +1630,14 @@
     "reviewed": true
   },
   {
+    "node_id": "person:jean-paul-sartre",
+    "locale": "en",
+    "label": "Jean-Paul Sartre",
+    "summary": "Jean-Paul Sartre (1905–1980) was a French philosopher, playwright, novelist, and political activist, best known as the leading exponent of existentialism in the 20th century and one of the key figures in that philosophy and in phenomenology. In his principal philosophical work, Being and Nothingness (1943), he places human consciousness, or no-thingness (néant), in opposition to being, or thingness (être), and develops the conflict between conformity in \"bad faith\" (mauvaise foi) and an \"authentic\" way of being; thousands of Parisians packed into his public lecture Existentialism Is a Humanism towards the end of 1945, which offered an accessible version of that difficult treatise. Few philosophers have been as famous in their own lifetime: he founded and co-edited Les Temps Modernes, mobilised various forms of political protest and action, and was a celebrity and public intellectual par excellence, especially in the period after Liberation through to the early 1960s. He was awarded the 1964 Nobel Prize in Literature despite attempting to refuse it, saying that he always declined official honours and that a writer should not allow himself to be turned into an institution.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
     "node_id": "person:jean-piaget",
     "locale": "en",
     "label": "Jean Piaget",
@@ -1607,11 +1646,32 @@
     "reviewed": true
   },
   {
+    "node_id": "person:john-atanasoff",
+    "locale": "en",
+    "label": "John Vincent Atanasoff",
+    "summary": "",
+    "aliases": [
+      "John Atanasoff",
+      "John V. Atanasoff"
+    ],
+    "reviewed": false
+  },
+  {
     "node_id": "person:john-graunt",
     "locale": "en",
     "label": "John Graunt",
     "aliases": [],
     "summary": "John Graunt (1620–1674) has been regarded as the founder of demography. He was one of the first demographers, and perhaps the first epidemiologist, though by profession he was a haberdasher. His early analysis of mortality records is considered foundational to the statistical study of populations.",
+    "reviewed": true
+  },
+  {
+    "node_id": "person:john-mauchly",
+    "locale": "en",
+    "label": "John Mauchly",
+    "summary": "John Mauchly (1907–1980) was an American physicist who, along with J. Presper Eckert, designed ENIAC, the first programmable, electronic, general-purpose digital computer, built during World War II at the Moore School of Electrical Engineering at the University of Pennsylvania. In August 1942 he proposed an all-electronic calculating machine that could help the U.S. Army calculate complex ballistics tables, and he partnered with Eckert, a research associate, because he was not himself an electronics expert. Together the two started the first computer company, the Eckert–Mauchly Computer Corporation, and designed BINAC and UNIVAC I, the first commercial computer made in the United States; in 1950 the firm was acquired by Remington Rand. The ENIAC patent was voided by the 1973 decision in the landmark federal court case Honeywell, Inc. v. Sperry Rand Corp., which held that the ENIAC inventors had derived the subject matter of the electronic digital computer from John Atanasoff, whose Atanasoff–Berry computer Mauchly had examined in June 1941.",
+    "aliases": [
+      "John William Mauchly"
+    ],
     "reviewed": true
   },
   {
@@ -1779,6 +1839,14 @@
       "Ludwig Josef Johann Wittgenstein"
     ],
     "summary": "Ludwig Wittgenstein (1889–1951) was an Austro-British philosopher who worked in logic, philosophy of mathematics, philosophy of mind, and philosophy of language, and is regarded as a foundational figure in the philosophy of language. His early work, the Tractatus Logico-Philosophicus (1921), examined the logical relationship between propositions and the world and strongly influenced logical positivism. His later thought, articulated in the posthumous Philosophical Investigations, argued instead that the meaning of words is best understood as their use within a language game.",
+    "reviewed": true
+  },
+  {
+    "node_id": "person:martin-heidegger",
+    "locale": "en",
+    "label": "Martin Heidegger",
+    "summary": "Martin Heidegger (1889–1976) was a German philosopher whose work was central to the development of phenomenology, hermeneutics, and existentialism. In his magnum opus, Being and Time (1927), he introduced the concept of Dasein (\"being-there\") to describe the distinctive character of human existence and sought to reawaken what he called \"the question of being,\" which he believed had been neglected or obscured throughout the history of Western philosophy since the ancient Greeks. His later work turned increasingly to questions of technology, language, art, and poetry, and Being and Time together with his many essays and lectures profoundly influenced subsequent movements in European philosophy, including Jean-Paul Sartre's existentialism, Hans-Georg Gadamer's hermeneutics, and Jacques Derrida's deconstruction — though he published \"On Humanism\" in 1947 to clarify his differences with Sartre and French existentialism. His legacy has been complicated and shadowed by his involvement with Nazism: in April 1933 he was elected rector of the University of Freiburg and joined the Nazi Party.",
+    "aliases": [],
     "reviewed": true
   },
   {
@@ -1992,6 +2060,14 @@
     "reviewed": true
   },
   {
+    "node_id": "person:robert-hooke",
+    "locale": "en",
+    "label": "Robert Hooke",
+    "summary": "Robert Hooke (1635–1703) was an English polymath who was active as a physicist, astronomer, geologist, meteorologist, and architect, and who from 1662 was the Royal Society's first Curator of Experiments. In 1660 he discovered the law of elasticity that bears his name — that the stretching of a solid body is proportional to the force applied to it — first describing it in an anagram whose solution he published in 1678 as Ut tensio, sic vis (\"As the extension, so the force\"). His 1665 book Micrographia, based on observations made with a compound microscope that he designed, first used the word cell to name the microscopic honeycomb cavities in cork and encouraged microscopic investigations. He also inferred that gravity obeys an inverse square law, offered a wave theory of light to explain the diffraction he discovered in 1672, and, after the Great Fire of London in 1666, performed more than half of the city's property line surveys.",
+    "aliases": [],
+    "reviewed": true
+  },
+  {
     "node_id": "person:robert-koch",
     "locale": "en",
     "label": "Robert Koch",
@@ -2093,6 +2169,17 @@
       "Sigmund Schlomo Freud"
     ],
     "summary": "Sigmund Freud (1856–1939) was an Austrian neurologist who founded psychoanalysis, a theory of the mind and a method for treating psychological disorders centered on the idea that unconscious mental processes shape thought and behavior. He developed influential concepts including the unconscious, repression, and the interpretation of dreams, and set them out in works such as The Interpretation of Dreams (1899/1900). His ideas were widely influential across psychology, psychiatry, and the humanities, including literary studies, while also drawing sustained scientific and philosophical criticism.",
+    "reviewed": true
+  },
+  {
+    "node_id": "person:soren-kierkegaard",
+    "locale": "en",
+    "label": "Søren Kierkegaard",
+    "summary": "Søren Kierkegaard (1813–1855) was a Danish philosopher, Lutheran theologian, poet, social critic, and religious author whose work — almost all of which was written in the 1840s — spans philosophy, theology, religious and devotional writing, literary criticism, psychology and social critique. Much of his philosophical work deals with how one lives as a \"single individual,\" highlighting the importance of authenticity, personal choice and commitment; his early work was written using pseudonyms who presented distinctive viewpoints, and the works of that period include Either/Or (1843), Fear and Trembling (1843), and Concluding Unscientific Postscript (1846). He is widely considered to be the first existentialist philosopher and is often dubbed the \"father of existentialism,\" a label that obscures at least as much as it reveals, especially to those who associate existentialism with atheistic figures such as Sartre. His thought influenced thinkers in the phenomenological and existential traditions, including Heidegger, Sartre, Jaspers, Marcel, and Lévinas, but also thinkers in very different philosophical traditions, such as Wittgenstein.",
+    "aliases": [
+      "Soren Kierkegaard",
+      "Søren Aabye Kierkegaard"
+    ],
     "reviewed": true
   },
   {

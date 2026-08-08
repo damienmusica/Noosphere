@@ -1243,6 +1243,26 @@
     }
   },
   {
+    "id": "edge:baudouin-de-courtenay-influenced-phonology",
+    "source": "person:baudouin-de-courtenay",
+    "target": "subfield:phonology",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:britannica",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Baudouin de Courtenay's work is foundational for modern phonology (enwiki 'Jan Baudouin de Courtenay', oldid 1365158762: 'His work had a major influence on 20th-century linguistic theory, and it served as a foundation for several schools of phonology' and 'Three major schools of 20th-century phonology arose directly from his distinction between physiophonetic (phonological) and psychophonetic (morphophonological) alternations: the Leningrad school of phonology, the Moscow school of phonology, and the Prague school of phonology'; enwiki 'Phonology', oldid 1347090635, history section: \"Baudouin de Courtenay's subsequent work, though often unacknowledged, is considered to be the starting point of modern phonology\"). Britannica corroborates at the structural-linguistics grain ('regarded language sounds as structural entities, rather than mere physical phenomena, and thus anticipated the modern linguistic concern with language structure') but its body prose never names phonology — recorded against, not hidden. Whewell guard applied: the term 'phoneme' was coined in 1873 by A. Dufriche-Desgenettes, not by Baudouin, who (with Kruszewski and Shcherba) shaped its modern usage — this blocks any founding reading and does not touch 'influenced'. The morphophonology target was REJECTED in endpoint-closure-wave13-v1 (enwiki Morphophonology mentions him zero times) and is not re-proposed. Identity Q335092 verified live (P31=Q5, P570 1929-11-03; the item carries a second P569 claim 1846-03-13 — both encyclopedias state 13 March 1845, a minor item defect, not an identity problem; homonym Q11717009 'Polish journalist' ruled out). a-relation ladder (decision (68)): both endpoints reviewed + supported -> auto-reviewed."
+  },
+  {
     "id": "edge:bayesian-inference-applies-to-machine-learning",
     "source": "method:bayesian-inference",
     "target": "subfield:machine-learning",
@@ -7377,6 +7397,46 @@
     "note": "Ivan Sutherland is widely regarded as a pioneer/father of computer graphics -- his Sketchpad system (1963) laid several foundations of the field; he received the 1988 ACM Turing Award for Sketchpad. Sources (2 independent live-verified Wikipedia articles): 'Ivan Sutherland' (\"widely regarded as a pioneer of computer graphics ... received the 1988 ACM Turing Award for the invention of the Sketchpad ... developed several foundations of modern computer graphics\") + 'Computer graphics' (\"Ivan Sutherland's revolutionary Sketchpad software\"). Record-not-resolve: the field has multiple pioneers (e.g. the Utah school, David C. Evans); Sutherland is the canonical founding figure. Living-person v2 (decision (70)): identity Q62866 verified live (P31=Q5, P569 1938-05-16, P570 absent = living-confirmed, computer scientist), >=2 independent live claim-stating sources, conservative attributed wording, no escalation signal (technical/institutional claim only) -> policy-auto reviewed. Generator-guessed QID was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink."
   },
   {
+    "id": "edge:j-presper-eckert-founded-eniac",
+    "source": "person:j-presper-eckert",
+    "target": "concept:eniac",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:britannica",
+      "source:mactutor"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Eckert co-created ENIAC as chief engineer — decision (71) artifact-referent shape (mirror: edge:vint-cerf-founded-internet), executing decision (121)'s corrected unblock, alongside edge:john-mauchly-founded-eniac (equal co-creation, record-not-resolve). Sources: enwiki 'J. Presper Eckert' (oldid 1361713244): 'With John Mauchly, he designed the first general-purpose electronic digital computer (ENIAC)'; MacTutor: 'With John Mauchly he invented ENIAC: the first general-purpose electronic digital computer'; Britannica 'ENIAC' article body (byline Freiberger & Swaine) names both men in its lead credit sentence; enwiki 'ENIAC' (oldid 1365289299): 'ENIAC was designed by John Mauchly and J. Presper Eckert'. Same record-not-resolve caveats as the Mauchly edge (team simplification; Honeywell v. Sperry Rand priority ruling — the ruling names Eckert only via the joint patent, and no source documents personal Atanasoff-Eckert contact, which is why the Atanasoff disputed edge targets Mauchly alone). founded-or-formalized ladder (decision (60)): both endpoints reviewed + supported -> auto-reviewed."
+  },
+  {
+    "id": "edge:j-presper-eckert-influenced-computer-systems",
+    "source": "person:j-presper-eckert",
+    "target": "subfield:computer-systems",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:mactutor",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Eckert co-designed ENIAC and proposed the first practical stored-program hardware (enwiki 'J. Presper Eckert', oldid 1361713244: 'With John Mauchly, he designed the first general-purpose electronic digital computer (ENIAC)'; MacTutor: 'With John Mauchly he invented ENIAC: the first general-purpose electronic digital computer'; enwiki 'Von Neumann architecture', oldid 1360745761: 'Eckert and Mauchly had essentially finished designing a stored program computer before discussing the ideas with von Neumann'). Counter-evidence recorded: the First Draft that transmitted the stored-program design 'bore only von Neumann's name (to the consternation of Eckert and Mauchly)', and Eckert's own 'Eckert architecture' counter-claim is attributed as his belief, not settled history. Britannica's Eckert biography was unreachable this pass (live 403 + Wayback availability outage) — recorded as [UNFETCHED], not used. Identity note: Wikidata P569 1919-04-06 vs enwiki lead 'April 9, 1919' — dates differ by three days; both sources agree on year and identity is unambiguous (Q457906, P570 1995-06-03 matches enwiki). Mirror of edge:john-von-neumann-influenced-computer-systems (reviewed 0.85)."
+  },
+  {
     "id": "edge:james-clerk-maxwell-founded-statistical-physics",
     "source": "person:james-clerk-maxwell",
     "target": "subfield:statistical-physics",
@@ -7468,6 +7528,26 @@
     }
   },
   {
+    "id": "edge:jean-paul-sartre-influenced-existentialism",
+    "source": "person:jean-paul-sartre",
+    "target": "subfield:existentialism",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:britannica",
+      "source:iep",
+      "source:wikipedia"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Sartre is the movement's central 20th-century figure — admitted at influenced after founded_or_formalized was REJECTED at verification: zero instances of founder/founded/father-of language for Sartre in any registered provider, and the entire SEP Existentialism entry contains no founding attribution for ANYONE (conspicuous silence recorded as evidence). The label history is recorded, not credited: 'existentialism' was coined by Gabriel Marcel and first applied TO Sartre at a 1945 colloquium — Sartre rejected it there, then adopted it publicly (1945-10-29); enwiki: he 'adopted the term existentialism for his own philosophy in the 1940s' and his 1945 lecture 'helped popularize existentialist thought' — adopt-label and popularise are both non-founding (Whewell rule family). What the sources DO assert: Britannica 'best known as the leading exponent of existentialism in the 20th century'; IEP 'In the public consciousness, at least, Sartre must surely be the central figure of existentialism' and 'In 1943 Being and Nothingness, the groundwork of the Existentialist movement in France was published' (work-level and France-scoped — flagged as future canonical_work demand, not person-level founding); enwiki (oldid 1367693189): 'one of the key figures in the philosophy of existentialism'. Member-vs-influence blur recorded (he is constitutively a member, not an external influence — the same blur the corpus already records for Sartre/Camus on edge:existentialism-influenced-literary-studies); even his signature formula has acknowledged antecedents (enwiki: 'similar notions can be found in the thought of existentialist philosophers such as Heidegger, and Kierkegaard'). Identity Q9364 verified live (P31=Q5, 1905-06-21 / 1980-04-15). a-relation ladder (decision (68)): both endpoints reviewed + supported -> auto-reviewed."
+  },
+  {
     "id": "edge:jean-piaget-founded-developmental-psychology",
     "source": "person:jean-piaget",
     "target": "subfield:developmental-psychology",
@@ -7523,6 +7603,27 @@
     }
   },
   {
+    "id": "edge:john-atanasoff-influenced-john-mauchly",
+    "source": "person:john-atanasoff",
+    "target": "person:john-mauchly",
+    "relation": "influenced",
+    "confidence": 0.55,
+    "status": "proposed",
+    "evidence": [
+      "source:wikipedia",
+      "source:britannica",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "disputed": true,
+    "note": "GENUINELY DISPUTED — written at proposed with disputed:true per the held-ledger unblock and the nietzsche-influenced-freud precedent; clause-6 v2 stops promotion while the dispute is live. FOR: the 1973 Honeywell v. Sperry Rand finding 3.1.2 ('Eckert and Mauchly did not themselves invent the automatic electronic computer, but instead derived that subject matter from one Dr. John Vincent Atanasoff' — a primary-source blockquote of the ruling, recorded as such); uncontested contact prose in both providers (enwiki 'John Vincent Atanasoff', oldid 1358599454: 'In June 1941 Mauchly visited Atanasoff in Ames, Iowa for four days, staying as his houseguest. Atanasoff and Mauchly discussed the prototype ABC, examined it, and reviewed Atanasoff's design manuscript'; Britannica: 'Mauchly had visited Atanasoff in 1941, had extensive discussions with Atanasoff and Berry about the ABC, and witnessed the ABC in operation'); and Mauchly's own 1941 letter contemplating 'building some sort of computer which incorporates some of the features of your machine'. AGAINST: Mauchly 'consistently maintained that it was the use of high-speed electronic flip-flops in cosmic-ray counting devices at Swarthmore College that gave him the idea for computing at electronic speeds'; critics' component-level dissimilarity arguments (enwiki Honeywell article voice: 'why did he not appropriate for the ENIAC Atanasoff's add-subtract mechanism'); and the dispute remains a live scholarly battleground (IEEE Annals). A court ruling is a different evidence kind from claim-stating scholarly prose — the encyclopedic REPORTING of the ruling and the contact facts are what this edge cites. Quotation instability recorded: the two enwiki articles render finding 3.1.2 with slightly different wording; the Honeywell-article blockquote version is the one quoted here. The Eckert leg was REJECTED, not merely omitted: see rejections."
+  },
+  {
     "id": "edge:john-graunt-founded-demography",
     "source": "person:john-graunt",
     "target": "subfield:demography",
@@ -7539,6 +7640,46 @@
       "proposed_at": "2026-07-01"
     },
     "note": "John Graunt is regarded as the founder of demography -- his 'Natural and Political Observations ... upon the Bills of Mortality' (1662) is the first systematic statistical analysis of population/mortality data. Sources (2 independent live-verified Wikipedia articles): 'John Graunt' (\"has been regarded as the founder of demography\") + 'Demography'. Record-not-resolve: William Petty is a collaborator in the broader 'political arithmetick' tradition; Graunt's data-analytic work is also an early root of vital statistics (distinct from Snow's later causal-investigative founding of epidemiology, also in this batch). Identity Q454938 verified live (P31=Q5, P569 1620, P570 1674 deceased, demographer/statistician, enwiki 'John Graunt'). Generator-guessed QID (Q721755 = a former Chilean province) was a hallucination; corrected via live P31=Q5 + P569 + P570 + enwiki sitelink. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed."
+  },
+  {
+    "id": "edge:john-mauchly-founded-eniac",
+    "source": "person:john-mauchly",
+    "target": "concept:eniac",
+    "relation": "founded_or_formalized",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:britannica",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Mauchly co-created ENIAC, the first programmable, electronic, general-purpose digital computer — decision (71) artifact-referent shape (mirror: edge:vint-cerf-founded-internet -> concept:internet), executing decision (121)'s corrected unblock. Sources: enwiki 'ENIAC' (oldid 1365289299): 'ENIAC was designed by John Mauchly and J. Presper Eckert'; enwiki 'John Mauchly' (oldid 1357213830): 'designed ENIAC, the first general-purpose electronic digital computer'; Britannica 'ENIAC' (article body, byline Freiberger & Swaine — the page's Top Questions and FAQ blocks are AI-generated and were excluded): 'American physicist John Mauchly, American engineer J. Presper Eckert, Jr., and their colleagues at the Moore School of Electrical Engineering at the University of Pennsylvania led a government-funded project to build an all-electronic computer'. Record-not-resolve, both recorded: (1) the two-person credit is the sources' own lead simplification — enwiki names seven assisting design engineers and six women programmers, Britannica adds Herman Goldstine's direction; (2) Honeywell v. Sperry Rand (1973) voided the ENIAC patent, found the subject matter 'derived ... from one Dr. John Vincent Atanasoff', and gave legal recognition to Atanasoff for the FIRST ELECTRONIC DIGITAL COMPUTER title — which is why this node's gloss keeps the full qualifier stack 'first programmable, electronic, general-purpose' (enwiki) that the ruling does not strip. The design-credit claim this edge states is asserted in the same articles that preserve the ruling. founded-or-formalized ladder (decision (60)): both endpoints reviewed + supported -> auto-reviewed."
+  },
+  {
+    "id": "edge:john-mauchly-influenced-computer-systems",
+    "source": "person:john-mauchly",
+    "target": "subfield:computer-systems",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:britannica",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Mauchly co-designed the machines that defined early computer-systems organization (enwiki 'John Mauchly', oldid 1357213830: 'was an American physicist who, along with J. Presper Eckert, designed ENIAC, the first general-purpose electronic digital computer, as well as EDVAC, BINAC and UNIVAC I'; enwiki 'ENIAC', oldid 1365289299: 'ENIAC was designed by John Mauchly and J. Presper Eckert'; Britannica: 'co-inventor in 1946, with John P. Eckert, of the Electronic Numerical Integrator and Computer (ENIAC), the first general-purpose electronic computer'), and enwiki 'Von Neumann architecture' (oldid 1360745761) ties both men into the design discussions the canonical architecture is based on. Counter-evidence recorded, not hidden: the 1973 Honeywell v. Sperry Rand finding ('derived that subject matter from one Dr. John Vincent Atanasoff') and Britannica's hedge that ENIAC 'incorporated features developed by John V. Atanasoff' — that dispute is carried by edge:john-atanasoff-influenced-john-mauchly (proposed, disputed), and it targets invention priority, not the influence this edge claims. Mirror of edge:john-von-neumann-influenced-computer-systems (reviewed 0.85). Wave-12's split verification on these two men did not recur: both verifiers landed supported on live evidence this pass. ★ ORDER CITATION CORRECTED (recorded, fourth incident of this shape): the session-64 order asserted enwiki 'First Draft of a Report on the EDVAC' describes the report as 'based on the work of Eckert and Mauchly' — two independent verifiers fetched the article (oldid 1351402508) and that wording appears nowhere in it. The substance is real but lives in enwiki 'Von Neumann architecture' (oldid 1360745761): 'is a computer architecture based on the First Draft of a Report on the EDVAC, written by John von Neumann in 1945, describing designs discussed with John Mauchly and J. Presper Eckert' and 'The attribution of the invention of the architecture to von Neumann is incorrect. Eckert and Mauchly had essentially finished designing a stored program computer before discussing the ideas with von Neumann'."
   },
   {
     "id": "edge:john-mccarthy-founded-artificial-intelligence",
@@ -7685,7 +7826,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "Promoted 2026-07-29 (a-relations-wave7-v1, ladder (68)). Both recorded blockers are resolved. (1) The status cap: the target subfield:computer-systems was `proposed` when this edge was written and has since been promoted to `reviewed` under node-policy v1.4 (ACM CCS anchor, decision (102)) — clause 3 no longer blocks it. (2) The sourcing: two independent claim-stating articles now support it — enwiki First Draft of a Report on the EDVAC (\"It contains the first published description of the logical design of a computer using the stored-program concept, which has come to be known as the von Neumann architecture\") and enwiki Von Neumann architecture (\"is a computer architecture based on the First Draft of a Report on the EDVAC , written by John von Neumann in 1945, describing designs discussed with John Mauchly and J.\"). The attribution dispute the original note flagged is preserved rather than resolved: the same source states \"the name has become controversial due to von Neumann's failure to name other contributors\", and the second names Mauchly and Eckert as participants in the designs discussed. That is a credit-and-share contest on top of an agreed authorship and influence — the existence-vs-share line of §8 clause-6 v2 — so it routes to supported plus this note, the same ruling shape applied to Einstein and relativity in person-wave11-v1 the same day. Neither person:john-mauchly nor person:j-presper-eckert is a corpus node; honest gap. Written with IDs rather than surnames on purpose: in prose this sentence was invisible to the stale-gap detector, which is how decision (121) found it while adjudicating the very question it records. [Note refreshed 2026-07-31, decision (121): the gap sentence was rewritten into the machine-checkable ID form. The claim, its sources and its confidence are unchanged.]"
+    "note": "Promoted 2026-07-29 (a-relations-wave7-v1, ladder (68)). Both recorded blockers are resolved. (1) The status cap: the target subfield:computer-systems was `proposed` when this edge was written and has since been promoted to `reviewed` under node-policy v1.4 (ACM CCS anchor, decision (102)) — clause 3 no longer blocks it. (2) The sourcing: two independent claim-stating articles now support it — enwiki First Draft of a Report on the EDVAC (\"It contains the first published description of the logical design of a computer using the stored-program concept, which has come to be known as the von Neumann architecture\") and enwiki Von Neumann architecture (\"is a computer architecture based on the First Draft of a Report on the EDVAC , written by John von Neumann in 1945, describing designs discussed with John Mauchly and J.\"). The attribution dispute the original note flagged is preserved rather than resolved: the same source states \"the name has become controversial due to von Neumann's failure to name other contributors\", and the second names Mauchly and Eckert as participants in the designs discussed. That is a credit-and-share contest on top of an agreed authorship and influence — the existence-vs-share line of §8 clause-6 v2 — so it routes to supported plus this note, the same ruling shape applied to Einstein and relativity in person-wave11-v1 the same day. person:john-mauchly and person:j-presper-eckert are now corpus nodes (computing-wave1-v1, session #64), each carrying its own mirror of this edge (edge:john-mauchly-influenced-computer-systems, edge:j-presper-eckert-influenced-computer-systems, both reviewed 0.85) plus artifact-grain founder credit (edge:john-mauchly-founded-eniac, edge:j-presper-eckert-founded-eniac, both reviewed 0.9). Written with IDs rather than surnames on purpose: in prose this sentence was invisible to the stale-gap detector, which is how decision (121) found it while adjudicating the very question it records. [Note refreshed 2026-07-31, decision (121): the gap sentence was rewritten into the machine-checkable ID form. The claim, its sources and its confidence are unchanged.] [Note refreshed 2026-08-08, session #64 stale-note-refresh-v3: the gap this note recorded closed when computing-wave1-v1 admitted both men — the wave itself missed the same-decision-file refresh (decision (119) rule) and the stale-gap detector's 'Neither X nor Y' lane, built by decision (121), caught the miss before commit. The claim, its sources and its confidence are unchanged.]"
   },
   {
     "id": "edge:josiah-willard-gibbs-founded-statistical-physics",
@@ -8548,6 +8689,66 @@
     "note": "LCC QH90.5-95.7 Aquatic biology (id.loc.gov QH95 'General works' confirms range live, 2026-06-11) + UDC 574 Hydrobiology (named in UDC 574 caption as an included concept within General ecology and biodiversity; captured 2026-06-11) — both gate schemes file aquatic/marine biology in the biology family. Distinct from oceanography (natural sciences, physical ocean science); Woods Hole MBL/Scripps/MBA community."
   },
   {
+    "id": "edge:martin-heidegger-influenced-existentialism",
+    "source": "person:martin-heidegger",
+    "target": "subfield:existentialism",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Heidegger's work is developmentally central to existentialism (enwiki, oldid 1366448599: 'was a German philosopher whose work was central to the development of phenomenology, hermeneutics, and existentialism'; SEP Existentialism: 'Heidegger's conception of being-in-the-world articulates three related ideas that will become central to twentieth-century existentialism and phenomenology'; 'The influence of Heidegger on Sartre's 1943 Being and Nothingness is marked'). HIS OWN REJECTION OF THE LABEL IS RECORDED: enwiki Existentialism (oldid 1357728536): 'Heidegger distanced himself from Sartre's position and existentialism in general in his Letter on Humanism', holding that 'the reversal of a metaphysical statement remains a metaphysical statement' — the disavowal targets MEMBERSHIP, not influence, and no source denies or even hedges the influence (SEP is silent about the disavowal and treats him as groundwork-layer). Membership is the contested grain (Britannica: 'counted among the main exponents of existentialism' vs the disavowal) — record-not-resolve, so influenced is the conservative correct relation. The same articles record his caveat that 'Sartre had misread his work' in the same breath as the influence claim. Not founded: the conceptual groundwork predates him (Kierkegaard/Nietzsche per SEP) and the mid-century movement is French. Identity Q48301 verified live (P31=Q5, 1889-09-26 / 1976-05-26). a-relation ladder (decision (68))."
+  },
+  {
+    "id": "edge:martin-heidegger-influenced-phenomenology",
+    "source": "person:martin-heidegger",
+    "target": "subfield:phenomenology",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Heidegger redirected phenomenology after his teacher Husserl founded it (enwiki 'Phenomenology (philosophy)', oldid 1362572183: 'By shifting the center of gravity to existence in what he calls fundamental ontology, Heidegger altered the subsequent direction of phenomenology'; SEP Phenomenology: 'it came into its own in the early 20th century in the works of Husserl, Heidegger, Sartre, Merleau-Ponty and others'; enwiki Heidegger: 'Edmund Husserl, the founder of phenomenology, was Heidegger's teacher and a major influence on his thought'). FOUNDING NOT CLAIMED, recorded against: SEP's launch sentence ('the philosophical tradition launched in the first half of the 20th century by Edmund Husserl, Martin Heidegger, Maurice Merleau-Ponty, Jean-Paul Sartre, et al.') could read as co-founding, but the corpus scopes the discipline's founding to Husserl (edge:edmund-husserl-founded-phenomenology, 0.95 reviewed), Husserl is Heidegger's own teacher, and crediting the student would invert the predates-the-founder logic; member_of was considered and declined (its ratified targets are named-group institution nodes, and subfield:phenomenology is not one). Identity Q48301. a-relation ladder (decision (68))."
+  },
+  {
+    "id": "edge:martin-heidegger-influenced-philosophy-of-technology",
+    "source": "person:martin-heidegger",
+    "target": "subfield:philosophy-of-technology",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "SEP's Philosophy of Technology entry (sum2026 fixed edition, the anchored version) asserts the person-level influence directly: 'the work of these founding figures of humanities philosophy of technology has been taken further by a second and third generation of scholars—in particular the work of Heidegger remains an important source of inspiration', and treats Heidegger as the canon's most prominent figure ('her position in the canon of humanities philosophy of technology is not as prominent as is Heidegger's', of Arendt). This closes the gap the reviewed edge:phenomenology-influenced-philosophy-of-technology note preserved verbatim ('Heidegger has no node') — that note is refreshed in this same decision file (decision (119) rule); the two edges carry different grains (tradition-level vs person-level). NOT founded_or_formalized: Ernst Kapp 'was the first to use the term philosophy of technology in his book Eine Philosophie der Technik (1877 [2018])' — the field's name and tradition predate Heidegger by decades (Whewell-family block on founding, irrelevant to influence). Edition note: the live SEP text additionally records Heidegger's own disavowal of doing philosophy of technology; that sentence is not in the sum2026 anchored edition and is not load-bearing here. Identity Q48301. a-relation ladder (decision (68))."
+  },
+  {
     "id": "edge:martin-hellman-founded-public-key-cryptography",
     "source": "person:martin-hellman",
     "target": "concept:public-key-cryptography",
@@ -8998,7 +9199,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-01"
     },
-    "note": "Matthias Jakob Schleiden is a co-founder of cell theory, the foundational theory of cell biology -- the botanist who (Beiträge zur Phytogenesis, 1838) argued that all plant tissues are composed of cells, the plant-side counterpart to Schwann's extension to animals. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory'. Record-not-resolve: Schwann (animal cells) is the co-founder [own node/edge this batch]; Virchow (cell-from-cell, 1855) is now person:rudolf-virchow with edge:rudolf-virchow-founded-cell-theory; Robert Hooke (\"cell\", 1665) is still not a corpus node — that gap is live. Identity Q76747 verified live (P31=Q5, P569 1804, P570 1881 deceased, botanist, enwiki 'Matthias Jakob Schleiden'); generator-guessed QID (Q57249) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
+    "note": "Matthias Jakob Schleiden is a co-founder of cell theory, the foundational theory of cell biology -- the botanist who (Beiträge zur Phytogenesis, 1838) argued that all plant tissues are composed of cells, the plant-side counterpart to Schwann's extension to animals. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory'. Record-not-resolve: Schwann (animal cells) is the co-founder [own node/edge this batch]; Virchow (cell-from-cell, 1855) is now person:rudolf-virchow with edge:rudolf-virchow-founded-cell-theory; Robert Hooke (\"cell\", 1665) is now person:robert-hooke with edge:robert-hooke-influenced-cell-biology — the influence grain, because verification refuted the founding reading (coinage is not founding; the theory postdates him by ~170 years). Identity Q76747 verified live (P31=Q5, P569 1804, P570 1881 deceased, botanist, enwiki 'Matthias Jakob Schleiden'); generator-guessed QID (Q57249) hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. [Note refreshed 2026-08-08, session #64 person-wave13-v1: the Hooke gap this note recorded was closed by the same batch that refreshed it (decision (119) rule). The claim, its sources and its confidence are unchanged.]"
   },
   {
     "id": "edge:matthias-jakob-schleiden-founded-cell-theory",
@@ -11120,7 +11321,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-02"
     },
-    "note": "Phenomenology (esp. Heidegger's 'The Question Concerning Technology') is a founding tradition of philosophy of technology (postphenomenology, Ihde). Source = the tradition (Heidegger has no node). Direction correct. Permanence: SEP https://web.archive.org/web/20260702035645/https://plato.stanford.edu/entries/technology/ · WP https://en.wikipedia.org/w/index.php?title=Philosophy_of_technology&oldid=1359005281. ((a)-ladder decision (68); supported)."
+    "note": "Phenomenology (esp. Heidegger's 'The Question Concerning Technology') is a founding tradition of philosophy of technology (postphenomenology, Ihde). Source = the tradition; the person-level claim is now carried by person:martin-heidegger via edge:martin-heidegger-influenced-philosophy-of-technology. Direction correct. Permanence: SEP https://web.archive.org/web/20260702035645/https://plato.stanford.edu/entries/technology/ · WP https://en.wikipedia.org/w/index.php?title=Philosophy_of_technology&oldid=1359005281. ((a)-ladder decision (68); supported). [Note refreshed 2026-08-08, session #64 existentialism-wave1-v1: the gap this note recorded ('Heidegger has no node') was closed by the same batch that refreshed it (decision (119) rule). The claim, its sources and its confidence are unchanged.]"
   },
   {
     "id": "edge:phenomenology-influenced-psychology",
@@ -12963,6 +13164,26 @@
     "note": "Thaler is a principal founder of behavioral economics -- 'Toward a Positive Theory of Consumer Choice' (1980), which Kahneman called 'the founding text of behavioral economics'; Nobel Memorial Prize in Economic Sciences 2017 ('Integrating Economics with Psychology'). Record-not-resolve co-founding with Kahneman and Tversky (psychological origin). Sources: Wikipedia 'Richard Thaler' + NobelPrize.org 2017 scientific background. Living-person v2 (decision (70)): identity Q371212 verified (P31=Q5, P569 1945, P570 absent = living-confirmed), >=2 independent live claim-stating sources, conservative attributed wording, no escalation signal -> policy-auto reviewed. Generator QID hint Q92610 was a hallucination; corrected."
   },
   {
+    "id": "edge:robert-hooke-influenced-cell-biology",
+    "source": "person:robert-hooke",
+    "target": "subfield:cell-biology",
+    "relation": "influenced",
+    "confidence": 0.8,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:britannica",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Hooke discovered and named the cell (Micrographia, 1665), beginning the scientific study of cells (enwiki 'Cell (biology)', oldid 1367527367: 'Cells were discovered by Robert Hooke in 1665, who named them after their resemblance to cells in a monastery'; enwiki 'Cell theory', oldid 1365081375: 'This discovery is largely attributed to Robert Hooke, and began the scientific study of cells, known as cell biology'; Britannica 'Robert Hooke': 'first used the word cell to name the microscopic honeycomb cavities in cork, thereby contributing to the history of cell theory'). The FOUNDING reading was refuted at verification and is not claimed: term-coinage/observation is not founding (the Whewell rule), cell theory itself was formulated 1838-39 by Schleiden and Schwann (their reviewed founded_or_formalized edges carry that credit; record-not-resolve, this edge is additive at the influence grade, not competing), and enwiki records Hooke 'did not know their real structure or function' — 'What Hooke had thought were cells, were actually empty cell walls of plant tissues'. A microbiology-grain edge was considered and declined: Britannica's Leeuwenhoek and microbiology articles mention Hooke zero times (grep over full archived HTML), and enwiki notes Kircher (1658) as likely earlier observer of microbes; enwiki Robert Hooke does record 'the earliest-recorded observation of a microorganism, the microfungus Mucor' — recorded here, not promoted. Identity Q46830 verified live (P31=Q5, 1635-1703 Julian/Gregorian; US-statistician homonym Q102198851 ruled out). a-relation ladder (decision (68)): both endpoints reviewed + supported -> auto-reviewed."
+  },
+  {
     "id": "edge:robert-koch-founded-microbiology",
     "source": "person:robert-koch",
     "target": "subfield:microbiology",
@@ -13853,6 +14074,26 @@
       "proposed_at": "2026-06-11"
     },
     "note": "UDC 004.41 'Software engineering' (live 2026-06-11); LCC QA76.758 'Software engineering' (id.loc.gov, live); ACM CCS top branch 'Software and its engineering' (live); MSC 68N30 'Mathematical aspects of software engineering' (live)."
+  },
+  {
+    "id": "edge:soren-kierkegaard-influenced-existentialism",
+    "source": "person:soren-kierkegaard",
+    "target": "subfield:existentialism",
+    "relation": "influenced",
+    "confidence": 0.85,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Kierkegaard laid the conceptual groundwork of existentialism — the precursor grain, at exact parity with edge:friedrich-nietzsche-influenced-existentialism (0.85), which rests on the SAME SEP sentence naming Kierkegaard FIRST: 'the conceptual groundwork of the movement was laid much earlier in the nineteenth century by pioneers like Søren Kierkegaard and Friedrich Nietzsche' (SEP Existentialism). Also SEP: 'The existentialist critique of theoretical detachment was pioneered by Kierkegaard'; enwiki (oldid 1365518285): 'widely considered to be the first existentialist philosopher'; Britannica: 'was a major influence on existentialism and Protestant theology'. The 'father of existentialism' label is recorded WITH its own deflation, not laundered into founding: SEP's Kierkegaard entry deflates it twice in its own voice ('this label obscures at least as much as it reveals'; 'however unhelpful that label may otherwise be'), and founded_or_formalized is refuted on the referent-postdates-founder test — the movement organized in the 20th century, ~85 years after his death (1855), and enwiki states the arrow's direction: the 1930s 'ascendant existentialist movement pointed to him as a precursor'. Alternate-referent guard: enwiki's own-voice founder language ('founder of Christian psychology and of existential psychology and therapy') is for existential psychology, a different target — not transferred. Identity Q6512 verified live (P31=Q5, 1813-05-05 / 1855-11-11). a-relation ladder (decision (68)): both endpoints reviewed + supported -> auto-reviewed."
   },
   {
     "id": "edge:special-education-part-of-education",
@@ -14905,7 +15146,7 @@
       "model_version": "claude-sonnet-5",
       "proposed_at": "2026-07-01"
     },
-    "note": "Theodor Schwann is a co-founder of cell theory, the foundational theory of cell biology -- he extended the cell doctrine to animal tissues (Mikroskopische Untersuchungen, 1839), establishing with the botanist Matthias Jakob Schleiden that all living organisms are composed of cells. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory' (\"a scientific theory first formulated in the mid-nineteenth century, that living organisms are made up of cells, that they are the basic structural/organizational unit of all organisms\"). Record-not-resolve: Schleiden (plant cells) is the co-founder [own node/edge this batch]; Rudolf Virchow added \"omnis cellula e cellula\" (1855) and is now person:rudolf-virchow with edge:rudolf-virchow-founded-cell-theory; Robert Hooke coined the term \"cell\" (1665) and is still not a corpus node — that gap is live. Identity Q76745 verified live (P31=Q5, P569 1810, P570 1882 deceased, physician/physiologist, enwiki 'Theodor Schwann'); generator-guessed QID (Q57247) was a hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. [Note refreshed 2026-07-31, decision (119): a gap this note recorded had closed and the sentence had gone false. The claim, its sources and its confidence are unchanged; the gap sentence now names node and edge IDs so the machine check can see it.]"
+    "note": "Theodor Schwann is a co-founder of cell theory, the foundational theory of cell biology -- he extended the cell doctrine to animal tissues (Mikroskopische Untersuchungen, 1839), establishing with the botanist Matthias Jakob Schleiden that all living organisms are composed of cells. Sources (2 independent live-verified Wikipedia articles): 'Matthias Jakob Schleiden' (\"a German botanist and co-founder of cell theory, along with Theodor Schwann and Rudolf Virchow\") + 'Cell theory' (\"a scientific theory first formulated in the mid-nineteenth century, that living organisms are made up of cells, that they are the basic structural/organizational unit of all organisms\"). Record-not-resolve: Schleiden (plant cells) is the co-founder [own node/edge this batch]; Rudolf Virchow added \"omnis cellula e cellula\" (1855) and is now person:rudolf-virchow with edge:rudolf-virchow-founded-cell-theory; Robert Hooke coined the term \"cell\" (1665) and is now person:robert-hooke with edge:robert-hooke-influenced-cell-biology — the influence grain, because verification refuted the founding reading (coinage is not founding; the theory postdates him by ~170 years). Identity Q76745 verified live (P31=Q5, P569 1810, P570 1882 deceased, physician/physiologist, enwiki 'Theodor Schwann'); generator-guessed QID (Q57247) was a hallucination, corrected. Both endpoints reviewed -> deceased founder ladder (decision (61)) -> reviewed. [Note refreshed 2026-08-08, session #64 person-wave13-v1: the Hooke gap this note recorded was closed by the same batch that refreshed it (decision (119) rule). The claim, its sources and its confidence are unchanged.]"
   },
   {
     "id": "edge:theodor-schwann-founded-cell-theory",

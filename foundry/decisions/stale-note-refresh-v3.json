@@ -1,0 +1,41 @@
+{
+ "version": 1,
+ "batch_id": "stale-note-refresh-v3",
+ "decided_at": "2026-08-08",
+ "qc_by": {
+  "model_name": "Claude Fable 5",
+  "model_version": "claude-fable-5",
+  "proposed_at": "2026-08-08"
+ },
+ "adds": {
+  "sources": [],
+  "nodes": [],
+  "translations": [],
+  "edges": [],
+  "external_links": []
+ },
+ "promotions": [
+  {
+   "kind": "edge",
+   "id": "edge:john-von-neumann-influenced-computer-systems",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_note": "Promoted 2026-07-29 (a-relations-wave7-v1, ladder (68)). Both recorded blockers are resolved. (1) The status cap: the target subfield:computer-systems was `proposed` when this edge was written and has since been promoted to `reviewed` under node-policy v1.4 (ACM CCS anchor, decision (102)) — clause 3 no longer blocks it. (2) The sourcing: two independent claim-stating articles now support it — enwiki First Draft of a Report on the EDVAC (\"It contains the first published description of the logical design of a computer using the stored-program concept, which has come to be known as the von Neumann architecture\") and enwiki Von Neumann architecture (\"is a computer architecture based on the First Draft of a Report on the EDVAC , written by John von Neumann in 1945, describing designs discussed with John Mauchly and J.\"). The attribution dispute the original note flagged is preserved rather than resolved: the same source states \"the name has become controversial due to von Neumann's failure to name other contributors\", and the second names Mauchly and Eckert as participants in the designs discussed. That is a credit-and-share contest on top of an agreed authorship and influence — the existence-vs-share line of §8 clause-6 v2 — so it routes to supported plus this note, the same ruling shape applied to Einstein and relativity in person-wave11-v1 the same day. person:john-mauchly and person:j-presper-eckert are now corpus nodes (computing-wave1-v1, session #64), each carrying its own mirror of this edge (edge:john-mauchly-influenced-computer-systems, edge:j-presper-eckert-influenced-computer-systems, both reviewed 0.85) plus artifact-grain founder credit (edge:john-mauchly-founded-eniac, edge:j-presper-eckert-founded-eniac, both reviewed 0.9). Written with IDs rather than surnames on purpose: in prose this sentence was invisible to the stale-gap detector, which is how decision (121) found it while adjudicating the very question it records. [Note refreshed 2026-07-31, decision (121): the gap sentence was rewritten into the machine-checkable ID form. The claim, its sources and its confidence are unchanged.] [Note refreshed 2026-08-08, session #64 stale-note-refresh-v3: the gap this note recorded closed when computing-wave1-v1 admitted both men — the wave itself missed the same-decision-file refresh (decision (119) rule) and the stale-gap detector's 'Neither X nor Y' lane, built by decision (121), caught the miss before commit. The claim, its sources and its confidence are unchanged.]",
+   "note": "stale gap sentence refreshed; claim unchanged"
+  }
+ ],
+ "translation_updates": [],
+ "verdicts": [],
+ "identity": [],
+ "sanctions": [],
+ "rejections": [],
+ "held": [],
+ "held_resolutions": [],
+ "override_rejections": [],
+ "anchors_pending": [],
+ "notes": [
+  "stale-note-refresh-v3: single set_note refresh, caught pre-commit in the same session that caused it. computing-wave1-v1 admitted person:john-mauchly and person:j-presper-eckert but missed refreshing the one reviewed note whose gap sentence named them (edge:john-von-neumann-influenced-computer-systems, 'Neither person:john-mauchly nor person:j-presper-eckert is a corpus node') — a miss against decision (119)'s same-decision-file rule.",
+  "★ MEASUREMENT WORTH KEEPING: this is the first live firing of the 'Neither X nor Y' detector lane decision (121) built, and it caught a real orchestrator miss (the orchestrator refreshed the three gap notes it had listed — Schleiden, Schwann, philosophy-of-technology — and did not re-run the detector to find the fourth). The detector ran before commit, so the stale window is zero commits wide. The lane exists because that sentence was deliberately rewritten into ID form by decision (121); prose would have been invisible.",
+  "Every clause of the replacement note was re-checked against /data (decision (118)'s lesson): the status-cap and sourcing clauses are unchanged and still true; the four new edge IDs named in the replacement all exist reviewed; the dispute-preservation clause is unchanged."
+ ]
+}
