@@ -1,0 +1,90 @@
+{
+  "version": 2,
+  "batch_id": "work-wave7-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-08-08"
+  },
+  "edges": [
+    {
+      "id": "edge:being-and-time-canonical-work-martin-heidegger",
+      "source": "work:being-and-time",
+      "target": "person:martin-heidegger",
+      "relation": "canonical_work",
+      "confidence": 0.94,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "Stanford Encyclopedia of Philosophy, 'Martin Heidegger' entry (sum2026 edition); English Wikipedia, 'Martin Heidegger' article.",
+      "note": "Session-64 evidence (orchestrator-supplied, pass-through, not independently re-fetched this pass): SEP Heidegger entry (sum2026 preamble) -- \"His magnum opus, Being and Time (1927)...\"; English Wikipedia 'Martin Heidegger' (oldid 1366448599) discusses it as his magnum opus. Sole-authored work; no shared-credit resolution needed.",
+      "rationale": "Heidegger is sole author of record for Being and Time; matches the person's reviewed status and completes this wave's work-person pairing (person entered specifically for this edge, session #64).",
+      "uncertainty": "None beyond the shared work-identity risk already recorded at the node level (translation-edition and dual original-publication-form risk).",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:being-and-nothingness-canonical-work-jean-paul-sartre",
+      "source": "work:being-and-nothingness",
+      "target": "person:jean-paul-sartre",
+      "relation": "canonical_work",
+      "confidence": 0.93,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "English Wikipedia, 'Jean-Paul Sartre' article; Stanford Encyclopedia of Philosophy, 'Jean-Paul Sartre' entry (sum2026 edition).",
+      "note": "Session-64 evidence (orchestrator-supplied, pass-through, not independently re-fetched this pass): enwiki 'Jean-Paul Sartre' (oldid 1367693189) -- \"his principal philosophical work Being and Nothingness\"; SEP 'Jean-Paul Sartre' (sum2026) -- \"his difficult treatise, Being and Nothingness (1943)\". IEP's field/movement-level sentence ('groundwork of the Existentialist movement in France') is recorded at the node level but deliberately not used to support any field/movement-level edge in this wave -- this edge is scoped strictly to work-to-person credit. Sole-authored work; no shared-credit resolution needed.",
+      "rationale": "Sartre is sole author of record for Being and Nothingness; matches the person's reviewed status and completes this wave's work-person pairing (person entered specifically for this edge, session #64).",
+      "uncertainty": "None beyond the shared work-identity/translation-edition risk already recorded at the node level.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:micrographia-canonical-work-robert-hooke",
+      "source": "work:micrographia",
+      "target": "person:robert-hooke",
+      "relation": "canonical_work",
+      "confidence": 0.93,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "English Wikipedia, 'Robert Hooke' article; Encyclopaedia Britannica, 'Robert Hooke' entry.",
+      "note": "Session-64 evidence (orchestrator-supplied, pass-through, not independently re-fetched this pass): enwiki 'Robert Hooke' (oldid 1367205638) -- \"Hooke's 1665 book Micrographia, in which he coined the term cell, encouraged microscopic investigations\"; Britannica 'Robert Hooke' body prose ties Micrographia (1665) to the first use of 'cell'. Sole-authored work; no shared-credit resolution needed.",
+      "rationale": "Hooke is sole author of record for Micrographia; matches the person's reviewed status and completes this wave's work-person pairing (person entered specifically for this edge, session #64).",
+      "uncertainty": "None beyond the shared work-identity/edition-variant risk already recorded at the node level.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:either-or-canonical-work-soren-kierkegaard",
+      "source": "work:either-or",
+      "target": "person:soren-kierkegaard",
+      "relation": "canonical_work",
+      "confidence": 0.87,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "English Wikipedia, 'Soren Kierkegaard' article.",
+      "note": "Session-64 evidence (orchestrator-supplied, pass-through, not independently re-fetched this pass): enwiki 'Soren Kierkegaard' (oldid 1365518285) body prose -- \"Kierkegaard's magnum opus Either/Or was published 20 February 1843.\" Only one named source is quoted for this item (vs. two to three for the other four in this wave) -- flagged for QC to seek independent corroboration. Authorship-in-fact is Kierkegaard's alone in every standard secondary source despite the text's internal pseudonymous framing ('Victor Eremita' as editor); no genuinely shared human credit exists here, so record-not-resolve for co-authorship is not applicable, but the pseudonym is recorded honestly as a resolver-matching risk, not a credit-sharing question.",
+      "rationale": "Kierkegaard is the author of record for Either/Or (pseudonymous in-text framing notwithstanding); matches the person's reviewed status and completes this wave's work-person pairing (person entered specifically for this edge, session #64).",
+      "uncertainty": "Weakest identity case in this wave: single named source quoted, plus the pseudonymous in-text authorship framing could cause a live resolver's direct author-identity match to fail or point at 'Victor Eremita' as a fictional in-text editor rather than Kierkegaard, even though every standard secondary source treats Kierkegaard as sole author-in-fact. QC should verify the live record resolves author identity correctly before promoting.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:process-and-reality-canonical-work-alfred-north-whitehead",
+      "source": "work:process-and-reality",
+      "target": "person:alfred-north-whitehead",
+      "relation": "canonical_work",
+      "confidence": 0.9,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [],
+      "source_hint": "English Wikipedia, 'Alfred North Whitehead' article; Internet Encyclopedia of Philosophy, 'Alfred North Whitehead' entry.",
+      "note": "Session-64 evidence (orchestrator-supplied, pass-through, not independently re-fetched this pass): enwiki 'Alfred North Whitehead' (oldid 1361815510) -- \"Whitehead's philosophical works - particularly Process and Reality - are regarded as the foundational texts of process philosophy\" and \"...published in 1929 as a book named Process and Reality\"; IEP 'Whitehead' -- \"the pinnacle of Whitehead's metaphysical work came with his monumental Process and Reality in 1929\". This edge makes a work-to-person biography-grade credit claim only; it deliberately does NOT assert or imply process-philosophy school-founding, per the order's explicit constraint -- that question remains separately held. Sole-authored work; no shared-credit resolution needed (distinct from Whitehead's existing co-authored canonical_work edge to Principia Mathematica already in /data).",
+      "rationale": "Whitehead is sole author of record for Process and Reality, distinct from his existing co-authored canonical_work edge to Principia Mathematica already in /data; this is his second canonical_work edge, to a different work, not a repeat of the same triangle. Completes this wave's work-person pairing (person entered specifically for this edge, session #64).",
+      "uncertainty": "None beyond the shared work-identity/edition risk recorded at the node level (1929 original vs. 1978 Griffin/Sherburne corrected edition, which could carry different bibliographic publication metadata).",
+      "ambiguous": false
+    }
+  ],
+  "notes": [
+    "5 canonical_work edges across 5 work nodes, all work-to-person, all mirroring the taxonomy's fixed direction (edge:principia-mathematica-canonical-work-alfred-north-whitehead). No field/concept-target edges proposed -- out of this wave's scope per the order.",
+    "Confidence range 0.87-0.94, within the order's stated 0.85-0.95 band for uncontested single-author canonical works; Either/Or (0.87) is the lowest, reflecting its single-source citation and pseudonymous in-text authorship framing."
+  ]
+}

@@ -1395,6 +1395,46 @@
     "note": "Cross-listing v1 §13 co-equal membership (decision (21)): behavioral neuroscience (= biological psychology / biopsychology, Wikidata Q846566 P31 'branch of psychology', live-verified 2026-06-18) is co-equally a psychology subfield (APA Division 6 'Behavioral Neuroscience and Comparative Psychology'). Neuroscience home retained (edge:behavioral-neuroscience-part-of-neuroscience). Within-continent dual filing, no disputed tag (other-parent filing = support, session #7)."
   },
   {
+    "id": "edge:being-and-nothingness-canonical-work-jean-paul-sartre",
+    "source": "work:being-and-nothingness",
+    "target": "person:jean-paul-sartre",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep",
+      "source:iep"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Being and Nothingness (L'Être et le Néant, 1943) is Sartre's principal philosophical work (enwiki Jean-Paul Sartre, oldid 1367693189: 'a theme embodied in his principal philosophical work Being and Nothingness'; SEP Sartre, sum2026: 'his difficult treatise, Being and Nothingness (1943)'; IEP Existentialism: 'In 1943 Being and Nothingness, the groundwork of the Existentialist movement in France was published' — work-level and France-scoped language deliberately carried at the work layer, exactly as the session-64 Sartre adjudication left it; no person-founding claim is made here). Identity Q119709 verified live (P50 = Q9364 matching, P577 1943, 41 sitelinks); the undescribed twin item Q140253239 (no P50, no P577, 0 sitelinks) is a bibliographic stub, excluded and recorded. canonical-work ladder (decision (88))."
+  },
+  {
+    "id": "edge:being-and-time-canonical-work-martin-heidegger",
+    "source": "work:being-and-time",
+    "target": "person:martin-heidegger",
+    "relation": "canonical_work",
+    "confidence": 0.94,
+    "status": "reviewed",
+    "evidence": [
+      "source:sep",
+      "source:wikipedia",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Being and Time (Sein und Zeit, 1927) is Heidegger's magnum opus (SEP Heidegger, sum2026 edition: 'His magnum opus, Being and Time (1927), and his many essays and lectures, profoundly influenced subsequent movements in European philosophy'; enwiki Martin Heidegger, oldid 1366448599: in it 'he introduced the concept of Dasein (\"being-there\") to describe the distinctive character of human existence'). Identity Q404567 verified live (P31 philosophy book, P50 = Q48301 matching person:martin-heidegger's recorded QID, P577 1927, 44 sitelinks). Edition risk recorded and resolved at identity: the item is the original work, not a translation item. Direction work -> person per taxonomy ('the work is always the source'). canonical-work ladder (decision (88)): both endpoints reviewed + supported -> auto-reviewed."
+  },
+  {
     "id": "edge:bertrand-russell-founded-analytic-philosophy",
     "source": "person:bertrand-russell",
     "target": "subfield:analytic-philosophy",
@@ -4225,6 +4265,26 @@
       "proposed_at": "2026-06-18"
     },
     "note": "Skeleton part_of: Wikidata P31 branch of psychology (Q60680430); no discrete captured BF sub-range (educational psychology sits primarily under LCC LB education, not BF). Wikidata-grounded division of field:psychology."
+  },
+  {
+    "id": "edge:either-or-canonical-work-soren-kierkegaard",
+    "source": "work:either-or",
+    "target": "person:soren-kierkegaard",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:sep",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Either/Or (Enten-Eller, 1843) is Kierkegaard's magnum opus (enwiki Søren Kierkegaard, oldid 1365518285, body prose: 'Kierkegaard's magnum opus Either/Or was published 20 February 1843.'; SEP Kierkegaard, sum2026: 'Work on the text that he considered properly to begin his authorship, Either/Or , began almost as soon as he arrived in Berlin, and it was published in 1843'). QC raised the generator's 0.87 to 0.9 after finding the SEP corroboration the generation packet lacked (its flagged weakness was single-sourcing). Pseudonymity recorded, not resolved away: the work was published under the editorial pseudonym Victor Eremita, and SEP's entry discusses the pseudonymous voices at length — every standard source treats Kierkegaard as the author-in-fact, and Wikidata P50 = Q6512 directly. Identity Q1152009 verified live (P577 1843, 22 sitelinks, enwiki title 'Either/Or (Kierkegaard book)'); the Elliott Smith album Q988557, the 2022 Batuman novel Q112609827, and the paperback edition item Q138507382 were excluded at search. canonical-work ladder (decision (88))."
   },
   {
     "id": "edge:electrical-engineering-part-of-engineering-and-technology",
@@ -9542,6 +9602,26 @@
     "note": "LCC QR Microbiology (own subclass QR1-502) + UDC 579 Microbiology (top-level entry within UDC 57 Biological sciences) — both gate schemes file microbiology in the biology family (captured 2026-06-11)."
   },
   {
+    "id": "edge:micrographia-canonical-work-robert-hooke",
+    "source": "work:micrographia",
+    "target": "person:robert-hooke",
+    "relation": "canonical_work",
+    "confidence": 0.93,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:britannica",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Micrographia (1665) is Hooke's canonical book (enwiki Robert Hooke, oldid 1367205638: 'Hooke's 1665 book Micrographia, in which he coined the term cell, encouraged microscopic investigations'; Britannica Robert Hooke, article body: 'In Micrographia (1665; \"Small Drawings\") he included his studies and illustrations of the crystal structure of snowflakes'). Identity Q2469465 verified live (P50 = Q46830 matching, P577 1665-01, 22 sitelinks); the clinical-sign homonym Q6839570 (abnormally small handwriting) and the title-page image item Q75733361 were excluded at search. The coinage-is-not-founding discipline holds: this edge records the book-to-author relation only; the cell-biology claim lives on edge:robert-hooke-influenced-cell-biology at the influence grain. canonical-work ladder (decision (88))."
+  },
+  {
     "id": "edge:military-history-part-of-history",
     "source": "subfield:military-history",
     "target": "field:history",
@@ -12553,6 +12633,26 @@
       "source:manual-curation-v1"
     ],
     "note": "Probability theory provides the formal basis for statistical inference."
+  },
+  {
+    "id": "edge:process-and-reality-canonical-work-alfred-north-whitehead",
+    "source": "work:process-and-reality",
+    "target": "person:alfred-north-whitehead",
+    "relation": "canonical_work",
+    "confidence": 0.9,
+    "status": "reviewed",
+    "evidence": [
+      "source:wikipedia",
+      "source:iep",
+      "source:wikidata"
+    ],
+    "evidence_kind": "externally_sourced",
+    "proposed_by": {
+      "model_name": "Claude Sonnet 5",
+      "model_version": "claude-sonnet-5",
+      "proposed_at": "2026-08-08"
+    },
+    "note": "Process and Reality (1929) is the pinnacle of Whitehead's metaphysical work (enwiki Alfred North Whitehead, oldid 1361815510: 'Whitehead's philosophical works – particularly Process and Reality – are regarded as the foundational texts of process philosophy' and 'Lectures from 1927 to 1928 were published in 1929 as a book named Process and Reality'; IEP Whitehead: 'the pinnacle of Whitehead's metaphysical work came with his monumental Process and Reality in 1929'). BOUNDARY KEPT: this is a work -> person biography-grade edge and does not touch the held process-philosophy school question — the founded_or_formalized NEI on person:alfred-north-whitehead stands unchanged, and this note makes no school-founding claim. His second canonical_work edge alongside the co-authored work:principia-mathematica (different work, different claim — not a dilution). Identity Q455957 verified live (P50 = Q183372 matching, P577 1929 — the widely-cited 1978 Griffin/Sherburne corrected edition misdating risk the generator flagged is resolved: the item dates to the original; 9 sitelinks); the P50-less 0-sitelink bibliographic twin Q130330690 and the paperback edition item Q126697610 were excluded and recorded. canonical-work ladder (decision (88))."
   },
   {
     "id": "edge:programming-languages-part-of-computer-science",
