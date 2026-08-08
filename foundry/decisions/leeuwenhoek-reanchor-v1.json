@@ -1,0 +1,73 @@
+{
+ "version": 1,
+ "batch_id": "leeuwenhoek-reanchor-v1",
+ "decided_at": "2026-08-08",
+ "qc_by": {
+  "model_name": "Claude Fable 5",
+  "model_version": "claude-fable-5",
+  "proposed_at": "2026-08-08"
+ },
+ "adds": {
+  "sources": [],
+  "nodes": [],
+  "translations": [],
+  "edges": [],
+  "external_links": []
+ },
+ "promotions": [
+  {
+   "kind": "edge",
+   "id": "edge:antonie-van-leeuwenhoek-founded-microbiology",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_note": "Closes the gap edge:louis-pasteur-founded-microbiology has recorded as live since it was written. Sources (2 independent, registered): enwiki Microbiology -- 'He is considered a father of microbiology as he used simple single-lensed microscopes of his own design.'; Britannica 'Antonie van Leeuwenhoek' (article body lead) -- 'was a Dutch microscopist who was the first to observe bacteria and protozoa' and 'his observations helped lay the foundations for the sciences of bacteriology and protozoology'. ★ ANCHOR CORRECTED 2026-08-08 (leeuwenhoek-reanchor-v1): the Britannica quote this note originally carried ('effectively began the discipline of microbiology') exists on the page ONLY in the Top Questions block and its FAQ JSON-LD mirror — page furniture under §8's body-prose standard, not article body (measured twice against Wayback snapshot 20260708201029; this page's block carries no AI-generation label, unlike Britannica's ENIAC page, but furniture is furniture). The claim itself was never in doubt: the registered enwiki source states the father-of epithet in body prose, Britannica's body lead carries first-observer and foundations-of-bacteriology-and-protozoology language, and two peer-reviewed articles state the epithet flatly, recorded as corroboration rather than as evidence entries (no registered source): Lane 2015, Phil. Trans. R. Soc. B (doi:10.1098/rstb.2014.0344, PMC4360124) -- 'Leeuwenhoek is universally acknowledged as the father of microbiology'; Kutschera 2023, Microorganisms (doi:10.3390/microorganisms11081994, PMC10458164). The prior note's finding that the corpus once UNDERSTATED him ('co-credited for early microscopy', refuted at wave-13 verification) survives this correction — the refutation now rests on the enwiki epithet and the peer-reviewed acknowledgment rather than on the furniture sentence. Record-not-resolve plural founding: joins edge:louis-pasteur-founded-microbiology and edge:robert-koch-founded-microbiology; the ~150-year gap between his observations and the 19th-century founding of the discipline is real and is why the confidence is 0.9 rather than higher, not a dispute about the epithet. Confidence and claim unchanged. Namesake explicitly excluded at identity time: Q15762938 is a Springer scientific journal of the same name.",
+   "note": "anchor correction only — claim, sources-of-record, confidence unchanged"
+  }
+ ],
+ "translation_updates": [],
+ "verdicts": [
+  {
+   "subject_id": "edge:antonie-van-leeuwenhoek-founded-microbiology",
+   "verdict": "supported",
+   "identity_referent_verified": true,
+   "direction_confirmed": true,
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Microbiology",
+     "retrieved_at": "2026-08-08",
+     "quote": "He is considered a father of microbiology as he used simple single-lensed microscopes of his own design.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Microbiology&oldid=1358572173"
+    },
+    {
+     "url": "https://www.britannica.com/biography/Antonie-van-Leeuwenhoek",
+     "retrieved_at": "2026-08-08",
+     "quote": "was a Dutch microscopist who was the first to observe bacteria and protozoa",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260708201029/https://www.britannica.com/biography/Antonie-van-Leeuwenhoek"
+    },
+    {
+     "url": "https://www.britannica.com/biography/Antonie-van-Leeuwenhoek",
+     "retrieved_at": "2026-08-08",
+     "quote": "his observations helped lay the foundations for the sciences of bacteriology and protozoology",
+     "independent": false,
+     "snapshot_url": "https://web.archive.org/web/20260708201029/https://www.britannica.com/biography/Antonie-van-Leeuwenhoek"
+    }
+   ],
+   "notes": "Re-anchor verdict: the furniture placement of the original Britannica quote was found by a person-wave13 verifier (named follow-up in that batch qc-report), measured twice by the orchestrator against the recorded snapshot. Britannica live is Cloudflare-403; both body-lead quotes verified verbatim against the snapshot (rendered link-boundary spacing accounted). Verdict and confidence unchanged."
+  }
+ ],
+ "identity": [],
+ "sanctions": [],
+ "rejections": [],
+ "held": [],
+ "held_resolutions": [],
+ "override_rejections": [],
+ "anchors_pending": [],
+ "notes": [
+  "leeuwenhoek-reanchor-v1: anchor-placement correction on edge:antonie-van-leeuwenhoek-founded-microbiology, executing the named follow-up person-wave13-v1 recorded. The load-bearing Britannica quote sat in the Top Questions block (plus its FAQ JSON-LD mirror), not article body — furniture under §8. The edge always had a second registered claim-stating source (enwiki father-of epithet, body prose) and peer-reviewed corroboration, so the claim and confidence are unchanged; only the anchor moved to Britannica body-lead prose.",
+  "Measured and recorded: this page has NO AI-generation label on its Top Questions block (unlike Britannica ENIAC) — the exclusion rule is furniture-placement, with the AI label as an aggravating observation where present, not the criterion.",
+  "Every clause of the replacement note re-checked against /data (decision (119) rule): pasteur and koch founder edges exist; the wave-13 understatement narrative survives on the non-furniture sources; Q15762938 namesake clause carried over verbatim.",
+  "The editorial summary (batch 12) was checked and does NOT depend on the furniture sentence — it uses the hedged body form (commonly known as the Father of Microbiology). No editorial change needed."
+ ]
+}
