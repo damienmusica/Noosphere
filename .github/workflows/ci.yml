@@ -26,4 +26,5 @@ jobs:
       - run: npm run report:graph
       - run: npm run foundry:validate-batches
       - run: npm run foundry:ladder-fixtures
+      - run: npm run foundry:normalize-fixtures
       - run: npm run report:gap-fixtures

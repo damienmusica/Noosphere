@@ -43,6 +43,18 @@
  *     PASS violating the content-free invariant above; corrected per the
  *     2026-07-02 inspection finding (protect ` - `, collapse one-sided
  *     artifacts, restore).
+ *
+ * Session #64 measured pattern (enwiki ENIAC oldid=1365289299 — three
+ * false-misses on lead-sentence quotes, ruled by independent fetch and traced
+ * here): an HTML COMMENT containing an apostrophe (`<!-- … doesn't … -->`)
+ * fed the session-#55 quote-aware tag matcher, which has no comment
+ * semantics — it read the apostrophe as an attribute-value opener and
+ * consumed to the NEXT apostrophe anywhere downstream, bridging 14.6KB of
+ * real content (the article lead included) into one "tag". Fix: strip
+ * comments (`<!-- … -->`) BEFORE tag stripping. Symmetric and content-free:
+ * comment text is invisible to a reader, so a quote present only inside a
+ * comment must MISS — and now correctly does (fixture-enforced), where the
+ * old bridge made the outcome arbitrary.
  */
 
 export function normalize(input: string): string {
@@ -53,6 +65,11 @@ export function normalize(input: string): string {
   // into the running text and corrupts a lead-sentence quote (session #55).
   if (/<[a-z!/]/i.test(s)) {
     s = s.replace(/<(script|style)[^>]*>[\s\S]*?<\/\1>/gi, " ");
+    // Comments FIRST: they have no attribute semantics, and an apostrophe
+    // inside one (`<!-- … doesn't … -->`) turns the quote-aware matcher below
+    // into a bridge to the next apostrophe anywhere downstream (session #64:
+    // 14.6KB swallowed on enwiki ENIAC, lead section included).
+    s = s.replace(/<!--[\s\S]*?-->/g, " ");
     s = s.replace(/<[a-zA-Z!/][^>"']*(?:(?:"[^"]*"|'[^']*')[^>"']*)*>/g, " ");
   }
   // Decode the entities that actually occur in captured scholarly pages.
