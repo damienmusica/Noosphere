@@ -1,0 +1,402 @@
+{
+ "version": 1,
+ "batch_id": "editorial-batch15-v1",
+ "decided_at": "2026-08-08",
+ "qc_by": {
+  "model_name": "Claude Fable 5",
+  "model_version": "claude-fable-5",
+  "proposed_at": "2026-08-08"
+ },
+ "adds": {
+  "sources": [],
+  "nodes": [],
+  "translations": [],
+  "edges": [],
+  "external_links": []
+ },
+ "promotions": [
+  {
+   "kind": "node",
+   "id": "work:being-and-time",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  },
+  {
+   "kind": "node",
+   "id": "work:being-and-nothingness",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  },
+  {
+   "kind": "node",
+   "id": "work:micrographia",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  },
+  {
+   "kind": "node",
+   "id": "work:either-or",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  },
+  {
+   "kind": "node",
+   "id": "work:process-and-reality",
+   "from": "reviewed",
+   "to": "reviewed",
+   "set_indexable": true,
+   "note": "Indexable earned: reviewed status + reviewed en summary (validate-data enforces the rule)."
+  }
+ ],
+ "translation_updates": [
+  {
+   "node_id": "work:being-and-time",
+   "locale": "en",
+   "summary": "Being and Time (German: Sein und Zeit) is the 1927 magnum opus of the German philosopher Martin Heidegger. In it Heidegger pursued the question of being — the question of the meaning or sense of being — by means of a phenomenological exploration of the way that time structures our engagement with the world, introducing the concept of Dasein (\"being-there\") to describe the distinctive character of human existence. Human beings, he argued, must be understood as beings-in-the-world, and thus as constituted by our relationships to the practical and social contexts that give meaning to our actions; his analytic of Dasein underpinned his critique of post-Cartesian accounts of human beings as subjects in an objective world. The book, along with his many essays and lectures, profoundly influenced subsequent movements in European philosophy, and had a notable impact on literary theory and many other fields.",
+   "reviewed": true
+  },
+  {
+   "node_id": "work:being-and-nothingness",
+   "locale": "en",
+   "summary": "Being and Nothingness: An Essay on Phenomenological Ontology (French: L'Être et le néant : Essai d'ontologie phénoménologique) is a 1943 book by the philosopher Jean-Paul Sartre and his most influential philosophical work, in which he develops a philosophical account in support of his existentialism, dealing with topics such as consciousness, perception, self-deception, the existence of \"nothingness\", and the question of free will. A phenomenological investigation into the nature of what it is to be human, it defines two types of being: the in-itself (en-soi), the being of the object of consciousness, and the for-itself (pour-soi), the being of consciousness itself. The structure and characteristics of the for-itself are its main focal point, and it is there that Sartre gives his account of freedom and of the project of \"bad faith,\" in which one's own real nature as for-itself is discarded to adopt that of the in-itself. Its 1943 publication has been described as \"the groundwork of the Existentialist movement in France,\" and it remains, alongside works by Simone de Beauvoir from the same period, the defining treatise of the existentialist movement.",
+   "reviewed": true
+  },
+  {
+   "node_id": "work:micrographia",
+   "locale": "en",
+   "summary": "Micrographia: or Some Physiological Descriptions of Minute Bodies Made by Magnifying Glasses. With Observations and Inquiries Thereupon is a book by Robert Hooke about his observations through various lenses, published in January 1665 as the first major publication of the Royal Society. It was the first book to include illustrations of insects and plants as seen through microscopes, and it became the first scientific best-seller, inspiring a wide public interest in the new science of microscopy. In it Hooke first used the word \"cell\" to name the microscopic honeycomb cavities in cork, originating the biological term. Although the book is best known for demonstrating the power of the microscope, Micrographia also describes distant planetary bodies, the wave theory of light, the organic origin of fossils, and other philosophical and scientific interests of its author.",
+   "reviewed": true
+  },
+  {
+   "node_id": "work:either-or",
+   "locale": "en",
+   "summary": "Either/Or (Danish: Enten – Eller) is a work in two volumes by the Danish philosopher Søren Kierkegaard, published on 20 February 1843 under the pseudonymous editorship of Victor Eremita (Latin for \"victorious hermit\"). Mostly written during Kierkegaard's stay in Berlin, it is the text he considered properly to begin his authorship, and is generally considered his magnum opus. The book outlines a theory of human existence, marked by the distinction between an essentially hedonistic, aesthetic mode of life and the ethical life, which is predicated upon commitment. Its first volume gathers the papers of a nameless young man known only as \"A,\" who presents a view of what it means to live \"aesthetically,\" while the ethical life view is set out in two long letters from Judge William, Kierkegaard's most famous spokesman for that way of living.",
+   "reviewed": true
+  },
+  {
+   "node_id": "work:process-and-reality",
+   "locale": "en",
+   "summary": "Process and Reality is a book by Alfred North Whitehead, published in 1929, in which the author propounds a philosophy of organism, also called process philosophy. It is a revision of the Gifford Lectures he delivered at the University of Edinburgh in 1927–28, and is his most comprehensive, if difficult to penetrate, metaphysical work. The cosmology it elaborates posits an ontology in which events are seen as networks (or \"societies\") of elementary and atomic events, called \"actual occasions\" or \"actual entities.\" Whitehead's philosophical works, particularly Process and Reality, are regarded as the foundational texts of process philosophy.",
+   "reviewed": true
+  }
+ ],
+ "verdicts": [
+  {
+   "subject_id": "work:being-and-time",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Being_and_Time",
+     "retrieved_at": "2026-08-08",
+     "quote": "Being and Time (German: Sein und Zeit) is the 1927 magnum opus of German philosopher Martin Heidegger and a key document of existentialism.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Being_and_Time&oldid=1362171710"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/heidegger/",
+     "retrieved_at": "2026-08-08",
+     "quote": "In Being and Time, Heidegger pursued the question of being by means of a phenomenological exploration of the way that time structures our engagement with the world.",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/heidegger/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/heidegger/",
+     "retrieved_at": "2026-08-08",
+     "quote": "“the question of being”—the question of the meaning or sense of being",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/heidegger/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Martin_Heidegger",
+     "retrieved_at": "2026-08-08",
+     "quote": "he introduced the concept of Dasein (\"being-there\") to describe the distinctive character of human existence",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Martin_Heidegger&oldid=1366448599"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/heidegger/",
+     "retrieved_at": "2026-08-08",
+     "quote": "must be understood as beings-in-the-world, and thus as constituted by our relationships to the practical and social contexts that give meaning to our actions. The analytic of Dasein underpinned his critique of post-Cartesian accounts of human beings as subjects in an objective world.",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/heidegger/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/heidegger/",
+     "retrieved_at": "2026-08-08",
+     "quote": "His magnum opus, Being and Time (1927), and his many essays and lectures, profoundly influenced subsequent movements in European philosophy",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/heidegger/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Being_and_Time",
+     "retrieved_at": "2026-08-08",
+     "quote": "Being and Time had a notable impact on subsequent philosophy, literary theory and many other fields.",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Being_and_Time&oldid=1362171710"
+    }
+   ]
+  },
+  {
+   "subject_id": "work:being-and-nothingness",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Being_and_Nothingness",
+     "retrieved_at": "2026-08-08",
+     "quote": "is a 1943 book by the philosopher Jean-Paul Sartre. In the book, Sartre develops a philosophical account in support of his existentialism, dealing with topics such as consciousness, perception, social philosophy, self-deception, the existence of \"nothingness\", psychoanalysis, and the question of free will.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Being_and_Nothingness&oldid=1361525700"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Being_and_Nothingness",
+     "retrieved_at": "2026-08-08",
+     "quote": "his most influential philosophical work, original despite its debt to Heidegger",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Being_and_Nothingness&oldid=1361525700"
+    },
+    {
+     "url": "https://iep.utm.edu/sartre-ex/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Being and Nothingness can be characterized as a phenomenological investigation into the nature of what it is to be human",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260803082448/https://iep.utm.edu/sartre-ex/"
+    },
+    {
+     "url": "https://iep.utm.edu/sartre-ex/",
+     "retrieved_at": "2026-08-08",
+     "quote": "there are two types of being which Sartre, using Hegel’s terminology, calls the for-itself (‘pour-soi’) and the in-itself (‘en-soi’)",
+     "independent": false,
+     "snapshot_url": "https://web.archive.org/web/20260803082448/https://iep.utm.edu/sartre-ex/"
+    },
+    {
+     "url": "https://iep.utm.edu/sartre-ex/",
+     "retrieved_at": "2026-08-08",
+     "quote": "The structure and characteristics of the for-itself are the main focal point of the phenomenological analyses of Being and Nothingness.",
+     "independent": false,
+     "snapshot_url": "https://web.archive.org/web/20260803082448/https://iep.utm.edu/sartre-ex/"
+    },
+    {
+     "url": "https://iep.utm.edu/sartre-ex/",
+     "retrieved_at": "2026-08-08",
+     "quote": "a project of self-deception such as bad faith, where one’s own real nature as for-itself is discarded to adopt that of the in-itself",
+     "independent": false,
+     "snapshot_url": "https://web.archive.org/web/20260803082448/https://iep.utm.edu/sartre-ex/"
+    },
+    {
+     "url": "https://iep.utm.edu/existent/",
+     "retrieved_at": "2026-08-08",
+     "quote": "In 1943 Being and Nothingness, the groundwork of the Existentialist movement in France was published.",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260802113204/https://iep.utm.edu/existent/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/sartre/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Being and Nothingness (1943) remains the defining treatise of the existentialist “movement”, along with works from de Beauvoir from this period",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/sartre/"
+    }
+   ]
+  },
+  {
+   "subject_id": "work:micrographia",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Micrographia",
+     "retrieved_at": "2026-08-08",
+     "quote": "is a historically significant book by Robert Hooke about his observations through various lenses.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Micrographia&oldid=1352245999"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Micrographia",
+     "retrieved_at": "2026-08-08",
+     "quote": "Published in January 1665, the first major publication of the Royal Society, it became the first scientific best-seller, inspiring a wide public interest in the new science of microscopy.",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Micrographia&oldid=1352245999"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Micrographia",
+     "retrieved_at": "2026-08-08",
+     "quote": "It was the first book to include illustrations of insects and plants as seen through microscopes.",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Micrographia&oldid=1352245999"
+    },
+    {
+     "url": "https://www.britannica.com/biography/Robert-Hooke",
+     "retrieved_at": "2026-08-08",
+     "quote": "first used the word cell to name the microscopic honeycomb cavities in cork",
+     "independent": true,
+     "snapshot_url": "https://web.archive.org/web/20260714155139/https://www.britannica.com/biography/Robert-Hooke"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Micrographia",
+     "retrieved_at": "2026-08-08",
+     "quote": "The book originated the biological term \"cell\".",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Micrographia&oldid=1352245999"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Micrographia",
+     "retrieved_at": "2026-08-08",
+     "quote": "Although the book is best known for demonstrating the power of the microscope, Micrographia also describes distant planetary bodies, the wave theory of light, the organic origin of fossils, and other philosophical and scientific interests of its author.",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Micrographia&oldid=1352245999"
+    }
+   ]
+  },
+  {
+   "subject_id": "work:either-or",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Either/Or_(Kierkegaard_book)",
+     "retrieved_at": "2026-08-08",
+     "quote": "It appeared in two volumes in 1843 under the pseudonymous editorship of Victor Eremita (Latin for \"victorious hermit\").",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Either/Or_(Kierkegaard_book)&oldid=1362165745"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+     "retrieved_at": "2026-08-08",
+     "quote": "Kierkegaard's magnum opus Either/Or was published 20 February 1843.",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=S%C3%B8ren_Kierkegaard&oldid=1368311039"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+     "retrieved_at": "2026-08-08",
+     "quote": "It was mostly written during Kierkegaard's stay in Berlin",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=S%C3%B8ren_Kierkegaard&oldid=1368311039"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/kierkegaard/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Work on the text that he considered properly to begin his authorship, Either/Or , began almost as soon as he arrived in Berlin, and it was published in 1843",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/kierkegaard/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/S%C3%B8ren_Kierkegaard",
+     "retrieved_at": "2026-08-08",
+     "quote": "Either/Or is considered to be his magnum opus",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=S%C3%B8ren_Kierkegaard&oldid=1368311039"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Either/Or_(Kierkegaard_book)",
+     "retrieved_at": "2026-08-08",
+     "quote": "It outlines a theory of human existence, marked by the distinction between an essentially hedonistic, aesthetic mode of life and the ethical life, which is predicated upon commitment.",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Either/Or_(Kierkegaard_book)&oldid=1362165745"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/kierkegaard/",
+     "retrieved_at": "2026-08-08",
+     "quote": "The first volume of Either/Or consists of the papers of a nameless young man, known only as “A”",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/kierkegaard/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Either/Or_(Kierkegaard_book)",
+     "retrieved_at": "2026-08-08",
+     "quote": "The ethical life view is written as two long letters",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Either/Or_(Kierkegaard_book)&oldid=1362165745"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/kierkegaard/",
+     "retrieved_at": "2026-08-08",
+     "quote": "Kierkegaard’s most famous spokesman for the ethical life is known as Judge (or “Assessor”) William.",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/kierkegaard/"
+    }
+   ]
+  },
+  {
+   "subject_id": "work:process-and-reality",
+   "verdict": "supported",
+   "sources": [
+    {
+     "url": "https://en.wikipedia.org/wiki/Process_and_Reality",
+     "retrieved_at": "2026-08-08",
+     "quote": "Process and Reality is a book by Alfred North Whitehead, in which the author propounds a philosophy of organism, also called process philosophy. The book, published in 1929, is a revision of the Gifford Lectures he gave in 1927–28.",
+     "independent": true,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Process_and_Reality&oldid=1362157376"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/whitehead/",
+     "retrieved_at": "2026-08-08",
+     "quote": "The 1927/28 Gifford Lectures at the University of Edinburgh followed shortly afterwards and resulted in the publication of Whitehead’s most comprehensive (but difficult to penetrate) metaphysical work, Process and Reality (1929c).",
+     "independent": true,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/whitehead/"
+    },
+    {
+     "url": "https://plato.stanford.edu/entries/whitehead/",
+     "retrieved_at": "2026-08-08",
+     "quote": "events are seen as networks (or ‘societies’) of elementary and atomic events, called ‘actual occasions’ or ‘actual entities.’",
+     "independent": false,
+     "revision_permalink": "https://plato.stanford.edu/archives/sum2026/entries/whitehead/"
+    },
+    {
+     "url": "https://en.wikipedia.org/wiki/Alfred_North_Whitehead",
+     "retrieved_at": "2026-08-08",
+     "quote": "Whitehead’s philosophical works – particularly Process and Reality – are regarded as the foundational texts of process philosophy.",
+     "independent": false,
+     "revision_permalink": "https://en.wikipedia.org/w/index.php?title=Alfred_North_Whitehead&oldid=1361815510"
+    },
+    {
+     "url": "https://iep.utm.edu/whitehead/",
+     "retrieved_at": "2026-08-08",
+     "quote": "the pinnacle of Whitehead’s metaphysical work came with his monumental Process and Reality in 1929",
+     "independent": false,
+     "snapshot_url": "https://web.archive.org/web/20260806154147/https://iep.utm.edu/whitehead/"
+    }
+   ]
+  }
+ ],
+ "identity": [],
+ "sanctions": [
+  {
+   "subject_id": "work:being-and-time",
+   "ladder": "editorial-v2"
+  },
+  {
+   "subject_id": "work:being-and-nothingness",
+   "ladder": "editorial-v2"
+  },
+  {
+   "subject_id": "work:micrographia",
+   "ladder": "editorial-v2"
+  },
+  {
+   "subject_id": "work:either-or",
+   "ladder": "editorial-v2"
+  },
+  {
+   "subject_id": "work:process-and-reality",
+   "ladder": "editorial-v2"
+  }
+ ],
+ "rejections": [],
+ "held": [],
+ "held_resolutions": [],
+ "override_rejections": [],
+ "anchors_pending": [],
+ "notes": [
+  "Editorial batch 15: en summaries + indexable flips for the five work-wave7-v1 nodes. Generation = separated-context Opus subagent, self-reported model ID claude-opus-5[1m] (recorded value); method = per-sentence body-prose citation mandate with the corpus rulings as constraints — all four ruling constraints honored, including a mid-quote cut on Britannica Hooke to avoid the cell-theory clause, and a refusal of enwiki's \"first published work of Kierkegaard\" lead claim as false-ish (the 1841 dissertation and 1838 book precede it; SEP's \"considered properly to begin his authorship\" used instead).",
+  "QC close-read patch (1, third occurrence of this pattern — batches 13 and 15 both drafted it): the generator attributed the IEP groundwork quote inline by source name (\"The Internet Encyclopedia of Philosophy describes...\"); house form per decision (122)/batch-13 is the attribution-hedge without inline source naming, so the frame became \"has been described as\" with the quoted phrase kept verbatim. FUTURE-ORDER NOTE: add the no-inline-source-naming constraint to the standing editorial generation order — two consecutive editorial batches drafted it independently.",
+  "Recorded: enwiki Søren Kierkegaard drifted from oldid 1365518285 (session-64 anchors) to 1368311039 during this session; the generator re-verified the quoted sentences survive verbatim at the new revision, and this batch anchors the new oldid. Title trap recorded: enwiki API titles=Either/Or resolves to a 933-byte non-book page; the book is at Either/Or (Kierkegaard book).",
+  "Britannica Top Questions / FAQ JSON-LD excluded again (both present in the Hooke snapshot restating the cell claim; the quoted sentence is the third, independent occurrence in article body). Process and Reality summary deliberately avoids SEP's person-level organism-ontology sentence to keep clear of the held school question."
+ ]
+}

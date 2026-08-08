@@ -1,0 +1,87 @@
+{
+  "version": 2,
+  "batch_id": "work-wave7-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-08-08"
+  },
+  "nodes": [
+    {
+      "id": "work:being-and-time",
+      "type": "work",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Being and Time",
+      "referent": "Martin Heidegger's single-authored 1927 German philosophical treatise 'Sein und Zeit' (Halle: Max Niemeyer Verlag; also published the same year in Husserl's 'Jahrbuch fuer Philosophie und phaenomenologische Forschung', vol. 8) -- his magnum opus of fundamental ontology, introducing the analytic of Dasein and left formally incomplete (a planned continuation was never published). Not the 1962 (Macquarrie/Robinson) or 1996 (Stambaugh) English translations treated as separate bibliographic items, and not any of Heidegger's shorter post-war essays/lectures on related themes (e.g. 'What Is Metaphysics?'), which are distinct texts.",
+      "source_hint": "Stanford Encyclopedia of Philosophy, 'Martin Heidegger' entry (cited as the sum2026 edition); English Wikipedia, 'Martin Heidegger' article.",
+      "note": "Session-64 evidence, orchestrator-supplied and pre-verified, quoted here verbatim for traceability: SEP Heidegger entry (sum2026 preamble) -- \"His magnum opus, Being and Time (1927), and his many essays and lectures, profoundly influenced subsequent movements in European philosophy\"; English Wikipedia 'Martin Heidegger' (oldid 1366448599) discusses it as his magnum opus introducing Dasein. This generation pass did not independently re-fetch either source (no network access); the citation is passed through from the order for QC's anchor step.",
+      "rationale": "person:martin-heidegger (reviewed, humanities) has no canonical_work edge yet in /data; the person was entered this session specifically to receive it (Phase-2 work layer, round 4). W1 edge-demand satisfied: two independent named sources (SEP, enwiki) both explicitly credit this single text as the magnum opus, not merely an important book among several -- the bar work-wave6 applied throughout.",
+      "uncertainty": "High confidence in author, year, German title, and magnum-opus status (extremely well-documented, converging sources). Residual identity risk: (1) simultaneous original publication in both a standalone book and Husserl's Jahrbuch could give a resolver two competing bibliographic forms for the 'same' 1927 work; (2) two materially different English translations (1962, 1996) exist and could be matched as separate items rather than as translations of the single German original; (3) later German editions carry the author's own marginal notes and could be mistaken for a revised edition with a different effective date.",
+      "ambiguous": true
+    },
+    {
+      "id": "work:being-and-nothingness",
+      "type": "work",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Being and Nothingness",
+      "referent": "Jean-Paul Sartre's single-authored 1943 French philosophical treatise 'L'Etre et le Neant: Essai d'ontologie phenomenologique' (Paris: Gallimard, 1943) -- his major treatise of phenomenological ontology (being-in-itself, being-for-itself, freedom, bad faith), standardly credited as the theoretical groundwork of French existentialism. Not the 1956 Hazel Barnes English translation treated as a separate bibliographic item, not Sartre's separate literary works (e.g. La Nausee, Huis Clos), and not his later, much shorter popular lecture 'L'existentialisme est un humanisme' (1946), which is a distinct text despite thematic overlap.",
+      "source_hint": "Internet Encyclopedia of Philosophy, 'Existentialism' entry; Stanford Encyclopedia of Philosophy, 'Jean-Paul Sartre' entry (cited as the sum2026 edition); English Wikipedia, 'Jean-Paul Sartre' article.",
+      "note": "Session-64 evidence, orchestrator-supplied and pre-verified, quoted verbatim: IEP 'Existentialism' -- \"In 1943 Being and Nothingness, the groundwork of the Existentialist movement in France was published\" (movement/field-level language from this source is deliberately NOT acted on in this wave -- see the uncertainty field and the edge's note); English Wikipedia 'Jean-Paul Sartre' (oldid 1367693189) -- \"his principal philosophical work Being and Nothingness\"; SEP 'Jean-Paul Sartre' (sum2026) -- \"his difficult treatise, Being and Nothingness (1943)\". Not independently re-fetched this pass (no network); pass-through citation for QC's anchor step.",
+      "rationale": "person:jean-paul-sartre (reviewed, humanities) has no canonical_work edge yet; the person was entered this session specifically to receive it. W1 satisfied by three independently-named sources converging on this single text as Sartre's principal/major philosophical work.",
+      "uncertainty": "High confidence in author, year, French title. Residual risk: (1) IEP's own quoted language is field/movement-level ('groundwork of the Existentialist movement in France'), not person-work language; this wave deliberately proposes only the work-to-person canonical_work edge, not any founded_or_formalized-style movement/field claim the IEP sentence might otherwise support -- that is out of this wave's scope and would need its own separately-reasoned proposal; (2) usual translation/edition risk (1956 Barnes translation vs. 1943 French original could resolve to different bibliographic items).",
+      "ambiguous": true
+    },
+    {
+      "id": "work:micrographia",
+      "type": "work",
+      "domain": "life_sciences",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Micrographia",
+      "referent": "Robert Hooke's single-authored 1665 illustrated scientific treatise 'Micrographia: or Some Physiological Descriptions of Minute Bodies Made by Magnifying Glasses' (London: printed by Jo. Martyn and Ja. Allestry, printers to the Royal Society, 1665) -- his book of microscope observations spanning biological, mineral, and optical subjects, in which he coined the biological term 'cell' from his description of cork's honeycomb-like compartments. Not any unrelated later work sharing a similar generic title, and not a modern facsimile, abridged-plates, or selected-excerpts reprint edition treated as a separate bibliographic item from the 1665 original.",
+      "source_hint": "Encyclopaedia Britannica, 'Robert Hooke' entry; English Wikipedia, 'Robert Hooke' article.",
+      "note": "Session-64 evidence, orchestrator-supplied and pre-verified, quoted verbatim: English Wikipedia 'Robert Hooke' (oldid 1367205638) -- \"Hooke's 1665 book Micrographia, in which he coined the term cell, encouraged microscopic investigations\"; Britannica's 'Robert Hooke' body prose ties Micrographia (1665) to the first use of the word 'cell'. Not independently re-fetched this pass (no network); pass-through citation for QC's anchor step.",
+      "rationale": "person:robert-hooke (reviewed, life_sciences) has no canonical_work edge yet; the person was entered this session specifically to receive it. W1 satisfied: two independently-named sources credit this single 1665 book with coining 'cell' and driving microscopic investigation -- a specific, decidable watershed claim, not a vague 'important book' claim.",
+      "uncertainty": "High confidence in author, year (1665), title, and the cell-coinage claim (extremely well-attested). Residual identity risk: as a 17th-century work there may be multiple 1665 print-run/issue variants recorded as distinct bibliographic items, and a resolver could instead match a later facsimile or abridged-plates modern reprint edition rather than the original full 1665 text; domain choice (life_sciences) reflects the cell-coinage claim's field, though the book itself also covers physics/mineralogy topics outside that domain.",
+      "ambiguous": true
+    },
+    {
+      "id": "work:either-or",
+      "type": "work",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Either/Or",
+      "referent": "Soren Kierkegaard's single-authored 1843 two-volume work 'Enten - Eller' (Copenhagen: University Bookshop / C.A. Reitzel, published 20 February 1843), presented within the text under the pseudonymous editorship of 'Victor Eremita' and juxtaposing the aesthetic (Volume One, incl. 'The Seducer's Diary') and ethical (Volume Two, Judge Wilhelm's letters) stages of existence -- standardly credited as Kierkegaard's magnum opus and his first major pseudonymous authorship work. Not the later, distinct 1845 book 'Stages on Life's Way' (which revisits a similar stages framework as a separate later text), and treated here as one unified two-volume work, not split into separate per-volume bibliographic items.",
+      "source_hint": "English Wikipedia, 'Soren Kierkegaard' article.",
+      "note": "Session-64 evidence, orchestrator-supplied and pre-verified, quoted verbatim: English Wikipedia 'Soren Kierkegaard' (oldid 1365518285) body prose -- \"Kierkegaard's magnum opus Either/Or was published 20 February 1843.\" Not independently re-fetched this pass (no network); pass-through citation for QC's anchor step. Node ID deliberately uses 'either-or' (no slash) per the ID-format rule.",
+      "rationale": "person:soren-kierkegaard (reviewed, humanities) has no canonical_work edge yet; the person was entered this session specifically to receive it. W1 satisfied: the named source states magnum-opus status with an exact publication date, a specific decidable claim.",
+      "uncertainty": "High confidence in author, exact date (20 February 1843), and magnum-opus status. This is this wave's weakest single-source case (only one named source quoted, vs. two to three for the other four items) -- flagged for QC to seek a second independent source before treating it as multi-source supported. Additional identity risk specific to this work: authorship is pseudonymous within the text itself (credited in-text to editor 'Victor Eremita', with further internal pseudonymous authors for each volume's contents), though authorship-in-fact is uncontestedly Kierkegaard's in every standard secondary source -- a live resolver keyed strictly on a direct author-identity field could stumble on this indirection if the bibliographic record models the pseudonym literally. Also the standard two-volume-vs-single-work structural risk seen with other multi-volume candidates in prior waves.",
+      "ambiguous": true
+    },
+    {
+      "id": "work:process-and-reality",
+      "type": "work",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Process and Reality",
+      "referent": "Alfred North Whitehead's single-authored 1929 philosophical treatise 'Process and Reality: An Essay in Cosmology' (New York: Macmillan; Cambridge: Cambridge University Press, 1929), based on his 1927-1928 Gifford Lectures at the University of Edinburgh -- his systematic metaphysical work developing process philosophy (actual occasions, prehension, concrescence). Not his earlier co-authored 'Principia Mathematica' (with Bertrand Russell, already a separate corpus work: work:principia-mathematica) and not his other solo philosophical books (e.g. 'Science and the Modern World', 1925), which are distinct texts.",
+      "source_hint": "English Wikipedia, 'Alfred North Whitehead' article; Internet Encyclopedia of Philosophy, 'Alfred North Whitehead' entry.",
+      "note": "Session-64 evidence, orchestrator-supplied and pre-verified, quoted verbatim: English Wikipedia 'Alfred North Whitehead' (oldid 1361815510) -- \"Whitehead's philosophical works - particularly Process and Reality - are regarded as the foundational texts of process philosophy\" and \"Lectures from 1927 to 1928 were published in 1929 as a book named Process and Reality\"; IEP 'Whitehead' -- \"the pinnacle of Whitehead's metaphysical work came with his monumental Process and Reality in 1929\". Not independently re-fetched this pass (no network); pass-through citation for QC's anchor step. Per the order's explicit constraint, this node and its edge are scoped strictly to work-person biography-grade credit and make no claim about process-philosophy school-founding (a separately held question).",
+      "rationale": "person:alfred-north-whitehead (reviewed, humanities) already holds one canonical_work edge in /data (to Principia Mathematica, a different co-authored work), but none for this solo-authored text. W1 satisfied: two independently-named sources converge on this single 1929 text as his defining/pinnacle metaphysical work.",
+      "uncertainty": "High confidence in author, year (1929), title, and Gifford-Lectures origin. Residual identity risk: a well-documented 1978 Griffin/Sherburne 'corrected edition' fixed significant textual errors in the 1929 original and is the edition most philosophers now cite -- a resolver could match the 1978 corrected-edition publication data instead of the 1929 original, misdating the work by nearly fifty years. Deliberately not claiming process-philosophy school-founding in this note or the edge's note, per the order's explicit constraint (that question remains held separately).",
+      "ambiguous": true
+    }
+  ],
+  "edges": [],
+  "notes": [
+    "All 5 slate items proposed; none declined. This wave is scoped by the order to work-to-person canonical_work edges only (no field/concept edges) -- every listed target in the slate is a person node, unlike work-wave6 which also targeted concepts/subfields.",
+    "person:alfred-north-whitehead already exists reviewed in /data (added prior to this wave) with one existing canonical_work edge to work:principia-mathematica; this wave's work:process-and-reality node is a second, distinct work for the same person, not a duplicate triangle.",
+    "IEP's quoted language for Being and Nothingness ('groundwork of the Existentialist movement in France') is field/movement-level, not person-work level; per the order's note this was deliberately left unacted-on -- no founded_or_formalized-style movement/field edge is proposed from this material."
+  ]
+}
