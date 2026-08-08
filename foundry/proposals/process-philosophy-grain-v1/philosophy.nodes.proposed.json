@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "batch_id": "process-philosophy-grain-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-08-08"
+  },
+  "nodes": [
+    {
+      "id": "concept:process-philosophy",
+      "type": "concept",
+      "domain": "humanities",
+      "level": 3,
+      "status": "generated",
+      "label_en": "Process Philosophy",
+      "referent": "The metaphysical doctrine/position holding that reality is fundamentally constituted by processes, events, and becoming rather than by static, self-subsistent substances -- associated primarily with Alfred North Whitehead's philosophy of organism as systematized in Process and Reality (1929), and developed further by Charles Hartshorne and later process theologians. This is NOT the looser, perennial 'process approach' sometimes traced back to Heraclitus's flux doctrine or to Bergson's duree (SEP names Heraclitus as the founder of that older, broader approach, a different and prior lineage); NOT process theology specifically (the theological application of this metaphysics to the concept of God, a narrower downstream topic); and NOT a claim that a single, formally bounded 'school' with fixed membership and a named founder exists -- SEP's own Process Philosophy entry states the field 'is not tied to any school, method, position, or even paradigmatic notion of process.' The referent intended here is the specific, bounded 20th-century Whiteheadian doctrine as indexed by philosophy reference taxonomies (e.g. PhilPapers' Metaphysics > Global Metaphysical Theories > Process Philosophy category), not the more diffuse field-level or perennial-tradition reading.",
+      "source_hint": "Stanford Encyclopedia of Philosophy -- 'Process Philosophy' entry (quoted in foundry/held.json's subfield:process-philosophy and person:alfred-north-whitehead entries: 'is not tied to any school, method, position, or even paradigmatic notion of process'; names Heraclitus as founder of the older process approach). PhilPapers taxonomy -- Metaphysics > Global Metaphysical Theories > Process Philosophy category (verified live by this batch's order per decision (120); Wayback anchor already recorded in foundry/held.json). These are unverified pointers for QC, not citations I re-fetched this session.",
+      "note": "Executes the unblock instruction recorded in foundry/held.json's subfield:process-philosophy entry (batch endpoint-closure-wave13-v1, rejected 2026-07-31): 'propose it as concept:process-philosophy part_of subfield:metaphysics, and only when a documented edge demands the endpoint.' No part_of edge is proposed in this batch -- the order scopes this batch to exactly 2 nodes + 3 edges (canonical_work + 2 influenced), and part_of subfield:metaphysics is left for a future batch since it was not in this order's slate and I should not add an edge the order did not ask for.",
+      "rationale": "Directly required as the target for the two influenced edges and the one canonical_work edge in this same batch. Node type is `concept`, not the previously REJECTED `subfield`, because PhilPapers (the ratified philosophy taxonomy authority under decision (102)) files Process Philosophy under Metaphysics > Global Metaphysical Theories -- decision (73) structural rule 5's bounded-doctrine/position branch, which maps to a `concept` node, not a field- or tradition-level `subfield`. This is a grain correction of a previously rejected candidate, not a new topic.",
+      "uncertainty": "The typing choice is exactly where SEP's own entry pushes back: it explicitly denies process philosophy is 'tied to any school, method, position, or even paradigmatic notion of process' -- a diffuse, field-like reading in tension with representing it as one bounded `concept` node. I am proposing `concept` because that is what the ratified taxonomy authority and decision (73) rule 5 require, not because I have personally resolved that tension; a resolver or later ruling could still find the referent under-specified if candidate real-world entities split the same way SEP's prose does. I have no network access this session and have not independently re-fetched the PhilPapers or SEP text myself -- I am relying on the verification already recorded in foundry/held.json and this order.",
+      "ambiguous": true
+    },
+    {
+      "id": "person:charles-hartshorne",
+      "type": "person",
+      "domain": "humanities",
+      "level": 2,
+      "status": "generated",
+      "label_en": "Charles Hartshorne",
+      "referent": "Charles Hartshorne (1897-2000), American philosopher and theologian who taught at the University of Chicago, Emory University, and the University of Texas at Austin; principal developer of process theology by extending Alfred North Whitehead's process philosophy into a systematic theistic metaphysics (neoclassical/panentheistic conception of God), co-editor (with Paul Weiss) of the early volumes of Charles Sanders Peirce's Collected Papers, and a defender of a modal version of the ontological argument. This is specifically the 20th-century American process philosopher/theologian born 1897 and died 2000 -- not any other person sharing the surname Hartshorne, and not the year 2003 sometimes seen misattributed as his death year.",
+      "source_hint": "English Wikipedia -- 'Charles Hartshorne' article (oldid 1359826539, per this order's verified quote): 'Hartshorne is also noted for developing Alfred North Whitehead's process philosophy into process theology.' Internet Encyclopedia of Philosophy (IEP) -- 'Process Philosophy' entry (per this order's verified quote): 'the term \"process philosophy\" is primarily associated with the work of the philosophers Alfred North Whitehead (1861-1947) and Charles Hartshorne (1897-2000).' Unverified pointers for QC, not citations I re-fetched myself this session.",
+      "note": "Created for the plural-grain resolution that foundry/held.json's person:alfred-north-whitehead entry explicitly asked for: 'a node at the Whitehead-Hartshorne grain (with person:charles-hartshorne considered alongside under record-not-resolve).' Not a founder-edge target in this batch -- see edge:charles-hartshorne-influenced-process-philosophy's own rationale/uncertainty for why `influenced`, not `founded_or_formalized`, is proposed, and this batch's edges-file notes for the explicit founded_or_formalized refusal.",
+      "rationale": "IEP names Hartshorne alongside Whitehead as the two philosophers the term 'process philosophy' is primarily associated with, and English Wikipedia credits him by name with developing Whitehead's process philosophy into process theology -- independent, person-level notability that stands on its own regardless of which single edge cites it.",
+      "uncertainty": "I have no network access this session and have not independently verified either quoted source live; I am relying on the order's verified text. I flag the death year specifically (2000, not 2003) because that wrong year does circulate in casual references, and getting a life-dates fact wrong on a newly created person node is the kind of error this corpus's living/deceased discipline cares about -- worth QC's direct date check rather than my say-so alone. Separately: Hartshorne's strongest 'principal figure' language in my sources is scoped to process theology specifically (no corpus node exists for that topic); I am not stretching this node's own description to claim theology-founder status, and no process-theology node is proposed in this batch (see edges-file notes).",
+      "ambiguous": true
+    }
+  ],
+  "notes": []
+}

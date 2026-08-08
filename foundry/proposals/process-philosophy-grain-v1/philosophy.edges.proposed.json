@@ -1,0 +1,68 @@
+{
+  "version": 2,
+  "batch_id": "process-philosophy-grain-v1",
+  "proposed_by": {
+    "model_name": "Claude Sonnet 5",
+    "model_version": "claude-sonnet-5",
+    "proposed_at": "2026-08-08"
+  },
+  "edges": [
+    {
+      "id": "edge:process-and-reality-canonical-work-process-philosophy",
+      "source": "work:process-and-reality",
+      "target": "concept:process-philosophy",
+      "relation": "canonical_work",
+      "confidence": 0.85,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [
+        "source:wikipedia"
+      ],
+      "source_hint": "English Wikipedia -- 'Alfred North Whitehead' article, permalink https://en.wikipedia.org/wiki/Special:PermanentLink/1361815510 (title reconstructed from the oldid; not independently re-fetched by me this session). English Wikipedia -- 'Process philosophy' article, permalink https://en.wikipedia.org/wiki/Special:PermanentLink/1365901441 (same caveat).",
+      "note": "Quotes verified this session per the order (I did not fetch these myself -- no network access): en.wikipedia.org 'Alfred North Whitehead' (oldid 1361815510): 'Whitehead's philosophical works -- particularly Process and Reality -- are regarded as the foundational texts of process philosophy.' en.wikipedia.org 'Process philosophy' (oldid 1365901441): 'In 1929, Whitehead produced the most famous work of process philosophy, Process and Reality.' Two independent Wikipedia articles (the person's and the topic's) agree on the same fact.",
+      "rationale": "Matches an established corpus pattern with three exact-shape reviewed precedents: work:psychology-from-an-empirical-standpoint -canonical_work-> concept:intentionality, work:on-the-electrodynamics-of-moving-bodies -canonical_work-> concept:theory-of-relativity, work:administrative-behavior -canonical_work-> concept:bounded-rationality. Both quoted sources independently state Process and Reality is process philosophy's foundational/most-famous work, which is exactly what canonical_work means ('Work A is canonical for a field, person, or concept B').",
+      "uncertainty": "I have not fetched either Wikipedia article myself this session; I am transcribing the order's verified quotes and oldid numbers faithfully rather than re-deriving them. This edge's target depends on concept:process-philosophy surviving as typed -- see that node's own uncertainty for the live SEP tension over whether a single bounded concept node is the right grain; if the node's type or identity changes under QC, this edge needs to move with it rather than be treated as independently settled.",
+      "ambiguous": false
+    },
+    {
+      "id": "edge:alfred-north-whitehead-influenced-process-philosophy",
+      "source": "person:alfred-north-whitehead",
+      "target": "concept:process-philosophy",
+      "relation": "influenced",
+      "confidence": 0.8,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [
+        "source:sep"
+      ],
+      "source_hint": "Stanford Encyclopedia of Philosophy -- Whitehead entry (the same entry foundry/held.json already quotes for the founded_or_formalized NEI ruling). Not independently re-fetched by me this session.",
+      "note": "SEP-supported grain, verbatim per this order: 'Whitehead's philosophical views posthumously inspired the movement of process philosophy and theology' and 'Later, he was instrumental in pioneering the approach to metaphysics now known as process philosophy.' Records the live enwiki-vs-SEP split rather than hiding it: English Wikipedia's Whitehead lead sentence still asserts 'He created the philosophical school known as process philosophy' on what editorial-batch13-v1 (2026-08-08) characterized as weak (furniture-citation-grade) sourcing, while this corpus's own reviewed en summary was repaired away from that wording toward SEP's more conservative account in that same batch (foundry/held.json ★ SUMMARY CLAUSE RESOLVED note). This edge follows the SEP-anchored reading the corpus already adjudicated toward, not the enwiki lead.",
+      "rationale": "foundry/held.json's person:alfred-north-whitehead entry already concluded founded_or_formalized is NOT ENOUGH EVIDENCE -- SEP denies a school formed in his lifetime and names Heraclitus for the founder role of the older 'process approach' -- but the same SEP entry supports a weaker, precise `influenced` claim in the two verbatim quotes above. This mirrors this corpus's own reviewed precedent for exactly this founder-vs-influencer distinction: edge:ludwig-wittgenstein-influenced-logical-positivism (Wittgenstein influenced, did not found, logical positivism).",
+      "uncertainty": "The corpus carries a live, explicit split on the stronger founding claim (see note) -- I am proposing the SEP-anchored `influenced` reading consistent with the corpus's own recent repair, but a future re-read of enwiki's current lead sentence, or a stronger secondary source, could reopen the founding question. I have not fetched either source live this session; I am using the order's verified quotes. Confidence set at 0.8, below the canonical_work edge's 0.85, to reflect that this is an interpretive relation choice (influenced vs. founded) rather than a single-fact quote match.",
+      "ambiguous": true
+    },
+    {
+      "id": "edge:charles-hartshorne-influenced-process-philosophy",
+      "source": "person:charles-hartshorne",
+      "target": "concept:process-philosophy",
+      "relation": "influenced",
+      "confidence": 0.75,
+      "status": "generated",
+      "evidence_kind": "externally_sourced",
+      "evidence": [
+        "source:wikipedia",
+        "source:iep"
+      ],
+      "source_hint": "English Wikipedia -- 'Charles Hartshorne' article, permalink https://en.wikipedia.org/wiki/Special:PermanentLink/1359826539 (title reconstructed from the oldid; not independently re-fetched by me this session). Internet Encyclopedia of Philosophy -- 'Process Philosophy' entry. Neither re-fetched live by me this session.",
+      "note": "Supported language verified this session per the order: en.wikipedia.org 'Charles Hartshorne' (oldid 1359826539): 'Hartshorne is also noted for developing Alfred North Whitehead's process philosophy into process theology.' IEP 'Process Philosophy': 'the term \"process philosophy\" is primarily associated with the work of the philosophers Alfred North Whitehead (1861-1947) and Charles Hartshorne (1897-2000).' Grain cautions carried over verbatim from the order: this is NOT a founding claim (no source uses founding verbs for Hartshorne; SEP's Process Philosophy entry calls Hartshorne and other 'early followers of Whitehead'), and it is NOT mere-disciple framing either (SEP's Charles Hartshorne entry: 'Most of the major elements of Hartshorne's philosophy were already apparent by the time he became familiar with Whitehead's thought, contrary to a popular misconception'). His strongest principal-figure language in the available sources is scoped to process theism/theology specifically, which has no corpus node -- recorded here as a future-grain observation only; no process-theology node is proposed in this batch.",
+      "rationale": "IEP names Hartshorne alongside Whitehead as the two philosophers the term 'process philosophy' is primarily associated with, and English Wikipedia credits him by name with developing Whitehead's process philosophy into process theology -- influence-grade language from two independent reference sources. This is the plural-grain resolution foundry/held.json's Whitehead entry explicitly asked for ('a node at the Whitehead-Hartshorne grain, with person:charles-hartshorne considered alongside under record-not-resolve').",
+      "uncertainty": "SEP's own Charles Hartshorne entry pushes back on treating him as a mere follower of Whitehead (quoted above) -- so `influenced` may still understate his independent contribution to the doctrine, and the taxonomy has no finer relation for 'independently co-developed.' I deliberately did not propose founded_or_formalized for him: the order states no source uses founding verbs for Hartshorne specifically, and this batch's notes record that founded_or_formalized is being declined for both Whitehead and Hartshorne on a measured sweep. I have not verified either quoted source live this session; I am using the order's verified text. Confidence (0.75) is set below both other edges in this batch to reflect that this is the least directly founding-adjacent of the three claims.",
+      "ambiguous": true
+    }
+  ],
+  "notes": [
+    "founded_or_formalized declined for BOTH person:alfred-north-whitehead and person:charles-hartshorne toward concept:process-philosophy, on the order's own measured sweep (0 clean founder-grade registered sources for either). For Whitehead: foundry/held.json already carries an NEI ruling on exactly this edge shape at the subfield grain, driven by SEP's explicit denial that any school formed in his lifetime and its naming of Heraclitus as founder of the older 'process approach' -- that ruling transfers to the concept grain proposed here, since the underlying source language is unchanged. For Hartshorne: the order states plainly that no source uses founding verbs for him, and SEP's Process Philosophy entry calls him and other early adopters 'early followers of Whitehead' rather than co-founders. Both are proposed instead as `influenced` edges in this batch (confidence 0.8 and 0.75 respectively) -- a deliberate, evidence-driven narrowing, not an omission.",
+    "process theology / process theism has NO corpus node and none is proposed in this batch. Hartshorne's strongest 'principal figure' source language is scoped specifically to that theological application (process theology), not to process philosophy as such -- proposing a node for it, or stretching this batch's Hartshorne edge to cover it, would be scope creep beyond the order's explicit slate. Recorded here as a future-grain observation for a later batch, consistent with the order's own instruction not to propose a process-theology node.",
+    "Batch scope: exactly 2 nodes + 3 edges, matching the order's slate precisely. No other candidate nodes or edges (e.g. a part_of edge from concept:process-philosophy to subfield:metaphysics, which foundry/held.json's rejected-subfield entry gestures at as a possible future step) are proposed here -- the order did not ask for one, and adding it unrequested would be exactly the kind of unrequested scope expansion the generation contract warns against."
+  ]
+}
