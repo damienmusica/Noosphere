@@ -14,7 +14,7 @@
  * stop-point: fix the transcription in the same change as the vault ruling,
  * never silently.
  *
- * Codified through vault decision (126). A decision after this cursor must
+ * Codified through vault decision (127). A decision after this cursor must
  * either update this transcription (with its golden fixture in
  * ladder-fixtures.ts, which guards threshold fidelity in CI) or record an
  * explicit no-op in its decision-log entry; the session-end ritual bumps the

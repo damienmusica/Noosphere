@@ -8,7 +8,7 @@ paths:
 <!-- Action card, loaded when foundry files are opened. NOT a policy restatement. -->
 <!-- Derived, non-authoritative (decision (114)): the policy itself lives in §7.1/§8/§12/§15 + the
      vault decision log; this card has no standing of its own. Change trigger: edit only when the
-     stop-set or gate axis changes. Codified through vault decision (126) — a later decision must
+     stop-set or gate axis changes. Codified through vault decision (127) — a later decision must
      update this card or record an explicit no-op; the session-end ritual bumps the cursor. -->
 <!-- Authority: Obsidian vault decision log (final) → docs/data-foundry.md §7.1/§8/§15 (in-repo). -->
 <!-- If this card and those sources diverge, the card is wrong — fix the card, log the divergence. -->
