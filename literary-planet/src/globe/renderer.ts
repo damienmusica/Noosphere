@@ -4,6 +4,7 @@ import type { Author, Dataset, Relation } from "../types.ts";
 import { RELATION_DEFS } from "../types.ts";
 import { COLORS, GEO_COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS } from "../theme.ts";
 import { arcPoints, slerp, type Vec3 } from "../lib/sphere.ts";
+import { sealGlyph } from "../lib/seal.ts";
 import { visibleAuthorIds, visibleRelations } from "../lib/filter.ts";
 import {
   CAMERA_DEFAULT,
@@ -39,7 +40,13 @@ interface EdgeGroup {
 
 // D2: hierarchy is the information — anchor:context = 3:1
 const NODE_SCALE: Record<Author["tier"], number> = { anchor: 2.1, major: 1.1, context: 0.7 };
+const SEAL_SCALE: Record<Author["tier"], number> = { anchor: 7.4, major: 5.6, context: 4.4 };
 const ARC_SEG = GLOBE.arcSegments;
+
+// D9 (ex libris): serif stacks per script family — system fonts only, no
+// font payload; the OS picks the right face for Cyrillic/CJK/Indic/Arabic
+const SEAL_FONT =
+  '"Iowan Old Style", "Palatino", Georgia, "Songti SC", "Hiragino Mincho ProN", "AppleMyungjo", "Nanum Myeongjo", serif';
 
 // §⑤ two plates: affinity = warm-black sky, geography = midnight cobalt
 interface ModePalette {
@@ -309,6 +316,63 @@ export function createGlobe(
     glowSprites.set(a.id, sprite);
   }
 
+  // D9: at reading distance the point becomes the author's ex libris — the
+  // original-script surname initial in a stamped double ring. Drawn white,
+  // tinted through material.color so selection/dim states need no redraws.
+  function makeSealTexture(glyph: string): THREE.CanvasTexture {
+    const c = document.createElement("canvas");
+    c.width = c.height = 192;
+    const g = c.getContext("2d");
+    if (g) {
+      g.strokeStyle = "rgba(255,255,255,0.9)";
+      g.lineWidth = 4;
+      g.beginPath();
+      g.arc(96, 96, 88, 0, Math.PI * 2);
+      g.stroke();
+      g.lineWidth = 1.5;
+      g.globalAlpha = 0.45;
+      g.beginPath();
+      g.arc(96, 96, 78, 0, Math.PI * 2);
+      g.stroke();
+      g.globalAlpha = 1;
+      g.fillStyle = "#ffffff";
+      g.textAlign = "center";
+      g.textBaseline = "middle";
+      let size = 92;
+      g.font = `600 ${size}px ${SEAL_FONT}`;
+      while (g.measureText(glyph).width > 112 && size > 40) {
+        size -= 6;
+        g.font = `600 ${size}px ${SEAL_FONT}`;
+      }
+      g.fillText(glyph, 96, 102);
+    }
+    return new THREE.CanvasTexture(c);
+  }
+  const sealSprites = new Map<string, THREE.Sprite>();
+  for (const a of authors) {
+    const tex = track(makeSealTexture(sealGlyph(a.id, a.names.original)));
+    const mat = track(
+      new THREE.SpriteMaterial({
+        map: tex,
+        color: COLORS.text,
+        transparent: true,
+        opacity: 0,
+        depthWrite: false
+      })
+    );
+    const sprite = new THREE.Sprite(mat);
+    sprite.visible = false;
+    sprite.renderOrder = 6;
+    scene.add(sprite);
+    sealSprites.set(a.id, sprite);
+  }
+  // 0 at ≥235 (mid LOD), 1 at ≤195 — the stamp develops as you lean in
+  let sealK = 0;
+  function sealFade(dist: number): number {
+    const t = Math.min(1, Math.max(0, (235 - dist) / 40));
+    return t * t * (3 - 2 * t);
+  }
+
   // --- edges ----------------------------------------------------------------
   const edgeRoot = new THREE.Group();
   scene.add(edgeRoot);
@@ -481,7 +545,8 @@ export function createGlobe(
       }
       const scaleK =
         NODE_SCALE[a.tier] *
-        (a.id === s.selectedAuthorId ? 1.35 : a.id === s.hoveredAuthorId ? 1.25 : 1);
+        (a.id === s.selectedAuthorId ? 1.35 : a.id === s.hoveredAuthorId ? 1.25 : 1) *
+        (1 - 0.68 * sealK); // the ball recedes to a mounting pin as its seal develops
       tmpV.set(p[0] * R, p[1] * R, p[2] * R);
       tmpM.compose(
         tmpV,
@@ -519,6 +584,25 @@ export function createGlobe(
       const dimmed =
         s.selectedAuthorId !== null && id !== s.selectedAuthorId && !neighborIds.has(id);
       (sprite.material as THREE.SpriteMaterial).opacity = dimmed ? 0.1 : 0.32;
+    }
+
+    for (const [id, sprite] of sealSprites) {
+      const a = authors[indexOf.get(id) ?? -1];
+      const p = current.get(id);
+      if (!a || !p || sealK < 0.02 || !nodeVisible(a)) {
+        sprite.visible = false;
+        continue;
+      }
+      sprite.visible = true;
+      // lifted off the surface so the globe occludes far-side seals itself
+      sprite.position.set(p[0] * (R + 2.6), p[1] * (R + 2.6), p[2] * (R + 2.6));
+      const k = SEAL_SCALE[a.tier];
+      sprite.scale.set(k, k, 1);
+      const dimmed =
+        s.selectedAuthorId !== null && id !== s.selectedAuthorId && !neighborIds.has(id);
+      const mat = sprite.material as THREE.SpriteMaterial;
+      mat.opacity = sealK * (dimmed ? 0.22 : 0.92);
+      mat.color.set(id === s.selectedAuthorId ? COLORS.brassBright : COLORS.text);
     }
   }
 
@@ -877,6 +961,13 @@ export function createGlobe(
       if (t >= 1) camAnim = null;
     } else {
       controls.update();
+    }
+
+    {
+      const newSealK = sealFade(camera.position.length());
+      const sealChanged = Math.abs(newSealK - sealK) > 0.004;
+      sealK = newSealK;
+      if (sealChanged && !transition) updateNodeInstances();
     }
 
     if (transition) {
