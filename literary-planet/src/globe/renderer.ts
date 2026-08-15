@@ -1,0 +1,793 @@
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import type { Author, Dataset, Relation } from "../types.ts";
+import { RELATION_DEFS } from "../types.ts";
+import { COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS } from "../theme.ts";
+import { arcPoints, slerp, type Vec3 } from "../lib/sphere.ts";
+import { visibleAuthorIds, visibleRelations } from "../lib/filter.ts";
+import {
+  CAMERA_DEFAULT,
+  CAMERA_MAX,
+  CAMERA_MIN,
+  labelBudget,
+  labelPriority,
+  lodLevel,
+  tierVisibleAtLod,
+  type LodLevel
+} from "../lib/lod.ts";
+import type { AppState, Store } from "../state/store.ts";
+import { LabelLayer, type LabelItem, type LabelState } from "./labels.ts";
+
+export interface GlobeCallbacks {
+  onSelect(id: string | null): void;
+  onHover(id: string | null): void;
+  onRelationPick(relation: Relation): void;
+}
+
+export interface GlobeHandle {
+  focusAuthor(id: string, opts?: { distance?: number }): void;
+  resetCamera(): void;
+  zoomBy(factor: number): void;
+  dispose(): void;
+}
+
+interface EdgeGroup {
+  lines: THREE.LineSegments;
+  relations: Relation[]; // parallel: segment block i belongs to relations[i]
+  baseOpacity: number;
+}
+
+const NODE_SCALE: Record<Author["tier"], number> = { anchor: 1.7, major: 1.15, context: 0.85 };
+const ARC_SEG = GLOBE.arcSegments;
+
+function easeInOut(t: number): number {
+  return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+}
+
+export function createGlobe(
+  container: HTMLElement,
+  dataset: Dataset,
+  semantic: Map<string, Vec3>,
+  geo: Map<string, Vec3>,
+  store: Store,
+  cbs: GlobeCallbacks
+): GlobeHandle {
+  const authors = dataset.authors;
+  const indexOf = new Map(authors.map((a, i) => [a.id, i]));
+  const R = GLOBE.radius;
+
+  // --- three basics ---------------------------------------------------------
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  const smallScreen = container.clientWidth < 768;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, smallScreen ? 1.5 : 2));
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.domElement.className = "globe-canvas";
+  renderer.domElement.setAttribute("aria-hidden", "true");
+  container.appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    42,
+    container.clientWidth / Math.max(1, container.clientHeight),
+    1,
+    2000
+  );
+  camera.position.set(0, CAMERA_DEFAULT * 0.32, CAMERA_DEFAULT * 0.95);
+  camera.lookAt(0, 0, 0);
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enablePan = false;
+  controls.minDistance = CAMERA_MIN;
+  controls.maxDistance = CAMERA_MAX;
+  controls.rotateSpeed = 0.55;
+  controls.zoomSpeed = 0.7;
+  controls.enableDamping = true;
+
+  // --- static globe ---------------------------------------------------------
+  const disposables: Array<{ dispose(): void }> = [];
+  function track<T extends { dispose(): void }>(x: T): T {
+    disposables.push(x);
+    return x;
+  }
+
+  const surface = new THREE.Mesh(
+    track(new THREE.SphereGeometry(GLOBE.surfaceRadius, 48, 32)),
+    track(new THREE.MeshBasicMaterial({ color: COLORS.surface }))
+  );
+  scene.add(surface);
+
+  const atmosphere = new THREE.Mesh(
+    track(new THREE.SphereGeometry(GLOBE.surfaceRadius * GLOBE.atmosphereScale, 48, 32)),
+    track(
+      new THREE.MeshBasicMaterial({
+        color: COLORS.teal,
+        transparent: true,
+        opacity: 0.07,
+        side: THREE.BackSide,
+        depthWrite: false
+      })
+    )
+  );
+  scene.add(atmosphere);
+
+  function buildGraticule(): THREE.LineSegments {
+    const pts: number[] = [];
+    const r = GLOBE.graticuleRadius;
+    const step = Math.PI / 6;
+    for (let lat = -Math.PI / 2 + step; lat < Math.PI / 2; lat += step) {
+      const rl = Math.cos(lat) * r;
+      const y = Math.sin(lat) * r;
+      for (let i = 0; i < 72; i++) {
+        const a = (i / 72) * Math.PI * 2;
+        const b = ((i + 1) / 72) * Math.PI * 2;
+        pts.push(Math.sin(a) * rl, y, Math.cos(a) * rl, Math.sin(b) * rl, y, Math.cos(b) * rl);
+      }
+    }
+    for (let lon = 0; lon < Math.PI * 2; lon += step) {
+      for (let i = 0; i < 72; i++) {
+        const a = (i / 72) * Math.PI - Math.PI / 2;
+        const b = ((i + 1) / 72) * Math.PI - Math.PI / 2;
+        pts.push(
+          Math.cos(a) * Math.sin(lon) * r, Math.sin(a) * r, Math.cos(a) * Math.cos(lon) * r,
+          Math.cos(b) * Math.sin(lon) * r, Math.sin(b) * r, Math.cos(b) * Math.cos(lon) * r
+        );
+      }
+    }
+    const g = track(new THREE.BufferGeometry());
+    g.setAttribute("position", new THREE.Float32BufferAttribute(pts, 3));
+    const m = track(
+      new THREE.LineBasicMaterial({ color: COLORS.line, transparent: true, opacity: 0.4 })
+    );
+    return new THREE.LineSegments(g, m);
+  }
+  const graticule = buildGraticule();
+  scene.add(graticule);
+
+  // --- nodes ----------------------------------------------------------------
+  const nodeGeom = track(new THREE.SphereGeometry(1.35, 12, 10));
+  const nodeMat = track(new THREE.MeshBasicMaterial({ color: "#ffffff" }));
+  const nodes = new THREE.InstancedMesh(nodeGeom, nodeMat, authors.length);
+  nodes.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+  scene.add(nodes);
+
+  const pickGeom = track(new THREE.SphereGeometry(4.4, 8, 6));
+  const pickMat = track(
+    new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false, transparent: true })
+  );
+  const pickMesh = new THREE.InstancedMesh(pickGeom, pickMat, authors.length);
+  pickMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+  scene.add(pickMesh);
+
+  const ringGeom = track(new THREE.RingGeometry(2.6, 3.2, 32));
+  const ringMat = track(
+    new THREE.MeshBasicMaterial({
+      color: COLORS.brass,
+      transparent: true,
+      opacity: 0.95,
+      side: THREE.DoubleSide,
+      depthWrite: false
+    })
+  );
+  const ring = new THREE.Mesh(ringGeom, ringMat);
+  ring.visible = false;
+  scene.add(ring);
+
+  const hoverRing = new THREE.Mesh(
+    ringGeom,
+    track(
+      new THREE.MeshBasicMaterial({
+        color: COLORS.text,
+        transparent: true,
+        opacity: 0.5,
+        side: THREE.DoubleSide,
+        depthWrite: false
+      })
+    )
+  );
+  hoverRing.visible = false;
+  scene.add(hoverRing);
+
+  // --- edges ----------------------------------------------------------------
+  const edgeRoot = new THREE.Group();
+  scene.add(edgeRoot);
+  const highlightRoot = new THREE.Group();
+  scene.add(highlightRoot);
+  let edgeGroups: EdgeGroup[] = [];
+  let highlightGroups: EdgeGroup[] = [];
+
+  const arrowGeom = track(new THREE.ConeGeometry(1.0, 3.0, 8));
+  let arrowMesh: THREE.InstancedMesh | null = null;
+
+  function clearGroup(root: THREE.Group, groups: EdgeGroup[]): void {
+    for (const g of groups) {
+      root.remove(g.lines);
+      g.lines.geometry.dispose();
+      (g.lines.material as THREE.Material).dispose();
+    }
+  }
+
+  function buildEdgeGroups(
+    rels: Relation[],
+    positions: Map<string, Vec3>,
+    root: THREE.Group,
+    opacityScale: number,
+    highlighted: boolean
+  ): EdgeGroup[] {
+    const byType = new Map<string, Relation[]>();
+    for (const r of rels) {
+      const list = byType.get(r.type) ?? [];
+      list.push(r);
+      byType.set(r.type, list);
+    }
+    const groups: EdgeGroup[] = [];
+    for (const def of RELATION_DEFS) {
+      const list = byType.get(def.id);
+      if (!list || list.length === 0) continue;
+      const positionsArr: number[] = [];
+      const colorsArr: number[] = [];
+      const color = new THREE.Color(RELATION_COLORS[def.id]);
+      for (const r of list) {
+        const a = positions.get(r.sourceId);
+        const b = positions.get(r.targetId);
+        if (!a || !b) continue;
+        const pts = arcPoints(a, b, ARC_SEG, R);
+        for (let i = 0; i < ARC_SEG; i++) {
+          const p = pts[i]!;
+          const n = pts[i + 1]!;
+          positionsArr.push(p[0], p[1], p[2], n[0], n[1], n[2]);
+          // directed types: dim at source, bright at target = readable direction cue
+          const t0 = i / ARC_SEG;
+          const t1 = (i + 1) / ARC_SEG;
+          const dim = def.direction === "directed" ? 0.45 : 0.85;
+          const k0 = dim + (1 - dim) * t0;
+          const k1 = dim + (1 - dim) * t1;
+          colorsArr.push(color.r * k0, color.g * k0, color.b * k0);
+          colorsArr.push(color.r * k1, color.g * k1, color.b * k1);
+        }
+      }
+      const geom = new THREE.BufferGeometry();
+      geom.setAttribute("position", new THREE.Float32BufferAttribute(positionsArr, 3));
+      geom.setAttribute("color", new THREE.Float32BufferAttribute(colorsArr, 3));
+      const baseOpacity = (highlighted ? 0.95 : def.dashed ? 0.3 : 0.38) * opacityScale;
+      const mat = def.dashed
+        ? new THREE.LineDashedMaterial({
+            vertexColors: true,
+            transparent: true,
+            opacity: baseOpacity,
+            dashSize: 2.4,
+            gapSize: 1.8,
+            depthWrite: false
+          })
+        : new THREE.LineBasicMaterial({
+            vertexColors: true,
+            transparent: true,
+            opacity: baseOpacity,
+            depthWrite: false
+          });
+      const lines = new THREE.LineSegments(geom, mat);
+      if (def.dashed) lines.computeLineDistances();
+      lines.renderOrder = highlighted ? 3 : 1;
+      root.add(lines);
+      groups.push({ lines, relations: list, baseOpacity });
+    }
+    return groups;
+  }
+
+  function buildArrows(rels: Relation[], positions: Map<string, Vec3>): void {
+    if (arrowMesh) {
+      scene.remove(arrowMesh);
+      arrowMesh.dispose();
+      arrowMesh = null;
+    }
+    const directed = rels.filter((r) => r.direction === "directed");
+    if (directed.length === 0) return;
+    const mesh = new THREE.InstancedMesh(
+      arrowGeom,
+      new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.95, depthWrite: false }),
+      directed.length
+    );
+    const m = new THREE.Matrix4();
+    const up = new THREE.Vector3(0, 1, 0);
+    directed.forEach((r, i) => {
+      const a = positions.get(r.sourceId);
+      const b = positions.get(r.targetId);
+      if (!a || !b) return;
+      const pts = arcPoints(a, b, ARC_SEG, R);
+      const tip = pts[Math.round(ARC_SEG * 0.9)]!;
+      const prev = pts[Math.round(ARC_SEG * 0.9) - 1]!;
+      const pos = new THREE.Vector3(...tip);
+      const dir = new THREE.Vector3(tip[0] - prev[0], tip[1] - prev[1], tip[2] - prev[2]).normalize();
+      const quat = new THREE.Quaternion().setFromUnitVectors(up, dir);
+      m.compose(pos, quat, new THREE.Vector3(1, 1, 1));
+      mesh.setMatrixAt(i, m);
+      mesh.setColorAt(i, new THREE.Color(RELATION_COLORS[r.type]));
+    });
+    mesh.instanceMatrix.needsUpdate = true;
+    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+    mesh.renderOrder = 4;
+    scene.add(mesh);
+    arrowMesh = mesh;
+  }
+
+  // --- per-frame state ------------------------------------------------------
+  const labels = new LabelLayer(container);
+  let current = new Map<string, Vec3>(); // live positions (unit vectors)
+  let visibleSet = new Set<string>();
+  let visRels: Relation[] = [];
+  let lod: LodLevel = lodLevel(camera.position.length());
+  let neighborIds = new Set<string>();
+  let transition: { from: Map<string, Vec3>; start: number; dur: number } | null = null;
+  let camAnim: {
+    fromDir: THREE.Vector3;
+    toDir: THREE.Vector3;
+    fromDist: number;
+    toDist: number;
+    start: number;
+    dur: number;
+  } | null = null;
+  let disposed = false;
+
+  function positionsFor(mode: AppState["mode"]): Map<string, Vec3> {
+    return mode === "geo" ? geo : semantic;
+  }
+
+  function setCurrentFrom(map: Map<string, Vec3>): void {
+    current = new Map(map);
+  }
+  setCurrentFrom(positionsFor(store.getState().mode));
+
+  const tmpM = new THREE.Matrix4();
+  const tmpV = new THREE.Vector3();
+  const hidden = new THREE.Matrix4().makeScale(0, 0, 0);
+
+  function nodeVisible(a: Author): boolean {
+    return visibleSet.has(a.id) && tierVisibleAtLod(a.tier, lod);
+  }
+
+  function updateNodeInstances(): void {
+    const s = store.getState();
+    authors.forEach((a, i) => {
+      const p = current.get(a.id);
+      if (!p || !nodeVisible(a)) {
+        nodes.setMatrixAt(i, hidden);
+        pickMesh.setMatrixAt(i, hidden);
+        return;
+      }
+      const scaleK =
+        NODE_SCALE[a.tier] *
+        (a.id === s.selectedAuthorId ? 1.45 : a.id === s.hoveredAuthorId ? 1.25 : 1);
+      tmpV.set(p[0] * R, p[1] * R, p[2] * R);
+      tmpM.compose(
+        tmpV,
+        new THREE.Quaternion(),
+        new THREE.Vector3(scaleK, scaleK, scaleK)
+      );
+      nodes.setMatrixAt(i, tmpM);
+      tmpM.compose(tmpV, new THREE.Quaternion(), new THREE.Vector3(1, 1, 1));
+      pickMesh.setMatrixAt(i, tmpM);
+
+      const dimmed =
+        s.selectedAuthorId !== null &&
+        a.id !== s.selectedAuthorId &&
+        !neighborIds.has(a.id);
+      const tint = new THREE.Color(PERIOD_TINT[a.periods[0] ?? "early-modernism"]);
+      if (a.id === s.selectedAuthorId) tint.set(COLORS.brass);
+      if (dimmed) tint.multiplyScalar(0.42);
+      nodes.setColorAt(i, tint);
+    });
+    nodes.instanceMatrix.needsUpdate = true;
+    pickMesh.instanceMatrix.needsUpdate = true;
+    if (nodes.instanceColor) nodes.instanceColor.needsUpdate = true;
+    nodes.computeBoundingSphere();
+    pickMesh.computeBoundingSphere();
+  }
+
+  function rebuildEdges(): void {
+    clearGroup(edgeRoot, edgeGroups);
+    clearGroup(highlightRoot, highlightGroups);
+    edgeGroups = [];
+    highlightGroups = [];
+    const s = store.getState();
+    const lodRels = visRels.filter((r) => {
+      const sa = authors[indexOf.get(r.sourceId) ?? -1];
+      const ta = authors[indexOf.get(r.targetId) ?? -1];
+      return sa && ta && nodeVisible(sa) && nodeVisible(ta);
+    });
+    const sel = s.selectedAuthorId;
+    if (sel) {
+      const touching = lodRels.filter((r) => r.sourceId === sel || r.targetId === sel);
+      const rest = lodRels.filter((r) => r.sourceId !== sel && r.targetId !== sel);
+      edgeGroups = buildEdgeGroups(rest, current, edgeRoot, 0.28, false);
+      highlightGroups = buildEdgeGroups(touching, current, highlightRoot, 1, true);
+      buildArrows(touching, current);
+    } else {
+      edgeGroups = buildEdgeGroups(lodRels, current, edgeRoot, 1, false);
+      buildArrows([], current);
+    }
+  }
+
+  function recomputeVisibility(): void {
+    const s = store.getState();
+    visibleSet = visibleAuthorIds(authors, s.filters, s.year, s.yearMode);
+    visRels = visibleRelations(dataset.relations, s.filters, visibleSet);
+    neighborIds = new Set();
+    if (s.selectedAuthorId) {
+      for (const r of visRels) {
+        if (r.sourceId === s.selectedAuthorId) neighborIds.add(r.targetId);
+        if (r.targetId === s.selectedAuthorId) neighborIds.add(r.sourceId);
+      }
+    }
+  }
+
+  function updateRings(): void {
+    const s = store.getState();
+    for (const [mesh, id] of [
+      [ring, s.selectedAuthorId],
+      [hoverRing, s.hoveredAuthorId !== s.selectedAuthorId ? s.hoveredAuthorId : null]
+    ] as Array<[THREE.Mesh, string | null]>) {
+      const p = id ? current.get(id) : undefined;
+      const a = id ? authors[indexOf.get(id) ?? -1] : undefined;
+      if (!id || !p || !a || !nodeVisible(a)) {
+        mesh.visible = false;
+        continue;
+      }
+      mesh.visible = true;
+      mesh.position.set(p[0] * R, p[1] * R, p[2] * R);
+      mesh.lookAt(camera.position);
+      const k = NODE_SCALE[a.tier];
+      mesh.scale.set(k, k, k);
+    }
+  }
+
+  // --- labels ---------------------------------------------------------------
+  const movementMembers = new Map<string, string[]>();
+  for (const m of dataset.movements) {
+    movementMembers.set(
+      m.id,
+      authors.filter((a) => a.movements.includes(m.id)).map((a) => a.id)
+    );
+  }
+
+  function updateLabels(): void {
+    const s = store.getState();
+    const w = container.clientWidth;
+    const h = container.clientHeight;
+    const camDir = camera.position.clone().normalize();
+    const items: LabelItem[] = [];
+
+    for (const a of authors) {
+      if (!nodeVisible(a)) continue;
+      const p = current.get(a.id);
+      if (!p) continue;
+      const facing = camDir.x * p[0] + camDir.y * p[1] + camDir.z * p[2];
+      const state: LabelState =
+        a.id === s.selectedAuthorId
+          ? "selected"
+          : a.id === s.hoveredAuthorId
+            ? "hovered"
+            : neighborIds.has(a.id)
+              ? "neighbor"
+              : s.selectedAuthorId
+                ? "dim"
+                : "normal";
+      const priority = labelPriority({
+        tier: a.tier,
+        isSelected: state === "selected",
+        isHovered: state === "hovered",
+        isNeighborOfSelected: state === "neighbor",
+        facingDot: facing
+      });
+      if (priority < 0) continue;
+      tmpV.set(p[0] * R, p[1] * R, p[2] * R).project(camera);
+      if (tmpV.z > 1) continue;
+      items.push({
+        id: a.id,
+        text: a.names.ko,
+        kind: "author",
+        size: a.tier === "anchor" ? "md" : "sm",
+        priority,
+        x: ((tmpV.x + 1) / 2) * w,
+        y: ((-tmpV.y + 1) / 2) * h + 7,
+        state
+      });
+    }
+
+    if (lod !== "near" && !s.selectedAuthorId) {
+      for (const m of dataset.movements) {
+        const members = (movementMembers.get(m.id) ?? []).filter((id) => {
+          const a = authors[indexOf.get(id) ?? -1];
+          return a && nodeVisible(a);
+        });
+        if (members.length < 3) continue;
+        let cx = 0, cy = 0, cz = 0;
+        for (const id of members) {
+          const p = current.get(id);
+          if (!p) continue;
+          cx += p[0]; cy += p[1]; cz += p[2];
+        }
+        const len = Math.hypot(cx, cy, cz);
+        if (len < members.length * 0.45) continue; // members scattered — centroid meaningless
+        cx /= len; cy /= len; cz /= len;
+        const facing = camDir.x * cx + camDir.y * cy + camDir.z * cz;
+        if (facing < 0.25) continue;
+        tmpV.set(cx * R * 1.04, cy * R * 1.04, cz * R * 1.04).project(camera);
+        items.push({
+          id: `mv:${m.id}`,
+          text: m.ko,
+          kind: "movement",
+          size: "lg",
+          priority: 30 + facing * 8,
+          x: ((tmpV.x + 1) / 2) * w,
+          y: ((-tmpV.y + 1) / 2) * h,
+          state: "normal"
+        });
+      }
+    }
+
+    labels.update(items, w, h, labelBudget(lod));
+  }
+
+  // --- picking --------------------------------------------------------------
+  const raycaster = new THREE.Raycaster();
+  raycaster.params.Line = { threshold: 2.2 };
+  const pointer = new THREE.Vector2();
+  let downAt: { x: number; y: number; t: number } | null = null;
+  let hoverPending = false;
+
+  function pickAuthor(clientX: number, clientY: number): string | null {
+    const rect = renderer.domElement.getBoundingClientRect();
+    pointer.set(
+      ((clientX - rect.left) / rect.width) * 2 - 1,
+      -((clientY - rect.top) / rect.height) * 2 + 1
+    );
+    raycaster.setFromCamera(pointer, camera);
+    const hits = raycaster.intersectObject(pickMesh, false);
+    const first = hits[0];
+    if (first?.instanceId === undefined) return null;
+    const a = authors[first.instanceId];
+    return a && nodeVisible(a) ? a.id : null;
+  }
+
+  function pickRelation(): Relation | null {
+    const groups = [...highlightGroups, ...edgeGroups];
+    for (const g of groups) {
+      const hits = raycaster.intersectObject(g.lines, false);
+      const first = hits[0];
+      if (first?.index !== undefined) {
+        const rel = g.relations[Math.floor(first.index / (ARC_SEG * 2))];
+        if (rel) return rel;
+      }
+    }
+    return null;
+  }
+
+  function onPointerMove(e: PointerEvent): void {
+    if (e.pointerType === "touch") return;
+    if (hoverPending) return;
+    hoverPending = true;
+    requestAnimationFrame(() => {
+      hoverPending = false;
+      if (disposed) return;
+      const id = pickAuthor(e.clientX, e.clientY);
+      renderer.domElement.style.cursor = id ? "pointer" : "grab";
+      if (id !== store.getState().hoveredAuthorId) cbs.onHover(id);
+    });
+  }
+
+  function onPointerDown(e: PointerEvent): void {
+    downAt = { x: e.clientX, y: e.clientY, t: performance.now() };
+  }
+
+  function onPointerUp(e: PointerEvent): void {
+    if (!downAt) return;
+    const moved = Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y);
+    const dt = performance.now() - downAt.t;
+    downAt = null;
+    if (moved > 6 || dt > 700) return; // drag, not click
+    const id = pickAuthor(e.clientX, e.clientY);
+    if (id) {
+      cbs.onSelect(id);
+      return;
+    }
+    const rel = pickRelation();
+    if (rel) {
+      cbs.onRelationPick(rel);
+      return;
+    }
+    cbs.onSelect(null);
+  }
+
+  renderer.domElement.addEventListener("pointermove", onPointerMove);
+  renderer.domElement.addEventListener("pointerdown", onPointerDown);
+  renderer.domElement.addEventListener("pointerup", onPointerUp);
+  renderer.domElement.addEventListener("pointerleave", () => {
+    if (store.getState().hoveredAuthorId) cbs.onHover(null);
+  });
+
+  // --- store subscription with field diffing --------------------------------
+  let prev = store.getState();
+  recomputeVisibility();
+  updateNodeInstances();
+  rebuildEdges();
+  updateLabels();
+
+  const unsub = store.subscribe(() => {
+    const s = store.getState();
+    const filtersChanged =
+      s.filters !== prev.filters || s.year !== prev.year || s.yearMode !== prev.yearMode;
+    const selectionChanged = s.selectedAuthorId !== prev.selectedAuthorId;
+    const hoverChanged = s.hoveredAuthorId !== prev.hoveredAuthorId;
+    const modeChanged = s.mode !== prev.mode;
+    prev = s;
+
+    if (modeChanged) {
+      const from = new Map(current);
+      transition = {
+        from,
+        start: performance.now(),
+        dur: s.reducedMotion ? 0 : 950
+      };
+      edgeRoot.visible = false;
+      highlightRoot.visible = false;
+      if (arrowMesh) arrowMesh.visible = false;
+      // swing the camera with the nodes, or the map ends up facing empty ocean
+      const target = positionsFor(s.mode);
+      let aim: Vec3 | undefined = s.selectedAuthorId
+        ? target.get(s.selectedAuthorId)
+        : undefined;
+      if (!aim) {
+        let cx = 0, cy = 0, cz = 0;
+        for (const id of visibleSet) {
+          const p = target.get(id);
+          if (!p) continue;
+          cx += p[0]; cy += p[1]; cz += p[2];
+        }
+        const len = Math.hypot(cx, cy, cz);
+        if (len > 1e-3) aim = [cx / len, cy / len, cz / len];
+      }
+      if (aim) {
+        animateCameraTo(new THREE.Vector3(aim[0], aim[1], aim[2]), camera.position.length());
+      }
+    }
+    if (filtersChanged || selectionChanged) {
+      recomputeVisibility();
+      updateNodeInstances();
+      if (!transition) rebuildEdges();
+      updateLabels();
+    } else if (hoverChanged) {
+      updateNodeInstances();
+      updateLabels();
+    }
+    updateRings();
+  });
+
+  // --- camera focus ---------------------------------------------------------
+  function animateCameraTo(dir: THREE.Vector3, dist: number): void {
+    const s = store.getState();
+    if (s.reducedMotion) {
+      camera.position.copy(dir.clone().multiplyScalar(dist));
+      camera.lookAt(0, 0, 0);
+      return;
+    }
+    camAnim = {
+      fromDir: camera.position.clone().normalize(),
+      toDir: dir.clone().normalize(),
+      fromDist: camera.position.length(),
+      toDist: dist,
+      start: performance.now(),
+      dur: 850
+    };
+  }
+
+  function focusAuthor(id: string, opts?: { distance?: number }): void {
+    const p = current.get(id);
+    if (!p) return;
+    const dist = opts?.distance ?? Math.min(camera.position.length(), 215);
+    animateCameraTo(new THREE.Vector3(p[0], p[1], p[2]), dist);
+  }
+
+  function resetCamera(): void {
+    animateCameraTo(new THREE.Vector3(0, 0.32, 0.95).normalize(), CAMERA_DEFAULT);
+  }
+
+  function zoomBy(factor: number): void {
+    const dist = Math.min(
+      CAMERA_MAX,
+      Math.max(CAMERA_MIN, camera.position.length() * factor)
+    );
+    animateCameraTo(camera.position.clone().normalize(), dist);
+  }
+
+  // --- resize / loop --------------------------------------------------------
+  const ro = new ResizeObserver(() => {
+    const w = container.clientWidth;
+    const h = Math.max(1, container.clientHeight);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+    updateLabels();
+  });
+  ro.observe(container);
+
+  let rafId = 0;
+  let lastCamPos = camera.position.clone();
+
+  function frame(now: number): void {
+    if (disposed) return;
+    rafId = requestAnimationFrame(frame);
+
+    if (camAnim) {
+      const t = camAnim.dur === 0 ? 1 : Math.min(1, (now - camAnim.start) / camAnim.dur);
+      const k = easeInOut(t);
+      const dir = camAnim.fromDir.clone().lerp(camAnim.toDir, k).normalize();
+      const dist = camAnim.fromDist + (camAnim.toDist - camAnim.fromDist) * k;
+      camera.position.copy(dir.multiplyScalar(dist));
+      camera.lookAt(0, 0, 0);
+      if (t >= 1) camAnim = null;
+    } else {
+      controls.update();
+    }
+
+    if (transition) {
+      const s = store.getState();
+      const target = positionsFor(s.mode);
+      const t =
+        transition.dur === 0 ? 1 : Math.min(1, (now - transition.start) / transition.dur);
+      const k = easeInOut(t);
+      for (const a of authors) {
+        const from = transition.from.get(a.id);
+        const to = target.get(a.id);
+        if (from && to) current.set(a.id, slerp(from, to, k));
+      }
+      updateNodeInstances();
+      updateRings();
+      updateLabels();
+      if (t >= 1) {
+        transition = null;
+        setCurrentFrom(target);
+        edgeRoot.visible = true;
+        highlightRoot.visible = true;
+        if (arrowMesh) arrowMesh.visible = true;
+        rebuildEdges();
+        updateLabels();
+      }
+    }
+
+    const newLod = lodLevel(camera.position.length());
+    if (newLod !== lod) {
+      lod = newLod;
+      updateNodeInstances();
+      if (!transition) rebuildEdges();
+      updateLabels();
+    } else if (!camera.position.equals(lastCamPos)) {
+      updateLabels();
+      updateRings();
+    }
+    lastCamPos.copy(camera.position);
+
+    renderer.render(scene, camera);
+  }
+  rafId = requestAnimationFrame(frame);
+
+  function dispose(): void {
+    disposed = true;
+    cancelAnimationFrame(rafId);
+    unsub();
+    ro.disconnect();
+    labels.dispose();
+    clearGroup(edgeRoot, edgeGroups);
+    clearGroup(highlightRoot, highlightGroups);
+    if (arrowMesh) {
+      scene.remove(arrowMesh);
+      arrowMesh.dispose();
+    }
+    nodes.dispose();
+    pickMesh.dispose();
+    for (const d of disposables) d.dispose();
+    controls.dispose();
+    renderer.dispose();
+    renderer.domElement.remove();
+  }
+
+  return { focusAuthor, resetCamera, zoomBy, dispose };
+}

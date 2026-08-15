@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "literary-planet-dev",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "cd /Users/damienmusica/Desktop/LASHHILLAPPS/Noosphere/.claude/worktrees/literary-planet-master-c3d1d0/literary-planet && npm run dev -- --port 5199 --strictPort"
+      ],
+      "port": 5199
+    }
+  ]
+}
