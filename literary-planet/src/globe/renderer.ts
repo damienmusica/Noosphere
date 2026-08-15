@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import type { Author, Dataset, Relation } from "../types.ts";
 import { RELATION_DEFS } from "../types.ts";
-import { COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS } from "../theme.ts";
+import { COLORS, GEO_COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS } from "../theme.ts";
 import { arcPoints, slerp, type Vec3 } from "../lib/sphere.ts";
 import { visibleAuthorIds, visibleRelations } from "../lib/filter.ts";
 import {
@@ -37,8 +37,38 @@ interface EdgeGroup {
   baseOpacity: number;
 }
 
-const NODE_SCALE: Record<Author["tier"], number> = { anchor: 1.7, major: 1.15, context: 0.85 };
+// D2: hierarchy is the information — anchor:context = 3:1
+const NODE_SCALE: Record<Author["tier"], number> = { anchor: 2.1, major: 1.1, context: 0.7 };
 const ARC_SEG = GLOBE.arcSegments;
+
+// §⑤ two plates: affinity = warm-black sky, geography = midnight cobalt
+interface ModePalette {
+  surface: THREE.Color;
+  line: THREE.Color;
+  lineOp: number;
+  ref: THREE.Color;
+  refOp: number;
+  atmo: THREE.Color;
+  atmoOp: number;
+}
+const SEM_PAL: ModePalette = {
+  surface: new THREE.Color(COLORS.surface),
+  line: new THREE.Color(COLORS.line),
+  lineOp: 0.28,
+  ref: new THREE.Color(COLORS.lineAccent),
+  refOp: 0.55,
+  atmo: new THREE.Color(COLORS.brass),
+  atmoOp: 0.06
+};
+const GEO_PAL: ModePalette = {
+  surface: new THREE.Color(GEO_COLORS.surface),
+  line: new THREE.Color(GEO_COLORS.line),
+  lineOp: 0.32,
+  ref: new THREE.Color(GEO_COLORS.lineStrong),
+  refOp: 0.55,
+  atmo: new THREE.Color(GEO_COLORS.atmosphere),
+  atmoOp: 0.09
+};
 
 function easeInOut(t: number): number {
   return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
@@ -90,31 +120,43 @@ export function createGlobe(
     return x;
   }
 
+  const surfaceMat = track(new THREE.MeshBasicMaterial({ color: COLORS.surface }));
   const surface = new THREE.Mesh(
     track(new THREE.SphereGeometry(GLOBE.surfaceRadius, 48, 32)),
-    track(new THREE.MeshBasicMaterial({ color: COLORS.surface }))
+    surfaceMat
   );
   scene.add(surface);
 
+  const atmoMat = track(
+    new THREE.MeshBasicMaterial({
+      color: COLORS.brass,
+      transparent: true,
+      opacity: 0.06,
+      side: THREE.BackSide,
+      depthWrite: false
+    })
+  );
   const atmosphere = new THREE.Mesh(
     track(new THREE.SphereGeometry(GLOBE.surfaceRadius * GLOBE.atmosphereScale, 48, 32)),
-    track(
-      new THREE.MeshBasicMaterial({
-        color: COLORS.teal,
-        transparent: true,
-        opacity: 0.07,
-        side: THREE.BackSide,
-        depthWrite: false
-      })
-    )
+    atmoMat
   );
   scene.add(atmosphere);
+
+  // D1: fine 15° instrument grid — each line shy, the system dense.
+  // Equator + prime meridian live in a separate accent geometry with tick marks.
+  const gratMat = track(
+    new THREE.LineBasicMaterial({ color: COLORS.line, transparent: true, opacity: 0.28 })
+  );
+  const refMat = track(
+    new THREE.LineBasicMaterial({ color: COLORS.lineAccent, transparent: true, opacity: 0.55 })
+  );
 
   function buildGraticule(): THREE.LineSegments {
     const pts: number[] = [];
     const r = GLOBE.graticuleRadius;
-    const step = Math.PI / 6;
-    for (let lat = -Math.PI / 2 + step; lat < Math.PI / 2; lat += step) {
+    const step = Math.PI / 12;
+    for (let lat = -Math.PI / 2 + step; lat < Math.PI / 2 - 1e-4; lat += step) {
+      if (Math.abs(lat) < 1e-4) continue; // equator drawn as reference ring
       const rl = Math.cos(lat) * r;
       const y = Math.sin(lat) * r;
       for (let i = 0; i < 72; i++) {
@@ -123,7 +165,8 @@ export function createGlobe(
         pts.push(Math.sin(a) * rl, y, Math.cos(a) * rl, Math.sin(b) * rl, y, Math.cos(b) * rl);
       }
     }
-    for (let lon = 0; lon < Math.PI * 2; lon += step) {
+    for (let lon = 0; lon < Math.PI * 2 - 1e-4; lon += step) {
+      if (Math.abs(lon) < 1e-4 || Math.abs(lon - Math.PI) < 1e-4) continue; // prime meridian ring
       for (let i = 0; i < 72; i++) {
         const a = (i / 72) * Math.PI - Math.PI / 2;
         const b = ((i + 1) / 72) * Math.PI - Math.PI / 2;
@@ -135,16 +178,52 @@ export function createGlobe(
     }
     const g = track(new THREE.BufferGeometry());
     g.setAttribute("position", new THREE.Float32BufferAttribute(pts, 3));
-    const m = track(
-      new THREE.LineBasicMaterial({ color: COLORS.line, transparent: true, opacity: 0.4 })
-    );
-    return new THREE.LineSegments(g, m);
+    return new THREE.LineSegments(g, gratMat);
   }
-  const graticule = buildGraticule();
-  scene.add(graticule);
+  scene.add(buildGraticule());
+
+  function buildReferenceRings(): THREE.LineSegments {
+    const pts: number[] = [];
+    const r = GLOBE.graticuleRadius + 0.05;
+    // equator
+    for (let i = 0; i < 144; i++) {
+      const a = (i / 144) * Math.PI * 2;
+      const b = ((i + 1) / 144) * Math.PI * 2;
+      pts.push(Math.sin(a) * r, 0, Math.cos(a) * r, Math.sin(b) * r, 0, Math.cos(b) * r);
+    }
+    // prime meridian (full great circle through both poles)
+    for (let i = 0; i < 144; i++) {
+      const a = (i / 144) * Math.PI * 2;
+      const b = ((i + 1) / 144) * Math.PI * 2;
+      pts.push(0, Math.sin(a) * r, Math.cos(a) * r, 0, Math.sin(b) * r, Math.cos(b) * r);
+    }
+    // 15° tick marks on the equator — the instrument's scale
+    for (let k = 0; k < 24; k++) {
+      const a = (k / 24) * Math.PI * 2;
+      const sa = Math.sin(a);
+      const ca = Math.cos(a);
+      pts.push(sa * r, 0, ca * r, sa * (r + 1.8), 0, ca * (r + 1.8));
+    }
+    const g = track(new THREE.BufferGeometry());
+    g.setAttribute("position", new THREE.Float32BufferAttribute(pts, 3));
+    return new THREE.LineSegments(g, refMat);
+  }
+  scene.add(buildReferenceRings());
+
+  function applyPalette(k: number): void {
+    surfaceMat.color.lerpColors(SEM_PAL.surface, GEO_PAL.surface, k);
+    gratMat.color.lerpColors(SEM_PAL.line, GEO_PAL.line, k);
+    gratMat.opacity = SEM_PAL.lineOp + (GEO_PAL.lineOp - SEM_PAL.lineOp) * k;
+    refMat.color.lerpColors(SEM_PAL.ref, GEO_PAL.ref, k);
+    refMat.opacity = SEM_PAL.refOp + (GEO_PAL.refOp - SEM_PAL.refOp) * k;
+    atmoMat.color.lerpColors(SEM_PAL.atmo, GEO_PAL.atmo, k);
+    atmoMat.opacity = SEM_PAL.atmoOp + (GEO_PAL.atmoOp - SEM_PAL.atmoOp) * k;
+  }
+  let paletteK = store.getState().mode === "geo" ? 1 : 0;
+  applyPalette(paletteK);
 
   // --- nodes ----------------------------------------------------------------
-  const nodeGeom = track(new THREE.SphereGeometry(1.35, 12, 10));
+  const nodeGeom = track(new THREE.SphereGeometry(1.35, 24, 16));
   const nodeMat = track(new THREE.MeshBasicMaterial({ color: "#ffffff" }));
   const nodes = new THREE.InstancedMesh(nodeGeom, nodeMat, authors.length);
   nodes.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
@@ -158,34 +237,77 @@ export function createGlobe(
   pickMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
   scene.add(pickMesh);
 
-  const ringGeom = track(new THREE.RingGeometry(2.6, 3.2, 32));
-  const ringMat = track(
-    new THREE.MeshBasicMaterial({
-      color: COLORS.brass,
-      transparent: true,
-      opacity: 0.95,
-      side: THREE.DoubleSide,
-      depthWrite: false
-    })
-  );
-  const ring = new THREE.Mesh(ringGeom, ringMat);
-  ring.visible = false;
-  scene.add(ring);
-
-  const hoverRing = new THREE.Mesh(
-    ringGeom,
-    track(
+  // D3: the selection marker is a reticle — thin double ring + cardinal ticks,
+  // the aiming language of an astronomical instrument.
+  function makeReticle(color: string, opacity: number, double: boolean): THREE.Group {
+    const group = new THREE.Group();
+    const mat = track(
       new THREE.MeshBasicMaterial({
-        color: COLORS.text,
+        color,
         transparent: true,
-        opacity: 0.5,
+        opacity,
         side: THREE.DoubleSide,
         depthWrite: false
       })
-    )
-  );
+    );
+    if (double) {
+      group.add(new THREE.Mesh(track(new THREE.RingGeometry(2.7, 2.85, 48)), mat));
+      group.add(new THREE.Mesh(track(new THREE.RingGeometry(3.3, 3.45, 48)), mat));
+      const tickGeom = track(new THREE.PlaneGeometry(0.14, 0.6));
+      for (let i = 0; i < 4; i++) {
+        const tick = new THREE.Mesh(tickGeom, mat);
+        const a = (i / 4) * Math.PI * 2;
+        tick.position.set(Math.cos(a) * 3.85, Math.sin(a) * 3.85, 0);
+        tick.rotation.z = a + Math.PI / 2;
+        group.add(tick);
+      }
+    } else {
+      group.add(new THREE.Mesh(track(new THREE.RingGeometry(2.9, 3.05, 48)), mat));
+    }
+    return group;
+  }
+  const ring = makeReticle(COLORS.brass, 0.95, true);
+  ring.visible = false;
+  scene.add(ring);
+  const hoverRing = makeReticle(COLORS.text, 0.4, false);
   hoverRing.visible = false;
   scene.add(hoverRing);
+
+  // D2: anchors alone get a micro halo — a single additive billboard, no bloom.
+  function makeGlowTexture(): THREE.CanvasTexture {
+    const c = document.createElement("canvas");
+    c.width = c.height = 128;
+    const g = c.getContext("2d");
+    if (g) {
+      const grd = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+      grd.addColorStop(0, "rgba(255,255,255,0.9)");
+      grd.addColorStop(0.35, "rgba(255,255,255,0.26)");
+      grd.addColorStop(1, "rgba(255,255,255,0)");
+      g.fillStyle = grd;
+      g.fillRect(0, 0, 128, 128);
+    }
+    return new THREE.CanvasTexture(c);
+  }
+  const glowTexture = track(makeGlowTexture());
+  const glowSprites = new Map<string, THREE.Sprite>();
+  for (const a of authors) {
+    if (a.tier !== "anchor") continue;
+    const mat = track(
+      new THREE.SpriteMaterial({
+        map: glowTexture,
+        color: COLORS.brassBright,
+        transparent: true,
+        opacity: 0.32,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+      })
+    );
+    const sprite = new THREE.Sprite(mat);
+    sprite.scale.set(8.5, 8.5, 1);
+    sprite.visible = false;
+    scene.add(sprite);
+    glowSprites.set(a.id, sprite);
+  }
 
   // --- edges ----------------------------------------------------------------
   const edgeRoot = new THREE.Group();
@@ -195,7 +317,9 @@ export function createGlobe(
   let edgeGroups: EdgeGroup[] = [];
   let highlightGroups: EdgeGroup[] = [];
 
-  const arrowGeom = track(new THREE.ConeGeometry(1.0, 3.0, 8));
+  // D4: the arrowhead is a confirmation stamp, not the protagonist —
+  // direction is already carried by the dim-source/bright-target gradient
+  const arrowGeom = track(new THREE.ConeGeometry(0.55, 1.6, 8));
   let arrowMesh: THREE.InstancedMesh | null = null;
 
   function clearGroup(root: THREE.Group, groups: EdgeGroup[]): void {
@@ -248,7 +372,8 @@ export function createGlobe(
       const geom = new THREE.BufferGeometry();
       geom.setAttribute("position", new THREE.Float32BufferAttribute(positionsArr, 3));
       geom.setAttribute("color", new THREE.Float32BufferAttribute(colorsArr, 3));
-      const baseOpacity = (highlighted ? 0.95 : def.dashed ? 0.3 : 0.38) * opacityScale;
+      // D5: three-step hierarchy — overview lines carry "milky-way density"
+      const baseOpacity = (highlighted ? 0.95 : def.dashed ? 0.34 : 0.42) * opacityScale;
       const mat = def.dashed
         ? new THREE.LineDashedMaterial({
             vertexColors: true,
@@ -283,7 +408,7 @@ export function createGlobe(
     if (directed.length === 0) return;
     const mesh = new THREE.InstancedMesh(
       arrowGeom,
-      new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.95, depthWrite: false }),
+      new THREE.MeshBasicMaterial({ transparent: true, opacity: 0.8, depthWrite: false }),
       directed.length
     );
     const m = new THREE.Matrix4();
@@ -317,6 +442,7 @@ export function createGlobe(
   let lod: LodLevel = lodLevel(camera.position.length());
   let neighborIds = new Set<string>();
   let transition: { from: Map<string, Vec3>; start: number; dur: number } | null = null;
+  let paletteFrom = 0;
   let camAnim: {
     fromDir: THREE.Vector3;
     toDir: THREE.Vector3;
@@ -355,7 +481,7 @@ export function createGlobe(
       }
       const scaleK =
         NODE_SCALE[a.tier] *
-        (a.id === s.selectedAuthorId ? 1.45 : a.id === s.hoveredAuthorId ? 1.25 : 1);
+        (a.id === s.selectedAuthorId ? 1.35 : a.id === s.hoveredAuthorId ? 1.25 : 1);
       tmpV.set(p[0] * R, p[1] * R, p[2] * R);
       tmpM.compose(
         tmpV,
@@ -371,7 +497,7 @@ export function createGlobe(
         a.id !== s.selectedAuthorId &&
         !neighborIds.has(a.id);
       const tint = new THREE.Color(PERIOD_TINT[a.periods[0] ?? "early-modernism"]);
-      if (a.id === s.selectedAuthorId) tint.set(COLORS.brass);
+      if (a.id === s.selectedAuthorId) tint.set(COLORS.brassBright);
       if (dimmed) tint.multiplyScalar(0.42);
       nodes.setColorAt(i, tint);
     });
@@ -380,6 +506,20 @@ export function createGlobe(
     if (nodes.instanceColor) nodes.instanceColor.needsUpdate = true;
     nodes.computeBoundingSphere();
     pickMesh.computeBoundingSphere();
+
+    for (const [id, sprite] of glowSprites) {
+      const a = authors[indexOf.get(id) ?? -1];
+      const p = current.get(id);
+      if (!a || !p || !nodeVisible(a)) {
+        sprite.visible = false;
+        continue;
+      }
+      sprite.visible = true;
+      sprite.position.set(p[0] * R, p[1] * R, p[2] * R);
+      const dimmed =
+        s.selectedAuthorId !== null && id !== s.selectedAuthorId && !neighborIds.has(id);
+      (sprite.material as THREE.SpriteMaterial).opacity = dimmed ? 0.1 : 0.32;
+    }
   }
 
   function rebuildEdges(): void {
@@ -424,7 +564,7 @@ export function createGlobe(
     for (const [mesh, id] of [
       [ring, s.selectedAuthorId],
       [hoverRing, s.hoveredAuthorId !== s.selectedAuthorId ? s.hoveredAuthorId : null]
-    ] as Array<[THREE.Mesh, string | null]>) {
+    ] as Array<[THREE.Object3D, string | null]>) {
       const p = id ? current.get(id) : undefined;
       const a = id ? authors[indexOf.get(id) ?? -1] : undefined;
       if (!id || !p || !a || !nodeVisible(a)) {
@@ -611,6 +751,16 @@ export function createGlobe(
   rebuildEdges();
   updateLabels();
 
+  // deep links (#/?a=…) should open already aimed at their author
+  {
+    const boot = store.getState().selectedAuthorId;
+    const p = boot ? current.get(boot) : undefined;
+    if (p) {
+      camera.position.set(p[0], p[1], p[2]).normalize().multiplyScalar(240);
+      camera.lookAt(0, 0, 0);
+    }
+  }
+
   const unsub = store.subscribe(() => {
     const s = store.getState();
     const filtersChanged =
@@ -627,6 +777,7 @@ export function createGlobe(
         start: performance.now(),
         dur: s.reducedMotion ? 0 : 950
       };
+      paletteFrom = paletteK;
       edgeRoot.visible = false;
       highlightRoot.visible = false;
       if (arrowMesh) arrowMesh.visible = false;
@@ -739,12 +890,18 @@ export function createGlobe(
         const to = target.get(a.id);
         if (from && to) current.set(a.id, slerp(from, to, k));
       }
+      // ⑤ the stars stay, the world changes: plate colors cross-fade in sync
+      const targetK = s.mode === "geo" ? 1 : 0;
+      paletteK = paletteFrom + (targetK - paletteFrom) * k;
+      applyPalette(paletteK);
       updateNodeInstances();
       updateRings();
       updateLabels();
       if (t >= 1) {
         transition = null;
         setCurrentFrom(target);
+        paletteK = targetK;
+        applyPalette(paletteK);
         edgeRoot.visible = true;
         highlightRoot.visible = true;
         if (arrowMesh) arrowMesh.visible = true;
