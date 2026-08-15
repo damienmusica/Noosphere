@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import type { Author, Dataset, Relation } from "../types.ts";
+import type { Author, Dataset, Movement, Relation } from "../types.ts";
+import type { Locale } from "../i18n/index.ts";
 import { RELATION_DEFS } from "../types.ts";
 import { COLORS, GEO_COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS } from "../theme.ts";
 import { arcPoints, slerp, type Vec3 } from "../lib/sphere.ts";
@@ -23,6 +24,11 @@ export interface GlobeCallbacks {
   onSelect(id: string | null): void;
   onHover(id: string | null): void;
   onRelationPick(relation: Relation): void;
+}
+
+export interface GlobeI18n {
+  authorLabel(a: Author, locale: Locale): string;
+  movementLabel(m: Movement, locale: Locale): string;
 }
 
 export interface GlobeHandle {
@@ -87,7 +93,11 @@ export function createGlobe(
   semantic: Map<string, Vec3>,
   geo: Map<string, Vec3>,
   store: Store,
-  cbs: GlobeCallbacks
+  cbs: GlobeCallbacks,
+  i18n: GlobeI18n = {
+    authorLabel: (a) => a.names.ko,
+    movementLabel: (m) => m.ko
+  }
 ): GlobeHandle {
   const authors = dataset.authors;
   const indexOf = new Map(authors.map((a, i) => [a.id, i]));
@@ -706,7 +716,7 @@ export function createGlobe(
       if (tmpV.z > 1) continue;
       items.push({
         id: a.id,
-        text: a.names.ko,
+        text: i18n.authorLabel(a, s.locale),
         kind: "author",
         size: a.tier === "anchor" ? "md" : "sm",
         priority,
@@ -737,7 +747,7 @@ export function createGlobe(
         tmpV.set(cx * R * 1.04, cy * R * 1.04, cz * R * 1.04).project(camera);
         items.push({
           id: `mv:${m.id}`,
-          text: m.ko,
+          text: i18n.movementLabel(m, s.locale),
           kind: "movement",
           size: "lg",
           priority: 30 + facing * 8,
@@ -852,7 +862,10 @@ export function createGlobe(
     const selectionChanged = s.selectedAuthorId !== prev.selectedAuthorId;
     const hoverChanged = s.hoveredAuthorId !== prev.hoveredAuthorId;
     const modeChanged = s.mode !== prev.mode;
+    const localeChanged = s.locale !== prev.locale;
     prev = s;
+
+    if (localeChanged) updateLabels();
 
     if (modeChanged) {
       const from = new Map(current);

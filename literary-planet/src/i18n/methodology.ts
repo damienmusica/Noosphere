@@ -1,0 +1,211 @@
+// Methodology-page prose in both locales. This is identity text — maintained
+// by hand, not by the translation generation wave.
+
+import type { Locale } from "./index.ts";
+
+export interface MethodologyStrings {
+  title: string;
+  lede: { pre: (a: number, w: number, r: number) => string; strong: string; post: string };
+
+  eraHead: string;
+  eraBody: string;
+
+  selHead: string;
+  selItems: string[];
+  selClose: string;
+
+  relHead: string;
+  relBody: { pre: string; strong: string };
+  relClose: { pre: string; post: string };
+
+  coordHead: string;
+  coord: {
+    semStrong: string;
+    semBody: (version: string, seed: number) => string;
+    geoStrong: string;
+    geoBody: string;
+  };
+
+  srcHead: string;
+  srcBody: { pre: string; mid1: string; mid2: string; post: string };
+  countAuthors: (n: number) => string;
+  countRels: (n: number) => string;
+  relRowPrefix: string;
+
+  distHead: string;
+  distBody: string;
+  distTitles: {
+    regions: string;
+    languages: string;
+    gender: string;
+    genres: string;
+    periods: string;
+    relTypes: string;
+  };
+
+  logHead: string;
+  logV01: (a: number, w: number, r: number, version: string) => string;
+  closing: { pre: string; strong: string; mid: string; em: string };
+}
+
+const KO: MethodologyStrings = {
+  title: "방법론 — 이 지도는 어떻게 만들어졌나",
+  lede: {
+    pre: (a, w, r) =>
+      `《문학의 행성》은 20세기 세계문학의 작가 ${a}명, 작품 ${w}편, 관계 ${r}개를 회전하는 구면 위에 배치한 독서·연구 도구다. 여기 실린 정전(canon)은 `,
+    strong: "객관적 진리가 아니라 편집 가능한 지도",
+    post: "다 — 아래에 그 편집의 규칙과 한계를 공개한다."
+  },
+
+  eraHead: "시대 범위와 층 구조",
+  eraBody:
+    "중심 범위는 20세기다. '20세기 작가'를 출생연도로 기계적으로 자르지 않고 주요 작품 발표 시기·활동 시기·후대 영향으로 판단했으며, 시간층은 실제 문학사처럼 의도적으로 겹치게 설계했다. '20세기'라는 시간 필터와 '모더니즘'이라는 미학·운동 필터는 별개 축이며 별개 필터로 제공된다.",
+
+  selHead: "선정 기준",
+  selItems: [
+    "형식적 혁신 — 서사·시·극의 문법 자체를 바꾸었는가.",
+    "후대 작가와 다른 언어권에 미친 확인 가능한 영향.",
+    "시대·지역·언어권을 대표하면서 내부의 복잡성을 보여주는가.",
+    "번역·잡지·비평을 통한 문학권 사이의 매개 역할.",
+    "지속적인 재독과 비평적 논쟁의 대상인가.",
+    "서구 중심 정전에서 배제되어 온 전통의 복원 필요.",
+    "판매량·수상 경력만으로는 선정하지 않았다."
+  ],
+  selClose:
+    "초기 코퍼스 100명은 위 기준으로 고른 필수 검토 목록이며, 확장 슬레이트(발저, 츠바이크, 레비, 먼로, 파묵, 무라카미 등)는 다음 판에서 같은 기준으로 검토된다.",
+
+  relHead: "관계 유형과 근거 수준",
+  relBody: {
+    pre: "모든 관계선은 세 가지 근거 수준 중 하나를 명시한다. 이 구분을 섞는 것이 이런 지도의 가장 흔한 부정직함이므로, 기계 검증이 이를 강제한다: ",
+    strong: "직접 영향·번역·사사 관계는 출처 없이 저장될 수 없다."
+  },
+  relClose: {
+    pre: "'카프카와 베케트가 비슷하다'는 것만으로는 영향 관계가 되지 않는다 — 그런 관계는 ",
+    post: "로 점선 표시된다. 관계 수는 작가마다 다르며, 억지로 균등하게 만들지 않았다."
+  },
+
+  coordHead: "좌표 계산 방식",
+  coord: {
+    semStrong: "문학적 친연성 모드",
+    semBody: (version, seed) =>
+      `의 좌표는 관계 그래프(유형별 가중치)와 운동·시대 태그로부터 시드 고정 구면 force-directed 배치로 계산한다. 같은 데이터와 시드에서는 항상 같은 좌표가 나오며(결정성 테스트로 보증), 계산된 좌표는 버전과 함께 동결된다(현재 v${version}, seed ${seed}). 새 작가가 추가되어도 기존 좌표는 재계산하지 않고, 이웃 앵커의 가중 중심으로 증분 배치한다 — 사용자의 공간 기억을 보존하기 위해서다. `,
+    geoStrong: "실제 지리 모드",
+    geoBody:
+      "는 작가의 대표 활동지 경위도를 쓰되, 도시가 밀집한 지역(예: 중부유럽)에서는 겹친 점이 읽히도록 결정적 최소 변위를 적용한다 — 지도학의 표준적 displacement 관행이며, 정확한 좌표는 데이터 파일에 보존된다. 두 모드의 분리가 이 지도의 핵심 주장이다: 문학적 거리는 지리적 거리가 아니다."
+  },
+
+  srcHead: "데이터 출처와 검토 상태",
+  srcBody: {
+    pre: "프로필 초안은 LLM(유지관리자 대화형 사용)이 작성하고, 기계 검증(스키마·교차 참조·연도 논리) → Wikidata 생몰년 교차확인 → 편집 정독 샘플링을 통과한 배치가 ",
+    mid1: " 상태가 된다. ",
+    mid2: "는 외부 검증 절차가 갖춰질 때까지 부여하지 않는다.",
+    post: " 출처는 확인 가능한 기관·문헌만 기록하며, 검증되지 않은 딥 링크는 기록하지 않는다. 번역 제목은 출판사마다 다를 수 있어 항상 원제를 병기한다."
+  },
+  countAuthors: (n) => `${n}명`,
+  countRels: (n) => `${n}개`,
+  relRowPrefix: "관계: ",
+
+  distHead: "분포 — 이 지도의 편중을 숫자로 공개한다",
+  distBody:
+    "어떤 정전도 중립적이지 않다. 아래 수치는 이 지도가 현재 무엇을 과대·과소 대표하는지 보여준다. 편중의 축소는 다음 확장의 명시적 목표다.",
+  distTitles: {
+    regions: "지역",
+    languages: "언어",
+    gender: "젠더",
+    genres: "장르",
+    periods: "시대층",
+    relTypes: "관계 유형"
+  },
+
+  logHead: "변경 기록",
+  logV01: (a, w, r, version) =>
+    `v0.1 (2026-08) — 최초 공개 코퍼스: 작가 ${a}명 · 작품 ${w}편 · 관계 ${r}개 · 좌표 v${version}.`,
+  closing: {
+    pre: "이 프로젝트는 지식 아틀라스 Noosphere 항성계의 ",
+    strong: "제1행성",
+    mid: "('Booksphere' 계보)이며, 같은 원칙을 상속한다: ",
+    em: "담론의 상태를 기록하되, 판정하지 않는다."
+  }
+};
+
+const EN: MethodologyStrings = {
+  title: "Methodology — how this map was made",
+  lede: {
+    pre: (a, w, r) =>
+      `Literary Planet is a reading and research instrument that places ${a} writers, ${w} works, and ${r} relations of 20th-century world literature on a rotating sphere. The canon presented here is `,
+    strong: "not an objective truth but an editable map",
+    post: " — the rules and limits of that editing are published below."
+  },
+
+  eraHead: "Time range and layered periods",
+  eraBody:
+    "The core range is the 20th century. Writers were not cut mechanically by birth year; we judged by when their major works appeared, when they were active, and how they influenced what came after. The period layers deliberately overlap, as real literary history does. 'The 20th century' (a time filter) and 'modernism' (an aesthetic-movement filter) are separate axes, offered as separate filters.",
+
+  selHead: "Selection criteria",
+  selItems: [
+    "Formal innovation — did they change the grammar of narrative, poetry, or drama itself?",
+    "Verifiable influence on later writers and on other language spheres.",
+    "Representing an era, region, or language while showing its internal complexity.",
+    "Mediating between literary spheres through translation, magazines, criticism.",
+    "Remaining an object of sustained rereading and critical argument.",
+    "The need to restore traditions excluded from the Western-centric canon.",
+    "Sales and prizes alone selected no one."
+  ],
+  selClose:
+    "The initial corpus of 100 is a required-review list chosen by these criteria; the expansion slate (Walser, Zweig, Levi, Munro, Pamuk, Murakami and others) will be reviewed by the same criteria in the next edition.",
+
+  relHead: "Relation types and evidence levels",
+  relBody: {
+    pre: "Every relation line declares one of three evidence levels. Mixing them is the most common dishonesty in maps like this, so machine validation enforces the boundary: ",
+    strong: "direct influence, translation, and mentorship cannot be stored without a source."
+  },
+  relClose: {
+    pre: "'Kafka and Beckett feel similar' does not make an influence claim — such relations are drawn as dashed lines marked ",
+    post: ". Relation counts differ between writers, and we did not force them to be equal."
+  },
+
+  coordHead: "How coordinates are computed",
+  coord: {
+    semStrong: "Literary-affinity mode",
+    semBody: (version, seed) =>
+      ` computes its coordinates from the relation graph (weighted by type) and movement/period tags, with a seed-fixed spherical force-directed layout. The same data and seed always produce the same coordinates (guaranteed by determinism tests), and the computed layout is frozen with a version (currently v${version}, seed ${seed}). When new writers are added, existing coordinates are never recomputed; newcomers are placed incrementally at the weighted center of their neighbors — to preserve the reader's spatial memory. `,
+    geoStrong: "Real-geography mode",
+    geoBody:
+      " uses the latitude and longitude of each writer's primary place of activity, applying a deterministic minimum displacement where cities crowd together (central Europe, for instance) so overlapping points stay readable — standard cartographic practice; exact coordinates are preserved in the data files. The separation of the two modes is this map's central claim: literary distance is not geographic distance."
+  },
+
+  srcHead: "Data sources and review status",
+  srcBody: {
+    pre: "Profile drafts are written by an LLM (used interactively by maintainers only) and a batch reaches ",
+    mid1: " after machine validation (schema, cross-references, year logic), a Wikidata birth/death crosscheck, and editorial close-read sampling. ",
+    mid2: " is withheld until an external verification procedure exists.",
+    post: " Only verifiable institutions and works are recorded as sources; unverified deep links are never stored. Translated titles vary by publisher, so original titles are always shown alongside."
+  },
+  countAuthors: (n) => `${n}`,
+  countRels: (n) => `${n}`,
+  relRowPrefix: "Relations: ",
+
+  distHead: "Distributions — this map's biases, in numbers",
+  distBody:
+    "No canon is neutral. The numbers below show what this map currently over- and under-represents. Reducing these biases is an explicit goal of the next expansion.",
+  distTitles: {
+    regions: "Regions",
+    languages: "Languages",
+    gender: "Gender",
+    genres: "Genres",
+    periods: "Period layers",
+    relTypes: "Relation types"
+  },
+
+  logHead: "Changelog",
+  logV01: (a, w, r, version) =>
+    `v0.1 (2026-08) — first public corpus: ${a} writers · ${w} works · ${r} relations · layout v${version}.`,
+  closing: {
+    pre: "This project is the ",
+    strong: "first planet",
+    mid: " of the Noosphere star system (the 'Booksphere' lineage), and inherits the same principle: ",
+    em: "record the state of the discourse; do not adjudicate it."
+  }
+};
+
+export const METHODOLOGY: Record<Locale, MethodologyStrings> = { ko: KO, en: EN };
