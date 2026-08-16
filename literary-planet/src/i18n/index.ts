@@ -97,6 +97,10 @@ export interface UIStrings {
   fallbackPickHint: string;
   fallbackEgoAria: (name: string) => string;
   fallbackShowAll: string;
+  fallbackSummary: (incoming: number, outgoing: number, undirected: number) => string;
+  fallbackNodeAria: (name: string) => string;
+  fallbackCenterAria: (name: string) => string;
+  fallbackEdgeAria: (parties: string, type: string) => string;
   globeAria: string;
 
   detailAria: (name: string) => string;
@@ -150,7 +154,8 @@ export interface UIStrings {
 
   relationDialogAria: string;
   close: string;
-  weightLabel: (pct: number) => string;
+  weightTier: (tier: "strong" | "medium" | "light") => string;
+  weightTitle: string;
   evidenceExplain: Record<EvidenceLevel, string>;
 
   tourAria: (title: string) => string;
@@ -226,6 +231,10 @@ const KO: UIStrings = {
   fallbackPickHint: "작가를 선택하면 그 작가를 중심으로 한 관계망이 여기에 표시됩니다.",
   fallbackEgoAria: (name) => `${name} 중심의 관계망`,
   fallbackShowAll: "전체 작가 보기",
+  fallbackSummary: (i, o, u) => `들어오는 관계 ${i} · 나가는 관계 ${o} · 무방향 ${u}`,
+  fallbackNodeAria: (name) => `${name}(으)로 이동`,
+  fallbackCenterAria: (name) => `${name} 프로필 열기`,
+  fallbackEdgeAria: (parties, type) => `근거 열기: ${parties} · ${type}`,
   globeAria:
     "문학의 행성 3차원 지도. 드래그로 회전, 휠·핀치로 확대. 키보드 탐색은 작가 목록 페이지를 이용하세요.",
 
@@ -281,7 +290,10 @@ const KO: UIStrings = {
 
   relationDialogAria: "관계 설명",
   close: "닫기",
-  weightLabel: (pct) => `관계 강도 ${pct}%`,
+  weightTier: (tier) =>
+    `지도 가중치: ${tier === "strong" ? "강함" : tier === "medium" ? "중간" : "낮음"}`,
+  weightTitle:
+    "근거 수준 대역 안에서 부여한 편집 값 — 좌표 인력과 선 강조에 쓰입니다. 측정된 영향력 수치가 아닙니다 (방법론 참조).",
   evidenceExplain: {
     documented: "서신·인터뷰·번역·회고록 같은 1차 기록으로 확인되는 관계입니다.",
     scholarly_consensus: "신뢰할 만한 2차 연구가 반복적으로 다뤄 온 계보입니다.",
@@ -360,6 +372,10 @@ const EN: UIStrings = {
   fallbackPickHint: "Select a writer to see their relation web here.",
   fallbackEgoAria: (name) => `Relation web centered on ${name}`,
   fallbackShowAll: "Show all writers",
+  fallbackSummary: (i, o, u) => `Incoming ${i} · outgoing ${o} · undirected ${u}`,
+  fallbackNodeAria: (name) => `Travel to ${name}`,
+  fallbackCenterAria: (name) => `Open ${name}'s profile`,
+  fallbackEdgeAria: (parties, type) => `Open evidence: ${parties} · ${type}`,
   globeAria:
     "Literary Planet 3D map. Drag to rotate, wheel or pinch to zoom. For keyboard navigation use the writers list.",
 
@@ -415,7 +431,10 @@ const EN: UIStrings = {
 
   relationDialogAria: "Relation details",
   close: "Close",
-  weightLabel: (pct) => `Relation strength ${pct}%`,
+  weightTier: (tier) =>
+    `Map weight: ${tier === "strong" ? "strong" : tier === "medium" ? "medium" : "light"}`,
+  weightTitle:
+    "An editorial value within evidence-level bands, used for layout attraction and line emphasis. Not a measured influence score (see Methodology).",
   evidenceExplain: {
     documented:
       "Confirmed by primary records — letters, interviews, translations, memoirs.",

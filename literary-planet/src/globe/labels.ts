@@ -47,6 +47,12 @@ const FONT_SIZE: Record<LabelItem["size"], number> = { lg: 14, md: 12, sm: 11 };
 export class LabelLayer {
   private root: HTMLDivElement;
   private pool = new Map<string, HTMLDivElement>();
+  /** labels placed in the last update (instrumentation) */
+  lastShown = 0;
+  /** labels dropped by the collision pass in the last update (instrumentation) */
+  lastCollided = 0;
+  /** per-kind breakdown of the last update (instrumentation) */
+  lastShownByKind: Record<string, number> = {};
 
   constructor(container: HTMLElement) {
     this.root = document.createElement("div");
@@ -58,6 +64,8 @@ export class LabelLayer {
   update(items: LabelItem[], width: number, height: number, budget: number): void {
     const placed: Rect[] = [];
     const shown = new Set<string>();
+    let collided = 0;
+    const byKind: Record<string, number> = {};
     const sorted = [...items].sort((a, b) => b.priority - a.priority);
 
     for (const item of sorted) {
@@ -67,9 +75,13 @@ export class LabelLayer {
       const w = estimateWidth(item.text, fs);
       const rect: Rect = { x: item.x - w / 2, y: item.y, w, h: fs + 6 };
       const mustShow = item.state === "selected" || item.state === "hovered";
-      if (!mustShow && placed.some((p) => overlaps(p, rect, 2))) continue;
+      if (!mustShow && placed.some((p) => overlaps(p, rect, 2))) {
+        collided++;
+        continue;
+      }
       placed.push(rect);
       shown.add(item.id);
+      byKind[item.kind] = (byKind[item.kind] ?? 0) + 1;
 
       let el = this.pool.get(item.id);
       if (!el) {
@@ -87,6 +99,9 @@ export class LabelLayer {
     for (const [id, el] of this.pool) {
       if (!shown.has(id)) el.style.display = "none";
     }
+    this.lastShown = shown.size;
+    this.lastCollided = collided;
+    this.lastShownByKind = byKind;
   }
 
   clear(): void {

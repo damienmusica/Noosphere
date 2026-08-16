@@ -17,6 +17,7 @@ export interface MethodologyStrings {
   relHead: string;
   relBody: { pre: string; strong: string };
   relClose: { pre: string; post: string };
+  relWeight: string;
 
   coordHead: string;
   coord: {
@@ -86,6 +87,8 @@ const KO: MethodologyStrings = {
     pre: "'카프카와 베케트가 비슷하다'는 것만으로는 영향 관계가 되지 않는다 — 그런 관계는 ",
     post: "로 점선 표시된다. 관계 수는 작가마다 다르며, 억지로 균등하게 만들지 않았다."
   },
+  relWeight:
+    "관계 카드의 '지도 가중치'는 측정된 영향력 수치가 아니다. 근거 수준별 대역(문서 확인 0.70–0.95 · 학술 합의 0.50–0.75 · 편집 추정 0.30–0.55) 안에서 편집자가 부여한 값으로, 좌표 계산의 인력과 관계선의 강조에만 쓰인다. 그래서 카드에는 백분율 대신 강함·중간·낮음의 정성 단계로 표시한다.",
 
   coordHead: "좌표 계산 방식",
   coord: {
@@ -173,6 +176,8 @@ const EN: MethodologyStrings = {
     pre: "'Kafka and Beckett feel similar' does not make an influence claim — such relations are drawn as dashed lines marked ",
     post: ". Relation counts differ between writers, and we did not force them to be equal."
   },
+  relWeight:
+    "The 'map weight' on a relation card is not a measured strength of influence. It is an editorial value assigned within evidence-level bands (documented 0.70–0.95 · scholarly consensus 0.50–0.75 · editorial inference 0.30–0.55), used only for layout attraction and line emphasis. That is why the card shows a qualitative tier — strong, medium, light — instead of a percentage.",
 
   coordHead: "How coordinates are computed",
   coord: {

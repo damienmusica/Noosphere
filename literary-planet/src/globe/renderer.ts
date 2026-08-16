@@ -7,6 +7,7 @@ import { COLORS, GEO_COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS } from "../them
 import { arcPoints, slerp, type Vec3 } from "../lib/sphere.ts";
 import { sealGlyph } from "../lib/seal.ts";
 import { visibleAuthorIds, visibleRelations } from "../lib/filter.ts";
+import { instr } from "../lib/instrument.ts";
 import {
   CAMERA_DEFAULT,
   CAMERA_MAX,
@@ -115,6 +116,25 @@ export function createGlobe(
   renderer.domElement.className = "globe-canvas";
   renderer.domElement.setAttribute("aria-hidden", "true");
   container.appendChild(renderer.domElement);
+
+  // identity of the GL device, for the debug overlay and QA metrics
+  const glInfo = (() => {
+    try {
+      const gl = renderer.getContext();
+      const dbg = gl.getExtension("WEBGL_debug_renderer_info");
+      return {
+        webgl2: renderer.capabilities.isWebGL2,
+        vendor: String(
+          dbg ? gl.getParameter(dbg.UNMASKED_VENDOR_WEBGL) : gl.getParameter(gl.VENDOR)
+        ),
+        renderer: String(
+          dbg ? gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER)
+        )
+      };
+    } catch {
+      return { webgl2: false, vendor: "unknown", renderer: "unknown" };
+    }
+  })();
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(
@@ -579,6 +599,7 @@ export function createGlobe(
       (flowPoints.material as THREE.Material).dispose();
       flowPoints = null;
     }
+    if (flowItems.length > 0) instr.log("flows-cleared", { sparks: flowItems.length });
     flowItems = [];
   }
 
@@ -587,12 +608,20 @@ export function createGlobe(
     if (store.getState().reducedMotion || rels.length === 0) return;
     const items: FlowItem[] = [];
     const colors: number[] = [];
+    const animated: Array<Record<string, string>> = [];
     for (const r of rels) {
       const a = positions.get(r.sourceId);
       const b = positions.get(r.targetId);
       if (!a || !b) continue;
       const def = RELATION_DEFS.find((d) => d.id === r.type);
       if (!def || def.dashed) continue; // affinity/contrast: nothing to animate
+      animated.push({
+        id: r.id,
+        from: r.sourceId,
+        to: r.targetId,
+        type: r.type,
+        direction: def.direction
+      });
       const pts = arcPoints(a, b, ARC_SEG, R * 1.006);
       const dur = 3200 - r.weight * 900;
       const color = new THREE.Color(RELATION_COLORS[r.type]);
@@ -626,6 +655,9 @@ export function createGlobe(
     flowPoints.frustumCulled = false;
     scene.add(flowPoints);
     flowItems = items;
+    // sparks always travel the canonical data direction, never the traversal
+    // order — the QA harness asserts this against /data
+    instr.log("flows-built", { sparks: items.length, relations: animated });
   }
 
   function updateFlows(now: number): void {
@@ -1209,6 +1241,7 @@ export function createGlobe(
         start: performance.now(),
         dur: s.reducedMotion ? 0 : 950
       };
+      instr.log("mode-transition-start", { to: s.mode, dur: transition.dur });
       paletteFrom = paletteK;
       edgeRoot.visible = false;
       highlightRoot.visible = false;
@@ -1266,6 +1299,7 @@ export function createGlobe(
       start: performance.now(),
       dur: 850
     };
+    instr.log("camera-anim-start", { toDist: Math.round(dist), dur: camAnim.dur });
   }
 
   function focusAuthor(id: string, opts?: { distance?: number }): void {
@@ -1301,9 +1335,34 @@ export function createGlobe(
   let rafId = 0;
   let lastCamPos = camera.position.clone();
 
+  // live renderer numbers for the debug overlay / QA metrics — every value is
+  // read from what this frame actually holds, nothing is estimated
+  const probe = () => ({
+    gl: glInfo,
+    pixelRatio: renderer.getPixelRatio(),
+    drawCalls: renderer.info.render.calls,
+    triangles: renderer.info.render.triangles,
+    glLines: renderer.info.render.lines,
+    glPoints: renderer.info.render.points,
+    geometries: renderer.info.memory.geometries,
+    textures: renderer.info.memory.textures,
+    cameraDistance: Math.round(camera.position.length() * 10) / 10,
+    lod,
+    modeTransition: transition !== null,
+    cameraAnimating: camAnim !== null,
+    rendererVisibleAuthors: visibleSet.size,
+    rendererVisibleRelations: visRels.length,
+    flowSparks: flowItems.length,
+    labelsShown: labels.lastShown,
+    labelsCollided: labels.lastCollided,
+    labelsByKind: labels.lastShownByKind
+  });
+  instr.registerRenderer(probe);
+
   function frame(now: number): void {
     if (disposed) return;
     rafId = requestAnimationFrame(frame);
+    instr.frameTick(now);
 
     if (camAnim) {
       const t = camAnim.dur === 0 ? 1 : Math.min(1, (now - camAnim.start) / camAnim.dur);
@@ -1312,7 +1371,10 @@ export function createGlobe(
       const dist = camAnim.fromDist + (camAnim.toDist - camAnim.fromDist) * k;
       camera.position.copy(dir.multiplyScalar(dist));
       camera.lookAt(0, 0, 0);
-      if (t >= 1) camAnim = null;
+      if (t >= 1) {
+        camAnim = null;
+        instr.log("camera-anim-end", { dist: Math.round(camera.position.length()) });
+      }
     } else {
       controls.update();
     }
@@ -1353,6 +1415,7 @@ export function createGlobe(
         rebuildEdges();
         updateRelationHover();
         updateLabels();
+        instr.log("mode-transition-end", { mode: s.mode });
       }
     }
 
@@ -1391,6 +1454,7 @@ export function createGlobe(
 
   function dispose(): void {
     disposed = true;
+    instr.unregisterRenderer(probe);
     cancelAnimationFrame(rafId);
     unsub();
     ro.disconnect();
