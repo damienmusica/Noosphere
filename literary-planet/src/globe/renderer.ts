@@ -542,6 +542,113 @@ export function createGlobe(
     arrowMesh = mesh;
   }
 
+  // --- directional flow on the selection web --------------------------------
+  // Motion carries the reading the arrowheads only confirm: sparks always
+  // travel the relation's canonical source→target, so incoming influence
+  // converges on the selected star and outgoing influence leaves it. Dialogue
+  // pulses both ways; dashed types (affinity/contrast) stay still — they have
+  // no direction to animate. Selection-scoped only: nothing selected, nothing
+  // moves. reducedMotion keeps the static encodings (gradient + arrowheads).
+  interface FlowItem {
+    pts: Vec3[];
+    /** traversal duration in ms */
+    dur: number;
+    phase: number;
+  }
+  let flowItems: FlowItem[] = [];
+  let flowPoints: THREE.Points | null = null;
+  const flowTexture = (() => {
+    const c = document.createElement("canvas");
+    c.width = c.height = 32;
+    const g = c.getContext("2d")!;
+    const grad = g.createRadialGradient(16, 16, 0, 16, 16, 16);
+    grad.addColorStop(0, "rgba(255,255,255,1)");
+    grad.addColorStop(0.45, "rgba(255,255,255,0.85)");
+    grad.addColorStop(1, "rgba(255,255,255,0)");
+    g.fillStyle = grad;
+    g.fillRect(0, 0, 32, 32);
+    const tex = new THREE.CanvasTexture(c);
+    disposables.push(tex);
+    return tex;
+  })();
+
+  function clearFlows(): void {
+    if (flowPoints) {
+      scene.remove(flowPoints);
+      flowPoints.geometry.dispose();
+      (flowPoints.material as THREE.Material).dispose();
+      flowPoints = null;
+    }
+    flowItems = [];
+  }
+
+  function buildFlows(rels: Relation[], positions: Map<string, Vec3>): void {
+    clearFlows();
+    if (store.getState().reducedMotion || rels.length === 0) return;
+    const items: FlowItem[] = [];
+    const colors: number[] = [];
+    for (const r of rels) {
+      const a = positions.get(r.sourceId);
+      const b = positions.get(r.targetId);
+      if (!a || !b) continue;
+      const def = RELATION_DEFS.find((d) => d.id === r.type);
+      if (!def || def.dashed) continue; // affinity/contrast: nothing to animate
+      const pts = arcPoints(a, b, ARC_SEG, R * 1.006);
+      const dur = 3200 - r.weight * 900;
+      const color = new THREE.Color(RELATION_COLORS[r.type]);
+      if (def.direction === "directed") {
+        for (const phase of [0, 0.5]) {
+          items.push({ pts, dur, phase });
+          colors.push(color.r, color.g, color.b);
+        }
+      } else {
+        // dialogue: one spark each way
+        items.push({ pts, dur, phase: 0 });
+        items.push({ pts: [...pts].reverse(), dur, phase: 0.5 });
+        colors.push(color.r, color.g, color.b, color.r, color.g, color.b);
+      }
+    }
+    if (items.length === 0) return;
+    const geom = new THREE.BufferGeometry();
+    geom.setAttribute("position", new THREE.Float32BufferAttribute(items.length * 3, 3));
+    geom.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+    const mat = new THREE.PointsMaterial({
+      size: 2.7,
+      map: flowTexture,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.95,
+      depthWrite: false,
+      sizeAttenuation: true
+    });
+    flowPoints = new THREE.Points(geom, mat);
+    flowPoints.renderOrder = 5;
+    flowPoints.frustumCulled = false;
+    scene.add(flowPoints);
+    flowItems = items;
+  }
+
+  function updateFlows(now: number): void {
+    if (!flowPoints || flowItems.length === 0) return;
+    const attr = flowPoints.geometry.getAttribute("position") as THREE.BufferAttribute;
+    for (let i = 0; i < flowItems.length; i++) {
+      const f = flowItems[i]!;
+      const t = ((now / f.dur + f.phase) % 1 + 1) % 1;
+      const x = t * (f.pts.length - 1);
+      const i0 = Math.min(f.pts.length - 2, Math.floor(x));
+      const k = x - i0;
+      const p = f.pts[i0]!;
+      const q = f.pts[i0 + 1]!;
+      attr.setXYZ(
+        i,
+        p[0] + (q[0] - p[0]) * k,
+        p[1] + (q[1] - p[1]) * k,
+        p[2] + (q[2] - p[2]) * k
+      );
+    }
+    attr.needsUpdate = true;
+  }
+
   // --- per-frame state ------------------------------------------------------
   const labels = new LabelLayer(container);
   let current = new Map<string, Vec3>(); // live positions (unit vectors)
@@ -668,9 +775,11 @@ export function createGlobe(
       edgeGroups = buildEdgeGroups(rest, current, edgeRoot, 0.28, false);
       highlightGroups = buildEdgeGroups(touching, current, highlightRoot, 1, true);
       buildArrows(touching, current);
+      buildFlows(touching, current);
     } else {
       edgeGroups = buildEdgeGroups(lodRels, current, edgeRoot, 1, false);
       buildArrows([], current);
+      clearFlows();
     }
   }
 
@@ -1059,6 +1168,7 @@ export function createGlobe(
 
   // --- store subscription with field diffing --------------------------------
   let prev = store.getState();
+  let prevReducedMotion = prev.reducedMotion;
   recomputeVisibility();
   updateNodeInstances();
   rebuildEdges();
@@ -1103,6 +1213,7 @@ export function createGlobe(
       edgeRoot.visible = false;
       highlightRoot.visible = false;
       if (arrowMesh) arrowMesh.visible = false;
+      if (flowPoints) flowPoints.visible = false;
       // swing the camera with the nodes, or the map ends up facing empty ocean
       const target = positionsFor(s.mode);
       let aim: Vec3 | undefined = s.selectedAuthorId
@@ -1133,6 +1244,9 @@ export function createGlobe(
       updateLabels();
     }
     if (selectionChanged || filtersChanged) updateRelationHover();
+    // OS-level motion preference can flip mid-session — drop/restore the flows
+    if (s.reducedMotion !== prevReducedMotion && !transition) rebuildEdges();
+    prevReducedMotion = s.reducedMotion;
     updateRings();
   });
 
@@ -1270,6 +1384,7 @@ export function createGlobe(
     }
     lastCamPos.copy(camera.position);
 
+    updateFlows(now);
     renderer.render(scene, camera);
   }
   rafId = requestAnimationFrame(frame);
@@ -1289,6 +1404,7 @@ export function createGlobe(
       scene.remove(arrowMesh);
       arrowMesh.dispose();
     }
+    clearFlows();
     nodes.dispose();
     pickMesh.dispose();
     for (const d of disposables) d.dispose();
