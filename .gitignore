@@ -144,3 +144,8 @@ vite.config.ts.timestamp-*
 
 # macOS Finder metadata
 .DS_Store
+
+# literary-planet QA harness output
+literary-planet/artifacts/
+literary-planet/literary-planet-review-*.zip
+literary-planet/literary-planet-source.zip
