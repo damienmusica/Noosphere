@@ -62,7 +62,8 @@ function pathOf(
 export function paintTerrainTexture(
   territory: Territory,
   periodOf: (authorId: string) => PeriodId | undefined,
-  cell = 2
+  cell = 2,
+  withCities = false
 ): HTMLCanvasElement {
   const g = territory.geometry;
   const texW = g.gridWidth * cell;
@@ -160,6 +161,60 @@ export function paintTerrainTexture(
   ctx.lineWidth = 3;
   ctx.stroke(coastPath);
   ctx.globalAlpha = 1;
+
+  // P3, near plate only (§②-6 reading distance): works as towns, the reading
+  // entry at the harbor, the reading order as a dotted route
+  if (withCities) {
+    for (const c of Object.values(g.cities)) {
+      // road first, beneath its towns
+      if (c.road.length >= 4) {
+        const road = new Path2D();
+        const un = unwrapFlatX(c.road, g.gridWidth);
+        for (const shift of [-texW, 0, texW]) {
+          road.moveTo(un[0]! * cell + shift, un[1]! * cell);
+          for (let k = 2; k < un.length; k += 2) {
+            road.lineTo(un[k]! * cell + shift, un[k + 1]! * cell);
+          }
+        }
+        ctx.strokeStyle = COLORS.lineAccent;
+        ctx.globalAlpha = 0.5;
+        ctx.lineWidth = 1.3;
+        ctx.setLineDash([1.2, 6.5]);
+        ctx.stroke(road);
+        ctx.setLineDash([]);
+      }
+      for (const town of c.towns) {
+        const isPort = c.portWork === town.id;
+        for (const shift of [-texW, 0, texW]) {
+          const x = town.x * cell + shift;
+          const y = town.y * cell;
+          if (x < -20 || x > texW + 20) continue;
+          if (isPort) {
+            // the harbor: a filled diamond — the reading enters here
+            ctx.fillStyle = COLORS.brass;
+            ctx.globalAlpha = 0.95;
+            ctx.beginPath();
+            ctx.moveTo(x, y - 5.5);
+            ctx.lineTo(x + 5.5, y);
+            ctx.lineTo(x, y + 5.5);
+            ctx.lineTo(x - 5.5, y);
+            ctx.closePath();
+            ctx.fill();
+          } else {
+            // an inland town: a small open ring (VAD P3 note: kept just loud
+            // enough that a lone ring on a small island beats coast noise)
+            ctx.strokeStyle = COLORS.brass;
+            ctx.globalAlpha = 0.92;
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.arc(x, y, 4, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
 
   return canvas;
 }

@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import type { Author, Dataset, Movement, Relation } from "../types.ts";
+import type { Author, Dataset, Movement, Relation, Work } from "../types.ts";
 import type { Locale } from "../i18n/index.ts";
 import { RELATION_DEFS } from "../types.ts";
 import { COLORS, GEO_COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS } from "../theme.ts";
@@ -21,6 +21,7 @@ import type { AppState, Store } from "../state/store.ts";
 import { LabelLayer, type LabelItem, type LabelState } from "./labels.ts";
 import { paintTerrainTexture } from "./terrain-texture.ts";
 import { paintSealTexture } from "./seal-texture.ts";
+import { gridToVec3 } from "../lib/territory-geometry.ts";
 
 export interface GlobeCallbacks {
   onSelect(id: string | null): void;
@@ -31,6 +32,7 @@ export interface GlobeCallbacks {
 export interface GlobeI18n {
   authorLabel(a: Author, locale: Locale): string;
   movementLabel(m: Movement, locale: Locale): string;
+  workLabel(w: Work, locale: Locale): string;
 }
 
 export interface GlobeHandle {
@@ -95,7 +97,8 @@ export function createGlobe(
   cbs: GlobeCallbacks,
   i18n: GlobeI18n = {
     authorLabel: (a) => a.names.ko,
-    movementLabel: (m) => m.ko
+    movementLabel: (m) => m.ko,
+    workLabel: (w) => w.titleKo
   }
 ): GlobeHandle {
   const authors = dataset.authors;
@@ -172,16 +175,16 @@ export function createGlobe(
   if (dataset.territory) {
     const periodByAuthor = new Map(authors.map((a) => [a.id, a.periods[0]]));
     const periodOf = (id: string) => periodByAuthor.get(id);
-    const makeTex = (cellPx: number): THREE.CanvasTexture => {
+    const makeTex = (cellPx: number, withCities = false): THREE.CanvasTexture => {
       const tex = track(
-        new THREE.CanvasTexture(paintTerrainTexture(dataset.territory!, periodOf, cellPx))
+        new THREE.CanvasTexture(paintTerrainTexture(dataset.territory!, periodOf, cellPx, withCities))
       );
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
       return tex;
     };
     terrainTexMid = makeTex(2);
-    terrainTexNear = makeTex(4);
+    terrainTexNear = makeTex(4, true); // cities live at reading distance only
     terrainMat = track(
       new THREE.MeshBasicMaterial({
         map: terrainTexMid,
@@ -694,6 +697,7 @@ export function createGlobe(
   }
 
   // --- labels ---------------------------------------------------------------
+  const worksById = new Map(dataset.works.map((wk) => [wk.id, wk]));
   const movementMembers = new Map<string, string[]>();
   for (const m of dataset.movements) {
     movementMembers.set(
@@ -744,6 +748,39 @@ export function createGlobe(
         y: ((-tmpV.y + 1) / 2) * h + 7,
         state
       });
+    }
+
+    // P3: the selected author's works label their towns at reading distance
+    if (s.selectedAuthorId && lod === "near" && dataset.territory) {
+      const g = dataset.territory.geometry;
+      const cities = g.cities[s.selectedAuthorId];
+      if (cities) {
+        for (const town of cities.towns) {
+          const wk = worksById.get(town.id);
+          if (!wk) continue;
+          const p = gridToVec3(town.x, town.y, g.gridWidth, g.gridHeight);
+          const facing = camDir.x * p[0] + camDir.y * p[1] + camDir.z * p[2];
+          if (facing < 0.25) continue;
+          tmpV
+            .set(
+              p[0] * GLOBE.terrainRadius,
+              p[1] * GLOBE.terrainRadius,
+              p[2] * GLOBE.terrainRadius
+            )
+            .project(camera);
+          if (tmpV.z > 1) continue;
+          items.push({
+            id: `wk:${town.id}`,
+            text: i18n.workLabel(wk, s.locale),
+            kind: "work",
+            size: "sm",
+            priority: 88 + facing * 8,
+            x: ((tmpV.x + 1) / 2) * w,
+            y: ((-tmpV.y + 1) / 2) * h + 9,
+            state: "normal"
+          });
+        }
+      }
     }
 
     if (lod !== "near" && !s.selectedAuthorId) {

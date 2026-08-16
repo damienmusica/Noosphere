@@ -6,7 +6,7 @@ export type LabelState = "normal" | "selected" | "hovered" | "neighbor" | "dim";
 export interface LabelItem {
   id: string;
   text: string;
-  kind: "author" | "movement";
+  kind: "author" | "movement" | "work";
   size: "lg" | "md" | "sm";
   priority: number;
   x: number;
