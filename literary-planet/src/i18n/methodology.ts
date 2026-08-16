@@ -30,6 +30,7 @@ export interface MethodologyStrings {
 
   srcHead: string;
   srcBody: { pre: string; mid1: string; mid2: string; post: string };
+  srcPortrait: { strong: string; body: string };
   countAuthors: (n: number) => string;
   countRels: (n: number) => string;
   relRowPrefix: string;
@@ -105,6 +106,10 @@ const KO: MethodologyStrings = {
     mid1: " 상태가 된다. ",
     mid2: "는 외부 검증 절차가 갖춰질 때까지 부여하지 않는다.",
     post: " 출처는 확인 가능한 기관·문헌만 기록하며, 검증되지 않은 딥 링크는 기록하지 않는다. 번역 제목은 출판사마다 다를 수 있어 항상 원제를 병기한다."
+  },
+  srcPortrait: {
+    strong: "작가 도판",
+    body: "은 사진이 아니라 생성된 동판화풍 상상 도판이며, 모든 도판에 '상상 초상' 또는 '상징 정물' 라벨이 붙는다. 얼굴은 도상원이 퍼블릭 도메인이거나 일반 인상만으로 그릴 수 있는 작고한 작가에 한하고, 특정 사진의 구도는 복제하지 않는다. 생존 작가는 얼굴 대신 작품 속 상징물(예: 자정의 회중시계와 처트니 단지)로 표상한다. 원 자산은 회색조로만 반입되어 앱이 판의 듀오톤으로 입히며, 생성 프롬프트·시드·모티프 근거는 portraits.json에 기록된다."
   },
   countAuthors: (n) => `${n}명`,
   countRels: (n) => `${n}개`,
@@ -188,6 +193,10 @@ const EN: MethodologyStrings = {
     mid1: " after machine validation (schema, cross-references, year logic), a Wikidata birth/death crosscheck, and editorial close-read sampling. ",
     mid2: " is withheld until an external verification procedure exists.",
     post: " Only verifiable institutions and works are recorded as sources; unverified deep links are never stored. Translated titles vary by publisher, so original titles are always shown alongside."
+  },
+  srcPortrait: {
+    strong: "Author plates",
+    body: " are generated engraving-style imagined figures, never photographs, and every plate carries an 'imagined portrait' or 'emblematic still life' label. Faces are drawn only for deceased authors whose iconography is public-domain or renderable from general impression alone — no specific photograph's composition is ever replicated. Living authors are represented by an emblem from their work instead of a face (a pocket watch at midnight and a chutney jar, for instance). Assets enter the repository as grayscale only and the app maps them onto the plate's duotone; prompts, seeds, and motif rationales are recorded in portraits.json."
   },
   countAuthors: (n) => `${n}`,
   countRels: (n) => `${n}`,

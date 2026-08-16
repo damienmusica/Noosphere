@@ -95,6 +95,8 @@ export interface UIStrings {
   detailAria: (name: string) => string;
   activeLabel: string;
   speculativeChip: string;
+  imaginedPortrait: string;
+  emblemPortrait: string;
   closeDetail: string;
   whyImportant: string;
   whereToStart: string;
@@ -211,6 +213,8 @@ const KO: UIStrings = {
   detailAria: (name) => `${name} 상세 정보`,
   activeLabel: "활동",
   speculativeChip: "사변·SF",
+  imaginedPortrait: "상상 초상",
+  emblemPortrait: "상징 정물",
   closeDetail: "상세 패널 닫기",
   whyImportant: "왜 중요한가",
   whereToStart: "어디서부터 읽을까",
@@ -334,6 +338,8 @@ const EN: UIStrings = {
   detailAria: (name) => `Details for ${name}`,
   activeLabel: "active",
   speculativeChip: "Speculative / SF",
+  imaginedPortrait: "Imagined portrait",
+  emblemPortrait: "Emblematic still life",
   closeDetail: "Close detail panel",
   whyImportant: "Why they matter",
   whereToStart: "Where to start",
