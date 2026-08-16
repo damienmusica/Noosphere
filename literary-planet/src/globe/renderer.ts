@@ -20,6 +20,7 @@ import {
 import type { AppState, Store } from "../state/store.ts";
 import { LabelLayer, type LabelItem, type LabelState } from "./labels.ts";
 import { paintTerrainTexture } from "./terrain-texture.ts";
+import { paintSealTexture } from "./seal-texture.ts";
 
 export interface GlobeCallbacks {
   onSelect(id: string | null): void;
@@ -50,10 +51,7 @@ const NODE_SCALE: Record<Author["tier"], number> = { anchor: 2.1, major: 1.1, co
 const SEAL_SCALE: Record<Author["tier"], number> = { anchor: 7.4, major: 5.6, context: 4.4 };
 const ARC_SEG = GLOBE.arcSegments;
 
-// D9 (ex libris): serif stacks per script family — system fonts only, no
-// font payload; the OS picks the right face for Cyrillic/CJK/Indic/Arabic
-const SEAL_FONT =
-  '"Iowan Old Style", "Palatino", Georgia, "Songti SC", "Hiragino Mincho ProN", "AppleMyungjo", "Nanum Myeongjo", serif';
+// D9 v2 (ex libris 방인): texture painting lives in seal-texture.ts
 
 // §⑤ two plates: affinity = warm-black sky, geography = midnight cobalt
 interface ModePalette {
@@ -374,41 +372,15 @@ export function createGlobe(
     glowSprites.set(a.id, sprite);
   }
 
-  // D9: at reading distance the point becomes the author's ex libris — the
-  // original-script surname initial in a stamped double ring. Drawn white,
-  // tinted through material.color so selection/dim states need no redraws.
-  function makeSealTexture(glyph: string): THREE.CanvasTexture {
-    const c = document.createElement("canvas");
-    c.width = c.height = 192;
-    const g = c.getContext("2d");
-    if (g) {
-      g.strokeStyle = "rgba(255,255,255,0.9)";
-      g.lineWidth = 4;
-      g.beginPath();
-      g.arc(96, 96, 88, 0, Math.PI * 2);
-      g.stroke();
-      g.lineWidth = 1.5;
-      g.globalAlpha = 0.45;
-      g.beginPath();
-      g.arc(96, 96, 78, 0, Math.PI * 2);
-      g.stroke();
-      g.globalAlpha = 1;
-      g.fillStyle = "#ffffff";
-      g.textAlign = "center";
-      g.textBaseline = "middle";
-      let size = 92;
-      g.font = `600 ${size}px ${SEAL_FONT}`;
-      while (g.measureText(glyph).width > 112 && size > 40) {
-        size -= 6;
-        g.font = `600 ${size}px ${SEAL_FONT}`;
-      }
-      g.fillText(glyph, 96, 102);
-    }
-    return new THREE.CanvasTexture(c);
-  }
+  // D9 v2: at reading distance the point becomes the author's ex libris — a
+  // square 방인 (anchors 백문, others 주문) with seeded carving accidents.
+  // Drawn white, tinted through material.color so selection/dim states need
+  // no redraws.
   const sealSprites = new Map<string, THREE.Sprite>();
   for (const a of authors) {
-    const tex = track(makeSealTexture(sealGlyph(a.id, a.names.original)));
+    const tex = track(
+      new THREE.CanvasTexture(paintSealTexture(sealGlyph(a.id, a.names.original), a.tier, a.id))
+    );
     const mat = track(
       new THREE.SpriteMaterial({
         map: tex,
