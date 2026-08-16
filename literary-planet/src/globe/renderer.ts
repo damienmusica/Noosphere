@@ -297,7 +297,8 @@ export function createGlobe(
   nodes.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
   scene.add(nodes);
 
-  const pickGeom = track(new THREE.SphereGeometry(4.4, 8, 6));
+  // stars must win against the lines threading past them (UX audit P1-1)
+  const pickGeom = track(new THREE.SphereGeometry(5.6, 8, 6));
   const pickMat = track(
     new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false, transparent: true })
   );
@@ -974,7 +975,7 @@ export function createGlobe(
 
   // --- picking --------------------------------------------------------------
   const raycaster = new THREE.Raycaster();
-  raycaster.params.Line = { threshold: 2.2 };
+  raycaster.params.Line = { threshold: 1.5 };
   const pointer = new THREE.Vector2();
   let downAt: { x: number; y: number; t: number } | null = null;
   let hoverPending = false;

@@ -99,6 +99,7 @@ export interface UIStrings {
   emblemPortrait: string;
   openProfile: string;
   miniStats: (relations: number, works: number) => string;
+  onboardHint: string;
   closeDetail: string;
   whyImportant: string;
   whereToStart: string;
@@ -219,6 +220,7 @@ const KO: UIStrings = {
   emblemPortrait: "상징 정물",
   openProfile: "상세 프로필",
   miniStats: (r, w) => `관계 ${r} · 작품 ${w}`,
+  onboardHint: "별을 클릭하면 그 작가의 성좌가 떠오르고, 선 위에 올리면 관계가 읽힙니다",
   closeDetail: "상세 패널 닫기",
   whyImportant: "왜 중요한가",
   whereToStart: "어디서부터 읽을까",
@@ -346,6 +348,7 @@ const EN: UIStrings = {
   emblemPortrait: "Emblematic still life",
   openProfile: "Full profile",
   miniStats: (r, w) => `${r} relations · ${w} works`,
+  onboardHint: "Click a star to raise its constellation; rest on a line to read the bond",
   closeDetail: "Close detail panel",
   whyImportant: "Why they matter",
   whereToStart: "Where to start",
