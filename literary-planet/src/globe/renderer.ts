@@ -19,6 +19,7 @@ import {
 } from "../lib/lod.ts";
 import type { AppState, Store } from "../state/store.ts";
 import { LabelLayer, type LabelItem, type LabelState } from "./labels.ts";
+import { paintTerrainTexture } from "./terrain-texture.ts";
 
 export interface GlobeCallbacks {
   onSelect(id: string | null): void;
@@ -158,6 +159,53 @@ export function createGlobe(
     atmoMat
   );
   scene.add(atmosphere);
+
+  // Terrain P1 (thesis §②-6/7): the affinity plate — baked coastlines painted
+  // once into a canvas texture, mounted between the surface and the instrument
+  // graticule. Opacity rides the SAME interpolator as the mode palette
+  // (1 − paletteK), so the map cross-fades with the plate colors and can never
+  // appear in geography mode; a distance ramp keeps the far view a star chart.
+  let terrainMat: THREE.MeshBasicMaterial | null = null;
+  let terrainMesh: THREE.Mesh | null = null;
+  // two plates of the same bake: mid/far, plus a double-scale near plate whose
+  // constant-pixel strokes read as finer engraving at reading distance
+  let terrainTexMid: THREE.CanvasTexture | null = null;
+  let terrainTexNear: THREE.CanvasTexture | null = null;
+  if (dataset.territory) {
+    const periodByAuthor = new Map(authors.map((a) => [a.id, a.periods[0]]));
+    const periodOf = (id: string) => periodByAuthor.get(id);
+    const makeTex = (cellPx: number): THREE.CanvasTexture => {
+      const tex = track(
+        new THREE.CanvasTexture(paintTerrainTexture(dataset.territory!, periodOf, cellPx))
+      );
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+      return tex;
+    };
+    terrainTexMid = makeTex(2);
+    terrainTexNear = makeTex(4);
+    terrainMat = track(
+      new THREE.MeshBasicMaterial({
+        map: terrainTexMid,
+        transparent: true,
+        opacity: 0,
+        depthWrite: false
+      })
+    );
+    terrainMesh = new THREE.Mesh(
+      track(new THREE.SphereGeometry(GLOBE.terrainRadius, 96, 64)),
+      terrainMat
+    );
+    terrainMesh.renderOrder = -1;
+    terrainMesh.visible = false;
+    scene.add(terrainMesh);
+  }
+  // full planetary map through mid LOD, receding to faint continents far out
+  function terrainFade(dist: number): number {
+    const t = Math.min(1, Math.max(0, (340 - dist) / 70));
+    const s = t * t * (3 - 2 * t);
+    return 0.3 + 0.7 * s;
+  }
 
   // D1: fine 15° instrument grid — each line shy, the system dense.
   // Equator + prime meridian live in a separate accent geometry with tick marks.
@@ -1014,9 +1062,25 @@ export function createGlobe(
       }
     }
 
+    if (terrainMat && terrainMesh) {
+      // after the transition block so paletteK is this frame's value (§②-7)
+      const op = (1 - paletteK) * terrainFade(camera.position.length());
+      if (Math.abs(op - terrainMat.opacity) > 0.003 || (op > 0.004) !== terrainMesh.visible) {
+        terrainMat.opacity = op;
+        terrainMesh.visible = op > 0.004;
+      }
+    }
+
     const newLod = lodLevel(camera.position.length());
     if (newLod !== lod) {
       lod = newLod;
+      if (terrainMat && terrainTexMid && terrainTexNear) {
+        const want = lod === "near" ? terrainTexNear : terrainTexMid;
+        if (terrainMat.map !== want) {
+          terrainMat.map = want;
+          terrainMat.needsUpdate = true;
+        }
+      }
       updateNodeInstances();
       if (!transition) rebuildEdges();
       updateLabels();
