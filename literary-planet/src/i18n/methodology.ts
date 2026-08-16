@@ -117,7 +117,7 @@ const KO: MethodologyStrings = {
 
   distHead: "분포 — 이 지도의 편중을 숫자로 공개한다",
   distBody:
-    "어떤 정전도 중립적이지 않다. 아래 수치는 이 지도가 현재 무엇을 과대·과소 대표하는지 보여준다. 편중의 축소는 다음 확장의 명시적 목표다.",
+    "어떤 정전도 중립적이지 않다. 아래 수치는 이 지도가 현재 무엇을 과대·과소 대표하는지 보여준다. 편중의 축소는 다음 확장의 명시적 목표다. 작가 한 명이 여러 지역·언어·장르·시대층에 동시에 속할 수 있으므로, 각 표의 백분율 합계는 100%를 넘을 수 있다.",
   distTitles: {
     regions: "지역",
     languages: "언어",
@@ -204,7 +204,7 @@ const EN: MethodologyStrings = {
 
   distHead: "Distributions — this map's biases, in numbers",
   distBody:
-    "No canon is neutral. The numbers below show what this map currently over- and under-represents. Reducing these biases is an explicit goal of the next expansion.",
+    "No canon is neutral. The numbers below show what this map currently over- and under-represents. Reducing these biases is an explicit goal of the next expansion. A writer can belong to several regions, languages, genres, and period layers at once, so each table's percentages can sum past 100%.",
   distTitles: {
     regions: "Regions",
     languages: "Languages",

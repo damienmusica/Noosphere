@@ -52,8 +52,14 @@ export function isLocale(x: string | null | undefined): x is Locale {
 
 export interface UIStrings {
   brand: string;
-  brandSub: (authors: number, relations: number) => string;
+  brandSub: (
+    authors: number,
+    authorsTotal: number,
+    relations: number,
+    relationsTotal: number
+  ) => string;
   brandSubAria: string;
+  brandSubTitle: (contrastCount: number) => string;
   skipLink: string;
   panelToggle: string;
   modeAria: string;
@@ -87,9 +93,10 @@ export interface UIStrings {
   resetView: string;
 
   webglTitle: string;
-  webglBody1: string;
-  webglLinkText: string;
-  webglBody2: string;
+  webglNote: string;
+  fallbackPickHint: string;
+  fallbackEgoAria: (name: string) => string;
+  fallbackShowAll: string;
   globeAria: string;
 
   detailAria: (name: string) => string;
@@ -105,6 +112,7 @@ export interface UIStrings {
   whereToStart: string;
   readingDifficulty: string;
   majorWorks: string;
+  worksHead: string;
   relationsHead: string;
   noRelations: string;
   influencedArrow: string;
@@ -164,16 +172,22 @@ export interface UIStrings {
   colPeriods: string;
   colRegionLang: string;
   colWorks: string;
+  colWorksTitle: string;
   colDifficulty: string;
   colTier: string;
   colReview: string;
   noRows: string;
 }
 
+/** "229/263" when filtered, plain "263" when everything is shown */
+const frac = (v: number, total: number): string => (v === total ? `${v}` : `${v}/${total}`);
+
 const KO: UIStrings = {
   brand: "문학의 행성",
-  brandSub: (a, r) => `작가 ${a} · 관계 ${r}`,
-  brandSubAria: "현재 표시 중인 작가와 관계 수",
+  brandSub: (a, aT, r, rT) => `작가 ${frac(a, aT)} · 관계 ${frac(r, rT)}`,
+  brandSubAria: "현재 표시 중인 작가와 관계 수 (표시 중/전체)",
+  brandSubTitle: (n) =>
+    `필터가 표시 수를 결정합니다. 기본 보기에서는 대조·반대항 관계 ${n}개가 꺼져 있으며, 탐색·필터 패널에서 켤 수 있습니다.`,
   skipLink: "키보드로 탐색하기: 작가 목록 페이지로 이동",
   panelToggle: "탐색·필터",
   modeAria: "좌표계 선택",
@@ -207,9 +221,11 @@ const KO: UIStrings = {
   resetView: "초기화",
 
   webglTitle: "3차원 지도를 사용할 수 없는 환경입니다",
-  webglBody1: "이 브라우저에서는 WebGL을 사용할 수 없습니다. 모든 작가와 관계는 ",
-  webglLinkText: "작가 목록",
-  webglBody2: "에서 동일하게 탐색할 수 있습니다.",
+  webglNote:
+    "WebGL 없이 동작하는 2차원 관계 지도로 표시합니다. 검색·필터·타임라인·프로필·비교는 동일하게 동작하며, 확대·좌표계 전환 같은 지구본 전용 조작만 빠집니다.",
+  fallbackPickHint: "작가를 선택하면 그 작가를 중심으로 한 관계망이 여기에 표시됩니다.",
+  fallbackEgoAria: (name) => `${name} 중심의 관계망`,
+  fallbackShowAll: "전체 작가 보기",
   globeAria:
     "문학의 행성 3차원 지도. 드래그로 회전, 휠·핀치로 확대. 키보드 탐색은 작가 목록 페이지를 이용하세요.",
 
@@ -226,6 +242,7 @@ const KO: UIStrings = {
   whereToStart: "어디서부터 읽을까",
   readingDifficulty: "독서 난도",
   majorWorks: "대표작",
+  worksHead: "작품",
   relationsHead: "관계",
   noRelations: "아직 기록된 관계가 없습니다. 관계 데이터는 단계적으로 채워지고 있습니다.",
   influencedArrow: "→ 영향을 준 작가",
@@ -292,6 +309,7 @@ const KO: UIStrings = {
   colPeriods: "시대층",
   colRegionLang: "지역 · 언어",
   colWorks: "대표작",
+  colWorksTitle: "편집 선정 대표작 — 첫 항목이 권장 입문작입니다 (수록 순서가 아니라 큐레이션 순서)",
   colDifficulty: "난도",
   colTier: "구분",
   colReview: "검토",
@@ -300,8 +318,10 @@ const KO: UIStrings = {
 
 const EN: UIStrings = {
   brand: "Literary Planet",
-  brandSub: (a, r) => `${a} writers · ${r} relations`,
-  brandSubAria: "Writers and relations currently shown",
+  brandSub: (a, aT, r, rT) => `${frac(a, aT)} writers · ${frac(r, rT)} relations`,
+  brandSubAria: "Writers and relations currently shown (shown/total)",
+  brandSubTitle: (n) =>
+    `Filters decide these counts. The default view keeps ${n} contrast relations off — enable them in the explore panel.`,
   skipLink: "Keyboard navigation: go to the writers list",
   panelToggle: "Explore & filter",
   modeAria: "Coordinate system",
@@ -335,9 +355,11 @@ const EN: UIStrings = {
   resetView: "Reset",
 
   webglTitle: "3D map unavailable in this environment",
-  webglBody1: "This browser cannot use WebGL. Every writer and relation can be explored in the ",
-  webglLinkText: "writers list",
-  webglBody2: " instead.",
+  webglNote:
+    "Showing the 2D relation map that works without WebGL. Search, filters, timeline, profiles, and comparison all work the same — only globe-specific controls (zoom, coordinate modes) are absent.",
+  fallbackPickHint: "Select a writer to see their relation web here.",
+  fallbackEgoAria: (name) => `Relation web centered on ${name}`,
+  fallbackShowAll: "Show all writers",
   globeAria:
     "Literary Planet 3D map. Drag to rotate, wheel or pinch to zoom. For keyboard navigation use the writers list.",
 
@@ -354,6 +376,7 @@ const EN: UIStrings = {
   whereToStart: "Where to start",
   readingDifficulty: "Reading difficulty",
   majorWorks: "Major works",
+  worksHead: "Works",
   relationsHead: "Relations",
   noRelations: "No relations recorded yet. Relation data is being filled in stages.",
   influencedArrow: "→ influenced",
@@ -421,6 +444,8 @@ const EN: UIStrings = {
   colPeriods: "Periods",
   colRegionLang: "Region · language",
   colWorks: "Major works",
+  colWorksTitle:
+    "Editorially selected major works — the first item is the recommended entry point (curated order, not file order)",
   colDifficulty: "Difficulty",
   colTier: "Tier",
   colReview: "Review",
