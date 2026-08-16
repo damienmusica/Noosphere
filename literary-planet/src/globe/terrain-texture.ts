@@ -63,7 +63,9 @@ export function paintTerrainTexture(
   territory: Territory,
   periodOf: (authorId: string) => PeriodId | undefined,
   cell = 2,
-  withCities = false
+  withCities = false,
+  /** curated reading-order index per work (0 = entry); sizes the town rings */
+  rankOf?: (workId: string) => number | undefined
 ): HTMLCanvasElement {
   const g = territory.geometry;
   const texW = g.gridWidth * cell;
@@ -201,13 +203,17 @@ export function paintTerrainTexture(
             ctx.closePath();
             ctx.fill();
           } else {
-            // an inland town: a small open ring (VAD P3 note: kept just loud
-            // enough that a lone ring on a small island beats coast noise)
+            // an inland town: an open ring sized by curated reading rank —
+            // earlier in the order = larger; works outside the curated order
+            // stay smallest and quieter (P0-4: the map speaks data; the VAD
+            // P3 floor keeps a lone island ring above coast noise)
+            const rank = rankOf?.(town.id);
+            const radius = rank === undefined ? 2.7 : Math.max(2.9, 5.4 - rank * 0.85);
             ctx.strokeStyle = COLORS.brass;
-            ctx.globalAlpha = 0.92;
+            ctx.globalAlpha = rank === undefined ? 0.62 : 0.92;
             ctx.lineWidth = 1.5;
             ctx.beginPath();
-            ctx.arc(x, y, 4, 0, Math.PI * 2);
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
             ctx.stroke();
           }
         }

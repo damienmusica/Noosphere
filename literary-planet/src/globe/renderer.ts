@@ -23,19 +23,21 @@ import { LabelLayer, type LabelItem, type LabelState } from "./labels.ts";
 import { paintTerrainTexture } from "./terrain-texture.ts";
 import { paintSealTexture } from "./seal-texture.ts";
 import { gridToVec3 } from "../lib/territory-geometry.ts";
-import { evidenceLabel, relationTypeShort } from "../i18n/index.ts";
+import { evidenceLabel, regionLabel, relationTypeShort } from "../i18n/index.ts";
 
 export interface GlobeCallbacks {
   onSelect(id: string | null): void;
   onHover(id: string | null): void;
   onRelationPick(relation: Relation): void;
   onRelationHover(relation: Relation | null): void;
+  onWorkPick(work: Work): void;
 }
 
 export interface GlobeI18n {
   authorLabel(a: Author, locale: Locale): string;
   movementLabel(m: Movement, locale: Locale): string;
   workLabel(w: Work, locale: Locale): string;
+  workAria(w: Work, locale: Locale): string;
 }
 
 export interface GlobeHandle {
@@ -101,7 +103,8 @@ export function createGlobe(
   i18n: GlobeI18n = {
     authorLabel: (a) => a.names.ko,
     movementLabel: (m) => m.ko,
-    workLabel: (w) => w.titleKo
+    workLabel: (w) => w.titleKo,
+    workAria: (w) => `작품 카드 열기: ${w.titleKo}`
   }
 ): GlobeHandle {
   const authors = dataset.authors;
@@ -197,9 +200,15 @@ export function createGlobe(
   if (dataset.territory) {
     const periodByAuthor = new Map(authors.map((a) => [a.id, a.periods[0]]));
     const periodOf = (id: string) => periodByAuthor.get(id);
+    const readingRank = new Map<string, number>();
+    for (const a of authors) a.readingOrder.forEach((wid, i) => readingRank.set(wid, i));
     const makeTex = (cellPx: number, withCities = false): THREE.CanvasTexture => {
       const tex = track(
-        new THREE.CanvasTexture(paintTerrainTexture(dataset.territory!, periodOf, cellPx, withCities))
+        new THREE.CanvasTexture(
+          paintTerrainTexture(dataset.territory!, periodOf, cellPx, withCities, (wid) =>
+            readingRank.get(wid)
+          )
+        )
       );
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
@@ -574,8 +583,11 @@ export function createGlobe(
     /** traversal duration in ms */
     dur: number;
     phase: number;
+    /** ms after build before this spark appears (incoming leads, outgoing follows) */
+    delay: number;
   }
   let flowItems: FlowItem[] = [];
+  let flowBuiltAt = 0;
   let flowPoints: THREE.Points | null = null;
   const flowTexture = (() => {
     const c = document.createElement("canvas");
@@ -605,10 +617,17 @@ export function createGlobe(
 
   function buildFlows(rels: Relation[], positions: Map<string, Vec3>): void {
     clearFlows();
+    const sel = store.getState().selectedAuthorId;
     if (store.getState().reducedMotion || rels.length === 0) return;
     const items: FlowItem[] = [];
     const colors: number[] = [];
     const animated: Array<Record<string, string>> = [];
+    let incomingCount = 0;
+    let outgoingCount = 0;
+    // staged reveal (2026-08-16 review): the dim lands first, then incoming
+    // influence converges on the star, then its own influence radiates out
+    const IN_DELAY = 200;
+    const OUT_DELAY = 700;
     for (const r of rels) {
       const a = positions.get(r.sourceId);
       const b = positions.get(r.targetId);
@@ -626,14 +645,22 @@ export function createGlobe(
       const dur = 3200 - r.weight * 900;
       const color = new THREE.Color(RELATION_COLORS[r.type]);
       if (def.direction === "directed") {
+        const incoming = r.targetId === sel;
+        if (incoming) incomingCount++;
+        else outgoingCount++;
         for (const phase of [0, 0.5]) {
-          items.push({ pts, dur, phase });
+          items.push({ pts, dur, phase, delay: incoming ? IN_DELAY : OUT_DELAY });
           colors.push(color.r, color.g, color.b);
         }
       } else {
-        // dialogue: one spark each way
-        items.push({ pts, dur, phase: 0 });
-        items.push({ pts: [...pts].reverse(), dur, phase: 0.5 });
+        // dialogue: one spark each way — the arriving direction leads
+        items.push({ pts, dur, phase: 0, delay: r.targetId === sel ? IN_DELAY : OUT_DELAY });
+        items.push({
+          pts: [...pts].reverse(),
+          dur,
+          phase: 0.5,
+          delay: r.sourceId === sel ? IN_DELAY : OUT_DELAY
+        });
         colors.push(color.r, color.g, color.b, color.r, color.g, color.b);
       }
     }
@@ -655,9 +682,19 @@ export function createGlobe(
     flowPoints.frustumCulled = false;
     scene.add(flowPoints);
     flowItems = items;
+    flowBuiltAt = performance.now();
     // sparks always travel the canonical data direction, never the traversal
     // order — the QA harness asserts this against /data
-    instr.log("flows-built", { sparks: items.length, relations: animated });
+    instr.log("flows-built", {
+      sparks: items.length,
+      relations: animated,
+      staging: {
+        incomingDelay: IN_DELAY,
+        outgoingDelay: OUT_DELAY,
+        incoming: incomingCount,
+        outgoing: outgoingCount
+      }
+    });
   }
 
   function updateFlows(now: number): void {
@@ -665,7 +702,14 @@ export function createGlobe(
     const attr = flowPoints.geometry.getAttribute("position") as THREE.BufferAttribute;
     for (let i = 0; i < flowItems.length; i++) {
       const f = flowItems[i]!;
-      const t = ((now / f.dur + f.phase) % 1 + 1) % 1;
+      const local = now - flowBuiltAt - f.delay;
+      if (local < 0) {
+        // parked at the globe's core until its stage begins — depth testing
+        // hides it behind the surface
+        attr.setXYZ(i, 0, 0, 0);
+        continue;
+      }
+      const t = ((local / f.dur + f.phase) % 1 + 1) % 1;
       const x = t * (f.pts.length - 1);
       const i0 = Math.min(f.pts.length - 2, Math.floor(x));
       const k = x - i0;
@@ -683,6 +727,11 @@ export function createGlobe(
 
   // --- per-frame state ------------------------------------------------------
   const labels = new LabelLayer(container);
+  labels.onActivate = (id) => {
+    if (!id.startsWith("wk:")) return;
+    const wk = dataset.works.find((x) => x.id === id.slice(3));
+    if (wk) cbs.onWorkPick(wk);
+  };
   let current = new Map<string, Vec3>(); // live positions (unit vectors)
   let visibleSet = new Set<string>();
   let visRels: Relation[] = [];
@@ -746,7 +795,9 @@ export function createGlobe(
         !neighborIds.has(a.id);
       const tint = new THREE.Color(PERIOD_TINT[a.periods[0] ?? "early-modernism"]);
       if (a.id === s.selectedAuthorId) tint.set(COLORS.brassBright);
-      if (dimmed) tint.multiplyScalar(0.42);
+      // selection must silence the crowd — 0.42 left too much background
+      // glare to read the constellation against (2026-08-16 review)
+      if (dimmed) tint.multiplyScalar(0.25);
       nodes.setColorAt(i, tint);
     });
     nodes.instanceMatrix.needsUpdate = true;
@@ -804,7 +855,7 @@ export function createGlobe(
     if (sel) {
       const touching = lodRels.filter((r) => r.sourceId === sel || r.targetId === sel);
       const rest = lodRels.filter((r) => r.sourceId !== sel && r.targetId !== sel);
-      edgeGroups = buildEdgeGroups(rest, current, edgeRoot, 0.28, false);
+      edgeGroups = buildEdgeGroups(rest, current, edgeRoot, 0.16, false);
       highlightGroups = buildEdgeGroups(touching, current, highlightRoot, 1, true);
       buildArrows(touching, current);
       buildFlows(touching, current);
@@ -977,6 +1028,33 @@ export function createGlobe(
       }
     }
 
+    // geo far view speaks in regions, not individuals — 100 authors over
+    // real geography drown the far view (2026-08-16 review: 45 label
+    // candidates suppressed); authors return at the next zoom step
+    const geoFar = s.mode === "geo" && lod === "far";
+
+    // far view fairness: every visible region's strongest author gets a
+    // representation boost so the far map is not one continent's roster
+    let regionRep: Map<string, string> | null = null;
+    if (lod === "far" && !geoFar) {
+      regionRep = new Map();
+      const rank = { anchor: 0, major: 1, context: 2 } as const;
+      for (const a of authors) {
+        if (!nodeVisible(a)) continue;
+        const region = a.regions[0];
+        if (!region) continue;
+        const curId = regionRep.get(region);
+        const cur = curId ? authors[indexOf.get(curId) ?? -1] : undefined;
+        if (
+          !cur ||
+          rank[a.tier] < rank[cur.tier] ||
+          (rank[a.tier] === rank[cur.tier] && a.id < cur.id)
+        ) {
+          regionRep.set(region, a.id);
+        }
+      }
+    }
+
     for (const a of authors) {
       if (!nodeVisible(a)) continue;
       const p = current.get(a.id);
@@ -992,6 +1070,7 @@ export function createGlobe(
               : s.selectedAuthorId
                 ? "dim"
                 : "normal";
+      if (geoFar && (state === "normal" || state === "dim")) continue;
       let priority = labelPriority({
         tier: a.tier,
         isSelected: state === "selected",
@@ -1002,6 +1081,7 @@ export function createGlobe(
       if (priority < 0) continue;
       if (edgeEnds?.has(a.id)) priority += 140;
       if (hovNeighbors?.has(a.id)) priority += 50;
+      if (regionRep?.get(a.regions[0] ?? "") === a.id) priority += 28;
       tmpV.set(p[0] * R, p[1] * R, p[2] * R).project(camera);
       if (tmpV.z > 1) continue;
       items.push({
@@ -1014,6 +1094,70 @@ export function createGlobe(
         y: ((-tmpV.y + 1) / 2) * h + 7,
         state
       });
+    }
+
+    if (geoFar) {
+      // one label per region: centroid of its visible members + member count
+      const agg = new Map<string, { count: number; x: number; y: number; z: number }>();
+      for (const a of authors) {
+        if (!nodeVisible(a)) continue;
+        const p = current.get(a.id);
+        const region = a.regions[0];
+        if (!p || !region) continue;
+        const e = agg.get(region) ?? { count: 0, x: 0, y: 0, z: 0 };
+        e.count++;
+        e.x += p[0];
+        e.y += p[1];
+        e.z += p[2];
+        agg.set(region, e);
+      }
+      // European regions crowd on the geo hemisphere — nudge colliding
+      // region labels vertically so every visible region stays named
+      // (the far map missing region names is the exact failure this view
+      // replaced)
+      const regionCands: Array<{ region: string; count: number; facing: number; x: number; y: number }> = [];
+      for (const [region, e] of agg) {
+        const len = Math.hypot(e.x, e.y, e.z) || 1;
+        const px = e.x / len;
+        const py = e.y / len;
+        const pz = e.z / len;
+        const facing = camDir.x * px + camDir.y * py + camDir.z * pz;
+        if (facing < 0.15) continue;
+        tmpV.set(px * R, py * R, pz * R).project(camera);
+        if (tmpV.z > 1) continue;
+        regionCands.push({
+          region,
+          count: e.count,
+          facing,
+          x: ((tmpV.x + 1) / 2) * w,
+          y: ((-tmpV.y + 1) / 2) * h
+        });
+      }
+      regionCands.sort((a, b) => b.facing - a.facing);
+      const placedRegions: Array<{ x0: number; x1: number; y0: number; y1: number }> = [];
+      for (const c of regionCands) {
+        const text = `${regionLabel(c.region, s.locale)} · ${c.count}`;
+        const wpx = text.length * 12 + 10; // md serif, KO-weighted estimate
+        let y = c.y;
+        for (const dy of [0, -18, 18, -36, 36]) {
+          const box = { x0: c.x - wpx / 2, x1: c.x + wpx / 2, y0: c.y + dy - 8, y1: c.y + dy + 12 };
+          if (!placedRegions.some((p) => p.x0 < box.x1 && p.x1 > box.x0 && p.y0 < box.y1 && p.y1 > box.y0)) {
+            y = c.y + dy;
+            placedRegions.push(box);
+            break;
+          }
+        }
+        items.push({
+          id: `region:${c.region}`,
+          text,
+          kind: "region",
+          size: "md",
+          priority: 92 + c.facing * 8,
+          x: c.x,
+          y,
+          state: s.selectedAuthorId ? "dim" : "normal"
+        });
+      }
     }
 
     // P3: the selected author's works label their towns at reading distance
@@ -1043,16 +1187,24 @@ export function createGlobe(
             priority: 88 + facing * 8,
             x: ((tmpV.x + 1) / 2) * w,
             y: ((-tmpV.y + 1) / 2) * h + 9,
-            state: "normal"
+            state: town.id === s.selectedWorkId ? "selected" : "normal",
+            // towns are real destinations, not decoration — click or
+            // Enter opens the work card (2026-08-16 review P0-4)
+            interactive: true,
+            ariaLabel: i18n.workAria(wk, s.locale)
           });
         }
       }
     }
 
-    // the focused star's lines say what KIND of bond each one is, in place
+    // a focused line names its bond in place only when the reader asks for
+    // it (hover or pick) — repeating the type on every spoke was pattern
+    // noise (2026-08-16 review); the always-on legend carries the key
     if (s.selectedAuthorId && lod !== "far") {
       const touching = visRels.filter(
-        (r) => r.sourceId === s.selectedAuthorId || r.targetId === s.selectedAuthorId
+        (r) =>
+          (r.id === s.hoveredRelationId || r.id === s.pickedRelationId) &&
+          (r.sourceId === s.selectedAuthorId || r.targetId === s.selectedAuthorId)
       );
       for (const r of touching) {
         const pa = current.get(r.sourceId);
@@ -1079,7 +1231,9 @@ export function createGlobe(
       }
     }
 
-    if (lod !== "near" && !s.selectedAuthorId) {
+    // in the geo far view the region clusters carry the grouping story;
+    // movement centroids are literary-space constructs and only add load
+    if (lod !== "near" && !s.selectedAuthorId && !geoFar) {
       for (const m of dataset.movements) {
         const members = (movementMembers.get(m.id) ?? []).filter((id) => {
           const a = authors[indexOf.get(id) ?? -1];
@@ -1223,9 +1377,15 @@ export function createGlobe(
     const selectionChanged = s.selectedAuthorId !== prev.selectedAuthorId;
     const hoverChanged = s.hoveredAuthorId !== prev.hoveredAuthorId;
     const relHoverChanged = s.hoveredRelationId !== prev.hoveredRelationId;
+    const pickedChanged =
+      s.pickedRelationId !== prev.pickedRelationId ||
+      s.selectedWorkId !== prev.selectedWorkId;
     const modeChanged = s.mode !== prev.mode;
     const localeChanged = s.locale !== prev.locale;
     prev = s;
+
+    // the picked line carries the only in-place type label — refresh it
+    if (pickedChanged) updateLabels();
 
     if (localeChanged) updateLabels();
     if (relHoverChanged) {
@@ -1353,8 +1513,11 @@ export function createGlobe(
     rendererVisibleAuthors: visibleSet.size,
     rendererVisibleRelations: visRels.length,
     flowSparks: flowItems.length,
+    // static direction encoding — must survive reduced-motion
+    arrowInstances: arrowMesh ? arrowMesh.count : 0,
     labelsShown: labels.lastShown,
-    labelsCollided: labels.lastCollided,
+    labelsSuppressed: labels.lastSuppressed,
+    labelsOverlapping: labels.lastOverlapping,
     labelsByKind: labels.lastShownByKind
   });
   instr.registerRenderer(probe);

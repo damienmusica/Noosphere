@@ -6,7 +6,7 @@ export type LabelState = "normal" | "selected" | "hovered" | "neighbor" | "dim";
 export interface LabelItem {
   id: string;
   text: string;
-  kind: "author" | "movement" | "work" | "relation";
+  kind: "author" | "movement" | "work" | "relation" | "region";
   size: "lg" | "md" | "sm";
   priority: number;
   x: number;
@@ -14,6 +14,9 @@ export interface LabelItem {
   state: LabelState;
   /** explicit ink (relation-type labels use their line's color) */
   color?: string;
+  /** clickable + focusable (work towns); activation reported via onActivate */
+  interactive?: boolean;
+  ariaLabel?: string;
 }
 
 interface Rect {
@@ -47,24 +50,39 @@ const FONT_SIZE: Record<LabelItem["size"], number> = { lg: 14, md: 12, sm: 11 };
 export class LabelLayer {
   private root: HTMLDivElement;
   private pool = new Map<string, HTMLDivElement>();
+  /** fired when an interactive label (work town) is clicked or Enter/Space-ed */
+  onActivate: ((id: string) => void) | null = null;
   /** labels placed in the last update (instrumentation) */
   lastShown = 0;
-  /** labels dropped by the collision pass in the last update (instrumentation) */
-  lastCollided = 0;
+  /**
+   * candidates the greedy pass refused to place because they would have
+   * overlapped (instrumentation) — these do NOT render; a high number means
+   * "much of the map is unlabeled", not "labels overlap on screen"
+   */
+  lastSuppressed = 0;
+  /**
+   * placed labels that nevertheless overlap another placed label
+   * (instrumentation) — only must-show labels (selected/hovered) can do
+   * this, since they bypass the greedy check; this is the true on-screen
+   * overlap count
+   */
+  lastOverlapping = 0;
   /** per-kind breakdown of the last update (instrumentation) */
   lastShownByKind: Record<string, number> = {};
 
   constructor(container: HTMLElement) {
     this.root = document.createElement("div");
     this.root.className = "globe-labels";
-    this.root.setAttribute("aria-hidden", "true");
+    // aria-hidden lives on each non-interactive label, not the root — work
+    // towns are real buttons and must stay in the accessibility tree
     container.appendChild(this.root);
   }
 
   update(items: LabelItem[], width: number, height: number, budget: number): void {
     const placed: Rect[] = [];
     const shown = new Set<string>();
-    let collided = 0;
+    let suppressed = 0;
+    let overlapping = 0;
     const byKind: Record<string, number> = {};
     const sorted = [...items].sort((a, b) => b.priority - a.priority);
 
@@ -75,10 +93,12 @@ export class LabelLayer {
       const w = estimateWidth(item.text, fs);
       const rect: Rect = { x: item.x - w / 2, y: item.y, w, h: fs + 6 };
       const mustShow = item.state === "selected" || item.state === "hovered";
-      if (!mustShow && placed.some((p) => overlaps(p, rect, 2))) {
-        collided++;
+      const collides = placed.some((p) => overlaps(p, rect, 2));
+      if (!mustShow && collides) {
+        suppressed++;
         continue;
       }
+      if (mustShow && collides) overlapping++;
       placed.push(rect);
       shown.add(item.id);
       byKind[item.kind] = (byKind[item.kind] ?? 0) + 1;
@@ -86,21 +106,46 @@ export class LabelLayer {
       let el = this.pool.get(item.id);
       if (!el) {
         el = document.createElement("div");
+        el.dataset.labelId = item.id;
+        el.addEventListener("click", () => {
+          if (el!.dataset.interactive === "1") this.onActivate?.(el!.dataset.labelId!);
+        });
+        el.addEventListener("keydown", (e) => {
+          if (el!.dataset.interactive !== "1") return;
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            this.onActivate?.(el!.dataset.labelId!);
+          }
+        });
         this.pool.set(item.id, el);
         this.root.appendChild(el);
       }
-      el.className = `globe-label globe-label--${item.kind} globe-label--${item.size} is-${item.state}`;
+      el.className = `globe-label globe-label--${item.kind} globe-label--${item.size} is-${item.state}${item.interactive ? " is-interactive" : ""}`;
       if (el.textContent !== item.text) el.textContent = item.text;
       el.style.color = item.color ?? "";
       el.style.transform = `translate(-50%, 0) translate3d(${item.x.toFixed(1)}px, ${item.y.toFixed(1)}px, 0)`;
       el.style.display = "block";
+      if (item.interactive) {
+        el.dataset.interactive = "1";
+        el.setAttribute("role", "button");
+        el.tabIndex = 0;
+        el.setAttribute("aria-label", item.ariaLabel ?? item.text);
+        el.removeAttribute("aria-hidden");
+      } else {
+        delete el.dataset.interactive;
+        el.removeAttribute("role");
+        el.removeAttribute("tabindex");
+        el.removeAttribute("aria-label");
+        el.setAttribute("aria-hidden", "true");
+      }
     }
 
     for (const [id, el] of this.pool) {
       if (!shown.has(id)) el.style.display = "none";
     }
     this.lastShown = shown.size;
-    this.lastCollided = collided;
+    this.lastSuppressed = suppressed;
+    this.lastOverlapping = overlapping;
     this.lastShownByKind = byKind;
   }
 

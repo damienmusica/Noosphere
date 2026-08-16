@@ -97,6 +97,15 @@ export interface UIStrings {
   fallbackPickHint: string;
   fallbackEgoAria: (name: string) => string;
   fallbackShowAll: string;
+  legendTitle: string;
+  legendCoord: (modeLabel: string) => string;
+  legendTerrain: string;
+  legendOff: string;
+  workCardAria: string;
+  workEntryBadge: string;
+  workOrder: (n: number, total: number) => string;
+  workOutsideOrder: string;
+  workOpenAria: (title: string) => string;
   fallbackSummary: (incoming: number, outgoing: number, undirected: number) => string;
   fallbackNodeAria: (name: string) => string;
   fallbackCenterAria: (name: string) => string;
@@ -231,6 +240,16 @@ const KO: UIStrings = {
   fallbackPickHint: "작가를 선택하면 그 작가를 중심으로 한 관계망이 여기에 표시됩니다.",
   fallbackEgoAria: (name) => `${name} 중심의 관계망`,
   fallbackShowAll: "전체 작가 보기",
+  legendTitle: "범례",
+  legendCoord: (modeLabel) => `좌표: ${modeLabel}`,
+  legendTerrain:
+    "영토 크기·높이 = 기록된 영향 연결의 규모 · 도시 링 크기 = 권장 읽기 순서(◆ 항구 = 입문작) — 방법론 참조",
+  legendOff: "탐색·필터에서 꺼진 유형",
+  workCardAria: "작품 카드",
+  workEntryBadge: "입문작 — 여기서 시작",
+  workOrder: (n, total) => `권장 읽기 순서 ${n}/${total}`,
+  workOutsideOrder: "권장 순서 밖의 작품",
+  workOpenAria: (title) => `작품 카드 열기: ${title}`,
   fallbackSummary: (i, o, u) => `들어오는 관계 ${i} · 나가는 관계 ${o} · 무방향 ${u}`,
   fallbackNodeAria: (name) => `${name}(으)로 이동`,
   fallbackCenterAria: (name) => `${name} 프로필 열기`,
@@ -372,6 +391,16 @@ const EN: UIStrings = {
   fallbackPickHint: "Select a writer to see their relation web here.",
   fallbackEgoAria: (name) => `Relation web centered on ${name}`,
   fallbackShowAll: "Show all writers",
+  legendTitle: "Legend",
+  legendCoord: (modeLabel) => `Coordinates: ${modeLabel}`,
+  legendTerrain:
+    "Territory size and height = volume of documented influence links · town ring size = curated reading order (◆ harbor = entry work) — see Methodology",
+  legendOff: "Switched off in Explore/Filter",
+  workCardAria: "Work card",
+  workEntryBadge: "Entry work — start here",
+  workOrder: (n, total) => `Curated reading order ${n}/${total}`,
+  workOutsideOrder: "Outside the curated order",
+  workOpenAria: (title) => `Open work card: ${title}`,
   fallbackSummary: (i, o, u) => `Incoming ${i} · outgoing ${o} · undirected ${u}`,
   fallbackNodeAria: (name) => `Travel to ${name}`,
   fallbackCenterAria: (name) => `Open ${name}'s profile`,
