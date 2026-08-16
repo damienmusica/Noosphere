@@ -6,12 +6,14 @@ export type LabelState = "normal" | "selected" | "hovered" | "neighbor" | "dim";
 export interface LabelItem {
   id: string;
   text: string;
-  kind: "author" | "movement" | "work";
+  kind: "author" | "movement" | "work" | "relation";
   size: "lg" | "md" | "sm";
   priority: number;
   x: number;
   y: number;
   state: LabelState;
+  /** explicit ink (relation-type labels use their line's color) */
+  color?: string;
 }
 
 interface Rect {
@@ -77,6 +79,7 @@ export class LabelLayer {
       }
       el.className = `globe-label globe-label--${item.kind} globe-label--${item.size} is-${item.state}`;
       if (el.textContent !== item.text) el.textContent = item.text;
+      el.style.color = item.color ?? "";
       el.style.transform = `translate(-50%, 0) translate3d(${item.x.toFixed(1)}px, ${item.y.toFixed(1)}px, 0)`;
       el.style.display = "block";
     }

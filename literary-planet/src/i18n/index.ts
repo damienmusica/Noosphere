@@ -97,6 +97,8 @@ export interface UIStrings {
   speculativeChip: string;
   imaginedPortrait: string;
   emblemPortrait: string;
+  openProfile: string;
+  miniStats: (relations: number, works: number) => string;
   closeDetail: string;
   whyImportant: string;
   whereToStart: string;
@@ -215,6 +217,8 @@ const KO: UIStrings = {
   speculativeChip: "사변·SF",
   imaginedPortrait: "상상 초상",
   emblemPortrait: "상징 정물",
+  openProfile: "상세 프로필",
+  miniStats: (r, w) => `관계 ${r} · 작품 ${w}`,
   closeDetail: "상세 패널 닫기",
   whyImportant: "왜 중요한가",
   whereToStart: "어디서부터 읽을까",
@@ -340,6 +344,8 @@ const EN: UIStrings = {
   speculativeChip: "Speculative / SF",
   imaginedPortrait: "Imagined portrait",
   emblemPortrait: "Emblematic still life",
+  openProfile: "Full profile",
+  miniStats: (r, w) => `${r} relations · ${w} works`,
   closeDetail: "Close detail panel",
   whyImportant: "Why they matter",
   whereToStart: "Where to start",

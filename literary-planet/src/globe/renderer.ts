@@ -22,11 +22,13 @@ import { LabelLayer, type LabelItem, type LabelState } from "./labels.ts";
 import { paintTerrainTexture } from "./terrain-texture.ts";
 import { paintSealTexture } from "./seal-texture.ts";
 import { gridToVec3 } from "../lib/territory-geometry.ts";
+import { evidenceLabel, relationTypeShort } from "../i18n/index.ts";
 
 export interface GlobeCallbacks {
   onSelect(id: string | null): void;
   onHover(id: string | null): void;
   onRelationPick(relation: Relation): void;
+  onRelationHover(relation: Relation | null): void;
 }
 
 export interface GlobeI18n {
@@ -411,8 +413,16 @@ export function createGlobe(
   scene.add(edgeRoot);
   const highlightRoot = new THREE.Group();
   scene.add(highlightRoot);
+  // transient webs: the hovered star's constellation, and the hovered line
+  const hoverWebRoot = new THREE.Group();
+  scene.add(hoverWebRoot);
+  const relHoverRoot = new THREE.Group();
+  relHoverRoot.renderOrder = 5;
+  scene.add(relHoverRoot);
   let edgeGroups: EdgeGroup[] = [];
   let highlightGroups: EdgeGroup[] = [];
+  let hoverWebGroups: EdgeGroup[] = [];
+  const relationById = new Map(dataset.relations.map((r) => [r.id, r]));
 
   // D4: the arrowhead is a confirmation stamp, not the protagonist —
   // direction is already carried by the dim-source/bright-target gradient
@@ -663,6 +673,105 @@ export function createGlobe(
     }
   }
 
+  // --- hovered-line emphasis + tooltip (who connects to whom, zero clicks) --
+  const tooltip = document.createElement("div");
+  tooltip.className = "globe-edge-tooltip";
+  tooltip.style.display = "none";
+  container.appendChild(tooltip);
+
+  function clearRelHover(): void {
+    for (const child of [...relHoverRoot.children]) {
+      relHoverRoot.remove(child);
+      const line = child as THREE.Line;
+      line.geometry?.dispose?.();
+      (line.material as THREE.Material | undefined)?.dispose?.();
+    }
+  }
+
+  function updateRelationHover(): void {
+    clearRelHover();
+    clearGroup(hoverWebRoot, hoverWebGroups);
+    hoverWebGroups = [];
+    const s = store.getState();
+
+    // hovered star: its whole constellation surfaces before any click
+    if (s.hoveredAuthorId && s.hoveredAuthorId !== s.selectedAuthorId) {
+      const touching = visRels.filter(
+        (r) => r.sourceId === s.hoveredAuthorId || r.targetId === s.hoveredAuthorId
+      );
+      hoverWebGroups = buildEdgeGroups(touching, current, hoverWebRoot, 1, true);
+    }
+
+    // hovered line: redraw it bright with a soft halo
+    const rel = s.hoveredRelationId ? relationById.get(s.hoveredRelationId) : undefined;
+    if (rel) {
+      const a = current.get(rel.sourceId);
+      const b = current.get(rel.targetId);
+      if (a && b) {
+        const pts = arcPoints(a, b, ARC_SEG, R).map(
+          (p) => new THREE.Vector3(p[0], p[1], p[2])
+        );
+        const halo = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints(
+            pts.map((p) => p.clone().multiplyScalar(1.004))
+          ),
+          new THREE.LineBasicMaterial({
+            color: COLORS.brassBright,
+            transparent: true,
+            opacity: 0.35,
+            depthWrite: false
+          })
+        );
+        const core = new THREE.Line(
+          new THREE.BufferGeometry().setFromPoints(pts),
+          new THREE.LineBasicMaterial({
+            color: RELATION_COLORS[rel.type],
+            transparent: true,
+            opacity: 1,
+            depthWrite: false
+          })
+        );
+        relHoverRoot.add(halo, core);
+      }
+    }
+  }
+
+  function setEdgeTooltip(rel: Relation | null): void {
+    if (!rel) {
+      tooltip.style.display = "none";
+      return;
+    }
+    const s = store.getState();
+    const src = authors[indexOf.get(rel.sourceId) ?? -1];
+    const tgt = authors[indexOf.get(rel.targetId) ?? -1];
+    if (!src || !tgt) return;
+    tooltip.replaceChildren();
+    const names = document.createElement("div");
+    names.className = "et-names";
+    names.textContent = `${i18n.authorLabel(src, s.locale)} ${
+      rel.direction === "directed" ? "→" : "↔"
+    } ${i18n.authorLabel(tgt, s.locale)}`;
+    const meta = document.createElement("div");
+    meta.className = "et-meta";
+    const dot = document.createElement("span");
+    dot.className = "et-dot";
+    dot.style.background = RELATION_COLORS[rel.type];
+    meta.append(
+      dot,
+      ` ${relationTypeShort(rel.type, s.locale)} · ${evidenceLabel(rel.evidenceLevel, s.locale)}`
+    );
+    tooltip.append(names, meta);
+    tooltip.style.display = "block";
+  }
+
+  function moveTooltip(clientX: number, clientY: number): void {
+    const rect = container.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
+    const flip = x > rect.width - 240;
+    tooltip.style.transform = `translate(${flip ? x - 16 : x + 16}px, ${y + 14}px) translateX(${flip ? "-100%" : "0"})`;
+  }
+
   function recomputeVisibility(): void {
     const s = store.getState();
     visibleSet = visibleAuthorIds(authors, s.filters, s.year, s.yearMode);
@@ -713,6 +822,19 @@ export function createGlobe(
     const camDir = camera.position.clone().normalize();
     const items: LabelItem[] = [];
 
+    // transient emphases: both ends of a hovered line always get named, and a
+    // hovered star's neighbors surface before any click
+    const hovRel = s.hoveredRelationId ? relationById.get(s.hoveredRelationId) : undefined;
+    const edgeEnds = hovRel ? new Set([hovRel.sourceId, hovRel.targetId]) : null;
+    let hovNeighbors: Set<string> | null = null;
+    if (s.hoveredAuthorId && s.hoveredAuthorId !== s.selectedAuthorId) {
+      hovNeighbors = new Set();
+      for (const r of visRels) {
+        if (r.sourceId === s.hoveredAuthorId) hovNeighbors.add(r.targetId);
+        if (r.targetId === s.hoveredAuthorId) hovNeighbors.add(r.sourceId);
+      }
+    }
+
     for (const a of authors) {
       if (!nodeVisible(a)) continue;
       const p = current.get(a.id);
@@ -723,12 +845,12 @@ export function createGlobe(
           ? "selected"
           : a.id === s.hoveredAuthorId
             ? "hovered"
-            : neighborIds.has(a.id)
+            : neighborIds.has(a.id) || edgeEnds?.has(a.id) || hovNeighbors?.has(a.id)
               ? "neighbor"
               : s.selectedAuthorId
                 ? "dim"
                 : "normal";
-      const priority = labelPriority({
+      let priority = labelPriority({
         tier: a.tier,
         isSelected: state === "selected",
         isHovered: state === "hovered",
@@ -736,6 +858,8 @@ export function createGlobe(
         facingDot: facing
       });
       if (priority < 0) continue;
+      if (edgeEnds?.has(a.id)) priority += 140;
+      if (hovNeighbors?.has(a.id)) priority += 50;
       tmpV.set(p[0] * R, p[1] * R, p[2] * R).project(camera);
       if (tmpV.z > 1) continue;
       items.push({
@@ -780,6 +904,36 @@ export function createGlobe(
             state: "normal"
           });
         }
+      }
+    }
+
+    // the focused star's lines say what KIND of bond each one is, in place
+    if (s.selectedAuthorId && lod !== "far") {
+      const touching = visRels.filter(
+        (r) => r.sourceId === s.selectedAuthorId || r.targetId === s.selectedAuthorId
+      );
+      for (const r of touching) {
+        const pa = current.get(r.sourceId);
+        const pb = current.get(r.targetId);
+        if (!pa || !pb) continue;
+        const mid = arcPoints(pa, pb, 8, R * 1.012)[4]!;
+        const len = Math.hypot(mid[0], mid[1], mid[2]) || 1;
+        const facing =
+          (camDir.x * mid[0] + camDir.y * mid[1] + camDir.z * mid[2]) / len;
+        if (facing < 0.2) continue;
+        tmpV.set(mid[0], mid[1], mid[2]).project(camera);
+        if (tmpV.z > 1) continue;
+        items.push({
+          id: `rel:${r.id}`,
+          text: relationTypeShort(r.type, s.locale),
+          kind: "relation",
+          size: "sm",
+          priority: 72 + facing * 6,
+          x: ((tmpV.x + 1) / 2) * w,
+          y: ((-tmpV.y + 1) / 2) * h,
+          state: "normal",
+          color: RELATION_COLORS[r.type]
+        });
       }
     }
 
@@ -854,14 +1008,19 @@ export function createGlobe(
 
   function onPointerMove(e: PointerEvent): void {
     if (e.pointerType === "touch") return;
+    moveTooltip(e.clientX, e.clientY);
     if (hoverPending) return;
     hoverPending = true;
     requestAnimationFrame(() => {
       hoverPending = false;
       if (disposed) return;
+      const s = store.getState();
       const id = pickAuthor(e.clientX, e.clientY);
-      renderer.domElement.style.cursor = id ? "pointer" : "grab";
-      if (id !== store.getState().hoveredAuthorId) cbs.onHover(id);
+      // a star under the pointer wins; otherwise the line beneath it speaks
+      const rel = id ? null : pickRelation();
+      renderer.domElement.style.cursor = id || rel ? "pointer" : "grab";
+      if (id !== s.hoveredAuthorId) cbs.onHover(id);
+      if ((rel?.id ?? null) !== s.hoveredRelationId) cbs.onRelationHover(rel);
     });
   }
 
@@ -892,7 +1051,9 @@ export function createGlobe(
   renderer.domElement.addEventListener("pointerdown", onPointerDown);
   renderer.domElement.addEventListener("pointerup", onPointerUp);
   renderer.domElement.addEventListener("pointerleave", () => {
-    if (store.getState().hoveredAuthorId) cbs.onHover(null);
+    const s = store.getState();
+    if (s.hoveredAuthorId) cbs.onHover(null);
+    if (s.hoveredRelationId) cbs.onRelationHover(null);
   });
 
   // --- store subscription with field diffing --------------------------------
@@ -918,11 +1079,17 @@ export function createGlobe(
       s.filters !== prev.filters || s.year !== prev.year || s.yearMode !== prev.yearMode;
     const selectionChanged = s.selectedAuthorId !== prev.selectedAuthorId;
     const hoverChanged = s.hoveredAuthorId !== prev.hoveredAuthorId;
+    const relHoverChanged = s.hoveredRelationId !== prev.hoveredRelationId;
     const modeChanged = s.mode !== prev.mode;
     const localeChanged = s.locale !== prev.locale;
     prev = s;
 
     if (localeChanged) updateLabels();
+    if (relHoverChanged) {
+      updateRelationHover();
+      setEdgeTooltip(s.hoveredRelationId ? relationById.get(s.hoveredRelationId) ?? null : null);
+      updateLabels();
+    }
 
     if (modeChanged) {
       const from = new Map(current);
@@ -960,9 +1127,11 @@ export function createGlobe(
       if (!transition) rebuildEdges();
       updateLabels();
     } else if (hoverChanged) {
+      updateRelationHover();
       updateNodeInstances();
       updateLabels();
     }
+    if (selectionChanged || filtersChanged) updateRelationHover();
     updateRings();
   });
 
@@ -1067,6 +1236,7 @@ export function createGlobe(
         highlightRoot.visible = true;
         if (arrowMesh) arrowMesh.visible = true;
         rebuildEdges();
+        updateRelationHover();
         updateLabels();
       }
     }
@@ -1109,6 +1279,9 @@ export function createGlobe(
     unsub();
     ro.disconnect();
     labels.dispose();
+    tooltip.remove();
+    clearRelHover();
+    clearGroup(hoverWebRoot, hoverWebGroups);
     clearGroup(edgeRoot, edgeGroups);
     clearGroup(highlightRoot, highlightGroups);
     if (arrowMesh) {
