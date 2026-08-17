@@ -51,16 +51,26 @@ def save_mark(author, im, target_h=420):
 
 
 # --- marks -------------------------------------------------------------------
-# Kafka / Tagore: rasterized signature SVGs (black strokes, transparent bg)
-for author, raw in (
-    ("franz-kafka", "franz-kafka-signature.png"),
-    ("rabindranath-tagore", "rabindranath-tagore-signature.png"),
-):
+# Kafka: rasterized signature SVG (black strokes, transparent bg)
+for author, raw in (("franz-kafka", "franz-kafka-signature.png"),):
     im = Image.open(os.path.join(RAW, raw)).convert("RGBA")
     # recolor strokes to warm ink, keep the anti-aliased alpha
     solid = Image.new("RGBA", im.size, INK + (255,))
     solid.putalpha(im.getchannel("A"))
     save_mark(author, solid)
+
+# Tagore: the traced SVG reads as scribble at map scale (A/B round 1 verdict)
+# — use the REAL 1920 Bengali ink signature scan instead: authentic stroke
+# weight and density carry the hand where the thin trace could not.
+tagore = Image.open(os.path.join(ST, "rabindranath-tagore", "signature_bengali_1920.jpg")).convert("RGB")
+tagore = ImageOps.autocontrast(tagore, cutoff=1)
+def scan_ink_alpha(im, thresh=190, ramp=2.2):
+    g = ImageOps.grayscale(im)
+    a = g.point(lambda v: min(255, int((thresh - v) * ramp)) if v < thresh else 0)
+    out = Image.new("RGBA", im.size, INK + (0,))
+    out.putalpha(a)
+    return out
+save_mark("rabindranath-tagore", tight_bbox(scan_ink_alpha(tagore)))
 
 # Soseki: brush signature 漱石 + the two red kanji seals, cut from the real
 # hanging-scroll scan (320×1089). Ink becomes tintless warm-black; the seal
@@ -131,6 +141,10 @@ COVERS = {
 }
 for work, (rel, lic) in COVERS.items():
     im = Image.open(os.path.join(ST, rel)).convert("RGB")
+    # shave scan margins (2.5%/side) — white catalog borders read as loose
+    # polaroids on the boards instead of printed covers (A/B round 1)
+    mx, my = round(im.width * 0.025), round(im.height * 0.025)
+    im = im.crop((mx, my, im.width - mx, im.height - my))
     im.thumbnail((420, 620), Image.LANCZOS)
     f = f"covers/{work}.jpg"
     im.save(os.path.join(OUT, f), quality=85)

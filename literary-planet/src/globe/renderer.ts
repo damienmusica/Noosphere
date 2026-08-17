@@ -1625,6 +1625,8 @@ export function createGlobe(
 
   const tmpM = new THREE.Matrix4();
   const tmpV = new THREE.Vector3();
+  const tmpUp = new THREE.Vector3();
+  const tmpV2 = new THREE.Vector3();
   const hidden = new THREE.Matrix4().makeScale(0, 0, 0);
 
   function nodeVisible(a: Author): boolean {
@@ -1683,8 +1685,13 @@ export function createGlobe(
       const dimmed =
         s.selectedAuthorId !== null && id !== s.selectedAuthorId && !castSet.has(id);
       // the selected star's halo bows out with its emblem at reading depth —
-      // a soft blob over the towns was the last poster left (8th review)
-      const haloFade = id === s.selectedAuthorId ? 1 - nearGlyphK() : 1;
+      // a soft blob over the towns was the last poster left (8th review).
+      // A/B round 1: when the author's real mark is on the ground, the halo
+      // disc is one competitor too many under the 감상인 frame — silence it
+      // for the selected mark-bearer at every depth.
+      const selHasMark =
+        id === s.selectedAuthorId && Boolean(sealSprites.get(id)?.userData.isMark);
+      const haloFade = selHasMark ? 0.12 : id === s.selectedAuthorId ? 1 - nearGlyphK() : 1;
       (sprite.material as THREE.SpriteMaterial).opacity = (dimmed ? 0.1 : 0.32) * haloFade;
     }
 
@@ -2180,6 +2187,18 @@ export function createGlobe(
       if (regionRep?.get(a.regions[0] ?? "") === a.id) priority += 28;
       tmpV.set(p[0] * R, p[1] * R, p[2] * R).project(camera);
       if (tmpV.z > 1) continue;
+      let ly = ((-tmpV.y + 1) / 2) * h + 7;
+      if (state === "selected" && sealSprites.get(a.id)?.userData.isMark) {
+        // A/B round 1: the collector's slip goes UNDER the 감상인 frame, not
+        // across the signature — drop it into the dial's empty lower interior
+        // (frame half-height 1.95 < 2.8 < dial inner radius ~3.8 world units)
+        tmpUp.setFromMatrixColumn(camera.matrixWorld, 1);
+        tmpV2
+          .set(p[0] * R, p[1] * R, p[2] * R)
+          .addScaledVector(tmpUp, -2.8)
+          .project(camera);
+        if (tmpV2.z <= 1) ly = Math.max(ly, ((-tmpV2.y + 1) / 2) * h);
+      }
       items.push({
         id: a.id,
         text: i18n.authorLabel(a, s.locale),
@@ -2187,7 +2206,7 @@ export function createGlobe(
         size: a.tier === "anchor" ? "md" : "sm",
         priority,
         x: ((tmpV.x + 1) / 2) * w,
-        y: ((-tmpV.y + 1) / 2) * h + 7,
+        y: ly,
         state
       });
     }
