@@ -903,6 +903,19 @@ export function createGlobe(
   // measured.
   const sealSprites = new Map<string, THREE.Sprite>();
   {
+    // R7 PR5: one shared atlas instead of 100 individual CanvasTextures.
+    // Same pixel budget (√N grid of 256px cells — bytes measured ±0), but
+    // texture count 100→1 and ONE GPU upload: clones share the base's
+    // .source, so per-sprite uv windows are free (sprite shader has
+    // mapTransform since r152; verified in this three build). Cells still
+    // paint in deadline-aware idle chunks; the single upload happens once
+    // at completion — seals are invisible at boot's far view anyway.
+    const CELL = 256;
+    const COLS = Math.ceil(Math.sqrt(authors.length));
+    const atlas = document.createElement("canvas");
+    atlas.width = atlas.height = COLS * CELL;
+    const atlasCtx = atlas.getContext("2d")!;
+    const atlasBase = reg(track(new THREE.CanvasTexture(atlas)));
     let si = 0;
     const buildChunk = (deadline?: IdleDeadline): void => {
       if (disposed) return;
@@ -913,13 +926,21 @@ export function createGlobe(
       while (si < authors.length) {
         if (painted > 0 && (deadline ? deadline.timeRemaining() < 4 : painted >= 4)) break;
         const a = authors[si]!;
-        const tex = reg(
-          track(
-            new THREE.CanvasTexture(
-              paintSealTexture(sealGlyph(a.id, a.names.original), a.tier, a.id)
-            )
-          )
+        const col = si % COLS;
+        const row = Math.floor(si / COLS);
+        atlasCtx.drawImage(
+          paintSealTexture(sealGlyph(a.id, a.names.original), a.tier, a.id),
+          col * CELL,
+          row * CELL,
+          CELL,
+          CELL
         );
+        // a view into the atlas — NOT registered in the byte ledger (the
+        // base carries the bytes once) and never needsUpdate'd (that would
+        // re-upload the whole shared source per seal)
+        const tex = track(atlasBase.clone());
+        tex.repeat.set(1 / COLS, 1 / COLS);
+        tex.offset.set(col / COLS, 1 - (row + 1) / COLS);
         const mat = track(
           new THREE.SpriteMaterial({
             map: tex,
@@ -938,6 +959,7 @@ export function createGlobe(
         painted++;
       }
       if (si < authors.length) scheduleIdle(buildChunk);
+      else atlasBase.needsUpdate = true; // the one upload
     };
     scheduleIdle(buildChunk);
   }
