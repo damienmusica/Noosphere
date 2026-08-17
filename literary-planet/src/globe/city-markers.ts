@@ -268,17 +268,31 @@ export class CityMarkers {
     camera: THREE.Camera,
     width: number,
     height: number
-  ): Array<{ id: string; x: number; y: number }> {
+  ): Array<{ id: string; x: number; y: number; r: number; rank: number | null }> {
     if (!this.group.visible) return [];
     const v = new THREE.Vector3();
-    const out: Array<{ id: string; x: number; y: number }> = [];
+    const e = new THREE.Vector3();
+    const right = new THREE.Vector3();
+    camera.getWorldDirection(right);
+    right.cross(camera.up).normalize();
+    const out: Array<{ id: string; x: number; y: number; r: number; rank: number | null }> = [];
     for (const c of this.cities) {
       v.copy(c.position).project(camera);
       if (v.z > 1) continue;
+      // projected footprint radius in px (8th review: "meaningfully visible"
+      // is a measured claim, not a state flag) — project the footprint edge
+      const worldR = this.scaleOf(c) * 0.9;
+      e.copy(c.position).addScaledVector(right, worldR).project(camera);
+      const x = ((v.x + 1) / 2) * width;
+      const y = ((-v.y + 1) / 2) * height;
+      const ex = ((e.x + 1) / 2) * width;
+      const ey = ((-e.y + 1) / 2) * height;
       out.push({
         id: c.workId,
-        x: Math.round(((v.x + 1) / 2) * width),
-        y: Math.round(((-v.y + 1) / 2) * height)
+        x: Math.round(x),
+        y: Math.round(y),
+        r: Math.round(Math.hypot(ex - x, ey - y) * 10) / 10,
+        rank: c.rank
       });
     }
     return out;

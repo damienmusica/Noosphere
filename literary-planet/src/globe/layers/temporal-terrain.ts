@@ -58,6 +58,11 @@ export class TemporalTerrainLayer {
   private nearTex: THREE.Texture | null = null;
   private nearPending = false;
   private nearReleaseTimer: ReturnType<typeof setTimeout> | null = null;
+  // 8th review: the SELECTED nation's reading-distance window at full cell
+  // density (~2MiB) — the selection path never pays for the 134MiB planet
+  private patchTex: THREE.Texture | null = null;
+  private patchKey: string | null = null;
+  private patchPendingKey: string | null = null;
   private disposed = false;
 
   constructor(deps: Deps) {
@@ -115,6 +120,17 @@ export class TemporalTerrainLayer {
           this.pendingYears.delete(msg.year);
           this.plates.set(msg.year, { tex, lastUsed: ++this.clock });
           this.evict();
+        } else if (msg.plate === "atlas-patch") {
+          if (msg.key !== this.patchPendingKey) {
+            // selection moved on while this painted — drop it
+            this.deps.unregTexture(tex);
+            tex.dispose();
+            return;
+          }
+          this.patchPendingKey = null;
+          this.releasePatch();
+          this.patchTex = tex;
+          this.patchKey = msg.key;
         } else {
           this.nearPending = false;
           this.nearTex = tex;
@@ -258,6 +274,35 @@ export class TemporalTerrainLayer {
     return this.nearTex;
   }
 
+  /**
+   * The selected nation's full-density window. Returns the resident texture
+   * when its key matches; otherwise kicks a worker paint and returns null
+   * (the mid plate serves until it lands — same holding rule as era plates).
+   */
+  ensureNationPatch(
+    key: string,
+    rect: { x0: number; y0: number; x1: number; y1: number },
+    cell: number
+  ): THREE.Texture | null {
+    if (this.disposed) return null;
+    if (this.patchTex && this.patchKey === key) return this.patchTex;
+    if (this.patchPendingKey !== key) {
+      this.patchPendingKey = key;
+      this.send({ kind: "paint-atlas-patch", key, cell, ...rect });
+    }
+    return null;
+  }
+
+  /** deselect / mode change: the window follows the story out immediately */
+  releasePatch(): void {
+    this.patchPendingKey = null;
+    if (!this.patchTex) return;
+    this.deps.unregTexture(this.patchTex);
+    this.patchTex.dispose();
+    this.patchTex = null;
+    this.patchKey = null;
+  }
+
   /** long absence from reading distance releases the 8192px plate */
   noteAwayFromNear(): void {
     if (!this.nearTex || this.nearReleaseTimer) return;
@@ -275,7 +320,8 @@ export class TemporalTerrainLayer {
       status: this.status(),
       residentPlates: [...this.plates.keys()].sort((a, b) => a - b),
       pending: [...this.pendingYears].sort((a, b) => a - b),
-      nearPlateReady: this.nearTex !== null
+      nearPlateReady: this.nearTex !== null,
+      nationPatch: this.patchKey
     };
   }
 
@@ -293,6 +339,7 @@ export class TemporalTerrainLayer {
       this.nearTex.dispose();
       this.nearTex = null;
     }
+    this.releasePatch();
     this.worker?.terminate();
     this.worker = null;
   }

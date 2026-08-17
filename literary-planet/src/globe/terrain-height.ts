@@ -47,6 +47,27 @@ function nationMask(
 }
 
 /**
+ * Grid-cell bbox of one nation, padded — the window the near color patch
+ * paints at full density (8th review). Pad covers coastal strokes, harbor
+ * diamonds and road overshoot beyond the owner raster.
+ */
+export function nationBBox(
+  g: TerritoryGeometry,
+  nationIdx: number,
+  pad = 6
+): { x0: number; y0: number; x1: number; y1: number } | null {
+  const found = nationMask(g, nationIdx);
+  if (!found) return null;
+  const H = g.ownerRle.length;
+  return {
+    x0: Math.max(0, found.minX - pad),
+    y0: Math.max(0, found.minY - pad),
+    x1: Math.min(g.gridWidth, found.maxX + 1 + pad),
+    y1: Math.min(H - 1, found.maxY + 1 + pad)
+  };
+}
+
+/**
  * Two-pass 3-4 chamfer over the nation's bbox (+1 pad). O(bbox); a large
  * nation is a few thousand cells — comfortably synchronous on selection.
  */

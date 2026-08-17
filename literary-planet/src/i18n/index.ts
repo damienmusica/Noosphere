@@ -166,6 +166,9 @@ export interface UIStrings {
   sourcesHead: string;
   compareOther: string;
   centerOnMap: string;
+  enterTerritory: string;
+  enterTerritoryTitle: string;
+  roadNavAria: string;
   difficultyAria: (v: number) => string;
   bornSuffix: (y: number) => string;
 
@@ -345,6 +348,9 @@ const KO: UIStrings = {
   sourcesHead: "근거 출처",
   compareOther: "다른 작가와 비교",
   centerOnMap: "지도 중앙으로",
+  enterTerritory: "영토 입장",
+  enterTerritoryTitle: "이 작가의 영토로 내려갑니다 — 작품 도시와 읽기 가도가 보이는 높이",
+  roadNavAria: "권장 읽기 가도 — 이전/다음 작품",
   difficultyAria: (v) => `독서 난도 5점 중 ${v}점`,
   bornSuffix: (y) => `${y}년생`,
 
@@ -530,6 +536,9 @@ const EN: UIStrings = {
   sourcesHead: "Sources",
   compareOther: "Compare with another writer",
   centerOnMap: "Center on map",
+  enterTerritory: "Enter territory",
+  enterTerritoryTitle: "Descend into this author's realm — the altitude where work cities and reading routes live",
+  roadNavAria: "Recommended reading road — previous/next work",
   difficultyAria: (v) => `Reading difficulty ${v} of 5`,
   bornSuffix: (y) => `b. ${y}`,
 

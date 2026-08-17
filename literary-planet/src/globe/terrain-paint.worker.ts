@@ -32,6 +32,16 @@ export interface PaintWorkerPaintNear {
   kind: "paint-atlas-near";
   cell: number;
 }
+export interface PaintWorkerPaintPatch {
+  kind: "paint-atlas-patch";
+  cell: number;
+  /** cache key: nationIdx|cell — echoed back so stale responses can drop */
+  key: string;
+  x0: number;
+  y0: number;
+  x1: number;
+  y1: number;
+}
 export interface PaintWorkerPaintUnion {
   kind: "paint-union";
 }
@@ -40,6 +50,7 @@ export type PaintWorkerRequest =
   | PaintWorkerLoadEras
   | PaintWorkerPaintEra
   | PaintWorkerPaintNear
+  | PaintWorkerPaintPatch
   | PaintWorkerPaintUnion;
 
 export type PaintWorkerResponse =
@@ -47,6 +58,7 @@ export type PaintWorkerResponse =
   | { kind: "eras-error"; message: string }
   | { kind: "plate"; plate: "era"; year: number; bitmap: ImageBitmap }
   | { kind: "plate"; plate: "atlas-near"; year: null; bitmap: ImageBitmap }
+  | { kind: "plate"; plate: "atlas-patch"; key: string; bitmap: ImageBitmap }
   | { kind: "plate"; plate: "union"; year: null; bitmap: ImageBitmap };
 
 const post = (msg: PaintWorkerResponse, transfer?: Transferable[]) =>
@@ -112,6 +124,24 @@ self.onmessage = async (e: MessageEvent<PaintWorkerRequest>) => {
       imageOrientation: "flipY"
     });
     post({ kind: "plate", plate: "atlas-near", year: null, bitmap }, [bitmap]);
+    return;
+  }
+  if (msg.kind === "paint-atlas-patch") {
+    // 8th review: one nation's reading-distance window at full cell density —
+    // ~2MiB instead of the 134MiB full plate on the selection path
+    const canvas = paintTerrainTexture(
+      base.territory,
+      (id) => base!.periodByAuthor[id],
+      msg.cell,
+      true,
+      (wid) => base!.readingRank[wid],
+      undefined,
+      { x0: msg.x0, y0: msg.y0, x1: msg.x1, y1: msg.y1 }
+    );
+    const bitmap = await createImageBitmap(canvas as OffscreenCanvas, {
+      imageOrientation: "flipY"
+    });
+    post({ kind: "plate", plate: "atlas-patch", key: msg.key, bitmap }, [bitmap]);
     return;
   }
   if (msg.kind === "paint-union") {

@@ -64,7 +64,23 @@ export function lifecycleEngaged(year: number, yearMode: YearMode): boolean {
 // the expansion slates — the previous 128 would have broken first).
 export const LIFE_TEX_WIDTH = 256;
 
-/** RGBA rows for the 128×1 per-author lookup: R = presence, G = patina */
+/**
+ * Authors arranged in owner-texture slot order. The terrain shader reads
+ * lifeTex at `oid`, an index into territory.geometry.authors — which is NOT
+ * dataset order (8th review: 99/100 ids differ; dataset-ordered rows put
+ * almost every nation's presence/patina on someone else's land).
+ */
+export function ownerOrderedAuthors(
+  geomAuthorIds: readonly string[],
+  authors: readonly Author[]
+): Author[] {
+  const byId = new Map(authors.map((a) => [a.id, a]));
+  // validate-data guarantees every geometry owner exists in the dataset;
+  // slots must never shift, so no filtering
+  return geomAuthorIds.map((id) => byId.get(id)!);
+}
+
+/** RGBA rows for the 256×1 per-author lookup: R = presence, G = patina */
 export function buildLifeTexData(
   authors: ReadonlyArray<Author>,
   year: number,

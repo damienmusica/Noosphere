@@ -17,6 +17,7 @@ import {
   buildLifeTexData,
   lifecycleEngaged,
   lifecycleOf,
+  ownerOrderedAuthors,
   treatyOf,
   treatyPresence,
   type Treaty
@@ -38,7 +39,7 @@ import { CameraController } from "./camera-controller.ts";
 import type { AppState, Store } from "../state/store.ts";
 import { LabelLayer, type LabelItem, type LabelState } from "./labels.ts";
 import { paintTerrainTexture } from "./terrain-texture.ts";
-import { buildNationHeightPatch } from "./terrain-height.ts";
+import { buildNationHeightPatch, nationBBox } from "./terrain-height.ts";
 import { paintSealTexture } from "./seal-texture.ts";
 import { gridToVec3 } from "../lib/territory-geometry.ts";
 import { evidenceLabel, regionLabel, relationTypeShort } from "../i18n/index.ts";
@@ -66,6 +67,8 @@ export interface GlobeI18n {
 
 export interface GlobeHandle {
   focusAuthor(id: string, opts?: { distance?: number }): void;
+  /** disclosed territory entrance: fly to reading depth over the author's realm */
+  enterTerritory(id: string): void;
   resetCamera(): void;
   zoomBy(factor: number): void;
   /**
@@ -150,6 +153,12 @@ export function createGlobe(
 ): GlobeHandle {
   const authors = dataset.authors;
   const indexOf = new Map(authors.map((a, i) => [a.id, i]));
+  // owner-texture index space: the terrain shader's oid indexes
+  // territory.geometry.authors, which is NOT dataset order (99/100 differ).
+  // Every value compared against oid — lens nation, contact flash, lifeTex
+  // slots — must come from THIS map, never from indexOf.
+  let nationIdxOf = new Map<string, number>();
+  let lifeAuthorsOrdered: readonly Author[] = authors;
   const R = GLOBE.radius;
 
   // --- three basics ---------------------------------------------------------
@@ -300,6 +309,7 @@ export function createGlobe(
     });
   }
   let lifeTexture: THREE.DataTexture | null = null;
+  let castTexture: THREE.DataTexture | null = null;
   let unionInfoTexture: THREE.DataTexture | null = null;
   let movementTreaties: Array<{ movement: Movement; treaty: Treaty } | null> = [];
   let unionTarget = 0;
@@ -341,7 +351,7 @@ export function createGlobe(
     lifeTexture = reg(
       track(
         new THREE.DataTexture(
-          buildLifeTexData(authors, store.getState().year, store.getState().yearMode),
+          buildLifeTexData(lifeAuthorsOrdered, store.getState().year, store.getState().yearMode),
           LIFE_TEX_WIDTH,
           1,
           THREE.RGBAFormat
@@ -352,7 +362,25 @@ export function createGlobe(
     lifeTexture.minFilter = THREE.NearestFilter;
     lifeTexture.needsUpdate = true;
 
-    const ownerIndexOf = new Map(geom.authors.map((id, i) => [id, i]));
+    // story hierarchy lookup (8th review): R channel per owner index —
+    // 255 selected, 128 cast partner, 0 bystander. Same slot order as
+    // lifeTex: territory.geometry.authors.
+    castTexture = reg(
+      track(
+        new THREE.DataTexture(
+          new Uint8Array(LIFE_TEX_WIDTH * 4),
+          LIFE_TEX_WIDTH,
+          1,
+          THREE.RGBAFormat
+        )
+      )
+    );
+    castTexture.magFilter = THREE.NearestFilter;
+    castTexture.minFilter = THREE.NearestFilter;
+    castTexture.needsUpdate = true;
+
+    nationIdxOf = new Map(geom.authors.map((id, i) => [id, i]));
+    lifeAuthorsOrdered = ownerOrderedAuthors(geom.authors, authors);
     movementTreaties = dataset.movements.map((mv) => {
       const members = authors.filter((a) => a.movements.includes(mv.id));
       const treaty = treatyOf(members);
@@ -397,7 +425,7 @@ export function createGlobe(
           m.id,
           authors
             .filter((a) => a.movements.includes(m.id))
-            .map((a) => ownerIndexOf.get(a.id))
+            .map((a) => nationIdxOf.get(a.id))
             .filter((i): i is number => i !== undefined)
         ])
       ),
@@ -415,6 +443,7 @@ export function createGlobe(
         if (disposed) return;
         const before = display;
         refreshEraTextures();
+        refreshNearPatch(); // the nation window may just have landed
         // a commit moved the display year — towns and labels follow in the
         // same frame (atomic transition, 6th review)
         if (display !== before) {
@@ -450,7 +479,17 @@ export function createGlobe(
           uLensAmp: { value: 0 },
           uLensTex: { value: null },
           uLensRect: { value: new THREE.Vector4(0, 0, 1, 1) },
-          uLensTexel: { value: new THREE.Vector2(1, 1) }
+          uLensTexel: { value: new THREE.Vector2(1, 1) },
+          // story hierarchy (8th review): eased 0→1 while a story runs;
+          // bystander nations recede via the cast lookup
+          uStoryK: { value: 0 },
+          uCastTex: { value: castTexture },
+          // selected nation's full-density window (8th review): the near
+          // selection path composites this over the mid plate instead of
+          // paying for the full near plate
+          uPatchOn: { value: 0 },
+          uPatchTex: { value: terrainTexMid },
+          uPatchRect: { value: new THREE.Vector4(0, 0, 1, 1) }
         },
         vertexShader: /* glsl */ `
           varying vec2 vUv;
@@ -477,6 +516,11 @@ export function createGlobe(
           uniform sampler2D uLensTex;
           uniform vec4 uLensRect; // u0, v0, uSpan, vSpan
           uniform vec2 uLensTexel;
+          uniform float uStoryK;
+          uniform sampler2D uCastTex;
+          uniform float uPatchOn;
+          uniform sampler2D uPatchTex;
+          uniform vec4 uPatchRect; // u0, v0, uSpan, vSpan
           varying vec2 vUv;
 
           float lensHeight(vec2 uv) {
@@ -488,6 +532,16 @@ export function createGlobe(
             // v2.5: the plate itself is a blend of the tectonic bracket —
             // coastlines grow between keyframes
             vec4 base = mix(texture2D(map, vUv), texture2D(mapB, vUv), uEraMix);
+            // 8th review: inside the selected nation's window the full-
+            // density patch replaces the mid plate, feathered at the rim so
+            // the seam never draws a rectangle on the planet
+            if (uPatchOn > 0.5) {
+              vec2 pp = (vUv - uPatchRect.xy) / uPatchRect.zw;
+              if (pp.x > 0.0 && pp.x < 1.0 && pp.y > 0.0 && pp.y < 1.0) {
+                float eb = min(min(pp.x, 1.0 - pp.x), min(pp.y, 1.0 - pp.y));
+                base = mix(base, texture2D(uPatchTex, pp), smoothstep(0.0, 0.05, eb));
+              }
+            }
             vec3 col = base.rgb;
             float alpha = base.a;
             // treaty ink may only mark land that currently exists
@@ -520,7 +574,10 @@ export function createGlobe(
               float hY = lensHeight(vUv + vec2(0.0, uLensTexel.y));
               vec3 nrm = normalize(vec3((hC - hX) * 30.0 * uLensAmp, (hC - hY) * 30.0 * uLensAmp, 1.0));
               float hill = clamp(dot(nrm, normalize(vec3(-0.5, 0.62, 0.72))), 0.0, 1.0);
-              col = col * (0.78 + 0.5 * hill) + vec3(0.10, 0.085, 0.05) * hC * uLensAmp;
+              // relief, not fog (8th review — visible on the RIGHT nation
+              // since the oid-space fix): shading contrast carries the form,
+              // the additive lift is a whisper on the summit only
+              col = col * (0.68 + 0.66 * hill) + vec3(0.045, 0.038, 0.02) * hC * hC * uLensAmp;
               alpha = max(alpha, hC * 0.25 * uLensAmp);
             }
 
@@ -534,6 +591,19 @@ export function createGlobe(
               // the selection layer; the cartouche + legend carry the detail
               col = mix(col, info.rgb, ink * 0.6);
               alpha = max(alpha, ink * 0.45);
+            }
+
+            // story hierarchy (8th review): while a story runs, bystander
+            // nations recede — desaturated, darkened, quieter ink — so the
+            // cast's ground IS the scene. Runs LAST so it also mutes treaty
+            // color and baked border ink; partners hold a half step (castV
+            // .5), the selected nation never recedes (castV 1).
+            if (uStoryK > 0.004 && oid < 254.5) {
+              float castV = texture2D(uCastTex, vec2((oid + 0.5) / ${LIFE_TEX_WIDTH}.0, 0.5)).r;
+              float recede = uStoryK * (1.0 - castV);
+              float lumaB = dot(col, vec3(0.299, 0.587, 0.114));
+              col = mix(col, vec3(lumaB) * vec3(1.02, 0.97, 0.88) * 0.62, 0.62 * recede);
+              alpha *= 1.0 - 0.30 * recede;
             }
 
             gl_FragColor = vec4(col, alpha * uOpacity);
@@ -622,7 +692,7 @@ export function createGlobe(
     terrainMat.uniforms.uLifecycleOn!.value = 1;
     if (lifeTexture) {
       (lifeTexture.image.data as Uint8Array).set(
-        buildLifeTexData(authors, display.year, display.yearMode)
+        buildLifeTexData(lifeAuthorsOrdered, display.year, display.yearMode)
       );
       lifeTexture.needsUpdate = true;
     }
@@ -652,7 +722,7 @@ export function createGlobe(
   function refreshLens(): void {
     if (!terrainMat) return;
     const s = store.getState();
-    const idx = s.selectedAuthorId ? indexOf.get(s.selectedAuthorId) : undefined;
+    const idx = s.selectedAuthorId ? nationIdxOf.get(s.selectedAuthorId) : undefined;
     const wantOn =
       s.lens === "corpus-density" &&
       idx !== undefined &&
@@ -705,6 +775,46 @@ export function createGlobe(
     terrainMat.uniforms.uLensOn!.value = 1;
   }
 
+  /**
+   * Selected-nation reading window (8th review): at near + selection the
+   * shader composites a full-density patch (~2MiB) over the mid plate — the
+   * 134MiB planet plate stays for unselected roaming only. The patch keeps
+   * its texture across near exits while the selection lives; deselect frees
+   * it immediately.
+   */
+  function refreshNearPatch(): void {
+    if (!terrainMat || !temporal || !dataset.territory) return;
+    const s = store.getState();
+    const idx = s.selectedAuthorId ? nationIdxOf.get(s.selectedAuthorId) : undefined;
+    const want = idx !== undefined && s.mode === "semantic" && lod === "near" && !eraActive;
+    if (!want) {
+      terrainMat.uniforms.uPatchOn!.value = 0;
+      if (!s.selectedAuthorId) temporal.releasePatch();
+      return;
+    }
+    const g = dataset.territory.geometry;
+    const bbox = nationBBox(g, idx!);
+    if (!bbox) {
+      terrainMat.uniforms.uPatchOn!.value = 0;
+      return;
+    }
+    const tex = temporal.ensureNationPatch(`${idx}|${nearPlateCell}`, bbox, nearPlateCell);
+    if (!tex) {
+      // mid serves until the worker lands the window (onChange recommits)
+      terrainMat.uniforms.uPatchOn!.value = 0;
+      return;
+    }
+    const rows = g.ownerRle.length - 1;
+    (terrainMat.uniforms.uPatchRect!.value as THREE.Vector4).set(
+      bbox.x0 / g.gridWidth,
+      1 - bbox.y1 / rows,
+      (bbox.x1 - bbox.x0) / g.gridWidth,
+      (bbox.y1 - bbox.y0) / rows
+    );
+    terrainMat.uniforms.uPatchTex!.value = tex;
+    terrainMat.uniforms.uPatchOn!.value = 1;
+  }
+
   // full planetary map through mid LOD, receding to faint continents far out.
   // Floor raised 0.3→0.38 (7th review: the far view had L0–L2 collapsed into
   // one near-black band — the land must stay a readable value above the sea)
@@ -713,6 +823,17 @@ export function createGlobe(
     const s = t * t * (3 - 2 * t);
     return 0.38 + 0.62 * s;
   }
+
+  // reading-distance retreat (8th review): as the camera descends into a
+  // territory, identification chrome — the selected emblem, the reticle, the
+  // story rails — bows out so towns, relief and the narrative own the scene.
+  // 0 above 205, 1 below 170. Presentation only: story membership and clocks
+  // never read this.
+  function nearGlyphK(): number {
+    const t = Math.min(1, Math.max(0, (205 - camera.position.length()) / 35));
+    return t * t * (3 - 2 * t);
+  }
+  let lastGlyphK = 0;
 
   // D1: fine 15° instrument grid — each line shy, the system dense.
   // Equator + prime meridian live in a separate accent geometry with tick marks.
@@ -823,6 +944,7 @@ export function createGlobe(
         depthWrite: false
       })
     );
+    mat.userData.baseOpacity = opacity;
     if (double) {
       // PR5 value hierarchy: ONE ring + a short faint halo instead of the
       // double concentric pair — the selection mark stops out-shouting the
@@ -837,6 +959,7 @@ export function createGlobe(
           depthWrite: false
         })
       );
+      haloMat.userData.baseOpacity = opacity * 0.22;
       group.add(new THREE.Mesh(track(new THREE.RingGeometry(3.05, 3.5, 48)), haloMat));
       const tickGeom = track(new THREE.PlaneGeometry(0.14, 0.6));
       for (let i = 0; i < 4; i++) {
@@ -1247,9 +1370,12 @@ export function createGlobe(
   let cityMarkersFor: string | null = null;
   function syncCityMarkers(): void {
     const s = store.getState();
+    // mid + near (8th review): the towns must be VISIBLE from approach
+    // altitude — a country whose cities only exist after an undisclosed
+    // manual zoom reads as empty. Labels still wait for reading distance.
     const show =
       s.selectedAuthorId !== null &&
-      lod === "near" &&
+      (lod === "near" || lod === "mid") &&
       s.mode === "semantic" &&
       dataset.territory !== undefined;
     // clause 4: markers follow city founding at the COMMITTED display year —
@@ -1276,6 +1402,11 @@ export function createGlobe(
   let current = new Map<string, Vec3>(); // live positions (unit vectors)
   let visibleSet = new Set<string>();
   let visRels: Relation[] = [];
+  // the running story's cast: the selected author + every drawn ego partner.
+  // Cast members stay visible at every LOD tier (8th review: a tier change
+  // must never amputate the story's endpoints), and the hierarchy pass
+  // elevates them while bystanders recede.
+  let castSet = new Set<string>();
   // hysteresis + dwell (7th review PR1): boundary oscillation must not
   // rebuild the world — the gate owns the tier and counts real transitions
   const lodGate = new LodGate(camera.position.length());
@@ -1288,7 +1419,7 @@ export function createGlobe(
   let lastContact = { id: "", at: -1e9 };
   function triggerContact(authorId: string, evTs?: number): void {
     if (store.getState().reducedMotion) return;
-    const idx = indexOf.get(authorId);
+    const idx = nationIdxOf.get(authorId);
     if (idx === undefined) return;
     const now = performance.now();
     if (lastContact.id === authorId && now - lastContact.at < 300) return;
@@ -1316,7 +1447,7 @@ export function createGlobe(
   const hidden = new THREE.Matrix4().makeScale(0, 0, 0);
 
   function nodeVisible(a: Author): boolean {
-    return visibleSet.has(a.id) && tierVisibleAtLod(a.tier, lod);
+    return visibleSet.has(a.id) && (tierVisibleAtLod(a.tier, lod) || castSet.has(a.id));
   }
 
   function updateNodeInstances(): void {
@@ -1345,7 +1476,7 @@ export function createGlobe(
       const dimmed =
         s.selectedAuthorId !== null &&
         a.id !== s.selectedAuthorId &&
-        !neighborIds.has(a.id);
+        !castSet.has(a.id);
       const tint = new THREE.Color(PERIOD_TINT[a.periods[0] ?? "early-modernism"]);
       if (a.id === s.selectedAuthorId) tint.set(COLORS.brassBright);
       // selection must silence the crowd — 0.42 left too much background
@@ -1369,8 +1500,11 @@ export function createGlobe(
       sprite.visible = true;
       sprite.position.set(p[0] * R, p[1] * R, p[2] * R);
       const dimmed =
-        s.selectedAuthorId !== null && id !== s.selectedAuthorId && !neighborIds.has(id);
-      (sprite.material as THREE.SpriteMaterial).opacity = dimmed ? 0.1 : 0.32;
+        s.selectedAuthorId !== null && id !== s.selectedAuthorId && !castSet.has(id);
+      // the selected star's halo bows out with its emblem at reading depth —
+      // a soft blob over the towns was the last poster left (8th review)
+      const haloFade = id === s.selectedAuthorId ? 1 - nearGlyphK() : 1;
+      (sprite.material as THREE.SpriteMaterial).opacity = (dimmed ? 0.1 : 0.32) * haloFade;
     }
 
     for (const [id, sprite] of sealSprites) {
@@ -1387,13 +1521,16 @@ export function createGlobe(
       // the front layer — selection/hover/neighborhood carries the emblem
       // forward; towns and terrain must never lose to a catalogue of initials
       const engagedSeal =
-        id === s.selectedAuthorId || id === s.hoveredAuthorId || neighborIds.has(id);
+        id === s.selectedAuthorId || id === s.hoveredAuthorId || castSet.has(id);
       const k = SEAL_SCALE[a.tier] * (engagedSeal ? 1 : 0.82);
       sprite.scale.set(k, k, 1);
       const dimmed =
-        s.selectedAuthorId !== null && id !== s.selectedAuthorId && !neighborIds.has(id);
+        s.selectedAuthorId !== null && id !== s.selectedAuthorId && !castSet.has(id);
       const mat = sprite.material as THREE.SpriteMaterial;
-      mat.opacity = sealK * (dimmed ? 0.22 : engagedSeal ? 0.92 : 0.55);
+      // the SELECTED emblem bows out at reading distance — at town depth a
+      // poster-scale glyph was covering the very territory it names (8th)
+      const posterFade = id === s.selectedAuthorId ? 1 - nearGlyphK() : 1;
+      mat.opacity = sealK * (dimmed ? 0.22 : engagedSeal ? 0.92 : 0.55) * posterFade;
       mat.color.set(id === s.selectedAuthorId ? COLORS.brassBright : COLORS.text);
     }
   }
@@ -1476,17 +1613,23 @@ export function createGlobe(
     edgeGroups = [];
     highlightGroups = [];
     const s = store.getState();
-    const lodRels = visRels.filter((r) => {
-      const sa = authors[indexOf.get(r.sourceId) ?? -1];
-      const ta = authors[indexOf.get(r.targetId) ?? -1];
-      return sa && ta && nodeVisible(sa) && nodeVisible(ta);
-    });
+    // bystander context is pure tier semantics — deliberately NOT nodeVisible,
+    // whose cast override would couple this set to selection state ordering
+    const tierOk = (a: Author | undefined): a is Author =>
+      a !== undefined && visibleSet.has(a.id) && tierVisibleAtLod(a.tier, lod);
+    const lodRels = visRels.filter(
+      (r) => tierOk(authors[indexOf.get(r.sourceId) ?? -1]) && tierOk(authors[indexOf.get(r.targetId) ?? -1])
+    );
     const view = resolveRelationView({
       mode: s.mode,
       lod,
       selectedAuthorId: s.selectedAuthorId,
       egoExpanded: s.egoExpanded,
-      visibleRelations: lodRels,
+      // story invariance (8th review): the selected story's membership is a
+      // function of the user's filters ONLY — LOD tiers may thin bystander
+      // context, never the cast of the running story. Unselected aggregate
+      // views keep the tier-filtered set.
+      visibleRelations: s.selectedAuthorId ? visRels : lodRels,
       regionOf: (id) => authors[indexOf.get(id) ?? -1]?.regions[0],
       // upper mid (seals not yet developed → no screen clusters): regions
       // still carry the corridor story; once seals cluster, corridors run
@@ -1502,6 +1645,32 @@ export function createGlobe(
       }
     });
     lastRelationView = view;
+    {
+      const next = new Set<string>();
+      if (s.selectedAuthorId) {
+        next.add(s.selectedAuthorId);
+        for (const r of view.raw) {
+          next.add(r.sourceId);
+          next.add(r.targetId);
+        }
+      }
+      castSet = next;
+    }
+    if (castTexture) {
+      const data = castTexture.image.data as Uint8Array;
+      data.fill(0);
+      for (const id of castSet) {
+        const ni = nationIdxOf.get(id);
+        if (ni !== undefined && ni < LIFE_TEX_WIDTH) {
+          data[ni * 4] = id === s.selectedAuthorId ? 255 : 128;
+        }
+      }
+      castTexture.needsUpdate = true;
+    }
+    // cast membership feeds nodeVisible — re-place instances now, not on the
+    // next unrelated state change
+    updateNodeInstances();
+    applyRailFade();
     if (view.hiddenCount !== egoHiddenSent) {
       egoHiddenSent = view.hiddenCount;
       queueMicrotask(() => {
@@ -1516,7 +1685,9 @@ export function createGlobe(
         s.mode === "semantic"
           ? lodRels.filter((r) => r.sourceId !== sel && r.targetId !== sel)
           : [];
-      edgeGroups = buildEdgeGroups(rest, current, edgeRoot, 0.16, false);
+      // 0.16 → 0.08 (8th review): with a story on, the bystander web is
+      // texture, not information — it must never compete with the rails
+      edgeGroups = buildEdgeGroups(rest, current, edgeRoot, 0.08, false);
       highlightGroups = buildEdgeGroups(view.raw, current, highlightRoot, 1, true);
       buildArrows(view.raw, current);
       flowStory.setStory({
@@ -1534,6 +1705,21 @@ export function createGlobe(
       flowStory.clear();
     }
     buildAggregateRoutes(view.aggregates);
+  }
+
+  // reading-distance rail quiet (8th review): at town depth the story rails
+  // step back so pulses, towns and relief read — membership and the story
+  // clock are untouched, this is presentation only
+  function applyRailFade(): void {
+    const railF = 1 - 0.62 * lastGlyphK;
+    for (const g of highlightGroups) {
+      (g.lines.material as THREE.LineBasicMaterial).opacity = g.baseOpacity * railF;
+    }
+    if (arrowMesh) {
+      const m = arrowMesh.material as THREE.MeshBasicMaterial;
+      if (m.userData.baseOpacity === undefined) m.userData.baseOpacity = m.opacity;
+      m.opacity = (m.userData.baseOpacity as number) * railF;
+    }
   }
 
   // --- hovered-line emphasis + tooltip (who connects to whom, zero clicks) --
@@ -1663,8 +1849,20 @@ export function createGlobe(
       mesh.visible = true;
       mesh.position.set(p[0] * R, p[1] * R, p[2] * R);
       mesh.lookAt(camera.position);
-      const k = NODE_SCALE[a.tier];
+      // at reading distance the aiming instrument shrinks and quiets — it
+      // exists to pick a star from orbit, not to frame a whole country (8th)
+      const gk = mesh === ring ? nearGlyphK() : 0;
+      const k = NODE_SCALE[a.tier] * (1 - 0.55 * gk);
       mesh.scale.set(k, k, k);
+      if (mesh === ring) {
+        const f = 1 - 0.6 * gk;
+        mesh.traverse((o) => {
+          const m = (o as THREE.Mesh).material as THREE.Material | undefined;
+          if (m && m.userData.baseOpacity !== undefined) {
+            (m as THREE.MeshBasicMaterial).opacity = (m.userData.baseOpacity as number) * f;
+          }
+        });
+      }
     }
   }
 
@@ -1749,7 +1947,11 @@ export function createGlobe(
         isSelected: state === "selected",
         isHovered: state === "hovered",
         isNeighborOfSelected: state === "neighbor",
-        facingDot: facing
+        facingDot: facing,
+        // "dim" is exactly the bystander-under-story state — at mid/near it
+        // must say nothing at all, not merely fade (8th review hierarchy)
+        storyBystander: state === "dim",
+        lod
       });
       if (priority < 0) continue;
       if (edgeEnds?.has(a.id)) priority += 140;
@@ -2158,11 +2360,14 @@ export function createGlobe(
       else if (prevSelForCam && !s.selectedAuthorId) cam.restoreBookmark("planet");
     }
     if (s.selectedWorkId !== prevWorkForCam) {
-      if (!prevWorkForCam && s.selectedWorkId) {
-        cam.pushBookmark("author");
+      if (s.selectedWorkId) {
+        // push the return pose only on first entry — walking the reading
+        // road (work → next work) keeps the original "author" bookmark
+        if (!prevWorkForCam) cam.pushBookmark("author");
         // author → work: the camera walks INTO the town (7th review §7);
         // safe-area framing keeps it beside the card, and the flight is
-        // cancellable like every programmatic move
+        // cancellable like every programmatic move. Road navigation
+        // (work → work, 8th review) flies town-to-town the same way.
         const town = s.selectedAuthorId
           ? dataset.territory?.geometry.cities[s.selectedAuthorId]?.towns.find(
               (t) => t.id === s.selectedWorkId
@@ -2176,6 +2381,7 @@ export function createGlobe(
       } else if (prevWorkForCam && !s.selectedWorkId) cam.restoreBookmark("author");
     }
     if (lensChanged) refreshLens();
+    if (selectionChanged) refreshNearPatch();
 
     // the picked line carries the only in-place type label — refresh it
     if (pickedChanged) updateLabels();
@@ -2228,6 +2434,7 @@ export function createGlobe(
         );
       }
       refreshLens(); // relief belongs to the semantic plate only
+      refreshNearPatch(); // and so does the nation window
     }
     // the year fader drives sovereignty: nation lifecycle + treaty alphas.
     // A held-scrub preview refreshes the WORLD only (labels/towns follow the
@@ -2283,6 +2490,55 @@ export function createGlobe(
     if (!p) return;
     const dist = opts?.distance ?? Math.min(camera.position.length(), 215);
     animateCameraTo(new THREE.Vector3(p[0], p[1], p[2]), dist);
+  }
+
+  // reading depth: below LOD_ENTER_NEAR (195) so towns, roads and labels are
+  // live the moment the flight lands — chosen against the journey scene's
+  // projected-bounds gate, not by feel
+  const TERRITORY_DIST = 150;
+
+  /**
+   * Fly into the author's realm at reading depth — the DISCLOSED entrance
+   * (8th review: cities behind an unexplained manual zoom read as absent).
+   * The flight frames the reading itinerary, not the star: it aims at the
+   * top towns' centroid and backs off until the widest of them fits the
+   * view — "meaningfully visible" is a framing guarantee, not luck.
+   * Cancellable like every focus flight.
+   */
+  function enterTerritory(id: string): void {
+    const p = current.get(id);
+    if (!p) return;
+    instr.log("territory-enter", { id });
+    const g = dataset.territory?.geometry;
+    const cities = g ? g.cities[id] : undefined;
+    if (!g || !cities || cities.towns.length === 0) {
+      animateCameraTo(new THREE.Vector3(p[0], p[1], p[2]), TERRITORY_DIST);
+      return;
+    }
+    const ranked = [...cities.towns]
+      .filter((t) => readingRank.get(t.id) !== undefined)
+      .sort((a, b) => readingRank.get(a.id)! - readingRank.get(b.id)!)
+      .slice(0, 3);
+    const pts = (ranked.length ? ranked : cities.towns.slice(0, 3)).map((t) =>
+      gridToVec3(t.x, t.y, g.gridWidth, g.gridHeight)
+    );
+    const aim = new THREE.Vector3();
+    for (const q of pts) aim.add(new THREE.Vector3(q[0], q[1], q[2]));
+    if (aim.lengthSq() < 1e-6) aim.set(p[0], p[1], p[2]);
+    aim.normalize();
+    let minCos = 1;
+    let maxSin = 0;
+    for (const q of pts) {
+      const cos = Math.min(1, aim.dot(new THREE.Vector3(q[0], q[1], q[2])));
+      minCos = Math.min(minCos, cos);
+      maxSin = Math.max(maxSin, Math.sqrt(Math.max(0, 1 - cos * cos)));
+    }
+    // vertical FOV 42°: keep the widest itinerary town inside ~66% of the
+    // half-view; cap below LOD_ENTER_NEAR so arrival is always reading tier
+    const fit = Math.tan((42 / 2) * (Math.PI / 180)) * 0.66;
+    const need = R * minCos + (R * maxSin) / fit;
+    const dist = Math.min(190, Math.max(TERRITORY_DIST, need));
+    animateCameraTo(aim, dist);
   }
 
   function resetCamera(): void {
@@ -2377,7 +2633,11 @@ export function createGlobe(
       lodTransitions: lodGate.transitions,
       flowStoryBuilds: flowStory.storyBuilds,
       flowStoryDiffs: flowStory.storyDiffs,
-      storyKey: flowStory.metrics().storyKey
+      storyKey: flowStory.metrics().storyKey,
+      // story identity across LOD/camera moves is asserted by ID equality,
+      // not by counts (8th review: counts hid membership churn)
+      storyRelationIds: lastRelationView ? lastRelationView.raw.map((r) => r.id).sort() : [],
+      storyCast: castSet.size
     },
     rendererVisibleAuthors: visibleSet.size,
     rendererVisibleRelations: visRels.length,
@@ -2441,7 +2701,15 @@ export function createGlobe(
         roadSegments: cityMarkers.roadSegments,
         screen: cityMarkers
           .screenPositions(camera, container.clientWidth, container.clientHeight)
-          .map((p) => ({ id: p.id, x: p.x + Math.round(rect.left), y: p.y + Math.round(rect.top) }))
+          .map((p) => ({
+            id: p.id,
+            x: p.x + Math.round(rect.left),
+            y: p.y + Math.round(rect.top),
+            // projected footprint radius + curated rank: "meaningfully
+            // visible" is a pixel claim the journey scene gates (8th review)
+            r: p.r,
+            rank: p.rank
+          }))
       };
     })(),
     lens: {
@@ -2552,10 +2820,17 @@ export function createGlobe(
       // soften the rebuild pop: DOM labels restart a 200ms fade-in; the WebGL
       // layers (seals/terrain/union) already fade continuously with distance
       labels.pulseFade();
-      // PR2: the 8192px reading plate paints in the worker on first near
-      // entry (mid serves until it lands); long absence releases it
-      if (lod === "near") temporal?.ensureNearPlate(nearPlateCell);
-      else if (wasNear) temporal?.noteAwayFromNear();
+      // PR2 + 8th review: the SELECTION path composites the nation window
+      // instead — the 134MiB planet plate paints only for unselected roaming
+      if (lod === "near") {
+        const sNow = store.getState();
+        const patchPath =
+          sNow.selectedAuthorId !== null &&
+          sNow.mode === "semantic" &&
+          dataset.territory !== undefined;
+        if (!patchPath) temporal?.ensureNearPlate(nearPlateCell);
+      } else if (wasNear) temporal?.noteAwayFromNear();
+      refreshNearPatch();
       if (terrainMat && terrainTexMid && !eraActive) {
         // near/mid plate swap belongs to the atlas view; while the tectonic
         // bracket is active the era plates serve every LOD
@@ -2590,6 +2865,28 @@ export function createGlobe(
     if (terrainMat) {
       const u = terrainMat.uniforms.uUnion!;
       u.value = (u.value as number) + (unionTarget - (u.value as number)) * 0.08;
+      // story hierarchy ease (8th review): bystander nations recede while a
+      // story runs; ~180ms to settle, reduced-motion snaps
+      const st = terrainMat.uniforms.uStoryK!;
+      const storyTarget = store.getState().selectedAuthorId ? 1 : 0;
+      st.value = store.getState().reducedMotion
+        ? storyTarget
+        : (st.value as number) + (storyTarget - (st.value as number)) * 0.11;
+      if (Math.abs((st.value as number) - storyTarget) < 0.004) st.value = storyTarget;
+    }
+
+    // reading-distance retreat: the emblem/reticle/rails quiet as the camera
+    // descends — refresh only when the ease actually moved
+    {
+      const gk = nearGlyphK();
+      if (Math.abs(gk - lastGlyphK) > 0.01) {
+        lastGlyphK = gk;
+        if (!transition) {
+          updateNodeInstances();
+          updateRings();
+        }
+        applyRailFade();
+      }
     }
 
     cityMarkers.update(now); // founding growth tick (settled = no-op)
@@ -2653,5 +2950,5 @@ export function createGlobe(
     cam.setSafeInsets(insets);
   }
 
-  return { focusAuthor, resetCamera, zoomBy, timelineIntent, setSafeInsets, dispose };
+  return { focusAuthor, enterTerritory, resetCamera, zoomBy, timelineIntent, setSafeInsets, dispose };
 }

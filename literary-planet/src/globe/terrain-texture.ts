@@ -82,21 +82,36 @@ export function paintTerrainTexture(
   rankOf?: (workId: string) => number | undefined,
   /** clause 4 (v2.5): towns are founded at publication — era plates pass a
    * year filter; omitted = every town exists (the full atlas) */
-  townVisible?: (workId: string) => boolean
+  townVisible?: (workId: string) => boolean,
+  /**
+   * grid-cell sub-rect (8th review near patch): the canvas covers only this
+   * window of the plate at full cell density — one nation's reading-distance
+   * crispness for ~2MiB instead of a 134MiB planet. All drawing code runs
+   * unchanged; the canvas boundary is the clip.
+   */
+  clipRect?: { x0: number; y0: number; x1: number; y1: number }
 ): PlateCanvas {
   const g = territory.geometry;
   const texW = g.gridWidth * cell;
   const texH = (g.gridHeight - 1) * cell;
-  const canvas = makeCanvas(texW, texH);
+  const canvas = clipRect
+    ? makeCanvas((clipRect.x1 - clipRect.x0) * cell, (clipRect.y1 - clipRect.y0) * cell)
+    : makeCanvas(texW, texH);
   const ctx = canvas.getContext("2d") as CanvasRenderingContext2D | null;
   if (!ctx) return canvas;
+  if (clipRect) ctx.translate(-clipRect.x0 * cell, -clipRect.y0 * cell);
 
   ctx.lineJoin = "round";
   ctx.lineCap = "round";
 
-  // land fill + land mask from the owner raster
-  const mask = makeCanvas(texW, texH);
+  // land fill + land mask from the owner raster. Intermediates match the
+  // OUTPUT size — a patch paint must never allocate full-plate scratch
+  // canvases (the whole point is avoiding 33MP buffers).
+  const outW = canvas.width;
+  const outH = canvas.height;
+  const mask = makeCanvas(outW, outH);
   const mctx = mask.getContext("2d") as CanvasRenderingContext2D | null;
+  if (clipRect && mctx) mctx.translate(-clipRect.x0 * cell, -clipRect.y0 * cell);
   ctx.fillStyle = COLORS.surfaceRaised;
   if (mctx) mctx.fillStyle = "#ffffff";
   g.ownerRle.forEach((row, j) => {
@@ -120,7 +135,7 @@ export function paintTerrainTexture(
   // bilinear upscale where ctx.filter is unavailable.
   const washSrc = makeCanvas(g.gridWidth, g.ownerRle.length);
   const wsctx = washSrc.getContext("2d") as CanvasRenderingContext2D | null;
-  const washFull = makeCanvas(texW, texH);
+  const washFull = makeCanvas(outW, outH);
   const wctx = washFull.getContext("2d") as CanvasRenderingContext2D | null;
   if (wsctx && wctx && mctx) {
     g.ownerRle.forEach((row, j) => {
@@ -132,16 +147,22 @@ export function paintTerrainTexture(
         wsctx.fillRect(x0, j, count, 1);
       });
     });
+    if (clipRect) wctx.translate(-clipRect.x0 * cell, -clipRect.y0 * cell);
     wctx.imageSmoothingEnabled = true;
     if (typeof wctx.filter === "string") wctx.filter = `blur(${2.5 * cell}px)`;
     for (const shift of [-texW, 0, texW]) {
       wctx.drawImage(washSrc as CanvasImageSource, shift, 0, texW, texH);
     }
     wctx.filter = "none";
+    // mask and wash are both output-space now — composite in device space
+    wctx.setTransform(1, 0, 0, 1, 0, 0);
     wctx.globalCompositeOperation = "destination-in";
     wctx.drawImage(mask as CanvasImageSource, 0, 0);
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.globalAlpha = 0.15;
     ctx.drawImage(washFull as CanvasImageSource, 0, 0);
+    ctx.restore();
     ctx.globalAlpha = 1;
   }
 
