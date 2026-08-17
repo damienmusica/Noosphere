@@ -32,6 +32,7 @@ export interface MethodologyStrings {
   srcHead: string;
   srcBody: { pre: string; mid1: string; mid2: string; post: string };
   srcPortrait: { strong: string; body: string };
+  srcArt: { strong: string; body: string };
   countAuthors: (n: number) => string;
   countRels: (n: number) => string;
   relRowPrefix: string;
@@ -113,6 +114,10 @@ const KO: MethodologyStrings = {
   srcPortrait: {
     strong: "작가 도판",
     body: "은 사진이 아니라 생성된 동판화풍 상상 도판이며, 모든 도판에 '상상 초상' 또는 '상징 정물' 라벨이 붙는다. 얼굴은 도상원이 퍼블릭 도메인이거나 일반 인상만으로 그릴 수 있는 작고한 작가에 한하고, 특정 사진의 구도는 복제하지 않는다. 생존 작가는 얼굴 대신 작품 속 상징물(예: 자정의 회중시계와 처트니 단지)로 표상한다. 원 자산은 회색조로만 반입되어 앱이 판의 듀오톤으로 입히며, 생성 프롬프트·시드·모티프 근거는 portraits.json에 기록된다."
+  },
+  srcArt: {
+    strong: "실물 기록 자산",
+    body: "권리가 확인된 작가는 상상 도판 대신 실물이 우선한다: '기록 사진' 라벨의 아카이브 초상, 실제 서명·낙관, 육필 원고 지면(영토의 바탕), 초판 표지(작품 도시의 입면). 전 자산의 출처·라이선스는 저장소의 art-r10 프로비넌스 원장에 파일 단위로 기록돼 있다. 카프카 『변신』(1915)·『유형지에서』(1919) 초판 촬영본은 CC BY 3.0, 사진: H.-P. Haack (Antiquariat Dr. Haack, Leipzig / Wikimedia Commons). 그 외 실물 자산은 퍼블릭 도메인이다."
   },
   countAuthors: (n) => `${n}명`,
   countRels: (n) => `${n}개`,
@@ -202,6 +207,10 @@ const EN: MethodologyStrings = {
   srcPortrait: {
     strong: "Author plates",
     body: " are generated engraving-style imagined figures, never photographs, and every plate carries an 'imagined portrait' or 'emblematic still life' label. Faces are drawn only for deceased authors whose iconography is public-domain or renderable from general impression alone — no specific photograph's composition is ever replicated. Living authors are represented by an emblem from their work instead of a face (a pocket watch at midnight and a chutney jar, for instance). Assets enter the repository as grayscale only and the app maps them onto the plate's duotone; prompts, seeds, and motif rationales are recorded in portraits.json."
+  },
+  srcArt: {
+    strong: "Archival record assets",
+    body: " outrank imagined plates wherever rights are verified: archival portraits labeled 'archival photograph', real signatures and seals, manuscript pages (the territory's ground), and first-edition covers (the facades of work towns). Every asset's source and license is recorded per file in the repository's art-r10 provenance ledger. The photographs of Kafka's Die Verwandlung (1915) and In der Strafkolonie (1919) first editions are CC BY 3.0, photo: H.-P. Haack (Antiquariat Dr. Haack, Leipzig / Wikimedia Commons). All other record assets are public domain."
   },
   countAuthors: (n) => `${n}`,
   countRels: (n) => `${n}`,

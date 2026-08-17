@@ -83,9 +83,51 @@ export class CityMarkers {
   private growK = 1;
   private readonly disposables: Array<{ dispose(): void }> = [];
 
+  // R10 paper-planet: real first-edition plates stand as the towns that
+  // have them; every other work is an honest board — cardboard with a
+  // letterpress spine slip and diagonal hatching (the EU4 "exception
+  // pattern" translated to paper). Absence is grammar, not brokenness.
+  private covers = new Map<string, THREE.Texture>();
+  private coverMeshes: THREE.Mesh[] = [];
+  private boardTexture: THREE.CanvasTexture | null = null;
+
   constructor(private scene: THREE.Scene) {
     this.group.visible = false;
     scene.add(this.group);
+  }
+
+  setCovers(covers: Map<string, THREE.Texture>): void {
+    this.covers = covers;
+  }
+
+  private ensureBoardTexture(): THREE.CanvasTexture {
+    if (this.boardTexture) return this.boardTexture;
+    const c = document.createElement("canvas");
+    c.width = 128;
+    c.height = 192;
+    const g = c.getContext("2d")!;
+    g.fillStyle = "#cdbfa0"; // plain archival board
+    g.fillRect(0, 0, 128, 192);
+    // diagonal hatching = "no verified cover held" — visible, deliberate
+    g.strokeStyle = "rgba(58,46,30,0.34)";
+    g.lineWidth = 3;
+    g.beginPath();
+    for (let d = -192; d < 128 + 192; d += 13) {
+      g.moveTo(d, 0);
+      g.lineTo(d + 192, 192);
+    }
+    g.stroke();
+    // letterpress spine slip
+    g.fillStyle = "#e9dfc4";
+    g.fillRect(14, 22, 34, 148);
+    g.strokeStyle = "rgba(43,32,21,0.55)";
+    g.lineWidth = 2;
+    g.strokeRect(14, 22, 34, 148);
+    const t = new THREE.CanvasTexture(c);
+    t.colorSpace = THREE.SRGBColorSpace;
+    this.disposables.push(t);
+    this.boardTexture = t;
+    return t;
   }
 
   /** rebuild markers for one author's realm (empty id clears) */
@@ -144,8 +186,38 @@ export class CityMarkers {
     this.disposables.push(hitGeom, hitMat);
     this.hitMesh = new THREE.InstancedMesh(hitGeom, hitMat, this.cities.length);
 
-    // building clusters: one InstancedMesh per archetype silhouette
-    const buildingMat = new THREE.MeshBasicMaterial({ vertexColors: true });
+    // real first-edition plates: individual thin boards, front face mapped
+    // to the verified cover; they replace the silhouette for their town
+    const covered = new Set<string>();
+    for (const c of this.cities) {
+      const tex = this.covers.get(c.workId);
+      if (!tex) continue;
+      covered.add(c.workId);
+      const img = tex.image as { width?: number; height?: number };
+      const aspect = img && img.width && img.height ? img.width / img.height : 0.66;
+      const h = 3.4 * (c.isEntry ? 1.25 : 1);
+      const w = Math.min(h * aspect, h * 0.85);
+      // standing volume: height along local +Z (the ground normal after the
+      // up→normal quaternion), thickness along a tangent; the cover faces
+      // are ±Y (BoxGeometry material slots 2/3)
+      const geomC = new THREE.BoxGeometry(w, 0.34, h);
+      geomC.translate(0, 0, h / 2);
+      const edge = new THREE.MeshBasicMaterial({ color: "#8d7a58" });
+      const face = new THREE.MeshBasicMaterial({ map: tex });
+      this.disposables.push(geomC, edge, face);
+      const mesh = new THREE.Mesh(geomC, [edge, edge, face, face, edge, edge]);
+      mesh.renderOrder = 3;
+      mesh.userData.workId = c.workId;
+      this.coverMeshes.push(mesh);
+      this.group.add(mesh);
+    }
+
+    // building clusters: one InstancedMesh per archetype silhouette — the
+    // fallback boards; the shared hatch/spine texture marks "cover not held"
+    const buildingMat = new THREE.MeshBasicMaterial({
+      vertexColors: true,
+      map: this.covers.size > 0 ? this.ensureBoardTexture() : null
+    });
     this.disposables.push(buildingMat);
     for (const kind of ["capital", "city", "outpost"] as const) {
       if (counts[kind] === 0) continue;
@@ -210,7 +282,18 @@ export class CityMarkers {
     const up = new THREE.Vector3(0, 0, 1);
     this.cities.forEach((c, i) => {
       q.setFromUnitVectors(up, c.position.clone().normalize());
-      m.compose(c.position, q, new THREE.Vector3(1, 1, 1).multiplyScalar(this.scaleOf(c)));
+      const coverMesh = this.coverMeshes.find((cm) => cm.userData.workId === c.workId);
+      m.compose(
+        c.position,
+        q,
+        new THREE.Vector3(1, 1, 1).multiplyScalar(coverMesh ? 0 : this.scaleOf(c))
+      );
+      if (coverMesh) {
+        const s2 = this.scaleOf(c) * Math.max(0.02, this.growK);
+        coverMesh.position.copy(c.position);
+        coverMesh.quaternion.copy(q);
+        coverMesh.scale.setScalar(s2);
+      }
       ring.setMatrixAt(i, m);
       m.compose(c.position, q, new THREE.Vector3(1, 1, 1));
       hit.setMatrixAt(i, m);

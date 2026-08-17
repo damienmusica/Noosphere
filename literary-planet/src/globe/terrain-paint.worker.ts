@@ -41,6 +41,13 @@ export interface PaintWorkerPaintPatch {
   y0: number;
   x1: number;
   y1: number;
+  /** R10: owner index whose manuscript ground (if registered) is laid */
+  nationIdx?: number;
+}
+export interface PaintWorkerSetGrounds {
+  kind: "set-grounds";
+  /** owner index → ghost-processed manuscript page */
+  grounds: Record<number, ImageBitmap>;
 }
 export interface PaintWorkerPaintUnion {
   kind: "paint-union";
@@ -51,6 +58,7 @@ export type PaintWorkerRequest =
   | PaintWorkerPaintEra
   | PaintWorkerPaintNear
   | PaintWorkerPaintPatch
+  | PaintWorkerSetGrounds
   | PaintWorkerPaintUnion;
 
 export type PaintWorkerResponse =
@@ -69,6 +77,7 @@ const post = (msg: PaintWorkerResponse, transfer?: Transferable[]) =>
 
 let base: PaintWorkerInit | null = null;
 let eras: TerritoryEras | null = null;
+let grounds: Record<number, ImageBitmap> = {};
 
 self.onmessage = async (e: MessageEvent<PaintWorkerRequest>) => {
   const msg = e.data;
@@ -83,6 +92,10 @@ self.onmessage = async (e: MessageEvent<PaintWorkerRequest>) => {
     } catch (err) {
       post({ kind: "eras-error", message: String(err) });
     }
+    return;
+  }
+  if (msg.kind === "set-grounds") {
+    grounds = msg.grounds;
     return;
   }
   if (!base) return;
@@ -129,6 +142,8 @@ self.onmessage = async (e: MessageEvent<PaintWorkerRequest>) => {
   if (msg.kind === "paint-atlas-patch") {
     // 8th review: one nation's reading-distance window at full cell density —
     // ~2MiB instead of the 134MiB full plate on the selection path
+    const groundImage =
+      msg.nationIdx !== undefined ? grounds[msg.nationIdx] : undefined;
     const canvas = paintTerrainTexture(
       base.territory,
       (id) => base!.periodByAuthor[id],
@@ -136,7 +151,10 @@ self.onmessage = async (e: MessageEvent<PaintWorkerRequest>) => {
       true,
       (wid) => base!.readingRank[wid],
       undefined,
-      { x0: msg.x0, y0: msg.y0, x1: msg.x1, y1: msg.y1 }
+      { x0: msg.x0, y0: msg.y0, x1: msg.x1, y1: msg.y1 },
+      groundImage !== undefined && msg.nationIdx !== undefined
+        ? { image: groundImage, nationIdx: msg.nationIdx }
+        : undefined
     );
     const bitmap = await createImageBitmap(canvas as OffscreenCanvas, {
       imageOrientation: "flipY"

@@ -42,7 +42,10 @@ function estimateWidth(text: string, fontSize: number): number {
       ? 1
       : 0.56;
   }
-  return units * fontSize + 8;
+  // +22: the R10 letterpress slip adds 14px padding + border — the greedy
+  // collision boxes must include the CHIP, not just the glyphs (opaque
+  // slips that overlap COVER each other; bare-text tuning underestimated)
+  return units * fontSize + 22;
 }
 
 // keep in lockstep with .globe-label--{lg,md,sm} in styles.css — the greedy

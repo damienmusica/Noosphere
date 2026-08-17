@@ -282,15 +282,26 @@ export class TemporalTerrainLayer {
   ensureNationPatch(
     key: string,
     rect: { x0: number; y0: number; x1: number; y1: number },
-    cell: number
+    cell: number,
+    nationIdx?: number
   ): THREE.Texture | null {
     if (this.disposed) return null;
     if (this.patchTex && this.patchKey === key) return this.patchTex;
     if (this.patchPendingKey !== key) {
       this.patchPendingKey = key;
-      this.send({ kind: "paint-atlas-patch", key, cell, ...rect });
+      this.send({ kind: "paint-atlas-patch", key, cell, nationIdx, ...rect });
     }
     return null;
+  }
+
+  /** R10: manuscript grounds arrive after boot — register them with the
+   * painter and invalidate any resident patch so the page shows up */
+  setGrounds(grounds: Record<number, ImageBitmap>): void {
+    if (this.disposed) return;
+    const bitmaps = Object.values(grounds);
+    this.ensureWorker().postMessage({ kind: "set-grounds", grounds }, bitmaps);
+    this.releasePatch();
+    this.deps.onChange();
   }
 
   /** deselect / mode change: the window follows the story out immediately */

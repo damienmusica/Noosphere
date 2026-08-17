@@ -13,7 +13,8 @@ import { COLORS, PERIOD_WASH } from "../theme.ts";
 import { eachRun, unwrapFlatX } from "../lib/territory-geometry.ts";
 import type { PeriodId, Territory } from "../types.ts";
 
-const COAST = "#8e733f"; // engraved coast brass, same ink as the P0 plate
+// R10 paper-planet: the plate is PAPER laid on cloth. Coast = deckle edge
+// (a dark under-shadow where the page lifts, a bright torn-paper rim).
 
 export type PlateCanvas = HTMLCanvasElement | OffscreenCanvas;
 
@@ -89,7 +90,13 @@ export function paintTerrainTexture(
    * crispness for ~2MiB instead of a 134MiB planet. All drawing code runs
    * unchanged; the canvas boundary is the clip.
    */
-  clipRect?: { x0: number; y0: number; x1: number; y1: number }
+  clipRect?: { x0: number; y0: number; x1: number; y1: number },
+  /**
+   * R10: the author's own manuscript page, ghost-processed offline, laid
+   * over ONE nation's paper (used on the near patch path). The image covers
+   * the nation's bbox; runs outside the nation keep plain laid paper.
+   */
+  ground?: { image: CanvasImageSource; nationIdx: number }
 ): PlateCanvas {
   const g = territory.geometry;
   const texW = g.gridWidth * cell;
@@ -112,7 +119,7 @@ export function paintTerrainTexture(
   const mask = makeCanvas(outW, outH);
   const mctx = mask.getContext("2d") as CanvasRenderingContext2D | null;
   if (clipRect && mctx) mctx.translate(-clipRect.x0 * cell, -clipRect.y0 * cell);
-  ctx.fillStyle = COLORS.surfaceRaised;
+  ctx.fillStyle = COLORS.paper;
   if (mctx) mctx.fillStyle = "#ffffff";
   g.ownerRle.forEach((row, j) => {
     eachRun(row, (x0, count, value) => {
@@ -126,9 +133,68 @@ export function paintTerrainTexture(
 
   // shore under-stroke in land ink: bridges the half-cell offset between the
   // raster fill and the analytic coast line, whatever the cell size
-  ctx.strokeStyle = COLORS.surfaceRaised;
+  ctx.strokeStyle = COLORS.paper;
   ctx.lineWidth = Math.max(5, cell * 1.6);
   ctx.stroke(coastPath);
+
+  // laid-paper texture, land only (source-atop rides the land alpha):
+  // horizontal laid lines + sparse vertical chain lines, angular size held
+  // across plate scales — the ground reads as PAPER, not as flat fill
+  {
+    ctx.save();
+    ctx.globalCompositeOperation = "source-atop";
+    ctx.strokeStyle = COLORS.paperInk;
+    ctx.globalAlpha = 0.05;
+    ctx.lineWidth = 1;
+    const step = Math.max(3, 2.4 * cell);
+    ctx.beginPath();
+    for (let y = 0; y < texH; y += step) {
+      ctx.moveTo(0, y + (Math.sin(y * 0.7) * 0.8));
+      ctx.lineTo(texW, y + (Math.cos(y * 0.5) * 0.8));
+    }
+    ctx.stroke();
+    ctx.globalAlpha = 0.035;
+    ctx.beginPath();
+    const chain = Math.max(18, 15 * cell);
+    for (let x = 0; x < texW; x += chain) {
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, texH);
+    }
+    ctx.stroke();
+    ctx.restore();
+    ctx.globalAlpha = 1;
+  }
+
+  // R10 manuscript ground: clip to the nation's own runs and lay the
+  // ghosted page across its bbox — the territory literally becomes the page
+  if (ground) {
+    let bx0 = g.gridWidth, bx1 = -1, by0 = g.ownerRle.length, by1 = -1;
+    const clip = new Path2D();
+    g.ownerRle.forEach((row, j) => {
+      eachRun(row, (x0, count, value) => {
+        if (value - 1 !== ground.nationIdx) return;
+        clip.rect(x0 * cell, j * cell, count * cell, cell);
+        if (x0 < bx0) bx0 = x0;
+        if (x0 + count > bx1) bx1 = x0 + count;
+        if (j < by0) by0 = j;
+        if (j > by1) by1 = j;
+      });
+    });
+    if (bx1 > 0) {
+      ctx.save();
+      ctx.clip(clip);
+      ctx.globalAlpha = 0.9;
+      ctx.drawImage(
+        ground.image,
+        bx0 * cell,
+        by0 * cell,
+        (bx1 - bx0) * cell,
+        (by1 + 1 - by0) * cell
+      );
+      ctx.restore();
+      ctx.globalAlpha = 1;
+    }
+  }
 
   // period wash: owner runs rasterized small, blurred up, then masked to the
   // land raster — watercolor held inside the ink. Falls back to plain
@@ -179,18 +245,25 @@ export function paintTerrainTexture(
   ctx.lineWidth = 1.6;
   ctx.stroke(pathOf(wl.inner, wl.gridWidth, wsx, wsy, texW));
 
-  // territory borders: dashed, quieter than the coast; dash rhythm keeps its
-  // angular size across plate scales
-  ctx.setLineDash([3.5 * cell, 3 * cell]);
-  ctx.globalAlpha = 0.6;
-  ctx.lineWidth = 1.7;
+  // interior territory borders: STITCHING — the realms are sewn into the
+  // same signature (union membership reads as shared binding elsewhere);
+  // thread-short dashes, angular rhythm held across plate scales
+  ctx.strokeStyle = COLORS.stitch;
+  ctx.setLineDash([1.6 * cell, 2.8 * cell]);
+  ctx.globalAlpha = 0.75;
+  ctx.lineWidth = 2;
   ctx.stroke(pathOf(g.boundaries, g.gridWidth, cell, cell, texW));
   ctx.setLineDash([]);
 
-  // coast stroke last — the strongest line on the plate
-  ctx.strokeStyle = COAST;
-  ctx.globalAlpha = 0.95;
-  ctx.lineWidth = 3;
+  // deckle edge last: the page lifts off the cloth — a soft dark under-
+  // shadow, then the bright torn rim
+  ctx.strokeStyle = COLORS.paperShadow;
+  ctx.globalAlpha = 0.5;
+  ctx.lineWidth = 5;
+  ctx.stroke(coastPath);
+  ctx.strokeStyle = COLORS.paperEdge;
+  ctx.globalAlpha = 0.9;
+  ctx.lineWidth = 2;
   ctx.stroke(coastPath);
   ctx.globalAlpha = 1;
 
@@ -212,8 +285,8 @@ export function paintTerrainTexture(
             road.lineTo(un[k]! * cell + shift, un[k + 1]! * cell);
           }
         }
-        ctx.strokeStyle = COLORS.lineAccent;
-        ctx.globalAlpha = 0.5;
+        ctx.strokeStyle = COLORS.paperInk;
+        ctx.globalAlpha = 0.45;
         ctx.lineWidth = 1.3;
         ctx.setLineDash([1.2, 6.5]);
         ctx.stroke(road);
@@ -228,7 +301,7 @@ export function paintTerrainTexture(
           if (x < -20 || x > texW + 20) continue;
           if (isPort) {
             // the harbor: a filled diamond — the reading enters here
-            ctx.fillStyle = COLORS.brass;
+            ctx.fillStyle = COLORS.paperInk;
             ctx.globalAlpha = 0.95;
             ctx.beginPath();
             ctx.moveTo(x, y - 5.5);
@@ -244,7 +317,7 @@ export function paintTerrainTexture(
             // P3 floor keeps a lone island ring above coast noise)
             const rank = rankOf?.(town.id);
             const radius = rank === undefined ? 2.7 : Math.max(2.9, 5.4 - rank * 0.85);
-            ctx.strokeStyle = COLORS.brass;
+            ctx.strokeStyle = COLORS.paperInk;
             ctx.globalAlpha = rank === undefined ? 0.62 : 0.92;
             ctx.lineWidth = 1.5;
             ctx.beginPath();

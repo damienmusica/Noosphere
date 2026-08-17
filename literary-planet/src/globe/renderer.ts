@@ -36,6 +36,8 @@ import {
   type LodLevel
 } from "../lib/lod.ts";
 import { CameraController } from "./camera-controller.ts";
+import { artUrl, loadArtManifest } from "./art-assets.ts";
+import { buildDialTexture, buildStampFrameTexture, dialAngle } from "./stamp-dial.ts";
 import type { AppState, Store } from "../state/store.ts";
 import { LabelLayer, type LabelItem, type LabelState } from "./labels.ts";
 import { paintTerrainTexture } from "./terrain-texture.ts";
@@ -252,7 +254,42 @@ export function createGlobe(
       ? (fn) => requestIdleCallback((d) => fn(d), { timeout: 2000 })
       : (fn) => setTimeout(() => fn(), 60);
 
-  const surfaceMat = track(new THREE.MeshBasicMaterial({ color: COLORS.sea }));
+  // R10 paper-planet: the sea is BOUND CLOTH — a procedural bookcloth weave
+  // multiplied under the mode-lerped sea color, so the dark ground reads as
+  // material rather than void while staying exactly in the L1 band.
+  const clothTexture = (() => {
+    const c = document.createElement("canvas");
+    c.width = c.height = 128;
+    const g = c.getContext("2d");
+    if (g) {
+      g.fillStyle = "#ffffff";
+      g.fillRect(0, 0, 128, 128);
+      // warp/weft: alternating light-dark threads, slightly irregular
+      for (let y = 0; y < 128; y += 2) {
+        g.fillStyle = y % 4 === 0 ? "rgba(0,0,0,0.16)" : "rgba(255,255,255,0.05)";
+        g.fillRect(0, y, 128, 1);
+      }
+      for (let x = 0; x < 128; x += 3) {
+        g.fillStyle = x % 6 === 0 ? "rgba(0,0,0,0.10)" : "rgba(255,255,255,0.04)";
+        g.fillRect(x, 0, 1, 128);
+      }
+      // sparse slubs — woven, not printed
+      for (let i = 0; i < 40; i++) {
+        const x = (i * 37) % 128;
+        const y = (i * 53) % 128;
+        g.fillStyle = i % 2 ? "rgba(0,0,0,0.10)" : "rgba(255,255,255,0.08)";
+        g.fillRect(x, y, 2 + (i % 3), 1);
+      }
+    }
+    const t = reg(track(new THREE.CanvasTexture(c)));
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    t.repeat.set(28, 14);
+    t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+  })();
+  const surfaceMat = track(
+    new THREE.MeshBasicMaterial({ color: COLORS.sea, map: clothTexture })
+  );
   const surface = new THREE.Mesh(
     track(new THREE.SphereGeometry(GLOBE.surfaceRadius, 48, 32)),
     surfaceMat
@@ -798,7 +835,7 @@ export function createGlobe(
       terrainMat.uniforms.uPatchOn!.value = 0;
       return;
     }
-    const tex = temporal.ensureNationPatch(`${idx}|${nearPlateCell}`, bbox, nearPlateCell);
+    const tex = temporal.ensureNationPatch(`${idx}|${nearPlateCell}`, bbox, nearPlateCell, idx);
     if (!tex) {
       // mid serves until the worker lands the window (onChange recommits)
       terrainMat.uniforms.uPatchOn!.value = 0;
@@ -974,7 +1011,71 @@ export function createGlobe(
     }
     return group;
   }
-  const ring = makeReticle(COLORS.brass, 0.95, true);
+  // R10: the circular reticle is retired. Selection = the 감상인 stamp
+  // (vermilion frame around the author's real mark) + the LIFE DIAL (year
+  // ticks, brass active-span arc, a needle at the timeline year). Same
+  // lifecycle slot as the old ring: near-retreat, cast rules, bookmarks.
+  const ring = new THREE.Group();
+  const stampFrameMat = track(
+    new THREE.SpriteMaterial({ transparent: true, opacity: 0.92, depthWrite: false })
+  );
+  stampFrameMat.userData.baseOpacity = 0.92;
+  const stampFrame = new THREE.Sprite(stampFrameMat);
+  ring.add(stampFrame);
+  const dialMat = track(
+    new THREE.SpriteMaterial({ transparent: true, opacity: 0.9, depthWrite: false })
+  );
+  dialMat.userData.baseOpacity = 0.9;
+  const dialSprite = new THREE.Sprite(dialMat);
+  dialSprite.scale.set(9.6, 9.6, 1);
+  ring.add(dialSprite);
+  const needleMat = track(
+    new THREE.SpriteMaterial({ transparent: true, opacity: 0.95, depthWrite: false })
+  );
+  needleMat.userData.baseOpacity = 0.95;
+  const needleSprite = new THREE.Sprite(needleMat);
+  needleSprite.scale.set(9.6, 9.6, 1);
+  ring.add(needleSprite);
+  const needleTexture = (() => {
+    const c = document.createElement("canvas");
+    c.width = c.height = 256;
+    const g = c.getContext("2d")!;
+    g.strokeStyle = COLORS.vermilion;
+    g.lineCap = "round";
+    g.lineWidth = 5;
+    g.globalAlpha = 0.95;
+    g.beginPath();
+    g.moveTo(128 + 96, 128); // pointing +x; SpriteMaterial.rotation swings it
+    g.lineTo(128 + 118, 128);
+    g.stroke();
+    const t = reg(track(new THREE.CanvasTexture(c)));
+    t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+  })();
+  needleMat.map = needleTexture;
+  let dialTexture: THREE.CanvasTexture | null = null;
+  let stampTexture: THREE.CanvasTexture | null = null;
+  function rebuildStamp(author: Author | undefined, markAspect: number | undefined): void {
+    if (dialTexture) {
+      unreg(dialTexture);
+      dialTexture.dispose();
+      dialTexture = null;
+    }
+    if (stampTexture) {
+      unreg(stampTexture);
+      stampTexture.dispose();
+      stampTexture = null;
+    }
+    if (!author) return;
+    dialTexture = reg(buildDialTexture(author));
+    dialMat.map = dialTexture;
+    dialMat.needsUpdate = true;
+    stampTexture = reg(buildStampFrameTexture(markAspect ?? 1.15));
+    stampFrameMat.map = stampTexture;
+    stampFrameMat.needsUpdate = true;
+    const a = Math.max(1, Math.min(4, markAspect ?? 1.15));
+    stampFrame.scale.set(5.2 * Math.min(a, 3.4) * 0.42 + 3.4, 3.9, 1);
+  }
   ring.visible = false;
   scene.add(ring);
   const hoverRing = makeReticle(COLORS.text, 0.4, false);
@@ -1078,6 +1179,11 @@ export function createGlobe(
         sprite.renderOrder = 6;
         scene.add(sprite);
         sealSprites.set(a.id, sprite);
+        {
+          // real-mark authors: the archival mark may have loaded first
+          const mk = artMarks.get(a.id);
+          if (mk) applyMarkTo(sprite, mk);
+        }
         si++;
         painted++;
       }
@@ -1347,6 +1453,81 @@ export function createGlobe(
     reducedMotion: () => store.getState().reducedMotion
   });
 
+  // --- R10 art assets: real marks, manuscript grounds, cover plates -------
+  // Everything demand-loaded and fallback-safe: an author without assets
+  // keeps the initial seal / plain board — absence is part of the grammar.
+  const artMarks = new Map<string, { tex: THREE.Texture; aspect: number }>();
+  function applyMarkTo(sprite: THREE.Sprite, mark: { tex: THREE.Texture; aspect: number }): void {
+    const mat = sprite.material as THREE.SpriteMaterial;
+    mat.map = mark.tex;
+    mat.needsUpdate = true;
+    sprite.userData.isMark = true;
+    sprite.userData.markAspect = mark.aspect;
+  }
+  loadArtManifest().then(async (man) => {
+    if (!man || disposed) return;
+    const loader = new THREE.TextureLoader();
+    for (const [id, m] of Object.entries(man.marks)) {
+      loader.load(artUrl(m.file), (t) => {
+        if (disposed) return;
+        t.colorSpace = THREE.SRGBColorSpace;
+        reg(track(t));
+        const mark = { tex: t, aspect: m.w / m.h };
+        artMarks.set(id, mark);
+        // the seal sprites build lazily in idle chunks — whichever side
+        // finishes second applies the mark (see buildChunk's mirror)
+        const spr = sealSprites.get(id);
+        if (spr) applyMarkTo(spr, mark);
+        updateNodeInstances();
+        const sNow = store.getState();
+        if (sNow.selectedAuthorId === id) {
+          rebuildStamp(authors[indexOf.get(id) ?? -1], mark.aspect);
+        }
+      });
+    }
+    // manuscript grounds → the paint worker (near-patch path)
+    const groundEntries = Object.entries(man.grounds)
+      .map(([id, g2]) => ({ idx: nationIdxOf.get(id), file: g2.file }))
+      .filter((e): e is { idx: number; file: string } => e.idx !== undefined);
+    const bitmaps: Record<number, ImageBitmap> = {};
+    await Promise.all(
+      groundEntries.map(async (e) => {
+        try {
+          const r = await fetch(artUrl(e.file));
+          if (r.ok) bitmaps[e.idx] = await createImageBitmap(await r.blob());
+        } catch {
+          /* asset missing → laid paper stays */
+        }
+      })
+    );
+    if (!disposed && Object.keys(bitmaps).length > 0) temporal?.setGrounds(bitmaps);
+    // first-edition cover plates → the city markers
+    const covers = new Map<string, THREE.Texture>();
+    await Promise.all(
+      Object.entries(man.covers).map(
+        (entry) =>
+          new Promise<void>((resolve) => {
+            loader.load(
+              artUrl(entry[1].file),
+              (t) => {
+                t.colorSpace = THREE.SRGBColorSpace;
+                reg(track(t));
+                covers.set(entry[0], t);
+                resolve();
+              },
+              undefined,
+              () => resolve()
+            );
+          })
+      )
+    );
+    if (!disposed && covers.size > 0) {
+      cityMarkers.setCovers(covers);
+      cityMarkersFor = null; // rebuild with plates on the next sync
+      syncCityMarkers();
+    }
+  });
+
   // --- per-frame state ------------------------------------------------------
   const labels = new LabelLayer(container);
   labels.onActivate = (id) => {
@@ -1523,7 +1704,21 @@ export function createGlobe(
       const engagedSeal =
         id === s.selectedAuthorId || id === s.hoveredAuthorId || castSet.has(id);
       const k = SEAL_SCALE[a.tier] * (engagedSeal ? 1 : 0.82);
-      sprite.scale.set(k, k, 1);
+      const markAspect = sprite.userData.markAspect as number | undefined;
+      if (markAspect) {
+        // real signature/seal marks keep their true aspect — wide hands lie
+        // across the territory like the mockups, capped so no name becomes
+        // a banner. Unengaged stamps stay COMPACT (the full spread is a
+        // selection/near reading): wide hands shrink until their footprint
+        // matches a square seal's, which keeps the geo-mid overlap budget.
+        const h = engagedSeal
+          ? k * 0.68
+          : Math.min(k * 0.68, (k * 1.35) / markAspect);
+        const w = Math.min(h * markAspect, k * 3.2);
+        sprite.scale.set(w, w / markAspect, 1);
+      } else {
+        sprite.scale.set(k, k, 1);
+      }
       const dimmed =
         s.selectedAuthorId !== null && id !== s.selectedAuthorId && !castSet.has(id);
       // 9th round subtraction: while a story runs, bystander emblems leave
@@ -1538,7 +1733,10 @@ export function createGlobe(
       // poster-scale glyph was covering the very territory it names (8th)
       const posterFade = id === s.selectedAuthorId ? 1 - nearGlyphK() : 1;
       mat.opacity = sealK * (dimmed ? 0.22 : engagedSeal ? 0.92 : 0.55) * posterFade;
-      mat.color.set(id === s.selectedAuthorId ? COLORS.brassBright : COLORS.text);
+      // real marks are pre-colored material (ink + seal vermilion) — never
+      // tinted; glyph seals keep the brass/text tint
+      if (sprite.userData.isMark) mat.color.set("#ffffff");
+      else mat.color.set(id === s.selectedAuthorId ? COLORS.brassBright : COLORS.text);
     }
   }
 
@@ -2412,7 +2610,11 @@ export function createGlobe(
       } else if (prevWorkForCam && !s.selectedWorkId) cam.restoreBookmark("author");
     }
     if (lensChanged) refreshLens();
-    if (selectionChanged) refreshNearPatch();
+    if (selectionChanged) {
+      refreshNearPatch();
+      const a = s.selectedAuthorId ? authors[indexOf.get(s.selectedAuthorId) ?? -1] : undefined;
+      rebuildStamp(a, s.selectedAuthorId ? artMarks.get(s.selectedAuthorId)?.aspect : undefined);
+    }
 
     // the picked line carries the only in-place type label — refresh it
     if (pickedChanged) updateLabels();
@@ -2951,6 +3153,11 @@ export function createGlobe(
       }
     }
 
+    {
+      const sNow = store.getState();
+      const yr = sNow.yearPreview ?? sNow.year;
+      needleMat.rotation = -dialAngle(yr);
+    }
     flowStory.update(now);
     renderer.render(scene, camera);
   }
