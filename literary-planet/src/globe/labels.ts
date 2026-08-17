@@ -6,7 +6,7 @@ export type LabelState = "normal" | "selected" | "hovered" | "neighbor" | "dim";
 export interface LabelItem {
   id: string;
   text: string;
-  kind: "author" | "movement" | "work" | "relation" | "region";
+  kind: "author" | "movement" | "work" | "relation" | "region" | "cluster";
   size: "lg" | "md" | "sm";
   priority: number;
   x: number;
@@ -45,7 +45,9 @@ function estimateWidth(text: string, fontSize: number): number {
   return units * fontSize + 8;
 }
 
-const FONT_SIZE: Record<LabelItem["size"], number> = { lg: 14, md: 12, sm: 11 };
+// keep in lockstep with .globe-label--{lg,md,sm} in styles.css — the greedy
+// pass estimates collision boxes from these (5th review typography scale-up)
+const FONT_SIZE: Record<LabelItem["size"], number> = { lg: 16, md: 14, sm: 12 };
 
 export class LabelLayer {
   private root: HTMLDivElement;

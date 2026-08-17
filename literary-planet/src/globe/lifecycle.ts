@@ -1,7 +1,9 @@
-// Territory grammar v2.0 (docs/territory-grammar-v2.md, D1–D5 ratified
-// 2026-08-17): the year fader never moves a coastline — it crossfades
-// sovereignty states. Pure functions here; the renderer only uploads their
-// output as small lookup textures.
+// Territory grammar v2.x (docs/territory-grammar-v2.md): the year fader
+// morphs the planet through baked tectonic keyframes (v2.5) and crossfades
+// the sovereignty states modeled here (v2.0). Parking the fader at 전체 시기
+// bypasses both layers — the default planet is the frozen v1 plate,
+// bit-identical. Pure functions here; the renderer only uploads their output
+// as small lookup textures.
 
 import type { Author } from "../types.ts";
 import type { YearMode } from "../lib/filter.ts";
@@ -56,7 +58,11 @@ export function lifecycleEngaged(year: number, yearMode: YearMode): boolean {
   return !(year >= TIMELINE_MAX && yearMode === "cumulative");
 }
 
-export const LIFE_TEX_WIDTH = 128;
+// 256 texels = the author-capacity ceiling of the lifecycle channel. The
+// owner index texture (R8, 255 = sea) caps nations at 254; this lookup must
+// never be the lower bound (CPO 2026-08-17: the planet must have room for
+// the expansion slates — the previous 128 would have broken first).
+export const LIFE_TEX_WIDTH = 256;
 
 /** RGBA rows for the 128×1 per-author lookup: R = presence, G = patina */
 export function buildLifeTexData(
@@ -77,7 +83,21 @@ export function buildLifeTexData(
 
 // --- unions (D1: movements are landless treaties over member nations) -------
 
+export interface TreatyInterval {
+  start: number;
+  end: number;
+}
+
+/**
+ * IMPORTANT (5th review P0-2): these years are COMPUTED from the corpus —
+ * the overlap of member nations' activeRanges — not curated historical
+ * movement periods. The UI must present them as computed (≈) until a
+ * sourced period model exists.
+ */
 export interface Treaty {
+  /** every span with ≥2 members concurrently active, ascending, disjoint */
+  intervals: TreatyInterval[];
+  /** outer envelope (first start … last end) — the cartouche's display span */
   start: number;
   end: number;
 }
@@ -86,6 +106,9 @@ export interface Treaty {
  * A union's treaty runs while at least two member nations are active
  * simultaneously. Movements with fewer than two members, or whose members
  * never overlap in time, have no treaty (they stay a data grouping only).
+ * Discontinuous overlaps stay separate intervals — a lull in the corpus is
+ * not treaty time (the merged-span shortcut was a 5th-review finding: no
+ * current movement has a gap, but the next corpus edition may).
  */
 export function treatyOf(members: ReadonlyArray<Author>): Treaty | null {
   if (members.length < 2) return null;
@@ -95,26 +118,41 @@ export function treatyOf(members: ReadonlyArray<Author>): Treaty | null {
   }
   events.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
   let depth = 0;
-  let start: number | null = null;
-  let end: number | null = null;
+  let open: number | null = null;
+  const intervals: TreatyInterval[] = [];
   for (const [y, d] of events) {
     depth += d;
-    if (depth >= 2 && start === null) start = y;
-    if (depth < 2 && start !== null && end === null) end = y - 1;
-    if (depth >= 2) end = null; // reopened
+    if (depth >= 2 && open === null) open = y;
+    if (depth < 2 && open !== null) {
+      intervals.push({ start: open, end: y - 1 });
+      open = null;
+    }
   }
-  if (start === null) return null;
-  return { start, end: end ?? Math.max(...members.map((m) => m.activeRange[1])) };
+  if (open !== null) {
+    intervals.push({ start: open, end: Math.max(...members.map((m) => m.activeRange[1])) });
+  }
+  if (intervals.length === 0) return null;
+  return {
+    intervals,
+    start: intervals[0]!.start,
+    end: intervals[intervals.length - 1]!.end
+  };
 }
 
 /**
  * Overlay strength of a treaty at a year. With the fader parked at 전체
  * 시기 (lifecycle bypassed) every treaty shows at full strength — the atlas
  * annotates all unions; scrub the fader and treaties rise and dissolve.
+ * Multi-interval treaties dip between their spans (the ink dissolves during
+ * a corpus lull and re-forms with the next concurrent generation).
  */
 export function treatyPresence(t: Treaty, year: number, yearMode: YearMode): number {
   if (!lifecycleEngaged(year, yearMode)) return 1;
-  const rise = smoothstep(t.start - 3, t.start + 3, year);
-  const fall = 1 - smoothstep(t.end, t.end + 10, year);
-  return Math.min(rise, fall);
+  let strength = 0;
+  for (const iv of t.intervals) {
+    const rise = smoothstep(iv.start - 3, iv.start + 3, year);
+    const fall = 1 - smoothstep(iv.end, iv.end + 10, year);
+    strength = Math.max(strength, Math.min(rise, fall));
+  }
+  return strength;
 }

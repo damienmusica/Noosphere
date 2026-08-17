@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import type { Author, Dataset, Movement, Relation, Work } from "../types.ts";
+import type { Author, Dataset, Movement, Relation, TerritoryEras, Work } from "../types.ts";
 import type { Locale } from "../i18n/index.ts";
 import { RELATION_DEFS } from "../types.ts";
 import { COLORS, GEO_COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS, UNION_COLORS } from "../theme.ts";
@@ -48,6 +48,8 @@ export interface GlobeCallbacks {
   onRelationHover(relation: Relation | null): void;
   onWorkPick(work: Work): void;
   onWorkHover(work: Work | null): void;
+  /** a geo seal cluster's chip was activated — open the member list */
+  onClusterPick(memberIds: string[], at: { x: number; y: number }): void;
 }
 
 export interface GlobeI18n {
@@ -55,12 +57,19 @@ export interface GlobeI18n {
   movementLabel(m: Movement, locale: Locale): string;
   workLabel(w: Work, locale: Locale): string;
   workAria(w: Work, locale: Locale): string;
+  clusterMore(n: number, locale: Locale): string;
+  clusterAria(name: string, n: number, locale: Locale): string;
 }
 
 export interface GlobeHandle {
   focusAuthor(id: string, opts?: { distance?: number }): void;
   resetCamera(): void;
   zoomBy(factor: number): void;
+  /**
+   * Late-binds the tectonic keyframes (they load as a separate async chunk —
+   * 5th review: the eras JSON must not ride in the main bundle). Idempotent.
+   */
+  provideEras(eras: TerritoryEras): void;
   dispose(): void;
 }
 
@@ -121,7 +130,9 @@ export function createGlobe(
     authorLabel: (a) => a.names.ko,
     movementLabel: (m) => m.ko,
     workLabel: (w) => w.titleKo,
-    workAria: (w) => `작품 카드 열기: ${w.titleKo}`
+    workAria: (w) => `작품 카드 열기: ${w.titleKo}`,
+    clusterMore: (n) => `+${n}`,
+    clusterAria: (name, n) => `${name} 부근의 작가 ${n}명 목록 열기`
   }
 ): GlobeHandle {
   const authors = dataset.authors;
@@ -213,8 +224,11 @@ export function createGlobe(
   const readingRank = new Map<string, number>();
   for (const a of authors) a.readingOrder.forEach((wid, i) => readingRank.set(wid, i));
   // v2.5 tectonic plates: one texture per keyframe, painted lazily off the
-  // critical path; the shader blends the active bracket pair
+  // critical path; the shader blends the active bracket pair. The keyframe
+  // data itself arrives late via provideEras (separate async chunk).
   const eraPlates: THREE.CanvasTexture[] = [];
+  let erasData: TerritoryEras | null = null;
+  let eraPaintKickoff: ((eras: TerritoryEras) => void) | null = null;
   let eraPlatesReady = false;
   let eraActive = false;
   let eraBracket: [number, number] | null = null;
@@ -245,9 +259,10 @@ export function createGlobe(
     terrainTexMid = makeTex(2);
     // reading-distance plate: as dense as the GPU allows (CPO report: the
     // near view upscaled a 4096px bake ~3× and read blurry). grid 1024 →
-    // cell 6 = 6144px wide; small screens and small GPUs stay at 4096.
+    // cell 8 = 8192px wide, matching the planet scale-up's closer reading
+    // height; small screens and small GPUs stay at 4096.
     const nearCell =
-      !smallScreen && renderer.capabilities.maxTextureSize >= 8192 ? 6 : 4;
+      !smallScreen && renderer.capabilities.maxTextureSize >= 8192 ? 8 : 4;
     terrainTexNear = makeTex(nearCell, true); // cities live at reading distance only
     // --- territory grammar v2.0: sovereignty shader ------------------------
     // The plate stays exactly as baked; per-nation lifecycle (presence,
@@ -370,8 +385,7 @@ export function createGlobe(
 
     // paint the tectonic keyframes one per tick, never blocking first paint;
     // towns are founded at publication (clause 4) inside each era plate
-    if (dataset.territoryEras) {
-      const eras = dataset.territoryEras;
+    eraPaintKickoff = (eras) => {
       const workYear = new Map(dataset.works.map((w) => [w.id, w.year]));
       let k = 0;
       const step = () => {
@@ -409,7 +423,13 @@ export function createGlobe(
         }
       };
       setTimeout(step, 300);
-    }
+    };
+  }
+
+  function provideEras(eras: TerritoryEras): void {
+    if (disposed || erasData !== null) return;
+    erasData = eras;
+    eraPaintKickoff?.(eras);
   }
 
   /** re-derive the year-dependent lookups (nation lifecycle, treaty alphas) */
@@ -441,7 +461,7 @@ export function createGlobe(
       // are painted) the base map is a blend of adjacent keyframes; the
       // terminal bracket blends toward the frozen v1 plate, so parking the
       // fader lands exactly on the atlas (clause 2, in-shader)
-      const eras = dataset.territoryEras;
+      const eras = erasData;
       if (engaged && eraPlatesReady && eras && terrainTexMid) {
         const years = eras.keyframes.map((kf) => kf.year);
         let k = 0;
@@ -685,6 +705,104 @@ export function createGlobe(
     return t * t * (3 - 2 * t);
   }
 
+  // Real-geography seal clustering (5th review P0-3): in geo mode, seals
+  // whose screen squares would collide collapse into the highest-priority
+  // seal plus a "+N" chip; members expand via the chip (list popover). The
+  // collision predicate is the same rectangle test the overlap metric
+  // counts, so clustered views keep overlapPairs near zero structurally.
+  // Semantic mode is untouched — the affinity layout spaces its own nations.
+  interface SealCluster {
+    repId: string;
+    members: string[];
+    x: number;
+    y: number;
+  }
+  let sealClusters: SealCluster[] = [];
+  let clusterHidden = new Set<string>();
+  const lastClusterCam = new THREE.Vector3(Infinity, 0, 0);
+
+  /** returns true when the cluster composition changed (seals need refresh) */
+  function computeSealClusters(force = false): boolean {
+    const s = store.getState();
+    const active = s.mode === "geo" && sealK > 0.02 && !transition;
+    if (!active) {
+      if (sealClusters.length === 0 && clusterHidden.size === 0) return false;
+      sealClusters = [];
+      clusterHidden = new Set();
+      lastClusterCam.setX(Infinity);
+      return true;
+    }
+    if (!force && camera.position.distanceTo(lastClusterCam) < 0.75) return false;
+    lastClusterCam.copy(camera.position);
+
+    const w = container.clientWidth;
+    const h = Math.max(1, container.clientHeight);
+    const halfFovTan = Math.tan((camera.fov * Math.PI) / 360);
+    const camDir = camera.position.clone().normalize();
+    const rankOf = { anchor: 0, major: 1, context: 2 } as const;
+    interface Cand {
+      id: string;
+      x: number;
+      y: number;
+      size: number;
+      rank: number;
+    }
+    const cands: Cand[] = [];
+    for (const a of authors) {
+      if (!nodeVisible(a)) continue;
+      const p = current.get(a.id);
+      if (!p) continue;
+      const facing = camDir.x * p[0] + camDir.y * p[1] + camDir.z * p[2];
+      if (facing < 0.05) continue;
+      tmpV.set(p[0] * (R + 2.6), p[1] * (R + 2.6), p[2] * (R + 2.6));
+      const d = camera.position.distanceTo(tmpV);
+      tmpV.project(camera);
+      if (tmpV.z > 1) continue;
+      cands.push({
+        id: a.id,
+        x: ((tmpV.x + 1) / 2) * w,
+        y: ((-tmpV.y + 1) / 2) * h,
+        size: (SEAL_SCALE[a.tier] * h) / (2 * d * halfFovTan),
+        // selection and hover must stay individually visible; then tier
+        rank:
+          a.id === s.selectedAuthorId ? -2 : a.id === s.hoveredAuthorId ? -1 : rankOf[a.tier]
+      });
+    }
+    cands.sort((a, b) => a.rank - b.rank || (a.id < b.id ? -1 : 1));
+    const reps: Cand[] = [];
+    const memberMap = new Map<string, string[]>();
+    const hidden = new Set<string>();
+    for (const c of cands) {
+      const hit = reps.find(
+        (r) =>
+          Math.abs(r.x - c.x) < (r.size + c.size) / 2 + 4 &&
+          Math.abs(r.y - c.y) < (r.size + c.size) / 2 + 4
+      );
+      if (hit) {
+        memberMap.get(hit.id)!.push(c.id);
+        hidden.add(c.id);
+      } else {
+        reps.push(c);
+        memberMap.set(c.id, [c.id]);
+      }
+    }
+    const next = reps
+      .filter((r) => memberMap.get(r.id)!.length > 1)
+      .map((r) => ({ repId: r.id, members: memberMap.get(r.id)!, x: r.x, y: r.y }));
+
+    const changed =
+      next.length !== sealClusters.length ||
+      hidden.size !== clusterHidden.size ||
+      next.some((c, i) => {
+        const old = sealClusters[i];
+        return !old || old.repId !== c.repId || old.members.length !== c.members.length;
+      }) ||
+      [...hidden].some((id) => !clusterHidden.has(id));
+    sealClusters = next;
+    clusterHidden = hidden;
+    return changed;
+  }
+
   // --- edges ----------------------------------------------------------------
   const edgeRoot = new THREE.Group();
   scene.add(edgeRoot);
@@ -832,10 +950,68 @@ export function createGlobe(
     phase: number;
     /** ms after build before this spark appears (incoming leads, outgoing follows) */
     delay: number;
+    /** the node this spark flows INTO (canonical target; reversed for the
+     * dialogue return spark) — arrival fires the receiver's pulse */
+    endId: string;
+    kind: "incoming" | "outgoing" | "dialogue";
+    color: THREE.Color;
+    prevT: number;
+    arrived: boolean;
   }
   let flowItems: FlowItem[] = [];
   let flowBuiltAt = 0;
   let flowPoints: THREE.Points | null = null;
+  // 도착 반응 (5th review P0-5): the first spark to reach each node fires one
+  // pulse there — dim → incoming → selected star answers → outgoing → each
+  // receiver answers once → steady. Loops after the first lap stay silent.
+  const pulseSeen = new Set<string>();
+  const pulsePool: Array<{
+    sprite: THREE.Sprite;
+    mat: THREE.SpriteMaterial;
+    start: number;
+  }> = [];
+  {
+    for (let i = 0; i < 12; i++) {
+      const mat = track(
+        new THREE.SpriteMaterial({
+          map: glowTexture,
+          transparent: true,
+          opacity: 0,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false
+        })
+      );
+      const sprite = new THREE.Sprite(mat);
+      sprite.visible = false;
+      sprite.renderOrder = 7;
+      scene.add(sprite);
+      pulsePool.push({ sprite, mat, start: -1 });
+    }
+  }
+  const PULSE_MS = 420;
+  function firePulse(pos: Vec3, color: THREE.Color, now: number): void {
+    const slot =
+      pulsePool.find((p) => p.start < 0) ??
+      pulsePool.reduce((a, b) => (a.start < b.start ? a : b));
+    slot.start = now;
+    slot.sprite.position.set(pos[0], pos[1], pos[2]);
+    slot.mat.color.copy(color);
+    slot.sprite.visible = true;
+  }
+  function updatePulses(now: number): void {
+    for (const p of pulsePool) {
+      if (p.start < 0) continue;
+      const k = (now - p.start) / PULSE_MS;
+      if (k >= 1) {
+        p.start = -1;
+        p.sprite.visible = false;
+        continue;
+      }
+      const size = 6 + 10 * k;
+      p.sprite.scale.set(size, size, 1);
+      p.mat.opacity = 0.55 * (1 - k) * (1 - k);
+    }
+  }
   const flowTexture = (() => {
     const c = document.createElement("canvas");
     c.width = c.height = 32;
@@ -864,6 +1040,7 @@ export function createGlobe(
 
   function buildFlows(rels: Relation[], positions: Map<string, Vec3>): void {
     clearFlows();
+    pulseSeen.clear();
     const sel = store.getState().selectedAuthorId;
     if (store.getState().reducedMotion || rels.length === 0) return;
     const items: FlowItem[] = [];
@@ -896,17 +1073,42 @@ export function createGlobe(
         if (incoming) incomingCount++;
         else outgoingCount++;
         for (const phase of [0, 0.5]) {
-          items.push({ pts, dur, phase, delay: incoming ? IN_DELAY : OUT_DELAY });
+          items.push({
+            pts,
+            dur,
+            phase,
+            delay: incoming ? IN_DELAY : OUT_DELAY,
+            endId: r.targetId,
+            kind: incoming ? "incoming" : "outgoing",
+            color,
+            prevT: -1,
+            arrived: false
+          });
           colors.push(color.r, color.g, color.b);
         }
       } else {
         // dialogue: one spark each way — the arriving direction leads
-        items.push({ pts, dur, phase: 0, delay: r.targetId === sel ? IN_DELAY : OUT_DELAY });
+        items.push({
+          pts,
+          dur,
+          phase: 0,
+          delay: r.targetId === sel ? IN_DELAY : OUT_DELAY,
+          endId: r.targetId,
+          kind: "dialogue",
+          color,
+          prevT: -1,
+          arrived: false
+        });
         items.push({
           pts: [...pts].reverse(),
           dur,
           phase: 0.5,
-          delay: r.sourceId === sel ? IN_DELAY : OUT_DELAY
+          delay: r.sourceId === sel ? IN_DELAY : OUT_DELAY,
+          endId: r.sourceId,
+          kind: "dialogue",
+          color,
+          prevT: -1,
+          arrived: false
         });
         colors.push(color.r, color.g, color.b, color.r, color.g, color.b);
       }
@@ -957,6 +1159,21 @@ export function createGlobe(
         continue;
       }
       const t = ((local / f.dur + f.phase) % 1 + 1) % 1;
+      // a wrap (t fell past 1 → 0) is an arrival at the receiving node; only
+      // the first arrival per node answers with a pulse, then the web is steady
+      if (f.prevT >= 0 && f.prevT > t + 0.5 && !f.arrived) {
+        f.arrived = true;
+        if (!pulseSeen.has(f.endId)) {
+          pulseSeen.add(f.endId);
+          firePulse(f.pts[f.pts.length - 1]!, f.color, now);
+          instr.log("flow-arrival", {
+            node: f.endId,
+            kind: f.kind,
+            order: pulseSeen.size
+          });
+        }
+      }
+      f.prevT = t;
       const x = t * (f.pts.length - 1);
       const i0 = Math.min(f.pts.length - 2, Math.floor(x));
       const k = x - i0;
@@ -975,6 +1192,11 @@ export function createGlobe(
   // --- per-frame state ------------------------------------------------------
   const labels = new LabelLayer(container);
   labels.onActivate = (id) => {
+    if (id.startsWith("cl:")) {
+      const cl = sealClusters.find((c) => c.repId === id.slice(3));
+      if (cl) cbs.onClusterPick([...cl.members], { x: cl.x, y: cl.y });
+      return;
+    }
     if (!id.startsWith("wk:")) return;
     const wk = dataset.works.find((x) => x.id === id.slice(3));
     if (wk) cbs.onWorkPick(wk);
@@ -1105,7 +1327,7 @@ export function createGlobe(
     for (const [id, sprite] of sealSprites) {
       const a = authors[indexOf.get(id) ?? -1];
       const p = current.get(id);
-      if (!a || !p || sealK < 0.02 || !nodeVisible(a)) {
+      if (!a || !p || sealK < 0.02 || !nodeVisible(a) || clusterHidden.has(id)) {
         sprite.visible = false;
         continue;
       }
@@ -1353,6 +1575,9 @@ export function createGlobe(
                 ? "dim"
                 : "normal";
       if (geoFar && (state === "normal" || state === "dim")) continue;
+      // clustered members speak through their cluster's chip, not their own
+      // label (selection/hover never cluster, by construction)
+      if (clusterHidden.has(a.id) && state !== "selected" && state !== "hovered") continue;
       let priority = labelPriority({
         tier: a.tier,
         isSelected: state === "selected",
@@ -1375,6 +1600,29 @@ export function createGlobe(
         x: ((tmpV.x + 1) / 2) * w,
         y: ((-tmpV.y + 1) / 2) * h + 7,
         state
+      });
+    }
+
+    // geo cluster chips: "+N" under the representative seal — the door to
+    // the member list (interactive, measured, budget-exempt via priority)
+    for (const cl of sealClusters) {
+      const rep = authors[indexOf.get(cl.repId) ?? -1];
+      if (!rep) continue;
+      items.push({
+        id: `cl:${cl.repId}`,
+        text: i18n.clusterMore(cl.members.length - 1, s.locale),
+        kind: "cluster",
+        size: "sm",
+        priority: 86,
+        x: cl.x,
+        y: cl.y + 24,
+        state: "normal",
+        interactive: true,
+        ariaLabel: i18n.clusterAria(
+          i18n.authorLabel(rep, s.locale),
+          cl.members.length,
+          s.locale
+        )
       });
     }
 
@@ -1548,9 +1796,11 @@ export function createGlobe(
         const treatyAlpha = entry ? treatyPresence(entry.treaty, s.year, s.yearMode) : 0;
         items.push({
           id: `mv:${m.id}`,
+          // ≈ marks the span as computed from member activity overlap, not a
+          // curated historical period (5th review P0-2; legend carries the key)
           text:
             entry && treatyAlpha > 0.05
-              ? `${i18n.movementLabel(m, s.locale)} · ${entry.treaty.start}–${entry.treaty.end}`
+              ? `${i18n.movementLabel(m, s.locale)} ≈ ${entry.treaty.start}–${entry.treaty.end}`
               : i18n.movementLabel(m, s.locale),
           kind: "movement",
           size: "lg",
@@ -1664,6 +1914,8 @@ export function createGlobe(
     const s = store.getState();
     if (s.hoveredAuthorId) cbs.onHover(null);
     if (s.hoveredRelationId) cbs.onRelationHover(null);
+    // leaving the canvas must also drop town-marker emphasis (5th review)
+    if (s.hoveredWorkId) cbs.onWorkHover(null);
   });
 
   // --- store subscription with field diffing --------------------------------
@@ -1696,14 +1948,20 @@ export function createGlobe(
       s.selectedWorkId !== prev.selectedWorkId;
     const modeChanged = s.mode !== prev.mode;
     const localeChanged = s.locale !== prev.locale;
+    // captured BEFORE prev is replaced — the old compare-after-assign made
+    // this branch dead code and hover emphasis never reached the markers
+    // (latent bug surfaced by the 5th-review pointerleave audit)
+    const workEmphasisChanged =
+      s.hoveredWorkId !== prev.hoveredWorkId || s.selectedWorkId !== prev.selectedWorkId;
+    const workHoverChanged = s.hoveredWorkId !== prev.hoveredWorkId;
     prev = s;
 
     // the picked line carries the only in-place type label — refresh it
     if (pickedChanged) updateLabels();
     // marker ↔ label emphasis stays in lockstep through the store
-    if (s.hoveredWorkId !== prev.hoveredWorkId || s.selectedWorkId !== prev.selectedWorkId) {
+    if (workEmphasisChanged) {
       cityMarkers.setEmphasis(s.hoveredWorkId, s.selectedWorkId);
-      if (s.hoveredWorkId !== prev.hoveredWorkId) updateLabels();
+      if (workHoverChanged) updateLabels();
     }
 
     if (localeChanged) updateLabels();
@@ -1749,6 +2007,7 @@ export function createGlobe(
     if (filtersChanged) refreshEraTextures();
     if (filtersChanged || selectionChanged) {
       recomputeVisibility();
+      computeSealClusters(true);
       updateNodeInstances();
       if (!transition) rebuildEdges();
       updateLabels();
@@ -1868,13 +2127,19 @@ export function createGlobe(
     rendererVisibleAuthors: visibleSet.size,
     rendererVisibleRelations: visRels.length,
     flowSparks: flowItems.length,
+    /** nodes that have answered an arriving spark with their one pulse */
+    flowArrivals: pulseSeen.size,
     // static direction encoding — must survive reduced-motion
     arrowInstances: arrowMesh ? arrowMesh.count : 0,
     labelsShown: labels.lastShown,
     labelsSuppressed: labels.lastSuppressed,
     labelsOverlapping: labels.lastOverlapping,
     labelsByKind: labels.lastShownByKind,
-    seals: sealScreenOverlap(),
+    seals: {
+      ...sealScreenOverlap(),
+      clusters: sealClusters.length,
+      clusteredMembers: clusterHidden.size
+    },
     lifecycle: (() => {
       const s = store.getState();
       const sel = s.selectedAuthorId ? authors[indexOf.get(s.selectedAuthorId) ?? -1] : undefined;
@@ -1939,7 +2204,10 @@ export function createGlobe(
       const newSealK = sealFade(camera.position.length());
       const sealChanged = Math.abs(newSealK - sealK) > 0.004;
       sealK = newSealK;
-      if (sealChanged && !transition) updateNodeInstances();
+      if (sealChanged && !transition) {
+        computeSealClusters(true);
+        updateNodeInstances();
+      }
     }
 
     if (transition) {
@@ -1968,7 +2236,9 @@ export function createGlobe(
         edgeRoot.visible = true;
         highlightRoot.visible = true;
         if (arrowMesh) arrowMesh.visible = true;
+        computeSealClusters(true);
         rebuildEdges();
+        updateNodeInstances();
         updateRelationHover();
         updateLabels();
         instr.log("mode-transition-end", { mode: s.mode });
@@ -1997,11 +2267,14 @@ export function createGlobe(
           terrainMat.uniforms.mapB!.value = want;
         }
       }
+      computeSealClusters(true);
       updateNodeInstances();
       if (!transition) rebuildEdges();
       updateLabels();
       syncCityMarkers();
     } else if (!camera.position.equals(lastCamPos)) {
+      // panning across geo reclusters the seals (throttled by camera delta)
+      if (computeSealClusters()) updateNodeInstances();
       updateLabels();
       updateRings();
     }
@@ -2015,6 +2288,7 @@ export function createGlobe(
     }
 
     updateFlows(now);
+    updatePulses(now);
     renderer.render(scene, camera);
   }
   rafId = requestAnimationFrame(frame);
@@ -2045,5 +2319,5 @@ export function createGlobe(
     renderer.domElement.remove();
   }
 
-  return { focusAuthor, resetCamera, zoomBy, dispose };
+  return { focusAuthor, resetCamera, zoomBy, provideEras, dispose };
 }

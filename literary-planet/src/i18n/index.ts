@@ -101,8 +101,20 @@ export interface UIStrings {
   legendCoord: (modeLabel: string) => string;
   legendTerrain: string;
   legendTerrainTitle: string;
+  legendEra: string;
+  legendEraTitle: string;
   legendUnion: string;
   legendOff: string;
+  /** geo cluster chip under the representative seal ("+4") */
+  clusterMore: (n: number) => string;
+  clusterAria: (name: string, n: number) => string;
+  clusterListAria: string;
+  /** sovereignty-state badge on the profile while the fader is engaged */
+  eraBadgeUnformed: string;
+  eraBadgeForming: string;
+  eraBadgeHeritage: string;
+  eraBadgeInactive: string;
+  eraBadgeTitle: string;
   workCardAria: string;
   workEntryBadge: string;
   workOrder: (n: number, total: number) => string;
@@ -245,11 +257,24 @@ const KO: UIStrings = {
   legendTitle: "범례",
   legendCoord: (modeLabel) => `좌표: ${modeLabel}`,
   legendTerrain:
-    "영토 면적 = 편집 위계(1차) · 전체 관계 밀도 ±30% 보정 — 높이 없음(평면 도판) · 도시 링 = 권장 읽기 순서(◆ 항구 = 입문작) — 방법론 참조",
+    "영토 면적(전체 시기 도판) = 편집 위계(1차) · 전체 관계 밀도 ±30% 보정 — 높이 없음(평면 도판) · 도시 링 = 권장 읽기 순서(◆ 항구 = 입문작) — 방법론 참조",
   legendTerrainTitle:
     "면적 공식: tierBase(anchor 2.4 · major 1.0 · context 0.55) × (1 + 0.3 × 정규화 관계 차수) — territory.v1 헤더가 정본. 하이트맵·릴리프 없음(아트 테제 §높이 금지).",
+  legendEra:
+    "연도 페이더 = 판구조(계산치): 1850–2000 사이 8개 키프레임을 지나며 면적·해안선이 자란다 — 건국 램프 + 그 연도까지의 수록 작품 출간 비중. 국가 상태: 미형성 유령 → 형성 → 활동 → 유산 파티나 · 도시는 출간년에 창건 · 전체 시기 = 동결 도판 그대로",
+  legendEraTitle:
+    "성장 공식: g = 0.06 + 0.94 × (0.5 × 건국 램프[활동 시작 ±5년] + 0.5 × 수록 작품 출간 비중) — territory.v1.eras.json params가 정본. '수록 작품'은 선별 대표작 기준(전작 아님) — 측정이 아니라 편집적 애니메이션.",
   legendUnion:
-    "사조 = 연합(조약) — 가맹 영토 안쪽 세선, 중경에서 표시. 연도 페이더를 움직이면 조약이 뜨고 진다. 땅의 소유자는 언제나 작가.",
+    "사조 = 연합(조약) — 가맹 영토 안쪽 세선, 중경에서 표시. ≈ 기간은 코퍼스 수록 가맹 작가들의 활동 중첩에서 계산한 값(역사적 존속 기간 아님). 땅의 소유자는 언제나 작가.",
+  clusterMore: (n) => `+${n}`,
+  clusterAria: (name, n) => `${name} 부근의 작가 ${n}명 목록 열기`,
+  clusterListAria: "이 지점의 작가들",
+  eraBadgeUnformed: "이 연도에는 미형성",
+  eraBadgeForming: "이 연도에는 형성 중",
+  eraBadgeHeritage: "이 연도에는 유산",
+  eraBadgeInactive: "이 연도에는 활동 밖",
+  eraBadgeTitle:
+    "연도 페이더 기준의 주권 상태입니다. 선택은 유지됩니다 — 전체 시기로 돌리면 사라집니다.",
   legendOff: "탐색·필터에서 꺼진 유형",
   workCardAria: "작품 카드",
   workEntryBadge: "입문작 — 여기서 시작",
@@ -400,11 +425,24 @@ const EN: UIStrings = {
   legendTitle: "Legend",
   legendCoord: (modeLabel) => `Coordinates: ${modeLabel}`,
   legendTerrain:
-    "Territory area = editorial tier (primary) · ±30% all-relation-density modulation — no elevation (flat plate) · town ring = curated reading order (◆ harbor = entry work) — see Methodology",
+    "Territory area (all-years plate) = editorial tier (primary) · ±30% all-relation-density modulation — no elevation (flat plate) · town ring = curated reading order (◆ harbor = entry work) — see Methodology",
   legendTerrainTitle:
     "Area formula: tierBase(anchor 2.4 · major 1.0 · context 0.55) × (1 + 0.3 × normalized relation degree) — territory.v1 header is authoritative. No heightmap or relief (art thesis: height ban).",
+  legendEra:
+    "Year fader = tectonics (computed): area and coastline grow through 8 keyframes, 1850–2000 — founding ramp + the share of collected works published by that year. Nation states: unformed ghost → founding → active → heritage patina · towns founded at publication · all years = the frozen plate untouched",
+  legendEraTitle:
+    "Growth formula: g = 0.06 + 0.94 × (0.5 × founding ramp [active start ±5y] + 0.5 × collected-works share) — territory.v1.eras.json params are authoritative. 'Collected works' = the curated corpus, not a bibliography — an editorial animation, not a measurement.",
   legendUnion:
-    "Movements = unions (treaties) — thin lines inside member coastlines, shown at mid zoom. Scrub the year fader and treaties rise and dissolve. The land always belongs to the writer.",
+    "Movements = unions (treaties) — thin lines inside member coastlines, shown at mid zoom. The ≈ span is computed from member writers' active-range overlap in this corpus (not a historical period). The land always belongs to the writer.",
+  clusterMore: (n) => `+${n}`,
+  clusterAria: (name, n) => `Open the list of ${n} writers near ${name}`,
+  clusterListAria: "Writers at this point",
+  eraBadgeUnformed: "Unformed in this year",
+  eraBadgeForming: "Founding in this year",
+  eraBadgeHeritage: "Heritage in this year",
+  eraBadgeInactive: "Outside active years",
+  eraBadgeTitle:
+    "Sovereignty state at the year fader's position. The selection is kept — return to all years and this disappears.",
   legendOff: "Switched off in Explore/Filter",
   workCardAria: "Work card",
   workEntryBadge: "Entry work — start here",
