@@ -53,5 +53,38 @@
     "licenseBasis": "Photographer H.-P. Haack self-published under CC BY 3.0 (own photo of a physical PD-era book object; the photo itself, not the 1915 text, carries this license)",
     "pixelSize": "920x1480",
     "notes": "This is the plain cardboard-bound trade issue (spine title + publisher device on front board), not the Ottomar Starke illustrated dust-jacket edition -- no PD/CC-licensed image of the Starke wrapper illustration was found on Commons; candidates only existed on Pinterest/rare-book dealer sites, which are excluded per the brief. Attribution required: 'H.-P. Haack, CC BY 3.0, via Wikimedia Commons.'"
+  },
+  {
+    "file": "kafka-der-prozess-1925-firstedition-cover.jpg",
+    "title": "Der Prozess, 1st edition, original cloth binding (Verlag Die Schmiede, Berlin, 1925, 411 pages -- Wilpert/Guhring 8; Raabe 8)",
+    "sourceCollection": "Antiquariat Dr. Haack Leipzig -> private collection (photographed by H.-P. Haack)",
+    "filePageUrl": "https://commons.wikimedia.org/wiki/File:Kafka_Der_Prozess_1925.jpg",
+    "originalFileUrl": "https://upload.wikimedia.org/wikipedia/commons/8/87/Kafka_Der_Prozess_1925.jpg",
+    "licenseTag": "CC-PD-Mark / PD-old-70-expired (Commons categories); file page license template = pd",
+    "licenseBasis": "Commons file page carries the 'pd' license template with UsageTerms=Public domain and AttributionRequired=false; categorized PD-old-70-expired and CC-PD-Mark. This is a photograph of the plain cloth original binding (spine label + front-board title label) of the first edition.",
+    "pixelSize": "1132x1577",
+    "notes": "Same photographer/dealer (H.-P. Haack, Antiquariat Dr. Haack Leipzig) as the existing Die Verwandlung cover already in this folder, but this file's own Commons metadata marks it public domain (not CC-BY, unlike the Verwandlung photo and the Strafkolonie photo below) -- verified directly via Commons API extmetadata, not assumed from the pattern."
+  },
+  {
+    "file": "kafka-das-schloss-1926-firstedition-cover.jpg",
+    "title": "Das Schloss, 1st edition, original paperback wrapper (Kurt Wolff Verlag, Munich, 1926, 502 pages -- Wilpert/Guhring 9; Raabe 9)",
+    "sourceCollection": "Antiquariat Dr. Haack Leipzig -> private collection, Switzerland (photographed by H.-P. Haack)",
+    "filePageUrl": "https://commons.wikimedia.org/wiki/File:Kafka_Das_Schloss_1926.jpg",
+    "originalFileUrl": "https://upload.wikimedia.org/wikipedia/commons/7/71/Kafka_Das_Schloss_1926.jpg",
+    "licenseTag": "PD-text",
+    "licenseBasis": "Commons file page rationale (verified via API extmetadata Permission field): the depicted cover is plain typographic text below the threshold of originality ('not a literary work or other protected type'), so it is public domain regardless of the photographer's rights in the photo itself. License template = pd; UsageTerms=Public domain; AttributionRequired=false.",
+    "pixelSize": "1166x1580",
+    "notes": "Original paperback wrapper of the first edition (title + publisher device only, no illustration) -- matches the brief's request for the 1926 Kurt Wolff first-edition cover/title page."
+  },
+  {
+    "file": "kafka-in-der-strafkolonie-1919-firstedition-titlepage.jpg",
+    "title": "In der Strafkolonie, title page of the first printing (Kurt Wolff Verlag, Leipzig, October 1919)",
+    "sourceCollection": "Antiquariat Dr. Haack Leipzig (photographed by H.-P. Haack)",
+    "filePageUrl": "https://commons.wikimedia.org/wiki/File:Kafka_Strafkolonie_(1919).jpg",
+    "originalFileUrl": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Kafka_Strafkolonie_%281919%29.jpg",
+    "licenseTag": "CC-BY-3.0",
+    "licenseBasis": "Photographer H.-P. Haack self-published under CC BY 3.0 (verified via Commons API extmetadata: LicenseShortName=CC BY 3.0, AttributionRequired=true, LicenseUrl=creativecommons.org/licenses/by/3.0). The photo, not the 1919 text, carries this license.",
+    "pixelSize": "1055x1532",
+    "notes": "This is the title page (Titelblatt) of the first printing, not a bound-cover photo -- Commons file description explicitly labels it 'Titelblatt des Erstdruckes'. Attribution required: 'H.-P. Haack, CC BY 3.0, via Wikimedia Commons.' A separate higher-resolution 68-page PDF scan (File:Kafka In der Strafkolonie (1919).pdf, 2083x3037, 23.2 MB) also exists on Commons but was not used here -- a full-book PDF is out of scope for a single title-page/cover art asset; flagged in case the art pass wants a higher-res crop from that PDF instead."
   }
 ]
