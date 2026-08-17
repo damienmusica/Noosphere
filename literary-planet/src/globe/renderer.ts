@@ -1304,6 +1304,7 @@ export function createGlobe(
     // exactly, so completion-before-reuse holds by construction
     allocPulsePool(new Set(items.map((f) => f.endId)).size);
     if (items.length === 0) return;
+    flowStoryBuilds++;
     const geom = new THREE.BufferGeometry();
     geom.setAttribute("position", new THREE.Float32BufferAttribute(items.length * 3, 3));
     geom.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
@@ -1451,6 +1452,10 @@ export function createGlobe(
   let visibleSet = new Set<string>();
   let visRels: Relation[] = [];
   let lod: LodLevel = lodLevel(camera.position.length());
+  // interaction-feel counters (7th review PR0): story restarts and LOD thrash
+  // are failures the frame-time ring cannot see — count them where they happen
+  let lodTransitions = 0;
+  let flowStoryBuilds = 0;
   let neighborIds = new Set<string>();
   let transition: { from: Map<string, Vec3>; start: number; dur: number } | null = null;
   let paletteFrom = 0;
@@ -2174,6 +2179,7 @@ export function createGlobe(
     moveTooltip(e.clientX, e.clientY);
     if (hoverPending) return;
     hoverPending = true;
+    const evT = e.timeStamp; // same clock as performance.now()
     requestAnimationFrame(() => {
       hoverPending = false;
       if (disposed) return;
@@ -2183,9 +2189,17 @@ export function createGlobe(
       const cw = id ? null : pickCity();
       const rel = id || cw ? null : pickRelation();
       renderer.domElement.style.cursor = id || cw || rel ? "pointer" : "grab";
+      const changed =
+        id !== s.hoveredAuthorId ||
+        (cw?.id ?? null) !== s.hoveredWorkId ||
+        (rel?.id ?? null) !== s.hoveredRelationId;
       if (id !== s.hoveredAuthorId) cbs.onHover(id);
       if ((cw?.id ?? null) !== s.hoveredWorkId) cbs.onWorkHover(cw);
       if ((rel?.id ?? null) !== s.hoveredRelationId) cbs.onRelationHover(rel);
+      // pointer event → hover state applied (store writes above run the
+      // renderer's subscription synchronously, so this is the apply time; the
+      // paint follows inside this same rAF turn)
+      if (changed) instr.latency("hover", performance.now() - evT);
     });
   }
 
@@ -2443,6 +2457,7 @@ export function createGlobe(
     lod,
     modeTransition: transition !== null,
     cameraAnimating: camAnim !== null,
+    interaction: { lodTransitions, flowStoryBuilds },
     rendererVisibleAuthors: visibleSet.size,
     rendererVisibleRelations: visRels.length,
     relationView: lastRelationView
@@ -2593,6 +2608,7 @@ export function createGlobe(
     if (newLod !== lod) {
       const wasNear = lod === "near";
       lod = newLod;
+      lodTransitions++;
       // PR2: the 8192px reading plate paints in the worker on first near
       // entry (mid serves until it lands); long absence releases it
       if (lod === "near") temporal?.ensureNearPlate(nearPlateCell);
