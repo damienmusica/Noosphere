@@ -215,7 +215,12 @@ export function createGlobe(
       return tex;
     };
     terrainTexMid = makeTex(2);
-    terrainTexNear = makeTex(4, true); // cities live at reading distance only
+    // reading-distance plate: as dense as the GPU allows (CPO report: the
+    // near view upscaled a 4096px bake ~3× and read blurry). grid 1024 →
+    // cell 6 = 6144px wide; small screens and small GPUs stay at 4096.
+    const nearCell =
+      !smallScreen && renderer.capabilities.maxTextureSize >= 8192 ? 6 : 4;
+    terrainTexNear = makeTex(nearCell, true); // cities live at reading distance only
     terrainMat = track(
       new THREE.MeshBasicMaterial({
         map: terrainTexMid,
@@ -1495,6 +1500,39 @@ export function createGlobe(
   let rafId = 0;
   let lastCamPos = camera.position.clone();
 
+  // screen-space seal overlap: DOM-label metrics alone let a visually
+  // collapsed geo view report "overlap 0" (4th review) — this measures what
+  // the eye actually sees. Sprites are projected to screen squares; pairs
+  // that intersect are counted. Only runs when the probe is polled.
+  function sealScreenOverlap(): { visible: number; overlapPairs: number } {
+    const w = container.clientWidth;
+    const h = Math.max(1, container.clientHeight);
+    const halfFovTan = Math.tan((camera.fov * Math.PI) / 360);
+    const rects: Array<{ x0: number; x1: number; y0: number; y1: number }> = [];
+    for (const [, sprite] of sealSprites) {
+      if (!sprite.visible) continue;
+      const mat = sprite.material as THREE.SpriteMaterial;
+      if (mat.opacity < 0.05) continue;
+      const d = camera.position.distanceTo(sprite.position);
+      if (d <= 0) continue;
+      tmpV.copy(sprite.position).project(camera);
+      if (tmpV.z > 1 || tmpV.x < -1.2 || tmpV.x > 1.2 || tmpV.y < -1.2 || tmpV.y > 1.2) continue;
+      const px = ((tmpV.x + 1) / 2) * w;
+      const py = ((-tmpV.y + 1) / 2) * h;
+      const sizePx = (sprite.scale.x * h) / (2 * d * halfFovTan);
+      rects.push({ x0: px - sizePx / 2, x1: px + sizePx / 2, y0: py - sizePx / 2, y1: py + sizePx / 2 });
+    }
+    let pairs = 0;
+    for (let i = 0; i < rects.length; i++) {
+      for (let j = i + 1; j < rects.length; j++) {
+        const a = rects[i]!;
+        const b = rects[j]!;
+        if (a.x0 < b.x1 && a.x1 > b.x0 && a.y0 < b.y1 && a.y1 > b.y0) pairs++;
+      }
+    }
+    return { visible: rects.length, overlapPairs: pairs };
+  }
+
   // live renderer numbers for the debug overlay / QA metrics — every value is
   // read from what this frame actually holds, nothing is estimated
   const probe = () => ({
@@ -1518,7 +1556,8 @@ export function createGlobe(
     labelsShown: labels.lastShown,
     labelsSuppressed: labels.lastSuppressed,
     labelsOverlapping: labels.lastOverlapping,
-    labelsByKind: labels.lastShownByKind
+    labelsByKind: labels.lastShownByKind,
+    seals: sealScreenOverlap()
   });
   instr.registerRenderer(probe);
 
@@ -1526,6 +1565,12 @@ export function createGlobe(
     if (disposed) return;
     rafId = requestAnimationFrame(frame);
     instr.frameTick(now);
+
+    // zoom-proportional input: a fixed angular speed hurls the map at
+    // reading distance (CPO report) — scale by height above the surface
+    controls.rotateSpeed =
+      0.55 *
+      Math.min(1, Math.max(0.15, (camera.position.length() - R) / (CAMERA_DEFAULT - R)));
 
     if (camAnim) {
       const t = camAnim.dur === 0 ? 1 : Math.min(1, (now - camAnim.start) / camAnim.dur);

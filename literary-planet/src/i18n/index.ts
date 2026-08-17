@@ -100,6 +100,7 @@ export interface UIStrings {
   legendTitle: string;
   legendCoord: (modeLabel: string) => string;
   legendTerrain: string;
+  legendTerrainTitle: string;
   legendOff: string;
   workCardAria: string;
   workEntryBadge: string;
@@ -243,7 +244,9 @@ const KO: UIStrings = {
   legendTitle: "범례",
   legendCoord: (modeLabel) => `좌표: ${modeLabel}`,
   legendTerrain:
-    "영토 크기·높이 = 기록된 영향 연결의 규모 · 도시 링 크기 = 권장 읽기 순서(◆ 항구 = 입문작) — 방법론 참조",
+    "영토 면적 = 편집 위계(1차) · 전체 관계 밀도 ±30% 보정 — 높이 없음(평면 도판) · 도시 링 = 권장 읽기 순서(◆ 항구 = 입문작) — 방법론 참조",
+  legendTerrainTitle:
+    "면적 공식: tierBase(anchor 2.4 · major 1.0 · context 0.55) × (1 + 0.3 × 정규화 관계 차수) — territory.v1 헤더가 정본. 하이트맵·릴리프 없음(아트 테제 §높이 금지).",
   legendOff: "탐색·필터에서 꺼진 유형",
   workCardAria: "작품 카드",
   workEntryBadge: "입문작 — 여기서 시작",
@@ -394,7 +397,9 @@ const EN: UIStrings = {
   legendTitle: "Legend",
   legendCoord: (modeLabel) => `Coordinates: ${modeLabel}`,
   legendTerrain:
-    "Territory size and height = volume of documented influence links · town ring size = curated reading order (◆ harbor = entry work) — see Methodology",
+    "Territory area = editorial tier (primary) · ±30% all-relation-density modulation — no elevation (flat plate) · town ring = curated reading order (◆ harbor = entry work) — see Methodology",
+  legendTerrainTitle:
+    "Area formula: tierBase(anchor 2.4 · major 1.0 · context 0.55) × (1 + 0.3 × normalized relation degree) — territory.v1 header is authoritative. No heightmap or relief (art thesis: height ban).",
   legendOff: "Switched off in Explore/Filter",
   workCardAria: "Work card",
   workEntryBadge: "Entry work — start here",
