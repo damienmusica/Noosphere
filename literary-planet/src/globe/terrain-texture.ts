@@ -65,7 +65,10 @@ export function paintTerrainTexture(
   cell = 2,
   withCities = false,
   /** curated reading-order index per work (0 = entry); sizes the town rings */
-  rankOf?: (workId: string) => number | undefined
+  rankOf?: (workId: string) => number | undefined,
+  /** clause 4 (v2.5): towns are founded at publication — era plates pass a
+   * year filter; omitted = every town exists (the full atlas) */
+  townVisible?: (workId: string) => boolean
 ): HTMLCanvasElement {
   const g = territory.geometry;
   const texW = g.gridWidth * cell;
@@ -168,8 +171,12 @@ export function paintTerrainTexture(
   // entry at the harbor, the reading order as a dotted route
   if (withCities) {
     for (const c of Object.values(g.cities)) {
+      // the reading route is drawn once its curated towns all exist
+      const roadReady = c.towns.every(
+        (t) => rankOf?.(t.id) === undefined || townVisible === undefined || townVisible(t.id)
+      );
       // road first, beneath its towns
-      if (c.road.length >= 4) {
+      if (roadReady && c.road.length >= 4) {
         const road = new Path2D();
         const un = unwrapFlatX(c.road, g.gridWidth);
         for (const shift of [-texW, 0, texW]) {
@@ -186,6 +193,7 @@ export function paintTerrainTexture(
         ctx.setLineDash([]);
       }
       for (const town of c.towns) {
+        if (townVisible && !townVisible(town.id)) continue; // not yet founded
         const isPort = c.portWork === town.id;
         for (const shift of [-texW, 0, texW]) {
           const x = town.x * cell + shift;

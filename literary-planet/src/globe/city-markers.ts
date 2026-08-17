@@ -39,7 +39,9 @@ export class CityMarkers {
     authorId: string | null,
     geometry: TerritoryGeometry | undefined,
     rankOf: (workId: string) => number | undefined,
-    worksById: Map<string, Work>
+    worksById: Map<string, Work>,
+    /** clause 4 (v2.5): towns are founded at publication */
+    townVisible: (workId: string) => boolean = () => true
   ): void {
     this.clear();
     if (!authorId || !geometry) return;
@@ -48,6 +50,7 @@ export class CityMarkers {
 
     for (const town of cities.towns) {
       if (!worksById.has(town.id)) continue;
+      if (!townVisible(town.id)) continue;
       const p = gridToVec3(town.x, town.y, geometry.gridWidth, geometry.gridHeight);
       const rank = rankOf(town.id);
       this.cities.push({

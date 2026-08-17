@@ -6,7 +6,7 @@ import { RELATION_DEFS } from "../types.ts";
 import { COLORS, GEO_COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS, UNION_COLORS } from "../theme.ts";
 import { arcPoints, slerp, type Vec3 } from "../lib/sphere.ts";
 import { sealGlyph } from "../lib/seal.ts";
-import { visibleAuthorIds, visibleRelations } from "../lib/filter.ts";
+import { TIMELINE_MAX, visibleAuthorIds, visibleRelations } from "../lib/filter.ts";
 import { instr } from "../lib/instrument.ts";
 import {
   LIFE_TEX_WIDTH,
@@ -212,6 +212,13 @@ export function createGlobe(
   let terrainMesh: THREE.Mesh | null = null;
   const readingRank = new Map<string, number>();
   for (const a of authors) a.readingOrder.forEach((wid, i) => readingRank.set(wid, i));
+  // v2.5 tectonic plates: one texture per keyframe, painted lazily off the
+  // critical path; the shader blends the active bracket pair
+  const eraPlates: THREE.CanvasTexture[] = [];
+  let eraPlatesReady = false;
+  let eraActive = false;
+  let eraBracket: [number, number] | null = null;
+  let eraMixNow = 0;
   let lifeTexture: THREE.DataTexture | null = null;
   let unionInfoTexture: THREE.DataTexture | null = null;
   let movementTreaties: Array<{ movement: Movement; treaty: Treaty } | null> = [];
@@ -291,6 +298,8 @@ export function createGlobe(
         depthWrite: false,
         uniforms: {
           map: { value: terrainTexMid },
+          mapB: { value: terrainTexMid },
+          uEraMix: { value: 0 },
           ownerTex: { value: ownerTexture },
           lifeTex: { value: lifeTexture },
           unionTex: { value: unionTexture },
@@ -307,6 +316,8 @@ export function createGlobe(
           }`,
         fragmentShader: /* glsl */ `
           uniform sampler2D map;
+          uniform sampler2D mapB;
+          uniform float uEraMix;
           uniform sampler2D ownerTex;
           uniform sampler2D lifeTex;
           uniform sampler2D unionTex;
@@ -316,9 +327,13 @@ export function createGlobe(
           uniform float uUnion;
           varying vec2 vUv;
           void main() {
-            vec4 base = texture2D(map, vUv);
+            // v2.5: the plate itself is a blend of the tectonic bracket —
+            // coastlines grow between keyframes
+            vec4 base = mix(texture2D(map, vUv), texture2D(mapB, vUv), uEraMix);
             vec3 col = base.rgb;
             float alpha = base.a;
+            // treaty ink may only mark land that currently exists
+            float landNow = smoothstep(0.02, 0.14, base.a);
 
             float oid = texture2D(ownerTex, vUv).r * 255.0;
             if (uLifecycleOn > 0.5 && oid < 254.5) {
@@ -334,8 +349,9 @@ export function createGlobe(
             if (uUnion > 0.01 && uni.a > 0.02) {
               float mi = uni.r * 255.0;
               vec4 info = texture2D(unionInfoTex, vec2((mi + 0.5) / ${UNION_INFO_WIDTH}.0, 0.5));
-              col = mix(col, info.rgb, uni.a * info.a * uUnion * 0.85);
-              alpha = max(alpha, uni.a * info.a * uUnion * 0.6);
+              float ink = uni.a * info.a * uUnion * landNow;
+              col = mix(col, info.rgb, ink * 0.85);
+              alpha = max(alpha, ink * 0.6);
             }
 
             gl_FragColor = vec4(col, alpha * uOpacity);
@@ -351,6 +367,49 @@ export function createGlobe(
     terrainMesh.renderOrder = -1;
     terrainMesh.visible = false;
     scene.add(terrainMesh);
+
+    // paint the tectonic keyframes one per tick, never blocking first paint;
+    // towns are founded at publication (clause 4) inside each era plate
+    if (dataset.territoryEras) {
+      const eras = dataset.territoryEras;
+      const workYear = new Map(dataset.works.map((w) => [w.id, w.year]));
+      let k = 0;
+      const step = () => {
+        if (disposed) return;
+        const kf = eras.keyframes[k]!;
+        const eraTerritory = {
+          ...dataset.territory!,
+          geometry: {
+            ...geom,
+            ownerRle: kf.ownerRle,
+            coast: kf.coast,
+            boundaries: [] as number[][]
+          }
+        };
+        const tex = track(
+          new THREE.CanvasTexture(
+            paintTerrainTexture(
+              eraTerritory,
+              periodOf,
+              2,
+              true,
+              (wid) => readingRank.get(wid),
+              (wid) => (workYear.get(wid) ?? 0) <= kf.year
+            )
+          )
+        );
+        tex.colorSpace = THREE.SRGBColorSpace;
+        tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+        eraPlates.push(tex);
+        k++;
+        if (k < eras.keyframes.length) setTimeout(step, 40);
+        else {
+          eraPlatesReady = true;
+          refreshEraTextures();
+        }
+      };
+      setTimeout(step, 300);
+    }
   }
 
   /** re-derive the year-dependent lookups (nation lifecycle, treaty alphas) */
@@ -375,7 +434,49 @@ export function createGlobe(
       unionInfoTexture.needsUpdate = true;
     }
     if (terrainMat) {
-      terrainMat.uniforms.uLifecycleOn!.value = lifecycleEngaged(s.year, s.yearMode) ? 1 : 0;
+      const engaged = lifecycleEngaged(s.year, s.yearMode);
+      terrainMat.uniforms.uLifecycleOn!.value = engaged ? 1 : 0;
+
+      // v2.5 tectonic bracket: while the fader is engaged (and the plates
+      // are painted) the base map is a blend of adjacent keyframes; the
+      // terminal bracket blends toward the frozen v1 plate, so parking the
+      // fader lands exactly on the atlas (clause 2, in-shader)
+      const eras = dataset.territoryEras;
+      if (engaged && eraPlatesReady && eras && terrainTexMid) {
+        const years = eras.keyframes.map((kf) => kf.year);
+        let k = 0;
+        while (k + 1 < years.length && years[k + 1]! <= s.year) k++;
+        let texA = eraPlates[k]!;
+        let texB: THREE.Texture = eraPlates[k]!;
+        let y0 = years[k]!;
+        let y1 = y0;
+        if (s.year <= years[0]!) {
+          texA = texB = eraPlates[0]!;
+          y0 = y1 = years[0]!;
+        } else if (k === years.length - 1) {
+          texB = terrainTexMid;
+          y1 = TIMELINE_MAX;
+        } else {
+          texB = eraPlates[k + 1]!;
+          y1 = years[k + 1]!;
+        }
+        eraMixNow = y1 === y0 ? 0 : Math.min(1, Math.max(0, (s.year - y0) / (y1 - y0)));
+        eraBracket = [y0, y1];
+        eraActive = true;
+        terrainMat.uniforms.map!.value = texA;
+        terrainMat.uniforms.mapB!.value = texB;
+        terrainMat.uniforms.uEraMix!.value = eraMixNow;
+      } else {
+        eraActive = false;
+        eraBracket = null;
+        eraMixNow = 0;
+        terrainMat.uniforms.uEraMix!.value = 0;
+        const want = lod === "near" ? (terrainTexNear ?? terrainTexMid) : terrainTexMid;
+        if (want) {
+          terrainMat.uniforms.map!.value = want;
+          terrainMat.uniforms.mapB!.value = want;
+        }
+      }
     }
   }
   // full planetary map through mid LOD, receding to faint continents far out
@@ -894,15 +995,19 @@ export function createGlobe(
       lod === "near" &&
       s.mode === "semantic" &&
       dataset.territory !== undefined;
-    if (show && s.selectedAuthorId !== cityMarkersFor) {
+    // clause 4: markers follow city founding while the fader is engaged
+    const engaged = lifecycleEngaged(s.year, s.yearMode);
+    const buildKey = show ? `${s.selectedAuthorId}|${engaged ? s.year : "atlas"}` : null;
+    if (buildKey !== null && buildKey !== cityMarkersFor) {
       cityMarkers.build(
         s.selectedAuthorId,
         dataset.territory?.geometry,
         (wid) => readingRank.get(wid),
-        worksById
+        worksById,
+        (wid) => !engaged || (worksById.get(wid)?.year ?? 0) <= s.year
       );
-      cityMarkersFor = s.selectedAuthorId;
-    } else if (!s.selectedAuthorId && cityMarkersFor !== null) {
+      cityMarkersFor = buildKey;
+    } else if (!show && cityMarkersFor !== null) {
       cityMarkers.build(null, undefined, () => undefined, worksById);
       cityMarkersFor = null;
     }
@@ -1345,6 +1450,8 @@ export function createGlobe(
         for (const town of cities.towns) {
           const wk = worksById.get(town.id);
           if (!wk) continue;
+          // clause 4: a town exists only after its work is published
+          if (lifecycleEngaged(s.year, s.yearMode) && wk.year > s.year) continue;
           const p = gridToVec3(town.x, town.y, g.gridWidth, g.gridHeight);
           const facing = camDir.x * p[0] + camDir.y * p[1] + camDir.z * p[2];
           if (facing < 0.25) continue;
@@ -1782,6 +1889,12 @@ export function createGlobe(
     unionOverlay: terrainMat
       ? Math.round((terrainMat.uniforms.uUnion!.value as number) * 100) / 100
       : 0,
+    era: {
+      platesReady: eraPlatesReady,
+      active: eraActive,
+      bracket: eraBracket,
+      mix: Math.round(eraMixNow * 1000) / 1000
+    },
     cityMarkers: (() => {
       // page coordinates (not container-relative) so the QA harness can
       // click the marker's true screen position
@@ -1875,10 +1988,13 @@ export function createGlobe(
     const newLod = lodLevel(camera.position.length());
     if (newLod !== lod) {
       lod = newLod;
-      if (terrainMat && terrainTexMid && terrainTexNear) {
+      if (terrainMat && terrainTexMid && terrainTexNear && !eraActive) {
+        // near/mid plate swap belongs to the atlas view; while the tectonic
+        // bracket is active the era plates serve every LOD
         const want = lod === "near" ? terrainTexNear : terrainTexMid;
         if (terrainMat.uniforms.map!.value !== want) {
           terrainMat.uniforms.map!.value = want;
+          terrainMat.uniforms.mapB!.value = want;
         }
       }
       updateNodeInstances();
