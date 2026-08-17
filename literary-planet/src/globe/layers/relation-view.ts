@@ -9,7 +9,11 @@
 //   selection (any mode)   → ego only, ≤20 by evidence level then weight,
 //                            hidden count reported (never silently dropped)
 //   "show all"             → the full ego set
-//   semantic, no selection → the raw milky way stays (its layout spaces it)
+//   semantic far, no sel   → the raw milky way stays (its layout spaces it)
+//   semantic mid+, no sel  → 0 raw; ≤24 constellation-pair routes (7th
+//                            review §5: interpretability beats the tangle —
+//                            the milky way is a FAR reading; close up, 229
+//                            raw arcs said nothing)
 //
 // Aggregates are NAVIGATION, not new historical claims: the count of corpus
 // relations between two groups, undirected, legend-registered as computed.
@@ -31,7 +35,13 @@ export interface RelationView {
   /** ego relations hidden by the cap — 0 unless a selection overflows */
   hiddenCount: number;
   aggregates: AggregateRoute[];
-  reason: "semantic-overview" | "geo-aggregate" | "geo-quiet" | "ego" | "ego-expanded";
+  reason:
+    | "semantic-overview"
+    | "semantic-aggregate"
+    | "geo-aggregate"
+    | "geo-quiet"
+    | "ego"
+    | "ego-expanded";
 }
 
 const EGO_CAP = 20;
@@ -93,6 +103,8 @@ export function resolveRelationView(opts: {
   /** far grouping: region id; mid grouping: screen-cluster rep id */
   regionOf: (authorId: string) => string | undefined;
   clusterGroupOf: (authorId: string) => string | undefined;
+  /** semantic mid grouping: the author's constellation (primary movement) */
+  movementOf: (authorId: string) => string | undefined;
 }): RelationView {
   const { selectedAuthorId: sel } = opts;
   if (sel) {
@@ -113,7 +125,26 @@ export function resolveRelationView(opts: {
     };
   }
   if (opts.mode === "semantic") {
-    return { raw: opts.visibleRelations, hiddenCount: 0, aggregates: [], reason: "semantic-overview" };
+    if (opts.lod === "far") {
+      return {
+        raw: opts.visibleRelations,
+        hiddenCount: 0,
+        aggregates: [],
+        reason: "semantic-overview"
+      };
+    }
+    // mid and closer: constellation-pair routes; individual arcs belong to
+    // hover and selection intent (7th review — D5 amendment)
+    return {
+      raw: [],
+      hiddenCount: 0,
+      aggregates: aggregate(
+        opts.visibleRelations,
+        (id) => opts.movementOf(id) ?? opts.regionOf(id),
+        MID_ROUTE_CAP
+      ),
+      reason: "semantic-aggregate"
+    };
   }
   if (opts.lod === "far") {
     return {

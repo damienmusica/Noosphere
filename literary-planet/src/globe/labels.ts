@@ -47,7 +47,9 @@ function estimateWidth(text: string, fontSize: number): number {
 
 // keep in lockstep with .globe-label--{lg,md,sm} in styles.css — the greedy
 // pass estimates collision boxes from these (5th review typography scale-up)
-const FONT_SIZE: Record<LabelItem["size"], number> = { lg: 16, md: 14, sm: 12 };
+// sm raised to the 13px map-text floor (7th review PR3) — width estimates
+// must match the CSS or the greedy layout misjudges collisions
+const FONT_SIZE: Record<LabelItem["size"], number> = { lg: 16, md: 14, sm: 13 };
 
 export class LabelLayer {
   private root: HTMLDivElement;

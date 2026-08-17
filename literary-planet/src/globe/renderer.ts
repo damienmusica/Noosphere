@@ -106,7 +106,10 @@ interface ModePalette {
   atmoOp: number;
 }
 const SEM_PAL: ModePalette = {
-  surface: new THREE.Color(COLORS.surface),
+  // L1 of the five-value ladder: the sea must sit above the page ground
+  // (applyPalette overwrites the material color every mode-fade frame, so
+  // the ladder value must live HERE, not in the material constructor)
+  surface: new THREE.Color(COLORS.sea),
   line: new THREE.Color(COLORS.line),
   lineOp: 0.28,
   ref: new THREE.Color(COLORS.lineAccent),
@@ -239,7 +242,7 @@ export function createGlobe(
       ? (fn) => requestIdleCallback((d) => fn(d), { timeout: 2000 })
       : (fn) => setTimeout(() => fn(), 60);
 
-  const surfaceMat = track(new THREE.MeshBasicMaterial({ color: COLORS.surface }));
+  const surfaceMat = track(new THREE.MeshBasicMaterial({ color: COLORS.sea }));
   const surface = new THREE.Mesh(
     track(new THREE.SphereGeometry(GLOBE.surfaceRadius, 48, 32)),
     surfaceMat
@@ -492,8 +495,11 @@ export function createGlobe(
               float mi = uni.r * 255.0;
               vec4 info = texture2D(unionInfoTex, vec2((mi + 0.5) / ${UNION_INFO_WIDTH}.0, 0.5));
               float ink = uni.a * info.a * uUnion * landNow;
-              col = mix(col, info.rgb, ink * 0.85);
-              alpha = max(alpha, ink * 0.6);
+              // treaty ink retreats to a quiet register (7th review §3.1) —
+              // every border wearing full-strength union color competed with
+              // the selection layer; the cartouche + legend carry the detail
+              col = mix(col, info.rgb, ink * 0.6);
+              alpha = max(alpha, ink * 0.45);
             }
 
             gl_FragColor = vec4(col, alpha * uOpacity);
@@ -589,11 +595,13 @@ export function createGlobe(
     fillUnionInfo(display.year, display.yearMode);
     setEraLoading(false);
   }
-  // full planetary map through mid LOD, receding to faint continents far out
+  // full planetary map through mid LOD, receding to faint continents far out.
+  // Floor raised 0.3→0.38 (7th review: the far view had L0–L2 collapsed into
+  // one near-black band — the land must stay a readable value above the sea)
   function terrainFade(dist: number): number {
     const t = Math.min(1, Math.max(0, (340 - dist) / 70));
     const s = t * t * (3 - 2 * t);
-    return 0.3 + 0.7 * s;
+    return 0.38 + 0.62 * s;
   }
 
   // D1: fine 15° instrument grid — each line shy, the system dense.
@@ -1242,12 +1250,17 @@ export function createGlobe(
       sprite.visible = true;
       // lifted off the surface so the globe occludes far-side seals itself
       sprite.position.set(p[0] * (R + 2.6), p[1] * (R + 2.6), p[2] * (R + 2.6));
-      const k = SEAL_SCALE[a.tier];
+      // seal retreat (7th review §3.2): unengaged seals are quiet marks, not
+      // the front layer — selection/hover/neighborhood carries the emblem
+      // forward; towns and terrain must never lose to a catalogue of initials
+      const engagedSeal =
+        id === s.selectedAuthorId || id === s.hoveredAuthorId || neighborIds.has(id);
+      const k = SEAL_SCALE[a.tier] * (engagedSeal ? 1 : 0.82);
       sprite.scale.set(k, k, 1);
       const dimmed =
         s.selectedAuthorId !== null && id !== s.selectedAuthorId && !neighborIds.has(id);
       const mat = sprite.material as THREE.SpriteMaterial;
-      mat.opacity = sealK * (dimmed ? 0.22 : 0.92);
+      mat.opacity = sealK * (dimmed ? 0.22 : engagedSeal ? 0.92 : 0.55);
       mat.color.set(id === s.selectedAuthorId ? COLORS.brassBright : COLORS.text);
     }
   }
@@ -1272,14 +1285,18 @@ export function createGlobe(
   }
 
   function groupCentroid(key: string): Vec3 | null {
-    // cluster keys are author ids (the rep); region keys aggregate members
+    // cluster keys are author ids (the rep); "mv:" keys are constellations
+    // (semantic mid, R7 PR3); bare keys aggregate region members
     if (indexOf.has(key)) return current.get(key) ?? null;
+    const isMovement = key.startsWith("mv:");
+    const bare = isMovement ? key.slice(3) : key;
     let cx = 0;
     let cy = 0;
     let cz = 0;
     let n = 0;
     for (const a of authors) {
-      if (a.regions[0] !== key || !nodeVisible(a)) continue;
+      if ((isMovement ? a.movements[0] !== bare : a.regions[0] !== key) || !nodeVisible(a))
+        continue;
       const p = current.get(a.id);
       if (!p) continue;
       cx += p[0];
@@ -1343,7 +1360,13 @@ export function createGlobe(
       // between clusters (singles group as themselves)
       clusterGroupOf: (id) =>
         clusterRepOf.get(id) ??
-        (sealK > 0.02 ? id : authors[indexOf.get(id) ?? -1]?.regions[0])
+        (sealK > 0.02 ? id : authors[indexOf.get(id) ?? -1]?.regions[0]),
+      // semantic mid corridors run between constellations (primary movement);
+      // movement keys are namespaced so region slugs can never collide
+      movementOf: (id) => {
+        const m = authors[indexOf.get(id) ?? -1]?.movements[0];
+        return m ? `mv:${m}` : undefined;
+      }
     });
     lastRelationView = view;
     if (view.hiddenCount !== egoHiddenSent) {
