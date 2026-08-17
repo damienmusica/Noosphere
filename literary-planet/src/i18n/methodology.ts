@@ -100,7 +100,7 @@ const KO: MethodologyStrings = {
       "는 작가의 대표 활동지 경위도를 쓰되, 도시가 밀집한 지역(예: 중부유럽)에서는 겹친 점이 읽히도록 결정적 최소 변위를 적용한다 — 지도학의 표준적 displacement 관행이며, 정확한 좌표는 데이터 파일에 보존된다. 두 모드의 분리가 이 지도의 핵심 주장이다: 문학적 거리는 지리적 거리가 아니다.",
     terrainStrong: "친연성 모드의 지형",
     terrainBody:
-      "은 실제 지구가 아니다. 각 작가 영토의 면적은 편집 tier(anchor 2.4 : major 1.0 : context 0.55)가 1차로 정하고 관계 밀도가 ±30% 안에서 변조하며, 해안선은 시드 고정 노이즈가 새긴다(시드·파라미터의 정본은 territory.v1.json 헤더). 대륙과 섬, 두 극관까지 모두 친연성 배치의 산물이며 어떤 실존 국경·지형과도 무관하다. 렌더러는 동결된 기하만 그린다 — 접속할 때마다 같은 행성이다."
+      "은 실제 지구가 아니다. 각 작가 영토의 면적은 편집 tier(anchor 2.4 : major 1.0 : context 0.55)가 1차로 정하고 관계 밀도가 ±30% 안에서 변조하며, 해안선은 시드 고정 노이즈가 새긴다(시드·파라미터의 정본은 territory.v1.json 헤더). 대륙과 섬, 두 극관까지 모두 친연성 배치의 산물이며 어떤 실존 국경·지형과도 무관하다. 렌더러는 동결된 기하만 그린다 — 접속할 때마다 같은 행성이다. 연도 페이더도 해안선을 움직이지 않는다: 국가(작가)의 주권 상태 — 미형성·형성·활동·유산 — 와 사조 연합의 조약기가 크로스페이드될 뿐이며, 전체 시기 보기는 이 층을 완전히 우회해 도판 그대로다. 사조는 땅을 소유하지 않는 조약 오버레이다 — 땅의 소유자는 언제나 작가다."
   },
 
   srcHead: "데이터 출처와 검토 상태",
@@ -189,7 +189,7 @@ const EN: MethodologyStrings = {
       " uses the latitude and longitude of each writer's primary place of activity, applying a deterministic minimum displacement where cities crowd together (central Europe, for instance) so overlapping points stay readable — standard cartographic practice; exact coordinates are preserved in the data files. The separation of the two modes is this map's central claim: literary distance is not geographic distance.",
     terrainStrong: "The terrain in affinity mode",
     terrainBody:
-      " is not the Earth. Each writer's territory gets its area primarily from editorial tier (anchor 2.4 : major 1.0 : context 0.55), modulated within ±30% by relation density, and its coastlines are carved by seed-fixed noise (the header of territory.v1.json is authoritative for seed and parameters). The continents, the islands, and both polar caps are artifacts of the affinity layout and correspond to no real border or landmass. The renderer draws only frozen geometry — it is the same planet every time you visit."
+      " is not the Earth. Each writer's territory gets its area primarily from editorial tier (anchor 2.4 : major 1.0 : context 0.55), modulated within ±30% by relation density, and its coastlines are carved by seed-fixed noise (the header of territory.v1.json is authoritative for seed and parameters). The continents, the islands, and both polar caps are artifacts of the affinity layout and correspond to no real border or landmass. The renderer draws only frozen geometry — it is the same planet every time you visit. The year fader moves no coastline either: it crossfades sovereignty states — unformed, founding, active, heritage — and the treaty periods of movement unions, and the all-years view bypasses this layer entirely, leaving the plate untouched. Movements are landless treaty overlays — the land always belongs to the writer."
   },
 
   srcHead: "Data sources and review status",

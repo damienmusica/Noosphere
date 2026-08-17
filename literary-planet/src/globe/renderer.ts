@@ -3,11 +3,27 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import type { Author, Dataset, Movement, Relation, Work } from "../types.ts";
 import type { Locale } from "../i18n/index.ts";
 import { RELATION_DEFS } from "../types.ts";
-import { COLORS, GEO_COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS } from "../theme.ts";
+import { COLORS, GEO_COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS, UNION_COLORS } from "../theme.ts";
 import { arcPoints, slerp, type Vec3 } from "../lib/sphere.ts";
 import { sealGlyph } from "../lib/seal.ts";
 import { visibleAuthorIds, visibleRelations } from "../lib/filter.ts";
 import { instr } from "../lib/instrument.ts";
+import {
+  LIFE_TEX_WIDTH,
+  buildLifeTexData,
+  lifecycleEngaged,
+  lifecycleOf,
+  treatyOf,
+  treatyPresence,
+  type Treaty
+} from "./lifecycle.ts";
+import {
+  UNION_INFO_WIDTH,
+  buildOwnerTexture,
+  paintUnionCanvas,
+  unionColorLinear
+} from "./territory-textures.ts";
+import { CityMarkers } from "./city-markers.ts";
 import {
   CAMERA_DEFAULT,
   CAMERA_MAX,
@@ -31,6 +47,7 @@ export interface GlobeCallbacks {
   onRelationPick(relation: Relation): void;
   onRelationHover(relation: Relation | null): void;
   onWorkPick(work: Work): void;
+  onWorkHover(work: Work | null): void;
 }
 
 export interface GlobeI18n {
@@ -191,8 +208,14 @@ export function createGlobe(
   // graticule. Opacity rides the SAME interpolator as the mode palette
   // (1 − paletteK), so the map cross-fades with the plate colors and can never
   // appear in geography mode; a distance ramp keeps the far view a star chart.
-  let terrainMat: THREE.MeshBasicMaterial | null = null;
+  let terrainMat: THREE.ShaderMaterial | null = null;
   let terrainMesh: THREE.Mesh | null = null;
+  const readingRank = new Map<string, number>();
+  for (const a of authors) a.readingOrder.forEach((wid, i) => readingRank.set(wid, i));
+  let lifeTexture: THREE.DataTexture | null = null;
+  let unionInfoTexture: THREE.DataTexture | null = null;
+  let movementTreaties: Array<{ movement: Movement; treaty: Treaty } | null> = [];
+  let unionTarget = 0;
   // two plates of the same bake: mid/far, plus a double-scale near plate whose
   // constant-pixel strokes read as finer engraving at reading distance
   let terrainTexMid: THREE.CanvasTexture | null = null;
@@ -200,8 +223,6 @@ export function createGlobe(
   if (dataset.territory) {
     const periodByAuthor = new Map(authors.map((a) => [a.id, a.periods[0]]));
     const periodOf = (id: string) => periodByAuthor.get(id);
-    const readingRank = new Map<string, number>();
-    for (const a of authors) a.readingOrder.forEach((wid, i) => readingRank.set(wid, i));
     const makeTex = (cellPx: number, withCities = false): THREE.CanvasTexture => {
       const tex = track(
         new THREE.CanvasTexture(
@@ -221,12 +242,106 @@ export function createGlobe(
     const nearCell =
       !smallScreen && renderer.capabilities.maxTextureSize >= 8192 ? 6 : 4;
     terrainTexNear = makeTex(nearCell, true); // cities live at reading distance only
+    // --- territory grammar v2.0: sovereignty shader ------------------------
+    // The plate stays exactly as baked; per-nation lifecycle (presence,
+    // patina) and per-union treaty strokes ride in small lookup textures.
+    // Coastlines never move — the year fader crossfades sovereignty states.
+    const geom = dataset.territory.geometry;
+    const ownerTexture = track(buildOwnerTexture(geom));
+    lifeTexture = track(
+      new THREE.DataTexture(
+        buildLifeTexData(authors, store.getState().year, store.getState().yearMode),
+        LIFE_TEX_WIDTH,
+        1,
+        THREE.RGBAFormat
+      )
+    );
+    lifeTexture.magFilter = THREE.NearestFilter;
+    lifeTexture.minFilter = THREE.NearestFilter;
+    lifeTexture.needsUpdate = true;
+
+    const ownerIndexOf = new Map(geom.authors.map((id, i) => [id, i]));
+    movementTreaties = dataset.movements.map((mv) => {
+      const members = authors.filter((a) => a.movements.includes(mv.id));
+      const treaty = treatyOf(members);
+      return treaty ? { movement: mv, treaty } : null;
+    });
+    const unionCanvas = paintUnionCanvas(geom, dataset.movements, (mvId) =>
+      authors
+        .filter((a) => a.movements.includes(mvId))
+        .map((a) => ownerIndexOf.get(a.id))
+        .filter((i): i is number => i !== undefined)
+    );
+    const unionTexture = track(new THREE.CanvasTexture(unionCanvas));
+    unionTexture.magFilter = THREE.LinearFilter;
+    unionTexture.minFilter = THREE.LinearFilter;
+    unionTexture.generateMipmaps = false;
+    unionTexture.wrapS = THREE.RepeatWrapping;
+
+    unionInfoTexture = track(
+      new THREE.DataTexture(new Uint8Array(UNION_INFO_WIDTH * 4), UNION_INFO_WIDTH, 1, THREE.RGBAFormat)
+    );
+    unionInfoTexture.magFilter = THREE.NearestFilter;
+    unionInfoTexture.minFilter = THREE.NearestFilter;
+    refreshEraTextures();
+
     terrainMat = track(
-      new THREE.MeshBasicMaterial({
-        map: terrainTexMid,
+      new THREE.ShaderMaterial({
         transparent: true,
-        opacity: 0,
-        depthWrite: false
+        depthWrite: false,
+        uniforms: {
+          map: { value: terrainTexMid },
+          ownerTex: { value: ownerTexture },
+          lifeTex: { value: lifeTexture },
+          unionTex: { value: unionTexture },
+          unionInfoTex: { value: unionInfoTexture },
+          uOpacity: { value: 0 },
+          uLifecycleOn: { value: 0 },
+          uUnion: { value: 0 }
+        },
+        vertexShader: /* glsl */ `
+          varying vec2 vUv;
+          void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }`,
+        fragmentShader: /* glsl */ `
+          uniform sampler2D map;
+          uniform sampler2D ownerTex;
+          uniform sampler2D lifeTex;
+          uniform sampler2D unionTex;
+          uniform sampler2D unionInfoTex;
+          uniform float uOpacity;
+          uniform float uLifecycleOn;
+          uniform float uUnion;
+          varying vec2 vUv;
+          void main() {
+            vec4 base = texture2D(map, vUv);
+            vec3 col = base.rgb;
+            float alpha = base.a;
+
+            float oid = texture2D(ownerTex, vUv).r * 255.0;
+            if (uLifecycleOn > 0.5 && oid < 254.5) {
+              vec3 life = texture2D(lifeTex, vec2((oid + 0.5) / ${LIFE_TEX_WIDTH}.0, 0.5)).rgb;
+              // heritage patina: toward an aged, slightly sepia plate
+              float luma = dot(col, vec3(0.299, 0.587, 0.114));
+              vec3 aged = mix(col, vec3(luma) * vec3(1.04, 0.96, 0.82), 0.55);
+              col = mix(col, aged, life.g);
+              alpha *= life.r; // presence: unformed land is a coast ghost
+            }
+
+            vec4 uni = texture2D(unionTex, vUv);
+            if (uUnion > 0.01 && uni.a > 0.02) {
+              float mi = uni.r * 255.0;
+              vec4 info = texture2D(unionInfoTex, vec2((mi + 0.5) / ${UNION_INFO_WIDTH}.0, 0.5));
+              col = mix(col, info.rgb, uni.a * info.a * uUnion * 0.85);
+              alpha = max(alpha, uni.a * info.a * uUnion * 0.6);
+            }
+
+            gl_FragColor = vec4(col, alpha * uOpacity);
+            #include <tonemapping_fragment>
+            #include <colorspace_fragment>
+          }`
       })
     );
     terrainMesh = new THREE.Mesh(
@@ -236,6 +351,32 @@ export function createGlobe(
     terrainMesh.renderOrder = -1;
     terrainMesh.visible = false;
     scene.add(terrainMesh);
+  }
+
+  /** re-derive the year-dependent lookups (nation lifecycle, treaty alphas) */
+  function refreshEraTextures(): void {
+    const s = store.getState();
+    if (lifeTexture) {
+      (lifeTexture.image.data as Uint8Array).set(buildLifeTexData(authors, s.year, s.yearMode));
+      lifeTexture.needsUpdate = true;
+    }
+    if (unionInfoTexture) {
+      const data = unionInfoTexture.image.data as Uint8Array;
+      data.fill(0);
+      movementTreaties.forEach((entry, mi) => {
+        if (!entry || mi >= UNION_INFO_WIDTH) return;
+        const [r, g, b] = unionColorLinear(mi);
+        const o = mi * 4;
+        data[o] = r;
+        data[o + 1] = g;
+        data[o + 2] = b;
+        data[o + 3] = Math.round(treatyPresence(entry.treaty, s.year, s.yearMode) * 255);
+      });
+      unionInfoTexture.needsUpdate = true;
+    }
+    if (terrainMat) {
+      terrainMat.uniforms.uLifecycleOn!.value = lifecycleEngaged(s.year, s.yearMode) ? 1 : 0;
+    }
   }
   // full planetary map through mid LOD, receding to faint continents far out
   function terrainFade(dist: number): number {
@@ -737,6 +878,37 @@ export function createGlobe(
     const wk = dataset.works.find((x) => x.id === id.slice(3));
     if (wk) cbs.onWorkPick(wk);
   };
+  labels.onHover = (id) => {
+    const wk = id?.startsWith("wk:") ? (worksById.get(id.slice(3)) ?? null) : null;
+    cbs.onWorkHover(wk);
+  };
+
+  // work towns as scene entities: raised pickable rings over the printed
+  // marks, shown for the selected author's realm at reading distance
+  const cityMarkers = new CityMarkers(scene);
+  let cityMarkersFor: string | null = null;
+  function syncCityMarkers(): void {
+    const s = store.getState();
+    const show =
+      s.selectedAuthorId !== null &&
+      lod === "near" &&
+      s.mode === "semantic" &&
+      dataset.territory !== undefined;
+    if (show && s.selectedAuthorId !== cityMarkersFor) {
+      cityMarkers.build(
+        s.selectedAuthorId,
+        dataset.territory?.geometry,
+        (wid) => readingRank.get(wid),
+        worksById
+      );
+      cityMarkersFor = s.selectedAuthorId;
+    } else if (!s.selectedAuthorId && cityMarkersFor !== null) {
+      cityMarkers.build(null, undefined, () => undefined, worksById);
+      cityMarkersFor = null;
+    }
+    cityMarkers.setVisible(show);
+    cityMarkers.setEmphasis(s.hoveredWorkId, s.selectedWorkId);
+  }
   let current = new Map<string, Vec3>(); // live positions (unit vectors)
   let visibleSet = new Set<string>();
   let visRels: Relation[] = [];
@@ -1192,7 +1364,12 @@ export function createGlobe(
             priority: 88 + facing * 8,
             x: ((tmpV.x + 1) / 2) * w,
             y: ((-tmpV.y + 1) / 2) * h + 9,
-            state: town.id === s.selectedWorkId ? "selected" : "normal",
+            state:
+              town.id === s.selectedWorkId
+                ? "selected"
+                : town.id === s.hoveredWorkId
+                  ? "hovered"
+                  : "normal",
             // towns are real destinations, not decoration — click or
             // Enter opens the work card (2026-08-16 review P0-4)
             interactive: true,
@@ -1257,15 +1434,27 @@ export function createGlobe(
         const facing = camDir.x * cx + camDir.y * cy + camDir.z * cz;
         if (facing < 0.25) continue;
         tmpV.set(cx * R * 1.04, cy * R * 1.04, cz * R * 1.04).project(camera);
+        // union annotation (D1): the treaty period joins the name, in the
+        // union's own ink — the label is the overlay's cartouche
+        const mvIdx = dataset.movements.indexOf(m);
+        const entry = movementTreaties[mvIdx] ?? null;
+        const treatyAlpha = entry ? treatyPresence(entry.treaty, s.year, s.yearMode) : 0;
         items.push({
           id: `mv:${m.id}`,
-          text: i18n.movementLabel(m, s.locale),
+          text:
+            entry && treatyAlpha > 0.05
+              ? `${i18n.movementLabel(m, s.locale)} · ${entry.treaty.start}–${entry.treaty.end}`
+              : i18n.movementLabel(m, s.locale),
           kind: "movement",
           size: "lg",
-          priority: 30 + facing * 8,
+          // LOD contract: the mid view belongs to nations AND their unions —
+          // an active treaty's cartouche outranks ordinary nation labels
+          // there; at far it competes as before
+          priority: (entry && treatyAlpha > 0.05 && lod === "mid" ? 76 : 30) + facing * 8,
           x: ((tmpV.x + 1) / 2) * w,
           y: ((-tmpV.y + 1) / 2) * h,
-          state: "normal"
+          state: "normal",
+          color: entry && treatyAlpha > 0.05 ? UNION_COLORS[mvIdx % UNION_COLORS.length] : undefined
         });
       }
     }
@@ -1294,6 +1483,12 @@ export function createGlobe(
     return a && nodeVisible(a) ? a.id : null;
   }
 
+  /** city markers use the raycaster state the author pick just set */
+  function pickCity(): Work | null {
+    const wid = cityMarkers.pick(raycaster);
+    return wid ? (worksById.get(wid) ?? null) : null;
+  }
+
   function pickRelation(): Relation | null {
     const groups = [...highlightGroups, ...edgeGroups];
     for (const g of groups) {
@@ -1317,10 +1512,12 @@ export function createGlobe(
       if (disposed) return;
       const s = store.getState();
       const id = pickAuthor(e.clientX, e.clientY);
-      // a star under the pointer wins; otherwise the line beneath it speaks
-      const rel = id ? null : pickRelation();
-      renderer.domElement.style.cursor = id || rel ? "pointer" : "grab";
+      // priority: star > work town > relation line
+      const cw = id ? null : pickCity();
+      const rel = id || cw ? null : pickRelation();
+      renderer.domElement.style.cursor = id || cw || rel ? "pointer" : "grab";
       if (id !== s.hoveredAuthorId) cbs.onHover(id);
+      if ((cw?.id ?? null) !== s.hoveredWorkId) cbs.onWorkHover(cw);
       if ((rel?.id ?? null) !== s.hoveredRelationId) cbs.onRelationHover(rel);
     });
   }
@@ -1338,6 +1535,11 @@ export function createGlobe(
     const id = pickAuthor(e.clientX, e.clientY);
     if (id) {
       cbs.onSelect(id);
+      return;
+    }
+    const cw = pickCity();
+    if (cw) {
+      cbs.onWorkPick(cw);
       return;
     }
     const rel = pickRelation();
@@ -1391,6 +1593,11 @@ export function createGlobe(
 
     // the picked line carries the only in-place type label — refresh it
     if (pickedChanged) updateLabels();
+    // marker ↔ label emphasis stays in lockstep through the store
+    if (s.hoveredWorkId !== prev.hoveredWorkId || s.selectedWorkId !== prev.selectedWorkId) {
+      cityMarkers.setEmphasis(s.hoveredWorkId, s.selectedWorkId);
+      if (s.hoveredWorkId !== prev.hoveredWorkId) updateLabels();
+    }
 
     if (localeChanged) updateLabels();
     if (relHoverChanged) {
@@ -1431,11 +1638,14 @@ export function createGlobe(
         animateCameraTo(new THREE.Vector3(aim[0], aim[1], aim[2]), camera.position.length());
       }
     }
+    // the year fader drives sovereignty: nation lifecycle + treaty alphas
+    if (filtersChanged) refreshEraTextures();
     if (filtersChanged || selectionChanged) {
       recomputeVisibility();
       updateNodeInstances();
       if (!transition) rebuildEdges();
       updateLabels();
+      syncCityMarkers();
     } else if (hoverChanged) {
       updateRelationHover();
       updateNodeInstances();
@@ -1557,7 +1767,32 @@ export function createGlobe(
     labelsSuppressed: labels.lastSuppressed,
     labelsOverlapping: labels.lastOverlapping,
     labelsByKind: labels.lastShownByKind,
-    seals: sealScreenOverlap()
+    seals: sealScreenOverlap(),
+    lifecycle: (() => {
+      const s = store.getState();
+      const sel = s.selectedAuthorId ? authors[indexOf.get(s.selectedAuthorId) ?? -1] : undefined;
+      return {
+        on: lifecycleEngaged(s.year, s.yearMode),
+        selected: sel ? lifecycleOf(sel, s.year, s.yearMode) : null,
+        activeTreaties: movementTreaties.filter(
+          (e) => e !== null && treatyPresence(e.treaty, s.year, s.yearMode) > 0.5
+        ).length
+      };
+    })(),
+    unionOverlay: terrainMat
+      ? Math.round((terrainMat.uniforms.uUnion!.value as number) * 100) / 100
+      : 0,
+    cityMarkers: (() => {
+      // page coordinates (not container-relative) so the QA harness can
+      // click the marker's true screen position
+      const rect = container.getBoundingClientRect();
+      return {
+        count: cityMarkers.count,
+        screen: cityMarkers
+          .screenPositions(camera, container.clientWidth, container.clientHeight)
+          .map((p) => ({ id: p.id, x: p.x + Math.round(rect.left), y: p.y + Math.round(rect.top) }))
+      };
+    })()
   });
   instr.registerRenderer(probe);
 
@@ -1630,8 +1865,9 @@ export function createGlobe(
     if (terrainMat && terrainMesh) {
       // after the transition block so paletteK is this frame's value (§②-7)
       const op = (1 - paletteK) * terrainFade(camera.position.length());
-      if (Math.abs(op - terrainMat.opacity) > 0.003 || (op > 0.004) !== terrainMesh.visible) {
-        terrainMat.opacity = op;
+      const cur = terrainMat.uniforms.uOpacity!.value as number;
+      if (Math.abs(op - cur) > 0.003 || (op > 0.004) !== terrainMesh.visible) {
+        terrainMat.uniforms.uOpacity!.value = op;
         terrainMesh.visible = op > 0.004;
       }
     }
@@ -1641,19 +1877,26 @@ export function createGlobe(
       lod = newLod;
       if (terrainMat && terrainTexMid && terrainTexNear) {
         const want = lod === "near" ? terrainTexNear : terrainTexMid;
-        if (terrainMat.map !== want) {
-          terrainMat.map = want;
-          terrainMat.needsUpdate = true;
+        if (terrainMat.uniforms.map!.value !== want) {
+          terrainMat.uniforms.map!.value = want;
         }
       }
       updateNodeInstances();
       if (!transition) rebuildEdges();
       updateLabels();
+      syncCityMarkers();
     } else if (!camera.position.equals(lastCamPos)) {
       updateLabels();
       updateRings();
     }
     lastCamPos.copy(camera.position);
+
+    // union treaty overlay belongs to the mid view (LOD contract) — eased in
+    unionTarget = lod === "mid" ? 1 : 0;
+    if (terrainMat) {
+      const u = terrainMat.uniforms.uUnion!;
+      u.value = (u.value as number) + (unionTarget - (u.value as number)) * 0.08;
+    }
 
     updateFlows(now);
     renderer.render(scene, camera);
@@ -1677,6 +1920,7 @@ export function createGlobe(
       arrowMesh.dispose();
     }
     clearFlows();
+    cityMarkers.dispose();
     nodes.dispose();
     pickMesh.dispose();
     for (const d of disposables) d.dispose();

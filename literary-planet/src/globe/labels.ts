@@ -52,6 +52,9 @@ export class LabelLayer {
   private pool = new Map<string, HTMLDivElement>();
   /** fired when an interactive label (work town) is clicked or Enter/Space-ed */
   onActivate: ((id: string) => void) | null = null;
+  /** fired as the pointer enters/leaves an interactive label — the DOM half
+   * of the shared marker↔label hover state */
+  onHover: ((id: string | null) => void) | null = null;
   /** labels placed in the last update (instrumentation) */
   lastShown = 0;
   /**
@@ -116,6 +119,12 @@ export class LabelLayer {
             e.preventDefault();
             this.onActivate?.(el!.dataset.labelId!);
           }
+        });
+        el.addEventListener("pointerenter", () => {
+          if (el!.dataset.interactive === "1") this.onHover?.(el!.dataset.labelId!);
+        });
+        el.addEventListener("pointerleave", () => {
+          if (el!.dataset.interactive === "1") this.onHover?.(null);
         });
         this.pool.set(item.id, el);
         this.root.appendChild(el);
