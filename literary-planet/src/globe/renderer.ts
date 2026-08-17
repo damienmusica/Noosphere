@@ -1526,6 +1526,13 @@ export function createGlobe(
       sprite.scale.set(k, k, 1);
       const dimmed =
         s.selectedAuthorId !== null && id !== s.selectedAuthorId && !castSet.has(id);
+      // 9th round subtraction: while a story runs, bystander emblems leave
+      // the stage entirely — 71 quiet marks were still a wall of marks.
+      // Hover re-lights any one of them (engagedSeal), so nothing is lost.
+      if (dimmed) {
+        sprite.visible = false;
+        continue;
+      }
       const mat = sprite.material as THREE.SpriteMaterial;
       // the SELECTED emblem bows out at reading distance — at town depth a
       // poster-scale glyph was covering the very territory it names (8th)
@@ -1670,6 +1677,14 @@ export function createGlobe(
     // cast membership feeds nodeVisible — re-place instances now, not on the
     // next unrelated state change
     updateNodeInstances();
+    {
+      // a NEW story (selection/mode/replay) restarts the announce→settle arc
+      const key = flowStory.metrics().storyKey as string | null;
+      if (key !== lastStoryKeySeen) {
+        lastStoryKeySeen = key;
+        storyBornAt = key ? performance.now() : 0;
+      }
+    }
     applyRailFade();
     if (view.hiddenCount !== egoHiddenSent) {
       egoHiddenSent = view.hiddenCount;
@@ -1707,11 +1722,19 @@ export function createGlobe(
     buildAggregateRoutes(view.aggregates);
   }
 
-  // reading-distance rail quiet (8th review): at town depth the story rails
-  // step back so pulses, towns and relief read — membership and the story
-  // clock are untouched, this is presentation only
-  function applyRailFade(): void {
-    const railF = 1 - 0.62 * lastGlyphK;
+  // reading-distance rail quiet (8th review) + post-settle decay (9th):
+  // rails and arrows announce the story loudly, then step back once the
+  // waves have landed so the looping pulses, towns and ground carry the
+  // scene. Membership and the story clock are untouched — presentation only.
+  let storyBornAt = 0;
+  let lastStoryKeySeen: string | null = null;
+  function applyRailFade(now = performance.now()): void {
+    let settleF = 1;
+    if (storyBornAt > 0 && !store.getState().reducedMotion) {
+      const t = Math.min(1, Math.max(0, (now - storyBornAt - 3600) / 1200));
+      settleF = 1 - 0.38 * t * t * (3 - 2 * t);
+    }
+    const railF = (1 - 0.62 * lastGlyphK) * settleF;
     for (const g of highlightGroups) {
       (g.lines.material as THREE.LineBasicMaterial).opacity = g.baseOpacity * railF;
     }
@@ -2376,7 +2399,15 @@ export function createGlobe(
         if (town && s.mode === "semantic" && dataset.territory) {
           const g = dataset.territory.geometry;
           const p = gridToVec3(town.x, town.y, g.gridWidth, g.gridHeight);
-          cam.focusTo(new THREE.Vector3(p[0], p[1], p[2]), CAMERA_MIN + 4, { tag: "city" });
+          const townDir = new THREE.Vector3(p[0], p[1], p[2]).normalize();
+          // 9th round: focus the town WITHOUT amputating its network — bias
+          // the itinerary frame toward it instead of diving to the surface
+          // (CAMERA_MIN+4 pushed every neighboring city off screen)
+          const fitted = s.selectedAuthorId
+            ? itineraryFit(s.selectedAuthorId, { dir: townDir, w: 0.55 })
+            : null;
+          if (fitted) cam.focusTo(fitted.aim, fitted.dist, { tag: "city" });
+          else cam.focusTo(townDir, TERRITORY_DIST, { tag: "city" });
         }
       } else if (prevWorkForCam && !s.selectedWorkId) cam.restoreBookmark("author");
     }
@@ -2505,16 +2536,20 @@ export function createGlobe(
    * view — "meaningfully visible" is a framing guarantee, not luck.
    * Cancellable like every focus flight.
    */
-  function enterTerritory(id: string): void {
-    const p = current.get(id);
-    if (!p) return;
-    instr.log("territory-enter", { id });
+  /**
+   * Frame the reading itinerary: aim at the top towns' centroid (optionally
+   * biased toward one town) and back off until the widest of them fits
+   * ~66% of the half-view. Cap below LOD_ENTER_NEAR so arrival is always
+   * reading tier. Used by the territory door AND by work focus — opening a
+   * city must never amputate its network (9th round spatial continuity).
+   */
+  function itineraryFit(
+    id: string,
+    bias?: { dir: THREE.Vector3; w: number }
+  ): { aim: THREE.Vector3; dist: number } | null {
     const g = dataset.territory?.geometry;
     const cities = g ? g.cities[id] : undefined;
-    if (!g || !cities || cities.towns.length === 0) {
-      animateCameraTo(new THREE.Vector3(p[0], p[1], p[2]), TERRITORY_DIST);
-      return;
-    }
+    if (!g || !cities || cities.towns.length === 0) return null;
     const ranked = [...cities.towns]
       .filter((t) => readingRank.get(t.id) !== undefined)
       .sort((a, b) => readingRank.get(a.id)! - readingRank.get(b.id)!)
@@ -2524,21 +2559,31 @@ export function createGlobe(
     );
     const aim = new THREE.Vector3();
     for (const q of pts) aim.add(new THREE.Vector3(q[0], q[1], q[2]));
-    if (aim.lengthSq() < 1e-6) aim.set(p[0], p[1], p[2]);
+    if (aim.lengthSq() < 1e-6) return null;
     aim.normalize();
+    if (bias) aim.multiplyScalar(1 - bias.w).addScaledVector(bias.dir, bias.w).normalize();
     let minCos = 1;
     let maxSin = 0;
-    for (const q of pts) {
+    for (const q of pts.concat(bias ? [[bias.dir.x, bias.dir.y, bias.dir.z]] : [])) {
       const cos = Math.min(1, aim.dot(new THREE.Vector3(q[0], q[1], q[2])));
       minCos = Math.min(minCos, cos);
       maxSin = Math.max(maxSin, Math.sqrt(Math.max(0, 1 - cos * cos)));
     }
-    // vertical FOV 42°: keep the widest itinerary town inside ~66% of the
-    // half-view; cap below LOD_ENTER_NEAR so arrival is always reading tier
     const fit = Math.tan((42 / 2) * (Math.PI / 180)) * 0.66;
     const need = R * minCos + (R * maxSin) / fit;
-    const dist = Math.min(190, Math.max(TERRITORY_DIST, need));
-    animateCameraTo(aim, dist);
+    return { aim, dist: Math.min(190, Math.max(TERRITORY_DIST, need)) };
+  }
+
+  function enterTerritory(id: string): void {
+    const p = current.get(id);
+    if (!p) return;
+    instr.log("territory-enter", { id });
+    const fitted = itineraryFit(id);
+    if (!fitted) {
+      animateCameraTo(new THREE.Vector3(p[0], p[1], p[2]), TERRITORY_DIST);
+      return;
+    }
+    animateCameraTo(fitted.aim, fitted.dist);
   }
 
   function resetCamera(): void {
@@ -2860,8 +2905,11 @@ export function createGlobe(
     }
     lastCamPos.copy(camera.position);
 
-    // union treaty overlay belongs to the mid view (LOD contract) — eased in
-    unionTarget = lod === "mid" ? 1 : 0;
+    // union treaty overlay belongs to the mid view (LOD contract) — eased
+    // in, and it RETIRES while a story runs (9th round subtraction: treaty
+    // ink over every border was a second information system competing with
+    // the selection; the legend's treaty fold still explains it on demand)
+    unionTarget = lod === "mid" && !store.getState().selectedAuthorId ? 1 : 0;
     if (terrainMat) {
       const u = terrainMat.uniforms.uUnion!;
       u.value = (u.value as number) + (unionTarget - (u.value as number)) * 0.08;
@@ -2875,8 +2923,9 @@ export function createGlobe(
       if (Math.abs((st.value as number) - storyTarget) < 0.004) st.value = storyTarget;
     }
 
-    // reading-distance retreat: the emblem/reticle/rails quiet as the camera
-    // descends — refresh only when the ease actually moved
+    // reading-distance retreat: the emblem/reticle quiet as the camera
+    // descends; rails also carry the post-settle decay, so their fade runs
+    // every frame (a handful of material writes — negligible)
     {
       const gk = nearGlyphK();
       if (Math.abs(gk - lastGlyphK) > 0.01) {
@@ -2885,8 +2934,8 @@ export function createGlobe(
           updateNodeInstances();
           updateRings();
         }
-        applyRailFade();
       }
+      applyRailFade(now);
     }
 
     cityMarkers.update(now); // founding growth tick (settled = no-op)
