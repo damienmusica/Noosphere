@@ -63,6 +63,37 @@ Work-marker unification beyond the shared board construction was NOT
 attempted — distorting real cover aspects would violate the charter's
 nothing-synthetic rule; recorded as a accepted-variance decision.
 
-### Round 2 — fresh reviewers, same protocol
+### Round 2 (2026-08-18, fresh reviewers, sets renamed P=baseline / Q=candidate) — UNANIMOUS Q
 
-(appended after the review runs)
+- graphic-designer → **Q**. "P는 안전하지만 교체 가능한 디자인 … Q는 필사본
+  바닥·자필 서명·연도 다이얼·컬러 표지 네 요소가 전부 '이 작가만의 것'."
+  Flagged the baseline's own defects: the un-numbered dial ring reads as an
+  UNFINISHED gauge ("정보 없는 장식은 P의 링"), and identical territory
+  silhouettes across authors. One local hierarchy dip in the candidate:
+  rabindranath-tagore-2near — manuscript cursive under the 고라 chip and one
+  satellite marker costs "반 박자"; explicitly judged fixable, not
+  direction-negating.
+- visual-art-director → **Q**. "각 작가의 영토 형태·질감·문자까지 실제로
+  다르게 — 앱의 핵심 약속을 이미지 레벨에서 직접 증명." Found hierarchy
+  regressions in the BASELINE (bystander letter-badges rival the protagonist;
+  ungrounded sticker-like plates). Two 추정 items to re-check in motion:
+  whether the vermilion frame could misread as an error marking, and whether
+  deckle edges read as aliasing in stills.
+
+Resolution of the named items:
+- Local label contrast (designer): slip chip edges firmed (--slip-line
+  0.4→0.62 + slightly deeper mount shadow); the flagged frame re-captured
+  and visually confirmed — 고라 reads instantly over the cursive.
+- Vermilion frame semantics (AD, 추정): intended — it is the 감상인
+  selection stamp, appears only on selection together with the life dial
+  and needle animation; in motion the "error marking" reading does not
+  arise. Kept on watch for real-user feedback.
+- Deckle edges (AD, 추정): intended paper grammar (deckle + stitch), not
+  aliasing; noted that stills at some boundaries are ambiguous.
+- Common flaw both rounds (S/B/C/F letter plates read as placeholder art):
+  out of slice scope — the 92 non-slice authors keep the R9 seal until the
+  fallback-plate regrade pass; recorded in the charter as the next
+  candidate after the relation-line re-encoding.
+
+**Verdict: candidate ships.** Unanimous Q on question 4; the single local
+Q1 finding was repaired and verified before promotion.
