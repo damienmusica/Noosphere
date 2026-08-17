@@ -126,6 +126,9 @@ export interface UIStrings {
   legendRoutes: string;
   mapRelationsCapped: (shown: number, total: number) => string;
   showAllRelations: string;
+  /** replays the relation narrative — the only sanctioned story reset (R7) */
+  replayFlows: string;
+  replayFlowsTitle: string;
   workCardAria: string;
   workEntryBadge: string;
   workOrder: (n: number, total: number) => string;
@@ -296,6 +299,8 @@ const KO: UIStrings = {
     "지리 항로 = 지역·군집 사이 관계 개수 집계(계산치·무방향, 짙을수록 많음) — 개별 관계는 작가를 선택하면 펼쳐진다",
   mapRelationsCapped: (shown, total) => `지도에 관계 ${shown}/${total}개 표시`,
   showAllRelations: "모두 보기",
+  replayFlows: "다시 재생",
+  replayFlowsTitle: "관계 흐름 연출을 처음부터 다시 재생합니다",
   legendOff: "탐색·필터에서 꺼진 유형",
   workCardAria: "작품 카드",
   workEntryBadge: "입문작 — 여기서 시작",
@@ -474,6 +479,8 @@ const EN: UIStrings = {
     "Geo routes = computed counts of relations between regions/clusters (undirected; darker = more) — individual relations unfold when a writer is selected",
   mapRelationsCapped: (shown, total) => `Showing ${shown}/${total} relations on the map`,
   showAllRelations: "Show all",
+  replayFlows: "Replay",
+  replayFlowsTitle: "Replay the relation flow narrative from the start",
   legendOff: "Switched off in Explore/Filter",
   workCardAria: "Work card",
   workEntryBadge: "Entry work — start here",

@@ -4,6 +4,7 @@ import type { Author, Dataset, Movement, PeriodId, Relation, Work } from "../typ
 import type { YearMode } from "../lib/filter.ts";
 import { TemporalTerrainLayer } from "./layers/temporal-terrain.ts";
 import { resolveRelationView, type RelationView } from "./layers/relation-view.ts";
+import { FlowStoryLayer } from "./layers/flow-story.ts";
 import type { Locale } from "../i18n/index.ts";
 import { RELATION_DEFS } from "../types.ts";
 import { COLORS, GEO_COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS, UNION_COLORS } from "../theme.ts";
@@ -433,7 +434,11 @@ export function createGlobe(
           unionInfoTex: { value: unionInfoTexture },
           uOpacity: { value: 0 },
           uLifecycleOn: { value: 0 },
-          uUnion: { value: 0 }
+          uUnion: { value: 0 },
+          // contact feedback (7th review PR2): the pressed nation's land
+          // answers inside the same frame — attack 50ms, decay 160ms
+          uContactIdx: { value: -1 },
+          uContactK: { value: 0 }
         },
         vertexShader: /* glsl */ `
           varying vec2 vUv;
@@ -452,6 +457,8 @@ export function createGlobe(
           uniform float uOpacity;
           uniform float uLifecycleOn;
           uniform float uUnion;
+          uniform float uContactIdx;
+          uniform float uContactK;
           varying vec2 vUv;
           void main() {
             // v2.5: the plate itself is a blend of the tectonic bracket —
@@ -470,6 +477,14 @@ export function createGlobe(
               vec3 aged = mix(col, vec3(luma) * vec3(1.04, 0.96, 0.82), 0.55);
               col = mix(col, aged, life.g);
               alpha *= life.r; // presence: unformed land is a coast ghost
+            }
+
+            // contact flash: the pressed territory brightens once — warm
+            // brass ink, gone in ~200ms; the selection reticle then owns
+            // the highlight (5-value ownership rule)
+            if (uContactK > 0.004 && abs(oid - uContactIdx) < 0.5) {
+              col += vec3(0.30, 0.24, 0.12) * uContactK;
+              alpha = max(alpha, 0.4 * uContactK * landNow);
             }
 
             vec4 uni = texture2D(unionTex, vUv);
@@ -525,11 +540,15 @@ export function createGlobe(
   function refreshEraTextures(): void {
     if (!terrainMat) return;
     const s = store.getState();
-    const wantEngaged = lifecycleEngaged(s.year, s.yearMode);
+    // scrub preview (7th review PR2): while the fader is held, the WORLD
+    // previews the dragged year — terrain, sovereignty, treaties, towns —
+    // but filters/relations/URL stay at the committed year until release
+    const effYear = s.yearPreview ?? s.year;
+    const wantEngaged = lifecycleEngaged(effYear, s.yearMode);
 
     if (!wantEngaged || !temporal) {
       // the atlas view — the frozen default plate, bit-identical (clause 2)
-      display = { year: s.year, yearMode: s.yearMode, engaged: false };
+      display = { year: effYear, yearMode: s.yearMode, engaged: false };
       eraActive = false;
       eraBracket = null;
       eraMixNow = 0;
@@ -540,20 +559,20 @@ export function createGlobe(
         terrainMat.uniforms.map!.value = want;
         terrainMat.uniforms.mapB!.value = want;
       }
-      fillUnionInfo(s.year, s.yearMode);
+      fillUnionInfo(effYear, s.yearMode);
       temporal?.noteDisengaged();
       setEraLoading(false);
       return;
     }
 
-    const br = temporal.bracketFor(s.year, ERA_CELL);
+    const br = temporal.bracketFor(effYear, ERA_CELL);
     if (!br) {
       // plates not resident yet — hold the previous consistent world and
       // report loading; the worker's onChange recommits when ready
       setEraLoading(true);
       return;
     }
-    display = { year: s.year, yearMode: s.yearMode, engaged: true };
+    display = { year: effYear, yearMode: s.yearMode, engaged: true };
     eraActive = true;
     eraBracket = [br.y0, br.y1];
     eraMixNow = br.mix;
@@ -1048,375 +1067,22 @@ export function createGlobe(
     arrowMesh = mesh;
   }
 
-  // --- directional flow on the selection web --------------------------------
-  // Motion carries the reading the arrowheads only confirm: sparks always
-  // travel the relation's canonical source→target, so incoming influence
-  // converges on the selected star and outgoing influence leaves it. Dialogue
-  // pulses both ways; dashed types (affinity/contrast) stay still — they have
-  // no direction to animate. Selection-scoped only: nothing selected, nothing
-  // moves. reducedMotion keeps the static encodings (gradient + arrowheads).
-  interface FlowItem {
-    pts: Vec3[];
-    /** ambient loop traversal duration in ms */
-    dur: number;
-    phase: number;
-    /** ms after build before this spark appears */
-    delay: number;
-    /** the node this spark flows INTO (canonical target; reversed for the
-     * dialogue return spark) — arrival fires the receiver's pulse */
-    endId: string;
-    kind: "incoming" | "outgoing" | "dialogue";
-    color: THREE.Color;
-    /** first lap runs the story timeline (single fast pass, then ambient) */
-    story: boolean;
-    storyDur: number;
-    /** time base for the ambient loop once the story lap lands */
-    ambientBase: number;
-    prevT: number;
-    arrived: boolean;
-  }
-  let flowItems: FlowItem[] = [];
-  let flowBuiltAt = 0;
-  let flowPoints: THREE.Points | null = null;
-
-  // 도착 반응 v2 (6th review PR4): an explicit state machine owns the first
-  // lap — dim(0–180) → incoming staggered 55ms apart → the selected star's
-  // IMPACT ripple → outgoing in three waves spread ≥800ms → each receiver's
-  // one pulse → steady ambient loop. Pulses are pooled at exactly
-  // uniqueReceivers+1 per selection, so a sprite is NEVER reused before its
-  // pulse completes (the fixed pool of 12 truncated the 13th on a601479).
-  const pulseSeen = new Set<string>();
-  interface PulseSlot {
-    sprite: THREE.Sprite;
-    mat: THREE.SpriteMaterial;
-    start: number;
-    dur: number;
-    node: string;
-    kind: string;
-  }
-  let pulsePool: PulseSlot[] = [];
-  const ringTexture = (() => {
-    const c = document.createElement("canvas");
-    c.width = c.height = 64;
-    const g = c.getContext("2d")!;
-    g.strokeStyle = "rgba(255,255,255,1)";
-    g.lineWidth = 5;
-    g.beginPath();
-    g.arc(32, 32, 24, 0, Math.PI * 2);
-    g.stroke();
-    const tex = new THREE.CanvasTexture(c);
-    disposables.push(tex);
-    texRegistry.add(tex);
-    return tex;
-  })();
-  const RECEIVER_PULSE_MS = 620;
-  const IMPACT_PULSE_MS = 750;
-
-  function clearPulsePool(): void {
-    for (const p of pulsePool) {
-      scene.remove(p.sprite);
-      p.mat.dispose();
-    }
-    pulsePool = [];
-  }
-
-  /** sized per selection: one slot per unique receiver + one for the impact */
-  function allocPulsePool(n: number): void {
-    clearPulsePool();
-    for (let i = 0; i < n; i++) {
-      const mat = new THREE.SpriteMaterial({
-        map: glowTexture,
-        transparent: true,
-        opacity: 0,
-        blending: THREE.AdditiveBlending,
-        depthWrite: false
-      });
-      const sprite = new THREE.Sprite(mat);
-      sprite.visible = false;
-      sprite.renderOrder = 7;
-      scene.add(sprite);
-      pulsePool.push({ sprite, mat, start: -1, dur: RECEIVER_PULSE_MS, node: "", kind: "" });
-    }
-  }
-
-  function firePulse(
-    pos: Vec3,
-    color: THREE.Color,
-    now: number,
-    node: string,
-    kind: "impact" | "incoming" | "outgoing" | "dialogue"
-  ): void {
-    const slot = pulsePool.find((p) => p.start < 0);
-    if (!slot) return; // sized exactly — unreachable while one-per-node holds
-    slot.start = now;
-    slot.node = node;
-    slot.kind = kind;
-    slot.dur = kind === "impact" ? IMPACT_PULSE_MS : RECEIVER_PULSE_MS;
-    // the impact is a ring RIPPLE outside the selection reticle — a different
-    // shape from the receiver glow, so the center's answer reads as an event
-    slot.mat.map = kind === "impact" ? ringTexture : glowTexture;
-    slot.sprite.position.set(pos[0], pos[1], pos[2]);
-    slot.mat.color.copy(color);
-    slot.sprite.visible = true;
-    instr.log("pulse-start", { node, kind });
-  }
-
-  function updatePulses(now: number): void {
-    for (const p of pulsePool) {
-      if (p.start < 0) continue;
-      const k = (now - p.start) / p.dur;
-      if (k >= 1) {
-        p.start = -1;
-        p.sprite.visible = false;
-        instr.log("pulse-end", { node: p.node, kind: p.kind });
-        continue;
-      }
-      if (p.kind === "impact") {
-        const size = 9 + 16 * k;
-        p.sprite.scale.set(size, size, 1);
-        p.mat.opacity = 0.85 * (1 - k);
-      } else {
-        const size = 6 + 11 * k;
-        p.sprite.scale.set(size, size, 1);
-        p.mat.opacity = 0.6 * (1 - k) * (1 - k);
-      }
-    }
-  }
-
-  function activePulseCount(): number {
-    return pulsePool.filter((p) => p.start >= 0).length;
-  }
-  const flowTexture = (() => {
-    const c = document.createElement("canvas");
-    c.width = c.height = 32;
-    const g = c.getContext("2d")!;
-    const grad = g.createRadialGradient(16, 16, 0, 16, 16, 16);
-    grad.addColorStop(0, "rgba(255,255,255,1)");
-    grad.addColorStop(0.45, "rgba(255,255,255,0.85)");
-    grad.addColorStop(1, "rgba(255,255,255,0)");
-    g.fillStyle = grad;
-    g.fillRect(0, 0, 32, 32);
-    const tex = new THREE.CanvasTexture(c);
-    disposables.push(tex);
-    texRegistry.add(tex);
-    return tex;
-  })();
-
-  function clearFlows(): void {
-    if (flowPoints) {
-      scene.remove(flowPoints);
-      flowPoints.geometry.dispose();
-      (flowPoints.material as THREE.Material).dispose();
-      flowPoints = null;
-    }
-    if (flowItems.length > 0) instr.log("flows-cleared", { sparks: flowItems.length });
-    flowItems = [];
-    clearPulsePool();
-  }
-
-  function buildFlows(rels: Relation[], positions: Map<string, Vec3>): void {
-    clearFlows();
-    pulseSeen.clear();
-    const sel = store.getState().selectedAuthorId;
-    if (store.getState().reducedMotion || rels.length === 0) return;
-    const items: FlowItem[] = [];
-    const colors: number[] = [];
-    const animated: Array<Record<string, string>> = [];
-
-    // the story lap's schedule (PR4): dim 0–180 → incoming staggered → the
-    // impact lands → outgoing in three waves whose arrivals spread ≥800ms
-    const STORY_DUR = 620;
-    const IN_BASE = 180;
-    const IN_STAGGER = 55;
-    const OUT_BASE = 1050;
-    const WAVE_GAP = 450;
-
-    interface Animatable {
-      r: Relation;
-      pts: Vec3[];
-      reversed: Vec3[] | null;
-      incoming: boolean;
-      dialogue: boolean;
-    }
-    const anims: Animatable[] = [];
-    for (const r of rels) {
-      const a = positions.get(r.sourceId);
-      const b = positions.get(r.targetId);
-      if (!a || !b) continue;
-      const def = RELATION_DEFS.find((d) => d.id === r.type);
-      if (!def || def.dashed) continue; // affinity/contrast: nothing to animate
-      animated.push({
-        id: r.id,
-        from: r.sourceId,
-        to: r.targetId,
-        type: r.type,
-        direction: def.direction
-      });
-      const pts = arcPoints(a, b, ARC_SEG, R * 1.006);
-      anims.push({
-        r,
-        pts,
-        reversed: def.direction === "bidirectional" ? [...pts].reverse() : null,
-        incoming: r.targetId === sel,
-        dialogue: def.direction === "bidirectional"
-      });
-    }
-    const inbound = anims.filter((x) => x.incoming).sort((x, y) => y.r.weight - x.r.weight);
-    const outbound = anims.filter((x) => !x.incoming).sort((x, y) => y.r.weight - x.r.weight);
-    const waveSize = Math.max(1, Math.ceil(outbound.length / 3));
-
-    const push = (
-      pts: Vec3[],
-      dur: number,
-      phase: number,
-      delay: number,
-      endId: string,
-      kind: FlowItem["kind"],
-      color: THREE.Color,
-      story: boolean
-    ): void => {
-      items.push({
-        pts,
-        dur,
-        phase,
-        delay,
-        endId,
-        kind,
-        color,
-        story,
-        storyDur: STORY_DUR,
-        ambientBase: 0,
-        prevT: -1,
-        arrived: false
-      });
-      colors.push(color.r, color.g, color.b);
-    };
-
-    inbound.forEach((x, i) => {
-      const delay = IN_BASE + i * IN_STAGGER;
-      const dur = 3200 - x.r.weight * 900;
-      const color = new THREE.Color(RELATION_COLORS[x.r.type]);
-      const kind = x.dialogue ? "dialogue" : "incoming";
-      push(x.pts, dur, 0, delay, x.r.targetId, kind, color, true);
-      push(x.pts, dur, 0.5, delay + STORY_DUR + 300, x.r.targetId, kind, color, false);
-      if (x.reversed) {
-        // the dialogue's answer departs after the story lap arrives
-        push(x.reversed, dur, 0, delay + STORY_DUR + 500, x.r.sourceId, "dialogue", color, false);
-      }
-    });
-    outbound.forEach((x, i) => {
-      const wave = Math.floor(i / waveSize);
-      const delay = OUT_BASE + wave * WAVE_GAP + (i % waveSize) * 37;
-      const dur = 3200 - x.r.weight * 900;
-      const color = new THREE.Color(RELATION_COLORS[x.r.type]);
-      const kind = x.dialogue ? "dialogue" : "outgoing";
-      push(x.pts, dur, 0, delay, x.r.targetId, kind, color, true);
-      push(x.pts, dur, 0.5, delay + STORY_DUR + 300, x.r.targetId, kind, color, false);
-      if (x.reversed) {
-        push(x.reversed, dur, 0, delay + STORY_DUR + 500, x.r.sourceId, "dialogue", color, false);
-      }
-    });
-    const incomingCount = inbound.length;
-    const outgoingCount = outbound.length;
-    // one pool slot per node that will ever pulse (endIds, deduped) — sized
-    // exactly, so completion-before-reuse holds by construction
-    allocPulsePool(new Set(items.map((f) => f.endId)).size);
-    if (items.length === 0) return;
-    flowStoryBuilds++;
-    const geom = new THREE.BufferGeometry();
-    geom.setAttribute("position", new THREE.Float32BufferAttribute(items.length * 3, 3));
-    geom.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
-    const mat = new THREE.PointsMaterial({
-      size: 2.7,
-      map: flowTexture,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.95,
-      depthWrite: false,
-      sizeAttenuation: true
-    });
-    flowPoints = new THREE.Points(geom, mat);
-    flowPoints.renderOrder = 5;
-    flowPoints.frustumCulled = false;
-    scene.add(flowPoints);
-    flowItems = items;
-    flowBuiltAt = performance.now();
-    // sparks always travel the canonical data direction, never the traversal
-    // order — the QA harness asserts this against /data
-    instr.log("flows-built", {
-      sparks: items.length,
-      relations: animated,
-      staging: {
-        incomingBase: IN_BASE,
-        incomingStagger: IN_STAGGER,
-        outgoingBase: OUT_BASE,
-        waveGap: WAVE_GAP,
-        storyDur: STORY_DUR,
-        incoming: incomingCount,
-        outgoing: outgoingCount
-      }
-    });
-  }
-
-  function flowArrival(f: FlowItem, now: number): void {
-    if (pulseSeen.has(f.endId)) return;
-    pulseSeen.add(f.endId);
-    const sel = store.getState().selectedAuthorId;
-    // the center's answer is the IMPACT ripple, whoever delivered it
-    const kind = f.endId === sel ? "impact" : f.kind;
-    firePulse(f.pts[f.pts.length - 1]!, f.color, now, f.endId, kind);
-    instr.log("flow-arrival", { node: f.endId, kind: f.kind, order: pulseSeen.size });
-  }
-
-  function updateFlows(now: number): void {
-    if (!flowPoints || flowItems.length === 0) return;
-    const attr = flowPoints.geometry.getAttribute("position") as THREE.BufferAttribute;
-    for (let i = 0; i < flowItems.length; i++) {
-      const f = flowItems[i]!;
-      const local = now - flowBuiltAt - f.delay;
-      if (local < 0) {
-        // parked at the globe's core until its stage begins — depth testing
-        // hides it behind the surface
-        attr.setXYZ(i, 0, 0, 0);
-        continue;
-      }
-      let t: number;
-      if (f.story) {
-        // story lap: one scheduled pass — its landing IS the staged arrival
-        t = Math.min(1, local / f.storyDur);
-        if (t >= 1) {
-          if (!f.arrived) {
-            f.arrived = true;
-            flowArrival(f, now);
-          }
-          f.story = false;
-          f.ambientBase = now;
-          t = 0; // respawn at the source, joining the ambient loop
-        }
-      } else {
-        const base = f.ambientBase > 0 ? f.ambientBase : flowBuiltAt + f.delay;
-        t = (((now - base) / f.dur + f.phase) % 1 + 1) % 1;
-        // ambient wraps still count as first arrival for late (phase .5) sparks
-        if (f.prevT >= 0 && f.prevT > t + 0.5 && !f.arrived) {
-          f.arrived = true;
-          flowArrival(f, now);
-        }
-        f.prevT = t;
-      }
-      const x = t * (f.pts.length - 1);
-      const i0 = Math.min(f.pts.length - 2, Math.floor(x));
-      const k = x - i0;
-      const p = f.pts[i0]!;
-      const q = f.pts[i0 + 1]!;
-      attr.setXYZ(
-        i,
-        p[0] + (q[0] - p[0]) * k,
-        p[1] + (q[1] - p[1]) * k,
-        p[2] + (q[2] - p[2]) * k
-      );
-    }
-    attr.needsUpdate = true;
-  }
+  // --- directional flow on the selection web (FlowStoryLayer, 7th review PR2)
+  // The narrative machine lives in layers/flow-story.ts and owns its clock:
+  // camera moves, LOD switches and geometry rebuilds route through setStory()
+  // and are no-ops while the story key (selection|mode|replayToken) holds.
+  const flowStory = new FlowStoryLayer({
+    scene,
+    glowTexture,
+    arcRadius: R * 1.006,
+    arcSegments: ARC_SEG,
+    log: (type, data) => instr.log(type, data),
+    trackTexture: (t) => {
+      texRegistry.add(t);
+      disposables.push(t);
+    },
+    reducedMotion: () => store.getState().reducedMotion
+  });
 
   // --- per-frame state ------------------------------------------------------
   const labels = new LabelLayer(container);
@@ -1473,9 +1139,23 @@ export function createGlobe(
   // rebuild the world — the gate owns the tier and counts real transitions
   const lodGate = new LodGate(camera.position.length());
   let lod: LodLevel = lodGate.tier;
-  // interaction-feel counters (7th review PR0): story restarts are failures
-  // the frame-time ring cannot see — count them where they happen
-  let flowStoryBuilds = 0;
+
+  // immediate contact feedback (7th review PR2 §4.4): the press answers in
+  // the same frame — node-side via the terrain flash, long before the
+  // camera or the narrative moves. 50ms attack, 160ms decay.
+  let contact: { idx: number; start: number } | null = null;
+  let lastContact = { id: "", at: -1e9 };
+  function triggerContact(authorId: string, evTs?: number): void {
+    if (store.getState().reducedMotion) return;
+    const idx = indexOf.get(authorId);
+    if (idx === undefined) return;
+    const now = performance.now();
+    if (lastContact.id === authorId && now - lastContact.at < 300) return;
+    lastContact = { id: authorId, at: now };
+    contact = { idx, start: now };
+    if (evTs !== undefined) instr.latency("contact", now - evTs);
+    instr.log("contact-feedback", { id: authorId });
+  }
   let neighborIds = new Set<string>();
   let transition: { from: Map<string, Vec3>; start: number; dur: number } | null = null;
   let paletteFrom = 0;
@@ -1683,13 +1363,19 @@ export function createGlobe(
       edgeGroups = buildEdgeGroups(rest, current, edgeRoot, 0.16, false);
       highlightGroups = buildEdgeGroups(view.raw, current, highlightRoot, 1, true);
       buildArrows(view.raw, current);
-      buildFlows(view.raw, current);
+      flowStory.setStory({
+        selectedId: sel,
+        mode: s.mode,
+        replayToken: s.flowReplayToken,
+        relations: view.raw,
+        positions: current
+      });
     } else {
       if (view.raw.length > 0) {
         edgeGroups = buildEdgeGroups(view.raw, current, edgeRoot, 1, false);
       }
       buildArrows([], current);
-      clearFlows();
+      flowStory.clear();
     }
     buildAggregateRoutes(view.aggregates);
   }
@@ -2217,6 +1903,10 @@ export function createGlobe(
 
   function onPointerDown(e: PointerEvent): void {
     downAt = { x: e.clientX, y: e.clientY, t: performance.now() };
+    // contact fires at PRESS, not at click resolution — the world answers
+    // before the finger lifts (7th review §4.4 stage 1)
+    const id = pickAuthor(e.clientX, e.clientY);
+    if (id) triggerContact(id, e.timeStamp);
   }
 
   function onPointerUp(e: PointerEvent): void {
@@ -2258,6 +1948,7 @@ export function createGlobe(
   let prev = store.getState();
   let prevReducedMotion = prev.reducedMotion;
   let prevEgoExpanded = prev.egoExpanded;
+  let prevReplayToken = prev.flowReplayToken;
   recomputeVisibility();
   refreshEraTextures(); // seeds union alphas + terrain uniforms (atlas view)
   updateNodeInstances();
@@ -2294,6 +1985,7 @@ export function createGlobe(
     const workHoverChanged = s.hoveredWorkId !== prev.hoveredWorkId;
     const prevSelForCam = prev.selectedAuthorId;
     const prevWorkForCam = prev.selectedWorkId;
+    const previewChanged = s.yearPreview !== prev.yearPreview;
     prev = s;
 
     // Escape restores where you came from (7th review §7): pose bookmarks
@@ -2335,7 +2027,7 @@ export function createGlobe(
       edgeRoot.visible = false;
       highlightRoot.visible = false;
       if (arrowMesh) arrowMesh.visible = false;
-      if (flowPoints) flowPoints.visible = false;
+      flowStory.setVisible(false);
       // swing the camera with the nodes, or the map ends up facing empty ocean
       const target = positionsFor(s.mode);
       let aim: Vec3 | undefined = s.selectedAuthorId
@@ -2359,9 +2051,20 @@ export function createGlobe(
         );
       }
     }
-    // the year fader drives sovereignty: nation lifecycle + treaty alphas
-    if (filtersChanged) refreshEraTextures();
+    // the year fader drives sovereignty: nation lifecycle + treaty alphas.
+    // A held-scrub preview refreshes the WORLD only (labels/towns follow the
+    // atomic display commit); relations and visibility wait for the commit.
+    if (filtersChanged || previewChanged) {
+      const prevDisplay = display;
+      refreshEraTextures();
+      if (previewChanged && !filtersChanged && display !== prevDisplay) {
+        updateLabels();
+        syncCityMarkers();
+      }
+    }
     if (filtersChanged || selectionChanged) {
+      // keyboard/search selection has no pointerdown — contact still fires
+      if (selectionChanged && s.selectedAuthorId) triggerContact(s.selectedAuthorId);
       recomputeVisibility();
       computeSealClusters(true);
       updateNodeInstances();
@@ -2380,6 +2083,10 @@ export function createGlobe(
     // "모두 보기" lifts the map's ego cap for this selection (PR3)
     if (s.egoExpanded !== prevEgoExpanded && !transition) rebuildEdges();
     prevEgoExpanded = s.egoExpanded;
+    // explicit replay: the ONLY way to reset the story clock besides a new
+    // selection (7th review PR2) — the token changes the story key
+    if (s.flowReplayToken !== prevReplayToken && !transition) rebuildEdges();
+    prevReplayToken = s.flowReplayToken;
     updateRings();
   });
 
@@ -2487,7 +2194,12 @@ export function createGlobe(
     cameraAnimating: cam.animating(),
     cameraState: cam.stateKind(),
     safeAreaSettling: cam.offsetSettling(),
-    interaction: { lodTransitions: lodGate.transitions, flowStoryBuilds },
+    interaction: {
+      lodTransitions: lodGate.transitions,
+      flowStoryBuilds: flowStory.storyBuilds,
+      flowStoryDiffs: flowStory.storyDiffs,
+      storyKey: flowStory.metrics().storyKey
+    },
     rendererVisibleAuthors: visibleSet.size,
     rendererVisibleRelations: visRels.length,
     relationView: lastRelationView
@@ -2498,11 +2210,11 @@ export function createGlobe(
           aggregateRoutes: lastRelationView.aggregates.length
         }
       : null,
-    flowSparks: flowItems.length,
+    flowSparks: (flowStory.metrics().sparks as number) ?? 0,
     /** nodes that have answered an arriving spark with their one pulse */
-    flowArrivals: pulseSeen.size,
+    flowArrivals: (flowStory.metrics().arrivals as number) ?? 0,
     /** pulses alive this frame — the event-synced capture waits on this */
-    activePulses: activePulseCount(),
+    activePulses: flowStory.activePulses(),
     // static direction encoding — must survive reduced-motion
     arrowInstances: arrowMesh ? arrowMesh.count : 0,
     labelsShown: labels.lastShown,
@@ -2536,6 +2248,7 @@ export function createGlobe(
       bracket: eraBracket,
       mix: Math.round(eraMixNow * 1000) / 1000,
       targetYear: store.getState().year,
+      previewYear: store.getState().yearPreview,
       displayYear: display.year,
       loading: eraLoadingSent
     },
@@ -2602,6 +2315,7 @@ export function createGlobe(
         edgeRoot.visible = true;
         highlightRoot.visible = true;
         if (arrowMesh) arrowMesh.visible = true;
+        flowStory.setVisible(true);
         computeSealClusters(true);
         rebuildEdges();
         updateNodeInstances();
@@ -2668,8 +2382,18 @@ export function createGlobe(
       u.value = (u.value as number) + (unionTarget - (u.value as number)) * 0.08;
     }
 
-    updateFlows(now);
-    updatePulses(now);
+    if (contact && terrainMat) {
+      const t = now - contact.start;
+      const k = t < 50 ? t / 50 : Math.max(0, 1 - (t - 50) / 160);
+      terrainMat.uniforms.uContactIdx!.value = contact.idx;
+      terrainMat.uniforms.uContactK!.value = k;
+      if (t > 240) {
+        contact = null;
+        terrainMat.uniforms.uContactK!.value = 0;
+      }
+    }
+
+    flowStory.update(now);
     renderer.render(scene, camera);
   }
   // one-time GPU warmup BEFORE the frame loop: shader compiles + the mid
@@ -2695,7 +2419,7 @@ export function createGlobe(
       scene.remove(arrowMesh);
       arrowMesh.dispose();
     }
-    clearFlows();
+    flowStory.dispose();
     clearAggregates();
     scene.remove(aggRoot);
     temporal?.dispose();
