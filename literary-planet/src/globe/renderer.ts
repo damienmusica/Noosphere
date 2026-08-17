@@ -38,6 +38,7 @@ import { CameraController } from "./camera-controller.ts";
 import type { AppState, Store } from "../state/store.ts";
 import { LabelLayer, type LabelItem, type LabelState } from "./labels.ts";
 import { paintTerrainTexture } from "./terrain-texture.ts";
+import { buildNationHeightPatch } from "./terrain-height.ts";
 import { paintSealTexture } from "./seal-texture.ts";
 import { gridToVec3 } from "../lib/territory-geometry.ts";
 import { evidenceLabel, regionLabel, relationTypeShort } from "../i18n/index.ts";
@@ -441,7 +442,15 @@ export function createGlobe(
           // contact feedback (7th review PR2): the pressed nation's land
           // answers inside the same frame — attack 50ms, decay 160ms
           uContactIdx: { value: -1 },
-          uContactK: { value: 0 }
+          uContactK: { value: 0 },
+          // lens elevation (grammar §4¾): 2.5D hillshade for ONE nation's
+          // relief patch — flat unless the user turns the lens on
+          uLensOn: { value: 0 },
+          uLensNation: { value: -1 },
+          uLensAmp: { value: 0 },
+          uLensTex: { value: null },
+          uLensRect: { value: new THREE.Vector4(0, 0, 1, 1) },
+          uLensTexel: { value: new THREE.Vector2(1, 1) }
         },
         vertexShader: /* glsl */ `
           varying vec2 vUv;
@@ -462,7 +471,19 @@ export function createGlobe(
           uniform float uUnion;
           uniform float uContactIdx;
           uniform float uContactK;
+          uniform float uLensOn;
+          uniform float uLensNation;
+          uniform float uLensAmp;
+          uniform sampler2D uLensTex;
+          uniform vec4 uLensRect; // u0, v0, uSpan, vSpan
+          uniform vec2 uLensTexel;
           varying vec2 vUv;
+
+          float lensHeight(vec2 uv) {
+            vec2 p = (uv - uLensRect.xy) / uLensRect.zw;
+            if (p.x < 0.0 || p.x > 1.0 || p.y < 0.0 || p.y > 1.0) return 0.0;
+            return texture2D(uLensTex, p).r;
+          }
           void main() {
             // v2.5: the plate itself is a blend of the tectonic bracket —
             // coastlines grow between keyframes
@@ -488,6 +509,19 @@ export function createGlobe(
             if (uContactK > 0.004 && abs(oid - uContactIdx) < 0.5) {
               col += vec3(0.30, 0.24, 0.12) * uContactK;
               alpha = max(alpha, 0.4 * uContactK * landNow);
+            }
+
+            // lens elevation (§4¾): 2.5D hillshade of the selected nation's
+            // relief — center a low hill, coast at sea level. Explicitly
+            // opt-in; a mountain with the lens off is a bug.
+            if (uLensOn > 0.5 && abs(oid - uLensNation) < 0.5) {
+              float hC = lensHeight(vUv);
+              float hX = lensHeight(vUv + vec2(uLensTexel.x, 0.0));
+              float hY = lensHeight(vUv + vec2(0.0, uLensTexel.y));
+              vec3 nrm = normalize(vec3((hC - hX) * 30.0 * uLensAmp, (hC - hY) * 30.0 * uLensAmp, 1.0));
+              float hill = clamp(dot(nrm, normalize(vec3(-0.5, 0.62, 0.72))), 0.0, 1.0);
+              col = col * (0.78 + 0.5 * hill) + vec3(0.10, 0.085, 0.05) * hC * uLensAmp;
+              alpha = max(alpha, hC * 0.25 * uLensAmp);
             }
 
             vec4 uni = texture2D(unionTex, vUv);
@@ -595,6 +629,82 @@ export function createGlobe(
     fillUnionInfo(display.year, display.yearMode);
     setEraLoading(false);
   }
+  // --- lens elevation (§4¾, 7th review PR4) --------------------------------
+  // corpus-density values: norm(works + documented relations) — the CURRENT
+  // corpus's documentation density, never quality (bias note in the legend)
+  const corpusDensity = (() => {
+    const per = new Map<string, number>();
+    for (const a of authors) per.set(a.id, 0);
+    for (const w of dataset.works) per.set(w.authorId, (per.get(w.authorId) ?? 0) + 1);
+    for (const r of dataset.relations) {
+      if (r.evidenceLevel !== "documented") continue;
+      per.set(r.sourceId, (per.get(r.sourceId) ?? 0) + 1);
+      per.set(r.targetId, (per.get(r.targetId) ?? 0) + 1);
+    }
+    const max = Math.max(1, ...per.values());
+    const out = new Map<string, number>();
+    for (const [id, v] of per) out.set(id, v / max);
+    return out;
+  })();
+
+  let lensTexture: THREE.DataTexture | null = null;
+  let lensActiveNation = -1;
+  function refreshLens(): void {
+    if (!terrainMat) return;
+    const s = store.getState();
+    const idx = s.selectedAuthorId ? indexOf.get(s.selectedAuthorId) : undefined;
+    const wantOn =
+      s.lens === "corpus-density" &&
+      idx !== undefined &&
+      s.mode === "semantic" &&
+      dataset.territory !== undefined;
+    if (!wantOn) {
+      terrainMat.uniforms.uLensOn!.value = 0;
+      lensActiveNation = -1;
+      return;
+    }
+    if (lensActiveNation !== idx) {
+      const patch = buildNationHeightPatch(dataset.territory!.geometry, idx);
+      if (!patch) {
+        terrainMat.uniforms.uLensOn!.value = 0;
+        lensActiveNation = -1;
+        return;
+      }
+      if (lensTexture) {
+        unreg(lensTexture);
+        lensTexture.dispose();
+      }
+      lensTexture = new THREE.DataTexture(
+        patch.data,
+        patch.w,
+        patch.h,
+        THREE.RedFormat,
+        THREE.UnsignedByteType
+      );
+      lensTexture.minFilter = THREE.LinearFilter;
+      lensTexture.magFilter = THREE.LinearFilter;
+      lensTexture.needsUpdate = true;
+      reg(lensTexture);
+      terrainMat.uniforms.uLensTex!.value = lensTexture;
+      (terrainMat.uniforms.uLensRect!.value as THREE.Vector4).set(
+        patch.u0,
+        patch.v0,
+        patch.uSpan,
+        patch.vSpan
+      );
+      (terrainMat.uniforms.uLensTexel!.value as THREE.Vector2).set(
+        patch.uSpan / patch.w,
+        patch.vSpan / patch.h
+      );
+      lensActiveNation = idx;
+      instr.log("lens-active", { lens: s.lens, author: s.selectedAuthorId });
+    }
+    terrainMat.uniforms.uLensNation!.value = idx;
+    terrainMat.uniforms.uLensAmp!.value =
+      0.45 + 0.55 * (corpusDensity.get(s.selectedAuthorId!) ?? 0);
+    terrainMat.uniforms.uLensOn!.value = 1;
+  }
+
   // full planetary map through mid LOD, receding to faint continents far out.
   // Floor raised 0.3→0.38 (7th review: the far view had L0–L2 collapsed into
   // one near-black band — the land must stay a readable value above the sea)
@@ -1130,7 +1240,8 @@ export function createGlobe(
         dataset.territory?.geometry,
         (wid) => readingRank.get(wid),
         worksById,
-        (wid) => !engaged || (worksById.get(wid)?.year ?? 0) <= display.year
+        (wid) => !engaged || (worksById.get(wid)?.year ?? 0) <= display.year,
+        !s.reducedMotion // towns grow in on founding (PR4)
       );
       cityMarkersFor = buildKey;
     } else if (!show && cityMarkersFor !== null) {
@@ -1906,8 +2017,10 @@ export function createGlobe(
       if (disposed) return;
       const s = store.getState();
       const id = pickAuthor(e.clientX, e.clientY);
-      // priority: star > work town > relation line
-      const cw = id ? null : pickCity();
+      // priority: star > work town > relation line — EXCEPT the already-
+      // selected star, whose big near-zoom disc must not swallow its own
+      // towns (7th review vertical slice: town clicks inside the realm)
+      const cw = !id || id === s.selectedAuthorId ? pickCity() : null;
       const rel = id || cw ? null : pickRelation();
       renderer.domElement.style.cursor = id || cw || rel ? "pointer" : "grab";
       const changed =
@@ -1939,13 +2052,14 @@ export function createGlobe(
     downAt = null;
     if (moved > 6 || dt > 700) return; // drag, not click
     const id = pickAuthor(e.clientX, e.clientY);
-    if (id) {
-      cbs.onSelect(id);
-      return;
-    }
-    const cw = pickCity();
+    // towns beat their own already-selected star (see onPointerMove note)
+    const cw = !id || id === store.getState().selectedAuthorId ? pickCity() : null;
     if (cw) {
       cbs.onWorkPick(cw);
+      return;
+    }
+    if (id) {
+      cbs.onSelect(id);
       return;
     }
     const rel = pickRelation();
@@ -2009,6 +2123,7 @@ export function createGlobe(
     const prevSelForCam = prev.selectedAuthorId;
     const prevWorkForCam = prev.selectedWorkId;
     const previewChanged = s.yearPreview !== prev.yearPreview;
+    const lensChanged = s.lens !== prev.lens;
     prev = s;
 
     // Escape restores where you came from (7th review §7): pose bookmarks
@@ -2019,9 +2134,24 @@ export function createGlobe(
       else if (prevSelForCam && !s.selectedAuthorId) cam.restoreBookmark("planet");
     }
     if (s.selectedWorkId !== prevWorkForCam) {
-      if (!prevWorkForCam && s.selectedWorkId) cam.pushBookmark("author");
-      else if (prevWorkForCam && !s.selectedWorkId) cam.restoreBookmark("author");
+      if (!prevWorkForCam && s.selectedWorkId) {
+        cam.pushBookmark("author");
+        // author → work: the camera walks INTO the town (7th review §7);
+        // safe-area framing keeps it beside the card, and the flight is
+        // cancellable like every programmatic move
+        const town = s.selectedAuthorId
+          ? dataset.territory?.geometry.cities[s.selectedAuthorId]?.towns.find(
+              (t) => t.id === s.selectedWorkId
+            )
+          : undefined;
+        if (town && s.mode === "semantic" && dataset.territory) {
+          const g = dataset.territory.geometry;
+          const p = gridToVec3(town.x, town.y, g.gridWidth, g.gridHeight);
+          cam.focusTo(new THREE.Vector3(p[0], p[1], p[2]), CAMERA_MIN + 4, { tag: "city" });
+        }
+      } else if (prevWorkForCam && !s.selectedWorkId) cam.restoreBookmark("author");
     }
+    if (lensChanged) refreshLens();
 
     // the picked line carries the only in-place type label — refresh it
     if (pickedChanged) updateLabels();
@@ -2073,6 +2203,7 @@ export function createGlobe(
           "transition"
         );
       }
+      refreshLens(); // relief belongs to the semantic plate only
     }
     // the year fader drives sovereignty: nation lifecycle + treaty alphas.
     // A held-scrub preview refreshes the WORLD only (labels/towns follow the
@@ -2094,6 +2225,7 @@ export function createGlobe(
       if (!transition) rebuildEdges();
       updateLabels();
       syncCityMarkers();
+      if (selectionChanged) refreshLens();
     } else if (hoverChanged) {
       updateRelationHover();
       updateNodeInstances();
@@ -2281,10 +2413,41 @@ export function createGlobe(
       const rect = container.getBoundingClientRect();
       return {
         count: cityMarkers.count,
+        buildings: cityMarkers.buildingCount,
+        roadSegments: cityMarkers.roadSegments,
         screen: cityMarkers
           .screenPositions(camera, container.clientWidth, container.clientHeight)
           .map((p) => ({ id: p.id, x: p.x + Math.round(rect.left), y: p.y + Math.round(rect.top) }))
       };
+    })(),
+    lens: {
+      id: store.getState().lens,
+      active: terrainMat ? (terrainMat.uniforms.uLensOn!.value as number) > 0.5 : false,
+      amp: terrainMat
+        ? Math.round((terrainMat.uniforms.uLensAmp!.value as number) * 100) / 100
+        : 0
+    },
+    // anchor-star page coordinates so QA can drive REAL pointer paths
+    // (hover/click a node without private action hooks)
+    authorScreens: (() => {
+      const rect = container.getBoundingClientRect();
+      const camDir = camera.position.clone().normalize();
+      const v = new THREE.Vector3();
+      const out: Array<{ id: string; x: number; y: number }> = [];
+      for (const a of authors) {
+        if (a.tier !== "anchor" || !nodeVisible(a)) continue;
+        const p = current.get(a.id);
+        if (!p) continue;
+        if (p[0] * camDir.x + p[1] * camDir.y + p[2] * camDir.z < 0.25) continue; // back side
+        v.set(p[0], p[1], p[2]).multiplyScalar(R).project(camera);
+        if (v.z > 1) continue;
+        out.push({
+          id: a.id,
+          x: Math.round(((v.x + 1) / 2) * container.clientWidth) + Math.round(rect.left),
+          y: Math.round(((-v.y + 1) / 2) * container.clientHeight) + Math.round(rect.top)
+        });
+      }
+      return out;
     })()
   });
   instr.registerRenderer(probe);
@@ -2404,6 +2567,8 @@ export function createGlobe(
       const u = terrainMat.uniforms.uUnion!;
       u.value = (u.value as number) + (unionTarget - (u.value as number)) * 0.08;
     }
+
+    cityMarkers.update(now); // founding growth tick (settled = no-op)
 
     if (contact && terrainMat) {
       const t = now - contact.start;

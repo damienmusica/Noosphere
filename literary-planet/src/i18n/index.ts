@@ -129,6 +129,11 @@ export interface UIStrings {
   /** replays the relation narrative — the only sanctioned story reset (R7) */
   replayFlows: string;
   replayFlowsTitle: string;
+  /** elevation lens (§4¾): opt-in relief; formula + bias shown while on */
+  lensLabel: string;
+  lensNone: string;
+  lensCorpus: string;
+  lensCorpusNote: string;
   workCardAria: string;
   workEntryBadge: string;
   workOrder: (n: number, total: number) => string;
@@ -301,6 +306,11 @@ const KO: UIStrings = {
   showAllRelations: "모두 보기",
   replayFlows: "다시 재생",
   replayFlowsTitle: "관계 흐름 연출을 처음부터 다시 재생합니다",
+  lensLabel: "고도 렌즈",
+  lensNone: "없음 (평면)",
+  lensCorpus: "코퍼스 밀도",
+  lensCorpusNote:
+    "선택 영토의 음영 기복 = norm(수록작 수 + documented 관계 수). 이 수치는 현재 코퍼스의 문서화 밀도이지 문학적 품질·위대함이 아니다 — 큐레이션 편향이 그대로 지형이 된다.",
   legendOff: "탐색·필터에서 꺼진 유형",
   workCardAria: "작품 카드",
   workEntryBadge: "입문작 — 여기서 시작",
@@ -481,6 +491,11 @@ const EN: UIStrings = {
   showAllRelations: "Show all",
   replayFlows: "Replay",
   replayFlowsTitle: "Replay the relation flow narrative from the start",
+  lensLabel: "Elevation lens",
+  lensNone: "None (flat)",
+  lensCorpus: "Corpus density",
+  lensCorpusNote:
+    "Shaded relief on the selected territory = norm(works + documented relations). This is the documentation density of the CURRENT corpus, not literary quality or greatness — curation bias becomes terrain, literally.",
   legendOff: "Switched off in Explore/Filter",
   workCardAria: "Work card",
   workEntryBadge: "Entry work — start here",
