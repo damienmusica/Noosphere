@@ -15,6 +15,20 @@ import type { PeriodId, Territory } from "../types.ts";
 
 const COAST = "#8e733f"; // engraved coast brass, same ink as the P0 plate
 
+export type PlateCanvas = HTMLCanvasElement | OffscreenCanvas;
+
+/** the painter runs on the main thread (boot atlas) AND in the paint worker
+ * (era + near + union plates) — same code, environment-appropriate canvas */
+export function makeCanvas(w: number, h: number): PlateCanvas {
+  if (typeof document !== "undefined") {
+    const c = document.createElement("canvas");
+    c.width = w;
+    c.height = h;
+    return c;
+  }
+  return new OffscreenCanvas(w, h);
+}
+
 /**
  * Add a wrapped flat polyline to a path, drawn three times (shifted by
  * ±width) so strokes stay continuous across the horizontal seam. Polar rings
@@ -69,24 +83,20 @@ export function paintTerrainTexture(
   /** clause 4 (v2.5): towns are founded at publication — era plates pass a
    * year filter; omitted = every town exists (the full atlas) */
   townVisible?: (workId: string) => boolean
-): HTMLCanvasElement {
+): PlateCanvas {
   const g = territory.geometry;
   const texW = g.gridWidth * cell;
   const texH = (g.gridHeight - 1) * cell;
-  const canvas = document.createElement("canvas");
-  canvas.width = texW;
-  canvas.height = texH;
-  const ctx = canvas.getContext("2d");
+  const canvas = makeCanvas(texW, texH);
+  const ctx = canvas.getContext("2d") as CanvasRenderingContext2D | null;
   if (!ctx) return canvas;
 
   ctx.lineJoin = "round";
   ctx.lineCap = "round";
 
   // land fill + land mask from the owner raster
-  const mask = document.createElement("canvas");
-  mask.width = texW;
-  mask.height = texH;
-  const mctx = mask.getContext("2d");
+  const mask = makeCanvas(texW, texH);
+  const mctx = mask.getContext("2d") as CanvasRenderingContext2D | null;
   ctx.fillStyle = COLORS.surfaceRaised;
   if (mctx) mctx.fillStyle = "#ffffff";
   g.ownerRle.forEach((row, j) => {
@@ -108,14 +118,10 @@ export function paintTerrainTexture(
   // period wash: owner runs rasterized small, blurred up, then masked to the
   // land raster — watercolor held inside the ink. Falls back to plain
   // bilinear upscale where ctx.filter is unavailable.
-  const washSrc = document.createElement("canvas");
-  washSrc.width = g.gridWidth;
-  washSrc.height = g.ownerRle.length;
-  const wsctx = washSrc.getContext("2d");
-  const washFull = document.createElement("canvas");
-  washFull.width = texW;
-  washFull.height = texH;
-  const wctx = washFull.getContext("2d");
+  const washSrc = makeCanvas(g.gridWidth, g.ownerRle.length);
+  const wsctx = washSrc.getContext("2d") as CanvasRenderingContext2D | null;
+  const washFull = makeCanvas(texW, texH);
+  const wctx = washFull.getContext("2d") as CanvasRenderingContext2D | null;
   if (wsctx && wctx && mctx) {
     g.ownerRle.forEach((row, j) => {
       eachRun(row, (x0, count, value) => {
@@ -129,13 +135,13 @@ export function paintTerrainTexture(
     wctx.imageSmoothingEnabled = true;
     if (typeof wctx.filter === "string") wctx.filter = `blur(${2.5 * cell}px)`;
     for (const shift of [-texW, 0, texW]) {
-      wctx.drawImage(washSrc, shift, 0, texW, texH);
+      wctx.drawImage(washSrc as CanvasImageSource, shift, 0, texW, texH);
     }
     wctx.filter = "none";
     wctx.globalCompositeOperation = "destination-in";
-    wctx.drawImage(mask, 0, 0);
+    wctx.drawImage(mask as CanvasImageSource, 0, 0);
     ctx.globalAlpha = 0.15;
-    ctx.drawImage(washFull, 0, 0);
+    ctx.drawImage(washFull as CanvasImageSource, 0, 0);
     ctx.globalAlpha = 1;
   }
 

@@ -109,12 +109,23 @@ export interface UIStrings {
   clusterMore: (n: number) => string;
   clusterAria: (name: string, n: number) => string;
   clusterListAria: string;
+  clusterNote: string;
+  legendSecRelations: string;
+  legendSecTerritory: string;
+  legendSecTime: string;
+  legendSecUnion: string;
   /** sovereignty-state badge on the profile while the fader is engaged */
   eraBadgeUnformed: string;
   eraBadgeForming: string;
   eraBadgeHeritage: string;
   eraBadgeInactive: string;
   eraBadgeTitle: string;
+  /** shown beside the year label while the temporal plates paint (PR2) */
+  eraPreparing: string;
+  /** geo overview relation policy (PR3): computed corridors, not raw edges */
+  legendRoutes: string;
+  mapRelationsCapped: (shown: number, total: number) => string;
+  showAllRelations: string;
   workCardAria: string;
   workEntryBadge: string;
   workOrder: (n: number, total: number) => string;
@@ -269,12 +280,22 @@ const KO: UIStrings = {
   clusterMore: (n) => `+${n}`,
   clusterAria: (name, n) => `${name} 부근의 작가 ${n}명 목록 열기`,
   clusterListAria: "이 지점의 작가들",
+  clusterNote: "화면상 가까워 묶인 표시입니다 — 같은 도시라는 뜻이 아니며, 정확한 좌표는 데이터에 보존됩니다.",
+  legendSecRelations: "관계",
+  legendSecTerritory: "영토",
+  legendSecTime: "시간",
+  legendSecUnion: "조약·항로",
   eraBadgeUnformed: "이 연도에는 미형성",
   eraBadgeForming: "이 연도에는 형성 중",
   eraBadgeHeritage: "이 연도에는 유산",
   eraBadgeInactive: "이 연도에는 활동 밖",
   eraBadgeTitle:
     "연도 페이더 기준의 주권 상태입니다. 선택은 유지됩니다 — 전체 시기로 돌리면 사라집니다.",
+  eraPreparing: "시간 지도 준비 중…",
+  legendRoutes:
+    "지리 항로 = 지역·군집 사이 관계 개수 집계(계산치·무방향, 짙을수록 많음) — 개별 관계는 작가를 선택하면 펼쳐진다",
+  mapRelationsCapped: (shown, total) => `지도에 관계 ${shown}/${total}개 표시`,
+  showAllRelations: "모두 보기",
   legendOff: "탐색·필터에서 꺼진 유형",
   workCardAria: "작품 카드",
   workEntryBadge: "입문작 — 여기서 시작",
@@ -437,12 +458,22 @@ const EN: UIStrings = {
   clusterMore: (n) => `+${n}`,
   clusterAria: (name, n) => `Open the list of ${n} writers near ${name}`,
   clusterListAria: "Writers at this point",
+  clusterNote: "Grouped because they sit close on screen — not the same city; exact coordinates are preserved in the data.",
+  legendSecRelations: "Relations",
+  legendSecTerritory: "Territory",
+  legendSecTime: "Time",
+  legendSecUnion: "Treaties · routes",
   eraBadgeUnformed: "Unformed in this year",
   eraBadgeForming: "Founding in this year",
   eraBadgeHeritage: "Heritage in this year",
   eraBadgeInactive: "Outside active years",
   eraBadgeTitle:
     "Sovereignty state at the year fader's position. The selection is kept — return to all years and this disappears.",
+  eraPreparing: "Preparing the time atlas…",
+  legendRoutes:
+    "Geo routes = computed counts of relations between regions/clusters (undirected; darker = more) — individual relations unfold when a writer is selected",
+  mapRelationsCapped: (shown, total) => `Showing ${shown}/${total} relations on the map`,
+  showAllRelations: "Show all",
   legendOff: "Switched off in Explore/Filter",
   workCardAria: "Work card",
   workEntryBadge: "Entry work — start here",

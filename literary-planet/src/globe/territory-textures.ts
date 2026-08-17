@@ -5,6 +5,7 @@
 
 import * as THREE from "three";
 import { eachRun, unwrapFlatX } from "../lib/territory-geometry.ts";
+import { makeCanvas, type PlateCanvas } from "./terrain-texture.ts";
 import { UNION_COLORS } from "../theme.ts";
 import type { Movement, TerritoryGeometry } from "../types.ts";
 
@@ -68,14 +69,12 @@ export function paintUnionCanvas(
   g: TerritoryGeometry,
   movements: ReadonlyArray<Movement>,
   membersOf: (movementId: string) => number[] // owner indices (authors[] order)
-): HTMLCanvasElement {
+): PlateCanvas {
   const cell = 2;
   const texW = g.gridWidth * cell;
   const texH = (g.gridHeight - 1) * cell;
-  const canvas = document.createElement("canvas");
-  canvas.width = texW;
-  canvas.height = texH;
-  const ctx = canvas.getContext("2d");
+  const canvas = makeCanvas(texW, texH);
+  const ctx = canvas.getContext("2d") as CanvasRenderingContext2D | null;
   if (!ctx) return canvas;
 
   const edges = new Path2D();
@@ -87,14 +86,10 @@ export function paintUnionCanvas(
   const INSET_SLOTS = [3, 7, 11];
   const STROKE_W = 2.2;
 
-  const band = document.createElement("canvas");
-  band.width = texW;
-  band.height = texH;
-  const bctx = band.getContext("2d");
-  const mask = document.createElement("canvas");
-  mask.width = texW;
-  mask.height = texH;
-  const mctx = mask.getContext("2d");
+  const band = makeCanvas(texW, texH);
+  const bctx = band.getContext("2d") as CanvasRenderingContext2D | null;
+  const mask = makeCanvas(texW, texH);
+  const mctx = mask.getContext("2d") as CanvasRenderingContext2D | null;
   if (!bctx || !mctx) return canvas;
 
   movements.forEach((mv, mi) => {
@@ -126,9 +121,9 @@ export function paintUnionCanvas(
     bctx.stroke(edges);
     // …kept only where the edge belongs to a member territory
     bctx.globalCompositeOperation = "destination-in";
-    bctx.drawImage(mask, 0, 0);
+    bctx.drawImage(mask as CanvasImageSource, 0, 0);
 
-    ctx.drawImage(band, 0, 0);
+    ctx.drawImage(band as CanvasImageSource, 0, 0);
   });
 
   return canvas;

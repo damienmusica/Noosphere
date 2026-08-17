@@ -1,6 +1,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import type { Author, Dataset, Movement, Relation, TerritoryEras, Work } from "../types.ts";
+import type { Author, Dataset, Movement, PeriodId, Relation, Work } from "../types.ts";
+import type { YearMode } from "../lib/filter.ts";
+import { TemporalTerrainLayer } from "./layers/temporal-terrain.ts";
+import { resolveRelationView, type RelationView } from "./layers/relation-view.ts";
 import type { Locale } from "../i18n/index.ts";
 import { RELATION_DEFS } from "../types.ts";
 import { COLORS, GEO_COLORS, GLOBE, PERIOD_TINT, RELATION_COLORS, UNION_COLORS } from "../theme.ts";
@@ -17,12 +20,7 @@ import {
   treatyPresence,
   type Treaty
 } from "./lifecycle.ts";
-import {
-  UNION_INFO_WIDTH,
-  buildOwnerTexture,
-  paintUnionCanvas,
-  unionColorLinear
-} from "./territory-textures.ts";
+import { UNION_INFO_WIDTH, buildOwnerTexture, unionColorLinear } from "./territory-textures.ts";
 import { CityMarkers } from "./city-markers.ts";
 import {
   CAMERA_DEFAULT,
@@ -48,8 +46,9 @@ export interface GlobeCallbacks {
   onRelationHover(relation: Relation | null): void;
   onWorkPick(work: Work): void;
   onWorkHover(work: Work | null): void;
-  /** a geo seal cluster's chip was activated — open the member list */
-  onClusterPick(memberIds: string[], at: { x: number; y: number }): void;
+  /** a geo seal cluster's chip was activated — open the member list; repId
+   * identifies the chip so focus can return to it on close (PR5 a11y) */
+  onClusterPick(memberIds: string[], at: { x: number; y: number }, repId: string): void;
 }
 
 export interface GlobeI18n {
@@ -66,10 +65,11 @@ export interface GlobeHandle {
   resetCamera(): void;
   zoomBy(factor: number): void;
   /**
-   * Late-binds the tectonic keyframes (they load as a separate async chunk —
-   * 5th review: the eras JSON must not ride in the main bundle). Idempotent.
+   * The user reached for the year fader (focus/press) — pre-warm the
+   * tectonic keyframes. Nothing era-related loads or paints before intent
+   * (6th review PR2: chunk splitting alone was not demand loading).
    */
-  provideEras(eras: TerritoryEras): void;
+  timelineIntent(): void;
   dispose(): void;
 }
 
@@ -192,6 +192,34 @@ export function createGlobe(
     return x;
   }
 
+  // texture byte ledger (6th review: "counts, not bytes") — every texture the
+  // globe creates registers here; the probe reports the estimated resident
+  // bytes (w×h×4, ×4/3 when mipmapped) so memory work is measured, not felt
+  const texRegistry = new Set<THREE.Texture>();
+  function reg<T extends THREE.Texture>(t: T): T {
+    texRegistry.add(t);
+    return t;
+  }
+  function unreg(t: THREE.Texture): void {
+    texRegistry.delete(t);
+  }
+  function textureBytesEstimate(): number {
+    let sum = 0;
+    for (const t of texRegistry) {
+      const img = (t as { image?: { width?: number; height?: number } }).image;
+      if (!img?.width || !img.height) continue;
+      sum += img.width * img.height * 4 * (t.generateMipmaps ? 4 / 3 : 1);
+    }
+    return Math.round(sum);
+  }
+
+  /** boot-deferrable work runs when the main thread is idle (PR2); the
+   * callback gets the IdleDeadline so chunked work can yield mid-batch */
+  const scheduleIdle: (fn: (deadline?: IdleDeadline) => void) => void =
+    typeof requestIdleCallback === "function"
+      ? (fn) => requestIdleCallback((d) => fn(d), { timeout: 2000 })
+      : (fn) => setTimeout(() => fn(), 60);
+
   const surfaceMat = track(new THREE.MeshBasicMaterial({ color: COLORS.surface }));
   const surface = new THREE.Mesh(
     track(new THREE.SphereGeometry(GLOBE.surfaceRadius, 48, 32)),
@@ -223,16 +251,31 @@ export function createGlobe(
   let terrainMesh: THREE.Mesh | null = null;
   const readingRank = new Map<string, number>();
   for (const a of authors) a.readingOrder.forEach((wid, i) => readingRank.set(wid, i));
-  // v2.5 tectonic plates: one texture per keyframe, painted lazily off the
-  // critical path; the shader blends the active bracket pair. The keyframe
-  // data itself arrives late via provideEras (separate async chunk).
-  const eraPlates: THREE.CanvasTexture[] = [];
-  let erasData: TerritoryEras | null = null;
-  let eraPaintKickoff: ((eras: TerritoryEras) => void) | null = null;
-  let eraPlatesReady = false;
+  // v2.5 tectonics, PR2 shape: the TemporalTerrainLayer owns eras loading
+  // (worker-side, on timeline intent only), worker plate painting, and the
+  // ≤3-plate LRU. The renderer holds the COMMITTED display state — target
+  // year (slider) and display year (world) split so lifecycle, plate,
+  // cities, and treaties change in one frame, never one-before-the-other.
+  let temporal: TemporalTerrainLayer | null = null;
+  const ERA_CELL = 2;
+  let nearPlateCell = 4;
+  let display: { year: number; yearMode: YearMode; engaged: boolean } = {
+    year: TIMELINE_MAX,
+    yearMode: "cumulative",
+    engaged: false
+  };
   let eraActive = false;
   let eraBracket: [number, number] | null = null;
   let eraMixNow = 0;
+  let eraLoadingSent = false;
+  function setEraLoading(v: boolean): void {
+    if (v === eraLoadingSent) return;
+    eraLoadingSent = v;
+    // microtask: never re-enter the store while inside its own subscription
+    queueMicrotask(() => {
+      if (!disposed) store.set({ eraLoading: v });
+    });
+  }
   let lifeTexture: THREE.DataTexture | null = null;
   let unionInfoTexture: THREE.DataTexture | null = null;
   let movementTreaties: Array<{ movement: Movement; treaty: Treaty } | null> = [];
@@ -245,10 +288,12 @@ export function createGlobe(
     const periodByAuthor = new Map(authors.map((a) => [a.id, a.periods[0]]));
     const periodOf = (id: string) => periodByAuthor.get(id);
     const makeTex = (cellPx: number, withCities = false): THREE.CanvasTexture => {
-      const tex = track(
-        new THREE.CanvasTexture(
-          paintTerrainTexture(dataset.territory!, periodOf, cellPx, withCities, (wid) =>
-            readingRank.get(wid)
+      const tex = reg(
+        track(
+          new THREE.CanvasTexture(
+            paintTerrainTexture(dataset.territory!, periodOf, cellPx, withCities, (wid) =>
+              readingRank.get(wid)
+            )
           )
         )
       );
@@ -260,22 +305,24 @@ export function createGlobe(
     // reading-distance plate: as dense as the GPU allows (CPO report: the
     // near view upscaled a 4096px bake ~3× and read blurry). grid 1024 →
     // cell 8 = 8192px wide, matching the planet scale-up's closer reading
-    // height; small screens and small GPUs stay at 4096.
-    const nearCell =
-      !smallScreen && renderer.capabilities.maxTextureSize >= 8192 ? 8 : 4;
-    terrainTexNear = makeTex(nearCell, true); // cities live at reading distance only
+    // height; small screens and small GPUs stay at 4096. PR2: it paints in
+    // the worker on FIRST near-LOD entry, never at boot (the synchronous
+    // 33MP paint was part of the first-interaction stall).
+    nearPlateCell = !smallScreen && renderer.capabilities.maxTextureSize >= 8192 ? 8 : 4;
     // --- territory grammar v2.0: sovereignty shader ------------------------
     // The plate stays exactly as baked; per-nation lifecycle (presence,
     // patina) and per-union treaty strokes ride in small lookup textures.
     // Coastlines never move — the year fader crossfades sovereignty states.
     const geom = dataset.territory.geometry;
-    const ownerTexture = track(buildOwnerTexture(geom));
-    lifeTexture = track(
-      new THREE.DataTexture(
-        buildLifeTexData(authors, store.getState().year, store.getState().yearMode),
-        LIFE_TEX_WIDTH,
-        1,
-        THREE.RGBAFormat
+    const ownerTexture = reg(track(buildOwnerTexture(geom)));
+    lifeTexture = reg(
+      track(
+        new THREE.DataTexture(
+          buildLifeTexData(authors, store.getState().year, store.getState().yearMode),
+          LIFE_TEX_WIDTH,
+          1,
+          THREE.RGBAFormat
+        )
       )
     );
     lifeTexture.magFilter = THREE.NearestFilter;
@@ -288,24 +335,71 @@ export function createGlobe(
       const treaty = treatyOf(members);
       return treaty ? { movement: mv, treaty } : null;
     });
-    const unionCanvas = paintUnionCanvas(geom, dataset.movements, (mvId) =>
-      authors
-        .filter((a) => a.movements.includes(mvId))
-        .map((a) => ownerIndexOf.get(a.id))
-        .filter((i): i is number => i !== undefined)
+    // union stroke plate: only visible at mid LOD (uUnion eases in there) —
+    // painted in the WORKER after boot, a 1×1 transparent placeholder until
+    // it lands (PR2: this paint was part of the boot stall)
+    const unionTexture = reg(
+      track(new THREE.DataTexture(new Uint8Array([0, 0, 0, 0]), 1, 1, THREE.RGBAFormat))
     );
-    const unionTexture = track(new THREE.CanvasTexture(unionCanvas));
-    unionTexture.magFilter = THREE.LinearFilter;
-    unionTexture.minFilter = THREE.LinearFilter;
-    unionTexture.generateMipmaps = false;
-    unionTexture.wrapS = THREE.RepeatWrapping;
+    unionTexture.needsUpdate = true;
+    scheduleIdle(() => {
+      if (!disposed) temporal?.ensureUnionPaint();
+    });
 
-    unionInfoTexture = track(
-      new THREE.DataTexture(new Uint8Array(UNION_INFO_WIDTH * 4), UNION_INFO_WIDTH, 1, THREE.RGBAFormat)
+    unionInfoTexture = reg(
+      track(
+        new THREE.DataTexture(
+          new Uint8Array(UNION_INFO_WIDTH * 4),
+          UNION_INFO_WIDTH,
+          1,
+          THREE.RGBAFormat
+        )
+      )
     );
     unionInfoTexture.magFilter = THREE.NearestFilter;
     unionInfoTexture.minFilter = THREE.NearestFilter;
-    refreshEraTextures();
+
+    // PR2: the temporal layer owns eras loading + worker plate painting;
+    // nothing here runs before timeline intent
+    temporal = new TemporalTerrainLayer({
+      territory: dataset.territory,
+      periodByAuthor: Object.fromEntries(
+        authors.map((a) => [a.id, a.periods[0] ?? "mid-century"])
+      ) as Record<string, PeriodId>,
+      readingRank: Object.fromEntries(readingRank),
+      workYears: Object.fromEntries(dataset.works.map((w) => [w.id, w.year])),
+      movementIds: dataset.movements.map((m) => m.id),
+      unionMembers: Object.fromEntries(
+        dataset.movements.map((m) => [
+          m.id,
+          authors
+            .filter((a) => a.movements.includes(m.id))
+            .map((a) => ownerIndexOf.get(a.id))
+            .filter((i): i is number => i !== undefined)
+        ])
+      ),
+      timelineMax: TIMELINE_MAX,
+      anisotropy: renderer.capabilities.getMaxAnisotropy(),
+      regTexture: (t) => reg(t),
+      unregTexture: (t) => unreg(t),
+      onUnionPlate: (tex) => {
+        if (disposed || !terrainMat) return;
+        track(tex);
+        terrainMat.uniforms.unionTex!.value = tex;
+        unreg(unionTexture);
+      },
+      onChange: () => {
+        if (disposed) return;
+        const before = display;
+        refreshEraTextures();
+        // a commit moved the display year — towns and labels follow in the
+        // same frame (atomic transition, 6th review)
+        if (display !== before) {
+          updateLabels();
+          syncCityMarkers();
+        }
+      }
+    });
 
     terrainMat = track(
       new THREE.ShaderMaterial({
@@ -382,122 +476,81 @@ export function createGlobe(
     terrainMesh.renderOrder = -1;
     terrainMesh.visible = false;
     scene.add(terrainMesh);
-
-    // paint the tectonic keyframes one per tick, never blocking first paint;
-    // towns are founded at publication (clause 4) inside each era plate
-    eraPaintKickoff = (eras) => {
-      const workYear = new Map(dataset.works.map((w) => [w.id, w.year]));
-      let k = 0;
-      const step = () => {
-        if (disposed) return;
-        const kf = eras.keyframes[k]!;
-        const eraTerritory = {
-          ...dataset.territory!,
-          geometry: {
-            ...geom,
-            ownerRle: kf.ownerRle,
-            coast: kf.coast,
-            boundaries: [] as number[][]
-          }
-        };
-        const tex = track(
-          new THREE.CanvasTexture(
-            paintTerrainTexture(
-              eraTerritory,
-              periodOf,
-              2,
-              true,
-              (wid) => readingRank.get(wid),
-              (wid) => (workYear.get(wid) ?? 0) <= kf.year
-            )
-          )
-        );
-        tex.colorSpace = THREE.SRGBColorSpace;
-        tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
-        eraPlates.push(tex);
-        k++;
-        if (k < eras.keyframes.length) setTimeout(step, 40);
-        else {
-          eraPlatesReady = true;
-          refreshEraTextures();
-        }
-      };
-      setTimeout(step, 300);
-    };
+    // NOTE: the first refreshEraTextures() runs in the init sequence below —
+    // it reads `lod`, which is declared after this block
   }
 
-  function provideEras(eras: TerritoryEras): void {
-    if (disposed || erasData !== null) return;
-    erasData = eras;
-    eraPaintKickoff?.(eras);
+  /** treaty ink alphas for one (year, mode) — full strength at the atlas */
+  function fillUnionInfo(year: number, yearMode: YearMode): void {
+    if (!unionInfoTexture) return;
+    const data = unionInfoTexture.image.data as Uint8Array;
+    data.fill(0);
+    movementTreaties.forEach((entry, mi) => {
+      if (!entry || mi >= UNION_INFO_WIDTH) return;
+      const [r, g, b] = unionColorLinear(mi);
+      const o = mi * 4;
+      data[o] = r;
+      data[o + 1] = g;
+      data[o + 2] = b;
+      data[o + 3] = Math.round(treatyPresence(entry.treaty, year, yearMode) * 255);
+    });
+    unionInfoTexture.needsUpdate = true;
   }
 
-  /** re-derive the year-dependent lookups (nation lifecycle, treaty alphas) */
+  /**
+   * Commit the temporal display state. Target (slider) and display (world)
+   * are split: while the needed plates are still painting in the worker the
+   * world KEEPS its last consistent look and reports 준비 중; when the
+   * bracket lands, plate + lifecycle + treaty ink + (via onChange) towns and
+   * labels move in the same frame (6th review: no lifecycle-first snap).
+   */
   function refreshEraTextures(): void {
+    if (!terrainMat) return;
     const s = store.getState();
+    const wantEngaged = lifecycleEngaged(s.year, s.yearMode);
+
+    if (!wantEngaged || !temporal) {
+      // the atlas view — the frozen default plate, bit-identical (clause 2)
+      display = { year: s.year, yearMode: s.yearMode, engaged: false };
+      eraActive = false;
+      eraBracket = null;
+      eraMixNow = 0;
+      terrainMat.uniforms.uEraMix!.value = 0;
+      terrainMat.uniforms.uLifecycleOn!.value = 0;
+      const want = lod === "near" ? (temporal?.nearPlate() ?? terrainTexMid) : terrainTexMid;
+      if (want) {
+        terrainMat.uniforms.map!.value = want;
+        terrainMat.uniforms.mapB!.value = want;
+      }
+      fillUnionInfo(s.year, s.yearMode);
+      temporal?.noteDisengaged();
+      setEraLoading(false);
+      return;
+    }
+
+    const br = temporal.bracketFor(s.year, ERA_CELL);
+    if (!br) {
+      // plates not resident yet — hold the previous consistent world and
+      // report loading; the worker's onChange recommits when ready
+      setEraLoading(true);
+      return;
+    }
+    display = { year: s.year, yearMode: s.yearMode, engaged: true };
+    eraActive = true;
+    eraBracket = [br.y0, br.y1];
+    eraMixNow = br.mix;
+    terrainMat.uniforms.map!.value = br.texA;
+    terrainMat.uniforms.mapB!.value = br.texB === "atlas" ? terrainTexMid : br.texB;
+    terrainMat.uniforms.uEraMix!.value = br.mix;
+    terrainMat.uniforms.uLifecycleOn!.value = 1;
     if (lifeTexture) {
-      (lifeTexture.image.data as Uint8Array).set(buildLifeTexData(authors, s.year, s.yearMode));
+      (lifeTexture.image.data as Uint8Array).set(
+        buildLifeTexData(authors, display.year, display.yearMode)
+      );
       lifeTexture.needsUpdate = true;
     }
-    if (unionInfoTexture) {
-      const data = unionInfoTexture.image.data as Uint8Array;
-      data.fill(0);
-      movementTreaties.forEach((entry, mi) => {
-        if (!entry || mi >= UNION_INFO_WIDTH) return;
-        const [r, g, b] = unionColorLinear(mi);
-        const o = mi * 4;
-        data[o] = r;
-        data[o + 1] = g;
-        data[o + 2] = b;
-        data[o + 3] = Math.round(treatyPresence(entry.treaty, s.year, s.yearMode) * 255);
-      });
-      unionInfoTexture.needsUpdate = true;
-    }
-    if (terrainMat) {
-      const engaged = lifecycleEngaged(s.year, s.yearMode);
-      terrainMat.uniforms.uLifecycleOn!.value = engaged ? 1 : 0;
-
-      // v2.5 tectonic bracket: while the fader is engaged (and the plates
-      // are painted) the base map is a blend of adjacent keyframes; the
-      // terminal bracket blends toward the frozen v1 plate, so parking the
-      // fader lands exactly on the atlas (clause 2, in-shader)
-      const eras = erasData;
-      if (engaged && eraPlatesReady && eras && terrainTexMid) {
-        const years = eras.keyframes.map((kf) => kf.year);
-        let k = 0;
-        while (k + 1 < years.length && years[k + 1]! <= s.year) k++;
-        let texA = eraPlates[k]!;
-        let texB: THREE.Texture = eraPlates[k]!;
-        let y0 = years[k]!;
-        let y1 = y0;
-        if (s.year <= years[0]!) {
-          texA = texB = eraPlates[0]!;
-          y0 = y1 = years[0]!;
-        } else if (k === years.length - 1) {
-          texB = terrainTexMid;
-          y1 = TIMELINE_MAX;
-        } else {
-          texB = eraPlates[k + 1]!;
-          y1 = years[k + 1]!;
-        }
-        eraMixNow = y1 === y0 ? 0 : Math.min(1, Math.max(0, (s.year - y0) / (y1 - y0)));
-        eraBracket = [y0, y1];
-        eraActive = true;
-        terrainMat.uniforms.map!.value = texA;
-        terrainMat.uniforms.mapB!.value = texB;
-        terrainMat.uniforms.uEraMix!.value = eraMixNow;
-      } else {
-        eraActive = false;
-        eraBracket = null;
-        eraMixNow = 0;
-        terrainMat.uniforms.uEraMix!.value = 0;
-        const want = lod === "near" ? (terrainTexNear ?? terrainTexMid) : terrainTexMid;
-        if (want) {
-          terrainMat.uniforms.map!.value = want;
-          terrainMat.uniforms.mapB!.value = want;
-        }
-      }
-    }
+    fillUnionInfo(display.year, display.yearMode);
+    setEraLoading(false);
   }
   // full planetary map through mid LOD, receding to faint continents far out
   function terrainFade(dist: number): number {
@@ -616,13 +669,25 @@ export function createGlobe(
       })
     );
     if (double) {
+      // PR5 value hierarchy: ONE ring + a short faint halo instead of the
+      // double concentric pair — the selection mark stops out-shouting the
+      // towns and the arriving pulses (6th review)
       group.add(new THREE.Mesh(track(new THREE.RingGeometry(2.7, 2.85, 48)), mat));
-      group.add(new THREE.Mesh(track(new THREE.RingGeometry(3.3, 3.45, 48)), mat));
+      const haloMat = track(
+        new THREE.MeshBasicMaterial({
+          color,
+          transparent: true,
+          opacity: opacity * 0.22,
+          side: THREE.DoubleSide,
+          depthWrite: false
+        })
+      );
+      group.add(new THREE.Mesh(track(new THREE.RingGeometry(3.05, 3.5, 48)), haloMat));
       const tickGeom = track(new THREE.PlaneGeometry(0.14, 0.6));
       for (let i = 0; i < 4; i++) {
         const tick = new THREE.Mesh(tickGeom, mat);
         const a = (i / 4) * Math.PI * 2;
-        tick.position.set(Math.cos(a) * 3.85, Math.sin(a) * 3.85, 0);
+        tick.position.set(Math.cos(a) * 3.4, Math.sin(a) * 3.4, 0);
         tick.rotation.z = a + Math.PI / 2;
         group.add(tick);
       }
@@ -653,7 +718,7 @@ export function createGlobe(
     }
     return new THREE.CanvasTexture(c);
   }
-  const glowTexture = track(makeGlowTexture());
+  const glowTexture = reg(track(makeGlowTexture()));
   const glowSprites = new Map<string, THREE.Sprite>();
   for (const a of authors) {
     if (a.tier !== "anchor") continue;
@@ -677,26 +742,49 @@ export function createGlobe(
   // D9 v2: at reading distance the point becomes the author's ex libris — a
   // square 방인 (anchors 백문, others 주문) with seeded carving accidents.
   // Drawn white, tinted through material.color so selection/dim states need
-  // no redraws.
+  // no redraws. PR2: the 100 seal canvases paint in idle chunks after boot —
+  // seals are invisible until the reader zooms (sealK 0 at far), and the
+  // batch was part of the 100ms+ first-interaction stall the 6th review
+  // measured.
   const sealSprites = new Map<string, THREE.Sprite>();
-  for (const a of authors) {
-    const tex = track(
-      new THREE.CanvasTexture(paintSealTexture(sealGlyph(a.id, a.names.original), a.tier, a.id))
-    );
-    const mat = track(
-      new THREE.SpriteMaterial({
-        map: tex,
-        color: COLORS.text,
-        transparent: true,
-        opacity: 0,
-        depthWrite: false
-      })
-    );
-    const sprite = new THREE.Sprite(mat);
-    sprite.visible = false;
-    sprite.renderOrder = 6;
-    scene.add(sprite);
-    sealSprites.set(a.id, sprite);
+  {
+    let si = 0;
+    const buildChunk = (deadline?: IdleDeadline): void => {
+      if (disposed) return;
+      // at least one per tick, then yield when the idle deadline runs dry
+      // (a fixed 20-seal batch was itself a 50ms+ task — the stall had just
+      // moved into idle); 4 per tick where deadlines are unavailable
+      let painted = 0;
+      while (si < authors.length) {
+        if (painted > 0 && (deadline ? deadline.timeRemaining() < 4 : painted >= 4)) break;
+        const a = authors[si]!;
+        const tex = reg(
+          track(
+            new THREE.CanvasTexture(
+              paintSealTexture(sealGlyph(a.id, a.names.original), a.tier, a.id)
+            )
+          )
+        );
+        const mat = track(
+          new THREE.SpriteMaterial({
+            map: tex,
+            color: COLORS.text,
+            transparent: true,
+            opacity: 0,
+            depthWrite: false
+          })
+        );
+        const sprite = new THREE.Sprite(mat);
+        sprite.visible = false;
+        sprite.renderOrder = 6;
+        scene.add(sprite);
+        sealSprites.set(a.id, sprite);
+        si++;
+        painted++;
+      }
+      if (si < authors.length) scheduleIdle(buildChunk);
+    };
+    scheduleIdle(buildChunk);
   }
   // 0 at ≥235 (mid LOD), 1 at ≤195 — the stamp develops as you lean in
   let sealK = 0;
@@ -719,6 +807,7 @@ export function createGlobe(
   }
   let sealClusters: SealCluster[] = [];
   let clusterHidden = new Set<string>();
+  let clusterRepOf = new Map<string, string>();
   const lastClusterCam = new THREE.Vector3(Infinity, 0, 0);
 
   /** returns true when the cluster composition changed (seals need refresh) */
@@ -789,6 +878,10 @@ export function createGlobe(
     const next = reps
       .filter((r) => memberMap.get(r.id)!.length > 1)
       .map((r) => ({ repId: r.id, members: memberMap.get(r.id)!, x: r.x, y: r.y }));
+    const nextRepOf = new Map<string, string>();
+    for (const [repId, members] of memberMap) {
+      for (const m of members) nextRepOf.set(m, repId);
+    }
 
     const changed =
       next.length !== sealClusters.length ||
@@ -800,6 +893,7 @@ export function createGlobe(
       [...hidden].some((id) => !clusterHidden.has(id));
     sealClusters = next;
     clusterHidden = hidden;
+    clusterRepOf = nextRepOf;
     return changed;
   }
 
@@ -945,72 +1039,134 @@ export function createGlobe(
   // moves. reducedMotion keeps the static encodings (gradient + arrowheads).
   interface FlowItem {
     pts: Vec3[];
-    /** traversal duration in ms */
+    /** ambient loop traversal duration in ms */
     dur: number;
     phase: number;
-    /** ms after build before this spark appears (incoming leads, outgoing follows) */
+    /** ms after build before this spark appears */
     delay: number;
     /** the node this spark flows INTO (canonical target; reversed for the
      * dialogue return spark) — arrival fires the receiver's pulse */
     endId: string;
     kind: "incoming" | "outgoing" | "dialogue";
     color: THREE.Color;
+    /** first lap runs the story timeline (single fast pass, then ambient) */
+    story: boolean;
+    storyDur: number;
+    /** time base for the ambient loop once the story lap lands */
+    ambientBase: number;
     prevT: number;
     arrived: boolean;
   }
   let flowItems: FlowItem[] = [];
   let flowBuiltAt = 0;
   let flowPoints: THREE.Points | null = null;
-  // 도착 반응 (5th review P0-5): the first spark to reach each node fires one
-  // pulse there — dim → incoming → selected star answers → outgoing → each
-  // receiver answers once → steady. Loops after the first lap stay silent.
+
+  // 도착 반응 v2 (6th review PR4): an explicit state machine owns the first
+  // lap — dim(0–180) → incoming staggered 55ms apart → the selected star's
+  // IMPACT ripple → outgoing in three waves spread ≥800ms → each receiver's
+  // one pulse → steady ambient loop. Pulses are pooled at exactly
+  // uniqueReceivers+1 per selection, so a sprite is NEVER reused before its
+  // pulse completes (the fixed pool of 12 truncated the 13th on a601479).
   const pulseSeen = new Set<string>();
-  const pulsePool: Array<{
+  interface PulseSlot {
     sprite: THREE.Sprite;
     mat: THREE.SpriteMaterial;
     start: number;
-  }> = [];
-  {
-    for (let i = 0; i < 12; i++) {
-      const mat = track(
-        new THREE.SpriteMaterial({
-          map: glowTexture,
-          transparent: true,
-          opacity: 0,
-          blending: THREE.AdditiveBlending,
-          depthWrite: false
-        })
-      );
+    dur: number;
+    node: string;
+    kind: string;
+  }
+  let pulsePool: PulseSlot[] = [];
+  const ringTexture = (() => {
+    const c = document.createElement("canvas");
+    c.width = c.height = 64;
+    const g = c.getContext("2d")!;
+    g.strokeStyle = "rgba(255,255,255,1)";
+    g.lineWidth = 5;
+    g.beginPath();
+    g.arc(32, 32, 24, 0, Math.PI * 2);
+    g.stroke();
+    const tex = new THREE.CanvasTexture(c);
+    disposables.push(tex);
+    texRegistry.add(tex);
+    return tex;
+  })();
+  const RECEIVER_PULSE_MS = 620;
+  const IMPACT_PULSE_MS = 750;
+
+  function clearPulsePool(): void {
+    for (const p of pulsePool) {
+      scene.remove(p.sprite);
+      p.mat.dispose();
+    }
+    pulsePool = [];
+  }
+
+  /** sized per selection: one slot per unique receiver + one for the impact */
+  function allocPulsePool(n: number): void {
+    clearPulsePool();
+    for (let i = 0; i < n; i++) {
+      const mat = new THREE.SpriteMaterial({
+        map: glowTexture,
+        transparent: true,
+        opacity: 0,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+      });
       const sprite = new THREE.Sprite(mat);
       sprite.visible = false;
       sprite.renderOrder = 7;
       scene.add(sprite);
-      pulsePool.push({ sprite, mat, start: -1 });
+      pulsePool.push({ sprite, mat, start: -1, dur: RECEIVER_PULSE_MS, node: "", kind: "" });
     }
   }
-  const PULSE_MS = 420;
-  function firePulse(pos: Vec3, color: THREE.Color, now: number): void {
-    const slot =
-      pulsePool.find((p) => p.start < 0) ??
-      pulsePool.reduce((a, b) => (a.start < b.start ? a : b));
+
+  function firePulse(
+    pos: Vec3,
+    color: THREE.Color,
+    now: number,
+    node: string,
+    kind: "impact" | "incoming" | "outgoing" | "dialogue"
+  ): void {
+    const slot = pulsePool.find((p) => p.start < 0);
+    if (!slot) return; // sized exactly — unreachable while one-per-node holds
     slot.start = now;
+    slot.node = node;
+    slot.kind = kind;
+    slot.dur = kind === "impact" ? IMPACT_PULSE_MS : RECEIVER_PULSE_MS;
+    // the impact is a ring RIPPLE outside the selection reticle — a different
+    // shape from the receiver glow, so the center's answer reads as an event
+    slot.mat.map = kind === "impact" ? ringTexture : glowTexture;
     slot.sprite.position.set(pos[0], pos[1], pos[2]);
     slot.mat.color.copy(color);
     slot.sprite.visible = true;
+    instr.log("pulse-start", { node, kind });
   }
+
   function updatePulses(now: number): void {
     for (const p of pulsePool) {
       if (p.start < 0) continue;
-      const k = (now - p.start) / PULSE_MS;
+      const k = (now - p.start) / p.dur;
       if (k >= 1) {
         p.start = -1;
         p.sprite.visible = false;
+        instr.log("pulse-end", { node: p.node, kind: p.kind });
         continue;
       }
-      const size = 6 + 10 * k;
-      p.sprite.scale.set(size, size, 1);
-      p.mat.opacity = 0.55 * (1 - k) * (1 - k);
+      if (p.kind === "impact") {
+        const size = 9 + 16 * k;
+        p.sprite.scale.set(size, size, 1);
+        p.mat.opacity = 0.85 * (1 - k);
+      } else {
+        const size = 6 + 11 * k;
+        p.sprite.scale.set(size, size, 1);
+        p.mat.opacity = 0.6 * (1 - k) * (1 - k);
+      }
     }
+  }
+
+  function activePulseCount(): number {
+    return pulsePool.filter((p) => p.start >= 0).length;
   }
   const flowTexture = (() => {
     const c = document.createElement("canvas");
@@ -1024,6 +1180,7 @@ export function createGlobe(
     g.fillRect(0, 0, 32, 32);
     const tex = new THREE.CanvasTexture(c);
     disposables.push(tex);
+    texRegistry.add(tex);
     return tex;
   })();
 
@@ -1036,6 +1193,7 @@ export function createGlobe(
     }
     if (flowItems.length > 0) instr.log("flows-cleared", { sparks: flowItems.length });
     flowItems = [];
+    clearPulsePool();
   }
 
   function buildFlows(rels: Relation[], positions: Map<string, Vec3>): void {
@@ -1046,12 +1204,23 @@ export function createGlobe(
     const items: FlowItem[] = [];
     const colors: number[] = [];
     const animated: Array<Record<string, string>> = [];
-    let incomingCount = 0;
-    let outgoingCount = 0;
-    // staged reveal (2026-08-16 review): the dim lands first, then incoming
-    // influence converges on the star, then its own influence radiates out
-    const IN_DELAY = 200;
-    const OUT_DELAY = 700;
+
+    // the story lap's schedule (PR4): dim 0–180 → incoming staggered → the
+    // impact lands → outgoing in three waves whose arrivals spread ≥800ms
+    const STORY_DUR = 620;
+    const IN_BASE = 180;
+    const IN_STAGGER = 55;
+    const OUT_BASE = 1050;
+    const WAVE_GAP = 450;
+
+    interface Animatable {
+      r: Relation;
+      pts: Vec3[];
+      reversed: Vec3[] | null;
+      incoming: boolean;
+      dialogue: boolean;
+    }
+    const anims: Animatable[] = [];
     for (const r of rels) {
       const a = positions.get(r.sourceId);
       const b = positions.get(r.targetId);
@@ -1066,53 +1235,74 @@ export function createGlobe(
         direction: def.direction
       });
       const pts = arcPoints(a, b, ARC_SEG, R * 1.006);
-      const dur = 3200 - r.weight * 900;
-      const color = new THREE.Color(RELATION_COLORS[r.type]);
-      if (def.direction === "directed") {
-        const incoming = r.targetId === sel;
-        if (incoming) incomingCount++;
-        else outgoingCount++;
-        for (const phase of [0, 0.5]) {
-          items.push({
-            pts,
-            dur,
-            phase,
-            delay: incoming ? IN_DELAY : OUT_DELAY,
-            endId: r.targetId,
-            kind: incoming ? "incoming" : "outgoing",
-            color,
-            prevT: -1,
-            arrived: false
-          });
-          colors.push(color.r, color.g, color.b);
-        }
-      } else {
-        // dialogue: one spark each way — the arriving direction leads
-        items.push({
-          pts,
-          dur,
-          phase: 0,
-          delay: r.targetId === sel ? IN_DELAY : OUT_DELAY,
-          endId: r.targetId,
-          kind: "dialogue",
-          color,
-          prevT: -1,
-          arrived: false
-        });
-        items.push({
-          pts: [...pts].reverse(),
-          dur,
-          phase: 0.5,
-          delay: r.sourceId === sel ? IN_DELAY : OUT_DELAY,
-          endId: r.sourceId,
-          kind: "dialogue",
-          color,
-          prevT: -1,
-          arrived: false
-        });
-        colors.push(color.r, color.g, color.b, color.r, color.g, color.b);
-      }
+      anims.push({
+        r,
+        pts,
+        reversed: def.direction === "bidirectional" ? [...pts].reverse() : null,
+        incoming: r.targetId === sel,
+        dialogue: def.direction === "bidirectional"
+      });
     }
+    const inbound = anims.filter((x) => x.incoming).sort((x, y) => y.r.weight - x.r.weight);
+    const outbound = anims.filter((x) => !x.incoming).sort((x, y) => y.r.weight - x.r.weight);
+    const waveSize = Math.max(1, Math.ceil(outbound.length / 3));
+
+    const push = (
+      pts: Vec3[],
+      dur: number,
+      phase: number,
+      delay: number,
+      endId: string,
+      kind: FlowItem["kind"],
+      color: THREE.Color,
+      story: boolean
+    ): void => {
+      items.push({
+        pts,
+        dur,
+        phase,
+        delay,
+        endId,
+        kind,
+        color,
+        story,
+        storyDur: STORY_DUR,
+        ambientBase: 0,
+        prevT: -1,
+        arrived: false
+      });
+      colors.push(color.r, color.g, color.b);
+    };
+
+    inbound.forEach((x, i) => {
+      const delay = IN_BASE + i * IN_STAGGER;
+      const dur = 3200 - x.r.weight * 900;
+      const color = new THREE.Color(RELATION_COLORS[x.r.type]);
+      const kind = x.dialogue ? "dialogue" : "incoming";
+      push(x.pts, dur, 0, delay, x.r.targetId, kind, color, true);
+      push(x.pts, dur, 0.5, delay + STORY_DUR + 300, x.r.targetId, kind, color, false);
+      if (x.reversed) {
+        // the dialogue's answer departs after the story lap arrives
+        push(x.reversed, dur, 0, delay + STORY_DUR + 500, x.r.sourceId, "dialogue", color, false);
+      }
+    });
+    outbound.forEach((x, i) => {
+      const wave = Math.floor(i / waveSize);
+      const delay = OUT_BASE + wave * WAVE_GAP + (i % waveSize) * 37;
+      const dur = 3200 - x.r.weight * 900;
+      const color = new THREE.Color(RELATION_COLORS[x.r.type]);
+      const kind = x.dialogue ? "dialogue" : "outgoing";
+      push(x.pts, dur, 0, delay, x.r.targetId, kind, color, true);
+      push(x.pts, dur, 0.5, delay + STORY_DUR + 300, x.r.targetId, kind, color, false);
+      if (x.reversed) {
+        push(x.reversed, dur, 0, delay + STORY_DUR + 500, x.r.sourceId, "dialogue", color, false);
+      }
+    });
+    const incomingCount = inbound.length;
+    const outgoingCount = outbound.length;
+    // one pool slot per node that will ever pulse (endIds, deduped) — sized
+    // exactly, so completion-before-reuse holds by construction
+    allocPulsePool(new Set(items.map((f) => f.endId)).size);
     if (items.length === 0) return;
     const geom = new THREE.BufferGeometry();
     geom.setAttribute("position", new THREE.Float32BufferAttribute(items.length * 3, 3));
@@ -1138,12 +1328,25 @@ export function createGlobe(
       sparks: items.length,
       relations: animated,
       staging: {
-        incomingDelay: IN_DELAY,
-        outgoingDelay: OUT_DELAY,
+        incomingBase: IN_BASE,
+        incomingStagger: IN_STAGGER,
+        outgoingBase: OUT_BASE,
+        waveGap: WAVE_GAP,
+        storyDur: STORY_DUR,
         incoming: incomingCount,
         outgoing: outgoingCount
       }
     });
+  }
+
+  function flowArrival(f: FlowItem, now: number): void {
+    if (pulseSeen.has(f.endId)) return;
+    pulseSeen.add(f.endId);
+    const sel = store.getState().selectedAuthorId;
+    // the center's answer is the IMPACT ripple, whoever delivered it
+    const kind = f.endId === sel ? "impact" : f.kind;
+    firePulse(f.pts[f.pts.length - 1]!, f.color, now, f.endId, kind);
+    instr.log("flow-arrival", { node: f.endId, kind: f.kind, order: pulseSeen.size });
   }
 
   function updateFlows(now: number): void {
@@ -1158,22 +1361,29 @@ export function createGlobe(
         attr.setXYZ(i, 0, 0, 0);
         continue;
       }
-      const t = ((local / f.dur + f.phase) % 1 + 1) % 1;
-      // a wrap (t fell past 1 → 0) is an arrival at the receiving node; only
-      // the first arrival per node answers with a pulse, then the web is steady
-      if (f.prevT >= 0 && f.prevT > t + 0.5 && !f.arrived) {
-        f.arrived = true;
-        if (!pulseSeen.has(f.endId)) {
-          pulseSeen.add(f.endId);
-          firePulse(f.pts[f.pts.length - 1]!, f.color, now);
-          instr.log("flow-arrival", {
-            node: f.endId,
-            kind: f.kind,
-            order: pulseSeen.size
-          });
+      let t: number;
+      if (f.story) {
+        // story lap: one scheduled pass — its landing IS the staged arrival
+        t = Math.min(1, local / f.storyDur);
+        if (t >= 1) {
+          if (!f.arrived) {
+            f.arrived = true;
+            flowArrival(f, now);
+          }
+          f.story = false;
+          f.ambientBase = now;
+          t = 0; // respawn at the source, joining the ambient loop
         }
+      } else {
+        const base = f.ambientBase > 0 ? f.ambientBase : flowBuiltAt + f.delay;
+        t = (((now - base) / f.dur + f.phase) % 1 + 1) % 1;
+        // ambient wraps still count as first arrival for late (phase .5) sparks
+        if (f.prevT >= 0 && f.prevT > t + 0.5 && !f.arrived) {
+          f.arrived = true;
+          flowArrival(f, now);
+        }
+        f.prevT = t;
       }
-      f.prevT = t;
       const x = t * (f.pts.length - 1);
       const i0 = Math.min(f.pts.length - 2, Math.floor(x));
       const k = x - i0;
@@ -1194,7 +1404,7 @@ export function createGlobe(
   labels.onActivate = (id) => {
     if (id.startsWith("cl:")) {
       const cl = sealClusters.find((c) => c.repId === id.slice(3));
-      if (cl) cbs.onClusterPick([...cl.members], { x: cl.x, y: cl.y });
+      if (cl) cbs.onClusterPick([...cl.members], { x: cl.x, y: cl.y }, cl.repId);
       return;
     }
     if (!id.startsWith("wk:")) return;
@@ -1217,16 +1427,17 @@ export function createGlobe(
       lod === "near" &&
       s.mode === "semantic" &&
       dataset.territory !== undefined;
-    // clause 4: markers follow city founding while the fader is engaged
-    const engaged = lifecycleEngaged(s.year, s.yearMode);
-    const buildKey = show ? `${s.selectedAuthorId}|${engaged ? s.year : "atlas"}` : null;
+    // clause 4: markers follow city founding at the COMMITTED display year —
+    // never the slider's target while plates are still painting (PR2)
+    const engaged = display.engaged;
+    const buildKey = show ? `${s.selectedAuthorId}|${engaged ? display.year : "atlas"}` : null;
     if (buildKey !== null && buildKey !== cityMarkersFor) {
       cityMarkers.build(
         s.selectedAuthorId,
         dataset.territory?.geometry,
         (wid) => readingRank.get(wid),
         worksById,
-        (wid) => !engaged || (worksById.get(wid)?.year ?? 0) <= s.year
+        (wid) => !engaged || (worksById.get(wid)?.year ?? 0) <= display.year
       );
       cityMarkersFor = buildKey;
     } else if (!show && cityMarkersFor !== null) {
@@ -1344,6 +1555,74 @@ export function createGlobe(
     }
   }
 
+  // aggregate routes (PR3): geo overview lines are computed corridors between
+  // regions/clusters, never the raw 229-edge tangle. Count → opacity (line
+  // width is fixed in WebGL core), dominant type → ink; legend-registered as
+  // a computed navigation layer.
+  const aggRoot = new THREE.Group();
+  scene.add(aggRoot);
+  let aggLines: THREE.LineSegments[] = [];
+  let lastRelationView: RelationView | null = null;
+  let egoHiddenSent = 0;
+
+  function clearAggregates(): void {
+    for (const l of aggLines) {
+      aggRoot.remove(l);
+      l.geometry.dispose();
+      (l.material as THREE.Material).dispose();
+    }
+    aggLines = [];
+  }
+
+  function groupCentroid(key: string): Vec3 | null {
+    // cluster keys are author ids (the rep); region keys aggregate members
+    if (indexOf.has(key)) return current.get(key) ?? null;
+    let cx = 0;
+    let cy = 0;
+    let cz = 0;
+    let n = 0;
+    for (const a of authors) {
+      if (a.regions[0] !== key || !nodeVisible(a)) continue;
+      const p = current.get(a.id);
+      if (!p) continue;
+      cx += p[0];
+      cy += p[1];
+      cz += p[2];
+      n++;
+    }
+    if (n === 0) return null;
+    const len = Math.hypot(cx, cy, cz) || 1;
+    return [cx / len, cy / len, cz / len];
+  }
+
+  function buildAggregateRoutes(routes: RelationView["aggregates"]): void {
+    clearAggregates();
+    if (routes.length === 0) return;
+    const maxCount = routes[0]!.count;
+    for (const route of routes) {
+      const pa = groupCentroid(route.a);
+      const pb = groupCentroid(route.b);
+      if (!pa || !pb) continue;
+      const pts = arcPoints(pa, pb, ARC_SEG, R * 1.01);
+      const arr: number[] = [];
+      for (let i = 0; i < ARC_SEG; i++) {
+        arr.push(...pts[i]!, ...pts[i + 1]!);
+      }
+      const geomB = new THREE.BufferGeometry();
+      geomB.setAttribute("position", new THREE.Float32BufferAttribute(arr, 3));
+      const mat = new THREE.LineBasicMaterial({
+        color: RELATION_COLORS[route.dominantType],
+        transparent: true,
+        opacity: 0.2 + 0.5 * Math.sqrt(route.count / maxCount),
+        depthWrite: false
+      });
+      const lines = new THREE.LineSegments(geomB, mat);
+      lines.renderOrder = 1;
+      aggRoot.add(lines);
+      aggLines.push(lines);
+    }
+  }
+
   function rebuildEdges(): void {
     clearGroup(edgeRoot, edgeGroups);
     clearGroup(highlightRoot, highlightGroups);
@@ -1355,19 +1634,47 @@ export function createGlobe(
       const ta = authors[indexOf.get(r.targetId) ?? -1];
       return sa && ta && nodeVisible(sa) && nodeVisible(ta);
     });
+    const view = resolveRelationView({
+      mode: s.mode,
+      lod,
+      selectedAuthorId: s.selectedAuthorId,
+      egoExpanded: s.egoExpanded,
+      visibleRelations: lodRels,
+      regionOf: (id) => authors[indexOf.get(id) ?? -1]?.regions[0],
+      // upper mid (seals not yet developed → no screen clusters): regions
+      // still carry the corridor story; once seals cluster, corridors run
+      // between clusters (singles group as themselves)
+      clusterGroupOf: (id) =>
+        clusterRepOf.get(id) ??
+        (sealK > 0.02 ? id : authors[indexOf.get(id) ?? -1]?.regions[0])
+    });
+    lastRelationView = view;
+    if (view.hiddenCount !== egoHiddenSent) {
+      egoHiddenSent = view.hiddenCount;
+      queueMicrotask(() => {
+        if (!disposed) store.set({ egoHiddenCount: view.hiddenCount });
+      });
+    }
     const sel = s.selectedAuthorId;
     if (sel) {
-      const touching = lodRels.filter((r) => r.sourceId === sel || r.targetId === sel);
-      const rest = lodRels.filter((r) => r.sourceId !== sel && r.targetId !== sel);
+      // context edges: the dim semantic web stays; geo hides the rest
+      // entirely — its lines belong to selection intent only (PR3)
+      const rest =
+        s.mode === "semantic"
+          ? lodRels.filter((r) => r.sourceId !== sel && r.targetId !== sel)
+          : [];
       edgeGroups = buildEdgeGroups(rest, current, edgeRoot, 0.16, false);
-      highlightGroups = buildEdgeGroups(touching, current, highlightRoot, 1, true);
-      buildArrows(touching, current);
-      buildFlows(touching, current);
+      highlightGroups = buildEdgeGroups(view.raw, current, highlightRoot, 1, true);
+      buildArrows(view.raw, current);
+      buildFlows(view.raw, current);
     } else {
-      edgeGroups = buildEdgeGroups(lodRels, current, edgeRoot, 1, false);
+      if (view.raw.length > 0) {
+        edgeGroups = buildEdgeGroups(view.raw, current, edgeRoot, 1, false);
+      }
       buildArrows([], current);
       clearFlows();
     }
+    buildAggregateRoutes(view.aggregates);
   }
 
   // --- hovered-line emphasis + tooltip (who connects to whom, zero clicks) --
@@ -1698,8 +2005,9 @@ export function createGlobe(
         for (const town of cities.towns) {
           const wk = worksById.get(town.id);
           if (!wk) continue;
-          // clause 4: a town exists only after its work is published
-          if (lifecycleEngaged(s.year, s.yearMode) && wk.year > s.year) continue;
+          // clause 4: a town exists only after its work is published — at
+          // the committed display year (atomic with the plate)
+          if (display.engaged && wk.year > display.year) continue;
           const p = gridToVec3(town.x, town.y, g.gridWidth, g.gridHeight);
           const facing = camDir.x * p[0] + camDir.y * p[1] + camDir.z * p[2];
           if (facing < 0.25) continue;
@@ -1793,7 +2101,9 @@ export function createGlobe(
         // union's own ink — the label is the overlay's cartouche
         const mvIdx = dataset.movements.indexOf(m);
         const entry = movementTreaties[mvIdx] ?? null;
-        const treatyAlpha = entry ? treatyPresence(entry.treaty, s.year, s.yearMode) : 0;
+        const treatyAlpha = entry
+          ? treatyPresence(entry.treaty, display.year, display.yearMode)
+          : 0;
         items.push({
           id: `mv:${m.id}`,
           // ≈ marks the span as computed from member activity overlap, not a
@@ -1921,7 +2231,9 @@ export function createGlobe(
   // --- store subscription with field diffing --------------------------------
   let prev = store.getState();
   let prevReducedMotion = prev.reducedMotion;
+  let prevEgoExpanded = prev.egoExpanded;
   recomputeVisibility();
+  refreshEraTextures(); // seeds union alphas + terrain uniforms (atlas view)
   updateNodeInstances();
   rebuildEdges();
   updateLabels();
@@ -2021,6 +2333,9 @@ export function createGlobe(
     // OS-level motion preference can flip mid-session — drop/restore the flows
     if (s.reducedMotion !== prevReducedMotion && !transition) rebuildEdges();
     prevReducedMotion = s.reducedMotion;
+    // "모두 보기" lifts the map's ego cap for this selection (PR3)
+    if (s.egoExpanded !== prevEgoExpanded && !transition) rebuildEdges();
+    prevEgoExpanded = s.egoExpanded;
     updateRings();
   });
 
@@ -2120,15 +2435,29 @@ export function createGlobe(
     glPoints: renderer.info.render.points,
     geometries: renderer.info.memory.geometries,
     textures: renderer.info.memory.textures,
+    memory: {
+      texturesTracked: texRegistry.size,
+      textureBytesEstimate: textureBytesEstimate()
+    },
     cameraDistance: Math.round(camera.position.length() * 10) / 10,
     lod,
     modeTransition: transition !== null,
     cameraAnimating: camAnim !== null,
     rendererVisibleAuthors: visibleSet.size,
     rendererVisibleRelations: visRels.length,
+    relationView: lastRelationView
+      ? {
+          reason: lastRelationView.reason,
+          rawDrawn: lastRelationView.raw.length,
+          hiddenCount: lastRelationView.hiddenCount,
+          aggregateRoutes: lastRelationView.aggregates.length
+        }
+      : null,
     flowSparks: flowItems.length,
     /** nodes that have answered an arriving spark with their one pulse */
     flowArrivals: pulseSeen.size,
+    /** pulses alive this frame — the event-synced capture waits on this */
+    activePulses: activePulseCount(),
     // static direction encoding — must survive reduced-motion
     arrowInstances: arrowMesh ? arrowMesh.count : 0,
     labelsShown: labels.lastShown,
@@ -2143,11 +2472,13 @@ export function createGlobe(
     lifecycle: (() => {
       const s = store.getState();
       const sel = s.selectedAuthorId ? authors[indexOf.get(s.selectedAuthorId) ?? -1] : undefined;
+      // reported at the COMMITTED display year — what the world shows, not
+      // where the slider is mid-load
       return {
-        on: lifecycleEngaged(s.year, s.yearMode),
-        selected: sel ? lifecycleOf(sel, s.year, s.yearMode) : null,
+        on: display.engaged,
+        selected: sel ? lifecycleOf(sel, display.year, display.yearMode) : null,
         activeTreaties: movementTreaties.filter(
-          (e) => e !== null && treatyPresence(e.treaty, s.year, s.yearMode) > 0.5
+          (e) => e !== null && treatyPresence(e.treaty, display.year, display.yearMode) > 0.5
         ).length
       };
     })(),
@@ -2155,10 +2486,13 @@ export function createGlobe(
       ? Math.round((terrainMat.uniforms.uUnion!.value as number) * 100) / 100
       : 0,
     era: {
-      platesReady: eraPlatesReady,
+      ...(temporal?.metrics() ?? { status: "idle" }),
       active: eraActive,
       bracket: eraBracket,
-      mix: Math.round(eraMixNow * 1000) / 1000
+      mix: Math.round(eraMixNow * 1000) / 1000,
+      targetYear: store.getState().year,
+      displayYear: display.year,
+      loading: eraLoadingSent
     },
     cityMarkers: (() => {
       // page coordinates (not container-relative) so the QA harness can
@@ -2257,11 +2591,16 @@ export function createGlobe(
 
     const newLod = lodLevel(camera.position.length());
     if (newLod !== lod) {
+      const wasNear = lod === "near";
       lod = newLod;
-      if (terrainMat && terrainTexMid && terrainTexNear && !eraActive) {
+      // PR2: the 8192px reading plate paints in the worker on first near
+      // entry (mid serves until it lands); long absence releases it
+      if (lod === "near") temporal?.ensureNearPlate(nearPlateCell);
+      else if (wasNear) temporal?.noteAwayFromNear();
+      if (terrainMat && terrainTexMid && !eraActive) {
         // near/mid plate swap belongs to the atlas view; while the tectonic
         // bracket is active the era plates serve every LOD
-        const want = lod === "near" ? terrainTexNear : terrainTexMid;
+        const want = lod === "near" ? (temporal?.nearPlate() ?? terrainTexMid) : terrainTexMid;
         if (terrainMat.uniforms.map!.value !== want) {
           terrainMat.uniforms.map!.value = want;
           terrainMat.uniforms.mapB!.value = want;
@@ -2273,8 +2612,15 @@ export function createGlobe(
       updateLabels();
       syncCityMarkers();
     } else if (!camera.position.equals(lastCamPos)) {
-      // panning across geo reclusters the seals (throttled by camera delta)
-      if (computeSealClusters()) updateNodeInstances();
+      // panning across geo reclusters the seals (throttled by camera delta);
+      // recluster also regroups the mid-LOD aggregate routes (PR3)
+      if (computeSealClusters()) {
+        updateNodeInstances();
+        const sNow = store.getState();
+        if (!sNow.selectedAuthorId && sNow.mode === "geo" && lod === "mid" && !transition) {
+          rebuildEdges();
+        }
+      }
       updateLabels();
       updateRings();
     }
@@ -2291,6 +2637,11 @@ export function createGlobe(
     updatePulses(now);
     renderer.render(scene, camera);
   }
+  // one-time GPU warmup BEFORE the frame loop: shader compiles + the mid
+  // plate upload belong to load, not to the first interactive frame (PR2 —
+  // this was the last 50ms+ long task in the boot segment)
+  renderer.compile(scene, camera);
+  if (terrainTexMid) renderer.initTexture(terrainTexMid);
   rafId = requestAnimationFrame(frame);
 
   function dispose(): void {
@@ -2310,6 +2661,9 @@ export function createGlobe(
       arrowMesh.dispose();
     }
     clearFlows();
+    clearAggregates();
+    scene.remove(aggRoot);
+    temporal?.dispose();
     cityMarkers.dispose();
     nodes.dispose();
     pickMesh.dispose();
@@ -2319,5 +2673,9 @@ export function createGlobe(
     renderer.domElement.remove();
   }
 
-  return { focusAuthor, resetCamera, zoomBy, provideEras, dispose };
+  function timelineIntent(): void {
+    temporal?.requestEras();
+  }
+
+  return { focusAuthor, resetCamera, zoomBy, timelineIntent, dispose };
 }
