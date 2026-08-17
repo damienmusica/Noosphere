@@ -83,6 +83,13 @@ export class LabelLayer {
     container.appendChild(this.root);
   }
 
+  /** restart the 200ms fade-in on every label — softens LOD-switch pops */
+  pulseFade(): void {
+    this.root.classList.remove("lod-fade");
+    void this.root.offsetWidth; // reflow restarts the CSS animation
+    this.root.classList.add("lod-fade");
+  }
+
   update(items: LabelItem[], width: number, height: number, budget: number): void {
     const placed: Rect[] = [];
     const shown = new Set<string>();

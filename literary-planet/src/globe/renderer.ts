@@ -26,12 +26,14 @@ import {
   CAMERA_DEFAULT,
   CAMERA_MAX,
   CAMERA_MIN,
+  LOD_EXIT_MID,
+  LodGate,
   labelBudget,
   labelPriority,
-  lodLevel,
   tierVisibleAtLod,
   type LodLevel
 } from "../lib/lod.ts";
+import { CameraController } from "./camera-controller.ts";
 import type { AppState, Store } from "../state/store.ts";
 import { LabelLayer, type LabelItem, type LabelState } from "./labels.ts";
 import { paintTerrainTexture } from "./terrain-texture.ts";
@@ -70,6 +72,12 @@ export interface GlobeHandle {
    * (6th review PR2: chunk splitting alone was not demand loading).
    */
   timelineIntent(): void;
+  /**
+   * Viewport CSS px covered by UI panels (right dock / bottom sheet). The
+   * camera shifts its projection so the selection lands in the uncovered
+   * area instead of under the panel (7th review PR1 safe-area framing).
+   */
+  setSafeInsets(insets: { right?: number; bottom?: number }): void;
   dispose(): void;
 }
 
@@ -184,6 +192,16 @@ export function createGlobe(
   controls.rotateSpeed = 0.55;
   controls.zoomSpeed = 0.7;
   controls.enableDamping = true;
+
+  // camera ownership state machine (7th review PR1): cancellable focus,
+  // travel-scaled duration, Escape bookmarks, safe-area framing, zoom-to-cursor
+  const cam = new CameraController(camera, controls, renderer.domElement, {
+    minDist: CAMERA_MIN,
+    maxDist: CAMERA_MAX,
+    recenterAbove: LOD_EXIT_MID,
+    reducedMotion: () => store.getState().reducedMotion,
+    log: (type, data) => instr.log(type, data)
+  });
 
   // --- static globe ---------------------------------------------------------
   const disposables: Array<{ dispose(): void }> = [];
@@ -1451,22 +1469,16 @@ export function createGlobe(
   let current = new Map<string, Vec3>(); // live positions (unit vectors)
   let visibleSet = new Set<string>();
   let visRels: Relation[] = [];
-  let lod: LodLevel = lodLevel(camera.position.length());
-  // interaction-feel counters (7th review PR0): story restarts and LOD thrash
-  // are failures the frame-time ring cannot see — count them where they happen
-  let lodTransitions = 0;
+  // hysteresis + dwell (7th review PR1): boundary oscillation must not
+  // rebuild the world — the gate owns the tier and counts real transitions
+  const lodGate = new LodGate(camera.position.length());
+  let lod: LodLevel = lodGate.tier;
+  // interaction-feel counters (7th review PR0): story restarts are failures
+  // the frame-time ring cannot see — count them where they happen
   let flowStoryBuilds = 0;
   let neighborIds = new Set<string>();
   let transition: { from: Map<string, Vec3>; start: number; dur: number } | null = null;
   let paletteFrom = 0;
-  let camAnim: {
-    fromDir: THREE.Vector3;
-    toDir: THREE.Vector3;
-    fromDist: number;
-    toDist: number;
-    start: number;
-    dur: number;
-  } | null = null;
   let disposed = false;
 
   function positionsFor(mode: AppState["mode"]): Map<string, Vec3> {
@@ -2280,7 +2292,21 @@ export function createGlobe(
     const workEmphasisChanged =
       s.hoveredWorkId !== prev.hoveredWorkId || s.selectedWorkId !== prev.selectedWorkId;
     const workHoverChanged = s.hoveredWorkId !== prev.hoveredWorkId;
+    const prevSelForCam = prev.selectedAuthorId;
+    const prevWorkForCam = prev.selectedWorkId;
     prev = s;
+
+    // Escape restores where you came from (7th review §7): pose bookmarks
+    // push when exploration deepens and pop on the way out — planet→author
+    // and author→work, symmetric on close
+    if (selectionChanged) {
+      if (!prevSelForCam && s.selectedAuthorId) cam.pushBookmark("planet");
+      else if (prevSelForCam && !s.selectedAuthorId) cam.restoreBookmark("planet");
+    }
+    if (s.selectedWorkId !== prevWorkForCam) {
+      if (!prevWorkForCam && s.selectedWorkId) cam.pushBookmark("author");
+      else if (prevWorkForCam && !s.selectedWorkId) cam.restoreBookmark("author");
+    }
 
     // the picked line carries the only in-place type label — refresh it
     if (pickedChanged) updateLabels();
@@ -2326,7 +2352,11 @@ export function createGlobe(
         if (len > 1e-3) aim = [cx / len, cy / len, cz / len];
       }
       if (aim) {
-        animateCameraTo(new THREE.Vector3(aim[0], aim[1], aim[2]), camera.position.length());
+        animateCameraTo(
+          new THREE.Vector3(aim[0], aim[1], aim[2]),
+          camera.position.length(),
+          "transition"
+        );
       }
     }
     // the year fader drives sovereignty: nation lifecycle + treaty alphas
@@ -2354,22 +2384,12 @@ export function createGlobe(
   });
 
   // --- camera focus ---------------------------------------------------------
-  function animateCameraTo(dir: THREE.Vector3, dist: number): void {
-    const s = store.getState();
-    if (s.reducedMotion) {
-      camera.position.copy(dir.clone().multiplyScalar(dist));
-      camera.lookAt(0, 0, 0);
-      return;
-    }
-    camAnim = {
-      fromDir: camera.position.clone().normalize(),
-      toDir: dir.clone().normalize(),
-      fromDist: camera.position.length(),
-      toDist: dist,
-      start: performance.now(),
-      dur: 850
-    };
-    instr.log("camera-anim-start", { toDist: Math.round(dist), dur: camAnim.dur });
+  function animateCameraTo(
+    dir: THREE.Vector3,
+    dist: number,
+    kind: "focus" | "transition" = "focus"
+  ): void {
+    cam.focusTo(dir, dist, { kind });
   }
 
   function focusAuthor(id: string, opts?: { distance?: number }): void {
@@ -2380,6 +2400,9 @@ export function createGlobe(
   }
 
   function resetCamera(): void {
+    // explicit navigation re-baselines the pose history — a later Escape must
+    // not fly back to a view the user deliberately left
+    cam.clearBookmarks();
     animateCameraTo(new THREE.Vector3(0, 0.32, 0.95).normalize(), CAMERA_DEFAULT);
   }
 
@@ -2454,10 +2477,17 @@ export function createGlobe(
       textureBytesEstimate: textureBytesEstimate()
     },
     cameraDistance: Math.round(camera.position.length() * 10) / 10,
+    cameraDir: camera.position
+      .clone()
+      .normalize()
+      .toArray()
+      .map((v) => Math.round(v * 1000) / 1000),
     lod,
     modeTransition: transition !== null,
-    cameraAnimating: camAnim !== null,
-    interaction: { lodTransitions, flowStoryBuilds },
+    cameraAnimating: cam.animating(),
+    cameraState: cam.stateKind(),
+    safeAreaSettling: cam.offsetSettling(),
+    interaction: { lodTransitions: lodGate.transitions, flowStoryBuilds },
     rendererVisibleAuthors: visibleSet.size,
     rendererVisibleRelations: visRels.length,
     relationView: lastRelationView
@@ -2534,20 +2564,7 @@ export function createGlobe(
       0.55 *
       Math.min(1, Math.max(0.15, (camera.position.length() - R) / (CAMERA_DEFAULT - R)));
 
-    if (camAnim) {
-      const t = camAnim.dur === 0 ? 1 : Math.min(1, (now - camAnim.start) / camAnim.dur);
-      const k = easeInOut(t);
-      const dir = camAnim.fromDir.clone().lerp(camAnim.toDir, k).normalize();
-      const dist = camAnim.fromDist + (camAnim.toDist - camAnim.fromDist) * k;
-      camera.position.copy(dir.multiplyScalar(dist));
-      camera.lookAt(0, 0, 0);
-      if (t >= 1) {
-        camAnim = null;
-        instr.log("camera-anim-end", { dist: Math.round(camera.position.length()) });
-      }
-    } else {
-      controls.update();
-    }
+    cam.update(now);
 
     {
       const newSealK = sealFade(camera.position.length());
@@ -2604,11 +2621,13 @@ export function createGlobe(
       }
     }
 
-    const newLod = lodLevel(camera.position.length());
+    const newLod = lodGate.update(camera.position.length(), now);
     if (newLod !== lod) {
       const wasNear = lod === "near";
       lod = newLod;
-      lodTransitions++;
+      // soften the rebuild pop: DOM labels restart a 200ms fade-in; the WebGL
+      // layers (seals/terrain/union) already fade continuously with distance
+      labels.pulseFade();
       // PR2: the 8192px reading plate paints in the worker on first near
       // entry (mid serves until it lands); long absence releases it
       if (lod === "near") temporal?.ensureNearPlate(nearPlateCell);
@@ -2684,6 +2703,7 @@ export function createGlobe(
     nodes.dispose();
     pickMesh.dispose();
     for (const d of disposables) d.dispose();
+    cam.dispose();
     controls.dispose();
     renderer.dispose();
     renderer.domElement.remove();
@@ -2693,5 +2713,9 @@ export function createGlobe(
     temporal?.requestEras();
   }
 
-  return { focusAuthor, resetCamera, zoomBy, timelineIntent, dispose };
+  function setSafeInsets(insets: { right?: number; bottom?: number }): void {
+    cam.setSafeInsets(insets);
+  }
+
+  return { focusAuthor, resetCamera, zoomBy, timelineIntent, setSafeInsets, dispose };
 }
