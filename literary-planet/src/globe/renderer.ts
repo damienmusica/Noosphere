@@ -2038,11 +2038,13 @@ export function createGlobe(
       hoverPending = false;
       if (disposed) return;
       const s = store.getState();
-      const id = pickAuthor(e.clientX, e.clientY);
-      // priority: star > work town > relation line — EXCEPT the already-
-      // selected star, whose big near-zoom disc must not swallow its own
-      // towns (7th review vertical slice: town clicks inside the realm)
-      const cw = !id || id === s.selectedAuthorId ? pickCity() : null;
+      const rawAuthor = pickAuthor(e.clientX, e.clientY); // also arms the raycaster
+      // towns are precise targets that only exist inside the selected realm
+      // at reading distance — when the pointer hits one, no star's generous
+      // pick disc may swallow it (7th review vertical slice). Star beats
+      // town only when the town disc is NOT hit.
+      const cw = pickCity();
+      const id = cw ? null : rawAuthor;
       const rel = id || cw ? null : pickRelation();
       renderer.domElement.style.cursor = id || cw || rel ? "pointer" : "grab";
       const changed =
@@ -2073,9 +2075,9 @@ export function createGlobe(
     const dt = performance.now() - downAt.t;
     downAt = null;
     if (moved > 6 || dt > 700) return; // drag, not click
-    const id = pickAuthor(e.clientX, e.clientY);
-    // towns beat their own already-selected star (see onPointerMove note)
-    const cw = !id || id === store.getState().selectedAuthorId ? pickCity() : null;
+    const id = pickAuthor(e.clientX, e.clientY); // also arms the raycaster
+    // a hit town outranks every star's pick disc (see onPointerMove note)
+    const cw = pickCity();
     if (cw) {
       cbs.onWorkPick(cw);
       return;
