@@ -5,16 +5,23 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Dataset } from "../types.ts";
 import { loadArtManifest, type ArtManifest } from "../globe/art-assets.ts";
 import { UniverseScene, type Stage } from "./scene.ts";
-import { LENSES, buildLens, type LensId, type LensLine, type LensResult } from "./lenses.ts";
+import {
+  LENSES,
+  buildLens,
+  indexGlyph,
+  type LensId,
+  type LensLine,
+  type LensResult
+} from "./lenses.ts";
 import { RELATION_COLORS } from "../theme.ts";
-import { OrbitCard } from "./components/OrbitCard.tsx";
+import { OrbitCard, type SkyMembership } from "./components/OrbitCard.tsx";
 import {
   decodeShare,
   encodeShare,
   emptyPersonal,
   loadPersonal,
   readOrder,
-  recommend,
+  recommendTracks,
   savePersonal,
   type PersonalState
 } from "./personal.ts";
@@ -41,7 +48,11 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const [stage, setStage] = useState<Stage>("sky");
   const [personal, setPersonal] = useState<PersonalState>(emptyPersonal);
   const [shared, setShared] = useState<string | null>(null);
+  /** art 매니페스트가 도착해야 착륙 가능 여부를 안다 — 딥링크는 대기한다 */
+  const [pendingLand, setPendingLand] = useState<string | null>(null);
   const [query, setQuery] = useState("");
+  /** 범례에서 지목한 성좌 — 목록↔하늘 연동 */
+  const [groupFocus, setGroupFocus] = useState<string | null>(null);
 
   const byId = useMemo(() => new Map(dataset.authors.map((a) => [a.id, a])), [dataset]);
   const searchIndex = useMemo(() => buildSearchIndex(dataset.authors), [dataset]);
@@ -79,7 +90,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     const q = new URLSearchParams(location.search);
     const a = q.get("a");
     if (a) setFocusId(a);
-    if (q.get("land") === "1" && a) setLandedId(a);
+    if (q.get("land") === "1" && a) setPendingLand(a);
     const l = q.get("lens");
     if (l) setLensId(l === "none" ? null : (l as LensId));
     const y = Number(q.get("y"));
@@ -150,7 +161,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         onPickAuthor: (id) => {
           setFocusId((prev) => {
             if (id && prev === id) {
-              setLandedId(id);
+              if (landable(id)) setLandedId(id);
               return id;
             }
             return id;
@@ -167,7 +178,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       metrics: () => scene.metrics,
       settle: () => scene.settle(),
       focus: (id: string | null) => setFocusId(id),
-      land: (id: string | null) => setLandedId(id)
+      land: (id: string | null) => setLandedId(id && landable(id) ? id : null)
     };
     return () => {
       scene.dispose();
@@ -182,7 +193,8 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   }, [art]);
 
   useEffect(() => {
-    sceneRef.current?.setSafeRight(focusId || landedId ? 392 : 0);
+    // 좌측 관측층 범례는 상시, 우측 카드는 선택 시 — 투영만 민다
+    sceneRef.current?.setSafeInsets(250, focusId || landedId ? 392 : 0);
   }, [focusId, landedId]);
 
   useEffect(() => {
@@ -196,9 +208,13 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       selectedWorkId: workId,
       reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
       ego: ego.lines,
-      egoLit: ego.lit
+      egoLit: ego.lit,
+      lensMarks: lens?.marks ?? new Map(),
+      lensGroupFocus: groupFocus
+        ? new Set(lens?.groups.find((g) => g.id === groupFocus)?.memberIds ?? [])
+        : null
     });
-  }, [focusId, landedId, year, lens, personal, workId, ego]);
+  }, [focusId, landedId, year, lens, personal, workId, ego, groupFocus]);
 
   const focus = focusId ? byId.get(focusId) : null;
   const landed = landedId ? byId.get(landedId) : null;
@@ -218,14 +234,46 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     return out;
   }, [focus, dataset, byId]);
 
-  const recs = useMemo(
+  const tracks = useMemo(
     () =>
-      recommend(personal, dataset.authors, dataset.relations, (a) => a.difficulty, {
-        region: (id) => regionLabel(id, "ko"),
-        language: (code) => languageLabel(code, "ko")
+      recommendTracks(personal, dataset.authors, dataset.relations, (a) => a.difficulty, {
+        region: (id: string) => regionLabel(id, "ko"),
+        language: (code: string) => languageLabel(code, "ko")
       }),
     [personal, dataset]
   );
+
+  /** 착륙지 준비 = 육필 지각 자산 보유. 준비되지 않은 표면에는 내려앉지 않는다 */
+  const landable = useCallback((id: string): boolean => Boolean(art?.grounds?.[id]), [art]);
+
+  /** 이 별이 속한 하늘들 — 궤도 카드용 (관측층이 데이터에서 파생) */
+  const skiesOf = useCallback(
+    (id: string): SkyMembership[] => {
+      const out: SkyMembership[] = [];
+      for (const def of LENSES) {
+        if (def.kind !== "attribute") continue;
+        const r = buildLens(def.id, {
+          authors: dataset.authors,
+          relations: dataset.relations,
+          positions,
+          movementLabel: (m) => dataset.movements.find((x) => x.id === m)?.ko ?? m,
+          readOrder: [],
+          wantIds: []
+        });
+        for (const g of r.groups)
+          if (g.memberIds.includes(id)) out.push({ lens: def.ko, group: g.label });
+      }
+      return out;
+    },
+    [dataset, positions]
+  );
+
+  // 딥링크 착륙은 자산이 도착한 뒤 게이트를 통과해야 성립한다
+  useEffect(() => {
+    if (!pendingLand || !art) return;
+    if (landable(pendingLand)) setLandedId(pendingLand);
+    setPendingLand(null);
+  }, [pendingLand, art, landable]);
 
   const toggle = useCallback((key: "read" | "want", id: string) => {
     setPersonal((p) => {
@@ -237,7 +285,6 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     });
   }, []);
 
-  const landable = (id: string): boolean => Boolean(art?.grounds?.[id]);
   const maxDeg = Math.max(1, ...Object.values(degree));
 
   const readCount = Object.keys(personal.read).length;
@@ -321,11 +368,22 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
           </button>
         ))}
         {lens && lens.groups.length ? (
-          <ul className="u-lens-groups">
-            {lens.groups.slice(0, 6).map((g) => (
+          <ul className="u-lens-groups" data-testid="lens-legend">
+            {lens.groups.slice(0, 8).map((g) => (
               <li key={g.id}>
-                <span className="u-dot" style={{ background: g.color }} aria-hidden="true" />
-                {g.label} <em>{g.memberIds.length}</em>
+                <button
+                  className={groupFocus === g.id ? "is-on" : ""}
+                  onMouseEnter={() => setGroupFocus(g.id)}
+                  onFocus={() => setGroupFocus(g.id)}
+                  onMouseLeave={() => setGroupFocus((c) => (c === g.id ? null : c))}
+                  onBlur={() => setGroupFocus((c) => (c === g.id ? null : c))}
+                  onClick={() => setGroupFocus(groupFocus === g.id ? null : g.id)}
+                >
+                  <span className="u-index" aria-hidden="true">
+                    {indexGlyph(g.index)}
+                  </span>
+                  {g.label} <em>{g.memberIds.length}</em>
+                </button>
               </li>
             ))}
           </ul>
@@ -355,29 +413,36 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         <p>
           읽음 <strong>{readCount}</strong> · 궤도 <strong>{Object.keys(personal.want).length}</strong>
         </p>
-        {recs.length ? (
-          <>
-            <h3>다음 독서</h3>
-            <ul className="u-recs">
-              {recs.map((r) => {
-                const a = byId.get(r.authorId);
-                if (!a) return null;
-                return (
-                  <li key={r.authorId}>
-                    <button onClick={() => setFocusId(r.authorId)}>
-                      <span
-                        className="u-dot"
-                        style={{ background: PERIOD_TINT[periodOf(a)] }}
-                        aria-hidden="true"
-                      />
-                      {a.names.ko}
-                    </button>
-                    <em>{r.reasons.join(" · ")}</em>
-                  </li>
-                );
-              })}
-            </ul>
-          </>
+        {tracks.length ? (
+          <div className="u-tracks" data-testid="tracks">
+            <h3>다음 독서 — 방향을 고르세요</h3>
+            {tracks.map((t) => (
+              <div key={t.id} className="u-track">
+                <p className="u-track__name" title={t.hint}>
+                  {t.ko}
+                </p>
+                <ul className="u-recs">
+                  {t.items.map((r) => {
+                    const a = byId.get(r.authorId);
+                    if (!a) return null;
+                    return (
+                      <li key={r.authorId}>
+                        <button onClick={() => setFocusId(r.authorId)}>
+                          <span
+                            className="u-dot"
+                            style={{ background: PERIOD_TINT[periodOf(a)] }}
+                            aria-hidden="true"
+                          />
+                          {a.names.ko}
+                        </button>
+                        <em>{r.reasons.join(" · ")}</em>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </div>
         ) : (
           <p className="u-mine__empty">별을 읽음으로 표시하면 다음 독서를 여기서 제안한다.</p>
         )}
@@ -402,6 +467,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
           relations={focusRelations}
           art={art}
           landable={landable(focus.id)}
+          skies={skiesOf(focus.id)}
           read={Boolean(personal.read[focus.id])}
           want={Boolean(personal.want[focus.id])}
           onToggleRead={() => toggle("read", focus.id)}

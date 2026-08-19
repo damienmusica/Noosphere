@@ -18,10 +18,12 @@ const opt = (n, d) => {
 };
 const distDir = path.resolve(ROOT, opt("dist", "dist"));
 
+// 준비된 착륙지 3인 + 미준비 궤도 경험 1인 (CPO 2026-08-20 주문)
 const SLICE = [
-  { id: "franz-kafka", query: "카프카", works: 5, crust: "manuscript" },
-  { id: "natsume-soseki", query: "소세키", works: 6, crust: "manuscript" },
-  { id: "rabindranath-tagore", query: "타고르", works: 6, crust: "manuscript" }
+  { id: "franz-kafka", query: "카프카", works: 5, crust: "manuscript", landable: true },
+  { id: "natsume-soseki", query: "소세키", works: 6, crust: "manuscript", landable: true },
+  { id: "rabindranath-tagore", query: "타고르", works: 6, crust: "manuscript", landable: true },
+  { id: "marcel-proust", query: "프루스트", works: 6, crust: null, landable: false }
 ];
 
 const server = await serveDist(distDir);
@@ -55,6 +57,7 @@ const settle = async (ms = 1500) => {
   await page.waitForTimeout(200);
 };
 const metrics = () => page.evaluate(() => window.__universe.metrics());
+const url = (q) => `${server.origin}/universe.html${q}`;
 
 for (const a of SLICE) {
   console.log(`\n${a.id}`);
@@ -86,37 +89,57 @@ for (const a of SLICE) {
   // 4. 궤도 카드: 착륙 전에도 최소 정보가 전부 있다 (정전화 편향 방지 계약)
   const card = page.locator(".u-card");
   await card.waitFor({ timeout: 4000 });
-  check("초상", (await card.locator(".u-portrait").count()) === 1);
-  check("입문작", (await card.locator(".u-card__entry strong").count()) === 1,
-    (await card.locator(".u-card__entry strong").first().textContent()) ?? "");
+  const archival = await card.locator(".u-portrait--archival").count();
+  const plate = await card.locator('[data-testid="type-plate"]').count();
+  check("초상 사다리 — 기록 사진 또는 활자 명판", archival + plate === 1,
+    archival ? "기록 사진" : "활자 명판");
+  check("발명된 인간 얼굴 없음", (await card.locator("canvas").count()) === 0);
   check("해설", ((await card.locator(".u-card__why").first().textContent()) ?? "").length > 80);
+  check("속한 하늘", (await card.locator(".u-card__skies").count()) >= 0);
   check("관계 목록", (await card.locator(".u-card__rel li").count()) >= 1);
   check("출처", ((await card.locator(".u-card__src").first().textContent()) ?? "").includes("출처"));
 
-  // 5. 착륙: 보이는 버튼으로 들어간다
-  const land = page.locator('[data-testid="land"]');
-  const lbox = await land.boundingBox();
-  check("착륙 문이 뷰포트 안에 있다", Boolean(lbox && lbox.y >= 0 && lbox.y < 1000));
-  await land.click();
-  await settle(1800);
+  // 5. 궤도 관측 — 착륙하지 않아도 이 작가를 읽을 수 있는 전부
+  const orbit = card.locator('[data-testid="orbit-reading"]');
+  check("독서 순서", (await orbit.locator("ol > li").count()) >= 3,
+    `${await orbit.locator("ol > li").count()}편`);
+  check("입문 사유", ((await orbit.locator(".u-card__entry-why").first().textContent()) ?? "").length > 20);
+  check("작품 의의", (await orbit.locator(".u-works__sig").count()) >= 3);
+  check("난도 사유", ((await orbit.locator(".u-card__diff").first().textContent()) ?? "").includes("난도"));
 
-  // 6. 지각이 그 작가의 육필이다
-  m = await metrics();
-  check("표면 단계", m.stage === "surface", `stage=${m.stage} dist=${m.dist}`);
-  check("지각 = 육필 원고", m.crust === a.crust, `crust=${m.crust}`);
+  // 6. 착륙 게이트 — 준비되지 않은 표면에는 내려앉지 않는다
+  const landCount = await page.locator('[data-testid="land"]').count();
+  check(`착륙 문 ${a.landable ? "열림" : "닫힘"}`, landCount === (a.landable ? 1 : 0));
+  const readiness = (await page.locator('[data-testid="readiness"]').first().textContent()) ?? "";
+  check("착륙 준비도 정직 표기", readiness.includes(a.landable ? "준비됨" : "미준비"),
+    readiness.slice(0, 34));
 
-  // 7. 착륙해도 하늘이 남는다 (성계 구조의 핵심 약속)
-  check("착륙해도 하늘이 남는다", m.stars > 20, `stars=${m.stars}`);
+  if (a.landable) {
+    const lbox = await page.locator('[data-testid="land"]').boundingBox();
+    check("착륙 문이 뷰포트 안에 있다", Boolean(lbox && lbox.y >= 0 && lbox.y < 1000));
+    await page.locator('[data-testid="land"]').click();
+    await settle(1800);
 
-  // 8. 도시(작품)가 표면에 서 있다
-  const workLabels = await page.locator(".globe-label--work").count();
-  check("작품 도시가 보인다", workLabels >= Math.min(4, a.works), `labels=${workLabels}`);
+    m = await metrics();
+    check("표면 단계", m.stage === "surface", `stage=${m.stage} dist=${m.dist}`);
+    check("지각 = 육필 원고", m.crust === a.crust, `crust=${m.crust}`);
+    check("착륙해도 하늘이 남는다", m.stars > 20, `stars=${m.stars}`);
 
-  // 9. 작품을 열면 그 작품의 의의가 나온다
-  await page.locator(".u-works button").first().click();
-  await page.waitForTimeout(250);
-  const sig = (await page.locator(".u-works__sig").first().textContent()) ?? "";
-  check("작품 인스펙터", sig.length > 40, `${sig.slice(0, 28)}…`);
+    const workLabels = await page.locator(".globe-label--work").count();
+    check("작품 도시가 보인다", workLabels >= Math.min(4, a.works), `labels=${workLabels}`);
+
+    await page.locator(".u-works button").first().click();
+    await page.waitForTimeout(250);
+    const sig = (await page.locator(".u-works__sig").first().textContent()) ?? "";
+    check("작품 인스펙터", sig.length > 40, `${sig.slice(0, 28)}…`);
+  } else {
+    // 딥링크로도 백지 지각에 내려앉을 수 없다
+    await page.goto(url(`?a=${a.id}&land=1`), { waitUntil: "load" });
+    await page.waitForFunction(() => window.__universe !== undefined);
+    await settle();
+    m = await metrics();
+    check("딥링크 착륙도 게이트를 지난다", m.stage !== "surface", `stage=${m.stage}`);
+  }
 
   // 10. 복귀: 하늘로 돌아가면 원경 포즈로 돌아온다
   await page.locator(".u-top .u-btn--ghost").first().click();

@@ -20,6 +20,8 @@ import {
   CAM_SKY_DEFAULT,
   CAM_SKY_MAX,
   LANDING_ALT,
+  LENS_DIST,
+  LENS_MAG,
   SHELL_R,
   STAR_TO_DISC_PX,
   apparentRadiusPx,
@@ -29,10 +31,12 @@ import {
   magnitude,
   representationFor,
   starLife,
+  lensCompress,
   starPixels,
   tintOf,
   SILHOUETTE_AMP
 } from "./grammar.ts";
+import { indexGlyph } from "./lenses.ts";
 import type { LensLine, LensResult } from "./lenses.ts";
 
 export interface UniverseData {
@@ -56,6 +60,10 @@ export interface UniverseSceneState {
   /** 선택된 별의 자기 성좌 — 렌즈와 무관하게 항상 그린다(중경의 관계 흐름) */
   ego: LensLine[];
   egoLit: Set<string>;
+  /** 관측층 소속의 색인 번호. 별의 밝기·색·링은 건드리지 않는다 */
+  lensMarks: Map<string, number[]>;
+  /** 범례에서 지목된 성좌의 구성원 — 이름표를 강제로 띄운다(목록↔하늘 연동) */
+  lensGroupFocus: Set<string> | null;
 }
 
 export interface UniverseCallbacks {
@@ -167,7 +175,9 @@ export class UniverseScene {
     selectedWorkId: null,
     reducedMotion: false,
     ego: [],
-    egoLit: new Set()
+    egoLit: new Set(),
+    lensMarks: new Map(),
+    lensGroupFocus: null
   };
   private stage: Stage = "sky";
   private anim: {
@@ -178,6 +188,16 @@ export class UniverseScene {
     start: number;
     dur: number;
   } | null = null;
+  /** 관측 렌즈 진행도 0..1 — 진입/이탈 애니메이션이 왜곡을 눈에 보이게 한다 */
+  private lensK = 0;
+  private lensKTarget = 0;
+  /** authorId → 압축된 목적지(월드) */
+  private lensTarget = new Map<string, THREE.Vector3>();
+  private lensStars!: THREE.Points;
+  private lensStarGeo!: THREE.BufferGeometry;
+  private lensTraces!: THREE.LineSegments;
+  private lensIds: string[] = [];
+  private safeLeft = 0;
   private safeRight = 0;
   private raf = 0;
   private disposed = false;
@@ -193,7 +213,11 @@ export class UniverseScene {
     /** 선택된 별의 자기 성좌 선 수 */
     ego: 0,
     /** 착륙한 천체의 지각 종류: manuscript(육필) | paper(백지) | null */
-    crust: null as string | null
+    crust: null as string | null,
+    /** 관측 렌즈 진행도(0..1)와 일률 배율 — 회귀 방지용 계측 */
+    lensK: 0,
+    lensMag: 1,
+    lensMoved: 0
   };
 
   constructor(
@@ -249,6 +273,21 @@ export class UniverseScene {
     );
     this.constellation.frustumCulled = false;
     this.scene.add(this.constellation);
+    this.lensTraces = new THREE.LineSegments(
+      new THREE.BufferGeometry(),
+      new THREE.LineBasicMaterial({
+        color: new THREE.Color(COLORS.line),
+        transparent: true,
+        opacity: 0
+      })
+    );
+    this.lensTraces.frustumCulled = false;
+    this.scene.add(this.lensTraces);
+    this.lensStarGeo = new THREE.BufferGeometry();
+    this.lensStars = new THREE.Points(this.lensStarGeo, this.starMat);
+    this.lensStars.frustumCulled = false;
+    this.lensStars.visible = false;
+    this.scene.add(this.lensStars);
     this.egoLines = new THREE.LineSegments(
       new THREE.BufferGeometry(),
       new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 1 })
@@ -419,17 +458,19 @@ export class UniverseScene {
   /** 아트 매니페스트는 비동기로 온다 — 장면을 다시 만들지 않고 갈아 끼운다
    *  (재생성하면 이미 반영된 상태가 조용히 사라진다) */
   /** 패널이 덮는 폭(px). 투영만 밀어서 궤도 역학은 건드리지 않는다(R7 PR1 계승) */
-  setSafeRight(px: number): void {
-    if (px === this.safeRight) return;
-    this.safeRight = px;
+  setSafeInsets(left: number, right: number): void {
+    if (left === this.safeLeft && right === this.safeRight) return;
+    this.safeLeft = left;
+    this.safeRight = right;
     this.applyViewOffset();
   }
 
   private applyViewOffset(): void {
     const w = this.renderer.domElement.clientWidth || 1;
     const h = this.renderer.domElement.clientHeight || 1;
-    if (this.safeRight <= 0) this.camera.clearViewOffset();
-    else this.camera.setViewOffset(w, h, this.safeRight / 2, 0, w, h);
+    const dx = (this.safeRight - this.safeLeft) / 2;
+    if (Math.abs(dx) < 1) this.camera.clearViewOffset();
+    else this.camera.setViewOffset(w, h, dx, 0, w, h);
     this.camera.updateProjectionMatrix();
   }
 
@@ -444,17 +485,23 @@ export class UniverseScene {
     const prevFocus = this.state.focusId;
     this.state = { ...this.state, ...next };
     this.refreshStars();
+    this.rebuildLens();
     this.refreshConstellation();
     if (this.state.landedId !== prevLanded) this.refreshCities();
     if (this.state.focusId !== prevFocus || this.state.landedId !== prevLanded) this.retarget();
   }
 
+  /**
+   * 별의 상태는 **상호작용 상태만** 반영한다. 관측층 소속은 여기에 손대지
+   * 않는다 — 밝기는 영향력, 색은 시대, 링은 개인 궤도가 이미 점유한 채널이고,
+   * 렌즈가 그것을 빌려 쓰면 "어두운 별"이 영향력이 낮은 것인지 렌즈 밖인지
+   * 구분되지 않는다(R11-b, CPO 제약).
+   */
   private starState(id: string): { boost: number; dim: number } {
     const s = this.state;
     if (id === s.landedId || id === s.focusId) return { boost: 1.55, dim: 1 };
     if (id === s.hoveredId) return { boost: 1.3, dim: 1 };
     if (s.egoLit.has(id)) return { boost: 1.22, dim: 1 };
-    if (s.lens) return s.lens.lit.has(id) ? { boost: 1.06, dim: 1 } : { boost: 1, dim: 0.34 };
     return { boost: 1, dim: 1 };
   }
 
@@ -489,6 +536,117 @@ export class UniverseScene {
     aRing.needsUpdate = true;
   }
 
+  /** 렌즈가 걸린 별의 화면상 실효 위치. 라벨·픽·관계선이 모두 이걸 쓴다 */
+  private effectivePos(id: string, out: THREE.Vector3): THREE.Vector3 {
+    const i = this.index.get(id);
+    if (i === undefined) return out.set(0, 0, 0);
+    out.copy(this.dirs[i] as THREE.Vector3).multiplyScalar(SHELL_R);
+    const t = this.lensTarget.get(id);
+    if (t && this.lensK > 0) out.lerp(t, this.lensK);
+    return out;
+  }
+
+  /**
+   * 렌즈 목적지 계산 — 각방향은 그대로, 반경만 압축.
+   * 선택 천체 자신은 움직이지 않는다(관측의 기준점이므로).
+   */
+  private rebuildLens(): void {
+    this.lensTarget.clear();
+    this.lensIds = [];
+    const focus = this.state.focusId;
+    if (!focus || this.state.landedId) {
+      this.lensKTarget = 0;
+      this.rebuildLensBuffers();
+      return;
+    }
+    const fi = this.index.get(focus);
+    if (fi === undefined) return;
+    const c = (this.dirs[fi] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
+    const members = [...this.state.egoLit].filter((id) => id !== focus && this.index.has(id));
+    if (!members.length) {
+      this.lensKTarget = 0;
+      this.rebuildLensBuffers();
+      return;
+    }
+    const v = new THREE.Vector3();
+    const dists = members.map((id) => {
+      const i = this.index.get(id) as number;
+      return v.copy(this.dirs[i] as THREE.Vector3).multiplyScalar(SHELL_R).distanceTo(c);
+    });
+    const dMin = Math.min(...dists);
+    const dMax = Math.max(...dists);
+    members.forEach((id, n) => {
+      const i = this.index.get(id) as number;
+      const p = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
+      const ray = p.clone().sub(c).normalize();
+      const r = lensCompress(dists[n] as number, dMin, dMax);
+      this.lensTarget.set(id, c.clone().addScaledVector(ray, r));
+    });
+    this.lensIds = members;
+    this.lensKTarget = 1;
+    this.rebuildLensBuffers();
+  }
+
+  /** 압축된 사본(별)과 원위치로 이어지는 궤적 */
+  private rebuildLensBuffers(): void {
+    const n = this.lensIds.length;
+    const pos = new Float32Array(n * 3);
+    const col = new Float32Array(n * 3);
+    const px = new Float32Array(n);
+    const alpha = new Float32Array(n);
+    const spike = new Float32Array(n);
+    const ring = new Float32Array(n);
+    const srcCol = this.starGeo.getAttribute("aColor") as THREE.BufferAttribute;
+    const srcPx = this.starGeo.getAttribute("aPx") as THREE.BufferAttribute;
+    this.lensIds.forEach((id, k) => {
+      const i = this.index.get(id) as number;
+      col[k * 3] = srcCol.getX(i);
+      col[k * 3 + 1] = srcCol.getY(i);
+      col[k * 3 + 2] = srcCol.getZ(i);
+      px[k] = srcPx.getX(i);
+      alpha[k] = 1;
+      spike[k] = 1;
+      ring[k] = this.state.want.has(id) ? 1 : 0;
+    });
+    const g = this.lensStarGeo;
+    g.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+    g.setAttribute("aColor", new THREE.BufferAttribute(col, 3));
+    g.setAttribute("aPx", new THREE.BufferAttribute(px, 1));
+    g.setAttribute("aAlpha", new THREE.BufferAttribute(alpha, 1));
+    g.setAttribute("aSpike", new THREE.BufferAttribute(spike, 1));
+    g.setAttribute("aRing", new THREE.BufferAttribute(ring, 1));
+    const trace = new Float32Array(n * 6);
+    const tg = new THREE.BufferGeometry();
+    tg.setAttribute("position", new THREE.BufferAttribute(trace, 3));
+    this.lensTraces.geometry.dispose();
+    this.lensTraces.geometry = tg;
+  }
+
+  /** 매 프레임: 렌즈 사본 위치와 궤적을 실효 위치로 갱신 */
+  private updateLensBuffers(): void {
+    const n = this.lensIds.length;
+    this.lensStars.visible = n > 0 && this.lensK > 0.01;
+    this.lensTraces.visible = this.lensStars.visible;
+    if (!this.lensStars.visible) return;
+    const pos = this.lensStarGeo.getAttribute("position") as THREE.BufferAttribute;
+    const alpha = this.lensStarGeo.getAttribute("aAlpha") as THREE.BufferAttribute;
+    const tr = this.lensTraces.geometry.getAttribute("position") as THREE.BufferAttribute;
+    const v = new THREE.Vector3();
+    this.lensIds.forEach((id, k) => {
+      const i = this.index.get(id) as number;
+      const orig = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
+      this.effectivePos(id, v);
+      pos.setXYZ(k, v.x, v.y, v.z);
+      alpha.setX(k, this.lensK);
+      tr.setXYZ(k * 2, orig.x, orig.y, orig.z);
+      tr.setXYZ(k * 2 + 1, v.x, v.y, v.z);
+    });
+    pos.needsUpdate = true;
+    alpha.needsUpdate = true;
+    tr.needsUpdate = true;
+    (this.lensTraces.material as THREE.LineBasicMaterial).opacity = 0.34 * this.lensK;
+  }
+
   private present(i: number): boolean {
     const a = this.authorAt(i);
     return !a || starLife(a, this.state.year).presence > 0.05;
@@ -510,17 +668,17 @@ export class UniverseScene {
       // 아직 태어나지 않은 별 사이에는 선도 없다 — 연도 스크럽에서 관계가
       // 그 관계의 당사자보다 먼저 존재하면 시간 채널이 거짓말이 된다
       if (!this.present(ia) || !this.present(ib)) continue;
-      const da = this.dirs[ia] as THREE.Vector3;
-      const db = this.dirs[ib] as THREE.Vector3;
+      const pa = this.effectivePos(l.a, new THREE.Vector3());
+      const pb = this.effectivePos(l.b, new THREE.Vector3());
       const c = new THREE.Color(l.color);
       const k = 0.3 + 0.7 * l.weight;
       const off = n * 6;
-      pos[off] = da.x * SHELL_R;
-      pos[off + 1] = da.y * SHELL_R;
-      pos[off + 2] = da.z * SHELL_R;
-      pos[off + 3] = db.x * SHELL_R;
-      pos[off + 4] = db.y * SHELL_R;
-      pos[off + 5] = db.z * SHELL_R;
+      pos[off] = pa.x;
+      pos[off + 1] = pa.y;
+      pos[off + 2] = pa.z;
+      pos[off + 3] = pb.x;
+      pos[off + 4] = pb.y;
+      pos[off + 5] = pb.z;
       for (let s = 0; s < 2; s++) {
         col[off + s * 3] = c.r * k;
         col[off + s * 3 + 1] = c.g * k;
@@ -809,11 +967,9 @@ export class UniverseScene {
       const i = this.index.get(s.focusId);
       if (i === undefined) return;
       const c = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
-      // 중경은 한 지점이 아니라 통과 구간이지만, 첫 클릭이 멈추는 자리는
-      // **관계가 읽히는 거리**여야 한다. 천체까지 40 까지 내려가면 이웃이 전부
-      // 화면 밖으로 나가 "작은 공 하나"가 된다(실측: 라벨 2개). 430 이면 그 별의
-      // 자기 성좌가 프레임 안에 수렴하고, 착륙은 두 번째 클릭이 맡는다.
-      this.flyTo(c.clone(), 430, 1050);
+      // 중경 = 관측 렌즈 상태. 거리 자체가 계약이 아니라, 이 거리에서 렌즈가
+      // (확대된 천체 + 압축된 이웃 + 원위치 궤적)을 한 프레임에 담는다.
+      this.flyTo(c.clone(), LENS_DIST, 1050);
       return;
     }
     this.flyTo(new THREE.Vector3(0, 0, 0), CAM_SKY_DEFAULT, 1000);
@@ -884,14 +1040,8 @@ export class UniverseScene {
       const id = this.order[i] as string;
       const a = this.authorAt(i);
       if (a && starLife(a, this.state.year).presence <= 0.02) continue;
-      if (
-        this.state.lens &&
-        this.state.lens.lit.size &&
-        !this.state.lens.lit.has(id) &&
-        !this.state.egoLit.has(id)
-      )
-        continue;
-      v.copy(this.dirs[i] as THREE.Vector3).multiplyScalar(SHELL_R).project(this.camera);
+      // 렌즈는 별을 걸러내지 않는다 — 주석(annotation)이지 필터가 아니다
+      this.effectivePos(id, v).project(this.camera);
       if (v.z > 1) continue;
       const sx = ((v.x + 1) / 2) * r.width;
       const sy = ((-v.y + 1) / 2) * r.height;
@@ -1013,7 +1163,10 @@ export class UniverseScene {
       const id = this.order[i] as string;
       const center = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
       const d = center.distanceTo(this.camera.position);
-      const ap = apparentRadiusPx(this.radii[i] ?? 12, d, this.camera.fov, h);
+      const scaled =
+        (this.radii[i] ?? 12) *
+        (id === this.state.focusId && !this.state.landedId ? 1 + (LENS_MAG - 1) * this.lensK : 1);
+      const ap = apparentRadiusPx(scaled, d, this.camera.fov, h);
       const rep = representationFor(ap, h);
       if (rep === "star") {
         const body = this.bodies.get(id);
@@ -1025,7 +1178,8 @@ export class UniverseScene {
           resolved++;
           // 지각은 표면 단계보다 먼저 칠한다 — 도착하는 순간 텍스처가 튀어
           // 들어오면 "같은 천체가 계속 있었다"는 규칙이 깨진다
-          if (ap > 60) this.paintCrust(body);
+          // 렌즈로 확대된 상태에서 지각을 칠하면 착륙의 발견이 중경에서 소진된다
+          if (ap > 120 && this.lensK < 0.05) this.paintCrust(body);
           if (rep === "surface") surfaceId = id;
         }
         // 구가 보이면 별 스프라이트는 물러난다 — 같은 객체가 두 번 그려지지 않게
@@ -1069,6 +1223,21 @@ export class UniverseScene {
     } else {
       this.selRing.visible = false;
     }
+    // 관측 렌즈 진행도 — 진입/이탈이 보이도록 애니메이션한다
+    const prevK = this.lensK;
+    if (this.lensK !== this.lensKTarget) {
+      const step = this.state.reducedMotion ? 1 : 1 / 42;
+      this.lensK += Math.sign(this.lensKTarget - this.lensK) * step;
+      if (Math.abs(this.lensKTarget - this.lensK) < step) this.lensK = this.lensKTarget;
+    }
+    this.updateLensBuffers();
+    if (this.lensK !== prevK) this.buildLines(this.egoLines, this.state.ego);
+    // 선택 천체는 일률 배율로 확대 — 배율이 같으므로 크기 차이(=영향력)는 남는다
+    for (const [id, rec] of this.bodies) {
+      const want = id === this.state.focusId && !this.state.landedId ? 1 + (LENS_MAG - 1) * this.lensK : 1;
+      const target = rec.radius * want;
+      if (Math.abs(rec.mesh.scale.x - target) > 1e-4) rec.mesh.scale.setScalar(target);
+    }
     this.orientCities();
     this.updateLabels();
     this.renderer.render(this.scene, this.camera);
@@ -1083,6 +1252,9 @@ export class UniverseScene {
       frames: this.metrics.frames + 1,
       stars: drawn,
       ego: this.state.ego.length,
+      lensK: Number(this.lensK.toFixed(3)),
+      lensMag: this.lensK > 0 ? LENS_MAG : 1,
+      lensMoved: this.lensStars.visible ? this.lensIds.length : 0,
       crust: (landedRec?.mesh.userData.crust as string | undefined) ?? null
     };
   }
@@ -1152,23 +1324,17 @@ export class UniverseScene {
         const a = this.authorAt(i);
         if (!a) continue;
         if (starLife(a, s.year).presence <= 0.05) continue;
-        if (
-          s.lens &&
-          s.lens.lit.size &&
-          !s.lens.lit.has(id) &&
-          id !== s.focusId &&
-          !s.egoLit.has(id)
-        )
-          continue;
+        const inGroupFocus = s.lensGroupFocus?.has(id) ?? false;
         const named =
           id === s.focusId ||
           id === s.hoveredId ||
+          inGroupFocus ||
           s.egoLit.has(id) ||
           s.read.has(id) ||
           s.want.has(id) ||
           (this.mags[i] ?? 0) > (sky ? 0.62 : 0.3);
         if (!named) continue;
-        const world = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
+        const world = this.effectivePos(id, new THREE.Vector3());
         const toward = world.clone().sub(this.camera.position).normalize();
         if (toward.dot(camDir) < 0.28) continue;
         v.copy(world).project(this.camera);
@@ -1177,25 +1343,34 @@ export class UniverseScene {
         // "neighbor" 는 그리디 예산을 우회한다(labels.ts). 렌즈가 켜지면 밝혀진
         // 별이 수십 개라 그 상태를 주면 원경이 이름으로 뒤덮인다(실측 41개).
         // 예산을 넘겨도 되는 것은 선택 자신과 그 자기 성좌뿐이다.
+        // "neighbor" 는 그리디 예산을 우회한다(labels.ts). 예산을 넘겨도 되는
+        // 것은 선택 자신·자기 성좌·범례에서 지목된 성좌뿐이다.
         const state =
           id === s.focusId || id === s.landedId
             ? "selected"
             : id === s.hoveredId
               ? "hovered"
-              : s.egoLit.has(id)
+              : s.egoLit.has(id) || inGroupFocus
                 ? "neighbor"
                 : "normal";
+        const glyphs = (s.lensMarks.get(id) ?? []).map(indexGlyph).join("");
+        const sx = ((v.x + 1) / 2) * w;
+        // 패널이 덮는 띠에는 이름을 놓지 않는다 — 읽을 수 없는 라벨은
+        // 정보가 아니라 소음이다(R9 "뷰포트 안의 다음 행동" 계승)
+        if (sx < this.safeLeft && id !== s.focusId) continue;
+        if (sx > w - this.safeRight && id !== s.focusId) continue;
         items.push({
           id,
-          text: a.names.ko,
+          text: glyphs ? `${a.names.ko}\u2009${glyphs}` : a.names.ko,
           kind: "author",
           size: mag > 0.6 ? "lg" : mag > 0.3 ? "md" : "sm",
           priority:
             (id === s.focusId ? 400 : 0) +
             (id === s.hoveredId ? 200 : 0) +
+            (inGroupFocus ? 300 : 0) +
             (s.read.has(id) ? 60 : 0) +
             mag * 100,
-          x: ((v.x + 1) / 2) * w,
+          x: sx,
           y: ((-v.y + 1) / 2) * h + 14,
           state
         });

@@ -78,6 +78,19 @@ for (const id of AUTHORS) {
   report.push({ frame: `${id}-3near`, ...(await shot(`${id}-3near`)) });
 }
 
+// ——— 미준비 궤도 경험 (착륙 없음) ———
+await page.goto(url("?lens=movement&a=marcel-proust"), { waitUntil: "load" });
+await ready();
+report.push({ frame: "7orbit-unprepared", ...(await shot("7orbit-unprepared")) });
+
+// ——— 관측층: 목록↔하늘 연동 (범례 지목) ———
+await page.goto(url("?lens=language"), { waitUntil: "load" });
+await ready();
+await page.locator(".u-lens-groups button").first().hover();
+await page.waitForTimeout(400);
+await page.evaluate(() => window.__universe.settle());
+report.push({ frame: "8lens-linked", ...(await shot("8lens-linked")) });
+
 // ——— 전환: 원경 → 착륙 사이의 실제 프레임 ———
 await page.goto(url("?lens=movement"), { waitUntil: "load" });
 await ready();

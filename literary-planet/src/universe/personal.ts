@@ -78,14 +78,27 @@ export function decodeShare(code: string): PersonalState | null {
 }
 
 // ---------------------------------------------------------------------------
-// 다음 독서 추천 — 블랙박스 금지. 모든 추천은 왜 추천됐는지 문장을 갖는다.
+// 다음 독서 — 하나의 점수가 아니라 서로 다른 목적의 갈래로 (R11-b)
+//
+// 0.45/0.35/0.20 가중합은 설명 가능했지만 여전히 **우리의 편집적 가치판단**을
+// 하나의 숫자로 굳힌 것이었고, 테스트로 고정했다고 정당해지지 않는다(외부 리뷰
+// 지적 ④, 전면 수용). 갈래를 병렬로 보여주고 방향은 독자가 고른다 —
+// 관측층을 독자가 켜는 것과 같은 원칙이다.
 // ---------------------------------------------------------------------------
 
 export interface Recommendation {
   authorId: string;
-  score: number;
-  /** 사용자에게 그대로 보이는 근거 */
+  /** 사용자에게 그대로 보이는 근거 — 블랙박스 금지 */
   reasons: string[];
+}
+
+export type TrackId = "lineage" | "unfamiliar" | "gentle";
+
+export interface Track {
+  id: TrackId;
+  ko: string;
+  hint: string;
+  items: Recommendation[];
 }
 
 const REL_WEIGHT: Record<string, number> = {
@@ -97,40 +110,39 @@ const REL_WEIGHT: Record<string, number> = {
   contrast: 0.6
 };
 
-/**
- * 세 항의 합: ① 읽은 별과의 관계 밀도 ② **아직 비어 있는 지역/언어**
- * ③ 진입 난이도. ②가 있는 이유는 정전화 편향 때문이다 — 관계 밀도만 쓰면
- * 이미 조밀한 유럽 중심부를 계속 추천하게 된다.
- */
-export function recommend(
+export interface TrackLabels {
+  region: (id: string) => string;
+  language: (code: string) => string;
+}
+
+export function recommendTracks(
   p: PersonalState,
   authors: Author[],
   relations: Relation[],
   difficultyOf: (a: Author) => number,
-  label: { region: (id: string) => string; language: (code: string) => string },
-  limit = 5
-): Recommendation[] {
+  label: TrackLabels,
+  perTrack = 3
+): Track[] {
   const read = new Set(Object.keys(p.read));
   if (!read.size) return [];
   const byId = new Map(authors.map((a) => [a.id, a]));
 
-  const readRegions = new Map<string, number>();
-  const readLangs = new Map<string, number>();
+  const readRegions = new Set<string>();
+  const readLangs = new Set<string>();
   for (const id of read) {
     const a = byId.get(id);
     if (!a) continue;
-    for (const r of a.regions) readRegions.set(r, (readRegions.get(r) ?? 0) + 1);
-    for (const l of a.languages) readLangs.set(l, (readLangs.get(l) ?? 0) + 1);
+    for (const r of a.regions) readRegions.add(r);
+    for (const l of a.languages) readLangs.add(l);
   }
 
   const tie = new Map<string, { w: number; via: Set<string> }>();
   for (const rel of relations) {
     const w = REL_WEIGHT[rel.type] ?? 0.5;
-    const pairs: Array<[string, string]> = [
+    for (const [from, to] of [
       [rel.sourceId, rel.targetId],
       [rel.targetId, rel.sourceId]
-    ];
-    for (const [from, to] of pairs) {
+    ] as Array<[string, string]>) {
       if (!read.has(from) || read.has(to)) continue;
       const cur = tie.get(to) ?? { w: 0, via: new Set<string>() };
       cur.w += w * (rel.weight ?? 0.7);
@@ -139,33 +151,69 @@ export function recommend(
     }
   }
 
-  const maxTie = Math.max(1, ...[...tie.values()].map((t) => t.w));
-  const out: Recommendation[] = [];
-  for (const a of authors) {
-    if (read.has(a.id)) continue;
-    const t = tie.get(a.id);
-    const tieScore = t ? t.w / maxTie : 0;
-    const regionGap = a.regions.every((r) => !readRegions.has(r)) ? 1 : 0;
-    const langGap = a.languages.every((l) => !readLangs.has(l)) ? 1 : 0;
-    const gap = Math.min(1, regionGap * 0.7 + langGap * 0.3);
-    const ease = (6 - difficultyOf(a)) / 5;
-    const score = 0.45 * tieScore + 0.35 * gap + 0.2 * ease;
-    if (score <= 0.16) continue;
-    const reasons: string[] = [];
-    if (t && t.via.size) {
-      const names = [...t.via]
-        .slice(0, 2)
-        .map((id) => byId.get(id)?.names.ko ?? id)
-        .join("·");
-      reasons.push(`${names}${t.via.size > 2 ? " 외" : ""}와 이어져 있다`);
-    }
-    if (regionGap) reasons.push(`아직 비어 있는 지역: ${label.region(a.regions[0] ?? "")}`);
-    else if (langGap) reasons.push(`아직 읽지 않은 언어: ${label.language(a.languages[0] ?? "")}`);
-    if (difficultyOf(a) <= 2) reasons.push("진입 난이도가 낮다");
-    if (p.want[a.id]) reasons.push("읽고 싶은 별로 담아 두었다");
-    out.push({ authorId: a.id, score, reasons });
-  }
-  return out.sort((x, y) => y.score - x.score).slice(0, limit);
+  const candidates = authors.filter((a) => !read.has(a.id));
+  const viaNames = (id: string): string => {
+    const t = tie.get(id);
+    if (!t || !t.via.size) return "";
+    const names = [...t.via].slice(0, 2).map((x) => byId.get(x)?.names.ko ?? x);
+    return `${names.join("·")}${t.via.size > 2 ? " 외" : ""}`;
+  };
+  const wanted = (id: string): string[] => (p.want[id] ? ["읽고 싶은 별로 담아 두었다"] : []);
+
+  // ① 읽던 계보를 계속하기
+  const lineage: Recommendation[] = candidates
+    .filter((a) => (tie.get(a.id)?.w ?? 0) > 0)
+    .sort((x, y) => (tie.get(y.id)?.w ?? 0) - (tie.get(x.id)?.w ?? 0))
+    .slice(0, perTrack)
+    .map((a) => ({
+      authorId: a.id,
+      reasons: [`${viaNames(a.id)}와 이어져 있다`, ...wanted(a.id)]
+    }));
+
+  // ② 낯선 언어·지역으로 건너가기
+  const gapRank = (a: Author): number =>
+    (a.regions.every((r) => !readRegions.has(r)) ? 2 : 0) +
+    (a.languages.every((l) => !readLangs.has(l)) ? 1 : 0);
+  const unfamiliar: Recommendation[] = candidates
+    .filter((a) => gapRank(a) > 0)
+    .sort(
+      (x, y) => gapRank(y) - gapRank(x) || (tie.get(y.id)?.w ?? 0) - (tie.get(x.id)?.w ?? 0)
+    )
+    .slice(0, perTrack)
+    .map((a) => {
+      const reasons: string[] = [];
+      if (a.regions.every((r) => !readRegions.has(r)))
+        reasons.push(`아직 비어 있는 지역: ${label.region(a.regions[0] ?? "")}`);
+      if (a.languages.every((l) => !readLangs.has(l)))
+        reasons.push(`아직 읽지 않은 언어: ${label.language(a.languages[0] ?? "")}`);
+      if (tie.get(a.id)) reasons.push(`${viaNames(a.id)}와 이어져 있다`);
+      return { authorId: a.id, reasons: [...reasons, ...wanted(a.id)] };
+    });
+
+  // ③ 쉬운 입문작부터 시작하기
+  const gentle: Recommendation[] = candidates
+    .filter((a) => difficultyOf(a) <= 2)
+    .sort(
+      (x, y) =>
+        difficultyOf(x) - difficultyOf(y) || (tie.get(y.id)?.w ?? 0) - (tie.get(x.id)?.w ?? 0)
+    )
+    .slice(0, perTrack)
+    .map((a) => ({
+      authorId: a.id,
+      reasons: [`난도 ${difficultyOf(a)}/5`, ...(tie.get(a.id) ? [`${viaNames(a.id)}와 이어져 있다`] : []), ...wanted(a.id)]
+    }));
+
+  const tracks: Track[] = [
+    { id: "lineage", ko: "읽던 계보를 계속", hint: "읽은 별과 관계로 이어진 작가", items: lineage },
+    {
+      id: "unfamiliar",
+      ko: "낯선 언어·지역으로",
+      hint: "아직 한 명도 읽지 않은 지역이나 언어",
+      items: unfamiliar
+    },
+    { id: "gentle", ko: "쉬운 입문부터", hint: "진입 난도가 낮은 작가", items: gentle }
+  ];
+  return tracks.filter((t) => t.items.length > 0);
 }
 
 /** 성좌의 성장 — 표시한 시각 순서대로 누적 개수 */

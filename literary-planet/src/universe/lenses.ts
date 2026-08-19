@@ -33,13 +33,23 @@ export interface LensGroup {
   label: string;
   memberIds: string[];
   color: string;
+  /** 색인 번호 — 아틀라스 범례 문법. 별에는 아무 채널도 쓰지 않고
+   *  이름표 옆 활자 하나로만 소속을 말한다(R11-b, 외부 리뷰 지적 ①). */
+  index: number;
 }
 
 export interface LensResult {
+  /** **실제 관계와 개인 연결만** 선을 갖는다. 속성 렌즈는 선을 그리지 않는다:
+   *  최소신장트리는 계산 편의가 만든 가짜 인접성이고, 사용자는 선을 인과·친연
+   *  관계로 읽는다(외부 리뷰 지적 ①, 전면 수용). */
   lines: LensLine[];
   groups: LensGroup[];
-  /** 이 렌즈가 밝히는 별 — 나머지는 배경으로 후퇴한다 */
+  /** 이 렌즈에 속한 별. **밝기·색·링을 건드리지 않는다** — 그 세 채널은
+   *  영향력·시대·개인 궤도가 이미 점유했다. 소속은 이름표 옆 색인 번호와
+   *  목록↔하늘 연동으로만 말한다. */
   lit: Set<string>;
+  /** authorId → 색인 번호들. 여러 하늘에 속하면 여러 개가 붙는다 */
+  marks: Map<string, number[]>;
 }
 
 export interface LensDef {
@@ -80,10 +90,12 @@ function angular(a: [number, number, number], b: [number, number, number]): numb
 }
 
 /**
- * 그룹 내부를 각거리 최소신장트리로 잇는다. 실제 성좌가 그렇듯 선은
- * "가까운 별끼리 이은 경로"일 뿐 영향의 방향을 주장하지 않는다 —
- * 주장을 하는 선은 관계 렌즈에만 있다.
+ * (은퇴, R11-b) 그룹 내부를 각거리 최소신장트리로 이었던 함수. 선이라는
+ * 채널을 실제 관계와 공유한 것이 잘못이었다 — 아래 주석이 그 자백이다:
+ * "가까운 별끼리 이은 경로일 뿐 영향의 방향을 주장하지 않는다". 사용자는
+ * 그 구분을 볼 수 없다. 코드는 근거 기록으로 남기되 호출하지 않는다.
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function chain(
   members: string[],
   pos: Record<string, [number, number, number]>
@@ -140,6 +152,7 @@ export function buildLens(id: LensId, input: LensInput): LensResult {
   const lines: LensLine[] = [];
   const groups: LensGroup[] = [];
   const lit = new Set<string>();
+  const marks = new Map<string, number[]>();
 
   if (def.kind === "relation") {
     const want =
@@ -157,7 +170,7 @@ export function buildLens(id: LensId, input: LensInput): LensResult {
       lit.add(r.sourceId);
       lit.add(r.targetId);
     }
-    return { lines, groups, lit };
+    return { lines, groups, lit, marks };
   }
 
   if (def.kind === "personal") {
@@ -178,9 +191,10 @@ export function buildLens(id: LensId, input: LensInput): LensResult {
         id: "personal",
         label: "나의 성좌",
         memberIds: seq,
-        color: ATTR_COLOR.personal ?? "#eccb82"
+        color: ATTR_COLOR.personal ?? "#eccb82",
+        index: 1
       });
-    return { lines, groups, lit };
+    return { lines, groups, lit, marks };
   }
 
   // attribute lenses
@@ -198,10 +212,9 @@ export function buildLens(id: LensId, input: LensInput): LensResult {
       lit.add(a.id);
     }
   }
-  // 성좌마다 다른 잉크 — R10 의 조약 잉크(UNION_COLORS)를 하늘로 가져온다.
-  // 한 색으로 전부 그리면 "선이 있다"만 읽히고 "어느 성좌인가"가 안 읽힌다.
   const fallback: string = ATTR_COLOR[id] ?? "#cfa759";
   let ci = 0;
+  let index = 0;
   for (const [k, members] of [...buckets].sort((x, y) => y[1].length - x[1].length)) {
     if (members.length < 2) continue;
     const color: string =
@@ -212,11 +225,22 @@ export function buildLens(id: LensId, input: LensInput): LensResult {
         : id === "language"
           ? (LANGUAGE_KO[k] ?? k.toUpperCase())
           : "망명·디아스포라";
-    groups.push({ id: k, label, memberIds: members, color });
-    for (const [a, b] of chain(members, positions))
-      lines.push({ a, b, color, weight: 0.72 });
+    index += 1;
+    groups.push({ id: k, label, memberIds: members, color, index });
+    // 선은 그리지 않는다. 소속은 색인 번호로만.
+    for (const m of members) {
+      const cur = marks.get(m);
+      if (cur) cur.push(index);
+      else marks.set(m, [index]);
+    }
   }
-  return { lines, groups, lit };
+  return { lines, groups, lit, marks };
+}
+
+/** 색인 번호 활자 — 20까지는 원문자, 그 이상은 괄호 숫자 */
+export function indexGlyph(n: number): string {
+  const circled = "①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳";
+  return n >= 1 && n <= 20 ? (circled[n - 1] as string) : `(${n})`;
 }
 
 export const LANGUAGE_KO: Record<string, string> = {
