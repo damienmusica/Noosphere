@@ -68,9 +68,21 @@ if (existsSync(path.join(LP, "art-r11/reproduce-report.json")))
   await cp(path.join(LP, "art-r11/reproduce-report.json"), path.join(OUT, "reproduce-report.json"));
 
 // ——— 실행 가능한 정적 번들 + 소스 아카이브 ———
+// 아카이브에서 **R10 아트 파이프라인의 입력물**은 뺀다: staging(원본 스캔)과
+// directions(방향 목업)은 합쳐 60MB 가 넘고, 이미 끝난 파이프라인의 입력이라
+// 이 빌드를 세우거나 재현하는 데 쓰이지 않는다(권리 확인이 끝난 파생물은
+// public/art 에 있고 그대로 들어간다). 빼는 것 자체를 감추지 않으려고 경로와
+// 이유를 README 에 적고, BUILD_COMMIT 으로 전체 트리를 되찾을 수 있게 둔다.
+const EXCLUDED = [
+  "literary-planet/art-r10/staging",
+  "literary-planet/art-r10/directions",
+  "literary-planet/art-r10/ab-review"
+];
 await cp(path.join(LP, "dist"), path.join(OUT, "dist"), { recursive: true });
 sh(
-  `git -C .. archive --format=zip --add-virtual-file="literary-planet/BUILD_COMMIT:${commit}" -o "${path.join(OUT, "source.zip")}" HEAD literary-planet scripts docs`
+  `git -C .. archive --format=zip --add-virtual-file="literary-planet/BUILD_COMMIT:${commit}" ` +
+    `-o "${path.join(OUT, "source.zip")}" HEAD literary-planet scripts docs ` +
+    EXCLUDED.map((e) => `':(exclude)${e}'`).join(" ")
 );
 
 const report = existsSync(path.join(OUT, "reproduce-report.json"))
@@ -81,7 +93,7 @@ await writeFile(
   path.join(OUT, "README.md"),
   `# 《문학의 성계》 R11-d — 검토 번들
 
-커밋 \`${commit}\`${dirty ? " (⚠ 미커밋 변경이 섞인 번들 — --allow-dirty)" : ""} · ${new Date().toISOString().slice(0, 10)}
+커밋 \`${commit}\`${dirty ? " (⚠ 미커밋 변경이 섞인 번들 — --allow-dirty)" : ""} · ${sh("git log -1 --format=%ad --date=short")}
 
 이 번들은 **실험 빌드**다. 통합 후보가 아니다 — 통합 조건은
 \`docs/universe-thesis.md\` §⑩ 에 있고, 남은 게이트는 사람 관찰이다.
@@ -112,6 +124,16 @@ unzip source.zip && cd literary-planet && npm ci
 npm run universe:reproduce        # 전 게이트 + 환경·수치·해시 리포트
 npm run universe:mutation-sweep   # 계약이 실제로 무엇을 막는지 측정
 \`\`\`
+
+\`source.zip\` 은 커밋 \`${commit}\` 의 트리이고 \`literary-planet/BUILD_COMMIT\` 에
+그 해시가 들어 있다. **뺀 경로가 있다**(합쳐 60MB 남짓, 위 두 명령에는 쓰이지
+않는다):
+
+${EXCLUDED.map((e) => `- \`${e}/\` — R10 아트 파이프라인의 입력물(원본 스캔·방향 목업). 권리 확인이 끝난 파생물은 \`literary-planet/public/art/\` 에 그대로 들어 있다.`).join("\n")}
+
+\`literary-planet/public/portraits/\` 의 상상 초상 101건은 **레포에 남아 있지만
+앱이 쓰지 않는다** — 여정 계약이 착륙·궤도 어느 경로에서도 그 경로를 요청하지
+않음을 매 실행 확인한다(CPO 판정: 상상된 인간 얼굴은 최종 자산으로 쓰지 않는다).
 
 ${
   report
