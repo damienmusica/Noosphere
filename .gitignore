@@ -151,3 +151,10 @@ literary-planet/literary-planet-review-*.zip
 literary-planet/literary-planet-source.zip
 literary-planet/artifacts-before/
 literary-planet/REVIEW.md
+
+# R10/R11 스크립트 산출물 — 원본은 staging/frames 에 있고 이것들은 재생성물이다
+literary-planet/art-r10/build/
+literary-planet/art-r10/ab-review/
+literary-planet/art-r11/video/
+# 워크트리 절대 경로가 박히는 머신 로컬 실행 설정
+.claude/launch.json

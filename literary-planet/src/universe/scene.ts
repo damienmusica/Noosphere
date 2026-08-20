@@ -1171,9 +1171,12 @@ export class UniverseScene {
       const id = this.order[i] as string;
       const center = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
       const d = center.distanceTo(this.camera.position);
+      // 배율에는 준비도 조건을 두지 않는다. 준비도 게이트는 바로 아래 표현
+      // 사다리 한 곳에만 있다 — 같은 규칙을 두 곳에 두면 **서로를 가려**
+      // 한쪽을 지워도 계약이 초록으로 남는다(변이 스윕 실측, 2026-08-20).
       const scaled =
         (this.radii[i] ?? 12) *
-        (id === this.state.focusId && !this.state.landedId && isLandable(id)
+        (id === this.state.focusId && !this.state.landedId
           ? 1 + (LENS_MAG - 1) * this.lensK
           : 1);
       const ap = apparentRadiusPx(scaled, d, this.camera.fov, h);
@@ -1249,8 +1252,10 @@ export class UniverseScene {
     if (this.lensK !== prevK) this.buildLines(this.egoLines, this.state.ego);
     // 선택 천체는 일률 배율로 확대 — 배율이 같으므로 크기 차이(=영향력)는 남는다
     for (const [id, rec] of this.bodies) {
+      // 준비되지 않은 작가는 애초에 천체가 만들어지지 않으므로 이 루프에
+      // 등장하지 않는다 — 게이트는 표현 사다리 한 곳뿐이다.
       const want =
-        id === this.state.focusId && !this.state.landedId && isLandable(id)
+        id === this.state.focusId && !this.state.landedId
           ? 1 + (LENS_MAG - 1) * this.lensK
           : 1;
       const target = rec.radius * want;

@@ -86,6 +86,16 @@ for (const a of SLICE) {
     `stage=${m.stage} ego=${m.ego}`);
   check("이웃이 이름을 얻는다", m.labels >= 4, `labels=${m.labels}`);
 
+  // 준비되지 않은 작가는 **구로 분해되지 않는다** — 항성 + 궤도 아카이브.
+  // (변이 스윕이 이 계약의 부재를 적발했다, 2026-08-20)
+  if (a.landable) {
+    check("준비된 작가는 천체로 분해된다", m.bodies >= 1 && m.orbitArchive === false,
+      `bodies=${m.bodies} orbitArchive=${m.orbitArchive}`);
+  } else {
+    check("미준비 작가는 항성으로 남는다", m.bodies === 0 && m.orbitArchive === true,
+      `bodies=${m.bodies} orbitArchive=${m.orbitArchive}`);
+  }
+
   // 4. 궤도 카드: 착륙 전에도 최소 정보가 전부 있다 (정전화 편향 방지 계약)
   const card = page.locator(".u-card");
   await card.waitFor({ timeout: 4000 });
