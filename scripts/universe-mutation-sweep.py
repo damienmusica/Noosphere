@@ -51,8 +51,8 @@ MUTATIONS = [
     ("fast", "surface 임계를 화면의 90% 로 (지각을 영영 안 칠함)", G,
      "if (apparentPx < viewportH * 0.22) return \"resolved\";",
      "if (apparentPx < viewportH * 0.9) return \"resolved\";"),
-    ("fast", "착륙 고도를 3.2r → 30r (천체가 점으로 남음)", G,
-     "export const LANDING_ALT = 3.2;", "export const LANDING_ALT = 30;"),
+    ("fast", "착륙 고도를 2.1r → 30r (천체가 점으로 남음)", G,
+     "export const LANDING_ALT = 2.1;", "export const LANDING_ALT = 30;"),
 
     # --- 광도 = 영향력 -----------------------------------------------------
     ("fast", "tier 항 제거 (모든 작가가 같은 광도)", G,
@@ -139,12 +139,23 @@ MUTATIONS = [
      "      const rep: typeof REP_STAR | \"resolved\" | \"surface\" = isLandable(id)\n        ? representationFor(ap, h)\n        : REP_STAR;",
      "      const rep: typeof REP_STAR | \"resolved\" | \"surface\" = representationFor(ap, h);"),
     ("browser", "지각을 영영 칠하지 않음", S,
-     "          if (ap > 120 && this.lensK < 0.05) this.paintCrust(body);", "          if (false) this.paintCrust(body);"),
-    ("browser", "발명된 얼굴 초상이 돌아옴", C,
-     "        {archival ? <ArchivalPortrait file={archival.file} /> : <TypePlate author={a} />}",
-     "        {archival ? <ArchivalPortrait file={archival.file} /> : <canvas className=\"u-portrait\" />}"),
+     "          if (ap > 60) this.paintCrust(body);", "          if (false) this.paintCrust(body);"),
+    ("browser", "발명된 얼굴 초상이 돌아옴 (상상 초상 자산을 다시 가져온다)", C,
+     "      <canvas ref={ref} width={96} height={96} aria-hidden=\"true\" />",
+     "      <img src={`${import.meta.env.BASE_URL}portraits/${author.id}.jpg`} alt=\"\" />"),
+    # ——— R11-d 시각 문법 계약 ———
+    ("browser", "실물 초판이 없는 작품도 표지를 정면으로 세운다 (부재가 형태로 안 읽힘)", S,
+     "      if (!cover) book.rotation.y = Math.PI / 2;", "      if (false) book.rotation.y = Math.PI / 2;"),
+    ("browser", "작품 배치가 연도를 무시한다 (황금각 시절로 회귀)", S,
+     "      const theta = -LON + 2 * LON * t; // 연도", "      const theta = 0; // 연도 무시"),
+    ("browser", "자산 사전 로드 없이 착륙한다", "src/universe/UniverseApp.tsx",
+     "    if (assets?.authorId !== pendingLand) return; // 자산을 기다린다", "    // waits removed"),
+    ("browser", "프로비넌스를 표면에서 감춘다", "src/universe/UniverseApp.tsx",
+     "          {assets && assets.provenance.length ? (", "          {false ? ("),
+    ("browser", "하늘 라벨에 종이 판이 돌아온다", "src/universe/scene.ts",
+     "          state,\n          ground: \"sky\",", "          state,\n          ground: \"crust\","),
     ("browser", "작품 도시가 사라짐", S,
-     "    works.forEach((w, i) => {", "    works.slice(0, 0).forEach((w, i) => {"),
+     "    works.forEach((w) => {", "    works.slice(0, 0).forEach((w) => {"),
 ]
 
 

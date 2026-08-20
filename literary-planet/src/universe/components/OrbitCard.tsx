@@ -12,11 +12,11 @@
 // 사물 초상 → 비인물적 타이포그래피 명판. 이 프로토타입은 1단(3인)과
 // 4단(97인)을 구현한다; 2·3단은 자산 수집이 선행이다.
 
+import { useEffect, useRef } from "react";
 import type { Author, Relation, Work } from "../../types.ts";
 import { artUrl, type ArtManifest } from "../../globe/art-assets.ts";
-import { sealGlyph } from "../../lib/seal.ts";
 import { periodOf } from "../grammar.ts";
-import { PERIOD_TINT } from "../../theme.ts";
+import { PERIOD_TINT, COLORS } from "../../theme.ts";
 
 export interface SkyMembership {
   lens: string;
@@ -36,6 +36,8 @@ export interface OrbitCardProps {
   readOnly: boolean;
   /** 이 별이 속한 하늘들 — 관측층이 데이터에서 파생한 소속 */
   skies: SkyMembership[];
+  /** 하늘에 그려지는 그 별의 실제 값 — 미해상 기록이 같은 값으로 다시 그린다 */
+  star: { px: number; color: string; magnitude: number };
   read: boolean;
   want: boolean;
   onToggleRead(): void;
@@ -56,22 +58,78 @@ function ArchivalPortrait({ file }: { file: string }) {
 }
 
 /**
- * 사다리 4단 — 비인물적 타이포그래피 명판. 얼굴을 발명하지 않는다.
- * 인장 글리프는 원어 성씨에서 파생한 활자이지 초상이 아니다.
+ * 사다리 4단 — **미해상 기록(未解像 記錄)**. 얼굴도, 문장(紋章)도, 성씨에서
+ * 파생한 글자도 없다.
+ *
+ * 천문학은 "목록에 있으나 해상되지 않은 천체"에 대해 그림을 내놓지 않는다 —
+ * 측광 기록을 내놓는다. 그래서 초상 자리에 그 작가의 **별 자체**를 프로덕션과
+ * 같은 값으로 그리고(크기=광도, 색=시대), 나머지는 /data 에 실재하는 항목만
+ * 적는다. 이전의 인장 글리프는 성씨 이니셜에서 파생한 근거 없는 문양이었고,
+ * CPO 판정(2026-08-20)으로 폐기됐다.
  */
-function TypePlate({ author }: { author: Author }) {
+function UnresolvedRecord({
+  author,
+  star,
+  counts
+}: {
+  author: Author;
+  star: { px: number; color: string; magnitude: number };
+  counts: { relations: number; works: number; covers: number };
+}) {
+  const ref = useRef<HTMLCanvasElement>(null);
+  useEffect(() => {
+    const c = ref.current;
+    if (!c) return;
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    const size = 96;
+    c.width = size * dpr;
+    c.height = size * dpr;
+    const ctx = c.getContext("2d");
+    if (!ctx) return;
+    ctx.scale(dpr, dpr);
+    ctx.fillStyle = COLORS.bg;
+    ctx.fillRect(0, 0, size, size);
+    // 하늘의 별과 같은 닫힌 형태: 코어 + 회절 스파이크. 링·글로우 없음.
+    const cx = size / 2;
+    const cy = size / 2;
+    const r = Math.max(6, star.px * 0.9);
+    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+    g.addColorStop(0, star.color);
+    g.addColorStop(0.35, `${star.color}b0`);
+    g.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.fill();
+    if (star.magnitude > 0.55) {
+      ctx.strokeStyle = `${star.color}66`;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(cx - r * 1.7, cy);
+      ctx.lineTo(cx + r * 1.7, cy);
+      ctx.moveTo(cx, cy - r * 1.7);
+      ctx.lineTo(cx, cy + r * 1.7);
+      ctx.stroke();
+    }
+    c.dataset.ready = "1";
+  }, [author.id, star.px, star.color, star.magnitude]);
+
   return (
-    <figure className="u-portrait u-portrait--type" data-testid="type-plate">
-      <div className="u-typeplate">
-        <span className="u-typeplate__seal" aria-hidden="true">
-          {sealGlyph(author.id, author.names.original)}
+    <figure className="u-portrait u-portrait--unresolved" data-testid="unresolved-record">
+      <canvas ref={ref} width={96} height={96} aria-hidden="true" />
+      <div className="u-record">
+        <span className="u-record__name">{author.names.original}</span>
+        <span>
+          {author.birthYear ?? "?"}–{author.deathYear ?? ""} · {author.languages.join("·")}
         </span>
-        <span className="u-typeplate__name">{author.names.original}</span>
-        <span className="u-typeplate__life">
-          {author.birthYear ?? "?"}–{author.deathYear ?? ""}
+        <span>
+          광도 {star.magnitude.toFixed(2)} · {periodOf(author)}({author.anchorYear})
+        </span>
+        <span>
+          관계 {counts.relations} · 작품 {counts.works} · 초판 {counts.covers} · 육필 없음
         </span>
       </div>
-      <figcaption>기록 초상 없음 · 활자 명판</figcaption>
+      <figcaption>기록 초상 없음 — 미해상</figcaption>
     </figure>
   );
 }
@@ -103,7 +161,15 @@ export function OrbitCard(p: OrbitCardProps) {
         ×
       </button>
       <header className="u-card__head">
-        {archival ? <ArchivalPortrait file={archival.file} /> : <TypePlate author={a} />}
+        {archival ? (
+          <ArchivalPortrait file={archival.file} />
+        ) : (
+          <UnresolvedRecord
+            author={a}
+            star={p.star}
+            counts={{ relations: p.relations.length, works: p.works.length, covers }}
+          />
+        )}
         <div>
           <h2>{a.names.ko}</h2>
           <p className="u-card__orig">{a.names.original}</p>

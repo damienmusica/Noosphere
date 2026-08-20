@@ -20,9 +20,9 @@ const distDir = path.resolve(ROOT, opt("dist", "dist"));
 
 // 준비된 착륙지 3인 + 미준비 궤도 경험 1인 (CPO 2026-08-20 주문)
 const SLICE = [
-  { id: "franz-kafka", query: "카프카", works: 5, crust: "manuscript", landable: true },
-  { id: "natsume-soseki", query: "소세키", works: 6, crust: "manuscript", landable: true },
-  { id: "rabindranath-tagore", query: "타고르", works: 6, crust: "manuscript", landable: true },
+  { id: "franz-kafka", query: "카프카", works: 5, covers: 4, crust: "manuscript", landable: true },
+  { id: "natsume-soseki", query: "소세키", works: 6, covers: 5, crust: "manuscript", landable: true },
+  { id: "rabindranath-tagore", query: "타고르", works: 6, covers: 2, crust: "manuscript", landable: true },
   { id: "marcel-proust", query: "프루스트", works: 6, crust: null, landable: false }
 ];
 
@@ -37,6 +37,13 @@ const page = await ctx.newPage();
 const consoleErrors = [];
 page.on("console", (m) => {
   if (m.type() === "error") consoleErrors.push(m.text());
+});
+// 발명된 얼굴은 DOM 이 아니라 **네트워크**에서 잡는다 — 미해상 기록도 캔버스를
+// 쓰므로(별을 프로덕션 값으로 다시 그린다) "캔버스가 없다"는 더 이상 계약이
+// 아니다. 계약은 "상상 초상 자산을 애초에 가져오지 않는다"이다.
+const portraitRequests = [];
+page.on("request", (r) => {
+  if (r.url().includes("/portraits/")) portraitRequests.push(r.url());
 });
 
 let failed = 0;
@@ -85,6 +92,11 @@ for (const a of SLICE) {
   check("중경에서 자기 성좌가 수렴한다", m.stage === "approach" && m.ego >= 3,
     `stage=${m.stage} ego=${m.ego}`);
   check("이웃이 이름을 얻는다", m.labels >= 4, `labels=${m.labels}`);
+  // 하늘 분기가 도는 자리에서 판 없는 각자를 계약한다 — 착륙 단계에서만 재면
+  // 이 분기 자체가 검사되지 않는다(변이 스윕 실측).
+  check("중경의 이름표는 전부 판 없는 각자다",
+    m.skyLabels >= 4 && m.crustAuthorLabels === 0,
+    `하늘 ${m.skyLabels} · 슬립 단 작가 ${m.crustAuthorLabels}`);
 
   // 준비되지 않은 작가는 **구로 분해되지 않는다** — 항성 + 궤도 아카이브.
   // (변이 스윕이 이 계약의 부재를 적발했다, 2026-08-20)
@@ -100,10 +112,11 @@ for (const a of SLICE) {
   const card = page.locator(".u-card");
   await card.waitFor({ timeout: 4000 });
   const archival = await card.locator(".u-portrait--archival").count();
-  const plate = await card.locator('[data-testid="type-plate"]').count();
-  check("초상 사다리 — 기록 사진 또는 활자 명판", archival + plate === 1,
-    archival ? "기록 사진" : "활자 명판");
-  check("발명된 인간 얼굴 없음", (await card.locator("canvas").count()) === 0);
+  const plate = await card.locator('[data-testid="unresolved-record"]').count();
+  check("초상 사다리 — 기록 사진 또는 미해상 기록", archival + plate === 1,
+    archival ? "기록 사진" : "미해상 기록");
+  check("발명된 인간 얼굴 없음 — 상상 초상 자산을 가져오지 않는다",
+    portraitRequests.length === 0, `요청 ${portraitRequests.length}건`);
   check("해설", ((await card.locator(".u-card__why").first().textContent()) ?? "").length > 80);
   check("속한 하늘", (await card.locator(".u-card__skies").count()) >= 0);
   check("관계 목록", (await card.locator(".u-card__rel li").count()) >= 1);
@@ -142,6 +155,41 @@ for (const a of SLICE) {
     await page.waitForTimeout(250);
     const sig = (await page.locator(".u-works__sig").first().textContent()) ?? "";
     check("작품 인스펙터", sig.length > 40, `${sig.slice(0, 28)}…`);
+
+    // 자산은 착륙 이전에 디코드되어 있어야 하고, 그 근거는 표면에서 읽혀야 한다
+    const mm = await metrics();
+    check("실물 자산 사전 로드", mm.assetsPreloaded === true);
+    check("착륙이 자산보다 먼저 오지 않았다", mm.landedWithoutAssets === false);
+
+    // ——— 작품 도시: 실제 데이터가 배치와 형태를 정한다 ———
+    const covers = a.covers ?? 0;
+    check("경도가 발표 연도 순이다 (연도가 다르면 경도도 다르다)", mm.cities.byYear === true);
+    check("연도 축이 실제로 펼쳐져 있다", mm.cities.lonSpreadDeg > 8, `${mm.cities.lonSpreadDeg}°`);
+    check("도시 수가 작품 수와 같다", mm.cities.total === a.works, `${mm.cities.total}/${a.works}`);
+    check("실물 초판만 표지를 정면으로 세운다", mm.cities.faceOut === covers,
+      `정면 ${mm.cities.faceOut} · 책등 ${mm.cities.spineOut} (실물 ${covers})`);
+    check("실물이 없는 작품은 책등이 정면이다", mm.cities.spineOut === a.works - covers);
+
+    // ——— 라벨의 바닥은 그 라벨이 딛고 선 것과 같다 ———
+    // 지각 위의 작품 라벨만 슬립을 갖고, 나머지는 판 없는 각자여야 한다.
+    check("작품 라벨은 지각 위 슬립이다", mm.crustLabels >= 3, `${mm.crustLabels}장`);
+    const paneled = await page.evaluate(() =>
+      [...document.querySelectorAll('.globe-label[data-ground="sky"]')].filter((el) => {
+        const cs = getComputedStyle(el);
+        return !/rgba\(0, 0, 0, 0\)|transparent/.test(cs.backgroundColor) || cs.borderTopWidth !== "0px";
+      }).length
+    );
+    check("하늘 라벨에는 판이 하나도 없다", paneled === 0, `판 달린 라벨 ${paneled}장`);
+    check("슬립은 작품 라벨만 갖는다", mm.crustAuthorLabels === 0,
+      `작가 라벨 중 슬립 ${mm.crustAuthorLabels}장`);
+    const prov = page.locator('[data-testid="provenance"]');
+    check("자료 근거가 표면에 있다", (await prov.count()) === 1);
+    await prov.locator("summary").click();
+    await page.waitForTimeout(150);
+    const rows = await prov.locator("li").count();
+    check("근거 행이 실물 자산 수와 맞는다", rows >= 3, `${rows}행`);
+    const meta = (await prov.locator(".u-prov__meta").first().textContent()) ?? "";
+    check("각 행이 소장처와 라이선스를 싣는다", meta.length > 12, meta.slice(0, 42));
   } else {
     // 딥링크로도 백지 지각에 내려앉을 수 없다
     await page.goto(url(`?a=${a.id}&land=1`), { waitUntil: "load" });
@@ -149,6 +197,20 @@ for (const a of SLICE) {
     await settle();
     m = await metrics();
     check("딥링크 착륙도 게이트를 지난다", m.stage !== "surface", `stage=${m.stage}`);
+  }
+
+  if (a.landable) {
+    // 딥링크로 곧장 착륙해도 자산이 먼저다 — 사용자 경로에서는 접근 중에
+    // 자산이 이미 도착하므로, 이 계약은 **즉시 착륙**에서만 검사된다.
+    await page.goto(url(`?a=${a.id}&land=1`), { waitUntil: "load" });
+    await page.waitForFunction(() => window.__universe !== undefined);
+    await settle(1800);
+    const dm = await metrics();
+    check("딥링크 즉시 착륙도 자산을 기다린다", dm.landedWithoutAssets === false);
+    check("딥링크 착륙에서도 지각이 육필이다", dm.crust === a.crust, `crust=${dm.crust}`);
+    await page.goto(url(`?lens=movement&a=${a.id}`), { waitUntil: "load" });
+    await page.waitForFunction(() => window.__universe !== undefined);
+    await settle();
   }
 
   // 10. 복귀: 하늘로 돌아가면 원경 포즈로 돌아온다

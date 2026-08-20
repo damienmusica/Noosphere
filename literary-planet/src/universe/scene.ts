@@ -12,7 +12,6 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import type { Author, Work } from "../types.ts";
 import { COLORS } from "../theme.ts";
-import { sealGlyph } from "../lib/seal.ts";
 import type { ArtManifest } from "../globe/art-assets.ts";
 import { artUrl } from "../globe/art-assets.ts";
 import { LabelLayer, type LabelItem } from "../globe/labels.ts";
@@ -38,6 +37,7 @@ import {
 } from "./grammar.ts";
 import { indexGlyph } from "./lenses.ts";
 import { isLandable } from "./readiness.ts";
+import type { AssetSet } from "./assets.ts";
 import type { LensLine, LensResult } from "./lenses.ts";
 
 export interface UniverseData {
@@ -91,6 +91,9 @@ interface BodyRecord {
 // 빼먹으면 별이 전부 깊이 테스트에서 탈락해 하늘이 통째로 사라진다(실측).
 /** 준비되지 않은 천체가 강제로 머무는 표현 단계 */
 const REP_STAR = "star" as const;
+
+/** 궤적 한 개당 침목 틱 수 — 원공간 등간격으로 잡아 압축을 눈금화한다 */
+const TRACE_TICKS = 7;
 
 const STAR_VERT = `
 #include <common>
@@ -151,14 +154,26 @@ export class UniverseScene {
   private egoLines!: THREE.LineSegments;
   private graticule!: THREE.LineSegments;
   private sunGlow!: THREE.Sprite;
-  private selRing!: THREE.Sprite;
+  private selWedges: THREE.Sprite[] = [];
+  private selCorners: THREE.Sprite[] = [];
   private readLamp: THREE.PointLight;
 
   private bodies = new Map<string, BodyRecord>();
   private cityGroup = new THREE.Group();
-  private cityRecords: Array<{ workId: string; obj: THREE.Object3D; pos: THREE.Vector3 }> = [];
+  private cityRecords: Array<{
+    workId: string;
+    obj: THREE.Object3D;
+    pos: THREE.Vector3;
+    year: number;
+    /** 실제 책 메시 — 정면/책등은 이 회전에서 읽는다 */
+    book: THREE.Mesh;
+    /** 배치 경도(연도 축) — 계약이 연도 단조성과 분산을 검사한다 */
+    lon: number;
+  }> = [];
   private geoCache = new Map<string, THREE.BufferGeometry>();
   private texCache = new Map<string, THREE.Texture>();
+  /** 사전 로드된 실물 자산 — 착륙 시점에 이미 디코드되어 있다 */
+  private assets: AssetSet | null = null;
 
   private order: string[] = [];
   private authorList: Author[] = [];
@@ -204,6 +219,13 @@ export class UniverseScene {
   private lensStarGeo!: THREE.BufferGeometry;
   private lensTraces!: THREE.LineSegments;
   private lensIds: string[] = [];
+  /** 착륙 시 주시점(지면 위 한 점) — 궤도 회전이 이 점을 중심으로 돈다 */
+  private landTarget: THREE.Vector3 | null = null;
+  /** 착륙이 자산보다 먼저 도착한 적이 있는가 — 사전 로드 계약의 관측점 */
+  private landedWithoutAssets = false;
+  private lastSkyLabels = 0;
+  private lastCrustLabels = 0;
+  private lastCrustAuthorLabels = 0;
   private safeLeft = 0;
   private safeRight = 0;
   private raf = 0;
@@ -214,6 +236,9 @@ export class UniverseScene {
     dist: CAM_SKY_DEFAULT,
     bodies: 0,
     labels: 0,
+    skyLabels: 0,
+    crustLabels: 0,
+    crustAuthorLabels: 0,
     frames: 0,
     /** 화면에 실제로 그려진 별 — 착륙해도 하늘이 남는지의 증거 */
     stars: 0,
@@ -226,7 +251,12 @@ export class UniverseScene {
     lensMag: 1,
     lensMoved: 0,
     /** 선택 대상이 항성+궤도 아카이브 상태인가 (준비되지 않은 작가) */
-    orbitArchive: false
+    orbitArchive: false,
+    /** 착륙 대상의 실물 자산이 착륙 이전에 디코드되어 있었는가 */
+    assetsPreloaded: false,
+    /** 작품 도시: 실물 초판 정면 / 책등 정면 / 경도가 연도 순인가 */
+    landedWithoutAssets: false,
+    cities: { faceOut: 0, spineOut: 0, byYear: true, lonSpreadDeg: 0, total: 0 }
   };
 
   constructor(
@@ -275,17 +305,25 @@ export class UniverseScene {
     this.buildStars();
     this.buildGraticule();
     this.buildSunGlow();
-    this.buildSelRing();
+    this.buildSelMarks();
     this.constellation = new THREE.LineSegments(
       new THREE.BufferGeometry(),
       new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.9 })
     );
     this.constellation.frustumCulled = false;
     this.scene.add(this.constellation);
+    // 궤적은 관계선과 **다른 프리미티브**다(R11-d).
+    //   · 관계선은 서로 다른 두 천체를 잇는다 — 연속 획, 관계 유형 색.
+    //   · 궤적은 한 천체를 자기 자신에게 잇는다 — 연결이 아니라 **변위 기록**.
+    // 그래서 획이 아니라 **침목 틱열**로 그린다. 틱을 원공간 등간격으로 잡아
+    // 각각 lensPosition() 을 통과시키므로 **압축이 강한 구간에서 틱이 몰린다** —
+    // 왜곡이 보이는 것을 넘어 측정 가능해진다.
+    // 잉크는 --stitch #7a6644: 관계 6색 색역 밖이고(L 0.1406 < 최저 0.2237),
+    // bg 대비 3.52:1 로 그래픽 하한을 넘는다. --line-accent(2.90:1)는 미달.
     this.lensTraces = new THREE.LineSegments(
       new THREE.BufferGeometry(),
       new THREE.LineBasicMaterial({
-        color: new THREE.Color(COLORS.line),
+        color: new THREE.Color(COLORS.stitch),
         transparent: true,
         opacity: 0
       })
@@ -432,28 +470,66 @@ export class UniverseScene {
     this.scene.add(this.sunGlow);
   }
 
-  /** 선택 표식 — R10 의 감상인(鑑賞印) 문법을 하늘로 가져온다.
-   *  주홍은 여전히 선택 채널의 유일한 사용자다. */
-  private buildSelRing(): void {
-    const c = document.createElement("canvas");
-    c.width = c.height = 128;
-    const ctx = c.getContext("2d")!;
-    ctx.strokeStyle = COLORS.vermilion;
-    ctx.lineWidth = 4;
-    ctx.beginPath();
-    ctx.arc(64, 64, 50, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.lineWidth = 2;
-    ctx.globalAlpha = 0.55;
-    ctx.beginPath();
-    ctx.arc(64, 64, 58, 0, Math.PI * 2);
-    ctx.stroke();
-    const tex = new THREE.CanvasTexture(c);
-    this.selRing = new THREE.Sprite(
-      new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false, depthTest: false })
-    );
-    this.selRing.visible = false;
-    this.scene.add(this.selRing);
+  /**
+   * 선택 표식 — **관측 표식(觀測標識)**. 조준환을 폐기한다(R11-d).
+   *
+   * 천문 도판에서 대상은 십자선으로 덮지 않는다 — 측광을 해야 하므로 덮을 수
+   * 없고, 그래서 **마주 보는 두 개의 짧은 표식**으로 가리킨다. 표식은 천체와
+   * **같은 거리 사다리로 해상된다**: 별이면 쐐기 2개, 원반이면 모서리 레지스터
+   * 4개, 표면이면 물러난다(읽기 거리에서 식별 크롬은 절하고 퇴장한다).
+   */
+  private buildSelMarks(): void {
+    const wedge = document.createElement("canvas");
+    wedge.width = wedge.height = 64;
+    const wc = wedge.getContext("2d");
+    if (wc) {
+      wc.fillStyle = COLORS.vermilion;
+      wc.beginPath();
+      wc.moveTo(32, 4); // 꼭짓점이 별을 향한다
+      wc.lineTo(58, 60);
+      wc.lineTo(6, 60);
+      wc.closePath();
+      wc.fill();
+    }
+    const wtex = new THREE.CanvasTexture(wedge);
+
+    const corner = document.createElement("canvas");
+    corner.width = corner.height = 64;
+    const cc = corner.getContext("2d");
+    if (cc) {
+      cc.strokeStyle = COLORS.vermilion;
+      cc.lineWidth = 9; // 64px 캔버스 → 화면 2px 상당
+      cc.beginPath();
+      cc.moveTo(4, 60);
+      cc.lineTo(4, 4);
+      cc.lineTo(60, 4);
+      cc.stroke();
+    }
+    const ctex = new THREE.CanvasTexture(corner);
+
+    const mk = (tex: THREE.Texture, rot: number): THREE.Sprite => {
+      const sp = new THREE.Sprite(
+        new THREE.SpriteMaterial({
+          map: tex,
+          transparent: true,
+          depthWrite: false,
+          depthTest: false,
+          opacity: 0.92,
+          rotation: rot
+        })
+      );
+      sp.visible = false;
+      this.scene.add(sp);
+      return sp;
+    };
+    // 대각 한 축의 쐐기 2개 — 교차점이 생기지 않아 조준환으로 읽히지 않는다
+    this.selWedges = [mk(wtex, (-45 * Math.PI) / 180), mk(wtex, (135 * Math.PI) / 180)];
+    this.selCorners = [
+      mk(ctex, 0),
+      mk(ctex, -Math.PI / 2),
+      mk(ctex, Math.PI),
+      mk(ctex, Math.PI / 2)
+    ];
   }
 
   private authorAt(i: number): Author | undefined {
@@ -483,6 +559,13 @@ export class UniverseScene {
     this.camera.updateProjectionMatrix();
   }
 
+  /** 접근이 시작될 때 디코드까지 끝난 자산 묶음을 받는다 */
+  setAssets(set: AssetSet | null): void {
+    this.assets = set;
+    for (const rec of this.bodies.values()) rec.textured = false;
+    if (this.state.landedId) this.refreshCities();
+  }
+
   setArt(art: ArtManifest | null): void {
     this.data = { ...this.data, art };
     for (const rec of this.bodies.values()) rec.textured = false;
@@ -496,7 +579,11 @@ export class UniverseScene {
     this.refreshStars();
     this.rebuildLens();
     this.refreshConstellation();
-    if (this.state.landedId !== prevLanded) this.refreshCities();
+    if (this.state.landedId !== prevLanded) {
+      if (this.state.landedId && this.assets?.authorId !== this.state.landedId)
+        this.landedWithoutAssets = true;
+      this.refreshCities();
+    }
     if (this.state.focusId !== prevFocus || this.state.landedId !== prevLanded) this.retarget();
   }
 
@@ -623,7 +710,7 @@ export class UniverseScene {
     g.setAttribute("aAlpha", new THREE.BufferAttribute(alpha, 1));
     g.setAttribute("aSpike", new THREE.BufferAttribute(spike, 1));
     g.setAttribute("aRing", new THREE.BufferAttribute(ring, 1));
-    const trace = new Float32Array(n * 6);
+    const trace = new Float32Array(n * TRACE_TICKS * 6);
     const tg = new THREE.BufferGeometry();
     tg.setAttribute("position", new THREE.BufferAttribute(trace, 3));
     this.lensTraces.geometry.dispose();
@@ -640,19 +727,39 @@ export class UniverseScene {
     const alpha = this.lensStarGeo.getAttribute("aAlpha") as THREE.BufferAttribute;
     const tr = this.lensTraces.geometry.getAttribute("position") as THREE.BufferAttribute;
     const v = new THREE.Vector3();
+    const a = new THREE.Vector3();
+    const b = new THREE.Vector3();
+    const dir = new THREE.Vector3();
+    const perp = new THREE.Vector3();
+    const camDir = this.camera.getWorldDirection(new THREE.Vector3());
+    const h = this.renderer.domElement.clientHeight || 900;
     this.lensIds.forEach((id, k) => {
       const i = this.index.get(id) as number;
       const orig = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
       this.effectivePos(id, v);
       pos.setXYZ(k, v.x, v.y, v.z);
       alpha.setX(k, this.lensK);
-      tr.setXYZ(k * 2, orig.x, orig.y, orig.z);
-      tr.setXYZ(k * 2 + 1, v.x, v.y, v.z);
+      // 침목: 원위치→압축위치 경로를 원공간 등간격으로 나눈 지점마다
+      // 경로에 수직인 짧은 틱. 화면상 길이를 고정해 거리와 무관하게 읽힌다.
+      for (let t = 0; t < TRACE_TICKS; t++) {
+        const s0 = (t + 0.5) / TRACE_TICKS;
+        a.copy(orig).lerp(v, s0);
+        b.copy(orig).lerp(v, Math.min(1, s0 + 0.02));
+        dir.copy(b).sub(a);
+        if (dir.lengthSq() < 1e-9) dir.set(1, 0, 0);
+        perp.crossVectors(dir, camDir).normalize();
+        const worldPerPx =
+          (2 * Math.tan((this.camera.fov * Math.PI) / 360) * a.distanceTo(this.camera.position)) / h;
+        const half = worldPerPx * 2.5;
+        const o = (k * TRACE_TICKS + t) * 2;
+        tr.setXYZ(o, a.x - perp.x * half, a.y - perp.y * half, a.z - perp.z * half);
+        tr.setXYZ(o + 1, a.x + perp.x * half, a.y + perp.y * half, a.z + perp.z * half);
+      }
     });
     pos.needsUpdate = true;
     alpha.needsUpdate = true;
     tr.needsUpdate = true;
-    (this.lensTraces.material as THREE.LineBasicMaterial).opacity = 0.34 * this.lensK;
+    (this.lensTraces.material as THREE.LineBasicMaterial).opacity = 0.55 * this.lensK;
   }
 
   private present(i: number): boolean {
@@ -761,16 +868,9 @@ export class UniverseScene {
       ctx.lineTo(c.width, y);
       ctx.stroke();
     }
-    // 인장 하나 — 이름의 첫 글자. 자료가 아직 없다는 표시이기도 하다.
-    const glyph = sealGlyph(a.id, a.names.original);
-    ctx.fillStyle = "rgba(192,57,46,0.42)";
-    ctx.font = "700 116px 'Noto Serif KR', serif";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(glyph, c.width * 0.5, c.height * 0.5);
-    ctx.strokeStyle = "rgba(192,57,46,0.42)";
-    ctx.lineWidth = 6;
-    ctx.strokeRect(c.width * 0.5 - 84, c.height * 0.5 - 84, 168, 168);
+    // 근거 없는 인장은 폐기됐다(CPO 2026-08-20). 아무것도 대신 새기지 않는다 —
+    // 끼워지지 않은 판에는 아무것도 새겨져 있지 않다. 착륙 게이트상 이 지각은
+    // 유저에게 열리지 않으므로, 빈 채로 두는 것이 유일하게 정직하다.
     const tex = new THREE.CanvasTexture(c);
     tex.colorSpace = THREE.SRGBColorSpace;
     this.texCache.set(key, tex);
@@ -804,26 +904,29 @@ export class UniverseScene {
   /** 표면 단계에 들어간 천체에만 지각을 칠한다 */
   private paintCrust(rec: BodyRecord): void {
     if (rec.textured) return;
-    rec.textured = true;
     const a = this.data.authors.find((x) => x.id === rec.id);
     if (!a) return;
     const ground = this.data.art?.grounds?.[rec.id];
+    const pre0 = this.assets?.authorId === rec.id ? this.assets.ground : null;
+    // **원고가 있어야 하는데 아직 도착하지 않았으면 칠하지 않고, 잠그지도
+    // 않는다.** 첫 페인트가 이기게 두면(실측 버그) 자산이 뒤늦게 와도 지각이
+    // 백지로 굳는다 — 딥링크로 곧장 착륙할 때 정확히 그렇게 됐다.
+    if (ground && !pre0) return;
+    rec.textured = true;
     // 지각을 칠할 때 형상도 고해상으로 바꾼다(다각형 윤곽이 보이면 종이가 아니다)
     rec.mesh.geometry = this.bodyGeometry(a, "hi");
     rec.mat.color.set(0xd6cdba);
-    if (ground) {
-      const img = new Image();
-      img.crossOrigin = "anonymous";
-      img.onload = () => {
-        // R10 의 지면 고스트(잉크 16%)는 평면 플레이트 아래 깔리도록 만든 값이다.
-        // 조명 받는 구면에서 그대로 쓰면 흰 공이 된다 — 같은 원고를 잉크
-        // 존재감만 올려 다시 굽는다(자료를 바꾸는 게 아니라 노출을 바꾼다).
-        const c = document.createElement("canvas");
-        c.width = img.naturalWidth;
-        c.height = img.naturalHeight;
-        const ctx = c.getContext("2d");
-        if (!ctx) return;
-        ctx.drawImage(img, 0, 0);
+    const pre = pre0;
+    if (ground && pre) {
+      // R10 의 지면 고스트(잉크 16%)는 평면 플레이트 아래 깔리도록 만든 값이다.
+      // 조명 받는 구면에서 그대로 쓰면 흰 공이 된다 — 같은 원고를 잉크
+      // 존재감만 올려 다시 굽는다(자료를 바꾸는 게 아니라 노출을 바꾼다).
+      const c = document.createElement("canvas");
+      c.width = pre.naturalWidth;
+      c.height = pre.naturalHeight;
+      const ctx = c.getContext("2d");
+      if (ctx) {
+        ctx.drawImage(pre, 0, 0);
         const d = ctx.getImageData(0, 0, c.width, c.height);
         const px = d.data;
         for (let i = 0; i < px.length; i += 4) {
@@ -841,8 +944,7 @@ export class UniverseScene {
         rec.mat.map = tex;
         rec.mat.needsUpdate = true;
         rec.mesh.userData.crust = "manuscript";
-      };
-      img.src = artUrl(ground.file);
+      }
     } else {
       rec.mat.map = this.fallbackTexture(a);
       rec.mat.needsUpdate = true;
@@ -871,49 +973,111 @@ export class UniverseScene {
     if (!id) return;
     const rec = this.ensureBody(id);
     if (!rec) return;
+    const author = this.data.authors.find((a) => a.id === id);
     const works = this.data.works.filter((w) => w.authorId === id);
-    const outward = rec.center.clone().normalize();
+    if (!works.length) return;
+
+    // ——— 배치: 실제 데이터가 정한다 ———
+    // 황금각 나선은 폐기됐다(CPO 2026-08-20) — 아름다웠지만 아무것도 말하지
+    // 않았다. 경도 = 발표 연도, 위도 = 독서 순서. 둘 다 /data 에 실재하는
+    // 값이고, 위도 항이 있는 이유는 전부를 한 대원 위에 세우면 천체를 돌렸을
+    // 때 edge-on 에서 한 줄로 겹쳐 퇴화하기 때문이다.
+    // 눈금은 **작품 연도 자체**가 정한다. 활동기로 여백을 주면 작품들이 띠의
+    // 일부에만 몰리고 마지막 작품이 림으로 밀려난다(실측). 활동기는 한 해에
+    // 몰린 경우의 퇴화만 막는다.
+    const years = works.map((w) => w.year);
+    let yMin = Math.min(...years);
+    let yMax = Math.max(...years);
+    if (yMax - yMin < 2) {
+      yMin = Math.min(yMin, author?.activeRange[0] ?? yMin);
+      yMax = Math.max(yMax, author?.activeRange[1] ?? yMax);
+    }
+    const order = author?.readingOrder ?? [];
+    // 배치의 기준축은 **카메라가 실제로 내려앉는 방향**이다. 반경 축을 쓰면
+    // 비스듬한 착륙에서 서가가 통째로 림으로 밀려난다(실측).
+    const outward = this.arrivalDir(rec.center.clone().normalize(), 52);
     const up = Math.abs(outward.y) > 0.9 ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0, 1, 0);
     const ex = new THREE.Vector3().crossVectors(up, outward).normalize();
     const ey = new THREE.Vector3().crossVectors(outward, ex).normalize();
-    const GOLD = Math.PI * (3 - Math.sqrt(5));
-    works.forEach((w, i) => {
-      // 착륙면(바깥쪽) 주위 55° 캡 안에 황금각 나선 — 결정적이고, 내려서면 다 보인다
-      const t = works.length === 1 ? 0 : i / Math.max(1, works.length - 1);
-      const theta = 0.16 + t * 0.72; // rad from the outward normal
-      const phi = i * GOLD;
-      const dir = outward
-        .clone()
-        .multiplyScalar(Math.cos(theta))
-        .addScaledVector(ex, Math.sin(theta) * Math.cos(phi))
-        .addScaledVector(ey, Math.sin(theta) * Math.sin(phi))
-        .normalize();
+
+    // 착륙 시야(3.2r · 52° 사입)가 실제로 담는 각폭에 맞춘다 — 더 넓게 잡으면
+    // 마지막 작품이 림이나 패널 뒤로 나간다(실측 3회).
+    const LON = (22 * Math.PI) / 180;
+    const LAT = (13 * Math.PI) / 180;
+
+    works.forEach((w) => {
+      const t = yMax > yMin ? (w.year - yMin) / (yMax - yMin) : 0.5;
+      const oi = order.indexOf(w.id);
+      const theta = -LON + 2 * LON * t; // 연도
+      // 위도는 **독서 순서**다. 순서에 없는 작품(편집이 입문 경로로 지목하지
+      // 않은 것)은 아래 단으로 내려간다 — 빈 값을 가운데에 욱여넣지 않는다.
+      const phi =
+        oi < 0
+          ? -LAT * 1.7
+          : order.length > 1
+            ? -LAT + 2 * LAT * (oi / (order.length - 1))
+            : 0;
+      const dir = outward.clone().applyAxisAngle(ey, theta).applyAxisAngle(ex, phi).normalize();
       const surface = rec.center.clone().addScaledVector(dir, rec.radius * 0.995);
+
       const group = new THREE.Group();
       group.position.copy(surface);
       group.userData.workId = w.id;
-
-      const cover = this.data.art?.covers?.[w.id];
-      const bw = rec.radius * 0.3;
-      const bh = bw * 1.42;
-      const boardMat = cover
-        ? new THREE.MeshBasicMaterial({ map: this.coverTexture(w.id, cover.file), side: THREE.DoubleSide })
-        : new THREE.MeshBasicMaterial({ map: this.hatchTexture(), side: THREE.DoubleSide });
-      const board = new THREE.Mesh(new THREE.PlaneGeometry(bw, bh), boardMat);
-      board.position.set(0, bh * 0.52, 0); // 그룹 로컬 +Y = 지면 법선
-      board.userData.workId = w.id;
-      group.add(board);
-      // 받침 — 판이 표면에 서 있다는 것을 말하는 최소한의 그림자 선
-      const base = new THREE.Mesh(
-        new THREE.CircleGeometry(bw * 0.46, 20),
-        new THREE.MeshBasicMaterial({ color: 0x2b2015, transparent: true, opacity: 0.22 })
-      );
-      base.rotation.x = -Math.PI / 2; // 로컬 XZ 평면 = 지면
-      base.position.set(0, 0.004 * rec.radius, 0);
-      group.add(base);
       group.userData.dir = dir;
+
+      // ——— 형태: 제본된 책 ———
+      // 평면 카드는 폐기됐다. 책등 두께는 **상수**다 — 두께는 보편적으로
+      // 쪽수로 읽히고, 우리는 쪽수를 갖고 있지 않다. 없는 값을 형태로
+      // 주장하지 않는다(심사 지적).
+      const cover = this.data.art?.covers?.[w.id];
+      const bw = rec.radius * 0.26;
+      const bh = bw * 1.42;
+      const bd = rec.radius * 0.055;
+      // 조명을 받는 재질이어야 입체가 드러난다. MeshBasicMaterial 은 여섯 면이
+      // 모두 같은 값으로 렌더돼 상자가 **평면 카드로 읽힌다**(실측) — 판을
+      // 세워 놓고도 세운 것이 보이지 않는다.
+      // 부재가 존재보다 밝으면 안 된다 — 실물 표지를 가진 도시가 앞선다.
+      const board = new THREE.MeshStandardMaterial({ color: 0x9c9179, roughness: 0.95 });
+      const edge = new THREE.MeshStandardMaterial({ color: 0xbdb198, roughness: 0.9 });
+      const spine = new THREE.MeshStandardMaterial({ color: 0x6f6350, roughness: 0.95 });
+      const face = cover
+        ? new THREE.MeshStandardMaterial({
+            map: this.coverTexture(w.id, cover.file),
+            roughness: 0.88
+          })
+        : new THREE.MeshStandardMaterial({ map: this.hatchTexture(), roughness: 0.95 });
+      // BoxGeometry 재질 순서: +X, -X, +Y, -Y, +Z, -Z
+      const mats = [spine, spine, edge, edge, face, board];
+      const book = new THREE.Mesh(new THREE.BoxGeometry(bw, bh, bd), mats);
+      book.position.set(0, bh * 0.5, 0);
+      // 기울이지 않는다. 빌보드가 이미 관측자를 향하고, 여기에 뒤로 눕히는 각을
+      // 더하면 구면 곡률과 합쳐져 "누워 있는 판"으로 보인다(실측).
+      book.userData.workId = w.id;
+      // **소장 여부는 방향으로 말한다**: 실물 초판이 있으면 표지가 정면
+      // (face-out), 없으면 책등이 정면(spine-out). 밝기나 채도가 아니라
+      // 형태가 갈리므로 한눈에 세어진다.
+      if (!cover) book.rotation.y = Math.PI / 2;
+      group.add(book);
+
+      // 받침 — 그림자 원반이 아니라 책이 딛고 선 판대
+      const plinth = new THREE.Mesh(
+        new THREE.CylinderGeometry(bw * 0.42, bw * 0.46, rec.radius * 0.018, 16),
+        new THREE.MeshStandardMaterial({ color: 0x5d5241, roughness: 1 })
+      );
+      plinth.position.set(0, rec.radius * 0.009, 0);
+      group.add(plinth);
+
       this.cityGroup.add(group);
-      this.cityRecords.push({ workId: w.id, obj: group, pos: surface });
+      this.cityRecords.push({
+        workId: w.id,
+        obj: group,
+        pos: surface,
+        year: w.year,
+        // 데이터(cover 유무)가 아니라 **실제 메시 회전**에서 읽는다 — 데이터를
+        // 되읽으면 렌더가 규칙을 어겨도 계약이 초록이다(변이 스윕 실측).
+        book,
+        lon: theta
+      });
     });
   }
 
@@ -921,7 +1085,9 @@ export class UniverseScene {
     const key = `cover:${workId}`;
     const hit = this.texCache.get(key);
     if (hit) return hit;
-    const tex = new THREE.TextureLoader().load(artUrl(file));
+    const pre = this.assets?.covers.get(workId);
+    const tex = pre ? new THREE.Texture(pre) : new THREE.TextureLoader().load(artUrl(file));
+    if (pre) tex.needsUpdate = true;
     tex.colorSpace = THREE.SRGBColorSpace;
     this.texCache.set(key, tex);
     return tex;
@@ -967,8 +1133,15 @@ export class UniverseScene {
       if (i === undefined) return;
       const c = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
       const r = this.radii[i] ?? 2;
-      this.controls.minDistance = r * 1.35;
-      this.flyTo(c, r * LANDING_ALT, 1150);
+      this.controls.minDistance = r * 0.6;
+      // 착륙의 주시점은 천체 중심이 아니라 **서가가 선 지면**이다. 중심을
+      // 겨누면 책이 프레임 가장자리로 밀리고 지각이 화면을 반만 채운다.
+      // 지면을 겨누면 카메라가 서가를 가로질러 보게 되고, 서 있는 것이 서 있는
+      // 것으로 보이며, 위쪽에 하늘이 남는다.
+      const axis = this.arrivalDir(c.clone().normalize(), 52);
+      const ground = c.clone().addScaledVector(axis, r * 0.92);
+      this.landTarget = ground;
+      this.flyTo(ground, r * LANDING_ALT, 1150);
       return;
     }
     if (s.focusId) {
@@ -977,9 +1150,11 @@ export class UniverseScene {
       const c = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
       // 중경 = 관측 렌즈 상태. 거리 자체가 계약이 아니라, 이 거리에서 렌즈가
       // (확대된 천체 + 압축된 이웃 + 원위치 궤적)을 한 프레임에 담는다.
+      this.landTarget = null;
       this.flyTo(c.clone(), LENS_DIST, 1050);
       return;
     }
+    this.landTarget = null;
     this.flyTo(new THREE.Vector3(0, 0, 0), CAM_SKY_DEFAULT, 1000);
   }
 
@@ -988,18 +1163,23 @@ export class UniverseScene {
    * 방사형으로 퍼져 거미줄처럼 보이고 (b) 항성이 천체 정반대에 놓여 완전한
    * 역광이 된다. 26° 기울여 접근하면 성좌가 입체로, 지각이 초승달로 읽힌다.
    */
-  private arrivalDir(radial: THREE.Vector3): THREE.Vector3 {
+  private arrivalDir(radial: THREE.Vector3, deg = 26): THREE.Vector3 {
     const up = Math.abs(radial.y) > 0.92 ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0, 1, 0);
     const perp = up.clone().addScaledVector(radial, -up.dot(radial)).normalize();
-    return radial.clone().addScaledVector(perp, Math.tan((26 * Math.PI) / 180)).normalize();
+    return radial.clone().addScaledVector(perp, Math.tan((deg * Math.PI) / 180)).normalize();
   }
 
   private flyTo(target: THREE.Vector3, dist: number, dur: number): void {
     const dir = this.camera.position.clone().sub(this.controls.target);
     let approach: THREE.Vector3;
-    if (target.lengthSq() > 1) {
+    if (this.landTarget && target === this.landTarget) {
+      approach = this.arrivalDir(target.clone().normalize(), 62);
+    } else if (target.lengthSq() > 1) {
       // 천체를 향할 때는 바깥에서 비스듬히 내려앉는다 — 별들 사이를 통과하는 경로
-      approach = this.arrivalDir(target.clone().normalize());
+      // 착륙은 **비스듬히** 내려앉는다. 반경 축을 그대로 타고 내려가면 시선이
+      // 지면 법선과 나란해져 표면에 서 있는 것들(제본된 책)을 위에서 내려다보게
+      // 되고, 서 있다는 사실 자체가 투영에서 사라진다.
+      approach = this.arrivalDir(target.clone().normalize(), dist < 200 ? 52 : 26);
     } else {
       approach = dir.clone().normalize();
     }
@@ -1196,8 +1376,12 @@ export class UniverseScene {
           resolved++;
           // 지각은 표면 단계보다 먼저 칠한다 — 도착하는 순간 텍스처가 튀어
           // 들어오면 "같은 천체가 계속 있었다"는 규칙이 깨진다
-          // 렌즈로 확대된 상태에서 지각을 칠하면 착륙의 발견이 중경에서 소진된다
-          if (ap > 120 && this.lensK < 0.05) this.paintCrust(body);
+          // 확대된 상태에서도 지각을 칠한다. 아끼면 중경의 주인공이 **무늬 없는
+          // 공**이 되고, 그것은 미준비 작가에게 금지한 바로 그 화면이다.
+          // 착륙이 더하는 것은 지각이 아니라 서가와 읽을 것이다.
+          // 60px 은 확대된 중경의 실측 겉보기 반경(86px)보다 낮다 — 중경의
+          // 주인공이 지각을 갖고 등장한다.
+          if (ap > 60) this.paintCrust(body);
           if (rep === "surface") surfaceId = id;
         }
         // 구가 보이면 별 스프라이트는 물러난다 — 같은 객체가 두 번 그려지지 않게
@@ -1206,6 +1390,22 @@ export class UniverseScene {
         continue;
       }
       alpha.setX(i, this.baseAlpha[i] ?? 0);
+    }
+    // 렌즈가 옮긴 별은 **원위치에서 유령이 된다.** 이 처리가 없으면 같은 별이
+    // 두 곳에서 같은 밝기로 떠 있고, 궤적이 잇는 두 끝이 대칭이라 어느 쪽이
+    // 실제인지 말하지 않는다. 살아 있는 쪽은 압축 사본이다(R11-d 사양 §6-③).
+    if (this.lensK > 0) {
+      const spike = this.starGeo.getAttribute("aSpike") as THREE.BufferAttribute;
+      const ring = this.starGeo.getAttribute("aRing") as THREE.BufferAttribute;
+      for (const id of this.lensIds) {
+        const i = this.index.get(id);
+        if (i === undefined) continue;
+        alpha.setX(i, alpha.getX(i) * (1 - 0.75 * this.lensK));
+        spike.setX(i, 0);
+        ring.setX(i, 0); // 읽고 싶음 링은 압축 사본 쪽에만 남는다
+      }
+      spike.needsUpdate = true;
+      ring.needsUpdate = true;
     }
     alpha.needsUpdate = true;
 
@@ -1228,18 +1428,58 @@ export class UniverseScene {
       stage === "surface" ? 0.25 : this.state.focusId ? 0.4 : 0.9;
     (this.egoLines.material as THREE.LineBasicMaterial).opacity = stage === "surface" ? 0.3 : 0.72;
 
-    // 선택 링은 화면상 크기를 고정한다 — 표식은 거리 정보를 나르지 않는다
+    // 관측 표식은 화면상 크기가 고정된다 — 표식은 판(plate)에 속하고 대상은
+    // 하늘에 속한다. 줌해도 픽셀 치수가 불변인 유일한 객체군이므로, 카메라를
+    // 한 번 움직이면 "판 위의 표시"임이 스스로 드러난다.
     const selId = this.state.focusId;
     const selIdx = selId ? this.index.get(selId) : undefined;
-    if (selIdx !== undefined && !this.state.landedId) {
+    const hideMarks = (): void => {
+      for (const sp of this.selWedges) sp.visible = false;
+      for (const sp of this.selCorners) sp.visible = false;
+    };
+    if (selIdx === undefined || this.state.landedId) {
+      hideMarks();
+    } else {
       const c = (this.dirs[selIdx] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
       const dCam = c.distanceTo(this.camera.position);
-      this.selRing.position.copy(c);
       const worldPerPx = (2 * Math.tan((this.camera.fov * Math.PI) / 360) * dCam) / h;
-      this.selRing.scale.setScalar(worldPerPx * 46);
-      this.selRing.visible = true;
-    } else {
-      this.selRing.visible = false;
+      const camRight = new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 0);
+      const camUp = new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 1);
+      // 단계는 표현 사다리가 이미 낸 값을 **읽기만** 한다 — 같은 규칙을 두 곳에
+      // 두면 서로를 가려 한쪽을 지워도 계약이 초록으로 남는다(실측 교훈).
+      const scaled =
+        (this.radii[selIdx] ?? 12) * (isLandable(selId as string) ? 1 + (LENS_MAG - 1) * this.lensK : 1);
+      const ap = apparentRadiusPx(scaled, dCam, this.camera.fov, h);
+      const asStar = ap < STAR_TO_DISC_PX;
+      const markR = asStar ? starPixels(this.mags[selIdx] ?? 0) / 2 : ap;
+      const place = (sp: THREE.Sprite, dx: number, dy: number, px: number): void => {
+        sp.position
+          .copy(c)
+          .addScaledVector(camRight, dx * worldPerPx)
+          .addScaledVector(camUp, dy * worldPerPx);
+        sp.scale.setScalar(worldPerPx * px);
+        sp.visible = true;
+      };
+      if (asStar) {
+        // 단계 A — 마주 보는 쐐기 2개. 대상은 비워 둔다(측광을 덮지 않는다).
+        for (const sp of this.selCorners) sp.visible = false;
+        const gap = Math.max(9, markR * 1.6 + 5) + 6;
+        const d = gap / Math.SQRT2;
+        place(this.selWedges[0] as THREE.Sprite, d, d, 12);
+        place(this.selWedges[1] as THREE.Sprite, -d, -d, 12);
+      } else {
+        // 단계 B — 원반 바운딩 박스의 모서리 레지스터 4개
+        for (const sp of this.selWedges) sp.visible = false;
+        const vw = this.renderer.domElement.clientWidth || 1600;
+        const box = Math.min(markR * 1.25 + 8, Math.min(vw, h) * 0.31);
+        const corners: Array<[number, number]> = [
+          [-box, box],
+          [box, box],
+          [box, -box],
+          [-box, -box]
+        ];
+        corners.forEach(([dx, dy], i) => place(this.selCorners[i] as THREE.Sprite, dx, dy, 22));
+      }
     }
     // 관측 렌즈 진행도 — 진입/이탈이 보이도록 애니메이션한다
     const prevK = this.lensK;
@@ -1272,6 +1512,9 @@ export class UniverseScene {
       dist: Math.round(dist),
       bodies: resolved,
       labels: this.labels.lastShown,
+      skyLabels: this.lastSkyLabels,
+      crustLabels: this.lastCrustLabels,
+      crustAuthorLabels: this.lastCrustAuthorLabels,
       frames: this.metrics.frames + 1,
       stars: drawn,
       ego: this.state.ego.length,
@@ -1279,6 +1522,32 @@ export class UniverseScene {
       lensMag: this.lensK > 0 ? LENS_MAG : 1,
       lensMoved: this.lensStars.visible ? this.lensIds.length : 0,
       orbitArchive: Boolean(this.state.focusId && !isLandable(this.state.focusId)),
+      assetsPreloaded: Boolean(
+        this.state.focusId && this.assets?.authorId === this.state.focusId
+      ),
+      landedWithoutAssets: this.landedWithoutAssets,
+      cities: (() => {
+        const cs = [...this.cityRecords].sort((x, y) => x.year - y.year);
+        // 연도가 다르면 경도도 **엄격히** 달라야 한다. 비감소만 보면
+        // "전부 같은 경도"(연도 무시)가 통과한다(변이 스윕 실측).
+        let byYear = true;
+        for (let i = 1; i < cs.length; i++) {
+          const a2 = cs[i] as (typeof cs)[number];
+          const b2 = cs[i - 1] as (typeof cs)[number];
+          if (a2.year !== b2.year && a2.lon <= b2.lon + 1e-6) byYear = false;
+        }
+        const lons = cs.map((c) => c.lon);
+        const spread = lons.length ? Math.max(...lons) - Math.min(...lons) : 0;
+        const isFaceOut = (c: (typeof cs)[number]): boolean =>
+          Math.abs(c.book.rotation.y) < 0.01;
+        return {
+          faceOut: this.cityRecords.filter(isFaceOut).length,
+          spineOut: this.cityRecords.filter((c) => !isFaceOut(c)).length,
+          byYear,
+          lonSpreadDeg: Number(((spread * 180) / Math.PI).toFixed(1)),
+          total: this.cityRecords.length
+        };
+      })(),
       crust: (landedRec?.mesh.userData.crust as string | undefined) ?? null
     };
   }
@@ -1397,7 +1666,16 @@ export class UniverseScene {
             mag * 100,
           x: sx,
           y: ((-v.y + 1) / 2) * h + 14,
-          state
+          state,
+          ground: "sky",
+          // 층이 켜져 있고 이 별이 그 층 밖이면 글자를 접는다(틱만 남는다).
+          // 선택·호버·이웃·개인 기록은 접지 않는다 — 방향감이 사라진다.
+          muted:
+            Boolean(s.lens) &&
+            state === "normal" &&
+            !s.lensMarks.has(id) &&
+            !s.read.has(id) &&
+            !s.want.has(id)
         });
       }
     } else {
@@ -1417,6 +1695,8 @@ export class UniverseScene {
           x: ((v.x + 1) / 2) * w,
           y: ((-v.y + 1) / 2) * h + 10,
           state: work.id === s.selectedWorkId ? "selected" : "normal",
+          // 작품 라벨만 작가의 실제 종이 위에 선다 — 슬립이 살아 있는 유일한 자리
+          ground: "crust",
           interactive: true,
           ariaLabel: `${work.titleKo} — 작품 열기`
         });
@@ -1436,11 +1716,20 @@ export class UniverseScene {
               priority: 900,
               x: ((v.x + 1) / 2) * w,
               y: 58,
-              state: "selected"
+              state: "selected",
+              // 착륙한 작가의 이름은 화면 상단 빈 공간에 뜬다 — 종이 위가 아니다
+              ground: "sky"
             });
         }
       }
     }
+    this.lastSkyLabels = items.filter((i) => i.ground === "sky").length;
+    this.lastCrustLabels = items.filter((i) => i.ground === "crust").length;
+    // 종이 슬립은 **작품 라벨만** 가질 수 있다. 작가 이름이 슬립을 달면
+    // 하늘에 판이 돌아온 것이고, 그것이 이 숫자로 잡힌다.
+    this.lastCrustAuthorLabels = items.filter(
+      (i) => i.ground === "crust" && i.kind !== "work"
+    ).length;
     this.labels.onActivate = (id) => this.cb.onPickWork(id);
     this.labels.update(items, w, h, this.stage === "surface" ? 40 : this.stage === "sky" ? 18 : 32);
   }
