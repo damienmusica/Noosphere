@@ -89,6 +89,30 @@ const report = existsSync(path.join(OUT, "reproduce-report.json"))
   ? JSON.parse(await readFile(path.join(OUT, "reproduce-report.json"), "utf8"))
   : null;
 
+// 리포트가 이 번들의 트리를 실제로 설명하는가. 커밋 해시가 같기를 요구할 수는
+// 없다 — 리포트를 커밋하는 순간 HEAD 가 그 리포트가 가리키는 커밋을 지나가기
+// 때문이다. 물어야 할 것은 **게이트가 돈 뒤에 검사 대상이 바뀌었는가**이므로,
+// 리포트 커밋과 HEAD 사이에서 소스·데이터·계약·스윕이 달라졌는지를 본다.
+const GATED = [
+  "literary-planet/src",
+  "literary-planet/data",
+  "literary-planet/tests",
+  "literary-planet/public",
+  "literary-planet/art-r11/verify-journey.mjs",
+  "literary-planet/package.json",
+  "scripts"
+];
+let reportStale = null;
+if (report && report.commit && report.commit !== "unknown") {
+  try {
+    sh(`git -C .. merge-base --is-ancestor ${report.commit} HEAD`);
+    const changed = sh(`git -C .. diff --name-only ${report.commit} HEAD -- ${GATED.join(" ")}`);
+    reportStale = changed ? changed.split("\n") : [];
+  } catch {
+    reportStale = ["(리포트 커밋이 HEAD 의 조상이 아니다)"];
+  }
+}
+
 await writeFile(
   path.join(OUT, "README.md"),
   `# 《문학의 성계》 R11-d — 검토 번들
@@ -137,8 +161,14 @@ ${EXCLUDED.map(([e, why]) => `- \`${e}/\` — ${why}.`).join("\n")}
 
 ${
   report
-    ? `## 이 번들이 통과한 게이트\n\n리포트가 기록한 커밋: \`${report.commit}\`${
-        report.commit === commit ? "" : " — ⚠ 이 번들의 커밋과 다르다. `npm run universe:reproduce` 를 다시 돌린 뒤 묶어야 한다"
+    ? `## 이 번들이 통과한 게이트\n\n게이트는 커밋 \`${report.commit}\` 에서 돌았고, 이 번들은 \`${commit}\` 이다.${
+        reportStale === null
+          ? " (대조 불가)"
+          : reportStale.length === 0
+            ? " 그 사이에 소스·데이터·계약·스윕은 **한 줄도 바뀌지 않았다** — 아래 수치는 이 트리를 설명한다."
+            : ` ⚠ 그 사이에 다음이 바뀌었다 — 아래 수치는 이 트리를 설명하지 않는다:\n\n${reportStale
+                .map((f) => `  - \`${f}\``)
+                .join("\n")}`
       }\n\n${Object.entries(report.counts ?? {})
         .filter(([, v]) => v !== null)
         .map(([k, v]) => `- ${k} — **${v}**`)
