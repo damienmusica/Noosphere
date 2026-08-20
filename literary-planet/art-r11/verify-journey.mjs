@@ -20,9 +20,11 @@ const distDir = path.resolve(ROOT, opt("dist", "dist"));
 
 // 준비된 착륙지 3인 + 미준비 궤도 경험 1인 (CPO 2026-08-20 주문)
 const SLICE = [
-  { id: "franz-kafka", query: "카프카", works: 5, covers: 4, crust: "manuscript", landable: true },
-  { id: "natsume-soseki", query: "소세키", works: 6, covers: 5, crust: "manuscript", landable: true },
-  { id: "rabindranath-tagore", query: "타고르", works: 6, covers: 2, crust: "manuscript", landable: true },
+  // order = data/authors 의 readingOrder 길이. 렌더에서 되읽지 않는다 —
+  // 색인 글리프 계약이 자기가 검사할 값을 스스로 만들어 내지 않도록.
+  { id: "franz-kafka", query: "카프카", works: 5, covers: 4, order: 3, crust: "manuscript", landable: true },
+  { id: "natsume-soseki", query: "소세키", works: 6, covers: 5, order: 5, crust: "manuscript", landable: true },
+  { id: "rabindranath-tagore", query: "타고르", works: 6, covers: 2, order: 5, crust: "manuscript", landable: true },
   { id: "marcel-proust", query: "프루스트", works: 6, crust: null, landable: false }
 ];
 
@@ -169,6 +171,76 @@ for (const a of SLICE) {
     check("실물 초판만 표지를 정면으로 세운다", mm.cities.faceOut === covers,
       `정면 ${mm.cities.faceOut} · 책등 ${mm.cities.spineOut} (실물 ${covers})`);
     check("실물이 없는 작품은 책등이 정면이다", mm.cities.spineOut === a.works - covers);
+    // 회전값이 아니라 **월드 법선**으로 다시 묻는다: 여섯 면 중 관측자에게
+    // 가장 정면인 면이 실제로 책등인가. 회전값만 보면 재질 배열이 뒤집혀
+    // 앞마구리(종이 단면)를 책등이라 불러도 계약이 초록이다.
+    check("책등 정면인 권은 실제로 책등 면을 관측자에게 낸다",
+      mm.cities.spineFacing === mm.cities.spineOut,
+      `책등면 ${mm.cities.spineFacing} / 책등 정면 ${mm.cities.spineOut}`);
+    check("표지 정면인 권은 실제로 표지 면을 관측자에게 낸다",
+      mm.cities.coverFacing === mm.cities.faceOut,
+      `표지면 ${mm.cities.coverFacing} / 표지 정면 ${mm.cities.faceOut}`);
+    // 기하만으로는 모자란다 — 재질 배열이 뒤바뀌면 앞마구리 천이 책등 자리에
+    // 와도 "책등이 정면"이 성립한다(변이 스윕에서 유일하게 살아남은 변이).
+    check("관측자를 향한 그 면에 책등 재질이 붙어 있다",
+      mm.cities.spineDressed === mm.cities.spineOut,
+      `${mm.cities.spineDressed}/${mm.cities.spineOut}`);
+    check("관측자를 향한 그 면에 실물 표지가 붙어 있다",
+      mm.cities.coverDressed === mm.cities.faceOut,
+      `${mm.cities.coverDressed}/${mm.cities.faceOut}`);
+    // 겹침은 3차원 거리가 아니라 **투영된 화면 사각형**으로 잰다. 최소 각간격을
+    // 지켜도 빌보드가 권마다 다르게 돌아 화면에서는 겹칠 수 있다(실측).
+    check("같은 단의 두 권이 화면에서 겹치지 않는다", mm.cities.overlaps === 0,
+      `겹친 쌍 ${mm.cities.overlaps} · 최소 간격 ${mm.cities.minGapPx}px`);
+    check("같은 단의 최소 간격이 남아 있다", mm.cities.minGapPx > 4, `${mm.cities.minGapPx}px`);
+    check("앞단이 뒷단을 알아볼 수 없게 먹지 않는다", mm.cities.crossHidden < 0.5,
+      `최대 ${mm.cities.crossHidden}`);
+    check("제본된 책이 서 있다 (투영 세로/가로 > 1)", mm.cities.uprightRatio > 1,
+      `${mm.cities.uprightRatio}`);
+    check("두 단이 선다 — 입문 경로와 그 외", mm.cities.rows === 2, `${mm.cities.rows}단`);
+    check("입문 경로 단이 관측자 쪽에 선다", mm.cities.rowFrontY > mm.cities.rowBackY,
+      `앞 ${mm.cities.rowFrontY}px · 뒤 ${mm.cities.rowBackY}px`);
+    check("서가 난간이 있다", mm.cities.chrome >= 8, `${mm.cities.chrome}자리`);
+    // 눈금은 난간과 **따로** 센다. 한 수치로 합치면 난간 두 줄(자리 10개)만으로
+    // 정족수가 차서 연도 축이 통째로 사라져도 계약이 초록이다(감사 지적).
+    check("연도 눈금이 축을 이룬다 — 2개 이상", mm.cities.ticks >= 2, `${mm.cities.ticks}개`);
+    check("난간·눈금이 지각 안에 묻히지 않았다", mm.cities.chromeBuried === 0,
+      `묻힘 ${mm.cities.chromeBuried}/${mm.cities.chrome}`);
+    // 입문 순서는 위도가 아니라 라벨의 색인 글리프가 나른다.
+    // **정확히 일치**를 요구한다: `>= 1` 은 하나만 남아도 통과하므로, 이 레포가
+    // 이미 값을 치른 오탐의 형태 그대로다(스윕 헤더 참조).
+    const glyph = await page.evaluate(() => {
+      const out = { total: 0, glyphed: [], plain: [] };
+      for (const el of document.querySelectorAll(".globe-label--work")) {
+        const t = (el.textContent ?? "").trim();
+        out.total++;
+        (/^[\u2460-\u2473]/.test(t) ? out.glyphed : out.plain).push(el.dataset.labelId);
+      }
+      return out;
+    });
+    const ordered = new Set(mm.cities.ordered);
+    check("입문 경로 권이 전부 색인 글리프를 단다", glyph.glyphed.length === a.order,
+      `${glyph.glyphed.length}/${a.order}`);
+    check("글리프를 단 라벨이 정확히 입문 경로 권이다",
+      glyph.glyphed.every((id) => ordered.has(id)) && glyph.plain.every((id) => !ordered.has(id)),
+      `글리프 ${glyph.glyphed.length} · 민 라벨 ${glyph.plain.length} · 입문 경로 ${ordered.size}`);
+    // ——— 착륙 패널: 실물 마크가 카드를 뚫지 않는다 ———
+    // 세로 자산(소세키의 낙관 158×420)을 폭으로만 묶으면 691px 로 자라 카드
+    // 밖으로 넘쳤다. 수리는 CSS 한 줄이었고, 그 한 줄을 지키는 계약이 없었다.
+    const mark = await page.evaluate(() => {
+      const img = document.querySelector('[data-testid="mark"]');
+      const card = document.querySelector(".u-card--landing");
+      if (!img || !card) return null;
+      const a = img.getBoundingClientRect();
+      const b = card.getBoundingClientRect();
+      return { h: Math.round(a.height), w: Math.round(a.width), cardW: Math.round(b.width),
+        overflowX: Math.round(a.right - b.right), inverted: getComputedStyle(img).filter };
+    });
+    check("실물 마크가 착륙 패널 안에 있다",
+      mark !== null && mark.h > 8 && mark.h <= 140 && mark.w <= mark.cardW && mark.overflowX <= 0,
+      mark ? `${mark.w}×${mark.h}px · 카드 ${mark.cardW}px` : "마크 없음");
+    check("마크를 반전시키지 않는다 — 붉은 인장은 붉게 남는다",
+      mark !== null && !/invert/.test(mark.inverted), mark ? mark.inverted : "");
 
     // ——— 라벨의 바닥은 그 라벨이 딛고 선 것과 같다 ———
     // 지각 위의 작품 라벨만 슬립을 갖고, 나머지는 판 없는 각자여야 한다.
