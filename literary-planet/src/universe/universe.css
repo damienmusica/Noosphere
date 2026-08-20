@@ -93,12 +93,29 @@
 }
 
 /* ——— 관측층 ——— */
-.u-lenses {
+/* 좌측 레일 — 색인 목록이 12~13항목으로 길어지면서 개인 패널과 겹쳤다(R11-c).
+   한 열 안에서 목록이 스크롤되고 개인 패널이 바닥에 고정된다. */
+.u-rail {
   position: absolute;
-  top: 62px;
   left: 22px;
-  width: 216px;
+  top: 62px;
+  bottom: 20px;
+  width: 228px;
   z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.u-rail > * {
+  pointer-events: auto;
+}
+
+.u-lenses {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -209,10 +226,9 @@
 
 /* ——— 나의 성좌 ——— */
 .u-mine {
-  position: absolute;
-  left: 22px;
-  bottom: 20px;
-  width: 246px;
+  flex: 0 0 auto;
+  max-height: 48%;
+  overflow-y: auto;
   background: var(--surface-veil);
   border: 1px solid var(--line);
   border-top: 2px solid var(--brass-a45);

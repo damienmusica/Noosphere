@@ -28,8 +28,12 @@ export interface OrbitCardProps {
   works: Work[];
   relations: Array<{ rel: Relation; other: Author }>;
   art: ArtManifest | null;
-  /** 착륙지가 준비됐는가 = 육필 지각 자산 보유 */
+  /** 착륙지가 준비됐는가 = 명시적 검증 상태(data/depth-readiness.json) */
   landable: boolean;
+  /** 준비도 상태와 근거 — 없으면 not-started */
+  readiness: { state: string; met: string[]; verifiedAt?: string; note?: string } | null;
+  /** 다른 독자의 공유 성좌를 보는 중 — 개인 상태를 바꿀 수 없다 */
+  readOnly: boolean;
   /** 이 별이 속한 하늘들 — 관측층이 데이터에서 파생한 소속 */
   skies: SkyMembership[];
   read: boolean;
@@ -114,10 +118,20 @@ export function OrbitCard(p: OrbitCardProps) {
       {/* 문은 접힘선 위에 있어야 한다 — 긴 궤도 관측 아래로 내려가면 R9 의
           "자동 스크롤이 발견을 제조한다" 함정이 그대로 재현된다 */}
       <div className="u-card__acts">
-        <button className={`u-btn ${p.read ? "is-on" : ""}`} onClick={p.onToggleRead}>
+        <button
+          className={`u-btn ${p.read ? "is-on" : ""}`}
+          onClick={p.onToggleRead}
+          disabled={p.readOnly}
+          title={p.readOnly ? "다른 독자의 성좌를 보는 중 — 내 성좌로 복사한 뒤 표시할 수 있다" : undefined}
+        >
           {p.read ? "읽음 ✓" : "읽음 표시"}
         </button>
-        <button className={`u-btn ${p.want ? "is-on" : ""}`} onClick={p.onToggleWant}>
+        <button
+          className={`u-btn ${p.want ? "is-on" : ""}`}
+          onClick={p.onToggleWant}
+          disabled={p.readOnly}
+          title={p.readOnly ? "다른 독자의 성좌를 보는 중 — 내 성좌로 복사한 뒤 담을 수 있다" : undefined}
+        >
           {p.want ? "궤도에 있음" : "읽고 싶음"}
         </button>
         {p.landable ? (
@@ -128,9 +142,17 @@ export function OrbitCard(p: OrbitCardProps) {
       </div>
 
       <p className="u-card__ready" data-testid="readiness">
-        {p.landable
-          ? `착륙지 준비됨 — 육필 지각과 초판 도시 ${covers}종`
-          : `착륙지 미준비 — 육필 지각 없음 · 실물 초판 ${covers}종. 준비되지 않은 표면에는 내려앉지 않는다.`}
+        {p.landable ? (
+          <>
+            착륙지 <strong>준비됨</strong> — 검수 {p.readiness?.verifiedAt ?? "완료"} · 기준{" "}
+            {p.readiness?.met.length ?? 0}/4 충족 · 초판 도시 {covers}종
+          </>
+        ) : (
+          <>
+            착륙지 <strong>미준비</strong>({p.readiness?.state ?? "not-started"}) — 이 작가는
+            항성과 궤도 아카이브로 존재한다. 표면은 검수된 뒤에 열린다.
+          </>
+        )}
       </p>
 
       <p className="u-card__why">{a.importanceReason}</p>

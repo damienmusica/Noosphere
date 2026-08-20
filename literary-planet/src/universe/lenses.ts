@@ -1,6 +1,12 @@
 // R11 관측층(觀測層) — 사조·언어·시대·지역은 고정된 우주 영토가 아니라
 // 독자가 켜고 끄는 해석이다.
 //
+// **속성층은 성좌가 아니다** (R11-c). 성좌는 공간적 인접의 형식인데 우리 사조는
+// 공간적으로 뭉쳐 있지 않다 — 모더니즘 29인의 선은 하늘 전역을 가로질렀다.
+// 그것을 "성좌"라 부르고 "잇는다"고 쓰는 순간, 은유가 데이터에 없는 인접성을
+// 약속한다. 속성층은 **색인(index)** 이다: 목록이 본체이고, 하늘은 한 번에 한
+// 항목만 지목한다. 선을 긋는 것은 실제 관계와 독자 자신의 성좌뿐이다.
+//
 // 왜 렌즈여야 하는가: 카프카는 독일어권이자 프라하이자 유대 문학이자
 // 모더니즘이자 실존주의적 수용이다. 하나의 공식 분류를 별에 새기면 우주
 // 은유가 문학을 다시 국경으로 고정한다. 그래서 성좌는 **데이터에 새겨진
@@ -33,8 +39,8 @@ export interface LensGroup {
   label: string;
   memberIds: string[];
   color: string;
-  /** 색인 번호 — 아틀라스 범례 문법. 별에는 아무 채널도 쓰지 않고
-   *  이름표 옆 활자 하나로만 소속을 말한다(R11-b, 외부 리뷰 지적 ①). */
+  /** 색인 번호. 범례에 **전부** 실린다 — 목록에 없는 번호가 하늘에 뜨면
+   *  해독 불가능한 기호가 된다(R11-c: 8개 제한이 ⑨~⑬을 미아로 만들었다). */
   index: number;
 }
 
@@ -48,7 +54,8 @@ export interface LensResult {
    *  영향력·시대·개인 궤도가 이미 점유했다. 소속은 이름표 옆 색인 번호와
    *  목록↔하늘 연동으로만 말한다. */
   lit: Set<string>;
-  /** authorId → 색인 번호들. 여러 하늘에 속하면 여러 개가 붙는다 */
+  /** authorId → 이 렌즈에서의 색인 번호들. 하늘에 실제로 표시되는 것은
+   *  범례에서 **지목된 한 그룹**뿐이다(한 번에 한 항목). */
   marks: Map<string, number[]>;
 }
 
@@ -56,23 +63,23 @@ export interface LensDef {
   id: LensId;
   ko: string;
   hint: string;
-  /** 속성 렌즈는 성좌(체인)를, 관계 렌즈는 실제 관계선을 그린다 */
+  /** 속성층은 색인(선 없음), 관계층은 실제 관계선, 개인층은 독자의 성좌 */
   kind: "attribute" | "relation" | "personal";
 }
 
 export const LENSES: readonly LensDef[] = [
-  { id: "movement", ko: "사조 성좌", hint: "같은 사조로 묶인 별을 잇는다", kind: "attribute" },
-  { id: "language", ko: "언어권 성좌", hint: "같은 언어로 쓴 별을 잇는다", kind: "attribute" },
+  { id: "movement", ko: "사조 색인", hint: "사조별 목록 — 한 항목을 지목하면 하늘에 표시된다", kind: "attribute" },
+  { id: "language", ko: "언어권 색인", hint: "언어별 목록 — 한 항목을 지목하면 하늘에 표시된다", kind: "attribute" },
   {
     id: "exile",
-    ko: "망명과 디아스포라",
-    hint: "망명·이주 이력이 기록된 별",
+    ko: "망명·이주 기록",
+    hint: "망명·이주 이력이 기록된 작가 목록",
     kind: "attribute"
   },
-  { id: "translation", ko: "번역과 수용", hint: "번역으로 이어진 관계", kind: "relation" },
+  { id: "translation", ko: "번역과 수용", hint: "번역으로 이어진 실제 관계", kind: "relation" },
   { id: "influence", ko: "직접 영향", hint: "문서로 확인된 영향 관계", kind: "relation" },
   { id: "affinity", ko: "사후 친연성", hint: "후대가 발견한 유사성", kind: "relation" },
-  { id: "personal", ko: "나의 성좌", hint: "내가 읽은 별을 읽은 순서로", kind: "personal" }
+  { id: "personal", ko: "나의 성좌", hint: "내가 읽은 별을 읽은 순서로 이은 선", kind: "personal" }
 ] as const;
 
 const ATTR_COLOR: Record<string, string> = {
@@ -268,5 +275,8 @@ export const LANGUAGE_KO: Record<string, string> = {
   el: "그리스어",
   nl: "네덜란드어",
   fa: "페르시아어",
-  af: "아프리칸스어"
+  af: "아프리칸스어",
+  hi: "힌디어",
+  ur: "우르두어",
+  ki: "기쿠유어"
 };

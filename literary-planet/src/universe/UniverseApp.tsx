@@ -26,6 +26,7 @@ import {
   type PersonalState
 } from "./personal.ts";
 import { LENS_MAG, magnitude, influenceWeight, periodOf } from "./grammar.ts";
+import { isLandable, readinessOf, readinessState } from "./readiness.ts";
 import { buildSearchIndex, searchAuthors } from "../lib/search.ts";
 import { languageLabel, regionLabel } from "../i18n/index.ts";
 import { PERIOD_TINT } from "../theme.ts";
@@ -213,12 +214,18 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
       ego: ego.lines,
       egoLit: ego.lit,
-      lensMarks: lens?.marks ?? new Map(),
-      lensGroupFocus: groupFocus
-        ? new Set(lens?.groups.find((g) => g.id === groupFocus)?.memberIds ?? [])
-        : null
+      // 하늘에는 **지목된 한 그룹**의 색인 번호만 뜬다. 전부 띄우면 범례에
+      // 없는 번호가 섞이고(⑨~⑬ 미아), 이름표가 기호로 뒤덮인다.
+      lensMarks: linked
+        ? new Map(linked.memberIds.map((id) => [id, [linked.index]] as const))
+        : new Map(),
+      lensGroupFocus: linked ? new Set(linked.memberIds) : null,
+      lensRelationGroups: lensDef?.kind === "relation"
     });
   }, [focusId, landedId, year, lens, personal, workId, ego, groupFocus]);
+
+  const lensDef = lensId ? LENSES.find((l) => l.id === lensId) : undefined;
+  const linked = groupFocus ? lens?.groups.find((g) => g.id === groupFocus) : undefined;
 
   const focus = focusId ? byId.get(focusId) : null;
   const landed = landedId ? byId.get(landedId) : null;
@@ -247,8 +254,10 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     [personal, dataset]
   );
 
-  /** 착륙지 준비 = 육필 지각 자산 보유. 준비되지 않은 표면에는 내려앉지 않는다 */
-  const landable = useCallback((id: string): boolean => Boolean(art?.grounds?.[id]), [art]);
+  /** 착륙지 준비 = **명시적 검증 상태**(data/depth-readiness.json). 자산 파일의
+   *  존재로 추론하지 않는다 — 지면이 있어도 표면 문구가 검수되지 않았으면
+   *  착륙지가 아니다(R11-c) */
+  const landable = useCallback((id: string): boolean => isLandable(id), []);
 
   /** 이 별이 속한 하늘들 — 궤도 카드용 (관측층이 데이터에서 파생) */
   const skiesOf = useCallback(
@@ -272,12 +281,12 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     [dataset, positions]
   );
 
-  // 딥링크 착륙은 자산이 도착한 뒤 게이트를 통과해야 성립한다
+  // 딥링크 착륙도 같은 게이트를 지난다 (준비도는 데이터라 즉시 판정된다)
   useEffect(() => {
-    if (!pendingLand || !art) return;
+    if (!pendingLand) return;
     if (landable(pendingLand)) setLandedId(pendingLand);
     setPendingLand(null);
-  }, [pendingLand, art, landable]);
+  }, [pendingLand, landable]);
 
   const toggle = useCallback((key: "read" | "want", id: string) => {
     setPersonal((p) => {
@@ -302,7 +311,11 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         <span className="u-stage" data-stage={stage}>
           {STAGE_KO[stage]}
           {/* 배율을 숨기면 "같은 공간인 척"이 된다 — 왜곡은 공표될 때만 기만이 아니다 */}
-          {stage === "approach" && focusId && !landedId ? ` ×${LENS_MAG}` : ""}
+          {stage === "approach" && focusId && !landedId
+            ? isLandable(focusId)
+              ? ` ×${LENS_MAG}`
+              : " · 궤도 아카이브"
+            : ""}
         </span>
         <div className="u-search">
           <input
@@ -361,44 +374,114 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         )}
       </header>
 
-      <nav className="u-lenses" aria-label="관측층">
-        <p className="u-lenses__title">관측층</p>
-        {LENSES.map((l) => (
-          <button
-            key={l.id}
-            className={`u-lens ${lensId === l.id ? "is-on" : ""}`}
-            onClick={() => setLensId(lensId === l.id ? null : l.id)}
-            title={l.hint}
-          >
-            {l.ko}
-          </button>
-        ))}
-        {lens && lens.groups.length ? (
-          <ul className="u-lens-groups" data-testid="lens-legend">
-            {lens.groups.slice(0, 8).map((g) => (
-              <li key={g.id}>
-                <button
-                  className={groupFocus === g.id ? "is-on" : ""}
-                  onMouseEnter={() => setGroupFocus(g.id)}
-                  onFocus={() => setGroupFocus(g.id)}
-                  onMouseLeave={() => setGroupFocus((c) => (c === g.id ? null : c))}
-                  onBlur={() => setGroupFocus((c) => (c === g.id ? null : c))}
-                  onClick={() => setGroupFocus(groupFocus === g.id ? null : g.id)}
-                >
-                  <span className="u-index" aria-hidden="true">
-                    {indexGlyph(g.index)}
-                  </span>
-                  {g.label} <em>{g.memberIds.length}</em>
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : null}
-        <p className="u-lenses__note">
-          성좌는 데이터에 새겨진 소속이 아니라 켜져 있는 렌즈의 산물이다. 한 별은 여러 하늘에
-          속한다.
-        </p>
-      </nav>
+      <div className="u-rail">
+        <nav className="u-lenses" aria-label="관측층">
+          <p className="u-lenses__title">관측층</p>
+          {LENSES.map((l) => (
+            <button
+              key={l.id}
+              className={`u-lens ${lensId === l.id ? "is-on" : ""}`}
+              onClick={() => setLensId(lensId === l.id ? null : l.id)}
+              title={l.hint}
+            >
+              {l.ko}
+            </button>
+          ))}
+          {lens && lens.groups.length ? (
+            <ul className="u-lens-groups" data-testid="lens-legend">
+              {lens.groups.map((g) => (
+                <li key={g.id}>
+                  <button
+                    className={groupFocus === g.id ? "is-on" : ""}
+                    onMouseEnter={() => setGroupFocus(g.id)}
+                    onFocus={() => setGroupFocus(g.id)}
+                    onMouseLeave={() => setGroupFocus((c) => (c === g.id ? null : c))}
+                    onBlur={() => setGroupFocus((c) => (c === g.id ? null : c))}
+                    onClick={() => setGroupFocus(groupFocus === g.id ? null : g.id)}
+                  >
+                    <span className="u-index" aria-hidden="true">
+                      {indexGlyph(g.index)}
+                    </span>
+                    {g.label} <em>{g.memberIds.length}</em>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          <p className="u-lenses__note">
+            {lensDef?.kind === "attribute"
+              ? "속성층은 색인이다. 목록이 본체이고, 하늘은 한 번에 한 항목만 지목한다 — 사조와 언어는 공간적으로 뭉쳐 있지 않으므로 선도 영역도 그리지 않는다."
+              : "소속은 데이터에 새겨진 것이 아니라 켜져 있는 층의 산물이다. 한 작가는 여러 층에 속한다."}
+          </p>
+        </nav>
+        <section className="u-mine">
+          <h2>나의 성좌</h2>
+          <p>
+            읽음 <strong>{readCount}</strong> · 궤도 <strong>{Object.keys(personal.want).length}</strong>
+          </p>
+          {tracks.length ? (
+            <div className="u-tracks" data-testid="tracks">
+              <h3>다음 독서 — 방향을 고르세요</h3>
+              {tracks.map((t) => (
+                <div key={t.id} className="u-track">
+                  <p className="u-track__name" title={t.hint}>
+                    {t.ko}
+                  </p>
+                  <ul className="u-recs">
+                    {t.items.map((r) => {
+                      const a = byId.get(r.authorId);
+                      if (!a) return null;
+                      return (
+                        <li key={r.authorId}>
+                          <button onClick={() => setFocusId(r.authorId)}>
+                            <span
+                              className="u-dot"
+                              style={{ background: PERIOD_TINT[periodOf(a)] }}
+                              aria-hidden="true"
+                            />
+                            {a.names.ko}
+                          </button>
+                          <em>{r.reasons.join(" · ")}</em>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p className="u-mine__empty">별을 읽음으로 표시하면 다음 독서를 여기서 제안한다.</p>
+          )}
+          {readCount > 0 && (
+            <button
+              className="u-btn u-btn--ghost"
+              onClick={() => {
+                const url = `${location.origin}${location.pathname}?sky=${encodeShare(personal)}`;
+                void navigator.clipboard?.writeText(url);
+              }}
+            >
+              성좌 링크 복사
+            </button>
+          )}
+          {shared && (
+          <>
+            <p className="u-mine__shared">
+              다른 독자의 성좌를 보고 있다. 읽기 전용이며 이 브라우저에 저장되지 않는다.
+            </p>
+            <button
+              className="u-btn"
+              onClick={() => {
+                setShared(null);
+                savePersonal(personal);
+                history.replaceState(null, "", location.pathname);
+              }}
+            >
+              내 성좌로 복사
+            </button>
+          </>
+        )}
+        </section>
+      </div>
 
       <div className="u-time">
         <label htmlFor="u-year">연도</label>
@@ -414,58 +497,6 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         <span className="u-time__hint">활동 전 = 어둠 · 활동기 = 점등 · 사후 = 잔광</span>
       </div>
 
-      <section className="u-mine">
-        <h2>나의 성좌</h2>
-        <p>
-          읽음 <strong>{readCount}</strong> · 궤도 <strong>{Object.keys(personal.want).length}</strong>
-        </p>
-        {tracks.length ? (
-          <div className="u-tracks" data-testid="tracks">
-            <h3>다음 독서 — 방향을 고르세요</h3>
-            {tracks.map((t) => (
-              <div key={t.id} className="u-track">
-                <p className="u-track__name" title={t.hint}>
-                  {t.ko}
-                </p>
-                <ul className="u-recs">
-                  {t.items.map((r) => {
-                    const a = byId.get(r.authorId);
-                    if (!a) return null;
-                    return (
-                      <li key={r.authorId}>
-                        <button onClick={() => setFocusId(r.authorId)}>
-                          <span
-                            className="u-dot"
-                            style={{ background: PERIOD_TINT[periodOf(a)] }}
-                            aria-hidden="true"
-                          />
-                          {a.names.ko}
-                        </button>
-                        <em>{r.reasons.join(" · ")}</em>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p className="u-mine__empty">별을 읽음으로 표시하면 다음 독서를 여기서 제안한다.</p>
-        )}
-        {readCount > 0 && (
-          <button
-            className="u-btn u-btn--ghost"
-            onClick={() => {
-              const url = `${location.origin}${location.pathname}?sky=${encodeShare(personal)}`;
-              void navigator.clipboard?.writeText(url);
-            }}
-          >
-            성좌 링크 복사
-          </button>
-        )}
-        {shared && <p className="u-mine__shared">다른 독자의 성좌를 보고 있다 (읽기 전용)</p>}
-      </section>
-
       {focus && !landed && (
         <OrbitCard
           author={focus}
@@ -473,6 +504,10 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
           relations={focusRelations}
           art={art}
           landable={landable(focus.id)}
+          readiness={
+            readinessOf(focus.id) ?? { state: readinessState(focus.id), met: [] }
+          }
+          readOnly={Boolean(shared)}
           skies={skiesOf(focus.id)}
           read={Boolean(personal.read[focus.id])}
           want={Boolean(personal.want[focus.id])}

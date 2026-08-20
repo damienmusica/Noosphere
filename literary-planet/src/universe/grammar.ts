@@ -160,6 +160,28 @@ export function lensCompress(d: number, dMin: number, dMax: number): number {
   return LENS_MIN + (LENS_MAX - LENS_MIN) * Math.sqrt(t);
 }
 
+/**
+ * 렌즈가 이웃을 옮기는 자리. **방향 보존이 여기서 구조적으로 보장된다** —
+ * 초점에서 원래 위치로 향하는 단위 벡터에 압축된 반경만 곱한다.
+ * 장면 코드가 이 함수를 그대로 쓰므로 테스트가 실제 경로를 검증한다
+ * (R11-c: 이전 테스트는 `lensCompress(500)===lensCompress(500)` 이라는
+ * 결정성만 확인하고 방향 보존은 전혀 보지 않는 오탐이었다).
+ */
+export function lensPosition(
+  focus: readonly [number, number, number],
+  orig: readonly [number, number, number],
+  dMin: number,
+  dMax: number
+): [number, number, number] {
+  const dx = orig[0] - focus[0];
+  const dy = orig[1] - focus[1];
+  const dz = orig[2] - focus[2];
+  const d = Math.hypot(dx, dy, dz);
+  if (d === 0) return [focus[0], focus[1], focus[2]];
+  const r = lensCompress(d, dMin, dMax) / d;
+  return [focus[0] + dx * r, focus[1] + dy * r, focus[2] + dz * r];
+}
+
 // ---------------------------------------------------------------------------
 // 시간 — 별의 생성·활동·잔광
 // ---------------------------------------------------------------------------

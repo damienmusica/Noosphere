@@ -31,12 +31,13 @@ import {
   magnitude,
   representationFor,
   starLife,
-  lensCompress,
+  lensPosition,
   starPixels,
   tintOf,
   SILHOUETTE_AMP
 } from "./grammar.ts";
 import { indexGlyph } from "./lenses.ts";
+import { isLandable } from "./readiness.ts";
 import type { LensLine, LensResult } from "./lenses.ts";
 
 export interface UniverseData {
@@ -60,10 +61,12 @@ export interface UniverseSceneState {
   /** 선택된 별의 자기 성좌 — 렌즈와 무관하게 항상 그린다(중경의 관계 흐름) */
   ego: LensLine[];
   egoLit: Set<string>;
-  /** 관측층 소속의 색인 번호. 별의 밝기·색·링은 건드리지 않는다 */
+  /** 지목된 한 그룹의 색인 번호만 하늘에 표시된다. 별의 밝기·색·링은 무접촉 */
   lensMarks: Map<string, number[]>;
-  /** 범례에서 지목된 성좌의 구성원 — 이름표를 강제로 띄운다(목록↔하늘 연동) */
+  /** 범례에서 지목된 그룹의 구성원 — 이름표를 강제로 띄운다(목록↔하늘 연동) */
   lensGroupFocus: Set<string> | null;
+  /** 이 렌즈가 실제 관계선을 그리는가 — 속성 색인층은 false */
+  lensRelationGroups: boolean;
 }
 
 export interface UniverseCallbacks {
@@ -86,6 +89,9 @@ interface BodyRecord {
 
 // 로그 깊이 버퍼를 켰으므로 커스텀 셰이더도 같은 깊이를 써야 한다 —
 // 빼먹으면 별이 전부 깊이 테스트에서 탈락해 하늘이 통째로 사라진다(실측).
+/** 준비되지 않은 천체가 강제로 머무는 표현 단계 */
+const REP_STAR = "star" as const;
+
 const STAR_VERT = `
 #include <common>
 #include <logdepthbuf_pars_vertex>
@@ -177,7 +183,8 @@ export class UniverseScene {
     ego: [],
     egoLit: new Set(),
     lensMarks: new Map(),
-    lensGroupFocus: null
+    lensGroupFocus: null,
+    lensRelationGroups: false
   };
   private stage: Stage = "sky";
   private anim: {
@@ -217,7 +224,9 @@ export class UniverseScene {
     /** 관측 렌즈 진행도(0..1)와 일률 배율 — 회귀 방지용 계측 */
     lensK: 0,
     lensMag: 1,
-    lensMoved: 0
+    lensMoved: 0,
+    /** 선택 대상이 항성+궤도 아카이브 상태인가 (준비되지 않은 작가) */
+    orbitArchive: false
   };
 
   constructor(
@@ -575,12 +584,11 @@ export class UniverseScene {
     });
     const dMin = Math.min(...dists);
     const dMax = Math.max(...dists);
-    members.forEach((id, n) => {
+    members.forEach((id) => {
       const i = this.index.get(id) as number;
       const p = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
-      const ray = p.clone().sub(c).normalize();
-      const r = lensCompress(dists[n] as number, dMin, dMax);
-      this.lensTarget.set(id, c.clone().addScaledVector(ray, r));
+      const q = lensPosition([c.x, c.y, c.z], [p.x, p.y, p.z], dMin, dMax);
+      this.lensTarget.set(id, new THREE.Vector3(q[0], q[1], q[2]));
     });
     this.lensIds = members;
     this.lensKTarget = 1;
@@ -1165,9 +1173,16 @@ export class UniverseScene {
       const d = center.distanceTo(this.camera.position);
       const scaled =
         (this.radii[i] ?? 12) *
-        (id === this.state.focusId && !this.state.landedId ? 1 + (LENS_MAG - 1) * this.lensK : 1);
+        (id === this.state.focusId && !this.state.landedId && isLandable(id)
+          ? 1 + (LENS_MAG - 1) * this.lensK
+          : 1);
       const ap = apparentRadiusPx(scaled, d, this.camera.fov, h);
-      const rep = representationFor(ap, h);
+      // 준비되지 않은 작가는 **항성으로 남는다.** 무늬 없는 구로 분해하면
+      // 정보는 없고 실망만 있는 표면이 생긴다 — 착륙을 막은 이유가 그것이었다.
+      // 궤도 아카이브(궤도 카드)가 그 자리의 경험이다(R11-c).
+      const rep: typeof REP_STAR | "resolved" | "surface" = isLandable(id)
+        ? representationFor(ap, h)
+        : REP_STAR;
       if (rep === "star") {
         const body = this.bodies.get(id);
         if (body) body.mesh.visible = false;
@@ -1234,7 +1249,10 @@ export class UniverseScene {
     if (this.lensK !== prevK) this.buildLines(this.egoLines, this.state.ego);
     // 선택 천체는 일률 배율로 확대 — 배율이 같으므로 크기 차이(=영향력)는 남는다
     for (const [id, rec] of this.bodies) {
-      const want = id === this.state.focusId && !this.state.landedId ? 1 + (LENS_MAG - 1) * this.lensK : 1;
+      const want =
+        id === this.state.focusId && !this.state.landedId && isLandable(id)
+          ? 1 + (LENS_MAG - 1) * this.lensK
+          : 1;
       const target = rec.radius * want;
       if (Math.abs(rec.mesh.scale.x - target) > 1e-4) rec.mesh.scale.setScalar(target);
     }
@@ -1255,6 +1273,7 @@ export class UniverseScene {
       lensK: Number(this.lensK.toFixed(3)),
       lensMag: this.lensK > 0 ? LENS_MAG : 1,
       lensMoved: this.lensStars.visible ? this.lensIds.length : 0,
+      orbitArchive: Boolean(this.state.focusId && !isLandable(this.state.focusId)),
       crust: (landedRec?.mesh.userData.crust as string | undefined) ?? null
     };
   }
@@ -1287,9 +1306,11 @@ export class UniverseScene {
     const s = this.state;
 
     if (this.stage !== "surface") {
-      // 원경은 이름을 아끼는 자리다. 사조 성좌 이름이 먼저 오고, 개별 작가는
-      // 밝은 별·선택·호버·읽은 별만 말한다(8차 리뷰의 bystander 침묵 규칙 계승).
-      if (s.lens)
+      // 원경은 이름을 아끼는 자리다. **속성 그룹의 평균점 이름표는 그리지
+      // 않는다** — 사조는 공간적으로 뭉쳐 있지 않으므로 중심점이란 것이 없고,
+      // 흩어진 점들의 평균에 이름을 놓으면 있지도 않은 장소를 주장한다(R11-c).
+      // 관계층의 성좌 이름은 실제 선이 만드는 형태를 가리키므로 남는다.
+      if (s.lens && s.lensRelationGroups)
         for (const g of s.lens.groups.slice(0, 8)) {
           const c = new THREE.Vector3();
           let n = 0;
@@ -1299,7 +1320,6 @@ export class UniverseScene {
             c.add(this.dirs[i] as THREE.Vector3);
             n++;
           }
-          // 아직 아무도 태어나지 않은 성좌는 이름도 없다
           if (n < 2) continue;
           c.divideScalar(n).normalize().multiplyScalar(SHELL_R * 1.02);
           const toward = c.clone().sub(this.camera.position).normalize();
