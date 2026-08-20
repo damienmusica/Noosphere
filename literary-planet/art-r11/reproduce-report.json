@@ -1,6 +1,6 @@
 {
-  "commit": "35046e9",
-  "generatedAt": "2026-08-20T18:58:09.994Z",
+  "commit": "e6bd483",
+  "generatedAt": "2026-08-20T19:03:58.925Z",
   "environment": {
     "node": "v24.14.0",
     "platform": "darwin/arm64",
@@ -16,23 +16,23 @@
   "steps": {
     "typecheck": {
       "ok": true,
-      "ms": 1775
+      "ms": 1887
     },
     "unit": {
       "ok": true,
-      "ms": 3078
+      "ms": 3164
     },
     "validate-data": {
       "ok": true,
-      "ms": 198
+      "ms": 196
     },
     "mutation-fast": {
       "ok": true,
-      "ms": 16496
+      "ms": 16495
     },
     "build": {
       "ok": true,
-      "ms": 1417
+      "ms": 1420
     },
     "journey-contract": {
       "ok": true,
@@ -40,11 +40,11 @@
     },
     "frames": {
       "ok": true,
-      "ms": 40270
+      "ms": 40167
     },
     "video": {
       "ok": true,
-      "ms": 35509
+      "ms": 35533
     }
   },
   "artifacts": {
@@ -67,28 +67,28 @@
           "bytes": 221714
         },
         "4transition-0.png": {
-          "sha256_16": "6ff1d872ac2c0265",
-          "bytes": 318742
+          "sha256_16": "308db4c8eeef48ff",
+          "bytes": 319550
         },
         "4transition-1.png": {
-          "sha256_16": "a362444cbae2893d",
-          "bytes": 140564
+          "sha256_16": "a64315e999784bfa",
+          "bytes": 144796
         },
         "4transition-2.png": {
-          "sha256_16": "aacfd4c814eb6550",
-          "bytes": 385100
+          "sha256_16": "a848ea0de303f05f",
+          "bytes": 387319
         },
         "4transition-3.png": {
-          "sha256_16": "b9771f61628b3961",
-          "bytes": 563767
+          "sha256_16": "457e12dafe3770b9",
+          "bytes": 564599
         },
         "4transition-4.png": {
-          "sha256_16": "7770441ff971bf99",
-          "bytes": 565099
+          "sha256_16": "59ddcd4667cfca7b",
+          "bytes": 565151
         },
         "4transition-5.png": {
-          "sha256_16": "7770441ff971bf99",
-          "bytes": 565099
+          "sha256_16": "59ddcd4667cfca7b",
+          "bytes": 565151
         },
         "5personal.png": {
           "sha256_16": "50785eb3ce4af1a8",
@@ -107,8 +107,8 @@
           "bytes": 222460
         },
         "7orbit-unprepared.png": {
-          "sha256_16": "9097050e135c5683",
-          "bytes": 363106
+          "sha256_16": "a17af5f49560db41",
+          "bytes": 362611
         },
         "8lens-linked.png": {
           "sha256_16": "fbaf69bb59d05d86",
@@ -119,42 +119,42 @@
           "bytes": 221714
         },
         "franz-kafka-2mid.png": {
-          "sha256_16": "48d6f39185598013",
-          "bytes": 450991
+          "sha256_16": "d641437e91960eb2",
+          "bytes": 451265
         },
         "franz-kafka-3near.png": {
-          "sha256_16": "365c91b18ca07aa0",
-          "bytes": 565116
+          "sha256_16": "360ff9a319f52dde",
+          "bytes": 564781
         },
         "natsume-soseki-1sky.png": {
           "sha256_16": "3f9a2d90f95e643b",
           "bytes": 221714
         },
         "natsume-soseki-2mid.png": {
-          "sha256_16": "40529ab1c9b45dd9",
-          "bytes": 425028
+          "sha256_16": "6bd4d3ba50ca9b01",
+          "bytes": 425585
         },
         "natsume-soseki-3near.png": {
-          "sha256_16": "1f98f12d14a7ff26",
-          "bytes": 625551
+          "sha256_16": "58838ae8ab533403",
+          "bytes": 625616
         },
         "rabindranath-tagore-1sky.png": {
           "sha256_16": "3f9a2d90f95e643b",
           "bytes": 221714
         },
         "rabindranath-tagore-2mid.png": {
-          "sha256_16": "0ef8b0441eaaa1b9",
-          "bytes": 425174
+          "sha256_16": "a0bd3d9b8b263fc2",
+          "bytes": 425577
         },
         "rabindranath-tagore-3near.png": {
-          "sha256_16": "7511d156d809d855",
-          "bytes": 640123
+          "sha256_16": "2e7c95a02f55eef1",
+          "bytes": 640183
         }
       },
       "video": {
         "r11-journey.webm": {
-          "sha256_16": "149e17771e49d8ee",
-          "bytes": 3761076
+          "sha256_16": "2fe688e92b1bff1d",
+          "bytes": 3707182
         }
       }
     }
