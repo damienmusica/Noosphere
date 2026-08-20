@@ -1,0 +1,334 @@
+// Terrain texture painter (thesis §②, P1) — turns the frozen bake in
+// data/territory.v1.json into equirect canvases at startup. Sea stays
+// transparent so the plate cross-fades over the mode-lerped surface sphere;
+// everything drawn here is baked geometry — no noise, no field evaluation.
+//
+// Fill comes from the owner raster (topology-free — polar caps just work);
+// lines come from the baked contours. Two resolutions are painted: the
+// mid/far plate and a near plate at double scale whose constant-pixel stroke
+// widths halve the angular line weight — the etched line survives reading
+// distance instead of collapsing into a rope (VAD P1 finding B).
+
+import { COLORS, PERIOD_WASH } from "../theme.ts";
+import { eachRun, unwrapFlatX } from "../lib/territory-geometry.ts";
+import type { PeriodId, Territory } from "../types.ts";
+
+// R10 paper-planet: the plate is PAPER laid on cloth. Coast = deckle edge
+// (a dark under-shadow where the page lifts, a bright torn-paper rim).
+
+export type PlateCanvas = HTMLCanvasElement | OffscreenCanvas;
+
+/** the painter runs on the main thread (boot atlas) AND in the paint worker
+ * (era + near + union plates) — same code, environment-appropriate canvas */
+export function makeCanvas(w: number, h: number): PlateCanvas {
+  if (typeof document !== "undefined") {
+    const c = document.createElement("canvas");
+    c.width = w;
+    c.height = h;
+    return c;
+  }
+  return new OffscreenCanvas(w, h);
+}
+
+/**
+ * Add a wrapped flat polyline to a path, drawn three times (shifted by
+ * ±width) so strokes stay continuous across the horizontal seam. Polar rings
+ * (stored endpoints equal modulo one wrap) come out as full rings this way.
+ */
+function addFlatLine(
+  path: Path2D,
+  line: number[],
+  gridWidth: number,
+  sx: number,
+  sy: number,
+  texWidth: number
+): void {
+  const un = unwrapFlatX(line, gridWidth);
+  for (const shift of [-texWidth, 0, texWidth]) {
+    path.moveTo(un[0]! * sx + shift, un[1]! * sy);
+    for (let k = 2; k < un.length; k += 2) {
+      path.lineTo(un[k]! * sx + shift, un[k + 1]! * sy);
+    }
+  }
+}
+
+function pathOf(
+  lines: number[][],
+  gridWidth: number,
+  sx: number,
+  sy: number,
+  texWidth: number
+): Path2D {
+  const path = new Path2D();
+  for (const line of lines) addFlatLine(path, line, gridWidth, sx, sy, texWidth);
+  return path;
+}
+
+/**
+ * Paint one affinity plate: raster land fill, a blurred per-territory period
+ * wash masked to the land, sub-τ waterlines in the sea, dashed territory
+ * borders, and the coast stroke on top.
+ *
+ * `cell` = texture pixels per bake-grid cell. Stroke widths are constant in
+ * pixels, so a larger cell yields angularly finer engraving; dash rhythm and
+ * wash blur scale with `cell` to keep their angular size stable across the
+ * mid/near plate swap.
+ */
+export function paintTerrainTexture(
+  territory: Territory,
+  periodOf: (authorId: string) => PeriodId | undefined,
+  cell = 2,
+  withCities = false,
+  /** curated reading-order index per work (0 = entry); sizes the town rings */
+  rankOf?: (workId: string) => number | undefined,
+  /** clause 4 (v2.5): towns are founded at publication — era plates pass a
+   * year filter; omitted = every town exists (the full atlas) */
+  townVisible?: (workId: string) => boolean,
+  /**
+   * grid-cell sub-rect (8th review near patch): the canvas covers only this
+   * window of the plate at full cell density — one nation's reading-distance
+   * crispness for ~2MiB instead of a 134MiB planet. All drawing code runs
+   * unchanged; the canvas boundary is the clip.
+   */
+  clipRect?: { x0: number; y0: number; x1: number; y1: number },
+  /**
+   * R10: the author's own manuscript page, ghost-processed offline, laid
+   * over ONE nation's paper (used on the near patch path). The image covers
+   * the nation's bbox; runs outside the nation keep plain laid paper.
+   */
+  ground?: { image: CanvasImageSource; nationIdx: number }
+): PlateCanvas {
+  const g = territory.geometry;
+  const texW = g.gridWidth * cell;
+  const texH = (g.gridHeight - 1) * cell;
+  const canvas = clipRect
+    ? makeCanvas((clipRect.x1 - clipRect.x0) * cell, (clipRect.y1 - clipRect.y0) * cell)
+    : makeCanvas(texW, texH);
+  const ctx = canvas.getContext("2d") as CanvasRenderingContext2D | null;
+  if (!ctx) return canvas;
+  if (clipRect) ctx.translate(-clipRect.x0 * cell, -clipRect.y0 * cell);
+
+  ctx.lineJoin = "round";
+  ctx.lineCap = "round";
+
+  // land fill + land mask from the owner raster. Intermediates match the
+  // OUTPUT size — a patch paint must never allocate full-plate scratch
+  // canvases (the whole point is avoiding 33MP buffers).
+  const outW = canvas.width;
+  const outH = canvas.height;
+  const mask = makeCanvas(outW, outH);
+  const mctx = mask.getContext("2d") as CanvasRenderingContext2D | null;
+  if (clipRect && mctx) mctx.translate(-clipRect.x0 * cell, -clipRect.y0 * cell);
+  ctx.fillStyle = COLORS.paper;
+  if (mctx) mctx.fillStyle = "#ffffff";
+  g.ownerRle.forEach((row, j) => {
+    eachRun(row, (x0, count, value) => {
+      if (value === 0) return;
+      ctx.fillRect(x0 * cell, j * cell, count * cell, cell);
+      mctx?.fillRect(x0 * cell, j * cell, count * cell, cell);
+    });
+  });
+
+  const coastPath = pathOf(g.coast, g.gridWidth, cell, cell, texW);
+
+  // shore under-stroke in land ink: bridges the half-cell offset between the
+  // raster fill and the analytic coast line, whatever the cell size
+  ctx.strokeStyle = COLORS.paper;
+  ctx.lineWidth = Math.max(5, cell * 1.6);
+  ctx.stroke(coastPath);
+
+  // laid-paper texture, land only (source-atop rides the land alpha):
+  // horizontal laid lines + sparse vertical chain lines, angular size held
+  // across plate scales — the ground reads as PAPER, not as flat fill
+  {
+    ctx.save();
+    ctx.globalCompositeOperation = "source-atop";
+    ctx.strokeStyle = COLORS.paperInk;
+    ctx.globalAlpha = 0.05;
+    ctx.lineWidth = 1;
+    const step = Math.max(3, 2.4 * cell);
+    ctx.beginPath();
+    for (let y = 0; y < texH; y += step) {
+      ctx.moveTo(0, y + (Math.sin(y * 0.7) * 0.8));
+      ctx.lineTo(texW, y + (Math.cos(y * 0.5) * 0.8));
+    }
+    ctx.stroke();
+    ctx.globalAlpha = 0.035;
+    ctx.beginPath();
+    const chain = Math.max(18, 15 * cell);
+    for (let x = 0; x < texW; x += chain) {
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, texH);
+    }
+    ctx.stroke();
+    ctx.restore();
+    ctx.globalAlpha = 1;
+  }
+
+  // R10 manuscript ground: clip to the nation's own runs and lay the
+  // ghosted page across its bbox — the territory literally becomes the page
+  if (ground) {
+    let bx0 = g.gridWidth, bx1 = -1, by0 = g.ownerRle.length, by1 = -1;
+    const clip = new Path2D();
+    g.ownerRle.forEach((row, j) => {
+      eachRun(row, (x0, count, value) => {
+        if (value - 1 !== ground.nationIdx) return;
+        clip.rect(x0 * cell, j * cell, count * cell, cell);
+        if (x0 < bx0) bx0 = x0;
+        if (x0 + count > bx1) bx1 = x0 + count;
+        if (j < by0) by0 = j;
+        if (j > by1) by1 = j;
+      });
+    });
+    if (bx1 > 0) {
+      ctx.save();
+      ctx.clip(clip);
+      ctx.globalAlpha = 0.9;
+      ctx.drawImage(
+        ground.image,
+        bx0 * cell,
+        by0 * cell,
+        (bx1 - bx0) * cell,
+        (by1 + 1 - by0) * cell
+      );
+      ctx.restore();
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  // period wash: owner runs rasterized small, blurred up, then masked to the
+  // land raster — watercolor held inside the ink. Falls back to plain
+  // bilinear upscale where ctx.filter is unavailable.
+  const washSrc = makeCanvas(g.gridWidth, g.ownerRle.length);
+  const wsctx = washSrc.getContext("2d") as CanvasRenderingContext2D | null;
+  const washFull = makeCanvas(outW, outH);
+  const wctx = washFull.getContext("2d") as CanvasRenderingContext2D | null;
+  if (wsctx && wctx && mctx) {
+    g.ownerRle.forEach((row, j) => {
+      eachRun(row, (x0, count, value) => {
+        if (value === 0) return;
+        const id = g.authors[value - 1];
+        const period = (id ? periodOf(id) : undefined) ?? "mid-century";
+        wsctx.fillStyle = PERIOD_WASH[period];
+        wsctx.fillRect(x0, j, count, 1);
+      });
+    });
+    if (clipRect) wctx.translate(-clipRect.x0 * cell, -clipRect.y0 * cell);
+    wctx.imageSmoothingEnabled = true;
+    if (typeof wctx.filter === "string") wctx.filter = `blur(${2.5 * cell}px)`;
+    for (const shift of [-texW, 0, texW]) {
+      wctx.drawImage(washSrc as CanvasImageSource, shift, 0, texW, texH);
+    }
+    wctx.filter = "none";
+    // mask and wash are both output-space now — composite in device space
+    wctx.setTransform(1, 0, 0, 1, 0, 0);
+    wctx.globalCompositeOperation = "destination-in";
+    wctx.drawImage(mask as CanvasImageSource, 0, 0);
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.globalAlpha = 0.15;
+    ctx.drawImage(washFull as CanvasImageSource, 0, 0);
+    ctx.restore();
+    ctx.globalAlpha = 1;
+  }
+
+  // waterlines (outer 0.5τ faint, inner 0.72τ) — sea-only by construction:
+  // land satisfies F ≥ τ, so sub-τ contours cannot enter it
+  const wl = g.waterlines;
+  const wsx = texW / wl.gridWidth;
+  const wsy = texH / (wl.gridHeight - 1);
+  ctx.strokeStyle = COLORS.lineAccent;
+  ctx.globalAlpha = 0.3;
+  ctx.lineWidth = 1.4;
+  ctx.stroke(pathOf(wl.outer, wl.gridWidth, wsx, wsy, texW));
+  ctx.globalAlpha = 0.5;
+  ctx.lineWidth = 1.6;
+  ctx.stroke(pathOf(wl.inner, wl.gridWidth, wsx, wsy, texW));
+
+  // interior territory borders: STITCHING — the realms are sewn into the
+  // same signature (union membership reads as shared binding elsewhere);
+  // thread-short dashes, angular rhythm held across plate scales
+  ctx.strokeStyle = COLORS.stitch;
+  ctx.setLineDash([1.6 * cell, 2.8 * cell]);
+  ctx.globalAlpha = 0.75;
+  ctx.lineWidth = 2;
+  ctx.stroke(pathOf(g.boundaries, g.gridWidth, cell, cell, texW));
+  ctx.setLineDash([]);
+
+  // deckle edge last: the page lifts off the cloth — a soft dark under-
+  // shadow, then the bright torn rim
+  ctx.strokeStyle = COLORS.paperShadow;
+  ctx.globalAlpha = 0.5;
+  ctx.lineWidth = 5;
+  ctx.stroke(coastPath);
+  ctx.strokeStyle = COLORS.paperEdge;
+  ctx.globalAlpha = 0.9;
+  ctx.lineWidth = 2;
+  ctx.stroke(coastPath);
+  ctx.globalAlpha = 1;
+
+  // P3, near plate only (§②-6 reading distance): works as towns, the reading
+  // entry at the harbor, the reading order as a dotted route
+  if (withCities) {
+    for (const c of Object.values(g.cities)) {
+      // the reading route is drawn once its curated towns all exist
+      const roadReady = c.towns.every(
+        (t) => rankOf?.(t.id) === undefined || townVisible === undefined || townVisible(t.id)
+      );
+      // road first, beneath its towns
+      if (roadReady && c.road.length >= 4) {
+        const road = new Path2D();
+        const un = unwrapFlatX(c.road, g.gridWidth);
+        for (const shift of [-texW, 0, texW]) {
+          road.moveTo(un[0]! * cell + shift, un[1]! * cell);
+          for (let k = 2; k < un.length; k += 2) {
+            road.lineTo(un[k]! * cell + shift, un[k + 1]! * cell);
+          }
+        }
+        ctx.strokeStyle = COLORS.paperInk;
+        ctx.globalAlpha = 0.45;
+        ctx.lineWidth = 1.3;
+        ctx.setLineDash([1.2, 6.5]);
+        ctx.stroke(road);
+        ctx.setLineDash([]);
+      }
+      for (const town of c.towns) {
+        if (townVisible && !townVisible(town.id)) continue; // not yet founded
+        const isPort = c.portWork === town.id;
+        for (const shift of [-texW, 0, texW]) {
+          const x = town.x * cell + shift;
+          const y = town.y * cell;
+          if (x < -20 || x > texW + 20) continue;
+          if (isPort) {
+            // the harbor: a filled diamond — the reading enters here
+            ctx.fillStyle = COLORS.paperInk;
+            ctx.globalAlpha = 0.95;
+            ctx.beginPath();
+            ctx.moveTo(x, y - 5.5);
+            ctx.lineTo(x + 5.5, y);
+            ctx.lineTo(x, y + 5.5);
+            ctx.lineTo(x - 5.5, y);
+            ctx.closePath();
+            ctx.fill();
+          } else {
+            // an inland town: an open ring sized by curated reading rank —
+            // earlier in the order = larger; works outside the curated order
+            // stay smallest and quieter (P0-4: the map speaks data; the VAD
+            // P3 floor keeps a lone island ring above coast noise)
+            const rank = rankOf?.(town.id);
+            const radius = rank === undefined ? 2.7 : Math.max(2.9, 5.4 - rank * 0.85);
+            ctx.strokeStyle = COLORS.paperInk;
+            ctx.globalAlpha = rank === undefined ? 0.62 : 0.92;
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+        }
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  return canvas;
+}

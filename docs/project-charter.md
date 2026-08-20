@@ -43,6 +43,21 @@ evidence-backed relations that cross the hierarchy. The top-down `part_of` struc
 for navigation — never a claim that knowledge *is* a tree, or that any one arrangement is the
 canonical one.
 
+### Shape: one star system, many planets
+
+Noosphere is a **star system, not a single planet** (decision (129)). The canonical corpus — the
+nodes, edges, sources, and translations under `/data` — is the sun; **planets are projections** of
+knowledge for a particular way of reading (a domain lens, an audience, a visual grammar), never
+partitions of the corpus. A planet may carry its own curation ladder, layout, and art direction, but
+it introduces no second source of truth for shared identities: entities join across planets by
+**Wikidata QID** (`external_ids`), so the same person or work is one identity everywhere it appears.
+
+The **first planet is 《문학의 행성》 (Literary Planet)** — a Korean-first, read-only atlas of 100
+authors of 20th-century world literature, maintained in [`literary-planet/`](../literary-planet/) as
+the proving ground for planet-grade projection (independent editorial data, its own visual thesis,
+QID-joined author identities backfilled 100/100). Planets defer to this charter for identity,
+posture, and boundaries; planet-specific editorial policy lives with the planet.
+
 ### Stance: organize, do not adjudicate
 
 Noosphere **organizes and connects; it does not rank, judge, or settle.** Its job is to lay down the

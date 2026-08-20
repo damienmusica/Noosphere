@@ -1,0 +1,756 @@
+/* ————— 성계(星系) 프로토타입 — 기기는 놋쇠, 종이는 작가의 것 —————
+   R10 문법 계승: paper/ink 는 작가의 material 에만 쓰고, UI 크롬은
+   어두운 관측기기(놋쇠 헤어라인 + 웜블랙)로 둔다. */
+
+.universe {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.universe__stage {
+  position: absolute;
+  inset: 0;
+}
+
+.universe canvas.universe-canvas {
+  display: block;
+  cursor: grab;
+}
+
+/* ——— 상단 ——— */
+.u-top {
+  position: absolute;
+  top: 18px;
+  left: 22px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  z-index: 5;
+}
+
+.u-top h1 {
+  font-family: var(--font-serif);
+  font-size: 19px;
+  letter-spacing: 0.12em;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.u-stage {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--brass);
+  border: 1px solid var(--brass-a35);
+  border-radius: 2px;
+  padding: 2px 9px;
+}
+
+.u-stage[data-stage="surface"] {
+  color: var(--slip-ink);
+  background: var(--slip-bg);
+  border-color: var(--slip-line);
+}
+
+/* ——— 버튼 ——— */
+.u-btn {
+  font: inherit;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  background: var(--brass-a08);
+  border: 1px solid var(--brass-a35);
+  border-radius: 2px;
+  padding: 5px 11px;
+  cursor: pointer;
+}
+
+.u-btn:hover {
+  background: var(--brass-a14);
+  border-color: var(--brass-a55);
+}
+
+.u-btn.is-on {
+  background: var(--brass);
+  border-color: var(--brass-bright);
+  color: var(--ink-on-accent);
+}
+
+.u-btn--ghost {
+  background: transparent;
+}
+
+.u-btn--land {
+  background: var(--vermilion);
+  border-color: var(--vermilion);
+  color: var(--ink-on-vermilion);
+}
+
+.u-btn:focus-visible,
+.u-lens:focus-visible {
+  outline: 2px solid var(--brass-bright);
+  outline-offset: 2px;
+}
+
+/* ——— 관측층 ——— */
+/* 좌측 레일 — 색인 목록이 12~13항목으로 길어지면서 개인 패널과 겹쳤다(R11-c).
+   한 열 안에서 목록이 스크롤되고 개인 패널이 바닥에 고정된다. */
+.u-rail {
+  position: absolute;
+  left: 22px;
+  top: 62px;
+  bottom: 20px;
+  width: 228px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.u-rail > * {
+  pointer-events: auto;
+}
+
+.u-lenses {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.u-lenses__title {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: var(--text-faint);
+  margin-bottom: 3px;
+}
+
+.u-lens {
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid transparent;
+  border-left: 2px solid var(--line);
+  padding: 4px 9px;
+  cursor: pointer;
+}
+
+.u-lens:hover {
+  color: var(--text);
+  border-left-color: var(--brass-a55);
+}
+
+.u-lens.is-on {
+  color: var(--brass-bright);
+  border-left-color: var(--brass-bright);
+  background: var(--brass-a08);
+}
+
+.u-lens-groups {
+  list-style: none;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-dim);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.u-lens-groups em {
+  color: var(--text-faint);
+  font-style: normal;
+  margin-left: 4px;
+}
+
+.u-lenses__note {
+  margin-top: 12px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--text-faint);
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+
+.u-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: baseline;
+}
+
+/* ——— 시간 ——— */
+.u-time {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface-veil);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 7px 16px;
+  z-index: 5;
+}
+
+.u-time label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--text-faint);
+}
+
+.u-time input[type="range"] {
+  width: 340px;
+  accent-color: var(--brass);
+}
+
+.u-time output {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--brass-bright);
+  min-width: 46px;
+}
+
+.u-time__hint {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+/* ——— 나의 성좌 ——— */
+.u-mine {
+  flex: 0 0 auto;
+  max-height: 48%;
+  overflow-y: auto;
+  background: var(--surface-veil);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--brass-a45);
+  padding: 12px 14px 14px;
+  z-index: 5;
+}
+
+.u-mine h2 {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.u-mine h3 {
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  font-weight: 400;
+}
+
+.u-mine p {
+  font-size: 12.5px;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.u-mine strong {
+  color: var(--brass-bright);
+}
+
+.u-recs {
+  list-style: none;
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.u-recs button {
+  font: inherit;
+  font-size: 13px;
+  color: var(--text);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.u-recs button:hover {
+  color: var(--brass-bright);
+}
+
+.u-recs em {
+  display: block;
+  font-style: normal;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text-faint);
+  padding-left: 13px;
+}
+
+.u-mine__empty,
+.u-mine__shared {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--text-faint);
+}
+
+.u-mine .u-btn {
+  margin-top: 10px;
+}
+
+/* ——— 카드 ——— */
+.u-card {
+  position: absolute;
+  top: 62px;
+  right: 22px;
+  width: 352px;
+  max-height: calc(100vh - 96px);
+  overflow-y: auto;
+  background: var(--surface-veil);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--brass-a45);
+  box-shadow: var(--panel-shadow);
+  padding: 16px 18px 18px;
+  z-index: 6;
+}
+
+.u-card__close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 18px;
+  line-height: 1;
+  background: none;
+  border: none;
+  color: var(--text-faint);
+  cursor: pointer;
+}
+
+.u-card__head {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.u-card h2 {
+  font-family: var(--font-serif);
+  font-size: 21px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.u-card__orig {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-top: 2px;
+}
+
+.u-card__life {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-top: 7px;
+}
+
+.u-card__why {
+  margin-top: 13px;
+  font-size: 13px;
+  line-height: 1.62;
+  color: var(--text-dim);
+}
+
+.u-card__entry {
+  margin-top: 13px;
+  border-left: 2px solid var(--brass-a45);
+  padding: 3px 0 3px 11px;
+}
+
+.u-card__entry strong {
+  font-family: var(--font-serif);
+  font-size: 15px;
+  color: var(--text);
+}
+
+.u-card__entry p {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-faint);
+  margin-top: 4px;
+}
+
+.u-tag {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--slip-ink);
+  background: var(--slip-bg);
+  padding: 1px 5px;
+  margin-right: 6px;
+  vertical-align: 2px;
+}
+
+.u-tag--rel {
+  background: var(--brass-a14);
+  color: var(--brass-bright);
+}
+
+.u-year {
+  font-size: 11.5px;
+  color: var(--text-faint);
+  margin-left: 7px;
+}
+
+.u-card__rel {
+  margin-top: 14px;
+}
+
+.u-card h3 {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.u-card__rel ul,
+.u-works {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.u-card__rel button,
+.u-works button {
+  font: inherit;
+  font-size: 13px;
+  color: var(--text-dim);
+  background: none;
+  border: none;
+  padding: 2px 0;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.u-card__rel button:hover,
+.u-works button:hover {
+  color: var(--brass-bright);
+}
+
+.u-works strong {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.u-works li.is-on strong {
+  color: var(--brass-bright);
+}
+
+.u-works__sig {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-faint);
+  padding: 4px 0 6px 2px;
+  border-left: 1px solid var(--line);
+  padding-left: 9px;
+  margin-top: 3px;
+}
+
+.u-card__src {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.u-card__acts {
+  margin-top: 14px;
+  display: flex;
+  gap: 7px;
+}
+
+.u-card__ready {
+  margin-top: 10px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--text-faint);
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+
+/* ——— 초상: 종이는 작가의 것 ——— */
+.u-portrait {
+  width: 96px;
+  flex: 0 0 96px;
+}
+
+.u-portrait canvas,
+.u-portrait img {
+  width: 96px;
+  height: 120px;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--line-strong);
+  background: var(--slip-bg);
+}
+
+.u-portrait figcaption {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  text-align: center;
+  margin-top: 4px;
+}
+
+.u-portrait--archival img {
+  border-color: var(--brass-a45);
+}
+
+.u-card--landing {
+  top: auto;
+  bottom: 20px;
+  max-height: 62vh;
+}
+
+/* ——— 별 찾기 ——— */
+.u-search {
+  position: relative;
+}
+
+.u-search input {
+  font: inherit;
+  font-size: 13px;
+  color: var(--text);
+  background: var(--brass-a05);
+  border: 1px solid var(--brass-a35);
+  border-radius: 2px;
+  padding: 4px 10px;
+  width: 150px;
+}
+
+.u-search input::placeholder {
+  color: var(--text-faint);
+}
+
+.u-search input:focus {
+  outline: none;
+  border-color: var(--brass-bright);
+  background: var(--brass-a08);
+}
+
+.u-search__hits {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 236px;
+  list-style: none;
+  background: var(--surface-veil);
+  border: 1px solid var(--line);
+  box-shadow: var(--panel-shadow);
+  z-index: 8;
+}
+
+.u-search__hits button {
+  font: inherit;
+  font-size: 13px;
+  width: 100%;
+  text-align: left;
+  color: var(--text);
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.u-search__hits button:hover {
+  background: var(--brass-a12);
+  color: var(--brass-bright);
+}
+
+.u-search__hits em {
+  font-style: normal;
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-left: 7px;
+}
+
+/* ——— 육필 서명·낙관: R10 의 권리 확인 자산을 착륙 패널로 ——— */
+.u-mark {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  margin: 6px 0 2px;
+  filter: invert(1) sepia(0.35) saturate(0.7) brightness(1.15);
+  opacity: 0.92;
+}
+
+/* ——— 관측층 범례: 목록↔하늘 연동 ——— */
+.u-lens-groups button {
+  font: inherit;
+  font-size: 12px;
+  color: var(--text-dim);
+  background: none;
+  border: none;
+  padding: 2px 0;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.u-lens-groups button:hover,
+.u-lens-groups button.is-on {
+  color: var(--brass-bright);
+}
+
+.u-index {
+  display: inline-block;
+  min-width: 15px;
+  margin-right: 5px;
+  color: var(--brass);
+  font-size: 12px;
+}
+
+.u-lens-groups button:hover .u-index,
+.u-lens-groups button.is-on .u-index {
+  color: var(--brass-bright);
+}
+
+/* ——— 다음 독서: 갈래 병렬 ——— */
+.u-track {
+  margin-top: 9px;
+}
+
+.u-track__name {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--brass);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 3px;
+  margin-bottom: 5px;
+}
+
+/* ——— 활자 명판 (초상 사다리 4단) ——— */
+.u-portrait--type .u-typeplate {
+  width: 96px;
+  height: 120px;
+  border: 1px solid var(--line-strong);
+  background: var(--slip-bg);
+  color: var(--slip-ink);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 6px;
+  text-align: center;
+}
+
+.u-typeplate__seal {
+  font-family: var(--font-serif);
+  font-size: 27px;
+  line-height: 1;
+  color: var(--vermilion);
+  border: 2px solid var(--vermilion);
+  padding: 3px 5px;
+}
+
+.u-typeplate__name {
+  font-family: var(--font-serif);
+  font-size: 10.5px;
+  line-height: 1.25;
+  word-break: break-word;
+}
+
+.u-typeplate__life {
+  font-size: 9.5px;
+  color: var(--slip-line);
+}
+
+/* ——— 궤도 관측 (미준비 착륙지의 대체 경험) ——— */
+.u-card__skies {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.u-card__skies em {
+  font-style: normal;
+  color: var(--text);
+}
+
+.u-card__skies-lens {
+  font-size: 10px;
+  color: var(--text-faint);
+  margin-left: 4px;
+}
+
+.u-card__reading {
+  margin-top: 14px;
+}
+
+.u-card__reading ol {
+  list-style: none;
+  counter-reset: rd;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.u-card__reading li {
+  counter-increment: rd;
+  border-left: 1px solid var(--line);
+  padding-left: 10px;
+}
+
+.u-card__reading li.is-entry {
+  border-left-color: var(--brass-a55);
+}
+
+.u-card__reading li::before {
+  content: counter(rd);
+  font-size: 10px;
+  color: var(--text-faint);
+  margin-right: 6px;
+}
+
+.u-card__reading strong {
+  font-family: var(--font-serif);
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.u-card__entry-why {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--brass);
+  margin-top: 3px;
+}
+
+.u-card__warn {
+  margin-top: 11px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-dim);
+}
+
+.u-tag--warn {
+  background: var(--vermilion);
+  color: var(--ink-on-vermilion);
+}
+
+.u-card__diff {
+  margin-top: 8px;
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--text-faint);
+}
