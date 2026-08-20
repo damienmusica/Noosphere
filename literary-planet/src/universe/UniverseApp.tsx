@@ -25,7 +25,7 @@ import {
   savePersonal,
   type PersonalState
 } from "./personal.ts";
-import { magnitude, influenceWeight, periodOf } from "./grammar.ts";
+import { LENS_MAG, magnitude, influenceWeight, periodOf } from "./grammar.ts";
 import { buildSearchIndex, searchAuthors } from "../lib/search.ts";
 import { languageLabel, regionLabel } from "../i18n/index.ts";
 import { PERIOD_TINT } from "../theme.ts";
@@ -33,7 +33,11 @@ import { PERIOD_TINT } from "../theme.ts";
 const YEAR_MIN = 1857;
 const YEAR_MAX = 1995;
 
-const STAGE_KO: Record<Stage, string> = { sky: "원경 · 천구", approach: "중경 · 성단", surface: "근경 · 착륙" };
+const STAGE_KO: Record<Stage, string> = {
+  sky: "원경 · 천구",
+  approach: "중경 · 관측 렌즈",
+  surface: "근경 · 착륙"
+};
 
 export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const hostRef = useRef<HTMLDivElement>(null);
@@ -297,6 +301,8 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         <h1>문학의 성계</h1>
         <span className="u-stage" data-stage={stage}>
           {STAGE_KO[stage]}
+          {/* 배율을 숨기면 "같은 공간인 척"이 된다 — 왜곡은 공표될 때만 기만이 아니다 */}
+          {stage === "approach" && focusId && !landedId ? ` ×${LENS_MAG}` : ""}
         </span>
         <div className="u-search">
           <input
