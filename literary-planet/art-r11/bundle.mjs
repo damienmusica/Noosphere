@@ -74,15 +74,15 @@ if (existsSync(path.join(LP, "art-r11/reproduce-report.json")))
 // public/art 에 있고 그대로 들어간다). 빼는 것 자체를 감추지 않으려고 경로와
 // 이유를 README 에 적고, BUILD_COMMIT 으로 전체 트리를 되찾을 수 있게 둔다.
 const EXCLUDED = [
-  "literary-planet/art-r10/staging",
-  "literary-planet/art-r10/directions",
-  "literary-planet/art-r10/ab-review"
+  ["literary-planet/art-r10/staging", "권리 확인을 거친 **원본 스캔**. 여기서 잘라 낸 파생물이 `literary-planet/public/art/` 에 그대로 들어 있고, 원장(제목·소장처·파일 페이지·라이선스)은 `public/art/manifest.json` 에 있다"],
+  ["literary-planet/art-r10/directions", "R10 아트 방향 **목업**. 방향 결정이 끝난 뒤의 기록이다"],
+  ["literary-planet/art-r10/ab-review", "R10 블라인드 A/B 의 **비교 프레임**. 그 라운드의 판정 근거이지 이 빌드의 입력이 아니다"]
 ];
 await cp(path.join(LP, "dist"), path.join(OUT, "dist"), { recursive: true });
 sh(
   `git -C .. archive --format=zip --add-virtual-file="literary-planet/BUILD_COMMIT:${commit}" ` +
     `-o "${path.join(OUT, "source.zip")}" HEAD literary-planet scripts docs ` +
-    EXCLUDED.map((e) => `':(exclude)${e}'`).join(" ")
+    EXCLUDED.map(([e]) => `':(exclude)${e}'`).join(" ")
 );
 
 const report = existsSync(path.join(OUT, "reproduce-report.json"))
@@ -129,7 +129,7 @@ npm run universe:mutation-sweep   # 계약이 실제로 무엇을 막는지 측�
 그 해시가 들어 있다. **뺀 경로가 있다**(합쳐 60MB 남짓, 위 두 명령에는 쓰이지
 않는다):
 
-${EXCLUDED.map((e) => `- \`${e}/\` — R10 아트 파이프라인의 입력물(원본 스캔·방향 목업). 권리 확인이 끝난 파생물은 \`literary-planet/public/art/\` 에 그대로 들어 있다.`).join("\n")}
+${EXCLUDED.map(([e, why]) => `- \`${e}/\` — ${why}.`).join("\n")}
 
 \`literary-planet/public/portraits/\` 의 상상 초상 101건은 **레포에 남아 있지만
 앱이 쓰지 않는다** — 여정 계약이 착륙·궤도 어느 경로에서도 그 경로를 요청하지
@@ -137,9 +137,14 @@ ${EXCLUDED.map((e) => `- \`${e}/\` — R10 아트 파이프라인의 입력물(�
 
 ${
   report
-    ? `## 이 번들이 통과한 게이트\n\n${Object.entries(report.steps ?? {})
-        .map(([k, v]) => `- \`${k}\` — ${v.ok ? "통과" : "**실패**"}${v.tail ? ` · ${String(v.tail).split("\n").pop()}` : ""}`)
-        .join("\n")}\n`
+    ? `## 이 번들이 통과한 게이트\n\n리포트가 기록한 커밋: \`${report.commit}\`${
+        report.commit === commit ? "" : " — ⚠ 이 번들의 커밋과 다르다. `npm run universe:reproduce` 를 다시 돌린 뒤 묶어야 한다"
+      }\n\n${Object.entries(report.counts ?? {})
+        .filter(([, v]) => v !== null)
+        .map(([k, v]) => `- ${k} — **${v}**`)
+        .join("\n")}\n\n${Object.entries(report.steps ?? {})
+        .map(([k, v]) => `- \`${k}\` — ${v.ok ? "통과" : "**실패**"}`)
+        .join("\n")}\n\n전체 리포트(환경·해시 포함)는 \`reproduce-report.json\`.\n`
     : ""
 }
 ## 무엇을 봐 주면 되는가
