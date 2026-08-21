@@ -22,13 +22,22 @@ export function emptyPersonal(): PersonalState {
   return { v: 1, read: {}, want: {} };
 }
 
-export function loadPersonal(): PersonalState {
+/** 알려진 작가 ID 만 남긴다 — 공유 링크와 저장소는 **시스템 경계**다. 조작된
+ *  `?sky=` 가 읽음 수를 부풀리거나 쓰레기를 localStorage 에 굳히지 않도록. */
+function onlyKnown(p: PersonalState, known?: ReadonlySet<string>): PersonalState {
+  if (!known) return p;
+  const pick = (m: Record<string, number>): Record<string, number> =>
+    Object.fromEntries(Object.entries(m).filter(([id]) => known.has(id)));
+  return { v: 1, read: pick(p.read), want: pick(p.want) };
+}
+
+export function loadPersonal(known?: ReadonlySet<string>): PersonalState {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw) return emptyPersonal();
     const p = JSON.parse(raw) as PersonalState;
     if (p.v !== 1 || typeof p.read !== "object") return emptyPersonal();
-    return { v: 1, read: p.read ?? {}, want: p.want ?? {} };
+    return onlyKnown({ v: 1, read: p.read ?? {}, want: p.want ?? {} }, known);
   } catch {
     return emptyPersonal();
   }
@@ -62,7 +71,7 @@ export function encodeShare(p: PersonalState): string {
     .replace(/=+$/, "");
 }
 
-export function decodeShare(code: string): PersonalState | null {
+export function decodeShare(code: string, known?: ReadonlySet<string>): PersonalState | null {
   try {
     const b64 = code.replace(/-/g, "+").replace(/_/g, "/");
     const txt = decodeURIComponent(escape(atob(b64)));
@@ -71,7 +80,7 @@ export function decodeShare(code: string): PersonalState | null {
     let t = 1;
     for (const id of (params.get("r") ?? "").split(",").filter(Boolean)) out.read[id] = t++;
     for (const id of (params.get("w") ?? "").split(",").filter(Boolean)) out.want[id] = t++;
-    return out;
+    return onlyKnown(out, known);
   } catch {
     return null;
   }
@@ -160,27 +169,39 @@ export function recommendTracks(
   };
   const wanted = (id: string): string[] => (p.want[id] ? ["읽고 싶은 별로 담아 두었다"] : []);
 
+  // 갈래는 각자의 질문에 각자의 순위로 답한다 — 점수를 합치지 않는다. 다만
+  // **같은 세 이름이 세 갈래에 나란히 서면** 갈래가 셋이라는 말이 거짓으로
+  // 읽힌다(합성 파일럿 3/4 지적). 뒤 갈래는 앞 갈래에 이미 선 이름을 건너뛰되,
+  // 건너뛸 여유가 없으면(후보가 모자라면) 중복을 허용한다 — 순위 자체는 불변.
+  const shown = new Set<string>();
+  const takeFresh = <T extends { id: string }>(sorted: T[]): T[] => {
+    const fresh = sorted.filter((a) => !shown.has(a.id)).slice(0, perTrack);
+    const out = fresh.length >= Math.min(perTrack, sorted.length) ? fresh : sorted.slice(0, perTrack);
+    for (const a of out) shown.add(a.id);
+    return out;
+  };
+
   // ① 읽던 계보를 계속하기
-  const lineage: Recommendation[] = candidates
-    .filter((a) => (tie.get(a.id)?.w ?? 0) > 0)
-    .sort((x, y) => (tie.get(y.id)?.w ?? 0) - (tie.get(x.id)?.w ?? 0))
-    .slice(0, perTrack)
-    .map((a) => ({
-      authorId: a.id,
-      reasons: [`${viaNames(a.id)}와 이어져 있다`, ...wanted(a.id)]
-    }));
+  const lineage: Recommendation[] = takeFresh(
+    candidates
+      .filter((a) => (tie.get(a.id)?.w ?? 0) > 0)
+      .sort((x, y) => (tie.get(y.id)?.w ?? 0) - (tie.get(x.id)?.w ?? 0))
+  ).map((a) => ({
+    authorId: a.id,
+    reasons: [`${viaNames(a.id)}와 이어져 있다`, ...wanted(a.id)]
+  }));
 
   // ② 낯선 언어·지역으로 건너가기
   const gapRank = (a: Author): number =>
     (a.regions.every((r) => !readRegions.has(r)) ? 2 : 0) +
     (a.languages.every((l) => !readLangs.has(l)) ? 1 : 0);
-  const unfamiliar: Recommendation[] = candidates
-    .filter((a) => gapRank(a) > 0)
-    .sort(
-      (x, y) => gapRank(y) - gapRank(x) || (tie.get(y.id)?.w ?? 0) - (tie.get(x.id)?.w ?? 0)
-    )
-    .slice(0, perTrack)
-    .map((a) => {
+  const unfamiliar: Recommendation[] = takeFresh(
+    candidates
+      .filter((a) => gapRank(a) > 0)
+      .sort(
+        (x, y) => gapRank(y) - gapRank(x) || (tie.get(y.id)?.w ?? 0) - (tie.get(x.id)?.w ?? 0)
+      )
+  ).map((a) => {
       const reasons: string[] = [];
       if (a.regions.every((r) => !readRegions.has(r)))
         reasons.push(`아직 비어 있는 지역: ${label.region(a.regions[0] ?? "")}`);
@@ -191,14 +212,14 @@ export function recommendTracks(
     });
 
   // ③ 쉬운 입문작부터 시작하기
-  const gentle: Recommendation[] = candidates
-    .filter((a) => difficultyOf(a) <= 2)
-    .sort(
-      (x, y) =>
-        difficultyOf(x) - difficultyOf(y) || (tie.get(y.id)?.w ?? 0) - (tie.get(x.id)?.w ?? 0)
-    )
-    .slice(0, perTrack)
-    .map((a) => ({
+  const gentle: Recommendation[] = takeFresh(
+    candidates
+      .filter((a) => difficultyOf(a) <= 2)
+      .sort(
+        (x, y) =>
+          difficultyOf(x) - difficultyOf(y) || (tie.get(y.id)?.w ?? 0) - (tie.get(x.id)?.w ?? 0)
+      )
+  ).map((a) => ({
       authorId: a.id,
       reasons: [`난도 ${difficultyOf(a)}/5`, ...(tie.get(a.id) ? [`${viaNames(a.id)}와 이어져 있다`] : []), ...wanted(a.id)]
     }));

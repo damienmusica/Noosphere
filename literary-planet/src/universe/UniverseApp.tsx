@@ -53,6 +53,9 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const [year, setYear] = useState(YEAR_MAX);
   const [stage, setStage] = useState<Stage>("sky");
   const [personal, setPersonal] = useState<PersonalState>(emptyPersonal);
+  /** 저장소에서 성좌를 읽은 뒤에만 저장한다. 그 전에 저장하면 마운트 첫 커밋이
+   *  **빈 성좌를 써 버린다** — 공유 링크로 연 브라우저에도 빈 기록이 남았다(계약 실측). */
+  const [personalReady, setPersonalReady] = useState(false);
   const [shared, setShared] = useState<string | null>(null);
   /** art 매니페스트가 도착해야 착륙 가능 여부를 안다 — 딥링크는 대기한다 */
   const [pendingLand, setPendingLand] = useState<string | null>(null);
@@ -82,17 +85,36 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
 
   useEffect(() => {
     loadArtManifest().then(setArt);
+    const known = new Set(dataset.authors.map((x) => x.id));
     const p = new URLSearchParams(location.search).get("sky");
     if (p) {
-      const s = decodeShare(p);
+      const s = decodeShare(p, known);
       if (s) {
         setPersonal(s);
         setShared(p);
-        return;
+        return; // 공유 성좌는 저장하지 않는다 — ready 를 켜지 않는다
       }
     }
-    setPersonal(loadPersonal());
+    setPersonal(loadPersonal(known));
+    setPersonalReady(true);
   }, []);
+
+  // 포커스는 단계를 따라간다. 별을 고르면 궤도 카드로, 착륙하면 착륙 패널로,
+  // 하늘로 돌아오면 검색으로 — 전환마다 <body> 로 떨어지던 포커스는 키보드
+  // 사용자에게 "아무 일도 안 일어난" 전환이다. 첫 로드에는 건드리지 않는다
+  // (관찰의 첫 60초는 아무것도 지시하지 않는다).
+  const hadSelection = useRef(false);
+  useEffect(() => {
+    const sel = landedId
+      ? document.querySelector<HTMLElement>(".u-card--landing")
+      : focusId
+        ? document.querySelector<HTMLElement>(".u-card:not(.u-card--landing)")
+        : hadSelection.current
+          ? document.querySelector<HTMLElement>(".u-search input")
+          : null;
+    hadSelection.current = Boolean(focusId || landedId);
+    sel?.focus({ preventScroll: true });
+  }, [focusId, landedId]);
 
   // 딥링크 — 캡처 하네스와 공유 링크가 같은 문을 쓴다
   useEffect(() => {
@@ -101,7 +123,9 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     if (a) setFocusId(a);
     if (q.get("land") === "1" && a) setPendingLand(a);
     const l = q.get("lens");
-    if (l) setLensId(l === "none" ? null : (l as LensId));
+    // 모르는 층 이름은 무시한다 — 캐스트만 하면 빈 #root 로 죽는다(실측)
+    if (l === "none") setLensId(null);
+    else if (l && LENSES.some((d) => d.id === l)) setLensId(l as LensId);
     const y = Number(q.get("y"));
     if (y >= YEAR_MIN && y <= YEAR_MAX) setYear(y);
     const w = q.get("w");
@@ -123,8 +147,8 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   }, [focusId, landedId, lensId, workId]);
 
   useEffect(() => {
-    if (!shared) savePersonal(personal);
-  }, [personal, shared]);
+    if (personalReady && !shared) savePersonal(personal);
+  }, [personal, shared, personalReady]);
 
   const lens: LensResult | null = useMemo(() => {
     if (!lensId) return null;
@@ -352,7 +376,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
 
       <header className="u-top">
         <h1>문학의 성계</h1>
-        <span className="u-stage" data-stage={stage}>
+        <span className="u-stage" data-stage={stage} role="status" aria-live="polite">
           {STAGE_KO[stage]}
           {/* 배율을 숨기면 "같은 공간인 척"이 된다 — 왜곡은 공표될 때만 기만이 아니다 */}
           {stage === "approach" && focusId && !landedId
@@ -361,18 +385,42 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
               : " · 궤도 아카이브"
             : ""}
         </span>
-        <div className="u-search">
+        <div
+          className="u-search"
+          // 포커스가 검색 밖으로 나가면 목록을 닫는다 — 관측층 버튼을 눌러도
+          // 결과 행이 남아 있던 것(합성 파일럿 3/4)은 목록이 입력값에만 묶여
+          // 있었기 때문이다.
+          onBlur={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setQuery("");
+          }}
+        >
           <input
             type="search"
             placeholder="별 찾기"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            // Enter 는 첫 결과를 고른다. 아무 일도 안 하는 Enter 는 "왜 안 되지"로
+            // 읽힌다(합성 파일럿 4/4 가 Enter 를 쳤다).
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && hits[0]) {
+                e.preventDefault();
+                setFocusId(hits[0].author.id);
+                setLandedId(null);
+                setQuery("");
+              } else if (e.key === "Escape") {
+                setQuery("");
+              }
+            }}
             aria-label="작가 검색"
+            role="combobox"
+            aria-expanded={hits.length > 0}
+            aria-controls="u-search-hits"
+            aria-autocomplete="list"
           />
           {hits.length > 0 && (
-            <ul className="u-search__hits">
+            <ul className="u-search__hits" id="u-search-hits" role="listbox">
               {hits.map((h) => (
-                <li key={h.author.id}>
+                <li key={h.author.id} role="option" aria-selected={false}>
                   <button
                     onClick={() => {
                       setFocusId(h.author.id);
@@ -425,18 +473,20 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
             <button
               key={l.id}
               className={`u-lens ${lensId === l.id ? "is-on" : ""}`}
+              aria-pressed={lensId === l.id}
               onClick={() => setLensId(lensId === l.id ? null : l.id)}
               title={l.hint}
             >
               {l.ko}
             </button>
           ))}
-          {lens && lens.groups.length ? (
+          {lens && lens.groups.length && !landedId ? (
             <ul className="u-lens-groups" data-testid="lens-legend">
               {lens.groups.map((g) => (
                 <li key={g.id}>
                   <button
                     className={groupFocus === g.id ? "is-on" : ""}
+                    aria-pressed={groupFocus === g.id}
                     onMouseEnter={() => setGroupFocus(g.id)}
                     onFocus={() => setGroupFocus(g.id)}
                     onMouseLeave={() => setGroupFocus((c) => (c === g.id ? null : c))}
@@ -461,7 +511,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         <section className="u-mine">
           <h2>나의 성좌</h2>
           <p>
-            읽음 <strong>{readCount}</strong> · 궤도 <strong>{Object.keys(personal.want).length}</strong>
+            읽음 <strong>{readCount}</strong> · 읽고 싶음 <strong>{Object.keys(personal.want).length}</strong>
           </p>
           {tracks.length ? (
             <div className="u-tracks" data-testid="tracks">
@@ -516,6 +566,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
               className="u-btn"
               onClick={() => {
                 setShared(null);
+                setPersonalReady(true);
                 savePersonal(personal);
                 history.replaceState(null, "", location.pathname);
               }}
@@ -568,7 +619,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       )}
 
       {landed && (
-        <aside className="u-card u-card--landing" aria-label={`${landed.names.ko} 표면`}>
+        <aside className="u-card u-card--landing" aria-label={`${landed.names.ko} 표면`} tabIndex={-1}>
           <h2>{landed.names.ko}</h2>
           {art?.marks?.[landed.id] ? (
             <img

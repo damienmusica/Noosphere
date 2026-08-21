@@ -28,6 +28,34 @@ const SLICE = [
   { id: "marcel-proust", query: "프루스트", works: 6, order: 5, crust: null, landable: false }
 ];
 
+// 속한 하늘 기대값은 렌더가 아니라 /data 에서 센다: 사조 수 + 언어 수 + 망명 기록 여부
+import { readdirSync, readFileSync } from "node:fs";
+const dataAuthors = readdirSync(path.join(ROOT, "data/authors"))
+  .flatMap((f) => {
+    const j = JSON.parse(readFileSync(path.join(ROOT, "data/authors", f), "utf8"));
+    return Array.isArray(j) ? j : (j.authors ?? []);
+  });
+// 렌즈와 같은 규칙으로 센다: 구성원 2인 미만인 버킷은 색인 그룹이 되지 않는다
+// (lenses.ts `members.length < 2` — 벵골어는 타고르 한 사람이라 하늘이 아니다).
+const bucket = new Map();
+for (const d of dataAuthors) {
+  const keys = [
+    ...(d.movements ?? []).map((m) => `movement:${m}`),
+    ...(d.languages ?? []).map((l) => `language:${l}`),
+    ...((d.locations ?? []).some((l) => l.role === "exile") ? ["exile:exile"] : [])
+  ];
+  for (const k of keys) bucket.set(k, (bucket.get(k) ?? 0) + 1);
+}
+for (const a of SLICE) {
+  const d = dataAuthors.find((x) => x.id === a.id);
+  const keys = [
+    ...(d?.movements ?? []).map((m) => `movement:${m}`),
+    ...(d?.languages ?? []).map((l) => `language:${l}`),
+    ...((d?.locations ?? []).some((l) => l.role === "exile") ? ["exile:exile"] : [])
+  ];
+  a.skies = keys.filter((k) => (bucket.get(k) ?? 0) >= 2).length;
+}
+
 const server = await serveDist(distDir);
 const browser = await chromium.launch({ headless: false });
 const ctx = await browser.newContext({
@@ -78,6 +106,44 @@ for (const a of SLICE) {
   let m = await metrics();
   check("원경은 별의 하늘이다", m.stage === "sky" && m.stars > 40 && m.bodies === 0,
     `stars=${m.stars} bodies=${m.bodies}`);
+  // 출발 구도를 기억한다 — 복귀 계약이 "처음 있던 화면"을 이것과 대조한다
+  const cam0 = m.cam;
+  const labelIds = () =>
+    page.evaluate(() =>
+      [...document.querySelectorAll(".globe-label--author")]
+        .filter((el) => el.style.display !== "none")
+        .map((el) => el.dataset.labelId)
+    );
+  const labels0 = new Set(await labelIds());
+
+  if (a.id === "franz-kafka") {
+    // 범례 지목은 관계 이웃과 다른 등록부다 — 같은 놋쇠 기준선을 주면 사조가
+    // 같을 뿐인 별이 근거 있는 관계 이웃과 바이트 단위로 같아진다(모의 심사 실측).
+    await page.locator('[data-testid="lens-legend"] button').first().hover();
+    await page.waitForTimeout(300);
+    const reg = await page.evaluate(() => ({
+      neighbor: document.querySelectorAll(".globe-label--author.is-neighbor").length,
+      listed: document.querySelectorAll(".globe-label--author.is-listed").length
+    }));
+    check("범례 지목은 이웃 등록부를 빌리지 않는다", reg.neighbor === 0 && reg.listed >= 1,
+      `neighbor ${reg.neighbor} · listed ${reg.listed}`);
+    await page.mouse.move(800, 450);
+    await page.waitForTimeout(200);
+
+    // 검색 Enter 는 첫 결과를 고른다 — 아무 일도 안 하는 Enter 는 "왜 안 되지"다
+    await page.fill(".u-search input", a.query);
+    await page.locator(".u-search__hits button").first().waitFor({ timeout: 4000 });
+    await page.press(".u-search input", "Enter");
+    await settle();
+    const viaEnter = await page.locator(".u-card[data-author]").first().getAttribute("data-author");
+    check("검색창에서 Enter 가 첫 결과를 고른다", viaEnter === a.id, `${viaEnter}`);
+    check("Enter 뒤 검색 목록이 닫힌다", (await page.locator(".u-search__hits").count()) === 0);
+    check("선택 뒤 포커스가 <body> 에 떨어지지 않는다",
+      await page.evaluate(() => document.activeElement !== document.body));
+    await page.locator(".u-top .u-btn--ghost").first().click();
+    await settle(1600);
+    await page.fill(".u-search input", "");
+  }
 
   // 2. 발견성: 검색으로 별을 찾는다 (자동 스크롤·상태 주입 없이 보이는 컨트롤만)
   await page.fill(".u-search input", a.query);
@@ -94,6 +160,10 @@ for (const a of SLICE) {
   check("중경에서 자기 성좌가 수렴한다", m.stage === "approach" && m.ego >= 3,
     `stage=${m.stage} ego=${m.ego}`);
   check("이웃이 이름을 얻는다", m.labels >= 4, `labels=${m.labels}`);
+  // 확대된 천체 뒤의 별 이름이 그 천체 위에 찍히지 않는다 — DOM 의 라벨 앵커를
+  // 초점 원반 안쪽에서 센다(가드 코드가 아니라 남은 라벨을 읽는다)
+  check("가려진 별의 이름이 초점 원반 위에 찍히지 않는다", m.labelsOverFocus === 0,
+    `원반 위 ${m.labelsOverFocus} · 접힌 이름 ${m.occludedLabels}`);
   // 하늘 분기가 도는 자리에서 판 없는 각자를 계약한다 — 착륙 단계에서만 재면
   // 이 분기 자체가 검사되지 않는다(변이 스윕 실측).
   check("중경의 이름표는 전부 판 없는 각자다",
@@ -120,7 +190,17 @@ for (const a of SLICE) {
   check("발명된 인간 얼굴 없음 — 상상 초상 자산을 가져오지 않는다",
     portraitRequests.length === 0, `요청 ${portraitRequests.length}건`);
   check("해설", ((await card.locator(".u-card__why").first().textContent()) ?? "").length > 80);
-  check("속한 하늘", (await card.locator(".u-card__skies").count()) >= 0);
+  // `>= 0` 은 실패할 수 없는 계약이었다(모의 심사 적발). /data 에서 기대값을 센다.
+  const skyItems = await card.locator(".u-card__skies em").count();
+  check("속한 하늘이 데이터의 소속 수와 같다", skyItems === a.skies, `${skyItems}/${a.skies}`);
+  // 기록 사진의 근거는 **사진이 보이는 이 카드**가 싣는다
+  const hasPhoto = (await card.locator(".u-portrait--archival").count()) === 1;
+  if (hasPhoto) {
+    const pp = card.locator('[data-testid="portrait-provenance"] .u-prov__meta');
+    check("기록 사진에 근거 행이 붙어 있다", ((await pp.first().textContent()) ?? "").length > 12);
+  } else {
+    check("기록 사진이 없으면 근거 행도 없다", (await card.locator('[data-testid="portrait-provenance"]').count()) === 0);
+  }
   check("관계 목록", (await card.locator(".u-card__rel li").count()) >= 1);
   check("출처", ((await card.locator(".u-card__src").first().textContent()) ?? "").includes("출처"));
 
@@ -147,6 +227,8 @@ for (const a of SLICE) {
   const readiness = (await page.locator('[data-testid="readiness"]').first().textContent()) ?? "";
   check("착륙 준비도 정직 표기", readiness.includes(a.landable ? "준비됨" : "미준비"),
     readiness.slice(0, 34));
+  check("준비도 문장에 코드 값이 새지 않는다", !/not-started|in-progress|\bready\b/.test(readiness));
+  if (a.landable) check("준비됨 문장이 검수 항목을 이름으로 말한다", readiness.includes("문구 검수"));
 
   if (a.landable) {
     const lbox = await page.locator('[data-testid="land"]').boundingBox();
@@ -158,6 +240,10 @@ for (const a of SLICE) {
     check("표면 단계", m.stage === "surface", `stage=${m.stage} dist=${m.dist}`);
     check("지각 = 육필 원고", m.crust === a.crust, `crust=${m.crust}`);
     check("착륙해도 하늘이 남는다", m.stars > 20, `stars=${m.stars}`);
+    check("착륙한 천체의 관계선은 표면에서 퇴장한다", m.linesTouchingLanded === 0,
+      `닿는 선 ${m.linesTouchingLanded}`);
+    check("착륙 뒤 포커스가 착륙 패널에 있다",
+      await page.evaluate(() => Boolean(document.activeElement?.closest?.(".u-card--landing"))));
 
     const workLabels = await page.locator(".globe-label--work").count();
     check("작품 도시가 보인다", workLabels >= Math.min(4, a.works), `labels=${workLabels}`);
@@ -215,24 +301,51 @@ for (const a of SLICE) {
     check("연도 눈금이 축을 이룬다 — 2개 이상", mm.cities.ticks >= 2, `${mm.cities.ticks}개`);
     check("난간·눈금이 지각 안에 묻히지 않았다", mm.cities.chromeBuried === 0,
       `묻힘 ${mm.cities.chromeBuried}/${mm.cities.chrome}`);
-    // 입문 순서는 위도가 아니라 라벨의 색인 글리프가 나른다.
-    // **정확히 일치**를 요구한다: `>= 1` 은 하나만 남아도 통과하므로, 이 레포가
-    // 이미 값을 치른 오탐의 형태 그대로다(스윕 헤더 참조).
+    // 입문 순서는 위도가 아니라 라벨의 **일반 숫자**(1 2 3)가 나른다 — 원 숫자
+    // ①②③ 는 관측층 색인 전용이다(두 측정이 같은 글리프의 이중 의미를 잡았다).
+    // **정확히 일치**를 요구한다: `>= 1` 은 하나만 남아도 통과한다(스윕 헤더 참조).
     const glyph = await page.evaluate(() => {
-      const out = { total: 0, glyphed: [], plain: [] };
+      const out = { total: 0, numbered: [], plain: [], circled: 0 };
       for (const el of document.querySelectorAll(".globe-label--work")) {
         const t = (el.textContent ?? "").trim();
         out.total++;
-        (/^[\u2460-\u2473]/.test(t) ? out.glyphed : out.plain).push(el.dataset.labelId);
+        if (/^[\u2460-\u2473]/.test(t)) out.circled++;
+        (/^\d+ /.test(t) ? out.numbered : out.plain).push(el.dataset.labelId);
       }
       return out;
     });
     const ordered = new Set(mm.cities.ordered);
-    check("입문 경로 권이 전부 색인 글리프를 단다", glyph.glyphed.length === a.order,
-      `${glyph.glyphed.length}/${a.order}`);
-    check("글리프를 단 라벨이 정확히 입문 경로 권이다",
-      glyph.glyphed.every((id) => ordered.has(id)) && glyph.plain.every((id) => !ordered.has(id)),
-      `글리프 ${glyph.glyphed.length} · 민 라벨 ${glyph.plain.length} · 입문 경로 ${ordered.size}`);
+    check("입문 경로 권이 전부 순서 숫자를 단다", glyph.numbered.length === a.order,
+      `${glyph.numbered.length}/${a.order}`);
+    check("순서 숫자를 단 라벨이 정확히 입문 경로 권이다",
+      glyph.numbered.every((id) => ordered.has(id)) && glyph.plain.every((id) => !ordered.has(id)),
+      `숫자 ${glyph.numbered.length} · 민 라벨 ${glyph.plain.length} · 입문 경로 ${ordered.size}`);
+    check("서가에 원 숫자(색인 글리프)가 서지 않는다", glyph.circled === 0, `${glyph.circled}`);
+    check("착륙 중에는 색인 범례가 내려간다 — 1 2 3 옆에 ①②③ 가 서지 않게",
+      (await page.locator('[data-testid="lens-legend"]').count()) === 0);
+
+    // 책등을 정면으로 돌린 권도 **책 자리를 누르면** 열린다 — 책등 두께(25px)
+    // 만 맞던 것을 합성 파일럿 3/4 가 "안 눌린다"로 읽었다.
+    const spineId = mm.cities.spineOutIds[0];
+    const sb = spineId ? mm.cities.boxes[spineId] : null;
+    if (sb) {
+      // **사각(死角)** 을 누른다: 보이는 책등 사각형의 바깥 12px. 책등 위를 누르면
+      // 프록시가 없어도 맞아서 계약에 이빨이 없다(변이 스윕 실측). 좌우 중
+      // **다른 책의 사각형이 차지하지 않은 쪽**을 고른다 — 카프카의 『선고』 오른쪽은
+      // 앞단 『변신』의 자리다(실측).
+      const cy = (sb[1] + sb[3]) / 2;
+      const others = Object.entries(mm.cities.boxes).filter(([id]) => id !== spineId).map(([, b]) => b);
+      const free = (x) => !others.some((b) => x >= b[0] && x <= b[2] && cy >= b[1] && cy <= b[3]);
+      const cx = free(sb[2] + 12) ? sb[2] + 12 : sb[0] - 12;
+      await page.mouse.click(cx, cy);
+      await page.waitForTimeout(250);
+      const sel = await page.evaluate(() =>
+        document.querySelector(".globe-label--work.is-selected")?.dataset.labelId ?? null
+      );
+      check("책등 정면인 권은 책등 바깥 여유를 눌러도 열린다", sel === spineId, `${sel} @ (${Math.round(cx)},${Math.round(cy)})`);
+    } else {
+      check("책등 정면인 권이 있다", false, "spineOutIds 비어 있음");
+    }
     // ——— 착륙 패널: 실물 마크가 카드를 뚫지 않는다 ———
     // 세로 자산(소세키의 낙관 158×420)을 폭으로만 묶으면 691px 로 자라 카드
     // 밖으로 넘쳤다. 수리는 CSS 한 줄이었고, 그 한 줄을 지키는 계약이 없었다.
@@ -268,9 +381,16 @@ for (const a of SLICE) {
     await prov.locator("summary").click();
     await page.waitForTimeout(150);
     const rows = await prov.locator("li").count();
-    check("근거 행이 실물 자산 수와 맞는다", rows >= 3, `${rows}행`);
-    const meta = (await prov.locator(".u-prov__meta").first().textContent()) ?? "";
-    check("각 행이 소장처와 라이선스를 싣는다", meta.length > 12, meta.slice(0, 42));
+    // 표면에 붙은 자산만: 육필 지각 + 서명·낙관 + 초판 표지 N — 기록 사진은
+    // 궤도 카드의 자산이라 이 원장에 없다. `>= 3` 은 짧거나 틀린 원장을 못 잡았다.
+    check("근거 행이 표면의 실물 자산 수와 정확히 맞는다", rows === a.covers + 2,
+      `${rows}/${a.covers + 2}행`);
+    const roles = await prov.locator("li strong").allTextContents();
+    check("표면 원장에 표면에 없는 자산(기록 사진)이 없다", !roles.some((r) => r.includes("기록 사진")),
+      roles.join(" · "));
+    const metas = await prov.locator(".u-prov__meta").allTextContents();
+    check("모든 행이 소장처와 라이선스를 싣는다", metas.length === rows && metas.every((t) => t.length > 12),
+      (metas[0] ?? "").slice(0, 42));
   } else {
     // 딥링크로도 백지 지각에 내려앉을 수 없다
     await page.goto(url(`?a=${a.id}&land=1`), { waitUntil: "load" });
@@ -294,12 +414,88 @@ for (const a of SLICE) {
     await settle();
   }
 
-  // 10. 복귀: 하늘로 돌아가면 원경 포즈로 돌아온다
+  // 10. 복귀: 하늘로 돌아가면 **출발 구도**로 돌아온다 — 원경 거리만으로는
+  // 부족하다. 착륙 접근각이 남은 채 돌아오면 4/4 가 출발 별을 잃었다(합성 파일럿).
   await page.locator(".u-top .u-btn--ghost").first().click();
   await settle(1600);
   m = await metrics();
   check("하늘로 복귀", m.stage === "sky" && Math.abs(m.dist - 2191) < 120,
     `stage=${m.stage} dist=${m.dist}`);
+  const camDrift = Math.hypot(m.cam[0] - cam0[0], m.cam[1] - cam0[1], m.cam[2] - cam0[2]);
+  check("복귀는 출발 구도다 (카메라 위치 일치)", camDrift < 40, `이동 ${Math.round(camDrift)}`);
+  const labels1 = new Set(await labelIds());
+  const inter = [...labels0].filter((x) => labels1.has(x)).length;
+  const jacc = inter / Math.max(1, new Set([...labels0, ...labels1]).size);
+  check("복귀 후 보이는 이름이 출발 때와 같다", jacc >= 0.8, `자카드 ${jacc.toFixed(2)}`);
+  check("복귀 뒤 포커스가 검색으로 돌아온다",
+    await page.evaluate(() => document.activeElement?.matches?.(".u-search input") === true));
+}
+
+// ——— 개인 성좌: 가장 중요한 발견이라던 것에 증거 경로가 하나도 없었다 ———
+// (모의 심사 지적) 유닛 테스트는 순수 함수만, 프레임은 localStorage 주입만 검사했다.
+// 여기서는 **독자가 실제로 만들 수 있는 경로**로 건다: 표시 → 저장 → 갈래 → 공유.
+{
+  console.log("\n개인 성좌");
+  await page.goto(url(`?lens=movement&a=franz-kafka`), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle();
+  await page.evaluate(() => {
+    window.__copied = null;
+    navigator.clipboard.writeText = (t) => { window.__copied = t; return Promise.resolve(); };
+  });
+  const readBtn = page.locator('.u-card__acts button').filter({ hasText: "읽음" }).first();
+  await readBtn.click();
+  await page.waitForTimeout(300);
+  check("읽음 표시가 켜진다", ((await readBtn.textContent()) ?? "").includes("✓"));
+  const stored = await page.evaluate(() => {
+    try { return JSON.parse(localStorage.getItem("lp.universe.personal.v1") ?? "null"); } catch { return null; }
+  });
+  check("읽음이 이 브라우저에 저장된다 (계정 없이)", typeof stored?.read?.["franz-kafka"] === "number");
+  const tracks = await page.evaluate(() =>
+    [...document.querySelectorAll('[data-testid="tracks"] .u-track')].map((t) => ({
+      name: t.querySelector(".u-track__name")?.textContent ?? "",
+      items: [...t.querySelectorAll(".u-recs li")].map((li) => ({
+        who: li.querySelector("button")?.textContent?.trim() ?? "",
+        why: li.querySelector("em")?.textContent?.trim() ?? ""
+      }))
+    }))
+  );
+  check("다음 독서 갈래가 나타난다", tracks.length >= 2, `${tracks.length}갈래`);
+  check("모든 추천이 근거 문장을 갖는다 (DOM 에서)",
+    tracks.every((t) => t.items.length > 0 && t.items.every((i) => i.why.length > 3)));
+  const sets = tracks.map((t) => t.items.map((i) => i.who).join("|"));
+  check("갈래가 같은 세 이름을 반복하지 않는다", new Set(sets).size === sets.length, sets.join(" / "));
+  await page.locator(".u-mine .u-btn--ghost").filter({ hasText: "성좌 링크 복사" }).click();
+  await page.waitForTimeout(200);
+  const shareUrl = await page.evaluate(() => window.__copied);
+  check("공유 링크가 만들어진다", typeof shareUrl === "string" && shareUrl.includes("?sky="));
+  if (typeof shareUrl === "string") {
+    const ctx2 = await browser.newContext({ viewport: { width: 1600, height: 900 }, locale: "ko-KR" });
+    const p2 = await ctx2.newPage();
+    await p2.goto(shareUrl, { waitUntil: "load" });
+    await p2.waitForFunction(() => window.__universe !== undefined);
+    await p2.waitForTimeout(1200);
+    check("공유 성좌는 읽기 전용으로 열린다", (await p2.locator(".u-mine__shared").count()) === 1);
+    check("공유 성좌는 받는 쪽 브라우저에 저장되지 않는다",
+      (await p2.evaluate(() => localStorage.getItem("lp.universe.personal.v1"))) === null);
+    const mineTxt = (await p2.locator(".u-mine > p").first().textContent()) ?? "";
+    check("공유된 읽음 수가 보인다", /읽음\s*1/.test(mineTxt), mineTxt.trim().slice(0, 30));
+    await ctx2.close();
+  }
+  // 조작된 공유 링크: 모르는 ID 는 세지 않는다 (시스템 경계)
+  const junk = Buffer.from("r=nobody-1,nobody-2,franz-kafka&w=", "utf8").toString("base64")
+    .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  await page.goto(url(`?sky=${junk}`), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await page.waitForTimeout(800);
+  const junkTxt = (await page.locator(".u-mine > p").first().textContent()) ?? "";
+  check("조작된 공유 링크의 모르는 ID 는 세지 않는다", /읽음\s*1\b/.test(junkTxt), junkTxt.trim().slice(0, 30));
+  // 모르는 층 이름은 무시된다 — 빈 #root 로 죽지 않는다
+  await page.goto(url(`?lens=bogus&a=franz-kafka`), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined, undefined, { timeout: 8000 }).catch(() => null);
+  check("모르는 ?lens= 값에도 앱이 뜬다", (await page.locator(".u-top h1").count()) === 1);
+  // 정리 — 다음 실행과 프레임 캡처가 깨끗한 성좌에서 시작하도록
+  await page.evaluate(() => localStorage.removeItem("lp.universe.personal.v1"));
 }
 
 console.log(`\nconsole errors: ${consoleErrors.length}`);
