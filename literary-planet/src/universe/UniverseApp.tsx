@@ -25,8 +25,9 @@ import {
   savePersonal,
   type PersonalState
 } from "./personal.ts";
-import { LENS_MAG, magnitude, influenceWeight, periodOf } from "./grammar.ts";
+import { LENS_MAG, magnitude, influenceWeight, periodOf, starPixels } from "./grammar.ts";
 import { isLandable, readinessOf, readinessState } from "./readiness.ts";
+import { preloadAuthor, trackPreload, type AssetSet } from "./assets.ts";
 import { buildSearchIndex, searchAuthors } from "../lib/search.ts";
 import { languageLabel, regionLabel } from "../i18n/index.ts";
 import { PERIOD_TINT } from "../theme.ts";
@@ -58,6 +59,9 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const [query, setQuery] = useState("");
   /** 범례에서 지목한 성좌 — 목록↔하늘 연동 */
   const [groupFocus, setGroupFocus] = useState<string | null>(null);
+  const [assets, setAssets] = useState<AssetSet | null>(null);
+  const assetsRef = useRef<AssetSet | null>(null);
+  const artRef = useRef<ArtManifest | null>(null);
 
   const byId = useMemo(() => new Map(dataset.authors.map((a) => [a.id, a])), [dataset]);
   const searchIndex = useMemo(() => buildSearchIndex(dataset.authors), [dataset]);
@@ -166,7 +170,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         onPickAuthor: (id) => {
           setFocusId((prev) => {
             if (id && prev === id) {
-              if (landable(id)) setLandedId(id);
+              if (landable(id)) setPendingLand(id);
               return id;
             }
             return id;
@@ -182,6 +186,13 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     (window as unknown as { __universe?: unknown }).__universe = {
       metrics: () => scene.metrics,
       settle: () => scene.settle(),
+      art: () => Boolean(artRef.current),
+      assets: () => {
+        const a = assetsRef.current;
+        return a
+          ? { authorId: a.authorId, ground: Boolean(a.ground), mark: Boolean(a.mark), covers: a.covers.size, prov: a.provenance.length }
+          : null;
+      },
       focus: (id: string | null) => setFocusId(id),
       land: (id: string | null) => setLandedId(id && landable(id) ? id : null)
     };
@@ -194,8 +205,35 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   }, [dataset, positions, degree]);
 
   useEffect(() => {
+    artRef.current = art;
     sceneRef.current?.setArt(art);
   }, [art]);
+
+  // 접근이 시작되는 순간 그 작가의 실물 자산을 전부 디코드해 둔다 — 착륙
+  // 프레임에서 텍스처가 튀어 들어오면 "같은 천체가 계속 있었다"가 깨진다.
+  useEffect(() => {
+    if (!focusId) {
+      setAssets(null);
+      return;
+    }
+    // 매니페스트가 오기 전에는 **시작하지 않는다.** 빈 묶음을 한 번이라도
+    // 만들면 그것이 상태에 앉아 실제 자산을 영영 이기는 경우가 생긴다
+    // (실측: 딥링크 착륙에서 육필 지각이 백지로 굳었다).
+    if (!art) return;
+    let live = true;
+    const workIds = dataset.works.filter((w) => w.authorId === focusId).map((w) => w.id);
+    void trackPreload(preloadAuthor(focusId, workIds, art)).then((set) => {
+      if (live) setAssets(set);
+    });
+    return () => {
+      live = false;
+    };
+  }, [focusId, art, dataset]);
+
+  useEffect(() => {
+    assetsRef.current = assets;
+    sceneRef.current?.setAssets(assets);
+  }, [assets]);
 
   useEffect(() => {
     // 좌측 관측층 범례는 상시, 우측 카드는 선택 시 — 투영만 민다
@@ -214,11 +252,11 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
       ego: ego.lines,
       egoLit: ego.lit,
-      // 하늘에는 **지목된 한 그룹**의 색인 번호만 뜬다. 전부 띄우면 범례에
-      // 없는 번호가 섞이고(⑨~⑬ 미아), 이름표가 기호로 뒤덮인다.
-      lensMarks: linked
-        ? new Map(linked.memberIds.map((id) => [id, [linked.index]] as const))
-        : new Map(),
+      // 층을 켜는 **첫 프레임에** 전 구성원의 이름표 선두에 색인 번호가
+      // 새겨진다 — 그것이 관측층의 즉각 반응이다. 미아 번호 우려는 범례가
+      // 전 그룹(①~⑫)을 싣게 되면서 이미 해소됐다(R11-d 사양 §5).
+      // 범례 행을 지목하는 것은 그 다음 상호작용이다(한 번에 한 항목).
+      lensMarks: lens?.marks ?? new Map(),
       lensGroupFocus: linked ? new Set(linked.memberIds) : null,
       lensRelationGroups: lensDef?.kind === "relation"
     });
@@ -281,12 +319,18 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     [dataset, positions]
   );
 
-  // 딥링크 착륙도 같은 게이트를 지난다 (준비도는 데이터라 즉시 판정된다)
+  // 딥링크 착륙은 준비도 게이트를 지나고, **자산이 디코드된 뒤에** 성립한다.
+  // 착륙이 자산보다 먼저 도착하면 텍스처가 프레임 도중에 튀어 들어온다.
   useEffect(() => {
     if (!pendingLand) return;
-    if (landable(pendingLand)) setLandedId(pendingLand);
+    if (!landable(pendingLand)) {
+      setPendingLand(null);
+      return;
+    }
+    if (assets?.authorId !== pendingLand) return; // 자산을 기다린다
+    setLandedId(pendingLand);
     setPendingLand(null);
-  }, [pendingLand, landable]);
+  }, [pendingLand, landable, assets]);
 
   const toggle = useCallback((key: "read" | "want", id: string) => {
     setPersonal((p) => {
@@ -508,12 +552,16 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
             readinessOf(focus.id) ?? { state: readinessState(focus.id), met: [] }
           }
           readOnly={Boolean(shared)}
+          star={(() => {
+            const m = magnitude(influenceWeight(focus.tier, degree[focus.id] ?? 0, maxDeg));
+            return { px: starPixels(m), color: PERIOD_TINT[periodOf(focus)], magnitude: m };
+          })()}
           skies={skiesOf(focus.id)}
           read={Boolean(personal.read[focus.id])}
           want={Boolean(personal.want[focus.id])}
           onToggleRead={() => toggle("read", focus.id)}
           onToggleWant={() => toggle("want", focus.id)}
-          onLand={() => setLandedId(focus.id)}
+          onLand={() => setPendingLand(focus.id)}
           onGoto={(id) => setFocusId(id)}
           onClose={() => setFocusId(null)}
         />
@@ -555,6 +603,39 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
               ? "지각은 이 작가의 육필 원고다."
               : "이 천체의 지각은 아직 백지다 — 실물 자료가 확보되면 채워진다."}
           </p>
+
+          {/* 프로비넌스는 문서가 아니라 **표면에** 있어야 한다 — 보여주지 못하는
+              근거는 없는 근거와 같다. 이 목록은 이 표면에 실제로 쓰인 실물
+              자산만 싣고, 각 행은 매니페스트의 원장에서 그대로 온다. */}
+          {assets && assets.provenance.length ? (
+            <details className="u-prov" data-testid="provenance">
+              <summary>자료 근거 {assets.provenance.length}건</summary>
+              <ul>
+                {assets.provenance.map((p) => {
+                  const w = p.workId ? dataset.works.find((x) => x.id === p.workId) : null;
+                  return (
+                    <li key={`${p.role}:${p.workId ?? ""}`}>
+                      <span className="u-tag">{p.role}</span>
+                      {w ? <strong>{w.titleKo}</strong> : null}
+                      <span className="u-prov__title">{p.prov.title}</span>
+                      <span className="u-prov__meta">
+                        {p.prov.collection}
+                        {p.prov.licence ? ` · ${p.prov.licence}` : ""}
+                        {p.prov.commercialUse && p.prov.commercialUse !== "yes"
+                          ? ` · 상업 사용 ${p.prov.commercialUse === "no" ? "불가" : "미확인"}`
+                          : ""}
+                      </span>
+                      {p.prov.pageUrl ? (
+                        <a href={p.prov.pageUrl} target="_blank" rel="noreferrer noopener">
+                          원본 파일 페이지
+                        </a>
+                      ) : null}
+                    </li>
+                  );
+                })}
+              </ul>
+            </details>
+          ) : null}
         </aside>
       )}
     </div>

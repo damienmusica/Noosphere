@@ -583,14 +583,22 @@
   margin-left: 7px;
 }
 
-/* ——— 육필 서명·낙관: R10 의 권리 확인 자산을 착륙 패널로 ——— */
+/* ——— 육필 서명·낙관: R10 의 권리 확인 자산을 착륙 패널로 ———
+   폭으로만 묶으면 세로 자산이 패널을 뚫는다 — 소세키의 낙관은 158×420 이라
+   폭 260px 에 맞추는 순간 691px 로 자라 카드 밖으로 넘쳤다(실측). 마크는
+   **높이가 정하는 것**이므로 높이로 묶고 폭은 따라오게 둔다.
+   반전 필터도 걷어냈다: 붉은 낙관이 청록으로 뒤집혀 나왔는데, 주홍은 이
+   문법에서 실물 인장과 선택에만 허용된 채널이다. 잉크는 종이 위에 둔다. */
 .u-mark {
   display: block;
-  width: 100%;
-  max-width: 260px;
-  margin: 6px 0 2px;
-  filter: invert(1) sepia(0.35) saturate(0.7) brightness(1.15);
-  opacity: 0.92;
+  width: auto;
+  max-width: 100%;
+  max-height: 116px;
+  margin: 8px 0 4px;
+  padding: 6px 9px;
+  background: var(--slip-bg);
+  border: 1px solid var(--rule);
+  object-fit: contain;
 }
 
 /* ——— 관측층 범례: 목록↔하늘 연동 ——— */
@@ -706,7 +714,6 @@
 }
 
 .u-card__reading li {
-  counter-increment: rd;
   border-left: 1px solid var(--line);
   padding-left: 10px;
 }
@@ -715,11 +722,28 @@
   border-left-color: var(--brass-a55);
 }
 
-.u-card__reading li::before {
+/* 번호는 **입문 순서에만** 붙는다. 그 밖의 작품에 번호를 이어 붙이면
+   큐레이션의 부재가 큐레이션으로 위장된다 — 서가의 색인 글리프와 같은 어휘 */
+.u-card__reading ol li {
+  counter-increment: rd;
+}
+
+.u-card__reading ol li::before {
   content: counter(rd);
   font-size: 10px;
   color: var(--text-faint);
   margin-right: 6px;
+}
+
+.u-card__rest {
+  margin-top: 14px;
+}
+
+.u-card__rest ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
 }
 
 .u-card__reading strong {
@@ -753,4 +777,189 @@
   font-size: 11.5px;
   line-height: 1.5;
   color: var(--text-faint);
+}
+
+/* ————— 라벨 문법 (R11-d) —————
+   레터프레스 슬립은 **작가의 종이 위에서만** 산다. 하늘에서는 판을 없애고
+   각자(刻字)로 간다.
+
+   근거는 실측이다. 심사 단계에서 출하 프레임을 픽셀 샘플링한 결과:
+     · 하늘 위 --text  = 14.7:1  → 판이 필요 없다
+     · 조명된 지각 위  = 1.04:1(정점) ~ 3.05:1(터미네이터)
+   한 구체 위에서 명도가 L 0.15 → 0.72 로 쓸려 가므로 지각에서는 **어떤 고정
+   잉크도 성립하지 않는다.** 슬립은 밑에 무엇이 있든 자기 지면을 제조하는
+   부품이고, 그것이 R10 블라인드 A/B 가 이미 값을 치른 해법이다.
+
+   모든 규칙은 `.universe` 하위로만 적용된다 — `.globe-label--*` 는 출하된
+   행성 앱과 공유되는 클래스이므로 전역에서 손대면 그 앱이 바뀐다. */
+
+.universe .globe-label[data-ground="sky"] {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0 0 3px;
+  color: var(--text-dim);
+  text-shadow: 0 1px 0 var(--ink-shadow);
+  /* 기준선(baseline rule) — 상태를 나르는 것은 글자가 아니라 이 선이다 */
+  border-bottom: 1px solid var(--rule);
+}
+
+/* 인출 틱 — 기준선 앞머리에서 별 쪽으로 1px 올라간다. 긴 인출선을 쓰지 않는
+   이유: 관계선(실증된 관계)과 같은 종류의 표시가 되어 버린다. */
+.universe .globe-label[data-ground="sky"]::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 1px;
+  height: 6px;
+  background: var(--rule);
+  opacity: 0.7;
+}
+
+.universe .globe-label[data-ground="sky"].is-neighbor {
+  color: var(--text);
+  border-bottom-color: var(--brass-a55);
+}
+
+.universe .globe-label[data-ground="sky"].is-neighbor::before {
+  background: var(--brass-a55);
+}
+
+.universe .globe-label[data-ground="sky"].is-hovered {
+  color: var(--text-hover);
+  border-bottom-color: var(--brass-bright);
+}
+
+.universe .globe-label[data-ground="sky"].is-hovered::before {
+  background: var(--brass-bright);
+}
+
+/* 선택은 주홍 — 선택 채널의 유일한 사용자가 기록에도 닿는다 */
+.universe .globe-label[data-ground="sky"].is-selected {
+  color: var(--text-selected);
+  font-weight: 700;
+  border-bottom: 1px solid var(--vermilion);
+}
+
+.universe .globe-label[data-ground="sky"].is-selected::before {
+  background: var(--vermilion);
+  height: 8px;
+}
+
+.universe .globe-label[data-ground="sky"].is-dim {
+  color: var(--text-faint);
+  border-bottom-color: var(--line);
+}
+
+.universe .globe-label[data-ground="sky"].is-dim::before {
+  background: var(--line);
+}
+
+/* ——— 미해상 기록 (초상 사다리 4단) ——— */
+.u-portrait--unresolved {
+  width: 96px;
+  flex: 0 0 96px;
+}
+
+.u-portrait--unresolved canvas {
+  width: 96px;
+  height: 96px;
+  display: block;
+  border: 1px solid var(--line);
+  background: var(--bg);
+}
+
+.u-record {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 5px;
+  font-size: 9px;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  color: var(--text-faint);
+}
+
+.u-record__name {
+  font-family: var(--font-serif);
+  font-size: 10.5px;
+  color: var(--text-dim);
+  word-break: break-word;
+}
+
+.u-portrait--unresolved figcaption {
+  margin-top: 5px;
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  color: var(--text-faint);
+}
+
+/* 비구성원 라벨은 층을 켜는 순간 접힌다 — 읽히는 텍스트의 집합이 곧 그 층의
+   멤버십이 된다. 밝기를 빌리지 않는 유일한 축약 수단이고, 선두 틱은 남으므로
+   별의 존재는 사라지지 않는다(R11-d 사양 §5). */
+.universe .globe-label[data-ground="sky"][data-muted="1"] {
+  max-width: 0;
+  overflow: hidden;
+  padding-right: 0;
+  border-bottom-color: transparent;
+  transition: max-width 120ms ease-out;
+}
+
+.universe .globe-label[data-ground="sky"] {
+  max-width: 40ch;
+  transition: max-width 120ms ease-out;
+}
+
+/* ——— 자료 근거 (프로비넌스) ——— */
+.u-prov {
+  margin-top: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 9px;
+}
+
+.u-prov summary {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--brass);
+  cursor: pointer;
+}
+
+.u-prov ul {
+  list-style: none;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.u-prov li {
+  border-left: 1px solid var(--line);
+  padding-left: 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.u-prov strong {
+  font-family: var(--font-serif);
+  font-size: 12.5px;
+  color: var(--text);
+}
+
+.u-prov__title {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--text-dim);
+}
+
+.u-prov__meta {
+  font-size: 10.5px;
+  line-height: 1.4;
+  color: var(--text-faint);
+}
+
+.u-prov a {
+  font-size: 10.5px;
+  color: var(--brass);
 }

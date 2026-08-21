@@ -20,6 +20,42 @@ for d in ("marks", "archival", "covers", "grounds"):
 
 manifest = {"marks": {}, "archival": {}, "covers": {}, "grounds": {}}
 
+# --- provenance: 출하되는 모든 파생물이 원장 행을 달고 나간다 -----------------
+# R11-d: 매니페스트가 covers 에만 licence 를 실었고 grounds/archival/marks 는
+# 아무것도 싣지 않았다. 프로비넌스가 산문 문서에만 있으면 앱은 그것을 보여줄 수
+# 없고, 보여주지 못하는 근거는 없는 근거와 같다.
+PROV = {}
+for _a in ("franz-kafka", "natsume-soseki", "rabindranath-tagore"):
+    _p = os.path.join(ST, _a, "provenance.json")
+    if os.path.exists(_p):
+        for _r in json.load(open(_p)):
+            PROV[f"{_a}/{_r['file']}"] = _r
+
+# 상업적 사용 가부는 기계적으로 추론하지 않는다. 관할 한정 PD 태그는
+# "확인되지 않음"이라고 적는다 — 거짓 boolean 보다 정직하다.
+def commercial_use(tag: str) -> str:
+    t = (tag or "").lower()
+    if "cc-by" in t:
+        return "yes"
+    if "japan" in t or "pd-us" in t or "india" in t or "uraa" in t or "pd-text" in t:
+        return "unverified-outside-source-jurisdiction"
+    return "yes" if "pd" in t or "public domain" in t else "unknown"
+
+def provenance(rel: str) -> dict:
+    r = PROV.get(rel)
+    if not r:
+        return {"provenance": None}
+    return {
+        "provenance": {
+            "title": r.get("title"),
+            "collection": r.get("sourceCollection"),
+            "pageUrl": r.get("filePageUrl"),
+            "licence": r.get("licenseTag"),
+            "licenceBasis": r.get("licenseBasis"),
+            "commercialUse": commercial_use(r.get("licenseTag", "")),
+        }
+    }
+
 
 def ink_alpha_from_dark(im, thresh=200):
     """dark strokes on light/transparent ground → warm-ink RGBA sprite"""
@@ -40,13 +76,13 @@ def tight_bbox(rgba, pad=14):
     return rgba.crop((l, t, r, b))
 
 
-def save_mark(author, im, target_h=420):
+def save_mark(author, im, target_h=420, src=None):
     im = tight_bbox(im)
     w = round(im.width * target_h / im.height)
     im = im.resize((w, target_h), Image.LANCZOS)
     f = f"marks/{author}.png"
     im.save(os.path.join(OUT, f))
-    manifest["marks"][author] = {"file": f, "w": im.width, "h": im.height}
+    manifest["marks"][author] = {"file": f, "w": im.width, "h": im.height, **provenance(src or "")}
     print("mark", author, im.size)
 
 
@@ -57,7 +93,7 @@ for author, raw in (("franz-kafka", "franz-kafka-signature.png"),):
     # recolor strokes to warm ink, keep the anti-aliased alpha
     solid = Image.new("RGBA", im.size, INK + (255,))
     solid.putalpha(im.getchannel("A"))
-    save_mark(author, solid)
+    save_mark(author, solid, src="franz-kafka/kafka-signature.svg")
 
 # Tagore: the traced SVG reads as scribble at map scale (A/B round 1 verdict)
 # — use the REAL 1920 Bengali ink signature scan instead: authentic stroke
@@ -70,7 +106,11 @@ def scan_ink_alpha(im, thresh=190, ramp=2.2):
     out = Image.new("RGBA", im.size, INK + (0,))
     out.putalpha(a)
     return out
-save_mark("rabindranath-tagore", tight_bbox(scan_ink_alpha(tagore)))
+save_mark(
+    "rabindranath-tagore",
+    tight_bbox(scan_ink_alpha(tagore)),
+    src="rabindranath-tagore/signature_bengali_1920.jpg",
+)
 
 # Soseki: brush signature 漱石 + the two red kanji seals, cut from the real
 # hanging-scroll scan (320×1089). Ink becomes tintless warm-black; the seal
@@ -107,7 +147,7 @@ comp = Image.new("RGBA", (col_w, sig_a.height + gap + seals_a.height), (0, 0, 0,
 comp.paste(sig_a, ((col_w - sig_a.width) // 2, 0), sig_a)
 comp.paste(seals_a, ((col_w - seals_a.width) // 2, sig_a.height + gap), seals_a)
 comp = comp.resize((comp.width * 2, comp.height * 2), Image.LANCZOS)
-save_mark("natsume-soseki", comp)
+save_mark("natsume-soseki", comp, src="natsume-soseki/02_calligraphy_seal_natsume_souseki.jpg")
 
 # --- archival portraits ------------------------------------------------------
 PORTRAITS = {
@@ -122,7 +162,7 @@ for author, (rel, box) in PORTRAITS.items():
     im.thumbnail((760, 950), Image.LANCZOS)
     f = f"archival/{author}.jpg"
     im.convert("RGB").save(os.path.join(OUT, f), quality=86)
-    manifest["archival"][author] = {"file": f, "w": im.width, "h": im.height}
+    manifest["archival"][author] = {"file": f, "w": im.width, "h": im.height, **provenance(rel)}
     print("archival", author, im.size)
 
 # --- work-cover plates -------------------------------------------------------
@@ -148,7 +188,13 @@ for work, (rel, lic) in COVERS.items():
     im.thumbnail((420, 620), Image.LANCZOS)
     f = f"covers/{work}.jpg"
     im.save(os.path.join(OUT, f), quality=85)
-    manifest["covers"][work] = {"file": f, "w": im.width, "h": im.height, "license": lic}
+    manifest["covers"][work] = {
+        "file": f,
+        "w": im.width,
+        "h": im.height,
+        "license": lic,
+        **provenance(rel),
+    }
     print("cover", work, im.size)
 
 # --- manuscript grounds (near-LOD territory paper) ---------------------------
@@ -168,7 +214,7 @@ for author, rel in GROUNDS.items():
     im = im.filter(ImageFilter.GaussianBlur(0.6))
     f = f"grounds/{author}.jpg"
     im.convert("RGB").save(os.path.join(OUT, f), quality=82)
-    manifest["grounds"][author] = {"file": f, "w": im.width, "h": im.height}
+    manifest["grounds"][author] = {"file": f, "w": im.width, "h": im.height, **provenance(rel)}
     print("ground", author, im.size)
 
 with open(os.path.join(OUT, "manifest.json"), "w") as fp:

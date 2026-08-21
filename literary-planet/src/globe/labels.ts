@@ -14,6 +14,16 @@ export interface LabelItem {
   state: LabelState;
   /** explicit ink (relation-type labels use their line's color) */
   color?: string;
+  /**
+   * 라벨이 무엇을 딛고 서 있는가. 하늘(빈 공간)에서는 판을 없애고 각자(刻字)로,
+   * 지각(작가의 종이) 위에서는 레터프레스 슬립을 유지한다 — 조명 받는 구면
+   * 위에서는 어떤 고정 잉크도 성립하지 않고(실측 대비 1.04~3.05:1), 슬립은
+   * 바로 그 문제를 푸는 부품이기 때문이다(R11-d). 미지정 = 기존 동작.
+   */
+  ground?: "sky" | "crust";
+  /** 관측층이 켜졌고 이 라벨이 그 층의 구성원이 아니다 — 글자를 접고 틱만
+   *  남긴다. 밝기·색을 빌리지 않는 유일한 축약 수단(R11-d). */
+  muted?: boolean;
   /** clickable + focusable (work towns); activation reported via onActivate */
   interactive?: boolean;
   ariaLabel?: string;
@@ -35,7 +45,11 @@ function overlaps(a: Rect, b: Rect, pad: number): boolean {
   );
 }
 
-function estimateWidth(text: string, fontSize: number): number {
+/** 판이 없는 각자 라벨은 칩 여백이 없다 — 같은 예산에 더 많은 이름이 든다 */
+export const LABEL_CHROME_SLIP = 22;
+export const LABEL_CHROME_ENGRAVED = 4;
+
+function estimateWidth(text: string, fontSize: number, chrome: number): number {
   let units = 0;
   for (const ch of text) {
     units += /[ᄀ-ᇿ㄰-㆏가-힯一-鿿぀-ヿ]/.test(ch)
@@ -45,7 +59,7 @@ function estimateWidth(text: string, fontSize: number): number {
   // +22: the R10 letterpress slip adds 14px padding + border — the greedy
   // collision boxes must include the CHIP, not just the glyphs (opaque
   // slips that overlap COVER each other; bare-text tuning underestimated)
-  return units * fontSize + 22;
+  return units * fontSize + chrome;
 }
 
 // keep in lockstep with .globe-label--{lg,md,sm} in styles.css — the greedy
@@ -107,7 +121,11 @@ export class LabelLayer {
       if (shown.size >= budget && item.state === "normal") continue;
       if (item.x < -40 || item.x > width + 40 || item.y < -20 || item.y > height + 20) continue;
       const fs = FONT_SIZE[item.size];
-      const w = estimateWidth(item.text, fs);
+      const w = estimateWidth(
+        item.text,
+        fs,
+        item.ground === "sky" ? LABEL_CHROME_ENGRAVED : LABEL_CHROME_SLIP
+      );
       const rect: Rect = { x: item.x - w / 2, y: item.y, w, h: fs + 6 };
       const mustShow = item.state === "selected" || item.state === "hovered";
       const collides = placed.some((p) => overlaps(p, rect, 2));
@@ -144,6 +162,10 @@ export class LabelLayer {
         this.root.appendChild(el);
       }
       el.className = `globe-label globe-label--${item.kind} globe-label--${item.size} is-${item.state}${item.interactive ? " is-interactive" : ""}`;
+      if (item.ground) el.dataset.ground = item.ground;
+      else delete el.dataset.ground;
+      if (item.muted) el.dataset.muted = "1";
+      else delete el.dataset.muted;
       if (el.textContent !== item.text) el.textContent = item.text;
       el.style.color = item.color ?? "";
       el.style.transform = `translate(-50%, 0) translate3d(${item.x.toFixed(1)}px, ${item.y.toFixed(1)}px, 0)`;

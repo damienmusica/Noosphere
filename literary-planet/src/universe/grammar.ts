@@ -19,9 +19,21 @@ export const SHELL_R = 900;
 /** 카메라 거리(궤도 타깃 기준) 경계 */
 export const CAM_SKY_DEFAULT = 2150;
 export const CAM_SKY_MAX = 3200;
-/** 착륙 고도 = 천체 반경 × 이 계수. 3.2r 이면 천체가 화면 높이를 거의 채운다
- *  (겉보기 반경 ≈ 366px @ 900px 뷰포트) — 도시가 한눈에 들어오는 저궤도. */
-export const LANDING_ALT = 3.2;
+/** 착륙 고도 = 천체 반경 × 이 계수. 주시점이 **지면 위 한 점**이므로 이 값은
+ *  중심까지의 거리가 아니라 그 지면에서의 거리다. */
+export const LANDING_ALT = 1.5;
+
+/** 서가가 서는 지면의 방향 — 천체 반경 축에서 이만큼 기울어진 곳 */
+export const SHELF_AXIS_DEG = 14;
+/**
+ * 시선과 그 지면 법선이 이루는 각. **이 값이 착륙의 전부다.** 이전 판은 10°
+ * 였고(지면 52° · 카메라 62°), 그래서 서가를 거의 수직으로 내려다봤다 —
+ * 빌보드가 책을 관측자 쪽으로 돌려 세워도 세로 방향이 통째로 단축되어 제본된
+ * 책이 바닥에 놓인 판으로 읽혔다(실측: 유형지에서·선고). 60°대에서 책은
+ * 자기 높이의 90%를 화면에 남기고, 지면은 뒤로 물러나며, 지평선이 프레임에
+ * 들어온다.
+ */
+export const LANDING_INCIDENCE_DEG = 64;
 
 // ---------------------------------------------------------------------------
 // 영향력 → 광도
@@ -234,3 +246,142 @@ export function genreHarmonics(a: Author): [number, number, number, number] {
 }
 
 export const SILHOUETTE_AMP = 0.06;
+
+/**
+ * 방향 하나에서의 천체 표면 반경(단위 반경 기준). 형상 생성과 **표면에 놓이는
+ * 모든 것**(서가 난간·눈금·연도·책의 밑동)이 같은 함수를 써야 한다. 상수 1.0 을
+ * 쓰면 실루엣이 부풀어 오른 자리에서 난간과 연도가 지각 안으로 파묻힌다
+ * (실측: 소세키의 서가에서 난간과 눈금 여섯 개가 통째로 사라졌다 — 카프카에서는
+ * 같은 코드가 멀쩡히 보였기 때문에 오래 눈에 띄지 않았다).
+ */
+export function silhouetteRadius(
+  h: readonly [number, number, number, number],
+  x: number,
+  y: number,
+  z: number
+): number {
+  const y1 = y;
+  const y2 = (3 * z * z - 1) / 2;
+  const y3 = x * y * 2;
+  const y4 = x * x - y * y;
+  return 1 + SILHOUETTE_AMP * (h[0] * y1 + h[1] * y2 + h[2] * y3 + h[3] * y4);
+}
+
+// ---------------------------------------------------------------------------
+// 작품 도시 — 연도 서가
+// ---------------------------------------------------------------------------
+//
+// 서가의 두 축은 둘 다 /data 에 실재하는 값이다:
+//   · 경도 = 발표 연도 (works[].year)
+//   · 단(段) = 입문 경로 소속 (authors[].readingOrder 안이냐 밖이냐)
+// 입문 **순서**는 위도가 아니라 라벨의 색인 글리프(①②③)가 나른다. 순서를
+// 위도 단차로 표현하던 이전 판은 두 가지를 동시에 잃었다: 단차는 곡면 위
+// 사입 시점에서 순서로 읽히지 않았고, 책 높이보다 작은 위도 차는 이웃한 연도의
+// 책 두 권을 서로 관통시켰다. **이전 판에서 실측한 값**이다: 소송 1925 · 성
+// 1926 이 경도 3.4°, 위도 13° 떨어져 있었고 책은 14.9°×21.2° 였다(그때의
+// 서가 반폭 22° · 책 폭 0.26r 기준 — 지금 상수로 다시 계산하지 말 것).
+// 색인 글리프는 관측층 범례가 이미 쓰는 어휘이므로 새 채널이 아니다.
+
+/** 서가가 차지하는 경도 반폭(rad) — 착륙 시야가 실제로 담는 각폭(실측) */
+export const SHELF_LON = (18 * Math.PI) / 180;
+/** 두 단 사이의 위도 간격(rad). 책 높이보다 커야 앞단이 뒷단을 삼키지 않는다 */
+export const SHELF_ROW_LAT = (17 * Math.PI) / 180;
+/** 책 폭 상한(천체 반경 대비). 작품이 많으면 띠에 맞춰 이 아래로 줄어든다 */
+export const VOL_W_MAX = 0.17;
+/** 판형 — 높이/폭. 4절판보다 세로로 긴 8절판 비율 */
+export const VOL_ASPECT = 1.45;
+/** 두께/폭. **상수다** — 두께는 보편적으로 쪽수로 읽히고 우리는 쪽수가 없다 */
+export const VOL_DEPTH = 0.30;
+/**
+ * 책 사이 최소 공기(폭 대비). 6%로는 모자란다 — 권마다 관측자를 향해 도는
+ * 빌보드이므로, 서가 축에서 α 만큼 벗어난 자리의 책은 서가 방향으로
+ * `폭·cos α + 두께·sin α` 를 차지한다. 서가 반폭 18°에서 그 값이 폭의 1.05배가
+ * 되고, 6%의 공기는 그대로 잡아먹힌다(실측: 소송 1925 · 성 1926 이 화면에서
+ * 겹쳤다 — 3차원에서는 떨어져 있었다).
+ */
+export const VOL_AIR = 1.32;
+
+/** 작품 수가 정하는 책 폭 — 띠가 모자라면 책이 줄지, 책이 겹치지 않는다 */
+export function volumeWidth(count: number): number {
+  if (count <= 1) return VOL_W_MAX;
+  return Math.min(VOL_W_MAX, (2 * SHELF_LON) / (count - 1) / VOL_AIR);
+}
+
+/**
+ * 연도 → 경도. **순서는 연도가 정하고, 간격은 연도 간격에 비례하되 최소
+ * 간격 아래로는 압축되지 않는다.** 비례를 무조건 지키면 인접 연도의 두 권이
+ * 물리적으로 겹치고(카프카 1925·1926 은 연도 축의 1/13 밖에 안 떨어져 있는데
+ * 책은 그보다 넓다), 겹친 책은 어떤 값도 전달하지 못한다. 왜곡은 감추지 않는다 — 서가 난간의 눈금이 같은 사상을
+ * 통과해 놓이므로 어디가 밀렸는지 눈에 보인다.
+ *
+ * 반환은 입력 순서에 대응한다. 동률 연도는 입력 순서를 유지한다.
+ */
+export function shelfLongitudes(years: readonly number[], minGap: number): number[] {
+  const n = years.length;
+  if (n === 0) return [];
+  if (n === 1) return [0];
+  const idx = years.map((_, i) => i).sort((a, b) => (years[a] as number) - (years[b] as number) || a - b);
+  const ys = idx.map((i) => years[i] as number);
+  const yMin = ys[0] as number;
+  const yMax = ys[n - 1] as number;
+  const span = 2 * SHELF_LON;
+  const pos = ys.map((y) =>
+    yMax > yMin ? -SHELF_LON + (span * (y - yMin)) / (yMax - yMin) : 0
+  );
+  for (let i = 1; i < n; i++) pos[i] = Math.max(pos[i] as number, (pos[i - 1] as number) + minGap);
+  if ((pos[n - 1] as number) > SHELF_LON) {
+    pos[n - 1] = SHELF_LON;
+    for (let i = n - 2; i >= 0; i--)
+      pos[i] = Math.min(pos[i] as number, (pos[i + 1] as number) - minGap);
+  }
+  if ((pos[0] as number) < -SHELF_LON) {
+    // 띠가 물리적으로 모자란다 — 비례를 포기하고 순서만 지킨다.
+    const step = span / (n - 1);
+    for (let i = 0; i < n; i++) pos[i] = -SHELF_LON + step * i;
+  }
+  const out = new Array<number>(n);
+  idx.forEach((orig, k) => {
+    out[orig] = pos[k] as number;
+  });
+  return out;
+}
+
+/**
+ * 서가 난간의 눈금 간격 — 3~6개가 놓이는 가장 촘촘한 단위를 고른다.
+ * 눈금이 하나뿐이면 축이 아니라 표식이고, 열 개면 난간이 아니라 자다.
+ */
+export function shelfTickStep(yMin: number, yMax: number): number {
+  const span = Math.max(1, yMax - yMin);
+  for (const s of [1, 2, 5, 10, 20, 50, 100]) if (span / s <= 6) return s;
+  return 200;
+}
+
+/**
+ * 연도 → 경도 보간. 작품이 놓인 (연도, 경도) 쌍을 통과하는 단조 조각선형
+ * 사상이다. 눈금이 이 사상을 쓰기 때문에 최소 간격이 만든 왜곡이 난간 위에
+ * 그대로 드러난다.
+ */
+export function yearToLon(
+  year: number,
+  pairs: ReadonlyArray<readonly [number, number]>
+): number {
+  if (!pairs.length) return 0;
+  const p = [...pairs].sort((a, b) => a[0] - b[0]);
+  const first = p[0] as readonly [number, number];
+  const last = p[p.length - 1] as readonly [number, number];
+  if (year <= first[0]) return first[1];
+  if (year >= last[0]) return last[1];
+  for (let i = 1; i < p.length; i++) {
+    const a = p[i - 1] as readonly [number, number];
+    const b = p[i] as readonly [number, number];
+    if (year <= b[0]) {
+      if (b[0] === a[0]) return b[1];
+      const t = (year - a[0]) / (b[0] - a[0]);
+      return a[1] + (b[1] - a[1]) * t;
+    }
+  }
+  return last[1];
+}
+
+/** 주시점을 지면 위로 올리는 높이(천체 반경 대비) — 책 높이의 절반 남짓 */
+export const SHELF_EYE_LIFT = VOL_W_MAX * VOL_ASPECT * 0.5;

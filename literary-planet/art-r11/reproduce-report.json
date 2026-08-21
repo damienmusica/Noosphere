@@ -1,0 +1,167 @@
+{
+  "commit": "83eac51",
+  "generatedAt": "2026-08-21T04:06:47.215Z",
+  "environment": {
+    "node": "v24.14.0",
+    "platform": "darwin/arm64",
+    "cpus": 14,
+    "playwright": "^1.62.1"
+  },
+  "counts": {
+    "unitTests": 227,
+    "journeyContracts": 199,
+    "mutationsFastLaneKilled": 29,
+    "mutationsFastLaneSurvived": 0
+  },
+  "steps": {
+    "typecheck": {
+      "ok": true,
+      "ms": 1863
+    },
+    "unit": {
+      "ok": true,
+      "ms": 3194
+    },
+    "validate-data": {
+      "ok": true,
+      "ms": 208
+    },
+    "mutation-fast": {
+      "ok": true,
+      "ms": 16864
+    },
+    "build": {
+      "ok": true,
+      "ms": 1505
+    },
+    "journey-contract": {
+      "ok": true,
+      "ms": 44338
+    },
+    "frames": {
+      "ok": true,
+      "ms": 40176
+    },
+    "video": {
+      "ok": true,
+      "ms": 35638
+    }
+  },
+  "artifacts": {
+    "deterministic": {
+      "data/depth-readiness.json": "9ad9ac87c1e1ecfa",
+      "public/art/manifest.json": "830f5f4f267bebdd"
+    },
+    "nonDeterministic": {
+      "frames": {
+        "0sky-exile.png": {
+          "sha256_16": "05e98c41246419d8",
+          "bytes": 173002
+        },
+        "0sky-language.png": {
+          "sha256_16": "6b6428f1f459d991",
+          "bytes": 228356
+        },
+        "0sky-movement.png": {
+          "sha256_16": "3f9a2d90f95e643b",
+          "bytes": 221714
+        },
+        "4transition-0.png": {
+          "sha256_16": "5d004e59e165adec",
+          "bytes": 319971
+        },
+        "4transition-1.png": {
+          "sha256_16": "86d2b4bbb5bbc7e8",
+          "bytes": 142750
+        },
+        "4transition-2.png": {
+          "sha256_16": "7b5eed01968db391",
+          "bytes": 319069
+        },
+        "4transition-3.png": {
+          "sha256_16": "fc08e870ccc37ef2",
+          "bytes": 554867
+        },
+        "4transition-4.png": {
+          "sha256_16": "d3cba975001b1218",
+          "bytes": 565189
+        },
+        "4transition-5.png": {
+          "sha256_16": "d3cba975001b1218",
+          "bytes": 565189
+        },
+        "5personal.png": {
+          "sha256_16": "50785eb3ce4af1a8",
+          "bytes": 211398
+        },
+        "6year-1900.png": {
+          "sha256_16": "dae53cd78f2a883a",
+          "bytes": 201510
+        },
+        "6year-1935.png": {
+          "sha256_16": "cd45e82fc2968269",
+          "bytes": 219458
+        },
+        "6year-1970.png": {
+          "sha256_16": "767b6caf4882b4dc",
+          "bytes": 222460
+        },
+        "7orbit-unprepared.png": {
+          "sha256_16": "8da288f7deb4d22f",
+          "bytes": 361531
+        },
+        "8lens-linked.png": {
+          "sha256_16": "fbaf69bb59d05d86",
+          "bytes": 236173
+        },
+        "franz-kafka-1sky.png": {
+          "sha256_16": "3f9a2d90f95e643b",
+          "bytes": 221714
+        },
+        "franz-kafka-2mid.png": {
+          "sha256_16": "0c403628b2aefa1a",
+          "bytes": 447985
+        },
+        "franz-kafka-3near.png": {
+          "sha256_16": "0569e03389bef28d",
+          "bytes": 565227
+        },
+        "natsume-soseki-1sky.png": {
+          "sha256_16": "3f9a2d90f95e643b",
+          "bytes": 221714
+        },
+        "natsume-soseki-2mid.png": {
+          "sha256_16": "36ecdfbf451cd4c6",
+          "bytes": 425263
+        },
+        "natsume-soseki-3near.png": {
+          "sha256_16": "e147f69c148e4ade",
+          "bytes": 625431
+        },
+        "rabindranath-tagore-1sky.png": {
+          "sha256_16": "3f9a2d90f95e643b",
+          "bytes": 221714
+        },
+        "rabindranath-tagore-2mid.png": {
+          "sha256_16": "49c7de2de60a7b47",
+          "bytes": 426325
+        },
+        "rabindranath-tagore-3near.png": {
+          "sha256_16": "60cff64bd78ec17c",
+          "bytes": 640156
+        }
+      },
+      "video": {
+        "r11-journey.webm": {
+          "sha256_16": "ab607c3bb11e369a",
+          "bytes": 3745967
+        }
+      }
+    }
+  },
+  "notes": [
+    "frames/video 는 GPU 래스터화와 인코딩에 따라 바이트가 달라진다 — 해시는 기록이지 재현 기준이 아니다.",
+    "재현 기준은 counts(유닛·여정 계약·변이 스윕)와 각 단계의 ok 여부다.",
+    "브라우저 단계는 headless:false 로 실제 GPU 를 쓴다. CI 환경에서는 수치가 달라질 수 있다."
+  ]
+}
