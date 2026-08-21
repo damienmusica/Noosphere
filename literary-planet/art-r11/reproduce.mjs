@@ -95,8 +95,13 @@ const report = {
   counts: {
     unitTests: num("unit", /Tests\s+(\d+) passed/),
     journeyContracts: quick ? null : num("journey-contract", /(\d+) passed · \d+ failed/),
-    mutationsKilled: num("mutation-fast", /killed (\d+)/),
-    mutationsSurvived: num("mutation-fast", /survived (\d+)/)
+    // 이 하네스는 **고속 레인만** 돌린다. 전체 스윕(브라우저 레인 포함)은
+    // `npm run universe:mutation-sweep` 로 별도 실행한다 — 15분 넘게 걸려
+    // 한 명령 게이트에 넣지 않는다. 키 이름에 레인을 박는 이유: 이전 판의
+    // `mutationsKilled: 29` 가 정본 문서의 전체 스윕 수치(55)와 나란히 인쇄돼
+    // 모순으로 읽혔다.
+    mutationsFastLaneKilled: num("mutation-fast", /killed (\d+)/),
+    mutationsFastLaneSurvived: num("mutation-fast", /survived (\d+)/)
   },
   steps: Object.fromEntries(Object.entries(results).map(([k, v]) => [k, { ok: v.ok, ms: v.ms }])),
   artifacts: {
@@ -124,7 +129,7 @@ writeFileSync(out, `${JSON.stringify(report, null, 2)}\n`);
 const failed = Object.entries(results).filter(([, r]) => !r.ok);
 console.log(`\ncommit ${commit} · node ${process.version} · ${report.environment.platform}`);
 console.log(
-  `유닛 ${report.counts.unitTests} · 여정 ${report.counts.journeyContracts ?? "-"} · 변이 killed ${report.counts.mutationsKilled}/survived ${report.counts.mutationsSurvived}`
+  `유닛 ${report.counts.unitTests} · 여정 ${report.counts.journeyContracts ?? "-"} · 변이(고속 레인) killed ${report.counts.mutationsFastLaneKilled}/survived ${report.counts.mutationsFastLaneSurvived}`
 );
 console.log(`report → ${path.relative(LP, out)}`);
 if (failed.length) {

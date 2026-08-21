@@ -714,7 +714,6 @@
 }
 
 .u-card__reading li {
-  counter-increment: rd;
   border-left: 1px solid var(--line);
   padding-left: 10px;
 }
@@ -723,11 +722,28 @@
   border-left-color: var(--brass-a55);
 }
 
-.u-card__reading li::before {
+/* 번호는 **입문 순서에만** 붙는다. 그 밖의 작품에 번호를 이어 붙이면
+   큐레이션의 부재가 큐레이션으로 위장된다 — 서가의 색인 글리프와 같은 어휘 */
+.u-card__reading ol li {
+  counter-increment: rd;
+}
+
+.u-card__reading ol li::before {
   content: counter(rd);
   font-size: 10px;
   color: var(--text-faint);
   margin-right: 6px;
+}
+
+.u-card__rest {
+  margin-top: 14px;
+}
+
+.u-card__rest ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
 }
 
 .u-card__reading strong {

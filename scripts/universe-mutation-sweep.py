@@ -143,6 +143,13 @@ MUTATIONS = [
     ("browser", "발명된 얼굴 초상이 돌아옴 (상상 초상 자산을 다시 가져온다)", C,
      "      <canvas ref={ref} width={96} height={96} aria-hidden=\"true\" />",
      "      <img src={`${import.meta.env.BASE_URL}portraits/${author.id}.jpg`} alt=\"\" />"),
+    ("browser", "카드가 입문 순서에 나머지 작품을 이어 붙인다 (큐레이션 위장 회귀)", C,
+     "          {ordered.map((w, i) => (",
+     "          {[...ordered, ...rest].map((w, i) => ("),
+    ("browser", "입문 경로 밖 작품 절이 사라진다", C,
+     "        {rest.length ? (", "        {false ? ("),
+    ("browser", "카드 제목이 다시 \"독서 순서\"를 주장한다", C,
+     "        <h3>입문 순서 {ordered.length}</h3>", "        <h3>독서 순서 {ordered.length}</h3>"),
     # ——— R11-d 시각 문법 계약 ———
     ("browser", "실물 초판이 없는 작품도 표지를 정면으로 세운다 (부재가 형태로 안 읽힘)", S,
      "    if (!coverFile) root.rotation.y = -Math.PI / 2;",

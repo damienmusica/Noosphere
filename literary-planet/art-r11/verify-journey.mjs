@@ -25,7 +25,7 @@ const SLICE = [
   { id: "franz-kafka", query: "카프카", works: 5, covers: 4, order: 3, crust: "manuscript", landable: true },
   { id: "natsume-soseki", query: "소세키", works: 6, covers: 5, order: 5, crust: "manuscript", landable: true },
   { id: "rabindranath-tagore", query: "타고르", works: 6, covers: 2, order: 5, crust: "manuscript", landable: true },
-  { id: "marcel-proust", query: "프루스트", works: 6, crust: null, landable: false }
+  { id: "marcel-proust", query: "프루스트", works: 6, order: 5, crust: null, landable: false }
 ];
 
 const server = await serveDist(distDir);
@@ -125,9 +125,18 @@ for (const a of SLICE) {
   check("출처", ((await card.locator(".u-card__src").first().textContent()) ?? "").includes("출처"));
 
   // 5. 궤도 관측 — 착륙하지 않아도 이 작가를 읽을 수 있는 전부
+  // 입문 순서는 **정확히** readingOrder 다. 이전 판은 나머지 작품을 이어 붙여
+  // "독서 순서 5"로 번호를 매겼다 — 착륙 서가는 같은 작품을 입문 경로 밖이라며
+  // 뒷단에 내리므로, 두 표면이 서로 모순인 채로 계약이 초록이었다.
   const orbit = card.locator('[data-testid="orbit-reading"]');
-  check("독서 순서", (await orbit.locator("ol > li").count()) >= 3,
-    `${await orbit.locator("ol > li").count()}편`);
+  const orbitHead = (await orbit.locator("h3").first().textContent()) ?? "";
+  check("카드가 입문 순서라고 부른다 (독서 순서 아님)", orbitHead.includes("입문 순서"),
+    orbitHead);
+  check("입문 순서가 정확히 편집된 경로다", (await orbit.locator("ol > li").count()) === a.order,
+    `${await orbit.locator("ol > li").count()}/${a.order}편`);
+  const restCount = await card.locator('[data-testid="orbit-rest"] ul > li').count();
+  check("입문 경로 밖 작품은 번호 없이 따로 선다", restCount === a.works - a.order,
+    `${restCount}/${a.works - a.order}편`);
   check("입문 사유", ((await orbit.locator(".u-card__entry-why").first().textContent()) ?? "").length > 20);
   check("작품 의의", (await orbit.locator(".u-works__sig").count()) >= 3);
   check("난도 사유", ((await orbit.locator(".u-card__diff").first().textContent()) ?? "").includes("난도"));

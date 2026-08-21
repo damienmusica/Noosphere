@@ -1435,34 +1435,7 @@ export class UniverseScene {
     return tex;
   }
 
-  private hatchTexture(): THREE.Texture {
-    const hit = this.texCache.get("hatch");
-    if (hit) return hit;
-    const c = document.createElement("canvas");
-    c.width = 180;
-    c.height = 256;
-    const ctx = c.getContext("2d")!;
-    // 실물 표지가 있는 도시가 시각적으로 앞서야 한다 — 폴백 판은 한 단 어둡게
-    ctx.fillStyle = COLORS.paperLaid;
-    ctx.fillRect(0, 0, c.width, c.height);
-    ctx.fillStyle = "rgba(43,32,21,0.13)";
-    ctx.fillRect(0, 0, c.width, c.height);
-    ctx.strokeStyle = "rgba(43,32,21,0.46)";
-    ctx.lineWidth = 3;
-    for (let i = -c.height; i < c.width; i += 14) {
-      ctx.beginPath();
-      ctx.moveTo(i, 0);
-      ctx.lineTo(i + c.height, c.height);
-      ctx.stroke();
-    }
-    ctx.strokeStyle = "rgba(43,32,21,0.75)";
-    ctx.lineWidth = 5;
-    ctx.strokeRect(4, 4, c.width - 8, c.height - 8);
-    const tex = new THREE.CanvasTexture(c);
-    tex.colorSpace = THREE.SRGBColorSpace;
-    this.texCache.set("hatch", tex);
-    return tex;
-  }
+
 
   // -------------------------------------------------------------------------
   // camera

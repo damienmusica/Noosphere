@@ -85,6 +85,13 @@ sh(
     EXCLUDED.map(([e]) => `':(exclude)${e}'`).join(" ")
 );
 
+const COUNT_KO = {
+  unitTests: "유닛 테스트",
+  journeyContracts: "여정 계약",
+  mutationsFastLaneKilled: "변이 KILLED (고속 레인만)",
+  mutationsFastLaneSurvived: "변이 생존 (고속 레인만)"
+};
+
 const report = existsSync(path.join(OUT, "reproduce-report.json"))
   ? JSON.parse(await readFile(path.join(OUT, "reproduce-report.json"), "utf8"))
   : null;
@@ -171,8 +178,10 @@ ${
                 .join("\n")}`
       }\n\n${Object.entries(report.counts ?? {})
         .filter(([, v]) => v !== null)
-        .map(([k, v]) => `- ${k} — **${v}**`)
-        .join("\n")}\n\n${Object.entries(report.steps ?? {})
+        .map(([k, v]) => `- ${COUNT_KO[k] ?? k} — **${v}**`)
+        .join("\n")}\n\n변이 스윕의 **전체(브라우저 레인 포함) 수치는 위 리포트에 없다** — 15분이
+넘어 한 명령 게이트 밖이다. \`npm run universe:mutation-sweep\` 으로 직접
+재고, 정본 수치는 \`docs/universe-thesis.md\` §⑪ 에 있다.\n\n${Object.entries(report.steps ?? {})
         .map(([k, v]) => `- \`${k}\` — ${v.ok ? "통과" : "**실패**"}`)
         .join("\n")}\n\n전체 리포트(환경·해시 포함)는 \`reproduce-report.json\`.\n`
     : ""

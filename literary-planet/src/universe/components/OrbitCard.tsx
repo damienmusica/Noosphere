@@ -147,12 +147,16 @@ export function OrbitCard(p: OrbitCardProps) {
   const a = p.author;
   const tint = PERIOD_TINT[periodOf(a)];
   const archival = p.art?.archival?.[a.id];
-  const order = a.readingOrder.length ? a.readingOrder : p.works.map((w) => w.id);
-  const ordered = order
+  // 입문 순서는 **편집이 실제로 지목한 것**(readingOrder)만이다. 이전 판은
+  // 나머지 작품을 뒤에 이어 붙여 "독서 순서 5"로 번호를 매겼다 — 큐레이션의
+  // 부재를 큐레이션으로 위장한 것이고, 착륙 서가는 같은 작품을 "입문 경로
+  // 밖"이라며 뒷단에 내리므로 두 표면이 서로 모순이었다. 여기서 갈라 둔다.
+  const ordered = a.readingOrder
     .map((id) => p.works.find((w) => w.id === id))
     .filter((w): w is Work => Boolean(w));
-  const rest = p.works.filter((w) => !order.includes(w.id));
-  const reading = [...ordered, ...rest];
+  const rest = p.works
+    .filter((w) => !a.readingOrder.includes(w.id))
+    .sort((x, y) => x.year - y.year);
   const covers = p.works.filter((w) => p.art?.covers?.[w.id]).length;
 
   return (
@@ -238,9 +242,9 @@ export function OrbitCard(p: OrbitCardProps) {
 
       {/* 궤도 관측 — 착륙하지 않아도 이 작가를 읽을 수 있는 전부 */}
       <div className="u-card__reading" data-testid="orbit-reading">
-        <h3>독서 순서 {reading.length}</h3>
+        <h3>입문 순서 {ordered.length}</h3>
         <ol>
-          {reading.map((w, i) => (
+          {ordered.map((w, i) => (
             <li key={w.id} className={w.id === a.readingEntry ? "is-entry" : ""}>
               <strong>{w.titleKo}</strong>
               <span className="u-year">{w.year}</span>
@@ -250,6 +254,21 @@ export function OrbitCard(p: OrbitCardProps) {
             </li>
           ))}
         </ol>
+        {rest.length ? (
+          <div className="u-card__rest" data-testid="orbit-rest">
+            <h3>그 밖의 작품 {rest.length}</h3>
+            <ul>
+              {rest.map((w) => (
+                <li key={w.id}>
+                  <strong>{w.titleKo}</strong>
+                  <span className="u-year">{w.year}</span>
+                  {p.art?.covers?.[w.id] ? <span className="u-tag">초판</span> : null}
+                  <p className="u-works__sig">{w.significance}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
         {a.readingWarning ? (
           <p className="u-card__warn">
             <span className="u-tag u-tag--warn">주의</span>
