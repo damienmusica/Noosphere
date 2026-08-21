@@ -7,7 +7,7 @@
 //   node art-r11/bundle.mjs [--out <dir>]
 import { execFileSync } from "node:child_process";
 import { existsSync } from "node:fs";
-import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { cp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -89,8 +89,21 @@ const COUNT_KO = {
   unitTests: "유닛 테스트",
   journeyContracts: "여정 계약",
   mutationsFastLaneKilled: "변이 KILLED (고속 레인만)",
-  mutationsFastLaneSurvived: "변이 생존 (고속 레인만)"
+  mutationsFastLaneSurvived: "변이 생존 (고속 레인만)",
+  planetScenesPassed: "출하 행성 앱 QA 씬 통과",
+  planetScenesTotal: "출하 행성 앱 QA 씬"
 };
+
+// 상상 초상의 수는 **세어서** 쓴다. 이전 판은 "101건" 을 리터럴로 박아 뒀는데
+// 번들 안의 어떤 산출물도 그 숫자를 뒷받침하지 않았다(public/portraits·
+// dist/portraits·data/portraits.json 모두 100). 검토자가 감사하는 것이
+// 정확히 이런 종류의 숫자다.
+const portraitCount = (await readdir(path.join(LP, "public/portraits"))).filter((f) =>
+  f.endsWith(".jpg")
+).length;
+const portraitFaceCount = JSON.parse(
+  await readFile(path.join(LP, "data/portraits.json"), "utf8")
+).entries.filter((e) => e.mode === "face").length;
 
 const report = existsSync(path.join(OUT, "reproduce-report.json"))
   ? JSON.parse(await readFile(path.join(OUT, "reproduce-report.json"), "utf8"))
@@ -162,9 +175,20 @@ npm run universe:mutation-sweep   # 계약이 실제로 무엇을 막는지 측�
 
 ${EXCLUDED.map(([e, why]) => `- \`${e}/\` — ${why}.`).join("\n")}
 
-\`literary-planet/public/portraits/\` 의 상상 초상 101건은 **레포에 남아 있지만
-앱이 쓰지 않는다** — 여정 계약이 착륙·궤도 어느 경로에서도 그 경로를 요청하지
-않음을 매 실행 확인한다(CPO 판정: 상상된 인간 얼굴은 최종 자산으로 쓰지 않는다).
+\`literary-planet/public/portraits/\` 의 상상 초상 ${portraitCount}건(그중 사람
+얼굴 ${portraitFaceCount}건)은 레포에도, 이 번들의 \`dist/portraits/\` 에도 그대로
+들어 있다. 어느 엔트리가 그것을 쓰는지가 갈린다:
+
+- **성계 앱(\`universe.html\`)은 쓰지 않는다.** 여정 계약이 착륙·궤도 어느
+  경로에서도 \`/portraits/\` 요청이 일어나지 않음을 매 실행 확인한다.
+- **출하된 행성 앱(\`index.html\`, R10)은 아직 쓴다.** 같은 \`dist/\` 안의 두 번째
+  엔트리이고, 기록 사진이 없는 작가에게 상상 초상을 「상상 초상」 캡션과 함께
+  렌더한다. 그 엔트리에서 초상을 은퇴시키는 일은 R11 개정 초안의 한 항목(P4,
+  \`docs/portrait-ladder-r9-amendment.md\` §3)이고 **출하 앱에는 아직 적용되지
+  않았다** — 비준 전까지 그렇다.
+
+즉 CPO 판정("상상된 인간 얼굴은 최종 자산으로 쓰지 않는다")은 성계 엔트리에서는
+지켜지고 출하 엔트리에서는 아직 지켜지지 않는다.
 
 ${
   report
@@ -188,9 +212,9 @@ ${
 }
 ## 무엇을 봐 주면 되는가
 
-- 카프카의 **연도 서가**: 경도가 발표 연도, 앞단이 입문 경로, 색인 글리프가
-  입문 순서, 표지 정면/책등 정면이 실물 초판 소장 여부다. 이 넷이 **설명 없이**
-  읽히는가.
+- 카프카의 **연도 서가**: 경도가 발표 연도, 앞단이 입문 경로, 슬립의 민 숫자가
+  입문 순서(동그라미 글리프 ①②③ 은 관측층 색인 전용이다), 표지 정면/책등
+  정면이 실물 초판 소장 여부다. 이 넷이 **설명 없이** 읽히는가.
 - 프루스트의 궤도: 착륙이 닫혀 있다는 사실이 **결핍이 아니라 정직**으로
   읽히는가, 아니면 미완성으로 읽히는가.
 - 중경의 관측 렌즈: 이웃이 끌려온 것이 왜곡으로 **보이는가**(궤적과 유령).

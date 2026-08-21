@@ -28,12 +28,18 @@ Interrupt-safe: restore runs in `finally` and is also registered with `atexit`.
 """
 import argparse
 import atexit
+import pathlib
 import subprocess
 import sys
 
-REPO = subprocess.run(
-    ["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True, check=True
-).stdout.strip()
+# Resolve the repo from this file's own location (`<repo>/scripts/`), not from
+# `git rev-parse`. The review bundle ships the tree as `git archive` output,
+# which carries no `.git`, so the git call died at import time — before argparse
+# — and took both `npm run universe:mutation-sweep` and reproduce.mjs's
+# `mutation-fast` step with it. Worse, unzipping inside *some other* checkout
+# made rev-parse succeed and the sweep would have patched files under the wrong
+# toplevel. `__file__` resolves identically in-repo and in the unzipped tree.
+REPO = str(pathlib.Path(__file__).resolve().parent.parent)
 LP = f"{REPO}/literary-planet"
 
 G = "src/universe/grammar.ts"
@@ -118,10 +124,10 @@ MUTATIONS = [
      "  return tracks.filter((t) => t.items.length > 0);",
      "  return tracks.filter((t) => t.items.length > 0).slice(0, 1);"),
     ("fast", "낯선 지역 갈래가 이미 읽은 지역도 추천", P,
-     "  const unfamiliar: Recommendation[] = candidates\n    .filter((a) => gapRank(a) > 0)",
-     "  const unfamiliar: Recommendation[] = candidates\n    .filter(() => true)"),
+     "  const unfamiliar: Recommendation[] = takeFresh(\n    candidates\n      .filter((a) => gapRank(a) > 0)",
+     "  const unfamiliar: Recommendation[] = takeFresh(\n    candidates\n      .filter(() => true)"),
     ("fast", "추천에서 근거 문장 제거 (블랙박스)", P,
-     "      reasons: [`${viaNames(a.id)}와 이어져 있다`, ...wanted(a.id)]", "      reasons: []"),
+     "    reasons: [`${viaNames(a.id)}와 이어져 있다`, ...wanted(a.id)]", "    reasons: []"),
     ("fast", "이미 읽은 작가를 다시 추천", P,
      "  const candidates = authors.filter((a) => !read.has(a.id));", "  const candidates = authors;"),
     ("fast", "공유 링크가 궤도(want)를 잃음", P,
@@ -185,18 +191,52 @@ MUTATIONS = [
     ("browser", "눈금 단위가 퇴화해 눈금이 한 개도 안 놓인다", G,
      "  for (const s of [1, 2, 5, 10, 20, 50, 100]) if (span / s <= 6) return s;",
      "  for (const s of []) if (span / s <= 6) return s;"),
-    ("browser", "입문 경로 밖의 권에도 색인 글리프를 단다", S,
-     "          text: c.orderIndex >= 0 ? `${indexGlyph(c.orderIndex + 1)} ${work.titleKo}` : work.titleKo,",
-     "          text: `${indexGlyph(Math.abs(c.orderIndex) + 1)} ${work.titleKo}`,"),
+    ("browser", "입문 경로 밖의 권에도 순서 숫자를 단다", S,
+     "          text: c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo,",
+     "          text: `${Math.abs(c.orderIndex) + 1} ${work.titleKo}`,"),
     ("browser", "착륙 패널의 마크를 폭으로만 묶는다 (세로 자산이 카드를 뚫음)",
      "src/universe/universe.css",
      "  max-height: 116px;", "  max-height: 9999px;"),
     ("browser", "마크에 반전 필터를 되돌린다 (붉은 낙관이 청록으로)",
      "src/universe/universe.css",
      "  object-fit: contain;\n}", "  object-fit: contain;\n  filter: invert(1);\n}"),
-    ("browser", "입문 순서를 라벨에서 지운다 (색인 글리프 없음)", S,
-     "          text: c.orderIndex >= 0 ? `${indexGlyph(c.orderIndex + 1)} ${work.titleKo}` : work.titleKo,",
+    ("browser", "입문 순서를 라벨에서 지운다 (순서 숫자 없음)", S,
+     "          text: c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo,",
      "          text: work.titleKo,"),
+    ("browser", "서가가 다시 원 숫자 ①②③ 를 단다 (색인 글리프와 이중 의미 회귀)", S,
+     "          text: c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo,",
+     "          text: c.orderIndex >= 0 ? `${indexGlyph(c.orderIndex + 1)} ${work.titleKo}` : work.titleKo,"),
+    # ——— R11-e: 파일럿·모의 심사가 잡은 것들 ———
+    ("browser", "'하늘로'가 출발 구도가 아니라 현재 접근각으로 돌아간다 (4/4 가 출발 별을 잃던 회귀)", S,
+     "    if (approachOverride) approach = approachOverride;", "    // approach override removed"),
+    ("browser", "검색창 Enter 가 다시 아무 일도 하지 않는다", "src/universe/UniverseApp.tsx",
+     "              if (e.key === \"Enter\" && hits[0]) {", "              if (false && hits[0]) {"),
+    ("browser", "책등 정면 권의 클릭 프록시를 뗀다 (책등 25px 만 맞던 회귀)", S,
+     "      group.add(proxy);", "      // proxy removed"),
+    ("browser", "초점 원반에 걸치는 별 이름을 다시 원반 위에 찍는다", S,
+     "          if (Math.hypot(nx - disc.cx, ny - disc.cy) < disc.r) {",
+     "          if (false) {"),
+    ("browser", "착륙한 천체의 관계선이 표면에서 기둥으로 다시 선다", S,
+     "      if (landed && (l.a === landed || l.b === landed)) continue;", "      // skip removed"),
+    ("browser", "범례 지목이 다시 이웃 등록부(놋쇠 기준선)를 빌린다", S,
+     "                : inGroupFocus\n                  ? \"listed\"", "                : inGroupFocus\n                  ? \"neighbor\""),
+    ("browser", "읽음 표시가 저장되지 않는다", "src/universe/UniverseApp.tsx",
+     "    if (personalReady && !shared) savePersonal(personal);", "    if (false) savePersonal(personal);"),
+    ("browser", "공유 성좌를 연 브라우저에 빈 성좌가 기록된다 (로드 전 저장 회귀)", "src/universe/UniverseApp.tsx",
+     "    if (personalReady && !shared) savePersonal(personal);", "    if (!shared) savePersonal(personal);"),
+    ("browser", "착륙 표면 원장에 표면에 없는 기록 사진 행이 돌아온다", "src/universe/assets.ts",
+     "  const archival = art.archival[authorId];\n  if (archival) jobs.push(load(archival.file).then((i) => (set.archival = i)).catch(() => null));",
+     "  const a0 = take(\"기록 사진\", art.archival[authorId]);\n  if (a0) jobs.push(a0.then((i) => (set.archival = i)).catch(() => null));"),
+    ("browser", "모르는 ?lens= 값을 그대로 캐스트한다 (빈 #root 회귀)", "src/universe/UniverseApp.tsx",
+     "    else if (l && LENSES.some((d) => d.id === l)) setLensId(l as LensId);", "    else if (l) setLensId(l as LensId);"),
+    ("browser", "조작된 공유 링크의 모르는 ID 를 그대로 센다", P,
+     "    return onlyKnown(out, known);", "    return out;"),
+    ("browser", "착륙 중에도 색인 범례가 남는다 (1 2 3 옆에 ①②③)", "src/universe/UniverseApp.tsx",
+     "          {lens && lens.groups.length && !landedId ? (", "          {lens && lens.groups.length ? ("),
+    ("browser", "준비도 문장이 다시 동어반복 '기준 4/4' 로 돌아간다", C,
+     "            문구 검수 {p.readiness?.verifiedAt ?? \"완료\"}", "            기준 {p.readiness?.met.length ?? 0}/4 충족"),
+    ("browser", "전환마다 포커스가 <body> 로 떨어진다", "src/universe/UniverseApp.tsx",
+     "    sel?.focus({ preventScroll: true });", "    // focus management removed"),
     ("browser", "착륙해도 화면의 위쪽이 월드 상방이다 (서가가 뒤집힘)", S,
      "      toUp = this.arrivalDir(target.clone().normalize(), SHELF_AXIS_DEG);",
      "      toUp = new THREE.Vector3(0, 1, 0);"),

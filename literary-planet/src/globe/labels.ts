@@ -1,7 +1,9 @@
 // DOM label overlay with greedy screen-space collision.
 // DOM (not sprites) keeps Korean text crisp and screen-reader reachable.
 
-export type LabelState = "normal" | "selected" | "hovered" | "neighbor" | "dim";
+/** "listed" = 범례에서 지목된 구성원(성계 전용). 예산 우회는 neighbor 와 같고
+ *  등록부(잉크)는 다르다 — 관계 이웃과 사조 동류가 같은 기준선을 쓰지 않도록. */
+export type LabelState = "normal" | "selected" | "hovered" | "neighbor" | "listed" | "dim";
 
 export interface LabelItem {
   id: string;
@@ -49,7 +51,7 @@ function overlaps(a: Rect, b: Rect, pad: number): boolean {
 export const LABEL_CHROME_SLIP = 22;
 export const LABEL_CHROME_ENGRAVED = 4;
 
-function estimateWidth(text: string, fontSize: number, chrome: number): number {
+export function estimateWidth(text: string, fontSize: number, chrome: number): number {
   let units = 0;
   for (const ch of text) {
     units += /[ᄀ-ᇿ㄰-㆏가-힯一-鿿぀-ヿ]/.test(ch)

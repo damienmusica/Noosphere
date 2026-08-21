@@ -75,8 +75,11 @@ export function preloadAuthor(
   if (g) jobs.push(g.then((i) => (set.ground = i)).catch(() => null));
   const m = take("서명·낙관", art.marks[authorId]);
   if (m) jobs.push(m.then((i) => (set.mark = i)).catch(() => null));
-  const a = take("기록 사진", art.archival[authorId]);
-  if (a) jobs.push(a.then((i) => (set.archival = i)).catch(() => null));
+  // 기록 사진은 **궤도 카드**의 자산이지 착륙 표면의 자산이 아니다 — 표면에
+  // 붙지 않는 것의 근거 행을 표면 원장에 싣지 않는다(모의 심사 지적: 원장 7행
+  // 중 1행이 그 표면에 없는 자산이었다). 사진의 근거는 카드의 figcaption 이 싣는다.
+  const archival = art.archival[authorId];
+  if (archival) jobs.push(load(archival.file).then((i) => (set.archival = i)).catch(() => null));
   for (const w of workIds) {
     const c = take("초판 표지", art.covers[w], w);
     if (c) jobs.push(c.then((i) => set.covers.set(w, i)).catch(() => null));

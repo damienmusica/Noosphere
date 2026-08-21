@@ -38,12 +38,12 @@
 }
 
 .u-stage {
+  /* 상태 표시이지 버튼이 아니다 — 테두리를 주면 누른다(합성 파일럿 P4 2회) */
   font-size: 12px;
   letter-spacing: 0.18em;
   color: var(--brass);
-  border: 1px solid var(--brass-a35);
-  border-radius: 2px;
-  padding: 2px 9px;
+  padding: 2px 0;
+  border-bottom: 1px solid var(--brass-a35);
 }
 
 .u-stage[data-stage="surface"] {
@@ -81,9 +81,12 @@
 }
 
 .u-btn--land {
-  background: var(--vermilion);
-  border-color: var(--vermilion);
-  color: var(--ink-on-vermilion);
+  /* 주홍은 선택 채널의 유일한 사용자다(테제 §③). 문은 행동이지 선택이 아니므로
+     행동 강조색(놋쇠 채움)을 쓴다 — 정지 표시 하나 더 찍는 게 아니다 */
+  background: var(--brass-bright);
+  border-color: var(--brass-bright);
+  color: var(--ink-on-accent);
+  font-weight: 700;
 }
 
 .u-btn:focus-visible,
@@ -227,7 +230,8 @@
 /* ——— 나의 성좌 ——— */
 .u-mine {
   flex: 0 0 auto;
-  max-height: 48%;
+  /* 48% 는 '읽음 표시' 한 번에 사조 색인을 ⑤까지만 남겼다(실측). 색인이 본체다 */
+  max-height: 36%;
   overflow-y: auto;
   background: var(--surface-veil);
   border: 1px solid var(--line);
@@ -337,6 +341,9 @@
   display: flex;
   gap: 14px;
   align-items: flex-start;
+  /* 기록 사진 카드와 미해상 기록 카드의 머리 높이를 맞춘다 — 달랐을 때 '읽음
+     표시' 버튼이 카드마다 77px 오르내려 헛클릭을 만들었다(합성 파일럿 2인) */
+  min-height: 176px;
 }
 
 .u-card h2 {
@@ -768,8 +775,10 @@
 }
 
 .u-tag--warn {
-  background: var(--vermilion);
-  color: var(--ink-on-vermilion);
+  /* 경고도 주홍을 빌리지 않는다 — 놋쇠 테두리 + 놋쇠 글자 */
+  background: transparent;
+  border: 1px solid var(--brass);
+  color: var(--brass);
 }
 
 .u-card__diff {
@@ -962,4 +971,24 @@
 .u-prov a {
   font-size: 10.5px;
   color: var(--brass);
+}
+
+/* 범례에서 지목된 구성원 — 관계 이웃(놋쇠 기준선)과 다른 등록부: 글자만 밝힌다 */
+.universe .globe-label[data-ground="sky"].is-listed {
+  color: var(--text);
+}
+
+/* 기록 사진의 근거 — 사진이 보이는 표면이 싣는다 */
+.u-prov--inline {
+  margin-top: 4px;
+  font-size: 10.5px;
+}
+.u-prov--inline summary {
+  cursor: pointer;
+  color: var(--text-faint);
+}
+.u-prov--inline .u-prov__title,
+.u-prov--inline .u-prov__meta {
+  display: block;
+  line-height: 1.4;
 }

@@ -14,7 +14,7 @@ import type { Author, Work } from "../types.ts";
 import { COLORS } from "../theme.ts";
 import type { ArtManifest } from "../globe/art-assets.ts";
 import { artUrl } from "../globe/art-assets.ts";
-import { LabelLayer, type LabelItem } from "../globe/labels.ts";
+import { LabelLayer, estimateWidth, LABEL_CHROME_ENGRAVED, type LabelItem } from "../globe/labels.ts";
 import {
   CAM_SKY_DEFAULT,
   CAM_SKY_MAX,
@@ -48,6 +48,10 @@ import {
   yearToLon
 } from "./grammar.ts";
 import { indexGlyph } from "./lenses.ts";
+
+/** 하단 연도 슬라이더 판이 덮는 띠 — 여기 놓인 이름은 읽을 수 없다 */
+const YEAR_PANEL_INSET = 84;
+const YEAR_PANEL_HALF_W = 350;
 import { isLandable } from "./readiness.ts";
 import type { AssetSet } from "./assets.ts";
 import type { LensLine, LensResult } from "./lenses.ts";
@@ -73,7 +77,7 @@ export interface UniverseSceneState {
   /** 선택된 별의 자기 성좌 — 렌즈와 무관하게 항상 그린다(중경의 관계 흐름) */
   ego: LensLine[];
   egoLit: Set<string>;
-  /** 지목된 한 그룹의 색인 번호만 하늘에 표시된다. 별의 밝기·색·링은 무접촉 */
+  /** 전 구성원의 색인 번호가 이름표에 붙는다(첫 프레임). 범례 지목은 이름표를 띄우는 별도 상호작용. 별의 밝기·색·링은 무접촉 */
   lensMarks: Map<string, number[]>;
   /** 범례에서 지목된 그룹의 구성원 — 이름표를 강제로 띄운다(목록↔하늘 연동) */
   lensGroupFocus: Set<string> | null;
@@ -172,6 +176,11 @@ export class UniverseScene {
 
   private bodies = new Map<string, BodyRecord>();
   private cityGroup = new THREE.Group();
+  /** 마지막으로 **하늘에 머물던** 카메라 위치. '하늘로'는 원경이 아니라 **이 자리**로
+   *  돌아온다 — 합성 파일럿 4/4 가 복귀 후 출발 별을 잃었다(착륙 접근각이 그대로
+   *  남아 다른 구도로 돌아왔기 때문). 처음 있던 화면으로 돌아오지 못하면 방향감
+   *  과제는 사람이 아니라 제품을 잰다. */
+  private skyPose = new THREE.Vector3(0, 420, CAM_SKY_DEFAULT);
   private cityRecords: Array<{
     workId: string;
     obj: THREE.Object3D;
@@ -287,6 +296,10 @@ export class UniverseScene {
     /** 착륙 대상의 실물 자산이 착륙 이전에 디코드되어 있었는가 */
     assetsPreloaded: false,
     landedWithoutAssets: false,
+    cam: [0, 0, 0] as [number, number, number],
+    linesTouchingLanded: 0,
+    occludedLabels: 0,
+    labelsOverFocus: 0,
     /** 작품 도시(연도 서가) — 전부 렌더에서 잰다. cityMetrics() 참조 */
     cities: {
       faceOut: 0,
@@ -305,6 +318,8 @@ export class UniverseScene {
       chromeBuried: 0,
       ticks: 0,
       ordered: [] as string[],
+      boxes: {} as Record<string, [number, number, number, number]>,
+      spineOutIds: [] as string[],
       rowFrontY: -1,
       rowBackY: -1,
       uprightRatio: -1,
@@ -629,6 +644,8 @@ export class UniverseScene {
     const prevLanded = this.state.landedId;
     const prevFocus = this.state.focusId;
     this.state = { ...this.state, ...next };
+    // 감쇠 관성은 비행이 아니라도 움직임이다 — reduced-motion 이면 끈다
+    this.controls.enableDamping = !this.state.reducedMotion;
     this.refreshStars();
     this.rebuildLens();
     this.refreshConstellation();
@@ -812,7 +829,9 @@ export class UniverseScene {
     pos.needsUpdate = true;
     alpha.needsUpdate = true;
     tr.needsUpdate = true;
-    (this.lensTraces.material as THREE.LineBasicMaterial).opacity = 0.55 * this.lensK;
+    // 0.55 를 곱하면 하늘 위 1.86:1 로 떨어져 테제가 측정한 --stitch(3.52:1)가
+    // 아니다. 페이드는 lensK 가 맡고 잉크는 토큰 그대로 둔다.
+    (this.lensTraces.material as THREE.LineBasicMaterial).opacity = this.lensK;
   }
 
   private present(i: number): boolean {
@@ -825,7 +844,11 @@ export class UniverseScene {
     this.buildLines(this.egoLines, this.state.ego);
   }
 
+  /** 실제로 그려진 선의 양 끝 — 계약이 "착륙한 천체에 닿는 선이 0"을 여기서 센다 */
+  private drawnLineEnds: Array<[string, string]> = [];
+
   private buildLines(mesh: THREE.LineSegments, lines: LensLine[]): void {
+    if (mesh === this.egoLines) this.drawnLineEnds = [];
     const pos = new Float32Array(lines.length * 6);
     const col = new Float32Array(lines.length * 6);
     let n = 0;
@@ -836,6 +859,12 @@ export class UniverseScene {
       // 아직 태어나지 않은 별 사이에는 선도 없다 — 연도 스크럽에서 관계가
       // 그 관계의 당사자보다 먼저 존재하면 시간 채널이 거짓말이 된다
       if (!this.present(ia) || !this.present(ib)) continue;
+      // 착륙한 천체의 선은 표면에서 퇴장한다. 천체 중심에서 나오는 현은 지각을
+      // 뚫고 나와 책 옆에 선 기둥으로 읽힌다(실측: 소세키 서가의 아쿠타가와 선)
+      // — 관측 표식이 표면에서 퇴장하는 것과 같은 이유다.
+      const landed = this.state.landedId;
+      if (landed && (l.a === landed || l.b === landed)) continue;
+      this.drawnLineEnds.push([l.a, l.b]);
       const pa = this.effectivePos(l.a, new THREE.Vector3());
       const pb = this.effectivePos(l.b, new THREE.Vector3());
       const c = new THREE.Color(l.color);
@@ -1168,6 +1197,18 @@ export class UniverseScene {
       const cover = this.data.art?.covers?.[w.id];
       const vol = this.buildVolume(w, bw, bh, bd, cover?.file);
       group.add(vol.root);
+      // 보이지 않는 히트 프록시. 책등을 정면으로 돌린 권은 관측자에게 두께(bd)
+      // 만큼만 보이고, 레이캐스트도 그 폭만 맞는다 — 합성 파일럿 4인 중 3인이
+      // "안 눌린다"로 읽었고, 그러면 회고의 핵심 질문이 "고장"으로 오염된다.
+      // 프록시는 빌보드 그룹(회전하지 않는 쪽)에 달아 보이는 발자국을 감싼다.
+      const proxy = new THREE.Mesh(
+        new THREE.BoxGeometry(cover ? bw : Math.max(bd, bw * 0.7), bh * 1.15, Math.max(bd, bw * 0.5)),
+        new THREE.MeshBasicMaterial({ visible: false })
+      );
+      proxy.position.set(0, bh * 0.5, 0);
+      proxy.userData.workId = w.id;
+      proxy.userData.hitProxy = true;
+      group.add(proxy);
 
       this.cityGroup.add(group);
       this.cityRecords.push({
@@ -1473,7 +1514,9 @@ export class UniverseScene {
       return;
     }
     this.landTarget = null;
-    this.flyTo(new THREE.Vector3(0, 0, 0), CAM_SKY_DEFAULT, 1000);
+    // 원경 거리로 돌아가되 **출발 구도**로 돌아간다. 현재 오프셋 방향을 쓰면
+    // 착륙 접근각이 그대로 남아 "처음 있던 화면"이 아닌 곳에 내려놓는다.
+    this.flyTo(new THREE.Vector3(0, 0, 0), this.skyPose.length(), 1000, this.skyPose.clone().normalize());
   }
 
   /**
@@ -1487,7 +1530,12 @@ export class UniverseScene {
     return radial.clone().addScaledVector(perp, Math.tan((deg * Math.PI) / 180)).normalize();
   }
 
-  private flyTo(target: THREE.Vector3, dist: number, dur: number): void {
+  private flyTo(
+    target: THREE.Vector3,
+    dist: number,
+    dur: number,
+    approachOverride?: THREE.Vector3
+  ): void {
     const dir = this.camera.position.clone().sub(this.controls.target);
     let approach: THREE.Vector3;
     // 착륙하면 화면의 위쪽은 **그 지면의 위쪽**이다. 월드 상방을 그대로 쓰면,
@@ -1508,6 +1556,7 @@ export class UniverseScene {
     } else {
       approach = dir.clone().normalize();
     }
+    if (approachOverride) approach = approachOverride;
     const toPos = target.clone().addScaledVector(approach, dist);
     if (this.state.reducedMotion) {
       this.controls.target.copy(target);
@@ -1678,6 +1727,8 @@ export class UniverseScene {
     if (this.disposed) return;
     this.raf = requestAnimationFrame(this.loop);
     this.advance(performance.now());
+    if (!this.state.focusId && !this.state.landedId && !this.anim)
+      this.skyPose.copy(this.camera.position);
     this.step();
   };
 
@@ -1876,8 +1927,68 @@ export class UniverseScene {
       ),
       landedWithoutAssets: this.landedWithoutAssets,
       cities: this.cityMetrics(),
-      crust: (landedRec?.mesh.userData.crust as string | undefined) ?? null
+      crust: (landedRec?.mesh.userData.crust as string | undefined) ?? null,
+      cam: [
+        Math.round(this.camera.position.x),
+        Math.round(this.camera.position.y),
+        Math.round(this.camera.position.z)
+      ] as [number, number, number],
+      // 착륙한 천체에 닿는 선이 **실제로 그려졌는가** — 건너뛰는 코드를 되읽지
+      // 않고 버퍼에 들어간 선의 양 끝을 센다
+      linesTouchingLanded: this.state.landedId
+        ? this.drawnLineEnds.filter(([a, b]) => a === this.state.landedId || b === this.state.landedId).length
+        : 0,
+      occludedLabels: this.lastOccludedLabels,
+      labelsOverFocus: this.labelsOverFocus()
     };
+  }
+
+  /**
+   * 초점 원반 **안에** 앵커가 놓인 타인 이름표 수(DOM 에서 읽는다). 가림 가드가
+   * 제대로면 0 이다 — 가드 코드가 아니라 화면에 남은 라벨을 센다.
+   */
+  /** 초점 원반의 화면 투영 — 계약과 라벨 가드가 같은 값을 쓴다 */
+  private focusDiscPx(): { cx: number; cy: number; r: number } | null {
+    const s = this.state;
+    const fid = s.focusId;
+    if (!fid || s.landedId || this.stage === "surface") return null;
+    const body = this.bodies.get(fid);
+    if (!body || !body.mesh.visible) return null;
+    const w = this.renderer.domElement.clientWidth;
+    const h = this.renderer.domElement.clientHeight;
+    const c = body.center.clone().project(this.camera);
+    const rWorld = body.radius * (isLandable(fid) ? 1 + (LENS_MAG - 1) * this.lensK : 1);
+    return {
+      cx: ((c.x + 1) / 2) * w,
+      cy: ((-c.y + 1) / 2) * h,
+      r: apparentRadiusPx(rWorld, body.center.distanceTo(this.camera.position), this.camera.fov, h)
+    };
+  }
+
+  /**
+   * 초점 원반 위에 **글자가 걸친** 타인 이름표 수(DOM 에서 읽는다). 앵커만 보면
+   * 원반 가장자리 바로 밖의 앵커에서 글자가 원반 위로 넘어간다(실측: 소세키
+   * 원반 우측 '프란츠 카프카 ①'). 라벨의 실제 사각형과 원을 겹쳐 본다.
+   */
+  private labelsOverFocus(): number {
+    const d = this.focusDiscPx();
+    if (!d) return 0;
+    const fid = this.state.focusId;
+    const hostRect = this.host.getBoundingClientRect();
+    let n = 0;
+    for (const el of this.host.querySelectorAll<HTMLElement>(".globe-label--author")) {
+      if (el.style.display === "none" || el.dataset.labelId === fid) continue;
+      const r = el.getBoundingClientRect();
+      const x0 = r.left - hostRect.left;
+      const x1 = r.right - hostRect.left;
+      const y0 = r.top - hostRect.top;
+      const y1 = r.bottom - hostRect.top;
+      // 사각형과 원의 최근접점 거리
+      const px = Math.max(x0, Math.min(d.cx, x1));
+      const py = Math.max(y0, Math.min(d.cy, y1));
+      if (Math.hypot(px - d.cx, py - d.cy) < d.r) n++;
+    }
+    return n;
   }
 
   /**
@@ -1909,8 +2020,11 @@ export class UniverseScene {
     chromeBuried: number;
     /** 난간에 새겨진 연도 눈금 수 */
     ticks: number;
-    /** 입문 경로에 속한 권의 작품 ID — 라벨의 색인 글리프가 정확히 이 집합이어야 한다 */
+    /** 입문 경로에 속한 권의 작품 ID — 라벨의 순서 숫자가 정확히 이 집합이어야 한다 */
     ordered: string[];
+    /** 권마다 투영된 화면 사각형 [x0,y0,x1,y1] 과 책등 정면인 권의 ID — 클릭 계약용 */
+    boxes: Record<string, [number, number, number, number]>;
+    spineOutIds: string[];
     /** 투영된 책의 세로/가로 비 최솟값 — 1 미만이면 서 있던 것이 누웠다 */
     uprightRatio: number;
     total: number;
@@ -1941,6 +2055,7 @@ export class UniverseScene {
     let spineDressed = 0;
     let coverDressed = 0;
     const boxes: Array<[number, number, number, number]> = [];
+    const boxById: Record<string, [number, number, number, number]> = {};
     const rowY: [number[], number[]] = [[], []];
     const sameRow: number[] = [];
     let upright = Infinity;
@@ -1995,6 +2110,7 @@ export class UniverseScene {
           }
       if (!behind) {
         boxes.push([x0, y0, x1, y1]);
+        boxById[c.workId] = [Math.round(x0), Math.round(y0), Math.round(x1), Math.round(y1)];
         sameRow.push(c.row);
         (rowY[c.row === 0 ? 0 : 1] as number[]).push((y0 + y1) / 2);
         if (x1 > x0) upright = Math.min(upright, (y1 - y0) / (x1 - x0));
@@ -2064,12 +2180,18 @@ export class UniverseScene {
       chromeBuried: buried,
       ticks: this.cityTicks,
       ordered: this.cityRecords.filter((c) => c.orderIndex >= 0).map((c) => c.workId),
+      boxes: boxById,
+      spineOutIds: this.cityRecords.filter((c) => !isFaceOut(c)).map((c) => c.workId),
       rowFrontY: mean(rowY[0]),
       rowBackY: mean(rowY[1]),
       uprightRatio: Number.isFinite(upright) ? Number(upright.toFixed(2)) : -1,
       total: this.cityRecords.length
     };
   }
+
+  /** 이번 프레임에 초점 원반에 걸려 접은 이름 수 — 계약은 이것이 아니라
+   *  화면에 남은 라벨(labelsOverFocus)을 읽는다 */
+  private lastOccludedLabels = 0;
 
   /** 판은 표면에 서 있고(+Y = 지면 법선) 관측자를 향해 돈다 — 축 고정 빌보드 */
   private orientCities(): void {
@@ -2097,6 +2219,8 @@ export class UniverseScene {
     const v = new THREE.Vector3();
     const camDir = this.camera.getWorldDirection(new THREE.Vector3());
     const s = this.state;
+    this.lastOccludedLabels = 0;
+    const disc = this.focusDiscPx();
 
     if (this.stage !== "surface") {
       // 원경은 이름을 아끼는 자리다. **속성 그룹의 평균점 이름표는 그리지
@@ -2152,26 +2276,53 @@ export class UniverseScene {
         if (toward.dot(camDir) < 0.28) continue;
         v.copy(world).project(this.camera);
         if (v.z > 1) continue;
+        // 해상된 초점 원반 **위에 글자가 걸치는** 이름은 그리지 않는다 — 뒤에
+        // 가려진 별(실측: 소세키 원반 위 '프란츠 카프카 ①')도, 앵커는 원반 밖인데
+        // 가운데 정렬된 글자가 원반으로 넘어오는 별도 같은 검사로 접힌다. 처음엔
+        // 광선-구 검사를 따로 뒀는데 변이 스윕이 그것이 이 검사에 **완전히
+        // 포괄되는 죽은 코드**임을 증명해 걷어냈다. 초점 자신은 예외(그 원반은
+        // 그 이름의 것이다).
+        if (id !== s.focusId && id !== s.landedId && disc) {
+          const ax = ((v.x + 1) / 2) * w;
+          const ay = ((-v.y + 1) / 2) * h + 14;
+          // 라벨의 실제 폭으로 잰다 — 라벨 레이어와 같은 추정 함수, 같은 각자 크롬
+          const mag0 = this.mags[i] ?? 0;
+          const fs = mag0 > 0.6 ? 16 : mag0 > 0.3 ? 14 : 13;
+          const glyphs0 = (s.lensMarks.get(id) ?? []).map(indexGlyph).join("");
+          const text0 = glyphs0 ? `${a.names.ko}\u2009${glyphs0}` : a.names.ko;
+          const halfW = estimateWidth(text0, fs, LABEL_CHROME_ENGRAVED) / 2 + 6;
+          const nx = Math.max(ax - halfW, Math.min(disc.cx, ax + halfW));
+          const ny = Math.max(ay, Math.min(disc.cy, ay + fs + 6));
+          if (Math.hypot(nx - disc.cx, ny - disc.cy) < disc.r) {
+            this.lastOccludedLabels++;
+            continue;
+          }
+        }
         const mag = this.mags[i] ?? 0;
-        // "neighbor" 는 그리디 예산을 우회한다(labels.ts). 렌즈가 켜지면 밝혀진
-        // 별이 수십 개라 그 상태를 주면 원경이 이름으로 뒤덮인다(실측 41개).
-        // 예산을 넘겨도 되는 것은 선택 자신과 그 자기 성좌뿐이다.
-        // "neighbor" 는 그리디 예산을 우회한다(labels.ts). 예산을 넘겨도 되는
-        // 것은 선택 자신·자기 성좌·범례에서 지목된 성좌뿐이다.
+        // "neighbor" 와 "listed" 는 그리디 예산을 우회한다(labels.ts). 예산을
+        // 넘겨도 되는 것은 선택 자신·자기 성좌·범례에서 지목된 구성원뿐이다.
+        // 지목된 구성원은 **관계 이웃과 다른 상태**다 — 같은 놋쇠 기준선을 주면
+        // 사조가 같을 뿐인 별이 근거 있는 관계 이웃과 구분되지 않는다(실측:
+        // 마푸즈·마샤두가 보르헤스와 바이트 단위로 같은 라벨이었다).
         const state =
           id === s.focusId || id === s.landedId
             ? "selected"
             : id === s.hoveredId
               ? "hovered"
-              : s.egoLit.has(id) || inGroupFocus
+              : s.egoLit.has(id)
                 ? "neighbor"
-                : "normal";
+                : inGroupFocus
+                  ? "listed"
+                  : "normal";
         const glyphs = (s.lensMarks.get(id) ?? []).map(indexGlyph).join("");
         const sx = ((v.x + 1) / 2) * w;
+        const sy = ((-v.y + 1) / 2) * h + 14;
         // 패널이 덮는 띠에는 이름을 놓지 않는다 — 읽을 수 없는 라벨은
-        // 정보가 아니라 소음이다(R9 "뷰포트 안의 다음 행동" 계승)
+        // 정보가 아니라 소음이다(R9 "뷰포트 안의 다음 행동" 계승). 하단 연도
+        // 슬라이더 판도 같은 띠다(실측: 보들레르 ⑥ 가 슬라이더 아래로 들어갔다).
         if (sx < this.safeLeft && id !== s.focusId) continue;
         if (sx > w - this.safeRight && id !== s.focusId) continue;
+        if (sy > h - YEAR_PANEL_INSET && Math.abs(sx - w / 2) < YEAR_PANEL_HALF_W) continue;
         items.push({
           id,
           text: glyphs ? `${a.names.ko}\u2009${glyphs}` : a.names.ko,
@@ -2184,7 +2335,7 @@ export class UniverseScene {
             (s.read.has(id) ? 60 : 0) +
             mag * 100,
           x: sx,
-          y: ((-v.y + 1) / 2) * h + 14,
+          y: sy,
           state,
           ground: "sky",
           // 층이 켜져 있고 이 별이 그 층 밖이면 글자를 접는다(틱만 남는다).
@@ -2207,9 +2358,11 @@ export class UniverseScene {
         if (toward.dot(camDir) < 0.1) continue;
         items.push({
           id: c.workId,
-          // 입문 **순서**는 여기서만 말한다. 색인 글리프는 관측층 범례가 이미
-          // 쓰는 어휘이므로 새 채널이 아니다 — 같은 글자가 같은 뜻을 나른다.
-          text: c.orderIndex >= 0 ? `${indexGlyph(c.orderIndex + 1)} ${work.titleKo}` : work.titleKo,
+          // 입문 **순서**는 여기서만 말한다 — 궤도 카드의 「입문 순서」목록과 같은
+          // 일반 숫자로. 원 숫자 ①②③ 는 관측층 색인(명목) 전용이다: 같은 글자가
+          // 하늘에선 소속, 서가에선 순서를 뜻하던 것을 두 측정(모의 심사·합성
+          // 파일럿 4/4)이 동시에 잡았다.
+          text: c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo,
           kind: "work",
           size: "sm",
           priority: work.id === s.selectedWorkId ? 400 : 100,

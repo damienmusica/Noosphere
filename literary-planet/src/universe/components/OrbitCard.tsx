@@ -14,7 +14,7 @@
 
 import { useEffect, useRef } from "react";
 import type { Author, Relation, Work } from "../../types.ts";
-import { artUrl, type ArtManifest } from "../../globe/art-assets.ts";
+import { artUrl, type ArtManifest, type AssetProvenance } from "../../globe/art-assets.ts";
 import { periodOf } from "../grammar.ts";
 import { PERIOD_TINT, COLORS } from "../../theme.ts";
 
@@ -47,15 +47,49 @@ export interface OrbitCardProps {
   onClose(): void;
 }
 
-/** 사다리 1단 — 권리 확인 기록 사진 */
-function ArchivalPortrait({ file }: { file: string }) {
+/** 사다리 1단 — 권리 확인 기록 사진. 근거는 **사진이 보이는 이 표면**이 싣는다 */
+function ArchivalPortrait({
+  file,
+  provenance
+}: {
+  file: string;
+  provenance?: AssetProvenance | null;
+}) {
   return (
     <figure className="u-portrait u-portrait--archival">
       <img src={artUrl(file)} alt="" />
-      <figcaption>기록 사진</figcaption>
+      <figcaption>
+        기록 사진
+        {provenance ? (
+          <details className="u-prov u-prov--inline" data-testid="portrait-provenance">
+            <summary>근거</summary>
+            <span className="u-prov__title">{provenance.title ?? "제목 미기재"}</span>
+            <span className="u-prov__meta">
+              {provenance.collection ?? "소장처 미기재"} · {provenance.licence ?? "라이선스 미기재"}
+              {provenance.pageUrl ? (
+                <>
+                  {" · "}
+                  <a href={provenance.pageUrl} target="_blank" rel="noopener noreferrer">
+                    원본 파일 페이지
+                  </a>
+                </>
+              ) : null}
+            </span>
+          </details>
+        ) : null}
+      </figcaption>
     </figure>
   );
 }
+
+/** 시대층의 한국어 이름 — 카드는 독자에게 말하지, 코드 값(`early-modernism`)을 내보이지 않는다 */
+const PERIOD_KO: Record<string, string> = {
+  roots: "19세기 이전",
+  "early-modernism": "모더니즘 초기",
+  "mid-century": "20세기 중반",
+  "late-postmodern": "후기·포스트모던",
+  contemporary: "동시대"
+};
 
 /**
  * 사다리 4단 — **미해상 기록(未解像 記錄)**. 얼굴도, 문장(紋章)도, 성씨에서
@@ -123,10 +157,11 @@ function UnresolvedRecord({
           {author.birthYear ?? "?"}–{author.deathYear ?? ""} · {author.languages.join("·")}
         </span>
         <span>
-          광도 {star.magnitude.toFixed(2)} · {periodOf(author)}({author.anchorYear})
+          광도 {star.magnitude.toFixed(2)} (영향력) · {PERIOD_KO[periodOf(author)] ?? periodOf(author)}{" "}
+          {author.anchorYear}
         </span>
         <span>
-          관계 {counts.relations} · 작품 {counts.works} · 초판 {counts.covers} · 육필 없음
+          관계 {counts.relations} · 작품 {counts.works} · 초판 실물 {counts.covers} · 육필 없음
         </span>
       </div>
       <figcaption>기록 초상 없음 — 미해상</figcaption>
@@ -160,13 +195,13 @@ export function OrbitCard(p: OrbitCardProps) {
   const covers = p.works.filter((w) => p.art?.covers?.[w.id]).length;
 
   return (
-    <aside className="u-card" data-author={a.id} aria-label={`${a.names.ko} 궤도 정보`}>
+    <aside className="u-card" data-author={a.id} aria-label={`${a.names.ko} 궤도 정보`} tabIndex={-1}>
       <button className="u-card__close" onClick={p.onClose} aria-label="닫기">
         ×
       </button>
       <header className="u-card__head">
         {archival ? (
-          <ArchivalPortrait file={archival.file} />
+          <ArchivalPortrait file={archival.file} provenance={archival.provenance ?? null} />
         ) : (
           <UnresolvedRecord
             author={a}
@@ -179,7 +214,7 @@ export function OrbitCard(p: OrbitCardProps) {
           <p className="u-card__orig">{a.names.original}</p>
           <p className="u-card__life">
             <span className="u-dot" style={{ background: tint }} aria-hidden="true" />
-            {a.birthYear ?? "?"}–{a.deathYear ?? "현재"} · {a.languages.join("·")} ·{" "}
+            {a.birthYear ?? "?"}–{a.deathYear ?? ""} · {a.languages.join("·")} ·{" "}
             {a.regions.join("·")}
           </p>
         </div>
@@ -214,13 +249,13 @@ export function OrbitCard(p: OrbitCardProps) {
       <p className="u-card__ready" data-testid="readiness">
         {p.landable ? (
           <>
-            착륙지 <strong>준비됨</strong> — 검수 {p.readiness?.verifiedAt ?? "완료"} · 기준{" "}
-            {p.readiness?.met.length ?? 0}/4 충족 · 초판 도시 {covers}종
+            착륙지 <strong>준비됨</strong> — 육필 지각 · 초판 실물 {covers}종 · 기록 사진 ·
+            문구 검수 {p.readiness?.verifiedAt ?? "완료"}
           </>
         ) : (
           <>
-            착륙지 <strong>미준비</strong>({p.readiness?.state ?? "not-started"}) — 이 작가는
-            항성과 궤도 아카이브로 존재한다. 표면은 검수된 뒤에 열린다.
+            착륙지 <strong>미준비</strong> — 육필·초판 같은 실물 자료를 아직 검수하지 못했다.
+            이 궤도에서 읽는 것이 이 작가의 전부이고, 전부 실제 자료다.
           </>
         )}
       </p>

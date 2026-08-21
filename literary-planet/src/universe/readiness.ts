@@ -14,6 +14,8 @@ export interface ReadinessEntry {
   met: string[];
   verifiedAt: string;
   verifiedBy: string;
+  /** 검수가 읽은 표면의 시각 — 표면 코드가 이 뒤에 바뀌면 검수는 낡은 것이다 */
+  surfaceVerifiedAt?: string;
   note: string;
 }
 
