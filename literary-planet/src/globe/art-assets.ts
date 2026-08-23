@@ -28,6 +28,9 @@ export interface ArtAsset {
 
 export interface ArtManifest {
   marks: Record<string, ArtAsset>;
+  /** R12 signature wave — read by the star system's orbit card only; the shipped
+   *  planet app stamps `marks` as seals and must not silently gain 59 more */
+  signatures?: Record<string, ArtAsset>;
   archival: Record<string, ArtAsset>;
   covers: Record<string, ArtAsset>;
   grounds: Record<string, ArtAsset>;

@@ -15,10 +15,10 @@ RAW = os.path.join(ROOT, "art-r10", "build", "raw")
 OUT = os.path.join(ROOT, "public", "art")
 INK = (43, 32, 21)  # warm near-black ink
 
-for d in ("marks", "archival", "covers", "grounds"):
+for d in ("marks", "signatures", "archival", "covers", "grounds"):
     os.makedirs(os.path.join(OUT, d), exist_ok=True)
 
-manifest = {"marks": {}, "archival": {}, "covers": {}, "grounds": {}}
+manifest = {"marks": {}, "signatures": {}, "archival": {}, "covers": {}, "grounds": {}}
 
 # --- provenance: 출하되는 모든 파생물이 원장 행을 달고 나간다 -----------------
 # R11-d: 매니페스트가 covers 에만 licence 를 실었고 grounds/archival/marks 는
@@ -76,16 +76,20 @@ def tight_bbox(rgba, pad=14):
     return rgba.crop((l, t, r, b))
 
 
-def save_mark(author, im, target_h=420, src=None):
+def save_mark(author, im, target_h=420, src=None, bucket="marks"):
+    """bucket="marks" = the R10 set the shipped planet app stamps as seals;
+    bucket="signatures" = the R12 wave, read by the star system's orbit card
+    only. Kept apart so the wave does not silently redraw the shipped app
+    (실측: 59장이 marks 로 들어가자 행성 앱 QA 의 인장 겹침 예산이 터졌다)."""
     im = tight_bbox(im)
     w = round(im.width * target_h / im.height)
     im = im.resize((w, target_h), Image.LANCZOS)
-    f = f"marks/{author}.png"
+    f = f"{bucket}/{author}.png"
     # 잉크 한 색 + 알파 램프뿐이라 팔레트 64색이면 손실 없이 1/4 크기다
     # (서명 파도 62장이 RGBA 로 8.2 MB 였다).
     im.quantize(colors=64, method=Image.Quantize.FASTOCTREE).save(os.path.join(OUT, f), optimize=True)
-    manifest["marks"][author] = {"file": f, "w": im.width, "h": im.height, **provenance(src or "")}
-    print("mark", author, im.size)
+    manifest[bucket][author] = {"file": f, "w": im.width, "h": im.height, **provenance(src or "")}
+    print(bucket[:-1], author, im.size)
 
 
 # --- marks -------------------------------------------------------------------
@@ -191,7 +195,7 @@ for author in sorted(os.listdir(ST)):
     if im.getchannel("A").getbbox() is None:
         print("wave: no ink found — skipped", author)
         continue
-    save_mark(author, im, src=src)
+    save_mark(author, im, src=src, bucket="signatures")
     wave_shipped += 1
 print("signature wave shipped", wave_shipped)
 

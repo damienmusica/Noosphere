@@ -239,7 +239,7 @@ export function OrbitCard(p: OrbitCardProps) {
   const a = p.author;
   const tint = PERIOD_TINT[periodOf(a)];
   const archival = p.art?.archival?.[a.id];
-  const mark = p.art?.marks?.[a.id];
+  const mark = p.art?.marks?.[a.id] ?? p.art?.signatures?.[a.id];
   // 입문 순서는 **편집이 실제로 지목한 것**(readingOrder)만이다. 이전 판은
   // 나머지 작품을 뒤에 이어 붙여 "독서 순서 5"로 번호를 매겼다 — 큐레이션의
   // 부재를 큐레이션으로 위장한 것이고, 착륙 서가는 같은 작품을 "입문 경로

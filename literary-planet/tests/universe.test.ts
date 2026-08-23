@@ -665,21 +665,25 @@ describe("signature wave — every mark ships with provenance, no living author"
   ) as Array<{ id: string; deathYear?: number }>;
   const byId = new Map(authors.map((a) => [a.id, a]));
 
-  it("carries at least the first wave (59) on top of the three originals", () => {
-    expect(Object.keys(manifest.marks).length).toBeGreaterThanOrEqual(62);
+  const all = { ...manifest.marks, ...manifest.signatures } as Record<string, { file: string; provenance: { pageUrl?: string; licence?: string } | null }>;
+
+  it("keeps the shipped app's seal set at the R10 three and carries the wave apart", () => {
+    expect(Object.keys(manifest.marks)).toEqual(["franz-kafka", "rabindranath-tagore", "natsume-soseki"]);
+    expect(Object.keys(manifest.signatures).length).toBeGreaterThanOrEqual(59);
+    for (const id of Object.keys(manifest.signatures)) expect(manifest.marks[id], id).toBeUndefined();
   });
 
-  it("every mark names a file page and a licence, and belongs to a corpus author", () => {
-    for (const [id, m] of Object.entries(manifest.marks) as Array<[string, { file: string; provenance: { pageUrl?: string; licence?: string } | null }]>) {
+  it("every mark and signature names a file page and a licence, and belongs to a corpus author", () => {
+    for (const [id, m] of Object.entries(all)) {
       expect(byId.has(id), id).toBe(true);
-      expect(m.file.startsWith("marks/"), id).toBe(true);
+      expect(/^(marks|signatures)\//.test(m.file), id).toBe(true);
       expect(m.provenance?.pageUrl?.startsWith("https://"), id).toBe(true);
       expect((m.provenance?.licence ?? "").length, id).toBeGreaterThan(2);
     }
   });
 
   it("holds living authors out of the wave (conservative rule)", () => {
-    for (const id of Object.keys(manifest.marks)) expect(byId.get(id)?.deathYear, id).toBeDefined();
+    for (const id of Object.keys(all)) expect(byId.get(id)?.deathYear, id).toBeDefined();
   });
 });
 
