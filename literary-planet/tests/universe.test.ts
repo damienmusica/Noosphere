@@ -585,3 +585,69 @@ describe("relation causality — glyph, order, caption", () => {
     expect(relationCaption({ ...mutual, summary: "x" }, self, name).startsWith("카프카 ↔ 베케트 · 친연")).toBe(true);
   });
 });
+
+// ---------------------------------------------------------------------------
+// 작품 세계 (R12) — 여는 문장·판본·유고는 출처와 연도 논리를 갖는다
+// ---------------------------------------------------------------------------
+import { assembleDataset, type RawCollections } from "../src/data/assemble.ts";
+import { makeDataset, makeWork } from "./fixtures.ts";
+import { workWorldSchema } from "../src/schema.ts";
+
+function rawOf(ds: ReturnType<typeof makeDataset>): RawCollections {
+  return {
+    authorFiles: { "authors/t.json": ds.authors },
+    workFiles: { "works/t.json": ds.works },
+    relationFiles: { "relations/t.json": ds.relations },
+    sourceFiles: { "sources/t.json": ds.sources },
+    movements: ds.movements,
+    tours: ds.tours,
+    positions: ds.positions,
+    registry: ds.registry
+  };
+}
+
+describe("work world — schema and validation", () => {
+  const WORLD = {
+    opening: { original: "Es war spät abends, als K. ankam.", ko: "K.가 도착한 것은 늦은 저녁이었다.", translation: "self" as const, sourceId: "src--britannica" },
+    editions: [{ kind: "first-edition" as const, publisher: "Kurt Wolff", place: "München", year: 1940, sourceIds: ["src--britannica"] }]
+  };
+
+  it("accepts a well-formed world and refuses a translation that is not declared ours", () => {
+    expect(workWorldSchema.safeParse(WORLD).success).toBe(true);
+    expect(workWorldSchema.safeParse({ ...WORLD, opening: { ...WORLD.opening, translation: "published" } }).success).toBe(false);
+    expect(workWorldSchema.safeParse({ ...WORLD, editions: [] }).success).toBe(false);
+  });
+
+  it("rejects an edition dated before the work's publication year", () => {
+    const a = makeAuthor({ id: "a", deathYear: 1950 });
+    const ds = makeDataset([a], []);
+    ds.works = [makeWork("a", 1, { year: 1940, world: { ...WORLD, editions: [{ ...WORLD.editions[0]!, year: 1939 }] } })];
+    const { errors } = assembleDataset(rawOf(ds));
+    expect(errors.some((e) => e.includes("precedes the work's publication year"))).toBe(true);
+  });
+
+  it("rejects a posthumous claim when the first edition is not after the author's death", () => {
+    const a = makeAuthor({ id: "a", deathYear: 1950 });
+    const ds = makeDataset([a], []);
+    ds.works = [
+      makeWork("a", 1, {
+        year: 1940,
+        world: { ...WORLD, posthumous: { editor: "편집자", note: "사후에 엮어 냈다는 주장이다.", sourceIds: ["src--britannica"] } }
+      })
+    ];
+    const { errors } = assembleDataset(rawOf(ds));
+    expect(errors.some((e) => e.includes("posthumous claim"))).toBe(true);
+    // 사망 뒤의 초판이면 통과
+    ds.works[0]!.world!.editions[0]!.year = 1951;
+    ds.works[0]!.year = 1951;
+    expect(assembleDataset(rawOf(ds)).errors.filter((e) => e.includes("posthumous"))).toEqual([]);
+  });
+
+  it("rejects world claims that cite unknown sources", () => {
+    const a = makeAuthor({ id: "a", deathYear: 1950 });
+    const ds = makeDataset([a], []);
+    ds.works = [makeWork("a", 1, { year: 1940, world: { ...WORLD, opening: { ...WORLD.opening, sourceId: "src--nowhere" } } })];
+    const { errors } = assembleDataset(rawOf(ds));
+    expect(errors.some((e) => e.includes("world.opening cites unknown source"))).toBe(true);
+  });
+});

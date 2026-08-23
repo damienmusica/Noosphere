@@ -518,6 +518,74 @@
   color: var(--brass-bright);
 }
 
+/* 작품 시트 — 여는 문장은 인용 블록, 판본은 행, 근거는 접힘 */
+.u-work {
+  padding: 2px 0 8px 2px;
+  border-left: 1px solid var(--line);
+  padding-left: 9px;
+}
+
+.u-work .u-works__sig {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.u-work__open {
+  margin: 6px 0 8px;
+  padding: 8px 10px;
+  background: var(--slip-bg);
+  color: var(--slip-ink);
+  border-left: 2px solid var(--slip-line);
+}
+
+.u-work__orig {
+  font-style: italic;
+  font-size: 12.5px;
+  line-height: 1.5;
+  margin: 0 0 4px;
+}
+
+.u-work__ko {
+  font-size: 12.5px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.u-work__tag {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+}
+
+.u-work__row,
+.u-work__eds li {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-dim);
+  margin: 2px 0;
+}
+
+.u-work__eds {
+  list-style: none;
+  margin: 4px 0;
+}
+
+.u-work__k {
+  display: inline-block;
+  min-width: 3.6em;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+}
+
+.u-work__none {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin: 4px 0;
+}
+
 .u-works__sig {
   font-size: 12px;
   line-height: 1.55;

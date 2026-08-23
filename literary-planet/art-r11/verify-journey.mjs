@@ -63,6 +63,13 @@ const dataRelations = readdirSync(path.join(ROOT, "data/relations"))
     return Array.isArray(j) ? j : (j.relations ?? []);
   });
 const relById = new Map(dataRelations.map((r) => [r.id, r]));
+// 작품 세계 기대값도 /data 에서 — 여는 문장·판본·유고는 렌더가 아니라 작품 파일과 대조한다
+const dataWorks = readdirSync(path.join(ROOT, "data/works"))
+  .flatMap((f) => {
+    const j = JSON.parse(readFileSync(path.join(ROOT, "data/works", f), "utf8"));
+    return Array.isArray(j) ? j : (j.works ?? []);
+  });
+const workById = new Map(dataWorks.map((w) => [w.id, w]));
 const glyphOf = (r, self) => (r.direction === "bidirectional" ? "↔" : r.sourceId === self ? "→" : "←");
 const EV_RANK = { documented: 3, scholarly_consensus: 2, editorial_inference: 1 };
 for (const a of SLICE) {
@@ -333,6 +340,46 @@ for (const a of SLICE) {
     await page.waitForTimeout(250);
     const sig = (await page.locator(".u-works__sig").first().textContent()) ?? "";
     check("작품 인스펙터", sig.length > 40, `${sig.slice(0, 28)}…`);
+
+    // 작품 세계 (R12): 열린 작품의 시트를 /data 의 world 와 대조한다. 자료가 있는
+    // 작품은 여는 문장(원문 그대로)·자체 번역 표시·판본 수·유고 행이 맞아야 하고,
+    // 자료가 없는 작품은 없다고 적혀야 한다 — 둘 다 계약이다.
+    {
+      const sheet = page.locator('[data-testid="work-world"]').first();
+      const openedId = await sheet.getAttribute("data-work");
+      const dw = workById.get(openedId);
+      const has = (await sheet.getAttribute("data-has-world")) === "1";
+      check("열린 작품의 시트가 그 작품의 것이다", Boolean(dw) && openedId === dw.id, `${openedId}`);
+      if (dw?.world) {
+        const orig = ((await sheet.locator(".u-work__orig").textContent().catch(() => "")) ?? "").trim();
+        const ko = ((await sheet.locator(".u-work__ko").textContent().catch(() => "")) ?? "").trim();
+        const tag = ((await sheet.locator(".u-work__tag").textContent().catch(() => "")) ?? "").trim();
+        const eds = await sheet.locator('[data-testid="work-editions"] li').count();
+        const post = await sheet.locator('[data-testid="work-posthumous"]').count();
+        const srcN = ((await sheet.locator('[data-testid="work-sources"] summary').textContent().catch(() => "")) ?? "");
+        check("여는 문장이 원문 그대로다", has && orig === dw.world.opening.original, `${orig.slice(0, 30)}…`);
+        check("여는 문장의 한국어가 자체 번역으로 표시된다", ko === dw.world.opening.ko && tag.includes("자체 번역"), tag);
+        check("판본 행 수가 /data 와 같다", eds === dw.world.editions.length, `${eds}/${dw.world.editions.length}`);
+        check("유고 행은 유고일 때만 선다", post === (dw.world.posthumous ? 1 : 0), `유고 ${post}`);
+        check("시트가 근거를 센다", /근거 \d+건/.test(srcN) && !/근거 0건/.test(srcN), srcN.trim());
+      } else {
+        const none = ((await sheet.locator(".u-work__none").textContent().catch(() => "")) ?? "");
+        check("자료 없는 작품은 없다고 적는다", !has && none.includes("아직"), none.slice(0, 24));
+      }
+      // 유고 행의 '선다' 쪽도 계약한다 — 『소송』(1925, 브로트 편)을 열어 본다
+      const post = dataWorks.find((w) => w.authorId === a.id && w.world?.posthumous);
+      if (post) {
+        await page.locator(".u-works button", { hasText: post.titleKo }).first().click();
+        await page.waitForTimeout(250);
+        const sh = page.locator('[data-testid="work-world"]').first();
+        const id2 = await sh.getAttribute("data-work");
+        const postRow = ((await sh.locator('[data-testid="work-posthumous"]').textContent().catch(() => "")) ?? "");
+        const orig2 = ((await sh.locator(".u-work__orig").textContent().catch(() => "")) ?? "").trim();
+        check("유고 작품의 시트에 편집자와 경위가 선다",
+          id2 === post.id && postRow.includes(post.world.posthumous.editor) && postRow.length > 30 && orig2 === post.world.opening.original,
+          `${id2} · ${postRow.slice(0, 26)}…`);
+      }
+    }
 
     // 자산은 착륙 이전에 디코드되어 있어야 하고, 그 근거는 표면에서 읽혀야 한다
     const mm = await metrics();

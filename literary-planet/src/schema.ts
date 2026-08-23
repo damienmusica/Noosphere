@@ -80,6 +80,44 @@ export const authorSchema = z
   })
   .strict();
 
+const workEditionSchema = z
+  .object({
+    kind: z.enum(["first-printing", "first-edition"]),
+    venue: z.string().min(1).optional(),
+    publisher: z.string().min(1),
+    place: z.string().min(1),
+    year,
+    month: z.number().int().min(1).max(12).optional(),
+    series: z.string().min(1).optional(),
+    note: z.string().min(1).optional(),
+    sourceIds: z.array(z.string().regex(SOURCE_ID)).min(1)
+  })
+  .strict();
+
+/** 작품 세계 — 여는 문장은 출처를, 번역은 '자체' 표시를, 판본은 출처를 반드시 갖는다 */
+export const workWorldSchema = z
+  .object({
+    opening: z
+      .object({
+        original: z.string().min(10),
+        ko: z.string().min(5),
+        translation: z.literal("self"),
+        sourceId: z.string().regex(SOURCE_ID)
+      })
+      .strict(),
+    written: z.string().min(2).optional(),
+    editions: z.array(workEditionSchema).min(1),
+    posthumous: z
+      .object({
+        editor: z.string().min(1),
+        note: z.string().min(10),
+        sourceIds: z.array(z.string().regex(SOURCE_ID)).min(1)
+      })
+      .strict()
+      .optional()
+  })
+  .strict();
+
 export const workSchema = z
   .object({
     id: z.string().regex(WORK_ID),
@@ -90,7 +128,8 @@ export const workSchema = z
     genre: z.enum(genreIds),
     speculative: z.boolean().optional(),
     significance: z.string().min(30),
-    sourceIds: z.array(z.string().regex(SOURCE_ID))
+    sourceIds: z.array(z.string().regex(SOURCE_ID)),
+    world: workWorldSchema.optional()
   })
   .strict();
 

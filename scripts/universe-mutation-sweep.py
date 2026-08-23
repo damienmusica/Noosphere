@@ -274,6 +274,19 @@ MUTATIONS = [
      "      if (len < margin + size * 1.5) continue;", "      if (len < margin + size * 1.5 || true) continue;"),
     ("browser", "이웃 호버에 관측 일지가 뜨지 않는다", "src/universe/UniverseApp.tsx",
      "        onHoverAuthor: (id) => setHoverId(id),", "        onHoverAuthor: () => undefined,"),
+    # --- 작품 세계 (R12): 책을 눌러 얻는 것이 한 문장을 넘는가 ----------------
+    ("browser", "여는 문장의 번역이 자체 번역 표시를 잃는다", "src/universe/components/WorkSheet.tsx",
+     "여는 문장 · 자체 번역", "여는 문장"),
+    ("browser", "판본 행이 시트에서 빠진다", "src/universe/components/WorkSheet.tsx",
+     "            {w.editions.map((e, i) => (", "            {w.editions.slice(0, 0).map((e, i) => ("),
+    ("browser", "유고 행이 모든 작품에 선다", "src/universe/components/WorkSheet.tsx",
+     "          {w.posthumous ? (", "          {w.posthumous || true ? ("),
+    ("browser", "원문 대신 번역이 원문 자리에 선다", "src/universe/components/WorkSheet.tsx",
+     "              {w.opening.original}", "              {w.opening.ko}"),
+    ("fast", "판본 연도가 발표 연도보다 앞서도 통과한다", "src/data/assemble.ts",
+     "        if (e.year < w.year)", "        if (false)"),
+    ("fast", "유고 주장이 사망 전 초판에도 통과한다", "src/data/assemble.ts",
+     "        if (a.deathYear === undefined || (first && first.year <= a.deathYear))", "        if (false)"),
 ]
 
 

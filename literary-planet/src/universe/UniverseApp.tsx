@@ -15,6 +15,7 @@ import {
 } from "./lenses.ts";
 import { RELATION_COLORS } from "../theme.ts";
 import { OrbitCard, type SkyMembership } from "./components/OrbitCard.tsx";
+import { WorkSheet } from "./components/WorkSheet.tsx";
 import {
   decodeShare,
   encodeShare,
@@ -667,7 +668,13 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
                     <span className="u-year">{w.year}</span>
                     {art?.covers?.[w.id] ? <span className="u-tag">초판</span> : null}
                   </button>
-                  {workId === w.id && <p className="u-works__sig">{w.significance}</p>}
+                  {workId === w.id && (
+                    <WorkSheet
+                      work={w}
+                      lang={landed.languages[0] ?? "und"}
+                      sourceOf={(id) => dataset.sources.find((x) => x.id === id)}
+                    />
+                  )}
                 </li>
               ))}
           </ul>
