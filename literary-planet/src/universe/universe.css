@@ -414,6 +414,18 @@
   margin-left: 7px;
 }
 
+/* 서명 기록 — 슬립 바탕 위의 잉크. 높이로 묶어 세로 서명(미시마)이 카드를 뚫지 않게 */
+.u-portrait.u-portrait--mark img {
+  display: block;
+  width: 96px;
+  height: 64px;
+  object-fit: contain;
+  background: var(--slip-bg);
+  padding: 6px 8px;
+  box-sizing: border-box;
+  border: 1px solid var(--slip-line);
+}
+
 .u-card__rel {
   margin-top: 14px;
 }
@@ -1020,7 +1032,8 @@
   word-break: break-word;
 }
 
-.u-portrait--unresolved figcaption {
+.u-portrait--unresolved figcaption,
+.u-portrait--mark figcaption {
   margin-top: 5px;
   font-size: 9.5px;
   letter-spacing: 0.08em;

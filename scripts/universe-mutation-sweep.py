@@ -283,6 +283,8 @@ MUTATIONS = [
      "          {w.posthumous ? (", "          {w.posthumous || true ? ("),
     ("browser", "원문 대신 번역이 원문 자리에 선다", "src/universe/components/WorkSheet.tsx",
      "              {w.opening.original}", "              {w.opening.ko}"),
+    ("browser", "미준비 작가의 카드에서 서명 기록이 빠진다 (4단으로 회귀)", C,
+     "        ) : mark ? (", "        ) : false ? ("),
     ("fast", "판본 연도가 발표 연도보다 앞서도 통과한다", "src/data/assemble.ts",
      "        if (e.year < w.year)", "        if (false)"),
     ("fast", "유고 주장이 사망 전 초판에도 통과한다", "src/data/assemble.ts",

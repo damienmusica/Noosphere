@@ -651,3 +651,33 @@ describe("work world — schema and validation", () => {
     expect(errors.some((e) => e.includes("world.opening cites unknown source"))).toBe(true);
   });
 });
+
+// ---------------------------------------------------------------------------
+// 서명 파도 (R12) — 매니페스트의 마크는 전부 근거를 달고, 생존 작가는 없다
+// ---------------------------------------------------------------------------
+import { readFileSync as readFs, readdirSync as readDir } from "node:fs";
+
+describe("signature wave — every mark ships with provenance, no living author", () => {
+  const manifest = JSON.parse(readFs(new URL("../public/art/manifest.json", import.meta.url), "utf8"));
+  const authors = readDir(new URL("../data/authors", import.meta.url)).flatMap((f) =>
+    JSON.parse(readFs(new URL(`../data/authors/${f}`, import.meta.url), "utf8"))
+  ) as Array<{ id: string; deathYear?: number }>;
+  const byId = new Map(authors.map((a) => [a.id, a]));
+
+  it("carries at least the first wave (59) on top of the three originals", () => {
+    expect(Object.keys(manifest.marks).length).toBeGreaterThanOrEqual(62);
+  });
+
+  it("every mark names a file page and a licence, and belongs to a corpus author", () => {
+    for (const [id, m] of Object.entries(manifest.marks) as Array<[string, { file: string; provenance: { pageUrl?: string; licence?: string } | null }]>) {
+      expect(byId.has(id), id).toBe(true);
+      expect(m.file.startsWith("marks/"), id).toBe(true);
+      expect(m.provenance?.pageUrl?.startsWith("https://"), id).toBe(true);
+      expect((m.provenance?.licence ?? "").length, id).toBeGreaterThan(2);
+    }
+  });
+
+  it("holds living authors out of the wave (conservative rule)", () => {
+    for (const id of Object.keys(manifest.marks)) expect(byId.get(id)?.deathYear, id).toBeDefined();
+  });
+});

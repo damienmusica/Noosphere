@@ -207,8 +207,19 @@ for (const a of SLICE) {
   await card.waitFor({ timeout: 4000 });
   const archival = await card.locator(".u-portrait--archival").count();
   const plate = await card.locator('[data-testid="unresolved-record"]').count();
-  check("초상 사다리 — 기록 사진 또는 미해상 기록", archival + plate === 1,
-    archival ? "기록 사진" : "미해상 기록");
+  // 사다리 2단 (R12 서명 파도): 기록 사진이 없는 작가는 권리 확인된 서명을 실물
+  // 기록으로 싣고, 근거 행을 같은 표면에 단다. 사진이 있으면 서명 기록은 서지 않는다.
+  const markRec = await card.locator('[data-testid="mark-record"]').count();
+  if (a.landable) check("기록 사진이 있으면 서명 기록은 서지 않는다", markRec === 0, `${markRec}`);
+  else {
+    const mp = card.locator('[data-testid="mark-provenance"]');
+    const mpText = ((await mp.first().textContent().catch(() => "")) ?? "");
+    const hasLink = (await mp.locator("a").count()) >= 1;
+    check("미준비 작가의 궤도 카드에 서명 기록이 선다", markRec === 1, `${markRec}`);
+    check("서명 기록에 근거 행(라이선스·원본 링크)이 붙는다", /Public domain|CC0|CC BY/i.test(mpText) && hasLink, mpText.slice(0, 40));
+  }
+  check("초상 사다리 — 기록 사진·서명 기록·미해상 기록 중 정확히 하나", archival + markRec + plate === 1,
+    archival ? "기록 사진" : markRec ? "서명 기록" : "미해상 기록");
   check("발명된 인간 얼굴 없음 — 상상 초상 자산을 가져오지 않는다",
     portraitRequests.length === 0, `요청 ${portraitRequests.length}건`);
   check("해설", ((await card.locator(".u-card__why").first().textContent()) ?? "").length > 80);
