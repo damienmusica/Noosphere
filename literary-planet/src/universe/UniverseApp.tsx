@@ -27,6 +27,7 @@ import {
 } from "./personal.ts";
 import { LENS_MAG, magnitude, influenceWeight, periodOf, starPixels } from "./grammar.ts";
 import { isLandable, readinessOf, readinessState } from "./readiness.ts";
+import { relationCaption } from "./relations.ts";
 import { preloadAuthor, trackPreload, type AssetSet } from "./assets.ts";
 import { buildSearchIndex, searchAuthors } from "../lib/search.ts";
 import { languageLabel, regionLabel } from "../i18n/index.ts";
@@ -48,6 +49,8 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const [focusId, setFocusId] = useState<string | null>(null);
   const [landedId, setLandedId] = useState<string | null>(null);
   const [workId, setWorkId] = useState<string | null>(null);
+  /** 하늘에서 마우스가 올라간 별 — 선택한 별의 이웃이면 그 선의 "왜"가 무대에 적힌다 */
+  const [hoverId, setHoverId] = useState<string | null>(null);
   // 첫 화면에 성좌가 이미 그려져 있어야 "이 하늘은 관계의 하늘"이 읽힌다
   const [lensId, setLensId] = useState<LensId | null>("movement");
   const [year, setYear] = useState(YEAR_MAX);
@@ -176,7 +179,8 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         b: r.targetId,
         color: RELATION_COLORS[r.type],
         weight: 1,
-        relationId: r.id
+        relationId: r.id,
+        directed: r.direction === "directed"
       });
       lit.add(r.sourceId === focusId ? r.targetId : r.sourceId);
     }
@@ -201,7 +205,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
           });
           if (!id) setLandedId(null);
         },
-        onHoverAuthor: () => undefined,
+        onHoverAuthor: (id) => setHoverId(id),
         onPickWork: (id) => setWorkId(id),
         onStageChange: (s) => setStage(s)
       }
@@ -218,7 +222,9 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
           : null;
       },
       focus: (id: string | null) => setFocusId(id),
-      land: (id: string | null) => setLandedId(id && landable(id) ? id : null)
+      land: (id: string | null) => setLandedId(id && landable(id) ? id : null),
+      /** 별의 현재 화면 좌표(CSS px) — 하네스가 실제 마우스를 그 위에 올린다 */
+      project: (id: string) => scene.project(id)
     };
     return () => {
       scene.dispose();
@@ -306,6 +312,16 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     }
     return out;
   }, [focus, dataset, byId]);
+
+  // 관측 일지 — 선택한 별에서 이웃에 마우스를 올리면 그 관계가 왜 그어졌는지.
+  // 선 자체는 집을 수 없고(1px 선분), 선의 끝에 있는 별은 이미 집힌다 — 같은
+  // 정보를 카드가 접근 가능하게 싣고, 하늘은 호버로 같은 문장을 보여 준다.
+  const hoverWhy = useMemo(() => {
+    if (!focus || landedId || !hoverId || hoverId === focus.id) return null;
+    const row = focusRelations.find((x) => x.other.id === hoverId);
+    if (!row) return null;
+    return relationCaption(row.rel, focus.id, (id) => byId.get(id)?.names.ko ?? id);
+  }, [focus, landedId, hoverId, focusRelations, byId]);
 
   const tracks = useMemo(
     () =>
@@ -577,6 +593,12 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         )}
         </section>
       </div>
+
+      {hoverWhy ? (
+        <p className="u-why" data-testid="why" aria-hidden="true">
+          {hoverWhy}
+        </p>
+      ) : null}
 
       <div className="u-time">
         <label htmlFor="u-year">연도</label>

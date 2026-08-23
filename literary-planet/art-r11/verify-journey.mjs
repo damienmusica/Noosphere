@@ -55,6 +55,21 @@ for (const a of SLICE) {
   ];
   a.skies = keys.filter((k) => (bucket.get(k) ?? 0) >= 2).length;
 }
+// 관계 기대값도 /data 에서 센다 — 카드의 행 수·방향 글리프·요약문은 렌더가
+// 아니라 관계 파일과 대조한다(관계 263건 전부에 summary·direction 이 있다).
+const dataRelations = readdirSync(path.join(ROOT, "data/relations"))
+  .flatMap((f) => {
+    const j = JSON.parse(readFileSync(path.join(ROOT, "data/relations", f), "utf8"));
+    return Array.isArray(j) ? j : (j.relations ?? []);
+  });
+const relById = new Map(dataRelations.map((r) => [r.id, r]));
+const glyphOf = (r, self) => (r.direction === "bidirectional" ? "↔" : r.sourceId === self ? "→" : "←");
+const EV_RANK = { documented: 3, scholarly_consensus: 2, editorial_inference: 1 };
+for (const a of SLICE) {
+  const mine = dataRelations.filter((r) => r.sourceId === a.id || r.targetId === a.id);
+  a.relations = mine.length;
+  a.directed = mine.filter((r) => r.direction === "directed").length;
+}
 
 const server = await serveDist(distDir);
 const browser = await chromium.launch({ headless: false });
@@ -201,7 +216,73 @@ for (const a of SLICE) {
   } else {
     check("기록 사진이 없으면 근거 행도 없다", (await card.locator('[data-testid="portrait-provenance"]').count()) === 0);
   }
-  check("관계 목록", (await card.locator(".u-card__rel li").count()) >= 1);
+  // 관계 인과성 (R12): 선이 왜 그어졌는지가 카드에 있다 — 행 수는 /data 와
+  // 같고, 각 행은 방향 글리프·요약문·근거 등급을 싣고, 강한 근거가 먼저 온다.
+  const relRows = card.locator('[data-testid="orbit-relations"] li');
+  const relCount = await relRows.count();
+  check("관계 목록이 /data 의 관계 수와 같다", relCount === a.relations, `${relCount}/${a.relations}`);
+  const rows = await relRows.evaluateAll((els) =>
+    els.map((el) => ({
+      id: el.dataset.relation,
+      glyph: el.dataset.direction,
+      ev: el.dataset.evidence,
+      why: (el.querySelector(".u-rel__why")?.textContent ?? "").trim(),
+      evText: (el.querySelector(".u-rel__ev")?.textContent ?? "").trim()
+    }))
+  );
+  const glyphOk = rows.filter((r) => relById.get(r.id) && glyphOf(relById.get(r.id), a.id) === r.glyph).length;
+  check("관계마다 방향 글리프가 /data 의 방향과 일치한다", glyphOk === relCount && relCount > 0, `${glyphOk}/${relCount}`);
+  const whyOk = rows.filter((r) => relById.get(r.id) && r.why.startsWith(relById.get(r.id).summary.slice(0, 24))).length;
+  check("관계마다 '왜'(summary) 가 실려 있다", whyOk === relCount, `${whyOk}/${relCount}`);
+  const evOk = rows.filter((r) => /문헌 기록|학계 통설|편집 추론/.test(r.evText) && !/documented|scholarly|editorial/.test(r.evText)).length;
+  check("근거 등급은 독자의 말로 적히고 코드 값이 새지 않는다", evOk === relCount, `${evOk}/${relCount}`);
+  const ranks = rows.map((r) => EV_RANK[r.ev] ?? 0);
+  check("강한 근거가 먼저 온다", ranks.every((v, i) => i === 0 || v <= ranks[i - 1]), ranks.join(""));
+  // 하늘: 방향 있는 선은 도착 끝에 화살촉을 갖고, 방향 없는 선(친연)은 갖지 않는다
+  const am = await metrics();
+  check("방향 있는 자기 성좌 선마다 화살촉이 있다", am.arrowsExpected === a.directed && am.arrows === am.arrowsExpected,
+    `화살촉 ${am.arrows} / 방향 선 ${am.arrowsExpected} / data ${a.directed}`);
+  check("화살촉은 도착 끝에 닿아 있다", am.arrowsAtTarget === am.arrows && am.arrows > 0, `${am.arrowsAtTarget}/${am.arrows}`);
+  check("방향 없는 관계는 화살촉을 받지 않는다", am.arrowsExpected === a.directed && a.directed < a.relations,
+    `방향 ${a.directed} < 관계 ${a.relations}`);
+  // 호버: 이웃 별에 실제 마우스를 올리면 그 선의 "왜"가 무대에 적힌다
+  {
+    // 이웃은 화면 안, 그리고 패널(좌 레일·우 카드·상단 검색) 바깥에 있어야
+    // 실제 마우스가 캔버스에 닿는다 — 첫 행이 화면 밖이면 다음 행을 쓴다.
+    let rel = null;
+    let pt = null;
+    for (const r of rows) {
+      const cand = relById.get(r.id);
+      if (!cand) continue;
+      const otherId = cand.sourceId === a.id ? cand.targetId : cand.sourceId;
+      const q = await page.evaluate((id) => window.__universe.project(id), otherId);
+      if (q && q[0] > 270 && q[0] < 1140 && q[1] > 90 && q[1] < 900) {
+        rel = cand;
+        pt = q;
+        break;
+      }
+    }
+    let whyText = "";
+    if (pt) {
+      await page.mouse.move(pt[0], pt[1]);
+      await page.waitForTimeout(150);
+      whyText = ((await page.locator('[data-testid="why"]').textContent().catch(() => "")) ?? "").trim();
+    }
+    // 머리말은 데이터에서 만든다: 출발 → 도착 (상대가 출발점이면 상대가 앞)
+    let head = "";
+    if (rel) {
+      const nameKo = (id) => dataAuthors.find((x) => x.id === id)?.names?.ko ?? id;
+      const otherId = rel.sourceId === a.id ? rel.targetId : rel.sourceId;
+      const g = glyphOf(rel, a.id);
+      head = g === "↔" ? `${nameKo(a.id)} ↔ ${nameKo(otherId)}` : g === "→" ? `${nameKo(a.id)} → ${nameKo(otherId)}` : `${nameKo(otherId)} → ${nameKo(a.id)}`;
+    }
+    check("이웃 별 호버에 그 관계의 '왜'가 무대에 적힌다 (출발 → 도착 · 요약)",
+      Boolean(pt) && whyText.startsWith(head) && whyText.includes(rel.summary.slice(0, 24)),
+      pt ? whyText.slice(0, 44) : "캔버스 안 이웃 없음");
+    await page.mouse.move(5, 500);
+    await page.waitForTimeout(120);
+    check("호버를 떼면 관측 일지가 사라진다", (await page.locator('[data-testid="why"]').count()) === 0);
+  }
   check("출처", ((await card.locator(".u-card__src").first().textContent()) ?? "").includes("출처"));
 
   // 5. 궤도 관측 — 착륙하지 않아도 이 작가를 읽을 수 있는 전부
@@ -339,6 +420,9 @@ for (const a of SLICE) {
       const cx = free(sb[2] + 12) ? sb[2] + 12 : sb[0] - 12;
       await page.mouse.click(cx, cy);
       await page.waitForTimeout(250);
+      // 선택 상태는 다음 라벨 레이아웃에서 DOM 에 닿는다 — 프레임을 기다리지
+      // 않고 상태를 당긴다(settle)
+      await page.evaluate(() => window.__universe.settle());
       const sel = await page.evaluate(() =>
         document.querySelector(".globe-label--work.is-selected")?.dataset.labelId ?? null
       );

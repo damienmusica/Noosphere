@@ -418,6 +418,61 @@
   margin-top: 14px;
 }
 
+.u-card__rel li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.u-rel__glyph {
+  display: inline-block;
+  width: 1.1em;
+  color: var(--brass);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 요약문은 이름보다 한 단 작게 — 목록이 먼저 읽히고 이유가 따라온다 */
+.u-rel__why {
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-dim);
+  padding-left: 1.1em;
+  margin: 0 0 4px;
+}
+
+.u-rel__ev {
+  display: block;
+  margin-top: 1px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+}
+
+/* 하늘의 관측 일지 — 선택한 별의 이웃에 마우스를 올리면 그 선이 왜 그어졌는지가
+   무대 아래에 적힌다. 호버 전용이므로 보조기기에는 카드의 같은 문장이 있다. */
+.u-why {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 78px;
+  max-width: min(640px, calc(100% - 300px));
+  background: var(--surface-veil);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--brass-a45);
+  border-radius: 3px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--text);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.u-why b {
+  color: var(--brass);
+  font-weight: 500;
+}
+
 .u-card h3 {
   font-size: 11px;
   letter-spacing: 0.2em;

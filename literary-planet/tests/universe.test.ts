@@ -525,3 +525,63 @@ describe("표면에 놓이는 것은 실루엣을 따른다", () => {
     expect(hi).toBeGreaterThan(1.001);
   });
 });
+
+// ---------------------------------------------------------------------------
+// 관계 인과성 (R12) — 선은 왜 그어졌는가
+// ---------------------------------------------------------------------------
+import {
+  EVIDENCE_KO,
+  REL_KO,
+  isDirected,
+  relationCaption,
+  relationGlyph,
+  sortRelations
+} from "../src/universe/relations.ts";
+
+describe("relation causality — glyph, order, caption", () => {
+  const self = "franz-kafka";
+  const out = makeRelation(self, "jorge-luis-borges");
+  const inc = makeRelation("fyodor-dostoevsky", self);
+  const mutual = makeRelation(self, "samuel-beckett", "affinity");
+
+  it("reads direction from the selected star's side", () => {
+    expect(relationGlyph(out, self)).toBe("→");
+    expect(relationGlyph(inc, self)).toBe("←");
+    expect(relationGlyph(mutual, self)).toBe("↔");
+    // 같은 관계를 상대편에서 보면 화살이 뒤집힌다
+    expect(relationGlyph(out, "jorge-luis-borges")).toBe("←");
+  });
+
+  it("gives arrowheads only to directed relations", () => {
+    expect(isDirected(out)).toBe(true);
+    expect(isDirected(mutual)).toBe(false);
+  });
+
+  it("orders strong evidence first, then weight, deterministically", () => {
+    const rows = [
+      { rel: { ...mutual, evidenceLevel: "editorial_inference" as const, weight: 0.9 } },
+      { rel: { ...inc, evidenceLevel: "documented" as const, weight: 0.5 } },
+      { rel: { ...out, evidenceLevel: "documented" as const, weight: 0.8 } },
+      { rel: { ...makeRelation(self, "kobo-abe"), evidenceLevel: "scholarly_consensus" as const, weight: 0.95 } }
+    ];
+    const ids = sortRelations(rows).map((r) => r.rel.id);
+    expect(ids).toEqual([out.id, inc.id, "influence--franz-kafka--kobo-abe", mutual.id]);
+    // 입력 순서에 무관하다
+    expect(sortRelations([...rows].reverse()).map((r) => r.rel.id)).toEqual(ids);
+  });
+
+  it("never shows a code value to the reader", () => {
+    for (const v of Object.values(EVIDENCE_KO)) expect(v).not.toMatch(/[a-z_]/);
+    for (const v of Object.values(REL_KO)) expect(v).not.toMatch(/[a-z_]/);
+  });
+
+  it("writes the caption from the origin toward the destination", () => {
+    const name = (id: string) => ({ "franz-kafka": "카프카", "fyodor-dostoevsky": "도스토옙스키", "jorge-luis-borges": "보르헤스", "samuel-beckett": "베케트" })[id] ?? id;
+    const o = relationCaption({ ...out, summary: "보르헤스가 서문을 썼다." }, self, name);
+    expect(o.startsWith("카프카 → 보르헤스 · 영향 · ")).toBe(true);
+    expect(o.endsWith("— 보르헤스가 서문을 썼다.")).toBe(true);
+    const i = relationCaption({ ...inc, summary: "편지의 혈족." }, self, name);
+    expect(i.startsWith("도스토옙스키 → 카프카")).toBe(true);
+    expect(relationCaption({ ...mutual, summary: "x" }, self, name).startsWith("카프카 ↔ 베케트 · 친연")).toBe(true);
+  });
+});

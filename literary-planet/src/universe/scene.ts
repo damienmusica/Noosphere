@@ -155,6 +155,9 @@ void main() {
 }
 `;
 
+/** 화살촉 버퍼 용량 — 한 별의 방향 있는 관계 수 최대(데이터 최대 16)를 넉넉히 */
+const ARROW_CAP = 64;
+
 export class UniverseScene {
   readonly renderer: THREE.WebGLRenderer;
   private scene = new THREE.Scene();
@@ -168,6 +171,20 @@ export class UniverseScene {
   private starMat!: THREE.ShaderMaterial;
   private constellation!: THREE.LineSegments;
   private egoLines!: THREE.LineSegments;
+  /** 자기 성좌의 화살촉 — 방향 있는 관계의 도착 끝에만 붙는다 (R12 관계 인과성) */
+  private egoArrows!: THREE.Mesh;
+  /** 화살촉을 받을 선(방향 있음, 실제로 그려진 것) — buildLines 가 채운다 */
+  private egoDirected: Array<{ a: string; b: string; color: string }> = [];
+  /** 마지막 프레임의 화살촉 끝점 — 계측이 "도착 끝에 있는가"를 독립으로 센다 */
+  private arrowTips: Array<{ a: string; b: string; tip: THREE.Vector3 }> = [];
+  /** 화살촉 버퍼는 한 번만 할당한다 — 매 프레임 지오메트리를 새로 만들면 GPU
+   *  버퍼 교체가 프레임을 잡아먹고, 렌즈 램프(프레임 수 기준)가 느려져 "천체로
+   *  분해" 계약이 시간에 따라 흔들린다(실측: 3회 중 2회 실패). */
+  private arrowPos = new Float32Array(ARROW_CAP * 9);
+  private arrowCol = new Float32Array(ARROW_CAP * 9);
+  private arrowsDirty = false;
+  private arrowCam = new THREE.Vector3(Number.NaN, 0, 0);
+  private arrowQuat = new THREE.Quaternion();
   private graticule!: THREE.LineSegments;
   private sunGlow!: THREE.Sprite;
   private selWedges: THREE.Sprite[] = [];
@@ -298,6 +315,10 @@ export class UniverseScene {
     landedWithoutAssets: false,
     cam: [0, 0, 0] as [number, number, number],
     linesTouchingLanded: 0,
+    /** 자기 성좌의 화살촉 — 방향 있는 선 수 · 실제 그려진 화살촉 · 도착 끝에 있는 것 */
+    arrows: 0,
+    arrowsExpected: 0,
+    arrowsAtTarget: 0,
     occludedLabels: 0,
     labelsOverFocus: 0,
     /** 작품 도시(연도 서가) — 전부 렌더에서 잰다. cityMetrics() 참조 */
@@ -409,6 +430,24 @@ export class UniverseScene {
     );
     this.egoLines.frustumCulled = false;
     this.scene.add(this.egoLines);
+    // 화살촉은 선과 같은 잉크의 삼각형이다. 선분은 폭을 가질 수 없으므로(WebGL
+    // 1px) 방향은 끝의 형태로만 말할 수 있다 — 화살촉의 존재 = 방향 주장.
+    const arrowGeo = new THREE.BufferGeometry();
+    arrowGeo.setAttribute("position", new THREE.BufferAttribute(this.arrowPos, 3).setUsage(THREE.DynamicDrawUsage));
+    arrowGeo.setAttribute("color", new THREE.BufferAttribute(this.arrowCol, 3).setUsage(THREE.DynamicDrawUsage));
+    arrowGeo.setDrawRange(0, 0);
+    this.egoArrows = new THREE.Mesh(
+      arrowGeo,
+      new THREE.MeshBasicMaterial({
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.85,
+        depthWrite: false,
+        side: THREE.DoubleSide
+      })
+    );
+    this.egoArrows.frustumCulled = false;
+    this.scene.add(this.egoArrows);
     this.scene.add(this.cityGroup);
 
     this.renderer.domElement.addEventListener("pointerdown", this.onPointerDown);
@@ -848,7 +887,10 @@ export class UniverseScene {
   private drawnLineEnds: Array<[string, string]> = [];
 
   private buildLines(mesh: THREE.LineSegments, lines: LensLine[]): void {
-    if (mesh === this.egoLines) this.drawnLineEnds = [];
+    if (mesh === this.egoLines) {
+      this.drawnLineEnds = [];
+      this.egoDirected = [];
+    }
     const pos = new Float32Array(lines.length * 6);
     const col = new Float32Array(lines.length * 6);
     let n = 0;
@@ -865,6 +907,7 @@ export class UniverseScene {
       const landed = this.state.landedId;
       if (landed && (l.a === landed || l.b === landed)) continue;
       this.drawnLineEnds.push([l.a, l.b]);
+      if (mesh === this.egoLines && l.directed) this.egoDirected.push({ a: l.a, b: l.b, color: l.color });
       const pa = this.effectivePos(l.a, new THREE.Vector3());
       const pb = this.effectivePos(l.b, new THREE.Vector3());
       const c = new THREE.Color(l.color);
@@ -888,6 +931,97 @@ export class UniverseScene {
     g.setAttribute("color", new THREE.BufferAttribute(col.subarray(0, n * 6), 3));
     mesh.geometry.dispose();
     mesh.geometry = g;
+    if (mesh === this.egoLines) this.arrowsDirty = true;
+  }
+
+  /** 천체의 현재 월드 반경 — 초점 천체는 렌즈 배율만큼 커져 있다 */
+  private apparentRadius(id: string): number {
+    const i = this.index.get(id);
+    if (i === undefined) return 1;
+    const base = this.radii[i] ?? 1;
+    return id === this.state.focusId && !this.state.landedId ? base * (1 + (LENS_MAG - 1) * this.lensK) : base;
+  }
+
+  /**
+   * 화살촉 — 방향 있는 자기 성좌 선의 **도착 끝**에, 도착 천체의 가장자리에
+   * 닿게 놓는다. 카메라를 향해 눕힌 삼각형이라 매 프레임 다시 세운다(선 ≤ 20,
+   * 비용 없음). 선이 너무 짧아 화살촉이 출발점까지 먹으면 그리지 않는다 —
+   * 방향을 잘못 말하느니 말하지 않는다.
+   */
+  private refreshArrows(): void {
+    const lines = this.egoDirected;
+    const pos = this.arrowPos;
+    const col = this.arrowCol;
+    const view = this.camera.getWorldDirection(new THREE.Vector3());
+    const pa = new THREE.Vector3();
+    const pb = new THREE.Vector3();
+    const d = new THREE.Vector3();
+    const side = new THREE.Vector3();
+    const tip = new THREE.Vector3();
+    const base = new THREE.Vector3();
+    const c = new THREE.Color();
+    this.arrowTips = [];
+    let m = 0;
+    for (const l of lines) {
+      if (m >= ARROW_CAP) break;
+      this.effectivePos(l.a, pa);
+      this.effectivePos(l.b, pb);
+      d.subVectors(pb, pa);
+      const len = d.length();
+      if (len < 1e-3) continue;
+      d.divideScalar(len);
+      const margin = this.apparentRadius(l.b) + 2;
+      const size = Math.min(14, Math.max(5, len * 0.035));
+      if (len < margin + size * 1.5) continue;
+      tip.copy(pb).addScaledVector(d, -margin);
+      base.copy(tip).addScaledVector(d, -size);
+      side.crossVectors(d, view);
+      if (side.lengthSq() < 1e-6) side.set(0, 1, 0).cross(d);
+      side.normalize().multiplyScalar(size * 0.42);
+      c.set(l.color);
+      const off = m * 9;
+      pos[off] = tip.x;
+      pos[off + 1] = tip.y;
+      pos[off + 2] = tip.z;
+      pos[off + 3] = base.x + side.x;
+      pos[off + 4] = base.y + side.y;
+      pos[off + 5] = base.z + side.z;
+      pos[off + 6] = base.x - side.x;
+      pos[off + 7] = base.y - side.y;
+      pos[off + 8] = base.z - side.z;
+      for (let k = 0; k < 3; k++) {
+        col[off + k * 3] = c.r;
+        col[off + k * 3 + 1] = c.g;
+        col[off + k * 3 + 2] = c.b;
+      }
+      this.arrowTips.push({ a: l.a, b: l.b, tip: tip.clone() });
+      m++;
+    }
+    const g = this.egoArrows.geometry;
+    (g.getAttribute("position") as THREE.BufferAttribute).needsUpdate = true;
+    (g.getAttribute("color") as THREE.BufferAttribute).needsUpdate = true;
+    g.setDrawRange(0, m * 3);
+    this.arrowsDirty = false;
+    this.arrowCam.copy(this.camera.position);
+    this.arrowQuat.copy(this.camera.quaternion);
+  }
+
+  /**
+   * 계측: 화살촉이 실제로 도착 끝에 있는가. 저장된 끝점을 **현재** 양 끝 위치와
+   * 다시 재서 센다 — 화살촉을 출발 끝에 놓는 변이가 초록으로 남지 않게.
+   */
+  private arrowMetrics(): { arrows: number; arrowsExpected: number; arrowsAtTarget: number } {
+    const pa = new THREE.Vector3();
+    const pb = new THREE.Vector3();
+    let atTarget = 0;
+    for (const t of this.arrowTips) {
+      this.effectivePos(t.a, pa);
+      this.effectivePos(t.b, pb);
+      const toB = t.tip.distanceTo(pb);
+      const toA = t.tip.distanceTo(pa);
+      if (toB < toA && toB <= this.apparentRadius(t.b) + 2 + 1e-3) atTarget++;
+    }
+    return { arrows: this.arrowTips.length, arrowsExpected: this.egoDirected.length, arrowsAtTarget: atTarget };
   }
 
   // -------------------------------------------------------------------------
@@ -1612,6 +1746,14 @@ export class UniverseScene {
   }
 
   /** 화면 좌표에서 가장 가까운 별 — Points 레이캐스트보다 예측 가능하다 */
+  /** 계측·하네스용: 별의 현재 화면 좌표(뷰포트 기준 CSS px). 화면 밖이면 null */
+  project(id: string): [number, number] | null {
+    const r = this.renderer.domElement.getBoundingClientRect();
+    const v = this.effectivePos(id, new THREE.Vector3()).project(this.camera);
+    if (v.z > 1 || Math.abs(v.x) > 1 || Math.abs(v.y) > 1) return null;
+    return [((v.x + 1) / 2) * r.width + r.left, ((-v.y + 1) / 2) * r.height + r.top];
+  }
+
   private pickStar(e: PointerEvent): string | null {
     const r = this.renderer.domElement.getBoundingClientRect();
     const px = e.clientX - r.left;
@@ -1689,12 +1831,21 @@ export class UniverseScene {
 
   /** 진행 중인 비행을 즉시 끝내고 한 프레임을 그린다.
    *  reduced-motion 과 QA 하네스(비가시 탭에서 rAF 가 스로틀되는 환경)의 공용 경로. */
+  /**
+   * 하네스용 — 진행 중인 모든 운동을 끝까지 보낸다. 카메라 비행만 당기고 한
+   * 프레임을 돌리던 이전 판은 **렌즈 램프(프레임 수 기준, 42프레임)와 관성
+   * 감쇠를 그대로 두어**, 브라우저 창이 가려져 rAF 가 느려진 날에는 "천체로
+   * 분해"·"화살촉이 도착 끝에" 계약이 흔들렸다(실측: 5회 중 3회 실패). 이제
+   * 램프 길이만큼 step() 을 동기로 돌린다 — 계약은 프레임 속도가 아니라
+   * 상태를 읽는다.
+   */
   settle(): void {
     if (this.anim) {
       this.anim.start = performance.now() - this.anim.dur;
       this.advance(performance.now());
     }
-    this.step();
+    const n = this.state.reducedMotion ? 2 : 48;
+    for (let i = 0; i < n; i++) this.step();
   }
 
   private advance(now: number): void {
@@ -1827,6 +1978,14 @@ export class UniverseScene {
     (this.constellation.material as THREE.LineBasicMaterial).opacity =
       stage === "surface" ? 0.25 : this.state.focusId ? 0.4 : 0.9;
     (this.egoLines.material as THREE.LineBasicMaterial).opacity = stage === "surface" ? 0.3 : 0.72;
+    (this.egoArrows.material as THREE.MeshBasicMaterial).opacity = stage === "surface" ? 0.3 : 0.85;
+    if (
+      this.egoDirected.length &&
+      (this.arrowsDirty ||
+        !this.arrowCam.equals(this.camera.position) ||
+        !this.arrowQuat.equals(this.camera.quaternion))
+    )
+      this.refreshArrows();
 
     // 관측 표식은 화면상 크기가 고정된다 — 표식은 판(plate)에 속하고 대상은
     // 하늘에 속한다. 줌해도 픽셀 치수가 불변인 유일한 객체군이므로, 카메라를
@@ -1938,6 +2097,7 @@ export class UniverseScene {
       linesTouchingLanded: this.state.landedId
         ? this.drawnLineEnds.filter(([a, b]) => a === this.state.landedId || b === this.state.landedId).length
         : 0,
+      ...this.arrowMetrics(),
       occludedLabels: this.lastOccludedLabels,
       labelsOverFocus: this.labelsOverFocus()
     };

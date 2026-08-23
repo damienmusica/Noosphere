@@ -16,6 +16,7 @@ import { useEffect, useRef } from "react";
 import type { Author, Relation, Work } from "../../types.ts";
 import { artUrl, type ArtManifest, type AssetProvenance } from "../../globe/art-assets.ts";
 import { periodOf } from "../grammar.ts";
+import { EVIDENCE_KO, REL_KO, relationGlyph, sortRelations } from "../relations.ts";
 import { PERIOD_TINT, COLORS } from "../../theme.ts";
 
 export interface SkyMembership {
@@ -169,13 +170,11 @@ function UnresolvedRecord({
   );
 }
 
-const REL_KO: Record<string, string> = {
-  documented_influence: "영향",
-  translation: "번역",
-  mentorship: "사사",
-  dialogue: "대화",
-  affinity: "친연",
-  contrast: "대비"
+/** 글리프의 스크린리더 이름 — 화살표 문자는 읽히지 않는다 */
+const GLYPH_KO: Record<string, string> = {
+  "→": "이 작가가 출발점",
+  "←": "상대가 출발점",
+  "↔": "방향 없는 관계"
 };
 
 export function OrbitCard(p: OrbitCardProps) {
@@ -315,18 +314,40 @@ export function OrbitCard(p: OrbitCardProps) {
         </p>
       </div>
 
+      {/* 관계 — 선은 왜 그어졌는가. 이름만 나열하면 독자는 "관련 있다"까지만
+          읽고 방향도 이유도 못 읽는다(합성 파일럿 4/4 · 외부 검토 2차). 각 행은
+          방향 글리프 · 유형 · 상대 · **요약문** · 근거 등급을 싣고, 강한 근거가
+          먼저 온다. 이것이 미준비 궤도의 "왜 이 별에 다시 와야 하는가" 단서다. */}
       {p.relations.length ? (
-        <div className="u-card__rel">
-          <h3>관계 {p.relations.length}</h3>
+        <div className="u-card__rel" data-testid="orbit-relations">
+          <h3>관계 {p.relations.length} — 선이 그어진 이유</h3>
           <ul>
-            {p.relations.map(({ rel, other }) => (
-              <li key={rel.id}>
-                <button onClick={() => p.onGoto(other.id)}>
-                  <span className="u-tag u-tag--rel">{REL_KO[rel.type] ?? rel.type}</span>
-                  {other.names.ko}
-                </button>
-              </li>
-            ))}
+            {sortRelations(p.relations).map(({ rel, other }) => {
+              const glyph = relationGlyph(rel, a.id);
+              return (
+                <li
+                  key={rel.id}
+                  data-relation={rel.id}
+                  data-direction={glyph}
+                  data-evidence={rel.evidenceLevel}
+                >
+                  <button onClick={() => p.onGoto(other.id)}>
+                    <span className="u-rel__glyph" aria-label={GLYPH_KO[glyph]}>
+                      {glyph}
+                    </span>
+                    <span className="u-tag u-tag--rel">{REL_KO[rel.type] ?? rel.type}</span>
+                    {other.names.ko}
+                  </button>
+                  <p className="u-rel__why">
+                    {rel.summary}
+                    <span className="u-rel__ev">
+                      {EVIDENCE_KO[rel.evidenceLevel] ?? rel.evidenceLevel}
+                      {rel.sourceIds.length ? ` · 출처 ${rel.sourceIds.length}건` : ""}
+                    </span>
+                  </p>
+                </li>
+              );
+            })}
           </ul>
         </div>
       ) : null}
