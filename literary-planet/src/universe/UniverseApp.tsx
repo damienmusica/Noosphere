@@ -620,6 +620,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
           author={focus}
           works={focusWorks}
           relations={focusRelations}
+          workTitle={(id) => dataset.works.find((w) => w.id === id)?.titleKo}
           art={art}
           landable={landable(focus.id)}
           readiness={

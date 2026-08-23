@@ -143,7 +143,15 @@ export const relationSchema = z
     weight: z.number().min(0).max(1),
     summary: z.string().min(40, "summary must explain the link in 1–3 Korean sentences"),
     evidenceLevel: z.enum(["documented", "scholarly_consensus", "editorial_inference"]),
-    sourceIds: z.array(z.string().regex(SOURCE_ID))
+    sourceIds: z.array(z.string().regex(SOURCE_ID)),
+    anchors: z
+      .array(
+        z
+          .object({ workId: z.string().regex(WORK_ID).optional(), year: year.optional() })
+          .strict()
+          .refine((a) => a.workId !== undefined || a.year !== undefined, "an anchor names a work or a year")
+      )
+      .optional()
   })
   .strict();
 

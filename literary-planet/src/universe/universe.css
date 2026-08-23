@@ -436,6 +436,18 @@
   gap: 2px;
 }
 
+.u-rel__anchor {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 0 5px;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
 .u-rel__glyph {
   display: inline-block;
   width: 1.1em;

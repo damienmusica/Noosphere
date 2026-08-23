@@ -151,6 +151,20 @@ export interface Relation {
   summary: string;
   evidenceLevel: EvidenceLevel;
   sourceIds: string[];
+  /**
+   * 앵커 (R12) — 요약문이 지목하는 **구체적인 책·연도**. 산문을 파싱하지 않고 편집이
+   * 손으로 적는다. 선이 하늘에서 작가의 서고로 내려올 때 어느 책·어느 연도 칸에
+   * 닿는지를 정한다. 요약에 없는 사실은 적지 않는다(새 조사 0). 없으면 선은 이름에
+   * 닿는다 — 그것도 정직한 독해다.
+   */
+  anchors?: RelationAnchor[];
+}
+
+export interface RelationAnchor {
+  /** 관계의 어느 쪽 작가의 작품인가 — 보통 영향을 준 쪽 */
+  workId?: string;
+  /** 요약이 지목하는 연도(편지·서문·판본·에세이의 해) */
+  year?: number;
 }
 
 export interface Source {

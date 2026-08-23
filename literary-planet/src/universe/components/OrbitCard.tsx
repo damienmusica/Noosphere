@@ -17,7 +17,7 @@ import { useEffect, useRef } from "react";
 import type { Author, Relation, Work } from "../../types.ts";
 import { artUrl, type ArtManifest, type AssetProvenance } from "../../globe/art-assets.ts";
 import { periodOf } from "../grammar.ts";
-import { EVIDENCE_KO, REL_KO, relationGlyph, sortRelations } from "../relations.ts";
+import { EVIDENCE_KO, REL_KO, anchorChips, relationGlyph, sortRelations } from "../relations.ts";
 import { PERIOD_TINT, COLORS } from "../../theme.ts";
 
 export interface SkyMembership {
@@ -47,6 +47,8 @@ export interface OrbitCardProps {
   onLand(): void;
   onGoto(id: string): void;
   onClose(): void;
+  /** 작품 id → 한국어 제목 (앵커 칩용; 상대 작가의 작품일 수 있다) */
+  workTitle(id: string): string | undefined;
 }
 
 /** 사다리 1단 — 권리 확인 기록 사진. 근거는 **사진이 보이는 이 표면**이 싣는다 */
@@ -402,6 +404,11 @@ export function OrbitCard(p: OrbitCardProps) {
                     </span>
                     <span className="u-tag u-tag--rel">{REL_KO[rel.type] ?? rel.type}</span>
                     {other.names.ko}
+                    {anchorChips(rel, p.workTitle).map((chip) => (
+                      <span key={chip} className="u-rel__anchor" data-testid="anchor-chip">
+                        {chip}
+                      </span>
+                    ))}
                   </button>
                   <p className="u-rel__why">
                     {rel.summary}

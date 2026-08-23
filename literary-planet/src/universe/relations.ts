@@ -82,3 +82,22 @@ export function relationCaption(
     glyph === "↔" ? `${self} ↔ ${other}` : glyph === "→" ? `${self} → ${other}` : `${other} → ${self}`;
   return `${head} · ${REL_KO[rel.type] ?? rel.type} · ${EVIDENCE_KO[rel.evidenceLevel] ?? rel.evidenceLevel} — ${rel.summary}`;
 }
+
+/**
+ * 앵커 칩 (R12) — 관계 요약이 지목한 책·연도를 카드의 관계 행에 짧게 적는다.
+ * "『변신』 1947" · "1913" · "『성』". 착륙 뒤 실이 어느 책에 닿을지를 카드가 먼저
+ * 약속하는 자리다. 제목을 모르는 작품 id 는 칩이 되지 않는다(거짓 제목 금지).
+ */
+export function anchorChips(
+  rel: Pick<Relation, "anchors">,
+  titleOf: (workId: string) => string | undefined
+): string[] {
+  const out: string[] = [];
+  for (const a of rel.anchors ?? []) {
+    const title = a.workId ? titleOf(a.workId) : undefined;
+    if (a.workId && !title) continue;
+    const parts = [title ? `『${title}』` : "", a.year ? String(a.year) : ""].filter(Boolean);
+    if (parts.length) out.push(parts.join(" "));
+  }
+  return out;
+}

@@ -532,6 +532,7 @@ describe("표면에 놓이는 것은 실루엣을 따른다", () => {
 import {
   EVIDENCE_KO,
   REL_KO,
+  anchorChips,
   isDirected,
   relationCaption,
   relationGlyph,
@@ -679,5 +680,29 @@ describe("signature wave — every mark ships with provenance, no living author"
 
   it("holds living authors out of the wave (conservative rule)", () => {
     for (const id of Object.keys(manifest.marks)) expect(byId.get(id)?.deathYear, id).toBeDefined();
+  });
+});
+
+describe("relation anchors — the line knows which book and which year", () => {
+  it("turns anchors into chips and refuses a title it does not know", () => {
+    const titleOf = (id: string) => ({ "franz-kafka--die-verwandlung": "변신" })[id];
+    expect(anchorChips({ anchors: [{ workId: "franz-kafka--die-verwandlung", year: 1947 }, { year: 1913 }, { workId: "x--unknown" }] }, titleOf))
+      .toEqual(["『변신』 1947", "1913"]);
+    expect(anchorChips({ anchors: undefined }, titleOf)).toEqual([]);
+  });
+
+  it("validation refuses an anchor on a third party's work or an unknown work", () => {
+    const a = makeAuthor({ id: "a", deathYear: 1950 });
+    const b = makeAuthor({ id: "b", deathYear: 1960 });
+    const c = makeAuthor({ id: "c", deathYear: 1970 });
+    const ds = makeDataset([a, b, c], [makeRelation("a", "b", "documented_influence", { anchors: [{ workId: "c--w1" }] })]);
+    let { errors } = assembleDataset(rawOf(ds));
+    expect(errors.some((e) => e.includes("belongs to neither party"))).toBe(true);
+    ds.relations[0]!.anchors = [{ workId: "a--nope" }];
+    ({ errors } = assembleDataset(rawOf(ds)));
+    expect(errors.some((e) => e.includes("unknown work"))).toBe(true);
+    ds.relations[0]!.anchors = [{ workId: "a--w1", year: 1940 }];
+    ({ errors } = assembleDataset(rawOf(ds)));
+    expect(errors.filter((e) => e.includes("anchor"))).toEqual([]);
   });
 });

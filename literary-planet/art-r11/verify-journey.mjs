@@ -254,6 +254,10 @@ for (const a of SLICE) {
   check("관계마다 '왜'(summary) 가 실려 있다", whyOk === relCount, `${whyOk}/${relCount}`);
   const evOk = rows.filter((r) => /문헌 기록|학계 통설|편집 추론/.test(r.evText) && !/documented|scholarly|editorial/.test(r.evText)).length;
   check("근거 등급은 독자의 말로 적히고 코드 값이 새지 않는다", evOk === relCount, `${evOk}/${relCount}`);
+  // 앵커 칩: 요약이 지목한 책·연도가 행에 적힌다 — 수는 /data 의 anchors 수와 같다
+  const chipCount = await card.locator('[data-testid="anchor-chip"]').count();
+  const expectChips = rows.reduce((n, r) => n + ((relById.get(r.id)?.anchors ?? []).length), 0);
+  check("앵커 칩 수가 /data 의 앵커 수와 같다", chipCount === expectChips, `${chipCount}/${expectChips}`);
   const ranks = rows.map((r) => EV_RANK[r.ev] ?? 0);
   check("강한 근거가 먼저 온다", ranks.every((v, i) => i === 0 || v <= ranks[i - 1]), ranks.join(""));
   // 하늘: 방향 있는 선은 도착 끝에 화살촉을 갖고, 방향 없는 선(친연)은 갖지 않는다

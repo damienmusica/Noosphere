@@ -336,6 +336,8 @@ export function assembleDataset(
     }
   }
 
+  const workById = new Map(works.map((w) => [w.id, w]));
+
   // --- relations ------------------------------------------------------------
   const defByType = new Map(RELATION_DEFS.map((d) => [d.id, d]));
   const seenPairs = new Set<string>();
@@ -346,6 +348,15 @@ export function assembleDataset(
     if (!authorById.has(r.targetId)) errors.push(`${r.id}: unknown targetId ${r.targetId}`);
     if (r.sourceId === r.targetId) errors.push(`${r.id}: self-relation forbidden`);
 
+    // 앵커는 두 당사자 중 한 사람의 실재하는 작품만 가리킨다 — 제3자의 책에 닿는 선은 거짓말이다
+    for (const an of r.anchors ?? []) {
+      if (an.workId) {
+        const w = workById.get(an.workId);
+        if (!w) errors.push(`${r.id}: anchor names unknown work ${an.workId}`);
+        else if (w.authorId !== r.sourceId && w.authorId !== r.targetId)
+          errors.push(`${r.id}: anchor work ${an.workId} belongs to neither party`);
+      }
+    }
     const expectedId = `${RELATION_ID_PREFIX[r.type]}--${r.sourceId}--${r.targetId}`;
     if (r.id !== expectedId)
       errors.push(`${r.id}: id must be '${expectedId}' (type/source/target mismatch)`);
