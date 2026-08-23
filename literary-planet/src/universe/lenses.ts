@@ -30,8 +30,11 @@ export interface LensLine {
   color: string;
   /** 0..1 — 선의 존재 강도(증거 등급 또는 소속 확실성) */
   weight: number;
-  /** 관계 렌즈일 때만 있는 원본 관계 id — 클릭하면 증거로 간다 */
+  /** 관계 렌즈일 때만 있는 원본 관계 id */
   relationId?: string;
+  /** 방향 있는 관계(a → b). 자기 성좌에서만 화살촉을 받는다 — 화살촉은 방향
+   *  주장이고, 방향 없는 친연·대비에 붙이면 데이터에 없는 인과를 약속한다 */
+  directed?: boolean;
 }
 
 export interface LensGroup {
@@ -174,7 +177,8 @@ export function buildLens(id: LensId, input: LensInput): LensResult {
         b: r.targetId,
         color: RELATION_COLORS[r.type],
         weight: EVIDENCE_WEIGHT[r.evidenceLevel] ?? 0.5,
-        relationId: r.id
+        relationId: r.id,
+        directed: r.direction === "directed"
       });
       lit.add(r.sourceId);
       lit.add(r.targetId);

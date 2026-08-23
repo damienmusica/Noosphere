@@ -9,13 +9,15 @@
 //
 // 초상 사다리 (R9 개정안, CPO 2026-08-20 판정): **상상된 인간 얼굴은 최종
 // 자산으로 쓰지 않는다.** 권리 확인 실제 초상 → 실제 문헌·사물 → 근거 있는
-// 사물 초상 → 비인물적 타이포그래피 명판. 이 프로토타입은 1단(3인)과
-// 4단(97인)을 구현한다; 2·3단은 자산 수집이 선행이다.
+// 사물 초상 → 비인물적 타이포그래피 명판. R12 서명 파도(CPO 룰링 C·E,
+// 2026-08-24)로 2단이 열렸다: 권리 확인된 **서명**은 실물 기록이고, 창작성 문턱
+// 아래라 사망 연도와 무관하게 쓸 수 있다. 지금 1단 3인 · 2단 59인 · 4단 38인.
 
 import { useEffect, useRef } from "react";
 import type { Author, Relation, Work } from "../../types.ts";
 import { artUrl, type ArtManifest, type AssetProvenance } from "../../globe/art-assets.ts";
 import { periodOf } from "../grammar.ts";
+import { EVIDENCE_KO, REL_KO, anchorChips, relationGlyph, sortRelations } from "../relations.ts";
 import { PERIOD_TINT, COLORS } from "../../theme.ts";
 
 export interface SkyMembership {
@@ -45,6 +47,8 @@ export interface OrbitCardProps {
   onLand(): void;
   onGoto(id: string): void;
   onClose(): void;
+  /** 작품 id → 한국어 제목 (앵커 칩용; 상대 작가의 작품일 수 있다) */
+  workTitle(id: string): string | undefined;
 }
 
 /** 사다리 1단 — 권리 확인 기록 사진. 근거는 **사진이 보이는 이 표면**이 싣는다 */
@@ -62,6 +66,61 @@ function ArchivalPortrait({
         기록 사진
         {provenance ? (
           <details className="u-prov u-prov--inline" data-testid="portrait-provenance">
+            <summary>근거</summary>
+            <span className="u-prov__title">{provenance.title ?? "제목 미기재"}</span>
+            <span className="u-prov__meta">
+              {provenance.collection ?? "소장처 미기재"} · {provenance.licence ?? "라이선스 미기재"}
+              {provenance.pageUrl ? (
+                <>
+                  {" · "}
+                  <a href={provenance.pageUrl} target="_blank" rel="noopener noreferrer">
+                    원본 파일 페이지
+                  </a>
+                </>
+              ) : null}
+            </span>
+          </details>
+        ) : null}
+      </figcaption>
+    </figure>
+  );
+}
+
+/**
+ * 사다리 2단 — **서명 기록**. 얼굴은 없지만 실물이 있다: 그 사람의 손이 남긴
+ * 이름. 근거는 사진과 같은 형식으로 **이 표면**이 싣는다. 별의 측광 기록
+ * (미해상 기록의 값)은 그대로 아래에 남긴다 — 서명이 광도·시대를 대신하지 않는다.
+ */
+function MarkRecord({
+  file,
+  provenance,
+  author,
+  star,
+  counts
+}: {
+  file: string;
+  provenance?: AssetProvenance | null;
+  author: Author;
+  star: { px: number; color: string; magnitude: number };
+  counts: { relations: number; works: number; covers: number };
+}) {
+  return (
+    <figure className="u-portrait u-portrait--mark" data-testid="mark-record">
+      <img src={artUrl(file)} alt={`${author.names.ko}의 서명`} />
+      <div className="u-record">
+        <span className="u-record__name">{author.names.original}</span>
+        <span>
+          광도 {star.magnitude.toFixed(2)} (영향력) · {PERIOD_KO[periodOf(author)] ?? periodOf(author)}{" "}
+          {author.anchorYear}
+        </span>
+        <span>
+          관계 {counts.relations} · 작품 {counts.works} · 초판 실물 {counts.covers} · 육필 없음
+        </span>
+      </div>
+      <figcaption>
+        서명 · 실물 기록
+        {provenance ? (
+          <details className="u-prov u-prov--inline" data-testid="mark-provenance">
             <summary>근거</summary>
             <span className="u-prov__title">{provenance.title ?? "제목 미기재"}</span>
             <span className="u-prov__meta">
@@ -169,19 +228,18 @@ function UnresolvedRecord({
   );
 }
 
-const REL_KO: Record<string, string> = {
-  documented_influence: "영향",
-  translation: "번역",
-  mentorship: "사사",
-  dialogue: "대화",
-  affinity: "친연",
-  contrast: "대비"
+/** 글리프의 스크린리더 이름 — 화살표 문자는 읽히지 않는다 */
+const GLYPH_KO: Record<string, string> = {
+  "→": "이 작가가 출발점",
+  "←": "상대가 출발점",
+  "↔": "방향 없는 관계"
 };
 
 export function OrbitCard(p: OrbitCardProps) {
   const a = p.author;
   const tint = PERIOD_TINT[periodOf(a)];
   const archival = p.art?.archival?.[a.id];
+  const mark = p.art?.marks?.[a.id] ?? p.art?.signatures?.[a.id];
   // 입문 순서는 **편집이 실제로 지목한 것**(readingOrder)만이다. 이전 판은
   // 나머지 작품을 뒤에 이어 붙여 "독서 순서 5"로 번호를 매겼다 — 큐레이션의
   // 부재를 큐레이션으로 위장한 것이고, 착륙 서가는 같은 작품을 "입문 경로
@@ -202,6 +260,14 @@ export function OrbitCard(p: OrbitCardProps) {
       <header className="u-card__head">
         {archival ? (
           <ArchivalPortrait file={archival.file} provenance={archival.provenance ?? null} />
+        ) : mark ? (
+          <MarkRecord
+            file={mark.file}
+            provenance={mark.provenance ?? null}
+            author={a}
+            star={p.star}
+            counts={{ relations: p.relations.length, works: p.works.length, covers }}
+          />
         ) : (
           <UnresolvedRecord
             author={a}
@@ -315,18 +381,45 @@ export function OrbitCard(p: OrbitCardProps) {
         </p>
       </div>
 
+      {/* 관계 — 선은 왜 그어졌는가. 이름만 나열하면 독자는 "관련 있다"까지만
+          읽고 방향도 이유도 못 읽는다(합성 파일럿 4/4 · 외부 검토 2차). 각 행은
+          방향 글리프 · 유형 · 상대 · **요약문** · 근거 등급을 싣고, 강한 근거가
+          먼저 온다. 이것이 미준비 궤도의 "왜 이 별에 다시 와야 하는가" 단서다. */}
       {p.relations.length ? (
-        <div className="u-card__rel">
-          <h3>관계 {p.relations.length}</h3>
+        <div className="u-card__rel" data-testid="orbit-relations">
+          <h3>관계 {p.relations.length} — 선이 그어진 이유</h3>
           <ul>
-            {p.relations.map(({ rel, other }) => (
-              <li key={rel.id}>
-                <button onClick={() => p.onGoto(other.id)}>
-                  <span className="u-tag u-tag--rel">{REL_KO[rel.type] ?? rel.type}</span>
-                  {other.names.ko}
-                </button>
-              </li>
-            ))}
+            {sortRelations(p.relations).map(({ rel, other }) => {
+              const glyph = relationGlyph(rel, a.id);
+              return (
+                <li
+                  key={rel.id}
+                  data-relation={rel.id}
+                  data-direction={glyph}
+                  data-evidence={rel.evidenceLevel}
+                >
+                  <button onClick={() => p.onGoto(other.id)}>
+                    <span className="u-rel__glyph" aria-label={GLYPH_KO[glyph]}>
+                      {glyph}
+                    </span>
+                    <span className="u-tag u-tag--rel">{REL_KO[rel.type] ?? rel.type}</span>
+                    {other.names.ko}
+                    {anchorChips(rel, p.workTitle).map((chip) => (
+                      <span key={chip} className="u-rel__anchor" data-testid="anchor-chip">
+                        {chip}
+                      </span>
+                    ))}
+                  </button>
+                  <p className="u-rel__why">
+                    {rel.summary}
+                    <span className="u-rel__ev">
+                      {EVIDENCE_KO[rel.evidenceLevel] ?? rel.evidenceLevel}
+                      {rel.sourceIds.length ? ` · 출처 ${rel.sourceIds.length}건` : ""}
+                    </span>
+                  </p>
+                </li>
+              );
+            })}
           </ul>
         </div>
       ) : null}

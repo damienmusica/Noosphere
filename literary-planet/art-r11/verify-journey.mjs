@@ -55,6 +55,28 @@ for (const a of SLICE) {
   ];
   a.skies = keys.filter((k) => (bucket.get(k) ?? 0) >= 2).length;
 }
+// 관계 기대값도 /data 에서 센다 — 카드의 행 수·방향 글리프·요약문은 렌더가
+// 아니라 관계 파일과 대조한다(관계 263건 전부에 summary·direction 이 있다).
+const dataRelations = readdirSync(path.join(ROOT, "data/relations"))
+  .flatMap((f) => {
+    const j = JSON.parse(readFileSync(path.join(ROOT, "data/relations", f), "utf8"));
+    return Array.isArray(j) ? j : (j.relations ?? []);
+  });
+const relById = new Map(dataRelations.map((r) => [r.id, r]));
+// 작품 세계 기대값도 /data 에서 — 여는 문장·판본·유고는 렌더가 아니라 작품 파일과 대조한다
+const dataWorks = readdirSync(path.join(ROOT, "data/works"))
+  .flatMap((f) => {
+    const j = JSON.parse(readFileSync(path.join(ROOT, "data/works", f), "utf8"));
+    return Array.isArray(j) ? j : (j.works ?? []);
+  });
+const workById = new Map(dataWorks.map((w) => [w.id, w]));
+const glyphOf = (r, self) => (r.direction === "bidirectional" ? "↔" : r.sourceId === self ? "→" : "←");
+const EV_RANK = { documented: 3, scholarly_consensus: 2, editorial_inference: 1 };
+for (const a of SLICE) {
+  const mine = dataRelations.filter((r) => r.sourceId === a.id || r.targetId === a.id);
+  a.relations = mine.length;
+  a.directed = mine.filter((r) => r.direction === "directed").length;
+}
 
 const server = await serveDist(distDir);
 const browser = await chromium.launch({ headless: false });
@@ -185,8 +207,19 @@ for (const a of SLICE) {
   await card.waitFor({ timeout: 4000 });
   const archival = await card.locator(".u-portrait--archival").count();
   const plate = await card.locator('[data-testid="unresolved-record"]').count();
-  check("초상 사다리 — 기록 사진 또는 미해상 기록", archival + plate === 1,
-    archival ? "기록 사진" : "미해상 기록");
+  // 사다리 2단 (R12 서명 파도): 기록 사진이 없는 작가는 권리 확인된 서명을 실물
+  // 기록으로 싣고, 근거 행을 같은 표면에 단다. 사진이 있으면 서명 기록은 서지 않는다.
+  const markRec = await card.locator('[data-testid="mark-record"]').count();
+  if (a.landable) check("기록 사진이 있으면 서명 기록은 서지 않는다", markRec === 0, `${markRec}`);
+  else {
+    const mp = card.locator('[data-testid="mark-provenance"]');
+    const mpText = ((await mp.first().textContent().catch(() => "")) ?? "");
+    const hasLink = (await mp.locator("a").count()) >= 1;
+    check("미준비 작가의 궤도 카드에 서명 기록이 선다", markRec === 1, `${markRec}`);
+    check("서명 기록에 근거 행(라이선스·원본 링크)이 붙는다", /Public domain|CC0|CC BY/i.test(mpText) && hasLink, mpText.slice(0, 40));
+  }
+  check("초상 사다리 — 기록 사진·서명 기록·미해상 기록 중 정확히 하나", archival + markRec + plate === 1,
+    archival ? "기록 사진" : markRec ? "서명 기록" : "미해상 기록");
   check("발명된 인간 얼굴 없음 — 상상 초상 자산을 가져오지 않는다",
     portraitRequests.length === 0, `요청 ${portraitRequests.length}건`);
   check("해설", ((await card.locator(".u-card__why").first().textContent()) ?? "").length > 80);
@@ -201,7 +234,77 @@ for (const a of SLICE) {
   } else {
     check("기록 사진이 없으면 근거 행도 없다", (await card.locator('[data-testid="portrait-provenance"]').count()) === 0);
   }
-  check("관계 목록", (await card.locator(".u-card__rel li").count()) >= 1);
+  // 관계 인과성 (R12): 선이 왜 그어졌는지가 카드에 있다 — 행 수는 /data 와
+  // 같고, 각 행은 방향 글리프·요약문·근거 등급을 싣고, 강한 근거가 먼저 온다.
+  const relRows = card.locator('[data-testid="orbit-relations"] li');
+  const relCount = await relRows.count();
+  check("관계 목록이 /data 의 관계 수와 같다", relCount === a.relations, `${relCount}/${a.relations}`);
+  const rows = await relRows.evaluateAll((els) =>
+    els.map((el) => ({
+      id: el.dataset.relation,
+      glyph: el.dataset.direction,
+      ev: el.dataset.evidence,
+      why: (el.querySelector(".u-rel__why")?.textContent ?? "").trim(),
+      evText: (el.querySelector(".u-rel__ev")?.textContent ?? "").trim()
+    }))
+  );
+  const glyphOk = rows.filter((r) => relById.get(r.id) && glyphOf(relById.get(r.id), a.id) === r.glyph).length;
+  check("관계마다 방향 글리프가 /data 의 방향과 일치한다", glyphOk === relCount && relCount > 0, `${glyphOk}/${relCount}`);
+  const whyOk = rows.filter((r) => relById.get(r.id) && r.why.startsWith(relById.get(r.id).summary.slice(0, 24))).length;
+  check("관계마다 '왜'(summary) 가 실려 있다", whyOk === relCount, `${whyOk}/${relCount}`);
+  const evOk = rows.filter((r) => /문헌 기록|학계 통설|편집 추론/.test(r.evText) && !/documented|scholarly|editorial/.test(r.evText)).length;
+  check("근거 등급은 독자의 말로 적히고 코드 값이 새지 않는다", evOk === relCount, `${evOk}/${relCount}`);
+  // 앵커 칩: 요약이 지목한 책·연도가 행에 적힌다 — 수는 /data 의 anchors 수와 같다
+  const chipCount = await card.locator('[data-testid="anchor-chip"]').count();
+  const expectChips = rows.reduce((n, r) => n + ((relById.get(r.id)?.anchors ?? []).length), 0);
+  check("앵커 칩 수가 /data 의 앵커 수와 같다", chipCount === expectChips, `${chipCount}/${expectChips}`);
+  const ranks = rows.map((r) => EV_RANK[r.ev] ?? 0);
+  check("강한 근거가 먼저 온다", ranks.every((v, i) => i === 0 || v <= ranks[i - 1]), ranks.join(""));
+  // 하늘: 방향 있는 선은 도착 끝에 화살촉을 갖고, 방향 없는 선(친연)은 갖지 않는다
+  const am = await metrics();
+  check("방향 있는 자기 성좌 선마다 화살촉이 있다", am.arrowsExpected === a.directed && am.arrows === am.arrowsExpected,
+    `화살촉 ${am.arrows} / 방향 선 ${am.arrowsExpected} / data ${a.directed}`);
+  check("화살촉은 도착 끝에 닿아 있다", am.arrowsAtTarget === am.arrows && am.arrows > 0, `${am.arrowsAtTarget}/${am.arrows}`);
+  check("방향 없는 관계는 화살촉을 받지 않는다", am.arrowsExpected === a.directed && a.directed < a.relations,
+    `방향 ${a.directed} < 관계 ${a.relations}`);
+  // 호버: 이웃 별에 실제 마우스를 올리면 그 선의 "왜"가 무대에 적힌다
+  {
+    // 이웃은 화면 안, 그리고 패널(좌 레일·우 카드·상단 검색) 바깥에 있어야
+    // 실제 마우스가 캔버스에 닿는다 — 첫 행이 화면 밖이면 다음 행을 쓴다.
+    let rel = null;
+    let pt = null;
+    for (const r of rows) {
+      const cand = relById.get(r.id);
+      if (!cand) continue;
+      const otherId = cand.sourceId === a.id ? cand.targetId : cand.sourceId;
+      const q = await page.evaluate((id) => window.__universe.project(id), otherId);
+      if (q && q[0] > 270 && q[0] < 1140 && q[1] > 90 && q[1] < 900) {
+        rel = cand;
+        pt = q;
+        break;
+      }
+    }
+    let whyText = "";
+    if (pt) {
+      await page.mouse.move(pt[0], pt[1]);
+      await page.waitForTimeout(150);
+      whyText = ((await page.locator('[data-testid="why"]').textContent().catch(() => "")) ?? "").trim();
+    }
+    // 머리말은 데이터에서 만든다: 출발 → 도착 (상대가 출발점이면 상대가 앞)
+    let head = "";
+    if (rel) {
+      const nameKo = (id) => dataAuthors.find((x) => x.id === id)?.names?.ko ?? id;
+      const otherId = rel.sourceId === a.id ? rel.targetId : rel.sourceId;
+      const g = glyphOf(rel, a.id);
+      head = g === "↔" ? `${nameKo(a.id)} ↔ ${nameKo(otherId)}` : g === "→" ? `${nameKo(a.id)} → ${nameKo(otherId)}` : `${nameKo(otherId)} → ${nameKo(a.id)}`;
+    }
+    check("이웃 별 호버에 그 관계의 '왜'가 무대에 적힌다 (출발 → 도착 · 요약)",
+      Boolean(pt) && whyText.startsWith(head) && whyText.includes(rel.summary.slice(0, 24)),
+      pt ? whyText.slice(0, 44) : "캔버스 안 이웃 없음");
+    await page.mouse.move(5, 500);
+    await page.waitForTimeout(120);
+    check("호버를 떼면 관측 일지가 사라진다", (await page.locator('[data-testid="why"]').count()) === 0);
+  }
   check("출처", ((await card.locator(".u-card__src").first().textContent()) ?? "").includes("출처"));
 
   // 5. 궤도 관측 — 착륙하지 않아도 이 작가를 읽을 수 있는 전부
@@ -252,6 +355,46 @@ for (const a of SLICE) {
     await page.waitForTimeout(250);
     const sig = (await page.locator(".u-works__sig").first().textContent()) ?? "";
     check("작품 인스펙터", sig.length > 40, `${sig.slice(0, 28)}…`);
+
+    // 작품 세계 (R12): 열린 작품의 시트를 /data 의 world 와 대조한다. 자료가 있는
+    // 작품은 여는 문장(원문 그대로)·자체 번역 표시·판본 수·유고 행이 맞아야 하고,
+    // 자료가 없는 작품은 없다고 적혀야 한다 — 둘 다 계약이다.
+    {
+      const sheet = page.locator('[data-testid="work-world"]').first();
+      const openedId = await sheet.getAttribute("data-work");
+      const dw = workById.get(openedId);
+      const has = (await sheet.getAttribute("data-has-world")) === "1";
+      check("열린 작품의 시트가 그 작품의 것이다", Boolean(dw) && openedId === dw.id, `${openedId}`);
+      if (dw?.world) {
+        const orig = ((await sheet.locator(".u-work__orig").textContent().catch(() => "")) ?? "").trim();
+        const ko = ((await sheet.locator(".u-work__ko").textContent().catch(() => "")) ?? "").trim();
+        const tag = ((await sheet.locator(".u-work__tag").textContent().catch(() => "")) ?? "").trim();
+        const eds = await sheet.locator('[data-testid="work-editions"] li').count();
+        const post = await sheet.locator('[data-testid="work-posthumous"]').count();
+        const srcN = ((await sheet.locator('[data-testid="work-sources"] summary').textContent().catch(() => "")) ?? "");
+        check("여는 문장이 원문 그대로다", has && orig === dw.world.opening.original, `${orig.slice(0, 30)}…`);
+        check("여는 문장의 한국어가 자체 번역으로 표시된다", ko === dw.world.opening.ko && tag.includes("자체 번역"), tag);
+        check("판본 행 수가 /data 와 같다", eds === dw.world.editions.length, `${eds}/${dw.world.editions.length}`);
+        check("유고 행은 유고일 때만 선다", post === (dw.world.posthumous ? 1 : 0), `유고 ${post}`);
+        check("시트가 근거를 센다", /근거 \d+건/.test(srcN) && !/근거 0건/.test(srcN), srcN.trim());
+      } else {
+        const none = ((await sheet.locator(".u-work__none").textContent().catch(() => "")) ?? "");
+        check("자료 없는 작품은 없다고 적는다", !has && none.includes("아직"), none.slice(0, 24));
+      }
+      // 유고 행의 '선다' 쪽도 계약한다 — 『소송』(1925, 브로트 편)을 열어 본다
+      const post = dataWorks.find((w) => w.authorId === a.id && w.world?.posthumous);
+      if (post) {
+        await page.locator(".u-works button", { hasText: post.titleKo }).first().click();
+        await page.waitForTimeout(250);
+        const sh = page.locator('[data-testid="work-world"]').first();
+        const id2 = await sh.getAttribute("data-work");
+        const postRow = ((await sh.locator('[data-testid="work-posthumous"]').textContent().catch(() => "")) ?? "");
+        const orig2 = ((await sh.locator(".u-work__orig").textContent().catch(() => "")) ?? "").trim();
+        check("유고 작품의 시트에 편집자와 경위가 선다",
+          id2 === post.id && postRow.includes(post.world.posthumous.editor) && postRow.length > 30 && orig2 === post.world.opening.original,
+          `${id2} · ${postRow.slice(0, 26)}…`);
+      }
+    }
 
     // 자산은 착륙 이전에 디코드되어 있어야 하고, 그 근거는 표면에서 읽혀야 한다
     const mm = await metrics();
@@ -339,6 +482,9 @@ for (const a of SLICE) {
       const cx = free(sb[2] + 12) ? sb[2] + 12 : sb[0] - 12;
       await page.mouse.click(cx, cy);
       await page.waitForTimeout(250);
+      // 선택 상태는 다음 라벨 레이아웃에서 DOM 에 닿는다 — 프레임을 기다리지
+      // 않고 상태를 당긴다(settle)
+      await page.evaluate(() => window.__universe.settle());
       const sel = await page.evaluate(() =>
         document.querySelector(".globe-label--work.is-selected")?.dataset.labelId ?? null
       );
