@@ -370,6 +370,10 @@ MUTATIONS = [
     ("mobile", "범례 행이 서랍을 닫지 않는다 (하늘이 안 보인다)", U,
      "                      setGroupPin((pin) => (pin === g.id ? null : g.id));\n                      setDrawer(false);",
      "                      setGroupPin((pin) => (pin === g.id ? null : g.id));"),
+    # --- 앵커 웨이브 (R12-e 후속) -----------------------------------------
+    ("browser", "앵커가 구간을 앞으로도 늘린다 (첫 작품 이전이 빈 칸으로)", G,
+     "  const own = [...workYears, ...(deathYear !== undefined ? [deathYear] : [])];\n  const lo = own.length ? Math.min(...own) : Math.min(...anchorYears);",
+     "  const own = [...workYears, ...anchorYears, ...(deathYear !== undefined ? [deathYear] : [])];\n  const lo = Math.min(...own);"),
 ]
 
 

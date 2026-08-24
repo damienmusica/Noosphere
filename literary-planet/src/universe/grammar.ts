@@ -352,9 +352,15 @@ export function corridorSpan(
   anchorYears: number[],
   deathYear?: number
 ): CorridorSpan {
-  const ys = [...workYears, ...anchorYears, ...(deathYear !== undefined ? [deathYear] : [])];
-  const lo = Math.min(...ys);
-  const hi = Math.max(...ys);
+  // 회랑은 **이 작가의** 연보다. 사후의 앵커는 구간을 뒤로 늘린다 — 수용사는
+  // 그의 연보에 속한다(1969 카네티가 카프카의 회랑을 늘리는 것이 그것이다).
+  // 그러나 첫 작품보다 앞선 앵커는 상대의 전사(前史)이지 그의 연보가 아니다:
+  // 마샤두의 『브라스 쿠바스』(1881)를 그대로 받으면 소세키의 서가가 그가
+  // 첫 책을 쓰기 24년 전부터 빈 칸으로 늘어선다. 원장(/data)에는 남기고
+  // 회랑만 세우지 않는다 — 하늘의 실은 여전히 그 책에 닿는다.
+  const own = [...workYears, ...(deathYear !== undefined ? [deathYear] : [])];
+  const lo = own.length ? Math.min(...own) : Math.min(...anchorYears);
+  const hi = Math.max(...own, ...anchorYears);
   return { yStart: lo - CORRIDOR_LEAD_YEARS, yEnd: hi + CORRIDOR_TAIL_YEARS };
 }
 

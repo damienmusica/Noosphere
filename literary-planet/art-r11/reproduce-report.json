@@ -1,6 +1,6 @@
 {
-  "commit": "55da37d",
-  "generatedAt": "2026-08-24T19:39:28.170Z",
+  "commit": "7c516d0",
+  "generatedAt": "2026-08-24T22:16:53.543Z",
   "environment": {
     "node": "v24.14.0",
     "platform": "darwin/arm64",
@@ -19,43 +19,43 @@
   "steps": {
     "typecheck": {
       "ok": true,
-      "ms": 1867
+      "ms": 1984
     },
     "unit": {
       "ok": true,
-      "ms": 3226
+      "ms": 3279
     },
     "validate-data": {
       "ok": true,
-      "ms": 194
+      "ms": 204
     },
     "mutation-fast": {
       "ok": true,
-      "ms": 24048
+      "ms": 23934
     },
     "build": {
       "ok": true,
-      "ms": 1462
+      "ms": 1525
     },
     "journey-contract": {
       "ok": true,
-      "ms": 77167
+      "ms": 77125
     },
     "mobile-contract": {
       "ok": true,
-      "ms": 40574
+      "ms": 40492
     },
     "frames": {
       "ok": true,
-      "ms": 40149
+      "ms": 40102
     },
     "video": {
       "ok": true,
-      "ms": 35045
+      "ms": 35106
     },
     "planet-qa": {
       "ok": true,
-      "ms": 218900
+      "ms": 217378
     }
   },
   "artifacts": {
@@ -78,28 +78,28 @@
           "bytes": 224175
         },
         "4transition-0.png": {
-          "sha256_16": "650e1619030b7a2a",
-          "bytes": 177363
+          "sha256_16": "3dd86094e1ab9028",
+          "bytes": 177412
         },
         "4transition-1.png": {
-          "sha256_16": "7892b874b40185b3",
-          "bytes": 100347
+          "sha256_16": "ea7f50cc1e945895",
+          "bytes": 101253
         },
         "4transition-2.png": {
-          "sha256_16": "cbd4fbc2d969fd29",
-          "bytes": 85597
+          "sha256_16": "c66194ccb5c7adde",
+          "bytes": 86464
         },
         "4transition-3.png": {
-          "sha256_16": "f844a727f28e6013",
-          "bytes": 318265
+          "sha256_16": "5c0359591436d13d",
+          "bytes": 329881
         },
         "4transition-4.png": {
-          "sha256_16": "7c6bcbda67e9d265",
-          "bytes": 287690
+          "sha256_16": "60011abcbd134bb0",
+          "bytes": 287094
         },
         "4transition-5.png": {
-          "sha256_16": "1abcc7a328fae6d8",
-          "bytes": 278862
+          "sha256_16": "1660e11c1cc1b990",
+          "bytes": 279712
         },
         "5personal.png": {
           "sha256_16": "1a53bd29fb5a612a",
@@ -118,8 +118,8 @@
           "bytes": 224912
         },
         "7orbit-unprepared.png": {
-          "sha256_16": "07945c45a32a40e1",
-          "bytes": 352066
+          "sha256_16": "993e84bce3199af9",
+          "bytes": 351925
         },
         "8lens-linked.png": {
           "sha256_16": "5b38489f1d4e916f",
@@ -130,42 +130,42 @@
           "bytes": 224175
         },
         "franz-kafka-2mid.png": {
-          "sha256_16": "187da75a8fc78a93",
-          "bytes": 428588
+          "sha256_16": "9194f92cf7b60abf",
+          "bytes": 429586
         },
         "franz-kafka-3near.png": {
-          "sha256_16": "671fbbb9e5956ee7",
-          "bytes": 279887
+          "sha256_16": "3e7145675519b8b5",
+          "bytes": 279763
         },
         "natsume-soseki-1sky.png": {
           "sha256_16": "a3b2f1070674a0a9",
           "bytes": 224175
         },
         "natsume-soseki-2mid.png": {
-          "sha256_16": "f407ebbb06fdeacd",
-          "bytes": 409083
+          "sha256_16": "b544dc91496e30da",
+          "bytes": 408748
         },
         "natsume-soseki-3near.png": {
-          "sha256_16": "7f98f70d3146edde",
-          "bytes": 355566
+          "sha256_16": "f93566673a259cc3",
+          "bytes": 342826
         },
         "rabindranath-tagore-1sky.png": {
           "sha256_16": "a3b2f1070674a0a9",
           "bytes": 224175
         },
         "rabindranath-tagore-2mid.png": {
-          "sha256_16": "d662a4cbb081b4d2",
-          "bytes": 418275
+          "sha256_16": "5afc88a4faa27e45",
+          "bytes": 419068
         },
         "rabindranath-tagore-3near.png": {
-          "sha256_16": "b859780c3dc35004",
-          "bytes": 234023
+          "sha256_16": "77722741dac8874a",
+          "bytes": 233180
         }
       },
       "video": {
         "r11-journey.webm": {
-          "sha256_16": "3b4146f34c4c0e42",
-          "bytes": 3882947
+          "sha256_16": "ff00cd7949239bff",
+          "bytes": 3837670
         }
       }
     }

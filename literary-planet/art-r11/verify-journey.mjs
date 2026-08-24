@@ -571,8 +571,11 @@ for (const a of SLICE) {
       .filter((r) => r.sourceId === a.id || r.targetId === a.id)
       .flatMap((r) => (r.anchors ?? []).map((an) => (an.workId ? (workById.get(an.workId)?.year ?? an.year) : an.year)))
       .filter((y) => y !== undefined);
-    const allY = [...wYears, ...aYears, ...(dA?.deathYear !== undefined ? [dA.deathYear] : [])];
-    const expBays = Math.max(...allY) + 4 - (Math.min(...allY) - 2);
+    // 구간의 **시작**은 그 작가 자신의 것(작품·사망)만으로 정해진다. 앵커는
+    // 뒤로만 늘린다 — 첫 작품 이전의 앵커는 상대의 전사이지 그의 연보가 아니다
+    // (실측: 마샤두 1881 을 그대로 받으면 소세키의 서가가 1879 부터 선다).
+    const ownY = [...wYears, ...(dA?.deathYear !== undefined ? [dA.deathYear] : [])];
+    const expBays = Math.max(...ownY, ...aYears) + 4 - (Math.min(...ownY) - 2);
     check("회랑 칸 수 = 데이터 구간(작품·앵커·사망 + 여유)", mm.bays === expBays, `${mm.bays}/${expBays}`);
     check("접힘이 끝까지 섰다", mm.foldK === 1, `fold ${mm.foldK}`);
     check("책 수 = 작품 수", mm.cities.total === a.works, `${mm.cities.total}/${a.works}`);
@@ -587,8 +590,8 @@ for (const a of SLICE) {
     const hasRest = a.works > a.order;
     check("두 단 — 입문 단이 아래에 선다", mm.cities.rows === (hasRest ? 2 : 1) && mm.entryRowBelow,
       `${mm.cities.rows}단 · 아래 ${mm.entryRowBelow}`);
-    const yS = Math.min(...allY) - 2;
-    const yE = Math.max(...allY) + 4;
+    const yS = Math.min(...ownY) - 2;
+    const yE = Math.max(...ownY, ...aYears) + 4;
     let expTicks = 0;
     for (let y = Math.ceil(yS / 5) * 5; y <= yE; y += 5) expTicks++;
     check("바닥 연도 각인 수 = 구간의 5년 배수", mm.cities.ticks === expTicks, `${mm.cities.ticks}/${expTicks}`);
@@ -604,6 +607,8 @@ for (const a of SLICE) {
         for (const an of r.anchors ?? []) {
           const y = an.year ?? (an.workId ? workById.get(an.workId)?.year : undefined);
           if (y === undefined || seen.has(y)) continue;
+          // 구간 시작 이전의 앵커는 명패가 서지 않는다(위 주석과 같은 규칙)
+          if (y < Math.min(...ownY) - 2) continue;
           seen.add(y);
           expEvents++;
         }
