@@ -360,6 +360,11 @@ export class UniverseScene {
   private lastCrustAuthorLabels = 0;
   private safeLeft = 0;
   private safeRight = 0;
+  private safeTop = 0;
+  private safeBottom = 0;
+  /** 손가락이 주 입력인 기기 — 호버가 없으므로 "지목"이 한 단계 늦다 */
+  private coarse =
+    typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
   private raf = 0;
   private disposed = false;
   /** instrumentation for the QA harness */
@@ -732,10 +737,20 @@ export class UniverseScene {
   /** 아트 매니페스트는 비동기로 온다 — 장면을 다시 만들지 않고 갈아 끼운다
    *  (재생성하면 이미 반영된 상태가 조용히 사라진다) */
   /** 패널이 덮는 폭(px). 투영만 밀어서 궤도 역학은 건드리지 않는다(R7 PR1 계승) */
-  setSafeInsets(left: number, right: number): void {
-    if (left === this.safeLeft && right === this.safeRight) return;
+  /** 크롬이 덮는 네 변의 띠(CSS px). 좁은 화면에서는 패널이 좌우가 아니라
+   *  위·아래에 앉으므로 가로 두 값만으로는 프레임을 옳게 밀 수 없다. */
+  setSafeInsets(left: number, right: number, top = 0, bottom = 0): void {
+    if (
+      left === this.safeLeft &&
+      right === this.safeRight &&
+      top === this.safeTop &&
+      bottom === this.safeBottom
+    )
+      return;
     this.safeLeft = left;
     this.safeRight = right;
+    this.safeTop = top;
+    this.safeBottom = bottom;
     this.applyViewOffset();
   }
 
@@ -743,8 +758,9 @@ export class UniverseScene {
     const w = this.renderer.domElement.clientWidth || 1;
     const h = this.renderer.domElement.clientHeight || 1;
     const dx = (this.safeRight - this.safeLeft) / 2;
-    if (Math.abs(dx) < 1) this.camera.clearViewOffset();
-    else this.camera.setViewOffset(w, h, dx, 0, w, h);
+    const dy = (this.safeBottom - this.safeTop) / 2;
+    if (Math.abs(dx) < 1 && Math.abs(dy) < 1) this.camera.clearViewOffset();
+    else this.camera.setViewOffset(w, h, dx, dy, w, h);
     this.camera.updateProjectionMatrix();
   }
 
@@ -2253,17 +2269,29 @@ export class UniverseScene {
       // 안쪽(연도가 자라는 방향)이고, 눈높이는 사람이 서가 앞에 선 키다.
       // 위쪽 1/3 에 하늘이 남고, 지평선이 곡선으로 보인다.
       const thEye = corridorTheta(f.span.yStart + 0.8, f.span, f.cellArc);
-      const eye = this.corridorLatPoint(thEye, f.bh * 1.9, f.eyeLift);
+      // 세로 화면은 가로 시야를 잃는다(42° 세로 fov 기준: 가로 63° → 25°).
+      // 넓은 화면의 자세를 그대로 쓰면 서가는 왼쪽 가장자리의 한 조각으로
+      // 밀려나고 화면의 대부분이 빈 지면이 된다(실측). fov 는 건드리지
+      // 않는다 — 별의 겉보기 크기가 그 값에 매여 있다. 대신 **서 있는
+      // 자리**를 바꾼다: 벽에서 한 걸음 물러나 몸을 서가 쪽으로 돌린다.
+      // 세로 프레임에는 물러나며 사라지는 서가가 세로로 앉는다.
+      const port = Math.min(1, Math.max(0, (1.15 - this.camera.aspect) / 0.5));
+      const lat = f.bh * (1.9 + 1.0 * port);
+      const eye = this.corridorLatPoint(thEye, lat, f.eyeLift);
       const n = eye.clone().sub(f.center).normalize();
       const fwd = f.fwd.clone().addScaledVector(n, -f.fwd.dot(n)).normalize();
       // 횡 방향 = 경로 법선(N). 프레임과 같은 평행이동이라 좌우가 뒤집히지 않는다.
-      const side = this.corridorLatPoint(thEye, f.bh * 2.9, f.eyeLift).sub(eye).normalize();
-      const yaw = (5 * Math.PI) / 180;
+      const side = this.corridorLatPoint(thEye, lat + f.bh, f.eyeLift).sub(eye).normalize();
+      // side 는 서가에서 **멀어지는** 쪽이다. 넓은 화면에서는 +5° 로 살짝
+      // 틀어 서가를 왼쪽에 두고, 세로 화면에서는 음수로 돌려 서가를 화면
+      // 한가운데로 데려온다.
+      const yaw = ((5 - 20 * port) * Math.PI) / 180;
       // 피치는 접평면이 아니라 **보이는 지평선** 기준이다. 작은 행성의 지평선은
       // 접평면보다 훨씬 아래에 있다(눈높이 0.12 에 반경 2.6 이면 침하 ≈ 17°).
       const hEye = f.radius * f.eyeLift;
       const dip = Math.acos(f.radius / (f.radius + hEye));
-      const pitch = (9 * Math.PI) / 180 - dip;
+      // 세로 화면은 서가로 몸을 돌린 만큼 하늘을 잃는다 — 고개를 조금 든다.
+      const pitch = ((9 + 5 * port) * Math.PI) / 180 - dip;
       const dir = fwd
         .clone()
         .multiplyScalar(Math.cos(yaw))
@@ -2448,8 +2476,27 @@ export class UniverseScene {
       return;
     }
     const s = this.pickStar(e);
-    if (s) this.cb.onPickAuthor(s);
+    if (!s) return;
+    if (this.aimFirst(s)) return;
+    this.cb.onPickAuthor(s);
   };
+
+  /**
+   * 손가락에는 호버가 없다. 회랑에서 별을 누르면 곧바로 이륙해 버리므로,
+   * 왜 그 별과 이어져 있는지(실 한 가닥 + "왜" 한 문장)를 읽을 기회가
+   * 아예 없다 — 마우스가 호버로 얻는 것을 탭 하나가 건너뛴다. 그래서
+   * 손가락에서는 **첫 탭이 지목, 같은 별의 두 번째 탭이 출발**이다.
+   * 하늘(원경)에서는 그대로 한 번에 연다: 궤도 카드는 닫으면 그만이고,
+   * 이륙처럼 되돌리는 데 한 번의 비행이 드는 행동이 아니다.
+   */
+  private aimFirst(id: string): boolean {
+    if (!this.coarse || !this.state.landedId) return false;
+    if (this.state.hoveredId === id) return false;
+    this.state.hoveredId = id;
+    this.refreshStars();
+    this.cb.onHoverAuthor(id);
+    return true;
+  }
 
   private onPointerMove = (e: PointerEvent): void => {
     const s = this.pickStar(e);
@@ -2828,6 +2875,9 @@ export class UniverseScene {
     restingDots: Record<string, number>;
     /** 입구를 향한 그 면에 실제 책등 재질이 붙은 쉬는 권 수 */
     restingSpineDressed: number;
+    /** 크롬이 덮지 않는 띠 안에 실제로 들어온 칸 수 — 세로 화면에서 회랑이
+     *  프레임 밖으로 밀려나면 "단계=표면"은 초록인데 화면은 빈 지면이다. */
+    baysInFrame: number;
   } {
     let death = false;
     let plate = false;
@@ -2846,6 +2896,36 @@ export class UniverseScene {
         const w = this.renderer.domElement.clientWidth;
         const h = this.renderer.domElement.clientHeight;
         te = [Math.round(((v.x + 1) / 2) * w), Math.round(((-v.y + 1) / 2) * h)];
+      }
+    }
+    // 칸이 **보이는 띠 안에** 몇 개나 들어와 있는가. 화면 좌표로 재므로
+    // 세로/가로, 시트 높이, 카메라 자세가 전부 반영된다.
+    let baysInFrame = 0;
+    {
+      const w = this.renderer.domElement.clientWidth;
+      const h = this.renderer.domElement.clientHeight;
+      const q = new THREE.Vector3();
+      const bh = this.corridorFrame?.bh ?? 0;
+      // 칸은 점이 아니라 **선반**이다. 바닥 원점만 재면 서가가 화면을 가득
+      // 채우고 있어도 0 이 나온다(세로 화면 실측: 원점은 전부 시트 아래).
+      // 바닥과 머리 두 점을 재서 둘 중 하나라도 띠에 들어오면 든 것으로 센다.
+      const scr = (v: THREE.Vector3): [number, number] | null => {
+        v.project(this.camera);
+        if (v.z > 1) return null;
+        return [((v.x + 1) / 2) * w, ((-v.y + 1) / 2) * h];
+      };
+      const top = this.safeTop;
+      const bot = h - this.safeBottom;
+      for (const g of this.corridorStand) {
+        const a = scr(g.getWorldPosition(q));
+        const c = scr(g.localToWorld(new THREE.Vector3(0, bh, 0)));
+        if (!a || !c) continue;
+        // 칸이 띠를 **가로지르기만 해도** 보이는 것이다: 가까운 칸은 밑동이
+        // 시트 아래, 머리가 띠 안에 있고, 아주 가까운 칸은 띠를 통째로
+        // 관통한다. 두 끝점만 검사하면 그 둘을 놓친다.
+        if (Math.max(a[0], c[0]) < 0 || Math.min(a[0], c[0]) > w) continue;
+        if (Math.max(a[1], c[1]) < top || Math.min(a[1], c[1]) > bot) continue;
+        baysInFrame++;
       }
     }
     let restingAligned = 0;
@@ -2889,6 +2969,7 @@ export class UniverseScene {
       eventSlips: this.eventSlips.length,
       restingSpineToEntrance: restingAligned,
       restingSpineDressed: restingDressed,
+      baysInFrame,
       resting,
       pulledCoverToWalkway: pulledCover,
       entryRowBelow: rows1.length === 0 || avg(rows0) < avg(rows1),
@@ -3259,6 +3340,8 @@ export class UniverseScene {
         // 슬라이더 판도 같은 띠다(실측: 보들레르 ⑥ 가 슬라이더 아래로 들어갔다).
         if (sx < this.safeLeft && id !== s.focusId) continue;
         if (sx > w - this.safeRight && id !== s.focusId) continue;
+        if (this.safeTop > 0 && sy < this.safeTop && id !== s.focusId) continue;
+        if (this.safeBottom > 0 && sy > h - this.safeBottom && id !== s.focusId) continue;
         if (sy > h - YEAR_PANEL_INSET && Math.abs(sx - w / 2) < YEAR_PANEL_HALF_W) continue;
         items.push({
           id,
@@ -3293,6 +3376,11 @@ export class UniverseScene {
         if (v.z > 1) continue;
         const toward = c.pos.clone().sub(this.camera.position).normalize();
         if (toward.dot(camDir) < 0.1) continue;
+        // 시트가 덮는 아래 띠에는 작품 이름도 놓지 않는다 — 좁은 화면에서
+        // 『소송』슬립이 시트 뒤에 반쯤 걸려 유령처럼 비쳤다(실측).
+        const wy = ((-v.y + 1) / 2) * h + 10;
+        if (this.safeTop > 0 && wy < this.safeTop) continue;
+        if (this.safeBottom > 0 && wy > h - this.safeBottom) continue;
         items.push({
           id: c.workId,
           // 입문 **순서**는 여기서만 말한다 — 궤도 카드의 「입문 순서」목록과 같은
@@ -3327,6 +3415,8 @@ export class UniverseScene {
         const sx = ((v.x + 1) / 2) * w;
         const sy = ((-v.y + 1) / 2) * h + 14;
         if (sx < this.safeLeft || sx > w - this.safeRight) continue;
+        if (this.safeTop > 0 && sy < this.safeTop) continue;
+        if (this.safeBottom > 0 && sy > h - this.safeBottom) continue;
         if (sy > h - YEAR_PANEL_INSET && Math.abs(sx - w / 2) < YEAR_PANEL_HALF_W) continue;
         items.push({
           id: nid,
@@ -3371,8 +3461,14 @@ export class UniverseScene {
     this.lastCrustAuthorLabels = items.filter(
       (i) => i.ground === "crust" && i.kind !== "work"
     ).length;
-    this.labels.onActivate = (id) =>
-      this.index.has(id) ? this.cb.onPickAuthor(id) : this.cb.onPickWork(id);
+    this.labels.onActivate = (id) => {
+      if (!this.index.has(id)) {
+        this.cb.onPickWork(id);
+        return;
+      }
+      if (this.aimFirst(id)) return;
+      this.cb.onPickAuthor(id);
+    };
     this.labels.update(items, w, h, this.stage === "surface" ? 40 : this.stage === "sky" ? 18 : 32);
   }
 

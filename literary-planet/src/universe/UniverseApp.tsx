@@ -37,6 +37,33 @@ import { PERIOD_TINT } from "../theme.ts";
 const YEAR_MIN = 1857;
 const YEAR_MAX = 1995;
 
+/** 손안의 화면 — 크롬이 좌우 레일이 아니라 가장자리 판으로 앉는 크기.
+ *  폭 900 은 태블릿 세로(768·810·834)까지 포함한다: 그 폭에서 데스크톱
+ *  배치를 쓰면 연도판이 좌측 레일과 착륙 카드 사이에서 양쪽에 겹친다(실측,
+ *  iPad 810×1080). 높이 520 은 전화기 가로다 — 폭은 넉넉해도 세로가 없으면
+ *  레일도 카드도 잘린다(실측, 844×390). */
+const NARROW_Q = "(max-width: 900px), (max-height: 520px)";
+/** 세로가 없는 화면 — 시트는 아래가 아니라 **옆**에서 온다 */
+const SHORT_Q = "(max-height: 520px)";
+/** 좁은 화면에서 시트가 쉬는 높이(peek). 하늘이 화면의 절반 이상 남는다. */
+const SHEET_PEEK_VH = 0.42;
+/** 펼친 시트 — 하늘은 어깨만 남는다 */
+const SHEET_FULL_VH = 0.86;
+
+function useMedia(query: string): boolean {
+  const [on, setOn] = useState(() =>
+    typeof window === "undefined" ? false : window.matchMedia(query).matches
+  );
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    const fn = () => setOn(mq.matches);
+    fn();
+    mq.addEventListener("change", fn);
+    return () => mq.removeEventListener("change", fn);
+  }, [query]);
+  return on;
+}
+
 const STAGE_KO: Record<Stage, string> = {
   sky: "원경 · 천구",
   approach: "중경 · 관측 렌즈",
@@ -52,6 +79,14 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const [workId, setWorkId] = useState<string | null>(null);
   /** 하늘에서 마우스가 올라간 별 — 선택한 별의 이웃이면 그 선의 "왜"가 무대에 적힌다 */
   const [hoverId, setHoverId] = useState<string | null>(null);
+  /** 좁은 화면 배치 — 레일은 서랍, 카드는 시트 */
+  const narrow = useMedia(NARROW_Q);
+  /** 가로로 누운 전화기 — 아래에서 올라오는 시트는 하늘을 다 먹는다 */
+  const short = useMedia(SHORT_Q);
+  /** 좁은 화면에서 관측층 서랍이 열려 있는가 */
+  const [drawer, setDrawer] = useState(false);
+  /** 좁은 화면에서 시트가 펼쳐져 있는가(쉬는 높이 ↔ 전체) */
+  const [sheetFull, setSheetFull] = useState(false);
   // 첫 화면에 성좌가 이미 그려져 있어야 "이 하늘은 관계의 하늘"이 읽힌다
   const [lensId, setLensId] = useState<LensId | null>("movement");
   const [year, setYear] = useState(YEAR_MAX);
@@ -275,9 +310,55 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   }, [assets]);
 
   useEffect(() => {
-    // 좌측 관측층 범례는 상시, 우측 카드는 선택 시 — 투영만 민다
-    sceneRef.current?.setSafeInsets(250, focusId || landedId ? 392 : 0);
+    if (focusId || landedId) setDrawer(false);
   }, [focusId, landedId]);
+
+  // 다른 별로 옮겨 가면 시트는 다시 쉬는 높이로 — 펼침은 그 별에 대한 상태다
+  useEffect(() => {
+    setSheetFull(false);
+  }, [focusId, landedId]);
+
+  // 서가에서 책을 당기면 그 책의 자료가 시트 어딘가에 펼쳐진다. 좁은 화면의
+  // 시트는 첫 줄만 보이므로, 열린 작품을 시트 안에서 눈앞으로 데려온다 —
+  // 그러지 않으면 "눌렀는데 아무 일도 안 일어났다"로 읽힌다.
+  useEffect(() => {
+    if (!narrow || !workId) return;
+    const t = setTimeout(() => {
+      document
+        .querySelector(".u-card .u-works li.is-on")
+        ?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }, 60);
+    return () => clearTimeout(t);
+  }, [narrow, workId]);
+
+  useEffect(() => {
+    // 넓은 화면: 좌측 관측층 범례는 상시, 우측 카드는 선택 시 — 투영만 민다.
+    // 좁은 화면: 레일은 서랍으로 접히고 카드는 아래에서 올라오므로 띠도
+    // 위·아래다. 데스크톱 폭을 그대로 먹이면 좌우 합이 화면보다 넓어져
+    // 이름표가 전멸하고(실측: 라벨 1/99) 프레임이 71px 밀려 회랑이 화면
+    // 밖으로 나갔다.
+    if (!narrow) {
+      sceneRef.current?.setSafeInsets(250, focusId || landedId ? 392 : 0, 0, 0);
+      return;
+    }
+    const open = focusId || landedId;
+    if (short) {
+      // 누운 화면에서는 시트가 오른쪽 절반이다 — 띠도 오른쪽에 선다
+      sceneRef.current?.setSafeInsets(
+        0,
+        open ? Math.round(Math.min(window.innerWidth * 0.52, 380)) : 0,
+        46,
+        0
+      );
+      return;
+    }
+    // 시트 높이 + 어깨(손잡이 30) + 이름표 한 줄(20). 이름표의 y 는 글자
+    // 상단이라 여유를 두지 않으면 시트 위에 반쯤 걸린 이름이 남는다.
+    const sheet = open
+      ? Math.round(window.innerHeight * (sheetFull ? SHEET_FULL_VH : SHEET_PEEK_VH)) + 50
+      : 92;
+    sceneRef.current?.setSafeInsets(0, 0, 58, sheet);
+  }, [focusId, landedId, narrow, short, sheetFull]);
 
   useEffect(() => {
     sceneRef.current?.setState({
@@ -396,7 +477,13 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const readCount = Object.keys(personal.read).length;
 
   return (
-    <div className="universe">
+    <div
+      className={`universe${narrow ? " is-narrow" : ""}${narrow && short ? " is-short" : ""}`}
+      data-drawer={narrow && drawer ? "open" : undefined}
+      data-sheet={
+        narrow && !short && (focus || landed) ? (sheetFull ? "full" : "peek") : undefined
+      }
+    >
       <div className="universe__stage" ref={hostRef} />
 
       <header className="u-top">
@@ -466,9 +553,18 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
             </ul>
           )}
         </div>
+        <button
+          className="u-btn u-btn--ghost u-drawer-key"
+          aria-expanded={drawer}
+          aria-controls="u-rail"
+          onClick={() => setDrawer((d) => !d)}
+        >
+          {drawer ? "닫기" : "관측층"}
+        </button>
         {(focusId || landedId) && (
           <button
             className="u-btn u-btn--ghost"
+            data-testid="to-sky"
             onClick={() => {
               setLandedId(null);
               setFocusId(null);
@@ -481,6 +577,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         {landedId && (
           <button
             className="u-btn u-btn--ghost"
+            data-testid="to-orbit"
             onClick={() => {
               setLandedId(null);
               setWorkId(null);
@@ -491,7 +588,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         )}
       </header>
 
-      <div className="u-rail">
+      <div className="u-rail" id="u-rail">
         <nav className="u-lenses" aria-label="관측층">
           <p className="u-lenses__title">관측층</p>
           {LENSES.map((l) => (
@@ -499,7 +596,10 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
               key={l.id}
               className={`u-lens ${lensId === l.id ? "is-on" : ""}`}
               aria-pressed={lensId === l.id}
-              onClick={() => setLensId(lensId === l.id ? null : l.id)}
+              onClick={() => {
+                setLensId(lensId === l.id ? null : l.id);
+                setDrawer(false);
+              }}
               title={l.hint}
             >
               {l.ko}
@@ -602,6 +702,26 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         )}
         </section>
       </div>
+
+      {narrow && drawer ? (
+        <button
+          className="u-scrim"
+          aria-label="관측층 닫기"
+          onClick={() => setDrawer(false)}
+        />
+      ) : null}
+
+      {narrow && !short && (focus || landed) ? (
+        <button
+          className="u-grip"
+          data-testid="sheet-grip"
+          aria-expanded={sheetFull}
+          onClick={() => setSheetFull((f) => !f)}
+        >
+          <span aria-hidden="true" />
+          {sheetFull ? "접기" : "펼치기"}
+        </button>
+      ) : null}
 
       {hoverWhy ? (
         <p className="u-why" data-testid="why" aria-hidden="true">
