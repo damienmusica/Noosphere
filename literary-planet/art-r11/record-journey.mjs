@@ -98,10 +98,10 @@ await hold(2400);
 log("작품 인스펙터");
 
 // 궤도로, 그리고 하늘로
-await page.locator(".u-top .u-btn--ghost").nth(1).click();
+await page.locator('[data-testid="to-orbit"]').click();
 await hold(3000);
 log("궤도로 복귀");
-await page.locator(".u-top .u-btn--ghost").first().click();
+await page.locator('[data-testid="to-sky"]').click();
 await hold(3400);
 log("하늘로 복귀");
 

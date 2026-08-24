@@ -56,6 +56,10 @@ const steps = [
     ? []
     : [
         { key: "journey-contract", cmd: "node art-r11/verify-journey.mjs" },
+        // 손안의 성계(R12-d): 같은 여정을 390pt 폭에서 다시 잰다. 넓은 화면의
+        // 계약이 전부 초록인 채로 전화기에서는 아무것도 못 하는 상태가 하루
+        // 넘게 서 있었다 — 그래서 이 레인은 게이트 안에 있다.
+        { key: "mobile-contract", cmd: "node art-r11/verify-mobile.mjs" },
         { key: "frames", cmd: "node art-r11/capture-universe.mjs --out art-r11/frames" },
         { key: "video", cmd: "node art-r11/record-journey.mjs" },
         // 출하된 행성 앱(index.html)의 QA. 테제 §⑪ 의 "20/20 씬 · 콘솔 0" 은
@@ -123,6 +127,7 @@ const report = {
   counts: {
     unitTests: num("unit", /Tests\s+(\d+) passed/),
     journeyContracts: quick ? null : num("journey-contract", /(\d+) passed · \d+ failed/),
+    mobileContracts: quick ? null : num("mobile-contract", /(\d+) passed · \d+ failed/),
     // 이 하네스는 **고속 레인만** 돌린다. 전체 스윕(브라우저 레인 포함)은
     // `npm run universe:mutation-sweep` 로 별도 실행한다 — 15분 넘게 걸려
     // 한 명령 게이트에 넣지 않는다. 키 이름에 레인을 박는 이유: 이전 판의
@@ -159,7 +164,7 @@ writeFileSync(out, `${JSON.stringify(report, null, 2)}\n`);
 const failed = Object.entries(results).filter(([, r]) => !r.ok);
 console.log(`\ncommit ${commit} · node ${process.version} · ${report.environment.platform}`);
 console.log(
-  `유닛 ${report.counts.unitTests} · 여정 ${report.counts.journeyContracts ?? "-"} · 변이(고속 레인) killed ${report.counts.mutationsFastLaneKilled}/survived ${report.counts.mutationsFastLaneSurvived} · 행성 앱 QA ${report.counts.planetScenesPassed ?? "-"}/${report.counts.planetScenesTotal ?? "-"} 씬`
+  `유닛 ${report.counts.unitTests} · 여정 ${report.counts.journeyContracts ?? "-"} · 손안 ${report.counts.mobileContracts ?? "-"} · 변이(고속 레인) killed ${report.counts.mutationsFastLaneKilled}/survived ${report.counts.mutationsFastLaneSurvived} · 행성 앱 QA ${report.counts.planetScenesPassed ?? "-"}/${report.counts.planetScenesTotal ?? "-"} 씬`
 );
 console.log(`report → ${path.relative(LP, out)}`);
 if (failed.length) {

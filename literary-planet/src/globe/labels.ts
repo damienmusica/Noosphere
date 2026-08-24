@@ -128,7 +128,13 @@ export class LabelLayer {
         fs,
         item.ground === "sky" ? LABEL_CHROME_ENGRAVED : LABEL_CHROME_SLIP
       );
-      const rect: Rect = { x: item.x - w / 2, y: item.y, w, h: fs + 6 };
+      // 이름표는 별의 x 에 가운데를 맞추되 **화면 밖으로 흘러넘치지 않는다**.
+      // 좁은 화면에서는 이름 하나가 폭의 절반을 넘어(가브리엘 가르시아
+      // 마르케스 ≈ 200px / 390px) 가장자리 별의 이름이 반쯤 잘려 나갔다.
+      // 잘린 이름은 정보가 아니라 소음이므로, 상자째 안으로 당긴다.
+      const half = w / 2;
+      const cx = w + 8 >= width ? width / 2 : Math.min(Math.max(item.x, half + 4), width - half - 4);
+      const rect: Rect = { x: cx - half, y: item.y, w, h: fs + 6 };
       const mustShow = item.state === "selected" || item.state === "hovered";
       const collides = placed.some((p) => overlaps(p, rect, 2));
       if (!mustShow && collides) {
@@ -170,7 +176,7 @@ export class LabelLayer {
       else delete el.dataset.muted;
       if (el.textContent !== item.text) el.textContent = item.text;
       el.style.color = item.color ?? "";
-      el.style.transform = `translate(-50%, 0) translate3d(${item.x.toFixed(1)}px, ${item.y.toFixed(1)}px, 0)`;
+      el.style.transform = `translate(-50%, 0) translate3d(${cx.toFixed(1)}px, ${item.y.toFixed(1)}px, 0)`;
       el.style.display = "block";
       if (item.interactive) {
         el.dataset.interactive = "1";

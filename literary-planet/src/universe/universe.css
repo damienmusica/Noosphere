@@ -1140,3 +1140,306 @@
   display: block;
   line-height: 1.4;
 }
+
+/* ————————————————————————————————————————————————————————————————
+   손안의 성계 — 좁은 화면 배치 (R12-d)
+
+   넓은 화면의 크롬은 하늘 **옆에** 선다: 좌측 관측 레일, 우측 궤도 카드.
+   폭이 400px 대로 줄면 그 배치는 하늘을 덮는다(실측: 크롬이 화면의 60%를
+   먹고, 별 하나가 레일 버튼 밑에 깔려 탭이 닿지 않았다). 좁은 화면에서
+   크롬은 옆이 아니라 **위·아래 가장자리**에 앉고, 하늘은 언제나 가운데
+   띠로 남는다. 한 번에 열리는 판은 하나다 — 서랍이 열리면 시트는 닫히고,
+   별을 고르면 서랍은 물러난다.
+
+   배치만 바뀌고 문법은 그대로다: 색은 채널을 유지하고, 종이는 작가의
+   것이며, 관측층은 여전히 색인이지 필터가 아니다. ——————————————— */
+
+.universe.is-narrow {
+  /* 시트가 쉬는 높이 ↔ 펼친 높이. dvh 는 주소창이 접히는 브라우저에서
+     vh 가 거짓말을 하기 때문에 쓴다(지원하지 않으면 앞줄이 남는다). */
+  --sheet-h: 0px;
+  --edge: 12px;
+}
+
+.universe.is-narrow[data-sheet="peek"] {
+  --sheet-h: 42vh;
+  --sheet-h: 42dvh;
+}
+
+.universe.is-narrow[data-sheet="full"] {
+  --sheet-h: 86vh;
+  --sheet-h: 86dvh;
+}
+
+/* ——— 위 가장자리: 제목·상태·검색·이동 ——— */
+.is-narrow .u-top {
+  /* 서랍의 가림막(z 7)과 서랍(z 8) 위에 남는다 — 그러지 않으면 서랍이 열린
+     동안 '닫기'가 가림막에 먹혀 죽은 버튼이 된다(실측). */
+  z-index: 9;
+  top: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  gap: 8px;
+  height: 58px;
+  padding: env(safe-area-inset-top) calc(var(--edge) + env(safe-area-inset-right)) 0
+    calc(var(--edge) + env(safe-area-inset-left));
+  /* 판이 아니라 하늘 가장자리의 안개 — 띠를 그으면 하늘이 잘려 보인다 */
+  background: linear-gradient(to bottom, var(--surface-veil) 62%, transparent);
+  backdrop-filter: blur(2px);
+}
+
+.is-narrow .u-top h1 {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.is-narrow .u-stage {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  /* 배율·준비 상태는 시트가 다시 말한다 — 좁은 폭에서는 단계만.
+     폭을 **고정**한다: 단계 글자가 길어지면(중경 · 관측 렌즈 ×34) 줄 전체가
+     밀려 손잡이가 손끝 밑에서 움직인다 — 비행이 끝나는 순간 탭이 빗나갔다. */
+  overflow: hidden;
+  flex: 0 0 auto;
+  width: 5.8em;
+}
+
+/* 검색창은 **폭이 변하지 않는다**. 포커스에 따라 늘어나게 두었더니, 입력이
+   흐려지는 순간 줄 전체가 다시 배치되어 그 사이에 들어온 탭이 옆 버튼을
+   빗나갔다(실측: 손잡이가 317 → 269 로 움직이는 동안의 탭이 헤더에 떨어짐).
+   좁은 줄에서 폭이 흔들리는 요소는 그 자체로 오작동이다 — 결과 목록은
+   어차피 줄 전체 폭으로 열리고, Enter 가 첫 결과를 고른다. */
+.is-narrow .u-search {
+  flex: 0 0 92px;
+  min-width: 0;
+}
+
+.is-narrow .u-search input {
+  width: 100%;
+  /* 16px 미만이면 iOS 가 입력 시 화면을 확대한다 — 확대된 하늘은 돌아오지 않는다 */
+  font-size: 16px;
+  min-height: 40px;
+}
+
+.is-narrow .u-search__hits {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: auto;
+  max-height: 52vh;
+}
+
+/* ——— 손끝의 최소 크기 ——— */
+.is-narrow .u-btn {
+  min-height: 44px;
+  padding: 0 12px;
+  white-space: nowrap;
+}
+
+.is-narrow .u-lens,
+.is-narrow .u-works button,
+.is-narrow .u-card__rel button,
+.is-narrow .u-recs button {
+  min-height: 44px;
+}
+
+.is-narrow .u-lens-groups button {
+  min-height: 40px;
+}
+
+.is-narrow .u-card__close {
+  width: 44px;
+  height: 44px;
+}
+
+/* ——— 관측층 서랍 ——— */
+.is-narrow .u-rail {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 58px;
+  bottom: 0;
+  width: auto;
+  padding: 10px calc(var(--edge) + env(safe-area-inset-right)) 0
+    calc(var(--edge) + env(safe-area-inset-left));
+  background: var(--surface-veil);
+  backdrop-filter: blur(3px);
+  transform: translateY(-101%);
+  visibility: hidden;
+  transition:
+    transform 220ms ease-out,
+    visibility 220ms;
+  z-index: 8;
+}
+
+.is-narrow[data-drawer="open"] .u-rail {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.is-narrow .u-mine {
+  /* 서랍 안에서는 개인 패널도 흐름 안의 한 절이다 */
+  max-height: 44vh;
+  overflow-y: auto;
+}
+
+.u-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 7;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* 넓은 화면에는 서랍 손잡이가 없다 — 레일이 이미 펼쳐져 있다 */
+.u-drawer-key {
+  display: none;
+}
+
+.is-narrow .u-drawer-key {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* 시트가 올라오면 위 줄은 자리를 내준다 — 단계도 서랍도 시트가 다시 말한다 */
+.is-narrow[data-sheet] .u-drawer-key,
+.is-narrow[data-sheet] .u-stage {
+  display: none;
+}
+
+/* ——— 아래 시트: 궤도 카드와 표면 카드 ——— */
+.is-narrow .u-card {
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  max-height: var(--sheet-h);
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  /* 태블릿 세로에서도 글줄은 읽는 길이로 — 810px 폭에 한 단을 늘어놓으면
+     본문이 지도처럼 넓어진다. 좌우 여백이 남는 쪽으로 흡수한다. */
+  padding: 6px max(calc(16px + env(safe-area-inset-right)), calc((100% - 620px) / 2))
+    calc(16px + env(safe-area-inset-bottom))
+    max(calc(16px + env(safe-area-inset-left)), calc((100% - 620px) / 2));
+  overscroll-behavior: contain;
+}
+
+/* 시트의 어깨 — 손잡이가 판의 시작을 그린다 */
+.u-grip {
+  display: none;
+}
+
+.is-narrow .u-grip {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: var(--sheet-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 30px;
+  padding: 0 16px;
+  font: inherit;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+  background: var(--surface-veil);
+  border: 0;
+  border-top: 2px solid var(--brass-a45);
+  border-radius: 13px 13px 0 0;
+  cursor: pointer;
+  z-index: 7;
+}
+
+.is-narrow .u-grip span {
+  width: 34px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--brass-a55);
+}
+
+/* ——— 연도 ——— */
+.is-narrow .u-time {
+  left: var(--edge);
+  right: var(--edge);
+  transform: none;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  gap: 8px;
+  padding: 4px 12px;
+  min-height: 44px;
+}
+
+.is-narrow .u-time input[type="range"] {
+  flex: 1 1 auto;
+  width: auto;
+}
+
+/* 범례 문장은 서랍 안에 이미 있다 — 하늘 밑에서 두 번 말하지 않는다 */
+.is-narrow .u-time__hint {
+  display: none;
+}
+
+/* 시트가 올라오면 연도판은 물러난다 — 두 판이 겹치면 둘 다 못 읽는다 */
+.is-narrow[data-sheet] .u-time {
+  display: none;
+}
+
+/* ——— 왜(why) 캡션 ——— */
+.is-narrow .u-why {
+  left: var(--edge);
+  right: var(--edge);
+  transform: none;
+  max-width: none;
+  bottom: calc(var(--sheet-h) + 38px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-narrow .u-rail {
+    transition: none;
+  }
+}
+
+/* ——— 누운 화면(전화기 가로) — 시트는 아래가 아니라 옆에서 온다 ———
+   높이가 390pt 뿐인 화면에서 아래 시트는 하늘을 통째로 먹는다. 폭은 남아
+   있으므로 카드를 오른쪽 절반에 세우고 하늘은 왼쪽에 남긴다. 회랑은 넓은
+   화면과 같은 자세로 서고(가로 시야가 넉넉하다), 띠만 오른쪽으로 간다. */
+.is-narrow.is-short .u-top {
+  height: 46px;
+}
+
+.is-narrow.is-short .u-card {
+  top: 46px;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  width: min(52vw, 380px);
+  max-height: none;
+  border-left: 1px solid var(--line);
+  padding-right: calc(16px + env(safe-area-inset-right));
+}
+
+.is-narrow.is-short .u-grip {
+  display: none;
+}
+
+.is-narrow.is-short .u-rail {
+  top: 46px;
+}
+
+.is-narrow.is-short .u-time {
+  right: auto;
+  width: min(56vw, 420px);
+}
+
+/* 누운 화면에서는 시트가 아래를 막지 않으므로 연도판이 남는다 */
+.is-narrow.is-short[data-sheet] .u-time {
+  display: block;
+}
