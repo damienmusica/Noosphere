@@ -46,6 +46,10 @@ export interface OrbitCardProps {
   onToggleWant(): void;
   onLand(): void;
   onGoto(id: string): void;
+  /** 관계 행에 얹거나 포커스가 가면 그 별을 지목한다 — 하늘에 실 한 가닥이
+   *  걸리고 "왜"가 무대에 적힌다. 지금까지 지목 수단은 캔버스 호버뿐이라
+   *  키보드 사용자에게는 아예 없었고, 카드 행은 데스크톱에서도 무반응이었다. */
+  onPeek(id: string | null): void;
   onClose(): void;
   /** 작품 id → 한국어 제목 (앵커 칩용; 상대 작가의 작품일 수 있다) */
   workTitle(id: string): string | undefined;
@@ -398,7 +402,13 @@ export function OrbitCard(p: OrbitCardProps) {
                   data-direction={glyph}
                   data-evidence={rel.evidenceLevel}
                 >
-                  <button onClick={() => p.onGoto(other.id)}>
+                  <button
+                    onClick={() => p.onGoto(other.id)}
+                    onMouseEnter={() => p.onPeek(other.id)}
+                    onFocus={() => p.onPeek(other.id)}
+                    onMouseLeave={() => p.onPeek(null)}
+                    onBlur={() => p.onPeek(null)}
+                  >
                     <span className="u-rel__glyph" aria-label={GLYPH_KO[glyph]}>
                       {glyph}
                     </span>

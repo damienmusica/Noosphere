@@ -14,7 +14,13 @@ import type { Author, Relation, Work } from "../types.ts";
 import { COLORS } from "../theme.ts";
 import type { ArtManifest } from "../globe/art-assets.ts";
 import { artUrl } from "../globe/art-assets.ts";
-import { LabelLayer, estimateWidth, LABEL_CHROME_ENGRAVED, type LabelItem } from "../globe/labels.ts";
+import {
+  LabelLayer,
+  estimateWidth,
+  LABEL_CHROME_ENGRAVED,
+  LABEL_CHROME_SLIP,
+  type LabelItem
+} from "../globe/labels.ts";
 import {
   CAM_SKY_DEFAULT,
   CAM_SKY_MAX,
@@ -54,8 +60,6 @@ import { indexGlyph } from "./lenses.ts";
 import { REL_KO, relationGlyph } from "./relations.ts";
 
 /** 하단 연도 슬라이더 판이 덮는 띠 — 여기 놓인 이름은 읽을 수 없다 */
-const YEAR_PANEL_INSET = 84;
-const YEAR_PANEL_HALF_W = 350;
 import { isLandable } from "./readiness.ts";
 import type { AssetSet } from "./assets.ts";
 import type { LensLine, LensResult } from "./lenses.ts";
@@ -250,6 +254,10 @@ export class UniverseScene {
     halfW: number;
     halfH: number;
     halfD: number;
+    /** 칸 안에서의 국소 X 오프셋(같은 해 여러 권) */
+    localX: number;
+    /** 무리가 칸에 맞도록 좁힌 폭 배율 */
+    scaleX: number;
     /** 0 = 입문 경로 단, 1 = 그 외 단 */
     row: number;
     /** readingOrder 안에서의 자리(없으면 -1) — 색인 글리프가 이걸 나른다 */
@@ -362,6 +370,12 @@ export class UniverseScene {
   private safeRight = 0;
   private safeTop = 0;
   private safeBottom = 0;
+  /** 크롬이 실제로 덮은 화면 사각형들(CSS px). 띠(inset)는 카메라 프레이밍용
+   *  스칼라이고, 이름표는 **이 사각형들**과 상자로 대조한다 — 연도판은 화면
+   *  가운데 아래에 뜬 별개의 판이고 누운 화면에서는 왼쪽으로 붙는데, 스칼라
+   *  띠로는 그 어느 것도 표현되지 않는다(실측: 누운 화면에서 『소송』이
+   *  슬라이더 밑에 100% 깔려 탭이 연도를 1995→1882 로 옮겼다). */
+  private chromeRects: Array<{ x: number; y: number; w: number; h: number }> = [];
   /** 손가락이 주 입력인 기기 — 호버가 없으므로 "지목"이 한 단계 늦다 */
   private coarse =
     typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
@@ -407,6 +421,9 @@ export class UniverseScene {
     threadEnd: null as [number, number] | null,
     occludedLabels: 0,
     labelsOverFocus: 0,
+    /** 크롬이 차지한다고 선언된 띠 [좌, 우, 위, 아래]와 받은 사각형 수 */
+    insets: [0, 0, 0, 0] as [number, number, number, number],
+    chromeRects: 0,
     /** 작품 도시(연도 서가) — 전부 렌더에서 잰다. cityMetrics() 참조 */
     cities: {
       faceOut: 0,
@@ -420,6 +437,7 @@ export class UniverseScene {
       rows: 0,
       overlaps: 0,
       minGapPx: -1,
+      sameBayGapW: 999,
       crossHidden: 0,
       chrome: 0,
       chromeBuried: 0,
@@ -737,6 +755,47 @@ export class UniverseScene {
   /** 아트 매니페스트는 비동기로 온다 — 장면을 다시 만들지 않고 갈아 끼운다
    *  (재생성하면 이미 반영된 상태가 조용히 사라진다) */
   /** 패널이 덮는 폭(px). 투영만 밀어서 궤도 역학은 건드리지 않는다(R7 PR1 계승) */
+  /** 크롬이 실제로 덮은 사각형들. DOM 에서 잰 값이 그대로 들어온다 —
+   *  상수로 근사하면 레이아웃이 바뀔 때마다 근사가 틀린다. */
+  setChromeRects(rects: Array<{ x: number; y: number; w: number; h: number }>): void {
+    this.chromeRects = rects;
+  }
+
+  /**
+   * 이름표가 크롬에 물리는가 — **상자**로 잰다. 앵커 한 점으로 자르면 상자는
+   * 중앙 정렬로 그려지므로(labels.ts) 절반이 패널에 물린 채 통과한다
+   * (실측: 누운 화면 13/87, 데스크톱 1440×900 7/90 — 윌리엄 포크너 ① 은
+   * 헤더에 통째로 매몰됐다).
+   */
+  private labelHidden(
+    sx: number,
+    sy: number,
+    text: string,
+    fs: number,
+    chrome: number,
+    w: number,
+    h: number
+  ): boolean {
+    // 글리프 모델(fs + 6)은 실제 칩보다 작다 — 레터프레스 슬립의 패딩·테두리가
+    // 모델 밖에 있어서, 13 모델 라벨의 실제 DOM 높이는 **28px** 이다(실측).
+    // 크롬 대조는 넉넉히 잡는다: 가장자리에서 몇 픽셀 물리는 것보다 하나 덜
+    // 세우는 편이 낫다.
+    const half = estimateWidth(text, fs, chrome) / 2 + 6;
+    const box = { x0: sx - half, x1: sx + half, y0: sy - 2, y1: sy + fs + 16 };
+    // 화면 밖으로 나간 것은 어차피 라벨 레이어가 버린다. 덮인 자리는 **띠가
+    // 아니라 사각형**이 정본이다 — 한 가지 일에 한 가지 기제. 스칼라 띠는
+    // 카메라 프레이밍(뷰 오프셋) 전용으로 남는다. 둘을 겹쳐 두었더니 넉넉한
+    // 띠가 상자 검사를 가려, 상자를 점으로 되돌리는 변이가 생존했다(실측).
+    void w;
+    void h;
+    for (const r of this.chromeRects) {
+      if (box.x1 <= r.x || box.x0 >= r.x + r.w) continue;
+      if (box.y1 <= r.y || box.y0 >= r.y + r.h) continue;
+      return true;
+    }
+    return false;
+  }
+
   /** 크롬이 덮는 네 변의 띠(CSS px). 좁은 화면에서는 패널이 좌우가 아니라
    *  위·아래에 앉으므로 가로 두 값만으로는 프레임을 옳게 밀 수 없다. */
   setSafeInsets(left: number, right: number, top = 0, bottom = 0): void {
@@ -1641,10 +1700,19 @@ export class UniverseScene {
       const nIn = byYearCount.get(w.year) ?? 1;
       const slot = yearSeen.get(w.year) ?? 0;
       yearSeen.set(w.year, slot + 1);
-      const dx = nIn > 1 ? (slot - (nIn - 1) / 2) * (bd * 2.2) : 0;
+      // 같은 해의 두 권은 **폭**만큼 떨어져야 한다. 옛 식은 두께 상수(bd·2.2 =
+      // 0.66bw)를 폭 축에 썼고, 그래서 타고르 1910 의 『기탄잘리』와 『고라』가
+      // 서로를 폭의 34% 만큼 관통했다(실측 minGap −17.5px). 최소 공기는
+      // VOL_AIR 가 이미 정의한다. 무리가 칸보다 넓어지면 칸에 맞게 함께
+      // 얇아진다 — 칸을 넘어 옆 해로 넘치는 것보다 얇은 권이 정직하다.
+      const step = bw * VOL_AIR;
+      const spread = (nIn - 1) * step + bw;
+      const fit = Math.min(1, (cellW * 0.94) / spread);
+      const dx = nIn > 1 ? (slot - (nIn - 1) / 2) * step * fit : 0;
       const rowBase = (oi >= 0 ? 0 : rowH) + boardT;
       const wrap = new THREE.Group();
       wrap.position.set(dx, rowBase, bookBaseZ);
+      if (nIn > 1) wrap.scale.x = fit;
       wrap.userData.workId = w.id;
       const cover = this.data.art?.covers?.[w.id];
       const vol = this.buildVolume(w, bw, bh, bd, cover?.file);
@@ -1675,6 +1743,11 @@ export class UniverseScene {
         halfW: bw * 0.5,
         halfH: bh * 0.5,
         halfD: bd * 0.5,
+        /** 칸 안에서의 국소 X 오프셋과 폭 배율 — 같은 칸의 관통은 화면이
+         *  아니라 **여기서** 재야 한다(회랑 카메라는 서가를 스치듯 보므로
+         *  나란히 선 두 권의 화면 상자는 언제나 겹친다). */
+        localX: dx,
+        scaleX: nIn > 1 ? fit : 1,
         row: oi >= 0 ? 0 : 1,
         orderIndex: oi,
         lon: corridorTheta(w.year, span, cellArc),
@@ -2490,7 +2563,15 @@ export class UniverseScene {
    * 이륙처럼 되돌리는 데 한 번의 비행이 드는 행동이 아니다.
    */
   private aimFirst(id: string): boolean {
-    if (!this.coarse || !this.state.landedId) return false;
+    if (!this.coarse) return false;
+    // 지목할 것이 있어야 지목이다. 선택된 별이 없으면 실도 "왜"도 없으므로
+    // 한 단계를 더 두는 것은 그냥 느린 것이다 — 원경의 첫 탭은 그대로 연다.
+    // 선택이 있으면 **궤도에서도** 이웃 별의 첫 탭은 지목이다(CPO 룰링
+    // 2026-08-24: 착륙 가능 작가는 100인 중 3인이라, 착륙 상태에만 걸린
+    // 문법은 손끝 사용자의 97%에게 도달하지 않았다).
+    const anchor = this.state.landedId ?? this.state.focusId;
+    if (!anchor || id === anchor) return false;
+    if (!this.state.egoLit.has(id)) return false;
     if (this.state.hoveredId === id) return false;
     this.state.hoveredId = id;
     this.refreshStars();
@@ -2847,6 +2928,15 @@ export class UniverseScene {
       linesTouchingLanded: this.state.landedId
         ? this.drawnLineEnds.filter(([a, b]) => a === this.state.landedId || b === this.state.landedId).length
         : 0,
+      // 크롬이 차지한다고 **선언된** 띠와 실제로 받은 사각형 수. 리사이즈에
+      // 따라왔는지를 라벨의 부수 효과로 추론하지 않고 직접 읽는다.
+      insets: [this.safeLeft, this.safeRight, this.safeTop, this.safeBottom] as [
+        number,
+        number,
+        number,
+        number
+      ],
+      chromeRects: this.chromeRects.length,
       ...this.arrowMetrics(),
       ...this.corridorMetrics(),
       occludedLabels: this.lastOccludedLabels,
@@ -3044,6 +3134,9 @@ export class UniverseScene {
     rows: number;
     overlaps: number;
     minGapPx: number;
+    /** 같은 칸(같은 해·같은 단) 두 권의 국소 간격 — 책 폭 대비. 음수면 관통.
+     *  같은 칸이 없으면 999(제약 없음). */
+    sameBayGapW: number;
     /** 두 단의 화면상 평균 세로 위치 — 입문 경로 단이 관측자 쪽(아래)이어야 한다 */
     rowFrontY: number;
     rowBackY: number;
@@ -3175,6 +3268,24 @@ export class UniverseScene {
     let overlaps = 0;
     let crossHidden = 0;
     let minGapPx = Infinity;
+    // **같은 칸**(같은 해·같은 단)의 두 권은 깊이 단서가 없다 — 겹치면 그냥
+    // 관통이다. 다른 해끼리의 겹침은 원근이므로 결함이 아니다. 두 경우를
+    // 한 숫자로 묶으면 진짜 관통이 원근에 묻힌다(실측: 타고르 1910 의 두 권이
+    // 폭의 34% 를 관통하는 동안 minGapPx 는 카프카의 원근값에 가려져 있었다).
+    // 회랑 카메라는 서가를 **스치듯** 본다(로컬 X = 걷는 방향). 그래서 나란히
+    // 선 두 권의 화면 상자는 실제로 떨어져 있어도 언제나 겹친다 — 화면으로
+    // 재면 진짜 관통과 원근이 구별되지 않는다. 국소 좌표에서 잰다.
+    let sameBayGapW = Infinity;
+    for (let i = 0; i < this.cityRecords.length; i++)
+      for (let j = i + 1; j < this.cityRecords.length; j++) {
+        const ci = this.cityRecords[i]!;
+        const cj = this.cityRecords[j]!;
+        if (ci.year !== cj.year || ci.row !== cj.row) continue;
+        const gap =
+          Math.abs(ci.localX - cj.localX) -
+          (ci.halfW * ci.scaleX + cj.halfW * cj.scaleX);
+        sameBayGapW = Math.min(sameBayGapW, gap / Math.max(1e-9, ci.halfW * 2));
+      }
     for (let i = 0; i < boxes.length; i++)
       for (let j = i + 1; j < boxes.length; j++) {
         const a = boxes[i] as [number, number, number, number];
@@ -3209,6 +3320,7 @@ export class UniverseScene {
       rows: new Set(this.cityRecords.map((c) => c.row)).size,
       overlaps,
       minGapPx: Number.isFinite(minGapPx) ? Number(minGapPx.toFixed(1)) : -1,
+      sameBayGapW: Number.isFinite(sameBayGapW) ? Number(sameBayGapW.toFixed(3)) : 999,
       crossHidden: Number(crossHidden.toFixed(2)),
       chrome: this.cityAnchors.length,
       chromeBuried: buried,
@@ -3335,17 +3447,15 @@ export class UniverseScene {
         const glyphs = (s.lensMarks.get(id) ?? []).map(indexGlyph).join("");
         const sx = ((v.x + 1) / 2) * w;
         const sy = ((-v.y + 1) / 2) * h + 14;
-        // 패널이 덮는 띠에는 이름을 놓지 않는다 — 읽을 수 없는 라벨은
-        // 정보가 아니라 소음이다(R9 "뷰포트 안의 다음 행동" 계승). 하단 연도
-        // 슬라이더 판도 같은 띠다(실측: 보들레르 ⑥ 가 슬라이더 아래로 들어갔다).
-        if (sx < this.safeLeft && id !== s.focusId) continue;
-        if (sx > w - this.safeRight && id !== s.focusId) continue;
-        if (this.safeTop > 0 && sy < this.safeTop && id !== s.focusId) continue;
-        if (this.safeBottom > 0 && sy > h - this.safeBottom && id !== s.focusId) continue;
-        if (sy > h - YEAR_PANEL_INSET && Math.abs(sx - w / 2) < YEAR_PANEL_HALF_W) continue;
+        const text = glyphs ? `${a.names.ko}\u2009${glyphs}` : a.names.ko;
+        const fs = mag > 0.6 ? 16 : mag > 0.3 ? 14 : 13;
+        // 패널이 덮는 자리에는 이름을 놓지 않는다 — 읽을 수 없는 라벨은
+        // 정보가 아니라 소음이다(R9 "뷰포트 안의 다음 행동" 계승).
+        if (id !== s.focusId && this.labelHidden(sx, sy, text, fs, LABEL_CHROME_ENGRAVED, w, h))
+          continue;
         items.push({
           id,
-          text: glyphs ? `${a.names.ko}\u2009${glyphs}` : a.names.ko,
+          text,
           kind: "author",
           size: mag > 0.6 ? "lg" : mag > 0.3 ? "md" : "sm",
           priority:
@@ -3376,25 +3486,27 @@ export class UniverseScene {
         if (v.z > 1) continue;
         const toward = c.pos.clone().sub(this.camera.position).normalize();
         if (toward.dot(camDir) < 0.1) continue;
-        // 시트가 덮는 아래 띠에는 작품 이름도 놓지 않는다 — 좁은 화면에서
-        // 『소송』슬립이 시트 뒤에 반쯤 걸려 유령처럼 비쳤다(실측).
+        // 작품 이름표도 같은 자로 잰다. 이 경로에는 좌우 축도 연도판 가드도
+        // 없었고, 그래서 누운 화면에서 『소송』이 연도 슬라이더 위에 얹혀
+        // **탭이 작품 대신 연도를 옮겼다**(1995 → 1882, 실측).
         const wy = ((-v.y + 1) / 2) * h + 10;
-        if (this.safeTop > 0 && wy < this.safeTop) continue;
-        if (this.safeBottom > 0 && wy > h - this.safeBottom) continue;
+        const wx = ((v.x + 1) / 2) * w;
+        const wtext = c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo;
+        if (this.labelHidden(wx, wy, wtext, 13, LABEL_CHROME_SLIP, w, h)) continue;
         items.push({
           id: c.workId,
           // 입문 **순서**는 여기서만 말한다 — 궤도 카드의 「입문 순서」목록과 같은
           // 일반 숫자로. 원 숫자 ①②③ 는 관측층 색인(명목) 전용이다: 같은 글자가
           // 하늘에선 소속, 서가에선 순서를 뜻하던 것을 두 측정(모의 심사·합성
           // 파일럿 4/4)이 동시에 잡았다.
-          text: c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo,
+          text: wtext,
           kind: "work",
           size: "sm",
           // 입문 경로 권의 숫자는 문법의 나름이다 — 충돌 컬링이 지우면 순서
           // 채널이 사라진다. 순서 권은 우선순위를 올려 끝까지 남긴다.
           priority: work.id === s.selectedWorkId ? 400 : c.orderIndex >= 0 ? 320 : 100,
-          x: ((v.x + 1) / 2) * w,
-          y: ((-v.y + 1) / 2) * h + 10,
+          x: wx,
+          y: wy,
           state: work.id === s.selectedWorkId ? "selected" : "normal",
           // 작품 라벨만 작가의 실제 종이 위에 선다 — 슬립이 살아 있는 유일한 자리
           ground: "crust",
@@ -3414,10 +3526,7 @@ export class UniverseScene {
         if (v.z > 1) continue;
         const sx = ((v.x + 1) / 2) * w;
         const sy = ((-v.y + 1) / 2) * h + 14;
-        if (sx < this.safeLeft || sx > w - this.safeRight) continue;
-        if (this.safeTop > 0 && sy < this.safeTop) continue;
-        if (this.safeBottom > 0 && sy > h - this.safeBottom) continue;
-        if (sy > h - YEAR_PANEL_INSET && Math.abs(sx - w / 2) < YEAR_PANEL_HALF_W) continue;
+        if (this.labelHidden(sx, sy, a.names.ko, 13, LABEL_CHROME_ENGRAVED, w, h)) continue;
         items.push({
           id: nid,
           text: a.names.ko,
