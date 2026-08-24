@@ -10,7 +10,7 @@
 
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import type { Author, Work } from "../types.ts";
+import type { Author, Relation, Work } from "../types.ts";
 import { COLORS } from "../theme.ts";
 import type { ArtManifest } from "../globe/art-assets.ts";
 import { artUrl } from "../globe/art-assets.ts";
@@ -18,7 +18,6 @@ import { LabelLayer, estimateWidth, LABEL_CHROME_ENGRAVED, type LabelItem } from
 import {
   CAM_SKY_DEFAULT,
   CAM_SKY_MAX,
-  LANDING_ALT,
   LENS_DIST,
   LENS_MAG,
   SHELL_R,
@@ -34,20 +33,25 @@ import {
   starPixels,
   tintOf,
   silhouetteRadius,
-  SHELF_LON,
   SHELF_AXIS_DEG,
-  SHELF_EYE_LIFT,
   LANDING_INCIDENCE_DEG,
-  SHELF_ROW_LAT,
+  CORRIDOR_CELL_AIR,
+  CORRIDOR_EYE,
+  CORRIDOR_ROW_GAP,
+  corridorSpan,
+  corridorCellArc,
+  corridorTheta,
+  anchorYearOf,
+  CORRIDOR_LEAD_YEARS,
+  CORRIDOR_TAIL_YEARS,
+  type CorridorSpan,
   VOL_ASPECT,
   VOL_DEPTH,
   VOL_AIR,
   volumeWidth,
-  shelfLongitudes,
-  shelfTickStep,
-  yearToLon
 } from "./grammar.ts";
 import { indexGlyph } from "./lenses.ts";
+import { REL_KO, relationGlyph } from "./relations.ts";
 
 /** 하단 연도 슬라이더 판이 덮는 띠 — 여기 놓인 이름은 읽을 수 없다 */
 const YEAR_PANEL_INSET = 84;
@@ -61,6 +65,7 @@ export interface UniverseData {
   works: Work[];
   positions: Record<string, [number, number, number]>;
   degree: Record<string, number>;
+  relations?: Relation[];
   art: ArtManifest | null;
 }
 
@@ -158,6 +163,23 @@ void main() {
 /** 화살촉 버퍼 용량 — 한 별의 방향 있는 관계 수 최대(데이터 최대 16)를 넉넉히 */
 const ARROW_CAP = 64;
 
+/** 2차 베지에 — 회랑의 실이 그리는 호 */
+function quadBezier(
+  p0: THREE.Vector3,
+  p1: THREE.Vector3,
+  p2: THREE.Vector3,
+  t: number,
+  out: THREE.Vector3
+): THREE.Vector3 {
+  const u = 1 - t;
+  out.set(
+    u * u * p0.x + 2 * u * t * p1.x + t * t * p2.x,
+    u * u * p0.y + 2 * u * t * p1.y + t * t * p2.y,
+    u * u * p0.z + 2 * u * t * p1.z + t * t * p2.z
+  );
+  return out;
+}
+
 export class UniverseScene {
   readonly renderer: THREE.WebGLRenderer;
   private scene = new THREE.Scene();
@@ -173,10 +195,23 @@ export class UniverseScene {
   private egoLines!: THREE.LineSegments;
   /** 자기 성좌의 화살촉 — 방향 있는 관계의 도착 끝에만 붙는다 (R12 관계 인과성) */
   private egoArrows!: THREE.Mesh;
-  /** 화살촉을 받을 선(방향 있음, 실제로 그려진 것) — buildLines 가 채운다 */
-  private egoDirected: Array<{ a: string; b: string; color: string }> = [];
+  /** 화살촉을 받을 선(방향 있음, 실제로 그려진 것) — buildLines 가 채운다.
+   *  start/end 가 있으면 별의 위치 대신 그 점(회랑의 앵커)을 쓴다 */
+  private egoDirected: Array<{
+    a: string;
+    b: string;
+    color: string;
+    start?: THREE.Vector3;
+    end?: THREE.Vector3;
+  }> = [];
   /** 마지막 프레임의 화살촉 끝점 — 계측이 "도착 끝에 있는가"를 독립으로 센다 */
-  private arrowTips: Array<{ a: string; b: string; tip: THREE.Vector3 }> = [];
+  private arrowTips: Array<{
+    a: string;
+    b: string;
+    tip: THREE.Vector3;
+    start?: THREE.Vector3;
+    end?: THREE.Vector3;
+  }> = [];
   /** 화살촉 버퍼는 한 번만 할당한다 — 매 프레임 지오메트리를 새로 만들면 GPU
    *  버퍼 교체가 프레임을 잡아먹고, 렌즈 램프(프레임 수 기준)가 느려져 "천체로
    *  분해" 계약이 시간에 따라 흔들린다(실측: 3회 중 2회 실패). */
@@ -190,6 +225,9 @@ export class UniverseScene {
   private selWedges: THREE.Sprite[] = [];
   private selCorners: THREE.Sprite[] = [];
   private readLamp: THREE.PointLight;
+  private ambient!: THREE.AmbientLight;
+  /** 착륙 시에만 켜는 깊이 안개 — 회랑이 지평선 톤으로 물러난다 */
+  private surfaceFog: THREE.Fog | null = null;
 
   private bodies = new Map<string, BodyRecord>();
   private cityGroup = new THREE.Group();
@@ -218,9 +256,45 @@ export class UniverseScene {
     orderIndex: number;
     /** 배치 경도(연도 축) — 계약이 연도 단조성과 분산을 검사한다 */
     lon: number;
+    /** 회랑 접선(연도가 자라는 방향)과 벽 법선 — 카메라와 무관한 방향 계약용 */
+    tangent?: THREE.Vector3;
+    normal?: THREE.Vector3;
   }> = [];
-  /** 난간·눈금·연도 — 책이 아닌 서가 부속. 착륙 해제 시 같이 걷힌다 */
+  /** 회랑 부속(기둥·판·각인·사망선·명판) — 책이 아닌 것. 착륙 해제 시 같이 걷힌다 */
   private cityChrome: THREE.Object3D[] = [];
+  /** 회랑 (R12-c): 경첩으로 일어서는 단위들과 좌표 프레임 */
+  private corridorStand: THREE.Group[] = [];
+  private corridorFrame: {
+    center: THREE.Vector3;
+    radius: number;
+    outward: THREE.Vector3;
+    lonAxis: THREE.Vector3;
+    latAxis: THREE.Vector3;
+    harm: [number, number, number, number];
+    span: CorridorSpan;
+    cellArc: number;
+    bw: number;
+    bh: number;
+    bd: number;
+    eyePhi: number;
+    eyeLift: number;
+    /** 회랑 진행 방향(연도가 자라는 쪽) — 표면 하늘 투영의 정면 */
+    fwd: THREE.Vector3;
+  } | null = null;
+  /** 접힘 진행도 0(지각과 한 몸) → 1(회랑이 섰다). 착륙 비행 마지막 45% 가 만든다 */
+  private foldK = 0;
+  /** 이번 착륙에서 접힘이 한 번 끝났는가 — 당김 리프레임이 접힘을 재구동하지 않게 */
+  private foldDone = false;
+  private lastPulled: string | null = null;
+  /** 당겨진 책과 권별 당김 진행도 — 전부 책등, 당기면 표지 (CPO 룰링 2026-08-24) */
+  private pullK = new Map<string, number>();
+  /** 연보 명패 (R12-c 채움): 관계·판본의 실제 사건이 제 해의 칸에 선다 */
+  private eventSlips: Array<{ relId?: string; year: number; obj: THREE.Object3D }> = [];
+  /** 이륙 중 — 착륙은 풀렸지만 회랑은 비행이 끝날 때까지 서 있다 */
+  private corridorDeparting = false;
+  /** 마지막으로 그린 실의 앵커 끝 — 계약이 화면 좌표로 대조한다 */
+  private threadEnd: THREE.Vector3 | null = null;
+  private landUp: THREE.Vector3 | null = null;
   /** 서가 부속이 놓인 자리 — 계약이 "지각 안에 묻히지 않았는가"를 여기서 잰다 */
   private cityAnchors: THREE.Vector3[] = [];
   /** 난간에 실제로 새겨진 연도 눈금 수. 난간 자리 수와 **따로** 센다 —
@@ -319,6 +393,13 @@ export class UniverseScene {
     arrows: 0,
     arrowsExpected: 0,
     arrowsAtTarget: 0,
+    /** 회랑 (R12-c): 접힘 진행도 · 칸 수 · 당겨진 책 · 실의 앵커 화면 좌표 */
+    foldK: 0,
+    bays: 0,
+    pulled: null as string | null,
+    deathLine: false,
+    plate: false,
+    threadEnd: null as [number, number] | null,
     occludedLabels: 0,
     labelsOverFocus: 0,
     /** 작품 도시(연도 서가) — 전부 렌더에서 잰다. cityMetrics() 참조 */
@@ -385,7 +466,8 @@ export class UniverseScene {
     const sun = new THREE.PointLight(0xffd9a0, 6, 0, 0.0);
     sun.position.set(0, 0, 0);
     this.scene.add(sun);
-    this.scene.add(new THREE.AmbientLight(0x2a2118, 1.0));
+    this.ambient = new THREE.AmbientLight(0x2a2118, 1.0);
+    this.scene.add(this.ambient);
     // 관측자의 독서등 — 착륙할수록 세진다
     this.readLamp = new THREE.PointLight(0xffe9c8, 1.4, 0, 0.0);
     this.scene.add(this.readLamp);
@@ -689,9 +771,16 @@ export class UniverseScene {
     this.rebuildLens();
     this.refreshConstellation();
     if (this.state.landedId !== prevLanded) {
-      if (this.state.landedId && this.assets?.authorId !== this.state.landedId)
-        this.landedWithoutAssets = true;
-      this.refreshCities();
+      if (this.state.landedId) {
+        if (this.assets?.authorId !== this.state.landedId) this.landedWithoutAssets = true;
+        this.corridorDeparting = false;
+        this.foldDone = false;
+        this.refreshCities();
+      } else {
+        // 이륙: 회랑은 비행이 끝날 때까지 서 있다 — 행성이 뒤로 작아지는 동안
+        // 회랑이 그 표면 위에 보여야 "내가 있던 곳"이 남는다.
+        this.corridorDeparting = true;
+      }
     }
     if (this.state.focusId !== prevFocus || this.state.landedId !== prevLanded) this.retarget();
   }
@@ -741,10 +830,55 @@ export class UniverseScene {
     aRing.needsUpdate = true;
   }
 
+  /**
+   * 표면 하늘의 투영 (R12-c) — **공표된 렌즈다**. 별은 전부 같은 껍질 위에
+   * 있으므로, 표면에 선 관측자에게 다른 별은 모두 접평면 아래에 있다(현 P 에서
+   * 같은 구면의 Q 로 가는 현은 언제나 접평면 밑으로 처진다 — 기하학이지 버그가
+   * 아니다). 그대로 두면 착륙 하늘이 비고, 실이 닿을 곳이 없다. 그래서 착륙
+   * 중에는 각 별의 방향을 **접평면에 대해 반사**한다: 방위각은 보존되고 고도만
+   * 절댓값이 된다. 가까운 별은 실제처럼 지평선 곁에 남고, 먼 별일수록 높이
+   * 뜬다. 중경의 관측 렌즈와 같은 원칙 — 왜곡은 공표될 때만 기만이 아니다
+   * (테제 §⑦에 명기).
+   */
+  private surfaceSkyPos(id: string, out: THREE.Vector3): THREE.Vector3 {
+    const f = this.corridorFrame;
+    const i = this.index.get(id);
+    if (!f || i === undefined) return out.set(0, 0, 0);
+    const P = f.center;
+    const n = P.clone().normalize();
+    out.copy(this.dirs[i] as THREE.Vector3).multiplyScalar(SHELL_R).sub(P);
+    const d = out.length();
+    if (d < 1e-6) return out.copy(P);
+    const u = out.clone().divideScalar(d);
+    // 관측창 사상: 전천의 방위를 반으로 접어 회랑 정면의 반구에 넣는다(좌우
+    // 순서 보존) · 고도는 |고도|를 지평선 띠로 눕힌다. 어느 별도 사라지지 않고,
+    // 방위의 순서가 뒤집히지 않으며, 사상은 연속이다 — 그리고 공표된다.
+    const fwd = f.fwd;
+    const side = new THREE.Vector3().crossVectors(n, fwd).normalize();
+    const h = Math.max(-1, Math.min(1, u.dot(n)));
+    const t = u.clone().addScaledVector(n, -h);
+    const az = Math.atan2(t.dot(side), t.dot(fwd));
+    const elev = Math.asin(h);
+    const az2 = az * 0.32;
+    const elev2 = 0.03 + Math.abs(elev) * 0.18;
+    out
+      .copy(fwd)
+      .multiplyScalar(Math.cos(elev2) * Math.cos(az2))
+      .addScaledVector(side, Math.cos(elev2) * Math.sin(az2))
+      .addScaledVector(n, Math.sin(elev2))
+      .multiplyScalar(d);
+    return out.add(P);
+  }
+
   /** 렌즈가 걸린 별의 화면상 실효 위치. 라벨·픽·관계선이 모두 이걸 쓴다 */
   private effectivePos(id: string, out: THREE.Vector3): THREE.Vector3 {
     const i = this.index.get(id);
     if (i === undefined) return out.set(0, 0, 0);
+    if (this.state.landedId && this.corridorFrame && this.foldK > 0 && id !== this.state.landedId) {
+      const proj = this.surfaceSkyPos(id, new THREE.Vector3());
+      out.copy(this.dirs[i] as THREE.Vector3).multiplyScalar(SHELL_R);
+      return out.lerp(proj, this.foldK);
+    }
     out.copy(this.dirs[i] as THREE.Vector3).multiplyScalar(SHELL_R);
     const t = this.lensTarget.get(id);
     if (t && this.lensK > 0) out.lerp(t, this.lensK);
@@ -890,10 +1024,29 @@ export class UniverseScene {
     if (mesh === this.egoLines) {
       this.drawnLineEnds = [];
       this.egoDirected = [];
+      this.threadEnd = null;
     }
-    const pos = new Float32Array(lines.length * 6);
-    const col = new Float32Array(lines.length * 6);
+    // 회랑의 실은 한 선이 24개 세그먼트가 된다 — 버퍼는 넉넉히 잡고 앞부분만 쓴다
+    const cap = lines.length * 6 * 26 + 6;
+    const pos = new Float32Array(cap);
+    const col = new Float32Array(cap);
     let n = 0;
+    const arcPush = (a: THREE.Vector3, b: THREE.Vector3, c: THREE.Color, weight: number): void => {
+      const k = 0.3 + 0.7 * weight;
+      const off = n * 6;
+      pos[off] = a.x;
+      pos[off + 1] = a.y;
+      pos[off + 2] = a.z;
+      pos[off + 3] = b.x;
+      pos[off + 4] = b.y;
+      pos[off + 5] = b.z;
+      for (let sIdx = 0; sIdx < 2; sIdx++) {
+        col[off + sIdx * 3] = c.r * k;
+        col[off + sIdx * 3 + 1] = c.g * k;
+        col[off + sIdx * 3 + 2] = c.b * k;
+      }
+      n++;
+    };
     for (const l of lines) {
       const ia = this.index.get(l.a);
       const ib = this.index.get(l.b);
@@ -901,11 +1054,41 @@ export class UniverseScene {
       // 아직 태어나지 않은 별 사이에는 선도 없다 — 연도 스크럽에서 관계가
       // 그 관계의 당사자보다 먼저 존재하면 시간 채널이 거짓말이 된다
       if (!this.present(ia) || !this.present(ib)) continue;
-      // 착륙한 천체의 선은 표면에서 퇴장한다. 천체 중심에서 나오는 현은 지각을
-      // 뚫고 나와 책 옆에 선 기둥으로 읽힌다(실측: 소세키 서가의 아쿠타가와 선)
-      // — 관측 표식이 표면에서 퇴장하는 것과 같은 이유다.
+      // 착륙 중의 실 (R12-c): 착륙한 천체에 닿는 선은 천체 중심이 아니라
+      // **회랑의 앵커**(그 책·그 연도 칸·입구 명판)에서 출발해 하늘의 별로
+      // 오르는 호(弧)가 된다 — "1947년 보고타에서 『변신』을 읽었다"가 기하가
+      // 되는 자리다. 렌즈 선(mesh !== egoLines)은 여전히 표면에서 퇴장한다.
       const landed = this.state.landedId;
-      if (landed && (l.a === landed || l.b === landed)) continue;
+      if (landed && (l.a === landed || l.b === landed)) {
+        if (mesh !== this.egoLines || !this.corridorFrame) continue;
+        const otherId = l.a === landed ? l.b : l.a;
+        const anchorP = this.anchorPoint(l.anchor);
+        const starP = this.effectivePos(otherId, new THREE.Vector3());
+        this.threadEnd = anchorP.clone();
+        const mid = anchorP
+          .clone()
+          .add(starP)
+          .multiplyScalar(0.5)
+          .addScaledVector(this.corridorFrame.outward, anchorP.distanceTo(starP) * 0.22);
+        const SEG = 24;
+        const prev = new THREE.Vector3();
+        const cur = new THREE.Vector3();
+        const col = new THREE.Color(l.color);
+        for (let t = 0; t < SEG; t++) {
+          const t0 = t / SEG;
+          const t1 = (t + 1) / SEG;
+          quadBezier(anchorP, mid, starP, t0, prev);
+          quadBezier(anchorP, mid, starP, t1, cur);
+          arcPush(prev, cur, col, l.weight);
+        }
+        this.drawnLineEnds.push([l.a, l.b]);
+        if (l.directed) {
+          // 방향: 나가는 관계(landed = a)면 화살촉이 별에, 들어오는 관계면 앵커에
+          if (l.a === landed) this.egoDirected.push({ a: l.a, b: l.b, color: l.color, start: anchorP.clone() });
+          else this.egoDirected.push({ a: l.a, b: l.b, color: l.color, end: anchorP.clone() });
+        }
+        continue;
+      }
       this.drawnLineEnds.push([l.a, l.b]);
       if (mesh === this.egoLines && l.directed) this.egoDirected.push({ a: l.a, b: l.b, color: l.color });
       const pa = this.effectivePos(l.a, new THREE.Vector3());
@@ -931,7 +1114,13 @@ export class UniverseScene {
     g.setAttribute("color", new THREE.BufferAttribute(col.subarray(0, n * 6), 3));
     mesh.geometry.dispose();
     mesh.geometry = g;
-    if (mesh === this.egoLines) this.arrowsDirty = true;
+    if (mesh === this.egoLines) {
+      this.arrowsDirty = true;
+      if (!this.egoDirected.length) {
+        this.arrowTips = [];
+        this.egoArrows.geometry.setDrawRange(0, 0);
+      }
+    }
   }
 
   /** 천체의 현재 월드 반경 — 초점 천체는 렌즈 배율만큼 커져 있다 */
@@ -964,13 +1153,16 @@ export class UniverseScene {
     let m = 0;
     for (const l of lines) {
       if (m >= ARROW_CAP) break;
-      this.effectivePos(l.a, pa);
-      this.effectivePos(l.b, pb);
+      if (l.start) pa.copy(l.start);
+      else this.effectivePos(l.a, pa);
+      if (l.end) pb.copy(l.end);
+      else this.effectivePos(l.b, pb);
       d.subVectors(pb, pa);
       const len = d.length();
       if (len < 1e-3) continue;
       d.divideScalar(len);
-      const margin = this.apparentRadius(l.b) + 2;
+      // 끝이 앵커(회랑의 한 점)면 천체 반경이 아니라 작은 여백만 남긴다
+      const margin = l.end ? 1.5 : this.apparentRadius(l.b) + 2;
       const size = Math.min(14, Math.max(5, len * 0.035));
       if (len < margin + size * 1.5) continue;
       tip.copy(pb).addScaledVector(d, -margin);
@@ -994,7 +1186,7 @@ export class UniverseScene {
         col[off + k * 3 + 1] = c.g;
         col[off + k * 3 + 2] = c.b;
       }
-      this.arrowTips.push({ a: l.a, b: l.b, tip: tip.clone() });
+      this.arrowTips.push({ a: l.a, b: l.b, tip: tip.clone(), start: l.start, end: l.end });
       m++;
     }
     const g = this.egoArrows.geometry;
@@ -1015,11 +1207,14 @@ export class UniverseScene {
     const pb = new THREE.Vector3();
     let atTarget = 0;
     for (const t of this.arrowTips) {
-      this.effectivePos(t.a, pa);
-      this.effectivePos(t.b, pb);
+      if (t.start) pa.copy(t.start);
+      else this.effectivePos(t.a, pa);
+      if (t.end) pb.copy(t.end);
+      else this.effectivePos(t.b, pb);
       const toB = t.tip.distanceTo(pb);
       const toA = t.tip.distanceTo(pa);
-      if (toB < toA && toB <= this.apparentRadius(t.b) + 2 + 1e-3) atTarget++;
+      const margin = t.end ? 1.5 + 1e-3 : this.apparentRadius(t.b) + 2 + 1e-3;
+      if (toB < toA && toB <= margin) atTarget++;
     }
     return { arrows: this.arrowTips.length, arrowsExpected: this.egoDirected.length, arrowsAtTarget: atTarget };
   }
@@ -1179,6 +1374,11 @@ export class UniverseScene {
     this.cityChrome = [];
     this.cityAnchors = [];
     this.cityTicks = 0;
+    this.corridorStand = [];
+    this.eventSlips = [];
+    this.pullK.clear();
+    this.threadEnd = null;
+    this.cityGroup.visible = true;
   }
 
   private refreshCities(): void {
@@ -1188,170 +1388,271 @@ export class UniverseScene {
     const rec = this.ensureBody(id);
     if (!rec) return;
     const author = this.data.authors.find((a) => a.id === id);
+    if (!author) return;
     const works = this.data.works.filter((w) => w.authorId === id);
     if (!works.length) return;
 
-    // ——— 배치: 실제 데이터가 정한다 ———
-    // 황금각 나선은 폐기됐다(CPO 2026-08-20) — 아름다웠지만 아무것도 말하지
-    // 않았다. 경도 = 발표 연도, 단(段) = 입문 경로 소속. 둘 다 /data 에
-    // 실재하는 값이다. 입문 **순서**는 라벨의 색인 글리프가 나른다
-    // (grammar.ts 서가 절: 위도 미세 단차는 곡면 사입 시점에서 순서로 읽히지
-    // 않았고, 책 높이보다 훨씬 작아서 이웃한 연도의 두 권을 관통시켰다).
-    const order = author?.readingOrder ?? [];
-    // 서가의 좌표계는 **관측자의 화면에서** 정의된다. 기준축은 반경 축이 아니라
-    // 카메라가 실제로 내려앉는 지면이고(반경 축을 쓰면 비스듬한 착륙에서 서가가
-    // 통째로 림으로 밀려난다), 좌우와 앞뒤도 월드 상방이 아니라 시선이 정한다.
-    // 월드 상방으로 세우면 껍질의 어느 반구에 앉은 작가냐에 따라 연도 축이
-    // 좌우로 뒤집히고 앞단과 뒷단이 자리를 바꾼다(실측: 카프카에서 1926 이 왼쪽
-    // 끝에 섰다).
+    // ——— 서가 회랑 (R12-c) ———
+    // 회랑은 제3의 공간이 아니라 **이 행성의 표면**이다: 벽은 착륙한 지각과 같은
+    // 원고 종이이고, 연도 칸은 표면의 호를 따라 지평선 너머로 이어진다. 칸은
+    // 연도당 하나, 균일하다 — 이전 서가의 최소-간격 압축은 여기서 소멸한다.
+    // 전부 책등이고, 당기면 표지가 나온다(CPO 룰링: 책장의 리듬은 책등이다).
+    const order = author.readingOrder ?? [];
     const radial = rec.center.clone().normalize();
     const outward = this.arrivalDir(radial, SHELF_AXIS_DEG);
     const camDir = this.arrivalDir(radial, SHELF_AXIS_DEG + LANDING_INCIDENCE_DEG);
     const right = new THREE.Vector3().crossVectors(outward, camDir).normalize();
     const toward = camDir.clone().addScaledVector(outward, -camDir.dot(outward)).normalize();
-    // 축 v 를 축 a 로 돌리면 v 는 (a × v) 방향으로 움직인다 — 그래서 경도 축은
-    // outward × right 이고(θ>0 이면 오른쪽), 위도 축은 outward × toward 다
-    // (φ>0 이면 관측자 쪽).
     const lonAxis = new THREE.Vector3().crossVectors(outward, right).normalize();
     const latAxis = new THREE.Vector3().crossVectors(outward, toward).normalize();
 
-    const bw = rec.radius * volumeWidth(works.length);
+    const R = rec.radius;
+    const workYears = works.map((w) => w.year);
+    const anchorYears: number[] = [];
+    for (const r of this.data.relations ?? []) {
+      if (r.sourceId !== id && r.targetId !== id) continue;
+      for (const an of r.anchors ?? []) {
+        const y = anchorYearOf(an, (wid) => this.data.works.find((w) => w.id === wid)?.year);
+        if (y !== undefined) anchorYears.push(y);
+      }
+    }
+    const span = corridorSpan(workYears, anchorYears, author.deathYear);
+    // 책의 크기는 회랑이 정한다 — 회랑 전체 호의 상한이 칸 호를, 칸 호가 책
+    // 폭을 역산한다. 책은 사람 척도로 작아지고 지평선은 행성 척도로 남는다.
+    const bayN = Math.max(1, Math.round(span.yEnd - span.yStart));
+    const cellArc = corridorCellArc(bayN, volumeWidth(works.length));
+    const bw = (cellArc / CORRIDOR_CELL_AIR) * R;
     const bh = bw * VOL_ASPECT;
     const bd = bw * VOL_DEPTH;
-    // 최소 간격은 **책이 실제로 차지하는 각폭**이다. 이보다 좁으면 두 권이
-    // 서로를 관통한다 — 계약이 아니라 기하다.
-    const minGap = (bw / rec.radius) * VOL_AIR;
-    const lons = shelfLongitudes(
-      works.map((w) => w.year),
-      minGap
-    );
+    const harm = genreHarmonics(author);
+    this.corridorFrame = {
+      center: rec.center.clone(),
+      radius: R,
+      outward,
+      lonAxis,
+      latAxis,
+      harm,
+      span,
+      cellArc,
+      bw,
+      bh,
+      bd,
+      eyePhi: (bh * 1.9) / R,
+      eyeLift: (bh * CORRIDOR_EYE) / R,
+      fwd: new THREE.Vector3()
+    };
 
     const dirAt = (theta: number, phi: number): THREE.Vector3 =>
       outward.clone().applyAxisAngle(lonAxis, theta).applyAxisAngle(latAxis, phi).normalize();
-    // 표면에 놓이는 것은 전부 **그 방향의 실제 표면**에 놓는다. 실루엣이
-    // ±6% 로 출렁이므로 상수 반경을 쓰면 부푼 쪽에서 통째로 묻힌다.
-    const harm = author ? genreHarmonics(author) : ([0, 0, 0, 0] as [number, number, number, number]);
     const onSurface = (d: THREE.Vector3, lift: number): THREE.Vector3 =>
-      rec.center.clone().addScaledVector(d, rec.radius * (silhouetteRadius(harm, d.x, d.y, d.z) + lift));
-    // 앞단(관측자 쪽) = 입문 경로, 뒷단 = 그 외. 두 단의 위도차는 책 높이보다
-    // 크다 — 앞단이 뒷단을 삼키지 않는 유일한 조건이다.
-    const rowPhi = (inOrder: boolean): number => (inOrder ? 1 : -1) * SHELF_ROW_LAT * 0.5;
+      rec.center.clone().addScaledVector(d, R * (silhouetteRadius(harm, d.x, d.y, d.z) + lift));
+    const pointAt = (theta: number, phi: number, lift: number): THREE.Vector3 =>
+      onSurface(dirAt(theta, phi), lift);
+    this.corridorFrame.fwd
+      .copy(pointAt(0.02, 0, 0))
+      .sub(pointAt(-0.02, 0, 0))
+      .normalize();
 
-    // ——— 난간: 연도 축을 물건으로 만든다 ———
-    // 최소 간격이 비례를 밀어낸 자리는 감추지 않는다. 눈금이 책과 **같은
-    // 사상**(yearToLon)을 통과하므로, 밀린 구간에서는 눈금 간격도 같이 벌어진다.
-    const pairs = works.map((w, i) => [w.year, lons[i] as number] as const);
-    const yrs = works.map((w) => w.year);
-    const yLo = Math.min(...yrs);
-    const yHi = Math.max(...yrs);
-    const railMat = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(COLORS.stitch),
-      roughness: 0.8,
-      metalness: 0.2
+    // ——— 재질: 벽은 지각과 같은 종이 ———
+    const wallMat = this.crustWallMaterial(rec);
+    const boardMat = new THREE.MeshStandardMaterial({
+      color: new THREE.Color(0x4a3c28),
+      roughness: 0.97
     });
-    // 난간은 **책의 발치**에, 같은 위도에 놓인다. 앞으로 밀어 놓으면 사입
-    // 시점에서 위도차가 큰 화면 거리로 벌어져 책이 허공에 뜬 것처럼 보인다
-    // (실측: 뒷단의 두 권이 제 난간에서 35px 떠 있었다). 같은 위도에 두면
-    // 난간은 권과 권 사이로만 드러나는데, 그것이 서가가 실제로 보이는 방식이다.
-    const railOffset = (bw * 0.5) / rec.radius + 0.014;
-    for (const inOrder of [true, false]) {
-      if (!works.some((w) => order.includes(w.id) === inOrder)) continue;
-      const front = rowPhi(inOrder);
-      const pts: THREE.Vector3[] = [];
-      for (let k = 0; k <= 28; k++) {
-        const th = -SHELF_LON * 1.1 + SHELF_LON * 2.2 * (k / 28);
-        const q = onSurface(dirAt(th, front), 0);
-        pts.push(q);
-        if (k % 7 === 0) this.cityAnchors.push(q.clone());
+    // 개구부 모서리는 화면의 유일한 밝은 선이다 — 각인 잉크(stitch)가 아니라
+    // 놋쇠. 각인·사망선과 같은 잉크면 구조 프레임이 주석과 구분되지 않는다.
+    const edgeMat = new THREE.LineBasicMaterial({
+      color: new THREE.Color(COLORS.brass),
+      transparent: true,
+      opacity: 0.9
+    });
+
+    // ——— 칸의 치수 ———
+    const cellW = cellArc * R;
+    const boardT = bh * 0.075;
+    const rowH = bh * (1 + CORRIDOR_ROW_GAP);
+    const wallH = rowH * 2 + boardT;
+    const backD = bd * 1.9;
+    const postW = cellW * 0.055;
+
+    const bayCount = bayN;
+    const bookBaseZ = -backD * 0.2;
+    const bayOf = new Map<number, THREE.Group>();
+
+    for (let k = 0; k < bayCount; k++) {
+      const year = span.yStart + k;
+      const th = corridorTheta(year + 0.5, span, cellArc);
+      const base = pointAt(th, 0, 0);
+      const U0 = base.clone().sub(rec.center).normalize();
+      const T = pointAt(th + 0.01, 0, 0).sub(pointAt(th - 0.01, 0, 0)).normalize();
+      // 프레임은 **경로의 평행이동 프레임**이고 언제나 오른손이다: U 는 T 에
+      // 직교화한 위, N = T × U. 이전 판은 φ-오프셋 방향으로 벽면을 뒤집었는데,
+      // φ-회전은 경로를 따라 평행이동되지 않아 θ ≈ 90° 너머에서 경로의 좌우를
+      // 건너간다 — 그 보정이 왼손 기저(det −1)를 만들어 칸을 뒤틀었다(실측:
+      // 소세키 1914 칸 |q| 0.795, 책등 축 38° 틀어짐). 횡 오프셋이 필요한 것들
+      // (바닥·카메라·앵커)은 φ 가 아니라 이 프레임의 N 으로 옮긴다.
+      const U = U0.clone().addScaledVector(T, -U0.dot(T)).normalize();
+      const N = new THREE.Vector3().crossVectors(T, U).normalize();
+      const bay = new THREE.Group();
+      bay.position.copy(base);
+      bay.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(T, U, N));
+      // 경첩 자식 — 접힘은 이 그룹의 x축 회전이다(축 = 회랑 접선)
+      const stand = new THREE.Group();
+      bay.add(stand);
+      this.corridorStand.push(stand);
+      bayOf.set(year, stand);
+      this.cityGroup.add(bay);
+      this.cityChrome.push(bay);
+
+      // 뒤판(원고 종이) — 회랑의 벽
+      const back = new THREE.Mesh(new THREE.PlaneGeometry(cellW, wallH), wallMat);
+      back.position.set(0, wallH / 2, -backD);
+      stand.add(back);
+      // 기둥 둘 + 판 셋(바닥·단·상단)
+      for (const sx of [-1, 1]) {
+        const post = new THREE.Mesh(new THREE.BoxGeometry(postW, wallH, backD), boardMat);
+        post.position.set((sx * (cellW - postW)) / 2, wallH / 2, -backD / 2);
+        stand.add(post);
       }
-      const rail = new THREE.Mesh(
-        new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 28, rec.radius * 0.010, 6, false),
-        railMat
-      );
-      this.cityGroup.add(rail);
-      this.cityChrome.push(rail);
-      if (!inOrder) continue;
-      // 눈금은 앞 난간에만 새긴다. 축은 두 단이 공유하므로 한 번이면 된다.
-      const step = shelfTickStep(yLo, yHi);
-      const tickPts: THREE.Vector3[] = [];
-      // 최소 간격이 밀어낸 구간에서는 눈금끼리도 붙는다(실측: 타고르의
-      // 1895·1900·1905 가 한 덩어리로 겹쳤다). 겹친 눈금은 **버린다** —
-      // 없는 눈금은 축을 덜 말할 뿐이지만, 겹친 눈금은 틀린 축을 말한다.
-      let lastTh = -Infinity;
-      const tickGap = minGap * 0.62;
-      for (let y = Math.ceil(yLo / step) * step; y <= yHi; y += step) {
-        const th = yearToLon(y, pairs);
-        if (th - lastTh < tickGap) continue;
-        lastTh = th;
-        const a = onSurface(dirAt(th, front), 0);
-        const spur = dirAt(th, front + railOffset * 1.15);
-        const b = onSurface(spur, 0.004);
-        tickPts.push(a, b);
-        this.cityAnchors.push(a.clone(), b.clone());
-        this.cityTicks++;
-        const numeral = new THREE.Sprite(
-          new THREE.SpriteMaterial({
-            map: this.numeralTexture(y),
+      for (const yb of [0, rowH, 2 * rowH]) {
+        const board = new THREE.Mesh(new THREE.BoxGeometry(cellW, boardT, backD), boardMat);
+        board.position.set(0, yb + boardT / 2, -backD / 2);
+        stand.add(board);
+      }
+      // 개구부의 놋쇠 모서리 — 하늘 격자와 같은 잉크
+      const eg = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(-cellW / 2, 0, 0),
+        new THREE.Vector3(-cellW / 2, wallH, 0),
+        new THREE.Vector3(cellW / 2, 0, 0),
+        new THREE.Vector3(cellW / 2, wallH, 0),
+        new THREE.Vector3(-cellW / 2, wallH, 0),
+        new THREE.Vector3(cellW / 2, wallH, 0)
+      ]);
+      const edge = new THREE.LineSegments(eg, edgeMat);
+      stand.add(edge);
+    }
+
+    // ——— 바닥: 연도 각인 — 5년마다 숫자, 매 연도 가는 줄 ———
+    const floorPts: THREE.Vector3[] = [];
+    for (let k = 0; k <= bayCount; k++) {
+      const year = span.yStart + k;
+      const th = corridorTheta(year, span, cellArc);
+      const a = this.corridorLatPoint(th, bh * 0.12, 0.001);
+      const b = this.corridorLatPoint(th, bh * 4.2, 0.001);
+      floorPts.push(a, b);
+      if (year % 5 === 0) {
+        const numeral = new THREE.Mesh(
+          new THREE.PlaneGeometry(bh * 0.62, bh * 0.28),
+          new THREE.MeshBasicMaterial({
+            map: this.numeralTexture(year),
             transparent: true,
             depthWrite: false
           })
         );
-        // 눈금 끝(b)에서 난간 반대쪽으로 조금 더 — 숫자가 난간에 얹히지 않는다
-        numeral.position.copy(b).addScaledVector(b.clone().sub(a), 0.55);
-        numeral.scale.set(bh * 0.42, bh * 0.19, 1);
+        const np = this.corridorLatPoint(th + cellArc * 0.22, bh * 2.3, 0.002);
+        const nu = np.clone().sub(rec.center).normalize();
+        const nt = this.corridorLatPoint(th + 0.01, bh * 2.3, 0).sub(this.corridorLatPoint(th - 0.01, bh * 2.3, 0)).normalize();
+        const nn = new THREE.Vector3().crossVectors(nt, nu).normalize();
+        numeral.position.copy(np);
+        numeral.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(nt, nn, nu));
         this.cityGroup.add(numeral);
         this.cityChrome.push(numeral);
+        this.cityTicks++;
       }
-      if (tickPts.length) {
-        const ticks = new THREE.LineSegments(
-          new THREE.BufferGeometry().setFromPoints(tickPts),
-          new THREE.LineBasicMaterial({ color: new THREE.Color(COLORS.stitch) })
+    }
+    const floorLines = new THREE.LineSegments(
+      new THREE.BufferGeometry().setFromPoints(floorPts),
+      new THREE.LineBasicMaterial({ color: new THREE.Color(COLORS.stitch), transparent: true, opacity: 0.78 })
+    );
+    this.cityGroup.add(floorLines);
+    this.cityChrome.push(floorLines);
+    for (const q of floorPts) this.cityAnchors.push(q.clone());
+
+    // ——— 1924 사망선: 그 해의 칸에 세로 점선 — 침묵의 설명 ———
+    if (author.deathYear !== undefined && author.deathYear >= span.yStart && author.deathYear <= span.yEnd) {
+      const stand = bayOf.get(author.deathYear);
+      if (stand) {
+        const thD = corridorTheta(author.deathYear, span, cellArc);
+        const thMid = corridorTheta(author.deathYear + 0.5, span, cellArc);
+        const dx = (thD - thMid) * R;
+        const dashPts: THREE.Vector3[] = [];
+        const dashN = 9;
+        for (let i = 0; i < dashN; i++) {
+          const y0 = (wallH * 1.12 * i) / dashN;
+          dashPts.push(new THREE.Vector3(dx, y0, 0.004), new THREE.Vector3(dx, y0 + (wallH * 1.12) / dashN / 2, 0.004));
+        }
+        const death = new THREE.LineSegments(
+          new THREE.BufferGeometry().setFromPoints(dashPts),
+          new THREE.LineBasicMaterial({ color: new THREE.Color(COLORS.stitch), transparent: true, opacity: 0.85 })
         );
-        this.cityGroup.add(ticks);
-        this.cityChrome.push(ticks);
+        death.userData.deathLine = true;
+        stand.add(death);
+        const tag = new THREE.Mesh(
+          new THREE.PlaneGeometry(bh * 0.9, bh * 0.22),
+          new THREE.MeshBasicMaterial({
+            map: this.engravedTexture(`${author.deathYear} · 사망`),
+            transparent: true,
+            depthWrite: false
+          })
+        );
+        tag.position.set(dx, wallH * 1.2, 0.004);
+        stand.add(tag);
+        this.cityChrome.push(death, tag);
       }
     }
 
-    works.forEach((w, i) => {
+    // ——— 입구 명판: 서명(실물) + 각인 — 회랑의 첫 칸 ———
+    const first = bayOf.get(span.yStart + 1) ?? this.corridorStand[0];
+    if (first) {
+      const plate = new THREE.Mesh(
+        new THREE.PlaneGeometry(cellW * 0.9, wallH * 0.52),
+        new THREE.MeshBasicMaterial({ map: this.platePlateTexture(author, span), transparent: false })
+      );
+      plate.position.set(0, wallH * 0.62, -backD * 0.18);
+      plate.userData.plate = true;
+      first.add(plate);
+      this.cityChrome.push(plate);
+    }
+
+    // ——— 책: 전부 책등, 제 연도의 칸에 ———
+    const byYearCount = new Map<number, number>();
+    works.forEach((w) => byYearCount.set(w.year, (byYearCount.get(w.year) ?? 0) + 1));
+    const yearSeen = new Map<number, number>();
+    for (const w of [...works].sort((a, b) => a.year - b.year)) {
+      const stand = bayOf.get(w.year);
+      if (!stand) continue;
       const oi = order.indexOf(w.id);
-      const theta = lons[i] as number;
-      const dir = dirAt(theta, rowPhi(oi >= 0));
-      const surface = onSurface(dir, -0.002);
-
-      const group = new THREE.Group();
-      group.position.copy(surface);
-      group.userData.workId = w.id;
-      group.userData.dir = dir;
-      // 세울 때 쓰는 상방은 **서가 한가운데의 지면 법선 하나**다. 권마다 제
-      // 자리의 법선을 쓰면 곡률만큼 부챗살로 벌어지고(실측: 양 끝에서 20°가
-      // 넘었다) 서가가 아니라 쓰러지는 책 더미로 읽힌다. 밑동은 여전히 각자의
-      // 지면에 놓이므로 서가는 곡면을 따라간다 — 기울기만 공유한다.
-      group.userData.up = outward.clone();
-
+      const nIn = byYearCount.get(w.year) ?? 1;
+      const slot = yearSeen.get(w.year) ?? 0;
+      yearSeen.set(w.year, slot + 1);
+      const dx = nIn > 1 ? (slot - (nIn - 1) / 2) * (bd * 2.2) : 0;
+      const rowBase = (oi >= 0 ? 0 : rowH) + boardT;
+      const wrap = new THREE.Group();
+      wrap.position.set(dx, rowBase, bookBaseZ);
+      wrap.userData.workId = w.id;
       const cover = this.data.art?.covers?.[w.id];
       const vol = this.buildVolume(w, bw, bh, bd, cover?.file);
-      group.add(vol.root);
-      // 보이지 않는 히트 프록시. 책등을 정면으로 돌린 권은 관측자에게 두께(bd)
-      // 만큼만 보이고, 레이캐스트도 그 폭만 맞는다 — 합성 파일럿 4인 중 3인이
-      // "안 눌린다"로 읽었고, 그러면 회고의 핵심 질문이 "고장"으로 오염된다.
-      // 프록시는 빌보드 그룹(회전하지 않는 쪽)에 달아 보이는 발자국을 감싼다.
+      // 책등이 **입구**를 향한다 — 회랑을 걸어 들어오는 시선에 책등의 리듬이
+      // 정면으로 선다(전부 책등, CPO 룰링). 당기면 표지가 통로를 향해 돌고
+      // 카메라가 그 책 앞으로 온다(당김의 보상 = 실물 표지).
+      vol.root.rotation.y = Math.PI;
+      wrap.add(vol.root);
       const proxy = new THREE.Mesh(
-        new THREE.BoxGeometry(cover ? bw : Math.max(bd, bw * 0.7), bh * 1.15, Math.max(bd, bw * 0.5)),
+        new THREE.BoxGeometry(Math.max(bd * 2.4, bw * 0.6), bh * 1.1, bw),
         new THREE.MeshBasicMaterial({ visible: false })
       );
       proxy.position.set(0, bh * 0.5, 0);
       proxy.userData.workId = w.id;
       proxy.userData.hitProxy = true;
-      group.add(proxy);
-
-      this.cityGroup.add(group);
+      wrap.add(proxy);
+      stand.add(wrap);
+      const bayObj = stand.parent as THREE.Group;
+      const bayQ = bayObj.getWorldQuaternion(new THREE.Quaternion());
       this.cityRecords.push({
         workId: w.id,
-        obj: group,
-        pos: surface,
+        obj: wrap,
+        pos: new THREE.Vector3(),
         year: w.year,
-        // 데이터(cover 유무)가 아니라 **실제 메시 회전**에서 읽는다 — 데이터를
-        // 되읽으면 렌더가 규칙을 어겨도 계약이 초록이다(변이 스윕 실측).
         book: vol.root,
         spine: vol.spine,
         front: vol.front,
@@ -1360,9 +1661,337 @@ export class UniverseScene {
         halfD: bd * 0.5,
         row: oi >= 0 ? 0 : 1,
         orderIndex: oi,
-        lon: theta
+        lon: corridorTheta(w.year, span, cellArc),
+        tangent: new THREE.Vector3(1, 0, 0).applyQuaternion(bayQ),
+        normal: new THREE.Vector3(0, 0, 1).applyQuaternion(bayQ)
       });
-    });
+    }
+    // ——— 연보 명패: 빈 칸을 채우는 것은 장식이 아니라 **일어난 일**이다 ———
+    // (CPO 2026-08-25: "꼭 책이 아니더라도 넣을 만한 것들이 있으면 전부 넣어서
+    // 채우자") 관계 앵커의 연도 사건(1938 서문 · 1947 보고타 · 1969 카네티…)과
+    // 발표 연도 밖의 판본 사건(1916 『선고』 단행본)이 제 해의 칸에 명패로
+    // 선다. 전부 /data 에 이미 있는, 출처 달린 사실이다 — 사망선 뒤의 침묵을
+    // 수용사(受容史)가 채우고, 그래도 빈 칸만 진짜 침묵으로 남는다.
+    type CorridorEvent = { year: number; big: string; small: string; relId?: string };
+    const events: CorridorEvent[] = [];
+    for (const r of this.data.relations ?? []) {
+      if (r.sourceId !== id && r.targetId !== id) continue;
+      const otherId = r.sourceId === id ? r.targetId : r.sourceId;
+      const other = this.data.authors.find((a) => a.id === otherId);
+      if (!other) continue;
+      const seenYears = new Set<number>();
+      for (const an of r.anchors ?? []) {
+        // 연보의 연도는 **사건이 일어난 해**다(an.year 우선). 실이 닿는 책의
+        // 발표 연도(anchorYearOf)와는 다른 사상이다 — 1947 보고타의 독서는
+        // 1947 칸의 사건이고, 실은 1915 의 『변신』에 닿는다.
+        const y = an.year ?? anchorYearOf(an, (wid) => this.data.works.find((w) => w.id === wid)?.year);
+        if (y === undefined || seenYears.has(y)) continue;
+        seenYears.add(y);
+        const glyph = relationGlyph(r, id);
+        events.push({
+          year: y,
+          big: `${glyph} ${other.names.ko}`,
+          small: REL_KO[r.type] ?? r.type,
+          relId: r.id
+        });
+      }
+    }
+    for (const w of works) {
+      for (const e of w.world?.editions ?? []) {
+        if (e.year !== w.year) {
+          events.push({
+            year: e.year,
+            big: `『${w.titleKo}』`,
+            small: e.kind === "first-printing" ? "첫 인쇄" : w.world?.posthumous ? "초판 · 유고" : "초판"
+          });
+        } else if (e.kind === "first-printing" && e.venue) {
+          // 같은 해의 첫 인쇄는 그 책 칸의 윗단 명패가 된다 — 게재지 이름은
+          // /data 의 사실이고, 책의 시대 쪽 밀도를 실제 사건으로 채운다.
+          const m = e.venue.match(/『[^』]+』/);
+          events.push({ year: e.year, big: m ? m[0] : e.publisher, small: "첫 인쇄" });
+        }
+      }
+    }
+    const slotInCell = new Map<number, number>();
+    // 책이 선 칸의 아랫단은 책의 자리다 — 명패는 그 위 단으로 올라간다
+    const bookRows = new Map<number, Set<number>>();
+    for (const c of this.cityRecords) {
+      if (!bookRows.has(c.year)) bookRows.set(c.year, new Set());
+      bookRows.get(c.year)!.add(c.row);
+    }
+    for (const ev of events.sort((x, y) => x.year - y.year)) {
+      const stand = bayOf.get(ev.year);
+      if (!stand) continue;
+      const slot = slotInCell.get(ev.year) ?? 0;
+      slotInCell.set(ev.year, slot + 1);
+      const occupied = bookRows.get(ev.year);
+      const rowBase = occupied?.has(0) && !occupied.has(1) ? rowH : occupied?.has(0) ? rowH : 0;
+      const slip = new THREE.Mesh(
+        new THREE.PlaneGeometry(cellW * 0.72, cellW * 0.3),
+        new THREE.MeshBasicMaterial({
+          map: this.eventSlipTexture(ev.big, ev.small),
+          transparent: false
+        })
+      );
+      slip.position.set(0, rowBase + boardT + bh * (0.34 + slot * 0.42), -backD * 0.12);
+      slip.userData.eventSlip = true;
+      stand.add(slip);
+      this.cityChrome.push(slip);
+      this.eventSlips.push({ relId: ev.relId, year: ev.year, obj: slip });
+    }
+
+    this.applyFold();
+    this.updateCorridor(0);
+  }
+
+  /** 연보 명패의 지면 — 종이 슬립에 이름 크게, 유형 작게 */
+  private eventSlipTexture(big: string, small: string): THREE.Texture {
+    const key = `event:${big}|${small}`;
+    const hit = this.texCache.get(key);
+    if (hit) return hit;
+    const c = document.createElement("canvas");
+    c.width = 512;
+    c.height = 212;
+    const ctx = c.getContext("2d")!;
+    ctx.fillStyle = "#e7dfc8";
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.strokeStyle = "#4a3c28";
+    ctx.lineWidth = 3;
+    ctx.strokeRect(8, 8, c.width - 16, c.height - 16);
+    ctx.fillStyle = "#3b2f1e";
+    ctx.textAlign = "center";
+    ctx.font = "600 52px 'Noto Serif KR', serif";
+    ctx.fillText(big, c.width / 2, 96, c.width - 48);
+    ctx.fillStyle = "#6b5b40";
+    ctx.font = "500 34px 'Noto Serif KR', serif";
+    ctx.fillText(small, c.width / 2, 158, c.width - 48);
+    const tex = new THREE.CanvasTexture(c);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    this.texCache.set(key, tex);
+    return tex;
+  }
+
+  /**
+   * 회랑 경로 프레임의 횡 좌표 — θ 위의 기준점에서 경로 법선(N) 방향으로 lat
+   * (월드 단위) 만큼 나간 뒤 표면에 재투영한다. φ-회전을 쓰지 않는 이유는 위
+   * 기저 주석과 같다.
+   */
+  private corridorLatPoint(th: number, lat: number, lift: number): THREE.Vector3 {
+    const f = this.corridorFrame;
+    if (!f) return new THREE.Vector3();
+    const dirAt = (theta: number): THREE.Vector3 =>
+      f.outward.clone().applyAxisAngle(f.lonAxis, theta).normalize();
+    const at0 = (theta: number): THREE.Vector3 => {
+      const d = dirAt(theta);
+      return f.center
+        .clone()
+        .addScaledVector(d, f.radius * silhouetteRadius(f.harm, d.x, d.y, d.z));
+    };
+    const base = at0(th);
+    const U0 = base.clone().sub(f.center).normalize();
+    const T = at0(th + 0.01).sub(at0(th - 0.01)).normalize();
+    const U = U0.clone().addScaledVector(T, -U0.dot(T)).normalize();
+    const N = new THREE.Vector3().crossVectors(T, U).normalize();
+    const dir2 = base.clone().addScaledVector(N, lat).sub(f.center).normalize();
+    return f.center
+      .clone()
+      .addScaledVector(dir2, f.radius * (silhouetteRadius(f.harm, dir2.x, dir2.y, dir2.z) + lift));
+  }
+
+  /**
+   * 실의 앵커 — 관계가 회랑에서 닿는 자리. 책 앵커는 그 책의 머리, 연도 앵커는
+   * 그 해의 바닥 각인, 앵커가 없으면 입구 명판(이름에 닿는다 — 그것도 정직한
+   * 독해다).
+   */
+  private anchorPoint(anchor?: { workId?: string; year?: number }): THREE.Vector3 {
+    const f = this.corridorFrame;
+    if (!f) return new THREE.Vector3();
+    if (anchor?.workId) {
+      const rec = this.cityRecords.find((c) => c.workId === anchor.workId);
+      if (rec) {
+        const q = rec.obj.getWorldPosition(new THREE.Vector3());
+        const up = q.clone().sub(f.center).normalize();
+        return q.addScaledVector(up, f.bh * 1.12);
+      }
+    }
+    if (anchor?.year !== undefined) {
+      // 그 해의 명패가 서 있으면 실은 바닥이 아니라 명패에 닿는다 — 사건에
+      // 사건의 실이 닿는 것이 연보의 문법이다.
+      const slip = this.eventSlips.find((e) => e.year === anchor.year);
+      if (slip) {
+        const q = slip.obj.getWorldPosition(new THREE.Vector3());
+        const up = q.clone().sub(f.center).normalize();
+        return q.addScaledVector(up, f.bh * 0.2);
+      }
+      return this.corridorLatPoint(corridorTheta(anchor.year, f.span, f.cellArc), f.bh * 1.1, 0.004);
+    }
+    // 명판 — 회랑의 입구 칸
+    return this.corridorLatPoint(
+      corridorTheta(f.span.yStart + 1.5, f.span, f.cellArc),
+      0,
+      (f.bh * 1.4) / f.radius
+    );
+  }
+
+  /** 벽의 재질 — 착륙한 지각과 같은 원고 종이. 자산이 없으면 종이색 */
+  private crustWallMaterial(rec: BodyRecord): THREE.MeshStandardMaterial {
+    const key = `wall:${rec.id}`;
+    const cached = this.texCache.get(key);
+    const mat = new THREE.MeshStandardMaterial({ color: new THREE.Color(0xb0a288), roughness: 0.96 });
+    if (cached) {
+      mat.map = cached;
+      return mat;
+    }
+    const pre = this.assets?.authorId === rec.id ? this.assets.ground : null;
+    if (pre) {
+      const c = document.createElement("canvas");
+      c.width = 512;
+      c.height = 512;
+      const ctx = c.getContext("2d");
+      if (ctx) {
+        ctx.drawImage(pre, 0, 0, c.width, c.height);
+        const d = ctx.getImageData(0, 0, c.width, c.height);
+        const px = d.data;
+        for (let i = 0; i < px.length; i += 4)
+          for (let j = 0; j < 3; j++) {
+            const v = px[i + j] as number;
+            px[i + j] = Math.max(0, Math.min(255, 232 - (232 - v) * 2.6));
+          }
+        ctx.putImageData(d, 0, 0);
+        const tex = new THREE.CanvasTexture(c);
+        tex.colorSpace = THREE.SRGBColorSpace;
+        this.texCache.set(key, tex);
+        mat.map = tex;
+      }
+    }
+    return mat;
+  }
+
+  /** 기기 각인 텍스트(연도·사망선 등) — 숫자 텍스처와 같은 잉크 */
+  private engravedTexture(text: string): THREE.Texture {
+    const key = `engraved:${text}`;
+    const hit = this.texCache.get(key);
+    if (hit) return hit;
+    const c = document.createElement("canvas");
+    c.width = 512;
+    c.height = 128;
+    const ctx = c.getContext("2d")!;
+    ctx.clearRect(0, 0, c.width, c.height);
+    ctx.fillStyle = COLORS.stitch;
+    ctx.font = `500 64px 'Noto Serif KR', serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(text, c.width / 2, c.height / 2);
+    const tex = new THREE.CanvasTexture(c);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    this.texCache.set(key, tex);
+    return tex;
+  }
+
+  /** 입구 명판 — 실물 서명 + 각인. 지어낸 것 없음: 서명 자산이 없으면 활자만 */
+  private platePlateTexture(author: Author, span: CorridorSpan): THREE.Texture {
+    const key = `plate:${author.id}`;
+    const hit = this.texCache.get(key);
+    if (hit) return hit;
+    const c = document.createElement("canvas");
+    c.width = 1024;
+    c.height = 640;
+    const ctx = c.getContext("2d")!;
+    ctx.fillStyle = "#e7dfc8";
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.strokeStyle = COLORS.stitch;
+    ctx.lineWidth = 6;
+    ctx.strokeRect(18, 18, c.width - 36, c.height - 36);
+    const mark = this.assets?.authorId === author.id ? this.assets.mark : null;
+    if (mark) {
+      const mh = 220;
+      const mw = Math.min(860, (mark.naturalWidth / mark.naturalHeight) * mh);
+      ctx.drawImage(mark, (c.width - mw) / 2, 70, mw, mh);
+    }
+    ctx.fillStyle = "#4a3c28";
+    ctx.textAlign = "center";
+    ctx.font = `500 30px 'Noto Serif KR', serif`;
+    ctx.fillText(mark ? "서명 · 실물" : "서명 미보유", c.width / 2, 360);
+    ctx.font = `600 64px 'Noto Serif KR', serif`;
+    ctx.fillText(author.names.ko, c.width / 2, 452);
+    ctx.font = `500 34px 'Noto Serif KR', serif`;
+    ctx.fillText(`서고 ${span.yStart + CORRIDOR_LEAD_YEARS} – ${span.yEnd - CORRIDOR_TAIL_YEARS}`, c.width / 2, 540);
+    const tex = new THREE.CanvasTexture(c);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    this.texCache.set(key, tex);
+    return tex;
+  }
+
+  /** 접힘 적용 — 경첩 자식들의 x축 회전. 4° 에서 출발해 z-fighting 을 피한다 */
+  private applyFold(): void {
+    const lie = -(Math.PI / 2 - 0.07);
+    for (const g of this.corridorStand) g.rotation.x = lie * (1 - this.foldK);
+    this.cityGroup.visible = this.foldK > 0.02 || !this.state.landedId;
+    this.applySurfaceSky();
+  }
+
+  /** 별 버퍼를 표면 투영에 맞춘다 — 라벨·픽(effectivePos)과 같은 사상 */
+  private applySurfaceSky(): void {
+    const posAttr = this.starGeo.getAttribute("position") as THREE.BufferAttribute;
+    const v = new THREE.Vector3();
+    const useProj = Boolean(this.state.landedId && this.corridorFrame && this.foldK > 0);
+    for (let i = 0; i < this.order.length; i++) {
+      const id = this.order[i] as string;
+      if (useProj && id !== this.state.landedId) {
+        this.surfaceSkyPos(id, v);
+        const base = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
+        base.lerp(v, this.foldK);
+        posAttr.setXYZ(i, base.x, base.y, base.z);
+      } else {
+        const d = this.dirs[i] as THREE.Vector3;
+        posAttr.setXYZ(i, d.x * SHELL_R, d.y * SHELL_R, d.z * SHELL_R);
+      }
+    }
+    posAttr.needsUpdate = true;
+  }
+
+  /**
+   * 매 프레임의 회랑 정비 — 월드 좌표 갱신(라벨·계약이 읽는다)과 당김 애니메이션.
+   * 당김: 책등의 권이 칸에서 미끄러져 나와 관측자를 향해 돌며 표지를 보인다 —
+   * 실물 표지가 주목의 순간에 나타나고, 없는 책은 민무늬 장정 그대로 나온다.
+   */
+  private updateCorridor(dt: number): void {
+    if (!this.corridorFrame) return;
+    // 당김 리프레임 — 책이 나오는 동안 카메라가 그 칸 정면으로 온다. 취소
+    // 가능(드래그가 비행을 끊는 기존 규칙 그대로)이고, 닫으면 회랑 자세로.
+    if (this.state.selectedWorkId !== this.lastPulled) {
+      this.lastPulled = this.state.selectedWorkId;
+      if (this.state.selectedWorkId) {
+        const c = this.cityRecords.find((x) => x.workId === this.state.selectedWorkId);
+        if (c) {
+          const f = this.corridorFrame;
+          const q = c.obj.getWorldPosition(new THREE.Vector3());
+          const up = q.clone().sub(f.center).normalize();
+          const bay = c.obj.parent?.parent; // stand → bay
+          const N = new THREE.Vector3(0, 0, 1);
+          if (bay) N.applyQuaternion(bay.getWorldQuaternion(new THREE.Quaternion()));
+          const tgt = q.clone().addScaledVector(up, f.bh * 0.55);
+          const approach = N.clone().addScaledVector(up, 0.35).normalize();
+          this.flyTo(tgt, f.bh * 3.6, 700, approach, up);
+        }
+      } else if (this.state.landedId) {
+        this.retarget();
+      }
+    }
+    const { bd, bh } = this.corridorFrame;
+    const step = dt > 0 ? Math.min(1, dt / 260) : 1;
+    for (const c of this.cityRecords) {
+      const want = c.workId === this.state.selectedWorkId ? 1 : 0;
+      const cur = this.pullK.get(c.workId) ?? 0;
+      const k = dt > 0 ? cur + Math.sign(want - cur) * step : want;
+      const next = Math.max(0, Math.min(1, Math.abs(want - k) < step ? want : k));
+      this.pullK.set(c.workId, next);
+      const e = next * next * (3 - 2 * next);
+      c.obj.position.z = -bd * 1.9 * 0.2 + e * (bd * 1.9 * 0.2 + bd * 2.0);
+      c.obj.position.y = (c.row === 0 ? 0 : bh * (1 + CORRIDOR_ROW_GAP)) + bh * 0.075 + e * bh * 0.06;
+      c.book.rotation.y = Math.PI * (1 - e);
+      c.obj.getWorldPosition(c.pos);
+    }
   }
 
   /**
@@ -1443,7 +2072,6 @@ export class UniverseScene {
     // 더하면 구면 곡률과 합쳐져 "누워 있는 판"으로 보인다(실측).
     // −90°는 +X(책등)를 관측자 쪽(+Z)으로 돌린다. +90°는 앞마구리를 돌린다 —
     // 부호를 틀리면 종이 단면을 책등이라고 부르게 된다.
-    if (!coverFile) root.rotation.y = -Math.PI / 2;
     return { root, spine, front };
   }
 
@@ -1619,22 +2247,36 @@ export class UniverseScene {
   private retarget(): void {
     const s = this.state;
     if (s.landedId) {
-      const i = this.index.get(s.landedId);
-      if (i === undefined) return;
-      const c = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
-      const r = this.radii[i] ?? 2;
-      this.controls.minDistance = r * 0.6;
-      // 착륙의 주시점은 천체 중심이 아니라 **서가가 선 지면**이다. 중심을
-      // 겨누면 책이 프레임 가장자리로 밀리고 지각이 화면을 반만 채운다.
-      // 지면을 겨누면 카메라가 서가를 가로질러 보게 되고, 서 있는 것이 서 있는
-      // 것으로 보이며, 위쪽에 하늘이 남는다.
-      const axis = this.arrivalDir(c.clone().normalize(), SHELF_AXIS_DEG);
-      // 주시점은 지면보다 조금 위다. 정확히 지면을 겨누면 책이 전부 화면
-      // 위쪽 절반에 서고(책은 지면에서 **올라오므로**) 아래 절반이 빈 지각으로
-      // 남는다 — 서가가 프레임의 중심에 오도록 책 높이의 절반만큼 올린다.
-      const ground = c.clone().addScaledVector(axis, r * (0.92 + SHELF_EYE_LIFT));
-      this.landTarget = ground;
-      this.flyTo(ground, r * LANDING_ALT, 1150);
+      const f = this.corridorFrame;
+      if (!f) return;
+      // 회랑의 착륙 자세 — 입구에 서서 회랑을 따라 내려다본다. 주시점은 회랑
+      // 안쪽(연도가 자라는 방향)이고, 눈높이는 사람이 서가 앞에 선 키다.
+      // 위쪽 1/3 에 하늘이 남고, 지평선이 곡선으로 보인다.
+      const thEye = corridorTheta(f.span.yStart + 0.8, f.span, f.cellArc);
+      const eye = this.corridorLatPoint(thEye, f.bh * 1.9, f.eyeLift);
+      const n = eye.clone().sub(f.center).normalize();
+      const fwd = f.fwd.clone().addScaledVector(n, -f.fwd.dot(n)).normalize();
+      // 횡 방향 = 경로 법선(N). 프레임과 같은 평행이동이라 좌우가 뒤집히지 않는다.
+      const side = this.corridorLatPoint(thEye, f.bh * 2.9, f.eyeLift).sub(eye).normalize();
+      const yaw = (5 * Math.PI) / 180;
+      // 피치는 접평면이 아니라 **보이는 지평선** 기준이다. 작은 행성의 지평선은
+      // 접평면보다 훨씬 아래에 있다(눈높이 0.12 에 반경 2.6 이면 침하 ≈ 17°).
+      const hEye = f.radius * f.eyeLift;
+      const dip = Math.acos(f.radius / (f.radius + hEye));
+      const pitch = (9 * Math.PI) / 180 - dip;
+      const dir = fwd
+        .clone()
+        .multiplyScalar(Math.cos(yaw))
+        .addScaledVector(side, Math.sin(yaw))
+        .multiplyScalar(Math.cos(pitch))
+        .addScaledVector(n, Math.sin(pitch))
+        .normalize();
+      const L = f.cellArc * f.radius * 10;
+      const tgt = eye.clone().addScaledVector(dir, L);
+      this.landTarget = tgt;
+      this.landUp = n.clone();
+      this.controls.minDistance = f.bh * 0.5;
+      this.flyTo(tgt, L, 1400, dir.clone().negate());
       return;
     }
     if (s.focusId) {
@@ -1668,7 +2310,8 @@ export class UniverseScene {
     target: THREE.Vector3,
     dist: number,
     dur: number,
-    approachOverride?: THREE.Vector3
+    approachOverride?: THREE.Vector3,
+    upOverride?: THREE.Vector3
   ): void {
     const dir = this.camera.position.clone().sub(this.controls.target);
     let approach: THREE.Vector3;
@@ -1680,7 +2323,7 @@ export class UniverseScene {
     let toUp = new THREE.Vector3(0, 1, 0);
     if (this.landTarget && target === this.landTarget) {
       approach = this.arrivalDir(target.clone().normalize(), SHELF_AXIS_DEG + LANDING_INCIDENCE_DEG);
-      toUp = this.arrivalDir(target.clone().normalize(), SHELF_AXIS_DEG);
+      toUp = this.landUp ?? this.arrivalDir(target.clone().normalize(), SHELF_AXIS_DEG);
     } else if (target.lengthSq() > 1) {
       // 천체를 향할 때는 바깥에서 비스듬히 내려앉는다 — 별들 사이를 통과하는 경로
       // 착륙은 **비스듬히** 내려앉는다. 반경 축을 그대로 타고 내려가면 시선이
@@ -1691,12 +2334,18 @@ export class UniverseScene {
       approach = dir.clone().normalize();
     }
     if (approachOverride) approach = approachOverride;
+    if (upOverride) toUp = upOverride;
     const toPos = target.clone().addScaledVector(approach, dist);
     if (this.state.reducedMotion) {
       this.controls.target.copy(target);
       this.camera.position.copy(toPos);
       this.setCameraUp(toUp);
       this.anim = null;
+      if (this.state.landedId && this.landTarget) {
+        this.foldK = 1;
+        this.foldDone = true;
+        this.applyFold();
+      }
       return;
     }
     this.anim = {
@@ -1747,9 +2396,10 @@ export class UniverseScene {
 
   /** 화면 좌표에서 가장 가까운 별 — Points 레이캐스트보다 예측 가능하다 */
   /** 계측·하네스용: 별의 현재 화면 좌표(뷰포트 기준 CSS px). 화면 밖이면 null */
-  project(id: string): [number, number] | null {
+  project(id: string, raw = false): [number, number] | null {
     const r = this.renderer.domElement.getBoundingClientRect();
     const v = this.effectivePos(id, new THREE.Vector3()).project(this.camera);
+    if (raw) return [Math.round(v.x * 100) / 100, Math.round(v.y * 100) / 100, Math.round(v.z * 10000) / 10000] as unknown as [number, number];
     if (v.z > 1 || Math.abs(v.x) > 1 || Math.abs(v.y) > 1) return null;
     return [((v.x + 1) / 2) * r.width + r.left, ((-v.y + 1) / 2) * r.height + r.top];
   }
@@ -1846,6 +2496,18 @@ export class UniverseScene {
     }
     const n = this.state.reducedMotion ? 2 : 48;
     for (let i = 0; i < n; i++) this.step();
+    if (this.state.landedId && this.foldK < 1) {
+      this.foldK = 1;
+      this.foldDone = true;
+      this.applyFold();
+      this.step();
+    }
+    // 당김 애니메이션도 상태로 당긴다 — dt 가 0 에 가까운 settle 루프에서는
+    // 시간 기반 당김이 영영 끝나지 않는다(실측)
+    if (this.corridorFrame) {
+      this.updateCorridor(0);
+      this.step();
+    }
   }
 
   private advance(now: number): void {
@@ -1855,7 +2517,10 @@ export class UniverseScene {
       // 주시점은 거리보다 먼저 도착한다. 둘을 같은 속도로 보간하면 비행 중반에
       // 카메라가 껍질 안쪽 빈 공간을 바라보게 되고(실측: 전환 3프레임이 검은
       // 화면), 여정이 "어디로 가는지 모르는 구간"을 갖는다.
-      const te = this.easeInOut(Math.min(1, k / 0.45));
+      // 이륙 룩백(R12-c): 회랑을 떠나는 비행의 첫 40% 는 시선이 아직 행성에
+      // 남는다 — 회랑이 뒤로 작아지는 것이 보여야 "내가 있던 곳"이 남는다.
+      const lookDelay = this.corridorDeparting ? 0.4 : 0;
+      const te = this.easeInOut(Math.max(0, Math.min(1, (k - lookDelay) / (0.45 * (1 - lookDelay) + (1 - 0.45) * 0))) );
       const tgt = new THREE.Vector3().lerpVectors(this.anim.fromTarget, this.anim.toTarget, te);
       this.controls.target.copy(tgt);
       // 거리는 로그 공간에서 보간한다. 2150 → 6 같은 350배 접근을 선형으로
@@ -1870,6 +2535,15 @@ export class UniverseScene {
       this.setCameraUp(
         new THREE.Vector3().copy(this.anim.fromUp).lerp(this.anim.toUp, e).normalize()
       );
+      // 접힘은 착륙 비행의 마지막 45% 가 만든다 — 검은 빈 구간이던 자리다.
+      // 지각의 연도 격자가 경첩을 축으로 일어서고, 드래그 취소는 비행 취소가
+      // 접힘도 되돌린다(같은 k 를 공유하므로).
+      if (this.state.landedId && this.landTarget && !this.foldDone) {
+        const fk = Math.max(0, Math.min(1, (k - 0.55) / 0.45));
+        this.foldK = fk * fk * (3 - 2 * fk);
+        this.applyFold();
+        if (this.foldK >= 1) this.foldDone = true;
+      }
       if (k >= 1) this.anim = null;
     }
   }
@@ -1883,11 +2557,27 @@ export class UniverseScene {
     this.step();
   };
 
+  private lastStep = 0;
+
   private step(): void {
+    const nowMs = performance.now();
+    const dt = this.lastStep ? Math.min(64, nowMs - this.lastStep) : 16;
+    this.lastStep = nowMs;
+    // 이륙이 끝나면 회랑을 걷는다(비행 중에는 서 있다)
+    if (this.corridorDeparting && !this.anim) {
+      this.corridorDeparting = false;
+      this.foldK = 0;
+      this.clearCities();
+      this.corridorFrame = null;
+      this.applySurfaceSky();
+    }
+    if (this.state.landedId && this.corridorFrame) this.updateCorridor(dt);
     // 최소 거리는 update() 보다 먼저 정한다 — 순서가 뒤바뀌면 착륙 프레임에서
     // 직전 프레임의 하한(40)이 카메라를 그 자리에 못박는다(실측 버그).
     this.controls.minDistance = this.state.landedId
-      ? (this.radii[this.index.get(this.state.landedId) ?? 0] ?? 2) * 1.35
+      ? this.corridorFrame
+        ? this.corridorFrame.bh * 0.5
+        : (this.radii[this.index.get(this.state.landedId) ?? 0] ?? 2) * 1.35
       : 20;
     this.controls.update();
 
@@ -1970,15 +2660,29 @@ export class UniverseScene {
     const prox = stage === "surface" ? 1 : stage === "approach" ? 0.28 : 0;
     // 관측자의 독서등: 원경에서는 꺼져 있고(태양의 초승달만 보인다),
     // 착륙하면 표면을 읽을 만큼 밝아진다.
-    this.readLamp.intensity = 1.35 + prox * 1.15;
+    // 회랑의 빛 위계(그래픽 리뷰 2026-08-25): 균일광 두 개가 전 표면을 같은
+    // 밝기로 채우면 "종이-금속-어둠"의 3단 명도가 "고른 세피아"로 뭉갠다.
+    // 착륙 중에는 램프·환경광을 낮추고 깊이 안개를 켠다 — 어둠이 값을 되찾는다.
+    const inCorridor = Boolean(this.state.landedId && this.corridorFrame);
+    this.readLamp.intensity = inCorridor ? 1.05 : 1.35 + prox * 1.15;
+    this.ambient.intensity = inCorridor ? 0.45 : 1.0;
+    if (inCorridor) {
+      const f = this.corridorFrame!;
+      if (!this.surfaceFog) this.surfaceFog = new THREE.Fog(new THREE.Color(COLORS.bg), f.bh * 4, f.radius * 1.15);
+      this.scene.fog = this.surfaceFog;
+    } else if (this.scene.fog) {
+      this.scene.fog = null;
+    }
     this.readLamp.position.copy(this.camera.position);
     (this.graticule.material as THREE.LineBasicMaterial).opacity =
       0.5 * Math.max(0, Math.min(1, (dist - 900) / 900));
     this.sunGlow.visible = stage !== "surface";
     (this.constellation.material as THREE.LineBasicMaterial).opacity =
       stage === "surface" ? 0.25 : this.state.focusId ? 0.4 : 0.9;
-    (this.egoLines.material as THREE.LineBasicMaterial).opacity = stage === "surface" ? 0.3 : 0.72;
-    (this.egoArrows.material as THREE.MeshBasicMaterial).opacity = stage === "surface" ? 0.3 : 0.85;
+    // 표면에서 실을 죽이던 0.3 은 "관계선 퇴장" 시대의 값이다 — 회랑의 실은
+    // 지목의 보상이므로 오히려 또렷해야 한다.
+    (this.egoLines.material as THREE.LineBasicMaterial).opacity = stage === "surface" ? 0.92 : 0.72;
+    (this.egoArrows.material as THREE.MeshBasicMaterial).opacity = stage === "surface" ? 0.95 : 0.85;
     if (
       this.egoDirected.length &&
       (this.arrowsDirty ||
@@ -2060,7 +2764,6 @@ export class UniverseScene {
       const target = rec.radius * want;
       if (Math.abs(rec.mesh.scale.x - target) > 1e-4) rec.mesh.scale.setScalar(target);
     }
-    this.orientCities();
     this.updateLabels();
     this.renderer.render(this.scene, this.camera);
     let drawn = 0;
@@ -2098,8 +2801,98 @@ export class UniverseScene {
         ? this.drawnLineEnds.filter(([a, b]) => a === this.state.landedId || b === this.state.landedId).length
         : 0,
       ...this.arrowMetrics(),
+      ...this.corridorMetrics(),
       occludedLabels: this.lastOccludedLabels,
       labelsOverFocus: this.labelsOverFocus()
+    };
+  }
+
+  /** 회랑 계측 — 접힘·칸·당김·사망선·명판·실의 앵커(화면 좌표)·방향 정렬 */
+  private corridorMetrics(): {
+    foldK: number;
+    bays: number;
+    pulled: string | null;
+    deathLine: boolean;
+    plate: boolean;
+    threadEnd: [number, number] | null;
+    /** 연보 명패 수 — 관계 앵커 연도 사건 + 발표 연도 밖 판본 사건 */
+    eventSlips: number;
+    /** 쉬는 권 중 책등 축이 입구를 향한 수 — 카메라가 아니라 회랑 접선과 잰다 */
+    restingSpineToEntrance: number;
+    resting: number;
+    /** 당겨진 권의 표지 축이 통로 법선을 향하는가 */
+    pulledCoverToWalkway: boolean;
+    /** 입문 단(row 0)이 위 단보다 낮게 서는가 — 국소 y 로 잰다 */
+    entryRowBelow: boolean;
+    /** 권별 책등 축·접선 내적 — 계약 디버그용(어느 권이 틀어졌는지) */
+    restingDots: Record<string, number>;
+    /** 입구를 향한 그 면에 실제 책등 재질이 붙은 쉬는 권 수 */
+    restingSpineDressed: number;
+  } {
+    let death = false;
+    let plate = false;
+    for (const o of this.cityChrome) {
+      o.traverse((x) => {
+        if (x.userData.deathLine) death = true;
+        if (x.userData.plate) plate = true;
+      });
+    }
+    let pulled: string | null = null;
+    for (const [wid, k] of this.pullK) if (k > 0.95) pulled = wid;
+    let te: [number, number] | null = null;
+    if (this.threadEnd) {
+      const v = this.threadEnd.clone().project(this.camera);
+      if (v.z <= 1) {
+        const w = this.renderer.domElement.clientWidth;
+        const h = this.renderer.domElement.clientHeight;
+        te = [Math.round(((v.x + 1) / 2) * w), Math.round(((-v.y + 1) / 2) * h)];
+      }
+    }
+    let restingAligned = 0;
+    let restingDressed = 0;
+    let resting = 0;
+    let pulledCover = false;
+    const restingDots: Record<string, number> = {};
+    const ax = new THREE.Vector3();
+    const kindAt = (mesh: THREE.Mesh, slot: number): string => {
+      const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+      const one = mats[slot] as THREE.MeshStandardMaterial | undefined;
+      return (one?.map?.userData?.kind as string | undefined) ?? "";
+    };
+    for (const c of this.cityRecords) {
+      const m4 = c.book.matrixWorld;
+      if (c.workId === pulled) {
+        // 표지 축 = 책의 +Z (BoxGeometry 재질 순서와 같은 규약)
+        ax.set(m4.elements[8] as number, m4.elements[9] as number, m4.elements[10] as number).normalize();
+        pulledCover = Boolean(c.normal && ax.dot(c.normal) > 0.7);
+        continue;
+      }
+      resting++;
+      ax.set(m4.elements[0] as number, m4.elements[1] as number, m4.elements[2] as number).normalize();
+      const dot = c.tangent ? ax.dot(c.tangent) : 0;
+      restingDots[c.workId] = Number(dot.toFixed(3));
+      if (dot < -0.85) restingAligned++;
+      // 축이 맞아도 그 면에 붙은 것이 책등 재질이 아니면 책등이 아니다 —
+      // 재질 배열이 뒤바뀐 변이가 축 계약만으로는 초록이었다(스윕 실측).
+      if (kindAt(c.spine, 0) === "spine") restingDressed++;
+    }
+    const rows0 = this.cityRecords.filter((c) => c.row === 0).map((c) => c.obj.position.y);
+    const rows1 = this.cityRecords.filter((c) => c.row === 1).map((c) => c.obj.position.y);
+    const avg = (xs: number[]): number => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : 0);
+    return {
+      foldK: Number(this.foldK.toFixed(3)),
+      bays: this.corridorStand.length,
+      pulled,
+      deathLine: death,
+      plate,
+      threadEnd: te,
+      eventSlips: this.eventSlips.length,
+      restingSpineToEntrance: restingAligned,
+      restingSpineDressed: restingDressed,
+      resting,
+      pulledCoverToWalkway: pulledCover,
+      entryRowBelow: rows1.length === 0 || avg(rows0) < avg(rows1),
+      restingDots
     };
   }
 
@@ -2354,23 +3147,7 @@ export class UniverseScene {
   private lastOccludedLabels = 0;
 
   /** 판은 표면에 서 있고(+Y = 지면 법선) 관측자를 향해 돈다 — 축 고정 빌보드 */
-  private orientCities(): void {
-    if (!this.cityRecords.length) return;
-    const m = new THREE.Matrix4();
-    const right = new THREE.Vector3();
-    const fwd = new THREE.Vector3();
-    for (const c of this.cityRecords) {
-      const up = (c.obj.userData.up ?? c.obj.userData.dir) as THREE.Vector3 | undefined;
-      if (!up) continue;
-      fwd.copy(this.camera.position).sub(c.obj.position);
-      fwd.addScaledVector(up, -fwd.dot(up));
-      if (fwd.lengthSq() < 1e-9) continue;
-      fwd.normalize();
-      right.crossVectors(up, fwd).normalize();
-      m.makeBasis(right, up, fwd);
-      c.obj.quaternion.setFromRotationMatrix(m);
-    }
-  }
+
 
   private updateLabels(): void {
     const w = this.renderer.domElement.clientWidth;
@@ -2525,7 +3302,9 @@ export class UniverseScene {
           text: c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo,
           kind: "work",
           size: "sm",
-          priority: work.id === s.selectedWorkId ? 400 : 100,
+          // 입문 경로 권의 숫자는 문법의 나름이다 — 충돌 컬링이 지우면 순서
+          // 채널이 사라진다. 순서 권은 우선순위를 올려 끝까지 남긴다.
+          priority: work.id === s.selectedWorkId ? 400 : c.orderIndex >= 0 ? 320 : 100,
           x: ((v.x + 1) / 2) * w,
           y: ((-v.y + 1) / 2) * h + 10,
           state: work.id === s.selectedWorkId ? "selected" : "normal",
@@ -2533,6 +3312,34 @@ export class UniverseScene {
           ground: "crust",
           interactive: true,
           ariaLabel: `${work.titleKo} — 작품 열기`
+        });
+      }
+      // 관련 별의 이름 (R12-c 선 다이어트): 착륙 중에도 이웃은 **이름으로**
+      // 하늘에 서 있다 — 회랑의 끝이 벽이 아니라 갈 수 있는 곳이라는 증거.
+      // 누르면 그 자리에서 날아오른다(이름표·별 픽 둘 다).
+      for (const nid of s.egoLit) {
+        if (nid === s.landedId) continue;
+        const a = this.data.authors.find((x) => x.id === nid);
+        const i = this.index.get(nid);
+        if (!a || i === undefined || !this.present(i)) continue;
+        this.effectivePos(nid, v).project(this.camera);
+        if (v.z > 1) continue;
+        const sx = ((v.x + 1) / 2) * w;
+        const sy = ((-v.y + 1) / 2) * h + 14;
+        if (sx < this.safeLeft || sx > w - this.safeRight) continue;
+        if (sy > h - YEAR_PANEL_INSET && Math.abs(sx - w / 2) < YEAR_PANEL_HALF_W) continue;
+        items.push({
+          id: nid,
+          text: a.names.ko,
+          kind: "author",
+          size: "sm",
+          priority: (nid === s.hoveredId ? 250 : 0) + 80,
+          x: sx,
+          y: sy,
+          state: nid === s.hoveredId ? "hovered" : "neighbor",
+          ground: "sky",
+          interactive: true,
+          ariaLabel: `${a.names.ko} — 이 별로 날아오르기`
         });
       }
       const landed = s.landedId ? this.data.authors.find((a) => a.id === s.landedId) : null;
@@ -2564,7 +3371,8 @@ export class UniverseScene {
     this.lastCrustAuthorLabels = items.filter(
       (i) => i.ground === "crust" && i.kind !== "work"
     ).length;
-    this.labels.onActivate = (id) => this.cb.onPickWork(id);
+    this.labels.onActivate = (id) =>
+      this.index.has(id) ? this.cb.onPickAuthor(id) : this.cb.onPickWork(id);
     this.labels.update(items, w, h, this.stage === "surface" ? 40 : this.stage === "sky" ? 18 : 32);
   }
 

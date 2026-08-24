@@ -19,9 +19,6 @@ export const SHELL_R = 900;
 /** 카메라 거리(궤도 타깃 기준) 경계 */
 export const CAM_SKY_DEFAULT = 2150;
 export const CAM_SKY_MAX = 3200;
-/** 착륙 고도 = 천체 반경 × 이 계수. 주시점이 **지면 위 한 점**이므로 이 값은
- *  중심까지의 거리가 아니라 그 지면에서의 거리다. */
-export const LANDING_ALT = 1.5;
 
 /** 서가가 서는 지면의 방향 — 천체 반경 축에서 이만큼 기울어진 곳 */
 export const SHELF_AXIS_DEG = 14;
@@ -284,8 +281,6 @@ export function silhouetteRadius(
 
 /** 서가가 차지하는 경도 반폭(rad) — 착륙 시야가 실제로 담는 각폭(실측) */
 export const SHELF_LON = (18 * Math.PI) / 180;
-/** 두 단 사이의 위도 간격(rad). 책 높이보다 커야 앞단이 뒷단을 삼키지 않는다 */
-export const SHELF_ROW_LAT = (17 * Math.PI) / 180;
 /** 책 폭 상한(천체 반경 대비). 작품이 많으면 띠에 맞춰 이 아래로 줄어든다 */
 export const VOL_W_MAX = 0.17;
 /** 판형 — 높이/폭. 4절판보다 세로로 긴 8절판 비율 */
@@ -307,81 +302,76 @@ export function volumeWidth(count: number): number {
   return Math.min(VOL_W_MAX, (2 * SHELF_LON) / (count - 1) / VOL_AIR);
 }
 
+
+
+
+
+// ---------------------------------------------------------------------------
+// 서가 회랑 (R12-c, CPO 연출 비준 2026-08-24) — 행성 지각이 접혀 올라온 회랑
+// ---------------------------------------------------------------------------
+// 서가는 제3의 공간이 아니라 **내가 착륙한 행성의 표면**이다: 벽은 지각과 같은
+// 원고 종이이고, 연도 축은 표면의 호(弧)를 따라 지평선 너머로 이어진다. 칸은
+// 연도당 하나로 균일하다 — 이전 서가의 최소-간격 압축(shelfLongitudes)은 회랑
+// 좌표가 균일해지면서 소멸한다. 다섯 권의 수장고: 빈 칸은 빈 채로 서고, 침묵은
+// 1924 사망선이 설명한다.
+
+/** 한 연도 칸의 호 길이 — 책 폭의 배수. 책이 칸 안에서 숨을 쉬는 여유 */
+export const CORRIDOR_CELL_AIR = 1.6;
+/** 회랑이 첫 작품 앞에서 시작하기까지의 여유(연 단위) */
+export const CORRIDOR_LEAD_YEARS = 2;
+/** 마지막 앵커 뒤로 이어지는 빈 칸(연 단위) — 회랑은 벽이 아니라 지평선으로 끝난다 */
+export const CORRIDOR_TAIL_YEARS = 4;
+/** 눈높이 단의 바닥 높이(책 높이 배수)와 단 사이 간격 */
+export const CORRIDOR_ROW_GAP = 0.22;
+/** 착륙 시 눈높이 — 책 높이의 배수 (사람이 서가 앞에 선 키) */
+export const CORRIDOR_EYE = 1.35;
 /**
- * 연도 → 경도. **순서는 연도가 정하고, 간격은 연도 간격에 비례하되 최소
- * 간격 아래로는 압축되지 않는다.** 비례를 무조건 지키면 인접 연도의 두 권이
- * 물리적으로 겹치고(카프카 1925·1926 은 연도 축의 1/13 밖에 안 떨어져 있는데
- * 책은 그보다 넓다), 겹친 책은 어떤 값도 전달하지 못한다. 왜곡은 감추지 않는다 — 서가 난간의 눈금이 같은 사상을
- * 통과해 놓이므로 어디가 밀렸는지 눈에 보인다.
- *
- * 반환은 입력 순서에 대응한다. 동률 연도는 입력 순서를 유지한다.
+ * 회랑 전체가 차지할 수 있는 최대 호(라디안). 이것이 책의 크기를 정한다 —
+ * 책이 행성을 감으면 회랑이 아니라 띠가 된다(실측: 옛 서가의 책 폭 0.17R 로
+ * 62칸을 세우니 행성을 2.7바퀴 감았다). 사람 척도의 책 아래로 행성 척도의
+ * 지평선이 놓이는 것이 "행성 위" 느낌의 근거다.
  */
-export function shelfLongitudes(years: readonly number[], minGap: number): number[] {
-  const n = years.length;
-  if (n === 0) return [];
-  if (n === 1) return [0];
-  const idx = years.map((_, i) => i).sort((a, b) => (years[a] as number) - (years[b] as number) || a - b);
-  const ys = idx.map((i) => years[i] as number);
-  const yMin = ys[0] as number;
-  const yMax = ys[n - 1] as number;
-  const span = 2 * SHELF_LON;
-  const pos = ys.map((y) =>
-    yMax > yMin ? -SHELF_LON + (span * (y - yMin)) / (yMax - yMin) : 0
-  );
-  for (let i = 1; i < n; i++) pos[i] = Math.max(pos[i] as number, (pos[i - 1] as number) + minGap);
-  if ((pos[n - 1] as number) > SHELF_LON) {
-    pos[n - 1] = SHELF_LON;
-    for (let i = n - 2; i >= 0; i--)
-      pos[i] = Math.min(pos[i] as number, (pos[i + 1] as number) - minGap);
-  }
-  if ((pos[0] as number) < -SHELF_LON) {
-    // 띠가 물리적으로 모자란다 — 비례를 포기하고 순서만 지킨다.
-    const step = span / (n - 1);
-    for (let i = 0; i < n; i++) pos[i] = -SHELF_LON + step * i;
-  }
-  const out = new Array<number>(n);
-  idx.forEach((orig, k) => {
-    out[orig] = pos[k] as number;
-  });
-  return out;
+export const CORRIDOR_ARC_MAX = 2.4;
+
+/** 칸 수가 정하는 칸 호 — 상한을 넘지 않는 선에서 책 폭 비례를 따른다 */
+export function corridorCellArc(bayCount: number, volWidthFrac: number): number {
+  return Math.min(volWidthFrac * CORRIDOR_CELL_AIR, CORRIDOR_ARC_MAX / Math.max(1, bayCount));
+}
+
+export interface CorridorSpan {
+  yStart: number;
+  yEnd: number;
 }
 
 /**
- * 서가 난간의 눈금 간격 — 3~6개가 놓이는 가장 촘촘한 단위를 고른다.
- * 눈금이 하나뿐이면 축이 아니라 표식이고, 열 개면 난간이 아니라 자다.
+ * 회랑이 덮는 연도 구간. 작품 연도 · 관계 앵커 연도 · 사망 연도를 전부 품는다 —
+ * 실이 닿는 해가 회랑 밖이면 실이 허공에 닿는다.
  */
-export function shelfTickStep(yMin: number, yMax: number): number {
-  const span = Math.max(1, yMax - yMin);
-  for (const s of [1, 2, 5, 10, 20, 50, 100]) if (span / s <= 6) return s;
-  return 200;
+export function corridorSpan(
+  workYears: number[],
+  anchorYears: number[],
+  deathYear?: number
+): CorridorSpan {
+  const ys = [...workYears, ...anchorYears, ...(deathYear !== undefined ? [deathYear] : [])];
+  const lo = Math.min(...ys);
+  const hi = Math.max(...ys);
+  return { yStart: lo - CORRIDOR_LEAD_YEARS, yEnd: hi + CORRIDOR_TAIL_YEARS };
 }
 
 /**
- * 연도 → 경도 보간. 작품이 놓인 (연도, 경도) 쌍을 통과하는 단조 조각선형
- * 사상이다. 눈금이 이 사상을 쓰기 때문에 최소 간격이 만든 왜곡이 난간 위에
- * 그대로 드러난다.
+ * 연도 → 회랑 호 각(라디안). 균일 사상 — 연도가 다르면 각이 다르고, 간격은
+ * 언제나 같다. cellArc 는 씬이 책 폭에서 계산해 넘긴다(bw/radius × AIR).
+ * 회랑은 yStart 를 0 에 놓고 양의 방향으로 자란다.
  */
-export function yearToLon(
-  year: number,
-  pairs: ReadonlyArray<readonly [number, number]>
-): number {
-  if (!pairs.length) return 0;
-  const p = [...pairs].sort((a, b) => a[0] - b[0]);
-  const first = p[0] as readonly [number, number];
-  const last = p[p.length - 1] as readonly [number, number];
-  if (year <= first[0]) return first[1];
-  if (year >= last[0]) return last[1];
-  for (let i = 1; i < p.length; i++) {
-    const a = p[i - 1] as readonly [number, number];
-    const b = p[i] as readonly [number, number];
-    if (year <= b[0]) {
-      if (b[0] === a[0]) return b[1];
-      const t = (year - a[0]) / (b[0] - a[0]);
-      return a[1] + (b[1] - a[1]) * t;
-    }
-  }
-  return last[1];
+export function corridorTheta(year: number, span: CorridorSpan, cellArc: number): number {
+  return (year - span.yStart) * cellArc;
 }
 
-/** 주시점을 지면 위로 올리는 높이(천체 반경 대비) — 책 높이의 절반 남짓 */
-export const SHELF_EYE_LIFT = VOL_W_MAX * VOL_ASPECT * 0.5;
+/** 관계 앵커가 회랑에서 닿는 연도 — 책 앵커는 그 책의 발표 연도로 해상된다 */
+export function anchorYearOf(
+  anchor: { workId?: string; year?: number },
+  workYear: (id: string) => number | undefined
+): number | undefined {
+  if (anchor.workId !== undefined) return workYear(anchor.workId) ?? anchor.year;
+  return anchor.year;
+}

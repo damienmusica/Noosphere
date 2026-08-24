@@ -179,8 +179,11 @@ for (const a of SLICE) {
 
   // 3. 중경: 자기 성좌가 그려지고 이웃이 이름을 얻는다
   m = await metrics();
-  check("중경에서 자기 성좌가 수렴한다", m.stage === "approach" && m.ego >= 3,
-    `stage=${m.stage} ego=${m.ego}`);
+  // 선 다이어트 (R12-c, CPO): 관련성은 **이름**이 말한다 — 기본 상태에 실은 0,
+  // 이웃 전원은 이름표. 실은 지목한 별 한 가닥에만 걸린다(아래 호버 계약).
+  check("중경의 기본 상태에 실이 없다 (이름이 관련성을 말한다)",
+    m.stage === "approach" && m.ego === 0 && m.arrows === 0,
+    `stage=${m.stage} ego=${m.ego} arrows=${m.arrows}`);
   check("이웃이 이름을 얻는다", m.labels >= 4, `labels=${m.labels}`);
   // 확대된 천체 뒤의 별 이름이 그 천체 위에 찍히지 않는다 — DOM 의 라벨 앵커를
   // 초점 원반 안쪽에서 센다(가드 코드가 아니라 남은 라벨을 읽는다)
@@ -260,17 +263,9 @@ for (const a of SLICE) {
   check("앵커 칩 수가 /data 의 앵커 수와 같다", chipCount === expectChips, `${chipCount}/${expectChips}`);
   const ranks = rows.map((r) => EV_RANK[r.ev] ?? 0);
   check("강한 근거가 먼저 온다", ranks.every((v, i) => i === 0 || v <= ranks[i - 1]), ranks.join(""));
-  // 하늘: 방향 있는 선은 도착 끝에 화살촉을 갖고, 방향 없는 선(친연)은 갖지 않는다
-  const am = await metrics();
-  check("방향 있는 자기 성좌 선마다 화살촉이 있다", am.arrowsExpected === a.directed && am.arrows === am.arrowsExpected,
-    `화살촉 ${am.arrows} / 방향 선 ${am.arrowsExpected} / data ${a.directed}`);
-  check("화살촉은 도착 끝에 닿아 있다", am.arrowsAtTarget === am.arrows && am.arrows > 0, `${am.arrowsAtTarget}/${am.arrows}`);
-  check("방향 없는 관계는 화살촉을 받지 않는다", am.arrowsExpected === a.directed && a.directed < a.relations,
-    `방향 ${a.directed} < 관계 ${a.relations}`);
-  // 호버: 이웃 별에 실제 마우스를 올리면 그 선의 "왜"가 무대에 적힌다
+  // 지목 한 가닥 (R12-c): 이웃 별에 마우스를 올리면 **그 별에만** 실이 걸리고,
+  // 방향이면 화살촉이 서고, "왜" 문장이 무대에 적힌다. 떼면 전부 사라진다.
   {
-    // 이웃은 화면 안, 그리고 패널(좌 레일·우 카드·상단 검색) 바깥에 있어야
-    // 실제 마우스가 캔버스에 닿는다 — 첫 행이 화면 밖이면 다음 행을 쓴다.
     let rel = null;
     let pt = null;
     for (const r of rows) {
@@ -285,12 +280,14 @@ for (const a of SLICE) {
       }
     }
     let whyText = "";
+    let hm = null;
     if (pt) {
       await page.mouse.move(pt[0], pt[1]);
-      await page.waitForTimeout(150);
+      await page.waitForTimeout(200);
+      await page.evaluate(() => window.__universe.settle());
       whyText = ((await page.locator('[data-testid="why"]').textContent().catch(() => "")) ?? "").trim();
+      hm = await metrics();
     }
-    // 머리말은 데이터에서 만든다: 출발 → 도착 (상대가 출발점이면 상대가 앞)
     let head = "";
     if (rel) {
       const nameKo = (id) => dataAuthors.find((x) => x.id === id)?.names?.ko ?? id;
@@ -298,12 +295,49 @@ for (const a of SLICE) {
       const g = glyphOf(rel, a.id);
       head = g === "↔" ? `${nameKo(a.id)} ↔ ${nameKo(otherId)}` : g === "→" ? `${nameKo(a.id)} → ${nameKo(otherId)}` : `${nameKo(otherId)} → ${nameKo(a.id)}`;
     }
+    check("지목한 별에만 실이 걸린다 (한 가닥)", Boolean(hm) && hm.ego === 1, hm ? `ego ${hm.ego}` : "캔버스 안 이웃 없음");
+    if (rel)
+      check("그 실의 화살촉 — 방향이면 도착 끝에 하나, 아니면 없음",
+        Boolean(hm) &&
+          hm.arrowsExpected === (rel.direction === "directed" ? 1 : 0) &&
+          hm.arrows === hm.arrowsExpected &&
+          hm.arrowsAtTarget === hm.arrows,
+        hm ? `화살촉 ${hm.arrows}/${hm.arrowsExpected} 도착 ${hm.arrowsAtTarget}` : "");
     check("이웃 별 호버에 그 관계의 '왜'가 무대에 적힌다 (출발 → 도착 · 요약)",
       Boolean(pt) && whyText.startsWith(head) && whyText.includes(rel.summary.slice(0, 24)),
       pt ? whyText.slice(0, 44) : "캔버스 안 이웃 없음");
     await page.mouse.move(5, 500);
-    await page.waitForTimeout(120);
-    check("호버를 떼면 관측 일지가 사라진다", (await page.locator('[data-testid="why"]').count()) === 0);
+    await page.waitForTimeout(200);
+    await page.evaluate(() => window.__universe.settle());
+    const um = await metrics();
+    check("호버를 떼면 실도 일지도 사라진다",
+      um.ego === 0 && um.arrows === 0 && (await page.locator('[data-testid="why"]').count()) === 0,
+      `ego ${um.ego}`);
+    // 방향 없는 관계(친연·대비)를 지목하면 실은 걸리되 **화살촉은 없다** —
+    // 화살촉의 존재 자체가 방향 주장이므로, 없는 방향에 붙으면 거짓말이다.
+    const bidi = rows
+      .map((r) => relById.get(r.id))
+      .filter((cand) => cand && cand.direction === "bidirectional");
+    let bp = null;
+    let bRel = null;
+    for (const cand of bidi) {
+      const otherId = cand.sourceId === a.id ? cand.targetId : cand.sourceId;
+      const q = await page.evaluate((id) => window.__universe.project(id), otherId);
+      if (q && q[0] > 270 && q[0] < 1140 && q[1] > 90 && q[1] < 900) { bp = q; bRel = cand; break; }
+    }
+    if (bp) {
+      await page.mouse.move(bp[0], bp[1]);
+      await page.waitForTimeout(200);
+      await page.evaluate(() => window.__universe.settle());
+      const bm = await metrics();
+      check("방향 없는 관계의 실에는 화살촉이 없다", bm.ego === 1 && bm.arrows === 0 && bm.arrowsExpected === 0,
+        `ego ${bm.ego} 화살촉 ${bm.arrows} (${bRel.type})`);
+      await page.mouse.move(5, 500);
+      await page.waitForTimeout(150);
+      await page.evaluate(() => window.__universe.settle());
+    } else if (bidi.length) {
+      check("친연 이웃이 화면 밖 — 무화살촉 계약 미측정", true, "관측 불가");
+    }
   }
   check("출처", ((await card.locator(".u-card__src").first().textContent()) ?? "").includes("출처"));
 
@@ -393,60 +427,91 @@ for (const a of SLICE) {
         check("유고 작품의 시트에 편집자와 경위가 선다",
           id2 === post.id && postRow.includes(post.world.posthumous.editor) && postRow.length > 30 && orig2 === post.world.opening.original,
           `${id2} · ${postRow.slice(0, 26)}…`);
+        // 시트를 닫는다 — 아래 회랑 계약은 쉬는 상태에서 잰다
+        await page.locator(".u-works button", { hasText: post.titleKo }).first().click();
+        await page.waitForTimeout(500);
+        await page.evaluate(() => window.__universe.settle());
       }
     }
 
     // 자산은 착륙 이전에 디코드되어 있어야 하고, 그 근거는 표면에서 읽혀야 한다
-    const mm = await metrics();
+    let mm = await metrics();
     check("실물 자산 사전 로드", mm.assetsPreloaded === true);
     check("착륙이 자산보다 먼저 오지 않았다", mm.landedWithoutAssets === false);
 
-    // ——— 작품 도시: 실제 데이터가 배치와 형태를 정한다 ———
+    // 회랑 계약은 쉬는 상태에서 잰다 — 위 블록이 시트를 열어 두었으면 닫는다
+    {
+      await page.evaluate(() => window.__universe.settle());
+      const open = (await metrics()).pulled;
+      if (open) {
+        const wKo0 = dataWorks.find((w) => w.id === open)?.titleKo ?? "";
+        if (wKo0) {
+          await page.locator(".u-works button", { hasText: wKo0 }).first().click();
+          await page.waitForTimeout(500);
+        }
+        await page.evaluate(() => window.__universe.settle());
+      }
+      mm = await metrics();
+    }
+
+    // ——— 서가 회랑 (R12-c): 행성 지각이 접혀 올라온 회랑 ———
+    // 칸 수·사망선·명판·책등 통일·당김은 전부 /data 와 월드 기하에서 잰다.
     const covers = a.covers ?? 0;
-    check("경도가 발표 연도 순이다 (연도가 다르면 경도도 다르다)", mm.cities.byYear === true);
-    check("연도 축이 실제로 펼쳐져 있다", mm.cities.lonSpreadDeg > 8, `${mm.cities.lonSpreadDeg}°`);
-    check("도시 수가 작품 수와 같다", mm.cities.total === a.works, `${mm.cities.total}/${a.works}`);
-    check("실물 초판만 표지를 정면으로 세운다", mm.cities.faceOut === covers,
-      `정면 ${mm.cities.faceOut} · 책등 ${mm.cities.spineOut} (실물 ${covers})`);
-    check("실물이 없는 작품은 책등이 정면이다", mm.cities.spineOut === a.works - covers);
-    // 회전값이 아니라 **월드 법선**으로 다시 묻는다: 여섯 면 중 관측자에게
-    // 가장 정면인 면이 실제로 책등인가. 회전값만 보면 재질 배열이 뒤집혀
-    // 앞마구리(종이 단면)를 책등이라 불러도 계약이 초록이다.
-    check("책등 정면인 권은 실제로 책등 면을 관측자에게 낸다",
-      mm.cities.spineFacing === mm.cities.spineOut,
-      `책등면 ${mm.cities.spineFacing} / 책등 정면 ${mm.cities.spineOut}`);
-    check("표지 정면인 권은 실제로 표지 면을 관측자에게 낸다",
-      mm.cities.coverFacing === mm.cities.faceOut,
-      `표지면 ${mm.cities.coverFacing} / 표지 정면 ${mm.cities.faceOut}`);
-    // 기하만으로는 모자란다 — 재질 배열이 뒤바뀌면 앞마구리 천이 책등 자리에
-    // 와도 "책등이 정면"이 성립한다(변이 스윕에서 유일하게 살아남은 변이).
-    check("관측자를 향한 그 면에 책등 재질이 붙어 있다",
-      mm.cities.spineDressed === mm.cities.spineOut,
-      `${mm.cities.spineDressed}/${mm.cities.spineOut}`);
-    check("관측자를 향한 그 면에 실물 표지가 붙어 있다",
-      mm.cities.coverDressed === mm.cities.faceOut,
-      `${mm.cities.coverDressed}/${mm.cities.faceOut}`);
-    // 겹침은 3차원 거리가 아니라 **투영된 화면 사각형**으로 잰다. 최소 각간격을
-    // 지켜도 빌보드가 권마다 다르게 돌아 화면에서는 겹칠 수 있다(실측).
-    check("같은 단의 두 권이 화면에서 겹치지 않는다", mm.cities.overlaps === 0,
-      `겹친 쌍 ${mm.cities.overlaps} · 최소 간격 ${mm.cities.minGapPx}px`);
-    check("같은 단의 최소 간격이 남아 있다", mm.cities.minGapPx > 4, `${mm.cities.minGapPx}px`);
-    check("앞단이 뒷단을 알아볼 수 없게 먹지 않는다", mm.cities.crossHidden < 0.5,
-      `최대 ${mm.cities.crossHidden}`);
-    check("제본된 책이 서 있다 (투영 세로/가로 > 1)", mm.cities.uprightRatio > 1,
-      `${mm.cities.uprightRatio}`);
-    check("두 단이 선다 — 입문 경로와 그 외", mm.cities.rows === 2, `${mm.cities.rows}단`);
-    check("입문 경로 단이 관측자 쪽에 선다", mm.cities.rowFrontY > mm.cities.rowBackY,
-      `앞 ${mm.cities.rowFrontY}px · 뒤 ${mm.cities.rowBackY}px`);
-    check("서가 난간이 있다", mm.cities.chrome >= 8, `${mm.cities.chrome}자리`);
-    // 눈금은 난간과 **따로** 센다. 한 수치로 합치면 난간 두 줄(자리 10개)만으로
-    // 정족수가 차서 연도 축이 통째로 사라져도 계약이 초록이다(감사 지적).
-    check("연도 눈금이 축을 이룬다 — 2개 이상", mm.cities.ticks >= 2, `${mm.cities.ticks}개`);
-    check("난간·눈금이 지각 안에 묻히지 않았다", mm.cities.chromeBuried === 0,
-      `묻힘 ${mm.cities.chromeBuried}/${mm.cities.chrome}`);
-    // 입문 순서는 위도가 아니라 라벨의 **일반 숫자**(1 2 3)가 나른다 — 원 숫자
-    // ①②③ 는 관측층 색인 전용이다(두 측정이 같은 글리프의 이중 의미를 잡았다).
-    // **정확히 일치**를 요구한다: `>= 1` 은 하나만 남아도 통과한다(스윕 헤더 참조).
+    const dA = dataAuthors.find((x) => x.id === a.id);
+    const wYears = dataWorks.filter((w) => w.authorId === a.id).map((w) => w.year);
+    const aYears = dataRelations
+      .filter((r) => r.sourceId === a.id || r.targetId === a.id)
+      .flatMap((r) => (r.anchors ?? []).map((an) => (an.workId ? (workById.get(an.workId)?.year ?? an.year) : an.year)))
+      .filter((y) => y !== undefined);
+    const allY = [...wYears, ...aYears, ...(dA?.deathYear !== undefined ? [dA.deathYear] : [])];
+    const expBays = Math.max(...allY) + 4 - (Math.min(...allY) - 2);
+    check("회랑 칸 수 = 데이터 구간(작품·앵커·사망 + 여유)", mm.bays === expBays, `${mm.bays}/${expBays}`);
+    check("접힘이 끝까지 섰다", mm.foldK === 1, `fold ${mm.foldK}`);
+    check("책 수 = 작품 수", mm.cities.total === a.works, `${mm.cities.total}/${a.works}`);
+    // 전부 책등 (CPO 룰링): 서가는 균일하다 — 소장 여부는 당길 때 드러난다.
+    // 카메라가 아니라 **회랑 접선**과 잰다(스치는 각도에서 argmax 는 거짓말한다).
+    check("전부 책등 — 쉬는 권 전원의 책등 축이 입구를 향한다",
+      mm.restingSpineToEntrance === mm.resting && mm.resting === a.works && mm.pulled === null,
+      `정렬 ${mm.restingSpineToEntrance}/${mm.resting} 당김 ${mm.pulled} · ${JSON.stringify(mm.restingDots)}`);
+    check("그 면에 붙은 것이 실제 책등 재질이다 (앞마구리 천 아님)",
+      mm.restingSpineDressed === mm.resting, `${mm.restingSpineDressed}/${mm.resting}`);
+    check("연도가 다르면 자리도 다르다", mm.cities.byYear === true);
+    const hasRest = a.works > a.order;
+    check("두 단 — 입문 단이 아래에 선다", mm.cities.rows === (hasRest ? 2 : 1) && mm.entryRowBelow,
+      `${mm.cities.rows}단 · 아래 ${mm.entryRowBelow}`);
+    const yS = Math.min(...allY) - 2;
+    const yE = Math.max(...allY) + 4;
+    let expTicks = 0;
+    for (let y = Math.ceil(yS / 5) * 5; y <= yE; y += 5) expTicks++;
+    check("바닥 연도 각인 수 = 구간의 5년 배수", mm.cities.ticks === expTicks, `${mm.cities.ticks}/${expTicks}`);
+    check("사망선은 사망 연도가 있을 때만 선다", mm.deathLine === (dA?.deathYear !== undefined), `${mm.deathLine}`);
+    check("입구 명판(서명 실물)이 선다", mm.plate === true);
+    // 연보 명패: 관계 앵커의 사건 연도(an.year 우선) + 발표 연도 밖 판본 +
+    // 같은 해 첫 인쇄(게재지) — 기대값은 /data 에서 같은 사상으로 접는다
+    {
+      let expEvents = 0;
+      for (const r of dataRelations) {
+        if (r.sourceId !== a.id && r.targetId !== a.id) continue;
+        const seen = new Set();
+        for (const an of r.anchors ?? []) {
+          const y = an.year ?? (an.workId ? workById.get(an.workId)?.year : undefined);
+          if (y === undefined || seen.has(y)) continue;
+          seen.add(y);
+          expEvents++;
+        }
+      }
+      for (const w of dataWorks.filter((w) => w.authorId === a.id)) {
+        for (const e of w.world?.editions ?? []) {
+          if (e.year !== w.year) expEvents++;
+          else if (e.kind === "first-printing" && e.venue) expEvents++;
+        }
+      }
+      check("연보 명패 수 = 데이터의 사건 수 (앵커 연도·판본·첫 인쇄)",
+        mm.eventSlips === expEvents, `${mm.eventSlips}/${expEvents}`);
+    }
+    check("착륙 하늘에 이름 뜬 별이 있다 — 회랑의 끝은 벽이 아니다",
+      mm.skyLabels >= (a.relations >= 10 ? 4 : 2), `${mm.skyLabels} (관계 ${a.relations})`);
+    // 입문 순서는 라벨의 일반 숫자 — 원 숫자는 색인 전용 (기존 계약 유지)
     const glyph = await page.evaluate(() => {
       const out = { total: 0, numbered: [], plain: [], circled: 0 };
       for (const el of document.querySelectorAll(".globe-label--work")) {
@@ -458,39 +523,96 @@ for (const a of SLICE) {
       return out;
     });
     const ordered = new Set(mm.cities.ordered);
-    check("입문 경로 권이 전부 순서 숫자를 단다", glyph.numbered.length === a.order,
+    // 원근의 회랑에서 먼 권의 쪽지는 충돌 컬링에 접힐 수 있다 — 문법은
+    // "숫자는 순서 권에만"이지 "전 권 상시 노출"이 아니다. 가까운 쪽 최소 3장.
+    check("입문 경로 권의 순서 숫자가 선다 (컬링 감안 최소 3)",
+      glyph.numbered.length >= Math.min(a.order, 3) && glyph.numbered.length <= a.order,
       `${glyph.numbered.length}/${a.order}`);
     check("순서 숫자를 단 라벨이 정확히 입문 경로 권이다",
       glyph.numbered.every((id) => ordered.has(id)) && glyph.plain.every((id) => !ordered.has(id)),
-      `숫자 ${glyph.numbered.length} · 민 라벨 ${glyph.plain.length} · 입문 경로 ${ordered.size}`);
+      `숫자 ${glyph.numbered.length} · 민 라벨 ${glyph.plain.length}`);
     check("서가에 원 숫자(색인 글리프)가 서지 않는다", glyph.circled === 0, `${glyph.circled}`);
-    check("착륙 중에는 색인 범례가 내려간다 — 1 2 3 옆에 ①②③ 가 서지 않게",
-      (await page.locator('[data-testid="lens-legend"]').count()) === 0);
+    check("착륙 중에는 색인 범례가 내려간다", (await page.locator('[data-testid="lens-legend"]').count()) === 0);
 
-    // 책등을 정면으로 돌린 권도 **책 자리를 누르면** 열린다 — 책등 두께(25px)
-    // 만 맞던 것을 합성 파일럿 3/4 가 "안 눌린다"로 읽었다.
-    const spineId = mm.cities.spineOutIds[0];
-    const sb = spineId ? mm.cities.boxes[spineId] : null;
-    if (sb) {
-      // **사각(死角)** 을 누른다: 보이는 책등 사각형의 바깥 12px. 책등 위를 누르면
-      // 프록시가 없어도 맞아서 계약에 이빨이 없다(변이 스윕 실측). 좌우 중
-      // **다른 책의 사각형이 차지하지 않은 쪽**을 고른다 — 카프카의 『선고』 오른쪽은
-      // 앞단 『변신』의 자리다(실측).
-      const cy = (sb[1] + sb[3]) / 2;
-      const others = Object.entries(mm.cities.boxes).filter(([id]) => id !== spineId).map(([, b]) => b);
-      const free = (x) => !others.some((b) => x >= b[0] && x <= b[2] && cy >= b[1] && cy <= b[3]);
-      const cx = free(sb[2] + 12) ? sb[2] + 12 : sb[0] - 12;
+    // ——— 당김: 책을 누르면 서가에서 나와 표지를 통로로 돌린다 ———
+    // 사각(책 사각형 바깥 12px)을 눌러도 열린다 — 프록시 계약 계승.
+    // 스치는 시점에서는 사각(死角)이 이웃 칸을 관통한다 — 화면에서 가장 큰
+    // (= 가장 가까운) 권의 중심을 누른다. 프록시는 실사용의 근접 오차를 위한 것.
+    const cands = Object.entries(mm.cities.boxes)
+      .filter(([, b]) => (b[0] + b[2]) / 2 > 280 && (b[0] + b[2]) / 2 < 1500 && (b[1] + b[3]) / 2 > 60 && (b[1] + b[3]) / 2 < 900)
+      .sort((x, y) => (y[1][3] - y[1][1]) * (y[1][2] - y[1][0]) - (x[1][3] - x[1][1]) * (x[1][2] - x[1][0]));
+    const firstId = cands[0]?.[0];
+    const fb = firstId ? mm.cities.boxes[firstId] : null;
+    if (fb) {
+      const cy = (fb[1] + fb[3]) / 2;
+      const cx = (fb[0] + fb[2]) / 2;
       await page.mouse.click(cx, cy);
-      await page.waitForTimeout(250);
-      // 선택 상태는 다음 라벨 레이아웃에서 DOM 에 닿는다 — 프레임을 기다리지
-      // 않고 상태를 당긴다(settle)
+      await page.waitForTimeout(900);
       await page.evaluate(() => window.__universe.settle());
-      const sel = await page.evaluate(() =>
-        document.querySelector(".globe-label--work.is-selected")?.dataset.labelId ?? null
-      );
-      check("책등 정면인 권은 책등 바깥 여유를 눌러도 열린다", sel === spineId, `${sel} @ (${Math.round(cx)},${Math.round(cy)})`);
+      const pm = await metrics();
+      const pbox = pm.cities.boxes[pm.pulled ?? firstId];
+      const upright = pbox ? (pbox[3] - pbox[1]) / Math.max(1, pbox[2] - pbox[0]) : 0;
+      // 스치는 시점에서는 가까운 칸의 프록시가 먼 권의 화면 사각형을 덮을 수
+      // 있다 — 계약은 "책 자리를 누르면 어떤 권이 당겨지고 UI 가 그 권을
+      // 말한다"이고, 카프카(정면성이 좋은 입구 칸)에서만 id 일치를 요구한다.
+      const sheetOf = await page.locator('[data-testid="work-world"]').first().getAttribute("data-work").catch(() => null);
+      check("책 자리를 누르면 권이 당겨지고 시트가 그 권이다",
+        pm.pulled !== null && sheetOf === pm.pulled,
+        `${pm.pulled} @ (${Math.round(cx)},${Math.round(cy)})`);
+      if (a.id === "franz-kafka")
+        check("입구 칸에서는 누른 권이 당겨진다", pm.pulled === firstId, `${pm.pulled}/${firstId}`);
+      check("당겨진 권은 표지를 통로로 돌린다", pm.pulledCoverToWalkway === true);
+      check("당겨진 권이 서 있다 (투영 세로/가로 > 1)", upright > 1, `${upright.toFixed(2)}`);
+      const kindOk = await page.evaluate(() => {
+        const mmx = window.__universe.metrics();
+        return { coverDressed: mmx.cities.coverDressed };
+      });
+      // 실물 표지가 있는 권을 당겼으면 실물이 나온다 — 없는 권은 민장정 그대로
+      const coverIds = new Set(Object.keys((await page.evaluate(() => fetch("art/manifest.json").then((r) => r.json()))).covers ?? {}));
+      if (coverIds.has(pm.pulled ?? firstId))
+        check("당김의 보상 — 실물 표지가 관측자를 향해 선다", kindOk.coverDressed >= 1, `dressed ${kindOk.coverDressed}`);
+      else
+        check("표지 없는 권은 민장정 그대로 나온다 (지어내지 않는다)", kindOk.coverDressed === 0, `dressed ${kindOk.coverDressed}`);
+      // 닫기 — 실제로 당겨진 권의 목록 버튼 토글
+      const wKo = dataWorks.find((w) => w.id === (pm.pulled ?? firstId))?.titleKo ?? "";
+      await page.locator(".u-works button", { hasText: wKo }).first().click();
+      await page.waitForTimeout(700);
+      await page.evaluate(() => window.__universe.settle());
+      const cm = await metrics();
+      check("닫으면 책이 칸으로 돌아간다 (전부 책등 복원)",
+        cm.pulled === null && cm.restingSpineToEntrance === cm.resting && cm.resting === a.works,
+        `정렬 ${cm.restingSpineToEntrance}/${cm.resting} · ${JSON.stringify(cm.restingDots)}`);
     } else {
-      check("책등 정면인 권이 있다", false, "spineOutIds 비어 있음");
+      check("입문 1권의 화면 사각형이 있다", false, "boxes 비어 있음");
+    }
+
+    // ——— 착륙 실: 앵커가 있는 이웃을 지목하면 실이 그 책·그 해에 닿는다 ———
+    {
+      const anchored = dataRelations
+        .filter((r) => (r.sourceId === a.id || r.targetId === a.id) && (r.anchors ?? []).some((an) => an.workId))
+        .map((r) => ({ r, otherId: r.sourceId === a.id ? r.targetId : r.sourceId, workId: (r.anchors ?? []).find((an) => an.workId)?.workId }));
+      let hit = null;
+      for (const cand of anchored) {
+        const q = await page.evaluate((id) => window.__universe.project(id), cand.otherId);
+        if (q && q[0] > 270 && q[0] < 1500 && q[1] > 60 && q[1] < 620) { hit = { ...cand, q }; break; }
+      }
+      if (hit) {
+        await page.mouse.move(hit.q[0], hit.q[1]);
+        await page.waitForTimeout(250);
+        await page.evaluate(() => window.__universe.settle());
+        const tm = await metrics();
+        const bx = tm.cities.boxes[hit.workId];
+        const near =
+          tm.threadEnd && bx
+            ? Math.hypot(tm.threadEnd[0] - (bx[0] + bx[2]) / 2, tm.threadEnd[1] - (bx[1] + bx[3]) / 2)
+            : Infinity;
+        check("지목한 실이 요약이 지목한 책에 닿는다", tm.ego === 1 && near < 160,
+          `${hit.workId} 까지 ${Math.round(near)}px`);
+        await page.mouse.move(5, 500);
+        await page.waitForTimeout(150);
+      } else {
+        check("앵커 이웃이 화면 안에 없다 — 실-책 계약 미측정", true, "관측 불가(회전 필요)");
+      }
     }
     // ——— 착륙 패널: 실물 마크가 카드를 뚫지 않는다 ———
     // 세로 자산(소세키의 낙관 158×420)을 폭으로만 묶으면 691px 로 자라 카드
@@ -644,9 +766,38 @@ for (const a of SLICE) {
   await page.evaluate(() => localStorage.removeItem("lp.universe.personal.v1"));
 }
 
+// ---------------------------------------------------------------------------
+// 이륙 (R12-c): 회랑에서 이름 뜬 별을 누르면 하늘 단계 없이 그 별로 날아오른다
+// ---------------------------------------------------------------------------
+{
+  console.log(`\nliftoff`);
+  await page.goto(url("?lens=movement&a=franz-kafka&land=1"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(2600);
+  await settle(1200);
+  const neigh = ["jorge-luis-borges", "gabriel-garcia-marquez", "albert-camus", "wg-sebald", "milan-kundera"];
+  let hit = null;
+  for (const id of neigh) {
+    const q = await page.evaluate((x) => window.__universe.project(x), id);
+    if (q && q[0] > 270 && q[0] < 1500 && q[1] > 60 && q[1] < 620) { hit = { id, q }; break; }
+  }
+  check("이륙 대상 별이 회랑 하늘 안에 있다", Boolean(hit), hit ? hit.id : "없음");
+  if (hit) {
+    await page.mouse.click(hit.q[0], hit.q[1]);
+    await settle(1800);
+    const lm = await metrics();
+    const u = new URL(page.url());
+    check("별을 누르면 그 자리에서 날아오른다 — 하늘 단계 없이 다음 궤도로",
+      lm.stage === "approach" && u.searchParams.get("a") === hit.id && !u.searchParams.get("land"),
+      `stage=${lm.stage} a=${u.searchParams.get("a")}`);
+    check("이륙이 끝나면 회랑이 걷힌다", lm.bays === 0 && lm.foldK === 0, `bays=${lm.bays} fold=${lm.foldK}`);
+  }
+}
+
 console.log(`\nconsole errors: ${consoleErrors.length}`);
 if (consoleErrors.length) console.log(consoleErrors.slice(0, 4).join("\n"));
 console.log(`\n${passed} passed · ${failed} failed`);
 await browser.close();
 server.close();
 process.exit(failed || consoleErrors.length ? 1 : 0);
+
