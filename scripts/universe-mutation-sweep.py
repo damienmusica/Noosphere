@@ -49,6 +49,8 @@ R = "src/universe/readiness.ts"
 S = "src/universe/scene.ts"
 C = "src/universe/components/OrbitCard.tsx"
 U = "src/universe/UniverseApp.tsx"
+CSS = "src/universe/universe.css"
+LAB = "src/globe/labels.ts"
 
 # (lane, name, file, needle, replacement)
 #
@@ -296,6 +298,41 @@ MUTATIONS = [
      "        if (e.year < w.year)", "        if (false)"),
     ("fast", "유고 주장이 사망 전 초판에도 통과한다", "src/data/assemble.ts",
      "        if (a.deathYear === undefined || (first && first.year <= a.deathYear))", "        if (false)"),
+    # --- 손안의 성계 (verify-mobile, R12-d) --------------------------------
+    # 넓은 화면 계약이 316/316 인 채로 전화기에서는 아무것도 못 하던 상태가
+    # 하루 넘게 서 있었다. 아래 변이들은 그때 실제로 일어났던 일을 하나씩
+    # 되돌린다 — 계약이 그것을 잡는지가 이 레인의 전부다.
+    ("mobile", "좁은 배치를 끈다 (전화기에서도 데스크톱 레일)", U,
+     'const NARROW_Q = "(max-width: 900px), (max-height: 520px)";',
+     'const NARROW_Q = "(max-width: 0px)";'),
+    # 2026-08-24 1차 스윕에서 이 변이는 **생존이 아니라 무효**였다: 띠를 먼저
+    # 먹인 뒤 좁은 화면 분기가 곧바로 덮어써서 아무것도 바뀌지 않았다. 변이는
+    # 분기 **안의 값**을 바꿔야 실제로 그때의 버그가 된다.
+    ("mobile", "데스크톱 안전 띠를 좁은 화면에도 먹인다 (좌 250 + 우 392 > 화면 390)", U,
+     "    sceneRef.current?.setSafeInsets(0, 0, 58, sheet);",
+     "    sceneRef.current?.setSafeInsets(250, 392, 0, 0);"),
+    ("mobile", "세로 화면 자세 보정을 끈다 (회랑이 프레임 밖으로)", S,
+     "const port = Math.min(1, Math.max(0, (1.15 - this.camera.aspect) / 0.5));",
+     "const port = 0;"),
+    ("mobile", "쉬는 시트가 하늘을 덮는다", U,
+     "const SHEET_PEEK_VH = 0.42;", "const SHEET_PEEK_VH = 0.92;"),
+    ("mobile", "이름표가 화면 밖으로 흘러넘친다 (클램프 제거)", LAB,
+     "const cx = w + 8 >= width ? width / 2 : Math.min(Math.max(item.x, half + 4), width - half - 4);",
+     "const cx = item.x;"),
+    ("mobile", "손끝 크기를 24px 로 되돌린다", CSS,
+     ".is-narrow .u-btn {\n  min-height: 44px;", ".is-narrow .u-btn {\n  min-height: 24px;"),
+    ("mobile", "손가락의 첫 탭이 곧바로 이륙한다 (왜를 읽을 기회 없음)", S,
+     "    if (!this.coarse || !this.state.landedId) return false;", "    return false;"),
+    ("mobile", "검색창이 포커스에 늘어난다 (줄이 재배치되어 탭이 빗나감)", CSS,
+     ".is-narrow .u-search {\n  flex: 0 0 92px;", ".is-narrow .u-search:focus-within {\n  flex: 1 1 auto;\n}\n\n.is-narrow .u-search {\n  flex: 0 1 92px;"),
+    ("mobile", "작품 이름표가 시트 뒤에 반쯤 걸린다", S,
+     "        if (this.safeBottom > 0 && wy > h - this.safeBottom) continue;", "        void wy;"),
+    ("mobile", "서랍의 가림막이 상단 줄을 덮는다 ('닫기'가 죽은 버튼이 된다)", CSS,
+     "  /* 서랍의 가림막(z 7)과 서랍(z 8) 위에 남는다 — 그러지 않으면 서랍이 열린\n     동안 '닫기'가 가림막에 먹혀 죽은 버튼이 된다(실측). */\n  z-index: 9;\n",
+     "  "),
+    ("mobile", "층을 골라도 서랍이 닫히지 않는다 (하늘이 안 보임)", U,
+     "                setLensId(lensId === l.id ? null : l.id);\n                setDrawer(false);",
+     "                setLensId(lensId === l.id ? null : l.id);"),
 ]
 
 
@@ -306,9 +343,20 @@ def run(cmd, cwd=LP):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--browser", action="store_true", help="also run the journey contracts (slow)")
+    ap.add_argument(
+        "--lane",
+        action="append",
+        choices=["fast", "browser", "mobile"],
+        help="run ONLY these lanes (repeatable). 새 레인을 붙인 직후 그 레인만 "
+        "재는 데 쓴다 — 전체 스윕은 두 시간이 넘고, 그동안 트리가 잠긴다.",
+    )
     args = ap.parse_args()
 
-    lanes = {"fast"} | ({"browser"} if args.browser else set())
+    # `--browser` 는 브라우저가 필요한 레인 **전부**다: 넓은 화면(verify-journey)과
+    # 손안(verify-mobile). 둘 다 같은 dist 를 쓰므로 빌드도 함께 탄다.
+    lanes = set(args.lane) if args.lane else {"fast"} | (
+        {"browser", "mobile"} if args.browser else set()
+    )
     cases = [m for m in MUTATIONS if m[0] in lanes]
 
     originals = {}
@@ -327,7 +375,8 @@ def main():
 
     atexit.register(restore)
 
-    if args.browser:
+    needs_dist = bool(lanes & {"browser", "mobile"})
+    if needs_dist:
         print("browser lane: building the baseline dist once…")
         b = run("npm run build")
         if b.returncode != 0:
@@ -353,7 +402,12 @@ def main():
                     if build.returncode != 0:
                         caught = True  # a type error is a caught mutation
                     else:
-                        res = run("node art-r11/verify-journey.mjs")
+                        harness = (
+                            "node art-r11/verify-mobile.mjs"
+                            if lane == "mobile"
+                            else "node art-r11/verify-journey.mjs"
+                        )
+                        res = run(harness)
                         caught = res.returncode != 0
             finally:
                 open(path, "w", encoding="utf-8").write(text)
@@ -361,7 +415,7 @@ def main():
             print(f"  {'✓ KILLED  ' if caught else '✗ SURVIVED'} [{lane}] {name}")
     finally:
         restore()
-        if args.browser:
+        if needs_dist:
             # 마지막 변이가 만든 dist 가 남으면 이후 검증이 유령 실패를 낸다
             # (실측: 스윕 직후 여정 계약이 88/3 로 나왔고 원인은 오염된 dist).
             print("restoring the baseline dist…")

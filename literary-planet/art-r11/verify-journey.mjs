@@ -162,7 +162,7 @@ for (const a of SLICE) {
     check("Enter 뒤 검색 목록이 닫힌다", (await page.locator(".u-search__hits").count()) === 0);
     check("선택 뒤 포커스가 <body> 에 떨어지지 않는다",
       await page.evaluate(() => document.activeElement !== document.body));
-    await page.locator(".u-top .u-btn--ghost").first().click();
+    await page.locator('[data-testid="to-sky"]').click();
     await settle(1600);
     await page.fill(".u-search input", "");
   }
@@ -684,7 +684,7 @@ for (const a of SLICE) {
 
   // 10. 복귀: 하늘로 돌아가면 **출발 구도**로 돌아온다 — 원경 거리만으로는
   // 부족하다. 착륙 접근각이 남은 채 돌아오면 4/4 가 출발 별을 잃었다(합성 파일럿).
-  await page.locator(".u-top .u-btn--ghost").first().click();
+  await page.locator('[data-testid="to-sky"]').click();
   await settle(1600);
   m = await metrics();
   check("하늘로 복귀", m.stage === "sky" && Math.abs(m.dist - 2191) < 120,
