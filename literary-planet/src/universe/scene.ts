@@ -51,6 +51,7 @@ import {
   volumeWidth,
 } from "./grammar.ts";
 import { indexGlyph } from "./lenses.ts";
+import { REL_KO, relationGlyph } from "./relations.ts";
 
 /** 하단 연도 슬라이더 판이 덮는 띠 — 여기 놓인 이름은 읽을 수 없다 */
 const YEAR_PANEL_INSET = 84;
@@ -224,6 +225,9 @@ export class UniverseScene {
   private selWedges: THREE.Sprite[] = [];
   private selCorners: THREE.Sprite[] = [];
   private readLamp: THREE.PointLight;
+  private ambient!: THREE.AmbientLight;
+  /** 착륙 시에만 켜는 깊이 안개 — 회랑이 지평선 톤으로 물러난다 */
+  private surfaceFog: THREE.Fog | null = null;
 
   private bodies = new Map<string, BodyRecord>();
   private cityGroup = new THREE.Group();
@@ -284,6 +288,8 @@ export class UniverseScene {
   private lastPulled: string | null = null;
   /** 당겨진 책과 권별 당김 진행도 — 전부 책등, 당기면 표지 (CPO 룰링 2026-08-24) */
   private pullK = new Map<string, number>();
+  /** 연보 명패 (R12-c 채움): 관계·판본의 실제 사건이 제 해의 칸에 선다 */
+  private eventSlips: Array<{ relId?: string; year: number; obj: THREE.Object3D }> = [];
   /** 이륙 중 — 착륙은 풀렸지만 회랑은 비행이 끝날 때까지 서 있다 */
   private corridorDeparting = false;
   /** 마지막으로 그린 실의 앵커 끝 — 계약이 화면 좌표로 대조한다 */
@@ -460,7 +466,8 @@ export class UniverseScene {
     const sun = new THREE.PointLight(0xffd9a0, 6, 0, 0.0);
     sun.position.set(0, 0, 0);
     this.scene.add(sun);
-    this.scene.add(new THREE.AmbientLight(0x2a2118, 1.0));
+    this.ambient = new THREE.AmbientLight(0x2a2118, 1.0);
+    this.scene.add(this.ambient);
     // 관측자의 독서등 — 착륙할수록 세진다
     this.readLamp = new THREE.PointLight(0xffe9c8, 1.4, 0, 0.0);
     this.scene.add(this.readLamp);
@@ -1368,6 +1375,7 @@ export class UniverseScene {
     this.cityAnchors = [];
     this.cityTicks = 0;
     this.corridorStand = [];
+    this.eventSlips = [];
     this.pullK.clear();
     this.threadEnd = null;
     this.cityGroup.visible = true;
@@ -1448,10 +1456,16 @@ export class UniverseScene {
     // ——— 재질: 벽은 지각과 같은 종이 ———
     const wallMat = this.crustWallMaterial(rec);
     const boardMat = new THREE.MeshStandardMaterial({
-      color: new THREE.Color(0x746a56),
+      color: new THREE.Color(0x4a3c28),
       roughness: 0.97
     });
-    const edgeMat = new THREE.LineBasicMaterial({ color: new THREE.Color(COLORS.stitch) });
+    // 개구부 모서리는 화면의 유일한 밝은 선이다 — 각인 잉크(stitch)가 아니라
+    // 놋쇠. 각인·사망선과 같은 잉크면 구조 프레임이 주석과 구분되지 않는다.
+    const edgeMat = new THREE.LineBasicMaterial({
+      color: new THREE.Color(COLORS.brass),
+      transparent: true,
+      opacity: 0.9
+    });
 
     // ——— 칸의 치수 ———
     const cellW = cellArc * R;
@@ -1548,7 +1562,7 @@ export class UniverseScene {
     }
     const floorLines = new THREE.LineSegments(
       new THREE.BufferGeometry().setFromPoints(floorPts),
-      new THREE.LineBasicMaterial({ color: new THREE.Color(COLORS.stitch), transparent: true, opacity: 0.5 })
+      new THREE.LineBasicMaterial({ color: new THREE.Color(COLORS.stitch), transparent: true, opacity: 0.78 })
     );
     this.cityGroup.add(floorLines);
     this.cityChrome.push(floorLines);
@@ -1652,8 +1666,109 @@ export class UniverseScene {
         normal: new THREE.Vector3(0, 0, 1).applyQuaternion(bayQ)
       });
     }
+    // ——— 연보 명패: 빈 칸을 채우는 것은 장식이 아니라 **일어난 일**이다 ———
+    // (CPO 2026-08-25: "꼭 책이 아니더라도 넣을 만한 것들이 있으면 전부 넣어서
+    // 채우자") 관계 앵커의 연도 사건(1938 서문 · 1947 보고타 · 1969 카네티…)과
+    // 발표 연도 밖의 판본 사건(1916 『선고』 단행본)이 제 해의 칸에 명패로
+    // 선다. 전부 /data 에 이미 있는, 출처 달린 사실이다 — 사망선 뒤의 침묵을
+    // 수용사(受容史)가 채우고, 그래도 빈 칸만 진짜 침묵으로 남는다.
+    type CorridorEvent = { year: number; big: string; small: string; relId?: string };
+    const events: CorridorEvent[] = [];
+    for (const r of this.data.relations ?? []) {
+      if (r.sourceId !== id && r.targetId !== id) continue;
+      const otherId = r.sourceId === id ? r.targetId : r.sourceId;
+      const other = this.data.authors.find((a) => a.id === otherId);
+      if (!other) continue;
+      const seenYears = new Set<number>();
+      for (const an of r.anchors ?? []) {
+        // 연보의 연도는 **사건이 일어난 해**다(an.year 우선). 실이 닿는 책의
+        // 발표 연도(anchorYearOf)와는 다른 사상이다 — 1947 보고타의 독서는
+        // 1947 칸의 사건이고, 실은 1915 의 『변신』에 닿는다.
+        const y = an.year ?? anchorYearOf(an, (wid) => this.data.works.find((w) => w.id === wid)?.year);
+        if (y === undefined || seenYears.has(y)) continue;
+        seenYears.add(y);
+        const glyph = relationGlyph(r, id);
+        events.push({
+          year: y,
+          big: `${glyph} ${other.names.ko}`,
+          small: REL_KO[r.type] ?? r.type,
+          relId: r.id
+        });
+      }
+    }
+    for (const w of works) {
+      for (const e of w.world?.editions ?? []) {
+        if (e.year !== w.year) {
+          events.push({
+            year: e.year,
+            big: `『${w.titleKo}』`,
+            small: e.kind === "first-printing" ? "첫 인쇄" : w.world?.posthumous ? "초판 · 유고" : "초판"
+          });
+        } else if (e.kind === "first-printing" && e.venue) {
+          // 같은 해의 첫 인쇄는 그 책 칸의 윗단 명패가 된다 — 게재지 이름은
+          // /data 의 사실이고, 책의 시대 쪽 밀도를 실제 사건으로 채운다.
+          const m = e.venue.match(/『[^』]+』/);
+          events.push({ year: e.year, big: m ? m[0] : e.publisher, small: "첫 인쇄" });
+        }
+      }
+    }
+    const slotInCell = new Map<number, number>();
+    // 책이 선 칸의 아랫단은 책의 자리다 — 명패는 그 위 단으로 올라간다
+    const bookRows = new Map<number, Set<number>>();
+    for (const c of this.cityRecords) {
+      if (!bookRows.has(c.year)) bookRows.set(c.year, new Set());
+      bookRows.get(c.year)!.add(c.row);
+    }
+    for (const ev of events.sort((x, y) => x.year - y.year)) {
+      const stand = bayOf.get(ev.year);
+      if (!stand) continue;
+      const slot = slotInCell.get(ev.year) ?? 0;
+      slotInCell.set(ev.year, slot + 1);
+      const occupied = bookRows.get(ev.year);
+      const rowBase = occupied?.has(0) && !occupied.has(1) ? rowH : occupied?.has(0) ? rowH : 0;
+      const slip = new THREE.Mesh(
+        new THREE.PlaneGeometry(cellW * 0.72, cellW * 0.3),
+        new THREE.MeshBasicMaterial({
+          map: this.eventSlipTexture(ev.big, ev.small),
+          transparent: false
+        })
+      );
+      slip.position.set(0, rowBase + boardT + bh * (0.34 + slot * 0.42), -backD * 0.12);
+      slip.userData.eventSlip = true;
+      stand.add(slip);
+      this.cityChrome.push(slip);
+      this.eventSlips.push({ relId: ev.relId, year: ev.year, obj: slip });
+    }
+
     this.applyFold();
     this.updateCorridor(0);
+  }
+
+  /** 연보 명패의 지면 — 종이 슬립에 이름 크게, 유형 작게 */
+  private eventSlipTexture(big: string, small: string): THREE.Texture {
+    const key = `event:${big}|${small}`;
+    const hit = this.texCache.get(key);
+    if (hit) return hit;
+    const c = document.createElement("canvas");
+    c.width = 512;
+    c.height = 212;
+    const ctx = c.getContext("2d")!;
+    ctx.fillStyle = "#e7dfc8";
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.strokeStyle = "#4a3c28";
+    ctx.lineWidth = 3;
+    ctx.strokeRect(8, 8, c.width - 16, c.height - 16);
+    ctx.fillStyle = "#3b2f1e";
+    ctx.textAlign = "center";
+    ctx.font = "600 52px 'Noto Serif KR', serif";
+    ctx.fillText(big, c.width / 2, 96, c.width - 48);
+    ctx.fillStyle = "#6b5b40";
+    ctx.font = "500 34px 'Noto Serif KR', serif";
+    ctx.fillText(small, c.width / 2, 158, c.width - 48);
+    const tex = new THREE.CanvasTexture(c);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    this.texCache.set(key, tex);
+    return tex;
   }
 
   /**
@@ -1699,8 +1814,17 @@ export class UniverseScene {
         return q.addScaledVector(up, f.bh * 1.12);
       }
     }
-    if (anchor?.year !== undefined)
+    if (anchor?.year !== undefined) {
+      // 그 해의 명패가 서 있으면 실은 바닥이 아니라 명패에 닿는다 — 사건에
+      // 사건의 실이 닿는 것이 연보의 문법이다.
+      const slip = this.eventSlips.find((e) => e.year === anchor.year);
+      if (slip) {
+        const q = slip.obj.getWorldPosition(new THREE.Vector3());
+        const up = q.clone().sub(f.center).normalize();
+        return q.addScaledVector(up, f.bh * 0.2);
+      }
       return this.corridorLatPoint(corridorTheta(anchor.year, f.span, f.cellArc), f.bh * 1.1, 0.004);
+    }
     // 명판 — 회랑의 입구 칸
     return this.corridorLatPoint(
       corridorTheta(f.span.yStart + 1.5, f.span, f.cellArc),
@@ -1713,7 +1837,7 @@ export class UniverseScene {
   private crustWallMaterial(rec: BodyRecord): THREE.MeshStandardMaterial {
     const key = `wall:${rec.id}`;
     const cached = this.texCache.get(key);
-    const mat = new THREE.MeshStandardMaterial({ color: new THREE.Color(0xd6cdba), roughness: 0.96 });
+    const mat = new THREE.MeshStandardMaterial({ color: new THREE.Color(0xb0a288), roughness: 0.96 });
     if (cached) {
       mat.map = cached;
       return mat;
@@ -2536,15 +2660,29 @@ export class UniverseScene {
     const prox = stage === "surface" ? 1 : stage === "approach" ? 0.28 : 0;
     // 관측자의 독서등: 원경에서는 꺼져 있고(태양의 초승달만 보인다),
     // 착륙하면 표면을 읽을 만큼 밝아진다.
-    this.readLamp.intensity = 1.35 + prox * 1.15;
+    // 회랑의 빛 위계(그래픽 리뷰 2026-08-25): 균일광 두 개가 전 표면을 같은
+    // 밝기로 채우면 "종이-금속-어둠"의 3단 명도가 "고른 세피아"로 뭉갠다.
+    // 착륙 중에는 램프·환경광을 낮추고 깊이 안개를 켠다 — 어둠이 값을 되찾는다.
+    const inCorridor = Boolean(this.state.landedId && this.corridorFrame);
+    this.readLamp.intensity = inCorridor ? 1.05 : 1.35 + prox * 1.15;
+    this.ambient.intensity = inCorridor ? 0.45 : 1.0;
+    if (inCorridor) {
+      const f = this.corridorFrame!;
+      if (!this.surfaceFog) this.surfaceFog = new THREE.Fog(new THREE.Color(COLORS.bg), f.bh * 4, f.radius * 1.15);
+      this.scene.fog = this.surfaceFog;
+    } else if (this.scene.fog) {
+      this.scene.fog = null;
+    }
     this.readLamp.position.copy(this.camera.position);
     (this.graticule.material as THREE.LineBasicMaterial).opacity =
       0.5 * Math.max(0, Math.min(1, (dist - 900) / 900));
     this.sunGlow.visible = stage !== "surface";
     (this.constellation.material as THREE.LineBasicMaterial).opacity =
       stage === "surface" ? 0.25 : this.state.focusId ? 0.4 : 0.9;
-    (this.egoLines.material as THREE.LineBasicMaterial).opacity = stage === "surface" ? 0.3 : 0.72;
-    (this.egoArrows.material as THREE.MeshBasicMaterial).opacity = stage === "surface" ? 0.3 : 0.85;
+    // 표면에서 실을 죽이던 0.3 은 "관계선 퇴장" 시대의 값이다 — 회랑의 실은
+    // 지목의 보상이므로 오히려 또렷해야 한다.
+    (this.egoLines.material as THREE.LineBasicMaterial).opacity = stage === "surface" ? 0.92 : 0.72;
+    (this.egoArrows.material as THREE.MeshBasicMaterial).opacity = stage === "surface" ? 0.95 : 0.85;
     if (
       this.egoDirected.length &&
       (this.arrowsDirty ||
@@ -2677,6 +2815,8 @@ export class UniverseScene {
     deathLine: boolean;
     plate: boolean;
     threadEnd: [number, number] | null;
+    /** 연보 명패 수 — 관계 앵커 연도 사건 + 발표 연도 밖 판본 사건 */
+    eventSlips: number;
     /** 쉬는 권 중 책등 축이 입구를 향한 수 — 카메라가 아니라 회랑 접선과 잰다 */
     restingSpineToEntrance: number;
     resting: number;
@@ -2746,6 +2886,7 @@ export class UniverseScene {
       deathLine: death,
       plate,
       threadEnd: te,
+      eventSlips: this.eventSlips.length,
       restingSpineToEntrance: restingAligned,
       restingSpineDressed: restingDressed,
       resting,

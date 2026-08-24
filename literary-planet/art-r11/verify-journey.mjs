@@ -486,6 +486,29 @@ for (const a of SLICE) {
     check("바닥 연도 각인 수 = 구간의 5년 배수", mm.cities.ticks === expTicks, `${mm.cities.ticks}/${expTicks}`);
     check("사망선은 사망 연도가 있을 때만 선다", mm.deathLine === (dA?.deathYear !== undefined), `${mm.deathLine}`);
     check("입구 명판(서명 실물)이 선다", mm.plate === true);
+    // 연보 명패: 관계 앵커의 사건 연도(an.year 우선) + 발표 연도 밖 판본 +
+    // 같은 해 첫 인쇄(게재지) — 기대값은 /data 에서 같은 사상으로 접는다
+    {
+      let expEvents = 0;
+      for (const r of dataRelations) {
+        if (r.sourceId !== a.id && r.targetId !== a.id) continue;
+        const seen = new Set();
+        for (const an of r.anchors ?? []) {
+          const y = an.year ?? (an.workId ? workById.get(an.workId)?.year : undefined);
+          if (y === undefined || seen.has(y)) continue;
+          seen.add(y);
+          expEvents++;
+        }
+      }
+      for (const w of dataWorks.filter((w) => w.authorId === a.id)) {
+        for (const e of w.world?.editions ?? []) {
+          if (e.year !== w.year) expEvents++;
+          else if (e.kind === "first-printing" && e.venue) expEvents++;
+        }
+      }
+      check("연보 명패 수 = 데이터의 사건 수 (앵커 연도·판본·첫 인쇄)",
+        mm.eventSlips === expEvents, `${mm.eventSlips}/${expEvents}`);
+    }
     check("착륙 하늘에 이름 뜬 별이 있다 — 회랑의 끝은 벽이 아니다",
       mm.skyLabels >= (a.relations >= 10 ? 4 : 2), `${mm.skyLabels} (관계 ${a.relations})`);
     // 입문 순서는 라벨의 일반 숫자 — 원 숫자는 색인 전용 (기존 계약 유지)
