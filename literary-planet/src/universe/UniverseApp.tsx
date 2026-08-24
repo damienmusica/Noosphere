@@ -166,8 +166,11 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     });
   }, [lensId, dataset, positions, personal]);
 
-  // 자기 성좌: 선택된 별의 관계선. 렌즈와 독립적으로 늘 그려진다 —
-  // "다음에 갈 수 있는 곳"이 중경의 정보다.
+  // 자기 성좌 — **선 다이어트** (CPO 2026-08-24): 관련성은 이름이 말한다.
+  // 이웃 전원은 이름표(lit)로 서고, 실은 **지목한 별 하나**에만 걸린다 — 그
+  // 실이 방향 화살촉과 "왜" 캡션을 나른다. 18가닥을 늘 그리던 이전 판은 합성
+  // 파일럿 실측(관련성은 이름에서 읽혔고 방향은 선에서 안 읽혔다)과 CPO 판정
+  // ("너저분")이 함께 물렸다. 실을 당겨 따라가는 동작 자체가 탐험이다.
   const ego = useMemo(() => {
     if (!focusId) return { lines: [] as LensLine[], lit: new Set<string>() };
     const lines: LensLine[] = [];
@@ -175,18 +178,21 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     for (const r of dataset.relations) {
       if (r.sourceId !== focusId && r.targetId !== focusId) continue;
       if (!positions[r.sourceId] || !positions[r.targetId]) continue;
-      lines.push({
-        a: r.sourceId,
-        b: r.targetId,
-        color: RELATION_COLORS[r.type],
-        weight: 1,
-        relationId: r.id,
-        directed: r.direction === "directed"
-      });
-      lit.add(r.sourceId === focusId ? r.targetId : r.sourceId);
+      const otherId = r.sourceId === focusId ? r.targetId : r.sourceId;
+      lit.add(otherId);
+      if (hoverId === otherId)
+        lines.push({
+          a: r.sourceId,
+          b: r.targetId,
+          color: RELATION_COLORS[r.type],
+          weight: 1,
+          relationId: r.id,
+          directed: r.direction === "directed",
+          anchor: r.anchors?.[0]
+        });
     }
     return { lines, lit };
-  }, [focusId, dataset, positions]);
+  }, [focusId, hoverId, dataset, positions]);
 
   // scene lifecycle
   useEffect(() => {
@@ -194,9 +200,12 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     if (!host || sceneRef.current) return;
     const scene = new UniverseScene(
       host,
-      { authors: dataset.authors, works: dataset.works, positions, degree, art },
+      { authors: dataset.authors, works: dataset.works, relations: dataset.relations, positions, degree, art },
       {
         onPickAuthor: (id) => {
+          // 이륙 (R12-c): 착륙한 채로 다른 별을 누르면 하늘 단계 없이 그 자리에서
+          // 날아오른다 — 행성이 뒤로 작아지고 다음 작가의 궤도로 이어지는 한 호흡.
+          setLandedId((landedPrev) => (id && landedPrev && id !== landedPrev ? null : id ? landedPrev : null));
           setFocusId((prev) => {
             if (id && prev === id) {
               if (landable(id)) setPendingLand(id);
@@ -204,7 +213,6 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
             }
             return id;
           });
-          if (!id) setLandedId(null);
         },
         onHoverAuthor: (id) => setHoverId(id),
         onPickWork: (id) => setWorkId(id),
@@ -225,7 +233,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       focus: (id: string | null) => setFocusId(id),
       land: (id: string | null) => setLandedId(id && landable(id) ? id : null),
       /** 별의 현재 화면 좌표(CSS px) — 하네스가 실제 마우스를 그 위에 올린다 */
-      project: (id: string) => scene.project(id)
+      project: (id: string, raw?: boolean) => scene.project(id, raw)
     };
     return () => {
       scene.dispose();
@@ -318,11 +326,11 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   // 선 자체는 집을 수 없고(1px 선분), 선의 끝에 있는 별은 이미 집힌다 — 같은
   // 정보를 카드가 접근 가능하게 싣고, 하늘은 호버로 같은 문장을 보여 준다.
   const hoverWhy = useMemo(() => {
-    if (!focus || landedId || !hoverId || hoverId === focus.id) return null;
+    if (!focus || !hoverId || hoverId === focus.id) return null;
     const row = focusRelations.find((x) => x.other.id === hoverId);
     if (!row) return null;
     return relationCaption(row.rel, focus.id, (id) => byId.get(id)?.names.ko ?? id);
-  }, [focus, landedId, hoverId, focusRelations, byId]);
+  }, [focus, hoverId, focusRelations, byId]);
 
   const tracks = useMemo(
     () =>

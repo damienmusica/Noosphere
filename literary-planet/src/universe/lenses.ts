@@ -35,6 +35,8 @@ export interface LensLine {
   /** 방향 있는 관계(a → b). 자기 성좌에서만 화살촉을 받는다 — 화살촉은 방향
    *  주장이고, 방향 없는 친연·대비에 붙이면 데이터에 없는 인과를 약속한다 */
   directed?: boolean;
+  /** 요약이 지목한 책·연도 (R12) — 착륙 회랑에서 실이 닿는 자리 */
+  anchor?: { workId?: string; year?: number };
 }
 
 export interface LensGroup {
