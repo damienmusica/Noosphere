@@ -9,6 +9,8 @@ Before broad architectural or Data Foundry work, read:
 - `docs/data-foundry.md` — the current-phase working brief.
 - `docs/source-of-truth.md` — which documents are authoritative and how authority moves across phases.
 - `docs/product-brief.md` — product definition and scope.
+- `literary-planet/docs/r12-continuation.md` — the hand-off map for Literary Planet volume
+  work (what done means, what is frozen, where creativity is allowed).
 - `docs/ai-usage-policy.md` — how AI may and may not contribute.
 
 If a task conflicts with these documents or with the rules below, **stop and ask** before changing

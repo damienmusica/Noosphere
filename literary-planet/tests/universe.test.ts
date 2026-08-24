@@ -426,11 +426,13 @@ describe("색인은 전부 해독 가능해야 한다", () => {
 
 describe("서가 회랑 — 연도 칸은 균일하고 회랑은 행성을 감지 않는다", () => {
   it("구간은 작품·앵커·사망 연도를 전부 품고 앞뒤 여유를 갖는다", () => {
+    // 기대값은 **리터럴**이다 — 상수로 검증하면 상수 변이가 검증식도 같이
+    // 바꿔 동어반복이 된다(스윕 실측: 꼬리 여유 변이가 생존했다).
     const span = corridorSpan([1915, 1925], [1947, 1969], 1924);
-    expect(span.yStart).toBe(1915 - CORRIDOR_LEAD_YEARS);
-    expect(span.yEnd).toBe(1969 + CORRIDOR_TAIL_YEARS);
+    expect(span.yStart).toBe(1915 - 2);
+    expect(span.yEnd).toBe(1969 + 4);
     // 사망 연도가 최댓값이면 그것이 구간을 정한다
-    expect(corridorSpan([1905], [], 1916).yEnd).toBe(1916 + CORRIDOR_TAIL_YEARS);
+    expect(corridorSpan([1905], [], 1916).yEnd).toBe(1916 + 4);
   });
 
   it("연도 → 호는 균일하다 — 연도가 다르면 자리도 다르고 간격은 같다", () => {
@@ -447,11 +449,13 @@ describe("서가 회랑 — 연도 칸은 균일하고 회랑은 행성을 감�
   it("회랑 전체 호는 상한을 넘지 않는다 — 책이 행성을 감으면 회랑이 아니다", () => {
     for (const bays of [10, 17, 62, 120]) {
       const arc = corridorCellArc(bays, volumeWidth(5));
-      expect(arc * bays).toBeLessThanOrEqual(CORRIDOR_ARC_MAX + 1e-9);
+      // 리터럴 2.4 — 상수로 재면 상수 변이가 검증식을 함께 바꾼다
+      expect(arc * bays).toBeLessThanOrEqual(2.4 + 1e-9);
       expect(arc).toBeGreaterThan(0);
     }
-    // 칸이 적으면 책 폭 비례가 그대로 산다
+    // 칸이 적으면 책 폭 비례가 그대로 산다 · 칸은 언제나 책보다 넓다(관통 불가)
     expect(corridorCellArc(5, 0.05)).toBeCloseTo(0.05 * CORRIDOR_CELL_AIR, 12);
+    expect(CORRIDOR_CELL_AIR).toBeGreaterThan(1.2);
   });
 
   it("책 앵커는 그 책의 발표 연도로 해상된다 — 모르는 책은 연도로 물러난다", () => {

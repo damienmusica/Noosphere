@@ -1948,7 +1948,6 @@ export class UniverseScene {
     // 더하면 구면 곡률과 합쳐져 "누워 있는 판"으로 보인다(실측).
     // −90°는 +X(책등)를 관측자 쪽(+Z)으로 돌린다. +90°는 앞마구리를 돌린다 —
     // 부호를 틀리면 종이 단면을 책등이라고 부르게 된다.
-    if (!coverFile) root.rotation.y = -Math.PI / 2;
     return { root, spine, front };
   }
 
@@ -2627,7 +2626,6 @@ export class UniverseScene {
       const target = rec.radius * want;
       if (Math.abs(rec.mesh.scale.x - target) > 1e-4) rec.mesh.scale.setScalar(target);
     }
-    this.orientCities();
     this.updateLabels();
     this.renderer.render(this.scene, this.camera);
     let drawn = 0;
@@ -2688,6 +2686,8 @@ export class UniverseScene {
     entryRowBelow: boolean;
     /** 권별 책등 축·접선 내적 — 계약 디버그용(어느 권이 틀어졌는지) */
     restingDots: Record<string, number>;
+    /** 입구를 향한 그 면에 실제 책등 재질이 붙은 쉬는 권 수 */
+    restingSpineDressed: number;
   } {
     let death = false;
     let plate = false;
@@ -2709,10 +2709,16 @@ export class UniverseScene {
       }
     }
     let restingAligned = 0;
+    let restingDressed = 0;
     let resting = 0;
     let pulledCover = false;
     const restingDots: Record<string, number> = {};
     const ax = new THREE.Vector3();
+    const kindAt = (mesh: THREE.Mesh, slot: number): string => {
+      const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
+      const one = mats[slot] as THREE.MeshStandardMaterial | undefined;
+      return (one?.map?.userData?.kind as string | undefined) ?? "";
+    };
     for (const c of this.cityRecords) {
       const m4 = c.book.matrixWorld;
       if (c.workId === pulled) {
@@ -2726,6 +2732,9 @@ export class UniverseScene {
       const dot = c.tangent ? ax.dot(c.tangent) : 0;
       restingDots[c.workId] = Number(dot.toFixed(3));
       if (dot < -0.85) restingAligned++;
+      // 축이 맞아도 그 면에 붙은 것이 책등 재질이 아니면 책등이 아니다 —
+      // 재질 배열이 뒤바뀐 변이가 축 계약만으로는 초록이었다(스윕 실측).
+      if (kindAt(c.spine, 0) === "spine") restingDressed++;
     }
     const rows0 = this.cityRecords.filter((c) => c.row === 0).map((c) => c.obj.position.y);
     const rows1 = this.cityRecords.filter((c) => c.row === 1).map((c) => c.obj.position.y);
@@ -2738,6 +2747,7 @@ export class UniverseScene {
       plate,
       threadEnd: te,
       restingSpineToEntrance: restingAligned,
+      restingSpineDressed: restingDressed,
       resting,
       pulledCoverToWalkway: pulledCover,
       entryRowBelow: rows1.length === 0 || avg(rows0) < avg(rows1),
@@ -2996,26 +3006,7 @@ export class UniverseScene {
   private lastOccludedLabels = 0;
 
   /** 판은 표면에 서 있고(+Y = 지면 법선) 관측자를 향해 돈다 — 축 고정 빌보드 */
-  private orientCities(): void {
-    // 회랑의 책은 격자의 자식이다 — 빌보드는 곡면 서가의 유물. 회랑에서는
-    // updateCorridor 가 월드 좌표와 당김을 관리한다.
-    if (this.corridorFrame) return;
-    if (!this.cityRecords.length) return;
-    const m = new THREE.Matrix4();
-    const right = new THREE.Vector3();
-    const fwd = new THREE.Vector3();
-    for (const c of this.cityRecords) {
-      const up = (c.obj.userData.up ?? c.obj.userData.dir) as THREE.Vector3 | undefined;
-      if (!up) continue;
-      fwd.copy(this.camera.position).sub(c.obj.position);
-      fwd.addScaledVector(up, -fwd.dot(up));
-      if (fwd.lengthSq() < 1e-9) continue;
-      fwd.normalize();
-      right.crossVectors(up, fwd).normalize();
-      m.makeBasis(right, up, fwd);
-      c.obj.quaternion.setFromRotationMatrix(m);
-    }
-  }
+
 
   private updateLabels(): void {
     const w = this.renderer.domElement.clientWidth;

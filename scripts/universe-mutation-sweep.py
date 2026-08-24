@@ -51,6 +51,16 @@ C = "src/universe/components/OrbitCard.tsx"
 U = "src/universe/UniverseApp.tsx"
 
 # (lane, name, file, needle, replacement)
+#
+# 2026-08-24 회랑 재기준선에서 **제거된 변이 5** (스윕이 드러낸 죽은 자리):
+#   · 표지 유무 방향 2건 — buildVolume 의 옛 방향 잔재가 프레임마다 덮어써지는
+#     죽은 코드였고, 코드째 삭제했다("소장=방향" 채널은 CPO 룰링으로 폐기).
+#   · 최소 간격(VOL_AIR) — 회랑에서 책:칸 비는 CORRIDOR_CELL_AIR 가 구조적으로
+#     보증한다(유닛 리터럴 검증). VOL_AIR 는 책 폭 상한식에만 남는다.
+#   · 사입각 — 접근 비행의 연출 상수가 됐다. 지각 성공을 자동 문턱으로 확정하지
+#     않는다는 원칙에 따라 계약을 달지 않는다.
+#   · 권별 법선 — orientCities 가 회랑에서 도달 불가능한 죽은 코드가 되어 코드째
+#     삭제했다.
 MUTATIONS = [
     # --- 표현 사다리: 거리의 함수라는 계약 --------------------------------
     ("fast", "star→disc 임계를 3px 로 되돌린다 (하늘이 검게 죽던 회귀)", G,
@@ -156,22 +166,9 @@ MUTATIONS = [
     ("browser", "카드 제목이 다시 \"독서 순서\"를 주장한다", C,
      "        <h3>입문 순서 {ordered.length}</h3>", "        <h3>독서 순서 {ordered.length}</h3>"),
     # ——— R11-d 시각 문법 계약 ———
-    ("browser", "실물 초판이 없는 작품도 표지를 정면으로 세운다 (부재가 형태로 안 읽힘)", S,
-     "    if (!coverFile) root.rotation.y = -Math.PI / 2;",
-     "    if (false) root.rotation.y = -Math.PI / 2;"),
-    ("browser", "책등을 돌리는 부호가 뒤집힌다 (앞마구리를 책등이라 부름)", S,
-     "    if (!coverFile) root.rotation.y = -Math.PI / 2;",
-     "    if (!coverFile) root.rotation.y = Math.PI / 2;"),
     ("browser", "책등판과 앞마구리 재질이 뒤바뀐다", S,
      "    const spine = new THREE.Mesh(new THREE.BoxGeometry(t, bh, bd), [\n      spineMat,\n      boardMat,",
      "    const spine = new THREE.Mesh(new THREE.BoxGeometry(t, bh, bd), [\n      boardMat,\n      spineMat,"),
-    ("browser", "최소 간격을 없앤다 (인접 연도의 두 권이 관통)", G,
-     "export const VOL_AIR = 1.32;", "export const VOL_AIR = 0.0;"),
-    ("browser", "사입각을 10° 로 되돌린다 (책이 위에서 눌려 판으로 읽힘)", G,
-     "export const LANDING_INCIDENCE_DEG = 64;", "export const LANDING_INCIDENCE_DEG = 10;"),
-    ("browser", "권마다 제 자리의 법선으로 세운다 (부챗살로 벌어짐)", S,
-     "      const up = (c.obj.userData.up ?? c.obj.userData.dir) as THREE.Vector3 | undefined;",
-     "      const up = c.obj.userData.dir as THREE.Vector3 | undefined;"),
     ("browser", "입문 경로 밖의 권에도 순서 숫자를 단다", S,
      "          text: c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo,",
      "          text: `${Math.abs(c.orderIndex) + 1} ${work.titleKo}`,"),

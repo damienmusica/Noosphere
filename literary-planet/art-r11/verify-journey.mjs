@@ -313,6 +313,31 @@ for (const a of SLICE) {
     check("호버를 떼면 실도 일지도 사라진다",
       um.ego === 0 && um.arrows === 0 && (await page.locator('[data-testid="why"]').count()) === 0,
       `ego ${um.ego}`);
+    // 방향 없는 관계(친연·대비)를 지목하면 실은 걸리되 **화살촉은 없다** —
+    // 화살촉의 존재 자체가 방향 주장이므로, 없는 방향에 붙으면 거짓말이다.
+    const bidi = rows
+      .map((r) => relById.get(r.id))
+      .filter((cand) => cand && cand.direction === "bidirectional");
+    let bp = null;
+    let bRel = null;
+    for (const cand of bidi) {
+      const otherId = cand.sourceId === a.id ? cand.targetId : cand.sourceId;
+      const q = await page.evaluate((id) => window.__universe.project(id), otherId);
+      if (q && q[0] > 270 && q[0] < 1140 && q[1] > 90 && q[1] < 900) { bp = q; bRel = cand; break; }
+    }
+    if (bp) {
+      await page.mouse.move(bp[0], bp[1]);
+      await page.waitForTimeout(200);
+      await page.evaluate(() => window.__universe.settle());
+      const bm = await metrics();
+      check("방향 없는 관계의 실에는 화살촉이 없다", bm.ego === 1 && bm.arrows === 0 && bm.arrowsExpected === 0,
+        `ego ${bm.ego} 화살촉 ${bm.arrows} (${bRel.type})`);
+      await page.mouse.move(5, 500);
+      await page.waitForTimeout(150);
+      await page.evaluate(() => window.__universe.settle());
+    } else if (bidi.length) {
+      check("친연 이웃이 화면 밖 — 무화살촉 계약 미측정", true, "관측 불가");
+    }
   }
   check("출처", ((await card.locator(".u-card__src").first().textContent()) ?? "").includes("출처"));
 
@@ -448,6 +473,8 @@ for (const a of SLICE) {
     check("전부 책등 — 쉬는 권 전원의 책등 축이 입구를 향한다",
       mm.restingSpineToEntrance === mm.resting && mm.resting === a.works && mm.pulled === null,
       `정렬 ${mm.restingSpineToEntrance}/${mm.resting} 당김 ${mm.pulled} · ${JSON.stringify(mm.restingDots)}`);
+    check("그 면에 붙은 것이 실제 책등 재질이다 (앞마구리 천 아님)",
+      mm.restingSpineDressed === mm.resting, `${mm.restingSpineDressed}/${mm.resting}`);
     check("연도가 다르면 자리도 다르다", mm.cities.byYear === true);
     const hasRest = a.works > a.order;
     check("두 단 — 입문 단이 아래에 선다", mm.cities.rows === (hasRest ? 2 : 1) && mm.entryRowBelow,
