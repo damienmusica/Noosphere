@@ -137,6 +137,35 @@ async function litFraction(clip) {
   );
 }
 
+/** 이름표 상자와 크롬 사각형이 실제로 겹치는가 — 앵커 점이 아니라 상자로 */
+const labelsBittenByChrome = () =>
+  page.evaluate(() => {
+    const chrome = [];
+    const sel = ".u-top, .u-time, .u-card, .u-grip, .u-lenses, .u-mine, .u-why, .u-search__hits";
+    for (const el of document.querySelectorAll(sel)) {
+      const cs = getComputedStyle(el);
+      if (cs.display === "none" || cs.visibility === "hidden" || Number(cs.opacity) < 0.05) continue;
+      const r = el.getBoundingClientRect();
+      if (r.width < 2 || r.height < 2) continue;
+      chrome.push({ t: el.className.toString().split(" ")[0], x: r.left, y: r.top, w: r.width, h: r.height });
+    }
+    const bitten = [];
+    for (const el of document.querySelectorAll(".globe-label")) {
+      if (el.style.display === "none") continue;
+      const r = el.getBoundingClientRect();
+      if (r.width < 1) continue;
+      for (const c of chrome) {
+        const ox = Math.min(r.right, c.x + c.w) - Math.max(r.left, c.x);
+        const oy = Math.min(r.bottom, c.y + c.h) - Math.max(r.top, c.y);
+        if (ox > 1 && oy > 1) {
+          bitten.push({ t: (el.textContent ?? "").trim().slice(0, 14), by: c.t, ox: Math.round(ox), oy: Math.round(oy) });
+          break;
+        }
+      }
+    }
+    return { chrome: chrome.length, labels: document.querySelectorAll(".globe-label").length, bitten };
+  });
+
 console.log("\n하늘 — 좁은 화면의 첫 화면");
 await page.goto(`${server.origin}/universe.html?lens=movement`, { waitUntil: "load" });
 await page.waitForFunction(() => window.__universe !== undefined);
@@ -173,6 +202,10 @@ check("하늘에 이름표가 여럿 선다 — 띠가 화면을 삼키지 않�
 const spill = lb0.items.filter((i) => i.x < -1 || i.right > lb0.vw + 1);
 check("이름표가 화면 밖으로 흘러넘치지 않는다", spill.length === 0,
   `${lb0.items.length}개 중 ${spill.length}개 넘침${spill.length ? " — " + spill.map((s) => s.t).join(", ") : ""}`);
+
+const bit0 = await labelsBittenByChrome();
+check("이름표가 크롬에 물리지 않는다 (상자로 잰다)", bit0.bitten.length === 0,
+  `크롬 ${bit0.chrome}판 · 물린 ${bit0.bitten.length}개${bit0.bitten.length ? " — " + bit0.bitten.map((b) => `${b.t}/${b.by}`).join(", ") : ""}`);
 
 const tapSizes = () =>
   page.evaluate(() => {
@@ -251,6 +284,72 @@ check("착륙 문이 시트 안에서 손끝에 닿는다",
   Boolean(landBox) && landBox.height >= 40 && landBox.y + landBox.height <= vp.height,
   landBox ? `${Math.round(landBox.width)}×${Math.round(landBox.height)} @${Math.round(landBox.y)}` : "없음");
 
+console.log("\n지목 — 손끝에는 얹는 동작이 없다 (궤도까지, CPO 룰링 2026-08-24)");
+// 카드의 관계 행: 첫 탭은 지목, 두 번째 탭이 이동
+const relRow = page.locator('[data-testid="orbit-relations"] li button').first();
+await relRow.scrollIntoViewIfNeeded();
+await page.waitForTimeout(200);
+const scrolled = await page.evaluate(() => document.querySelector(".u-card").scrollTop);
+check("관계 행까지 시트를 스크롤했다 (다음 계약의 전제)", scrolled > 100, `scrollTop ${Math.round(scrolled)}`);
+const who = () => page.evaluate(() => document.querySelector(".u-card")?.dataset.author ?? null);
+const before = await who();
+await relRow.tap();
+await page.waitForTimeout(500);
+await page.evaluate(() => window.__universe.settle());
+const am1 = await metrics();
+check("카드 관계 행의 첫 탭은 지목이다 — 옮겨 가지 않는다",
+  (await who()) === before && am1.ego === 1 && (await page.locator('[data-testid="why"]').count()) === 1,
+  `작가 ${await who()} · 실 ${am1.ego}`);
+await relRow.tap();
+await page.waitForTimeout(700);
+await page.evaluate(() => window.__universe.settle());
+const after = await who();
+check("같은 행을 다시 누르면 그 별로 옮겨 간다", after !== null && after !== before, `${before} → ${after}`);
+const arrived = await page.evaluate(() => {
+  const card = document.querySelector(".u-card");
+  const head = card?.querySelector("h2");
+  const land = card?.querySelector('[data-testid="land"], .u-card__acts');
+  const cr = card?.getBoundingClientRect();
+  const hr = head?.getBoundingClientRect();
+  const lr = land?.getBoundingClientRect();
+  return {
+    scrollTop: card?.scrollTop ?? -1,
+    headVisible: Boolean(hr && cr && hr.top >= cr.top - 1 && hr.bottom <= cr.bottom + 1),
+    actsVisible: Boolean(lr && cr && lr.top >= cr.top - 1 && lr.top <= cr.bottom)
+  };
+});
+check("도착한 카드는 맨 위에서 시작한다 — 이름과 문이 접힘선 위에 있다",
+  arrived.scrollTop === 0 && arrived.headVisible && arrived.actsVisible,
+  `scrollTop ${arrived.scrollTop} · 이름 ${arrived.headVisible} · 행동 ${arrived.actsVisible}`);
+
+// 하늘의 이웃 별: 착륙하지 않은 궤도에서도 첫 탭은 지목이다
+await page.evaluate(() => window.__universe.focus("franz-kafka"));
+await settle(900);
+const neighbour = await page.evaluate(() => {
+  const ids = [...document.querySelectorAll('.globe-label[data-ground="sky"]')]
+    .filter((el) => el.style.display !== "none" && el.classList.contains("is-neighbor"))
+    .map((el) => el.dataset.labelId);
+  for (const id of ids) {
+    const p = window.__universe.project(id);
+    if (p && p[0] > 30 && p[0] < innerWidth - 30 && p[1] > 90 && p[1] < innerHeight * 0.5) return { id, p };
+  }
+  return null;
+});
+if (neighbour) {
+  await page.touchscreen.tap(neighbour.p[0], neighbour.p[1]);
+  await page.waitForTimeout(450);
+  await page.evaluate(() => window.__universe.settle());
+  const om1 = await metrics();
+  check("궤도에서도 이웃 별의 첫 탭은 지목이다",
+    (await who()) === "franz-kafka" && om1.ego === 1,
+    `작가 ${await who()} · 실 ${om1.ego} (${neighbour.id})`);
+  await page.touchscreen.tap(neighbour.p[0], neighbour.p[1]);
+  await settle(900);
+  check("같은 별을 다시 누르면 그 궤도로 옮겨 간다", (await who()) === neighbour.id, `${await who()}`);
+} else {
+  check("이웃 별이 화면 안에 없다 — 궤도 지목 계약 미측정", false, "관측 불가");
+}
+
 console.log("\n서랍 — 관측층은 접혀 있다가 열린다");
 await page.locator('[data-testid="to-sky"]').tap();
 await page.waitForFunction(() => window.__universe.metrics().stage === "sky", null, { timeout: 8000 });
@@ -302,6 +401,68 @@ await lensBtn.tap();
 await page.waitForTimeout(450);
 check("층을 고르면 서랍이 물러난다 — 하늘이 바뀌는 것을 봐야 한다",
   await page.evaluate(() => !document.querySelector(".universe").dataset.drawer));
+
+// 범례 행 — 손끝에는 얹는 동작이 없으므로 누름이 유일한 지목 수단이다
+await page.locator(".u-drawer-key").tap();
+await page.waitForTimeout(400);
+const legend = page.locator(".u-lens-groups button").first();
+if (await legend.count()) {
+  await legend.tap();
+  await page.waitForTimeout(450);
+  await page.evaluate(() => window.__universe.settle());
+  const pinned = await page.evaluate(() => {
+    const b = document.querySelector(".u-lens-groups button");
+    return {
+      pressed: b?.getAttribute("aria-pressed") === "true",
+      on: b?.classList.contains("is-on") ?? false,
+      drawer: document.querySelector(".universe").dataset.drawer ?? null,
+      listed: document.querySelectorAll(".globe-label.is-listed").length
+    };
+  });
+  check("범례 한 항목을 한 번 탭하면 눌린 채로 남는다",
+    pinned.pressed && pinned.on, `pressed ${pinned.pressed} · is-on ${pinned.on}`);
+  check("범례를 고르면 서랍이 물러나고 하늘에 그 그룹이 남는다",
+    pinned.drawer === null && pinned.listed > 0, `서랍 ${pinned.drawer} · 지목된 이름 ${pinned.listed}`);
+  await page.locator(".u-drawer-key").tap();
+  await page.waitForTimeout(350);
+  await legend.tap();
+  await page.waitForTimeout(400);
+  const off = await page.evaluate(() => document.querySelector(".u-lens-groups button")?.getAttribute("aria-pressed"));
+  check("같은 항목을 다시 누르면 풀린다", off === "false", `${off}`);
+} else {
+  check("범례 행이 없다 — 핀 계약 미측정", false, "관측 불가");
+}
+
+// 뷰포트가 바뀌면 띠도 따라온다 — 주소창 접힘은 일상 동작이다
+await page.evaluate(() => window.__universe.focus("franz-kafka"));
+await settle(900);
+// 띠는 **직접** 읽는다. 라벨이 우연히 그 자리에 없으면 부수 효과로는
+// 아무것도 증명되지 않는다(스윕 실측: 리스너를 떼도 이 계약이 초록이었다).
+const insetOf = async () => (await metrics()).insets;
+const inset0 = await insetOf();
+// 하네스의 실제 뷰포트에서 출발한다 — 기기 프로파일 높이를 상수로 적으면
+// 줄이려던 것이 늘어난다(실측: 664 → 734 는 축소가 아니라 확대였다).
+const hShrunk = vp.height - 140;
+await page.setViewportSize({ width: vp.width, height: hShrunk });
+await page.waitForTimeout(450);
+await page.evaluate(() => window.__universe.settle());
+const inset1 = await insetOf();
+const bitShort = await labelsBittenByChrome();
+check(`주소창이 접히면(${vp.height}→${hShrunk}) 띠가 따라 줄어든다`,
+  inset1[3] < inset0[3] - 40, `아래 띠 ${inset0[3]} → ${inset1[3]}`);
+check("그때 이름표가 시트에 물리지 않는다", bitShort.bitten.length === 0,
+  `물린 ${bitShort.bitten.length}개${bitShort.bitten.length ? " — " + bitShort.bitten.map((b) => `${b.t}/${b.by}`).join(", ") : ""}`);
+await page.setViewportSize({ width: vp.width, height: vp.height });
+await page.waitForTimeout(450);
+await page.evaluate(() => window.__universe.settle());
+const inset2 = await insetOf();
+const bitBack = await labelsBittenByChrome();
+check(`돌아오면 띠도 돌아온다 (${hShrunk}→${vp.height})`, Math.abs(inset2[3] - inset0[3]) <= 2,
+  `아래 띠 ${inset1[3]} → ${inset2[3]} (기준 ${inset0[3]})`);
+check("크롬 사각형도 함께 다시 잰다", (await metrics()).chromeRects >= 2 && bitBack.bitten.length === 0,
+  `사각형 ${(await metrics()).chromeRects}개 · 물린 ${bitBack.bitten.length}개 — ${JSON.stringify(bitBack.bitten)}`);
+await page.evaluate(() => window.__universe.focus(null));
+await settle(900);
 
 console.log("\n회랑 — 세로 프레임의 서가");
 await page.evaluate(() => window.__universe.focus("franz-kafka"));
@@ -368,6 +529,89 @@ if (named.length) {
   const m2 = await metrics();
   check("같은 별을 다시 누르면 그 자리에서 날아오른다",
     m2.stage !== "surface" && m2.bays === 0, `stage=${m2.stage} bays=${m2.bays}`);
+}
+
+console.log("\n누운 화면 — 시트는 옆에서 온다");
+{
+  const land = await ctx.newPage();
+  land.on("console", (m) => {
+    if (m.type() === "error") consoleErrors.push(m.text());
+  });
+  await land.setViewportSize({ width: 852, height: 393 });
+  await land.goto(`${server.origin}/universe.html`, { waitUntil: "load" });
+  await land.waitForFunction(() => window.__universe !== undefined);
+  await land.waitForTimeout(1400);
+  await land.evaluate(() => window.__universe.settle());
+  check("누운 화면은 옆 시트 배치를 쓴다",
+    await land.evaluate(() => document.querySelector(".universe").classList.contains("is-short")));
+  await land.evaluate(() => window.__universe.focus("franz-kafka"));
+  await land.waitForTimeout(900);
+  await land.evaluate(() => window.__universe.land("franz-kafka"));
+  for (let i = 0; i < 11; i++) await land.waitForTimeout(650);
+  await land.evaluate(() => window.__universe.settle());
+  await land.waitForTimeout(300);
+
+  const lm = await land.evaluate(() => window.__universe.metrics());
+  check("누운 화면에도 회랑이 선다", lm.stage === "surface" && lm.baysInFrame >= 3,
+    `stage=${lm.stage} · 띠 안 ${lm.baysInFrame}/${lm.bays}칸`);
+
+  const bitten = await land.evaluate(() => {
+    const chrome = [];
+    const sel = ".u-top, .u-time, .u-card, .u-grip, .u-lenses, .u-mine, .u-why";
+    for (const el of document.querySelectorAll(sel)) {
+      const cs = getComputedStyle(el);
+      if (cs.display === "none" || cs.visibility === "hidden" || Number(cs.opacity) < 0.05) continue;
+      const r = el.getBoundingClientRect();
+      if (r.width < 2 || r.height < 2) continue;
+      chrome.push({ t: el.className.toString().split(" ")[0], x: r.left, y: r.top, w: r.width, h: r.height });
+    }
+    const out = [];
+    for (const el of document.querySelectorAll(".globe-label")) {
+      if (el.style.display === "none") continue;
+      const r = el.getBoundingClientRect();
+      for (const c of chrome) {
+        const ox = Math.min(r.right, c.x + c.w) - Math.max(r.left, c.x);
+        const oy = Math.min(r.bottom, c.y + c.h) - Math.max(r.top, c.y);
+        if (ox > 1 && oy > 1) { out.push(`${(el.textContent ?? "").trim().slice(0, 12)}/${c.t}`); break; }
+      }
+    }
+    return { chrome: chrome.length, out };
+  });
+  check("누운 화면에서 이름표가 크롬에 물리지 않는다", bitten.out.length === 0,
+    `크롬 ${bitten.chrome}판 · 물린 ${bitten.out.length}개${bitten.out.length ? " — " + bitten.out.join(", ") : ""}`);
+
+  // 오탭 — 작품 이름표가 연도판 위에 얹히면 탭이 작품이 아니라 연도를 옮긴다
+  const workHit = await land.evaluate(() => {
+    const el = [...document.querySelectorAll(".globe-label--work")].find((e) => e.style.display !== "none");
+    if (!el) return null;
+    const r = el.getBoundingClientRect();
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    const at = document.elementFromPoint(cx, cy);
+    return {
+      t: (el.textContent ?? "").trim(),
+      x: cx,
+      y: cy,
+      at: at ? `${at.tagName.toLowerCase()}.${at.className.toString().split(" ")[0]}` : "none",
+      year: Number(document.querySelector("#u-year")?.value ?? -1)
+    };
+  });
+  if (workHit) {
+    check("작품 이름표 위에 연도판이 없다 — 탭이 작품에 닿는다",
+      !workHit.at.startsWith("input"), `${workHit.t} @${Math.round(workHit.x)},${Math.round(workHit.y)} → ${workHit.at}`);
+    await land.touchscreen.tap(workHit.x, workHit.y).catch(() => {});
+    await land.waitForTimeout(500);
+    const post = await land.evaluate(() => ({
+      year: Number(document.querySelector("#u-year")?.value ?? -1),
+      w: new URLSearchParams(location.search).get("w")
+    }));
+    check("작품을 탭해도 연도가 움직이지 않는다",
+      post.year === workHit.year, `${workHit.year} → ${post.year}`);
+    check("작품을 탭하면 그 작품이 열린다", Boolean(post.w), `w=${post.w}`);
+  } else {
+    check("누운 화면에 작품 이름표가 없다 — 오탭 계약 미측정", false, "관측 불가");
+  }
+  await land.close();
 }
 
 console.log(`\nconsole errors: ${consoleErrors.length}`);
