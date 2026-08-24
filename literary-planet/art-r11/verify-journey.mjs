@@ -139,6 +139,76 @@ for (const a of SLICE) {
   const labels0 = new Set(await labelIds());
 
   if (a.id === "franz-kafka") {
+    // 이름표는 **상자째** 크롬 밖에 있어야 한다. 앵커 한 점으로 자르면 상자는
+    // 중앙 정렬로 그려지므로 절반이 패널에 물린 채 통과한다(외부 검토 실측:
+    // 1440×900 에서 7/90, 윌리엄 포크너 ① 은 헤더에 통째로 매몰).
+    const bitten = await page.evaluate(() => {
+      const chrome = [];
+      const sel = ".u-top, .u-time, .u-card, .u-grip, .u-lenses, .u-mine, .u-why, .u-search__hits";
+      for (const el of document.querySelectorAll(sel)) {
+        const cs = getComputedStyle(el);
+        if (cs.display === "none" || cs.visibility === "hidden" || Number(cs.opacity) < 0.05) continue;
+        const r = el.getBoundingClientRect();
+        if (r.width < 2 || r.height < 2) continue;
+        chrome.push({ t: el.className.toString().split(" ")[0], x: r.left, y: r.top, w: r.width, h: r.height });
+      }
+      const out = [];
+      for (const el of document.querySelectorAll(".globe-label")) {
+        if (el.style.display === "none") continue;
+        const r = el.getBoundingClientRect();
+        for (const c of chrome) {
+          const ox = Math.min(r.right, c.x + c.w) - Math.max(r.left, c.x);
+          const oy = Math.min(r.bottom, c.y + c.h) - Math.max(r.top, c.y);
+          if (ox > 1 && oy > 1) { out.push(`${(el.textContent ?? "").trim().slice(0, 12)}/${c.t}`); break; }
+        }
+      }
+      return { chrome: chrome.length, labels: document.querySelectorAll(".globe-label").length, out };
+    });
+    check("이름표가 크롬에 물리지 않는다 (상자로 잰다)", bitten.out.length === 0,
+      `크롬 ${bitten.chrome}판 · 물린 ${bitten.out.length}개${bitten.out.length ? " — " + bitten.out.join(", ") : ""}`);
+
+    // 범례 행은 **누름**으로도 지목된다 — 손끝에는 얹는 동작이 없기 때문이다.
+    // 두 채널을 한 칸에 두었더니 탭이 켜자마자 껐다(외부 검토 실측 7/7 무반응).
+    const legendBtn = page.locator('[data-testid="lens-legend"] button').first();
+    await legendBtn.click();
+    await page.waitForTimeout(300);
+    await page.evaluate(() => window.__universe.settle());
+    const pin = await page.evaluate(() => ({
+      pressed: document.querySelector('[data-testid="lens-legend"] button')?.getAttribute("aria-pressed"),
+      listed: [...document.querySelectorAll(".globe-label--author.is-listed")].filter(
+        (el) => el.style.display !== "none"
+      ).length
+    }));
+    check("범례 행을 누르면 눌린 채로 남는다 (마우스를 떼도)",
+      pin.pressed === "true" && pin.listed >= 1, `pressed ${pin.pressed} · 지목 ${pin.listed}`);
+    await page.mouse.move(800, 450);
+    await page.waitForTimeout(250);
+    // 숨겨진 라벨은 지난 프레임의 클래스를 그대로 갖고 있다(labels.ts 는
+    // 자리를 잃은 라벨을 display:none 으로 둘 뿐 클래스를 지우지 않는다).
+    // 보이는 것만 센다.
+    const stillOn = await page.evaluate(
+      () =>
+        [...document.querySelectorAll(".globe-label--author.is-listed")].filter(
+          (el) => el.style.display !== "none"
+        ).length
+    );
+    check("커서를 떼도 누른 지목은 남는다", stillOn >= 1, `${stillOn}`);
+    await legendBtn.click();
+    await page.waitForTimeout(200);
+    // 커서를 뗀 뒤에 잰다 — 행 위에 얹혀 있는 동안은 호버가 정상적으로 켠다
+    await page.mouse.move(800, 450);
+    await page.waitForTimeout(300);
+    await page.evaluate(() => window.__universe.settle());
+    const off = await page.evaluate(() => ({
+      pressed: document.querySelector('[data-testid="lens-legend"] button')?.getAttribute("aria-pressed"),
+      listed: [...document.querySelectorAll(".globe-label--author.is-listed")].filter(
+        (el) => el.style.display !== "none"
+      ).length
+    }));
+    check("다시 누르면 풀린다 (커서를 뗀 자리에서 잰다)",
+      off.pressed === "false" && off.listed === 0, `pressed ${off.pressed} · 지목 ${off.listed}`);
+    await page.waitForTimeout(150);
+
     // 범례 지목은 관계 이웃과 다른 등록부다 — 같은 놋쇠 기준선을 주면 사조가
     // 같을 뿐인 별이 근거 있는 관계 이웃과 바이트 단위로 같아진다(모의 심사 실측).
     await page.locator('[data-testid="lens-legend"] button').first().hover();
@@ -306,6 +376,44 @@ for (const a of SLICE) {
     check("이웃 별 호버에 그 관계의 '왜'가 무대에 적힌다 (출발 → 도착 · 요약)",
       Boolean(pt) && whyText.startsWith(head) && whyText.includes(rel.summary.slice(0, 24)),
       pt ? whyText.slice(0, 44) : "캔버스 안 이웃 없음");
+    // 카드의 관계 행도 **지목 수단**이다. 지금까지 실을 부를 수 있는 곳은
+    // 캔버스뿐이어서, 카드 행에 얹어도 하늘은 아무 반응이 없었고 키보드
+    // 사용자에게는 지목 수단이 아예 없었다(외부 검토 2026-08-24, 실측
+    // 13회 전부 ego 0). 행에 얹으면 그 별의 실이 선다.
+    // **먼저 비운다.** 바로 앞 계약이 별 위에 마우스를 올려 두었으므로, 그대로
+    // 재면 카드 행의 배선을 통째로 뽑아도 ego 1 이 남는다 — 변이 스윕이 이
+    // 계약을 생존으로 잡아냈다(2026-08-25).
+    await page.mouse.move(5, 500);
+    await page.waitForTimeout(200);
+    await page.evaluate(() => window.__universe.settle());
+    const cleared = await metrics();
+    check("행에 얹기 전 하늘은 비어 있다 (아래 계약의 전제)", cleared.ego === 0, `ego ${cleared.ego}`);
+    const rowBtn = page.locator('[data-testid="orbit-relations"] li button').first();
+    const rowOther = await page.evaluate(() => {
+      const li = document.querySelector('[data-testid="orbit-relations"] li');
+      return li?.dataset.relation ?? null;
+    });
+    await rowBtn.hover();
+    await page.waitForTimeout(250);
+    await page.evaluate(() => window.__universe.settle());
+    const rm = await metrics();
+    check("카드의 관계 행에 얹으면 하늘에 그 실이 선다",
+      rm.ego === 1 && (await page.locator('[data-testid="why"]').count()) === 1,
+      `ego ${rm.ego} · ${rowOther}`);
+    await rowBtn.evaluate((el) => el.focus());
+    await page.waitForTimeout(250);
+    await page.evaluate(() => window.__universe.settle());
+    const km = await metrics();
+    check("키보드 포커스도 같은 지목이다 (마우스 없이 인과를 읽는다)", km.ego === 1, `ego ${km.ego}`);
+    await rowBtn.evaluate((el) => el.blur());
+    // 행에 얹으려면 카드를 스크롤해야 한다 — 뒤따르는 계약("착륙 문이 뷰포트
+    // 안에 있다")의 전제는 **막 열린 카드**이므로 스크롤을 되돌린다.
+    await page.evaluate(() => {
+      const c = document.querySelector(".u-card");
+      if (c) c.scrollTop = 0;
+    });
+    await page.waitForTimeout(200);
+
     await page.mouse.move(5, 500);
     await page.waitForTimeout(200);
     await page.evaluate(() => window.__universe.settle());
@@ -509,6 +617,12 @@ for (const a of SLICE) {
       check("연보 명패 수 = 데이터의 사건 수 (앵커 연도·판본·첫 인쇄)",
         mm.eventSlips === expEvents, `${mm.eventSlips}/${expEvents}`);
     }
+    // 같은 해 두 권은 서로를 관통하지 않는다. 화면 상자로 재면 안 된다 —
+    // 회랑 카메라는 서가를 스치듯 보므로 떨어져 선 두 권도 화면에서는 겹친다
+    // (실측: 타고르 1910 두 권의 화면 간격 −13.6px, 국소 간격은 +0.21책폭).
+    check("같은 칸의 두 권은 관통하지 않는다 (국소 좌표, 책 폭 대비)",
+      mm.cities.sameBayGapW > 0,
+      `간격 ${mm.cities.sameBayGapW}${mm.cities.sameBayGapW === 999 ? " (같은 해 두 권 없음)" : "책폭"}`);
     check("착륙 하늘에 이름 뜬 별이 있다 — 회랑의 끝은 벽이 아니다",
       mm.skyLabels >= (a.relations >= 10 ? 4 : 2), `${mm.skyLabels} (관계 ${a.relations})`);
     // 입문 순서는 라벨의 일반 숫자 — 원 숫자는 색인 전용 (기존 계약 유지)

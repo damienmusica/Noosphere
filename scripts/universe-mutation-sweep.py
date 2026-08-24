@@ -172,8 +172,8 @@ MUTATIONS = [
      "    const spine = new THREE.Mesh(new THREE.BoxGeometry(t, bh, bd), [\n      spineMat,\n      boardMat,",
      "    const spine = new THREE.Mesh(new THREE.BoxGeometry(t, bh, bd), [\n      boardMat,\n      spineMat,"),
     ("browser", "입문 경로 밖의 권에도 순서 숫자를 단다", S,
-     "          text: c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo,",
-     "          text: `${Math.abs(c.orderIndex) + 1} ${work.titleKo}`,"),
+     "        const wtext = c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo;",
+     "        const wtext = `${Math.abs(c.orderIndex) + 1} ${work.titleKo}`;"),
     ("browser", "착륙 패널의 마크를 폭으로만 묶는다 (세로 자산이 카드를 뚫음)",
      "src/universe/universe.css",
      "  max-height: 116px;", "  max-height: 9999px;"),
@@ -181,11 +181,11 @@ MUTATIONS = [
      "src/universe/universe.css",
      "  object-fit: contain;\n}", "  object-fit: contain;\n  filter: invert(1);\n}"),
     ("browser", "입문 순서를 라벨에서 지운다 (순서 숫자 없음)", S,
-     "          text: c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo,",
-     "          text: work.titleKo,"),
+     "        const wtext = c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo;",
+     "        const wtext = work.titleKo;"),
     ("browser", "서가가 다시 원 숫자 ①②③ 를 단다 (색인 글리프와 이중 의미 회귀)", S,
-     "          text: c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo,",
-     "          text: c.orderIndex >= 0 ? `${indexGlyph(c.orderIndex + 1)} ${work.titleKo}` : work.titleKo,"),
+     "        const wtext = c.orderIndex >= 0 ? `${c.orderIndex + 1} ${work.titleKo}` : work.titleKo;",
+     "        const wtext = c.orderIndex >= 0 ? `${indexGlyph(c.orderIndex + 1)} ${work.titleKo}` : work.titleKo;"),
     # ——— R11-e: 파일럿·모의 심사가 잡은 것들 ———
     ("browser", "'하늘로'가 출발 구도가 아니라 현재 접근각으로 돌아간다 (4/4 가 출발 별을 잃던 회귀)", S,
      "    if (approachOverride) approach = approachOverride;", "    // approach override removed"),
@@ -322,17 +322,54 @@ MUTATIONS = [
     ("mobile", "손끝 크기를 24px 로 되돌린다", CSS,
      ".is-narrow .u-btn {\n  min-height: 44px;", ".is-narrow .u-btn {\n  min-height: 24px;"),
     ("mobile", "손가락의 첫 탭이 곧바로 이륙한다 (왜를 읽을 기회 없음)", S,
-     "    if (!this.coarse || !this.state.landedId) return false;", "    return false;"),
+     "    if (!this.coarse) return false;", "    return false;"),
     ("mobile", "검색창이 포커스에 늘어난다 (줄이 재배치되어 탭이 빗나감)", CSS,
      ".is-narrow .u-search {\n  flex: 0 0 92px;", ".is-narrow .u-search:focus-within {\n  flex: 1 1 auto;\n}\n\n.is-narrow .u-search {\n  flex: 0 1 92px;"),
     ("mobile", "작품 이름표가 시트 뒤에 반쯤 걸린다", S,
-     "        if (this.safeBottom > 0 && wy > h - this.safeBottom) continue;", "        void wy;"),
+     "        if (this.labelHidden(wx, wy, wtext, 13, LABEL_CHROME_SLIP, w, h)) continue;",
+     "        void wx;"),
     ("mobile", "서랍의 가림막이 상단 줄을 덮는다 ('닫기'가 죽은 버튼이 된다)", CSS,
      "  /* 서랍의 가림막(z 7)과 서랍(z 8) 위에 남는다 — 그러지 않으면 서랍이 열린\n     동안 '닫기'가 가림막에 먹혀 죽은 버튼이 된다(실측). */\n  z-index: 9;\n",
      "  "),
     ("mobile", "층을 골라도 서랍이 닫히지 않는다 (하늘이 안 보임)", U,
      "                setLensId(lensId === l.id ? null : l.id);\n                setDrawer(false);",
      "                setLensId(lensId === l.id ? null : l.id);"),
+    # --- R12-e 수리 (외부 검토 2026-08-24 삼각 측정) -----------------------
+    # 일곱 건 전부 "비준된 조항을 구현이 절반만 따른" 자리였다. 그래서 변이는
+    # 각각 **절반으로 되돌리는** 형태다 — 상자를 점으로, 측정을 상수로,
+    # 두 채널을 한 칸으로.
+    # 아래 넷은 **손안 레인**이다. 계약이 도는 화면에 변이를 두어야 한다 —
+    # 1600×1000 에서는 좌 250 띠가 이미 넉넉해 상자와 점의 차이가 어떤 이름표도
+    # 물지 않았고, 카드 스크롤 계약도 손안 하네스에만 있다(스윕 실측: 넷 다
+    # 브라우저 레인에서 생존).
+    ("mobile", "이름표 컬링을 다시 앵커 점 검사로 되돌린다", S,
+     "    const half = estimateWidth(text, fs, chrome) / 2 + 6;", "    const half = 0;"),
+    ("mobile", "이름표가 크롬 사각형을 무시한다 (띠만 본다)", S,
+     "    for (const r of this.chromeRects) {", "    for (const r of []) {"),
+    ("mobile", "크롬 사각형을 장면에 넘기지 않는다 (상수 띠 시절로)", U,
+     "      scene.setChromeRects(out);", "      scene.setChromeRects([]);"),
+    ("mobile", "궤도 카드의 key 를 뗀다 (도착 카드가 이전 스크롤을 물려받는다)", U,
+     "          key={focus.id}\n          author={focus}", "          author={focus}"),
+    ("browser", "같은 해 두 권의 간격을 다시 두께 상수로 (폭 축에 bd)", S,
+     "      const step = bw * VOL_AIR;", "      const step = bd * 2.2;"),
+    ("browser", "카드 관계 행의 지목 배선을 뗀다", C,
+     "                    onMouseEnter={() => p.onPeek(other.id)}\n                    onFocus={() => p.onPeek(other.id)}\n",
+     ""),
+    ("browser", "범례의 누름과 얹음을 다시 한 칸에 담는다", U,
+     "                      setGroupPin((pin) => (pin === g.id ? null : g.id));",
+     "                      setGroupFocus((c) => (c === g.id ? null : g.id));"),
+    ("mobile", "손끝의 지목이 다시 착륙 상태에서만 걸린다 (궤도에서는 즉시 이동)", S,
+     "    const anchor = this.state.landedId ?? this.state.focusId;",
+     "    const anchor = this.state.landedId;"),
+    # 합성 mouseenter 를 얹음으로 받으면 첫 탭이 지목을 켜고 그 자리에서 클릭이
+    # "이미 지목됨"으로 읽어 곧바로 이동한다 — 두 탭 문법이 한 탭으로 붕괴.
+    ("mobile", "합성 mouseenter 를 얹음으로 받는다 (두 탭 문법이 한 탭으로 붕괴)", U,
+     "            if (pointerKind.current !== \"mouse\") return;\n", ""),
+    ("mobile", "뷰포트 변화를 듣지 않는다 (주소창이 접혀도 띠가 얼어붙는다)", U,
+     "    const bump = () => setVpTick((n) => n + 1);", "    const bump = () => {};"),
+    ("mobile", "범례 행이 서랍을 닫지 않는다 (하늘이 안 보인다)", U,
+     "                      setGroupPin((pin) => (pin === g.id ? null : g.id));\n                      setDrawer(false);",
+     "                      setGroupPin((pin) => (pin === g.id ? null : g.id));"),
 ]
 
 

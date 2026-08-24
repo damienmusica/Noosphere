@@ -83,10 +83,28 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const narrow = useMedia(NARROW_Q);
   /** 가로로 누운 전화기 — 아래에서 올라오는 시트는 하늘을 다 먹는다 */
   const short = useMedia(SHORT_Q);
+  /** 손가락이 주 입력인 기기 — 얹는 동작이 없다 */
+  const coarse = useMedia("(pointer: coarse)");
+  /** 마지막 입력의 종류. 브라우저는 탭에서도 mouseenter·focus 를 **합성**하므로,
+   *  그것을 얹음으로 받으면 첫 탭이 지목을 켜고 곧바로 클릭이 이동해 버린다
+   *  (두 탭 문법이 한 탭으로 붕괴 — 실측). 얹음은 진짜 마우스에만 연다. */
+  const pointerKind = useRef<string>("mouse");
+  useEffect(() => {
+    const mark = (e: PointerEvent) => {
+      pointerKind.current = e.pointerType || "mouse";
+    };
+    window.addEventListener("pointerdown", mark, true);
+    return () => window.removeEventListener("pointerdown", mark, true);
+  }, []);
   /** 좁은 화면에서 관측층 서랍이 열려 있는가 */
   const [drawer, setDrawer] = useState(false);
   /** 좁은 화면에서 시트가 펼쳐져 있는가(쉬는 높이 ↔ 전체) */
   const [sheetFull, setSheetFull] = useState(false);
+  /** 뷰포트가 바뀔 때마다 오르는 값 — 띠와 크롬 사각형을 다시 재게 한다.
+   *  주소창이 접히는 것 같은 일상 동작에 띠가 얼어붙어 있으면, 라벨이
+   *  사라지거나(852→734 에서 2/10 삭제) 무방비 창이 열린다(734→852 에서
+   *  43.8px 동안 밀란 쿤데라가 시트에 매몰됐다 — 실측). */
+  const [vpTick, setVpTick] = useState(0);
   // 첫 화면에 성좌가 이미 그려져 있어야 "이 하늘은 관계의 하늘"이 읽힌다
   const [lensId, setLensId] = useState<LensId | null>("movement");
   const [year, setYear] = useState(YEAR_MAX);
@@ -100,7 +118,13 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const [pendingLand, setPendingLand] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   /** 범례에서 지목한 성좌 — 목록↔하늘 연동 */
+  /** 범례 행에 **얹은** 상태 — 호버·포커스가 쓰는 휘발성 채널 */
   const [groupFocus, setGroupFocus] = useState<string | null>(null);
+  /** 범례 행을 **누른** 상태 — 손끝에는 얹는 동작이 없으므로 누름이 유일한
+   *  지목 수단이다. 두 채널을 한 칸에 두었더니 탭 하나가 mouseenter 로 켜고
+   *  click 으로 곧바로 껐다(실측: 콜드 첫 탭 7/7 무반응, 커서를 얹은 채
+   *  탭하면 오히려 해제). 얹음과 누름은 다른 등록부다. */
+  const [groupPin, setGroupPin] = useState<string | null>(null);
   const [assets, setAssets] = useState<AssetSet | null>(null);
   const assetsRef = useRef<AssetSet | null>(null);
   const artRef = useRef<ArtManifest | null>(null);
@@ -310,12 +334,33 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   }, [assets]);
 
   useEffect(() => {
+    const bump = () => setVpTick((n) => n + 1);
+    window.addEventListener("resize", bump);
+    window.addEventListener("orientationchange", bump);
+    // 주소창 접힘은 window.resize 를 내지 않는 브라우저가 있다 — 시각
+    // 뷰포트가 정본이다.
+    window.visualViewport?.addEventListener("resize", bump);
+    return () => {
+      window.removeEventListener("resize", bump);
+      window.removeEventListener("orientationchange", bump);
+      window.visualViewport?.removeEventListener("resize", bump);
+    };
+  }, []);
+
+  useEffect(() => {
     if (focusId || landedId) setDrawer(false);
   }, [focusId, landedId]);
+
+  // 층이 바뀌면 그 층의 그룹을 가리키던 핀은 뜻을 잃는다. 착륙 중에는 범례
+  // 자체가 내려가므로(테제 §④) 핀도 함께 내린다.
+  useEffect(() => {
+    setGroupPin(null);
+  }, [lensId, landedId]);
 
   // 다른 별로 옮겨 가면 시트는 다시 쉬는 높이로 — 펼침은 그 별에 대한 상태다
   useEffect(() => {
     setSheetFull(false);
+    setHoverId(null);
   }, [focusId, landedId]);
 
   // 서가에서 책을 당기면 그 책의 자료가 시트 어딘가에 펼쳐진다. 좁은 화면의
@@ -358,7 +403,37 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       ? Math.round(window.innerHeight * (sheetFull ? SHEET_FULL_VH : SHEET_PEEK_VH)) + 50
       : 92;
     sceneRef.current?.setSafeInsets(0, 0, 58, sheet);
-  }, [focusId, landedId, narrow, short, sheetFull]);
+  }, [focusId, landedId, narrow, short, sheetFull, vpTick]);
+
+  // 크롬이 **실제로** 덮은 자리를 재서 장면에 넘긴다. 스칼라 띠는 카메라
+  // 프레이밍용이고, 이름표는 이 사각형들과 상자로 대조한다 — 연도판은 가운데
+  // 아래에 뜬 별개의 판이고 누운 화면에서는 왼쪽에 붙으므로 어떤 스칼라로도
+  // 표현되지 않는다.
+  useEffect(() => {
+    const measure = () => {
+      const scene = sceneRef.current;
+      if (!scene) return;
+      const out: Array<{ x: number; y: number; w: number; h: number }> = [];
+      const sel =
+        ".u-top, .u-time, .u-card, .u-grip, .u-lenses, .u-mine, .u-why, .u-search__hits";
+      for (const el of document.querySelectorAll<HTMLElement>(sel)) {
+        const cs = getComputedStyle(el);
+        if (cs.display === "none" || cs.visibility === "hidden" || Number(cs.opacity) < 0.05)
+          continue;
+        const r = el.getBoundingClientRect();
+        if (r.width < 2 || r.height < 2) continue;
+        out.push({ x: r.left, y: r.top, w: r.width, h: r.height });
+      }
+      scene.setChromeRects(out);
+    };
+    const raf = requestAnimationFrame(measure);
+    // 서랍은 220ms 를 미끄러진다 — 끝난 자리에서 한 번 더 잰다
+    const t = setTimeout(measure, 280);
+    return () => {
+      cancelAnimationFrame(raf);
+      clearTimeout(t);
+    };
+  }, [focusId, landedId, workId, narrow, short, sheetFull, drawer, lensId, query, vpTick]);
 
   useEffect(() => {
     sceneRef.current?.setState({
@@ -380,10 +455,12 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       lensGroupFocus: linked ? new Set(linked.memberIds) : null,
       lensRelationGroups: lensDef?.kind === "relation"
     });
-  }, [focusId, landedId, year, lens, personal, workId, ego, groupFocus]);
+  }, [focusId, landedId, year, lens, personal, workId, ego, groupFocus, groupPin]);
 
   const lensDef = lensId ? LENSES.find((l) => l.id === lensId) : undefined;
-  const linked = groupFocus ? lens?.groups.find((g) => g.id === groupFocus) : undefined;
+  // 누른 것이 얹은 것을 이긴다 — 누름은 손을 떼도 남는 판정이기 때문이다
+  const groupActive = groupPin ?? groupFocus;
+  const linked = groupActive ? lens?.groups.find((g) => g.id === groupActive) : undefined;
 
   const focus = focusId ? byId.get(focusId) : null;
   const landed = landedId ? byId.get(landedId) : null;
@@ -610,13 +687,18 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
               {lens.groups.map((g) => (
                 <li key={g.id}>
                   <button
-                    className={groupFocus === g.id ? "is-on" : ""}
-                    aria-pressed={groupFocus === g.id}
+                    className={groupActive === g.id ? "is-on" : ""}
+                    aria-pressed={groupPin === g.id}
                     onMouseEnter={() => setGroupFocus(g.id)}
                     onFocus={() => setGroupFocus(g.id)}
                     onMouseLeave={() => setGroupFocus((c) => (c === g.id ? null : c))}
                     onBlur={() => setGroupFocus((c) => (c === g.id ? null : c))}
-                    onClick={() => setGroupFocus(groupFocus === g.id ? null : g.id)}
+                    onClick={() => {
+                      // 누르면 남는다. 좁은 화면에서는 서랍이 물러나야 하늘이
+                      // 보이므로, 고른 즉시 닫고 지목만 남긴다.
+                      setGroupPin((pin) => (pin === g.id ? null : g.id));
+                      setDrawer(false);
+                    }}
                   >
                     <span className="u-index" aria-hidden="true">
                       {indexGlyph(g.index)}
@@ -745,6 +827,12 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
 
       {focus && !landed && (
         <OrbitCard
+          // 별이 바뀌면 **새 노드**다. 같은 <aside> 를 재사용하면 스크롤 위치가
+          // 그대로 남아, 관계 홉으로 도착한 카드가 초상·이름·착륙 문을 전부
+          // 접힘선 위로 밀어낸 채 열린다(실측: 모바일 0→1113→1247, 데스크톱
+          // 0→1205→1357 — 도착 화소에 되돌아가는 버튼이 놓였다). 9차 조항
+          // "다음 행동은 뷰포트 안에 있다"의 위반이고, key 하나로 닫힌다.
+          key={focus.id}
           author={focus}
           works={focusWorks}
           relations={focusRelations}
@@ -765,13 +853,31 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
           onToggleRead={() => toggle("read", focus.id)}
           onToggleWant={() => toggle("want", focus.id)}
           onLand={() => setPendingLand(focus.id)}
-          onGoto={(id) => setFocusId(id)}
+          onGoto={(id) => {
+            // 손끝에는 얹는 동작이 없다 — 첫 탭이 지목, 같은 행의 두 번째
+            // 탭이 이동이다(헌법 12차 조항). 이동은 비행 한 번이 드는
+            // 행동이므로, 왜 이어져 있는지 먼저 보여주고 옮긴다.
+            if (coarse && hoverId !== id) {
+              setHoverId(id);
+              return;
+            }
+            setFocusId(id);
+          }}
+          onPeek={(id) => {
+            if (pointerKind.current !== "mouse") return;
+            setHoverId(id);
+          }}
           onClose={() => setFocusId(null)}
         />
       )}
 
       {landed && (
-        <aside className="u-card u-card--landing" aria-label={`${landed.names.ko} 표면`} tabIndex={-1}>
+        <aside
+          key={landed.id}
+          className="u-card u-card--landing"
+          aria-label={`${landed.names.ko} 표면`}
+          tabIndex={-1}
+        >
           <h2>{landed.names.ko}</h2>
           {art?.marks?.[landed.id] ? (
             <img
