@@ -1,6 +1,6 @@
 {
-  "commit": "7c516d0",
-  "generatedAt": "2026-08-24T22:16:53.543Z",
+  "commit": "901df64",
+  "generatedAt": "2026-08-25T16:36:12.060Z",
   "environment": {
     "node": "v24.14.0",
     "platform": "darwin/arm64",
@@ -9,8 +9,9 @@
   },
   "counts": {
     "unitTests": 239,
-    "journeyContracts": 335,
-    "mobileContracts": 52,
+    "journeyContracts": 339,
+    "mobileContracts": 67,
+    "flightContracts": 37,
     "mutationsFastLaneKilled": 39,
     "mutationsFastLaneSurvived": 0,
     "planetScenesPassed": 20,
@@ -19,43 +20,47 @@
   "steps": {
     "typecheck": {
       "ok": true,
-      "ms": 1984
+      "ms": 2173
     },
     "unit": {
       "ok": true,
-      "ms": 3279
+      "ms": 3422
     },
     "validate-data": {
       "ok": true,
-      "ms": 204
+      "ms": 213
     },
     "mutation-fast": {
       "ok": true,
-      "ms": 23934
+      "ms": 24353
     },
     "build": {
       "ok": true,
-      "ms": 1525
+      "ms": 1612
     },
     "journey-contract": {
       "ok": true,
-      "ms": 77125
+      "ms": 77222
     },
     "mobile-contract": {
       "ok": true,
-      "ms": 40492
+      "ms": 57247
+    },
+    "flight-contract": {
+      "ok": true,
+      "ms": 71053
     },
     "frames": {
       "ok": true,
-      "ms": 40102
+      "ms": 82433
     },
     "video": {
       "ok": true,
-      "ms": 35106
+      "ms": 35031
     },
     "planet-qa": {
       "ok": true,
-      "ms": 217378
+      "ms": 218231
     }
   },
   "artifacts": {
@@ -78,28 +83,28 @@
           "bytes": 224175
         },
         "4transition-0.png": {
-          "sha256_16": "3dd86094e1ab9028",
-          "bytes": 177412
+          "sha256_16": "b56cb41711a2994b",
+          "bytes": 173302
         },
         "4transition-1.png": {
-          "sha256_16": "ea7f50cc1e945895",
-          "bytes": 101253
+          "sha256_16": "d97dea6236dacb17",
+          "bytes": 84260
         },
         "4transition-2.png": {
-          "sha256_16": "c66194ccb5c7adde",
-          "bytes": 86464
+          "sha256_16": "b82be93606b39d82",
+          "bytes": 87657
         },
         "4transition-3.png": {
-          "sha256_16": "5c0359591436d13d",
-          "bytes": 329881
+          "sha256_16": "273796b73fb4bb91",
+          "bytes": 269331
         },
         "4transition-4.png": {
-          "sha256_16": "60011abcbd134bb0",
-          "bytes": 287094
+          "sha256_16": "145e850e47229050",
+          "bytes": 287612
         },
         "4transition-5.png": {
-          "sha256_16": "1660e11c1cc1b990",
-          "bytes": 279712
+          "sha256_16": "7dbd1761493c9fff",
+          "bytes": 279829
         },
         "5personal.png": {
           "sha256_16": "1a53bd29fb5a612a",
@@ -117,55 +122,75 @@
           "sha256_16": "0cbfbed1b56843b4",
           "bytes": 224912
         },
+        "7flight-arrival.png": {
+          "sha256_16": "c308a251e1713bc5",
+          "bytes": 91151
+        },
+        "7flight-homemark.png": {
+          "sha256_16": "d79114d20888f906",
+          "bytes": 70352
+        },
+        "7flight-resolve.png": {
+          "sha256_16": "687b8410b8723466",
+          "bytes": 76637
+        },
         "7orbit-unprepared.png": {
-          "sha256_16": "993e84bce3199af9",
-          "bytes": 351925
+          "sha256_16": "7a418981c788369c",
+          "bytes": 353951
         },
         "8lens-linked.png": {
           "sha256_16": "5b38489f1d4e916f",
           "bytes": 234722
+        },
+        "8walk-entrance.png": {
+          "sha256_16": "d3f8989525bf6d8c",
+          "bytes": 279524
+        },
+        "8walk-inside.png": {
+          "sha256_16": "27c7374f942df5e2",
+          "bytes": 214290
         },
         "franz-kafka-1sky.png": {
           "sha256_16": "a3b2f1070674a0a9",
           "bytes": 224175
         },
         "franz-kafka-2mid.png": {
-          "sha256_16": "9194f92cf7b60abf",
-          "bytes": 429586
+          "sha256_16": "e6157b693519d054",
+          "bytes": 431873
         },
         "franz-kafka-3near.png": {
-          "sha256_16": "3e7145675519b8b5",
-          "bytes": 279763
+          "sha256_16": "47e320ac89d61eff",
+          "bytes": 279550
         },
         "natsume-soseki-1sky.png": {
           "sha256_16": "a3b2f1070674a0a9",
           "bytes": 224175
         },
         "natsume-soseki-2mid.png": {
-          "sha256_16": "b544dc91496e30da",
-          "bytes": 408748
+          "sha256_16": "a96b2d412bbd97d4",
+          "bytes": 412306
         },
         "natsume-soseki-3near.png": {
-          "sha256_16": "f93566673a259cc3",
-          "bytes": 342826
+          "sha256_16": "17c791e9e9d7cc8b",
+          "bytes": 342786
         },
         "rabindranath-tagore-1sky.png": {
           "sha256_16": "a3b2f1070674a0a9",
           "bytes": 224175
         },
         "rabindranath-tagore-2mid.png": {
-          "sha256_16": "5afc88a4faa27e45",
-          "bytes": 419068
+          "sha256_16": "f47668d103dec25b",
+          "bytes": 423767
         },
         "rabindranath-tagore-3near.png": {
-          "sha256_16": "77722741dac8874a",
-          "bytes": 233180
+          "sha256_16": "9d1efb79cd1b14b8",
+          "bytes": 233367
         }
       },
       "video": {
         "r11-journey.webm": {
-          "sha256_16": "ff00cd7949239bff",
-          "bytes": 3837670
+          "sha256_16": "400337bed307ecc0",
+          "bytes": 3841724
         }
       }
     }
