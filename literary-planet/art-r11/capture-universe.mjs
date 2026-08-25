@@ -132,6 +132,95 @@ for (const y of [1900, 1935, 1970]) {
   report.push({ frame: `6year-${y}`, ...(await shot(`6year-${y}`)) });
 }
 
+// ——— 카메라 주권 (R12-f): 손이 잡은 카메라 ———
+// 여기서 찍는 것은 상태가 아니라 **여정**이다 — 버튼을 누르지 않고 하늘을
+// 가로지른 자리, 그리고 회랑을 걸어 들어간 자리.
+{
+  const drag = async (dx, dy) => {
+    await page.mouse.move(960, 560);
+    await page.mouse.down();
+    const n = Math.max(4, Math.min(24, Math.round(Math.hypot(dx, dy) / 14)));
+    for (let i = 1; i <= n; i++) {
+      await page.mouse.move(960 + (dx * i) / n, 560 + (dy * i) / n);
+      await page.waitForTimeout(8);
+    }
+    await page.mouse.up();
+    await page.waitForTimeout(200);
+    await page.evaluate(() => window.__universe.settle());
+  };
+  const roll = async (n, step = -140) => {
+    await page.mouse.move(960, 560);
+    for (let i = 0; i < n; i++) {
+      await page.mouse.wheel(0, step);
+      await page.waitForTimeout(55);
+    }
+    await page.waitForTimeout(250);
+    await page.evaluate(() => window.__universe.settle());
+  };
+  const steer = async (id) => {
+    for (let i = 0; i < 20; i++) {
+      const m = await page.evaluate(() => window.__universe.metrics());
+      const raw = await page.evaluate((x) => window.__universe.project(x, true), id);
+      if (raw[2] > 1) {
+        await drag(360, 0);
+        continue;
+      }
+      const sx = ((raw[0] + 1) / 2) * 1920;
+      const sy = ((-raw[1] + 1) / 2) * 1080;
+      const dx = m.aim[0] - sx;
+      const dy = m.aim[1] - sy;
+      if (Math.hypot(dx, dy) < 34) return;
+      const cl = (v) => Math.max(-380, Math.min(380, v / 3.3));
+      await drag(cl(dx), cl(dy));
+    }
+  };
+
+  // 조준하고 밀면 **누르지 않아도** 별이 천체로 분해된다 — 사다리는 늘 거리의
+  // 함수였고, 이제 그 사다리를 오를 수단이 손에 있다.
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await ready();
+  await steer("franz-kafka");
+  for (let i = 0; i < 34; i++) {
+    const m = await page.evaluate(() => window.__universe.metrics());
+    if (m.bodies >= 1 && m.nearest[0] === "franz-kafka" && m.nearest[1] < 340) break;
+    await roll(2);
+    await steer("franz-kafka");
+  }
+  report.push({ frame: "7flight-resolve", ...(await shot("7flight-resolve")) });
+
+  // 미준비 작가는 항성으로 남는다(크기는 영향력에 매여 있다) — 다가감에
+  // 응답하는 채널은 **이름**이다.
+  await steer("jorge-luis-borges");
+  for (let i = 0; i < 34; i++) {
+    const m = await page.evaluate(() => window.__universe.metrics());
+    if (m.nearest[0] === "jorge-luis-borges" && m.nearest[1] < 320) break;
+    await roll(1);
+    await steer("jorge-luis-borges");
+  }
+  report.push({ frame: "7flight-arrival", ...(await shot("7flight-arrival")) });
+
+  // 등을 돌린 하늘 — 카메라를 대신 돌리지 않고 성계가 어느 쪽인지만 말한다
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await ready();
+  for (let i = 0; i < 12; i++) {
+    await drag(380, 0);
+    const m = await page.evaluate(() => window.__universe.metrics());
+    if (m.onScreenStars === 0) break;
+  }
+  report.push({ frame: "7flight-homemark", ...(await shot("7flight-homemark")) });
+
+  // 회랑 — 입구에 선 프레임과 걸어 들어간 프레임
+  await page.goto(url("?lens=movement&a=franz-kafka&land=1"), { waitUntil: "load" });
+  await ready();
+  await page.waitForTimeout(1400);
+  await page.evaluate(() => window.__universe.settle());
+  report.push({ frame: "8walk-entrance", ...(await shot("8walk-entrance")) });
+  await roll(4);
+  await page.waitForTimeout(400);
+  await page.evaluate(() => window.__universe.settle());
+  report.push({ frame: "8walk-inside", ...(await shot("8walk-inside")) });
+}
+
 await browser.close();
 server.close();
 console.log(`\nconsole errors: ${errors.length}`);

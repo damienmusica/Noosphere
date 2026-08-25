@@ -100,6 +100,12 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const [drawer, setDrawer] = useState(false);
   /** 좁은 화면에서 시트가 펼쳐져 있는가(쉬는 높이 ↔ 전체) */
   const [sheetFull, setSheetFull] = useState(false);
+  /** 카메라가 스스로 움직이는 중 — 시트가 물러나고 손잡이만 남는다 */
+  const [moving, setMoving] = useState(false);
+  /** 다가가서 천체로 분해된 작가 — 고르지 않아도 자산을 부른다 */
+  const [nearId, setNearId] = useState<string | null>(null);
+  /** 성계 안쪽까지 날아 들어왔다 — 돌아올 길을 띄운다 */
+  const [deep, setDeep] = useState(false);
   /** 뷰포트가 바뀔 때마다 오르는 값 — 띠와 크롬 사각형을 다시 재게 한다.
    *  주소창이 접히는 것 같은 일상 동작에 띠가 얼어붙어 있으면, 라벨이
    *  사라지거나(852→734 에서 2/10 삭제) 무방비 창이 열린다(734→852 에서
@@ -126,6 +132,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
    *  탭하면 오히려 해제). 얹음과 누름은 다른 등록부다. */
   const [groupPin, setGroupPin] = useState<string | null>(null);
   const [assets, setAssets] = useState<AssetSet | null>(null);
+  const landedRef = useRef<string | null>(null);
   const assetsRef = useRef<AssetSet | null>(null);
   const artRef = useRef<ArtManifest | null>(null);
 
@@ -275,7 +282,18 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         },
         onHoverAuthor: (id) => setHoverId(id),
         onPickWork: (id) => setWorkId(id),
-        onStageChange: (s) => setStage(s)
+        onStageChange: (s) => setStage(s),
+        onMotion: (m) => setMoving(m),
+        onDeep: (d) => setDeep(d),
+        onNear: (id) => setNearId(id),
+        // 추력은 붙잡고 있던 것을 놓는다 — 당긴 책이 먼저, 그다음이 궤도.
+        // 착륙 자체는 놓지 않는다: 회랑에서 추력은 이륙이 아니라 걷기다.
+        onLeaveOrbit: () =>
+          setWorkId((w) => {
+            if (w) return null;
+            setFocusId((f) => (f && !landedRef.current ? null : f));
+            return w;
+          })
       }
     );
     sceneRef.current = scene;
@@ -309,8 +327,12 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
 
   // 접근이 시작되는 순간 그 작가의 실물 자산을 전부 디코드해 둔다 — 착륙
   // 프레임에서 텍스처가 튀어 들어오면 "같은 천체가 계속 있었다"가 깨진다.
+  // 자유 비행(R12-f)에서는 **고르지 않고 다가간다.** 방아쇠가 선택뿐이면
+  // 조준해서 분해시킨 천체가 무늬 없는 공으로 남는다 — 미준비 작가에게 착륙을
+  // 금지한 바로 그 화면이다(실측: 카프카가 민무늬 구슬).
   useEffect(() => {
-    if (!focusId) {
+    const target = focusId ?? nearId;
+    if (!target) {
       setAssets(null);
       return;
     }
@@ -319,14 +341,14 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     // (실측: 딥링크 착륙에서 육필 지각이 백지로 굳었다).
     if (!art) return;
     let live = true;
-    const workIds = dataset.works.filter((w) => w.authorId === focusId).map((w) => w.id);
-    void trackPreload(preloadAuthor(focusId, workIds, art)).then((set) => {
+    const workIds = dataset.works.filter((w) => w.authorId === target).map((w) => w.id);
+    void trackPreload(preloadAuthor(target, workIds, art)).then((set) => {
       if (live) setAssets(set);
     });
     return () => {
       live = false;
     };
-  }, [focusId, art, dataset]);
+  }, [focusId, nearId, art, dataset]);
 
   useEffect(() => {
     assetsRef.current = assets;
@@ -399,11 +421,12 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     }
     // 시트 높이 + 어깨(손잡이 30) + 이름표 한 줄(20). 이름표의 y 는 글자
     // 상단이라 여유를 두지 않으면 시트 위에 반쯤 걸린 이름이 남는다.
-    const sheet = open
-      ? Math.round(window.innerHeight * (sheetFull ? SHEET_FULL_VH : SHEET_PEEK_VH)) + 50
-      : 92;
+    const sheet =
+      open && !moving
+        ? Math.round(window.innerHeight * (sheetFull ? SHEET_FULL_VH : SHEET_PEEK_VH)) + 50
+        : 92;
     sceneRef.current?.setSafeInsets(0, 0, 58, sheet);
-  }, [focusId, landedId, narrow, short, sheetFull, vpTick]);
+  }, [focusId, landedId, narrow, short, sheetFull, moving, vpTick]);
 
   // 크롬이 **실제로** 덮은 자리를 재서 장면에 넘긴다. 스칼라 띠는 카메라
   // 프레이밍용이고, 이름표는 이 사각형들과 상자로 대조한다 — 연도판은 가운데
@@ -433,9 +456,10 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       cancelAnimationFrame(raf);
       clearTimeout(t);
     };
-  }, [focusId, landedId, workId, narrow, short, sheetFull, drawer, lensId, query, vpTick]);
+  }, [focusId, landedId, workId, narrow, short, sheetFull, drawer, lensId, query, moving, vpTick]);
 
   useEffect(() => {
+    landedRef.current = landedId;
     sceneRef.current?.setState({
       focusId,
       landedId,
@@ -555,10 +579,16 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
 
   return (
     <div
-      className={`universe${narrow ? " is-narrow" : ""}${narrow && short ? " is-short" : ""}`}
+      className={`universe${narrow ? " is-narrow" : ""}${narrow && short ? " is-short" : ""}${moving ? " is-moving" : ""}${deep ? " is-deep" : ""}`}
       data-drawer={narrow && drawer ? "open" : undefined}
       data-sheet={
-        narrow && !short && (focus || landed) ? (sheetFull ? "full" : "peek") : undefined
+        narrow && !short && (focus || landed)
+          ? moving
+            ? "away"
+            : sheetFull
+              ? "full"
+              : "peek"
+          : undefined
       }
     >
       <div className="universe__stage" ref={hostRef} />
@@ -638,6 +668,15 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         >
           {drawer ? "닫기" : "관측층"}
         </button>
+        {deep && !focusId && !landedId && (
+          <button
+            className="u-btn u-btn--ghost"
+            data-testid="to-overview"
+            onClick={() => sceneRef.current?.overview()}
+          >
+            {narrow ? "원경" : "원경으로"}
+          </button>
+        )}
         {(focusId || landedId) && (
           <button
             className="u-btn u-btn--ghost"

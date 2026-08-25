@@ -614,6 +614,171 @@ console.log("\n누운 화면 — 시트는 옆에서 온다");
   await land.close();
 }
 
+// ——— 손끝의 카메라 주권 (R12-f) ———
+// 넓은 화면에서는 휠이 추력이고 드래그가 고개다. 손끝에는 휠이 없다 — 그
+// 문법이 손가락으로도 성립하는지는 **여기서만** 증명된다(R12-d 의 값을 치른
+// 교훈: 계약은 자기가 도는 화면만 증명한다).
+{
+  console.log(`\n손끝의 카메라 주권`);
+  // 두 손가락 제스처는 합성 포인터 이벤트로 만든다. CDP 의 touch 디스패치는
+  // "바뀐 점 하나당 이벤트 하나"를 요구해 두 점을 한 번에 넣으면 pointerdown 이
+  // 하나만 나가고(실측: 수신 1/2), 그러면 계약이 핀치를 재지 못한 채 초록이 된다.
+  const pinch = async (from, to, cy = 430, steps = 10) => {
+    await page.evaluate(
+      async ([from, to, cy, steps]) => {
+        const c = document.querySelector("canvas.universe-canvas");
+        const cx = Math.round(innerWidth / 2);
+        const ev = (type, id, x, y, primary) =>
+          c.dispatchEvent(
+            new PointerEvent(type, {
+              pointerId: id,
+              pointerType: "touch",
+              isPrimary: primary,
+              clientX: x,
+              clientY: y,
+              bubbles: true
+            })
+          );
+        ev("pointerdown", 1, cx - from / 2, cy, true);
+        ev("pointerdown", 2, cx + from / 2, cy, false);
+        for (let i = 1; i <= steps; i++) {
+          const d = from + ((to - from) * i) / steps;
+          ev("pointermove", 1, cx - d / 2, cy, true);
+          ev("pointermove", 2, cx + d / 2, cy, false);
+          await new Promise((r) => setTimeout(r, 20));
+        }
+        ev("pointerup", 1, cx - to / 2, cy, true);
+        ev("pointerup", 2, cx + to / 2, cy, false);
+      },
+      [from, to, cy, steps]
+    );
+  };
+  const swipe = async (x0, y0, x1, y1) => {
+    await page.evaluate(
+      async ([x0, y0, x1, y1]) => {
+        const c = document.querySelector("canvas.universe-canvas");
+        const ev = (type, x, y) =>
+          c.dispatchEvent(
+            new PointerEvent(type, { pointerId: 1, pointerType: "touch", isPrimary: true, clientX: x, clientY: y, bubbles: true })
+          );
+        ev("pointerdown", x0, y0);
+        for (let i = 1; i <= 10; i++) {
+          ev("pointermove", x0 + ((x1 - x0) * i) / 10, y0 + ((y1 - y0) * i) / 10);
+          await new Promise((r) => setTimeout(r, 16));
+        }
+        ev("pointerup", x1, y1);
+      },
+      [x0, y0, x1, y1]
+    );
+  };
+
+  await page.goto(`${server.origin}/universe.html?lens=movement`, { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1500);
+  let m = await metrics();
+  check("손안에서도 원경은 자유 비행이다", m.pivot === 150, `pivot=${m.pivot}`);
+  const r0 = m.camR;
+  await pinch(80, 300);
+  await page.waitForTimeout(90);
+  const mid = await metrics();
+  await settle(600);
+  const done = await metrics();
+  check("두 손가락을 벌리면 앞으로 간다", mid.camR < r0 - 100, `${r0} → ${mid.camR}`);
+  check("손을 뗀 뒤에도 미끄러진다 (관성)", done.camR < mid.camR, `${mid.camR} → ${done.camR}`);
+  await pinch(300, 80);
+  await settle(600);
+  const back = await metrics();
+  check("오므리면 물러난다", back.camR > done.camR + 60, `${done.camR} → ${back.camR}`);
+
+  // 한 손가락은 고개다. 손끝에는 호버가 없으므로, 이 드래그가 선택으로
+  // 새면 둘러보기가 통째로 오조작이 된다.
+  const before = await page.evaluate(() => window.__universe.project("franz-kafka", true));
+  await swipe(120, 430, 300, 430);
+  await settle(400);
+  const after = await page.evaluate(() => window.__universe.project("franz-kafka", true));
+  check("한 손가락 드래그는 고개 돌리기다 — 하늘이 손가락을 따라온다",
+    after[2] <= 1 && before[2] <= 1 ? after[0] > before[0] : Math.abs(after[0] - before[0]) > 0.05,
+    `ndc x ${before[0]} → ${after[0]}`);
+  check("둘러보는 동안 아무것도 고르지 않는다",
+    (await page.locator(".u-card").count()) === 0);
+
+  // 손가락 하나의 pointerup 을 잃어버려도 다음 제스처는 살아 있어야 한다.
+  // 유령 포인터가 남으면 두 손가락이 셋으로 세어지고 핀치가 조용히 사라진다.
+  // 출발 구도에서 잰다 — 별 앞에서는 추력이 스스로 느려지므로(근접 배율)
+  // 같은 제스처의 이동량이 자리에 따라 달라진다.
+  await page.goto(`${server.origin}/universe.html?lens=movement`, { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1500);
+  await page.evaluate(() => {
+    const c = document.querySelector("canvas.universe-canvas");
+    c.dispatchEvent(
+      new PointerEvent("pointerdown", { pointerId: 9, pointerType: "touch", isPrimary: true, clientX: 100, clientY: 300, bubbles: true })
+    );
+    // pointerup 을 보내지 않는다 — 잃어버린 손가락
+  });
+  const gr0 = (await metrics()).camR;
+  await pinch(80, 300);
+  await settle(600);
+  const gr1 = (await metrics()).camR;
+  check("잃어버린 손가락이 다음 제스처를 막지 않는다", gr1 < gr0 - 60, `${gr0} → ${gr1}`);
+
+  // 자유는 돌아올 길과 함께 준다 — 그 길이 좁은 줄에서 넘치면 없는 것과 같다
+  await page.goto(`${server.origin}/universe.html?lens=movement`, { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1500);
+  await pinch(80, 320);
+  await settle(700);
+  const inMet = await metrics();
+  const backBtn = page.locator('[data-testid="to-overview"]');
+  check("손안에서도 안으로 들어오면 돌아올 길이 뜬다",
+    inMet.deep === true && (await backBtn.count()) === 1, `camR=${inMet.camR}`);
+  if (await backBtn.count()) {
+    const bb = await backBtn.boundingBox();
+    const tb = await page.locator(".u-top").boundingBox();
+    check("돌아올 길이 상단 줄 안에 있고 손끝에 닿는다",
+      Boolean(bb && tb) && bb.x >= tb.x - 1 && bb.x + bb.width <= tb.x + tb.width + 1 && bb.height >= 40,
+      `x ${Math.round(bb.x)}–${Math.round(bb.x + bb.width)} / 줄 ${Math.round(tb.x)}–${Math.round(tb.x + tb.width)} · 높이 ${Math.round(bb.height)}`);
+    await backBtn.tap();
+    await settle(1500);
+    const outMet = await metrics();
+    check("손안에서도 원경으로 돌아온다",
+      Math.abs(outMet.camR - 2191) < 140 && outMet.deep === false, `camR=${outMet.camR}`);
+  }
+
+  // 시트는 읽을 것이지 지나갈 것이 아니다 — 손이 카메라를 잡고 있는 동안 물러난다
+  await page.evaluate(() => window.__universe.land("franz-kafka"));
+  await settle(2600);
+  m = await metrics();
+  const y0 = m.walkYear;
+  check("착륙하면 시트가 쉬는 높이로 선다",
+    (await page.getAttribute(".universe", "data-sheet")) === "peek" && m.walking === true,
+    `해 ${y0}`);
+  await pinch(80, 300, 300);
+  await page.waitForTimeout(120);
+  const moving = await metrics();
+  const sheetMoving = await page.getAttribute(".universe", "data-sheet");
+  await settle(900);
+  const stopped = await metrics();
+  const sheetStopped = await page.getAttribute(".universe", "data-sheet");
+  check("회랑에서 핀치는 걷기다 — 서 있는 해가 바뀐다",
+    stopped.walkYear > y0 + 1, `${y0} → ${stopped.walkYear}`);
+  // 상태·클래스·**띠** 셋을 함께 잰다. 시트가 물러나도 카메라가 받은 안전 띠가
+  // 그대로면, 프레임은 여전히 없는 크롬을 피해 밀려 있다.
+  check("이동 중에는 시트가 물러난다",
+    moving.moving === true && sheetMoving === "away" && moving.insets[3] < 200,
+    `moving=${moving.moving} sheet=${sheetMoving} 아래 띠 ${moving.insets[3]}`);
+  check("멈추면 시트가 돌아온다",
+    stopped.moving === false && sheetStopped === "peek" && stopped.insets[3] > 300,
+    `sheet=${sheetStopped} · 아래 띠 ${stopped.insets[3]}`);
+  // 물러난 시트가 화면을 비우는지도 픽셀로 — 상태만 보면 높이 0 을 놓친다
+  check("물러난 시트는 실제로 자리를 비운다",
+    await page.evaluate(() => {
+      const c = document.querySelector(".u-card");
+      return c ? c.getBoundingClientRect().height : -1;
+    }) > 100,
+    "멈춘 뒤 카드 높이");
+}
+
 console.log(`\nconsole errors: ${consoleErrors.length}`);
 for (const e of consoleErrors.slice(0, 5)) console.log(`   ${e}`);
 if (consoleErrors.length) failed++;

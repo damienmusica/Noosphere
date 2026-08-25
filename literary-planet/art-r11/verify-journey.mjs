@@ -806,8 +806,11 @@ for (const a of SLICE) {
   await page.locator('[data-testid="to-sky"]').click();
   await settle(1600);
   m = await metrics();
-  check("하늘로 복귀", m.stage === "sky" && Math.abs(m.dist - 2191) < 120,
-    `stage=${m.stage} dist=${m.dist}`);
+  // 자유 비행이 들어온 뒤로 `dist`(주시점까지)는 시선 앞 피벗의 상수다 —
+  // 돌아온 **고도**는 원점으로부터의 거리로 잰다.
+  check("하늘로 복귀", m.stage === "sky" && Math.abs(m.camR - 2191) < 120,
+    `stage=${m.stage} camR=${m.camR}`);
+  check("복귀하면 다시 자유 비행이다 (피벗이 시선 앞에 선다)", m.pivot === 150, `pivot=${m.pivot}`);
   const camDrift = Math.hypot(m.cam[0] - cam0[0], m.cam[1] - cam0[1], m.cam[2] - cam0[2]);
   check("복귀는 출발 구도다 (카메라 위치 일치)", camDrift < 40, `이동 ${Math.round(camDrift)}`);
   const labels1 = new Set(await labelIds());
@@ -912,6 +915,7 @@ for (const a of SLICE) {
     check("이륙이 끝나면 회랑이 걷힌다", lm.bays === 0 && lm.foldK === 0, `bays=${lm.bays} fold=${lm.foldK}`);
   }
 }
+
 
 console.log(`\nconsole errors: ${consoleErrors.length}`);
 if (consoleErrors.length) console.log(consoleErrors.slice(0, 4).join("\n"));
