@@ -1171,6 +1171,26 @@
   --sheet-h: 86dvh;
 }
 
+/* 움직이는 동안 시트는 물러난다 (R12-f). 카드는 읽을 것이지 지나갈 것이
+   아니므로, 손이 카메라를 잡고 있는 동안 화면의 절반을 계속 차지하면
+   "이동"과 "읽기"가 같은 프레임을 다툰다. 손잡이 한 줄만 남는다 —
+   멈추면 그대로 돌아온다(높이만 바뀌므로 스크롤 위치도 남는다). */
+.universe.is-narrow[data-sheet="away"] {
+  --sheet-h: 0px;
+}
+
+.is-narrow .u-card,
+.is-narrow .u-grip {
+  transition: max-height 180ms ease, bottom 180ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-narrow .u-card,
+  .is-narrow .u-grip {
+    transition: none;
+  }
+}
+
 /* ——— 위 가장자리: 제목·상태·검색·이동 ——— */
 .is-narrow .u-top {
   /* 서랍의 가림막(z 7)과 서랍(z 8) 위에 남는다 — 그러지 않으면 서랍이 열린
@@ -1303,6 +1323,14 @@
 .is-narrow .u-drawer-key {
   display: inline-flex;
   align-items: center;
+}
+
+/* 성계 안으로 들어오면 단계 글자는 자리를 내준다 (R12-f). 390px 줄에 버튼
+   하나가 더 들어오면 마지막 버튼이 화면 밖으로 20px 밀린다(계약이 잡았다).
+   그리고 그 글자는 "원경 · 천구"라고 쓰여 있는데 이미 원경이 아니다 —
+   자리를 뺏는 값이 틀린 값이기까지 하다. */
+.is-narrow.is-deep .u-stage {
+  display: none;
 }
 
 /* 시트가 올라오면 위 줄은 자리를 내준다 — 단계도 서랍도 시트가 다시 말한다 */

@@ -25,10 +25,17 @@ scripts/gap-fixture-mutation-sweep.py, and for the same measured reason: a git
 restore silently eats uncommitted edits to the target.
 
 Interrupt-safe: restore runs in `finally` and is also registered with `atexit`.
+**Kill-safe too** (2026-08-25, 값을 치른 뒤): 메모리 사본은 프로세스가 죽으면
+같이 죽는다. 그날 3초짜리 정찰 실행이 파이프 뒤에서 살아남아 **35분 동안 트리와
+dist 를 갈아엎었고**, 그동안 찍은 프레임과 돌린 계약이 전부 변이된 빌드를
+측정했다. 이제 변이 전에 원본을 `.mutation-sweep-backup/` 에 떨어뜨리고, 다음
+실행은 그 디렉토리가 남아 있으면 **돌기를 거부한다** — `--repair` 로 되돌린 뒤에
+다시 부른다.
 """
 import argparse
 import atexit
 import pathlib
+import shutil
 import subprocess
 import sys
 
@@ -41,6 +48,9 @@ import sys
 # toplevel. `__file__` resolves identically in-repo and in the unzipped tree.
 REPO = str(pathlib.Path(__file__).resolve().parent.parent)
 LP = f"{REPO}/literary-planet"
+# 죽어도 남는 원본 사본. 정상 종료 때 지운다 — 남아 있다는 것 자체가
+# "지난 실행이 복원을 마치지 못했다"는 신호다.
+BACKUP = pathlib.Path(REPO) / ".mutation-sweep-backup"
 
 G = "src/universe/grammar.ts"
 L = "src/universe/lenses.ts"
@@ -156,7 +166,7 @@ MUTATIONS = [
      "      const rep: typeof REP_STAR | \"resolved\" | \"surface\" = isLandable(id)\n        ? representationFor(ap, h)\n        : REP_STAR;",
      "      const rep: typeof REP_STAR | \"resolved\" | \"surface\" = representationFor(ap, h);"),
     ("browser", "지각을 영영 칠하지 않음", S,
-     "          if (ap > 60) this.paintCrust(body);", "          if (false) this.paintCrust(body);"),
+     "          this.paintCrust(body);", "          if (ap > 600) this.paintCrust(body);"),
     ("browser", "발명된 얼굴 초상이 돌아옴 (상상 초상 자산을 다시 가져온다)", C,
      "      <canvas ref={ref} width={96} height={96} aria-hidden=\"true\" />",
      "      <img src={`${import.meta.env.BASE_URL}portraits/${author.id}.jpg`} alt=\"\" />"),
@@ -371,6 +381,85 @@ MUTATIONS = [
      "                      setGroupPin((pin) => (pin === g.id ? null : g.id));\n                      setDrawer(false);",
      "                      setGroupPin((pin) => (pin === g.id ? null : g.id));"),
     # --- 앵커 웨이브 (R12-e 후속) -----------------------------------------
+    # --- 카메라 주권 (R12-f) ------------------------------------------
+    # 표현 사다리는 늘 거리의 함수였다. 이 라운드가 더한 것은 그 사다리를 오를
+    # 이동 수단이고, 아래 변이는 그 이동 수단의 부품을 하나씩 뺀다.
+    ("flight", "주권 — 주시점을 시선 앞에 두지 않는다 (다시 고른 것 주위만 돈다)", S,
+     "      this.controls.target.copy(this.camera.position).addScaledVector(fwd, FREE_PIVOT);\n",
+     ""),
+    ("flight", "주권 — 추력이 카메라를 밀지 않는다", S,
+     "        this.camera.position.addScaledVector(fwd, this.thrust * sec);\n", ""),
+    ("flight", "주권 — 관성을 없앤다 (한 프레임 뒤 속도 0)", S,
+     "        this.thrust *= Math.pow(THRUST_DAMP, sec);", "        this.thrust = 0;"),
+    ("flight", "주권 — 자유 비행에서도 회전 부호를 그대로 (하늘이 손가락 반대로 간다)", S,
+     "      this.controls.rotateSpeed = -ROTATE_SPEED;", "      this.controls.rotateSpeed = ROTATE_SPEED;"),
+    ("flight", "주권 — 다시 누르는 순간 고른다 (드래그의 출발점이 선택이 된다)", S,
+     "    if (!d || d.id !== e.pointerId || d.moved > DRAG_SLOP) return;",
+     "    if (!d || d.id !== e.pointerId) return;"),
+    ("flight", "주권 — 근접 감속을 없앤다 (별을 스쳐 지나간다)", S,
+     "    return Math.max(0.1, Math.min(1, this.nearD / SHELL_R));", "    return 1;"),
+    ("flight", "주권 — 성계 방향 표식을 끈다 (빈 화면에 아무 단서도 없다)", S,
+     "      this.homeMark.visible = true;", "      this.homeMark.visible = false;"),
+    ("flight", "주권 — 표식을 늘 띄운다 (별이 보여도 사라지지 않는다)", S,
+     "      this.homeMark.visible = false;\n      this.homeLabel.visible = false;",
+     "      this.homeMark.visible = true;\n      this.homeLabel.visible = false;"),
+    ("flight", "주권 — 다가간 별에 이름을 주지 않는다", S,
+     "        const named = otherwise || near;", "        const named = otherwise;"),
+    ("flight", "주권 — 다가간 별의 이름을 층이 접는다 (틱만 남는다)", S,
+     "            !near &&\n            !s.lensMarks.has(id) &&", "            !s.lensMarks.has(id) &&"),
+    ("flight", "주권 — 단계를 다시 주시점 거리로 잰다 (자유 비행에서 상수)", S,
+     'resolved > 0 || focusDist < 1250 ? "approach" : "sky"',
+     'resolved > 0 || dist < 1250 ? "approach" : "sky"'),
+    # 자리를 잡는 곳은 한 곳이다. 이전 판은 추력 분기와 update 뒤 두 곳에서
+    # 잡았고, 그래서 **어느 한쪽을 지워도 계약이 초록으로 남았다**(생존 2건).
+    ("flight", "주권 — 성계의 안팎 한계를 없앤다 (밖으로 나가고 항성을 관통한다)", S,
+     "      const r = this.camera.position.length();\n      if (r > CAM_SKY_MAX || r < FREE_R_MIN) {\n        this.camera.position.setLength(Math.max(FREE_R_MIN, Math.min(CAM_SKY_MAX, r)));\n        this.thrust = 0;\n      }",
+     ""),
+    ("flight", "주권 — 한계에서 속도를 끊지 않는다 (벽에 붙은 채 계속 민다)", S,
+     "        this.camera.position.setLength(Math.max(FREE_R_MIN, Math.min(CAM_SKY_MAX, r)));\n        this.thrust = 0;",
+     "        this.camera.position.setLength(Math.max(FREE_R_MIN, Math.min(CAM_SKY_MAX, r)));"),
+    ("flight", "주권 — 회랑 자세가 서 있는 해를 읽지 않는다 (입구에 못박힌다)", S,
+     "      const p = this.corridorPose(this.walkYear, this.lookYaw, this.lookPitch);\n      if (p) {",
+     "      const p = this.corridorPose(f.span.yStart + 0.8, this.lookYaw, this.lookPitch);\n      if (p) {"),
+    ("flight", "주권 — 걷기 속도가 자리를 옮기지 않는다", S,
+     "        this.walkYear += this.walkVel * sec;", ""),
+    ("flight", "주권 — 고개 각도를 자세에 넣지 않는다 (드래그가 아무것도 안 한다)", S,
+     "    const yaw = ((5 - 20 * port) * Math.PI) / 180 + yaw0;",
+     "    const yaw = ((5 - 20 * port) * Math.PI) / 180;"),
+    ("flight", "주권 — 회랑 끝의 한계를 없앤다 (서가 너머로 걸어 나간다)", S,
+     "      this.walkYear = Math.max(lo, Math.min(hi, this.walkYear));", ""),
+    ("flight", "주권 — 새 회랑에서도 걸어 둔 자리를 유지한다", S,
+     "    this.walkYear = span.yStart + 0.8;\n    this.walkVel = 0;", "    this.walkVel = 0;"),
+    ("flight", "주권 — 다가감을 알리지 않는다 (지각이 백지로 남는다)", S,
+     "      this.cb.onNear(near);", ""),
+    ("flight", "주권 — 자산 방아쇠가 다시 선택뿐 (다가가도 자산이 안 온다)", U,
+     "    const target = focusId ?? nearId;", "    const target = focusId;"),
+    ("flight", "주권 — 추력이 궤도를 끊지 않는다 (고른 것 주위에 묶인다)", S,
+     "    if (this.state.focusId) this.orbitBroken = true;", ""),
+    ("flight", "주권 — 떠나도 궤도가 닫히지 않는다 (남의 카드를 계속 읽는다)", S,
+     "    if (this.orbitBroken && this.state.focusId && focusDist > LENS_DIST * 1.6)\n      this.cb.onLeaveOrbit();",
+     ""),
+    ("flight", "주권 — 새로 고를 때 궤도가 다시 이어지지 않는다", S,
+     "    // 새로 고르거나 착륙하면 궤도는 다시 이어진다\n    this.orbitBroken = false;\n    this.thrust = 0;",
+     ""),
+    ("flight", "주권 — 안쪽으로 들어와도 돌아올 길을 알리지 않는다", S,
+     "      this.cb.onDeep(deep);", ""),
+    ("flight", "주권 — 원경으로가 자리를 되돌리지 않는다", S,
+     "    this.skyPose.set(0, 420, CAM_SKY_DEFAULT);", ""),
+    ("flight", "주권 — 감소된 동작에서도 관성을 준다 (한 프레임만 밀고 만다)", S,
+     "        if (this.state.reducedMotion) {\n          this.camera.position.addScaledVector(fwd, this.thrust / -Math.log(THRUST_DAMP));\n          this.thrust = 0;\n        } else {\n          this.camera.position.addScaledVector(fwd, this.thrust * sec);",
+     "        if (false) {\n          this.thrust = 0;\n        } else {\n          this.camera.position.addScaledVector(fwd, this.thrust * sec);"),
+    ("mobile", "주권 — 핀치를 듣지 않는다 (손끝에는 추력이 없다)", S,
+     "        this.pinch();\n        return;", "        return;"),
+    ("mobile", "주권 — 운동 신호를 보내지 않는다", S,
+     "      this.cb.onMotion(moving);", ""),
+    ("mobile", "주권 — 유령 포인터를 지우지 않는다 (다음 제스처가 죽는다)", S,
+     "    if (e.isPrimary) this.pointers.clear();\n", ""),
+    ("mobile", "주권 — 물러난 시트 상태를 없앤다 (이동 중에도 화면의 절반)", U,
+     '          ? moving\n            ? "away"\n            : sheetFull', "          ? sheetFull"),
+    ("mobile", "주권 — 시트가 물러나도 안전 띠는 그대로 (없는 크롬을 피해 민다)", U,
+     "      open && !moving", "      open"),
+
     ("browser", "앵커가 구간을 앞으로도 늘린다 (첫 작품 이전이 빈 칸으로)", G,
      "  const own = [...workYears, ...(deathYear !== undefined ? [deathYear] : [])];\n  const lo = own.length ? Math.min(...own) : Math.min(...anchorYears);",
      "  const own = [...workYears, ...anchorYears, ...(deathYear !== undefined ? [deathYear] : [])];\n  const lo = Math.min(...own);"),
@@ -385,26 +474,77 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--browser", action="store_true", help="also run the journey contracts (slow)")
     ap.add_argument(
+        "--only",
+        action="append",
+        help="이름에 이 문자열이 든 변이만 돈다 (반복 가능). 새 기제를 붙인 직후 "
+        "그 기제만 재는 데 쓴다 — 브라우저 레인 전체는 한 시간이 넘고, 그동안 "
+        "트리가 잠긴다.",
+    )
+    ap.add_argument(
         "--lane",
         action="append",
-        choices=["fast", "browser", "mobile"],
+        choices=["fast", "browser", "flight", "mobile"],
         help="run ONLY these lanes (repeatable). 새 레인을 붙인 직후 그 레인만 "
         "재는 데 쓴다 — 전체 스윕은 두 시간이 넘고, 그동안 트리가 잠긴다.",
     )
+    ap.add_argument(
+        "--repair",
+        action="store_true",
+        help="지난 실행이 남긴 .mutation-sweep-backup/ 에서 원본을 되돌리고 끝낸다.",
+    )
     args = ap.parse_args()
 
-    # `--browser` 는 브라우저가 필요한 레인 **전부**다: 넓은 화면(verify-journey)과
-    # 손안(verify-mobile). 둘 다 같은 dist 를 쓰므로 빌드도 함께 탄다.
+    if args.repair:
+        if not BACKUP.exists():
+            sys.exit("되돌릴 사본이 없다 — 트리는 이미 원본이다.")
+        n = 0
+        for f in sorted(BACKUP.iterdir()):
+            rel = f.name.replace("__", "/")
+            target = pathlib.Path(LP) / rel
+            text = f.read_text(encoding="utf-8")
+            if target.read_text(encoding="utf-8") != text:
+                target.write_text(text, encoding="utf-8")
+                n += 1
+                print(f"  되돌림 {rel}")
+        shutil.rmtree(BACKUP)
+        print(f"{n}개 파일을 되돌렸다. dist 는 `npm run build` 로 다시 짓는다.")
+        return
+
+    if BACKUP.exists():
+        sys.exit(
+            "지난 실행이 복원을 마치지 못했다 (.mutation-sweep-backup/ 이 남아 있다).\n"
+            "  python3 scripts/universe-mutation-sweep.py --repair\n"
+            "로 되돌린 뒤 다시 부른다 — 그러지 않으면 변이된 트리 위에 변이를 얹는다."
+        )
+
+    # `--browser` 는 브라우저가 필요한 레인 **전부**다: 넓은 화면(verify-journey)·
+    # 비행(verify-flight)·손안(verify-mobile). 셋 다 같은 dist 를 쓰므로 빌드도 함께 탄다.
+    #
+    # `flight` 가 따로 있는 이유는 **속도**다. 조준 루프(드래그 → 투영 재측정 →
+    # 다시 드래그)를 여정 파일에 넣었더니 한 판이 8분이 됐고, 변이 22건이 네
+    # 시간으로 불어 트리를 그동안 잠갔다(2026-08-25 실측). 느린 계약은 자기
+    # 레인을 갖는다 — 지금 비행 레인 한 판은 60초다.
     lanes = set(args.lane) if args.lane else {"fast"} | (
-        {"browser", "mobile"} if args.browser else set()
+        {"browser", "flight", "mobile"} if args.browser else set()
     )
     cases = [m for m in MUTATIONS if m[0] in lanes]
+    if args.only:
+        cases = [m for m in cases if any(k in m[1] for k in args.only)]
+        if not cases:
+            sys.exit("--only 가 아무 변이와도 맞지 않는다")
 
     originals = {}
     for _, _, rel, _, _ in cases:
         path = f"{LP}/{rel}"
         if path not in originals:
             originals[path] = open(path, encoding="utf-8").read()
+
+    # 죽어도 남는 사본을 먼저 떨어뜨린다 — 메모리 사본은 프로세스와 함께 죽는다
+    BACKUP.mkdir(exist_ok=True)
+    for path, text in originals.items():
+        (BACKUP / pathlib.Path(path).relative_to(LP).as_posix().replace("/", "__")).write_text(
+            text, encoding="utf-8"
+        )
 
     def restore():
         for path, text in originals.items():
@@ -416,7 +556,7 @@ def main():
 
     atexit.register(restore)
 
-    needs_dist = bool(lanes & {"browser", "mobile"})
+    needs_dist = bool(lanes & {"browser", "flight", "mobile"})
     if needs_dist:
         print("browser lane: building the baseline dist once…")
         b = run("npm run build")
@@ -443,11 +583,10 @@ def main():
                     if build.returncode != 0:
                         caught = True  # a type error is a caught mutation
                     else:
-                        harness = (
-                            "node art-r11/verify-mobile.mjs"
-                            if lane == "mobile"
-                            else "node art-r11/verify-journey.mjs"
-                        )
+                        harness = {
+                            "mobile": "node art-r11/verify-mobile.mjs",
+                            "flight": "node art-r11/verify-flight.mjs",
+                        }.get(lane, "node art-r11/verify-journey.mjs")
                         res = run(harness)
                         caught = res.returncode != 0
             finally:
@@ -461,6 +600,8 @@ def main():
             # (실측: 스윕 직후 여정 계약이 88/3 로 나왔고 원인은 오염된 dist).
             print("restoring the baseline dist…")
             run("npm run build")
+
+    shutil.rmtree(BACKUP, ignore_errors=True)
 
     print(f"\nkilled {len(killed)} · survived {len(survived)} · stale {len(broken)}")
     if survived:

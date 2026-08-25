@@ -55,6 +55,16 @@ import {
   VOL_DEPTH,
   VOL_AIR,
   volumeWidth,
+  FREE_PIVOT,
+  THRUST_PER_PX,
+  THRUST_MAX,
+  THRUST_DAMP,
+  FREE_R_MIN,
+  WALK_PER_PX,
+  WALK_MAX,
+  WALK_DAMP,
+  LOOK_YAW_MAX,
+  LOOK_PITCH_MAX,
 } from "./grammar.ts";
 import { indexGlyph } from "./lenses.ts";
 import { REL_KO, relationGlyph } from "./relations.ts";
@@ -99,6 +109,16 @@ export interface UniverseCallbacks {
   onHoverAuthor(id: string | null): void;
   onPickWork(id: string): void;
   onStageChange(stage: Stage): void;
+  /** 카메라가 스스로 움직이는 동안(추력·걷기·비행) 참. 시트가 물러날 신호. */
+  onMotion(moving: boolean): void;
+  /** 성계 전체가 보이던 자리에서 충분히 들어왔는가 — 돌아올 길을 띄울 신호 */
+  onDeep(deep: boolean): void;
+  /** 가장 가까이서 **천체로 분해된** 작가. 자유 비행은 고르지 않고 다가가므로,
+   *  자산 사전 로드의 방아쇠가 선택만이면 지각이 영영 백지로 남는다. */
+  onNear(id: string | null): void;
+  /** 추력이 궤도를 떠났다 — 휠은 언제나 추력이므로, 궤도에 묶여 있지 않다는
+   *  증거가 같은 제스처 안에 있어야 한다. */
+  onLeaveOrbit(): void;
 }
 
 export type Stage = "sky" | "approach" | "surface";
@@ -167,6 +187,17 @@ void main() {
 /** 화살촉 버퍼 용량 — 한 별의 방향 있는 관계 수 최대(데이터 최대 16)를 넉넉히 */
 const ARROW_CAP = 64;
 
+/** 클릭과 드래그를 가르는 이동량(CSS px). 손끝은 누른 채 조금 흔들린다. */
+const DRAG_SLOP = 6;
+
+/** 드래그 회전 속도. 자유 비행에서는 부호가 뒤집힌다(moveCamera 참조). */
+const ROTATE_SPEED = 0.42;
+
+/** 이 거리 안에 든 별은 등급과 무관하게 이름을 갖는다 — 접근의 응답 (R12-f).
+ *  천구 반경 900 에 100인이면 별 사이 평균 간격이 ≈ 320 이므로, 이 값은
+ *  "지나치는 별"이 아니라 "다가간 별"만 잡는다. */
+const NAME_NEAR = 430;
+
 /** 2차 베지에 — 회랑의 실이 그리는 호 */
 function quadBezier(
   p0: THREE.Vector3,
@@ -228,6 +259,18 @@ export class UniverseScene {
   private sunGlow!: THREE.Sprite;
   private selWedges: THREE.Sprite[] = [];
   private selCorners: THREE.Sprite[] = [];
+  /** 성계 방향 표식 — 하늘에 아무것도 남지 않았을 때만 뜬다 (R12-f) */
+  private homeMark!: THREE.Sprite;
+  private homeLabel!: THREE.Sprite;
+  private lastOnScreen = 0;
+  /** 가장 가까운 별까지의 거리 — 추력이 이 값으로 느려진다 */
+  private nearD = Infinity;
+  /** 마지막으로 알린 "분해된 가장 가까운 천체" */
+  private lastNearBody: string | null = null;
+  /** 추력이 궤도를 끊었는가 — 고른 것은 남고 카메라만 풀린다 */
+  private orbitBroken = false;
+  /** 마지막으로 알린 "원경에서 멀어졌다" */
+  private lastDeep = false;
   private readLamp: THREE.PointLight;
   private ambient!: THREE.AmbientLight;
   /** 착륙 시에만 켜는 깊이 안개 — 회랑이 지평선 톤으로 물러난다 */
@@ -300,6 +343,25 @@ export class UniverseScene {
   private eventSlips: Array<{ relId?: string; year: number; obj: THREE.Object3D }> = [];
   /** 이륙 중 — 착륙은 풀렸지만 회랑은 비행이 끝날 때까지 서 있다 */
   private corridorDeparting = false;
+
+  // ——— 카메라 주권 (R12-f) ———
+  /** 시선 방향 속도(단위/초). 휠·핀치가 더하고 감쇠가 뺀다. */
+  private thrust = 0;
+  /** 회랑에서 서 있는 해(실수) — 착륙 자세의 유일한 매개변수 */
+  private walkYear = 0;
+  /** 걷기 속도(연/초) */
+  private walkVel = 0;
+  /** 회랑의 기본 자세에 더하는 시선 offset(라디안) */
+  private lookYaw = 0;
+  private lookPitch = 0;
+  /** 포인터 하나의 이동 누적 — 6px 을 넘으면 그것은 클릭이 아니라 드래그다.
+   *  집던 자리에서 곧바로 골라 버리면 별에서 시작한 모든 둘러보기가 선택이 된다. */
+  private drag: { id: number; x: number; y: number; moved: number } | null = null;
+  /** 활성 포인터 — 두 개면 핀치(손끝의 추력) */
+  private pointers = new Map<number, { x: number; y: number }>();
+  private pinchPrev = 0;
+  /** 이번 프레임에 카메라가 스스로 움직이고 있는가 — 시트가 물러날 신호 */
+  private moving = false;
   /** 마지막으로 그린 실의 앵커 끝 — 계약이 화면 좌표로 대조한다 */
   private threadEnd: THREE.Vector3 | null = null;
   private landUp: THREE.Vector3 | null = null;
@@ -424,6 +486,26 @@ export class UniverseScene {
     /** 크롬이 차지한다고 선언된 띠 [좌, 우, 위, 아래]와 받은 사각형 수 */
     insets: [0, 0, 0, 0] as [number, number, number, number],
     chromeRects: 0,
+    /** 카메라 주권 (R12-f): 원점 거리 · 운동 중 · 시선 앞 피벗 · 서 있는 해 · 고개 */
+    camR: 0,
+    moving: false,
+    pivot: 0,
+    walkYear: null as number | null,
+    walked: 0,
+    aheadPx: null as [number, number] | null,
+    look: [0, 0] as [number, number],
+    onScreenStars: 0,
+    homeMark: false,
+    sunPx: null as [number, number] | null,
+    aim: [0, 0] as [number, number],
+    nearest: [null, 0] as [string | null, number],
+    crustPainted: 0,
+    nearNamed: 0,
+    deep: false,
+    focusDist: null as number | null,
+    throttle: 1,
+    walking: false,
+    flying: false,
     /** 작품 도시(연도 서가) — 전부 렌더에서 잰다. cityMetrics() 참조 */
     cities: {
       faceOut: 0,
@@ -479,8 +561,11 @@ export class UniverseScene {
     this.controls.enablePan = false;
     this.controls.minDistance = 2;
     this.controls.maxDistance = CAM_SKY_MAX;
-    this.controls.rotateSpeed = 0.42;
-    this.controls.zoomSpeed = 0.72;
+    this.controls.rotateSpeed = ROTATE_SPEED;
+    // 줌은 컨트롤에서 뺀다 — 휠·핀치는 **추력**이고, 추력은 한 곳(push)에서만
+    // 들어온다. 두 기제가 같은 제스처를 나눠 가지면 어느 쪽을 지워도 계약이
+    // 초록으로 남는다(R12-e 변이 스윕에서 값을 치른 교훈).
+    this.controls.enableZoom = false;
 
     this.labels = new LabelLayer(host);
 
@@ -557,6 +642,9 @@ export class UniverseScene {
 
     this.renderer.domElement.addEventListener("pointerdown", this.onPointerDown);
     this.renderer.domElement.addEventListener("pointermove", this.onPointerMove);
+    this.renderer.domElement.addEventListener("pointerup", this.onPointerUp);
+    this.renderer.domElement.addEventListener("pointercancel", this.onPointerUp);
+    this.renderer.domElement.addEventListener("wheel", this.onWheel, { passive: false });
     window.addEventListener("resize", this.onResize);
     this.loop();
   }
@@ -742,6 +830,39 @@ export class UniverseScene {
       mk(ctex, Math.PI),
       mk(ctex, Math.PI / 2)
     ];
+
+    // 성계 방향 — **선택 등록부를 빌리지 않는다.** 주홍 채운 쐐기는 "고른 것"의
+    // 표시이고, 이것은 고른 것이 아니라 세계가 있는 쪽이다. 놋쇠 윤곽 갈매기.
+    const home = document.createElement("canvas");
+    home.width = home.height = 64;
+    const hc = home.getContext("2d");
+    if (hc) {
+      hc.strokeStyle = COLORS.brass;
+      hc.lineWidth = 7;
+      hc.lineCap = "round";
+      hc.lineJoin = "round";
+      hc.beginPath();
+      hc.moveTo(50, 8);
+      hc.lineTo(16, 32); // 꼭짓점이 성계를 향한다
+      hc.lineTo(50, 56);
+      hc.stroke();
+    }
+    this.homeMark = mk(new THREE.CanvasTexture(home), 0);
+
+    // 갈매기 하나는 방향을 말하지만 **무엇의** 방향인지는 말하지 않는다.
+    // 검은 프레임에 홀로 뜨는 표식이므로 이름을 같이 단다(돌지 않는다).
+    const word = document.createElement("canvas");
+    word.width = 256;
+    word.height = 64;
+    const dc = word.getContext("2d");
+    if (dc) {
+      dc.font = "500 34px 'Noto Serif KR', serif";
+      dc.fillStyle = COLORS.brass;
+      dc.textAlign = "center";
+      dc.textBaseline = "middle";
+      dc.fillText("성계", 128, 34);
+    }
+    this.homeLabel = mk(new THREE.CanvasTexture(word), 0);
   }
 
   private authorAt(i: number): Author | undefined {
@@ -1527,6 +1648,11 @@ export class UniverseScene {
       .copy(pointAt(0.02, 0, 0))
       .sub(pointAt(-0.02, 0, 0))
       .normalize();
+    // 새 회랑에 들어서면 입구에 선다. 걸어 둔 자리와 돌린 고개는 그 회랑의 것이다.
+    this.walkYear = span.yStart + 0.8;
+    this.walkVel = 0;
+    this.lookYaw = 0;
+    this.lookPitch = 0;
 
     // ——— 재질: 벽은 지각과 같은 종이 ———
     const wallMat = this.crustWallMaterial(rec);
@@ -2333,51 +2459,74 @@ export class UniverseScene {
   // camera
   // -------------------------------------------------------------------------
 
+  /**
+   * 회랑의 자세 — **걷는 사람의 좌표 하나**(`year`)와 고개 각도 둘로 완전히
+   * 결정된다. 이전 판은 `yStart + 0.8` 을 상수로 박아 두었고, 그래서 착륙은
+   * 자세였지 자리가 아니었다: 입구에 세워 놓고 회랑을 보여 줄 수는 있어도
+   * 회랑을 걸을 수는 없었다.
+   *
+   * 입구 값(year = yStart + 0.8, yaw = pitch = 0)에서 이 함수는 R12-d 의
+   * 착륙 자세와 **같은 값**을 낸다 — 진입 계약은 그대로 성립한다.
+   */
+  private corridorPose(
+    year: number,
+    yaw0: number,
+    pitch0: number
+  ): { eye: THREE.Vector3; dir: THREE.Vector3; up: THREE.Vector3; look: THREE.Vector3; L: number } | null {
+    const f = this.corridorFrame;
+    if (!f) return null;
+    // 회랑의 착륙 자세 — 서가 앞에 서서 회랑을 따라 내려다본다. 주시점은 회랑
+    // 안쪽(연도가 자라는 방향)이고, 눈높이는 사람이 서가 앞에 선 키다.
+    // 위쪽 1/3 에 하늘이 남고, 지평선이 곡선으로 보인다.
+    const thEye = corridorTheta(year, f.span, f.cellArc);
+    // 세로 화면은 가로 시야를 잃는다(42° 세로 fov 기준: 가로 63° → 25°).
+    // 넓은 화면의 자세를 그대로 쓰면 서가는 왼쪽 가장자리의 한 조각으로
+    // 밀려나고 화면의 대부분이 빈 지면이 된다(실측). fov 는 건드리지
+    // 않는다 — 별의 겉보기 크기가 그 값에 매여 있다. 대신 **서 있는
+    // 자리**를 바꾼다: 벽에서 한 걸음 물러나 몸을 서가 쪽으로 돌린다.
+    // 세로 프레임에는 물러나며 사라지는 서가가 세로로 앉는다.
+    const port = Math.min(1, Math.max(0, (1.15 - this.camera.aspect) / 0.5));
+    const lat = f.bh * (1.9 + 1.0 * port);
+    const eye = this.corridorLatPoint(thEye, lat, f.eyeLift);
+    const n = eye.clone().sub(f.center).normalize();
+    const fwd = f.fwd.clone().addScaledVector(n, -f.fwd.dot(n)).normalize();
+    // 횡 방향 = 경로 법선(N). 프레임과 같은 평행이동이라 좌우가 뒤집히지 않는다.
+    const side = this.corridorLatPoint(thEye, lat + f.bh, f.eyeLift).sub(eye).normalize();
+    // side 는 서가에서 **멀어지는** 쪽이다. 넓은 화면에서는 +5° 로 살짝
+    // 틀어 서가를 왼쪽에 두고, 세로 화면에서는 음수로 돌려 서가를 화면
+    // 한가운데로 데려온다.
+    const yaw = ((5 - 20 * port) * Math.PI) / 180 + yaw0;
+    // 피치는 접평면이 아니라 **보이는 지평선** 기준이다. 작은 행성의 지평선은
+    // 접평면보다 훨씬 아래에 있다(눈높이 0.12 에 반경 2.6 이면 침하 ≈ 17°).
+    const hEye = f.radius * f.eyeLift;
+    const dip = Math.acos(f.radius / (f.radius + hEye));
+    // 세로 화면은 서가로 몸을 돌린 만큼 하늘을 잃는다 — 고개를 조금 든다.
+    const pitch = ((9 + 5 * port) * Math.PI) / 180 - dip + pitch0;
+    const dir = fwd
+      .clone()
+      .multiplyScalar(Math.cos(yaw))
+      .addScaledVector(side, Math.sin(yaw))
+      .multiplyScalar(Math.cos(pitch))
+      .addScaledVector(n, Math.sin(pitch))
+      .normalize();
+    const L = f.cellArc * f.radius * 10;
+    return { eye, dir, up: n.clone(), look: eye.clone().addScaledVector(dir, L), L };
+  }
+
   private retarget(): void {
     const s = this.state;
+    // 새로 고르거나 착륙하면 궤도는 다시 이어진다
+    this.orbitBroken = false;
+    this.thrust = 0;
     if (s.landedId) {
       const f = this.corridorFrame;
       if (!f) return;
-      // 회랑의 착륙 자세 — 입구에 서서 회랑을 따라 내려다본다. 주시점은 회랑
-      // 안쪽(연도가 자라는 방향)이고, 눈높이는 사람이 서가 앞에 선 키다.
-      // 위쪽 1/3 에 하늘이 남고, 지평선이 곡선으로 보인다.
-      const thEye = corridorTheta(f.span.yStart + 0.8, f.span, f.cellArc);
-      // 세로 화면은 가로 시야를 잃는다(42° 세로 fov 기준: 가로 63° → 25°).
-      // 넓은 화면의 자세를 그대로 쓰면 서가는 왼쪽 가장자리의 한 조각으로
-      // 밀려나고 화면의 대부분이 빈 지면이 된다(실측). fov 는 건드리지
-      // 않는다 — 별의 겉보기 크기가 그 값에 매여 있다. 대신 **서 있는
-      // 자리**를 바꾼다: 벽에서 한 걸음 물러나 몸을 서가 쪽으로 돌린다.
-      // 세로 프레임에는 물러나며 사라지는 서가가 세로로 앉는다.
-      const port = Math.min(1, Math.max(0, (1.15 - this.camera.aspect) / 0.5));
-      const lat = f.bh * (1.9 + 1.0 * port);
-      const eye = this.corridorLatPoint(thEye, lat, f.eyeLift);
-      const n = eye.clone().sub(f.center).normalize();
-      const fwd = f.fwd.clone().addScaledVector(n, -f.fwd.dot(n)).normalize();
-      // 횡 방향 = 경로 법선(N). 프레임과 같은 평행이동이라 좌우가 뒤집히지 않는다.
-      const side = this.corridorLatPoint(thEye, lat + f.bh, f.eyeLift).sub(eye).normalize();
-      // side 는 서가에서 **멀어지는** 쪽이다. 넓은 화면에서는 +5° 로 살짝
-      // 틀어 서가를 왼쪽에 두고, 세로 화면에서는 음수로 돌려 서가를 화면
-      // 한가운데로 데려온다.
-      const yaw = ((5 - 20 * port) * Math.PI) / 180;
-      // 피치는 접평면이 아니라 **보이는 지평선** 기준이다. 작은 행성의 지평선은
-      // 접평면보다 훨씬 아래에 있다(눈높이 0.12 에 반경 2.6 이면 침하 ≈ 17°).
-      const hEye = f.radius * f.eyeLift;
-      const dip = Math.acos(f.radius / (f.radius + hEye));
-      // 세로 화면은 서가로 몸을 돌린 만큼 하늘을 잃는다 — 고개를 조금 든다.
-      const pitch = ((9 + 5 * port) * Math.PI) / 180 - dip;
-      const dir = fwd
-        .clone()
-        .multiplyScalar(Math.cos(yaw))
-        .addScaledVector(side, Math.sin(yaw))
-        .multiplyScalar(Math.cos(pitch))
-        .addScaledVector(n, Math.sin(pitch))
-        .normalize();
-      const L = f.cellArc * f.radius * 10;
-      const tgt = eye.clone().addScaledVector(dir, L);
-      this.landTarget = tgt;
-      this.landUp = n.clone();
+      const p = this.corridorPose(this.walkYear, this.lookYaw, this.lookPitch);
+      if (!p) return;
+      this.landTarget = p.look;
+      this.landUp = p.up;
       this.controls.minDistance = f.bh * 0.5;
-      this.flyTo(tgt, L, 1400, dir.clone().negate());
+      this.flyTo(p.look, p.L, 1400, p.dir.clone().negate());
       return;
     }
     if (s.focusId) {
@@ -2483,6 +2632,58 @@ export class UniverseScene {
     this.anim = null;
   }
 
+  /**
+   * 추력 배율 — **가까울수록 느려진다.** 성계는 반경 900 인데 한 노치가 225를
+   * 미는 판에서는, 한 번 더 굴리는 것이 별을 스쳐 지나 반대쪽 허공으로 나가는
+   * 일이 된다(실측: 보르헤스를 조준하고 밀었더니 camR 3241 에서 멈췄다).
+   * 접근 속도가 거리에 비례하면 별 앞에 **설 수** 있다.
+   */
+  private throttleScale(): number {
+    if (!Number.isFinite(this.nearD)) return 1;
+    return Math.max(0.1, Math.min(1, this.nearD / SHELL_R));
+  }
+
+  /** 입구 자세에서 카메라가 실제로 옮겨 간 거리 — 칸(연도) 단위 */
+  private walkedBays(): number {
+    const f = this.corridorFrame;
+    if (!f || !this.state.landedId) return 0;
+    const entry = this.corridorPose(f.span.yStart + 0.8, 0, 0);
+    if (!entry) return 0;
+    return Number((entry.eye.distanceTo(this.camera.position) / (f.cellArc * f.radius)).toFixed(2));
+  }
+
+  /**
+   * 여섯 칸 앞 바닥의 화면 좌표. 제자리에서 고개만 돌리면 이 점이 화면을
+   * 가로지르고, 걷지 않으면 세계 좌표는 그대로다 — "고개를 돌렸다"를 상태가
+   * 아니라 **프레임**에서 읽는 자리.
+   */
+  private corridorAheadPx(): [number, number] | null {
+    const f = this.corridorFrame;
+    if (!f || !this.state.landedId) return null;
+    const y = Math.min(f.span.yEnd - 0.3, this.walkYear + 6);
+    const p = this.corridorLatPoint(corridorTheta(y, f.span, f.cellArc), 0, 0.001);
+    const v = p.clone().project(this.camera);
+    if (v.z > 1) return null;
+    const r = this.renderer.domElement.getBoundingClientRect();
+    return [
+      Math.round(((v.x + 1) / 2) * r.width),
+      Math.round(((-v.y + 1) / 2) * r.height)
+    ];
+  }
+
+  /** 추력이 향하는 화면 좌표(CSS px, 뷰포트 기준) */
+  private aimPoint(): [number, number] {
+    const r = this.renderer.domElement.getBoundingClientRect();
+    const v = this.camera.position
+      .clone()
+      .addScaledVector(this.camera.getWorldDirection(new THREE.Vector3()), 1000)
+      .project(this.camera);
+    return [
+      Math.round(((v.x + 1) / 2) * r.width + r.left),
+      Math.round(((-v.y + 1) / 2) * r.height + r.top)
+    ];
+  }
+
   // -------------------------------------------------------------------------
   // interaction
   // -------------------------------------------------------------------------
@@ -2543,15 +2744,18 @@ export class UniverseScene {
 
   private onPointerDown = (e: PointerEvent): void => {
     this.cancelFly();
-    const w = this.pickWork(e);
-    if (w) {
-      this.cb.onPickWork(w);
+    // 주 포인터가 내려온다는 것은 **다른 포인터가 없다**는 뜻이다(포인터 이벤트
+    // 규약). 제스처 사이에 유령 포인터가 남으면 두 손가락이 세 개로 세어지고
+    // 핀치가 조용히 죽는다(실측: 손끝 세 번째 제스처부터 추력 0).
+    if (e.isPrimary) this.pointers.clear();
+    this.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (this.pointers.size === 2) {
+      const [a, b] = [...this.pointers.values()] as [{ x: number; y: number }, { x: number; y: number }];
+      this.pinchPrev = Math.hypot(a.x - b.x, a.y - b.y);
+      this.drag = null; // 두 손가락은 고르는 제스처가 아니다
       return;
     }
-    const s = this.pickStar(e);
-    if (!s) return;
-    if (this.aimFirst(s)) return;
-    this.cb.onPickAuthor(s);
+    this.drag = { id: e.pointerId, x: e.clientX, y: e.clientY, moved: 0 };
   };
 
   /**
@@ -2580,6 +2784,25 @@ export class UniverseScene {
   }
 
   private onPointerMove = (e: PointerEvent): void => {
+    const p = this.pointers.get(e.pointerId);
+    if (p) {
+      const dx = e.clientX - p.x;
+      const dy = e.clientY - p.y;
+      p.x = e.clientX;
+      p.y = e.clientY;
+      if (this.pointers.size >= 2) {
+        this.pinch();
+        return;
+      }
+      if (this.drag && this.drag.id === e.pointerId) {
+        this.drag.moved += Math.hypot(dx, dy);
+        // 회랑에서는 컨트롤을 쓰지 않는다 — 걷는 사람의 고개는 우리가 돌린다
+        if (this.walkMode()) this.look(dx, dy);
+      }
+      // 끄는 동안은 호버를 다시 세지 않는다. 둘러보는 내내 지나가는 별마다
+      // 실이 켜지면 "지목"이 지목이기를 그친다.
+      return;
+    }
     const s = this.pickStar(e);
     if (s !== this.state.hoveredId) {
       this.state.hoveredId = s;
@@ -2588,6 +2811,92 @@ export class UniverseScene {
     }
     this.renderer.domElement.style.cursor = s || this.pickWork(e) ? "pointer" : "grab";
   };
+
+  /**
+   * 고르는 것은 **떼는 순간**이다. 집던 자리에서 곧바로 골라 버리면 별에서
+   * 시작한 모든 둘러보기가 선택이 된다 — 자유 비행이 들어온 뒤로는 드래그가
+   * 여정의 기본 동작이므로, 누르는 순간의 선택은 오조작의 상시 원천이다.
+   */
+  private onPointerUp = (e: PointerEvent): void => {
+    this.pointers.delete(e.pointerId);
+    if (this.pointers.size < 2) this.pinchPrev = 0;
+    const d = this.drag;
+    this.drag = null;
+    if (!d || d.id !== e.pointerId || d.moved > DRAG_SLOP) return;
+    const w = this.pickWork(e);
+    if (w) {
+      this.cb.onPickWork(w);
+      return;
+    }
+    const s = this.pickStar(e);
+    if (!s) return;
+    if (this.aimFirst(s)) return;
+    this.cb.onPickAuthor(s);
+  };
+
+  private onWheel = (e: WheelEvent): void => {
+    e.preventDefault();
+    const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 400 : 1;
+    this.push(-e.deltaY * unit);
+  };
+
+  private pinch(): void {
+    if (this.pointers.size !== 2) return;
+    const [a, b] = [...this.pointers.values()] as [{ x: number; y: number }, { x: number; y: number }];
+    const d = Math.hypot(a.x - b.x, a.y - b.y);
+    if (this.pinchPrev > 0) this.push((d - this.pinchPrev) * 2.6);
+    this.pinchPrev = d;
+  }
+
+  /**
+   * 추력 한 곳 — 휠과 핀치가 같은 문으로 들어온다. `px` 는 "앞으로 민 거리".
+   * 붙잡고 있던 것(궤도·당긴 책)이 있으면 먼저 놓는다: 휠이 언제나 추력이라는
+   * 규칙이 성립하려면, 묶여 있지 않다는 증거가 같은 제스처 안에 있어야 한다.
+   */
+  private push(px: number): void {
+    if (!px) return;
+    if (this.state.landedId) {
+      if (this.anim) return; // 착륙·당김 비행 중에는 손대지 않는다
+      if (this.state.selectedWorkId) {
+        this.cb.onLeaveOrbit();
+        return;
+      }
+      if (!this.corridorFrame) return;
+      this.walkVel = Math.max(-WALK_MAX, Math.min(WALK_MAX, this.walkVel + px * WALK_PER_PX));
+      return;
+    }
+    this.cancelFly();
+    // 궤도를 끊는다 — 그러나 읽던 것은 그대로 둔다(멀어지면 그때 닫힌다)
+    if (this.state.focusId) this.orbitBroken = true;
+    const k = this.throttleScale();
+    const cap = THRUST_MAX * k;
+    this.thrust = Math.max(-cap, Math.min(cap, this.thrust + px * THRUST_PER_PX * k));
+  }
+
+  /** 회랑에서 고개를 돌린다 — 화면 1px 이 시야각 1px 이다 */
+  private look(dx: number, dy: number): void {
+    const h = this.renderer.domElement.clientHeight || 800;
+    const perPx = ((this.camera.fov * Math.PI) / 180 / h) * 1.6;
+    const yMax = (LOOK_YAW_MAX * Math.PI) / 180;
+    const pMax = (LOOK_PITCH_MAX * Math.PI) / 180;
+    this.lookYaw = Math.max(-yMax, Math.min(yMax, this.lookYaw - dx * perPx));
+    this.lookPitch = Math.max(-pMax, Math.min(pMax, this.lookPitch + dy * perPx));
+  }
+
+  /** 회랑을 걷고 있는가 — 착륙했고, 비행도 당김도 없다 */
+  private walkMode(): boolean {
+    return Boolean(
+      this.state.landedId && this.corridorFrame && !this.anim && !this.state.selectedWorkId
+    );
+  }
+
+  /** 하늘을 자유 비행 중인가 — 궤도에도 지면에도 묶여 있지 않다.
+   *  궤도는 **추력이 끊는다**(`orbitBroken`): 고른 것 주위를 도는 것과
+   *  그것을 읽는 것은 다른 일이므로, 손이 카메라를 잡았다고 해서 읽던 카드를
+   *  뺏지 않는다. 카드는 그 별에서 충분히 멀어질 때 닫힌다. */
+  private freeMode(): boolean {
+    return !this.state.landedId && !this.anim && (!this.state.focusId || this.orbitBroken);
+  }
 
   private onResize = (): void => {
     const w = this.host.clientWidth;
@@ -2617,13 +2926,37 @@ export class UniverseScene {
    * 램프 길이만큼 step() 을 동기로 돌린다 — 계약은 프레임 속도가 아니라
    * 상태를 읽는다.
    */
+  /**
+   * 원경으로 — 자유 비행이 데려간 곳에서 성계 전체가 보이는 자리로 돌아온다.
+   * **자유는 돌아올 길과 함께 준다**: 껍질 안으로 들어가 버리면 지도는 사라지고,
+   * 다시 만드는 유일한 방법이 새로고침이어서는 안 된다.
+   */
+  overview(): void {
+    this.thrust = 0;
+    this.orbitBroken = false;
+    this.landTarget = null;
+    this.skyPose.set(0, 420, CAM_SKY_DEFAULT);
+    this.flyTo(
+      new THREE.Vector3(0, 0, 0),
+      this.skyPose.length(),
+      1100,
+      this.skyPose.clone().normalize()
+    );
+  }
+
   settle(): void {
     if (this.anim) {
       this.anim.start = performance.now() - this.anim.dur;
       this.advance(performance.now());
     }
+    // 관성은 시간의 함수다. settle 안에서 dt 는 0 에 가까우므로, 고정 간격을
+    // 넘겨 **운동을 실제로 소진**시킨다 — 그러지 않으면 추력을 넣은 하네스가
+    // "아직 안 움직였다"를 읽는다.
     const n = this.state.reducedMotion ? 2 : 48;
-    for (let i = 0; i < n; i++) this.step();
+    for (let i = 0; i < n; i++) this.step(16);
+    // 관성이 남아 있으면 끝까지 보낸다 — 계약은 "휠 뒤 어딘가"가 아니라
+    // **활공이 끝난 자리**를 읽어야 재현된다.
+    for (let i = 0; i < 240 && (this.thrust || this.walkVel); i++) this.step(16);
     if (this.state.landedId && this.foldK < 1) {
       this.foldK = 1;
       this.foldDone = true;
@@ -2687,9 +3020,94 @@ export class UniverseScene {
 
   private lastStep = 0;
 
-  private step(): void {
+  /**
+   * 카메라를 손에 넘기는 한 곳. 세 모드가 여기서 갈린다:
+   *  · 회랑 — **걷는다.** 자세는 walkYear/lookYaw/lookPitch 가 전부 결정한다.
+   *  · 하늘(자유) — 피벗을 시선 앞에 둔다. 드래그 = 고개 돌리기, 추력 = 전진.
+   *  · 궤도·비행 — 예전 그대로 대상 주위를 돈다.
+   *
+   * 자유 비행에서 컨트롤을 버리지 않는 이유: 표현 사다리가 이미 거리의
+   * 함수이므로, 필요한 것은 새 리그가 아니라 **주시점을 앞에 두는 한 줄**이다.
+   */
+  private moveCamera(dt: number): void {
+    const sec = dt / 1000;
+    // 운동 신호는 **손이 카메라를 잡고 있는 동안**만이다. 연출된 비행(착륙·궤도
+    // 진입)까지 여기 넣으면, 관계 행을 눌러 옮겨 갈 때마다 시트가 접혔다 펴지며
+    // 깜박인다 — 목적지가 그 카드인 이동에서 카드를 치우는 것은 손해다.
+    let moving = false;
+    const walking = this.walkMode();
+    // 회랑에서 컨트롤을 재우는 줄이 여기 있었다("깨어 있으면 드래그가 회전량을
+    // 쌓아 두었다가 당김 리프레임에서 터진다"). **변이 스윕이 그 주장을
+    // 반증했다** — 지워도 어떤 계약도 죽지 않았고, 직접 재 보니 걷는 동안
+    // 쌓인 델타는 `update()` 를 건너뛰는 프레임마다 감쇠로 흩어져 당김 자세를
+    // 흔들지 못했다. 측정되지 않는 방어는 코드가 아니라 미신이므로 걷어낸다.
+    if (walking) {
+      const f = this.corridorFrame as NonNullable<typeof this.corridorFrame>;
+      if (this.walkVel) {
+        if (this.state.reducedMotion) {
+          this.walkYear += this.walkVel / -Math.log(WALK_DAMP);
+          this.walkVel = 0;
+        } else {
+          this.walkYear += this.walkVel * sec;
+          this.walkVel *= Math.pow(WALK_DAMP, sec);
+          if (Math.abs(this.walkVel) < 0.02) this.walkVel = 0;
+        }
+        moving = true;
+      }
+      const lo = f.span.yStart + 0.3;
+      const hi = f.span.yEnd - 0.3;
+      if (this.walkYear <= lo || this.walkYear >= hi) this.walkVel = 0;
+      this.walkYear = Math.max(lo, Math.min(hi, this.walkYear));
+      const p = this.corridorPose(this.walkYear, this.lookYaw, this.lookPitch);
+      if (p) {
+        this.camera.position.copy(p.eye);
+        this.controls.target.copy(p.look);
+        this.setCameraUp(p.up);
+        this.camera.lookAt(p.look);
+      }
+    } else if (this.freeMode()) {
+      // 피벗이 **앞**에 오면 회전의 부호가 뒤집힌다. 대상을 돌려 보는 궤도에서는
+      // 손가락을 따라 대상이 오는 것이 맞지만(붙잡고 돌린다), 하늘을 둘러볼
+      // 때는 하늘이 손가락을 따라와야 한다 — 별지도의 규약이고, 손끝에서는
+      // 그 반대가 곧바로 "미끄러진다"로 읽힌다. 그래서 부호도 모드의 일부다.
+      this.controls.rotateSpeed = -ROTATE_SPEED;
+      const fwd = this.camera.getWorldDirection(new THREE.Vector3());
+      if (this.thrust) {
+        if (this.state.reducedMotion) {
+          this.camera.position.addScaledVector(fwd, this.thrust / -Math.log(THRUST_DAMP));
+          this.thrust = 0;
+        } else {
+          this.camera.position.addScaledVector(fwd, this.thrust * sec);
+          this.thrust *= Math.pow(THRUST_DAMP, sec);
+          if (Math.abs(this.thrust) < 1) this.thrust = 0;
+        }
+        moving = true;
+      }
+      this.controls.target.copy(this.camera.position).addScaledVector(fwd, FREE_PIVOT);
+      this.controls.update();
+      // 성계를 벗어나지도, 항성을 관통하지도 않는다. **자리를 잡는 곳은 여기
+      // 한 곳이다** — 추력과 회전(피벗이 앞에 있으므로 회전도 카메라를 옮긴다)
+      // 둘 다 자리를 바꾸므로, 두 곳에서 잡으면 어느 한쪽을 지워도 계약이
+      // 초록으로 남는다(변이 스윕 실측, 2026-08-25: 생존 2건이 이 그림자였다).
+      const r = this.camera.position.length();
+      if (r > CAM_SKY_MAX || r < FREE_R_MIN) {
+        this.camera.position.setLength(Math.max(FREE_R_MIN, Math.min(CAM_SKY_MAX, r)));
+        this.thrust = 0;
+      }
+    } else {
+      this.controls.rotateSpeed = ROTATE_SPEED;
+      this.thrust = 0;
+      this.controls.update();
+    }
+    if (moving !== this.moving) {
+      this.moving = moving;
+      this.cb.onMotion(moving);
+    }
+  }
+
+  private step(dtOverride?: number): void {
     const nowMs = performance.now();
-    const dt = this.lastStep ? Math.min(64, nowMs - this.lastStep) : 16;
+    const dt = dtOverride ?? (this.lastStep ? Math.min(64, nowMs - this.lastStep) : 16);
     this.lastStep = nowMs;
     // 이륙이 끝나면 회랑을 걷는다(비행 중에는 서 있다)
     if (this.corridorDeparting && !this.anim) {
@@ -2707,19 +3125,33 @@ export class UniverseScene {
         ? this.corridorFrame.bh * 0.5
         : (this.radii[this.index.get(this.state.landedId) ?? 0] ?? 2) * 1.35
       : 20;
-    this.controls.update();
+    this.moveCamera(dt);
 
     const h = this.renderer.domElement.clientHeight || 800;
     const dist = this.camera.position.distanceTo(this.controls.target);
+    const camR = this.camera.position.length();
 
     // 별 ↔ 천체: 겉보기 크기가 결정한다
     let resolved = 0;
     let surfaceId: string | null = null;
+    // 가장 가까운 별과 그 거리 — 자유 비행의 "나는 지금 어디인가". 미준비
+    // 작가는 영영 천체로 분해되지 않으므로(항성으로 남는다) 도착을 말할 수
+    // 있는 값은 이것뿐이다.
+    let nearId: string | null = null;
+    let nearD = Infinity;
+    // 분해된 천체 중 가장 가까운 것 — 자산 사전 로드의 방아쇠
+    let bodyNearId: string | null = null;
+    let bodyNearD = Infinity;
     const alpha = this.starGeo.getAttribute("aAlpha") as THREE.BufferAttribute;
     for (let i = 0; i < this.order.length; i++) {
       const id = this.order[i] as string;
       const center = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
       const d = center.distanceTo(this.camera.position);
+      if (d < nearD) {
+        nearD = d;
+        nearId = id;
+      }
+
       // 배율에는 준비도 조건을 두지 않는다. 준비도 게이트는 바로 아래 표현
       // 사다리 한 곳에만 있다 — 같은 규칙을 두 곳에 두면 **서로를 가려**
       // 한쪽을 지워도 계약이 초록으로 남는다(변이 스윕 실측, 2026-08-20).
@@ -2748,9 +3180,16 @@ export class UniverseScene {
           // 확대된 상태에서도 지각을 칠한다. 아끼면 중경의 주인공이 **무늬 없는
           // 공**이 되고, 그것은 미준비 작가에게 금지한 바로 그 화면이다.
           // 착륙이 더하는 것은 지각이 아니라 서가와 읽을 것이다.
-          // 60px 은 확대된 중경의 실측 겉보기 반경(86px)보다 낮다 — 중경의
-          // 주인공이 지각을 갖고 등장한다.
-          if (ap > 60) this.paintCrust(body);
+          // 문턱은 없앴다(R12-f). 자유 비행은 **누르지 않고** 별에 다가가므로,
+          // 분해되는 첫 순간이 곧 그 천체의 첫인상이다 — 60px 을 기다리면 그
+          // 첫인상이 무늬 없는 공이고, 그것은 미준비 작가에게 착륙을 금지한
+          // 바로 그 화면이다(실측: 조준해서 밀어 분해시킨 카프카가 민무늬 구슬).
+          // paintCrust 는 멱등이고 착륙 가능 작가는 셋뿐이라 값이 싸다.
+          this.paintCrust(body);
+          if (d < bodyNearD) {
+            bodyNearD = d;
+            bodyNearId = id;
+          }
           if (rep === "surface") surfaceId = id;
         }
         // 구가 보이면 별 스프라이트는 물러난다 — 같은 객체가 두 번 그려지지 않게
@@ -2778,7 +3217,36 @@ export class UniverseScene {
     }
     alpha.needsUpdate = true;
 
-    const stage: Stage = surfaceId ? "surface" : resolved > 0 || dist < 1250 ? "approach" : "sky";
+    // 단계의 두 번째 절은 원래 "고른 것에 렌즈 거리만큼 가까운가"였고, 그것을
+    // `controls.target` 까지의 거리로 재고 있었다. 자유 비행은 그 주시점을 늘
+    // 시선 앞 150 에 두므로 같은 식이 상수가 된다 — **고른 별까지의 거리**로
+    // 직접 잰다(궤도 아카이브는 분해되지 않으므로 이 절이 유일한 근거다).
+    const focusIdx = this.state.focusId ? this.index.get(this.state.focusId) : undefined;
+    const focusDist =
+      focusIdx === undefined
+        ? Infinity
+        : (this.dirs[focusIdx] as THREE.Vector3)
+            .clone()
+            .multiplyScalar(SHELL_R)
+            .distanceTo(this.camera.position);
+    this.nearD = nearD;
+    // 궤도를 끊고 **떠나면** 읽던 것도 닫힌다 — 렌즈 거리의 두 배가 "떠났다"의 자
+    // 1.6배 = 렌즈 거리 1200 에서 1920. 2배(2400)는 **닿지 않는다** — 카메라가
+    // 성계 밖 한계(3200)에 걸려 실측 최대가 2372 였다(계약이 잡았다).
+    if (this.orbitBroken && this.state.focusId && focusDist > LENS_DIST * 1.6)
+      this.cb.onLeaveOrbit();
+    // 성계 전체가 보이던 자리에서 얼마나 들어왔는가 — 돌아올 길의 조건
+    const deep = this.freeMode() && camR < CAM_SKY_DEFAULT * 0.82;
+    if (deep !== this.lastDeep) {
+      this.lastDeep = deep;
+      this.cb.onDeep(deep);
+    }
+    const near = this.state.landedId ?? bodyNearId;
+    if (near !== this.lastNearBody) {
+      this.lastNearBody = near;
+      this.cb.onNear(near);
+    }
+    const stage: Stage = surfaceId ? "surface" : resolved > 0 || focusDist < 1250 ? "approach" : "sky";
     if (stage !== this.stage) {
       this.stage = stage;
       this.cb.onStageChange(stage);
@@ -2802,8 +3270,10 @@ export class UniverseScene {
       this.scene.fog = null;
     }
     this.readLamp.position.copy(this.camera.position);
+    // 좌표 격자는 천구의 것이다 — 관측자가 껍질에서 얼마나 떨어졌는가로 옅어진다
+    // (주시점까지의 거리로 재던 이전 판은 자유 비행에서 상수가 된다).
     (this.graticule.material as THREE.LineBasicMaterial).opacity =
-      0.5 * Math.max(0, Math.min(1, (dist - 900) / 900));
+      0.5 * Math.max(0, Math.min(1, (camR - SHELL_R) / 900));
     this.sunGlow.visible = stage !== "surface";
     (this.constellation.material as THREE.LineBasicMaterial).opacity =
       stage === "surface" ? 0.25 : this.state.focusId ? 0.4 : 0.9;
@@ -2892,6 +3362,57 @@ export class UniverseScene {
       const target = rec.radius * want;
       if (Math.abs(rec.mesh.scale.x - target) > 1e-4) rec.mesh.scale.setScalar(target);
     }
+    // ——— 성계 방향 (R12-f) ———
+    // 자유 비행은 등을 돌릴 자유까지 준다: 껍질 밖에서 바깥을 보면 프레임이
+    // **완전히 빈다**(실측 — 휠 30번이면 검은 화면 하나가 남는다). 카메라를
+    // 대신 돌리지 않는다. 세계가 어느 쪽인지만 말하고, 돌리는 것은 손이다.
+    let onScreen = 0;
+    if (!this.state.landedId) {
+      const v = new THREE.Vector3();
+      for (let i = 0; i < this.order.length && onScreen === 0; i++) {
+        v.copy(this.dirs[i] as THREE.Vector3).multiplyScalar(SHELL_R).project(this.camera);
+        if (v.z <= 1 && Math.abs(v.x) <= 1 && Math.abs(v.y) <= 1) onScreen++;
+      }
+    }
+    this.lastOnScreen = onScreen;
+    if (onScreen || this.state.landedId) {
+      this.homeMark.visible = false;
+      this.homeLabel.visible = false;
+    } else {
+      const o = new THREE.Vector3(0, 0, 0).project(this.camera);
+      let nx = o.x;
+      let ny = o.y;
+      if (o.z > 1) {
+        // 성계가 등 뒤에 있으면 투영은 반대편으로 나온다 — 뒤집어 읽는다
+        nx = -nx;
+        ny = -ny;
+      }
+      const len = Math.hypot(nx, ny) || 1;
+      nx /= len;
+      ny /= len;
+      const vw2 = this.renderer.domElement.clientWidth || 1600;
+      const camRight = new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 0);
+      const camUp2 = new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 1);
+      const fwd2 = this.camera.getWorldDirection(new THREE.Vector3());
+      const D = 60;
+      const wpp = (2 * Math.tan((this.camera.fov * Math.PI) / 360) * D) / h;
+      const rad = Math.min(vw2, h) * 0.4;
+      this.homeMark.position
+        .copy(this.camera.position)
+        .addScaledVector(fwd2, D)
+        .addScaledVector(camRight, nx * rad * wpp)
+        .addScaledVector(camUp2, ny * rad * wpp);
+      this.homeMark.scale.setScalar(wpp * 46);
+      // 텍스처의 꼭짓점은 국소 -x 를 향한다 — 그것이 (nx, ny) 를 가리키게 돌린다
+      (this.homeMark.material as THREE.SpriteMaterial).rotation = Math.atan2(-ny, -nx);
+      this.homeMark.visible = true;
+      this.homeLabel.position
+        .copy(this.homeMark.position)
+        .addScaledVector(camRight, -nx * 46 * wpp)
+        .addScaledVector(camUp2, -ny * 46 * wpp);
+      this.homeLabel.scale.set(wpp * 104, wpp * 26, 1);
+      this.homeLabel.visible = true;
+    }
     this.updateLabels();
     this.renderer.render(this.scene, this.camera);
     let drawn = 0;
@@ -2937,6 +3458,60 @@ export class UniverseScene {
         number
       ],
       chromeRects: this.chromeRects.length,
+      // ——— 카메라 주권 (R12-f) ———
+      /** 원점(항성)으로부터의 거리 — 자유 비행에서 `dist` 는 피벗까지의 상수다 */
+      camR: Math.round(camR),
+      /** 카메라가 스스로 움직이는 중인가(추력·걷기·비행) */
+      moving: this.moving,
+      // 피벗은 **의도가 아니라 결과**로 잰다. `freeMode() ? FREE_PIVOT : 0` 이라고
+      // 쓰면 주시점을 앞에 놓는 줄을 지워도 이 값이 150 으로 남는다 — 계측이
+      // 기제를 가리는 자리다(R12-e 에서 값을 치른 형태).
+      pivot: this.freeMode() ? Math.round(dist) : 0,
+      /** 회랑에서 서 있는 해 — 걸으면 바뀐다 */
+      walkYear: this.state.landedId && this.corridorFrame ? Number(this.walkYear.toFixed(2)) : null,
+      /** 입구에서 **실제로** 걸어 나온 거리(칸 단위). walkYear 는 상태이고 이것은
+       *  카메라다 — 자세가 그 상태를 읽지 않으면 여기서 드러난다. */
+      walked: this.walkedBays(),
+      /** 여섯 칸 앞 바닥의 화면 좌표 — 고개를 돌리면 프레임을 가로지른다 */
+      aheadPx: this.corridorAheadPx(),
+      /** 고개 각도(도) — 회랑에서만 */
+      look: [
+        Math.round((this.lookYaw * 180) / Math.PI),
+        Math.round((this.lookPitch * 180) / Math.PI)
+      ] as [number, number],
+      /** 프레임 안에 자리를 가진 별이 하나라도 있는가 (0 이면 성계 표식이 뜬다) */
+      onScreenStars: this.lastOnScreen,
+      homeMark: this.homeMark.visible,
+      /** 항성(정본 코퍼스)의 화면 좌표 — 성계의 원점이자 유일한 광원 */
+      sunPx: (() => {
+        const v = new THREE.Vector3(0, 0, 0).project(this.camera);
+        if (v.z > 1 || Math.abs(v.x) > 1 || Math.abs(v.y) > 1) return null;
+        const rect = this.renderer.domElement.getBoundingClientRect();
+        return [
+          Math.round(((v.x + 1) / 2) * rect.width + rect.left),
+          Math.round(((-v.y + 1) / 2) * rect.height + rect.top)
+        ] as [number, number];
+      })(),
+      /** 추력이 향하는 화면 좌표. 안전 띠가 프레임을 밀므로 기하학적 중심과
+       *  다르다 — 하네스는 "가운데"가 아니라 **여기**로 별을 조준한다. */
+      aim: this.aimPoint(),
+      /** 가장 가까운 별과 그 거리 */
+      nearest: [nearId, Math.round(nearD)] as [string | null, number],
+      /** 다른 이유 없이 가깝다는 것만으로 이름을 받은 별 수 */
+      nearNamed: this.lastNearNamed,
+      /** 지각이 실제로 칠해진 천체 수 — 자유 비행의 도착이 무늬 없는 공이
+       *  아니라는 증거. 착륙 상태가 아니어도 센다. */
+      crustPainted: [...this.bodies.values()].filter((b) => b.textured).length,
+      /** 원경에서 충분히 들어왔는가 — 돌아올 길이 떠 있어야 하는 상태 */
+      deep: this.lastDeep,
+      /** 고른 별까지의 거리 — 단계 판정의 두 번째 절이자 "떠났다"의 자 */
+      focusDist: Number.isFinite(focusDist) ? Math.round(focusDist) : null,
+      /** 이번 프레임의 추력 배율 — 가까울수록 느려진다 */
+      throttle: Number(this.throttleScale().toFixed(2)),
+      /** 회랑을 걸을 수 있는 상태인가 — 비행도 당김도 없다 */
+      walking: this.walkMode(),
+      /** 진행 중인 연출 비행이 있는가 */
+      flying: Boolean(this.anim),
       ...this.arrowMetrics(),
       ...this.corridorMetrics(),
       occludedLabels: this.lastOccludedLabels,
@@ -3338,6 +3913,8 @@ export class UniverseScene {
   /** 이번 프레임에 초점 원반에 걸려 접은 이름 수 — 계약은 이것이 아니라
    *  화면에 남은 라벨(labelsOverFocus)을 읽는다 */
   private lastOccludedLabels = 0;
+  /** 다른 이유 없이 **가깝다는 것만으로** 이름을 받은 별 수 (R12-f) */
+  private lastNearNamed = 0;
 
   /** 판은 표면에 서 있고(+Y = 지면 법선) 관측자를 향해 돈다 — 축 고정 빌보드 */
 
@@ -3350,6 +3927,7 @@ export class UniverseScene {
     const camDir = this.camera.getWorldDirection(new THREE.Vector3());
     const s = this.state;
     this.lastOccludedLabels = 0;
+    let nearNamed = 0;
     const disc = this.focusDiscPx();
 
     if (this.stage !== "surface") {
@@ -3392,7 +3970,21 @@ export class UniverseScene {
         if (!a) continue;
         if (starLife(a, s.year).presence <= 0.05) continue;
         const inGroupFocus = s.lensGroupFocus?.has(id) ?? false;
-        const named =
+        // **다가간 별은 이름을 갖는다** (R12-f). 겉보기 크기는 영향력에 매여
+        // 있으므로(성좌 아틀라스의 형식), 미준비 작가는 아무리 가까이 가도
+        // 점의 크기가 변하지 않는다 — 자유 비행이 들어온 뒤로 그것은 "날아가도
+        // 아무 일도 일어나지 않는다"가 된다(실측: 보르헤스 192단위, 이름 없음).
+        // 크기를 거리에 매는 대신 **이름을** 거리에 맨다: 형식은 그대로 두고,
+        // 접근에 대한 응답만 돌려준다.
+        const dCam = (this.dirs[i] as THREE.Vector3)
+          .clone()
+          .multiplyScalar(SHELL_R)
+          .distanceTo(this.camera.position);
+        const near = dCam < NAME_NEAR;
+        // 다른 이유가 하나도 없는데 **가깝다는 것만으로** 이름을 받는 별을
+        // 따로 센다. 그러지 않으면 등급이 높아 어차피 이름을 받는 별을 두고
+        // "다가가면 이름이 뜬다"를 주장하게 된다(스윕 생존 실측).
+        const otherwise =
           id === s.focusId ||
           id === s.hoveredId ||
           inGroupFocus ||
@@ -3400,7 +3992,9 @@ export class UniverseScene {
           s.read.has(id) ||
           s.want.has(id) ||
           (this.mags[i] ?? 0) > (sky ? 0.62 : 0.3);
+        const named = otherwise || near;
         if (!named) continue;
+        if (near && !otherwise) nearNamed++;
         const world = this.effectivePos(id, new THREE.Vector3());
         const toward = world.clone().sub(this.camera.position).normalize();
         if (toward.dot(camDir) < 0.28) continue;
@@ -3463,6 +4057,9 @@ export class UniverseScene {
             (id === s.hoveredId ? 200 : 0) +
             (inGroupFocus ? 300 : 0) +
             (s.read.has(id) ? 60 : 0) +
+            // 가까울수록 먼저 — 예산이 모자랄 때 남는 것은 지나치는 별이 아니라
+            // 다가간 별이어야 한다
+            (near ? 260 * (1 - dCam / NAME_NEAR) : 0) +
             mag * 100,
           x: sx,
           y: sy,
@@ -3470,9 +4067,13 @@ export class UniverseScene {
           ground: "sky",
           // 층이 켜져 있고 이 별이 그 층 밖이면 글자를 접는다(틱만 남는다).
           // 선택·호버·이웃·개인 기록은 접지 않는다 — 방향감이 사라진다.
+          // **다가간 별도 접지 않는다**(R12-f): 층은 색인이지 필터가 아니고,
+          // 코앞의 별 이름이 틱으로 접혀 있으면 자유 비행은 "날아가도 아무 일도
+          // 없다"가 된다(실측: 보르헤스 192단위에서 라벨은 있었고 접혀 있었다).
           muted:
             Boolean(s.lens) &&
             state === "normal" &&
+            !near &&
             !s.lensMarks.has(id) &&
             !s.read.has(id) &&
             !s.want.has(id)
@@ -3563,6 +4164,7 @@ export class UniverseScene {
         }
       }
     }
+    this.lastNearNamed = nearNamed;
     this.lastSkyLabels = items.filter((i) => i.ground === "sky").length;
     this.lastCrustLabels = items.filter((i) => i.ground === "crust").length;
     // 종이 슬립은 **작품 라벨만** 가질 수 있다. 작가 이름이 슬립을 달면
@@ -3586,6 +4188,9 @@ export class UniverseScene {
     cancelAnimationFrame(this.raf);
     this.renderer.domElement.removeEventListener("pointerdown", this.onPointerDown);
     this.renderer.domElement.removeEventListener("pointermove", this.onPointerMove);
+    this.renderer.domElement.removeEventListener("pointerup", this.onPointerUp);
+    this.renderer.domElement.removeEventListener("pointercancel", this.onPointerUp);
+    this.renderer.domElement.removeEventListener("wheel", this.onWheel);
     window.removeEventListener("resize", this.onResize);
     this.labels.dispose();
     this.controls.dispose();

@@ -118,7 +118,12 @@ const GATED = [
   "literary-planet/data",
   "literary-planet/tests",
   "literary-planet/public",
+  // 계약 파일 **전부**다. 넓은 화면 하나만 적혀 있던 동안 손안·비행 계약이
+  // 바뀌어도 리포트는 "이 트리를 설명한다"고 말했다 — 게이트가 자기 눈이 닿는
+  // 곳만 지키면 그것은 게이트가 아니다.
   "literary-planet/art-r11/verify-journey.mjs",
+  "literary-planet/art-r11/verify-flight.mjs",
+  "literary-planet/art-r11/verify-mobile.mjs",
   "literary-planet/package.json",
   "scripts"
 ];
