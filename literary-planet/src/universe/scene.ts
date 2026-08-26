@@ -552,6 +552,14 @@ export class UniverseScene {
     this.renderer.setClearColor(new THREE.Color(COLORS.bg), 1);
     host.appendChild(this.renderer.domElement);
     this.renderer.domElement.className = "universe-canvas";
+    // 손이 없는 관측자도 카메라를 잡을 수 있어야 한다 — 탭으로 닿고, 화살표로
+    // 고개를 돌리고, +/− 로 나아간다.
+    this.renderer.domElement.tabIndex = 0;
+    this.renderer.domElement.setAttribute("role", "application");
+    this.renderer.domElement.setAttribute(
+      "aria-label",
+      "성계. 화살표 키로 둘러보고 더하기·빼기 키로 앞뒤로 이동한다."
+    );
 
     this.camera = new THREE.PerspectiveCamera(42, w / h, 0.05, 24000);
     this.camera.position.set(0, 420, CAM_SKY_DEFAULT);
@@ -645,6 +653,7 @@ export class UniverseScene {
     this.renderer.domElement.addEventListener("pointerup", this.onPointerUp);
     this.renderer.domElement.addEventListener("pointercancel", this.onPointerUp);
     this.renderer.domElement.addEventListener("wheel", this.onWheel, { passive: false });
+    this.renderer.domElement.addEventListener("keydown", this.onKeyDown);
     window.addEventListener("resize", this.onResize);
     this.loop();
   }
@@ -2877,11 +2886,72 @@ export class UniverseScene {
   private look(dx: number, dy: number): void {
     const h = this.renderer.domElement.clientHeight || 800;
     const perPx = ((this.camera.fov * Math.PI) / 180 / h) * 1.6;
-    const yMax = (LOOK_YAW_MAX * Math.PI) / 180;
-    const pMax = (LOOK_PITCH_MAX * Math.PI) / 180;
-    this.lookYaw = Math.max(-yMax, Math.min(yMax, this.lookYaw - dx * perPx));
-    this.lookPitch = Math.max(-pMax, Math.min(pMax, this.lookPitch + dy * perPx));
+    this.turn(dx * perPx, dy * perPx);
   }
+
+  /**
+   * 고개를 돌린다 — **라디안 한 문**으로. 드래그(픽셀)와 키보드(고정 각)가
+   * 여기로 들어온다. 부호는 드래그 규약이다(양수 = 오른쪽/아래로 끄는 것 =
+   * 하늘이 그쪽으로 오는 것).
+   *
+   * 자유 비행에서는 제자리에서 카메라를 돌린다. 피벗은 다음 프레임에 새 시선
+   * 앞으로 다시 놓이므로, 드래그가 만드는 "앞의 한 점 주위를 도는" 것과 같은
+   * 결과가 된다 — 기제는 여전히 하나(주시점을 앞에 둔다)다.
+   */
+  private turn(yaw: number, pitch: number): void {
+    if (this.walkMode()) {
+      const yMax = (LOOK_YAW_MAX * Math.PI) / 180;
+      const pMax = (LOOK_PITCH_MAX * Math.PI) / 180;
+      this.lookYaw = Math.max(-yMax, Math.min(yMax, this.lookYaw - yaw));
+      this.lookPitch = Math.max(-pMax, Math.min(pMax, this.lookPitch + pitch));
+      return;
+    }
+    if (!this.freeMode()) return;
+    this.camera.rotateOnWorldAxis(this.camera.up, yaw);
+    this.camera.rotateX(pitch);
+  }
+
+  /**
+   * 손이 없는 관측자에게도 카메라를 준다. R12-f 이전에는 이동이 곧 선택이어서
+   * 검색과 카드만으로 성계를 다 볼 수 있었지만, 자유 비행이 탐험의 기본 동사가
+   * 된 뒤로 **키보드 사용자에게는 그 동사가 아예 없었다** — R12-e 의 일곱 번째
+   * 수리("인과 채널을 부를 수단이 캔버스 호버뿐")와 같은 결함이다.
+   *
+   * 규칙은 하나다: 화살표는 고개, `+`/`-`(와 PageUp/PageDown)는 앞뒤.
+   * 하늘에서는 추력이고 회랑에서는 걷기다 — 휠과 같은 문(push)으로 들어간다.
+   */
+  private onKeyDown = (e: KeyboardEvent): void => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const step = ((this.camera.fov * Math.PI) / 180) / 6;
+    let handled = true;
+    switch (e.key) {
+      case "ArrowLeft":
+        this.turn(step, 0);
+        break;
+      case "ArrowRight":
+        this.turn(-step, 0);
+        break;
+      case "ArrowUp":
+        this.turn(0, step);
+        break;
+      case "ArrowDown":
+        this.turn(0, -step);
+        break;
+      case "+":
+      case "=":
+      case "PageUp":
+        this.push(150);
+        break;
+      case "-":
+      case "_":
+      case "PageDown":
+        this.push(-150);
+        break;
+      default:
+        handled = false;
+    }
+    if (handled) e.preventDefault();
+  };
 
   /** 회랑을 걷고 있는가 — 착륙했고, 비행도 당김도 없다 */
   private walkMode(): boolean {
@@ -4191,6 +4261,7 @@ export class UniverseScene {
     this.renderer.domElement.removeEventListener("pointerup", this.onPointerUp);
     this.renderer.domElement.removeEventListener("pointercancel", this.onPointerUp);
     this.renderer.domElement.removeEventListener("wheel", this.onWheel);
+    this.renderer.domElement.removeEventListener("keydown", this.onKeyDown);
     window.removeEventListener("resize", this.onResize);
     this.labels.dispose();
     this.controls.dispose();
