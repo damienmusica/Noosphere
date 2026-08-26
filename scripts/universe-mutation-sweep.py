@@ -451,6 +451,21 @@ MUTATIONS = [
      "        if (false) {\n          this.thrust = 0;\n        } else {\n          this.camera.position.addScaledVector(fwd, this.thrust * sec);"),
     # 손이 없는 관측자 — 자유 비행이 기본 동사가 된 뒤 포인터 전용이면
     # 키보드 사용자에게 성계는 목록으로 남는다(R12-e 일곱 번째 수리와 같은 결함).
+    ("flight", "주권 — 감소된 동작에서도 회랑에 관성을 준다", S,
+     "        if (this.state.reducedMotion) {\n          this.walkYear += this.walkVel / -Math.log(WALK_DAMP);\n          this.walkVel = 0;\n        } else {\n          this.walkYear += this.walkVel * sec;",
+     "        if (false) {\n          this.walkVel = 0;\n        } else {\n          this.walkYear += this.walkVel * sec;"),
+    # 별에도 크기가 있다 (R12-g) — 크기는 광휘와 실제 원반의 큰 쪽이다.
+    ("flight", "크기 — 원반 항을 없앤다 (별이 다시 거리를 갖지 않는다)", G,
+     "  return Math.min(STAR_MAX_PX, Math.max(glarePx, apparentRadiusPx_ * 2));",
+     "  return Math.min(STAR_MAX_PX, glarePx);"),
+    ("flight", "크기 — 광휘 바닥을 없앤다 (먼 하늘이 균일한 먼지가 된다)", G,
+     "  return Math.min(STAR_MAX_PX, Math.max(glarePx, apparentRadiusPx_ * 2));",
+     "  return Math.min(STAR_MAX_PX, apparentRadiusPx_ * 2);"),
+    ("fast", "크기 — 상한을 없앤다 (넘겨받을 구가 없는 별이 화면을 덮는다)", G,
+     "  return Math.min(STAR_MAX_PX, Math.max(glarePx, apparentRadiusPx_ * 2));",
+     "  return Math.max(glarePx, apparentRadiusPx_ * 2);"),
+    ("fast", "크기 — 반경이 광도를 따라가지 않는다 (같은 거리에서 다 같은 크기)", G,
+     "  return 0.85 + mag * 1.75;", "  return 0.85 + 1.75 * 0.5;"),
     ("flight", "주권 — 캔버스가 키보드로 닿지 않는다", S,
      "    this.renderer.domElement.tabIndex = 0;", ""),
     ("flight", "주권 — 키보드를 듣지 않는다 (화살표도 +/- 도 죽는다)", S,

@@ -465,6 +465,28 @@ check("걷기는 회랑 끝에서 멈춘다 (더 밀어도 같은 자리)",
 await page.evaluate(() => window.__universe.land("natsume-soseki"));
 await settle(2600);
 m = await metrics();
+// 감소된 동작은 회랑에서도 같은 약속을 지킨다: 관성은 빼되 **거리는 그대로**
+{
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto(url("?lens=movement&a=franz-kafka&land=1"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(2600);
+  await settle(900);
+  const rw0 = await metrics();
+  await page.mouse.move(820, 520);
+  await page.mouse.wheel(0, -420);
+  await page.waitForTimeout(140);
+  const rw1 = await metrics();
+  check("감소된 동작에서도 회랑은 관성 없이 같은 만큼 걷는다",
+    rw1.walkYear > rw0.walkYear + 1 && rw1.moving === false,
+    `${rw0.walkYear} → ${rw1.walkYear} · moving=${rw1.moving}`);
+  await page.emulateMedia({ reducedMotion: null });
+  await page.goto(url("?lens=movement&a=franz-kafka&land=1"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(2600);
+  await settle(900);
+}
+
 // 회랑에서도 손이 없는 관측자에게 같은 두 동사를 준다
 {
   await page.evaluate(() => document.querySelector("canvas.universe-canvas").focus());
@@ -518,6 +540,61 @@ m = await metrics();
 
 check("새 회랑에 들어서면 다시 입구에 선다", m.walkYear !== null && m.walkYear < 1906,
   `서 있는 해 ${m.walkYear}`);
+
+// ——— 별에도 크기가 있다 (R12-g) ———
+// 표현 사다리는 처음부터 거리의 함수였지만, 그 사다리를 **오를 수 있는 별은
+// 셋뿐**이었다: 구로 분해되는 것은 `isLandable` 이 연 작가뿐이고, 100인 중
+// 준비된 작가는 셋이다. 나머지 97개는 아무리 다가가도 같은 점이었다 —
+// 실측(2189 → 379, 발광 폭 2~3px 고정). 크기는 내용에 대한 주장이 아니라
+// 그 자리에 얼마나 있는가이므로, 준비도와 무관하다.
+console.log(`\n별에도 크기가 있다`);
+{
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1600);
+
+  // 먼 하늘: 광휘가 바닥이므로 거리가 크게 변해도 크기는 그대로다.
+  const far0 = await metrics();
+  await roll(2);
+  await settle(800);
+  const far1 = await metrics();
+  check("먼 하늘에서 별은 광도만 말한다 (크기가 거리를 따라가지 않는다)",
+    far0.nearPx > 0 && far1.nearPx === far0.nearPx && far1.camR < far0.camR - 200,
+    `${far0.nearPx}px 유지 · camR ${Math.round(far0.camR)} → ${Math.round(far1.camR)}`);
+
+  // 다가가면 자란다. 같은 별을 계속 보고 있는 동안에만 잰다 — 가장 가까운
+  // 별이 바뀌면 그것은 다른 별의 크기이지 자란 증거가 아니다.
+  let grewId = null;
+  let firstD = 0;
+  let firstPx = 0;
+  let lastD = 0;
+  let lastPx = 0;
+  for (let i = 0; i < 14; i++) {
+    await roll(1, -320);
+    await settle(420);
+    const mm = await metrics();
+    const id = mm.nearest[0];
+    if (!id) continue;
+    if (id !== grewId) {
+      grewId = id;
+      firstD = mm.nearest[1];
+      firstPx = mm.nearPx;
+      lastD = firstD;
+      lastPx = mm.nearPx;
+      continue;
+    }
+    if (mm.nearest[1] < lastD) {
+      lastD = mm.nearest[1];
+      lastPx = mm.nearPx;
+    }
+    if (lastPx > firstPx && lastD < firstD * 0.6) break;
+  }
+  check("다가간 별은 커진다 — 준비되지 않은 작가도",
+    grewId !== null && lastPx > firstPx && lastD < firstD,
+    `${grewId} · ${firstD} 단위 ${firstPx}px → ${lastD} 단위 ${lastPx}px`);
+  check("커진 별이 화면을 통째로 덮지는 않는다", lastPx <= 128, `${lastPx}px`);
+}
+
 
 console.log(`\nconsole errors: ${consoleErrors.length}`);
 if (consoleErrors.length) console.log(consoleErrors.slice(0, 4).join("\n"));
