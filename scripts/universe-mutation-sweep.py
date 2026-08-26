@@ -449,6 +449,15 @@ MUTATIONS = [
     ("flight", "주권 — 감소된 동작에서도 관성을 준다 (한 프레임만 밀고 만다)", S,
      "        if (this.state.reducedMotion) {\n          this.camera.position.addScaledVector(fwd, this.thrust / -Math.log(THRUST_DAMP));\n          this.thrust = 0;\n        } else {\n          this.camera.position.addScaledVector(fwd, this.thrust * sec);",
      "        if (false) {\n          this.thrust = 0;\n        } else {\n          this.camera.position.addScaledVector(fwd, this.thrust * sec);"),
+    # 손이 없는 관측자 — 자유 비행이 기본 동사가 된 뒤 포인터 전용이면
+    # 키보드 사용자에게 성계는 목록으로 남는다(R12-e 일곱 번째 수리와 같은 결함).
+    ("flight", "주권 — 캔버스가 키보드로 닿지 않는다", S,
+     "    this.renderer.domElement.tabIndex = 0;", ""),
+    ("flight", "주권 — 키보드를 듣지 않는다 (화살표도 +/- 도 죽는다)", S,
+     '    this.renderer.domElement.addEventListener("keydown", this.onKeyDown);', ""),
+    ("flight", "주권 — 하늘에서 고개가 돌지 않는다 (키보드 전용 경로)", S,
+     "    if (!this.freeMode()) return;\n    this.camera.rotateOnWorldAxis(this.camera.up, yaw);\n    this.camera.rotateX(pitch);",
+     "    if (!this.freeMode()) return;"),
     ("mobile", "주권 — 핀치를 듣지 않는다 (손끝에는 추력이 없다)", S,
      "        this.pinch();\n        return;", "        return;"),
     ("mobile", "주권 — 운동 신호를 보내지 않는다", S,
@@ -459,6 +468,14 @@ MUTATIONS = [
      '          ? moving\n            ? "away"\n            : sheetFull', "          ? sheetFull"),
     ("mobile", "주권 — 시트가 물러나도 안전 띠는 그대로 (없는 크롬을 피해 민다)", U,
      "      open && !moving", "      open"),
+    # 누운 화면은 `data-sheet` 를 쓰지 않는다 — 세로에만 계약을 달았더니 852 중
+    # 380(45%)이 나는 내내 덮여 있었다. 같은 형태로 세 번째 물린 자리다.
+    ("mobile", "주권 — 누운 화면의 시트가 물러나지 않는다 (화면의 45%가 계속 덮인다)", CSS,
+     ".is-narrow.is-short.is-moving .u-card {\n  transform: translateX(100%);\n}",
+     ".is-narrow.is-short.is-moving .u-card {\n  transform: none;\n}"),
+    ("mobile", "주권 — 누운 화면의 안전 띠가 시트를 따라가지 않는다", U,
+     "        open && !moving ? Math.round(Math.min(window.innerWidth * 0.52, 380)) : 0,",
+     "        open ? Math.round(Math.min(window.innerWidth * 0.52, 380)) : 0,"),
 
     ("browser", "앵커가 구간을 앞으로도 늘린다 (첫 작품 이전이 빈 칸으로)", G,
      "  const own = [...workYears, ...(deathYear !== undefined ? [deathYear] : [])];\n  const lo = own.length ? Math.min(...own) : Math.min(...anchorYears);",

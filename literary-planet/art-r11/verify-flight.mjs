@@ -348,6 +348,37 @@ check("계속 밀어도 항성을 관통하지 않는다",
   onSun && inner1 >= 120 && inner2.camR >= 120 && Math.abs(inner2.camR - inner1) < 25,
   `조준=${onSun} · ${inner1} → ${inner2.camR}`);
 
+// ——— 손이 없는 관측자 ———
+// 자유 비행이 탐험의 기본 동사가 된 뒤로, 그 동사가 포인터 전용이면 키보드
+// 사용자에게는 성계가 목록으로 남는다(R12-e 일곱 번째 수리와 같은 결함).
+await page.goto(url("?lens=movement"), { waitUntil: "load" });
+await page.waitForFunction(() => window.__universe !== undefined);
+await settle(1200);
+const focused = await page.evaluate(() => {
+  const c = document.querySelector("canvas.universe-canvas");
+  c.focus();
+  return document.activeElement === c && c.tabIndex === 0;
+});
+check("캔버스가 키보드로 닿는다", focused);
+const kb0 = await metrics();
+const kStar = await onStar();
+check("키보드로 잴 별이 있다", Boolean(kStar), kStar ? kStar.id : "없음");
+await page.keyboard.press("ArrowRight");
+await page.keyboard.press("ArrowRight");
+await settle(400);
+const kAfter = kStar ? await page.evaluate((id) => window.__universe.project(id, true), kStar.id) : null;
+check("화살표가 고개를 돌린다 — 오른쪽을 보면 하늘이 왼쪽으로 간다",
+  Boolean(kStar && kAfter) && kAfter[0] < ((kStar.q[0] / 1600) * 2 - 1) - 0.15,
+  kStar ? `ndc x ${(((kStar.q[0] / 1600) * 2 - 1)).toFixed(2)} → ${kAfter ? kAfter[0] : "?"}` : "");
+for (let i = 0; i < 3; i++) await page.keyboard.press("+");
+await settle(600);
+const kPush = await metrics();
+check("더하기 키가 앞으로 민다", kPush.camR < kb0.camR - 150, `${kb0.camR} → ${kPush.camR}`);
+for (let i = 0; i < 4; i++) await page.keyboard.press("-");
+await settle(600);
+const kBack = await metrics();
+check("빼기 키가 물러난다", kBack.camR > kPush.camR + 100, `${kPush.camR} → ${kBack.camR}`);
+
 // 자유는 **돌아올 길**과 함께 준다. 껍질 안으로 들어가 버리면 지도가 사라지고,
 // 다시 만드는 유일한 방법이 새로고침이어서는 안 된다.
 await page.goto(url("?lens=movement"), { waitUntil: "load" });
@@ -434,6 +465,26 @@ check("걷기는 회랑 끝에서 멈춘다 (더 밀어도 같은 자리)",
 await page.evaluate(() => window.__universe.land("natsume-soseki"));
 await settle(2600);
 m = await metrics();
+// 회랑에서도 손이 없는 관측자에게 같은 두 동사를 준다
+{
+  await page.evaluate(() => document.querySelector("canvas.universe-canvas").focus());
+  const kw0 = await metrics();
+  for (let i = 0; i < 3; i++) await page.keyboard.press("+");
+  await settle(500);
+  const kw1 = await metrics();
+  check("회랑에서도 더하기 키가 걷는다",
+    kw1.walkYear > kw0.walkYear + 1 && kw1.walked > kw0.walked + 1,
+    `${kw0.walkYear} → ${kw1.walkYear} · 걸은 칸 ${kw0.walked} → ${kw1.walked}`);
+  const look0 = kw1.look[0];
+  await page.keyboard.press("ArrowLeft");
+  await page.keyboard.press("ArrowLeft");
+  await settle(400);
+  const kw2 = await metrics();
+  check("회랑에서도 화살표는 고개만 돌린다",
+    Math.abs(kw2.look[0] - look0) > 4 && Math.abs(kw2.walked - kw1.walked) < 0.05,
+    `고개 ${look0}° → ${kw2.look[0]}° · 걸은 칸 ${kw2.walked}`);
+}
+
 // 회랑에서 컨트롤이 깨어 있으면 드래그가 회전량을 쌓아 두었다가 **당김
 // 리프레임에서 한꺼번에 터진다** — 고개를 돌린 뒤 책을 꺼내면 그 책이 화면
 // 밖에 있다. 고개를 돌린 상태에서 당겨 보는 것이 이 계약의 전부다.

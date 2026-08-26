@@ -611,6 +611,68 @@ console.log("\n누운 화면 — 시트는 옆에서 온다");
   } else {
     check("누운 화면에 작품 이름표가 없다 — 오탭 계약 미측정", false, "관측 불가");
   }
+  // ——— 누운 화면의 카메라 주권 (R12-f 후속) ———
+  // 세로에만 계약을 달았더니 누운 화면에서 **시트가 영영 물러나지 않았다**:
+  // `data-sheet` 는 세로 배치 전용이라 "away" 가 닿지 않아 852 중 380(45%)이
+  // 나는 내내 덮여 있었다. 계약이 없는 화면에서 조용히 빠진 자리 — 이 프로젝트가
+  // 같은 형태로 세 번째 물린 곳이다.
+  const landPinch = async (from, to, cy = 200, steps = 10) => {
+    await land.evaluate(
+      async ([from, to, cy, steps]) => {
+        const c = document.querySelector("canvas.universe-canvas");
+        const cx = Math.round(innerWidth / 2);
+        const ev = (t, id, x, y, pr) =>
+          c.dispatchEvent(
+            new PointerEvent(t, { pointerId: id, pointerType: "touch", isPrimary: pr, clientX: x, clientY: y, bubbles: true })
+          );
+        ev("pointerdown", 1, cx - from / 2, cy, true);
+        ev("pointerdown", 2, cx + from / 2, cy, false);
+        for (let i = 1; i <= steps; i++) {
+          const d = from + ((to - from) * i) / steps;
+          ev("pointermove", 1, cx - d / 2, cy, true);
+          ev("pointermove", 2, cx + d / 2, cy, false);
+          await new Promise((r) => setTimeout(r, 20));
+        }
+        ev("pointerup", 1, cx - to / 2, cy, true);
+        ev("pointerup", 2, cx + to / 2, cy, false);
+      },
+      [from, to, cy, steps]
+    );
+  };
+  const landCardX = async () => {
+    const b = await land.locator(".u-card").boundingBox();
+    return b ? b.x : null;
+  };
+  // 앞의 오탭 계약이 작품을 하나 꺼내 두었다 — 추력은 **붙잡은 것을 먼저 놓는다**.
+  // 그래서 첫 핀치는 당김을 풀고, 걷기는 그 다음 핀치의 몫이다.
+  await landPinch(120, 300);
+  await land.waitForTimeout(1500);
+  await land.evaluate(() => window.__universe.settle());
+  await land.waitForTimeout(200);
+  const released = await land.evaluate(() => window.__universe.metrics());
+  check("누운 화면에서도 추력이 당긴 책을 놓는다",
+    released.pulled === null && released.walking === true, `당김=${released.pulled}`);
+  const lY0 = released.walkYear;
+  const lX0 = await landCardX();
+  await landPinch(120, 420);
+  await land.waitForTimeout(130);
+  const lMoving = await land.evaluate(() => window.__universe.metrics());
+  const lXMoving = await landCardX();
+  await land.waitForTimeout(900);
+  await land.evaluate(() => window.__universe.settle());
+  await land.waitForTimeout(200);
+  const lStopped = await land.evaluate(() => window.__universe.metrics());
+  const lXStopped = await landCardX();
+  check("누운 화면에서도 핀치는 걷기다",
+    lStopped.walkYear > lY0 + 1 && lStopped.walked > 1,
+    `${lY0} → ${lStopped.walkYear} · 걸은 칸 ${lStopped.walked}`);
+  check("누운 화면에서도 이동 중에는 시트가 물러난다",
+    lMoving.moving === true && lXMoving !== null && lXMoving >= 852 - 4 && lMoving.insets[1] === 0,
+    `카드 x=${lXMoving} · 오른쪽 띠 ${lMoving.insets[1]}`);
+  check("누운 화면에서도 멈추면 시트가 돌아온다",
+    lStopped.moving === false && lXStopped !== null && Math.abs(lXStopped - (lX0 ?? 0)) < 4 && lStopped.insets[1] > 300,
+    `카드 x=${lXStopped} · 오른쪽 띠 ${lStopped.insets[1]}`);
+
   await land.close();
 }
 

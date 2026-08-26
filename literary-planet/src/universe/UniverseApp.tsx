@@ -410,10 +410,13 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     }
     const open = focusId || landedId;
     if (short) {
-      // 누운 화면에서는 시트가 오른쪽 절반이다 — 띠도 오른쪽에 선다
+      // 누운 화면에서는 시트가 오른쪽 절반이다 — 띠도 오른쪽에 선다.
+      // 물러나는 규칙도 여기 있어야 한다: `data-sheet` 는 세로 배치 전용이라
+      // 누운 화면에서는 "away" 가 닿지 않았고, 852 중 380(45%)이 나는 내내
+      // 덮여 있었다(실측). 계약이 없는 화면에서 조용히 빠진 자리다.
       sceneRef.current?.setSafeInsets(
         0,
-        open ? Math.round(Math.min(window.innerWidth * 0.52, 380)) : 0,
+        open && !moving ? Math.round(Math.min(window.innerWidth * 0.52, 380)) : 0,
         46,
         0
       );
