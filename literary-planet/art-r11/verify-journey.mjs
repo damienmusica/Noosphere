@@ -22,7 +22,7 @@ const distDir = path.resolve(ROOT, opt("dist", "dist"));
 const SLICE = [
   // order = data/authors 의 readingOrder 길이. 렌더에서 되읽지 않는다 —
   // 색인 글리프 계약이 자기가 검사할 값을 스스로 만들어 내지 않도록.
-  { id: "franz-kafka", query: "카프카", works: 5, covers: 4, order: 3, crust: "manuscript", landable: true },
+  { id: "franz-kafka", query: "카프카", works: 6, covers: 4, order: 3, crust: "manuscript", landable: true },
   { id: "natsume-soseki", query: "소세키", works: 6, covers: 5, order: 5, crust: "manuscript", landable: true },
   { id: "rabindranath-tagore", query: "타고르", works: 6, covers: 2, order: 5, crust: "manuscript", landable: true },
   { id: "marcel-proust", query: "프루스트", works: 6, order: 5, crust: null, landable: false }
