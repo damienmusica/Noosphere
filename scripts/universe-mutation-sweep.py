@@ -467,6 +467,26 @@ MUTATIONS = [
      "      if (an.year !== undefined && !r.summary.includes(String(an.year)))\n"
      "        errors.push(`${r.id}: anchor year ${an.year} is not named in the summary`);",
      ""),
+    # 초점이 어디 있든 카메라는 산다 (적대 심사 2026-08-28, blocking)
+    ("flight", "주권 — 카메라 키를 다시 캔버스에만 건다 (카드에 초점이 가면 죽는다)", S,
+     '    this.host.ownerDocument.addEventListener("keydown", this.onKeyDown);',
+     '    this.renderer.domElement.addEventListener("keydown", this.onKeyDown);'),
+    ("flight", "주권 — 글자를 받는 자리에서도 카메라가 키를 가져간다", S,
+     "    if (this.typingTarget(this.host.ownerDocument.activeElement)) return;", ""),
+    ("flight", "주권 — Escape 가 아무것도 닫지 않는다", U,
+     "      if (workId) {\n        setWorkId(null);\n        e.preventDefault();\n        return;\n      }",
+     "      if (false) return;"),
+    # 앞선 판의 변이("return 을 지운다")는 **무효**였다 — 착륙 상태에서는 두 번째
+    # 분기의 `!landedId` 가 어차피 막으므로 동작이 같다. 실제로 "한 겹씩"을
+    # 구현하는 것은 그 `!landedId` 조건이다.
+    ("flight", "주권 — Escape 가 착륙까지 벗긴다 (회랑에서 쫓아낸다)", U,
+     "      if (focusId && !landedId) {", "      if (focusId) {"),
+    # 실은 화면 밖으로 나가지 않는다 (적대 심사 2026-08-28, serious)
+    ("browser", "회랑 — 닿을 자리가 화면 밖이어도 실을 그린다", S,
+     "    return p && this.onScreen(p) ? p : null;", "    return p;"),
+    ("browser", "회랑 — 실을 그리지 않는 분기를 없앤다 (null 앵커에도 호를 만든다)", S,
+     "        if (!anchorP) {\n          this.threadEnd = null;\n          continue;\n        }",
+     "        if (!anchorP) {\n          this.threadEnd = null;\n        }"),
     # 별에도 크기가 있다 (R12-g) — 크기는 광휘와 실제 원반의 큰 쪽이다.
     ("flight", "크기 — 원반 항을 없앤다 (별이 다시 거리를 갖지 않는다)", G,
      "  return Math.min(STAR_MAX_PX, Math.max(glarePx, apparentRadiusPx_ * 2));",

@@ -186,6 +186,35 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     sel?.focus({ preventScroll: true });
   }, [focusId, landedId]);
 
+  // Escape 는 **한 겹씩** 닫는다 — 열린 작품 시트가 먼저, 그다음 카드.
+  //
+  // 적대 심사(2026-08-28)가 잡았다: 앱 전체에서 Escape 를 듣는 곳이 검색
+  // 콤보박스 하나뿐이라, 카드와 작품 시트에는 **닫는 키보드 경로가 아예
+  // 없었다.** 손이 없는 관측자는 '×' 버튼을 Tab 으로 찾아가야 했다.
+  //
+  // 한 번에 다 닫지 않는 이유: 작품을 읽다 Escape 를 누른 사람이 원하는 것은
+  // 그 작품을 덮는 것이지 그 작가를 떠나는 것이 아니다. 검색창이 자기 Escape 를
+  // 먼저 쓰므로(자기 팝업을 닫는다) 여기서는 글자를 받는 자리를 비켜 간다.
+  useEffect(() => {
+    const onEsc = (e: KeyboardEvent): void => {
+      if (e.key !== "Escape" || e.metaKey || e.ctrlKey || e.altKey) return;
+      const el = document.activeElement as HTMLElement | null;
+      if (el && (el.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(el.tagName)))
+        return;
+      if (workId) {
+        setWorkId(null);
+        e.preventDefault();
+        return;
+      }
+      if (focusId && !landedId) {
+        setFocusId(null);
+        e.preventDefault();
+      }
+    };
+    document.addEventListener("keydown", onEsc);
+    return () => document.removeEventListener("keydown", onEsc);
+  }, [workId, focusId, landedId]);
+
   // 딥링크 — 캡처 하네스와 공유 링크가 같은 문을 쓴다
   useEffect(() => {
     const q = new URLSearchParams(location.search);
@@ -940,13 +969,21 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
               .filter((w) => w.authorId === landed.id)
               .map((w) => (
                 <li key={w.id} className={workId === w.id ? "is-on" : ""}>
-                  <button onClick={() => setWorkId(w.id === workId ? null : w.id)}>
+                  {/* 이 버튼은 바로 아래에 긴 블록(원문·번역·판본·근거)을 펼친다.
+                      펼침 상태를 말하지 않으면 화면을 못 보는 사람에게는 그냥
+                      제목 버튼이다 — 적대 심사 지적(2026-08-28). */}
+                  <button
+                    onClick={() => setWorkId(w.id === workId ? null : w.id)}
+                    aria-expanded={workId === w.id}
+                    aria-controls={`u-work-${w.id}`}
+                  >
                     <strong>{w.titleKo}</strong>
                     <span className="u-year">{w.year}</span>
                     {art?.covers?.[w.id] ? <span className="u-tag">초판</span> : null}
                   </button>
                   {workId === w.id && (
                     <WorkSheet
+                      id={`u-work-${w.id}`}
                       work={w}
                       lang={landed.languages[0] ?? "und"}
                       sourceOf={(id) => dataset.sources.find((x) => x.id === id)}

@@ -20,10 +20,13 @@ function editionLine(e: WorkEdition): string {
 }
 
 export function WorkSheet({
+  id,
   work,
   lang,
   sourceOf
 }: {
+  /** 펼침 버튼의 `aria-controls` 가 가리키는 곳 — 토글과 내용을 잇는다 */
+  id?: string;
   work: Work;
   /** 원문의 언어 코드 — 스크린리더와 서체 선택용 */
   lang: string;
@@ -40,7 +43,7 @@ export function WorkSheet({
       )
     : [];
   return (
-    <div className="u-work" data-testid="work-world" data-work={work.id} data-has-world={w ? "1" : "0"}>
+    <div id={id} className="u-work" data-testid="work-world" data-work={work.id} data-has-world={w ? "1" : "0"}>
       <p className="u-works__sig">{work.significance}</p>
       {w ? (
         <>

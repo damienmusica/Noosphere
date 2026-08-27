@@ -487,9 +487,23 @@ m = await metrics();
   await settle(900);
 }
 
-// 회랑에서도 손이 없는 관측자에게 같은 두 동사를 준다
+// 회랑에서도 손이 없는 관측자에게 같은 두 동사를 준다.
+//
+// **초점을 강제하지 않는다.** 이 절은 원래 키 입력 직전마다
+// `canvas.universe-canvas.focus()` 를 코드로 불렀고, 그래서 착륙이 남기는 실제
+// 초점 상태(접근성 배선이 초점을 착륙 카드로 옮긴다)를 우회했다 — 도달할 수
+// 없는 상태를 재고 있었으므로, 카메라 키가 통째로 죽어 있는 동안에도 계약이
+// 초록이었다(적대 심사 2026-08-28, blocking). 이제 착륙이 남긴 자리에서 그대로
+// 누른다.
 {
-  await page.evaluate(() => document.querySelector("canvas.universe-canvas").focus());
+  const whoHasFocus = () =>
+    page.evaluate(() => {
+      const a = document.activeElement;
+      return a ? `${a.tagName.toLowerCase()}${a.className ? "." + String(a.className).split(" ")[0] : ""}` : "없음";
+    });
+  const holder = await whoHasFocus();
+  check("착륙은 초점을 캔버스에 두지 않는다 (이 계약이 재는 것이 그 상태다)",
+    !holder.startsWith("canvas"), `초점 ${holder}`);
   const kw0 = await metrics();
   for (let i = 0; i < 3; i++) await page.keyboard.press("+");
   await settle(500);
@@ -540,6 +554,135 @@ m = await metrics();
 
 check("새 회랑에 들어서면 다시 입구에 선다", m.walkYear !== null && m.walkYear < 1906,
   `서 있는 해 ${m.walkYear}`);
+
+// ——— 손이 카드에 있어도 카메라는 산다 (2026-08-28, 적대 심사가 연 자리) ———
+// 별을 고르거나 착륙하면 접근성 배선이 초점을 카드로 옮긴다(그 자체는 옳다).
+// 그때 카메라 키가 죽으면 손이 없는 관측자는 Tab 아홉 번을 눌러야 캔버스로
+// 돌아온다 — 실측된 blocking 결함이다. 카메라는 이 화면의 기본 동사이므로
+// **글자를 받는 자리에서만** 양보한다.
+console.log(`\n초점이 어디 있든 카메라는 산다`);
+{
+  const active = () =>
+    page.evaluate(() => {
+      const a = document.activeElement;
+      return a ? `${a.tagName.toLowerCase()}${a.className ? "." + String(a.className).split(" ")[0] : ""}` : "없음";
+    });
+
+  // (1) 별을 고른 뒤 — 초점은 카드에 있다
+  await page.goto(url("?lens=movement&a=franz-kafka"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(2200);
+  const who = await active();
+  check("별을 고르면 초점이 카드로 간다 (접근성 배선이 살아 있다)",
+    who.includes("u-card") || who.startsWith("aside"), `초점 ${who}`);
+  // 궤도 모드에서 화살표는 **설계상** 고개를 돌리지 않는다(고른 것 주위를 돈다 —
+  // `turn()` 이 `freeMode()` 밖에서 손을 뗀다). 그러므로 여기서 재는 것은 화살표가
+  // 아니라 **추력**이다: 카드에 초점이 있어도 +/- 가 카메라를 민다.
+  const s0 = await metrics();
+  for (let i = 0; i < 3; i++) await page.keyboard.press("+");
+  await settle(600);
+  const s1 = await metrics();
+  check("카드에 초점이 있어도 더하기 키가 카메라를 민다",
+    Math.abs(s1.camR - s0.camR) > 20, `camR ${Math.round(s0.camR)} → ${Math.round(s1.camR)}`);
+
+  // (2) 착륙한 뒤 — 초점은 착륙 카드에 있다
+  await page.goto(url("?lens=movement&a=franz-kafka&land=1"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(2600);
+  await settle(900);
+  const who2 = await active();
+  const w0 = await metrics();
+  for (let i = 0; i < 3; i++) await page.keyboard.press("+");
+  await settle(500);
+  const w1 = await metrics();
+  check("착륙 카드에 초점이 있어도 더하기 키가 걷는다",
+    w1.walkYear > w0.walkYear + 1, `초점 ${who2} · ${w0.walkYear} → ${w1.walkYear}`);
+
+  // (3) 글자를 받는 자리에서는 양보한다 — 검색창의 화살표를 뺏지 않는다.
+  //
+  // **대조군과 함께 잰다.** 첫 판은 `look`(회랑 전용)과 `walkYear`(하늘에선
+  // null)를 봤는데 둘 다 하늘 회전을 관측하지 못한다 — 가드를 지워도 아무
+  // 계약이 안 죽는 **빈 계약**이었다(스윕 생존, 2026-08-28). 하늘의 회전은
+  // 별의 화면 위치가 말한다. 같은 키를 검색창 안에서 한 번, 밖에서 한 번 눌러
+  // **한쪽은 움직이지 않고 다른 쪽은 움직인다**를 함께 단언한다.
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1600);
+  const probe = await onStar();
+  check("양보 계약을 잴 별이 있다", Boolean(probe), probe ? probe.id : "없음");
+  if (probe) {
+    const ndc = () => page.evaluate((id) => window.__universe.project(id, true), probe.id);
+    await page.locator(".u-search input").click();
+    await page.locator(".u-search input").type("카");
+    const inBefore = await ndc();
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowDown");
+    await settle(300);
+    const inAfter = await ndc();
+    check("검색창 안에서는 화살표를 카메라가 가져가지 않는다",
+      Math.abs(inAfter[1] - inBefore[1]) < 1e-6 && Math.abs(inAfter[0] - inBefore[0]) < 1e-6,
+      `ndc ${inBefore.map((v) => v.toFixed(3))} → ${inAfter.map((v) => v.toFixed(3))}`);
+    // 대조군 — 같은 키가 검색창 밖에서는 하늘을 움직인다(계약이 비어 있지 않다는 증거)
+    // body 는 tabindex 가 없어 focus() 가 듣지 않는다 — 검색창에서 실제로
+    // **빠져나와야** 대조군이 성립한다(첫 판은 초점이 입력에 남아 양성 케이스를
+    // 못 만들었고, 그래서 대조군이 실패했다).
+    await page.keyboard.press("Escape");
+    await page.evaluate(() => document.activeElement && document.activeElement.blur());
+    await settle(200);
+    const stillTyping = await page.evaluate(() => {
+      const a = document.activeElement;
+      return Boolean(a && ["INPUT", "TEXTAREA", "SELECT"].includes(a.tagName));
+    });
+    check("대조군을 위해 검색창에서 빠져나왔다", !stillTyping, `타이핑 자리=${stillTyping}`);
+    const outBefore = await ndc();
+    await page.keyboard.press("ArrowDown");
+    await page.keyboard.press("ArrowDown");
+    await settle(300);
+    const outAfter = await ndc();
+    check("같은 화살표가 검색창 밖에서는 하늘을 움직인다 (대조군)",
+      Math.abs(outAfter[1] - outBefore[1]) > 0.05,
+      `ndc y ${outBefore[1].toFixed(3)} → ${outAfter[1].toFixed(3)}`);
+  }
+}
+
+// ——— Escape 는 한 겹씩 닫는다 (2026-08-28) ———
+// 앱 전체에서 Escape 를 듣는 곳이 검색 콤보박스 하나뿐이라, 카드와 작품 시트에는
+// 닫는 키보드 경로가 아예 없었다.
+console.log(`\nEscape 는 한 겹씩 닫는다`);
+{
+  await page.goto(url("?lens=movement&a=franz-kafka&land=1"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(2600);
+  await page.locator(".u-works button").first().click();
+  await page.waitForTimeout(500);
+  const sheetOpen = await page.locator('[data-testid="work-world"]').count();
+  check("작품 시트가 열렸다", sheetOpen === 1, `${sheetOpen}장`);
+  await page.evaluate(() => document.body.focus());
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(400);
+  const afterEsc = await page.locator('[data-testid="work-world"]').count();
+  const stillLanded = await page.evaluate(() => new URLSearchParams(location.search).get("land"));
+  check("Escape 가 작품 시트를 닫는다", afterEsc === 0, `${afterEsc}장`);
+  check("그런데 작가를 떠나지는 않는다 (한 겹만 닫힌다)", stillLanded === "1", `land=${stillLanded}`);
+  // 착륙은 Escape 가 벗기는 겹이 아니다 — 회랑에서 나가는 문은 이륙과 '원경으로'다.
+  // (이 계약이 없으면 `!landedId` 조건을 지워도 아무것도 안 죽는다 — 스윕 생존.)
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(400);
+  const stillLanded2 = await page.evaluate(() => new URLSearchParams(location.search).get("land"));
+  const stillA = await page.evaluate(() => new URLSearchParams(location.search).get("a"));
+  check("시트를 닫은 뒤 한 번 더 눌러도 회랑에서 쫓겨나지 않는다",
+    stillLanded2 === "1" && stillA === "franz-kafka", `land=${stillLanded2} · a=${stillA}`);
+
+  // 착륙하지 않은 카드는 Escape 로 닫힌다
+  await page.goto(url("?lens=movement&a=franz-kafka"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(2000);
+  await page.evaluate(() => document.body.focus());
+  await page.keyboard.press("Escape");
+  await page.waitForTimeout(400);
+  const a2 = await page.evaluate(() => new URLSearchParams(location.search).get("a"));
+  check("Escape 가 궤도 카드를 닫는다", a2 === null, `a=${a2}`);
+}
 
 // ——— 별에도 크기가 있다 (R12-g) ———
 // 표현 사다리는 처음부터 거리의 함수였지만, 그 사다리를 **오를 수 있는 별은

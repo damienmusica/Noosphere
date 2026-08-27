@@ -659,7 +659,7 @@ export class UniverseScene {
     this.renderer.domElement.addEventListener("pointerup", this.onPointerUp);
     this.renderer.domElement.addEventListener("pointercancel", this.onPointerUp);
     this.renderer.domElement.addEventListener("wheel", this.onWheel, { passive: false });
-    this.renderer.domElement.addEventListener("keydown", this.onKeyDown);
+    this.host.ownerDocument.addEventListener("keydown", this.onKeyDown);
     window.addEventListener("resize", this.onResize);
     this.loop();
   }
@@ -1276,6 +1276,13 @@ export class UniverseScene {
         if (mesh !== this.egoLines || !this.corridorFrame) continue;
         const otherId = l.a === landed ? l.b : l.a;
         const anchorP = this.anchorPoint(l.anchor);
+        // 닿을 자리가 화면에 없으면 **실을 그리지 않는다** — 캔버스 밖으로
+        // 날려 보내면 사용자는 아무것도 못 보고, 계측은 착지점이 있는 것처럼
+        // 거짓을 말한다(적대 심사 2026-08-28).
+        if (!anchorP) {
+          this.threadEnd = null;
+          continue;
+        }
         const starP = this.effectivePos(otherId, new THREE.Vector3());
         this.threadEnd = anchorP.clone();
         const mid = anchorP
@@ -2035,9 +2042,19 @@ export class UniverseScene {
    * 그 해의 바닥 각인, 앵커가 없으면 입구 명판(이름에 닿는다 — 그것도 정직한
    * 독해다).
    */
-  private anchorPoint(anchor?: { workId?: string; year?: number }): THREE.Vector3 {
+  private anchorPoint(anchor?: { workId?: string; year?: number }): THREE.Vector3 | null {
+    const p = this.anchorTarget(anchor);
+    // **어느 분기에서 왔든 화면 밖이면 실을 그리지 않는다.** 처음에는 입구 명판
+    // 폴백에만 가드를 걸었는데, 계약이 곧바로 두 번째 경우를 잡았다 — 연도
+    // 앵커도 화면 아래로 나간다(`[619, 1333]`, 뷰포트 높이 1000). 가드는 출구
+    // 한 곳에 있어야지 분기마다 있으면 다음 분기에서 또 새어 나간다.
+    return p && this.onScreen(p) ? p : null;
+  }
+
+  /** 앵커가 회랑에서 가리키는 자리 — 화면 안팎은 따지지 않는다(`anchorPoint` 가 판정) */
+  private anchorTarget(anchor?: { workId?: string; year?: number }): THREE.Vector3 | null {
     const f = this.corridorFrame;
-    if (!f) return new THREE.Vector3();
+    if (!f) return null;
     if (anchor?.workId) {
       const rec = this.cityRecords.find((c) => c.workId === anchor.workId);
       if (rec) {
@@ -2057,12 +2074,40 @@ export class UniverseScene {
       }
       return this.corridorLatPoint(corridorTheta(anchor.year, f.span, f.cellArc), f.bh * 1.1, 0.004);
     }
-    // 명판 — 회랑의 입구 칸
+    // 명판 — 회랑의 입구 칸.
+    //
+    // **다만 그 이름이 화면에 있을 때만이다.** 이 폴백은 "앵커가 없으면 이름에
+    // 닿는다 — 그것도 정직한 독해다"로 설계됐는데, 회랑을 걸어 들어간 뒤에는
+    // 입구가 옆으로 한참 밀려나 실이 캔버스 밖 수천 px 로 날아갔다(적대 심사
+    // 실측 2026-08-28: `threadEnd = [-3564, 612]`, 뷰포트는 1600×1000). 화면에는
+    // 아무 호도 그려지지 않고 별 옆에 뭉개진 점 하나만 남는다 — 이름에 닿기는
+    // 커녕 **닿지 않는다는 말조차 못 하고 있었다.**
+    //
+    // 이름이 보이면 이름에 닿고, 보이지 않으면 **실을 그리지 않는다.** 그리지
+    // 않는 것이 이 회랑의 어떤 책에도 닿지 않는다는 뜻이다 — 만들지 않은 것을
+    // 만들지 않았다고 적는 이 프로젝트의 버릇 그대로다.
     return this.corridorLatPoint(
       corridorTheta(f.span.yStart + 1.5, f.span, f.cellArc),
       0,
       (f.bh * 1.4) / f.radius
     );
+  }
+
+  /**
+   * 실이 닿을 수 있는 자리인가 — **프레임 안일 필요는 없고, 프레임 곁이면 된다.**
+   *
+   * 처음에는 "뷰포트 안"으로 잡았는데 계약이 곧바로 반례를 냈다: 가장자리에
+   * 걸쳐 선 책(『변신』, 화면 상자 x −159…50)은 머리가 57px 밖이어서 실이
+   * 지워졌다 — 그 실은 멀쩡히 보이는 실이다. 심사가 잡은 진짜 결함은 정도가
+   * 다르다(입구 명판 −3564px, 한 화면 너비의 2.2배 밖). 그래서 기준을 이분법이
+   * 아니라 **거리**로 쓴다: 프레임 밖으로 **한 화면**까지는 실을 그린다(호의
+   * 상당 부분이 화면에 남는다). 그보다 멀면 화면에 아무것도 남지 않으므로
+   * 그리지 않는다.
+   */
+  private onScreen(p: THREE.Vector3): boolean {
+    const v = p.clone().project(this.camera);
+    const M = 3; // NDC — 프레임(±1) 밖으로 한 화면(±2) 더
+    return v.z <= 1 && v.x >= -M && v.x <= M && v.y >= -M && v.y <= M;
   }
 
   /** 벽의 재질 — 착륙한 지각과 같은 원고 종이. 자산이 없으면 종이색 */
@@ -2928,8 +2973,35 @@ export class UniverseScene {
    * 규칙은 하나다: 화살표는 고개, `+`/`-`(와 PageUp/PageDown)는 앞뒤.
    * 하늘에서는 추력이고 회랑에서는 걷기다 — 휠과 같은 문(push)으로 들어간다.
    */
+  /**
+   * 카메라 키가 **글자를 먹지 않아야 하는 자리** — 여기에 초점이 있으면 손을 뗀다.
+   * 검색 콤보박스는 화살표로 후보를 고르고, 연도 슬라이더는 화살표로 값을 옮긴다.
+   * 이 목록은 "카메라가 양보하는 곳"이고, 그 밖의 모든 곳에서 카메라는 살아 있다.
+   */
+  private typingTarget(el: Element | null): boolean {
+    if (!el) return false;
+    const t = el as HTMLElement;
+    if (t.isContentEditable) return true;
+    const tag = t.tagName;
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return true;
+    const role = t.getAttribute("role");
+    return role === "combobox" || role === "listbox" || role === "option" || role === "slider";
+  }
+
+  /**
+   * 카메라 키는 **문서에서 듣는다.** 캔버스에만 걸려 있던 판에서, 별을 고르거나
+   * 착륙하는 순간 접근성 배선이 초점을 카드로 옮기면 화살표와 +/- 가 통째로
+   * 죽었다 — 캔버스로 돌아가려면 Tab 아홉 번이었다(적대 심사 실측, 2026-08-28).
+   * 그동안 비행 계약이 초록이었던 이유는 계약이 **키 입력 직전마다
+   * `canvas.focus()` 를 강제**했기 때문이다: 실제 여정이 남기는 초점 상태를
+   * 우회하고 **도달할 수 없는 상태**를 재고 있었다.
+   *
+   * 카메라는 이 화면의 기본 동사이므로 기본값이 "듣는다"여야 하고, 글자를 받는
+   * 자리에서만 양보한다(`typingTarget`).
+   */
   private onKeyDown = (e: KeyboardEvent): void => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (this.typingTarget(this.host.ownerDocument.activeElement)) return;
     const step = ((this.camera.fov * Math.PI) / 180) / 6;
     let handled = true;
     switch (e.key) {
@@ -4279,7 +4351,7 @@ export class UniverseScene {
     this.renderer.domElement.removeEventListener("pointerup", this.onPointerUp);
     this.renderer.domElement.removeEventListener("pointercancel", this.onPointerUp);
     this.renderer.domElement.removeEventListener("wheel", this.onWheel);
-    this.renderer.domElement.removeEventListener("keydown", this.onKeyDown);
+    this.host.ownerDocument.removeEventListener("keydown", this.onKeyDown);
     window.removeEventListener("resize", this.onResize);
     this.labels.dispose();
     this.controls.dispose();
