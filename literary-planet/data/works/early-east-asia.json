@@ -24,7 +24,29 @@
       "src--nobelprize",
       "src--gitanjali-song-offerings-1912",
       "src--rabindra-bhavana"
-    ]
+    ],
+    "world": {
+      "opening": {
+        "original": "আমার মাথা নত করে দাও হে তোমার চরণ-ধূলার তলে।",
+        "ko": "내 머리를 숙이게 하소서, 당신의 발티끌 아래로.",
+        "translation": "self",
+        "sourceId": "src--bnwikisource-gitanjali-1913"
+      },
+      "written": "1908–09년 여러 잡지에 흩어져 실린 시들을 묶었다",
+      "editions": [
+        {
+          "kind": "first-edition",
+          "publisher": "ইন্ডিয়ান পাবলিশিং হাউস (인디언 퍼블리싱 하우스)",
+          "place": "কলকাতা (콜카타)",
+          "year": 1910,
+          "month": 9,
+          "note": "9월 5일(벵골력 1317년 바드로월) 간행 · 사티시찬드라 미트라 발행 · 칸틱 프레스의 모틸랄 강고파디아이 인쇄 · 전 157편",
+          "sourceIds": [
+            "src--bnwiki-gitanjali"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "rabindranath-tagore--gora",
@@ -50,7 +72,28 @@
     "sourceIds": [
       "src--britannica",
       "src--rabindra-bhavana"
-    ]
+    ],
+    "world": {
+      "opening": {
+        "original": "মুস্কিলে পড়ে গেছি। যখন ও ছিল না, তখন ছিলই না—কোনো ভাবনাই ছিল না।",
+        "ko": "난처하게 됐습니다. 저 아이가 없을 때는 아예 없었으니, 아무 걱정도 없었지요.",
+        "translation": "self",
+        "sourceId": "src--bnwikisource-dakghar"
+      },
+      "editions": [
+        {
+          "kind": "first-edition",
+          "publisher": "ইণ্ডিয়ান্ পাব্লিশিং হাউস (인디언 퍼블리싱 하우스)",
+          "place": "কলিকাতা (콜카타) 콘월리스가 22번지",
+          "year": 1912,
+          "note": "발행처와 주소는 위키문헌 스캔의 판권장에서 직접 읽었고(발행 마닐랄 강고파디아이 · 인쇄 칸틱 프레스), 연도는 벵골어 위키백과가 밝힌 1912년이다 — 판권장에는 연도 표기가 없다",
+          "sourceIds": [
+            "src--bnwikisource-dakghar",
+            "src--bnwiki-dakghar"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "rabindranath-tagore--ghare-baire",
@@ -76,7 +119,29 @@
     "sourceIds": [
       "src--britannica",
       "src--rabindra-bhavana"
-    ]
+    ],
+    "world": {
+      "opening": {
+        "original": "Man's history is being shaped according to the difficulties it encounters.",
+        "ko": "인간의 역사는 그것이 부딪치는 어려움에 따라 빚어진다.",
+        "translation": "self",
+        "sourceId": "src--enwikisource-nationalism-1917"
+      },
+      "written": "1916–17년 일본과 미국 순회 강연 원고를 묶었다 — 첫 글이 「Nationalism in the West」 다",
+      "editions": [
+        {
+          "kind": "first-edition",
+          "publisher": "The Macmillan Company",
+          "place": "New York",
+          "year": 1917,
+          "month": 9,
+          "note": "판권장 표기 'Published September, 1917' · 저작권은 The Atlantic Monthly Company(1917)와 The Macmillan Company(1916·1917)가 나란히 · 인쇄 Norwood Press",
+          "sourceIds": [
+            "src--enwikisource-nationalism-1917"
+          ]
+        }
+      ]
+    }
   },
   {
     "id": "natsume-soseki--wagahai-wa-neko-de-aru",
