@@ -37,6 +37,7 @@ import {
   starLife,
   lensPosition,
   starPixels,
+  starDiameterPx,
   tintOf,
   silhouetteRadius,
   SHELF_AXIS_DEG,
@@ -383,6 +384,8 @@ export class UniverseScene {
   /** refreshStars() 가 계산한 기준 알파. 프레임 루프는 여기서 다시 시작한다
    *  — 속성 버퍼를 직접 곱하면 매 프레임 누적돼 별이 조용히 꺼진다. */
   private baseAlpha: Float32Array = new Float32Array(0);
+  /** 거리와 무관한 광휘(px) — 화면 지름은 이것과 실제 원반 중 큰 쪽이다 */
+  private baseGlare: Float32Array = new Float32Array(0);
   private radii: number[] = [];
 
   private state: UniverseSceneState = {
@@ -499,6 +502,9 @@ export class UniverseScene {
     sunPx: null as [number, number] | null,
     aim: [0, 0] as [number, number],
     nearest: [null, 0] as [string | null, number],
+    /** 가장 가까운 별이 **실제로 그려진** 화면 지름(px). 규칙을 다시 계산해
+     *  적으면 계측이 코드가 아니라 의도를 읽는다 — 셰이더에 넘어간 그 값을 읽는다. */
+    nearPx: 0,
     crustPainted: 0,
     nearNamed: 0,
     deep: false,
@@ -702,6 +708,7 @@ export class UniverseScene {
     g.setAttribute("aSpike", new THREE.BufferAttribute(new Float32Array(n), 1));
     g.setAttribute("aRing", new THREE.BufferAttribute(new Float32Array(n), 1));
     this.baseAlpha = new Float32Array(n);
+    this.baseGlare = new Float32Array(n);
     this.starGeo = g;
     this.starMat = new THREE.ShaderMaterial({
       vertexShader: STAR_VERT,
@@ -1005,7 +1012,6 @@ export class UniverseScene {
   }
 
   private refreshStars(): void {
-    const aPx = this.starGeo.getAttribute("aPx") as THREE.BufferAttribute;
     const aAlpha = this.starGeo.getAttribute("aAlpha") as THREE.BufferAttribute;
     const aSpike = this.starGeo.getAttribute("aSpike") as THREE.BufferAttribute;
     const aRing = this.starGeo.getAttribute("aRing") as THREE.BufferAttribute;
@@ -1016,20 +1022,21 @@ export class UniverseScene {
       const life = a ? starLife(a, this.state.year) : { presence: 1, afterglow: false };
       const st = this.starState(id);
       const read = this.state.read.has(id);
-      const px = starPixels(mag) * st.boost * (read ? 1.12 : 1);
+      const glare = starPixels(mag) * st.boost * (read ? 1.12 : 1);
       const alpha =
         life.presence *
         st.dim *
         (0.5 + 0.5 * mag) *
         (life.afterglow ? 0.72 : 1) *
         (read ? 1.35 : 1);
-      aPx.setX(i, px);
+      // 화면 지름은 여기서 정하지 않는다 — 거리를 아는 것은 프레임 루프뿐이고,
+      // 같은 규칙을 두 곳에 두면 서로를 가려 한쪽을 지워도 계약이 초록으로 남는다.
+      this.baseGlare[i] = glare;
       this.baseAlpha[i] = Math.min(1.6, alpha);
       aAlpha.setX(i, Math.min(1.6, alpha));
       aSpike.setX(i, mag > 0.55 || read ? 1 : 0);
       aRing.setX(i, this.state.want.has(id) ? 1 : 0);
     }
-    aPx.needsUpdate = true;
     aAlpha.needsUpdate = true;
     aSpike.needsUpdate = true;
     aRing.needsUpdate = true;
@@ -1140,13 +1147,14 @@ export class UniverseScene {
     const spike = new Float32Array(n);
     const ring = new Float32Array(n);
     const srcCol = this.starGeo.getAttribute("aColor") as THREE.BufferAttribute;
-    const srcPx = this.starGeo.getAttribute("aPx") as THREE.BufferAttribute;
     this.lensIds.forEach((id, k) => {
       const i = this.index.get(id) as number;
       col[k * 3] = srcCol.getX(i);
       col[k * 3 + 1] = srcCol.getY(i);
       col[k * 3 + 2] = srcCol.getZ(i);
-      px[k] = srcPx.getX(i);
+      // 렌즈가 옮긴 사본은 **상징이지 천체가 아니다** — 당겨진 자리의 거리로
+      // 원반을 키우면 압축이 크기로 새어 나가 광도와 구분되지 않는다.
+      px[k] = starDiameterPx(this.baseGlare[i] ?? 0, 0);
       alpha[k] = 1;
       spike[k] = 1;
       ring[k] = this.state.want.has(id) ? 1 : 0;
@@ -3213,6 +3221,7 @@ export class UniverseScene {
     let bodyNearId: string | null = null;
     let bodyNearD = Infinity;
     const alpha = this.starGeo.getAttribute("aAlpha") as THREE.BufferAttribute;
+    const pxAttr = this.starGeo.getAttribute("aPx") as THREE.BufferAttribute;
     for (let i = 0; i < this.order.length; i++) {
       const id = this.order[i] as string;
       const center = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
@@ -3231,6 +3240,10 @@ export class UniverseScene {
           ? 1 + (LENS_MAG - 1) * this.lensK
           : 1);
       const ap = apparentRadiusPx(scaled, d, this.camera.fov, h);
+      // 별에도 크기가 있다 (R12-g) — 화면 지름은 광휘와 실제 원반 중 큰 쪽이다.
+      // 이 한 줄이 준비도와 무관한 이유: 크기는 내용에 대한 주장이 아니라
+      // **그 자리에 얼마나 있는가**이고, 준비되지 않은 작가도 거기 있다.
+      pxAttr.setX(i, starDiameterPx(this.baseGlare[i] ?? 0, ap));
       // 준비되지 않은 작가는 **항성으로 남는다.** 무늬 없는 구로 분해하면
       // 정보는 없고 실망만 있는 표면이 생긴다 — 착륙을 막은 이유가 그것이었다.
       // 궤도 아카이브(궤도 카드)가 그 자리의 경험이다(R11-c).
@@ -3285,6 +3298,7 @@ export class UniverseScene {
       spike.needsUpdate = true;
       ring.needsUpdate = true;
     }
+    pxAttr.needsUpdate = true;
     alpha.needsUpdate = true;
 
     // 단계의 두 번째 절은 원래 "고른 것에 렌즈 거리만큼 가까운가"였고, 그것을
@@ -3382,7 +3396,7 @@ export class UniverseScene {
         (this.radii[selIdx] ?? 12) * (isLandable(selId as string) ? 1 + (LENS_MAG - 1) * this.lensK : 1);
       const ap = apparentRadiusPx(scaled, dCam, this.camera.fov, h);
       const asStar = ap < STAR_TO_DISC_PX;
-      const markR = asStar ? starPixels(this.mags[selIdx] ?? 0) / 2 : ap;
+      const markR = asStar ? starDiameterPx(this.baseGlare[selIdx] ?? 0, ap) / 2 : ap;
       const place = (sp: THREE.Sprite, dx: number, dy: number, px: number): void => {
         sp.position
           .copy(c)
@@ -3567,6 +3581,10 @@ export class UniverseScene {
       aim: this.aimPoint(),
       /** 가장 가까운 별과 그 거리 */
       nearest: [nearId, Math.round(nearD)] as [string | null, number],
+      nearPx:
+        nearId === null || this.index.get(nearId) === undefined
+          ? 0
+          : Math.round(pxAttr.getX(this.index.get(nearId) as number)),
       /** 다른 이유 없이 가깝다는 것만으로 이름을 받은 별 수 */
       nearNamed: this.lastNearNamed,
       /** 지각이 실제로 칠해진 천체 수 — 자유 비행의 도착이 무늬 없는 공이
