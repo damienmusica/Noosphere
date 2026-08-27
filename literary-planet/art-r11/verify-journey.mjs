@@ -22,7 +22,7 @@ const distDir = path.resolve(ROOT, opt("dist", "dist"));
 const SLICE = [
   // order = data/authors 의 readingOrder 길이. 렌더에서 되읽지 않는다 —
   // 색인 글리프 계약이 자기가 검사할 값을 스스로 만들어 내지 않도록.
-  { id: "franz-kafka", query: "카프카", works: 5, covers: 4, order: 3, crust: "manuscript", landable: true },
+  { id: "franz-kafka", query: "카프카", works: 6, covers: 4, order: 3, crust: "manuscript", landable: true },
   { id: "natsume-soseki", query: "소세키", works: 6, covers: 5, order: 5, crust: "manuscript", landable: true },
   { id: "rabindranath-tagore", query: "타고르", works: 6, covers: 2, order: 5, crust: "manuscript", landable: true },
   { id: "marcel-proust", query: "프루스트", works: 6, order: 5, crust: null, landable: false }
@@ -722,6 +722,46 @@ for (const a of SLICE) {
         const q = await page.evaluate((id) => window.__universe.project(id), cand.otherId);
         if (q && q[0] > 270 && q[0] < 1500 && q[1] > 60 && q[1] < 620) { hit = { ...cand, q }; break; }
       }
+      // 실은 화면에 닿거나, 닿지 않는다고 말한다 — **캔버스 밖 좌표를 내놓지
+      // 않는다.** 적대 심사(2026-08-28)가 잡았다: 앵커가 없거나 상대편 작품을
+      // 가리키는 관계를 지목하면 실이 입구 명판으로 향하는데, 회랑을 걸어
+      // 들어간 뒤에는 그 명판이 옆으로 밀려나 `threadEnd = [-3564, 612]` 같은
+      // 값이 나왔다(뷰포트 1600×1000). 화면에는 아무 호도 없는데 계측은
+      // 착지점이 있다고 말하고 있었다.
+      {
+        const w = 1600;
+        const h = 1000;
+        const offCorridor = dataRelations
+          .filter((r) => r.sourceId === a.id || r.targetId === a.id)
+          .filter((r) => !(r.anchors ?? []).some((an) => an.workId && ownWorkIds.has(an.workId)))
+          .map((r) => ({ r, otherId: r.sourceId === a.id ? r.targetId : r.sourceId }));
+        let probed = 0;
+        let bad = null;
+        for (const cand of offCorridor) {
+          const q = await page.evaluate((id) => window.__universe.project(id), cand.otherId);
+          if (!q || q[0] < 270 || q[0] > 1500 || q[1] < 60 || q[1] > 620) continue;
+          await page.mouse.move(q[0], q[1]);
+          await page.waitForTimeout(220);
+          await page.evaluate(() => window.__universe.settle());
+          const m2 = await metrics();
+          probed++;
+          const te = m2.threadEnd;
+          // 프레임 밖 **한 화면**까지는 허용한다(가장자리에 걸친 책의 머리는
+          // 프레임 밖이지만 그 실은 보인다). 그보다 멀면 화면에 아무것도 남지
+          // 않는다 — 심사가 잡은 값은 −3564px, 한 화면 너비의 2.2배였다.
+          if (te && (te[0] < -w || te[0] > w * 2 || te[1] < -h || te[1] > h * 2)) {
+            bad = { id: cand.r.id, te };
+            break;
+          }
+          if (probed >= 4) break;
+        }
+        await page.mouse.move(5, 500);
+        await page.waitForTimeout(120);
+        check("이 회랑의 책에 닿지 않는 관계는 실을 화면 밖으로 보내지 않는다",
+          bad === null,
+          bad ? `${bad.id} → ${JSON.stringify(bad.te)}` : `${probed}건 확인 · 전부 화면 안이거나 실 없음`);
+      }
+
       // 측정 가능성은 **보고하되 게이트로 삼지 않는다.** 후보가 0건인 것은
       // 편집의 공백이고(타고르의 앵커는 전부 상대편 책을 가리킨다), 후보가
       // 있어도 별이 화면 밖인 것은 카메라의 사정이다 — 둘 다 코드 결함이
