@@ -46,6 +46,8 @@ for (const d of dataAuthors) {
   ];
   for (const k of keys) bucket.set(k, (bucket.get(k) ?? 0) + 1);
 }
+// 실-책 계약이 이 판에서 실제로 측정된 횟수 — 0 이면 그 계약은 없는 것과 같다
+let threadBookMeasured = 0;
 for (const a of SLICE) {
   const d = dataAuthors.find((x) => x.id === a.id);
   const keys = [
@@ -707,30 +709,50 @@ for (const a of SLICE) {
 
     // ——— 착륙 실: 앵커가 있는 이웃을 지목하면 실이 그 책·그 해에 닿는다 ———
     {
+      // 앵커가 **이 회랑에 선 책**을 가리킬 때만 실이 책에 닿는다. 상대편의
+      // 책을 가리키는 앵커(예: 카프카–카뮈의 『시지프 신화』)는 이 회랑에
+      // 그 책이 없으므로 실이 입구 명판으로 간다 — 그것도 공표된 동작이다.
+      const ownWorkIds = new Set(dataWorks.filter((w) => w.authorId === a.id).map((w) => w.id));
       const anchored = dataRelations
-        .filter((r) => (r.sourceId === a.id || r.targetId === a.id) && (r.anchors ?? []).some((an) => an.workId))
-        .map((r) => ({ r, otherId: r.sourceId === a.id ? r.targetId : r.sourceId, workId: (r.anchors ?? []).find((an) => an.workId)?.workId }));
+        .filter((r) => (r.sourceId === a.id || r.targetId === a.id))
+        .map((r) => ({ r, otherId: r.sourceId === a.id ? r.targetId : r.sourceId, workId: (r.anchors ?? []).map((an) => an.workId).find((id) => id && ownWorkIds.has(id)) }))
+        .filter((c) => c.workId !== undefined);
       let hit = null;
       for (const cand of anchored) {
         const q = await page.evaluate((id) => window.__universe.project(id), cand.otherId);
         if (q && q[0] > 270 && q[0] < 1500 && q[1] > 60 && q[1] < 620) { hit = { ...cand, q }; break; }
       }
+      // 측정 가능성은 **보고하되 게이트로 삼지 않는다.** 후보가 0건인 것은
+      // 편집의 공백이고(타고르의 앵커는 전부 상대편 책을 가리킨다), 후보가
+      // 있어도 별이 화면 밖인 것은 카메라의 사정이다 — 둘 다 코드 결함이
+      // 아니다. 대신 **한 판에서 적어도 한 번은 실제로 측정됐는지**를 루프
+      // 뒤에서 단언한다. 그래야 "아무 데서도 재지 않았는데 초록"이 불가능하다.
+      console.log(`  · 실-책 후보 ${anchored.length}건 · 화면 안 ${hit ? hit.r.id : "없음"}`);
       if (hit) {
+        threadBookMeasured++;
         await page.mouse.move(hit.q[0], hit.q[1]);
         await page.waitForTimeout(250);
         await page.evaluate(() => window.__universe.settle());
         const tm = await metrics();
         const bx = tm.cities.boxes[hit.workId];
-        const near =
-          tm.threadEnd && bx
-            ? Math.hypot(tm.threadEnd[0] - (bx[0] + bx[2]) / 2, tm.threadEnd[1] - (bx[1] + bx[3]) / 2)
-            : Infinity;
-        check("지목한 실이 요약이 지목한 책에 닿는다", tm.ego === 1 && near < 160,
-          `${hit.workId} 까지 ${Math.round(near)}px`);
+        // **픽셀 허용치로 재지 않는다.** 실은 책의 머리(책 높이 위쪽)에 닿게
+        // 설계돼 있고, 책의 화면 상자는 카메라 거리에 따라 수십 배로 변한다 —
+        // 가까운 책은 383px 높이로 서므로 '머리에서 상자 중심까지'만 223px 다.
+        // 실측(2026-08-27): 같은 기제가 멀리 선 책 셋에서는 50·54·92px 였고,
+        // 회랑이 62칸에서 88칸으로 길어지자 가까운 한 권만 문턱을 넘었다.
+        // 고정 허용치가 기제 대신 일하고 있었던 것이다. 기제로 다시 쓴다 —
+        // **그 책의 기둥 안, 발보다 위.**
+        const w = bx ? bx[2] - bx[0] : 0;
+        const h = bx ? bx[3] - bx[1] : 0;
+        const onBook = Boolean(
+          tm.threadEnd && bx &&
+          tm.threadEnd[0] > bx[0] - w * 0.5 && tm.threadEnd[0] < bx[2] + w * 0.5 &&
+          tm.threadEnd[1] > bx[1] - h && tm.threadEnd[1] < bx[3]
+        );
+        check("지목한 실이 요약이 지목한 책의 머리에 닿는다", tm.ego === 1 && onBook,
+          `${hit.workId} · 실 ${tm.threadEnd && tm.threadEnd.map(Math.round)} · 책 ${bx && bx.map(Math.round)}`);
         await page.mouse.move(5, 500);
         await page.waitForTimeout(150);
-      } else {
-        check("앵커 이웃이 화면 안에 없다 — 실-책 계약 미측정", true, "관측 불가(회전 필요)");
       }
     }
     // ——— 착륙 패널: 실물 마크가 카드를 뚫지 않는다 ———
@@ -916,6 +938,9 @@ for (const a of SLICE) {
   }
 }
 
+
+check("실-책 계약이 이 판에서 최소 한 번 실제로 측정됐다", threadBookMeasured > 0,
+  `${threadBookMeasured}개 회랑에서 측정`);
 
 console.log(`\nconsole errors: ${consoleErrors.length}`);
 if (consoleErrors.length) console.log(consoleErrors.slice(0, 4).join("\n"));

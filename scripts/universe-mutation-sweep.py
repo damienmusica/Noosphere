@@ -61,6 +61,7 @@ C = "src/universe/components/OrbitCard.tsx"
 U = "src/universe/UniverseApp.tsx"
 CSS = "src/universe/universe.css"
 LAB = "src/globe/labels.ts"
+ASM = "src/data/assemble.ts"
 
 # (lane, name, file, needle, replacement)
 #
@@ -454,6 +455,18 @@ MUTATIONS = [
     ("flight", "주권 — 감소된 동작에서도 회랑에 관성을 준다", S,
      "        if (this.state.reducedMotion) {\n          this.walkYear += this.walkVel / -Math.log(WALK_DAMP);\n          this.walkVel = 0;\n        } else {\n          this.walkYear += this.walkVel * sec;",
      "        if (false) {\n          this.walkVel = 0;\n        } else {\n          this.walkYear += this.walkVel * sec;"),
+    # 앵커는 요약이 이미 지목한 것만 승격한다 (물량 트랙 ②) — 이 규율은
+    # 189건을 한 번에 올린 웨이브 전까지 산문으로만 있었다.
+    ("fast", "앵커 — 요약이 지목하지 않은 책도 앵커로 받는다", ASM,
+     "        else if (!r.summary.includes(w.titleKo) && !r.summary.includes(w.titleOriginal))\n"
+     "          errors.push(\n"
+     "            `${r.id}: anchor work ${an.workId} is not named in the summary ('${w.titleKo}')`\n"
+     "          );",
+     ""),
+    ("fast", "앵커 — 요약이 지목하지 않은 연도도 앵커로 받는다", ASM,
+     "      if (an.year !== undefined && !r.summary.includes(String(an.year)))\n"
+     "        errors.push(`${r.id}: anchor year ${an.year} is not named in the summary`);",
+     ""),
     # 별에도 크기가 있다 (R12-g) — 크기는 광휘와 실제 원반의 큰 쪽이다.
     ("flight", "크기 — 원반 항을 없앤다 (별이 다시 거리를 갖지 않는다)", G,
      "  return Math.min(STAR_MAX_PX, Math.max(glarePx, apparentRadiusPx_ * 2));",
