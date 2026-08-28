@@ -30,6 +30,8 @@ import { sourceSchema } from "../src/schema/source.ts";
 import { externalLinkSchema } from "../src/schema/external-link.ts";
 import { learningPathSchema } from "../src/schema/learning-path.ts";
 import { findStaleGaps } from "./lib/stale-gaps.ts";
+import { buildSeatRows, mapAnomalies } from "./lib/starsystem-readiness.ts";
+import { STAR_SYSTEM_ADDRESSES, REVIVAL_BARRED } from "./lib/starsystem-addresses.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = join(__dirname, "..", "data");
@@ -311,6 +313,97 @@ if (staleGaps.length === 0) {
     out(`  - ${g.edgeId} — ${what}  [${g.kind}/${g.lane}: "${g.phrase}"]`);
   }
   out(`  ${staleGaps.length} stale gap note(s) — refresh via a set_note metadata flip.`);
+}
+
+// --- 11. Star-system seats -------------------------------------------------------
+// Where a star system may open, and what is actually at each place. Deliberately
+// NOT a ranking: a 2026-08-28 adversarial panel killed every density metric it
+// was given on one counterexample — `field:literary-studies`, the map address of
+// the only star system that ever opened, holds zero residents, because decision
+// (86) rules literature outside this corpus. Density therefore orders candidates
+// backwards, and no machine test was found that separates "needs its own
+// gravity" from "nobody has worked this seat yet". Rows print in a fixed order.
+// Logic and rationale live in scripts/lib/starsystem-readiness.ts; its own
+// coverage is measured by npm run report:starsystem-fixtures.
+const seatReport = buildSeatRows({
+  nodes: nodes.map((n) => ({ id: n.id, type: n.type, status: n.status, domain: n.domain })),
+  edges: edges.map((e) => ({
+    id: e.id,
+    source: e.source,
+    target: e.target,
+    relation: e.relation,
+    status: e.status,
+  })),
+  addresses: STAR_SYSTEM_ADDRESSES,
+  revivalBarred: REVIVAL_BARRED,
+});
+
+out("");
+out("Star-system seats (state, not readiness — this report does not rank)");
+out(`- Registered addresses: ${STAR_SYSTEM_ADDRESSES.length} | rows: ${seatReport.rows.length}`);
+for (const r of seatReport.rows) {
+  const flags = [
+    r.opened ? "OPEN" : null,
+    r.addressShape === "unregistered" ? "unregistered" : r.addressShape,
+    r.refResolves ? null : `REF UNRESOLVED (${r.addressRef})`,
+    r.seatStatus === "reviewed" || r.seatStatus === "ruling" ? null : r.seatStatus,
+    r.revivalBarred ? "revival-barred" : null,
+  ].filter(Boolean);
+  out(`  - ${r.seat} [${flags.join(" · ")}]`);
+  if (r.corpusPath) {
+    // A seat whose corpus lives elsewhere has no /data population BY
+    // CONSTRUCTION. Printing that as `residents 0` next to the other rows reads
+    // as "empty" when it means "not here" — the exact conflation that let
+    // decision (119)'s repair write a falsehood. State it, never score it.
+    out(`      population lives in ${r.corpusPath} — not read by this report (sibling corpus)`);
+    out(`      residents in /data: ${r.residents} (n/a by construction, not a measure of this seat)`);
+  } else {
+    out(
+      `      residents ${r.residents} (direct ${r.residencyDirect} · via-entity ${r.residencyIndirect} · unattached ${r.residencyUnattached})`,
+    );
+  }
+  if (r.corpusPath) {
+    out("      ties n/a — sibling corpus");
+  } else if (r.suppressed) {
+    out(`      ties n/a — ${r.suppressed}`);
+  } else {
+    out(
+      `      peer ties ${r.peerTies} (${r.peerVocabulary} relation type(s)) · attachment ties ${r.attachmentTies} — never summed`,
+    );
+  }
+}
+out("  Note: `residents` is map-claim, NOT candidacy — it is anti-correlated with it.");
+out(
+  `- Residents belonging to no seat (no domain, so counted in no row above): ${seatReport.unseated.length}`,
+);
+for (const id of seatReport.unseated.slice(0, 10)) out(`  - ${id}`);
+
+const anomalies = mapAnomalies(
+  nodes.map((n) => ({ id: n.id, type: n.type, status: n.status, domain: n.domain })),
+  edges.map((e) => ({
+    id: e.id,
+    source: e.source,
+    target: e.target,
+    relation: e.relation,
+    status: e.status,
+  })),
+);
+out("");
+out("Map shape (the map is a DAG, not a tree — enumerate places, never walk down)");
+out(`- Orphan places (no part_of parent; invisible to a top-down walk): ${anomalies.orphans.length}`);
+for (const id of anomalies.orphans) out(`  - ${id}`);
+// Recipe matters and must be printed with the number: counting DIRECT parents
+// gives 37, while counting places that resolve UP to more than one domain gives
+// 31. Both are correct under their own definition, and a bare count invites the
+// definition collision the 2026-08-28 panel hit three times inside itself.
+out(
+  `- Cross-listed places [recipe: >1 direct part_of parent] (design, per §13): ${anomalies.crossListed.length}`,
+);
+for (const c of anomalies.crossListed.slice(0, 5)) {
+  out(`  - ${c.id} → ${c.parents.join(" ∥ ")}`);
+}
+if (anomalies.crossListed.length > 5) {
+  out(`  - ... and ${anomalies.crossListed.length - 5} more`);
 }
 
 console.log(lines.join("\n"));
