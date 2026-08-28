@@ -1549,3 +1549,31 @@
   width: auto;
   bottom: 96px;
 }
+
+/* ——— 관측창 프레임 (R13-d) ———
+   배는 창의 가장자리로 존재한다 — 코너 헤어라인 4점 + 초미세 비네트, 텍스트 0.
+   별보다 늘 어둡다(밝기=영향력 채널 불가침, GD 판정 규칙). 표면에서는 렌더 게이트. */
+.u-hull {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  box-shadow: inset 0 0 150px var(--hull-vignette);
+}
+.u-hull i {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border: 0 solid var(--brass-a35);
+}
+.u-hull i:nth-child(1) { left: 14px; top: 14px; border-left-width: 1px; border-top-width: 1px; }
+.u-hull i:nth-child(2) { right: 14px; top: 14px; border-right-width: 1px; border-top-width: 1px; }
+.u-hull i:nth-child(3) { left: 14px; bottom: 14px; border-left-width: 1px; border-bottom-width: 1px; }
+.u-hull i:nth-child(4) { right: 14px; bottom: 14px; border-right-width: 1px; border-bottom-width: 1px; }
+
+/* 적대 심사 ⑤ — 이름표·슬립이 드래그의 시작을 삼키지 않는다. 포인터는 캔버스로
+   통과시키고(별 픽·작품 레이캐스트가 같은 자리에서 집는다), 키보드 접근성
+   (tabIndex·Enter)은 그대로 남는다. universe 한정 — 행성 앱은 손대지 않는다. */
+.universe .globe-label.is-interactive {
+  pointer-events: none;
+}

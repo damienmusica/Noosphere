@@ -280,6 +280,10 @@ export class UniverseScene {
   private lastApproachBucket = -1;
   /** 회랑 자세가 마지막으로 계산한 서가 거리(책 높이 배) — 계측은 결과를 읽는다 */
   private poseLat = 0;
+  /** 이번 프레임에 벽이 접은 이웃 이름 수 — 차폐가 일하는지의 계측 */
+  private lastOccludedNeighbors = 0;
+  /** 초점 별에 실제로 적용된 렌즈 배율 — 계측은 적용값을 읽는다(nearPx 동류) */
+  private lastLensMag = 1;
   /** 추력이 궤도를 끊었는가 — 고른 것은 남고 카메라만 풀린다 */
   private orbitBroken = false;
   /** 마지막으로 알린 "원경에서 멀어졌다" */
@@ -946,6 +950,11 @@ export class UniverseScene {
    * (실측: 누운 화면 13/87, 데스크톱 1440×900 7/90 — 윌리엄 포크너 ① 은
    * 헤더에 통째로 매몰됐다).
    */
+  /** 이번 프레임의 상호작용 라벨 상자 — 라벨이 곧 터치 타깃이다(심사 ⑤ 후속).
+   *  포인터가 라벨을 통과해 캔버스로 오게 되면서, 별 픽 반경(26px)과 작은 책의
+   *  레이캐스트가 라벨 자리를 빗나갔다(실측: 손끝 첫 탭 사망·당김 사망). */
+  private labelHits: Array<{ kind: string; id: string; x: number; y: number; half: number; h: number }> = [];
+
   private labelHidden(
     sx: number,
     sy: number,
@@ -2756,6 +2765,10 @@ export class UniverseScene {
       this.controls.target.copy(target);
       this.camera.position.copy(toPos);
       this.setCameraUp(toUp);
+      // 즉시 배치도 시선을 받는다(적대 심사 ③): OrbitControls 시절에는 매
+      // 프레임 update() 가 lookAt 을 대신했지만, 이제 배치의 시선은 여기뿐이다
+      // — 없으면 딥링크가 별을 등지고 빈 하늘을 본다(실측: 톨스토이 3인 전부).
+      this.camera.lookAt(target);
       this.anim = null;
       if (this.state.landedId && this.landTarget) {
         this.foldK = 1;
@@ -2892,6 +2905,13 @@ export class UniverseScene {
     const r = this.renderer.domElement.getBoundingClientRect();
     const px = cx - r.left;
     const py = cy - r.top;
+    // 이름표가 곧 별의 터치 타깃이다 — 라벨은 별에서 +14px 아래에 서므로,
+    // 라벨 중심 탭이 픽 반경(26px) 경계를 빗나간다(실측: 손끝 첫 탭 사망).
+    for (const hit of this.labelHits) {
+      if (hit.kind === "author" && Math.abs(px - hit.x) <= hit.half && py >= hit.y - 4 && py <= hit.y + hit.h) {
+        return hit.id;
+      }
+    }
     let best: string | null = null;
     let bestD = radius;
     const v = new THREE.Vector3();
@@ -2906,6 +2926,8 @@ export class UniverseScene {
       const sy = ((-v.y + 1) / 2) * r.height;
       const d = Math.hypot(sx - px, sy - py);
       if (d < bestD) {
+        // 벽 뒤의 별은 집히지 않는다(적대 심사 ④ — 벽을 뚫고 이륙한 실측)
+        if (this.corridorOccludes(this.effectivePos(id, v))) continue;
         bestD = d;
         best = id;
       }
@@ -2913,8 +2935,44 @@ export class UniverseScene {
     return best;
   }
 
+  /** 착륙 중, 카메라→월드점 방향을 **가까운 벽**이 막는가 — 이름과 픽의 공용 자.
+   *  근거리로 한정하는 이유: 회랑은 행성을 감아 올라가므로 먼 칸의 지각이
+   *  지평선 하늘 띠를 물리적으로 덮는다 — 그것까지 접으면 이륙의 문(이름 뜬
+   *  별)이 전멸한다(실측: 18/18 접힘, 여정·손안 계약 동시 적색). 심사 ④가
+   *  지적한 것은 코앞 벽면 위의 유령이지 지평선의 별이 아니다. */
+  private corridorOccludes(worldPos: THREE.Vector3): boolean {
+    const f = this.corridorFrame;
+    if (!this.state.landedId || !f) return false;
+    const dir = worldPos.clone().sub(this.camera.position).normalize();
+    this.raycaster.set(this.camera.position, dir);
+    const hits = this.raycaster.intersectObjects(this.cityGroup.children, true);
+    // 스치는 기둥·바닥의 모서리 히트는 가림이 아니다 — **마주 보는 면**(법선이
+    // 시선을 되받는 면)만 벽이다. 아니면 지평선 띠의 별 전원이 접힌다(실측:
+    // 접힘 18/18, 이륙의 문 전멸). 첫 히트가 트림 모서리일 수 있으므로 근거리
+    // 히트 몇을 훑는다(실측: 첫 히트만 보면 정면 벽에서도 접힘 0).
+    for (const hit of hits) {
+      if (hit.distance >= f.bh * 14) break;
+      // 바닥 눈금(LineSegments)의 히트는 face 가 없다 — 면 있는 히트만 벽 후보다.
+      if (!hit.face) continue;
+      const n = hit.face.normal.clone().transformDirection(hit.object.matrixWorld);
+      if (n.dot(dir) < -0.6) return true;
+    }
+    return false;
+  }
+
   private pickWork(e: PointerEvent): string | null {
     if (!this.cityRecords.length) return null;
+    // 1차: 라벨 상자 — 이름을 누르는 것이 책을 누르는 것이다.
+    {
+      const r = this.renderer.domElement.getBoundingClientRect();
+      const px = e.clientX - r.left;
+      const py = e.clientY - r.top;
+      for (const hit of this.labelHits) {
+        if (hit.kind === "work" && Math.abs(px - hit.x) <= hit.half && py >= hit.y - 4 && py <= hit.y + hit.h) {
+          return hit.id;
+        }
+      }
+    }
     this.raycaster.setFromCamera(this.pointerNdc(e), this.camera);
     const hits = this.raycaster.intersectObjects(this.cityGroup.children, true);
     for (const h of hits) {
@@ -2930,6 +2988,14 @@ export class UniverseScene {
     // 방향 그대로 이어지고(thrustDir 동결), 다음 휠·핀치가 조준을 다시 푼다.
     this.aimId = null;
     this.aimAt = null;
+    // 포인터 캡처(적대 심사 ①): OrbitControls 은퇴가 캡처까지 데려갔다 —
+    // 크롬 위에서 뗀 손의 pointerup 이 유실돼 맨 마우스가 하늘을 끌고 다녔다.
+    // 합성 이벤트(손안 하네스)는 활성 포인터가 아니라 던지므로 경계에서 삼킨다.
+    try {
+      this.renderer.domElement.setPointerCapture(e.pointerId);
+    } catch {
+      /* 합성 포인터 — 캡처 불가는 정상 경로 */
+    }
     // 주 포인터가 내려온다는 것은 **다른 포인터가 없다**는 뜻이다(포인터 이벤트
     // 규약). 제스처 사이에 유령 포인터가 남으면 두 손가락이 세 개로 세어지고
     // 핀치가 조용히 죽는다(실측: 손끝 세 번째 제스처부터 추력 0).
@@ -3516,10 +3582,15 @@ export class UniverseScene {
       // 배율에는 준비도 조건을 두지 않는다. 준비도 게이트는 바로 아래 표현
       // 사다리 한 곳에만 있다 — 같은 규칙을 두 곳에 두면 **서로를 가려**
       // 한쪽을 지워도 계약이 초록으로 남는다(변이 스윕 실측, 2026-08-20).
+      // 렌즈 배율은 필요의 함수다(적대 심사 ②): ×34 는 "렌즈 거리(1200)에서
+      // 읽히게"가 목적이었으므로, 이미 코앞(140)이면 그만큼만 확대한다 —
+      // 아니면 도착 후의 클릭이 행성을 뷰포트 전체의 벽으로 만든다(실측).
+      const lensMagHere = Math.max(1, Math.min(LENS_MAG, LENS_MAG * (d / LENS_DIST)));
+      if (id === this.state.focusId) this.lastLensMag = Math.round(lensMagHere * 100) / 100;
       const scaled =
         (this.radii[i] ?? 12) *
         (id === this.state.focusId && !this.state.landedId
-          ? 1 + (LENS_MAG - 1) * this.lensK
+          ? 1 + (lensMagHere - 1) * this.lensK
           : 1);
       const ap = apparentRadiusPx(scaled, d, this.camera.fov, h);
       // 별에도 크기가 있다 (R12-g) — 화면 지름은 광휘와 실제 원반 중 큰 쪽이다.
@@ -3646,7 +3717,14 @@ export class UniverseScene {
       this.lastApproachBucket = apprBucket;
       this.cb.onApproach(apprId, Math.round(apprD));
     }
-    const stage: Stage = surfaceId ? "surface" : resolved > 0 || focusDist < 1250 ? "approach" : "sky";
+    // surface 는 착륙의 이름이다(적대 심사 ②) — 렌즈가 키운 구가 화면 22% 를
+    // 넘어도 착륙이 아니면 "근경 · 착륙" 칩이 서면 안 된다. 그리고 미준비 별의
+    // 코앞도 접근이다(⑥): 스트립은 만개했는데 칩이 "원경"이면 계기가 모순된다.
+    const stage: Stage = this.state.landedId && surfaceId
+      ? "surface"
+      : resolved > 0 || focusDist < 1250 || nearD < NAME_NEAR
+        ? "approach"
+        : "sky";
     if (stage !== this.stage) {
       this.stage = stage;
       this.cb.onStageChange(stage);
@@ -3830,7 +3908,8 @@ export class UniverseScene {
       stars: drawn,
       ego: this.state.ego.length,
       lensK: Number(this.lensK.toFixed(3)),
-      lensMag: this.lensK > 0 ? LENS_MAG : 1,
+      // 심사②: 상수 선언이 아니라 **적용값**을 읽는다 — 코앞의 초점은 34가 아니다.
+      lensMag: this.lensK > 0 ? this.lastLensMag : 1,
       lensMoved: this.lensStars.visible ? this.lensIds.length : 0,
       orbitArchive: Boolean(this.state.focusId && !isLandable(this.state.focusId)),
       assetsPreloaded: Boolean(
@@ -3939,6 +4018,8 @@ export class UniverseScene {
     slipMaxPerYear: number;
     /** "외 N건" 접힘 명패 수 */
     slipFolded: number;
+    /** 벽이 접은 이웃 이름 수 — 벽은 하늘이 아니다(④) */
+    occludedNeighbors: number;
     /** 회랑 자세의 서가 거리(책 높이 배) — corridorPose 가 마지막으로 계산한 값 */
     standLat: number;
     /** 쉬는 권 중 책등 축이 입구를 향한 수 — 카메라가 아니라 회랑 접선과 잰다 */
@@ -4050,6 +4131,7 @@ export class UniverseScene {
         return c.size ? Math.max(...c.values()) : 0;
       })(),
       slipFolded: this.eventSlips.filter((e) => e.folded).length,
+      occludedNeighbors: this.lastOccludedNeighbors,
       standLat: Math.round(this.poseLat * 100) / 100,
       restingSpineToEntrance: restingAligned,
       restingSpineDressed: restingDressed,
@@ -4539,11 +4621,19 @@ export class UniverseScene {
       // 관련 별의 이름 (R12-c 선 다이어트): 착륙 중에도 이웃은 **이름으로**
       // 하늘에 서 있다 — 회랑의 끝이 벽이 아니라 갈 수 있는 곳이라는 증거.
       // 누르면 그 자리에서 날아오른다(이름표·별 픽 둘 다).
+      this.lastOccludedNeighbors = 0;
       for (const nid of s.egoLit) {
         if (nid === s.landedId) continue;
         const a = this.data.authors.find((x) => x.id === nid);
         const i = this.index.get(nid);
         if (!a || i === undefined || !this.present(i)) continue;
+        // 벽은 하늘이 아니다(적대 심사 ④) — 서가 벽면 뒤의 별에 이름을 찍으면
+        // 어느 이름이 하늘 것이고 어느 것이 벽에 박힌 유령인지 구분할 수 없다.
+        // 카메라→별 방향으로 회랑 기하를 쏘아, 벽이 막으면 이름을 접는다.
+        if (this.corridorOccludes(this.effectivePos(nid, v))) {
+          this.lastOccludedNeighbors += 1;
+          continue;
+        }
         this.effectivePos(nid, v).project(this.camera);
         if (v.z > 1) continue;
         const sx = ((v.x + 1) / 2) * w;
@@ -4601,6 +4691,16 @@ export class UniverseScene {
       if (this.aimFirst(id)) return;
       this.cb.onPickAuthor(id);
     };
+    this.labelHits = items
+      .filter((it) => it.interactive)
+      .map((it) => ({
+        kind: it.kind,
+        id: it.id,
+        x: it.x,
+        y: it.y,
+        half: estimateWidth(it.text, it.size === "lg" ? 16 : it.size === "md" ? 14 : 13, LABEL_CHROME_SLIP) / 2 + 6,
+        h: 26
+      }));
     this.labels.update(items, w, h, this.stage === "surface" ? 40 : this.stage === "sky" ? 18 : 32);
   }
 
