@@ -12,6 +12,8 @@
     "report:graph": "tsx scripts/report-graph.ts",
     "report:gap-fixtures": "tsx scripts/gap-fixtures.ts",
     "report:gap-mutation-sweep": "python3 scripts/gap-fixture-mutation-sweep.py",
+    "report:starsystem-fixtures": "tsx scripts/starsystem-fixtures.ts",
+    "report:starsystem-mutation-sweep": "python3 scripts/starsystem-fixture-mutation-sweep.py",
     "foundry:validate-batches": "tsx scripts/foundry/validate-batches.ts",
     "foundry:proposal-skeleton": "tsx scripts/foundry/build-proposal-skeleton.ts",
     "foundry:resolve-wikidata": "tsx scripts/foundry/resolve-wikidata.ts",

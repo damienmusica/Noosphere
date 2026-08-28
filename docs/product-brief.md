@@ -24,10 +24,13 @@ learning paths, influence trails, and external references.
 - The map is a **globe, not a tree** — a node may belong to more than one parent (co-equal, no
   primary marker; a generalization of cross-listing, see [`docs/data-foundry.md`](data-foundry.md)
   §13), and connections run up, down, and sideways.
-- Noosphere itself is a **star system**: planets are projections of the one canonical corpus for a
-  particular way of reading — never partitions of it — joined across planets by Wikidata QID (see
-  the charter, decision (129)). The **first planet**, 《문학의 행성》 (Literary Planet), lives in
-  [`literary-planet/`](../literary-planet/).
+- Noosphere itself is a **universe**: it holds the law every star system inherits, the map of
+  where they may open, and the cross-domain cast that belongs to no single domain. A **star
+  system** is a domain entered at depth, with its own corpus and its own relation grammar —
+  gathered, never cut out of `/data` — joined across systems by Wikidata QID (see the charter,
+  decision (130), amending (129)). Membership in a domain is a computed lens over recorded
+  events, never a stored fact. The **first star system**, 《문학의 성계》 (the Literary Star
+  System), lives in [`literary-planet/`](../literary-planet/).
 
 Noosphere **connects and organizes; it does not rank or adjudicate.** It records the *state* of
 discourse — including what is unresolved or contested — rather than resolving it (see

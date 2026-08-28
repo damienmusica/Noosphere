@@ -43,20 +43,44 @@ evidence-backed relations that cross the hierarchy. The top-down `part_of` struc
 for navigation — never a claim that knowledge *is* a tree, or that any one arrangement is the
 canonical one.
 
-### Shape: one star system, many planets
+### Shape: one universe, many star systems
 
-Noosphere is a **star system, not a single planet** (decision (129)). The canonical corpus — the
-nodes, edges, sources, and translations under `/data` — is the sun; **planets are projections** of
-knowledge for a particular way of reading (a domain lens, an audience, a visual grammar), never
-partitions of the corpus. A planet may carry its own curation ladder, layout, and art direction, but
-it introduces no second source of truth for shared identities: entities join across planets by
-**Wikidata QID** (`external_ids`), so the same person or work is one identity everywhere it appears.
+Noosphere is a **universe, not a single star system** (decision (130), amending (129)). What the
+universe holds is threefold: the **law** every star system inherits, the **map** that fixes where
+star systems may open (the domain / field / subfield skeleton under `/data`), and the
+**cross-domain cast** — the people, works, and concepts that belong to no single domain and
+therefore stay at the centre.
 
-The **first planet is 《문학의 행성》 (Literary Planet)** — a Korean-first, read-only atlas of 100
-authors of 20th-century world literature, maintained in [`literary-planet/`](../literary-planet/) as
-the proving ground for planet-grade projection (independent editorial data, its own visual thesis,
-QID-joined author identities backfilled 100/100). Planets defer to this charter for identity,
-posture, and boundaries; planet-specific editorial policy lives with the planet.
+A **star system** is a domain that someone has entered at depth. It keeps its own corpus, its own
+relation taxonomy (its gravity), its own visual constitution and art direction. **Star systems are
+not partitions of the corpus**: nothing is carved out of `/data` to make one — they are gathered,
+never cut. A star system opens the way a surface resolves as you approach it; the mechanism is
+**distance, not projection**. A field no one has entered yet stays a point of light, and saying so
+is honest, not a gap.
+
+A star system opens only at a place this project records: either a node ID on the map, or a
+boundary ruling that deliberately left the place empty (the registry lives in
+[`scripts/lib/starsystem-addresses.ts`](../scripts/lib/starsystem-addresses.ts)). The **first star
+system is 《문학의 성계》 (the Literary Star System)**, which opens at the boundary rule of decision
+(86) — literature was ruled outside the main corpus and the sister product reserved there. It is
+maintained in [`literary-planet/`](../literary-planet/). Star systems defer to this charter for
+identity, posture, and boundaries; star-system-specific editorial policy lives with the star system.
+
+Entities join across star systems by **Wikidata QID** (`external_ids`), never by display label. A
+star system introduces no second source of truth for a shared identity: Kafka is a node in both
+spheres, and each holds the aspect that is its own.
+
+**Membership is a lens, never a stored fact** (decision (130), the Pluto rule). The corpus records
+**events** — who founded, influenced, wrote — and "who belongs to this domain" is always computed
+from those events. Pluto did not change in 2006; a definition did, and no recorded observation
+became false. Storing membership as data would have made it a lie the day the lens moved, so
+persons and works carry no `part_of` membership edges, by design and permanently.
+
+Star systems declare which universal law they inherit; they never copy it. Universal law is
+anything whose violation would reach another star system (the hard constraints, QID joins, evidence
+verifiability, recording of source rights status, generation/QC separation, the *existence* of a
+promotion ladder). Local law is what ends inside the system (the ladder's calibration, the relation
+taxonomy, the visual grammar, collection priorities).
 
 ### Stance: organize, do not adjudicate
 
