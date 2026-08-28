@@ -1493,3 +1493,59 @@
 .is-narrow.is-short[data-sheet] .u-time {
   display: block;
 }
+
+/* ——— 관측 스트립 (R13-b 접근의 사다리) ———
+   정보는 클릭의 보상이 아니라 접근의 응답이다. 다가갈수록 줄이 하나씩
+   깊어지는 계기 — 조용한 놋쇠 문법, 카드가 열리면 물러난다(렌더 게이트). */
+.u-approach {
+  position: absolute;
+  right: 16px;
+  bottom: 84px;
+  width: min(360px, calc(100vw - 320px));
+  background: var(--surface-veil);
+  border: 1px solid var(--line);
+  border-right: 2px solid var(--brass-a45);
+  border-radius: 3px;
+  padding: 10px 14px;
+  z-index: 5;
+  pointer-events: none;
+}
+.u-approach ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.u-approach li {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+.u-approach li[data-rung="name"] {
+  font-size: 14.5px;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+.u-approach li[data-rung="why"] {
+  color: var(--text);
+}
+.u-approach li[data-rung="opening"] {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-style: normal;
+  color: var(--text);
+}
+.u-approach li[data-rung="invite"] {
+  color: var(--brass);
+  letter-spacing: 0.03em;
+}
+.is-narrow .u-approach {
+  right: 12px;
+  left: 12px;
+  width: auto;
+  bottom: 96px;
+}

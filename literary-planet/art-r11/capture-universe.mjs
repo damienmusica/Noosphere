@@ -188,6 +188,23 @@ for (const y of [1900, 1935, 1970]) {
   }
   report.push({ frame: "7flight-resolve", ...(await shot("7flight-resolve")) });
 
+  // 접근의 사다리(R13-b) — 정보는 클릭의 보상이 아니라 접근의 응답이다.
+  // 카프카의 문간에서 관측 스트립이 이름·생몰·한 줄·관계·여는 문장을 들고 선다.
+  {
+    const kq = await page.evaluate(() => window.__universe.project("franz-kafka"));
+    if (kq) {
+      await page.mouse.move(kq[0], kq[1]);
+      for (let i = 0; i < 20; i++) {
+        await page.mouse.wheel(0, -150);
+        await page.waitForTimeout(110);
+        const m = await page.evaluate(() => window.__universe.metrics());
+        if (m.nearest[0] === "franz-kafka" && m.nearest[1] < 200) break;
+      }
+      await page.waitForTimeout(300);
+    }
+    report.push({ frame: "7flight-ladder", ...(await shot("7flight-ladder")) });
+  }
+
   // 미준비 작가는 항성으로 남는다(크기는 영향력에 매여 있다) — 다가감에
   // 응답하는 채널은 **이름**이다.
   await steer("jorge-luis-borges");

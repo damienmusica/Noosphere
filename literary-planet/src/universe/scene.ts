@@ -123,6 +123,10 @@ export interface UniverseCallbacks {
   /** 추력이 궤도를 떠났다 — 휠은 언제나 추력이므로, 궤도에 묶여 있지 않다는
    *  증거가 같은 제스처 안에 있어야 한다. */
   onLeaveOrbit(): void;
+  /** 접근의 사다리(R13-b) — 지목했거나 이름 거리(NAME_NEAR) 안에 든 별과
+   *  그 거리. 정보는 클릭의 보상이 아니라 접근의 응답이므로, 이 신호가 관측
+   *  스트립의 유일한 원천이다. 착륙 중엔 null(표면이 곧 세계다). */
+  onApproach(id: string | null, d: number): void;
 }
 
 export type Stage = "sky" | "approach" | "surface";
@@ -271,6 +275,9 @@ export class UniverseScene {
   private nearD = Infinity;
   /** 마지막으로 알린 "분해된 가장 가까운 천체" */
   private lastNearBody: string | null = null;
+  /** 접근 통지의 변화 감지 — id 또는 10 단위 거리 버킷이 바뀔 때만 콜백 */
+  private lastApproachId: string | null = null;
+  private lastApproachBucket = -1;
   /** 추력이 궤도를 끊었는가 — 고른 것은 남고 카메라만 풀린다 */
   private orbitBroken = false;
   /** 마지막으로 알린 "원경에서 멀어졌다" */
@@ -516,6 +523,8 @@ export class UniverseScene {
     aim: [0, 0] as [number, number],
     /** 지목 항법의 목표(R13) — 추력이 이 별로 호밍 중이면 그 id, 아니면 null */
     aimLock: null as string | null,
+    /** 접근의 사다리(R13-b) — [대상 별, 거리(10 단위)] · 대상 없음 = [null, -10] */
+    approach: [null, -10] as [string | null, number],
     nearest: [null, 0] as [string | null, number],
     /** 가장 가까운 별이 **실제로 그려진** 화면 지름(px). 규칙을 다시 계산해
      *  적으면 계측이 코드가 아니라 의도를 읽는다 — 셰이더에 넘어간 그 값을 읽는다. */
@@ -3530,6 +3539,30 @@ export class UniverseScene {
       this.lastNearBody = near;
       this.cb.onNear(near);
     }
+    // 접근의 사다리(R13-b) — 대상은 뜻(지목)이 우선이고, 뜻이 없으면 이름
+    // 거리 안에 든 최근접 별이다. 거리는 10 단위 버킷으로만 통지한다: 매
+    // 프레임 콜백은 React 를 상대로 한 소음이고, 사다리의 단은 10 보다 성기다.
+    let apprId: string | null = null;
+    let apprD = 0;
+    if (!this.state.landedId) {
+      const ai = this.aimId !== null ? this.index.get(this.aimId) : undefined;
+      if (ai !== undefined) {
+        apprId = this.aimId;
+        apprD = (this.dirs[ai] as THREE.Vector3)
+          .clone()
+          .multiplyScalar(SHELL_R)
+          .distanceTo(this.camera.position);
+      } else if (nearId !== null && nearD < NAME_NEAR) {
+        apprId = nearId;
+        apprD = nearD;
+      }
+    }
+    const apprBucket = apprId === null ? -1 : Math.round(apprD / 10);
+    if (apprId !== this.lastApproachId || apprBucket !== this.lastApproachBucket) {
+      this.lastApproachId = apprId;
+      this.lastApproachBucket = apprBucket;
+      this.cb.onApproach(apprId, Math.round(apprD));
+    }
     const stage: Stage = surfaceId ? "surface" : resolved > 0 || focusDist < 1250 ? "approach" : "sky";
     if (stage !== this.stage) {
       this.stage = stage;
@@ -3780,6 +3813,7 @@ export class UniverseScene {
        *  다르다 — 하네스는 "가운데"가 아니라 **여기**로 별을 조준한다. */
       aim: this.aimPoint(),
       aimLock: this.aimId,
+      approach: [this.lastApproachId, this.lastApproachBucket * 10] as [string | null, number],
       /** 가장 가까운 별과 그 거리 */
       nearest: [nearId, Math.round(nearD)] as [string | null, number],
       nearPx:

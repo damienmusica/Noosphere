@@ -207,25 +207,42 @@ console.log(`\n관측선`);
       check("출발 시 별이 조준점에서 멀다 (정렬 계약의 전제)",
         off0 >= 380, `출발 이격 ${Math.round(off0)}px`);
     }
+    // 접근의 사다리(R13-b) — 먼 하늘, 지목 전: 계기는 침묵한다.
+    const rungCount = async () => page.locator(".u-approach li").count();
+    check("먼 하늘에는 관측 스트립이 없다", (await rungCount()) === 0);
     await page.mouse.move(t0.q[0], t0.q[1]);
     await page.mouse.wheel(0, -420);
     await page.waitForTimeout(90);
     const locked = await metrics();
     check("휠이 커서 아래 별을 지목한다 (조준 항법)",
       locked.aimLock === t0.id, `aimLock=${locked.aimLock}`);
+    check("지목하면 계기가 응답한다 (스트립의 이름 줄)", (await rungCount()) >= 1);
     // 지목은 비행 내내 산다 — 정렬이 별을 중앙으로 데려가 커서 밑이 비어도.
     // (변이 스윕 실측: 락 유지를 지워도 아무 계약이 안 죽었다 — 이 검사가 그 이빨)
     let lockHeld = true;
-    for (let i = 0; i < 14; i++) {
-      await page.mouse.wheel(0, -420);
-      await page.waitForTimeout(60);
-      await settle(250);
+    const rungSamples = [];
+    for (let i = 0; i < 26; i++) {
+      // 작은 노치 + 활공 표본 — settle 로 관성을 다 소진하면 사다리의 중간
+      // 단(330→150)을 한 번에 건너뛰어 "도착 전"이 표본에 없다(실측).
+      await page.mouse.wheel(0, i < 6 ? -420 : -150);
+      await page.waitForTimeout(130);
       const mmL = await metrics();
       const dNow = await distTo();
       if (mmL.aimLock !== t0.id && dNow > 260) lockHeld = false;
+      if (Number.isFinite(dNow)) rungSamples.push({ d: dNow, n: await rungCount() });
       if (dNow < 210) break;
     }
     check("지목은 비행 내내 산다 (빈 하늘 커서가 락을 깨지 않는다)", lockHeld);
+    // 사다리는 다가갈수록 깊어지고, 판정 문장의 뒷절반이 여기서 선다:
+    // *도착 전에 그 작가에 대해 세 가지를 알게 된다.*
+    const grew = rungSamples.every((s, i, arr) => i === 0 || s.n >= arr[i - 1].n);
+    check("다가갈수록 줄이 늘어난다 (사다리 단조)",
+      rungSamples.length > 0 && grew,
+      rungSamples.map((s) => `${Math.round(s.d)}:${s.n}`).join(" "));
+    const preArrive = rungSamples.filter((s) => s.d > 150 && s.d < 330).pop();
+    check("도착 전에 그 작가에 대해 세 가지를 안다",
+      Boolean(preArrive) && preArrive.n >= 3,
+      preArrive ? `d=${Math.round(preArrive.d)} 줄 ${preArrive.n}` : "표본 없음");
     await settle(600);
     const d1 = await distTo();
     check("드래그 0회, 휠만으로 그 별 앞에 선다 (도착 = 정지)",
@@ -235,6 +252,25 @@ console.log(`\n관측선`);
     const offAim = at ? Math.hypot(at[0] - mm2.aim[0], at[1] - mm2.aim[1]) : Infinity;
     check("기수가 스스로 목표로 정렬됐다 (도착 시 별이 조준점 근처)",
       offAim < 320, `조준점에서 ${Math.round(offAim)}px`);
+    // 도착 시 사다리의 단이 하나하나 서 있다 — 단 하나가 조용히 죽어도
+    // 총계(≥3)는 초록일 수 있으므로, 단별로 잰다(변이의 이빨).
+    for (const rung of ["line", "why", "relation"]) {
+      const n = await page.locator(`.u-approach li[data-rung="${rung}"]`).count();
+      check(`도착의 사다리 — ${rung} 단이 서 있다`, n === 1, `${rung} ${n}`);
+    }
+    // 도착의 문간 — 준비된 착륙지라면 초대가, 여는 문장이 있는 작가라면 그
+    // 문장이 선다. 없는 단은 없다고 두는 것이 문법이므로 초대 줄만 전원 계약.
+    const inviteText = await page.locator('.u-approach li[data-rung="invite"]').textContent().catch(() => null);
+    const READY = ["franz-kafka", "natsume-soseki", "rabindranath-tagore"];
+    check("도착의 문간에 초대가 선다 (준비도에 정직하게)",
+      Boolean(inviteText) &&
+        (READY.includes(t0.id) ? inviteText.includes("착륙") : inviteText.includes("궤도")),
+      `"${inviteText}"`);
+    if (READY.includes(t0.id)) {
+      const openingCount = await page.locator('.u-approach li[data-rung="opening"]').count();
+      check("여는 문장이 도착 전 하늘에 선다 (world 보유 작가)",
+        openingCount === 1, `opening 줄 ${openingCount}`);
+    }
     // 별 앞에 선다 — 커서를 별의 **지금** 자리에 다시 두고 굴려도 관통하지
     // 않는다(정렬이 별을 중앙으로 옮겼으므로 옛 커서 자리는 빈 하늘이고, 빈
     // 하늘로의 추력은 자유이지 관통이 아니다 — 실측). 대조군: "여전히 그 별
@@ -280,6 +316,61 @@ console.log(`\n관측선`);
       check("감속-목표 계약을 잴 먼 별이 있다", false, "화면 안 후보 없음");
     }
   }
+  // 아래 두 계약(여는 문장·카드-스트립)은 앞 비행의 도착 자세와 무관하다 —
+  // 깊은 하늘에서는 후보 스캔이 비므로(실측) 출발 자세에서 다시 시작한다.
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
+  {
+      // 조준 비행의 별이 world 미보유 작가였다 — 여는 문장 계약은 카프카를
+      // 직접 조준해 결정적으로 잰다(입문작 『변신』의 첫 문장이 하늘에 선다).
+      let kq = await page.evaluate(() => window.__universe.project("franz-kafka"));
+      for (let i = 0; i < 8 && !(kq && kq[0] > 200 && kq[0] < 1500 && kq[1] > 80 && kq[1] < 920); i++) {
+        await drag(400, 0);
+        kq = await page.evaluate(() => window.__universe.project("franz-kafka"));
+      }
+      check("여는 문장 계약을 잴 카프카가 보인다", Boolean(kq), kq ? `${Math.round(kq[0])},${Math.round(kq[1])}` : "없음");
+      if (kq) {
+        await page.mouse.move(kq[0], kq[1]);
+        for (let i = 0; i < 26; i++) {
+          await page.mouse.wheel(0, i < 6 ? -420 : -150);
+          await page.waitForTimeout(120);
+          const mmK = await metrics();
+          if (mmK.nearest[0] === "franz-kafka" && mmK.nearest[1] < 200) break;
+        }
+        await settle(600);
+        const openingCount = await page.locator('.u-approach li[data-rung="opening"]').count();
+        const openingText = await page.locator('.u-approach li[data-rung="opening"]').textContent().catch(() => "");
+        check("여는 문장이 도착 전 하늘에 선다 (카프카 『변신』)",
+          openingCount === 1 && Boolean(openingText && openingText.includes("변신")),
+          `"${(openingText ?? "").slice(0, 40)}…"`);
+      }
+    }
+
+  // 카드가 열려 있는 동안 스트립은 물러난다 — 같은 내용의 상위 표면이 이미
+  // 서 있다. 카드만 열면 카메라가 LENS 거리로 물러나 approach 가 비어 계약이
+  // 공허해진다(변이 스윕 실측: 게이트를 지워도 초록) — **카드 열림 + 조준**
+  // 상태를 만들고, approach 가 실제로 비-null 임을 대조군으로 함께 잰다.
+  {
+    await page.evaluate(() => window.__universe.focus("franz-kafka"));
+    await settle(1300);
+    const near2 = await onStar();
+    check("카드-스트립 계약을 잴 별이 있다", Boolean(near2), near2 ? near2.id : "없음");
+    if (near2) {
+      await page.mouse.move(near2.q[0], near2.q[1]);
+      await page.mouse.wheel(0, -180);
+      await page.waitForTimeout(120);
+      const mmC = await metrics();
+      const cardOpen = (await page.locator(".u-card").count()) === 1;
+      check("카드 곁에서 조준이 접근을 깨웠다 (대조군)",
+        cardOpen && mmC.approach[0] !== null,
+        `card=${cardOpen} approach=${mmC.approach[0]}`);
+      check("카드가 열려 있는 동안 스트립은 물러난다",
+        (await page.locator(".u-approach").count()) === 0);
+      await settle(900);
+    }
+  }
+
   // 관측선 절은 카메라를 별 앞에 두고 끝난다 — 뒤의 절들은 원경의 하늘을
   // 전제하므로 출발 자세로 되돌린다.
   await page.goto(url("?lens=movement"), { waitUntil: "load" });
