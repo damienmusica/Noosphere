@@ -544,6 +544,9 @@ MUTATIONS = [
     ("browser", "몸의 회랑 — 명패 캡 제거 (한 칸에 탑이 선다)", S,
      "      const shown = evs.length > 2 ? evs.slice(0, 2) : evs;",
      "      const shown = evs;"),
+    # 관찰자 0번의 수리(문 0 대역) — 세계가 다시 선택 가능해지는 방식.
+    ("flight", "관찰0 — 드래그가 다시 텍스트 선택을 그린다", CSS,
+     ".universe {\n  user-select: none;\n  -webkit-user-select: none;\n}", ""),
     # 내부 심사의 수리(R13 적대 심사 ①~⑥) — 각 수리를 되무르는 방식.
     ("flight", "심사① — 포인터 캡처가 다시 사라진다 (유령 드래그)", S,
      "    try {\n      this.renderer.domElement.setPointerCapture(e.pointerId);\n    } catch {\n      /* 합성 포인터 — 캡처 불가는 정상 경로 */\n    }", ""),

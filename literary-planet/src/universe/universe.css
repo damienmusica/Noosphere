@@ -1577,3 +1577,17 @@
 .universe .globe-label.is-interactive {
   pointer-events: none;
 }
+
+/* 문 0 대역 관찰(관찰자 0번, 2026-08-28)이 잡은 결함 — 드래그가 텍스트 선택을
+   끌고 다닌다: 캔버스에서 시작한 고개 돌리기가 레일·카드·명패를 파랗게 물들이고,
+   클릭으로도 걷히지 않는다. 세계는 선택 불가가 기본이고, **읽는 표면**(카드의
+   산문·작품 시트)만 글로 남는다 — 인용은 독자의 권리다. */
+.universe {
+  user-select: none;
+  -webkit-user-select: none;
+}
+.universe .u-card,
+.universe .u-work {
+  user-select: text;
+  -webkit-user-select: text;
+}
