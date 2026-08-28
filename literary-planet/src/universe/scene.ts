@@ -278,6 +278,8 @@ export class UniverseScene {
   /** 접근 통지의 변화 감지 — id 또는 10 단위 거리 버킷이 바뀔 때만 콜백 */
   private lastApproachId: string | null = null;
   private lastApproachBucket = -1;
+  /** 회랑 자세가 마지막으로 계산한 서가 거리(책 높이 배) — 계측은 결과를 읽는다 */
+  private poseLat = 0;
   /** 추력이 궤도를 끊었는가 — 고른 것은 남고 카메라만 풀린다 */
   private orbitBroken = false;
   /** 마지막으로 알린 "원경에서 멀어졌다" */
@@ -351,7 +353,7 @@ export class UniverseScene {
   /** 당겨진 책과 권별 당김 진행도 — 전부 책등, 당기면 표지 (CPO 룰링 2026-08-24) */
   private pullK = new Map<string, number>();
   /** 연보 명패 (R12-c 채움): 관계·판본의 실제 사건이 제 해의 칸에 선다 */
-  private eventSlips: Array<{ relId?: string; year: number; obj: THREE.Object3D }> = [];
+  private eventSlips: Array<{ relId?: string; year: number; obj: THREE.Object3D; folded?: boolean }> = [];
   /** 이륙 중 — 착륙은 풀렸지만 회랑은 비행이 끝날 때까지 서 있다 */
   private corridorDeparting = false;
 
@@ -368,6 +370,19 @@ export class UniverseScene {
    *  서 있는 커서 밑으로 다른 별이 지나가는데, 그때의 휠이 그 별로 갈아타면
    *  비행이 갈지자가 된다(계약 실측). 커서가 움직이지 않았으면 뜻도 그대로다. */
   private aimAt: { x: number; y: number } | null = null;
+  /**
+   * 다음 focus/landed 변화가 카메라에 갖는 뜻(R13-c, 문 0 2차). 앱이 상태를
+   * 바꾸기 직전에 적어 둔다:
+   * - "pick"   — 사용자의 클릭. **몸을 옮기지 않는다** — 고르는 것은 카드와
+   *              렌즈의 일이지 순간이동이 아니다("스크롤한 정도와 상황과 상관
+   *              없이 클릭하면 훅 이동" 지적의 처방). 기본값.
+   * - "summon" — 명시적 이동 요청(검색·하늘로·궤도로). 정직한 비행으로 간다.
+   * - "immediate" — 입구(URL 딥링크). 비행 없이 그 자리에서 시작한다.
+   */
+  cameraCause: "pick" | "summon" | "immediate" | null = null;
+  /** 고른 순간의 그 별까지의 거리 — 카드가 닫히는 "충분히 멀어짐"의 기준점.
+   *  몸이 어디서 골랐는지에 따라 떠남의 거리도 달라진다. */
+  private focusDistAtSelect = LENS_DIST;
   /** 회랑에서 서 있는 해(실수) — 착륙 자세의 유일한 매개변수 */
   private walkYear = 0;
   /** 걷기 속도(연/초) */
@@ -1985,25 +2000,37 @@ export class UniverseScene {
       if (!bookRows.has(c.year)) bookRows.set(c.year, new Set());
       bookRows.get(c.year)!.add(c.row);
     }
+    // 한 칸의 명패는 둘까지다(R13-c) — 앵커 웨이브가 채운 해는 명패가 탑으로
+    // 쌓여 칸 위 공간을 다 먹었다("책장의 구분을 뛰어넘어서 공간 차지" — 문 0
+    // 2차). 셋째부터는 "외 N건" 한 장으로 접는다: 기록은 정확히, 화면은 조용히.
+    const perYear = new Map<number, typeof events>();
     for (const ev of events.sort((x, y) => x.year - y.year)) {
-      const stand = bayOf.get(ev.year);
+      (perYear.get(ev.year) ?? perYear.set(ev.year, []).get(ev.year)!).push(ev);
+    }
+    for (const [yr, evs] of perYear) {
+      const stand = bayOf.get(yr);
       if (!stand) continue;
-      const slot = slotInCell.get(ev.year) ?? 0;
-      slotInCell.set(ev.year, slot + 1);
-      const occupied = bookRows.get(ev.year);
+      const occupied = bookRows.get(yr);
       const rowBase = occupied?.has(0) && !occupied.has(1) ? rowH : occupied?.has(0) ? rowH : 0;
-      const slip = new THREE.Mesh(
-        new THREE.PlaneGeometry(cellW * 0.72, cellW * 0.3),
-        new THREE.MeshBasicMaterial({
-          map: this.eventSlipTexture(ev.big, ev.small),
-          transparent: false
-        })
-      );
-      slip.position.set(0, rowBase + boardT + bh * (0.34 + slot * 0.42), -backD * 0.12);
-      slip.userData.eventSlip = true;
-      stand.add(slip);
-      this.cityChrome.push(slip);
-      this.eventSlips.push({ relId: ev.relId, year: ev.year, obj: slip });
+      const shown = evs.length > 2 ? evs.slice(0, 2) : evs;
+      const folded = evs.length - shown.length;
+      const put = (big: string, small: string, slot: number, relId?: string, year?: number, folded = false) => {
+        const slip = new THREE.Mesh(
+          new THREE.PlaneGeometry(cellW * 0.72, cellW * 0.3),
+          new THREE.MeshBasicMaterial({
+            map: this.eventSlipTexture(big, small),
+            transparent: false
+          })
+        );
+        slip.position.set(0, rowBase + boardT + bh * (0.34 + slot * 0.42), -backD * 0.12);
+        slip.userData.eventSlip = true;
+        stand.add(slip);
+        this.cityChrome.push(slip);
+        this.eventSlips.push({ relId, year: year ?? yr, obj: slip, folded });
+        slotInCell.set(yr, slot + 1);
+      };
+      shown.forEach((ev, slot) => put(ev.big, ev.small, slot, ev.relId, ev.year));
+      if (folded > 0) put(`외 ${folded}건`, "연보", shown.length, undefined, undefined, true);
     }
 
     this.applyFold();
@@ -2575,7 +2602,16 @@ export class UniverseScene {
     // 자리**를 바꾼다: 벽에서 한 걸음 물러나 몸을 서가 쪽으로 돌린다.
     // 세로 프레임에는 물러나며 사라지는 서가가 세로로 앉는다.
     const port = Math.min(1, Math.max(0, (1.15 - this.camera.aspect) / 0.5));
-    const lat = f.bh * (1.9 + 1.0 * port);
+    // 몸의 회랑(R13-c): 서가와의 거리는 책을 **읽을 수 있는** 거리다. 1.9권은
+    // 코앞이었다("좌측의 서가를 보면 너무 가까워서 제대로 보이지도 않고" —
+    // 문 0 2차, 최근접 책 화면 높이 ≈534px). 큰 회랑(카프카 88칸)은 2.45권에서
+    // ≈420px — 팔을 뻗으면 닿을 듯하되 한 권이 한눈에 들어온다. 작은 회랑은
+    // 행성 반경이 작아 곡률이 급하므로 같은 거리면 읽히는 책이 전부 좌측 크롬
+    // 뒤로 들어간다(프로브 실측: 타고르 55칸 라벨 0) — 칸수로 보간해 덜 물러선다.
+    const bays = Math.max(1, Math.round(f.span.yEnd - f.span.yStart));
+    const spanK = Math.min(1, Math.max(0, (bays - 24) / 64));
+    const lat = f.bh * (2.1 + 0.35 * spanK + 0.65 * port);
+    this.poseLat = lat / f.bh;
     const eye = this.corridorLatPoint(thEye, lat, f.eyeLift);
     const n = eye.clone().sub(f.center).normalize();
     const fwd = f.fwd.clone().addScaledVector(n, -f.fwd.dot(n)).normalize();
@@ -2584,7 +2620,10 @@ export class UniverseScene {
     // side 는 서가에서 **멀어지는** 쪽이다. 넓은 화면에서는 +5° 로 살짝
     // 틀어 서가를 왼쪽에 두고, 세로 화면에서는 음수로 돌려 서가를 화면
     // 한가운데로 데려온다.
-    const yaw = ((5 - 20 * port) * Math.PI) / 180 + yaw0;
+    // 물러선 만큼 몸을 서가 쪽으로 돌린다(R13-c) — lat 1.9→2.45 에서 요 +5° 를
+    // 그대로 두면 서가가 화면 왼쪽 가장자리로 미끄러진다(프로브 실측). 기하 보정
+    // ≈ atan(Δlat/전방 6칸) ≈ 5° → 넓은 화면 0°, 세로 화면은 기존 −15° 유지.
+    const yaw = ((0 - 15 * port) * Math.PI) / 180 + yaw0;
     // 피치는 접평면이 아니라 **보이는 지평선** 기준이다. 작은 행성의 지평선은
     // 접평면보다 훨씬 아래에 있다(눈높이 0.12 에 반경 2.6 이면 침하 ≈ 17°).
     const hEye = f.radius * f.eyeLift;
@@ -2611,6 +2650,8 @@ export class UniverseScene {
     this.aimId = null;
     this.aimAt = null;
     this.thrustDir = null;
+    const cause = this.cameraCause ?? "pick";
+    this.cameraCause = null;
     if (s.landedId) {
       const f = this.corridorFrame;
       if (!f) return;
@@ -2619,23 +2660,54 @@ export class UniverseScene {
       this.landTarget = p.look;
       this.landUp = p.up;
       this.controls.minDistance = f.bh * 0.5;
-      this.flyTo(p.look, p.L, 1400, p.dir.clone().negate());
+      // 착륙은 진짜 여정이다 — 거리 무관 고정 1.4초는 워프로 읽혔고("카프카
+      // 행성 눌러도 워프하듯이", 문 0 2차), 시간은 거리비의 함수가 된다.
+      const dHere = this.camera.position.distanceTo(p.look);
+      this.flyTo(p.look, p.L, this.flightDur(dHere, p.L), p.dir.clone().negate(), undefined,
+        cause === "immediate");
       return;
     }
     if (s.focusId) {
       const i = this.index.get(s.focusId);
       if (i === undefined) return;
       const c = (this.dirs[i] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
-      // 중경 = 관측 렌즈 상태. 거리 자체가 계약이 아니라, 이 거리에서 렌즈가
-      // (확대된 천체 + 압축된 이웃 + 원위치 궤적)을 한 프레임에 담는다.
       this.landTarget = null;
-      this.flyTo(c.clone(), LENS_DIST, 1050);
+      const dNow = this.camera.position.distanceTo(c);
+      if (cause === "pick") {
+        // 관측선(R13-c): **고르는 것은 몸을 옮기지 않는다.** 카드가 열리고
+        // 렌즈가 그 별을 확대한다 — 다가가는 것은 언제나 당신의 휠이다.
+        // ("스크롤한 정도와 상황과 상관없이 클릭하면 훅 이동" — 문 0 2차)
+        // 주시점 북키핑만 그 별로 — 고른 별이 곧 주시점이다(dist 계측의 원본).
+        this.controls.target.copy(c);
+        this.focusDistAtSelect = dNow;
+        return;
+      }
+      // 검색·딥링크 같은 명시적 이동 요청만 관측 렌즈 거리로 데려간다.
+      this.focusDistAtSelect = LENS_DIST;
+      this.flyTo(c.clone(), LENS_DIST, this.flightDur(dNow, LENS_DIST), undefined, undefined,
+        cause === "immediate");
       return;
     }
     this.landTarget = null;
+    if (cause === "pick") {
+      // 카드를 덮는 것도 몸을 옮기지 않는다 — 떠나는 것은 언제나 손이다.
+      return;
+    }
     // 원경 거리로 돌아가되 **출발 구도**로 돌아간다. 현재 오프셋 방향을 쓰면
     // 착륙 접근각이 그대로 남아 "처음 있던 화면"이 아닌 곳에 내려놓는다.
-    this.flyTo(new THREE.Vector3(0, 0, 0), this.skyPose.length(), 1000, this.skyPose.clone().normalize());
+    this.flyTo(new THREE.Vector3(0, 0, 0), this.skyPose.length(), 1000, this.skyPose.clone().normalize(),
+      undefined, cause === "immediate");
+  }
+
+  /**
+   * 정직한 비행 시간 — 거리**비**의 함수. 접근은 로그 공간에서 보간되므로
+   * (advance 참조), 체감 속도가 일정하려면 시간도 비율의 로그를 따라야 한다.
+   * 2600→6 이면 ≈3.6초(행성이 자라는 것이 보인다), 2150→1200 이면 ≈0.9초.
+   */
+  private flightDur(from: number, to: number): number {
+    const hi = Math.max(from, to, 6);
+    const lo = Math.max(6, Math.min(from, to));
+    return Math.min(3800, Math.round(650 + 340 * Math.log2(Math.max(1.01, hi / lo))));
   }
 
   /**
@@ -2654,7 +2726,8 @@ export class UniverseScene {
     dist: number,
     dur: number,
     approachOverride?: THREE.Vector3,
-    upOverride?: THREE.Vector3
+    upOverride?: THREE.Vector3,
+    immediate = false
   ): void {
     const dir = this.camera.position.clone().sub(this.controls.target);
     let approach: THREE.Vector3;
@@ -2679,7 +2752,7 @@ export class UniverseScene {
     if (approachOverride) approach = approachOverride;
     if (upOverride) toUp = upOverride;
     const toPos = target.clone().addScaledVector(approach, dist);
-    if (this.state.reducedMotion) {
+    if (this.state.reducedMotion || immediate) {
       this.controls.target.copy(target);
       this.camera.position.copy(toPos);
       this.setCameraUp(toUp);
@@ -3485,7 +3558,10 @@ export class UniverseScene {
           if (rep === "surface") surfaceId = id;
         }
         // 구가 보이면 별 스프라이트는 물러난다 — 같은 객체가 두 번 그려지지 않게
-        const fade = Math.max(0, 1 - (ap - STAR_TO_DISC_PX) / STAR_TO_DISC_PX);
+        // 크로스페이드 창을 임계의 2배로 — 7px 창은 착륙 비행의 속도에 뭉개져
+        // "없던 행성이 갑자기 툭"(문 0 2차)으로 읽혔다. 천체는 나타나는 것이
+        // 아니라 별이 천천히 몸을 얻는 것이어야 한다.
+        const fade = Math.max(0, 1 - (ap - STAR_TO_DISC_PX) / (STAR_TO_DISC_PX * 2));
         alpha.setX(i, (this.baseAlpha[i] ?? 0) * fade);
         continue;
       }
@@ -3526,7 +3602,14 @@ export class UniverseScene {
     // 궤도를 끊고 **떠나면** 읽던 것도 닫힌다 — 렌즈 거리의 두 배가 "떠났다"의 자
     // 1.6배 = 렌즈 거리 1200 에서 1920. 2배(2400)는 **닿지 않는다** — 카메라가
     // 성계 밖 한계(3200)에 걸려 실측 최대가 2372 였다(계약이 잡았다).
-    if (this.orbitBroken && this.state.focusId && focusDist > LENS_DIST * 1.6)
+    // 떠남의 기준은 **고른 자리**다(R13-c) — 멀리서 고른 카드가 첫 휠에 닫히면
+    // 고르기가 곧 상실이 된다. 고른 거리의 1.35배 또는 렌즈 거리의 1.6배 중
+    // 큰 쪽을 넘어야 떠난 것이다.
+    if (
+      this.orbitBroken &&
+      this.state.focusId &&
+      focusDist > Math.max(LENS_DIST * 1.6, this.focusDistAtSelect * 1.35)
+    )
       this.cb.onLeaveOrbit();
     // 성계 전체가 보이던 자리에서 얼마나 들어왔는가 — 돌아올 길의 조건
     const deep = this.freeMode() && camR < CAM_SKY_DEFAULT * 0.82;
@@ -3850,8 +3933,14 @@ export class UniverseScene {
     deathLine: boolean;
     plate: boolean;
     threadEnd: [number, number] | null;
-    /** 연보 명패 수 — 관계 앵커 연도 사건 + 발표 연도 밖 판본 사건 */
+    /** 연보 명패 수 — 관계 앵커 연도 사건 + 발표 연도 밖 판본 사건 (캡 적용 후) */
     eventSlips: number;
+    /** 한 칸에 선 명패의 최댓값 — R13-c 캡(둘 + 접힘)이면 3 을 넘지 않는다 */
+    slipMaxPerYear: number;
+    /** "외 N건" 접힘 명패 수 */
+    slipFolded: number;
+    /** 회랑 자세의 서가 거리(책 높이 배) — corridorPose 가 마지막으로 계산한 값 */
+    standLat: number;
     /** 쉬는 권 중 책등 축이 입구를 향한 수 — 카메라가 아니라 회랑 접선과 잰다 */
     restingSpineToEntrance: number;
     resting: number;
@@ -3955,6 +4044,13 @@ export class UniverseScene {
       plate,
       threadEnd: te,
       eventSlips: this.eventSlips.length,
+      slipMaxPerYear: (() => {
+        const c = new Map<number, number>();
+        for (const e of this.eventSlips) c.set(e.year, (c.get(e.year) ?? 0) + 1);
+        return c.size ? Math.max(...c.values()) : 0;
+      })(),
+      slipFolded: this.eventSlips.filter((e) => e.folded).length,
+      standLat: Math.round(this.poseLat * 100) / 100,
       restingSpineToEntrance: restingAligned,
       restingSpineDressed: restingDressed,
       baysInFrame,
@@ -4368,8 +4464,10 @@ export class UniverseScene {
         const fs = mag > 0.6 ? 16 : mag > 0.3 ? 14 : 13;
         // 패널이 덮는 자리에는 이름을 놓지 않는다 — 읽을 수 없는 라벨은
         // 정보가 아니라 소음이다(R9 "뷰포트 안의 다음 행동" 계승).
-        if (id !== s.focusId && this.labelHidden(sx, sy, text, fs, LABEL_CHROME_ENGRAVED, w, h))
-          continue;
+        // 고른 별도 예외가 아니다(R13-c): 픽이 몸을 옮기지 않게 되면서 고른
+        // 별이 크롬 위에 설 수 있게 됐고(실측: 손안 그립 위의 카프카), 그
+        // 이름은 이미 카드 제목이 들고 있다 — 컨트롤 위의 글자는 소음이다.
+        if (this.labelHidden(sx, sy, text, fs, LABEL_CHROME_ENGRAVED, w, h)) continue;
         items.push({
           id,
           text,

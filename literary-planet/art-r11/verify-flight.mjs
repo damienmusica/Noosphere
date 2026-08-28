@@ -168,8 +168,13 @@ console.log(`\n관측선`);
   check("궤도에 서 있다 (카드 열림, 자유 비행 아님)",
     inOrbit.pivot === 0 && (await page.locator(".u-card").count()) === 1,
     `pivot=${inOrbit.pivot}`);
-  const o0 = await onStar();
-  check("궤도에서 부호를 잴 별이 있다", Boolean(o0), o0 ? o0.id : "없음");
+  let o0 = await onStar();
+  // 오른쪽 가장자리의 별은 +380px 이동에서 화면 밖으로 나간다 — 방을 만든다.
+  for (let i = 0; i < 3 && o0 && o0.q[0] > 1050; i++) {
+    await drag(-260, 0);
+    o0 = await onStar();
+  }
+  check("궤도에서 부호를 잴 별이 있다", Boolean(o0) && o0.q[0] <= 1050, o0 ? `${o0.id} x=${Math.round(o0.q[0])}` : "없음");
   if (o0) {
     await drag(200, 0);
     const o1 = await page.evaluate((x) => window.__universe.project(x), o0.id);
@@ -431,12 +436,16 @@ check("궤도에서 휠을 밀면 카메라가 풀린다 (읽던 카드는 남�
 await steer("jorge-luis-borges", 34);
 const kq3 = await page.evaluate(() => window.__universe.project("jorge-luis-borges"));
 check("궤도를 다시 이을 별을 조준했다", Boolean(kq3), kq3 ? "예" : "화면 밖");
+const camBeforePick = (await metrics()).camR;
 await page.mouse.click(kq3 ? kq3[0] : 800, kq3 ? kq3[1] : 500);
 await settle(1400);
 m = await metrics();
-check("새로 고르면 궤도가 다시 이어진다",
-  Boolean(kq3) && m.pivot === 0 && Math.abs(m.dist - 1200) < 80,
-  `pivot=${m.pivot} dist=${m.dist}`);
+// R13-c 관측선: **고르는 것은 몸을 옮기지 않는다.** 카드와 렌즈가 그 별을
+// 향할 뿐, 카메라는 서 있던 자리다("클릭하면 훅 이동" — 문 0 2차의 처방).
+check("고르는 것은 몸을 옮기지 않는다 (카드는 열리고 카메라는 그 자리)",
+  Boolean(kq3) && m.pivot === 0 && Math.abs(m.camR - camBeforePick) < 25 &&
+    (await page.locator(".u-card").count()) === 1,
+  `pivot=${m.pivot} camR ${camBeforePick} → ${m.camR}`);
 
 // 그리고 충분히 멀어지면 읽던 것도 닫힌다 — "떠났다"의 자는 렌즈 거리의 1.6배
 await roll(1);
@@ -982,6 +991,106 @@ console.log(`\n별에도 크기가 있다`);
 
 console.log(`\nconsole errors: ${consoleErrors.length}`);
 if (consoleErrors.length) console.log(consoleErrors.slice(0, 4).join("\n"));
+
+// ——— 몸의 회랑 · 몸이 남는 클릭 (R13-c) ———
+// 문 0 2차의 처방들: 고르기·덮기는 몸을 옮기지 않고, 검색만이 데려가고,
+// 착륙은 행성이 자라는 것이 **보이는** 여정이고, 회랑의 몸은 서가를 마주 본다.
+console.log(`\n몸의 회랑 · 몸이 남는 클릭 (R13-c)`);
+{
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
+  // 카드를 덮어도 몸은 그 자리다
+  const e0 = await onStar();
+  check("덮기 계약을 잴 별이 있다", Boolean(e0), e0 ? e0.id : "없음");
+  if (e0) {
+    await page.mouse.click(e0.q[0], e0.q[1]);
+    await settle(900);
+    const rPicked = (await metrics()).camR;
+    check("고른 뒤에도 카드가 열려 있다", (await page.locator(".u-card").count()) === 1);
+    await page.keyboard.press("Escape");
+    await settle(700);
+    const rClosed = (await metrics()).camR;
+    check("카드를 덮어도 몸은 그 자리다 (Escape = 덮기, 순간이동 아님)",
+      (await page.locator(".u-card").count()) === 0 && Math.abs(rClosed - rPicked) < 20,
+      `camR ${rPicked} → ${rClosed}`);
+  }
+  // 검색은 명시적 이동 요청 — 배가 데려간다
+  await page.locator(".u-search input").fill("카프카");
+  await page.waitForTimeout(250);
+  const hitBtn = page.locator(".u-search__hits button").first();
+  const hasHit = (await hitBtn.count()) === 1;
+  check("검색이 카프카를 찾는다", hasHit);
+  if (hasHit) {
+    await hitBtn.click();
+    await settle(2200);
+    const mS = await metrics();
+    check("검색은 데려간다 (관측 렌즈 거리로의 정직한 비행)",
+      Math.abs(mS.dist - 1200) < 80 && (await page.locator(".u-card").count()) === 1,
+      `dist=${mS.dist}`);
+  }
+  // 멀리서 골라도 첫 휠이 카드를 뺏지 않는다 — 떠남의 자는 고른 자리다.
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
+  const far0 = await onStar();
+  check("먼 선택 계약을 잴 별이 있다", Boolean(far0), far0 ? far0.id : "없음");
+  if (far0) {
+    await page.mouse.click(far0.q[0], far0.q[1]);
+    await settle(900);
+    const dSel = (await metrics()).dist;
+    await roll(1);
+    await settle(400);
+    check("멀리서 골라도 첫 휠에 카드를 잃지 않는다 (떠남의 자 = 고른 자리 × 1.35)",
+      dSel > 1900 && (await page.locator(".u-card").count()) === 1,
+      `고른 거리 ${dSel}`);
+    await page.keyboard.press("Escape");
+    await settle(400);
+  }
+
+  // 착륙은 행성이 자라는 여정이다 — 워프가 아니라.
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
+  await page.evaluate(() => window.__universe.land("franz-kafka"));
+  // 워프의 정의는 거리의 붕괴다 — 220ms 표본 사이 거리비가 유계이면 접근은
+  // 연속이고, 행성은 그 연속 위에서 자란다(크로스페이드 창 2×와 함께).
+  const dists = [];
+  for (let i = 0; i < 30; i++) {
+    await page.waitForTimeout(220);
+    const mm = await metrics();
+    if (mm.nearest[0] === "franz-kafka" && Number.isFinite(mm.nearest[1])) dists.push(mm.nearest[1]);
+    if (mm.stage === "surface" && mm.foldK === 1) break;
+  }
+  await settle(1200);
+  let maxRatio = 1;
+  for (let i = 1; i < dists.length; i++) {
+    if (dists[i] > 0 && dists[i - 1] > dists[i]) maxRatio = Math.max(maxRatio, dists[i - 1] / dists[i]);
+  }
+  const totalRatio = dists.length >= 2 ? dists[0] / Math.max(1, dists[dists.length - 1]) : 0;
+  check("착륙은 연속 접근이다 (표본 6+ · 총 접근비 20+ — 순간이동 없음)",
+    dists.length >= 6 && totalRatio > 20, `표본 ${dists.length} · 총비 ${Math.round(totalRatio)}`);
+  // 한계 5.5: 로그 보간 × 3차 이징의 첨두(≈3×)가 정상 상한이고, 옛 고정
+  // 1.4초 워프는 스텝비 ~17 로 확실히 이 밖이다.
+  check("한 표본 사이 거리비 ≤ 5.5 (워프 아님)",
+    dists.length >= 6 && maxRatio <= 5.5, `최대 스텝비 ${maxRatio.toFixed(2)}`);
+  // 회랑의 몸 — 서가를 마주 볼 수 있고, 서가는 읽을 수 있는 거리에 있다.
+  const mc = await metrics();
+  check("회랑에 서 있다", mc.stage === "surface" && mc.walkYear !== null, `stage=${mc.stage}`);
+  check("몸은 서가에서 책 2.45권 거리에 선다 (넓은 화면)",
+    Math.abs(mc.standLat - 2.45) < 0.06, `standLat=${mc.standLat}`);
+  // 왼쪽 밖은 이벤트가 잘리고 오른쪽(x>1200)은 착륙 카드 위다 — 왼쪽 캔버스에서
+  // 시작해 오른쪽으로 끈다(계약은 |요|만 잰다: 몸이 90° 가까이 돌 수 있는가).
+  await drag(700, 0, 300, 520);
+  await drag(700, 0, 300, 520);
+  const mLook = await metrics();
+  check("고개가 서가를 정면으로 마주 본다 (요 ≥ 80°, 옛 클램프 62° 너머 · 새 한계 88°)",
+    Math.abs(mLook.look[0]) >= 80 && Math.abs(mLook.look[0]) <= 88, `yaw=${mLook.look[0]}°`);
+  check("한 칸의 명패는 셋을 넘지 않는다 — 카프카 1913(사건 4)이 둘+접힘으로 선다",
+    mc.slipMaxPerYear <= 3 && mc.slipFolded >= 1,
+    `최대 ${mc.slipMaxPerYear}/칸 · 접힘 ${mc.slipFolded}`);
+}
+
 console.log(`\n${passed} passed \u00b7 ${failed} failed`);
 await browser.close();
 server.close();

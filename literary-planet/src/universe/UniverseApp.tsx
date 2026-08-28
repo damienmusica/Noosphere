@@ -145,6 +145,9 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const [groupPin, setGroupPin] = useState<string | null>(null);
   const [assets, setAssets] = useState<AssetSet | null>(null);
   const landedRef = useRef<string | null>(null);
+  /** 다음 focus/landed 변화의 카메라 뜻(R13-c) — 씬 생성 전(딥링크)에도 적을 수
+   *  있도록 ref 로 들고, 동기화 이펙트가 setState 직전에 씬으로 옮긴다. */
+  const cameraCauseRef = useRef<"pick" | "summon" | "immediate" | null>(null);
   const assetsRef = useRef<AssetSet | null>(null);
   const artRef = useRef<ArtManifest | null>(null);
 
@@ -231,6 +234,8 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   useEffect(() => {
     const q = new URLSearchParams(location.search);
     const a = q.get("a");
+    // 입구는 비행이 아니다 — 링크로 들어온 사람은 그 자리에서 시작한다.
+    if (a) cameraCauseRef.current = "immediate";
     if (a) setFocusId(a);
     if (q.get("land") === "1" && a) setPendingLand(a);
     const l = q.get("lens");
@@ -310,6 +315,10 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       { authors: dataset.authors, works: dataset.works, relations: dataset.relations, positions, degree, art },
       {
         onPickAuthor: (id) => {
+          // 하늘의 픽은 몸을 옮기지 않지만(R13-c), **착륙 중의 픽은 이륙이다**
+          // (R12-c: 하늘 단계 없이 직행) — 회랑에서 별을 부르는 것은 명시적
+          // 여행 요청이므로 배가 데려간다.
+          cameraCauseRef.current = landedRef.current && id && id !== landedRef.current ? "summon" : "pick";
           // 이륙 (R12-c): 착륙한 채로 다른 별을 누르면 하늘 단계 없이 그 자리에서
           // 날아오른다 — 행성이 뒤로 작아지고 다음 작가의 궤도로 이어지는 한 호흡.
           setLandedId((landedPrev) => (id && landedPrev && id !== landedPrev ? null : id ? landedPrev : null));
@@ -505,6 +514,10 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
 
   useEffect(() => {
     landedRef.current = landedId;
+    if (sceneRef.current && cameraCauseRef.current) {
+      sceneRef.current.cameraCause = cameraCauseRef.current;
+      cameraCauseRef.current = null;
+    }
     sceneRef.current?.setState({
       focusId,
       landedId,
@@ -747,6 +760,8 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
                 <li key={h.author.id} role="option" aria-selected={false}>
                   <button
                     onClick={() => {
+                      // 검색은 명시적 이동 요청이다 — 배가 데려간다(정직한 비행).
+                      cameraCauseRef.current = "summon";
                       setFocusId(h.author.id);
                       setLandedId(null);
                       setQuery("");
@@ -787,6 +802,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
             className="u-btn u-btn--ghost"
             data-testid="to-sky"
             onClick={() => {
+              cameraCauseRef.current = "summon";
               setLandedId(null);
               setFocusId(null);
               setWorkId(null);
@@ -800,6 +816,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
             className="u-btn u-btn--ghost"
             data-testid="to-orbit"
             onClick={() => {
+              cameraCauseRef.current = "summon";
               setLandedId(null);
               setWorkId(null);
             }}

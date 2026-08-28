@@ -82,9 +82,11 @@ export const APPROACH_OPENING = 150;
 export const WALK_PER_PX = 0.045;
 export const WALK_MAX = 26;
 export const WALK_DAMP = 0.01;
-/** 회랑 안에서 고개를 돌릴 수 있는 범위(도) — 서가를 잃지 않는 한도 */
-export const LOOK_YAW_MAX = 62;
-export const LOOK_PITCH_MAX = 30;
+/** 회랑 안에서 고개를 돌릴 수 있는 범위(도). ±62°/±30° 은 삼각대였다 —
+ *  "시야가 앞만 보고 있고"(문 0 2차). 몸은 서가를 정면으로 마주 볼 수 있어야
+ *  하고(±88°), 위 칸의 책등도 올려다볼 수 있어야 한다(±42°). */
+export const LOOK_YAW_MAX = 88;
+export const LOOK_PITCH_MAX = 42;
 
 /** 서가가 서는 지면의 방향 — 천체 반경 축에서 이만큼 기울어진 곳 */
 export const SHELF_AXIS_DEG = 14;

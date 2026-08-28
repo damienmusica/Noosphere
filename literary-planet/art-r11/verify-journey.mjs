@@ -493,7 +493,19 @@ for (const a of SLICE) {
       await page.evaluate(() => Boolean(document.activeElement?.closest?.(".u-card--landing"))));
 
     const workLabels = await page.locator(".globe-label--work").count();
-    check("작품 도시가 보인다", workLabels >= Math.min(4, a.works), `labels=${workLabels}`);
+    // R13-c 몸의 자세에서 이름표는 사다리를 따른다 — **입구 앞 가까운 책**이
+    // 이름을 갖는다. 기대값은 자세 상수가 아니라 데이터에서 유도한다: 입구
+    // (yStart+0.8) 앞 1.5~11칸에 선 책 수. 타고르처럼 입구 구간이 빈 회랑은
+    // 0 이 정직한 상태다(걸어가면 그 칸의 이름이 온다).
+    {
+      const entrance = (await page.evaluate(() => window.__universe.metrics())).walkYear ?? 0;
+      const nearAhead = dataWorks.filter(
+        (w) => w.authorId === a.id && w.year - entrance >= 1.5 && w.year - entrance <= 11
+      ).length;
+      check("작품 도시가 보인다 (입구 앞 책 = 이름)",
+        workLabels >= Math.min(3, nearAhead),
+        `labels=${workLabels} · 입구 앞 책 ${nearAhead}`);
+    }
 
     await page.locator(".u-works button").first().click();
     await page.waitForTimeout(250);
@@ -603,6 +615,8 @@ for (const a of SLICE) {
     // 같은 해 첫 인쇄(게재지) — 기대값은 /data 에서 같은 사상으로 접는다
     {
       let expEvents = 0;
+      const expYears = [];
+      const countEv = (y) => { expEvents++; expYears.push(y); };
       for (const r of dataRelations) {
         if (r.sourceId !== a.id && r.targetId !== a.id) continue;
         const seen = new Set();
@@ -612,17 +626,30 @@ for (const a of SLICE) {
           // 구간 시작 이전의 앵커는 명패가 서지 않는다(위 주석과 같은 규칙)
           if (y < Math.min(...ownY) - 2) continue;
           seen.add(y);
-          expEvents++;
+          countEv(y);
         }
       }
       for (const w of dataWorks.filter((w) => w.authorId === a.id)) {
         for (const e of w.world?.editions ?? []) {
-          if (e.year !== w.year) expEvents++;
-          else if (e.kind === "first-printing" && e.venue) expEvents++;
+          if (e.year !== w.year) countEv(e.year);
+          else if (e.kind === "first-printing" && e.venue) countEv(e.year);
         }
       }
-      check("연보 명패 수 = 데이터의 사건 수 (앵커 연도·판본·첫 인쇄)",
-        mm.eventSlips === expEvents, `${mm.eventSlips}/${expEvents}`);
+      // R13-c 캡: 한 칸의 명패는 둘까지, 셋째부터는 "외 N건" 한 장으로 접는다
+      // ("책장의 구분을 뛰어넘어서 공간 차지" — 문 0 2차). 기대값도 같은 사상으로
+      // 접는다 — 연도별 min(개수, 2) + (초과 연도당 1).
+      {
+        const byYear = new Map();
+        for (const y of expYears) byYear.set(y, (byYear.get(y) ?? 0) + 1);
+        let expCapped = 0;
+        for (const n of byYear.values()) expCapped += Math.min(n, 2) + (n > 2 ? 1 : 0);
+        check("연보 명패 수 = 데이터의 사건 수 (연도당 2 + 접힘)",
+          mm.eventSlips === expCapped, `${mm.eventSlips}/${expCapped} (원사건 ${expEvents})`);
+        const overflow = [...byYear.values()].some((n) => n > 2);
+        check("한 칸의 명패는 셋을 넘지 않는다 (둘 + 접힘)",
+          mm.slipMaxPerYear <= 3 && (overflow ? mm.slipFolded >= 1 : mm.slipFolded === 0),
+          `최대 ${mm.slipMaxPerYear}/칸 · 접힘 ${mm.slipFolded}${overflow ? " (초과 연도 있음)" : ""}`);
+      }
     }
     // 같은 해 두 권은 서로를 관통하지 않는다. 화면 상자로 재면 안 된다 —
     // 회랑 카메라는 서가를 스치듯 보므로 떨어져 선 두 권도 화면에서는 겹친다

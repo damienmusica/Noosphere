@@ -1,6 +1,6 @@
 {
-  "commit": "91311fa",
-  "generatedAt": "2026-08-28T06:28:11.185Z",
+  "commit": "a626334",
+  "generatedAt": "2026-08-28T08:23:05.539Z",
   "environment": {
     "node": "v24.14.0",
     "platform": "darwin/arm64",
@@ -9,9 +9,9 @@
   },
   "counts": {
     "unitTests": 251,
-    "journeyContracts": 345,
+    "journeyContracts": 348,
     "mobileContracts": 72,
-    "flightContracts": 87,
+    "flightContracts": 100,
     "mutationsFastLaneKilled": 43,
     "mutationsFastLaneSurvived": 0,
     "planetScenesPassed": 20,
@@ -20,52 +20,52 @@
   "steps": {
     "typecheck": {
       "ok": true,
-      "ms": 1887
+      "ms": 1870
     },
     "unit": {
       "ok": true,
-      "ms": 3171
+      "ms": 3218
     },
     "validate-data": {
       "ok": true,
-      "ms": 192
+      "ms": 194
     },
     "mutation-fast": {
       "ok": true,
-      "ms": 25794
+      "ms": 25897
     },
     "build": {
       "ok": true,
-      "ms": 1453
+      "ms": 1455
     },
     "journey-contract": {
       "ok": true,
-      "ms": 78854
+      "ms": 79001
     },
     "mobile-contract": {
       "ok": true,
-      "ms": 70660
+      "ms": 70743
     },
     "flight-contract": {
       "ok": true,
-      "ms": 125020
+      "ms": 144523
     },
     "frames": {
       "ok": true,
-      "ms": 67789
+      "ms": 67686
     },
     "video": {
       "ok": true,
-      "ms": 34972
+      "ms": 34998
     },
     "planet-qa": {
       "ok": true,
-      "ms": 217594
+      "ms": 217132
     }
   },
   "artifacts": {
     "deterministic": {
-      "data/depth-readiness.json": "d2c84b90fb7f535f",
+      "data/depth-readiness.json": "d001b0e8d44482da",
       "public/art/manifest.json": "5c9efd9ce1bce30b"
     },
     "nonDeterministic": {
@@ -83,28 +83,28 @@
           "bytes": 224175
         },
         "4transition-0.png": {
-          "sha256_16": "43cf4bf3bd5717f5",
-          "bytes": 177395
+          "sha256_16": "08b5a4a478ac3598",
+          "bytes": 181142
         },
         "4transition-1.png": {
-          "sha256_16": "97ce8ddf523a918e",
-          "bytes": 85882
+          "sha256_16": "4596f14dc7de75ab",
+          "bytes": 178830
         },
         "4transition-2.png": {
-          "sha256_16": "cc3a72f05e4183db",
-          "bytes": 90622
+          "sha256_16": "42efaf8da4ad28df",
+          "bytes": 167898
         },
         "4transition-3.png": {
-          "sha256_16": "d46378005e19760d",
-          "bytes": 166781
+          "sha256_16": "448ba4a26fa8e4b4",
+          "bytes": 109468
         },
         "4transition-4.png": {
-          "sha256_16": "5575b3274f3bb894",
-          "bytes": 299354
+          "sha256_16": "387886cd4437d287",
+          "bytes": 88436
         },
         "4transition-5.png": {
-          "sha256_16": "b1c9ea568e13593c",
-          "bytes": 271138
+          "sha256_16": "5f44842fbd62d565",
+          "bytes": 85929
         },
         "5personal.png": {
           "sha256_16": "1a53bd29fb5a612a",
@@ -123,78 +123,78 @@
           "bytes": 224912
         },
         "7flight-arrival.png": {
-          "sha256_16": "93060434cccf6fc6",
-          "bytes": 98299
+          "sha256_16": "8cfa1dd34a08582d",
+          "bytes": 98364
         },
         "7flight-homemark.png": {
           "sha256_16": "f8162ba24a7ab4dd",
           "bytes": 70402
         },
         "7flight-ladder.png": {
-          "sha256_16": "ea204998e621389b",
-          "bytes": 108255
+          "sha256_16": "b8ba38a3f305bc3d",
+          "bytes": 108236
         },
         "7flight-resolve.png": {
-          "sha256_16": "da063e3a8e31645a",
+          "sha256_16": "47da7245b77f46ac",
           "bytes": 108127
         },
         "7orbit-unprepared.png": {
-          "sha256_16": "b4b6804067ad47b0",
-          "bytes": 358800
+          "sha256_16": "814ceb24445f8983",
+          "bytes": 211712
         },
         "8lens-linked.png": {
           "sha256_16": "5b38489f1d4e916f",
           "bytes": 234722
         },
         "8walk-entrance.png": {
-          "sha256_16": "443cbadd1230f8d8",
-          "bytes": 271301
+          "sha256_16": "7238968043faca79",
+          "bytes": 284869
         },
         "8walk-inside.png": {
-          "sha256_16": "6b6363f1b3d90950",
-          "bytes": 224759
+          "sha256_16": "982c3508451f3db9",
+          "bytes": 256596
         },
         "franz-kafka-1sky.png": {
           "sha256_16": "a3b2f1070674a0a9",
           "bytes": 224175
         },
         "franz-kafka-2mid.png": {
-          "sha256_16": "17f657f14a69cbda",
-          "bytes": 431693
+          "sha256_16": "866e5e551de76f73",
+          "bytes": 213065
         },
         "franz-kafka-3near.png": {
-          "sha256_16": "0cff6073bb2c9807",
-          "bytes": 271289
+          "sha256_16": "7238968043faca79",
+          "bytes": 284869
         },
         "natsume-soseki-1sky.png": {
           "sha256_16": "a3b2f1070674a0a9",
           "bytes": 224175
         },
         "natsume-soseki-2mid.png": {
-          "sha256_16": "ce73a0cf6b52d48f",
-          "bytes": 411350
+          "sha256_16": "f6a37966b33bad7d",
+          "bytes": 390495
         },
         "natsume-soseki-3near.png": {
-          "sha256_16": "1a5815b7dc10e1f1",
-          "bytes": 367691
+          "sha256_16": "d5398c24a7ba1ffb",
+          "bytes": 408835
         },
         "rabindranath-tagore-1sky.png": {
           "sha256_16": "a3b2f1070674a0a9",
           "bytes": 224175
         },
         "rabindranath-tagore-2mid.png": {
-          "sha256_16": "af321303bd032404",
-          "bytes": 423840
+          "sha256_16": "5c9ebc56b79f9daf",
+          "bytes": 232870
         },
         "rabindranath-tagore-3near.png": {
-          "sha256_16": "582f0b360c0b63c6",
-          "bytes": 233969
+          "sha256_16": "77e96829153b2266",
+          "bytes": 258848
         }
       },
       "video": {
         "r11-journey.webm": {
-          "sha256_16": "98bdae12ae95dd64",
-          "bytes": 3798753
+          "sha256_16": "85e04a757f071442",
+          "bytes": 3838224
         }
       }
     }
