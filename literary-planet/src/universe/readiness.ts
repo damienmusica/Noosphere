@@ -48,3 +48,48 @@ export function isLandable(authorId: string): boolean {
 export const READY_IDS: ReadonlySet<string> = new Set(
   READINESS.entries.filter((e) => e.state === "ready").map((e) => e.authorId)
 );
+
+// --- 검수 신선도 -------------------------------------------------------------
+//
+// `surfaceVerifiedAt` 의 규칙("표면 코드가 이 뒤에 바뀌면 검수는 낡은 것이다")은
+// 2026-08-28 까지 위 타입 주석에만 있었다 — 스탬프는 2026-08-21 인 채로 표면
+// 코드에 커밋 10건이 쌓였고, 어느 게이트도 그것을 보지 않았다. 상태 단언은
+// 화면을 보지 않는다(§⑫)의 원장 판본이다. 아래 함수가 그 규칙의 집행이고,
+// 게이트는 tests/readiness-freshness.test.ts 가 든다: ready 항목의 스탬프가
+// 표면 코드의 마지막 변경보다 오래되면 npm test 가 빨갛다. 스탬프를 갱신하는
+// 유일한 정당한 경로는 표면을 다시 검수하는 것이다.
+
+export type SurfaceStaleReason = "no-stamp" | "bad-stamp" | "stale";
+
+export interface StaleSurfaceVerification {
+  authorId: string;
+  reason: SurfaceStaleReason;
+  surfaceVerifiedAt?: string;
+}
+
+/**
+ * ready 항목 중 표면 검수가 낡은 것을 돌려준다. 순수 함수 — 표면 코드의 마지막
+ * 변경 시각은 호출자가 잰다(게이트에서는 git 이 정본).
+ */
+export function staleSurfaceVerifications(
+  entries: readonly ReadinessEntry[],
+  latestSurfaceChangeAt: Date
+): StaleSurfaceVerification[] {
+  const out: StaleSurfaceVerification[] = [];
+  for (const e of entries) {
+    if (e.state !== "ready") continue;
+    if (!e.surfaceVerifiedAt) {
+      out.push({ authorId: e.authorId, reason: "no-stamp" });
+      continue;
+    }
+    const stamp = new Date(e.surfaceVerifiedAt);
+    if (Number.isNaN(stamp.getTime())) {
+      out.push({ authorId: e.authorId, reason: "bad-stamp", surfaceVerifiedAt: e.surfaceVerifiedAt });
+      continue;
+    }
+    if (stamp.getTime() < latestSurfaceChangeAt.getTime()) {
+      out.push({ authorId: e.authorId, reason: "stale", surfaceVerifiedAt: e.surfaceVerifiedAt });
+    }
+  }
+  return out;
+}
