@@ -66,6 +66,9 @@ import {
   WALK_DAMP,
   LOOK_YAW_MAX,
   LOOK_PITCH_MAX,
+  TURN_GAIN,
+  ARRIVE_STANDOFF,
+  ALIGN_RATE,
 } from "./grammar.ts";
 import { indexGlyph } from "./lenses.ts";
 import { REL_KO, relationGlyph } from "./relations.ts";
@@ -191,8 +194,8 @@ const ARROW_CAP = 64;
 /** 클릭과 드래그를 가르는 이동량(CSS px). 손끝은 누른 채 조금 흔들린다. */
 const DRAG_SLOP = 6;
 
-/** 드래그 회전 속도. 자유 비행에서는 부호가 뒤집힌다(moveCamera 참조). */
-const ROTATE_SPEED = 0.42;
+// (R13) ROTATE_SPEED 는 은퇴했다 — 드래그 회전은 OrbitControls 가 아니라
+// look()→turn() 의 고개의 법 하나(TURN_GAIN, grammar.ts)로만 들어온다.
 
 /** 이 거리 안에 든 별은 등급과 무관하게 이름을 갖는다 — 접근의 응답 (R12-f).
  *  천구 반경 900 에 100인이면 별 사이 평균 간격이 ≈ 320 이므로, 이 값은
@@ -345,9 +348,19 @@ export class UniverseScene {
   /** 이륙 중 — 착륙은 풀렸지만 회랑은 비행이 끝날 때까지 서 있다 */
   private corridorDeparting = false;
 
-  // ——— 카메라 주권 (R12-f) ———
-  /** 시선 방향 속도(단위/초). 휠·핀치가 더하고 감쇠가 뺀다. */
+  // ——— 카메라 주권 (R12-f) · 관측선 (R13) ———
+  /** 추력 속도(단위/초). 휠·핀치가 더하고 감쇠가 뺀다. */
   private thrust = 0;
+  /** 추력이 미는 방향 — push() 가 조준을 해소해 정한다(지목 별 > 커서 > 시선).
+   *  null 이면 시선 정면. 지목 별이 있으면 매 프레임 그 별로 재조준(호밍)된다. */
+  private thrustDir: THREE.Vector3 | null = null;
+  /** 지목 항법의 목표 별 — 이 별까지의 거리가 감속을 정하고, ARRIVE_STANDOFF
+   *  에서 선다. 새로 잡는 제스처(pointerdown)가 지운다: 새 손은 새 뜻이다. */
+  private aimId: string | null = null;
+  /** 지목이 잠긴 순간의 커서 자리(CSS px). 정렬이 하늘을 끌고 가는 동안 가만히
+   *  서 있는 커서 밑으로 다른 별이 지나가는데, 그때의 휠이 그 별로 갈아타면
+   *  비행이 갈지자가 된다(계약 실측). 커서가 움직이지 않았으면 뜻도 그대로다. */
+  private aimAt: { x: number; y: number } | null = null;
   /** 회랑에서 서 있는 해(실수) — 착륙 자세의 유일한 매개변수 */
   private walkYear = 0;
   /** 걷기 속도(연/초) */
@@ -501,6 +514,8 @@ export class UniverseScene {
     homeMark: false,
     sunPx: null as [number, number] | null,
     aim: [0, 0] as [number, number],
+    /** 지목 항법의 목표(R13) — 추력이 이 별로 호밍 중이면 그 id, 아니면 null */
+    aimLock: null as string | null,
     nearest: [null, 0] as [string | null, number],
     /** 가장 가까운 별이 **실제로 그려진** 화면 지름(px). 규칙을 다시 계산해
      *  적으면 계측이 코드가 아니라 의도를 읽는다 — 셰이더에 넘어간 그 값을 읽는다. */
@@ -569,17 +584,20 @@ export class UniverseScene {
 
     this.camera = new THREE.PerspectiveCamera(42, w / h, 0.05, 24000);
     this.camera.position.set(0, 420, CAM_SKY_DEFAULT);
+    // 관측선(R13): OrbitControls 는 입력을 잃었다. 드래그는 look()→turn() 의
+    // 고개의 법 하나로만 들어오고(문 0: 같은 드래그에 법이 셋 — 하늘 3.6배·
+    // 회랑 1.6배·궤도 부호 반대 — 이던 것의 폐지), 휠·핀치는 push() 한 곳이다.
+    // 컨트롤 객체가 남는 이유는 target 북키핑뿐이다: 연출 비행(advance)과
+    // 거리 계측(dist·pivot)이 주시점을 여기서 읽는다. update() 는 어디서도
+    // 부르지 않는다 — 카메라를 쓰는 자는 advance(비행)·moveCamera(손)·
+    // corridorPose(걷기) 셋뿐이다.
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    this.controls.enableDamping = true;
-    this.controls.dampingFactor = 0.075;
+    this.controls.enabled = false;
     this.controls.enablePan = false;
     this.controls.minDistance = 2;
     this.controls.maxDistance = CAM_SKY_MAX;
-    this.controls.rotateSpeed = ROTATE_SPEED;
-    // 줌은 컨트롤에서 뺀다 — 휠·핀치는 **추력**이고, 추력은 한 곳(push)에서만
-    // 들어온다. 두 기제가 같은 제스처를 나눠 가지면 어느 쪽을 지워도 계약이
-    // 초록으로 남는다(R12-e 변이 스윕에서 값을 치른 교훈).
     this.controls.enableZoom = false;
+    this.camera.lookAt(this.controls.target);
 
     this.labels = new LabelLayer(host);
 
@@ -2577,9 +2595,13 @@ export class UniverseScene {
 
   private retarget(): void {
     const s = this.state;
-    // 새로 고르거나 착륙하면 궤도는 다시 이어진다
+    // 새로 고르거나 착륙하면 궤도는 다시 이어진다 — 지목 항법도 여기서 끝난다:
+    // 연출 비행이 카메라를 데려가는 동안 호밍이 함께 당기면 두 손이 싸운다.
     this.orbitBroken = false;
     this.thrust = 0;
+    this.aimId = null;
+    this.aimAt = null;
+    this.thrustDir = null;
     if (s.landedId) {
       const f = this.corridorFrame;
       if (!f) return;
@@ -2701,6 +2723,17 @@ export class UniverseScene {
    * 접근 속도가 거리에 비례하면 별 앞에 **설 수** 있다.
    */
   private throttleScale(): number {
+    // 지목 항법(R13): 감속은 최근접 별이 아니라 **목표까지의 거리**가 정한다 —
+    // 스쳐 지나가는 남의 별마다 브레이크가 걸리던 것이 문 0 의 "원하는 곳으로
+    // 가기 어렵다"의 절반이었다. 목표가 없을 때만 최근접 별로 돌아간다.
+    const i = this.aimId !== null ? this.index.get(this.aimId) : undefined;
+    if (i !== undefined) {
+      const d = (this.dirs[i] as THREE.Vector3)
+        .clone()
+        .multiplyScalar(SHELL_R)
+        .distanceTo(this.camera.position);
+      return Math.max(0.1, Math.min(1, d / SHELL_R));
+    }
     if (!Number.isFinite(this.nearD)) return 1;
     return Math.max(0.1, Math.min(1, this.nearD / SHELL_R));
   }
@@ -2769,11 +2802,16 @@ export class UniverseScene {
   }
 
   private pickStar(e: PointerEvent): string | null {
+    return this.pickStarXY(e.clientX, e.clientY);
+  }
+
+  /** 클라이언트 좌표로 별을 집는다 — 클릭·호버·조준(휠의 커서)이 같은 자를 쓴다. */
+  private pickStarXY(cx: number, cy: number, radius = 26): string | null {
     const r = this.renderer.domElement.getBoundingClientRect();
-    const px = e.clientX - r.left;
-    const py = e.clientY - r.top;
+    const px = cx - r.left;
+    const py = cy - r.top;
     let best: string | null = null;
-    let bestD = 26;
+    let bestD = radius;
     const v = new THREE.Vector3();
     for (let i = 0; i < this.order.length; i++) {
       const id = this.order[i] as string;
@@ -2806,6 +2844,10 @@ export class UniverseScene {
 
   private onPointerDown = (e: PointerEvent): void => {
     this.cancelFly();
+    // 새 손은 새 뜻이다(R13) — 잡는 순간 지목 항법이 풀린다. 활공은 마지막
+    // 방향 그대로 이어지고(thrustDir 동결), 다음 휠·핀치가 조준을 다시 푼다.
+    this.aimId = null;
+    this.aimAt = null;
     // 주 포인터가 내려온다는 것은 **다른 포인터가 없다**는 뜻이다(포인터 이벤트
     // 규약). 제스처 사이에 유령 포인터가 남으면 두 손가락이 세 개로 세어지고
     // 핀치가 조용히 죽는다(실측: 손끝 세 번째 제스처부터 추력 0).
@@ -2858,8 +2900,9 @@ export class UniverseScene {
       }
       if (this.drag && this.drag.id === e.pointerId) {
         this.drag.moved += Math.hypot(dx, dy);
-        // 회랑에서는 컨트롤을 쓰지 않는다 — 걷는 사람의 고개는 우리가 돌린다
-        if (this.walkMode()) this.look(dx, dy);
+        // 고개의 법 하나(R13) — 하늘·궤도·회랑 어디서나 같은 문, 같은 공식,
+        // 같은 부호. 회랑만의 특례였던 것이 원칙이 됐다.
+        this.look(dx, dy);
       }
       // 끄는 동안은 호버를 다시 세지 않는다. 둘러보는 내내 지나가는 별마다
       // 실이 켜지면 "지목"이 지목이기를 그친다.
@@ -2899,7 +2942,9 @@ export class UniverseScene {
   private onWheel = (e: WheelEvent): void => {
     e.preventDefault();
     const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? 400 : 1;
-    this.push(-e.deltaY * unit);
+    // 휠은 커서를 안다(R13) — 추력은 화면 한가운데가 아니라 커서가 가리키는
+    // 곳으로 간다. "저기로 가고 싶다"가 조준과 추진 두 동작이 아니라 하나가 된다.
+    this.push(-e.deltaY * unit, { x: e.clientX, y: e.clientY });
   };
 
   private pinch(): void {
@@ -2915,7 +2960,7 @@ export class UniverseScene {
    * 붙잡고 있던 것(궤도·당긴 책)이 있으면 먼저 놓는다: 휠이 언제나 추력이라는
    * 규칙이 성립하려면, 묶여 있지 않다는 증거가 같은 제스처 안에 있어야 한다.
    */
-  private push(px: number): void {
+  private push(px: number, at?: { x: number; y: number }): void {
     if (!px) return;
     if (this.state.landedId) {
       if (this.anim) return; // 착륙·당김 비행 중에는 손대지 않는다
@@ -2930,15 +2975,61 @@ export class UniverseScene {
     this.cancelFly();
     // 궤도를 끊는다 — 그러나 읽던 것은 그대로 둔다(멀어지면 그때 닫힌다)
     if (this.state.focusId) this.orbitBroken = true;
+    if (px > 0) this.resolveAim(at);
     const k = this.throttleScale();
     const cap = THRUST_MAX * k;
     this.thrust = Math.max(-cap, Math.min(cap, this.thrust + px * THRUST_PER_PX * k));
   }
 
-  /** 회랑에서 고개를 돌린다 — 화면 1px 이 시야각 1px 이다 */
+  /**
+   * 조준 해소(R13) — 전진 추력이 향할 곳을 정한다. 우선순위:
+   * 커서 아래 별(지목 항법이 된다) > 커서 방향(빈 하늘) > 이미 지목된 별
+   * (손끝의 첫 탭) > 시선 정면. 커서의 픽 반경은 클릭(26px)보다 넉넉하다 —
+   * 조준은 선택이 아니라 방향이므로, 근처를 가리킨 것으로 충분하다.
+   */
+  private resolveAim(at?: { x: number; y: number }): void {
+    if (at) {
+      // 커서가 지목 이후 제자리면 뜻도 제자리다 — 정렬이 하늘을 끌고 가는
+      // 동안 커서 밑을 지나가는 남의 별로 갈아타지 않는다.
+      if (
+        this.aimId !== null &&
+        this.aimAt !== null &&
+        Math.hypot(at.x - this.aimAt.x, at.y - this.aimAt.y) < 8
+      ) {
+        return;
+      }
+      const s = this.pickStarXY(at.x, at.y, 44);
+      if (s) {
+        this.aimId = s;
+        this.aimAt = { x: at.x, y: at.y };
+        return;
+      }
+      // 커서를 **다른** 빈 하늘로 옮겨 굴렸다면 그것은 새 뜻이다 — 지목을
+      // 풀고 그 방향으로 간다. (제자리 커서의 락 유지는 위 가드 한 곳뿐이다:
+      // 같은 보증을 두 곳에 두면 서로를 가려 변이가 생존한다 — 실측.)
+      this.aimId = null;
+      this.aimAt = null;
+      const r = this.renderer.domElement.getBoundingClientRect();
+      const ndc = new THREE.Vector2(
+        ((at.x - r.left) / r.width) * 2 - 1,
+        -(((at.y - r.top) / r.height) * 2 - 1)
+      );
+      this.raycaster.setFromCamera(ndc, this.camera);
+      this.thrustDir = this.raycaster.ray.direction.clone().normalize();
+      return;
+    }
+    // 커서 없는 손(핀치·키보드): 지목이 있으면 그 별로, 없으면 시선 정면으로.
+    if (this.aimId === null) {
+      if (this.state.hoveredId !== null) this.aimId = this.state.hoveredId;
+      else this.thrustDir = null;
+    }
+  }
+
+  /** 고개를 돌린다 — 화면 px 을 시야각으로 바꾸는 공식은 어디서나 이것 하나다.
+   *  하늘·궤도·회랑이 같은 배율(TURN_GAIN)·같은 부호를 쓴다(R13 고개의 법). */
   private look(dx: number, dy: number): void {
     const h = this.renderer.domElement.clientHeight || 800;
-    const perPx = ((this.camera.fov * Math.PI) / 180 / h) * 1.6;
+    const perPx = (((this.camera.fov * Math.PI) / 180) / h) * TURN_GAIN;
     this.turn(dx * perPx, dy * perPx);
   }
 
@@ -2959,7 +3050,10 @@ export class UniverseScene {
       this.lookPitch = Math.max(-pMax, Math.min(pMax, this.lookPitch + pitch));
       return;
     }
-    if (!this.freeMode()) return;
+    // 관측선(R13): 고개는 어디서나 돌아간다 — 자유 비행만이 아니라 궤도에
+    // 서 있을 때도, 책을 당겨 든 채로도. 연출 비행 중은 예외다(카메라가
+    // 안무의 손에 있고, pointerdown 이 이미 비행을 끊는 문이다).
+    if (this.anim) return;
     this.camera.rotateOnWorldAxis(this.camera.up, yaw);
     this.camera.rotateX(pitch);
   }
@@ -3083,6 +3177,9 @@ export class UniverseScene {
    */
   overview(): void {
     this.thrust = 0;
+    this.aimId = null;
+    this.aimAt = null;
+    this.thrustDir = null;
     this.orbitBroken = false;
     this.landTarget = null;
     this.skyPose.set(0, 420, CAM_SKY_DEFAULT);
@@ -3146,6 +3243,10 @@ export class UniverseScene {
       this.setCameraUp(
         new THREE.Vector3().copy(this.anim.fromUp).lerp(this.anim.toUp, e).normalize()
       );
+      // 관측선(R13): 시선은 여기서 직접 준다 — OrbitControls.update() 가 하던
+      // lookAt 은 컨트롤 은퇴와 함께 이 줄로 왔다. 주시점 선행 보간(te)이
+      // "어디로 가는지 아는 비행"을 만드는 자리이므로, 시선의 원본도 같은 값.
+      this.camera.lookAt(tgt);
       // 접힘은 착륙 비행의 마지막 45% 가 만든다 — 검은 빈 구간이던 자리다.
       // 지각의 연도 격자가 경첩을 축으로 일어서고, 드래그 취소는 비행 취소가
       // 접힘도 되돌린다(같은 k 를 공유하므로).
@@ -3216,38 +3317,65 @@ export class UniverseScene {
         this.camera.lookAt(p.look);
       }
     } else if (this.freeMode()) {
-      // 피벗이 **앞**에 오면 회전의 부호가 뒤집힌다. 대상을 돌려 보는 궤도에서는
-      // 손가락을 따라 대상이 오는 것이 맞지만(붙잡고 돌린다), 하늘을 둘러볼
-      // 때는 하늘이 손가락을 따라와야 한다 — 별지도의 규약이고, 손끝에서는
-      // 그 반대가 곧바로 "미끄러진다"로 읽힌다. 그래서 부호도 모드의 일부다.
-      this.controls.rotateSpeed = -ROTATE_SPEED;
+      // 관측선(R13): 추력은 시선 정면이 아니라 **뜻한 곳**으로 간다. 지목한
+      // 별이 있으면 매 프레임 그 별로 재조준하고(호밍 — 별은 서 있지만 배는
+      // 움직이므로), 기수가 목표 쪽으로 서서히 정렬된다: 손을 대지 않아도
+      // 목표가 화면 중앙으로 걸어 들어온다. 낚아채지 않고 데려간다.
       const fwd = this.camera.getWorldDirection(new THREE.Vector3());
+      const aimStar = this.aimId !== null ? this.index.get(this.aimId) : undefined;
+      if (aimStar !== undefined) {
+        const center = (this.dirs[aimStar] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
+        const to = center.sub(this.camera.position);
+        const d = to.length();
+        // 별 앞에 선다 — 스쳐 지나가는 것은 도착이 아니다. STANDOFF 안쪽에서
+        // 전진 추력은 소진되고 지목이 풀린다(후진은 언제나 자유).
+        if (d <= ARRIVE_STANDOFF && this.thrust > 0) {
+          this.thrust = 0;
+          this.aimId = null;
+          this.aimAt = null;
+          this.thrustDir = null;
+        } else {
+          this.thrustDir = to.normalize();
+          if (this.thrust > 0 && !this.state.reducedMotion) {
+            const ang = fwd.angleTo(this.thrustDir);
+            if (ang > 1e-4) {
+              const step = Math.min(1, (ALIGN_RATE * sec) / ang);
+              const newFwd = fwd.clone().lerp(this.thrustDir, step).normalize();
+              this.camera.lookAt(this.camera.position.clone().add(newFwd));
+            }
+          }
+        }
+      }
       if (this.thrust) {
+        const dir = this.thrustDir ?? fwd;
         if (this.state.reducedMotion) {
-          this.camera.position.addScaledVector(fwd, this.thrust / -Math.log(THRUST_DAMP));
+          this.camera.position.addScaledVector(dir, this.thrust / -Math.log(THRUST_DAMP));
           this.thrust = 0;
         } else {
-          this.camera.position.addScaledVector(fwd, this.thrust * sec);
+          this.camera.position.addScaledVector(dir, this.thrust * sec);
           this.thrust *= Math.pow(THRUST_DAMP, sec);
           if (Math.abs(this.thrust) < 1) this.thrust = 0;
         }
         moving = true;
       }
-      this.controls.target.copy(this.camera.position).addScaledVector(fwd, FREE_PIVOT);
-      this.controls.update();
+      // 주시점 북키핑 — 시선 앞 150(R12-f). 회전은 turn() 이 제자리에서 하므로
+      // 이 값은 조향이 아니라 계측(pivot)과 연출 비행의 출발점이다.
+      const fwd2 = this.camera.getWorldDirection(new THREE.Vector3());
+      this.controls.target.copy(this.camera.position).addScaledVector(fwd2, FREE_PIVOT);
       // 성계를 벗어나지도, 항성을 관통하지도 않는다. **자리를 잡는 곳은 여기
-      // 한 곳이다** — 추력과 회전(피벗이 앞에 있으므로 회전도 카메라를 옮긴다)
-      // 둘 다 자리를 바꾸므로, 두 곳에서 잡으면 어느 한쪽을 지워도 계약이
-      // 초록으로 남는다(변이 스윕 실측, 2026-08-25: 생존 2건이 이 그림자였다).
+      // 한 곳이다** — 두 곳에서 잡으면 어느 한쪽을 지워도 계약이 초록으로
+      // 남는다(변이 스윕 실측, 2026-08-25: 생존 2건이 이 그림자였다).
       const r = this.camera.position.length();
       if (r > CAM_SKY_MAX || r < FREE_R_MIN) {
         this.camera.position.setLength(Math.max(FREE_R_MIN, Math.min(CAM_SKY_MAX, r)));
         this.thrust = 0;
       }
     } else {
-      this.controls.rotateSpeed = ROTATE_SPEED;
+      // 궤도·당김·비행 대기: 배는 서 있다. 고개(turn)는 어디서나 돌아가고,
+      // 카메라를 움직이는 것은 연출 비행(advance)뿐이다. OrbitControls 의
+      // "붙잡고 돌린다"는 문 0 판정으로 은퇴했다 — 같은 드래그는 어디서나
+      // 같은 방향으로 하늘을 옮긴다.
       this.thrust = 0;
-      this.controls.update();
     }
     if (moving !== this.moving) {
       this.moving = moving;
@@ -3651,6 +3779,7 @@ export class UniverseScene {
       /** 추력이 향하는 화면 좌표. 안전 띠가 프레임을 밀므로 기하학적 중심과
        *  다르다 — 하네스는 "가운데"가 아니라 **여기**로 별을 조준한다. */
       aim: this.aimPoint(),
+      aimLock: this.aimId,
       /** 가장 가까운 별과 그 거리 */
       nearest: [nearId, Math.round(nearD)] as [string | null, number],
       nearPx:

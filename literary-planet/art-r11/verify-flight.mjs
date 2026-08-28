@@ -78,8 +78,9 @@ const roll = async (n, step = -420) => {
     await page.waitForTimeout(40);
   }
 };
-// 드래그 1px 이 하늘을 옮기는 화면 거리(실측 3.3) — 조준은 이 이득의 비례 제어다
-const GAIN = 3.3;
+// 드래그 1px 이 하늘을 옮기는 화면 거리 — 조준은 이 이득의 비례 제어다.
+// R13 고개의 법: 이득은 어디서나 TURN_GAIN(1.9) 하나다(이전 하늘 실측 3.3).
+const GAIN = 1.9;
 const steer = async (id, tol = 30) => {
   for (let i = 0; i < 12; i++) {
     const mm = await metrics();
@@ -135,6 +136,155 @@ if (before) {
   check("드래그는 하늘을 손가락과 같은 쪽으로 옮긴다",
     Boolean(after) && after[0] > before.q[0] + 80, `x ${Math.round(before.q[0])} → ${after ? Math.round(after[0]) : "밖"}`);
   check("둘러보는 동안 아무것도 고르지 않는다", (await page.locator(".u-card").count()) === 0);
+}
+
+// ——— 관측선 (R13) ———
+// 문 0(CPO 자기 관찰, 2026-08-28)이 판정한 기초 불통과의 처방. 같은 드래그에
+// 법이 셋이던 것(하늘 3.6배 · 회랑 1.6배 · 궤도 부호 반대)은 고개의 법
+// 하나(TURN_GAIN)가 됐고, 추력은 시선 정면이 아니라 **뜻한 곳**으로 간다.
+// 판정 문장의 앞 절반 — *조준 없이, 보이는 아무 별이나 골라 한 동작으로
+// 다가간다* — 를 여기서 기계로 잰다.
+console.log(`\n관측선`);
+{
+  // 감도의 법 하나 — 양적으로. 드래그 200px 은 하늘을 200×1.9=380px 옮긴다.
+  // 옛 OrbitControls 가 되살아나면 ≈720px, 배율이 조용히 죽으면 0 — 양쪽 다
+  // 이 창(±25%)을 벗어난다.
+  const g0 = await onStar();
+  check("감도 계약을 잴 별이 있다", Boolean(g0), g0 ? g0.id : "없음");
+  if (g0) {
+    await drag(200, 0);
+    const g1 = await page.evaluate((x) => window.__universe.project(x), g0.id);
+    const moved = g1 ? g1[0] - g0.q[0] : NaN;
+    check("고개의 법 하나 — 드래그 200px 은 하늘을 380px(±25%) 옮긴다",
+      Number.isFinite(moved) && moved > 285 && moved < 475,
+      `이동 ${Math.round(moved)}px (기대 380)`);
+  }
+
+  // 부호는 어디서나 하나. 궤도(별을 골라 카드가 열린 상태)에서도 같은 드래그는
+  // 하늘을 같은 쪽으로 옮긴다 — "붙잡고 돌린다"(부호 반대)는 문 0 으로 은퇴했다.
+  await page.evaluate(() => window.__universe.focus("franz-kafka"));
+  await settle(1300);
+  const inOrbit = await metrics();
+  check("궤도에 서 있다 (카드 열림, 자유 비행 아님)",
+    inOrbit.pivot === 0 && (await page.locator(".u-card").count()) === 1,
+    `pivot=${inOrbit.pivot}`);
+  const o0 = await onStar();
+  check("궤도에서 부호를 잴 별이 있다", Boolean(o0), o0 ? o0.id : "없음");
+  if (o0) {
+    await drag(200, 0);
+    const o1 = await page.evaluate((x) => window.__universe.project(x), o0.id);
+    check("궤도에서도 하늘은 손가락과 같은 쪽으로 온다 (부호 단일)",
+      Boolean(o1) && o1[0] > o0.q[0] + 80,
+      `x ${Math.round(o0.q[0])} → ${o1 ? Math.round(o1[0]) : "밖"}`);
+  }
+
+  // 조준 비행 — 판정 문장의 앞 절반. 화면 어디든 보이는 별에 커서를 두고
+  // 휠만 굴리면(드래그 0회) 그 별 앞에 서고, 기수는 스스로 목표를 향해 정렬된다.
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
+  let t0 = await onStar();
+  check("조준 비행을 잴 별이 있다", Boolean(t0), t0 ? t0.id : "없음");
+  if (t0) {
+    const distTo = async () => {
+      const mm = await metrics();
+      return mm.nearest[0] === t0.id ? mm.nearest[1] : Infinity;
+    };
+    // 정렬 계약의 전제 — 별이 조준점 근처에서 출발하면 "정렬됐다"가 아무것도
+    // 재지 않는다(변이 스윕 실측: 정렬 제거가 생존했다). 중앙 근처면 하늘을
+    // 밀어 별을 가장자리로 보내고 시작한다.
+    {
+      const mmA = await metrics();
+      let off0 = Math.hypot(t0.q[0] - mmA.aim[0], t0.q[1] - mmA.aim[1]);
+      for (let i = 0; i < 4 && off0 < 380; i++) {
+        await drag(-300, 130);
+        const fresh = await onStar();
+        if (!fresh) break;
+        t0 = fresh;
+        const mmB = await metrics();
+        off0 = Math.hypot(t0.q[0] - mmB.aim[0], t0.q[1] - mmB.aim[1]);
+      }
+      check("출발 시 별이 조준점에서 멀다 (정렬 계약의 전제)",
+        off0 >= 380, `출발 이격 ${Math.round(off0)}px`);
+    }
+    await page.mouse.move(t0.q[0], t0.q[1]);
+    await page.mouse.wheel(0, -420);
+    await page.waitForTimeout(90);
+    const locked = await metrics();
+    check("휠이 커서 아래 별을 지목한다 (조준 항법)",
+      locked.aimLock === t0.id, `aimLock=${locked.aimLock}`);
+    // 지목은 비행 내내 산다 — 정렬이 별을 중앙으로 데려가 커서 밑이 비어도.
+    // (변이 스윕 실측: 락 유지를 지워도 아무 계약이 안 죽었다 — 이 검사가 그 이빨)
+    let lockHeld = true;
+    for (let i = 0; i < 14; i++) {
+      await page.mouse.wheel(0, -420);
+      await page.waitForTimeout(60);
+      await settle(250);
+      const mmL = await metrics();
+      const dNow = await distTo();
+      if (mmL.aimLock !== t0.id && dNow > 260) lockHeld = false;
+      if (dNow < 210) break;
+    }
+    check("지목은 비행 내내 산다 (빈 하늘 커서가 락을 깨지 않는다)", lockHeld);
+    await settle(600);
+    const d1 = await distTo();
+    check("드래그 0회, 휠만으로 그 별 앞에 선다 (도착 = 정지)",
+      d1 > 100 && d1 < 210, `거리 ${Math.round(d1)} (STANDOFF 140)`);
+    const at = await page.evaluate((x) => window.__universe.project(x), t0.id);
+    const mm2 = await metrics();
+    const offAim = at ? Math.hypot(at[0] - mm2.aim[0], at[1] - mm2.aim[1]) : Infinity;
+    check("기수가 스스로 목표로 정렬됐다 (도착 시 별이 조준점 근처)",
+      offAim < 320, `조준점에서 ${Math.round(offAim)}px`);
+    // 별 앞에 선다 — 커서를 별의 **지금** 자리에 다시 두고 굴려도 관통하지
+    // 않는다(정렬이 별을 중앙으로 옮겼으므로 옛 커서 자리는 빈 하늘이고, 빈
+    // 하늘로의 추력은 자유이지 관통이 아니다 — 실측). 대조군: "여전히 그 별
+    // 곁"(< 400)이 없으면 Infinity 도 초록이 되는 빈 계약이다(실측).
+    const nowAt = await page.evaluate((x) => window.__universe.project(x), t0.id);
+    if (nowAt) await page.mouse.move(nowAt[0], nowAt[1]);
+    await page.mouse.wheel(0, -420);
+    await page.mouse.wheel(0, -420);
+    await settle(500);
+    const d2 = await distTo();
+    check("더 굴려도 별을 관통하지 않는다 (STANDOFF 가 선다)",
+      d2 > 95 && d2 < 400, `거리 ${Math.round(d2)}`);
+    // 감속은 목표의 거리다 — 코앞의 별이 아니라. 여기(별 앞, 최근접 ≈140)서
+    // 먼 별을 조준해 굴리면 배율은 최근접(≈0.16)이 아니라 목표 거리를 읽는다.
+    const farScan = async () => {
+      for (const id of [
+        "jorge-luis-borges", "leo-tolstoy", "marcel-proust", "albert-camus",
+        "thomas-mann", "virginia-woolf", "james-joyce", "fyodor-dostoevsky",
+        "gabriel-garcia-marquez", "natsume-soseki", "rabindranath-tagore", "franz-kafka",
+      ]) {
+        if (id === t0.id) continue;
+        const q = await page.evaluate((x) => window.__universe.project(x), id);
+        if (q && q[0] > 200 && q[0] < 1500 && q[1] > 80 && q[1] < 920) return { id, q };
+      }
+      return null;
+    };
+    let far = await farScan();
+    // 별 코앞의 하늘은 좁다 — 후보가 없으면 제자리에서 한 바퀴 돌며 찾는다.
+    for (let i = 0; i < 8 && !far; i++) {
+      await drag(400, 0);
+      far = await farScan();
+    }
+    if (far) {
+      await page.mouse.move(far.q[0], far.q[1]);
+      await page.mouse.wheel(0, -180);
+      await page.waitForTimeout(90);
+      const mm4 = await metrics();
+      check("감속은 최근접 별이 아니라 지목한 목표의 거리를 읽는다",
+        mm4.aimLock === far.id && mm4.throttle > 0.32,
+        `aimLock=${mm4.aimLock} throttle=${mm4.throttle}`);
+      await settle(900);
+    } else {
+      check("감속-목표 계약을 잴 먼 별이 있다", false, "화면 안 후보 없음");
+    }
+  }
+  // 관측선 절은 카메라를 별 앞에 두고 끝난다 — 뒤의 절들은 원경의 하늘을
+  // 전제하므로 출발 자세로 되돌린다.
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
 }
 
 // 집던 자리에서 고르면, 별에서 시작한 모든 둘러보기가 선택이 된다.

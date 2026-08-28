@@ -170,7 +170,7 @@ for (const y of [1900, 1935, 1970]) {
       const dx = m.aim[0] - sx;
       const dy = m.aim[1] - sy;
       if (Math.hypot(dx, dy) < 34) return;
-      const cl = (v) => Math.max(-380, Math.min(380, v / 3.3));
+      const cl = (v) => Math.max(-380, Math.min(380, v / 1.9)); // R13 TURN_GAIN
       await drag(cl(dx), cl(dy));
     }
   };
