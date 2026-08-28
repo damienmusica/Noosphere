@@ -992,6 +992,166 @@ console.log(`\n별에도 크기가 있다`);
 console.log(`\nconsole errors: ${consoleErrors.length}`);
 if (consoleErrors.length) console.log(consoleErrors.slice(0, 4).join("\n"));
 
+// ——— 내부 심사의 수리 (R13 적대 심사 ①~⑥) ———
+// 심사가 계약 사각지대에서 잡은 것들 — 각 수리는 그 재현 절차 그대로를 계약으로 얻는다.
+console.log(`\n내부 심사의 수리`);
+{
+  // ① 유령 드래그 — 크롬 위에서 뗀 손이 하늘에 붙지 않는다(포인터 캡처).
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
+  const g0 = await onStar();
+  check("유령 드래그 계약을 잴 별이 있다", Boolean(g0), g0 ? g0.id : "없음");
+  if (g0) {
+    await page.mouse.move(500, 400);
+    await page.mouse.down();
+    for (let i = 1; i <= 10; i++) { await page.mouse.move(500 - i * 40, 400); await page.waitForTimeout(8); }
+    await page.mouse.up(); // 좌측 레일(0~250px) 위에서 뗀다
+    await settle(300);
+    const afterUp = await page.evaluate((x) => window.__universe.project(x), g0.id);
+    await page.mouse.move(800, 500);
+    for (let i = 1; i <= 10; i++) { await page.mouse.move(800 + i * 40, 500 + i * 10); await page.waitForTimeout(8); }
+    await settle(300);
+    const afterBare = await page.evaluate((x) => window.__universe.project(x), g0.id);
+    check("크롬 위에서 뗀 뒤, 맨 마우스는 하늘을 끌지 않는다",
+      Boolean(afterUp) && Boolean(afterBare) && Math.hypot(afterBare[0] - afterUp[0], afterBare[1] - afterUp[1]) < 6,
+      afterUp && afterBare ? `이동 ${Math.round(Math.hypot(afterBare[0] - afterUp[0], afterBare[1] - afterUp[1]))}px` : "별이 화면 밖");
+  }
+
+  // ③ 딥링크는 별을 마주 보고 시작한다.
+  await page.goto(url("?lens=movement&a=leo-tolstoy"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1500);
+  const tq = await page.evaluate(() => window.__universe.project("leo-tolstoy"));
+  const mmD = await metrics();
+  check("딥링크 입구에서 그 별이 프레임 중앙권에 선다 (빈 하늘 아님)",
+    Boolean(tq) && Math.hypot(tq[0] - 800, tq[1] - 500) < 380 && mmD.onScreenStars > 0,
+    tq ? `별 (${Math.round(tq[0])},${Math.round(tq[1])}) · 별 ${mmD.onScreenStars}개` : "별이 화면 밖");
+
+  // ② 도착 후의 클릭은 세계를 갈아끼우지 않는다.
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
+  let kq2 = await page.evaluate(() => window.__universe.project("franz-kafka"));
+  for (let i = 0; i < 8 && !(kq2 && kq2[0] > 250 && kq2[0] < 1450 && kq2[1] > 80 && kq2[1] < 920); i++) {
+    await drag(400, 0);
+    kq2 = await page.evaluate(() => window.__universe.project("franz-kafka"));
+  }
+  check("도착-클릭 계약을 잴 카프카가 보인다", Boolean(kq2));
+  if (kq2) {
+    await page.mouse.move(kq2[0], kq2[1]);
+    for (let i = 0; i < 26; i++) {
+      await page.mouse.wheel(0, i < 6 ? -420 : -150);
+      await page.waitForTimeout(110);
+      const mm = await metrics();
+      if (mm.nearest[0] === "franz-kafka" && mm.nearest[1] < 210) break;
+    }
+    await settle(600);
+    const at2 = await page.evaluate(() => window.__universe.project("franz-kafka"));
+    if (at2) await page.mouse.click(at2[0], at2[1]);
+    await settle(900);
+    const mmC = await metrics();
+    check("코앞에서 골라도 착륙이 아니다 (stage 는 approach 에 머문다)",
+      mmC.stage === "approach" && (await page.locator(".u-card").count()) === 1,
+      `stage=${mmC.stage}`);
+    check("코앞에서 골라도 행성이 벽이 되지 않는다 (렌즈 배율 = 필요의 함수)",
+      mmC.nearPx < 420 && mmC.lensMag > 0.9 && mmC.lensMag < 7,
+      `nearPx=${mmC.nearPx} · 배율 ${mmC.lensMag}`);
+    // 표면 임계를 실제로 넘겨 본다 — 조준을 풀고(작은 드래그) 커서를 별 곁
+    // 빈 하늘에 두면 STANDOFF 없이 더 다가갈 수 있다. 거기서 몸체가 화면
+    // 22% 를 넘어도, 착륙하지 않았다면 칩은 착륙이 아니어야 한다(심사② —
+    // 두 규칙이 서로를 가려 변이가 생존했던 자리).
+    await drag(30, 0);
+    const at3 = await page.evaluate(() => window.__universe.project("franz-kafka"));
+    if (at3) {
+      await page.mouse.move(at3[0] + 70, at3[1]);
+      for (let i = 0; i < 30; i++) {
+        await page.mouse.wheel(0, -90);
+        await page.waitForTimeout(80);
+        const mm = await metrics();
+        if (mm.nearest[0] === "franz-kafka" && mm.nearest[1] < 65) break;
+      }
+      await settle(400);
+      const at4 = await page.evaluate(() => window.__universe.project("franz-kafka"));
+      if (at4) await page.mouse.click(at4[0], at4[1]);
+      await settle(700);
+      const mmS = await metrics();
+      check("몸체가 화면을 채워도 착륙 없이는 착륙 칩이 서지 않는다",
+        mmS.nearest[1] < 90 && mmS.stage !== "surface",
+        `d=${Math.round(mmS.nearest[1])} stage=${mmS.stage}`);
+    }
+    await page.keyboard.press("Escape");
+    await settle(500);
+  }
+
+  // ⑥ 미준비 별의 코앞도 접근이다 — 계기끼리 모순되지 않는다.
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
+  let bq = await page.evaluate(() => window.__universe.project("jorge-luis-borges"));
+  for (let i = 0; i < 8 && !(bq && bq[0] > 250 && bq[0] < 1450 && bq[1] > 80 && bq[1] < 920); i++) {
+    await drag(400, 0);
+    bq = await page.evaluate(() => window.__universe.project("jorge-luis-borges"));
+  }
+  if (bq) {
+    await page.mouse.move(bq[0], bq[1]);
+    for (let i = 0; i < 26; i++) {
+      await page.mouse.wheel(0, i < 6 ? -420 : -150);
+      await page.waitForTimeout(110);
+      const mm = await metrics();
+      if (mm.nearest[0] === "jorge-luis-borges" && mm.nearest[1] < 300) break;
+    }
+    await settle(500);
+    const mmB = await metrics();
+    check("미준비 별의 코앞에서 칩은 접근이다 (스트립과 모순되지 않는다)",
+      mmB.stage === "approach", `stage=${mmB.stage} d=${Math.round(mmB.nearest[1])}`);
+  } else {
+    check("칩-접근 계약을 잴 보르헤스가 보인다", false, "없음");
+  }
+
+  // ④·⑤ 회랑 — 벽은 하늘이 아니고, 이름표는 드래그를 삼키지 않는다.
+  await page.goto(url("?lens=movement&a=franz-kafka&land=1"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1600);
+  await drag(700, 0, 300, 520);
+  await drag(700, 0, 300, 520);
+  const mmW = await metrics();
+  check("서가를 마주 보면 벽 뒤의 이름이 접힌다 (벽은 하늘이 아니다)",
+    mmW.occludedNeighbors >= 1, `접힌 이름 ${mmW.occludedNeighbors}`);
+  await page.goto(url("?lens=movement&a=franz-kafka&land=1"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1600);
+  const slip = await page.locator(".globe-label--work").first().boundingBox().catch(() => null);
+  check("드래그-삼킴 계약을 잴 슬립이 있다", Boolean(slip));
+  if (slip) {
+    const y0 = (await metrics()).look[0];
+    await drag(320, 0, slip.x + slip.width / 2, slip.y + slip.height / 2);
+    const y1 = (await metrics()).look[0];
+    check("이름표 위에서 시작한 드래그도 고개다 (라벨이 삼키지 않는다)",
+      Math.abs(y1 - y0) >= 12, `yaw ${y0}° → ${y1}°`);
+  }
+}
+
+// ——— 관측창 프레임 (R13-d) ———
+// 배는 창의 가장자리로 존재한다 — 하늘에서 서고, 표면에서 걷는 몸에게 물러난다.
+console.log(`\n관측창 프레임 (R13-d)`);
+{
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1200);
+  check("하늘에서 관측창 코너가 선다 (4점)",
+    (await page.locator(".u-hull i").count()) === 4);
+  check("관측창은 손을 막지 않는다 (pointer-events 없음)",
+    (await page.evaluate(() => getComputedStyle(document.querySelector(".u-hull")).pointerEvents)) === "none");
+  await page.goto(url("?lens=movement&a=franz-kafka&land=1"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1500);
+  const mmH = await metrics();
+  check("표면에서는 관측창이 물러난다 (걷는 몸에게 창이 없다)",
+    mmH.stage === "surface" && (await page.locator(".u-hull").count()) === 0,
+    `stage=${mmH.stage}`);
+}
+
 // ——— 몸의 회랑 · 몸이 남는 클릭 (R13-c) ———
 // 문 0 2차의 처방들: 고르기·덮기는 몸을 옮기지 않고, 검색만이 데려가고,
 // 착륙은 행성이 자라는 것이 **보이는** 여정이고, 회랑의 몸은 서가를 마주 본다.

@@ -972,6 +972,16 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         </p>
       ) : null}
 
+      {stage !== "surface" ? (
+        // 관측창 프레임(R13-d) — 배는 텍스트가 아니라 **창의 가장자리**로 존재한다.
+        // 3자 판정 수렴(GD 조건부 합격 · VAD 재도전 지침 · 제작): 코너 헤어라인
+        // 4점 + 초미세 비네트, 숫자·계기 0(정보는 접근 스트립의 몫), 표면에서는
+        // 걷는 몸이므로 숨긴다. 순수 장식이 아니라 "기기 안에서 보고 있다"의 상수.
+        <div className="u-hull" aria-hidden="true">
+          <i /><i /><i /><i />
+        </div>
+      ) : null}
+
       {approachRungs ? (
         <aside className="u-approach" data-testid="approach" role="status" aria-live="polite">
           <ol>
