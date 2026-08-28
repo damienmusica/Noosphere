@@ -992,6 +992,47 @@ console.log(`\n별에도 크기가 있다`);
 console.log(`\nconsole errors: ${consoleErrors.length}`);
 if (consoleErrors.length) console.log(consoleErrors.slice(0, 4).join("\n"));
 
+// ——— 관찰자 0번의 수리 (문 0 대역, 2026-08-28) ———
+// 드래그가 텍스트 선택을 끌고 다니지 않는다 — 세계는 선택 불가, 읽는 표면만 글.
+console.log(`\n관찰자 0번의 수리`);
+{
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1200);
+  // 캔버스에서 시작해 좌측 레일을 가로지르는 드래그 — 관찰 재현 그대로.
+  await page.mouse.move(700, 300);
+  await page.mouse.down();
+  for (let i = 1; i <= 12; i++) { await page.mouse.move(700 - i * 50, 300); await page.waitForTimeout(8); }
+  await page.mouse.up();
+  const sel = await page.evaluate(() => window.getSelection()?.toString() ?? "");
+  // 합성 입력은 캔버스 기점 선택을 항상 재현하지 못한다(변이 스윕 실측: 규칙을
+  // 지워도 이 드래그만으론 선택 0) — 텍스트 기점 드래그를 대조군으로 함께 끈다:
+  // user-select 규칙이 죽으면 이쪽이 반드시 글자를 문다.
+  // 버튼은 크롬 기본이 선택 불가다 — 대조군은 **산문 단락**(레일 하단 설명문)을 문다.
+  const para = await page.locator(".u-rail p, .u-lenses ~ p, .u-rail").last().boundingBox();
+  const px0 = para ? para.x + 8 : 30;
+  const py0 = para ? para.y + para.height - 30 : 700;
+  await page.mouse.move(px0, py0);
+  await page.mouse.down();
+  for (let i = 1; i <= 10; i++) { await page.mouse.move(px0 + i * 18, py0 + i * 2); await page.waitForTimeout(8); }
+  await page.mouse.up();
+  const sel2 = await page.evaluate(() => window.getSelection()?.toString() ?? "");
+  check("고개 드래그는 텍스트 선택을 그리지 않는다 (레일을 가로질러도·레일 위에서도)",
+    sel.length === 0 && sel2.length === 0,
+    sel.length + sel2.length ? `선택 ${sel.length}+${sel2.length}자` : "");
+  // 대조군 — 카드의 산문은 여전히 긁어 인용할 수 있다.
+  await page.evaluate(() => window.__universe.focus("franz-kafka"));
+  await settle(1100);
+  const canSelect = await page.evaluate(() => {
+    const el = document.querySelector(".u-card p, .u-card .u-why, .u-card");
+    if (!el) return false;
+    return getComputedStyle(el).userSelect !== "none";
+  });
+  check("읽는 표면(카드)은 여전히 글로 남는다 — 인용은 독자의 권리 (대조군)", canSelect);
+  await page.keyboard.press("Escape");
+  await settle(400);
+}
+
 // ——— 내부 심사의 수리 (R13 적대 심사 ①~⑥) ———
 // 심사가 계약 사각지대에서 잡은 것들 — 각 수리는 그 재현 절차 그대로를 계약으로 얻는다.
 console.log(`\n내부 심사의 수리`);
