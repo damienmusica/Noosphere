@@ -845,6 +845,87 @@ console.log(`\nconsole errors: ${consoleErrors.length}`);
 for (const e of consoleErrors.slice(0, 5)) console.log(`   ${e}`);
 if (consoleErrors.length) failed++;
 
+
+// ——— 접근의 사다리 (R13-b) — 손안에서도 정보는 접근의 응답이다 ———
+// 넓은 화면 계약만 달면 전화기가 조용히 깨진 채 게이트를 통과한다(§⑫의 출발점).
+console.log(`\n접근의 사다리 (손안)`);
+{
+  // pinch/swipe 는 카메라 절의 블록 스코프라 여기서 자체 정의한다(같은 합성 규약).
+  const pinch = async (from, to, cy = 430, steps = 10) => {
+    await page.evaluate(
+      async ([from, to, cy, steps]) => {
+        const c = document.querySelector("canvas.universe-canvas");
+        const cx = Math.round(innerWidth / 2);
+        const ev = (type, id, x, y, primary) =>
+          c.dispatchEvent(
+            new PointerEvent(type, { pointerId: id, pointerType: "touch", isPrimary: primary, clientX: x, clientY: y, bubbles: true })
+          );
+        ev("pointerdown", 1, cx - from / 2, cy, true);
+        ev("pointerdown", 2, cx + from / 2, cy, false);
+        for (let i = 1; i <= steps; i++) {
+          const d = from + ((to - from) * i) / steps;
+          ev("pointermove", 1, cx - d / 2, cy, true);
+          ev("pointermove", 2, cx + d / 2, cy, false);
+          await new Promise((r) => setTimeout(r, 20));
+        }
+        ev("pointerup", 1, cx - to / 2, cy, true);
+        ev("pointerup", 2, cx + to / 2, cy, false);
+      },
+      [from, to, cy, steps]
+    );
+  };
+  const swipe = async (x0, y0, x1, y1) => {
+    await page.evaluate(
+      async ([x0, y0, x1, y1]) => {
+        const c = document.querySelector("canvas.universe-canvas");
+        const ev = (type, x, y) =>
+          c.dispatchEvent(
+            new PointerEvent(type, { pointerId: 1, pointerType: "touch", isPrimary: true, clientX: x, clientY: y, bubbles: true })
+          );
+        ev("pointerdown", x0, y0);
+        for (let i = 1; i <= 10; i++) {
+          ev("pointermove", x0 + ((x1 - x0) * i) / 10, y0 + ((y1 - y0) * i) / 10);
+          await new Promise((r) => setTimeout(r, 16));
+        }
+        ev("pointerup", x1, y1);
+      },
+      [x0, y0, x1, y1]
+    );
+  };
+  await page.goto(`${server.origin}/universe.html?lens=movement`, { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1500);
+  // 손끝에는 커서가 없다 — 시선을 카프카에 얹고(스와이프 비례 조준) 핀치로 민다.
+  const W = 390;
+  for (let i = 0; i < 8; i++) {
+    const raw = await page.evaluate(() => window.__universe.project("franz-kafka", true));
+    if (raw[2] > 1) { await swipe(60, 430, 320, 430); continue; }
+    const offX = raw[0] * (W / 2);
+    const offY = -raw[1] * 300;
+    if (Math.hypot(offX, offY) < 30) break;
+    // 하늘은 손을 따라온다 — 별을 중앙으로 데려오려면 별의 반대 부호로 민다.
+    const cl = (v) => Math.max(-170, Math.min(170, -v));
+    await swipe(195 - cl(offX) / 2, 430 - cl(offY) / 2, 195 + cl(offX) / 2, 430 + cl(offY) / 2);
+    await settle(250);
+  }
+  let seen = { d: Infinity, n: 0 };
+  for (let i = 0; i < 22; i++) {
+    await pinch(80, 210);
+    await page.waitForTimeout(120);
+    const mm = await metrics();
+    const [aid, ad] = mm.approach;
+    if (aid === "franz-kafka" && ad > 0 && ad < 430) {
+      const n = await page.locator(".u-approach li").count();
+      if (ad < seen.d) seen = { d: ad, n };
+      if (ad < 240 && n >= 3) break;
+    }
+    if (mm.camR < 200) break;
+    await settle(200);
+  }
+  check("손안에서도 다가가면 계기가 응답한다 (도착 전에 세 가지)",
+    seen.d < 300 && seen.n >= 3, `d=${Math.round(seen.d)} 줄 ${seen.n}`);
+}
+
 console.log(`\n${passed} passed · ${failed} failed`);
 await browser.close();
 server.close();

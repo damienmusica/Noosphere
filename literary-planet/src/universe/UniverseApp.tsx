@@ -26,9 +26,19 @@ import {
   savePersonal,
   type PersonalState
 } from "./personal.ts";
-import { LENS_MAG, magnitude, influenceWeight, periodOf, starPixels } from "./grammar.ts";
+import {
+  LENS_MAG,
+  magnitude,
+  influenceWeight,
+  periodOf,
+  starPixels,
+  APPROACH_LINE,
+  APPROACH_WHY,
+  APPROACH_RELATION,
+  APPROACH_OPENING
+} from "./grammar.ts";
 import { isLandable, readinessOf, readinessState } from "./readiness.ts";
-import { relationCaption } from "./relations.ts";
+import { relationCaption, relationGlyph, REL_KO, EVIDENCE_RANK } from "./relations.ts";
 import { preloadAuthor, trackPreload, type AssetSet } from "./assets.ts";
 import { buildSearchIndex, searchAuthors } from "../lib/search.ts";
 import { languageLabel, regionLabel } from "../i18n/index.ts";
@@ -104,6 +114,8 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const [moving, setMoving] = useState(false);
   /** 다가가서 천체로 분해된 작가 — 고르지 않아도 자산을 부른다 */
   const [nearId, setNearId] = useState<string | null>(null);
+  /** 접근의 사다리(R13-b) — 지목/최근접 별과 그 거리. 관측 스트립의 원천. */
+  const [approach, setApproach] = useState<{ id: string; d: number } | null>(null);
   /** 성계 안쪽까지 날아 들어왔다 — 돌아올 길을 띄운다 */
   const [deep, setDeep] = useState(false);
   /** 뷰포트가 바뀔 때마다 오르는 값 — 띠와 크롬 사각형을 다시 재게 한다.
@@ -315,6 +327,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         onMotion: (m) => setMoving(m),
         onDeep: (d) => setDeep(d),
         onNear: (id) => setNearId(id),
+        onApproach: (id, d) => setApproach(id ? { id, d } : null),
         // 추력은 붙잡고 있던 것을 놓는다 — 당긴 책이 먼저, 그다음이 궤도.
         // 착륙 자체는 놓지 않는다: 회랑에서 추력은 이륙이 아니라 걷기다.
         onLeaveOrbit: () =>
@@ -470,7 +483,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       if (!scene) return;
       const out: Array<{ x: number; y: number; w: number; h: number }> = [];
       const sel =
-        ".u-top, .u-time, .u-card, .u-grip, .u-lenses, .u-mine, .u-why, .u-search__hits";
+        ".u-top, .u-time, .u-card, .u-grip, .u-lenses, .u-mine, .u-why, .u-approach, .u-search__hits";
       for (const el of document.querySelectorAll<HTMLElement>(sel)) {
         const cs = getComputedStyle(el);
         if (cs.display === "none" || cs.visibility === "hidden" || Number(cs.opacity) < 0.05)
@@ -545,6 +558,66 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
     if (!row) return null;
     return relationCaption(row.rel, focus.id, (id) => byId.get(id)?.names.ko ?? id);
   }, [focus, hoverId, focusRelations, byId]);
+
+  // 접근의 사다리(R13-b) — 정보는 클릭의 보상이 아니라 **접근의 응답**이다.
+  // 거리 문턱마다 한 줄씩 깊어진다: 이름 → 생몰·언어 → 한 줄 해설 → 최강
+  // 관계 → 여는 문장·초대. 카드가 열려 있으면 물러나고(같은 내용의 상위
+  // 표면), 착륙하면 서지 않는다(표면이 곧 세계다). 없는 단은 없다고 둔다 —
+  // 여는 문장이 없는 작가는 그 줄이 비는 것이 정직한 상태다.
+  const approachRungs = useMemo(() => {
+    if (!approach || landedId || focusId) return null;
+    const a = byId.get(approach.id);
+    if (!a) return null;
+    const d = approach.d;
+    const rows: { key: string; text: string; lang?: string }[] = [
+      { key: "name", text: a.names.ko }
+    ];
+    if (d <= APPROACH_LINE) {
+      const life = a.birthYear !== undefined ? `${a.birthYear}–${a.deathYear ?? ""}` : null;
+      const langs = a.languages.map((l) => languageLabel(l, "ko")).join(" · ");
+      const line = [life, langs].filter(Boolean).join(" · ");
+      if (line) rows.push({ key: "line", text: line });
+    }
+    if (d <= APPROACH_WHY) {
+      const s = a.importanceReason;
+      const cut = s.indexOf("다. ");
+      rows.push({ key: "why", text: cut > 0 ? s.slice(0, cut + 2) : s });
+    }
+    if (d <= APPROACH_RELATION) {
+      const best = dataset.relations
+        .filter((r) => r.sourceId === a.id || r.targetId === a.id)
+        .sort(
+          (x, y) =>
+            EVIDENCE_RANK[y.evidenceLevel] - EVIDENCE_RANK[x.evidenceLevel] || y.weight - x.weight
+        )[0];
+      if (best) {
+        const other = byId.get(best.sourceId === a.id ? best.targetId : best.sourceId);
+        if (other) {
+          rows.push({
+            key: "relation",
+            text: `${relationGlyph(best, a.id)} ${other.names.ko} · ${REL_KO[best.type] ?? best.type}`
+          });
+        }
+      }
+    }
+    if (d <= APPROACH_OPENING) {
+      const entry = dataset.works.find((w) => w.authorId === a.id && w.id === a.readingEntry);
+      if (entry?.world) {
+        rows.push({
+          key: "opening",
+          text: `『${entry.titleKo}』 「${entry.world.opening.original}」`
+        });
+      }
+      rows.push({
+        key: "invite",
+        // 모듈 수준 isLandable — 컴포넌트의 landable 콜백은 이 아래에서 선언되고,
+        // TDZ 참조가 첫 렌더에서 던져 씬 프레임 루프까지 죽였다(실측: 별이 22px
+        // 에 동결, 콘솔 ReferenceError 4). 렌더 경로는 선언 순서에 물리지 않는다.
+        text: isLandable(a.id) ? "착륙 준비됨 — 회랑이 열린다" : "궤도 아카이브"
+      });
+    }
+    return rows;
+  }, [approach, landedId, focusId, byId, dataset]);
 
   const tracks = useMemo(
     () =>
@@ -880,6 +953,18 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         <p className="u-why" data-testid="why" aria-hidden="true">
           {hoverWhy}
         </p>
+      ) : null}
+
+      {approachRungs ? (
+        <aside className="u-approach" data-testid="approach" role="status" aria-live="polite">
+          <ol>
+            {approachRungs.map((r) => (
+              <li key={r.key} data-rung={r.key} lang={r.lang}>
+                {r.text}
+              </li>
+            ))}
+          </ol>
+        </aside>
       ) : null}
 
       <div className="u-time">

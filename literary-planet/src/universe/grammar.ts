@@ -59,6 +59,20 @@ export const ARRIVE_STANDOFF = 140;
  *  데려간다. */
 export const ALIGN_RATE = 1.1;
 
+// ——— 접근의 사다리 (R13-b) ———
+// 거리 사다리는 R12-g 까지 크기와 이름만 날랐다. 이제 내용을 나른다 — 정보는
+// 클릭의 보상이 아니라 **접근의 응답**이다(문 0: "탐색과 탐험 과정에서 자연스레
+// 정보들이 나와야"). 문턱은 전부 NAME_NEAR(430) 안쪽이다 — 별 평균 간격(≈320)
+// 보다 큰 문턱은 "지나치는 별"까지 잡아 R12-f 의 취지를 뒤집는다.
+/** 생몰·언어 — 누구인가의 뼈대가 뜨는 거리 */
+export const APPROACH_LINE = 340;
+/** 한 줄 해설(importanceReason 첫 문장)이 뜨는 거리 */
+export const APPROACH_WHY = 260;
+/** 최강 관계 한 줄이 뜨는 거리 */
+export const APPROACH_RELATION = 190;
+/** 여는 문장(있으면)과 착륙 초대 — 도착(ARRIVE_STANDOFF 140)의 문간 */
+export const APPROACH_OPENING = 150;
+
 // ——— 회랑 걷기 (R12-f) ———
 // 착륙 자세는 이미 매개변수였다: corridorTheta(yStart + 0.8, …). 그 상수를
 // **상태**로 바꾸면 회랑을 걷는다 — 서 있는 해가 바뀌고, 사망선을 지나가고,
