@@ -91,9 +91,98 @@
 
 .u-btn:focus-visible,
 .u-lens:focus-visible,
-.u-wmark button:focus-visible {
+.u-wmark button:focus-visible,
+.u-works__toggle:focus-visible,
+.u-card__why-toggle:focus-visible {
   outline: 2px solid var(--brass-bright);
   outline-offset: 2px;
+}
+
+/* ——— 카드 다이어트 (R13-g) — 계기판으로 열리고, 산문은 지목의 응답 ——— */
+/* 기록 전체는 DOM 에 있다(hidden). 화면에는 펼친 것만 선다 — 한 번에 하나. */
+.u-works__head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.u-works__toggle {
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.u-works__toggle:hover strong {
+  color: var(--text-hover);
+}
+
+.u-works__toggle[aria-expanded="true"] strong {
+  color: var(--text-selected);
+}
+
+.u-card__why-toggle {
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  line-height: inherit;
+}
+
+.u-fold {
+  font-style: normal;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--brass-bright);
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+.u-works__prose[hidden],
+.u-card__why-full[hidden] {
+  display: none;
+}
+
+/* 관계 요약은 지목의 응답 — 지목되지 않은 행의 '왜'는 물러난다(한 번에 하나).
+   기록은 행에 그대로 실려 있고, 계약은 hidden 텍스트를 읽는다. */
+.u-card [data-testid="orbit-relations"] li:not([data-active="1"]) .u-rel__why {
+  display: none;
+}
+
+/* ——— 궤도의 서가 (R13-g) — 위성 책등 위의 커서에 계기가 응답 ——— */
+.u-approach__work {
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px solid var(--brass-a35);
+}
+
+/* 스트립은 계기라 손이 통과한다(pointer-events:none) — 기록 칩만 손이 닿는다 */
+.u-approach__work .u-wmark {
+  pointer-events: auto;
+}
+
+.u-approach__work-head {
+  margin: 0 0 3px;
+}
+
+.u-approach__work-head strong {
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+}
+
+.u-approach__work-sig {
+  margin: 0 0 6px;
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-dim);
 }
 
 /* ——— 책 한 권의 개인 기록(v2) ——— */

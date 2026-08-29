@@ -132,6 +132,9 @@ export interface UniverseCallbacks {
    *  그 거리. 정보는 클릭의 보상이 아니라 접근의 응답이므로, 이 신호가 관측
    *  스트립의 유일한 원천이다. 착륙 중엔 null(표면이 곧 세계다). */
   onApproach(id: string | null, d: number): void;
+  /** 궤도의 서가(R13-g) — 커서가 위성 책등 위에 섰다. 정보는 카드가 아니라
+   *  세계가 나른다: 이 신호가 관측 스트립의 작품 줄을 켠다. */
+  onHoverWork(id: string | null): void;
 }
 
 export type Stage = "sky" | "approach" | "surface";
@@ -143,6 +146,12 @@ interface BodyRecord {
   radius: number;
   center: THREE.Vector3;
   textured: boolean;
+  /** 몸의 종류(R13-g) — 육필 지각(crust) 또는 광구(photo). 광구는 지각이
+   *  아니다: 검수된 실물이 없는 별은 **자기 빛**이 몸이 된다. */
+  kind?: "crust" | "photo";
+  halo?: THREE.Sprite;
+  /** 궤도의 서가(R13-g) — 이 몸 둘레를 도는 작품 위성들 */
+  sat?: THREE.Group;
 }
 
 // 로그 깊이 버퍼를 켰으므로 커스텀 셰이더도 같은 깊이를 써야 한다 —
@@ -300,6 +309,10 @@ export class UniverseScene {
 
   private bodies = new Map<string, BodyRecord>();
   private cityGroup = new THREE.Group();
+  /** 궤도의 서가(R13-g) — 몸별 위성 그룹의 뿌리 */
+  private satRoot = new THREE.Group();
+  /** 커서가 선 위성 책등 — 관측 스트립 작품 줄의 원천 */
+  private hoverWork: string | null = null;
   /** 마지막으로 **하늘에 머물던** 카메라 위치. '하늘로'는 원경이 아니라 **이 자리**로
    *  돌아온다 — 합성 파일럿 4/4 가 복귀 후 출발 별을 잃었다(착륙 접근각이 그대로
    *  남아 다른 구도로 돌아왔기 때문). 처음 있던 화면으로 돌아오지 못하면 방향감
@@ -561,6 +574,10 @@ export class UniverseScene {
      *  적으면 계측이 코드가 아니라 의도를 읽는다 — 셰이더에 넘어간 그 값을 읽는다. */
     nearPx: 0,
     crustPainted: 0,
+    resolvedPhoto: 0,
+    satSlabs: 0,
+    satWorks: [] as string[],
+    hoverWork: null as string | null,
     nearNamed: 0,
     deep: false,
     focusDist: null as number | null,
@@ -714,6 +731,7 @@ export class UniverseScene {
     this.egoArrows.frustumCulled = false;
     this.scene.add(this.egoArrows);
     this.scene.add(this.cityGroup);
+    this.scene.add(this.satRoot);
 
     this.renderer.domElement.addEventListener("pointerdown", this.onPointerDown);
     this.renderer.domElement.addEventListener("pointermove", this.onPointerMove);
@@ -1591,9 +1609,103 @@ export class UniverseScene {
     return rec;
   }
 
+  /**
+   * 궤도의 서가(R13-g, 문 0 4차: "탐색과 탐험 과정에서 유기적으로 자연스럽게
+   * 정보들을 접할 수 있어야지") — 몸으로 분해된 모든 별 둘레를 그 작가의
+   * 작품들이 **위성으로 돈다.** 정보는 카드가 아니라 세계가 나른다: 책등은
+   * 회랑과 같은 활자·같은 원장이고(지어낸 표지 없음), 위성에 커서를 세우면
+   * 관측 스트립이 그 작품으로 응답한다. 연도순으로 돈다.
+   */
+  private ensureSatellites(rec: BodyRecord): void {
+    if (rec.sat) return;
+    const works = this.data.works
+      .filter((w) => w.authorId === rec.id)
+      .sort((a, b) => a.year - b.year);
+    const g = new THREE.Group();
+    g.position.copy(rec.center);
+    g.userData.authorId = rec.id;
+    const radial = rec.center.clone().normalize();
+    const up0 = Math.abs(radial.y) > 0.92 ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0, 1, 0);
+    const u = up0.clone().addScaledVector(radial, -up0.dot(radial)).normalize();
+    const v = new THREE.Vector3().crossVectors(radial, u).normalize();
+    const R = rec.radius * 2.7;
+    const bh = Math.max(7, rec.radius * 0.6);
+    const bw = bh * 0.26;
+    works.forEach((w, i) => {
+      const ang = (i / Math.max(1, works.length)) * Math.PI * 2;
+      // 궤도면을 반경 방향으로 살짝 굽힌다 — 완전한 평면 원은 정면에서 절반이
+      // 몸 뒤에 일렬로 겹친다
+      const pos = new THREE.Vector3()
+        .addScaledVector(u, Math.cos(ang) * R)
+        .addScaledVector(v, Math.sin(ang) * R)
+        .addScaledVector(radial, Math.sin(ang * 2) * rec.radius * 0.22);
+      const spineMat = new THREE.MeshStandardMaterial({
+        map: this.spineTexture(w.id, w.titleKo),
+        roughness: 0.92
+      });
+      const edgeMat = new THREE.MeshStandardMaterial({ map: this.clothTexture(), roughness: 0.96 });
+      const m = new THREE.Mesh(new THREE.BoxGeometry(bw, bh, bw * 0.22), [
+        edgeMat,
+        edgeMat,
+        edgeMat,
+        edgeMat,
+        spineMat,
+        spineMat
+      ]);
+      m.position.copy(pos);
+      // 넓은 면(책등)이 몸 바깥 — 다가오는 관측자 — 을 본다
+      m.lookAt(pos.clone().multiplyScalar(2));
+      m.userData.workId = w.id;
+      m.userData.authorId = rec.id;
+      g.add(m);
+    });
+    rec.sat = g;
+    this.satRoot.add(g);
+  }
+
+  /**
+   * 미준비 별의 근접 형상 — **광구**(R13-g, 문 0 4차: "다른 빛나는 별들도
+   * 확대하면 행성 본체가 나와야 하지 않나"). 별은 가까이서 태양이다: 지어낸
+   * 지각이 아니라 그 별 자신의 빛이 몸이 된다 — 시대색 발광구 + 가산 코로나.
+   * 착륙 게이트와 무관하다(착륙은 여전히 검수된 실물의 특권).
+   */
+  private paintPhotosphere(rec: BodyRecord): void {
+    if (rec.kind === "photo") return;
+    rec.kind = "photo";
+    const a = this.data.authors.find((x) => x.id === rec.id);
+    const tint = new THREE.Color(a ? tintOf(a) : 0xcfa759);
+    rec.mat.color.set(0x000000);
+    rec.mat.emissive.copy(tint).multiplyScalar(0.92);
+    rec.mat.emissiveIntensity = 1.15;
+    rec.mat.roughness = 1;
+    const c = document.createElement("canvas");
+    c.width = c.height = 128;
+    const ctx = c.getContext("2d")!;
+    const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
+    const rgb = `${Math.round(tint.r * 255)},${Math.round(tint.g * 255)},${Math.round(tint.b * 255)}`;
+    g.addColorStop(0, "rgba(255,244,220,0.9)");
+    g.addColorStop(0.3, `rgba(${rgb},0.5)`);
+    g.addColorStop(1, `rgba(${rgb},0)`);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, 128, 128);
+    const halo = new THREE.Sprite(
+      new THREE.SpriteMaterial({
+        map: new THREE.CanvasTexture(c),
+        transparent: true,
+        depthWrite: false,
+        blending: THREE.AdditiveBlending
+      })
+    );
+    halo.position.copy(rec.center);
+    halo.scale.setScalar(rec.radius * 3.4);
+    this.scene.add(halo);
+    rec.halo = halo;
+  }
+
   /** 표면 단계에 들어간 천체에만 지각을 칠한다 */
   private paintCrust(rec: BodyRecord): void {
     if (rec.textured) return;
+    rec.kind = "crust";
     const a = this.data.authors.find((x) => x.id === rec.id);
     if (!a) return;
     const ground = this.data.art?.grounds?.[rec.id];
@@ -2917,6 +3029,20 @@ export class UniverseScene {
 
   /** 화면 좌표에서 가장 가까운 별 — Points 레이캐스트보다 예측 가능하다 */
   /** 계측·하네스용: 별의 현재 화면 좌표(뷰포트 기준 CSS px). 화면 밖이면 null */
+  /** 위성 책등의 화면 좌표(R13-g) — 하네스가 실제 마우스를 그 위에 올린다 */
+  projectWork(id: string): [number, number] | null {
+    let mesh: THREE.Object3D | null = null;
+    for (const b of this.bodies.values()) {
+      if (!b.sat?.visible) continue;
+      for (const m of b.sat.children) if (m.userData.workId === id) mesh = m;
+    }
+    if (!mesh) return null;
+    const r = this.renderer.domElement.getBoundingClientRect();
+    const v = mesh.getWorldPosition(new THREE.Vector3()).project(this.camera);
+    if (v.z > 1 || Math.abs(v.x) > 1 || Math.abs(v.y) > 1) return null;
+    return [((v.x + 1) / 2) * r.width + r.left, ((-v.y + 1) / 2) * r.height + r.top];
+  }
+
   project(id: string, raw = false): [number, number] | null {
     const r = this.renderer.domElement.getBoundingClientRect();
     const v = this.effectivePos(id, new THREE.Vector3()).project(this.camera);
@@ -2990,9 +3116,8 @@ export class UniverseScene {
   }
 
   private pickWork(e: PointerEvent): string | null {
-    if (!this.cityRecords.length) return null;
     // 1차: 라벨 상자 — 이름을 누르는 것이 책을 누르는 것이다.
-    {
+    if (this.cityRecords.length) {
       const r = this.renderer.domElement.getBoundingClientRect();
       const px = e.clientX - r.left;
       const py = e.clientY - r.top;
@@ -3003,9 +3128,18 @@ export class UniverseScene {
       }
     }
     this.raycaster.setFromCamera(this.pointerNdc(e), this.camera);
-    const hits = this.raycaster.intersectObjects(this.cityGroup.children, true);
-    for (const h of hits) {
-      const w = (h.object.userData.workId ?? h.object.parent?.userData.workId) as string | undefined;
+    if (this.cityRecords.length) {
+      const hits = this.raycaster.intersectObjects(this.cityGroup.children, true);
+      for (const h of hits) {
+        const w = (h.object.userData.workId ?? h.object.parent?.userData.workId) as string | undefined;
+        if (w) return w;
+      }
+    }
+    // 궤도의 서가 — 위성 책등도 책이다
+    const sats = this.raycaster.intersectObjects(this.satRoot.children, true);
+    for (const h of sats) {
+      if (h.object.parent?.visible === false) continue;
+      const w = h.object.userData.workId as string | undefined;
       if (w) return w;
     }
     return null;
@@ -3091,7 +3225,15 @@ export class UniverseScene {
       this.refreshStars();
       this.cb.onHoverAuthor(s);
     }
-    this.renderer.domElement.style.cursor = s || this.pickWork(e) ? "pointer" : "grab";
+    const wAny = this.pickWork(e);
+    // 궤도의 서가(R13-g): 위성 위의 커서가 관측 스트립을 켠다. 착륙 중의 책은
+    // 회랑 문법(당김)의 것이므로 이 채널을 쓰지 않는다.
+    const hw = this.state.landedId ? null : wAny;
+    if (hw !== this.hoverWork) {
+      this.hoverWork = hw;
+      this.cb.onHoverWork(hw);
+    }
+    this.renderer.domElement.style.cursor = s || wAny ? "pointer" : "grab";
   };
 
   /**
@@ -3107,7 +3249,12 @@ export class UniverseScene {
     if (!d || d.id !== e.pointerId || d.moved > DRAG_SLOP) return;
     const w = this.pickWork(e);
     if (w) {
-      this.cb.onPickWork(w);
+      if (this.state.landedId) this.cb.onPickWork(w);
+      else {
+        // 궤도에서 책등을 고르는 것은 세우는 것이다 — 손끝의 지목(스트립 고정)
+        this.hoverWork = w;
+        this.cb.onHoverWork(w);
+      }
       return;
     }
     const s = this.pickStar(e);
@@ -3614,6 +3761,12 @@ export class UniverseScene {
       this.applySurfaceSky();
     }
     if (this.state.landedId && this.corridorFrame) this.updateCorridor(dt);
+    // 궤도의 서가가 돈다 — 위성은 서 있는 책장이 아니라 궤도다. 한 바퀴
+    // ≈ 9분: 계약이 한 호흡에 재는 동안은 사실상 정지, 머무는 눈에는 삶.
+    if (!this.state.reducedMotion) {
+      for (const b of this.bodies.values())
+        if (b.sat?.visible) b.sat.rotateOnAxis(b.center.clone().normalize(), 0.012 * (dt / 1000));
+    }
     // 최소 거리는 update() 보다 먼저 정한다 — 순서가 뒤바뀌면 착륙 프레임에서
     // 직전 프레임의 하한(40)이 카메라를 그 자리에 못박는다(실측 버그).
     this.controls.minDistance = this.state.landedId
@@ -3667,19 +3820,31 @@ export class UniverseScene {
       // 이 한 줄이 준비도와 무관한 이유: 크기는 내용에 대한 주장이 아니라
       // **그 자리에 얼마나 있는가**이고, 준비되지 않은 작가도 거기 있다.
       pxAttr.setX(i, starDiameterPx(this.baseGlare[i] ?? 0, ap));
-      // 준비되지 않은 작가는 **항성으로 남는다.** 무늬 없는 구로 분해하면
-      // 정보는 없고 실망만 있는 표면이 생긴다 — 착륙을 막은 이유가 그것이었다.
-      // 궤도 아카이브(궤도 카드)가 그 자리의 경험이다(R11-c).
-      const rep: typeof REP_STAR | "resolved" | "surface" = isLandable(id)
-        ? representationFor(ap, h)
-        : REP_STAR;
+      // 모든 별은 다가가면 몸이 있다(R13-g 개정). 이전 판은 미준비 작가를
+      // 영영 항성으로 묶었다 — "무늬 없는 구"의 실망을 피하려던 것인데, 문 0
+      // 4차가 그 반대편을 물었다: 빛나는 별에 다가갔는데 아무 몸도 없는 것이
+      // 더 큰 실망이다. 몸은 둘로 갈린다: 검수된 실물이 있는 별은 육필
+      // 지각(crust), 나머지는 광구(photo) — 별은 가까이서 태양이므로 이것은
+      // 지어낸 표면이 아니라 그 별 자신의 빛이다. 착륙 게이트는 불변.
+      // 표면의 하늘은 **별의 하늘**이다 — 착륙 중에 이웃이 몸을 얻으면 회랑
+      // 위로 광구와 서가가 떠오른다(실측: 착륙 후 slabs 19). landable 게이트
+      // 시절엔 3인뿐이라 드러나지 않던 잠복이었다. 자리는 여기 한 곳이다.
+      const rep: typeof REP_STAR | "resolved" | "surface" =
+        this.state.landedId && id !== this.state.landedId
+          ? REP_STAR
+          : representationFor(ap, h);
       if (rep === "star") {
         const body = this.bodies.get(id);
-        if (body) body.mesh.visible = false;
+        if (body) {
+          body.mesh.visible = false;
+          if (body.halo) body.halo.visible = false;
+          if (body.sat) body.sat.visible = false;
+        }
       } else {
         const body = this.ensureBody(id);
         if (body) {
           body.mesh.visible = true;
+          if (body.halo) body.halo.visible = true;
           resolved++;
           // 지각은 표면 단계보다 먼저 칠한다 — 도착하는 순간 텍스처가 튀어
           // 들어오면 "같은 천체가 계속 있었다"는 규칙이 깨진다
@@ -3690,13 +3855,19 @@ export class UniverseScene {
           // 분해되는 첫 순간이 곧 그 천체의 첫인상이다 — 60px 을 기다리면 그
           // 첫인상이 무늬 없는 공이고, 그것은 미준비 작가에게 착륙을 금지한
           // 바로 그 화면이다(실측: 조준해서 밀어 분해시킨 카프카가 민무늬 구슬).
-          // paintCrust 는 멱등이고 착륙 가능 작가는 셋뿐이라 값이 싸다.
-          this.paintCrust(body);
+          // paintCrust/paintPhotosphere/ensureSatellites 는 멱등이라 값이 싸다.
+          if (isLandable(id)) this.paintCrust(body);
+          else this.paintPhotosphere(body);
+          this.ensureSatellites(body);
+          // 착륙하면 서가는 회랑이 된다 — 위성은 표면 위를 돌지 않는다
+          if (body.sat)
+            body.sat.visible = !(this.state.landedId === id && this.corridorFrame !== null);
           if (d < bodyNearD) {
             bodyNearD = d;
             bodyNearId = id;
           }
-          if (rep === "surface") surfaceId = id;
+          // 표면(착륙)의 이름은 육필 지각의 것이다 — 광구는 서가가 없다
+          if (rep === "surface" && isLandable(id)) surfaceId = id;
         }
         // 구가 보이면 별 스프라이트는 물러난다 — 같은 객체가 두 번 그려지지 않게
         // 크로스페이드 창을 임계의 2배로 — 7px 창은 착륙 비행의 속도에 뭉개져
@@ -3901,14 +4072,23 @@ export class UniverseScene {
     if (this.lensK !== prevK) this.buildLines(this.egoLines, this.state.ego);
     // 선택 천체는 일률 배율로 확대 — 배율이 같으므로 크기 차이(=영향력)는 남는다
     for (const [id, rec] of this.bodies) {
-      // 준비되지 않은 작가는 애초에 천체가 만들어지지 않으므로 이 루프에
-      // 등장하지 않는다 — 게이트는 표현 사다리 한 곳뿐이다.
       const want =
         id === this.state.focusId && !this.state.landedId
           ? 1 + (LENS_MAG - 1) * this.lensK
           : 1;
       const target = rec.radius * want;
       if (Math.abs(rec.mesh.scale.x - target) > 1e-4) rec.mesh.scale.setScalar(target);
+      // 궤도의 서가는 몸의 **그려지는** 배율을 그대로 따른다 — 렌즈가 몸만
+      // 키우면 확대된 몸이 고리를 삼킨다(프로브 실측: 카프카 ×34 에서 위성
+      // 실종). 고리 반경과 책등 크기가 함께 커져 항상 몸 밖에 선다.
+      if (rec.sat) {
+        const k = rec.mesh.scale.x / rec.radius;
+        if (Math.abs(rec.sat.scale.x - k) > 1e-4) rec.sat.scale.setScalar(k);
+      }
+      if (rec.halo) {
+        const hk = rec.radius * 3.4 * (rec.mesh.scale.x / rec.radius);
+        if (Math.abs(rec.halo.scale.x - hk) > 1e-2) rec.halo.scale.setScalar(hk);
+      }
     }
     // ——— 성계 방향 (R12-f) ———
     // 자유 비행은 등을 돌릴 자유까지 준다: 껍질 밖에서 바깥을 보면 프레임이
@@ -4057,6 +4237,30 @@ export class UniverseScene {
       /** 지각이 실제로 칠해진 천체 수 — 자유 비행의 도착이 무늬 없는 공이
        *  아니라는 증거. 착륙 상태가 아니어도 센다. */
       crustPainted: [...this.bodies.values()].filter((b) => b.textured).length,
+      /** 화면에 선 광구 수(R13-g) — 미준비 별의 몸. 지각이 아니라 그 별의 빛 */
+      resolvedPhoto: [...this.bodies.values()].filter((b) => b.kind === "photo" && b.mesh.visible)
+        .length,
+      /** 궤도의 서가(R13-g) — 떠 있는 위성 책등 수와, 첫 가시 서가의 작품 ID */
+      satSlabs: [...this.bodies.values()].reduce(
+        (n, b) => n + (b.sat?.visible ? b.sat.children.length : 0),
+        0
+      ),
+      satWorks: (() => {
+        // 최근접의 서가다 — 항로에 함께 분해된 다른 몸의 서가를 집으면 계측이
+        // 엉뚱한 작가의 책을 말한다(프로브 실측: 보르헤스 곁에서 칼비노의 책).
+        let best: BodyRecord | null = null;
+        let bd = Infinity;
+        for (const b of this.bodies.values()) {
+          if (!b.sat?.visible) continue;
+          const dd = b.center.distanceTo(this.camera.position);
+          if (dd < bd) {
+            bd = dd;
+            best = b;
+          }
+        }
+        return best?.sat ? best.sat.children.map((m) => m.userData.workId as string) : [];
+      })(),
+      hoverWork: this.hoverWork,
       /** 원경에서 충분히 들어왔는가 — 돌아올 길이 떠 있어야 하는 상태 */
       deep: this.lastDeep,
       /** 고른 별까지의 거리 — 단계 판정의 두 번째 절이자 "떠났다"의 자 */

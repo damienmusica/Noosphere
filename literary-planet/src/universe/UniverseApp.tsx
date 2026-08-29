@@ -117,6 +117,8 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const [nearId, setNearId] = useState<string | null>(null);
   /** 접근의 사다리(R13-b) — 지목/최근접 별과 그 거리. 관측 스트립의 원천. */
   const [approach, setApproach] = useState<{ id: string; d: number } | null>(null);
+  /** 궤도의 서가(R13-g) — 커서/손끝이 선 위성 책등. 관측 스트립 작품 줄의 원천 */
+  const [hoverWork, setHoverWork] = useState<string | null>(null);
   /** 성계 안쪽까지 날아 들어왔다 — 돌아올 길을 띄운다 */
   const [deep, setDeep] = useState(false);
   /** 뷰포트가 바뀔 때마다 오르는 값 — 띠와 크롬 사각형을 다시 재게 한다.
@@ -347,6 +349,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         onDeep: (d) => setDeep(d),
         onNear: (id) => setNearId(id),
         onApproach: (id, d) => setApproach(id ? { id, d } : null),
+        onHoverWork: (id) => setHoverWork(id),
         // 추력은 붙잡고 있던 것을 놓는다 — 당긴 책이 먼저, 그다음이 궤도.
         // 착륙 자체는 놓지 않는다: 회랑에서 추력은 이륙이 아니라 걷기다.
         onLeaveOrbit: () =>
@@ -371,7 +374,9 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       focus: (id: string | null) => setFocusId(id),
       land: (id: string | null) => setLandedId(id && landable(id) ? id : null),
       /** 별의 현재 화면 좌표(CSS px) — 하네스가 실제 마우스를 그 위에 올린다 */
-      project: (id: string, raw?: boolean) => scene.project(id, raw)
+      project: (id: string, raw?: boolean) => scene.project(id, raw),
+      /** 위성 책등의 화면 좌표(R13-g) */
+      projectWork: (id: string) => scene.projectWork(id)
     };
     return () => {
       scene.dispose();
@@ -1000,15 +1005,42 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         </div>
       ) : null}
 
-      {approachRungs ? (
+      {approachRungs || (hoverWork && !landedId) ? (
         <aside className="u-approach" data-testid="approach" role="status" aria-live="polite">
-          <ol>
-            {approachRungs.map((r) => (
-              <li key={r.key} data-rung={r.key} lang={r.lang}>
-                {r.text}
-              </li>
-            ))}
-          </ol>
+          {approachRungs ? (
+            <ol>
+              {approachRungs.map((r) => (
+                <li key={r.key} data-rung={r.key} lang={r.lang}>
+                  {r.text}
+                </li>
+              ))}
+            </ol>
+          ) : null}
+          {/* 궤도의 서가(R13-g) — 위성 책등 위의 커서에 계기가 그 작품으로
+              응답한다. 정보는 카드가 아니라 세계가 나른다(문 0 4차). */}
+          {hoverWork && !landedId
+            ? (() => {
+                const w = dataset.works.find((x) => x.id === hoverWork);
+                if (!w) return null;
+                const sig = w.significance.match(/^.*?다\./)?.[0] ?? w.significance;
+                return (
+                  <div className="u-approach__work" data-testid="approach-work">
+                    <p className="u-approach__work-head">
+                      <strong>{w.titleKo}</strong>
+                      <span className="u-year">{w.year}</span>
+                      {art?.covers?.[w.id] ? <span className="u-tag">초판</span> : null}
+                    </p>
+                    <p className="u-approach__work-sig">{sig}</p>
+                    <WorkMarks
+                      read={Boolean(personal.read[w.id])}
+                      want={Boolean(personal.want[w.id])}
+                      readOnly={Boolean(shared)}
+                      onToggle={(kind) => toggle(kind, w.id)}
+                    />
+                  </div>
+                );
+              })()
+            : null}
         </aside>
       ) : null}
 
