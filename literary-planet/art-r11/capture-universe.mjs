@@ -109,14 +109,19 @@ await page.goto(url("?lens=personal"), { waitUntil: "load" });
 await page.evaluate(() => {
   const t = Date.now();
   const read = {};
-  ["franz-kafka", "natsume-soseki", "jorge-luis-borges", "virginia-woolf", "albert-camus"].forEach(
-    (id, i) => {
-      read[id] = t - (5 - i) * 86400000;
-    }
-  );
+  // v2 — 기록은 책에 붙는다. 작가의 별은 이 책들에서 파생되어 선다.
+  [
+    "franz-kafka--die-verwandlung",
+    "natsume-soseki--kokoro",
+    "jorge-luis-borges--ficciones",
+    "virginia-woolf--mrs-dalloway",
+    "albert-camus--l-etranger"
+  ].forEach((id, i) => {
+    read[id] = t - (5 - i) * 86400000;
+  });
   localStorage.setItem(
-    "lp.universe.personal.v1",
-    JSON.stringify({ v: 1, read, want: { "rabindranath-tagore": t } })
+    "lp.universe.personal.v2",
+    JSON.stringify({ v: 2, read, want: { "rabindranath-tagore--gitanjali": t } })
   );
 });
 await page.goto(url("?lens=personal"), { waitUntil: "load" });
@@ -125,7 +130,7 @@ report.push({ frame: "5personal", ...(await shot("5personal")) });
 
 // ——— 시간 스크럽 (개인 성좌 상태를 비운 뒤) ———
 await page.goto(url(""), { waitUntil: "load" });
-await page.evaluate(() => localStorage.removeItem("lp.universe.personal.v1"));
+await page.evaluate(() => localStorage.removeItem("lp.universe.personal.v2"));
 for (const y of [1900, 1935, 1970]) {
   await page.goto(url(`?lens=movement&y=${y}`), { waitUntil: "load" });
   await ready();

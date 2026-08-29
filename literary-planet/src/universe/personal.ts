@@ -5,30 +5,35 @@
 // 어떤 것도 저장소나 /data 에 기입되지 않는다. 독서 표시는 **상태이지
 // 게시물이 아니다** — 독자가 쓴 문장을 우리 잉크로 렌더하는 기능(개인 연결
 // 생성)은 UGC 경계에 걸리므로 이 층에 포함하지 않았다.
+//
+// v2 (R13-e, CPO 2026-08-28): **기록은 책에 붙는다.** "카프카를 읽었다"는
+// 어느 책인지 말하지 못하는 주장이다 — 읽음도 담음도 작품 단위로만 기록하고,
+// 작가의 별(점등·링)은 그 작가의 책 기록에서 **파생**된다. v1(작가 단위)은
+// 읽지 않는다: 작가 표시를 어떤 책으로 옮겨 적어도 그 순간 거짓이 된다.
 
 import type { Author, Relation } from "../types.ts";
 
-const KEY = "lp.universe.personal.v1";
+const KEY = "lp.universe.personal.v2";
 
 export interface PersonalState {
-  v: 1;
-  /** authorId → 읽은 시각(ms) */
+  v: 2;
+  /** workId → 읽은 시각(ms) */
   read: Record<string, number>;
-  /** authorId → 담은 시각(ms) */
+  /** workId → 담은 시각(ms) */
   want: Record<string, number>;
 }
 
 export function emptyPersonal(): PersonalState {
-  return { v: 1, read: {}, want: {} };
+  return { v: 2, read: {}, want: {} };
 }
 
-/** 알려진 작가 ID 만 남긴다 — 공유 링크와 저장소는 **시스템 경계**다. 조작된
+/** 알려진 작품 ID 만 남긴다 — 공유 링크와 저장소는 **시스템 경계**다. 조작된
  *  `?sky=` 가 읽음 수를 부풀리거나 쓰레기를 localStorage 에 굳히지 않도록. */
 function onlyKnown(p: PersonalState, known?: ReadonlySet<string>): PersonalState {
   if (!known) return p;
   const pick = (m: Record<string, number>): Record<string, number> =>
     Object.fromEntries(Object.entries(m).filter(([id]) => known.has(id)));
-  return { v: 1, read: pick(p.read), want: pick(p.want) };
+  return { v: 2, read: pick(p.read), want: pick(p.want) };
 }
 
 export function loadPersonal(known?: ReadonlySet<string>): PersonalState {
@@ -36,8 +41,8 @@ export function loadPersonal(known?: ReadonlySet<string>): PersonalState {
     const raw = localStorage.getItem(KEY);
     if (!raw) return emptyPersonal();
     const p = JSON.parse(raw) as PersonalState;
-    if (p.v !== 1 || typeof p.read !== "object") return emptyPersonal();
-    return onlyKnown({ v: 1, read: p.read ?? {}, want: p.want ?? {} }, known);
+    if (p.v !== 2 || typeof p.read !== "object") return emptyPersonal();
+    return onlyKnown({ v: 2, read: p.read ?? {}, want: p.want ?? {} }, known);
   } catch {
     return emptyPersonal();
   }
@@ -51,11 +56,46 @@ export function savePersonal(p: PersonalState): void {
   }
 }
 
-/** 읽은 순서 = 표시한 순서. 성좌의 선은 이 순서를 따라 이어진다. */
+/** 읽은 순서 = 표시한 순서(작품). 공유 인코딩과 성장 곡선이 이 순서를 쓴다. */
 export function readOrder(p: PersonalState): string[] {
   return Object.entries(p.read)
     .sort((a, b) => a[1] - b[1])
     .map(([id]) => id);
+}
+
+// ---------------------------------------------------------------------------
+// 파생 — 작가의 하늘은 책 기록의 집계다
+// ---------------------------------------------------------------------------
+
+export interface AuthorSky {
+  /** authorId → 그 작가의 책을 **처음** 읽은 시각. 성좌의 선은 이 순서를 잇는다. */
+  readAt: Map<string, number>;
+  /** 읽고 싶은 책을 담아 둔 작가 — 링 채널 */
+  want: Set<string>;
+}
+
+export function deriveAuthorSky(
+  p: PersonalState,
+  authorOf: (workId: string) => string | undefined
+): AuthorSky {
+  const readAt = new Map<string, number>();
+  for (const [workId, at] of Object.entries(p.read)) {
+    const a = authorOf(workId);
+    if (!a) continue;
+    const cur = readAt.get(a);
+    if (cur === undefined || at < cur) readAt.set(a, at);
+  }
+  const want = new Set<string>();
+  for (const workId of Object.keys(p.want)) {
+    const a = authorOf(workId);
+    if (a) want.add(a);
+  }
+  return { readAt, want };
+}
+
+/** 성좌 선의 작가 순서 — 첫 책을 읽은 시각 순 */
+export function authorReadOrder(sky: AuthorSky): string[] {
+  return [...sky.readAt.entries()].sort((a, b) => a[1] - b[1]).map(([id]) => id);
 }
 
 // ---------------------------------------------------------------------------
@@ -78,9 +118,21 @@ export function decodeShare(code: string, known?: ReadonlySet<string>): Personal
     const params = new URLSearchParams(txt);
     const out = emptyPersonal();
     let t = 1;
-    for (const id of (params.get("r") ?? "").split(",").filter(Boolean)) out.read[id] = t++;
-    for (const id of (params.get("w") ?? "").split(",").filter(Boolean)) out.want[id] = t++;
-    return onlyKnown(out, known);
+    let carried = 0;
+    for (const id of (params.get("r") ?? "").split(",").filter(Boolean)) {
+      out.read[id] = t++;
+      carried++;
+    }
+    for (const id of (params.get("w") ?? "").split(",").filter(Boolean)) {
+      out.want[id] = t++;
+      carried++;
+    }
+    const kept = onlyKnown(out, known);
+    // ID 를 실었는데 아는 것이 하나도 없으면 — v1(작가 단위) 링크나 조작 —
+    // 빈 "공유 성좌"를 여는 대신 링크 자체를 무효로 본다.
+    if (carried > 0 && !Object.keys(kept.read).length && !Object.keys(kept.want).length)
+      return null;
+    return kept;
   } catch {
     return null;
   }
@@ -93,6 +145,9 @@ export function decodeShare(code: string, known?: ReadonlySet<string>): Personal
 // 하나의 숫자로 굳힌 것이었고, 테스트로 고정했다고 정당해지지 않는다(외부 리뷰
 // 지적 ④, 전면 수용). 갈래를 병렬로 보여주고 방향은 독자가 고른다 —
 // 관측층을 독자가 켜는 것과 같은 원칙이다.
+//
+// v2: 입력은 파생된 작가 하늘이다 — 갈래는 작가를 제안하지만, 그 근거가 되는
+// 기록은 책에 있다("『소송』을 담아 두었다").
 // ---------------------------------------------------------------------------
 
 export interface Recommendation {
@@ -122,17 +177,19 @@ const REL_WEIGHT: Record<string, number> = {
 export interface TrackLabels {
   region: (id: string) => string;
   language: (code: string) => string;
+  /** 담아 둔 책의 근거 문장 — 없으면 담음을 근거로 쓰지 않는다 */
+  wanted?: (authorId: string) => string | null;
 }
 
 export function recommendTracks(
-  p: PersonalState,
+  sky: AuthorSky,
   authors: Author[],
   relations: Relation[],
   difficultyOf: (a: Author) => number,
   label: TrackLabels,
   perTrack = 3
 ): Track[] {
-  const read = new Set(Object.keys(p.read));
+  const read = new Set(sky.readAt.keys());
   if (!read.size) return [];
   const byId = new Map(authors.map((a) => [a.id, a]));
 
@@ -167,7 +224,10 @@ export function recommendTracks(
     const names = [...t.via].slice(0, 2).map((x) => byId.get(x)?.names.ko ?? x);
     return `${names.join("·")}${t.via.size > 2 ? " 외" : ""}`;
   };
-  const wanted = (id: string): string[] => (p.want[id] ? ["읽고 싶은 별로 담아 두었다"] : []);
+  const wanted = (id: string): string[] => {
+    if (!sky.want.has(id)) return [];
+    return [label.wanted?.(id) ?? "읽고 싶은 책을 담아 두었다"];
+  };
 
   // 갈래는 각자의 질문에 각자의 순위로 답한다 — 점수를 합치지 않는다. 다만
   // **같은 세 이름이 세 갈래에 나란히 서면** 갈래가 셋이라는 말이 거짓으로
@@ -237,7 +297,7 @@ export function recommendTracks(
   return tracks.filter((t) => t.items.length > 0);
 }
 
-/** 성좌의 성장 — 표시한 시각 순서대로 누적 개수 */
+/** 성좌의 성장 — 표시한 시각 순서대로 누적 권수 */
 export function growth(p: PersonalState): Array<{ at: number; n: number }> {
   const ts = Object.values(p.read).sort((a, b) => a - b);
   return ts.map((at, i) => ({ at, n: i + 1 }));

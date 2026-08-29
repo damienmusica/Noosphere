@@ -14,14 +14,15 @@ import {
   type LensResult
 } from "./lenses.ts";
 import { RELATION_COLORS } from "../theme.ts";
-import { OrbitCard, type SkyMembership } from "./components/OrbitCard.tsx";
+import { OrbitCard, WorkMarks, type SkyMembership } from "./components/OrbitCard.tsx";
 import { WorkSheet } from "./components/WorkSheet.tsx";
 import {
+  authorReadOrder,
   decodeShare,
+  deriveAuthorSky,
   encodeShare,
   emptyPersonal,
   loadPersonal,
-  readOrder,
   recommendTracks,
   savePersonal,
   type PersonalState
@@ -152,6 +153,15 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
   const artRef = useRef<ArtManifest | null>(null);
 
   const byId = useMemo(() => new Map(dataset.authors.map((a) => [a.id, a])), [dataset]);
+  /** 작품 → 작가. 개인 기록은 책에 붙고(v2), 작가의 별은 여기서 파생된다. */
+  const workAuthor = useMemo(
+    () => new Map(dataset.works.map((w) => [w.id, w.authorId])),
+    [dataset]
+  );
+  const sky = useMemo(
+    () => deriveAuthorSky(personal, (id) => workAuthor.get(id)),
+    [personal, workAuthor]
+  );
   const searchIndex = useMemo(() => buildSearchIndex(dataset.authors), [dataset]);
   const hits = useMemo(
     () => (query.trim() ? searchAuthors(searchIndex, query, 7) : []),
@@ -170,7 +180,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
 
   useEffect(() => {
     loadArtManifest().then(setArt);
-    const known = new Set(dataset.authors.map((x) => x.id));
+    const known = new Set(dataset.works.map((x) => x.id));
     const p = new URLSearchParams(location.search).get("sky");
     if (p) {
       const s = decodeShare(p, known);
@@ -273,10 +283,10 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       relations: dataset.relations,
       positions,
       movementLabel: (id) => dataset.movements.find((m) => m.id === id)?.ko ?? id,
-      readOrder: readOrder(personal),
-      wantIds: Object.keys(personal.want)
+      readOrder: authorReadOrder(sky),
+      wantIds: [...sky.want]
     });
-  }, [lensId, dataset, positions, personal]);
+  }, [lensId, dataset, positions, sky]);
 
   // 자기 성좌 — **선 다이어트** (CPO 2026-08-24): 관련성은 이름이 말한다.
   // 이웃 전원은 이름표(lit)로 서고, 실은 **지목한 별 하나**에만 걸린다 — 그
@@ -523,8 +533,8 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       landedId,
       year,
       lens,
-      read: new Set(Object.keys(personal.read)),
-      want: new Set(Object.keys(personal.want)),
+      read: new Set(sky.readAt.keys()),
+      want: new Set(sky.want),
       selectedWorkId: workId,
       reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
       ego: ego.lines,
@@ -537,7 +547,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
       lensGroupFocus: linked ? new Set(linked.memberIds) : null,
       lensRelationGroups: lensDef?.kind === "relation"
     });
-  }, [focusId, landedId, year, lens, personal, workId, ego, groupFocus, groupPin]);
+  }, [focusId, landedId, year, lens, sky, workId, ego, groupFocus, groupPin]);
 
   const lensDef = lensId ? LENSES.find((l) => l.id === lensId) : undefined;
   // 누른 것이 얹은 것을 이긴다 — 누름은 손을 떼도 남는 판정이기 때문이다
@@ -634,11 +644,19 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
 
   const tracks = useMemo(
     () =>
-      recommendTracks(personal, dataset.authors, dataset.relations, (a) => a.difficulty, {
+      recommendTracks(sky, dataset.authors, dataset.relations, (a) => a.difficulty, {
         region: (id: string) => regionLabel(id, "ko"),
-        language: (code: string) => languageLabel(code, "ko")
+        language: (code: string) => languageLabel(code, "ko"),
+        // 갈래는 작가를 제안하지만 근거가 되는 기록은 책에 있다 — 어느 책을
+        // 담아 두었는지까지 말해야 파생이 정직하다.
+        wanted: (aid: string) => {
+          const w = dataset.works
+            .filter((x) => x.authorId === aid && personal.want[x.id])
+            .sort((x, y) => (personal.want[x.id] ?? 0) - (personal.want[y.id] ?? 0))[0];
+          return w ? `『${w.titleKo}』를 담아 두었다` : null;
+        }
       }),
-    [personal, dataset]
+    [sky, personal, dataset]
   );
 
   /** 착륙지 준비 = **명시적 검증 상태**(data/depth-readiness.json). 자산 파일의
@@ -879,7 +897,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
         <section className="u-mine">
           <h2>나의 성좌</h2>
           <p>
-            읽음 <strong>{readCount}</strong> · 읽고 싶음 <strong>{Object.keys(personal.want).length}</strong>
+            읽음 <strong>{readCount}</strong>권 · 읽고 싶음 <strong>{Object.keys(personal.want).length}</strong>권
           </p>
           {tracks.length ? (
             <div className="u-tracks" data-testid="tracks">
@@ -912,7 +930,7 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
               ))}
             </div>
           ) : (
-            <p className="u-mine__empty">별을 읽음으로 표시하면 다음 독서를 여기서 제안한다.</p>
+            <p className="u-mine__empty">책을 읽음으로 표시하면 다음 독서를 여기서 제안한다.</p>
           )}
           {readCount > 0 && (
             <button
@@ -1031,10 +1049,9 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
             return { px: starPixels(m), color: PERIOD_TINT[periodOf(focus)], magnitude: m };
           })()}
           skies={skiesOf(focus.id)}
-          read={Boolean(personal.read[focus.id])}
-          want={Boolean(personal.want[focus.id])}
-          onToggleRead={() => toggle("read", focus.id)}
-          onToggleWant={() => toggle("want", focus.id)}
+          workRead={(id) => Boolean(personal.read[id])}
+          workWant={(id) => Boolean(personal.want[id])}
+          onToggleWork={(kind, id) => toggle(kind, id)}
           onLand={() => setPendingLand(focus.id)}
           onGoto={(id) => {
             // 손끝에는 얹는 동작이 없다 — 첫 탭이 지목, 같은 행의 두 번째
@@ -1093,6 +1110,12 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
                     <span className="u-year">{w.year}</span>
                     {art?.covers?.[w.id] ? <span className="u-tag">초판</span> : null}
                   </button>
+                  <WorkMarks
+                    read={Boolean(personal.read[w.id])}
+                    want={Boolean(personal.want[w.id])}
+                    readOnly={Boolean(shared)}
+                    onToggle={(kind) => toggle(kind, w.id)}
+                  />
                   {workId === w.id && (
                     <WorkSheet
                       id={`u-work-${w.id}`}

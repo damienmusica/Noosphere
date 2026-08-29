@@ -308,19 +308,22 @@ check("같은 행을 다시 누르면 그 별로 옮겨 간다", after !== null 
 const arrived = await page.evaluate(() => {
   const card = document.querySelector(".u-card");
   const head = card?.querySelector("h2");
-  const land = card?.querySelector('[data-testid="land"], .u-card__acts');
+  // 문 조항은 문이 있는 카드의 것이다. v2 에서 작가 단위 버튼이 사라졌으므로
+  // 미준비 궤도의 카드 머리에는 문이 없다 — 그것이 3단 계약("준비 완료 →
+  // 착륙 CTA")의 정직한 모습이고, 그 카드의 다음 행동은 읽어 내려가는 것이다.
+  const land = card?.querySelector('[data-testid="land"]');
   const cr = card?.getBoundingClientRect();
   const hr = head?.getBoundingClientRect();
   const lr = land?.getBoundingClientRect();
   return {
     scrollTop: card?.scrollTop ?? -1,
     headVisible: Boolean(hr && cr && hr.top >= cr.top - 1 && hr.bottom <= cr.bottom + 1),
-    actsVisible: Boolean(lr && cr && lr.top >= cr.top - 1 && lr.top <= cr.bottom)
+    doorVisible: land ? Boolean(lr && cr && lr.top >= cr.top - 1 && lr.top <= cr.bottom) : null
   };
 });
-check("도착한 카드는 맨 위에서 시작한다 — 이름과 문이 접힘선 위에 있다",
-  arrived.scrollTop === 0 && arrived.headVisible && arrived.actsVisible,
-  `scrollTop ${arrived.scrollTop} · 이름 ${arrived.headVisible} · 행동 ${arrived.actsVisible}`);
+check("도착한 카드는 맨 위에서 시작한다 — 이름이, 문이 있다면 문도, 접힘선 위에 있다",
+  arrived.scrollTop === 0 && arrived.headVisible && arrived.doorVisible !== false,
+  `scrollTop ${arrived.scrollTop} · 이름 ${arrived.headVisible} · 문 ${arrived.doorVisible ?? "없는 궤도"}`);
 
 // 하늘의 이웃 별: 착륙하지 않은 궤도에서도 첫 탭은 지목이다
 await page.evaluate(() => window.__universe.focus("franz-kafka"));
