@@ -281,14 +281,18 @@ for (const a of SLICE) {
     m.skyLabels >= 4 && m.crustAuthorLabels === 0,
     `하늘 ${m.skyLabels} · 슬립 단 작가 ${m.crustAuthorLabels}`);
 
-  // 준비되지 않은 작가는 **구로 분해되지 않는다** — 항성 + 궤도 아카이브.
-  // (변이 스윕이 이 계약의 부재를 적발했다, 2026-08-20)
+  // R13-g 개정: **모든 별은 다가가면 몸이 있다.** 이전 조항("미준비 작가는
+  // 구로 분해되지 않는다", 2026-08-20)은 무늬 없는 구의 실망을 막으려던
+  // 것인데, 문 0 4차가 반대편을 물었다 — 빛나는 별에 몸이 없는 것이 더 큰
+  // 실망이다. 몸은 갈린다: 준비된 별 = 육필 지각, 미준비 별 = 광구(자기 빛).
+  // 지어낸 지각이 아니라는 경계는 crustPainted 로 잰다.
   if (a.landable) {
     check("준비된 작가는 천체로 분해된다", m.bodies >= 1 && m.orbitArchive === false,
       `bodies=${m.bodies} orbitArchive=${m.orbitArchive}`);
   } else {
-    check("미준비 작가는 항성으로 남는다", m.bodies === 0 && m.orbitArchive === true,
-      `bodies=${m.bodies} orbitArchive=${m.orbitArchive}`);
+    check("미준비 작가도 몸이 있다 — 광구, 지각은 아니다",
+      m.bodies >= 1 && m.resolvedPhoto >= 1 && m.crustPainted === 0 && m.orbitArchive === true,
+      `bodies=${m.bodies} photo=${m.resolvedPhoto} crust=${m.crustPainted} archive=${m.orbitArchive}`);
   }
 
   // 4. 궤도 카드: 착륙 전에도 최소 정보가 전부 있다 (정전화 편향 방지 계약)
@@ -482,6 +486,45 @@ for (const a of SLICE) {
   check("작품 의의", (await orbit.locator(".u-works__sig").count()) >= 3);
   check("난도 사유", ((await orbit.locator(".u-card__diff").first().textContent()) ?? "").includes("난도"));
 
+  // ——— 카드 다이어트 (R13-g, 문 0 4차: "긴 나무위키성 때려박기 덩어리") ———
+  // 카드는 계기판으로 열린다 — 기록 전체는 DOM 에 있되(위 계약들이 그 텍스트를
+  // 읽는다), 화면의 산문은 전부 지목·접힘의 응답이다. 커서를 하늘로 치워
+  // 우연한 지목을 지운 뒤 잰다.
+  await page.mouse.move(700, 90);
+  await page.waitForTimeout(150);
+  const proseVis = await page.evaluate(() => {
+    const vis = (sel) =>
+      [...document.querySelectorAll(sel)].filter((el) => getComputedStyle(el).display !== "none").length;
+    return { why: vis(".u-card__why-full"), work: vis(".u-card .u-works__prose"), rel: vis(".u-card .u-rel__why") };
+  });
+  check("카드는 계기판으로 열린다 — 펼쳐진 산문 0", proseVis.why + proseVis.work + proseVis.rel === 0,
+    JSON.stringify(proseVis));
+  await card.locator(".u-card__why-toggle").click();
+  await page.waitForTimeout(120);
+  check("해설 전문은 접힘의 응답이다", await page.evaluate(() => {
+    const el = document.querySelector(".u-card__why-full");
+    return Boolean(el) && getComputedStyle(el).display !== "none" && (el.textContent ?? "").length > 80;
+  }));
+  await card.locator(".u-card__why-toggle").click();
+  await card.locator(".u-works__toggle").first().click();
+  await page.waitForTimeout(120);
+  const workVis = await page.evaluate(() =>
+    [...document.querySelectorAll(".u-card .u-works__prose")].filter((el) => getComputedStyle(el).display !== "none").length
+  );
+  check("작품 산문은 행의 응답 — 한 번에 하나", workVis === 1, `펼침 ${workVis}`);
+  await card.locator('[data-testid="orbit-relations"] li button').first().hover();
+  await page.waitForTimeout(150);
+  const relVis = await page.evaluate(() =>
+    [...document.querySelectorAll(".u-card .u-rel__why")].filter((el) => getComputedStyle(el).display !== "none").length
+  );
+  check("관계의 왜는 지목의 응답 — 한 번에 하나", relVis === 1, `펼침 ${relVis}`);
+  // 다이어트 검사가 카드를 스크롤시켰다 — 다음 계약(착륙 문 뷰포트)은 도착
+  // 직후의 카드를 재므로 첫 화면으로 되돌린다. 접은 것도 되접는다.
+  await page.mouse.move(700, 90);
+  await card.locator(".u-works__toggle").first().click();
+  await page.evaluate(() => document.querySelector(".u-card")?.scrollTo(0, 0));
+  await page.waitForTimeout(120);
+
   // 6. 착륙 게이트 — 준비되지 않은 표면에는 내려앉지 않는다
   const landCount = await page.locator('[data-testid="land"]').count();
   check(`착륙 문 ${a.landable ? "열림" : "닫힘"}`, landCount === (a.landable ? 1 : 0));
@@ -500,6 +543,8 @@ for (const a of SLICE) {
     m = await metrics();
     check("표면 단계", m.stage === "surface", `stage=${m.stage} dist=${m.dist}`);
     check("지각 = 육필 원고", m.crust === a.crust, `crust=${m.crust}`);
+    check("착륙하면 서가는 회랑이 된다 — 위성은 표면 위를 돌지 않는다",
+      m.satSlabs === 0, `slabs=${m.satSlabs}`);
     check("착륙해도 하늘이 남는다", m.stars > 20, `stars=${m.stars}`);
     check("착륙한 천체의 관계선은 표면에서 퇴장한다", m.linesTouchingLanded === 0,
       `닿는 선 ${m.linesTouchingLanded}`);

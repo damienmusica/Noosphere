@@ -13,7 +13,7 @@
 // 2026-08-24)로 2단이 열렸다: 권리 확인된 **서명**은 실물 기록이고, 창작성 문턱
 // 아래라 사망 연도와 무관하게 쓸 수 있다. 지금 1단 3인 · 2단 59인 · 4단 38인.
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Author, Relation, Work } from "../../types.ts";
 import { artUrl, type ArtManifest, type AssetProvenance } from "../../globe/art-assets.ts";
 import { periodOf } from "../grammar.ts";
@@ -289,6 +289,41 @@ export function OrbitCard(p: OrbitCardProps) {
     .sort((x, y) => x.year - y.year);
   const covers = p.works.filter((w) => p.art?.covers?.[w.id]).length;
 
+  // 카드 다이어트 (R13-g, 문 0 4차: "긴 나무위키성 때려박기 덩어리들") —
+  // 카드는 계기판으로 열리고, 산문은 **지목의 응답**이다. 기록 전체는 DOM 에
+  // 그대로 실려 있되(카드가 곧 기록이다 — 계약·스크린리더·검색이 읽는다),
+  // 화면에는 펼친 것만 선다. 한 번에 하나: 작품 하나, 관계 하나.
+  const [whyOpen, setWhyOpen] = useState(false);
+  const [openWork, setOpenWork] = useState<string | null>(null);
+  const [activeRel, setActiveRel] = useState<string | null>(null);
+  const whyFirst = a.importanceReason.match(/^.*?다\./)?.[0] ?? a.importanceReason;
+
+  const workRow = (w: Work, entry: boolean) => (
+    <li key={w.id} className={w.id === a.readingEntry ? "is-entry" : ""}>
+      <div className="u-works__head">
+        <button
+          className="u-works__toggle"
+          aria-expanded={openWork === w.id}
+          onClick={() => setOpenWork(openWork === w.id ? null : w.id)}
+        >
+          <strong>{w.titleKo}</strong>
+          <span className="u-year">{w.year}</span>
+          {p.art?.covers?.[w.id] ? <span className="u-tag">초판</span> : null}
+        </button>
+        <WorkMarks
+          read={p.workRead(w.id)}
+          want={p.workWant(w.id)}
+          readOnly={p.readOnly}
+          onToggle={(kind) => p.onToggleWork(kind, w.id)}
+        />
+      </div>
+      <div className="u-works__prose" hidden={openWork !== w.id}>
+        {entry ? <p className="u-card__entry-why">{a.readingEntryReason}</p> : null}
+        <p className="u-works__sig">{w.significance}</p>
+      </div>
+    </li>
+  );
+
   return (
     <aside className="u-card" data-author={a.id} aria-label={`${a.names.ko} 궤도 정보`} tabIndex={-1}>
       <button className="u-card__close" onClick={p.onClose} aria-label="닫기">
@@ -349,7 +384,21 @@ export function OrbitCard(p: OrbitCardProps) {
         )}
       </p>
 
-      <p className="u-card__why">{a.importanceReason}</p>
+      {/* 해설은 첫 문장이 계기고, 전문은 접힘의 응답이다. 전문은 hidden 으로
+          DOM 에 늘 실려 있다 — 카드가 곧 기록이라는 계약(길이·내용 대조)은
+          펼치지 않고도 읽는다. */}
+      <div className="u-card__why" data-open={whyOpen ? "1" : "0"}>
+        <button
+          className="u-card__why-toggle"
+          aria-expanded={whyOpen}
+          onClick={() => setWhyOpen(!whyOpen)}
+        >
+          {whyOpen ? "접기" : <>{whyFirst} <em className="u-fold">더 읽기</em></>}
+        </button>
+        <p className="u-card__why-full" hidden={!whyOpen}>
+          {a.importanceReason}
+        </p>
+      </div>
 
       {p.skies.length ? (
         <p className="u-card__skies">
@@ -367,42 +416,11 @@ export function OrbitCard(p: OrbitCardProps) {
       {/* 궤도 관측 — 착륙하지 않아도 이 작가를 읽을 수 있는 전부 */}
       <div className="u-card__reading" data-testid="orbit-reading">
         <h3>입문 순서 {ordered.length}</h3>
-        <ol>
-          {ordered.map((w, i) => (
-            <li key={w.id} className={w.id === a.readingEntry ? "is-entry" : ""}>
-              <strong>{w.titleKo}</strong>
-              <span className="u-year">{w.year}</span>
-              {p.art?.covers?.[w.id] ? <span className="u-tag">초판</span> : null}
-              <WorkMarks
-                read={p.workRead(w.id)}
-                want={p.workWant(w.id)}
-                readOnly={p.readOnly}
-                onToggle={(kind) => p.onToggleWork(kind, w.id)}
-              />
-              {i === 0 ? <p className="u-card__entry-why">{a.readingEntryReason}</p> : null}
-              <p className="u-works__sig">{w.significance}</p>
-            </li>
-          ))}
-        </ol>
+        <ol>{ordered.map((w, i) => workRow(w, i === 0))}</ol>
         {rest.length ? (
           <div className="u-card__rest" data-testid="orbit-rest">
             <h3>그 밖의 작품 {rest.length}</h3>
-            <ul>
-              {rest.map((w) => (
-                <li key={w.id}>
-                  <strong>{w.titleKo}</strong>
-                  <span className="u-year">{w.year}</span>
-                  {p.art?.covers?.[w.id] ? <span className="u-tag">초판</span> : null}
-                  <WorkMarks
-                    read={p.workRead(w.id)}
-                    want={p.workWant(w.id)}
-                    readOnly={p.readOnly}
-                    onToggle={(kind) => p.onToggleWork(kind, w.id)}
-                  />
-                  <p className="u-works__sig">{w.significance}</p>
-                </li>
-              ))}
-            </ul>
+            <ul>{rest.map((w) => workRow(w, false))}</ul>
           </div>
         ) : null}
         {a.readingWarning ? (
@@ -432,13 +450,31 @@ export function OrbitCard(p: OrbitCardProps) {
                   data-relation={rel.id}
                   data-direction={glyph}
                   data-evidence={rel.evidenceLevel}
+                  data-active={activeRel === rel.id ? "1" : "0"}
                 >
                   <button
-                    onClick={() => p.onGoto(other.id)}
-                    onMouseEnter={() => p.onPeek(other.id)}
-                    onFocus={() => p.onPeek(other.id)}
-                    onMouseLeave={() => p.onPeek(null)}
-                    onBlur={() => p.onPeek(null)}
+                    onClick={() => {
+                      setActiveRel(rel.id);
+                      p.onGoto(other.id);
+                    }}
+                    onMouseEnter={() => {
+                      setActiveRel(rel.id);
+                      p.onPeek(other.id);
+                    }}
+                    onFocus={() => {
+                      setActiveRel(rel.id);
+                      p.onPeek(other.id);
+                    }}
+                    onMouseLeave={() => {
+                      // 지목이 끝나면 왜도 물러난다 — 손끝은 남고(다음 지목이
+                      // 갈아끼움), 마우스는 떠나는 순간이 끝이다.
+                      setActiveRel((cur) => (cur === rel.id ? null : cur));
+                      p.onPeek(null);
+                    }}
+                    onBlur={() => {
+                      setActiveRel((cur) => (cur === rel.id ? null : cur));
+                      p.onPeek(null);
+                    }}
                   >
                     <span className="u-rel__glyph" aria-label={GLYPH_KO[glyph]}>
                       {glyph}

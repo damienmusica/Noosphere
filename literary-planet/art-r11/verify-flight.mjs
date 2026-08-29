@@ -462,7 +462,9 @@ await page.goto(url("?lens=movement"), { waitUntil: "load" });
 await page.waitForFunction(() => window.__universe !== undefined);
 await settle(1400);
 const aimedK = await steer("franz-kafka");
-for (let i = 0; i < 14 && !(await metrics()).bodies; i++) {
+// R13-g 이후 bodies 는 항로의 행인 광구에도 오르므로, 정지 조건은 카프카
+// 자신의 해상 — 지각이 칠해질 때까지다(지각은 착륙 가능 별의 것뿐이다).
+for (let i = 0; i < 22 && !(await metrics()).crustPainted; i++) {
   await roll(1);
   await settle(220);
   await steer("franz-kafka", 44);
@@ -1151,6 +1153,51 @@ console.log(`\n내부 심사의 수리`);
     const mmB = await metrics();
     check("미준비 별의 코앞에서 칩은 접근이다 (스트립과 모순되지 않는다)",
       mmB.stage === "approach", `stage=${mmB.stage} d=${Math.round(mmB.nearest[1])}`);
+    // ——— R13-g: 모든 별은 다가가면 몸이 있고, 몸 둘레를 작품이 돈다 ———
+    // (문 0 4차: "다른 빛나는 별들도 확대하면 행성 본체가 나와야" · "탐색과
+    // 탐험 과정에서 유기적으로 자연스럽게 정보들을 접할 수 있어야")
+    check("미준비 별도 다가가면 몸이 있다 — 광구로 해상",
+      mmB.bodies >= 1 && mmB.resolvedPhoto >= 1,
+      `bodies=${mmB.bodies} photo=${mmB.resolvedPhoto}`);
+    check("광구는 지각이 아니다 — 검수 전 표면을 지어내지 않는다",
+      mmB.crustPainted === 0, `crust=${mmB.crustPainted}`);
+    check("몸 둘레를 그 작가의 작품들이 돈다 (궤도의 서가)",
+      mmB.satSlabs >= 3 && mmB.satWorks.length >= 3 &&
+        mmB.satWorks.every((w) => w.startsWith("jorge-luis-borges--")),
+      `${mmB.satSlabs}권 · ${mmB.satWorks[0] ?? "없음"}`);
+    // 위성 위의 커서에 계기가 그 작품으로 응답한다 — 정보는 카드가 아니라
+    // 세계가 나른다. 기록(읽고 싶음)도 그 자리에서 이뤄진다.
+    const w0 = mmB.satWorks[0];
+    let wq = null;
+    for (let i = 0; i < 10 && !wq; i++) {
+      wq = await page.evaluate((x) => window.__universe.projectWork(x), w0);
+      if (!wq) await drag(240, 0);
+    }
+    check("책등이 화면에 있다 (응답 계약의 전제)", Boolean(wq), w0 ?? "없음");
+    if (wq) {
+      await page.mouse.move(wq[0], wq[1]);
+      await page.waitForTimeout(350);
+      const stripN = await page.locator('[data-testid="approach-work"]').count();
+      const stripTxt = stripN
+        ? (await page.locator('[data-testid="approach-work"]').textContent()) ?? ""
+        : "";
+      const hovered = (await metrics()).hoverWork;
+      check("위성 위의 커서에 계기가 그 작품으로 응답한다",
+        stripN === 1 && stripTxt.length > 20 && hovered === w0,
+        `${stripTxt.trim().slice(0, 26)} · hover=${hovered}`);
+      const wantBtn = page
+        .locator('[data-testid="approach-work"] .u-wmark button')
+        .filter({ hasText: "읽고 싶음" })
+        .first();
+      await wantBtn.click();
+      await page.waitForTimeout(250);
+      const stored = await page.evaluate(() => {
+        try { return JSON.parse(localStorage.getItem("lp.universe.personal.v2") ?? "null"); } catch { return null; }
+      });
+      check("스트립의 담기가 작품 ID 로 저장된다 (기록은 세계에서)",
+        typeof stored?.want?.[w0] === "number", w0);
+      await page.evaluate(() => localStorage.removeItem("lp.universe.personal.v2"));
+    }
   } else {
     check("칩-접근 계약을 잴 보르헤스가 보인다", false, "없음");
   }
