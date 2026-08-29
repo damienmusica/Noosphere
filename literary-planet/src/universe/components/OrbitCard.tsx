@@ -25,6 +25,39 @@ export interface SkyMembership {
   group: string;
 }
 
+/** 책 한 권의 개인 기록(v2) — 궤도 카드와 착륙 서가가 같은 표면을 쓴다.
+ *  읽음이 켜지면 같은 책의 담음은 지워진다(규칙은 토글 핸들러 쪽에 있다). */
+export function WorkMarks(p: {
+  read: boolean;
+  want: boolean;
+  readOnly: boolean;
+  onToggle(kind: "read" | "want"): void;
+}) {
+  const hint = p.readOnly
+    ? "다른 독자의 성좌를 보는 중 — 내 성좌로 복사한 뒤 표시할 수 있다"
+    : undefined;
+  return (
+    <span className="u-wmark" data-testid="work-marks">
+      <button
+        className={p.read ? "is-on" : ""}
+        disabled={p.readOnly}
+        title={hint}
+        onClick={() => p.onToggle("read")}
+      >
+        {p.read ? "읽음 ✓" : "읽음"}
+      </button>
+      <button
+        className={p.want ? "is-on" : ""}
+        disabled={p.readOnly}
+        title={hint}
+        onClick={() => p.onToggle("want")}
+      >
+        {p.want ? "담아 둠" : "읽고 싶음"}
+      </button>
+    </span>
+  );
+}
+
 export interface OrbitCardProps {
   author: Author;
   works: Work[];
@@ -40,10 +73,10 @@ export interface OrbitCardProps {
   skies: SkyMembership[];
   /** 하늘에 그려지는 그 별의 실제 값 — 미해상 기록이 같은 값으로 다시 그린다 */
   star: { px: number; color: string; magnitude: number };
-  read: boolean;
-  want: boolean;
-  onToggleRead(): void;
-  onToggleWant(): void;
+  /** 개인 기록은 책에 붙는다(v2) — 작가 단위 표시는 없다 */
+  workRead(id: string): boolean;
+  workWant(id: string): boolean;
+  onToggleWork(kind: "read" | "want", id: string): void;
   onLand(): void;
   onGoto(id: string): void;
   /** 관계 행에 얹거나 포커스가 가면 그 별을 지목한다 — 하늘에 실 한 가닥이
@@ -291,30 +324,16 @@ export function OrbitCard(p: OrbitCardProps) {
       </header>
 
       {/* 문은 접힘선 위에 있어야 한다 — 긴 궤도 관측 아래로 내려가면 R9 의
-          "자동 스크롤이 발견을 제조한다" 함정이 그대로 재현된다 */}
-      <div className="u-card__acts">
-        <button
-          className={`u-btn ${p.read ? "is-on" : ""}`}
-          onClick={p.onToggleRead}
-          disabled={p.readOnly}
-          title={p.readOnly ? "다른 독자의 성좌를 보는 중 — 내 성좌로 복사한 뒤 표시할 수 있다" : undefined}
-        >
-          {p.read ? "읽음 ✓" : "읽음 표시"}
-        </button>
-        <button
-          className={`u-btn ${p.want ? "is-on" : ""}`}
-          onClick={p.onToggleWant}
-          disabled={p.readOnly}
-          title={p.readOnly ? "다른 독자의 성좌를 보는 중 — 내 성좌로 복사한 뒤 담을 수 있다" : undefined}
-        >
-          {p.want ? "궤도에 있음" : "읽고 싶음"}
-        </button>
-        {p.landable ? (
+          "자동 스크롤이 발견을 제조한다" 함정이 그대로 재현된다.
+          읽음·읽고 싶음은 여기 없다 — "카프카를 읽었다"는 어느 책인지 말하지
+          못하는 주장이라, 기록은 아래 작품 행마다 붙는다(v2). */}
+      {p.landable ? (
+        <div className="u-card__acts">
           <button className="u-btn u-btn--land" onClick={p.onLand} data-testid="land">
             착륙
           </button>
-        ) : null}
-      </div>
+        </div>
+      ) : null}
 
       <p className="u-card__ready" data-testid="readiness">
         {p.landable ? (
@@ -354,6 +373,12 @@ export function OrbitCard(p: OrbitCardProps) {
               <strong>{w.titleKo}</strong>
               <span className="u-year">{w.year}</span>
               {p.art?.covers?.[w.id] ? <span className="u-tag">초판</span> : null}
+              <WorkMarks
+                read={p.workRead(w.id)}
+                want={p.workWant(w.id)}
+                readOnly={p.readOnly}
+                onToggle={(kind) => p.onToggleWork(kind, w.id)}
+              />
               {i === 0 ? <p className="u-card__entry-why">{a.readingEntryReason}</p> : null}
               <p className="u-works__sig">{w.significance}</p>
             </li>
@@ -368,6 +393,12 @@ export function OrbitCard(p: OrbitCardProps) {
                   <strong>{w.titleKo}</strong>
                   <span className="u-year">{w.year}</span>
                   {p.art?.covers?.[w.id] ? <span className="u-tag">초판</span> : null}
+                  <WorkMarks
+                    read={p.workRead(w.id)}
+                    want={p.workWant(w.id)}
+                    readOnly={p.readOnly}
+                    onToggle={(kind) => p.onToggleWork(kind, w.id)}
+                  />
                   <p className="u-works__sig">{w.significance}</p>
                 </li>
               ))}

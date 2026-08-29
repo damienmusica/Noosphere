@@ -913,8 +913,10 @@ for (const a of SLICE) {
 // ——— 개인 성좌: 가장 중요한 발견이라던 것에 증거 경로가 하나도 없었다 ———
 // (모의 심사 지적) 유닛 테스트는 순수 함수만, 프레임은 localStorage 주입만 검사했다.
 // 여기서는 **독자가 실제로 만들 수 있는 경로**로 건다: 표시 → 저장 → 갈래 → 공유.
+// v2 (CPO 2026-08-28): 기록은 책에 붙는다 — "작가를 읽었다"는 어느 책인지 말하지
+// 못한다. 표시는 작품 행에서 하고, 작가의 별은 파생이다.
 {
-  console.log("\n개인 성좌");
+  console.log("\n개인 성좌 — 기록은 책에");
   await page.goto(url(`?lens=movement&a=franz-kafka`), { waitUntil: "load" });
   await page.waitForFunction(() => window.__universe !== undefined);
   await settle();
@@ -922,14 +924,31 @@ for (const a of SLICE) {
     window.__copied = null;
     navigator.clipboard.writeText = (t) => { window.__copied = t; return Promise.resolve(); };
   });
-  const readBtn = page.locator('.u-card__acts button').filter({ hasText: "읽음" }).first();
+  // 작가 단위 표시는 사라졌다 — 카드 행동열에 남는 문은 착륙뿐이다
+  const actTexts = await page.evaluate(() =>
+    [...document.querySelectorAll(".u-card__acts button")].map((b) => b.textContent?.trim() ?? "")
+  );
+  check("카드 머리에 작가 단위 읽음 버튼이 없다", actTexts.every((t) => !t.includes("읽음")),
+    actTexts.join(","));
+  // 카드의 모든 작품 행이 기록 표면을 갖는다
+  const rowCounts = await page.evaluate(() => ({
+    works: document.querySelectorAll(".u-card__reading li").length,
+    marks: document.querySelectorAll(".u-card__reading li [data-testid='work-marks']").length
+  }));
+  check("모든 작품 행에 읽음·읽고 싶음이 선다", rowCounts.works > 0 && rowCounts.marks === rowCounts.works,
+    `${rowCounts.marks}/${rowCounts.works}`);
+  const readBtn = page.locator(".u-card__reading ol li .u-wmark button").filter({ hasText: /^읽음/ }).first();
   await readBtn.click();
   await page.waitForTimeout(300);
-  check("읽음 표시가 켜진다", ((await readBtn.textContent()) ?? "").includes("✓"));
+  check("책의 읽음 표시가 켜진다", ((await readBtn.textContent()) ?? "").includes("✓"));
   const stored = await page.evaluate(() => {
-    try { return JSON.parse(localStorage.getItem("lp.universe.personal.v1") ?? "null"); } catch { return null; }
+    try { return JSON.parse(localStorage.getItem("lp.universe.personal.v2") ?? "null"); } catch { return null; }
   });
-  check("읽음이 이 브라우저에 저장된다 (계정 없이)", typeof stored?.read?.["franz-kafka"] === "number");
+  const storedKeys = Object.keys(stored?.read ?? {});
+  check("읽음이 **작품 ID** 로 저장된다 (계정 없이)",
+    storedKeys.length === 1 && storedKeys[0].startsWith("franz-kafka--") &&
+      typeof stored.read[storedKeys[0]] === "number",
+    storedKeys.join(","));
   const tracks = await page.evaluate(() =>
     [...document.querySelectorAll('[data-testid="tracks"] .u-track')].map((t) => ({
       name: t.querySelector(".u-track__name")?.textContent ?? "",
@@ -956,25 +975,55 @@ for (const a of SLICE) {
     await p2.waitForTimeout(1200);
     check("공유 성좌는 읽기 전용으로 열린다", (await p2.locator(".u-mine__shared").count()) === 1);
     check("공유 성좌는 받는 쪽 브라우저에 저장되지 않는다",
-      (await p2.evaluate(() => localStorage.getItem("lp.universe.personal.v1"))) === null);
+      (await p2.evaluate(() => localStorage.getItem("lp.universe.personal.v2"))) === null);
     const mineTxt = (await p2.locator(".u-mine > p").first().textContent()) ?? "";
     check("공유된 읽음 수가 보인다", /읽음\s*1/.test(mineTxt), mineTxt.trim().slice(0, 30));
     await ctx2.close();
   }
   // 조작된 공유 링크: 모르는 ID 는 세지 않는다 (시스템 경계)
-  const junk = Buffer.from("r=nobody-1,nobody-2,franz-kafka&w=", "utf8").toString("base64")
+  const junk = Buffer.from("r=nobody-1,nobody-2,franz-kafka--die-verwandlung&w=", "utf8").toString("base64")
     .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
   await page.goto(url(`?sky=${junk}`), { waitUntil: "load" });
   await page.waitForFunction(() => window.__universe !== undefined);
   await page.waitForTimeout(800);
   const junkTxt = (await page.locator(".u-mine > p").first().textContent()) ?? "";
   check("조작된 공유 링크의 모르는 ID 는 세지 않는다", /읽음\s*1\b/.test(junkTxt), junkTxt.trim().slice(0, 30));
+  // v1(작가 단위) 링크는 무효다 — 아는 ID 가 하나도 없으면 빈 "공유 성좌"를
+  // 여는 대신 링크를 버리고 내 성좌를 연다
+  const v1 = Buffer.from("r=franz-kafka,natsume-soseki&w=", "utf8").toString("base64")
+    .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  await page.goto(url(`?sky=${v1}`), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await page.waitForTimeout(800);
+  check("v1(작가 단위) 공유 링크는 공유 모드를 열지 않는다",
+    (await page.locator(".u-mine__shared").count()) === 0);
   // 모르는 층 이름은 무시된다 — 빈 #root 로 죽지 않는다
   await page.goto(url(`?lens=bogus&a=franz-kafka`), { waitUntil: "load" });
   await page.waitForFunction(() => window.__universe !== undefined, undefined, { timeout: 8000 }).catch(() => null);
   check("모르는 ?lens= 값에도 앱이 뜬다", (await page.locator(".u-top h1").count()) === 1);
+  // 착륙 서가에도 같은 기록 표면이 선다 — 책 앞에 서 있을 때가 표시할 때다
+  await page.goto(url("?lens=movement&a=franz-kafka&land=1"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await page.waitForFunction(() => document.querySelector(".u-card--landing") !== null, undefined, { timeout: 12000 });
+  await settle();
+  const landRows = await page.evaluate(() => ({
+    works: document.querySelectorAll(".u-card--landing .u-works > li").length,
+    marks: document.querySelectorAll(".u-card--landing .u-works > li [data-testid='work-marks']").length
+  }));
+  check("착륙 서가의 모든 도시 행에 기록 표면이 선다",
+    landRows.works > 0 && landRows.marks === landRows.works, `${landRows.marks}/${landRows.works}`);
+  const wantBtn = page.locator(".u-card--landing .u-works li .u-wmark button")
+    .filter({ hasText: "읽고 싶음" }).first();
+  await wantBtn.click();
+  await page.waitForTimeout(300);
+  const wantStored = await page.evaluate(() => {
+    try { return JSON.parse(localStorage.getItem("lp.universe.personal.v2") ?? "null"); } catch { return null; }
+  });
+  const wantKeys = Object.keys(wantStored?.want ?? {});
+  check("표면에서 담은 책이 작품 ID 로 저장된다",
+    wantKeys.length === 1 && wantKeys[0].startsWith("franz-kafka--"), wantKeys.join(","));
   // 정리 — 다음 실행과 프레임 캡처가 깨끗한 성좌에서 시작하도록
-  await page.evaluate(() => localStorage.removeItem("lp.universe.personal.v1"));
+  await page.evaluate(() => localStorage.removeItem("lp.universe.personal.v2"));
 }
 
 // ---------------------------------------------------------------------------

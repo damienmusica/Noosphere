@@ -90,9 +90,51 @@
 }
 
 .u-btn:focus-visible,
-.u-lens:focus-visible {
+.u-lens:focus-visible,
+.u-wmark button:focus-visible {
   outline: 2px solid var(--brass-bright);
   outline-offset: 2px;
+}
+
+/* ——— 책 한 권의 개인 기록(v2) ——— */
+/* 행마다 서는 조용한 두 칩 — 기록은 책에 붙는다. 제목·연도보다 낮은 대비로,
+   서가의 산문을 밀어내지 않는다. */
+.u-wmark {
+  display: inline-flex;
+  gap: 5px;
+  margin-left: 8px;
+  vertical-align: 1px;
+}
+
+.u-wmark button {
+  font: inherit;
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  /* 칩은 낱말이다 — 좁은 서가 패널에서 "읽고 싶/음"으로 꺾이면 너저분해진다 */
+  white-space: nowrap;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid var(--brass-a35);
+  border-radius: 2px;
+  padding: 1px 7px;
+  cursor: pointer;
+}
+
+.u-wmark button:hover {
+  background: var(--brass-a08);
+  border-color: var(--brass-a55);
+  color: var(--text);
+}
+
+.u-wmark button.is-on {
+  background: var(--brass-a14);
+  border-color: var(--brass-a55);
+  color: var(--text);
+}
+
+.u-wmark button:disabled {
+  opacity: 0.45;
+  cursor: default;
 }
 
 /* ——— 관측층 ——— */
