@@ -89,9 +89,7 @@ const COUNT_KO = {
   unitTests: "유닛 테스트",
   journeyContracts: "여정 계약",
   mutationsFastLaneKilled: "변이 KILLED (고속 레인만)",
-  mutationsFastLaneSurvived: "변이 생존 (고속 레인만)",
-  planetScenesPassed: "출하 행성 앱 QA 씬 통과",
-  planetScenesTotal: "출하 행성 앱 QA 씬"
+  mutationsFastLaneSurvived: "변이 생존 (고속 레인만)"
 };
 
 // 상상 초상의 수는 **세어서** 쓴다. 이전 판은 "101건" 을 리터럴로 박아 뒀는데
