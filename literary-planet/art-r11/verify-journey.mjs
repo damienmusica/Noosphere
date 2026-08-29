@@ -8,7 +8,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { serveDist } from "../qa/lib.mjs";
+import { serveDist } from "./lib.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
@@ -119,6 +119,20 @@ const settle = async (ms = 1500) => {
 };
 const metrics = () => page.evaluate(() => window.__universe.metrics());
 const url = (q) => `${server.origin}/universe.html${q}`;
+
+// ——— 정문 계약 (2026-08-29, CPO): 홈이 곧 성계다 ———
+// 행성 앱(R1–R10)은 은퇴했다. 루트(index.html)가 성계를 열지 않으면 3인
+// 테스트 참가자는 주소만 치고 낡은 정체성에 착륙한다.
+{
+  console.log("\n정문");
+  await page.goto(`${server.origin}/`, { waitUntil: "load" });
+  const alive = await page
+    .waitForFunction(() => window.__universe !== undefined, undefined, { timeout: 9000 })
+    .then(() => true)
+    .catch(() => false);
+  const h1 = alive ? ((await page.locator(".u-top h1").textContent()) ?? "") : "";
+  check("정문이 성계다 — 루트가 성계 앱을 연다", alive && h1.includes("문학의 성계"), h1 || "앱 없음");
+}
 
 for (const a of SLICE) {
   console.log(`\n${a.id}`);

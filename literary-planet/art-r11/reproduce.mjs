@@ -25,10 +25,8 @@ const sh = (cmd) => {
     cmd,
     ok: r.status === 0,
     ms: Date.now() - t0,
-    // `tail` 은 사람이 읽는 실패 요약이고, `out` 은 계수용 전문이다. 행성 앱
-    // QA 는 요약 한 줄을 찍지 않고 씬마다 한 줄씩 찍으므로(qa/capture.mjs)
-    // 마지막 4줄로는 셀 수 없다. `out` 은 리포트에 쓰지 않는다(steps 는
-    // ok·ms 만 남긴다).
+    // `tail` 은 사람이 읽는 실패 요약이고, `out` 은 계수용 전문이다.
+    // `out` 은 리포트에 쓰지 않는다(steps 는 ok·ms 만 남긴다).
     out,
     tail: out.split("\n").slice(-4).join("\n")
   };
@@ -64,13 +62,9 @@ const steps = [
         // 떼어냈다 — 변이 스윕은 계약이 빠를 때만 성립하는 도구다.
         { key: "flight-contract", cmd: "node art-r11/verify-flight.mjs" },
         { key: "frames", cmd: "node art-r11/capture-universe.mjs --out art-r11/frames" },
-        { key: "video", cmd: "node art-r11/record-journey.mjs" },
-        // 출하된 행성 앱(index.html)의 QA. 테제 §⑪ 의 "20/20 씬 · 콘솔 0" 은
-        // 지금까지 이 번들 안의 어떤 산출물로도 뒷받침되지 않았다(artifacts/
-        // 는 gitignore 라 source.zip 에 들어가지 않는다). R11 범위가 index.html
-        // 이 import 하는 공유 모듈(src/globe/labels.ts·art-assets.ts·styles.css)
-        // 을 건드렸으므로, 그 숫자는 주장이 아니라 이 하네스가 재는 값이어야 한다.
-        { key: "planet-qa", cmd: "npm run qa:all" }
+        { key: "video", cmd: "node art-r11/record-journey.mjs" }
+        // planet-qa 레인은 정문 교체(2026-08-29, CPO)와 함께 은퇴했다 —
+        // index.html 이 곧 성계이고, 행성 앱 코드는 git 히스토리에만 남는다.
       ])
 ];
 
@@ -85,15 +79,6 @@ for (const s of steps) {
 const num = (key, re) => {
   const m = (results[key]?.tail ?? "").match(re);
   return m ? Number(m[1]) : null;
-};
-
-// qa/capture.mjs 는 합계 한 줄을 찍지 않는다. 씬마다 `▶ scene <name> — …` 을
-// 열고 `  → <status> · N beats · …` 로 닫으므로, 전문에서 그 두 종류의 줄을
-// 센다. status 가 `passed` 와 `passed-with-gaps` 인 씬이 종료 코드 0 을 만드는
-// 씬(worstExit 은 failed·env-failure 에서만 올라간다)이라 둘 다 통과로 센다.
-const countLines = (key, re) => {
-  const o = results[key]?.out;
-  return o === undefined ? null : (o.match(re) ?? []).length;
 };
 
 const commit = (() => {
@@ -138,9 +123,7 @@ const report = {
     // `mutationsKilled: 29` 가 정본 문서의 전체 스윕 수치(55)와 나란히 인쇄돼
     // 모순으로 읽혔다.
     mutationsFastLaneKilled: num("mutation-fast", /killed (\d+)/),
-    mutationsFastLaneSurvived: num("mutation-fast", /survived (\d+)/),
-    planetScenesPassed: quick ? null : countLines("planet-qa", /^\s*→ passed(?:-with-gaps)? ·/gm),
-    planetScenesTotal: quick ? null : countLines("planet-qa", /^▶ scene /gm)
+    mutationsFastLaneSurvived: num("mutation-fast", /survived (\d+)/)
   },
   steps: Object.fromEntries(Object.entries(results).map(([k, v]) => [k, { ok: v.ok, ms: v.ms }])),
   artifacts: {
@@ -168,7 +151,7 @@ writeFileSync(out, `${JSON.stringify(report, null, 2)}\n`);
 const failed = Object.entries(results).filter(([, r]) => !r.ok);
 console.log(`\ncommit ${commit} · node ${process.version} · ${report.environment.platform}`);
 console.log(
-  `유닛 ${report.counts.unitTests} · 여정 ${report.counts.journeyContracts ?? "-"} · 비행 ${report.counts.flightContracts ?? "-"} · 손안 ${report.counts.mobileContracts ?? "-"} · 변이(고속 레인) killed ${report.counts.mutationsFastLaneKilled}/survived ${report.counts.mutationsFastLaneSurvived} · 행성 앱 QA ${report.counts.planetScenesPassed ?? "-"}/${report.counts.planetScenesTotal ?? "-"} 씬`
+  `유닛 ${report.counts.unitTests} · 여정 ${report.counts.journeyContracts ?? "-"} · 비행 ${report.counts.flightContracts ?? "-"} · 손안 ${report.counts.mobileContracts ?? "-"} · 변이(고속 레인) killed ${report.counts.mutationsFastLaneKilled}/survived ${report.counts.mutationsFastLaneSurvived}`
 );
 console.log(`report → ${path.relative(LP, out)}`);
 if (failed.length) {

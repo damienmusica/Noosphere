@@ -1,4 +1,4 @@
-// Shared plumbing for the QA capture harness: a localhost static server for
+// Shared plumbing for the universe contract harnesses (moved from qa/lib.mjs when the planet app retired, 2026-08-29): a localhost static server for
 // the built bundle, artifact hashing, and file walking. Node stdlib only —
 // the harness must run anywhere the repo runs.
 import { createHash } from "node:crypto";

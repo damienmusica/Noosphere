@@ -8,7 +8,7 @@ import { mkdir, readdir, rename, rm } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
-import { serveDist } from "../qa/lib.mjs";
+import { serveDist } from "./lib.mjs";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const args = process.argv.slice(2);
