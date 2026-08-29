@@ -1113,6 +1113,11 @@ console.log(`\n내부 심사의 수리`);
         if (mm.nearest[0] === "franz-kafka" && mm.nearest[1] < 65) break;
       }
       await settle(400);
+      // 카드를 먼저 덮는다 — 고른 별의 재클릭은 양탭 착륙이라, 덮지 않으면
+      // 이 클릭이 착륙 요청이 된다. (조속기 이전에는 광속 크리프가 별을
+      // 지나쳐 클릭이 빗나갔고, 그 우연이 이 계약을 초록으로 두고 있었다.)
+      await page.keyboard.press("Escape");
+      await settle(300);
       const at4 = await page.evaluate(() => window.__universe.project("franz-kafka"));
       if (at4) await page.mouse.click(at4[0], at4[1]);
       await settle(700);
@@ -1290,6 +1295,172 @@ console.log(`\n몸의 회랑 · 몸이 남는 클릭 (R13-c)`);
   check("한 칸의 명패는 셋을 넘지 않는다 — 카프카 1913(사건 4)이 둘+접힘으로 선다",
     mc.slipMaxPerYear <= 3 && mc.slipFolded >= 1,
     `최대 ${mc.slipMaxPerYear}/칸 · 접힘 ${mc.slipFolded}`);
+}
+
+// \u2014\u2014\u2014 \ubb38 0 3\ucc28\uc758 \uc218\ub9ac (CPO 2026-08-29) \u2014\u2014\u2014
+// "\ud589\uc131 \uac00\uae4c\uc6cc\uc84c\ub294\ub370\ub3c4 \uad11\uc18d\uc73c\ub85c \uc2a4\ud06c\ub864\ub418\ub2c8\uae4c \ud6c5\ud6c5 \uc9c0\ub098\uac00\uace0" \u2014 \uac10\uc18d\uc740 \uc784\ud384\uc2a4
+// \uc21c\uac04\uc758 \uc0c1\ud0dc\uac00 \uc544\ub2c8\ub77c **\ub9e4 \ud504\ub808\uc784\uc758 \ubc95**\uc774\uc5b4\uc57c \ud55c\ub2e4: \uacf5\uac04\uc740 \ucc9c\uccb4 \uacc1\uc5d0\uc11c
+// \ub048\uc801\ud574\uc9c4\ub2e4(\uc870\uc18d\uae30). \uc2e4\uc81c \uc190\uc740 \ud720 \uc911\uc5d0 \ud754\ub4e4\ub9b0\ub2e4(\uc870\uc900 \uc5ec\uc720 24px). \ud654\uba74 \ubc16\uc758
+// \ubcc4\uc744 \uce74\ub4dc\uc5d0\uc11c \uc9c0\ubaa9\ud558\uba74 \uace0\uac1c\uac00 \ub3c8\ub2e4(\uc720\ub839 \uce74\ub4dc \uae08\uc9c0).
+console.log(`\n\ubb38 0 3\ucc28\uc758 \uc218\ub9ac \u2014 \uc870\uc18d\uae30 \u00b7 \uc870\uc900 \uc5ec\uc720 \u00b7 \uace0\uac1c \uc751\ub2f5`);
+{
+  const GOVF = 60, GOVG = 3, STANDOFF = 140; // grammar.ts \uc758 \uc870\uc18d\uae30 \uc0c1\uc218\ub97c \uadf8\ub300\ub85c \uc67c\ub2e4
+  // \u2460 \uc6b4\ub3d9\ub7c9\uc744 \uc548\uace0 \uc640\ub3c4 \uacc1\uc5d0\uc11c\ub294 \uac77\ub294\ub2e4 \u2014 \uba40\ub9ac\uc11c \ucd5c\ub300 \ucd94\ub825\uc744 \uc2e3\uace0 \uc870\uc900
+  //    \ube44\ud589\ud558\uba70, \ud504\ub808\uc784\uc758 \uc801\uc6a9 \uc18d\ub3c4(speed)\uac00 \uc0c1\ud55c(gov)\uc744 \ub118\ub294 \ud45c\ubcf8\uc774 \uc5c6\ub294\uc9c0 \uc7b0\ub2e4.
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
+  const gt = await onStar();
+  check("\uc870\uc18d\uae30 \uacc4\uc57d\uc744 \uc7b4 \ubcc4\uc774 \uc788\ub2e4", Boolean(gt), gt ? gt.id : "\uc5c6\uc74c");
+  if (gt) {
+    await page.mouse.move(gt.q[0], gt.q[1]);
+    for (let i = 0; i < 6; i++) await page.mouse.wheel(0, -900);
+    let peak = 0, govViol = null, nearFast = 0, samples = 0, n300 = 0;
+    for (let i = 0; i < 70; i++) {
+      await page.waitForTimeout(60);
+      const s = await page.evaluate(() => {
+        const m = window.__universe.metrics();
+        return { speed: m.speed, gov: m.gov, near: m.nearest[1], nearId: m.nearest[0], moving: m.moving };
+      });
+      if (s.speed !== 0) {
+        samples++;
+        peak = Math.max(peak, Math.abs(s.speed));
+        if (s.gov !== null && Math.abs(s.speed) > s.gov + 1) govViol = s;
+        // 조속기의 근접은 **목표**의 근접이다 — 조준 항로가 남의 별 곁을
+        // 빠르게 지나는 것은 R13 의 룰링 그대로다("남의 별마다 브레이크"의
+        // 제거). 남의 별 플라이바이를 이 표본에 넣으면 룰링을 계약이 뒤집는다.
+        if (s.near < 300 && s.nearId === gt.id) {
+          n300++;
+          if (Math.abs(s.speed) > GOVF + GOVG * (300 - STANDOFF) + 60)
+            nearFast = Math.max(nearFast, Math.abs(s.speed));
+        }
+      }
+      if ((s.near <= 150 && s.nearId === gt.id) || (!s.moving && i > 6)) break;
+      // \uad00\uc131 \uc720\uc9c0 \u2014 \uc2e4\uc81c \uc190\ucc98\ub7fc \uacc4\uc18d \uad74\ub9b0\ub2e4. \ud55c \ubc88\uc758 \ud65c\uacf5\uc740 \uad00\uc131 \uac10\uc1e0(0.02^t)
+      // \ub85c \ubcc4\uc5d0 \ub2ff\uae30 \uc804\uc5d0 \uc11c \ubc84\ub824 \uadfc\uc811 \ud45c\ubcf8\uc774 \uacf5\ud5c8\ud574\uc9c4\ub2e4(\uacc4\uc57d \uc2e4\uce21: \ud45c\ubcf8 0).
+      if (s.near > 230 && i % 2 === 0) await page.mouse.wheel(0, -600);
+    }
+    check("\uc801\uc6a9 \uc18d\ub3c4\ub294 \uc5b4\ub290 \ud504\ub808\uc784\uc5d0\uc11c\ub3c4 \uc870\uc18d\uae30 \uc0c1\ud55c \uc548\uc774\ub2e4",
+      samples > 4 && govViol === null,
+      govViol ? JSON.stringify(govViol) : `\ud45c\ubcf8 ${samples} \u00b7 \ucd5c\uace0 ${peak}`);
+    check("\uba3c \ud558\ub298\uc740 \ube60\ub974\ub2e4 \u2014 \uc870\uc18d\uae30\uac00 \uc21c\ud56d\uc744 \uc870\ub974\uc9c0 \uc54a\ub294\ub2e4", peak > 900, `\ucd5c\uace0 ${peak}`);
+    check("\ubcc4 300 \uc548\ucabd\uc5d0\uc11c\ub294 \uac77\ub294\ub2e4 \u2014 \uc2e4\uc740 \uc6b4\ub3d9\ub7c9\uc774 \uad11\uc18d\uc73c\ub85c \ub0a8\uc9c0 \uc54a\ub294\ub2e4 (\uadfc\uc811 \ud45c\ubcf8 \uc2e4\uc874)",
+      n300 > 0 && nearFast === 0,
+      nearFast ? `\uadfc\uc811 \uc18d\ub3c4 ${nearFast}` : `\uadfc\uc811 \ud45c\ubcf8 ${n300}`);
+    await settle(700);
+    // \u2461 \ub73b \uc5c6\ub294 \ucd94\ub825\ub3c4 \uacc1\uc740 \ub048\uc801\ud558\ub2e4 \u2014 \ub3c4\ucc29 \uc9c0\uc810(\uc870\uc900\uc740 \ub3c4\ucc29\uc774 \ud480\uc5c8\ub2e4)\uc5d0\uc11c
+    //    \ud6c4\uc9c4\uc73c\ub85c \uad74\ub9b0\ub2e4: \ud6c4\uc9c4\uc740 \uc870\uc900\uc744 \ub9cc\ub4e4\uc9c0 \uc54a\uc73c\ubbc0\ub85c(px>0 \ub9cc resolveAim)
+    //    \uc774\uac83\uc774 \ub73b \uc5c6\ub294 \ucd94\ub825\uc758 \uc21c\uc218 \ud45c\ubcf8\uc774\ub2e4. \uc0c1\ud55c\uc740 \ucd5c\uadfc\uc811 \ubcc4\uc758 \uac70\ub9ac\uc5d0\uc11c
+    //    \uc640\uc57c \ud55c\ub2e4 \u2014 \ub73b\uc774 \uc5c6\ub2e4\uace0 \uc0c1\ud55c\uc774 \uc0ac\ub77c\uc9c0\uba74 \ud6c5\ud6c5\uc758 \ud68c\uadc0\ub2e4.
+    for (let i = 0; i < 3; i++) await page.mouse.wheel(0, 240);
+    let noGov = null, shapeViol = null, n2 = 0;
+    for (let i = 0; i < 16; i++) {
+      await page.waitForTimeout(60);
+      const s = await page.evaluate(() => {
+        const m = window.__universe.metrics();
+        return { speed: m.speed, gov: m.gov, near: m.nearest[1], aim: m.aimLock };
+      });
+      if (s.speed !== 0 && s.aim === null && s.near < 420) {
+        n2++;
+        if (s.gov === null) noGov = s;
+        else if (s.gov > GOVF + GOVG * Math.max(0, s.near - STANDOFF) + 90) shapeViol = s;
+      }
+    }
+    check("\ub73b \uc5c6\ub294 \ucd94\ub825\ub3c4 \ucd5c\uadfc\uc811 \ubcc4\uc774 \uc870\ub978\ub2e4 (\uc0c1\ud55c\uc774 \uc788\uace0, \uadf8 \ubaa8\uc591\uc774 \uac70\ub9ac\ub2e4)",
+      n2 > 2 && noGov === null && shapeViol === null,
+      noGov ? "\uc0c1\ud55c \uc5c6\uc74c" : shapeViol ? JSON.stringify(shapeViol) : `\ud45c\ubcf8 ${n2}`);
+    await settle(900);
+  }
+  // \u2462 \ud754\ub4e4\ub9ac\ub294 \uc190\uc774 \ub77d\uc744 \uae68\uc9c0 \uc54a\ub294\ub2e4 \u2014 \ucee4\uc11c\ub97c \ubcc4\uc5d0\uc11c 38px \ube44\uaef4 \uc870\uc900(\ud53d \ubc18\uacbd
+  //    44 \uc548)\ud55c \ub4a4 14px \ud754\ub4e4\uc5b4 \uad74\ub9b0\ub2e4: 24px \uc5ec\uc720 \uc548\uc774\ubbc0\ub85c \uac19\uc740 \ub73b\uc774\ub2e4. 8px
+  //    \uc2dc\uc808\uc774\uba74 \uc7ac\ud53d\uc774 \ubcc4\uc744 \ubabb \uc7a1\uace0(52px > 44) \ub77d\uc774 \ud480\ub9b0\ub2e4. \uadf8 \ub4a4 120px \uc744
+  //    \uc62e\uaca8 \uad74\ub9ac\uba74 \uadf8\uac83\uc740 \uc0c8 \ub73b \u2014 \uc5ec\uc720\uac00 \ubb34\ud55c\uc774 \uc544\ub2c8\ub77c\ub294 \ud558\ud55c\ub3c4 \uac19\uc774 \uc7b0\ub2e4.
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
+  const jt = await onStar();
+  check("\uc870\uc900 \uc5ec\uc720 \uacc4\uc57d\uc744 \uc7b4 \ubcc4\uc774 \uc788\ub2e4", Boolean(jt), jt ? jt.id : "\uc5c6\uc74c");
+  if (jt) {
+    const jx = jt.q[0] + 38, jy = jt.q[1];
+    await page.mouse.move(jx, jy);
+    await page.mouse.wheel(0, -240);
+    await page.waitForTimeout(140);
+    const l0 = await metrics();
+    check("\ube44\uaef4 \uc7a1\uc740 \uc870\uc900\uc774 \uc120\ub2e4 (\ud53d \ubc18\uacbd 44 \uc548)", l0.aimLock === jt.id, `aimLock=${l0.aimLock}`);
+    await page.mouse.move(jx + 14, jy);
+    await page.mouse.wheel(0, -240);
+    await page.waitForTimeout(140);
+    const l1 = await metrics();
+    check("\ud754\ub4e4\ub9ac\ub294 \uc190(14px)\uc740 \uac19\uc740 \ub73b\uc774\ub2e4 \u2014 \ub77d\uc774 \uc0b0\ub2e4 (\uc5ec\uc720 24px)",
+      l1.aimLock === jt.id, `aimLock=${l1.aimLock}`);
+    await page.mouse.move(jx + 140, jy);
+    await page.mouse.wheel(0, -240);
+    await page.waitForTimeout(140);
+    const l2 = await metrics();
+    check("\uba40\ub9ac \uc62e\uaca8 \uad74\ub9ac\uba74 \uc0c8 \ub73b\uc774\ub2e4 \u2014 \uc5ec\uc720\ub294 \ubb34\ud55c\uc774 \uc544\ub2c8\ub2e4",
+      l2.aimLock !== jt.id, `aimLock=${l2.aimLock}`);
+    await settle(900);
+  }
+  // \u2463 \uace0\uac1c \uc751\ub2f5 \u2014 \ub4f1 \ub4a4\uc758 \ubcc4\uc744 \uce74\ub4dc\uc5d0\uc11c \uc9c0\ubaa9\ud558\uba74 \ubab8\uc740 \uadf8\ub300\ub85c, \uace0\uac1c\uac00 \ub3c8\ub2e4.
+  //    \uce74\ub4dc\ub9cc \ubc14\ub00c\uace0 \ud558\ub298\uc774 \uce68\ubb35\ud558\uba74 \uc720\ub839 \uce74\ub4dc\ub2e4(\ubb38 0 3\ucc28: \uc870\uc774\uc2a4 \uce74\ub4dc \uc544\ub798
+  //    \ube48 \ud558\ub298). \ud654\uba74 \uc548\uc758 \ubcc4\uc744 \uace0\ub974\uba74 \ub3cc\uc9c0 \uc54a\ub294\ub2e4(\ud558\ub298 \ud074\ub9ad = \ucee4\uc11c \uc790\ub9ac).
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
+  // \ucd08\uae30 \ud3ec\uc988\ub294 \uc628 \ud558\ub298\uc744 \ub9c8\uc8fc \ubcf8\ub2e4 \u2014 \ub4f1 \ub4a4\ub97c \ub9cc\ub4e4\ub824\uba74 \uace0\uac1c\ub97c \ub3cc\ub824 \ub454\ub2e4.
+  let behind = null;
+  for (let turn = 0; turn < 5 && !behind; turn++) {
+    for (const id of ["franz-kafka", "jorge-luis-borges", "leo-tolstoy", "marcel-proust", "natsume-soseki", "gabriel-garcia-marquez"]) {
+      const raw = await page.evaluate((x) => window.__universe.project(x, true), id);
+      if (raw && raw[2] > 1) { behind = id; break; }
+    }
+    if (!behind) await drag(650, 0);
+  }
+  check("\ub4f1 \ub4a4\uc758 \ubcc4\uc774 \uc788\ub2e4 (\uace0\uac1c \uc751\ub2f5\uc758 \uc804\uc81c)", Boolean(behind), behind ?? "\uc5c6\uc74c");
+  if (behind) {
+    const r0 = (await metrics()).camR;
+    await page.evaluate((x) => window.__universe.focus(x), behind);
+    let flew = false;
+    for (let i = 0; i < 14; i++) {
+      await page.waitForTimeout(120);
+      if ((await metrics()).flying) flew = true;
+    }
+    const p2 = await page.evaluate((x) => window.__universe.project(x), behind);
+    const r1 = (await metrics()).camR;
+    check("\uace0\uac1c\uac00 \uadf8 \ubcc4\uc744 \ud5a5\ud574 \ub3c8\ub2e4 \u2014 \ubcc4\uc774 \ud654\uba74 \uc548\uc73c\ub85c \ub4e4\uc5b4\uc628\ub2e4",
+      Boolean(p2) && p2[0] > 1600 * 0.09 && p2[0] < 1600 * 0.91 && p2[1] > 1000 * 0.07 && p2[1] < 1000 * 0.93,
+      p2 ? `${Math.round(p2[0])},${Math.round(p2[1])}` : "\ud654\uba74 \ubc16");
+    check("\ubab8\uc740 \uc81c\uc790\ub9ac\ub2e4 \u2014 \uc5f0\ucd9c \ube44\ud589 \uc5c6\uc774 \ud68c\uc804\ubfd0\uc774\ub2e4 (pick \ubd88\ubcc0 \uc720\uc9c0)",
+      !flew && Math.abs(r1 - r0) < 3, `flying=${flew} \u00b7 camR ${r0}\u2192${r1}`);
+    await page.keyboard.press("Escape");
+    await settle(600);
+    // \ub300\uc870\uad70: \ud654\uba74 \uc548\uc758 \ubcc4\uc740 \uace0\uac1c\uac00 \ub3cc\uc9c0 \uc54a\ub294\ub2e4 \u2014 \ucee4\uc11c \uc790\ub9ac\uac00 \uace7 \ubcc4 \uc790\ub9ac\ub2e4.
+    // \uc7a5\uc804 \uc0c1\ud0dc(headTurn)\ub85c\ub294 \ubabb \uc7b0\ub2e4: \ud654\uba74 \uc548 \ubcc4\uc740 \uac01\uc774 \uc791\uc544 \ud68c\uc804\uc774 \ud45c\ubcf8\ubcf4\ub2e4
+    // \uba3c\uc800 \ub05d\ub09c\ub2e4(\ubcc0\uc774 \uc2a4\uc715 \uc2e4\uce21 \u2014 \ud56d\uc0c1-\ud68c\uc804 \ubcc0\uc774 \uc0dd\uc874). \uc704\uce58\ub85c \uc7b0\ub2e4: \uc870\uc900\uc810
+    // \uc5d0\uc11c \uba40\ub9ac \uc120 \ubcc4\uc744 \uace8\ub790\uc744 \ub54c, \uace0\uac1c\uac00 \ub3cc\uc558\ub2e4\uba74 \uadf8 \ubcc4\uc774 \uc870\uc900\uc810\uc73c\ub85c \uac78\uc5b4
+    // \ub4e4\uc5b4\uc654\uc744 \uac83\uc774\uace0, \ub3cc\uc9c0 \uc54a\uc558\ub2e4\uba74 \uba40\ub9ac \ub0a8\ub294\ub2e4(\uc548\uc804\ub760 \uc774\ub3d9 ~200px \uc740 \uc5ec\uc720).
+    const mmA = await metrics();
+    let farOn = null;
+    for (const id of ["franz-kafka", "jorge-luis-borges", "leo-tolstoy", "marcel-proust", "albert-camus", "thomas-mann", "natsume-soseki"]) {
+      const q = await page.evaluate((x) => window.__universe.project(x), id);
+      if (q && q[0] > 120 && q[0] < 1520 && q[1] > 70 && q[1] < 930 &&
+          Math.hypot(q[0] - mmA.aim[0], q[1] - mmA.aim[1]) > 450) { farOn = { id, q }; break; }
+    }
+    check("\uc870\uc900\uc810\uc5d0\uc11c \uba40\ub9ac \uc120 \ud654\uba74 \uc548\uc758 \ubcc4\uc774 \uc788\ub2e4 (\ubb38\ud131 \ub300\uc870\uad70\uc758 \uc804\uc81c)",
+      Boolean(farOn), farOn ? farOn.id : "\uc5c6\uc74c");
+    if (farOn) {
+      await page.mouse.click(farOn.q[0], farOn.q[1]);
+      await page.waitForTimeout(1000);
+      const mmB = await metrics();
+      const p1 = await page.evaluate((x) => window.__universe.project(x), farOn.id);
+      const dAim = p1 ? Math.hypot(p1[0] - mmB.aim[0], p1[1] - mmB.aim[1]) : 0;
+      check("\ud654\uba74 \uc548\uc758 \ubcc4\uc744 \uace8\ub77c\ub3c4 \uace0\uac1c\ub294 \ub3cc\uc9c0 \uc54a\ub294\ub2e4 \u2014 \ubcc4\uc774 \uc870\uc900\uc810\uc73c\ub85c \ub04c\ub824\uc624\uc9c0 \uc54a\ub294\ub2e4",
+        Boolean(p1) && dAim > 180,
+        p1 ? `\uc870\uc900\uc810\uae4c\uc9c0 ${Math.round(dAim)}px` : "\ud654\uba74 \ubc16");
+      await page.keyboard.press("Escape");
+      await settle(400);
+    }
+  }
 }
 
 console.log(`\n${passed} passed \u00b7 ${failed} failed`);

@@ -69,6 +69,11 @@ import {
   TURN_GAIN,
   ARRIVE_STANDOFF,
   ALIGN_RATE,
+  AIM_HOLD_PX,
+  GOV_GAIN,
+  GOV_FLOOR,
+  PICK_TURN_RATE,
+  PICK_TURN_NDC,
 } from "./grammar.ts";
 import { indexGlyph } from "./lenses.ts";
 import { REL_KO, relationGlyph } from "./relations.ts";
@@ -374,6 +379,13 @@ export class UniverseScene {
    *  서 있는 커서 밑으로 다른 별이 지나가는데, 그때의 휠이 그 별로 갈아타면
    *  비행이 갈지자가 된다(계약 실측). 커서가 움직이지 않았으면 뜻도 그대로다. */
   private aimAt: { x: number; y: number } | null = null;
+  /** 고개 응답(R13-f) — 화면 밖의 별을 고르면 고개가 이 방향으로 돈다. 손이
+   *  닿으면(드래그·휠) 즉시 비운다: 손이 언제나 이긴다. */
+  private headTurnDir: THREE.Vector3 | null = null;
+  /** 이번 프레임에 실제로 적용된 속도와 그 상한 — 계약은 주장값이 아니라
+   *  적용값을 읽는다(R13-c 렌즈 배율의 교훈). */
+  private lastSpeed = 0;
+  private lastGov: number | null = null;
   /**
    * 다음 focus/landed 변화가 카메라에 갖는 뜻(R13-c, 문 0 2차). 앱이 상태를
    * 바꾸기 직전에 적어 둔다:
@@ -553,6 +565,9 @@ export class UniverseScene {
     deep: false,
     focusDist: null as number | null,
     throttle: 1,
+    speed: 0,
+    gov: null as number | null,
+    headTurn: false,
     walking: false,
     flying: false,
     /** 작품 도시(연도 서가) — 전부 렌더에서 잰다. cityMetrics() 참조 */
@@ -2659,6 +2674,7 @@ export class UniverseScene {
     this.aimId = null;
     this.aimAt = null;
     this.thrustDir = null;
+    this.headTurnDir = null;
     const cause = this.cameraCause ?? "pick";
     this.cameraCause = null;
     if (s.landedId) {
@@ -2689,6 +2705,19 @@ export class UniverseScene {
         // 주시점 북키핑만 그 별로 — 고른 별이 곧 주시점이다(dist 계측의 원본).
         this.controls.target.copy(c);
         this.focusDistAtSelect = dNow;
+        // 고개 응답(R13-f): 몸은 그대로되, 화면 밖의 별을 지목했으면 고개가
+        // 그쪽으로 돈다 — 카드만 바뀌고 하늘이 침묵하면 유령 카드다(문 0 3차:
+        // 조이스 카드 아래 빈 하늘). 화면 안의 별(하늘 클릭)은 돌지 않는다 —
+        // "화면 안"은 각도가 아니라 실제 투영으로 판정한다.
+        const toDir = c.clone().sub(this.camera.position).normalize();
+        const fwd = this.camera.getWorldDirection(new THREE.Vector3());
+        const v = c.clone().project(this.camera);
+        const off =
+          fwd.dot(toDir) < 0 ||
+          v.z > 1 ||
+          Math.abs(v.x) > PICK_TURN_NDC ||
+          Math.abs(v.y) > PICK_TURN_NDC;
+        this.headTurnDir = off ? toDir : null;
         return;
       }
       // 검색·딥링크 같은 명시적 이동 요청만 관측 렌즈 거리로 데려간다.
@@ -3121,6 +3150,7 @@ export class UniverseScene {
       return;
     }
     this.cancelFly();
+    this.headTurnDir = null; // 손이 언제나 이긴다
     // 궤도를 끊는다 — 그러나 읽던 것은 그대로 둔다(멀어지면 그때 닫힌다)
     if (this.state.focusId) this.orbitBroken = true;
     if (px > 0) this.resolveAim(at);
@@ -3142,7 +3172,7 @@ export class UniverseScene {
       if (
         this.aimId !== null &&
         this.aimAt !== null &&
-        Math.hypot(at.x - this.aimAt.x, at.y - this.aimAt.y) < 8
+        Math.hypot(at.x - this.aimAt.x, at.y - this.aimAt.y) < AIM_HOLD_PX
       ) {
         return;
       }
@@ -3176,6 +3206,7 @@ export class UniverseScene {
   /** 고개를 돌린다 — 화면 px 을 시야각으로 바꾸는 공식은 어디서나 이것 하나다.
    *  하늘·궤도·회랑이 같은 배율(TURN_GAIN)·같은 부호를 쓴다(R13 고개의 법). */
   private look(dx: number, dy: number): void {
+    this.headTurnDir = null; // 손이 언제나 이긴다
     const h = this.renderer.domElement.clientHeight || 800;
     const perPx = (((this.camera.fov * Math.PI) / 180) / h) * TURN_GAIN;
     this.turn(dx * perPx, dy * perPx);
@@ -3435,6 +3466,24 @@ export class UniverseScene {
     // 깜박인다 — 목적지가 그 카드인 이동에서 카드를 치우는 것은 손해다.
     let moving = false;
     const walking = this.walkMode();
+    // 고개 응답(R13-f): 화면 밖의 별을 골랐으면 몸은 그대로, 고개만 돈다.
+    // 고개 회전은 turn() 처럼 몸의 상태와 무관하다 — 특히 pick 은 배를
+    // 궤도 대기(freeMode 아님)로 세우므로, 자유 비행 분기 안에 두면 정작
+    // 고른 순간에는 돌지 않는다(계약 실측). 손이 닿으면(look·push) 비워진다.
+    if (this.headTurnDir && !this.state.landedId && !this.anim) {
+      const hfwd = this.camera.getWorldDirection(new THREE.Vector3());
+      const ang = hfwd.angleTo(this.headTurnDir);
+      if (ang < 0.02 || this.state.reducedMotion) {
+        this.camera.lookAt(this.camera.position.clone().add(this.headTurnDir));
+        this.headTurnDir = null;
+      } else {
+        const step = Math.min(1, (PICK_TURN_RATE * sec) / ang);
+        const nf = hfwd.clone().lerp(this.headTurnDir, step).normalize();
+        this.camera.lookAt(this.camera.position.clone().add(nf));
+      }
+      // 주시점은 건드리지 않는다 — pick 의 주시점은 고른 별이다(R13-c, dist
+      // 계측의 원본). 회전은 lookAt 만으로 완결된다.
+    }
     // 회랑에서 컨트롤을 재우는 줄이 여기 있었다("깨어 있으면 드래그가 회전량을
     // 쌓아 두었다가 당김 리프레임에서 터진다"). **변이 스윕이 그 주장을
     // 반증했다** — 지워도 어떤 계약도 죽지 않았고, 직접 재 보니 걷는 동안
@@ -3471,10 +3520,13 @@ export class UniverseScene {
       // 목표가 화면 중앙으로 걸어 들어온다. 낚아채지 않고 데려간다.
       const fwd = this.camera.getWorldDirection(new THREE.Vector3());
       const aimStar = this.aimId !== null ? this.index.get(this.aimId) : undefined;
+      // 조속기의 기준 거리 — 뜻한 별까지, 뜻이 없으면 최근접 별까지
+      let govD = this.nearD;
       if (aimStar !== undefined) {
         const center = (this.dirs[aimStar] as THREE.Vector3).clone().multiplyScalar(SHELL_R);
         const to = center.sub(this.camera.position);
         const d = to.length();
+        govD = d;
         // 별 앞에 선다 — 스쳐 지나가는 것은 도착이 아니다. STANDOFF 안쪽에서
         // 전진 추력은 소진되고 지목이 풀린다(후진은 언제나 자유).
         if (d <= ARRIVE_STANDOFF && this.thrust > 0) {
@@ -3494,18 +3546,36 @@ export class UniverseScene {
           }
         }
       }
+      // 조속기(R13-f): 공간은 천체 곁에서 끈적해진다. 임펄스 순간의 스로틀만
+      // 으로는 멀리서 실은 운동량이 근접에서도 광속이다(문 0 3차: "행성
+      // 가까워졌는데도 광속으로 스크롤되니까 훅훅 지나가고"). 유효 속도는
+      // **매 프레임** 남은 거리에 묶인다 — 운동량(thrust)은 남고 걸음(speed)이
+      // 줄어, 곁을 지나면 다시 빨라진다.
+      const vmax = Number.isFinite(govD)
+        ? GOV_FLOOR + GOV_GAIN * Math.max(0, govD - ARRIVE_STANDOFF)
+        : Infinity;
       if (this.thrust) {
         const dir = this.thrustDir ?? fwd;
         if (this.state.reducedMotion) {
-          this.camera.position.addScaledVector(dir, this.thrust / -Math.log(THRUST_DAMP));
+          let disp = this.thrust / -Math.log(THRUST_DAMP);
+          // 축약 동작도 지나치지 않는다 — 전진 도약은 남은 거리 앞에서 선다
+          if (disp > 0 && Number.isFinite(govD))
+            disp = Math.min(disp, Math.max(GOV_FLOOR * 0.25, govD - ARRIVE_STANDOFF));
+          this.camera.position.addScaledVector(dir, disp);
+          this.lastSpeed = disp;
           this.thrust = 0;
         } else {
-          this.camera.position.addScaledVector(dir, this.thrust * sec);
+          const sp = Math.max(-vmax, Math.min(vmax, this.thrust));
+          this.camera.position.addScaledVector(dir, sp * sec);
+          this.lastSpeed = sp;
           this.thrust *= Math.pow(THRUST_DAMP, sec);
           if (Math.abs(this.thrust) < 1) this.thrust = 0;
         }
         moving = true;
+      } else {
+        this.lastSpeed = 0;
       }
+      this.lastGov = Number.isFinite(vmax) ? vmax : null;
       // 주시점 북키핑 — 시선 앞 150(R12-f). 회전은 turn() 이 제자리에서 하므로
       // 이 값은 조향이 아니라 계측(pivot)과 연출 비행의 출발점이다.
       const fwd2 = this.camera.getWorldDirection(new THREE.Vector3());
@@ -3993,6 +4063,14 @@ export class UniverseScene {
       focusDist: Number.isFinite(focusDist) ? Math.round(focusDist) : null,
       /** 이번 프레임의 추력 배율 — 가까울수록 느려진다 */
       throttle: Number(this.throttleScale().toFixed(2)),
+      /** 이번 프레임에 실제 적용된 속도(단위/초)와 조속기 상한 — 주장값이
+       *  아니라 적용값이다. 운동량(thrust)이 아무리 커도 |speed| ≤ gov. */
+      speed: Math.round(this.lastSpeed),
+      gov: this.lastGov === null ? null : Math.round(this.lastGov),
+      /** 고개 응답이 장전되어 있는가 — 화면 안의 별을 골랐을 때는 false 여야
+       *  한다(문턱의 이빨). 화면 이동으로는 못 잰다: 카드의 안전띠(viewOffset)
+       *  가 회전 없이도 투영을 밀어 두 원인이 구분되지 않는다(실측 196px). */
+      headTurn: this.headTurnDir !== null,
       /** 회랑을 걸을 수 있는 상태인가 — 비행도 당김도 없다 */
       walking: this.walkMode(),
       /** 진행 중인 연출 비행이 있는가 */
