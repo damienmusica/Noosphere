@@ -43,7 +43,15 @@ const ready = async () => {
 };
 
 const shot = async (name) => {
-  await page.screenshot({ path: path.join(outDir, `${name}.png`) });
+  // 장시간 세션에서 macOS 컴포지터가 굶으면 screenshot 이 30초 행에 걸린다
+  // (실측: 'fonts loaded' 후 무한 대기 — 크로미움 대청소로만 풀림). 프레임은
+  // 계약이 아니라 산출물이므로 한 번의 재시도는 판정을 오염시키지 않는다.
+  try {
+    await page.screenshot({ path: path.join(outDir, `${name}.png`), timeout: 20000 });
+  } catch {
+    await page.waitForTimeout(1200);
+    await page.screenshot({ path: path.join(outDir, `${name}.png`), timeout: 45000 });
+  }
   const m = await page.evaluate(() => window.__universe.metrics());
   console.log(`${name.padEnd(34)} stage=${m.stage} dist=${m.dist} bodies=${m.bodies} labels=${m.labels}`);
   return m;

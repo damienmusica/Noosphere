@@ -362,3 +362,49 @@ q.addEventListener("keydown", (e) => {
 
 drawLines();
 refreshLabels();
+
+// 닻 우선 입구(선행 연구 Ⅴ-1): 살아남은 그래프 탐색기 전원이 "아는 항목
+// 하나"에서 시작한다 — 전역 조감도를 입구로 파는 생존자는 없다. 지도는
+// 건너뛸 수 있되, 기본 질문은 닻이다.
+{
+  const ov = document.createElement("div");
+  ov.innerHTML = `
+  <style>
+  #anchor-ov{position:fixed;inset:0;z-index:9;display:flex;align-items:center;justify-content:center;background:rgba(20,16,10,.72)}
+  #anchor-ov .box{background:var(--bg);border:1px solid var(--brass);padding:26px 28px;max-width:420px;width:92vw}
+  #anchor-ov h2{font-size:17px;letter-spacing:.06em;margin-bottom:6px}
+  #anchor-ov p{font-size:12.5px;color:var(--dim);margin-bottom:14px}
+  #anchor-ov input{font:inherit;font-size:14px;background:none;border:1px solid var(--line);color:var(--text);padding:8px 12px;width:100%}
+  #anchor-ov .skip{margin-top:12px;font-size:12px;color:var(--faint);background:none;border:0;cursor:pointer;text-decoration:underline}
+  </style>
+  <div id="anchor-ov"><div class="box">
+    <h2>어느 별에서 시작할까</h2>
+    <p>좋아했던 작가 하나를 대면, 그 이웃부터 보여준다.</p>
+    <input id="anchor-q" list="anchor-authors" placeholder="예: 카프카, 보르헤스…" autofocus>
+    <datalist id="anchor-authors">${d.authors.map((a) => `<option value="${a.names.ko}">`).join("")}</datalist>
+    <button class="skip">그냥 지도 전체 보기</button>
+  </div></div>`;
+  document.body.appendChild(ov);
+  const input = ov.querySelector("#anchor-q") as HTMLInputElement;
+  const close = (): void => ov.remove();
+  const jump = (): void => {
+    const s = input.value.trim().toLowerCase();
+    if (!s) return;
+    const hit = d.authors.find(
+      (a) =>
+        a.names.ko === input.value.trim() ||
+        a.names.ko.toLowerCase().includes(s) ||
+        a.names.original.toLowerCase().includes(s) ||
+        a.names.aliases.some((x) => x.toLowerCase().includes(s))
+    );
+    if (hit) {
+      close();
+      select(hit.id);
+    }
+  };
+  input.addEventListener("change", jump);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") jump();
+  });
+  ov.querySelector(".skip")!.addEventListener("click", close);
+}
