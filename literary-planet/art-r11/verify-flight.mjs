@@ -1143,10 +1143,13 @@ console.log(`\n내부 심사의 수리`);
   }
   if (bq) {
     await page.mouse.move(bq[0], bq[1]);
+    let sawGenesis = false;
     for (let i = 0; i < 26; i++) {
       await page.mouse.wheel(0, i < 6 ? -420 : -150);
       await page.waitForTimeout(110);
       const mm = await metrics();
+      // 해상의 생성(R13-h) — 행성이 자라는 중간값이 표본에 잡혀야 갑툭튀가 아니다
+      if (mm.satSlabs > 0 && mm.satK !== null && mm.satK < 0.9) sawGenesis = true;
       if (mm.nearest[0] === "jorge-luis-borges" && mm.nearest[1] < 300) break;
     }
     await settle(500);
@@ -1165,6 +1168,12 @@ console.log(`\n내부 심사의 수리`);
       mmB.satSlabs >= 3 && mmB.satWorks.length >= 3 &&
         mmB.satWorks.every((w) => w.startsWith("jorge-luis-borges--")),
       `${mmB.satSlabs}권 · ${mmB.satWorks[0] ?? "없음"}`);
+    check("행성은 해상된다 — 갑툭튀가 아니다 (자람의 중간값 실존)",
+      sawGenesis && (mmB.satK === null || mmB.satK > 0.85),
+      `생성 표본=${sawGenesis} · satK=${mmB.satK}`);
+    check("궤도는 분화한다 — 이른 작품이 안, 케플러의 반경 차",
+      Boolean(mmB.satRadii) && mmB.satRadii[1] / Math.max(1, mmB.satRadii[0]) >= 1.2,
+      mmB.satRadii ? `${mmB.satRadii[0]}~${mmB.satRadii[1]}` : "없음");
     // 위성 위의 커서에 계기가 그 작품으로 응답한다 — 정보는 카드가 아니라
     // 세계가 나른다. 기록(읽고 싶음)도 그 자리에서 이뤄진다.
     const w0 = mmB.satWorks[0];
@@ -1507,6 +1516,45 @@ console.log(`\n\ubb38 0 3\ucc28\uc758 \uc218\ub9ac \u2014 \uc870\uc18d\uae30 \u0
       await page.keyboard.press("Escape");
       await settle(400);
     }
+  }
+}
+
+// \u2014\u2014\u2014 \ubb38 0 5\ucc28\uc758 \uc218\ub9ac \u2014 \uc655\ub530\uc758 \uc218\ub9ac: \ub80c\uc988\ub294 \ud544\uc694\uc758 \ud568\uc218 \ud558\ub098 \u2014\u2014\u2014
+// "\ud589\uc131 \ud074\ub9ad\ud558\uba74 \uacc4\ub9cc \uac11\uc790\uae30 \uc655\ub530\uc2dc\ub9cc\ud574\uc9c0\uace0 \uc8fc\ubcc0\uc560\ub4e4\uc740 \uadf8\ub300\ub85c\uace0 \uc774\uc0c1\ud574."
+// \uacc4\uce21\ub9cc \ud544\uc694-\ud568\uc218\uc600\uace0 \uadf8\ub9ac\ub294 \ubc30\uc728 \ub124 \uacf3\uc740 \uc6d0\ubc30\uc728\uc774\uc5c8\ub2e4(\uc0c1\ud0dc \ub2e8\uc5b8\u2260\ud53d\uc140 \uc99d\uba85\uc758
+// \uc7ac\ub9bc). \uc774\uc81c lensFactor \ud55c \uacf3\uc774 \uc804\ubd80\ub97c \uc815\ud558\uace0, \uacc4\uc57d\uc740 **\uadf8\ub824\uc9c4 \uac12**\uc744 \ubb38\ub2e4.
+console.log(`\n\ubb38 0 5\ucc28\uc758 \uc218\ub9ac \u2014 \uc655\ub530\uc758 \uc218\ub9ac`);
+{
+  await page.goto(url("?lens=movement"), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await settle(1400);
+  const t = await onStar();
+  check("\uc655\ub530 \uacc4\uc57d\uc744 \uc7b4 \ubcc4\uc774 \uc788\ub2e4", Boolean(t), t ? t.id : "\uc5c6\uc74c");
+  if (t) {
+    await page.mouse.click(t.q[0], t.q[1]);
+    await page.waitForTimeout(1100);
+    const mf = await metrics();
+    check("\uc6d0\uacbd \ud53d\uc758 \ub80c\uc988\ub294 \uc815\uaca9(\u00d710) \uc548\uc774\ub2e4", mf.lensMag > 5 && mf.lensMag <= 10.3, `\u00d7${mf.lensMag}`);
+    check("\uadf8\ub824\uc9c4 \ubc30\uc728 = \uc8fc\uc7a5\ub41c \ubc30\uc728 (\uc655\ub530\uc758 \uc774\ube68)",
+      mf.focusDrawnK !== null && Math.abs(mf.focusDrawnK - mf.lensMag) < 1.2,
+      `\uadf8\ub9bc ${mf.focusDrawnK} \u00b7 \uc8fc\uc7a5 ${mf.lensMag}`);
+    const q = await page.evaluate((x) => window.__universe.project(x), t.id);
+    if (q) {
+      await page.mouse.move(q[0], q[1]);
+      for (let i = 0; i < 30; i++) {
+        await page.mouse.wheel(0, -420);
+        await page.waitForTimeout(90);
+        const m = await metrics();
+        if (m.nearest[0] === t.id && m.nearest[1] < 320) break;
+      }
+    }
+    await settle(500);
+    const mn = await metrics();
+    check("\ub2e4\uac00\uac00\uba74 \ub80c\uc988\uac00 \ubab8\uc744 \ub193\uc544\uc900\ub2e4 (\uadfc\uc811 \uc655\ub530 \uadfc\uc808)",
+      (mn.focusDrawnK ?? 99) < 3.4,
+      `\uadf8\ub9bc ${mn.focusDrawnK} \u00b7 d=${Math.round(mn.nearest[1])}`);
+    await page.keyboard.press("Escape");
+    await settle(400);
   }
 }
 

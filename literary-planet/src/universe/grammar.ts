@@ -276,8 +276,12 @@ export function representationFor(apparentPx: number, viewportH: number): Repres
 
 /** 렌즈 상태에서 카메라가 선택 천체로부터 두는 거리 */
 export const LENS_DIST = 1200;
-/** 선택 천체의 일률 배율 */
-export const LENS_MAG = 34;
+/** 렌즈의 정격 배율 상한 — 렌즈 거리(1200)에서 이 배율, 다가갈수록 1 로
+ *  돌아온다(필요의 함수, lensFactor 한 곳). 34 는 점-별 시대의 값이다: 몸과
+ *  위성 서가가 생긴 뒤로는 ×34 계가 이웃 점별들 사이에서 "왕따시만"해졌다
+ *  (문 0 5차). 10 = 렌즈 거리에서 몸이 읽히는 최소 배율(반경 12 → 120,
+ *  겉보기 ≈ 시야 5.7° — 압축 이웃 하한 LENS_MIN 170 안쪽에 안전). */
+export const LENS_MAG = 10;
 /** 압축된 이웃이 놓이는 반경 범위 — 하한은 확대된 천체 반경보다 커야 한다 */
 export const LENS_MIN = 170;
 export const LENS_MAX = 400;
