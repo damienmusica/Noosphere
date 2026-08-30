@@ -150,8 +150,10 @@ interface BodyRecord {
    *  아니다: 검수된 실물이 없는 별은 **자기 빛**이 몸이 된다. */
   kind?: "crust" | "photo";
   halo?: THREE.Sprite;
-  /** 궤도의 서가(R13-g) — 이 몸 둘레를 도는 작품 위성들 */
+  /** 궤도의 서가(R13-g) — 이 몸 둘레를 도는 작품 행성들 */
   sat?: THREE.Group;
+  /** 해상의 생성(0→1) — 행성은 갑툭튀하지 않고 분해되어 보인다(문 0 5차) */
+  satK?: number;
 }
 
 // 로그 깊이 버퍼를 켰으므로 커스텀 셰이더도 같은 깊이를 써야 한다 —
@@ -260,6 +262,8 @@ export class UniverseScene {
     color: string;
     start?: THREE.Vector3;
     end?: THREE.Vector3;
+    /** 호의 끝-직전 점 — 화살촉은 현이 아니라 호의 접선을 따른다(R13-h) */
+    via?: THREE.Vector3;
   }> = [];
   /** 마지막 프레임의 화살촉 끝점 — 계측이 "도착 끝에 있는가"를 독립으로 센다 */
   private arrowTips: Array<{
@@ -578,6 +582,10 @@ export class UniverseScene {
     satSlabs: 0,
     satWorks: [] as string[],
     hoverWork: null as string | null,
+    satK: null as number | null,
+    satRadii: null as [number, number] | null,
+    focusDrawnK: null as number | null,
+    lensLineMinR: null as number | null,
     nearNamed: 0,
     deep: false,
     focusDist: null as number | null,
@@ -1394,10 +1402,33 @@ export class UniverseScene {
         continue;
       }
       this.drawnLineEnds.push([l.a, l.b]);
-      if (mesh === this.egoLines && l.directed) this.egoDirected.push({ a: l.a, b: l.b, color: l.color });
       const pa = this.effectivePos(l.a, new THREE.Vector3());
       const pb = this.effectivePos(l.b, new THREE.Vector3());
       const c = new THREE.Color(l.color);
+      // 천구의 호(R13-h, 문 0 5차): 두 별을 잇는 직선 현은 천구 **내부**를
+      // 관통해 원경에서 실타래가 된다. 별지도의 성좌선처럼 관계는 하늘
+      // 표면을 따라 흐른다 — 두 끝이 껍질 위에 있을 때만(렌즈의 압축 사본
+      // 같은 국소 좌표는 직선이 정직하다). 대척점 쌍은 호가 정의되지 않는다.
+      const ra = pa.length();
+      const rb = pb.length();
+      const da = pa.clone().normalize();
+      const db = pb.clone().normalize();
+      if (Math.min(ra, rb) > SHELL_R * 0.8 && da.dot(db) > -0.999) {
+        const SEGA = 18;
+        const prev = new THREE.Vector3();
+        const cur = new THREE.Vector3();
+        for (let t = 0; t < SEGA; t++) {
+          const t0 = t / SEGA;
+          const t1 = (t + 1) / SEGA;
+          prev.copy(da).lerp(db, t0).normalize().multiplyScalar(ra + (rb - ra) * t0);
+          cur.copy(da).lerp(db, t1).normalize().multiplyScalar(ra + (rb - ra) * t1);
+          arcPush(prev, cur, c, l.weight);
+        }
+        if (mesh === this.egoLines && l.directed)
+          this.egoDirected.push({ a: l.a, b: l.b, color: l.color, via: prev.clone() });
+        continue;
+      }
+      if (mesh === this.egoLines && l.directed) this.egoDirected.push({ a: l.a, b: l.b, color: l.color });
       const k = 0.3 + 0.7 * l.weight;
       const off = n * 6;
       pos[off] = pa.x;
@@ -1418,6 +1449,8 @@ export class UniverseScene {
     g.setAttribute("color", new THREE.BufferAttribute(col.subarray(0, n * 6), 3));
     mesh.geometry.dispose();
     mesh.geometry = g;
+    // 뒷면 감쇠의 원본 — 매 프레임 감쇠는 이 사본에서 곱한다(중첩 감쇠 방지)
+    mesh.userData.baseCol = col.slice(0, n * 6);
     if (mesh === this.egoLines) {
       this.arrowsDirty = true;
       if (!this.egoDirected.length) {
@@ -1427,12 +1460,55 @@ export class UniverseScene {
     }
   }
 
+  /**
+   * 렌즈 배율 — **필요의 함수 하나**(R13-h, 문 0 5차 "계만 갑자기 왕따시만").
+   * 지목한 별을 렌즈 거리(1200)에서 읽히게 하는 만큼만 키우고, 다가갈수록
+   * 1 로 돌아온다. 이전 판은 계측만 필요-함수였고 **그리는 배율 네 곳**은
+   * 거리 무관 원배율이라, 가까이서 고른 계가 이웃 점별들 사이에서 홀로
+   * 거대해졌다 — 상태 단언≠픽셀 증명의 재림. 자리는 이곳 하나다.
+   */
+  private lensFactor(id: string): number {
+    if (id !== this.state.focusId || this.state.landedId || this.lensK <= 0) return 1;
+    const i = this.index.get(id);
+    if (i === undefined) return 1;
+    const d = (this.dirs[i] as THREE.Vector3)
+      .clone()
+      .multiplyScalar(SHELL_R)
+      .distanceTo(this.camera.position);
+    const m = Math.max(1, Math.min(LENS_MAG, (LENS_MAG * d) / LENS_DIST));
+    return 1 + (m - 1) * this.lensK;
+  }
+
+  /** 천구의 호 — 뒷면 감쇠(R13-h). 껍질 밖에서 온 하늘을 볼 때 뒷반구의
+   *  관계선은 물러난다(0.14×) — 앞뒤 호가 겹쳐 실타래가 되지 않도록. 안에서
+   *  날 때는 감쇠하지 않는다: 사방이 앞이다. */
+  private fadeFarLines(mesh: THREE.LineSegments): void {
+    const base = mesh.userData.baseCol as Float32Array | undefined;
+    if (!base) return;
+    const posA = mesh.geometry.getAttribute("position") as THREE.BufferAttribute | undefined;
+    const colA = mesh.geometry.getAttribute("color") as THREE.BufferAttribute | undefined;
+    if (!posA || !colA || colA.count === 0) return;
+    const outside = this.camera.position.length() > SHELL_R * 1.05;
+    const cd = this.camera.position.clone().normalize();
+    const v = new THREE.Vector3();
+    for (let i = 0; i < colA.count; i++) {
+      let f = 1;
+      if (outside) {
+        v.set(posA.getX(i), posA.getY(i), posA.getZ(i)).normalize();
+        const t = (v.dot(cd) + 1) / 2;
+        f = 0.14 + 0.86 * Math.min(1, Math.max(0, (t - 0.25) / 0.5));
+      }
+      colA.setXYZ(i, (base[i * 3] ?? 0) * f, (base[i * 3 + 1] ?? 0) * f, (base[i * 3 + 2] ?? 0) * f);
+    }
+    colA.needsUpdate = true;
+  }
+
   /** 천체의 현재 월드 반경 — 초점 천체는 렌즈 배율만큼 커져 있다 */
   private apparentRadius(id: string): number {
     const i = this.index.get(id);
     if (i === undefined) return 1;
     const base = this.radii[i] ?? 1;
-    return id === this.state.focusId && !this.state.landedId ? base * (1 + (LENS_MAG - 1) * this.lensK) : base;
+    return base * this.lensFactor(id);
   }
 
   /**
@@ -1465,6 +1541,13 @@ export class UniverseScene {
       const len = d.length();
       if (len < 1e-3) continue;
       d.divideScalar(len);
+      // 호로 그린 선의 화살촉은 현이 아니라 **호의 접선**을 따른다 — 아니면
+      // 촉이 선에서 떨어져 허공을 가리킨다(긴 호일수록 크게).
+      if (l.via) {
+        d.subVectors(pb, l.via);
+        if (d.lengthSq() > 1e-6) d.normalize();
+        else d.subVectors(pb, pa).divideScalar(len);
+      }
       // 끝이 앵커(회랑의 한 점)면 천체 반경이 아니라 작은 여백만 남긴다
       const margin = l.end ? 1.5 : this.apparentRadius(l.b) + 2;
       const size = Math.min(14, Math.max(5, len * 0.035));
@@ -1628,17 +1711,18 @@ export class UniverseScene {
     const up0 = Math.abs(radial.y) > 0.92 ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0, 1, 0);
     const u = up0.clone().addScaledVector(radial, -up0.dot(radial)).normalize();
     const v = new THREE.Vector3().crossVectors(radial, u).normalize();
-    const R = rec.radius * 2.7;
     const bh = Math.max(7, rec.radius * 0.6);
     const bw = bh * 0.26;
+    const n = works.length;
     works.forEach((w, i) => {
-      const ang = (i / Math.max(1, works.length)) * Math.PI * 2;
-      // 궤도면을 반경 방향으로 살짝 굽힌다 — 완전한 평면 원은 정면에서 절반이
-      // 몸 뒤에 일렬로 겹친다
-      const pos = new THREE.Vector3()
-        .addScaledVector(u, Math.cos(ang) * R)
-        .addScaledVector(v, Math.sin(ang) * R)
-        .addScaledVector(radial, Math.sin(ang * 2) * rec.radius * 0.22);
+      // 우주론(㉓): 작품은 행성이다 — 이른 작품일수록 안쪽 궤도(연도순 반경),
+      // 각속도는 케플러 제3법칙(ω ∝ R^-3/2). 균일 육각 고리는 서가였지
+      // 궤도가 아니었다(문 0 5차: "책등이 갑툭튀"). 안쪽 한 바퀴 ≈ 9분.
+      const R = rec.radius * (2.2 + (n > 1 ? (1.1 * i) / (n - 1) : 0.4));
+      const omega = 0.0116 * Math.pow((rec.radius * 2.2) / R, 1.5);
+      const pivot = new THREE.Group();
+      pivot.userData.workId = w.id;
+      pivot.userData.omega = omega;
       const spineMat = new THREE.MeshStandardMaterial({
         map: this.spineTexture(w.id, w.titleKo),
         roughness: 0.92
@@ -1652,14 +1736,24 @@ export class UniverseScene {
         spineMat,
         spineMat
       ]);
+      // 궤도면을 반경 방향으로 살짝 굽힌다 — 완전한 평면 원은 정면에서 절반이
+      // 몸 뒤에 일렬로 겹친다
+      const ang0 = (i / Math.max(1, n)) * Math.PI * 2;
+      const pos = new THREE.Vector3()
+        .addScaledVector(u, R)
+        .addScaledVector(radial, Math.sin(ang0 * 2) * rec.radius * 0.22);
       m.position.copy(pos);
       // 넓은 면(책등)이 몸 바깥 — 다가오는 관측자 — 을 본다
       m.lookAt(pos.clone().multiplyScalar(2));
       m.userData.workId = w.id;
       m.userData.authorId = rec.id;
-      g.add(m);
+      pivot.add(m);
+      // 출발 위상 — 피벗 회전이 곧 공전이므로 초기각을 피벗에 싣는다
+      pivot.rotateOnAxis(radial, ang0);
+      g.add(pivot);
     });
     rec.sat = g;
+    rec.satK = 0;
     this.satRoot.add(g);
   }
 
@@ -3034,7 +3128,8 @@ export class UniverseScene {
     let mesh: THREE.Object3D | null = null;
     for (const b of this.bodies.values()) {
       if (!b.sat?.visible) continue;
-      for (const m of b.sat.children) if (m.userData.workId === id) mesh = m;
+      // 자식은 궤도 피벗이고, 책등 메시는 그 안이다(케플러 공전)
+      for (const p of b.sat.children) if (p.userData.workId === id) mesh = p.children[0] ?? p;
     }
     if (!mesh) return null;
     const r = this.renderer.domElement.getBoundingClientRect();
@@ -3761,11 +3856,21 @@ export class UniverseScene {
       this.applySurfaceSky();
     }
     if (this.state.landedId && this.corridorFrame) this.updateCorridor(dt);
-    // 궤도의 서가가 돈다 — 위성은 서 있는 책장이 아니라 궤도다. 한 바퀴
-    // ≈ 9분: 계약이 한 호흡에 재는 동안은 사실상 정지, 머무는 눈에는 삶.
-    if (!this.state.reducedMotion) {
-      for (const b of this.bodies.values())
-        if (b.sat?.visible) b.sat.rotateOnAxis(b.center.clone().normalize(), 0.012 * (dt / 1000));
+    this.fadeFarLines(this.constellation);
+    // 궤도의 서가가 돈다 — 행성마다 제 궤도, 제 속도(케플러 ω ∝ R^-3/2).
+    // 안쪽 한 바퀴 ≈ 9분: 계약의 한 호흡에는 정지, 머무는 눈에는 삶.
+    // 해상의 생성: 행성은 나타나는 것이 아니라 분해되어 보이는 것이다 —
+    // 보임 목표를 향해 만들어질 때 0 에서 자란다(문 0 5차 "책등이 갑툭튀").
+    for (const b of this.bodies.values()) {
+      if (!b.sat) continue;
+      const target = b.sat.visible ? 1 : 0;
+      b.satK = this.state.reducedMotion
+        ? target
+        : (b.satK ?? 0) + (target - (b.satK ?? 0)) * Math.min(1, (dt / 1000) * 4.2);
+      if (!b.sat.visible || this.state.reducedMotion) continue;
+      const axis = b.center.clone().normalize();
+      for (const p of b.sat.children)
+        p.rotateOnAxis(axis, (((p.userData.omega as number) ?? 0.0116) * dt) / 1000);
     }
     // 최소 거리는 update() 보다 먼저 정한다 — 순서가 뒤바뀌면 착륙 프레임에서
     // 직전 프레임의 하한(40)이 카메라를 그 자리에 못박는다(실측 버그).
@@ -4027,8 +4132,7 @@ export class UniverseScene {
       const camUp = new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 1);
       // 단계는 표현 사다리가 이미 낸 값을 **읽기만** 한다 — 같은 규칙을 두 곳에
       // 두면 서로를 가려 한쪽을 지워도 계약이 초록으로 남는다(실측 교훈).
-      const scaled =
-        (this.radii[selIdx] ?? 12) * (isLandable(selId as string) ? 1 + (LENS_MAG - 1) * this.lensK : 1);
+      const scaled = (this.radii[selIdx] ?? 12) * this.lensFactor(selId as string);
       const ap = apparentRadiusPx(scaled, dCam, this.camera.fov, h);
       const asStar = ap < STAR_TO_DISC_PX;
       const markR = asStar ? starDiameterPx(this.baseGlare[selIdx] ?? 0, ap) / 2 : ap;
@@ -4072,17 +4176,16 @@ export class UniverseScene {
     if (this.lensK !== prevK) this.buildLines(this.egoLines, this.state.ego);
     // 선택 천체는 일률 배율로 확대 — 배율이 같으므로 크기 차이(=영향력)는 남는다
     for (const [id, rec] of this.bodies) {
-      const want =
-        id === this.state.focusId && !this.state.landedId
-          ? 1 + (LENS_MAG - 1) * this.lensK
-          : 1;
+      const want = this.lensFactor(id);
       const target = rec.radius * want;
       if (Math.abs(rec.mesh.scale.x - target) > 1e-4) rec.mesh.scale.setScalar(target);
       // 궤도의 서가는 몸의 **그려지는** 배율을 그대로 따른다 — 렌즈가 몸만
       // 키우면 확대된 몸이 고리를 삼킨다(프로브 실측: 카프카 ×34 에서 위성
       // 실종). 고리 반경과 책등 크기가 함께 커져 항상 몸 밖에 선다.
       if (rec.sat) {
-        const k = rec.mesh.scale.x / rec.radius;
+        // 배율 추종 × 해상의 생성 — 행성계가 몸과 함께 커지고, 처음 보일 땐
+        // 작게 시작해 0.7초에 걸쳐 제 크기로 분해된다.
+        const k = (rec.mesh.scale.x / rec.radius) * (0.2 + 0.8 * (rec.satK ?? 1));
         if (Math.abs(rec.sat.scale.x - k) > 1e-4) rec.sat.scale.setScalar(k);
       }
       if (rec.halo) {
@@ -4261,6 +4364,67 @@ export class UniverseScene {
         return best?.sat ? best.sat.children.map((m) => m.userData.workId as string) : [];
       })(),
       hoverWork: this.hoverWork,
+      /** 최근접 서가의 생성 진행(0~1)과 궤도 반경 범위 — 갑툭튀·균일 고리의 이빨 */
+      satK: (() => {
+        let best: BodyRecord | null = null;
+        let bd = Infinity;
+        for (const b of this.bodies.values()) {
+          if (!b.sat?.visible) continue;
+          const dd = b.center.distanceTo(this.camera.position);
+          if (dd < bd) {
+            bd = dd;
+            best = b;
+          }
+        }
+        return best ? Number((best.satK ?? 0).toFixed(2)) : null;
+      })(),
+      satRadii: (() => {
+        let best: BodyRecord | null = null;
+        let bd = Infinity;
+        for (const b of this.bodies.values()) {
+          if (!b.sat?.visible) continue;
+          const dd = b.center.distanceTo(this.camera.position);
+          if (dd < bd) {
+            bd = dd;
+            best = b;
+          }
+        }
+        if (!best?.sat) return null;
+        let mn = Infinity;
+        let mx = 0;
+        for (const p of best.sat.children) {
+          const m0 = p.children[0];
+          if (!m0) continue;
+          const r = m0.position.length();
+          mn = Math.min(mn, r);
+          mx = Math.max(mx, r);
+        }
+        return Number.isFinite(mn) ? ([Math.round(mn), Math.round(mx)] as [number, number]) : null;
+      })(),
+      /** 초점 몸의 **그려진** 배율 — 주장(lensMag)이 아니라 적용값(R13-h) */
+      focusDrawnK: (() => {
+        const b = this.state.focusId ? this.bodies.get(this.state.focusId) : undefined;
+        return b ? Number((b.mesh.scale.x / b.radius).toFixed(2)) : null;
+      })(),
+      /** 관계선 **세그먼트 중점**의 최소 반경 — 정점은 현도 껍질 위라 못
+       *  가른다(변이 실측: 현의 회귀가 정점 계측을 통과). 경로가 껍질을
+       *  따르면 SHELL_R 근처, 내부를 관통하면 훨씬 작다. */
+      lensLineMinR: (() => {
+        const p = this.constellation.geometry.getAttribute("position") as
+          | THREE.BufferAttribute
+          | undefined;
+        if (!p || p.count < 2) return null;
+        let min = Infinity;
+        for (let i = 0; i + 1 < p.count; i += 2) {
+          const r = Math.hypot(
+            (p.getX(i) + p.getX(i + 1)) / 2,
+            (p.getY(i) + p.getY(i + 1)) / 2,
+            (p.getZ(i) + p.getZ(i + 1)) / 2
+          );
+          if (r < min) min = r;
+        }
+        return Math.round(min);
+      })(),
       /** 원경에서 충분히 들어왔는가 — 돌아올 길이 떠 있어야 하는 상태 */
       deep: this.lastDeep,
       /** 고른 별까지의 거리 — 단계 판정의 두 번째 절이자 "떠났다"의 자 */
@@ -4439,7 +4603,7 @@ export class UniverseScene {
     const w = this.renderer.domElement.clientWidth;
     const h = this.renderer.domElement.clientHeight;
     const c = body.center.clone().project(this.camera);
-    const rWorld = body.radius * (isLandable(fid) ? 1 + (LENS_MAG - 1) * this.lensK : 1);
+    const rWorld = body.radius * this.lensFactor(fid);
     return {
       cx: ((c.x + 1) / 2) * w,
       cy: ((-c.y + 1) / 2) * h,

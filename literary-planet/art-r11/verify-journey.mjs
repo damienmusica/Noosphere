@@ -1056,6 +1056,19 @@ for (const a of SLICE) {
   await page.waitForTimeout(800);
   check("v1(작가 단위) 공유 링크는 공유 모드를 열지 않는다",
     (await page.locator(".u-mine__shared").count()) === 0);
+  // 천구의 호(R13-h, 문 0 5차): 관계 렌즈의 선은 내부를 관통하는 현이 아니라
+  // 하늘 표면을 따르는 호다 — 원경의 실타래는 지도가 아니었다.
+  await page.goto(url(`?lens=translation`), { waitUntil: "load" });
+  await page.waitForFunction(() => window.__universe !== undefined);
+  await page.waitForTimeout(1200);
+  const arcM = await page.evaluate(() => {
+    const m = window.__universe.metrics();
+    return { minR: m.lensLineMinR, camR: m.camR };
+  });
+  check("관계는 천구의 호로 흐른다 — 선이 내부를 관통하지 않는다",
+    arcM.minR !== null && arcM.minR >= 860,
+    `최소 반경 ${arcM.minR} (껍질 900)`);
+
   // 모르는 층 이름은 무시된다 — 빈 #root 로 죽지 않는다
   await page.goto(url(`?lens=bogus&a=franz-kafka`), { waitUntil: "load" });
   await page.waitForFunction(() => window.__universe !== undefined, undefined, { timeout: 8000 }).catch(() => null);
