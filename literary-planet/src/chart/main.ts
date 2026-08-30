@@ -83,7 +83,7 @@ circle.star{cursor:pointer}
 <div class="top">
   <h1>문학의 성좌도</h1>
   <input id="q" placeholder="별 찾기" />
-  <nav><a href="/">성계(3D)</a><a href="/walk/">산책</a><a href="/authors/">색인</a></nav>
+  <nav><a href="/">산책</a><a href="/universe.html">성계(3D)</a><a href="/authors/">색인</a></nav>
 </div>
 <div id="stage"></div>
 <div class="legend" id="legend"></div>

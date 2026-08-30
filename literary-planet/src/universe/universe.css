@@ -37,6 +37,19 @@
   font-weight: 500;
 }
 
+.u-exit {
+  /* 나가는 문 — 정문이 산책이 된 뒤 성계에서 돌아갈 길 */
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--brass);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.u-exit:hover {
+  border-bottom-color: var(--brass-a35);
+}
+
 .u-stage {
   /* 상태 표시이지 버튼이 아니다 — 테두리를 주면 누른다(합성 파일럿 P4 2회) */
   font-size: 12px;

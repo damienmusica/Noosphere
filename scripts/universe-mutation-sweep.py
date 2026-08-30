@@ -62,6 +62,7 @@ U = "src/universe/UniverseApp.tsx"
 CSS = "src/universe/universe.css"
 LAB = "src/globe/labels.ts"
 ASM = "src/data/assemble.ts"
+GEN = "scripts/generate-static-pages.ts"
 
 # (lane, name, file, needle, replacement)
 #
@@ -661,6 +662,19 @@ MUTATIONS = [
     ("mobile", "주권 — 누운 화면의 안전 띠가 시트를 따라가지 않는다", U,
      "        open && !moving ? Math.round(Math.min(window.innerWidth * 0.52, 380)) : 0,",
      "        open ? Math.round(Math.min(window.innerWidth * 0.52, 380)) : 0,"),
+
+    # --- 정문·카드 질량 (2026-08-31, 결정 (131)) --------------------------
+    # 정문이 성계로 되돌아가면 주소만 치고 들어온 사람이 실타래를 만난다.
+    ("browser", "정문이 성계로 되돌아간다 (루트에 산책을 기입하지 않는다)", GEN,
+     '\nwriteFileSync(join(OUT, "index.html"), walkPage());',
+     ""),
+    # 카드가 다시 무거워진다. 정직하게 적자면 이 변이는 다이어트 계약("펼쳐진
+    # 산문 0")도 함께 잡는다 — 오늘의 코드에는 부채 상한**만** 잡는 질량 증가
+    # 경로가 없다(권·관계에 상한 자체가 없어 지울 상한이 없다). 상한은 과거
+    # 회귀가 아니라 **미래의 증식**을 막는 래칫이다.
+    ("browser", "카드가 해설 전문을 펼친 채로 선다 (부채 상한 초과)", C,
+     '<p className="u-card__why-full" hidden={!whyOpen}>',
+     '<p className="u-card__why-full">'),
 
     ("browser", "앵커가 구간을 앞으로도 늘린다 (첫 작품 이전이 빈 칸으로)", G,
      "  const own = [...workYears, ...(deathYear !== undefined ? [deathYear] : [])];\n  const lo = own.length ? Math.min(...own) : Math.min(...anchorYears);",

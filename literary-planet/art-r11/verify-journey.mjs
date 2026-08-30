@@ -120,18 +120,33 @@ const settle = async (ms = 1500) => {
 const metrics = () => page.evaluate(() => window.__universe.metrics());
 const url = (q) => `${server.origin}/universe.html${q}`;
 
-// ——— 정문 계약 (2026-08-29, CPO): 홈이 곧 성계다 ———
-// 행성 앱(R1–R10)은 은퇴했다. 루트(index.html)가 성계를 열지 않으면 3인
-// 테스트 참가자는 주소만 치고 낡은 정체성에 착륙한다.
+// ——— 정문 계약 (2026-08-31, 결정 (131)): 홈은 걸어 들어갈 수 있는 문이다 ———
+// 성계를 정문에 세웠던 계약(2026-08-29)을 폐기한다. CPO 의 1분 실사와 그
+// 재현이 근거다: 기본 하늘에서 '직접 영향' 렌즈는 이름 0개의 실타래를 그리고,
+// 별 하나를 열면 카드가 850자·버튼 40개로 선다. 선행 연구(prior-art.md Ⅱ·Ⅴ)
+// 가 25년치 시체로 예고한 그 형태다. 성계는 죽지 않는다 — /universe.html 로
+// 물러나 3안 비교의 A안 입구로 남는다. 판정은 낯선 눈이 한다.
 {
   console.log("\n정문");
   await page.goto(`${server.origin}/`, { waitUntil: "load" });
+  const h1 = (await page.locator("h1").first().textContent()) ?? "";
+  check("정문이 산책이다 — 루트가 인도된 산책을 연다", h1.includes("성좌 산책"), h1 || "제목 없음");
+  const starts = await page.locator("#app .doors a").count();
+  check("입구에 출발점이 서 있다", starts >= 4, `출발 ${starts}`);
+  // 한 문장 계약의 기제 — 정문에서 '읽고 싶음'까지 몇 번 누르는가.
+  await page.locator("#app .doors a").nth(1).click();
+  await page.waitForTimeout(200);
+  const wants = await page.locator("#app button.want").count();
+  check("한 번의 클릭이 담을 책을 세운다", wants >= 1, `읽고 싶음 버튼 ${wants}`);
+  // 성계는 물러났을 뿐 살아 있다 — 그리고 막다른 방이 아니다.
+  await page.goto(`${server.origin}/universe.html`, { waitUntil: "load" });
   const alive = await page
     .waitForFunction(() => window.__universe !== undefined, undefined, { timeout: 9000 })
     .then(() => true)
     .catch(() => false);
-  const h1 = alive ? ((await page.locator(".u-top h1").textContent()) ?? "") : "";
-  check("정문이 성계다 — 루트가 성계 앱을 연다", alive && h1.includes("문학의 성계"), h1 || "앱 없음");
+  const uh1 = alive ? ((await page.locator(".u-top h1").textContent()) ?? "") : "";
+  check("성계는 /universe.html 에 산다", alive && uh1.includes("문학의 성계"), uh1 || "앱 없음");
+  check("성계에 나가는 문이 있다", (await page.locator(".u-top .u-exit").count()) === 1);
 }
 
 for (const a of SLICE) {
@@ -499,6 +514,34 @@ for (const a of SLICE) {
   });
   check("카드는 계기판으로 열린다 — 펼쳐진 산문 0", proseVis.why + proseVis.work + proseVis.rel === 0,
     JSON.stringify(proseVis));
+
+  // ——— 카드 부채 상한 (2026-08-31) ———
+  // 위의 "펼쳐진 산문 0" 은 **접힘만** 쟀지 카드의 질량은 재지 않았다. 그
+  // 계약이 전부 초록인 채로 실물은 839자·1430px·버튼 40개였고, CPO 는 1분
+  // 만에 "나무위키성 정보 폭탄 박스 그대로"라고 판정했다 — 상태 단언이
+  // 픽셀을 증명하지 못한 네 번째 재발이다. 그래서 이건 예산이 아니라
+  // **부채 상한**이다: 오늘 실측을 천장으로 못 박고, 값은 내려갈 수만 있다.
+  // 재는 자리는 **열린 그대로의 카드** — 사용자가 만나는 상태가 그것이고,
+  // 아래 다이어트 검사가 접고 편 뒤의 값은 그 조작의 산물이다.
+  // 천장은 슬라이스 4인의 실측 최댓값: 카프카 839자·1430px·버튼 40,
+  // 프루스트(미준비) 874자 — 미준비 작가는 정직 문단을 더 싣는다.
+  // UX 입법 동결 중이므로 이 라운드에서 카드를 줄이지는 않는다.
+  {
+    const mass = await page.evaluate(() => {
+      const el = document.querySelector(".u-card");
+      if (!el) return null;
+      return {
+        chars: (el.innerText ?? "").replace(/\s+/g, " ").trim().length,
+        scrollH: el.scrollHeight,
+        buttons: el.querySelectorAll("button,a,[role=button]").length
+      };
+    });
+    check(
+      "카드 부채 상한 — 오늘보다 무거워지지 않는다",
+      Boolean(mass) && mass.chars <= 880 && mass.scrollH <= 1440 && mass.buttons <= 40,
+      mass ? `${mass.chars}자 · ${mass.scrollH}px · 버튼 ${mass.buttons}` : "카드 없음"
+    );
+  }
   await card.locator(".u-card__why-toggle").click();
   await page.waitForTimeout(120);
   check("해설 전문은 접힘의 응답이다", await page.evaluate(() => {

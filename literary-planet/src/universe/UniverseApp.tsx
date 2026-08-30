@@ -736,6 +736,11 @@ export function UniverseApp({ dataset }: { dataset: Dataset }) {
 
       <header className="u-top">
         <h1>문학의 성계</h1>
+        {/* 정문이 산책으로 바뀐 뒤(결정 (131)) 성계는 막다른 방이 된다 —
+            나가는 문이 없으면 뒤로가기를 아는 사람만 빠져나온다. */}
+        <a className="u-exit" href="/">
+          ← 산책
+        </a>
         <span className="u-stage" data-stage={stage} role="status" aria-live="polite">
           {STAGE_KO[stage]}
           {/* 배율을 숨기면 "같은 공간인 척"이 된다 — 왜곡은 공표될 때만 기만이 아니다 */}
