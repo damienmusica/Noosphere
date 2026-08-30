@@ -731,10 +731,19 @@ for (const a of SLICE) {
     });
     const ordered = new Set(mm.cities.ordered);
     // 원근의 회랑에서 먼 권의 쪽지는 충돌 컬링에 접힐 수 있다 — 문법은
-    // "숫자는 순서 권에만"이지 "전 권 상시 노출"이 아니다. 가까운 쪽 최소 3장.
-    check("입문 경로 권의 순서 숫자가 선다 (컬링 감안 최소 3)",
-      glyph.numbered.length >= Math.min(a.order, 3) && glyph.numbered.length <= a.order,
-      `${glyph.numbered.length}/${a.order}`);
+    // "숫자는 순서 권에만"이지 "전 권 상시 노출"이 아니다. 하한은 상수가
+    // 아니라 **입구 앞 데이터**에서 유도한다(옆 계약과 같은 자) — 타고르처럼
+    // 입문작이 전부 회랑 깊숙이 선 작가는 상수 3 이 원근 컬링 경계에서
+    // 진동하는 거짓 하한이었다(실측: 딥링크 4 · 여정 경유 1~2).
+    const entrance2 = (await metrics()).walkYear ?? 0;
+    const orderedIds = new Set(dataAuthors.find((x) => x.id === a.id)?.readingOrder ?? []);
+    const orderedNear = dataWorks.filter(
+      (w) => w.authorId === a.id && orderedIds.has(w.id) && w.year - entrance2 >= 1.5 && w.year - entrance2 <= 11
+    ).length;
+    const floor2 = Math.min(a.order, 3, Math.max(1, orderedNear));
+    check("입문 경로 권의 순서 숫자가 선다 (하한 = 입구 앞 데이터)",
+      glyph.numbered.length >= floor2 && glyph.numbered.length <= a.order,
+      `${glyph.numbered.length}/${a.order} (입구 앞 순서권 ${orderedNear} → 하한 ${floor2})`);
     check("순서 숫자를 단 라벨이 정확히 입문 경로 권이다",
       glyph.numbered.every((id) => ordered.has(id)) && glyph.plain.every((id) => !ordered.has(id)),
       `숫자 ${glyph.numbered.length} · 민 라벨 ${glyph.plain.length}`);
