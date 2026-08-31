@@ -34,7 +34,8 @@ export const STAR_SYSTEM_ADDRESSES: readonly SeatAddress[] = [
     id: "literature",
     shape: "boundary-ruling",
     ref: "(86)",
-    corpusPath: "literary-planet/",
+    // 2026-08-31 분가 — 성계는 이제 이 레포 안의 디렉터리가 아니라 자기 레포다.
+    corpusPath: "https://github.com/damienmusica/one-book",
     opened: true,
   },
 ];

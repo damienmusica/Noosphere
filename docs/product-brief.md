@@ -30,7 +30,7 @@ learning paths, influence trails, and external references.
   gathered, never cut out of `/data` — joined across systems by Wikidata QID (see the charter,
   decision (130), amending (129)). Membership in a domain is a computed lens over recorded
   events, never a stored fact. The **first star system**, 《문학의 성계》 (the Literary Star
-  System), lives in [`literary-planet/`](../literary-planet/).
+  System), lives in its own repository ([one-book](https://github.com/damienmusica/one-book); split out 2026-08-31).
 
 Noosphere **connects and organizes; it does not rank or adjudicate.** It records the *state* of
 discourse — including what is unresolved or contested — rather than resolving it (see

@@ -9,8 +9,10 @@ Before broad architectural or Data Foundry work, read:
 - `docs/data-foundry.md` — the current-phase working brief.
 - `docs/source-of-truth.md` — which documents are authoritative and how authority moves across phases.
 - `docs/product-brief.md` — product definition and scope.
-- `literary-planet/docs/one-book.md` — 「하나의 책」의 정체성과 경계 (2026-08-31 개명·철거 이후).
-- `literary-planet/docs/one-sentence-contract.md` — 상급 게이트·페이지 예산·손 떼기 조건.
+- 제1성계 「하나의 책」은 **별도 레포**로 분가했다(2026-08-31): https://github.com/damienmusica/one-book.
+  이 레포와 코드를 공유하지 않으며, 엔티티 동일성의 조인 키는 Wikidata QID 다.
+  그 제품의 정체성·게이트 문서는 그 레포의 `docs/one-book.md` 와
+  `docs/one-sentence-contract.md` 에 있다.
 - `docs/ai-usage-policy.md` — how AI may and may not contribute.
 
 If a task conflicts with these documents or with the rules below, **stop and ask** before changing
