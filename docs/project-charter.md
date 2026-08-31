@@ -63,7 +63,7 @@ boundary ruling that deliberately left the place empty (the registry lives in
 [`scripts/lib/starsystem-addresses.ts`](../scripts/lib/starsystem-addresses.ts)). The **first star
 system is 《문학의 성계》 (the Literary Star System)**, which opens at the boundary rule of decision
 (86) — literature was ruled outside the main corpus and the sister product reserved there. It is
-maintained in [`literary-planet/`](../literary-planet/). Star systems defer to this charter for
+maintained in its own repository ([one-book](https://github.com/damienmusica/one-book); split out 2026-08-31). Star systems defer to this charter for
 identity, posture, and boundaries; star-system-specific editorial policy lives with the star system.
 
 Entities join across star systems by **Wikidata QID** (`external_ids`), never by display label. A

@@ -131,5 +131,5 @@ LP 브리프의 상속 조항 *"사용자 추적 없음"* 은 세 가지를 구�
 ## 비준 절차
 
 결정 (129) 선례를 따른다: CPO 비준 → 그 시점에 `docs/project-charter.md` 와
-`literary-planet/docs/product-brief.md` 를 동시 개정 → vault 결정 기록에 기입.
+성계 레포(one-book)의 `docs/product-brief.md` 를 동시 개정 → vault 결정 기록에 기입.
 비준 전 집행은 없다.
