@@ -95,6 +95,9 @@ MUTATIONS = [
      'reason: "no-stamp"',
      'reason: "stale"'),
     # --- 철거가 되돌아오지 않는다 ---------------------------------------------
+    ("fast", "출력을 비우지 않는다 (은퇴한 진입점이 dist 에 남아 함께 배포된다)", G,
+     "rmSync(OUT, { recursive: true, force: true });",
+     "// rmSync(OUT, { recursive: true, force: true });"),
     ("browser", "죽은 표면으로 가는 링크를 되살린다", G,
      '  <a href="/#${esc(a.id)}">여기서 읽기 시작</a>',
      '  <a href="/#${esc(a.id)}">여기서 읽기 시작</a>\n  <a href="/universe.html">성계에서 보기</a>'),
