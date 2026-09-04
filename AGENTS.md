@@ -1,134 +1,53 @@
 # AGENTS.md — Noosphere
 
-모든 코딩 에이전트가 읽는 정본이다. Claude Code는 `CLAUDE.md`를 통해 이 파일을 import 한다.
-개인 전역 지침은 `~/dotfiles/AGENTS.md`.
+모든 코딩 에이전트가 읽는 정본이다. 개인 전역 지침은 `~/dotfiles/AGENTS.md`.
 
-Before broad architectural or Data Foundry work, read:
+Noosphere 는 English-first, 다국어 대비, **읽기 전용** 지식 지구본이다 — 사람·작품·개념을
+포함한 백과사전의 현대화. 값은 산출물에 쌓인다. 지금의 우선순위는 유지 가능하고 안전한
+데이터 기반이다.
 
-- `docs/project-charter.md` — durable identity, posture, boundaries, and the LLM boundary.
-- `docs/data-foundry.md` — the current-phase working brief.
-- `docs/source-of-truth.md` — which documents are authoritative and how authority moves across phases.
-- `docs/product-brief.md` — product definition and scope.
-- 제1성계 「하나의 책」은 **별도 레포**로 분가했다(2026-08-31): https://github.com/damienmusica/one-book.
-  이 레포와 코드를 공유하지 않으며, 엔티티 동일성의 조인 키는 Wikidata QID 다.
-  그 제품의 정체성·게이트 문서는 그 레포의 `docs/one-book.md` 와
-  `docs/one-sentence-contract.md` 에 있다.
-- `docs/ai-usage-policy.md` — how AI may and may not contribute.
+## 먼저 읽을 것
 
-If a task conflicts with these documents or with the rules below, **stop and ask** before changing
-code. `NOOSPHERE_CLAUDE_CODE_BRIEF.md` is the **superseded** foundation-phase brief — retained for
-history, not the current canonical working brief.
+- `docs/project-charter.md` — 정체성·자세·경계·LLM 경계
+- `docs/data-foundry.md` — 현 국면의 작업 브리프, **승급 정책(§8)과 결정 자율성(§7.1)**
+- `docs/source-of-truth.md` — 어느 문서가 권위인가. 최종 권위는 Obsidian vault 의 결정 로그.
+- `docs/ai-usage-policy.md` — AI 가 무엇을 해도 되고 안 되는가
 
-Noosphere is an English-first, multilingual-ready, **read-only** knowledge atlas.
-The current priority is a maintainable, secure data foundation — not a feature-heavy app.
+과제가 이 문서들과 충돌하면 **멈추고 묻는다.** 「하나의 책」은 별도 레포다
+(github.com/damienmusica/one-book) — 코드를 공유하지 않고, 조인 키는 Wikidata QID.
 
-## Hard constraints (do not violate, do not "simplify away")
+## 하드 제약
 
-- No login, no accounts, no auth.
-- No admin UI.
-- No database — JSON data files in `/data` only.
-- No user-generated content, comments, or public editing.
-- No scraping or crawling of third-party sites.
-- No secrets, API keys, or tokens in the repo or environment.
-- **No cloud LLM API calls, LLM SDKs, LLM API keys, or LLM-dependent CI/build/runtime steps.**
-  LLMs are used interactively by maintainers only; repo tooling/runtime/build/CI must not require them.
-- No ads, no payments.
-- No 3D globe yet.
-- **NamuWiki: external links only.** `content_cached` must be `false`; never store article text, structure, or treat it as primary evidence.
-- Do not use company-internal data, code, or credentials. Public/open data and original curation only.
-- AI-proposed nodes/edges must follow the reasoned-proposal contract in
-  `docs/ai-usage-policy.md` (rationale + uncertainty + ambiguous flag) before entering
-  the curation gate.
-- Foundry proposals live under `foundry/proposals/` and are untrusted `generated` drafts;
-  agents read `/data` as ground truth and must never treat proposals as verified or copy
-  them into `/data` outside the curation gate.
+로그인·계정·관리자 UI 없음. 데이터베이스 없음 — `/data` 의 JSON 만. 사용자 생성 콘텐츠·
+공개 편집 없음. 스크래핑 없음. 레포와 환경에 비밀 없음. **런타임·빌드·CI 에 LLM 호출
+없음** — LLM 은 유지보수자가 대화로만 쓴다. 광고·결제 없음. 나무위키는 외부 링크만.
+회사 내부 데이터·코드 금지. AI 가 제안한 노드·엣지는 근거·불확실성·모호 표시를 달고
+큐레이션 게이트를 통과해야 `/data` 에 들어간다 — `foundry/proposals/` 는 신뢰되지 않는
+초안이다.
 
-## Data invariants (enforced by `scripts/validate-data.ts`)
+## 데이터 불변식
 
-- Every node has a stable, language-independent ID matching `^[a-z]+:[a-z0-9]+(?:-[a-z0-9]+)*$`.
-  Never use display labels (or Korean labels) as IDs. Provider IDs (Wikidata QID, OpenAlex) go in `external_ids`.
-- Every edge has `id`, `source`, `target`, `relation`, `confidence` (0–1), `status`, and non-empty `evidence`.
-- Edges must reference existing node IDs; `source` ≠ `target` unless explicitly allowed.
-- `relation` must be one of the types in `docs/relation-taxonomy.md`. To add a type, update the
-  taxonomy doc, the Zod schema, and validation **in the same change**.
-- Every source has license metadata (`license`, `commercial_use`, `attribution_required`, `share_alike_required`).
-- Every edge's `evidence` entries must reference existing source IDs.
-- Translations live in `node-translations.json`, keyed by `node_id` + `locale`. Default locale is `en`.
-  Graph topology must never depend on displayed label text.
-- Only `reviewed` nodes may be `indexable`. `generated`/`proposed`/`draft`/`deprecated` nodes must not be indexable.
-- Living-person claims require stricter evidence and conservative wording.
+`scripts/validate-data.ts` 가 정본이다 — 규칙과 그 수는 거기 있다. 핵심만: ID 는 언어
+독립 슬러그(표시 이름 아님, 외부 ID 는 `external_ids`) · 모든 엣지에 관계 종류·신뢰도·
+상태·**출처 있는 근거** · 관계 종류는 `docs/relation-taxonomy.md`(추가는 문서·스키마·
+검증을 같은 변경에서) · 번역은 별도 파일, 토폴로지는 표시 텍스트에 의존하지 않는다 ·
+`reviewed` 만 색인 가능 · 생존 인물은 더 엄한 근거와 보수적 표현.
 
-## Workflow
+## 일하는 법
 
-1. Explore existing files and summarize understanding.
-2. Propose a short plan; ask for approval if the task is broad or architectural.
-3. Make small, reviewable changes.
-4. Run `npm run typecheck` and `npm run validate:data`.
-5. Summarize changed files, commands run, and results. Call out TODOs and assumptions.
+1. 탐색하고 이해를 요약한다. 2. 짧은 계획 — 넓거나 구조적이면 승인을 받는다.
+3. 작고 검토 가능한 변경. 4. `npm run typecheck` · `npm run validate:data`.
+5. 바뀐 파일·실행한 명령·결과를 요약하고 가정과 TODO 를 밝힌다.
 
-Do **not**: rewrite the whole project at once; add major dependencies without justification;
-introduce a database, auth, admin, scraping, payments, or ads; add secrets; or remove policies
-to make implementation easier.
+값을 치르고 얻은 규칙 셋:
+- **서브에이전트가 쓰는 중에 `git add -A` 금지.** 명시 경로만. (반쯤 쓰인 배치가 main 을 빨갛게 했다.)
+- **"no checks reported" 는 초록이 아니다.** 등록 경쟁이다 — 결론이 날 때까지 기다린다.
+- **배치 디렉토리는 완전할 때만 유효하다.** README 색인 행과 앵커까지 한 변경에.
+- **결함 기록은 노드·엣지 ID 로 쓴다.** 산문 이름은 기계가 못 잰다. 기록을 고칠 때는 모든
+  절을 `/data` 에 다시 대본다.
 
-### Staging and merging (both rules were paid for, 2026-07-30, decision (116))
+## 도구
 
-- **Never `git add -A` while subagents are writing into the working tree.** Stage explicit paths.
-  A background generation workflow was mid-write when an unrelated commit ran `git add -A`; it swept
-  in one half-written proposal file, and an incomplete batch directory fails the batch-hygiene
-  invariants (README index row, evidence-permanence anchor), so main went red.
-- **"no checks reported" is not green — it is a registration race.** `gh pr checks --watch` returns
-  it when the workflow has not registered yet, and merging on it puts an unverified commit on main.
-  Poll until the checks actually conclude, then merge.
-- A batch directory under `foundry/proposals/` is valid only when **complete**. Do not commit
-  in-flight drafts; ship the batch with its README index row and anchors in one change.
-
-## Data Foundry 승급 정책
-
-이 레포의 승급 정책(ladder), 결정 자율성 경계, ops 패키지는 **`docs/data-foundry.md` §8 / §15**가
-권위 있는 원본이고, Obsidian vault 의 decision log 가 최종 권위다.
-**foundry 관련 작업을 하기 전에 반드시 읽는다.**
-
-Claude Code 사용자는 `.claude/rules/data-foundry-policy.md` 가 `foundry/**` 파일을 열 때
-자동으로 로드된다.
-
-## Stack and dependencies
-
-- TypeScript + Zod for validation; JSON data files first. Keep dependencies minimal.
-- Preferred future stack (not required yet): Next.js, React, Graphology, Sigma.js, FlexSearch.
-- Do not initialize the app UI unless framework initialization genuinely requires it.
-
-## Commands
-
-```bash
-npm run typecheck      # tsc --noEmit
-npm run validate:data  # tsx scripts/validate-data.ts (incl. canonical-format + v2-proposal checks)
-npm run format:data    # rewrite /data into canonical form (semantic no-op, verified)
-
-# Batch flow (docs/data-foundry.md §15.3):
-npm run foundry:fetch-corpus    -- <urls.json|txt> --out <scratch-dir>     # local-only network; polite source collection (never hand-roll fetch loops)
-npm run foundry:draft-decision  -- <batch-id> --qc-by "<name>=<version>"   # offline; schema-valid decision skeleton (+ --summaries / --flip-indexable seeding)
-npm run foundry:verify-identity -- foundry/decisions/<batch>.json --write  # local-only network
-npm run foundry:anchor          -- foundry/decisions/<batch>.json --write  # local-only network (SPN circuit breaker; --no-spn on outage days)
-npm run foundry:ladder-check    -- foundry/decisions/<batch>.json          # offline
-npm run foundry:ladder-fixtures                                            # offline; CI-gated golden fixtures (run after ANY ladder change)
-npm run foundry:ladder-mutation-sweep                                      # offline; maintainer tool — audits the fixtures themselves (patches lib/ladders.ts, restores)
-npm run foundry:apply-batch     -- foundry/decisions/<batch>.json          # offline; THE write path
-npm run foundry:report          -- foundry/decisions/<batch>.json --write  # offline
-
-# Session start ritual:
-npm run foundry:recheck-held   # held/blocked worklist
-npm run report:graph           # incl. editorial-gap dashboard + stale recorded gaps
-
-# Stale-gap detector, whose own coverage is measured (docs/data-foundry.md §15.10):
-npm run report:gap-fixtures        # offline; CI-gated golden fixtures, one per closure shape
-npm run report:gap-mutation-sweep  # offline; maintainer tool — audits the fixtures themselves
-```
-
-### Recorded gaps (decision (119))
-
-A note that says something is missing is a ledger entry, not commentary — the next wave's slate is
-built from it. **Write gap sentences with node and edge IDs** (`person:robert-hooke is still not a
-corpus node`), never bare prose names: only the ID form is machine-checkable. **When you refresh a
-gap note, re-check every clause of the replacement against `/data`** — decision (118)'s repair
-rewrote two notes into a claim that was already 29 days false, and the next session's order copied
-it into its slate as a task.
+명령은 `package.json` 이 정본이다. 세션 시작은 `npm run foundry:recheck-held` 와
+`npm run report:graph`. foundry 파일을 열면 `.claude/rules/data-foundry-policy.md` 가
+행동 카드로 붙는다. 스택은 TypeScript + Zod, JSON 우선, 의존성 최소.
